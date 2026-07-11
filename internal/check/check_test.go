@@ -47,6 +47,33 @@ func TestLoadValid(t *testing.T) {
 	}
 }
 
+// TestOmnibusSeriesPosition covers the schema change allowing a range position
+// (e.g. "1-3.5") for an omnibus edition, while still forbidding duplicates.
+func TestOmnibusSeriesPosition(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-two/work.json"] = `{"authors":["author-one"],"id":"book-two","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book Two"}`
+	files["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"},{"position":"1-3.5","work":"book-two"}]}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("omnibus range position should validate, got: %v", res.Problems)
+	}
+}
+
+// TestRecordingAbridgedOptional covers the schema change making abridged
+// optional: a recording that omits it must still validate.
+func TestRecordingAbridgedOptional(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/recordings/rec-one.json"] = `{"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("recording without abridged should validate, got: %v", res.Problems)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string

@@ -5,7 +5,7 @@
   "description": "A specific narration/production of a work: narrators, abridged flag, runtime, chapters, publisher, and region-scoped ASINs.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "work", "narrators", "abridged", "language", "license", "sources"],
+  "required": ["id", "work", "narrators", "language", "license", "sources"],
   "properties": {
     "id": {
       "$ref": "common.schema.json#/$defs/slug"
@@ -21,6 +21,7 @@
       }
     },
     "abridged": {
+      "description": "Whether this narration is abridged. Optional: absence means unknown, so importers omit it rather than guessing.",
       "type": "boolean"
     },
     "language": {

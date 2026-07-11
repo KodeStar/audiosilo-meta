@@ -60,14 +60,16 @@ tooling via `schema.go`, so schema edits are code changes with tests.
   authors (person ids), language, first_published, xrefs (wikidata/openlibrary/
   goodreads/print ISBNs).
 - **recording** `data/works/<shard>/<slug>/recordings/<rec-slug>.json` - a
-  specific narration/production: narrators, abridged, runtime_min,
-  release_date, publisher, region-scoped `asin[]`, `isbn[]`, cover_url,
-  chapters. One work, many recordings (Harry Potter: Stephen Fry AND Jim Dale,
-  each with its own ASINs). The shard is the **parent work's** slug shard.
+  specific narration/production: narrators, abridged (**optional**: absence =
+  unknown, so importers omit it rather than guess), runtime_min, release_date,
+  publisher, region-scoped `asin[]`, `isbn[]`, cover_url, chapters. One work,
+  many recordings (Harry Potter: Stephen Fry AND Jim Dale, each with its own
+  ASINs). The shard is the **parent work's** slug shard.
 - **person** `data/people/<shard>/<slug>.json` - shared by author and narrator
   roles (a person can be both).
 - **series** `data/series/<shard>/<slug>.json` - name + ordered works with
-  **string** positions ("1", "2.5").
+  **string** positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two
+  works may share a position.
 
 Every entity carries `license` (only `CC0-1.0` in Phase 0) and `sources[]`
 (provenance: type/ref/imported_at) so any source can be audited or retracted
@@ -77,14 +79,34 @@ wholesale.
 
 ```
 cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
+cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible)
 internal/model      entity structs, slug/shard rules, location parsing
 internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
 internal/check      schema validation + integrity/uniqueness/chapter/series rules
+internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN-dedup, canonical writes
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes)
 schema/             JSON Schemas (the contract), embedded via schema.go
 data/               the database (works/recordings/people/series)
 .github/            issue forms (machine-parseable ids), check + release workflows
 ```
+
+The importer maps one export entry to a work + recording (+ people + series),
+importing **factual fields only** (LICENSING.md): it drops publisher
+copy/genre/ratings/personal state, deduplicates by ASIN against the catalogue,
+and writes canonical files, then runs `internal/check`. Identity rules: a
+**person slug is the identity** (spelling/diacritic variants of one name merge
+into the existing record; no numbered duplicates), and trailing Audible credit
+qualifiers (`"J. Kharkova - translator"`) are stripped from names against a
+fixed role list - the person stays in the credit list; a **work** is (title slug
++ author set), but series volumes that share a `title_short` (or a book mapping
+onto an existing work at a different position in the same series) derive their
+work from the **full title** instead, so distinct volumes never merge - a batch
+pre-pass (grouping by title slug only, since Audible's author field varies per
+volume) detects this before any slug is claimed; different-author title
+collisions get an author suffix (numeric only as last resort); series collide to
+numeric. Series positions accept omnibus ranges (`"1-3.5"`) and
+`recording.abridged` is optional (emitted only when the source states it) - see
+the schema notes below.
 
 ## Conventions
 
@@ -115,9 +137,14 @@ data/               the database (works/recordings/people/series)
 - **Phase 1**: Open Library/Wikidata crosswalk seeding, the Go API server
   (consumes the release artifact, FTS search, `/lookup?asin=|isbn=`), Docker,
   meta.audiosilo.app site with search + import (OpenAudible/Libation) +
-  ASIN lookup assist, issue-form-to-PR automation.
+  ASIN lookup assist, issue-form-to-PR automation. The **OpenAudible importer**
+  (`cmd/metaimport openaudible`, `internal/importer`) has landed; Libation and
+  per-title ASIN lookup are the remaining import paths.
 - **Phase 1.5**: AudioSilo server/player integration (before any ABS facade).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
-  BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7.
+  BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. Also:
+  **contributor role modeling** - translator/introduction/editor credits are
+  currently plain people on the work (the importer strips the role qualifier
+  from the name); a future schema field should carry the role.
 - **Phase 3**: extraction clients (epub -> characters/recaps pipeline,
   likely in audiosilo-manager).

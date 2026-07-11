@@ -103,6 +103,40 @@ for adding a new work with its first recording and a new author:
 Reference the entity model above and copy the shape of an existing record of the
 same kind - that is the fastest way to get the fields right.
 
+## Importing an OpenAudible export
+
+If you have an [OpenAudible](https://openaudible.org/) library, the `metaimport`
+tool turns its `books.json` export into work/recording/person/series records so
+your whole shelf becomes one reviewable pull request:
+
+```sh
+go run ./cmd/metaimport openaudible <path-to/books.json> --data data --dry-run
+go run ./cmd/metaimport openaudible <path-to/books.json> --data data
+```
+
+- `--dry-run` prints the plan (how many works, recordings, people, and series
+  would be created, how many books were skipped as already present, and any
+  warnings) **without writing anything**. Run it first.
+- A real run writes the new and changed files, then validates the whole tree and
+  reports. It only fails on an I/O/parse error or if validation fails; per-book
+  warnings (a title skipped for a missing narrator, an unknown language, odd
+  chapter offsets) are informational.
+- `--date YYYY-MM-DD` sets the `imported_at` stamp on every created record
+  (defaults to today, UTC).
+
+**Only factual fields are imported.** Titles, authors, narrators, series order
+and position, runtime, region-scoped ASIN, publisher, cover URL, and chapter
+titles/timestamps come across; the publisher `description`/`summary`, `genre`,
+ratings, and your personal library state are dropped (see
+[LICENSING.md](LICENSING.md)). The importer **deduplicates by ASIN** against the
+existing catalogue, so re-running it, or importing a book someone else already
+added, is a no-op rather than a duplicate.
+
+After importing, format and validate as usual (`go run ./cmd/metafmt --write`
+then `go run ./cmd/metacheck`), review the diff, and open a pull request. You are
+still dedicating the imported facts to the public domain under CC0-1.0, so import
+only from a library you may share this way.
+
 ## Data rules
 
 - **Factual data only.** Titles, authors, narrators, series order, runtimes,
