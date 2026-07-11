@@ -59,7 +59,8 @@ func fixtureCatalog() *model.Catalog {
 func buildFixture(t *testing.T) *sql.DB {
 	t.Helper()
 	out := filepath.Join(t.TempDir(), "meta.sqlite")
-	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
+	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
+	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC), added); err != nil {
 		t.Fatal(err)
 	}
 	db, err := sql.Open("sqlite", out)
@@ -153,6 +154,57 @@ func TestBuildFTS(t *testing.T) {
 		if !found {
 			t.Errorf("FTS %q did not return %s/%s", c.query, c.wantKind, c.wantID)
 		}
+	}
+}
+
+func TestBuildAddedAt(t *testing.T) {
+	// project-hail-mary is in the added map (file-derived date wins); the-way-of
+	// -kings is absent and has no sources[].imported_at, so it stays NULL.
+	db := buildFixture(t)
+	var phm sql.NullString
+	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, "project-hail-mary").Scan(&phm); err != nil {
+		t.Fatal(err)
+	}
+	if !phm.Valid || phm.String != "2026-07-10T00:00:00Z" {
+		t.Errorf("phm added_at = %v, want file date", phm)
+	}
+	var wok sql.NullString
+	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, "the-way-of-kings").Scan(&wok); err != nil {
+		t.Fatal(err)
+	}
+	if wok.Valid {
+		t.Errorf("way-of-kings added_at = %q, want NULL", wok.String)
+	}
+}
+
+func TestBuildAddedAtFallback(t *testing.T) {
+	// With no file-derived map, a work falls back to the newest imported_at.
+	out := filepath.Join(t.TempDir(), "meta.sqlite")
+	cat := &model.Catalog{
+		People: []*model.Person{{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}},
+		Works: []*model.Work{{
+			ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+			Sources: []model.Source{
+				{Type: "openaudible-import", ImportedAt: "2026-01-01"},
+				{Type: "openaudible-import", ImportedAt: "2026-06-15"},
+			},
+		}},
+	}
+	if err := Build(cat, out, time.Time{}, nil); err != nil {
+		t.Fatal(err)
+	}
+	db, err := sql.Open("sqlite", out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = db.Close() }()
+	var got string
+	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, "project-hail-mary").Scan(&got); err != nil {
+		t.Fatal(err)
+	}
+	if got != "2026-06-15" {
+		t.Errorf("added_at fallback = %q, want newest imported_at 2026-06-15", got)
 	}
 }
 

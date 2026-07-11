@@ -1,0 +1,58 @@
+---
+import SearchBox from '../search/SearchBox.tsx'
+import Waveform from '../Waveform.astro'
+
+const examples = ['Project Hail Mary', 'Stephen Fry', 'The Stormlight Archive']
+---
+
+<section class="relative pt-16 pb-14 sm:pt-24 sm:pb-20">
+  <!-- Soft radial glow behind the hero, clipped by its own inset wrapper so the
+       section itself needs no overflow-hidden (which would clip a tall open
+       search dropdown at the section boundary). -->
+  <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="glow left-1/2 top-[-6rem] h-[34rem] w-[34rem] -translate-x-1/2"></div>
+  </div>
+
+  <!-- z-20: must stack ABOVE the waveform strip container below (z-10). They
+       are siblings; at equal z-index the later-in-DOM waveform would paint OVER
+       the open search dropdown (the bug visual QA caught). -->
+  <div class="container relative z-20">
+    <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <!-- Overline chip -->
+      <span
+        class="mb-6 inline-flex items-center gap-2 rounded-full border border-edge bg-surface/60 px-4 py-1.5 text-xs font-medium text-dim"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-pink-500"></span>
+        Open data &middot; CC0 &middot; community maintained
+      </span>
+
+      <!-- Headline: one pink gradient keyword -->
+      <h1
+        class="text-4xl font-black leading-[1.05] tracking-tight text-hi sm:text-5xl md:text-6xl"
+      >
+        Every audiobook.
+        <br />
+        <span
+          class="bg-gradient-to-r from-pink-500 to-pink-600 bg-clip-text text-transparent"
+        >
+          One open database.
+        </span>
+      </h1>
+
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-body">
+        Works, recordings, narrators, series and chapters - free to use, built by
+        listeners.
+      </p>
+
+      <!-- THE search box -->
+      <div class="mt-9 w-full">
+        <SearchBox client:load examples={examples} />
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated waveform strip under the fold -->
+  <div class="container relative z-10 mt-14">
+    <Waveform animated bars={64} class="mx-auto max-w-2xl opacity-80" />
+  </div>
+</section>

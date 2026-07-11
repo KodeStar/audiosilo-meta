@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro'
+import SeriesDetail from '../components/detail/SeriesDetail.tsx'
+---
+
+<Base
+  title="Series - AudioSilo Meta"
+  description="An audiobook series in the AudioSilo Meta database: its authors and its works in reading order."
+  hasHero
+>
+  <SeriesDetail client:only="react" />
+</Base>

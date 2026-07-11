@@ -1,0 +1,267 @@
+{
+  "stats": {
+    "works": 825,
+    "recordings": 820,
+    "people": 394,
+    "series": 159,
+    "total_runtime_min": 612480,
+    "total_chapters": 41230,
+    "built_at": "2026-07-11T09:00:00Z"
+  },
+  "works": {
+    "project-hail-mary": {
+      "id": "project-hail-mary",
+      "title": "Project Hail Mary",
+      "subtitle": "A Novel",
+      "authors": [{ "id": "andy-weir", "name": "Andy Weir" }],
+      "language": "English",
+      "first_published": "2021-05-04",
+      "description": "A lone astronaut must save the earth from disaster in this science-driven thriller from the author of The Martian.",
+      "series": [],
+      "added_at": "2026-07-10T12:00:00Z",
+      "recordings": [
+        {
+          "id": "ray-porter-2021",
+          "narrators": [{ "id": "ray-porter", "name": "Ray Porter" }],
+          "runtime_min": 996,
+          "release_date": "2021-05-04",
+          "publisher": "Audible Studios",
+          "asin": [
+            { "region": "US", "asin": "B08G9PRS1K" },
+            { "region": "UK", "asin": "B08GB62RGB" }
+          ],
+          "isbn": ["9780593135204"],
+          "cover_url": null,
+          "chapter_count": 3,
+          "chapters": [
+            { "title": "Chapter 1", "start_ms": 0, "length_ms": 1980000 },
+            { "title": "Chapter 2", "start_ms": 1980000, "length_ms": 2040000 },
+            { "title": "Chapter 3", "start_ms": 4020000, "length_ms": 2010000 }
+          ]
+        }
+      ]
+    },
+    "philosophers-stone": {
+      "id": "philosophers-stone",
+      "title": "Harry Potter and the Philosopher's Stone",
+      "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+      "language": "English",
+      "first_published": "1997-06-26",
+      "description": "The first book in the Harry Potter series, available here in two distinct narrations.",
+      "series": [
+        { "id": "harry-potter", "name": "Harry Potter", "position": "1" }
+      ],
+      "added_at": "2026-07-09T12:00:00Z",
+      "recordings": [
+        {
+          "id": "stephen-fry",
+          "narrators": [{ "id": "stephen-fry", "name": "Stephen Fry" }],
+          "runtime_min": 501,
+          "release_date": "1999-04-01",
+          "publisher": "Pottermore Publishing",
+          "asin": [{ "region": "UK", "asin": "B017V4IM1G" }],
+          "isbn": [],
+          "cover_url": null,
+          "chapter_count": 2,
+          "chapters": [
+            { "title": "The Boy Who Lived", "start_ms": 0, "length_ms": 1620000 },
+            { "title": "The Vanishing Glass", "start_ms": 1620000, "length_ms": 1380000 }
+          ]
+        },
+        {
+          "id": "jim-dale",
+          "narrators": [{ "id": "jim-dale", "name": "Jim Dale" }],
+          "abridged": false,
+          "runtime_min": 498,
+          "release_date": "1999-11-01",
+          "publisher": "Listening Library",
+          "asin": [{ "region": "US", "asin": "B0072R32M4" }],
+          "isbn": ["9780807281550"],
+          "cover_url": null,
+          "chapter_count": 1,
+          "chapters": [
+            { "title": "The Boy Who Lived", "start_ms": 0, "length_ms": 1600000 }
+          ]
+        }
+      ]
+    },
+    "way-of-kings": {
+      "id": "way-of-kings",
+      "title": "The Way of Kings",
+      "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+      "language": "English",
+      "first_published": "2010-08-31",
+      "description": "The first volume of The Stormlight Archive, an epic fantasy of storms, honour and duty.",
+      "series": [
+        { "id": "stormlight-archive", "name": "The Stormlight Archive", "position": "1" }
+      ],
+      "added_at": "2026-07-08T12:00:00Z",
+      "recordings": [
+        {
+          "id": "kramer-reading",
+          "narrators": [
+            { "id": "michael-kramer", "name": "Michael Kramer" },
+            { "id": "kate-reading", "name": "Kate Reading" }
+          ],
+          "runtime_min": 2735,
+          "release_date": "2010-08-31",
+          "publisher": "Macmillan Audio",
+          "asin": [{ "region": "US", "asin": "B0041I5NEC" }],
+          "isbn": ["9781427209665"],
+          "cover_url": null,
+          "chapter_count": 2,
+          "chapters": [
+            { "title": "Prologue: To Kill", "start_ms": 0, "length_ms": 2400000 },
+            { "title": "Chapter 1: Stormblessed", "start_ms": 2400000, "length_ms": 1800000 }
+          ]
+        }
+      ]
+    },
+    "words-of-radiance": {
+      "id": "words-of-radiance",
+      "title": "Words of Radiance",
+      "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+      "language": "English",
+      "first_published": "2014-03-04",
+      "series": [
+        { "id": "stormlight-archive", "name": "The Stormlight Archive", "position": "2" }
+      ],
+      "added_at": "2026-07-07T12:00:00Z",
+      "recordings": [
+        {
+          "id": "kramer-reading-wor",
+          "narrators": [
+            { "id": "michael-kramer", "name": "Michael Kramer" },
+            { "id": "kate-reading", "name": "Kate Reading" }
+          ],
+          "runtime_min": 2755,
+          "release_date": "2014-03-04",
+          "publisher": "Macmillan Audio",
+          "asin": [{ "region": "US", "asin": "B00I5I2N2K" }],
+          "isbn": [],
+          "cover_url": null,
+          "chapter_count": 0
+        }
+      ]
+    }
+  },
+  "people": {
+    "andy-weir": {
+      "id": "andy-weir",
+      "name": "Andy Weir",
+      "sort_name": "Weir, Andy",
+      "authored": [
+        {
+          "id": "project-hail-mary",
+          "title": "Project Hail Mary",
+          "authors": [{ "id": "andy-weir", "name": "Andy Weir" }],
+          "series": null,
+          "cover_url": null
+        }
+      ],
+      "narrated": []
+    },
+    "ray-porter": {
+      "id": "ray-porter",
+      "name": "Ray Porter",
+      "authored": [],
+      "narrated": [
+        {
+          "recording_id": "ray-porter-2021",
+          "work": {
+            "id": "project-hail-mary",
+            "title": "Project Hail Mary",
+            "authors": [{ "id": "andy-weir", "name": "Andy Weir" }],
+            "series": null,
+            "cover_url": null
+          }
+        }
+      ]
+    },
+    "stephen-fry": {
+      "id": "stephen-fry",
+      "name": "Stephen Fry",
+      "authored": [],
+      "narrated": [
+        {
+          "recording_id": "stephen-fry",
+          "work": {
+            "id": "philosophers-stone",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+            "series": { "id": "harry-potter", "name": "Harry Potter", "position": "1" },
+            "cover_url": null
+          }
+        }
+      ]
+    },
+    "jim-dale": { "id": "jim-dale", "name": "Jim Dale", "authored": [], "narrated": [] },
+    "jk-rowling": { "id": "jk-rowling", "name": "J.K. Rowling", "authored": [], "narrated": [] },
+    "brandon-sanderson": {
+      "id": "brandon-sanderson",
+      "name": "Brandon Sanderson",
+      "authored": [
+        {
+          "id": "way-of-kings",
+          "title": "The Way of Kings",
+          "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+          "series": { "id": "stormlight-archive", "name": "The Stormlight Archive", "position": "1" },
+          "cover_url": null
+        },
+        {
+          "id": "words-of-radiance",
+          "title": "Words of Radiance",
+          "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+          "series": { "id": "stormlight-archive", "name": "The Stormlight Archive", "position": "2" },
+          "cover_url": null
+        }
+      ],
+      "narrated": []
+    },
+    "michael-kramer": { "id": "michael-kramer", "name": "Michael Kramer", "authored": [], "narrated": [] },
+    "kate-reading": { "id": "kate-reading", "name": "Kate Reading", "authored": [], "narrated": [] }
+  },
+  "series": {
+    "stormlight-archive": {
+      "id": "stormlight-archive",
+      "name": "The Stormlight Archive",
+      "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+      "works": [
+        {
+          "position": "1",
+          "work": {
+            "id": "way-of-kings",
+            "title": "The Way of Kings",
+            "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+            "cover_url": null
+          }
+        },
+        {
+          "position": "2",
+          "work": {
+            "id": "words-of-radiance",
+            "title": "Words of Radiance",
+            "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
+            "cover_url": null
+          }
+        }
+      ]
+    },
+    "harry-potter": {
+      "id": "harry-potter",
+      "name": "Harry Potter",
+      "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+      "works": [
+        {
+          "position": "1",
+          "work": {
+            "id": "philosophers-stone",
+            "title": "Harry Potter and the Philosopher's Stone",
+            "authors": [{ "id": "jk-rowling", "name": "J.K. Rowling" }],
+            "cover_url": null
+          }
+        }
+      ]
+    }
+  }
+}

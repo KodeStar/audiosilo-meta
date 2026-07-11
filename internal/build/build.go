@@ -30,6 +30,7 @@ CREATE TABLE works (
   language       TEXT NOT NULL,
   first_published TEXT,
   description    TEXT,
+  added_at       TEXT,
   wikidata       TEXT,
   openlibrary    TEXT,
   goodreads      TEXT,
@@ -103,8 +104,11 @@ CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, 
 `
 
 // Build writes the SQLite artifact for cat to outPath. builtAt is recorded in
-// meta(built_at); pass the zero time to use the current UTC time.
-func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
+// meta(built_at); pass the zero time to use the current UTC time. added maps a
+// work id to the date it first entered the dataset (ISO 8601); a work absent
+// from the map falls back to the newest sources[].imported_at on the work, and
+// to NULL when neither is known. A nil map disables the file-derived source.
+func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[string]string) (err error) {
 	if builtAt.IsZero() {
 		builtAt = time.Now().UTC()
 	}
@@ -160,7 +164,7 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	if err = insertPeople(tx, people); err != nil {
 		return err
 	}
-	if err = insertWorks(tx, works, nameByID, seriesNamesByWork); err != nil {
+	if err = insertWorks(tx, works, nameByID, seriesNamesByWork, added); err != nil {
 		return err
 	}
 	if err = insertSeries(tx, series); err != nil {
@@ -208,7 +212,7 @@ func insertPeople(tx *sql.Tx, people []*model.Person) error {
 	return nil
 }
 
-func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string) error {
+func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string, added map[string]string) error {
 	for _, w := range works {
 		var wiki, ol, gr string
 		var isbns []string
@@ -216,8 +220,8 @@ func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, se
 			wiki, ol, gr, isbns = w.Xref.Wikidata, w.Xref.Openlibrary, w.Xref.Goodreads, w.Xref.ISBN
 		}
 		if _, err := tx.Exec(
-			`INSERT INTO works(id, title, subtitle, language, first_published, description, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?)`,
-			w.ID, w.Title, nullStr(w.Subtitle), w.Language, nullStr(w.FirstPublished), nullStr(w.Description), nullStr(wiki), nullStr(ol), nullStr(gr), w.License,
+			`INSERT INTO works(id, title, subtitle, language, first_published, description, added_at, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?,?)`,
+			w.ID, w.Title, nullStr(w.Subtitle), w.Language, nullStr(w.FirstPublished), nullStr(w.Description), addedAt(w, added), nullStr(wiki), nullStr(ol), nullStr(gr), w.License,
 		); err != nil {
 			return err
 		}
@@ -320,6 +324,25 @@ func appendName(names []string, n string) []string {
 		return names
 	}
 	return append(names, n)
+}
+
+// addedAt resolves a work's added_at value: the file-derived date when present,
+// else the newest sources[].imported_at on the work, else NULL. Dates are ISO
+// 8601, so a lexicographic max is also the chronological max.
+func addedAt(w *model.Work, added map[string]string) any {
+	if d := added[w.ID]; d != "" {
+		return d
+	}
+	newest := ""
+	for _, s := range w.Sources {
+		if s.ImportedAt > newest {
+			newest = s.ImportedAt
+		}
+	}
+	if newest != "" {
+		return newest
+	}
+	return nil
 }
 
 func nullStr(s string) any {

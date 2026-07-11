@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro'
+import PersonDetail from '../components/detail/PersonDetail.tsx'
+---
+
+<Base
+  title="Person - AudioSilo Meta"
+  description="A person in the AudioSilo Meta database: the works they wrote and the audiobooks they narrated."
+  hasHero
+>
+  <PersonDetail client:only="react" />
+</Base>

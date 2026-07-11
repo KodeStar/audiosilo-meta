@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history so the added.tsv step below can date every work by the
+          # commit that first added its work.json.
+          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -30,8 +34,21 @@ jobs:
       - name: Validate data (metacheck)
         run: go run ./cmd/metacheck
 
+      - name: Derive first-added dates (added.tsv)
+        # For each work.json, take the author date of the commit that FIRST added
+        # it (diff-filter=A). --reverse + --date-order walk oldest-first, and the
+        # `seen` guard keeps only that first appearance, so a later move/rename
+        # never overwrites the original added date. metabuild reads this via
+        # --added and falls back to sources[].imported_at for anything missing.
+        run: |
+          git log --reverse --diff-filter=A --date-order \
+            --format='COMMIT%x09%aI' --name-only -- 'data/works' \
+          | awk -F'\t' '/^COMMIT\t/{d=$2; next} /work\.json$/{if (!($0 in seen)) {seen[$0]=1; print d "\t" $0}}' \
+          > added.tsv
+          echo "derived $(wc -l < added.tsv) work-added dates"
+
       - name: Build SQLite artifact (metabuild)
-        run: go run ./cmd/metabuild -o meta.sqlite
+        run: go run ./cmd/metabuild -o meta.sqlite --added added.tsv
 
       - name: Compress and checksum
         run: |

@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro'
+import WorkDetail from '../components/detail/WorkDetail.tsx'
+---
+
+<Base
+  title="Work - AudioSilo Meta"
+  description="An audiobook work in the AudioSilo Meta database: its authors, series, and every catalogued recording with narrators, runtimes, identifiers and chapters."
+  hasHero
+>
+  <WorkDetail client:only="react" />
+</Base>

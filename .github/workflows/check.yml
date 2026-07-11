@@ -42,3 +42,37 @@ jobs:
 
       - name: Check canonical formatting (metafmt)
         run: go run ./cmd/metafmt --check
+
+  # Build and typecheck the marketing/search site. This job is intentionally
+  # unconditional (branch protection can require it), but it self-skips cleanly
+  # when site/ is absent, so it stays green before the site lands and gates it
+  # once it does. No `paths:` filter - a required check must always report.
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for site/
+        id: site
+        run: |
+          if [ -f site/package.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "site/ not present yet; skipping."
+          fi
+
+      - name: Set up Node
+        if: steps.site.outputs.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install, build, and typecheck the site
+        if: steps.site.outputs.exists == 'true'
+        working-directory: site
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          yarn run check

@@ -1,0 +1,142 @@
+---
+import Logo from './Logo.astro'
+import Icon from './Icon.astro'
+
+const GITHUB = 'https://github.com/kodestar/audiosilo-meta'
+const DISCORD = 'https://discord.gg/nFFqRbkRn6'
+
+const nav = [
+  { label: 'Contribute', href: '/#contribute', external: false },
+  {
+    label: 'Docs',
+    href: 'https://github.com/kodestar/audiosilo-meta#readme',
+    external: true,
+  },
+  { label: 'audiosilo.app', href: 'https://audiosilo.app', external: true },
+]
+---
+
+<header class="site-header sticky top-0 z-50 border-b border-transparent" data-scrolled="false">
+  <div class="container flex items-center justify-between gap-4 py-3">
+    <!-- Brand -->
+    <a class="flex items-center gap-3" href="/" aria-label="AudioSilo Meta home">
+      <Logo class="w-9 shrink-0" />
+      <span class="flex flex-col leading-none">
+        <span class="text-lg uppercase tracking-wider text-pink-500 leading-none">
+          Audio<span class="text-hi">Silo</span>
+        </span>
+        <span class="mt-1 text-[0.65rem] uppercase tracking-[0.2em] text-dim">Meta</span>
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            class="text-sm font-medium text-body transition-colors hover:text-pink-500"
+            href={item.href}
+            {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        class="text-dim transition-colors hover:text-hi"
+        href={DISCORD}
+        target="_blank"
+        rel="noopener"
+        aria-label="AudioSilo on Discord"
+      >
+        <Icon name="discord" class="h-5 w-5" />
+      </a>
+      <a
+        class="text-dim transition-colors hover:text-hi"
+        href={GITHUB}
+        target="_blank"
+        rel="noopener"
+        aria-label="audiosilo-meta on GitHub"
+      >
+        <Icon name="github" class="h-5 w-5" />
+      </a>
+    </nav>
+
+    <!-- Mobile disclosure menu (no framework) -->
+    <details class="site-menu relative md:hidden">
+      <summary
+        class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md text-body transition-colors hover:text-hi"
+        aria-label="Open menu"
+      >
+        <Icon name="menu" class="menu-open h-6 w-6" />
+        <Icon name="x" class="menu-close hidden h-6 w-6" />
+      </summary>
+      <div
+        class="absolute right-0 top-12 z-50 w-56 rounded-xl border border-edge bg-surface p-2 shadow-2xl shadow-black/40"
+      >
+        {
+          nav.map((item) => (
+            <a
+              class="block rounded-lg px-3 py-2 text-sm font-medium text-body transition-colors hover:bg-raised hover:text-hi"
+              href={item.href}
+              {...(item.external ? { target: '_blank', rel: 'noopener' } : {})}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a
+          class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-body transition-colors hover:bg-raised hover:text-hi"
+          href={DISCORD}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="discord" class="h-4 w-4" />
+          Discord
+        </a>
+        <a
+          class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-body transition-colors hover:bg-raised hover:text-hi"
+          href={GITHUB}
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="github" class="h-4 w-4" />
+          GitHub
+        </a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .site-menu[open] .menu-open {
+    display: none;
+  }
+  .site-menu[open] .menu-close {
+    display: block;
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header')
+  if (header) {
+    const onScroll = () => {
+      header.dataset.scrolled = window.scrollY > 8 ? 'true' : 'false'
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+  }
+
+  const menu = document.querySelector<HTMLDetailsElement>('.site-menu')
+  if (menu) {
+    document.addEventListener('click', (e) => {
+      if (menu.open && !menu.contains(e.target as Node)) menu.open = false
+    })
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') menu.open = false
+    })
+  }
+</script>

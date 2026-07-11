@@ -1,0 +1,98 @@
+---
+import Logo from './Logo.astro'
+
+const columns = [
+  {
+    title: 'Data',
+    links: [
+      { label: 'GitHub repository', href: 'https://github.com/kodestar/audiosilo-meta', external: true },
+      {
+        label: 'SQLite releases',
+        href: 'https://github.com/kodestar/audiosilo-meta/releases',
+        external: true,
+      },
+      {
+        label: 'Licensing',
+        href: 'https://github.com/kodestar/audiosilo-meta/blob/main/LICENSING.md',
+        external: true,
+      },
+    ],
+  },
+  {
+    title: 'Community',
+    links: [
+      { label: 'Discord', href: 'https://discord.gg/nFFqRbkRn6', external: true },
+      {
+        label: 'Discussions',
+        href: 'https://github.com/kodestar/audiosilo-meta/discussions',
+        external: true,
+      },
+      {
+        label: 'Contribute',
+        href: '/#contribute',
+        external: false,
+      },
+    ],
+  },
+  {
+    title: 'AudioSilo',
+    links: [
+      { label: 'audiosilo.app', href: 'https://audiosilo.app', external: true },
+      { label: 'Documentation', href: 'https://docs.audiosilo.app', external: true },
+    ],
+  },
+]
+---
+
+<footer class="mt-24 border-t border-edge bg-surface text-sm">
+  <div class="container py-12">
+    <div class="flex flex-col gap-10 md:flex-row md:justify-between">
+      <!-- Brand -->
+      <div class="max-w-xs">
+        <a class="flex items-center gap-3" href="/" aria-label="AudioSilo Meta home">
+          <Logo class="w-9 shrink-0" />
+          <span class="text-lg uppercase tracking-wider text-pink-500 leading-none">
+            Audio<span class="text-hi">Silo</span>
+            <span class="ml-1 align-middle text-[0.6rem] tracking-[0.2em] text-dim">META</span>
+          </span>
+        </a>
+        <p class="mt-4 text-dim">The open audiobook metadata database.</p>
+      </div>
+
+      <!-- Link columns -->
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        {
+          columns.map((col) => (
+            <div>
+              <h2 class="mb-3 text-xs font-semibold uppercase tracking-wider text-dim">
+                {col.title}
+              </h2>
+              <ul class="space-y-2">
+                {col.links.map((link) => (
+                  <li>
+                    <a
+                      class="text-body transition-colors hover:text-pink-500"
+                      href={link.href}
+                      {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="mt-10 flex flex-col gap-2 border-t border-edge pt-6 text-dim sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        Data dedicated to the public domain (CC0-1.0) &middot; code AGPL-3.0.
+      </p>
+      <p>&copy; 2026 KodeStar</p>
+    </div>
+  </div>
+</footer>

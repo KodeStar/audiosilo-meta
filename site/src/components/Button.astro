@@ -1,0 +1,24 @@
+---
+// href-based button. `primary` = pink CTA (hover brighten + lift); `secondary`
+// = hairline-bordered (hover pink border + lift). Slot for label/icon.
+interface Props {
+  href: string
+  variant?: 'primary' | 'secondary'
+  external?: boolean
+  class?: string
+}
+const { href, variant = 'primary', external = false, class: className = '' } = Astro.props
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
+const variants = {
+  primary:
+    'bg-pink-600 text-white shadow-lg shadow-pink-600/20 hover:-translate-y-0.5 hover:bg-pink-500 hover:shadow-pink-500/30',
+  secondary: 'border border-edge text-hi hover:-translate-y-0.5 hover:border-pink-500',
+}
+const extra = external ? { target: '_blank', rel: 'noopener' } : {}
+---
+
+<a href={href} class={`${base} ${variants[variant]} ${className}`} {...extra}>
+  <slot />
+</a>

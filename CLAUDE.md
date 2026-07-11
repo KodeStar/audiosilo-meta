@@ -9,10 +9,11 @@ this project) before working here.
 ## What this is
 
 An **open, community-editable audiobook metadata database** - the data behind
-meta.audiosilo.app (planned). The GitHub repository IS the database: one JSON
-file per entity, contributed via pull requests and issue forms, validated by Go
-tooling in CI, and compiled into a SQLite artifact published as a GitHub
-Release. A Go API server (Phase 1) consumes that artifact; the AudioSilo player
+meta.audiosilo.app (deployment pending). The GitHub repository IS the database:
+one JSON file per entity, contributed via pull requests and issue forms,
+validated by Go tooling in CI, and compiled into a SQLite artifact published as
+a GitHub Release. The Go API server (`metaserve`) serves that artifact plus the
+static site in `site/` (Astro, the audiosilo.app design system); the AudioSilo player
 integration (Phase 1.5) is the priority consumer and ships **before** any
 Audiobookshelf-provider facade (ABS is a direct competitor; this should be a
 defining AudioSilo feature).
@@ -41,6 +42,7 @@ go build ./... && go vet ./... && go test -race ./... && golangci-lint run
 go run ./cmd/metacheck            # validate the data tree
 go run ./cmd/metafmt --check      # canonical formatting (--write to fix)
 go run ./cmd/metabuild -o meta.sqlite   # build the release artifact
+go run ./cmd/metaserve --db meta.sqlite --addr :8080   # serve the read-only API
 ```
 
 **Before a change is done, all of the above must pass.** CI
@@ -79,16 +81,33 @@ wholesale.
 
 ```
 cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
+cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible)
 internal/model      entity structs, slug/shard rules, location parsing
 internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
 internal/check      schema validation + integrity/uniqueness/chapter/series rules
 internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN-dedup, canonical writes
-internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes)
+internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
+internal/serve      the API server: snapshot loader, JSON handlers, FTS search, GitHub-release poller/hot-swap
 schema/             JSON Schemas (the contract), embedded via schema.go
 data/               the database (works/recordings/people/series)
-.github/            issue forms (machine-parseable ids), check + release workflows
+Dockerfile          image: site build + metaserve + baked data
+.github/            issue forms (machine-parseable ids), check + release + image workflows
 ```
+
+**The API server (`internal/serve`)** opens the SQLite artifact read-only and
+serves JSON under `/api/v1` (stats, `search?q=`, `works/latest`, `works/{id}`,
+recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
+`/healthz`; it can also serve a static site at `/`. It never writes: all data is
+public so there is no auth, and responses carry permissive CORS. The current
+artifact lives behind an atomic pointer (`snapshot`); with `--poll` a background
+loop fetches the latest GitHub release conditionally (`If-None-Match`/304),
+verifies the `meta.sqlite.gz` against its `.sha256`, gunzips it, and hot-swaps
+the pointer - in-flight requests finish on the old handle (closed after a grace
+delay), and a poll failure only logs and retries, never crashes the process.
+FTS queries are built defensively (`ftsQuery`: every token quoted + escaped,
+final token prefixed with `*`) so no user input can break the MATCH. Business
+logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher
@@ -138,8 +157,11 @@ the schema notes below.
   (consumes the release artifact, FTS search, `/lookup?asin=|isbn=`), Docker,
   meta.audiosilo.app site with search + import (OpenAudible/Libation) +
   ASIN lookup assist, issue-form-to-PR automation. The **OpenAudible importer**
-  (`cmd/metaimport openaudible`, `internal/importer`) has landed; Libation and
-  per-title ASIN lookup are the remaining import paths.
+  (`cmd/metaimport openaudible`, `internal/importer`) has landed. The **API
+  server** (`cmd/metaserve`, `internal/serve`) + **Docker image** (`Dockerfile`,
+  `image.yml`) have landed, as has works `added_at` (metabuild `--added`, git
+  history-derived in `release.yml`). Remaining: the meta.audiosilo.app site,
+  crosswalk seeding, Libation, and per-title ASIN lookup.
 - **Phase 1.5**: AudioSilo server/player integration (before any ABS facade).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. Also:

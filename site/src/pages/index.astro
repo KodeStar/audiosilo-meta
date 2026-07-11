@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro'
+import Hero from '../components/home/Hero.astro'
+import Contribute from '../components/home/Contribute.astro'
+import StatsBand from '../components/home/StatsBand.tsx'
+import LatestAdditions from '../components/home/LatestAdditions.tsx'
+import Waveform from '../components/Waveform.astro'
+import Icon from '../components/Icon.astro'
+---
+
+<Base hasHero>
+  <Hero />
+
+  <!-- Stats band -->
+  <section class="py-8">
+    <div class="container">
+      <div class="reveal">
+        <StatsBand client:visible />
+      </div>
+      <Waveform bars={48} class="mx-auto mt-10 max-w-xl opacity-60" />
+    </div>
+  </section>
+
+  <!-- Latest additions -->
+  <section class="py-14">
+    <div class="container">
+      <div class="reveal mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span
+            class="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500"
+          >
+            Fresh from the database
+          </span>
+          <h2 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">
+            Latest additions
+          </h2>
+        </div>
+        <p class="max-w-sm text-sm text-dim">
+          Newly catalogued works, added by the community.
+        </p>
+      </div>
+      <div class="reveal">
+        <LatestAdditions client:visible limit={12} />
+      </div>
+    </div>
+  </section>
+
+  <!-- What it is (short explainer band) -->
+  <section class="py-8">
+    <div class="container">
+      <div class="reveal grid gap-6 md:grid-cols-3">
+        {
+          [
+            {
+              icon: 'microphone',
+              title: 'Narrators are first class',
+              body: 'Every recording lists its narrators - the field most databases simply do not have. One work can hold many recordings, each with its own cast and ASINs.',
+            },
+            {
+              icon: 'list',
+              title: 'Recordings and chapters',
+              body: 'Runtimes, release dates, publishers, region-scoped ASINs, ISBNs and full chapter lists - the specifics that identify an exact production.',
+            },
+            {
+              icon: 'book',
+              title: 'Free and open',
+              body: 'The factual core is dedicated to the public domain (CC0). Use it in any app, for any purpose, with no key and no rate card.',
+            },
+          ].map((f) => (
+            <div class="rounded-2xl border border-edge bg-surface p-6">
+              <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-edge bg-raised text-pink-400">
+                <Icon name={f.icon as any} class="h-5 w-5" />
+              </span>
+              <h3 class="mt-5 text-lg font-semibold text-hi">{f.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-body">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Contribute />
+</Base>
