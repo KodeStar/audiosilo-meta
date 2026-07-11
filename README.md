@@ -134,4 +134,7 @@ including the takedown / rightsholder opt-out channel, in
   recap data), and deeper player integration gated by the listener's progress
   position.
 
+Community: questions, contribution help, and coordination happen on the
+[AudioSilo Discord](https://discord.gg/nFFqRbkRn6) and in GitHub Discussions.
+
 Design basis: the workspace feasibility study (`../META-FEASIBILITY.md`).

@@ -172,5 +172,6 @@ You need Go 1.25 or newer. No cgo, no external services - the tooling is pure Go
 Prose in this repo (docs, descriptions, commit messages) uses hyphens, never em
 dashes, and plain British-neutral English.
 
-Questions? Open an issue or a discussion. Governance and merge policy are in
-[GOVERNANCE.md](GOVERNANCE.md).
+Questions? Open an issue or a discussion, or join the
+[AudioSilo Discord](https://discord.gg/nFFqRbkRn6). Governance and merge policy
+are in [GOVERNANCE.md](GOVERNANCE.md).
