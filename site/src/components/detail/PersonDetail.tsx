@@ -11,7 +11,7 @@ import {
 
 function WorkGrid({ works }: { works: WorkCardData[] }) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
       {works.map((w) => (
         <WorkCard key={w.id} work={w} />
       ))}

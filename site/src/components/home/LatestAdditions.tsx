@@ -26,10 +26,10 @@ export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
 
   if (!works) {
     return (
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {Array.from({ length: limit }).map((_, i) => (
           <div key={i} className="flex flex-col gap-2">
-            <div className="aspect-[2/3] w-full animate-pulse rounded-lg border border-edge bg-surface" />
+            <div className="aspect-square w-full animate-pulse rounded-lg border border-edge bg-surface" />
             <div className="h-3 w-3/4 animate-pulse rounded bg-surface" />
           </div>
         ))}
@@ -46,7 +46,7 @@ export default function LatestAdditions({ limit = 12 }: { limit?: number }) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
       {works.map((w) => (
         <WorkCard key={w.id} work={w} />
       ))}

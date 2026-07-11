@@ -14,10 +14,16 @@
       "title": "Project Hail Mary",
       "subtitle": "A Novel",
       "authors": [{ "id": "andy-weir", "name": "Andy Weir" }],
-      "language": "English",
+      "language": "en",
       "first_published": "2021-05-04",
       "description": "A lone astronaut must save the earth from disaster in this science-driven thriller from the author of The Martian.",
       "series": [],
+      "isbn": ["9780593135204", "9780593135211"],
+      "xrefs": {
+        "wikidata": "Q104864899",
+        "openlibrary": "OL20905225W",
+        "goodreads": "54493401"
+      },
       "added_at": "2026-07-10T12:00:00Z",
       "recordings": [
         {
@@ -89,8 +95,10 @@
       "id": "way-of-kings",
       "title": "The Way of Kings",
       "authors": [{ "id": "brandon-sanderson", "name": "Brandon Sanderson" }],
-      "language": "English",
+      "language": "en",
       "first_published": "2010-08-31",
+      "isbn": ["9780765326355"],
+      "xrefs": { "openlibrary": "OL15358691W" },
       "description": "The first volume of The Stormlight Archive, an epic fantasy of storms, honour and duty.",
       "series": [
         { "id": "stormlight-archive", "name": "The Stormlight Archive", "position": "1" }

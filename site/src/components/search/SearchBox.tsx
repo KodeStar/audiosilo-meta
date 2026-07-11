@@ -400,7 +400,7 @@ function renderOption(opt: Option, q: string) {
   if (opt.group === 'exact' || opt.group === 'work') {
     return (
       <>
-        <div className="h-12 w-8 shrink-0 overflow-hidden rounded border border-edge bg-raised">
+        <div className="h-10 w-10 shrink-0 overflow-hidden rounded border border-edge bg-raised">
           {opt.coverUrl ? (
             // eslint-disable-next-line jsx-a11y/alt-text
             <img

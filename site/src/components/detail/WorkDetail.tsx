@@ -1,13 +1,17 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   getWork,
+  getSeries,
   getChapters,
   formatRuntime,
   formatYear,
   formatOffset,
+  formatLanguage,
+  href,
   type Work,
   type Recording,
   type Chapter,
+  type Series,
 } from '../../lib/api'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
@@ -214,11 +218,163 @@ function RecordingCard({ workId, recording }: { workId: string; recording: Recor
   )
 }
 
+/** Sidebar metadata: renders only what exists (facts-only, no placeholders). */
+function MetadataBlock({ work }: { work: Work }) {
+  const language = formatLanguage(work.language)
+  const year = formatYear(work.first_published)
+  const xrefLinks = [
+    work.xrefs?.wikidata && {
+      label: 'Wikidata',
+      href: `https://www.wikidata.org/wiki/${encodeURIComponent(work.xrefs.wikidata)}`,
+    },
+    work.xrefs?.openlibrary && {
+      label: 'Open Library',
+      href: `https://openlibrary.org/works/${encodeURIComponent(work.xrefs.openlibrary)}`,
+    },
+    work.xrefs?.goodreads && {
+      label: 'Goodreads',
+      href: `https://www.goodreads.com/book/show/${encodeURIComponent(work.xrefs.goodreads)}`,
+    },
+  ].filter((x): x is { label: string; href: string } => Boolean(x))
+
+  const rows: { label: string; content: React.ReactNode }[] = []
+  if (language) rows.push({ label: 'Language', content: language })
+  if (work.first_published)
+    rows.push({ label: 'First published', content: year ?? work.first_published })
+  rows.push({ label: 'Recordings', content: String(work.recordings?.length ?? 0) })
+  if (work.isbn && work.isbn.length > 0)
+    rows.push({
+      label: 'Print ISBN',
+      content: (
+        <span className="flex flex-wrap gap-1.5">
+          {work.isbn.map((isbn) => (
+            <CopyChip key={isbn} label="" value={isbn} />
+          ))}
+        </span>
+      ),
+    })
+  if (xrefLinks.length > 0)
+    rows.push({
+      label: 'Elsewhere',
+      content: (
+        <span className="flex flex-wrap gap-x-3 gap-y-1">
+          {xrefLinks.map((x) => (
+            <a
+              key={x.label}
+              href={x.href}
+              target="_blank"
+              rel="noopener"
+              className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+            >
+              {x.label}
+            </a>
+          ))}
+        </span>
+      ),
+    })
+
+  return (
+    <dl className="mt-6 space-y-3 rounded-2xl border border-edge bg-surface p-4 text-sm">
+      {rows.map((row) => (
+        <div key={row.label} className="flex flex-col gap-1">
+          <dt className="text-xs uppercase tracking-wider text-dim">{row.label}</dt>
+          <dd className="text-body">{row.content}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+/** "More in this series": the other member works of the work's (first) series,
+    as a horizontal rail of square cover cards. Renders nothing while loading,
+    on error, or when the series has no other members. */
+function SeriesRail({ work }: { work: Work }) {
+  const first = work.series?.[0]
+  const [series, setSeries] = useState<Series | null>(null)
+
+  useEffect(() => {
+    if (!first) return
+    const ctrl = new AbortController()
+    getSeries(first.id, ctrl.signal)
+      .then(setSeries)
+      .catch(() => {
+        /* quiet: the rail is a bonus, never an error state */
+      })
+    return () => ctrl.abort()
+  }, [first?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!first || !series) return null
+  const others = (series.works ?? []).filter((entry) => entry.work.id !== work.id)
+  if (others.length === 0) return null
+
+  return (
+    <section className="mt-14">
+      <h2 className="text-xl font-semibold text-hi">
+        More in{' '}
+        <a
+          href={href.series(series.id)}
+          className="text-pink-400 transition-colors hover:text-pink-300"
+        >
+          {series.name}
+        </a>
+      </h2>
+      <div className="mt-5 flex gap-4 overflow-x-auto pb-2">
+        {others.map((entry) => (
+          <a
+            key={`${entry.position}-${entry.work.id}`}
+            href={href.work(entry.work.id)}
+            className="group w-32 shrink-0 sm:w-36"
+          >
+            <CoverImage
+              src={entry.work.cover_url}
+              alt={`Cover of ${entry.work.title}`}
+              title={entry.work.title}
+              className="transition-colors group-hover:border-pink-500/40"
+            />
+            <p className="mt-2 line-clamp-2 text-xs leading-snug text-body group-hover:text-pink-300">
+              <span className="font-semibold text-pink-400">#{entry.position}</span>{' '}
+              {entry.work.title}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/** The community hook: every work page links straight to its source file. */
+function ImproveRecord({ id }: { id: string }) {
+  const editUrl = `https://github.com/KodeStar/audiosilo-meta/blob/main/data/works/${encodeURIComponent(
+    id.slice(0, 2)
+  )}/${encodeURIComponent(id)}/work.json`
+  return (
+    <p className="mt-16 border-t border-edge pt-6 text-sm text-dim">
+      Spotted an error?{' '}
+      <a
+        href={editUrl}
+        target="_blank"
+        rel="noopener"
+        className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+      >
+        Edit this work on GitHub
+      </a>{' '}
+      or{' '}
+      <a
+        href="https://github.com/KodeStar/audiosilo-meta/issues/new/choose"
+        target="_blank"
+        rel="noopener"
+        className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+      >
+        open an issue
+      </a>
+      .
+    </p>
+  )
+}
+
 function Loaded({ work }: { work: Work }) {
   usePageTitle(work.title)
-  const cover =
-    work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
-  const year = formatYear(work.first_published)
+  const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
 
   return (
     <div className="container py-10">
@@ -226,14 +382,17 @@ function Loaded({ work }: { work: Work }) {
         <BackLink />
       </div>
 
-      <div className="grid gap-8 md:grid-cols-[16rem_1fr] md:gap-10">
-        {/* Cover */}
-        <div className="mx-auto w-40 sm:w-52 md:mx-0 md:w-full md:max-w-64">
-          <CoverImage src={cover} alt={`Cover of ${work.title}`} title={work.title} eager />
-        </div>
+      <div className="grid gap-8 lg:grid-cols-[18rem_1fr] lg:gap-12">
+        {/* Sidebar: cover + metadata */}
+        <aside>
+          <div className="mx-auto w-48 sm:w-56 lg:mx-0 lg:w-full">
+            <CoverImage src={cover} alt={`Cover of ${work.title}`} title={work.title} eager />
+          </div>
+          <MetadataBlock work={work} />
+        </aside>
 
-        {/* Head */}
-        <div>
+        {/* Main column: head + description + recordings */}
+        <div className="min-w-0">
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-hi sm:text-4xl">
             {work.title}
           </h1>
@@ -253,7 +412,7 @@ function Loaded({ work }: { work: Work }) {
               {work.series.map((s) => (
                 <a
                   key={s.id}
-                  href={`/series?id=${encodeURIComponent(s.id)}`}
+                  href={href.series(s.id)}
                   className="inline-flex items-center gap-1.5 rounded-full border border-edge bg-surface px-3 py-1 text-sm text-body transition-colors hover:border-pink-500/50 hover:text-pink-300"
                 >
                   <span>{s.name}</span>
@@ -265,45 +424,37 @@ function Loaded({ work }: { work: Work }) {
             </div>
           ) : null}
 
-          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-            {work.language ? <MetaItem label="Language" value={work.language} /> : null}
-            {work.first_published ? (
-              <MetaItem label="First published" value={year ?? work.first_published} />
-            ) : null}
-            <MetaItem
-              label="Recordings"
-              value={String(work.recordings?.length ?? 0)}
-            />
-          </div>
-
           {work.description ? (
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-body">
               {work.description}
             </p>
           ) : null}
+
+          {/* Recordings live in the main column so desktop width is used well */}
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold text-hi">
+              Recordings
+              <span className="ml-2 text-sm font-normal text-dim">
+                {work.recordings?.length ?? 0}
+              </span>
+            </h2>
+            {work.recordings && work.recordings.length > 0 ? (
+              <div className="mt-5 grid gap-5 xl:grid-cols-2">
+                {work.recordings.map((r) => (
+                  <RecordingCard key={r.id} workId={work.id} recording={r} />
+                ))}
+              </div>
+            ) : (
+              <p className="mt-5 rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
+                No recordings have been catalogued for this work yet.
+              </p>
+            )}
+          </section>
         </div>
       </div>
 
-      {/* Recordings */}
-      <section className="mt-12">
-        <h2 className="text-xl font-semibold text-hi">
-          Recordings
-          <span className="ml-2 text-sm font-normal text-dim">
-            {work.recordings?.length ?? 0}
-          </span>
-        </h2>
-        {work.recordings && work.recordings.length > 0 ? (
-          <div className="mt-5 grid gap-5 lg:grid-cols-2">
-            {work.recordings.map((r) => (
-              <RecordingCard key={r.id} workId={work.id} recording={r} />
-            ))}
-          </div>
-        ) : (
-          <p className="mt-5 rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
-            No recordings have been catalogued for this work yet.
-          </p>
-        )}
-      </section>
+      <SeriesRail work={work} />
+      <ImproveRecord id={work.id} />
     </div>
   )
 }

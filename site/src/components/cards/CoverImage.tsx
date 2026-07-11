@@ -11,8 +11,9 @@ interface Props {
 }
 
 /** A book cover with a graceful fallback: a navy tile with a book glyph and the
-    title, shown when there is no cover URL or the image fails to load. Every
-    cover keeps a 2:3 aspect box so grids never reflow as images arrive. */
+    title, shown when there is no cover URL or the image fails to load. Covers
+    are SQUARE - audiobook art is almost always 1:1 (Audible's is) - and the
+    fixed aspect box means grids never reflow as images arrive. */
 export default function CoverImage({
   src,
   alt,
@@ -25,7 +26,7 @@ export default function CoverImage({
 
   return (
     <div
-      className={`relative aspect-[2/3] w-full overflow-hidden rounded-lg border border-edge bg-raised ${className}`}
+      className={`relative aspect-square w-full overflow-hidden rounded-lg border border-edge bg-raised ${className}`}
     >
       {showFallback ? (
         <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-3 text-center">

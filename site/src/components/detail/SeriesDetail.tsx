@@ -43,12 +43,10 @@ function Loaded({ series }: { series: Series }) {
                 <span className="w-12 shrink-0 text-center text-2xl font-black tabular-nums text-edge transition-colors group-hover:text-pink-500 sm:text-3xl">
                   {entry.position}
                 </span>
-                <div className="h-20 w-14 shrink-0 sm:h-24 sm:w-16">
-                  <CoverImage
-                    src={entry.work.cover_url}
-                    alt={`Cover of ${entry.work.title}`}
-                    title={entry.work.title}
-                  />
+                {/* Glyph-only fallback: the title sits right beside the thumb,
+                    and at this size the in-tile title text does not fit. */}
+                <div className="w-16 shrink-0 sm:w-20">
+                  <CoverImage src={entry.work.cover_url} alt={`Cover of ${entry.work.title}`} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h2 className="truncate text-base font-medium text-hi group-hover:text-pink-300">

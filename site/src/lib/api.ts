@@ -80,6 +80,14 @@ export interface Recording {
   chapter_count?: number
 }
 
+/** Cross-references to other open databases (the data model's work xrefs).
+    All optional - rendered only when present. */
+export interface WorkXrefs {
+  wikidata?: string
+  openlibrary?: string
+  goodreads?: string
+}
+
 export interface Work {
   id: string
   title: string
@@ -90,6 +98,9 @@ export interface Work {
   description?: string
   series?: SeriesRef[]
   recordings: Recording[]
+  /** Print ISBNs attached to the work itself (not a recording). */
+  isbn?: string[]
+  xrefs?: WorkXrefs
 }
 
 export interface Chapter {
@@ -239,6 +250,19 @@ export function formatYear(date?: string | null): string | null {
   if (!date) return null
   const m = /^(\d{4})/.exec(date)
   return m ? m[1] : date
+}
+
+/** A readable language name from a BCP-47 code ("en" -> "English") via
+    Intl.DisplayNames, falling back to the raw value when it is not a valid
+    code (older data may already carry a display name). */
+export function formatLanguage(code?: string | null): string | null {
+  if (!code) return null
+  try {
+    const name = new Intl.DisplayNames(['en'], { type: 'language' }).of(code)
+    return name || code
+  } catch {
+    return code
+  }
 }
 
 export const href = {

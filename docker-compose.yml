@@ -9,12 +9,21 @@ services:
   meta:
     image: ghcr.io/kodestar/audiosilo-meta:latest
     restart: unless-stopped
-    # Loopback-only on purpose - the reverse proxy is the public face.
+    # Loopback-only on purpose - the reverse proxy is the public face. The
+    # container side is always 8080; change only the HOST side if that port is
+    # taken (e.g. "127.0.0.1:8081:8080").
     ports:
       - "127.0.0.1:8080:8080"
+    # The image runs as a fixed non-root user and only writes under /data.
+    # There is no PUID/PGID mechanism (nothing to su-exec); with a bind mount,
+    # set `user:` to the host owner's uid:gid instead:
+    # user: "1001:1001"
     volumes:
       # Downloaded data releases persist here, so a restarted container serves
-      # the newest data immediately instead of re-fetching.
+      # the newest data immediately instead of re-fetching. The contents are a
+      # disposable cache (re-downloaded if lost) - a named volume or a bind
+      # mount (e.g. /home/you/containers/audiosilo-meta/data:/data, pre-chowned
+      # to the `user:` above) both work.
       - meta-cache:/data
     # The image entrypoint already runs:
     #   metaserve --db /app/meta.sqlite --site /app/site --poll --cache /data/cache
