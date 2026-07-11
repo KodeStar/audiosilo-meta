@@ -1,0 +1,56 @@
+name: release
+
+# Build the SQLite data artifact and publish it as a dated GitHub Release.
+# Runs after data or schema changes land on main (and on manual dispatch).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "schema/**"
+  workflow_dispatch:
+
+# This workflow publishes a release, so it needs write access to contents.
+# Scoped here only - the check workflow stays read-only.
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Validate data (metacheck)
+        run: go run ./cmd/metacheck
+
+      - name: Build SQLite artifact (metabuild)
+        run: go run ./cmd/metabuild -o meta.sqlite
+
+      - name: Compress and checksum
+        run: |
+          gzip -kf meta.sqlite
+          sha256sum meta.sqlite.gz > meta.sqlite.gz.sha256
+
+      - name: Compute release tag
+        id: tag
+        run: |
+          date_part="$(date -u +'%Y.%m.%d')"
+          short_sha="$(git rev-parse --short HEAD)"
+          echo "tag=data-v${date_part}-${short_sha}" >> "$GITHUB_OUTPUT"
+
+      - name: Create release and upload artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.tag.outputs.tag }}" \
+            --title "${{ steps.tag.outputs.tag }}" \
+            --notes "Automated data release built from ${{ github.sha }}." \
+            meta.sqlite.gz \
+            meta.sqlite.gz.sha256

@@ -1,0 +1,120 @@
+name: Add a recording (narration)
+description: Add another narration of a work that is already in the database.
+title: "[recording] "
+labels: ["add-recording", "data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Add a **recording** - a specific narration of a work that already exists
+        here (for example, the Jim Dale narration of a book we already have with
+        the Stephen Fry narration). If the work itself is not in the database yet,
+        use the **Add a work** form instead.
+
+        Provide **factual data only**. Covers are URLs, never files. See
+        [CONTRIBUTING.md](https://github.com/kodestar/audiosilo-meta/blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: work_ref
+    attributes:
+      label: The work
+      description: Link to the existing work, or its slug / path in data/works/, so we know what this narrates.
+      placeholder: data/works/ha/harry-potter-and-the-philosophers-stone-j-k-rowling/work.json
+    validations:
+      required: true
+
+  - type: input
+    id: rec_narrators
+    attributes:
+      label: Narrator(s)
+      description: One per line or comma-separated.
+      placeholder: Jim Dale
+    validations:
+      required: true
+
+  - type: dropdown
+    id: rec_abridged
+    attributes:
+      label: Abridged?
+      options:
+        - "Unabridged"
+        - "Abridged"
+    validations:
+      required: true
+
+  - type: input
+    id: rec_runtime_min
+    attributes:
+      label: Runtime (minutes)
+      description: Total runtime of this recording, in whole minutes.
+      placeholder: "494"
+    validations:
+      required: false
+
+  - type: input
+    id: rec_release_date
+    attributes:
+      label: Release date
+      description: This recording's release date (YYYY-MM-DD if known).
+    validations:
+      required: false
+
+  - type: input
+    id: rec_publisher
+    attributes:
+      label: Publisher
+      description: The audiobook publisher of this recording.
+    validations:
+      required: false
+
+  - type: textarea
+    id: rec_asins
+    attributes:
+      label: ASIN(s) with region
+      description: 'One per line as "region: ASIN". ASINs are region-scoped, so include the region.'
+      placeholder: |
+        US: B017V4IMVG
+        GB: B017WPFBHU
+    validations:
+      required: false
+
+  - type: input
+    id: rec_isbns
+    attributes:
+      label: Audiobook ISBN(s)
+      description: If this recording has its own ISBN(s). Optional.
+    validations:
+      required: false
+
+  - type: input
+    id: rec_cover_url
+    attributes:
+      label: Cover image URL
+      description: A URL only - we never store image files.
+      placeholder: https://m.media-amazon.com/images/I/....jpg
+    validations:
+      required: false
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Where did this information come from? Required for provenance.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: factual
+    attributes:
+      label: Factual data
+      options:
+        - label: This submission is factual data (no publisher blurb or copyrighted description).
+          required: true
+
+  - type: checkboxes
+    id: cc0
+    attributes:
+      label: Public domain dedication
+      options:
+        - label: I dedicate this contribution to the public domain under CC0-1.0, and I have the right to do so.
+          required: true

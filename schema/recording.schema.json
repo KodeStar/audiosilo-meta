@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/recording.schema.json",
+  "title": "recording",
+  "description": "A specific narration/production of a work: narrators, abridged flag, runtime, chapters, publisher, and region-scoped ASINs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "work", "narrators", "abridged", "language", "license", "sources"],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "work": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "narrators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "common.schema.json#/$defs/slug"
+      }
+    },
+    "abridged": {
+      "type": "boolean"
+    },
+    "language": {
+      "$ref": "common.schema.json#/$defs/language"
+    },
+    "runtime_min": {
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "release_date": {
+      "$ref": "common.schema.json#/$defs/date_flex"
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asin": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region", "asin"],
+        "properties": {
+          "region": {
+            "type": "string",
+            "enum": ["us", "uk", "ca", "au", "de", "fr", "es", "it", "jp", "in", "br"]
+          },
+          "asin": {
+            "$ref": "common.schema.json#/$defs/asin"
+          }
+        }
+      }
+    },
+    "isbn": {
+      "$ref": "common.schema.json#/$defs/isbn_list"
+    },
+    "cover_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "start_ms", "length_ms"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "length_ms": {
+            "type": "integer",
+            "exclusiveMinimum": 0
+          }
+        }
+      }
+    },
+    "license": {
+      "$ref": "common.schema.json#/$defs/license"
+    },
+    "sources": {
+      "$ref": "common.schema.json#/$defs/sources"
+    }
+  }
+}

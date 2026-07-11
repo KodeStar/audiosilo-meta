@@ -1,0 +1,44 @@
+name: check
+
+# Validate every pull request and every push to main.
+#
+# SECURITY: this uses the plain `pull_request` trigger, NOT
+# `pull_request_target`, so fork pull requests run with a read-only token and no
+# access to secrets. Do not switch to `pull_request_target` (the "pwn request"
+# supply-chain pattern) - any privileged follow-up must live in a separate
+# workflow that consumes only artifacts.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: read the code, nothing more. No secrets are needed to validate.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        run: go build ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test ./...
+
+      - name: Validate data (metacheck)
+        run: go run ./cmd/metacheck
+
+      - name: Check canonical formatting (metafmt)
+        run: go run ./cmd/metafmt --check

@@ -1,0 +1,19 @@
+# Build artifacts
+/bin/
+meta.sqlite
+meta.sqlite.gz
+meta.sqlite.gz.sha256
+
+# Go
+*.test
+*.out
+coverage.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor state
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/person.schema.json",
+  "title": "person",
+  "description": "An author and/or narrator. Authors and narrators are the same entity type; a person can be both.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "license", "sources"],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sort_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "xref": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wikidata": {
+          "type": "string",
+          "pattern": "^Q\\d+$"
+        },
+        "openlibrary": {
+          "type": "string",
+          "pattern": "^OL\\d+A$"
+        },
+        "audible": {
+          "$ref": "common.schema.json#/$defs/asin"
+        }
+      }
+    },
+    "license": {
+      "$ref": "common.schema.json#/$defs/license"
+    },
+    "sources": {
+      "$ref": "common.schema.json#/$defs/sources"
+    }
+  }
+}

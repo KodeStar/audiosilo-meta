@@ -1,0 +1,24 @@
+# CODEOWNERS - who must review changes to which paths.
+#
+# GitHub requires a listed owner's approval before a pull request touching a
+# matching path can merge (when branch protection requires review). This is how
+# the governance model is enforced mechanically: schema, tooling, and CI changes
+# always need maintainer review, and can never auto-merge.
+#
+# Later, per-directory trust tiers for community contributors will be expressed
+# by adding owners under /data/ - that is where the Trusted Contributor ladder
+# (see GOVERNANCE.md) will apply. Today, everything is maintainer-owned.
+
+# Default owner for everything.
+*                   @KodeStar
+
+# Maintainer-owned, always: schemas, tooling, internal packages, and CI/config.
+# These define the contract and the pipeline - never auto-merge.
+/schema/            @KodeStar
+/cmd/               @KodeStar
+/internal/          @KodeStar
+/.github/           @KodeStar
+
+# /data/ is where community trust tiers will apply (see GOVERNANCE.md). It is
+# covered by the default owner above for now; Trusted Contributors' data-only
+# pull requests auto-merge once required checks pass.

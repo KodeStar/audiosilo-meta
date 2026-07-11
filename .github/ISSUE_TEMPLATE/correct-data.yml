@@ -1,0 +1,63 @@
+name: Correct data
+description: Fix a wrong or missing field on an existing record.
+title: "[correct] "
+labels: ["correction", "data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Spotted a mistake? Tell us the record, the field, and the correct value
+        with a source. Because this is a wiki-style database, corrections are the
+        normal way data improves.
+
+  - type: input
+    id: record
+    attributes:
+      label: Record
+      description: The path, slug, or a link to the record you want to correct.
+      placeholder: data/works/ha/harry-potter-and-the-philosophers-stone-j-k-rowling/recordings/stephen-fry.json
+    validations:
+      required: true
+
+  - type: input
+    id: field
+    attributes:
+      label: Field
+      description: Which field is wrong or missing?
+      placeholder: runtime_min
+    validations:
+      required: true
+
+  - type: input
+    id: current_value
+    attributes:
+      label: Current value
+      description: What does it say now? Write "missing" if the field is absent.
+      placeholder: "498"
+    validations:
+      required: false
+
+  - type: input
+    id: corrected_value
+    attributes:
+      label: Corrected value
+      description: What should it say?
+      placeholder: "499"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / source
+      description: How do you know? Link a store page, an authoritative listing, or your own library export.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: cc0
+    attributes:
+      label: Public domain dedication
+      options:
+        - label: I dedicate this correction to the public domain under CC0-1.0, and I have the right to do so.
+          required: true

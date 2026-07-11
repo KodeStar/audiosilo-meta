@@ -1,0 +1,205 @@
+package build
+
+import (
+	"database/sql"
+	"path/filepath"
+	"testing"
+	"time"
+
+	"github.com/kodestar/audiosilo-meta/internal/model"
+	_ "modernc.org/sqlite"
+)
+
+func fixtureCatalog() *model.Catalog {
+	author := &model.Person{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}
+	n1 := &model.Person{ID: "michael-kramer", Name: "Michael Kramer", License: "CC0-1.0"}
+	n2 := &model.Person{ID: "kate-reading", Name: "Kate Reading", License: "CC0-1.0"}
+	porter := &model.Person{ID: "ray-porter", Name: "Ray Porter", License: "CC0-1.0"}
+
+	phm := &model.Work{
+		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		Recordings: []*model.Recording{{
+			ID: "ray-porter-2021", Work: "project-hail-mary", Abridged: false, Language: "en",
+			RuntimeMin: 970, Publisher: "Audible Studios", License: "CC0-1.0",
+			Narrators: []string{"ray-porter"},
+			ASIN:      []model.ASIN{{Region: "us", ASIN: "B08G9PRS1K"}},
+			Chapters: []model.Chapter{
+				{Title: "Opening Credits", StartMS: 0, LengthMS: 5000},
+				{Title: "Chapter 1", StartMS: 5000, LengthMS: 600000},
+				{Title: "Chapter 2", StartMS: 605000, LengthMS: 600000},
+			},
+		}},
+	}
+	wok := &model.Work{
+		ID: "the-way-of-kings", Title: "The Way of Kings", Language: "en",
+		Authors: []string{"brandon-sanderson"}, License: "CC0-1.0",
+		Recordings: []*model.Recording{{
+			ID: "kramer-reading-2010", Work: "the-way-of-kings", Abridged: false, Language: "en",
+			Narrators: []string{"michael-kramer", "kate-reading"}, License: "CC0-1.0",
+			ASIN: []model.ASIN{{Region: "us", ASIN: "B003ZWFO7E"}},
+			ISBN: []string{"9781427209269"},
+		}},
+	}
+	sanderson := &model.Person{ID: "brandon-sanderson", Name: "Brandon Sanderson", License: "CC0-1.0"}
+
+	series := &model.Series{
+		ID: "the-stormlight-archive", Name: "The Stormlight Archive", License: "CC0-1.0",
+		Authors: []string{"brandon-sanderson"},
+		Works:   []model.SeriesWork{{Work: "the-way-of-kings", Position: "1"}},
+	}
+
+	return &model.Catalog{
+		Works:  []*model.Work{phm, wok},
+		People: []*model.Person{author, n1, n2, porter, sanderson},
+		Series: []*model.Series{series},
+	}
+}
+
+func buildFixture(t *testing.T) *sql.DB {
+	t.Helper()
+	out := filepath.Join(t.TempDir(), "meta.sqlite")
+	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
+		t.Fatal(err)
+	}
+	db, err := sql.Open("sqlite", out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { _ = db.Close() })
+	return db
+}
+
+func TestBuildMeta(t *testing.T) {
+	db := buildFixture(t)
+	want := map[string]string{
+		"schema_version":   "1",
+		"built_at":         "2026-07-11T00:00:00Z",
+		"count_works":      "2",
+		"count_recordings": "2",
+		"count_people":     "5",
+		"count_series":     "1",
+	}
+	for k, w := range want {
+		var got string
+		if err := db.QueryRow(`SELECT value FROM meta WHERE key=?`, k).Scan(&got); err != nil {
+			t.Fatalf("meta[%s]: %v", k, err)
+		}
+		if got != w {
+			t.Errorf("meta[%s] = %q, want %q", k, got, w)
+		}
+	}
+}
+
+func TestBuildASINLookup(t *testing.T) {
+	db := buildFixture(t)
+	var workID, recID, region string
+	err := db.QueryRow(`SELECT work_id, recording_id, region FROM recording_asins WHERE asin=?`, "B08G9PRS1K").
+		Scan(&workID, &recID, &region)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if workID != "project-hail-mary" || recID != "ray-porter-2021" || region != "us" {
+		t.Errorf("ASIN lookup = %s/%s/%s", region, workID, recID)
+	}
+
+	// The (region, asin) uniqueness constraint must exist.
+	if _, err := db.Exec(`INSERT INTO recording_asins(region, asin, work_id, recording_id) VALUES('us','B08G9PRS1K','x','y')`); err == nil {
+		t.Errorf("expected UNIQUE(region, asin) to reject a duplicate")
+	}
+}
+
+func TestBuildISBNLookup(t *testing.T) {
+	db := buildFixture(t)
+	var workID string
+	if err := db.QueryRow(`SELECT work_id FROM recording_isbns WHERE isbn=?`, "9781427209269").Scan(&workID); err != nil {
+		t.Fatal(err)
+	}
+	if workID != "the-way-of-kings" {
+		t.Errorf("ISBN lookup work = %q", workID)
+	}
+}
+
+func TestBuildFTS(t *testing.T) {
+	cases := []struct {
+		query    string
+		wantKind string
+		wantID   string
+	}{
+		{"hail mary", "work", "project-hail-mary"},                 // title
+		{"weir", "work", "project-hail-mary"},                      // author name
+		{"kate reading", "work", "the-way-of-kings"},               // narrator name
+		{"stormlight", "work", "the-way-of-kings"},                 // series name on the work row
+		{"sanderson", "person", "brandon-sanderson"},               // person row
+		{"stormlight archive", "series", "the-stormlight-archive"}, // series row
+	}
+	db := buildFixture(t)
+	for _, c := range cases {
+		rows, err := db.Query(`SELECT kind, id FROM search_fts WHERE search_fts MATCH ?`, c.query)
+		if err != nil {
+			t.Fatalf("MATCH %q: %v", c.query, err)
+		}
+		found := false
+		for rows.Next() {
+			var kind, id string
+			if err := rows.Scan(&kind, &id); err != nil {
+				t.Fatal(err)
+			}
+			if kind == c.wantKind && id == c.wantID {
+				found = true
+			}
+		}
+		_ = rows.Close()
+		if !found {
+			t.Errorf("FTS %q did not return %s/%s", c.query, c.wantKind, c.wantID)
+		}
+	}
+}
+
+func TestBuildChaptersOrdered(t *testing.T) {
+	db := buildFixture(t)
+	rows, err := db.Query(`SELECT idx, title, start_ms FROM chapters WHERE work_id=? AND recording_id=? ORDER BY idx`,
+		"project-hail-mary", "ray-porter-2021")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var idxs []int
+	var lastStart int64 = -1
+	for rows.Next() {
+		var idx int
+		var title string
+		var start int64
+		if err := rows.Scan(&idx, &title, &start); err != nil {
+			t.Fatal(err)
+		}
+		idxs = append(idxs, idx)
+		if start <= lastStart {
+			t.Errorf("chapter %d start %d not increasing (prev %d)", idx, start, lastStart)
+		}
+		lastStart = start
+	}
+	if len(idxs) != 3 || idxs[0] != 0 || idxs[2] != 2 {
+		t.Errorf("chapter idx sequence = %v, want [0 1 2]", idxs)
+	}
+}
+
+func TestBuildNarratorOrder(t *testing.T) {
+	db := buildFixture(t)
+	rows, err := db.Query(`SELECT person_id FROM recording_narrators WHERE recording_id=? ORDER BY ord`, "kramer-reading-2010")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var got []string
+	for rows.Next() {
+		var p string
+		if err := rows.Scan(&p); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, p)
+	}
+	if len(got) != 2 || got[0] != "michael-kramer" || got[1] != "kate-reading" {
+		t.Errorf("narrator order = %v, want [michael-kramer kate-reading]", got)
+	}
+}
