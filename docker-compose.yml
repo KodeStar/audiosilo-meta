@@ -1,0 +1,30 @@
+# Production-shaped deployment: the image bundles the API server (metaserve),
+# a baked copy of the data, and the static site. It serves immediately and
+# polls GitHub Releases for newer data artifacts, so data updates need no
+# redeploy - only code changes do.
+#
+# Put a TLS-terminating reverse proxy (nginx, Caddy, Ploi) in front:
+# proxy https://meta.example.com -> 127.0.0.1:8080. Health check: GET /healthz.
+services:
+  meta:
+    image: ghcr.io/kodestar/audiosilo-meta:latest
+    restart: unless-stopped
+    # Loopback-only on purpose - the reverse proxy is the public face.
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      # Downloaded data releases persist here, so a restarted container serves
+      # the newest data immediately instead of re-fetching.
+      - meta-cache:/data
+    # The image entrypoint already runs:
+    #   metaserve --db /app/meta.sqlite --site /app/site --poll --cache /data/cache
+    # `command:` APPENDS flags to that, e.g. a faster poll cadence:
+    # command: ["--interval", "15m"]
+    #
+    # Optional: raises the GitHub API rate limit for release polling
+    # (unauthenticated is plenty at the default hourly interval).
+    # environment:
+    #   GITHUB_TOKEN: ghp_...
+
+volumes:
+  meta-cache:

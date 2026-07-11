@@ -140,6 +140,12 @@ docker build -t audiosilo-meta .
 docker run -p 8080:8080 -v audiosilo-meta-cache:/data ghcr.io/kodestar/audiosilo-meta:latest
 ```
 
+For a real deployment use the committed [`docker-compose.yml`](docker-compose.yml):
+loopback-only port (a TLS reverse proxy such as nginx/Ploi fronts it), a named
+volume for the release-download cache, and hourly data polling. The image
+entrypoint carries all required flags; `command:` appends extras (for example
+`command: ["--interval", "15m"]`). Health check endpoint: `/healthz`.
+
 The `image` workflow builds and pushes `ghcr.io/kodestar/audiosilo-meta` on a
 `v*` tag.
 
