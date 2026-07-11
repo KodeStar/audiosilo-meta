@@ -162,7 +162,13 @@ the schema notes below.
   `image.yml`) have landed, as has works `added_at` (metabuild `--added`, git
   history-derived in `release.yml`). Remaining: the meta.audiosilo.app site,
   crosswalk seeding, Libation, and per-title ASIN lookup.
-- **Phase 1.5**: AudioSilo server/player integration (before any ABS facade).
+- **Phase 1.5 (integration landed)**: AudioSilo server/player integration, before
+  any ABS facade. audiosilo-server's `GET /libraries/{id}/meta` composes a book's
+  enrichment from this project's `metaserve` (`lookup` -> `works/{id}` -> `series`)
+  behind an admin off-switch and a cache, and the player renders it capability-gated.
+  Consuming `metaserve`'s response shapes now makes them a three-repo contract
+  (audiosilo-meta -> audiosilo-server `internal/meta` -> the player only if the
+  server's outward envelope changes; see workspace CROSS-REPO.md §17).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. Also:
   **contributor role modeling** - translator/introduction/editor credits are
