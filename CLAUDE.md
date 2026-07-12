@@ -47,9 +47,15 @@ go run ./cmd/metaserve --db meta.sqlite --addr :8080   # serve the read-only API
 
 **Before a change is done, all of the above must pass.** CI
 (`.github/workflows/check.yml`) gates build/vet/test/metacheck/metafmt on every
-PR and push to main; `release.yml` builds and publishes `meta.sqlite.gz` (+
-sha256) as a dated release (`data-vYYYY.MM.DD-<shortsha>`) when data or schema
-changes land on main. Go 1.25; golangci-lint v2 at a green baseline.
+PR and push to main; `release.yml` builds and publishes a dated release
+(`data-vYYYY.MM.DD-<shortsha>`) when data or schema changes land on main. Asset
+contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor),
+`meta.sqlite.sha256` (raw-file digest, for verifying a patched artifact), and a
+best-effort `meta.sqlite.patch.from-<PREV_TAG>.zst` (a zstd `--patch-from` binary
+delta against the previous release, `--long=31`; a stock zstd CLI consumer must
+pass `--long=31` at decompression time for these large artifacts). The workflow
+serializes on a `data-release` concurrency group so two quick merges can't both
+base a patch on the same prev tag. Go 1.25; golangci-lint v2 at a green baseline.
 
 ## The data model (the contract)
 
@@ -138,10 +144,17 @@ recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
 `/healthz`; it can also serve a static site at `/`. It never writes: all data is
 public so there is no auth, and responses carry permissive CORS. The current
 artifact lives behind an atomic pointer (`snapshot`); with `--poll` a background
-loop fetches the latest GitHub release conditionally (`If-None-Match`/304),
-verifies the `meta.sqlite.gz` against its `.sha256`, gunzips it, and hot-swaps
-the pointer - in-flight requests finish on the old handle (closed after a grace
-delay), and a poll failure only logs and retries, never crashes the process.
+loop fetches the latest GitHub release conditionally (`If-None-Match`/304). On a
+new release the poller first tries a `--patch-from` binary delta against the
+currently-loaded artifact (`tryPatch` -> `applyPatch`: zstd raw-dict id 0, the
+CLI's patch-from convention; `--long=31` window; the patched file verified
+byte-for-byte against `meta.sqlite.sha256` before it is installed) and falls back
+unconditionally to a full `meta.sqlite.gz` download (`fullRefresh`, verified
+against `meta.sqlite.gz.sha256`) whenever a patch is unavailable or fails - the
+first refresh after boot is always full. Either way it gunzips/reconstructs into
+the cache and hot-swaps the pointer; in-flight requests finish on the old handle
+(closed after a grace delay), a rejected patch never swaps, and a poll failure
+only logs and retries, never crashes the process.
 FTS queries are built defensively (`ftsQuery`: every token quoted + escaped,
 final token prefixed with `*`) so no user input can break the MATCH. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.

@@ -15,6 +15,16 @@ on:
 permissions:
   contents: write
 
+# Serialize data releases: a patch is generated against the previous release, so
+# two quick merges must not both base their delta on the same prev tag (the
+# second would then publish a patch from an artifact that is no longer latest).
+# In-progress runs are never cancelled. GitHub keeps at most one queued run per
+# group, so a superseded queued run gets no dedicated release - harmless, since
+# its changes ride the newer queued run's artifact.
+concurrency:
+  group: data-release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -50,10 +60,50 @@ jobs:
       - name: Build SQLite artifact (metabuild)
         run: go run ./cmd/metabuild -o meta.sqlite --added added.tsv
 
+      - name: Download previous release artifact
+        id: prev
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # `gh release view` with no tag returns the latest release. If there is
+        # one and its meta.sqlite.gz downloads AND gunzips cleanly, export its
+        # tag so the compress step generates a binary delta from prev.sqlite.
+        # The gunzip stays inside the guard: a corrupt previous asset must skip
+        # patch generation, not fail the step (which would block every future
+        # release, since each run re-downloads the same latest asset). The
+        # first-ever release (or any hiccup) just skips patch generation.
+        # Placed after metacheck/metabuild so a failing build never wastes the
+        # download.
+        run: |
+          prev_tag="$(gh release view --json tagName -q .tagName 2>/dev/null || true)"
+          if [ -n "$prev_tag" ] && gh release download "$prev_tag" --pattern meta.sqlite.gz --output prev.sqlite.gz && gunzip prev.sqlite.gz; then
+            echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
+          else
+            echo "no previous release; skipping patch generation"
+          fi
+
       - name: Compress and checksum
+        env:
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
+        # gz + its checksum stay exactly as before (the universal anchor). Also
+        # publish a checksum of the RAW sqlite so a patched artifact can be
+        # verified byte-for-byte (metabuild is deterministic). When a previous
+        # release was fetched, emit a zstd --patch-from binary delta against it;
+        # --single-thread is upstream's recommendation for patch-from quality and
+        # --long=31 matches the poller's decoder window (patchWindowLog in
+        # internal/serve/github.go - bump both together; CLI consumers also need
+        # --long=31 at decompression time). The delta is best-effort: a zstd
+        # failure logs a warning and the release ships without it - the gz
+        # anchor is never held hostage by patch generation.
         run: |
           gzip -kf meta.sqlite
           sha256sum meta.sqlite.gz > meta.sqlite.gz.sha256
+          sha256sum meta.sqlite > meta.sqlite.sha256
+          if [ -n "$PREV_TAG" ]; then
+            zstd -19 --single-thread --long=31 -f \
+              --patch-from=prev.sqlite \
+              -o "meta.sqlite.patch.from-${PREV_TAG}.zst" meta.sqlite \
+            || { echo "warning: patch generation failed; releasing without a delta"; rm -f "meta.sqlite.patch.from-${PREV_TAG}.zst"; }
+          fi
 
       - name: Compute release tag
         id: tag
@@ -65,9 +115,16 @@ jobs:
       - name: Create release and upload artifacts
         env:
           GH_TOKEN: ${{ github.token }}
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
+        # Always upload the gz anchor + both checksums; append the binary delta
+        # only when the compress step actually produced one (file existence, not
+        # PREV_TAG - a failed best-effort zstd run leaves no file behind).
         run: |
+          assets=(meta.sqlite.gz meta.sqlite.gz.sha256 meta.sqlite.sha256)
+          if [ -n "$PREV_TAG" ] && [ -f "meta.sqlite.patch.from-${PREV_TAG}.zst" ]; then
+            assets+=("meta.sqlite.patch.from-${PREV_TAG}.zst")
+          fi
           gh release create "${{ steps.tag.outputs.tag }}" \
             --title "${{ steps.tag.outputs.tag }}" \
             --notes "Automated data release built from ${{ github.sha }}." \
-            meta.sqlite.gz \
-            meta.sqlite.gz.sha256
+            "${assets[@]}"
