@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/characters.schema.json",
+  "title": "characters",
+  "description": "Community-authored, spoiler-tagged character entries for one work. A per-work sidecar in the CC BY-SA layer, kept separate from the CC0 core.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["work", "characters", "license", "sources"],
+  "properties": {
+    "work": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "characters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "reveal"],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/slug"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "aliases": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "role": {
+            "type": "string",
+            "enum": ["protagonist", "antagonist", "supporting", "minor"]
+          },
+          "reveal": {
+            "description": "Where in the work this character is first revealed. Consumers gate the entry against the listener's position (the X-Ray spoiler model).",
+            "$ref": "common.schema.json#/$defs/position"
+          },
+          "description": {
+            "description": "Own-words character summary. Length-capped for the copyright reference-guide tier; verbatim/near-verbatim phrasing is a separate publish-pipeline check.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "xref": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "wikidata": {
+                "type": "string",
+                "pattern": "^Q\\d+$"
+              },
+              "goodreads": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "license": {
+      "$ref": "common.schema.json#/$defs/license_content"
+    },
+    "sources": {
+      "$ref": "common.schema.json#/$defs/sources"
+    }
+  }
+}
