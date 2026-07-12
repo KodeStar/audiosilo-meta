@@ -27,6 +27,25 @@ import {
   BackLink,
 } from './detail-common'
 
+/** The shared disclosure chevron for the page's accordions (chapters, characters,
+    recaps). Points down when closed and rotates 180deg when open. The optional
+    className carries extra layout utilities (e.g. shrink-0 in a flex row). */
+function Chevron({ open, className }: { open: boolean; className?: string }) {
+  return (
+    <svg
+      className={`h-4 w-4 text-dim transition-transform ${open ? 'rotate-180' : ''}${className ? ` ${className}` : ''}`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+    </svg>
+  )
+}
+
 function CopyChip({ label, value }: { label: string; value: string }) {
   const [copied, setCopied] = useState(false)
   const onClick = useCallback(() => {
@@ -125,17 +144,7 @@ function ChapterList({ workId, recording }: { workId: string; recording: Recordi
         <span>
           {count ? `${count} chapters` : 'Chapters'}
         </span>
-        <svg
-          className={`h-4 w-4 text-dim transition-transform ${open ? 'rotate-180' : ''}`}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
+        <Chevron open={open} />
       </button>
       {open ? (
         <div className="mt-3">
@@ -297,12 +306,19 @@ function Badge({ children }: { children: ReactNode }) {
   )
 }
 
-/** One character card. Descriptions are spoiler-bounded to the reveal position
-    but still story detail, so the parent section blurs them until asked. */
-function CharacterCard({ character, revealed }: { character: Character; revealed: boolean }) {
+/** One character card. The description is spoiler-bounded to the reveal position
+    but still story detail, so it stays hidden behind a per-card accordion the
+    reader opens via the reveal-position row. The name stays a real heading in
+    both branches; a card with no description has no disclosure control. */
+function CharacterCard({ character }: { character: Character }) {
+  const [open, setOpen] = useState(false)
   const role = roleLabel(character.role)
+  const hasDescription = Boolean(character.description)
+  const descId = `char-desc-${character.id}`
+  const reveal = <span className="text-xs font-medium text-pink-400/90">{revealLabel(character.reveal)}</span>
+
   return (
-    <article className="rounded-2xl border border-edge bg-surface p-4">
+    <article className="overflow-hidden rounded-2xl border border-edge bg-surface p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
           <h3 className="font-semibold text-hi">{character.name}</h3>
@@ -312,14 +328,22 @@ function CharacterCard({ character, revealed }: { character: Character; revealed
         </div>
         {role ? <Badge>{role}</Badge> : null}
       </div>
-      <p className="mt-2 text-xs font-medium text-pink-400/90">{revealLabel(character.reveal)}</p>
-      {character.description ? (
-        <p
-          className={`mt-3 text-sm leading-relaxed text-body transition duration-200 ${
-            revealed ? '' : 'select-none blur-sm'
-          }`}
-          aria-hidden={!revealed}
+      {hasDescription ? (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls={descId}
+          className="mt-2 flex w-full items-center justify-between gap-2 text-left transition-colors hover:opacity-80"
         >
+          {reveal}
+          <Chevron open={open} className="shrink-0" />
+        </button>
+      ) : (
+        <p className="mt-2">{reveal}</p>
+      )}
+      {hasDescription && open ? (
+        <p id={descId} className="mt-3 text-sm leading-relaxed text-body">
           {character.description}
         </p>
       ) : null}
@@ -327,39 +351,21 @@ function CharacterCard({ character, revealed }: { character: Character; revealed
   )
 }
 
-/** The cast of a work: community-authored, spoiler-aware character cards behind a
-    single reveal toggle (descriptions start blurred). Renders nothing when the
-    work has no character sidecar. */
-function CharactersSection({ work }: { work: Work }) {
-  const characters = work.characters
-  const [revealed, setRevealed] = useState(false)
-  if (!characters || characters.length === 0) return null
+/** The cast of a work: community-authored, spoiler-aware character cards, each a
+    per-card accordion so descriptions stay hidden until opened. */
+function CharactersPanel({ characters }: { characters: Character[] }) {
   return (
-    <section className="mt-14">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-hi">
-          Characters
-          <span className="ml-2 text-sm font-normal text-dim">{characters.length}</span>
-        </h2>
-        <button
-          type="button"
-          onClick={() => setRevealed((v) => !v)}
-          aria-pressed={revealed}
-          className="rounded-md border border-edge bg-raised px-3 py-1 text-xs text-body transition-colors hover:border-pink-500/50 hover:text-hi"
-        >
-          {revealed ? 'Hide descriptions' : 'Show descriptions (spoilers)'}
-        </button>
-      </div>
-      <p className="mt-2 max-w-2xl text-sm text-dim">
-        Community-written and spoiler-aware - each entry is scoped to where the character first
-        appears.
+    <>
+      <p className="mt-6 max-w-2xl text-sm text-dim">
+        Community-written and spoiler-aware - open a character to read who they are, scoped to where
+        they first appear.
       </p>
-      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {characters.map((c) => (
-          <CharacterCard key={c.id} character={c} revealed={revealed} />
+          <CharacterCard key={c.id} character={c} />
         ))}
       </div>
-    </section>
+    </>
   )
 }
 
@@ -380,17 +386,7 @@ function RecapRow({ recap }: { recap: Recap }) {
           <span className="text-sm font-medium text-body">{recapLabel(recap)}</span>
           {scope ? <Badge>{scope}</Badge> : null}
         </span>
-        <svg
-          className={`h-4 w-4 shrink-0 text-dim transition-transform ${open ? 'rotate-180' : ''}`}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
+        <Chevron open={open} className="shrink-0" />
       </button>
       {open ? (
         <p className="px-4 pb-4 text-sm leading-relaxed text-body">{recap.text}</p>
@@ -400,19 +396,12 @@ function RecapRow({ recap }: { recap: Recap }) {
 }
 
 /** "Story so far": position-keyed recaps as an accordion, ordered by position and
-    closed by default so the reader chooses how far to reveal. Renders nothing
-    when the work has no recap sidecar. */
-function RecapsSection({ work }: { work: Work }) {
-  const recaps = work.recaps
-  if (!recaps || recaps.length === 0) return null
+    closed by default so the reader chooses how far to reveal. */
+function RecapsPanel({ recaps }: { recaps: Recap[] }) {
   const ordered = sortRecaps(recaps)
   return (
-    <section className="mt-14">
-      <h2 className="text-xl font-semibold text-hi">
-        Story so far
-        <span className="ml-2 text-sm font-normal text-dim">{ordered.length}</span>
-      </h2>
-      <p className="mt-2 max-w-2xl text-sm text-dim">
+    <>
+      <p className="mt-6 max-w-2xl text-sm text-dim">
         Position-tagged recaps - open only as far as you have listened; each reveals the story up to
         its point.
       </p>
@@ -421,7 +410,7 @@ function RecapsSection({ work }: { work: Work }) {
           <RecapRow key={`${r.through.chapter}-${i}`} recap={r} />
         ))}
       </div>
-    </section>
+    </>
   )
 }
 
@@ -512,9 +501,88 @@ function ImproveRecord({ id }: { id: string }) {
   )
 }
 
+/** The "General" tab: the work's description, its recordings, and the
+    "more in this series" rail. This is the whole main-column body for a plain
+    work (one with no characters/recaps sidecar). */
+function GeneralPanel({ work }: { work: Work }) {
+  return (
+    <>
+      {work.description ? (
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-body">{work.description}</p>
+      ) : null}
+
+      {/* Recordings live in the main column so desktop width is used well */}
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold text-hi">
+          Recordings
+          <span className="ml-2 text-sm font-normal text-dim">{work.recordings?.length ?? 0}</span>
+        </h2>
+        {work.recordings && work.recordings.length > 0 ? (
+          <div className="mt-5 grid gap-5 xl:grid-cols-2">
+            {work.recordings.map((r) => (
+              <RecordingCard key={r.id} workId={work.id} recording={r} />
+            ))}
+          </div>
+        ) : (
+          <p className="mt-5 rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
+            No recordings have been catalogued for this work yet.
+          </p>
+        )}
+      </section>
+
+      <SeriesRail work={work} />
+    </>
+  )
+}
+
+/** One tab in the work-page tab bar: an underlined active state in the accent,
+    with an optional muted count beside the label. */
+function TabButton({
+  active,
+  onClick,
+  label,
+  count,
+  id,
+  controls,
+}: {
+  active: boolean
+  onClick: () => void
+  label: string
+  count?: number
+  id: string
+  controls: string
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      id={id}
+      aria-selected={active}
+      aria-controls={controls}
+      onClick={onClick}
+      className={`-mb-px flex items-center gap-1.5 border-b-2 px-1 pb-3 pt-1 text-sm font-medium transition-colors ${
+        active ? 'border-pink-500 text-hi' : 'border-transparent text-dim hover:text-body'
+      }`}
+    >
+      <span>{label}</span>
+      {typeof count === 'number' ? <span className="text-xs font-normal text-dim">{count}</span> : null}
+    </button>
+  )
+}
+
+type WorkTab = 'general' | 'characters' | 'recaps'
+
 function Loaded({ work }: { work: Work }) {
   usePageTitle(work.title)
   const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
+
+  const characters = work.characters ?? []
+  const recaps = work.recaps ?? []
+  const hasCharacters = characters.length > 0
+  const hasRecaps = recaps.length > 0
+  const showTabs = hasCharacters || hasRecaps
+
+  const [tab, setTab] = useState<WorkTab>('general')
 
   return (
     <div className="container py-10">
@@ -523,7 +591,7 @@ function Loaded({ work }: { work: Work }) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[18rem_1fr] lg:gap-12">
-        {/* Sidebar: cover + metadata */}
+        {/* Sidebar: cover + metadata - always visible, outside the tabs */}
         <aside>
           <div className="mx-auto w-48 sm:w-56 lg:mx-0 lg:w-full">
             <CoverImage src={cover} alt={`Cover of ${work.title}`} title={work.title} eager />
@@ -531,14 +599,12 @@ function Loaded({ work }: { work: Work }) {
           <MetadataBlock work={work} />
         </aside>
 
-        {/* Main column: head + description + recordings */}
+        {/* Main column: header + (tabbed) body */}
         <div className="min-w-0">
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-hi sm:text-4xl">
             {work.title}
           </h1>
-          {work.subtitle ? (
-            <p className="mt-2 text-lg text-body">{work.subtitle}</p>
-          ) : null}
+          {work.subtitle ? <p className="mt-2 text-lg text-body">{work.subtitle}</p> : null}
 
           {work.authors && work.authors.length > 0 ? (
             <p className="mt-4 text-base">
@@ -564,38 +630,64 @@ function Loaded({ work }: { work: Work }) {
             </div>
           ) : null}
 
-          {work.description ? (
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-body">
-              {work.description}
-            </p>
-          ) : null}
-
-          {/* Recordings live in the main column so desktop width is used well */}
-          <section className="mt-10">
-            <h2 className="text-xl font-semibold text-hi">
-              Recordings
-              <span className="ml-2 text-sm font-normal text-dim">
-                {work.recordings?.length ?? 0}
-              </span>
-            </h2>
-            {work.recordings && work.recordings.length > 0 ? (
-              <div className="mt-5 grid gap-5 xl:grid-cols-2">
-                {work.recordings.map((r) => (
-                  <RecordingCard key={r.id} workId={work.id} recording={r} />
-                ))}
+          {showTabs ? (
+            <>
+              <div
+                role="tablist"
+                aria-label="Work sections"
+                className="mt-8 flex gap-6 border-b border-edge"
+              >
+                <TabButton
+                  id="tab-general"
+                  controls="panel-general"
+                  active={tab === 'general'}
+                  onClick={() => setTab('general')}
+                  label="General"
+                />
+                {hasCharacters ? (
+                  <TabButton
+                    id="tab-characters"
+                    controls="panel-characters"
+                    active={tab === 'characters'}
+                    onClick={() => setTab('characters')}
+                    label="Characters"
+                    count={characters.length}
+                  />
+                ) : null}
+                {hasRecaps ? (
+                  <TabButton
+                    id="tab-recaps"
+                    controls="panel-recaps"
+                    active={tab === 'recaps'}
+                    onClick={() => setTab('recaps')}
+                    label="Story so far"
+                    count={recaps.length}
+                  />
+                ) : null}
               </div>
-            ) : (
-              <p className="mt-5 rounded-xl border border-edge bg-surface px-6 py-10 text-center text-sm text-dim">
-                No recordings have been catalogued for this work yet.
-              </p>
-            )}
-          </section>
+
+              {tab === 'general' ? (
+                <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
+                  <GeneralPanel work={work} />
+                </div>
+              ) : null}
+              {tab === 'characters' ? (
+                <div role="tabpanel" id="panel-characters" aria-labelledby="tab-characters">
+                  <CharactersPanel characters={characters} />
+                </div>
+              ) : null}
+              {tab === 'recaps' ? (
+                <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps">
+                  <RecapsPanel recaps={recaps} />
+                </div>
+              ) : null}
+            </>
+          ) : (
+            <GeneralPanel work={work} />
+          )}
         </div>
       </div>
 
-      <CharactersSection work={work} />
-      <RecapsSection work={work} />
-      <SeriesRail work={work} />
       <ImproveRecord id={work.id} />
     </div>
   )
