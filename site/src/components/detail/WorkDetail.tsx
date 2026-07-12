@@ -639,14 +639,11 @@ function Loaded({ work }: { work: Work }) {
   const hasRecaps = recaps.length > 0
   const showTabs = hasCharacters || hasRecaps
 
-  const [tab, setTab] = useState<WorkTab>('general')
-
-  // Initialise the tab from the URL hash after mount (so an SSR render and its
-  // hydration agree, then a deep link like #story-so-far opens the right tab -
-  // falling back to General when this work lacks that sidecar).
-  useEffect(() => {
-    setTab(tabFromHash(window.location.hash, { hasCharacters, hasRecaps }))
-  }, [hasCharacters, hasRecaps])
+  // Initialise the tab from the URL hash so a deep link like #story-so-far opens
+  // on the right tab from the first frame - this island is client:only, so window
+  // is available at first render and there is no SSR pass to agree with. Falls
+  // back to General when this work lacks that sidecar.
+  const [tab, setTab] = useState<WorkTab>(() => tabFromHash(window.location.hash, { hasCharacters, hasRecaps }))
 
   // Switching a tab reflects the choice into the hash (no scroll jump, no history
   // spam) so it rides along when the reader flips to another work in the series;
