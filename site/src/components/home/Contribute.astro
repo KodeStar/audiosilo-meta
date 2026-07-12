@@ -14,10 +14,9 @@ const cards = [
   {
     icon: 'database',
     title: 'Import your library',
-    body: 'Bring an OpenAudible or Libation export and contribute the factual metadata it contains. An in-browser import page is coming soon; the command-line importer is available today.',
-    cta: 'Read the guide',
-    href: `${REPO}/blob/main/CONTRIBUTING.md`,
-    soon: true,
+    body: 'Drop an OpenAudible export and check what is already catalogued, right in your browser - then contribute the new books. Libation exports go through the import issue form for now.',
+    cta: 'Open the import tool',
+    href: '/import',
   },
   {
     icon: 'chat',
@@ -52,14 +51,7 @@ const cards = [
             <span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-edge bg-raised text-pink-400">
               <Icon name={card.icon} class="h-5 w-5" />
             </span>
-            <h3 class="mt-5 flex items-center gap-2 text-lg font-semibold text-hi">
-              {card.title}
-              {'soon' in card && card.soon ? (
-                <span class="rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] font-medium uppercase tracking-wider text-dim">
-                  Page coming soon
-                </span>
-              ) : null}
-            </h3>
+            <h3 class="mt-5 text-lg font-semibold text-hi">{card.title}</h3>
             <p class="mt-3 flex-grow text-sm leading-relaxed text-body">{card.body}</p>
             <a
               href={card.href}

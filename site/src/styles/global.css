@@ -241,3 +241,32 @@ body {
   color: var(--color-pink-400);
   font-weight: 600;
 }
+
+/* -------------------------------------------------------------------------
+   Import tool: a determinate progress bar (native <progress>, brand-styled).
+   Kept here (like .search-option) so the React island stays inline-style-free.
+   ------------------------------------------------------------------------- */
+.import-progress {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+  border: none;
+  border-radius: 9999px;
+  background-color: var(--color-raised);
+  overflow: hidden;
+}
+.import-progress::-webkit-progress-bar {
+  background-color: var(--color-raised);
+  border-radius: 9999px;
+}
+.import-progress::-webkit-progress-value {
+  background-color: var(--color-pink-600);
+  border-radius: 9999px;
+  transition: width 0.2s ease;
+}
+.import-progress::-moz-progress-bar {
+  background-color: var(--color-pink-600);
+  border-radius: 9999px;
+}

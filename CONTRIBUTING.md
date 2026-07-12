@@ -105,9 +105,17 @@ same kind - that is the fastest way to get the fields right.
 
 ## Importing an OpenAudible export
 
-If you have an [OpenAudible](https://openaudible.org/) library, the `metaimport`
-tool turns its `books.json` export into work/recording/person/series records so
-your whole shelf becomes one reviewable pull request:
+**No command line?** The [import page](https://meta.audiosilo.app/import) does the
+first step in your browser: drop your OpenAudible `books.json` and it checks,
+entirely client-side, which of your books are already in the database and which
+are new (only ASINs and ISBNs are sent to the API - your file never leaves your
+device). It then hands the new ones off to a pre-filled issue, or lets you
+download a factual-only export to attach to an import issue. That is the easiest
+way to contribute a library.
+
+For a bulk import that becomes one reviewable pull request, the `metaimport` tool
+turns a `books.json` export into work/recording/person/series records directly.
+If you have an [OpenAudible](https://openaudible.org/) library:
 
 ```sh
 go run ./cmd/metaimport openaudible <path-to/books.json> --data data --dry-run
