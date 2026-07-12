@@ -1,0 +1,113 @@
+{
+  "characters": [
+    {
+      "description": "Chicago's professional wizard, now sharing his tiny basement apartment with his half-brother Thomas and a rapidly growing dog. With Murphy out of town, Harry is blackmailed into a hunt for a dead necromancer's lost book while the necromancer's surviving disciples descend on Chicago for Halloween, each meaning to use what the book unlocks to seize godlike power. Maimed hand, mounting debts to dark powers, and a war still on his shoulders - and still nobody better positioned to stand in the way.",
+      "id": "harry-dresden",
+      "name": "Harry Dresden",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Harry's half-brother, the White Court vampire, now sleeping on Harry's couch after being cut off by his family. Thomas is struggling - trying to hold down mortal jobs, trying not to feed, and chafing against everything his nature demands - and the friction of two proud, private men sharing one small apartment runs through the book. When the fighting starts, he is exactly the ally a wizard wants at his back.",
+      "id": "thomas-raith",
+      "name": "Thomas Raith",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ancient Black Court vampire, neither dead nor done with Harry. Mavra opens the book with blackmail: she holds evidence that could destroy Karrin Murphy's career and freedom, and she will use it unless Harry finds her a legendary necromancer's lost text, The Word of Kemmler, within three days. Cold, patient, and untroubled by the apocalyptic potential of what she is asking for, she sets the whole plot in motion.",
+      "id": "mavra",
+      "name": "Mavra",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A slight, wiry, polka-loving medical examiner - the one who was institutionalized for reporting the truth about corpses that were not human. Waldo Butters is no fighter and makes no pretense of courage, which is exactly what makes his courage matter: dragged into the necromancers' war over the bodies in his morgue, he stays, helps, and grows. His medical skill, his curiosity, and his one-man polka band all turn out to be surprisingly load-bearing.",
+      "id": "waldo-butters",
+      "name": "Waldo Butters",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The spirit of intellect in the skull in Harry's lab - and, this case reveals, a store of darker history than Harry knew. Bob's knowledge of necromancy is firsthand: the skull once served Heinrich Kemmler himself, the necromancer whose disciples are converging on Chicago, and there is a part of Bob's own past that Harry must handle with extreme care. His lore on the Erlking and on Kemmler's methods becomes the key to everything.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry's dog, no longer a puppy: a huge, gray, preternaturally intelligent Foo dog whose senses for the uncanny outstrip any ward. Mouse is calm, deliberate, and devoted, and in this book he proves he is not merely large but genuinely supernatural - an ally in his own right when the dead start walking.",
+      "id": "mouse",
+      "name": "Mouse",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The most straightforwardly brutal of Kemmler's surviving disciples: a tall, cadaverous necromancer who walks Chicago with an entourage of zombies and a habit of raising the freshly dead as enforcers. Grevane wants the Word of Kemmler and the power it unlocks, and he interrogates, kills, and animates his way toward it. Of the rivals converging on the city, he is the bluntest instrument - which does not make him the least dangerous.",
+      "id": "grevane",
+      "name": "Grevane",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A necromancer in a concealing hood and cloak whose power dwarfs the other disciples - in a direct clash, more than a match for Harry. Cowl speaks with dry courtesy, works with a similarly hooded partner called Kumori, and his true identity stays hidden behind the cowl he is named for. Of everyone hunting Kemmler's legacy, he is the one whose plans reach furthest, and the one Harry has the least idea how to stop.",
+      "id": "cowl",
+      "name": "Cowl",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Capiorcorpus"
+      ],
+      "description": "A disciple of Kemmler whose specialty is the theft of bodies: the Corpsetaker trades minds with victims, wearing stolen flesh and discarding it, so that no face can be trusted twice. Ancient, cunning, and patient, the Corpsetaker hunts the Word of Kemmler alongside the other disciples, and the body-swapping makes every encounter a potential ambush from inside someone Harry trusts.",
+      "id": "corpsetaker",
+      "name": "The Corpsetaker",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The shadow of the fallen angel whose coin Harry buried under his lab - present in his mind since the day he touched it, and in this book, no longer silent. The shadow can shape what Harry perceives, offers him knowledge and power with perfect helpfulness, and wants exactly what every Denarian's coin wants: for Harry to take up the real thing. Its unmasking forces Harry to reckon with what he has been carrying for the past year.",
+      "id": "lasciel",
+      "name": "Lasciel's shadow",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Captain of the Wardens of the White Council, the wizards' soldiers and enforcers. Luccio arrives in Chicago with a battered handful of Wardens - the corps has been gutted by the vampire war - to face the necromancer crisis. A career soldier of centuries' standing, forthright and fair, she weighs Harry by what he does rather than by his file, and what happens to her in Chicago changes her life permanently.",
+      "id": "anastasia-luccio",
+      "name": "Anastasia Luccio",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "dead-beat"
+}
