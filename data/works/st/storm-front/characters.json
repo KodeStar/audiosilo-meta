@@ -1,0 +1,95 @@
+{
+  "characters": [
+    {
+      "description": "The only openly practicing professional wizard in Chicago, Harry Dresden works as a private investigator and an occasional paid consultant for the police, taking the cases ordinary detectives cannot explain. Orphaned young and raised by a manipulative sorcerer he was forced to kill in self-defense as a teenager, he lives under the wary eye of the White Council, the governing body of wizards, which once nearly executed him for that killing and still watches him for any sign he might turn magic to murder. Wry, stubborn, and chronically broke, he lives alone with his cat and a talking spirit, keeps an old-fashioned chivalric streak, and refuses to walk away from trouble he could safely leave alone.",
+      "id": "harry-dresden",
+      "name": "Harry Dresden",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The head of the Chicago Police Department's Special Investigations unit, the division handed every case too strange for anyone else to touch. Small, blond, and easy to underestimate, she is a relentless and honest cop who calls in Harry Dresden as a consultant when the evidence stops making ordinary sense. She does not fully grasp the magical world she keeps brushing against and distrusts what she cannot verify, which puts recurring strain on their partnership, but her courage and her refusal to look away from ugly truths are never in question.",
+      "id": "karrin-murphy",
+      "name": "Karrin Murphy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spirit of air and intellect bound into a bleached human skull that Harry keeps in his basement laboratory. Bob is a centuries-old store of magical knowledge, especially the practical mechanics of spells and potions, and serves as Harry's irreverent research assistant and sounding board. Amoral by nature and endlessly interested in appetites and gossip, he helps or needles Harry by turns, and his memory of older magic than the modern Council practices makes him one of Harry's most valuable and least trustworthy resources.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Warden of the White Council, one of the wizard-enforcers who hunt down practitioners who break the Laws of Magic. Grim, humorless, and convinced of Harry's guilt, Morgan was assigned to watch Harry after the killing that first brought him before the Council, and he waits for any excuse to see the old sentence carried out. When people begin dying by forbidden magic in Chicago, he warns Harry that a single misstep will cost him his head, and shadows the investigation as much to trap Harry as to solve it.",
+      "id": "morgan",
+      "name": "Donald Morgan",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A sharp, ambitious reporter for a tabloid covering the strange and the supernatural, and the woman Harry is seeing. Susan is drawn to Harry as much for the real magic he represents as for himself, and she keeps pressing him for the story he will not give her. Fearless to the point of recklessness, she inserts herself into his investigation despite the danger, unwilling to be protected or left behind.",
+      "id": "susan-rodriguez",
+      "name": "Susan Rodriguez",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gentleman Johnny Marcone"
+      ],
+      "description": "The most powerful crime lord in Chicago, a soft-spoken, coldly intelligent man who has quietly unified the city's underworld. One of the murder victims was his employee, and Marcone takes an interest in Harry's investigation, by turns offering him money to stand down and warning him off. He operates by his own rigid code and prefers order to chaos, which makes him a pragmatic and genuinely dangerous figure who cannot be bought and will not be bullied.",
+      "id": "johnny-marcone",
+      "name": "John Marcone",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Red Court vampire who runs an upscale brothel, the Velvet Room, in Chicago. Beautiful and composed in the human seeming she wears, she is a creature of appetite and pride beneath it. One of her women was among the murdered, and Harry's questions provoke her; a clash between them leaves her humiliated and nursing a grudge that will outlast this case. She is a reminder that the vampire courts watch the city closely.",
+      "id": "bianca",
+      "name": "Bianca",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tiny dewdrop faerie of the wilds whom Harry catches and bargains with for information. Vain, greedy for pizza and shiny things, and prone to grand self-importance despite his size, Toot-toot scouts places Harry cannot reach and reports back in exchange for tribute. The arrangement is Harry's first small, working relationship with the faerie folk.",
+      "id": "toot-toot",
+      "name": "Toot-Toot",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The dark sorcerer behind the heart-ripping murders. A failed, resentful man who discovered real magical talent late and gave himself over to it without restraint, Victor built his power around a new drug that grants users a burst of the Sight, and he kills with a brutal ritual that tears the hearts from his victims at a distance, drawing on the energy of storms to fuel it. Working from a lake house outside the city, he treats magic purely as a weapon and a path to wealth, and turns it on Harry the moment Harry gets close.",
+      "id": "victor-sells",
+      "name": "Victor Sells",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "storm-front"
+}
