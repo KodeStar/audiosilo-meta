@@ -120,7 +120,11 @@ curl 'localhost:8080/api/v1/lookup?asin=B08G9PRS1K'
 
 Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `works/latest?limit=`, `works/{id}`, `works/{id}/recordings/{rid}/chapters`,
-`people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, plus `/healthz`.
+`people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`, plus `/healthz`.
+
+The `coverage` endpoint reports expressive-layer coverage - how many works carry
+characters/recaps/whole-book recap summaries, the works still missing each, and
+per-series integer position gaps - for the site's coverage/wanted page.
 
 Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 `--poll` (fetch and hot-swap the latest published data release from GitHub),
