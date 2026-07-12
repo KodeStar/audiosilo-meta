@@ -20,6 +20,7 @@ import {
   factualSubset,
   importLibraryIssueUrl,
 } from '../../lib/github-prefill'
+import { downloadJson } from '../../lib/download'
 
 // Concurrency for the lookup + author-search sweeps, and the hard safety cap on
 // export size.
@@ -304,17 +305,7 @@ export default function ImportTool() {
       null,
       2
     )
-    const blob = new Blob([data], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'audiosilo-meta-new-books.json'
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    // Defer the revoke: some browsers (Firefox/Safari) cancel the save if the
-    // blob URL is freed before the download has started reading it.
-    setTimeout(() => URL.revokeObjectURL(url), 0)
+    downloadJson(data, 'audiosilo-meta-new-books.json')
   }
 
   // --- Renders --------------------------------------------------------------

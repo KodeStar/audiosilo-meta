@@ -1,34 +1,30 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getCoverage, href, type CoverageResponse } from '../../lib/api'
 import {
   coverageStats,
   groupMissing,
   hasMissingRows,
+  limitGrouped,
   type CoverageStat,
   type CoverageWorkRow,
   type CoverageSeriesGroup,
 } from '../../lib/coverage'
+import { addWorkIssueFormUrl } from '../../lib/github-prefill'
+import { PILL_LINK } from '../build/build-ui'
+import { useEntity, DetailSpinner } from '../detail/detail-common'
 
-// The guided builder (agent S2's page) and the add-work issue form. The builder
-// links carry the work id and the dimension being authored; the add-work link is
-// unprefilled (the missing titles in a gap are unknown).
-const BUILD_BASE = '/build'
-const ADD_WORK_ISSUE =
-  'https://github.com/kodestar/audiosilo-meta/issues/new?template=add-work.yml'
+// Initial-render caps for the missing list: the full data is already loaded,
+// this only bounds the first paint (the day-one state is ~800 rows) - a
+// "show all" expander renders the rest on demand.
+const MISSING_LIMITS = { maxSeries: 8, maxStandalone: 30 }
 
-function buildUrl(workId: string, kind: 'characters' | 'recaps'): string {
-  const params = new URLSearchParams({ work: workId, kind })
-  return `${BUILD_BASE}?${params.toString()}`
-}
+// Coverage is a singleton (no id); a fixed key satisfies the shared loader.
+// Module-scope so its identity is stable across renders (useEntity depends on it).
+const fetchCoverage = (_id: string, signal: AbortSignal) => getCoverage(signal)
 
 function authorNames(authors: { name: string }[]): string {
   return authors.map((a) => a.name).join(', ')
 }
-
-type LoadState =
-  | { status: 'loading' }
-  | { status: 'error' }
-  | { status: 'ready'; data: CoverageResponse }
 
 // --- Stats band -----------------------------------------------------------
 
@@ -65,18 +61,12 @@ function BuildLinks({ row }: { row: CoverageWorkRow }) {
   return (
     <div className="flex shrink-0 flex-wrap items-center gap-2">
       {row.ctas.characters ? (
-        <a
-          href={buildUrl(row.id, 'characters')}
-          className="inline-flex items-center rounded-lg border border-edge px-3 py-1.5 text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
-        >
+        <a href={href.build(row.id, 'characters')} className={`${PILL_LINK} px-3 py-1.5`}>
           Add characters
         </a>
       ) : null}
       {row.ctas.recaps ? (
-        <a
-          href={buildUrl(row.id, 'recaps')}
-          className="inline-flex items-center rounded-lg border border-edge px-3 py-1.5 text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
-        >
+        <a href={href.build(row.id, 'recaps')} className={`${PILL_LINK} px-3 py-1.5`}>
           Add recaps
         </a>
       ) : null}
@@ -127,6 +117,8 @@ function SeriesGroup({ group }: { group: CoverageSeriesGroup }) {
 }
 
 function MissingSection({ data }: { data: CoverageResponse }) {
+  const [showAll, setShowAll] = useState(false)
+
   if (!hasMissingRows(data)) {
     return (
       <section>
@@ -140,6 +132,11 @@ function MissingSection({ data }: { data: CoverageResponse }) {
   }
 
   const grouped = groupMissing(data.missing)
+  const limited = limitGrouped(grouped, MISSING_LIMITS)
+  const view = showAll ? grouped : limited
+  const hiddenWorks = showAll ? 0 : limited.hiddenWorks
+  const totalWorks = data.missing?.length ?? 0
+
   return (
     <section>
       <h2 className="text-xl font-semibold text-hi">Books needing characters and recaps</h2>
@@ -148,22 +145,31 @@ function MissingSection({ data }: { data: CoverageResponse }) {
         recaps yet. Open a work to see what is there, or jump straight into the guided builder.
       </p>
       <div className="mt-8 space-y-10">
-        {grouped.series.map((group) => (
+        {view.series.map((group) => (
           <SeriesGroup key={group.id} group={group} />
         ))}
-        {grouped.standalone.length > 0 ? (
+        {view.standalone.length > 0 ? (
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-dim">
               Standalone works
             </h3>
             <ul className="mt-3 space-y-3">
-              {grouped.standalone.map((w) => (
+              {view.standalone.map((w) => (
                 <WorkRow key={w.id} row={w} />
               ))}
             </ul>
           </div>
         ) : null}
       </div>
+      {hiddenWorks > 0 ? (
+        <button
+          type="button"
+          onClick={() => setShowAll(true)}
+          className={`${PILL_LINK} mt-8 px-4 py-2`}
+        >
+          Show all {totalWorks.toLocaleString()} books
+        </button>
+      ) : null}
     </section>
   )
 }
@@ -206,10 +212,10 @@ function SeriesGapsSection({ data }: { data: CoverageResponse }) {
               </p>
             </div>
             <a
-              href={ADD_WORK_ISSUE}
+              href={addWorkIssueFormUrl}
               target="_blank"
               rel="noopener"
-              className="inline-flex shrink-0 items-center rounded-lg border border-edge px-3 py-1.5 text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500"
+              className={`${PILL_LINK} shrink-0 px-3 py-1.5`}
             >
               Add a book
             </a>
@@ -223,26 +229,10 @@ function SeriesGapsSection({ data }: { data: CoverageResponse }) {
 // --- The island -----------------------------------------------------------
 
 export default function CoveragePanel() {
-  const [state, setState] = useState<LoadState>({ status: 'loading' })
-
-  useEffect(() => {
-    const ctrl = new AbortController()
-    getCoverage(ctrl.signal)
-      .then((data) => setState({ status: 'ready', data }))
-      .catch((err) => {
-        if (ctrl.signal.aborted || (err as Error).name === 'AbortError') return
-        setState({ status: 'error' })
-      })
-    return () => ctrl.abort()
-  }, [])
+  const state = useEntity<CoverageResponse>('coverage', fetchCoverage)
 
   if (state.status === 'loading') {
-    return (
-      <div className="py-16 text-center" aria-live="polite" aria-busy="true">
-        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-edge border-t-pink-500"></div>
-        <p className="mt-4 text-sm text-dim">Loading what needs work...</p>
-      </div>
-    )
+    return <DetailSpinner label="Loading what needs work..." className="py-16 text-center" />
   }
 
   if (state.status === 'error') {

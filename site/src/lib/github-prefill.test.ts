@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest'
 import {
   addWorkIssueUrl,
+  addWorkIssueFormUrl,
   addRecordingIssueUrl,
+  addRecordingIssueUrlForWork,
   addCharactersIssueUrl,
   addRecapsIssueUrl,
   factualSubset,
@@ -163,6 +165,31 @@ describe('addCharactersIssueUrl / addRecapsIssueUrl', () => {
     const u = new URL(addRecapsIssueUrl('w'))
     expect(u.host).toBe('github.com')
     expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
+  })
+})
+
+describe('addRecordingIssueUrlForWork', () => {
+  it('uses the add-recording.yml template with ONLY work_ref prefilled', () => {
+    const u = new URL(addRecordingIssueUrlForWork('a-deadly-education'))
+    expect(u.host).toBe('github.com')
+    expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
+    const p = u.searchParams
+    expect(p.get('template')).toBe('add-recording.yml')
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+    expect([...p.keys()].sort()).toEqual(['template', 'work_ref'])
+  })
+
+  it('encodes an awkward work id in work_ref', () => {
+    const p = params(addRecordingIssueUrlForWork('a b/c'))
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
+  })
+})
+
+describe('addWorkIssueFormUrl', () => {
+  it('is the unprefilled add-work issue form', () => {
+    expect(addWorkIssueFormUrl).toBe(
+      'https://github.com/kodestar/audiosilo-meta/issues/new?template=add-work.yml'
+    )
   })
 })
 

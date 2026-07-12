@@ -23,8 +23,10 @@ import {
   type SeriesWork,
   type WorkTab,
 } from '../../lib/worknav'
+import { addRecordingIssueUrlForWork } from '../../lib/github-prefill'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
+import { PILL_LINK } from '../build/build-ui'
 import {
   useQueryParam,
   usePageTitle,
@@ -583,17 +585,7 @@ function ContributeCTAs({ work }: { work: Work }) {
   const needsRecording = (work.recordings?.length ?? 0) === 0
   if (!needsCharacters && !needsRecaps && !needsRecording) return null
 
-  const buildUrl = (kind: 'characters' | 'recaps') =>
-    `/build?${new URLSearchParams({ work: work.id, kind }).toString()}`
-  const addRecordingUrl = `https://github.com/kodestar/audiosilo-meta/issues/new?${new URLSearchParams(
-    {
-      template: 'add-recording.yml',
-      work_ref: `https://meta.audiosilo.app${href.work(work.id)}`,
-    }
-  ).toString()}`
-
-  const cta =
-    'inline-flex items-center rounded-lg border border-edge px-4 py-2 text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
+  const cta = `${PILL_LINK} px-4 py-2`
 
   return (
     <section className="mt-14 rounded-2xl border border-edge bg-surface p-6">
@@ -604,17 +596,22 @@ function ContributeCTAs({ work }: { work: Work }) {
       </p>
       <div className="mt-5 flex flex-wrap gap-3">
         {needsCharacters ? (
-          <a className={cta} href={buildUrl('characters')}>
+          <a className={cta} href={href.build(work.id, 'characters')}>
             Add characters
           </a>
         ) : null}
         {needsRecaps ? (
-          <a className={cta} href={buildUrl('recaps')}>
+          <a className={cta} href={href.build(work.id, 'recaps')}>
             Add story so far
           </a>
         ) : null}
         {needsRecording ? (
-          <a className={cta} href={addRecordingUrl} target="_blank" rel="noopener">
+          <a
+            className={cta}
+            href={addRecordingIssueUrlForWork(work.id)}
+            target="_blank"
+            rel="noopener"
+          >
             Add a recording
           </a>
         ) : null}

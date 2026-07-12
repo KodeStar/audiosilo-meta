@@ -55,11 +55,19 @@ export function useEntity<T>(
   return state
 }
 
-export function DetailSpinner() {
+/** The shared loading spinner. The detail pages use the defaults; an island
+    embedded mid-page (the coverage panel) overrides the label and wrapper. */
+export function DetailSpinner({
+  label = 'Loading...',
+  className = 'container py-24 text-center',
+}: {
+  label?: string
+  className?: string
+} = {}) {
   return (
-    <div className="container py-24 text-center" aria-live="polite" aria-busy="true">
+    <div className={className} aria-live="polite" aria-busy="true">
       <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-edge border-t-pink-500"></div>
-      <p className="mt-4 text-sm text-dim">Loading...</p>
+      <p className="mt-4 text-sm text-dim">{label}</p>
     </div>
   )
 }

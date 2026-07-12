@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { getWork, getSeries, href, type Character, type Work } from '../../lib/api'
 import { addCharactersIssueUrl, addRecapsIssueUrl } from '../../lib/github-prefill'
+import { downloadJson } from '../../lib/download'
 import {
   buildCharactersObject,
   buildRecapsObject,
   emptyCharacterDraft,
+  emptyRecapEntry,
   emptyRecapsDraft,
   moveItem,
   nearestLowerSibling,
@@ -14,7 +16,9 @@ import {
   validateCharacters,
   validateRecaps,
   type CharacterDraft,
+  type CharactersValidation,
   type RecapsDraft,
+  type RecapsValidation,
 } from '../../lib/builder'
 import {
   useEntity,
@@ -147,14 +151,14 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
     }))
   }
   function addEntry() {
-    setRecaps((prev) => ({ ...prev, entries: [...prev.entries, { through: '', scope: '', text: '' }] }))
+    setRecaps((prev) => ({ ...prev, entries: [...prev.entries, emptyRecapEntry()] }))
   }
   function removeEntry(index: number) {
     setRecaps((prev) => ({
       ...prev,
       entries:
         prev.entries.length <= 1
-          ? [{ through: '', scope: '', text: '' }]
+          ? [emptyRecapEntry()]
           : prev.entries.filter((_, i) => i !== index),
     }))
   }
@@ -166,27 +170,35 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
   }
 
   // --- Output -------------------------------------------------------------
-  const charVal = validateCharacters(chars)
-  const recapVal = validateRecaps(recaps)
+  // The derived pipeline (validate -> build -> serialize) runs on every
+  // keystroke, so it is memoized and only the ACTIVE kind's work is done - the
+  // inactive editor's drafts are untouched state, never validated or serialized.
   const isChars = kind === 'characters'
-  const obj = isChars ? buildCharactersObject(work.id, chars) : buildRecapsObject(work.id, recaps)
-  const json = serializeCanonical(obj)
-  const valid = isChars ? charVal.ok : recapVal.ok
-  const formErrors = isChars ? charVal.form : recapVal.form
+  const output = useMemo<
+    | { kind: 'characters'; val: CharactersValidation; json: string }
+    | { kind: 'recaps'; val: RecapsValidation; json: string }
+  >(() => {
+    if (kind === 'characters') {
+      return {
+        kind,
+        val: validateCharacters(chars),
+        json: serializeCanonical(buildCharactersObject(work.id, chars)),
+      }
+    }
+    return {
+      kind,
+      val: validateRecaps(recaps),
+      json: serializeCanonical(buildRecapsObject(work.id, recaps)),
+    }
+  }, [chars, recaps, kind, work.id])
+  const json = output.json
+  const valid = output.val.ok
+  const formErrors = output.val.form
   const filename = isChars ? 'characters.json' : 'recaps.json'
   const issueUrl = isChars ? addCharactersIssueUrl(work.id) : addRecapsIssueUrl(work.id)
 
   function download() {
-    const blob = new Blob([json], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = filename
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    // Defer the revoke so Firefox/Safari do not cancel the save.
-    setTimeout(() => URL.revokeObjectURL(url), 0)
+    downloadJson(json, filename)
   }
 
   function copyJson() {
@@ -267,10 +279,10 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
               </div>
             ) : null}
 
-            {isChars ? (
+            {output.kind === 'characters' ? (
               <CharactersEditor
                 drafts={chars}
-                errors={charVal.cards}
+                errors={output.val.cards}
                 onName={setCharName}
                 onPatch={patchChar}
                 onAdd={addChar}
@@ -280,7 +292,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
             ) : (
               <RecapsEditor
                 draft={recaps}
-                errors={recapVal}
+                errors={output.val}
                 onEntry={patchEntry}
                 onAdd={addEntry}
                 onRemove={removeEntry}

@@ -7,6 +7,7 @@ import {
 import {
   BTN_SECONDARY,
   Counter,
+  EntryCard,
   FieldError,
   FieldLabel,
   Icon,
@@ -46,26 +47,15 @@ export default function CharactersEditor({
       {drafts.map((d, i) => {
         const e = errors[i] ?? {}
         return (
-          <div key={i} className="rounded-2xl border border-edge bg-surface p-5">
-            <div className="mb-3 flex items-center justify-between gap-2">
-              <span className="text-sm font-semibold text-hi">Character {i + 1}</span>
-              <div className="flex items-center gap-1">
-                <IconButton label="Move up" disabled={i === 0} onClick={() => onMove(i, -1)}>
-                  <Icon name="up" className="h-4 w-4" />
-                </IconButton>
-                <IconButton
-                  label="Move down"
-                  disabled={i === drafts.length - 1}
-                  onClick={() => onMove(i, 1)}
-                >
-                  <Icon name="down" className="h-4 w-4" />
-                </IconButton>
-                <IconButton label="Remove character" onClick={() => onRemove(i)}>
-                  <Icon name="trash" className="h-4 w-4" />
-                </IconButton>
-              </div>
-            </div>
-
+          <EntryCard
+            key={i}
+            title={`Character ${i + 1}`}
+            index={i}
+            count={drafts.length}
+            removeLabel="Remove character"
+            onMove={onMove}
+            onRemove={onRemove}
+          >
             {d.seeded ? (
               <p className="mb-3 rounded-lg border border-pink-500/30 bg-pink-600/5 px-3 py-2 text-xs leading-relaxed text-pink-200">
                 Seeded from the previous book. Re-check the reveal chapter for this book and write a
@@ -172,7 +162,7 @@ export default function CharactersEditor({
                 A shared QID links the same character across a series.
               </p>
             </div>
-          </div>
+          </EntryCard>
         )
       })}
 
@@ -181,30 +171,5 @@ export default function CharactersEditor({
         Add a character
       </button>
     </div>
-  )
-}
-
-function IconButton({
-  children,
-  label,
-  onClick,
-  disabled,
-}: {
-  children: React.ReactNode
-  label: string
-  onClick: () => void
-  disabled?: boolean
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      title={label}
-      onClick={onClick}
-      disabled={disabled}
-      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-edge text-dim transition-colors hover:border-pink-500 hover:text-pink-300 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-edge disabled:hover:text-dim"
-    >
-      {children}
-    </button>
   )
 }

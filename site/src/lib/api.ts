@@ -356,6 +356,9 @@ export const href = {
   work: (id: string) => `/work?id=${encodeURIComponent(id)}`,
   person: (id: string) => `/person?id=${encodeURIComponent(id)}`,
   series: (id: string) => `/series?id=${encodeURIComponent(id)}`,
+  /** The guided sidecar builder, primed for one work and one dimension. */
+  build: (id: string, kind: 'characters' | 'recaps') =>
+    `/build?work=${encodeURIComponent(id)}&kind=${kind}`,
 }
 
 /** Detect a bare ASIN (Audible product code): 10 chars, starts with B0. */

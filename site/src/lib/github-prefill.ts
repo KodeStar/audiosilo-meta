@@ -103,6 +103,27 @@ export function addRecapsIssueUrl(workId: string): string {
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
+/**
+ * The unprefilled add-work.yml issue form (mirroring importLibraryIssueUrl) -
+ * used where the missing book's details are unknown, e.g. a series-gap row on
+ * the contribute page. Named apart from addWorkIssueUrl (the ParsedBook-prefilled
+ * builder above), which stays the import tool's hand-off.
+ */
+export const addWorkIssueFormUrl = `${ISSUE_BASE}?template=add-work.yml`
+
+/**
+ * Build a prefilled-issue URL for the add-recording.yml template from just a
+ * work id - the work-page "Add a recording" CTA for a catalogued work with no
+ * recordings yet. Only work_ref rides in the URL (there is no source book to
+ * prefill the recording half from, unlike addRecordingIssueUrl).
+ */
+export function addRecordingIssueUrlForWork(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-recording.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
 // The only OpenAudible fields we keep for the bulk download - factual metadata
 // (LICENSING.md). Everything else (purchase dates, ratings, file paths,
 // descriptions/summaries) is stripped and never leaves the device beyond this.

@@ -5,6 +5,7 @@ import {
   coveragePercent,
   coverageStats,
   hasMissingRows,
+  limitGrouped,
 } from './coverage'
 import type { CoverageMissing, CoverageResponse, CoverageTotals } from './api'
 
@@ -141,5 +142,44 @@ describe('hasMissingRows', () => {
 
   it('is true when there is at least one missing row', () => {
     expect(hasMissingRows({ ...base, missing: [missing()] })).toBe(true)
+  })
+})
+
+describe('limitGrouped', () => {
+  const rows = [
+    missing({ id: 'a', series: { id: 's1', name: 'S1', position: '1' } }),
+    missing({ id: 'b', series: { id: 's1', name: 'S1', position: '2' } }),
+    missing({ id: 'c', series: { id: 's2', name: 'S2', position: '1' } }),
+    missing({ id: 'd' }),
+    missing({ id: 'e' }),
+  ]
+
+  it('returns everything untrimmed when under the caps', () => {
+    const grouped = groupMissing(rows)
+    const limited = limitGrouped(grouped, { maxSeries: 8, maxStandalone: 30 })
+    expect(limited.series).toEqual(grouped.series)
+    expect(limited.standalone).toEqual(grouped.standalone)
+    expect(limited.hiddenWorks).toBe(0)
+  })
+
+  it('trims series groups beyond the cap and counts their works as hidden', () => {
+    const grouped = groupMissing(rows)
+    const limited = limitGrouped(grouped, { maxSeries: 1, maxStandalone: 30 })
+    expect(limited.series.map((g) => g.id)).toEqual(['s1'])
+    expect(limited.standalone.length).toBe(2)
+    expect(limited.hiddenWorks).toBe(1) // s2's single work
+  })
+
+  it('trims standalone rows beyond the cap', () => {
+    const grouped = groupMissing(rows)
+    const limited = limitGrouped(grouped, { maxSeries: 8, maxStandalone: 1 })
+    expect(limited.standalone.map((w) => w.id)).toEqual(['d'])
+    expect(limited.hiddenWorks).toBe(1)
+  })
+
+  it('sums hidden works across both buckets', () => {
+    const grouped = groupMissing(rows)
+    const limited = limitGrouped(grouped, { maxSeries: 1, maxStandalone: 0 })
+    expect(limited.hiddenWorks).toBe(3) // s2's work + both standalone rows
   })
 })

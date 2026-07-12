@@ -14,6 +14,11 @@ export const INPUT =
   'w-full rounded-lg border border-edge bg-raised px-3 py-2 text-sm text-hi placeholder:text-dim/50 focus:border-pink-500 focus:outline-none'
 export const TEXTAREA = `${INPUT} min-h-[6rem] leading-relaxed`
 
+// The compact pill link used for inline CTAs (coverage rows, work-page CTAs).
+// Padding is per call site, so row pills stay tighter than standalone CTAs.
+export const PILL_LINK =
+  'inline-flex items-center rounded-lg border border-edge text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
+
 // Inline outline icons (heroicons paths), since Icon.astro cannot render inside
 // a React island.
 const ICON_PATHS = {
@@ -89,4 +94,75 @@ export function FieldLabel({
 export function FieldError({ message }: { message?: string }) {
   if (!message) return null
   return <p className="mt-1 text-xs text-red-400">{message}</p>
+}
+
+/** A small square icon-only button (the entry cards' move/remove controls). */
+export function IconButton({
+  children,
+  label,
+  onClick,
+  disabled,
+}: {
+  children: React.ReactNode
+  label: string
+  onClick: () => void
+  disabled?: boolean
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      title={label}
+      onClick={onClick}
+      disabled={disabled}
+      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-edge text-dim transition-colors hover:border-pink-500 hover:text-pink-300 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-edge disabled:hover:text-dim"
+    >
+      {children}
+    </button>
+  )
+}
+
+/** The shell of one editable entry (a character card / recap entry): the shared
+    card surface plus the header row with the title and up/down/remove controls.
+    The editors render their fields as children. */
+export function EntryCard({
+  title,
+  index,
+  count,
+  removeLabel,
+  onMove,
+  onRemove,
+  children,
+}: {
+  title: string
+  index: number
+  count: number
+  removeLabel: string
+  onMove: (index: number, dir: -1 | 1) => void
+  onRemove: (index: number) => void
+  children: React.ReactNode
+}) {
+  return (
+    <div className="rounded-2xl border border-edge bg-surface p-5">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <span className="text-sm font-semibold text-hi">{title}</span>
+        <div className="flex items-center gap-1">
+          <IconButton label="Move up" disabled={index === 0} onClick={() => onMove(index, -1)}>
+            <Icon name="up" className="h-4 w-4" />
+          </IconButton>
+          <IconButton
+            label="Move down"
+            disabled={index === count - 1}
+            onClick={() => onMove(index, 1)}
+          >
+            <Icon name="down" className="h-4 w-4" />
+          </IconButton>
+          <IconButton label={removeLabel} onClick={() => onRemove(index)}>
+            <Icon name="trash" className="h-4 w-4" />
+          </IconButton>
+        </div>
+      </div>
+      {children}
+    </div>
+  )
 }

@@ -133,3 +133,28 @@ export function coverageStats(totals: CoverageTotals): CoverageStat[] {
 export function hasMissingRows(coverage: CoverageResponse): boolean {
   return (coverage.missing?.length ?? 0) > 0
 }
+
+/** Caps for the initial (collapsed) missing-list render. */
+export interface CoverageLimits {
+  maxSeries: number
+  maxStandalone: number
+}
+
+/** The grouped view trimmed to the render caps, plus how many work rows the
+    trim hid (series beyond the cap count all their works). The full data is
+    already client-side; this only bounds the initial paint, and a "show all"
+    expander renders the untrimmed grouping. */
+export interface LimitedCoverage extends CoverageGrouped {
+  hiddenWorks: number
+}
+
+/** Trim a grouped missing list to the display caps. When nothing is over a cap
+    the buckets are returned as-is and hiddenWorks is 0. */
+export function limitGrouped(grouped: CoverageGrouped, limits: CoverageLimits): LimitedCoverage {
+  const series = grouped.series.slice(0, limits.maxSeries)
+  const standalone = grouped.standalone.slice(0, limits.maxStandalone)
+  const hiddenWorks =
+    grouped.series.slice(limits.maxSeries).reduce((n, g) => n + g.works.length, 0) +
+    Math.max(0, grouped.standalone.length - limits.maxStandalone)
+  return { series, standalone, hiddenWorks }
+}

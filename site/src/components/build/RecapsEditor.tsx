@@ -8,6 +8,7 @@ import {
 import {
   BTN_SECONDARY,
   Counter,
+  EntryCard,
   FieldError,
   FieldLabel,
   Icon,
@@ -47,26 +48,15 @@ export default function RecapsEditor({
         {draft.entries.map((e, i) => {
           const err = errors.entries[i] ?? {}
           return (
-            <div key={i} className="rounded-2xl border border-edge bg-surface p-5">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <span className="text-sm font-semibold text-hi">Recap {i + 1}</span>
-                <div className="flex items-center gap-1">
-                  <IconButton label="Move up" disabled={i === 0} onClick={() => onMove(i, -1)}>
-                    <Icon name="up" className="h-4 w-4" />
-                  </IconButton>
-                  <IconButton
-                    label="Move down"
-                    disabled={i === draft.entries.length - 1}
-                    onClick={() => onMove(i, 1)}
-                  >
-                    <Icon name="down" className="h-4 w-4" />
-                  </IconButton>
-                  <IconButton label="Remove recap" onClick={() => onRemove(i)}>
-                    <Icon name="trash" className="h-4 w-4" />
-                  </IconButton>
-                </div>
-              </div>
-
+            <EntryCard
+              key={i}
+              title={`Recap ${i + 1}`}
+              index={i}
+              count={draft.entries.length}
+              removeLabel="Remove recap"
+              onMove={onMove}
+              onRemove={onRemove}
+            >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <FieldLabel htmlFor={`through-${i}`}>Through chapter</FieldLabel>
@@ -113,7 +103,7 @@ export default function RecapsEditor({
                 />
                 <FieldError message={err.text} />
               </div>
-            </div>
+            </EntryCard>
           )
         })}
 
@@ -167,30 +157,5 @@ export default function RecapsEditor({
         </div>
       </div>
     </div>
-  )
-}
-
-function IconButton({
-  children,
-  label,
-  onClick,
-  disabled,
-}: {
-  children: React.ReactNode
-  label: string
-  onClick: () => void
-  disabled?: boolean
-}) {
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      title={label}
-      onClick={onClick}
-      disabled={disabled}
-      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-edge text-dim transition-colors hover:border-pink-500 hover:text-pink-300 disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-edge disabled:hover:text-dim"
-    >
-      {children}
-    </button>
   )
 }
