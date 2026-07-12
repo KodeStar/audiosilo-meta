@@ -113,6 +113,31 @@ type asinRef struct {
 	ASIN   string `json:"asin"`
 }
 
+type positionOut struct {
+	Chapter int `json:"chapter"`
+}
+
+type characterXref struct {
+	Wikidata  string `json:"wikidata,omitempty"`
+	Goodreads string `json:"goodreads,omitempty"`
+}
+
+type characterOut struct {
+	ID          string         `json:"id"`
+	Name        string         `json:"name"`
+	Aliases     []string       `json:"aliases,omitempty"`
+	Role        string         `json:"role,omitempty"`
+	Reveal      positionOut    `json:"reveal"`
+	Description string         `json:"description,omitempty"`
+	Xref        *characterXref `json:"xref,omitempty"`
+}
+
+type recapOut struct {
+	Through positionOut `json:"through"`
+	Scope   string      `json:"scope,omitempty"`
+	Text    string      `json:"text"`
+}
+
 type workDetail struct {
 	ID             string            `json:"id"`
 	Title          string            `json:"title"`
@@ -124,6 +149,8 @@ type workDetail struct {
 	Series         []seriesRef       `json:"series"`
 	Xref           *workXref         `json:"xref,omitempty"`
 	Recordings     []recordingDetail `json:"recordings"`
+	Characters     []characterOut    `json:"characters,omitempty"`
+	Recaps         []recapOut        `json:"recaps,omitempty"`
 }
 
 // workDetail returns the full work document, or (nil, nil) when absent.
@@ -161,7 +188,94 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 	if d.Recordings, err = s.recordingsOf(id); err != nil {
 		return nil, err
 	}
+	if d.Characters, err = s.charactersOf(id); err != nil {
+		return nil, err
+	}
+	if d.Recaps, err = s.recapsOf(id); err != nil {
+		return nil, err
+	}
 	return &d, nil
+}
+
+// sidecarSchemaVersion is the artifact schema_version that first carried the
+// characters/recaps tables. A newer binary may briefly serve an older release,
+// so the sidecar queries no-op below it rather than probing for the tables.
+const sidecarSchemaVersion = 2
+
+// charactersOf returns the per-work character sidecar entries in authored order,
+// or nil when the work has none (or the artifact predates the sidecar tables).
+func (s *snapshot) charactersOf(workID string) ([]characterOut, error) {
+	if s.schemaVersion < sidecarSchemaVersion {
+		return nil, nil
+	}
+	rows, err := s.db.Query(
+		`SELECT id, name, role, reveal_chapter, description, wikidata, goodreads FROM characters WHERE work_id=? ORDER BY ord`, workID)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	var out []characterOut
+	for rows.Next() {
+		var c characterOut
+		var role, desc, wiki, gr sql.NullString
+		if err := rows.Scan(&c.ID, &c.Name, &role, &c.Reveal.Chapter, &desc, &wiki, &gr); err != nil {
+			return nil, err
+		}
+		c.Role, c.Description = role.String, desc.String
+		if wiki.String != "" || gr.String != "" {
+			c.Xref = &characterXref{Wikidata: wiki.String, Goodreads: gr.String}
+		}
+		out = append(out, c)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	arows, err := s.db.Query(`SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`, workID)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = arows.Close() }()
+	aliases := map[string][]string{}
+	for arows.Next() {
+		var cid, alias string
+		if err := arows.Scan(&cid, &alias); err != nil {
+			return nil, err
+		}
+		aliases[cid] = append(aliases[cid], alias)
+	}
+	if err := arows.Err(); err != nil {
+		return nil, err
+	}
+	for i := range out {
+		out[i].Aliases = aliases[out[i].ID]
+	}
+	return out, nil
+}
+
+// recapsOf returns the per-work recap sidecar entries ordered by position, or
+// nil when the work has none (or the artifact predates the sidecar tables).
+func (s *snapshot) recapsOf(workID string) ([]recapOut, error) {
+	if s.schemaVersion < sidecarSchemaVersion {
+		return nil, nil
+	}
+	rows, err := s.db.Query(
+		`SELECT through_chapter, scope, text FROM recaps WHERE work_id=? ORDER BY through_chapter`, workID)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	var out []recapOut
+	for rows.Next() {
+		var r recapOut
+		var scope sql.NullString
+		if err := rows.Scan(&r.Through.Chapter, &scope, &r.Text); err != nil {
+			return nil, err
+		}
+		r.Scope = scope.String
+		out = append(out, r)
+	}
+	return out, rows.Err()
 }
 
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {

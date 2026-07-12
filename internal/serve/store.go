@@ -3,6 +3,7 @@ package serve
 import (
 	"database/sql"
 	"fmt"
+	"strconv"
 
 	_ "modernc.org/sqlite"
 )
@@ -11,10 +12,11 @@ import (
 // once built; the server swaps the whole pointer to adopt a newer artifact, so
 // in-flight requests keep reading the handle they started with.
 type snapshot struct {
-	db    *sql.DB
-	tag   string // release tag this artifact came from ("" for a local --db)
-	path  string // on-disk path of the artifact
-	stats Stats  // precomputed once, at load
+	db            *sql.DB
+	tag           string // release tag this artifact came from ("" for a local --db)
+	path          string // on-disk path of the artifact
+	stats         Stats  // precomputed once, at load
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2
 }
 
 // Stats is the /api/v1/stats payload; it is cached per snapshot.
@@ -78,6 +80,14 @@ func (s *snapshot) loadStats() error {
 	if err := s.db.QueryRow(`SELECT value FROM meta WHERE key='built_at'`).Scan(&st.BuiltAt); err != nil && err != sql.ErrNoRows {
 		return err
 	}
+	// schema_version tells us which optional tables exist. The characters/recaps
+	// tables arrived in v2; a newer binary may briefly serve an older artifact,
+	// so the query methods gate on this rather than probing for the tables.
+	var sv string
+	if err := s.db.QueryRow(`SELECT value FROM meta WHERE key='schema_version'`).Scan(&sv); err != nil && err != sql.ErrNoRows {
+		return err
+	}
+	s.schemaVersion, _ = strconv.Atoi(sv)
 	s.stats = st
 	return nil
 }

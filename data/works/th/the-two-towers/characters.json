@@ -1,0 +1,116 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Strider"
+      ],
+      "description": "Heir of ancient kings and now a leader of the broken Fellowship, who takes command after tragedy and pursues the enemy across the plains of Rohan. Steadfast and enduring, he moves ever closer to accepting the destiny he has long kept hidden.",
+      "id": "aragorn",
+      "name": "Aragorn",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An elf of the northern woods, keen-eyed and swift with a bow, one of the Fellowship who stays at Aragorn's side. His unlikely, deepening friendship with the dwarf Gimli grows as they run and fight together through the wars of Rohan.",
+      "id": "legolas",
+      "name": "Legolas",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A stout, doughty dwarf of the Fellowship, proud and quick to anger but stout-hearted, who keeps pace with Aragorn and Legolas on the long chase and stands with them through the battles that follow.",
+      "id": "gimli",
+      "name": "Gimli",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gandalf"
+      ],
+      "description": "The wizard, thought lost in the mines of Moria, who returns transformed and robed in white with his power renewed for the struggle ahead. He rejoins Aragorn's company and sets about freeing Rohan from the enemy's grip.",
+      "id": "gandalf-the-white",
+      "name": "Gandalf the White",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Fangorn"
+      ],
+      "description": "The oldest of the Ents, the tree-like shepherds of the forest, slow to speak and slower to anger. He takes in two lost hobbits and, once finally roused, gathers his kind to march against the wizard who has been felling his trees.",
+      "id": "treebeard",
+      "name": "Treebeard",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The aging king of Rohan, long weighed down and misled by a treacherous whispering counselor, until Gandalf frees him from his despair. Renewed in spirit, he takes up his sword and rides to defend his people in war.",
+      "id": "theoden",
+      "name": "Théoden",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A great wizard, once the head of his order, who has turned to seeking power for himself and breeds an army in his fortress of Isengard. He covets the ring and makes war on Rohan, and his persuasive voice can sway the minds of those who stop to listen.",
+      "id": "saruman",
+      "name": "Saruman",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Bearer of the One Ring, pressing on toward Mordor with Sam after the Fellowship's breaking. The ring grows heavier on him with every mile, and he must decide whether to trust a treacherous guide who claims to know the secret ways into the enemy's land.",
+      "id": "frodo-baggins",
+      "name": "Frodo Baggins",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Sam"
+      ],
+      "description": "Frodo's loyal companion, sturdy and stubbornly faithful, who watches over his master's dwindling strength and distrusts every promise of the wretched creature that offers to lead them onward.",
+      "id": "samwise-gamgee",
+      "name": "Samwise Gamgee",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sméagol"
+      ],
+      "description": "The wretched creature who once owned the ring and still hungers for it, captured by Frodo and Sam and bound to serve as their guide. Torn between a cringing wish to please his new master and his consuming craving for the precious, he leads them toward a secret pass.",
+      "id": "gollum",
+      "name": "Gollum",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-two-towers"
+}

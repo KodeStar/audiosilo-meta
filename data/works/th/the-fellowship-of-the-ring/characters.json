@@ -1,0 +1,125 @@
+{
+  "characters": [
+    {
+      "description": "A hobbit of the Shire, Bilbo's younger cousin and heir, who inherits Bag End and Bilbo's old ring when the old hobbit departs. Thoughtful and decent, he loves the Shire's quiet life but comes to shoulder a burden that will carry him far from home.",
+      "id": "frodo-baggins",
+      "name": "Frodo Baggins",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Sam"
+      ],
+      "description": "Frodo's gardener and steadfast friend, a plain, loyal hobbit with a love of old tales and elves. Caught listening at the window while Gandalf reveals the ring's danger, he is enlisted as Frodo's companion and simply refuses to be parted from his master.",
+      "id": "samwise-gamgee",
+      "name": "Samwise Gamgee",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Grey",
+        "the wizard"
+      ],
+      "description": "The wandering wizard, an old friend of Bilbo's, whose fireworks delight the Shire. Long uneasy about Bilbo's ring, he investigates its history and returns with grim news, setting Frodo on the road and guiding the growing effort against the rising Enemy.",
+      "id": "gandalf",
+      "name": "Gandalf",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Now very old but strangely unwearied, the hero of an earlier adventure. At his birthday party he vanishes using his ring and leaves the Shire for good, passing Bag End and - reluctantly, at Gandalf's urging - the ring itself on to Frodo.",
+      "id": "bilbo-baggins",
+      "name": "Bilbo Baggins",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Strider",
+        "the Ranger"
+      ],
+      "description": "A weather-worn Ranger first met at the inn in Bree, where he goes by Strider. Grim and watchful, he proves a friend and guides the hobbits toward Rivendell; he is far more than the rough wanderer he seems, being the long-hidden heir of ancient kings.",
+      "id": "aragorn",
+      "name": "Aragorn",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Merry"
+      ],
+      "description": "A capable, practical young hobbit and Frodo's cousin, one of the friends who has quietly guessed Frodo's secret and insists on sharing the journey rather than being left safely behind.",
+      "id": "meriadoc-brandybuck",
+      "name": "Meriadoc Brandybuck",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Pippin"
+      ],
+      "description": "Frodo's young, cheerful cousin, quick of tongue and eager for the road, who sets out with Frodo and Sam when they leave the Shire and becomes one of the company of travellers.",
+      "id": "peregrin-took",
+      "name": "Peregrin Took",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A proud, valiant warrior from the southern land of Gondor who comes to the Council of Elrond seeking help against the Enemy. Brave and well-meaning, he joins the company but is increasingly troubled by the thought of using the ring's power to defend his people.",
+      "id": "boromir",
+      "name": "Boromir",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Lady of Lórien"
+      ],
+      "description": "The ancient, wise, and beautiful elven Lady who rules the golden wood of Lothlórien and shelters the weary company. She tests each of them, gives them gifts for the road, and shows Frodo a glimpse of things that may come to pass in her mirror.",
+      "id": "galadriel",
+      "name": "Galadriel",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Dark Lord",
+        "the Enemy"
+      ],
+      "description": "The unseen Dark Lord who forged the One Ring long ago to master all the others, and who now bends his will to recovering it. Though he never appears in person, his shadow spreads out of the land of Mordor and his servants hunt the ring across the world.",
+      "id": "sauron",
+      "name": "Sauron",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-fellowship-of-the-ring"
+}

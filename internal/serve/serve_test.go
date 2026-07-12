@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"database/sql"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -68,10 +69,33 @@ func fixtureCatalog() *model.Catalog {
 			{Work: "edgedancer", Position: "10"}, // "10" < "2" as a string; must sort last numerically
 		},
 	}
+	chars := &model.Characters{
+		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Sources: []model.Source{{Type: "community"}},
+		Characters: []model.Character{
+			{
+				ID: "ryland-grace", Name: "Ryland Grace", Role: "protagonist",
+				Aliases: []string{"Dr. Grace"}, Reveal: model.Position{Chapter: 1},
+				Description: "A science teacher who wakes aboard the ship with amnesia.",
+				Xref:        &model.CharacterXref{Wikidata: "Q110001"},
+			},
+			{ID: "rocky", Name: "Rocky", Role: "supporting", Reveal: model.Position{Chapter: 8}},
+		},
+	}
+	recaps := &model.Recaps{
+		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Sources: []model.Source{{Type: "community"}},
+		Recaps: []model.Recap{
+			{Through: model.Position{Chapter: 9}, Scope: "book", Text: "First contact is made."},
+			{Through: model.Position{Chapter: 2}, Scope: "book", Text: "Grace wakes with amnesia."},
+		},
+	}
 	return &model.Catalog{
-		Works:  []*model.Work{phm, wok, wor, edge},
-		People: []*model.Person{andy, porter, sando, kramer, reading},
-		Series: []*model.Series{series},
+		Works:      []*model.Work{phm, wok, wor, edge},
+		People:     []*model.Person{andy, porter, sando, kramer, reading},
+		Series:     []*model.Series{series},
+		Characters: []*model.Characters{chars},
+		Recaps:     []*model.Recaps{recaps},
 	}
 }
 
@@ -324,6 +348,114 @@ func TestWorkDetail(t *testing.T) {
 	asin := r["asin"].([]any)
 	if len(asin) != 1 || asin[0].(map[string]any)["asin"] != "B08G9PRS1K" {
 		t.Errorf("asin = %v", asin)
+	}
+}
+
+func TestWorkDetailCharactersRecaps(t *testing.T) {
+	_, ts := newTestServer(t)
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+
+	chars, ok := body["characters"].([]any)
+	if !ok || len(chars) != 2 {
+		t.Fatalf("characters = %v", body["characters"])
+	}
+	// Authored order preserved: protagonist first.
+	c0 := chars[0].(map[string]any)
+	if c0["id"] != "ryland-grace" || c0["role"] != "protagonist" {
+		t.Errorf("character[0] = %v", c0)
+	}
+	if c0["reveal"].(map[string]any)["chapter"].(float64) != 1 {
+		t.Errorf("reveal = %v", c0["reveal"])
+	}
+	aliases := c0["aliases"].([]any)
+	if len(aliases) != 1 || aliases[0] != "Dr. Grace" {
+		t.Errorf("aliases = %v", aliases)
+	}
+	if c0["xref"].(map[string]any)["wikidata"] != "Q110001" {
+		t.Errorf("xref = %v", c0["xref"])
+	}
+	// The character with no aliases/xref omits those keys.
+	c1 := chars[1].(map[string]any)
+	if c1["id"] != "rocky" {
+		t.Errorf("character[1] = %v", c1)
+	}
+	if _, has := c1["aliases"]; has {
+		t.Errorf("rocky should omit empty aliases")
+	}
+
+	recaps, ok := body["recaps"].([]any)
+	if !ok || len(recaps) != 2 {
+		t.Fatalf("recaps = %v", body["recaps"])
+	}
+	// Served in position order (chapter 2 before 9).
+	if recaps[0].(map[string]any)["through"].(map[string]any)["chapter"].(float64) != 2 {
+		t.Errorf("recap[0] through = %v", recaps[0])
+	}
+	if recaps[1].(map[string]any)["through"].(map[string]any)["chapter"].(float64) != 9 {
+		t.Errorf("recap[1] through = %v", recaps[1])
+	}
+
+	// A work with no sidecars omits the keys entirely (omitempty).
+	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	if _, has := wbody["characters"]; has {
+		t.Errorf("work without characters should omit the key")
+	}
+	if _, has := wbody["recaps"]; has {
+		t.Errorf("work without recaps should omit the key")
+	}
+}
+
+// TestWorkDetailToleratesOlderArtifact simulates a newer metaserve binary
+// briefly serving an older (schema_version 1) artifact that predates the
+// characters/recaps tables: the sidecar queries no-op on the version, so the
+// work still serves, just without them.
+func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
+	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
+	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
+
+	// Roll the artifact back to a v1 shape: the tables are gone and the stamped
+	// version says 1, exactly as a pre-sidecar release would look.
+	db, err := sql.Open("sqlite", dbPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	stmts := []string{
+		"DROP TABLE characters",
+		"DROP TABLE character_aliases",
+		"DROP TABLE recaps",
+		"UPDATE meta SET value='1' WHERE key='schema_version'",
+	}
+	for _, stmt := range stmts {
+		if _, err := db.Exec(stmt); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
+	if err != nil {
+		t.Fatal(err)
+	}
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	if body["error"] != nil {
+		t.Errorf("expected no error, got %v", body["error"])
+	}
+	if _, has := body["characters"]; has {
+		t.Errorf("missing table should yield no characters key, got %v", body["characters"])
+	}
+	if _, has := body["recaps"]; has {
+		t.Errorf("missing table should yield no recaps key")
 	}
 }
 
