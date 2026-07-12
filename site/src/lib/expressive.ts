@@ -57,11 +57,14 @@ export function sortRecaps(recaps: Recap[]): Recap[] {
 }
 
 /** One row in the "Story so far" list, ready to render: a header title, an
-    optional scope/kind badge, and the spoiler text revealed on open. */
+    optional scope/kind badge, and the spoiler text revealed on open. wholeBook
+    marks the full-spoiler summary rows (In short / How did it end?), as opposed
+    to the position-bounded chaptered recaps. */
 export interface StoryRow {
   title: string
   badge?: string
   text: string
+  wholeBook?: boolean
 }
 
 /** The ordered "Story so far" rows for a work: the whole-book "In short" row
@@ -72,10 +75,24 @@ export interface StoryRow {
     carrying only a whole-book summary still gets the tab) derive from its length. */
 export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
   const rows: StoryRow[] = []
-  if (summary?.in_short) rows.push({ title: 'In short', badge: 'whole book', text: summary.in_short })
+  if (summary?.in_short) {
+    rows.push({
+      title: 'In short',
+      badge: 'whole book',
+      text: summary.in_short,
+      wholeBook: true,
+    })
+  }
   for (const r of sortRecaps(recaps)) {
     rows.push({ title: recapLabel(r), badge: scopeLabel(r.scope) ?? undefined, text: r.text })
   }
-  if (summary?.ending) rows.push({ title: 'How did it end?', badge: 'ending', text: summary.ending })
+  if (summary?.ending) {
+    rows.push({
+      title: 'How did it end?',
+      badge: 'ending',
+      text: summary.ending,
+      wholeBook: true,
+    })
+  }
   return rows
 }

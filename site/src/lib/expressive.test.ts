@@ -93,12 +93,12 @@ describe('storyRows', () => {
   })
   it('builds a lone in_short row', () => {
     expect(storyRows([], { in_short: 'the whole book' })).toEqual([
-      { title: 'In short', badge: 'whole book', text: 'the whole book' },
+      { title: 'In short', badge: 'whole book', text: 'the whole book', wholeBook: true },
     ])
   })
   it('builds a lone ending row', () => {
     expect(storyRows([], { ending: 'how it ends' })).toEqual([
-      { title: 'How did it end?', badge: 'ending', text: 'how it ends' },
+      { title: 'How did it end?', badge: 'ending', text: 'how it ends', wholeBook: true },
     ])
   })
   it('orders in_short first, chaptered rows in the middle, ending last', () => {
@@ -109,6 +109,10 @@ describe('storyRows', () => {
       'Up to chapter 5',
       'How did it end?',
     ])
+  })
+  it('marks only the summary rows wholeBook', () => {
+    const flags = storyRows(recaps, { in_short: 'x', ending: 'y' }).map((r) => r.wholeBook)
+    expect(flags).toEqual([true, undefined, undefined, true])
   })
   it('treats empty-string summary fields as absent', () => {
     expect(storyRows([], { in_short: '', ending: '' })).toEqual([])

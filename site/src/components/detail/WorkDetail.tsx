@@ -406,13 +406,16 @@ function StoryRow({ title, badge, text }: { title: string; badge?: string; text:
     first, the position-ordered chaptered recaps, the whole-book "How did it end?"
     row last) - every row an accordion closed by default so the reader chooses how
     far to reveal. The chaptered rows are bounded to their position; the whole-book
-    summary rows are full spoilers. A work may carry only the summary (no chaptered
+    summary rows are full spoilers, and the intro's spoiler clause appears only
+    when such a row is present. A work may carry only the summary (no chaptered
     recaps), in which case just the "In short"/ending rows show. */
 function RecapsPanel({ rows }: { rows: StoryRowData[] }) {
+  const hasWholeBook = rows.some((r) => r.wholeBook)
   return (
     <>
       <p className="mt-6 max-w-2xl text-sm text-dim">
-        Open a recap only as far as you have listened - the whole-book rows are full spoilers.
+        Open a recap only as far as you have listened
+        {hasWholeBook ? ' - the whole-book rows are full spoilers.' : '.'}
       </p>
       <div className="mt-5 divide-y divide-edge/60 overflow-hidden rounded-2xl border border-edge">
         {rows.map((row, i) => (
