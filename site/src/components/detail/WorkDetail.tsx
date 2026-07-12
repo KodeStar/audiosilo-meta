@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react'
+import { useCallback, useState, type ReactNode } from 'react'
 import {
   getWork,
   getSeries,
@@ -472,13 +472,13 @@ function SeriesRail({ work, series, tabHash }: { work: Work; series: Series | nu
     orients the chevron and content (previous points left, next right). */
 function SeriesNavLink({ entry, dir, tabHash }: { entry: SeriesWork; dir: 'prev' | 'next'; tabHash: string }) {
   const chevron = (
-    <span aria-hidden="true" className="shrink-0 text-base leading-none text-dim group-hover:text-pink-400">
+    <span key="chevron" aria-hidden="true" className="shrink-0 text-base leading-none text-dim group-hover:text-pink-400">
       {dir === 'prev' ? '‹' : '›'}
     </span>
   )
-  const position = <span className="shrink-0 text-sm font-semibold text-pink-400">#{entry.position}</span>
+  const position = <span key="position" className="shrink-0 text-sm font-semibold text-pink-400">#{entry.position}</span>
   const title = (
-    <span className={`min-w-0 truncate text-sm text-body group-hover:text-pink-300${dir === 'next' ? ' text-right' : ''}`}>
+    <span key="title" className={`min-w-0 truncate text-sm text-body group-hover:text-pink-300${dir === 'next' ? ' text-right' : ''}`}>
       {entry.work.title}
     </span>
   )
@@ -490,19 +490,7 @@ function SeriesNavLink({ entry, dir, tabHash }: { entry: SeriesWork; dir: 'prev'
         dir === 'next' ? 'justify-end' : ''
       }`}
     >
-      {dir === 'prev' ? (
-        <>
-          {chevron}
-          {position}
-          {title}
-        </>
-      ) : (
-        <>
-          {title}
-          {position}
-          {chevron}
-        </>
-      )}
+      {dir === 'prev' ? [chevron, position, title] : [title, position, chevron]}
     </a>
   )
 }
@@ -658,19 +646,12 @@ function Loaded({ work }: { work: Work }) {
   const tabHash = hashForTab(tab)
 
   // Fetch the work's first series once (shared by the "more in this series" rail
-  // and the prev/next nav) so we never fetch it twice.
-  const firstSeries = work.series?.[0]
-  const [series, setSeries] = useState<Series | null>(null)
-  useEffect(() => {
-    if (!firstSeries) return
-    const ctrl = new AbortController()
-    getSeries(firstSeries.id, ctrl.signal)
-      .then(setSeries)
-      .catch(() => {
-        /* quiet: the rail/nav is a bonus, never an error state */
-      })
-    return () => ctrl.abort()
-  }, [firstSeries?.id]) // eslint-disable-line react-hooks/exhaustive-deps
+  // and the prev/next nav) so we never fetch it twice. A series-less work passes
+  // a null id, which useEntity leaves at 'loading' - mapped to null, so the rail
+  // and nav render nothing; a fetch error maps to null the same quiet way (the
+  // rail/nav is a bonus, never an error state).
+  const seriesState = useEntity<Series>(work.series?.[0]?.id ?? null, getSeries)
+  const series = seriesState.status === 'ready' ? seriesState.data : null
 
   const { prev, next } = series ? seriesNeighbors(series.works, work.id) : { prev: null, next: null }
 

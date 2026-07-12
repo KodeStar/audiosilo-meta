@@ -1,23 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import { positionStart, seriesNeighbors, hashForTab, tabFromHash, type SeriesWork } from './worknav'
+import { seriesNeighbors, hashForTab, tabFromHash, type SeriesWork } from './worknav'
 
 function entry(id: string, position: string): SeriesWork {
   return { position, work: { id, title: id, authors: [] } }
 }
-
-describe('positionStart', () => {
-  it('parses plain and decimal positions', () => {
-    expect(positionStart('1')).toBe(1)
-    expect(positionStart('2.5')).toBe(2.5)
-  })
-  it('takes the start of an omnibus range', () => {
-    expect(positionStart('1-3.5')).toBe(1)
-  })
-  it('sorts an unparseable position last', () => {
-    expect(positionStart('')).toBe(Number.POSITIVE_INFINITY)
-    expect(positionStart('foo')).toBe(Number.POSITIVE_INFINITY)
-  })
-})
 
 describe('seriesNeighbors', () => {
   const works = [entry('a', '1'), entry('b', '2'), entry('c', '3')]
@@ -43,12 +29,11 @@ describe('seriesNeighbors', () => {
   it('returns nulls for a single-member series', () => {
     expect(seriesNeighbors([entry('only', '1')], 'only')).toEqual({ prev: null, next: null })
   })
-  it('sorts by position regardless of input order and does not mutate', () => {
-    const unordered = [entry('c', '3'), entry('a', '1'), entry('b', '2.5')]
-    const { prev, next } = seriesNeighbors(unordered, 'b')
-    expect(prev?.work.id).toBe('a')
-    expect(next?.work.id).toBe('c')
-    expect(unordered.map((e) => e.work.id)).toEqual(['c', 'a', 'b'])
+  it('trusts the input order (the API returns works position-sorted; no client re-sort)', () => {
+    const asReceived = [entry('c', '3'), entry('a', '1'), entry('b', '2.5')]
+    const { prev, next } = seriesNeighbors(asReceived, 'a')
+    expect(prev?.work.id).toBe('c')
+    expect(next?.work.id).toBe('b')
   })
 })
 
