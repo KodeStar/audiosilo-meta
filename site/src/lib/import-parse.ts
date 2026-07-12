@@ -431,3 +431,16 @@ export function candidatesForBook(
 ): WorkCandidate[] {
   return book.authors.flatMap((a) => worksByAuthor.get(authorKey(a)) ?? [])
 }
+
+/** Drop duplicate candidates by work id, keeping the first. Pure. Used when
+ *  merging a truncated author search with the exact authored list. */
+export function dedupeCandidates(candidates: WorkCandidate[]): WorkCandidate[] {
+  const seen = new Set<string>()
+  const out: WorkCandidate[] = []
+  for (const c of candidates) {
+    if (seen.has(c.id)) continue
+    seen.add(c.id)
+    out.push(c)
+  }
+  return out
+}

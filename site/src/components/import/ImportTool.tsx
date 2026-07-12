@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { lookup, search, formatRuntime, type SearchResult } from '../../lib/api'
+import { lookup, search, getPerson, formatRuntime, type SearchResult } from '../../lib/api'
 import {
   parseExport,
   partitionByIdentifier,
   isContributableOnMiss,
   matchExistingWork,
+  authorKey,
   authorSearchKeys,
   candidatesForBook,
+  dedupeCandidates,
   type ParsedBook,
   type ParseOutcome,
   type WorkCandidate,
@@ -43,6 +45,13 @@ async function runPool<T>(
   }
   await Promise.all(Array.from({ length: Math.min(size, items.length) }, () => next()))
 }
+
+// Map a search-work or person-authored entry to a work candidate (same shape).
+const toCandidate = (x: {
+  id: string
+  title: string
+  authors: { name: string }[]
+}): WorkCandidate => ({ id: x.id, title: x.title, authors: x.authors })
 
 const PRIVACY =
   'Your export is read entirely in your browser. Only ASINs and ISBNs are sent to the API, to check what is already in the database. Personal fields never leave your device.'
@@ -239,9 +248,26 @@ export default function ImportTool() {
     await runPool([...authorSearchKeys(misses)], POOL_SIZE, ctrl.signal, async ([key, name]) => {
       try {
         const res = await search(name, AUTHOR_WORKS_LIMIT, ctrl.signal)
-        const works = res.results
+        let works: WorkCandidate[] = res.results
           .filter((r): r is Extract<SearchResult, { kind: 'work' }> => r.kind === 'work')
-          .map((r) => ({ id: r.id, title: r.title, authors: r.authors }))
+          .map(toCandidate)
+        // A prolific author can have more works than the search cap returns. When
+        // the result is truncated, resolve the author's person id and pull the
+        // complete authored list, so an existing work past the cap still matches.
+        if (res.results.length >= AUTHOR_WORKS_LIMIT) {
+          const person = res.results.find(
+            (r): r is Extract<SearchResult, { kind: 'person' }> =>
+              r.kind === 'person' && authorKey(r.name) === key
+          )
+          if (person) {
+            try {
+              const p = await getPerson(person.id, ctrl.signal)
+              works = dedupeCandidates([...works, ...p.authored.map(toCandidate)])
+            } catch {
+              // Keep the (truncated) search works if the person fetch fails.
+            }
+          }
+        }
         worksByAuthor.set(key, works)
       } catch {
         if (!ctrl.signal.aborted) worksByAuthor.set(key, [])
