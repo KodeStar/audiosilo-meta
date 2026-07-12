@@ -171,6 +171,49 @@ export interface LookupResponse {
   recording_id: string
 }
 
+// --- Coverage (the contribute page's "what needs work" feed) --------------
+
+/** A dimension of the community expressive layer a work can be missing. */
+export type CoverageDimension = 'characters' | 'recaps' | 'recap_summary'
+
+/** Catalogue-wide totals. The three sidecar counts are OMITTED when the artifact
+    cannot report them (an older build); a real 0 still serializes. Consumers
+    distinguish "omitted" (render as unknown) from a genuine 0. */
+export interface CoverageTotals {
+  works: number
+  with_characters?: number
+  with_recaps?: number
+  with_recap_summary?: number
+}
+
+/** A work that is missing part of the expressive layer, with the specific
+    dimensions it lacks. */
+export interface CoverageMissing {
+  id: string
+  title: string
+  authors: PersonRef[]
+  series?: SeriesRef | null
+  missing: CoverageDimension[]
+}
+
+/** A series with gaps in its catalogued volumes (positions present vs missing
+    integer positions). */
+export interface CoverageSeriesGap {
+  id: string
+  name: string
+  present: string[]
+  missing_positions: number[]
+}
+
+/** The /coverage envelope. `missing` is omitted entirely on older artifacts
+    (the rows can't be computed); `series_gaps` is always present. Rows are
+    ordered series-name -> position -> standalone-by-title. */
+export interface CoverageResponse {
+  totals: CoverageTotals
+  missing?: CoverageMissing[]
+  series_gaps: CoverageSeriesGap[]
+}
+
 // --- Fetch helpers --------------------------------------------------------
 
 /** Thrown for any non-OK response so callers can distinguish 404 from failure. */
@@ -241,6 +284,12 @@ export function getPerson(id: string, signal?: AbortSignal): Promise<Person> {
 
 export function getSeries(id: string, signal?: AbortSignal): Promise<Series> {
   return getJSON<Series>(`/api/v1/series/${encodeURIComponent(id)}`, signal)
+}
+
+/** The contribution coverage feed: totals, the works missing characters/recaps,
+    and series with missing volumes. */
+export function getCoverage(signal?: AbortSignal): Promise<CoverageResponse> {
+  return getJSON<CoverageResponse>('/api/v1/coverage', signal)
 }
 
 /** Exact ASIN/ISBN lookup. Returns null on a 404 (no exact match). */

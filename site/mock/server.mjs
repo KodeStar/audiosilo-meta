@@ -17,6 +17,69 @@ const here = dirname(fileURLToPath(import.meta.url))
 const db = JSON.parse(readFileSync(join(here, 'fixtures.json'), 'utf8'))
 const PORT = Number(process.env.PORT ?? 8099)
 
+// A small, self-consistent coverage fixture for the /contribute page: totals
+// (with the three optional sidecar counts present), a handful of works missing
+// characters/recaps across two series and one standalone, and two series gaps.
+const coverage = {
+  totals: {
+    works: 40,
+    with_characters: 8,
+    with_recaps: 6,
+    with_recap_summary: 5,
+  },
+  missing: [
+    {
+      id: 'the-way-of-kings-sanderson',
+      title: 'The Way of Kings',
+      authors: [{ id: 'brandon-sanderson', name: 'Brandon Sanderson' }],
+      series: { id: 'the-stormlight-archive', name: 'The Stormlight Archive', position: '1' },
+      missing: ['recaps', 'recap_summary'],
+    },
+    {
+      id: 'words-of-radiance-sanderson',
+      title: 'Words of Radiance',
+      authors: [{ id: 'brandon-sanderson', name: 'Brandon Sanderson' }],
+      series: { id: 'the-stormlight-archive', name: 'The Stormlight Archive', position: '2' },
+      missing: ['characters', 'recaps', 'recap_summary'],
+    },
+    {
+      id: 'the-blade-itself-abercrombie',
+      title: 'The Blade Itself',
+      authors: [{ id: 'joe-abercrombie', name: 'Joe Abercrombie' }],
+      series: { id: 'the-first-law', name: 'The First Law', position: '1' },
+      missing: ['characters'],
+    },
+    {
+      id: 'before-they-are-hanged-abercrombie',
+      title: 'Before They Are Hanged',
+      authors: [{ id: 'joe-abercrombie', name: 'Joe Abercrombie' }],
+      series: { id: 'the-first-law', name: 'The First Law', position: '2' },
+      missing: ['characters', 'recaps'],
+    },
+    {
+      id: 'project-hail-mary-weir',
+      title: 'Project Hail Mary',
+      authors: [{ id: 'andy-weir', name: 'Andy Weir' }],
+      series: null,
+      missing: ['characters', 'recaps', 'recap_summary'],
+    },
+  ],
+  series_gaps: [
+    {
+      id: 'the-stormlight-archive',
+      name: 'The Stormlight Archive',
+      present: ['1', '2', '4'],
+      missing_positions: [3],
+    },
+    {
+      id: 'the-first-law',
+      name: 'The First Law',
+      present: ['1', '3'],
+      missing_positions: [2],
+    },
+  ],
+}
+
 function send(res, status, body) {
   res.writeHead(status, {
     'content-type': 'application/json',
@@ -46,6 +109,8 @@ const server = createServer((req, res) => {
   const p = url.pathname
 
   if (p === '/api/v1/stats') return send(res, 200, db.stats)
+
+  if (p === '/api/v1/coverage') return send(res, 200, coverage)
 
   if (p === '/api/v1/search') {
     const q = (url.searchParams.get('q') || '').toLowerCase().trim()

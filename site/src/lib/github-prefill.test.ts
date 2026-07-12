@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest'
 import {
   addWorkIssueUrl,
   addRecordingIssueUrl,
+  addCharactersIssueUrl,
+  addRecapsIssueUrl,
   factualSubset,
   importLibraryIssueUrl,
 } from './github-prefill'
@@ -138,6 +140,29 @@ describe('addRecordingIssueUrl', () => {
     expect(p.get('rec_narrators')).toBe('Vox Player')
     expect(p.get('rec_asins')).toBe('US: B0ABCDEFGH')
     expect(p.get('rec_abridged')).toBe('Unabridged')
+  })
+})
+
+describe('addCharactersIssueUrl / addRecapsIssueUrl', () => {
+  it('use the sidecar templates and carry the absolute work_ref', () => {
+    const chars = params(addCharactersIssueUrl('a-deadly-education'))
+    expect(chars.get('template')).toBe('add-characters.yml')
+    expect(chars.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+
+    const recaps = params(addRecapsIssueUrl('a-deadly-education'))
+    expect(recaps.get('template')).toBe('add-recaps.yml')
+    expect(recaps.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a-deadly-education')
+  })
+
+  it('encode an awkward work id in work_ref', () => {
+    const p = params(addCharactersIssueUrl('a b/c'))
+    expect(p.get('work_ref')).toBe('https://meta.audiosilo.app/work?id=a%20b%2Fc')
+  })
+
+  it('target the github issues host', () => {
+    const u = new URL(addRecapsIssueUrl('w'))
+    expect(u.host).toBe('github.com')
+    expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
   })
 })
 

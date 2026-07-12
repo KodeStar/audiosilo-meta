@@ -71,6 +71,38 @@ export function addRecordingIssueUrl(book: ParsedBook, work: WorkMatch): string 
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
+// The absolute work URL used as work_ref, mirroring addRecordingIssueUrl (the
+// server has no id-only reverse route, so the human-readable work page is the
+// stable reference a maintainer follows).
+function workRef(workId: string): string {
+  return META_SITE + href.work(workId)
+}
+
+/**
+ * Build a prefilled-issue URL for the add-characters.yml template - the CC BY-SA
+ * character sidecar for a work already in the catalogue. Only work_ref rides in
+ * the URL; the generated characters.json is attached to the issue by the
+ * contributor (long-form JSON cannot ride a URL), matching the import hand-off.
+ */
+export function addCharactersIssueUrl(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-characters.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
+/**
+ * Build a prefilled-issue URL for the add-recaps.yml template - the CC BY-SA
+ * "story so far" sidecar for a work already in the catalogue. As with
+ * add-characters, the generated recaps.json rides as an attachment.
+ */
+export function addRecapsIssueUrl(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-recaps.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
 // The only OpenAudible fields we keep for the bulk download - factual metadata
 // (LICENSING.md). Everything else (purchase dates, ratings, file paths,
 // descriptions/summaries) is stripped and never leaves the device beyond this.

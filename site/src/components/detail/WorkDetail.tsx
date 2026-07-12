@@ -568,6 +568,61 @@ function ImproveRecord({ id }: { id: string }) {
   )
 }
 
+/** Contribution CTAs for a work: routes into the guided builder for the parts of
+    the expressive layer this work is missing (characters / story-so-far), and to
+    the add-recording issue form when it has no recordings yet. The work_ref is
+    prefilled so the form links back to this work rather than creating a duplicate.
+    Renders nothing when the work already has all three, so a fully-populated work
+    shows no call to action. */
+function ContributeCTAs({ work }: { work: Work }) {
+  const needsCharacters = (work.characters?.length ?? 0) === 0
+  const needsRecaps =
+    (work.recaps?.length ?? 0) === 0 &&
+    !work.recap_summary?.in_short &&
+    !work.recap_summary?.ending
+  const needsRecording = (work.recordings?.length ?? 0) === 0
+  if (!needsCharacters && !needsRecaps && !needsRecording) return null
+
+  const buildUrl = (kind: 'characters' | 'recaps') =>
+    `/build?${new URLSearchParams({ work: work.id, kind }).toString()}`
+  const addRecordingUrl = `https://github.com/kodestar/audiosilo-meta/issues/new?${new URLSearchParams(
+    {
+      template: 'add-recording.yml',
+      work_ref: `https://meta.audiosilo.app${href.work(work.id)}`,
+    }
+  ).toString()}`
+
+  const cta =
+    'inline-flex items-center rounded-lg border border-edge px-4 py-2 text-sm font-medium text-hi transition-colors hover:border-pink-500 hover:text-pink-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
+
+  return (
+    <section className="mt-14 rounded-2xl border border-edge bg-surface p-6">
+      <h2 className="text-lg font-semibold text-hi">Help expand this work</h2>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-dim">
+        Add the community layer other databases leave out. Characters and recaps are your own
+        words under CC BY-SA - the guided builder walks you through it.
+      </p>
+      <div className="mt-5 flex flex-wrap gap-3">
+        {needsCharacters ? (
+          <a className={cta} href={buildUrl('characters')}>
+            Add characters
+          </a>
+        ) : null}
+        {needsRecaps ? (
+          <a className={cta} href={buildUrl('recaps')}>
+            Add story so far
+          </a>
+        ) : null}
+        {needsRecording ? (
+          <a className={cta} href={addRecordingUrl} target="_blank" rel="noopener">
+            Add a recording
+          </a>
+        ) : null}
+      </div>
+    </section>
+  )
+}
+
 /** The "General" tab: the work's description, its recordings, and the
     "more in this series" rail. This is the whole main-column body for a plain
     work (one with no characters/recaps sidecar). The series is fetched once by
@@ -802,6 +857,7 @@ function Loaded({ work }: { work: Work }) {
         </div>
       </div>
 
+      <ContributeCTAs work={work} />
       <ImproveRecord id={work.id} />
     </div>
   )

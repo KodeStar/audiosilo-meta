@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro'
+import BuildTool from '../components/build/BuildTool.tsx'
+---
+
+<Base
+  title="Build a contribution - AudioSilo Meta"
+  description="A guided builder for the community CC BY-SA layer: write spoiler-tagged characters and position-keyed story-so-far recaps for a work, download a ready sidecar file, and attach it to a prefilled GitHub issue."
+>
+  <BuildTool client:only="react" />
+</Base>
