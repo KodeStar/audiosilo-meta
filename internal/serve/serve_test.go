@@ -85,6 +85,8 @@ func fixtureCatalog() *model.Catalog {
 	recaps := &model.Recaps{
 		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
 		Sources: []model.Source{{Type: "community"}},
+		InShort: "A lone amnesiac wakes aboard a ship, befriends an alien, and saves both worlds.",
+		Ending:  "Grace stays on Erid while the cure flies home.",
 		Recaps: []model.Recap{
 			{Through: model.Position{Chapter: 9}, Scope: "book", Text: "First contact is made."},
 			{Through: model.Position{Chapter: 2}, Scope: "book", Text: "Grace wakes with amnesia."},
@@ -408,6 +410,78 @@ func TestWorkDetailCharactersRecaps(t *testing.T) {
 	}
 }
 
+func TestWorkDetailRecapSummary(t *testing.T) {
+	_, ts := newTestServer(t)
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	sum, ok := body["recap_summary"].(map[string]any)
+	if !ok {
+		t.Fatalf("recap_summary = %v", body["recap_summary"])
+	}
+	if sum["in_short"] == "" || sum["in_short"] == nil {
+		t.Errorf("in_short = %v", sum["in_short"])
+	}
+	if sum["ending"] == "" || sum["ending"] == nil {
+		t.Errorf("ending = %v", sum["ending"])
+	}
+
+	// A work whose recaps sidecar has no summary fields omits the key entirely.
+	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	if _, has := wbody["recap_summary"]; has {
+		t.Errorf("work without a recap summary should omit the key")
+	}
+}
+
+// TestRecapSummaryToleratesV2Artifact simulates a newer metaserve binary
+// serving an older (schema_version 2) artifact that has the characters/recaps
+// tables but not recap_summaries: the summary query no-ops on the version, so
+// the work still serves with its characters/recaps but no recap_summary.
+func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
+	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
+	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
+
+	db, err := sql.Open("sqlite", dbPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	stmts := []string{
+		"DROP TABLE recap_summaries",
+		"UPDATE meta SET value='2' WHERE key='schema_version'",
+	}
+	for _, stmt := range stmts {
+		if _, err := db.Exec(stmt); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
+	if err != nil {
+		t.Fatal(err)
+	}
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	if body["error"] != nil {
+		t.Errorf("expected no error, got %v", body["error"])
+	}
+	if _, has := body["recap_summary"]; has {
+		t.Errorf("missing recap_summaries table should yield no recap_summary key")
+	}
+	// The v2 sidecars (characters/recaps) are still served.
+	if _, has := body["recaps"]; !has {
+		t.Errorf("v2 artifact should still serve recaps")
+	}
+}
+
 // TestWorkDetailToleratesOlderArtifact simulates a newer metaserve binary
 // briefly serving an older (schema_version 1) artifact that predates the
 // characters/recaps tables: the sidecar queries no-op on the version, so the
@@ -426,6 +500,7 @@ func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 		"DROP TABLE characters",
 		"DROP TABLE character_aliases",
 		"DROP TABLE recaps",
+		"DROP TABLE recap_summaries",
 		"UPDATE meta SET value='1' WHERE key='schema_version'",
 	}
 	for _, stmt := range stmts {
@@ -456,6 +531,9 @@ func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 	}
 	if _, has := body["recaps"]; has {
 		t.Errorf("missing table should yield no recaps key")
+	}
+	if _, has := body["recap_summary"]; has {
+		t.Errorf("missing table should yield no recap_summary key")
 	}
 }
 

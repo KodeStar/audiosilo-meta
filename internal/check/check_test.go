@@ -101,6 +101,25 @@ func TestCharactersRecapsValid(t *testing.T) {
 	}
 }
 
+// TestRecapsSummaryFields covers the optional whole-book summary fields
+// (in_short / ending) and the raised per-entry text cap (2000 -> 3000): a
+// recaps sidecar carrying all three still validates.
+func TestRecapsSummaryFields(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	longText := strings.Repeat("word ", 500) // 2500 chars, over the old 2000 cap
+	files["works/bo/book-one/recaps.json"] = `{"ending":"The hero wins and goes home.","in_short":"A hero sets out, struggles, and prevails.","license":"CC-BY-SA-3.0","recaps":[{"scope":"book","text":"` + longText + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("recaps with in_short/ending and a 2500-char text should validate, got: %v", res.Problems)
+	}
+	rc := res.Catalog.Recaps
+	if len(rc) != 1 || rc[0].InShort == "" || rc[0].Ending == "" {
+		t.Errorf("summary fields did not load: %+v", rc)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -302,6 +321,44 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":-1}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "chapter",
+		},
+		{
+			name: "recap text exceeds raised length cap",
+			mutate: func(f map[string]string) {
+				long := strings.Repeat("a", 3001)
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"` + long + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/recaps/0/text",
+		},
+		{
+			name: "in_short exceeds length cap",
+			mutate: func(f map[string]string) {
+				long := strings.Repeat("a", 1501)
+				f["works/bo/book-one/recaps.json"] = `{"in_short":"` + long + `","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/in_short",
+		},
+		{
+			name: "in_short empty string rejected",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recaps.json"] = `{"in_short":"","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/in_short",
+		},
+		{
+			name: "ending exceeds length cap",
+			mutate: func(f map[string]string) {
+				long := strings.Repeat("a", 2001)
+				f["works/bo/book-one/recaps.json"] = `{"ending":"` + long + `","license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/ending",
+		},
+		{
+			name: "ending wrong type rejected",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recaps.json"] = `{"ending":42,"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/ending",
 		},
 	}
 

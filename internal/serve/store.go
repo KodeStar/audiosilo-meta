@@ -16,7 +16,7 @@ type snapshot struct {
 	tag           string // release tag this artifact came from ("" for a local --db)
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
-	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2
+	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3
 }
 
 // Stats is the /api/v1/stats payload; it is cached per snapshot.

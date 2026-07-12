@@ -69,6 +69,8 @@ must equal the directory), `license` (**must** be `"CC-BY-SA-3.0"`), and
   "work": "the-last-graduate",
   "license": "CC-BY-SA-3.0",
   "sources": [{ "type": "community" }],
+  "in_short": "The whole book in one paragraph, ending included, for someone about to start the next one.",
+  "ending": "How the book closes: where every major player stands, and which threads stay open.",
   "recaps": [
     {
       "through": { "chapter": 0 },
@@ -84,14 +86,43 @@ must equal the directory), `license` (**must** be `"CC-BY-SA-3.0"`), and
 }
 ```
 
-- **`through`** (required) - the recap is safe to show to a listener who has
-  **finished this chapter** (see Positions).
-- **`scope`** (optional) - `book` (recaps only this book) or `series` (also
-  covers earlier books). A `chapter: 0` + `scope: "series"` entry is the
+A recaps file has two layers: **chaptered `recaps`** (spoiler-gated "story so
+far" entries, the differentiator) and two optional **whole-book summaries**
+(`in_short` and `ending`) for a reader who has already finished the book and
+wants a fast refresher before the sequel. Structure your entries like a
+dedicated recap site, but keep the neutral reference-guide **voice** (see
+Copyright) - never their jokey, editorializing tone.
+
+- **`recaps[].through`** (required) - the recap is safe to show to a listener who
+  has **finished this chapter** (see Positions).
+- **`recaps[].scope`** (optional) - `book` (recaps only this book) or `series`
+  (also covers earlier books). A `chapter: 0` + `scope: "series"` entry is the
   "previously, in earlier books" recap - the single most useful recap in a
   series, shown when someone starts the next book.
-- **`text`** (required) - your own words, **≤ 2000 characters**.
+- **`recaps[].text`** (required) - your own words, **≤ 3000 characters**, target
+  **~150-300 words** per entry. The cap is **per entry** and the entry count is
+  unbounded: recap capacity scales with the book by **adding through-points**,
+  never by cramming more into one entry. Scale the count with the book's length
+  and density - a short middle-grade book might carry 3-4 points; a 30-60+ hour
+  epic or serial volume 12-20 or more. Rule of thumb: one through-point every
+  ~5-10 chapters or ~2-4 listening hours, at natural act/arc breaks. An entry
+  bumping the cap is the signal to **split** its span into two through-points,
+  not to compress harder. The **final** chaptered entry must carry through the
+  **actual ending** - state outcomes plainly; "reveals just enough to..."
+  teasing is a defect, not a style.
 - No two recaps in one file may share a `through` chapter.
+- **`in_short`** (optional) - the **whole arc in one paragraph, ending
+  included**: the fastest possible refresher for someone about to start the next
+  book. Own words, **≤ 1500 characters**, target **~120-200 words** (one
+  paragraph).
+- **`ending`** (optional) - **how the book ends**, the sequel-handoff state:
+  where every major player stands at the close and which threads stay open.
+  State it plainly - never a tease. Own words, **≤ 2000 characters**, target
+  **~150-300 words**. It is deliberately capped tighter than a chaptered `text`
+  entry: a crisp handoff into the next book, **not** another full recap.
+- `in_short` and `ending` describe the finished book, so they are inherently
+  full-spoiler; a consumer only shows them to a reader who has completed the
+  book (or who opts in).
 
 ## Positions (the spoiler model)
 
@@ -116,10 +147,10 @@ Guidance:
   do not fold in a late-book twist about that character. If a character's role
   changes dramatically later, that is a *different, later* recap's job, or a
   second character card in a later book.
-- For **recaps**, place a `through` at natural catch-up points (act breaks,
-  roughly every several chapters, and always a `chapter: 0` series recap for
-  book 2+). Each recap may freely reveal everything **up to and including** its
-  `through` chapter, and nothing after.
+- For **recaps**, place a `through` at natural catch-up points (see the
+  recaps.json section for how many and how often, and always include a
+  `chapter: 0` series recap for book 2+). Each recap may freely reveal
+  everything **up to and including** its `through` chapter, and nothing after.
 
 ## Copyright (this is the load-bearing part)
 
@@ -130,15 +161,20 @@ style:
    jacket copy, or any wiki. Paraphrase from memory of the facts; do not
    reword sentences from a source. Short, factual, reference-guide phrasing.
 2. **Length caps are enforced by the schema** (character description ≤ 1500,
-   recap text ≤ 2000 characters) and exist for a legal reason - a dense,
-   blow-by-blow plot reconstruction is the danger zone. Summarize, do not
-   retell.
-3. **Facts, not invention.** Describe only what actually happens in the book. If
+   recap `text` ≤ 3000, `in_short` ≤ 1500, `ending` ≤ 2000 characters) and exist
+   for a legal reason - a dense, blow-by-blow plot reconstruction is the danger
+   zone. The raised recap cap buys **depth per entry**, not a licence to retell
+   the book scene by scene. Summarize, do not retell.
+3. **Neutral reference-guide voice.** Recap blogs are chatty and opinionated
+   ("X is an arse"); we are not. No jokes, no editorializing, no profanity, no
+   value judgements about the book or its characters - just what happens, stated
+   plainly. Take the *structure* from those sites, never the tone.
+4. **Facts, not invention.** Describe only what actually happens in the book. If
    you are unsure of a detail, **omit it** - an omitted field is always better
    than a fabricated one. (This is the same rule as the CC0 core.)
-4. **Reference-guide framing**, non-commercial. This is an index to help a
+5. **Reference-guide framing**, non-commercial. This is an index to help a
    listener, not a substitute for the book.
-5. Rightsholders can request removal per book; keep `sources` accurate so any
+6. Rightsholders can request removal per book; keep `sources` accurate so any
    contribution can be audited or retracted.
 
 ## Format and validation
@@ -160,6 +196,10 @@ style:
 - [ ] `work` equals the directory slug; file is under the work's shard.
 - [ ] `license` is `"CC-BY-SA-3.0"`; `sources` present.
 - [ ] Every character has an `id` (unique in file), `name`, and `reveal`.
-- [ ] Descriptions/texts are your own words, within the caps, and accurate.
+- [ ] Descriptions/texts are your own words, within the caps, and accurate
+      (character ≤ 1500, recap `text` ≤ 3000, `in_short` ≤ 1500, `ending` ≤ 2000).
+- [ ] The final chaptered recap states the **actual ending**, not a tease; `ending`
+      and `in_short` (if present) carry the real outcome plainly.
+- [ ] Voice is neutral reference-guide - no jokes, editorializing, or profanity.
 - [ ] Positions use the book's own (logical) chapter numbers; `0` = prior-book.
 - [ ] `metafmt --write` and `metacheck` both pass.

@@ -31,10 +31,22 @@
             "description": "Own-words recap. Length-capped for the copyright reference-guide tier; verbatim/near-verbatim phrasing is a separate publish-pipeline check.",
             "type": "string",
             "minLength": 1,
-            "maxLength": 2000
+            "maxLength": 3000
           }
         }
       }
+    },
+    "in_short": {
+      "description": "The whole book in one short own-words paragraph, ending included - the fastest possible refresher for someone about to start the next book.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1500
+    },
+    "ending": {
+      "description": "How the book ends - the closing state of the major players and any open threads, stated plainly (never a tease). Deliberately capped tighter than a chaptered recap entry: a crisp sequel-handoff, not another full recap.",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
     },
     "license": {
       "$ref": "common.schema.json#/$defs/license_content"

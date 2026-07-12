@@ -1,5 +1,5 @@
 // Package build compiles a validated Catalog into a read-only SQLite artifact
-// (schema_version 1) with an FTS5 search index and covering indexes for ASIN
+// (see SchemaVersion) with an FTS5 search index and covering indexes for ASIN
 // and ISBN lookup. The build is deterministic: entities are inserted in id
 // order so an unchanged dataset yields byte-stable table contents.
 package build
@@ -18,8 +18,9 @@ import (
 )
 
 // SchemaVersion is written to meta(schema_version). Bumped to 2 when the
-// characters/recaps tables were added.
-const SchemaVersion = 2
+// characters/recaps tables were added; bumped to 3 when the recap_summaries
+// table (per-work in_short / ending) was added.
+const SchemaVersion = 3
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -132,6 +133,13 @@ CREATE TABLE recaps (
 );
 CREATE INDEX idx_recaps_work ON recaps(work_id);
 
+CREATE TABLE recap_summaries (
+  work_id  TEXT PRIMARY KEY,
+  in_short TEXT,
+  ending   TEXT,
+  license  TEXT NOT NULL
+);
+
 CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, names);
 `
 
@@ -219,6 +227,9 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 		return err
 	}
 	if err = insertRecaps(tx, recaps); err != nil {
+		return err
+	}
+	if err = insertRecapSummaries(tx, recaps); err != nil {
 		return err
 	}
 
@@ -410,6 +421,26 @@ func insertRecaps(tx *sql.Tx, recaps []*model.Recaps) error {
 			); err != nil {
 				return err
 			}
+		}
+	}
+	return nil
+}
+
+// insertRecapSummaries writes one recap_summaries row per work whose recaps
+// sidecar carries a whole-book summary (in_short and/or ending). recaps is
+// pre-sorted by work id, so rows land in a deterministic order; an empty field
+// is stored as NULL and a sidecar with neither field yields no row. The row's
+// license mirrors the sidecar's so a source can be retracted wholesale.
+func insertRecapSummaries(tx *sql.Tx, recaps []*model.Recaps) error {
+	for _, rf := range recaps {
+		if rf.InShort == "" && rf.Ending == "" {
+			continue
+		}
+		if _, err := tx.Exec(
+			`INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`,
+			rf.Work, nullStr(rf.InShort), nullStr(rf.Ending), rf.License,
+		); err != nil {
+			return err
 		}
 	}
 	return nil
