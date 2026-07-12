@@ -1,17 +1,48 @@
 import { useEffect, useRef, useState } from 'react'
-import { lookup, formatRuntime } from '../../lib/api'
+import { lookup, search, formatRuntime, type SearchResult } from '../../lib/api'
 import {
   parseExport,
   partitionByIdentifier,
   isContributableOnMiss,
+  matchExistingWork,
+  authorSearchKeys,
+  candidatesForBook,
   type ParsedBook,
   type ParseOutcome,
+  type WorkCandidate,
+  type WorkMatch,
 } from '../../lib/import-parse'
-import { addWorkIssueUrl, factualSubset, importLibraryIssueUrl } from '../../lib/github-prefill'
+import {
+  addWorkIssueUrl,
+  addRecordingIssueUrl,
+  factualSubset,
+  importLibraryIssueUrl,
+} from '../../lib/github-prefill'
 
-// Concurrency for the lookup sweep, and the hard safety cap on export size.
+// Concurrency for the lookup + author-search sweeps, and the hard safety cap on
+// export size.
 const POOL_SIZE = 8
 const MAX_BOOKS = 5000
+// Author-search page size: enough to cover a prolific author's shelf so an
+// existing work isn't missed by the cap.
+const AUTHOR_WORKS_LIMIT = 50
+
+// A fixed-size worker pool over items; stops early if the signal aborts.
+async function runPool<T>(
+  items: T[],
+  size: number,
+  signal: AbortSignal,
+  work: (item: T) => Promise<void>
+): Promise<void> {
+  let idx = 0
+  const next = async (): Promise<void> => {
+    while (idx < items.length && !signal.aborted) {
+      const i = idx++
+      await work(items[i])
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(size, items.length) }, () => next()))
+}
 
 const PRIVACY =
   'Your export is read entirely in your browser. Only ASINs and ISBNs are sent to the API, to check what is already in the database. Personal fields never leave your device.'
@@ -58,9 +89,16 @@ function Icon({
 
 type Phase = 'idle' | 'unknown' | 'libation' | 'error' | 'diffing' | 'results'
 
+// A book to contribute: either a brand-new work, or (existingWork set) a new
+// recording of a work already in the catalogue.
+interface NewBook {
+  book: ParsedBook
+  existingWork: WorkMatch | null
+}
+
 interface Results {
   inDatabase: ParsedBook[]
-  newBooks: ParsedBook[]
+  newBooks: NewBook[]
   cannotMatch: ParsedBook[]
   skipped: number
 }
@@ -103,6 +141,7 @@ export default function ImportTool() {
   const [errorMsg, setErrorMsg] = useState('')
   const [dragging, setDragging] = useState(false)
   const [progress, setProgress] = useState({ done: 0, total: 0 })
+  const [matching, setMatching] = useState(false)
   const [results, setResults] = useState<Results | null>(null)
 
   const abortRef = useRef<AbortController | null>(null)
@@ -117,6 +156,7 @@ export default function ImportTool() {
     setPhase('idle')
     setErrorMsg('')
     setProgress({ done: 0, total: 0 })
+    setMatching(false)
     setResults(null)
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
@@ -160,22 +200,24 @@ export default function ImportTool() {
     const { identified, unidentified } = partitionByIdentifier(books)
     const cannotMatch: ParsedBook[] = [...unidentified]
     const inDatabase: ParsedBook[] = []
-    const newBooks: ParsedBook[] = []
+    const misses: ParsedBook[] = []
 
     setResults(null)
+    setMatching(false)
     setProgress({ done: 0, total: identified.length })
     setPhase('diffing')
 
     const ctrl = new AbortController()
     abortRef.current = ctrl
 
-    const worker = async (book: ParsedBook) => {
+    // Phase 1: look up each unique identifier against the catalogue.
+    await runPool(identified, POOL_SIZE, ctrl.signal, async (book) => {
       const value = book.asin ?? book.isbn
       if (!value) return
       try {
         const match = await lookup(book.asin ? 'asin' : 'isbn', value, ctrl.signal)
         if (match) inDatabase.push(book)
-        else if (isContributableOnMiss(book)) newBooks.push(book)
+        else if (isContributableOnMiss(book)) misses.push(book)
         else cannotMatch.push(book) // not found, but unknown language -> cannot auto-match
       } catch {
         if (ctrl.signal.aborted) return
@@ -185,22 +227,33 @@ export default function ImportTool() {
           setProgress((p) => ({ ...p, done: p.done + 1 }))
         }
       }
-    }
-
-    // Fixed-size worker pool over the unique identifiers.
-    let idx = 0
-    const next = async (): Promise<void> => {
-      while (idx < identified.length && !ctrl.signal.aborted) {
-        const i = idx++
-        await worker(identified[i])
-      }
-    }
-    const workers = Array.from({ length: Math.min(POOL_SIZE, identified.length) }, () =>
-      next()
-    )
-    await Promise.all(workers)
-
+    })
     if (ctrl.signal.aborted) return
+
+    // Phase 2: for every miss, decide new-work vs new-recording by checking
+    // whether the work is already catalogued. The ASIN missed, so we can't look
+    // up by id; instead search each distinct author once (cached) - a clean,
+    // FTS-indexed query - and match the work title locally.
+    setMatching(true)
+    const worksByAuthor = new Map<string, WorkCandidate[]>()
+    await runPool([...authorSearchKeys(misses)], POOL_SIZE, ctrl.signal, async ([key, name]) => {
+      try {
+        const res = await search(name, AUTHOR_WORKS_LIMIT, ctrl.signal)
+        const works = res.results
+          .filter((r): r is Extract<SearchResult, { kind: 'work' }> => r.kind === 'work')
+          .map((r) => ({ id: r.id, title: r.title, authors: r.authors }))
+        worksByAuthor.set(key, works)
+      } catch {
+        if (!ctrl.signal.aborted) worksByAuthor.set(key, [])
+      }
+    })
+    if (ctrl.signal.aborted) return
+
+    const newBooks: NewBook[] = misses.map((book) => ({
+      book,
+      existingWork: matchExistingWork(book, candidatesForBook(book, worksByAuthor)),
+    }))
+
     abortRef.current = null
     setResults({ inDatabase, newBooks, cannotMatch, skipped })
     setPhase('results')
@@ -220,7 +273,11 @@ export default function ImportTool() {
 
   function downloadNewBooks() {
     if (!results) return
-    const data = JSON.stringify(results.newBooks.map(factualSubset), null, 2)
+    const data = JSON.stringify(
+      results.newBooks.map((n) => factualSubset(n.book)),
+      null,
+      2
+    )
     const blob = new Blob([data], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -323,7 +380,11 @@ export default function ImportTool() {
       <div className="rounded-2xl border border-edge bg-surface p-6">
         <div className="flex items-center justify-between gap-4">
           <p className="text-sm font-medium text-hi" aria-live="polite">
-            {total === 0 ? 'Sorting your library...' : `Checking ${shown} of ${total}...`}
+            {matching
+              ? 'Matching your editions...'
+              : total === 0
+                ? 'Sorting your library...'
+                : `Checking ${shown} of ${total}...`}
           </p>
           <button type="button" onClick={reset} className={`${BTN_SECONDARY} px-4 py-2`}>
             Cancel
@@ -374,27 +435,36 @@ export default function ImportTool() {
 
           {results.newBooks.length <= 10 ? (
             <ul className="mt-5 space-y-3">
-              {results.newBooks.map((b, i) => {
+              {results.newBooks.map((n, i) => {
+                const b = n.book
                 const line = metaLine(b)
+                const href = n.existingWork
+                  ? addRecordingIssueUrl(b, n.existingWork)
+                  : addWorkIssueUrl(b)
                 return (
-                <li
-                  key={i}
-                  className="flex flex-col gap-3 rounded-xl border border-edge bg-raised p-4 sm:flex-row sm:items-center sm:justify-between"
-                >
-                  <div className="min-w-0">
-                    <p className="font-medium text-hi">{b.title}</p>
-                    {line ? <p className="mt-1 text-sm text-dim">{line}</p> : null}
-                  </div>
-                  <a
-                    href={addWorkIssueUrl(b)}
-                    target="_blank"
-                    rel="noopener"
-                    className={`${BTN_SECONDARY} shrink-0 px-4 py-2 text-sm`}
+                  <li
+                    key={i}
+                    className="flex flex-col gap-3 rounded-xl border border-edge bg-raised p-4 sm:flex-row sm:items-center sm:justify-between"
                   >
-                    <Icon name="external" className="h-4 w-4" />
-                    Contribute this book
-                  </a>
-                </li>
+                    <div className="min-w-0">
+                      <p className="font-medium text-hi">{b.title}</p>
+                      {line ? <p className="mt-1 text-sm text-dim">{line}</p> : null}
+                      {n.existingWork ? (
+                        <p className="mt-1 text-xs text-pink-300">
+                          New narration of an existing work: {n.existingWork.title}
+                        </p>
+                      ) : null}
+                    </div>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener"
+                      className={`${BTN_SECONDARY} shrink-0 px-4 py-2 text-sm`}
+                    >
+                      <Icon name="external" className="h-4 w-4" />
+                      {n.existingWork ? 'Add a recording' : 'Contribute this book'}
+                    </a>
+                  </li>
                 )
               })}
             </ul>
