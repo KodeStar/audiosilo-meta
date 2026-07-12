@@ -64,9 +64,13 @@ jobs:
         id: prev
         env:
           GH_TOKEN: ${{ github.token }}
-        # `gh release view` with no tag returns the latest release. If there is
-        # one and its meta.sqlite.gz downloads AND gunzips cleanly, export its
-        # tag so the compress step generates a binary delta from prev.sqlite.
+        # The repo publishes BOTH data releases (data-v*, carrying meta.sqlite.gz)
+        # and code/image releases (v*, no data assets), so GitHub's "latest"
+        # release can be either. The patch base is therefore the newest
+        # non-draft, non-prerelease release that actually carries a
+        # meta.sqlite.gz asset - selected from the release list, not from
+        # "latest". If it downloads AND gunzips cleanly, export its tag so the
+        # compress step generates a binary delta from prev.sqlite.
         # The gunzip stays inside the guard: a corrupt previous asset must skip
         # patch generation, not fail the step (which would block every future
         # release, since each run re-downloads the same latest asset). The
@@ -74,11 +78,13 @@ jobs:
         # Placed after metacheck/metabuild so a failing build never wastes the
         # download.
         run: |
-          prev_tag="$(gh release view --json tagName -q .tagName 2>/dev/null || true)"
+          prev_tag="$(gh api 'repos/${{ github.repository }}/releases?per_page=15' \
+            --jq '[.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))][0].tag_name // empty' \
+            2>/dev/null || true)"
           if [ -n "$prev_tag" ] && gh release download "$prev_tag" --pattern meta.sqlite.gz --output prev.sqlite.gz && gunzip prev.sqlite.gz; then
             echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
           else
-            echo "no previous release; skipping patch generation"
+            echo "no previous data release; skipping patch generation"
           fi
 
       - name: Compress and checksum

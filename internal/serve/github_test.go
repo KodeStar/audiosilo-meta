@@ -82,18 +82,27 @@ func TestGunzipTo(t *testing.T) {
 	}
 }
 
-// fakeGitHub serves a releases/latest endpoint with ETag/304 support plus a
-// per-release set of named assets. It counts full (200) release responses, 304s,
-// and per-asset downloads. setRelease advances the release (new tag => new ETag)
-// and resets the per-asset hit counts, so a test can assert exactly which assets
-// the *current* refresh fetched; setAssetFailure makes one asset 500 on demand.
+// fakeRel is one release as the fake publishes it: a tag, its named assets, and
+// the draft/prerelease flags the selection logic must respect.
+type fakeRel struct {
+	tag        string
+	draft      bool
+	prerelease bool
+	assets     map[string][]byte
+}
+
+// fakeGitHub serves the releases LIST endpoint (newest-first, like GitHub) with
+// ETag/304 support plus per-release named assets. It counts full (200) list
+// responses, 304s, and per-asset downloads. setRelease/setReleases advance the
+// published state (new tags => new ETag) and reset the per-asset hit counts, so
+// a test can assert exactly which assets the *current* refresh fetched;
+// setAssetFailure makes one asset 500 on demand.
 type fakeGitHub struct {
 	srv *httptest.Server
 
 	mu      sync.Mutex
-	tag     string
+	rels    []fakeRel
 	etag    string
-	assets  map[string][]byte
 	hits    map[string]int
 	failing map[string]bool
 
@@ -105,38 +114,57 @@ func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitH
 	f := &fakeGitHub{}
 	f.setRelease(tag, assets)
 	mux := http.NewServeMux()
-	mux.HandleFunc("/repos/owner/name/releases/latest", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/repos/owner/name/releases", func(w http.ResponseWriter, r *http.Request) {
 		f.mu.Lock()
-		etag, tag := f.etag, f.tag
-		names := make([]string, 0, len(f.assets))
-		for name := range f.assets {
-			names = append(names, name)
-		}
-		f.mu.Unlock()
-
-		if r.Header.Get("If-None-Match") == etag {
+		if r.Header.Get("If-None-Match") == f.etag {
+			f.mu.Unlock()
 			f.notMod.Add(1)
 			w.WriteHeader(http.StatusNotModified)
 			return
 		}
+		etag := f.etag
+		list := make([]ghRelease, 0, len(f.rels))
+		for _, fr := range f.rels {
+			rel := ghRelease{TagName: fr.tag, Draft: fr.draft, Prerelease: fr.prerelease}
+			names := make([]string, 0, len(fr.assets))
+			for name := range fr.assets {
+				names = append(names, name)
+			}
+			sort.Strings(names)
+			for _, name := range names {
+				// Download URLs are namespaced per release (like real GitHub
+				// asset URLs), so two releases advertising the same asset name
+				// never shadow each other.
+				rel.Assets = append(rel.Assets, ghAsset{Name: name, DownloadURL: f.srv.URL + "/dl/" + fr.tag + "/" + name})
+			}
+			list = append(list, rel)
+		}
+		f.mu.Unlock()
+
 		f.fullFetch.Add(1)
 		w.Header().Set("ETag", etag)
-		sort.Strings(names)
-		rel := ghRelease{TagName: tag}
-		for _, name := range names {
-			rel.Assets = append(rel.Assets, ghAsset{Name: name, DownloadURL: f.srv.URL + "/dl/" + name})
-		}
-		_ = json.NewEncoder(w).Encode(rel)
+		_ = json.NewEncoder(w).Encode(list)
 	})
 	mux.HandleFunc("/dl/", func(w http.ResponseWriter, r *http.Request) {
-		name := strings.TrimPrefix(r.URL.Path, "/dl/")
+		tag, name, found := strings.Cut(strings.TrimPrefix(r.URL.Path, "/dl/"), "/")
+		if !found {
+			http.NotFound(w, r)
+			return
+		}
 		f.mu.Lock()
 		if f.failing[name] {
 			f.mu.Unlock()
 			http.Error(w, "boom", http.StatusInternalServerError)
 			return
 		}
-		data, ok := f.assets[name]
+		var data []byte
+		ok := false
+		for _, fr := range f.rels {
+			if fr.tag == tag {
+				data, ok = fr.assets[name]
+				break
+			}
+		}
 		if ok {
 			f.hits[name]++
 		}
@@ -152,16 +180,25 @@ func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitH
 	return f
 }
 
-// setRelease advances the fake to a new release, changing the ETag (so the next
-// poll is a 200, not a 304) and resetting per-asset hit counts and failures.
-func (f *fakeGitHub) setRelease(tag string, assets map[string][]byte) {
+// setReleases replaces the published release list (order = newest first, like
+// the real endpoint), changing the ETag (so the next poll is a 200, not a 304)
+// and resetting per-asset hit counts and failures.
+func (f *fakeGitHub) setReleases(rels ...fakeRel) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	f.tag = tag
-	f.etag = `"` + tag + `"`
-	f.assets = assets
+	f.rels = rels
+	tags := make([]string, len(rels))
+	for i, r := range rels {
+		tags[i] = r.tag
+	}
+	f.etag = `"` + strings.Join(tags, "+") + `"`
 	f.hits = map[string]int{}
 	f.failing = map[string]bool{}
+}
+
+// setRelease publishes a single (data) release - the common case.
+func (f *fakeGitHub) setRelease(tag string, assets map[string][]byte) {
+	f.setReleases(fakeRel{tag: tag, assets: assets})
 }
 
 // setAssetFailure makes downloads of the named asset return 500 (or heals it).
@@ -210,9 +247,9 @@ func makeAssets(t *testing.T, db []byte, patchFrom string, prev []byte) map[stri
 	t.Helper()
 	gz := gzOf(t, db)
 	assets := map[string][]byte{
-		"meta.sqlite.gz":        gz,
-		"meta.sqlite.gz.sha256": sumFile("meta.sqlite.gz", gz),
-		"meta.sqlite.sha256":    sumFile("meta.sqlite", db),
+		dataAssetName:             gz,
+		dataAssetName + ".sha256": sumFile(dataAssetName, gz),
+		"meta.sqlite.sha256":      sumFile("meta.sqlite", db),
 	}
 	if patchFrom != "" && prev != nil {
 		assets[patchAssetName(patchFrom)] = makePatch(t, prev, db)
@@ -260,6 +297,29 @@ const (
 	tagR2 = "data-v2026.07.12-r2"
 )
 
+// codeOnlyRel mimics a code/image release (v*): newest in the list, no data
+// assets - release selection must skip it.
+var codeOnlyRel = fakeRel{tag: "v0.2.0", assets: map[string][]byte{
+	"metaserve-linux-amd64.tar.gz": []byte("a binary, not data"),
+}}
+
+// preRelDecoy mimics a prerelease DATA release: it advertises the data asset
+// (selection only looks at name presence; nothing ever downloads it), but the
+// prerelease flag must exclude it - adopting it would flip loaded to its tag.
+var preRelDecoy = fakeRel{
+	tag:        "data-v2026.07.13-pre",
+	prerelease: true,
+	assets:     map[string][]byte{dataAssetName: nil},
+}
+
+// draftDecoy is preRelDecoy's sibling for the Draft branch of the filter: a
+// draft release carrying the data asset name that must likewise be skipped.
+var draftDecoy = fakeRel{
+	tag:    "data-vdraft",
+	draft:  true,
+	assets: map[string][]byte{dataAssetName: nil},
+}
+
 // setupR1 arranges the standard patch-test starting point from prebuilt v1
 // artifacts: a fake publishing v1 under tagR1, a server seeded from v1Path, and
 // one full refresh so the server is loaded on R1 (its snapshot path pointing at
@@ -300,8 +360,8 @@ func TestRefreshETagAndSwap(t *testing.T) {
 	if fake.notMod.Load() != 1 {
 		t.Errorf("expected a 304 on the second poll, got %d", fake.notMod.Load())
 	}
-	if fake.hitCount("meta.sqlite.gz") != 1 {
-		t.Errorf("gz downloaded %d times, want exactly 1", fake.hitCount("meta.sqlite.gz"))
+	if fake.hitCount(dataAssetName) != 1 {
+		t.Errorf("gz downloaded %d times, want exactly 1", fake.hitCount(dataAssetName))
 	}
 }
 
@@ -309,7 +369,7 @@ func TestRefreshRejectsCorruptDownload(t *testing.T) {
 	seed := buildFixtureDB(t, fixtureCatalog(), nil)
 	assets := makeAssets(t, readDB(t, seed), "", nil)
 	// A checksum that does not match the gz payload.
-	assets["meta.sqlite.gz.sha256"] = []byte("deadbeef  meta.sqlite.gz\n")
+	assets[dataAssetName+".sha256"] = []byte("deadbeef  " + dataAssetName + "\n")
 	fake := newFakeGitHub(t, tagR1, assets)
 	srv := newPollServer(t, seed, fake)
 
@@ -346,7 +406,7 @@ func TestRefreshPatchHappyPath(t *testing.T) {
 		t.Errorf("patched artifact (%d bytes) differs from v2 (%d bytes)", len(patched), len(v2))
 	}
 	// The gz anchor must never have been fetched for R2 (patch path only).
-	if got := fake.hitCount("meta.sqlite.gz"); got != 0 {
+	if got := fake.hitCount(dataAssetName); got != 0 {
 		t.Errorf("gz fetched %d times during patch refresh, want 0", got)
 	}
 	if got := fake.hitCount(patchAssetName(tagR1)); got != 1 {
@@ -418,7 +478,7 @@ func TestRefreshPatchFallsBack(t *testing.T) {
 			if got := srv.current().stats.Works; got != 5 {
 				t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
 			}
-			if got := fake.hitCount("meta.sqlite.gz"); got != 1 {
+			if got := fake.hitCount(dataAssetName); got != 1 {
 				t.Errorf("gz fetched %d times, want 1 (full fallback used)", got)
 			}
 			if got := fake.hitCount(patchAssetName(tagR1)); got != tc.wantPatchHits {
@@ -439,7 +499,7 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 	// R2 is published (no patch asset, so the full path runs), but its gz
 	// download 500s: the refresh must error and nothing may be adopted.
 	fake.setRelease(tagR2, makeAssets(t, v2, "", nil))
-	fake.setAssetFailure("meta.sqlite.gz", true)
+	fake.setAssetFailure(dataAssetName, true)
 	if err := srv.refresh(context.Background()); err == nil {
 		t.Fatal("expected refresh to fail while the asset download 500s")
 	}
@@ -449,7 +509,7 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 
 	// The asset heals (same release, same ETag). The next refresh must retry
 	// and succeed - before the etag-forget fix it 304-ed and no-oped forever.
-	fake.setAssetFailure("meta.sqlite.gz", false)
+	fake.setAssetFailure(dataAssetName, false)
 	if err := srv.refresh(context.Background()); err != nil {
 		t.Fatalf("refresh after the asset healed: %v", err)
 	}
@@ -461,10 +521,80 @@ func TestRefreshRetriesAfterFailedDownload(t *testing.T) {
 	}
 }
 
+// TestRefreshSkipsNonDataReleases pins the selection criterion: the repo also
+// cuts code/image releases (v*, no data assets) and GitHub's newest release can
+// be one of them, so the poller must adopt the newest non-draft, non-prerelease
+// release CARRYING the data asset - on both the patch and the full path.
+func TestRefreshSkipsNonDataReleases(t *testing.T) {
+	// One pair of artifacts serves both subtests; a code release plus a draft
+	// and a prerelease data decoy sit in front of the real R2 in every case,
+	// pinning each branch of the filter.
+	v1Path, v1, _, v2 := buildV1V2(t)
+
+	cases := []struct {
+		name      string
+		patchFrom string // "" = R2 ships no delta (full path)
+		wantGz    int
+		wantPatch int
+	}{
+		{name: "patch path", patchFrom: tagR1, wantGz: 0, wantPatch: 1},
+		{name: "full path", patchFrom: "", wantGz: 1, wantPatch: 0},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			srv, fake := setupR1(t, v1Path, v1)
+
+			fake.setReleases(codeOnlyRel, draftDecoy, preRelDecoy, fakeRel{tag: tagR2, assets: makeAssets(t, v2, tc.patchFrom, v1)})
+			if err := srv.refresh(context.Background()); err != nil {
+				t.Fatalf("refresh: %v", err)
+			}
+			if srv.loaded != tagR2 {
+				t.Errorf("loaded = %q, want %q (code/draft/prerelease entries must be skipped)", srv.loaded, tagR2)
+			}
+			if got := srv.current().stats.Works; got != 5 {
+				t.Errorf("works = %d, want 5 (v2 adopted)", got)
+			}
+			if got := fake.hitCount(dataAssetName); got != tc.wantGz {
+				t.Errorf("gz fetched %d times, want %d", got, tc.wantGz)
+			}
+			if got := fake.hitCount(patchAssetName(tagR1)); got != tc.wantPatch {
+				t.Errorf("patch fetched %d times, want %d", got, tc.wantPatch)
+			}
+		})
+	}
+}
+
+// TestRefreshErrorsWithoutDataRelease pins the none-found behavior: a release
+// list holding only code releases yields a descriptive error and the serving
+// snapshot is untouched.
+func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
+	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	srv, fake := setupR1(t, seed, readDB(t, seed))
+
+	fake.setReleases(codeOnlyRel)
+	err := srv.refresh(context.Background())
+	if err == nil {
+		t.Fatal("expected refresh to error when no data release exists")
+	}
+	if !strings.Contains(err.Error(), "no data release") {
+		t.Errorf("error = %v, want a descriptive no-data-release error", err)
+	}
+	if srv.loaded != tagR1 {
+		t.Errorf("loaded = %q, want still %q", srv.loaded, tagR1)
+	}
+	if got := srv.current().stats.Works; got != 4 {
+		t.Errorf("works = %d, want 4 (snapshot unchanged)", got)
+	}
+}
+
 // TestWorkflowMatchesGoConstants pins the bash<->Go contract: the release
-// workflow's zstd window and patch-asset filename must match patchWindowLog and
-// patchAssetName. A bump/rename on one side now fails tests instead of silently
-// killing the delta feature (the poller would never find a matching asset).
+// workflow's zstd window, patch-asset filename, and prev-release selection
+// must match patchWindowLog, patchAssetName, dataAssetName, and
+// releaseListPageSize. A bump/rename on one side now fails tests instead of
+// silently killing the delta feature (the poller would never find a matching
+// asset). Expected substrings are derived from the Go constants where one
+// exists; the draft/prerelease jq predicate is pinned verbatim (an equivalent
+// reformatting requires updating this test).
 func TestWorkflowMatchesGoConstants(t *testing.T) {
 	wf, err := os.ReadFile(filepath.Join("..", "..", ".github", "workflows", "release.yml"))
 	if err != nil {
@@ -476,6 +606,17 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 	}
 	if want := patchAssetName("${PREV_TAG}"); !strings.Contains(s, want) {
 		t.Errorf("release.yml does not contain %q - the patch asset naming convention drifted", want)
+	}
+	// The prev-release selection must mirror latestDataRelease: pick by
+	// data-asset presence, exclude drafts/prereleases, over the same window.
+	if want := `.name == "` + dataAssetName + `"`; !strings.Contains(s, want) {
+		t.Errorf("release.yml prev selection does not filter releases by %q - it must pick the newest release carrying the data asset, not GitHub's latest", want)
+	}
+	if want := `select((.draft or .prerelease) | not)`; !strings.Contains(s, want) {
+		t.Errorf("release.yml prev selection does not contain %q - drafts/prereleases must be excluded like latestDataRelease does", want)
+	}
+	if want := "per_page=" + strconv.Itoa(releaseListPageSize); !strings.Contains(s, want) {
+		t.Errorf("release.yml prev selection does not contain %q - keep the scan window in sync with releaseListPageSize", want)
 	}
 }
 
