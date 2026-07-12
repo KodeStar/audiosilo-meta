@@ -54,8 +54,8 @@ type Server struct {
 }
 
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
-// (with Poll) the latest release is fetched synchronously so the server never
-// starts empty.
+// (with Poll) the newest data release is fetched synchronously so the server
+// never starts empty.
 func New(cfg Config) (*Server, error) {
 	if cfg.Logger == nil {
 		cfg.Logger = log.Default()

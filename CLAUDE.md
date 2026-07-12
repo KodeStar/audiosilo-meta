@@ -52,10 +52,14 @@ PR and push to main; `release.yml` builds and publishes a dated release
 contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor),
 `meta.sqlite.sha256` (raw-file digest, for verifying a patched artifact), and a
 best-effort `meta.sqlite.patch.from-<PREV_TAG>.zst` (a zstd `--patch-from` binary
-delta against the previous release, `--long=31`; a stock zstd CLI consumer must
-pass `--long=31` at decompression time for these large artifacts). The workflow
-serializes on a `data-release` concurrency group so two quick merges can't both
-base a patch on the same prev tag. Go 1.25; golangci-lint v2 at a green baseline.
+delta against the previous data release, `--long=31`; a stock zstd CLI consumer
+must pass `--long=31` at decompression time for these large artifacts). The prev
+release is selected by asset presence - the newest non-draft, non-prerelease
+release carrying `meta.sqlite.gz` - because the repo also cuts code/image `v*`
+releases with no data assets, so GitHub's "latest" can be either kind. The
+workflow serializes on a `data-release` concurrency group so two quick merges
+can't both base a patch on the same prev tag. Go 1.25; golangci-lint v2 at a
+green baseline.
 
 ## The data model (the contract)
 
@@ -144,7 +148,10 @@ recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
 `/healthz`; it can also serve a static site at `/`. It never writes: all data is
 public so there is no auth, and responses carry permissive CORS. The current
 artifact lives behind an atomic pointer (`snapshot`); with `--poll` a background
-loop fetches the latest GitHub release conditionally (`If-None-Match`/304). On a
+loop fetches the newest DATA release conditionally (`If-None-Match`/304) - the
+newest non-draft, non-prerelease release carrying `meta.sqlite.gz`, so code/image
+`v*` releases are skipped (`latestDataRelease` scans the release list; GitHub's
+"latest" can be a code release with no data assets). On a
 new release the poller first tries a `--patch-from` binary delta against the
 currently-loaded artifact (`tryPatch` -> `applyPatch`: zstd raw-dict id 0, the
 CLI's patch-from convention; `--long=31` window; the patched file verified

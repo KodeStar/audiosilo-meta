@@ -46,14 +46,29 @@ type ghAsset struct {
 }
 
 type ghRelease struct {
-	TagName string    `json:"tag_name"`
-	Assets  []ghAsset `json:"assets"`
+	TagName    string    `json:"tag_name"`
+	Draft      bool      `json:"draft"`
+	Prerelease bool      `json:"prerelease"`
+	Assets     []ghAsset `json:"assets"`
 }
 
-// latestRelease fetches /releases/latest conditionally. notModified is true when
+// releaseListPageSize is how many recent releases the poller scans for a data
+// release. The repo also cuts code/image releases (v*, no data assets) between
+// data releases, so a small window of the newest-first list is searched rather
+// than trusting a single "latest". If non-data releases ever exhausted the
+// window, a poll-only boot would fail New()'s synchronous first refresh and the
+// process would exit - acceptable at this repo's release cadence.
+const releaseListPageSize = 15
+
+// latestDataRelease fetches the newest releases conditionally and returns the
+// first (newest-first) non-draft, non-prerelease release that carries a
+// meta.sqlite.gz asset. GitHub's "latest" release can be a code/image release
+// (v*) with no data assets, so selection is by asset presence, not recency
+// alone. The list endpoint orders newest-first by created_at, which matches
+// publish order in this repo's create-on-merge flow. notModified is true when
 // GitHub answers 304 (nothing changed since the last successful fetch).
-func (c *ghClient) latestRelease(ctx context.Context) (rel *ghRelease, notModified bool, err error) {
-	url := fmt.Sprintf("%s/repos/%s/releases/latest", c.base, c.repo)
+func (c *ghClient) latestDataRelease(ctx context.Context) (rel *ghRelease, notModified bool, err error) {
+	url := fmt.Sprintf("%s/repos/%s/releases?per_page=%d", c.base, c.repo, releaseListPageSize)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {
 		return nil, false, err
@@ -77,16 +92,27 @@ func (c *ghClient) latestRelease(ctx context.Context) (rel *ghRelease, notModifi
 	}
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
-		return nil, false, fmt.Errorf("releases/latest: %s: %s", resp.Status, strings.TrimSpace(string(body)))
+		return nil, false, fmt.Errorf("releases: %s: %s", resp.Status, strings.TrimSpace(string(body)))
 	}
-	var r ghRelease
-	if err := json.NewDecoder(resp.Body).Decode(&r); err != nil {
+	var list []ghRelease
+	if err := json.NewDecoder(resp.Body).Decode(&list); err != nil {
 		return nil, false, err
 	}
 	if et := resp.Header.Get("ETag"); et != "" {
 		c.etag = et
 	}
-	return &r, false, nil
+	for i := range list {
+		r := &list[i]
+		if r.Draft || r.Prerelease {
+			continue
+		}
+		if _, ok := findAsset(r, dataAssetName); ok {
+			return r, false, nil
+		}
+	}
+	// The stored ETag makes the next poll 304 until the list changes - correct,
+	// since retrying an unchanged list cannot find a data release either.
+	return nil, false, fmt.Errorf("no data release with a %s asset among the latest %d", dataAssetName, len(list))
 }
 
 // forget drops the remembered ETag so the next poll refetches the release
@@ -140,6 +166,11 @@ func (s *Server) downloadAsset(ctx context.Context, rel *ghRelease, name string)
 // deliberate two-file edit, there and here). The decoder options below must
 // admit a window this large or the frame is rejected.
 const patchWindowLog = 31
+
+// dataAssetName is the release asset that makes a release a DATA release: the
+// gzipped SQLite artifact. Release selection keys on its presence; its checksum
+// sibling is dataAssetName + ".sha256".
+const dataAssetName = "meta.sqlite.gz"
 
 // patchAssetName is the release-asset naming convention for the binary delta
 // based on fromTag's artifact.
@@ -284,8 +315,8 @@ func (s *Server) adopt(dbPath, tag string) (*snapshot, error) {
 	return snap, nil
 }
 
-// refresh fetches the latest release; if it is newer than the loaded one, it
-// adopts it, preferring a small binary delta against the currently-loaded
+// refresh fetches the newest data release; if it is newer than the loaded one,
+// it adopts it, preferring a small binary delta against the currently-loaded
 // artifact and falling back to a full download. It is a no-op on 304 or when the
 // loaded tag already matches. Serialized by s.mu (also the only writer of
 // s.loaded / the snapshot path, so tryPatch may read s.current().path safely).
@@ -293,7 +324,7 @@ func (s *Server) refresh(ctx context.Context) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	rel, notModified, err := s.gh.latestRelease(ctx)
+	rel, notModified, err := s.gh.latestDataRelease(ctx)
 	if err != nil {
 		return err
 	}
@@ -326,11 +357,11 @@ func (s *Server) refresh(ctx context.Context) error {
 // gunzips it into the cache, and hot-swaps the snapshot. This is the universal
 // path: it works for the first refresh and whenever a patch is unavailable.
 func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
-	gzData, err := s.downloadAsset(ctx, rel, "meta.sqlite.gz")
+	gzData, err := s.downloadAsset(ctx, rel, dataAssetName)
 	if err != nil {
 		return err
 	}
-	sumData, err := s.downloadAsset(ctx, rel, "meta.sqlite.gz.sha256")
+	sumData, err := s.downloadAsset(ctx, rel, dataAssetName+".sha256")
 	if err != nil {
 		return err
 	}

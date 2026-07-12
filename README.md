@@ -126,8 +126,10 @@ Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 `--poll` (fetch and hot-swap the latest published data release from GitHub),
 `--repo` (default `KodeStar/audiosilo-meta`), `--interval` (default `1h`),
 `--cache` (download dir). With `--poll` and no `--db`, the server fetches the
-latest release on boot; with both, the baked artifact serves immediately and the
-poller upgrades in place. Set `GITHUB_TOKEN` to raise the API rate limit.
+newest data release (the newest release carrying `meta.sqlite.gz` - code/image
+`v*` releases are skipped) on boot; with both, the baked artifact serves
+immediately and the poller upgrades in place. Set `GITHUB_TOKEN` to raise the
+API rate limit.
 
 ### Docker
 
