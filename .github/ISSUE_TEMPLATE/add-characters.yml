@@ -1,0 +1,73 @@
+name: Add characters (the cast)
+description: Add spoiler-tagged character entries for a work that is already in the database.
+title: "[characters] "
+labels: ["add-characters", "data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Add a **characters** sidecar - the spoiler-tagged cast for a work that is
+        already in the database. This is the community **CC BY-SA 3.0** layer, not
+        the CC0 factual core, so it carries different rules than the other forms.
+
+        The easiest way to produce a valid file is the guided builder at
+        [meta.audiosilo.app/build](https://meta.audiosilo.app/build) - it derives
+        the ids, counts against the length caps, keeps the canonical format, and
+        lets you download a ready `characters.json` to attach below. Full authoring
+        guidance is in
+        [AUTHORING.md](https://github.com/kodestar/audiosilo-meta/blob/main/AUTHORING.md).
+
+        **Own words only, neutral reference-guide voice.** No verbatim or
+        near-verbatim text from the book, its jacket, or any wiki; no jokes,
+        editorializing, or value judgements. Describe each character for a reader
+        who has just reached their reveal chapter - never fold in a later twist.
+
+  - type: input
+    id: work_ref
+    attributes:
+      label: The work
+      description: Link to the existing work here, or its slug / path in data/works/, so we know which book this is the cast for.
+      placeholder: https://meta.audiosilo.app/work?id=a-deadly-education
+    validations:
+      required: true
+
+  - type: textarea
+    id: attachment
+    attributes:
+      label: The characters.json file
+      description: Drag the file you downloaded from the builder into this box to attach it (GitHub uploads it and inserts a link). If you wrote it by hand, you can paste its contents instead.
+      placeholder: Drop characters.json here...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: own_words
+    attributes:
+      label: Own words
+      options:
+        - label: Every description is my own words - no verbatim or near-verbatim text from the book, its jacket copy, or any wiki.
+          required: true
+
+  - type: checkboxes
+    id: neutral_voice
+    attributes:
+      label: Neutral voice
+      options:
+        - label: The entries use a neutral reference-guide voice - no jokes, editorializing, profanity, or value judgements.
+          required: true
+
+  - type: checkboxes
+    id: cc_by_sa
+    attributes:
+      label: License
+      options:
+        - label: I license this contribution under CC BY-SA 3.0, and I have the right to do so.
+          required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Anything a reviewer should know (sources, uncertainty, which chapters you have listened through). Optional.
+    validations:
+      required: false

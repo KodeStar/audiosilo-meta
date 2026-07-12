@@ -71,6 +71,59 @@ export function addRecordingIssueUrl(book: ParsedBook, work: WorkMatch): string 
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
+// The absolute work URL used as work_ref, mirroring addRecordingIssueUrl (the
+// server has no id-only reverse route, so the human-readable work page is the
+// stable reference a maintainer follows).
+function workRef(workId: string): string {
+  return META_SITE + href.work(workId)
+}
+
+/**
+ * Build a prefilled-issue URL for the add-characters.yml template - the CC BY-SA
+ * character sidecar for a work already in the catalogue. Only work_ref rides in
+ * the URL; the generated characters.json is attached to the issue by the
+ * contributor (long-form JSON cannot ride a URL), matching the import hand-off.
+ */
+export function addCharactersIssueUrl(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-characters.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
+/**
+ * Build a prefilled-issue URL for the add-recaps.yml template - the CC BY-SA
+ * "story so far" sidecar for a work already in the catalogue. As with
+ * add-characters, the generated recaps.json rides as an attachment.
+ */
+export function addRecapsIssueUrl(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-recaps.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
+/**
+ * The unprefilled add-work.yml issue form (mirroring importLibraryIssueUrl) -
+ * used where the missing book's details are unknown, e.g. a series-gap row on
+ * the contribute page. Named apart from addWorkIssueUrl (the ParsedBook-prefilled
+ * builder above), which stays the import tool's hand-off.
+ */
+export const addWorkIssueFormUrl = `${ISSUE_BASE}?template=add-work.yml`
+
+/**
+ * Build a prefilled-issue URL for the add-recording.yml template from just a
+ * work id - the work-page "Add a recording" CTA for a catalogued work with no
+ * recordings yet. Only work_ref rides in the URL (there is no source book to
+ * prefill the recording half from, unlike addRecordingIssueUrl).
+ */
+export function addRecordingIssueUrlForWork(workId: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-recording.yml')
+  p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
 // The only OpenAudible fields we keep for the bulk download - factual metadata
 // (LICENSING.md). Everything else (purchase dates, ratings, file paths,
 // descriptions/summaries) is stripped and never leaves the device beyond this.

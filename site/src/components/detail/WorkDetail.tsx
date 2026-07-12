@@ -23,8 +23,10 @@ import {
   type SeriesWork,
   type WorkTab,
 } from '../../lib/worknav'
+import { addRecordingIssueUrlForWork } from '../../lib/github-prefill'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
+import { PILL_LINK } from '../ui'
 import {
   useQueryParam,
   usePageTitle,
@@ -568,6 +570,56 @@ function ImproveRecord({ id }: { id: string }) {
   )
 }
 
+/** Contribution CTAs for a work: routes into the guided builder for the parts of
+    the expressive layer this work is missing (characters / story-so-far), and to
+    the add-recording issue form when it has no recordings yet. The work_ref is
+    prefilled so the form links back to this work rather than creating a duplicate.
+    Renders nothing when the work already has all three, so a fully-populated work
+    shows no call to action. */
+function ContributeCTAs({ work }: { work: Work }) {
+  const needsCharacters = (work.characters?.length ?? 0) === 0
+  // "Has any recap content" is exactly what storyRows encodes (chaptered recaps
+  // + the whole-book summary rows), so its emptiness is the single source for
+  // this flag - the same predicate that decides the Story so far tab.
+  const needsRecaps = storyRows(work.recaps ?? [], work.recap_summary).length === 0
+  const needsRecording = (work.recordings?.length ?? 0) === 0
+  if (!needsCharacters && !needsRecaps && !needsRecording) return null
+
+  const cta = `${PILL_LINK} px-4 py-2`
+
+  return (
+    <section className="mt-14 rounded-2xl border border-edge bg-surface p-6">
+      <h2 className="text-lg font-semibold text-hi">Help expand this work</h2>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-dim">
+        Add the community layer other databases leave out. Characters and recaps are your own
+        words under CC BY-SA - the guided builder walks you through it.
+      </p>
+      <div className="mt-5 flex flex-wrap gap-3">
+        {needsCharacters ? (
+          <a className={cta} href={href.build(work.id, 'characters')}>
+            Add characters
+          </a>
+        ) : null}
+        {needsRecaps ? (
+          <a className={cta} href={href.build(work.id, 'recaps')}>
+            Add story so far
+          </a>
+        ) : null}
+        {needsRecording ? (
+          <a
+            className={cta}
+            href={addRecordingIssueUrlForWork(work.id)}
+            target="_blank"
+            rel="noopener"
+          >
+            Add a recording
+          </a>
+        ) : null}
+      </div>
+    </section>
+  )
+}
+
 /** The "General" tab: the work's description, its recordings, and the
     "more in this series" rail. This is the whole main-column body for a plain
     work (one with no characters/recaps sidecar). The series is fetched once by
@@ -802,6 +854,7 @@ function Loaded({ work }: { work: Work }) {
         </div>
       </div>
 
+      <ContributeCTAs work={work} />
       <ImproveRecord id={work.id} />
     </div>
   )

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro'
+import CoveragePanel from '../components/contribute/CoveragePanel.tsx'
+
+const REPO = 'https://github.com/kodestar/audiosilo-meta'
+const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
+---
+
+<Base
+  title="Contribute - AudioSilo Meta"
+  description="Help fill in the open audiobook metadata database: add character guides and story-so-far recaps to the books that need them, and see which series are missing volumes."
+>
+  <section class="relative pb-20">
+    <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
+    <div class="container relative z-10">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span
+          class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500"
+        >
+          Contribute
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">
+          Help fill in the database
+        </h1>
+        <p class="mt-4 text-lg leading-relaxed text-body">
+          The catalogue is community-built. Beyond the facts - works, recordings,
+          narrators and chapters - readers add a spoiler-aware character guide and a
+          story-so-far recap to each book. This page shows what still needs that, and
+          the guided builder walks you through writing it.
+        </p>
+        <p class="mt-4 text-sm leading-relaxed text-dim">
+          Characters and recaps are your own words, contributed under
+          <a
+            href="https://creativecommons.org/licenses/by-sa/3.0/"
+            target="_blank"
+            rel="noopener"
+            class="text-pink-400 transition-colors hover:text-pink-300">CC BY-SA 3.0</a
+          >
+          - not copied from a publisher blurb or another site. See the
+          <a
+            href={AUTHORING}
+            target="_blank"
+            rel="noopener"
+            class="text-pink-400 transition-colors hover:text-pink-300">authoring guide</a
+          >
+          for the spoiler model, the length limits, and worked examples before you start.
+        </p>
+      </div>
+
+      <div class="reveal mx-auto mt-12 max-w-4xl">
+        <CoveragePanel client:only="react" />
+      </div>
+    </div>
+  </section>
+</Base>

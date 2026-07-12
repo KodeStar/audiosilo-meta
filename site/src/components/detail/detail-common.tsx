@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import { ApiError } from '../../lib/api'
 
 /** Read a query-string parameter on the client (detail pages are static shells
-    that carry the entity id in `?id=`). Returns null before hydration / when
-    absent. */
+    that carry the entity id in `?id=`). Returns null ONLY before hydration; once
+    read, an absent parameter yields '' - the same value as a present-but-empty
+    one - so callers can tell "not yet read" (null) from "not in the URL" ('').
+    useEntity maps '' to its not-found state, which is what makes a bare /build
+    or /work URL land on an empty/404 state instead of spinning forever. */
 export function useQueryParam(name: string): string | null {
   const [value, setValue] = useState<string | null>(null)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    setValue(params.get(name))
+    setValue(params.get(name) ?? '')
   }, [name])
   return value
 }
@@ -55,11 +58,19 @@ export function useEntity<T>(
   return state
 }
 
-export function DetailSpinner() {
+/** The shared loading spinner. The detail pages use the defaults; an island
+    embedded mid-page (the coverage panel) overrides the label and wrapper. */
+export function DetailSpinner({
+  label = 'Loading...',
+  className = 'container py-24 text-center',
+}: {
+  label?: string
+  className?: string
+} = {}) {
   return (
-    <div className="container py-24 text-center" aria-live="polite" aria-busy="true">
+    <div className={className} aria-live="polite" aria-busy="true">
       <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-edge border-t-pink-500"></div>
-      <p className="mt-4 text-sm text-dim">Loading...</p>
+      <p className="mt-4 text-sm text-dim">{label}</p>
     </div>
   )
 }
