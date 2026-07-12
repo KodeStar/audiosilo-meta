@@ -325,3 +325,109 @@ export function partitionByIdentifier(books: ParsedBook[]): {
 export function isContributableOnMiss(book: ParsedBook): boolean {
   return book.language !== undefined
 }
+
+// --- Existing-work matching (new-recording vs new-work routing) --------------
+
+/** A work search candidate (the compact shape the search API returns). */
+export interface WorkCandidate {
+  id: string
+  title: string
+  authors: { name: string }[]
+}
+
+/** The existing work a missed book turned out to be a new *recording* of. */
+export interface WorkMatch {
+  id: string
+  title: string
+}
+
+// A comparison key: lowercase, fold diacritics (NFKD splits an accented letter
+// into base + combining mark, which the alphanumeric filter then drops), and
+// collapse to space-separated alphanumeric words.
+function normKey(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+}
+
+// True when one normalized title's token set is contained in the other's - so a
+// catalogue work "Skysworn" matches a messy export title "Skysworn - Cradle,
+// Book 4". Both must be non-empty.
+function titleTokensCompatible(a: string, b: string): boolean {
+  const ta = new Set(a.split(' ').filter(Boolean))
+  const tb = new Set(b.split(' ').filter(Boolean))
+  if (ta.size === 0 || tb.size === 0) return false
+  const [small, big] = ta.size <= tb.size ? [ta, tb] : [tb, ta]
+  for (const t of small) if (!big.has(t)) return false
+  return true
+}
+
+/**
+ * Decide whether a book that missed the ASIN/ISBN lookup is actually a new
+ * *recording* of a work already in the catalogue (so it should route to
+ * add-recording, not add-work - it would otherwise create a duplicate work).
+ *
+ * Prefers an exact-title candidate (its own work) before a looser
+ * subset/superset title match, and requires a shared author for any non-exact
+ * match (and for an exact match when the book lists authors), so a same-title
+ * different-author book is never mistaken for an existing work. Pure. Returns
+ * null when there is no confident match, so the caller defaults to a new work.
+ */
+export function matchExistingWork(
+  book: ParsedBook,
+  candidates: WorkCandidate[]
+): WorkMatch | null {
+  const bt = normKey(book.title)
+  if (!bt) return null
+  const bookAuthors = new Set(book.authors.map(normKey).filter(Boolean))
+  const authorShared = (c: WorkCandidate): boolean =>
+    bookAuthors.size > 0 && c.authors.some((a) => bookAuthors.has(normKey(a.name)))
+
+  let loose: WorkMatch | null = null
+  for (const c of candidates) {
+    const ct = normKey(c.title)
+    if (ct === bt) {
+      if (bookAuthors.size === 0 || authorShared(c)) return { id: c.id, title: c.title }
+    } else if (!loose && authorShared(c) && titleTokensCompatible(ct, bt)) {
+      loose = { id: c.id, title: c.title }
+    }
+  }
+  return loose
+}
+
+/**
+ * The canonical grouping/lookup key for an author name. Uses the SAME normalizer
+ * as matchExistingWork's author comparison, so the set of authors we search and
+ * the authors we match against never disagree (e.g. "Émile Zola" == "Emile Zola").
+ */
+export function authorKey(name: string): string {
+  return normKey(name)
+}
+
+/**
+ * The distinct author keys across a set of books, each mapped to one display
+ * spelling (the first seen) - i.e. the author searches to run, deduped. Pure.
+ */
+export function authorSearchKeys(books: ParsedBook[]): Map<string, string> {
+  const out = new Map<string, string>()
+  for (const b of books) {
+    for (const a of b.authors) {
+      const key = authorKey(a)
+      if (key && !out.has(key)) out.set(key, a)
+    }
+  }
+  return out
+}
+
+/**
+ * The catalogue work candidates for a book: every work by any of its authors,
+ * looked up from an author-key -> works map. Pure.
+ */
+export function candidatesForBook(
+  book: ParsedBook,
+  worksByAuthor: Map<string, WorkCandidate[]>
+): WorkCandidate[] {
+  return book.authors.flatMap((a) => worksByAuthor.get(authorKey(a)) ?? [])
+}
