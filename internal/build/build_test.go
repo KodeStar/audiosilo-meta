@@ -70,6 +70,8 @@ func fixtureCatalog() *model.Catalog {
 	recaps := &model.Recaps{
 		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
 		Sources: []model.Source{{Type: "community"}},
+		InShort: "A lone amnesiac wakes aboard an interstellar ship, befriends an alien engineer, and saves both their worlds.",
+		Ending:  "Grace stays behind on Erid, teaching, while the cure heads home.",
 		Recaps: []model.Recap{
 			{Through: model.Position{Chapter: 9}, Scope: "book", Text: "First contact is made."},
 			{Through: model.Position{Chapter: 2}, Scope: "book", Text: "Grace wakes with amnesia and takes stock of the ship."},
@@ -103,7 +105,7 @@ func buildFixture(t *testing.T) *sql.DB {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":   "2",
+		"schema_version":   "3",
 		"built_at":         "2026-07-11T00:00:00Z",
 		"count_works":      "2",
 		"count_recordings": "2",
@@ -342,6 +344,66 @@ func TestBuildRecapsServedByPosition(t *testing.T) {
 	}
 	if len(chapters) != 2 || chapters[0] != 2 || chapters[1] != 9 {
 		t.Errorf("recap chapters = %v, want [2 9]", chapters)
+	}
+}
+
+func TestBuildRecapSummaries(t *testing.T) {
+	db := buildFixture(t)
+	// The fixture's one recaps sidecar carries both in_short and ending, so
+	// exactly one recap_summaries row exists, keyed to that work.
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM recap_summaries`).Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 1 {
+		t.Fatalf("recap_summaries rows = %d, want 1", n)
+	}
+	var inShort, ending, license string
+	if err := db.QueryRow(`SELECT in_short, ending, license FROM recap_summaries WHERE work_id=?`, "project-hail-mary").
+		Scan(&inShort, &ending, &license); err != nil {
+		t.Fatal(err)
+	}
+	if inShort == "" || ending == "" || license != "CC-BY-SA-3.0" {
+		t.Errorf("recap_summary row = in_short=%q ending=%q license=%q", inShort, ending, license)
+	}
+}
+
+func TestBuildRecapSummaryAbsentWithoutFields(t *testing.T) {
+	// A recaps sidecar with neither in_short nor ending yields no summary row,
+	// while its recap entries are still written.
+	out := filepath.Join(t.TempDir(), "meta.sqlite")
+	cat := &model.Catalog{
+		People: []*model.Person{{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}},
+		Works: []*model.Work{{
+			ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+			Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		}},
+		Recaps: []*model.Recaps{{
+			Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+			Sources: []model.Source{{Type: "community"}},
+			Recaps:  []model.Recap{{Through: model.Position{Chapter: 1}, Text: "It begins."}},
+		}},
+	}
+	if err := Build(cat, out, time.Time{}, nil); err != nil {
+		t.Fatal(err)
+	}
+	db, err := sql.Open("sqlite", out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = db.Close() }()
+	var summaries, recaps int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM recap_summaries`).Scan(&summaries); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.QueryRow(`SELECT COUNT(*) FROM recaps`).Scan(&recaps); err != nil {
+		t.Fatal(err)
+	}
+	if summaries != 0 {
+		t.Errorf("recap_summaries rows = %d, want 0", summaries)
+	}
+	if recaps != 1 {
+		t.Errorf("recaps rows = %d, want 1", recaps)
 	}
 }
 

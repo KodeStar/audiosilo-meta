@@ -94,8 +94,12 @@ tooling via `schema.go`, so schema edits are code changes with tests.
   position-keyed "story so far" summaries. Each has a `through` position (safe
   to show once the listener finishes that chapter), an optional `scope`
   (`book`/`series` - a `chapter:0`+`series` entry is the "previously, in earlier
-  books" recap), and length-capped own-words `text`. No two recaps in a file
-  share a `through` chapter.
+  books" recap), and length-capped own-words `text` (cap 3000). No two recaps in
+  a file share a `through` chapter. The file also carries two optional
+  whole-book summaries for a reader who has finished the book: `in_short` (the
+  whole arc in one paragraph, ending included; cap 1500) and `ending` (how the
+  book closes, stated plainly; cap 2000 - a crisp sequel-handoff, deliberately
+  tighter than a chaptered recap entry).
 
 **Position model** (`common.schema.json#/$defs/position`): `{ "chapter": <int
 >= 0> }`, the logical **edition-independent** work chapter (1-based; `0` = front
@@ -114,11 +118,15 @@ CC0 - the boundary is a schema enum, not a convention (see LICENSING.md).
 
 Characters/recaps flow all the way through: `metabuild` writes them into the
 SQLite artifact (`characters`/`character_aliases`/`recaps` tables, added in
-**artifact schema_version 2**; character `ord`/recap position order preserved,
-deterministic), and `metaserve` returns them inline on `GET /works/{id}`
-(`workDetail.characters`/`.recaps`, `omitempty`). The serve queries degrade
-gracefully if the tables are absent (a newer binary briefly serving a v1
-release), so their absence is "no data", not a 500. **Authoring the expressive
+**artifact schema_version 2**; the per-work `recap_summaries` table for
+`in_short`/`ending` was added in **schema_version 3**, one row per work whose
+recaps sidecar carries at least one of the two fields; character `ord`/recap
+position order preserved, deterministic), and `metaserve` returns them inline on
+`GET /works/{id}` (`workDetail.characters`/`.recaps`/`.recap_summary`,
+`omitempty`). The serve queries degrade gracefully if the tables are absent (a
+newer binary briefly serving a v1/v2 release): characters/recaps gate on
+schema_version >= 2 and the recap summary on >= 3, so a table's absence is "no
+data", not a 500. **Authoring the expressive
 layer is documented in [AUTHORING.md](AUTHORING.md)** (the reusable process:
 positions, spoiler model, copyright caps, checklist) - read it before adding
 characters/recaps by hand or with an agent. The four exemplar series (First Law,
@@ -231,8 +239,10 @@ the schema notes below.
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four
   fully-worked exemplar series have landed** (per-work `characters.json`/
   `recaps.json` sidecars, `$defs/position`, the `$defs/license_content`
-  share-alike enum, artifact schema_version 2, `GET /works/{id}` inline
-  characters/recaps - see the data-model section above and
+  share-alike enum, artifact schema_version 2 - plus the optional whole-book
+  `in_short`/`ending` recap summaries in the `recap_summaries` table at
+  schema_version 3, served as `recap_summary` - `GET /works/{id}` inline
+  characters/recaps/recap_summary - see the data-model section above and
   [AUTHORING.md](AUTHORING.md)). Still to come: the **site render** (in
   progress), the **player render** (the server `/meta` + frontend three-repo
   seam - Stage 2), the verbatim/near-verbatim (n-gram) publish-pipeline check,

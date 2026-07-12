@@ -163,10 +163,14 @@ type Recap struct {
 }
 
 // Recaps is the per-work sidecar holding a work's recaps. It lives in the CC
-// BY-SA layer, decoupled from the CC0 core work record.
+// BY-SA layer, decoupled from the CC0 core work record. InShort is a one-
+// paragraph whole-book refresher (ending included) and Ending states how the
+// book closes; both are optional.
 type Recaps struct {
 	Work    string   `json:"work"`
 	Recaps  []Recap  `json:"recaps"`
+	InShort string   `json:"in_short,omitempty"`
+	Ending  string   `json:"ending,omitempty"`
 	License string   `json:"license"`
 	Sources []Source `json:"sources"`
 }

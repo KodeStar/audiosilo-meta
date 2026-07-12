@@ -138,6 +138,13 @@ type recapOut struct {
 	Text    string      `json:"text"`
 }
 
+// recapSummaryOut is the per-work whole-book summary: a one-paragraph refresher
+// and a plain statement of how the book ends. Both fields are optional.
+type recapSummaryOut struct {
+	InShort string `json:"in_short,omitempty"`
+	Ending  string `json:"ending,omitempty"`
+}
+
 type workDetail struct {
 	ID             string            `json:"id"`
 	Title          string            `json:"title"`
@@ -151,6 +158,7 @@ type workDetail struct {
 	Recordings     []recordingDetail `json:"recordings"`
 	Characters     []characterOut    `json:"characters,omitempty"`
 	Recaps         []recapOut        `json:"recaps,omitempty"`
+	RecapSummary   *recapSummaryOut  `json:"recap_summary,omitempty"`
 }
 
 // workDetail returns the full work document, or (nil, nil) when absent.
@@ -194,6 +202,9 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 	if d.Recaps, err = s.recapsOf(id); err != nil {
 		return nil, err
 	}
+	if d.RecapSummary, err = s.recapSummaryOf(id); err != nil {
+		return nil, err
+	}
 	return &d, nil
 }
 
@@ -201,6 +212,12 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 // characters/recaps tables. A newer binary may briefly serve an older release,
 // so the sidecar queries no-op below it rather than probing for the tables.
 const sidecarSchemaVersion = 2
+
+// summarySchemaVersion is the artifact schema_version that first carried the
+// recap_summaries table (per-work in_short / ending). A newer binary serving an
+// older (v2) release must degrade to "no summary", so the query no-ops below
+// this version rather than probing for the table.
+const summarySchemaVersion = 3
 
 // charactersOf returns the per-work character sidecar entries in authored order,
 // or nil when the work has none (or the artifact predates the sidecar tables).
@@ -276,6 +293,28 @@ func (s *snapshot) recapsOf(workID string) ([]recapOut, error) {
 		out = append(out, r)
 	}
 	return out, rows.Err()
+}
+
+// recapSummaryOf returns the per-work whole-book summary (in_short / ending), or
+// nil when the work has none (or the artifact predates the recap_summaries
+// table). A row present with both fields empty is treated as no summary.
+func (s *snapshot) recapSummaryOf(workID string) (*recapSummaryOut, error) {
+	if s.schemaVersion < summarySchemaVersion {
+		return nil, nil
+	}
+	var inShort, ending sql.NullString
+	err := s.db.QueryRow(`SELECT in_short, ending FROM recap_summaries WHERE work_id=?`, workID).
+		Scan(&inShort, &ending)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	if inShort.String == "" && ending.String == "" {
+		return nil, nil
+	}
+	return &recapSummaryOut{InShort: inShort.String, Ending: ending.String}, nil
 }
 
 func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
