@@ -587,18 +587,32 @@ func (s *snapshot) series(id string) (*seriesDetail, error) {
 	return &d, nil
 }
 
+// parsePositionRange parses a series position string into its numeric span:
+// "2" -> (2, 2), "2.5" -> (2.5, 2.5), "1-3.5" -> (1, 3.5). ok is false when
+// either bound fails to parse. Callers apply their own policy to the span (sort
+// key, integer coverage); this is the single copy of the position grammar in
+// this package. A possible future home is internal/model, next to the schema's
+// position rules, if a third consumer ever appears.
+func parsePositionRange(pos string) (lo, hi float64, ok bool) {
+	pos = strings.TrimSpace(pos)
+	if i := strings.IndexByte(pos, '-'); i > 0 {
+		var err1, err2 error
+		lo, err1 = strconv.ParseFloat(strings.TrimSpace(pos[:i]), 64)
+		hi, err2 = strconv.ParseFloat(strings.TrimSpace(pos[i+1:]), 64)
+		return lo, hi, err1 == nil && err2 == nil
+	}
+	f, err := strconv.ParseFloat(pos, 64)
+	return f, f, err == nil
+}
+
 // positionStart returns the numeric start of a series position string: "2.5"
 // -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last.
 func positionStart(pos string) float64 {
-	pos = strings.TrimSpace(pos)
-	if i := strings.IndexByte(pos, '-'); i > 0 {
-		pos = pos[:i]
-	}
-	f, err := strconv.ParseFloat(strings.TrimSpace(pos), 64)
-	if err != nil {
+	lo, _, ok := parsePositionRange(pos)
+	if !ok {
 		return 1e18
 	}
-	return f
+	return lo
 }
 
 // ---- lookup -----------------------------------------------------------------

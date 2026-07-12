@@ -3,8 +3,6 @@ package serve
 import (
 	"math"
 	"sort"
-	"strconv"
-	"strings"
 )
 
 // coverageTotals is the top-line coverage count: how many works exist and how
@@ -60,14 +58,10 @@ type coverageResult struct {
 //
 // series_gaps has no schema_version dependency and is always computed.
 func (s *snapshot) coverage() (*coverageResult, error) {
-	res := &coverageResult{
-		Totals:     coverageTotals{Works: s.stats.Works},
-		SeriesGaps: []seriesGap{},
-	}
+	res := &coverageResult{Totals: coverageTotals{Works: s.stats.Works}}
 
-	hasChars := map[string]bool{}
-	hasRecaps := map[string]bool{}
-	hasSummary := map[string]bool{}
+	// Nil maps are fine here: they are only read below (a nil-map read is false).
+	var hasChars, hasRecaps, hasSummary map[string]bool
 
 	if s.schemaVersion >= sidecarSchemaVersion {
 		var err error
@@ -114,157 +108,172 @@ func (s *snapshot) coverage() (*coverageResult, error) {
 // expressive-layer dimension. Ordering (deterministic): series works first,
 // grouped by series name (then series id), then numeric-ish position order,
 // then title, then id; standalone works follow, alphabetically by title (then
-// id). A work's series membership is its first series by id (firstSeriesOf),
-// matching the workCard convention.
+// id). A work's series membership is its first series by id, matching the
+// workCard convention (firstSeriesOf). Most works are expected in the list, so
+// authors and series come from two bulk queries rather than per-work lookups.
 func (s *snapshot) missingWorks(hasChars, hasRecaps, hasSummary map[string]bool, evalSummary bool) ([]missingWork, error) {
+	authorNames, err := s.workAuthorNames()
+	if err != nil {
+		return nil, err
+	}
+	firstSeries, err := s.firstSeriesByWork()
+	if err != nil {
+		return nil, err
+	}
+
 	rows, err := s.db.Query(`SELECT id, title FROM works`)
 	if err != nil {
 		return nil, err
 	}
-	type workRow struct{ id, title string }
-	var works []workRow
+	defer func() { _ = rows.Close() }()
+	out := []missingWork{}
 	for rows.Next() {
-		var wr workRow
-		if err := rows.Scan(&wr.id, &wr.title); err != nil {
-			_ = rows.Close()
+		var id, title string
+		if err := rows.Scan(&id, &title); err != nil {
 			return nil, err
 		}
-		works = append(works, wr)
-	}
-	if err := rows.Close(); err != nil {
-		return nil, err
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-
-	// sortable carries the row plus the keys used to order it.
-	type sortable struct {
-		mw         missingWork
-		hasSeries  bool
-		seriesName string
-		seriesID   string
-		pos        float64
-	}
-	var items []sortable
-	for _, wr := range works {
 		var miss []string
-		if !hasChars[wr.id] {
+		if !hasChars[id] {
 			miss = append(miss, "characters")
 		}
-		if !hasRecaps[wr.id] {
+		if !hasRecaps[id] {
 			miss = append(miss, "recaps")
 		}
-		if evalSummary && !hasSummary[wr.id] {
+		if evalSummary && !hasSummary[id] {
 			miss = append(miss, "recap_summary")
 		}
 		if len(miss) == 0 {
 			continue
 		}
-		mw := missingWork{ID: wr.id, Title: wr.title, Missing: miss, Authors: []string{}}
-		authors, err := s.authorsOf(wr.id)
-		if err != nil {
-			return nil, err
+		authors := authorNames[id]
+		if authors == nil {
+			authors = []string{}
 		}
-		for _, a := range authors {
-			mw.Authors = append(mw.Authors, a.Name)
-		}
-		sr, err := s.firstSeriesOf(wr.id)
-		if err != nil {
-			return nil, err
-		}
-		it := sortable{}
-		if sr != nil {
-			mw.Series = sr
-			it.hasSeries = true
-			it.seriesName = sr.Name
-			it.seriesID = sr.ID
-			it.pos = positionStart(sr.Position)
-		}
-		it.mw = mw
-		items = append(items, it)
+		out = append(out, missingWork{
+			ID: id, Title: title, Authors: authors,
+			Series: firstSeries[id], Missing: miss,
+		})
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
 	}
 
-	sort.SliceStable(items, func(i, j int) bool {
-		a, b := items[i], items[j]
-		if a.hasSeries != b.hasSeries {
-			return a.hasSeries // series works before standalone works
+	sort.SliceStable(out, func(i, j int) bool {
+		a, b := out[i], out[j]
+		if (a.Series != nil) != (b.Series != nil) {
+			return a.Series != nil // series works before standalone works
 		}
-		if a.hasSeries {
-			if a.seriesName != b.seriesName {
-				return a.seriesName < b.seriesName
+		if a.Series != nil {
+			if a.Series.Name != b.Series.Name {
+				return a.Series.Name < b.Series.Name
 			}
-			if a.seriesID != b.seriesID {
-				return a.seriesID < b.seriesID
+			if a.Series.ID != b.Series.ID {
+				return a.Series.ID < b.Series.ID
 			}
-			if a.pos != b.pos {
-				return a.pos < b.pos
+			pa, pb := positionStart(a.Series.Position), positionStart(b.Series.Position)
+			if pa != pb {
+				return pa < pb
 			}
 		}
-		if a.mw.Title != b.mw.Title {
-			return a.mw.Title < b.mw.Title
+		if a.Title != b.Title {
+			return a.Title < b.Title
 		}
-		return a.mw.ID < b.mw.ID
+		return a.ID < b.ID
 	})
-
-	out := make([]missingWork, 0, len(items))
-	for _, it := range items {
-		out = append(out, it.mw)
-	}
 	return out, nil
 }
 
-// workIDSet runs a query returning a single work_id column and collects it into
-// a presence set.
+// workAuthorNames returns every work's author display names in credit order,
+// keyed by work id, in one query.
+func (s *snapshot) workAuthorNames() (map[string][]string, error) {
+	rows, err := s.db.Query(
+		`SELECT wa.work_id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id ORDER BY wa.work_id, wa.ord`)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	out := map[string][]string{}
+	for rows.Next() {
+		var workID, name string
+		if err := rows.Scan(&workID, &name); err != nil {
+			return nil, err
+		}
+		out[workID] = append(out[workID], name)
+	}
+	return out, rows.Err()
+}
+
+// firstSeriesByWork returns every work's first series membership (first by
+// series id, mirroring firstSeriesOf's ORDER BY s.id LIMIT 1 semantics), keyed
+// by work id, in one query.
+func (s *snapshot) firstSeriesByWork() (map[string]*seriesRef, error) {
+	rows, err := s.db.Query(
+		`SELECT sw.work_id, s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id ORDER BY sw.work_id, s.id`)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	out := map[string]*seriesRef{}
+	for rows.Next() {
+		var workID string
+		var sr seriesRef
+		if err := rows.Scan(&workID, &sr.ID, &sr.Name, &sr.Position); err != nil {
+			return nil, err
+		}
+		if _, seen := out[workID]; !seen {
+			out[workID] = &sr
+		}
+	}
+	return out, rows.Err()
+}
+
+// workIDSet runs a query returning a single work_id column and folds it into a
+// presence set (row scanning is scanIDs' job).
 func (s *snapshot) workIDSet(query string) (map[string]bool, error) {
 	rows, err := s.db.Query(query)
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = rows.Close() }()
-	set := map[string]bool{}
-	for rows.Next() {
-		var id string
-		if err := rows.Scan(&id); err != nil {
-			return nil, err
-		}
+	ids, err := scanIDs(rows)
+	if err != nil {
+		return nil, err
+	}
+	set := make(map[string]bool, len(ids))
+	for _, id := range ids {
 		set[id] = true
 	}
-	return set, rows.Err()
+	return set, nil
 }
 
 // seriesGaps reports, per series, the integer positions missing strictly between
 // its lowest and highest present integer position. A range position ("1-3.5")
 // covers every integer within it (ceil(lo)..floor(hi)); a bare decimal ("2.5")
 // fills no integer slot. Series with fewer than two covered integers, or with no
-// interior gap, are omitted. Output is sorted by series id.
+// interior gap, are omitted. Output is sorted by series id. All positions come
+// from one bulk query, grouped in memory.
 func (s *snapshot) seriesGaps() ([]seriesGap, error) {
+	positions, err := s.positionsBySeries()
+	if err != nil {
+		return nil, err
+	}
+
 	rows, err := s.db.Query(`SELECT id, name FROM series ORDER BY id`)
 	if err != nil {
 		return nil, err
 	}
-	type ser struct{ id, name string }
-	var all []ser
+	defer func() { _ = rows.Close() }()
+	out := []seriesGap{}
 	for rows.Next() {
-		var sv ser
-		if err := rows.Scan(&sv.id, &sv.name); err != nil {
-			_ = rows.Close()
+		var id, name string
+		if err := rows.Scan(&id, &name); err != nil {
 			return nil, err
 		}
-		all = append(all, sv)
-	}
-	if err := rows.Close(); err != nil {
-		return nil, err
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-
-	out := []seriesGap{}
-	for _, sv := range all {
-		positions, covered, err := s.seriesPositions(sv.id)
-		if err != nil {
-			return nil, err
+		present := positions[id]
+		covered := map[int]bool{}
+		for _, pos := range present {
+			for _, iv := range coveredIntegers(pos) {
+				covered[iv] = true
+			}
 		}
 		if len(covered) < 2 {
 			continue // need a distinct min and max integer for an interior gap
@@ -287,65 +296,50 @@ func (s *snapshot) seriesGaps() ([]seriesGap, error) {
 		if len(gaps) == 0 {
 			continue
 		}
-		sort.SliceStable(positions, func(i, j int) bool {
-			pi, pj := positionStart(positions[i]), positionStart(positions[j])
+		sort.SliceStable(present, func(i, j int) bool {
+			pi, pj := positionStart(present[i]), positionStart(present[j])
 			if pi != pj {
 				return pi < pj
 			}
-			return positions[i] < positions[j]
+			return present[i] < present[j]
 		})
-		out = append(out, seriesGap{ID: sv.id, Name: sv.name, Present: positions, MissingPositions: gaps})
+		out = append(out, seriesGap{ID: id, Name: name, Present: present, MissingPositions: gaps})
 	}
-	return out, nil
+	return out, rows.Err()
 }
 
-// seriesPositions returns a series' raw position strings and the set of integer
-// slots they cover.
-func (s *snapshot) seriesPositions(seriesID string) ([]string, map[int]bool, error) {
-	rows, err := s.db.Query(`SELECT position FROM series_works WHERE series_id=?`, seriesID)
+// positionsBySeries returns every series' raw position strings, keyed by series
+// id, in one query.
+func (s *snapshot) positionsBySeries() (map[string][]string, error) {
+	rows, err := s.db.Query(`SELECT series_id, position FROM series_works ORDER BY series_id`)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
 	defer func() { _ = rows.Close() }()
-	var positions []string
-	covered := map[int]bool{}
+	out := map[string][]string{}
 	for rows.Next() {
-		var pos string
-		if err := rows.Scan(&pos); err != nil {
-			return nil, nil, err
+		var seriesID, pos string
+		if err := rows.Scan(&seriesID, &pos); err != nil {
+			return nil, err
 		}
-		positions = append(positions, pos)
-		for _, iv := range coveredIntegers(pos) {
-			covered[iv] = true
-		}
+		out[seriesID] = append(out[seriesID], pos)
 	}
-	return positions, covered, rows.Err()
+	return out, rows.Err()
 }
 
 // coveredIntegers returns the integer position slots a single series position
 // string fills. A bare integer ("2") fills that integer; a range ("1-3.5") fills
 // every integer in [ceil(lo), floor(hi)]; a bare decimal ("2.5") fills nothing;
-// an unparseable value fills nothing.
+// an unparseable or inverted value fills nothing. The grammar is parsed by the
+// shared parsePositionRange (queries.go).
 func coveredIntegers(pos string) []int {
-	pos = strings.TrimSpace(pos)
-	if pos == "" {
+	lo, hi, ok := parsePositionRange(pos)
+	if !ok || hi < lo {
 		return nil
 	}
-	if i := strings.IndexByte(pos, '-'); i > 0 {
-		lo, err1 := strconv.ParseFloat(strings.TrimSpace(pos[:i]), 64)
-		hi, err2 := strconv.ParseFloat(strings.TrimSpace(pos[i+1:]), 64)
-		if err1 != nil || err2 != nil || hi < lo {
-			return nil
-		}
-		var out []int
-		for v := int(math.Ceil(lo)); v <= int(math.Floor(hi)); v++ {
-			out = append(out, v)
-		}
-		return out
+	var out []int
+	for v := int(math.Ceil(lo)); v <= int(math.Floor(hi)); v++ {
+		out = append(out, v)
 	}
-	f, err := strconv.ParseFloat(pos, 64)
-	if err != nil || f != math.Trunc(f) {
-		return nil
-	}
-	return []int{int(f)}
+	return out
 }
