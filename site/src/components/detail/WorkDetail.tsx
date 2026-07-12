@@ -16,6 +16,14 @@ import {
   type Recap,
 } from '../../lib/api'
 import { roleLabel, revealLabel, recapLabel, scopeLabel, sortRecaps } from '../../lib/expressive'
+import {
+  seriesNeighbors,
+  hashForTab,
+  tabFromHash,
+  type SeriesNeighbors,
+  type SeriesWork,
+  type WorkTab,
+} from '../../lib/worknav'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import {
@@ -415,24 +423,13 @@ function RecapsPanel({ recaps }: { recaps: Recap[] }) {
 }
 
 /** "More in this series": the other member works of the work's (first) series,
-    as a horizontal rail of square cover cards. Renders nothing while loading,
-    on error, or when the series has no other members. */
-function SeriesRail({ work }: { work: Work }) {
-  const first = work.series?.[0]
-  const [series, setSeries] = useState<Series | null>(null)
-
-  useEffect(() => {
-    if (!first) return
-    const ctrl = new AbortController()
-    getSeries(first.id, ctrl.signal)
-      .then(setSeries)
-      .catch(() => {
-        /* quiet: the rail is a bonus, never an error state */
-      })
-    return () => ctrl.abort()
-  }, [first?.id]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  if (!first || !series) return null
+    as a horizontal rail of square cover cards. The series is fetched once in the
+    parent and passed down (shared with the series nav), so this renders nothing
+    when it is still loading, absent, or has no other members. Rail links carry
+    no tab hash - the rail only renders inside the General tab, where the active
+    tab's hash is always empty; the prev/next nav is the hash carrier. */
+function SeriesRail({ work, series }: { work: Work; series: Series | null }) {
+  if (!series) return null
   const others = (series.works ?? []).filter((entry) => entry.work.id !== work.id)
   if (others.length === 0) return null
 
@@ -471,6 +468,72 @@ function SeriesRail({ work }: { work: Work }) {
   )
 }
 
+/** One side (previous / next) of the series nav: a compact link to a neighbouring
+    volume, carrying the active tab hash so flipping stays on the current tab. The
+    title truncates so a long name never blows out the row on a phone. `dir`
+    orients the chevron and content (previous points left, next right). */
+function SeriesNavLink({ entry, dir, tabHash }: { entry: SeriesWork; dir: 'prev' | 'next'; tabHash: string }) {
+  const chevron = (
+    <span key="chevron" aria-hidden="true" className="shrink-0 text-base leading-none text-dim group-hover:text-pink-400">
+      {dir === 'prev' ? '‹' : '›'}
+    </span>
+  )
+  const position = <span key="position" className="shrink-0 text-sm font-semibold text-pink-400">#{entry.position}</span>
+  const title = (
+    <span key="title" className={`min-w-0 truncate text-sm text-body group-hover:text-pink-300${dir === 'next' ? ' text-right' : ''}`}>
+      {entry.work.title}
+    </span>
+  )
+  return (
+    <a
+      href={`${href.work(entry.work.id)}${tabHash}`}
+      aria-label={`${dir === 'prev' ? 'Previous' : 'Next'} in series: ${entry.work.title} (#${entry.position})`}
+      className={`group flex min-w-0 flex-1 items-center gap-2 rounded-xl border border-edge bg-surface px-3 py-2 transition-colors hover:border-pink-500/50 ${
+        dir === 'next' ? 'justify-end' : ''
+      }`}
+    >
+      {dir === 'prev' ? [chevron, position, title] : [title, position, chevron]}
+    </a>
+  )
+}
+
+/** Series prev/next navigation, visible above the tab bar (so it stays on every
+    tab, and shows for works with no tabs). While the series fetch is pending it
+    renders a same-height skeleton row (the work is known to be in a series, so
+    the nav will almost always fill in - without the reservation the tab bar and
+    body would shift down when it does). Renders nothing when the work has no
+    series or no neighbours; a one-sided result keeps its slot so the present link
+    stays on its own side of the row. */
+function SeriesNav({ prev, next, tabHash, pending }: SeriesNeighbors & { tabHash: string; pending: boolean }) {
+  if (pending) {
+    return (
+      <div aria-hidden="true" className="mt-4 flex items-stretch gap-3">
+        <span className="flex flex-1 items-center rounded-xl border border-edge/40 bg-surface/40 px-3 py-2">
+          <span className="invisible text-sm">#</span>
+        </span>
+        <span className="flex flex-1 items-center rounded-xl border border-edge/40 bg-surface/40 px-3 py-2">
+          <span className="invisible text-sm">#</span>
+        </span>
+      </div>
+    )
+  }
+  if (!prev && !next) return null
+  return (
+    <nav aria-label="Series navigation" className="mt-4 flex items-stretch gap-3">
+      {prev ? (
+        <SeriesNavLink entry={prev} dir="prev" tabHash={tabHash} />
+      ) : (
+        <span className="flex-1" aria-hidden="true" />
+      )}
+      {next ? (
+        <SeriesNavLink entry={next} dir="next" tabHash={tabHash} />
+      ) : (
+        <span className="flex-1" aria-hidden="true" />
+      )}
+    </nav>
+  )
+}
+
 /** The community hook: every work page links straight to its source file. */
 function ImproveRecord({ id }: { id: string }) {
   const editUrl = `https://github.com/KodeStar/audiosilo-meta/blob/main/data/works/${encodeURIComponent(
@@ -503,8 +566,9 @@ function ImproveRecord({ id }: { id: string }) {
 
 /** The "General" tab: the work's description, its recordings, and the
     "more in this series" rail. This is the whole main-column body for a plain
-    work (one with no characters/recaps sidecar). */
-function GeneralPanel({ work }: { work: Work }) {
+    work (one with no characters/recaps sidecar). The series is fetched once by
+    the parent and threaded through to the rail. */
+function GeneralPanel({ work, series }: { work: Work; series: Series | null }) {
   return (
     <>
       {work.description ? (
@@ -530,7 +594,7 @@ function GeneralPanel({ work }: { work: Work }) {
         )}
       </section>
 
-      <SeriesRail work={work} />
+      <SeriesRail work={work} series={series} />
     </>
   )
 }
@@ -570,8 +634,6 @@ function TabButton({
   )
 }
 
-type WorkTab = 'general' | 'characters' | 'recaps'
-
 function Loaded({ work }: { work: Work }) {
   usePageTitle(work.title)
   const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
@@ -582,7 +644,47 @@ function Loaded({ work }: { work: Work }) {
   const hasRecaps = recaps.length > 0
   const showTabs = hasCharacters || hasRecaps
 
-  const [tab, setTab] = useState<WorkTab>('general')
+  // Initialise the tab from the URL hash so a deep link like #story-so-far opens
+  // on the right tab from the first frame - this island is client:only, so window
+  // is available at first render and there is no SSR pass to agree with. Falls
+  // back to General when this work lacks that sidecar.
+  const [tab, setTab] = useState<WorkTab>(() => tabFromHash(window.location.hash, { hasCharacters, hasRecaps }))
+
+  // Canonicalise a stale fragment once on mount: a deep link like #story-so-far
+  // onto a work with no recaps fell back to General above, so drop the fragment
+  // the fallback ignored (copying the URL onward would mislead). selectTab keeps
+  // the hash in step from here on.
+  useEffect(() => {
+    const canonical = hashForTab(tab)
+    if (window.location.hash !== canonical) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${canonical}`)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Switching a tab reflects the choice into the hash (no scroll jump, no history
+  // spam) so it rides along when the reader flips to another work in the series;
+  // General clears the fragment entirely.
+  const selectTab = useCallback((next: WorkTab) => {
+    setTab(next)
+    const hash = hashForTab(next)
+    const url = `${window.location.pathname}${window.location.search}${hash}`
+    window.history.replaceState(null, '', url)
+  }, [])
+
+  const tabHash = hashForTab(tab)
+
+  // Fetch the work's first series once (shared by the "more in this series" rail
+  // and the prev/next nav) so we never fetch it twice. A series-less work passes
+  // a null id, which useEntity leaves at 'loading' - mapped to null, so the rail
+  // and nav render nothing; a fetch error maps to null the same quiet way (the
+  // rail/nav is a bonus, never an error state).
+  const seriesState = useEntity<Series>(work.series?.[0]?.id ?? null, getSeries)
+  const series = seriesState.status === 'ready' ? seriesState.data : null
+
+  // The work is known (synchronously) to be in a series while the fetch is still
+  // in flight - that is the window the nav placeholder covers.
+  const seriesPending = (work.series?.length ?? 0) > 0 && seriesState.status === 'loading'
+  const { prev, next } = series ? seriesNeighbors(series.works ?? [], work.id) : { prev: null, next: null }
 
   return (
     <div className="container py-10">
@@ -630,6 +732,10 @@ function Loaded({ work }: { work: Work }) {
             </div>
           ) : null}
 
+          {/* Series prev/next: above the tab bar so it stays visible on every tab
+              (and on works that show no tabs). */}
+          <SeriesNav prev={prev} next={next} tabHash={tabHash} pending={seriesPending} />
+
           {showTabs ? (
             <>
               <div
@@ -641,7 +747,7 @@ function Loaded({ work }: { work: Work }) {
                   id="tab-general"
                   controls="panel-general"
                   active={tab === 'general'}
-                  onClick={() => setTab('general')}
+                  onClick={() => selectTab('general')}
                   label="General"
                 />
                 {hasCharacters ? (
@@ -649,7 +755,7 @@ function Loaded({ work }: { work: Work }) {
                     id="tab-characters"
                     controls="panel-characters"
                     active={tab === 'characters'}
-                    onClick={() => setTab('characters')}
+                    onClick={() => selectTab('characters')}
                     label="Characters"
                     count={characters.length}
                   />
@@ -659,7 +765,7 @@ function Loaded({ work }: { work: Work }) {
                     id="tab-recaps"
                     controls="panel-recaps"
                     active={tab === 'recaps'}
-                    onClick={() => setTab('recaps')}
+                    onClick={() => selectTab('recaps')}
                     label="Story so far"
                     count={recaps.length}
                   />
@@ -668,7 +774,7 @@ function Loaded({ work }: { work: Work }) {
 
               {tab === 'general' ? (
                 <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-                  <GeneralPanel work={work} />
+                  <GeneralPanel work={work} series={series} />
                 </div>
               ) : null}
               {tab === 'characters' ? (
@@ -683,7 +789,7 @@ function Loaded({ work }: { work: Work }) {
               ) : null}
             </>
           ) : (
-            <GeneralPanel work={work} />
+            <GeneralPanel work={work} series={series} />
           )}
         </div>
       </div>
