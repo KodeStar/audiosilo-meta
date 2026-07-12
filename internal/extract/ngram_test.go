@@ -3,6 +3,7 @@ package extract
 import (
 	"os"
 	"path/filepath"
+	"strconv"
 	"testing"
 )
 
@@ -15,7 +16,8 @@ func writeFile(t *testing.T, dir, name, content string) string {
 	return p
 }
 
-// recapsSidecar wraps recap texts into a valid-shaped recaps sidecar.
+// recapsSidecar wraps recap texts into a valid-shaped recaps sidecar. The test
+// strings are printable, so strconv.Quote's escaping is JSON-compatible.
 func recapsSidecar(t *testing.T, dir, name string, texts ...string) string {
 	t.Helper()
 	body := `{"recaps":[`
@@ -23,37 +25,10 @@ func recapsSidecar(t *testing.T, dir, name string, texts ...string) string {
 		if i > 0 {
 			body += ","
 		}
-		body += `{"through":{"chapter":` + itoa(i+1) + `},"text":` + quote(tx) + `}`
+		body += `{"through":{"chapter":` + strconv.Itoa(i+1) + `},"text":` + strconv.Quote(tx) + `}`
 	}
 	body += `]}`
 	return writeFile(t, dir, name, body)
-}
-
-func itoa(n int) string {
-	if n == 0 {
-		return "0"
-	}
-	var b []byte
-	for n > 0 {
-		b = append([]byte{byte('0' + n%10)}, b...)
-		n /= 10
-	}
-	return string(b)
-}
-
-func quote(s string) string {
-	out := []byte{'"'}
-	for _, r := range s {
-		switch r {
-		case '"', '\\':
-			out = append(out, '\\', byte(r))
-		case '\n':
-			out = append(out, '\\', 'n')
-		default:
-			out = append(out, string(r)...)
-		}
-	}
-	return string(append(out, '"'))
 }
 
 func TestNGramHitAtExactlyN(t *testing.T) {
@@ -153,7 +128,7 @@ func TestNGramInShortAndEnding(t *testing.T) {
 	phrase := "the whole thing came apart at the very last moment before dawn"
 	src := writeFile(t, dir, "src.txt", phrase)
 	sc := writeFile(t, dir, "r.json",
-		`{"recaps":[],"in_short":`+quote("Summary. "+phrase)+`,"ending":`+quote(phrase+" indeed.")+`}`)
+		`{"recaps":[],"in_short":`+strconv.Quote("Summary. "+phrase)+`,"ending":`+strconv.Quote(phrase+" indeed.")+`}`)
 
 	f, err := NGram(src, []string{sc}, 8)
 	if err != nil {

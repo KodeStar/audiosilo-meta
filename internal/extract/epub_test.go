@@ -4,7 +4,7 @@ import (
 	"archive/zip"
 	"os"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -28,7 +28,7 @@ func buildEpub(t *testing.T, members map[string]string) string {
 	for name := range members {
 		names = append(names, name)
 	}
-	sort.Strings(names)
+	slices.Sort(names)
 	for _, name := range names {
 		w, err := zw.Create(name)
 		if err != nil {

@@ -157,6 +157,11 @@ The templates below are the ones the exemplar run used, generalized. `<...>`
 marks placeholders. They are model-agnostic; run each as a fresh session (or
 agent) with file access to the working directory.
 
+The templates deliberately restate the length caps and core rules so each
+prompt is a self-contained copy-paste artifact - but AUTHORING.md and the
+schemas own those numbers. If a cap or rule changes there, update these
+templates in the same change.
+
 ### Step 2: fact pass (one prompt per chunk, run sequentially)
 
 ```

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"strings"
 	"unicode"
 )
@@ -132,11 +133,40 @@ type expr struct {
 	text  string
 }
 
-// collectExprs reads a sidecar and returns its expressive strings. It parses
-// generically (map[string]any) so schema growth does not break the tool. A
-// characters file contributes every characters[].description; a recaps file
-// contributes every recaps[].text plus in_short and ending when present. A file
-// with neither key is an error.
+// sidecarFields describes where one sidecar kind's own-words strings live: a
+// string field on each element of the kind's discriminating top-level array,
+// plus any top-level string fields.
+type sidecarFields struct {
+	itemField string
+	topLevel  []string
+}
+
+// expressiveFields is the SOURCE OF TRUTH for which sidecar fields the ngram
+// check scans, keyed by the discriminating top-level array key ("characters"
+// or "recaps"). These are exactly the own-words, length-capped (maxLength)
+// string fields of the sidecar schemas; the drift-guard test
+// (TestCheckedFieldsMatchSchemas) walks the embedded schemas and fails when a
+// capped field appears there that is not listed here.
+var expressiveFields = map[string]sidecarFields{
+	"characters": {itemField: "description"},
+	"recaps":     {itemField: "text", topLevel: []string{"in_short", "ending"}},
+}
+
+// sidecarKinds returns expressiveFields' keys in deterministic (sorted) order.
+func sidecarKinds() []string {
+	kinds := make([]string, 0, len(expressiveFields))
+	for k := range expressiveFields {
+		kinds = append(kinds, k)
+	}
+	slices.Sort(kinds)
+	return kinds
+}
+
+// collectExprs reads a sidecar and returns its expressive strings, driven by
+// expressiveFields (a characters file contributes every
+// characters[].description; a recaps file every recaps[].text plus in_short and
+// ending when present). It parses generically (map[string]any) so schema growth
+// does not break the tool. A file with no known discriminating key is an error.
 func collectExprs(path string) ([]expr, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -147,32 +177,25 @@ func collectExprs(path string) ([]expr, error) {
 		return nil, fmt.Errorf("%s: %w", path, err)
 	}
 
-	_, hasChars := m["characters"]
-	_, hasRecaps := m["recaps"]
-	var out []expr
-	switch {
-	case hasChars:
-		for i, el := range asSlice(m["characters"]) {
-			if s := stringField(el, "description"); s != "" {
-				out = append(out, expr{fmt.Sprintf("characters[%d].description", i), s})
+	for _, kind := range sidecarKinds() {
+		if _, ok := m[kind]; !ok {
+			continue
+		}
+		fields := expressiveFields[kind]
+		var out []expr
+		for i, el := range asSlice(m[kind]) {
+			if s := stringField(el, fields.itemField); s != "" {
+				out = append(out, expr{fmt.Sprintf("%s[%d].%s", kind, i, fields.itemField), s})
 			}
 		}
-	case hasRecaps:
-		for i, el := range asSlice(m["recaps"]) {
-			if s := stringField(el, "text"); s != "" {
-				out = append(out, expr{fmt.Sprintf("recaps[%d].text", i), s})
+		for _, tl := range fields.topLevel {
+			if s, ok := m[tl].(string); ok && s != "" {
+				out = append(out, expr{tl, s})
 			}
 		}
-		if s, ok := m["in_short"].(string); ok && s != "" {
-			out = append(out, expr{"in_short", s})
-		}
-		if s, ok := m["ending"].(string); ok && s != "" {
-			out = append(out, expr{"ending", s})
-		}
-	default:
-		return nil, fmt.Errorf("%s: not a characters or recaps sidecar (no %q or %q key)", path, "characters", "recaps")
+		return out, nil
 	}
-	return out, nil
+	return nil, fmt.Errorf("%s: not a characters or recaps sidecar (no %q or %q key)", path, "characters", "recaps")
 }
 
 func asSlice(v any) []any {

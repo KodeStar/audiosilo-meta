@@ -2,6 +2,7 @@ package extract
 
 import (
 	"archive/zip"
+	"bytes"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -11,6 +12,7 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -225,33 +227,39 @@ type tocLabel struct {
 // EPUB 2 NCX is the fallback. Returns nil labels when neither is present or
 // parseable - split then simply emits no labels.
 func readTOC(files map[string]*zip.File, pkg *opfPackage, opfDir string) ([]tocLabel, string) {
-	if nav := findNavItem(pkg.Items); nav != nil {
-		if zp, err := resolveHref(opfDir, nav.Href); err == nil && files[zp] != nil {
-			if data, err := readZipFile(files[zp]); err == nil {
-				if labels := parseNav(data); len(labels) > 0 {
-					return labels, path.Dir(zp)
-				}
-			}
+	// tryTOC resolves a toc item, reads it, and parses it; ok is false when the
+	// item is absent, unresolvable, unreadable, or yields no labels.
+	tryTOC := func(item *opfItem, parse func([]byte) []tocLabel) (labels []tocLabel, dir string, ok bool) {
+		if item == nil {
+			return nil, "", false
 		}
+		zp, err := resolveHref(opfDir, item.Href)
+		if err != nil || files[zp] == nil {
+			return nil, "", false
+		}
+		data, err := readZipFile(files[zp])
+		if err != nil {
+			return nil, "", false
+		}
+		if labels = parse(data); len(labels) == 0 {
+			return nil, "", false
+		}
+		return labels, path.Dir(zp), true
 	}
-	if ncx := findNCXItem(pkg.Items, pkg.Spine.Toc); ncx != nil {
-		if zp, err := resolveHref(opfDir, ncx.Href); err == nil && files[zp] != nil {
-			if data, err := readZipFile(files[zp]); err == nil {
-				if labels := parseNCX(data); len(labels) > 0 {
-					return labels, path.Dir(zp)
-				}
-			}
-		}
+
+	if labels, dir, ok := tryTOC(findNavItem(pkg.Items), parseNav); ok {
+		return labels, dir
+	}
+	if labels, dir, ok := tryTOC(findNCXItem(pkg.Items, pkg.Spine.Toc), parseNCX); ok {
+		return labels, dir
 	}
 	return nil, ""
 }
 
 func findNavItem(items []opfItem) *opfItem {
 	for i := range items {
-		for _, p := range strings.Fields(items[i].Properties) {
-			if p == "nav" {
-				return &items[i]
-			}
+		if slices.Contains(strings.Fields(items[i].Properties), "nav") {
+			return &items[i]
 		}
 	}
 	return nil
@@ -276,7 +284,7 @@ func findNCXItem(items []opfItem, tocID string) *opfItem {
 // parseNav reads an EPUB 3 nav document, collecting the anchors inside the
 // <nav epub:type="toc"> list in document order.
 func parseNav(data []byte) []tocLabel {
-	dec := xml.NewDecoder(strings.NewReader(string(data)))
+	dec := xml.NewDecoder(bytes.NewReader(data))
 	var labels []tocLabel
 	depth := 0
 	tocDepth := -1 // depth of the toc <nav>, or -1 when not inside it
@@ -358,22 +366,15 @@ func flattenNCX(points []ncxPoint, out *[]tocLabel) {
 
 // --- helpers ---
 
-var (
-	reChapterWord = regexp.MustCompile(`(?i)^chapter\s+(\d+)$`)
-	reBareNumber  = regexp.MustCompile(`^(\d+)$`)
-)
+// reChapterLabel matches the only two label shapes we infer a chapter number
+// from: "Chapter 7" (any case) or a bare "7".
+var reChapterLabel = regexp.MustCompile(`(?i)^(?:chapter\s+)?(\d+)$`)
 
 // inferChapter conservatively extracts a chapter number from a toc label:
 // "Chapter 7" (any case) or a bare "7". Anything else yields nil - we never
 // guess.
 func inferChapter(label string) *int {
-	l := strings.TrimSpace(label)
-	if m := reChapterWord.FindStringSubmatch(l); m != nil {
-		if v, err := strconv.Atoi(m[1]); err == nil {
-			return &v
-		}
-	}
-	if m := reBareNumber.FindStringSubmatch(l); m != nil {
+	if m := reChapterLabel.FindStringSubmatch(strings.TrimSpace(label)); m != nil {
 		if v, err := strconv.Atoi(m[1]); err == nil {
 			return &v
 		}
