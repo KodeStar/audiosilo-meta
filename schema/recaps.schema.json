@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/recaps.schema.json",
+  "title": "recaps",
+  "description": "Community-authored, position-keyed 'story so far' recaps for one work. A per-work sidecar in the CC BY-SA layer, kept separate from the CC0 core.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["work", "recaps", "license", "sources"],
+  "properties": {
+    "work": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "recaps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["through", "text"],
+        "properties": {
+          "through": {
+            "description": "The recap is safe to show once the listener has finished this chapter. A chapter-0 entry with scope 'series' is the 'previously, in earlier books' recap.",
+            "$ref": "common.schema.json#/$defs/position"
+          },
+          "scope": {
+            "description": "Whether the recap covers only this book ('book') or also earlier books in the series ('series').",
+            "type": "string",
+            "enum": ["book", "series"]
+          },
+          "text": {
+            "description": "Own-words recap. Length-capped for the copyright reference-guide tier; verbatim/near-verbatim phrasing is a separate publish-pipeline check.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        }
+      }
+    },
+    "license": {
+      "$ref": "common.schema.json#/$defs/license_content"
+    },
+    "sources": {
+      "$ref": "common.schema.json#/$defs/sources"
+    }
+  }
+}

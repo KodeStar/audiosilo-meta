@@ -46,6 +46,12 @@ func ParseLocation(rel string) (Location, bool) {
 	case len(parts) == 4 && parts[0] == "works" && parts[3] == "work.json":
 		// works/<shard>/<workslug>/work.json
 		return Location{Kind: KindWork, Slug: parts[2], Shard: parts[1]}, true
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "characters.json":
+		// works/<shard>/<workslug>/characters.json (per-work sidecar)
+		return Location{Kind: KindCharacters, Slug: parts[2], WorkSlug: parts[2], Shard: parts[1]}, true
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
+		// works/<shard>/<workslug>/recaps.json (per-work sidecar)
+		return Location{Kind: KindRecaps, Slug: parts[2], WorkSlug: parts[2], Shard: parts[1]}, true
 	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings" && hasJSONExt(parts[4]):
 		// works/<shard>/<workslug>/recordings/<recslug>.json
 		return Location{

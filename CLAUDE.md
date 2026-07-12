@@ -72,10 +72,35 @@ tooling via `schema.go`, so schema edits are code changes with tests.
 - **series** `data/series/<shard>/<slug>.json` - name + ordered works with
   **string** positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two
   works may share a position.
+- **characters** `data/works/<shard>/<slug>/characters.json` - a per-work
+  sidecar: community-authored, spoiler-tagged character entries. Each has an
+  `id` (unique within the file, not globally - two works may each have a
+  `bilbo-baggins`), `name`, optional `aliases`/`role`, a `reveal` position (the
+  spoiler gate), a length-capped own-words `description`, and optional `xref`
+  (a shared `wikidata` QID links a recurring character across a series' per-work
+  files). Recurring characters are **re-described per book** (Kindle-X-Ray
+  model), so spoilers stay bounded by which book you're in.
+- **recaps** `data/works/<shard>/<slug>/recaps.json` - a per-work sidecar:
+  position-keyed "story so far" summaries. Each has a `through` position (safe
+  to show once the listener finishes that chapter), an optional `scope`
+  (`book`/`series` - a `chapter:0`+`series` entry is the "previously, in earlier
+  books" recap), and length-capped own-words `text`. No two recaps in a file
+  share a `through` chapter.
 
-Every entity carries `license` (only `CC0-1.0` in Phase 0) and `sources[]`
-(provenance: type/ref/imported_at) so any source can be audited or retracted
-wholesale.
+**Position model** (`common.schema.json#/$defs/position`): `{ "chapter": <int
+>= 0> }`, the logical **edition-independent** work chapter (1-based; `0` = front
+matter / prior-book knowledge). A consumer maps its recording-chapter timeline
+onto these ordinals; text-to-audio alignment is a consumer concern, out of
+schema scope. The object shape is deliberately extensible (a later `paragraph`/
+`offset_ms` can be added without a breaking change).
+
+Every entity carries `license` and `sources[]` (provenance: type/ref/
+imported_at) so any source can be audited or retracted wholesale. **Two license
+layers, enforced structurally by the schema** (`$defs/license` vs
+`$defs/license_content`): the CC0 core (works/recordings/people/series) is
+`CC0-1.0`; the CC BY-SA layer (characters/recaps) is `CC-BY-SA-3.0`. A core
+record can never carry the share-alike license and a sidecar can never carry
+CC0 - the boundary is a schema enum, not a convention (see LICENSING.md).
 
 ## Package layout
 
@@ -90,7 +115,7 @@ internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, GitHub-release poller/hot-swap
 schema/             JSON Schemas (the contract), embedded via schema.go
-data/               the database (works/recordings/people/series)
+data/               the database (works/recordings/people/series + per-work characters/recaps sidecars)
 Dockerfile          image: site build + metaserve + baked data
 .github/            issue forms (machine-parseable ids), check + release + image workflows
 ```
@@ -170,7 +195,13 @@ the schema notes below.
   (audiosilo-meta -> audiosilo-server `internal/meta` -> the player only if the
   server's outward envelope changes; see workspace CROSS-REPO.md §17).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
-  BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. Also:
+  BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
+  **schema + metacheck rules have landed** (per-work `characters.json`/
+  `recaps.json` sidecars, `$defs/position`, the `$defs/license_content`
+  share-alike enum - see the data-model section above); still to come: wiring
+  them into `metabuild`/`metaserve` and the server `/meta` + player render, a
+  fully-worked exemplar series, the verbatim/near-verbatim (n-gram) publish-
+  pipeline check, and the extraction pipeline (Phase 3). Also:
   **contributor role modeling** - translator/introduction/editor credits are
   currently plain people on the work (the importer strips the role qualifier
   from the name); a future schema field should carry the role.

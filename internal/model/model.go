@@ -7,10 +7,12 @@ package model
 type Kind string
 
 const (
-	KindWork      Kind = "work"
-	KindRecording Kind = "recording"
-	KindPerson    Kind = "person"
-	KindSeries    Kind = "series"
+	KindWork       Kind = "work"
+	KindRecording  Kind = "recording"
+	KindPerson     Kind = "person"
+	KindSeries     Kind = "series"
+	KindCharacters Kind = "characters"
+	KindRecaps     Kind = "recaps"
 )
 
 // Source records the provenance of a record. Every entity carries at least one.
@@ -117,9 +119,63 @@ type Series struct {
 	Sources []Source     `json:"sources"`
 }
 
+// Position is a spoiler position within a work's own timeline. Chapter is the
+// logical (edition-independent) work chapter, 1-based; 0 means front matter or
+// knowledge carried from earlier books in a series.
+type Position struct {
+	Chapter int `json:"chapter"`
+}
+
+// CharacterXref holds cross-references to external databases for a character. A
+// shared wikidata QID is how a recurring character is linked across the per-work
+// character files of a series.
+type CharacterXref struct {
+	Wikidata  string `json:"wikidata,omitempty"`
+	Goodreads string `json:"goodreads,omitempty"`
+}
+
+// Character is one spoiler-tagged, community-authored character entry.
+type Character struct {
+	ID          string         `json:"id"`
+	Name        string         `json:"name"`
+	Aliases     []string       `json:"aliases,omitempty"`
+	Role        string         `json:"role,omitempty"`
+	Reveal      Position       `json:"reveal"`
+	Description string         `json:"description,omitempty"`
+	Xref        *CharacterXref `json:"xref,omitempty"`
+}
+
+// Characters is the per-work sidecar holding a work's character entries. It
+// lives in the CC BY-SA layer, decoupled from the CC0 core work record.
+type Characters struct {
+	Work       string      `json:"work"`
+	Characters []Character `json:"characters"`
+	License    string      `json:"license"`
+	Sources    []Source    `json:"sources"`
+}
+
+// Recap is one position-keyed "story so far" summary. Through is the position
+// the recap is safe to show at (the listener has finished that chapter).
+type Recap struct {
+	Through Position `json:"through"`
+	Scope   string   `json:"scope,omitempty"`
+	Text    string   `json:"text"`
+}
+
+// Recaps is the per-work sidecar holding a work's recaps. It lives in the CC
+// BY-SA layer, decoupled from the CC0 core work record.
+type Recaps struct {
+	Work    string   `json:"work"`
+	Recaps  []Recap  `json:"recaps"`
+	License string   `json:"license"`
+	Sources []Source `json:"sources"`
+}
+
 // Catalog is the fully loaded, in-memory dataset.
 type Catalog struct {
-	Works  []*Work
-	People []*Person
-	Series []*Series
+	Works      []*Work
+	People     []*Person
+	Series     []*Series
+	Characters []*Characters
+	Recaps     []*Recaps
 }

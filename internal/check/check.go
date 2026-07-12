@@ -50,10 +50,12 @@ type recordWithPath struct {
 // pathIndex remembers where each entity was loaded from, for later problem
 // reporting during cross-record checks.
 type pathIndex struct {
-	work   map[*model.Work]string
-	rec    map[*model.Recording]string
-	person map[*model.Person]string
-	series map[*model.Series]string
+	work       map[*model.Work]string
+	rec        map[*model.Recording]string
+	person     map[*model.Person]string
+	series     map[*model.Series]string
+	characters map[*model.Characters]string
+	recaps     map[*model.Recaps]string
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
@@ -70,10 +72,12 @@ func Load(dir string) Result {
 
 	cat := &model.Catalog{}
 	idx := &pathIndex{
-		work:   map[*model.Work]string{},
-		rec:    map[*model.Recording]string{},
-		person: map[*model.Person]string{},
-		series: map[*model.Series]string{},
+		work:       map[*model.Work]string{},
+		rec:        map[*model.Recording]string{},
+		person:     map[*model.Person]string{},
+		series:     map[*model.Series]string{},
+		characters: map[*model.Characters]string{},
+		recaps:     map[*model.Recaps]string{},
 	}
 	var pendingRecs []recordWithPath
 
@@ -132,6 +136,18 @@ func Load(dir string) Result {
 				cat.Series = append(cat.Series, &s)
 				idx.series[&s] = rel
 			}
+		case model.KindCharacters:
+			var c model.Characters
+			if json.Unmarshal(raw, &c) == nil {
+				cat.Characters = append(cat.Characters, &c)
+				idx.characters[&c] = rel
+			}
+		case model.KindRecaps:
+			var rc model.Recaps
+			if json.Unmarshal(raw, &rc) == nil {
+				cat.Recaps = append(cat.Recaps, &rc)
+				idx.recaps[&rc] = rel
+			}
 		}
 	}
 
@@ -152,6 +168,8 @@ func Load(dir string) Result {
 	checkUniqueness(cat, pendingRecs, idx, add)
 	checkChapters(pendingRecs, add)
 	checkSeriesPositions(cat, idx, add)
+	checkCharacters(cat, idx, add)
+	checkRecaps(cat, idx, add)
 
 	sort.Slice(probs, func(i, j int) bool {
 		if probs[i].Path != probs[j].Path {
@@ -172,6 +190,20 @@ func checkStructure(rel string, loc model.Location, raw []byte, add addFunc) {
 	}
 	if err := json.Unmarshal(raw, &head); err != nil {
 		return // JSON errors already reported elsewhere.
+	}
+	// Per-work sidecars (characters/recaps) have no own id; they are identified
+	// by their parent work dir and its shard, and carry a work backref instead.
+	if loc.Kind == model.KindCharacters || loc.Kind == model.KindRecaps {
+		if !model.ValidSlug(loc.WorkSlug) {
+			add(rel, "slug %q is not a valid slug", loc.WorkSlug)
+		}
+		if want := model.Shard(loc.WorkSlug); loc.Shard != want {
+			add(rel, "shard dir %q must be %q (first two chars of work slug %q)", loc.Shard, want, loc.WorkSlug)
+		}
+		if head.Work != loc.WorkSlug {
+			add(rel, "work %q must equal the parent work dir id %q", head.Work, loc.WorkSlug)
+		}
+		return
 	}
 	if head.ID != loc.Slug {
 		add(rel, "id %q does not match its file/dir slug %q", head.ID, loc.Slug)

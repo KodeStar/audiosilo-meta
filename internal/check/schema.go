@@ -13,10 +13,12 @@ import (
 const schemaBase = "https://meta.audiosilo.app/schema/"
 
 var schemaFiles = map[model.Kind]string{
-	model.KindWork:      "work.schema.json",
-	model.KindRecording: "recording.schema.json",
-	model.KindPerson:    "person.schema.json",
-	model.KindSeries:    "series.schema.json",
+	model.KindWork:       "work.schema.json",
+	model.KindRecording:  "recording.schema.json",
+	model.KindPerson:     "person.schema.json",
+	model.KindSeries:     "series.schema.json",
+	model.KindCharacters: "characters.schema.json",
+	model.KindRecaps:     "recaps.schema.json",
 }
 
 // schemaSet holds the compiled schema for each entity kind.

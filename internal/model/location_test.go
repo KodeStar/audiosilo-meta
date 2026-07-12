@@ -58,10 +58,12 @@ func TestParseLocation(t *testing.T) {
 	}{
 		{"works/ha/harry-potter/work.json", true, KindWork, "harry-potter", "", "ha"},
 		{"works/ha/harry-potter/recordings/fry-2015.json", true, KindRecording, "fry-2015", "harry-potter", "ha"},
+		{"works/ha/harry-potter/characters.json", true, KindCharacters, "harry-potter", "harry-potter", "ha"},
+		{"works/ha/harry-potter/recaps.json", true, KindRecaps, "harry-potter", "harry-potter", "ha"},
 		{"people/j-/j-k-rowling.json", true, KindPerson, "j-k-rowling", "", "j-"},
 		{"series/ha/harry-potter.json", true, KindSeries, "harry-potter", "", "ha"},
 		// Unrecognized locations.
-		{"works/ha/harry-potter/characters.json", false, "", "", "", ""},
+		{"works/ha/harry-potter/notes.json", false, "", "", "", ""},
 		{"works/ha/harry-potter.json", false, "", "", "", ""},
 		{"people/j-/x/y.json", false, "", "", "", ""},
 		{"random/thing.json", false, "", "", "", ""},

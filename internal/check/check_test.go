@@ -74,6 +74,33 @@ func TestRecordingAbridgedOptional(t *testing.T) {
 	}
 }
 
+// validCharacters / validRecaps are minimal, valid per-work sidecars for the
+// given work, in canonical (sorted-key) form.
+func validCharacters(work string) string {
+	return `{"characters":[{"aliases":["The Kid"],"description":"A brave hero.","id":"hero","name":"Hero","reveal":{"chapter":1},"role":"protagonist","xref":{"wikidata":"Q42"}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"` + work + `"}`
+}
+
+func validRecaps(work string) string {
+	return `{"license":"CC-BY-SA-3.0","recaps":[{"scope":"series","text":"Previously, in earlier books.","through":{"chapter":0}},{"scope":"book","text":"So far, the hero set out.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"` + work + `"}`
+}
+
+// TestCharactersRecapsValid covers the CC BY-SA per-work sidecars: a valid
+// characters.json and recaps.json load cleanly and land in the Catalog.
+func TestCharactersRecapsValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/characters.json"] = validCharacters("book-one")
+	files["works/bo/book-one/recaps.json"] = validRecaps("book-one")
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("valid characters/recaps reported problems: %v", res.Problems)
+	}
+	if len(res.Catalog.Characters) != 1 || len(res.Catalog.Recaps) != 1 {
+		t.Errorf("unexpected sidecar counts: characters=%d recaps=%d", len(res.Catalog.Characters), len(res.Catalog.Recaps))
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -211,6 +238,70 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["people/Au/Author_One.json"] = `{"id":"Author_One","license":"CC0-1.0","name":"X","sources":[{"type":"user"}]}`
 			},
 			want: "not a valid slug",
+		},
+		{
+			name: "characters with CC0 license rejected (must be CC BY-SA)",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/characters.json"] = strings.Replace(validCharacters("book-one"), `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1)
+			},
+			want: "license",
+		},
+		{
+			name: "duplicate character id within file",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/characters.json"] = `{"characters":[{"id":"hero","name":"Hero","reveal":{"chapter":1}},{"id":"hero","name":"Hero Twin","reveal":{"chapter":2}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: `duplicate character id "hero"`,
+		},
+		{
+			name: "character description exceeds length cap",
+			mutate: func(f map[string]string) {
+				long := strings.Repeat("a", 1501)
+				f["works/bo/book-one/characters.json"] = `{"characters":[{"description":"` + long + `","id":"hero","name":"Hero","reveal":{"chapter":1}}],"license":"CC-BY-SA-3.0","sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "/characters/0/description",
+		},
+		{
+			name: "characters parent work missing",
+			mutate: func(f map[string]string) {
+				f["works/gh/ghost-book/characters.json"] = validCharacters("ghost-book")
+			},
+			want: `parent work "ghost-book" does not exist`,
+		},
+		{
+			name: "characters work backref mismatches dir",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/characters.json"] = validCharacters("other-book")
+			},
+			want: "must equal the parent work dir id",
+		},
+		{
+			name: "characters wrong shard",
+			mutate: func(f map[string]string) {
+				f["works/xx/book-one/characters.json"] = validCharacters("book-one")
+			},
+			want: "shard dir",
+		},
+		{
+			name: "duplicate recap through-position",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}},{"text":"B.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "duplicate recap through chapter 3",
+		},
+		{
+			name: "recap bad scope enum",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recaps.json"] = strings.Replace(validRecaps("book-one"), `"scope":"book"`, `"scope":"midway"`, 1)
+			},
+			want: "scope",
+		},
+		{
+			name: "recap negative chapter rejected",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recaps.json"] = `{"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":-1}}],"sources":[{"type":"community"}],"work":"book-one"}`
+			},
+			want: "chapter",
 		},
 	}
 

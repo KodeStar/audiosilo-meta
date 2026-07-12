@@ -47,6 +47,50 @@ func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []
 			}
 		}
 	}
+
+	for _, c := range cat.Characters {
+		if workByID[c.Work] == nil {
+			add(idx.characters[c], "parent work %q does not exist", c.Work)
+		}
+	}
+	for _, rc := range cat.Recaps {
+		if workByID[rc.Work] == nil {
+			add(idx.recaps[rc], "parent work %q does not exist", rc.Work)
+		}
+	}
+}
+
+// checkCharacters enforces that character ids are unique within each per-work
+// characters file. (Ids need not be globally unique - different works may each
+// have their own "bilbo-baggins" card.)
+func checkCharacters(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, c := range cat.Characters {
+		rel := idx.characters[c]
+		seen := map[string]bool{}
+		for _, ch := range c.Characters {
+			if seen[ch.ID] {
+				add(rel, "duplicate character id %q", ch.ID)
+			}
+			seen[ch.ID] = true
+		}
+	}
+}
+
+// checkRecaps enforces that no two recaps in a per-work recaps file share the
+// same through-position (one recap per catch-up point).
+func checkRecaps(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, rc := range cat.Recaps {
+		rel := idx.recaps[rc]
+		// Key on the whole Position (a comparable struct) so the rule stays
+		// correct if the position schema ever gains a field beyond chapter.
+		seen := map[model.Position]bool{}
+		for _, r := range rc.Recaps {
+			if seen[r.Through] {
+				add(rel, "duplicate recap through chapter %d", r.Through.Chapter)
+			}
+			seen[r.Through] = true
+		}
+	}
 }
 
 // checkUniqueness enforces globally unique (region, asin) pairs and ISBNs across
