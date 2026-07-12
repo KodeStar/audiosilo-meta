@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { roleLabel, revealLabel, recapLabel, scopeLabel, sortRecaps } from './expressive'
+import {
+  roleLabel,
+  revealLabel,
+  recapLabel,
+  scopeLabel,
+  sortRecaps,
+  storyRows,
+} from './expressive'
 import type { Recap } from './api'
 
 describe('roleLabel', () => {
@@ -61,5 +68,54 @@ describe('sortRecaps', () => {
     expect(out.map((r) => r.through.chapter)).toEqual([0, 4, 9])
     // input untouched
     expect(input.map((r) => r.through.chapter)).toEqual([9, 0, 4])
+  })
+})
+
+describe('storyRows', () => {
+  const recaps: Recap[] = [
+    { through: { chapter: 5 }, scope: 'book', text: 'b' },
+    { through: { chapter: 0 }, scope: 'series', text: 'a' },
+  ]
+
+  it('is empty with no recaps and no summary', () => {
+    expect(storyRows([], undefined)).toEqual([])
+  })
+  it('builds the chaptered rows alone, position-ordered, via the lib labels', () => {
+    expect(storyRows(recaps, undefined)).toEqual([
+      { title: 'Previously, in earlier books', badge: 'earlier books', text: 'a' },
+      { title: 'Up to chapter 5', badge: 'this book', text: 'b' },
+    ])
+  })
+  it('omits the badge for a scopeless chaptered recap', () => {
+    expect(storyRows([{ through: { chapter: 3 }, text: 'x' }], undefined)).toEqual([
+      { title: 'Up to chapter 3', badge: undefined, text: 'x' },
+    ])
+  })
+  it('builds a lone in_short row', () => {
+    expect(storyRows([], { in_short: 'the whole book' })).toEqual([
+      { title: 'In short', badge: 'whole book', text: 'the whole book', wholeBook: true },
+    ])
+  })
+  it('builds a lone ending row', () => {
+    expect(storyRows([], { ending: 'how it ends' })).toEqual([
+      { title: 'How did it end?', badge: 'ending', text: 'how it ends', wholeBook: true },
+    ])
+  })
+  it('orders in_short first, chaptered rows in the middle, ending last', () => {
+    const titles = storyRows(recaps, { in_short: 'x', ending: 'y' }).map((r) => r.title)
+    expect(titles).toEqual([
+      'In short',
+      'Previously, in earlier books',
+      'Up to chapter 5',
+      'How did it end?',
+    ])
+  })
+  it('marks only the summary rows wholeBook', () => {
+    const flags = storyRows(recaps, { in_short: 'x', ending: 'y' }).map((r) => r.wholeBook)
+    expect(flags).toEqual([true, undefined, undefined, true])
+  })
+  it('treats empty-string summary fields as absent', () => {
+    expect(storyRows([], { in_short: '', ending: '' })).toEqual([])
+    expect(storyRows(recaps, { in_short: '' })).toHaveLength(2)
   })
 })

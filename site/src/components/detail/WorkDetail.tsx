@@ -13,9 +13,8 @@ import {
   type Chapter,
   type Series,
   type Character,
-  type Recap,
 } from '../../lib/api'
-import { roleLabel, revealLabel, recapLabel, scopeLabel, sortRecaps } from '../../lib/expressive'
+import { roleLabel, revealLabel, storyRows, type StoryRow as StoryRowData } from '../../lib/expressive'
 import {
   seriesNeighbors,
   hashForTab,
@@ -377,11 +376,13 @@ function CharactersPanel({ characters }: { characters: Character[] }) {
   )
 }
 
-/** One "story so far" recap: a collapsible row that stays closed (spoiler-safe)
-    until the reader opens it. */
-function RecapRow({ recap }: { recap: Recap }) {
+/** One "story so far" row: a collapsible accordion that stays closed (spoiler-safe)
+    until the reader opens it. Shared by the position-keyed chaptered recaps and the
+    whole-book summary rows ("In short" / "How did it end?"), so all three read as
+    one list; the caller supplies the header title, an optional scope/kind badge,
+    and the revealed body text. */
+function StoryRow({ title, badge, text }: { title: string; badge?: string; text: string }) {
   const [open, setOpen] = useState(false)
-  const scope = scopeLabel(recap.scope)
   return (
     <div className="bg-surface">
       <button
@@ -391,31 +392,34 @@ function RecapRow({ recap }: { recap: Recap }) {
         className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-raised/40"
       >
         <span className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-medium text-body">{recapLabel(recap)}</span>
-          {scope ? <Badge>{scope}</Badge> : null}
+          <span className="text-sm font-medium text-body">{title}</span>
+          {badge ? <Badge>{badge}</Badge> : null}
         </span>
         <Chevron open={open} className="shrink-0" />
       </button>
-      {open ? (
-        <p className="px-4 pb-4 text-sm leading-relaxed text-body">{recap.text}</p>
-      ) : null}
+      {open ? <p className="px-4 pb-4 text-sm leading-relaxed text-body">{text}</p> : null}
     </div>
   )
 }
 
-/** "Story so far": position-keyed recaps as an accordion, ordered by position and
-    closed by default so the reader chooses how far to reveal. */
-function RecapsPanel({ recaps }: { recaps: Recap[] }) {
-  const ordered = sortRecaps(recaps)
+/** "Story so far": the rows built by storyRows (the whole-book "In short" row
+    first, the position-ordered chaptered recaps, the whole-book "How did it end?"
+    row last) - every row an accordion closed by default so the reader chooses how
+    far to reveal. The chaptered rows are bounded to their position; the whole-book
+    summary rows are full spoilers, and the intro's spoiler clause appears only
+    when such a row is present. A work may carry only the summary (no chaptered
+    recaps), in which case just the "In short"/ending rows show. */
+function RecapsPanel({ rows }: { rows: StoryRowData[] }) {
+  const hasWholeBook = rows.some((r) => r.wholeBook)
   return (
     <>
       <p className="mt-6 max-w-2xl text-sm text-dim">
-        Position-tagged recaps - open only as far as you have listened; each reveals the story up to
-        its point.
+        Open a recap only as far as you have listened
+        {hasWholeBook ? ' - the whole-book rows are full spoilers.' : '.'}
       </p>
       <div className="mt-5 divide-y divide-edge/60 overflow-hidden rounded-2xl border border-edge">
-        {ordered.map((r, i) => (
-          <RecapRow key={`${r.through.chapter}-${i}`} recap={r} />
+        {rows.map((row, i) => (
+          <StoryRow key={`${row.title}-${i}`} {...row} />
         ))}
       </div>
     </>
@@ -639,9 +643,13 @@ function Loaded({ work }: { work: Work }) {
   const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
 
   const characters = work.characters ?? []
-  const recaps = work.recaps ?? []
   const hasCharacters = characters.length > 0
-  const hasRecaps = recaps.length > 0
+  // The single source for the Story so far tab: the ordered row set (chaptered
+  // recaps + the whole-book summary rows). The panel renders it; its length is
+  // both the tab's count and its presence flag, so a work carrying only a
+  // whole-book summary still gets the tab.
+  const recapRows = storyRows(work.recaps ?? [], work.recap_summary)
+  const hasRecaps = recapRows.length > 0
   const showTabs = hasCharacters || hasRecaps
 
   // Initialise the tab from the URL hash so a deep link like #story-so-far opens
@@ -767,7 +775,7 @@ function Loaded({ work }: { work: Work }) {
                     active={tab === 'recaps'}
                     onClick={() => selectTab('recaps')}
                     label="Story so far"
-                    count={recaps.length}
+                    count={recapRows.length}
                   />
                 ) : null}
               </div>
@@ -784,7 +792,7 @@ function Loaded({ work }: { work: Work }) {
               ) : null}
               {tab === 'recaps' ? (
                 <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps">
-                  <RecapsPanel recaps={recaps} />
+                  <RecapsPanel rows={recapRows} />
                 </div>
               ) : null}
             </>

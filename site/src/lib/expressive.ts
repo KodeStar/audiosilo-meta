@@ -1,7 +1,7 @@
 // Pure presentation helpers for the community-authored expressive layer
 // (characters + recaps) shown on a work page. Kept framework-free so they can be
 // unit-tested; the React components in WorkDetail.tsx consume them.
-import type { Character, Recap } from './api'
+import type { Character, Recap, RecapSummary } from './api'
 
 /** Human label for a character role, or null when the role is absent/unknown. */
 export function roleLabel(role: Character['role']): string | null {
@@ -54,4 +54,45 @@ export function scopeLabel(scope: Recap['scope']): string | null {
     that guarantee. Returns a new array; does not mutate the input. */
 export function sortRecaps(recaps: Recap[]): Recap[] {
   return [...recaps].sort((a, b) => a.through.chapter - b.through.chapter)
+}
+
+/** One row in the "Story so far" list, ready to render: a header title, an
+    optional scope/kind badge, and the spoiler text revealed on open. wholeBook
+    marks the full-spoiler summary rows (In short / How did it end?), as opposed
+    to the position-bounded chaptered recaps. */
+export interface StoryRow {
+  title: string
+  badge?: string
+  text: string
+  wholeBook?: boolean
+}
+
+/** The ordered "Story so far" rows for a work: the whole-book "In short" row
+    first, then the chaptered recaps by position, then the whole-book
+    "How did it end?" row last. A summary row exists only when its text is present
+    (an empty string counts as absent). This is the single source for the row set -
+    the panel maps it, and the tab's count and presence (empty = no tab, so a work
+    carrying only a whole-book summary still gets the tab) derive from its length. */
+export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
+  const rows: StoryRow[] = []
+  if (summary?.in_short) {
+    rows.push({
+      title: 'In short',
+      badge: 'whole book',
+      text: summary.in_short,
+      wholeBook: true,
+    })
+  }
+  for (const r of sortRecaps(recaps)) {
+    rows.push({ title: recapLabel(r), badge: scopeLabel(r.scope) ?? undefined, text: r.text })
+  }
+  if (summary?.ending) {
+    rows.push({
+      title: 'How did it end?',
+      badge: 'ending',
+      text: summary.ending,
+      wholeBook: true,
+    })
+  }
+  return rows
 }
