@@ -9,11 +9,17 @@
 // schema/recaps.schema.json exactly (both the CC BY-SA layer). Optional fields
 // are OMITTED when empty rather than emitted null/empty, so the output validates.
 
-import type { Character } from './api'
+import type { Character, Position } from './api'
+
+// The output shapes reuse the wire Position (both mirror the schema's
+// edition-independent chapter position); re-exported so builder consumers
+// need not also import from api.
+export type { Position }
 
 // --- Editor state ---------------------------------------------------------
 
-export type CharacterRole = 'protagonist' | 'antagonist' | 'supporting' | 'minor'
+/** Derived from the wire Character so the role union can never drift from it. */
+export type CharacterRole = NonNullable<Character['role']>
 export type RecapScope = 'book' | 'series'
 
 /** One editable character card. `reveal` is the raw text field (parsed to an int
@@ -53,6 +59,9 @@ export const CAPS = {
   ending: 2000,
 } as const
 
+/** The schema's maxLength on id slugs (characters.schema.json). */
+export const MAX_SLUG_LEN = 100
+
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/
 const QID_RE = /^Q\d+$/
 
@@ -81,18 +90,28 @@ export function emptyRecapsDraft(): RecapsDraft {
 
 /** Derive a valid character-id slug from a display name: lowercase, strip
     diacritics, collapse every run of non-alphanumerics to a single hyphen, and
-    trim leading/trailing hyphens. Produces '' when nothing usable remains. */
+    trim leading/trailing hyphens. Over-long names are truncated to the schema's
+    slug cap, cutting at a hyphen boundary where possible so no word is chopped.
+    Produces '' when nothing usable remains. */
 export function slugify(name: string): string {
-  return name
+  const slug = name
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
+  if (slug.length <= MAX_SLUG_LEN) return slug
+  // The cap falls exactly on a word boundary: keep the full head.
+  if (slug[MAX_SLUG_LEN] === '-') return slug.slice(0, MAX_SLUG_LEN)
+  const head = slug.slice(0, MAX_SLUG_LEN)
+  const lastHyphen = head.lastIndexOf('-')
+  // Cut at the last whole word inside the cap; a single giant word hard-cuts.
+  return (lastHyphen > 0 ? head.slice(0, lastHyphen) : head).replace(/-+$/, '')
 }
 
+/** Format AND length: the schema caps slugs at MAX_SLUG_LEN characters. */
 export function isValidSlug(s: string): boolean {
-  return SLUG_RE.test(s)
+  return s.length <= MAX_SLUG_LEN && SLUG_RE.test(s)
 }
 
 /** Parse a chapter field: a non-negative whole number, else null. Rejects
@@ -146,6 +165,7 @@ export function validateCharacters(drafts: CharacterDraft[]): CharactersValidati
     const e = cards[i]
     const id = d.id.trim()
     if (!id) e.id = 'An id is required.'
+    else if (id.length > MAX_SLUG_LEN) e.id = `Over the ${MAX_SLUG_LEN}-character cap.`
     else if (!isValidSlug(id)) e.id = 'Use lowercase letters, numbers and single hyphens.'
     else if ((idCounts.get(id) ?? 0) > 1) e.id = 'Duplicate id - each must be unique in the file.'
 
@@ -213,10 +233,6 @@ export function validateRecaps(draft: RecapsDraft): RecapsValidation {
 }
 
 // --- Output shapes + object builders --------------------------------------
-
-export interface Position {
-  chapter: number
-}
 
 export interface CharacterOut {
   id: string

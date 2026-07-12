@@ -16,6 +16,7 @@ import {
   emptyCharacterDraft,
   emptyRecapsDraft,
   CAPS,
+  MAX_SLUG_LEN,
   type CharacterDraft,
   type RecapsDraft,
 } from './builder'
@@ -53,6 +54,36 @@ describe('slugify', () => {
     expect(slugify('!!!')).toBe('')
     expect(isValidSlug(slugify('Orion Lake'))).toBe(true)
   })
+
+  it('truncates an over-long name to the slug cap at a hyphen boundary', () => {
+    // 26 x 'name-' would be 129 chars; the cut lands mid-word, so the last
+    // whole word inside the cap is kept and no trailing hyphen remains.
+    const long = Array.from({ length: 26 }, () => 'name').join(' ')
+    const slug = slugify(long)
+    expect(slug.length).toBeLessThanOrEqual(MAX_SLUG_LEN)
+    expect(slug.endsWith('-')).toBe(false)
+    expect(slug).toBe(Array.from({ length: 20 }, () => 'name').join('-'))
+    expect(isValidSlug(slug)).toBe(true)
+  })
+
+  it('keeps the full head when the cap falls exactly on a word boundary', () => {
+    // A 100-char first word followed by more: the char after the cap is the
+    // hyphen, so the whole head is kept without re-cutting.
+    const slug = slugify('x'.repeat(MAX_SLUG_LEN) + ' more')
+    expect(slug).toBe('x'.repeat(MAX_SLUG_LEN))
+    expect(isValidSlug(slug)).toBe(true)
+  })
+
+  it('hard-cuts a single giant word', () => {
+    const slug = slugify('x'.repeat(150))
+    expect(slug).toBe('x'.repeat(MAX_SLUG_LEN))
+    expect(isValidSlug(slug)).toBe(true)
+  })
+
+  it('leaves a slug of exactly the cap untouched', () => {
+    const exact = 'x'.repeat(MAX_SLUG_LEN)
+    expect(slugify(exact)).toBe(exact)
+  })
 })
 
 describe('isValidSlug', () => {
@@ -68,6 +99,11 @@ describe('isValidSlug', () => {
     expect(isValidSlug('el-')).toBe(false)
     expect(isValidSlug('orion--lake')).toBe(false)
     expect(isValidSlug('')).toBe(false)
+  })
+
+  it('enforces the schema length cap', () => {
+    expect(isValidSlug('a'.repeat(MAX_SLUG_LEN))).toBe(true)
+    expect(isValidSlug('a'.repeat(MAX_SLUG_LEN + 1))).toBe(false)
   })
 })
 
@@ -119,6 +155,12 @@ describe('validateCharacters', () => {
   it('requires an id', () => {
     const v = validateCharacters([charDraft({ id: '' })])
     expect(v.cards[0].id).toBe('An id is required.')
+  })
+
+  it('flags an id over the slug length cap with the cap message', () => {
+    const v = validateCharacters([charDraft({ id: 'a'.repeat(MAX_SLUG_LEN + 1) })])
+    expect(v.ok).toBe(false)
+    expect(v.cards[0].id).toBe(`Over the ${MAX_SLUG_LEN}-character cap.`)
   })
 
   it('marks duplicate ids on every offending card', () => {

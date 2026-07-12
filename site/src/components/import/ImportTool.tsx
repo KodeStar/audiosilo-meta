@@ -21,6 +21,7 @@ import {
   importLibraryIssueUrl,
 } from '../../lib/github-prefill'
 import { downloadJson } from '../../lib/download'
+import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
 
 // Concurrency for the lookup + author-search sweeps, and the hard safety cap on
 // export size.
@@ -56,46 +57,6 @@ const toCandidate = (x: {
 
 const PRIVACY =
   'Your export is read entirely in your browser. Only ASINs and ISBNs are sent to the API, to check what is already in the database. Personal fields never leave your device.'
-
-// Button classes replicated from Button.astro so the island matches the site.
-const BTN_BASE =
-  'inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-500'
-const BTN_PRIMARY = `${BTN_BASE} bg-pink-600 text-white shadow-lg shadow-pink-600/20 hover:-translate-y-0.5 hover:bg-pink-500 hover:shadow-pink-500/30`
-const BTN_SECONDARY = `${BTN_BASE} border border-edge text-hi hover:-translate-y-0.5 hover:border-pink-500`
-
-// Inline outline icons (path data shared with Icon.astro), since that Astro
-// component cannot be used inside a React island.
-const ICON_PATHS = {
-  database:
-    'M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125',
-  external:
-    'M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25',
-  x: 'M6 18 18 6M6 6l12 12',
-  download:
-    'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-6L12 15m0 0 4.5-4.5M12 15V3',
-} as const
-
-function Icon({
-  name,
-  className = 'h-5 w-5',
-}: {
-  name: keyof typeof ICON_PATHS
-  className?: string
-}) {
-  return (
-    <svg
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth={1.5}
-      stroke="currentColor"
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d={ICON_PATHS[name]} />
-    </svg>
-  )
-}
 
 type Phase = 'idle' | 'unknown' | 'libation' | 'error' | 'diffing' | 'results'
 

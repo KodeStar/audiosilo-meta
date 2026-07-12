@@ -4,23 +4,16 @@ import {
   type CharacterCardErrors,
   type CharacterRole,
 } from '../../lib/builder'
-import {
-  BTN_SECONDARY,
-  Counter,
-  EntryCard,
-  FieldError,
-  FieldLabel,
-  Icon,
-  INPUT,
-  TEXTAREA,
-} from './build-ui'
+import { roleLabel } from '../../lib/expressive'
+import { BTN_SECONDARY, Icon } from '../ui'
+import { Counter, EntryCard, FieldError, FieldLabel, INPUT, TEXTAREA } from './build-ui'
 
+// Dropdown options derive their labels from expressive.roleLabel so the label
+// wording has a single source (the work page renders the same labels).
+const ROLE_VALUES: CharacterRole[] = ['protagonist', 'antagonist', 'supporting', 'minor']
 const ROLES: { value: CharacterRole | ''; label: string }[] = [
   { value: '', label: 'None / unclear' },
-  { value: 'protagonist', label: 'Protagonist' },
-  { value: 'antagonist', label: 'Antagonist' },
-  { value: 'supporting', label: 'Supporting' },
-  { value: 'minor', label: 'Minor' },
+  ...ROLE_VALUES.map((value) => ({ value, label: roleLabel(value) ?? value })),
 ]
 
 interface Props {

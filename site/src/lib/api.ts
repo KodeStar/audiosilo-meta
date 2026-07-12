@@ -352,6 +352,12 @@ export function formatLanguage(code?: string | null): string | null {
   }
 }
 
+/** "Ann Leckie, Jane Doe" - the comma join used wherever a people list
+    (authors/narrators) renders as plain text rather than links. */
+export function personNames(people: { name: string }[]): string {
+  return people.map((p) => p.name).join(', ')
+}
+
 export const href = {
   work: (id: string) => `/work?id=${encodeURIComponent(id)}`,
   person: (id: string) => `/person?id=${encodeURIComponent(id)}`,

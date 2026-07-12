@@ -5,16 +5,8 @@ import {
   type RecapsValidation,
   type RecapScope,
 } from '../../lib/builder'
-import {
-  BTN_SECONDARY,
-  Counter,
-  EntryCard,
-  FieldError,
-  FieldLabel,
-  Icon,
-  INPUT,
-  TEXTAREA,
-} from './build-ui'
+import { BTN_SECONDARY, Icon } from '../ui'
+import { Counter, EntryCard, FieldError, FieldLabel, INPUT, TEXTAREA } from './build-ui'
 
 const SCOPES: { value: RecapScope | ''; label: string }[] = [
   { value: '', label: 'None' },

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getWork, getSeries, href, type Character, type Work } from '../../lib/api'
+import { getWork, getSeries, href, personNames, type Character, type Work } from '../../lib/api'
 import { addCharactersIssueUrl, addRecapsIssueUrl } from '../../lib/github-prefill'
 import { downloadJson } from '../../lib/download'
 import {
@@ -29,7 +29,7 @@ import {
 } from '../detail/detail-common'
 import CharactersEditor from './CharactersEditor'
 import RecapsEditor from './RecapsEditor'
-import { BTN_PRIMARY, BTN_SECONDARY, Icon } from './build-ui'
+import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
 
 type Kind = 'characters' | 'recaps'
 
@@ -65,16 +65,10 @@ function NoWork() {
         far&quot; button, or browse the books that still need them.
       </p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a
-          href="/contribute"
-          className="inline-flex items-center gap-2 rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-500"
-        >
+        <a href="/contribute" className={BTN_PRIMARY}>
           Books that need them
         </a>
-        <a
-          href="/"
-          className="inline-flex items-center gap-2 rounded-lg border border-edge px-6 py-3 font-medium text-hi transition-colors hover:border-pink-500"
-        >
+        <a href="/" className={BTN_SECONDARY}>
           Search the database
         </a>
       </div>
@@ -235,7 +229,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
           <p className="mt-3 text-lg leading-relaxed text-body">
             {isChars ? 'The spoiler-tagged cast' : 'Position-keyed recaps'} for{' '}
             <span className="font-medium text-hi">{work.title}</span>
-            {work.authors.length ? ` by ${work.authors.map((a) => a.name).join(', ')}` : ''}
+            {work.authors.length ? ` by ${personNames(work.authors)}` : ''}
             {seriesRef ? (
               <>
                 {' '}

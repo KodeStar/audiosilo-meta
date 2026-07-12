@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { getCoverage, href, type CoverageResponse } from '../../lib/api'
+import { useMemo, useState } from 'react'
+import { getCoverage, href, personNames, type CoverageResponse } from '../../lib/api'
 import {
   coverageStats,
   groupMissing,
-  hasMissingRows,
+  missingState,
   limitGrouped,
   type CoverageStat,
   type CoverageWorkRow,
   type CoverageSeriesGroup,
 } from '../../lib/coverage'
 import { addWorkIssueFormUrl } from '../../lib/github-prefill'
-import { PILL_LINK } from '../build/build-ui'
+import { PILL_LINK } from '../ui'
 import { useEntity, DetailSpinner } from '../detail/detail-common'
 
 // Initial-render caps for the missing list: the full data is already loaded,
@@ -21,10 +21,6 @@ const MISSING_LIMITS = { maxSeries: 8, maxStandalone: 30 }
 // Coverage is a singleton (no id); a fixed key satisfies the shared loader.
 // Module-scope so its identity is stable across renders (useEntity depends on it).
 const fetchCoverage = (_id: string, signal: AbortSignal) => getCoverage(signal)
-
-function authorNames(authors: { name: string }[]): string {
-  return authors.map((a) => a.name).join(', ')
-}
 
 // --- Stats band -----------------------------------------------------------
 
@@ -88,7 +84,7 @@ function WorkRow({ row }: { row: CoverageWorkRow }) {
           {row.title}
         </a>
         {row.authors.length > 0 ? (
-          <p className="mt-1 text-sm text-dim">{authorNames(row.authors)}</p>
+          <p className="mt-1 text-sm text-dim">{personNames(row.authors)}</p>
         ) : null}
       </div>
       <BuildLinks row={row} />
@@ -118,21 +114,25 @@ function SeriesGroup({ group }: { group: CoverageSeriesGroup }) {
 
 function MissingSection({ data }: { data: CoverageResponse }) {
   const [showAll, setShowAll] = useState(false)
+  // Grouping is O(rows) and must not re-run when the Show-all toggle re-renders
+  // this section - memoized on the rows themselves (safe on undefined).
+  const grouped = useMemo(() => groupMissing(data.missing), [data.missing])
+  const limited = useMemo(() => limitGrouped(grouped, MISSING_LIMITS), [grouped])
 
-  if (!hasMissingRows(data)) {
+  const state = missingState(data)
+  if (state !== 'has-rows') {
     return (
       <section>
         <h2 className="text-xl font-semibold text-hi">Books needing characters and recaps</h2>
         <p className="mt-4 rounded-2xl border border-edge bg-surface p-6 text-sm leading-relaxed text-body">
-          This list is not available from the current database build. Pick any work from search
-          and use its page to start adding characters or a story-so-far recap.
+          {state === 'unavailable'
+            ? 'This list is not available from the current database build. Pick any work from search and use its page to start adding characters or a story-so-far recap.'
+            : 'All catalogued books have characters and recaps - nothing needs work right now. New books will appear here as they are added.'}
         </p>
       </section>
     )
   }
 
-  const grouped = groupMissing(data.missing)
-  const limited = limitGrouped(grouped, MISSING_LIMITS)
   const view = showAll ? grouped : limited
   const hiddenWorks = showAll ? 0 : limited.hiddenWorks
   const totalWorks = data.missing?.length ?? 0

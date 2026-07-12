@@ -4,7 +4,7 @@ import {
   groupMissing,
   coveragePercent,
   coverageStats,
-  hasMissingRows,
+  missingState,
   limitGrouped,
 } from './coverage'
 import type { CoverageMissing, CoverageResponse, CoverageTotals } from './api'
@@ -132,16 +132,19 @@ describe('coverageStats', () => {
   })
 })
 
-describe('hasMissingRows', () => {
+describe('missingState', () => {
   const base: CoverageResponse = { totals: { works: 1 }, series_gaps: [] }
 
-  it('is false when missing is omitted or empty', () => {
-    expect(hasMissingRows(base)).toBe(false)
-    expect(hasMissingRows({ ...base, missing: [] })).toBe(false)
+  it('is unavailable when missing is OMITTED (older artifact)', () => {
+    expect(missingState(base)).toBe('unavailable')
   })
 
-  it('is true when there is at least one missing row', () => {
-    expect(hasMissingRows({ ...base, missing: [missing()] })).toBe(true)
+  it('is complete when missing is present but EMPTY (everything covered)', () => {
+    expect(missingState({ ...base, missing: [] })).toBe('complete')
+  })
+
+  it('is has-rows when there is at least one missing row', () => {
+    expect(missingState({ ...base, missing: [missing()] })).toBe('has-rows')
   })
 })
 

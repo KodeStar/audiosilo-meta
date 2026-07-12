@@ -1,4 +1,4 @@
-import { getSeries, href, type Series } from '../../lib/api'
+import { getSeries, href, personNames, type Series } from '../../lib/api'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import {
@@ -54,7 +54,7 @@ function Loaded({ series }: { series: Series }) {
                   </h2>
                   {entry.work.authors && entry.work.authors.length > 0 ? (
                     <p className="truncate text-sm text-dim">
-                      {entry.work.authors.map((a) => a.name).join(', ')}
+                      {personNames(entry.work.authors)}
                     </p>
                   ) : null}
                 </div>

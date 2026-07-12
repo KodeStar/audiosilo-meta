@@ -26,7 +26,7 @@ import {
 import { addRecordingIssueUrlForWork } from '../../lib/github-prefill'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
-import { PILL_LINK } from '../build/build-ui'
+import { PILL_LINK } from '../ui'
 import {
   useQueryParam,
   usePageTitle,
@@ -578,10 +578,10 @@ function ImproveRecord({ id }: { id: string }) {
     shows no call to action. */
 function ContributeCTAs({ work }: { work: Work }) {
   const needsCharacters = (work.characters?.length ?? 0) === 0
-  const needsRecaps =
-    (work.recaps?.length ?? 0) === 0 &&
-    !work.recap_summary?.in_short &&
-    !work.recap_summary?.ending
+  // "Has any recap content" is exactly what storyRows encodes (chaptered recaps
+  // + the whole-book summary rows), so its emptiness is the single source for
+  // this flag - the same predicate that decides the Story so far tab.
+  const needsRecaps = storyRows(work.recaps ?? [], work.recap_summary).length === 0
   const needsRecording = (work.recordings?.length ?? 0) === 0
   if (!needsCharacters && !needsRecaps && !needsRecording) return null
 

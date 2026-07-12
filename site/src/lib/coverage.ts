@@ -128,10 +128,17 @@ export function coverageStats(totals: CoverageTotals): CoverageStat[] {
   }))
 }
 
-/** True when there is nothing to show under "books needing characters and
-    recaps" - the missing list was omitted (older artifact) or empty. */
-export function hasMissingRows(coverage: CoverageResponse): boolean {
-  return (coverage.missing?.length ?? 0) > 0
+/** Availability of the "books needing characters and recaps" list. OMITTED and
+    EMPTY mean opposite things and must not be conflated:
+    - 'unavailable': `missing` was omitted entirely (an older artifact that
+      cannot compute the list - nothing can be said either way)
+    - 'complete': present but empty - every catalogued book is covered
+    - 'has-rows': there are works to show */
+export type MissingState = 'unavailable' | 'complete' | 'has-rows'
+
+export function missingState(coverage: CoverageResponse): MissingState {
+  if (coverage.missing === undefined) return 'unavailable'
+  return coverage.missing.length > 0 ? 'has-rows' : 'complete'
 }
 
 /** Caps for the initial (collapsed) missing-list render. */
