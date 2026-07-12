@@ -341,13 +341,16 @@ export interface WorkMatch {
   title: string
 }
 
-// A comparison key: lowercase, fold diacritics (NFKD splits an accented letter
-// into base + combining mark, which the alphanumeric filter then drops), and
-// collapse to space-separated alphanumeric words.
+// A comparison key: lowercase, fold diacritics, and collapse to space-separated
+// alphanumeric words. NFKD splits an accented letter into base + a combining
+// mark; the mark MUST be stripped to '' (not via the alphanumeric filter, which
+// replaces it with a SPACE and so splits "Émile" into "e mile") so an accented
+// name folds to the same key as its ASCII spelling ("Émile" == "Emile").
 function normKey(s: string): string {
   return s
     .toLowerCase()
     .normalize('NFKD')
+    .replace(/[̀-ͯ]/g, '') // combining diacritical marks -> drop
     .replace(/[^a-z0-9]+/g, ' ')
     .trim()
 }
