@@ -3,6 +3,7 @@ module github.com/kodestar/audiosilo-meta
 go 1.25.0
 
 require (
+	github.com/klauspost/compress v1.18.6
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2
 	golang.org/x/text v0.14.0
 	modernc.org/sqlite v1.53.0
