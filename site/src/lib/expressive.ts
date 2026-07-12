@@ -56,13 +56,26 @@ export function sortRecaps(recaps: Recap[]): Recap[] {
   return [...recaps].sort((a, b) => a.through.chapter - b.through.chapter)
 }
 
-/** The number of "Story so far" rows a work shows: the chaptered recaps plus the
-    whole-book "In short" and "How did it end?" rows, each counted only when its
-    text is present (an empty string counts as absent). This drives BOTH the tab's
-    count and whether the tab appears at all (0 = no tab), so a work carrying only
-    a whole-book summary (no chaptered recaps) still gets a Story so far tab. */
-export function recapRowCount(recaps: Recap[], summary?: RecapSummary): number {
-  const inShort = summary?.in_short ? 1 : 0
-  const ending = summary?.ending ? 1 : 0
-  return recaps.length + inShort + ending
+/** One row in the "Story so far" list, ready to render: a header title, an
+    optional scope/kind badge, and the spoiler text revealed on open. */
+export interface StoryRow {
+  title: string
+  badge?: string
+  text: string
+}
+
+/** The ordered "Story so far" rows for a work: the whole-book "In short" row
+    first, then the chaptered recaps by position, then the whole-book
+    "How did it end?" row last. A summary row exists only when its text is present
+    (an empty string counts as absent). This is the single source for the row set -
+    the panel maps it, and the tab's count and presence (empty = no tab, so a work
+    carrying only a whole-book summary still gets the tab) derive from its length. */
+export function storyRows(recaps: Recap[], summary?: RecapSummary): StoryRow[] {
+  const rows: StoryRow[] = []
+  if (summary?.in_short) rows.push({ title: 'In short', badge: 'whole book', text: summary.in_short })
+  for (const r of sortRecaps(recaps)) {
+    rows.push({ title: recapLabel(r), badge: scopeLabel(r.scope) ?? undefined, text: r.text })
+  }
+  if (summary?.ending) rows.push({ title: 'How did it end?', badge: 'ending', text: summary.ending })
+  return rows
 }

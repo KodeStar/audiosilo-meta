@@ -112,10 +112,10 @@ export interface Recap {
   text: string
 }
 
-/** A work's whole-book recap summary (the CC BY-SA layer): the entire book in one
-    paragraph (in_short, ending included) and a plain statement of how it ends
-    (ending). Both fields are optional and are FULL spoilers - distinct from the
-    position-gated chaptered recaps above. */
+/** A work's whole-book recap summary (the CC BY-SA layer). in_short is the whole
+    book in one paragraph, with the ending included; ending is a plain statement
+    of how the book closes. Both fields are optional and are FULL spoilers -
+    distinct from the position-gated chaptered recaps above. */
 export interface RecapSummary {
   in_short?: string
   ending?: string

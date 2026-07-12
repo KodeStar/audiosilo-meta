@@ -13,17 +13,8 @@ import {
   type Chapter,
   type Series,
   type Character,
-  type Recap,
-  type RecapSummary,
 } from '../../lib/api'
-import {
-  roleLabel,
-  revealLabel,
-  recapLabel,
-  scopeLabel,
-  sortRecaps,
-  recapRowCount,
-} from '../../lib/expressive'
+import { roleLabel, revealLabel, storyRows, type StoryRow as StoryRowData } from '../../lib/expressive'
 import {
   seriesNeighbors,
   hashForTab,
@@ -411,34 +402,22 @@ function StoryRow({ title, badge, text }: { title: string; badge?: string; text:
   )
 }
 
-/** "Story so far": the whole-book "In short" row first, then the position-keyed
-    chaptered recaps (ordered by position), then the whole-book "How did it end?"
-    row last - every row an accordion closed by default so the reader chooses how
+/** "Story so far": the rows built by storyRows (the whole-book "In short" row
+    first, the position-ordered chaptered recaps, the whole-book "How did it end?"
+    row last) - every row an accordion closed by default so the reader chooses how
     far to reveal. The chaptered rows are bounded to their position; the whole-book
     summary rows are full spoilers. A work may carry only the summary (no chaptered
     recaps), in which case just the "In short"/ending rows show. */
-function RecapsPanel({ recaps, summary }: { recaps: Recap[]; summary?: RecapSummary }) {
-  const ordered = sortRecaps(recaps)
+function RecapsPanel({ rows }: { rows: StoryRowData[] }) {
   return (
     <>
       <p className="mt-6 max-w-2xl text-sm text-dim">
         Open a recap only as far as you have listened - the whole-book rows are full spoilers.
       </p>
       <div className="mt-5 divide-y divide-edge/60 overflow-hidden rounded-2xl border border-edge">
-        {summary?.in_short ? (
-          <StoryRow title="In short" badge="whole book" text={summary.in_short} />
-        ) : null}
-        {ordered.map((r, i) => (
-          <StoryRow
-            key={`${r.through.chapter}-${i}`}
-            title={recapLabel(r)}
-            badge={scopeLabel(r.scope) ?? undefined}
-            text={r.text}
-          />
+        {rows.map((row, i) => (
+          <StoryRow key={`${row.title}-${i}`} {...row} />
         ))}
-        {summary?.ending ? (
-          <StoryRow title="How did it end?" badge="ending" text={summary.ending} />
-        ) : null}
       </div>
     </>
   )
@@ -661,14 +640,13 @@ function Loaded({ work }: { work: Work }) {
   const cover = work.recordings?.find((r) => r.cover_url)?.cover_url ?? null
 
   const characters = work.characters ?? []
-  const recaps = work.recaps ?? []
-  const recapSummary = work.recap_summary
   const hasCharacters = characters.length > 0
-  // The Story so far tab covers the chaptered recaps AND the whole-book summary
-  // rows, so a work carrying only a summary still gets the tab; recapRows is the
-  // total row count, which is both the tab's count and its presence flag.
-  const recapRows = recapRowCount(recaps, recapSummary)
-  const hasRecaps = recapRows > 0
+  // The single source for the Story so far tab: the ordered row set (chaptered
+  // recaps + the whole-book summary rows). The panel renders it; its length is
+  // both the tab's count and its presence flag, so a work carrying only a
+  // whole-book summary still gets the tab.
+  const recapRows = storyRows(work.recaps ?? [], work.recap_summary)
+  const hasRecaps = recapRows.length > 0
   const showTabs = hasCharacters || hasRecaps
 
   // Initialise the tab from the URL hash so a deep link like #story-so-far opens
@@ -794,7 +772,7 @@ function Loaded({ work }: { work: Work }) {
                     active={tab === 'recaps'}
                     onClick={() => selectTab('recaps')}
                     label="Story so far"
-                    count={recapRows}
+                    count={recapRows.length}
                   />
                 ) : null}
               </div>
@@ -811,7 +789,7 @@ function Loaded({ work }: { work: Work }) {
               ) : null}
               {tab === 'recaps' ? (
                 <div role="tabpanel" id="panel-recaps" aria-labelledby="tab-recaps">
-                  <RecapsPanel recaps={recaps} summary={recapSummary} />
+                  <RecapsPanel rows={recapRows} />
                 </div>
               ) : null}
             </>
