@@ -211,8 +211,11 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
     <section className="relative pb-20">
       <div className="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
       <div className="container relative z-10">
-        {/* Header */}
-        <div className="reveal mx-auto max-w-3xl">
+        {/* Header. No scroll-reveal class here: Base.astro's reveal script
+            queries '.reveal' at document load, before a client:only island
+            mounts, so the class would leave this at opacity 0 forever. Islands
+            wanting the effect run their own observer (see StatsBand). */}
+        <div className="mx-auto max-w-3xl">
           <a
             href={href.work(work.id)}
             className="inline-flex items-center gap-1.5 text-sm text-dim transition-colors hover:text-pink-400"
