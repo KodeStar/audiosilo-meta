@@ -1,4 +1,4 @@
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import {
   getWork,
   getSeries,
@@ -20,6 +20,7 @@ import {
   seriesNeighbors,
   hashForTab,
   tabFromHash,
+  type SeriesNeighbors,
   type SeriesWork,
   type WorkTab,
 } from '../../lib/worknav'
@@ -425,8 +426,9 @@ function RecapsPanel({ recaps }: { recaps: Recap[] }) {
     as a horizontal rail of square cover cards. The series is fetched once in the
     parent and passed down (shared with the series nav), so this renders nothing
     when it is still loading, absent, or has no other members. Rail links carry
-    the active tab hash so opening a sibling stays on the current tab. */
-function SeriesRail({ work, series, tabHash }: { work: Work; series: Series | null; tabHash: string }) {
+    no tab hash - the rail only renders inside the General tab, where the active
+    tab's hash is always empty; the prev/next nav is the hash carrier. */
+function SeriesRail({ work, series }: { work: Work; series: Series | null }) {
   if (!series) return null
   const others = (series.works ?? []).filter((entry) => entry.work.id !== work.id)
   if (others.length === 0) return null
@@ -446,7 +448,7 @@ function SeriesRail({ work, series, tabHash }: { work: Work; series: Series | nu
         {others.map((entry) => (
           <a
             key={`${entry.position}-${entry.work.id}`}
-            href={`${href.work(entry.work.id)}${tabHash}`}
+            href={href.work(entry.work.id)}
             className="group w-32 shrink-0 sm:w-36"
           >
             <CoverImage
@@ -496,10 +498,25 @@ function SeriesNavLink({ entry, dir, tabHash }: { entry: SeriesWork; dir: 'prev'
 }
 
 /** Series prev/next navigation, visible above the tab bar (so it stays on every
-    tab, and shows for works with no tabs). Renders nothing when the work has no
+    tab, and shows for works with no tabs). While the series fetch is pending it
+    renders a same-height skeleton row (the work is known to be in a series, so
+    the nav will almost always fill in - without the reservation the tab bar and
+    body would shift down when it does). Renders nothing when the work has no
     series or no neighbours; a one-sided result keeps its slot so the present link
     stays on its own side of the row. */
-function SeriesNav({ prev, next, tabHash }: { prev: SeriesWork | null; next: SeriesWork | null; tabHash: string }) {
+function SeriesNav({ prev, next, tabHash, pending }: SeriesNeighbors & { tabHash: string; pending: boolean }) {
+  if (pending) {
+    return (
+      <div aria-hidden="true" className="mt-4 flex items-stretch gap-3">
+        <span className="flex flex-1 items-center rounded-xl border border-edge/40 bg-surface/40 px-3 py-2">
+          <span className="invisible text-sm">#</span>
+        </span>
+        <span className="flex flex-1 items-center rounded-xl border border-edge/40 bg-surface/40 px-3 py-2">
+          <span className="invisible text-sm">#</span>
+        </span>
+      </div>
+    )
+  }
   if (!prev && !next) return null
   return (
     <nav aria-label="Series navigation" className="mt-4 flex items-stretch gap-3">
@@ -551,7 +568,7 @@ function ImproveRecord({ id }: { id: string }) {
     "more in this series" rail. This is the whole main-column body for a plain
     work (one with no characters/recaps sidecar). The series is fetched once by
     the parent and threaded through to the rail. */
-function GeneralPanel({ work, series, tabHash }: { work: Work; series: Series | null; tabHash: string }) {
+function GeneralPanel({ work, series }: { work: Work; series: Series | null }) {
   return (
     <>
       {work.description ? (
@@ -577,7 +594,7 @@ function GeneralPanel({ work, series, tabHash }: { work: Work; series: Series | 
         )}
       </section>
 
-      <SeriesRail work={work} series={series} tabHash={tabHash} />
+      <SeriesRail work={work} series={series} />
     </>
   )
 }
@@ -633,6 +650,17 @@ function Loaded({ work }: { work: Work }) {
   // back to General when this work lacks that sidecar.
   const [tab, setTab] = useState<WorkTab>(() => tabFromHash(window.location.hash, { hasCharacters, hasRecaps }))
 
+  // Canonicalise a stale fragment once on mount: a deep link like #story-so-far
+  // onto a work with no recaps fell back to General above, so drop the fragment
+  // the fallback ignored (copying the URL onward would mislead). selectTab keeps
+  // the hash in step from here on.
+  useEffect(() => {
+    const canonical = hashForTab(tab)
+    if (window.location.hash !== canonical) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${canonical}`)
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Switching a tab reflects the choice into the hash (no scroll jump, no history
   // spam) so it rides along when the reader flips to another work in the series;
   // General clears the fragment entirely.
@@ -653,7 +681,10 @@ function Loaded({ work }: { work: Work }) {
   const seriesState = useEntity<Series>(work.series?.[0]?.id ?? null, getSeries)
   const series = seriesState.status === 'ready' ? seriesState.data : null
 
-  const { prev, next } = series ? seriesNeighbors(series.works, work.id) : { prev: null, next: null }
+  // The work is known (synchronously) to be in a series while the fetch is still
+  // in flight - that is the window the nav placeholder covers.
+  const seriesPending = (work.series?.length ?? 0) > 0 && seriesState.status === 'loading'
+  const { prev, next } = series ? seriesNeighbors(series.works ?? [], work.id) : { prev: null, next: null }
 
   return (
     <div className="container py-10">
@@ -703,7 +734,7 @@ function Loaded({ work }: { work: Work }) {
 
           {/* Series prev/next: above the tab bar so it stays visible on every tab
               (and on works that show no tabs). */}
-          <SeriesNav prev={prev} next={next} tabHash={tabHash} />
+          <SeriesNav prev={prev} next={next} tabHash={tabHash} pending={seriesPending} />
 
           {showTabs ? (
             <>
@@ -743,7 +774,7 @@ function Loaded({ work }: { work: Work }) {
 
               {tab === 'general' ? (
                 <div role="tabpanel" id="panel-general" aria-labelledby="tab-general">
-                  <GeneralPanel work={work} series={series} tabHash={tabHash} />
+                  <GeneralPanel work={work} series={series} />
                 </div>
               ) : null}
               {tab === 'characters' ? (
@@ -758,7 +789,7 @@ function Loaded({ work }: { work: Work }) {
               ) : null}
             </>
           ) : (
-            <GeneralPanel work={work} series={series} tabHash={tabHash} />
+            <GeneralPanel work={work} series={series} />
           )}
         </div>
       </div>
