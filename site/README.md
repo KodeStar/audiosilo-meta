@@ -31,10 +31,24 @@ yarn dev          # http://localhost:4321 (Vite dev server)
 yarn build        # static site -> dist/
 yarn run check    # astro check (TypeScript) - note `yarn run`, since bare
                   # `yarn check` runs yarn's own lockfile check instead
+yarn test         # vitest run (unit tests for the pure logic modules)
 yarn preview      # serve the built dist/ locally
 ```
 
-**The gate (run before a change is done):** `yarn build && yarn run check`.
+**The gate (run before a change is done):** `yarn build && yarn run check && yarn test`.
+
+## Tests
+
+[Vitest](https://vitest.dev) covers the site's pure, framework-free logic
+modules (no DOM, no React - the `node` environment). Tests are co-located as
+`src/**/*.test.ts` and use explicit `import { describe, it, expect } from
+'vitest'` (globals stay off, so `astro check` needs no extra type config). Run
+them with `yarn test` (one-shot) or `yarn test:watch` (watch mode).
+
+Current coverage: `src/lib/import-parse.ts` (export detection + the OpenAudible
+field mapping + the existing-work matching/routing) and
+`src/lib/github-prefill.ts` (the prefilled issue-form URLs + the factual-subset
+privacy contract).
 
 ## The API base (`PUBLIC_API_BASE`)
 

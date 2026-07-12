@@ -69,10 +69,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install, build, and typecheck the site
+      - name: Install, build, typecheck, and test the site
         if: steps.site.outputs.exists == 'true'
         working-directory: site
         run: |
           yarn install --frozen-lockfile
           yarn build
           yarn run check
+          yarn test
