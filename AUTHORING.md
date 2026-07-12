@@ -11,6 +11,11 @@ If you are filling out a whole series, do the CC0 core first (the works,
 recordings, people, and series must already exist and validate) and add these
 sidecars on top.
 
+To PRODUCE these sidecars from the text of a book you own (rather than from
+memory), follow the extraction pipeline in [EXTRACTION.md](EXTRACTION.md) -
+it automates chapter-accurate positions and enforces the no-verbatim rule
+mechanically. Everything in this guide still applies to its output.
+
 ## The two files
 
 Both are **per-work sidecars** that live inside the work's directory:

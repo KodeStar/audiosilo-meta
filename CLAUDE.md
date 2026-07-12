@@ -138,9 +138,11 @@ Scholomance, Lord of the Rings, Magic Faraway Tree) are the worked reference.
 cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible)
+cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md
 internal/model      entity structs, slug/shard rules, location parsing
 internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
 internal/check      schema validation + integrity/uniqueness/chapter/series rules
+internal/extract    epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN-dedup, canonical writes
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, GitHub-release poller/hot-swap
@@ -245,10 +247,18 @@ the schema notes below.
   characters/recaps/recap_summary - see the data-model section above and
   [AUTHORING.md](AUTHORING.md)). Still to come: the **site render** (in
   progress), the **player render** (the server `/meta` + frontend three-repo
-  seam - Stage 2), the verbatim/near-verbatim (n-gram) publish-pipeline check,
-  and the extraction pipeline (Phase 3). Also: **contributor role modeling** -
+  seam - Stage 2). The near-verbatim check landed as `metaextract ngram`
+  (run locally against the source text, which never enters the repo - a
+  CI-side check is impossible by design), and the extraction pipeline landed
+  as Phase 3 (below). Also: **contributor role modeling** -
   translator/introduction/editor credits are currently plain people on the work
   (the importer strips the role qualifier from the name); a future schema field
   should carry the role.
-- **Phase 3**: extraction clients (epub -> characters/recaps pipeline,
-  likely in audiosilo-manager).
+- **Phase 3 (pipeline landed)**: the epub -> characters/recaps extraction
+  pipeline: `cmd/metaextract` (epub split + n-gram check) plus the documented
+  agent process in **[EXTRACTION.md](EXTRACTION.md)** (AUTHORING.md's sibling:
+  rolling fact pass -> notes-only synthesis -> adversarial spoiler audit),
+  validated end-to-end on Killing Floor (Jack Reacher #1). The book text
+  never enters the repo; only the derived CC BY-SA sidecars are committed.
+  Possible follow-ups: richer format support (non-epub sources), a
+  friendlier packaged client (audiosilo-manager).
