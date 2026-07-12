@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -148,8 +149,16 @@ func TestNGramNeitherKeyIsError(t *testing.T) {
 	src := writeFile(t, dir, "src.txt", "some source text that is long enough to shingle over")
 	sc := writeFile(t, dir, "bad.json", `{"work":"something","title":"nope"}`)
 
-	if _, err := NGram(src, []string{sc}, 8); err == nil {
+	_, err := NGram(src, []string{sc}, 8)
+	if err == nil {
 		t.Fatal("NGram succeeded, want error for a file with neither key")
+	}
+	// The message must name every recognized sidecar kind, so an operator knows
+	// what the tool was looking for.
+	for _, kind := range []string{"characters", "recaps"} {
+		if !strings.Contains(err.Error(), kind) {
+			t.Errorf("error %q does not name sidecar kind %q", err, kind)
+		}
 	}
 }
 

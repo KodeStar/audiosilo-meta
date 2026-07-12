@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -195,7 +196,13 @@ func collectExprs(path string) ([]expr, error) {
 		}
 		return out, nil
 	}
-	return nil, fmt.Errorf("%s: not a characters or recaps sidecar (no %q or %q key)", path, "characters", "recaps")
+	kinds := sidecarKinds()
+	quoted := make([]string, len(kinds))
+	for i, k := range kinds {
+		quoted[i] = strconv.Quote(k)
+	}
+	return nil, fmt.Errorf("%s: not a %s sidecar (no %s key)",
+		path, strings.Join(kinds, " or "), strings.Join(quoted, " or "))
 }
 
 func asSlice(v any) []any {

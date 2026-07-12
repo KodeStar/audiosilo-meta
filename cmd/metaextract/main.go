@@ -3,7 +3,8 @@
 //
 //	metaextract split --epub <book.epub> -o <outdir>
 //	    Split an epub into one plain-text file per spine document (001.txt, ...)
-//	    plus a manifest.json describing the chapter list.
+//	    plus a manifest.json describing the chapter list. Exits 0 on success,
+//	    2 on a usage/IO/parse error.
 //
 //	metaextract ngram --source <dir-or-file> [--n 8] <sidecar.json> [more.json...]
 //	    Check authored characters/recaps sidecars for near-verbatim overlap with
@@ -55,8 +56,10 @@ func runSplit(args []string) int {
 
 	man, err := extract.Split(*epub, *out)
 	if err != nil {
+		// 2, not 1: across metaextract, 1 is reserved for "findings" (ngram
+		// overlaps) and 2 for usage/IO errors; split has no findings state.
 		fmt.Fprintln(os.Stderr, "metaextract:", err)
-		return 1
+		return 2
 	}
 	fmt.Printf("split %q: %d document(s) written to %s\n", man.Title, len(man.Docs), *out)
 	for _, w := range man.Warnings {

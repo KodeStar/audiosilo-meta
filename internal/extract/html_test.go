@@ -63,6 +63,26 @@ func TestHTMLToText(t *testing.T) {
 			in:   `<body><p>text</p><svg:svg><svg:rect/></svg:svg></body>`,
 			want: "text",
 		},
+		{
+			name: "self-closed script does not swallow the rest of the document",
+			in:   `<body><script src="x.js"/><p>Body survives.</p></body>`,
+			want: "Body survives.",
+		},
+		{
+			name: "self-closed style mid-document keeps following text",
+			in:   `<body><p>Before.</p><style/><p>After.</p></body>`,
+			want: "Before.\n\nAfter.",
+		},
+		{
+			name: "self-closed head does not suppress the body",
+			in:   `<html><head/><body><p>Body survives.</p></body></html>`,
+			want: "Body survives.",
+		},
+		{
+			name: "normal script element is still skipped whole",
+			in:   `<body><script>document.write("<p>not text</p>");</script><p>Real.</p></body>`,
+			want: "Real.",
+		},
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {

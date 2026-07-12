@@ -243,6 +243,55 @@ func TestSplitMultipleLabelsWarning(t *testing.T) {
 	}
 }
 
+func TestSplitDuplicateSpineReference(t *testing.T) {
+	opf := `<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>Dup</dc:title></metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="c1" href="ch01.xhtml" media-type="application/xhtml+xml"/>
+    <item id="c2" href="ch02.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine><itemref idref="c1"/><itemref idref="c2"/><itemref idref="c1"/></spine>
+</package>`
+	nav := `<html xmlns:epub="http://www.idpf.org/2007/ops"><body>
+    <nav epub:type="toc"><ol>
+      <li><a href="ch01.xhtml">Chapter 1</a></li>
+      <li><a href="ch02.xhtml">Chapter 2</a></li>
+    </ol></nav></body></html>`
+	epub := buildEpub(t, map[string]string{
+		"META-INF/container.xml": container,
+		"OEBPS/content.opf":      opf,
+		"OEBPS/nav.xhtml":        nav,
+		"OEBPS/ch01.xhtml":       `<p>one</p>`,
+		"OEBPS/ch02.xhtml":       `<p>two</p>`,
+	})
+
+	man, err := Split(epub, t.TempDir())
+	if err != nil {
+		t.Fatalf("Split: %v", err)
+	}
+	if len(man.Docs) != 3 {
+		t.Fatalf("len(Docs) = %d, want 3 (the duplicate is still emitted)", len(man.Docs))
+	}
+	found := false
+	for _, w := range man.Warnings {
+		if strings.Contains(w, "spine references ch01.xhtml more than once") {
+			found = true
+		}
+	}
+	if !found {
+		t.Errorf("expected a duplicate-spine warning, got %v", man.Warnings)
+	}
+	// The toc label attaches to the FIRST occurrence, not the duplicate.
+	if d := docByFile(man, "001.txt"); d.Label != "Chapter 1" {
+		t.Errorf("001 label = %q, want Chapter 1 (first occurrence)", d.Label)
+	}
+	if d := docByFile(man, "003.txt"); d.Label != "" {
+		t.Errorf("003 (duplicate) label = %q, want none", d.Label)
+	}
+}
+
 func TestSplitMissingSpineFile(t *testing.T) {
 	opf := `<?xml version="1.0"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="2.0">

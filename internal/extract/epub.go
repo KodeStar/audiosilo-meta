@@ -72,6 +72,7 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 	// Spine content documents, in order.
 	type spineDoc struct{ href, zipPath string }
 	var docs []spineDoc
+	var warnings []string
 	zipToDoc := map[string]int{}
 	for _, ref := range pkg.Spine.Items {
 		it, ok := idToItem[ref.IDRef]
@@ -85,7 +86,14 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		if files[zp] == nil {
 			return nil, fmt.Errorf("spine item %q resolves to %q, which is missing from the archive", it.Href, zp)
 		}
-		zipToDoc[zp] = len(docs)
+		// First occurrence wins the zipToDoc slot, so toc labels attach to the
+		// first copy of a file the spine references more than once.
+		if _, dup := zipToDoc[zp]; dup {
+			warnings = append(warnings, fmt.Sprintf(
+				"spine references %s more than once; toc labels attach to the first occurrence", it.Href))
+		} else {
+			zipToDoc[zp] = len(docs)
+		}
 		docs = append(docs, spineDoc{href: it.Href, zipPath: zp})
 	}
 	if len(docs) == 0 {
@@ -113,7 +121,7 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		return nil, err
 	}
 
-	man := &Manifest{Epub: filepath.Base(epubPath), Title: strings.TrimSpace(pkg.Title)}
+	man := &Manifest{Epub: filepath.Base(epubPath), Title: strings.TrimSpace(pkg.Title), Warnings: warnings}
 	for i, d := range docs {
 		data, err := readZipFile(files[d.zipPath])
 		if err != nil {

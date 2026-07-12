@@ -25,6 +25,11 @@ var (
 // CONTENT of head/style/script entirely (a naive tag-strip leaks inline CSS and
 // script bodies), turns block elements into newlines, unescapes HTML entities,
 // and collapses runs of whitespace.
+//
+// Inline elements (span, em, a, ...) deliberately emit NO separator - that is
+// HTML-faithful (a drop cap or other intra-word markup must not split its
+// word). The accepted consequence: when a source uses whitespace-less inline
+// boundaries between words, ngram shingle runs can shorten there.
 func htmlToText(src []byte) string {
 	s := string(src)
 	var b strings.Builder
@@ -81,7 +86,7 @@ func htmlToText(src []byte) string {
 			continue
 		}
 
-		name, isEnd, next := parseTag(s, i)
+		name, isEnd, selfClosing, next := parseTag(s, i)
 		if next <= i {
 			// A lone '<' that does not begin a tag: keep it as text.
 			if inHead == 0 {
@@ -93,18 +98,22 @@ func htmlToText(src []byte) string {
 
 		// script/style are raw-text elements: their bodies may contain '<'
 		// that is not markup, so skip everything up to the matching close tag.
-		if !isEnd && (name == "script" || name == "style") {
+		// A self-closed <script/> / <style/> has no body - skipping to a close
+		// tag that does not exist would swallow the rest of the document.
+		if !isEnd && !selfClosing && (name == "script" || name == "style") {
 			i = skipRawElement(s, next, name)
 			continue
 		}
 
 		switch {
 		case name == "head":
+			// A self-closed <head/> opens nothing; counting it would suppress
+			// every character after it.
 			if isEnd {
 				if inHead > 0 {
 					inHead--
 				}
-			} else {
+			} else if !selfClosing {
 				inHead++
 			}
 		case blockElements[name] && inHead == 0:
@@ -118,9 +127,10 @@ func htmlToText(src []byte) string {
 
 // parseTag parses the tag starting at s[i] (which must be '<'). It returns the
 // lowercased local element name (namespace prefix stripped), whether it is an
-// end tag, and the index just past the closing '>'. next<=i signals "not a
-// tag" (a bare '<' or an unterminated tag).
-func parseTag(s string, i int) (name string, isEnd bool, next int) {
+// end tag, whether it uses the XHTML self-closing syntax (<br/>, <head/>), and
+// the index just past the closing '>'. next<=i signals "not a tag" (a bare '<'
+// or an unterminated tag).
+func parseTag(s string, i int) (name string, isEnd, selfClosing bool, next int) {
 	n := len(s)
 	j := i + 1
 	if j < n && s[j] == '/' {
@@ -136,9 +146,10 @@ func parseTag(s string, i int) (name string, isEnd bool, next int) {
 		name = name[idx+1:] // drop a namespace prefix, e.g. svg:rect
 	}
 	if name == "" {
-		return "", false, i
+		return "", false, false, i
 	}
-	// Scan to the closing '>', honoring quoted attribute values.
+	// Scan to the closing '>', honoring quoted attribute values. A '/'
+	// immediately before the '>' (outside quotes) marks a self-closing tag.
 	var quote byte
 	for j < n {
 		c := s[j]
@@ -150,11 +161,11 @@ func parseTag(s string, i int) (name string, isEnd bool, next int) {
 		case c == '"' || c == '\'':
 			quote = c
 		case c == '>':
-			return name, isEnd, j + 1
+			return name, isEnd, s[j-1] == '/', j + 1
 		}
 		j++
 	}
-	return "", false, i // unterminated
+	return "", false, false, i // unterminated
 }
 
 func isNameChar(c byte) bool {
