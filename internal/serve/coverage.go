@@ -6,23 +6,26 @@ import (
 )
 
 // coverageTotals is the top-line coverage count: how many works exist and how
-// many carry each expressive-layer sidecar.
+// many carry each expressive-layer sidecar. The sidecar counts are pointers so
+// an unknowable dimension (the artifact schema_version predates its table) is
+// omitted rather than reported as a misleading 0 - a real zero (evaluable, no
+// work covered) still serializes as 0.
 type coverageTotals struct {
-	Works            int `json:"works"`
-	WithCharacters   int `json:"with_characters"`
-	WithRecaps       int `json:"with_recaps"`
-	WithRecapSummary int `json:"with_recap_summary"`
+	Works            int  `json:"works"`
+	WithCharacters   *int `json:"with_characters,omitempty"`
+	WithRecaps       *int `json:"with_recaps,omitempty"`
+	WithRecapSummary *int `json:"with_recap_summary,omitempty"`
 }
 
 // missingWork is one work that lacks at least one evaluable expressive-layer
 // dimension. Missing lists exactly which of characters/recaps/recap_summary it
 // is missing (in that fixed order). Series is omitted for standalone works.
 type missingWork struct {
-	ID      string     `json:"id"`
-	Title   string     `json:"title"`
-	Authors []string   `json:"authors"`
-	Series  *seriesRef `json:"series,omitempty"`
-	Missing []string   `json:"missing"`
+	ID      string      `json:"id"`
+	Title   string      `json:"title"`
+	Authors []personRef `json:"authors"`
+	Series  *seriesRef  `json:"series,omitempty"`
+	Missing []string    `json:"missing"`
 }
 
 // seriesGap reports the integer positions absent from a series between its
@@ -49,18 +52,20 @@ type coverageResult struct {
 //
 // Degradation follows the artifact schema_version, so a newer binary briefly
 // serving an older release never reports "everything is missing":
-//   - schema_version < 2: characters/recaps tables absent, so their totals are 0
-//     and the missing list is omitted entirely (coverage is unknowable).
+//   - schema_version < 2: characters/recaps tables absent, so their totals and
+//     the missing list are omitted entirely (coverage is unknowable).
 //   - schema_version == 2: characters/recaps are evaluable; recap_summary is not
-//     (the recap_summaries table arrived in v3), so recap_summary is neither
-//     counted nor treated as a missing dimension.
+//     (the recap_summaries table arrived in v3), so its total is omitted and it
+//     is not treated as a missing dimension.
 //   - schema_version >= 3: all three dimensions are evaluable.
 //
 // series_gaps has no schema_version dependency and is always computed.
 func (s *snapshot) coverage() (*coverageResult, error) {
 	res := &coverageResult{Totals: coverageTotals{Works: s.stats.Works}}
 
-	// Nil maps are fine here: they are only read below (a nil-map read is false).
+	// A nil map marks its dimension unknowable at this schema version; workIDSet
+	// always returns a non-nil set on success, so nil-ness encodes the gating
+	// from here on (nil-map reads below are simply false).
 	var hasChars, hasRecaps, hasSummary map[string]bool
 
 	if s.schemaVersion >= sidecarSchemaVersion {
@@ -71,17 +76,18 @@ func (s *snapshot) coverage() (*coverageResult, error) {
 		if hasRecaps, err = s.workIDSet(`SELECT DISTINCT work_id FROM recaps`); err != nil {
 			return nil, err
 		}
-		res.Totals.WithCharacters = len(hasChars)
-		res.Totals.WithRecaps = len(hasRecaps)
+		nChars, nRecaps := len(hasChars), len(hasRecaps)
+		res.Totals.WithCharacters = &nChars
+		res.Totals.WithRecaps = &nRecaps
 	}
-	evalSummary := s.schemaVersion >= summarySchemaVersion
-	if evalSummary {
+	if s.schemaVersion >= summarySchemaVersion {
 		var err error
 		if hasSummary, err = s.workIDSet(
 			`SELECT work_id FROM recap_summaries WHERE COALESCE(in_short,'') <> '' OR COALESCE(ending,'') <> ''`); err != nil {
 			return nil, err
 		}
-		res.Totals.WithRecapSummary = len(hasSummary)
+		nSummary := len(hasSummary)
+		res.Totals.WithRecapSummary = &nSummary
 	}
 
 	// series_gaps is independent of the sidecar schema version.
@@ -92,11 +98,11 @@ func (s *snapshot) coverage() (*coverageResult, error) {
 	res.SeriesGaps = gaps
 
 	// The missing list needs at least characters/recaps to be evaluable.
-	if s.schemaVersion < sidecarSchemaVersion {
+	if hasChars == nil {
 		return res, nil
 	}
 
-	missing, err := s.missingWorks(hasChars, hasRecaps, hasSummary, evalSummary)
+	missing, err := s.missingWorks(hasChars, hasRecaps, hasSummary)
 	if err != nil {
 		return nil, err
 	}
@@ -111,8 +117,10 @@ func (s *snapshot) coverage() (*coverageResult, error) {
 // id). A work's series membership is its first series by id, matching the
 // workCard convention (firstSeriesOf). Most works are expected in the list, so
 // authors and series come from two bulk queries rather than per-work lookups.
-func (s *snapshot) missingWorks(hasChars, hasRecaps, hasSummary map[string]bool, evalSummary bool) ([]missingWork, error) {
-	authorNames, err := s.workAuthorNames()
+// A nil hasSummary means recap_summary is unknowable (schema_version 2) and is
+// not evaluated as a dimension.
+func (s *snapshot) missingWorks(hasChars, hasRecaps, hasSummary map[string]bool) ([]missingWork, error) {
+	authorRefs, err := s.workAuthorRefs()
 	if err != nil {
 		return nil, err
 	}
@@ -139,15 +147,15 @@ func (s *snapshot) missingWorks(hasChars, hasRecaps, hasSummary map[string]bool,
 		if !hasRecaps[id] {
 			miss = append(miss, "recaps")
 		}
-		if evalSummary && !hasSummary[id] {
+		if hasSummary != nil && !hasSummary[id] {
 			miss = append(miss, "recap_summary")
 		}
 		if len(miss) == 0 {
 			continue
 		}
-		authors := authorNames[id]
+		authors := authorRefs[id]
 		if authors == nil {
-			authors = []string{}
+			authors = []personRef{}
 		}
 		out = append(out, missingWork{
 			ID: id, Title: title, Authors: authors,
@@ -183,22 +191,23 @@ func (s *snapshot) missingWorks(hasChars, hasRecaps, hasSummary map[string]bool,
 	return out, nil
 }
 
-// workAuthorNames returns every work's author display names in credit order,
-// keyed by work id, in one query.
-func (s *snapshot) workAuthorNames() (map[string][]string, error) {
+// workAuthorRefs returns every work's author {id,name} refs in credit order,
+// keyed by work id, in one query - the same shape authorsOf yields per work.
+func (s *snapshot) workAuthorRefs() (map[string][]personRef, error) {
 	rows, err := s.db.Query(
-		`SELECT wa.work_id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id ORDER BY wa.work_id, wa.ord`)
+		`SELECT wa.work_id, p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id ORDER BY wa.work_id, wa.ord`)
 	if err != nil {
 		return nil, err
 	}
 	defer func() { _ = rows.Close() }()
-	out := map[string][]string{}
+	out := map[string][]personRef{}
 	for rows.Next() {
-		var workID, name string
-		if err := rows.Scan(&workID, &name); err != nil {
+		var workID string
+		var p personRef
+		if err := rows.Scan(&workID, &p.ID, &p.Name); err != nil {
 			return nil, err
 		}
-		out[workID] = append(out[workID], name)
+		out[workID] = append(out[workID], p)
 	}
 	return out, rows.Err()
 }

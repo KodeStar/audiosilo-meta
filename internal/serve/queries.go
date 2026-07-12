@@ -606,13 +606,22 @@ func parsePositionRange(pos string) (lo, hi float64, ok bool) {
 }
 
 // positionStart returns the numeric start of a series position string: "2.5"
-// -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last.
+// -> 2.5, "1-3.5" -> 1, unparseable -> +Inf-ish large so it sorts last. A
+// malformed range still sorts by its parseable prefix ("1-garbage" -> 1); only
+// a value with no parseable start gets the sort-last sentinel.
 func positionStart(pos string) float64 {
-	lo, _, ok := parsePositionRange(pos)
-	if !ok {
+	if lo, _, ok := parsePositionRange(pos); ok {
+		return lo
+	}
+	p := strings.TrimSpace(pos)
+	if i := strings.IndexByte(p, '-'); i > 0 {
+		p = strings.TrimSpace(p[:i])
+	}
+	f, err := strconv.ParseFloat(p, 64)
+	if err != nil {
 		return 1e18
 	}
-	return lo
+	return f
 }
 
 // ---- lookup -----------------------------------------------------------------

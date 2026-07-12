@@ -130,9 +130,14 @@ func TestCoverageMissingAndTotals(t *testing.T) {
 	if series["id"] != "aaa-series" {
 		t.Errorf("multi series = %v, want aaa-series (first by id)", series["id"])
 	}
-	authors := toStrings(m["authors"].([]any))
-	if !reflect.DeepEqual(authors, []string{"A Author"}) {
-		t.Errorf("multi authors = %v", authors)
+	// Authors are {id,name} personRefs, the shape used everywhere else.
+	authors := m["authors"].([]any)
+	if len(authors) != 1 {
+		t.Fatalf("multi authors = %v", authors)
+	}
+	a0 := authors[0].(map[string]any)
+	if a0["id"] != "a-author" || a0["name"] != "A Author" {
+		t.Errorf("multi authors[0] = %v, want {a-author, A Author}", a0)
 	}
 	if mm := toStrings(m["missing"].([]any)); !reflect.DeepEqual(mm, []string{"characters", "recaps", "recap_summary"}) {
 		t.Errorf("multi missing = %v", mm)
@@ -184,6 +189,15 @@ func TestCoverageSeriesGaps(t *testing.T) {
 	if code != 200 {
 		t.Fatalf("status %d", code)
 	}
+	// gapCatalog has no sidecars at all, but at the current schema version the
+	// dimensions are evaluable: a genuine zero is present, not omitted.
+	totals := body["totals"].(map[string]any)
+	for _, k := range []string{"with_characters", "with_recaps", "with_recap_summary"} {
+		if v, has := totals[k]; !has || v.(float64) != 0 {
+			t.Errorf("totals[%s] = %v (present=%v), want a present 0", k, v, has)
+		}
+	}
+
 	gaps := body["series_gaps"].([]any)
 
 	type want struct {
@@ -215,8 +229,9 @@ func TestCoverageSeriesGaps(t *testing.T) {
 }
 
 // TestCoverageDegradesV1 simulates a newer binary serving a pre-sidecar (schema
-// version 1) artifact: sidecar totals are 0, the missing list is omitted
-// entirely (coverage unknowable), but series_gaps is still computed.
+// version 1) artifact: the sidecar totals and the missing list are omitted
+// entirely (coverage unknowable, never reported as 0), but series_gaps is still
+// computed.
 func TestCoverageDegradesV1(t *testing.T) {
 	dbPath := buildFixtureDB(t, fixtureCatalog(), nil)
 	rollbackSchema(t, dbPath, 1,
@@ -238,9 +253,10 @@ func TestCoverageDegradesV1(t *testing.T) {
 		t.Errorf("v1 artifact must omit the missing list, got %v", body["missing"])
 	}
 	totals := body["totals"].(map[string]any)
+	// Unknowable dimensions are omitted, not reported as a misleading 0.
 	for _, k := range []string{"with_characters", "with_recaps", "with_recap_summary"} {
-		if got, _ := totals[k].(float64); got != 0 {
-			t.Errorf("v1 totals[%s] = %v, want 0", k, got)
+		if v, has := totals[k]; has {
+			t.Errorf("v1 totals[%s] must be omitted, got %v", k, v)
 		}
 	}
 	if got, _ := totals["works"].(float64); got != 4 {
@@ -261,9 +277,9 @@ func TestCoverageDegradesV1(t *testing.T) {
 }
 
 // TestCoverageDegradesV2 simulates serving a schema-version-2 artifact (has
-// characters/recaps, lacks recap_summaries): recap_summary is neither counted
-// nor treated as a missing dimension, so a work with characters + recaps (but no
-// summary) is fully covered and absent from the missing list.
+// characters/recaps, lacks recap_summaries): the recap_summary total is omitted
+// and it is not treated as a missing dimension, so a work with characters +
+// recaps (but no summary) is fully covered and absent from the missing list.
 func TestCoverageDegradesV2(t *testing.T) {
 	dbPath := buildFixtureDB(t, fixtureCatalog(), nil)
 	rollbackSchema(t, dbPath, 2, "DROP TABLE recap_summaries")
@@ -286,8 +302,8 @@ func TestCoverageDegradesV2(t *testing.T) {
 	if got, _ := totals["with_recaps"].(float64); got != 1 {
 		t.Errorf("v2 with_recaps = %v, want 1", got)
 	}
-	if got, _ := totals["with_recap_summary"].(float64); got != 0 {
-		t.Errorf("v2 with_recap_summary = %v, want 0 (table absent)", got)
+	if v, has := totals["with_recap_summary"]; has {
+		t.Errorf("v2 with_recap_summary must be omitted (table absent), got %v", v)
 	}
 
 	missing := body["missing"].([]any)
