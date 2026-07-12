@@ -1,0 +1,201 @@
+{
+  "characters": [
+    {
+      "description": "The narrator: a drifter and former soldier who is arrested for murder less than an hour after walking into the small Georgia town of Margrave. Calm, observant, and physically formidable, Reacher travels the country alone with no home, no luggage, and no fixed plans. He trusts his own reasoning and expects the truth to clear him, since he arrived on foot that morning and killed no one.",
+      "id": "jack-reacher",
+      "name": "Jack Reacher",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The Margrave police sergeant who leads the team that arrests Reacher at the diner. Baker treats the arrest as high-risk but stays calm and professional throughout, reading Reacher his rights correctly and handling him firmly and without malice.",
+      "id": "baker",
+      "name": "Baker",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The overweight, unfit chief of the Margrave police, hostile to Reacher from the moment they meet. Morrison insults and threatens him, insists he recognizes him from somewhere, and pushes to keep him locked up for the warehouse killing despite a thin case, even claiming to have seen Reacher at the scene.",
+      "id": "chief-morrison",
+      "name": "Chief Morrison",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Margrave's chief of detectives: a black, Boston-educated, meticulous investigator who takes over Reacher's formal questioning. Patient and rigorous, Finlay is troubled by the holes in the case against Reacher but is constrained by his chief's insistence, and he is careful to do everything by the book, on tape and on the record.",
+      "id": "captain-finlay",
+      "name": "Captain Finlay",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Margrave officer who books and fingerprints Reacher and, unlike her colleagues, treats him kindly, bringing him coffee and quietly letting slip that no criminal record turned up on him. Sympathetic and willing to bend small rules, she becomes one of the few people in town on Reacher's side.",
+      "id": "officer-roscoe",
+      "name": "Officer Roscoe",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trim, sandy-haired Atlanta banker whose mobile number was found hidden in the dead man's shoe. Brought in for questioning, Hubble first seems merely inconvenienced but collapses into panic when asked about the victim and a scrap of paper reading 'Pluribus,' then suddenly confesses to a killing the detectives doubt he committed. He is a family man living comfortably in Margrave.",
+      "id": "paul-hubble",
+      "name": "Paul Hubble",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Charlene Hubble"
+      ],
+      "description": "Paul Hubble's wife: tall, slim, and expensively dressed, with a core of toughness beneath a strained smile. She meets Reacher when he comes looking for her missing husband, thanking him for saving Paul's life in prison, and she has two young children, Ben and Lucy.",
+      "id": "charlie-hubble",
+      "name": "Charlie Hubble",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Jack Reacher's older brother, two years his senior and a career federal investigator who moved from Military Intelligence to the Treasury Department. The murdered stranger found at the warehouse is identified as Joe; he had come to Margrave chasing the criminal operation a frightened insider secretly hired him to expose. Jack had not seen him since their mother's funeral years earlier.",
+      "id": "joe-reacher",
+      "name": "Joe Reacher",
+      "reveal": {
+        "chapter": 10
+      }
+    },
+    {
+      "description": "A second murdered man, found shot near the warehouse the same night as the first victim and identified by fingerprints as Sherman Stoller from an old Florida arrest. The name means nothing to Reacher at first. Stoller was killed with the same silenced small-caliber weapon as the other victim.",
+      "id": "sherman-stoller",
+      "name": "Sherman Stoller",
+      "reveal": {
+        "chapter": 10
+      }
+    },
+    {
+      "description": "The wealthy businessman behind the Kliner Foundation, a charity credited with restoring and enriching Margrave in the five years since he arrived. He owns the warehouse complex by the highway where the first body was found. Kliner is a revered local figure, though his second wife appears frightened and his grown son is openly menacing.",
+      "id": "kliner",
+      "name": "Kliner",
+      "reveal": {
+        "chapter": 9
+      }
+    },
+    {
+      "aliases": [
+        "Kliner's son"
+      ],
+      "description": "Kliner's son by his first wife: a hard-looking young man who drives a black pickup truck. He fixes Reacher with hostile stares and briefly follows him on foot before driving off, making clear the stranger's presence in town has been noticed.",
+      "id": "the-kliner-kid",
+      "name": "The Kliner kid",
+      "reveal": {
+        "chapter": 9
+      }
+    },
+    {
+      "description": "Margrave's elderly mayor, about seventy-five and walking with a cane, descended from the old family the town is named for. When the police chief is killed, Teale takes personal control of the department and steers the investigation toward a false theory, openly obstructing any inquiry into the warehouse murders and pressing Reacher to leave town.",
+      "id": "mayor-grover-teale",
+      "name": "Mayor Grover Teale",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Special Agent Picard"
+      ],
+      "description": "Finlay's old friend from his Boston police days, now an FBI agent based in Atlanta, an enormous man as tall as Reacher and far heavier. With the local force compromised and Mayor Teale controlling official channels, Picard agrees to help off the record and moves Hubble's wife and children to a secret Bureau safe house for protection.",
+      "id": "picard",
+      "name": "Picard",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Margrave department's previous detective, who held the job alone for many years before Finlay arrived. Gray hanged himself in his garage in February, and his death left the small eight-person department without a detective until Finlay was hired.",
+      "id": "gray",
+      "name": "Gray",
+      "reveal": {
+        "chapter": 7
+      }
+    },
+    {
+      "aliases": [
+        "Assistant Warden Spivey"
+      ],
+      "description": "An assistant warden at Warburton Correctional Facility, a heavyset man with a high voice. When Reacher and Hubble arrive as weekend detainees, Spivey personally escorts the two of them through the prison late at night, carrying a shotgun, and locks them into a shared cell.",
+      "id": "spivey",
+      "name": "Spivey",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Two elderly black men who run the Margrave barbershop and have lived in the town all their lives. They are happy to talk local history, including the legend that the blues guitarist Blind Blake passed through Margrave and may have died there decades ago - one barber's elderly sister is said to have sung with him - but they firmly decline to discuss the Kliners.",
+      "id": "the-elderly-barbers",
+      "name": "The elderly barbers",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Kliner's second wife: a pale, frail-looking woman Reacher notices at a convenience store. A clerk puts her poor condition down to illness, but to Reacher she looks frightened rather than sick. She is said to get along badly with her stepson, who collects her in his black pickup truck.",
+      "id": "mrs-kliner",
+      "name": "Mrs. Kliner",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Professor Kelstein"
+      ],
+      "description": "A very old, small Columbia University professor and one of the contacts on Joe's list. During World War II he and a Princeton colleague ran a secret program printing counterfeit German currency to damage the Nazi economy, and the two became lifelong experts on forgery, writing the Treasury's standard reference on the subject and advising Joe informally. He explains to Reacher what Joe was chasing and how good the fake money really is.",
+      "id": "kelvin-kelstein",
+      "name": "Kelvin Kelstein",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Treasury Department employee who was close to Joe Reacher and possibly involved with him. Out of loyalty to Joe, she agrees to speak to Reacher off the record and to look into what her colleague had been working on before his death.",
+      "id": "molly-beth-gordon",
+      "name": "Molly Beth Gordon",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Sherman Stoller's girlfriend of several years, who lives in an upscale condominium paid for by his sudden, unexplained wealth. Bitter about his secretive dealings, she confirms his death and produces a photograph of Stoller with the former boss who employed him hauling goods.",
+      "id": "judy",
+      "name": "Judy",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "killing-floor"
+}
