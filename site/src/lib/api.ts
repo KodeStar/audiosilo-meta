@@ -112,6 +112,15 @@ export interface Recap {
   text: string
 }
 
+/** A work's whole-book recap summary (the CC BY-SA layer): the entire book in one
+    paragraph (in_short, ending included) and a plain statement of how it ends
+    (ending). Both fields are optional and are FULL spoilers - distinct from the
+    position-gated chaptered recaps above. */
+export interface RecapSummary {
+  in_short?: string
+  ending?: string
+}
+
 export interface Work {
   id: string
   title: string
@@ -128,6 +137,8 @@ export interface Work {
   /** Community-authored expressive layer (CC BY-SA); absent on most works. */
   characters?: Character[]
   recaps?: Recap[]
+  /** Whole-book recap summary (CC BY-SA); absent on most works. */
+  recap_summary?: RecapSummary
 }
 
 export interface Chapter {

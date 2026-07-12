@@ -1,7 +1,7 @@
 // Pure presentation helpers for the community-authored expressive layer
 // (characters + recaps) shown on a work page. Kept framework-free so they can be
 // unit-tested; the React components in WorkDetail.tsx consume them.
-import type { Character, Recap } from './api'
+import type { Character, Recap, RecapSummary } from './api'
 
 /** Human label for a character role, or null when the role is absent/unknown. */
 export function roleLabel(role: Character['role']): string | null {
@@ -54,4 +54,15 @@ export function scopeLabel(scope: Recap['scope']): string | null {
     that guarantee. Returns a new array; does not mutate the input. */
 export function sortRecaps(recaps: Recap[]): Recap[] {
   return [...recaps].sort((a, b) => a.through.chapter - b.through.chapter)
+}
+
+/** The number of "Story so far" rows a work shows: the chaptered recaps plus the
+    whole-book "In short" and "How did it end?" rows, each counted only when its
+    text is present (an empty string counts as absent). This drives BOTH the tab's
+    count and whether the tab appears at all (0 = no tab), so a work carrying only
+    a whole-book summary (no chaptered recaps) still gets a Story so far tab. */
+export function recapRowCount(recaps: Recap[], summary?: RecapSummary): number {
+  const inShort = summary?.in_short ? 1 : 0
+  const ending = summary?.ending ? 1 : 0
+  return recaps.length + inShort + ending
 }
