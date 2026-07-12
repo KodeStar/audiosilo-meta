@@ -1,6 +1,6 @@
 // Package serve is the read-only HTTP API over the compiled metadata artifact.
 // It opens the SQLite database produced by internal/build, exposes a small JSON
-// API (search, work/person/series detail, ASIN/ISBN lookup, stats), and can
+// API (search, work/person/series detail, ASIN/ISBN lookup, stats, coverage), and can
 // optionally poll GitHub Releases to hot-swap in a newer artifact without a
 // restart. All content is public, so there is no auth; CORS is wide open on the
 // API surface. Business logic lives here; cmd/metaserve is a thin wrapper.
@@ -148,6 +148,7 @@ func (s *Server) buildMux() http.Handler {
 	mux.Handle("GET /api/v1/people/{id}", s.api(s.handlePerson))
 	mux.Handle("GET /api/v1/series/{id}", s.api(s.handleSeries))
 	mux.Handle("GET /api/v1/lookup", s.api(s.handleLookup))
+	mux.Handle("GET /api/v1/coverage", s.api(s.handleCoverage))
 	if s.site != nil {
 		mux.Handle("/", s.site)
 	}
@@ -295,6 +296,19 @@ func (s *Server) handleSearch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, http.StatusOK, map[string]any{"results": results})
+}
+
+// handleCoverage reports expressive-layer coverage (characters/recaps/recap
+// summaries) plus series position gaps. It always returns 200 and degrades on
+// older artifacts (see snapshot.coverage) rather than reporting everything as
+// missing.
+func (s *Server) handleCoverage(w http.ResponseWriter, _ *http.Request) {
+	res, err := s.current().coverage()
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, res)
 }
 
 func (s *Server) handleLookup(w http.ResponseWriter, r *http.Request) {
