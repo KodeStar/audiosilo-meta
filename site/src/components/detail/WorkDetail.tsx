@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import {
   getWork,
   getSeries,
@@ -12,7 +12,10 @@ import {
   type Recording,
   type Chapter,
   type Series,
+  type Character,
+  type Recap,
 } from '../../lib/api'
+import { roleLabel, revealLabel, recapLabel, scopeLabel, sortRecaps } from '../../lib/expressive'
 import CoverImage from '../cards/CoverImage'
 import PersonLinks from '../cards/PersonLinks'
 import {
@@ -285,6 +288,143 @@ function MetadataBlock({ work }: { work: Work }) {
   )
 }
 
+/** A small uppercase pill used for character roles and recap scopes. */
+function Badge({ children }: { children: ReactNode }) {
+  return (
+    <span className="shrink-0 rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-dim">
+      {children}
+    </span>
+  )
+}
+
+/** One character card. Descriptions are spoiler-bounded to the reveal position
+    but still story detail, so the parent section blurs them until asked. */
+function CharacterCard({ character, revealed }: { character: Character; revealed: boolean }) {
+  const role = roleLabel(character.role)
+  return (
+    <article className="rounded-2xl border border-edge bg-surface p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <h3 className="font-semibold text-hi">{character.name}</h3>
+          {character.aliases && character.aliases.length > 0 ? (
+            <p className="mt-0.5 text-xs text-dim">also {character.aliases.join(', ')}</p>
+          ) : null}
+        </div>
+        {role ? <Badge>{role}</Badge> : null}
+      </div>
+      <p className="mt-2 text-xs font-medium text-pink-400/90">{revealLabel(character.reveal)}</p>
+      {character.description ? (
+        <p
+          className={`mt-3 text-sm leading-relaxed text-body transition duration-200 ${
+            revealed ? '' : 'select-none blur-sm'
+          }`}
+          aria-hidden={!revealed}
+        >
+          {character.description}
+        </p>
+      ) : null}
+    </article>
+  )
+}
+
+/** The cast of a work: community-authored, spoiler-aware character cards behind a
+    single reveal toggle (descriptions start blurred). Renders nothing when the
+    work has no character sidecar. */
+function CharactersSection({ work }: { work: Work }) {
+  const characters = work.characters
+  const [revealed, setRevealed] = useState(false)
+  if (!characters || characters.length === 0) return null
+  return (
+    <section className="mt-14">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold text-hi">
+          Characters
+          <span className="ml-2 text-sm font-normal text-dim">{characters.length}</span>
+        </h2>
+        <button
+          type="button"
+          onClick={() => setRevealed((v) => !v)}
+          aria-pressed={revealed}
+          className="rounded-md border border-edge bg-raised px-3 py-1 text-xs text-body transition-colors hover:border-pink-500/50 hover:text-hi"
+        >
+          {revealed ? 'Hide descriptions' : 'Show descriptions (spoilers)'}
+        </button>
+      </div>
+      <p className="mt-2 max-w-2xl text-sm text-dim">
+        Community-written and spoiler-aware - each entry is scoped to where the character first
+        appears.
+      </p>
+      <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        {characters.map((c) => (
+          <CharacterCard key={c.id} character={c} revealed={revealed} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/** One "story so far" recap: a collapsible row that stays closed (spoiler-safe)
+    until the reader opens it. */
+function RecapRow({ recap }: { recap: Recap }) {
+  const [open, setOpen] = useState(false)
+  const scope = scopeLabel(recap.scope)
+  return (
+    <div className="bg-surface">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-raised/40"
+      >
+        <span className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-medium text-body">{recapLabel(recap)}</span>
+          {scope ? <Badge>{scope}</Badge> : null}
+        </span>
+        <svg
+          className={`h-4 w-4 shrink-0 text-dim transition-transform ${open ? 'rotate-180' : ''}`}
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+      {open ? (
+        <p className="px-4 pb-4 text-sm leading-relaxed text-body">{recap.text}</p>
+      ) : null}
+    </div>
+  )
+}
+
+/** "Story so far": position-keyed recaps as an accordion, ordered by position and
+    closed by default so the reader chooses how far to reveal. Renders nothing
+    when the work has no recap sidecar. */
+function RecapsSection({ work }: { work: Work }) {
+  const recaps = work.recaps
+  if (!recaps || recaps.length === 0) return null
+  const ordered = sortRecaps(recaps)
+  return (
+    <section className="mt-14">
+      <h2 className="text-xl font-semibold text-hi">
+        Story so far
+        <span className="ml-2 text-sm font-normal text-dim">{ordered.length}</span>
+      </h2>
+      <p className="mt-2 max-w-2xl text-sm text-dim">
+        Position-tagged recaps - open only as far as you have listened; each reveals the story up to
+        its point.
+      </p>
+      <div className="mt-5 divide-y divide-edge/60 overflow-hidden rounded-2xl border border-edge">
+        {ordered.map((r, i) => (
+          <RecapRow key={`${r.through.chapter}-${i}`} recap={r} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 /** "More in this series": the other member works of the work's (first) series,
     as a horizontal rail of square cover cards. Renders nothing while loading,
     on error, or when the series has no other members. */
@@ -453,6 +593,8 @@ function Loaded({ work }: { work: Work }) {
         </div>
       </div>
 
+      <CharactersSection work={work} />
+      <RecapsSection work={work} />
       <SeriesRail work={work} />
       <ImproveRecord id={work.id} />
     </div>

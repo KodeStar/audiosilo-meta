@@ -88,6 +88,30 @@ export interface WorkXrefs {
   goodreads?: string
 }
 
+/** A spoiler position on a work's own (edition-independent) timeline.
+    chapter is the logical book chapter; 0 = front matter / prior-book knowledge. */
+export interface Position {
+  chapter: number
+}
+
+/** A community-authored, spoiler-tagged character entry (the CC BY-SA layer). */
+export interface Character {
+  id: string
+  name: string
+  aliases?: string[]
+  role?: 'protagonist' | 'antagonist' | 'supporting' | 'minor'
+  reveal: Position
+  description?: string
+  xref?: { wikidata?: string; goodreads?: string }
+}
+
+/** A position-keyed "story so far" recap. through = safe once that chapter is done. */
+export interface Recap {
+  through: Position
+  scope?: 'book' | 'series'
+  text: string
+}
+
 export interface Work {
   id: string
   title: string
@@ -101,6 +125,9 @@ export interface Work {
   /** Print ISBNs attached to the work itself (not a recording). */
   isbn?: string[]
   xrefs?: WorkXrefs
+  /** Community-authored expressive layer (CC BY-SA); absent on most works. */
+  characters?: Character[]
+  recaps?: Recap[]
 }
 
 export interface Chapter {
