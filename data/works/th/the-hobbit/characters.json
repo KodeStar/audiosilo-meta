@@ -1,0 +1,102 @@
+{
+  "characters": [
+    {
+      "description": "A comfortable, respectable hobbit of Bag End who wants nothing to do with adventures until Gandalf and a company of dwarves arrive uninvited and sweep him into a quest as their hired burglar. Fond of good food, his pipe, and his warm home, he surprises everyone - himself most of all - with unexpected nerve and cleverness once he is on the road east.",
+      "id": "bilbo-baggins",
+      "name": "Bilbo Baggins",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "the wizard"
+      ],
+      "description": "A wandering wizard famous for his fireworks and for a knack of drawing quiet folk into adventures. He arranges Bilbo's involvement with the dwarves and steers the company through its early dangers, though he comes and goes on errands of his own and does not stay with them the whole way.",
+      "id": "gandalf",
+      "name": "Gandalf",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The proud leader of the company of dwarves and heir to a kingdom beneath the Lonely Mountain that the dragon Smaug seized long ago. He means to reclaim his people's halls and treasure, and carries the weight of that lost inheritance with grave, sometimes stubborn, dignity.",
+      "id": "thorin-oakenshield",
+      "name": "Thorin Oakenshield",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The wise and kindly master of Rivendell, the Last Homely House east of the mountains. He offers the travellers rest and reads the hidden moon-letters on their map, revealing a clue about the secret door into the Lonely Mountain.",
+      "id": "elrond",
+      "name": "Elrond",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A slippery, secretive creature who lives on an island in a cold lake deep beneath the goblins' mountain, muttering to himself and hissing. He challenges the lost Bilbo to a riddle-game with high stakes, and guards a magic ring he calls his precious - a ring Bilbo happens upon in the dark tunnels.",
+      "id": "gollum",
+      "name": "Gollum",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A huge, gruff man who can take the shape of a great bear, living alone with his remarkable animals in a hall between the mountains and Mirkwood. Wary of strangers, he nonetheless shelters and provisions the company once Gandalf carefully wins him over.",
+      "id": "beorn",
+      "name": "Beorn",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Thranduil",
+        "King of the Wood-elves"
+      ],
+      "description": "The stern king of the wood-elves of Mirkwood, who holds the dwarves prisoner in his underground halls when they trespass in his forest. Fond of treasure and good wine, he is not evil but deeply suspicious of the travellers and their unexplained business.",
+      "id": "the-elvenking",
+      "name": "The Elvenking",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The great fire-breathing dragon who drove the dwarves from the Lonely Mountain generations ago and has slept on their heaped gold ever since. Cunning, vain, and immensely dangerous, he wakes when a thief disturbs his hoard and trades flattering, probing words with the unseen burglar who has crept into his lair.",
+      "id": "smaug",
+      "name": "Smaug",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Bard the Bowman"
+      ],
+      "description": "A grim, far-sighted man of Lake-town descended from the old lords of Dale, and a deadly archer. When the enraged dragon comes to burn the town, he alone keeps his head, and a whispered word about a bare patch in the beast's armor gives him his chance.",
+      "id": "bard",
+      "name": "Bard",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-hobbit"
+}

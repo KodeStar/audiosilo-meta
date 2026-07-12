@@ -17,8 +17,9 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// SchemaVersion is written to meta(schema_version).
-const SchemaVersion = 1
+// SchemaVersion is written to meta(schema_version). Bumped to 2 when the
+// characters/recaps tables were added.
+const SchemaVersion = 2
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -100,6 +101,37 @@ CREATE TABLE series_works (series_id TEXT NOT NULL, work_id TEXT NOT NULL, posit
 CREATE INDEX idx_series_works_work ON series_works(work_id);
 CREATE TABLE series_authors (series_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 
+CREATE TABLE characters (
+  work_id        TEXT NOT NULL,
+  id             TEXT NOT NULL,
+  name           TEXT NOT NULL,
+  role           TEXT,
+  reveal_chapter INTEGER NOT NULL,
+  description    TEXT,
+  wikidata       TEXT,
+  goodreads      TEXT,
+  ord            INTEGER NOT NULL,
+  license        TEXT NOT NULL,
+  PRIMARY KEY (work_id, id)
+);
+CREATE INDEX idx_characters_work ON characters(work_id);
+CREATE TABLE character_aliases (
+  work_id      TEXT NOT NULL,
+  character_id TEXT NOT NULL,
+  alias        TEXT NOT NULL,
+  ord          INTEGER NOT NULL
+);
+
+CREATE TABLE recaps (
+  work_id         TEXT NOT NULL,
+  through_chapter INTEGER NOT NULL,
+  scope           TEXT,
+  text            TEXT NOT NULL,
+  license         TEXT NOT NULL,
+  PRIMARY KEY (work_id, through_chapter)
+);
+CREATE INDEX idx_recaps_work ON recaps(work_id);
+
 CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, names);
 `
 
@@ -171,6 +203,25 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 		return err
 	}
 
+	characters := append([]*model.Characters(nil), cat.Characters...)
+	sort.Slice(characters, func(i, j int) bool { return characters[i].Work < characters[j].Work })
+	recaps := append([]*model.Recaps(nil), cat.Recaps...)
+	sort.Slice(recaps, func(i, j int) bool { return recaps[i].Work < recaps[j].Work })
+	nChar := 0
+	for _, c := range characters {
+		nChar += len(c.Characters)
+	}
+	nRecap := 0
+	for _, rc := range recaps {
+		nRecap += len(rc.Recaps)
+	}
+	if err = insertCharacters(tx, characters); err != nil {
+		return err
+	}
+	if err = insertRecaps(tx, recaps); err != nil {
+		return err
+	}
+
 	nRec := 0
 	for _, w := range works {
 		nRec += len(w.Recordings)
@@ -183,6 +234,8 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 		{"count_recordings", strconv.Itoa(nRec)},
 		{"count_people", strconv.Itoa(len(people))},
 		{"count_series", strconv.Itoa(len(series))},
+		{"count_characters", strconv.Itoa(nChar)},
+		{"count_recaps", strconv.Itoa(nRecap)},
 	}
 	for _, kv := range metaRows {
 		if _, err = tx.Exec(`INSERT INTO meta(key, value) VALUES(?, ?)`, kv[0], kv[1]); err != nil {
@@ -314,6 +367,49 @@ func insertSeries(tx *sql.Tx, series []*model.Series) error {
 		}
 		if _, err := tx.Exec(`INSERT INTO search_fts(kind, id, title, names) VALUES('series', ?, ?, '')`, s.ID, s.Name); err != nil {
 			return err
+		}
+	}
+	return nil
+}
+
+// insertCharacters writes the per-work character sidecars. Each file's entries
+// keep their authored order (ord); characters is pre-sorted by work id for a
+// deterministic build.
+func insertCharacters(tx *sql.Tx, characters []*model.Characters) error {
+	for _, cf := range characters {
+		for i, ch := range cf.Characters {
+			var wiki, gr string
+			if ch.Xref != nil {
+				wiki, gr = ch.Xref.Wikidata, ch.Xref.Goodreads
+			}
+			if _, err := tx.Exec(
+				`INSERT INTO characters(work_id, id, name, role, reveal_chapter, description, wikidata, goodreads, ord, license) VALUES(?,?,?,?,?,?,?,?,?,?)`,
+				cf.Work, ch.ID, ch.Name, nullStr(ch.Role), ch.Reveal.Chapter, nullStr(ch.Description), nullStr(wiki), nullStr(gr), i, cf.License,
+			); err != nil {
+				return err
+			}
+			for j, alias := range ch.Aliases {
+				if _, err := tx.Exec(`INSERT INTO character_aliases(work_id, character_id, alias, ord) VALUES(?,?,?,?)`, cf.Work, ch.ID, alias, j); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+// insertRecaps writes the per-work recap sidecars. No stored order column is
+// needed: recaps are keyed (and served) by their unique through-chapter, so
+// recapsOf orders by it directly.
+func insertRecaps(tx *sql.Tx, recaps []*model.Recaps) error {
+	for _, rf := range recaps {
+		for _, r := range rf.Recaps {
+			if _, err := tx.Exec(
+				`INSERT INTO recaps(work_id, through_chapter, scope, text, license) VALUES(?,?,?,?,?)`,
+				rf.Work, r.Through.Chapter, nullStr(r.Scope), r.Text, rf.License,
+			); err != nil {
+				return err
+			}
 		}
 	}
 	return nil

@@ -49,10 +49,39 @@ func fixtureCatalog() *model.Catalog {
 		Works:   []model.SeriesWork{{Work: "the-way-of-kings", Position: "1"}},
 	}
 
+	chars := &model.Characters{
+		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Sources: []model.Source{{Type: "community"}},
+		Characters: []model.Character{
+			{
+				ID: "ryland-grace", Name: "Ryland Grace", Role: "protagonist",
+				Aliases: []string{"Dr. Grace"}, Reveal: model.Position{Chapter: 1},
+				Description: "A junior-high science teacher who wakes alone aboard an interstellar ship with amnesia.",
+				Xref:        &model.CharacterXref{Wikidata: "Q110001"},
+			},
+			{
+				ID: "rocky", Name: "Rocky", Role: "supporting",
+				Reveal:      model.Position{Chapter: 8},
+				Description: "An Eridian engineer Grace meets far from home.",
+			},
+		},
+	}
+	// Deliberately out of position order to prove the build sorts recaps.
+	recaps := &model.Recaps{
+		Work: "project-hail-mary", License: "CC-BY-SA-3.0",
+		Sources: []model.Source{{Type: "community"}},
+		Recaps: []model.Recap{
+			{Through: model.Position{Chapter: 9}, Scope: "book", Text: "First contact is made."},
+			{Through: model.Position{Chapter: 2}, Scope: "book", Text: "Grace wakes with amnesia and takes stock of the ship."},
+		},
+	}
+
 	return &model.Catalog{
-		Works:  []*model.Work{phm, wok},
-		People: []*model.Person{author, n1, n2, porter, sanderson},
-		Series: []*model.Series{series},
+		Works:      []*model.Work{phm, wok},
+		People:     []*model.Person{author, n1, n2, porter, sanderson},
+		Series:     []*model.Series{series},
+		Characters: []*model.Characters{chars},
+		Recaps:     []*model.Recaps{recaps},
 	}
 }
 
@@ -74,12 +103,14 @@ func buildFixture(t *testing.T) *sql.DB {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":   "1",
+		"schema_version":   "2",
 		"built_at":         "2026-07-11T00:00:00Z",
 		"count_works":      "2",
 		"count_recordings": "2",
 		"count_people":     "5",
 		"count_series":     "1",
+		"count_characters": "2",
+		"count_recaps":     "2",
 	}
 	for k, w := range want {
 		var got string
@@ -233,6 +264,84 @@ func TestBuildChaptersOrdered(t *testing.T) {
 	}
 	if len(idxs) != 3 || idxs[0] != 0 || idxs[2] != 2 {
 		t.Errorf("chapter idx sequence = %v, want [0 1 2]", idxs)
+	}
+}
+
+func TestBuildCharacters(t *testing.T) {
+	db := buildFixture(t)
+	rows, err := db.Query(`SELECT id, name, role, reveal_chapter, wikidata, ord, license FROM characters WHERE work_id=? ORDER BY ord`, "project-hail-mary")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	type row struct {
+		id, name, role, wiki, license string
+		reveal, ord                   int
+	}
+	var got []row
+	for rows.Next() {
+		var r row
+		var role, wiki sql.NullString
+		if err := rows.Scan(&r.id, &r.name, &role, &r.reveal, &wiki, &r.ord, &r.license); err != nil {
+			t.Fatal(err)
+		}
+		r.role, r.wiki = role.String, wiki.String
+		got = append(got, r)
+	}
+	if len(got) != 2 {
+		t.Fatalf("got %d characters, want 2", len(got))
+	}
+	if got[0].id != "ryland-grace" || got[0].ord != 0 || got[0].reveal != 1 || got[0].role != "protagonist" ||
+		got[0].wiki != "Q110001" || got[0].license != "CC-BY-SA-3.0" {
+		t.Errorf("character[0] = %+v", got[0])
+	}
+	if got[1].id != "rocky" || got[1].ord != 1 || got[1].reveal != 8 {
+		t.Errorf("character[1] = %+v", got[1])
+	}
+
+	// Aliases land in authored order and belong to the right character.
+	var alias string
+	if err := db.QueryRow(`SELECT alias FROM character_aliases WHERE work_id=? AND character_id=? ORDER BY ord`,
+		"project-hail-mary", "ryland-grace").Scan(&alias); err != nil {
+		t.Fatal(err)
+	}
+	if alias != "Dr. Grace" {
+		t.Errorf("alias = %q, want Dr. Grace", alias)
+	}
+	// The character with no aliases has none.
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM character_aliases WHERE work_id=? AND character_id=?`,
+		"project-hail-mary", "rocky").Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 0 {
+		t.Errorf("rocky alias count = %d, want 0", n)
+	}
+}
+
+func TestBuildRecapsServedByPosition(t *testing.T) {
+	db := buildFixture(t)
+	// The fixture supplies chapters 9 then 2 (out of order); recaps are keyed and
+	// read by through_chapter, so ORDER BY through_chapter yields position order.
+	rows, err := db.Query(`SELECT through_chapter, scope, license FROM recaps WHERE work_id=? ORDER BY through_chapter`, "project-hail-mary")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var chapters []int
+	for rows.Next() {
+		var ch int
+		var scope, license string
+		if err := rows.Scan(&ch, &scope, &license); err != nil {
+			t.Fatal(err)
+		}
+		if scope != "book" || license != "CC-BY-SA-3.0" {
+			t.Errorf("recap through %d: scope=%q license=%q", ch, scope, license)
+		}
+		chapters = append(chapters, ch)
+	}
+	if len(chapters) != 2 || chapters[0] != 2 || chapters[1] != 9 {
+		t.Errorf("recap chapters = %v, want [2 9]", chapters)
 	}
 }
 

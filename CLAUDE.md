@@ -102,6 +102,18 @@ layers, enforced structurally by the schema** (`$defs/license` vs
 record can never carry the share-alike license and a sidecar can never carry
 CC0 - the boundary is a schema enum, not a convention (see LICENSING.md).
 
+Characters/recaps flow all the way through: `metabuild` writes them into the
+SQLite artifact (`characters`/`character_aliases`/`recaps` tables, added in
+**artifact schema_version 2**; character `ord`/recap position order preserved,
+deterministic), and `metaserve` returns them inline on `GET /works/{id}`
+(`workDetail.characters`/`.recaps`, `omitempty`). The serve queries degrade
+gracefully if the tables are absent (a newer binary briefly serving a v1
+release), so their absence is "no data", not a 500. **Authoring the expressive
+layer is documented in [AUTHORING.md](AUTHORING.md)** (the reusable process:
+positions, spoiler model, copyright caps, checklist) - read it before adding
+characters/recaps by hand or with an agent. The four exemplar series (First Law,
+Scholomance, Lord of the Rings, Magic Faraway Tree) are the worked reference.
+
 ## Package layout
 
 ```
@@ -196,14 +208,17 @@ the schema notes below.
   server's outward envelope changes; see workspace CROSS-REPO.md §17).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
-  **schema + metacheck rules have landed** (per-work `characters.json`/
+  **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four
+  fully-worked exemplar series have landed** (per-work `characters.json`/
   `recaps.json` sidecars, `$defs/position`, the `$defs/license_content`
-  share-alike enum - see the data-model section above); still to come: wiring
-  them into `metabuild`/`metaserve` and the server `/meta` + player render, a
-  fully-worked exemplar series, the verbatim/near-verbatim (n-gram) publish-
-  pipeline check, and the extraction pipeline (Phase 3). Also:
-  **contributor role modeling** - translator/introduction/editor credits are
-  currently plain people on the work (the importer strips the role qualifier
-  from the name); a future schema field should carry the role.
+  share-alike enum, artifact schema_version 2, `GET /works/{id}` inline
+  characters/recaps - see the data-model section above and
+  [AUTHORING.md](AUTHORING.md)). Still to come: the **site render** (in
+  progress), the **player render** (the server `/meta` + frontend three-repo
+  seam - Stage 2), the verbatim/near-verbatim (n-gram) publish-pipeline check,
+  and the extraction pipeline (Phase 3). Also: **contributor role modeling** -
+  translator/introduction/editor credits are currently plain people on the work
+  (the importer strips the role qualifier from the name); a future schema field
+  should carry the role.
 - **Phase 3**: extraction clients (epub -> characters/recaps pipeline,
   likely in audiosilo-manager).
