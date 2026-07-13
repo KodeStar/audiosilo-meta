@@ -10,6 +10,7 @@ import {
   type SearchResult,
   type LookupResponse,
 } from '../../lib/api'
+import { addWorkFromQueryUrl } from '../../lib/search-cta'
 
 interface Props {
   /** Quiet example queries shown below the box; a tap fills and runs a search. */
@@ -337,8 +338,38 @@ export default function SearchBox({ examples = [], autoFocus = false }: Props) {
             ) : null}
 
             {!loading && !error && options.length === 0 ? (
-              <li className="px-4 py-6 text-center text-sm text-dim" role="presentation">
-                No matches for &ldquo;{trimmed}&rdquo;.
+              <li className="px-4 py-5 text-center" role="presentation">
+                <p className="text-sm text-dim">
+                  No matches for &ldquo;{trimmed}&rdquo;.
+                </p>
+                <p className="mt-1 text-sm font-medium text-hi">Not in the database yet.</p>
+                <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
+                  <a
+                    href={addWorkFromQueryUrl(trimmed)}
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-pink-600 px-3 py-1.5 text-sm font-medium text-white shadow-lg shadow-pink-600/20 transition-colors hover:bg-pink-500"
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                    Add this book
+                  </a>
+                  <a
+                    href="/contribute"
+                    className="text-xs text-dim underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+                  >
+                    or see what else is needed
+                  </a>
+                </div>
               </li>
             ) : null}
 
