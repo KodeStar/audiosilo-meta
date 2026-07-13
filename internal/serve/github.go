@@ -436,19 +436,32 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	return nil
 }
 
-// pollLoop refreshes on cfg.Interval until ctx is cancelled. Failures are logged
-// and retried on the next tick; a poll never crashes the serving process.
+// pollLoop refreshes immediately at startup and then every cfg.Interval until
+// ctx is cancelled. Failures are logged and retried on the next poll; a poll
+// never crashes the serving process.
+//
+// The immediate first refresh exists because the production boot is a baked
+// --db artifact AND --poll: New() loads the image-build-time DB and, since
+// DBPath != "", does NOT do the synchronous first refresh (that path is
+// poll-only). Without an immediate poll a recreated container would serve
+// stale, build-time data for one full Interval (an hour by default) - seen live
+// on meta.audiosilo.app. On a poll-only boot New() already refreshed
+// synchronously and stored the ETag, so this immediate refresh is a cheap
+// conditional 304 - harmless. refresh() is ctx-bound, so a slow first download
+// aborts on shutdown rather than delaying it. The wait uses time.After, not a
+// Ticker, so the interval is measured from the END of the previous refresh - a
+// refresh slower than a short Interval can never pend a tick and fire again
+// back-to-back.
 func (s *Server) pollLoop(ctx context.Context) {
-	t := time.NewTicker(s.cfg.Interval)
-	defer t.Stop()
 	for {
+		// A refresh cut short by shutdown is not a poll failure - stay silent.
+		if err := s.refresh(ctx); err != nil && ctx.Err() == nil {
+			s.log.Printf("serve: poll refresh failed: %v", err)
+		}
 		select {
 		case <-ctx.Done():
 			return
-		case <-t.C:
-			if err := s.refresh(ctx); err != nil {
-				s.log.Printf("serve: poll refresh failed: %v", err)
-			}
+		case <-time.After(s.cfg.Interval):
 		}
 	}
 }
