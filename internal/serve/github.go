@@ -46,27 +46,32 @@ type ghAsset struct {
 }
 
 type ghRelease struct {
-	TagName    string    `json:"tag_name"`
-	Draft      bool      `json:"draft"`
-	Prerelease bool      `json:"prerelease"`
-	Assets     []ghAsset `json:"assets"`
+	TagName     string    `json:"tag_name"`
+	Draft       bool      `json:"draft"`
+	Prerelease  bool      `json:"prerelease"`
+	PublishedAt time.Time `json:"published_at"`
+	Assets      []ghAsset `json:"assets"`
 }
 
 // releaseListPageSize is how many recent releases the poller scans for a data
 // release. The repo also cuts code/image releases (v*, no data assets) between
-// data releases, so a small window of the newest-first list is searched rather
-// than trusting a single "latest". If non-data releases ever exhausted the
-// window, a poll-only boot would fail New()'s synchronous first refresh and the
-// process would exit - acceptable at this repo's release cadence.
+// data releases, so a window of the list is searched and the newest by
+// published_at selected (the list order is not publish-chronological - see
+// latestDataRelease). If non-data releases ever exhausted the window, a
+// poll-only boot would fail New()'s synchronous first refresh and the process
+// would exit - acceptable at this repo's release cadence.
 const releaseListPageSize = 15
 
 // latestDataRelease fetches the newest releases conditionally and returns the
-// first (newest-first) non-draft, non-prerelease release that carries a
-// meta.sqlite.gz asset. GitHub's "latest" release can be a code/image release
+// non-draft, non-prerelease release carrying a meta.sqlite.gz asset with the
+// MAXIMUM published_at. GitHub's "latest" release can be a code/image release
 // (v*) with no data assets, so selection is by asset presence, not recency
-// alone. The list endpoint orders newest-first by created_at, which matches
-// publish order in this repo's create-on-merge flow. notModified is true when
-// GitHub answers 304 (nothing changed since the last successful fetch).
+// alone. The list endpoint's order is NOT publish-chronological: it was
+// observed live to be created_at date descending, then reverse-lexicographic
+// tag order within a day - so with several same-day data releases the
+// first-listed one is not the newest. Selection is therefore by max
+// published_at, not list position. notModified is true when GitHub answers 304
+// (nothing changed since the last successful fetch).
 func (c *ghClient) latestDataRelease(ctx context.Context) (rel *ghRelease, notModified bool, err error) {
 	url := fmt.Sprintf("%s/repos/%s/releases?per_page=%d", c.base, c.repo, releaseListPageSize)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
@@ -101,14 +106,26 @@ func (c *ghClient) latestDataRelease(ctx context.Context) (rel *ghRelease, notMo
 	if et := resp.Header.Get("ETag"); et != "" {
 		c.etag = et
 	}
+	var best *ghRelease
 	for i := range list {
 		r := &list[i]
 		if r.Draft || r.Prerelease {
 			continue
 		}
-		if _, ok := findAsset(r, dataAssetName); ok {
-			return r, false, nil
+		if _, ok := findAsset(r, dataAssetName); !ok {
+			continue
 		}
+		// Greater-or-equal keeps the LATER-in-list entry on equal timestamps,
+		// matching release.yml's jq (max_by is a stable sort, so it returns the
+		// last of a tied pair) - the two selectors must agree even on a
+		// same-second tie, or the workflow could base its patch on a release no
+		// running server has loaded.
+		if best == nil || !r.PublishedAt.Before(best.PublishedAt) {
+			best = r
+		}
+	}
+	if best != nil {
+		return best, false, nil
 	}
 	// The stored ETag makes the next poll 304 until the list changes - correct,
 	// since retrying an unchanged list cannot find a data release either.

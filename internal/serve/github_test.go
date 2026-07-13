@@ -82,12 +82,14 @@ func TestGunzipTo(t *testing.T) {
 	}
 }
 
-// fakeRel is one release as the fake publishes it: a tag, its named assets, and
-// the draft/prerelease flags the selection logic must respect.
+// fakeRel is one release as the fake publishes it: a tag, its named assets, the
+// draft/prerelease flags the selection logic must respect, and an optional
+// published time (zero unless a test pins it - selection is by max published_at).
 type fakeRel struct {
 	tag        string
 	draft      bool
 	prerelease bool
+	published  time.Time
 	assets     map[string][]byte
 }
 
@@ -125,7 +127,7 @@ func newFakeGitHub(t *testing.T, tag string, assets map[string][]byte) *fakeGitH
 		etag := f.etag
 		list := make([]ghRelease, 0, len(f.rels))
 		for _, fr := range f.rels {
-			rel := ghRelease{TagName: fr.tag, Draft: fr.draft, Prerelease: fr.prerelease}
+			rel := ghRelease{TagName: fr.tag, Draft: fr.draft, Prerelease: fr.prerelease, PublishedAt: fr.published}
 			names := make([]string, 0, len(fr.assets))
 			for name := range fr.assets {
 				names = append(names, name)
@@ -564,6 +566,74 @@ func TestRefreshSkipsNonDataReleases(t *testing.T) {
 	}
 }
 
+// TestRefreshSelectsByPublishedAt is the regression test for the stale-artifact
+// bug: GitHub's release list order is NOT publish-chronological (see the
+// latestDataRelease doc comment for the observed order), so the first-listed
+// data release is not necessarily the newest. The list here mimics that order -
+// a leading code release, then a STALE data release (older published_at,
+// lexicographically-larger tag) BEFORE the real newest - and the poller must
+// adopt the newer-published one, not the first-listed.
+func TestRefreshSelectsByPublishedAt(t *testing.T) {
+	v1Path, v1, _, v2 := buildV1V2(t)
+
+	// Same-day tags mirroring the production incident: the stale tag sorts
+	// lexicographically ABOVE the newer one, but was published earlier.
+	const (
+		staleTag = "data-v2026.07.12-ddea3bc" // published 17:09, lexicographic max
+		newerTag = "data-v2026.07.12-6f10608" // published 23:33, the actual newest
+	)
+	day := time.Date(2026, 7, 12, 0, 0, 0, 0, time.UTC)
+	staleRel := fakeRel{tag: staleTag, published: day.Add(17*time.Hour + 9*time.Minute), assets: makeAssets(t, v1, "", nil)}
+	newerRel := fakeRel{tag: newerTag, published: day.Add(23*time.Hour + 33*time.Minute), assets: makeAssets(t, v2, "", nil)}
+
+	fake := newFakeGitHub(t, staleTag, nil)
+	// List order = observed GitHub order: code release first, then stale before
+	// newer (reverse-lexicographic within the day).
+	fake.setReleases(codeOnlyRel, staleRel, newerRel)
+
+	srv := newPollServer(t, v1Path, fake)
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("refresh: %v", err)
+	}
+	if srv.loaded != newerTag {
+		t.Errorf("loaded = %q, want %q (must select max published_at, not the first-listed data release)", srv.loaded, newerTag)
+	}
+	if got := srv.current().stats.Works; got != 5 {
+		t.Errorf("works = %d, want 5 (the newer-published v2 artifact adopted)", got)
+	}
+	// The stale release's gz must never have been downloaded.
+	if got := fake.hitCount(dataAssetName); got != 1 {
+		t.Errorf("gz fetched %d times, want 1 (only the newer release)", got)
+	}
+}
+
+// TestRefreshTieBreaksLikeJq pins the tie-break on an exact published_at tie:
+// the LATER-in-list release wins, matching release.yml's jq (max_by is a stable
+// sort, so it returns the last of a tied pair). If the two selectors disagreed
+// on ties, the workflow could base its patch delta on a release no running
+// server has loaded, silently defeating patch refresh for that release.
+func TestRefreshTieBreaksLikeJq(t *testing.T) {
+	v1Path, v1, _, v2 := buildV1V2(t)
+
+	tie := time.Date(2026, 7, 12, 17, 9, 32, 0, time.UTC)
+	first := fakeRel{tag: "data-v2026.07.12-aaaaaaa", published: tie, assets: makeAssets(t, v1, "", nil)}
+	second := fakeRel{tag: "data-v2026.07.12-bbbbbbb", published: tie, assets: makeAssets(t, v2, "", nil)}
+
+	fake := newFakeGitHub(t, first.tag, nil)
+	fake.setReleases(first, second)
+
+	srv := newPollServer(t, v1Path, fake)
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("refresh: %v", err)
+	}
+	if srv.loaded != second.tag {
+		t.Errorf("loaded = %q, want %q (later-in-list must win a published_at tie, matching jq max_by)", srv.loaded, second.tag)
+	}
+	if got := srv.current().stats.Works; got != 5 {
+		t.Errorf("works = %d, want 5 (the later-listed v2 artifact adopted)", got)
+	}
+}
+
 // TestRefreshErrorsWithoutDataRelease pins the none-found behavior: a release
 // list holding only code releases yields a descriptive error and the serving
 // snapshot is untouched.
@@ -608,12 +678,16 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 		t.Errorf("release.yml does not contain %q - the patch asset naming convention drifted", want)
 	}
 	// The prev-release selection must mirror latestDataRelease: pick by
-	// data-asset presence, exclude drafts/prereleases, over the same window.
+	// data-asset presence, exclude drafts/prereleases, select by max
+	// published_at, over the same window.
 	if want := `.name == "` + dataAssetName + `"`; !strings.Contains(s, want) {
 		t.Errorf("release.yml prev selection does not filter releases by %q - it must pick the newest release carrying the data asset, not GitHub's latest", want)
 	}
 	if want := `select((.draft or .prerelease) | not)`; !strings.Contains(s, want) {
 		t.Errorf("release.yml prev selection does not contain %q - drafts/prereleases must be excluded like latestDataRelease does", want)
+	}
+	if want := `max_by(.published_at)`; !strings.Contains(s, want) {
+		t.Errorf("release.yml prev selection does not contain %q - it must pick by publish time, not list position, like latestDataRelease does", want)
 	}
 	if want := "per_page=" + strconv.Itoa(releaseListPageSize); !strings.Contains(s, want) {
 		t.Errorf("release.yml prev selection does not contain %q - keep the scan window in sync with releaseListPageSize", want)
