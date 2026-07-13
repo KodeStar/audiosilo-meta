@@ -134,8 +134,10 @@ const ROLE_QUALIFIERS = new Set([
 
 // A series position: a number or an omnibus range ("1", "2.5", "1-3.5").
 const SEQUENCE_PATTERN = /^\d+(\.\d+)?(-\d+(\.\d+)?)?$/
-// This client keeps release dates strict (the add-work form wants YYYY-MM-DD).
-const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
+// A release date: YYYY, YYYY-MM, or YYYY-MM-DD - mirrors the Go importer's
+// datePattern and the recording schema's date_flex, so a bare ID3 TYER year
+// ("2017") is a kept fact, passed through as-is (never fabricated into -01-01).
+const DATE_PATTERN = /^\d{4}(-\d{2}(-\d{2})?)?$/
 
 function stripRoleQualifier(name: string): string {
   const idx = name.lastIndexOf(' - ')
@@ -381,11 +383,35 @@ function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
 
 // --- Folder-scan mapping (the metascan tool's output) -----------------------
 
-// The folder-scan language may already be an ISO 639-1 code or a word. Map a
-// known word, accept a bare 2-letter code, else undefined.
+// ISO 639-2/639-3 codes -> 639-1, for the languages the importer supports. The
+// standard ID3 language frame (TLAN) is ISO 639-2, so a properly tagged library
+// arrives with "eng"/"deu"/... - these must map, not fall into cannot-match.
+const ISO_639_3_TO_1: Record<string, string> = {
+  eng: 'en',
+  ger: 'de',
+  deu: 'de',
+  fre: 'fr',
+  fra: 'fr',
+  spa: 'es',
+  ita: 'it',
+  jpn: 'ja',
+  por: 'pt',
+  dut: 'nl',
+  nld: 'nl',
+  pol: 'pl',
+  rus: 'ru',
+  chi: 'zh',
+  zho: 'zh',
+  tur: 'tr',
+}
+
+// The folder-scan language may be an ISO 639-1 code, an ISO 639-2/3 code (ID3
+// TLAN), or a word. Map a known word or 3-letter code, accept a bare 2-letter
+// code, else undefined (the raw value stays visible via languageRaw).
 function mapLanguageLoose(raw: string): string | undefined {
   const w = raw.trim().toLowerCase()
   if (LANGUAGE_MAP[w]) return LANGUAGE_MAP[w]
+  if (ISO_639_3_TO_1[w]) return ISO_639_3_TO_1[w]
   return /^[a-z]{2}$/.test(w) ? w : undefined
 }
 
@@ -519,7 +545,13 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
   },
   folderscan: {
     label: 'audiosilo folder scan',
-    detect: (data) => isObject(data) && coerceStr(data['format']) === FOLDERSCAN_FORMAT,
+    // The version stamp is checked so tool/site skew fails LOUD: a future v2
+    // scan on an old deployed site reads as 'unknown' (the unsupported-format
+    // card) instead of silently misparsing an evolved shape.
+    detect: (data) =>
+      isObject(data) &&
+      coerceStr(data['format']) === FOLDERSCAN_FORMAT &&
+      coerceInt(data['version']) === 1,
     parse: parseFolderscanBook,
     factualKeys: [
       'asin',

@@ -98,6 +98,16 @@ describe('parseExport - format detection', () => {
     expect(out.books[0].format).toBe('folderscan')
   })
 
+  it('treats a folder scan with an unsupported version as unknown (skew fails loud)', () => {
+    const text = JSON.stringify({
+      format: 'audiosilo-folder-scan',
+      version: 2,
+      root: '/x',
+      books: [{ path: 'a', title: 'A', files: ['a.mp3'], audio_files: 1 }],
+    })
+    expect(parseExport(text).format).toBe('unknown')
+  })
+
   it('treats an array with no recognized keys as unknown', () => {
     const text = JSON.stringify([{ foo: 'bar', baz: 1 }])
     expect(parseExport(text).format).toBe('unknown')
@@ -199,12 +209,15 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({})).runtimeMin).toBeUndefined()
   })
 
-  it('keeps releaseDate only when it matches YYYY-MM-DD', () => {
+  it('keeps releaseDate for YYYY, YYYY-MM, and YYYY-MM-DD (Go datePattern parity)', () => {
     expect(parseOne(openAudibleEntry({ release_date: '2021-05-04' })).releaseDate).toBe(
       '2021-05-04'
     )
+    // The recording schema's date_flex accepts partial dates; a bare year is a
+    // kept fact, never fabricated into -01-01.
+    expect(parseOne(openAudibleEntry({ release_date: '2021' })).releaseDate).toBe('2021')
+    expect(parseOne(openAudibleEntry({ release_date: '2021-05' })).releaseDate).toBe('2021-05')
     expect(parseOne(openAudibleEntry({ release_date: '05/04/2021' })).releaseDate).toBeUndefined()
-    expect(parseOne(openAudibleEntry({ release_date: '2021' })).releaseDate).toBeUndefined()
   })
 
   it('sets coverUrl only for an https image_url', () => {
@@ -423,6 +436,25 @@ describe('parseExport - folder-scan field mapping', () => {
     expect(parseOne({ title: 'A', language: 'English' }).language).toBe('en')
     expect(parseOne({ title: 'A', language: 'de' }).language).toBe('de')
     expect(parseOne({ title: 'A', language: 'zzz' }).language).toBeUndefined()
+  })
+
+  it('maps ISO 639-2/3 codes (ID3 TLAN) to 639-1', () => {
+    // TLAN is ISO 639-2, so a properly tagged MP3 library arrives 3-letter.
+    expect(parseOne({ title: 'A', language: 'eng' }).language).toBe('en')
+    expect(parseOne({ title: 'A', language: 'deu' }).language).toBe('de')
+    expect(parseOne({ title: 'A', language: 'ger' }).language).toBe('de')
+    expect(parseOne({ title: 'A', language: 'fra' }).language).toBe('fr')
+    expect(parseOne({ title: 'A', language: 'jpn' }).language).toBe('ja')
+    // An unknown 3-letter code stays unmapped but visible via languageRaw.
+    const unknown = parseOne({ title: 'A', language: 'xyz' })
+    expect(unknown.language).toBeUndefined()
+    expect(unknown.languageRaw).toBe('xyz')
+  })
+
+  it('keeps a bare-year release_date (ID3 TYER) as-is', () => {
+    expect(parseOne({ title: 'A', release_date: '2017' }).releaseDate).toBe('2017')
+    expect(parseOne({ title: 'A', release_date: '2017-11-02' }).releaseDate).toBe('2017-11-02')
+    expect(parseOne({ title: 'A', release_date: 'circa 2017' }).releaseDate).toBeUndefined()
   })
 
   it('omits optional fields that are absent', () => {
