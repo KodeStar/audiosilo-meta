@@ -88,6 +88,10 @@ func splitPositional(args []string) (positional string, rest []string) {
 func printSummary(s scan.Stats, out string) {
 	fmt.Fprintf(os.Stderr, "metascan: %d book(s) found; %d with an ASIN; %d with series data; %d tag-read failure(s)\n",
 		s.Books, s.WithASIN, s.WithSeries, s.TagFailures)
+	if s.AmbiguousDirs > 0 {
+		fmt.Fprintf(os.Stderr, "metascan: %d folder(s) kept as one book without tag evidence - check for collections\n",
+			s.AmbiguousDirs)
+	}
 	if out != "" {
 		fmt.Fprintf(os.Stderr, "metascan: wrote %s - drop it onto meta.audiosilo.app/import\n", out)
 	}

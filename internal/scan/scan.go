@@ -77,6 +77,9 @@ type Stats struct {
 	WithASIN    int
 	WithSeries  int
 	TagFailures int
+	// AmbiguousDirs counts multi-file folders kept as one book with NO tag
+	// evidence either way - possible collections a human should check.
+	AmbiguousDirs int
 }
 
 // isAudio reports whether name has a recognized audiobook extension.
@@ -150,11 +153,35 @@ func walk(dir, root string, isRoot bool, opts Options, probeEnabled bool, books 
 	case isRoot:
 		// Loose files at the scan root are individual single-file books.
 		for _, f := range audioFiles {
-			*books = append(*books, buildBook(dir, root, []string{f}, false, opts, probeEnabled, stats))
+			tags, ok := readTags(filepath.Join(dir, f))
+			if !ok {
+				stats.TagFailures++
+			}
+			*books = append(*books, buildBook(dir, root, []string{f}, false, tags, opts, probeEnabled))
 		}
 	case len(audioFiles) > 0:
-		// A directory that directly contains audio is ONE book.
-		*books = append(*books, buildBook(dir, root, audioFiles, true, opts, probeEnabled, stats))
+		// A directory that directly contains audio is ONE book - unless the
+		// files' own tags prove it is a flat collection of single-file books
+		// (splitVerdict; the common "Series/01 - A.m4b, 02 - B.m4b" layout).
+		// Tags are read BEFORE grouping so the decision is evidence-gated.
+		allTags := make([]tagInfo, len(audioFiles))
+		for i, f := range audioFiles {
+			var ok bool
+			if allTags[i], ok = readTags(filepath.Join(dir, f)); !ok {
+				stats.TagFailures++
+			}
+		}
+		switch splitVerdict(audioFiles, allTags) {
+		case verdictSplit:
+			for i, f := range audioFiles {
+				*books = append(*books, buildBook(dir, root, []string{f}, false, allTags[i], opts, probeEnabled))
+			}
+		case verdictKeepAmbiguous:
+			stats.AmbiguousDirs++
+			fallthrough
+		default:
+			*books = append(*books, buildBook(dir, root, audioFiles, true, allTags[0], opts, probeEnabled))
+		}
 	}
 
 	for _, sd := range subdirs {
@@ -162,9 +189,11 @@ func walk(dir, root string, isRoot bool, opts Options, probeEnabled bool, books 
 	}
 }
 
-// buildBook assembles one Book from a folder (isFolder, path = the dir) or a
-// single loose root file (path = the file stem).
-func buildBook(dir, root string, files []string, isFolder bool, opts Options, probeEnabled bool, stats *Stats) Book {
+// buildBook assembles one Book from a folder (isFolder, path = the dir, tags =
+// the first file's) or a single file (a loose root file, or one file of a split
+// collection folder; path = <dir>/<file stem>, the containing folder feeds the
+// path heuristics).
+func buildBook(dir, root string, files []string, isFolder bool, tags tagInfo, opts Options, probeEnabled bool) Book {
 	// Identity segment (name) + provenance + the location for the book path.
 	var name, nameSrc, bookPath string
 	var ancestors []string
@@ -175,18 +204,14 @@ func buildBook(dir, root string, files []string, isFolder bool, opts Options, pr
 		bookPath = strings.Join(segs, "/")
 	} else {
 		name, nameSrc = stem(files[0]), "filename"
-		ancestors = segs // segs is the dir's ancestors; empty at root
+		ancestors = segs // the containing dir's segments; empty at the root
 		bookPath = name
+		if len(segs) > 0 {
+			bookPath = strings.Join(segs, "/") + "/" + name
+		}
 	}
 
 	pd := derivePath(name, nameSrc, ancestors)
-
-	// Read tags from the first audio file (folder books share album-level tags).
-	firstFile := filepath.Join(dir, files[0])
-	tags, ok := readTags(firstFile)
-	if !ok {
-		stats.TagFailures++
-	}
 
 	b := assemble(bookPath, name, nameSrc, files, pd, tags)
 

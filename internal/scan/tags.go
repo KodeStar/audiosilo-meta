@@ -12,15 +12,21 @@ import (
 
 // tagInfo is the metadata read from a single audio file's embedded tags. Empty
 // fields mean "the tags did not carry it" and are omitted from the output.
+//
+// title is the merged book title (album preferred, track title fallback);
+// album and trackTitle also keep the two raw values apart because the
+// collection split decision (splitVerdict) needs them as separate evidence.
 type tagInfo struct {
-	title     string
-	authors   []string
-	narrators []string
-	series    string
-	position  string
-	asin      string
-	isbn      string
-	year      int
+	title      string
+	album      string
+	trackTitle string
+	authors    []string
+	narrators  []string
+	series     string
+	position   string
+	asin       string
+	isbn       string
+	year       int
 }
 
 // readTags reads embedded tags from one audio file (best-effort - a file that
@@ -46,10 +52,10 @@ func readTags(path string) (tagInfo, bool) {
 func tagsFromMetadata(md tag.Metadata) tagInfo {
 	var t tagInfo
 
+	t.album = strings.TrimSpace(md.Album())
+	t.trackTitle = strings.TrimSpace(md.Title())
 	// Audiobook title is conventionally the album; fall back to the track title.
-	if v := firstNonEmpty(md.Album(), md.Title()); v != "" {
-		t.title = v
-	}
+	t.title = firstNonEmpty(t.album, t.trackTitle)
 	if v := firstNonEmpty(md.AlbumArtist(), md.Artist()); v != "" {
 		t.authors = splitPeople(v)
 	}

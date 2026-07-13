@@ -189,9 +189,16 @@ Every field records where it came from (`tag` / `path` / `filename`) in the
 book's `sources` map, and unknown fields are omitted rather than guessed.
 Grouping follows the workspace convention: a folder that directly contains audio
 is one book (its files are the parts), and loose files at the scan root are
-individual single-file books. The JSON goes to stdout by default (or `-o <file>`);
-a human-readable summary goes to stderr. Pass `-ffprobe ""` to skip ffprobe
-enrichment.
+individual single-file books. One evidence-gated exception: when a folder's
+files carry mutually distinct album tags (or distinct, non-generic title tags
+that each match their own filename), that is a flat folder of separate
+single-file books - the common `Series/01 - A.m4b, 02 - B.m4b` layout - and each
+file becomes its own book, with the folder feeding the series/author heuristics.
+Without tag evidence the folder is always kept as one book (never split on
+filenames alone), and a multi-file folder with no signal either way is counted
+in the summary so you know where to check for collections. The JSON goes to
+stdout by default (or `-o <file>`); a human-readable summary goes to stderr.
+Pass `-ffprobe ""` to skip ffprobe enrichment.
 
 ## Contributing
 

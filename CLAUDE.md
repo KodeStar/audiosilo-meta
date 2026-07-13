@@ -149,7 +149,7 @@ internal/extract    epub split (container/OPF/spine/toc -> plain text) + the wor
 internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN-dedup, canonical writes
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, GitHub-release poller/hot-swap
-internal/scan       local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess)
+internal/scan       local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
 schema/             JSON Schemas (the contract), embedded via schema.go
 data/               the database (works/recordings/people/series + per-work characters/recaps sidecars)
 Dockerfile          image: site build + metaserve + baked data

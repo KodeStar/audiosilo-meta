@@ -28,13 +28,13 @@ func mkTree(t *testing.T, files ...string) string {
 
 // scanNoProbe scans without ffprobe so grouping/derivation tests are deterministic
 // and hermetic (empty files carry no tags).
-func scanNoProbe(t *testing.T, root string) *Result {
+func scanNoProbe(t *testing.T, root string) (*Result, Stats) {
 	t.Helper()
-	res, _, err := Scan(root, Options{FFprobePath: ""})
+	res, stats, err := Scan(root, Options{FFprobePath: ""})
 	if err != nil {
 		t.Fatal(err)
 	}
-	return res
+	return res, stats
 }
 
 func TestGrouping(t *testing.T) {
@@ -53,7 +53,7 @@ func TestGrouping(t *testing.T) {
 		"notes.txt",
 	)
 
-	res := scanNoProbe(t, root)
+	res, stats := scanNoProbe(t, root)
 
 	var paths []string
 	for _, b := range res.Books {
@@ -98,6 +98,12 @@ func TestGrouping(t *testing.T) {
 	if loose.Title != "Loose Standalone" || loose.Sources["title"] != "filename" || loose.Series != "" {
 		t.Errorf("Loose Standalone wrong: %+v", loose)
 	}
+
+	// The untagged multi-file folder (Mistborn) was kept as one book with no tag
+	// evidence either way, so it must be counted as ambiguous for the summary.
+	if stats.AmbiguousDirs != 1 {
+		t.Errorf("stats.AmbiguousDirs = %d, want 1 (the untagged Mistborn folder)", stats.AmbiguousDirs)
+	}
 }
 
 func TestScanRootMissing(t *testing.T) {
@@ -108,7 +114,7 @@ func TestScanRootMissing(t *testing.T) {
 
 func TestScanEnvelope(t *testing.T) {
 	root := mkTree(t, "a.mp3")
-	res := scanNoProbe(t, root)
+	res, _ := scanNoProbe(t, root)
 	if res.Format != Format || res.Version != Version {
 		t.Errorf("envelope = %q v%d, want %q v%d", res.Format, res.Version, Format, Version)
 	}
@@ -248,5 +254,67 @@ func TestScanWithFFprobe(t *testing.T) {
 	}
 	if stats.WithASIN != 1 {
 		t.Errorf("stats.WithASIN = %d, want 1", stats.WithASIN)
+	}
+}
+
+// TestCollectionSplit reproduces the flat-series-folder layout (two single-file
+// books loose in one Series/ folder, like the server's Will Wight/Cradle
+// fixtures) with real tagged files, and checks the tag evidence splits them into
+// separate books with the folder feeding series/author and the filename the
+// position. ffmpeg-gated like TestScanWithFFprobe.
+func TestCollectionSplit(t *testing.T) {
+	ffmpeg, err := exec.LookPath("ffmpeg")
+	if err != nil {
+		t.Skip("ffmpeg not installed")
+	}
+
+	root := t.TempDir()
+	dir := filepath.Join(root, "Will Wight", "Cradle")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	mkTagged := func(name, album string) {
+		cmd := exec.Command(ffmpeg, "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+			"-t", "1", "-c:a", "libmp3lame",
+			"-metadata", "album="+album,
+			"-metadata", "artist=Will Wight",
+			filepath.Join(dir, name))
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Skipf("ffmpeg could not generate the fixture: %v\n%s", err, out)
+		}
+	}
+	mkTagged("01 - Unsouled.mp3", "Unsouled")
+	mkTagged("02 - Soulsmith.mp3", "Soulsmith")
+
+	res, stats := scanNoProbe(t, root)
+	if len(res.Books) != 2 {
+		t.Fatalf("want 2 split books, got %d: %+v", len(res.Books), res.Books)
+	}
+	if stats.AmbiguousDirs != 0 {
+		t.Errorf("split folder must not count as ambiguous, got %d", stats.AmbiguousDirs)
+	}
+
+	first, second := res.Books[0], res.Books[1]
+	if first.Path != "Will Wight/Cradle/01 - Unsouled" || second.Path != "Will Wight/Cradle/02 - Soulsmith" {
+		t.Fatalf("split paths wrong: %q / %q", first.Path, second.Path)
+	}
+	for i, b := range []Book{first, second} {
+		wantTitle := []string{"Unsouled", "Soulsmith"}[i]
+		wantPos := []string{"1", "2"}[i]
+		if b.Title != wantTitle || b.Sources["title"] != "tag" {
+			t.Errorf("book %d title: got %q (%s), want %q (tag)", i, b.Title, b.Sources["title"], wantTitle)
+		}
+		if b.Series != "Cradle" || b.Sources["series"] != "path" {
+			t.Errorf("book %d series: got %q (%s), want Cradle (path)", i, b.Series, b.Sources["series"])
+		}
+		if b.SeriesPosition != wantPos || b.Sources["series_position"] != "filename" {
+			t.Errorf("book %d position: got %q (%s), want %q (filename)", i, b.SeriesPosition, b.Sources["series_position"], wantPos)
+		}
+		if len(b.Authors) != 1 || b.Authors[0] != "Will Wight" {
+			t.Errorf("book %d authors: got %v, want Will Wight", i, b.Authors)
+		}
+		if b.AudioFiles != 1 || len(b.Files) != 1 {
+			t.Errorf("book %d must be single-file, got %v", i, b.Files)
+		}
 	}
 }
