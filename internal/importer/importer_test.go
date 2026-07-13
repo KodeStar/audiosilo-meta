@@ -2,6 +2,7 @@ package importer
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -11,6 +12,9 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/canonical"
 	"github.com/kodestar/audiosilo-meta/internal/check"
 )
+
+// testImportDate is the imported_at stamp every test run uses.
+const testImportDate = "2026-07-11"
 
 // jsonInto decodes s into v with UseNumber so coercion helpers see json.Number.
 func jsonInto(s string, v any) error {
@@ -35,7 +39,7 @@ func writeBooks(t *testing.T, content string) string {
 func runWith(t *testing.T, run func(string, Options) (Summary, error), input string, dryRun bool) (Summary, string) {
 	t.Helper()
 	dataDir := t.TempDir()
-	sum, err := run(writeBooks(t, input), Options{DataDir: dataDir, ImportDate: "2026-07-11", DryRun: dryRun})
+	sum, err := run(writeBooks(t, input), Options{DataDir: dataDir, ImportDate: testImportDate, DryRun: dryRun})
 	if err != nil {
 		t.Fatalf("import run: %v", err)
 	}
@@ -138,7 +142,7 @@ func TestImportBasic(t *testing.T) {
 		t.Errorf("publisher description leaked into work: %q", work.Description)
 	}
 	if len(work.Sources) != 1 || work.Sources[0].Type != "openaudible-import" ||
-		work.Sources[0].Ref != "B0SYNTH001" || work.Sources[0].ImportedAt != "2026-07-11" {
+		work.Sources[0].Ref != "B0SYNTH001" || work.Sources[0].ImportedAt != testImportDate {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
@@ -238,7 +242,7 @@ func TestDedupByASIN(t *testing.T) {
 	seedTree(t, dataDir, seed)
 
 	books := `[{"asin":"B0SYNTH001","title_short":"The Iron Ledger","author":"Mara Quill","narrated_by":"Priya Lund","language":"english","region":"US","seconds":1000}]`
-	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -345,7 +349,7 @@ func TestExtendExistingSeries(t *testing.T) {
 	}
 	seedTree(t, dataDir, seed)
 	books := `[{"asin":"B0EXTEND01","title_short":"Book Beta","author":"Existing Author","narrated_by":"Voice","series_name":"My Series","series_sequence":"2","language":"english","seconds":600}]`
-	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -443,7 +447,7 @@ func TestPersonVariantReusesExistingRecord(t *testing.T) {
 	}
 
 	books := `[{"asin":"B0REUSE001","title_short":"Wimpy Tales","author":"Ramon de Ocampo","narrated_by":"Fresh Voice","language":"english","region":"US","seconds":600}]`
-	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -529,7 +533,7 @@ func TestExistingWorkDifferentSeriesPosition(t *testing.T) {
 	seedTree(t, dataDir, seed)
 
 	books := `[{"asin":"B0DRAGONH5","title":"Dragon Heart - Book 5: Sea of Sand","title_short":"Dragon Heart","author":"Kirill Klevanski","narrated_by":"Zach Villa","series_name":"Dragon Heart","series_sequence":"5","language":"english","region":"US","release_date":"2020-01-01","seconds":60000}]`
-	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -653,5 +657,20 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 	readJSON(t, filepath.Join(dataDir, "series/dr/dragon-heart.json"), &series)
 	if len(series.Works) != 3 {
 		t.Errorf("series should hold 3 works, got %+v", series.Works)
+	}
+}
+
+func TestAddToSeriesRejectsEmptyName(t *testing.T) {
+	// Defense in depth below the parsers' non-empty-name invariant: a direct
+	// caller must never mint a nameless series (slug "series").
+	p := &planner{series: map[string]*seriesState{}, writes: map[string][]byte{}}
+	var warned []string
+	warn := func(format string, args ...any) { warned = append(warned, fmt.Sprintf(format, args...)) }
+	p.addToSeries("", "some-work", "1", warn)
+	if len(p.series) != 0 || p.summary.NewSeries != 0 {
+		t.Errorf("empty series name minted a series: %+v", p.summary)
+	}
+	if len(warned) != 1 || !strings.Contains(warned[0], "empty series name") {
+		t.Errorf("expected one empty-name warning, got %v", warned)
 	}
 }

@@ -211,7 +211,10 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
   const seconds = coerceInt(raw['seconds'])
-  const runtimeMin = seconds !== undefined && seconds > 0 ? Math.round(seconds / 60) : undefined
+  // Round to whole minutes, but only emit a positive value (a 1-29s file rounds
+  // to 0, which the Go importer omits - 0 is not a fact to assert).
+  const minutes = seconds !== undefined && seconds > 0 ? Math.round(seconds / 60) : 0
+  const runtimeMin = minutes > 0 ? minutes : undefined
   const releaseRaw = coerceStr(raw['release_date'])
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
@@ -247,6 +250,30 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
 
 // --- Libation mapping (mirrors internal/importer/libation.go) ---------------
 
+// AudibleApi's full locale names (what Libation's Locale column carries for
+// every marketplace except us/uk, which are already 2-letter; verified against
+// AudibleApi/Localization.cs) -> the recording schema's marketplace codes.
+const LIBATION_LOCALE_NAMES: Record<string, string> = {
+  australia: 'au',
+  brazil: 'br',
+  canada: 'ca',
+  france: 'fr',
+  germany: 'de',
+  india: 'in',
+  italy: 'it',
+  japan: 'jp',
+  spain: 'es',
+}
+
+// Resolve a Libation Locale value - a 2-letter marketplace code ("us", "uk") or
+// an AudibleApi locale name ("germany") - to a schema marketplace code.
+// AudibleApi's legacy "pre-amazon - <name>" locales map like their plain
+// counterparts. undefined for an unknown or empty value.
+function mapLibationLocale(locale: string): string | undefined {
+  const l = locale.trim().toLowerCase().replace(/^pre-amazon - /, '')
+  return mapRegion(l) ?? LIBATION_LOCALE_NAMES[l]
+}
+
 // Reduce an ISO timestamp ("2018-10-18T23:00:00") to its YYYY-MM-DD date part,
 // kept only when it is a full valid date.
 function libationDate(ts: string): string | undefined {
@@ -267,6 +294,13 @@ function libationCover(pictureId: string): string | undefined {
 // it means "no position", not book 999999999.
 const LIBATION_UNSORTED = '999999999'
 
+// A new series claim starts at ", " only when an order token (digits/dots/
+// hyphens, possibly empty) and its colon follow - so a comma INSIDE a series
+// name ("1 : Ready, Set, Go: The Story") never splits (mirrors the Go
+// splitLibationClaims). Each claim is then "<order> ?: <name>".
+const LIB_CLAIM_SPLIT = /, (?=[\d.\-]* ?: )/
+const LIB_CLAIM_PATTERN = /^([\d.\-]*) ?: (.*)$/
+
 // Parse a Libation SeriesOrder ("{order} : {name}", multiple joined by ", ") and
 // return the PRIMARY series for display/prefill: the first entry with a valid
 // position, else the first entry's name with no position. The Go importer places
@@ -277,12 +311,12 @@ function primaryLibationSeries(
 ): { seriesName?: string; seriesPosition?: string } {
   const entries: { name: string; position?: string }[] = []
   if (order.trim() !== '') {
-    for (const part of order.split(', ')) {
-      const ci = part.indexOf(':')
-      if (ci < 0) continue
-      const name = part.slice(ci + 1).trim()
+    for (const part of order.split(LIB_CLAIM_SPLIT)) {
+      const m = LIB_CLAIM_PATTERN.exec(part)
+      if (!m) continue
+      const name = m[2].trim()
       if (name === '') continue
-      let ord = part.slice(0, ci).trim()
+      let ord = m[1].trim()
       if (ord === LIBATION_UNSORTED) ord = ''
       entries.push({
         name,
@@ -318,7 +352,7 @@ function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
   const runtimeMin = minutes !== undefined && minutes > 0 ? minutes : undefined
   const releaseDate = libationDate(coerceStr(raw['DatePublished']))
   const publisher = coerceStr(raw['Publisher'])
-  const region = mapRegion(coerceStr(raw['Locale']))
+  const region = mapLibationLocale(coerceStr(raw['Locale']))
   const coverUrl = libationCover(coerceStr(raw['PictureId']))
   const abridged = coerceBool(raw['IsAbridged'])
 
@@ -414,7 +448,7 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
 // Adding a format is one entry here (the Record type makes the compiler demand
 // every field) plus its slot in DETECTION_ORDER below.
 
-export interface FormatSpec {
+interface FormatSpec {
   /** Human label for issue prefills ("<label> (reviewed <date>)"). */
   label: string
   /** Whether the dropped JSON is this format; entries is the extracted array, if any. */
@@ -434,8 +468,11 @@ export interface FormatSpec {
 const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
 
 // Keys that mark an OpenAudible entry (lowercase; Libation uses PascalCase).
+// The Libation list carries only Libation-SPECIFIC keys - a generic key like
+// Title would misdetect a foreign export (Goodreads-ish shapes) and run the
+// full pipeline on garbage instead of falling through to 'unknown'.
 const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
-const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames', 'Title', 'Asin']
+const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames']
 
 export const FORMATS: Record<KnownFormat, FormatSpec> = {
   openaudible: {

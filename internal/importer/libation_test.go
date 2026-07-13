@@ -75,7 +75,7 @@ func TestLibationImportBasic(t *testing.T) {
 		t.Errorf("publisher description leaked into work: %q", work.Description)
 	}
 	if len(work.Sources) != 1 || work.Sources[0].Type != "libation-import" ||
-		work.Sources[0].Ref != "B0CQDJ3PND" || work.Sources[0].ImportedAt != "2026-07-11" {
+		work.Sources[0].Ref != "B0CQDJ3PND" || work.Sources[0].ImportedAt != testImportDate {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
@@ -227,7 +227,7 @@ func TestLibationDedupByASIN(t *testing.T) {
 
 	// Only the Primal Hunter entry (its ASIN is already present).
 	export := `[{"AudibleProductId":"B0H1NBT6RF","Locale":"uk","Title":"The Primal Hunter 14","AuthorNames":"Zogarth","NarratorNames":"Travis Baldree","LengthInMinutes":1118,"Language":"English","IsAbridged":false}]`
-	sum, err := RunLibation(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: "2026-07-12"})
+	sum, err := RunLibation(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -263,6 +263,22 @@ func TestParseLibationSeries(t *testing.T) {
 			wantNames: []string{"The Cosmere", "The Stormlight Archive"},
 			wantSeq:   []string{"", "5"},
 			wantSeqOK: []bool{false, true},
+		},
+		{
+			name:      "comma inside a series name",
+			order:     "1 : Ready, Set, Go: The Story",
+			names:     "Ready, Set, Go: The Story",
+			wantNames: []string{"Ready, Set, Go: The Story"},
+			wantSeq:   []string{"1"},
+			wantSeqOK: []bool{true},
+		},
+		{
+			name:      "comma inside a name of a multi-series claim",
+			order:     "1 : Ready, Set, Go: The Story, 5 : The Stormlight Archive",
+			names:     "Ready, Set, Go: The Story, The Stormlight Archive",
+			wantNames: []string{"Ready, Set, Go: The Story", "The Stormlight Archive"},
+			wantSeq:   []string{"1", "5"},
+			wantSeqOK: []bool{true, true},
 		},
 		{
 			name:      "colon in series name",
@@ -334,5 +350,123 @@ func TestLibationDate(t *testing.T) {
 	}
 	if got := libationDate(""); got != "" {
 		t.Errorf("empty date = %q", got)
+	}
+}
+
+func TestMapLibationLocale(t *testing.T) {
+	cases := []struct {
+		in   string
+		want string
+		ok   bool
+	}{
+		{"uk", "uk", true},
+		{"us", "us", true},
+		{"germany", "de", true},
+		{"france", "fr", true},
+		{"italy", "it", true},
+		{"spain", "es", true},
+		{"japan", "jp", true},
+		{"india", "in", true},
+		{"canada", "ca", true},
+		{"australia", "au", true},
+		{"brazil", "br", true},
+		{"Germany", "de", true},              // case-insensitive
+		{"pre-amazon - germany", "de", true}, // AudibleApi legacy locale
+		{"pre-amazon - us", "us", true},
+		{"narnia", "", false},
+		{"", "", false},
+	}
+	for _, tc := range cases {
+		got, ok := mapLibationLocale(tc.in)
+		if got != tc.want || ok != tc.ok {
+			t.Errorf("mapLibationLocale(%q) = %q,%v; want %q,%v", tc.in, got, ok, tc.want, tc.ok)
+		}
+	}
+}
+
+func TestLibationFullLocaleNameKeepsASIN(t *testing.T) {
+	// A German account's Locale is the full name "germany"; the ASIN must be
+	// recorded under region "de", not dropped with a marketplace warning.
+	export := `[{"AudibleProductId":"B0GERMANY1","Locale":"germany","Title":"Der Titel","AuthorNames":"Ein Autor","NarratorNames":"Eine Stimme","LengthInMinutes":600,"Language":"German","IsAbridged":false}]`
+	sum, dataDir := runLibation(t, export, false)
+	if len(sum.Warnings) != 0 {
+		t.Errorf("no warnings expected, got %v", sum.Warnings)
+	}
+	var rec struct {
+		ASIN []struct {
+			Region string `json:"region"`
+			ASIN   string `json:"asin"`
+		} `json:"asin"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/de/der-titel/recordings/eine-stimme.json"), &rec)
+	if len(rec.ASIN) != 1 || rec.ASIN[0].Region != "de" || rec.ASIN[0].ASIN != "B0GERMANY1" {
+		t.Errorf("asin = %+v, want de/B0GERMANY1", rec.ASIN)
+	}
+}
+
+func TestLibationCommaSeriesNameOnDisk(t *testing.T) {
+	// A comma inside a series name must not mint a truncated "Ready" series.
+	export := `[{"AudibleProductId":"B0COMMASR1","Locale":"uk","Title":"Book One","AuthorNames":"An Author","NarratorNames":"A Voice","LengthInMinutes":600,"Language":"English","SeriesNames":"Ready, Set, Go: The Story","SeriesOrder":"1 : Ready, Set, Go: The Story","IsAbridged":false}]`
+	sum, dataDir := runLibation(t, export, false)
+	if sum.NewSeries != 1 {
+		t.Fatalf("NewSeries = %d, want 1", sum.NewSeries)
+	}
+	if len(sum.Warnings) != 0 {
+		t.Errorf("no warnings expected, got %v", sum.Warnings)
+	}
+	if exists(filepath.Join(dataDir, "series/re/ready.json")) {
+		t.Errorf("truncated series %q was minted", "ready")
+	}
+	var series struct {
+		Name  string `json:"name"`
+		Works []struct {
+			Work     string `json:"work"`
+			Position string `json:"position"`
+		} `json:"works"`
+	}
+	readJSON(t, filepath.Join(dataDir, "series/re/ready-set-go-the-story.json"), &series)
+	if series.Name != "Ready, Set, Go: The Story" {
+		t.Errorf("series name = %q", series.Name)
+	}
+	if len(series.Works) != 1 || series.Works[0].Position != "1" {
+		t.Errorf("series works = %+v", series.Works)
+	}
+}
+
+func TestLibationWrapperObjectExport(t *testing.T) {
+	// The site parser unwraps {Books: [...]}; the CLI must accept the same file.
+	export := `{"Books":[{"AudibleProductId":"B0WRAPPED1","Locale":"uk","Title":"Wrapped","AuthorNames":"An Author","NarratorNames":"A Voice","LengthInMinutes":600,"Language":"English","IsAbridged":false}]}`
+	sum, _ := runLibation(t, export, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 {
+		t.Errorf("wrapper-object export should import: %+v", sum)
+	}
+}
+
+func TestLibationEmptyTitleWithSubtitleSkipped(t *testing.T) {
+	// An empty Title must not fabricate a ": Subtitle" work title.
+	export := `[{"AudibleProductId":"B0NOTITLE1","Locale":"uk","Title":"","Subtitle":"A Lone Subtitle","AuthorNames":"An Author","NarratorNames":"A Voice","LengthInMinutes":600,"Language":"English"}]`
+	sum, dataDir := runLibation(t, export, false)
+	if sum.NewWorks != 0 {
+		t.Errorf("titleless book must be skipped: %+v", sum)
+	}
+	if !hasWarning(sum.Warnings, "no title") {
+		t.Errorf("expected a no-title warning, got %v", sum.Warnings)
+	}
+	if exists(filepath.Join(dataDir, "works")) {
+		t.Errorf("no work should be written")
+	}
+}
+
+func TestLibationStringBoolAbridged(t *testing.T) {
+	// A string-typed "False" IsAbridged (a hand-edited or re-serialized export)
+	// is still an explicit statement: abridged=false is recorded, not omitted.
+	export := `[{"AudibleProductId":"B0STRBOOL1","Locale":"uk","Title":"String Bool","AuthorNames":"An Author","NarratorNames":"A Voice","LengthInMinutes":600,"Language":"English","IsAbridged":"False"}]`
+	_, dataDir := runLibation(t, export, false)
+	var rec struct {
+		Abridged *bool `json:"abridged"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/st/string-bool/recordings/a-voice.json"), &rec)
+	if rec.Abridged == nil || *rec.Abridged != false {
+		t.Errorf("abridged = %v, want explicit false from string \"False\"", rec.Abridged)
 	}
 }

@@ -23,19 +23,23 @@ const META_SITE = 'https://meta.audiosilo.app'
 export const importLibraryIssueUrl = `${ISSUE_BASE}?template=import-library.yml`
 
 // Set the recording-half fields shared by add-work.yml and add-recording.yml.
-// The required Abridged? dropdown defaults to Unabridged (the contributor
-// reviews it); ASINs are region-scoped, so the region rides along (uppercased
-// book region, or US when absent).
+// Only stated facts are prefilled (omit-unknown): rec_abridged is set only when
+// the source stated it (the form's dropdown default covers review), an ASIN
+// carries a region prefix only when the export named a real marketplace, and an
+// export ISBN goes in rec_isbns (it identifies the AUDIOBOOK edition - never
+// work_isbn, which is the print/ebook edition).
 function applyRecordingParams(p: URLSearchParams, book: ParsedBook): void {
   if (book.narrators.length) p.set('rec_narrators', book.narrators.join(', '))
-  p.set('rec_abridged', book.abridged === true ? 'Abridged' : 'Unabridged')
+  if (book.abridged !== undefined) {
+    p.set('rec_abridged', book.abridged ? 'Abridged' : 'Unabridged')
+  }
   if (book.runtimeMin != null) p.set('rec_runtime_min', String(book.runtimeMin))
   if (book.releaseDate) p.set('rec_release_date', book.releaseDate)
   if (book.publisher) p.set('rec_publisher', book.publisher)
   if (book.asin) {
-    const region = (book.region ?? 'us').toUpperCase()
-    p.set('rec_asins', `${region}: ${book.asin}`)
+    p.set('rec_asins', book.region ? `${book.region.toUpperCase()}: ${book.asin}` : book.asin)
   }
+  if (book.isbn) p.set('rec_isbns', book.isbn)
   if (book.coverUrl) p.set('rec_cover_url', book.coverUrl)
   const today = new Date().toISOString().slice(0, 10)
   p.set('sources', `${FORMATS[book.format].label} (reviewed ${today})`)
@@ -139,9 +143,13 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
   for (const key of FORMATS[book.format].factualKeys) {
     if (key in raw) out[key] = raw[key]
   }
+  // The folder-scan 'chapters' is a COUNT by contract; enforce it so a future
+  // producer emitting per-chapter objects (which could carry file paths) can
+  // never leak structure into the download.
+  if (book.format === 'folderscan' && 'chapters' in out && typeof out['chapters'] !== 'number') {
+    delete out['chapters']
+  }
   // OpenAudible carries per-chapter offset data; reduce it to the factual shape.
-  // (Libation and the folder-scan have no such array - 'chapters' is a count in
-  // the folder-scan and is copied through by the allowlist above.)
   if (book.format === 'openaudible') {
     const chapters = raw['chapters']
     if (Array.isArray(chapters)) {
@@ -158,4 +166,19 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
     }
   }
   return out
+}
+
+/**
+ * The bulk new-books download payload: every book reduced to its factual
+ * subset. Folder-scan books are re-wrapped in the scan envelope (format
+ * discriminator + version, WITHOUT the local-only root/files) so the download
+ * round-trips through parseExport instead of misdetecting; the other formats
+ * are already detectable as bare arrays of their own keys.
+ */
+export function newBooksPayload(books: ParsedBook[]): unknown {
+  const subsets = books.map(factualSubset)
+  if (books[0]?.format === 'folderscan') {
+    return { format: 'audiosilo-folder-scan', version: 1, books: subsets }
+  }
+  return subsets
 }

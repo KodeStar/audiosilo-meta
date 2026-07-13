@@ -103,6 +103,13 @@ describe('parseExport - format detection', () => {
     expect(parseExport(text).format).toBe('unknown')
   })
 
+  it('does NOT misdetect a foreign export on generic keys like Title (Goodreads-ish)', () => {
+    const text = JSON.stringify([
+      { Title: 'Some Book', Author: 'Jane Doe', ISBN13: '9780000000000', 'My Rating': 5 },
+    ])
+    expect(parseExport(text).format).toBe('unknown')
+  })
+
   it('treats an empty array as unknown', () => {
     expect(parseExport('[]').format).toBe('unknown')
   })
@@ -186,6 +193,9 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({ seconds: 3630 })).runtimeMin).toBe(61) // 60.5 -> 61
     expect(parseOne(openAudibleEntry({ seconds: '3630' })).runtimeMin).toBe(61)
     expect(parseOne(openAudibleEntry({ seconds: 0 })).runtimeMin).toBeUndefined()
+    // 1-29s rounds to 0 minutes - omitted, not asserted as a 0-minute fact
+    // (mirrors the Go importer's runtimeMin > 0 emit rule).
+    expect(parseOne(openAudibleEntry({ seconds: 10 })).runtimeMin).toBeUndefined()
     expect(parseOne(openAudibleEntry({})).runtimeMin).toBeUndefined()
   })
 
@@ -316,8 +326,35 @@ describe('parseExport - Libation field mapping', () => {
     expect(b.seriesPosition).toBe('1')
   })
 
+  it('maps full AudibleApi locale names to marketplace codes', () => {
+    // Libation's Locale is 2-letter only for us/uk; the other marketplaces are
+    // full names (verified against AudibleApi/Localization.cs).
+    expect(parseOne({ Locale: 'germany' }).region).toBe('de')
+    expect(parseOne({ Locale: 'france' }).region).toBe('fr')
+    expect(parseOne({ Locale: 'japan' }).region).toBe('jp')
+    expect(parseOne({ Locale: 'australia' }).region).toBe('au')
+    expect(parseOne({ Locale: 'pre-amazon - germany' }).region).toBe('de')
+    expect(parseOne({ Locale: 'uk' }).region).toBe('uk')
+  })
+
   it('rejects an unknown marketplace Locale', () => {
     expect(parseOne({ Locale: 'narnia' }).region).toBeUndefined()
+  })
+
+  it('keeps a comma inside a series name intact (splits only at real claim starts)', () => {
+    const single = parseOne({
+      SeriesNames: 'Ready, Set, Go: The Story',
+      SeriesOrder: '1 : Ready, Set, Go: The Story',
+    })
+    expect(single.seriesName).toBe('Ready, Set, Go: The Story')
+    expect(single.seriesPosition).toBe('1')
+
+    const multi = parseOne({
+      SeriesNames: 'Ready, Set, Go: The Story, The Stormlight Archive',
+      SeriesOrder: '1 : Ready, Set, Go: The Story, 5 : The Stormlight Archive',
+    })
+    expect(multi.seriesName).toBe('Ready, Set, Go: The Story')
+    expect(multi.seriesPosition).toBe('1')
   })
 
   it('leaves language undefined but keeps languageRaw for an unmapped word', () => {

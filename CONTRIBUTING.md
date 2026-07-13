@@ -65,7 +65,8 @@ If you would rather not edit JSON, open an issue and pick a form:
 - **Add a work** - a new book plus its first recording.
 - **Add a recording** - another narration of a work that already exists.
 - **Correct data** - fix a field on an existing record.
-- **Import a library** - attach an OpenAudible `books.json` or a Libation export
+- **Import a library** - attach an OpenAudible `books.json`, a Libation export,
+  or a metascan folder scan
   and let us ingest the factual fields.
 
 The forms are structured (every field is captured), and a maintainer or tool
@@ -103,23 +104,29 @@ for adding a new work with its first recording and a new author:
 Reference the entity model above and copy the shape of an existing record of the
 same kind - that is the fastest way to get the fields right.
 
-## Importing an OpenAudible export
+## Importing a library export
 
 **No command line?** The [import page](https://meta.audiosilo.app/import) does the
-first step in your browser: drop your OpenAudible `books.json` and it checks,
-entirely client-side, which of your books are already in the database and which
-are new (only ASINs and ISBNs are sent to the API - your file never leaves your
-device). It then hands the new ones off to a pre-filled issue, or lets you
+first step in your browser: drop an OpenAudible `books.json`, a Libation JSON
+export (Libation - Export menu - Export Library - save as JSON), or a metascan
+folder scan, and it checks, entirely client-side, which of your books are already
+in the database and which are new (the API receives only ASINs/ISBNs and, for
+unmatched books, the author names used for matching - your file never leaves
+your device). It then hands the new ones off to a pre-filled issue, or lets you
 download a factual-only export to attach to an import issue. That is the easiest
 way to contribute a library.
 
 For a bulk import that becomes one reviewable pull request, the `metaimport` tool
-turns a `books.json` export into work/recording/person/series records directly.
-If you have an [OpenAudible](https://openaudible.org/) library:
+turns an export into work/recording/person/series records directly. If you have
+an [OpenAudible](https://openaudible.org/) or
+[Libation](https://getlibation.com/) library:
 
 ```sh
 go run ./cmd/metaimport openaudible <path-to/books.json> --data data --dry-run
 go run ./cmd/metaimport openaudible <path-to/books.json> --data data
+
+go run ./cmd/metaimport libation <path-to/LibationExport.json> --data data --dry-run
+go run ./cmd/metaimport libation <path-to/LibationExport.json> --data data
 ```
 
 - `--dry-run` prints the plan (how many works, recordings, people, and series

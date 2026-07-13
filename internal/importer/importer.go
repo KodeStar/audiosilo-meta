@@ -77,21 +77,25 @@ func Run(booksPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", booksPath, err)
 	}
-	books, err := parseBooks(raw)
+	books, err := parseOpenAudible(raw)
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(wrapOpenAudible(books), sourceOpenAud, opts)
+	return runBooks(books, sourceOpenAud, opts)
 }
 
-// sourceBook is the parsed, source-independent view of one export entry: the
-// loose JSON fields (raw) plus the facts each source derives differently at
-// parse time. Invariant: every seriesRef carries a non-empty name (the parsers
-// skip empties and never emit one), so consumers need no empty-name guards.
+// sourceBook is the parsed, source-independent view of one export entry. raw
+// carries only the shared-key passthrough fields the planner reads directly
+// (asin, title, title_short, author, narrated_by, language, region,
+// release_date, publisher, image_url, and OpenAudible's chapters array); any
+// fact a source derives differently at parse time is promoted to a typed field
+// here, never smuggled through raw. Invariant: every seriesRef carries a
+// non-empty name (the parsers skip empties and never emit one).
 type sourceBook struct {
 	raw        rawBook
 	series     []seriesRef // the book's series claims (>1 only for Libation)
 	runtimeMin int         // whole minutes; 0 = unknown
+	abridged   *bool       // tri-state: nil = the source did not state it
 }
 
 // str is a convenience passthrough to the underlying raw entry.
@@ -460,7 +464,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 		ID: slug, Work: ws.slug, Narrators: narratorSlugs, Language: lang,
 		License: licenseCC0, Sources: []outSource{p.curSource},
 	}
-	rec.Abridged = b.raw.boolPtr("abridged")
+	rec.Abridged = b.abridged
 	if b.runtimeMin > 0 {
 		rec.RuntimeMin = b.runtimeMin
 	}
@@ -493,6 +497,12 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 // series when new. Duplicate memberships and position clashes warn and leave the
 // existing entry.
 func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any)) {
+	// Defense in depth: the parsers uphold the non-empty-name invariant, but a
+	// future source (or a direct caller) must never mint a nameless series.
+	if name == "" {
+		warn("empty series name; not placed in series")
+		return
+	}
 	ss := p.getOrCreateSeries(name, warn)
 	if existing, ok := ss.members[work]; ok {
 		if existing != pos {

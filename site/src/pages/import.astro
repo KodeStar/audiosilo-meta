@@ -7,7 +7,7 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
 <Base
   title="Import your library - AudioSilo Meta"
-  description="Drop an OpenAudible, Libation, or folder-scan export to see which of your audiobooks are already in the open metadata database and which are new - checked entirely in your browser. Only ASINs and ISBNs are sent to the API."
+  description="Drop an OpenAudible, Libation, or folder-scan export to see which of your audiobooks are already in the open metadata database and which are new - checked entirely in your browser. The API receives only identifiers and, for unmatched books, author names."
 >
   <section class="relative pb-20">
     <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
@@ -24,8 +24,9 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
         <p class="mt-4 text-lg leading-relaxed text-body">
           Drop an OpenAudible, Libation, or folder-scan export and this page checks,
           entirely in your browser, which of your audiobooks are already in the open
-          database and which are new. Your file never leaves your device - only ASINs and
-          ISBNs are sent to the API to look for a match.
+          database and which are new. Your file never leaves your device - the API
+          receives only ASINs and ISBNs to look for a match, plus the author names of
+          unmatched books to check for an existing work.
         </p>
         <p class="mt-3 text-sm leading-relaxed text-dim">
           Everything you contribute here is factual metadata dedicated to the public

@@ -186,11 +186,12 @@ including the takedown / rightsholder opt-out channel, in
 - **Phase 1** *(in progress)* - the read-only Go API server (`metaserve`, FTS
   search + ASIN/ISBN lookup), the website (`site/` - search-first landing,
   stats, latest additions, work/person/series pages), the Docker image, and the
-  OpenAudible importer, the public deployment (meta.audiosilo.app), and the
-  in-browser import page (`/import` - parses an OpenAudible export client-side
+  OpenAudible and Libation importers, the public deployment
+  (meta.audiosilo.app), and the in-browser import page (`/import` - parses an
+  OpenAudible export, a Libation export, or a metascan folder scan client-side
   and diffs it against the live catalogue) have **landed**. Still planned:
-  seeding from Open Library / Wikidata identifier crosswalks, the Libation
-  import path, and issue-form automation.
+  seeding from Open Library / Wikidata identifier crosswalks and issue-form
+  automation.
 - **Phase 1.5 - AudioSilo player integration** *(planned, the priority
   integration)* - the AudioSilo server and player surface enriched metadata from
   this database. This is a defining product feature and ships before any

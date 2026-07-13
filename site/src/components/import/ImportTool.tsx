@@ -17,8 +17,8 @@ import {
 import {
   addWorkIssueUrl,
   addRecordingIssueUrl,
-  factualSubset,
   importLibraryIssueUrl,
+  newBooksPayload,
 } from '../../lib/github-prefill'
 import { downloadJson } from '../../lib/download'
 import { BTN_PRIMARY, BTN_SECONDARY, Icon } from '../ui'
@@ -56,7 +56,7 @@ const toCandidate = (x: {
 }): WorkCandidate => ({ id: x.id, title: x.title, authors: x.authors })
 
 const PRIVACY =
-  'Your export is read entirely in your browser. Only ASINs and ISBNs are sent to the API, to check what is already in the database. Personal fields never leave your device.'
+  'Your export is read entirely in your browser. The API receives only ASINs and ISBNs (to check what is already catalogued) and, for books that are not matched, the author names used to look for an existing work. Personal fields and the file itself never leave your device.'
 
 type Phase = 'idle' | 'unknown' | 'error' | 'diffing' | 'results'
 
@@ -257,11 +257,7 @@ export default function ImportTool() {
 
   function downloadNewBooks() {
     if (!results) return
-    const data = JSON.stringify(
-      results.newBooks.map((n) => factualSubset(n.book)),
-      null,
-      2
-    )
+    const data = JSON.stringify(newBooksPayload(results.newBooks.map((n) => n.book)), null, 2)
     downloadJson(data, 'audiosilo-meta-new-books.json')
   }
 
@@ -432,7 +428,8 @@ export default function ImportTool() {
           ) : (
             <p className="mt-3 text-sm leading-relaxed text-body">
               There are {results.newBooks.length.toLocaleString()} new books - too many to review
-              one by one. Download the factual export below and attach it to a single import issue.
+              one by one. Download the factual export below and attach it to a single import
+              issue.
             </p>
           )}
 
@@ -448,7 +445,8 @@ export default function ImportTool() {
           </div>
           <p className="mt-3 text-xs leading-relaxed text-dim">
             The download contains factual fields only - titles, authors, narrators, series,
-            runtimes, ASINs and chapters. No purchase history, ratings, file paths or personal data.
+            runtimes, ASINs and chapters. No purchase history, ratings, file paths or personal
+            data.
           </p>
         </div>
       )}
