@@ -66,11 +66,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         # The repo publishes BOTH data releases (data-v*, carrying meta.sqlite.gz)
         # and code/image releases (v*, no data assets), so GitHub's "latest"
-        # release can be either. The patch base is therefore the newest
-        # non-draft, non-prerelease release that actually carries a
-        # meta.sqlite.gz asset - selected from the release list, not from
-        # "latest". If it downloads AND gunzips cleanly, export its tag so the
-        # compress step generates a binary delta from prev.sqlite.
+        # release can be either. The patch base is therefore the non-draft,
+        # non-prerelease release carrying a meta.sqlite.gz asset with the MAXIMUM
+        # published_at - by publish time, NOT list position, mirroring
+        # latestDataRelease in internal/serve/github.go (its doc comment has the
+        # full rationale: the list order is not publish-chronological). If it
+        # downloads AND gunzips cleanly, export its tag so the compress step
+        # generates a binary delta from prev.sqlite.
         # The gunzip stays inside the guard: a corrupt previous asset must skip
         # patch generation, not fail the step (which would block every future
         # release, since each run re-downloads the same latest asset). The
@@ -79,7 +81,7 @@ jobs:
         # download.
         run: |
           prev_tag="$(gh api 'repos/${{ github.repository }}/releases?per_page=15' \
-            --jq '[.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))][0].tag_name // empty' \
+            --jq '([.[] | select((.draft or .prerelease) | not) | select(any(.assets[]?; .name == "meta.sqlite.gz"))] | max_by(.published_at) | .tag_name) // empty' \
             2>/dev/null || true)"
           if [ -n "$prev_tag" ] && gh release download "$prev_tag" --pattern meta.sqlite.gz --output prev.sqlite.gz && gunzip prev.sqlite.gz; then
             echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
