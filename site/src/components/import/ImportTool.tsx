@@ -387,8 +387,8 @@ export default function ImportTool() {
 
       {results.newBooks.length === 0 ? (
         <p className="rounded-2xl border border-edge bg-surface p-6 text-sm leading-relaxed text-body">
-          Nothing new to contribute from this file - every book with an identifier is already in the
-          database, or could not be auto-matched. Thank you for checking.
+          Nothing new to contribute from this file - every book with an identifier is already in
+          the database, or could not be auto-matched. Thank you for checking.
         </p>
       ) : (
         <div className="rounded-2xl border border-edge bg-surface p-6">
@@ -441,12 +441,7 @@ export default function ImportTool() {
               <Icon name="download" />
               Download new-books export (.json)
             </button>
-            <a
-              href={importLibraryIssueUrl}
-              target="_blank"
-              rel="noopener"
-              className={BTN_SECONDARY}
-            >
+            <a href={importLibraryIssueUrl} target="_blank" rel="noopener" className={BTN_SECONDARY}>
               <Icon name="external" />
               Attach it to an import issue
             </a>

@@ -33,11 +33,13 @@ export interface ParsedBook {
   coverUrl?: string // only if https://
   chapterCount?: number
   abridged?: boolean // tri-state: undefined when unknown
-  format?: ExportFormat // the source format, for the factual-subset allowlist
+  format: KnownFormat // the source format (drives the factual-subset allowlist)
   raw: Record<string, unknown> // the original entry (for the factual-subset download)
 }
 
 export type ExportFormat = 'openaudible' | 'libation' | 'folderscan' | 'unknown'
+/** A format the parser understands - everything but 'unknown'. */
+export type KnownFormat = Exclude<ExportFormat, 'unknown'>
 
 export interface ParseOutcome {
   format: ExportFormat
@@ -97,7 +99,19 @@ const LANGUAGE_MAP: Record<string, string> = {
 }
 
 // Audible marketplaces the recording schema accepts (recording.schema.json).
-const MARKETPLACES = new Set(['us', 'uk', 'ca', 'au', 'de', 'fr', 'es', 'it', 'jp', 'in', 'br'])
+const MARKETPLACES = new Set([
+  'us',
+  'uk',
+  'ca',
+  'au',
+  'de',
+  'fr',
+  'es',
+  'it',
+  'jp',
+  'in',
+  'br',
+])
 
 // Trailing " - <role>" credit qualifiers Audible appends to names. Stripped
 // ONLY when the role is exactly one of these (case-insensitive) - never an
@@ -126,13 +140,18 @@ const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
 function stripRoleQualifier(name: string): string {
   const idx = name.lastIndexOf(' - ')
   if (idx < 0) return name
-  const role = name
-    .slice(idx + 3)
-    .trim()
-    .toLowerCase()
+  const role = name.slice(idx + 3).trim().toLowerCase()
   if (!ROLE_QUALIFIERS.has(role)) return name
   const cleaned = name.slice(0, idx).trim()
   return cleaned === '' ? name : cleaned
+}
+
+// Normalize one raw credit: trim and strip a trailing role qualifier; null when
+// nothing usable remains. Shared by every name-list shape (comma-joined strings
+// and the folder-scan's arrays).
+function cleanName(part: string): string | null {
+  const name = part.trim()
+  return name === '' ? null : stripRoleQualifier(name)
 }
 
 // Split a comma-joined name list, trim each, strip a trailing role qualifier,
@@ -140,8 +159,8 @@ function stripRoleQualifier(name: string): string {
 function splitNames(joined: string): string[] {
   const out: string[] = []
   for (const part of joined.split(',')) {
-    const name = part.trim()
-    if (name !== '') out.push(stripRoleQualifier(name))
+    const name = cleanName(part)
+    if (name !== null) out.push(name)
   }
   return out
 }
@@ -337,13 +356,13 @@ function mapLanguageLoose(raw: string): string | undefined {
 }
 
 // Coerce a value that should be a string array (folder-scan authors/narrators),
-// trimming each and stripping a trailing role qualifier, dropping empties.
+// applying the same per-name normalization as splitNames (via cleanName).
 function toNameArray(v: unknown): string[] {
   if (!Array.isArray(v)) return []
   const out: string[] = []
   for (const el of v) {
-    const name = coerceStr(el).trim()
-    if (name !== '') out.push(stripRoleQualifier(name))
+    const name = cleanName(coerceStr(el))
+    if (name !== null) out.push(name)
   }
   return out
 }
@@ -390,14 +409,106 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
   }
 }
 
-// Keys that mark an OpenAudible entry (lowercase). Libation uses PascalCase.
-const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
-const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames', 'Title', 'Asin']
+// --- Format registry ----------------------------------------------------------
+// ONE descriptor per format: detection, entry parser, privacy allowlist, label.
+// Adding a format is one entry here (the Record type makes the compiler demand
+// every field) plus its slot in DETECTION_ORDER below.
+
+export interface FormatSpec {
+  /** Human label for issue prefills ("<label> (reviewed <date>)"). */
+  label: string
+  /** Whether the dropped JSON is this format; entries is the extracted array, if any. */
+  detect: (data: unknown, entries: unknown[] | null) => boolean
+  /** Map one raw entry to a ParsedBook. */
+  parse: (raw: Record<string, unknown>) => ParsedBook
+  /**
+   * The factual fields kept from raw for the bulk download (LICENSING.md).
+   * Everything else - purchase dates, ratings, account, descriptions, and the
+   * folder-scan's local-only root/path/files - is stripped and never leaves the
+   * device beyond this.
+   */
+  factualKeys: readonly string[]
+}
 
 // The folder-scan is a single object with this discriminator (not an array).
 const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
 
-// Libation sometimes wraps its list in an object under one of these keys.
+// Keys that mark an OpenAudible entry (lowercase; Libation uses PascalCase).
+const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
+const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames', 'Title', 'Asin']
+
+export const FORMATS: Record<KnownFormat, FormatSpec> = {
+  openaudible: {
+    label: 'OpenAudible library export',
+    detect: (_data, entries) => entriesHaveAnyKey(entries, OPENAUDIBLE_KEYS),
+    parse: parseBook,
+    factualKeys: [
+      'asin',
+      'title',
+      'title_short',
+      'author',
+      'narrated_by',
+      'series_name',
+      'series_sequence',
+      'language',
+      'release_date',
+      'publisher',
+      'image_url',
+      'region',
+      'seconds',
+      'abridged',
+    ],
+  },
+  libation: {
+    label: 'Libation library export',
+    detect: (_data, entries) => entriesHaveAnyKey(entries, LIBATION_KEYS),
+    parse: parseLibationBook,
+    factualKeys: [
+      'AudibleProductId',
+      'Title',
+      'Subtitle',
+      'AuthorNames',
+      'NarratorNames',
+      'SeriesNames',
+      'SeriesOrder',
+      'Language',
+      'Locale',
+      'LengthInMinutes',
+      'DatePublished',
+      'Publisher',
+      'PictureId',
+      'IsAbridged',
+    ],
+  },
+  folderscan: {
+    label: 'audiosilo folder scan',
+    detect: (data) => isObject(data) && coerceStr(data['format']) === FOLDERSCAN_FORMAT,
+    parse: parseFolderscanBook,
+    factualKeys: [
+      'asin',
+      'isbn',
+      'title',
+      'subtitle',
+      'authors',
+      'narrators',
+      'series',
+      'series_position',
+      'publisher',
+      'release_date',
+      'language',
+      'runtime_min',
+      'chapters',
+    ],
+  },
+}
+
+// Detection order is load-bearing: the discriminated folder-scan first (its
+// per-book keys overlap OpenAudible's), then OpenAudible's lowercase keys
+// before Libation's generic PascalCase Title.
+const DETECTION_ORDER: readonly KnownFormat[] = ['folderscan', 'openaudible', 'libation']
+
+// Libation sometimes wraps its list in an object under one of these keys (the
+// folder-scan's books array also rides under 'books').
 const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library']
 
 function extractEntries(data: unknown): unknown[] | null {
@@ -411,7 +522,10 @@ function extractEntries(data: unknown): unknown[] | null {
   return null
 }
 
-function sampleHasAnyKey(entries: unknown[], keys: string[]): boolean {
+// True when any of the first entries carries any of the marker keys (false for
+// a missing or empty entries array).
+function entriesHaveAnyKey(entries: unknown[] | null, keys: readonly string[]): boolean {
+  if (!entries) return false
   for (const el of entries.slice(0, 20)) {
     if (isObject(el)) {
       for (const k of keys) if (k in el) return true
@@ -420,26 +534,11 @@ function sampleHasAnyKey(entries: unknown[], keys: string[]): boolean {
   return false
 }
 
-function detectFormat(data: unknown): ExportFormat {
-  // The folder-scan is a discriminated object, so it is detected before the
-  // array/wrapper formats (its per-book keys overlap OpenAudible's).
-  if (isObject(data) && coerceStr(data['format']) === FOLDERSCAN_FORMAT) return 'folderscan'
-  const entries = extractEntries(data)
-  if (!entries || entries.length === 0) return 'unknown'
-  // OpenAudible first: its lowercase keys never appear on a Libation entry.
-  if (sampleHasAnyKey(entries, OPENAUDIBLE_KEYS)) return 'openaudible'
-  if (sampleHasAnyKey(entries, LIBATION_KEYS)) return 'libation'
+function detectFormat(data: unknown, entries: unknown[] | null): ExportFormat {
+  for (const f of DETECTION_ORDER) {
+    if (FORMATS[f].detect(data, entries)) return f
+  }
   return 'unknown'
-}
-
-// The per-format entry mapper.
-const PARSERS: Record<
-  Exclude<ExportFormat, 'unknown'>,
-  (raw: Record<string, unknown>) => ParsedBook
-> = {
-  openaudible: parseBook,
-  libation: parseLibationBook,
-  folderscan: parseFolderscanBook,
 }
 
 /**
@@ -457,14 +556,14 @@ export function parseExport(text: string): ParseOutcome {
       'That file is not valid JSON. Make sure you selected a supported library export (OpenAudible, Libation, or an audiosilo folder scan).'
     )
   }
-  const format = detectFormat(data)
+  const entries = extractEntries(data)
+  const format = detectFormat(data, entries)
   if (format === 'unknown') {
     return { format, books: [] }
   }
-  const entries = extractEntries(data) ?? []
-  const parse = PARSERS[format]
+  const parse = FORMATS[format].parse
   const books: ParsedBook[] = []
-  for (const el of entries) {
+  for (const el of entries ?? []) {
     if (isObject(el)) books.push(parse(el))
   }
   return { format, books }
@@ -558,7 +657,10 @@ function titleTokensCompatible(a: string, b: string): boolean {
  * different-author book is never mistaken for an existing work. Pure. Returns
  * null when there is no confident match, so the caller defaults to a new work.
  */
-export function matchExistingWork(book: ParsedBook, candidates: WorkCandidate[]): WorkMatch | null {
+export function matchExistingWork(
+  book: ParsedBook,
+  candidates: WorkCandidate[]
+): WorkMatch | null {
   const bt = normKey(book.title)
   if (!bt) return null
   const bookAuthors = new Set(book.authors.map(normKey).filter(Boolean))

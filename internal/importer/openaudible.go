@@ -8,25 +8,52 @@ import (
 	"strings"
 )
 
-// rawBook is one entry of an OpenAudible books.json export. Every scalar may
-// arrive as a string, number, bool, or null, so fields are decoded lazily
-// through the coercion helpers rather than into typed struct fields.
+// rawBook is one loosely-typed export entry (an OpenAudible books.json object,
+// or a Libation object before normalization). Every scalar may arrive as a
+// string, number, bool, or null, so fields are decoded lazily through the
+// coercion helpers rather than into typed struct fields.
 type rawBook map[string]any
 
 // rawChapter is one entry of a book's chapters array, same loose typing.
 type rawChapter map[string]any
 
-// parseBooks decodes an OpenAudible export (a top-level JSON array of objects)
-// into rawBooks. Numbers are preserved as json.Number so integer offsets keep
-// their exact value.
-func parseBooks(data []byte) ([]rawBook, error) {
+// decodeEntries decodes a top-level JSON array of objects into rawBooks.
+// Numbers are preserved as json.Number so integer offsets keep their exact
+// value. label names the source in the error ("books.json", "libation export").
+func decodeEntries(data []byte, label string) ([]rawBook, error) {
 	dec := json.NewDecoder(bytes.NewReader(data))
 	dec.UseNumber()
 	var books []rawBook
 	if err := dec.Decode(&books); err != nil {
-		return nil, fmt.Errorf("parse books.json: %w", err)
+		return nil, fmt.Errorf("parse %s: %w", label, err)
 	}
 	return books, nil
+}
+
+// parseBooks decodes an OpenAudible export (a top-level JSON array of objects).
+func parseBooks(data []byte) ([]rawBook, error) {
+	return decodeEntries(data, "books.json")
+}
+
+// wrapOpenAudible lifts each OpenAudible entry into a sourceBook, deriving the
+// parse-time facts: the single series claim from series_name/series_sequence
+// (a seriesRef is emitted only for a non-empty name - the sourceBook invariant)
+// and the runtime from the seconds field, rounded to whole minutes.
+func wrapOpenAudible(books []rawBook) []sourceBook {
+	out := make([]sourceBook, 0, len(books))
+	for _, b := range books {
+		sb := sourceBook{raw: b}
+		if name := b.str("series_name"); name != "" {
+			rawSeq := b.str("series_sequence")
+			pos, ok := normalizeSequence(rawSeq)
+			sb.series = []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
+		}
+		if secs, ok := b.intVal("seconds"); ok && secs > 0 {
+			sb.runtimeMin = int((secs + 30) / 60)
+		}
+		out = append(out, sb)
+	}
+	return out
 }
 
 // str returns the field as a trimmed string. Numbers render via their literal

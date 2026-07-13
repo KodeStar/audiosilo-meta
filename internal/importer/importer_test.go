@@ -19,7 +19,7 @@ func jsonInto(s string, v any) error {
 	return dec.Decode(v)
 }
 
-// writeBooks writes a books.json into a temp dir and returns its path.
+// writeBooks writes an export file into a temp dir and returns its path.
 func writeBooks(t *testing.T, content string) string {
 	t.Helper()
 	dir := t.TempDir()
@@ -30,17 +30,37 @@ func writeBooks(t *testing.T, content string) string {
 	return p
 }
 
-// runImport runs the importer against a fresh empty data dir and returns the
-// summary and the data dir.
-func runImport(t *testing.T, booksJSON string, dryRun bool) (Summary, string) {
+// runWith runs the given importer entrypoint (Run or RunLibation) against a
+// fresh empty data dir and returns the summary and the data dir.
+func runWith(t *testing.T, run func(string, Options) (Summary, error), input string, dryRun bool) (Summary, string) {
 	t.Helper()
 	dataDir := t.TempDir()
-	books := writeBooks(t, booksJSON)
-	sum, err := Run(books, Options{DataDir: dataDir, ImportDate: "2026-07-11", DryRun: dryRun})
+	sum, err := run(writeBooks(t, input), Options{DataDir: dataDir, ImportDate: "2026-07-11", DryRun: dryRun})
 	if err != nil {
-		t.Fatalf("Run: %v", err)
+		t.Fatalf("import run: %v", err)
 	}
 	return sum, dataDir
+}
+
+// runImport runs the OpenAudible importer against a fresh empty data dir.
+func runImport(t *testing.T, booksJSON string, dryRun bool) (Summary, string) {
+	t.Helper()
+	return runWith(t, Run, booksJSON, dryRun)
+}
+
+// seedTree writes a map of data-relative path -> JSON content into dataDir,
+// creating parent directories.
+func seedTree(t *testing.T, dataDir string, files map[string]string) {
+	t.Helper()
+	for rel, content := range files {
+		full := filepath.Join(dataDir, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(full, []byte(content), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
 }
 
 func readJSON(t *testing.T, path string, v any) {
@@ -215,15 +235,7 @@ func TestDedupByASIN(t *testing.T) {
 		"works/th/the-iron-ledger/work.json":                `{"authors":["mara-quill"],"id":"the-iron-ledger","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"The Iron Ledger"}`,
 		"works/th/the-iron-ledger/recordings/existing.json": `{"asin":[{"asin":"B0SYNTH001","region":"us"}],"id":"existing","language":"en","license":"CC0-1.0","narrators":["priya-lund"],"sources":[{"type":"user"}],"work":"the-iron-ledger"}`,
 	}
-	for rel, content := range seed {
-		full := filepath.Join(dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(full, []byte(content), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	seedTree(t, dataDir, seed)
 
 	books := `[{"asin":"B0SYNTH001","title_short":"The Iron Ledger","author":"Mara Quill","narrated_by":"Priya Lund","language":"english","region":"US","seconds":1000}]`
 	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
@@ -331,11 +343,7 @@ func TestExtendExistingSeries(t *testing.T) {
 		"works/bo/book-alpha/work.json":  `{"authors":["existing-author"],"id":"book-alpha","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book Alpha"}`,
 		"series/my/my-series.json":       `{"authors":["existing-author"],"id":"my-series","license":"CC0-1.0","name":"My Series","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-alpha"}]}`,
 	}
-	for rel, content := range seed {
-		full := filepath.Join(dataDir, filepath.FromSlash(rel))
-		_ = os.MkdirAll(filepath.Dir(full), 0o755)
-		_ = os.WriteFile(full, []byte(content), 0o644)
-	}
+	seedTree(t, dataDir, seed)
 	books := `[{"asin":"B0EXTEND01","title_short":"Book Beta","author":"Existing Author","narrated_by":"Voice","series_name":"My Series","series_sequence":"2","language":"english","seconds":600}]`
 	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})
 	if err != nil {
@@ -518,15 +526,7 @@ func TestExistingWorkDifferentSeriesPosition(t *testing.T) {
 		"works/dr/dragon-heart/work.json": `{"authors":["kirill-klevanski"],"id":"dragon-heart","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Dragon Heart"}`,
 		"series/dr/dragon-heart.json":     `{"id":"dragon-heart","license":"CC0-1.0","name":"Dragon Heart","sources":[{"type":"user"}],"works":[{"position":"1","work":"dragon-heart"}]}`,
 	}
-	for rel, content := range seed {
-		full := filepath.Join(dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(full, []byte(content), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	seedTree(t, dataDir, seed)
 
 	books := `[{"asin":"B0DRAGONH5","title":"Dragon Heart - Book 5: Sea of Sand","title_short":"Dragon Heart","author":"Kirill Klevanski","narrated_by":"Zach Villa","series_name":"Dragon Heart","series_sequence":"5","language":"english","region":"US","release_date":"2020-01-01","seconds":60000}]`
 	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: "2026-07-11"})

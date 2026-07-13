@@ -81,12 +81,36 @@ func Run(booksPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
-	return runBooks(books, sourceOpenAud, opts)
+	return runBooks(wrapOpenAudible(books), sourceOpenAud, opts)
+}
+
+// sourceBook is the parsed, source-independent view of one export entry: the
+// loose JSON fields (raw) plus the facts each source derives differently at
+// parse time. Invariant: every seriesRef carries a non-empty name (the parsers
+// skip empties and never emit one), so consumers need no empty-name guards.
+type sourceBook struct {
+	raw        rawBook
+	series     []seriesRef // the book's series claims (>1 only for Libation)
+	runtimeMin int         // whole minutes; 0 = unknown
+}
+
+// str is a convenience passthrough to the underlying raw entry.
+func (s sourceBook) str(key string) string { return s.raw.str(key) }
+
+// primarySeriesClaim returns the book's first fully-valid series claim (a name
+// with a valid position), for the work-title disambiguation pre-pass.
+func (s sourceBook) primarySeriesClaim() (name, pos string, ok bool) {
+	for _, r := range s.series {
+		if r.seqOK {
+			return r.name, r.seq, true
+		}
+	}
+	return "", "", false
 }
 
 // RunLibation imports exportPath (a Libation "Export Library" JSON export) into
 // opts.DataDir. Each Libation entry is normalized into the same internal
-// rawBook the OpenAudible path produces (factual fields only; see
+// sourceBook the OpenAudible path produces (factual fields only; see
 // libation.go), so the two sources share every mapping/dedup rule. Behaviour is
 // otherwise identical to Run.
 func RunLibation(exportPath string, opts Options) (Summary, error) {
@@ -104,7 +128,7 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // runBooks is the shared import core: it plans every book into records against
 // the existing catalog, then (on a real run) writes and re-validates the tree.
 // sourceType is the provenance stamped on every created record.
-func runBooks(books []rawBook, sourceType string, opts Options) (Summary, error) {
+func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
 	p := &planner{
 		dataDir: opts.DataDir,
 		people:  map[string]bool{},
@@ -190,7 +214,7 @@ func (p *planner) loadExisting() {
 // squat the ambiguous slug either. Renaming to full titles is harmless even
 // when the group spans genuinely different books - full titles are still
 // correct titles - and single-claim groups are never touched.
-func resolveWorkTitles(books []rawBook) []string {
+func resolveWorkTitles(books []sourceBook) []string {
 	titles := make([]string, len(books))
 	groups := map[string][]int{}
 	for i, b := range books {
@@ -201,7 +225,7 @@ func resolveWorkTitles(books []rawBook) []string {
 	for _, idxs := range groups {
 		claims := map[string]bool{}
 		for _, i := range idxs {
-			name, pos, ok := primarySeriesClaim(books[i])
+			name, pos, ok := books[i].primarySeriesClaim()
 			if !ok {
 				continue
 			}
@@ -222,7 +246,7 @@ func resolveWorkTitles(books []rawBook) []string {
 // addBook maps one export entry to records. workTitle is the pre-pass-resolved
 // title for the book's work. It returns quietly (recording a warning or a skip)
 // whenever the entry cannot be imported cleanly.
-func (p *planner) addBook(b rawBook, workTitle string) {
+func (p *planner) addBook(b sourceBook, workTitle string) {
 	label := bookLabel(b)
 	warn := func(format string, args ...any) {
 		p.summary.Warnings = append(p.summary.Warnings, label+": "+fmt.Sprintf(format, args...))
@@ -270,10 +294,9 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 	// Libation). The first that resolves to an already-known series (on disk or
 	// created earlier this run) is used to refuse merging into a same-titled work
 	// that sits in that series at a different position.
-	refs := b.seriesRefs()
 	var claim *seriesClaim
-	for _, r := range refs {
-		if r.name == "" || !r.seqOK {
+	for _, r := range b.series {
+		if !r.seqOK {
 			continue
 		}
 		if ss := p.findSeries(r.name); ss != nil {
@@ -289,10 +312,7 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 		p.asins[asin] = true
 	}
 
-	for _, r := range refs {
-		if r.name == "" {
-			continue
-		}
+	for _, r := range b.series {
 		if !r.seqOK {
 			warn("series %q: missing or invalid position %q; not placed in series", r.name, r.rawSeq)
 		} else {
@@ -301,41 +321,15 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 	}
 }
 
-// seriesRef is a book's claim to a position in a named series. seqOK reports
-// whether seq passed position validation; rawSeq is the original text (for the
-// "invalid position" warning). A book may carry several (Libation multi-series).
+// seriesRef is a book's claim to a position in a named series. name is always
+// non-empty (the sourceBook invariant). seqOK reports whether seq passed
+// position validation; rawSeq is the original text (for the "invalid position"
+// warning). A book may carry several (Libation multi-series).
 type seriesRef struct {
 	name   string
 	seq    string
 	seqOK  bool
 	rawSeq string
-}
-
-// seriesRefs returns the book's series claims. A Libation-converted rawBook
-// carries them pre-parsed under "_series_refs"; an OpenAudible rawBook exposes a
-// single claim through its native series_name/series_sequence fields.
-func (b rawBook) seriesRefs() []seriesRef {
-	if v, ok := b["_series_refs"].([]seriesRef); ok {
-		return v
-	}
-	name := b.str("series_name")
-	if name == "" {
-		return nil
-	}
-	rawSeq := b.str("series_sequence")
-	pos, ok := normalizeSequence(rawSeq)
-	return []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
-}
-
-// primarySeriesClaim returns the book's first fully-valid series claim (a name
-// with a valid position), for the work-title disambiguation pre-pass.
-func primarySeriesClaim(b rawBook) (name, pos string, ok bool) {
-	for _, r := range b.seriesRefs() {
-		if r.name != "" && r.seqOK {
-			return r.name, r.seq, true
-		}
-	}
-	return "", "", false
 }
 
 // getOrCreatePerson returns the slug for name, creating the person record when
@@ -449,7 +443,7 @@ func (p *planner) findSeries(name string) *seriesState {
 
 // addRecording builds and emits the recording for a book under work ws, unless
 // an identical recording already exists there (a re-import no-op).
-func (p *planner) addRecording(ws *workState, b rawBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) {
+func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) {
 	base := narratorSlugs[0]
 	if year := yearOf(b.str("release_date")); year != "" {
 		base += "-" + year
@@ -466,11 +460,9 @@ func (p *planner) addRecording(ws *workState, b rawBook, asin, lang string, narr
 		ID: slug, Work: ws.slug, Narrators: narratorSlugs, Language: lang,
 		License: licenseCC0, Sources: []outSource{p.curSource},
 	}
-	rec.Abridged = b.boolPtr("abridged")
-	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
-		if m := int((secs + 30) / 60); m > 0 {
-			rec.RuntimeMin = m
-		}
+	rec.Abridged = b.raw.boolPtr("abridged")
+	if b.runtimeMin > 0 {
+		rec.RuntimeMin = b.runtimeMin
 	}
 	if rd := b.str("release_date"); datePattern.MatchString(rd) {
 		rec.ReleaseDate = rd
@@ -488,7 +480,7 @@ func (p *planner) addRecording(ws *workState, b rawBook, asin, lang string, narr
 			warn("region %q is not a known marketplace; ASIN not recorded", b.str("region"))
 		}
 	}
-	if chs := buildChapters(b, warn); chs != nil {
+	if chs := buildChapters(b.raw, warn); chs != nil {
 		rec.Chapters = chs
 	}
 
@@ -713,7 +705,7 @@ func normalizeASIN(s string) string {
 	return ""
 }
 
-func bookLabel(b rawBook) string {
+func bookLabel(b sourceBook) string {
 	if a := strings.TrimSpace(b.str("asin")); a != "" {
 		return a
 	}

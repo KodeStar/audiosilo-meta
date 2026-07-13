@@ -1,16 +1,12 @@
 package importer
 
 import (
-	"bytes"
-	"encoding/json"
-	"fmt"
-	"strconv"
 	"strings"
 )
 
 // libation.go maps a Libation "Export Library" JSON export into the same
-// internal rawBook the OpenAudible path produces, so both sources share every
-// mapping, dedup, and series rule (see openaudible.go / mapping.go /
+// internal sourceBook the OpenAudible path produces, so both sources share
+// every mapping, dedup, and series rule (see openaudible.go / mapping.go /
 // importer.go). Only factual fields are carried across: personal state
 // (Account, DateAdded, MyRating*, BookStatus, AbsentFromLastScan) and
 // non-factual copy (Description, CommunityRating*, CategoriesNames, ContentType,
@@ -30,32 +26,27 @@ import (
 //   - PictureId: an Amazon image id; the cover CDN URL is derived from it.
 //   - IsAbridged: Libation states this explicitly, so a present bool is a fact.
 
-// libEntry is one object of a Libation export, loosely typed like rawBook.
-type libEntry map[string]any
-
-func (e libEntry) str(key string) string { return coerceStr(e[key]) }
-
 // parseLibation decodes a Libation export and converts every entry into the
-// OpenAudible-shaped rawBook the shared pipeline consumes.
-func parseLibation(data []byte) ([]rawBook, error) {
-	dec := json.NewDecoder(bytes.NewReader(data))
-	dec.UseNumber()
-	var entries []libEntry
-	if err := dec.Decode(&entries); err != nil {
-		return nil, fmt.Errorf("parse libation export: %w", err)
+// OpenAudible-shaped sourceBook the shared pipeline consumes.
+func parseLibation(data []byte) ([]sourceBook, error) {
+	entries, err := decodeEntries(data, "libation export")
+	if err != nil {
+		return nil, err
 	}
-	books := make([]rawBook, 0, len(entries))
+	books := make([]sourceBook, 0, len(entries))
 	for _, e := range entries {
-		books = append(books, libationToRaw(e))
+		books = append(books, libationToBook(e))
 	}
 	return books, nil
 }
 
-// libationToRaw normalizes one Libation entry into a rawBook, translating field
-// names and shapes to the OpenAudible keys addBook understands and dropping
-// every non-factual field.
-func libationToRaw(e libEntry) rawBook {
+// libationToBook normalizes one Libation entry into a sourceBook, translating
+// field names and shapes to the OpenAudible keys addBook understands and
+// dropping every non-factual field. The runtime and series claims are
+// parse-time facts carried on the sourceBook itself.
+func libationToBook(e rawBook) sourceBook {
 	b := rawBook{}
+	sb := sourceBook{raw: b}
 
 	if asin := e.str("AudibleProductId"); asin != "" {
 		b["asin"] = asin
@@ -89,21 +80,17 @@ func libationToRaw(e libEntry) rawBook {
 	if rd := libationDate(e.str("DatePublished")); rd != "" {
 		b["release_date"] = rd
 	}
-	// LengthInMinutes -> seconds, so addRecording's round(seconds/60) recovers
-	// the exact minute count. Stored as json.Number for the coercion helpers.
 	if mins, ok := coerceInt(e["LengthInMinutes"]); ok && mins > 0 {
-		b["seconds"] = json.Number(strconv.FormatInt(mins*60, 10))
+		sb.runtimeMin = int(mins)
 	}
-	if v, ok := e["IsAbridged"].(bool); ok {
-		b["abridged"] = v
+	if v := coerceBoolPtr(e["IsAbridged"]); v != nil {
+		b["abridged"] = *v
 	}
 	if cover := libationCover(e.str("PictureId")); cover != "" {
 		b["image_url"] = cover
 	}
-	if refs := parseLibationSeries(e.str("SeriesOrder"), e.str("SeriesNames")); len(refs) > 0 {
-		b["_series_refs"] = refs
-	}
-	return b
+	sb.series = parseLibationSeries(e.str("SeriesOrder"), e.str("SeriesNames"))
+	return sb
 }
 
 // libationDate reduces an ISO timestamp ("2018-10-18T23:00:00") to its
@@ -140,7 +127,8 @@ const libationUnsorted = "999999999"
 // FIRST colon (the order is always digits/dots/hyphens, so this is exact even
 // when a name itself contains a colon, e.g. "Discworld: Rincewind"). An empty or
 // sentinel order yields a name with no position (the book imports but is not
-// placed).
+// placed). Every returned ref carries a non-empty name (the sourceBook
+// invariant): empty names are skipped in both branches.
 func parseLibationSeries(order, names string) []seriesRef {
 	if strings.TrimSpace(order) != "" {
 		var refs []seriesRef

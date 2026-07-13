@@ -16,6 +16,7 @@ function parsedBook(extra: Partial<ParsedBook> = {}): ParsedBook {
     title: 'A Title',
     authors: [],
     narrators: [],
+    format: 'openaudible',
     raw: {},
     ...extra,
   }
@@ -66,18 +67,18 @@ describe('addWorkIssueUrl', () => {
 
   it('defaults rec_abridged to Unabridged and uses Abridged when abridged===true', () => {
     expect(params(addWorkIssueUrl(parsedBook())).get('rec_abridged')).toBe('Unabridged')
-    expect(params(addWorkIssueUrl(parsedBook({ abridged: false }))).get('rec_abridged')).toBe(
-      'Unabridged'
-    )
-    expect(params(addWorkIssueUrl(parsedBook({ abridged: true }))).get('rec_abridged')).toBe(
-      'Abridged'
-    )
+    expect(
+      params(addWorkIssueUrl(parsedBook({ abridged: false }))).get('rec_abridged')
+    ).toBe('Unabridged')
+    expect(
+      params(addWorkIssueUrl(parsedBook({ abridged: true }))).get('rec_abridged')
+    ).toBe('Abridged')
   })
 
   it('formats rec_asins as "REGION: asin", defaulting REGION to US when absent', () => {
-    expect(params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH' }))).get('rec_asins')).toBe(
-      'US: B0ABCDEFGH'
-    )
+    expect(
+      params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH' }))).get('rec_asins')
+    ).toBe('US: B0ABCDEFGH')
     expect(
       params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH', region: 'uk' }))).get('rec_asins')
     ).toBe('UK: B0ABCDEFGH')
@@ -110,7 +111,9 @@ describe('addWorkIssueUrl', () => {
 
   it('emits rec_runtime_min for a zero runtime (only null/undefined omit it)', () => {
     // runtimeMin is guarded with `!= null`, so 0 is still emitted.
-    expect(params(addWorkIssueUrl(parsedBook({ runtimeMin: 0 }))).get('rec_runtime_min')).toBe('0')
+    expect(params(addWorkIssueUrl(parsedBook({ runtimeMin: 0 }))).get('rec_runtime_min')).toBe(
+      '0'
+    )
     expect(params(addWorkIssueUrl(parsedBook({}))).has('rec_runtime_min')).toBe(false)
   })
 })
@@ -132,11 +135,7 @@ describe('addRecordingIssueUrl', () => {
   it('titles the issue with the recording prefix and carries recording fields', () => {
     const p = params(
       addRecordingIssueUrl(
-        parsedBook({
-          title: 'Skysworn',
-          narrators: ['Vox Player'],
-          asin: 'B0ABCDEFGH',
-        }),
+        parsedBook({ title: 'Skysworn', narrators: ['Vox Player'], asin: 'B0ABCDEFGH' }),
         work
       )
     )
@@ -265,7 +264,6 @@ describe('factualSubset - the privacy contract', () => {
     const out = factualSubset(parsedBook({ raw: { title: 'No Chapters' } }))
     expect('chapters' in out).toBe(false)
   })
-
   it('keeps only whitelisted Libation fields and drops personal ones', () => {
     const raw = {
       // factual (kept)

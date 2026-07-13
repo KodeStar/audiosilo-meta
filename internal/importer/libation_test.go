@@ -10,26 +10,10 @@ import (
 	"github.com/kodestar/audiosilo-meta/internal/check"
 )
 
-// writeExport writes a Libation export.json into a temp dir and returns its path.
-func writeExport(t *testing.T, content string) string {
-	t.Helper()
-	dir := t.TempDir()
-	p := filepath.Join(dir, "export.json")
-	if err := os.WriteFile(p, []byte(content), 0o644); err != nil {
-		t.Fatal(err)
-	}
-	return p
-}
-
 // runLibation runs the Libation importer against a fresh empty data dir.
 func runLibation(t *testing.T, exportJSON string, dryRun bool) (Summary, string) {
 	t.Helper()
-	dataDir := t.TempDir()
-	sum, err := RunLibation(writeExport(t, exportJSON), Options{DataDir: dataDir, ImportDate: "2026-07-12", DryRun: dryRun})
-	if err != nil {
-		t.Fatalf("RunLibation: %v", err)
-	}
-	return sum, dataDir
+	return runWith(t, RunLibation, exportJSON, dryRun)
 }
 
 func TestLibationImportBasic(t *testing.T) {
@@ -91,7 +75,7 @@ func TestLibationImportBasic(t *testing.T) {
 		t.Errorf("publisher description leaked into work: %q", work.Description)
 	}
 	if len(work.Sources) != 1 || work.Sources[0].Type != "libation-import" ||
-		work.Sources[0].Ref != "B0CQDJ3PND" || work.Sources[0].ImportedAt != "2026-07-12" {
+		work.Sources[0].Ref != "B0CQDJ3PND" || work.Sources[0].ImportedAt != "2026-07-11" {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
@@ -239,19 +223,11 @@ func TestLibationDedupByASIN(t *testing.T) {
 		"works/th/the-primal-hunter-14/work.json":                `{"authors":["zogarth"],"id":"the-primal-hunter-14","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"The Primal Hunter 14"}`,
 		"works/th/the-primal-hunter-14/recordings/existing.json": `{"asin":[{"asin":"B0H1NBT6RF","region":"uk"}],"id":"existing","language":"en","license":"CC0-1.0","narrators":["travis-baldree"],"sources":[{"type":"user"}],"work":"the-primal-hunter-14"}`,
 	}
-	for rel, content := range seed {
-		full := filepath.Join(dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(full, []byte(content), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	seedTree(t, dataDir, seed)
 
 	// Only the Primal Hunter entry (its ASIN is already present).
 	export := `[{"AudibleProductId":"B0H1NBT6RF","Locale":"uk","Title":"The Primal Hunter 14","AuthorNames":"Zogarth","NarratorNames":"Travis Baldree","LengthInMinutes":1118,"Language":"English","IsAbridged":false}]`
-	sum, err := RunLibation(writeExport(t, export), Options{DataDir: dataDir, ImportDate: "2026-07-12"})
+	sum, err := RunLibation(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: "2026-07-12"})
 	if err != nil {
 		t.Fatal(err)
 	}

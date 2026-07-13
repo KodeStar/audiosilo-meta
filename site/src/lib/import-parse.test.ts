@@ -32,6 +32,7 @@ function parsedBook(extra: Partial<ParsedBook> = {}): ParsedBook {
     title: '',
     authors: [],
     narrators: [],
+    format: 'openaudible',
     raw: {},
     ...extra,
   }
@@ -133,7 +134,9 @@ describe('parseExport - field mapping', () => {
   }
 
   it('title prefers title_short and falls back to title', () => {
-    expect(parseOne(openAudibleEntry({ title: 'Long', title_short: 'Short' })).title).toBe('Short')
+    expect(parseOne(openAudibleEntry({ title: 'Long', title_short: 'Short' })).title).toBe(
+      'Short'
+    )
     expect(parseOne(openAudibleEntry({ title: 'Only Long', title_short: '' })).title).toBe(
       'Only Long'
     )
@@ -176,9 +179,7 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({ series_sequence: '1' })).seriesPosition).toBe('1')
     expect(parseOne(openAudibleEntry({ series_sequence: '2.5' })).seriesPosition).toBe('2.5')
     expect(parseOne(openAudibleEntry({ series_sequence: '1-3.5' })).seriesPosition).toBe('1-3.5')
-    expect(
-      parseOne(openAudibleEntry({ series_sequence: 'book one' })).seriesPosition
-    ).toBeUndefined()
+    expect(parseOne(openAudibleEntry({ series_sequence: 'book one' })).seriesPosition).toBeUndefined()
   })
 
   it('computes runtimeMin as round(seconds/60), from a number or a string', () => {
@@ -501,10 +502,7 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({
-      id: 'w1',
-      title: 'Skysworn',
-    })
+    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
   })
 
   it('matches when the work title is a token-subset of the book title (the Cradle case)', () => {
@@ -515,10 +513,7 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({
-      id: 'w1',
-      title: 'Skysworn',
-    })
+    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
   })
 
   it('does NOT match a subset title with a different author', () => {
@@ -548,17 +543,10 @@ describe('matchExistingWork', () => {
     const book = parsedBook({ title: 'Skysworn', authors: ['Will Wight'] })
     const cands: WorkCandidate[] = [
       // A looser superset title first, then the exact one.
-      {
-        id: 'loose',
-        title: 'Skysworn Cradle Book 4',
-        authors: [{ name: 'Will Wight' }],
-      },
+      { id: 'loose', title: 'Skysworn Cradle Book 4', authors: [{ name: 'Will Wight' }] },
       { id: 'exact', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({
-      id: 'exact',
-      title: 'Skysworn',
-    })
+    expect(matchExistingWork(book, cands)).toEqual({ id: 'exact', title: 'Skysworn' })
   })
 
   it('matches an exact title even when the book lists no authors', () => {
@@ -566,17 +554,11 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({
-      id: 'w1',
-      title: 'Skysworn',
-    })
+    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
   })
 
   it('does NOT loosely match when the book lists no authors (loose needs a shared author)', () => {
-    const book = parsedBook({
-      title: 'Skysworn - Cradle, Book 4',
-      authors: [],
-    })
+    const book = parsedBook({ title: 'Skysworn - Cradle, Book 4', authors: [] })
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
@@ -623,11 +605,7 @@ describe('candidatesForBook', () => {
       title: 'A',
       authors: [{ name: 'Brandon Sanderson' }],
     }
-    const w2: WorkCandidate = {
-      id: 'w2',
-      title: 'B',
-      authors: [{ name: 'Jane Doe' }],
-    }
+    const w2: WorkCandidate = { id: 'w2', title: 'B', authors: [{ name: 'Jane Doe' }] }
     const byAuthor = new Map<string, WorkCandidate[]>([
       // Stored under the same normalized key the book authors produce, even
       // when the display spelling carries punctuation.
