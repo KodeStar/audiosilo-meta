@@ -21,6 +21,7 @@
 package scan
 
 import (
+	"io/fs"
 	"os"
 	"path/filepath"
 	"sort"
@@ -98,10 +99,17 @@ type Stats struct {
 	Books       int
 	WithASIN    int
 	WithSeries  int
-	TagFailures int
+	TagFailures int // real tag-read failures (untagged files are not failures)
 	// AmbiguousDirs counts multi-file folders kept as one book with NO tag
 	// evidence either way - possible collections a human should check.
 	AmbiguousDirs int
+	// UnreadableDirs counts directories that could not be read or resolved
+	// (permissions, dangling symlinks) and were skipped.
+	UnreadableDirs int
+	// ProbeFailures counts files ffprobe was asked about but could not read;
+	// a book with any probe failure omits runtime_min/chapters rather than
+	// assert undercounted facts.
+	ProbeFailures int
 }
 
 // isAudio reports whether name has a recognized audiobook extension.
@@ -123,16 +131,25 @@ type group struct {
 	isRoot bool
 }
 
-// fileData is the per-file evidence gathered before grouping: the canonical
-// dhowden tag read plus the optional ffprobe result.
+// fileData is the per-file evidence gathered before grouping.
 type fileData struct {
-	tags  tagInfo
-	tagOK bool
-	probe *probeResult // nil when ffprobe is disabled or failed for the file
+	tags      tagInfo      // canonical dhowden read
+	merged    tagInfo      // tags + probe container fill - the ONE view both splitVerdict and buildBook use
+	probeASIN string       // container-tag ASIN (lowest ASIN precedence; see mergeTags)
+	hasTags   bool         // dhowden parsed a tag block
+	failed    bool         // real tag-read failure (not "no tags")
+	probe     *probeResult // nil when ffprobe is disabled or failed for the file
 }
 
-// maxWorkers bounds the per-file worker pool. The scan is latency-bound (tag
-// reads + ffprobe spawns), so a modest fan-out dominates the wall clock on
+// groupData binds a group to its per-file evidence, so the two can never be
+// re-ordered independently.
+type groupData struct {
+	group
+	data []fileData // parallel to group.files
+}
+
+// maxWorkers bounds the per-file fan-out. The scan is latency-bound (tag reads
+// + ffprobe spawns), so a modest concurrency dominates the wall clock on
 // network mounts without swamping the disk.
 const maxWorkers = 8
 
@@ -158,39 +175,87 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 		ffprobePath = opts.FFprobePath
 	}
 
-	groups := collectGroups(absRoot)
-	data := loadGroups(groups, ffprobePath)
+	var stats Stats
+	groups := collectGroups(absRoot, &stats)
+	loadGroups(groups, ffprobePath)
 
 	// Build books sequentially (stats stay race-free); the final sort makes the
-	// output deterministic regardless of load order.
-	var books []Book
-	var stats Stats
-	for gi, g := range groups {
-		gd := data[gi]
-		tags := make([]tagInfo, len(gd))
-		for i, fd := range gd {
-			tags[i] = fd.tags
-			if !fd.tagOK {
+	// output deterministic regardless of load order. books is non-nil so an
+	// empty scan marshals as "books": [].
+	books := []Book{}
+	// pending holds sibling-corroboration claims by book index (see
+	// derived.pending); resolved after all books exist, before the sort.
+	type pendingBook struct {
+		idx   int
+		claim *nameClaim
+	}
+	var pendings []pendingBook
+
+	for _, g := range groups {
+		for _, fd := range g.data {
+			if fd.failed {
 				stats.TagFailures++
+			}
+			if ffprobePath != "" && fd.probe == nil {
+				stats.ProbeFailures++
 			}
 		}
 
 		// Loose root files are unconditionally individual books; elsewhere the
-		// files' own tags decide (never filenames alone).
+		// files' own tags decide (never filenames alone). The verdict sees the
+		// SAME merged tag view the books are built from, so probe-visible
+		// distinct albums also prevent a wrong merge.
 		v := verdictSplit
 		if !g.isRoot {
+			tags := make([]tagInfo, len(g.data))
+			for i, fd := range g.data {
+				tags[i] = fd.merged
+			}
 			v = splitVerdict(g.files, tags)
 		}
 		switch v {
 		case verdictSplit:
 			for i, f := range g.files {
-				books = append(books, buildBook(g.dir, absRoot, []string{f}, false, gd[i:i+1]))
+				b, claim := buildBook(g.dir, absRoot, []string{f}, false, g.data[i:i+1])
+				if claim != nil {
+					pendings = append(pendings, pendingBook{idx: len(books), claim: claim})
+				}
+				books = append(books, b)
 			}
 		case verdictKeepAmbiguous:
 			stats.AmbiguousDirs++
 			fallthrough
 		default:
-			books = append(books, buildBook(g.dir, absRoot, g.files, true, gd))
+			b, claim := buildBook(g.dir, absRoot, g.files, true, g.data)
+			if claim != nil {
+				pendings = append(pendings, pendingBook{idx: len(books), claim: claim})
+			}
+			books = append(books, b)
+		}
+	}
+
+	// Sibling corroboration: a pending seriesNum claim is accepted when another
+	// book asserts the same series name through solid evidence (its own claims
+	// don't count, so two accidental "Catch NN - X" shapes can't vouch for each
+	// other).
+	known := map[string]bool{}
+	for i := range books {
+		if s := books[i].Series; s != "" {
+			known[strings.ToLower(s)] = true
+		}
+	}
+	for _, p := range pendings {
+		if !known[strings.ToLower(p.claim.series)] {
+			continue
+		}
+		b := &books[p.idx]
+		if b.Series == "" {
+			b.set(&b.Series, "series", p.claim.series, p.claim.src)
+			b.set(&b.SeriesPosition, "series_position", p.claim.position, p.claim.src)
+		}
+		if b.Sources["title"] != string(srcTag) && p.claim.title != "" {
+			b.Title = p.claim.title
+			b.Sources["title"] = string(p.claim.src)
 		}
 	}
 
@@ -209,13 +274,28 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 }
 
 // collectGroups walks the tree (cheap, ReadDir only) and returns each directory
-// that directly contains audio files, in deterministic order.
-func collectGroups(root string) []group {
-	var groups []group
+// that directly contains audio files, in deterministic order. Directory
+// symlinks are followed (symlink-organized libraries are common), with a
+// visited set over resolved paths guarding cycles; unreadable or unresolvable
+// directories are counted in stats and skipped, never silently dropped.
+func collectGroups(root string, stats *Stats) []groupData {
+	var groups []groupData
+	visited := map[string]bool{}
 	var walk func(dir string, isRoot bool)
 	walk = func(dir string, isRoot bool) {
+		resolved, err := filepath.EvalSymlinks(dir)
+		if err != nil {
+			stats.UnreadableDirs++
+			return
+		}
+		if visited[resolved] {
+			return // symlink cycle / duplicate entry point
+		}
+		visited[resolved] = true
+
 		entries, err := os.ReadDir(dir)
 		if err != nil {
+			stats.UnreadableDirs++
 			return
 		}
 		var audio, subdirs []string
@@ -224,16 +304,27 @@ func collectGroups(root string) []group {
 			if strings.HasPrefix(name, ".") {
 				continue // skip dotfiles / dot-dirs
 			}
-			if e.IsDir() {
+			switch {
+			case e.IsDir():
 				subdirs = append(subdirs, name)
-			} else if isAudio(name) {
+			case e.Type()&fs.ModeSymlink != 0:
+				// Follow the symlink: a directory joins the walk, an audio
+				// file joins the group (os.Open follows it transparently).
+				if fi, err := os.Stat(filepath.Join(dir, name)); err == nil && fi.IsDir() {
+					subdirs = append(subdirs, name)
+				} else if err == nil && isAudio(name) {
+					audio = append(audio, name)
+				} else if err != nil {
+					stats.UnreadableDirs++ // dangling symlink
+				}
+			case isAudio(name):
 				audio = append(audio, name)
 			}
 		}
 		sort.Strings(audio)
 		sort.Strings(subdirs)
 		if len(audio) > 0 {
-			groups = append(groups, group{dir: dir, files: audio, isRoot: isRoot})
+			groups = append(groups, groupData{group: group{dir: dir, files: audio, isRoot: isRoot}})
 		}
 		for _, sd := range subdirs {
 			walk(filepath.Join(dir, sd), false)
@@ -243,39 +334,45 @@ func collectGroups(root string) []group {
 	return groups
 }
 
-// loadGroups gathers every file's tag read + optional ffprobe result through a
-// bounded worker pool (the scan's latency-bound part). Each goroutine writes
-// only its own fileData slot, so the result is race-free by construction.
-func loadGroups(groups []group, ffprobePath string) [][]fileData {
-	data := make([][]fileData, len(groups))
+// loadGroups gathers every file's evidence - the dhowden tag read, the optional
+// ffprobe result, and the pre-computed merged view - fanning the per-file work
+// (the scan's latency-bound part) across goroutines bounded by a semaphore to
+// maxWorkers in flight. Each goroutine writes only its own fileData slot, so
+// the result is race-free by construction.
+func loadGroups(groups []groupData, ffprobePath string) {
 	sem := make(chan struct{}, maxWorkers)
 	var wg sync.WaitGroup
-	for gi, g := range groups {
-		data[gi] = make([]fileData, len(g.files))
+	for gi := range groups {
+		g := &groups[gi]
+		g.data = make([]fileData, len(g.files))
 		for fi, f := range g.files {
 			wg.Add(1)
 			go func(slot *fileData, path string) {
 				defer wg.Done()
 				sem <- struct{}{}
 				defer func() { <-sem }()
-				slot.tags, slot.tagOK = readTags(path)
+				slot.tags, slot.hasTags, slot.failed = readTags(path)
+				slot.merged = slot.tags
 				if ffprobePath != "" {
 					if p, err := probe(path, ffprobePath); err == nil {
 						slot.probe = p
+						pi := probeTagInfo(p.tags)
+						slot.probeASIN = pi.asin
+						slot.merged = mergeTags(slot.tags, pi)
 					}
 				}
-			}(&data[gi][fi], filepath.Join(g.dir, f))
+			}(&g.data[fi], filepath.Join(g.dir, f))
 		}
 	}
 	wg.Wait()
-	return data
 }
 
 // buildBook assembles one Book from a folder (isFolder, path = the dir) or a
 // single file (a loose root file, or one file of a split collection folder;
 // path = <dir-relative>/<file stem>, the containing folder feeding the path
-// heuristics). data is per-file evidence parallel to files.
-func buildBook(dir, root string, files []string, isFolder bool, data []fileData) Book {
+// heuristics). data is per-file evidence parallel to files. The returned claim,
+// if non-nil, is an uncorroborated seriesNum reading for Scan's sibling pass.
+func buildBook(dir, root string, files []string, isFolder bool, data []fileData) (Book, *nameClaim) {
 	// Identity segment (name) + provenance + the location for the book path.
 	var name, bookPath string
 	var nameSrc source
@@ -294,25 +391,37 @@ func buildBook(dir, root string, files []string, isFolder bool, data []fileData)
 		}
 	}
 
-	pd := derivePath(name, nameSrc, ancestors)
+	// Tag evidence comes from the first file whose tag read parsed - a corrupt
+	// or untagged first part ("00 - Opening Credits.mp3") must not blank the
+	// whole book's tags when the rest are fine.
+	base := 0
+	for i := range data {
+		if data[i].hasTags {
+			base = i
+			break
+		}
+	}
+	tags := data[base].merged
 
-	// One merged tag view: the first file's dhowden read (folder books share
-	// album-level tags), with its ffprobe container tags filling the gaps.
-	tags := data[0].tags
-	if data[0].probe != nil {
-		tags = mergeTags(tags, probeTagInfo(data[0].probe.tags))
+	pd := derivePath(name, nameSrc, ancestors)
+	// Corroborate a tentative name-embedded series claim against the book's
+	// own tags: an album or series tag naming the claimed series confirms it.
+	if c := pd.pending; c != nil && tagsCorroborate(tags, c.series) {
+		pd.promote()
 	}
 
-	b := assemble(bookPath, files, pd, tags)
+	b := assemble(bookPath, files, pd, tags, data[base].probeASIN)
 
-	// Duration/chapter enrichment sums the per-file probes. A file with no
-	// embedded chapters counts as one chapter; a failed probe contributes
-	// nothing (degrade, never fail).
+	// Duration/chapter facts are asserted only when EVERY file's probe
+	// succeeded - a partial sum would be an undercount stated as fact (a file
+	// with no embedded chapters counts as one chapter).
+	probedAll := true
 	var totalSec float64
 	var chapters int
 	for _, fd := range data {
 		if fd.probe == nil {
-			continue
+			probedAll = false
+			break
 		}
 		totalSec += fd.probe.duration
 		if fd.probe.chapters > 0 {
@@ -321,33 +430,60 @@ func buildBook(dir, root string, files []string, isFolder bool, data []fileData)
 			chapters++
 		}
 	}
-	if totalSec > 0 {
-		b.RuntimeMin = int(totalSec/60 + 0.5)
+	if probedAll {
+		// Record the source only when the field is actually emitted (a
+		// sub-minute runtime rounds to 0 and is omitted by omitempty).
+		if m := int(totalSec/60 + 0.5); m > 0 {
+			b.RuntimeMin = m
+			b.Sources["runtime_min"] = string(srcTag)
+		}
+		if chapters > 0 {
+			b.Chapters = chapters
+			b.Sources["chapters"] = string(srcTag)
+		}
 	}
-	b.Chapters = chapters
 
 	if len(b.Sources) == 0 {
 		b.Sources = nil
 	}
-	return b
+	return b, pd.pending
+}
+
+// tagsCorroborate reports whether the tags name the claimed series (in the
+// series tag or as the album), case-folded.
+func tagsCorroborate(tags tagInfo, series string) bool {
+	s := strings.ToLower(series)
+	return strings.ToLower(tags.series) == s || strings.ToLower(tags.album) == s
 }
 
 // assemble merges path-derived fields (pd) and the (already merged) tags into a
 // Book. It is pure (no I/O), and the disagreement policy is simply the call
 // order of the set() lines per field:
 //
-//	title / narrator  -> tag preferred, path/filename fallback
+//	title             -> tag preferred (album; a per-file track title only for
+//	                     single-file books, and never a generic part label),
+//	                     path/filename fallback
+//	author            -> tag preferred, path fallback
+//	narrator          -> tag only (the path never names a narrator)
 //	series / position -> path preferred, tag fallback (tags rarely carry good
 //	                     series data, so the folder structure wins)
-//	author            -> tag preferred, path fallback
-//	asin              -> tag atoms, then file names, then the folder path
+//	asin              -> dhowden tag > filename > path > probe container
+//	                     (probeASIN last: a deliberate folder rename must be
+//	                     able to override a stale embedded ASIN)
 //
 // pd.title is guaranteed non-empty (derivePath), so a book is never untitled.
-func assemble(bookPath string, files []string, pd derived, tags tagInfo) Book {
+func assemble(bookPath string, files []string, pd derived, tags tagInfo, probeASIN string) Book {
 	b := Book{Path: bookPath, Files: files, AudioFiles: len(files), Sources: map[string]string{}}
 	fileText := strings.Join(files, " ")
 
-	b.set(&b.Title, "title", tags.bookTitle(), srcTag)
+	// A multi-file book never takes a per-file track title as the book title
+	// (a folder of parts tagged "Chapter 01" must not title the book);
+	// single-file books may, unless the title is a generic part label.
+	tagTitle := tags.album
+	if tagTitle == "" && len(files) == 1 && !isGenericTitle(tags.trackTitle) {
+		tagTitle = tags.trackTitle
+	}
+	b.set(&b.Title, "title", tagTitle, srcTag)
 	b.set(&b.Title, "title", pd.title, pd.titleSrc)
 
 	b.setList(&b.Authors, "authors", tags.authors, srcTag)
@@ -364,8 +500,9 @@ func assemble(bookPath string, files []string, pd derived, tags tagInfo) Book {
 	b.set(&b.SeriesPosition, "series_position", tags.position, srcTag)
 
 	b.set(&b.ASIN, "asin", tags.asin, srcTag)
-	b.set(&b.ASIN, "asin", findASIN(strings.ToUpper(fileText)), srcFilename)
-	b.set(&b.ASIN, "asin", findASIN(strings.ToUpper(bookPath)), srcPath)
+	b.set(&b.ASIN, "asin", findASIN(fileText), srcFilename)
+	b.set(&b.ASIN, "asin", findASIN(bookPath), srcPath)
+	b.set(&b.ASIN, "asin", probeASIN, srcTag)
 
 	b.set(&b.ISBN, "isbn", tags.isbn, srcTag)
 	b.set(&b.ISBN, "isbn", findISBN(fileText), srcFilename)

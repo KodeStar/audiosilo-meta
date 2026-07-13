@@ -22,6 +22,9 @@ type ffprobeJSON struct {
 		Duration string            `json:"duration"`
 		Tags     map[string]string `json:"tags"`
 	} `json:"format"`
+	Streams []struct {
+		Tags map[string]string `json:"tags"`
+	} `json:"streams"`
 	Chapters []struct{} `json:"chapters"` // elements only counted, never read
 }
 
@@ -35,8 +38,12 @@ func hasFFprobe(ffprobePath string) bool {
 	return err == nil
 }
 
-// probe runs ffprobe against one file for duration, chapter count, and container
-// tags. Best-effort: any failure returns (nil, err) and the caller degrades.
+// probe runs ffprobe against one file for duration, chapter count, and
+// container + stream tags. Best-effort: any failure returns (nil, err) and the
+// caller degrades. MP4 stores language on the STREAM, not the container, so
+// the first audio stream's language tag is folded into the flat tag map (m4b
+// is the dominant audiobook container - format tags alone would never yield
+// language for it).
 func probe(path, ffprobePath string) (*probeResult, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
@@ -45,6 +52,8 @@ func probe(path, ffprobePath string) (*probeResult, error) {
 		"-print_format", "json",
 		"-show_format",
 		"-show_chapters",
+		"-show_streams",
+		"-select_streams", "a:0",
 		path,
 	)
 	out, err := cmd.Output()
@@ -57,6 +66,11 @@ func probe(path, ffprobePath string) (*probeResult, error) {
 	}
 	res := &probeResult{chapters: len(parsed.Chapters), tags: lowerTags(parsed.Format.Tags)}
 	res.duration, _ = strconv.ParseFloat(parsed.Format.Duration, 64)
+	if res.tags["language"] == "" && len(parsed.Streams) > 0 {
+		if lang := strings.TrimSpace(parsed.Streams[0].Tags["language"]); lang != "" && lang != "und" {
+			res.tags["language"] = lang
+		}
+	}
 	return res, nil
 }
 

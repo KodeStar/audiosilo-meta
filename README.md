@@ -185,6 +185,14 @@ files. What it gathers, per book:
 - **Runtime and chapter counts**, if `ffprobe` is on your `PATH`. Without it the
   scan still works; those two fields are simply omitted.
 
+Have `ffprobe` installed if you can: it is also the deeper tag reader. The pure
+Go reader covers the common title/author/narrator tags plus MP3 user frames,
+but several audiobook-specific fields are reachable only through ffprobe -
+Audible/Libation freeform MP4 atoms (ASIN and friends), m4b stream language,
+and various container extras. Without ffprobe, embedded series/ASIN extraction
+is limited (especially for m4b files); the folder-structure heuristics still
+work in full.
+
 Every field records where it came from (`tag` / `path` / `filename`) in the
 book's `sources` map, and unknown fields are omitted rather than guessed.
 Grouping follows the workspace convention: a folder that directly contains audio

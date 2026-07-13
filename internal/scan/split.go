@@ -68,7 +68,7 @@ func splitVerdict(files []string, tags []tagInfo) verdict {
 		if titles[i] == "" || isGenericTitle(t.trackTitle) {
 			return verdictKeepAmbiguous
 		}
-		_, _, fromName := parseName(stem(files[i]))
+		_, _, fromName, _ := parseName(stem(files[i]))
 		if fromName == "" {
 			fromName = stem(files[i])
 		}

@@ -140,7 +140,7 @@ func TestAssembleDisagreement(t *testing.T) {
 		position:  "9",
 	}
 
-	b := assemble("Path Series/03 - Book", []string{"03 - Book.m4b"}, pd, tags)
+	b := assemble("Path Series/03 - Book", []string{"03 - Book.m4b"}, pd, tags, "")
 
 	// title: tag wins.
 	if b.Title != "Tag Title" || b.Sources["title"] != "tag" {
@@ -173,7 +173,7 @@ func TestAssembleFallbacks(t *testing.T) {
 		position: "1", posSrc: "path",
 	}
 	b := assemble("Lee Child/Jack Reacher/01 - Killing Floor",
-		[]string{"Killing Floor [B076HYPQLK].m4b"}, pd, tagInfo{})
+		[]string{"Killing Floor [B076HYPQLK].m4b"}, pd, tagInfo{}, "")
 
 	if b.Title != "Killing Floor" || b.Sources["title"] != "path" {
 		t.Errorf("title fallback wrong: %q (%s)", b.Title, b.Sources["title"])
@@ -191,9 +191,191 @@ func TestAssembleUntitledFallback(t *testing.T) {
 	// Neither tags nor a parseable title -> derivePath guarantees the raw
 	// identity segment as the title, so a book is never untitled.
 	pd := derivePath("weird", srcFilename, nil)
-	b := assemble("weird", []string{"weird.mp3"}, pd, tagInfo{})
+	b := assemble("weird", []string{"weird.mp3"}, pd, tagInfo{}, "")
 	if b.Title != "weird" || b.Sources["title"] != "filename" {
 		t.Errorf("untitled fallback: got %q (%s)", b.Title, b.Sources["title"])
+	}
+}
+
+// TestScanEmptyMarshalsBooksArray pins the wire shape for an empty scan:
+// "books" must be [], never null.
+func TestScanEmptyMarshalsBooksArray(t *testing.T) {
+	res, _ := scanNoProbe(t, t.TempDir())
+	if res.Books == nil {
+		t.Fatal("Books must be non-nil so it marshals as [], not null")
+	}
+	if len(res.Books) != 0 {
+		t.Fatalf("empty scan yielded %d books", len(res.Books))
+	}
+}
+
+// TestNoPhantomSeries pins the Fahrenheit-451 guard end to end: a loose file
+// whose name accidentally fits "Series NN - Title" must NOT invent a series -
+// the whole name stays the title.
+func TestNoPhantomSeries(t *testing.T) {
+	root := mkTree(t,
+		"Fahrenheit 451 - Ray Bradbury.m4b",
+		"Catch 22 - HarperAudio.mp3",
+	)
+	res, stats := scanNoProbe(t, root)
+	if len(res.Books) != 2 {
+		t.Fatalf("want 2 books, got %d", len(res.Books))
+	}
+	for _, b := range res.Books {
+		if b.Series != "" || b.SeriesPosition != "" {
+			t.Errorf("%q: phantom series %q pos %q", b.Path, b.Series, b.SeriesPosition)
+		}
+	}
+	byPath := map[string]Book{}
+	for _, b := range res.Books {
+		byPath[b.Path] = b
+	}
+	if b := byPath["Fahrenheit 451 - Ray Bradbury"]; b.Title != "Fahrenheit 451 - Ray Bradbury" {
+		t.Errorf("title mangled: %q", b.Title)
+	}
+	if b := byPath["Catch 22 - HarperAudio"]; b.Title != "Catch 22 - HarperAudio" {
+		t.Errorf("title mangled: %q", b.Title)
+	}
+	if stats.WithSeries != 0 {
+		t.Errorf("stats.WithSeries = %d, want 0", stats.WithSeries)
+	}
+}
+
+// TestSiblingCorroboration: an unpadded name-embedded series claim is accepted
+// when a sibling book asserts the same series through solid evidence.
+func TestSiblingCorroboration(t *testing.T) {
+	root := mkTree(t,
+		// Solid: folder book with a zero-padded position under Author/Series.
+		"Lee Child/Jack Reacher/01 - Killing Floor/x.m4b",
+		// Tentative: unpadded claim of the same series, loose at the root.
+		"Jack Reacher 3 - Tripwire.m4b",
+	)
+	res, _ := scanNoProbe(t, root)
+	byPath := map[string]Book{}
+	for _, b := range res.Books {
+		byPath[b.Path] = b
+	}
+	tw := byPath["Jack Reacher 3 - Tripwire"]
+	if tw.Series != "Jack Reacher" || tw.SeriesPosition != "3" || tw.Title != "Tripwire" {
+		t.Errorf("sibling-corroborated claim not applied: %+v", tw)
+	}
+	if tw.Sources["series"] != "filename" || tw.Sources["title"] != "filename" {
+		t.Errorf("claim provenance wrong: %v", tw.Sources)
+	}
+
+	// Two accidental shapes must NOT vouch for each other.
+	root2 := mkTree(t,
+		"Catch 22 - HarperAudio.mp3",
+		"Catch 23 - HarperAudio.mp3",
+	)
+	res2, _ := scanNoProbe(t, root2)
+	for _, b := range res2.Books {
+		if b.Series != "" {
+			t.Errorf("mutual tentative claims corroborated each other: %+v", b)
+		}
+	}
+}
+
+// TestTagCorroboration: a book's own SERIES tag naming the claimed series
+// confirms an unpadded name-embedded claim. ffmpeg-gated.
+func TestTagCorroboration(t *testing.T) {
+	ffmpeg, err := exec.LookPath("ffmpeg")
+	if err != nil {
+		t.Skip("ffmpeg not installed")
+	}
+	root := t.TempDir()
+	file := filepath.Join(root, "Jack Reacher 3 - Tripwire.mp3")
+	cmd := exec.Command(ffmpeg, "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+		"-t", "1", "-c:a", "libmp3lame",
+		"-metadata", "SERIES=Jack Reacher",
+		file)
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Skipf("ffmpeg could not generate the fixture: %v\n%s", err, out)
+	}
+	res, _ := scanNoProbe(t, root)
+	if len(res.Books) != 1 {
+		t.Fatalf("want 1 book, got %d", len(res.Books))
+	}
+	b := res.Books[0]
+	if b.Series != "Jack Reacher" || b.SeriesPosition != "3" || b.Title != "Tripwire" {
+		t.Errorf("tag-corroborated claim not applied: %+v", b)
+	}
+}
+
+// TestSymlinkedDirsFollowed: a symlink-organized library must scan, and a
+// symlink cycle must not hang.
+func TestSymlinkedDirsFollowed(t *testing.T) {
+	base := t.TempDir()
+	target := filepath.Join(base, "target", "Neil Gaiman", "Good Omens")
+	if err := os.MkdirAll(target, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(target, "x.m4b"), nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	root := filepath.Join(base, "scanroot")
+	if err := os.Mkdir(root, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Symlink(filepath.Join(base, "target"), filepath.Join(root, "library")); err != nil {
+		t.Skipf("cannot create symlinks here: %v", err)
+	}
+	// A cycle back to the scan root must be guarded, not looped.
+	if err := os.Symlink(root, filepath.Join(root, "loop")); err != nil {
+		t.Fatal(err)
+	}
+
+	res, stats := scanNoProbe(t, root)
+	if len(res.Books) != 1 {
+		t.Fatalf("symlinked library not scanned: %d books", len(res.Books))
+	}
+	if b := res.Books[0]; b.Path != "library/Neil Gaiman/Good Omens" || b.Authors[0] != "Neil Gaiman" {
+		t.Errorf("symlinked book wrong: %+v", b)
+	}
+	if stats.UnreadableDirs != 0 {
+		t.Errorf("UnreadableDirs = %d, want 0", stats.UnreadableDirs)
+	}
+}
+
+// TestPartialProbeOmitsFacts: if ANY file's probe fails, runtime_min/chapters
+// are omitted (a partial sum is an undercount asserted as fact) and the
+// failure is counted.
+func TestPartialProbeOmitsFacts(t *testing.T) {
+	ffmpeg, err := exec.LookPath("ffmpeg")
+	if err != nil {
+		t.Skip("ffmpeg not installed")
+	}
+	if _, err := exec.LookPath("ffprobe"); err != nil {
+		t.Skip("ffprobe not installed")
+	}
+	root := t.TempDir()
+	dir := filepath.Join(root, "Broken Book")
+	if err := os.MkdirAll(dir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	cmd := exec.Command(ffmpeg, "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+		"-t", "1", "-c:a", "libmp3lame", filepath.Join(dir, "01 - real.mp3"))
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Skipf("ffmpeg could not generate the fixture: %v\n%s", err, out)
+	}
+	// An empty file: ffprobe fails on it.
+	if err := os.WriteFile(filepath.Join(dir, "02 - broken.mp3"), nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	res, stats, err := Scan(root, Options{FFprobePath: "ffprobe"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res.Books) != 1 {
+		t.Fatalf("want 1 book, got %d", len(res.Books))
+	}
+	b := res.Books[0]
+	if b.RuntimeMin != 0 || b.Chapters != 0 {
+		t.Errorf("partial probe must omit runtime/chapters, got runtime=%d chapters=%d", b.RuntimeMin, b.Chapters)
+	}
+	if stats.ProbeFailures != 1 {
+		t.Errorf("ProbeFailures = %d, want 1", stats.ProbeFailures)
 	}
 }
 

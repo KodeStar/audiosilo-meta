@@ -15,6 +15,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -47,7 +48,7 @@ func parseArgs(args []string) (cliArgs, error) {
 		fs.PrintDefaults()
 	}
 	if err := fs.Parse(args); err != nil {
-		return cliArgs{}, err
+		return cliArgs{}, err // the flag package already printed the error (or usage, for -h)
 	}
 	dir := fs.Arg(0)
 	// Trailing-flag support: re-parse whatever followed the positional.
@@ -56,19 +57,26 @@ func parseArgs(args []string) (cliArgs, error) {
 			return cliArgs{}, err
 		}
 		if fs.NArg() != 0 {
+			err := fmt.Errorf("unexpected argument %q", fs.Arg(0))
+			fmt.Fprintln(os.Stderr, "metascan:", err)
 			fs.Usage()
-			return cliArgs{}, fmt.Errorf("unexpected argument %q", fs.Arg(0))
+			return cliArgs{}, err
 		}
 	}
 	if dir == "" {
+		err := errors.New("missing <dir>")
+		fmt.Fprintln(os.Stderr, "metascan:", err)
 		fs.Usage()
-		return cliArgs{}, fmt.Errorf("missing <dir>")
+		return cliArgs{}, err
 	}
 	return cliArgs{dir: dir, out: *out, ffprobe: *ffprobe}, nil
 }
 
 func run() int {
 	args, err := parseArgs(os.Args[1:])
+	if errors.Is(err, flag.ErrHelp) {
+		return 0 // -h/--help is a successful outcome, not a usage error
+	}
 	if err != nil {
 		return 2
 	}
@@ -106,6 +114,13 @@ func printSummary(s scan.Stats, out string) {
 	if s.AmbiguousDirs > 0 {
 		fmt.Fprintf(os.Stderr, "metascan: %d folder(s) kept as one book without tag evidence - check for collections\n",
 			s.AmbiguousDirs)
+	}
+	if s.UnreadableDirs > 0 {
+		fmt.Fprintf(os.Stderr, "metascan: %d director(y/ies) unreadable or unresolvable - skipped\n", s.UnreadableDirs)
+	}
+	if s.ProbeFailures > 0 {
+		fmt.Fprintf(os.Stderr, "metascan: ffprobe failed on %d file(s) - runtime/chapters omitted for the affected book(s)\n",
+			s.ProbeFailures)
 	}
 	if out != "" {
 		fmt.Fprintf(os.Stderr, "metascan: wrote %s - drop it onto meta.audiosilo.app/import\n", out)
