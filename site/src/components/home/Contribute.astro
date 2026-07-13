@@ -39,7 +39,11 @@ const cards = [
 ] as const
 ---
 
-<section id="contribute" class="relative scroll-mt-24 py-20">
+<!-- overflow-hidden clips the full-bleed decorative glow (right-[-8rem] extends
+     past the right viewport edge) to this section, so it never adds page-wide
+     horizontal scroll. No open dropdown lives here, so clipping the section
+     directly is safe (unlike the hero, which needs an inset wrapper). -->
+<section id="contribute" class="relative scroll-mt-24 overflow-hidden py-20">
   <div class="glow right-[-8rem] top-10 h-[26rem] w-[26rem]"></div>
   <div class="container relative z-10">
     <div class="reveal mx-auto max-w-2xl text-center">

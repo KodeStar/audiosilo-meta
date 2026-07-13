@@ -215,7 +215,11 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
             queries '.reveal' at document load, before a client:only island
             mounts, so the class would leave this at opacity 0 forever. Islands
             wanting the effect run their own observer (see StatsBand). */}
-        <div className="mx-auto max-w-3xl">
+        {/* max-w-6xl (not max-w-3xl) so the header's left edge lines up with the
+            two-column workspace below - a centred narrower header left an odd
+            gutter and read as misaligned. The description keeps a readable line
+            length via its own max-w-3xl. */}
+        <div className="mx-auto max-w-6xl">
           <a
             href={href.work(work.id)}
             className="inline-flex items-center gap-1.5 text-sm text-dim transition-colors hover:text-pink-400"
@@ -229,7 +233,7 @@ function Builder({ work, kind }: { work: Work; kind: Kind }) {
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-hi sm:text-4xl">
             {isChars ? 'Build a character sidecar' : 'Build a story-so-far recap'}
           </h1>
-          <p className="mt-3 text-lg leading-relaxed text-body">
+          <p className="mt-3 max-w-3xl text-lg leading-relaxed text-body">
             {isChars ? 'The spoiler-tagged cast' : 'Position-keyed recaps'} for{' '}
             <span className="font-medium text-hi">{work.title}</span>
             {work.authors.length ? ` by ${personNames(work.authors)}` : ''}
