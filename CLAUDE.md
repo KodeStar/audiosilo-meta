@@ -140,7 +140,7 @@ Scholomance, Lord of the Rings, Magic Faraway Tree) are the worked reference.
 cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible)
-cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md
+cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md and EXTRACTION-AUDIO.md
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
 internal/model      entity structs, slug/shard rules, location parsing
 internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
@@ -266,11 +266,14 @@ the schema notes below.
   translator/introduction/editor credits are currently plain people on the work
   (the importer strips the role qualifier from the name); a future schema field
   should carry the role.
-- **Phase 3 (pipeline landed)**: the epub -> characters/recaps extraction
+- **Phase 3 (pipeline landed)**: the source -> characters/recaps extraction
   pipeline: `cmd/metaextract` (epub split + n-gram check) plus the documented
   agent process in **[EXTRACTION.md](EXTRACTION.md)** (AUTHORING.md's sibling:
   rolling fact pass -> notes-only synthesis -> adversarial spoiler audit),
-  validated end-to-end on Killing Floor (Jack Reacher #1). The book text
-  never enters the repo; only the derived CC BY-SA sidecars are committed.
-  Possible follow-ups: richer format support (non-epub sources), a
-  friendlier packaged client (audiosilo-manager).
+  validated end-to-end on Killing Floor (Jack Reacher #1). The audio-only
+  variant in **[EXTRACTION-AUDIO.md](EXTRACTION-AUDIO.md)** adds local,
+  chapter-isolated ASR plus proper-noun verification and was validated on the
+  20-hour Silvers audiobook. Audio orchestration is documented rather than a
+  `metaextract` subcommand. Source material and transcripts never enter the
+  repo; only the derived CC BY-SA sidecars are committed. Possible follow-up:
+  a friendlier packaged client (audiosilo-manager).

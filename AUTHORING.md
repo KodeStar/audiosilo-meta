@@ -11,10 +11,11 @@ If you are filling out a whole series, do the CC0 core first (the works,
 recordings, people, and series must already exist and validate) and add these
 sidecars on top.
 
-To PRODUCE these sidecars from the text of a book you own (rather than from
-memory), follow the extraction pipeline in [EXTRACTION.md](EXTRACTION.md) -
-it automates chapter-accurate positions and enforces the no-verbatim rule
-mechanically. Everything in this guide still applies to its output.
+To PRODUCE these sidecars from a book you own (rather than from memory), follow
+the text pipeline in [EXTRACTION.md](EXTRACTION.md) or the audio-only pipeline
+in [EXTRACTION-AUDIO.md](EXTRACTION-AUDIO.md). They establish chapter-accurate
+positions and add a mechanical no-verbatim check. Everything in this guide
+still applies to their output.
 
 ## The two files
 
@@ -57,7 +58,9 @@ must equal the directory), `license` (**must** be `"CC-BY-SA-3.0"`), and
   it.
 - **`aliases`** (optional) - other names/titles. Omit the key if there are none.
 - **`role`** (optional) - one of `protagonist`, `antagonist`, `supporting`,
-  `minor`. Omit if genuinely unclear.
+  `minor`. The value must be safe at the reveal position: do not label an
+  apparent ally as an antagonist when that is learned later. Use the apparent
+  role at reveal or omit it if genuinely unclear.
 - **`reveal`** (required) - the position where the character is first
   meaningfully introduced **in this book** (see Positions below).
 - **`description`** (optional but expected) - your own words, **≤ 1500
@@ -207,4 +210,5 @@ style:
       and `in_short` (if present) carry the real outcome plainly.
 - [ ] Voice is neutral reference-guide - no jokes, editorializing, or profanity.
 - [ ] Positions use the book's own (logical) chapter numbers; `0` = prior-book.
+- [ ] Book 2+ has a `chapter: 0` series recap; a series opener does not.
 - [ ] `metafmt --write` and `metacheck` both pass.
