@@ -51,6 +51,10 @@ func TestNormalizePosition(t *testing.T) {
 		{"", false, ""},
 		{"abc", false, ""},
 		{"-1", false, ""},
+		// Omnibus ranges (importer.NormalizeSequence acceptance; tag-carried).
+		{"1-3.5", true, "1-3.5"},
+		{"01-03", true, "1-3"}, // zero-collapse applies per component
+		{"1-", true, ""},       // malformed range rejected
 	}
 	for _, tt := range tests {
 		if got := normalizePosition(tt.raw, tt.explicit); got != tt.want {
@@ -63,7 +67,7 @@ func TestDerivePath(t *testing.T) {
 	tests := []struct {
 		desc      string
 		name      string
-		nameSrc   string
+		nameSrc   source
 		ancestors []string
 		want      derived
 	}{

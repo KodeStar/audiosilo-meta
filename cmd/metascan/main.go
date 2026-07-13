@@ -8,7 +8,7 @@
 //
 // Usage:
 //
-//	metascan <dir> [-o scan.json] [-ffprobe ffprobe]
+//	metascan [flags] <dir>
 //
 // The JSON goes to stdout (or -o); a human-readable summary goes to stderr.
 package main
@@ -26,26 +26,54 @@ func main() {
 	os.Exit(run())
 }
 
-func run() int {
+// cliArgs is the parsed command line.
+type cliArgs struct {
+	dir     string
+	out     string
+	ffprobe string
+}
+
+// parseArgs parses the command line with stock flag semantics (flags first,
+// then the positional <dir>), plus one trivial extra pass so trailing flags
+// ("metascan <dir> -o scan.json") also work. Flag VALUES are handled by the
+// flag package itself, so "-o scan.json ./books" can never misread scan.json
+// as the directory.
+func parseArgs(args []string) (cliArgs, error) {
 	fs := flag.NewFlagSet("metascan", flag.ContinueOnError)
 	out := fs.String("o", "", "write the JSON scan to this file (default: stdout)")
 	ffprobe := fs.String("ffprobe", "ffprobe", "ffprobe binary for runtime/chapter enrichment; \"\" disables it")
 	fs.Usage = func() {
-		fmt.Fprintln(os.Stderr, "usage: metascan <dir> [-o scan.json] [-ffprobe ffprobe]")
+		fmt.Fprintln(os.Stderr, "usage: metascan [flags] <dir>")
 		fs.PrintDefaults()
 	}
-	// Accept the positional <dir> either before or after the flags, so both
-	// "metascan ./books -o scan.json" and "metascan -o scan.json ./books" work.
-	dir, flagArgs := splitPositional(os.Args[1:])
-	if err := fs.Parse(flagArgs); err != nil {
-		return 2
+	if err := fs.Parse(args); err != nil {
+		return cliArgs{}, err
 	}
-	if dir == "" || fs.NArg() != 0 {
+	dir := fs.Arg(0)
+	// Trailing-flag support: re-parse whatever followed the positional.
+	if fs.NArg() > 1 {
+		if err := fs.Parse(fs.Args()[1:]); err != nil {
+			return cliArgs{}, err
+		}
+		if fs.NArg() != 0 {
+			fs.Usage()
+			return cliArgs{}, fmt.Errorf("unexpected argument %q", fs.Arg(0))
+		}
+	}
+	if dir == "" {
 		fs.Usage()
+		return cliArgs{}, fmt.Errorf("missing <dir>")
+	}
+	return cliArgs{dir: dir, out: *out, ffprobe: *ffprobe}, nil
+}
+
+func run() int {
+	args, err := parseArgs(os.Args[1:])
+	if err != nil {
 		return 2
 	}
 
-	result, stats, err := scan.Scan(dir, scan.Options{FFprobePath: *ffprobe})
+	result, stats, err := scan.Scan(args.dir, scan.Options{FFprobePath: args.ffprobe})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metascan:", err)
 		return 1
@@ -58,31 +86,18 @@ func run() int {
 	}
 	data = append(data, '\n')
 
-	if *out == "" {
+	if args.out == "" {
 		if _, err := os.Stdout.Write(data); err != nil {
 			fmt.Fprintln(os.Stderr, "metascan:", err)
 			return 1
 		}
-	} else if err := os.WriteFile(*out, data, 0o644); err != nil {
+	} else if err := os.WriteFile(args.out, data, 0o644); err != nil {
 		fmt.Fprintln(os.Stderr, "metascan:", err)
 		return 1
 	}
 
-	printSummary(stats, *out)
+	printSummary(stats, args.out)
 	return 0
-}
-
-// splitPositional pulls the first non-flag argument out as the directory,
-// leaving the rest for the flag parser.
-func splitPositional(args []string) (positional string, rest []string) {
-	for _, a := range args {
-		if positional == "" && a != "" && a[0] != '-' {
-			positional = a
-			continue
-		}
-		rest = append(rest, a)
-	}
-	return positional, rest
 }
 
 func printSummary(s scan.Stats, out string) {

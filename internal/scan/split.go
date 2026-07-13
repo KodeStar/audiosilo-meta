@@ -119,25 +119,15 @@ var discLabels = map[string]bool{"track": true, "chapter": true, "part": true, "
 // least one number present. Ported from audiosilo-server's metadata package -
 // such titles must never count as split evidence.
 func isGenericTitle(title string) bool {
-	// Normalize: lowercase, collapse any run of non-alphanumerics to one space.
-	var b strings.Builder
-	space := false
-	for _, r := range strings.ToLower(title) {
-		switch {
-		case (r >= 'a' && r <= 'z') || (r >= '0' && r <= '9'):
-			b.WriteRune(r)
-			space = false
-		case !space:
-			b.WriteByte(' ')
-			space = true
-		}
-	}
-	t := strings.TrimSpace(b.String())
-	if t == "" {
+	// Tokenize: lowercase, split on every run of non-alphanumerics.
+	tokens := strings.FieldsFunc(strings.ToLower(title), func(r rune) bool {
+		return (r < 'a' || r > 'z') && (r < '0' || r > '9')
+	})
+	if len(tokens) == 0 {
 		return true
 	}
 	hasNumber := false
-	for _, tok := range strings.Fields(t) {
+	for _, tok := range tokens {
 		switch {
 		case isAllDigits(tok):
 			hasNumber = true

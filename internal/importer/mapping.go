@@ -55,9 +55,9 @@ func mapRegion(word string) (region string, ok bool) {
 // will pass schema validation.
 var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
 
-// normalizeSequence trims a raw series_sequence and reports whether it is a
+// NormalizeSequence trims a raw series_sequence and reports whether it is a
 // valid position (single number or a range like "1-3.5").
-func normalizeSequence(raw string) (pos string, ok bool) {
+func NormalizeSequence(raw string) (pos string, ok bool) {
 	pos = strings.TrimSpace(raw)
 	if pos == "" || !sequencePattern.MatchString(pos) {
 		return "", false
@@ -86,12 +86,12 @@ var roleQualifiers = map[string]bool{
 	"compilation":  true,
 }
 
-// stripRoleQualifier removes one trailing " - <role>" credit qualifier from a
+// StripRoleQualifier removes one trailing " - <role>" credit qualifier from a
 // name when <role> is in roleQualifiers (case-insensitive). The person stays in
 // the credit list under the cleaned name - there is no role modeling yet (a
 // future schema item; see the roadmap note in CLAUDE.md). If stripping would
 // leave an empty name, the original is returned unchanged.
-func stripRoleQualifier(name string) string {
+func StripRoleQualifier(name string) string {
 	idx := strings.LastIndex(name, " - ")
 	if idx < 0 {
 		return name
@@ -107,14 +107,14 @@ func stripRoleQualifier(name string) string {
 	return cleaned
 }
 
-// splitNames splits a comma-joined list of names ("A, B, C"), trimming each,
+// SplitNames splits a comma-joined list of names ("A, B, C"), trimming each,
 // stripping trailing role qualifiers, and dropping empties. It returns nil when
 // nothing usable remains.
-func splitNames(joined string) []string {
+func SplitNames(joined string) []string {
 	var out []string
 	for _, part := range strings.Split(joined, ",") {
 		if name := strings.TrimSpace(part); name != "" {
-			out = append(out, stripRoleQualifier(name))
+			out = append(out, StripRoleQualifier(name))
 		}
 	}
 	return out

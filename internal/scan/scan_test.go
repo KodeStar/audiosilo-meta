@@ -133,14 +133,14 @@ func TestAssembleDisagreement(t *testing.T) {
 		position: "3", posSrc: "path",
 	}
 	tags := tagInfo{
-		title:     "Tag Title",
+		album:     "Tag Title",
 		authors:   []string{"Tag Author"},
 		narrators: []string{"Some Narrator"},
 		series:    "Tag Series",
 		position:  "9",
 	}
 
-	b := assemble("Path Series/03 - Book", "03 - Book", "path", []string{"03 - Book.m4b"}, pd, tags)
+	b := assemble("Path Series/03 - Book", []string{"03 - Book.m4b"}, pd, tags)
 
 	// title: tag wins.
 	if b.Title != "Tag Title" || b.Sources["title"] != "tag" {
@@ -172,7 +172,7 @@ func TestAssembleFallbacks(t *testing.T) {
 		series: "Jack Reacher", seriesSrc: "path",
 		position: "1", posSrc: "path",
 	}
-	b := assemble("Lee Child/Jack Reacher/01 - Killing Floor", "01 - Killing Floor", "path",
+	b := assemble("Lee Child/Jack Reacher/01 - Killing Floor",
 		[]string{"Killing Floor [B076HYPQLK].m4b"}, pd, tagInfo{})
 
 	if b.Title != "Killing Floor" || b.Sources["title"] != "path" {
@@ -188,8 +188,10 @@ func TestAssembleFallbacks(t *testing.T) {
 }
 
 func TestAssembleUntitledFallback(t *testing.T) {
-	// Neither tags nor a parseable title -> the raw identity segment is used.
-	b := assemble("weird", "weird", "filename", []string{"weird.mp3"}, derived{}, tagInfo{})
+	// Neither tags nor a parseable title -> derivePath guarantees the raw
+	// identity segment as the title, so a book is never untitled.
+	pd := derivePath("weird", srcFilename, nil)
+	b := assemble("weird", []string{"weird.mp3"}, pd, tagInfo{})
 	if b.Title != "weird" || b.Sources["title"] != "filename" {
 		t.Errorf("untitled fallback: got %q (%s)", b.Title, b.Sources["title"])
 	}

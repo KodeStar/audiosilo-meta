@@ -15,15 +15,17 @@
 //
 // Grouping follows the workspace convention: a directory that directly contains
 // audio files is ONE book (those files are its parts); loose audio files at the
-// scan root are individual single-file books.
+// scan root are individual single-file books. The one evidence-gated exception
+// is splitVerdict: a folder whose files' tags prove they are different books
+// (the flat "Series/01 - A.m4b, 02 - B.m4b" layout) is split per file.
 package scan
 
 import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strconv"
 	"strings"
+	"sync"
 )
 
 // Format and Version identify the output document. The contract is fixed - the
@@ -63,6 +65,26 @@ type Book struct {
 	Sources        map[string]string `json:"sources,omitempty"`
 }
 
+// set fills a string field (and its provenance) if the field is still empty and
+// v is non-empty - value and source are recorded atomically, so a sequence of
+// set calls IS the preference order for that field.
+func (b *Book) set(field *string, key, v string, src source) {
+	if *field != "" || v == "" {
+		return
+	}
+	*field = v
+	b.Sources[key] = string(src)
+}
+
+// setList is set for list-valued fields.
+func (b *Book) setList(field *[]string, key string, v []string, src source) {
+	if len(*field) > 0 || len(v) == 0 {
+		return
+	}
+	*field = v
+	b.Sources[key] = string(src)
+}
+
 // Options tunes a scan.
 type Options struct {
 	// FFprobePath is the ffprobe binary to use for runtime/chapter enrichment.
@@ -92,6 +114,28 @@ var audioExts = map[string]bool{
 	".ogg": true, ".opus": true, ".flac": true, ".wma": true,
 }
 
+// group is one directory's audio files - the unit the grouping convention (and
+// splitVerdict) decides over. isRoot marks the scan root, whose loose files are
+// unconditionally individual books.
+type group struct {
+	dir    string   // absolute directory
+	files  []string // audio file names, sorted
+	isRoot bool
+}
+
+// fileData is the per-file evidence gathered before grouping: the canonical
+// dhowden tag read plus the optional ffprobe result.
+type fileData struct {
+	tags  tagInfo
+	tagOK bool
+	probe *probeResult // nil when ffprobe is disabled or failed for the file
+}
+
+// maxWorkers bounds the per-file worker pool. The scan is latency-bound (tag
+// reads + ffprobe spawns), so a modest fan-out dominates the wall clock on
+// network mounts without swamping the disk.
+const maxWorkers = 8
+
 // Scan walks root and returns the assembled document plus summary stats. It
 // errors only if root cannot be read; individual file/tag problems degrade to
 // missing metadata.
@@ -108,11 +152,47 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 		return nil, Stats{}, &os.PathError{Op: "scan", Path: absRoot, Err: os.ErrInvalid}
 	}
 
-	probeEnabled := hasFFprobe(opts.FFprobePath)
+	// Resolve ffprobe once: an empty path means "no enrichment" from here on.
+	ffprobePath := ""
+	if hasFFprobe(opts.FFprobePath) {
+		ffprobePath = opts.FFprobePath
+	}
 
+	groups := collectGroups(absRoot)
+	data := loadGroups(groups, ffprobePath)
+
+	// Build books sequentially (stats stay race-free); the final sort makes the
+	// output deterministic regardless of load order.
 	var books []Book
 	var stats Stats
-	walk(absRoot, absRoot, true, opts, probeEnabled, &books, &stats)
+	for gi, g := range groups {
+		gd := data[gi]
+		tags := make([]tagInfo, len(gd))
+		for i, fd := range gd {
+			tags[i] = fd.tags
+			if !fd.tagOK {
+				stats.TagFailures++
+			}
+		}
+
+		// Loose root files are unconditionally individual books; elsewhere the
+		// files' own tags decide (never filenames alone).
+		v := verdictSplit
+		if !g.isRoot {
+			v = splitVerdict(g.files, tags)
+		}
+		switch v {
+		case verdictSplit:
+			for i, f := range g.files {
+				books = append(books, buildBook(g.dir, absRoot, []string{f}, false, gd[i:i+1]))
+			}
+		case verdictKeepAmbiguous:
+			stats.AmbiguousDirs++
+			fallthrough
+		default:
+			books = append(books, buildBook(g.dir, absRoot, g.files, true, gd))
+		}
+	}
 
 	sort.Slice(books, func(i, j int) bool { return books[i].Path < books[j].Path })
 
@@ -128,82 +208,85 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 	return &Result{Format: Format, Version: Version, Root: absRoot, Books: books}, stats, nil
 }
 
-// walk recurses the tree, emitting books per the grouping convention.
-func walk(dir, root string, isRoot bool, opts Options, probeEnabled bool, books *[]Book, stats *Stats) {
-	entries, err := os.ReadDir(dir)
-	if err != nil {
-		return
-	}
-	var audioFiles, subdirs []string
-	for _, e := range entries {
-		name := e.Name()
-		if strings.HasPrefix(name, ".") {
-			continue // skip dotfiles / dot-dirs
+// collectGroups walks the tree (cheap, ReadDir only) and returns each directory
+// that directly contains audio files, in deterministic order.
+func collectGroups(root string) []group {
+	var groups []group
+	var walk func(dir string, isRoot bool)
+	walk = func(dir string, isRoot bool) {
+		entries, err := os.ReadDir(dir)
+		if err != nil {
+			return
 		}
-		if e.IsDir() {
-			subdirs = append(subdirs, name)
-		} else if isAudio(name) {
-			audioFiles = append(audioFiles, name)
-		}
-	}
-	sort.Strings(audioFiles)
-	sort.Strings(subdirs)
-
-	switch {
-	case isRoot:
-		// Loose files at the scan root are individual single-file books.
-		for _, f := range audioFiles {
-			tags, ok := readTags(filepath.Join(dir, f))
-			if !ok {
-				stats.TagFailures++
+		var audio, subdirs []string
+		for _, e := range entries {
+			name := e.Name()
+			if strings.HasPrefix(name, ".") {
+				continue // skip dotfiles / dot-dirs
 			}
-			*books = append(*books, buildBook(dir, root, []string{f}, false, tags, opts, probeEnabled))
-		}
-	case len(audioFiles) > 0:
-		// A directory that directly contains audio is ONE book - unless the
-		// files' own tags prove it is a flat collection of single-file books
-		// (splitVerdict; the common "Series/01 - A.m4b, 02 - B.m4b" layout).
-		// Tags are read BEFORE grouping so the decision is evidence-gated.
-		allTags := make([]tagInfo, len(audioFiles))
-		for i, f := range audioFiles {
-			var ok bool
-			if allTags[i], ok = readTags(filepath.Join(dir, f)); !ok {
-				stats.TagFailures++
+			if e.IsDir() {
+				subdirs = append(subdirs, name)
+			} else if isAudio(name) {
+				audio = append(audio, name)
 			}
 		}
-		switch splitVerdict(audioFiles, allTags) {
-		case verdictSplit:
-			for i, f := range audioFiles {
-				*books = append(*books, buildBook(dir, root, []string{f}, false, allTags[i], opts, probeEnabled))
-			}
-		case verdictKeepAmbiguous:
-			stats.AmbiguousDirs++
-			fallthrough
-		default:
-			*books = append(*books, buildBook(dir, root, audioFiles, true, allTags[0], opts, probeEnabled))
+		sort.Strings(audio)
+		sort.Strings(subdirs)
+		if len(audio) > 0 {
+			groups = append(groups, group{dir: dir, files: audio, isRoot: isRoot})
+		}
+		for _, sd := range subdirs {
+			walk(filepath.Join(dir, sd), false)
 		}
 	}
-
-	for _, sd := range subdirs {
-		walk(filepath.Join(dir, sd), root, false, opts, probeEnabled, books, stats)
-	}
+	walk(root, true)
+	return groups
 }
 
-// buildBook assembles one Book from a folder (isFolder, path = the dir, tags =
-// the first file's) or a single file (a loose root file, or one file of a split
-// collection folder; path = <dir>/<file stem>, the containing folder feeds the
-// path heuristics).
-func buildBook(dir, root string, files []string, isFolder bool, tags tagInfo, opts Options, probeEnabled bool) Book {
+// loadGroups gathers every file's tag read + optional ffprobe result through a
+// bounded worker pool (the scan's latency-bound part). Each goroutine writes
+// only its own fileData slot, so the result is race-free by construction.
+func loadGroups(groups []group, ffprobePath string) [][]fileData {
+	data := make([][]fileData, len(groups))
+	sem := make(chan struct{}, maxWorkers)
+	var wg sync.WaitGroup
+	for gi, g := range groups {
+		data[gi] = make([]fileData, len(g.files))
+		for fi, f := range g.files {
+			wg.Add(1)
+			go func(slot *fileData, path string) {
+				defer wg.Done()
+				sem <- struct{}{}
+				defer func() { <-sem }()
+				slot.tags, slot.tagOK = readTags(path)
+				if ffprobePath != "" {
+					if p, err := probe(path, ffprobePath); err == nil {
+						slot.probe = p
+					}
+				}
+			}(&data[gi][fi], filepath.Join(g.dir, f))
+		}
+	}
+	wg.Wait()
+	return data
+}
+
+// buildBook assembles one Book from a folder (isFolder, path = the dir) or a
+// single file (a loose root file, or one file of a split collection folder;
+// path = <dir-relative>/<file stem>, the containing folder feeding the path
+// heuristics). data is per-file evidence parallel to files.
+func buildBook(dir, root string, files []string, isFolder bool, data []fileData) Book {
 	// Identity segment (name) + provenance + the location for the book path.
-	var name, nameSrc, bookPath string
+	var name, bookPath string
+	var nameSrc source
 	var ancestors []string
 	segs := relSegments(dir, root)
 	if isFolder {
-		name, nameSrc = filepath.Base(dir), "path"
+		name, nameSrc = filepath.Base(dir), srcPath
 		ancestors = segs[:len(segs)-1] // segments above the book folder
 		bookPath = strings.Join(segs, "/")
 	} else {
-		name, nameSrc = stem(files[0]), "filename"
+		name, nameSrc = stem(files[0]), srcFilename
 		ancestors = segs // the containing dir's segments; empty at the root
 		bookPath = name
 		if len(segs) > 0 {
@@ -213,13 +296,35 @@ func buildBook(dir, root string, files []string, isFolder bool, tags tagInfo, op
 
 	pd := derivePath(name, nameSrc, ancestors)
 
-	b := assemble(bookPath, name, nameSrc, files, pd, tags)
-
-	// ffprobe enrichment (best-effort): runtime, chapter count, richer container
-	// tags (subtitle/publisher/language/full release date). Never fails the scan.
-	if probeEnabled {
-		enrich(&b, dir, files, opts.FFprobePath)
+	// One merged tag view: the first file's dhowden read (folder books share
+	// album-level tags), with its ffprobe container tags filling the gaps.
+	tags := data[0].tags
+	if data[0].probe != nil {
+		tags = mergeTags(tags, probeTagInfo(data[0].probe.tags))
 	}
+
+	b := assemble(bookPath, files, pd, tags)
+
+	// Duration/chapter enrichment sums the per-file probes. A file with no
+	// embedded chapters counts as one chapter; a failed probe contributes
+	// nothing (degrade, never fail).
+	var totalSec float64
+	var chapters int
+	for _, fd := range data {
+		if fd.probe == nil {
+			continue
+		}
+		totalSec += fd.probe.duration
+		if fd.probe.chapters > 0 {
+			chapters += fd.probe.chapters
+		} else {
+			chapters++
+		}
+	}
+	if totalSec > 0 {
+		b.RuntimeMin = int(totalSec/60 + 0.5)
+	}
+	b.Chapters = chapters
 
 	if len(b.Sources) == 0 {
 		b.Sources = nil
@@ -227,137 +332,49 @@ func buildBook(dir, root string, files []string, isFolder bool, tags tagInfo, op
 	return b
 }
 
-// assemble merges path-derived fields (pd) and embedded tags into a Book,
-// applying the disagreement policy. It is pure (no I/O) so the policy is
-// directly unit-testable:
+// assemble merges path-derived fields (pd) and the (already merged) tags into a
+// Book. It is pure (no I/O), and the disagreement policy is simply the call
+// order of the set() lines per field:
 //
 //	title / narrator  -> tag preferred, path/filename fallback
 //	series / position -> path preferred, tag fallback (tags rarely carry good
 //	                     series data, so the folder structure wins)
 //	author            -> tag preferred, path fallback
+//	asin              -> tag atoms, then file names, then the folder path
 //
-// ASIN is hunted across tag atoms, then file names, then the folder path.
-func assemble(bookPath, name, nameSrc string, files []string, pd derived, tags tagInfo) Book {
+// pd.title is guaranteed non-empty (derivePath), so a book is never untitled.
+func assemble(bookPath string, files []string, pd derived, tags tagInfo) Book {
 	b := Book{Path: bookPath, Files: files, AudioFiles: len(files), Sources: map[string]string{}}
+	fileText := strings.Join(files, " ")
 
-	switch {
-	case tags.title != "":
-		b.Title, b.Sources["title"] = tags.title, "tag"
-	case pd.title != "":
-		b.Title, b.Sources["title"] = pd.title, pd.titleSrc
-	default:
-		// Never leave a book untitled: fall back to the raw identity segment.
-		b.Title, b.Sources["title"] = name, nameSrc
+	b.set(&b.Title, "title", tags.bookTitle(), srcTag)
+	b.set(&b.Title, "title", pd.title, pd.titleSrc)
+
+	b.setList(&b.Authors, "authors", tags.authors, srcTag)
+	if pd.author != "" {
+		b.setList(&b.Authors, "authors", []string{pd.author}, pd.authorSrc)
 	}
 
-	switch {
-	case len(tags.authors) > 0:
-		b.Authors, b.Sources["authors"] = tags.authors, "tag"
-	case pd.author != "":
-		b.Authors, b.Sources["authors"] = []string{pd.author}, pd.authorSrc
-	}
+	b.setList(&b.Narrators, "narrators", tags.narrators, srcTag)
 
-	if len(tags.narrators) > 0 {
-		b.Narrators, b.Sources["narrators"] = tags.narrators, "tag"
-	}
+	b.set(&b.Series, "series", pd.series, pd.seriesSrc)
+	b.set(&b.Series, "series", tags.series, srcTag)
 
-	switch {
-	case pd.series != "":
-		b.Series, b.Sources["series"] = pd.series, pd.seriesSrc
-	case tags.series != "":
-		b.Series, b.Sources["series"] = tags.series, "tag"
-	}
+	b.set(&b.SeriesPosition, "series_position", pd.position, pd.posSrc)
+	b.set(&b.SeriesPosition, "series_position", tags.position, srcTag)
 
-	switch {
-	case pd.position != "":
-		b.SeriesPosition, b.Sources["series_position"] = pd.position, pd.posSrc
-	case tags.position != "":
-		b.SeriesPosition, b.Sources["series_position"] = tags.position, "tag"
-	}
+	b.set(&b.ASIN, "asin", tags.asin, srcTag)
+	b.set(&b.ASIN, "asin", findASIN(strings.ToUpper(fileText)), srcFilename)
+	b.set(&b.ASIN, "asin", findASIN(strings.ToUpper(bookPath)), srcPath)
 
-	switch {
-	case tags.asin != "":
-		b.ASIN, b.Sources["asin"] = tags.asin, "tag"
-	default:
-		if asin := findASIN(strings.ToUpper(strings.Join(files, " "))); asin != "" {
-			b.ASIN, b.Sources["asin"] = asin, "filename"
-		} else if asin := findASIN(strings.ToUpper(bookPath)); asin != "" {
-			b.ASIN, b.Sources["asin"] = asin, "path"
-		}
-	}
+	b.set(&b.ISBN, "isbn", tags.isbn, srcTag)
+	b.set(&b.ISBN, "isbn", findISBN(fileText), srcFilename)
 
-	switch {
-	case tags.isbn != "":
-		b.ISBN, b.Sources["isbn"] = tags.isbn, "tag"
-	default:
-		if isbn := findISBN(strings.Join(files, " ")); isbn != "" {
-			b.ISBN, b.Sources["isbn"] = isbn, "filename"
-		}
-	}
-
-	if tags.year > 0 {
-		b.ReleaseDate, b.Sources["release_date"] = strconv.Itoa(tags.year), "tag"
-	}
+	b.set(&b.Subtitle, "subtitle", tags.subtitle, srcTag)
+	b.set(&b.Publisher, "publisher", tags.publisher, srcTag)
+	b.set(&b.Language, "language", tags.language, srcTag)
+	b.set(&b.ReleaseDate, "release_date", tags.releaseDate, srcTag)
 	return b
-}
-
-// enrich adds ffprobe-derived fields to b in place.
-func enrich(b *Book, dir string, files []string, ffprobePath string) {
-	var totalSec float64
-	var chapters int
-	var firstTags map[string]string
-	for i, f := range files {
-		p, err := probe(filepath.Join(dir, f), ffprobePath)
-		if err != nil {
-			continue
-		}
-		totalSec += p.duration
-		if p.chapters > 0 {
-			chapters += p.chapters
-		} else {
-			chapters++ // a file with no embedded chapters counts as one chapter
-		}
-		if i == 0 {
-			firstTags = p.tags
-		}
-	}
-	if totalSec > 0 {
-		b.RuntimeMin = int(totalSec/60 + 0.5)
-	}
-	if chapters > 0 {
-		b.Chapters = chapters
-	}
-
-	// Container tags fill fields dhowden does not expose. Only set when the tag
-	// is genuinely present (omit, never guess).
-	if firstTags == nil {
-		return
-	}
-	if v := firstNonEmpty(firstTags["subtitle"], firstTags["subtitle-0"]); v != "" && b.Subtitle == "" {
-		b.Subtitle, b.Sources["subtitle"] = v, "tag"
-	}
-	if v := firstNonEmpty(firstTags["publisher"], firstTags["label"], firstTags["©pub"]); v != "" && b.Publisher == "" {
-		b.Publisher, b.Sources["publisher"] = v, "tag"
-	}
-	if v := firstTags["language"]; v != "" && b.Language == "" {
-		b.Language, b.Sources["language"] = v, "tag"
-	}
-	// A full ISO date from the container is better than a bare tag year.
-	if v := firstNonEmpty(firstTags["date"], firstTags["releasedate"], firstTags["year"]); v != "" {
-		if len(v) >= len(b.ReleaseDate) {
-			b.ReleaseDate, b.Sources["release_date"] = v, "tag"
-		}
-	}
-	if b.ASIN == "" {
-		if asin := findASIN(strings.ToUpper(firstNonEmpty(firstTags["asin"], firstTags["cdek"], firstTags["audible_asin"]))); asin != "" {
-			b.ASIN, b.Sources["asin"] = asin, "tag"
-		}
-	}
-	if b.Series == "" {
-		if v := firstNonEmpty(firstTags["series"], firstTags["show"], firstTags["grouping"]); v != "" {
-			b.Series, b.Sources["series"] = v, "tag"
-		}
-	}
 }
 
 // relSegments returns dir's path segments relative to root, as a slice. For the

@@ -22,9 +22,7 @@ type ffprobeJSON struct {
 		Duration string            `json:"duration"`
 		Tags     map[string]string `json:"tags"`
 	} `json:"format"`
-	Chapters []struct {
-		ID int64 `json:"id"`
-	} `json:"chapters"`
+	Chapters []struct{} `json:"chapters"` // elements only counted, never read
 }
 
 // hasFFprobe reports whether an ffprobe binary is resolvable (on PATH, or at an
