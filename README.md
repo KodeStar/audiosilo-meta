@@ -132,8 +132,10 @@ Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 `--cache` (download dir). With `--poll` and no `--db`, the server fetches the
 newest data release (the newest release carrying `meta.sqlite.gz` - code/image
 `v*` releases are skipped) on boot; with both, the baked artifact serves
-immediately and the poller upgrades in place. Set `GITHUB_TOKEN` to raise the
-API rate limit.
+immediately and the poller runs a refresh at startup (not just once per
+`--interval`), so a recreated container catches up to the newest release within
+seconds instead of serving build-time data for a full interval. Set
+`GITHUB_TOKEN` to raise the API rate limit.
 
 ### Docker
 

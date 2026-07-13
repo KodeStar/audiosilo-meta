@@ -171,7 +171,13 @@ against `meta.sqlite.gz.sha256`) whenever a patch is unavailable or fails - the
 first refresh after boot is always full. Either way it gunzips/reconstructs into
 the cache and hot-swaps the pointer; in-flight requests finish on the old handle
 (closed after a grace delay), a rejected patch never swaps, and a poll failure
-only logs and retries, never crashes the process.
+only logs and retries, never crashes the process. The poll loop runs one refresh
+**immediately at startup**, before the first `--interval` tick, so the production
+Docker boot (a baked `--db` artifact **and** `--poll`, where `New()` skips the
+poll-only synchronous first refresh) catches a recreated container up to the
+newest release within seconds instead of serving build-time data for a full
+interval; on a poll-only boot `New()` already refreshed, so the startup poll is a
+cheap conditional 304.
 FTS queries are built defensively (`ftsQuery`: every token quoted + escaped,
 final token prefixed with `*`) so no user input can break the MATCH. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.

@@ -620,6 +620,52 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 	}
 }
 
+// TestPollLoopRefreshesAtStartup pins the production Docker boot: New() loads a
+// baked --db artifact (tag "", so it does NOT run the poll-only synchronous
+// first refresh), then Run() starts pollLoop. pollLoop must refresh IMMEDIATELY,
+// well before the first Interval tick, or a recreated container serves
+// build-time data for one full interval. The server here is seeded from v1, the
+// fake publishes a newer R2 release, and Interval defaults to an hour - so ONLY
+// the startup refresh can adopt R2 within the test's seconds-long deadline.
+func TestPollLoopRefreshesAtStartup(t *testing.T) {
+	v1Path, _, _, v2 := buildV1V2(t)
+	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
+	srv := newPollServer(t, v1Path, fake) // Interval defaults to time.Hour
+
+	ctx, cancel := context.WithCancel(context.Background())
+	done := make(chan struct{})
+	go func() {
+		srv.pollLoop(ctx)
+		close(done)
+	}()
+
+	// The startup refresh must adopt R2 within seconds (never the 1h tick). Read
+	// through the atomic snapshot pointer (tag/stats are immutable per snapshot),
+	// so this poll is race-safe against pollLoop's concurrent swap. The deadline
+	// is only a cap (the loop exits as soon as R2 lands) - keep it generous so a
+	// loaded -race CI runner can't flake it.
+	deadline := time.Now().Add(10 * time.Second)
+	for srv.current().tag != tagR2 {
+		if time.Now().After(deadline) {
+			cancel()
+			<-done
+			t.Fatalf("pollLoop did not refresh to %q at startup within the deadline", tagR2)
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	if got := srv.current().stats.Works; got != 5 {
+		t.Errorf("works = %d, want 5 (v2 adopted at startup)", got)
+	}
+
+	// Cancelling ctx must make pollLoop return promptly (no goroutine leak).
+	cancel()
+	select {
+	case <-done:
+	case <-time.After(5 * time.Second):
+		t.Fatal("pollLoop did not return after ctx cancel")
+	}
+}
+
 func TestApplyPatch(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	patch := makePatch(t, v1, v2)
