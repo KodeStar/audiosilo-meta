@@ -94,7 +94,7 @@ func Run(booksPath string, opts Options) (Summary, error) {
 
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
-		p.curSource = outSource{Type: sourceOpenAud, Ref: normalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
+		p.curSource = outSource{Type: sourceOpenAud, Ref: NormalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
 		p.addBook(b, titles[i])
 		if p.fatal != nil {
 			return p.summary, p.fatal
@@ -179,7 +179,7 @@ func resolveWorkTitles(books []rawBook) []string {
 		claims := map[string]bool{}
 		for _, i := range idxs {
 			name := books[i].str("series_name")
-			pos, ok := normalizeSequence(books[i].str("series_sequence"))
+			pos, ok := NormalizeSequence(books[i].str("series_sequence"))
 			if name == "" || !ok {
 				continue
 			}
@@ -206,7 +206,7 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 		p.summary.Warnings = append(p.summary.Warnings, label+": "+fmt.Sprintf(format, args...))
 	}
 
-	asin := normalizeASIN(b.str("asin"))
+	asin := NormalizeASIN(b.str("asin"))
 
 	// Dedup first: an already-present ASIN is a skip, not a warning.
 	if asin != "" && p.asins[asin] {
@@ -219,12 +219,12 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 		warn("unknown language %q; skipped", b.str("language"))
 		return
 	}
-	narratorNames := splitNames(b.str("narrated_by"))
+	narratorNames := SplitNames(b.str("narrated_by"))
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
 		return
 	}
-	authorNames := splitNames(b.str("author"))
+	authorNames := SplitNames(b.str("author"))
 	if len(authorNames) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
@@ -248,7 +248,7 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 	// created earlier this run): used to refuse merging into a same-titled work
 	// that sits in the same series at a different position.
 	seriesName := b.str("series_name")
-	pos, posOK := normalizeSequence(b.str("series_sequence"))
+	pos, posOK := NormalizeSequence(b.str("series_sequence"))
 	var claim *seriesClaim
 	if seriesName != "" && posOK {
 		if ss := p.findSeries(seriesName); ss != nil {
@@ -639,7 +639,7 @@ func workCandidates(base, firstAuthor string) []string {
 	return out
 }
 
-func normalizeASIN(s string) string {
+func NormalizeASIN(s string) string {
 	s = strings.ToUpper(strings.TrimSpace(s))
 	if asinPattern.MatchString(s) {
 		return s

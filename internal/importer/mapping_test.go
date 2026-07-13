@@ -75,9 +75,9 @@ func TestNormalizeSequence(t *testing.T) {
 		{"-2", "", false},
 	}
 	for _, c := range cases {
-		got, ok := normalizeSequence(c.in)
+		got, ok := NormalizeSequence(c.in)
 		if got != c.want || ok != c.wantOK {
-			t.Errorf("normalizeSequence(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
+			t.Errorf("NormalizeSequence(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
 		}
 	}
 }
@@ -94,9 +94,9 @@ func TestSplitNames(t *testing.T) {
 		{" , ", nil},
 	}
 	for _, c := range cases {
-		got := splitNames(c.in)
+		got := SplitNames(c.in)
 		if !reflect.DeepEqual(got, c.want) {
-			t.Errorf("splitNames(%q) = %#v, want %#v", c.in, got, c.want)
+			t.Errorf("SplitNames(%q) = %#v, want %#v", c.in, got, c.want)
 		}
 	}
 }
@@ -235,20 +235,20 @@ func TestStripRoleQualifier(t *testing.T) {
 		{"Plain Name", "Plain Name"},
 	}
 	for _, c := range cases {
-		if got := stripRoleQualifier(c.in); got != c.want {
-			t.Errorf("stripRoleQualifier(%q) = %q, want %q", c.in, got, c.want)
+		if got := StripRoleQualifier(c.in); got != c.want {
+			t.Errorf("StripRoleQualifier(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
 	// The " - translator" (leading-space) shape: idx 0, cleaned empty -> original.
-	if got := stripRoleQualifier(" - translator"); got != " - translator" {
+	if got := StripRoleQualifier(" - translator"); got != " - translator" {
 		t.Errorf("empty-after-strip fallback failed: %q", got)
 	}
 }
 
 func TestSplitNamesStripsRoles(t *testing.T) {
-	got := splitNames("Kirill Klevanski, Valeria Kornosenko - introduction, J. Kharkova - Translator, The All - Stars")
+	got := SplitNames("Kirill Klevanski, Valeria Kornosenko - introduction, J. Kharkova - Translator, The All - Stars")
 	want := []string{"Kirill Klevanski", "Valeria Kornosenko", "J. Kharkova", "The All - Stars"}
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("splitNames role stripping = %#v, want %#v", got, want)
+		t.Errorf("SplitNames role stripping = %#v, want %#v", got, want)
 	}
 }

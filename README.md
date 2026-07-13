@@ -157,6 +157,57 @@ entrypoint carries all required flags; `command:` appends extras (for example
 The `image` workflow builds and pushes `ghcr.io/kodestar/audiosilo-meta` on a
 `v*` tag.
 
+## Scanning a local library (metascan)
+
+`metascan` is the low-friction way to contribute a library when you have only
+audio files - no OpenAudible or Libation export. Point it at a folder and it
+walks the tree, gathers whatever metadata it can find, and writes a JSON file the
+meta.audiosilo.app import page accepts.
+
+```sh
+go run github.com/kodestar/audiosilo-meta/cmd/metascan@main /path/to/audiobooks -o scan.json
+```
+
+Then drop `scan.json` onto **meta.audiosilo.app/import**.
+
+It runs entirely on your machine and **sends nothing anywhere** - it only reads
+files. What it gathers, per book:
+
+- **Embedded tags** (via [dhowden/tag](https://github.com/dhowden/tag)): title,
+  authors, narrators, and an ASIN when Libation/OpenAudible embedded one.
+- **The folder structure**, treated as a first-class source (tags are often
+  missing or wrong, series data especially): `Author/Book`,
+  `Author/Series/Book`, and name patterns like `01 - Title`, `Book 3 - Title`,
+  `Title, Book 3`, and `Jack Reacher 03 - Title` yield author/series/position/
+  title.
+- **An ASIN** - the anchor that makes a sparse book matchable - hunted in tag
+  atoms and in file/folder names (for example `Title [B076HYPQLK]`).
+- **Runtime and chapter counts**, if `ffprobe` is on your `PATH`. Without it the
+  scan still works; those two fields are simply omitted.
+
+Have `ffprobe` installed if you can: it is also the deeper tag reader. The pure
+Go reader covers the common title/author/narrator tags plus MP3 user frames,
+but several audiobook-specific fields are reachable only through ffprobe -
+Audible/Libation freeform MP4 atoms (ASIN and friends), m4b stream language,
+and various container extras. Without ffprobe, embedded series/ASIN extraction
+is limited (especially for m4b files); the folder-structure heuristics still
+work in full.
+
+Every field records where it came from (`tag` / `path` / `filename`) in the
+book's `sources` map, and unknown fields are omitted rather than guessed.
+Grouping follows the workspace convention: a folder that directly contains audio
+is one book (its files are the parts), and loose files at the scan root are
+individual single-file books. One evidence-gated exception: when a folder's
+files carry mutually distinct album tags (or distinct, non-generic title tags
+that each match their own filename), that is a flat folder of separate
+single-file books - the common `Series/01 - A.m4b, 02 - B.m4b` layout - and each
+file becomes its own book, with the folder feeding the series/author heuristics.
+Without tag evidence the folder is always kept as one book (never split on
+filenames alone), and a multi-file folder with no signal either way is counted
+in the summary so you know where to check for collections. The JSON goes to
+stdout by default (or `-o <file>`); a human-readable summary goes to stderr.
+Pass `-ffprobe ""` to skip ffprobe enrichment.
+
 ## Contributing
 
 New contributions are welcome - by direct pull request or by issue form (no JSON
