@@ -58,7 +58,7 @@ const toCandidate = (x: {
 const PRIVACY =
   'Your export is read entirely in your browser. Only ASINs and ISBNs are sent to the API, to check what is already in the database. Personal fields never leave your device.'
 
-type Phase = 'idle' | 'unknown' | 'libation' | 'error' | 'diffing' | 'results'
+type Phase = 'idle' | 'unknown' | 'error' | 'diffing' | 'results'
 
 // A book to contribute: either a brand-new work, or (existingWork set) a new
 // recording of a work already in the catalogue.
@@ -87,8 +87,8 @@ function metaLine(b: ParsedBook): string {
   return parts.join(' · ')
 }
 
-// The hand-off actions shared by the unknown/error and libation cards: open the
-// import issue form, or start over.
+// The hand-off actions for the unknown/error card: open the import issue form,
+// or start over.
 function IssueFormActions({ onReset }: { onReset: () => void }) {
   return (
     <div className="mt-5 flex flex-wrap items-center gap-3">
@@ -153,10 +153,6 @@ export default function ImportTool() {
     }
     if (outcome.format === 'unknown') {
       setPhase('unknown')
-      return
-    }
-    if (outcome.format === 'libation') {
-      setPhase('libation')
       return
     }
     void runDiff(outcome.books)
@@ -301,9 +297,10 @@ export default function ImportTool() {
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-edge bg-raised text-pink-400">
               <Icon name="database" className="h-7 w-7" />
             </span>
-            <span className="text-lg font-semibold text-hi">Drop your books.json here</span>
+            <span className="text-lg font-semibold text-hi">Drop your library export here</span>
             <span className="text-sm text-dim">
-              or <span className="text-pink-400">choose a file</span> - your OpenAudible export
+              or <span className="text-pink-400">choose a file</span> - OpenAudible, Libation, or an
+              audiosilo folder scan
             </span>
           </button>
         </div>
@@ -315,11 +312,11 @@ export default function ImportTool() {
   if (phase === 'unknown' || phase === 'error') {
     const heading =
       phase === 'unknown'
-        ? 'This does not look like an OpenAudible export'
+        ? 'This does not look like a supported export'
         : 'We could not read that file'
     const body =
       phase === 'unknown'
-        ? 'We could not find OpenAudible books in this file. Make sure you selected the books.json export from OpenAudible. If you use a different tool, you can still contribute your library through the import issue form.'
+        ? 'We could not find any books in this file. Make sure you selected an OpenAudible books.json, a Libation library export, or an audiosilo folder scan. If you use a different tool, you can still contribute your library through the import issue form.'
         : errorMsg
     return (
       <div className="rounded-2xl border border-edge bg-surface p-6">
@@ -333,20 +330,6 @@ export default function ImportTool() {
             <IssueFormActions onReset={reset} />
           </div>
         </div>
-      </div>
-    )
-  }
-
-  if (phase === 'libation') {
-    return (
-      <div className="rounded-2xl border border-edge bg-surface p-6">
-        <h3 className="text-lg font-semibold text-hi">Libation export detected</h3>
-        <p className="mt-2 text-sm leading-relaxed text-body">
-          In-browser parsing of Libation exports is coming. For now, contribute your Libation
-          export through the import issue form - drop the file there and we will ingest the
-          factual fields.
-        </p>
-        <IssueFormActions onReset={reset} />
       </div>
     )
   }
@@ -404,8 +387,8 @@ export default function ImportTool() {
 
       {results.newBooks.length === 0 ? (
         <p className="rounded-2xl border border-edge bg-surface p-6 text-sm leading-relaxed text-body">
-          Nothing new to contribute from this file - every book with an identifier is already in
-          the database, or could not be auto-matched. Thank you for checking.
+          Nothing new to contribute from this file - every book with an identifier is already in the
+          database, or could not be auto-matched. Thank you for checking.
         </p>
       ) : (
         <div className="rounded-2xl border border-edge bg-surface p-6">
@@ -449,8 +432,7 @@ export default function ImportTool() {
           ) : (
             <p className="mt-3 text-sm leading-relaxed text-body">
               There are {results.newBooks.length.toLocaleString()} new books - too many to review
-              one by one. Download the factual export below and attach it to a single import
-              issue.
+              one by one. Download the factual export below and attach it to a single import issue.
             </p>
           )}
 
@@ -459,15 +441,19 @@ export default function ImportTool() {
               <Icon name="download" />
               Download new-books export (.json)
             </button>
-            <a href={importLibraryIssueUrl} target="_blank" rel="noopener" className={BTN_SECONDARY}>
+            <a
+              href={importLibraryIssueUrl}
+              target="_blank"
+              rel="noopener"
+              className={BTN_SECONDARY}
+            >
               <Icon name="external" />
               Attach it to an import issue
             </a>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-dim">
             The download contains factual fields only - titles, authors, narrators, series,
-            runtimes, ASINs and chapters. No purchase history, ratings, file paths or personal
-            data.
+            runtimes, ASINs and chapters. No purchase history, ratings, file paths or personal data.
           </p>
         </div>
       )}

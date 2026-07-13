@@ -66,18 +66,18 @@ describe('addWorkIssueUrl', () => {
 
   it('defaults rec_abridged to Unabridged and uses Abridged when abridged===true', () => {
     expect(params(addWorkIssueUrl(parsedBook())).get('rec_abridged')).toBe('Unabridged')
-    expect(
-      params(addWorkIssueUrl(parsedBook({ abridged: false }))).get('rec_abridged')
-    ).toBe('Unabridged')
-    expect(
-      params(addWorkIssueUrl(parsedBook({ abridged: true }))).get('rec_abridged')
-    ).toBe('Abridged')
+    expect(params(addWorkIssueUrl(parsedBook({ abridged: false }))).get('rec_abridged')).toBe(
+      'Unabridged'
+    )
+    expect(params(addWorkIssueUrl(parsedBook({ abridged: true }))).get('rec_abridged')).toBe(
+      'Abridged'
+    )
   })
 
   it('formats rec_asins as "REGION: asin", defaulting REGION to US when absent', () => {
-    expect(
-      params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH' }))).get('rec_asins')
-    ).toBe('US: B0ABCDEFGH')
+    expect(params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH' }))).get('rec_asins')).toBe(
+      'US: B0ABCDEFGH'
+    )
     expect(
       params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH', region: 'uk' }))).get('rec_asins')
     ).toBe('UK: B0ABCDEFGH')
@@ -110,9 +110,7 @@ describe('addWorkIssueUrl', () => {
 
   it('emits rec_runtime_min for a zero runtime (only null/undefined omit it)', () => {
     // runtimeMin is guarded with `!= null`, so 0 is still emitted.
-    expect(params(addWorkIssueUrl(parsedBook({ runtimeMin: 0 }))).get('rec_runtime_min')).toBe(
-      '0'
-    )
+    expect(params(addWorkIssueUrl(parsedBook({ runtimeMin: 0 }))).get('rec_runtime_min')).toBe('0')
     expect(params(addWorkIssueUrl(parsedBook({}))).has('rec_runtime_min')).toBe(false)
   })
 })
@@ -134,7 +132,11 @@ describe('addRecordingIssueUrl', () => {
   it('titles the issue with the recording prefix and carries recording fields', () => {
     const p = params(
       addRecordingIssueUrl(
-        parsedBook({ title: 'Skysworn', narrators: ['Vox Player'], asin: 'B0ABCDEFGH' }),
+        parsedBook({
+          title: 'Skysworn',
+          narrators: ['Vox Player'],
+          asin: 'B0ABCDEFGH',
+        }),
         work
       )
     )
@@ -262,6 +264,111 @@ describe('factualSubset - the privacy contract', () => {
   it('omits the chapters key entirely when there are no chapters', () => {
     const out = factualSubset(parsedBook({ raw: { title: 'No Chapters' } }))
     expect('chapters' in out).toBe(false)
+  })
+
+  it('keeps only whitelisted Libation fields and drops personal ones', () => {
+    const raw = {
+      // factual (kept)
+      AudibleProductId: 'B0CQDJ3PND',
+      Title: 'Wind and Truth',
+      Subtitle: 'Stormlight Archive, Book 5',
+      AuthorNames: 'Brandon Sanderson',
+      NarratorNames: 'Kate Reading',
+      SeriesNames: 'The Stormlight Archive',
+      SeriesOrder: '5 : The Stormlight Archive',
+      Language: 'English',
+      Locale: 'uk',
+      LengthInMinutes: 3768,
+      DatePublished: '2024-12-06T03:00:00',
+      Publisher: 'Gollancz',
+      PictureId: '51ZFAWrapyL',
+      IsAbridged: false,
+      // personal / marketing (must be dropped)
+      Account: 'user@example.com',
+      DateAdded: '2020-01-01T00:00:00',
+      MyRatingOverall: 5,
+      CommunityRatingOverall: 4.9,
+      Description: 'A spoilery blurb.',
+      CategoriesNames: 'Fantasy',
+      ContentType: 'Product',
+      HasPdf: false,
+      BookStatus: 'Liberated',
+    }
+    const out = factualSubset(parsedBook({ format: 'libation', raw }))
+    expect(out).toEqual({
+      AudibleProductId: 'B0CQDJ3PND',
+      Title: 'Wind and Truth',
+      Subtitle: 'Stormlight Archive, Book 5',
+      AuthorNames: 'Brandon Sanderson',
+      NarratorNames: 'Kate Reading',
+      SeriesNames: 'The Stormlight Archive',
+      SeriesOrder: '5 : The Stormlight Archive',
+      Language: 'English',
+      Locale: 'uk',
+      LengthInMinutes: 3768,
+      DatePublished: '2024-12-06T03:00:00',
+      Publisher: 'Gollancz',
+      PictureId: '51ZFAWrapyL',
+      IsAbridged: false,
+    })
+    for (const personal of [
+      'Account',
+      'DateAdded',
+      'MyRatingOverall',
+      'CommunityRatingOverall',
+      'Description',
+      'CategoriesNames',
+      'ContentType',
+      'HasPdf',
+      'BookStatus',
+    ]) {
+      expect(personal in out).toBe(false)
+    }
+  })
+
+  it('keeps only whitelisted folder-scan fields and drops the local-only ones', () => {
+    const raw = {
+      // factual (kept)
+      asin: 'B076HYPQLK',
+      isbn: '9780857500076',
+      title: 'Killing Floor',
+      subtitle: 'A Jack Reacher Novel',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      publisher: 'Random House',
+      release_date: '2017-11-02',
+      language: 'en',
+      runtime_min: 823,
+      chapters: 34,
+      // local-only (must never leave the device)
+      path: '/Users/me/Audiobooks/Lee Child/Killing Floor',
+      files: ['/Users/me/Audiobooks/Lee Child/Killing Floor/Killing Floor.m4b'],
+      audio_files: 1,
+      sources: { title: 'tag', asin: 'filename' },
+    }
+    const out = factualSubset(parsedBook({ format: 'folderscan', raw }))
+    expect(out).toEqual({
+      asin: 'B076HYPQLK',
+      isbn: '9780857500076',
+      title: 'Killing Floor',
+      subtitle: 'A Jack Reacher Novel',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      publisher: 'Random House',
+      release_date: '2017-11-02',
+      language: 'en',
+      runtime_min: 823,
+      chapters: 34,
+    })
+    for (const local of ['path', 'files', 'audio_files', 'sources', 'root']) {
+      expect(local in out).toBe(false)
+    }
+    // Belt-and-braces: no local absolute path can appear anywhere in the output.
+    expect(JSON.stringify(out)).not.toContain('/Users/me/Audiobooks')
   })
 })
 

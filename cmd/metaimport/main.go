@@ -4,7 +4,8 @@
 //
 // Usage:
 //
-//	metaimport openaudible <books.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
+//	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
+//	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -32,7 +33,9 @@ func main() {
 	}
 	switch os.Args[1] {
 	case "openaudible":
-		os.Exit(runOpenAudible(os.Args[2:]))
+		os.Exit(runSource("openaudible", os.Args[2:], importer.Run))
+	case "libation":
+		os.Exit(runSource("libation", os.Args[2:], importer.RunLibation))
 	case "-h", "--help", "help":
 		usage()
 		os.Exit(0)
@@ -43,19 +46,21 @@ func main() {
 	}
 }
 
-func runOpenAudible(args []string) int {
-	fs := flag.NewFlagSet("openaudible", flag.ContinueOnError)
+// runSource parses the shared flags for a source subcommand and runs its
+// importer (Run for openaudible, RunLibation for libation).
+func runSource(name string, args []string, run func(string, importer.Options) (importer.Summary, error)) int {
+	fs := flag.NewFlagSet(name, flag.ContinueOnError)
 	data := fs.String("data", "data", "path to the data directory")
 	dryRun := fs.Bool("dry-run", false, "print the plan without writing any files")
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
 
-	// Accept the positional books.json path either before or after the flags.
-	booksPath, flagArgs := splitPositional(args)
+	// Accept the positional export path either before or after the flags.
+	exportPath, flagArgs := splitPositional(args)
 	if err := fs.Parse(flagArgs); err != nil {
 		return 2
 	}
-	if booksPath == "" {
-		fmt.Fprintln(os.Stderr, "metaimport: missing <books.json> path")
+	if exportPath == "" {
+		fmt.Fprintf(os.Stderr, "metaimport: missing <export.json> path\n")
 		usage()
 		return 2
 	}
@@ -68,7 +73,7 @@ func runOpenAudible(args []string) int {
 		return 2
 	}
 
-	sum, err := importer.Run(booksPath, importer.Options{
+	sum, err := run(exportPath, importer.Options{
 		DataDir:    *data,
 		ImportDate: stamp,
 		DryRun:     *dryRun,
@@ -108,5 +113,7 @@ func printSummary(s importer.Summary, dryRun bool) {
 }
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: metaimport openaudible <books.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "usage:")
+	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 }

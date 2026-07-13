@@ -1,14 +1,19 @@
-// Pure, framework-free parser for a user's library export (OpenAudible today).
-// Everything here runs in the browser on a file the user drops - the file never
-// leaves the device. Kept free of React and DOM so it is independently testable.
+// Pure, framework-free parser for a user's library export. Three formats are
+// understood: OpenAudible (books.json), Libation ("Export Library" JSON), and
+// the audiosilo folder-scan (the metascan tool's output). Everything here runs
+// in the browser on a file the user drops - the file never leaves the device.
+// Kept free of React and DOM so it is independently testable.
 //
 // The field mapping mirrors the Go importer (the source of truth for how an
-// OpenAudible books.json entry becomes a work + recording):
+// export entry becomes a work + recording):
 //   ../../../internal/importer/openaudible.go  (loose coercion helpers)
+//   ../../../internal/importer/libation.go      (Libation field mapping)
 //   ../../../internal/importer/mapping.go       (language/region/sequence/name rules)
-//   ../../../internal/importer/importer.go       (title, runtime, cover mapping)
+//   ../../../internal/importer/importer.go       (title, runtime, cover, series)
 // Only factual fields are read; personal/marketing fields are ignored (see
-// LICENSING.md).
+// LICENSING.md). The folder-scan's local-only fields (root, per-book path and
+// file list) are never carried into a ParsedBook, so they can never be uploaded
+// or downloaded for submission.
 
 export interface ParsedBook {
   asin?: string // normalized, else undefined
@@ -28,14 +33,16 @@ export interface ParsedBook {
   coverUrl?: string // only if https://
   chapterCount?: number
   abridged?: boolean // tri-state: undefined when unknown
+  format?: ExportFormat // the source format, for the factual-subset allowlist
   raw: Record<string, unknown> // the original entry (for the factual-subset download)
 }
 
-export type ExportFormat = 'openaudible' | 'libation' | 'unknown'
+export type ExportFormat = 'openaudible' | 'libation' | 'folderscan' | 'unknown'
 
 export interface ParseOutcome {
   format: ExportFormat
-  books: ParsedBook[] // empty unless format === 'openaudible'
+  // Books are mapped for openaudible, libation, and folderscan; empty for unknown.
+  books: ParsedBook[]
 }
 
 // --- Coercion helpers (mirror the Go coerceStr/coerceInt/coerceBoolPtr) -----
@@ -90,19 +97,7 @@ const LANGUAGE_MAP: Record<string, string> = {
 }
 
 // Audible marketplaces the recording schema accepts (recording.schema.json).
-const MARKETPLACES = new Set([
-  'us',
-  'uk',
-  'ca',
-  'au',
-  'de',
-  'fr',
-  'es',
-  'it',
-  'jp',
-  'in',
-  'br',
-])
+const MARKETPLACES = new Set(['us', 'uk', 'ca', 'au', 'de', 'fr', 'es', 'it', 'jp', 'in', 'br'])
 
 // Trailing " - <role>" credit qualifiers Audible appends to names. Stripped
 // ONLY when the role is exactly one of these (case-insensitive) - never an
@@ -131,7 +126,10 @@ const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
 function stripRoleQualifier(name: string): string {
   const idx = name.lastIndexOf(' - ')
   if (idx < 0) return name
-  const role = name.slice(idx + 3).trim().toLowerCase()
+  const role = name
+    .slice(idx + 3)
+    .trim()
+    .toLowerCase()
   if (!ROLE_QUALIFIERS.has(role)) return name
   const cleaned = name.slice(0, idx).trim()
   return cleaned === '' ? name : cleaned
@@ -223,13 +221,181 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
     coverUrl,
     chapterCount,
     abridged,
+    format: 'openaudible',
+    raw,
+  }
+}
+
+// --- Libation mapping (mirrors internal/importer/libation.go) ---------------
+
+// Reduce an ISO timestamp ("2018-10-18T23:00:00") to its YYYY-MM-DD date part,
+// kept only when it is a full valid date.
+function libationDate(ts: string): string | undefined {
+  const d = ts.split('T')[0]
+  return DATE_PATTERN.test(d) ? d : undefined
+}
+
+// Build the Amazon cover CDN URL from a Libation PictureId. A '+' (a valid
+// image-id char) is percent-encoded so the URL is unambiguous; every other id
+// char ([A-Za-z0-9-]) is already URL-safe.
+function libationCover(pictureId: string): string | undefined {
+  const id = pictureId.trim()
+  if (id === '') return undefined
+  return `https://m.media-amazon.com/images/I/${id.replace(/\+/g, '%2B')}._SL500_.jpg`
+}
+
+// Libation's sentinel SeriesOrder position for unorderable content (episodes):
+// it means "no position", not book 999999999.
+const LIBATION_UNSORTED = '999999999'
+
+// Parse a Libation SeriesOrder ("{order} : {name}", multiple joined by ", ") and
+// return the PRIMARY series for display/prefill: the first entry with a valid
+// position, else the first entry's name with no position. The Go importer places
+// a book in every one of its series; this client surfaces only one per book.
+function primaryLibationSeries(
+  order: string,
+  names: string
+): { seriesName?: string; seriesPosition?: string } {
+  const entries: { name: string; position?: string }[] = []
+  if (order.trim() !== '') {
+    for (const part of order.split(', ')) {
+      const ci = part.indexOf(':')
+      if (ci < 0) continue
+      const name = part.slice(ci + 1).trim()
+      if (name === '') continue
+      let ord = part.slice(0, ci).trim()
+      if (ord === LIBATION_UNSORTED) ord = ''
+      entries.push({
+        name,
+        position: SEQUENCE_PATTERN.test(ord) ? ord : undefined,
+      })
+    }
+  }
+  if (entries.length === 0) {
+    for (const name of names.split(', ')) {
+      const n = name.trim()
+      if (n !== '') entries.push({ name: n })
+    }
+  }
+  if (entries.length === 0) return {}
+  const positioned = entries.find((e) => e.position !== undefined)
+  const chosen = positioned ?? entries[0]
+  return { seriesName: chosen.name, seriesPosition: chosen.position }
+}
+
+function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
+  const asin = normalizeAsin(coerceStr(raw['AudibleProductId']))
+  const title = coerceStr(raw['Title'])
+  const subtitle = coerceStr(raw['Subtitle'])
+  const authors = splitNames(coerceStr(raw['AuthorNames']))
+  const narrators = splitNames(coerceStr(raw['NarratorNames']))
+  const { seriesName, seriesPosition } = primaryLibationSeries(
+    coerceStr(raw['SeriesOrder']),
+    coerceStr(raw['SeriesNames'])
+  )
+  const languageRaw = coerceStr(raw['Language'])
+  const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
+  const minutes = coerceInt(raw['LengthInMinutes'])
+  const runtimeMin = minutes !== undefined && minutes > 0 ? minutes : undefined
+  const releaseDate = libationDate(coerceStr(raw['DatePublished']))
+  const publisher = coerceStr(raw['Publisher'])
+  const region = mapRegion(coerceStr(raw['Locale']))
+  const coverUrl = libationCover(coerceStr(raw['PictureId']))
+  const abridged = coerceBool(raw['IsAbridged'])
+
+  return {
+    asin: asin || undefined,
+    isbn: undefined, // Libation exports carry no ISBN
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region,
+    coverUrl,
+    chapterCount: undefined, // Libation exports carry no chapter data
+    abridged,
+    format: 'libation',
+    raw,
+  }
+}
+
+// --- Folder-scan mapping (the metascan tool's output) -----------------------
+
+// The folder-scan language may already be an ISO 639-1 code or a word. Map a
+// known word, accept a bare 2-letter code, else undefined.
+function mapLanguageLoose(raw: string): string | undefined {
+  const w = raw.trim().toLowerCase()
+  if (LANGUAGE_MAP[w]) return LANGUAGE_MAP[w]
+  return /^[a-z]{2}$/.test(w) ? w : undefined
+}
+
+// Coerce a value that should be a string array (folder-scan authors/narrators),
+// trimming each and stripping a trailing role qualifier, dropping empties.
+function toNameArray(v: unknown): string[] {
+  if (!Array.isArray(v)) return []
+  const out: string[] = []
+  for (const el of v) {
+    const name = coerceStr(el).trim()
+    if (name !== '') out.push(stripRoleQualifier(name))
+  }
+  return out
+}
+
+function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
+  const asin = normalizeAsin(coerceStr(raw['asin']))
+  const isbn = normalizeIsbn(coerceStr(raw['isbn']))
+  const title = coerceStr(raw['title'])
+  const subtitle = coerceStr(raw['subtitle'])
+  const authors = toNameArray(raw['authors'])
+  const narrators = toNameArray(raw['narrators'])
+  const seriesName = coerceStr(raw['series'])
+  const seqRaw = coerceStr(raw['series_position'])
+  const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
+  const languageRaw = coerceStr(raw['language'])
+  const language = mapLanguageLoose(languageRaw)
+  const runtime = coerceInt(raw['runtime_min'])
+  const runtimeMin = runtime !== undefined && runtime > 0 ? runtime : undefined
+  const releaseRaw = coerceStr(raw['release_date'])
+  const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
+  const publisher = coerceStr(raw['publisher'])
+  const chapterCount = coerceInt(raw['chapters']) // a count in the folder-scan shape
+
+  return {
+    asin: asin || undefined,
+    isbn: isbn || undefined,
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName: seriesName || undefined,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region: undefined, // folder-scan carries no marketplace region
+    coverUrl: undefined,
+    chapterCount,
+    abridged: undefined,
+    format: 'folderscan',
     raw,
   }
 }
 
 // Keys that mark an OpenAudible entry (lowercase). Libation uses PascalCase.
 const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
-const LIBATION_KEYS = ['Title', 'Authors', 'Narrators', 'AudibleProductId', 'Asin']
+const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames', 'Title', 'Asin']
+
+// The folder-scan is a single object with this discriminator (not an array).
+const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
 
 // Libation sometimes wraps its list in an object under one of these keys.
 const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library']
@@ -255,6 +421,9 @@ function sampleHasAnyKey(entries: unknown[], keys: string[]): boolean {
 }
 
 function detectFormat(data: unknown): ExportFormat {
+  // The folder-scan is a discriminated object, so it is detected before the
+  // array/wrapper formats (its per-book keys overlap OpenAudible's).
+  if (isObject(data) && coerceStr(data['format']) === FOLDERSCAN_FORMAT) return 'folderscan'
   const entries = extractEntries(data)
   if (!entries || entries.length === 0) return 'unknown'
   // OpenAudible first: its lowercase keys never appear on a Libation entry.
@@ -263,11 +432,21 @@ function detectFormat(data: unknown): ExportFormat {
   return 'unknown'
 }
 
+// The per-format entry mapper.
+const PARSERS: Record<
+  Exclude<ExportFormat, 'unknown'>,
+  (raw: Record<string, unknown>) => ParsedBook
+> = {
+  openaudible: parseBook,
+  libation: parseLibationBook,
+  folderscan: parseFolderscanBook,
+}
+
 /**
- * Parse a dropped export. Detects the format and, for an OpenAudible export,
- * returns every entry mapped to a ParsedBook. Libation is detected but not
- * parsed (no verified sample), so its books list is empty and the UI routes it
- * to the issue-form path. Throws a friendly Error on invalid JSON.
+ * Parse a dropped export. Detects the format and returns every entry mapped to a
+ * ParsedBook (for openaudible, libation, and the audiosilo folder-scan); an
+ * unknown file yields an empty books list and routes to the issue-form path.
+ * Throws a friendly Error on invalid JSON.
  */
 export function parseExport(text: string): ParseOutcome {
   let data: unknown
@@ -275,17 +454,18 @@ export function parseExport(text: string): ParseOutcome {
     data = JSON.parse(text)
   } catch {
     throw new Error(
-      'That file is not valid JSON. Make sure you selected your OpenAudible books.json export.'
+      'That file is not valid JSON. Make sure you selected a supported library export (OpenAudible, Libation, or an audiosilo folder scan).'
     )
   }
   const format = detectFormat(data)
-  if (format !== 'openaudible') {
+  if (format === 'unknown') {
     return { format, books: [] }
   }
   const entries = extractEntries(data) ?? []
+  const parse = PARSERS[format]
   const books: ParsedBook[] = []
   for (const el of entries) {
-    if (isObject(el)) books.push(parseBook(el))
+    if (isObject(el)) books.push(parse(el))
   }
   return { format, books }
 }
@@ -378,10 +558,7 @@ function titleTokensCompatible(a: string, b: string): boolean {
  * different-author book is never mistaken for an existing work. Pure. Returns
  * null when there is no confident match, so the caller defaults to a new work.
  */
-export function matchExistingWork(
-  book: ParsedBook,
-  candidates: WorkCandidate[]
-): WorkMatch | null {
+export function matchExistingWork(book: ParsedBook, candidates: WorkCandidate[]): WorkMatch | null {
   const bt = normKey(book.title)
   if (!bt) return null
   const bookAuthors = new Set(book.authors.map(normKey).filter(Boolean))

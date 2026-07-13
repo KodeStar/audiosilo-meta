@@ -81,7 +81,30 @@ func Run(booksPath string, opts Options) (Summary, error) {
 	if err != nil {
 		return Summary{}, err
 	}
+	return runBooks(books, sourceOpenAud, opts)
+}
 
+// RunLibation imports exportPath (a Libation "Export Library" JSON export) into
+// opts.DataDir. Each Libation entry is normalized into the same internal
+// rawBook the OpenAudible path produces (factual fields only; see
+// libation.go), so the two sources share every mapping/dedup rule. Behaviour is
+// otherwise identical to Run.
+func RunLibation(exportPath string, opts Options) (Summary, error) {
+	raw, err := os.ReadFile(exportPath)
+	if err != nil {
+		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
+	}
+	books, err := parseLibation(raw)
+	if err != nil {
+		return Summary{}, err
+	}
+	return runBooks(books, sourceLibation, opts)
+}
+
+// runBooks is the shared import core: it plans every book into records against
+// the existing catalog, then (on a real run) writes and re-validates the tree.
+// sourceType is the provenance stamped on every created record.
+func runBooks(books []rawBook, sourceType string, opts Options) (Summary, error) {
 	p := &planner{
 		dataDir: opts.DataDir,
 		people:  map[string]bool{},
@@ -94,7 +117,7 @@ func Run(booksPath string, opts Options) (Summary, error) {
 
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
-		p.curSource = outSource{Type: sourceOpenAud, Ref: normalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
+		p.curSource = outSource{Type: sourceType, Ref: normalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
 		p.addBook(b, titles[i])
 		if p.fatal != nil {
 			return p.summary, p.fatal
@@ -178,9 +201,8 @@ func resolveWorkTitles(books []rawBook) []string {
 	for _, idxs := range groups {
 		claims := map[string]bool{}
 		for _, i := range idxs {
-			name := books[i].str("series_name")
-			pos, ok := normalizeSequence(books[i].str("series_sequence"))
-			if name == "" || !ok {
+			name, pos, ok := primarySeriesClaim(books[i])
+			if !ok {
 				continue
 			}
 			claims[strings.ToLower(name)+"\x00"+pos] = true
@@ -244,15 +266,19 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 		narratorSlugs = append(narratorSlugs, p.getOrCreatePerson(name, warn))
 	}
 
-	// The book's series claim, when the series already exists (on disk or
-	// created earlier this run): used to refuse merging into a same-titled work
-	// that sits in the same series at a different position.
-	seriesName := b.str("series_name")
-	pos, posOK := normalizeSequence(b.str("series_sequence"))
+	// The book's series claims (one for OpenAudible, possibly several for
+	// Libation). The first that resolves to an already-known series (on disk or
+	// created earlier this run) is used to refuse merging into a same-titled work
+	// that sits in that series at a different position.
+	refs := b.seriesRefs()
 	var claim *seriesClaim
-	if seriesName != "" && posOK {
-		if ss := p.findSeries(seriesName); ss != nil {
-			claim = &seriesClaim{ss: ss, pos: pos}
+	for _, r := range refs {
+		if r.name == "" || !r.seqOK {
+			continue
+		}
+		if ss := p.findSeries(r.name); ss != nil {
+			claim = &seriesClaim{ss: ss, pos: r.seq}
+			break
 		}
 	}
 
@@ -263,13 +289,53 @@ func (p *planner) addBook(b rawBook, workTitle string) {
 		p.asins[asin] = true
 	}
 
-	if seriesName != "" {
-		if !posOK {
-			warn("series %q: missing or invalid position %q; not placed in series", seriesName, b.str("series_sequence"))
+	for _, r := range refs {
+		if r.name == "" {
+			continue
+		}
+		if !r.seqOK {
+			warn("series %q: missing or invalid position %q; not placed in series", r.name, r.rawSeq)
 		} else {
-			p.addToSeries(seriesName, ws.slug, pos, warn)
+			p.addToSeries(r.name, ws.slug, r.seq, warn)
 		}
 	}
+}
+
+// seriesRef is a book's claim to a position in a named series. seqOK reports
+// whether seq passed position validation; rawSeq is the original text (for the
+// "invalid position" warning). A book may carry several (Libation multi-series).
+type seriesRef struct {
+	name   string
+	seq    string
+	seqOK  bool
+	rawSeq string
+}
+
+// seriesRefs returns the book's series claims. A Libation-converted rawBook
+// carries them pre-parsed under "_series_refs"; an OpenAudible rawBook exposes a
+// single claim through its native series_name/series_sequence fields.
+func (b rawBook) seriesRefs() []seriesRef {
+	if v, ok := b["_series_refs"].([]seriesRef); ok {
+		return v
+	}
+	name := b.str("series_name")
+	if name == "" {
+		return nil
+	}
+	rawSeq := b.str("series_sequence")
+	pos, ok := normalizeSequence(rawSeq)
+	return []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
+}
+
+// primarySeriesClaim returns the book's first fully-valid series claim (a name
+// with a valid position), for the work-title disambiguation pre-pass.
+func primarySeriesClaim(b rawBook) (name, pos string, ok bool) {
+	for _, r := range b.seriesRefs() {
+		if r.name != "" && r.seqOK {
+			return r.name, r.seq, true
+		}
+	}
+	return "", "", false
 }
 
 // getOrCreatePerson returns the slug for name, creating the person record when

@@ -7,7 +7,7 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
 <Base
   title="Import your library - AudioSilo Meta"
-  description="Drop your OpenAudible export to see which of your audiobooks are already in the open metadata database and which are new - checked entirely in your browser. Only ASINs and ISBNs are sent to the API."
+  description="Drop an OpenAudible, Libation, or folder-scan export to see which of your audiobooks are already in the open metadata database and which are new - checked entirely in your browser. Only ASINs and ISBNs are sent to the API."
 >
   <section class="relative pb-20">
     <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
@@ -22,10 +22,10 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
           Import your library
         </h1>
         <p class="mt-4 text-lg leading-relaxed text-body">
-          Drop your OpenAudible <code class="text-pink-300">books.json</code> and this
-          page checks, entirely in your browser, which of your audiobooks are already in
-          the open database and which are new. Your file never leaves your device - only
-          ASINs and ISBNs are sent to the API to look for a match.
+          Drop an OpenAudible, Libation, or folder-scan export and this page checks,
+          entirely in your browser, which of your audiobooks are already in the open
+          database and which are new. Your file never leaves your device - only ASINs and
+          ISBNs are sent to the API to look for a match.
         </p>
         <p class="mt-3 text-sm leading-relaxed text-dim">
           Everything you contribute here is factual metadata dedicated to the public
@@ -48,6 +48,43 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
 
       <div class="reveal mx-auto mt-10 max-w-2xl">
         <ImportTool client:only="react" />
+      </div>
+
+      <div class="reveal mx-auto mt-12 max-w-2xl">
+        <h2 class="text-xl font-bold tracking-tight text-hi">Producing an export</h2>
+        <div class="mt-5 space-y-6">
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <h3 class="font-semibold text-hi">OpenAudible</h3>
+            <p class="mt-2 text-sm leading-relaxed text-body">
+              In OpenAudible, choose <span class="text-hi">Controls -&gt; Export</span> and
+              save the library as JSON (<code class="text-pink-300">books.json</code>). Drop
+              that file above.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <h3 class="font-semibold text-hi">Libation</h3>
+            <p class="mt-2 text-sm leading-relaxed text-body">
+              In Libation, open the <span class="text-hi">Export</span> menu and choose
+              <span class="text-hi">Export Library</span>. When prompted for a format, pick
+              <span class="text-hi">JSON</span> and save the file - CSV and XLSX exports are
+              not supported. Drop the saved <code class="text-pink-300">.json</code> above.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <h3 class="font-semibold text-hi">A plain folder of audiobooks</h3>
+            <p class="mt-2 text-sm leading-relaxed text-body">
+              No library manager? Scan a folder of audiobooks with the repo's
+              <code class="text-pink-300">metascan</code> tool - it reads embedded tags, file
+              names, and the folder layout to produce a scan file this page accepts:
+            </p>
+            <pre
+              class="mt-4 overflow-x-auto rounded-xl border border-edge bg-raised p-4 text-sm text-body"><code>go run github.com/kodestar/audiosilo-meta/cmd/metascan@main &lt;folder&gt; -o scan.json</code></pre>
+            <p class="mt-3 text-sm leading-relaxed text-dim">
+              The scan file lists only factual metadata. Local paths and file names stay on
+              your device - they are never uploaded or included in anything you submit.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

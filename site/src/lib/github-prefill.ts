@@ -37,7 +37,19 @@ function applyRecordingParams(p: URLSearchParams, book: ParsedBook): void {
   }
   if (book.coverUrl) p.set('rec_cover_url', book.coverUrl)
   const today = new Date().toISOString().slice(0, 10)
-  p.set('sources', `OpenAudible library export (reviewed ${today})`)
+  p.set('sources', `${sourceLabel(book.format)} (reviewed ${today})`)
+}
+
+// A human label for the export a prefilled issue came from.
+function sourceLabel(format: ParsedBook['format']): string {
+  switch (format) {
+    case 'libation':
+      return 'Libation library export'
+    case 'folderscan':
+      return 'audiosilo folder scan'
+    default:
+      return 'OpenAudible library export'
+  }
 }
 
 /**
@@ -124,10 +136,12 @@ export function addRecordingIssueUrlForWork(workId: string): string {
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
-// The only OpenAudible fields we keep for the bulk download - factual metadata
-// (LICENSING.md). Everything else (purchase dates, ratings, file paths,
-// descriptions/summaries) is stripped and never leaves the device beyond this.
-const FACTUAL_KEYS = [
+// The factual fields kept for the bulk download, per source format (LICENSING.md).
+// Everything else - purchase dates, ratings, account, file paths, descriptions -
+// is stripped and never leaves the device beyond this. The folder-scan's
+// local-only fields (root, per-book path and file list) are DELIBERATELY absent
+// so a scan's on-disk layout can never be uploaded for submission.
+const OPENAUDIBLE_FACTUAL_KEYS = [
   'asin',
   'title',
   'title_short',
@@ -144,29 +158,76 @@ const FACTUAL_KEYS = [
   'abridged',
 ] as const
 
+const LIBATION_FACTUAL_KEYS = [
+  'AudibleProductId',
+  'Title',
+  'Subtitle',
+  'AuthorNames',
+  'NarratorNames',
+  'SeriesNames',
+  'SeriesOrder',
+  'Language',
+  'Locale',
+  'LengthInMinutes',
+  'DatePublished',
+  'Publisher',
+  'PictureId',
+  'IsAbridged',
+] as const
+
+const FOLDERSCAN_FACTUAL_KEYS = [
+  'asin',
+  'isbn',
+  'title',
+  'subtitle',
+  'authors',
+  'narrators',
+  'series',
+  'series_position',
+  'publisher',
+  'release_date',
+  'language',
+  'runtime_min',
+  'chapters',
+] as const
+
+const FACTUAL_KEYS_BY_FORMAT: Record<string, readonly string[]> = {
+  openaudible: OPENAUDIBLE_FACTUAL_KEYS,
+  libation: LIBATION_FACTUAL_KEYS,
+  folderscan: FOLDERSCAN_FACTUAL_KEYS,
+}
+
 /**
- * Return only the factual OpenAudible fields from book.raw, with chapters
- * reduced to {title, start_offset_ms, length_ms}. Used to build a privacy-safe
- * new-books export the user can attach to an import issue.
+ * Return only the whitelisted factual fields from book.raw for the book's source
+ * format (defaulting to OpenAudible). Personal/marketing fields and the
+ * folder-scan's local-only path/file fields are dropped. OpenAudible chapters
+ * are reduced to {title, start_offset_ms, length_ms}. Used to build a
+ * privacy-safe new-books export the user can attach to an import issue.
  */
 export function factualSubset(book: ParsedBook): Record<string, unknown> {
   const raw = book.raw
+  const keys = FACTUAL_KEYS_BY_FORMAT[book.format ?? 'openaudible'] ?? OPENAUDIBLE_FACTUAL_KEYS
   const out: Record<string, unknown> = {}
-  for (const key of FACTUAL_KEYS) {
+  for (const key of keys) {
     if (key in raw) out[key] = raw[key]
   }
-  const chapters = raw['chapters']
-  if (Array.isArray(chapters)) {
-    out['chapters'] = chapters.map((ch) => {
-      const mapped: Record<string, unknown> = {}
-      if (ch && typeof ch === 'object' && !Array.isArray(ch)) {
-        const c = ch as Record<string, unknown>
-        if ('title' in c) mapped['title'] = c['title']
-        if ('start_offset_ms' in c) mapped['start_offset_ms'] = c['start_offset_ms']
-        if ('length_ms' in c) mapped['length_ms'] = c['length_ms']
-      }
-      return mapped
-    })
+  // OpenAudible carries per-chapter offset data; reduce it to the factual shape.
+  // (Libation and the folder-scan have no such array - 'chapters' is a count in
+  // the folder-scan and is copied through by the allowlist above.)
+  if (book.format === undefined || book.format === 'openaudible') {
+    const chapters = raw['chapters']
+    if (Array.isArray(chapters)) {
+      out['chapters'] = chapters.map((ch) => {
+        const mapped: Record<string, unknown> = {}
+        if (ch && typeof ch === 'object' && !Array.isArray(ch)) {
+          const c = ch as Record<string, unknown>
+          if ('title' in c) mapped['title'] = c['title']
+          if ('start_offset_ms' in c) mapped['start_offset_ms'] = c['start_offset_ms']
+          if ('length_ms' in c) mapped['length_ms'] = c['length_ms']
+        }
+        return mapped
+      })
+    }
   }
   return out
 }

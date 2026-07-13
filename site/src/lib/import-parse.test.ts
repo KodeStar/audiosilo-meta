@@ -46,22 +46,55 @@ describe('parseExport - format detection', () => {
     expect(out.books[0].title).toBe('Mapped Title')
   })
 
-  it('detects a Libation-shaped array (PascalCase keys) but does not parse it', () => {
+  it('detects a Libation-shaped array (PascalCase keys) and maps books', () => {
     const text = JSON.stringify([
-      { Title: 'Some Book', Authors: 'Jane Doe', AudibleProductId: 'B0ABCDEFGH' },
+      {
+        Title: 'Some Book',
+        AuthorNames: 'Jane Doe',
+        NarratorNames: 'Vox Player',
+        AudibleProductId: 'B0ABCDEFGH',
+      },
     ])
     const out = parseExport(text)
     expect(out.format).toBe('libation')
-    expect(out.books).toEqual([])
+    expect(out.books).toHaveLength(1)
+    expect(out.books[0].title).toBe('Some Book')
+    expect(out.books[0].asin).toBe('B0ABCDEFGH')
+    expect(out.books[0].format).toBe('libation')
   })
 
-  it('detects a Libation wrapper object ({ Books: [...] })', () => {
+  it('detects a Libation wrapper object ({ Books: [...] }) and maps books', () => {
     const text = JSON.stringify({
-      Books: [{ Title: 'Wrapped', Authors: 'Jane Doe' }],
+      Books: [{ Title: 'Wrapped', AuthorNames: 'Jane Doe', NarratorNames: 'Vox' }],
     })
     const out = parseExport(text)
     expect(out.format).toBe('libation')
-    expect(out.books).toEqual([])
+    expect(out.books).toHaveLength(1)
+    expect(out.books[0].title).toBe('Wrapped')
+  })
+
+  it('detects an audiosilo folder scan by its format discriminator and maps books', () => {
+    const text = JSON.stringify({
+      format: 'audiosilo-folder-scan',
+      version: 1,
+      root: '/Users/me/Audiobooks',
+      books: [
+        {
+          path: 'Lee Child/Jack Reacher/01 - Killing Floor',
+          title: 'Killing Floor',
+          authors: ['Lee Child'],
+          asin: 'B076HYPQLK',
+          files: ['Killing Floor.m4b'],
+          audio_files: 1,
+        },
+      ],
+    })
+    const out = parseExport(text)
+    expect(out.format).toBe('folderscan')
+    expect(out.books).toHaveLength(1)
+    expect(out.books[0].title).toBe('Killing Floor')
+    expect(out.books[0].asin).toBe('B076HYPQLK')
+    expect(out.books[0].format).toBe('folderscan')
   })
 
   it('treats an array with no recognized keys as unknown', () => {
@@ -100,9 +133,7 @@ describe('parseExport - field mapping', () => {
   }
 
   it('title prefers title_short and falls back to title', () => {
-    expect(parseOne(openAudibleEntry({ title: 'Long', title_short: 'Short' })).title).toBe(
-      'Short'
-    )
+    expect(parseOne(openAudibleEntry({ title: 'Long', title_short: 'Short' })).title).toBe('Short')
     expect(parseOne(openAudibleEntry({ title: 'Only Long', title_short: '' })).title).toBe(
       'Only Long'
     )
@@ -145,7 +176,9 @@ describe('parseExport - field mapping', () => {
     expect(parseOne(openAudibleEntry({ series_sequence: '1' })).seriesPosition).toBe('1')
     expect(parseOne(openAudibleEntry({ series_sequence: '2.5' })).seriesPosition).toBe('2.5')
     expect(parseOne(openAudibleEntry({ series_sequence: '1-3.5' })).seriesPosition).toBe('1-3.5')
-    expect(parseOne(openAudibleEntry({ series_sequence: 'book one' })).seriesPosition).toBeUndefined()
+    expect(
+      parseOne(openAudibleEntry({ series_sequence: 'book one' })).seriesPosition
+    ).toBeUndefined()
   })
 
   it('computes runtimeMin as round(seconds/60), from a number or a string', () => {
@@ -201,6 +234,193 @@ describe('parseExport - field mapping', () => {
   it('counts chapters from an array and leaves chapterCount undefined otherwise', () => {
     expect(parseOne(openAudibleEntry({ chapters: [{}, {}, {}] })).chapterCount).toBe(3)
     expect(parseOne(openAudibleEntry({})).chapterCount).toBeUndefined()
+  })
+})
+
+describe('parseExport - Libation field mapping', () => {
+  function parseOne(entry: Record<string, unknown>): ParsedBook {
+    const out = parseExport(JSON.stringify([{ AudibleProductId: 'B0AAAAAAAA', ...entry }]))
+    expect(out.format).toBe('libation')
+    return out.books[0]
+  }
+
+  it('maps the core factual fields', () => {
+    const b = parseOne({
+      AudibleProductId: 'B0CQDJ3PND',
+      Title: 'Wind and Truth',
+      Subtitle: 'Stormlight Archive, Book 5',
+      AuthorNames: 'Brandon Sanderson',
+      NarratorNames: 'Kate Reading, Michael Kramer',
+      Language: 'English',
+      Locale: 'uk',
+      Publisher: 'Gollancz',
+      LengthInMinutes: 3768,
+      DatePublished: '2024-12-06T03:00:00',
+      IsAbridged: false,
+      PictureId: '51ZFAWrapyL',
+    })
+    expect(b.asin).toBe('B0CQDJ3PND')
+    expect(b.title).toBe('Wind and Truth')
+    expect(b.subtitle).toBe('Stormlight Archive, Book 5')
+    expect(b.authors).toEqual(['Brandon Sanderson'])
+    expect(b.narrators).toEqual(['Kate Reading', 'Michael Kramer'])
+    expect(b.language).toBe('en')
+    expect(b.region).toBe('uk')
+    expect(b.publisher).toBe('Gollancz')
+    expect(b.runtimeMin).toBe(3768) // LengthInMinutes is already minutes
+    expect(b.releaseDate).toBe('2024-12-06')
+    expect(b.abridged).toBe(false)
+    expect(b.coverUrl).toBe('https://m.media-amazon.com/images/I/51ZFAWrapyL._SL500_.jpg')
+  })
+
+  it('percent-encodes a + in the cover PictureId', () => {
+    const b = parseOne({ PictureId: '51zVN+Q+LcL' })
+    expect(b.coverUrl).toBe('https://m.media-amazon.com/images/I/51zVN%2BQ%2BLcL._SL500_.jpg')
+  })
+
+  it('strips a listed role qualifier from author names', () => {
+    const b = parseOne({
+      AuthorNames: 'Kirill Klevanski, Valeria Kornosenko - introduction',
+    })
+    expect(b.authors).toEqual(['Kirill Klevanski', 'Valeria Kornosenko'])
+  })
+
+  it('surfaces the primary series from SeriesOrder (first positioned entry)', () => {
+    // The Cosmere has no position; The Stormlight Archive is book 5 - the latter
+    // is surfaced. Note SeriesOrder arrives with a leading space, which the parser
+    // splits on the first colon so it is robust to trimming.
+    const b = parseOne({
+      SeriesNames: 'The Cosmere, The Stormlight Archive',
+      SeriesOrder: ' : The Cosmere, 5 : The Stormlight Archive',
+    })
+    expect(b.seriesName).toBe('The Stormlight Archive')
+    expect(b.seriesPosition).toBe('5')
+  })
+
+  it('treats the 999999999 sentinel as an unknown position', () => {
+    const b = parseOne({
+      SeriesNames: "Stephen Fry's Victorian Secrets",
+      SeriesOrder: "999999999 : Stephen Fry's Victorian Secrets",
+    })
+    expect(b.seriesName).toBe("Stephen Fry's Victorian Secrets")
+    expect(b.seriesPosition).toBeUndefined()
+  })
+
+  it('handles a series name containing a colon', () => {
+    const b = parseOne({
+      SeriesNames: 'Discworld, Discworld: Rincewind',
+      SeriesOrder: '1 : Discworld, 1 : Discworld: Rincewind',
+    })
+    expect(b.seriesName).toBe('Discworld') // first positioned entry
+    expect(b.seriesPosition).toBe('1')
+  })
+
+  it('rejects an unknown marketplace Locale', () => {
+    expect(parseOne({ Locale: 'narnia' }).region).toBeUndefined()
+  })
+
+  it('leaves language undefined but keeps languageRaw for an unmapped word', () => {
+    const b = parseOne({ Language: 'Turkish' })
+    expect(b.language).toBe('tr')
+    const k = parseOne({ Language: 'Klingon' })
+    expect(k.language).toBeUndefined()
+    expect(k.languageRaw).toBe('Klingon')
+  })
+
+  it('carries no isbn or chapter data (Libation exports have none)', () => {
+    const b = parseOne({ Title: 'X' })
+    expect(b.isbn).toBeUndefined()
+    expect(b.chapterCount).toBeUndefined()
+  })
+})
+
+describe('parseExport - folder-scan field mapping', () => {
+  function parseOne(book: Record<string, unknown>): ParsedBook {
+    const out = parseExport(
+      JSON.stringify({
+        format: 'audiosilo-folder-scan',
+        version: 1,
+        root: '/x',
+        books: [book],
+      })
+    )
+    expect(out.format).toBe('folderscan')
+    return out.books[0]
+  }
+
+  it('maps entries 1:1 including array authors/narrators', () => {
+    const b = parseOne({
+      path: 'Lee Child/Jack Reacher/01 - Killing Floor',
+      title: 'Killing Floor',
+      subtitle: 'A Jack Reacher Novel',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      asin: 'B076HYPQLK',
+      publisher: 'Random House',
+      release_date: '2017-11-02',
+      language: 'en',
+      runtime_min: 823,
+      chapters: 34,
+      files: ['Killing Floor.m4b'],
+      audio_files: 1,
+    })
+    expect(b.title).toBe('Killing Floor')
+    expect(b.subtitle).toBe('A Jack Reacher Novel')
+    expect(b.authors).toEqual(['Lee Child'])
+    expect(b.narrators).toEqual(['Jeff Harding'])
+    expect(b.seriesName).toBe('Jack Reacher')
+    expect(b.seriesPosition).toBe('1')
+    expect(b.asin).toBe('B076HYPQLK')
+    expect(b.releaseDate).toBe('2017-11-02')
+    expect(b.language).toBe('en')
+    expect(b.runtimeMin).toBe(823)
+    expect(b.chapterCount).toBe(34)
+    expect(b.region).toBeUndefined()
+    expect(b.coverUrl).toBeUndefined()
+  })
+
+  it('accepts a language word as well as an ISO code', () => {
+    expect(parseOne({ title: 'A', language: 'English' }).language).toBe('en')
+    expect(parseOne({ title: 'A', language: 'de' }).language).toBe('de')
+    expect(parseOne({ title: 'A', language: 'zzz' }).language).toBeUndefined()
+  })
+
+  it('omits optional fields that are absent', () => {
+    const b = parseOne({ title: 'Bare', files: ['a.mp3'], audio_files: 1 })
+    expect(b.asin).toBeUndefined()
+    expect(b.isbn).toBeUndefined()
+    expect(b.seriesName).toBeUndefined()
+    expect(b.runtimeMin).toBeUndefined()
+    expect(b.chapterCount).toBeUndefined()
+  })
+
+  it('routes a folder-scan book with no asin/isbn to the cannot-match bucket', () => {
+    const out = parseExport(
+      JSON.stringify({
+        format: 'audiosilo-folder-scan',
+        version: 1,
+        root: '/x',
+        books: [{ title: 'No Ids', files: ['a.mp3'], audio_files: 1 }],
+      })
+    )
+    const { identified, unidentified } = partitionByIdentifier(out.books)
+    expect(identified).toEqual([])
+    expect(unidentified).toHaveLength(1)
+  })
+
+  it('never carries the folder-scan root or per-book path/files into a ParsedBook typed field', () => {
+    const b = parseOne({
+      path: '/secret/local/path',
+      title: 'Private',
+      files: ['/secret/local/path/x.m4b'],
+      audio_files: 1,
+    })
+    // The local-only fields survive only inside raw (for the format-aware factual
+    // subset to filter); no typed ParsedBook field exposes them.
+    expect(b.title).toBe('Private')
+    expect(JSON.stringify({ ...b, raw: undefined })).not.toContain('/secret/local/path')
   })
 })
 
@@ -281,7 +501,10 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
+    expect(matchExistingWork(book, cands)).toEqual({
+      id: 'w1',
+      title: 'Skysworn',
+    })
   })
 
   it('matches when the work title is a token-subset of the book title (the Cradle case)', () => {
@@ -292,7 +515,10 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
+    expect(matchExistingWork(book, cands)).toEqual({
+      id: 'w1',
+      title: 'Skysworn',
+    })
   })
 
   it('does NOT match a subset title with a different author', () => {
@@ -322,10 +548,17 @@ describe('matchExistingWork', () => {
     const book = parsedBook({ title: 'Skysworn', authors: ['Will Wight'] })
     const cands: WorkCandidate[] = [
       // A looser superset title first, then the exact one.
-      { id: 'loose', title: 'Skysworn Cradle Book 4', authors: [{ name: 'Will Wight' }] },
+      {
+        id: 'loose',
+        title: 'Skysworn Cradle Book 4',
+        authors: [{ name: 'Will Wight' }],
+      },
       { id: 'exact', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({ id: 'exact', title: 'Skysworn' })
+    expect(matchExistingWork(book, cands)).toEqual({
+      id: 'exact',
+      title: 'Skysworn',
+    })
   })
 
   it('matches an exact title even when the book lists no authors', () => {
@@ -333,11 +566,17 @@ describe('matchExistingWork', () => {
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
-    expect(matchExistingWork(book, cands)).toEqual({ id: 'w1', title: 'Skysworn' })
+    expect(matchExistingWork(book, cands)).toEqual({
+      id: 'w1',
+      title: 'Skysworn',
+    })
   })
 
   it('does NOT loosely match when the book lists no authors (loose needs a shared author)', () => {
-    const book = parsedBook({ title: 'Skysworn - Cradle, Book 4', authors: [] })
+    const book = parsedBook({
+      title: 'Skysworn - Cradle, Book 4',
+      authors: [],
+    })
     const cands: WorkCandidate[] = [
       { id: 'w1', title: 'Skysworn', authors: [{ name: 'Will Wight' }] },
     ]
@@ -384,7 +623,11 @@ describe('candidatesForBook', () => {
       title: 'A',
       authors: [{ name: 'Brandon Sanderson' }],
     }
-    const w2: WorkCandidate = { id: 'w2', title: 'B', authors: [{ name: 'Jane Doe' }] }
+    const w2: WorkCandidate = {
+      id: 'w2',
+      title: 'B',
+      authors: [{ name: 'Jane Doe' }],
+    }
     const byAuthor = new Map<string, WorkCandidate[]>([
       // Stored under the same normalized key the book authors produce, even
       // when the display spelling carries punctuation.
