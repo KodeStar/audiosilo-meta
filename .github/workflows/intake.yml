@@ -70,12 +70,10 @@ jobs:
         env:
           ISSUE: ${{ github.event.issue.number }}
           SUBMITTER: ${{ github.event.issue.user.login }}
-          TEMPLATE: ${{ steps.run.outputs.template }}
         run: |
-          case "$TEMPLATE" in
-            characters|recaps) layer="CC BY-SA 3.0 (community expressive layer)" ;;
-            *)                 layer="CC0-1.0 (factual core)" ;;
-          esac
+          # The license layer is classified by metaissue (issueform.licenseLayer)
+          # and carried on the result, so this workflow never re-derives it.
+          layer="$(jq -r '.license' result.json)"
           {
             echo "Automated from #${ISSUE} (submitted by @${SUBMITTER})."
             echo

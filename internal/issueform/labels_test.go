@@ -125,6 +125,14 @@ func TestTemplateFromLabels(t *testing.T) {
 		{"unknown data suffix", []string{"data:frobnicate"}, ""},
 		{"case-insensitive suffix", []string{"data:Add-Work"}, "add-work"},
 		{"whitespace tolerated", []string{" data:import "}, "import"},
+		// Legacy issues opened before the data: label rename carry the bare name.
+		{"legacy bare add-work", []string{"add-work"}, "add-work"},
+		{"legacy bare correction", []string{"correction"}, "correction"},
+		{"legacy bare characters", []string{"characters"}, "characters"},
+		{"legacy bare import", []string{"import"}, "import"},
+		{"legacy bare case-insensitive", []string{"Add-Work"}, "add-work"},
+		{"legacy bare non-template ignored", []string{"triage", "bug"}, ""},
+		{"legacy bare recaps first wins", []string{"recaps", "data:add-work"}, "recaps"},
 		{"empty", nil, ""},
 	}
 	for _, c := range cases {

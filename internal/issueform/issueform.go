@@ -51,6 +51,7 @@ const (
 type Result struct {
 	Status   Status   `json:"status"`
 	Template string   `json:"template,omitempty"`
+	License  string   `json:"license,omitempty"`
 	Files    []string `json:"files"`
 	Messages []string `json:"messages"`
 }
@@ -109,7 +110,23 @@ func Process(opts Options) Result {
 	if r.Template == "" {
 		r.Template = normalizeTemplate(opts.Template)
 	}
+	r.License = licenseLayer(r.Template)
 	return r
+}
+
+// licenseLayer names the license layer the composed records carry, keyed off the
+// normalized routing template: the community expressive sidecars (characters/
+// recaps) are CC BY-SA 3.0, every core template (work/recording/correction/
+// import) is CC0-1.0. Go owns this classification (the schema enforces the same
+// split structurally); the intake workflow reads Result.License for the pull-
+// request body instead of re-deriving it in bash.
+func licenseLayer(tmpl string) string {
+	switch tmpl {
+	case "characters", "recaps":
+		return "CC BY-SA 3.0 (community expressive layer)"
+	default:
+		return "CC0-1.0 (factual core)"
+	}
 }
 
 func process(opts Options) Result {
@@ -386,22 +403,28 @@ var routingTemplates = map[string]bool{
 }
 
 // TemplateFromLabels picks the intake routing template from an issue's label
-// names. A label routes only when it is "data:<t>" for a known template <t>
-// (add-work, add-recording, correction, characters, recaps, import); the first
-// such label (in the given order) wins. The bare "data" label and the outcome
-// labels (data:duplicate, data:needs-human, data:invalid) never route. It
-// returns "" when no label routes, which cmd/metaissue surfaces as an invalid
-// verdict. This is the single source of the routing allowlist the intake
-// workflow used to duplicate in jq.
+// names. A label routes when it is "data:<t>" for a known template <t> (add-work,
+// add-recording, correction, characters, recaps, import) OR - for issues opened
+// before the templates' labels were renamed to the data: namespace - the bare
+// legacy label name <t> against the same allowlist; the first routing label (in
+// the given order) wins. The bare "data" label and the outcome labels
+// (data:duplicate, data:needs-human, data:invalid) never route, because they are
+// absent from routingTemplates under either spelling. It returns "" when no label
+// routes, which cmd/metaissue surfaces as an invalid verdict. This is the single
+// source of the routing allowlist the intake workflow used to duplicate in jq.
 func TemplateFromLabels(labels []string) string {
 	for _, l := range labels {
-		suffix, ok := strings.CutPrefix(strings.TrimSpace(l), "data:")
-		if !ok {
+		name := strings.ToLower(strings.TrimSpace(l))
+		if suffix, ok := strings.CutPrefix(name, "data:"); ok {
+			// The current data:<t> routing label.
+			if routingTemplates[suffix] {
+				return suffix
+			}
 			continue
 		}
-		suffix = strings.ToLower(suffix)
-		if routingTemplates[suffix] {
-			return suffix
+		// A legacy bare label from before the data: rename (add-work, correction, ...).
+		if routingTemplates[name] {
+			return name
 		}
 	}
 	return ""

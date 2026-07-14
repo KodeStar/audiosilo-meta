@@ -1,7 +1,10 @@
-// Pure, framework-free parser for a user's library export. Four formats are
+// Pure, framework-free parser for a user's library export. Five formats are
 // understood: OpenAudible (books.json), Libation ("Export Library" JSON), the
-// audiosilo folder-scan (the metascan tool's output), and an Audiobookshelf
-// library export (the `GET /api/libraries/{id}/items?limit=0` response).
+// audiosilo folder-scan (the metascan tool's output), an Audiobookshelf library
+// export (the `GET /api/libraries/{id}/items?limit=0` response), and the
+// audiosilo-books envelope (this site's own bulk new-books download - a
+// self-identifying `{ format: "audiosilo-books", version: 1, books: [...] }`
+// wrapper around flat curated ParsedBook-shaped projections, re-droppable here).
 // Everything here runs in the browser on a file the user drops - the file never
 // leaves the device. Kept free of React and DOM so it is independently testable.
 //
@@ -46,6 +49,7 @@ export type ExportFormat =
   | 'libation'
   | 'folderscan'
   | 'audiobookshelf'
+  | 'audiosilobooks'
   | 'unknown'
 /** A format the parser understands - everything but 'unknown'. */
 export type KnownFormat = Exclude<ExportFormat, 'unknown'>
@@ -505,6 +509,55 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
   }
 }
 
+// --- audiosilo-books mapping (this site's own bulk new-books download) --------
+// The `{ format: "audiosilo-books", version: 1, books: [...] }` envelope wraps
+// the flat, already-curated projections newBooksPayload emits (github-prefill.ts)
+// so a user can re-drop the download here. Each entry is ParsedBook-shaped and
+// privacy-safe by construction (built from a ParsedBook, never a raw export), so
+// parsing is a passthrough/normalization consistent with the other parsers.
+
+function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
+  const asin = normalizeAsin(coerceStr(raw['asin']))
+  const isbn = normalizeIsbn(coerceStr(raw['isbn']))
+  const title = coerceStr(raw['title'])
+  const subtitle = coerceStr(raw['subtitle'])
+  const authors = toNameArray(raw['authors'])
+  const narrators = toNameArray(raw['narrators'])
+  const seriesName = coerceStr(raw['series'])
+  const seqRaw = coerceStr(raw['series_position'])
+  const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
+  const languageRaw = coerceStr(raw['language'])
+  const language = mapLanguageLoose(languageRaw)
+  const runtimeMin = positiveOrUndefined(coerceInt(raw['runtime_min']))
+  const releaseRaw = coerceStr(raw['release_date'])
+  const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
+  const publisher = coerceStr(raw['publisher'])
+  const chapterCount = coerceInt(raw['chapters']) // a count in the curated shape
+  const abridged = coerceBool(raw['abridged'])
+
+  return {
+    asin: asin || undefined,
+    isbn: isbn || undefined,
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName: seriesName || undefined,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region: undefined, // the curated projection carries no marketplace region
+    coverUrl: undefined,
+    chapterCount,
+    abridged,
+    format: 'audiosilobooks',
+    raw,
+  }
+}
+
 // --- Audiobookshelf mapping (an ABS library export) --------------------------
 // The dropped payload is the ABS `GET /api/libraries/{id}/items?limit=0`
 // response: `{ results: [...], total, ... }`, each item carrying its book fields
@@ -670,6 +723,10 @@ interface FormatSpec {
 
 // The folder-scan is a single object with this discriminator (not an array).
 const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
+// This site's own bulk new-books download uses this envelope discriminator (a
+// single object, books under 'books'). Kept EXACTLY in sync with the Go intake
+// consumer and github-prefill.ts's newBooksPayload.
+const AUDIOSILO_BOOKS_FORMAT = 'audiosilo-books'
 
 // Keys that mark an OpenAudible entry (lowercase; Libation uses PascalCase).
 // The Libation list carries only Libation-SPECIFIC keys - a generic key like
@@ -679,6 +736,35 @@ const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', '
 const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames']
 
 export const FORMATS: Record<KnownFormat, FormatSpec> = {
+  audiosilobooks: {
+    label: 'AudioSilo new-books export',
+    // A self-identifying envelope: the version stamp fails skew loud, exactly
+    // like the folder scan (a future v2 on an old deployed site reads as
+    // 'unknown' instead of misparsing an evolved shape).
+    detect: (data) =>
+      isObject(data) &&
+      coerceStr(data['format']) === AUDIOSILO_BOOKS_FORMAT &&
+      coerceInt(data['version']) === 1,
+    parse: parseAudiosiloBook,
+    // The curated projection's keys (already privacy-safe - built from a
+    // ParsedBook, never a raw export, so no local path can appear).
+    factualKeys: [
+      'title',
+      'subtitle',
+      'authors',
+      'narrators',
+      'series',
+      'series_position',
+      'asin',
+      'isbn',
+      'language',
+      'release_date',
+      'publisher',
+      'runtime_min',
+      'chapters',
+      'abridged',
+    ],
+  },
   openaudible: {
     label: 'OpenAudible library export',
     detect: (_data, entries) => entriesHaveAnyKey(entries, OPENAUDIBLE_KEYS),
@@ -776,11 +862,13 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
   },
 }
 
-// Detection order is load-bearing: the discriminated folder-scan first (its
-// per-book keys overlap OpenAudible's), then Audiobookshelf (its media.metadata
-// signature is unique), then OpenAudible's lowercase keys before Libation's
-// generic PascalCase Title.
+// Detection order is load-bearing: the discriminated audiosilo-books envelope
+// FIRST (its curated books carry an `asin` key that would otherwise misdetect as
+// OpenAudible), then the discriminated folder-scan (its per-book keys overlap
+// OpenAudible's), then Audiobookshelf (its media.metadata signature is unique),
+// then OpenAudible's lowercase keys before Libation's generic PascalCase Title.
 const DETECTION_ORDER: readonly KnownFormat[] = [
+  'audiosilobooks',
   'folderscan',
   'audiobookshelf',
   'openaudible',
@@ -788,8 +876,8 @@ const DETECTION_ORDER: readonly KnownFormat[] = [
 ]
 
 // Libation sometimes wraps its list in an object under one of these keys (the
-// folder-scan's books array also rides under 'books'; an Audiobookshelf export
-// rides under 'results').
+// folder-scan and audiosilo-books arrays also ride under 'books'; an
+// Audiobookshelf export rides under 'results').
 const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library', 'results', 'Results']
 
 function extractEntries(data: unknown): unknown[] | null {
@@ -837,9 +925,9 @@ function detectFormat(data: unknown, entries: unknown[] | null): ExportFormat {
 
 /**
  * Parse a dropped export. Detects the format and returns every entry mapped to a
- * ParsedBook (for openaudible, libation, the audiosilo folder-scan, and an
- * Audiobookshelf export); an unknown file yields an empty books list and routes
- * to the issue-form path.
+ * ParsedBook (for openaudible, libation, the audiosilo folder-scan, an
+ * Audiobookshelf export, and the audiosilo-books envelope); an unknown file
+ * yields an empty books list and routes to the issue-form path.
  * Throws a friendly Error on invalid JSON.
  */
 export function parseExport(text: string): ParseOutcome {

@@ -489,6 +489,84 @@ describe('newBooksPayload', () => {
     expect(Array.isArray(payload)).toBe(true)
   })
 
+  it('wraps Audiobookshelf books in the audiosilo-books envelope and round-trips the facts', () => {
+    // A representative ABS export: fields nested under media.metadata, with a
+    // local coverPath/path that must never survive into the download.
+    const absText = JSON.stringify({
+      results: [
+        {
+          id: 'li_1',
+          path: '/local/secret/path',
+          media: {
+            coverPath: '/metadata/items/li_1/cover.jpg',
+            metadata: {
+              title: 'Killing Floor',
+              subtitle: 'Jack Reacher, Book 1',
+              authors: [{ name: 'Lee Child' }],
+              narrators: ['Jeff Harding'],
+              series: [{ name: 'Jack Reacher', sequence: '1' }],
+              asin: 'B076HYPQLK',
+              isbn: '9780553505405',
+              language: 'English',
+              publishedYear: '1997',
+              publisher: 'Random House',
+            },
+            duration: 44521,
+            chapters: [{}, {}, {}],
+          },
+        },
+      ],
+      total: 1,
+    })
+    const first = parseExport(absText)
+    expect(first.format).toBe('audiobookshelf')
+
+    // Build the download the user would attach to the import-library issue.
+    const payload = newBooksPayload(first.books) as Record<string, unknown>
+    expect(payload['format']).toBe('audiosilo-books')
+    expect(payload['version']).toBe(1)
+    expect(Array.isArray(payload['books'])).toBe(true)
+    const text = JSON.stringify(payload)
+    // No ABS local path can leak into the download.
+    expect(text).not.toContain('/local/secret/path')
+    expect(text).not.toContain('/metadata/items')
+
+    // The key regression: re-dropping the download detects as audiosilo-books
+    // (NOT OpenAudible, despite the per-book asin) and preserves every fact.
+    const second = parseExport(text)
+    expect(second.format).toBe('audiosilobooks')
+    expect(second.books).toHaveLength(1)
+    const a = first.books[0]
+    const b = second.books[0]
+    expect(b.title).toBe(a.title)
+    expect(b.authors).toEqual(a.authors)
+    expect(b.narrators).toEqual(a.narrators)
+    expect(b.seriesName).toBe(a.seriesName)
+    expect(b.seriesPosition).toBe(a.seriesPosition)
+    expect(b.asin).toBe(a.asin)
+    expect(b.isbn).toBe(a.isbn)
+  })
+
+  it('leaves OpenAudible books as a bare array (still detectable, still round-trips)', () => {
+    const oaText = JSON.stringify([
+      {
+        asin: 'B076HYPQLK',
+        title: 'Killing Floor',
+        author: 'Lee Child',
+        narrated_by: 'Jeff Harding',
+        series_name: 'Jack Reacher',
+      },
+    ])
+    const first = parseExport(oaText)
+    expect(first.format).toBe('openaudible')
+    const payload = newBooksPayload(first.books)
+    expect(Array.isArray(payload)).toBe(true)
+    const second = parseExport(JSON.stringify(payload))
+    expect(second.format).toBe('openaudible')
+    expect(second.books[0].title).toBe('Killing Floor')
+    expect(second.books[0].authors).toEqual(['Lee Child'])
+  })
+
   it('re-wraps folder-scan books in the scan envelope, without root/files, and round-trips', () => {
     const book = parsedBook({
       format: 'folderscan',

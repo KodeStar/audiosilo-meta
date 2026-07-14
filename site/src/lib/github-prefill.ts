@@ -225,15 +225,24 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
 
 /**
  * The bulk new-books download payload: every book reduced to its factual
- * subset. Folder-scan books are re-wrapped in the scan envelope (format
- * discriminator + version, WITHOUT the local-only root/files) so the download
- * round-trips through parseExport instead of misdetecting; the other formats
- * are already detectable as bare arrays of their own keys.
+ * subset. Two formats are wrapped in a self-identifying envelope (format
+ * discriminator + version, WITHOUT any local-only fields) so the download
+ * round-trips through parseExport instead of misdetecting, and so it is
+ * machine-parseable when attached to the import-library issue form:
+ *  - folder-scan books re-wrap in the `audiosilo-folder-scan` scan envelope;
+ *  - Audiobookshelf books wrap in the `audiosilo-books` envelope - their flat
+ *    curated projections carry an `asin` key, which would otherwise misdetect
+ *    as an OpenAudible export (silently dropping authors/narrators/series).
+ * OpenAudible and Libation are already detectable as bare arrays of their own
+ * keys, so they stay bare.
  */
 export function newBooksPayload(books: ParsedBook[]): unknown {
   const subsets = books.map(factualSubset)
   if (books[0]?.format === 'folderscan') {
     return { format: 'audiosilo-folder-scan', version: 1, books: subsets }
+  }
+  if (books[0]?.format === 'audiobookshelf') {
+    return { format: 'audiosilo-books', version: 1, books: subsets }
   }
   return subsets
 }

@@ -170,7 +170,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	recSlug := c.uniqueRecordingSlug(workSlug, narratorSlugs, s.get(fRecRelease))
 	rec := outRecording{
 		ID: recSlug, Work: workSlug, Narrators: narratorSlugs, Language: lang,
-		Abridged: strings.EqualFold(s.get(fRecAbridged), "Abridged"),
+		Abridged: abridgedFromForm(s.get(fRecAbridged)),
 		License:  licenseCC0, Sources: []outSource{c.source(sourceRef)},
 	}
 	if rt := s.get(fRecRuntime); rt != "" {
@@ -202,6 +202,23 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 		}
 	}
 	c.emit(recordingPath(workSlug, recSlug), rec)
+}
+
+// abridgedFromForm maps the rec_abridged dropdown to the recording's tri-state
+// abridged field: "Abridged" -> true, "Unabridged" -> false, and "Unknown" (the
+// default) / empty / anything else -> nil, so the field is omitted rather than
+// fabricated. This honors the schema's omit-never-guess rule for abridged.
+func abridgedFromForm(v string) *bool {
+	switch strings.ToLower(strings.TrimSpace(v)) {
+	case "abridged":
+		t := true
+		return &t
+	case "unabridged":
+		f := false
+		return &f
+	default:
+		return nil
+	}
 }
 
 // uniqueRecordingSlug derives a recording slug from the first narrator plus the

@@ -26,11 +26,30 @@ var languageMap = map[string]string{
 	"chinese":    "zh",
 }
 
-// mapLanguage resolves a language word (case-insensitive) to its ISO code. ok is
-// false for an unknown or empty word.
+// isoCodes is the set of ISO 639-1 codes languageMap produces, so a source that
+// already carries a code (the audiosilo-books projection stores the mapped code,
+// not the word) resolves to exactly the same accepted set as a source that
+// carries the English word.
+var isoCodes = func() map[string]bool {
+	m := make(map[string]bool, len(languageMap))
+	for _, code := range languageMap {
+		m[code] = true
+	}
+	return m
+}()
+
+// mapLanguage resolves a language word (case-insensitive) to its ISO code, or
+// accepts an already-valid ISO 639-1 code from the accepted set verbatim. ok is
+// false for an unknown or empty value.
 func mapLanguage(word string) (code string, ok bool) {
-	code, ok = languageMap[strings.ToLower(strings.TrimSpace(word))]
-	return code, ok
+	w := strings.ToLower(strings.TrimSpace(word))
+	if code, ok = languageMap[w]; ok {
+		return code, true
+	}
+	if isoCodes[w] {
+		return w, true
+	}
+	return "", false
 }
 
 // marketplaces is the set of Audible marketplace regions the recording schema

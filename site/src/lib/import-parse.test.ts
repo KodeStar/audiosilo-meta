@@ -558,6 +558,65 @@ describe('parseExport - Audiobookshelf detection', () => {
   })
 })
 
+describe('parseExport - audiosilo-books envelope', () => {
+  function envelope(...books: Record<string, unknown>[]): string {
+    return JSON.stringify({ format: 'audiosilo-books', version: 1, books })
+  }
+
+  it('detects the envelope by its format marker, NOT as OpenAudible despite the asin key', () => {
+    const out = parseExport(
+      envelope({
+        title: 'Killing Floor',
+        authors: ['Lee Child'],
+        narrators: ['Jeff Harding'],
+        series: 'Jack Reacher',
+        series_position: '1',
+        asin: 'B076HYPQLK',
+        isbn: '9780553505405',
+        language: 'en',
+        release_date: '1997',
+      })
+    )
+    expect(out.format).toBe('audiosilobooks')
+    expect(out.books).toHaveLength(1)
+    const b = out.books[0]
+    expect(b.format).toBe('audiosilobooks')
+    expect(b.title).toBe('Killing Floor')
+    expect(b.authors).toEqual(['Lee Child'])
+    expect(b.narrators).toEqual(['Jeff Harding'])
+    expect(b.seriesName).toBe('Jack Reacher')
+    expect(b.seriesPosition).toBe('1')
+    expect(b.asin).toBe('B076HYPQLK')
+    expect(b.isbn).toBe('9780553505405')
+    expect(b.language).toBe('en')
+    expect(b.releaseDate).toBe('1997')
+  })
+
+  it('carries subtitle, publisher, runtime, chapter count, and abridged when present', () => {
+    const out = parseExport(
+      envelope({
+        title: 'A Book',
+        subtitle: 'The Subtitle',
+        publisher: 'Acme Audio',
+        runtime_min: 742,
+        chapters: 34,
+        abridged: false,
+      })
+    )
+    const b = out.books[0]
+    expect(b.subtitle).toBe('The Subtitle')
+    expect(b.publisher).toBe('Acme Audio')
+    expect(b.runtimeMin).toBe(742)
+    expect(b.chapterCount).toBe(34)
+    expect(b.abridged).toBe(false)
+  })
+
+  it('treats an envelope with an unsupported version as unknown (skew fails loud)', () => {
+    const text = JSON.stringify({ format: 'audiosilo-books', version: 2, books: [{ title: 'A' }] })
+    expect(parseExport(text).format).toBe('unknown')
+  })
+})
+
 describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
   function parseOne(metadata: Record<string, unknown>, media: Record<string, unknown> = {}): ParsedBook {
     const item = {

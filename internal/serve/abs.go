@@ -68,7 +68,11 @@ func (s *Server) handleABSSearch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	author := strings.TrimSpace(r.URL.Query().Get("author"))
-	isbn := strings.TrimSpace(r.URL.Query().Get("isbn"))
+	// ABS commonly sends a hyphenated ISBN (e.g. "978-0-575-08244-1"), but stored
+	// ISBNs are bare 10/13-digit strings, so the exact /lookup?isbn= resolution
+	// would never match and the request would silently degrade to an FTS title
+	// search. Normalize to the bare form here so the exact-lookup path fires.
+	isbn := normalizeISBN(r.URL.Query().Get("isbn"))
 
 	matches, err := s.current().absSearch(q, author, isbn, absMaxMatches)
 	if err != nil {
@@ -226,7 +230,7 @@ func absBooksFor(d *workDetail, preferredRID string) []absBook {
 		Title:         d.Title,
 		Subtitle:      d.Subtitle,
 		Author:        strings.Join(personNames(d.Authors), ", "),
-		PublishedYear: d.FirstPublished,
+		PublishedYear: publishedYear(d.FirstPublished),
 		Description:   d.Description,
 		Language:      d.Language,
 		Series:        series,
@@ -321,6 +325,48 @@ func authorMatches(names []string, author string) bool {
 		}
 	}
 	return false
+}
+
+// publishedYear reduces a work's first_published to the bare 4-digit year ABS's
+// publishedYear field wants. The schema's date_year allows both "YYYY" and a
+// full "YYYY-MM-DD" (see common.schema.json), so a work may carry either form.
+// If the string starts with exactly 4 digits (optionally followed by "-..."),
+// the leading year is returned; anything else is passed through unchanged so an
+// unexpected value is never mangled. It is a small local helper on purpose - the
+// serve package must not import internal/importer.
+func publishedYear(firstPublished string) string {
+	if len(firstPublished) < 4 {
+		return firstPublished
+	}
+	for i := 0; i < 4; i++ {
+		if firstPublished[i] < '0' || firstPublished[i] > '9' {
+			return firstPublished
+		}
+	}
+	// A 5th char must be the "-" of "YYYY-MM-DD"; a longer run of digits (e.g. a
+	// stray "20211") is not a year we recognize, so leave it untouched.
+	if len(firstPublished) > 4 && firstPublished[4] != '-' {
+		return firstPublished
+	}
+	return firstPublished[:4]
+}
+
+// normalizeISBN strips the ASCII hyphens and whitespace ABS sends in an ISBN
+// (e.g. "978-0-575-08244-1" or " 9780575082441 ") down to the bare digit form
+// stored on recordings, so the exact /lookup?isbn= resolution matches instead of
+// silently degrading to an FTS title search. It is kept local to abs.go - the
+// serve package must not import internal/issueform. The raw hyphenated form is
+// not preserved anywhere: stored ISBNs are always bare.
+func normalizeISBN(isbn string) string {
+	var b strings.Builder
+	b.Grow(len(isbn))
+	for _, r := range isbn {
+		if r == '-' || r == ' ' || r == '\t' || r == '\n' || r == '\r' {
+			continue
+		}
+		b.WriteRune(r)
+	}
+	return b.String()
 }
 
 // capABS trims a match slice to limit and guarantees a non-nil result.

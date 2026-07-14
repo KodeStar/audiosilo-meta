@@ -11,6 +11,7 @@ import {
   type LookupResponse,
 } from '../../lib/api'
 import { addWorkFromQueryUrl } from '../../lib/search-cta'
+import { Icon } from '../ui'
 
 interface Props {
   /** Quiet example queries shown below the box; a tap fills and runs a search. */
@@ -350,17 +351,7 @@ export default function SearchBox({ examples = [], autoFocus = false }: Props) {
                     rel="noopener"
                     className="inline-flex items-center gap-1.5 rounded-lg bg-pink-600 px-3 py-1.5 text-sm font-medium text-white shadow-lg shadow-pink-600/20 transition-colors hover:bg-pink-500"
                   >
-                    <svg
-                      className="h-4 w-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
+                    <Icon name="plus" className="h-4 w-4" />
                     Add this book
                   </a>
                   <a

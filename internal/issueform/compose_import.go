@@ -13,10 +13,10 @@ const (
 	fImportAttachment = "Additional notes"
 )
 
-// importLibrary ingests an attached OpenAudible/Libation export via the bulk
-// importer (which writes and validates the tree itself). Folder-scan and
-// unknown exports are left to a human. This path writes directly to disk and
-// sets handled, so Process returns its Result verbatim.
+// importLibrary ingests an attached OpenAudible/Libation/Audiobookshelf export
+// via the bulk importer (which writes and validates the tree itself).
+// Folder-scan and unknown exports are left to a human. This path writes directly
+// to disk and sets handled, so Process returns its Result verbatim.
 func (c *composer) importLibrary(s sections) {
 	c.handled = true
 
@@ -27,6 +27,10 @@ func (c *composer) importLibrary(s sections) {
 		run = importer.Run
 	case strings.Contains(exportType, "libation"):
 		run = importer.RunLibation
+	case strings.Contains(exportType, "audiobookshelf"):
+		// The site's /import page builds the audiosilo-books envelope from an
+		// Audiobookshelf export (a bare ABS item export is not attachable here).
+		run = importer.RunAudiosiloBooks
 	default:
 		c.fail(StatusNeedsHuman, "%q exports are ingested by a maintainer running metascan/metaimport, not the intake bot", s.get(fImportType))
 		return

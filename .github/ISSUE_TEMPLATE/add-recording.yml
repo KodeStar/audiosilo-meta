@@ -36,9 +36,12 @@ body:
     id: rec_abridged
     attributes:
       label: Abridged?
+      description: Leave as Unknown if you are not sure - we record this only when it is stated.
       options:
+        - "Unknown"
         - "Unabridged"
         - "Abridged"
+      default: 0
     validations:
       required: true
 

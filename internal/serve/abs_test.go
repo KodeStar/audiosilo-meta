@@ -308,6 +308,28 @@ func TestABSISBNMissFallsBackToTitle(t *testing.T) {
 	}
 }
 
+// TestABSISBNHyphenatedNormalized proves ABS's hyphenated ISBN reaches the exact
+// identifier lookup (not an FTS fallback): the query is deliberately unrelated,
+// so a match can only come from the ISBN path resolving 978-1-4272-0926-9 to its
+// bare form 9781427209269 (The Way of Kings' recording ISBN).
+func TestABSISBNHyphenatedNormalized(t *testing.T) {
+	base := absServer(t, absFixture())
+	code, matches := absMatches(t, base, "/abs/search?isbn=978-1-4272-0926-9&query=completely+unrelated")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	if len(matches) != 1 {
+		t.Fatalf("matches = %d, want 1 (exact isbn hit, not fts fallback)", len(matches))
+	}
+	m := matches[0].(map[string]any)
+	if m["title"] != "The Way of Kings" {
+		t.Errorf("hyphenated isbn hit title = %v, want The Way of Kings", m["title"])
+	}
+	if m["isbn"] != "9781427209269" {
+		t.Errorf("isbn = %v, want bare 9781427209269", m["isbn"])
+	}
+}
+
 func TestABSAuthorRanking(t *testing.T) {
 	base := absServer(t, absFixture())
 	// "kings" matches both The Way of Kings (Sanderson) and The Kings Jest (King).
@@ -349,6 +371,53 @@ func TestAuthorMatches(t *testing.T) {
 	for _, c := range cases {
 		if got := authorMatches(c.names, c.author); got != c.want {
 			t.Errorf("authorMatches(%v, %q) = %v, want %v", c.names, c.author, got, c.want)
+		}
+	}
+}
+
+func TestPublishedYear(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"2021", "2021"},             // bare year stays unchanged
+		{"2021-05-04", "2021"},       // full YYYY-MM-DD truncates to the year
+		{"1999-12", "1999"},          // YYYY-MM also truncates
+		{"", ""},                     // empty passes through
+		{"abcd", "abcd"},             // non-numeric passes through untouched
+		{"202", "202"},               // too short to be a year, unchanged
+		{"20211", "20211"},           // 5 digits (not a "-" at index 4), unchanged
+		{"2021x05", "2021x05"},       // 5th char not "-", unchanged
+		{"circa 2021", "circa 2021"}, // leading non-digit, unchanged
+	}
+	for _, c := range cases {
+		if got := publishedYear(c.in); got != c.want {
+			t.Errorf("publishedYear(%q) = %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+// TestAbsBooksForPublishedYear proves the mapper truncates a full date to the
+// year in its emitted BookMetadata, and leaves a bare year alone.
+func TestAbsBooksForPublishedYear(t *testing.T) {
+	d := &workDetail{ID: "w", Title: "Dated", Language: "en", FirstPublished: "2021-05-04"}
+	if got := absBooksFor(d, "")[0].PublishedYear; got != "2021" {
+		t.Errorf("full-date publishedYear = %q, want 2021", got)
+	}
+	d.FirstPublished = "2010"
+	if got := absBooksFor(d, "")[0].PublishedYear; got != "2010" {
+		t.Errorf("bare-year publishedYear = %q, want 2010", got)
+	}
+}
+
+func TestNormalizeISBN(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"978-0-575-08244-1", "9780575082441"}, // hyphenated 13
+		{"0-575-08244-4", "0575082444"},        // hyphenated 10
+		{" 9780593135204 ", "9780593135204"},   // surrounding whitespace
+		{"9781427209269", "9781427209269"},     // already bare
+		{"", ""},                               // empty
+	}
+	for _, c := range cases {
+		if got := normalizeISBN(c.in); got != c.want {
+			t.Errorf("normalizeISBN(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
 }

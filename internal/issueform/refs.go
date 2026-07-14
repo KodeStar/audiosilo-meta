@@ -88,7 +88,11 @@ func normalizeRegion(raw string) (string, bool) {
 }
 
 // parseASINs parses the "region: ASIN" lines from a form field into schema
-// ASIN entries, noting (but not failing on) unrecognized regions or ASINs.
+// ASIN entries, noting (but not failing on) unrecognized regions or ASINs. A
+// bare line that is a valid ASIN with no "region:" prefix defaults to region us:
+// the site's issue prefill emits a region-less ASIN whenever the source book has
+// no marketplace (always the case for Audiobookshelf and folder-scan books), and
+// dropping it would lose the recording's primary identity/dedup key.
 func (c *composer) parseASINs(block string) []outASIN {
 	var out []outASIN
 	for _, line := range strings.Split(block, "\n") {
@@ -98,7 +102,12 @@ func (c *composer) parseASINs(block string) []outASIN {
 		}
 		i := strings.IndexAny(line, ":\t")
 		if i < 0 {
-			c.note("ASIN line %q has no region; expected \"region: ASIN\" - skipped", line)
+			if asin := importer.NormalizeASIN(line); asin != "" {
+				c.note("ASIN %s had no region prefix - defaulted to us", asin)
+				out = append(out, outASIN{Region: "us", ASIN: asin})
+			} else {
+				c.note("ASIN line %q is neither \"region: ASIN\" nor a bare ASIN - skipped", line)
+			}
 			continue
 		}
 		region, regionOK := normalizeRegion(line[:i])
@@ -174,8 +183,9 @@ func sanitizeSlug(s string) (string, bool) {
 
 // resolveRecordPath resolves a "record" reference to a data-relative file path
 // and its parsed location. It accepts a data-tree path (with or without a
-// leading data/), a GitHub blob URL, or a meta.audiosilo.app work?id=/series?id=
-// URL. ok is false when it cannot be mapped to a recognized data-tree location.
+// leading data/), a GitHub blob URL, or a meta.audiosilo.app
+// work?id=/series?id=/person?id= URL. ok is false when it cannot be mapped to a
+// recognized data-tree location.
 func resolveRecordPath(ref string) (rel string, loc model.Location, ok bool) {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
@@ -190,6 +200,8 @@ func resolveRecordPath(ref string) (rel string, loc model.Location, ok bool) {
 			switch {
 			case strings.Contains(u.Path, "series"):
 				rel = path.Join("series", model.Shard(id), id+".json")
+			case strings.Contains(u.Path, "person"):
+				rel = path.Join("people", model.Shard(id), id+".json")
 			default: // work?id=
 				rel = path.Join("works", model.Shard(id), id, "work.json")
 			}

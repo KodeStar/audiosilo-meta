@@ -10,8 +10,9 @@ import "github.com/kodestar/audiosilo-meta/internal/importer"
 // The entities with a shape identical to a bulk import (source/person/asin/
 // series) are ALIASES of internal/importer's exported types, so the two paths
 // can never drift. The work and recording shapes here are richer than the
-// importer's (subtitle, first_published, xref; a plain-bool abridged and a
-// recording ISBN), so they stay local.
+// importer's (subtitle, first_published, xref; a recording ISBN), so they stay
+// local. abridged is a tri-state pointer (omitted when the submitter left it
+// Unknown), matching the importer and the schema's omit-never-guess rule.
 
 const (
 	licenseCC0 = "CC0-1.0"
@@ -52,7 +53,7 @@ type outRecording struct {
 	ID          string      `json:"id"`
 	Work        string      `json:"work"`
 	Narrators   []string    `json:"narrators"`
-	Abridged    bool        `json:"abridged"`
+	Abridged    *bool       `json:"abridged,omitempty"`
 	Language    string      `json:"language"`
 	RuntimeMin  int         `json:"runtime_min,omitempty"`
 	ReleaseDate string      `json:"release_date,omitempty"`

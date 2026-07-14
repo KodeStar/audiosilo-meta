@@ -1,6 +1,7 @@
 package issueform
 
 import (
+	neturl "net/url"
 	"regexp"
 	"strings"
 )
@@ -11,8 +12,14 @@ import (
 // stored as "".
 type sections map[string]string
 
-// headingRE matches a GitHub issue-form field heading line.
-var headingRE = regexp.MustCompile(`^#{1,6}\s+(.+?)\s*$`)
+// headingRE matches a GitHub issue-form field heading line. GitHub renders each
+// form field's label as a level-3 heading ("### <label>") exactly, so the
+// boundary is restricted to h3: a value line that itself starts with a Markdown
+// heading (e.g. a Sources value like "# 1 New York Times bestseller") is then
+// part of the field's value, not a new section that orphans the rest of the
+// field. (A legitimate multi-line value containing a literal "### " line would
+// still be mis-split as a new section - rare and accepted.)
+var headingRE = regexp.MustCompile(`^###\s+(.+?)\s*$`)
 
 // parseBody splits a rendered issue-form markdown body into its field sections.
 // GitHub renders each form field (input/textarea/dropdown/checkboxes with an
@@ -40,7 +47,7 @@ func parseBody(body string) sections {
 	}
 
 	for _, line := range lines {
-		if m := headingRE.FindStringSubmatch(line); m != nil && strings.HasPrefix(strings.TrimSpace(line), "#") {
+		if m := headingRE.FindStringSubmatch(line); m != nil {
 			flush()
 			label = strings.TrimSpace(m[1])
 			buf = buf[:0]
@@ -89,9 +96,20 @@ var attachmentURLRE = regexp.MustCompile(`\]\((https?://[^\s)]+)\)`)
 // GitHub inserts an uploaded file as a markdown link; a submitter may instead
 // paste the raw JSON. It returns the attachment URL (to be fetched) OR inline
 // bytes, never both. ok is false when neither is present.
+//
+// A field can carry a prose link (a Goodreads reference, etc.) ABOVE the real
+// attachment, so it prefers the first link whose host is on the same allowlist
+// defaultFetch (fetch.go) enforces, and only falls back to the first link when
+// none qualifies - which preserves defaultFetch's clear "not an allowed host"
+// failure rather than silently succeeding on the wrong URL.
 func extractAttachment(block string) (url string, inline []byte, ok bool) {
-	if m := attachmentURLRE.FindStringSubmatch(block); m != nil {
-		return m[1], nil, true
+	if links := attachmentURLRE.FindAllStringSubmatch(block, -1); links != nil {
+		for _, m := range links {
+			if u, err := neturl.Parse(m[1]); err == nil && allowedAttachmentHost(u.Hostname()) {
+				return m[1], nil, true
+			}
+		}
+		return links[0][1], nil, true
 	}
 	trimmed := strings.TrimSpace(block)
 	// Tolerate a fenced code block around pasted JSON.
