@@ -34,6 +34,7 @@ import {
   DetailSpinner,
   DetailError,
   BackLink,
+  ImproveRecord,
 } from './detail-common'
 
 /** The shared disclosure chevron for the page's accordions (chapters, characters,
@@ -540,36 +541,6 @@ function SeriesNav({ prev, next, tabHash, pending }: SeriesNeighbors & { tabHash
   )
 }
 
-/** The community hook: every work page links straight to its source file. */
-function ImproveRecord({ id }: { id: string }) {
-  const editUrl = `https://github.com/KodeStar/audiosilo-meta/blob/main/data/works/${encodeURIComponent(
-    id.slice(0, 2)
-  )}/${encodeURIComponent(id)}/work.json`
-  return (
-    <p className="mt-16 border-t border-edge pt-6 text-sm text-dim">
-      Spotted an error?{' '}
-      <a
-        href={editUrl}
-        target="_blank"
-        rel="noopener"
-        className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
-      >
-        Edit this work on GitHub
-      </a>{' '}
-      or{' '}
-      <a
-        href="https://github.com/KodeStar/audiosilo-meta/issues/new/choose"
-        target="_blank"
-        rel="noopener"
-        className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
-      >
-        open an issue
-      </a>
-      .
-    </p>
-  )
-}
-
 /** Contribution CTAs for a work: routes into the guided builder for the parts of
     the expressive layer this work is missing (characters / story-so-far), and to
     the add-recording issue form when it has no recordings yet. The work_ref is
@@ -855,7 +826,7 @@ function Loaded({ work }: { work: Work }) {
       </div>
 
       <ContributeCTAs work={work} />
-      <ImproveRecord id={work.id} />
+      <ImproveRecord kind="work" id={work.id} />
     </div>
   )
 }

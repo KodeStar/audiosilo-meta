@@ -20,7 +20,22 @@ import Waveform from '../components/Waveform.astro'
         >
           Back to search
         </a>
+        <a
+          href="https://github.com/kodestar/audiosilo-meta/issues/new/choose"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center justify-center gap-2 rounded-lg border border-edge px-6 py-3 font-medium text-hi transition-all duration-200 hover:-translate-y-0.5 hover:border-pink-500"
+        >
+          Add it to the database
+        </a>
       </div>
+      <p class="mt-4 text-sm text-dim">
+        Not in the database yet? See <a
+          href="/contribute"
+          class="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+          >ways to contribute</a
+        >.
+      </p>
       <Waveform bars={40} class="mx-auto mt-14 max-w-md opacity-50" />
     </div>
   </section>

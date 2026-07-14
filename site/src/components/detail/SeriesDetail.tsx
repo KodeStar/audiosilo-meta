@@ -8,6 +8,7 @@ import {
   DetailSpinner,
   DetailError,
   BackLink,
+  ImproveRecord,
 } from './detail-common'
 
 function Loaded({ series }: { series: Series }) {
@@ -78,6 +79,8 @@ function Loaded({ series }: { series: Series }) {
           No works have been added to this series yet.
         </p>
       )}
+
+      <ImproveRecord kind="series" id={series.id} />
     </div>
   )
 }

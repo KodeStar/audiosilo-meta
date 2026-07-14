@@ -9,6 +9,10 @@ import {
   factualSubset,
   importLibraryIssueUrl,
   newBooksPayload,
+  recordDataPath,
+  recordEditUrl,
+  correctDataIssueUrl,
+  issueChooserUrl,
 } from './github-prefill'
 import { parseExport } from './import-parse'
 import type { ParsedBook, WorkMatch } from './import-parse'
@@ -209,6 +213,72 @@ describe('addWorkIssueFormUrl', () => {
     expect(addWorkIssueFormUrl).toBe(
       'https://github.com/kodestar/audiosilo-meta/issues/new?template=add-work.yml'
     )
+  })
+})
+
+describe('recordDataPath', () => {
+  it('derives the work path with the two-char slug shard', () => {
+    expect(recordDataPath('work', 'killing-floor-lee-child')).toBe(
+      'data/works/ki/killing-floor-lee-child/work.json'
+    )
+  })
+
+  it('derives the person path', () => {
+    expect(recordDataPath('person', 'jeff-harding')).toBe('data/people/je/jeff-harding.json')
+  })
+
+  it('derives the series path', () => {
+    expect(recordDataPath('series', 'jack-reacher')).toBe('data/series/ja/jack-reacher.json')
+  })
+})
+
+describe('recordEditUrl', () => {
+  it('deep-links the source file on the repo blob base', () => {
+    expect(recordEditUrl('work', 'killing-floor-lee-child')).toBe(
+      'https://github.com/kodestar/audiosilo-meta/blob/main/data/works/ki/killing-floor-lee-child/work.json'
+    )
+    expect(recordEditUrl('person', 'jeff-harding')).toBe(
+      'https://github.com/kodestar/audiosilo-meta/blob/main/data/people/je/jeff-harding.json'
+    )
+  })
+
+  it('percent-encodes each path segment without escaping the slashes', () => {
+    // A pathological id keeps the URL well-formed (real ids match the slug grammar).
+    expect(recordEditUrl('series', 'odd id')).toBe(
+      'https://github.com/kodestar/audiosilo-meta/blob/main/data/series/od/odd%20id.json'
+    )
+  })
+})
+
+describe('correctDataIssueUrl', () => {
+  it('uses the correct-data.yml template on the issues host', () => {
+    const u = new URL(correctDataIssueUrl('work', 'killing-floor-lee-child'))
+    expect(u.host).toBe('github.com')
+    expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
+    expect(u.searchParams.get('template')).toBe('correct-data.yml')
+  })
+
+  it('seeds record with the entity data path for each kind', () => {
+    expect(params(correctDataIssueUrl('work', 'killing-floor-lee-child')).get('record')).toBe(
+      'data/works/ki/killing-floor-lee-child/work.json'
+    )
+    expect(params(correctDataIssueUrl('person', 'jeff-harding')).get('record')).toBe(
+      'data/people/je/jeff-harding.json'
+    )
+    expect(params(correctDataIssueUrl('series', 'jack-reacher')).get('record')).toBe(
+      'data/series/ja/jack-reacher.json'
+    )
+  })
+
+  it('carries ONLY template and record', () => {
+    const keys = [...params(correctDataIssueUrl('work', 'w-id')).keys()].sort()
+    expect(keys).toEqual(['record', 'template'])
+  })
+})
+
+describe('issueChooserUrl', () => {
+  it('is the new-issue template chooser', () => {
+    expect(issueChooserUrl).toBe('https://github.com/kodestar/audiosilo-meta/issues/new/choose')
   })
 })
 

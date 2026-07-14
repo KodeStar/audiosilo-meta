@@ -14,6 +14,11 @@ const ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
 // Canonical site origin, for linking an existing work in an add-recording issue.
 // Mirrors `site` in astro.config.mjs; the work path itself reuses href.work.
 const META_SITE = 'https://meta.audiosilo.app'
+// The GitHub new-issue chooser (the template picker) - the "add it" hand-off for
+// the not-found empty states, where no specific template/prefill applies yet.
+export const issueChooserUrl = `${ISSUE_BASE}/choose`
+// The repo's canonical blob base, for deep-linking a record's source JSON file.
+const REPO_BLOB = 'https://github.com/kodestar/audiosilo-meta/blob/main'
 
 /**
  * The library-import issue form - the hand-off for a Libation/other export and
@@ -126,6 +131,54 @@ export function addRecordingIssueUrlForWork(workId: string): string {
   const p = new URLSearchParams()
   p.set('template', 'add-recording.yml')
   p.set('work_ref', workRef(workId))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
+/** The record kinds that have a source JSON file and a correction affordance. */
+export type RecordKind = 'work' | 'person' | 'series'
+
+/**
+ * The repo-relative data path of an entity's source JSON file - the identity the
+ * correct-data issue form's `record` field is seeded with, and the tail of the
+ * GitHub edit deep link. The shard directory is the slug's first two characters
+ * (the data-model rule), matching how the tooling lays the tree out on disk.
+ */
+export function recordDataPath(kind: RecordKind, id: string): string {
+  const shard = id.slice(0, 2)
+  switch (kind) {
+    case 'work':
+      return `data/works/${shard}/${id}/work.json`
+    case 'person':
+      return `data/people/${shard}/${id}.json`
+    case 'series':
+      return `data/series/${shard}/${id}.json`
+  }
+}
+
+/**
+ * A GitHub "view / edit the source file" deep link for an entity record - the
+ * "Edit this <kind> on GitHub" half of the ImproveRecord affordance. Each path
+ * segment is percent-encoded (ids match the slug grammar, so this is a no-op in
+ * practice, but an odd id can never break the URL).
+ */
+export function recordEditUrl(kind: RecordKind, id: string): string {
+  const encoded = recordDataPath(kind, id)
+    .split('/')
+    .map((seg) => encodeURIComponent(seg))
+    .join('/')
+  return `${REPO_BLOB}/${encoded}`
+}
+
+/**
+ * Build a prefilled correct-data.yml issue URL with the record pre-identified -
+ * the "report a problem" half of ImproveRecord. Only `record` (the entity's data
+ * path) rides in the URL; the contributor fills field/values/evidence. The param
+ * key mirrors the form's `record` input id.
+ */
+export function correctDataIssueUrl(kind: RecordKind, id: string): string {
+  const p = new URLSearchParams()
+  p.set('template', 'correct-data.yml')
+  p.set('record', recordDataPath(kind, id))
   return `${ISSUE_BASE}?${p.toString()}`
 }
 

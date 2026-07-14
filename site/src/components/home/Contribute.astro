@@ -21,6 +21,14 @@ const cards = [
     external: false,
   },
   {
+    icon: 'collection',
+    title: 'Use it in Audiobookshelf',
+    body: 'Enrich an Audiobookshelf library with community metadata - narrators, chapters, series and covers - or submit your ABS library so the gaps get filled.',
+    cta: 'How it works',
+    href: '/audiobookshelf',
+    external: false,
+  },
+  {
     icon: 'edit',
     title: 'Add or fix data',
     body: 'Spotted a missing narrator, a wrong runtime, or a book that is not here yet? Open an issue form - no JSON required - and it becomes a pull request.',
@@ -59,7 +67,7 @@ const cards = [
       </p>
     </div>
 
-    <div class="reveal mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <div class="reveal mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         cards.map((card) => (
           <div class="flex flex-col rounded-2xl border border-edge bg-surface p-6">

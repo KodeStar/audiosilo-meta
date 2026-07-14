@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ApiError } from '../../lib/api'
+import {
+  correctDataIssueUrl,
+  recordEditUrl,
+  issueChooserUrl,
+  type RecordKind,
+} from '../../lib/github-prefill'
 
 /** Read a query-string parameter on the client (detail pages are static shells
     that carry the entity id in `?id=`). Returns null ONLY before hydration; once
@@ -87,13 +93,59 @@ export function DetailError({ notFound, kind }: { notFound: boolean; kind: strin
           ? `We could not find that ${kind} in the database. It may not have been catalogued yet.`
           : `The database could not be reached. Please try again in a moment.`}
       </p>
-      <a
-        href="/"
-        className="mt-8 inline-flex items-center gap-2 rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-500"
-      >
-        Back to search
-      </a>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 rounded-lg bg-pink-600 px-6 py-3 font-medium text-white transition-colors hover:bg-pink-500"
+        >
+          Back to search
+        </a>
+        {notFound ? (
+          <a
+            href={issueChooserUrl}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 rounded-lg border border-edge px-6 py-3 font-medium text-hi transition-colors hover:border-pink-500"
+          >
+            Add it to the database
+          </a>
+        ) : null}
+      </div>
+      {notFound ? (
+        <p className="mt-4 text-sm text-dim">
+          Not in the database yet? See{' '}
+          <a
+            href="/contribute"
+            className="text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+          >
+            ways to contribute
+          </a>
+          .
+        </p>
+      ) : null}
     </div>
+  )
+}
+
+/** The community-correction footer shared by every detail page: a deep link to
+    the record's source file on GitHub and a prefilled "report a problem" issue
+    with the record pre-identified. Generalised from the work page so person and
+    series records carry the same affordance. */
+export function ImproveRecord({ kind, id }: { kind: RecordKind; id: string }) {
+  const link =
+    'text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline'
+  return (
+    <p className="mt-16 border-t border-edge pt-6 text-sm text-dim">
+      Spotted an error?{' '}
+      <a href={recordEditUrl(kind, id)} target="_blank" rel="noopener" className={link}>
+        Edit this {kind} on GitHub
+      </a>{' '}
+      or{' '}
+      <a href={correctDataIssueUrl(kind, id)} target="_blank" rel="noopener" className={link}>
+        report a problem
+      </a>
+      .
+    </p>
   )
 }
 

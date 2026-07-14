@@ -7,6 +7,7 @@ import {
   DetailSpinner,
   DetailError,
   BackLink,
+  ImproveRecord,
 } from './detail-common'
 
 function WorkGrid({ works }: { works: WorkCardData[] }) {
@@ -88,6 +89,8 @@ function Loaded({ person }: { person: Person }) {
           No works are linked to this person yet.
         </p>
       ) : null}
+
+      <ImproveRecord kind="person" id={person.id} />
     </div>
   )
 }
