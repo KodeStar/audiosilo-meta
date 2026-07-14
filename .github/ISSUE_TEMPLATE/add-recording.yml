@@ -1,7 +1,7 @@
 name: Add a recording (narration)
 description: Add another narration of a work that is already in the database.
 title: "[recording] "
-labels: ["add-recording", "data"]
+labels: ["data", "data:add-recording"]
 body:
   - type: markdown
     attributes:

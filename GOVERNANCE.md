@@ -60,6 +60,42 @@ for untrusted or non-data changes is a judgement gate (is the data plausible, is
 the source legitimate, is the schema change sound), not a re-check of what CI
 already verified.
 
+## Automated intake and AI verification
+
+Two automations sit in front of the human review step. Neither bypasses it.
+
+- **Issue-form intake → bot pull request.** A data issue-form submission (Add a
+  work, Add a recording, Correct data, Add characters/recaps, Import a library)
+  is routed by its `data:*` label to the `intake` workflow, which runs
+  `cmd/metaissue` to compose the same canonical records a hand-authored pull
+  request would carry, deduplicating against the catalog. On success it opens a
+  `bot-intake` pull request on branch `intake/issue-<n>` crediting the submitter
+  and naming the license layer; a submission that is a duplicate, needs a human,
+  or is invalid is commented back on the issue instead (with a matching label).
+  The bot only *drafts* the change - it runs the same untrusted-data-only,
+  no-fork-execution security model as the rest of CI (`intake.yml` treats the
+  issue body and attachments strictly as data).
+
+- **AI verification (advisory).** The `ai-verify` workflow asks Claude to
+  sanity-check a data pull request's diff for judgement a machine check cannot
+  make (factual consistency, plausible provenance, the correct license layer,
+  no copied publisher prose, sane sidecar spoiler positions and length). It
+  posts a PASS/FLAG comment and applies an `ai-verified` or `ai-flagged` label.
+  This is **advisory only**: it never blocks a merge, and a `flag` is a prompt
+  for a maintainer to look closer, not a veto. It runs on same-repo branches;
+  fork pull requests are verified only after a maintainer pushes the branch to
+  the repository (fork runs have no secret and a read-only token by design - the
+  repo never adopts `pull_request_target`).
+
+**Merge policy is unchanged by these automations.** A `bot-intake` pull request
+is treated exactly like one "opened by anyone else": it must pass CI, and it
+still requires **one maintainer approval** before it merges. A green
+`ai-verified` label does **not** enable auto-merge. Auto-merge for bot-drafted or
+AI-verified pull requests is a **deliberate future toggle** - it stays off until
+the pipeline has earned trust through a track record of clean, correctly-composed
+submissions, at which point widening the auto-merge scope (like the Trusted
+Contributor ladder) is a maintainer decision made openly.
+
 ## Disputes
 
 Data disagreements (which recording is canonical, how a series is ordered, a

@@ -1,7 +1,7 @@
 name: Import a library export
 description: Attach an OpenAudible export, Libation export, or folder scan so we can ingest the factual fields in bulk.
 title: "[import] "
-labels: ["import", "data"]
+labels: ["data", "data:import"]
 body:
   - type: markdown
     attributes:

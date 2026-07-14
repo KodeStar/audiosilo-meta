@@ -1,7 +1,7 @@
 name: Add recaps (story so far)
 description: Add position-keyed "story so far" recaps for a work that is already in the database.
 title: "[recaps] "
-labels: ["add-recaps", "data"]
+labels: ["data", "data:recaps"]
 body:
   - type: markdown
     attributes:

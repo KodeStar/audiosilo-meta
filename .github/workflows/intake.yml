@@ -1,0 +1,147 @@
+name: intake
+
+# Turn a data issue-form submission into a validated bot pull request.
+#
+# SECURITY: this runs on the `issues` event, so there is NO fork code execution
+# (unlike a fork `pull_request` build) - the only untrusted input is the issue
+# body/title and any file the submitter attached. That input is treated strictly
+# as DATA: it is written to a file via an environment variable (never
+# interpolated into a shell command), parsed by metaissue, and never executed.
+# metaissue fetches attachments HTTPS-only from GitHub's user-attachment hosts
+# with a size cap. Do not add a step that evals or runs anything derived from the
+# issue.
+on:
+  issues:
+    types: [opened, edited]
+
+# Least privilege: open a PR, comment on the issue, and label it. Nothing more.
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+# One in-flight run per issue; a rapid edit supersedes the queued run.
+concurrency:
+  group: intake-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    # Only act on issues carrying a data-routing label (data:add-work, etc.).
+    if: contains(join(github.event.issue.labels.*.name), 'data:')
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Resolve template from the routing label
+        id: tmpl
+        env:
+          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+        run: |
+          # Pick the first data: label that names a known template, so an
+          # outcome label added on a re-run (data:duplicate, data:invalid, ...)
+          # is never mistaken for a template.
+          template="$(printf '%s' "$LABELS" | jq -r '
+            ["add-work","add-recording","correction","characters","recaps","import"] as $t
+            | map(select(startswith("data:")) | sub("^data:"; ""))
+            | map(select(. as $x | $t | index($x)))
+            | .[0] // ""')"
+          if [ -z "$template" ]; then
+            echo "no data: routing label; nothing to do"
+            echo "template=" >> "$GITHUB_OUTPUT"
+          else
+            echo "template=$template" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Dump the issue body to a file
+        if: steps.tmpl.outputs.template != ''
+        env:
+          # Untrusted: written verbatim, never interpolated into a command.
+          BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$BODY" > issue-body.md
+
+      - name: Compose records (metaissue)
+        id: run
+        if: steps.tmpl.outputs.template != ''
+        env:
+          TEMPLATE: ${{ steps.tmpl.outputs.template }}
+        run: |
+          go run ./cmd/metaissue --template "$TEMPLATE" --body issue-body.md --data data > result.json || {
+            echo '{"status":"invalid","files":[],"messages":["metaissue failed to run"]}' > result.json
+          }
+          cat result.json
+          echo "status=$(jq -r .status result.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Build the pull-request body
+        id: prbody
+        if: steps.run.outputs.status == 'ok'
+        env:
+          ISSUE: ${{ github.event.issue.number }}
+          SUBMITTER: ${{ github.event.issue.user.login }}
+          TEMPLATE: ${{ steps.tmpl.outputs.template }}
+        run: |
+          case "$TEMPLATE" in
+            characters|recaps) layer="CC BY-SA 3.0 (community expressive layer)" ;;
+            *)                 layer="CC0-1.0 (factual core)" ;;
+          esac
+          {
+            echo "Automated from #${ISSUE} (submitted by @${SUBMITTER})."
+            echo
+            echo "License layer: **${layer}**."
+            echo
+            echo "Files:"
+            jq -r '.files[] | "- `" + . + "`"' result.json
+            echo
+            mapfile -t msgs < <(jq -r '.messages[]?' result.json)
+            if [ "${#msgs[@]}" -gt 0 ]; then
+              echo "Notes:"
+              for m in "${msgs[@]}"; do echo "- ${m}"; done
+              echo
+            fi
+            echo "Closes #${ISSUE} on merge."
+            echo
+            echo "> Composed by the intake bot. A maintainer still reviews and approves before merge."
+          } > pr-body.md
+
+      - name: Open the pull request
+        if: steps.run.outputs.status == 'ok'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          base: main
+          branch: intake/issue-${{ github.event.issue.number }}
+          commit-message: "intake: issue #${{ github.event.issue.number }} (${{ steps.tmpl.outputs.template }})"
+          title: "[intake] ${{ github.event.issue.title }}"
+          body-path: pr-body.md
+          labels: |
+            data
+            bot-intake
+          delete-branch: true
+
+      - name: Comment the outcome and label the issue (non-ok)
+        if: steps.run.outputs.status != '' && steps.run.outputs.status != 'ok'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          STATUS: ${{ steps.run.outputs.status }}
+        run: |
+          {
+            case "$STATUS" in
+              duplicate)   echo "This looks like it's **already in the database**." ;;
+              needs-human) echo "Thanks! This needs a **maintainer** to finish - it can't be applied mechanically." ;;
+              invalid)     echo "This submission couldn't be processed automatically. Please check the details below." ;;
+            esac
+            echo
+            jq -r '.messages[]? | "- " + .' result.json
+            echo
+            echo "_Posted by the intake bot._"
+          } > comment.md
+          gh issue comment "$ISSUE" --body-file comment.md
+          gh issue edit "$ISSUE" --add-label "data:${STATUS}" || true

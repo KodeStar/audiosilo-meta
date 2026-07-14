@@ -1,7 +1,7 @@
 name: Correct data
 description: Fix a wrong or missing field on an existing record.
 title: "[correct] "
-labels: ["correction", "data"]
+labels: ["data", "data:correction"]
 body:
   - type: markdown
     attributes:

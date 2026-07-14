@@ -1,7 +1,7 @@
 name: Add characters (the cast)
 description: Add spoiler-tagged character entries for a work that is already in the database.
 title: "[characters] "
-labels: ["add-characters", "data"]
+labels: ["data", "data:characters"]
 body:
   - type: markdown
     attributes:

@@ -1,7 +1,7 @@
 name: Add a work (book) and its first recording
 description: Add a book that is not yet in the database, together with one narration of it.
 title: "[work] "
-labels: ["add-work", "data"]
+labels: ["data", "data:add-work"]
 body:
   - type: markdown
     attributes:

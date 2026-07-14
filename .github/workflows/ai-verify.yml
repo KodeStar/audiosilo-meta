@@ -1,0 +1,110 @@
+name: ai-verify
+
+# Advisory AI review of a data pull request's diff. This is a judgement layer on
+# top of the mechanical `check` workflow (schema/integrity/formatting), never a
+# replacement for it: it posts a PASS/FLAG comment and label, and never blocks a
+# merge.
+#
+# SECURITY: this uses the plain `pull_request` trigger, NOT
+# `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
+# supply-chain pattern). Consequences, accepted deliberately:
+#   - Fork pull requests run with a read-only token and NO secrets, so
+#     ANTHROPIC_API_KEY is absent there. The script then writes a neutral "skip"
+#     notice rather than failing. A fork PR is therefore AI-verified only after a
+#     maintainer pushes its branch to this repository (a same-repo branch gets
+#     the secret and a write token), or a maintainer re-runs via workflow_dispatch
+#     / applies the `ai-verify` label. We do NOT weaken this to reach fork
+#     secrets.
+#   - The diff is passed to the model as untrusted DATA and never executed (see
+#     .github/scripts/ai-verify.sh).
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    paths:
+      - "data/**"
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: "Pull request number to verify"
+        required: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ai-verify-${{ github.event.pull_request.number || github.event.inputs.pr }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    # Same-repo branches (secrets + write token available), a maintainer-applied
+    # `ai-verify` label, or a manual dispatch. Fork PRs without the label are
+    # skipped - they cannot reach the secret anyway.
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository ||
+      contains(github.event.pull_request.labels.*.name, 'ai-verify')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Gather the data diff
+        id: gather
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          PR_INPUT: ${{ github.event.inputs.pr }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            PR="$PR_INPUT"
+            BASE_SHA="$(gh pr view "$PR" --json baseRefOid -q .baseRefOid)"
+            HEAD_SHA="$(gh pr view "$PR" --json headRefOid -q .headRefOid)"
+            git fetch --no-tags origin "$BASE_SHA" "$HEAD_SHA"
+          else
+            PR="$PR_NUMBER"
+          fi
+          echo "pr=$PR" >> "$GITHUB_OUTPUT"
+
+          # The unified diff, scoped to data/**.
+          git diff --unified=3 "${BASE_SHA}...${HEAD_SHA}" -- 'data/**' > context.txt || true
+          # Append the full current text of each changed data file, for context
+          # the diff alone omits.
+          {
+            echo
+            echo "===== FULL TEXT OF CHANGED FILES ====="
+            git diff --name-only "${BASE_SHA}...${HEAD_SHA}" -- 'data/**' | while read -r f; do
+              [ -f "$f" ] || continue
+              echo
+              echo "----- $f -----"
+              cat "$f"
+            done
+          } >> context.txt
+          if [ -s context.txt ]; then echo "has_changes=true" >> "$GITHUB_OUTPUT"; else echo "has_changes=false" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Run AI verification
+        if: steps.gather.outputs.has_changes == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
+
+      - name: Post the verdict and label the PR
+        if: steps.gather.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.gather.outputs.pr }}
+        run: |
+          gh pr comment "$PR" --body-file comment.md || echo "could not comment (read-only token on a fork PR?)"
+          verdict="$(jq -r '.verdict // "skip"' verdict.json 2>/dev/null || echo skip)"
+          case "$verdict" in
+            pass) gh pr edit "$PR" --remove-label ai-flagged --add-label ai-verified || true ;;
+            flag) gh pr edit "$PR" --remove-label ai-verified --add-label ai-flagged || true ;;
+            *)    echo "verdict=$verdict; no label applied" ;;
+          esac
