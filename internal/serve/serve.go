@@ -149,6 +149,9 @@ func (s *Server) buildMux() http.Handler {
 	mux.Handle("GET /api/v1/series/{id}", s.api(s.handleSeries))
 	mux.Handle("GET /api/v1/lookup", s.api(s.handleLookup))
 	mux.Handle("GET /api/v1/coverage", s.api(s.handleCoverage))
+	// Audiobookshelf custom metadata provider (ABS appends /search to the
+	// configured base URL). Outside /api/v1; the specific pattern wins over "/".
+	mux.Handle("GET /abs/search", s.api(s.handleABSSearch))
 	if s.site != nil {
 		mux.Handle("/", s.site)
 	}
