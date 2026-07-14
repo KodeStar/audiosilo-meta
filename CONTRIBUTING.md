@@ -69,9 +69,21 @@ If you would rather not edit JSON, open an issue and pick a form:
   or a metascan folder scan
   and let us ingest the factual fields.
 
-The forms are structured (every field is captured), and a maintainer or tool
-turns your submission into a proper pull request. Each form carries the CC0
-confirmation checkbox.
+The forms are structured (every field is captured), and each carries the CC0
+confirmation checkbox. Submitting one is usually all you have to do: an intake
+bot parses the form, deduplicates it against the catalogue, composes the same
+canonical records a hand-authored pull request would carry, validates them
+(`metafmt` + `metacheck`), and - on success - opens a pull request within minutes
+crediting you as the submitter. If your submission duplicates an existing record,
+needs a human decision, or does not validate, the bot comments back on the issue
+explaining exactly what to fix instead of opening a pull request. Either way a
+maintainer still reviews before anything merges (see
+[GOVERNANCE.md](GOVERNANCE.md)).
+
+**Spotted a wrong field?** Every work, person, and series page on
+[meta.audiosilo.app](https://meta.audiosilo.app) carries "edit on GitHub" and
+"report a problem" links that open a prefilled correction issue - the quickest
+way to fix a single fact without touching JSON.
 
 ### (b) Direct pull requests
 
@@ -108,13 +120,16 @@ same kind - that is the fastest way to get the fields right.
 
 **No command line?** The [import page](https://meta.audiosilo.app/import) does the
 first step in your browser: drop an OpenAudible `books.json`, a Libation JSON
-export (Libation - Export menu - Export Library - save as JSON), or a metascan
-folder scan, and it checks, entirely client-side, which of your books are already
-in the database and which are new (the API receives only ASINs/ISBNs and, for
-unmatched books, the author names used for matching - your file never leaves
-your device). It then hands the new ones off to a pre-filled issue, or lets you
-download a factual-only export to attach to an import issue. That is the easiest
-way to contribute a library.
+export (Libation - Export menu - Export Library - save as JSON), an Audiobookshelf
+library export, or a metascan folder scan, and it checks, entirely client-side,
+which of your books are already in the database and which are new (the API
+receives only ASINs/ISBNs and, for unmatched books, the author names used for
+matching - your file never leaves your device). It then hands the new ones off to
+a pre-filled issue, or lets you download a factual-only export to attach to an
+import issue. That is the easiest way to contribute a library. Running
+Audiobookshelf? The [`/audiobookshelf`](https://meta.audiosilo.app/audiobookshelf)
+page has the export steps and also covers wiring this database in as an ABS custom
+metadata provider.
 
 For a bulk import that becomes one reviewable pull request, the `metaimport` tool
 turns an export into work/recording/person/series records directly. If you have

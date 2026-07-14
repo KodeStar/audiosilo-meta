@@ -14,12 +14,14 @@ one JSON file per entity, contributed via pull requests and issue forms,
 validated by Go tooling in CI, and compiled into a SQLite artifact published as
 a GitHub Release. The Go API server (`metaserve`) serves that artifact plus the
 static site in `site/` (Astro, the audiosilo.app design system); the AudioSilo player
-integration (Phase 1.5) is the priority consumer and ships **before** any
-Audiobookshelf-provider facade (ABS is a direct competitor; this should be a
-defining AudioSilo feature).
+integration (Phase 1.5) is the priority consumer and shipped **before** the
+Audiobookshelf-provider facade (`GET /abs/search`), which has since landed on top
+of it (the player was always the defining AudioSilo feature; the ABS facade is a
+bonus for a direct competitor's users).
 
 Module path: `github.com/kodestar/audiosilo-meta`. Code is AGPL-3.0; the data
-is CC0-1.0 (factual core) with a reserved CC BY-SA 3.0 layer - the full policy
+is CC0-1.0 (factual core) with a CC BY-SA 3.0 community layer (the
+characters/recaps sidecars) - the full policy
 in [LICENSING.md](LICENSING.md) is load-bearing, read it before touching data
 handling.
 
@@ -139,27 +141,35 @@ Scholomance, Lord of the Rings, Magic Faraway Tree) are the worked reference.
 ```
 cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
-cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible)
 cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md and EXTRACTION-AUDIO.md
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
+cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation)
+cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
 internal/model      entity structs, slug/shard rules, location parsing
 internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
 internal/check      schema validation + integrity/uniqueness/chapter/series rules
 internal/extract    epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
-internal/importer   OpenAudible books.json -> work/recording/person/series, ASIN-dedup, canonical writes
+internal/importer   OpenAudible books.json + Libation export -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook)
+internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> canonical records, the ok/duplicate/needs-human/invalid verdict the intake workflow branches on
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
-internal/serve      the API server: snapshot loader, JSON handlers, FTS search, GitHub-release poller/hot-swap
+internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
 internal/scan       local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
 schema/             JSON Schemas (the contract), embedded via schema.go
 data/               the database (works/recordings/people/series + per-work characters/recaps sidecars)
 Dockerfile          image: site build + metaserve + baked data
-.github/            issue forms (machine-parseable ids), check + release + image workflows
+.github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows
 ```
 
 **The API server (`internal/serve`)** opens the SQLite artifact read-only and
 serves JSON under `/api/v1` (stats, `search?q=`, `works/latest`, `works/{id}`,
 recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
-`/healthz`; it can also serve a static site at `/`. It never writes: all data is
+`/healthz`; it can also serve a static site at `/`. It additionally exposes an
+**Audiobookshelf custom metadata provider** at `GET /abs/search` (`abs.go`,
+transport-only handler over testable `*snapshot` methods): ABS sends
+`?mediaType=book&query=&author=&isbn=` (never an ASIN), and we return
+`{"matches":[...]}`, one `absBook` per recording (ISBN exact-lookup first, else an
+FTS work search with loose author boosting), capped at 10; duration in minutes,
+no genres/tags by design. It never writes: all data is
 public so there is no auth, and responses carry permissive CORS. The current
 artifact lives behind an atomic pointer (`snapshot`); with `--poll` a background
 loop fetches the newest DATA release conditionally (`If-None-Match`/304) - the
@@ -232,22 +242,25 @@ the schema notes below.
 - **Phase 0 (done)**: schemas, metacheck/metafmt/metabuild, governance docs,
   issue forms, CI, hand-curated seed data proving the model (multi-recording
   works, dual-narrator recording, decimal series positions).
-- **Phase 1**: Open Library/Wikidata crosswalk seeding, the Go API server
-  (consumes the release artifact, FTS search, `/lookup?asin=|isbn=`), Docker,
-  meta.audiosilo.app site with search + import (OpenAudible/Libation) +
-  ASIN lookup assist, issue-form-to-PR automation. The **OpenAudible importer**
-  (`cmd/metaimport openaudible`, `internal/importer`) has landed. The **API
-  server** (`cmd/metaserve`, `internal/serve`) + **Docker image** (`Dockerfile`,
-  `image.yml`) have landed, as has works `added_at` (metabuild `--added`, git
-  history-derived in `release.yml`). Remaining: the meta.audiosilo.app site,
-  crosswalk seeding, Libation, and per-title ASIN lookup.
-- **Phase 1.5 (integration landed)**: AudioSilo server/player integration, before
-  any ABS facade. audiosilo-server's `GET /libraries/{id}/meta` composes a book's
-  enrichment from this project's `metaserve` (`lookup` -> `works/{id}` -> `series`)
-  behind an admin off-switch and a cache, and the player renders it capability-gated.
-  Consuming `metaserve`'s response shapes now makes them a three-repo contract
-  (audiosilo-meta -> audiosilo-server `internal/meta` -> the player only if the
-  server's outward envelope changes; see workspace CROSS-REPO.md §17).
+- **Phase 1**: the Go API server (`cmd/metaserve`, `internal/serve`; consumes the
+  release artifact, FTS search, `/lookup?asin=|isbn=`), the **Docker image**
+  (`Dockerfile`, `image.yml`), works `added_at` (metabuild `--added`,
+  git-history-derived in `release.yml`), the **OpenAudible and Libation importers**
+  (`cmd/metaimport {openaudible,libation}`, `internal/importer` - a shared pipeline
+  over a typed sourceBook), the **meta.audiosilo.app site** with search + the
+  in-browser `/import` diff (OpenAudible / Libation / Audiobookshelf export /
+  metascan folder-scan), and **issue-form-to-PR automation** (`cmd/metaissue` +
+  `internal/issueform` + `intake.yml`) have all landed. Remaining: Open
+  Library/Wikidata crosswalk seeding and per-title ASIN lookup assist.
+- **Phase 1.5 (integration landed)**: AudioSilo server/player integration.
+  audiosilo-server's `GET /libraries/{id}/meta` composes a book's enrichment from
+  this project's `metaserve` (`lookup` -> `works/{id}` -> `series`) behind an admin
+  off-switch and a cache, and the player renders it capability-gated. Consuming
+  `metaserve`'s response shapes makes them a three-repo contract (audiosilo-meta ->
+  audiosilo-server `internal/meta` -> the player only if the server's outward
+  envelope changes; see workspace CROSS-REPO.md §17). The "before any ABS facade"
+  ordering is now satisfied: the **Audiobookshelf metadata-provider facade**
+  (`GET /abs/search`, `internal/serve/abs.go`) has since shipped on top of it.
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four

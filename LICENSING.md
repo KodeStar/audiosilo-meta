@@ -9,8 +9,8 @@ submission you agree to the terms below.
 | What | Licence | Notes |
 |---|---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** | See [`LICENSE`](LICENSE). Matches audiosilo-server. |
-| Data - factual core | **CC0-1.0** (public domain dedication) | Everything in `data/` today. Every record carries `license: "CC0-1.0"`. |
-| Data - derived layer (reserved) | **CC BY-SA 3.0** | Not yet accepted. Reserved for future characters/recaps and any Fandom / LibraryThing CK derived content. Kept in separately-tagged records. |
+| Data - factual core | **CC0-1.0** (public domain dedication) | The works, recordings, people, and series. Every such record carries `license: "CC0-1.0"`. |
+| Data - derived layer | **CC BY-SA 3.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in separately-tagged records (the per-work `characters.json` / `recaps.json` sidecars). |
 | Publisher blurbs, cover art | **Not accepted** | Referenced, never copied. Covers are URLs only; descriptions must be community-written. |
 
 ## Why two data licences
@@ -21,17 +21,22 @@ is not copyrightable (facts are free under Feist v. Rural). Dedicating it to the
 public domain with **CC0-1.0** removes all friction: anyone can build on the data
 without attribution obligations, and downstream forks stay maximally open.
 
-A future **CC BY-SA 3.0** layer is reserved for *derived, expressive* content -
+The **CC BY-SA 3.0** layer covers *derived, expressive* content -
 community-authored character descriptions and recaps, and anything sourced from
 Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source).
-Share-alike is desirable there: it keeps derivative works open. That layer does
-**not** exist yet - no such records are accepted in Phase 0 - and when it lands it
-lives in separately-tagged records so the CC0 core is never contaminated by
-share-alike obligations.
+Share-alike is desirable there: it keeps derivative works open. This layer lives
+in separately-tagged records - the per-work `characters.json` and `recaps.json`
+sidecars - so the CC0 core is never contaminated by share-alike obligations. The
+boundary is **enforced structurally by the schema**, not by convention: a core
+record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
+only carry `CC-BY-SA-3.0` - the `license` enum differs between them, and
+`metacheck` rejects any record that crosses the line. Authoring this layer is
+documented in [AUTHORING.md](AUTHORING.md).
 
-## The CC0 core (all current data)
+## The CC0 core
 
-Everything under `data/` is dedicated to the public domain under
+The factual core - works, recordings, people, and series - is dedicated to the
+public domain under
 [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/). This covers:
 
 - Works: title, subtitle, authors, language, first-published year, series

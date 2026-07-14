@@ -1,17 +1,20 @@
 # audiosilo-meta
 
 The community audiobook metadata database behind
-[meta.audiosilo.app](https://meta.audiosilo.app) *(planned, Phase 1)*.
+[meta.audiosilo.app](https://meta.audiosilo.app).
 
 **The GitHub repository is the database.** Metadata lives as plain JSON files, one
 per entity, edited by pull request or issue form, validated by Go tooling in CI,
 and compiled into a single SQLite artifact that servers consume.
 
-> **Status: Phase 1 in progress** - governance, schemas, the validation/build
-> pipeline, the OpenAudible importer, the read-only **API server** (`metaserve`),
-> the **website** (`site/`, served by metaserve), and the Docker image are
-> built. The public deployment at meta.audiosilo.app and the remaining import
-> paths are still **planned**. Only claim what exists.
+> **Status: Phase 1 shipped, Phase 2 landed.** Governance, schemas, the
+> validation/build pipeline, the OpenAudible and Libation importers, the
+> read-only **API server** (`metaserve`), the **website** (`site/`, served by
+> metaserve at meta.audiosilo.app), the Docker image, the in-browser `/import`
+> diff, the **Audiobookshelf** metadata-provider endpoint, and issue-form intake
+> automation are all built. The characters/recaps CC BY-SA layer (Phase 2) is
+> live across the schema, tooling, and data. Still open: Open Library / Wikidata
+> crosswalk seeding. Only claim what exists.
 
 ## Why this exists
 
@@ -208,6 +211,26 @@ in the summary so you know where to check for collections. The JSON goes to
 stdout by default (or `-o <file>`); a human-readable summary goes to stderr.
 Pass `-ffprobe ""` to skip ffprobe enrichment.
 
+## Audiobookshelf
+
+`metaserve` doubles as an **Audiobookshelf custom metadata provider**. An ABS
+admin adds it under **Settings -> Item Metadata Utils -> Custom Metadata
+Providers** with the URL `https://meta.audiosilo.app/abs` and no authentication
+(the data is public); it needs ABS **v2.8.0 or newer**. Once added it appears in
+each book's **Match** / **Quick Match** picker (it is not used by the background
+scanner), for book libraries only.
+
+The endpoint is `GET /abs/search`. ABS sends `?mediaType=book&query=<title>`
+(with optional `&author=` and `&isbn=`) and never an ASIN; the server returns
+`{"matches": [...]}` with one entry per **recording**, up to 10 - an exact ISBN
+lookup first, otherwise an FTS title search with loose author boosting. Each
+match carries title, subtitle, author, narrator, publisher, publishedYear,
+description, cover, ISBN, ASIN, series + sequence, language, and duration (in
+minutes). Genres and tags are deliberately never returned - the data model does
+not carry publisher genres/tags. The [`/audiobookshelf`](https://meta.audiosilo.app/audiobookshelf)
+site page walks through both directions (adding the provider, and exporting an
+ABS library into `/import`).
+
 ## Contributing
 
 New contributions are welcome - by direct pull request or by issue form (no JSON
@@ -223,8 +246,8 @@ every submission.
 | What | Licence |
 |---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** ([`LICENSE`](LICENSE)) |
-| Data - factual core (all current data) | **CC0-1.0** public domain dedication |
-| Data - derived layer (reserved, not yet accepted) | **CC BY-SA 3.0** |
+| Data - factual core (works, recordings, people, series) | **CC0-1.0** public domain dedication |
+| Data - derived layer (characters and recaps) | **CC BY-SA 3.0** |
 
 Publisher blurbs and cover art are referenced, never copied. Full policy,
 including the takedown / rightsholder opt-out channel, in
@@ -232,26 +255,31 @@ including the takedown / rightsholder opt-out channel, in
 
 ## Roadmap
 
-- **Phase 0** (now) - governance, schemas, CI validation, the SQLite builder, and
+- **Phase 0** (done) - governance, schemas, CI validation, the SQLite builder, and
   hand-curated records that prove the pipeline (including multi-recording works).
-- **Phase 1** *(in progress)* - the read-only Go API server (`metaserve`, FTS
-  search + ASIN/ISBN lookup), the website (`site/` - search-first landing,
-  stats, latest additions, work/person/series pages), the Docker image, and the
-  OpenAudible and Libation importers, the public deployment
-  (meta.audiosilo.app), and the in-browser import page (`/import` - parses an
-  OpenAudible export, a Libation export, or a metascan folder scan client-side
-  and diffs it against the live catalogue) have **landed**. Still planned:
-  seeding from Open Library / Wikidata identifier crosswalks and issue-form
-  automation.
-- **Phase 1.5 - AudioSilo player integration** *(planned, the priority
-  integration)* - the AudioSilo server and player surface enriched metadata from
-  this database. This is a defining product feature and ships before any
-  Audiobookshelf-provider facade.
-- **Phase 2** *(planned)* - community-authored characters and recaps under strict
-  length and originality rules, in a separately-tagged CC BY-SA layer.
-- **Phase 3+** *(planned)* - extraction tooling (spoiler-tagged character and
-  recap data), and deeper player integration gated by the listener's progress
-  position.
+- **Phase 1** - the read-only Go API server (`metaserve`, FTS search + ASIN/ISBN
+  lookup), the website (`site/` - search-first landing, stats, latest additions,
+  work/person/series pages), the Docker image, the OpenAudible and Libation
+  importers, the public deployment (meta.audiosilo.app), the in-browser import
+  page (`/import` - parses an OpenAudible export, a Libation export, an
+  Audiobookshelf library export, or a metascan folder scan client-side and diffs
+  it against the live catalogue), and **issue-form intake automation** (a data
+  issue form becomes a validated bot pull request - see
+  [GOVERNANCE.md](GOVERNANCE.md)) have **landed**. Still planned: seeding from
+  Open Library / Wikidata identifier crosswalks.
+- **Phase 1.5 - AudioSilo player integration** - the AudioSilo server
+  (`GET /libraries/{id}/meta`) and player surface enriched metadata from this
+  database, capability-gated and behind an admin off-switch. This priority
+  integration has **landed**, and the **Audiobookshelf metadata-provider facade**
+  (`GET /abs/search`, see above) has now shipped on top of it.
+- **Phase 2** - community-authored characters and recaps under strict length and
+  originality rules, in a separately-tagged CC BY-SA layer, have **landed**: the
+  schema enforces the layer structurally, `metacheck` validates it,
+  `metabuild`/`metaserve` ship it, and the seed tree already carries
+  characters/recaps sidecars. Authoring guide: [AUTHORING.md](AUTHORING.md).
+- **Phase 3+** - the source-to-sidecar extraction tooling (`metaextract` plus the
+  documented agent process) has **landed**; deeper player rendering gated by the
+  listener's progress position is in progress.
 
 Community: questions, contribution help, and coordination happen on the
 [AudioSilo Discord](https://discord.gg/nFFqRbkRn6) and in GitHub Discussions.
