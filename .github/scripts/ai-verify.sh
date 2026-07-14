@@ -8,17 +8,29 @@
 #                   {verdict:"skip"} object when verification could not run).
 #   <comment-out>   receives a markdown summary to post on the PR.
 #
-# SECURITY: the context file is UNTRUSTED DATA (a contributor's diff). It is
-# embedded into the request as a JSON string via `jq --arg` (which escapes it,
-# so it cannot break out of the JSON or forge request fields), and the system
-# prompt instructs the model to treat everything in it as data and ignore any
-# instructions inside it. Nothing from the diff is ever executed here.
+# TRANSPORT: two credentials are supported, in preference order. Both feed the
+# SAME system prompt, context handling, verdict extraction, and comment render.
+#   1. CLAUDE_CODE_OAUTH_TOKEN (a Claude subscription token from `claude
+#      setup-token`) drives the Claude Code CLI in headless mode. This token
+#      only authenticates through the CLI, never the raw Messages API.
+#   2. ANTHROPIC_API_KEY drives a direct Messages API request via curl.
+# If neither is set (the normal case on fork pull requests), the script writes a
+# neutral skip.
 #
-# This script NEVER exits non-zero for an operational reason (missing API key,
-# transport error, unparseable model output): it writes a neutral "skip" verdict
-# so a data pull request is never blocked by the verifier's own plumbing. Only a
-# genuine {verdict:"flag"} signals a concern, and even that is advisory - a human
-# still reviews.
+# SECURITY: the context file is UNTRUSTED DATA (a contributor's diff). On the
+# curl path it is embedded into the request as a JSON string via `jq --arg`
+# (which escapes it, so it cannot break out of the JSON or forge request
+# fields); on the CLI path it is passed as a single argv string, never
+# interpolated into a shell command. Either way the system prompt instructs the
+# model to treat everything in it as data and ignore any instructions inside it,
+# and the CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the
+# workspace. Nothing from the diff is ever executed here.
+#
+# This script NEVER exits non-zero for an operational reason (missing
+# credential, missing CLI, transport error, unparseable model output): it writes
+# a neutral "skip" verdict so a data pull request is never blocked by the
+# verifier's own plumbing. Only a genuine {verdict:"flag"} signals a concern, and
+# even that is advisory - a human still reviews.
 set -uo pipefail
 
 CONTEXT_FILE="${1:?context file required}"
@@ -41,8 +53,8 @@ skip() {
   exit 0
 }
 
-if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
-  skip "No \`ANTHROPIC_API_KEY\` secret is configured (this is expected on fork pull requests, which run with a read-only token and no secrets). A maintainer can re-run verification after pushing the branch to the repository."
+if [ -z "${CLAUDE_CODE_OAUTH_TOKEN:-}" ] && [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+  skip "No \`CLAUDE_CODE_OAUTH_TOKEN\` or \`ANTHROPIC_API_KEY\` secret is configured (this is expected on fork pull requests, which run with a read-only token and no secrets). A maintainer can re-run verification after pushing the branch to the repository."
 fi
 
 if [ ! -s "$CONTEXT_FILE" ]; then
@@ -74,28 +86,65 @@ USER="Here is the pull request diff (and the full text of changed files) to revi
 
 $CONTEXT"
 
-REQUEST="$(jq -n \
-  --arg model "$MODEL" \
-  --arg system "$SYSTEM" \
-  --arg user "$USER" \
-  '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}')"
+# TEXT receives the model's raw reply text, however it was obtained. Both
+# branches feed the identical SYSTEM + untrusted CONTEXT and share every step
+# below (verdict extraction, comment render).
+TEXT=""
 
-RESPONSE="$(curl -sS --max-time 120 "$API_URL" \
-  -H "x-api-key: ${ANTHROPIC_API_KEY}" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "content-type: application/json" \
-  -d "$REQUEST" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
+  # Preferred: the Claude Code CLI in headless mode. A subscription OAuth token
+  # only authenticates through the CLI, not the raw Messages API. Run it as a
+  # pure text completion: --system-prompt fully REPLACES the default agent
+  # prompt (so the model is told nothing about tools), --allowedTools "" grants
+  # no tools, and -p/--output-format json prints one result object whose
+  # `result` field holds the final assistant text.
+  if ! command -v claude >/dev/null 2>&1; then
+    skip "The Claude Code CLI (\`claude\`) is not installed on the runner."
+  fi
 
-if [ -z "$RESPONSE" ]; then
-  skip "The Anthropic API returned an empty response."
+  CLI_OUT="$(claude -p "$USER" \
+    --system-prompt "$SYSTEM" \
+    --model "$MODEL" \
+    --output-format json \
+    --allowedTools "" 2>/dev/null)" || skip "The Claude Code CLI invocation failed."
+
+  if [ -z "$CLI_OUT" ]; then
+    skip "The Claude Code CLI returned an empty response."
+  fi
+
+  CLI_IS_ERROR="$(printf '%s' "$CLI_OUT" | jq -r '.is_error // false' 2>/dev/null || echo true)"
+  if [ "$CLI_IS_ERROR" = "true" ]; then
+    CLI_ERR="$(printf '%s' "$CLI_OUT" | jq -r '.result // .error // "unknown error"' 2>/dev/null)"
+    skip "The Claude Code CLI returned an error: ${CLI_ERR}"
+  fi
+
+  TEXT="$(printf '%s' "$CLI_OUT" | jq -r '.result // empty' 2>/dev/null)"
+else
+  # Fallback: a direct Messages API request via curl (ANTHROPIC_API_KEY).
+  REQUEST="$(jq -n \
+    --arg model "$MODEL" \
+    --arg system "$SYSTEM" \
+    --arg user "$USER" \
+    '{model: $model, max_tokens: 4000, system: $system, messages: [{role: "user", content: $user}]}')"
+
+  RESPONSE="$(curl -sS --max-time 120 "$API_URL" \
+    -H "x-api-key: ${ANTHROPIC_API_KEY}" \
+    -H "anthropic-version: 2023-06-01" \
+    -H "content-type: application/json" \
+    -d "$REQUEST" 2>/dev/null)" || skip "The Anthropic API request failed (transport error)."
+
+  if [ -z "$RESPONSE" ]; then
+    skip "The Anthropic API returned an empty response."
+  fi
+
+  API_ERROR="$(printf '%s' "$RESPONSE" | jq -r '.error.message // empty' 2>/dev/null)"
+  if [ -n "$API_ERROR" ]; then
+    skip "The Anthropic API returned an error: ${API_ERROR}"
+  fi
+
+  TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
 fi
 
-API_ERROR="$(printf '%s' "$RESPONSE" | jq -r '.error.message // empty' 2>/dev/null)"
-if [ -n "$API_ERROR" ]; then
-  skip "The Anthropic API returned an error: ${API_ERROR}"
-fi
-
-TEXT="$(printf '%s' "$RESPONSE" | jq -r '[.content[]? | select(.type=="text") | .text] | join("")' 2>/dev/null)"
 if [ -z "$TEXT" ]; then
   skip "The model returned no text output."
 fi

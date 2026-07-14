@@ -8,9 +8,10 @@ name: ai-verify
 # SECURITY: this uses the plain `pull_request` trigger, NOT
 # `pull_request_target`, which is FORBIDDEN in this repo (the "pwn request"
 # supply-chain pattern). Consequences, accepted deliberately:
-#   - Fork pull requests run with a read-only token and NO secrets, so
-#     ANTHROPIC_API_KEY is absent there. The script then writes a neutral "skip"
-#     notice rather than failing. A fork PR is therefore AI-verified only after a
+#   - Fork pull requests run with a read-only token and NO secrets, so neither
+#     CLAUDE_CODE_OAUTH_TOKEN nor ANTHROPIC_API_KEY is present there. The script
+#     then writes a neutral "skip" notice rather than failing. A fork PR is
+#     therefore AI-verified only after a
 #     maintainer pushes its branch to this repository (a same-repo branch gets
 #     the secret and a write token), or a maintainer re-runs via workflow_dispatch
 #     / applies the `ai-verify` label. We do NOT weaken this to reach fork
@@ -39,6 +40,12 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    # HAS_OAUTH gates the CLI-install step below. A step-level `if:` can read the
+    # `env` context but a `secrets` comparison there is fragile, so we resolve
+    # the presence of the OAuth secret into a plain boolean env var here (job
+    # `env` may reference `secrets`). Empty on fork PRs (no secrets).
+    env:
+      HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     # Same-repo branches (secrets + write token available), a maintainer-applied
     # `ai-verify` label, or a manual dispatch. Fork PRs without the label are
     # skipped - they cannot reach the secret anyway.
@@ -89,9 +96,18 @@ jobs:
           } >> context.txt
           if [ -s context.txt ]; then echo "has_changes=true" >> "$GITHUB_OUTPUT"; else echo "has_changes=false" >> "$GITHUB_OUTPUT"; fi
 
+      # Only needed for the preferred CLAUDE_CODE_OAUTH_TOKEN transport (a
+      # subscription token authenticates through the CLI, not the raw API). When
+      # only ANTHROPIC_API_KEY is set the script uses curl and this is skipped.
+      # ubuntu-latest ships Node 20+, so npm is available.
+      - name: Install Claude Code CLI
+        if: steps.gather.outputs.has_changes == 'true' && env.HAS_OAUTH == 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Run AI verification
         if: steps.gather.outputs.has_changes == 'true'
         env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: bash .github/scripts/ai-verify.sh context.txt verdict.json comment.md
 
