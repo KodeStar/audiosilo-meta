@@ -7,6 +7,10 @@ text of a book you own, using a chain of model passes plus the `metaextract`
 tool. Read AUTHORING.md first - everything there applies to the output of this
 process.
 
+If the only source you have is an audiobook, use the local-ASR process in
+[EXTRACTION-AUDIO.md](EXTRACTION-AUDIO.md) instead. It preserves the same
+rolling fact pass, notes-only synthesis boundary, and independent audits.
+
 Use this process when authoring from model memory is too weak: long serials,
 less-famous titles, or any book where chapter-accurate positions matter and
 recall cannot be trusted. Working from the text solves both problems at once:
@@ -113,9 +117,10 @@ deciding per book:
 - **Twist characters**: a `role` of `antagonist` on a character whose betrayal
   is a late reveal leaks the twist at their (early) reveal chapter. Use the
   role they APPEAR to have at reveal, or omit `role`.
-- **Through-points**: pick 6-8 from the fact pass's act-break candidates,
-  roughly every 4-6 chapters; the final entry is through the last chapter and
-  states the actual ending plainly.
+- **Through-points**: scale the count with the book's length and density per
+  AUTHORING.md, normally every 5-10 chapters or 2-4 listening hours at natural
+  act breaks; the final entry is through the last chapter and states the actual
+  ending plainly.
 - **Book 1 vs book N**: only book 2+ gets the `chapter: 0` + `scope: "series"`
   "previously" recap. A series opener has none.
 - Both files: `license` `"CC-BY-SA-3.0"`, `sources` `[{"type": "community"}]`.
@@ -248,10 +253,10 @@ characters.json
 recaps.json
 - Book 2+ gets a chapter-0 scope-series "previously" recap; a series opener
   gets none.
-- 6-8 through-points chosen from the fact pass's ACT BREAK candidates,
-  roughly every 4-6 chapters; each entry is a cumulative catch-up revealing
-  ONLY facts attributed to chapters <= its through chapter. Target ~150-300
-  words each (cap 3000 chars).
+- Scale through-points with length and density per AUTHORING.md, normally every
+  5-10 chapters or 2-4 listening hours at natural ACT BREAK candidates; each
+  entry is a cumulative catch-up revealing ONLY facts attributed to chapters
+  <= its through chapter. Target ~150-300 words each (cap 3000 chars).
 - The FINAL entry is through the last chapter and states the actual ending
   plainly - outcomes, deaths, where the protagonist goes. Never a tease.
 - in_short (<= 1500 chars): the whole arc in one paragraph, ending included.
