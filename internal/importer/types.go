@@ -8,8 +8,9 @@ package importer
 // keys.
 
 const (
-	licenseCC0    = "CC0-1.0"
-	sourceOpenAud = "openaudible-import"
+	licenseCC0     = "CC0-1.0"
+	sourceOpenAud  = "openaudible-import"
+	sourceLibation = "libation-import"
 )
 
 type outSource struct {

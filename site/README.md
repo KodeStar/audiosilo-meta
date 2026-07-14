@@ -45,8 +45,8 @@ modules (no DOM, no React - the `node` environment). Tests are co-located as
 'vitest'` (globals stay off, so `astro check` needs no extra type config). Run
 them with `yarn test` (one-shot) or `yarn test:watch` (watch mode).
 
-Current coverage: `src/lib/import-parse.ts` (export detection + the OpenAudible
-field mapping + the existing-work matching/routing) and
+Current coverage: `src/lib/import-parse.ts` (export detection + the OpenAudible/
+Libation/folder-scan field mappings + the existing-work matching/routing) and
 `src/lib/github-prefill.ts` (the prefilled issue-form URLs + the factual-subset
 privacy contract).
 
@@ -99,7 +99,7 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 | `/work?id=<id>` | `src/pages/work.astro` | A work: cover, authors, series, and each recording (narrators, runtime, publisher, ASIN/ISBN chips, expandable chapters) |
 | `/person?id=<id>` | `src/pages/person.astro` | A person: works they wrote and audiobooks they narrated |
 | `/series?id=<id>` | `src/pages/series.astro` | A series: authors and works in reading order |
-| `/import` | `src/pages/import.astro` | In-browser OpenAudible diff: which of your books are catalogued and which are new, with prefilled contribution issues |
+| `/import` | `src/pages/import.astro` | In-browser library diff (OpenAudible, Libation, or a metascan folder scan): which of your books are catalogued and which are new, with prefilled contribution issues |
 | `/contribute` | `src/pages/contribute.astro` | Contribution coverage: stats band, books needing characters/recaps (grouped by series, linking into `/build`), and series with missing volumes |
 | `/build?work=<id>&kind=characters\|recaps` | `src/pages/build.astro` | Guided characters/recaps builder - edit the expressive layer, download the sidecar JSON, and open a prefilled contribution issue |
 | `/404` | `src/pages/404.astro` | On-brand not-found page |

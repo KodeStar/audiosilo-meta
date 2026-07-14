@@ -1,5 +1,5 @@
 name: Import a library export
-description: Attach an OpenAudible or Libation export so we can ingest the factual fields in bulk.
+description: Attach an OpenAudible export, Libation export, or folder scan so we can ingest the factual fields in bulk.
 title: "[import] "
 labels: ["import", "data"]
 body:
@@ -17,7 +17,8 @@ body:
         Supported exports:
 
         - **OpenAudible** - the `books.json` file.
-        - **Libation** - a JSON export.
+        - **Libation** - a JSON export (Export menu > Export Library > save as JSON).
+        - **Folder scan** - the JSON produced by the repo's `metascan` tool.
 
         **What we ingest and what we drop.** Only factual fields are imported.
         **Personal fields** (purchase dates, ratings, file paths, and any
@@ -33,6 +34,7 @@ body:
       options:
         - "OpenAudible (books.json)"
         - "Libation (JSON)"
+        - "Folder scan (metascan JSON)"
         - "Other / not sure"
     validations:
       required: true

@@ -8,7 +8,9 @@ import {
   addRecapsIssueUrl,
   factualSubset,
   importLibraryIssueUrl,
+  newBooksPayload,
 } from './github-prefill'
+import { parseExport } from './import-parse'
 import type { ParsedBook, WorkMatch } from './import-parse'
 
 function parsedBook(extra: Partial<ParsedBook> = {}): ParsedBook {
@@ -16,6 +18,7 @@ function parsedBook(extra: Partial<ParsedBook> = {}): ParsedBook {
     title: 'A Title',
     authors: [],
     narrators: [],
+    format: 'openaudible',
     raw: {},
     ...extra,
   }
@@ -64,8 +67,8 @@ describe('addWorkIssueUrl', () => {
     expect(p.has('work_series_position')).toBe(false)
   })
 
-  it('defaults rec_abridged to Unabridged and uses Abridged when abridged===true', () => {
-    expect(params(addWorkIssueUrl(parsedBook())).get('rec_abridged')).toBe('Unabridged')
+  it('sets rec_abridged only when the source stated it (omit-unknown)', () => {
+    expect(params(addWorkIssueUrl(parsedBook())).has('rec_abridged')).toBe(false)
     expect(
       params(addWorkIssueUrl(parsedBook({ abridged: false }))).get('rec_abridged')
     ).toBe('Unabridged')
@@ -74,10 +77,12 @@ describe('addWorkIssueUrl', () => {
     ).toBe('Abridged')
   })
 
-  it('formats rec_asins as "REGION: asin", defaulting REGION to US when absent', () => {
+  it('formats rec_asins as "REGION: asin", or the bare asin when region is unknown', () => {
+    // No region -> no region prefix: prefixing US would assert a fact the
+    // export never stated.
     expect(
       params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH' }))).get('rec_asins')
-    ).toBe('US: B0ABCDEFGH')
+    ).toBe('B0ABCDEFGH')
     expect(
       params(addWorkIssueUrl(parsedBook({ asin: 'B0ABCDEFGH', region: 'uk' }))).get('rec_asins')
     ).toBe('UK: B0ABCDEFGH')
@@ -85,6 +90,14 @@ describe('addWorkIssueUrl', () => {
 
   it('omits rec_asins entirely when the book has no asin', () => {
     expect(params(addWorkIssueUrl(parsedBook({}))).has('rec_asins')).toBe(false)
+  })
+
+  it('puts an export ISBN in rec_isbns (audiobook edition), never work_isbn', () => {
+    const p = params(addWorkIssueUrl(parsedBook({ isbn: '9780857500076' })))
+    expect(p.get('rec_isbns')).toBe('9780857500076')
+    // work_isbn is the PRINT/ebook edition - an audiobook export cannot claim it.
+    expect(p.has('work_isbn')).toBe(false)
+    expect(params(addWorkIssueUrl(parsedBook({}))).has('rec_isbns')).toBe(false)
   })
 
   it('carries the other recording fields when present', () => {
@@ -134,7 +147,13 @@ describe('addRecordingIssueUrl', () => {
   it('titles the issue with the recording prefix and carries recording fields', () => {
     const p = params(
       addRecordingIssueUrl(
-        parsedBook({ title: 'Skysworn', narrators: ['Vox Player'], asin: 'B0ABCDEFGH' }),
+        parsedBook({
+          title: 'Skysworn',
+          narrators: ['Vox Player'],
+          asin: 'B0ABCDEFGH',
+          region: 'us',
+          abridged: false,
+        }),
         work
       )
     )
@@ -263,6 +282,126 @@ describe('factualSubset - the privacy contract', () => {
     const out = factualSubset(parsedBook({ raw: { title: 'No Chapters' } }))
     expect('chapters' in out).toBe(false)
   })
+  it('keeps only whitelisted Libation fields and drops personal ones', () => {
+    const raw = {
+      // factual (kept)
+      AudibleProductId: 'B0CQDJ3PND',
+      Title: 'Wind and Truth',
+      Subtitle: 'Stormlight Archive, Book 5',
+      AuthorNames: 'Brandon Sanderson',
+      NarratorNames: 'Kate Reading',
+      SeriesNames: 'The Stormlight Archive',
+      SeriesOrder: '5 : The Stormlight Archive',
+      Language: 'English',
+      Locale: 'uk',
+      LengthInMinutes: 3768,
+      DatePublished: '2024-12-06T03:00:00',
+      Publisher: 'Gollancz',
+      PictureId: '51ZFAWrapyL',
+      IsAbridged: false,
+      // personal / marketing (must be dropped)
+      Account: 'user@example.com',
+      DateAdded: '2020-01-01T00:00:00',
+      MyRatingOverall: 5,
+      CommunityRatingOverall: 4.9,
+      Description: 'A spoilery blurb.',
+      CategoriesNames: 'Fantasy',
+      ContentType: 'Product',
+      HasPdf: false,
+      BookStatus: 'Liberated',
+    }
+    const out = factualSubset(parsedBook({ format: 'libation', raw }))
+    expect(out).toEqual({
+      AudibleProductId: 'B0CQDJ3PND',
+      Title: 'Wind and Truth',
+      Subtitle: 'Stormlight Archive, Book 5',
+      AuthorNames: 'Brandon Sanderson',
+      NarratorNames: 'Kate Reading',
+      SeriesNames: 'The Stormlight Archive',
+      SeriesOrder: '5 : The Stormlight Archive',
+      Language: 'English',
+      Locale: 'uk',
+      LengthInMinutes: 3768,
+      DatePublished: '2024-12-06T03:00:00',
+      Publisher: 'Gollancz',
+      PictureId: '51ZFAWrapyL',
+      IsAbridged: false,
+    })
+    for (const personal of [
+      'Account',
+      'DateAdded',
+      'MyRatingOverall',
+      'CommunityRatingOverall',
+      'Description',
+      'CategoriesNames',
+      'ContentType',
+      'HasPdf',
+      'BookStatus',
+    ]) {
+      expect(personal in out).toBe(false)
+    }
+  })
+
+  it('keeps only whitelisted folder-scan fields and drops the local-only ones', () => {
+    const raw = {
+      // factual (kept)
+      asin: 'B076HYPQLK',
+      isbn: '9780857500076',
+      title: 'Killing Floor',
+      subtitle: 'A Jack Reacher Novel',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      publisher: 'Random House',
+      release_date: '2017-11-02',
+      language: 'en',
+      runtime_min: 823,
+      chapters: 34,
+      // local-only (must never leave the device)
+      path: '/Users/me/Audiobooks/Lee Child/Killing Floor',
+      files: ['/Users/me/Audiobooks/Lee Child/Killing Floor/Killing Floor.m4b'],
+      audio_files: 1,
+      sources: { title: 'tag', asin: 'filename' },
+    }
+    const out = factualSubset(parsedBook({ format: 'folderscan', raw }))
+    expect(out).toEqual({
+      asin: 'B076HYPQLK',
+      isbn: '9780857500076',
+      title: 'Killing Floor',
+      subtitle: 'A Jack Reacher Novel',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      publisher: 'Random House',
+      release_date: '2017-11-02',
+      language: 'en',
+      runtime_min: 823,
+      chapters: 34,
+    })
+    for (const local of ['path', 'files', 'audio_files', 'sources', 'root']) {
+      expect(local in out).toBe(false)
+    }
+    // Belt-and-braces: no local absolute path can appear anywhere in the output.
+    expect(JSON.stringify(out)).not.toContain('/Users/me/Audiobooks')
+  })
+
+  it('drops a folder-scan chapters value that is not a number (count by contract)', () => {
+    // A future producer emitting per-chapter objects (which could carry file
+    // paths) must never leak structure into the download.
+    const out = factualSubset(
+      parsedBook({
+        format: 'folderscan',
+        raw: {
+          title: 'Odd Chapters',
+          chapters: [{ title: 'Ch 1', file: '/Users/me/secret/ch1.mp3' }],
+        },
+      })
+    )
+    expect('chapters' in out).toBe(false)
+    expect(JSON.stringify(out)).not.toContain('/Users/me/secret')
+  })
 })
 
 describe('importLibraryIssueUrl', () => {
@@ -271,5 +410,39 @@ describe('importLibraryIssueUrl', () => {
     expect(u.host).toBe('github.com')
     expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
     expect(u.searchParams.get('template')).toBe('import-library.yml')
+  })
+})
+
+describe('newBooksPayload', () => {
+  it('emits a bare array for OpenAudible books (already detectable)', () => {
+    const payload = newBooksPayload([parsedBook({ raw: { asin: 'B0AAAAAAAA' } })])
+    expect(Array.isArray(payload)).toBe(true)
+  })
+
+  it('re-wraps folder-scan books in the scan envelope, without root/files, and round-trips', () => {
+    const book = parsedBook({
+      format: 'folderscan',
+      raw: {
+        title: 'Killing Floor',
+        authors: ['Lee Child'],
+        asin: 'B076HYPQLK',
+        chapters: 34,
+        path: '/Users/me/Audiobooks/Killing Floor',
+        files: ['/Users/me/Audiobooks/Killing Floor/kf.m4b'],
+        audio_files: 1,
+      },
+    })
+    const payload = newBooksPayload([book]) as Record<string, unknown>
+    expect(payload['format']).toBe('audiosilo-folder-scan')
+    expect(payload['version']).toBe(1)
+    expect('root' in payload).toBe(false)
+    const text = JSON.stringify(payload)
+    expect(text).not.toContain('/Users/me/Audiobooks')
+    // The download must round-trip through the parser as a folder scan.
+    const out = parseExport(text)
+    expect(out.format).toBe('folderscan')
+    expect(out.books).toHaveLength(1)
+    expect(out.books[0].title).toBe('Killing Floor')
+    expect(out.books[0].chapterCount).toBe(34)
   })
 })

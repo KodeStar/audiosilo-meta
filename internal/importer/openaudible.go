@@ -8,25 +8,86 @@ import (
 	"strings"
 )
 
-// rawBook is one entry of an OpenAudible books.json export. Every scalar may
-// arrive as a string, number, bool, or null, so fields are decoded lazily
-// through the coercion helpers rather than into typed struct fields.
+// rawBook is one loosely-typed export entry (an OpenAudible books.json object,
+// or a Libation object before normalization). Every scalar may arrive as a
+// string, number, bool, or null, so fields are decoded lazily through the
+// coercion helpers rather than into typed struct fields.
 type rawBook map[string]any
 
 // rawChapter is one entry of a book's chapters array, same loose typing.
 type rawChapter map[string]any
 
-// parseBooks decodes an OpenAudible export (a top-level JSON array of objects)
-// into rawBooks. Numbers are preserved as json.Number so integer offsets keep
-// their exact value.
-func parseBooks(data []byte) ([]rawBook, error) {
+// wrapperKeys are the object keys an export list may ride under when a tool
+// wraps its array in an envelope (mirrors the site parser's extractEntries, so
+// a file the /import page accepts also imports here).
+var wrapperKeys = []string{"Books", "books", "Items", "items", "Library", "library"}
+
+// decodeEntries decodes an export's entries into rawBooks: a top-level JSON
+// array of objects, or a wrapper object carrying the array under one of
+// wrapperKeys. Non-object entries are skipped (same as the site parser).
+// Numbers are preserved as json.Number so integer offsets keep their exact
+// value. label names the source in the error ("books.json", "libation export").
+func decodeEntries(data []byte, label string) ([]rawBook, error) {
 	dec := json.NewDecoder(bytes.NewReader(data))
 	dec.UseNumber()
-	var books []rawBook
-	if err := dec.Decode(&books); err != nil {
-		return nil, fmt.Errorf("parse books.json: %w", err)
+	var root any
+	if err := dec.Decode(&root); err != nil {
+		return nil, fmt.Errorf("parse %s: %w", label, err)
+	}
+	arr, ok := root.([]any)
+	if !ok {
+		if obj, isObj := root.(map[string]any); isObj {
+			for _, k := range wrapperKeys {
+				if v, isArr := obj[k].([]any); isArr {
+					arr, ok = v, true
+					break
+				}
+			}
+		}
+	}
+	if !ok {
+		return nil, fmt.Errorf("parse %s: expected a JSON array of objects (or a wrapper object holding one)", label)
+	}
+	books := make([]rawBook, 0, len(arr))
+	for _, el := range arr {
+		if m, isMap := el.(map[string]any); isMap {
+			books = append(books, rawBook(m))
+		}
 	}
 	return books, nil
+}
+
+// parseOpenAudible decodes an OpenAudible export and lifts each entry into a
+// sourceBook (symmetric with parseLibation, so a caller can never forget the
+// wrap step).
+func parseOpenAudible(data []byte) ([]sourceBook, error) {
+	entries, err := decodeEntries(data, "books.json")
+	if err != nil {
+		return nil, err
+	}
+	books := make([]sourceBook, 0, len(entries))
+	for _, e := range entries {
+		books = append(books, openAudibleToBook(e))
+	}
+	return books, nil
+}
+
+// openAudibleToBook derives one OpenAudible entry's parse-time facts: the
+// single series claim from series_name/series_sequence (a seriesRef is emitted
+// only for a non-empty name - the sourceBook invariant), the runtime from the
+// seconds field rounded to whole minutes, and the tri-state abridged flag.
+func openAudibleToBook(b rawBook) sourceBook {
+	sb := sourceBook{raw: b}
+	if name := b.str("series_name"); name != "" {
+		rawSeq := b.str("series_sequence")
+		pos, ok := NormalizeSequence(rawSeq)
+		sb.series = []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
+	}
+	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
+		sb.runtimeMin = int((secs + 30) / 60)
+	}
+	sb.abridged = b.boolPtr("abridged")
+	return sb
 }
 
 // str returns the field as a trimmed string. Numbers render via their literal

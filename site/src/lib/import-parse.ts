@@ -1,14 +1,19 @@
-// Pure, framework-free parser for a user's library export (OpenAudible today).
-// Everything here runs in the browser on a file the user drops - the file never
-// leaves the device. Kept free of React and DOM so it is independently testable.
+// Pure, framework-free parser for a user's library export. Three formats are
+// understood: OpenAudible (books.json), Libation ("Export Library" JSON), and
+// the audiosilo folder-scan (the metascan tool's output). Everything here runs
+// in the browser on a file the user drops - the file never leaves the device.
+// Kept free of React and DOM so it is independently testable.
 //
 // The field mapping mirrors the Go importer (the source of truth for how an
-// OpenAudible books.json entry becomes a work + recording):
+// export entry becomes a work + recording):
 //   ../../../internal/importer/openaudible.go  (loose coercion helpers)
+//   ../../../internal/importer/libation.go      (Libation field mapping)
 //   ../../../internal/importer/mapping.go       (language/region/sequence/name rules)
-//   ../../../internal/importer/importer.go       (title, runtime, cover mapping)
+//   ../../../internal/importer/importer.go       (title, runtime, cover, series)
 // Only factual fields are read; personal/marketing fields are ignored (see
-// LICENSING.md).
+// LICENSING.md). The folder-scan's local-only fields (root, per-book path and
+// file list) are never carried into a ParsedBook, so they can never be uploaded
+// or downloaded for submission.
 
 export interface ParsedBook {
   asin?: string // normalized, else undefined
@@ -28,14 +33,18 @@ export interface ParsedBook {
   coverUrl?: string // only if https://
   chapterCount?: number
   abridged?: boolean // tri-state: undefined when unknown
+  format: KnownFormat // the source format (drives the factual-subset allowlist)
   raw: Record<string, unknown> // the original entry (for the factual-subset download)
 }
 
-export type ExportFormat = 'openaudible' | 'libation' | 'unknown'
+export type ExportFormat = 'openaudible' | 'libation' | 'folderscan' | 'unknown'
+/** A format the parser understands - everything but 'unknown'. */
+export type KnownFormat = Exclude<ExportFormat, 'unknown'>
 
 export interface ParseOutcome {
   format: ExportFormat
-  books: ParsedBook[] // empty unless format === 'openaudible'
+  // Books are mapped for openaudible, libation, and folderscan; empty for unknown.
+  books: ParsedBook[]
 }
 
 // --- Coercion helpers (mirror the Go coerceStr/coerceInt/coerceBoolPtr) -----
@@ -125,8 +134,10 @@ const ROLE_QUALIFIERS = new Set([
 
 // A series position: a number or an omnibus range ("1", "2.5", "1-3.5").
 const SEQUENCE_PATTERN = /^\d+(\.\d+)?(-\d+(\.\d+)?)?$/
-// This client keeps release dates strict (the add-work form wants YYYY-MM-DD).
-const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
+// A release date: YYYY, YYYY-MM, or YYYY-MM-DD - mirrors the Go importer's
+// datePattern and the recording schema's date_flex, so a bare ID3 TYER year
+// ("2017") is a kept fact, passed through as-is (never fabricated into -01-01).
+const DATE_PATTERN = /^\d{4}(-\d{2}(-\d{2})?)?$/
 
 function stripRoleQualifier(name: string): string {
   const idx = name.lastIndexOf(' - ')
@@ -137,13 +148,21 @@ function stripRoleQualifier(name: string): string {
   return cleaned === '' ? name : cleaned
 }
 
+// Normalize one raw credit: trim and strip a trailing role qualifier; null when
+// nothing usable remains. Shared by every name-list shape (comma-joined strings
+// and the folder-scan's arrays).
+function cleanName(part: string): string | null {
+  const name = part.trim()
+  return name === '' ? null : stripRoleQualifier(name)
+}
+
 // Split a comma-joined name list, trim each, strip a trailing role qualifier,
 // and drop empties.
 function splitNames(joined: string): string[] {
   const out: string[] = []
   for (const part of joined.split(',')) {
-    const name = part.trim()
-    if (name !== '') out.push(stripRoleQualifier(name))
+    const name = cleanName(part)
+    if (name !== null) out.push(name)
   }
   return out
 }
@@ -194,7 +213,10 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
   const seconds = coerceInt(raw['seconds'])
-  const runtimeMin = seconds !== undefined && seconds > 0 ? Math.round(seconds / 60) : undefined
+  // Round to whole minutes, but only emit a positive value (a 1-29s file rounds
+  // to 0, which the Go importer omits - 0 is not a fact to assert).
+  const minutes = seconds !== undefined && seconds > 0 ? Math.round(seconds / 60) : 0
+  const runtimeMin = minutes > 0 ? minutes : undefined
   const releaseRaw = coerceStr(raw['release_date'])
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
@@ -223,15 +245,339 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
     coverUrl,
     chapterCount,
     abridged,
+    format: 'openaudible',
     raw,
   }
 }
 
-// Keys that mark an OpenAudible entry (lowercase). Libation uses PascalCase.
-const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
-const LIBATION_KEYS = ['Title', 'Authors', 'Narrators', 'AudibleProductId', 'Asin']
+// --- Libation mapping (mirrors internal/importer/libation.go) ---------------
 
-// Libation sometimes wraps its list in an object under one of these keys.
+// AudibleApi's full locale names (what Libation's Locale column carries for
+// every marketplace except us/uk, which are already 2-letter; verified against
+// AudibleApi/Localization.cs) -> the recording schema's marketplace codes.
+const LIBATION_LOCALE_NAMES: Record<string, string> = {
+  australia: 'au',
+  brazil: 'br',
+  canada: 'ca',
+  france: 'fr',
+  germany: 'de',
+  india: 'in',
+  italy: 'it',
+  japan: 'jp',
+  spain: 'es',
+}
+
+// Resolve a Libation Locale value - a 2-letter marketplace code ("us", "uk") or
+// an AudibleApi locale name ("germany") - to a schema marketplace code.
+// AudibleApi's legacy "pre-amazon - <name>" locales map like their plain
+// counterparts. undefined for an unknown or empty value.
+function mapLibationLocale(locale: string): string | undefined {
+  const l = locale.trim().toLowerCase().replace(/^pre-amazon - /, '')
+  return mapRegion(l) ?? LIBATION_LOCALE_NAMES[l]
+}
+
+// Reduce an ISO timestamp ("2018-10-18T23:00:00") to its YYYY-MM-DD date part,
+// kept only when it is a full valid date.
+function libationDate(ts: string): string | undefined {
+  const d = ts.split('T')[0]
+  return DATE_PATTERN.test(d) ? d : undefined
+}
+
+// Build the Amazon cover CDN URL from a Libation PictureId. A '+' (a valid
+// image-id char) is percent-encoded so the URL is unambiguous; every other id
+// char ([A-Za-z0-9-]) is already URL-safe.
+function libationCover(pictureId: string): string | undefined {
+  const id = pictureId.trim()
+  if (id === '') return undefined
+  return `https://m.media-amazon.com/images/I/${id.replace(/\+/g, '%2B')}._SL500_.jpg`
+}
+
+// Libation's sentinel SeriesOrder position for unorderable content (episodes):
+// it means "no position", not book 999999999.
+const LIBATION_UNSORTED = '999999999'
+
+// A new series claim starts at ", " only when an order token (digits/dots/
+// hyphens, possibly empty) and its colon follow - so a comma INSIDE a series
+// name ("1 : Ready, Set, Go: The Story") never splits (mirrors the Go
+// splitLibationClaims). Each claim is then "<order> ?: <name>".
+const LIB_CLAIM_SPLIT = /, (?=[\d.\-]* ?: )/
+const LIB_CLAIM_PATTERN = /^([\d.\-]*) ?: (.*)$/
+
+// Parse a Libation SeriesOrder ("{order} : {name}", multiple joined by ", ") and
+// return the PRIMARY series for display/prefill: the first entry with a valid
+// position, else the first entry's name with no position. The Go importer places
+// a book in every one of its series; this client surfaces only one per book.
+function primaryLibationSeries(
+  order: string,
+  names: string
+): { seriesName?: string; seriesPosition?: string } {
+  const entries: { name: string; position?: string }[] = []
+  if (order.trim() !== '') {
+    for (const part of order.split(LIB_CLAIM_SPLIT)) {
+      const m = LIB_CLAIM_PATTERN.exec(part)
+      if (!m) continue
+      const name = m[2].trim()
+      if (name === '') continue
+      let ord = m[1].trim()
+      if (ord === LIBATION_UNSORTED) ord = ''
+      entries.push({
+        name,
+        position: SEQUENCE_PATTERN.test(ord) ? ord : undefined,
+      })
+    }
+  }
+  if (entries.length === 0) {
+    for (const name of names.split(', ')) {
+      const n = name.trim()
+      if (n !== '') entries.push({ name: n })
+    }
+  }
+  if (entries.length === 0) return {}
+  const positioned = entries.find((e) => e.position !== undefined)
+  const chosen = positioned ?? entries[0]
+  return { seriesName: chosen.name, seriesPosition: chosen.position }
+}
+
+function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
+  const asin = normalizeAsin(coerceStr(raw['AudibleProductId']))
+  const title = coerceStr(raw['Title'])
+  const subtitle = coerceStr(raw['Subtitle'])
+  const authors = splitNames(coerceStr(raw['AuthorNames']))
+  const narrators = splitNames(coerceStr(raw['NarratorNames']))
+  const { seriesName, seriesPosition } = primaryLibationSeries(
+    coerceStr(raw['SeriesOrder']),
+    coerceStr(raw['SeriesNames'])
+  )
+  const languageRaw = coerceStr(raw['Language'])
+  const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
+  const minutes = coerceInt(raw['LengthInMinutes'])
+  const runtimeMin = minutes !== undefined && minutes > 0 ? minutes : undefined
+  const releaseDate = libationDate(coerceStr(raw['DatePublished']))
+  const publisher = coerceStr(raw['Publisher'])
+  const region = mapLibationLocale(coerceStr(raw['Locale']))
+  const coverUrl = libationCover(coerceStr(raw['PictureId']))
+  const abridged = coerceBool(raw['IsAbridged'])
+
+  return {
+    asin: asin || undefined,
+    isbn: undefined, // Libation exports carry no ISBN
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region,
+    coverUrl,
+    chapterCount: undefined, // Libation exports carry no chapter data
+    abridged,
+    format: 'libation',
+    raw,
+  }
+}
+
+// --- Folder-scan mapping (the metascan tool's output) -----------------------
+
+// ISO 639-2/639-3 codes -> 639-1, for the languages the importer supports. The
+// standard ID3 language frame (TLAN) is ISO 639-2, so a properly tagged library
+// arrives with "eng"/"deu"/... - these must map, not fall into cannot-match.
+const ISO_639_3_TO_1: Record<string, string> = {
+  eng: 'en',
+  ger: 'de',
+  deu: 'de',
+  fre: 'fr',
+  fra: 'fr',
+  spa: 'es',
+  ita: 'it',
+  jpn: 'ja',
+  por: 'pt',
+  dut: 'nl',
+  nld: 'nl',
+  pol: 'pl',
+  rus: 'ru',
+  chi: 'zh',
+  zho: 'zh',
+  tur: 'tr',
+}
+
+// The folder-scan language may be an ISO 639-1 code, an ISO 639-2/3 code (ID3
+// TLAN), or a word. Map a known word or 3-letter code, accept a bare 2-letter
+// code, else undefined (the raw value stays visible via languageRaw).
+function mapLanguageLoose(raw: string): string | undefined {
+  const w = raw.trim().toLowerCase()
+  if (LANGUAGE_MAP[w]) return LANGUAGE_MAP[w]
+  if (ISO_639_3_TO_1[w]) return ISO_639_3_TO_1[w]
+  return /^[a-z]{2}$/.test(w) ? w : undefined
+}
+
+// Coerce a value that should be a string array (folder-scan authors/narrators),
+// applying the same per-name normalization as splitNames (via cleanName).
+function toNameArray(v: unknown): string[] {
+  if (!Array.isArray(v)) return []
+  const out: string[] = []
+  for (const el of v) {
+    const name = cleanName(coerceStr(el))
+    if (name !== null) out.push(name)
+  }
+  return out
+}
+
+function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
+  const asin = normalizeAsin(coerceStr(raw['asin']))
+  const isbn = normalizeIsbn(coerceStr(raw['isbn']))
+  const title = coerceStr(raw['title'])
+  const subtitle = coerceStr(raw['subtitle'])
+  const authors = toNameArray(raw['authors'])
+  const narrators = toNameArray(raw['narrators'])
+  const seriesName = coerceStr(raw['series'])
+  const seqRaw = coerceStr(raw['series_position'])
+  const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
+  const languageRaw = coerceStr(raw['language'])
+  const language = mapLanguageLoose(languageRaw)
+  const runtime = coerceInt(raw['runtime_min'])
+  const runtimeMin = runtime !== undefined && runtime > 0 ? runtime : undefined
+  const releaseRaw = coerceStr(raw['release_date'])
+  const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
+  const publisher = coerceStr(raw['publisher'])
+  const chapterCount = coerceInt(raw['chapters']) // a count in the folder-scan shape
+
+  return {
+    asin: asin || undefined,
+    isbn: isbn || undefined,
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName: seriesName || undefined,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region: undefined, // folder-scan carries no marketplace region
+    coverUrl: undefined,
+    chapterCount,
+    abridged: undefined,
+    format: 'folderscan',
+    raw,
+  }
+}
+
+// --- Format registry ----------------------------------------------------------
+// ONE descriptor per format: detection, entry parser, privacy allowlist, label.
+// Adding a format is one entry here (the Record type makes the compiler demand
+// every field) plus its slot in DETECTION_ORDER below.
+
+interface FormatSpec {
+  /** Human label for issue prefills ("<label> (reviewed <date>)"). */
+  label: string
+  /** Whether the dropped JSON is this format; entries is the extracted array, if any. */
+  detect: (data: unknown, entries: unknown[] | null) => boolean
+  /** Map one raw entry to a ParsedBook. */
+  parse: (raw: Record<string, unknown>) => ParsedBook
+  /**
+   * The factual fields kept from raw for the bulk download (LICENSING.md).
+   * Everything else - purchase dates, ratings, account, descriptions, and the
+   * folder-scan's local-only root/path/files - is stripped and never leaves the
+   * device beyond this.
+   */
+  factualKeys: readonly string[]
+}
+
+// The folder-scan is a single object with this discriminator (not an array).
+const FOLDERSCAN_FORMAT = 'audiosilo-folder-scan'
+
+// Keys that mark an OpenAudible entry (lowercase; Libation uses PascalCase).
+// The Libation list carries only Libation-SPECIFIC keys - a generic key like
+// Title would misdetect a foreign export (Goodreads-ish shapes) and run the
+// full pipeline on garbage instead of falling through to 'unknown'.
+const OPENAUDIBLE_KEYS = ['asin', 'narrated_by', 'title_short', 'series_name', 'image_url']
+const LIBATION_KEYS = ['AudibleProductId', 'AuthorNames', 'NarratorNames']
+
+export const FORMATS: Record<KnownFormat, FormatSpec> = {
+  openaudible: {
+    label: 'OpenAudible library export',
+    detect: (_data, entries) => entriesHaveAnyKey(entries, OPENAUDIBLE_KEYS),
+    parse: parseBook,
+    factualKeys: [
+      'asin',
+      'title',
+      'title_short',
+      'author',
+      'narrated_by',
+      'series_name',
+      'series_sequence',
+      'language',
+      'release_date',
+      'publisher',
+      'image_url',
+      'region',
+      'seconds',
+      'abridged',
+    ],
+  },
+  libation: {
+    label: 'Libation library export',
+    detect: (_data, entries) => entriesHaveAnyKey(entries, LIBATION_KEYS),
+    parse: parseLibationBook,
+    factualKeys: [
+      'AudibleProductId',
+      'Title',
+      'Subtitle',
+      'AuthorNames',
+      'NarratorNames',
+      'SeriesNames',
+      'SeriesOrder',
+      'Language',
+      'Locale',
+      'LengthInMinutes',
+      'DatePublished',
+      'Publisher',
+      'PictureId',
+      'IsAbridged',
+    ],
+  },
+  folderscan: {
+    label: 'audiosilo folder scan',
+    // The version stamp is checked so tool/site skew fails LOUD: a future v2
+    // scan on an old deployed site reads as 'unknown' (the unsupported-format
+    // card) instead of silently misparsing an evolved shape.
+    detect: (data) =>
+      isObject(data) &&
+      coerceStr(data['format']) === FOLDERSCAN_FORMAT &&
+      coerceInt(data['version']) === 1,
+    parse: parseFolderscanBook,
+    factualKeys: [
+      'asin',
+      'isbn',
+      'title',
+      'subtitle',
+      'authors',
+      'narrators',
+      'series',
+      'series_position',
+      'publisher',
+      'release_date',
+      'language',
+      'runtime_min',
+      'chapters',
+    ],
+  },
+}
+
+// Detection order is load-bearing: the discriminated folder-scan first (its
+// per-book keys overlap OpenAudible's), then OpenAudible's lowercase keys
+// before Libation's generic PascalCase Title.
+const DETECTION_ORDER: readonly KnownFormat[] = ['folderscan', 'openaudible', 'libation']
+
+// Libation sometimes wraps its list in an object under one of these keys (the
+// folder-scan's books array also rides under 'books').
 const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library']
 
 function extractEntries(data: unknown): unknown[] | null {
@@ -245,7 +591,10 @@ function extractEntries(data: unknown): unknown[] | null {
   return null
 }
 
-function sampleHasAnyKey(entries: unknown[], keys: string[]): boolean {
+// True when any of the first entries carries any of the marker keys (false for
+// a missing or empty entries array).
+function entriesHaveAnyKey(entries: unknown[] | null, keys: readonly string[]): boolean {
+  if (!entries) return false
   for (const el of entries.slice(0, 20)) {
     if (isObject(el)) {
       for (const k of keys) if (k in el) return true
@@ -254,20 +603,18 @@ function sampleHasAnyKey(entries: unknown[], keys: string[]): boolean {
   return false
 }
 
-function detectFormat(data: unknown): ExportFormat {
-  const entries = extractEntries(data)
-  if (!entries || entries.length === 0) return 'unknown'
-  // OpenAudible first: its lowercase keys never appear on a Libation entry.
-  if (sampleHasAnyKey(entries, OPENAUDIBLE_KEYS)) return 'openaudible'
-  if (sampleHasAnyKey(entries, LIBATION_KEYS)) return 'libation'
+function detectFormat(data: unknown, entries: unknown[] | null): ExportFormat {
+  for (const f of DETECTION_ORDER) {
+    if (FORMATS[f].detect(data, entries)) return f
+  }
   return 'unknown'
 }
 
 /**
- * Parse a dropped export. Detects the format and, for an OpenAudible export,
- * returns every entry mapped to a ParsedBook. Libation is detected but not
- * parsed (no verified sample), so its books list is empty and the UI routes it
- * to the issue-form path. Throws a friendly Error on invalid JSON.
+ * Parse a dropped export. Detects the format and returns every entry mapped to a
+ * ParsedBook (for openaudible, libation, and the audiosilo folder-scan); an
+ * unknown file yields an empty books list and routes to the issue-form path.
+ * Throws a friendly Error on invalid JSON.
  */
 export function parseExport(text: string): ParseOutcome {
   let data: unknown
@@ -275,17 +622,18 @@ export function parseExport(text: string): ParseOutcome {
     data = JSON.parse(text)
   } catch {
     throw new Error(
-      'That file is not valid JSON. Make sure you selected your OpenAudible books.json export.'
+      'That file is not valid JSON. Make sure you selected a supported library export (OpenAudible, Libation, or an audiosilo folder scan).'
     )
   }
-  const format = detectFormat(data)
-  if (format !== 'openaudible') {
+  const entries = extractEntries(data)
+  const format = detectFormat(data, entries)
+  if (format === 'unknown') {
     return { format, books: [] }
   }
-  const entries = extractEntries(data) ?? []
+  const parse = FORMATS[format].parse
   const books: ParsedBook[] = []
-  for (const el of entries) {
-    if (isObject(el)) books.push(parseBook(el))
+  for (const el of entries ?? []) {
+    if (isObject(el)) books.push(parse(el))
   }
   return { format, books }
 }
