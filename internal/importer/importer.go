@@ -47,7 +47,7 @@ type seriesState struct {
 	path      string
 	isNew     bool
 	dirty     bool
-	out       *outSeries        // populated for a newly created series
+	out       *OutSeries        // populated for a newly created series
 	raw       map[string]any    // populated lazily for an existing series
 	members   map[string]string // work slug -> position
 	positions map[string]string // position -> work slug
@@ -63,7 +63,7 @@ type planner struct {
 	series    map[string]*seriesState
 	asins     map[string]bool
 	writes    map[string][]byte
-	curSource outSource
+	curSource OutSource
 	fatal     error
 	summary   Summary
 }
@@ -145,7 +145,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
-		p.curSource = outSource{Type: sourceType, Ref: NormalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
+		p.curSource = OutSource{Type: sourceType, Ref: NormalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
 		p.addBook(b, titles[i])
 		if p.fatal != nil {
 			return p.summary, p.fatal
@@ -180,9 +180,9 @@ func (p *planner) loadExisting() {
 		p.people[person.ID] = true
 	}
 	for _, w := range cat.Works {
-		ws := &workState{slug: w.ID, authors: toSet(w.Authors), recs: map[string]*recInfo{}}
+		ws := &workState{slug: w.ID, authors: ToSet(w.Authors), recs: map[string]*recInfo{}}
 		for _, r := range w.Recordings {
-			ws.recs[r.ID] = &recInfo{narrators: toSet(r.Narrators)}
+			ws.recs[r.ID] = &recInfo{narrators: ToSet(r.Narrators)}
 			for _, a := range r.ASIN {
 				p.asins[a.ASIN] = true
 			}
@@ -351,8 +351,8 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 		return slug
 	}
 	p.people[slug] = true
-	p.emit(filepath.Join("people", model.Shard(slug), slug+".json"), outPerson{
-		ID: slug, Name: name, License: licenseCC0, Sources: []outSource{p.curSource},
+	p.emit(filepath.Join("people", model.Shard(slug), slug+".json"), OutPerson{
+		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
 	return slug
@@ -389,7 +389,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 		base = "untitled"
 		warn("title %q produced an empty slug; using %q", title, base)
 	}
-	want := toSet(authorSlugs)
+	want := ToSet(authorSlugs)
 	for _, slug := range workCandidates(base, authorSlugs[0]) {
 		ws, exists := p.works[slug]
 		if !exists {
@@ -400,12 +400,12 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			p.works[slug] = ws
 			p.emit(filepath.Join("works", model.Shard(slug), slug, "work.json"), outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
-				License: licenseCC0, Sources: []outSource{p.curSource},
+				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
 			return ws
 		}
-		if sameSet(ws.authors, want) {
+		if SameSet(ws.authors, want) {
 			if claim.compatible(ws) {
 				return ws
 			}
@@ -449,20 +449,20 @@ func (p *planner) findSeries(name string) *seriesState {
 // an identical recording already exists there (a re-import no-op).
 func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) {
 	base := narratorSlugs[0]
-	if year := yearOf(b.str("release_date")); year != "" {
+	if year := YearOf(b.str("release_date")); year != "" {
 		base += "-" + year
 	}
 	if base == "" {
 		base = "unknown-narrator"
 	}
-	slug, present := uniqueRecSlug(ws, base, toSet(narratorSlugs))
+	slug, present := uniqueRecSlug(ws, base, ToSet(narratorSlugs))
 	if present {
 		return // identical recording already imported
 	}
 
 	rec := outRecording{
 		ID: slug, Work: ws.slug, Narrators: narratorSlugs, Language: lang,
-		License: licenseCC0, Sources: []outSource{p.curSource},
+		License: licenseCC0, Sources: []OutSource{p.curSource},
 	}
 	rec.Abridged = b.abridged
 	if b.runtimeMin > 0 {
@@ -479,7 +479,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	}
 	if asin != "" {
 		if region, ok := mapRegion(b.str("region")); ok {
-			rec.ASIN = []outASIN{{Region: region, ASIN: asin}}
+			rec.ASIN = []OutASIN{{Region: region, ASIN: asin}}
 		} else {
 			warn("region %q is not a known marketplace; ASIN not recorded", b.str("region"))
 		}
@@ -488,7 +488,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 		rec.Chapters = chs
 	}
 
-	ws.recs[slug] = &recInfo{narrators: toSet(narratorSlugs)}
+	ws.recs[slug] = &recInfo{narrators: ToSet(narratorSlugs)}
 	p.emit(filepath.Join("works", model.Shard(ws.slug), ws.slug, "recordings", slug+".json"), rec)
 	p.summary.NewRecordings++
 }
@@ -518,7 +518,7 @@ func (p *planner) addToSeries(name, work, pos string, warn func(string, ...any))
 	ss.positions[pos] = work
 	ss.dirty = true
 	if ss.isNew {
-		ss.out.Works = append(ss.out.Works, outSeriesWork{Work: work, Position: pos})
+		ss.out.Works = append(ss.out.Works, OutSeriesWork{Work: work, Position: pos})
 	} else {
 		p.loadSeriesRaw(ss)
 		works, _ := ss.raw["works"].([]any)
@@ -549,7 +549,7 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 				name:      name,
 				path:      filepath.Join("series", model.Shard(slug), slug+".json"),
 				isNew:     true,
-				out:       &outSeries{ID: slug, Name: name, License: licenseCC0, Sources: []outSource{p.curSource}},
+				out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
 				members:   map[string]string{},
 				positions: map[string]string{},
 			}
@@ -690,7 +690,7 @@ func uniqueRecSlug(ws *workState, base string, narrators map[string]bool) (slug 
 		if !ok {
 			return slug, false
 		}
-		if sameSet(existing.narrators, narrators) {
+		if SameSet(existing.narrators, narrators) {
 			return slug, true
 		}
 	}
@@ -734,7 +734,9 @@ func firstNonEmpty(vals ...string) string {
 	return ""
 }
 
-func toSet(items []string) map[string]bool {
+// ToSet builds a set from a string slice. Shared with internal/issueform so a
+// form submission dedupes narrator/author sets exactly like a bulk import.
+func ToSet(items []string) map[string]bool {
 	m := make(map[string]bool, len(items))
 	for _, it := range items {
 		m[it] = true
@@ -742,7 +744,8 @@ func toSet(items []string) map[string]bool {
 	return m
 }
 
-func sameSet(a, b map[string]bool) bool {
+// SameSet reports whether two string sets have identical membership.
+func SameSet(a, b map[string]bool) bool {
 	if len(a) != len(b) {
 		return false
 	}

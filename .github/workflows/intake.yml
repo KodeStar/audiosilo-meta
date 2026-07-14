@@ -41,28 +41,7 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - name: Resolve template from the routing label
-        id: tmpl
-        env:
-          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
-        run: |
-          # Pick the first data: label that names a known template, so an
-          # outcome label added on a re-run (data:duplicate, data:invalid, ...)
-          # is never mistaken for a template.
-          template="$(printf '%s' "$LABELS" | jq -r '
-            ["add-work","add-recording","correction","characters","recaps","import"] as $t
-            | map(select(startswith("data:")) | sub("^data:"; ""))
-            | map(select(. as $x | $t | index($x)))
-            | .[0] // ""')"
-          if [ -z "$template" ]; then
-            echo "no data: routing label; nothing to do"
-            echo "template=" >> "$GITHUB_OUTPUT"
-          else
-            echo "template=$template" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Dump the issue body to a file
-        if: steps.tmpl.outputs.template != ''
         env:
           # Untrusted: written verbatim, never interpolated into a command.
           BODY: ${{ github.event.issue.body }}
@@ -70,15 +49,20 @@ jobs:
 
       - name: Compose records (metaissue)
         id: run
-        if: steps.tmpl.outputs.template != ''
+        # The routing template is derived inside metaissue from the issue's
+        # labels (issueform.TemplateFromLabels), so the allowlist lives in ONE
+        # place. metaissue always emits a JSON verdict - even when no routing
+        # label is present it returns status:invalid - so a data:-labeled issue
+        # is never processed silently.
         env:
-          TEMPLATE: ${{ steps.tmpl.outputs.template }}
+          LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
         run: |
-          go run ./cmd/metaissue --template "$TEMPLATE" --body issue-body.md --data data > result.json || {
+          go run ./cmd/metaissue --labels "$LABELS" --body issue-body.md --data data > result.json || {
             echo '{"status":"invalid","files":[],"messages":["metaissue failed to run"]}' > result.json
           }
           cat result.json
           echo "status=$(jq -r .status result.json)" >> "$GITHUB_OUTPUT"
+          echo "template=$(jq -r '.template // ""' result.json)" >> "$GITHUB_OUTPUT"
 
       - name: Build the pull-request body
         id: prbody
@@ -86,7 +70,7 @@ jobs:
         env:
           ISSUE: ${{ github.event.issue.number }}
           SUBMITTER: ${{ github.event.issue.user.login }}
-          TEMPLATE: ${{ steps.tmpl.outputs.template }}
+          TEMPLATE: ${{ steps.run.outputs.template }}
         run: |
           case "$TEMPLATE" in
             characters|recaps) layer="CC BY-SA 3.0 (community expressive layer)" ;;
@@ -117,7 +101,7 @@ jobs:
         with:
           base: main
           branch: intake/issue-${{ github.event.issue.number }}
-          commit-message: "intake: issue #${{ github.event.issue.number }} (${{ steps.tmpl.outputs.template }})"
+          commit-message: "intake: issue #${{ github.event.issue.number }} (${{ steps.run.outputs.template }})"
           title: "[intake] ${{ github.event.issue.title }}"
           body-path: pr-body.md
           labels: |

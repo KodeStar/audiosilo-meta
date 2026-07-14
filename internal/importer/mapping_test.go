@@ -145,8 +145,8 @@ func TestYearOf(t *testing.T) {
 		"20-01-2020": "",
 	}
 	for in, want := range cases {
-		if got := yearOf(in); got != want {
-			t.Errorf("yearOf(%q) = %q, want %q", in, got, want)
+		if got := YearOf(in); got != want {
+			t.Errorf("YearOf(%q) = %q, want %q", in, got, want)
 		}
 	}
 }

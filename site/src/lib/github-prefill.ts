@@ -10,7 +10,9 @@ import { href } from './api'
 import { FORMATS } from './import-parse'
 import type { ParsedBook, WorkMatch } from './import-parse'
 
-const ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
+// The repo's new-issue endpoint. Exported so the search CTA (search-cta.ts)
+// builds its add-work URL from the same base instead of duplicating the literal.
+export const ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
 // Canonical site origin, for linking an existing work in an add-recording issue.
 // Mirrors `site` in astro.config.mjs; the work path itself reuses href.work.
 const META_SITE = 'https://meta.audiosilo.app'

@@ -5,12 +5,16 @@
 //
 // Usage:
 //
-//	metaissue --template <id> --body <file|-> [--data data] [--date YYYY-MM-DD]
+//	metaissue (--template <id> | --labels <json-array>) --body <file|-> [--data data] [--date YYYY-MM-DD]
 //
 // --template is the issue-form template id (add-work, add-recording,
 // correct-data, characters, recaps, import; a leading "data:" is accepted so a
-// routing label can be passed verbatim). --body reads the rendered issue-form
-// markdown from a file, or from stdin when "-".
+// routing label can be passed verbatim). --labels is the JSON array of the
+// issue's label names (github.event.issue.labels.*.name); the routing template
+// is derived from its data:<template> label, so the intake workflow does not
+// re-implement the routing allowlist. When both are given, --labels wins.
+// --body reads the rendered issue-form markdown from a file, or from stdin when
+// "-".
 //
 // It writes a machine-readable JSON result to stdout so the intake workflow can
 // branch on it:
@@ -40,16 +44,37 @@ var dateRE = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
 func main() {
 	data := flag.String("data", "data", "path to the data directory")
 	template := flag.String("template", "", "issue-form template id (add-work, add-recording, correct-data, characters, recaps, import)")
+	labelsJSON := flag.String("labels", "", "JSON array of the issue's label names; the routing template is derived from its data:<template> label (overrides --template)")
 	bodyPath := flag.String("body", "-", "path to the rendered issue-form body, or - for stdin")
 	date := flag.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
 	flag.Parse()
 
-	if *template == "" {
-		fmt.Fprintln(os.Stderr, "metaissue: --template is required")
-		os.Exit(2)
-	}
 	if *date != "" && !dateRE.MatchString(*date) {
 		fmt.Fprintf(os.Stderr, "metaissue: --date %q must be YYYY-MM-DD\n", *date)
+		os.Exit(2)
+	}
+
+	tmpl := *template
+	if *labelsJSON != "" {
+		labels, err := parseLabels(*labelsJSON)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "metaissue:", err)
+			os.Exit(2)
+		}
+		// Derive the routing template from the issue's labels. An absent routing
+		// label is a data error, not a usage error: emit an invalid verdict (exit
+		// 0) so the intake workflow comments it back instead of ending silently.
+		tmpl = issueform.TemplateFromLabels(labels)
+		if tmpl == "" {
+			emitResult(issueform.Result{
+				Status:   issueform.StatusInvalid,
+				Messages: []string{"no data-routing template label on the issue (expected a data:<template> label such as data:add-work)"},
+			})
+			return
+		}
+	}
+	if tmpl == "" {
+		fmt.Fprintln(os.Stderr, "metaissue: --template or --labels is required")
 		os.Exit(2)
 	}
 
@@ -59,16 +84,29 @@ func main() {
 		os.Exit(2)
 	}
 
-	result := issueform.Process(issueform.Options{
+	emitResult(issueform.Process(issueform.Options{
 		DataDir:  *data,
-		Template: *template,
+		Template: tmpl,
 		Body:     body,
 		Date:     *date,
-	})
+	}))
+}
 
+// parseLabels decodes the --labels JSON array of issue label names.
+func parseLabels(s string) ([]string, error) {
+	var labels []string
+	if err := json.Unmarshal([]byte(s), &labels); err != nil {
+		return nil, fmt.Errorf("parse --labels JSON array: %w", err)
+	}
+	return labels, nil
+}
+
+// emitResult writes the JSON verdict to stdout. A write failure is the only
+// non-zero exit from here; every processing outcome is a status in the JSON.
+func emitResult(r issueform.Result) {
 	enc := json.NewEncoder(os.Stdout)
 	enc.SetIndent("", "  ")
-	if err := enc.Encode(result); err != nil {
+	if err := enc.Encode(r); err != nil {
 		fmt.Fprintln(os.Stderr, "metaissue: encode result:", err)
 		os.Exit(1)
 	}

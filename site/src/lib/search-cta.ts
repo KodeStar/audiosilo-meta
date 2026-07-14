@@ -3,9 +3,10 @@
 // It is deliberately kept LOCAL to the search feature rather than added to
 // github-prefill.ts: the prefill builders there take a fully-parsed ParsedBook,
 // whereas the search CTA only ever has the raw query string a user typed. Pure,
-// React/DOM-free, so it is unit-tested directly.
+// React/DOM-free, so it is unit-tested directly. The new-issue base is shared
+// with github-prefill.ts rather than duplicated.
 
-const ADD_WORK_ISSUE_BASE = 'https://github.com/kodestar/audiosilo-meta/issues/new'
+import { ISSUE_BASE } from './github-prefill'
 
 /**
  * Build a prefilled add-work.yml issue URL from a raw search query, seeding the
@@ -23,5 +24,5 @@ export function addWorkFromQueryUrl(query: string): string {
     p.set('title', `[work] ${title}`)
     p.set('work_title', title)
   }
-  return `${ADD_WORK_ISSUE_BASE}?${p.toString()}`
+  return `${ISSUE_BASE}?${p.toString()}`
 }

@@ -90,6 +90,23 @@ function coerceBool(v: unknown): boolean | undefined {
   return undefined
 }
 
+// --- Runtime helpers --------------------------------------------------------
+
+// Whole minutes from a seconds count, positive-only: a sub-minute file rounds to
+// 0, which is not a fact to assert, so it yields undefined (the Go importer omits
+// it). Shared by the two seconds-based formats (OpenAudible, Audiobookshelf).
+function minutesFromSeconds(sec?: number): number | undefined {
+  if (sec === undefined || sec <= 0) return undefined
+  const minutes = Math.round(sec / 60)
+  return minutes > 0 ? minutes : undefined
+}
+
+// A positive number, else undefined - the two minutes-based formats (Libation,
+// folder-scan) both drop a 0/negative runtime rather than assert it.
+function positiveOrUndefined(n?: number): number | undefined {
+  return n !== undefined && n > 0 ? n : undefined
+}
+
 // --- Field rules (mirror mapping.go) ----------------------------------------
 
 // Word -> ISO 639-1 code; only the languages the importer accepts are mapped.
@@ -222,11 +239,7 @@ function parseBook(raw: Record<string, unknown>): ParsedBook {
   const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
   const languageRaw = coerceStr(raw['language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
-  const seconds = coerceInt(raw['seconds'])
-  // Round to whole minutes, but only emit a positive value (a 1-29s file rounds
-  // to 0, which the Go importer omits - 0 is not a fact to assert).
-  const minutes = seconds !== undefined && seconds > 0 ? Math.round(seconds / 60) : 0
-  const runtimeMin = minutes > 0 ? minutes : undefined
+  const runtimeMin = minutesFromSeconds(coerceInt(raw['seconds']))
   const releaseRaw = coerceStr(raw['release_date'])
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
@@ -313,15 +326,33 @@ const LIBATION_UNSORTED = '999999999'
 const LIB_CLAIM_SPLIT = /, (?=[\d.\-]* ?: )/
 const LIB_CLAIM_PATTERN = /^([\d.\-]*) ?: (.*)$/
 
+// One parsed series claim: a name and, when the source stated a valid one, a
+// position string.
+interface SeriesEntry {
+  name: string
+  position?: string
+}
+
+// From a book's parsed series claims, pick the ONE this client surfaces for
+// display/prefill: the first entry with a valid position, else the first entry.
+// The Go importer places a book in every series it claims; the site shows one.
+// Shared by the Libation and Audiobookshelf mappings.
+function pickPrimarySeries(entries: SeriesEntry[]): {
+  seriesName?: string
+  seriesPosition?: string
+} {
+  if (entries.length === 0) return {}
+  const chosen = entries.find((e) => e.position !== undefined) ?? entries[0]
+  return { seriesName: chosen.name, seriesPosition: chosen.position }
+}
+
 // Parse a Libation SeriesOrder ("{order} : {name}", multiple joined by ", ") and
-// return the PRIMARY series for display/prefill: the first entry with a valid
-// position, else the first entry's name with no position. The Go importer places
-// a book in every one of its series; this client surfaces only one per book.
+// return the PRIMARY series for display/prefill (see pickPrimarySeries).
 function primaryLibationSeries(
   order: string,
   names: string
 ): { seriesName?: string; seriesPosition?: string } {
-  const entries: { name: string; position?: string }[] = []
+  const entries: SeriesEntry[] = []
   if (order.trim() !== '') {
     for (const part of order.split(LIB_CLAIM_SPLIT)) {
       const m = LIB_CLAIM_PATTERN.exec(part)
@@ -342,10 +373,7 @@ function primaryLibationSeries(
       if (n !== '') entries.push({ name: n })
     }
   }
-  if (entries.length === 0) return {}
-  const positioned = entries.find((e) => e.position !== undefined)
-  const chosen = positioned ?? entries[0]
-  return { seriesName: chosen.name, seriesPosition: chosen.position }
+  return pickPrimarySeries(entries)
 }
 
 function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
@@ -360,8 +388,7 @@ function parseLibationBook(raw: Record<string, unknown>): ParsedBook {
   )
   const languageRaw = coerceStr(raw['Language'])
   const language = LANGUAGE_MAP[languageRaw.toLowerCase()]
-  const minutes = coerceInt(raw['LengthInMinutes'])
-  const runtimeMin = minutes !== undefined && minutes > 0 ? minutes : undefined
+  const runtimeMin = positiveOrUndefined(coerceInt(raw['LengthInMinutes']))
   const releaseDate = libationDate(coerceStr(raw['DatePublished']))
   const publisher = coerceStr(raw['Publisher'])
   const region = mapLibationLocale(coerceStr(raw['Locale']))
@@ -449,8 +476,7 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
   const seriesPosition = SEQUENCE_PATTERN.test(seqRaw) ? seqRaw : undefined
   const languageRaw = coerceStr(raw['language'])
   const language = mapLanguageLoose(languageRaw)
-  const runtime = coerceInt(raw['runtime_min'])
-  const runtimeMin = runtime !== undefined && runtime > 0 ? runtime : undefined
+  const runtimeMin = positiveOrUndefined(coerceInt(raw['runtime_min']))
   const releaseRaw = coerceStr(raw['release_date'])
   const releaseDate = DATE_PATTERN.test(releaseRaw) ? releaseRaw : undefined
   const publisher = coerceStr(raw['publisher'])
@@ -517,7 +543,7 @@ function primaryAbsSeries(
   seriesArr: unknown,
   seriesName: string
 ): { seriesName?: string; seriesPosition?: string } {
-  const entries: { name: string; position?: string }[] = []
+  const entries: SeriesEntry[] = []
   if (Array.isArray(seriesArr)) {
     for (const el of seriesArr) {
       if (!isObject(el)) continue
@@ -543,9 +569,7 @@ function primaryAbsSeries(
       }
     }
   }
-  if (entries.length === 0) return {}
-  const chosen = entries.find((e) => e.position !== undefined) ?? entries[0]
-  return { seriesName: chosen.name, seriesPosition: chosen.position }
+  return pickPrimarySeries(entries)
 }
 
 // The ABS release date: prefer a full publishedDate, fall back to the bare
@@ -572,9 +596,7 @@ function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
   const language = mapLanguageLoose(languageRaw)
   // media.duration is a float number of SECONDS (mirrors the OpenAudible seconds
   // handling): round to whole minutes and emit only a positive value.
-  const durationSec = coerceInt(media['duration'])
-  const minutes = durationSec !== undefined && durationSec > 0 ? Math.round(durationSec / 60) : 0
-  const runtimeMin = minutes > 0 ? minutes : undefined
+  const runtimeMin = minutesFromSeconds(coerceInt(media['duration']))
   const releaseDate = absDate(md)
   const publisher = coerceStr(md['publisher'])
   // media.coverPath is a LOCAL server path, never a public https cover, so no

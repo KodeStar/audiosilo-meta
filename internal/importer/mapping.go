@@ -173,8 +173,8 @@ func isCombiningMark(r rune) bool {
 		(r >= 0xfe20 && r <= 0xfe2f)
 }
 
-// yearOf returns the four-digit year prefix of a date string, or "" when the
+// YearOf returns the four-digit year prefix of a date string, or "" when the
 // string does not begin with one.
-func yearOf(date string) string {
+func YearOf(date string) string {
 	return yearPrefixRE.FindString(strings.TrimSpace(date))
 }

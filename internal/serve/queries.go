@@ -208,6 +208,49 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 	return &d, nil
 }
 
+// workForABS returns just the slice of a work absBooksFor consumes: the work
+// row, authors, series, print ISBNs, and recordings (with narrators/asins/isbns
+// but NO chapter count), and NONE of the characters/recaps/recap-summary
+// sidecars. absSearch calls it once per candidate on the public /abs/search hot
+// path, so it deliberately skips workDetail's ~100+ discarded round-trips.
+// Returns (nil, nil) when the work is absent.
+func (s *snapshot) workForABS(id string) (*workDetail, error) {
+	var d workDetail
+	var subtitle, firstPub, desc sql.NullString
+	err := s.db.QueryRow(
+		`SELECT id, title, subtitle, language, first_published, description FROM works WHERE id=?`, id).
+		Scan(&d.ID, &d.Title, &subtitle, &d.Language, &firstPub, &desc)
+	if err == sql.ErrNoRows {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	d.Subtitle = subtitle.String
+	d.FirstPublished = firstPub.String
+	d.Description = desc.String
+
+	if d.Authors, err = s.authorsOf(id); err != nil {
+		return nil, err
+	}
+	if d.Series, err = s.seriesOf(id); err != nil {
+		return nil, err
+	}
+	// absBooksFor only reads the work's print ISBN off Xref; skip the other xref
+	// identifiers entirely.
+	isbns, err := s.workISBNs(id)
+	if err != nil {
+		return nil, err
+	}
+	if len(isbns) > 0 {
+		d.Xref = &workXref{ISBN: isbns}
+	}
+	if d.Recordings, err = s.recordingsBase(id); err != nil {
+		return nil, err
+	}
+	return &d, nil
+}
+
 // sidecarSchemaVersion is the artifact schema_version that first carried the
 // characters/recaps tables. A newer binary may briefly serve an older release,
 // so the sidecar queries no-op below it rather than probing for the tables.
@@ -343,7 +386,12 @@ func (s *snapshot) workISBNs(workID string) ([]string, error) {
 	return scanIDs(rows)
 }
 
-func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
+// recordingsBase fetches a work's recordings with their narrators, ASINs, and
+// ISBNs, but WITHOUT the per-recording chapter count. recordingsOf adds the
+// count on top; the ABS path (workForABS) reuses this directly, since it never
+// reads the count - a hot public endpoint should not run a COUNT(*) per
+// recording it discards.
+func (s *snapshot) recordingsBase(workID string) ([]recordingDetail, error) {
 	rows, err := s.db.Query(
 		`SELECT id, abridged, runtime_min, release_date, publisher, cover_url FROM recordings WHERE work_id=? ORDER BY id`, workID)
 	if err != nil {
@@ -380,7 +428,17 @@ func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
 		if recs[i].ISBN, err = s.recordingISBNs(workID, rid); err != nil {
 			return nil, err
 		}
-		if err = s.db.QueryRow(`SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`, workID, rid).
+	}
+	return recs, nil
+}
+
+func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
+	recs, err := s.recordingsBase(workID)
+	if err != nil {
+		return nil, err
+	}
+	for i := range recs {
+		if err = s.db.QueryRow(`SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`, workID, recs[i].ID).
 			Scan(&recs[i].ChapterCount); err != nil {
 			return nil, err
 		}

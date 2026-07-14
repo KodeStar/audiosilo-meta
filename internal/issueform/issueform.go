@@ -45,8 +45,12 @@ const (
 )
 
 // Result is the machine-readable outcome written to stdout by cmd/metaissue.
+// Template is the normalized routing template the submission was processed as
+// (add-work, add-recording, correct-data, characters, recaps, import); the
+// intake workflow reads it for the pull-request title/body and license layer.
 type Result struct {
 	Status   Status   `json:"status"`
+	Template string   `json:"template,omitempty"`
 	Files    []string `json:"files"`
 	Messages []string `json:"messages"`
 }
@@ -97,8 +101,18 @@ type composer struct {
 
 // Process turns one issue-form submission into records and returns the outcome.
 // It never returns an error; every failure is encoded in the Result so the
-// intake workflow can comment it back.
+// intake workflow can comment it back. The returned Result carries the
+// normalized routing template (Result.Template) so the workflow does not
+// re-derive it.
 func Process(opts Options) Result {
+	r := process(opts)
+	if r.Template == "" {
+		r.Template = normalizeTemplate(opts.Template)
+	}
+	return r
+}
+
+func process(opts Options) Result {
 	tmpl := normalizeTemplate(opts.Template)
 	date := opts.Date
 	if date == "" {
@@ -209,6 +223,48 @@ func (c *composer) emit(rel string, v any) {
 	c.writes[filepath.ToSlash(rel)] = formatted
 }
 
+// writeRaw canonicalizes an already-decoded record (a map read back from disk or
+// assembled field-by-field) and queues it at rel (a data-relative, slash path).
+// It returns false and fails the run on a marshal/canonicalize error, so a caller
+// writes `if !c.writeRaw(rel, obj) { return }`. Unlike emit, it takes the decoded
+// object so a path can edit an existing file in place while preserving every
+// field the form does not manage.
+func (c *composer) writeRaw(rel string, obj map[string]any) bool {
+	data, err := json.Marshal(obj)
+	if err != nil {
+		c.fail(StatusInvalid, "marshal %s: %v", "data/"+rel, err)
+		return false
+	}
+	formatted, err := canonical.Format(data)
+	if err != nil {
+		c.fail(StatusInvalid, "canonicalize %s: %v", "data/"+rel, err)
+		return false
+	}
+	c.writes[rel] = formatted
+	return true
+}
+
+// dedupIdentifiers fails with StatusDuplicate when any of the submission's ASINs
+// or ISBNs already resolves to a recording in the catalog, returning true so the
+// caller stops before writing anything. asinHint is appended to the ASIN-
+// duplicate message: the add-work path steers the submitter to the add-recording
+// form, add-recording passes "".
+func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint string) bool {
+	for _, a := range asins {
+		if p, ok := c.asinRec[a.ASIN]; ok {
+			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, "data/"+p, asinHint)
+			return true
+		}
+	}
+	for _, isbn := range isbns {
+		if p, ok := c.isbnRec[isbn]; ok {
+			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, "data/"+p)
+			return true
+		}
+	}
+	return false
+}
+
 // flush writes every queued file to disk, creating parent directories. Returns
 // a non-empty error message on an I/O failure.
 func (c *composer) flush() string {
@@ -313,6 +369,42 @@ func normalizeTemplate(t string) string {
 	default:
 		return t
 	}
+}
+
+// routingTemplates is the set of "data:<t>" label suffixes that name an intake
+// template, in the canonical routing form Process accepts. It deliberately
+// EXCLUDES the outcome labels the intake workflow adds on a non-ok run
+// (data:duplicate, data:needs-human, data:invalid) and the bare "data" label, so
+// a re-run's own labels can never be mistaken for a routing template.
+var routingTemplates = map[string]bool{
+	"add-work":      true,
+	"add-recording": true,
+	"correction":    true,
+	"characters":    true,
+	"recaps":        true,
+	"import":        true,
+}
+
+// TemplateFromLabels picks the intake routing template from an issue's label
+// names. A label routes only when it is "data:<t>" for a known template <t>
+// (add-work, add-recording, correction, characters, recaps, import); the first
+// such label (in the given order) wins. The bare "data" label and the outcome
+// labels (data:duplicate, data:needs-human, data:invalid) never route. It
+// returns "" when no label routes, which cmd/metaissue surfaces as an invalid
+// verdict. This is the single source of the routing allowlist the intake
+// workflow used to duplicate in jq.
+func TemplateFromLabels(labels []string) string {
+	for _, l := range labels {
+		suffix, ok := strings.CutPrefix(strings.TrimSpace(l), "data:")
+		if !ok {
+			continue
+		}
+		suffix = strings.ToLower(suffix)
+		if routingTemplates[suffix] {
+			return suffix
+		}
+	}
+	return ""
 }
 
 func appendIfEmpty(msgs []string, msg string) []string {

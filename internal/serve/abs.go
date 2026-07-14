@@ -104,7 +104,7 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 			return nil, err
 		}
 		if res != nil {
-			d, err := s.workDetail(res.Work.ID)
+			d, err := s.workForABS(res.Work.ID)
 			if err != nil {
 				return nil, err
 			}
@@ -131,7 +131,7 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 		if len(out) >= limit {
 			break
 		}
-		d, err := s.workDetail(id)
+		d, err := s.workForABS(id)
 		if err != nil {
 			return nil, err
 		}
@@ -162,20 +162,51 @@ func (s *snapshot) absWorkSearch(query string, limit int) ([]string, error) {
 // loosely come first (preserving FTS order within each group), the rest follow.
 // It boosts rather than filters, so a wrong author never empties the results.
 func (s *snapshot) rankByAuthor(workIDs []string, author string) ([]string, error) {
+	namesByWork, err := s.authorNamesForWorks(workIDs)
+	if err != nil {
+		return nil, err
+	}
 	matched := make([]string, 0, len(workIDs))
 	rest := make([]string, 0, len(workIDs))
 	for _, id := range workIDs {
-		names, err := s.authorsOf(id)
-		if err != nil {
-			return nil, err
-		}
-		if authorMatches(personNames(names), author) {
+		if authorMatches(namesByWork[id], author) {
 			matched = append(matched, id)
 		} else {
 			rest = append(rest, id)
 		}
 	}
 	return append(matched, rest...), nil
+}
+
+// authorNamesForWorks fetches every author display name for the given works in
+// one query (work id -> names in authorship order), replacing rankByAuthor's
+// per-work N+1. An empty input yields an empty map.
+func (s *snapshot) authorNamesForWorks(workIDs []string) (map[string][]string, error) {
+	out := make(map[string][]string, len(workIDs))
+	if len(workIDs) == 0 {
+		return out, nil
+	}
+	placeholders := make([]string, len(workIDs))
+	args := make([]any, len(workIDs))
+	for i, id := range workIDs {
+		placeholders[i] = "?"
+		args[i] = id
+	}
+	rows, err := s.db.Query(
+		`SELECT wa.work_id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id `+
+			`WHERE wa.work_id IN (`+strings.Join(placeholders, ",")+`) ORDER BY wa.work_id, wa.ord`, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var wid, name string
+		if err := rows.Scan(&wid, &name); err != nil {
+			return nil, err
+		}
+		out[wid] = append(out[wid], name)
+	}
+	return out, rows.Err()
 }
 
 // absBooksFor maps a work's detail to one BookMetadata per recording (or a

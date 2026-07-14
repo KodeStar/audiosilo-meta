@@ -7,7 +7,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
 	"github.com/kodestar/audiosilo-meta/internal/model"
 )
 
@@ -123,17 +122,9 @@ func (c *composer) correctData(s sections) {
 		"type": sourceUser, "ref": evidence, "imported_at": c.date,
 	})
 
-	data, err := json.Marshal(obj)
-	if err != nil {
-		c.fail(StatusInvalid, "marshal %s: %v", rel, err)
+	if !c.writeRaw(rel, obj) {
 		return
 	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		c.fail(StatusInvalid, "canonicalize %s: %v", rel, err)
-		return
-	}
-	c.writes[rel] = formatted
 	c.note("applied %s = %v on %s", fieldName, value, "data/"+rel)
 }
 

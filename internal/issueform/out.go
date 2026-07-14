@@ -1,10 +1,17 @@
 package issueform
 
-// The out* types are issueform's view of each entity's on-disk shape, mirroring
-// internal/importer's out* types (which are package-private). They exist so a
-// form submission is composed into exactly the JSON a hand-authored pull request
-// would carry. Field order is irrelevant: every file is run through
+import "github.com/kodestar/audiosilo-meta/internal/importer"
+
+// The out* types are issueform's view of each entity's on-disk shape. They exist
+// so a form submission is composed into exactly the JSON a hand-authored pull
+// request would carry. Field order is irrelevant: every file is run through
 // internal/canonical before it is written, which sorts keys.
+//
+// The entities with a shape identical to a bulk import (source/person/asin/
+// series) are ALIASES of internal/importer's exported types, so the two paths
+// can never drift. The work and recording shapes here are richer than the
+// importer's (subtitle, first_published, xref; a plain-bool abridged and a
+// recording ISBN), so they stay local.
 
 const (
 	licenseCC0 = "CC0-1.0"
@@ -13,18 +20,15 @@ const (
 	sourceUser = "user"
 )
 
-type outSource struct {
-	Type       string `json:"type"`
-	Ref        string `json:"ref,omitempty"`
-	ImportedAt string `json:"imported_at,omitempty"`
-}
-
-type outPerson struct {
-	ID      string      `json:"id"`
-	Name    string      `json:"name"`
-	License string      `json:"license"`
-	Sources []outSource `json:"sources"`
-}
+// These four entities are byte-identical to a bulk import, so issueform reuses
+// the importer's exported types rather than redeclaring them.
+type (
+	outSource     = importer.OutSource
+	outPerson     = importer.OutPerson
+	outASIN       = importer.OutASIN
+	outSeriesWork = importer.OutSeriesWork
+	outSeries     = importer.OutSeries
+)
 
 type outWorkXref struct {
 	Wikidata    string   `json:"wikidata,omitempty"`
@@ -44,11 +48,6 @@ type outWork struct {
 	Sources        []outSource  `json:"sources"`
 }
 
-type outASIN struct {
-	Region string `json:"region"`
-	ASIN   string `json:"asin"`
-}
-
 type outRecording struct {
 	ID          string      `json:"id"`
 	Work        string      `json:"work"`
@@ -63,17 +62,4 @@ type outRecording struct {
 	CoverURL    string      `json:"cover_url,omitempty"`
 	License     string      `json:"license"`
 	Sources     []outSource `json:"sources"`
-}
-
-type outSeriesWork struct {
-	Work     string `json:"work"`
-	Position string `json:"position"`
-}
-
-type outSeries struct {
-	ID      string          `json:"id"`
-	Name    string          `json:"name"`
-	Works   []outSeriesWork `json:"works"`
-	License string          `json:"license"`
-	Sources []outSource     `json:"sources"`
 }

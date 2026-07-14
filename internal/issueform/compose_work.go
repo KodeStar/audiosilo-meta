@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/internal/model"
 )
 
@@ -77,17 +77,8 @@ func (c *composer) addWork(s sections) {
 	// this book (or edition) is already in the catalog.
 	asins := c.parseASINs(s.get(fRecASINs))
 	recISBNs := c.parseISBNs(s.get(fRecISBNs))
-	for _, a := range asins {
-		if p, ok := c.asinRec[a.ASIN]; ok {
-			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s); use the Add a recording form for another narration", a.ASIN, "data/"+p)
-			return
-		}
-	}
-	for _, isbn := range recISBNs {
-		if p, ok := c.isbnRec[isbn]; ok {
-			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, "data/"+p)
-			return
-		}
+	if c.dedupIdentifiers(asins, recISBNs, "; use the Add a recording form for another narration") {
+		return
 	}
 
 	workSlug := slugify(title)
@@ -220,7 +211,7 @@ func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, 
 	if len(narratorSlugs) > 0 && narratorSlugs[0] != "" {
 		base = narratorSlugs[0]
 	}
-	if yr := yearPrefix(releaseDate); yr != "" {
+	if yr := importer.YearOf(releaseDate); yr != "" {
 		base += "-" + yr
 	}
 	existing := map[string]bool{}
@@ -302,33 +293,5 @@ func (c *composer) extendSeries(existing *model.Series, seriesSlug, workSlug, po
 	}
 	works, _ := obj["works"].([]any)
 	obj["works"] = append(works, map[string]any{"work": workSlug, "position": pos})
-	data, err := json.Marshal(obj)
-	if err != nil {
-		c.fail(StatusInvalid, "marshal series %s: %v", rel, err)
-		return
-	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		c.fail(StatusInvalid, "canonicalize series %s: %v", rel, err)
-		return
-	}
-	c.writes[rel] = formatted
-}
-
-// yearPrefix returns the four-digit year prefix of a date string, or "".
-func yearPrefix(date string) string {
-	date = strings.TrimSpace(date)
-	if len(date) >= 4 && isDigits(date[:4]) {
-		return date[:4]
-	}
-	return ""
-}
-
-func isDigits(s string) bool {
-	for i := 0; i < len(s); i++ {
-		if s[i] < '0' || s[i] > '9' {
-			return false
-		}
-	}
-	return len(s) > 0
+	c.writeRaw(rel, obj)
 }

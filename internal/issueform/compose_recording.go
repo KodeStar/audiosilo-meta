@@ -1,5 +1,7 @@
 package issueform
 
+import "github.com/kodestar/audiosilo-meta/internal/importer"
+
 // Field labels unique to add-recording.yml (the rec_* fields and Sources/CC0 are
 // shared with add-work). Mirrors .github/ISSUE_TEMPLATE/add-recording.yml.
 const fWorkRef = "The work"
@@ -40,17 +42,8 @@ func (c *composer) addRecording(s sections) {
 
 	asins := c.parseASINs(s.get(fRecASINs))
 	isbns := c.parseISBNs(s.get(fRecISBNs))
-	for _, a := range asins {
-		if p, ok := c.asinRec[a.ASIN]; ok {
-			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)", a.ASIN, "data/"+p)
-			return
-		}
-	}
-	for _, isbn := range isbns {
-		if p, ok := c.isbnRec[isbn]; ok {
-			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, "data/"+p)
-			return
-		}
+	if c.dedupIdentifiers(asins, isbns, "") {
+		return
 	}
 
 	narratorSlugs := c.slugsFor(narratorNames, sourceRef)
@@ -59,33 +52,13 @@ func (c *composer) addRecording(s sections) {
 	}
 
 	// A recording with the same narrator set already present is a duplicate.
-	want := narratorSet(narratorSlugs)
+	want := importer.ToSet(narratorSlugs)
 	for _, r := range work.Recordings {
-		if sameStringSet(narratorSet(r.Narrators), want) {
+		if importer.SameSet(importer.ToSet(r.Narrators), want) {
 			c.fail(StatusDuplicate, "a recording with these narrators already exists at %s", "data/"+recordingPath(workSlug, r.ID))
 			return
 		}
 	}
 
 	c.emitRecording(workSlug, work.Language, narratorSlugs, asins, isbns, s, sourceRef)
-}
-
-func narratorSet(ns []string) map[string]bool {
-	m := make(map[string]bool, len(ns))
-	for _, n := range ns {
-		m[n] = true
-	}
-	return m
-}
-
-func sameStringSet(a, b map[string]bool) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for k := range a {
-		if !b[k] {
-			return false
-		}
-	}
-	return true
 }

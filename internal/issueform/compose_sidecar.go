@@ -6,7 +6,6 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
 	"github.com/kodestar/audiosilo-meta/internal/model"
 )
 
@@ -66,17 +65,7 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 	}
 	obj["work"] = workSlug
 
-	data, err := json.Marshal(obj)
-	if err != nil {
-		c.fail(StatusInvalid, "re-encode %s: %v", fileName, err)
-		return
-	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		c.fail(StatusInvalid, "canonicalize %s: %v", fileName, err)
-		return
-	}
-	c.writes[rel] = formatted
+	c.writeRaw(rel, obj)
 }
 
 // attachmentBytes resolves a sidecar/import attachment field to bytes: an

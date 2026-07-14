@@ -6,6 +6,12 @@ package importer
 // (omitted when unknown) rather than a plain bool. Field order is irrelevant:
 // every file is run through internal/canonical before it is written, which sorts
 // keys.
+//
+// OutSource/OutPerson/OutASIN/OutSeriesWork/OutSeries are exported and reused by
+// internal/issueform (whose composed records must be byte-identical to a
+// hand-authored or imported one). The importer-private outWork/outRecording/
+// outChapter stay unexported: issueform emits a richer work/recording shape of
+// its own, so only the entities with an identical shape are shared.
 
 const (
 	licenseCC0     = "CC0-1.0"
@@ -13,17 +19,19 @@ const (
 	sourceLibation = "libation-import"
 )
 
-type outSource struct {
+// OutSource is a record's provenance stamp (type/ref/imported_at).
+type OutSource struct {
 	Type       string `json:"type"`
 	Ref        string `json:"ref,omitempty"`
 	ImportedAt string `json:"imported_at,omitempty"`
 }
 
-type outPerson struct {
+// OutPerson is the on-disk person record shape.
+type OutPerson struct {
 	ID      string      `json:"id"`
 	Name    string      `json:"name"`
 	License string      `json:"license"`
-	Sources []outSource `json:"sources"`
+	Sources []OutSource `json:"sources"`
 }
 
 type outWork struct {
@@ -32,10 +40,11 @@ type outWork struct {
 	Authors  []string    `json:"authors"`
 	Language string      `json:"language"`
 	License  string      `json:"license"`
-	Sources  []outSource `json:"sources"`
+	Sources  []OutSource `json:"sources"`
 }
 
-type outASIN struct {
+// OutASIN is a region-scoped ASIN entry on a recording.
+type OutASIN struct {
 	Region string `json:"region"`
 	ASIN   string `json:"asin"`
 }
@@ -55,24 +64,26 @@ type outRecording struct {
 	RuntimeMin  int          `json:"runtime_min,omitempty"`
 	ReleaseDate string       `json:"release_date,omitempty"`
 	Publisher   string       `json:"publisher,omitempty"`
-	ASIN        []outASIN    `json:"asin,omitempty"`
+	ASIN        []OutASIN    `json:"asin,omitempty"`
 	CoverURL    string       `json:"cover_url,omitempty"`
 	Chapters    []outChapter `json:"chapters,omitempty"`
 	License     string       `json:"license"`
-	Sources     []outSource  `json:"sources"`
+	Sources     []OutSource  `json:"sources"`
 }
 
-type outSeriesWork struct {
+// OutSeriesWork is one (work, position) membership in a series record.
+type OutSeriesWork struct {
 	Work     string `json:"work"`
 	Position string `json:"position"`
 }
 
-type outSeries struct {
+// OutSeries is the on-disk series record shape.
+type OutSeries struct {
 	ID      string          `json:"id"`
 	Name    string          `json:"name"`
-	Works   []outSeriesWork `json:"works"`
+	Works   []OutSeriesWork `json:"works"`
 	License string          `json:"license"`
-	Sources []outSource     `json:"sources"`
+	Sources []OutSource     `json:"sources"`
 }
 
 // Options configures a run of the importer.
