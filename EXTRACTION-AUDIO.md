@@ -75,6 +75,11 @@ On non-Apple hardware, use a local Whisper implementation such as
 chapter isolation, spelling review, notes-only boundary, and audits. Performance
 and command-line flags differ, so do not treat the benchmark below as portable.
 
+Do not run concurrent ASR processes on one machine. Three concurrent
+mlx-whisper jobs measured about 30 percent WORSE aggregate throughput than one,
+from Metal contention (CPU idle percentage is misleading). The right parallelism
+is pipelining: transcribe book N+1 while book N's model passes run.
+
 ## Step 1: inspect the recording
 
 Capture metadata and all embedded markers before extracting audio:
@@ -328,13 +333,42 @@ Do not start the fact pass merely because every output file exists. Check:
 - repeated phrases, long omissions, hallucinated text around silence, and
   abrupt starts or endings
 - low-confidence words and segments as review candidates
-- words-per-hour outliers relative to nearby chapters
 - a sample from the start, middle, and end of every narrator's sections
 
 Confidence is a triage signal, not proof. A confident model can spell a name
 incorrectly or choose the wrong homophone. Conversely, a low-confidence word
 may be correct. Keep a QA report listing the chapter, relative timestamp,
 reason for review, action taken, and status.
+
+### Degeneration sweep (required)
+
+ASR degeneration is real, silent, and common: the model drops into a repeated
+loop or collapses mid-chapter and emits no error. In the multi-book validation
+below it appeared in every book, affecting roughly 2-4 percent of chapters, and
+one instance had swallowed nearly half a chapter. Never skip this sweep.
+
+1. Compute words per hour for every chapter and flag outliers against the book
+   mean. Low outliers (more than ~2.5 standard deviations below the mean) mark
+   lost content; high outliers matter too, because loop spam inflates the count.
+2. Scan the raw JSON segments for runs of repeated or near-identical segments.
+   Distinguish a benign chapter-END fade (a short line repeated at the fade-out,
+   in the final stretch of the chapter) from a MID-chapter run (starting below
+   ~85 percent of chapter position), which almost always means real narration
+   was overwritten.
+3. Retranscribe every flagged chapter fresh and adjudicate by word count and
+   duration plausibility (roughly 140-150 words per minute of audio). NEVER
+   blindly adopt the fresh run: a fresh run can degenerate identically, and one
+   validated chapter kept its original after two re-runs collapsed at the same
+   point.
+4. For garble that survives full-chapter re-runs, extract the affected window
+   as a clip (the command below), retranscribe just the clip, and splice the
+   result into the corrected layer. This recovered every deterministic loop in
+   the validation, including the one that had eaten half a chapter.
+
+The chapter-end repeated-line fade is a distinct, recognizable benign class: a
+short line repeated at the fade-out, sometimes garbled in the later repeats. The
+FIRST occurrence is authentic unless the corruption begins inside it. Tell the
+fact-pass prompts about it explicitly so they do not treat it as content.
 
 When a passage is suspect, extract a short clip using the manifest's absolute
 chapter start plus the transcript's relative timestamp, listen to it, and if
@@ -389,6 +423,22 @@ Useful discovery techniques include:
 - search for variants across chapters before deciding they are one entity
 - check first occurrence at its timestamp against the audio
 
+For web serials and their fan wikis, these tactics proved reliable at scale:
+
+- A fandom wiki that returns a 402 to a direct fetch is often reachable through
+  a text-rendering proxy or its MediaWiki API, neither of which copies plot
+  prose.
+- Chapter-title URL slugs on the serial platform (for example a Royal Road
+  `chapter-39-crimsonwolf` slug) are strong written evidence for a name.
+- For a serial, the author's own published chapter text, even seen only through
+  a search-result snippet, is tier-2 official spelling.
+- A stable global-chapter = offset + book-relative-chapter mapping lets a marker
+  title be cross-verified against its published slug.
+
+Warning: a search engine's AI summary can fabricate page content that was never
+on the page. Trust only a fetched page body or a literal quoted snippet, never a
+generated summary.
+
 Apply verified corrections to a separate `transcripts-corrected` text directory
 or through an explicit correction map. Never silently edit raw JSON. Do not
 apply a global replacement where a common word and a proper name collide.
@@ -410,6 +460,11 @@ the spoiler boundary.
 After chapter and spelling QA, use the rolling fact pass from
 [EXTRACTION.md](EXTRACTION.md). Replace its EPUB chapter paths with the corrected
 chapter text paths. Keep raw JSON available only for timestamped audit.
+
+Chunk the fact pass by word budget, not a fixed chapter count. EXTRACTION.md's
+8-9 chapters assumes ~30-40k-word chunks; short-chaptered books need 12-14
+chapters to reach the same ~20-25k words per chunk. Size each chunk to the word
+budget so chapter attribution and sequential latency both stay sensible.
 
 Add these audio-specific instructions to each fact-pass prompt:
 
@@ -449,6 +504,21 @@ The synthesis stage receives only:
 It does not receive audio, transcripts, wiki pages, or catalogue descriptions.
 Timestamps stay in private notes. Final `reveal.chapter` and `through.chapter`
 values use the logical chapter manifest.
+
+### Publishing partly-verified names
+
+The verified-only gate from step 4 has a few sanctioned relaxations, learned at
+scale:
+
+- A `probable` name that is an ordinary English word (Beyond, Frost, Sparrow)
+  carries no orthographic risk and may be published as heard.
+- An invented `probable` name corroborated by a wiki page title may be
+  sanctioned case by case, with an explicit ledger note recording the decision.
+- Everything else still unverified is rephrased generically or anonymized (for
+  example "the team's warder"). The validation showed this loses nothing a
+  reader would miss.
+- For a genuinely unnameable recurring figure, an anonymized plain-English card
+  ("The Team's Warder", "The Disciple") is the established pattern.
 
 ## Step 7: verify
 
@@ -490,6 +560,15 @@ A fresh independent session must also perform the spoiler audit from
 - all public positions are logical chapters, not recording marker indexes
 - marker offsets and narrator changes did not move facts across chapters
 
+Expect the first synthesis to fail. In the multi-book validation every
+first-draft synthesis failed its adversarial audit with at least one genuine
+defect, most often a character card folding later-chapter abilities or twists
+into an early reveal - cards drift toward whole-book summaries, while recaps
+gate more reliably. Budget one fix then re-verify round (about 25 minutes) per
+book as the norm, not the exception. The n-gram check also fired on genuinely
+notes-only output twice, on factual-listing phrasing, so it is not redundant
+with the notes-only boundary.
+
 ## Missing or unreliable markers
 
 Do not claim chapter-accurate positions until boundaries are defensible.
@@ -510,6 +589,25 @@ Do not claim chapter-accurate positions until boundaries are defensible.
   unabridged work. Missing scenes can make facts and positions incomplete.
 - **Multiple narrators:** sample every narrator and speaking style. A model that
   performs well on one narrator may fail on another.
+
+## Series runs
+
+Extracting a whole series adds cross-book carryover on top of the per-book
+pipeline.
+
+- **Seed the next book with the last one's knowledge.** Book N's first
+  fact-pass chunk receives book N-1's `knowledge-final.md` as its starting
+  sheet. Characters already known from earlier books are not re-INTRODUCED, and
+  the book-N "previously" recap gets real grounding instead of a guess.
+- **Carry the spelling ledger forward.** ASR re-mishears the same names in every
+  book, and one name often has different variants across books. Apply the
+  accumulated correction list to each new book's corrected layer.
+- **Prior-book knowledge is spoiler-safe; external references are not plot.**
+  Facts established in earlier books are always safe to use in a later book's
+  cards and recaps. External references still contribute spelling only, even
+  across books. In one validated case a wiki stated a character's parent was the
+  father while the book's own text said the mother - the book wins, because
+  wikis contribute orthography, never plot facts.
 
 ## Worked example: Silvers
 
@@ -556,6 +654,12 @@ far faster than real time, but heading homophones, unusual-name variants,
 source conflicts, and non-finite confidence fields all required the review
 layers above.
 
+The process was subsequently run at scale: 11 books across two series, about
+239 hours of audio, with every sidecar passing an independent adversarial audit.
+On the same hardware the per-book steady state is roughly ASR 45-60 minutes
+(pipelined away behind the previous book), fact pass 60-75 minutes, synthesis
+about 10 minutes, and the audit loop about 25 minutes.
+
 ## Final checklist
 
 - [ ] Source audio and all intermediate artifacts are outside Git.
@@ -565,6 +669,9 @@ layers above.
 - [ ] Raw transcripts remain immutable; corrections are separate and auditable.
 - [ ] Transcript QA covers omissions, repetition, silence, boundaries, and all
       narrators.
+- [ ] The required degeneration sweep retranscribed every word-per-hour and
+      mid-chapter-loop outlier; recovered loops were clipped and spliced into
+      the corrected layer.
 - [ ] Every published proper noun is verified; conflicts are resolved or
       omitted.
 - [ ] External references contributed spelling only, never plot facts or prose.
