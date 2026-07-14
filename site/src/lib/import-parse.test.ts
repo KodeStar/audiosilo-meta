@@ -494,6 +494,249 @@ describe('parseExport - folder-scan field mapping', () => {
   })
 })
 
+describe('parseExport - Audiobookshelf detection', () => {
+  // A minimal full-shape ABS library item (book fields under media.metadata).
+  function absItem(metadata: Record<string, unknown>, media: Record<string, unknown> = {}) {
+    return {
+      id: 'li_abc',
+      ino: '123456',
+      libraryId: 'lib_1',
+      folderId: 'fol_1',
+      path: '/audiobooks/Author/Title',
+      relPath: 'Author/Title',
+      mediaType: 'book',
+      media: { coverPath: '/metadata/items/li_abc/cover.jpg', metadata, ...media },
+      numFiles: 1,
+      size: 123456789,
+    }
+  }
+
+  function absPayload(...items: unknown[]) {
+    return JSON.stringify({ results: items, total: items.length, limit: 0, page: 0 })
+  }
+
+  it('detects an ABS results payload by its media.metadata nesting', () => {
+    const out = parseExport(absPayload(absItem({ title: 'A Book' })))
+    expect(out.format).toBe('audiobookshelf')
+    expect(out.books).toHaveLength(1)
+    expect(out.books[0].title).toBe('A Book')
+    expect(out.books[0].format).toBe('audiobookshelf')
+  })
+
+  it('does NOT misdetect ABS as OpenAudible or Libation (fields are nested)', () => {
+    // The ABS item has asin/authors/series ONLY under media.metadata, so neither
+    // the OpenAudible nor Libation top-level markers can match.
+    const out = parseExport(
+      absPayload(absItem({ title: 'X', asin: 'B0ABCDEFGH', authorName: 'Jane Doe' }))
+    )
+    expect(out.format).toBe('audiobookshelf')
+  })
+
+  it('does NOT misdetect OpenAudible/Libation/folder-scan as ABS', () => {
+    expect(parseExport(JSON.stringify([openAudibleEntry()])).format).toBe('openaudible')
+    expect(
+      parseExport(
+        JSON.stringify([{ Title: 'X', AuthorNames: 'A', NarratorNames: 'B', AudibleProductId: 'B0AAAAAAAA' }])
+      ).format
+    ).toBe('libation')
+    expect(
+      parseExport(
+        JSON.stringify({
+          format: 'audiosilo-folder-scan',
+          version: 1,
+          root: '/x',
+          books: [{ title: 'A', files: ['a.mp3'], audio_files: 1 }],
+        })
+      ).format
+    ).toBe('folderscan')
+  })
+
+  it('treats a results payload of non-ABS objects as unknown', () => {
+    expect(parseExport(JSON.stringify({ results: [{ foo: 'bar' }], total: 1 })).format).toBe(
+      'unknown'
+    )
+  })
+})
+
+describe('parseExport - Audiobookshelf field mapping (full shape)', () => {
+  function parseOne(metadata: Record<string, unknown>, media: Record<string, unknown> = {}): ParsedBook {
+    const item = {
+      id: 'li_1',
+      path: '/local/secret/path',
+      media: { coverPath: '/metadata/items/li_1/cover.jpg', metadata, ...media },
+    }
+    const out = parseExport(JSON.stringify({ results: [item], total: 1 }))
+    expect(out.format).toBe('audiobookshelf')
+    return out.books[0]
+  }
+
+  it('maps the core factual fields (authors as objects, narrators as strings)', () => {
+    const b = parseOne(
+      {
+        title: 'Killing Floor',
+        subtitle: 'Jack Reacher, Book 1',
+        authors: [{ id: 'au_1', name: 'Lee Child' }],
+        narrators: ['Jeff Harding'],
+        series: [{ id: 'se_1', name: 'Jack Reacher', sequence: '1' }],
+        asin: 'B076HYPQLK',
+        isbn: '9780553505405',
+        language: 'English',
+        publishedYear: '1997',
+        publisher: 'Random House',
+        abridged: false,
+      },
+      { duration: 44521.7, chapters: [{}, {}, {}] }
+    )
+    expect(b.title).toBe('Killing Floor')
+    expect(b.subtitle).toBe('Jack Reacher, Book 1')
+    expect(b.authors).toEqual(['Lee Child'])
+    expect(b.narrators).toEqual(['Jeff Harding'])
+    expect(b.seriesName).toBe('Jack Reacher')
+    expect(b.seriesPosition).toBe('1')
+    expect(b.asin).toBe('B076HYPQLK')
+    expect(b.isbn).toBe('9780553505405')
+    expect(b.language).toBe('en')
+    expect(b.releaseDate).toBe('1997')
+    expect(b.publisher).toBe('Random House')
+    expect(b.abridged).toBe(false)
+    expect(b.runtimeMin).toBe(742) // round(44521.7 / 60)
+    expect(b.chapterCount).toBe(3)
+    expect(b.region).toBeUndefined()
+    expect(b.coverUrl).toBeUndefined()
+  })
+
+  it('picks the first positioned series entry when a book is in several', () => {
+    const b = parseOne({
+      title: 'Wind and Truth',
+      series: [
+        { name: 'The Cosmere' }, // no sequence
+        { name: 'The Stormlight Archive', sequence: '5' },
+      ],
+    })
+    expect(b.seriesName).toBe('The Stormlight Archive')
+    expect(b.seriesPosition).toBe('5')
+  })
+
+  it('prefers a full publishedDate over the bare publishedYear', () => {
+    const b = parseOne({ title: 'A', publishedDate: '2017-11-02', publishedYear: '2017' })
+    expect(b.releaseDate).toBe('2017-11-02')
+  })
+
+  it('maps a language word, an ISO-639-2 code, or a 2-letter code loosely', () => {
+    expect(parseOne({ title: 'A', language: 'English' }).language).toBe('en')
+    expect(parseOne({ title: 'A', language: 'eng' }).language).toBe('en')
+    expect(parseOne({ title: 'A', language: 'de' }).language).toBe('de')
+    const k = parseOne({ title: 'A', language: 'Klingon' })
+    expect(k.language).toBeUndefined()
+    expect(k.languageRaw).toBe('Klingon')
+  })
+
+  it('omits a zero/absent runtime and an absent chapter count', () => {
+    expect(parseOne({ title: 'A' }, { duration: 0 }).runtimeMin).toBeUndefined()
+    expect(parseOne({ title: 'A' }, {}).runtimeMin).toBeUndefined()
+    expect(parseOne({ title: 'A' }, {}).chapterCount).toBeUndefined()
+  })
+
+  it('never carries the ABS local coverPath or item path into a ParsedBook or its raw', () => {
+    const b = parseOne({ title: 'Private', asin: 'B076HYPQLK' })
+    const serialized = JSON.stringify(b)
+    expect(serialized).not.toContain('coverPath')
+    expect(serialized).not.toContain('/local/secret/path')
+    expect(serialized).not.toContain('/metadata/items')
+  })
+})
+
+describe('parseExport - Audiobookshelf field mapping (minified shape)', () => {
+  function parseOne(metadata: Record<string, unknown>, media: Record<string, unknown> = {}): ParsedBook {
+    const out = parseExport(
+      JSON.stringify({ results: [{ id: 'li_2', media: { metadata, ...media } }], total: 1 })
+    )
+    expect(out.format).toBe('audiobookshelf')
+    return out.books[0]
+  }
+
+  it('maps comma-joined authorName/narratorName and a "Name #seq" seriesName', () => {
+    const b = parseOne(
+      {
+        title: 'Words of Radiance',
+        authorName: 'Brandon Sanderson',
+        narratorName: 'Kate Reading, Michael Kramer',
+        seriesName: 'The Stormlight Archive #2',
+        asin: 'B00INAY9BC',
+        language: 'en',
+        publishedYear: '2014',
+      },
+      { duration: 172800, numChapters: 89 }
+    )
+    expect(b.authors).toEqual(['Brandon Sanderson'])
+    expect(b.narrators).toEqual(['Kate Reading', 'Michael Kramer'])
+    expect(b.seriesName).toBe('The Stormlight Archive')
+    expect(b.seriesPosition).toBe('2')
+    expect(b.asin).toBe('B00INAY9BC')
+    expect(b.language).toBe('en')
+    expect(b.runtimeMin).toBe(2880) // 172800 / 60
+    expect(b.chapterCount).toBe(89) // from numChapters
+  })
+
+  it('parses the first "Name #seq" claim from a multi-series seriesName string', () => {
+    const b = parseOne({ title: 'X', seriesName: 'Sub-series, The Stormlight Archive #5' })
+    // First segment has no sequence; the second is positioned, so it wins.
+    expect(b.seriesName).toBe('The Stormlight Archive')
+    expect(b.seriesPosition).toBe('5')
+  })
+
+  it('keeps a seriesName with no sequence and no position', () => {
+    const b = parseOne({ title: 'X', seriesName: 'Standalone Companions' })
+    expect(b.seriesName).toBe('Standalone Companions')
+    expect(b.seriesPosition).toBeUndefined()
+  })
+})
+
+describe('parseExport - Audiobookshelf routing + factual projection', () => {
+  function parseOne(metadata: Record<string, unknown>, media: Record<string, unknown> = {}): ParsedBook {
+    const out = parseExport(
+      JSON.stringify({ results: [{ id: 'li_3', media: { metadata, ...media } }], total: 1 })
+    )
+    return out.books[0]
+  }
+
+  it('routes an ABS book with no asin/isbn to the cannot-match bucket', () => {
+    const b = parseOne({ title: 'No Ids', authorName: 'Someone' })
+    const { identified, unidentified } = partitionByIdentifier([b])
+    expect(identified).toEqual([])
+    expect(unidentified).toHaveLength(1)
+  })
+
+  it('stores raw as a curated factual projection (only present facts, no locals)', () => {
+    const b = parseOne(
+      {
+        title: 'Killing Floor',
+        authorName: 'Lee Child',
+        narratorName: 'Jeff Harding',
+        seriesName: 'Jack Reacher #1',
+        asin: 'B076HYPQLK',
+        language: 'English',
+        publishedYear: '1997',
+        publisher: 'Random House',
+      },
+      { duration: 44521, chapters: [{}, {}] }
+    )
+    expect(b.raw).toEqual({
+      title: 'Killing Floor',
+      authors: ['Lee Child'],
+      narrators: ['Jeff Harding'],
+      series: 'Jack Reacher',
+      series_position: '1',
+      asin: 'B076HYPQLK',
+      language: 'en',
+      release_date: '1997',
+      publisher: 'Random House',
+      runtime_min: 742,
+      chapters: 2,
+    })
+  })
+})
+
 describe('normalizeAsin', () => {
   it('accepts a 10-char alphanumeric that does not start with B0 (looser than looksLikeAsin)', () => {
     expect(normalizeAsin('1234567890')).toBe('1234567890')

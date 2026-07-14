@@ -1,0 +1,208 @@
+---
+import Base from '../layouts/Base.astro'
+import Button from '../components/Button.astro'
+import Icon from '../components/Icon.astro'
+
+// The public metadata-provider endpoint ABS points at (Custom Metadata
+// Providers). Authorization is left empty - the database is public.
+const PROVIDER_URL = 'https://meta.audiosilo.app/abs'
+
+// "What you get" from the provider - each claim maps to a real field the
+// database serves (narrators as people, one work per recording, series
+// sequence, region-scoped ASINs, runtime, cover URLs).
+const PROVIDER_GIVES = [
+  'Narrators treated as first-class people, not a free-text string.',
+  'One work with every narration listed as a separate recording.',
+  'Series with an explicit reading-order sequence.',
+  'Region-scoped ASINs, so the right marketplace edition matches.',
+  'Runtime, publisher, release date and cover art where the community has them.',
+]
+---
+
+<Base
+  title="Audiobookshelf - AudioSilo Meta"
+  description="Use the open AudioSilo Meta database as a custom metadata provider in Audiobookshelf, and contribute your Audiobookshelf library back to the catalogue - all with community data, narrators as first-class people, and one work per narration."
+>
+  <section class="relative pb-20">
+    <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
+    <div class="container relative z-10">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">
+          Audiobookshelf
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">
+          AudioSilo Meta for Audiobookshelf
+        </h1>
+        <p class="mt-4 text-lg leading-relaxed text-body">
+          The catalogue works two ways for Audiobookshelf users: point ABS at it as a
+          custom metadata provider to enrich your books, and send your library back to
+          help fill in the open database.
+        </p>
+      </div>
+
+      <!-- Section 1: metadata provider -->
+      <div class="reveal mx-auto mt-14 max-w-3xl">
+        <h2 class="text-2xl font-bold tracking-tight text-hi">
+          Use AudioSilo Meta in Audiobookshelf
+        </h2>
+        <p class="mt-3 text-base leading-relaxed text-body">
+          Add AudioSilo Meta as a custom metadata provider and it becomes an option
+          whenever you match a book. Requires Audiobookshelf
+          <span class="text-hi">v2.8.0 or newer</span>.
+        </p>
+
+        <div class="mt-6 rounded-2xl border border-edge bg-surface p-6">
+          <h3 class="font-semibold text-hi">Add the provider</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            In Audiobookshelf, open
+            <span class="text-hi"
+              >Settings -&gt; Item Metadata Utils -&gt; Custom Metadata Providers</span
+            >
+            and choose <span class="text-hi">Add</span>. Fill it in like this:
+          </p>
+          <dl class="mt-4 space-y-3 text-sm">
+            <div class="flex flex-col gap-1 sm:flex-row sm:gap-4">
+              <dt class="w-28 shrink-0 text-dim">Name</dt>
+              <dd class="text-hi">AudioSilo Meta</dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:flex-row sm:gap-4">
+              <dt class="w-28 shrink-0 text-dim">URL</dt>
+              <dd class="min-w-0">
+                <pre
+                  class="overflow-x-auto rounded-lg border border-edge bg-raised px-3 py-2 text-sm text-body"><code>{PROVIDER_URL}</code></pre>
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1 sm:flex-row sm:gap-4">
+              <dt class="w-28 shrink-0 text-dim">Authorization</dt>
+              <dd class="text-hi">Leave empty - the database is public.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-edge bg-surface p-6">
+          <h3 class="font-semibold text-hi">What you get</h3>
+          <ul class="mt-4 space-y-3">
+            {
+              PROVIDER_GIVES.map((item) => (
+                <li class="flex items-start gap-3 text-sm leading-relaxed text-body">
+                  <span class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-edge bg-raised text-pink-400">
+                    <Icon name="check" class="h-3.5 w-3.5" />
+                  </span>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="mt-6 rounded-2xl border border-edge bg-raised p-6">
+          <h3 class="font-semibold text-hi">Good to know</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-dim">
+            <li>
+              The provider is used by the <span class="text-body">Match</span> and
+              <span class="text-body">Quick Match</span> actions - not the background
+              scan. Trigger a match on a book (or a batch) to pull data from it.
+            </li>
+            <li>
+              Audiobookshelf sends a book's title, author, and ISBN when it searches - it
+              never sends an ASIN - so matches are made on title and author, or on ISBN.
+            </li>
+            <li>It applies to book libraries, not podcast libraries.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 2: contribute back -->
+      <div class="reveal mx-auto mt-16 max-w-3xl">
+        <h2 class="text-2xl font-bold tracking-tight text-hi">Submit your library</h2>
+        <p class="mt-3 text-base leading-relaxed text-body">
+          The database grows from libraries like yours. Export your Audiobookshelf
+          library and drop it on the import page to see which of your books are new to
+          the catalogue - then contribute them in a click.
+        </p>
+
+        <div class="mt-6 space-y-6">
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <div class="flex items-baseline gap-3">
+              <span
+                class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-pink-600 text-sm font-bold text-white"
+                >1</span
+              >
+              <h3 class="font-semibold text-hi">Get your API token</h3>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-body">
+              In Audiobookshelf, open your account page (the user menu in
+              <span class="text-hi">Settings -&gt; Users</span>, then your own user) and
+              copy the <span class="text-hi">API Token</span>. It authorizes the two
+              commands below; it never leaves your machine.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <div class="flex items-baseline gap-3">
+              <span
+                class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-pink-600 text-sm font-bold text-white"
+                >2</span
+              >
+              <h3 class="font-semibold text-hi">Export your library</h3>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-body">
+              List your libraries to find the one you want (replace
+              <code class="text-pink-300">TOKEN</code> and
+              <code class="text-pink-300">YOUR_ABS</code> with your token and server
+              address):
+            </p>
+            <pre
+              class="mt-4 overflow-x-auto rounded-xl border border-edge bg-raised p-4 text-sm text-body"><code>curl -H "Authorization: Bearer TOKEN" "http://YOUR_ABS:13378/api/libraries"</code></pre>
+            <p class="mt-4 text-sm leading-relaxed text-body">
+              Take the <code class="text-pink-300">id</code> of the library you want and
+              export its items to a file (replace
+              <code class="text-pink-300">LIBRARY_ID</code>):
+            </p>
+            <pre
+              class="mt-4 overflow-x-auto rounded-xl border border-edge bg-raised p-4 text-sm text-body"><code>curl -H "Authorization: Bearer TOKEN" "http://YOUR_ABS:13378/api/libraries/LIBRARY_ID/items?limit=0" -o abs-library.json</code></pre>
+            <p class="mt-3 text-sm leading-relaxed text-dim">
+              That writes <code class="text-pink-300">abs-library.json</code>, the full
+              list of your books and their metadata.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-edge bg-surface p-6">
+            <div class="flex items-baseline gap-3">
+              <span
+                class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-pink-600 text-sm font-bold text-white"
+                >3</span
+              >
+              <h3 class="font-semibold text-hi">Drop it on the import page</h3>
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-body">
+              Drop <code class="text-pink-300">abs-library.json</code> on the import page.
+              Everything is read in your browser: only the ASINs and ISBNs are sent to the
+              API to check what is already catalogued, plus the author names of unmatched
+              books to look for an existing work. Personal fields and the file itself never
+              leave your device.
+            </p>
+            <div class="mt-5">
+              <Button href="/import" variant="primary">
+                <Icon name="arrowRight" class="h-5 w-5" />
+                Open the import tool
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-6 text-sm leading-relaxed text-dim">
+          Everything you contribute is factual metadata dedicated to the public domain
+          (CC0). See the
+          <a
+            href="https://github.com/kodestar/audiosilo-meta/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noopener"
+            class="text-pink-400 transition-colors hover:text-pink-300">contributing guide</a
+          >
+          for details.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

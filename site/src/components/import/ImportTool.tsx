@@ -295,8 +295,8 @@ export default function ImportTool() {
             </span>
             <span className="text-lg font-semibold text-hi">Drop your library export here</span>
             <span className="text-sm text-dim">
-              or <span className="text-pink-400">choose a file</span> - OpenAudible, Libation, or an
-              audiosilo folder scan
+              or <span className="text-pink-400">choose a file</span> - OpenAudible, Libation,
+              Audiobookshelf, or an audiosilo folder scan
             </span>
           </button>
         </div>
@@ -312,7 +312,7 @@ export default function ImportTool() {
         : 'We could not read that file'
     const body =
       phase === 'unknown'
-        ? 'We could not find any books in this file. Make sure you selected an OpenAudible books.json, a Libation library export, or an audiosilo folder scan. If you use a different tool, you can still contribute your library through the import issue form.'
+        ? 'We could not find any books in this file. Make sure you selected an OpenAudible books.json, a Libation library export, an Audiobookshelf export, or an audiosilo folder scan. If you use a different tool, you can still contribute your library through the import issue form.'
         : errorMsg
     return (
       <div className="rounded-2xl border border-edge bg-surface p-6">

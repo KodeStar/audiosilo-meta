@@ -1,8 +1,9 @@
-// Pure, framework-free parser for a user's library export. Three formats are
-// understood: OpenAudible (books.json), Libation ("Export Library" JSON), and
-// the audiosilo folder-scan (the metascan tool's output). Everything here runs
-// in the browser on a file the user drops - the file never leaves the device.
-// Kept free of React and DOM so it is independently testable.
+// Pure, framework-free parser for a user's library export. Four formats are
+// understood: OpenAudible (books.json), Libation ("Export Library" JSON), the
+// audiosilo folder-scan (the metascan tool's output), and an Audiobookshelf
+// library export (the `GET /api/libraries/{id}/items?limit=0` response).
+// Everything here runs in the browser on a file the user drops - the file never
+// leaves the device. Kept free of React and DOM so it is independently testable.
 //
 // The field mapping mirrors the Go importer (the source of truth for how an
 // export entry becomes a work + recording):
@@ -10,6 +11,9 @@
 //   ../../../internal/importer/libation.go      (Libation field mapping)
 //   ../../../internal/importer/mapping.go       (language/region/sequence/name rules)
 //   ../../../internal/importer/importer.go       (title, runtime, cover, series)
+// The Audiobookshelf mapping is derived from ABS's own book model
+// (server/models/Book.js): media.metadata for the book fields, media.duration
+// (seconds) for runtime.
 // Only factual fields are read; personal/marketing fields are ignored (see
 // LICENSING.md). The folder-scan's local-only fields (root, per-book path and
 // file list) are never carried into a ParsedBook, so they can never be uploaded
@@ -37,13 +41,19 @@ export interface ParsedBook {
   raw: Record<string, unknown> // the original entry (for the factual-subset download)
 }
 
-export type ExportFormat = 'openaudible' | 'libation' | 'folderscan' | 'unknown'
+export type ExportFormat =
+  | 'openaudible'
+  | 'libation'
+  | 'folderscan'
+  | 'audiobookshelf'
+  | 'unknown'
 /** A format the parser understands - everything but 'unknown'. */
 export type KnownFormat = Exclude<ExportFormat, 'unknown'>
 
 export interface ParseOutcome {
   format: ExportFormat
-  // Books are mapped for openaudible, libation, and folderscan; empty for unknown.
+  // Books are mapped for every known format (openaudible, libation, folderscan,
+  // audiobookshelf); empty for unknown.
   books: ParsedBook[]
 }
 
@@ -469,6 +479,152 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
   }
 }
 
+// --- Audiobookshelf mapping (an ABS library export) --------------------------
+// The dropped payload is the ABS `GET /api/libraries/{id}/items?limit=0`
+// response: `{ results: [...], total, ... }`, each item carrying its book fields
+// under `media.metadata` (and runtime under `media.duration`, SECONDS). Both the
+// expanded ("full") and minified item shapes are handled: in the full shape
+// authors are objects (`{ id, name }`), narrators/genres are strings, and series
+// are objects (`{ name, sequence }`); the minified shape flattens these to the
+// comma-joined `authorName`, `narratorName`, and `seriesName` strings (the last
+// embedding the sequence as "Name #2"). Only factual fields are read; the item's
+// local `coverPath`/`path`/audio-file listing never enters a ParsedBook.
+
+// Names from an ABS array (author objects carrying a `name`, or plain narrator
+// strings), or - for the minified shape - a comma-joined fallback string. Each
+// name is trimmed and role-qualifier-stripped like every other format.
+function absNames(arr: unknown, joined: unknown): string[] {
+  if (Array.isArray(arr)) {
+    const out: string[] = []
+    for (const el of arr) {
+      const name = cleanName(isObject(el) ? coerceStr(el['name']) : coerceStr(el))
+      if (name !== null) out.push(name)
+    }
+    return out
+  }
+  return splitNames(coerceStr(joined))
+}
+
+// The " #<seq>" that the minified seriesName appends to each series name.
+const ABS_SERIES_SEQ = /^(.*?)\s+#([\d.\-]+)$/
+
+// The primary series for a book, for display/prefill: the full `series` array's
+// first positioned entry (else its first), or - for the minified shape - the
+// first "Name #seq" claim parsed out of the comma-joined seriesName string. ABS
+// can list a book in several series; this client surfaces only one (like the
+// Libation mapping).
+function primaryAbsSeries(
+  seriesArr: unknown,
+  seriesName: string
+): { seriesName?: string; seriesPosition?: string } {
+  const entries: { name: string; position?: string }[] = []
+  if (Array.isArray(seriesArr)) {
+    for (const el of seriesArr) {
+      if (!isObject(el)) continue
+      const name = coerceStr(el['name']).trim()
+      if (name === '') continue
+      const seq = coerceStr(el['sequence']).trim()
+      entries.push({ name, position: SEQUENCE_PATTERN.test(seq) ? seq : undefined })
+    }
+  }
+  if (entries.length === 0 && seriesName.trim() !== '') {
+    for (const part of seriesName.split(', ')) {
+      const seg = part.trim()
+      if (seg === '') continue
+      const m = ABS_SERIES_SEQ.exec(seg)
+      if (m) {
+        const name = m[1].trim()
+        if (name !== '') {
+          const seq = m[2].trim()
+          entries.push({ name, position: SEQUENCE_PATTERN.test(seq) ? seq : undefined })
+        }
+      } else {
+        entries.push({ name: seg })
+      }
+    }
+  }
+  if (entries.length === 0) return {}
+  const chosen = entries.find((e) => e.position !== undefined) ?? entries[0]
+  return { seriesName: chosen.name, seriesPosition: chosen.position }
+}
+
+// The ABS release date: prefer a full publishedDate, fall back to the bare
+// publishedYear (a kept fact, never fabricated into -01-01), reduced to its
+// YYYY-MM-DD date part and kept only when it matches the flexible date pattern.
+function absDate(md: Record<string, unknown>): string | undefined {
+  const raw = firstNonEmpty(coerceStr(md['publishedDate']), coerceStr(md['publishedYear']))
+  const d = raw.split('T')[0]
+  return DATE_PATTERN.test(d) ? d : undefined
+}
+
+function parseAudiobookshelfBook(raw: Record<string, unknown>): ParsedBook {
+  const media = isObject(raw['media']) ? raw['media'] : {}
+  const md = isObject(media['metadata']) ? media['metadata'] : {}
+
+  const asin = normalizeAsin(coerceStr(md['asin']))
+  const isbn = normalizeIsbn(coerceStr(md['isbn']))
+  const title = coerceStr(md['title'])
+  const subtitle = coerceStr(md['subtitle'])
+  const authors = absNames(md['authors'], md['authorName'])
+  const narrators = absNames(md['narrators'], md['narratorName'])
+  const { seriesName, seriesPosition } = primaryAbsSeries(md['series'], coerceStr(md['seriesName']))
+  const languageRaw = coerceStr(md['language'])
+  const language = mapLanguageLoose(languageRaw)
+  // media.duration is a float number of SECONDS (mirrors the OpenAudible seconds
+  // handling): round to whole minutes and emit only a positive value.
+  const durationSec = coerceInt(media['duration'])
+  const minutes = durationSec !== undefined && durationSec > 0 ? Math.round(durationSec / 60) : 0
+  const runtimeMin = minutes > 0 ? minutes : undefined
+  const releaseDate = absDate(md)
+  const publisher = coerceStr(md['publisher'])
+  // media.coverPath is a LOCAL server path, never a public https cover, so no
+  // coverUrl is emitted (like the folder scan).
+  const chapters = media['chapters']
+  const chapterCount = Array.isArray(chapters) ? chapters.length : coerceInt(media['numChapters'])
+  const abridged = coerceBool(md['abridged'])
+
+  // `raw` for the factual download is a curated, privacy-safe projection - NEVER
+  // the ABS item, which carries local coverPath/path/audio-file listings. Only
+  // present facts are included, so the shallow factual-subset filter both keeps
+  // it minimal and can never leak a local path.
+  const projection: Record<string, unknown> = { title }
+  if (subtitle) projection['subtitle'] = subtitle
+  if (authors.length) projection['authors'] = authors
+  if (narrators.length) projection['narrators'] = narrators
+  if (seriesName) projection['series'] = seriesName
+  if (seriesPosition) projection['series_position'] = seriesPosition
+  if (asin) projection['asin'] = asin
+  if (isbn) projection['isbn'] = isbn
+  if (language) projection['language'] = language
+  if (releaseDate) projection['release_date'] = releaseDate
+  if (publisher) projection['publisher'] = publisher
+  if (runtimeMin !== undefined) projection['runtime_min'] = runtimeMin
+  if (chapterCount !== undefined) projection['chapters'] = chapterCount
+  if (abridged !== undefined) projection['abridged'] = abridged
+
+  return {
+    asin: asin || undefined,
+    isbn: isbn || undefined,
+    title,
+    subtitle: subtitle || undefined,
+    authors,
+    narrators,
+    seriesName,
+    seriesPosition,
+    language,
+    languageRaw: languageRaw || undefined,
+    runtimeMin,
+    releaseDate,
+    publisher: publisher || undefined,
+    region: undefined, // ABS carries no marketplace region
+    coverUrl: undefined,
+    chapterCount,
+    abridged,
+    format: 'audiobookshelf',
+    raw: projection,
+  }
+}
+
 // --- Format registry ----------------------------------------------------------
 // ONE descriptor per format: detection, entry parser, privacy allowlist, label.
 // Adding a format is one entry here (the Record type makes the compiler demand
@@ -543,6 +699,33 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
       'IsAbridged',
     ],
   },
+  audiobookshelf: {
+    label: 'Audiobookshelf library export',
+    // Distinctive by construction: an ABS library item nests its book fields
+    // under media.metadata, a shape none of the other formats has - so this
+    // never collides with them, and their top-level marker keys never appear on
+    // an ABS item (asin/authors/series all live under media.metadata).
+    detect: (_data, entries) => entriesLookLikeAbs(entries),
+    parse: parseAudiobookshelfBook,
+    // The factual keys of the curated projection parseAudiobookshelfBook stores
+    // as `raw` (already privacy-safe - it never contains a local path).
+    factualKeys: [
+      'title',
+      'subtitle',
+      'authors',
+      'narrators',
+      'series',
+      'series_position',
+      'asin',
+      'isbn',
+      'language',
+      'release_date',
+      'publisher',
+      'runtime_min',
+      'chapters',
+      'abridged',
+    ],
+  },
   folderscan: {
     label: 'audiosilo folder scan',
     // The version stamp is checked so tool/site skew fails LOUD: a future v2
@@ -572,13 +755,20 @@ export const FORMATS: Record<KnownFormat, FormatSpec> = {
 }
 
 // Detection order is load-bearing: the discriminated folder-scan first (its
-// per-book keys overlap OpenAudible's), then OpenAudible's lowercase keys
-// before Libation's generic PascalCase Title.
-const DETECTION_ORDER: readonly KnownFormat[] = ['folderscan', 'openaudible', 'libation']
+// per-book keys overlap OpenAudible's), then Audiobookshelf (its media.metadata
+// signature is unique), then OpenAudible's lowercase keys before Libation's
+// generic PascalCase Title.
+const DETECTION_ORDER: readonly KnownFormat[] = [
+  'folderscan',
+  'audiobookshelf',
+  'openaudible',
+  'libation',
+]
 
 // Libation sometimes wraps its list in an object under one of these keys (the
-// folder-scan's books array also rides under 'books').
-const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library']
+// folder-scan's books array also rides under 'books'; an Audiobookshelf export
+// rides under 'results').
+const WRAPPER_KEYS = ['Books', 'books', 'Items', 'items', 'Library', 'library', 'results', 'Results']
 
 function extractEntries(data: unknown): unknown[] | null {
   if (Array.isArray(data)) return data
@@ -603,6 +793,19 @@ function entriesHaveAnyKey(entries: unknown[] | null, keys: readonly string[]): 
   return false
 }
 
+// True when any of the first entries is an Audiobookshelf library item - an
+// object whose `media` is an object carrying a `metadata` object. That nesting
+// is the ABS signature and appears in no other supported format.
+function entriesLookLikeAbs(entries: unknown[] | null): boolean {
+  if (!entries) return false
+  for (const el of entries.slice(0, 20)) {
+    if (isObject(el) && isObject(el['media']) && isObject((el['media'] as Record<string, unknown>)['metadata'])) {
+      return true
+    }
+  }
+  return false
+}
+
 function detectFormat(data: unknown, entries: unknown[] | null): ExportFormat {
   for (const f of DETECTION_ORDER) {
     if (FORMATS[f].detect(data, entries)) return f
@@ -612,8 +815,9 @@ function detectFormat(data: unknown, entries: unknown[] | null): ExportFormat {
 
 /**
  * Parse a dropped export. Detects the format and returns every entry mapped to a
- * ParsedBook (for openaudible, libation, and the audiosilo folder-scan); an
- * unknown file yields an empty books list and routes to the issue-form path.
+ * ParsedBook (for openaudible, libation, the audiosilo folder-scan, and an
+ * Audiobookshelf export); an unknown file yields an empty books list and routes
+ * to the issue-form path.
  * Throws a friendly Error on invalid JSON.
  */
 export function parseExport(text: string): ParseOutcome {
@@ -622,7 +826,7 @@ export function parseExport(text: string): ParseOutcome {
     data = JSON.parse(text)
   } catch {
     throw new Error(
-      'That file is not valid JSON. Make sure you selected a supported library export (OpenAudible, Libation, or an audiosilo folder scan).'
+      'That file is not valid JSON. Make sure you selected a supported library export (OpenAudible, Libation, Audiobookshelf, or an audiosilo folder scan).'
     )
   }
   const entries = extractEntries(data)
