@@ -3,6 +3,7 @@ import { lookup, search, getPerson, formatRuntime, type SearchResult } from '../
 import {
   parseExport,
   partitionByIdentifier,
+  isIdentifierPoor,
   isContributableOnMiss,
   matchExistingWork,
   authorKey,
@@ -71,6 +72,8 @@ interface Results {
   inDatabase: ParsedBook[]
   newBooks: NewBook[]
   cannotMatch: ParsedBook[]
+  noIdentifier: number // books in cannotMatch that carry no ASIN/ISBN (couldn't be checked)
+  total: number // distinct books processed (identified + unidentified)
   skipped: number
 }
 
@@ -85,6 +88,32 @@ function metaLine(b: ParsedBook): string {
   const rt = formatRuntime(b.runtimeMin)
   if (rt) parts.push(rt)
   return parts.join(' · ')
+}
+
+// A card with an icon chip, heading, and free-form body - the shared chrome for
+// the unknown/error notice and the identifier-poor callout.
+function IconCard({
+  icon,
+  heading,
+  children,
+}: {
+  icon: React.ComponentProps<typeof Icon>['name']
+  heading: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="rounded-2xl border border-edge bg-surface p-6">
+      <div className="flex items-start gap-4">
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-edge bg-raised text-pink-400">
+          <Icon name={icon} />
+        </span>
+        <div className="min-w-0">
+          <h3 className="text-lg font-semibold text-hi">{heading}</h3>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 // The hand-off actions for the unknown/error card: open the import issue form,
@@ -163,8 +192,11 @@ export default function ImportTool() {
     const books = all.slice(0, MAX_BOOKS)
 
     // Dedupe and split off books with no identifier (they can't be matched);
-    // the rest are looked up against the database below.
+    // the rest are looked up against the database below. `unidentified` is the
+    // no-identifier portion of "cannot auto-match" - reported so the UI can
+    // explain that number honestly (couldn't be checked, not missing).
     const { identified, unidentified } = partitionByIdentifier(books)
+    const totalBooks = identified.length + unidentified.length
     const cannotMatch: ParsedBook[] = [...unidentified]
     const inDatabase: ParsedBook[] = []
     const misses: ParsedBook[] = []
@@ -239,7 +271,14 @@ export default function ImportTool() {
     }))
 
     abortRef.current = null
-    setResults({ inDatabase, newBooks, cannotMatch, skipped })
+    setResults({
+      inDatabase,
+      newBooks,
+      cannotMatch,
+      noIdentifier: unidentified.length,
+      total: totalBooks,
+      skipped,
+    })
     setPhase('results')
   }
 
@@ -315,18 +354,10 @@ export default function ImportTool() {
         ? 'We could not find any books in this file. Make sure you selected an OpenAudible books.json, a Libation library export, an Audiobookshelf export, or an audiosilo folder scan. If you use a different tool, you can still contribute your library through the import issue form.'
         : errorMsg
     return (
-      <div className="rounded-2xl border border-edge bg-surface p-6">
-        <div className="flex items-start gap-4">
-          <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-edge bg-raised text-pink-400">
-            <Icon name="x" />
-          </span>
-          <div className="min-w-0">
-            <h3 className="text-lg font-semibold text-hi">{heading}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-body">{body}</p>
-            <IssueFormActions onReset={reset} />
-          </div>
-        </div>
-      </div>
+      <IconCard icon="x" heading={heading}>
+        <p className="mt-2 text-sm leading-relaxed text-body">{body}</p>
+        <IssueFormActions onReset={reset} />
+      </IconCard>
     )
   }
 
@@ -359,20 +390,49 @@ export default function ImportTool() {
 
   // phase === 'results'
   if (!results) return null
-  const stat = (value: number, label: string, tone: string) => (
+  const stat = (value: number, label: string, tone: string, note?: string) => (
     <div className="rounded-2xl border border-edge bg-surface p-6 text-center">
       <div className={`text-4xl font-bold ${tone}`}>{value.toLocaleString()}</div>
       <div className="mt-2 text-sm text-dim">{label}</div>
+      {note ? <div className="mt-1 text-xs text-dim">{note}</div> : null}
     </div>
   )
+
+  // "Cannot auto-match" fuses two reasons: books with no ASIN/ISBN (never
+  // checkable) and books that were looked up but missed. Annotate the number with
+  // its no-identifier share whenever there is one, so it never reads as "missing"
+  // at any fraction; the prominent callout below only escalates when that share
+  // dominates (isIdentifierPoor).
+  const noIdentifierNote =
+    results.noIdentifier > 0
+      ? `${results.noIdentifier.toLocaleString()} have no identifier to check`
+      : undefined
 
   return (
     <div className="space-y-8">
       <div className="grid gap-4 sm:grid-cols-3">
         {stat(results.inDatabase.length, 'In the database', 'text-success')}
         {stat(results.newBooks.length, 'New - you can contribute these', 'text-pink-400')}
-        {stat(results.cannotMatch.length, 'Cannot auto-match', 'text-dim')}
+        {stat(results.cannotMatch.length, 'Cannot auto-match', 'text-dim', noIdentifierNote)}
       </div>
+
+      {isIdentifierPoor(results.noIdentifier, results.total) ? (
+        <IconCard icon="database" heading="Most of this export has no identifier">
+          <p className="mt-2 text-sm leading-relaxed text-body">
+            {results.noIdentifier.toLocaleString()} of {results.total.toLocaleString()} books
+            carry no ASIN or ISBN, so they could not be checked against the database. That is not
+            the same as being missing from it - without an identifier there is no reliable way to
+            match a book, so most of the &ldquo;Cannot auto-match&rdquo; count is simply
+            &ldquo;could not be checked&rdquo;. An export like this usually means the library was
+            never matched against a metadata provider.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-body">
+            To check these books, match your library against a provider in your audiobook app (in
+            Audiobookshelf, use <span className="text-hi">Match</span>) and export again, or
+            import an OpenAudible or Libation export - both include the identifiers.
+          </p>
+        </IconCard>
+      ) : null}
 
       {results.skipped > 0 ? (
         <p className="rounded-xl border border-edge bg-raised px-4 py-3 text-sm text-dim">

@@ -979,6 +979,30 @@ export function partitionByIdentifier(books: ParsedBook[]): {
   return { identified, unidentified }
 }
 
+// At or above this share of unidentified books, an export is "identifier-poor":
+// the no-identifier portion dominates its "cannot auto-match" count, so the UI
+// escalates to a prominent callout with remediation advice. This threshold
+// governs only that escalation, NOT whether the truth is told: the count is
+// annotated with its no-identifier share whenever any book lacks an identifier,
+// so the number never reads as "missing" at any fraction (it just gets the full
+// callout when the problem dominates).
+export const IDENTIFIER_POOR_FRACTION = 0.5
+
+/**
+ * Whether an export is "identifier-poor": at least IDENTIFIER_POOR_FRACTION of
+ * its books carry no ASIN/ISBN, so they can never be looked up (see
+ * partitionByIdentifier) and land in "cannot auto-match" purely for lack of an
+ * identifier - which is not the same as being missing from the database. When
+ * true, the no-identifier share dominates, so the import UI escalates from
+ * annotating the count to a prominent callout with remediation advice (the count
+ * itself is annotated whenever any book lacks an identifier, threshold or not).
+ * `unidentified` and `total` are the counts partitionByIdentifier already yields;
+ * a zero total (empty export) is never identifier-poor. Pure.
+ */
+export function isIdentifierPoor(unidentified: number, total: number): boolean {
+  return total > 0 && unidentified / total >= IDENTIFIER_POOR_FRACTION
+}
+
 /**
  * After a lookup miss (the identifier is not in the database), a book is
  * contributable only when its language mapped to an ISO code the schema accepts
