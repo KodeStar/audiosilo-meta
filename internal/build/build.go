@@ -40,6 +40,7 @@ CREATE TABLE works (
 );
 CREATE TABLE work_authors (work_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_work_authors_person ON work_authors(person_id);
+CREATE INDEX idx_work_authors_work ON work_authors(work_id);
 CREATE TABLE work_isbns (work_id TEXT NOT NULL, isbn TEXT NOT NULL);
 CREATE INDEX idx_work_isbns_isbn ON work_isbns(isbn);
 

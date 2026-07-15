@@ -101,7 +101,7 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 | `/series?id=<id>` | `src/pages/series.astro` | A series: authors and works in reading order |
 | `/import` | `src/pages/import.astro` | In-browser library diff (OpenAudible, Libation, an Audiobookshelf export, or a metascan folder scan): which of your books are catalogued and which are new, with prefilled contribution issues |
 | `/audiobookshelf` | `src/pages/audiobookshelf.astro` | Audiobookshelf integration: add the database as an ABS custom metadata provider, and export an ABS library into `/import` |
-| `/contribute` | `src/pages/contribute.astro` | Contribution coverage: stats band, books needing characters/recaps (grouped by series, linking into `/build`), and series with missing volumes |
+| `/contribute` | `src/pages/contribute.astro` | Contribution coverage: clickable stats band, a filterable/searchable/paginated coverage browser (needs-work vs has-characters/story-so-far/recap-summary, linking into `/build`), and a searchable/paginated list of series with missing volumes |
 | `/build?work=<id>&kind=characters\|recaps` | `src/pages/build.astro` | Guided characters/recaps builder - edit the expressive layer, download the sidecar JSON, and open a prefilled contribution issue |
 | `/404` | `src/pages/404.astro` | On-brand not-found page, with add-it CTAs |
 
