@@ -149,6 +149,8 @@ func (s *Server) buildMux() http.Handler {
 	mux.Handle("GET /api/v1/series/{id}", s.api(s.handleSeries))
 	mux.Handle("GET /api/v1/lookup", s.api(s.handleLookup))
 	mux.Handle("GET /api/v1/coverage", s.api(s.handleCoverage))
+	mux.Handle("GET /api/v1/coverage/works", s.api(s.handleCoverageWorks))
+	mux.Handle("GET /api/v1/coverage/series-gaps", s.api(s.handleCoverageSeriesGaps))
 	// Audiobookshelf custom metadata provider (ABS appends /search to the
 	// configured base URL). Outside /api/v1; the specific pattern wins over "/".
 	mux.Handle("GET /abs/search", s.api(s.handleABSSearch))
@@ -205,6 +207,19 @@ func clampLimit(raw string, def, max int) int {
 	}
 	if n > max {
 		return max
+	}
+	return n
+}
+
+// clampOffset parses the ?offset= param into a non-negative row offset,
+// defaulting to 0 when absent, invalid, or negative.
+func clampOffset(raw string) int {
+	if raw == "" {
+		return 0
+	}
+	n, err := strconv.Atoi(raw)
+	if err != nil || n < 0 {
+		return 0
 	}
 	return n
 }
@@ -301,12 +316,51 @@ func (s *Server) handleSearch(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]any{"results": results})
 }
 
-// handleCoverage reports expressive-layer coverage (characters/recaps/recap
-// summaries) plus series position gaps. It always returns 200 and degrades on
-// older artifacts (see snapshot.coverage) rather than reporting everything as
-// missing.
+// handleCoverage reports the top-line expressive-layer totals
+// (characters/recaps/recap summaries). The per-work list and series gaps are
+// their own paginated endpoints. It always returns 200 and degrades on older
+// artifacts (see snapshot.coverage) rather than reporting everything as missing.
 func (s *Server) handleCoverage(w http.ResponseWriter, _ *http.Request) {
 	res, err := s.current().coverage()
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, res)
+}
+
+// handleCoverageWorks serves one filtered, searchable, paginated page of works
+// for the contribute-page coverage browser. ?filter selects the dimension
+// (missing|has_characters|has_recaps|has_recap_summary), ?q is a title/author
+// substring, ?limit/?offset paginate. It always returns 200 and degrades to an
+// empty page with available:false when the filter's dimension is unevaluable at
+// the current artifact schema_version (see snapshot.coverageWorks).
+func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {
+	q := r.URL.Query()
+	filter, ok := validCoverageFilter(q.Get("filter"))
+	if !ok {
+		writeErr(w, http.StatusBadRequest, "unknown filter")
+		return
+	}
+	limit := clampLimit(q.Get("limit"), 25, 100)
+	offset := clampOffset(q.Get("offset"))
+	res, err := s.current().coverageWorks(filter, strings.TrimSpace(q.Get("q")), limit, offset)
+	if err != nil {
+		writeErr(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, res)
+}
+
+// handleCoverageSeriesGaps serves one searchable, paginated page of series with
+// interior position gaps. ?q is a series-name substring; ?limit/?offset
+// paginate. series_gaps has no schema_version dependency, so it is always
+// available.
+func (s *Server) handleCoverageSeriesGaps(w http.ResponseWriter, r *http.Request) {
+	q := r.URL.Query()
+	limit := clampLimit(q.Get("limit"), 25, 100)
+	offset := clampOffset(q.Get("offset"))
+	res, err := s.current().seriesGapsPage(strings.TrimSpace(q.Get("q")), limit, offset)
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return

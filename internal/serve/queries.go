@@ -7,6 +7,20 @@ import (
 	"strings"
 )
 
+// scalarInt runs a query expected to return a single integer (COUNT, etc.).
+func (s *snapshot) scalarInt(query string, args ...any) (int, error) {
+	var n int
+	err := s.db.QueryRow(query, args...).Scan(&n)
+	return n, err
+}
+
+// escapeLike escapes the SQL LIKE wildcards in a user substring so it matches
+// literally. Callers wrap the result in %...% and pass ESCAPE '\' in the query.
+func escapeLike(s string) string {
+	r := strings.NewReplacer(`\`, `\\`, `%`, `\%`, `_`, `\_`)
+	return r.Replace(s)
+}
+
 // scanIDs collects a single string column into a slice.
 func scanIDs(rows *sql.Rows) ([]string, error) {
 	defer func() { _ = rows.Close() }()

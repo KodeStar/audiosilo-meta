@@ -1,44 +1,29 @@
-// Pure, framework-free shaping of the /api/v1/coverage response into the rows the
-// contribute page renders. Kept out of the island so it can be unit-tested (no
-// DOM, no React). The island is a thin renderer over these shapes.
+// Pure, framework-free shaping for the contribute page's coverage browser. Kept
+// out of the island so it can be unit-tested (no DOM, no React). The island is a
+// thin renderer over these shapes; the server does the filtering/search/paging.
 import type {
-  CoverageResponse,
-  CoverageMissing,
+  CoverageWork,
   CoverageDimension,
   CoverageTotals,
-  PersonRef,
+  CoverageFilter,
 } from './api'
 
-/** Which build CTAs a missing row should offer. `recap_summary` is folded into
-    the recaps CTA (the builder authors both together), so there is no separate
+/** Which build CTAs a work row should offer. `recap_summary` is folded into the
+    recaps CTA (the builder authors both together), so there is no separate
     summary CTA. */
 export interface CoverageCtas {
   characters: boolean
   recaps: boolean
 }
 
-/** One work that is missing part of the expressive layer, ready to render. */
+/** One work row ready to render (the row link + optional build CTAs). */
 export interface CoverageWorkRow {
   id: string
   title: string
-  authors: PersonRef[]
+  authors: CoverageWork['authors']
+  series?: CoverageWork['series']
   position?: string
   ctas: CoverageCtas
-}
-
-/** A series' worth of works needing characters/recaps. */
-export interface CoverageSeriesGroup {
-  id: string
-  name: string
-  works: CoverageWorkRow[]
-}
-
-/** The grouped view of the missing rows: series groups first, then standalone
-    works. Both preserve the server's ordering (series-name -> position ->
-    standalone-by-title). */
-export interface CoverageGrouped {
-  series: CoverageSeriesGroup[]
-  standalone: CoverageWorkRow[]
 }
 
 /** One stat in the coverage band. `known` is false when the count was omitted
@@ -47,6 +32,7 @@ export interface CoverageGrouped {
 export interface CoverageStat {
   key: CoverageDimension
   label: string
+  hint: string
   known: boolean
   count?: number
   total: number
@@ -61,41 +47,17 @@ export function ctasFor(missing: CoverageDimension[]): CoverageCtas {
   }
 }
 
-function toWorkRow(row: CoverageMissing): CoverageWorkRow {
+/** Shape a wire work row into a render row (series ref carried through so each
+    row can show its series inline, since the flat list is no longer grouped). */
+export function toWorkRow(row: CoverageWork): CoverageWorkRow {
   return {
     id: row.id,
     title: row.title,
     authors: row.authors ?? [],
+    series: row.series ?? null,
     position: row.series?.position,
     ctas: ctasFor(row.missing ?? []),
   }
-}
-
-/** Group the missing rows into series buckets + a standalone bucket. Series
-    appear in first-seen order and each series' works keep their incoming order,
-    so the server's series-name -> position ordering carries through. A row with
-    no series (or a series with no id) falls into standalone. */
-export function groupMissing(rows: CoverageMissing[] | undefined): CoverageGrouped {
-  const series: CoverageSeriesGroup[] = []
-  const byId = new Map<string, CoverageSeriesGroup>()
-  const standalone: CoverageWorkRow[] = []
-
-  for (const row of rows ?? []) {
-    const s = row.series
-    if (s && s.id) {
-      let group = byId.get(s.id)
-      if (!group) {
-        group = { id: s.id, name: s.name, works: [] }
-        byId.set(s.id, group)
-        series.push(group)
-      }
-      group.works.push(toWorkRow(row))
-    } else {
-      standalone.push(toWorkRow(row))
-    }
-  }
-
-  return { series, standalone }
 }
 
 /** Percentage of works carrying a dimension, or null when the count is unknown
@@ -105,22 +67,36 @@ export function coveragePercent(count: number | undefined, total: number): numbe
   return Math.round((count / total) * 100)
 }
 
-/** The three coverage stats for the band, in a fixed order. A `known` flag
-    distinguishes an omitted count (older artifact -> "unknown") from a real 0. */
+/** The three coverage stats for the band, in a fixed order, each with a short
+    hint clarifying what the dimension is (story-so-far vs whole-book summary).
+    A `known` flag distinguishes an omitted count (older artifact -> "unknown")
+    from a real 0. */
 export function coverageStats(totals: CoverageTotals): CoverageStat[] {
   const total = totals.works
-  const rows: { key: CoverageDimension; label: string; count?: number }[] = [
-    { key: 'characters', label: 'Works with characters', count: totals.with_characters },
-    { key: 'recaps', label: 'Works with a story so far', count: totals.with_recaps },
+  const rows: { key: CoverageDimension; label: string; hint: string; count?: number }[] = [
+    {
+      key: 'characters',
+      label: 'Works with characters',
+      hint: 'Spoiler-aware character guides',
+      count: totals.with_characters,
+    },
+    {
+      key: 'recaps',
+      label: 'Works with a story so far',
+      hint: 'Chapter-by-chapter recaps for resuming mid-book',
+      count: totals.with_recaps,
+    },
     {
       key: 'recap_summary',
       label: 'Works with a recap summary',
+      hint: 'One whole-book wrap-up for when you have finished',
       count: totals.with_recap_summary,
     },
   ]
   return rows.map((r) => ({
     key: r.key,
     label: r.label,
+    hint: r.hint,
     known: r.count !== undefined,
     count: r.count,
     total,
@@ -128,40 +104,51 @@ export function coverageStats(totals: CoverageTotals): CoverageStat[] {
   }))
 }
 
-/** Availability of the "books needing characters and recaps" list. OMITTED and
-    EMPTY mean opposite things and must not be conflated:
-    - 'unavailable': `missing` was omitted entirely (an older artifact that
-      cannot compute the list - nothing can be said either way)
-    - 'complete': present but empty - every catalogued book is covered
-    - 'has-rows': there are works to show */
-export type MissingState = 'unavailable' | 'complete' | 'has-rows'
+/** The coverage-browser filters, in tab order. The first ("Needs work") is the
+    default; the other three mirror the three stat cards ("has X"). */
+export const COVERAGE_FILTERS: { key: CoverageFilter; label: string }[] = [
+  { key: 'missing', label: 'Needs work' },
+  { key: 'has_characters', label: 'Has characters' },
+  { key: 'has_recaps', label: 'Has story so far' },
+  { key: 'has_recap_summary', label: 'Has recap summary' },
+]
 
-export function missingState(coverage: CoverageResponse): MissingState {
-  if (coverage.missing === undefined) return 'unavailable'
-  return coverage.missing.length > 0 ? 'has-rows' : 'complete'
+/** The browser filter that shows works which HAVE the given stat's dimension -
+    what a stat card links to. */
+export function filterForStat(dim: CoverageDimension): CoverageFilter {
+  return `has_${dim}` as CoverageFilter
 }
 
-/** Caps for the initial (collapsed) missing-list render. */
-export interface CoverageLimits {
-  maxSeries: number
-  maxStandalone: number
+/** Derived pager state for a "showing from-to of total" control. `from`/`to`
+    are 1-based inclusive and 0/0 for an empty result. `page`/`pageCount` are
+    1-based; `hasPrev`/`hasNext` gate the buttons. */
+export interface PageInfo {
+  from: number
+  to: number
+  total: number
+  page: number
+  pageCount: number
+  hasPrev: boolean
+  hasNext: boolean
 }
 
-/** The grouped view trimmed to the render caps, plus how many work rows the
-    trim hid (series beyond the cap count all their works). The full data is
-    already client-side; this only bounds the initial paint, and a "show all"
-    expander renders the untrimmed grouping. */
-export interface LimitedCoverage extends CoverageGrouped {
-  hiddenWorks: number
-}
-
-/** Trim a grouped missing list to the display caps. When nothing is over a cap
-    the buckets are returned as-is and hiddenWorks is 0. */
-export function limitGrouped(grouped: CoverageGrouped, limits: CoverageLimits): LimitedCoverage {
-  const series = grouped.series.slice(0, limits.maxSeries)
-  const standalone = grouped.standalone.slice(0, limits.maxStandalone)
-  const hiddenWorks =
-    grouped.series.slice(limits.maxSeries).reduce((n, g) => n + g.works.length, 0) +
-    Math.max(0, grouped.standalone.length - limits.maxStandalone)
-  return { series, standalone, hiddenWorks }
+export function pageInfo(total: number, offset: number, limit: number): PageInfo {
+  const safeLimit = limit > 0 ? limit : 1
+  if (total <= 0) {
+    return { from: 0, to: 0, total: 0, page: 1, pageCount: 1, hasPrev: false, hasNext: false }
+  }
+  const clampedOffset = Math.min(Math.max(offset, 0), Math.max(total - 1, 0))
+  const from = clampedOffset + 1
+  const to = Math.min(clampedOffset + safeLimit, total)
+  const pageCount = Math.ceil(total / safeLimit)
+  const page = Math.floor(clampedOffset / safeLimit) + 1
+  return {
+    from,
+    to,
+    total,
+    page,
+    pageCount,
+    hasPrev: clampedOffset > 0,
+    hasNext: to < total,
+  }
 }

@@ -123,11 +123,18 @@ curl 'localhost:8080/api/v1/lookup?asin=B08G9PRS1K'
 
 Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `works/latest?limit=`, `works/{id}`, `works/{id}/recordings/{rid}/chapters`,
-`people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`, plus `/healthz`.
+`people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`,
+`coverage/works`, `coverage/series-gaps`, plus `/healthz`.
 
-The `coverage` endpoint reports expressive-layer coverage - how many works carry
-characters/recaps/whole-book recap summaries, the works still missing each, and
-per-series integer position gaps - for the site's coverage/wanted page.
+The coverage endpoints back the site's contribute page. `coverage` returns the
+top-line band only - how many works carry characters/recaps/whole-book recap
+summaries - so it stays tiny at any catalogue size. `coverage/works?filter=&q=
+&limit=&offset=` is the paginated, searchable browser: `filter` is `missing`
+(missing any dimension) or `has_characters`/`has_recaps`/`has_recap_summary`; `q`
+matches title/author; the response carries a per-filter `available` flag that is
+false when the dimension is not evaluable at the artifact's schema version.
+`coverage/series-gaps?q=&limit=&offset=` is the paginated, name-searchable list
+of series with interior position gaps.
 
 Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 `--poll` (fetch and hot-swap the latest published data release from GitHub),

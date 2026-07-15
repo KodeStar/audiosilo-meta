@@ -186,9 +186,9 @@ export interface CoverageTotals {
   with_recap_summary?: number
 }
 
-/** A work that is missing part of the expressive layer, with the specific
-    dimensions it lacks. */
-export interface CoverageMissing {
+/** One work row in the coverage browser. `missing` lists whichever dimensions
+    the work still lacks (empty for a fully-covered work in a "has X" view). */
+export interface CoverageWork {
   id: string
   title: string
   authors: PersonRef[]
@@ -205,13 +205,40 @@ export interface CoverageSeriesGap {
   missing_positions: number[]
 }
 
-/** The /coverage envelope. `missing` is omitted entirely on older artifacts
-    (the rows can't be computed); `series_gaps` is always present. Rows are
-    ordered series-name -> position -> standalone-by-title. */
+/** The /coverage band payload: catalogue-wide totals only. The heavy lists are
+    their own paginated endpoints, so this stays tiny no matter how large the
+    catalogue grows. Browser availability degrades through the totals (an omitted
+    sidecar count) and, per filter, through `available` on CoverageWorksResponse. */
 export interface CoverageResponse {
   totals: CoverageTotals
-  missing?: CoverageMissing[]
-  series_gaps: CoverageSeriesGap[]
+}
+
+/** Which slice of the catalogue the coverage browser lists: works missing at
+    least one dimension, or works that HAVE a given dimension. */
+export type CoverageFilter =
+  | 'missing'
+  | 'has_characters'
+  | 'has_recaps'
+  | 'has_recap_summary'
+
+/** One page of /coverage/works. `total` is the unpaged count (drives the
+    pager); `available` is false when the filter's dimension is not evaluable at
+    the current artifact schema version (then `works` is empty). */
+export interface CoverageWorksResponse {
+  works: CoverageWork[]
+  total: number
+  limit: number
+  offset: number
+  available: boolean
+}
+
+/** One page of /coverage/series-gaps. `total` is the unpaged, post-search
+    count. */
+export interface SeriesGapsResponse {
+  gaps: CoverageSeriesGap[]
+  total: number
+  limit: number
+  offset: number
 }
 
 // --- Fetch helpers --------------------------------------------------------
@@ -286,10 +313,39 @@ export function getSeries(id: string, signal?: AbortSignal): Promise<Series> {
   return getJSON<Series>(`/api/v1/series/${encodeURIComponent(id)}`, signal)
 }
 
-/** The contribution coverage feed: totals, the works missing characters/recaps,
-    and series with missing volumes. */
+/** The contribution coverage band: catalogue-wide totals + list availability. */
 export function getCoverage(signal?: AbortSignal): Promise<CoverageResponse> {
   return getJSON<CoverageResponse>('/api/v1/coverage', signal)
+}
+
+/** One page of the coverage browser: works filtered by expressive-layer status,
+    optionally narrowed by a title/author query, paginated. */
+export function getCoverageWorks(
+  opts: { filter: CoverageFilter; q?: string; limit?: number; offset?: number },
+  signal?: AbortSignal
+): Promise<CoverageWorksResponse> {
+  const params = new URLSearchParams({ filter: opts.filter })
+  if (opts.q) params.set('q', opts.q)
+  if (opts.limit !== undefined) params.set('limit', String(opts.limit))
+  if (opts.offset) params.set('offset', String(opts.offset))
+  return getJSON<CoverageWorksResponse>(`/api/v1/coverage/works?${params.toString()}`, signal)
+}
+
+/** One page of series with gaps in their catalogued volumes, optionally narrowed
+    by a series-name query. */
+export function getSeriesGaps(
+  opts: { q?: string; limit?: number; offset?: number } = {},
+  signal?: AbortSignal
+): Promise<SeriesGapsResponse> {
+  const params = new URLSearchParams()
+  if (opts.q) params.set('q', opts.q)
+  if (opts.limit !== undefined) params.set('limit', String(opts.limit))
+  if (opts.offset) params.set('offset', String(opts.offset))
+  const qs = params.toString()
+  return getJSON<SeriesGapsResponse>(
+    `/api/v1/coverage/series-gaps${qs ? `?${qs}` : ''}`,
+    signal
+  )
 }
 
 /** Exact ASIN/ISBN lookup. Returns null on a 404 (no exact match). */
