@@ -20,9 +20,11 @@
 # SECURITY: the context file is UNTRUSTED DATA (a contributor's diff). On the
 # curl path it is embedded into the request as a JSON string via `jq --arg`
 # (which escapes it, so it cannot break out of the JSON or forge request
-# fields); on the CLI path it is passed as a single argv string, never
-# interpolated into a shell command. Either way the system prompt instructs the
-# model to treat everything in it as data and ignore any instructions inside it,
+# fields); on the CLI path it is fed to the CLI on stdin, never interpolated
+# into a shell command (a single argv would hit Linux's per-argument execve
+# limit - MAX_ARG_STRLEN, 128 KiB - which is below MAX_INPUT_BYTES). Either way
+# the system prompt instructs the model to treat everything in it as data and
+# ignore any instructions inside it,
 # and the CLI runs with NO tools (`--allowedTools ""`) so it cannot touch the
 # workspace. Nothing from the diff is ever executed here.
 #
@@ -97,16 +99,26 @@ if [ -n "${CLAUDE_CODE_OAUTH_TOKEN:-}" ]; then
   # pure text completion: --system-prompt fully REPLACES the default agent
   # prompt (so the model is told nothing about tools), --allowedTools "" grants
   # no tools, and -p/--output-format json prints one result object whose
-  # `result` field holds the final assistant text.
+  # `result` field holds the final assistant text. The prompt arrives on stdin
+  # (-p with no positional prompt reads stdin), and stderr is captured to a temp
+  # file for diagnosis instead of discarded.
   if ! command -v claude >/dev/null 2>&1; then
     skip "The Claude Code CLI (\`claude\`) is not installed on the runner."
   fi
 
-  CLI_OUT="$(claude -p "$USER" \
+  CLI_STATUS=0
+  CLI_ERR_FILE="$(mktemp)"
+  CLI_OUT="$(printf '%s' "$USER" | claude -p \
     --system-prompt "$SYSTEM" \
     --model "$MODEL" \
     --output-format json \
-    --allowedTools "" 2>/dev/null)" || skip "The Claude Code CLI invocation failed."
+    --allowedTools "" 2>"$CLI_ERR_FILE")" || CLI_STATUS=$?
+
+  if [ "$CLI_STATUS" -ne 0 ]; then
+    CLI_DETAIL="$(printf '%s' "$CLI_OUT" | jq -r '.result // empty' 2>/dev/null)"
+    [ -n "$CLI_DETAIL" ] || CLI_DETAIL="$(head -c 300 "$CLI_ERR_FILE" | tr -d '\0')"
+    skip "The Claude Code CLI invocation failed (exit ${CLI_STATUS})${CLI_DETAIL:+: ${CLI_DETAIL}}"
+  fi
 
   if [ -z "$CLI_OUT" ]; then
     skip "The Claude Code CLI returned an empty response."
