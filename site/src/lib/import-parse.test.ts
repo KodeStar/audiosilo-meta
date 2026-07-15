@@ -4,8 +4,6 @@ import {
   normalizeAsin,
   normalizeIsbn,
   partitionByIdentifier,
-  isIdentifierPoor,
-  IDENTIFIER_POOR_FRACTION,
   isContributableOnMiss,
   matchExistingWork,
   authorSearchKeys,
@@ -858,26 +856,6 @@ describe('partitionByIdentifier', () => {
     const out = partitionByIdentifier([byAsin, byIsbn])
     expect(out.identified).toEqual([byAsin])
     expect(out.unidentified).toEqual([])
-  })
-})
-
-describe('isIdentifierPoor', () => {
-  it('flags an export dominated by unidentified books', () => {
-    // The real-world case: an Audiobookshelf folder scan with almost no ASINs.
-    expect(isIdentifierPoor(9, 10)).toBe(true)
-  })
-
-  it('does not flag an export that is mostly identified', () => {
-    expect(isIdentifierPoor(1, 3)).toBe(false) // 1/3 < 0.5
-  })
-
-  it('treats exactly the threshold share as identifier-poor (>=)', () => {
-    expect(1 / 2).toBe(IDENTIFIER_POOR_FRACTION)
-    expect(isIdentifierPoor(1, 2)).toBe(true)
-  })
-
-  it('is never identifier-poor for an empty export (no divide-by-zero)', () => {
-    expect(isIdentifierPoor(0, 0)).toBe(false)
   })
 })
 

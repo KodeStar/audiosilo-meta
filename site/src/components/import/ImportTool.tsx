@@ -3,7 +3,6 @@ import { lookup, search, getPerson, formatRuntime, type SearchResult } from '../
 import {
   parseExport,
   partitionByIdentifier,
-  isIdentifierPoor,
   isContributableOnMiss,
   matchExistingWork,
   authorKey,
@@ -73,7 +72,7 @@ interface Results {
   newBooks: NewBook[]
   cannotMatch: ParsedBook[]
   noIdentifier: number // books in cannotMatch that carry no ASIN/ISBN (couldn't be checked)
-  total: number // distinct books processed (identified + unidentified)
+  total: number // books across the result stats: deduped identified + all unidentified
   skipped: number
 }
 
@@ -399,10 +398,9 @@ export default function ImportTool() {
   )
 
   // "Cannot auto-match" fuses two reasons: books with no ASIN/ISBN (never
-  // checkable) and books that were looked up but missed. Annotate the number with
-  // its no-identifier share whenever there is one, so it never reads as "missing"
-  // at any fraction; the prominent callout below only escalates when that share
-  // dominates (isIdentifierPoor).
+  // checkable) and books that were looked up but missed. Whenever any book lacks
+  // an identifier we annotate the number inline (so it never reads as "missing")
+  // and show the callout below, which explains the difference for any share.
   const noIdentifierNote =
     results.noIdentifier > 0
       ? `${results.noIdentifier.toLocaleString()} have no identifier to check`
@@ -416,15 +414,14 @@ export default function ImportTool() {
         {stat(results.cannotMatch.length, 'Cannot auto-match', 'text-dim', noIdentifierNote)}
       </div>
 
-      {isIdentifierPoor(results.noIdentifier, results.total) ? (
-        <IconCard icon="database" heading="Most of this export has no identifier">
+      {results.noIdentifier > 0 ? (
+        <IconCard icon="database" heading="Some of this export has no identifier">
           <p className="mt-2 text-sm leading-relaxed text-body">
             {results.noIdentifier.toLocaleString()} of {results.total.toLocaleString()} books
             carry no ASIN or ISBN, so they could not be checked against the database. That is not
             the same as being missing from it - without an identifier there is no reliable way to
-            match a book, so most of the &ldquo;Cannot auto-match&rdquo; count is simply
-            &ldquo;could not be checked&rdquo;. An export like this usually means the library was
-            never matched against a metadata provider.
+            match a book, so those titles land in &ldquo;Cannot auto-match&rdquo; only because
+            there was nothing to look up, not because they are missing.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-body">
             To check these books, match your library against a provider in your audiobook app (in
