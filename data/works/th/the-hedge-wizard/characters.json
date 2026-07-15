@@ -1,0 +1,170 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Humphrey",
+        "Wizard Hump"
+      ],
+      "description": "A self-taught hedge wizard of around sixteen, orphaned young and raised by a traveling wizard whose sudden death leaves him alone for the first time. He inherits his late master's staff, medallion, and a soul-bound spellbook, the Book of Infinite Pages, becoming the eighth wizard bound to it. Pragmatic, guarded, and usually broke, he pays an essence cost for every spell rather than wielding a god's blessing, and sets out for the newly opened dungeon at Bledsbury to make his own way as a hedge wizard.",
+      "id": "hump",
+      "name": "Hump",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Hump's late master: a wizard and bronze-ranked adventurer who took in the orphaned Hump and trained him for years. He dies before the story opens, of a fever from a goblin-poisoned wound, and is buried by Hump at the edge of Brookwood Forest. He leaves Hump his staff, his medallion, and the soul-bound Book of Infinite Pages, which binds itself to Hump as its new keeper. His teaching and old connections continue to shape Hump's path after his death.",
+      "id": "sethril-woodrow",
+      "name": "Sethril Woodrow",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Bud of Blackthorne"
+      ],
+      "description": "A large, earnest, and rather naive young knight sworn to Kelisia, the Goddess of Winter, whom Hump meets sharing a campfire on the road. Traveling alone for the first time, he carries a family heirloom sword and dented, rust-spotted armor, and insists that valor rather than fine gear makes a knight. Bound, like Hump, for the newly opened dungeon at Bledsbury, he is open-hearted and quick to defend others, and he soon becomes Hump's steadfast companion.",
+      "id": "bud",
+      "name": "Bud",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Goddess of Winter, also called the Frostfire Witch. She is the patron deity of the knight Bud, who is sworn to her service. Her Chosen are marked by a silver-flame medallion and wield her cold blue frostfire, a flame with cleansing and chilling properties. Revered but rarely seen directly, she is one of the gods of this world whose favor sets the Chosen apart from ordinary practitioners like Hump.",
+      "id": "kelisia",
+      "name": "Kelisia",
+      "reveal": {
+        "chapter": 2
+      }
+    },
+    {
+      "description": "The level-headed leader of a band of former border soldiers turned mercenaries, the self-styled Company of Brothers. He first crosses Hump and Bud's path by defusing a tavern confrontation, then travels with the same convoy toward the Bledsbury dungeon. Steady and fair-minded, he commands his people's respect and offers Hump and Bud his ongoing goodwill and backup should they ever need it.",
+      "id": "gerard",
+      "name": "Gerard",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sharp-featured, well-dressed swordsman with a noble bearing who arrives to join the dungeon convoy alongside his companion Celaine. Generous with coin and unusually skilled with both blade and bow, he moves like a seasoned tracker and scout, yet stays evasive whenever anyone probes how he came by such ability and knowledge. He draws Hump and Bud into his and Celaine's delving party, and seems to take a particular, unexplained interest in Hump.",
+      "id": "vamir",
+      "name": "Vamir",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young woman a little older than Hump, with reddish hair and quick, capable hands for a bow, a dagger, and spotting traps. She travels as Vamir's companion and student, and joins the party bound for the Bledsbury dungeon. Sharp-tongued and impatient with Vamir's philosophizing, she proves a decisive fighter and a gifted scout, and an easy, teasing rapport soon grows between her and Hump.",
+      "id": "celaine",
+      "name": "Celaine",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A blunt, watchful fighter traveling with two companions in a small band of northerners who join the dungeon-bound convoy. A woman archer with distinctive yellow, cat-like eyes, she quietly warns Hump to be careful of Vamir, telling him something about the man does not sit right with her.",
+      "id": "sanya",
+      "name": "Sanya",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Lord Oswald Wickes",
+        "Overseer Oswald"
+      ],
+      "description": "The Overseer of the Bledsbury dungeon expedition, who commands the encampment at its entrance. A scarred, shaven-headed career soldier, he is neither noble-born nor Chosen, having risen to Silver rank and his command through skill and results alone, which earns him wide respect and some resentment. Level-headed under pressure, he convenes the leaders of the competing parties to coordinate a response once the true scale of the kobold raid becomes clear.",
+      "id": "oswald",
+      "name": "Oswald Wickes",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A goddess of light, served by an order of priestesses present at the dungeon encampment. Her followers wield communal healing and blessing magic, tending the wounded and the traumatized, and are marked by a wings-and-scepter sigil. Widely revered, she is one of the Pantheon's deities, her power shown chiefly through the works of her Chosen priestesses rather than any direct appearance.",
+      "id": "lady-light",
+      "name": "Lady Light",
+      "reveal": {
+        "chapter": 12
+      }
+    },
+    {
+      "aliases": [
+        "Prince Kassius"
+      ],
+      "description": "A son of Duke Malar and nephew to the king, who arrives at the dungeon encampment saying he means to aid the rescue and to claim the dungeon's core as a prize for the crown. Charismatic and strikingly generous, he funds a bounty from his own purse and openly champions non-Chosen strugglers, going so far as to offer the unranked Hump a place as his personal wizard. He already knows Bud from a recent visit to Bud's family estate, and wears ornate, enchanted plate armor.",
+      "id": "kassius",
+      "name": "Kassius Malar",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lantheer of the Silver Spears"
+      ],
+      "description": "A Chosen fire sorcerer and a leading figure of the Silver Spears mercenary company. Lithe and sunken-eyed, he carries a heavy staff marked with the orange runes of a fire affinity. Blunt and pragmatic to the point of callousness, he insists his paid mercenaries will not risk death without real reward, and he is locked in a long-running rivalry with the rival White Peaks faction.",
+      "id": "lantheer",
+      "name": "Lantheer",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Joslin of the White Peaks"
+      ],
+      "description": "A tall, heavily armored shield-bearer of the White Peaks faction, her shield marked with three snow-capped mountains. Part cleric and part front-line fighter, she argues hardest among the party leaders for mounting a rescue rather than abandoning the captives, and needles the Silver Spears over an old grievance between their factions.",
+      "id": "joslin",
+      "name": "Joslin",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silent, fully armored warrior who serves in Prince Kassius's retinue, wielding a massive greatsword and bearing the sigil of Rathlar, the god of death, on his chestplate. His face is never seen and his origin is unknown even to Bud, who never saw him at Kassius's side before now. The rest of Kassius's own party keeps a visible, nervous distance from him.",
+      "id": "the-black-paladin",
+      "name": "The Black Paladin",
+      "reveal": {
+        "chapter": 16
+      }
+    },
+    {
+      "description": "A massive, dark-scaled winged dragon found bound within the true chamber of the Bledsbury dungeon's core. Its body is unmistakably undead, its ribs exposed and a sickly green light burning in its torn chest, and it strains fiercely against its restraints. Celaine reacts to it with startling, protective urgency the moment she sees it, calling it 'her' before she can explain why.",
+      "id": "the-wolf-dragon",
+      "name": "The Wolf-Dragon",
+      "reveal": {
+        "chapter": 34
+      }
+    },
+    {
+      "description": "A masked, humanoid entity woven from shifting dark lines, with pure white eyes and a presence that radiates overwhelming dread. It appears at the climax of the dungeon battle, stepping through a tear it opens in reality to retrieve a gravely wounded figure from the field, then departs the same way without a word. Its nature, its allegiance, and its purpose are left entirely unknown.",
+      "id": "the-shadow-figure",
+      "name": "The Shadow Figure",
+      "reveal": {
+        "chapter": 43
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-hedge-wizard"
+}
