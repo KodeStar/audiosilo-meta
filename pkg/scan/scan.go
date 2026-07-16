@@ -328,7 +328,7 @@ func collectGroups(root string, stats *Stats) []groupData {
 		// track order), so use numeric-aware sorting: unpadded "Chapter 2.mp3"
 		// must precede "Chapter 10.mp3". subdirs only drives walk order (books
 		// are re-sorted by path below), so a plain sort is fine there.
-		sort.SliceStable(audio, func(i, j int) bool { return naturalLess(audio[i], audio[j]) })
+		sort.SliceStable(audio, func(i, j int) bool { return NaturalLess(audio[i], audio[j]) })
 		sort.Strings(subdirs)
 		if len(audio) > 0 {
 			groups = append(groups, groupData{group: group{dir: dir, files: audio, isRoot: isRoot}})
