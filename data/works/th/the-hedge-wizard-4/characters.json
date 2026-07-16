@@ -1,0 +1,302 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Humphrey",
+        "the White Flame"
+      ],
+      "description": "A hedge wizard trained by the late Sethril Woodrow and the bearer of the Book of Infinite Pages, a living spellbook bound to his soul. Publicly hailed in Sheercliff as the White Flame after the siege there, he leaves the city with Celaine and his newly hatched dragon and rides north for the Dragon Keeper trials at Drakalyn, partly to secure the bond and partly to stay ahead of those who can now sense his spellbook.",
+      "id": "hump",
+      "name": "Hump",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A non-human archer and dragon-keeper companion who guarded Hump's dragon egg through the siege of Sheercliff. She is the one who persuaded him to attempt the Dragon Keeper trials, and she rides north with him alone once the rest of the party splits off at the fork outside the city.",
+      "id": "celaine",
+      "name": "Celaine",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Nisha"
+      ],
+      "description": "Hump's bonded wolf dragon, hatched at the close of the previous book and named by him for the night storm. Black and gold scaled and violet eyed, she is small enough at first to travel hidden in a pouch. She has grown attached to Dylan as well as to Hump.",
+      "id": "nishari",
+      "name": "Nishari",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "The Countess of Sheercliff and the party's patron, left unable to walk by a wound taken in the siege and moving now in an essence-powered chair. She already knows, unprompted, that Hump is bound for Drakalyn and the goddess Owalyn, and sends him off with a sealed letter proposing open communication between Sheercliff and the dragon keepers, to be delivered if he ever meets them.",
+      "id": "countess-daston",
+      "name": "Countess Daston",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lord Robert Blackthorne"
+      ],
+      "description": "A knight sworn to Kelisia, the Goddess of Winter, and heir to House Blackthorne. He rides out of Sheercliff with Hump and turns off toward home at the fork, escorting his cousin's funeral wagon, with the surviving Blackthorne knights blaming him for the deaths at the siege and a kingdom-wide call to arms waiting for him there.",
+      "id": "bud",
+      "name": "Bud",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vivienne's apprentice, a druid who carried and healed Hump through his collapse after the siege of Sheercliff. Hump's hatchling has taken to him too, which Celaine puts down to normal pack behaviour in a newly hatched wolf dragon. He parts from them at the fork outside the city and travels on to House Blackthorne with Bud and Emilia.",
+      "id": "dylan",
+      "name": "Dylan",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A noblewoman and rapier fighter who fought through the siege of Sheercliff alongside Hump's party. She leaves Hump at the fork outside the city, riding on to House Blackthorne with Bud and Dylan to await the kingdom's call to arms.",
+      "id": "emilia",
+      "name": "Emilia",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A wizard, Dylan's mentor, and an old associate of Hump's late master. She rides out of Sheercliff with the party and then turns back, having entered Countess Daston's service to watch the imprisoned Inquisitor who betrayed them and to gather intelligence.",
+      "id": "vivienne",
+      "name": "Vivienne",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A goddess whose protection is said to cover the Dragon Keeper trial grounds at Drakalyn, and the power whose trials Hump is travelling north to attempt. Countess Daston names her without prompting when she guesses where Hump is bound.",
+      "id": "owalyn",
+      "name": "Owalyn",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Winston"
+      ],
+      "description": "A tall stranger in a black leather coat, heavily tattooed, who walks uninvited into the mayor's office in Suncrest claiming to be hunting a wizard and a huntress who passed through, and calling them warlocks. Pressed on who he is, his eyes turn black with small red markings. What he is, and why he wants Hump, is not explained.",
+      "id": "winston-irons",
+      "name": "Winston Irons",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A wounded, starving gnoll found with her pup near the border, who begs Hump and Celaine not to kill them and, unusually for her kind, speaks broken common tongue, taught to her by her mother. Driven out of the mountains with her pup by a figure she calls the dead queen, she has fled into human lands alone. Healed by Hump, she agrees to guide the party over the mountains by a route that avoids the watched pass.",
+      "id": "rehk",
+      "name": "Rehk",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Tok"
+      ],
+      "description": "Rehk's young pup, found alongside her near the border. Curious and friendly, he takes quickly to Hump's hatchling.",
+      "id": "tokdaar",
+      "name": "Tokdaar",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Celaine's sister, spoken of but not seen. On the road north Celaine admits that Myra was struggling badly when Celaine left home, and that her own departure is part of the reason why. What she will find on returning after a long absence, and how her people will receive her for having stayed with Hump instead, is much of what Celaine dreads about going back.",
+      "id": "myra",
+      "name": "Myra",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Walter Flint"
+      ],
+      "description": "A spirit bound inside an unusually large, smooth essence stone, found among centuries-old bones in an abandoned mine. He says he was a miner from Alveron, raised in Elenvine, who died in a collapse some four hundred years ago, and he is shaken to learn what year it now is. Talkative and afraid of being destroyed, he is whole and coherent in a way Hump privately notes that trapped spirits are not.",
+      "id": "walt",
+      "name": "Walt",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The silver-furred, black-striped chieftain of a gnoll warband roughly fifty strong, who answers Rehk's howl and destroys the undead pursuing Hump's party. Suspicious at first that the party serves the dead queen, he defers to Rehk's word, grants them escort toward the land of the Huntress, and hosts them at his river encampment.",
+      "id": "rakar",
+      "name": "Rakar",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A grey-haired dragon keeper of the sixth circle, a chosen of Owalyn, third in rank among the keepers, and Vamir's own teacher. She lands at the gnoll encampment with two other riders and greets Hump with measured curiosity rather than hostility, notes the rare gold colouring of his hatchling, and invites him to fly back to keeper territory with her.",
+      "id": "tessa",
+      "name": "Tessa",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Finn"
+      ],
+      "description": "A young dragon keeper who lands at the gnoll encampment alongside Tessa and immediately accuses Hump of stealing the wolf-dragon egg that became his hatchling, demanding he be killed for it. Celaine, who is clearly on close, familiar terms with him, restrains him. His hostility toward Hump is open from the first moment.",
+      "id": "finnian",
+      "name": "Finnian",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dragon keeper of Drakalyn, bonded to the dragon Onyxia, and one of the three riders who land at the gnoll encampment alongside Tessa and Finnian. Once the tension eases he is the one who suggests ending the meeting on a good note and taking the matter up again after Hump reaches Drakalyn itself.",
+      "id": "gawain",
+      "name": "Gawain",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The lich queen, named at last as the dead queen whose undead have hunted Hump's party through the Charred Heights. Pale, gaunt, red-lipped and purple-eyed, she commands undead armies and fleshy constructs from a stronghold with cells beneath it, and she is expanding her reach by binding other dangerous creatures into her service.",
+      "id": "irila",
+      "name": "Irila",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A fixer and a companion of Hump's, and a former student of the keeper Tessa. He returned to Drakalyn ahead of Hump and Celaine and, by Tessa's account, stirred up a good deal of unspecified trouble on arrival. He is waiting in the welcoming party at the tree line and waves the pair forward.",
+      "id": "vamir",
+      "name": "Vamir",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elder of Drakalyn's ruling Elder Trinity, who greets Celaine with an emotional embrace after her year away and then formally welcomes Hump and asks to be introduced. She guides the first proceedings over whether an outsider may be allowed to remain.",
+      "id": "rena",
+      "name": "Rena",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elder of the Elder Trinity, her skin partially scaled, who distrusts Hump purely as an outsider and argues against letting him stay even after Owalyn has personally endorsed him, insisting he remains subject to the trials still ahead of him.",
+      "id": "ashera",
+      "name": "Ashera",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The third member of Drakalyn's Elder Trinity, comparatively even-handed toward Hump, who argues that Owalyn's personal approval is reason enough to give an outsider his chance.",
+      "id": "sulamir",
+      "name": "Sulamir",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shaman of Owalyn, well versed in essence and soul manipulation and capable of being a dragon keeper though he does not serve as one, assigned by the council as Hump's personal instructor. Vamir privately warns that Ado's son was killed years ago by dragon hunters out of Alveron, that he withdrew into seclusion afterward, and that no apprentice of his has lasted long.",
+      "id": "ado",
+      "name": "Ado",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Stormcaller"
+      ],
+      "description": "Command of Drakalyn's dragon keepers rests with her, and by repute no other of Owalyn's chosen matches her in strength. She is away from the settlement when the council declares war on the lich queen. Word is sent for her return, along with the other keepers currently abroad.",
+      "id": "yunillia",
+      "name": "Yunillia",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A true dragon, vast and ancient, whom no one in Alveron has laid eyes on in over ten centuries, who appears inside Hump's mind during his trial and presents himself by image and title rather than by any spoken name. A silver owl stands beside him, the same presence Hump has felt within his spellbook. He studies Hump closely and vanishes without explaining anything. Owalyn afterward calls him an old acquaintance of hers, and declines to say more.",
+      "id": "skyfire",
+      "name": "Skyfire",
+      "reveal": {
+        "chapter": 43
+      }
+    },
+    {
+      "description": "A veteran dragon keeper who commands ground operations because his dragon, Brutus, is too heavy and bulky to fly well, and who leads the six-person squad Hump and Celaine are placed under. He was Myra's old party leader and teacher.",
+      "id": "leif",
+      "name": "Leif",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An enormous, ancient wolf dragon housed behind an iron door in a hidden chamber of the Temple of the Everflame, missing one front and one back leg, tended closely by Elder Ashera. She examines Hump's soul directly and grants him a soul-name. Her intelligence is unlike that of the other wolf dragons, enough that Hump privately wonders what she really is.",
+      "id": "algwyn",
+      "name": "Algwyn",
+      "reveal": {
+        "chapter": 57
+      }
+    },
+    {
+      "description": "Drakalyn's brood mother, a former dragon keeper who lost her own dragon years ago and now oversees the nests, the eggs, and the education of hatchlings. She appears to be about fifty and is implied to be considerably older. Warm and excitable around hatchlings but distant in ordinary conversation, she takes on the training of Hump's dragon.",
+      "id": "janeen",
+      "name": "Janeen",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The silver owl familiar of the wandering wizard in Owalyn's legend, called his mightiest, wisest and most loyal companion, and killed protecting his escape from the thirteen who had captured and robbed him of his power. His heartstone was forged into the weapon that destroyed their city. Hearing the story, Hump begins privately associating his own spellbook with the name.",
+      "id": "glyndaril",
+      "name": "Glyndaril",
+      "reveal": {
+        "chapter": 86
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-hedge-wizard-4"
+}
