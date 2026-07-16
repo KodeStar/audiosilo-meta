@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 // runAudiosiloBooks runs the audiosilo-books importer against a fresh empty data

@@ -145,15 +145,16 @@ cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
-internal/model      entity structs, slug/shard rules, location parsing
-internal/canonical  canonical JSON (sorted keys, 2-space, trailing LF)
-internal/check      schema validation + integrity/uniqueness/chapter/series rules
-internal/extract    epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
+pkg/model           PUBLIC entity structs, slug/shard rules, location parsing (leaf; also reached through pkg/check's exported Catalog)
+pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
+pkg/check           PUBLIC schema validation + integrity/uniqueness/chapter/series rules
+pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
+pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
+                    (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
 internal/importer   OpenAudible books.json + Libation export -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook)
 internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> canonical records, the ok/duplicate/needs-human/invalid verdict the intake workflow branches on
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
-internal/scan       local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
 schema/             JSON Schemas (the contract), embedded via schema.go
 data/               the database (works/recordings/people/series + per-work characters/recaps sidecars)
 Dockerfile          image: site build + metaserve + baked data
@@ -201,7 +202,7 @@ logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 The importer maps one export entry to a work + recording (+ people + series),
 importing **factual fields only** (LICENSING.md): it drops publisher
 copy/genre/ratings/personal state, deduplicates by ASIN against the catalogue,
-and writes canonical files, then runs `internal/check`. Identity rules: a
+and writes canonical files, then runs `pkg/check`. Identity rules: a
 **person slug is the identity** (spelling/diacritic variants of one name merge
 into the existing record; no numbered duplicates), and trailing Audible credit
 qualifiers (`"J. Kharkova - translator"`) are stripped from names against a
@@ -223,7 +224,7 @@ the schema notes below.
   than guess. No publisher blurbs, no cover files - covers are URLs,
   descriptions are community-written (see LICENSING.md).
 - **Every rule ships with a test.** metacheck rules have a passing fixture and
-  a violating fixture; `internal/canonical` has a real-data test so the seed
+  a violating fixture; `pkg/canonical` has a real-data test so the seed
   tree can never drift from canonical form.
 - **CI security is deliberate**: `check.yml` uses plain `pull_request` (fork
   PRs get a read-only token, no secrets). Never introduce

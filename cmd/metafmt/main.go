@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 )
 
 func main() {

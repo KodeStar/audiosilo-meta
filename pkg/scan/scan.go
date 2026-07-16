@@ -18,6 +18,9 @@
 // scan root are individual single-file books. The one evidence-gated exception
 // is splitVerdict: a folder whose files' tags prove they are different books
 // (the flat "Series/01 - A.m4b, 02 - B.m4b" layout) is split per file.
+//
+// This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
+// tool as an ordinary module dependency, so its exported surface is a contract.
 package scan
 
 import (

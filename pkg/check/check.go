@@ -3,6 +3,9 @@
 // referential integrity, global uniqueness, chapter ordering, series
 // positions). It returns both the discovered problems and, best-effort, the
 // loaded Catalog so metabuild can reuse the same load.
+//
+// This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
+// tool as an ordinary module dependency, so its exported surface is a contract.
 package check
 
 import (
@@ -15,7 +18,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 

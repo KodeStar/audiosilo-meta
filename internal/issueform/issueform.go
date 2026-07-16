@@ -23,9 +23,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
-	"github.com/kodestar/audiosilo-meta/internal/check"
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Status is the outcome of processing a submission.

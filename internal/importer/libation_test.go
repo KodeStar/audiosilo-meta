@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 // runLibation runs the Libation importer against a fresh empty data dir.

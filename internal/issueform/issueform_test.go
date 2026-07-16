@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 // seedTree writes a small, self-consistent data tree to a temp dir so tests
@@ -417,6 +417,36 @@ func TestCharactersOverwriteRefused(t *testing.T) {
 func TestCharactersInvalidJSON(t *testing.T) {
 	dir := seedTree(t)
 	body := charactersBody("existing-work", "{ not valid json", true)
+	res := Process(Options{DataDir: dir, Template: "characters", Body: body})
+	if res.Status != StatusInvalid {
+		t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestCharactersFencedInlineOK covers a submitter pasting the sidecar JSON
+// wrapped in a ```json ... ``` markdown code fence (the natural way to paste
+// into a GitHub textarea). extractAttachment must strip the fence and use the
+// bytes inline, exactly like raw pasted JSON.
+func TestCharactersFencedInlineOK(t *testing.T) {
+	dir := seedTree(t)
+	fenced := "```json\n" + validCharactersJSON + "\n```"
+	body := charactersBody("existing-work", fenced, true)
+	res := Process(Options{DataDir: dir, Template: "characters", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if !hasFile(res.Files, "data/works/ex/existing-work/characters.json") {
+		t.Errorf("expected characters sidecar: %v", res.Files)
+	}
+}
+
+// TestCharactersFencedInvalidJSON is the failing counterpart: a fenced block
+// whose contents are not valid JSON is rejected (the fence is stripped, then
+// the inner bytes fail to unmarshal).
+func TestCharactersFencedInvalidJSON(t *testing.T) {
+	dir := seedTree(t)
+	fenced := "```json\n{ not valid json\n```"
+	body := charactersBody("existing-work", fenced, true)
 	res := Process(Options{DataDir: dir, Template: "characters", Body: body})
 	if res.Status != StatusInvalid {
 		t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)

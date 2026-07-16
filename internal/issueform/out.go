@@ -5,7 +5,7 @@ import "github.com/kodestar/audiosilo-meta/internal/importer"
 // The out* types are issueform's view of each entity's on-disk shape. They exist
 // so a form submission is composed into exactly the JSON a hand-authored pull
 // request would carry. Field order is irrelevant: every file is run through
-// internal/canonical before it is written, which sorts keys.
+// pkg/canonical before it is written, which sorts keys.
 //
 // The entities with a shape identical to a bulk import (source/person/asin/
 // series) are ALIASES of internal/importer's exported types, so the two paths

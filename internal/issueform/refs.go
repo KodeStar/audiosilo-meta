@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // slugify wraps the importer's canonical slugifier so form composition and bulk

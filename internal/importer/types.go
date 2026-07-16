@@ -1,10 +1,10 @@
 package importer
 
 // The out* types are the importer's own view of each entity's on-disk shape.
-// They exist separately from internal/model so the importer controls exactly
+// They exist separately from pkg/model so the importer controls exactly
 // which fields are emitted - notably abridged, which is a tri-state pointer here
 // (omitted when unknown) rather than a plain bool. Field order is irrelevant:
-// every file is run through internal/canonical before it is written, which sorts
+// every file is run through pkg/canonical before it is written, which sorts
 // keys.
 //
 // OutSource/OutPerson/OutASIN/OutSeriesWork/OutSeries are exported and reused by

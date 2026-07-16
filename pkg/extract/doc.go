@@ -10,4 +10,7 @@
 //
 // Neither half writes into data/; the tool is an authoring aid whose outputs
 // (chapter text, overlap findings) inform a human contributor.
+//
+// This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
+// tool as an ordinary module dependency, so its exported surface is a contract.
 package extract

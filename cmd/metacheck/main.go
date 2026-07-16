@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 func main() {

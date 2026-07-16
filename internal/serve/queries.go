@@ -663,7 +663,7 @@ func (s *snapshot) series(id string) (*seriesDetail, error) {
 // "2" -> (2, 2), "2.5" -> (2.5, 2.5), "1-3.5" -> (1, 3.5). ok is false when
 // either bound fails to parse. Callers apply their own policy to the span (sort
 // key, integer coverage); this is the single copy of the position grammar in
-// this package. A possible future home is internal/model, next to the schema's
+// this package. A possible future home is pkg/model, next to the schema's
 // position rules, if a third consumer ever appears.
 func parsePositionRange(pos string) (lo, hi float64, ok bool) {
 	pos = strings.TrimSpace(pos)

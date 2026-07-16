@@ -2,6 +2,9 @@
 // object keys sorted alphabetically (recursively), 2-space indent, LF line
 // endings, a single trailing newline, UTF-8 with no HTML escaping. Numbers are
 // preserved exactly (no float rounding), array order is preserved.
+//
+// This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
+// tool as an ordinary module dependency, so its exported surface is a contract.
 package canonical
 
 import (

@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 func main() {

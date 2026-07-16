@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // coverageCatalog exercises the coverage browser: a fully-covered work, a
