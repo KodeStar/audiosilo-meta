@@ -6,7 +6,7 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Field labels for add-characters.yml / add-recaps.yml.

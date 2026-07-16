@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // Field labels for add-work.yml. Kept in one place so a template label edit is a

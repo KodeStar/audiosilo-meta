@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kodestar/audiosilo-meta/internal/scan"
+	"github.com/kodestar/audiosilo-meta/pkg/scan"
 )
 
 func main() {

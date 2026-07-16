@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/kodestar/audiosilo-meta/internal/build"
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // fixtureCatalog is a small but representative dataset: two fully-fleshed works

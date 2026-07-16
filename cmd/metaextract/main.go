@@ -11,7 +11,7 @@
 //	    the source text (the no-verbatim copyright rule in AUTHORING.md). Exits 1
 //	    when any overlap is found, 0 when clean, 2 on a usage/IO error.
 //
-// Logic lives in internal/extract; this command is transport-only.
+// Logic lives in pkg/extract; this command is transport-only.
 package main
 
 import (
@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kodestar/audiosilo-meta/internal/extract"
+	"github.com/kodestar/audiosilo-meta/pkg/extract"
 )
 
 func main() {

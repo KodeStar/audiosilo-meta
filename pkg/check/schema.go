@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	meta "github.com/kodestar/audiosilo-meta"
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 

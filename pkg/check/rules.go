@@ -3,7 +3,7 @@ package check
 import (
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // checkIntegrity verifies every cross-entity reference resolves.

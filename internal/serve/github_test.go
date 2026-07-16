@@ -22,7 +22,7 @@ import (
 
 	"github.com/klauspost/compress/zstd"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // hexDigest is data's sha256 as lowercase hex.

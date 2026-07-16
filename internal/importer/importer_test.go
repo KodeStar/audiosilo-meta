@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/internal/canonical"
-	"github.com/kodestar/audiosilo-meta/internal/check"
+	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 )
 
 // testImportDate is the imported_at stamp every test run uses.

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	_ "modernc.org/sqlite"
 )
 

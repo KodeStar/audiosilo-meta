@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/internal/model"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // absServer builds a server over cat and returns its base URL.
