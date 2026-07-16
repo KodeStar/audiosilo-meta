@@ -1,0 +1,304 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Humphrey",
+        "the White Flame"
+      ],
+      "description": "A hedge wizard trained by the late Sethril Woodrow and the bearer of the Book of Infinite Pages, a living spellbook bound to his soul. Publicly hailed as the White Flame for breaking the warlock siege of Sheercliff, and now dragon-blooded after his time at Drakalyn, he sets out from the dragon settlement with Celaine and his young dragon, riding south for Sheercliff to rejoin his old companions and stay ahead of those who can sense his book.",
+      "id": "hump",
+      "name": "Hump",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A dragon-blooded archer and a chosen of the goddess Owalyn, honored at Drakalyn as the Huntress of Owalyn. She fights with shadow-aligned blessings and a black dagger, and travels south from her home at Drakalyn at Hump's side, having chosen to stay with him rather than settle among her own people.",
+      "id": "celaine",
+      "name": "Celaine",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Nisha"
+      ],
+      "description": "Hump's bonded wolf dragon, hatched at the close of the previous book and called Nisha for short. Black-scaled with a growing golden sheen and violet eyes, she is still small and learning to hunt. She shares a mind-bond with Hump and travels hidden among the party as they leave Drakalyn.",
+      "id": "nishari",
+      "name": "Nishari",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "A senior dragon keeper of Drakalyn and a chosen of Owalyn who escorts Hump, Celaine, and Nisha south toward Sheercliff on her dragon Igni, to help formalise Drakalyn's new alliance with the Dastons. Grey-haired and measured, she tutors Hump in dragon-bond craft along the road.",
+      "id": "tessa",
+      "name": "Tessa",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The goddess of the hunt worshipped at Drakalyn, patron of the dragon keepers and of Celaine, and the power who sets the Dragon Keeper trials. Bound for ages to the great tree at Drakalyn's heart, she has, unknown to almost everyone, recently freed herself of that binding, a secret Hump carries alone.",
+      "id": "owalyn",
+      "name": "Owalyn",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Silver Owl"
+      ],
+      "description": "The silver owl whose presence Hump senses within the Book of Infinite Pages, named in the legend of the wandering wizard as that mage's mightiest and most loyal familiar, slain protecting his escape. Its heartstone is bound into Hump's spellbook, and Hump has come to associate the book's guarding presence with the name.",
+      "id": "glyndaril",
+      "name": "Glyndaril",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "The Countess of Sheercliff and Hump's patron, still confined to a wheelchair by the wound that cost her the use of her legs in the siege of Sheercliff. She welcomes Hump's party back to her estate and is eager to formalise the alliance between Sheercliff and the dragon keepers of Drakalyn.",
+      "id": "countess-daston",
+      "name": "Countess Daston",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A noblewoman of House Daston and a skilled rapier fighter who fought beside Hump through the siege of Sheercliff. Recently returned home to recover from an injury taken on a Fallen Lands expedition, she is preparing to march north again to the front and invites Hump and Celaine to travel with her.",
+      "id": "marcela",
+      "name": "Marcela",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A wizard and an old associate of Hump's late master, now in Countess Daston's service at Sheercliff. She watched over the city in Hump's absence and becomes his confidante in studying the ancient books recovered from the lich queen's library, insisting their dangerous secrets stay hidden from the Pantheon.",
+      "id": "vivienne",
+      "name": "Vivienne",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gold-ranked adventurer and one of Alveron's most powerful chosen, named to lead the expedition sent to reinforce Fort Nordric and destroy the demon dungeon called the Infernal Halls. Spoken of with awe long before he is ever seen, he means to time his assault for after the next monster wave.",
+      "id": "corteg",
+      "name": "General Corteg",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A disgraced young lord whose father fled after siding with the warlocks, leaving House Ferrand under a cloud of treason. Shunned by most of the expedition and abandoned by former companions, he marches north gaunt and careworn, asking only to be judged on his own deeds rather than his father's.",
+      "id": "randall",
+      "name": "Randall Ferrand",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A steadfast fighter and one of the few companions who stood by the disgraced Lord Randall Ferrand after his family's fall from grace. She reunites with Hump at the expedition muster and joins his roadside hunt against a demon raiding party, fighting on through the northern campaign.",
+      "id": "madeline",
+      "name": "Madeline",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Lord Robert Blackthorne"
+      ],
+      "description": "A knight sworn to Kelisia, the goddess of winter, and heir to House Blackthorne, now serving at the Fallen Lands front. He commands a company of some thirty soldiers and carries a heavy guilt over those lost under his orders.",
+      "id": "bud",
+      "name": "Bud",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A druid and Vivienne's former apprentice, a chosen of a nature god who fights with grasping vines, bear-aspect strength, and a giant guardian tree-form. He serves in Bud's company at the Fallen Lands front and can bend a dungeon's own growths to his will.",
+      "id": "dylan",
+      "name": "Dylan",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A noblewoman and rapier duelist who fights through the Fallen Lands campaign alongside Bud's company. Fourth-circle and close to awakening her soul, she carries a martial style inherited from her family and has grown into one of the front's steadier blades.",
+      "id": "emilia",
+      "name": "Emilia",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran overseer, once Hump's commander at the Bledsbury dungeon, now directing operations along the Golden River from Fort Nordric. Gruff and demanding, he keeps Bud's company in near-constant motion clearing keeps and investigating new dungeon nodes.",
+      "id": "oswald",
+      "name": "Oswald",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A knight of House Blackthorne and Bud's sister-in-arms, who leads the light infantry of his company. She and Bud carry an old tension over the death of their cousin Arthur, but she fights at his side through the Fallen Lands battles, warding the company with frostfire.",
+      "id": "henrietta",
+      "name": "Henrietta",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Marcela's father and a senior Alveron commander, reported to have been wounded in the demon assault on Fort Nordric but recovered enough to host a homecoming feast for his daughter. He greets Hump warmly and lends the party his family's backing at the front.",
+      "id": "count-daston",
+      "name": "Count Daston",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the First Order wizard"
+      ],
+      "description": "A wizard of the First Order and a self-described warlock specialist, assisting the Inquisition's hunt for warlocks around Fort Nordric. Grey-haired and sharp-eyed, he regards the fast-rising Hump, a hedge wizard beholden to no god, with open, unexplained suspicion.",
+      "id": "iron-hand",
+      "name": "The Iron Hand",
+      "reveal": {
+        "chapter": 22
+      }
+    },
+    {
+      "description": "A black-winged, tailed demon glimpsed through a portal from the Infernal Halls, who names himself Karlak Gormoth. He recognises the Book of Infinite Pages on sight and refuses to burn it, hailing Hump as its wielder and bearer of Glyndaril before vowing they will meet again with an offer Hump cannot refuse.",
+      "id": "karlak-gormoth",
+      "name": "Karlak Gormoth",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A marshal of Alveron and a chosen of a god of flowers and meadows, a nature mage in forest-green leathers who senses the dragon blood in Hump and Celaine and recognises the goddess's gift they carry. She leads one of the small squads chosen to infiltrate the Infernal Halls, and her gentle flower-craft conceals real power.",
+      "id": "anara-thane",
+      "name": "Anara Thane",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A marshal in dark steel armour who leads a second squad tasked with infiltrating the Infernal Halls. He greets Hump as the White Flame and fights his way through heavy losses to link up with Hump's squad at the enemy fort guarding the demon dungeon's gate.",
+      "id": "marshal-merrick",
+      "name": "Marshal Merrick",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shadow-cloaked operative so unremarkable he is easy to overlook entirely, a spy and dungeon-infiltration expert tasked with opening the way into the Infernal Halls. Having spent months inside, he is the architect of the whole infiltration plan and leads a third squad of his own.",
+      "id": "drexel",
+      "name": "Drexel",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The massive, plate-clad leader of the forward party that scouts ahead into the Infernal Halls, a fifth-circle chosen of a lesser storm god who wields an anvil-headed giant hammer. Broad-shouldered and generous-spirited, he judges Hump by his heart and deeds rather than his lack of a god.",
+      "id": "owen",
+      "name": "Owen",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older metal-sorcerer of Owen's forward party, a chosen of the earth-god Osidium clad in a liquid, second-skin metal armour and gold robes. He shapes and melts stone and metal at will, a craft that proves invaluable in breaching the enemy's defences.",
+      "id": "sorin",
+      "name": "Sorin",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A javelin-armed warrior of Owen's forward party, a chosen of a god of death. She can shift a whole squad onto the spirit plane, a grey parallel world through which they cross open ground unseen by the enemy.",
+      "id": "lani",
+      "name": "Lani",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gorvol the Invincible"
+      ],
+      "description": "A towering demon that poses as a god, worshipped as Gorvol the Invincible by the orc tribe holding the fort before the Infernal Gate. He commands the fort's defence, and his warriors build a trap-laden killbox meant to slaughter any army that assaults the gate.",
+      "id": "gorvol",
+      "name": "Gorvol",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A knight of the earth-god Assydium and a renowned crystal sorcerer, said to be well over a century old though she looks about forty. Silver-haired and stern, she is one of the army's few high-circle earth-wielders and leads the team that must tunnel through the demon citadel's living wall.",
+      "id": "fentress",
+      "name": "Lady Fentress",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lord of the Red Sky",
+        "Keeper of the Emberstone"
+      ],
+      "description": "A tall, winged, human-featured devil with red eyes and a noble's bearing, the ruler of the Infernal Halls, who names himself Dravor, Lord of the Red Sky and Keeper of the Emberstone. He enters the siege of his citadel with a wave of purple power that erases hundreds of Alveron's soldiers from existence, then seals the army in with no line of retreat.",
+      "id": "dravor",
+      "name": "Dravor",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "the first mage",
+        "the world whisperer"
+      ],
+      "description": "The long-dead creator of the Book of Infinite Pages, known in legend as the wandering wizard, the first mage, and the world whisperer. Betrayed and stripped of his power by the thirteen who became the Pantheon, he forged the book as an instrument of revenge and a hidden archive of stolen magic; in the finale it names Hump his heir. His true fate is left uncertain.",
+      "id": "wandering-wizard",
+      "name": "The wandering wizard",
+      "reveal": {
+        "chapter": 83
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-hedge-wizard-5"
+}
