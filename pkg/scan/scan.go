@@ -25,11 +25,14 @@ package scan
 
 import (
 	"io/fs"
+	"maps"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"sync"
+	"sync/atomic"
 )
 
 // Format and Version identify the output document. The contract is fixed - the
@@ -95,6 +98,44 @@ type Options struct {
 	// Empty disables it. "ffprobe" resolves on PATH. Enrichment is best-effort:
 	// a missing or failing ffprobe never fails the scan.
 	FFprobePath string
+
+	// OnProgress, if non-nil, reports scan progress at GROUP granularity - a
+	// group is one directory's audio files (the unit collectGroups yields, and
+	// splitVerdict decides over). total is the number of groups and is fixed for
+	// the whole scan; done rises from 0 to total as each group finishes loading
+	// its files (the tag reads + optional ffprobe, the scan's latency-bound
+	// part). It is called once with (0, total) as soon as the total is known
+	// (before any group has loaded), then once more per completed group, ending
+	// at (total, total); done is monotonically non-decreasing. On an empty tree
+	// the single (0, 0) call is both the first and the last.
+	//
+	// Concurrency: OnProgress is always invoked from the single goroutine that
+	// runs Scan - never concurrently, and serialized with OnBook - so the
+	// callback needs no locking of its own. It must not block for long: it runs
+	// inline with assembly and stalls the scan. A panic in either callback
+	// propagates out of Scan.
+	OnProgress func(done, total int)
+
+	// OnBook, if non-nil, is invoked once per assembled book, as soon as that
+	// book is assembled. It receives an independent copy and is called exactly
+	// len(Result.Books) times over a whole scan.
+	//
+	// The streamed book is PROVISIONAL. Two finalization steps run only AFTER
+	// every book exists, so they are NOT yet reflected in a streamed book:
+	//   - sibling corroboration - a tentative series claim parsed out of a
+	//     book's name is accepted only once a sibling book vouches for the
+	//     series, which can change a streamed book's series/position/title;
+	//   - the final deterministic sort by path.
+	// So a streamed book's Title/Series/SeriesPosition/Authors may differ from
+	// its final form, and books arrive in load-completion order, which is
+	// NONDETERMINISTIC - the caller must not rely on ordering. Result.Books
+	// (returned by Scan) remains the sole authoritative output; use OnBook for
+	// progressive display, not as the result. The book's Path is stable (never
+	// touched by corroboration), so streamed and final paths always agree.
+	//
+	// Concurrency: like OnProgress, always invoked from the single Scan
+	// goroutine and serialized with it.
+	OnBook func(Book)
 }
 
 // Stats summarizes a scan for the human-readable report.
@@ -151,6 +192,15 @@ type groupData struct {
 	data []fileData // parallel to group.files
 }
 
+// pendingBook is a sibling-corroboration claim tied to a book by its index in
+// the accumulating books slice (see derived.pending and Scan's post-pass). The
+// index is stable because groups are only ever appended to books, never
+// reordered before the corroboration pass.
+type pendingBook struct {
+	idx   int
+	claim *nameClaim
+}
+
 // maxWorkers bounds the per-file fan-out. The scan is latency-bound (tag reads
 // + ffprobe spawns), so a modest concurrency dominates the wall clock on
 // network mounts without swamping the disk.
@@ -180,62 +230,32 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 
 	var stats Stats
 	groups := collectGroups(absRoot, &stats)
-	loadGroups(groups, ffprobePath)
 
-	// Build books sequentially (stats stay race-free); the final sort makes the
-	// output deterministic regardless of load order. books is non-nil so an
-	// empty scan marshals as "books": [].
-	books := []Book{}
-	// pending holds sibling-corroboration claims by book index (see
-	// derived.pending); resolved after all books exist, before the sort.
-	type pendingBook struct {
-		idx   int
-		claim *nameClaim
+	// Report the total up front so a caller with a progress bar can size it
+	// before any group has loaded (Options.OnProgress).
+	if opts.OnProgress != nil {
+		opts.OnProgress(0, len(groups))
 	}
-	var pendings []pendingBook
 
-	for _, g := range groups {
-		for _, fd := range g.data {
-			if fd.failed {
-				stats.TagFailures++
-			}
-			if ffprobePath != "" && fd.probe == nil {
-				stats.ProbeFailures++
-			}
-		}
-
-		// Loose root files are unconditionally individual books; elsewhere the
-		// files' own tags decide (never filenames alone). The verdict sees the
-		// SAME merged tag view the books are built from, so probe-visible
-		// distinct albums also prevent a wrong merge.
-		v := verdictSplit
-		if !g.isRoot {
-			tags := make([]tagInfo, len(g.data))
-			for i, fd := range g.data {
-				tags[i] = fd.merged
-			}
-			v = splitVerdict(g.files, tags)
-		}
-		switch v {
-		case verdictSplit:
-			for i, f := range g.files {
-				b, claim := buildBook(g.dir, absRoot, []string{f}, false, g.data[i:i+1])
-				if claim != nil {
-					pendings = append(pendings, pendingBook{idx: len(books), claim: claim})
-				}
-				books = append(books, b)
-			}
-		case verdictKeepAmbiguous:
-			stats.AmbiguousDirs++
-			fallthrough
-		default:
-			b, claim := buildBook(g.dir, absRoot, g.files, true, g.data)
-			if claim != nil {
-				pendings = append(pendings, pendingBook{idx: len(books), claim: claim})
-			}
-			books = append(books, b)
+	// Load every file's evidence through the maxWorkers pool, but receive each
+	// group's index the moment ITS files finish so assembly can begin
+	// immediately - that streaming is what makes an otherwise-opaque Scan
+	// observable via the callbacks. Assembly runs here, on the single Scan
+	// goroutine, so stats stays race-free and OnProgress/OnBook are serialized.
+	// The completion ORDER is nondeterministic, but the final sort below makes
+	// the output deterministic regardless, so a nil-callback Scan is identical to
+	// loading everything first and assembling in slice order.
+	// books starts non-nil so an empty scan marshals as "books": [].
+	a := assembler{absRoot: absRoot, ffprobePath: ffprobePath, stats: &stats, onBook: opts.OnBook, books: []Book{}}
+	processed := 0
+	for gi := range loadGroups(groups, ffprobePath) {
+		a.group(groups[gi])
+		processed++
+		if opts.OnProgress != nil {
+			opts.OnProgress(processed, len(groups))
 		}
 	}
+	books, pendings := a.books, a.pendings
 
 	// Sibling corroboration: a pending seriesNum claim is accepted when another
 	// book asserts the same series name through solid evidence (its own claims
@@ -262,7 +282,16 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 		}
 	}
 
-	sort.Slice(books, func(i, j int) bool { return books[i].Path < books[j].Path })
+	// Path alone is not a total order: a folder book and a loose single-file
+	// book can share one (dir "Foo" vs "Foo.m4b", whose path is its stem), and
+	// assembly runs in nondeterministic load-completion order, so ties break on
+	// Files to keep the output deterministic.
+	sort.Slice(books, func(i, j int) bool {
+		if books[i].Path != books[j].Path {
+			return books[i].Path < books[j].Path
+		}
+		return slices.Compare(books[i].Files, books[j].Files) < 0
+	})
 
 	stats.Books = len(books)
 	for i := range books {
@@ -344,20 +373,41 @@ func collectGroups(root string, stats *Stats) []groupData {
 // loadGroups gathers every file's evidence - the dhowden tag read, the optional
 // ffprobe result, and the pre-computed merged view - fanning the per-file work
 // (the scan's latency-bound part) across goroutines bounded by a semaphore to
-// maxWorkers in flight. Each goroutine writes only its own fileData slot, so
-// the result is race-free by construction.
-func loadGroups(groups []groupData, ffprobePath string) {
+// maxWorkers in flight, exactly as a load-everything-first pass would. What it
+// adds for a streaming caller is per-GROUP completion: it returns a channel that
+// yields a group's index the moment ALL of that group's files have loaded, and
+// closes it once every group is done. Each goroutine writes only its own
+// fileData slot; the atomic remaining-count plus the channel send/receive
+// publish those writes, so a received group's data is race-free to read. Every
+// group has at least one file (collectGroups drops audioless dirs), so exactly
+// len(groups) indices are sent. The channel is buffered to len(groups) so a
+// send never blocks on a busy consumer.
+func loadGroups(groups []groupData, ffprobePath string) <-chan int {
+	ready := make(chan int, len(groups))
 	sem := make(chan struct{}, maxWorkers)
+	remaining := make([]int32, len(groups))
 	var wg sync.WaitGroup
 	for gi := range groups {
 		g := &groups[gi]
 		g.data = make([]fileData, len(g.files))
-		for fi, f := range g.files {
+		remaining[gi] = int32(len(g.files))
+		if len(g.files) == 0 {
+			// collectGroups never emits an audioless group, but a dropped one
+			// would silently lose its book AND strand the progress count below
+			// (total, total) - yield it like any other group (the buffered
+			// channel makes this send non-blocking).
+			ready <- gi
+			continue
+		}
+		for fi := range groups[gi].files {
 			wg.Add(1)
-			go func(slot *fileData, path string) {
+			go func(gi, fi int) {
 				defer wg.Done()
 				sem <- struct{}{}
 				defer func() { <-sem }()
+				g := &groups[gi]
+				slot := &g.data[fi]
+				path := filepath.Join(g.dir, g.files[fi])
 				slot.tags, slot.hasTags, slot.failed = readTags(path)
 				slot.merged = slot.tags
 				if ffprobePath != "" {
@@ -368,10 +418,105 @@ func loadGroups(groups []groupData, ffprobePath string) {
 						slot.merged = mergeTags(slot.tags, pi)
 					}
 				}
-			}(&g.data[fi], filepath.Join(g.dir, f))
+				if atomic.AddInt32(&remaining[gi], -1) == 0 {
+					ready <- gi
+				}
+			}(gi, fi)
 		}
 	}
-	wg.Wait()
+	go func() {
+		wg.Wait()
+		close(ready)
+	}()
+	return ready
+}
+
+// assembler accumulates Scan's assembly state - the growing books slice, the
+// sibling-corroboration claims, and the stats counters - so the per-group work
+// is a method rather than a parameter thicket, and a future PER-BOOK
+// observation hook lands as a field, not another signature change (loop-level
+// hooks like OnProgress, which need the group count rather than assembly
+// state, stay in Scan's driving loop). Used only from Scan's single goroutine,
+// so the stats writes are race-free.
+type assembler struct {
+	absRoot     string
+	ffprobePath string
+	stats       *Stats
+	onBook      func(Book)
+	books       []Book
+	pendings    []pendingBook
+}
+
+// group builds the book(s) for one fully-loaded group, appending them to
+// a.books, collecting any sibling-corroboration claims into a.pendings, and
+// folding the group's per-file and split-verdict counters into a.stats. It is
+// the body of Scan's assembly loop, factored out so the loop can drive groups
+// in load-completion order. a.onBook, if non-nil, receives an independent copy
+// of each assembled book.
+func (a *assembler) group(g groupData) {
+	for _, fd := range g.data {
+		if fd.failed {
+			a.stats.TagFailures++
+		}
+		if a.ffprobePath != "" && fd.probe == nil {
+			a.stats.ProbeFailures++
+		}
+	}
+
+	// Loose root files are unconditionally individual books; elsewhere the
+	// files' own tags decide (never filenames alone). The verdict sees the
+	// SAME merged tag view the books are built from, so probe-visible distinct
+	// albums also prevent a wrong merge.
+	v := verdictSplit
+	if !g.isRoot {
+		tags := make([]tagInfo, len(g.data))
+		for i, fd := range g.data {
+			tags[i] = fd.merged
+		}
+		v = splitVerdict(g.files, tags)
+	}
+	switch v {
+	case verdictSplit:
+		for i, f := range g.files {
+			b, claim := buildBook(g.dir, a.absRoot, []string{f}, false, g.data[i:i+1])
+			a.emit(b, claim)
+		}
+	case verdictKeepAmbiguous:
+		a.stats.AmbiguousDirs++
+		fallthrough
+	default:
+		b, claim := buildBook(g.dir, a.absRoot, g.files, true, g.data)
+		a.emit(b, claim)
+	}
+}
+
+// emit appends one assembled book (and its corroboration claim, if any) and
+// streams a provisional copy to the OnBook callback.
+func (a *assembler) emit(b Book, claim *nameClaim) {
+	if claim != nil {
+		a.pendings = append(a.pendings, pendingBook{idx: len(a.books), claim: claim})
+	}
+	a.books = append(a.books, b)
+	if a.onBook != nil {
+		// A shallow struct copy would still alias the slices/map the
+		// corroboration pass mutates in place, so clone deeply: the streamed
+		// book must be a stable provisional snapshot.
+		a.onBook(cloneBook(b))
+	}
+}
+
+// cloneBook returns a copy of b whose slices and sources map are duplicated, so a
+// streamed provisional book handed to OnBook is independent of the retained book
+// (which the later sibling-corroboration pass mutates in place) and of the
+// caller. Nil-ness of the optional slices/map is preserved so a re-marshal keeps
+// the same omitempty shape.
+func cloneBook(b Book) Book {
+	c := b
+	c.Authors = slices.Clone(b.Authors)
+	c.Narrators = slices.Clone(b.Narrators)
+	c.Files = slices.Clone(b.Files)
+	c.Sources = maps.Clone(b.Sources)
+	return c
 }
 
 // buildBook assembles one Book from a folder (isFolder, path = the dir) or a

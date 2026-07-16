@@ -106,6 +106,140 @@ func TestGrouping(t *testing.T) {
 	}
 }
 
+// TestScanProgressCallback pins the OnProgress contract: (0, total) first, done
+// monotonically non-decreasing, ending at (total, total), with total equal to
+// the group count (here each group is one book).
+func TestScanProgressCallback(t *testing.T) {
+	root := mkTree(t,
+		"A/Book One/x.m4b", // group A/Book One
+		"A/Book Two/y.m4b", // group A/Book Two
+		"loose.mp3",        // group root
+	)
+	var calls [][2]int
+	res, _, err := Scan(root, Options{OnProgress: func(done, total int) {
+		calls = append(calls, [2]int{done, total})
+	}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(calls) == 0 {
+		t.Fatal("OnProgress never called")
+	}
+	const wantTotal = 3 // A/Book One, A/Book Two, and the root's loose file
+	if first := calls[0]; first[0] != 0 || first[1] != wantTotal {
+		t.Fatalf("first call = (%d,%d), want (0,%d)", first[0], first[1], wantTotal)
+	}
+	prev := -1
+	for i, c := range calls {
+		if c[1] != wantTotal {
+			t.Errorf("call %d total = %d, want %d", i, c[1], wantTotal)
+		}
+		if c[0] < prev {
+			t.Errorf("call %d done = %d decreased from %d", i, c[0], prev)
+		}
+		prev = c[0]
+	}
+	if last := calls[len(calls)-1]; last[0] != wantTotal || last[1] != wantTotal {
+		t.Errorf("last call = (%d,%d), want (%d,%d)", last[0], last[1], wantTotal, wantTotal)
+	}
+	// Each group is one book here, so the group total equals the book count.
+	if len(res.Books) != wantTotal {
+		t.Fatalf("want %d books, got %d", wantTotal, len(res.Books))
+	}
+}
+
+// TestScanBookCallback pins the OnBook contract: it fires exactly once per final
+// book and the streamed paths set equals the final paths set.
+func TestScanBookCallback(t *testing.T) {
+	root := mkTree(t,
+		"Lee Child/Jack Reacher/01 - Killing Floor/x.m4b",
+		"Neil Gaiman/Good Omens/good-omens.m4b",
+		"Loose Standalone.mp3",
+	)
+	var streamed []Book
+	res, _, err := Scan(root, Options{OnBook: func(b Book) { streamed = append(streamed, b) }})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(streamed) != len(res.Books) {
+		t.Fatalf("OnBook fired %d times, want %d (len Result.Books)", len(streamed), len(res.Books))
+	}
+	streamedPaths := map[string]bool{}
+	for _, b := range streamed {
+		if streamedPaths[b.Path] {
+			t.Errorf("path %q streamed twice", b.Path)
+		}
+		streamedPaths[b.Path] = true
+	}
+	finalPaths := map[string]bool{}
+	for _, b := range res.Books {
+		finalPaths[b.Path] = true
+	}
+	if !reflect.DeepEqual(streamedPaths, finalPaths) {
+		t.Errorf("streamed paths %v != final paths %v", streamedPaths, finalPaths)
+	}
+}
+
+// TestScanBookCallbackProvisional shows a streamed book is PROVISIONAL: sibling
+// corroboration runs only after every book exists, so the streamed
+// "Jack Reacher 3 - Tripwire" is still uncorroborated (no series, whole name as
+// title) while the final Result.Books carries the corrected series/position/title.
+// (Same fixture shape as TestSiblingCorroboration.)
+func TestScanBookCallbackProvisional(t *testing.T) {
+	root := mkTree(t,
+		// Solid sibling: zero-padded position under Author/Series.
+		"Lee Child/Jack Reacher/01 - Killing Floor/x.m4b",
+		// Tentative: unpadded same-series claim, loose at the root.
+		"Jack Reacher 3 - Tripwire.m4b",
+	)
+	streamed := map[string]Book{}
+	res, _, err := Scan(root, Options{OnBook: func(b Book) { streamed[b.Path] = b }})
+	if err != nil {
+		t.Fatal(err)
+	}
+	tw, ok := streamed["Jack Reacher 3 - Tripwire"]
+	if !ok {
+		t.Fatal("Tripwire never streamed")
+	}
+	// Streamed (provisional): the claim is not yet corroborated.
+	if tw.Series != "" || tw.SeriesPosition != "" || tw.Title != "Jack Reacher 3 - Tripwire" {
+		t.Errorf("streamed book should be uncorroborated, got %+v", tw)
+	}
+	// Final (authoritative): corroborated by the solid sibling.
+	byPath := map[string]Book{}
+	for _, b := range res.Books {
+		byPath[b.Path] = b
+	}
+	final := byPath["Jack Reacher 3 - Tripwire"]
+	if final.Series != "Jack Reacher" || final.SeriesPosition != "3" || final.Title != "Tripwire" {
+		t.Errorf("final book should be corroborated, got %+v", final)
+	}
+}
+
+// TestScanDeterministic pins that the final Result is deterministic regardless of
+// the nondeterministic group load-completion order the streaming loader uses.
+func TestScanDeterministic(t *testing.T) {
+	root := mkTree(t,
+		"Lee Child/Jack Reacher/01 - Killing Floor/x.m4b",
+		"Brandon Sanderson/Mistborn/Book 2 - Well of Ascension/part1.mp3",
+		"Brandon Sanderson/Mistborn/Book 2 - Well of Ascension/part2.mp3",
+		"Neil Gaiman/Good Omens/good-omens.m4b",
+		"Jack Reacher 3 - Tripwire.m4b",
+		"Loose Standalone.mp3",
+	)
+	res1, _, err := Scan(root, Options{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	res2, _, err := Scan(root, Options{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !reflect.DeepEqual(res1, res2) {
+		t.Errorf("scan not deterministic:\n%+v\n%+v", res1, res2)
+	}
+}
+
 func TestScanRootMissing(t *testing.T) {
 	if _, _, err := Scan(filepath.Join(t.TempDir(), "nope"), Options{}); err == nil {
 		t.Fatal("expected an error for a missing root")
@@ -499,6 +633,65 @@ func TestCollectionSplit(t *testing.T) {
 		}
 		if b.AudioFiles != 1 || len(b.Files) != 1 {
 			t.Errorf("book %d must be single-file, got %v", i, b.Files)
+		}
+	}
+}
+
+// A folder book and a loose single-file book can share a Path ("Foo" the dir vs
+// "Foo.m4b", whose path is its stem), and assembly order is nondeterministic -
+// the Files tie-breaker must keep the sorted output stable across runs.
+func TestScanDeterministicOnPathCollision(t *testing.T) {
+	root := mkTree(t,
+		"Foo/part1.mp3",
+		"Foo/part2.mp3",
+		"Foo.m4b",
+	)
+	res1, _ := scanNoProbe(t, root)
+	if len(res1.Books) != 2 {
+		t.Fatalf("want 2 books, got %+v", res1.Books)
+	}
+	if res1.Books[0].Path != "Foo" || res1.Books[1].Path != "Foo" {
+		t.Fatalf("want both paths %q, got %q and %q", "Foo", res1.Books[0].Path, res1.Books[1].Path)
+	}
+	for range 10 {
+		res2, _ := scanNoProbe(t, root)
+		if !reflect.DeepEqual(res1, res2) {
+			t.Fatalf("scan not deterministic on a path collision:\n%+v\n%+v", res1, res2)
+		}
+	}
+}
+
+// cloneBook must deep-copy every reference-typed field of Book: a streamed
+// provisional book is promised to be independent of the retained one, which the
+// corroboration pass mutates in place. This reflection sweep fails when a new
+// slice/map field is added to Book without updating cloneBook.
+func TestCloneBookCoversAllReferenceFields(t *testing.T) {
+	populate := func(v reflect.Value) {
+		for i := range v.NumField() {
+			f := v.Field(i)
+			switch f.Kind() {
+			case reflect.Slice:
+				f.Set(reflect.MakeSlice(f.Type(), 1, 1))
+			case reflect.Map:
+				m := reflect.MakeMapWithSize(f.Type(), 1)
+				m.SetMapIndex(reflect.Zero(f.Type().Key()), reflect.Zero(f.Type().Elem()))
+				f.Set(m)
+			case reflect.Pointer, reflect.Interface, reflect.Chan, reflect.Func, reflect.UnsafePointer:
+				t.Fatalf("Book field %s has unsupported reference kind %s - extend cloneBook and this test", v.Type().Field(i).Name, f.Kind())
+			}
+		}
+	}
+	var b Book
+	populate(reflect.ValueOf(&b).Elem())
+	c := cloneBook(b)
+	bv, cv := reflect.ValueOf(b), reflect.ValueOf(c)
+	for i := range bv.NumField() {
+		name := bv.Type().Field(i).Name
+		switch bv.Field(i).Kind() {
+		case reflect.Slice, reflect.Map:
+			if bv.Field(i).Pointer() == cv.Field(i).Pointer() {
+				t.Errorf("cloneBook aliases Book.%s - add it to the deep copy", name)
+			}
 		}
 	}
 }
