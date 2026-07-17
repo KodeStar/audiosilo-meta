@@ -106,6 +106,10 @@ type Summary struct {
 	// Skipped counts books skipped because their ASIN already exists in the
 	// catalog (already-present).
 	Skipped int
+	// MergedASINs counts re-release ASINs merged into an existing recording (a
+	// same-work, same-narrator entry whose only new fact was another ASIN),
+	// rather than minting a sibling work or dropping the ASIN.
+	MergedASINs int
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string

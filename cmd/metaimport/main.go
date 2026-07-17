@@ -105,8 +105,8 @@ func printSummary(s importer.Summary, dryRun bool) {
 	if dryRun {
 		head = "plan (dry run, no files written)"
 	}
-	fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d warnings\n",
-		head, s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, len(s.Warnings))
+	fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d asins merged into existing recordings; %d warnings\n",
+		head, s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
 	for _, w := range s.Warnings {
 		fmt.Println("  warning:", w)
 	}

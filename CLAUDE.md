@@ -213,9 +213,27 @@ work from the **full title** instead, so distinct volumes never merge - a batch
 pre-pass (grouping by title slug only, since Audible's author field varies per
 volume) detects this before any slug is claimed; different-author title
 collisions get an author suffix (numeric only as last resort); series collide to
-numeric. Series positions accept omnibus ranges (`"1-3.5"`) and
-`recording.abridged` is optional (emitted only when the source states it) - see
-the schema notes below.
+numeric. A work title is **cleaned of a trailing `(Unabridged)`/`(Abridged)`
+edition marker before identity** (`cleanWorkTitle`), so "Mageling" and "Mageling
+(Unabridged)" are the same work - the stripped marker is not lost: it seeds the
+recording's tri-state `abridged` when the source did not state it
+(`abridgedFromMarker`; the title printing the edition is a source statement, so
+this stays facts-only); and a same-work, same-narrator entry whose
+only new fact is another ASIN **merges that ASIN into the existing recording**,
+with provenance (the merge appends a `sources[]` entry ref'ing the merged ASIN)
+and two guards - runtime (a >10% gap between two known runtimes is a genuinely
+different production and gets its own recording under the same work) and
+abridged (a known-abridged entry never merges into an unabridged/unstated
+recording) - rather than
+minting a sibling work or dropping the ASIN (`Summary.MergedASINs`). Series
+positions accept omnibus ranges (`"1-3.5"`) and `recording.abridged` is optional
+(emitted only when the source states it) - see the schema notes below. On the
+intake side (`internal/issueform`): the bot **sniffs a self-identifying
+`audiosilo-books` envelope and routes it to that importer regardless of the
+form's export-type dropdown** (the file is trusted over the form), and a
+`duplicate` verdict requires `Skipped > 0` - an import that produced nothing AND
+deduped nothing is `needs-human` (the file likely does not match the selected
+export type), surfacing the importer warnings.
 
 ## Conventions
 

@@ -40,6 +40,21 @@ type audiosiloBooksEnvelope struct {
 	Books   []map[string]any `json:"books"`
 }
 
+// IsAudiosiloBooksEnvelope reports whether raw is a JSON object whose "format"
+// field is the self-identifying audiosilo-books discriminator. It is cheap and
+// safe on any input: a JSON array, a foreign object, or non-JSON garbage all
+// return false. The intake bot uses it to trust the file over the submitter's
+// dropdown selection (the envelope names its own format).
+func IsAudiosiloBooksEnvelope(raw []byte) bool {
+	var probe struct {
+		Format string `json:"format"`
+	}
+	if err := json.Unmarshal(raw, &probe); err != nil {
+		return false
+	}
+	return probe.Format == audiosiloBooksFormat
+}
+
 // RunAudiosiloBooks imports an "audiosilo-books" envelope (exportPath) into
 // opts.DataDir, reusing the shared pipeline. Behaviour is otherwise identical to
 // Run / RunLibation.
@@ -96,10 +111,27 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 
 	// title_short is the work title; title is the fuller "Title: Subtitle" used
 	// only for slug disambiguation (mirrors the OpenAudible/Libation short/full
-	// split).
-	title := e.str("title")
-	raw["title_short"] = title
-	if sub := e.str("subtitle"); title != "" && sub != "" && !strings.Contains(title, sub) {
+	// split). When the ABS export already concatenated the subtitle into the title
+	// ("Fugitive Telemetry: Murderbot Diaries, Book 6" + subtitle "Murderbot
+	// Diaries, Book 6"), title_short is the prefix so the work title is just
+	// "Fugitive Telemetry"; the full title is kept as-is for disambiguation.
+	//
+	// Strip any trailing (Unabridged)/(Abridged) edition marker off BOTH strings
+	// FIRST: a marker on the concatenated title ("...Book 6 (Unabridged)") would
+	// otherwise defeat the ": "+subtitle CutSuffix and leak into the work slug.
+	// We only clean here; runBooks is the SINGLE mechanism that derives the
+	// abridged flag from a marker (before it mutates titles), so this path does
+	// not touch sb.abridged (ABS entries carry their own explicit abridged field).
+	title := cleanWorkTitle(e.str("title"))
+	sub := cleanWorkTitle(e.str("subtitle"))
+	titleShort := title
+	if sub != "" {
+		if prefix, cut := strings.CutSuffix(title, ": "+sub); cut && strings.TrimSpace(prefix) != "" {
+			titleShort = strings.TrimSpace(prefix)
+		}
+	}
+	raw["title_short"] = titleShort
+	if title != "" && sub != "" && !strings.Contains(title, sub) {
 		raw["title"] = title + ": " + sub
 	} else {
 		raw["title"] = title

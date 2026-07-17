@@ -23,12 +23,75 @@ import (
 var (
 	asinPattern = regexp.MustCompile(`^[A-Z0-9]{10}$`)
 	datePattern = regexp.MustCompile(`^\d{4}(-\d{2}(-\d{2})?)?$`)
+	// editionMarkerRE matches one or more stacked trailing (Unabridged)/(Abridged)
+	// edition markers (parens or brackets), with their surrounding whitespace, so a
+	// work title carries no edition decoration - unabridged-ness lives on the
+	// recording's tri-state abridged flag, not in the work's identity.
+	editionMarkerRE = regexp.MustCompile(`(?i)(?:\s*[([](?:un)?abridged[)\]])+\s*$`)
+	// unabridgedMarkerRE / abridgedMarkerRE detect which edition a title's marker
+	// states. unabridged is checked first because "(Unabridged)" contains the
+	// substring "abridged" but never immediately after a bracket.
+	unabridgedMarkerRE = regexp.MustCompile(`(?i)[([]unabridged[)\]]`)
+	abridgedMarkerRE   = regexp.MustCompile(`(?i)[([]abridged[)\]]`)
 )
 
+// abridgedFromMarker derives the abridged tri-state from a title's edition
+// marker: an "(Unabridged)"/"[Unabridged]" marker means false, an
+// "(Abridged)"/"[Abridged]" marker means true, and no marker means nil. The
+// title stating the edition is a factual statement printed on the release (it is
+// on the cover), so reading the flag from it respects the facts-only rule - we
+// are reading a fact the source published, not guessing. When both markers
+// somehow appear the more common "unabridged" wins.
+func abridgedFromMarker(title string) *bool {
+	if unabridgedMarkerRE.MatchString(title) {
+		f := false
+		return &f
+	}
+	if abridgedMarkerRE.MatchString(title) {
+		t := true
+		return &t
+	}
+	return nil
+}
+
+// cleanWorkTitle strips trailing (Unabridged)/(Abridged)/[Unabridged]/[Abridged]
+// edition markers from a work title (all stacked markers in one pass), so
+// "Mageling" and "Mageling (Unabridged)" resolve to one work. It never returns an
+// empty string: a title that is ONLY a marker (or trims to nothing) is returned
+// unchanged.
+func cleanWorkTitle(title string) string {
+	cleaned := strings.TrimSpace(title)
+	stripped := strings.TrimSpace(editionMarkerRE.ReplaceAllString(cleaned, ""))
+	if stripped == "" {
+		return cleaned
+	}
+	return stripped
+}
+
 // recInfo remembers enough about a recording under a work to detect a
-// same-identity re-import (idempotency) versus a genuine slug collision.
+// same-identity re-import (idempotency) versus a genuine slug collision, and to
+// merge a re-release ASIN into an existing recording rather than minting a
+// sibling work (see addRecording). Its file location is derived on demand from
+// the work + recording slugs (recordingPath), never stored.
 type recInfo struct {
-	narrators map[string]bool
+	narrators  map[string]bool
+	asins      map[string]bool
+	runtimeMin int
+	// abridged is the recording's tri-state abridged flag as far as this run
+	// knows it. For a recording created THIS run it carries the entry's tri-state
+	// (nil = the source did not state it); for a recording loaded from disk it is
+	// left nil (unknown) because model.Recording.Abridged is a plain bool that
+	// cannot distinguish stated-false from absent - reading the raw JSON to tell
+	// them apart is not worth it, so a disk incumbent never blocks a merge on
+	// abridged grounds. See abridgedConflict.
+	abridged *bool
+}
+
+// recordingPath returns a recording file's data-relative, slash-separated
+// location (works/<shard>/<work>/recordings/<rec>.json) from its work and
+// recording slugs.
+func recordingPath(workSlug, recSlug string) string {
+	return filepath.ToSlash(filepath.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json"))
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -143,6 +206,34 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p.loadExisting()
 
+	// At the batch boundary, for every book: (1) derive the abridged tri-state
+	// from the title's edition marker when the source did not state it, then
+	// (2) clean the trailing (Unabridged)/(Abridged) markers off the raw
+	// title/title_short. This is the SINGLE marker-derivation mechanism for ALL
+	// sources (the ABS path already cleans its titles locally to fix its subtitle
+	// split, but never derives abridged), so it must run BEFORE the titles are
+	// mutated. Cleaning once here means downstream work-title resolution and
+	// full-title re-derivation read undecorated titles without re-cleaning.
+	for i := range books {
+		if books[i].abridged == nil {
+			for _, key := range []string{"title_short", "title"} {
+				if a := abridgedFromMarker(books[i].str(key)); a != nil {
+					books[i].abridged = a
+					break
+				}
+			}
+		}
+		for _, key := range []string{"title", "title_short"} {
+			raw := books[i].str(key)
+			if raw == "" {
+				continue
+			}
+			if cleaned := cleanWorkTitle(raw); cleaned != "" && cleaned != raw {
+				books[i].raw[key] = cleaned
+			}
+		}
+	}
+
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
 		p.curSource = OutSource{Type: sourceType, Ref: NormalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
@@ -182,10 +273,20 @@ func (p *planner) loadExisting() {
 	for _, w := range cat.Works {
 		ws := &workState{slug: w.ID, authors: ToSet(w.Authors), recs: map[string]*recInfo{}}
 		for _, r := range w.Recordings {
-			ws.recs[r.ID] = &recInfo{narrators: ToSet(r.Narrators)}
+			ri := &recInfo{
+				narrators:  ToSet(r.Narrators),
+				asins:      map[string]bool{},
+				runtimeMin: r.RuntimeMin,
+				// abridged stays nil (unknown) for a disk incumbent: the model's
+				// plain bool can't distinguish stated-false from absent, so we do
+				// not let it block a merge. See recInfo.abridged.
+				abridged: nil,
+			}
 			for _, a := range r.ASIN {
+				ri.asins[a.ASIN] = true
 				p.asins[a.ASIN] = true
 			}
+			ws.recs[r.ID] = ri
 		}
 		p.works[w.ID] = ws
 	}
@@ -312,6 +413,8 @@ func (p *planner) addBook(b sourceBook, workTitle string) {
 	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, warn)
 	p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
+	// Single owner of the global ASIN registry: whether addRecording created a
+	// new recording or merged the ASIN into an existing one, this tail records it.
 	if asin != "" {
 		p.asins[asin] = true
 	}
@@ -412,7 +515,8 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// Same authors, but this slug's work sits in the book's series at a
 			// different position: a different volume sharing the short title.
 			// Re-derive from the full title (once); the candidate chain below is
-			// the last resort when that is unusable.
+			// the last resort when that is unusable. Titles are already cleaned of
+			// trailing edition markers at the batch boundary.
 			if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
 				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, warn)
 			}
@@ -445,8 +549,11 @@ func (p *planner) findSeries(name string) *seriesState {
 	}
 }
 
-// addRecording builds and emits the recording for a book under work ws, unless
-// an identical recording already exists there (a re-import no-op).
+// addRecording builds and emits the recording for a book under work ws. When an
+// identical recording (same narrator set) already exists, a re-release ASIN on
+// this entry is merged into it (runtime-guarded) rather than dropped or minted
+// as a sibling work; a genuinely different production (both runtimes known and
+// diverging beyond 10 percent) becomes a distinct recording under the same work.
 func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) {
 	base := narratorSlugs[0]
 	if year := YearOf(b.str("release_date")); year != "" {
@@ -455,9 +562,39 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	if base == "" {
 		base = "unknown-narrator"
 	}
-	slug, present := uniqueRecSlug(ws, base, ToSet(narratorSlugs))
-	if present {
-		return // identical recording already imported
+	narrSet := ToSet(narratorSlugs)
+
+	// Collect EVERY same-narrator recording along the base candidate chain (not
+	// just the first), and the first free slug for a genuinely new recording. A
+	// re-release ASIN can belong to any same-narrator sibling, so we consider all
+	// of them before deciding to merge or to mint a distinct recording.
+	matches, freeSlug := sameNarratorRecs(ws, base, narrSet)
+	slug := freeSlug
+	if len(matches) > 0 {
+		if asin == "" {
+			return // nothing new to add (same production, no new ASIN)
+		}
+		for _, m := range matches {
+			if m.info.asins[asin] {
+				return // idempotent: this ASIN is already recorded
+			}
+		}
+		// A new ASIN on this entry is a re-release of an existing production when
+		// a sibling is merge-compatible (same narrators - already true here -
+		// compatible runtimes, and no abridged conflict). Merge into the FIRST
+		// compatible sibling. If none is compatible it is a genuinely different
+		// production (a distinct runtime, or a known-abridged edition), so fall
+		// through to a distinct slug under the same work.
+		for _, m := range matches {
+			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
+				region, ok := p.resolveASINRegion(b, warn)
+				if !ok {
+					return
+				}
+				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin)
+				return
+			}
+		}
 	}
 
 	rec := outRecording{
@@ -478,19 +615,116 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 		rec.CoverURL = img
 	}
 	if asin != "" {
-		if region, ok := mapRegion(b.str("region")); ok {
+		if region, ok := p.resolveASINRegion(b, warn); ok {
 			rec.ASIN = []OutASIN{{Region: region, ASIN: asin}}
-		} else {
-			warn("region %q is not a known marketplace; ASIN not recorded", b.str("region"))
 		}
 	}
 	if chs := buildChapters(b.raw, warn); chs != nil {
 		rec.Chapters = chs
 	}
 
-	ws.recs[slug] = &recInfo{narrators: ToSet(narratorSlugs)}
-	p.emit(filepath.Join("works", model.Shard(ws.slug), ws.slug, "recordings", slug+".json"), rec)
+	relPath := recordingPath(ws.slug, slug)
+	ri := &recInfo{narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin, abridged: b.abridged}
+	for _, a := range rec.ASIN {
+		ri.asins[a.ASIN] = true
+	}
+	ws.recs[slug] = ri
+	p.emit(relPath, rec)
 	p.summary.NewRecordings++
+}
+
+// resolveASINRegion maps the book's marketplace region to a canonical region
+// code, warning (and returning ok=false) when it is not a known marketplace so
+// the caller drops the ASIN rather than record a bogus region. Shared by
+// addRecording's merge and new-recording branches.
+func (p *planner) resolveASINRegion(b sourceBook, warn func(string, ...any)) (string, bool) {
+	region, ok := mapRegion(b.str("region"))
+	if !ok {
+		warn("region %q is not a known marketplace; ASIN not recorded", b.str("region"))
+	}
+	return region, ok
+}
+
+// abridgedConflict reports whether two recording abridged tri-states are
+// incompatible enough to block a merge. An absent flag is read as "unabridged"
+// (the audiobook default, and what an unmarked title implies), so an entry KNOWN
+// to be abridged never silently merges into a recording that is unabridged or
+// unstated - an abridged edition is a distinct production and earns its own
+// recording. Two unknown/unabridged sides merge freely.
+func abridgedConflict(a, b *bool) bool {
+	return boolOrFalse(a) != boolOrFalse(b)
+}
+
+func boolOrFalse(p *bool) bool { return p != nil && *p }
+
+// mergeRecordingASIN appends {region, asin} to an existing recording's asin
+// array and re-emits it, preserving every other field byte-for-byte. The record
+// (located from its work + recording slugs) is loaded from this run's queued
+// write when present (a recording emitted earlier in the same run) or from disk
+// otherwise. The caller has already checked that asin is not present on ri.
+func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string) {
+	if p.fatal != nil {
+		return
+	}
+	recPath := recordingPath(workSlug, recSlug)
+	var raw map[string]any
+	if queued, ok := p.writes[recPath]; ok {
+		if err := json.Unmarshal(queued, &raw); err != nil {
+			p.fatal = fmt.Errorf("parse queued recording %s: %w", recPath, err)
+			return
+		}
+	} else {
+		raw = p.loadRawJSON(recPath)
+		if p.fatal != nil {
+			return
+		}
+	}
+	arr, _ := raw["asin"].([]any)
+	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
+	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
+	// so the merge stays auditable and retractable per the sources[] contract.
+	srcArr, _ := raw["sources"].([]any)
+	raw["sources"] = append(srcArr, sourceMap(p.curSource))
+	p.emitRaw(recPath, raw)
+	ri.asins[asin] = true
+	// p.asins is registered by addBook's tail for every path (merge and new
+	// recording alike), so it is intentionally NOT set here - one owner.
+	p.summary.MergedASINs++
+}
+
+// sourceMap renders an OutSource as a JSON-object map for splicing into an
+// existing record's raw sources[] array, honoring the same omitempty rules as
+// the OutSource struct (canonical.Format sorts the keys, so order is irrelevant).
+func sourceMap(s OutSource) map[string]any {
+	m := map[string]any{"type": s.Type}
+	if s.Ref != "" {
+		m["ref"] = s.Ref
+	}
+	if s.ImportedAt != "" {
+		m["imported_at"] = s.ImportedAt
+	}
+	return m
+}
+
+// loadRawJSON reads a data-relative JSON file into a fresh map, setting p.fatal
+// on any error (and returning nil). rel is slash-separated. Shared by the
+// recording-merge disk branch and loadSeriesRaw so the read -> unmarshal ->
+// fatal shape lives in one place.
+func (p *planner) loadRawJSON(rel string) map[string]any {
+	if p.fatal != nil {
+		return nil
+	}
+	data, err := os.ReadFile(filepath.Join(p.dataDir, filepath.FromSlash(rel)))
+	if err != nil {
+		p.fatal = fmt.Errorf("read %s: %w", rel, err)
+		return nil
+	}
+	var raw map[string]any
+	if err := json.Unmarshal(data, &raw); err != nil {
+		p.fatal = fmt.Errorf("parse %s: %w", rel, err)
+		return nil
+	}
+	return raw
 }
 
 // addToSeries places work at position pos in the named series, creating the
@@ -569,14 +803,7 @@ func (p *planner) loadSeriesRaw(ss *seriesState) {
 	if ss.raw != nil || p.fatal != nil {
 		return
 	}
-	data, err := os.ReadFile(filepath.Join(p.dataDir, ss.path))
-	if err != nil {
-		p.fatal = fmt.Errorf("read series %s: %w", ss.path, err)
-		return
-	}
-	if err := json.Unmarshal(data, &ss.raw); err != nil {
-		p.fatal = fmt.Errorf("parse series %s: %w", ss.path, err)
-	}
+	ss.raw = p.loadRawJSON(ss.path)
 }
 
 // finalizeSeries queues the JSON for every new or extended series.
@@ -678,22 +905,53 @@ func buildChapters(b rawBook, warn func(string, ...any)) []outChapter {
 	return out
 }
 
-// uniqueRecSlug returns a free recording slug under ws for base, and whether an
-// identical recording (same narrator set) already exists there.
-func uniqueRecSlug(ws *workState, base string, narrators map[string]bool) (slug string, present bool) {
+// recCandidate pairs a recording slug with its recInfo for the same-narrator
+// scan.
+type recCandidate struct {
+	slug string
+	info *recInfo
+}
+
+// sameNarratorRecs walks the whole base candidate chain under ws, returning
+// EVERY recording whose narrator set matches (a re-release ASIN can land on any
+// same-narrator sibling, not just the first) together with the first free slug
+// for a new recording. The walk terminates at the first free slug, so the chain
+// is finite.
+func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (matches []recCandidate, freeSlug string) {
 	for i := 0; ; i++ {
-		slug = base
-		if i > 0 {
-			slug = fmt.Sprintf("%s-%d", base, i+1)
-		}
+		slug := recSlugAt(base, i)
 		existing, ok := ws.recs[slug]
 		if !ok {
-			return slug, false
+			return matches, slug
 		}
 		if SameSet(existing.narrators, narrators) {
-			return slug, true
+			matches = append(matches, recCandidate{slug: slug, info: existing})
 		}
 	}
+}
+
+// recSlugAt is the recording slug-candidate formula: base for the first
+// candidate, then base-2, base-3, ... for subsequent ones.
+func recSlugAt(base string, i int) string {
+	if i == 0 {
+		return base
+	}
+	return fmt.Sprintf("%s-%d", base, i+1)
+}
+
+// runtimesCompatible reports whether two recording runtimes (whole minutes; 0 or
+// negative = unknown) are close enough to be the same production. An unknown on
+// either side is compatible; two known runtimes must be within 10 percent of the
+// larger.
+func runtimesCompatible(a, b int) bool {
+	if a <= 0 || b <= 0 {
+		return true
+	}
+	hi, lo := a, b
+	if lo > hi {
+		hi, lo = lo, hi
+	}
+	return float64(hi-lo) <= 0.10*float64(hi)
 }
 
 // workCandidates yields the ordered slug candidates for a work: the bare title

@@ -1,6 +1,7 @@
 package issueform
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -496,6 +497,119 @@ func TestImportFolderScanNeedsHuman(t *testing.T) {
 	res := Process(Options{DataDir: dir, Template: "import", Body: body})
 	if res.Status != StatusNeedsHuman {
 		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+}
+
+func TestImportResultFilesNeverNull(t *testing.T) {
+	// #34: the import path leaves Files nil; the emitted JSON must be [] (never
+	// null), or the intake workflow's jq over .files[] errors after composing.
+	dir := seedTree(t)
+	body := importBody("OpenAudible (books.json)", openAudibleExport)
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	// Files may be nil in memory (the import path diffs the tree); the [] guarantee
+	// lives on Result.MarshalJSON, so it is the marshaled output that must never be
+	// null.
+	data, err := json.Marshal(res)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(data), `"files":[]`) {
+		t.Errorf("result JSON must contain \"files\":[] (not null): %s", data)
+	}
+}
+
+func TestResultZeroValueFilesNeverNull(t *testing.T) {
+	// #34: the guarantee lives on the type, so a Result literal built directly by a
+	// producer (the no-routing-label verdict in cmd/metaissue) with nil Files still
+	// marshals as "files":[] - jq over .files[] must never hit a JSON null.
+	data, err := json.Marshal(Result{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(data), `"files":[]`) {
+		t.Errorf("zero Result must marshal \"files\":[] (not null): %s", data)
+	}
+}
+
+func TestImportSniffsAudiosiloBooksEnvelope(t *testing.T) {
+	// #36/#37: an audiosilo-books envelope with the OpenAudible dropdown selected
+	// must still import (the envelope is self-identifying; trust the file).
+	dir := seedTree(t)
+	body := importBody("OpenAudible (books.json)", audiosiloBooksEnvelope)
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if _, err := os.Stat(filepath.Join(dir, "works/im/imported-abs-book/work.json")); err != nil {
+		t.Errorf("envelope not imported via sniff: %v", err)
+	}
+}
+
+func TestImportZeroParseNeedsHuman(t *testing.T) {
+	// An export that produces nothing AND deduped nothing (every entry fell out)
+	// is needs-human, not a false duplicate; the warnings surface why.
+	dir := seedTree(t)
+	// OpenAudible-shaped entry with no narrator -> the importer warns and skips.
+	export := `[{"asin":"B0NONARR001","title":"No Narrator Book","author":"Some Author","language":"english"}]`
+	body := importBody("OpenAudible (books.json)", export)
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	joined := strings.Join(res.Messages, "\n")
+	if !strings.Contains(joined, "no importable books were found") {
+		t.Errorf("missing the needs-human explanation: %v", res.Messages)
+	}
+	if !strings.Contains(joined, "no narrator") {
+		t.Errorf("importer warnings not surfaced: %v", res.Messages)
+	}
+}
+
+func TestImportDuplicateNeedsSkipped(t *testing.T) {
+	// A genuine re-import (ASIN already in the catalog) still reads as duplicate.
+	dir := seedTree(t)
+	// The seed's recording carries ASIN B000000001.
+	export := `[{"asin":"B000000001","title":"Existing Work","author":"Jane Doe","narrated_by":"John Smith","language":"english","region":"us"}]`
+	body := importBody("OpenAudible (books.json)", export)
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+}
+
+func TestImportUnsupportedTypeNoAttachmentNeedsHuman(t *testing.T) {
+	// Fix 5: an unsupported export type is rejected needs-human from the dropdown
+	// BEFORE any fetch, so even with NO attachment at all it reads needs-human
+	// (not the invalid "no attached file" verdict).
+	dir := seedTree(t)
+	body := importBody("Folder scan (metascan JSON)", "")
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if strings.Contains(strings.Join(res.Messages, "\n"), "no attached file") {
+		t.Errorf("must not have attempted a fetch: %v", res.Messages)
+	}
+}
+
+func TestImportEmptyExportNeedsHuman(t *testing.T) {
+	// Fix 6: an export that parses to zero books with NO warnings is honestly "no
+	// importable books", never a false type-mismatch claim.
+	dir := seedTree(t)
+	body := importBody("OpenAudible (books.json)", "[]")
+	res := Process(Options{DataDir: dir, Template: "import", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	joined := strings.Join(res.Messages, "\n")
+	if !strings.Contains(joined, "the export contains no importable books") {
+		t.Errorf("missing the no-books message: %v", res.Messages)
+	}
+	if strings.Contains(joined, "may not match the selected export type") {
+		t.Errorf("must not falsely claim a type mismatch for an empty export: %v", res.Messages)
 	}
 }
 

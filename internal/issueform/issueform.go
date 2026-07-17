@@ -56,6 +56,21 @@ type Result struct {
 	Messages []string `json:"messages"`
 }
 
+// MarshalJSON guarantees Files always serializes as [] (never null): the intake
+// workflow's PR-body step runs jq over .files[], which errors on a JSON null.
+// Several producers leave Files nil (the no-routing-label verdict in
+// cmd/metaissue builds a Result literal directly; the import path leaves it nil
+// because the workflow diffs the tree instead), so the guarantee lives on the
+// type rather than in any one producer. The alias avoids infinite recursion.
+func (r Result) MarshalJSON() ([]byte, error) {
+	type alias Result
+	a := alias(r)
+	if a.Files == nil {
+		a.Files = []string{}
+	}
+	return json.Marshal(a)
+}
+
 // Fetcher fetches the bytes of a URL (used for issue-form file attachments). It
 // is injectable so tests never touch the network; the default (fetch.go) is
 // HTTPS-only, host-pinned, and size-capped.

@@ -80,7 +80,9 @@ jobs:
             echo "License layer: **${layer}**."
             echo
             echo "Files:"
-            jq -r '.files[] | "- `" + . + "`"' result.json
+            # .files[]? tolerates an absent/null files field (metaissue emits []
+            # so this is belt-and-braces); the import path reports no file list.
+            jq -r '.files[]? | "- `" + . + "`"' result.json
             echo
             mapfile -t msgs < <(jq -r '.messages[]?' result.json)
             if [ "${#msgs[@]}" -gt 0 ]; then
