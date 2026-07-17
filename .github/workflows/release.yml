@@ -136,3 +136,41 @@ jobs:
             --title "${{ steps.tag.outputs.tag }}" \
             --notes "Automated data release built from ${{ github.sha }}." \
             "${assets[@]}"
+
+      - name: Notify metaserve of the new release
+        env:
+          WEBHOOK_URL: ${{ secrets.METASERVE_WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.METASERVE_WEBHOOK_SECRET }}
+        # This runs after gh release create has uploaded every asset. The
+        # receiver re-queries GitHub and verifies the release checksums; this
+        # signed payload only asks it to refresh. Missing deployment secrets or
+        # a transient delivery failure are non-fatal because hourly polling is
+        # retained as the recovery path.
+        run: |
+          if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_SECRET" ]; then
+            echo "metaserve webhook secrets are not configured; fallback polling will refresh it"
+            exit 0
+          fi
+          payload="$(printf '{\"action\":\"published\",\"repository\":{\"full_name\":\"%s\"}}' "$GITHUB_REPOSITORY")"
+          signature="$(PAYLOAD="$payload" python3 - <<'PY'
+          import hashlib
+          import hmac
+          import os
+
+          digest = hmac.new(
+              os.environ["WEBHOOK_SECRET"].encode(),
+              os.environ["PAYLOAD"].encode(),
+              hashlib.sha256,
+          ).hexdigest()
+          print("sha256=" + digest)
+          PY
+          )"
+          if ! curl --fail --silent --show-error --retry 3 --retry-all-errors --max-time 15 \
+            --request POST \
+            --header "Content-Type: application/json" \
+            --header "X-GitHub-Event: release" \
+            --header "X-Hub-Signature-256: $signature" \
+            --data "$payload" \
+            "$WEBHOOK_URL"; then
+            echo "::warning::metaserve webhook delivery failed; fallback polling will retry"
+          fi

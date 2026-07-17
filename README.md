@@ -147,11 +147,32 @@ immediately and the poller runs a refresh at startup (not just once per
 seconds instead of serving build-time data for a full interval. Set
 `GITHUB_TOKEN` to raise the API rate limit.
 
+For immediate production refreshes, set `METASERVE_WEBHOOK_SECRET` to a random
+value of at least 32 bytes while keeping `--poll` enabled. This registers
+`POST /hooks/github/release`, authenticated with the standard
+`X-Hub-Signature-256: sha256=...` HMAC header. The release workflow calls the
+endpoint only after every release asset has uploaded, then metaserve re-queries
+GitHub, verifies the published checksums, and uses the same atomic hot-swap path
+as polling. The webhook never trusts or installs data from its request body.
+Hourly polling stays enabled as a fallback for a missed delivery.
+
+Configure the deployment and GitHub repository with the same secret:
+
+1. Generate a secret, for example with `openssl rand -hex 32`, and expose it to
+   the container as `METASERVE_WEBHOOK_SECRET`.
+2. Add the Actions secret `METASERVE_WEBHOOK_SECRET` with that value.
+3. Add the Actions secret `METASERVE_WEBHOOK_URL` with the public endpoint, for
+   example `https://meta.audiosilo.app/hooks/github/release`.
+
+The endpoint is not registered when the deployment secret is absent. A missing
+workflow configuration or failed delivery is non-fatal because the fallback
+poller will still discover the release.
+
 ### Docker
 
 The image bundles the server, a baked copy of the current data, and the static
-site (built from `site/`). It serves the baked artifact immediately
-and polls for newer data releases.
+site (built from `site/`). It serves the baked artifact immediately, accepts
+signed release refreshes when configured, and polls as a fallback.
 
 ```sh
 docker build -t audiosilo-meta .
@@ -160,9 +181,10 @@ docker run -p 8080:8080 -v audiosilo-meta-cache:/data ghcr.io/kodestar/audiosilo
 
 For a real deployment use the committed [`docker-compose.yml`](docker-compose.yml):
 loopback-only port (a TLS reverse proxy such as nginx/Ploi fronts it), a named
-volume for the release-download cache, and hourly data polling. The image
-entrypoint carries all required flags; `command:` appends extras (for example
-`command: ["--interval", "15m"]`). Health check endpoint: `/healthz`.
+volume for the release-download cache, an optional signed release webhook, and
+hourly fallback polling. The image entrypoint carries all required flags;
+`command:` appends extras (for example `command: ["--interval", "15m"]`).
+Health check endpoint: `/healthz`.
 
 The `image` workflow builds and pushes `ghcr.io/kodestar/audiosilo-meta` on a
 `v*` tag.

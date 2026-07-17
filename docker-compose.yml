@@ -1,7 +1,7 @@
 # Production-shaped deployment: the image bundles the API server (metaserve),
-# a baked copy of the data, and the static site. It serves immediately and
-# polls GitHub Releases for newer data artifacts, so data updates need no
-# redeploy - only code changes do.
+# a baked copy of the data, and the static site. It serves immediately, accepts
+# signed refresh notifications, and polls GitHub Releases as a fallback, so data
+# updates need no redeploy - only code changes do.
 #
 # Put a TLS-terminating reverse proxy (nginx, Caddy, Ploi) in front:
 # proxy https://meta.example.com -> 127.0.0.1:8080. Health check: GET /healthz.
@@ -30,10 +30,13 @@ services:
     # `command:` APPENDS flags to that, e.g. a faster poll cadence:
     # command: ["--interval", "15m"]
     #
-    # Optional: raises the GitHub API rate limit for release polling
-    # (unauthenticated is plenty at the default hourly interval).
+    # Optional: enable immediate refreshes from the release workflow. Configure
+    # the same 32+ byte value as the repository secret
+    # METASERVE_WEBHOOK_SECRET, and set METASERVE_WEBHOOK_URL there to the public
+    # https://.../hooks/github/release endpoint. Never commit the value here.
     # environment:
-    #   GITHUB_TOKEN: ghp_...
+    #   METASERVE_WEBHOOK_SECRET: ${METASERVE_WEBHOOK_SECRET}
+    #   GITHUB_TOKEN: ghp_... # optional higher polling rate limit
 
 volumes:
   meta-cache:

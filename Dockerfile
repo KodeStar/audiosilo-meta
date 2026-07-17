@@ -8,9 +8,10 @@
 #   2. build   - compile metaserve and bake the current data/ into meta.sqlite
 #   3. runtime - a minimal, non-root alpine image running metaserve
 #
-# At runtime metaserve serves the baked artifact immediately and, with --poll,
-# hot-swaps in the latest published data release. The baked db is the offline
-# fallback; the polled release carries the git-derived added_at dates.
+# At runtime metaserve serves the baked artifact immediately and hot-swaps in
+# published data releases. The release workflow can trigger an immediate refresh
+# through the signed webhook; --poll remains the recovery path. The baked db is
+# the offline fallback; release artifacts carry git-derived added_at dates.
 
 # ---- 1. site -----------------------------------------------------------------
 FROM node:24-alpine AS site

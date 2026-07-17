@@ -195,6 +195,18 @@ poll-only synchronous first refresh) catches a recreated container up to the
 newest release within seconds instead of serving build-time data for a full
 interval; on a poll-only boot `New()` already refreshed, so the startup poll is a
 cheap conditional 304.
+Production can additionally set `METASERVE_WEBHOOK_SECRET` (at least 32 bytes)
+while keeping `--poll` enabled. That registers
+`POST /hooks/github/release`, which accepts only HMAC-SHA256-signed release
+notifications for the configured repository. `release.yml` sends the signed
+notification after `gh release create` has finished uploading every asset, so
+the receiver cannot race an incomplete release. The request body is only a
+trigger: the server re-queries GitHub and goes through `refresh`, including the
+release-asset checksum and atomic-swap checks. The hourly loop remains the
+fallback for missed notifications. The workflow reads
+`METASERVE_WEBHOOK_URL` and `METASERVE_WEBHOOK_SECRET` from Actions secrets; if
+either is absent or delivery fails, the data release still succeeds and polling
+catches it later.
 FTS queries are built defensively (`ftsQuery`: every token quoted + escaped,
 final token prefixed with `*`) so no user input can break the MATCH. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.

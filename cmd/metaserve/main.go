@@ -1,7 +1,7 @@
 // Command metaserve is the read-only HTTP API over the compiled metadata
 // artifact. It serves the SQLite database built by metabuild and can optionally
-// poll GitHub Releases to hot-swap a newer artifact. All logic lives in
-// internal/serve; this is only flag wiring and signal handling.
+// refresh from GitHub Releases on signed webhooks and fallback polls. All logic
+// lives in internal/serve; this is only flag wiring and signal handling.
 package main
 
 import (
@@ -27,14 +27,15 @@ func main() {
 	flag.Parse()
 
 	cfg := serve.Config{
-		Addr:     *addr,
-		DBPath:   *db,
-		Site:     *site,
-		Poll:     *poll,
-		Repo:     *repo,
-		Interval: *interval,
-		CacheDir: *cache,
-		Token:    os.Getenv("GITHUB_TOKEN"),
+		Addr:          *addr,
+		DBPath:        *db,
+		Site:          *site,
+		Poll:          *poll,
+		Repo:          *repo,
+		Interval:      *interval,
+		CacheDir:      *cache,
+		Token:         os.Getenv("GITHUB_TOKEN"),
+		WebhookSecret: os.Getenv("METASERVE_WEBHOOK_SECRET"),
 	}
 
 	srv, err := serve.New(cfg)

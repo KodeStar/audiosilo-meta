@@ -1,15 +1,17 @@
 // Package serve is the read-only HTTP API over the compiled metadata artifact.
 // It opens the SQLite database produced by internal/build, exposes a small JSON
 // API (search, work/person/series detail, ASIN/ISBN lookup, stats, coverage), and can
-// optionally poll GitHub Releases to hot-swap in a newer artifact without a
-// restart. All content is public, so there is no auth; CORS is wide open on the
-// API surface. Business logic lives here; cmd/metaserve is a thin wrapper.
+// hot-swap a newer GitHub Release artifact on a signed webhook or fallback poll
+// without a restart. All content is public, so there is no auth; CORS is wide
+// open on the API surface. Business logic lives here; cmd/metaserve is a thin
+// wrapper.
 package serve
 
 import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -21,15 +23,16 @@ import (
 
 // Config configures a Server.
 type Config struct {
-	Addr     string        // listen address, e.g. ":8080"
-	DBPath   string        // local artifact to serve (dev); empty => must poll
-	Site     string        // optional static site directory served at "/"
-	Poll     bool          // fetch/refresh the artifact from GitHub Releases
-	Repo     string        // owner/name, e.g. "KodeStar/audiosilo-meta"
-	Interval time.Duration // poll interval
-	CacheDir string        // where downloaded artifacts are gunzipped
-	Token    string        // optional GITHUB_TOKEN for a higher rate limit
-	Logger   *log.Logger   // nil => log.Default()
+	Addr          string        // listen address, e.g. ":8080"
+	DBPath        string        // local artifact to serve (dev); empty => must poll
+	Site          string        // optional static site directory served at "/"
+	Poll          bool          // fetch/refresh the artifact from GitHub Releases
+	Repo          string        // owner/name, e.g. "KodeStar/audiosilo-meta"
+	Interval      time.Duration // fallback poll interval
+	CacheDir      string        // where downloaded artifacts are gunzipped
+	Token         string        // optional GITHUB_TOKEN for a higher rate limit
+	WebhookSecret string        // optional HMAC secret for release refresh webhooks
+	Logger        *log.Logger   // nil => log.Default()
 
 	// swapGrace is how long an old snapshot is kept open after a swap so that
 	// in-flight requests finish on it. Overridable for tests; default 60s.
@@ -51,6 +54,8 @@ type Server struct {
 
 	mu     sync.Mutex // guards refresh() so two polls never race
 	loaded string     // tag of the currently-loaded release ("" for local db)
+
+	webhookRefreshing atomic.Bool // coalesces webhook-triggered refreshes to one in flight
 }
 
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
@@ -68,6 +73,14 @@ func New(cfg Config) (*Server, error) {
 	}
 	if cfg.swapGrace <= 0 {
 		cfg.swapGrace = 60 * time.Second
+	}
+	if cfg.WebhookSecret != "" {
+		if !cfg.Poll {
+			return nil, errors.New("serve: METASERVE_WEBHOOK_SECRET requires --poll")
+		}
+		if len(cfg.WebhookSecret) < minWebhookSecretBytes {
+			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
+		}
 	}
 	s := &Server{cfg: cfg, log: cfg.Logger}
 	if cfg.Poll {
@@ -140,6 +153,9 @@ func (s *Server) swap(next *snapshot) {
 func (s *Server) buildMux() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /healthz", s.handleHealthz)
+	if s.cfg.WebhookSecret != "" {
+		mux.HandleFunc("POST "+githubReleaseWebhookPath, s.handleGitHubReleaseWebhook)
+	}
 	mux.Handle("GET /api/v1/stats", s.api(s.handleStats))
 	mux.Handle("GET /api/v1/search", s.api(s.handleSearch))
 	mux.Handle("GET /api/v1/works/latest", s.api(s.handleLatest))
