@@ -684,12 +684,33 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	srcArr, _ := raw["sources"].([]any)
-	raw["sources"] = append(srcArr, sourceMap(p.curSource))
+	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
 	p.emitRaw(recPath, raw)
 	ri.asins[asin] = true
 	// p.asins is registered by addBook's tail for every path (merge and new
 	// recording alike), so it is intentionally NOT set here - one owner.
 	p.summary.MergedASINs++
+}
+
+// appendSourceUnique appends src to an existing record's raw sources[] array
+// unless an entry with the same type+ref is already present. Re-importing an
+// ASIN (or a second pass over the same library, like a cover backfill) must not
+// double-stamp provenance: sources[] is meant to be a set of distinct,
+// auditable/retractable refs, so an identical stamp carries no new information
+// and only muddies which record to trust or retract.
+func appendSourceUnique(srcArr []any, src OutSource) []any {
+	for _, s := range srcArr {
+		m, ok := s.(map[string]any)
+		if !ok {
+			continue
+		}
+		t, _ := m["type"].(string)
+		r, _ := m["ref"].(string)
+		if t == src.Type && r == src.Ref {
+			return srcArr
+		}
+	}
+	return append(srcArr, sourceMap(src))
 }
 
 // sourceMap renders an OutSource as a JSON-object map for splicing into an
