@@ -10,9 +10,17 @@ name: intake
 # metaissue fetches attachments HTTPS-only from GitHub's user-attachment hosts
 # with a size cap. Do not add a step that evals or runs anything derived from the
 # issue.
+# The `labeled` trigger is load-bearing: the GitHub API silently DROPS labels on
+# issues opened by non-collaborators (the sibling audiosilo-sidecars contributor
+# tool creates add-work/add-characters/add-recaps intake issues over the API), so
+# such an issue arrives label-less and the `opened`/`edited` runs skip it. When a
+# maintainer later applies the routing label, that fires neither `opened` nor
+# `edited` - only `labeled` - so without this trigger the tool's issues could
+# never be admitted. The job-level `if` below narrows `labeled` to genuine routing
+# labels.
 on:
   issues:
-    types: [opened, edited]
+    types: [opened, edited, labeled]
 
 # Least privilege: open a PR, comment on the issue, and label it. Nothing more.
 permissions:
@@ -29,7 +37,25 @@ jobs:
   intake:
     runs-on: ubuntu-latest
     # Only act on issues carrying a data-routing label (data:add-work, etc.).
-    if: contains(join(github.event.issue.labels.*.name), 'data:')
+    # For opened/edited we check the issue's current label set; for a `labeled`
+    # event we instead gate on the label just added (github.event.label.name), and
+    # EXCLUDE the three outcome labels this workflow applies at the end
+    # (data:invalid / data:needs-human / data:duplicate). Without that exclusion the
+    # workflow's own outcome-labeling (the non-ok step below) would re-fire a
+    # `labeled` run - a duplicate intake + duplicate comment - for every non-ok
+    # verdict. A genuine routing label (data:add-work, data:add-characters, ...)
+    # starts with `data:` but is none of those outcomes.
+    if: >-
+      (
+        github.event.action != 'labeled' &&
+        contains(join(github.event.issue.labels.*.name), 'data:')
+      ) || (
+        github.event.action == 'labeled' &&
+        startsWith(github.event.label.name, 'data:') &&
+        github.event.label.name != 'data:invalid' &&
+        github.event.label.name != 'data:needs-human' &&
+        github.event.label.name != 'data:duplicate'
+      )
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
