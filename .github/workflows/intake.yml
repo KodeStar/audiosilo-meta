@@ -100,6 +100,10 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           base: main
+          # Only the data tree belongs in an intake PR - without this the action
+          # commits the whole working tree, including this job's scratch files
+          # (issue-body.md, result.json, pr-body.md).
+          add-paths: data/**
           branch: intake/issue-${{ github.event.issue.number }}
           commit-message: "intake: issue #${{ github.event.issue.number }} (${{ steps.run.outputs.template }})"
           title: "[intake] ${{ github.event.issue.title }}"
