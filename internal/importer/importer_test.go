@@ -660,6 +660,390 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 	}
 }
 
+func TestCleanWorkTitle(t *testing.T) {
+	cases := map[string]string{
+		"System Collapse (Unabridged)":  "System Collapse",
+		"Mageling (Unabridged)":         "Mageling",
+		"Rogue Protocol [Abridged]":     "Rogue Protocol",
+		"Twice (Unabridged) [Abridged]": "Twice", // repeated until stable
+		"Plain Title":                   "Plain Title",
+		"(Unabridged)":                  "(Unabridged)", // only a marker: unchanged
+		"  Spaced (Unabridged)  ":       "Spaced",
+	}
+	for in, want := range cases {
+		if got := cleanWorkTitle(in); got != want {
+			t.Errorf("cleanWorkTitle(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
+func TestImportStripsEditionMarker(t *testing.T) {
+	// An OpenAudible entry whose title carries a trailing (Unabridged) marker
+	// resolves to the undecorated work slug and stores the clean title.
+	books := `[{"asin":"B0SYSCOL01","title_short":"System Collapse (Unabridged)","author":"Martha Wells","narrated_by":"Kevin Free","language":"english","region":"US","seconds":36000}]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 {
+		t.Fatalf("NewWorks = %d, want 1", sum.NewWorks)
+	}
+	if !exists(filepath.Join(dataDir, "works/sy/system-collapse/work.json")) {
+		t.Fatalf("edition marker not stripped from work slug; works: %v", listWorks(t, dataDir))
+	}
+	var work struct {
+		Title string `json:"title"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/sy/system-collapse/work.json"), &work)
+	if work.Title != "System Collapse" {
+		t.Errorf("stored title = %q, want %q", work.Title, "System Collapse")
+	}
+}
+
+func TestAudiosiloBooksSubtitlePrefixTitle(t *testing.T) {
+	// The ABS "Title: Subtitle" concatenation derives the work title from the
+	// prefix, not the whole concatenated string.
+	env := `{"format":"audiosilo-books","version":1,"books":[
+		{"title":"Fugitive Telemetry: Murderbot Diaries, Book 6","subtitle":"Murderbot Diaries, Book 6","authors":["Martha Wells"],"narrators":["Kevin Free"],"language":"en","asin":"B0FUGITEL1","runtime_min":180}
+	]}`
+	_, dataDir := runWith(t, RunAudiosiloBooks, env, false)
+	if !exists(filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json")) {
+		t.Fatalf("subtitle-derived work slug missing; works: %v", listWorks(t, dataDir))
+	}
+	var work struct {
+		Title string `json:"title"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json"), &work)
+	if work.Title != "Fugitive Telemetry" {
+		t.Errorf("stored title = %q, want %q", work.Title, "Fugitive Telemetry")
+	}
+}
+
+// asinsOf reads a recording file's ASIN values as a set.
+func asinsOf(t *testing.T, path string) map[string]string {
+	t.Helper()
+	var rec struct {
+		ASIN []struct {
+			Region string `json:"region"`
+			ASIN   string `json:"asin"`
+		} `json:"asin"`
+	}
+	readJSON(t, path, &rec)
+	out := map[string]string{}
+	for _, a := range rec.ASIN {
+		out[a.ASIN] = a.Region
+	}
+	return out
+}
+
+func TestSameEditionASINMergesOneRun(t *testing.T) {
+	// "Mageling" and "Mageling (Unabridged)": same author/narrator/year, similar
+	// runtime, different ASINs -> ONE work, ONE recording carrying BOTH ASINs,
+	// the series position claimed once, no collision warning.
+	books := `[
+		{"asin":"B0MAGELING","title_short":"Mageling","author":"Some Author","narrated_by":"A Reader","series_name":"Mage Series","series_sequence":"1","language":"english","region":"US","release_date":"2021-01-01","seconds":36000},
+		{"asin":"B0MAGELUNA","title_short":"Mageling (Unabridged)","author":"Some Author","narrated_by":"A Reader","series_name":"Mage Series","series_sequence":"1","language":"english","region":"US","release_date":"2021-06-01","seconds":36000}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.MergedASINs != 1 {
+		t.Fatalf("summary = %+v, want 1 work / 1 recording / 1 merged ASIN", sum)
+	}
+	if len(sum.Warnings) != 0 {
+		t.Errorf("no warnings expected (esp. no position collision), got %v", sum.Warnings)
+	}
+	if exists(filepath.Join(dataDir, "works/ma/mageling-unabridged/work.json")) {
+		t.Errorf("edition variant minted a sibling work; works: %v", listWorks(t, dataDir))
+	}
+	recs, _ := os.ReadDir(filepath.Join(dataDir, "works/ma/mageling/recordings"))
+	if len(recs) != 1 {
+		t.Fatalf("expected 1 recording file, got %v", recs)
+	}
+	got := asinsOf(t, filepath.Join(dataDir, "works/ma/mageling/recordings", recs[0].Name()))
+	if len(got) != 2 || got["B0MAGELING"] == "" || got["B0MAGELUNA"] == "" {
+		t.Errorf("recording ASINs = %v, want both B0MAGELING and B0MAGELUNA", got)
+	}
+	var series struct {
+		Works []struct {
+			Work     string `json:"work"`
+			Position string `json:"position"`
+		} `json:"works"`
+	}
+	readJSON(t, filepath.Join(dataDir, "series/ma/mage-series.json"), &series)
+	if len(series.Works) != 1 || series.Works[0].Work != "mageling" || series.Works[0].Position != "1" {
+		t.Errorf("series should list mageling once at 1, got %+v", series.Works)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestSameEditionASINMergesIntoExisting(t *testing.T) {
+	// The re-release arrives against an on-disk recording: its file gains the
+	// ASIN, no new work directory, every other field preserved.
+	dataDir := t.TempDir()
+	seed := map[string]string{
+		"people/so/some-author.json":                      `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}`,
+		"people/a-/a-reader.json":                         `{"id":"a-reader","license":"CC0-1.0","name":"A Reader","sources":[{"type":"user"}]}`,
+		"works/ma/mageling/work.json":                     `{"authors":["some-author"],"id":"mageling","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Mageling"}`,
+		"works/ma/mageling/recordings/a-reader-2021.json": `{"asin":[{"asin":"B0MAGELING","region":"us"}],"id":"a-reader-2021","language":"en","license":"CC0-1.0","narrators":["a-reader"],"runtime_min":600,"sources":[{"type":"user"}],"work":"mageling"}`,
+	}
+	seedTree(t, dataDir, seed)
+
+	books := `[{"asin":"B0MAGELUNA","title_short":"Mageling (Unabridged)","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-06-01","seconds":36000}]`
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.MergedASINs != 1 {
+		t.Fatalf("summary = %+v, want 0 work / 0 recording / 1 merged ASIN", sum)
+	}
+	if exists(filepath.Join(dataDir, "works/ma/mageling-unabridged/work.json")) {
+		t.Errorf("a sibling work directory was created; works: %v", listWorks(t, dataDir))
+	}
+	recPath := filepath.Join(dataDir, "works/ma/mageling/recordings/a-reader-2021.json")
+	got := asinsOf(t, recPath)
+	if len(got) != 2 || got["B0MAGELING"] == "" || got["B0MAGELUNA"] == "" {
+		t.Errorf("recording ASINs = %v, want both", got)
+	}
+	var rec struct {
+		Narrators  []string `json:"narrators"`
+		RuntimeMin int      `json:"runtime_min"`
+		Work       string   `json:"work"`
+	}
+	readJSON(t, recPath, &rec)
+	if rec.RuntimeMin != 600 || rec.Work != "mageling" || len(rec.Narrators) != 1 || rec.Narrators[0] != "a-reader" {
+		t.Errorf("unmanaged fields changed on merge: %+v", rec)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestDifferentRuntimeMakesDistinctRecording(t *testing.T) {
+	// Same work/narrator/year but runtimes 300 vs 500 min: a genuinely different
+	// production -> two recordings under ONE work, no merge, no sibling work.
+	books := `[
+		{"asin":"B0DIVERGE1","title_short":"Divergent Tale","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-01-01","seconds":18000},
+		{"asin":"B0DIVERGE2","title_short":"Divergent Tale (Unabridged)","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-06-01","seconds":30000}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.MergedASINs != 0 {
+		t.Fatalf("summary = %+v, want 1 work / 2 recordings / 0 merged", sum)
+	}
+	recs, _ := os.ReadDir(filepath.Join(dataDir, "works/di/divergent-tale/recordings"))
+	if len(recs) != 2 {
+		t.Fatalf("expected 2 recording files, got %v", recs)
+	}
+	if len(listWorks(t, dataDir)) == 0 {
+		t.Fatalf("no works written")
+	}
+	for _, w := range listWorks(t, dataDir) {
+		if strings.Contains(w, "divergent-tale-unabridged") {
+			t.Errorf("edition variant minted a sibling work: %s", w)
+		}
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestSameEditionASINMergeIdempotent(t *testing.T) {
+	// Re-running the same import is a no-op: both ASINs already present skip.
+	books := `[
+		{"asin":"B0MAGELING","title_short":"Mageling","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-01-01","seconds":36000},
+		{"asin":"B0MAGELUNA","title_short":"Mageling (Unabridged)","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-06-01","seconds":36000}
+	]`
+	_, dataDir := runImport(t, books, false)
+	sum2, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum2.NewWorks != 0 || sum2.NewRecordings != 0 || sum2.MergedASINs != 0 {
+		t.Errorf("re-run should be a no-op, got %+v", sum2)
+	}
+	if sum2.Skipped != 2 {
+		t.Errorf("both ASINs should skip on re-run, Skipped = %d", sum2.Skipped)
+	}
+}
+
+func TestReReleaseMergesIntoMatchingRuntimeSibling(t *testing.T) {
+	// Fix 1: a work already has TWO same-narrator recordings (600 and 300 min).
+	// A re-release with runtime 300 and a new ASIN must merge into the 300-min
+	// sibling (the merge scans ALL same-narrator siblings, not just the first),
+	// with no third recording minted.
+	dataDir := t.TempDir()
+	seed := map[string]string{
+		"people/so/some-author.json":                         `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}`,
+		"people/a-/a-reader.json":                            `{"id":"a-reader","license":"CC0-1.0","name":"A Reader","sources":[{"type":"user"}]}`,
+		"works/tw/two-takes/work.json":                       `{"authors":["some-author"],"id":"two-takes","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Two Takes"}`,
+		"works/tw/two-takes/recordings/a-reader-2021.json":   `{"asin":[{"asin":"B0FIRST001","region":"us"}],"id":"a-reader-2021","language":"en","license":"CC0-1.0","narrators":["a-reader"],"runtime_min":600,"sources":[{"type":"user"}],"work":"two-takes"}`,
+		"works/tw/two-takes/recordings/a-reader-2021-2.json": `{"asin":[{"asin":"B0SECOND02","region":"us"}],"id":"a-reader-2021-2","language":"en","license":"CC0-1.0","narrators":["a-reader"],"runtime_min":300,"sources":[{"type":"user"}],"work":"two-takes"}`,
+	}
+	seedTree(t, dataDir, seed)
+
+	// seconds 18000 = 300 min, matching the SECOND recording, not the first.
+	books := `[{"asin":"B0RERELES1","title_short":"Two Takes","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-09-01","seconds":18000}]`
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.NewRecordings != 0 || sum.MergedASINs != 1 {
+		t.Fatalf("summary = %+v, want 0 new recordings / 1 merged ASIN", sum)
+	}
+	if exists(filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021-3.json")) {
+		t.Errorf("a third recording was minted instead of merging into the runtime match")
+	}
+	// The 600-min recording is untouched (still the hand-seeded file, so it is not
+	// re-read through the canonical-enforcing asinsOf); it must not have gained
+	// the re-release ASIN.
+	firstRaw, err := os.ReadFile(filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(firstRaw), "B0FIRST001") || strings.Contains(string(firstRaw), "B0RERELES1") {
+		t.Errorf("600-min recording changed: %s", firstRaw)
+	}
+	second := asinsOf(t, filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021-2.json"))
+	if len(second) != 2 || second["B0SECOND02"] == "" || second["B0RERELES1"] == "" {
+		t.Errorf("300-min recording ASINs = %v, want both B0SECOND02 and B0RERELES1", second)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestAbridgedConflictBlocksMerge(t *testing.T) {
+	// Fix 2: "Foo" (no abridged field, runtime unknown) and "Foo (Abridged)"
+	// (same narrator/year, new ASIN, runtime unknown) in one run must NOT merge -
+	// an explicitly-abridged edition is a distinct production. Two recordings
+	// result, and the abridged edition's recording carries abridged:true (derived
+	// from the title marker).
+	books := `[
+		{"asin":"B0FOO00001","title_short":"Foo","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-01-01"},
+		{"asin":"B0FOOABRD1","title_short":"Foo (Abridged)","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-01-01"}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.MergedASINs != 0 {
+		t.Fatalf("summary = %+v, want 1 work / 2 recordings / 0 merged", sum)
+	}
+	recDir := filepath.Join(dataDir, "works/fo/foo/recordings")
+	recs, _ := os.ReadDir(recDir)
+	if len(recs) != 2 {
+		t.Fatalf("expected 2 recording files, got %v", recs)
+	}
+	// The abridged edition landed on the numeric-suffixed slug and must carry the
+	// derived abridged:true; the plain "Foo" recording must have no abridged flag.
+	abridged := readAbridged(t, filepath.Join(recDir, "a-reader-2021-2.json"))
+	if abridged == nil || *abridged != true {
+		t.Errorf("abridged edition recording abridged = %v, want true", abridged)
+	}
+	plain := readAbridged(t, filepath.Join(recDir, "a-reader-2021.json"))
+	if plain != nil {
+		t.Errorf("plain recording abridged = %v, want omitted (nil)", plain)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation: %v", res.Problems)
+	}
+}
+
+// readAbridged reads a recording file's abridged tri-state (nil when the field
+// is absent).
+func readAbridged(t *testing.T, path string) *bool {
+	t.Helper()
+	var rec struct {
+		Abridged *bool `json:"abridged"`
+	}
+	readJSON(t, path, &rec)
+	return rec.Abridged
+}
+
+func TestAudiosiloBooksStripsEditionMarkerBeforeSplit(t *testing.T) {
+	// Fix 3: an edition marker on the concatenated ABS title must be stripped
+	// BEFORE the subtitle split and full-title concatenation, so it neither
+	// defeats the split nor leaks into the work title / full title.
+	cases := []struct {
+		name       string
+		title, sub string
+		wantShort  string
+		wantFull   string
+	}{
+		{
+			name:      "marker on concatenated title",
+			title:     "Fugitive Telemetry: Murderbot Diaries, Book 6 (Unabridged)",
+			sub:       "Murderbot Diaries, Book 6",
+			wantShort: "Fugitive Telemetry",
+			wantFull:  "Fugitive Telemetry: Murderbot Diaries, Book 6",
+		},
+		{
+			name:      "marker on bare title with distinct subtitle",
+			title:     "Fugitive Telemetry (Unabridged)",
+			sub:       "Murderbot Diaries, Book 6",
+			wantShort: "Fugitive Telemetry",
+			wantFull:  "Fugitive Telemetry: Murderbot Diaries, Book 6",
+		},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			sb := audiosiloBookToBook(rawBook{"title": tc.title, "subtitle": tc.sub})
+			if got := sb.str("title_short"); got != tc.wantShort {
+				t.Errorf("title_short = %q, want %q", got, tc.wantShort)
+			}
+			full := sb.str("title")
+			if full != tc.wantFull {
+				t.Errorf("title = %q, want %q", full, tc.wantFull)
+			}
+			if strings.Contains(strings.ToLower(full), "abridged") {
+				t.Errorf("full title still carries an edition marker: %q", full)
+			}
+		})
+	}
+
+	// End-to-end: the marker-on-concatenated-title case resolves to the clean
+	// work slug.
+	env := `{"format":"audiosilo-books","version":1,"books":[
+		{"title":"Fugitive Telemetry: Murderbot Diaries, Book 6 (Unabridged)","subtitle":"Murderbot Diaries, Book 6","authors":["Martha Wells"],"narrators":["Kevin Free"],"language":"en","asin":"B0FUGITEL2","runtime_min":180}
+	]}`
+	_, dataDir := runWith(t, RunAudiosiloBooks, env, false)
+	if !exists(filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json")) {
+		t.Fatalf("marker not stripped from work slug; works: %v", listWorks(t, dataDir))
+	}
+}
+
+func TestMergedASINGetsProvenance(t *testing.T) {
+	// Fix 4: a merged re-release ASIN appends a provenance entry to the
+	// recording's sources[] (auditable/retractable), referencing the merged ASIN.
+	dataDir := t.TempDir()
+	seed := map[string]string{
+		"people/so/some-author.json":                      `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}`,
+		"people/a-/a-reader.json":                         `{"id":"a-reader","license":"CC0-1.0","name":"A Reader","sources":[{"type":"user"}]}`,
+		"works/ma/mageling/work.json":                     `{"authors":["some-author"],"id":"mageling","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Mageling"}`,
+		"works/ma/mageling/recordings/a-reader-2021.json": `{"asin":[{"asin":"B0MAGELING","region":"us"}],"id":"a-reader-2021","language":"en","license":"CC0-1.0","narrators":["a-reader"],"runtime_min":600,"sources":[{"type":"user"}],"work":"mageling"}`,
+	}
+	seedTree(t, dataDir, seed)
+
+	books := `[{"asin":"B0MAGELUNA","title_short":"Mageling (Unabridged)","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2021-06-01","seconds":36000}]`
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.MergedASINs != 1 {
+		t.Fatalf("summary = %+v, want 1 merged ASIN", sum)
+	}
+	var rec struct {
+		Sources []struct {
+			Type string `json:"type"`
+			Ref  string `json:"ref"`
+		} `json:"sources"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/ma/mageling/recordings/a-reader-2021.json"), &rec)
+	if len(rec.Sources) != 2 {
+		t.Fatalf("sources = %+v, want 2 entries after merge", rec.Sources)
+	}
+	if rec.Sources[1].Ref != "B0MAGELUNA" {
+		t.Errorf("merged source ref = %q, want the merged ASIN B0MAGELUNA", rec.Sources[1].Ref)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
+	}
+}
+
 func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	// Defense in depth below the parsers' non-empty-name invariant: a direct
 	// caller must never mint a nameless series (slug "series").
