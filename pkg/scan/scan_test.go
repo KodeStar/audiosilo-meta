@@ -1,11 +1,13 @@
 package scan
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"reflect"
 	"sort"
+	"sync"
 	"testing"
 )
 
@@ -658,6 +660,266 @@ func TestScanDeterministicOnPathCollision(t *testing.T) {
 		if !reflect.DeepEqual(res1, res2) {
 			t.Fatalf("scan not deterministic on a path collision:\n%+v\n%+v", res1, res2)
 		}
+	}
+}
+
+// TestParallelWalkDeepWide builds a deep AND wide tree with many audio-bearing
+// directories plus a symlink cycle back to the root, and asserts the parallel
+// walk finds exactly the audio directories once each (no double-append from the
+// cycle), deterministically across repeated runs. Run under -race by the gate,
+// this exercises the concurrent walk's shared-state guards.
+func TestParallelWalkDeepWide(t *testing.T) {
+	root := t.TempDir()
+	var want []string
+	// Wide: 20 top-level author dirs; deep: each has a 6-level nested chain, and
+	// several intermediate levels ALSO carry audio (so a group is found at
+	// multiple depths, not just leaves). More directories than walkWorkers, so
+	// the semaphore genuinely gates.
+	for a := range 20 {
+		author := fmt.Sprintf("Author %02d", a)
+		dir := author
+		for depth := range 6 {
+			dir = filepath.Join(dir, fmt.Sprintf("level%d", depth))
+			// Put audio at every even depth to spread groups through the tree.
+			if depth%2 == 0 {
+				rel := filepath.ToSlash(dir)
+				p := filepath.Join(root, filepath.FromSlash(dir), "book.m4b")
+				if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+					t.Fatal(err)
+				}
+				if err := os.WriteFile(p, nil, 0o644); err != nil {
+					t.Fatal(err)
+				}
+				want = append(want, rel)
+			} else {
+				if err := os.MkdirAll(filepath.Join(root, filepath.FromSlash(dir)), 0o755); err != nil {
+					t.Fatal(err)
+				}
+			}
+		}
+	}
+	sort.Strings(want)
+
+	// A cycle back to the scan root must be guarded, not looped or double-counted.
+	if err := os.Symlink(root, filepath.Join(root, "loop")); err != nil {
+		t.Skipf("cannot create symlinks here: %v", err)
+	}
+
+	res1, stats1 := scanNoProbe(t, root)
+	var got1 []string
+	for _, b := range res1.Books {
+		got1 = append(got1, b.Path)
+	}
+	if !reflect.DeepEqual(got1, want) {
+		t.Fatalf("parallel walk book paths mismatch\n got %v\nwant %v", got1, want)
+	}
+	// The cycle back to root must not have produced any group (or a double-append):
+	// exactly one book per audio dir, no duplicates.
+	seen := map[string]bool{}
+	for _, p := range got1 {
+		if seen[p] {
+			t.Fatalf("path %q appears twice - visited guard failed under concurrency", p)
+		}
+		seen[p] = true
+	}
+	// The loop symlink resolves to the already-visited root, so it is skipped
+	// cleanly (not counted as unreadable).
+	if stats1.UnreadableDirs != 0 {
+		t.Errorf("UnreadableDirs = %d, want 0 (the root cycle is skipped, not unreadable)", stats1.UnreadableDirs)
+	}
+
+	// Determinism: the full Result must be byte-identical across many runs despite
+	// the nondeterministic walk/load ordering.
+	for range 15 {
+		res2, _ := scanNoProbe(t, root)
+		if !reflect.DeepEqual(res1, res2) {
+			t.Fatalf("parallel scan not deterministic:\n%+v\n%+v", res1.Books, res2.Books)
+		}
+	}
+}
+
+// TestParallelWalkMatchesSerial pins that the parallel walk produces the same
+// final books as a reference serial walk of the same tree, for a nontrivial
+// tree - the core "byte-identical to the serial version" guarantee.
+func TestParallelWalkMatchesSerial(t *testing.T) {
+	files := []string{
+		"Lee Child/Jack Reacher/01 - Killing Floor/x.m4b",
+		"Lee Child/Jack Reacher/02 - Die Trying/y.m4b",
+		"Brandon Sanderson/Mistborn/Book 1/part1.mp3",
+		"Brandon Sanderson/Mistborn/Book 1/part2.mp3",
+		"Brandon Sanderson/Mistborn/Book 2 - Well of Ascension/a.mp3",
+		"Brandon Sanderson/Stormlight/01 - The Way of Kings/wok.m4b",
+		"Neil Gaiman/Good Omens/good-omens.m4b",
+		"Loose Standalone.mp3",
+		"Another Loose.m4b",
+	}
+	root := mkTree(t, files...)
+
+	// Reference: the serial walk logic (visited-guarded DFS in sorted subdir
+	// order), reproduced here independently of the production concurrent walk.
+	serial := serialGroups(t, root)
+
+	res, _ := scanNoProbe(t, root)
+	var got []string
+	for _, b := range res.Books {
+		got = append(got, b.Path)
+	}
+	if !reflect.DeepEqual(got, serial) {
+		t.Fatalf("parallel books != serial reference\n got %v\nwant %v", got, serial)
+	}
+}
+
+// serialGroups is an independent, single-threaded reference walk that returns the
+// sorted book-path set a tree yields (each audio-bearing dir = one book here,
+// since the fixtures are untagged so folders stay whole). It deliberately does
+// NOT share code with the production collectGroups.
+func serialGroups(t *testing.T, root string) []string {
+	t.Helper()
+	var paths []string
+	visited := map[string]bool{}
+	var walk func(dir string, isRoot bool)
+	walk = func(dir string, isRoot bool) {
+		resolved, err := filepath.EvalSymlinks(dir)
+		if err != nil {
+			return
+		}
+		if visited[resolved] {
+			return
+		}
+		visited[resolved] = true
+		entries, err := os.ReadDir(dir)
+		if err != nil {
+			return
+		}
+		var hasAudio bool
+		var subdirs, audio []string
+		for _, e := range entries {
+			name := e.Name()
+			if name != "" && name[0] == '.' {
+				continue
+			}
+			if e.IsDir() {
+				subdirs = append(subdirs, name)
+			} else if isAudio(name) {
+				hasAudio = true
+				audio = append(audio, name)
+			}
+		}
+		sort.Strings(subdirs)
+		if hasAudio {
+			rel, _ := filepath.Rel(root, dir)
+			if isRoot {
+				// Loose root files are individual single-file books.
+				for _, f := range audio {
+					paths = append(paths, stem(f))
+				}
+			} else {
+				paths = append(paths, filepath.ToSlash(rel))
+			}
+		}
+		for _, sd := range subdirs {
+			walk(filepath.Join(dir, sd), false)
+		}
+	}
+	walk(root, true)
+	sort.Strings(paths)
+	return paths
+}
+
+// TestParallelWalkSiblingAliasDeterministic pins that when two in-tree siblings
+// resolve to the SAME audio-bearing directory (a real subdir and a symlink to it),
+// the concurrent walk deterministically represents the book by its
+// lexicographically-SMALLEST alias path, matching a serial DFS. Here "Link" < "Real",
+// so every run must yield exactly one book at "Parent/Link". Under the pre-fix code
+// the recorded alias was whichever goroutine won the visited race, so the Path
+// flipped run-to-run between "Parent/Link" and "Parent/Real".
+func TestParallelWalkSiblingAliasDeterministic(t *testing.T) {
+	root := t.TempDir()
+	real := filepath.Join(root, "Parent", "Real")
+	if err := os.MkdirAll(real, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(real, "book.m4b"), nil, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	// A sibling symlink Parent/Link -> Real: both resolve to the same directory.
+	if err := os.Symlink(real, filepath.Join(root, "Parent", "Link")); err != nil {
+		t.Skipf("cannot create symlinks here: %v", err)
+	}
+
+	const want = "Parent/Link" // "Link" < "Real"
+	for i := range 100 {
+		res, stats := scanNoProbe(t, root)
+		if len(res.Books) != 1 {
+			t.Fatalf("run %d: want exactly 1 book (aliases dedup to one), got %d: %+v", i, len(res.Books), res.Books)
+		}
+		if got := res.Books[0].Path; got != want {
+			t.Fatalf("run %d: aliased dir must use the smallest alias %q, got %q", i, want, got)
+		}
+		if stats.UnreadableDirs != 0 {
+			t.Fatalf("run %d: UnreadableDirs = %d, want 0", i, stats.UnreadableDirs)
+		}
+	}
+}
+
+// TestOnWalkCallback pins the OnWalk contract: called at least once for a
+// multi-directory tree, its final groupsFound matches the real group count, and
+// it is invoked from a single goroutine (no concurrent overlap).
+func TestOnWalkCallback(t *testing.T) {
+	root := mkTree(t,
+		"A/Book One/x.m4b",
+		"A/Book Two/y.m4b",
+		"B/C/D/deep.m4b",
+		"loose.mp3",
+	)
+	var (
+		mu            sync.Mutex
+		calls         int
+		lastGroups    int
+		maxConcurrent int
+		inFlight      int
+	)
+	res, _, err := Scan(root, Options{OnWalk: func(dirsScanned, groupsFound int) {
+		mu.Lock()
+		inFlight++
+		if inFlight > maxConcurrent {
+			maxConcurrent = inFlight
+		}
+		calls++
+		lastGroups = groupsFound
+		inFlight--
+		mu.Unlock()
+	}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if calls == 0 {
+		t.Fatal("OnWalk never called")
+	}
+	if maxConcurrent > 1 {
+		t.Errorf("OnWalk invoked concurrently (max in-flight %d) - must be one goroutine", maxConcurrent)
+	}
+	// The final OnWalk fires with the finished counts, which must equal the real
+	// group total (here 4 audio-bearing directories).
+	const wantGroups = 4
+	if lastGroups != wantGroups {
+		t.Errorf("final OnWalk groupsFound = %d, want %d", lastGroups, wantGroups)
+	}
+	if len(res.Books) != wantGroups {
+		t.Fatalf("want %d books, got %d", wantGroups, len(res.Books))
+	}
+}
+
+// TestOnWalkNilNoPanic pins that a nil OnWalk skips the reporter entirely with no
+// panic (and the scan still works).
+func TestOnWalkNilNoPanic(t *testing.T) {
+	root := mkTree(t, "A/Book/x.m4b", "loose.mp3")
+	res, _, err := Scan(root, Options{OnWalk: nil})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(res.Books) != 2 {
+		t.Fatalf("want 2 books, got %d", len(res.Books))
 	}
 }
 

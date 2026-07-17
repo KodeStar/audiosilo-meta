@@ -33,6 +33,7 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 // Format and Version identify the output document. The contract is fixed - the
@@ -136,6 +137,16 @@ type Options struct {
 	// Concurrency: like OnProgress, always invoked from the single Scan
 	// goroutine and serialized with it.
 	OnBook func(Book)
+
+	// OnWalk, if non-nil, reports directory-walk progress WHILE the tree is being
+	// enumerated (before OnProgress/OnBook, which only fire afterwards during the
+	// load phase). dirsScanned is directories read so far; groupsFound is
+	// audio-containing directories found so far. Called periodically (throttled),
+	// never per-directory; the final counts are not guaranteed (OnProgress(0,total)
+	// gives the authoritative group total). Invoked from a SINGLE dedicated
+	// goroutine during the walk only, so it never overlaps OnProgress/OnBook and
+	// needs no locking; it must not block.
+	OnWalk func(dirsScanned, groupsFound int)
 }
 
 // Stats summarizes a scan for the human-readable report.
@@ -229,7 +240,7 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 	}
 
 	var stats Stats
-	groups := collectGroups(absRoot, &stats)
+	groups := collectGroups(absRoot, &stats, opts.OnWalk)
 
 	// Report the total up front so a caller with a progress bar can size it
 	// before any group has loaded (Options.OnProgress).
@@ -305,31 +316,138 @@ func Scan(root string, opts Options) (*Result, Stats, error) {
 	return &Result{Format: Format, Version: Version, Root: absRoot, Books: books}, stats, nil
 }
 
+// walkWorkers bounds the concurrent directory walk. Unlike the per-file load
+// (maxWorkers=8, which competes for disk+CPU on tag reads and ffprobe spawns),
+// the walk is purely LATENCY-bound: each directory costs one EvalSymlinks +
+// ReadDir (plus a Stat per symlink entry) round-trip, dominated by round-trip
+// time on a high-latency network mount (SMB/NFS). Keeping more of those requests
+// in flight than the file-load pool hides that latency, so a higher concurrency
+// is warranted here; the bounded semaphore still caps total in-flight work so a
+// large share is never swamped.
+const walkWorkers = 16
+
+// walkThrottle is how often the dedicated OnWalk reporter samples the atomic
+// walk counters. Reporting is coarse "Scanning folders..." progress, not
+// per-directory, so a few hundred ms keeps the UI live without churn.
+const walkThrottle = 250 * time.Millisecond
+
 // collectGroups walks the tree (cheap, ReadDir only) and returns each directory
-// that directly contains audio files, in deterministic order. Directory
-// symlinks are followed (symlink-organized libraries are common), with a
-// visited set over resolved paths guarding cycles; unreadable or unresolvable
-// directories are counted in stats and skipped, never silently dropped.
-func collectGroups(root string, stats *Stats) []groupData {
-	var groups []groupData
-	visited := map[string]bool{}
-	var walk func(dir string, isRoot bool)
-	walk = func(dir string, isRoot bool) {
+// that directly contains audio files. Directory symlinks are followed
+// (symlink-organized libraries are common), with a visited set over resolved
+// paths guarding cycles; unreadable or unresolvable directories are counted in
+// stats and skipped, never silently dropped.
+//
+// The walk is CONCURRENT: a bounded pool (walkWorkers) keeps multiple
+// EvalSymlinks/ReadDir round-trips in flight at once, which is the win on a
+// latency-bound network mount. The returned group ORDER is nondeterministic, but
+// Scan re-sorts the resulting books by path (with a Files tie-break), so the
+// final Result.Books is byte-identical to a serial walk's - INCLUDING that a
+// directory reachable via multiple in-tree aliases (a sibling symlink and the
+// real dir) is represented by its lexicographically-SMALLEST alias path, matching
+// a serial DFS in sorted-subdir order. The shared-state invariant that survives
+// concurrency is the visited check-and-set (atomic under mu): a symlink cycle or
+// duplicate entry point can never double-append a directory's group, and the
+// smallest claiming alias is chosen deterministically in every interleaving (a
+// smaller alias arriving before the append is picked up from visited; one
+// arriving after relabels the already-appended group in place - never re-reading
+// the directory, so a losing alias costs no extra ReadDir on a network mount).
+// Each directory's own audio files are still numeric-sorted (NaturalLess), which
+// fixes the parts' track order and so is load-bearing.
+//
+// If onWalk is non-nil, a SINGLE dedicated ticker goroutine samples the atomic
+// dirsScanned/groupsFound counters and calls onWalk (throttled), so the callback
+// is never invoked from a walk worker and needs no locking; it is stopped and
+// joined before this returns, then fired once more with the finished counts.
+func collectGroups(root string, stats *Stats, onWalk func(dirsScanned, groupsFound int)) []groupData {
+	var (
+		mu     sync.Mutex // guards groups, visited, groupOf, and the stats counters
+		groups []groupData
+		// visited maps a resolved directory to the lexicographically-SMALLEST
+		// in-tree alias (unresolved dir) seen for it so far; groupOf maps a
+		// resolved directory to its index in groups (set once that dir has audio).
+		// Together they make the recorded alias deterministic: when several in-tree
+		// paths (e.g. a sibling symlink and the real dir) resolve to the same
+		// audio-bearing directory, the group's dir converges on the smallest alias,
+		// matching a serial DFS in sorted-subdir order - without any losing alias
+		// re-reading the directory.
+		visited = map[string]string{}
+		groupOf = map[string]int{}
+		wg      sync.WaitGroup
+		sem     = make(chan struct{}, walkWorkers)
+	)
+	var dirsScanned, groupsFound int64 // atomic walk counters for onWalk
+
+	// Optional progress reporter: one dedicated goroutine so the onWalk contract
+	// (single goroutine, never overlapping OnProgress/OnBook) holds.
+	var reporterWG sync.WaitGroup
+	stopReporter := make(chan struct{})
+	if onWalk != nil {
+		reporterWG.Add(1)
+		go func() {
+			defer reporterWG.Done()
+			t := time.NewTicker(walkThrottle)
+			defer t.Stop()
+			for {
+				select {
+				case <-t.C:
+					onWalk(int(atomic.LoadInt64(&dirsScanned)), int(atomic.LoadInt64(&groupsFound)))
+				case <-stopReporter:
+					return
+				}
+			}
+		}()
+	}
+
+	// scanDir does one directory's latency-bound work (resolve + read + classify)
+	// holding a semaphore slot ONLY for its own duration, and returns the child
+	// directory paths to recurse into. The slot is released (deferred) BEFORE the
+	// caller spawns child goroutines - holding a slot while waiting on children
+	// would deadlock once the tree is deeper than walkWorkers.
+	scanDir := func(dir string, isRoot bool) []string {
+		sem <- struct{}{}
+		defer func() { <-sem }()
+
 		resolved, err := filepath.EvalSymlinks(dir)
 		if err != nil {
+			mu.Lock()
 			stats.UnreadableDirs++
-			return
+			mu.Unlock()
+			return nil
 		}
-		if visited[resolved] {
-			return // symlink cycle / duplicate entry point
+		// The visited check-and-set MUST be atomic so two aliasing paths (a
+		// symlink cycle / duplicate entry point) can never both proceed and
+		// double-append the same directory's group. When an alias loses the race
+		// but is lexicographically smaller than the recorded one, it relabels the
+		// group in place (contents are identical - same resolved dir - so only the
+		// label changes) and returns WITHOUT re-reading or recursing: this
+		// preserves the cycle guard, keeps the smallest-alias guarantee, and never
+		// costs a second ReadDir on a network mount.
+		mu.Lock()
+		if prev, ok := visited[resolved]; ok {
+			if dir < prev {
+				visited[resolved] = dir
+				if gi, ok := groupOf[resolved]; ok {
+					groups[gi].dir = dir
+				}
+			}
+			mu.Unlock()
+			return nil
 		}
-		visited[resolved] = true
+		visited[resolved] = dir
+		mu.Unlock()
 
 		entries, err := os.ReadDir(dir)
 		if err != nil {
+			mu.Lock()
 			stats.UnreadableDirs++
-			return
+			mu.Unlock()
+			return nil
 		}
+		// dirsScanned counts directories SUCCESSFULLY READ (visited-skipped and
+		// unreadable dirs are not counted), so it is coarse walk progress for
+		// OnWalk, not a precise directory total.
+		atomic.AddInt64(&dirsScanned, 1)
+
 		var audio, subdirs []string
 		for _, e := range entries {
 			name := e.Name()
@@ -347,7 +465,9 @@ func collectGroups(root string, stats *Stats) []groupData {
 				} else if err == nil && isAudio(name) {
 					audio = append(audio, name)
 				} else if err != nil {
+					mu.Lock()
 					stats.UnreadableDirs++ // dangling symlink
+					mu.Unlock()
 				}
 			case isAudio(name):
 				audio = append(audio, name)
@@ -356,17 +476,55 @@ func collectGroups(root string, stats *Stats) []groupData {
 		// audio orders a folder book's parts (they become Book.Files, i.e. the
 		// track order), so use numeric-aware sorting: unpadded "Chapter 2.mp3"
 		// must precede "Chapter 10.mp3". subdirs only drives walk order (books
-		// are re-sorted by path below), so a plain sort is fine there.
+		// are re-sorted by path in Scan), so a plain sort is fine there.
 		sort.SliceStable(audio, func(i, j int) bool { return NaturalLess(audio[i], audio[j]) })
 		sort.Strings(subdirs)
 		if len(audio) > 0 {
-			groups = append(groups, groupData{group: group{dir: dir, files: audio, isRoot: isRoot}})
+			mu.Lock()
+			// Read the current smallest alias rather than this goroutine's own dir:
+			// a smaller sibling alias may have updated visited[resolved] while we
+			// were reading. (A smaller alias arriving AFTER this append relabels the
+			// group via groupOf, above - so either interleaving yields the smallest.)
+			d := visited[resolved]
+			groups = append(groups, groupData{group: group{dir: d, files: audio, isRoot: isRoot}})
+			groupOf[resolved] = len(groups) - 1
+			mu.Unlock()
+			atomic.AddInt64(&groupsFound, 1)
 		}
-		for _, sd := range subdirs {
-			walk(filepath.Join(dir, sd), false)
+		children := make([]string, len(subdirs))
+		for i, sd := range subdirs {
+			children[i] = filepath.Join(dir, sd)
+		}
+		return children
+	}
+
+	var walk func(dir string, isRoot bool)
+	walk = func(dir string, isRoot bool) {
+		defer wg.Done()
+		for _, child := range scanDir(dir, isRoot) {
+			wg.Add(1)
+			// One goroutine per directory: the WORK is bounded by the walkWorkers
+			// semaphore, but the spawned goroutines are not. At audiobook-library
+			// scale this is fine; a pathological tree with hundreds of thousands of
+			// dirs could pile up blocked goroutines - an acceptable tradeoff versus
+			// the complexity of a fixed worker-queue.
+			go walk(child, false)
 		}
 	}
-	walk(root, true)
+	wg.Add(1)
+	go walk(root, true)
+	wg.Wait()
+
+	if onWalk != nil {
+		close(stopReporter)
+		reporterWG.Wait()
+		// One final authoritative sample so a walk that finished between ticks
+		// still reports its totals (OnProgress(0,total) remains the authoritative
+		// group total per OnWalk's doc). Safe unsynchronized read: every walker
+		// has completed (wg.Wait) and the reporter has stopped.
+		onWalk(int(atomic.LoadInt64(&dirsScanned)), int(atomic.LoadInt64(&groupsFound)))
+	}
+
 	return groups
 }
 
