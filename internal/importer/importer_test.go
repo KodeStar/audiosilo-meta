@@ -1044,6 +1044,36 @@ func TestMergedASINGetsProvenance(t *testing.T) {
 	}
 }
 
+func TestAppendSourceUnique(t *testing.T) {
+	// Re-stamping an identical type+ref (a re-import or a second backfill pass
+	// over the same ASIN) is a no-op, so sources[] stays a set of distinct
+	// auditable refs. A new type or a new ref is appended.
+	existing := func() []any {
+		return []any{
+			map[string]any{"type": "audiosilo-books-import", "ref": "B0AAA", "imported_at": "2026-07-17"},
+			map[string]any{"type": "audible-lookup", "ref": "B0AAA"},
+		}
+	}
+	cases := []struct {
+		name string
+		src  OutSource
+		want int
+	}{
+		{"exact dup type+ref", OutSource{Type: "audible-lookup", Ref: "B0AAA"}, 2},
+		{"dup ignoring imported_at", OutSource{Type: "audiosilo-books-import", Ref: "B0AAA", ImportedAt: "2026-08-01"}, 2},
+		{"new ref same type", OutSource{Type: "audible-lookup", Ref: "B0BBB"}, 3},
+		{"new type same ref", OutSource{Type: "openlibrary", Ref: "B0AAA"}, 3},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			got := appendSourceUnique(existing(), tc.src)
+			if len(got) != tc.want {
+				t.Errorf("len = %d, want %d (%v)", len(got), tc.want, got)
+			}
+		})
+	}
+}
+
 func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	// Defense in depth below the parsers' non-empty-name invariant: a direct
 	// caller must never mint a nameless series (slug "series").
