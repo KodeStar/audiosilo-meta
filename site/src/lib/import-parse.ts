@@ -514,7 +514,9 @@ function parseFolderscanBook(raw: Record<string, unknown>): ParsedBook {
 // the flat, already-curated projections newBooksPayload emits (github-prefill.ts)
 // so a user can re-drop the download here. Each entry is ParsedBook-shaped and
 // privacy-safe by construction (built from a ParsedBook, never a raw export), so
-// parsing is a passthrough/normalization consistent with the other parsers.
+// parsing is a passthrough/normalization consistent with the other parsers. The
+// projection may carry an https `cover_url` (see factualSubset); it is read back
+// here and, on the Go side, mapped into the recording's cover.
 
 function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const asin = normalizeAsin(coerceStr(raw['asin']))
@@ -534,6 +536,10 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
   const publisher = coerceStr(raw['publisher'])
   const chapterCount = coerceInt(raw['chapters']) // a count in the curated shape
   const abridged = coerceBool(raw['abridged'])
+  // The curated projection carries the cover as an https `cover_url` (emitted by
+  // factualSubset from ParsedBook.coverUrl), so a re-dropped download keeps it.
+  const cover = coerceStr(raw['cover_url'])
+  const coverUrl = cover.startsWith('https://') ? cover : undefined
 
   return {
     asin: asin || undefined,
@@ -550,7 +556,7 @@ function parseAudiosiloBook(raw: Record<string, unknown>): ParsedBook {
     releaseDate,
     publisher: publisher || undefined,
     region: undefined, // the curated projection carries no marketplace region
-    coverUrl: undefined,
+    coverUrl,
     chapterCount,
     abridged,
     format: 'audiosilobooks',

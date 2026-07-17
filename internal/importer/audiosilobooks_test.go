@@ -30,14 +30,16 @@ const audiosiloBooksExport = `{
       "publisher": "Macmillan Audio",
       "runtime_min": 500,
       "chapters": 45,
-      "abridged": false
+      "abridged": false,
+      "cover_url": "https://m.media-amazon.com/images/I/way-of-kings._SL500_.jpg"
     },
     {
       "title": "Unknown Abridgement",
       "authors": ["Solo Author"],
       "narrators": ["A Narrator"],
       "asin": "B0ABS00002",
-      "language": "en"
+      "language": "en",
+      "cover_url": "http://insecure.example/cover.jpg"
     }
   ]
 }`
@@ -84,10 +86,12 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		t.Errorf("work sources = %+v", work.Sources)
 	}
 
-	// Recording: two narrators, region defaulted to us, abridged emitted.
+	// Recording: two narrators, region defaulted to us, abridged emitted, and the
+	// projection's https cover_url carried through to cover_url.
 	var rec struct {
 		Narrators []string `json:"narrators"`
 		Abridged  *bool    `json:"abridged"`
+		CoverURL  string   `json:"cover_url"`
 		ASIN      []struct {
 			Region string `json:"region"`
 			ASIN   string `json:"asin"`
@@ -100,19 +104,27 @@ func TestRunAudiosiloBooks(t *testing.T) {
 	if rec.Abridged == nil || *rec.Abridged != false {
 		t.Errorf("abridged = %v, want explicit false", rec.Abridged)
 	}
+	if rec.CoverURL != "https://m.media-amazon.com/images/I/way-of-kings._SL500_.jpg" {
+		t.Errorf("cover_url = %q, want the https projection cover", rec.CoverURL)
+	}
 	if len(rec.ASIN) != 1 || rec.ASIN[0].Region != "us" || rec.ASIN[0].ASIN != "B0ABS00001" {
 		t.Errorf("asin = %+v, want one us B0ABS00001 (region defaulted)", rec.ASIN)
 	}
 
 	// The second book stated no abridged flag: the field must be OMITTED, never
-	// fabricated to false (omit-never-guess).
+	// fabricated to false (omit-never-guess). Its cover_url is non-https, so it is
+	// dropped rather than recorded as an invalid cover.
 	var rec2 struct {
-		Abridged *bool `json:"abridged"`
+		Abridged *bool  `json:"abridged"`
+		CoverURL string `json:"cover_url"`
 	}
 	recPath := filepath.Join(dataDir, "works/un/unknown-abridgement/recordings/a-narrator.json")
 	readJSON(t, recPath, &rec2)
 	if rec2.Abridged != nil {
 		t.Errorf("abridged = %v, want absent (unstated)", rec2.Abridged)
+	}
+	if rec2.CoverURL != "" {
+		t.Errorf("cover_url = %q, want empty (non-https dropped)", rec2.CoverURL)
 	}
 }
 
