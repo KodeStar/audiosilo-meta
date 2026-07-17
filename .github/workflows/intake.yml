@@ -99,6 +99,14 @@ jobs:
         if: steps.run.outputs.status == 'ok'
         uses: peter-evans/create-pull-request@v6
         with:
+          # A PR created with the default GITHUB_TOKEN triggers NO pull_request
+          # workflows (GitHub's recursion guard), so the required "check" gate
+          # never runs and the PR is unmergeable until a human pushes to it or
+          # closes/reopens it. INTAKE_PAT is a fine-grained PAT (this repo only,
+          # Contents + Pull requests read/write) whose PRs trigger CI normally;
+          # the github.token fallback keeps intake working (degraded) if the
+          # PAT is missing or expired.
+          token: ${{ secrets.INTAKE_PAT || github.token }}
           base: main
           # Only the data tree belongs in an intake PR - without this the action
           # commits the whole working tree, including this job's scratch files
