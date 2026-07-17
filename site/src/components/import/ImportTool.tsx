@@ -502,8 +502,8 @@ export default function ImportTool() {
           </div>
           <p className="mt-3 text-xs leading-relaxed text-dim">
             The download contains factual fields only - titles, authors, narrators, series,
-            runtimes, ASINs and chapters. No purchase history, ratings, file paths or personal
-            data.
+            runtimes, ASINs, chapters and public cover-art URLs. No purchase history, ratings,
+            file paths or personal data.
           </p>
         </div>
       )}

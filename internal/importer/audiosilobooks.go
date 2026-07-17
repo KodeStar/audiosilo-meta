@@ -17,7 +17,8 @@ import (
 //
 // whose entries are already the flat, factual ParsedBook projection (title,
 // subtitle, authors[], narrators[], series, series_position, asin, isbn,
-// language, release_date, publisher, runtime_min, chapters (a COUNT), abridged).
+// language, release_date, publisher, runtime_min, chapters (a COUNT), abridged,
+// cover_url (https only, optional)).
 // Each entry is normalized into the same internal sourceBook the OpenAudible and
 // Libation paths produce, so it shares every mapping/dedup/series/person rule via
 // runBooks. Consuming this envelope is a cross-repo contract: the site produces
@@ -99,7 +100,8 @@ func parseAudiosiloBooks(data []byte) ([]sourceBook, error) {
 // present ASIN defaults to region us - mirroring the issue form's bare-ASIN
 // handling - rather than dropping the recording's primary identity/dedup key. The
 // projection's chapters field is a COUNT (not the OpenAudible chapters array), so
-// it is intentionally not carried (buildChapters ignores a non-array anyway).
+// it is intentionally not carried (buildChapters ignores a non-array anyway). A
+// projection cover_url is routed into image_url so the shared pipeline records it.
 func audiosiloBookToBook(e rawBook) sourceBook {
 	raw := rawBook{}
 	sb := sourceBook{raw: raw}
@@ -151,6 +153,12 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	}
 	if rd := e.str("release_date"); rd != "" {
 		raw["release_date"] = rd
+	}
+	// Route the projection's cover into image_url so the shared pipeline writes
+	// rec.CoverURL (importer.go). Guarded https-only here too (the site already
+	// guards it) - drop a non-https value rather than emit an invalid cover.
+	if cover := e.str("cover_url"); strings.HasPrefix(cover, "https://") {
+		raw["image_url"] = cover
 	}
 	if mins, ok := coerceInt(e["runtime_min"]); ok && mins > 0 {
 		sb.runtimeMin = int(mins)

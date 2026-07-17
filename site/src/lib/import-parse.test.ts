@@ -611,6 +611,15 @@ describe('parseExport - audiosilo-books envelope', () => {
     expect(b.abridged).toBe(false)
   })
 
+  it('reads an https cover_url and drops a non-https one', () => {
+    const good = parseExport(envelope({ title: 'A', cover_url: 'https://img.example/c.jpg' }))
+    expect(good.books[0].coverUrl).toBe('https://img.example/c.jpg')
+    const bad = parseExport(envelope({ title: 'A', cover_url: 'http://img.example/c.jpg' }))
+    expect(bad.books[0].coverUrl).toBeUndefined()
+    const none = parseExport(envelope({ title: 'A' }))
+    expect(none.books[0].coverUrl).toBeUndefined()
+  })
+
   it('treats an envelope with an unsupported version as unknown (skew fails loud)', () => {
     const text = JSON.stringify({ format: 'audiosilo-books', version: 2, books: [{ title: 'A' }] })
     expect(parseExport(text).format).toBe('unknown')

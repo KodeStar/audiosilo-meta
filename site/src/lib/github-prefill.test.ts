@@ -352,6 +352,15 @@ describe('factualSubset - the privacy contract', () => {
     const out = factualSubset(parsedBook({ raw: { title: 'No Chapters' } }))
     expect('chapters' in out).toBe(false)
   })
+
+  it('carries an https cover as cover_url and omits it when absent or non-https', () => {
+    const withCover = factualSubset(
+      parsedBook({ raw: { title: 'T' }, coverUrl: 'https://img.example/cover.jpg' })
+    )
+    expect(withCover['cover_url']).toBe('https://img.example/cover.jpg')
+    // No coverUrl on the ParsedBook -> no cover_url key (facts-only, never fabricated).
+    expect('cover_url' in factualSubset(parsedBook({ raw: { title: 'T' } }))).toBe(false)
+  })
   it('keeps only whitelisted Libation fields and drops personal ones', () => {
     const raw = {
       // factual (kept)
@@ -545,6 +554,22 @@ describe('newBooksPayload', () => {
     expect(b.seriesPosition).toBe(a.seriesPosition)
     expect(b.asin).toBe(a.asin)
     expect(b.isbn).toBe(a.isbn)
+  })
+
+  it('carries an https cover through the audiosilo-books envelope round-trip', () => {
+    // ABS itself yields no public cover, but any book routed through the envelope
+    // that DOES carry an https cover must survive: factualSubset emits cover_url,
+    // the envelope preserves it, and parseAudiosiloBook reads it back.
+    const book = parsedBook({
+      format: 'audiobookshelf',
+      coverUrl: 'https://img.example/c.jpg',
+      raw: { title: 'Killing Floor', asin: 'B076HYPQLK' },
+    })
+    const payload = newBooksPayload([book]) as Record<string, unknown>
+    expect(payload['format']).toBe('audiosilo-books')
+    const out = parseExport(JSON.stringify(payload))
+    expect(out.format).toBe('audiosilobooks')
+    expect(out.books[0].coverUrl).toBe('https://img.example/c.jpg')
   })
 
   it('leaves OpenAudible books as a bare array (still detectable, still round-trips)', () => {

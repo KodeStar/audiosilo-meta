@@ -189,8 +189,9 @@ export function correctDataIssueUrl(kind: RecordKind, id: string): string {
  * format (the allowlist lives on the format's FORMATS descriptor). Personal/
  * marketing fields and the folder-scan's local-only path/file fields are
  * dropped. OpenAudible chapters are reduced to {title, start_offset_ms,
- * length_ms}. Used to build a privacy-safe new-books export the user can attach
- * to an import issue.
+ * length_ms}. A present https cover is carried as `cover_url` (from the derived
+ * ParsedBook.coverUrl), so it survives the envelopes below. Used to build a
+ * privacy-safe new-books export the user can attach to an import issue.
  */
 export function factualSubset(book: ParsedBook): Record<string, unknown> {
   const raw = book.raw
@@ -220,6 +221,17 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
       })
     }
   }
+  // The cover rides as a uniform `cover_url` taken from the ParsedBook's derived
+  // coverUrl (https-or-undefined by construction in every parser) rather than a
+  // per-format raw key. This is what carries the cover through the audiosilo-books
+  // and folder-scan envelopes, which otherwise strip it; the Go importer - which
+  // DOES see untrusted input - re-guards https before reading cover_url back into
+  // the recording. Facts-only: only a cover the source actually provided, never
+  // fabricated. OpenAudible/Libation also keep their native image_url/PictureId,
+  // so this is additive for those bare arrays.
+  if (book.coverUrl) {
+    out['cover_url'] = book.coverUrl
+  }
   return out
 }
 
@@ -234,7 +246,8 @@ export function factualSubset(book: ParsedBook): Record<string, unknown> {
  *    curated projections carry an `asin` key, which would otherwise misdetect
  *    as an OpenAudible export (silently dropping authors/narrators/series).
  * OpenAudible and Libation are already detectable as bare arrays of their own
- * keys, so they stay bare.
+ * keys, so they stay bare. Each book's factual subset carries an https `cover_url`
+ * when the source provided one (factualSubset), so covers survive the envelopes.
  */
 export function newBooksPayload(books: ParsedBook[]): unknown {
   const subsets = books.map(factualSubset)
