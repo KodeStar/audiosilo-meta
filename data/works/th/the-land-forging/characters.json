@@ -1,10 +1,19 @@
 {
   "characters": [
     {
+      "description": "The feared ruler of the Light Court. He orders his court to observe the newly detected traces of chaos and the surviving pixie chrysalis while privately remembering his responsibility for the plague that destroyed the pixies.",
+      "id": "king-of-light",
+      "name": "King of Light",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
       "aliases": [
         "Lord Richter"
       ],
-      "description": "A man brought from Earth to the world called the Land, where he holds the rare status of a chaos seed. As this book opens he is lord of a young settlement, the Mist Village, in the River Peninsula, and an ally of the wood sprites. He is still building his people's defenses and mastering the world's system-driven magic and skills.",
+      "description": "The master of the Mist Village and a Chaos Seed. He accepts a mission to clear advancing goblin and bugbear camps, shares access to his concealed glade with Sion, and agrees to plant a blessed seed core at his place of power.",
       "id": "richter",
       "name": "Richter",
       "reveal": {
@@ -13,7 +22,10 @@
       "role": "protagonist"
     },
     {
-      "description": "A young wood sprite, son of the Hearth Mother Hisako, and Richter's close companion. An archer and woodsman proud of his people's ways, he has traveled and fought at Richter's side since their earlier adventures.",
+      "aliases": [
+        "Sionavar"
+      ],
+      "description": "A wood sprite, Hisako's son, and Richter's companion and scout. He joins Richter's forest mission and gains access to the hidden glade. Daniella favors his longer name, Sionavar, despite his preference for Sion.",
       "id": "sion",
       "name": "Sion",
       "reveal": {
@@ -22,7 +34,7 @@
       "role": "supporting"
     },
     {
-      "description": "The Hearth Mother who leads the hearth-tree wood sprites in the Forest of Nadria, and Sion's mother. A formidable mage of life and light magic, she has pledged an alliance of mutual aid with Richter and his village.",
+      "description": "The Hearth Mother of the wood sprites and an ally of Richter. She directs the investigation of the eastern incursion, blesses the seed core for planting, and hopes to establish trade between her people and the Mist Village.",
       "id": "hisako",
       "name": "Hisako",
       "reveal": {
@@ -31,7 +43,7 @@
       "role": "supporting"
     },
     {
-      "description": "A warrior companion of Richter, of mixed wood-sprite and human heritage, and one of the most skilled swordsmen among Hisako's people. Blunt, hard-driving, and quick-tempered, he takes on the task of training Richter with the blade.",
+      "description": "A half-sprite, half-human warrior and swordsmanship adept. He begins training Richter, first through punishing bouts and then through formal instruction in sword forms.",
       "id": "yoshi",
       "name": "Yoshi",
       "reveal": {
@@ -40,7 +52,7 @@
       "role": "supporting"
     },
     {
-      "description": "A female wood sprite who joins Richter's circle near the hearth tree. Spirited and teasing, she is especially fond of needling Sion, whom she likes to address by a formal name he dislikes. A capable archer, she travels with the party to the Mist Village.",
+      "description": "A wood sprite with a familiar, teasing relationship with Sion. Her use of his longer name shows both their closeness and her willingness to unsettle him.",
       "id": "daniella",
       "name": "Daniella",
       "reveal": {
@@ -49,7 +61,7 @@
       "role": "supporting"
     },
     {
-      "description": "An elder wood sprite and master of life magic, one of Hisako's most trusted advisors. She travels with Richter's party as an ambassador to the Mist Village and begins teaching Richter the fundamentals of life magic.",
+      "description": "An elder wood sprite and Life Magic master. She travels to the Mist Village as a prospective ambassador and begins teaching Richter healing magic during the journey.",
       "id": "sumiko",
       "name": "Sumiko",
       "reveal": {
@@ -58,7 +70,7 @@
       "role": "supporting"
     },
     {
-      "description": "A remnant, a fragment of an ancient mage's soul bound to serve whoever leads the Mist Village's place of power. Appearing as a small floating gray orb with a flat, deadpan voice, he manages village logistics and identifies magic items for Richter, and reasons with surprising sharpness.",
+      "description": "The fragmentary remnant of an ancient mage, bound to serve the current master of the Mist Village. He advises waiting for the storm so the village nexus can better support the seed-core ceremony.",
       "id": "futen",
       "name": "Futen",
       "reveal": {
@@ -67,7 +79,25 @@
       "role": "supporting"
     },
     {
-      "description": "A companion of Richter and a former innkeeper from Law, the capital of Yves, who has been running the Mist Village day to day in Richter's absence. He is worn down by grief over a friend lost during their escape from Yves and by caring for his traumatized love, Isabel.",
+      "description": "The Mist Village specialist responsible for overseeing construction of the forge.",
+      "id": "wood-elf-carpenter",
+      "name": "Wood-Elf Carpenter",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A high-elf vessel builder who uses water and earth magic to strengthen her work. She can perform the specialist bonding required for a spirit-bound vessel and expects to have a river-ready ship completed in three months.",
+      "id": "high-elf-shipbuilder",
+      "name": "High-Elf Shipbuilder",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Richter's companion and a leader of the Mist Village guard. Formerly a mounted messenger and later an innkeeper, he is given leave from village duties so that he and Isabel can continue recovering from earlier trauma.",
       "id": "terrod",
       "name": "Terrod",
       "reveal": {
@@ -76,50 +106,61 @@
       "role": "supporting"
     },
     {
-      "description": "An herbalist of the Mist Village and Terrod's love. She is introduced as deeply traumatized in the wake of the group's flight from Yves; she is spoken of but does not appear directly when first mentioned.",
+      "description": "A village herbalist and the woman Terrod loves. At her introduction, both she and Terrod are still recovering from their recent ordeal.",
       "id": "isabel",
       "name": "Isabel",
       "reveal": {
         "chapter": 5
       },
-      "role": "minor"
+      "role": "supporting"
     },
     {
       "aliases": [
         "Randy"
       ],
-      "description": "Richter's chamberlain, who runs the Mist Village's administration from an office in its catacombs. Formal and meticulous, and quietly irritated when Richter calls him Randy. He once served the old King of Yves monitoring court correspondence, and possesses a code-breaking skill Richter puts to use on stolen documents.",
+      "description": "Richter's chamberlain and village administrator. Richter informally calls him Randy.",
       "id": "randolphus",
       "name": "Randolphus",
       "reveal": {
-        "chapter": 6
+        "chapter": 5
       },
       "role": "supporting"
     },
     {
-      "description": "Richter's soul familiar, a small dragon-like creature summoned through a rare one-time tome and bonded to him for life by the Psi Bond, an ability that lets the two share thoughts and images. Established as female, she is willful, food-driven, and affectionate by turns.",
-      "id": "alma",
-      "name": "Alma",
+      "description": "Richter's newly summoned female soul familiar. Their permanent Psi Bond permits willing mental communication, and her future growth and magical access are tied to the Mist Village's place of power.",
+      "id": "psi-dragonling",
+      "name": "Psi Dragonling",
       "reveal": {
         "chapter": 6
       },
       "role": "supporting"
-    },
-    {
-      "description": "A count in the court of the new King of Yves, part of the king's inner circle and disliked even by old-regime standards. He does not appear directly at first; Richter has robbed his safe of coded papers and other valuables, and the count is tied to Isabel's past suffering.",
-      "id": "count-stonuk",
-      "name": "Count Stonuk",
-      "reveal": {
-        "chapter": 6
-      },
-      "role": "antagonist"
     },
     {
       "aliases": [
-        "Queen Elora",
-        "Pixie Queen"
+        "Richter"
       ],
-      "description": "The pixie who emerges from a long-sheltered chrysalis when Richter plants a blessed seed core. A wordless memory-song reveals her as the daughter of the dead pixie queen, and thus the new Pixie Queen herself. She pledges herself to Richter as a companion and accepts his newly grown celestial tree as her home, a bond she has chosen but not yet performed.",
+      "description": "Richter's given name on Earth. He shares it with Sion while explaining that he had been training as a doctor before entering the Land and has now chosen the Land as his home.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Psi Dragonling"
+      ],
+      "description": "The name Richter gives his female Psi Dragonling familiar, which she accepts. She remains linked to him through their Psi Bond and to the Mist Village through its place of power.",
+      "id": "alma",
+      "name": "Alma",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The sole surviving royal Pixie Queen, preserved in a chrysalis through the plague that destroyed her people. She binds herself to the new quickening, becomes its caretaker and Richter's companion, and begins the effort to restore the pixies.",
       "id": "elora",
       "name": "Elora",
       "reveal": {
@@ -128,7 +169,16 @@
       "role": "supporting"
     },
     {
-      "description": "A gray-skinned, elf-eared sorceress and necromancer who wields a black staff and raises the dead. She leads part of the war-band that assaults the Mist Village and shares a bitter, unexplained history with Hisako and Yoshi, both of whom recognize her with open hatred.",
+      "description": "An unnamed attacker who directs dark magic during the bugbear assault on the Mist Village. The mage escapes the first clash after a summoned celestial servant intervenes.",
+      "id": "enemy-dark-mage",
+      "name": "Enemy Dark Mage",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dark-elf necromancer and an established enemy of Hisako. She supports the bugbear assault, raises skeletons from a mass grave, and confronts the defenders with death magic.",
       "id": "modara",
       "name": "Modara",
       "reveal": {
@@ -137,25 +187,34 @@
       "role": "antagonist"
     },
     {
-      "description": "A mountain dwarf blacksmith among the Mist Village's crafters. Gruff, proud, and fond of haggling, he proves to hold deep knowledge of dwarven metallurgy and lore. He pledges fealty to Richter and becomes the village's official smith.",
+      "description": "A Mountain Dwarf, journeyman smith, and near-journeyman enchanter. He voluntarily pledges fealty to Richter and becomes Smith of the Mist Village, improving the effectiveness of arms and armor made there.",
       "id": "krom",
       "name": "Krom",
       "reveal": {
-        "chapter": 16
+        "chapter": 14
       },
       "role": "supporting"
     },
     {
-      "description": "A demon that emerges from a sealed sarcophagus deep in the Time Worn Dungeon. Succubus-like but repellent even to other demons, she dominates and commands the dead rather than seducing the living, and revives and empowers the undead guards Richter's party faces.",
-      "id": "crypt-mistress",
-      "name": "The Crypt Mistress",
+      "description": "A high-elf crafter experienced in enchanted jewelry. He explains that enchanting depends on captured souls, suitable soul stones, sound materials, and specialized knowledge, and he can create the needed stones.",
+      "id": "gloran",
+      "name": "Gloran",
       "reveal": {
-        "chapter": 24
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The controller of the undead Drow Elite Guards in the dungeon's guarded crypt. Although Richter's party has obtained the means to leave, freeing her bound guards becomes their immediate objective.",
+      "id": "crypt-mistress",
+      "name": "Crypt Mistress",
+      "reveal": {
+        "chapter": 23
       },
       "role": "antagonist"
     },
     {
-      "description": "A regal warrior woman of a race called the Tefonim, drawn into the dungeon through a portal Richter opens. She reveals that the undead guards the party fought were once her own honorable soldiers, corrupted over ages; she restores them and her long-lost mate to life and gifts Richter the rare skill of portal construction.",
+      "description": "An ancient queen released when Richter returns her remains to their sarcophagus and frees her consort and warriors from undead control. She offers him an inherited skill and warns that portals allow danger to travel both ways.",
       "id": "tefonim-queen",
       "name": "Tefonim Queen",
       "reveal": {
@@ -164,20 +223,47 @@
       "role": "supporting"
     },
     {
-      "description": "Sion's childhood best friend, seen only in a forced memory-vision Sion relives inside a dungeon trial. As boys the two crossed into human territory, where Kurian was captured and killed by poachers, an event that long shaped Sion's hostility toward humans.",
+      "description": "Sion's childhood best friend. During an effort to free captive forest creatures, human animal-capturers seize both boys and kill Kurian, leaving Sion with lasting guilt and hostility toward humans.",
       "id": "kurian",
       "name": "Kurian",
       "reveal": {
         "chapter": 27
       },
+      "role": "supporting"
+    },
+    {
+      "description": "A wood-elf hunter from the Mist Village. Richter's returning party mistakes him for an enemy in the dark and breaks his leg during an ambush before recognizing him.",
+      "id": "jitol",
+      "name": "Jitol",
+      "reveal": {
+        "chapter": 30
+      },
       "role": "minor"
     },
     {
-      "description": "The unnamed ruler of the Light Court, an alien and highly ritualized elven court that watches the wider world for magical anomalies. Long ago he ordered the plague that exterminated the pixie race, a choice he has begun privately to regret.",
-      "id": "king-of-light",
-      "name": "King of Light",
+      "description": "An imp to whom Richter owes a binding, unspecified future favor. He does not appear in the present story, but the debt and his purpose remain unresolved.",
+      "id": "xuetrix",
+      "name": "Xuetrix",
       "reveal": {
-        "chapter": 2
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The surviving leader of the Night Blades and a hostile figure who knows Richter's group. He remains at large as the new story begins.",
+      "id": "ronan",
+      "name": "Ronan",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A noble of Yves connected to Isabel's former captivity. Richter's group robbed him without confronting him directly, leaving the possibility of retaliation open.",
+      "id": "count-stonuk",
+      "name": "Count Stonuk",
+      "reveal": {
+        "chapter": 0
       },
       "role": "antagonist"
     }
