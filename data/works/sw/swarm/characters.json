@@ -1,0 +1,183 @@
+{
+  "characters": [
+    {
+      "description": "A widowed father raising Jake and Christine on a farm in Central California. About ten years after Donna died in a car accident, an unnatural purple sky unsettles him, and he dreams of his late wife before a vessel appears the next night.",
+      "id": "farm-narrator",
+      "name": "Farm narrator",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A widowed father living with his two children on a Central California farm. By the time he gives his name, the visiting ship has killed Jake and Christine and forced him through a sequence of lethal tests. He teaches computer science and previously served as an Army Reserve first lieutenant.",
+      "id": "kyle-riggs",
+      "name": "Kyle Riggs",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Alessandra"
+      ],
+      "description": "A college student caught in the same deadly selection process as Kyle Riggs. She asks to be called Sandra and works with him to understand the tests. After following his choice of exit, she falls through an opening above the sea, leaving Kyle convinced that she has died.",
+      "id": "sandra",
+      "name": "Sandra",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silent black craft that arrives above the family farm after nightfall. A jointed arm takes Jake and Christine, drops their bodies, and then captures their father when he fires at the craft.",
+      "id": "dark-vessel",
+      "name": "Dark vessel",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The dark vessel that abducts Kyle and subjects people to fatal command trials. Once Kyle passes, the ship accepts him as commander and follows exact, literal instructions. He names it Alamo while it holds Sandra, Jake, and Christine in its medical area for attempted treatment.",
+      "id": "alamo",
+      "name": "Alamo",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of the ship Snapper and organizer of a fleet drawn from the few humans who survived the alien ships' selection process. Presenting himself as a former naval captain, Crow contacts Kyle and invites him to join because the new commanders are effectively confined aboard their vessels.",
+      "id": "jack-crow",
+      "name": "Jack Crow",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The narrator's elder child, living with his father and younger sister on their Central California farm. His ordinary family life is framed by the long-ago death of his mother, Donna, and the unexplained purple sky that appears shortly before the family is attacked.",
+      "id": "jake",
+      "name": "Jake",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Chris"
+      ],
+      "description": "The narrator's younger child and Jake's sister, living with them on the family farm in Central California. She is also called Chris. At her introduction, the household has endured the loss of her mother, Donna, but has no understanding of what the strange purple sky portends.",
+      "id": "christine",
+      "name": "Christine",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The narrator's late wife and the mother of Jake and Christine. She died in a car accident roughly ten years before the strange events at the farm. Her husband still dreams about her, and her absence defines the family he has been raising alone.",
+      "id": "donna",
+      "name": "Donna",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A local deputy known to Kyle. When the newly commanded ship returns to the farm to recover Kyle's children, Dave Mitters appears to be the person who fires at it from below. The vessel responds automatically with its own weapon, but the deputy's condition is not established.",
+      "id": "deputy-dave-mitters",
+      "name": "Deputy Dave Mitters",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A former online confidence trickster whom Crow selects as Star Force's representative to Earth governments. His persuasive abilities are considered useful as the fleet seeks supplies, support, and a working relationship with national authorities rather than relying on raids.",
+      "id": "pierre",
+      "name": "Pierre",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Pierre's Nano ship, used in Star Force's first effort to establish formal contact with Earth authorities. By its introduction, the failed-test rule has allowed a senator to come aboard a Nano vessel, giving Pierre a possible route toward government negotiations.",
+      "id": "versailles",
+      "name": "Versailles",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unidentified assassin who kills Pierre aboard Versailles, takes command of the ship, renames it Delta, and cuts communications.",
+      "id": "unnamed-versailles-hijacker",
+      "name": "Unnamed Versailles hijacker",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A United States senator used as an intermediary in Star Force's attempt to deal with Earth governments. Because she has already failed the Nano ships' command tests, she can be brought aboard without being tested again, allowing her to participate in talks with Pierre.",
+      "id": "us-senator",
+      "name": "U.S. senator",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The officer directing the Amazon defense against the Macro advance. A veteran of earlier fighting in Argentina and one of the few survivors from that command, Kerr initially regards Riggs as an unproven outsider while preparing a nuclear minefield and ground ambush.",
+      "id": "general-kerr",
+      "name": "General Kerr",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The last sergeant still fighting beside Riggs after a Macro devastates their concealed position. He is extracted with the badly injured Riggs before another attacker reaches them.",
+      "id": "lionel-wilson",
+      "name": "Lionel Wilson",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally strong combat veteran among the first volunteers for Riggs's new Star Force Marines. Even before enhancement, Kwon can carry and fire the unit's massive reactor-powered laser pack. He accepts the Nano treatment and is promoted to staff sergeant.",
+      "id": "kwon",
+      "name": "Kwon",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Russian combat veteran in the first multinational group recruited for the Star Force Marines. Radovich accepts the painful and effectively irreversible Nano enhancement process, then receives promotion to lance corporal as the altered unit begins forming on Andros Island.",
+      "id": "sergei-radovich",
+      "name": "Sergei Radovich",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "swarm"
+}
