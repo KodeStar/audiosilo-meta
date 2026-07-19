@@ -28,10 +28,14 @@ permissions:
   pull-requests: write
   issues: write
 
-# One in-flight run per issue; a rapid edit supersedes the queued run.
+# Serialize runs for one issue, but never let a later ineligible label event cancel
+# an eligible opened/edited/routing-label run. Creating an issue with both `data`
+# and `data:<template>` emits several events at once; the generic `data` event is
+# intentionally skipped by the job-level guard below and used to cancel the run
+# that would have opened the PR when cancel-in-progress was enabled.
 concurrency:
   group: intake-${{ github.event.issue.number }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   intake:
