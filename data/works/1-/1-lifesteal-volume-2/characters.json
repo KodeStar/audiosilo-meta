@@ -1,0 +1,492 @@
+{
+  "characters": [
+    {
+      "description": "A returning survivor of Camp Violet and an independent water-and-blood arch-human.",
+      "id": "freddy-stern",
+      "name": "Freddy Stern",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Freddy's spirit"
+      ],
+      "description": "A sentient spirit bound to Freddy's soul. It is a returning ally whose unusual connection to Freddy lets it assist him while remaining one of his most closely guarded secrets.",
+      "id": "bloodshed",
+      "name": "Bloodshed",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Mark"
+      ],
+      "description": "Freddy's former confidant, now compelled to serve Craven. He remains with the clan because its support protects his sister Sarah's opportunity to attend an academy.",
+      "id": "mark-affronte",
+      "name": "Mark Affronte",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning four-star public figure who has a contractual claim to interview Freddy and an interest in his survival after Camp Violet.",
+      "id": "madame-morlap",
+      "name": "Madame Morlap",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sarah"
+      ],
+      "description": "Mark's sister and an academy student. Her educational future is the leverage that keeps Mark tied to Craven.",
+      "id": "sarah-affronte",
+      "name": "Sarah Affronte",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The former four-star leader of Craven and Freddy's captor. He is already dead when this volume begins.",
+      "id": "former-craven-patriarch",
+      "name": "Former Craven patriarch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Peter Vane's father, who receives the disfigured patient discharged under his son's name and quickly rejects the identification.",
+      "id": "matthew-vane",
+      "name": "Matthew Vane",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The person whose identification is assigned to the disfigured survivor recovered from Camp Violet. The identification is disputed, and Peter's own fate is not established.",
+      "id": "peter-vane",
+      "name": "Peter Vane",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An air-affinity criminal broker in Imperta who controls genuine records belonging to an associate whose death was never reported. Freddy approaches him for a complete identity history, not merely forged documents.",
+      "id": "spike",
+      "name": "Spike",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Liam"
+      ],
+      "description": "A deceased associate of Spike whose death remains unreported. His preserved life history and official records make the identity valuable to someone needing more than forged papers.",
+      "id": "liam-cuttingsworth",
+      "name": "Liam Cuttingsworth",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Liam Cuttingsworth"
+      ],
+      "description": "Freddy registers his own face and second-star status under Liam Cuttingsworth's records, giving him a legal public identity while his past and concealed Craven property remain dangerous.",
+      "id": "freddy-stern-as-liam",
+      "name": "Freddy Stern",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The five-star imperial ruler whose ether signature authenticates the platinum Tower of York membership card offered during Freddy's identity deal.",
+      "id": "empress-kaya",
+      "name": "Empress Kaya",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dead Craven patriarch's three-star son and successor. He inherits a weakened clan and asks Mark to stay, linking continued support for Sarah's education to Mark's service.",
+      "id": "nahar",
+      "name": "Nahar",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A water-affinity sea monster imprisoned in Freddy's ethercosm. It explains that Freddy's dark-blue affinity formed from his own soul after their connection.",
+      "id": "imprisoned-sea-monster",
+      "name": "Imprisoned sea monster",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Basilisk"
+      ],
+      "description": "A man also known as Basilisk who arrives at the office of Craven's new patriarch.",
+      "id": "harold-mascot",
+      "name": "Harold Mascot",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced but still unnamed delver who recruits Freddy to guard equipment and carry corpses on an upcoming expedition, accepting a negotiated 9 percent share.",
+      "id": "unnamed-party-leader",
+      "name": "Unnamed party leader",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the six-person delve party Freddy joins as a helper under the name Liam.",
+      "id": "theodore",
+      "name": "Theodore",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theodore's wife and the fire-affinity caster in his six-person delve party as it prepares to take the inexperienced Liam into gorel territory.",
+      "id": "beatrice",
+      "name": "Beatrice",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A water-affinity caster in Theodore's party who treats injuries and imposes strict safety rules on the inexperienced helper Liam.",
+      "id": "petra",
+      "name": "Petra",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The archer in Theodore's experienced six-person delve party, which hires Liam to carry equipment and remain outside its combat formation.",
+      "id": "robert",
+      "name": "Robert",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A swordsman in Theodore's party with a strength-related talent. An arm-wrestling test with Liam leaves him injured and demonstrates that the new helper is unusually strong.",
+      "id": "kyle",
+      "name": "Kyle",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The earth-affinity brawler in Theodore's established delve party when Liam joins the group as an inexperienced helper.",
+      "id": "lance",
+      "name": "Lance",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The late Craven leader's unnamed brother. He commands the pursuit of two suspicious looters carrying irreplaceable clan property.",
+      "id": "craven-recovery-leader",
+      "name": "Craven recovery leader",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Camp Violet scout whose reanimated body can speak and manifests three-star power before Madame Morlap destroys it.",
+      "id": "jenny-walker",
+      "name": "Jenny Walker",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The privileged two-star son of the Santorio Hub's owner. He is organizing a well-funded delve party and repeatedly seeks to recruit Liam.",
+      "id": "jacob-santorio",
+      "name": "Jacob Santorio",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified woman who recognizes signs of Freddy's unusual healing and asks him for part of his body.",
+      "id": "sickly-woman",
+      "name": "Sickly woman",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Santorio Hub representative who enforces its economic rules and questions Liam about the unusual woman who carried him to safety.",
+      "id": "philip-parker",
+      "name": "Philip Parker",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A prospective member of Jacob Santorio's well-equipped delve party.",
+      "id": "rachel-black",
+      "name": "Rachel Black",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Theodore"
+      ],
+      "description": "The full name of Theodore, the former delve-party leader who has joined Jacob Santorio's proposed group and warned Freddy about its recruitment effort.",
+      "id": "theodore-osborne",
+      "name": "Theodore Osborne",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sickly woman"
+      ],
+      "description": "The sickly woman who recognized Freddy's extraordinary recovery. She can manipulate life sparks, creates a renewable healing resource from his tissue, and enters a secret partnership with him.",
+      "id": "sophia-sommer",
+      "name": "Sophia Sommer",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A man and a woman held in Craven's secret prison. They appear to be ordinary humans, but magical censorship prevents them from discussing parts of their history.",
+      "id": "secret-craven-prisoners",
+      "name": "Secret Craven prisoners",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A remarkably fast and technically accomplished saber user newly added to Jacob's party. Jacob expects her ability to outgrow the group quickly.",
+      "id": "karen",
+      "name": "Karen",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified one-armed man who maintains the runic seal trapping people inside a passage realm. He regrets their deaths but considers the sacrifice necessary to give children a chance at salvation.",
+      "id": "one-armed-seal-keeper",
+      "name": "One-armed seal keeper",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The owner of the Santorio Hub and Jacob Santorio's father.",
+      "id": "leonard-santorio",
+      "name": "Leonard Santorio",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced delver trapped near the central barrier with his sister Jean and their companion Rick as the sealed passage fills with stranded people.",
+      "id": "jack",
+      "name": "Jack",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Jack's sister, an experienced rapier user who moves with wind assistance. She is among the delvers trapped at the sealed central passage.",
+      "id": "jean",
+      "name": "Jean",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The experienced companion of Jack and Jean, trapped with them and a large crowd of delvers at the sealed central passage.",
+      "id": "rick",
+      "name": "Rick",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fully armored man who escapes the cult massacre with the surviving delvers. The cultists recognize him and deliberately allow the group to leave, while his identity and purpose remain opaque.",
+      "id": "armored-survivor",
+      "name": "Armored survivor",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A scorpion-tailed three-star cult operative who directs the effort to stop Bloodshed's rogue skeletal body and recover the mummified arm it carried.",
+      "id": "ilya",
+      "name": "Ilya",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A massive cult brawler who helps fight Bloodshed's rogue skeletal body.",
+      "id": "damien",
+      "name": "Damien",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A cult operative who uses levitation at severe physical cost while fighting Bloodshed's rogue skeletal body.",
+      "id": "peter-cult-operative",
+      "name": "Peter",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A five-star imperial assassin with light, dark, and air affinities. She covertly escorts Madame Morlap to Empress Kaya and can bypass ordinary security.",
+      "id": "leona",
+      "name": "Leona",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The former identity claimed by the five-star leader behind the cult operation. He reveals the connection while confronting Empress Kaya as the sealed-realm plan collapses around them.",
+      "id": "silverheart",
+      "name": "Silverheart",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A conscious crimson construct formed from ether whose power exceeds an Eidolon's. It enters the sealed realm, destroys Empress Kaya's construct, and kills the cult leader as he flees.",
+      "id": "crimson-asura",
+      "name": "Crimson Asura",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Beatrice"
+      ],
+      "description": "The full name of Beatrice, Theodore's estranged wife and a surviving member of the sealed-realm disaster, as reported after Liam returns to public life.",
+      "id": "beatrice-osborne",
+      "name": "Beatrice Osborne",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Nahar's uncle and successor as Craven patriarch. He plans to relocate the weakened clan and disband Craven Industries, endangering the arrangement that supports Sarah's education.",
+      "id": "new-craven-patriarch",
+      "name": "New Craven patriarch",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified supernatural figure with Freddy's face that appears in Mark's recurring dream. It grants Mark new power after he agrees to free two followers imprisoned by Craven.",
+      "id": "freddy-faced-dream-figure",
+      "name": "Freddy-faced dream figure",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful figure who intercepts Mark's fleeing family, knows about the prison break, and offers help escaping imperial punishment for an unspecified price.",
+      "id": "snake-eyed-broker",
+      "name": "Snake-eyed broker",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The archer in the four-person group that ambushes Liam near a lava lake during his first expedition into a volcanic public realm. He attacks alongside Theodore, Jacob, and Randy.",
+      "id": "grant",
+      "name": "Grant",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The spearman in Theodore and Jacob's four-person ambush group. He helps lure Liam into an attack beside a lava lake in the volcanic public realm.",
+      "id": "randy",
+      "name": "Randy",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "1-lifesteal-volume-2"
+}
