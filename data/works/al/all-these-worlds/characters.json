@@ -1,0 +1,372 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Robert"
+      ],
+      "description": "A replicant who lives among the Deltans through a concealed Deltan-form android called Robert. He helps Camelot's hunters resist raids while limiting displays of his artificial strength and speed so that the settlement will continue to regard him as one of its own.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Camelot hunter who stands with Robert when hunters from the neighboring settlement try to seize Camelot's kill. He helps Robert prepare an ambush intended to stop the attacks without exposing Robert's unusual capabilities.",
+      "id": "donald",
+      "name": "Donald",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a hostile hunting group from the settlement near Camelot. He tries to claim another party's kill and develops a personal grievance after Robert defeats him, adding a focused rivalry to the wider conflict between the communities.",
+      "id": "fred",
+      "name": "Fred",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Howard's human partner and confidante. She supports him after the failed defense of the Pav homeworld, offering personal stability while he absorbs the scale of the defeat and the continuing danger posed to every inhabited world.",
+      "id": "bridget",
+      "name": "Bridget",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The people of Delta Pavonis, whose homeworld has fallen to the Others. Jacques's emergency plan can rescue only 20,000 of them, leaving the surviving group dependent on a hurried evacuation and an uncertain refuge.",
+      "id": "the-pav",
+      "name": "The Pav",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A system-stripping force whose victory at the Pav homeworld places Earth, Epsilon Eridani, and every other known inhabited world at risk. Their campaign makes the survival of separate colonies part of one shared strategic crisis.",
+      "id": "the-others",
+      "name": "The Others",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A replicant on Poseidon with no formal political authority and enough independence to resist the Council's control. He meets trusted residents in secret after elections are postponed indefinitely and decides to create a public distraction.",
+      "id": "marcus",
+      "name": "Marcus",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The assistant governor of Southern Mat 3 and a cautious participant in the private opposition to Poseidon's Council. He has come to share Marcus's fear that postponed elections and expanding official powers are leading toward authoritarian rule.",
+      "id": "cal",
+      "name": "Cal",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mid-level Poseidon security officer and friend of Marcus. Her knowledge of local authority makes her an important member of the small group concerned that the Council is using its emergency position to make its power permanent.",
+      "id": "gina",
+      "name": "Gina",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Bridget's daughter, who opposes her mother's relationship with Howard and pressures other relatives to take the same position. Her disapproval adds family conflict to the public unease surrounding a human relationship with an android-bodied replicant.",
+      "id": "rosie",
+      "name": "Rosie",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Bill's new replicant copies, assigned with Icarus to supervise an extreme mover experiment involving accelerated planetary bodies. He accepts that the untested mission may be fatal and departs to manage one half of the paired operation.",
+      "id": "daedalus",
+      "name": "Daedalus",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Bill's new replicant copies and Daedalus's partner in a high-risk mover mission. He knowingly accepts the danger of controlling a rapidly accelerated body and leaves Epsilon Eridani to carry out the second half of the coordinated test.",
+      "id": "icarus",
+      "name": "Icarus",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A colonel known to Howard who receives a diagnosis of advanced, incurable dementia. He chooses death and withdraws permission for his mind to be scanned for replication.",
+      "id": "butterworth",
+      "name": "Butterworth",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Howard's human-form android avatar rather than an independent person. Howard can alter its apparent age, allowing his physical presentation to reflect his life with Bridget instead of remaining fixed at the younger appearance inherited from Bob.",
+      "id": "manny",
+      "name": "Manny",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Poseidon resident who joins Marcus, Cal, Gina, and Vinny in person as their opposition to the Council becomes organized. The discovery of listening devices and official interference places Dinu inside a movement that must communicate secretly.",
+      "id": "dinu",
+      "name": "Dinu",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of the small Poseidon group organizing with Marcus, Cal, Gina, and Dinu. Council surveillance and restrictions turn their shared concern into a coordinated resistance, though the group still seeks to avoid violence.",
+      "id": "vinny",
+      "name": "Vinny",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Camelot toolmaker, Bob's friend, and Buster's father. His son assists him with basic flintwork, placing Archimedes's practical knowledge and family at the center of the settlement Robert has chosen to protect.",
+      "id": "archimedes",
+      "name": "Archimedes",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Archimedes's son and an accomplished bow hunter in Camelot. He also helps his father with basic flintwork, combining the hunting ability valued by the settlement with experience in the craft behind its tools.",
+      "id": "buster",
+      "name": "Buster",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Julia Hendricks's son and a distant nephew of Riker. A Space Corps captain, he regards replication as an extension of service rather than a form of personal survival.",
+      "id": "justin-hendricks",
+      "name": "Justin Hendricks",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A descendant of Riker's sister Andrea whose fatal aneurysm brings Riker to Romulus. Her death renews his grief over the mortal family generations connected to him.",
+      "id": "julia-hendricks",
+      "name": "Julia Hendricks",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The replicant assigned to establish colonies in 82 Eridani. He escorts settlers to the system, assesses its habitable worlds, and begins distributing manufacturing capacity so the new Canadian and Japanese communities can become less dependent on outside support.",
+      "id": "mac",
+      "name": "Mac",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat replicant sent to protect Mac's surviving matrix after a Medeiros attack at 82 Eridani. He confirms that the cube is intact and takes responsibility for moving it beyond the attacker's reach while sensitive Bob technology is destroyed.",
+      "id": "thor",
+      "name": "Thor",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile probe that disables Mac's vessel at 82 Eridani and seeks the system's auto factories. Its presence leaves both young colonies exposed while the Bobs disperse manufacturing equipment and assess their limited defenses.",
+      "id": "medeiros",
+      "name": "Medeiros",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A replicant surveyor who boards two disabled Others cargo carriers with Neil. Their inspection of the less damaged vessel uncovers an intact and unfamiliar power facility, prompting a cautious investigation before they report the discovery more widely.",
+      "id": "herschel",
+      "name": "Herschel",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Herschel's replicant partner in the survey of abandoned Others carriers drifting from Delta Pavonis. He helps confirm that the derelicts are inactive and that one contains a power system unlike the fusion technology used by the Bobs.",
+      "id": "neil",
+      "name": "Neil",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Poseidon's Council identified as the official who directed missile attacks against the flying cities. Marcus and Gina's forces capture him after tracing surviving attackers to a concealed Council airbase.",
+      "id": "brennan",
+      "name": "Brennan",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Bridget's son, contacted after her activation as a replicant. He responds with conflict and emotional distance as he tries to understand the new Bridget as a distinct person rather than simply the return of the mother who died.",
+      "id": "howie",
+      "name": "Howie",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A replicant colony-ship operator bringing Pav refugees and preserved biological material to their new world. He works with Jacques and Ferb on a settlement plan that restores part of the Pav ecology before the colonists leave stasis.",
+      "id": "phineas",
+      "name": "Phineas",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A replicant colony-ship operator carrying Pav colonists and biological samples to the refuge prepared by Jacques. With Phineas, he proposes rebuilding essential pieces of their ecology before the refugees awaken.",
+      "id": "ferb",
+      "name": "Ferb",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A civilian leader among the awakened Pav refugees and Jacques's principal liaison during resettlement. After hearing why the survivors were moved and why their home remains unsafe, the councillor agrees to organize the population's decanting.",
+      "id": "pav-councillor",
+      "name": "Pav councillor",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Bob's modified Deltan-form android, adopted after he retires the Robert identity. The change accompanies his decision to leave his long attachment to Camelot and seek a different way of living after Archimedes's death.",
+      "id": "charlie",
+      "name": "Charlie",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A returning replicant and Bob's fellow associate among the Deltans. His shared history with Bob and Camelot gives him an established place in the part of Bob's life centered on the Deltan settlement.",
+      "id": "marvin",
+      "name": "Marvin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant who has pioneered physical life through android embodiments. He is Bridget's intimate partner and carries an established personal stake in both human relationships and the practical possibilities of embodied replicant life.",
+      "id": "howard",
+      "name": "Howard",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Bob's early independent copies and a returning organizer of engineering and strategic work. He coordinates projects across the Bob network and approaches the threat to inhabited systems as both a technical and military problem.",
+      "id": "bill",
+      "name": "Bill",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Will"
+      ],
+      "description": "An early Bob copy and the returning coordinator for Sol and humanity's evacuation. Known as Will to his human family, he balances large-scale survival planning with ties to descendants whose lives continue on a mortal timescale.",
+      "id": "riker",
+      "name": "Riker",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant and Bill's established engineering collaborator. He contributes to the industrial and technical projects that support both long-term settlement and defense against threats beyond the human colonies.",
+      "id": "garfield",
+      "name": "Garfield",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant who works on behalf of the endangered Pav.",
+      "id": "jacques",
+      "name": "Jacques",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant whose established work includes scouting beyond the settled systems.",
+      "id": "mario",
+      "name": "Mario",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant committed to the Gamma Pavonis group and its defense.",
+      "id": "claude",
+      "name": "Claude",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "all-these-worlds"
+}
