@@ -1,0 +1,314 @@
+{
+  "characters": [
+    {
+      "description": "An isolated fortress trainee shaped by relentless rules, punishment, and demands for self-reliance. Rezkin has extraordinary combat, stealth, survival, and medical training, but almost no experience of ordinary relationships or life beyond his instructors.",
+      "id": "rezkin",
+      "name": "Rezkin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Rezkin's severe fortress trainer, who treats pain, noise, and dependence on others as failures requiring correction. Master Jaiardun demands constant readiness and makes punishment an integral part of instruction.",
+      "id": "master-jaiardun",
+      "name": "Master Jaiardun",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A healer and instructor at Rezkin's fortress. Master Peider preserves the young trainee's ability to continue while turning even painful medical treatment into another lesson in observation and endurance.",
+      "id": "master-peider",
+      "name": "Master Peider",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the advanced fortress trainers assigned to test Rezkin. Striker Adona intercepts the boy during a daylight stealth exercise and defeats him before he can complete his escape.",
+      "id": "striker-adona",
+      "name": "Striker Adona",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "escaped striker"
+      ],
+      "description": "The only known survivor of the fortress battle apart from Rezkin. Striker Farson escapes by boat, leaving Rezkin to follow while he considers whether the final order to kill the strikers should still be obeyed.",
+      "id": "striker-farson",
+      "name": "Striker Farson",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Mistress Frisha"
+      ],
+      "description": "A trusting twenty-year-old traveler bound for Kaibain. When Frisha readily calls Rezkin a friend, he takes the word as a binding duty to protect and honor her, though she has not asked for the constant vigilance he believes it requires.",
+      "id": "frisha",
+      "name": "Frisha",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Tam"
+      ],
+      "description": "Frisha's childhood friend and sworn escort, a carpenter's apprentice who hopes to join the army. Tam recognizes that his limited fighting ability is not enough to protect her on the road and reluctantly accepts Rezkin as their companion.",
+      "id": "tamarin-blackwater",
+      "name": "Tamarin Blackwater",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An accomplished distraction thief from a Diamondclaw den. After Rezkin kills her abusive den leader, she guides him to the guild headquarters and becomes his point of entry into Justain's organized criminal world.",
+      "id": "female-diamondclaw-thief",
+      "name": "Female Diamondclaw thief",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "female thief"
+      ],
+      "description": "The Diamondclaw thief who guided Rezkin to the guild headquarters. After he defeats the old leadership, he protects her from an attacker, demands proof of her loyalty, and appoints her to run the guild under his authority.",
+      "id": "diamondclaw-guildmaster",
+      "name": "Diamondclaw guildmaster",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "bald senior thief"
+      ],
+      "description": "A senior Diamondclaw member who has quietly protected both the female thief and the guild's young sneak. He survives the struggle over the guild and is placed second in its new leadership.",
+      "id": "diamondclaw-second",
+      "name": "Diamondclaw second",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "young sneak"
+      ],
+      "description": "Diamondclaw's most promising young stealth specialist. He can enter an upscale inn and replace stolen correspondence without discovery, but Rezkin judges his broader training inadequate and takes charge of developing his skills.",
+      "id": "young-guild-sneak",
+      "name": "Young guild sneak",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Rezkin"
+      ],
+      "description": "The feared identity Rezkin acquires after taking control of Diamondclaw and confronting the Serpent Guild. As the Raven, he installs subordinate leaders and redirects criminal organizations toward intelligence gathering and selected targets.",
+      "id": "the-raven",
+      "name": "the Raven",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The educated second of the Serpent Guild and a highly capable sneak. When the former guildmaster loses his followers and dies, Rezkin appoints Adsden to lead the guild and turn it into an intelligence network.",
+      "id": "adsden",
+      "name": "Adsden",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A nobleman whose cousin used the Serpent Guild while relying on his protection. The cousin's death gives Rezkin leverage over Marquis Addercroft.",
+      "id": "marquis-addercroft",
+      "name": "Marquis Addercroft",
+      "reveal": {
+        "chapter": 6
+      }
+    },
+    {
+      "aliases": [
+        "Ruald Addercroft"
+      ],
+      "description": "Marquis Addercroft's son, confronted with evidence of his father's grave crime. Ruald rejects the wrongdoing, accepts responsibility for the confession, and chooses to inform the victim's family despite the consequences for his house.",
+      "id": "ruald",
+      "name": "Ruald",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Ashai officer leading soldiers toward Kaibain. Lieutenant Jimson initially reads Rezkin's equipment and bearing as signs of military rank, then permits him to train younger soldiers while the travelers share the river journey.",
+      "id": "lieutenant-jimson",
+      "name": "Lieutenant Jimson",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A determined aspiring warrior repeatedly refused by army recruiters because of her size and sex. Reaylin joins the journey toward the tournament to demonstrate that she has the martial ability required for military service.",
+      "id": "reaylin-de-voss",
+      "name": "Reaylin de Voss",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Frisha's maternal uncle. General Marcum plans to make Frisha heir to his personal estate, restoring her place in a noble household after her mother lost status by marrying a commoner.",
+      "id": "general-marcum",
+      "name": "General Marcum",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king of Ashai, discussed amid unresolved public suspicion concerning the former king's death and Prince Thresson's disappearance. At his introduction, these claims remain unverified rather than established accusations.",
+      "id": "king-caydean",
+      "name": "King Caydean",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Ashai's missing prince. Prince Thresson's disappearance is an unresolved concern for both the public and the military, and speculation about what happened to him has begun to touch the throne itself.",
+      "id": "prince-thresson",
+      "name": "Prince Thresson",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "General Marcum's wife and Frisha's aunt by marriage. Lady Adelina welcomes the exhausted travelers into House Marcum, offering rest and care after Frisha recounts the dangers of the road to Kaibain.",
+      "id": "lady-adelina",
+      "name": "Lady Adelina",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The widowed guildmaster of the Razor's Edges. Hilith Gadderand expects the Raven's demand for loyalty and plans to offer false submission before betraying him, unaware that he already knows her intention.",
+      "id": "hilith-gadderand",
+      "name": "Hilith Gadderand",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The eldest son of the Duke of Wellenven and a future duke. Tieran Nirius insults Frisha after wine is spilled on her, prompting Rezkin to force a public apology and payment for the damaged dress.",
+      "id": "tieran-nirius",
+      "name": "Tieran Nirius",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Lieutenant Jimson"
+      ],
+      "description": "The officer formerly known as Lieutenant Jimson, promoted for his leadership during the attacks on the road to Kaibain. General Marcum gives Captain Jimson a master-quality sword chosen with Rezkin's advice.",
+      "id": "captain-jimson",
+      "name": "Captain Jimson",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly elevated healer who inherited a striker safe house after his master's death. Yerwey Dulse initially refuses treatment to a badly injured man he assumes is a criminal, then begins helping after Rezkin proves his sword-bearer status.",
+      "id": "yerwey-dulse",
+      "name": "Yerwey Dulse",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "organizer"
+      ],
+      "description": "The manager Rezkin installs over Kaibain's Diamondclaw organization after eliminating resistance. The organizer handles local operations under Rezkin's authority and is supported by a separate enforcer.",
+      "id": "kaibain-diamondclaw-organizer",
+      "name": "Kaibain Diamondclaw organizer",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "enforcer"
+      ],
+      "description": "The distinct enforcement support assigned to Rezkin's newly installed Diamondclaw organizer in Kaibain. This figure backs the manager's authority as the local guild is consolidated under the Raven's wider network.",
+      "id": "kaibain-diamondclaw-enforcer",
+      "name": "Kaibain Diamondclaw enforcer",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Grandmaster"
+      ],
+      "description": "The operational leader of the Black Hall. The Grandmaster is unaware that Rezkin has penetrated the Assassins Guild's defenses and stolen a ceremonial dagger from beneath his pillow as proof of the infiltration.",
+      "id": "black-hall-grandmaster",
+      "name": "Black Hall Grandmaster",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "masked assassin leader"
+      ],
+      "description": "The masked leader of an outside assassin group that intervenes while the Black Hall tests the Raven. Her fighters add themselves to the gauntlet, but their purpose and their exact relationship to the Hall remain unclear.",
+      "id": "masked-foreign-assassin-leader",
+      "name": "Masked foreign assassin leader",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "free-the-darkness"
+}
