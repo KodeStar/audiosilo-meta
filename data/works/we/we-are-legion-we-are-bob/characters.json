@@ -1,0 +1,333 @@
+{
+  "characters": [
+    {
+      "description": "An engineer and independent software-company owner who has sold his business and secured his finances. Still affected by a recent breakup, he arranges postmortem cryonic preservation.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Bob's trainer and liaison after his return to awareness in 2133. He explains that Bob is a software mind produced by a destructive scan, that the biological man is gone, and that the new Bob is property competing for an undisclosed assignment. Failure may result in storage, reconditioning, or destruction.",
+      "id": "dr-landers",
+      "name": "Dr. Landers",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Bob's ship-style system interface, responsible for relaying status information, computational feedback, and details about remote machinery. Guppy helps Bob learn to coordinate multiple roamers through broad instructions rather than constant direct control.",
+      "id": "guppy",
+      "name": "Guppy",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Serra do Mar commander"
+      ],
+      "description": "A Brazilian military replicant commanding the Serra do Mar. He arrives in Epsilon Eridani earlier than Bob expects, refuses an attempt at peaceful communication, and immediately turns the encounter into a battle between competing probes.",
+      "id": "major-ernesto-medeiros",
+      "name": "Major Ernesto Medeiros",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Bob 2"
+      ],
+      "description": "One of the first four replicants made from Bob's backup. After choosing his own name, he takes responsibility for returning toward Sol to learn what happened to humanity, and plans to create a companion for that mission.",
+      "id": "riker",
+      "name": "Riker",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Bob 3"
+      ],
+      "description": "One of Bob's first new replicants. He remains in Epsilon Eridani to manage production, investigate subspace communication, and begin studying the marginal world he calls Ragnarok while the other copies depart on separate missions.",
+      "id": "bill",
+      "name": "Bill",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Bob 4"
+      ],
+      "description": "A newly activated copy of Bob who quickly demonstrates an independent outlook. He refuses to accompany Riker to Sol and instead chooses exploration on his own terms, sharpening the early differences within the new replicant group.",
+      "id": "milo",
+      "name": "Milo",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Bob 5"
+      ],
+      "description": "The most reserved member of Bob's first cohort of copies. He chooses a separate identity and prepares to leave Epsilon Eridani as an independent explorer while the new replicants divide their responsibilities and destinations.",
+      "id": "mario",
+      "name": "Mario",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Riker's clone"
+      ],
+      "description": "A replicant created from Riker's backup to share the journey to Sol. He accompanies Riker and an automated decoy vessel on a mission to investigate Earth, giving the reconnaissance team a second replicant operator.",
+      "id": "homer",
+      "name": "Homer",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Bill's clone"
+      ],
+      "description": "Bill's newly activated copy and research partner in Epsilon Eridani. He stays behind to work on exploration drones, virtual environments, subspace physics, and artificial muscle while other replicants travel outward.",
+      "id": "garfield",
+      "name": "Garfield",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A new Bob-derived replicant sent toward Alpha Centauri in a heavily upgraded Version III vessel. He travels with Goku despite their persistent friction, with both prepared for the strong possibility of encountering hostile probes.",
+      "id": "calvin",
+      "name": "Calvin",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat-capable replicant assigned to Alpha Centauri alongside Calvin. The pair often antagonize each other but continue to cooperate, taking improved weapons, sensors, and stealth capability into a likely contested system.",
+      "id": "goku",
+      "name": "Goku",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of three new replicants launched from Epsilon Eridani in Version III ships. Unlike Calvin and Goku, who remain paired for their mission, Linus departs separately to pursue an exploratory course of his own.",
+      "id": "linus",
+      "name": "Linus",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Brazilian military replicant commanding one of the last probes driving asteroids toward Earth. He confronts Riker during the final stage of the Sol battle while the Bobs attempt to stop the remaining impactors.",
+      "id": "captain-matthias-araujo",
+      "name": "Captain Matthias Araujo",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Commander of a concealed United States of Eurasia refugee installation. He answers Riker's contact, reports the scale of Earth's surviving population, and presents retained colony-ship plans as the basis for an off-world rescue.",
+      "id": "colonel-george-butterworth",
+      "name": "Colonel George Butterworth",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly activated replicant core who joins Bob's close observation of the intelligent inhabitants of Eden. He becomes part of the small team studying their speech, behavior, and prospects while avoiding direct contact.",
+      "id": "marvin",
+      "name": "Marvin",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the disembodied replicant cores Bob creates to expand the study of Eden's native population. Luke joins the observation project as the team works to understand the Deltans without openly revealing its presence.",
+      "id": "luke",
+      "name": "Luke",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A replicant activated with Marvin and Luke to assist Bob on Eden. He adds another independent observer to the effort to catalogue the Deltans' language, social organization, and developing technology.",
+      "id": "bender",
+      "name": "Bender",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young Deltan distinguished by experimentation and solitary investigation. Bob gives him this name after observing him create a stone tool with a handle, an innovation that marks him as an unusual figure among his people.",
+      "id": "archimedes",
+      "name": "Archimedes",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Sol-based replicant assigned to contact scattered survivor communities after the asteroid crisis. His outreach work proceeds despite deep suspicion of the Bobs, including drones being fired upon and communication devices being destroyed.",
+      "id": "arthur",
+      "name": "Arthur",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A replicant who joins Riker, Homer, and Arthur in the Sol recovery effort. He helps divide the growing workload between industrial salvage, surveys of Earth, and the difficult task of locating and supporting survivor groups.",
+      "id": "charles",
+      "name": "Charles",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The negotiator for the Faith Enclave at the survivor conference. The minister argues that Faith's role in creating Riker entitles the enclave to evacuation priority, a claim Riker refuses to accept.",
+      "id": "faith-minister",
+      "name": "Faith minister",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Representative of a small Arctic refuge whose position is becoming untenable. The leader controls access to the Svalbard seed and genetic vaults and makes that access conditional on receiving an early place in the evacuation.",
+      "id": "spitsbergen-leader",
+      "name": "Spitsbergen leader",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An elderly Deltan who still knows the techniques of flint working. He teaches Archimedes how to shape the supplied stone and agrees to help turn the remaining material into spear points in exchange for a share of future hunts.",
+      "id": "moses",
+      "name": "Moses",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A large and influential Deltan who visibly supports Archimedes during a dispute over the new spear points. His backing helps the young toolmaker preserve the agreement that will improve the tribe's weapons.",
+      "id": "arnold",
+      "name": "Arnold",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A living descendant of Riker's sister and therefore part of the original Bob's family line. The Faith minister presents her during evacuation negotiations to influence Riker, who begins a personal conversation without yielding on priority.",
+      "id": "julia-hendricks",
+      "name": "Julia Hendricks",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Australian replicant and former solo sailor whom Linus discovers in Epsilon Indi. Extreme isolation has left him psychotic and fused into a makeshift structure, forcing Linus to disable his reactor control before attempting a rescue.",
+      "id": "henry-roberts",
+      "name": "Henry Roberts",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Calvin's first cohort who reports on the action at Alpha Centauri. With no colonizable world found and one Brazilian probe still missing, he assumes responsibility for the Bob factory established in the system.",
+      "id": "bart",
+      "name": "Bart",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Deltan woman to whom Archimedes has become attached during the tribe's migration. Her relationship with him is evident as he takes on greater responsibilities within the group and works with Bob's guidance.",
+      "id": "diana",
+      "name": "Diana",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The replicant escort assigned to Exodus 1 and Exodus 2. His matrix is installed shortly before departure to reduce the opportunity for sabotage, and he accompanies the colonists on humanity's first interstellar evacuation voyage.",
+      "id": "howard",
+      "name": "Howard",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of eight Version III replicants sent covertly into 82 Eridani to investigate the defenses that killed Milo and retaliate against the Brazilian presence. He enters a system protected by hidden nuclear weapons and autonomous forces.",
+      "id": "khan",
+      "name": "Khan",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the eight Version III replicants in the covert assault on 82 Eridani. A cloaked nuclear bomb destroys him during the approach.",
+      "id": "hannibal",
+      "name": "Hannibal",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Version III replicant participating in the coordinated assault on 82 Eridani. He is part of a badly reduced force confronting cloaked bombs, numerous autonomous defenders, and the concealed Brazilian command vessel.",
+      "id": "elmer",
+      "name": "Elmer",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "we-are-legion-we-are-bob"
+}
