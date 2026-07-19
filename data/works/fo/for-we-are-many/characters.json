@@ -1,0 +1,414 @@
+{
+  "characters": [
+    {
+      "description": "The original replicant continues watching over the Deltans from orbit. He and Marvin investigate the unexplained losses in their history while he cautiously offers practical help to their settlement.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Bob's replicant colleague at Delta Eridani. He studies the Deltans' migration and the disturbing gap between their former population and the remains they left behind.",
+      "id": "marvin",
+      "name": "Marvin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Camelot's medicine woman, protective of her authority and initially resistant to outside interference. She accepts Bob's method of cleaning wounds with boiled water after a hunter is injured.",
+      "id": "cruella",
+      "name": "Cruella",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The replicant directing construction, food production, and defensive preparations for the human settlement on Vulcan. He must balance colonization schedules against a hostile native ecosystem.",
+      "id": "howard",
+      "name": "Howard",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Vulcan's security chief. After raptors attack the settlement perimeter, he asks Howard for wider surveillance coverage and helps shape the colony's response to local threats.",
+      "id": "stephane-brodeur",
+      "name": "Stéphane Brodeur",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the USC colony effort on Vulcan. He keeps most passengers in stasis until farms and defenses are ready, putting settlement safety ahead of a rapid landing schedule.",
+      "id": "colonel-george-butterworth",
+      "name": "Colonel George Butterworth",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gifted young Deltan toolmaker and Bob's principal contact in Camelot. He studies flintknapping with Moses and shows an unusual ability to turn instruction into practical advances.",
+      "id": "archimedes",
+      "name": "Archimedes",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Deltan closely associated with Archimedes. She distrusts Bob's hovering machines and reacts to them with open hostility.",
+      "id": "diana",
+      "name": "Diana",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elder Deltan toolmaker whose health is declining. He continues teaching Archimedes the craft of flintknapping.",
+      "id": "moses",
+      "name": "Moses",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Deltan warrior skilled in teaching the use of spears.",
+      "id": "arnold",
+      "name": "Arnold",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The replicant surveying Eta Cassiopeiae. He identifies a habitable ocean planet with floating ecosystems and begins assessing the demanding path toward a human colony there.",
+      "id": "mulder",
+      "name": "Mulder",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Bob's earliest independent copies and a returning research partner.",
+      "id": "bill",
+      "name": "Bill",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "One of Bob's early independent copies and the coordinator of humanity's evacuation from Earth. He manages orbital infrastructure and the competing demands of threatened human communities.",
+      "id": "riker",
+      "name": "Riker",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A returning Bob who works with Bill.",
+      "id": "garfield",
+      "name": "Garfield",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning explorer operating far beyond the settled systems. His surveys place him in a position to detect threats before they reach the rest of the network.",
+      "id": "mario",
+      "name": "Mario",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Sol-system replicant who supports Riker's security work. He tracks attacks on food and civilian infrastructure as the evacuation crisis worsens.",
+      "id": "charles",
+      "name": "Charles",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A radical organization attacking food production as part of a campaign to eliminate humanity.",
+      "id": "vehement",
+      "name": "Vehement",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Riker's returning partner in orbital industry and food production. His work is central to keeping Earth's remaining population alive while colony ships are prepared.",
+      "id": "homer",
+      "name": "Homer",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the Faith settlement on Romulus. He rejects Howard's authority and resists sharing resources with the neighboring colonies.",
+      "id": "minister-cranston",
+      "name": "Minister Cranston",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unknown civilization first evident through sterilized worlds, dismantled cities, and missing metals. Its systematic harvesting has already destroyed life across multiple star systems.",
+      "id": "others",
+      "name": "Others",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of Mario’s newly created scout Bobs, assigned to search outward for the Others and report what he finds.",
+      "id": "bashful",
+      "name": "Bashful",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Archimedes and Diana's son. He is still young when Archimedes describes his early attempts to learn the family's toolmaking skills.",
+      "id": "buster",
+      "name": "Buster",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Vulcan biologist working with Howard on the colony's ecological hazards. She looks for biological controls for an invasive poisonous vine and studies which native animals may be safe to eat.",
+      "id": "dr-sheehy",
+      "name": "Dr. Sheehy",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Vulcan biologist previously introduced as Dr. Sheehy. She develops a noninvasive way to detect the colony's dangerous parasite and works closely with Howard and Stéphane during another raptor breach.",
+      "id": "bridget",
+      "name": "Bridget",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An associate from Bob's time on Eden who left to explore distant systems.",
+      "id": "luke",
+      "name": "Luke",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An associate from Eden who left to explore distant systems.",
+      "id": "bender",
+      "name": "Bender",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly created replicant who follows Bender's route while sending continuing status reports.",
+      "id": "victor",
+      "name": "Victor",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning Bob explorer operating beyond the established network.",
+      "id": "linus",
+      "name": "Linus",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A psychologically fragile Australian replicant recovered and supported by Linus. He joins a protected part of BobNet while continuing to struggle with panic and confinement-related fear.",
+      "id": "henry-roberts",
+      "name": "Henry Roberts",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An explorer testing the defenses around the hostile civilization's territory. He uses stealth, decoys, and deliberate transmissions to learn how its ships detect and pursue intruders.",
+      "id": "hal",
+      "name": "Hal",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The architect of the replicant technology and the director of Vehement's campaign against the Bobs. He presents his actions as retaliation for losing control of his invention.",
+      "id": "vickers",
+      "name": "Vickers",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Vickers's associate, implicated in the financial grievance behind the campaign against the Bobs. Riker leaves him alive under a direct warning against further action.",
+      "id": "gerald",
+      "name": "Gerald",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The replicant who takes over Howard's local responsibilities on Vulcan, maintaining support for the colony after Howard leaves to explore.",
+      "id": "dexter",
+      "name": "Dexter",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning replicant with combat and engineering experience.",
+      "id": "elmer",
+      "name": "Elmer",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An explorer approaching Gamma Pavonis as the network tries to determine which systems the Others may target next.",
+      "id": "claude",
+      "name": "Claude",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An explorer bound for Delta Pavonis while Bill assesses the likely path of the Others' next expansion. He is the network's prospective presence in that threatened system.",
+      "id": "jacques",
+      "name": "Jacques",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly created, Bill-derived replicant at Alpha Centauri. He begins by multiplying printers and factories, with advanced warship production as his central objective.",
+      "id": "oliver",
+      "name": "Oliver",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The replicant left in charge of Poseidon's established floating colonies. He oversees the move toward permanent cities and tests an aerial settlement design.",
+      "id": "marcus",
+      "name": "Marcus",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Poseidon associate returning toward Earth with biological samples.",
+      "id": "monty",
+      "name": "Monty",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An industrial-age intelligent people native to Delta Pavonis. Jacques begins observing their societies while preparing for the possibility that the advancing Others will reach them.",
+      "id": "pav",
+      "name": "Pav",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A prototype human-shaped android prepared on Vulcan for Howard to operate. Its purpose is to give a distant replicant direct physical senses and presence.",
+      "id": "manny",
+      "name": "Manny",
+      "reveal": {
+        "chapter": 67
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Robert"
+      ],
+      "description": "Bob's Deltan-form android, used to enter Camelot without revealing his identity.",
+      "id": "charlie",
+      "name": "Charlie",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of two newly activated replicants assigned to carry out the emergency removal of Pav civilians before the Others reach their world.",
+      "id": "phineas",
+      "name": "Phineas",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of two newly activated replicants assigned to collect Pav civilians for emergency evacuation ahead of the Others' arrival.",
+      "id": "ferb",
+      "name": "Ferb",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "for-we-are-many"
+}
