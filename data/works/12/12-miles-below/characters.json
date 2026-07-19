@@ -1,0 +1,164 @@
+{
+  "characters": [
+    {
+      "description": "A House Winterscar scavenger who awakens underground in a torn environmental suit. He survives by applying the field-repair skills he learned in childhood and finds his armored father nearby, with no clear memory of how he arrived there.",
+      "id": "keith-winterscar",
+      "name": "Keith Winterscar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An armored figure whom Keith recognizes as his father after waking injured underground. He is beside Keith, but the events that brought them below and the damage to Keith's suit remain unexplained.",
+      "id": "keiths-father",
+      "name": "Keith's father",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elderly engineer from Keith's childhood who teaches him welding and emergency suit repair. The lesson includes a field demonstration, and that practical instruction becomes essential when Keith later suffers a dangerous suit breach.",
+      "id": "elderly-engineer",
+      "name": "Elderly engineer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Keith's older sister and a knight retainer. She helps him open a buried entrance with an occult knife, challenges his neglected harvesting duty, and supports his search for lost communications technology.",
+      "id": "kidra",
+      "name": "Kidra",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A high-status member of Shadowsong and Kidra's established rival. She proposes a power-cell contest, staking a technical handbook against the occult knife she believes should belong to her. She arrives with two retainers of her own.",
+      "id": "anka-shadowsong",
+      "name": "Anka Shadowsong",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An airspeeder pilot who is Keith's friend and transports the expedition party between scavenging sites.",
+      "id": "airspeeder-pilot",
+      "name": "Airspeeder pilot",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Deathless clan lord commanding the expedition. He diverts the convoy toward western coordinates after sensing an unexplained call, accepting an unknown risk at the destination. His orders supersede the convoy's planned route and refueling schedule.",
+      "id": "clan-lord",
+      "name": "Clan lord",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Deathless clan lord, now identified as Atius. At the derelict complex, he directs the scavengers and relic knights and assigns prime relic-knight escorts to the competing teams.",
+      "id": "atius",
+      "name": "Atius",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Winterscar Prime"
+      ],
+      "description": "Keith and Kidra's father, now identified as the Winterscar Prime. He is a formidable relic knight assigned to escort his children during the scavenging contest.",
+      "id": "tenisent",
+      "name": "Tenisent",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The house relic armor worn by Keith's father when Keith awakens injured underground.",
+      "id": "winterscar",
+      "name": "Winterscar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An apparent hostile intruder detected by the reawakened site's computer system. Its attempted breach prompts the system to erase information and protect navigation data. The warnings establish it as a threat, although its identity and physical nature remain unclear.",
+      "id": "relinquished",
+      "name": "Relinquished",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unidentified presence associated with sealed side doors that begin flashing gold at Keith and his father. The behavior is unprecedented, and its nature and purpose remain unknown.",
+      "id": "yellow-guide",
+      "name": "Yellow guide",
+      "reveal": {
+        "chapter": 22
+      }
+    },
+    {
+      "description": "A masterless Imperial relic armor found in an ancient crypt. It reshapes itself around Keith, monitors his injuries, assists his movement, and registers him as its new user. It replaces the environmental suit that was damaged beyond repair.",
+      "id": "journey",
+      "name": "Journey",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Journey's deceased former wearer, an Imperial crusader whose remains lie in the crypt beside the armor and an occult longsword. Journey retains her biometric record and recognizes her as its previous user.",
+      "id": "journeys-former-crusader",
+      "name": "Journey's former crusader",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A spear-wielding machine champion who appears at the blast doors and blocks the party's escape while the doors are closing. The elite combatant's position turns the group's race from the bunker into a direct confrontation at the only viable exit.",
+      "id": "the-feather",
+      "name": "The Feather",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "The Feather"
+      ],
+      "description": "The machine champion at the blast doors, now identified as To’Aacar. He knows Atius from a centuries-old conflict and confronts him while the others try to escape. Their recognition makes clear that this is a renewed struggle rather than a chance encounter.",
+      "id": "toaacar",
+      "name": "To’Aacar",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "12-miles-below"
+}
