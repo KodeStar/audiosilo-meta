@@ -1,0 +1,213 @@
+{
+  "characters": [
+    {
+      "description": "A self-aware artificial intelligence created in Old Detroit to operate systems, manage a household, and care for a child. After Michael and his father die during the collapse of its world, it prepares an engineered body and searches for a living parallel Earth where magic exists.",
+      "id": "ai-narrator",
+      "name": "AI narrator",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The son of the AI narrator's owner and its closest human companion. Their relationship has both sibling-like and parental aspects. Michael dies with his father when the air system in their bunker fails during the destruction of their world.",
+      "id": "michael",
+      "name": "Michael",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The name adopted by the AI narrator after meeting people in Nova Roma. Alexander inhabits an enhanced biological body and has begun adapting advanced knowledge to the local system, including a concealed revolver built with copied enchantment runes.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A caravan merchant and Alexander's first dependable contact in Nova Roma. Asylaion exchanges supplies and information for monster orbs, explains local enchantments and classes, and treats the unusually ignorant newcomer with guarded curiosity.",
+      "id": "asylaion",
+      "name": "Asylaion",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fourteen-year-old guide who knows the crowded bridge enclave of Perama. Constans helps Alexander locate a class seller, notices that he lacks ordinary local knowledge, and develops an easy working relationship with him while remaining curious about his abilities.",
+      "id": "constans",
+      "name": "Constans",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Perama's class assessor and seller. Mama Lena tests Alexander, identifies his exceptional physical potential and complete lack of a mana core, recommends physical development, and agrees to obtain an Archer class for him at a substantial price.",
+      "id": "mama-lena",
+      "name": "Mama Lena",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A scarred retired legionnaire and adventurer whom Constans introduces at a Perama bar. Nikephoros understands dungeon formation, cores, rewards, and dangerous districts, and gives Alexander practical guidance about hunting ghosts and locating stronger bosses.",
+      "id": "nikephoros",
+      "name": "Nikephoros",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Two hostile priests who bind Alexander after the battle at the ancient harbor and attempt to capture him. He breaks free, attacks, and escapes underwater. A later system notice confirms that one Void priest was defeated without identifying which attacker fell.",
+      "id": "hostile-dock-priests",
+      "name": "Hostile dock priests",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A monster hunter who operates as Valens's equal partner. Romanus uses shadow-based abilities, joins Alexander for a wilderness hunt north of C.K., and asks that Alexander's unusual weapon remain confidential as the three test whether they can work together.",
+      "id": "romanus",
+      "name": "Romanus",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced wilderness hunter and level-20 Warrior who works in an equal partnership with Romanus. Valens tracks prey, carries a two-handed sword, and joins Alexander on a hunt beyond C.K. under an agreement to keep Alexander's fighting method private.",
+      "id": "valens",
+      "name": "Valens",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "dock attacker"
+      ],
+      "description": "A priest from the earlier dock encounter who retaliates against Alexander at his villa. He uses immobilizing magic, spectral chains, and a silver barrier, then invokes a pact that brings forth a magma-bodied demon. He escapes the pursuit alive.",
+      "id": "patriarchs-hostile-priest",
+      "name": "Patriarch's hostile priest",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The ruler behind Nova Roma's imperial enclave. His treasury, archmage, guards, and palace authority shape Alexander's visit to the restricted district.",
+      "id": "emperor-of-nova-roma",
+      "name": "Emperor of Nova Roma",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "shadow-panther handler"
+      ],
+      "description": "A senior Varangian accompanied by a shadow panther. He identifies Alexander as connected to several deaths, tries to detain him, and defeats him in a Duel Me wager, taking Shatter Armor and prompting Alexander to flee with a broken forearm.",
+      "id": "senior-varangian",
+      "name": "Senior Varangian",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "dissenting-temple high priestess"
+      ],
+      "description": "The high priestess of a Dark Elf temple faction that opposes the ruling houses' response to the spider siege. She proposes a binding agreement for Alexander to evacuate her people beneath Nova Roma, resettle them, and establish an alliance.",
+      "id": "dark-elf-refugee-priestess",
+      "name": "Dark Elf refugee priestess",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Dark Elf hunter who shares the Dark Elf Stalker class with Alexander during the refugee flight. Ryld helps the column detect spider ambushes, gives Alexander access to improved perception and hunting abilities, and serves as a capable escort on the route from the besieged city.",
+      "id": "ryld",
+      "name": "Ryld",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alexander's first bound spirit"
+      ],
+      "description": "The spirit of a slain phase beast and Alexander's first bound servant. It can move through solid matter and conceal itself beneath him, making it useful as a defense against ambushes while he travels with the Dark Elf refugees.",
+      "id": "phase-beast-spirit",
+      "name": "Phase beast spirit",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Ryld's squad necromancer"
+      ],
+      "description": "A necromancer serving in Ryld's refugee squad. She fights the Blight Rats occupying the refugees' prospective cavern settlement and can drain enemies and heal Dark Elf allies, giving the displaced group both combat and recovery support.",
+      "id": "dark-elf-necromancer",
+      "name": "Dark Elf necromancer",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The modest leader of the young people Constans recruits for Alexander's planned military force. After the candidates accept long service under binding contracts, Alexander appoints Basil commander and names him the first legionnaire of the new unit.",
+      "id": "basil",
+      "name": "Basil",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elderly former second mate from a merchant ship. Theo explains why a repairable vessel is more likely to survive in dry dock than on the water and directs Alexander toward distant ports where abandoned shipbuilding infrastructure may remain.",
+      "id": "theo",
+      "name": "Theo",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alexander's second bound spirit"
+      ],
+      "description": "The bound spirit of a giant king defeated by Alexander in a ruined western harbor city. It retains its immense body and runed weapon, but keeping such a powerful servant manifested consumes Alexander's Willpower at a severe rate.",
+      "id": "giant-spirit",
+      "name": "Giant spirit",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "portal-to-nova-roma"
+}
