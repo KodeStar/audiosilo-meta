@@ -1,0 +1,373 @@
+{
+  "characters": [
+    {
+      "description": "A human gravity mage whose damaged memory leaves her dependent on Be-thric's workings. As his prospective Eskau, she controls thirteen blood stars and prepares for a lethal contest that could raise him within the House of Blood.",
+      "id": "tala",
+      "name": "Tala",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A prospective House of Blood pillar and Tala's master. He maintains her memory support and bodily control inscriptions, equips her for the coming candidate contest, and treats her success as essential to his advancement.",
+      "id": "be-thric",
+      "name": "Be-thric",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "A House of Blood authority who hosts the candidate feast and explains that the contest will choose a new pillar for a southern-shore hold. He will retain authority over the winner during the initial period in Platoiri.",
+      "id": "host-pillar-of-the-house-of-blood",
+      "name": "Host Pillar of the House of Blood",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tala's friend, who has searched for her for months. After reaching a reclusive sovereign, he spends an earned boon asking that Tala receive a chance to escape, even though he cannot rescue her directly.",
+      "id": "rain",
+      "name": "Rain",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A reclusive ruler reached by Rain after his search for Tala. The sovereign answers limited questions about her condition and responds to Rain's boon by indicating that an opportunity for escape is near, while declining to rescue her directly.",
+      "id": "unnamed-sovereign",
+      "name": "Unnamed Sovereign",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A distinct mental collaborator sharing Tala's body and access to her original memories. Alat explains that Tala's mind was erased and replaced, then begins restoring her while helping preserve the behavior their captor expects.",
+      "id": "alat",
+      "name": "Alat",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Fabricated captive persona"
+      ],
+      "description": "The identity implanted in Tala through false memories. Tala and Alat can temporarily place it in control so that its trained habits protect their cover while they plan a longer escape.",
+      "id": "false-tala-persona",
+      "name": "False Tala Persona",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Tala's missing creature companion. Her restored memories bring back her concern for him, but she does not yet know whether he survived her capture or whether a terror bird seen in Platoiri is connected to him.",
+      "id": "terry",
+      "name": "Terry",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified turtle-like stranger who disrupts Tala's attention during her search. The figure tells her to call for Terry, directly enabling the companions to find each other.",
+      "id": "turtle-like-stranger",
+      "name": "Turtle-like Stranger",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A dwarf and rival Eskau candidate in the House of Blood selection contest. He faces Tala as one of the contenders for elevation.",
+      "id": "thorn",
+      "name": "Thorn",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gray-skinned House of Blood contender whose Eskau candidate is Thorn. He seeks the pillar position being decided through the seven-candidate contest.",
+      "id": "thorn-prospective-pillar",
+      "name": "Thorn's Prospective Pillar",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tala's dimensional storage companion. When Be-thric gives Tala a captured pocket hold, Kit absorbs it and becomes the hidden sanctum's power source and control interface.",
+      "id": "kit",
+      "name": "Kit",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Thorn"
+      ],
+      "description": "The maternal name of the dwarf serving as Tala's attendant and instructor. The House renamed him Thorn for Eskau service, and he prefers that service name in official settings.",
+      "id": "thron",
+      "name": "Thron",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The unnamed proprietor of a bakery where Tala intends to begin a covert attack. He forces Tala and her opponent into the square, then demands compensation from the raiding party.",
+      "id": "bakery-proprietor",
+      "name": "Bakery Proprietor",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Eskau candidate of the House of the Turbulent Ocean. Be-thric offers him protection, resources, and advancement in exchange for defecting with his weapon, and Cuan accepts without hesitation.",
+      "id": "cuan",
+      "name": "Cuan",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Trapped fount-orb"
+      ],
+      "description": "Tala's name for an unstable captive fount-orb. She places it in Thron's care so he can search for its makers, mute its distressing speech, and determine whether its power can be purified.",
+      "id": "rob",
+      "name": "Rob",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A senior House of Blood Eskau whose concept is darkness. He instructs Tala in her obligations to the city and assigns her first untamed ether hold.",
+      "id": "darkness-eskau-instructor",
+      "name": "Darkness Eskau Instructor",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A House of Blood artificer whose concept concerns stability amid change. He comes to study the isolated void sword and adds another containment field before starting his examination.",
+      "id": "house-of-blood-artificer",
+      "name": "House of Blood Artificer",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The immensely powerful ruler of Platoiri, who recognizes Tala as a gated human despite her concealment. He tests whether she will obey a lethal order without evidence and treats her service as an opportunity to evaluate her.",
+      "id": "city-lord-of-platoiri",
+      "name": "City Lord of Platoiri",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A speaking white-metal automaton that guards the hold core. It deflects Tala's attacks while defending the chamber and offers to negotiate with her.",
+      "id": "white-metal-final-defender",
+      "name": "White-metal Final Defender",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Be-thric’s unnamed adjunct who specializes in large rock workings and arranges the party’s ballista journey to Croi.",
+      "id": "rock-working-adjunct",
+      "name": "Rock-working Adjunct",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A blue-ranked elven Eskau who receives Be-thric's party at the House of Blood hold in Croi. She is a highly controlled senior figure serving a powerful pillar and acts as the party's host.",
+      "id": "croi-elven-eskau",
+      "name": "Croi Elven Eskau",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dragonling stripped of his Eskau status and advancement weapon after failing to protect his prospective pillar. His exile requires him to travel with Be-thric's party to Platoiri and permanently bars him from cities where his former House is present.",
+      "id": "exiled-dragonling-former-eskau",
+      "name": "Exiled Dragonling Former Eskau",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A long-lived House of Blood Eskau whose concept governs stability in balance, reactions, group cohesion, and resistance to harm. He tests Tala's grounding and exposes weaknesses in her physical foundation.",
+      "id": "dayarg",
+      "name": "Dayarg",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A House of Blood fighter more than a full advancement step above Tala. During their sparring, he limits his overwhelming advantages so that the exchange tests her martial skill rather than raw power.",
+      "id": "raid",
+      "name": "Raid",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A creature released by Tala's activated collar. It claims the iron throughout her body, corrupts the inscriptions built from that metal, and leaves her with only a fragile Archon Star stalemate against its advance.",
+      "id": "iron-consuming-creature",
+      "name": "Iron-consuming creature",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A collar-released entity that devours Tala's keystone. Once it has fed, it emerges from her and falls inactive, unlike the iron eater that stays within her.",
+      "id": "gold-consuming-creature",
+      "name": "Gold-consuming Creature",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The name Tala uses for the creature occupying her bodily iron. It is not bound to her soul, and she hopes human teleportation can remove it before her forming Archon Star is completed.",
+      "id": "doskanok",
+      "name": "Doskanok",
+      "reveal": {
+        "chapter": 64
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A sentient orb carried by Thron into the broken realm. It reacts with alarm to the disorienting environment around them.",
+      "id": "sentient-orb",
+      "name": "Sentient Orb",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed House of Blood Eskau grieving Be-thric’s death. She destroys the local Acidic Tide hold, confronts Platoiri’s city lord, and begins an assault on the House of the Rising Sun hold.",
+      "id": "house-of-blood-avenging-eskau",
+      "name": "House of Blood Avenging Eskau",
+      "reveal": {
+        "chapter": 63
+      }
+    },
+    {
+      "description": "The Hallowed, dragonling-featured leader of a mobile settlement. He judges Tala's Doskanok affliction to be a living conceptual curse. Unable to extract it himself, he discusses teleportation risks and directs her toward short passages through the Leshkin Forest.",
+      "id": "mobile-settlement-head",
+      "name": "Mobile Settlement Head",
+      "reveal": {
+        "chapter": 67
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Leshkin who confronts Tala at the forest's edge. Alongside Inevitability, Decay demands the return of the forest's strength and warns Tala of pursuit in a future war.",
+      "id": "decay",
+      "name": "Decay",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful Leshkin who confronts Tala at the forest's edge. Alongside Decay, Inevitability demands the return of the forest's strength and warns Tala of pursuit in a future war.",
+      "id": "inevitability",
+      "name": "Inevitability",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An inscriber and professional ally from Tala's human network. She receives Tala's memory of a re-inscription device, recognizes its potential value for her work, and seeks a meeting.",
+      "id": "holly",
+      "name": "Holly",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A friend and household contact who receives Tala's apology for overdue rent along with the news that Tala is alive.",
+      "id": "lynn",
+      "name": "Lynn",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An artificer in Tala's human network. After receiving her memory of an artificial sun, Boma agrees to meet her in the city she is approaching.",
+      "id": "boma",
+      "name": "Boma",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Tala's co-owner in a growing comb venture. Q transfers her owed twenty-percent share and reports a substantial backlog of orders as production expands.",
+      "id": "q",
+      "name": "Q",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Archive and library contact who receives Tala's complete memory log from the arcane lands, together with permission to share relevant titles and negotiate access to books.",
+      "id": "ingrid",
+      "name": "Ingrid",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human contact in Tala's returning circle who agrees to meet her at the city gate as she nears the end of her journey.",
+      "id": "grediv",
+      "name": "Grediv",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "eskau-an-unplanned-infiltration-progression-fantasy"
+}
