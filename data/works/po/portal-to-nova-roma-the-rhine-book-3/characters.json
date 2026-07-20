@@ -1,0 +1,285 @@
+{
+  "characters": [
+    {
+      "description": "A recovering commander returning from Carthage who carries dangerous demonic corruption. He leads the Legion and investigates Sardinia cautiously, relying on mental defenses and close companions to keep violent impulses under control.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alexander's merchant lieutenant and naval commander. She captains the ship bound for Venice, organizes the Sardinia reconnaissance, and insists that Alexander take both Ivy and Isabella into danger rather than scout alone.",
+      "id": "constans",
+      "name": "Constans",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An invisible and intangible spirit bonded to Alexander. She scouts through walls, helps establish safe positions, and accompanies the covert investigation of Sardinia as one of his principal protectors.",
+      "id": "isabella",
+      "name": "Isabella",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alexander's stealthy flying companion and bonded mount. She joins him and Isabella on the Sardinia reconnaissance, providing aerial movement, concealment, and combat support when the group cannot risk an open confrontation.",
+      "id": "ivy",
+      "name": "Ivy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alexander's living armor"
+      ],
+      "description": "Alexander's powerful soul-bonded living armor, formed from shadow and death.",
+      "id": "tenebrosis",
+      "name": "Tenebrosis",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Venice's fleet commander, occupied with building defensive and commercial ships for Venice, Miletus, and Nova Roma. His work is central to the long-term plan for trade and resistance against pirate power.",
+      "id": "theo",
+      "name": "Theo",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of an organized Sardinian state who serves a deity associated with a vast abyss. He channels a dark portal, commands lethal tentacles, and presides over a system that turns captives into permanently obedient laborers.",
+      "id": "pirate-king",
+      "name": "Pirate King",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An ancient blinded, avian-like prisoner found beneath Sardinia. His psychic power is being forced into the island's permanent thrall system, but his account of destroying most of his own people makes any bargain with him dangerous.",
+      "id": "watcher",
+      "name": "Watcher",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A merchant from Nova Roma who serves as Venice's principal economic and civil adviser. He warns that reconstruction and naval expansion will exhaust available funds unless the leadership opens a major new trade route.",
+      "id": "mikhail",
+      "name": "Mikhail",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Legion commander who handles Legion duties and security work in Venice while Alexander concentrates on strategy.",
+      "id": "nikephoros",
+      "name": "Nikephoros",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Legion officer who shares responsibility for Legion duties and security work in Venice.",
+      "id": "basil",
+      "name": "Basil",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Venetian shipwright who arrives with workers and claims the western island at the Rhine settlement for a shipyard. He agrees to build an enchanted river fleet under permanent secrecy obligations.",
+      "id": "master-lorenz",
+      "name": "Master Lorenz",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The formidable ruler of the dwarves and a direct negotiator with Alexander. He seeks firearms knowledge and agrees to a broad alliance covering trade, mutual protection, and access to old underground Roman routes.",
+      "id": "dwarven-king",
+      "name": "Dwarven king",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A French ruler willing to consider Alexander's Rhine trade and territorial plans. He supplies a recording orb and authorization for a frontier expedition, asking for neutral evidence of suspected Parisian attacks.",
+      "id": "king-of-champenois",
+      "name": "King of Champenois",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An expansionist French ruler suspected of aggression against frontier outposts. Proving his involvement is the condition attached to wider recognition of Alexander's Rhine claims and a broader trade agreement.",
+      "id": "king-of-paris",
+      "name": "King of Paris",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An independent Lyon craftswoman who trains Alexander in blacksmithing. She has deep practical skill, owns a small smithy financed through burdensome loans, and resents how quickly his stored experience advances the craft.",
+      "id": "lyon-blacksmith",
+      "name": "Lyon blacksmith",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The trading-company heir placed in nominal command of a civilian frontier expedition. He berates workers, asserts authority through hired guards, and creates an internal leadership risk before the caravan even leaves Lyon.",
+      "id": "expedition-leader",
+      "name": "Expedition leader",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A stranded water-being who lives in a secluded magical pond. She heals Alexander's body and spirit, briefly restores Isabella to living form, grants Alexander agelessness, and gives Isabella one corporeal night each year.",
+      "id": "water-nymph",
+      "name": "Water nymph",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Isabella"
+      ],
+      "description": "The feared identity Isabella took after killing those who exploited her following her father's death. At a magical pond, she briefly regains a living body, begins a mutual romance with Alexander, and receives one corporeal night each year.",
+      "id": "shadow-queen",
+      "name": "Shadow Queen",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A forest-protector bear spirit corrupted by an ancient serpentfolk relic and forced to spread magical disease. After Alexander destroys the relic, the willing spirit binds itself to him as a durable guardian.",
+      "id": "guardian-bear-spirit",
+      "name": "Guardian bear spirit",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alexander's bound guardian bear spirit. Kermode accompanies Alexander and Isabella into a poisoned battlefield dungeon, drawing attacks and absorbing the imps' fire through physical strikes.",
+      "id": "kermode",
+      "name": "Kermode",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alexander's automaton companion"
+      ],
+      "description": "A new autonomous intelligence awakened when Alexander links hundreds of mind runes inside a sealed mithril orb. The being immediately recognizes Alexander as its father, creating responsibilities beyond the original crafting experiment.",
+      "id": "first-automaton",
+      "name": "First automaton",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A frontier defender and skilled rapier fighter who works closely with the first automaton. He helps clear local dungeons and prepares the outpost when an organized hostile force begins watching its residents.",
+      "id": "roland",
+      "name": "Roland",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Roland's exceptionally durable close-combat companion. He joins Roland, Alexander, and the first automaton in clearing dungeons and strengthening the exposed frontier outpost before the expected attack.",
+      "id": "henry",
+      "name": "Henry",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alexander's second automaton creation and the first automaton's new sibling. She is a serious, direct mage with offensive enchantments, but chooses to protect noncombatants instead of joining the imminent battle.",
+      "id": "alice",
+      "name": "Alice",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Ascendant Elementalist who leads an elite Parisian attack on the frontier outpost. His force kills civilians and demands surrender before bypassing the walls, and he dies after Alexander's combined bodies break his magical defenses.",
+      "id": "parisian-mage-spirit",
+      "name": "Parisian mage spirit",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A newly created nongendered automaton and sibling to Alice and the first automaton. Arden rejects armor and combat, chooses a crafting path, and helps the three artificial beings adopt Verum as the name of their people.",
+      "id": "arden",
+      "name": "Arden",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An eastern French ruler who accepts Alexander as sovereign across the Rhine frontier and farther territories. Their treaty waives tariffs on trade originating in Alexander's lands for a decade and commits both realms to defend one another, with Alexander's allies also protected.",
+      "id": "eastern-french-king",
+      "name": "Eastern French king",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commander of River's End's neglected city guard. He helps arrange the city's surrender, exposes spies among his officers, and accepts Alexander's rule under service terms that permit guards to leave with notice.",
+      "id": "rivers-end-guard-commander",
+      "name": "River's End guard commander",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "portal-to-nova-roma-the-rhine-book-3"
+}
