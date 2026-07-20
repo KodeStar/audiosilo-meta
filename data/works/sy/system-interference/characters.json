@@ -1,0 +1,426 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Derek"
+      ],
+      "description": "A void-aligned adventurer whose new evolution makes him a Human Void and Void Monarch. He gains unfamiliar powers and must obey an oath that restricts what he can disclose about the system behind the change.",
+      "id": "derek-hunt",
+      "name": "Derek Hunt",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Derek's bonded companion, newly evolved into a Gluttonous Void Bunny and Mythical Void Battle Chef. Their stats become fully shared, and each can lend two class skills to the other for a year.",
+      "id": "silvi",
+      "name": "Silvi",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted member of Derek's Savannah household who helps manage the Void Emporium. She takes charge of replacing the cloak and communication necklace that Silvi loses during her evolution.",
+      "id": "malorie",
+      "name": "Malorie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The weaponsmith commissioned to turn Derek's raid materials into a tailored glaive. His design uses death-attuned wyvern parts, and he requires Derek to channel void mana during the weapon's final attunement.",
+      "id": "the-smith",
+      "name": "The smith",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The smith's small bonded worm, usually resting near the smith's work area while Derek's equipment is being made.",
+      "id": "rocky",
+      "name": "Rocky",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Prince Edgar"
+      ],
+      "description": "A prince of Cydaria and leader of the high-level raid. He becomes increasingly concerned when a puzzle-trial team remains missing for ten days and must decide how the expedition responds.",
+      "id": "edgar",
+      "name": "Edgar",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A raid participant whose contract vanishes during a dangerous puzzle trial. The survivors report that he fell into the void beneath a collapsing maze and did not return, making him the expedition's first casualty.",
+      "id": "lane-marshall",
+      "name": "Lane Marshall",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A wood-affinity mage who volunteers to represent the raid in an epic solo duel after the puzzle trial. She enters with the agreement of her party and Edgar.",
+      "id": "greenland-duelist",
+      "name": "The Greenland duelist",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The male cousin of the Greenland duelist. After her contract ends and confirms her death, he tries to enter the active trial until Avery and Lyra restrain him.",
+      "id": "greenland-cousin",
+      "name": "The Greenland cousin",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Avery Swan"
+      ],
+      "description": "An elite Crown fighter who spars extensively with Derek while the raid waits. He plans a later void-beast hunt with Derek, provided Alana can spare him from his other responsibilities.",
+      "id": "avery",
+      "name": "Avery",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alana Swan",
+        "Dawn Siren"
+      ],
+      "description": "A legendary half-elf known as the Dawn Siren. She covertly reinforces Cydaria with her elite deathsworn while avoiding direct entry into the war to protect her restaurant staff and nearby civilians.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Natalie Savannah"
+      ],
+      "description": "Savannah's city lord and a major financier of Cydaria's defense. Her mercenaries help hold the invasion in check, and her spies track changes within the enemy command.",
+      "id": "natalie",
+      "name": "Natalie",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A raid member whose cousin dies in the epic solo duel. He confronts Derek after Derek survives the same trial, then accepts that his cousin was unlikely to escape it.",
+      "id": "victor",
+      "name": "Victor",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Walter Gracefall"
+      ],
+      "description": "A raid healer and defensive water user whose broken family and Torith contracts provide evidence that a major disaster has struck outside the dungeon.",
+      "id": "walter-searidge",
+      "name": "Walter Searidge",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A light-affinity raid healer who remains outside Avery's tower-trial team so he can continue treating a patient who has not yet recovered.",
+      "id": "tristan-alistair",
+      "name": "Tristan Alistair",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Crown Prince Edward"
+      ],
+      "description": "Cydaria's crown prince and an elite lightning fighter. He leads a small advance force against a portal incursion north of Clayton, only to be sealed inside a coordinated ambush.",
+      "id": "edward",
+      "name": "Edward",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An enemy crown prince and dark-ice fighter who commands the Clayton ambush. He freezes the battlefield, destroys Edward's right hand, and helps trap the surviving Cydarian fighters.",
+      "id": "titus",
+      "name": "Titus",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An enemy prince who supports the Clayton ambush by maintaining barriers that conceal additional attackers and block teleportation and communication.",
+      "id": "elven-prince",
+      "name": "The elven prince",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A member of Edward's elite response squad who is killed by a moving barrier during the ambush north of Clayton.",
+      "id": "poole",
+      "name": "Poole",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A member of Edward's elite response squad who is killed after Titus freezes the battlefield during the ambush north of Clayton.",
+      "id": "dent",
+      "name": "Dent",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Stella"
+      ],
+      "description": "A Crown business contact and close associate of Alana. She brings news of Edward's ambush to the Void Emporium and helps Malorie coordinate the household's work during the war.",
+      "id": "stella-brighton",
+      "name": "Stella Brighton",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Edgar's dragon companion. He is present in the raid dungeon when Silvi opens a void passage into it and accidentally strikes him during her arrival.",
+      "id": "blitz",
+      "name": "Blitz",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A participant whom Natalie commits to Savannah's defense as the city faces an imminent mass attack.",
+      "id": "marcus",
+      "name": "Marcus",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The invading commander who launches the assault on Savannah. He isolates most of the city with a vast displacement barrier, blocks communication and teleportation, and brings his army through portals.",
+      "id": "elven-commander",
+      "name": "The elven commander",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A creature who acts with Avery to restrain a bereaved raid member, immobilizing him at Edgar's direction after he tries to enter the active duel.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An enormous toxic aquatic creature chosen as Derek's epic solo-duel opponent. Its corrosive attacks make ordinary engagement dangerous, and the trial prevents escape by scroll.",
+      "id": "caustic-whale-of-pestilence",
+      "name": "Caustic Whale of Pestilence",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A former Assassin's Guild operative held in Derek's Time Prison. Raised alongside Ogre and exposed to the Guild's reprisals, he is judged the more capable strategist of the two prisoners.",
+      "id": "bones",
+      "name": "Bones",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Shadow Witch"
+      ],
+      "description": "A former Assassin's Guild operative now serving Cydaria as a shadow specialist. Derek consults her about Bones and Ogre while the raid prepares for its final boss.",
+      "id": "vanessa-hodges",
+      "name": "Vanessa Hodges",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Bones's very large former-assassin partner. His race and class leave him almost constantly hungry, while confinement in Time Prison and high-quality food offer unusual relief.",
+      "id": "ogre",
+      "name": "Ogre",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sierra"
+      ],
+      "description": "A raid swordswoman recovering after a healer regrows her legs. She can stand as the final boss approaches, though she remains unsteady on the newly restored limbs.",
+      "id": "sierra-cook",
+      "name": "Sierra Cook",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The raid's immense lion-like final boss, equipped with star and space abilities beyond the local system's normal purview. It strips buffs with its roar and can redirect attacks through spatial rifts.",
+      "id": "starfury-leonarus",
+      "name": "Starfury Leonarus",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A raid fighter killed near the Time Prison entrance when Starfury Leonarus redirects Derek's attack through a spatial rift.",
+      "id": "ray-fergus",
+      "name": "Ray Fergus",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Elena"
+      ],
+      "description": "A raid healer who stabilizes survivors after the boss battle. She assists Derek's unusually rapid regrowth and reports the deaths suffered inside Time Prison.",
+      "id": "elena-webb",
+      "name": "Elena Webb",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A raid participant killed inside Time Prison when the final boss's star attack penetrates Derek's refuge.",
+      "id": "john-doyle",
+      "name": "John Doyle",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A raid defender who shields others from the star attack inside Time Prison. She absorbs several hits and reduces the attack's momentum before dying.",
+      "id": "sachiko-sato",
+      "name": "Sachiko Sato",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A returning raid debuffer who dies when the final boss's star attack enters Time Prison.",
+      "id": "john-newman",
+      "name": "John Newman",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A raid participant killed inside Time Prison by the final boss's star attack.",
+      "id": "scarlet-mason",
+      "name": "Scarlet Mason",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An elf-like observer with connections to several systems. He intercepts Derek and Silvi after the dungeon exit, assures them that the other raiders are safe, and says he has been watching Derek's progress.",
+      "id": "dave",
+      "name": "Dave",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Adventurer's Guild dungeon specialist who manages the new outpost. He recognizes Derek from an earlier dungeon guide and receives the completed raid account from Elena and Jasper.",
+      "id": "nathan",
+      "name": "Nathan",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Jasper"
+      ],
+      "description": "A surviving raid healer whom Derek assigns, alongside Elena, to brief the Adventurer's Guild on the completed dungeon and its losses.",
+      "id": "jasper-ross",
+      "name": "Jasper Ross",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Captain Herrett",
+        "Jackson",
+        "Crimson Blade"
+      ],
+      "description": "Derek's returning guard and trainer. He seeks the full truth behind his family's kidnapping and murder, an unresolved obligation that remains larger than personal revenge against any single culprit.",
+      "id": "jacks",
+      "name": "Jacks",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "system-interference"
+}
