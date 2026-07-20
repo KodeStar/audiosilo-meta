@@ -1,0 +1,447 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Derek"
+      ],
+      "description": "A void-travelling adventurer who returns from a completed raid intent on protecting his Savannah household. Before reinforcing Alana and Edgar, he must secure the dragonkin in his custody and determine whether Void Travel is safe for living passengers.",
+      "id": "derek-hunt",
+      "name": "Derek Hunt",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Derek's bonded void companion, who returns with him to Savannah after the raid and remains at his side as he prepares to aid their allies.",
+      "id": "silvi",
+      "name": "Silvi",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cydarian champion retaliating after enemy attacks harmed people and businesses under her protection. Derek intends to aid her once his captive dragonkin are secure.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cydarian prince and one of the allies Derek intends to reinforce after securing his captive dragonkin near Savannah.",
+      "id": "edgar",
+      "name": "Edgar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elite Crown fighter and Lyra's partner. Unable to contact Alana or Edgar directly, he relies on Stella for news while Derek prepares to aid them.",
+      "id": "avery",
+      "name": "Avery",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Avery's bonded flying companion, gifted with mental control. She may be able to pacify Derek's lesser dragonkin, though controlling both wyverns would exceed what Avery considers safe.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Savannah leader who helped defend the city and continues to organize wartime information. Her efforts have helped keep Derek's people secure while he was away.",
+      "id": "natalie",
+      "name": "Natalie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Natalie's operatives in Savannah's defense. He is reported to have disabled many hostile portal mages during the attacks on the city.",
+      "id": "marcus",
+      "name": "Marcus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A smith traveling with an earth-affinity companion. The smith agrees to help contain Derek's captive dragonkin near Savannah.",
+      "id": "the-smith",
+      "name": "the smith",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The identity of the smith who made Void's Harbinger, as recognized by Derek while showing the weapon to Brandy.",
+      "id": "the-walking-forge",
+      "name": "the Walking Forge",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The manager of Derek's household and the Void Emporium. She has kept the shop staffed and trading during the war, and she receives authority over the employment contracts of Bones and Ogre.",
+      "id": "malorie",
+      "name": "Malorie",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Void Emporium's developing smith, whose varied goods keep the shop stocked and actively trading while Derek is away.",
+      "id": "brandy",
+      "name": "Brandy",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A reformed former assassin released from Derek's Time Prison into contracted work under Malorie. He is assigned to serve the household and shop as a butler, with further training planned in the capital.",
+      "id": "bones",
+      "name": "Bones",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A reformed former assassin released from Derek's Time Prison into contracted work under Malorie. He is assigned to guard the shop and serve as Silvi's taste tester.",
+      "id": "ogre",
+      "name": "Ogre",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Edgar's wyvern companion and aerial mount. He carries the prince during the border battle, where they harass the opposing army with lightning while its earth defenses prevent a decisive breakthrough.",
+      "id": "blitz",
+      "name": "Blitz",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An earth-affinity companion who helps the smith, Derek, and Avery immobilize and restrain the captive wyverns at the temporary holding clearing outside Savannah.",
+      "id": "rocky",
+      "name": "Rocky",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alana"
+      ],
+      "description": "Alana's transformed identity on the battlefield beyond Cydaria's border. Her altered voice places severe mental pressure on opponents while she holds four enemy leaders in a stalemate.",
+      "id": "dawn-siren",
+      "name": "Dawn Siren",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The daughter of the opposing commander fighting Derek and Alana. Derek recognizes their connection during the battle.",
+      "id": "sabrina",
+      "name": "Sabrina",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Indarian duke"
+      ],
+      "description": "An Indarian commander and Sabrina's father. Badly wounded during the battle, he is captured by Derek and confined in Time Prison while the remaining enemy leaders flee.",
+      "id": "duke-riven",
+      "name": "Duke Riven",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "the Cydarian crown prince"
+      ],
+      "description": "Cydaria's crown prince and intended successor despite having lost a hand and much of one forearm. He remains the chosen heir as the royal family considers how to impose a lasting settlement on its defeated enemies.",
+      "id": "edward",
+      "name": "Edward",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cydarian princess and sister to Edgar and Edward. She says she is unsuited to rule.",
+      "id": "eloise-cydaria",
+      "name": "Eloise Cydaria",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Cydarian king"
+      ],
+      "description": "Cydaria's ruler, who favors binding the defeated Indarian royal family through contracts instead of carrying out mass executions. He intends to leave the throne to the Cydarian crown prince after the war.",
+      "id": "king-edwin",
+      "name": "King Edwin",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Sabrina's personal maidservant. She is present when Derek's group secretly enters Indaria and falls under Alana's command before she can raise an alarm.",
+      "id": "jessica",
+      "name": "Jessica",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Cydaria's contract maker, summoned after Indaria accepts vassal status in principle. He is responsible for turning the proposed surrender terms into binding soul contracts.",
+      "id": "callum",
+      "name": "Callum",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Indaria's king and the captured commander's brother. Recognizing that his kingdom has been defeated, he enters negotiations to preserve its royal family and government under Cydarian vassalage.",
+      "id": "the-indarian-king",
+      "name": "the Indarian king",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Indarian king"
+      ],
+      "description": "The proper name of the Indarian king. After Callum binds the royal family and kingdom beneath Cydaria, Ossian takes an oath to follow Cydarian rule and answers Derek's questions about Gerald Torith's trafficking operation.",
+      "id": "ossian",
+      "name": "Ossian",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Ossian’s wife and a participant in the settlement talks. She argues that the public alliance must offer Indaria a visible benefit if its rulers are to limit dissent.",
+      "id": "cynthia",
+      "name": "Cynthia",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The slain enemy king’s brother and the surviving duke from his kingdom. Derek and Alana defeat him, preserve his life, and confine him in Time Prison for a proposed public execution.",
+      "id": "the-captured-foreign-duke",
+      "name": "the captured foreign duke",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A captured duke from Cydaria's other enemy kingdom. His defeat is included in the public account of the war, and Cydaria intends to use his planned execution when replacing his kingdom's leadership.",
+      "id": "duke-terran",
+      "name": "Duke Terran",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An elven support fighter and Trent's mother. She accompanies her son while he claims a promised drake.",
+      "id": "tara-perez",
+      "name": "Tara Perez",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tara Perez's son, whose combat class creates illusions that can exchange places with him. He tames an elementless drake on his first attempt and begins its evolution.",
+      "id": "trent",
+      "name": "Trent",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A lesser amphitheer fought by the Cydarian crown prince during an attempt to form a taming contract. The first contract fails, leaving the creature’s acceptance unresolved.",
+      "id": "the-lesser-amphitheer",
+      "name": "the lesser amphitheer",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Cydarian crown prince's bonded lesser amphitheer. After accepting the prince's contract, Volt evolves to nearly Lyra's size and displays his partner's lightning affinity.",
+      "id": "volt",
+      "name": "Volt",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally old and powerful Indarian elder who operates outside the royal army. He joins the campaign against the neighboring kingdom because of a longstanding grievance with its royal line.",
+      "id": "marrick",
+      "name": "Marrick",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The former king expected to lead resistance against the allied Cydarian and Indarian force. He is the father of the dead crown prince and remains committed to his royal line's fight.",
+      "id": "traven",
+      "name": "Traven",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Astris's queen and widow of its fallen crown prince. Ossian expects her or Traven to lead resistance to the approaching allied force.",
+      "id": "cassandra",
+      "name": "Cassandra",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The matriarch of House Reeves, one of three major noble leaders who withdrew from a lost war. She offers cooperation to the victors and helps arrange their peaceful entry into the capital.",
+      "id": "diana",
+      "name": "Diana",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The new patriarch of House Rivai. He withdraws his house from the lost war, then cooperates with the victors and helps escort them into the capital.",
+      "id": "garrett",
+      "name": "Garrett",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The patriarch of House Borough. He withdraws his house from the lost war, then cooperates with the victors and helps escort them into the capital.",
+      "id": "finn",
+      "name": "Finn",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older elf allied with Marrick who dies in the final battle as the coalition’s only confirmed casualty.",
+      "id": "the-fallen-allied-elf",
+      "name": "the fallen allied elf",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elderly elven ally of Marrick who dies as the coalition's only confirmed casualty in the final battle. Marrick recovers his body for a proper funeral.",
+      "id": "raffi",
+      "name": "Raffi",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The two surviving younger members of the defeated royal family, brought to the palace as the victors prepare a transfer of power. Their fate and possible place in the next government remain undecided.",
+      "id": "the-former-royal-siblings",
+      "name": "the former royal siblings",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A capable Cydarian relative proposed as king of the conquered and renamed realm. The settlement plan pairs him politically with Sabrina to establish a new royal household aligned with both kingdoms.",
+      "id": "robert",
+      "name": "Robert",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The beast master hired to feed and manage the lesser dragonkin at their newly secured kennel outside Savannah. She works under Lyra's oversight while the wyverns remain contained nearby.",
+      "id": "lindsay",
+      "name": "Lindsay",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile noble leader who acts during Robert and Sabrina's wedding reception. He launches a concealed toxic attack at Sabrina, forcing Derek to intercept it moments after the new rulers are crowned.",
+      "id": "the-house-illiel-patriarch",
+      "name": "the House Illiel patriarch",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Derek's returning guard and trainer. He is still seeking the full truth about the kidnapping and murder of his family, an obligation left unresolved even after Gerald Torith's death.",
+      "id": "jacks",
+      "name": "Jacks",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "indaria"
+}
