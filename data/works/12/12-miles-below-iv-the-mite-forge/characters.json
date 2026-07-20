@@ -1,0 +1,262 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Keith"
+      ],
+      "description": "Kidra's younger brother, Journey's wearer, and a Winterscar relic knight with a talent for invention and occult work.",
+      "id": "keith-winterscar",
+      "name": "Keith Winterscar",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Winterscar relic knight, sword saint, and Keith's sister. She is one of his closest allies and a leading figure within their house.",
+      "id": "kidra",
+      "name": "Kidra",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive, disembodied adviser linked to the Winterscars. He can communicate through a soul-fractal vessel, but his identity is not yet established at the start of the book.",
+      "id": "father",
+      "name": "Father",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Keith and Kidra's father, revealed as the adviser previously called Father. His soul now resides in a necklace, and he has learned to interact with simple electronic systems through that connection.",
+      "id": "tenisent",
+      "name": "Tenisent",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A badly damaged machine commander recovering after breaking with her former allegiance. Her hidden defection places both her city and its residents in danger.",
+      "id": "to-wrathh",
+      "name": "To’Wrathh",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The familiar name Keith uses for To’Wrathh. She is repairing her damaged shell, concealing her betrayal from Relinquished, and considering whether escape to the surface is possible.",
+      "id": "wrath",
+      "name": "Wrath",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A clan lord who leads a large force of surface knights to the occupied city gates, creating an immediate diplomatic crisis.",
+      "id": "atius",
+      "name": "Atius",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Undecider military commander responsible for holding an occupied city together while its machine ruler's defection remains secret and surface knights gather at the gates.",
+      "id": "zaang",
+      "name": "Zaang",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Winterscar captain whose determination helped prolong the search for Keith after his disappearance. He rejoins Keith when the clan delegation reaches the city.",
+      "id": "sagrius",
+      "name": "Sagrius",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sagrius's armor"
+      ],
+      "description": "Sagrius's named relic armor. It can speak and move through its comatose wearer, but it is also involuntarily drawing Sagrius's soul into itself. Its movement is limited to behavior Sagrius already learned unless it receives another usable model.",
+      "id": "aegis",
+      "name": "Aegis",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a three-person Shadowsong contingent. She insists on joining the dangerous forge expedition and accepts its risks despite limited experience with relic armor.",
+      "id": "anka",
+      "name": "Anka",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Winterscar knight who remains mobile despite serious injuries inside the temple.",
+      "id": "windrunner",
+      "name": "Windrunner",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "House Icewing Prime"
+      ],
+      "description": "The temporary commander of the knight force separated from Keith's group inside the temple. He reports the phasing Feather's attacks and coordinates the scattered fighters.",
+      "id": "icewing",
+      "name": "Icewing",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Winterscar knight assigned to sniper overwatch during the hidden approach to the displaced Mite Forge. Adris remains above the advancing group with Kior, watching for drakes and other machine threats.",
+      "id": "adris",
+      "name": "Adris",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Winterscar knight who serves beside Adris as sniper overwatch while the descent team advances toward the Mite Forge. Kior's position supports the concealed approach and gives the team cover against machines in the surrounding towers.",
+      "id": "kior",
+      "name": "Kior",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An approaching Feather whose arrival poses an immediate threat to the concealment of To’Wrathh's city.",
+      "id": "to-sefit",
+      "name": "To’Sefit",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Feather investigator who leads the prepared hunt for To’Wrathh. He examines a lost Feather's fate, uncovers evidence of her deception, and recovers dangerous proto-feather combat material.",
+      "id": "to-avalis",
+      "name": "To’Avalis",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Relinquished’s Feather operative and a machine adversary.",
+      "id": "to-aacar",
+      "name": "To’Aacar",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Mother"
+      ],
+      "description": "The machine sovereign and mother of the Feathers. She accepts To’Wrathh's fabricated report that Keith and Kidra are dead, leaving the hidden defection undiscovered for the moment.",
+      "id": "relinquished",
+      "name": "Relinquished",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A concealed machine familiar with the flooded temple. He gives Keith a hidden route past To’Sefit's defenses, but demands that his existence remain secret from To’Wrathh and the expedition.",
+      "id": "abraxas",
+      "name": "Abraxas",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Keith's armor"
+      ],
+      "description": "Keith's relic armor and support system, carried forward from his earlier adventures.",
+      "id": "journey",
+      "name": "Journey",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Journey's selected defensive engram in a local digital system. Cathida uses perfect recall of observed surface techniques to serve as a capable sparring opponent for To’Wrathh.",
+      "id": "cathida",
+      "name": "Cathida",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "former wearer",
+        "combat engram"
+      ],
+      "description": "A hostile-sounding combat intelligence stored within Journey. The construct comes from a former wearer and retains knowledge that may help Keith, though its personal identity is not established.",
+      "id": "journeys-former-crusader-engram",
+      "name": "Journey's former crusader engram",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Mite collective"
+      ],
+      "description": "An independent machine collective distinct from Relinquished and associated with the Mite Forge. Their technology and intentions remain difficult for humans and Feathers to interpret.",
+      "id": "mites",
+      "name": "Mites",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A machine messenger who chooses loyalty to To’Wrathh over obedience to Relinquished. He carries her request for Keith's help in contacting the Golden Goddess.",
+      "id": "to-wrathhs-runner",
+      "name": "To’Wrathh's runner",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "12-miles-below-iv-the-mite-forge"
+}
