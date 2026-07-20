@@ -1,0 +1,461 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Jason"
+      ],
+      "description": "A displaced man who wakes in the Vane estate maze without an explanation for his arrival. An intuitive interface gives him survival tools, quests, and an inventory, which already contains a mysterious World Phoenix token.",
+      "id": "jason-asano",
+      "name": "Jason Asano",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An unconscious robed man found inside a damaged summoning circle beneath the Vane estate. The surrounding ritual chamber has been vandalized, leaving his condition and purpose uncertain.",
+      "id": "unconscious-ritualist",
+      "name": "Unconscious Ritualist",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The ritualist Jason killed beneath the Vane estate. A keyring taken from the body identifies him as Landemere Vane and links him to the manor.",
+      "id": "landemere-vane",
+      "name": "Landemere Vane",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Landemere Vane's mother and a leader of the blood cult holding Jason and four adventurers for sacrifice. She suspects Jason killed her son and orders him retained for the coming blood feast.",
+      "id": "cressida-vane",
+      "name": "Cressida Vane",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Rufus"
+      ],
+      "description": "A captive adventurer imprisoned with Jason at the Vane estate. He remains composed enough to explain how spirit coins can temporarily enhance physical and magical attributes, helping Jason formulate an escape.",
+      "id": "rufus-remore",
+      "name": "Rufus Remore",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally large, lion-headed prisoner held for the blood feast. Even with a suppression collar blocking his essence abilities, his natural strength makes him a formidable prospective ally.",
+      "id": "gary",
+      "name": "Gary",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf captive held with Rufus, Gary, and another adventurer as an intended sacrifice in the Vane blood feast.",
+      "id": "anisa",
+      "name": "Anisa",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The blood cult's high priest. He intervenes during the prisoners' escape and uses binding magic to immobilize Rufus and Gary.",
+      "id": "darryl-caruthers",
+      "name": "Darryl Caruthers",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The last captive Jason frees from the sacrificial chamber. A ritual magician, she identifies the blood pool's intended creation and joins the newly freed group in trying to stop it before it can grow.",
+      "id": "farrah",
+      "name": "Farrah",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mass of leeches summoned by Jason through a blood-familiar ritual. It merges into his blood through the ritual wounds and becomes an internal familiar under his control.",
+      "id": "sanguine-horror",
+      "name": "Sanguine Horror",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The guardian responsible for a village's waterfall aperture. He guides Jason into its secured source chamber and has enhanced strength from a Might essence.",
+      "id": "hiram",
+      "name": "Hiram",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Team Colin",
+        "Sanguine Horror"
+      ],
+      "description": "The name Jason gives his leech familiar, also calling the collective Team Colin. The familiar remains a sanguine horror bound to Jason.",
+      "id": "colin",
+      "name": "Colin",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An alchemist affiliated with both the Adventure Society and his professional association. He treats Jason after a beating and runs an affordable Old City clinic despite opposition from the Church of the Healer.",
+      "id": "old-city-alchemist",
+      "name": "Old City Alchemist",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gary"
+      ],
+      "description": "The full name of Gary, Jason's Leonid companion. By this point he is part of the group preparing Jason for Adventure Society assessment, contributing practical physical training and steadfast support.",
+      "id": "gareth-xandier",
+      "name": "Gareth Xandier",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Geller family's son, awaiting final training and an Adventure Society field assessment that Rufus agrees to conduct.",
+      "id": "humphrey-geller",
+      "name": "Humphrey Geller",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Humphrey Geller's juvenile dragon familiar. Stash can change shape and accompanies Humphrey during the training period before assessment.",
+      "id": "stash",
+      "name": "Stash",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An acolyte of the Church of Knowledge assigned to assist with Jason's Adventure Society assessment.",
+      "id": "gabrielle-pellin",
+      "name": "Gabrielle Pellin",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf who heads the Magic Society office in Greenstone. He investigates unusual spirit coins traced to Jason and authorizes competing explanations for how the coins were produced.",
+      "id": "lucian-lamprey",
+      "name": "Lucian Lamprey",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lucian Lamprey's elf deputy and the official who manages much of the Greenstone Magic Society's daily operation.",
+      "id": "pochard-finn",
+      "name": "Pochard Finn",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Magic Society investigator assigned to examine the anomalous spirit coins bearing Jason's identifying inscription. He considers the possibility that an essence ability, rather than an illegal coin farm, created them.",
+      "id": "clive-standish",
+      "name": "Clive Standish",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Nightingale"
+      ],
+      "description": "A former pit fighter known as Nightingale. Clarissa Ventress forces her back into the cage to provoke another interested party, despite Sophie's earlier release from fighting.",
+      "id": "sophie",
+      "name": "Sophie",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Sophie's friend and advocate. She objects when Clarissa Ventress forces Sophie to return to pit fighting and tries to defend the freedom Sophie had already earned.",
+      "id": "belinda",
+      "name": "Belinda",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A power at the Fortress who controls Sophie and Belinda's circumstances. She orders Sophie back into a cage match as part of a pressure campaign against another figure.",
+      "id": "clarissa-ventress",
+      "name": "Clarissa Ventress",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The deity who answers Jason directly about his displacement. She explains that his arrival was accidental and confirms that his World Phoenix token can return him home, but withholds the conditions needed to use it.",
+      "id": "goddess-of-knowledge",
+      "name": "Goddess of Knowledge",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Humphrey Geller's silver-rank mother and an overseer of the family's training estate. She introduces Jason to the mirage chamber while Rufus begins correcting Humphrey's hesitation under pressure.",
+      "id": "danielle-geller",
+      "name": "Danielle Geller",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An associate whose delayed arrival affects Rufus and his companions. While Emir follows a lead in the Godspear Islands, Rufus redirects the recovered Way of the Reaper skill book to Jason.",
+      "id": "emir",
+      "name": "Emir",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Rufus Remore's father. He receives reports about Rufus and Jason and agrees to present Rufus's proposed Remore-Geller training station to their family.",
+      "id": "gabriel-remore",
+      "name": "Gabriel Remore",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The target of Clarissa Ventress's campaign involving Sophie. He reacts with growing frustration as Clarissa places Sophie in increasingly dangerous pit fights while keeping her beyond his reach.",
+      "id": "cole-silva",
+      "name": "Cole Silva",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sophie",
+        "Nightingale"
+      ],
+      "description": "The full name of the pit fighter known as Nightingale. She defeats the Queen of Thorns in the Fortress despite suffering multiple whip wounds.",
+      "id": "sophie-wexler",
+      "name": "Sophie Wexler",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silver-rank social figure and mother of Cassandra Mercer. She introduces herself to Jason at a Greenstone gathering and signals her family's interest in Rufus.",
+      "id": "thalia-mercer",
+      "name": "Thalia Mercer",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Thalia Mercer's capable adventurer daughter, currently away on a Delta contract when Jason first hears about her.",
+      "id": "cassandra-mercer",
+      "name": "Cassandra Mercer",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The strict Adventure Society instructor overseeing Jason and Humphrey's field assessment. He records candidate conduct and expects sound judgment as well as combat ability.",
+      "id": "vincent-trenslow",
+      "name": "Vincent Trenslow",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile assessment candidate who nearly attacks Jason after being provoked. Other candidates fear that his family could retaliate for public insults.",
+      "id": "thadwick-mercer",
+      "name": "Thadwick Mercer",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An alchemist and clinic owner whose affordable work serves Old City residents. Jason invests three gold spirit coins so Jory can expand the clinic, its equipment, and its alchemy operation.",
+      "id": "jory",
+      "name": "Jory",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The silver-rank director of Greenstone's Adventure Society branch. She recognizes Jason's successful contract work, orders him to rest, and promises assignments suited to further advancement.",
+      "id": "elspeth-arella",
+      "name": "Elspeth Arella",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An iron-rank Geller trainee who leads a five-person team in Danielle Geller's Mirage Arena lesson.",
+      "id": "rick-geller",
+      "name": "Rick Geller",
+      "reveal": {
+        "chapter": 66
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Clive Standish's rune tortoise familiar, accompanying him when he and Jason travel into the Delta for a contract.",
+      "id": "onslow",
+      "name": "Onslow",
+      "reveal": {
+        "chapter": 68
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced two-star Geller adventurer appointed to lead the outward escort of a spirit-coin shipment from Geller Seven.",
+      "id": "phoebe-geller",
+      "name": "Phoebe Geller",
+      "reveal": {
+        "chapter": 78
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf adventurer at iron rank. When she first meets Jason, her family connection is to a spellcaster from his earlier coin escort.",
+      "id": "beth-cavendish",
+      "name": "Beth Cavendish",
+      "reveal": {
+        "chapter": 84
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Jory"
+      ],
+      "description": "The full name of Jory, the Old City clinic owner whose expansion Jason funds.",
+      "id": "jory-tillman",
+      "name": "Jory Tillman",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A reluctant adventurer whose furgax summon was used to frighten a lumber-mill owner. Jason offers him protection and a route into legitimate contract work in exchange for cooperation.",
+      "id": "dean-tuckle",
+      "name": "Dean Tuckle",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A dissident member of the Healer temple who refuses to join its action against Jory's clinic. Expelled for his refusal, he warns Jory that the temple leadership is coming.",
+      "id": "neil-davone",
+      "name": "Neil Davone",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The deity who appears at Jory Tillman's clinic, strips corrupt clergy of their divine gifts, and accepts the penitents led by Neil. The Healer sanctifies the clinic and restores the people of Old City.",
+      "id": "healer",
+      "name": "The Healer",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deity who offers expelled clergy new power in exchange for absolute submission. He takes those who accept through his gate and shows particular interest in Jason and Gary.",
+      "id": "dominion",
+      "name": "Dominion",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gold-rank adventurer who arrives at Greenstone's private dock aboard a huge cloud vessel. He transforms it into a floating palace and introduces his silver-rank chief of staff, Constance.",
+      "id": "amir-bahadir",
+      "name": "Amir Bahadir",
+      "reveal": {
+        "chapter": 102
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silver-rank administrator who serves as Amir Bahadir's chief of staff. Amir regards her as essential to his organization.",
+      "id": "constance",
+      "name": "Constance",
+      "reveal": {
+        "chapter": 102
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A figure among Greenstone's Big Three whose associates are linked to attackers sent to delay Sophie's pursuers. His precise interest in the thief case is not yet established.",
+      "id": "adris-dorgan",
+      "name": "Adris Dorgan",
+      "reveal": {
+        "chapter": 104
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "he-who-fights-with-monsters-a-litrpg-adventure"
+}
