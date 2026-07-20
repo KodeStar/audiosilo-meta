@@ -1,0 +1,258 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "the Raven"
+      ],
+      "description": "A ruler believed dead after escaping King Caydean. Injured and low on power, he seeks dwarven knowledge that might counter Daemons while sustaining the infant dragon magically bound to him. His survival remains hidden from his wider circle of allies.",
+      "id": "rezkin",
+      "name": "Rezkin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An elven general and path builder who helped Rezkin escape King Caydean. She hides Rezkin's survival, seeks aid from her own people, and joins him in searching for a weapon against the Daemon threat. She and Rezkin have also become romantic partners.",
+      "id": "azeria",
+      "name": "Azeria",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young dragon linked to Rezkin and able to speak into his mind. She depends on power drawn through their bond, creating a dangerous drain that Rezkin cannot end by simply leaving her behind. Despite the risk, he is committed to keeping her with him.",
+      "id": "sina",
+      "name": "Sina",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of Asshai and the immediate enemy pursuing Rezkin. His combined Spiritua and Daemon power overwhelms Rezkin, and his larger purpose remains concealed. His forces believe Rezkin dead after their confrontation.",
+      "id": "king-caydean",
+      "name": "King Caydean",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A veteran warrior, archer, and wind mage who swears to protect Azeria's secrets and joins her expedition to Grestag.",
+      "id": "elven-mentor",
+      "name": "Azeria's former mentor",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A high king consulted by Azeria about the Daemon threat. He recalls that the earlier war turned only after the Daemon king fell and directs her toward the nearly lost craft of the dwarves, whose weapons and machines may still hold useful answers.",
+      "id": "elven-ruler",
+      "name": "The elven ruler",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally investigating King Caydean's plans with Malcius. She reports that his faction manipulated a royal succession to secure a large shipment of purple metal that absorbs magical power. Rezkin gives the investigators a relay for urgent contact.",
+      "id": "yserria",
+      "name": "Yserria",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Yserria's partner in tracing King Caydean's acquisition of power-absorbing metal. He helps establish that Caydean's faction manipulated succession trials to obtain it, and receives a modified relay for urgent contact with Rezkin.",
+      "id": "malcius",
+      "name": "Malcius",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A surviving engineer who maintains the defensive machines of Grestag. Bitter over his people's near extinction and distrustful of elves, he initially refuses help but agrees to demonstrate dwarven equipment made to resist Daemons.",
+      "id": "dwarf-engineer",
+      "name": "The dwarf engineer",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The surviving dwarf engineer in Grestag. He explains that dwarven metal stores magical energy, powers the city's machines, and resists Daemon power. He offers armor and up to one hundred machines for the war, provided Rezkin's group can secure a sufficiently large energy source.",
+      "id": "haggish",
+      "name": "Haggish",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the staff-bearer"
+      ],
+      "description": "A young dwarf trained in smithing and combat who is sent beyond Grestag to build alliances for her dwindling people. Her crystal-tipped staff can connect armor and machines to an external magical source.",
+      "id": "dwarven-apprentice",
+      "name": "The dwarven apprentice",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A resistance battle mage trying to release people from coerced oaths to King Caydean. His first experimental attempt kills the captive, deepening his fear of both his destructive power and the choices the war demands.",
+      "id": "wesson",
+      "name": "Wesson",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning ally who works beside Wesson in the resistance. He accepts the hazards of sending a potentially compromised mage back into King Caydean's service and urges Wesson to use the opportunity for intelligence.",
+      "id": "farson",
+      "name": "Farson",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Wesson's spy"
+      ],
+      "description": "A battle mage whose oath may still compel loyalty to King Caydean. She asks to return as a possible spy, and Wesson agrees to prepare a secured relay despite the risk that her oath could compromise her reports. Her loyalties therefore remain uncertain.",
+      "id": "returning-battle-mage",
+      "name": "The returning battle mage",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Rezkin's missing ally, discovered alive in compelled Fae service. His unusual ability to understand the Fae and move through their overlapping world has made him their human liaison and a general in training.",
+      "id": "tam",
+      "name": "Tam",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Crimson Blades thief assigned to obtain supplies and assist Wesson's covert research into magical oaths. He knows Wesson only as a mage working on the Raven's behalf and does not know that Rezkin never authorized the experiments.",
+      "id": "remy",
+      "name": "Remy",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A powerful healer permitted to train as a battle mage under King Caydean's revised rules. He is assigned to partner the battle mage who has returned to Kaibain, then leads her away from the palace to see what he presents as a historic site.",
+      "id": "silas",
+      "name": "Silas",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the siphon Daemon"
+      ],
+      "description": "A rare siphon Daemon forced into the returning battle mage. It can preserve abilities gained through former hosts, including the craft needed to forge King Caydean's enchanted metal. Its new host remains aware but cannot always control her own body.",
+      "id": "smith-daemon",
+      "name": "The Smith",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A wary magical teacher who accepts Rezkin as an apprentice while watching for signs that his increasing power is driving him toward madness. The instructor supplies him with the order's trackable gear and continues testing his control.",
+      "id": "spiritua-instructor",
+      "name": "Rezkin's Spiritua instructor",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied mage working undercover near King Caydean's palace. She tracks confirmed cases of possession, including temple priests, but argues that a human host should not be condemned solely because a Daemon occupies the body.",
+      "id": "undercover-contact",
+      "name": "Wesson's undercover contact",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A relay worker coerced into an oath to King Caydean and targeted by Wesson's experimental release spell. She appears to die when it fails, then escapes with knowledge of Wesson's identity and wanted status.",
+      "id": "escaped-relay-worker",
+      "name": "The escaped relay worker",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kyle's regent"
+      ],
+      "description": "Rezkin's cousin and the effective regent of Kyle during his apparent death. Rezkin keeps him in that office after returning, valuing his governance while recognizing his limited experience in war. He reports the scale and strategy of the Asshai blockade.",
+      "id": "tieran-nirius",
+      "name": "Tieran Nirius",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Rezkin's older brother"
+      ],
+      "description": "An escaped captive and royal claimant who is formally introduced as Rezkin's older brother. Rather than accept hostile accounts of Rezkin, he asks to judge his younger brother for himself after reaching safety in Kyle.",
+      "id": "prince-thresson",
+      "name": "Prince Thresson",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Daemon-possessed general overseeing the immense spell nexus built into Kaibain's temple. She recognizes Wesson's apparent Daemon identity and confines him in the chamber that powers the construct, where his attempts to cast are absorbed.",
+      "id": "temple-general",
+      "name": "Caydean's temple general",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of the twin allies on Rezkin's temple escape team. Released Daemon power possesses him during the retreat, and he immediately turns against Rezkin. He remains alive, and Rezkin treats finding a way to save him as a priority.",
+      "id": "possessed-twin",
+      "name": "The possessed twin",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "ritual-of-ruin"
+}
