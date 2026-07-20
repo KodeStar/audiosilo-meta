@@ -1,0 +1,264 @@
+{
+  "characters": [
+    {
+      "description": "Commander of the Miletus Legion and leader of its voyage to Venice. Faced with shortages in a crowded settlement, he seeks trade and supplies across the Adriatic. He can manipulate nearby ordinary steel and brings formidable personal combat abilities to the expedition.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alexander's trusted merchant representative and operational lieutenant. Her commercial judgment complements the Legion's military strength as he prepares an expedition to relieve Miletus's shortages.",
+      "id": "constans",
+      "name": "Constans",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sailor and fleet officer who places crews of sailors and Legion veterans aboard captured pirate ships. His practical command helps Alexander convert a chance victory at sea into a functioning flotilla bound for Venice.",
+      "id": "theo",
+      "name": "Theo",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran Legion combat leader on Alexander's seaborne mission. He shares responsibility for the expedition's ships and personnel, providing experienced military command as the Legion establishes a new route to Venice.",
+      "id": "nikephoros",
+      "name": "Nikephoros",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Legion officer in Alexander's close party. He enters Venice with Alexander, Constans, and their dark elf companion under Francesco's sponsorship, helping represent the military force behind the new commercial mission.",
+      "id": "basil",
+      "name": "Basil",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A merchant involved in Miletus's response to its food shortage. Alexander authorizes him to draw plankton from the settlement's production pools, tying local enterprise to the effort to sustain the growing population.",
+      "id": "asylaion",
+      "name": "Asylaion",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Captain Francesco"
+      ],
+      "description": "A Venetian merchant captain rescued when Alexander's force destroys three attacking pirate ships. He warns that Corfu's pirates have become unusually lethal, then offers hospitality and guides the flotilla into Venice.",
+      "id": "francesco",
+      "name": "Francesco",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Alexander's bound giant"
+      ],
+      "description": "A powerful summoned combat spirit already bound to Alexander before the Venice expedition. It is one of the exceptional forces available to him when ordinary soldiers or weapons are insufficient against large threats.",
+      "id": "giant-spirit",
+      "name": "Giant spirit",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An officer who accompanies Alexander's small delegation into Venice while most of the expedition remains aboard ship. The captain represents the dark elf contingent within Alexander's diverse military organization.",
+      "id": "dark-elf-captain",
+      "name": "Dark elf captain",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Shadow Queen"
+      ],
+      "description": "The spirit behind the Shadow Queen quest, once a village innkeeper's daughter who was dispossessed, forced into marriage, and driven to vengeance. After Alexander resolves her history, she agrees to protect him as his allied spirit.",
+      "id": "isabella",
+      "name": "Isabella",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alexander's principal crafting contact in a secluded dwarven city. Interest in shared magical principles leads him to exchange advanced enchanting knowledge, including the craft of weapons whose intelligence can grow over time.",
+      "id": "elderly-dwarven-enchanter",
+      "name": "Elderly dwarven enchanter",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A specialist in breeding horses and cattle who believes his skills can be adapted to monsters. Alexander hires him for a domestication project and offers safety to his family, who face retaliation from the tamer's former employer.",
+      "id": "former-trading-company-tamer",
+      "name": "Former trading-company tamer",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of the goblins living along the route to the dwarven settlement. He negotiates a binding agreement to protect Alexander's people, caravans, and allies in exchange for equipment, security, and a regular supply of monster cores.",
+      "id": "goblin-chieftain",
+      "name": "Goblin chieftain",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A merchant from C.K. whom Constans recruits for the growing Venice operation. He agrees to relocate after arranging his affairs, giving Alexander's new company a dedicated commercial manager with local work to build.",
+      "id": "mikhail",
+      "name": "Mikhail",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander and liaison for the dark elf scouts protecting the Venice compound. The leader explains how goblins absorb monster cores to increase their strength and intelligence, information that shapes Alexander's plans for his recruits.",
+      "id": "dark-elf-scout-leader",
+      "name": "Dark elf scout leader",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The formidable patriarch who hosts Alexander at a Venetian gathering intended to address conflict between their interests. His family expects an understanding with the pirates to protect old houses, but he fights when raiders violate it.",
+      "id": "de-zorzi-family-head",
+      "name": "De Zorzi family head",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The distant pirate leader whom Alexander's captors claim to serve. His followers say selected Venetian prisoners will undergo an unholy ritual that makes them loyal and sends them back as infiltrators, leaving the scope of his network uncertain.",
+      "id": "pirate-king",
+      "name": "Pirate King",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A semi-intelligent suit Alexander creates from steel, lizard hide, enchanted batteries, and dwarven intelligence runes. It recognizes him as its owner, develops a shadowed demonic form, and accepts a contract to protect and obey him in exchange for cores and autonomy.",
+      "id": "living-armor",
+      "name": "Living armor",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Armor of shadow and death"
+      ],
+      "description": "The name and evolved identity of the living armor Alexander created during his journey across North Africa. After consuming orichalcum, it gains stronger shadow abilities and working wings, then breaks the restraints that have sealed Alexander's active powers.",
+      "id": "tenebrosis",
+      "name": "Tenebrosis",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The sole surviving female raptor from a lizard-kin patrol. She follows Alexander, accepts his food and care, and gains his trust as an intelligent new traveling companion.",
+      "id": "surviving-female-raptor",
+      "name": "Surviving female raptor",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The intelligent female velociraptor who followed Alexander after he survived a lizard-kin patrol. Now named and trained as his mount, she proves exceptionally fast, stealthy, and responsive before becoming his bonded partner through the Dragon Lancer class.",
+      "id": "ivy",
+      "name": "Ivy",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Tilly guide"
+      ],
+      "description": "A telepathic Tilly liaison who receives Alexander under guard at her people's mountain fortress. She explains their dragon ancestry, their distrust of corrupted humans, and the long war threatening their city while guiding him toward its leaders.",
+      "id": "tilly-psychic-translator",
+      "name": "Tilly psychic translator",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commanders authorized to commit the Tilly city to war. Exhausted by a prolonged struggle against demonic corruption, they hear Alexander's offer of outside military aid and negotiate the supplies, shelter, and forces needed for a joint offensive.",
+      "id": "tilly-war-leaders",
+      "name": "Tilly war leaders",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of one hundred elite dwarves sent by his king to reinforce Venice. He leads the dwarven contingent defending Alexander's compound and the city's remaining free territory.",
+      "id": "dwarf-commander",
+      "name": "Dwarf commander",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The field commander directing the pirate occupation of Venice. During Alexander's counterattack, he compels surviving pirates to keep fighting and drives them into pursuit through the trapped ground between the opposing lines.",
+      "id": "pirate-warlord",
+      "name": "Pirate warlord",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A seasoned officer who volunteers to command two hundred Tilly auxiliaries entering renewable Legion service. Her combined force of dragon lancers and dragon archers is due to assemble at Carthage for transport to Venice.",
+      "id": "tilly-archer-captain",
+      "name": "Tilly archer captain",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "portal-to-nova-roma-venice"
+}
