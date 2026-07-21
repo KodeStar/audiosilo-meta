@@ -1,0 +1,458 @@
+{
+  "characters": [
+    {
+      "description": "A captive spear fighter and maker of an inhabited inner world. Confined on an engraved island that drains his attributes, Randidly begins repairing the distorted class structure that has halted his progress.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The opponent whose victory leaves Randidly captive on an engraved island surrounded by water. He defeats Randidly with help from a propagator.",
+      "id": "aiden-dark",
+      "name": "Aiden Dark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Randidly's soul-linked ally, able to reach him through their bond despite his imprisonment. Her encouragement helps him commit to repairing and reconnecting his class pillars instead of discarding the entire structure.",
+      "id": "nevaeh",
+      "name": "Nevaeh",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Telus spear competitor and ally of Randidly who continues the tournament while trying to locate him. Their bond tells her he remains alive, although she cannot determine where he is held or how to reach him.",
+      "id": "helen",
+      "name": "Helen",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Krita"
+      ],
+      "description": "Randidly's knowledgeable soul-linked adviser, stranded for decades of subjective time inside his inner world. Although she wants a way out, she refuses to abandon the manor owner beside whom she has built a life.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The owner of Bounty Manor and Lucretia's longstanding companion. She discusses the quiet Council of Fates and possible leads involving Progenitor runes, while Lucretia refuses to leave her behind.",
+      "id": "bounty-manor-owner",
+      "name": "The Bounty Manor Owner",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Helen's friend and fellow tournament competitor. She spars with Helen, then takes her to meet the giant black-crystal scorpion who serves as her master.",
+      "id": "white-haired-contender",
+      "name": "The White-Haired Contender",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's master and a formidable Telus spear champion. He can sense that his missing disciple is alive and not in immediate mortal danger, and joins Ophelia in striking propagators threatening a refugee convoy.",
+      "id": "shal",
+      "name": "Shal",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A school leader and architect of Telus's defense who fights beside Shal. Her image-based strength lets her overwhelm a propagator and its controlled forces during an operation near the northern convoy.",
+      "id": "ophelia",
+      "name": "Ophelia",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young survivor living alone in Zone 1 through stealth, deception, and careful monster hunting. A disturbing dream encounter with Nevaeh leaves a violet power centered in his chest just before a wolf pack closes in.",
+      "id": "naffer",
+      "name": "Naffer",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An intelligent, apparently non-hostile treant-like person whom Naffer encounters in an overgrown town. Fire smolders around the figure, whose identity and intentions remain unclear.",
+      "id": "fire-smoldering-treant",
+      "name": "The Fire-Smoldering Treant",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An earth-golem labor organizer who coordinates a peaceful crew restoring shelter for displaced people ahead of the seasonal sandstorms. Her work gives Randidly a practical view of how a ruined society begins rebuilding.",
+      "id": "earth-golem-relief-leader",
+      "name": "The Earth-Golem Relief Leader",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced Earth-Golem surveyor who supervises Randidly on a relief expedition. He watches the unusually strong newcomer closely while judging whether his work can safely uncover shelter for displaced people.",
+      "id": "senior-earth-golem-surveyor",
+      "name": "The Senior Earth-Golem Surveyor",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-Golem relief worker assigned alongside Randidly. He welcomes the newcomer as a coworker and friend while their crew clears ruined shelter for displaced people.",
+      "id": "earth-golem-laborer",
+      "name": "The Earth-Golem Laborer",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young soulless marten taken in by the relief crew after losing her parent. She remains instinctively afraid of Randidly.",
+      "id": "tessa",
+      "name": "Tessa",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The missing royal has dark hair and eyes resembling fire. A coup in the monster capital has made his absence a threat to the armistice, and the relief leader sees a resemblance between him and Randidly.",
+      "id": "monster-prince",
+      "name": "The Monster Prince",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The local architect of a coup in Karthak. He has gathered thousands of fighters, plans to exploit the apparent prince's death as political cover, and orders an ambush intended to leave the city under his control.",
+      "id": "monster-chancellor",
+      "name": "The Monster Chancellor",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The relief leader's long-missing brother and a former lieutenant of the Earth Golem High King. His unexplained return brings an objection to his sister's decision to spend the remaining royal treasury on relief work.",
+      "id": "earth-golem-relief-leaders-brother",
+      "name": "The Earth-Golem Relief Leader's Brother",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deposed Earth Golem ruler who lost an arm when a silver mech defeated him. Convinced that his old ambition has become impossible, he debates lost purpose and failed dreams with the Monster Prince.",
+      "id": "former-earth-golem-high-king",
+      "name": "The Former Earth Golem High King",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tournament fighter backed by his sister, who expects him to win. She fears that his participation will carry consequences beyond the immediate match.",
+      "id": "silo",
+      "name": "Silo",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Silo's sister and a supporter of his tournament campaign. She expects him to win, fears consequences for him beyond the contest, and wagers with Shal over the outcome.",
+      "id": "silos-sister",
+      "name": "Silo's Sister",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A would-be attendant who seeks guards by recruiting in Randidly's name. He presents Randidly as a spear pontiff and exaggerates a brief demonstration into a personal connection.",
+      "id": "would-be-attendant",
+      "name": "The Would-Be Attendant",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Shal's ally, involved in steering Randidly away from Telus's central struggle. She believes he does not belong in the world's intended ascension conflict and urges Shal to remove him from it.",
+      "id": "rumera",
+      "name": "Rumera",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's military associate, who questions the decision to send the newly recruited and poorly supplied force toward the Death School.",
+      "id": "platon",
+      "name": "Platon",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the few recruits to pass the Yggdrasil trial. She joins Randidly's expedition while her longtime companion Rascal remains behind in the northern camp.",
+      "id": "yana",
+      "name": "Yana",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A strong and practical Emerald Essence recruit whom Randidly assigns to organize the expedition's boat crews.",
+      "id": "io",
+      "name": "Io",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tournament rival suffering serious and lasting effects after a recent match. Randidly chooses not to investigate Drac's condition while preparing his expedition.",
+      "id": "drac",
+      "name": "Drac",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient and powerful carrier of the White army whose aura distorts her surroundings. She intercepts Randidly's fleet, then warns him that someone close to him has betrayed his trust.",
+      "id": "oracle",
+      "name": "The Oracle",
+      "reveal": {
+        "chapter": 77
+      }
+    },
+    {
+      "description": "Helen's highly skilled tournament rival. After the White siege abruptly ends, she declines Helen's proposal to resume their interrupted final because her master has left and the contest's former stakes no longer matter.",
+      "id": "azrael",
+      "name": "Azrael",
+      "reveal": {
+        "chapter": 85
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A covert presence inside Randidly's soul skill who supports Lucretia and the mechanical woman as their convoy approaches the Progenitor runes.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 87
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A man waiting at a Death School stronghold where Randidly's recovered equipment is held under restraints.",
+      "id": "versalt",
+      "name": "Versalt",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of Telus's hidden spear-user faction and the planner behind an attempted ascension. When the intended duel is disrupted, he withdraws with Ophelia while an unexpected attacker claims responsibility.",
+      "id": "autorach",
+      "name": "Autorach",
+      "reveal": {
+        "chapter": 99
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spear user whose victory over Silo has broken the faction's planned ascension route. Her loyalty rests on a profound debt to the master who rescued her from an arranged marriage and gave her a weapon and a future.",
+      "id": "asriel",
+      "name": "Asriel",
+      "reveal": {
+        "chapter": 99
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A wind-user allied with the Oracle. When Randidly warns that Asriel's departure will cause disaster, the wind-user refuses to change course before the planned ascension is averted.",
+      "id": "wind-user",
+      "name": "The Wind-User",
+      "reveal": {
+        "chapter": 99
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The original propagator, returned to contest Telus's ascension. It claims that Autorach betrayed an earlier peaceful proposal by pinning its heart to the White City, and it recruits an indebted spear user to carry competing images.",
+      "id": "first-propagator",
+      "name": "The First Propagator",
+      "reveal": {
+        "chapter": 104
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A craftsman selected to claim the Alpha Cosmos's second obelisk. He gains the Stone Singer class and begins building in the mountains exposed when the surrounding mist clears.",
+      "id": "grim",
+      "name": "Grim",
+      "reveal": {
+        "chapter": 103
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The name claimed by the first propagator as the battle for Telus's ascension begins in earnest. Adete confronts Autorach directly while allied Witch Kings and northern spear users delay the opposing force.",
+      "id": "adete",
+      "name": "Adete",
+      "reveal": {
+        "chapter": 109
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A northern spear user whose overwhelming sun image makes him a grave combat threat. He confronts Randidly to avenge his grandson's downfall, overpowers Randidly's ash image, and takes his left arm in their opening clash.",
+      "id": "sun-image-spearman",
+      "name": "The Sun-Image Spearman",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An inhabitant of the Alpha Cosmos whom Randidly summons into the ruined plaza as an ally against the sun-image spearman.",
+      "id": "alpha-cosmos-swordsman",
+      "name": "The Alpha Cosmos Swordsman",
+      "reveal": {
+        "chapter": 114
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A faction chief in Randidly's inner world whose body is now predominantly machinery. With Krita beside her, she launches an ash-fueled assault on barricaded Karthak that brings down the mountain.",
+      "id": "mechanical-woman",
+      "name": "The Mechanical Woman",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The identity assumed by the mechanical woman when she reaches the deepest Progenitor runes. She has made her own ash-corrupted body the key to severing the connection, even if the attempt destroys both linked worlds.",
+      "id": "metal-queen",
+      "name": "The Metal Queen",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A person from Randidly's past whose memory helps him shape a sunlight image during his imprisonment.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young settlement leader carrying the strain of monster threats, bandit activity, and slowing growth. Sam responds to his concerns by inviting him to dinner with the settlement administrator.",
+      "id": "young-settlement-leader",
+      "name": "The Young Settlement Leader",
+      "reveal": {
+        "chapter": 124
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Donington leader carrying the strain of several simultaneous threats to the settlement. He fears its growth is slowing without Randidly's direct support.",
+      "id": "donnie",
+      "name": "Donnie",
+      "reveal": {
+        "chapter": 125
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A figure whose leadership image has influenced others through Randidly's network of connections. Randidly recognizes that influence in the relief leader's newly formed image.",
+      "id": "mrs-hamilton",
+      "name": "Mrs. Hamilton",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The level-79 commander of the force gathered beyond the Ogre Gorge. He approaches Earth's defenders under a peaceful pretense, identifies himself as the invasion leader, and demands Earth's surrender.",
+      "id": "ogre-leader",
+      "name": "The Ogre Leader",
+      "reveal": {
+        "chapter": 126
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An Earth champion with access to Randidly's dreams. He warns that concentrated political and personal power may harden into oligarchy, and asks Randidly to encourage a peaceful route for future leadership changes.",
+      "id": "simon",
+      "name": "Simon",
+      "reveal": {
+        "chapter": 134
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A cockroach-like fighter inducted into Randidly's order after serving in Naffer's three-week guerrilla campaign against ogres. Randidly provisionally accepts him while remaining wary of his past.",
+      "id": "cockroach-like-inductee",
+      "name": "The Cockroach-Like Inductee",
+      "reveal": {
+        "chapter": 136
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The city official responsible for sewer infrastructure and waste processing. Away from that public role, he disguises himself to operate a bakery in secret.",
+      "id": "ed",
+      "name": "Ed",
+      "reveal": {
+        "chapter": 144
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-7"
+}
