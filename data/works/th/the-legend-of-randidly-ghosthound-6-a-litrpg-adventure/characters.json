@@ -1,0 +1,378 @@
+{
+  "characters": [
+    {
+      "description": "An Orchard businesswoman and former criminal whose Cutpurse class no longer fits the stealthy, decisive fighter she wants to become. She accepts Nathan's dangerous attempt to rebuild the class around that self-image.",
+      "id": "tatiana",
+      "name": "Tatiana",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Sole Architect able to inspect people through Aether and restructure their classes. He begins remaking Tatiana's class despite the risk to her soul and without clear confirmation that Randidly authorized the procedure.",
+      "id": "nathan",
+      "name": "Nathan",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Orchard's administrator and a political ally of Randidly Ghosthound. She investigates a recent cluster of nearly forty unexplained disappearances among residents with no obvious shared profile.",
+      "id": "senator-firefly",
+      "name": "Senator Firefly",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Baloo Erickson"
+      ],
+      "description": "The disguised Zone 1 figure known as Baloo Erickson, now revealed as Randidly Ghosthound. He maintains a hidden refuge beneath his farm and investigates why a younger version of a foe he killed is still appearing in public.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Church-linked figure whose younger public appearance matches an older enemy Randidly killed. The resemblance and the unusual experience gained from the earlier death make the figure's nature and survival uncertain.",
+      "id": "father-foster",
+      "name": "Father Foster",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Randidly's soul-linked companion, who uses his public appearance in Zone 32 while he operates under a disguise elsewhere. Her own primary name is not established when Randidly explains the arrangement.",
+      "id": "randidlys-shapeshifter",
+      "name": "Randidly's shapeshifter",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gunslinger sheriff following a developing soul skill toward danger in West Providence. He brings Ezekiel and Thaddeus while searching for the threat connected to his missing brother, trusting the new instinct even though it offers no clear destination.",
+      "id": "hank",
+      "name": "Hank",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous member of Hank's search party whose undisclosed condition creates a persistent risk. He has recently confined his killing to monsters, but that restraint is treated as fragile while the group follows Hank toward an unknown threat.",
+      "id": "ezekiel",
+      "name": "Ezekiel",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hank's former Tier 2 ally and an experienced shock trooper. He accompanies Hank and Ezekiel as the sheriff's soul-guided intuition leads the group toward an unknown threat, providing dependable force for an investigation with few reliable answers.",
+      "id": "thaddeus",
+      "name": "Thaddeus",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Unity Church believer who runs the tea shop built where Randidly once lived. Her shop has been vandalized because of her faith, but she invites Randidly inside instead of asking him to retaliate publicly.",
+      "id": "maud",
+      "name": "Maud",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A formidable defender preparing Franksburg against an army from a newly connected zone. He is a prominent local hero and carries a living sword whose power he keeps in reserve while organizing resistance to the approaching invasion.",
+      "id": "lucifer",
+      "name": "Lucifer",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A world-tree figure whose transformation spreads across the zone.",
+      "id": "arbor",
+      "name": "Arbor",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Father Foster"
+      ],
+      "description": "An independent female raid-boss incarnation who used her bond with the original creature to destroy it and the male figure it empowered. She controls the raid boss's spawn and confronts Randidly beneath Lake Apollo.",
+      "id": "faust",
+      "name": "Faust",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A hammer-wielding fighter who breaches Randidly's barrier at Lake Apollo with Chrysanthemum and an obsidian-armored companion.",
+      "id": "thea",
+      "name": "Thea",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A bear infused with green fire who accompanies Thea and an obsidian-armored man through Randidly's barrier at Lake Apollo.",
+      "id": "chrysanthemum",
+      "name": "Chrysanthemum",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous traveler whose class leaves him with a persistent hunger. After turning on Hank and Thaddeus, he identifies Randidly Ghosthound as his son and is left severely wounded but alive.",
+      "id": "ezekiel-ghosthound",
+      "name": "Ezekiel Ghosthound",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sidney"
+      ],
+      "description": "An East End leader who intervenes after Franksburg's defender is beaten by an invading commander. She confronts the enemy with ice and lightning magic, arriving as the city's defense is close to failing against the stronger opponent.",
+      "id": "sidney-harp",
+      "name": "Sidney Harp",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Undying Hero"
+      ],
+      "description": "A powerful regenerative fighter who remains with the badly injured Thea after other allies depart. Calling himself the Undying Hero, he offers an experience benefit and seeks contact with the power directing her.",
+      "id": "roy",
+      "name": "Roy",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Zone 1's artificial intelligence and drone controller. Randidly confronts Ghost over whether it knowingly enabled Unity Church raids and kidnappings, making its judgment and loyalties an immediate concern.",
+      "id": "ghost",
+      "name": "Ghost",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly elected councilwoman and Radical Scholar who relies on planning and memory rather than combat strength. She advances a rights-based proposal intended to restrain exceptional power through law and chivalric orders.",
+      "id": "tessa",
+      "name": "Tessa",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adviser whose experience in a raid dungeon persuaded his settlement to develop around elemental power. Sydney presents his guidance as the reason her community changed course and began preparing for a future that its former approach could not meet.",
+      "id": "drake",
+      "name": "Drake",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An established military leader with her own village. She credits Drake's advice after a raid dungeon with persuading her settlement to adopt elemental development and prepare for future threats.",
+      "id": "sydney",
+      "name": "Sydney",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ash-barked, fire-filled protector among twelve thousand altered people. The treant stops Hank's attack, restores Hank's dying brother with a white flame, and insists that the gathered beings are friends rather than monsters.",
+      "id": "altered-treant-leader",
+      "name": "Altered treant leader",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Unity Church adherent who argues that dangerous beliefs are easier to contain inside one visible institution. His willingness to accept sacrifice puts him in direct moral conflict with Randidly during the confrontation over the Church's experiments.",
+      "id": "randidlys-grandfather",
+      "name": "Randidly's grandfather",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Randidly's soul-linked Aether expert, researching how to free monster-spawning devices from fixed sites. Her work supports his plan to move and redistribute the devices rather than leave them under Church control.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Telus frontline sergeant who pays a severe price to bring Randidly back to her world. She is a highly trained spear fighter, carries fresh grief over her father, and meets Randidly with both guarded affection and a demand to spar.",
+      "id": "helen",
+      "name": "Helen",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A needle-spear tournament representative assigned to compete beside Randidly and Helen. She is eager to spar with Randidly, while Helen wants the team to conserve its strength after an alarm interrupts their reunion.",
+      "id": "white-haired-spearwoman",
+      "name": "White-haired spearwoman",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A classless Orchard youth supported by an older resident and trapped by debt to a criminal gang. He survives through deception and feigned weakness, but anger at being reduced to cowardice pushes him toward resistance.",
+      "id": "naffer",
+      "name": "Naffer",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young Orchard shop clerk whose unusually powerful singing has caught Naffer's attention. His feelings for her complicate the dangerous criminal job he has been forced to join, although she does not yet know the risk surrounding him.",
+      "id": "maureen",
+      "name": "Maureen",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of the Heart School and representative of the Oracle. As the schools suspect betrayal and fear an old enemy, she sends her rapidly advancing lieutenant to reinforce the fight against two Witch Kings.",
+      "id": "ophelia",
+      "name": "Ophelia",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tournament representative assigned to Team 16 with Randidly and two spearwomen. He arrives under personal pressure, believing a rival has arranged his exclusion and endangered his sister, and is driven to oppose the coming calamity.",
+      "id": "silo",
+      "name": "Silo",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Team 16 contestant who carries an engraved spear and enters the sudden military campaign beside Randidly and Silo.",
+      "id": "engraved-spear-woman",
+      "name": "Engraved-spear woman",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful patron who intervenes when Randidly forces two skills into a dangerous resonance. The being prevents a worse collapse, warns him to proceed gradually, and asserts a claim over his life while withholding the larger purpose of that interest.",
+      "id": "patron-of-ash",
+      "name": "Patron of Ash",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's former rescuer and Spear Phantom-style master. Randidly recalls the debt he owes Shal for saving and arming him, although they are currently out of contact and he has no clear explanation for the silence.",
+      "id": "shal",
+      "name": "Shal",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The architect and ruler of the Whites, and the creator of Lucretia's original body. He summons her for likely deconstruction, demonstrates effortless control over a Witch King, and compels her to approach despite her resistance.",
+      "id": "autarch",
+      "name": "Autarch",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A master-level Telus authority facing the collapse of the northern domain. He orders its stronghold to retreat toward the center and sends an enforcer to ensure compliance while the White invasion expands.",
+      "id": "spearman-school-leader",
+      "name": "Spearman School leader",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly promoted Central Domain investigator working with an assistant. The representative opens an inquiry into Randidly as the Engraving Guild renews its interest in unlicensed engraved weapons and the unusual outsider who may be producing them.",
+      "id": "engraving-guild-representative",
+      "name": "Engraving Guild representative",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young heiress placed under Lucretia's protection. Her emerging karmic tie to Randidly makes her Lucretia's best prospect for reconnecting with him.",
+      "id": "lucretias-charge",
+      "name": "Lucretia's charge",
+      "reveal": {
+        "chapter": 108
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lucretia's former charge, now an engineer whose workshop and earlier research are destroyed by a worldwide earthquake. Alta turns her attention to using the altered world-tree sap as a power source that might end the war.",
+      "id": "alta",
+      "name": "Alta",
+      "reveal": {
+        "chapter": 116
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-6-a-litrpg-adventure"
+}
