@@ -1,0 +1,423 @@
+{
+  "characters": [
+    {
+      "description": "An independent Zone 32 leader preparing to command a sealed raid dungeon. His new plant-centered class offers major growth, but his bonded companion and evolving soul skill are unavailable as the expedition begins.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Randidly's bonded companion, temporarily dormant while undergoing a transformation apparently prompted by his new class.",
+      "id": "bone-worm-companion",
+      "name": "Bone-worm companion",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The weapon maker who forged Randidly's new ogre-spine spear.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "East End's wary leader and Randidly's long-separated childhood friend. He approaches her to secure the final place in his raid expedition.",
+      "id": "sydney",
+      "name": "Sydney",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "East End's guard leader. He challenges Randidly's arrival and treats the visitor as a possible threat to the settlement.",
+      "id": "drake",
+      "name": "Drake",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A companion who enters East End with Randidly and Ptolemy.",
+      "id": "rose",
+      "name": "Rose",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Randidly's allies entering East End and Sydney's former partner.",
+      "id": "ace",
+      "name": "Ace",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Randidly's party who accompanies him and Rose into East End.",
+      "id": "ptolemy",
+      "name": "Ptolemy",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's Aether adviser and class-weaver within their inner connection. She resumes observing him and makes clear that she disapproves of part of his new class.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A frontline fighter who enters the raid with her bear companion, Chrysanthemum.",
+      "id": "thea",
+      "name": "Thea",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Thea's bear companion and a full combatant in the expedition, admitted despite the dungeon's nominal ten-person limit.",
+      "id": "chrysanthemum",
+      "name": "Chrysanthemum",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A heavy melee member of the raid party who fights with an enormous cleaver-like weapon. Randidly has not previously seen the full extent of his combat style.",
+      "id": "lucifer",
+      "name": "Lucifer",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful area spellcaster whose attacks can decide large engagements, though direct pressure against her creates danger for nearby allies.",
+      "id": "clarissa",
+      "name": "Clarissa",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fast, perceptive archer and tracker who watches Drake closely after he joins the raid party and warns him to remain professional.",
+      "id": "annie",
+      "name": "Annie",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The raid's solo vanguard, holding a flank with her sunspear while the party defends a threatened settlement.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elusive experimenter tied to the raid dungeon. Randidly knows this being and both champion Regalias remain unaccounted for, making its unseen role a central danger within the sealed world.",
+      "id": "dungeon-experimenter",
+      "name": "Dungeon experimenter",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Ace"
+      ],
+      "description": "The cultivated fighting persona Ace adopts through his helmet. The identity changes his bearing and gives his allies a separate name for that side of him.",
+      "id": "dauntless",
+      "name": "Dauntless",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A blinded Dintan ritualist whom Randidly exposes as a former Zone 32 champion. He interrupts her hidden influence over Ptolemy and places her under restraint.",
+      "id": "former-wild-rider",
+      "name": "Former Wild Rider",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A leading defender within Randidly's inner world. He commands forces facing an invasion that threatens the peoples living inside the soul skill.",
+      "id": "monster-king",
+      "name": "Monster King",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient Dintan leader who publicly represents the hidden city's ruler and says she has endured for centuries.",
+      "id": "gemma",
+      "name": "Gemma",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Dungeon experimenter"
+      ],
+      "description": "The hidden dungeon experimenter when it finally appears before Randidly in an aged version of Lyra's face. The encounter makes the visual connection safe, but does not establish that the being is Lyra.",
+      "id": "creature-using-lyras-face",
+      "name": "Creature using Lyra's face",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The familiar face worn by the dungeon's hidden enemy when it finally appears before Randidly, visibly aged but still recognizable.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Simon"
+      ],
+      "description": "Randidly's returning Dreamer ally after he claims the recovered Regalias and becomes Zone 32's new champion. The transformation strengthens his illusions and distant perception while binding him to champion duties.",
+      "id": "eternal-dreamer",
+      "name": "Eternal Dreamer",
+      "reveal": {
+        "chapter": 67
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning Dreamer ally known before this volume, able to observe distant events through astral perception.",
+      "id": "simon",
+      "name": "Simon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Donington organizer who directs spiderlings in producing fabric from the marrow silk supplied by Randidly's companion.",
+      "id": "mrs-hamilton",
+      "name": "Mrs. Hamilton",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Donington's chieftain, whom Randidly tests to determine whether he can protect the settlement independently.",
+      "id": "donnie",
+      "name": "Donnie",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly awakened survivor who assists at a Donington triage center using her first-aid experience and is allowed to settle in the town.",
+      "id": "tanya",
+      "name": "Tanya",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An official whose report discloses Earth's unusually high Aether readings and a heretic-level reading, exposing the planet to greater outside scrutiny.",
+      "id": "octavius-shrike",
+      "name": "Octavius Shrike",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Zone 1 gunslinger sheriff who intervenes to protect a probationary youth from two higher-tier aggressors.",
+      "id": "hank",
+      "name": "Hank",
+      "reveal": {
+        "chapter": 80
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hank's brother, who summons him to East Providence.",
+      "id": "alan-howard",
+      "name": "Alan Howard",
+      "reveal": {
+        "chapter": 80
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Zone 1's city-classification artificial intelligence and a central UHF power. It evaluates cities, monsters, and citizens while shaping preparations for contact with other zones.",
+      "id": "ghost",
+      "name": "Ghost",
+      "reveal": {
+        "chapter": 81
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous prospective member of Hank's Zone 1 expedition.",
+      "id": "ezekiel",
+      "name": "Ezekiel",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A UHF operative in a powered suit who challenges Hank for command of an upcoming expedition.",
+      "id": "mordecai-heath",
+      "name": "Mordecai Heath",
+      "reveal": {
+        "chapter": 85
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A blind combatant whom the Jade Prince assigns to Hank's expedition. Her equipment includes a bamboo cane.",
+      "id": "afina-yu",
+      "name": "Afina Yu",
+      "reveal": {
+        "chapter": 86
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An android assigned by Ghost to replace Mordecai Heath on Hank's expedition.",
+      "id": "katie-holmes",
+      "name": "Katie Holmes",
+      "reveal": {
+        "chapter": 87
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hank's former partner and a spirit walker whose warnings can shape dreams and reveal danger. She joins his expedition after warning that the newly opened territory is a trap.",
+      "id": "laurel",
+      "name": "Laurel",
+      "reveal": {
+        "chapter": 88
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Zone 32 mage who leads the initial contact with Hank's party and blocks a plasma shot with a mana shield.",
+      "id": "dinesh",
+      "name": "Dinesh",
+      "reveal": {
+        "chapter": 92
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally strong Zone 32 fighter who carries a massive, dense metal ball. He crushes a mortally wounded ram before meeting Hank's expedition.",
+      "id": "tykes",
+      "name": "Tykes",
+      "reveal": {
+        "chapter": 92
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ten-year-old member of Zone 32 living at its field base.",
+      "id": "nathan",
+      "name": "Nathan",
+      "reveal": {
+        "chapter": 93
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Randidly Ghosthound"
+      ],
+      "description": "Randidly's steelworker identity in Zone 1. The disguise lets him earn money, study local industry, and investigate threats without exposing the Zone 32 leader behind it.",
+      "id": "baloo-erickson",
+      "name": "Baloo Erickson",
+      "reveal": {
+        "chapter": 103
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The leader of a powerful Unity Church enclave that limits its members' access to System knowledge.",
+      "id": "father-foster",
+      "name": "Father Foster",
+      "reveal": {
+        "chapter": 107
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An armed Zone 1 businesswoman and organizer who approaches Randidly at a steelworkers' gathering while presenting herself as a fortune reader.",
+      "id": "tatiana",
+      "name": "Tatiana",
+      "reveal": {
+        "chapter": 108
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Unity Church speaker whom Randidly recognizes as his maternal grandfather.",
+      "id": "shal",
+      "name": "Shal",
+      "reveal": {
+        "chapter": 139
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A public performer presented as Randidly Ghosthound's fiancée.",
+      "id": "tia",
+      "name": "Tia",
+      "reveal": {
+        "chapter": 146
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-5"
+}
