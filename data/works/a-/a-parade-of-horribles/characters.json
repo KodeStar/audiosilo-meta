@@ -1,0 +1,363 @@
+{
+  "characters": [
+    {
+      "description": "A veteran crawler who reaches the tenth floor beside Donut and faces seven elimination heats with a changing roster of drivers.",
+      "id": "carl",
+      "name": "Carl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Princess Donut"
+      ],
+      "description": "Carl's co-leader and racing partner. On reaching the tenth floor, she selects the Assassin of Sekhmet class, chooses a mechanical vehicle for the team, and appoints its mechanic.",
+      "id": "donut",
+      "name": "Donut",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The gremlin mechanic Donut appoints to maintain the team’s mechanical race vehicle.",
+      "id": "hetty",
+      "name": "Hetty",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The floor announcer who briefs Carl and Donut on the upheaval beyond the racing floor, including Scolopendra's awakening and the plight of former crawler allies trapped as mercenaries.",
+      "id": "zev",
+      "name": "Zev",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An awakened entity whose activity is already spreading disorder across several dungeon levels when Carl and Donut arrive on the tenth floor.",
+      "id": "scolopendra",
+      "name": "Scolopendra",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Donut's creature companion and mount. He rides with Carl and Donut in the food truck during the first heat through the caves.",
+      "id": "mongo",
+      "name": "Mongo",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful independent crawler who warns the racing teams that excessive eliminations may force crawlers to compete directly against one another in later heats.",
+      "id": "prepotente",
+      "name": "Prepotente",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the surviving bugbear racers on Team Free Love. Yasha is an awakened dungeon resident whose damaged minivan Carl and Donut choose to tow to the first finish.",
+      "id": "yasha",
+      "name": "Yasha",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Carl's regenerating pet, traveling with the party during the racing heats. Rend helps, somewhat inadvertently, while Carl constructs a towing platform for another team.",
+      "id": "rend",
+      "name": "Rend",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The party's experienced adviser. His current shadow-mimic form copies a Moon Reaper poorly, causing unstable and unreliable prophecy-like declarations around unfamiliar species.",
+      "id": "mordecai",
+      "name": "Mordecai",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A practical ally and adviser who obtains removable caps for Donut's newly transformed claws, allowing Donut to conceal their glow and avoid accidental damage.",
+      "id": "rosetta",
+      "name": "Rosetta",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally traveling with Carl's group who searches an unexpected heap of ruined possessions for useful cosmetics while the others decide how to sort the clutter.",
+      "id": "samantha",
+      "name": "Samantha",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A half-mantar confined in a containment suit and associated with Don Quixote. A quest asks Carl and Donut to reunite the pair, locate another missing half, and find a Fleshmancer.",
+      "id": "don-quixotes-partner",
+      "name": "Don Quixote's Partner",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied combatant searching for his missing half-mantar partner. Carl and Donut receive a quest centered on reuniting them and finding both a second half and a Fleshmancer.",
+      "id": "don-quixote",
+      "name": "Don Quixote",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A level-95 Lady Mantar Dominator who worships Enyo and uses domination magic.",
+      "id": "genesis",
+      "name": "Genesis",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Prepotente’s racing partner aboard Sweetie, their large pariso mount.",
+      "id": "juergen",
+      "name": "Juergen",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler racing alongside Imani. She has been assigned an unusually devoted tourist because no other tourist appeared for her during the floor.",
+      "id": "ellie",
+      "name": "Ellie",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler and healer who shares a racing team and armored vehicle with Ellie as the prospect of crawler-against-crawler heats grows.",
+      "id": "imani",
+      "name": "Imani",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied racer paired with Lucia Marr in a tuk-tuk. He reports that her shifting personalities remain unstable even though she is scheduled to drive.",
+      "id": "florin",
+      "name": "Florin",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Florin's teammate, whose identity and manner continue to change among distinct personalities. She has declined an undisclosed offer and is still expected to take a turn driving.",
+      "id": "lucia-marr",
+      "name": "Lucia Marr",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler racing with Brittany and Bautista in a neon lowrider whose limited ground clearance may become a serious obstacle on later courses.",
+      "id": "louis",
+      "name": "Louis",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler and member of Louis and Brittany's three-person lowrider team, one of several crawler groups preparing for increasingly dangerous replacement matchups.",
+      "id": "bautista",
+      "name": "Bautista",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler sharing a lowrider with Louis and Bautista. Their vehicle's low clearance is a notable weakness as the teams compare equipment before later heats.",
+      "id": "brittany",
+      "name": "Brittany",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A formidable allied crawler whose destruction of most opponents in an earlier heat has caused replacement teams, including other crawlers, to enter the races.",
+      "id": "li-na",
+      "name": "Li Na",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler competing in a slow semi-truck with two teammates whose specialized classes do little to solve the vehicle's lack of speed.",
+      "id": "chris",
+      "name": "Chris",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A soother tourist assigned to Ellie after being the only tourist to appear for her. He also operates her fan club.",
+      "id": "linus",
+      "name": "Linus",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The anxious crocodilian chosen to drive Carl and Donut’s team during the second heat.",
+      "id": "bucket-boy",
+      "name": "Bucket Boy",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Dwight the Unicorn"
+      ],
+      "description": "A hostile unicorn racer whose team operates a vine-like vehicle with a concealed cannon. Its opening shot destroys another team's vehicle before Carl's planned attack can begin.",
+      "id": "dwight",
+      "name": "Dwight",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An ordinary pig racing with two Tigrans and protected by Tyrannus. Her enchantment compels certain NPCs to love her, while harming her would bring divine punishment upon the attacker.",
+      "id": "penelope",
+      "name": "Penelope",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Tauron rhythm-rider serving as a mercenary for Penelope's team. He previously worked with the half-mantar connected to Don Quixote's reunion quest.",
+      "id": "pontiff",
+      "name": "Pontiff",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hammerhead shark with spider legs who is present with Carl's team while the group weighs a secret proposal from the surviving War Mages.",
+      "id": "jamal",
+      "name": "Jamal",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adviser and recruiter working with Rosetta. The pair search the vendor area for a suitable mercenary before the next racing heat.",
+      "id": "tipid",
+      "name": "Tipid",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Grolke toad in the three-person mercenary unit hired by Carl and Donut’s team for the next race.",
+      "id": "olga",
+      "name": "Olga",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Brazilian crawler on Team Flamengo, paired with a strength-focused teammate and mounted on a durable Slaughternew. His worship of a deity may exclude him from a possible escape route.",
+      "id": "osvaldo",
+      "name": "Osvaldo",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human Fleshmancer hired by Ellie and Imani and brought into Carl's guild. His skill may allow the group to reunite the two separated halves of Don Quixote's partner.",
+      "id": "grigori",
+      "name": "Grigori",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Li Na's devoted teammate, who seeks a way to halt her poisoned and increasingly detached violence without killing her or sacrificing himself.",
+      "id": "zhang",
+      "name": "Zhang",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The divided person whose free half leads the Stage Performance Guild while the other half remains captive with the Lady Dominators. The two halves must be reunited to escape their shared danger.",
+      "id": "corcunda",
+      "name": "Corcunda",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The outside soldier who posed as his brother Linus after Linus died. The dungeon AI identifies him by his real name.",
+      "id": "minus",
+      "name": "Minus",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "a-parade-of-horribles"
+}
