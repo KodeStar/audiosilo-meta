@@ -1,0 +1,434 @@
+{
+  "characters": [
+    {
+      "description": "A spear fighter, maker, and Earth heretic whose soul world is the Alpha Cosmos. He opens the book by challenging the settlement to prove that its collective strength can withstand the greater calamities he expects the system to bring.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An off-world spear fighter who wishes to serve as Randidly's knight. Earth's restrictions sharply suppress her abilities, so she enters a dangerous dungeon and subjects herself to an extreme training schedule.",
+      "id": "helen",
+      "name": "Helen",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young woman who leads the sprigget settlement research effort. She agrees to design Randidly's articulated replacement arm, charging him a class lighthouse he does not need and a favor to be collected later.",
+      "id": "sprigget-head-engineer",
+      "name": "The sprigget head engineer",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A settlement craftsman who supplies Randidly with a darksteel armor set and continues developing equipment for him.",
+      "id": "settlement-smith",
+      "name": "The settlement smith",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The spirit of a settlement who knows about the system's architecture. Concealed ether machinery around her oak blocks the system overlay and hides itself from system observation.",
+      "id": "village-spirit",
+      "name": "The village spirit",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's soulbound ally and a covert defender of Earth. When his missing riders fail to return, he suspects that she has redirected them to a mission of her own beyond the sea, where her larger purpose is still unclear.",
+      "id": "nevaeh",
+      "name": "Nevaeh",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's autonomous weapon and ally. Its growing aggression resembles Thorn's behavior, and it demonstrates extreme combat power by destroying a settlement built around a tier-two raid boss.",
+      "id": "acri",
+      "name": "Acri",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's first soul seed, whose underground body extends beneath much of Scant. Thorn is substantially stronger than Acri and Sulphur when it reunites with them and Randidly.",
+      "id": "thorn",
+      "name": "Thorn",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Dawnsmith"
+      ],
+      "description": "A settlement craftsman determined to surpass three level-79 weapons sent by Zone 7. He resolves to answer the unsolicited gift with superior work and advance as the Dawnsmith.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A village spirit with privileged knowledge of the system's framework. She asks whether Randidly can grant her a class, offers intelligence in exchange for an honest answer, and warns that a powerful outside actor has complicated his approaching judgment.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A settlement contact asked by a Zone 7 delegation to connect the capital transport networks of the two zones.",
+      "id": "donnie",
+      "name": "Donnie",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Pale Killer"
+      ],
+      "description": "A feared pirate and former ally of Randidly. Known publicly as the Pale Killer, he boards Randidly's hired ship and is emotionally shattered when Randidly recognizes the hardship behind his violent reputation.",
+      "id": "declan",
+      "name": "Declan",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An undying skeletal instigator who fled through the portal to the frog world. He has encouraged powerful local factions to invade Earth, making his capture necessary before a peaceful solution can be attempted.",
+      "id": "roy",
+      "name": "Roy",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A frog-person academy graduate who volunteers to guide the Demon Prince south in place of a spawnmate. Though wary of Randidly, he is capable, locally knowledgeable, and unaffiliated with a Toad Lord.",
+      "id": "shual",
+      "name": "Shual",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A settlement civic leader who directs the immediate diplomatic response to Zone 7.",
+      "id": "mrs-hamilton",
+      "name": "Mrs. Hamilton",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Sam's partner, who is developing coffee for trade.",
+      "id": "regina",
+      "name": "Regina",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A giant flaming skeletal bear allied with the force raiding the settlement. It arrives through an enemy transfer, destroys one of Regina's spirit allies, and adds overwhelming physical force to the attackers' coordinated assault.",
+      "id": "chrysanthemum",
+      "name": "Chrysanthemum",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A settlement spear fighter who blocks Thea near the Zone 7 teleporter.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An attacker whom Alana blocks near the settlement's Zone 7 teleporter during the raid.",
+      "id": "thea",
+      "name": "Thea",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Sidney's altered lieutenant, found with Roy after maroon crystal has blinded or otherwise blocked his senses. Unable to distinguish ally from enemy, he attacks indiscriminately while bearing an unknown destructive power.",
+      "id": "drake",
+      "name": "Drake",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Nathan's sibling and a person known to have a connection with Randidly. A hostile group selects her as its captive during a coordinated raid.",
+      "id": "kirstie",
+      "name": "Kirstie",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Randidly's adviser within the Alpha Cosmos. She treats the rescued Kirstie and helps him study a disintegrating system construct that turns the force of images into simpler statistical power, offering both technical and political counsel.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A settlement spellcaster who reports on Zone 11, traces portal energy eastward, and uses a cloud-steed skill for rapid travel.",
+      "id": "clarissa",
+      "name": "Clarissa",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An established resident and political negotiator within the Alpha Cosmos. Randidly entrusts him with cautious contact after mist recedes to reveal an unfamiliar populated continent, relying on him to limit the risk of immediate conflict.",
+      "id": "the-monster-prince",
+      "name": "The Monster Prince",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rapidly developing fighter in squad 25 who specializes in awareness and defense. She enters the settlement's challenge alongside her sibling, Pan Cortez.",
+      "id": "isabella-cortez",
+      "name": "Isabella Cortez",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rapidly developing fighter in squad 25 whose attacks reduce an opponent's stamina. He enters the settlement's challenge alongside his sibling, Isabella Cortez.",
+      "id": "pan-cortez",
+      "name": "Pan Cortez",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The level-57 captain of the settlement's 10th Squad. Acting on Stan's order, he attempts a concealed attack on Randidly before the next challenge rung begins.",
+      "id": "eli-iron",
+      "name": "Eli Iron",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The settlement's elected military commander. Strategically capable but deeply afraid of Randidly, he authorizes a surprise attack between challenge rounds in hopes of breaking the appearance of invulnerability.",
+      "id": "stan",
+      "name": "Stan",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A settlement fighter assigned with Alana and the Cortez siblings to contain Helen during the decisive challenge battle.",
+      "id": "dozer",
+      "name": "Dozer",
+      "reveal": {
+        "chapter": 68
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Mrs. Hamilton"
+      ],
+      "description": "The settlement civic leader previously known as Mrs. Hamilton, whose name is revealed when Randidly addresses her as Miranda before the decisive challenge fight.",
+      "id": "miranda",
+      "name": "Miranda",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A barrier-and-array user whom Miranda is preparing as a possible future leader. The settlement's dwindling force relies on him to complete a prepared control skill while the other fighters occupy Randidly.",
+      "id": "beryl",
+      "name": "Beryl",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's contact for mobilizing the Order Dukies. Randidly identifies him as the person who can bring the order's forces south as new threats demand attention.",
+      "id": "naffer",
+      "name": "Naffer",
+      "reveal": {
+        "chapter": 84
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Erickson Steel receptionist with the Meticulous Technician class and an exceptional preparation skill. Her careful judgment leads her to trust Randidly's identity and escort him to the company's acting leadership.",
+      "id": "vi",
+      "name": "Vi",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Erickson Steel's managers during a coordinated financial and regulatory campaign against the company. She explains how targeted taxes and proposed inspections threaten its independence.",
+      "id": "tatiana",
+      "name": "Tatiana",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A financial and political opponent of Erickson Steel who wants control of the company and its metal technology. He works with Senator Heathridge, providing funds and operational support while their pressure campaign begins to lose leverage.",
+      "id": "evan-crane",
+      "name": "Evan Crane",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A political sponsor of the campaign against Erickson Steel. He directs Evan Crane to fund their final plan and wait for instructions as the company's rail technology attracts a powerful institutional ally.",
+      "id": "senator-heathridge",
+      "name": "Senator Heathridge",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Leader of one of Randidly's increasingly independent rider factions. Randidly formally names him and his group the Legion of the Unbreakable Bulwark after they bring back mutated dungeon monsters and request identities for their competing forces.",
+      "id": "kingsley",
+      "name": "Kingsley",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Leader of a rival faction among Randidly's summoned riders. Randidly names his silk-camp group the Legion of the Unavoidable Pivots as the riders develop stronger organization and distinct identities.",
+      "id": "trap",
+      "name": "Trap",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Naffer"
+      ],
+      "description": "The knight-errant of Randidly's order, earlier introduced as Naffer. At the Orchard lottery, he represents the order and asks candidates to show the ideals and commitment behind their intended futures.",
+      "id": "naffer-sweet",
+      "name": "Naffer Sweet",
+      "reveal": {
+        "chapter": 112
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Orchard lottery organizer who chooses Vi as his opponent after identifying her as one of the few contestants without a combat class.",
+      "id": "roland",
+      "name": "Roland",
+      "reveal": {
+        "chapter": 114
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Leader of the organized monster resistance inside the dungeon. After her people devise traps that kill several riders, she receives Randidly when he enters their hidden cave complex to demand surrender.",
+      "id": "bird-monster-war-priestess",
+      "name": "The bird-monster war priestess",
+      "reveal": {
+        "chapter": 119
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An Alpha Cosmos artificer and moving-city designer who works from a private workshop. Randidly approaches her to discuss possible internships at her company and asks her to undertake the design of a giant mobile city.",
+      "id": "wendy",
+      "name": "Wendy",
+      "reveal": {
+        "chapter": 124
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Alpha Cosmos fighter with the Morningstar Vanguard class. She tells Randidly that she has moved beyond obsessive training, pursued ordinary experiences, and found a more independent form of growth.",
+      "id": "azrael",
+      "name": "Azrael",
+      "reveal": {
+        "chapter": 125
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lazar Stone"
+      ],
+      "description": "The prince and heir of the Armgrast Empire, initially presented as the diamond merchant Lazar Stone. Randidly recognizes both his identity and his connection to the formation anchoring the Alpha Cosmos.",
+      "id": "lazarus",
+      "name": "Lazarus",
+      "reveal": {
+        "chapter": 125
+      }
+    },
+    {
+      "description": "A dying fourth-cohort artist-warrior awakened from a crystal coffin beneath the dungeon. Nether corruption consumes him, while the enduring image in his artwork is revealed as the source of the dungeon's timeless atmosphere.",
+      "id": "entombed-monkey-warrior",
+      "name": "The entombed monkey warrior",
+      "reveal": {
+        "chapter": 130
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-8"
+}
