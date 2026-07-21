@@ -1,0 +1,335 @@
+{
+  "characters": [
+    {
+      "description": "A human Winterscar knight newly committed to the Mite Speaker path. After escaping To’Orda, he is injured and alone in a contaminated forest, relying on Journey's sealed armor and dwindling power to stay alive.",
+      "id": "keith-winterscar",
+      "name": "Keith Winterscar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Keith's relic armor and constant operational partner. Journey seals him away from dangerous spores, tracks its limited energy, and provides the life-support and tactical systems on which his survival depends.",
+      "id": "journey",
+      "name": "Journey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Feather hunting Keith through the contaminated biome. Although dangerous and persistent, he spares a Grey Roamer cub when exploiting it would have aided the pursuit, giving Keith reason to suspect that negotiation may be possible.",
+      "id": "to-orda",
+      "name": "To’Orda",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Draconis"
+      ],
+      "description": "A Deathless companion of Keith who has been captured, disarmed, and deprived of his helmet by To’Orda. He remains alive and treats captivity as an opening for negotiation rather than accepting it passively.",
+      "id": "lyrian-draconis",
+      "name": "Lyrian Draconis",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Infestation"
+      ],
+      "description": "A sentient fungal bioweapon that communicates by changing the spores around Keith. Bob seeks a sustainable relationship with other life, but cannot fully restrain the infection that spreads through its environment.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile Feather acting through To’Aacar's damaged shell. His attempt to override Journey exposes his systems to a specialized virus, and he must resist To’Wrathh after she follows the resulting connection into his defenses.",
+      "id": "to-avalis",
+      "name": "To’Avalis",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unrelinquished Feather who has secretly protected Keith by placing a Feather-targeting virus in Journey. When To’Avalis tries to seize the armor, she uses the opening to attack him inside his own systems.",
+      "id": "to-wrathh",
+      "name": "To’Wrathh",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Deathless allied with To’Wrathh. He pledged himself to her because she rescued Keith from To’Aacar. He trains with her against To’Avalis, analyzes the danger posed by a shell's native soul fractal, and remains responsible for the Winterscar knights and her other allies when she leaves to find Keith.",
+      "id": "keiths-father",
+      "name": "Keith's father",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Feather adversary known from Keith's earlier conflicts.",
+      "id": "to-aacar",
+      "name": "To’Aacar",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A returning Mite Speaker and conspirator against Relinquished. He is connected to Keith's Division Stone mission and remains an important ally even while absent from Keith's immediate struggle in the biome.",
+      "id": "abraxas",
+      "name": "Abraxas",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Odin communications officer at the Icon of Stars. Aaron receives the unexpected call from the Valorant and becomes one of the first local witnesses to the claim that living humans have reached the region.",
+      "id": "aaron",
+      "name": "Aaron",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "the Icon"
+      ],
+      "description": "An AI linked to Odin communications. The Icon privately verifies that the armored callers from the Valorant are living humans, turning an apparent prank into information that Odin leaders immediately conceal.",
+      "id": "icon-of-stars",
+      "name": "Icon of Stars",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Journey's simulated crusader engram, projected as an adviser who can take authorized control of the armor. Catheda first demonstrates that authority by steering Keith through a coordinated Odin drone attack.",
+      "id": "catheda",
+      "name": "Catheda",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Odin commander who negotiates with Keith after the outpost's defenses fail. The leader places Odin protection first, explains the strategic concern surrounding human authority over the Icon of Stars, and considers Keith's offer to mediate with Bob.",
+      "id": "odin-military-leader",
+      "name": "Odin military leader",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "To’Orda's pet rock"
+      ],
+      "description": "An image-generator-based voice and adviser housed in To’Orda's equipment. The Rock helps him plan and communicate while he holds Draconis captive.",
+      "id": "the-rock",
+      "name": "The Rock",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Aztu's youngest brother and a gifted Feather strategist who learned to work around Relinquished's blind spots.",
+      "id": "abdication",
+      "name": "Abdication",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Odin intermediary who can speak with Keith at the Deadlands outpost. The translator guides him through local defenses and carries his urgent request for replacement power to the outpost's command structure.",
+      "id": "odin-translator",
+      "name": "Odin translator",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An external Odin leader expected at the Deadlands outpost while Keith waits for power. Septimus has not yet arrived when first discussed, but his approaching force makes him central to the settlement's uncertain response.",
+      "id": "septimus",
+      "name": "Septimus",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Odin official serving as the outpost commander's second-in-command. He controls the delayed transfer of the reserve power cells requested by Keith.",
+      "id": "odin-commanders-second",
+      "name": "Odin commander's second",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Odin commander's second"
+      ],
+      "description": "The former warrior-priest installed as the outpost commander's second-in-command. Acting on High Council orders, he leads the coup, restrains the commander, and directs that both reserve and active power supplies be denied to Keith.",
+      "id": "odin-warrior-priest-coup-leader",
+      "name": "Odin warrior-priest coup leader",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A former Odin captain who returns from logistics duty as the Deadlands faction resists the tower coup. He steps back into a practical command role after Keith helps contain the settlement's spreading fire.",
+      "id": "retired-odin-captain",
+      "name": "Retired Odin captain",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Feather sovereign whose damage and imposed blind spots shape the conflict. To’Orda's program reports that she destroyed his resolve after he tried to direct her attention toward a threat she cannot bear to recognize.",
+      "id": "relinquished",
+      "name": "Relinquished",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A shell-less proto-Feather echo hiding in the digital sea. Aztu is an ally of Abraxas who offers to train Keith in exchange for his account of Relinquished, while requiring him to conceal her survival from To’Wrathh.",
+      "id": "aztu",
+      "name": "Aztu",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "To’Orda"
+      ],
+      "description": "The additional designation To’Orda adopts after overcoming the Feather identity constraint that blocked a usable local name. He asks the bird intermediary to call him Boss while retaining his original designation.",
+      "id": "boss",
+      "name": "Boss",
+      "reveal": {
+        "chapter": 26
+      }
+    },
+    {
+      "aliases": [
+        "Aztu"
+      ],
+      "description": "The former human-known identity of Aztu, who once appeared as a proto-Feather armed with a scythe and bearing wings and bells.",
+      "id": "violet-valkyrie",
+      "name": "Violet Valkyrie",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The maker of Keith's exceptional Mite lantern and one of the few human Mite Speakers Aztu knew to retain her sanity.",
+      "id": "golden-goddess",
+      "name": "Golden Goddess",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Paragon of Resolve"
+      ],
+      "description": "A historical emperor and one of the rare humans known to remain sane as a Mite Speaker. Talon is identified as one of the first two Deathless and as a ruler who brought the war against Relinquished close to victory.",
+      "id": "talon",
+      "name": "Talon",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Paragon of Resilience"
+      ],
+      "description": "A historical emperor, sane Mite Speaker, and foundational figure among the Deathless. Aztu presents Urs as one of two lost emperors whose legacy shaped the powers still used in Keith's era.",
+      "id": "urs",
+      "name": "Urs",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A protector in the Digital Sea who prevents Relinquished from examining the weaker Resolve-derived fractals within Deathless souls. Keith's Mite Seeker is this figure's lantern.",
+      "id": "the-seekers-digital-sea-protector",
+      "name": "The Seeker's digital-sea protector",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Keith's Mite-held soul copy"
+      ],
+      "description": "The copy of Keith's soul given to the Mite Forge, now encountered as a conscious person within the Mite Seeker. He chooses cooperation instead of taking Keith's body and adopts a separate name for their shared work.",
+      "id": "keith-superior",
+      "name": "Keith Superior",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Keith Winterscar"
+      ],
+      "description": "The embodied Keith Winterscar, given this distinguishing name when his Mite-held soul copy adopts the name Keith Superior. Keith Prime agrees to seek physical-world access or a separate body for his cooperative counterpart.",
+      "id": "keith-prime",
+      "name": "Keith Prime",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An isolated, long-inactive Feather who commands the local biome. His army is searching the strata for two humans, and he is notified when To’Wrathh arrives.",
+      "id": "biome-ruling-third-generation-feather",
+      "name": "The biome-ruling third-generation Feather",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "12-miles-below-vii-path-of-the-mitespeaker"
+}
