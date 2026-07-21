@@ -1,0 +1,336 @@
+{
+  "characters": [
+    {
+      "description": "An eighteen-year-old sheep-farm worker who expects to become a baker and marry Nancy. His selection instead produces two skills and a black result, after which Guild representatives falsely declare him unskilled and take him into custody.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Max's intended wife and a trained baker. Their families have approved the match on the condition that Max completes a baking apprenticeship after his selection.",
+      "id": "nancy",
+      "name": "Nancy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Max's closest friend, present for the selection ceremony and hoping to follow a warrior's path.",
+      "id": "caleb",
+      "name": "Caleb",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Max's sister, a town-guard trainee who plans to seek an adventuring career after her own selection the following year.",
+      "id": "stacy",
+      "name": "Stacy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Guild operative whose truth-detection ability indicates that Max's family is not concealing him after his escape.",
+      "id": "trina",
+      "name": "Trina",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The local authority directing the search for Max. He knows the selection produced Baker and an unidentified black skill, and he prepares to widen the hunt beyond the town.",
+      "id": "senior-guild-advisor",
+      "name": "Senior Guild advisor",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A sheepdog that joins Max against three goblins and prevents one from finishing him, suffering a grave wound during the fight.",
+      "id": "sheepdog",
+      "name": "Sheepdog",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young blacksmith who exchanges a well-balanced spear for Max's salvaged goblin weapons and asks him to bring back more usable metal from future fights.",
+      "id": "young-blacksmith",
+      "name": "Young blacksmith",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The registered adventurer identity adopted by Max after he changes his appearance. Under this name he presents himself as an F-rank spear fighter, giving the fugitive a documented cover for Guild work.",
+      "id": "seth-pendell",
+      "name": "Seth Pendell",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A sword-and-shield adventurer who offers Seth a place in a future dungeon group and directs him to find her at an east-side inn.",
+      "id": "elf-party-leader",
+      "name": "Elf party leader",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf Guild attendant who processes Seth's monster trophies and notices that his colored stones may qualify for another assignment.",
+      "id": "greta",
+      "name": "Greta",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified power who orders two rulers to find a boy with a black skill. The being kills their throne-room guards and threatens the rulers with punishment if the search fails.",
+      "id": "powerful-being",
+      "name": "Powerful being",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A warrior who initially challenges Seth's claim to kobold kills. He then accepts Seth's compromise and joins the newly formed group preparing to enter the kobold dungeon.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ranged fighter who joins Brutus, an unnamed healer, and Seth in a newly formed group preparing to enter the kobold dungeon.",
+      "id": "archer",
+      "name": "Archer",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The level-three healer in Seth's first formal dungeon party. He can bless the whole group and restore injuries while the others hold the fighting line.",
+      "id": "miles",
+      "name": "Miles",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A local adviser who cautions Seth against bringing companions into battles they are not ready to survive.",
+      "id": "innkeeper",
+      "name": "Innkeeper",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified woman who knows Max's name and tells him that he is marked. She warns that several powers want to kill or exploit him and urges him to become stronger.",
+      "id": "temple-woman",
+      "name": "Temple woman",
+      "reveal": {
+        "chapter": 22
+      }
+    },
+    {
+      "description": "A gear specialist who examines Seth's bonded spear and identifies its attribute bonuses and extra effectiveness against stronger enemies.",
+      "id": "magic-shop-owner",
+      "name": "Magic-shop owner",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The healer in the elf-led party during Seth's goblin-dungeon expedition.",
+      "id": "lucia",
+      "name": "Lucia",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf rogue who isolates Max in the goblin boss room, admits that the party has killed humans, and tries to murder him.",
+      "id": "elf-rogue",
+      "name": "Elf rogue",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The person responsible for a merchant caravan's workers and route.",
+      "id": "caravan-leader",
+      "name": "Caravan leader",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A caravan guard and former adventurer who has become fearful and discouraged.",
+      "id": "former-adventurer",
+      "name": "Former adventurer",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The owner of the bakery across from Max's inn. He invites Max to work in the shop and joins Amy in evaluating three cupcake variations made with Max's Baking skill.",
+      "id": "bakery-owner",
+      "name": "Bakery owner",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The bakery owner's daughter and a working baker. She shares Seth's enthusiasm for the craft and helps evaluate the cupcake variations he prepares in her family's bakery.",
+      "id": "amy",
+      "name": "Amy",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The front-line fighter in an established three-person group that recruits Seth for a level-fifteen lizardman dungeon.",
+      "id": "dwarf-warrior",
+      "name": "Dwarf warrior",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The spellcaster in Seth's new lizardman-dungeon party. Her root magic holds enemies in place so the group's melee fighters can control the first engagement.",
+      "id": "elf-mage",
+      "name": "Elf mage",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The healer in Seth's new party, equipped with several restorative spells and a powerful emergency heal that can be used once per day.",
+      "id": "dwarf-healer",
+      "name": "Dwarf healer",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A highly regarded warrior below level twenty-five who leads the defensive line when the Shade approaches the city.",
+      "id": "hannah",
+      "name": "Hannah",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Guild-affiliated tracker who follows Caleb in hopes of connecting Seth Pendell to Max. Max captures him after using stealth and a campfire decoy to reverse the ambush.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of two sisters directing another search for Max. She helps decide that the uncertainty surrounding his reported death must be resolved.",
+      "id": "molly",
+      "name": "Molly",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of two sisters directing another search for Max. She participates in the decision to hire a tracker and use his personal connections as leads.",
+      "id": "macy",
+      "name": "Macy",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The regional leader of a hostile order, receiving a survivor's report that an operation failed and Seth Pendell may have died during a boss encounter.",
+      "id": "regional-order-head",
+      "name": "Regional order head",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A warrior who leads a four-person adventuring party above level twenty-five. He allows Seth to take selected finishing blows during a higher-level dungeon run and teaches him how to harvest useful monster parts.",
+      "id": "aldrich",
+      "name": "Aldrich",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shield-bearing woman in Aldrich's higher-level party who joins Seth on a dangerous dungeon expedition.",
+      "id": "aldrichs-warrior",
+      "name": "Aldrich's warrior",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified woman who says she spent stored power on Max and that his black skill has surpassed her expectations. She is pursuing a concealed plan with another woman.",
+      "id": "secret-sponsor",
+      "name": "Secret sponsor",
+      "reveal": {
+        "chapter": 62
+      }
+    },
+    {
+      "description": "A red-haired, cloaked collaborator who has carried out the secret sponsor's request. She intends to keep their plan hidden and is alarmed by the return of a black skill after centuries.",
+      "id": "cloaked-associate",
+      "name": "Cloaked associate",
+      "reveal": {
+        "chapter": 62
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "shattered-dreams"
+}
