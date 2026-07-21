@@ -1,0 +1,585 @@
+{
+  "characters": [
+    {
+      "description": "A powerful void human and defender of Savannah. His bond with Silvi and responsibility for a large household shape both his personal plans and his response to threats against his adopted home.",
+      "id": "derek",
+      "name": "Derek",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Derek's bonded void companion, an accomplished fighter and an increasingly exceptional cook. She travels with him and is a capable member of the Savannah household in her own right. Her magic and practical judgment regularly complement Derek's abilities.",
+      "id": "silvi",
+      "name": "Silvi",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful returning ally within Derek's circle.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elite defender and guardian within Derek’s circle.",
+      "id": "avery",
+      "name": "Avery",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cydarian noble, formidable lightning fighter, and returning ally.",
+      "id": "edgar",
+      "name": "Edgar",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient sand wielder and guardian who continues travelling far beyond Cydaria.",
+      "id": "marrick",
+      "name": "Marrick",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king of Indaria and a returning political ally.",
+      "id": "ossian",
+      "name": "Ossian",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning Savannah leader and organizer who takes threats to the city seriously.",
+      "id": "natalie",
+      "name": "Natalie",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The manager of the Void Emporium and an organizer within Derek's Savannah household.",
+      "id": "malorie",
+      "name": "Malorie",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A smith and inventive craft worker within Derek's household.",
+      "id": "brandy",
+      "name": "Brandy",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A guard within Derek's household.",
+      "id": "jax",
+      "name": "Jax",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young academy adventurer under Derek's protection.",
+      "id": "thomas",
+      "name": "Thomas",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Avery's companion, who helps decide how to care for Alana's former wyvern after its contract ends.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A contract specialist establishing a Savannah shop for standard, specialized, and beast contracts.",
+      "id": "rudy",
+      "name": "Rudy",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former Assassin's Guild vice leader who now protects Cydaria's royal family and performs intelligence work. Still constrained by competing oaths, she guides Derek into the Guild's concealed headquarters.",
+      "id": "vanessa",
+      "name": "Vanessa",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Assassin’s Guild leader responsible for its Cydarian branch. He threatens Derek’s friends during negotiations and holds the oaths binding Vanessa to the Guild.",
+      "id": "cydarian-branch-leader",
+      "name": "Cydarian branch leader",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Assassin's Guild information master and leader of its Indarian branch. He orders the Guild to meet Derek's demands after Derek shows that its hidden headquarters is within his reach.",
+      "id": "indarian-branch-leader",
+      "name": "Indarian branch leader",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dwarven leader of the Assassin's Guild branch in Valum. He refuses to move against Derek, values Roman's brewing, and favors protecting useful allies over provoking a fight he considers unwise. He carries a warhammer.",
+      "id": "braxton",
+      "name": "Braxton",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Derek's Savannah household who assists Malorie and helps protect Brandy. Fear of Assassin's Guild retaliation has kept him from regular dungeon work.",
+      "id": "bones",
+      "name": "Bones",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Derek's Savannah household for whom a large residence is being prepared. Fear of Assassin's Guild retaliation has limited his dungeon activity.",
+      "id": "ogre",
+      "name": "Ogre",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Derek's business associate and the maker of a potent brew valued by Braxton. Assassin's Guild leaders decide that protecting him is preferable to provoking Derek.",
+      "id": "roman",
+      "name": "Roman",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Jax's wind-using partner, who is expecting a child as the household prepares for the birth.",
+      "id": "raina",
+      "name": "Raina",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The newborn son of Jax and Raina, and Stacy’s twin. His parents name him after Derek’s surname.",
+      "id": "hunter",
+      "name": "Hunter",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The newborn daughter of Jax and Raina, and Hunter’s twin. Derek chooses her name in memory of his deceased younger sister.",
+      "id": "stacy",
+      "name": "Stacy",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A person whom Braxton authorizes to receive enough information to prepare for an undisclosed threat.",
+      "id": "nix",
+      "name": "Nix",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former Earth acquaintance whom Derek locates after returning to his original world.",
+      "id": "silvi-jacobs",
+      "name": "Silvi Jacobs",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Universal System watcher who detects two unprecedented unknown-creature alerts on Earth. Both signals vanish within an hour, and the paired warnings do not match any pattern he has previously encountered.",
+      "id": "darwin",
+      "name": "Darwin",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A person known to Derek whose exceptionally strong aura is far from Earth when Derek senses it.",
+      "id": "jace",
+      "name": "Jace",
+      "reveal": {
+        "chapter": 33
+      }
+    },
+    {
+      "description": "Silvi Jacobs's longtime loyal ally and the tank on her rebuilt Earth dungeon team.",
+      "id": "gerard",
+      "name": "Gerard",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful red-skinned human connected to Universal System administration. He comes to Charlotte after escalating alerts and immediately recognizes that Derek does not belong to Earth's system. His earlier questions about Derek show that this encounter follows a long investigation.",
+      "id": "kelvin",
+      "name": "Kelvin",
+      "reveal": {
+        "chapter": 36
+      }
+    },
+    {
+      "description": "A system-protected task-force leader under Kelvin whose history with Derek and Kelvin is openly hostile.",
+      "id": "jace-whitaker",
+      "name": "Jace Whitaker",
+      "reveal": {
+        "chapter": 37
+      }
+    },
+    {
+      "description": "A Universal System fighter whose nullification abilities are identified as a possible counter to Derek. At this point, her precise limits and prospective role remain unknown. Kelvin considers her important enough to include when estimating the force required against Derek.",
+      "id": "trisha",
+      "name": "Trisha",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful, near-giant member of the invading council. She supports the coming operation while questioning the damage caused by keeping top fighters away from worlds already under strain. Her concerns are practical, but she remains committed to the invasion.",
+      "id": "amelia",
+      "name": "Amelia",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The unnamed elven ruler of Lenderas and one of the defenders chosen for the invasion. She accepts guardianship as the defending roster takes shape.",
+      "id": "the-queen",
+      "name": "The Queen",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A named wyvern sent to reinforce Eloria with Edgar and Vanessa.",
+      "id": "blitz",
+      "name": "Blitz",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the twin assassins selected to defend Virindal. She and Vendra accept guardianship together and view the conflict as a chance to fight without their normal restraints.",
+      "id": "arya",
+      "name": "Arya",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the twin assassins chosen as guardians of Virindal. She accepts the role alongside Arya, and both welcome the chance to fight without their usual constraints.",
+      "id": "vendra",
+      "name": "Vendra",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An invading champion identified by another champion as an exceptionally strong defensive combatant. His exact capabilities have not yet been observed by the defenders. Even this limited warning marks him as a likely obstacle in any direct assault on the champion force.",
+      "id": "kuthos",
+      "name": "Kuthos",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A four-armed centaur champion who attacks with four axes and relies on strength and defense. Derek incapacitates him, after which he accepts removal from the invasion rather than death.",
+      "id": "the-indomitable",
+      "name": "The Indomitable",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A command figure directing an invading force after its arrival. He works to regroup scattered champions and intends to turn the conquered stronghold into their operational headquarters. Limited local communications complicate his effort to assemble the invasion's strongest fighters.",
+      "id": "darvin",
+      "name": "Darvin",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An invading organizer responsible for communication boosters, teleportation-assisted scouting, and a recall station intended to reunite the champion force.",
+      "id": "holcomb",
+      "name": "Holcomb",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "The Queen"
+      ],
+      "description": "The ruler of Lenderas, now identified as the guardian previously designated the Queen. She survives defeat by Amelia but is removed from the invasion.",
+      "id": "queen-serta",
+      "name": "Queen Serta",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A feline-featured invading champion who can disappear quickly. Derek has no workable way to locate her.",
+      "id": "silent-knight",
+      "name": "Silent Knight",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An invading champion reported to look almost human, transform into a beast, and possess great strength. Derek travels to northwest Indaria to search for him.",
+      "id": "jackis",
+      "name": "Jackis",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The third-ranked member of the invading champion list and leader of his people. He reaches Eloria alone and offers its guardians a formal, nonlethal duel instead of leading an army assault. His challenge places personal combat ahead of the wider siege.",
+      "id": "third-ranked-champion",
+      "name": "Third-ranked champion",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The cat-like assassin who attacks Avery in Savannah and is stopped by Braxton.",
+      "id": "silent-night",
+      "name": "Silent Night",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A light-based fighter defending Ashgard alongside Marrick. He confronts Jace when the unaffiliated invader attacks the stronghold's guards.",
+      "id": "david-brandt",
+      "name": "David Brandt",
+      "reveal": {
+        "chapter": 67
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sapient lizard champion who tried to compel Jace to return to the invading force. Jace confirms that he killed Rhi during their confrontation. The death helps Derek understand both Jace's recent movements and the unexplained loss on the invasion status display.",
+      "id": "rhi",
+      "name": "Rhi",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An assassin among the remaining invading champions. Jace includes her in his briefing on the force gathering at the captured stronghold.",
+      "id": "bria",
+      "name": "Bria",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "David's granddaughter and a highly capable light user. Her ability to disguise and conceal herself makes her the preferred scout for Derek's planned counterattack. She accepts a mission that requires approaching the captured stronghold without revealing the alliance's preparations.",
+      "id": "ashley",
+      "name": "Ashley",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A duke and barrier specialist recruited for the assault on the gathered champions. He can disrupt communications and, with greater effort, interfere with teleportation. Derek selects him to isolate the enemy command while leaving void travel available to the attackers.",
+      "id": "riven",
+      "name": "Riven",
+      "reveal": {
+        "chapter": 76
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An invading champion who commands insect monsters and can summon large beetle swarms. During the battle at Virindal, the commander tears apart nearby structures to reshape the battlefield.",
+      "id": "insect-commander",
+      "name": "Insect commander",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A returning elf who gives Derek guidance about advancement and the systems, while keeping some information to himself.",
+      "id": "dave",
+      "name": "Dave",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A craft worker whose help Derek seeks while arranging improved equipment for likely defenders.",
+      "id": "tyron",
+      "name": "Tyron",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Braxton's partner of roughly five decades.",
+      "id": "gretchen",
+      "name": "Gretchen",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Alana's circle who remains connected to her resources and joins Derek's household for a special meal.",
+      "id": "stella",
+      "name": "Stella",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Jace's squad blacksmith, responsible for repairing his damaged kukri and armor.",
+      "id": "roderick",
+      "name": "Roderick",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king of Valum and Braxton's younger half-brother. He arranges contracts for legendary armor in exchange for materials and compensation from Derek.",
+      "id": "darius",
+      "name": "Darius",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The master armorsmith directing work on legendary equipment for Derek's allies.",
+      "id": "seamus",
+      "name": "Seamus",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Seamus"
+      ],
+      "description": "A prominent dwarf responsible for crafting Derek's new armor.",
+      "id": "seamus-ironhide",
+      "name": "Seamus Ironhide",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Assassin's Guild operative who joins Eloria's defense from atop Blitz.",
+      "id": "mara",
+      "name": "Mara",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king of Cydaria. He releases Vanessa from most of her obligations to the kingdom and offers her a new position as his advisor and head of information gathering.",
+      "id": "edward",
+      "name": "Edward",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Braxton’s leaders in training, assigned to watch the condemned subject of a wyvern-brew experiment.",
+      "id": "jared",
+      "name": "Jared",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "system-clash"
+}
