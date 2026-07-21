@@ -1,0 +1,493 @@
+{
+  "characters": [
+    {
+      "description": "A Princess Posse warlord arriving in Laracos with a small, unstructured army and worsening soul poisoning. He must recruit troops, appoint officers, and prepare for a multi-faction war while the Scavenger's Daughter backpatch continues to harm him.",
+      "id": "carl",
+      "name": "Carl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Princess Donut"
+      ],
+      "description": "Carl's co-warlord in the Princess Posse. She chooses the Deathbed Hellcat class, gaining concealment and exceptionally long attack range as the allied crawlers prepare to defend Laracos. Her decision makes her the army's principal distant attacker.",
+      "id": "donut",
+      "name": "Donut",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Donut's noncombatant manager and an experienced adviser to her and Carl. His improved alchemy table can analyze potion recipes, giving the group a possible way to restore Mongo's missing wing. He also explains the conditions that could end the ceasefire early.",
+      "id": "mordecai",
+      "name": "Mordecai",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Donut’s injured creature companion. Mordecai postpones giving him a restorative potion until its recipe can be analyzed, though the treatment is expected to restore his missing wing.",
+      "id": "mongo",
+      "name": "Mongo",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied companion traveling with Carl and Donut as the Princess Posse begins its preparations in Laracos.",
+      "id": "samantha",
+      "name": "Samantha",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally traveling with Carl and Donut.",
+      "id": "katya",
+      "name": "Katya",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally of Carl and Donut who is present as the Princess Posse begins organizing for Faction Wars.",
+      "id": "louis",
+      "name": "Louis",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally involved in the Princess Posse's early preparations in Laracos.",
+      "id": "juicebox",
+      "name": "Juicebox",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An orc judge serving as the Princess Posse's adjutant.",
+      "id": "baroness-victory",
+      "name": "Baroness Victory",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning ally who enters Faction Wars with the Princess Posse.",
+      "id": "florin",
+      "name": "Florin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning ally who enters Faction Wars with the Princess Posse.",
+      "id": "ellie",
+      "name": "Ellie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning ally who enters Faction Wars with the Princess Posse.",
+      "id": "imani",
+      "name": "Imani",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied engineer assisting the Princess Posse's preparations alongside Katya as the group begins organizing its forces in Laracos.",
+      "id": "bautista",
+      "name": "Bautista",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied crawler accompanying Carl's group during the opening preparations in Laracos.",
+      "id": "li-jun",
+      "name": "Li Jun",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful allied crawler present as the Princess Posse organizes its forces.",
+      "id": "li-na",
+      "name": "Li Na",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former crawler and cookbook author who returns as a level-60 Princess Posse colonel. She immediately requisitions rare materials, money, and workspace for urgent work connected to the threat attached to Carl.",
+      "id": "rosetta",
+      "name": "Rosetta",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former crawler, cookbook author, and new level-60 Princess Posse colonel. He arrives with the vast volunteer contingent returning to fight beside Carl and explains the scale and limits of those reinforcements.",
+      "id": "tipid",
+      "name": "Tipid",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A formidable independent crawler observing the southern border from the air. He delays joining the Princess Posse because he is pursuing a separate score of his own, leaving Carl unable to direct his considerable power during the opening conflict.",
+      "id": "prepotente",
+      "name": "Prepotente",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tortoise who monitors Katya's dangerous rehabilitation procedure. He warns the others that interrupting the treatment and waking her too early could kill her, making him one of the safeguards around the field-hospital intervention.",
+      "id": "edgar",
+      "name": "Edgar",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former bonded pet Carl is credited with adopting, although the adoption has not yet been made formal.",
+      "id": "former-bonded-tummy-aker",
+      "name": "Former Bonded Tummy Aker",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sir Rendlegore",
+        "Garrett the Tummy Aker"
+      ],
+      "description": "The regenerating Tummy Aker inherited by Carl and named Sir Rendlegore, or Rend. He begins at level 1, becomes more resistant after each death, and needs immediate training before another weakness kills him permanently.",
+      "id": "rend",
+      "name": "Rend",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An orange cat who serves as Team Retribution's co-warlord and Shantytown's mayor. He controls access to Laracos's city defenses, making his survival essential to the allied NPC force even though others handle most of the practical planning.",
+      "id": "ferdinand",
+      "name": "Ferdinand",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied combatant carrying Jefferson the Nickel Sock, a sapient weapon obtained from high-tier loot. Mordecai regards the weapon as potentially dangerous, so its new ownership gives the group both a useful asset and a reason for caution.",
+      "id": "don-quixote",
+      "name": "Don Quixote",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cicathian ruler whose faction opposes the Princess Posse in Faction Wars.",
+      "id": "empress-donadia",
+      "name": "Empress Donadia",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Naga crown princess known as the Sultana and the warlord leading the Blood Sultanate. She is an experienced combatant who has survived every prior contest despite her faction's losses.",
+      "id": "sultana",
+      "name": "Sultana",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Sultana"
+      ],
+      "description": "The Blood Sultanate warlord now identified as Princess Vinata, connecting her with the Sultana encountered earlier. She expects the Princess Posse's planned attack and appears confident about the coming confrontation.",
+      "id": "princess-vinata",
+      "name": "Princess Vinata",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An enemy leader encountered at the southern front. He operates under the protection of a seasoned household guard as the Princess Posse prepares its first major assault, marking him as a prominent target within the hostile field command.",
+      "id": "epitome-tagg",
+      "name": "Epitome Tagg",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of Li Na's marked enemies who escapes the destruction of the hostile force at Laracos. His survival prevents Li Na from healing and makes his capture urgent.",
+      "id": "warlord-fang",
+      "name": "Warlord Fang",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A one-winged eagle and former crawler who prepares subterranean defenses for the Princess Posse. The trap specialist requests Carl's trap table to help prevent hostile spells from disrupting the work.",
+      "id": "one-winged-trap-specialist",
+      "name": "One-winged trap specialist",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A one-winged Skyfowl trap specialist and origamist preparing a large defensive project for the Princess Posse.",
+      "id": "justice-light",
+      "name": "Justice Light",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied planner working with Juicebox on maps and Laracos's defenses. She concentrates on the dwarven digging machines and the practical details of protecting the city while the crawler and NPC commands combine their information.",
+      "id": "brittany",
+      "name": "Brittany",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A separate warlord imposed on the War Mages to provide system access. Their leader identifies her as an enemy able to move through the waiting room and open stairwells, and warns that her actions threaten more than the defeated rebellion.",
+      "id": "agatha",
+      "name": "Agatha",
+      "reveal": {
+        "chapter": 78
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A looming entity whose first movement triggers an unprecedented system warning during the Warlord Council. The announcement alarms every faction and suggests a danger beyond the immediate war, although its nature and intentions remain unknown.",
+      "id": "scolopendra",
+      "name": "Scolopendra",
+      "reveal": {
+        "chapter": 42
+      }
+    },
+    {
+      "description": "Team Retribution's adjutant, presented as an invulnerable host for a Valtay worm rather than an ordinary elf.",
+      "id": "drick",
+      "name": "Drick",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young allosaurus associated with the Princess Posse stronghold who rushes out to greet Mongo.",
+      "id": "tina",
+      "name": "Tina",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tina's mother and Mongo's pregnant mate. She has returned to her ursine form after previously being transformed into a dinosaur.",
+      "id": "kiwi",
+      "name": "Kiwi",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf, former tenth-floor crawler, and longtime public critic of the crawl who commands the 106th Bloody Leeches.",
+      "id": "colonel-boomer",
+      "name": "Colonel Boomer",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A free chaos goddess who cannot be harmed on the ninth floor and is not under War Mage control. She warns that Brittany may be possessed and offers temporary help against three gods.",
+      "id": "eris",
+      "name": "Eris",
+      "reveal": {
+        "chapter": 76
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Warlord Fang's level-130 cybernetic bleached-drake companion, seen circling the Reaver Castle as Carl's rescue party approaches.",
+      "id": "calliope",
+      "name": "Calliope",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A flesh-golem body intended for Samantha. Its heart and lungs remain viable when the group needs replacement organs for Louis.",
+      "id": "princess-lunette",
+      "name": "Princess Lunette",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The ruler commanding the orc army surrounding the Princess Posse stronghold. He enters Faction Wars as a war chief and requests a protected meeting with Carl and Donut.",
+      "id": "orc-king",
+      "name": "Orc king",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The intelligence operating the crawl. Concern that its instability could spread beyond the solar system becomes central to a dispute over a destructive failsafe.",
+      "id": "system-ai",
+      "name": "System AI",
+      "reveal": {
+        "chapter": 34
+      }
+    },
+    {
+      "description": "A bartender resembling a hyena who interrupts Carl's meeting with the Syndicate liaison.",
+      "id": "hyena-bartender",
+      "name": "Hyena bartender",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The system AI appearing through the hyena bartender as an avatar. It overrides the liaison's protected zone and demonstrates that its reach extends beyond Earth.",
+      "id": "system-ai-avatar",
+      "name": "System AI avatar",
+      "reveal": {
+        "chapter": 37
+      }
+    },
+    {
+      "description": "A light deity whose prospective worshippers are transformed and carried to his temple through a ritual path. Carl identifies that temple as the likely destination of Vinata's escaping court.",
+      "id": "khepri",
+      "name": "Khepri",
+      "reveal": {
+        "chapter": 49
+      }
+    },
+    {
+      "description": "A threat connected to Carl's chest tattoo. It repeatedly tries to trigger his abilities on its own, while its access to his mind continues to grow.",
+      "id": "tattooed-presence",
+      "name": "Tattooed presence",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A presence connected to the spider tattoo on Carl's chest. It repeatedly tries to activate his abilities without permission and is increasingly able to intrude on his mind.",
+      "id": "spider-entity",
+      "name": "Spider entity",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Syndicate official who summons Carl after the orc king's death and questions him about the disabled failsafe. The liaison demands details about Carl's illegal implant and creates a temporary zero zone for the confrontation.",
+      "id": "system-liaison",
+      "name": "System liaison",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A deity connected to Carl through an open quest concerning the death of his son. Carl must approach Isetok's high cleric before violating a divine truce.",
+      "id": "emberus",
+      "name": "Emberus",
+      "reveal": {
+        "chapter": 2
+      }
+    },
+    {
+      "description": "A Viceroy leader whom the Sameru commander blames for his brother's fatal captivity. The commander chooses Houston as a personal target in the coming war.",
+      "id": "architect-houston",
+      "name": "Architect Houston",
+      "reveal": {
+        "chapter": 8
+      }
+    },
+    {
+      "description": "A newly emerged creature who bursts from Carl's back and kills Princess Vinata with a hatchet.",
+      "id": "female-sluggalo",
+      "name": "Female sluggalo",
+      "reveal": {
+        "chapter": 54
+      }
+    },
+    {
+      "description": "The calligrapher guildmaster whom Carl recognizes as his sister and the author of the cookbook's sixth edition.",
+      "id": "carls-sister",
+      "name": "Carl's sister",
+      "reveal": {
+        "chapter": 55
+      }
+    },
+    {
+      "description": "An exceptionally powerful non-god spellcaster who identifies himself as leader of the War Mage Rebellion after its members kill the Bone Clan warlord and take the Gate of the Feral Gods.",
+      "id": "war-mage-rebellion-leader",
+      "name": "War Mage Rebellion leader",
+      "reveal": {
+        "chapter": 61
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "this-inevitable-ruin"
+}
