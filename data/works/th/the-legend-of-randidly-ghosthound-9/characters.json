@@ -1,0 +1,441 @@
+{
+  "characters": [
+    {
+      "description": "The founder of the mobile-city project, working with Wendy to forge a mechanical replacement for his missing left arm. His command of rare materials lets him undertake construction that other engineers cannot safely perform.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The chief engineer behind Randidly's mechanical city. She directs its design work but depends on him to shape materials beyond her level and technical reach.",
+      "id": "wendy",
+      "name": "Wendy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An engraving specialist who assists Wendy and the apprentices constructing Randidly's moving city.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spear fighter who joins the expedition investigating reports of a dragon on Mount Olympus.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The archer in the Mount Olympus expedition investigating a reported dragon.",
+      "id": "annie",
+      "name": "Annie",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of Zone 11 and a member of the Mount Olympus expedition investigating a reported dragon.",
+      "id": "warlord",
+      "name": "Warlord",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A level-79 dragon that emerges from Mount Olympus after Alana kills one of its young. Its freezing attack overwhelms Alana while other dragons rise around them.",
+      "id": "ice-dragon-broodmother",
+      "name": "Ice Dragon Broodmother",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The administrator of Randidly's company. She recognizes that a government land proposal is designed to gain leverage over the organization and handles the negotiation with caution.",
+      "id": "tatiana",
+      "name": "Tatiana",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A formidable ally of Randidly who is available to defend the company from the monsters gathering nearby, though she longs for more demanding opponents.",
+      "id": "helen",
+      "name": "Helen",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A politically connected senator whose aide advances a coercive proposal for the government to acquire the company's land and lease it back.",
+      "id": "senator-heathridge",
+      "name": "Senator Heathridge",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An operative aligned with Senator Heathridge who tries to use a rival engineering order and a nearby monster threat to pressure Randidly's company.",
+      "id": "evan-crane",
+      "name": "Evan Crane",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The leader of Randidly's training order. Having endured Randidly's demanding personal instruction, he now oversees an equally severe program for new aspirants.",
+      "id": "naffer",
+      "name": "Naffer",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An aspirant in Randidly's training order who persists through raids, weighted movement, and repeated duels. Her determination is tested by the program's escalating demands.",
+      "id": "vi",
+      "name": "Vi",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A training-order applicant who works beside Vi during the order's demanding program.",
+      "id": "garrett",
+      "name": "Garrett",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A woman who arranged Randidly's earlier dungeon encounter and bargains to provide information about the System in exchange for a class.",
+      "id": "woman-seeking-a-class",
+      "name": "The woman seeking a class",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Order Dukies aspirant previously introduced as Vi, now identified by her full name. She formerly worked around Randidly's company as an assistant to Tatiana.",
+      "id": "vi-riverson",
+      "name": "Vi Riverson",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Order Dukies applicant previously introduced as Garrett, now identified by his full name. He assists Vi during the company festival.",
+      "id": "garrett-tysven",
+      "name": "Garrett Tysven",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's developing fire image, which begins changing while he forges and engraves a difficult promised vessel.",
+      "id": "ignition-essence",
+      "name": "Ignition Essence",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A composite biological intelligence formed from six brains and able to work through mechanical drones. It warns Randidly of several emerging dangers and requests an open future favor in return for helping his city project.",
+      "id": "ghost",
+      "name": "Ghost",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's father, reported to have left a trail of deaths after separating from Hank Howard. His purpose and present destination are unclear.",
+      "id": "ezekiel-ghosthound",
+      "name": "Ezekiel Ghosthound",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unidentified killer moving south whose dead victims have been drained of blood and whose survivors are left mentally broken.",
+      "id": "stroud",
+      "name": "Stroud",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A specialist who arrives with a companion to address the damage to Randidly's class.",
+      "id": "nathan",
+      "name": "Nathan",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's world-tree image and one of the animi used in Nathan's effort to stabilize his damaged class.",
+      "id": "yggdrasil",
+      "name": "Yggdrasil",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A village spirit who is also a human individual seeking greater autonomy. She brings Randidly information about Shawl's failed Nexus test and the accelerated calamity facing his world, while trying to regain Randidly's trust.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The financially strained Zone 1 power broker previously known as Senator Heathridge. He seeks control of Randidly's company and equips Evan Crane with an experimental exosuit.",
+      "id": "senator-cliff-heathridge",
+      "name": "Senator Cliff Heathridge",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A companion bound to Randidly who is investigating the dangerous toad world and developing greater control over raw ether. She confronts and comforts him before they spar ahead of his departure.",
+      "id": "nevaeh",
+      "name": "Nevaeh",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile investigator who enters Karen’s reactor with Evan Crane and Senator Cliff Heathridge. The group accuses Randidly of using imports that violate Zone 7 law.",
+      "id": "chuck-ballard",
+      "name": "Chuck Ballard",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The developing spirit of Randidly's mobile city, able to decide independently when and where the city moves.",
+      "id": "karen",
+      "name": "Karen",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dragon-headed liaison who introduces Randidly and his separated images to the Nether warfront, explains its hazards, and links his own advancement to their performance.",
+      "id": "zagnall",
+      "name": "Zagnall",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The manifested form of Randidly's fire image, previously known as Ignition Essence. It arrives at the Nether warfront alongside the Grim Chimera and Yggdrasil.",
+      "id": "ignition-of-the-emerald-essence",
+      "name": "Ignition of the Emerald Essence",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A principal image of Randidly that awakens with his active consciousness at the Nether warfront while his physical body remains confined.",
+      "id": "grim-chimera",
+      "name": "Grim Chimera",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The local lord who directs newly arrived images at the Nether warfront and assigns them to fight under designated liaisons.",
+      "id": "lord-milne",
+      "name": "Lord Milne",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful eastern front-line leader to whose command Randidly is assigned after his first mission.",
+      "id": "feathered-commander",
+      "name": "The feathered commander",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The feathered commander's lieutenant, who escorts Randidly from her tent to the staging area for his Great Rift mission.",
+      "id": "granite-bodied-lieutenant",
+      "name": "The granite-bodied lieutenant",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gauntleted front-line fighter with turquoise hair who briefly approaches Randidly during his training, then withdraws with her two companions before explaining her purpose.",
+      "id": "turquoise-haired-soldier",
+      "name": "The turquoise-haired soldier",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silent, rock-bodied woman assigned to serve under Randidly at the front. He suspects she may also be observing him for someone else.",
+      "id": "rock-bodied-subordinate",
+      "name": "The rock-bodied subordinate",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An anxious, snake-headed fighter assigned to Randidly's front-line group. He carries two small scimitars.",
+      "id": "snake-headed-subordinate",
+      "name": "The snake-headed subordinate",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The warfront authority who retains custody of Randidly’s imprisoned physical body while his conscious image serves in the fighting.",
+      "id": "supreme-commander",
+      "name": "The supreme commander",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unnamed old woman who shares control of the fate armory and possesses image mastery beyond the nearby commanders.",
+      "id": "fate-armory-elder",
+      "name": "The fate-armory elder",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elder who guards the fate armory and leads Randidly to the dormant sword blade once carried by her dead daughter. She warns that accepting it could consume him.",
+      "id": "nadia",
+      "name": "Nadia",
+      "reveal": {
+        "chapter": 92
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Randidly's strategic-key party who remains with the group after its dangerous visit to the fate armory.",
+      "id": "salazar",
+      "name": "Salazar",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A borderlands refugee recently brought to Karen and Tatiana's former partner from before the System. She has an affinity with moss spirits and openly questions Randidly's leadership and absence.",
+      "id": "felicia",
+      "name": "Felicia",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Dauntless"
+      ],
+      "description": "Ezekiel's helmeted combat companion, who fights under the persona Dauntless. He uses a sea-and-ship image against the blood beasts surrounding a healer's cabin.",
+      "id": "ace",
+      "name": "Ace",
+      "reveal": {
+        "chapter": 113
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Zone 19’s leading healer. She resists an abduction attempt by Ezekiel and Ace and can use holy power to eradicate blood beasts, although repeated use leaves her exhausted.",
+      "id": "red-haired-healer",
+      "name": "The red-haired healer",
+      "reveal": {
+        "chapter": 113
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A maker who completes a seven-dawn forging ritual to produce a massive shield for Earth's defense against a possible Ogre invasion.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 116
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The first chairwoman elected by the World Summit. Her one-year term places her at the head of the emerging coalition among Earth's zones.",
+      "id": "theodora-grayman",
+      "name": "Theodora Grayman",
+      "reveal": {
+        "chapter": 117
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A commander who has recaptured the escaped Nether Prince.",
+      "id": "commander-tarith",
+      "name": "Commander Tarith",
+      "reveal": {
+        "chapter": 117
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-9"
+}
