@@ -1,0 +1,292 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Nightmare Lady"
+      ],
+      "description": "Scorio's absent partner, traveling south with Nox in search of help. Her skeletal Nightmare Lady form feels like a hostile presence within her, but Naomi holds herself responsible for what she has done while transformed.",
+      "id": "naomi",
+      "name": "Naomi",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Naomi's toad companion and self-declared clutchmate. He guides her toward the Radiant Pools of Gold, protects her from the dangers of the journey, and believes the elder toads there may understand her condition.",
+      "id": "nox",
+      "name": "Nox",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly advanced Pyre Lord preparing to leave Last Rock with Bravern's diaries and a rose-quartz box. Grieving Naomi's absence and Lianshi's departure, he remains determined to investigate the herdsmen in the Silver Unfathom.",
+      "id": "scorio",
+      "name": "Scorio",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Scorio's reborn former companion and a researcher of the lost library. She chooses to return to Bastion with Juniper and the recovered material, seeking scholarly answers about Hell's past and the herdsmen.",
+      "id": "lianshi",
+      "name": "Lianshi",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lianshi's partner and research companion. Juniper leaves Last Rock with her for Bastion, carrying material from the lost library so they can investigate Hell's history and the herdsmen through its scholars.",
+      "id": "juniper",
+      "name": "Juniper",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Scorio's original friends and a trusted adviser at Last Rock. She urges him to face his grief rather than bury it, and prepares him for the responsibilities and unfamiliar abilities of his new rank.",
+      "id": "moira",
+      "name": "Moira",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful former rival whom Moira considers a valuable expedition partner for Scorio. Their history is marked by distrust and an attempt on his life. Scorio entrusts her with a journal found among the hidden library's material, though she makes no commitment to his expedition.",
+      "id": "jova",
+      "name": "Jova",
+      "reveal": {
+        "chapter": 3
+      }
+    },
+    {
+      "description": "The reborn counterpart of Scorio's former companion, now a Flame Vault focused on training and status. He joins Jova's proposed expedition as the fastest route to greater power, despite his continuing resentment of Scorio.",
+      "id": "leonis",
+      "name": "Leonis",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young Blazeborn queen traveling with Scorio's group. Friendship and separation are new to her because queens normally have no equals within a hive, and she expects that adulthood will eventually draw her toward founding a hive of her own.",
+      "id": "xandera",
+      "name": "Xandera",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Flame Vault who once studied under Scorio and now travels as his partner. Their chapter-six conversation ends the teacher-student arrangement and places them on equal footing for the expedition.",
+      "id": "flame-vault-expedition-companion",
+      "name": "Flame Vault expedition companion",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Dread Blaze traveling in Scorio's six-person expedition as it prepares to enter the Silver Unfathom and investigate the Tomb of Sadness.",
+      "id": "dread-blaze-expedition-companion",
+      "name": "Dread Blaze expedition companion",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The long-established, time-wielding authority at the Red Keep. Moira presents her as a potentially reliable source of guidance for travel through the Silver Unfathom, where unsafe routes can displace travelers across mirrored planes.",
+      "id": "red-keep-ruler",
+      "name": "Red Keep ruler",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile former associate whom Scorio suspects may be working through the Red Keep. The possibility of finding him there strengthens Scorio's decision to travel deeper into Hell while pursuing the herdsmen and the Lost Cube.",
+      "id": "damien",
+      "name": "Damien",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Silverine philosopher who offers the expedition route knowledge in exchange for mana.",
+      "id": "pursuing-silverine-philosopher",
+      "name": "Pursuing Silverine philosopher",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Red Keep ruler's Pyre Lord consort and a defender of her interests. His touch is said to force a person to confront a worst memory or nightmare, making him one of the formidable powers surrounding her court.",
+      "id": "grey",
+      "name": "Grey",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Red Keep's temporal healer. With a patient's consent, he can return the person's body to an earlier state, restoring lost life from his own lifespan while erasing memories formed after that point.",
+      "id": "red-keep-healer",
+      "name": "Red Keep healer",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Blood Baroness who can assess people by questioning them without controlling their decisions. She warns Scorio about the scale of a possible Silverine war, gives him diamond mana for a future advancement, and considers joining his expedition.",
+      "id": "blood-baroness",
+      "name": "Blood Baroness",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Pyre Lady with whom Scorio delays his departure from the Red Keep in order to speak.",
+      "id": "former-house-kraken-pyre-lady",
+      "name": "Former House Kraken Pyre Lady",
+      "reveal": {
+        "chapter": 30
+      }
+    },
+    {
+      "description": "An ice-wielding representative of the seamstress whose planned training with Scorio delays his departure from the Red Keep.",
+      "id": "seamstress-ice-wielding-envoy",
+      "name": "Seamstress's ice-wielding envoy",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former academy peer of Scorio who left House Hydra after its leadership fell. Although the two have old grievances, he offers his strength to the expedition and agrees to submit to binding oaths before joining.",
+      "id": "former-house-hydra-dread-blaze",
+      "name": "Former House Hydra Dread Blaze",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An eager but accident-prone Dread Blaze who left House Hydra alongside Scorio's former academy peer. He offers to help with Scorio's investigation and accepts that joining the expedition will require hard oaths.",
+      "id": "house-hydra-dread-blaze-companion",
+      "name": "House Hydra Dread Blaze companion",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly arrived Dread Blaze whom Damien's predictions mark as crucial to his plan involving a Silverine Son. He approaches her offering hard oaths, beginning with secrecy about the terms that follow.",
+      "id": "dread-blaze-recruit",
+      "name": "Dread Blaze recruit",
+      "reveal": {
+        "chapter": 28
+      }
+    },
+    {
+      "description": "An advanced Silverine philosopher who escorts Damien to an abstraction.",
+      "id": "silverine-expedition-guide",
+      "name": "Silverine expedition guide",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former herdswoman who frees Scorio after a Silverine attack and leads him toward the Lost Cube. She says a rogue herdswoman faction recruited her to bring Scorio to the fortress so he can activate its stored weapons.",
+      "id": "infiltrating-herdswoman",
+      "name": "Infiltrating herdswoman",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Red Keep ruler's missing sister and the oath-constrained warden of the Fortress of Symmetry. She disputes the prophecy surrounding a natural-born savior and offers Scorio her office if he can win the fortress's golden key.",
+      "id": "fortress-warden",
+      "name": "Fortress warden",
+      "reveal": {
+        "chapter": 45
+      }
+    },
+    {
+      "description": "A black-clad construct guarding the repeating trial. It claims dominion over local mana and repeatedly kills Scorio and the infiltrating herdswoman.",
+      "id": "keeper",
+      "name": "Keeper",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful tenebrite host who recognizes the Nightmare Lady as a lost queen and wants her restored to that position. After Naomi rejects that outcome, he begins forcibly separating Naomi from the entity within her.",
+      "id": "tenebrite-lord",
+      "name": "Tenebrite lord",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A young reborn herdsman living inside the Fortress of Symmetry. He is the present incarnation of an enemy from Scorio's first life, but this version of him shows no recognition of Scorio when they meet.",
+      "id": "young-herdsman",
+      "name": "Young herdsman",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A former Red Lister revealed as a herdsman and an original contributor to the Lost Cube's construction.",
+      "id": "herdsman-engineer",
+      "name": "Herdsman engineer",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A great soul held in the Tomb of Sadness by a silver spike through his heart. Leonis discovers the release mechanism on his bier and awakens him while hostile constructs close around the expedition.",
+      "id": "plassus",
+      "name": "Plassus",
+      "reveal": {
+        "chapter": 57
+      }
+    },
+    {
+      "description": "A sun-powered pursuer closing on the damaged Lost Cube. Bound by earlier oaths connected to Scorio's capture, he can fly and is assessed at Charnel Duke rank as the survivors prepare to fight outside the fortress.",
+      "id": "pursuing-charnel-duke",
+      "name": "Pursuing Charnel Duke",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-lost-cube"
+}
