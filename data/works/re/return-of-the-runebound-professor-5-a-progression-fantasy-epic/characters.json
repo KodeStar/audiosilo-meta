@@ -1,0 +1,449 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Vermil"
+      ],
+      "description": "An Arbitage professor and rank-four mage who learns that Azel died protecting Lee. He awaits an explanation of Lee's condition after the attack.",
+      "id": "noah-vines",
+      "name": "Noah Vines",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Noah's partner and fellow teacher, who returns from the attack and reports that Azel died protecting Lee.",
+      "id": "moxie",
+      "name": "Moxie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon companion and co-teacher whose condition remains unexplained after the attack that killed Azel.",
+      "id": "lee",
+      "name": "Lee",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon formerly linked to Noah's soul. He is reported dead after protecting Lee during the attack that opens the book.",
+      "id": "azel",
+      "name": "Azel",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Linwick ally sent in connection with the threat from Wizen. He reaches the aftermath of the Inquisitor attack too late to join the fighting.",
+      "id": "brayden",
+      "name": "Brayden",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Noah's students and a sword fighter who returns safely from the attack.",
+      "id": "alexandra",
+      "name": "Alexandra",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-five Inquisitor whose blood-magic domain traps Noah's companions. He is hunting the demon among them and threatens Moxie during the confrontation.",
+      "id": "raphael",
+      "name": "Raphael",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Arbitage's transport-cannon operator. His effort to save the group during the attack convinces Noah that he can be trusted with confidential help.",
+      "id": "tim",
+      "name": "Tim",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile plant-and-mind mage pursuing an unknown objective connected to the Torrin family. Noah's group begins sharing evidence about him with Arbitage's enforcers.",
+      "id": "wizen",
+      "name": "Wizen",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An enforcer ally who accepts evidence from Noah and draws his group into the investigation of Wizen.",
+      "id": "silvertide",
+      "name": "Silvertide",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An enforcer with expertise in old runes. Silvertide suggests consulting him about a rune-worked dagger tied to Wizen's activities.",
+      "id": "nair",
+      "name": "Nair",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deity observing Noah's group who sees potential value in his unusual progress and remains interested in their survival.",
+      "id": "renewal",
+      "name": "Renewal",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deity who regards Noah as an experiment and accelerates a lethal challenge against his group.",
+      "id": "decras",
+      "name": "Decras",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The figure who intercepts Decras's approaching rank-seven apostle before the threat reaches Arbitage.",
+      "id": "revin",
+      "name": "Revin",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-seven apostle sent to kill two weaker targets near Arbitage. Revin intercepts him before he can reach them.",
+      "id": "audren",
+      "name": "Audren",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A resident of Noah's nominal dorm room who shares the space with Contessa and helps care for Mascot.",
+      "id": "karina",
+      "name": "Karina",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Noah's student and an inventive imbuer. He is broadening his pattern from a single elemental technique into a general method for imbuements.",
+      "id": "todd",
+      "name": "Todd",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Noah's student and a sword fighter whose pattern builds pressure from strike to strike, resembling a gathering landslide.",
+      "id": "isabel",
+      "name": "Isabel",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Noah's students, who returns safely after the attack on Moxie's group.",
+      "id": "emily",
+      "name": "Emily",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Revin's student, temporarily training with Noah's class. He presents himself as exceptionally lazy even while keeping pace with the others.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Wizen's rank-five fire-mage operative, who battles Noah and Brayden beneath Arbitage's transport cannon.",
+      "id": "barb",
+      "name": "Barb",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A secret light healer allied with Barb in the chamber below Arbitage's transport cannon. He escapes detection by domains, then closes in and attacks Noah.",
+      "id": "hidden-healer",
+      "name": "Hidden healer",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A light-magic healer working with Barb for Wizen. Noah and Brayden identify him during the enforcers' response to the key theft.",
+      "id": "richard",
+      "name": "Richard",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The head of Arbitage's advanced track and an enforcer. In the aftermath of the key theft, he protects his instructors' duty to their students while helping organize the response.",
+      "id": "godric",
+      "name": "Godric",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former Church agent who chooses to remain with Garina instead of continuing his mission, leaving them vulnerable to Church retaliation.",
+      "id": "ferdinand",
+      "name": "Ferdinand",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful local authority whose attention Audren avoids attracting during his clash with Revin.",
+      "id": "garina",
+      "name": "Garina",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An advanced-track professor who arrives to escort Noah and Moxie to an early meeting with another professor.",
+      "id": "ulya",
+      "name": "Ulya",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A small companion associated with Noah whose unexplained departure from his usual place causes concern.",
+      "id": "mascot",
+      "name": "Mascot",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Heron water mage in the advanced track. He warns Noah that Torrin-connected figures plan to make Emily fail out, while presenting himself as a competitive rival seeking stronger opposition.",
+      "id": "verud",
+      "name": "Verud",
+      "reveal": {
+        "chapter": 36
+      }
+    },
+    {
+      "description": "A Torrin professor in the advanced track whom Ulya identifies, along with his two students, as a figure Noah's group should watch.",
+      "id": "jacob",
+      "name": "Jacob",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A rank-two Torrin student from a prominent branch of the family. He is positioned to challenge Emily during the advanced-track gathering.",
+      "id": "marley",
+      "name": "Marley",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unnamed female student identified as one of the two students accompanying Jacob.",
+      "id": "jacobs-female-student",
+      "name": "Jacob's female student",
+      "reveal": {
+        "chapter": 37
+      }
+    },
+    {
+      "description": "A rank-four professor who challenges Noah during an advanced-track meeting.",
+      "id": "anthony",
+      "name": "Magus Anthony",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A King-family treasurer and collector of unusual runes who is linked to the purchase of Violet Transference.",
+      "id": "otto",
+      "name": "Otto",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Otto's masked assistant, who completes a rune exchange and guides Noah toward a restricted King-family hunting ground.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former aide to Evergreen who now shares Noah's nominal dorm room with Karina. She cares for Noah's companion and says her life has improved since leaving Evergreen's service.",
+      "id": "contessa",
+      "name": "Contessa",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The unnamed head of the Linwick family has Brayden deliver a spatial message token summoning Noah to a meeting concerning Tim.",
+      "id": "linwick-family-head",
+      "name": "Linwick family head",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Linwick mage who arrives after Noah's disappearance with people indebted to him. He commits their help to keeping Noah's students together and continuing their education.",
+      "id": "jalen",
+      "name": "Jalen",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A masked musician who distributes food to hungry residents of a demon city as part of a mysterious new faction.",
+      "id": "masked-stranger",
+      "name": "Masked stranger",
+      "reveal": {
+        "chapter": 81
+      }
+    },
+    {
+      "description": "A starving young demon who helps protect three companions. After accepting food from a masked stranger, he is compelled to guide the stranger toward the gang controlling his district.",
+      "id": "young-street-lord",
+      "name": "Young street lord",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young demon and protective companion within a starving four-person group approached by a masked stranger.",
+      "id": "violet",
+      "name": "Violet",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-three extortionist whose gang controls the district approached by a masked stranger and two young guides.",
+      "id": "local-street-lord",
+      "name": "Local street lord",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The local street lord's executioner and second-in-command, encountered at the gang's market-square headquarters.",
+      "id": "local-street-lords-executioner",
+      "name": "Local street lord's executioner",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Spider"
+      ],
+      "description": "Noah's masked identity in the demon city is revealed. As Spider, he uses food, concealed magic, and a manufactured reputation to build the influence needed to search for Wizen and a route home.",
+      "id": "noah-vines-spider",
+      "name": "Noah Vines",
+      "reveal": {
+        "chapter": 87
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The sister and second-in-command of a neighboring street lord, present when her brother refuses Spider's demand.",
+      "id": "neighboring-gang-leader",
+      "name": "Neighboring street lord's sister",
+      "reveal": {
+        "chapter": 87
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A rank-three demon who feeds on fear. She joins the young street lord as an instructor and ally, exchanging knowledge about demons for food and agreed limits on how much energy he may take from her.",
+      "id": "fear-feeding-demon",
+      "name": "Fear-feeding demon",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Silent Silver Tooth's rank-three second, expected to arrive with several guards to negotiate with Spider's group.",
+      "id": "silent-silver-tooth-representative",
+      "name": "Silent Silver Tooth representative",
+      "reveal": {
+        "chapter": 96
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful figure who receives a report on Spider's expansion and orders her subordinate to continue watching the faction firsthand.",
+      "id": "unnamed-mistress",
+      "name": "Unnamed mistress",
+      "reveal": {
+        "chapter": 99
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "return-of-the-runebound-professor-5-a-progression-fantasy-epic"
+}
