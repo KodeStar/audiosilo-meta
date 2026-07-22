@@ -1,0 +1,258 @@
+{
+  "characters": [
+    {
+      "description": "A perceptive witness in Amaranth who recognizes that an interworld summoning has been altered. The observer expects summoned beings to arrive even as the ritual's power is diverted toward Earth.",
+      "id": "ritual-observer",
+      "name": "Ritual observer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A man at a Fort Lauderdale yacht party who intervenes after finding April unconscious and learning that his sister Gabrielle is trying to rescue her. His attempt to help ends with attackers throwing him into the stormy sea.",
+      "id": "earth-man",
+      "name": "Earth man",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The Earth man's younger sister and April's friend. She calls for help after April is apparently drugged and taken, then uses the fight aboard the yacht as an opportunity to carry April away.",
+      "id": "gabrielle",
+      "name": "Gabrielle",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Gabrielle's friend, found unconscious at a yacht party under circumstances that suggest she was drugged. Gabrielle reaches her during the ensuing violence and attempts to remove her from danger.",
+      "id": "april",
+      "name": "April",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Earth man transported from the yacht party to a hostile world. During system initialization he enters the name Felix Nevarre, is forcibly assigned the lost race Nym, receives the Magician omen, and chooses Keen Mind as his born trait.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An unidentified woman with blue-green eyes who appears while Felix is unconscious after a waterfall plunge. She recognizes him, indicates that his journey is unfinished, and compels him to wake, but the nature of the encounter is unclear.",
+      "id": "dream-woman",
+      "name": "Dream woman",
+      "reveal": {
+        "chapter": 11
+      }
+    },
+    {
+      "description": "A sentient seven-legged bloodbeast that attacks a small golden-eyed creature near Felix Nevarre's temple. It hunts to cause fear and pain, and it can channel blood-red mana through a ritual attack.",
+      "id": "seven-legged-oret",
+      "name": "Seven-Legged Oret",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A small golden-eyed creature rescued when Felix intervenes against a Seven-Legged Oret. The frightened survivor follows Felix after the battle, but its nature, intentions, and connection to the remains found nearby are not yet known.",
+      "id": "rescued-creature",
+      "name": "Rescued creature",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The rescued creature is a young male Tenku, a chimeric pack hunter with keen senses and little physical power. Felix names him Pit and forms a life-binding Companion Pact to save him after a beetle inflicts a mortal wound.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Maggie",
+        "Shield Witch"
+      ],
+      "description": "A prominent shield fighter who leads a guild expedition into the Foglands with Harn Kastos. She intends to expose the younger members, including her sister Evie, to the genuine danger needed to reveal their omens.",
+      "id": "magda-aren",
+      "name": "Magda Aren",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Onslaught"
+      ],
+      "description": "A heavily armored axe fighter and Magda Aren's teammate. He rejects Eliza DuFont's effort to alter the Foglands expedition, arguing that the apprentices need authentic danger if they are to reveal their omens.",
+      "id": "harn-kastos",
+      "name": "Harn Kastos",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Magda Aren's younger sister and one of the trainees entering the Foglands to earn an omen. She travels with Magda, Harn Kastos, Atar V'as, and Vessilia Dayne on an expedition expected to involve serious danger.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gifted young mage from Tethys who joins Magda Aren's Foglands expedition to earn an omen.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "A spear-fighting trainee and a duke's only daughter who joins the Foglands expedition to reveal her omen. Her political importance leads Eliza DuFont to arrange covert protection and extraction for her.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Elder DuFont"
+      ],
+      "description": "An elder overseeing the Harwatch guild who objects to Magda Aren's dangerous expedition. After formally recording Harn Kastos's refusal to change course, she secretly directs Illia to preserve Vessilia Dayne if the rest of the party falls.",
+      "id": "eliza-dufont",
+      "name": "Eliza DuFont",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Eliza DuFont's blade-carrying covert operative, able to emerge from shadows. She is ordered to follow Magda Aren's expedition unseen, protect Vessilia Dayne, and extract the duke's daughter if the others fail.",
+      "id": "illia",
+      "name": "Illia",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The armored master of a hostile underground complex, commanding artificial servants and a massive tunneling worm. It cultivates a blood-mana garden, studies ancient writing, and captures Felix after detecting him nearby.",
+      "id": "armored-master",
+      "name": "Armored master",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The armored master whose underground domain held Felix and Pit. The Archon commands iron servants and Helga, probes minds through powerful compulsion, and recognizes Felix's bronze sword and connection to an ancient people.",
+      "id": "archon",
+      "name": "The Archon",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Archon's enormous tunneling worm, capable of moving through solid rock. She pursues Felix and Pit across a broken bridge above lava and swallows Felix during their escape from the volcanic complex.",
+      "id": "helga",
+      "name": "Helga",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Callie"
+      ],
+      "description": "A missing silver-rank finder who formerly worked beside Magda Aren and Harn Kastos. Harn remembers her skill at locating lost things and her intermittent romantic relationship with Magda, but her present circumstances are unknown.",
+      "id": "calesca-boscal",
+      "name": "Calesca Boscal",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed presence within an ancient tower that notices the discordance in Felix Nevarre's magic and becomes curious about him. It regards the tower as an extension of itself while covertly watching Felix Nevarre and his companions.",
+      "id": "ancient-tower-inhabitant",
+      "name": "Ancient tower inhabitant",
+      "reveal": {
+        "chapter": 43
+      }
+    },
+    {
+      "description": "An ancient watcher of Shelem who sees through the Foglands and cannot be identified by Analyze. The Geist questions Felix's motives, distinguishes his apparent Nym nature from another origin, and warns him that his hunger has marked his spirit.",
+      "id": "elder-geist",
+      "name": "Elder Geist",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A huge and heavily armored Risi leader who commands the operation around the warded Capitol. Harn observes him leaving during a recurring guard change, creating the brief opening on which the planned prisoner rescue depends.",
+      "id": "risi-chieftain",
+      "name": "Risi chieftain",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "the primordial",
+        "the mother"
+      ],
+      "description": "The imprisoned primordial of hunger that used the form of the Nym woman it consumed. It claims responsibility for Felix's altered race and hunger-based gifts, having shaped him as a prospective vessel while directing corrupted servants from captivity.",
+      "id": "unending-maw",
+      "name": "The Unending Maw",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unknown voice that contacts surviving Risi through a steel-plated sonic relay. The speaker says the primordial and Felix have died, then recruits the survivors to serve a new father belowground. The speaker's identity remains unresolved.",
+      "id": "unidentified-speaker",
+      "name": "Unidentified speaker",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "dissonance"
+}
