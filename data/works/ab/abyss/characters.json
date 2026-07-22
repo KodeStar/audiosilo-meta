@@ -1,0 +1,415 @@
+{
+  "characters": [
+    {
+      "description": "An Earth-born Unbound and the Autark of Nagast. Felix enters the book as a powerful territorial ruler whose choices bind him to the safety of his people and companions. His conflict with the Hierocracy makes leadership as important as personal strength.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's loyal bonded companion and guardian beast. Pit fights beside Felix and shares a connection that reaches beyond ordinary companionship. He is an independent combatant whose devotion centers on protecting Felix through every danger.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "A dragoon-trained spear fighter, noble heir of Pax Rell, and established ally of Felix. She brings discipline, mobility, and knowledge of draconic combat to his company. Her inherited duties remain important even while she travels far from home.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Zara"
+      ],
+      "description": "A chanter, diplomat, and organizer allied with Felix. Zara understands harmonic magic and often provides strategic guidance where authority, ritual, and politics meet. She balances her institutional ties with a working trust in Felix and his company.",
+      "id": "zara-cyrene",
+      "name": "Zara Cyrene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Evie"
+      ],
+      "description": "A frontline fighter and trainer among Felix's allies. Evie combines ice magic with chain-based techniques and is trusted to lead dangerous field assignments. Her direct manner and group-fighting experience make her a reliable operational commander.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran fighter, practical adviser, and forge master in Felix's service. Harn is a steady battlefield commander as well as an accomplished smith. He approaches both advancement and warfare through disciplined work and tested experience.",
+      "id": "harn",
+      "name": "Harn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Atar"
+      ],
+      "description": "Felix's fire-mage ally and a specialist in sigildry.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unexplained white-crimson flame apparition that addresses Atar V'as while remaining imperceptible to everyone else.",
+      "id": "white-crimson-flame",
+      "name": "The white-crimson flame",
+      "reveal": {
+        "chapter": 10
+      }
+    },
+    {
+      "description": "A force mage and inscriptionist who collaborates with Atar and is allied with Felix.",
+      "id": "alistair",
+      "name": "Alistair",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Karys"
+      ],
+      "description": "An ancient, damaged construct who advises Felix and helps administer Nagast. Karys has extensive knowledge, though gaps in his memory and condition limit what he can recover.",
+      "id": "karys-taiv",
+      "name": "Karys Taiv",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Lady of Harwatch and an established civil and military leader. She is responsible for the city's security as danger gathers around Felix's territory. Cal's position requires her to hold together local defense, government, and public resolve.",
+      "id": "cal",
+      "name": "Cal",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Reed"
+      ],
+      "description": "An expedition commander, Felix ally, and Vessilia Dayne's former guardian. Darius contributes military experience and remains concerned with Vess's safety and duties. His advice reflects both command judgment and a longstanding obligation to her.",
+      "id": "darius-reed",
+      "name": "Darius Reed",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of the Hierocracy. The Hierophant directs the hunt for less established Unbound, sends High Guard to test Nagast's barrier, and assigns a masked Unbound to a northern mission.",
+      "id": "hierophant",
+      "name": "The Hierophant",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A young Earth-born Unbound who survives the tomb battle with serious injuries and has an undead companion.",
+      "id": "beef",
+      "name": "Beef",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Beef's surviving undead companion.",
+      "id": "beefs-undead-companion",
+      "name": "Beef's undead companion",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lady Isla"
+      ],
+      "description": "A healer directing care for thousands of injured city residents. Her chanting accelerates their recovery after the battle.",
+      "id": "isla",
+      "name": "Isla",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The shaman of the people restored when the sea returned. He speaks for a community released from an ancient curse and explains its connection to the lost territory. His standing makes him Felix's preferred candidate to govern the city in its own people's interests.",
+      "id": "itten-shaman",
+      "name": "The Itten shaman",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unknown attacker who hurls a poisoned blade during Felix's offer to appoint the Itten shaman as chancellor.",
+      "id": "assassin",
+      "name": "The assassin",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The head of a merchant estate raided after an oath trace leads Felix's forces there. A captured paladin implicates him in sponsoring the assassination plot against the new chancellor, and he is taken before Felix for judgment.",
+      "id": "merchant-lord",
+      "name": "The merchant lord",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful surviving Matron of elemental fire captured with suspected conspirators. She claims that paladins compelled her cooperation and invokes a recognized right to plead before Felix. Ordinary restraints suppress her active power without making her harmless.",
+      "id": "fire-matron",
+      "name": "The fire Matron",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A heavily armored Earth-born Unbound glimpsed through a divine connection. She travels with an elderly Pathless priest and uses overwhelming spiritual pressure while forcing entry into a dwarven settlement.",
+      "id": "armored-unbound",
+      "name": "The armored Unbound",
+      "reveal": {
+        "chapter": 25
+      }
+    },
+    {
+      "description": "The armored Unbound previously seen with a Pathless priest. She is operating under Hierocracy control and reaches another Earth-born Unbound during Felix and Zara's locating ritual. Her ability to sense Felix through the ritual makes the distant encounter dangerous.",
+      "id": "imara",
+      "name": "Imara",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An orc patrol knight serving the flooded settlement of Bogfeld. Tanda encounters Felix under his Silas Vale disguise and brings him aboard a patrol boat for protection. She continues field duty despite the settlement's losses and constant monster pressure.",
+      "id": "knight-tanda",
+      "name": "Knight Tanda",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed half-elf mage who accompanies Knight Tanda on patrol through flooded Bogfeld as a member of the Gallant society.",
+      "id": "gallant-mage",
+      "name": "The Gallant mage",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Knight Commander Etriska Lavin"
+      ],
+      "description": "The Knight Commander responsible for Bogfeld Redoubt. Local survivors credit her and the Menders with preserving lives after the flood and continuing monster attacks. She directs the remaining patrols and defenses from the settlement's fortified refuge.",
+      "id": "etriska-lavin",
+      "name": "Etriska Lavin",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gnome healer who leads the Menders.",
+      "id": "prioress-of-the-blessed-fen",
+      "name": "The Prioress of the Blessed Fen",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harn's partner, whose former tavern and much of her Low Side neighborhood have been submerged by flooding. Her family left with the caravan, and she and Harn intend to return to Nagast together.",
+      "id": "palin",
+      "name": "Palin",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a naga group cooperating with Felix. Garrox warns that the Fathom is creating more underwater dens than his people can contain, prompting Felix to renew his promise of aid.",
+      "id": "garrox",
+      "name": "Garrox",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A feared threat associated with the Fathom Depth Worm that attacks the fleet beyond flooded Caliph Pass. At this stage, its exact nature and location remain unknown.",
+      "id": "the-fathom",
+      "name": "The Fathom",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The naga ruler overseeing refugees in the submerged Hestus temple. He explains that repeated naga expeditions have failed against the growing Fathom threat. His people rely on the temple as attacks overwhelm their former defenses.",
+      "id": "deep-king",
+      "name": "The Deep King",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A robed person from antiquity who unexpectedly perceives Felix during his review of an array's stored scene, then motions for him to ascend.",
+      "id": "ancient-observer",
+      "name": "The ancient observer",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The incorporeal ancient observer bound to the restored spirit tree. He is the same robed figure who noticed Felix in the array's stored scene.",
+      "id": "spirit-tree-chanter",
+      "name": "The spirit tree's ancient observer",
+      "reveal": {
+        "chapter": 76
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The High Guard commander leading a Hierocracy force to the edge of Nagast's fog barrier. He declares that the Hierocracy intends to reclaim Felix's territory and expects the barrier to fall by midnight.",
+      "id": "high-guard-leader",
+      "name": "The High Guard leader",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Beef's nascent spirit, separated from his body and mind by his Unbound nature. She takes a female face and asks Felix to destroy her if that is necessary to protect Beef's damaged core, but he refuses.",
+      "id": "beefs-nascent-spirit",
+      "name": "Beef's nascent spirit",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient force that confronts Beef within his core and identifies itself as a child of a Cardinal Beast. It claims that its former purpose was to break down and erode what it touched.",
+      "id": "primordial-of-withering-dust",
+      "name": "The primordial of withering dust",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The immense ooze-covered dragon revealed as the power called the Fathom. It awakens before Felix's captive party at the center of Chasma, and its pressure and presence distort perception.",
+      "id": "dusk-dragon",
+      "name": "The Dusk Dragon",
+      "reveal": {
+        "chapter": 91
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A faceless shadowy presence that attacks the Dusk Dragon in its memories and suppresses the dragon's will.",
+      "id": "dusk-dragon-possessor",
+      "name": "The Dusk Dragon's possessor",
+      "reveal": {
+        "chapter": 93
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The presence possessing the Dusk Dragon, now identified as a sliver of the night goddess. It reasserts control after the dragon briefly resists Vessilia Dayne's aid.",
+      "id": "night-goddess-sliver",
+      "name": "The night goddess's sliver",
+      "reveal": {
+        "chapter": 95
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A High Guard warrior who confronts Felix alongside a mace wielder and a mage. He carries a cursed blade that severs both of Pit’s wings.",
+      "id": "high-guard-swordmaster",
+      "name": "The High Guard swordmaster",
+      "reveal": {
+        "chapter": 107
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A mace-wielding member of four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+      "id": "high-guard-mace-wielder",
+      "name": "The High Guard mace wielder",
+      "reveal": {
+        "chapter": 101
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A spear-wielding member of four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+      "id": "high-guard-spear-wielder",
+      "name": "The High Guard spear wielder",
+      "reveal": {
+        "chapter": 101
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A book-using strategist among four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+      "id": "high-guard-mage",
+      "name": "The High Guard mage",
+      "reveal": {
+        "chapter": 101
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "abyss"
+}
