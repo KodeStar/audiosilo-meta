@@ -1,0 +1,324 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Vermil Linwick"
+      ],
+      "description": "An Arbitage professor and rune researcher who leads Moxie and Lee in dangerous hunts. He uses violin-driven formations, but needs his companions to defend him while the music takes shape.",
+      "id": "noah-vines",
+      "name": "Noah Vines",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Moxie Torrin"
+      ],
+      "description": "Noah's partner and fellow Arbitage magus, equally at home teaching and fighting beside him. After helping bring down a great snake monster, she claims the Earth Master Rune Earthen Muster.",
+      "id": "moxie",
+      "name": "Moxie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Noah and Moxie's demon companion, a formidable fighter whose body can assume unusual forms. She helps hold a great monster at bay while Noah prepares a musical formation.",
+      "id": "lee",
+      "name": "Lee",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon already connected to Noah's group and especially to Lee.",
+      "id": "azel",
+      "name": "Azel",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Noah's students, newly returned from demanding training with Silvertide. Expensive treatment has largely healed his injured neck, allowing him to join the class assessment on Windscorn Plateau.",
+      "id": "todd",
+      "name": "Todd",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Noah's students, visibly stronger after training with Silvertide and ready to join the class assessment on Windscorn Plateau.",
+      "id": "isabel",
+      "name": "Isabel",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Torrin heir and one of Noah's students. The upheaval following Evergreen's death weighs on the people around her as she prepares to resume training at Arbitage.",
+      "id": "emily",
+      "name": "Emily",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former captive freed from Gentil's control who comes to Arbitage seeking Noah's instruction.",
+      "id": "alexandra",
+      "name": "Alexandra",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Revin's student, temporarily admitted to Noah's lesson at Emily's request. He accompanies the class to Windscorn Plateau for a practical assessment.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Arbitage operator responsible for launching travelers through the transport cannon. His own runes are damaged, a problem Noah would like to repair without exposing closely guarded abilities.",
+      "id": "tim",
+      "name": "Tim",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Bria"
+      ],
+      "description": "A Linwick shapeshifter and Noah's former arranged fiancee. She returns to Arbitage carrying an urgent order from the Linwick family head for Noah to attend a meeting.",
+      "id": "karina",
+      "name": "Karina",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Evergreen's former aide, left without work or a home after her employer's death. She seeks shelter with Noah.",
+      "id": "contessa",
+      "name": "Contessa",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An anonymous and apparently wealthy bidder at the noble auction. Through a representative, Number 14 asks Noah's masked group not to compete for Violet Transference and shows interest in an untested monster rune.",
+      "id": "number-14",
+      "name": "Number 14",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The rank-six head of the Linwick family. He orders Karina to bring Noah to the family estate over artifacts taken from the catacombs, with assassins a possible consequence of refusal.",
+      "id": "jalen",
+      "name": "Jalen",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Linwick assassin sent by Jalen to target Noah under the Vermil identity. He watches Noah at Arbitage but declines a direct strike because he suspects a trap.",
+      "id": "aiden",
+      "name": "Aiden",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Father Linwick"
+      ],
+      "description": "A Linwick power broker who knows Wizen and has reasons of his own to oppose him. He offers Noah limited intelligence about the mind mage, but presents himself as a temporary source rather than a trusted ally.",
+      "id": "father",
+      "name": "Father",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Linwick mage whom Father promises to send in support of Noah's efforts against Wizen. His capabilities and the exact form of his assistance have not yet been shown.",
+      "id": "brayden",
+      "name": "Brayden",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The hostile mage behind plant constructs that replace dead people and attack anyone who discovers them. He is holding Evergreen and intends to use her runes in the creation of a stronger form.",
+      "id": "wizen",
+      "name": "Wizen",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A deceased Torrin figure whose former aide is left without work or shelter. Moxie asks that Emily not be told about the control Evergreen once exercised over her.",
+      "id": "evergreen",
+      "name": "Evergreen",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful rank-five ally known to Noah's group from earlier events.",
+      "id": "silvertide",
+      "name": "Silvertide",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An advanced-track teacher and puppet user who arranged Noah's combat test with a remotely controlled swordsman. After he passes, she offers access to further knowledge if he joins the program.",
+      "id": "ulya",
+      "name": "Ulya",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An advanced-track faculty tester who makes Alexandra's admission depend on a private fight. His domain suppresses her magic and lets ordinary physical attacks pass through him.",
+      "id": "gero",
+      "name": "Gero",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An advanced-track researcher and imbuer who questions whether Moxie belongs after the loss of her runes. He insists on testing the matter through a fight to exhaustion.",
+      "id": "will",
+      "name": "Will",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The senior host of the advanced track's underground welcome gathering. He receives the newcomers while Noah privately detects the alarming absence of a heartbeat.",
+      "id": "godric",
+      "name": "Godric",
+      "reveal": {
+        "chapter": 68
+      }
+    },
+    {
+      "description": "A white-haired advanced-track professor whom Silvertide secretly identifies as the hostile puppet hidden at the gathering. He keeps the discovery quiet so the controlling enemy will not know the deception has failed.",
+      "id": "mayreena",
+      "name": "Mayreena",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A rank-five Inquisitor seeking vengeance for two slain subordinates. Using regulated blood magic and a rosary made from demon bones, he establishes a trail toward the demon responsible.",
+      "id": "raphael",
+      "name": "Raphael",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A deity linked to the red-horned cat avatar. She discovers that alterations to its runes have broken her practical control, prompting a new interest in the mortal responsible.",
+      "id": "renewal",
+      "name": "Renewal",
+      "reveal": {
+        "chapter": 36
+      }
+    },
+    {
+      "description": "A deity associated with Garina and the severing of power. Decras visits Renewal and compensates her for an earlier shared loss.",
+      "id": "decras",
+      "name": "Decras",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A red-horned catlike companion that appears without explanation in Noah's room. It calmly bonds with Contessa, who accepts responsibility for its care as part of her new arrangement with Noah.",
+      "id": "mascot",
+      "name": "Mascot",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful searcher pursuing a person sought by a god. She has distributed valuable runes among major cities as bait and attends the noble auction to watch for a response.",
+      "id": "garina",
+      "name": "Garina",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ferd"
+      ],
+      "description": "Garina's traveling companion in the search for a powerful target. He suspects their quarry may be deliberately avoiding the notice of major families.",
+      "id": "ferdinand",
+      "name": "Ferdinand",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vermil's masked mentor, presented as a powerful authority on the body-replacement threat. Spider tells Ulya that one clone is present at the advanced-track gathering and recommends leaving it hidden long enough to trace its controller.",
+      "id": "spider",
+      "name": "Spider",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An advanced-track professor assigned to collect Silvertide. Silvertide discovers that Peter has already been killed and that plant magic is controlling his body.",
+      "id": "peter",
+      "name": "Peter",
+      "reveal": {
+        "chapter": 69
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "return-of-the-runebound-professor-4"
+}
