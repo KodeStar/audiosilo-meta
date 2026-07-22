@@ -1,0 +1,288 @@
+{
+  "characters": [
+    {
+      "description": "The ageless ruler of the Hierocracy and leader of a major ritual intended to find people beyond the realm’s fate as protection against an ancient returning enemy. A chanter sabotages the ceremony, destroying its intended working and sending an unknown force into the sky.",
+      "id": "hierophant",
+      "name": "The Hierophant",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "A level-26 stranger who returns from the void with Pit and enters the cleared Foglands. Felix conceals his unusual race while carrying the hostile Maw inside a mental prison of his own making.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's bonded Tenku companion, able to fight with frost, air, and close-range attacks. Pit's chimera form would draw hostile attention near Harwatch, so Felix must keep him out of public sight.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile being carried within Felix and confined in his Bastion of Will. Felix has gained more control over its prison since leaving the void, but he does not trust its explanations or influence.",
+      "id": "the-maw",
+      "name": "The Maw",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Harwatch shopkeeper who opposes the Inquisition. Kerwin sells Felix an enchanted amulet that masks his identity, shelters him during a search, and guides him toward a safer route into the city.",
+      "id": "kerwin",
+      "name": "Kerwin",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "The daughter and heir of the Duke of Pax Rell, a Foglands survivor, and Evie Aren's friend. Confined in the guild citadel, she covertly investigates whether the guild is hiding other survivors.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Magda Aren's sister and Vessilia Dayne's friend. She helped recover Magda's body after the Foglands expedition and remains central to Vessilia's concern about the guild's treatment of the survivors.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Evie Aren's sister and a leader associated with the disastrous Foglands expedition. Her recovered body has been returned and cremated, while questions about the guild's handling of her companions remain unsettled.",
+      "id": "magda-aren",
+      "name": "Magda Aren",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Elder DuFont"
+      ],
+      "description": "Harwatch's Elder of Acquisitions and a member of the guild leadership. She participates in the council whose concealed preparations and guarded discussion deepen Vessilia's suspicions about the missing survivors.",
+      "id": "eliza-dufont",
+      "name": "Eliza DuFont",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Nyad who runs the Elder Crown bookstore. She gives Felix Nevarre work shelving a new delivery and offers instruction in exchange for his labor.",
+      "id": "zara-cyrene",
+      "name": "Zara Cyrene",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An iron-medallioned fire mage who arrives at the Elder Crown with three privileged companions. He is searching for a guild-banned book identified by a heart-shaped sigil.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Atar V'as's well-connected companions during the search for a prohibited book at the Elder Crown. His manner toward residents of the Dust Quarter reflects the group's privileged guild position.",
+      "id": "alistair",
+      "name": "Alistair",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A privileged companion who joins Atar V'as at the Elder Crown while searching for a guild-banned volume. Dabney displays contempt toward residents of the Dust Quarter.",
+      "id": "dabney",
+      "name": "Dabney",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A member of Atar V'as's privileged group during its search of the Elder Crown. She accompanies Alistair and Dabney and shares their distance from the displaced residents of the Dust Quarter.",
+      "id": "lillian",
+      "name": "Lillian",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A veteran fighter who lost his guild standing after the Foglands expedition. He remains with Evie Aren, Cal, and the other displaced survivors rather than accepting the guild's treatment of the group.",
+      "id": "harn-kastos",
+      "name": "Harn Kastos",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Callie"
+      ],
+      "description": "A Foglands survivor and organizer within the group expelled from the guild. Felix returns Magda Aren's broken locket to her, and she confirms that the guild seized his recovered sword and journal.",
+      "id": "cal",
+      "name": "Cal",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of Harwatch's guild council during the aftermath of the prismatic-wretch breach. He must answer for the city's defenses while the returning Inquisition challenges the guild's competence and authority.",
+      "id": "high-elder-fairbanks",
+      "name": "High Elder Fairbanks",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Harwatch guild elder responsible for spiritual matters and research. After the city breach, he begins investigating why the attacking creatures were changed by excess mana from the Foglands.",
+      "id": "elder-of-spirit",
+      "name": "Elder of Spirit",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commander of the Inquisition in Harwatch. Returning after the monster breach, he condemns the guild's failure, threatens its charter, and claims authority over the hunt for the unidentified defender of the Dust Quarter.",
+      "id": "master-inquisitor",
+      "name": "Master Inquisitor",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A level-55 dwarf, trusted guild trainer, and friend of Cal and Harn. He joins the displaced survivors to prepare their group, including Felix, for a possible expedition into Harwatch's domain.",
+      "id": "rory",
+      "name": "Rory",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sworn operative skilled in surveillance and inscribed knives. Eliza DuFont hires her to watch Vessilia Dayne, and Ilya's prior encounters give her knowledge of Felix's Foglands expedition.",
+      "id": "ilya",
+      "name": "Ilya",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Zara",
+        "Kerwin"
+      ],
+      "description": "The Elder Crown bookseller and Kerwin are one woman using separate magical identities. A former guild archivist and practitioner of chanter magic, Zara is also a Chorister who asks Felix to consider apprenticeship.",
+      "id": "zara-cyrene-kerwin",
+      "name": "Zara Cyrene",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A youthful courier who brings Vessilia Dayne through concealed sewer routes to a Chorister gathering. His access, composure, and unusual competence suggest that he is more than an ordinary messenger.",
+      "id": "matthias",
+      "name": "Matthias",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Harwatch guild elder who directs Atar V'as's expedition into the corrupted domain. He forces the apprentices into a life-threatening oath of secrecy, offers Epic essences for a capture, operates a device that emits corruption-like vapor, and orders the squad inside.",
+      "id": "elder-tane",
+      "name": "Elder Tane",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A guild journeyman defending a fortress inside Harwatch's altered domain. She mourns a fallen colleague while the surviving guild force struggles against revenants and primordial spawn.",
+      "id": "yvette",
+      "name": "Yvette",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The central threat being cultivated inside the corrupted domain. A memory taken from a slain subcore shows four feeding nodes supplying it while a small metal figure inscribes the patterns meant to create a new Maw.",
+      "id": "ravager-king",
+      "name": "The Ravager King",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An armored servant of the Archon that controls the array above the Ravager King's bore. It captures Felix's injured party, binds them in metal-laced stone, and oversees corrupted prisoners used to power the platform.",
+      "id": "archons-construct",
+      "name": "The Archon's Construct",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Archon's construct that captured Felix's party is designated Envoy 54770. It tortures a captive through twisted sigils, describes an infiltration intended to turn Harwatch's population into fuel, and fights the party after they break free.",
+      "id": "envoy-54770",
+      "name": "Envoy 54770",
+      "reveal": {
+        "chapter": 76
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The remote power behind the armored servant and the corrupted operation at the heart of Harwatch's domain. Its agent controls the central array and recognizes Felix's party as the force that killed a larval ravager.",
+      "id": "the-archon",
+      "name": "The Archon",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "hunger"
+}
