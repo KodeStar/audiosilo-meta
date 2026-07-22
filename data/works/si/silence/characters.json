@@ -1,0 +1,337 @@
+{
+  "characters": [
+    {
+      "description": "An Earth-born Unbound altered into a Nemean. Banished into the void after surviving the essence-anchor crisis, he receives a quest to escape and carries Ravenous Tithe, an ability that consumes claimed targets and their power.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's bonded Tenku companion, stranded beside him in the void. Pit fights at Felix's side as they search for a way to escape.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A weakened primordial bound to Felix through power he consumed. The Maw cannot strike him physically in the void, but remains a hostile and knowledgeable adviser who seeks influence over him.",
+      "id": "the-maw",
+      "name": "The Maw",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful corrupted void creature carrying much of the Maw's stolen power. The Maw's reaction draws it toward Felix Nevarre and Pit, and it begins pursuing them.",
+      "id": "corrupted-gnarhollow",
+      "name": "The Corrupted Gnarhollow",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dwarf pirate officer who commands a schooner's attack after its crew notices Felix and Pit in the void.",
+      "id": "dwarf-pirate-officer",
+      "name": "The dwarf pirate officer",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "The dwarf pirate officer"
+      ],
+      "description": "A dwarf officer who commands a pirate schooner's attack on Felix and Pit. He belongs to the Ten Hands and captains the Night's Wake.",
+      "id": "nights-wake-captain",
+      "name": "The Night's Wake captain",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "The heir of Pax Rell, a guild trainee, and a survivor of Magda's Foglands expedition. At the tribunal, she credits Magda's group with rescuing abandoned prisoners and challenges the guild's refusal to help them.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The missing leader of the Foglands rescue expedition. Her actions saved prisoners abandoned by the guild, while her surviving associates face judgment in her absence.",
+      "id": "magda-aren",
+      "name": "Magda Aren",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of the group caught in the tribunal's aftermath. She remains with the Foglands survivors while Magda Aren and Felix Nevarre are missing.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Magda's former teammate and one of the Foglands survivors facing the guild tribunal. He belongs to the group left to manage the consequences while Magda and Felix remain missing.",
+      "id": "harn-kastos",
+      "name": "Harn Kastos",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Elder DuFont"
+      ],
+      "description": "The Harwatch guild's Elder of Acquisitions. During the tribunal, she defends the guild's decision not to mount a rescue after its Foglands operation lost contact.",
+      "id": "eliza-dufont",
+      "name": "Eliza DuFont",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vessilia Dayne’s guardian, who removes her from the guild tribunal after she challenges the council.",
+      "id": "vessilia-daynes-guardian",
+      "name": "Vessilia Dayne’s guardian",
+      "reveal": {
+        "chapter": 7
+      }
+    },
+    {
+      "aliases": [
+        "Nixie pirate captain",
+        "Leader of the Ten Hands"
+      ],
+      "description": "The Nixie ruler of the Ten Hands stronghold and Felix's captor. He offers Felix a place among the pirates after the Night's Wake brings the unusual newcomer before him.",
+      "id": "ten-hands-captain",
+      "name": "The Ten Hands captain",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A naiad cook in the Ten Hands stronghold. She recognizes Pit as a Tenku and gives him mana-rich food, showing him respect uncommon among Felix's captors.",
+      "id": "dahlia",
+      "name": "Dahlia",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ogre enforcer serving the Ten Hands captain. He is identified as a dangerous journeyman-level member of the pirate leadership.",
+      "id": "korm-rocksplitter",
+      "name": "Korm Rocksplitter",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Mungle"
+      ],
+      "description": "A disturbed human and former Sage of Vellus living in the void. His fragmented knowledge points Felix toward a temple near desolation as a possible route of escape.",
+      "id": "daedalus-mungle",
+      "name": "Daedalus Mungle",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A fire mage and Foglands survivor studying under a Harwatch elder. His association with the expedition draws the attention of hostile noble apprentices.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Fairbanks"
+      ],
+      "description": "The leader of the Harwatch guild branch. He views the changed Foglands as an opening for territorial growth and access to newly available resources.",
+      "id": "high-elder-fairbanks",
+      "name": "High Elder Fairbanks",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Harwatch guild elder directing research into inert primordial essence found in Foglands survivors. The elder proposes extracting and studying it through a concealed program.",
+      "id": "elder-of-spirit",
+      "name": "Elder of Spirit",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Sworn agent employed by Eliza DuFont. The assignment combines Vessilia Dayne's protection with the intended killing of Magda Aren.",
+      "id": "sworn-operative",
+      "name": "The Sworn operative",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Ten Hands scout who secretly follows Felix with a silent elf companion under concealment wards. The pair report on Felix's strength and handling of his damaged ship.",
+      "id": "half-orc-pirate-bard",
+      "name": "The half-orc pirate bard",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A silent elf who trails Felix Nevarre alongside a half-orc scout. Concealment wards hide the pair while they observe Felix for the Ten Hands captain.",
+      "id": "silent-elf-observer",
+      "name": "The silent elf observer",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Felix's host"
+      ],
+      "description": "A corva rim worker who brings Felix and Pit to Echo's Reach. Impressed by Felix's restraint and his voluntary pact with Pit, he offers to house both newcomers.",
+      "id": "corva-ferryman",
+      "name": "The corva ferryman",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The corva ferryman",
+        "Felix's host"
+      ],
+      "description": "The ferryman who shelters Felix and Pit at his three-island farm in Echo's Reach. He maintains the household with his spouse and children.",
+      "id": "corva-farmer",
+      "name": "The corva farmer",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A corva farmkeeper and parent who shares a three-island farm with the ferryman. She welcomes Felix and Pit into the family household.",
+      "id": "corva-farmkeeper",
+      "name": "The corva farmkeeper",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vessilia Dayne's former betrothed and current combat instructor, acting for her father. The Hand confines her interests to her family's plans and presses her to abandon her Foglands allies.",
+      "id": "dukes-hand",
+      "name": "The duke's Hand",
+      "reveal": {
+        "chapter": 23
+      }
+    },
+    {
+      "description": "A guild archivist who lets Vessilia Dayne overhear news of the hidden Foglands survivors by manipulating a privacy ward, then restores the ward while watching how she responds.",
+      "id": "guild-archivist",
+      "name": "The guild archivist",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Echo's Reach leader who intervenes when conference guards provoke Felix, disciplines them, and receives Felix and Pit privately.",
+      "id": "conference-lord",
+      "name": "The conference lord",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Master Inquisitor Catan"
+      ],
+      "description": "The Master Inquisitor commanding the Inquisition contingent that arrives in Harwatch. He announces an operation against Foglands monsters and demonstrates authority backed by overwhelming mana.",
+      "id": "corrin-catan",
+      "name": "Corrin Catan",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vessilia Dayne’s guardian. He restricts her contact with guild members he has not approved.",
+      "id": "darius",
+      "name": "Darius",
+      "reveal": {
+        "chapter": 32
+      }
+    },
+    {
+      "description": "A concealed survivor who watches Magda's body being removed from the guild ward. Hidden by illusion and aided by inherited arrays, he evades the group while pursuing a plan associated with his father.",
+      "id": "unidentified-envoy",
+      "name": "The unidentified envoy",
+      "reveal": {
+        "chapter": 33
+      }
+    },
+    {
+      "description": "A living dwarf imprisoned within a pirate ship's mana engine and drained as its power source. The vessel cannot be operated normally while the captive remains connected.",
+      "id": "imprisoned-dwarf",
+      "name": "The imprisoned dwarf",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Echo's Reach conference leader rescued by Felix from a pirate mana engine. He survives the extraction but is left nearly unresponsive by his captivity.",
+      "id": "lord-knowledge",
+      "name": "Lord Knowledge",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "silence"
+}
