@@ -1,0 +1,254 @@
+{
+  "characters": [
+    {
+      "description": "An unusually capable tower climber whose party is advancing far faster than expected. When a mortally wounded dwarf asks for mercy after the faction workshop explodes, Max's inner voice urges him to grant the request and claim the crafting power that may follow.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A dwarf who belongs to Max's tower party.",
+      "id": "fowl",
+      "name": "Fowl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf who belongs to Max's tower party.",
+      "id": "tanila",
+      "name": "Tanila",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf who belongs to Max's tower party.",
+      "id": "batrire",
+      "name": "Batrire",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Golden Axe's unnamed dwarf crafter, mortally wounded when an explosion destroys the faction workshop. He asks Max to end his suffering, and his death prompts an offer of crafting abilities to Max.",
+      "id": "dying-dwarf-crafter",
+      "name": "Dying dwarf crafter",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A senior Golden Axe leader who protects the party's abnormal tower progress. He must also manage the aftermath of an explosion that destroys the faction's crafting area and mortally wounds a close friend.",
+      "id": "everett",
+      "name": "Everett",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Golden Axe member who helps Everett protect the party's secret progress and handle the fatal workshop disaster. He is unable to grant their dying friend's final request himself.",
+      "id": "tom",
+      "name": "Tom",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Max's inner voice"
+      ],
+      "description": "An autonomous presence tied to Max's power. It urges him to take advantage of the dying dwarf's requested mercy killing, presenting the death as a chance to acquire valuable crafting abilities.",
+      "id": "inner-entity",
+      "name": "Inner entity",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "A level-54 elf ranger recruited as the fifth member of Max's party. She is an experienced damage dealer with limited control abilities, and she swears to protect the group's secrets after Tanila secures her loyalty.",
+      "id": "cordelia",
+      "name": "Cordelia",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The innkeeper who supported the party before its move into Golden Axe housing. The group says goodbye and gives him spare adventuring equipment before beginning the next stage of its tower climb.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Max"
+      ],
+      "description": "The name Alexander uses for Max when the party leaves the inn for Golden Axe housing. It is the public identity under which Max continues his tower ascent.",
+      "id": "seth-pendell",
+      "name": "Seth Pendell",
+      "reveal": {
+        "chapter": 8
+      }
+    },
+    {
+      "aliases": [
+        "Max"
+      ],
+      "description": "The identity Max assumes with a necklace that changes his appearance and voice. Under this disguise he rents forge space, conceals his connection to the tower party, and begins developing his weaponsmithing ability.",
+      "id": "joshua",
+      "name": "Joshua",
+      "reveal": {
+        "chapter": 12
+      }
+    },
+    {
+      "description": "A dwarf weaponsmith who rents forge space to Joshua. He allows the unfamiliar smith to work privately in his shop.",
+      "id": "zach",
+      "name": "Zach",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A red-haired teenager who hopes to become a weaponsmith. He assists Joshua at the forge while the disguised crafter practices his new skill.",
+      "id": "brian",
+      "name": "Brian",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The unidentified figure who pays for a poisoned bottle to be delivered to Max during dinner. The attempt nearly kills him, and responsibility remains unknown.",
+      "id": "unidentified-poisoner",
+      "name": "Unidentified poisoner",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A high-level Golden Axe warrior trusted by Tom. She tests Max in a sparring match and is decisively defeated.",
+      "id": "grace",
+      "name": "Grace",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed demon summoned by Max during the werewolf battle. It accepts a bargain to defeat his enemies and protect his allies, kills the boss and its horde, then leaves after promising secrecy and an answer to a future summons.",
+      "id": "summoned-demon",
+      "name": "Summoned demon",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The scaled caretaker of a rare tower chamber. He explains its rules, administers a single temporary boon for the party, and expels the group once Fowl receives the reward.",
+      "id": "scaled-host",
+      "name": "Scaled host",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Vela"
+      ],
+      "description": "A guard captain who takes custody of an elf captured after an attack on Max. She has the prisoner's secured storage opened and accepts the information Tanila obtains during interrogation.",
+      "id": "captain-vela",
+      "name": "Captain Vela",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed daughter of elven royalty who is hostile toward humans and dwarves. Information taken from a captured attacker indicates that she appears to direct the continuing campaign against Max.",
+      "id": "elven-royal-daughter",
+      "name": "Elven royal daughter",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A high-level Golden Axe tower climber whom Tom summons to test Max in a sparring match. Her experience makes her a demanding measure of his practical fighting technique.",
+      "id": "dexic",
+      "name": "Dexic",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The apparent boss of the fifteenth floor, waiting beyond a field of petrified victims in a ruined coliseum. Its gaze and venom can turn living creatures to stone, forcing the trapped party to prepare a fight without looking at it directly.",
+      "id": "gorgon",
+      "name": "Gorgon",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Golden Axe warrior who remained petrified in the Gorgon's coliseum for decades. The party identifies him from faction records and restores him with one of the cure potions found after the battle.",
+      "id": "restored-dwarf-golden-axe-member",
+      "name": "Restored dwarf Golden Axe member",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A human woman from Golden Axe who spent about eighty years petrified among the Gorgon's victims. The party identifies and restores her with another cure potion.",
+      "id": "restored-human-golden-axe-member",
+      "name": "Restored human Golden Axe member",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Max",
+        "Seth Pendell",
+        "Joshua"
+      ],
+      "description": "Max's underlying identity, disclosed to Everett after the faction leader binds himself to secrecy. He identifies himself as an eighteen-year-old level-one human, reveals exceptional attributes and defenses, and shares most of his concealed history while retaining one private agreement.",
+      "id": "max-host",
+      "name": "Max Host",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "protagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "new-dreams"
+}
