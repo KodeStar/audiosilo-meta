@@ -1,0 +1,357 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Seth"
+      ],
+      "description": "A level-one adventurer whose concealed abilities make him an unusually capable fighter. He leads Fowl, Tanila, and Batrire through dungeon training while testing how far his combat talents can take him.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Max's dwarf shield fighter and one of the three companions training beside him. He helps hold the front line while the party works toward level 25.",
+      "id": "fowl",
+      "name": "Fowl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf mage in Max's four-person party. She supports the group's dungeon runs and quickly recognizes how exceptional Max's combat ability has become.",
+      "id": "tanila",
+      "name": "Tanila",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dwarf healer who accompanies Max, Fowl, and Tanila during the party's dungeon training.",
+      "id": "batrire",
+      "name": "Batrire",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Max's younger friend in Rumstant and a novice adventurer whom he helps gain dungeon experience. She reaches level nine during one of their separate runs.",
+      "id": "amy",
+      "name": "Amy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dwarf proprietor of a Rumstant alchemy shop who shows urgent interest in Max's unusual red-scaled paw.",
+      "id": "dwarf-alchemist",
+      "name": "Dwarf alchemist",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Amy's father, who helps her thank Max with a cake after Amy's progress as an adventurer.",
+      "id": "amys-father",
+      "name": "Amy's father",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older dwarf scholar who records Max's observations of a rare red lizard. He agrees to keep Max's identity confidential and lends him a reference book on rare monsters.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Max's childhood friend and an adventurer who attended his selection. His connection to Max remains important as Max tries to keep his movements concealed.",
+      "id": "caleb",
+      "name": "Caleb",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Guild-connected investigator already looking into Max's disappearance. Her pursuit makes Max's former connections a continuing risk.",
+      "id": "trina",
+      "name": "Trina",
+      "reveal": {
+        "chapter": 0
+      }
+    },
+    {
+      "description": "A Rumstant innkeeper who supports Max in confidence and agrees to give Caleb a false account of when Max departed.",
+      "id": "rumstant-innkeeper",
+      "name": "Rumstant innkeeper",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Five powerful observers approached by an unidentified petitioner seeking information. The Watchers operate under rules that limit what they can disclose or do.",
+      "id": "watchers",
+      "name": "The Watchers",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed powerful seeker who asks the five Watchers for knowledge they cannot provide within their constraints. The encounter points the petitioner toward repairing former alliances, after which the figure expends power on another search.",
+      "id": "unidentified-petitioner",
+      "name": "Unidentified petitioner",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A missing man whose disappearance leads Trina to suspect Max and send three C-rank adventurers to investigate.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The formidable leader of a bandit group encountered on the road to the capital. She is exceptionally fast and dangerous, and she has avoided a criminal aura by directing others to carry out killings.",
+      "id": "bandit-leader",
+      "name": "Bandit leader",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The captured bandit leader says that her mother calls her Lydia, though Max does not accept the claim at face value. She remains a dangerous prisoner in the party's custody.",
+      "id": "lydia",
+      "name": "Lydia",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Private Felix"
+      ],
+      "description": "A patrol soldier assigned to remain with the caravan and guard the captured Lydia until the group reaches the capital.",
+      "id": "felix",
+      "name": "Felix",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The innkeeper of the Heavenly Pineapple in the capital. He provides Seth's party with a month-long base that includes meals and secure storage.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A discreet intermediary who agrees to distribute Max's surplus dungeon equipment anonymously to new adventurers.",
+      "id": "nicholas",
+      "name": "Nicholas",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unexplained voice Max hears internally after defeating a dungeon boss. It commands him to consume the creature, alarming him because he realizes he did not imagine it.",
+      "id": "unidentified-inner-voice",
+      "name": "Unidentified inner voice",
+      "reveal": {
+        "chapter": 14
+      }
+    },
+    {
+      "description": "A librarian who gives Max access to eight books in exchange for information about rare monsters.",
+      "id": "librarian",
+      "name": "Librarian",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A female faction warrior who offers Max a preliminary evaluation after learning that his mixed-race party intends to stay together. She may be able to sponsor the group for faction membership.",
+      "id": "faction-warrior",
+      "name": "Faction warrior",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older elf healer at the Adventurers' Hall. She uses Stasis to save the critically poisoned Batrire and coordinates the search for specialist treatment.",
+      "id": "merla",
+      "name": "Merla",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Batrire's brother and fighting teacher, whose death in a lethal arena match for prize money shapes her grief and opposition to deadly competition.",
+      "id": "batrires-brother",
+      "name": "Batrire's brother",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A specialist alchemist from across the great ocean. Merla recommends him as the best chance of producing an antidote for Batrire's rare poison.",
+      "id": "tang-mu",
+      "name": "Tang Mu",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Max",
+        "Seth"
+      ],
+      "description": "The full identity Max uses to register for the Coliseum while seeking money for Batrire's antidote.",
+      "id": "seth-pendell",
+      "name": "Seth Pendell",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Two human queens who observe the Coliseum fights and openly favor lethal outcomes, applauding contestants who kill their opponents.",
+      "id": "human-queens",
+      "name": "The human queens",
+      "reveal": {
+        "chapter": 49
+      }
+    },
+    {
+      "description": "A highly experienced red-haired elf who fights with two weapons in the Coliseum. She warns Max that stronger competitors remain and expects that the bracket may eventually bring them together.",
+      "id": "red-haired-elven-fighter",
+      "name": "Red-haired elven fighter",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A male elven mage paired against Max after the Coliseum bracket is redrawn. He taunts Max and enters their match expecting an easy victory.",
+      "id": "male-elven-mage",
+      "name": "Male elven mage",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A brutal human Coliseum contender who tortures and kills an opponent after she surrenders. The queens' approval suggests that he enjoys powerful favor within the competition.",
+      "id": "alfred",
+      "name": "Alfred",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Guild negotiator who warns Max that Alfred's noble family could retaliate against his friends if Alfred dies, then seeks an agreement governing the coming fight.",
+      "id": "guild-advisor",
+      "name": "Guild advisor",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Librarian"
+      ],
+      "description": "A human librarian who trades restricted knowledge about unusual skills for Max's observations of rare monsters.",
+      "id": "adam",
+      "name": "Adam",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ancient presence within Consume now identifies itself as the Consumer. It binds Max to secrecy before explaining that its black skill exists in a balance with two rival powers.",
+      "id": "consumer",
+      "name": "The Consumer",
+      "reveal": {
+        "chapter": 56
+      }
+    },
+    {
+      "description": "An elven zealot who breaches the Heavenly Pineapple and attacks Max with a poisoned dagger. Max kills her while defending himself.",
+      "id": "elven-zealot-assassin",
+      "name": "Elven zealot assassin",
+      "reveal": {
+        "chapter": 56
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dwarf shopkeeper who helps disguise Max by selling him a recognition-hindering brooch and recoloring his armor. He accepts two gold toward the 15-gold price.",
+      "id": "dwarf-magical-shop-owner",
+      "name": "Dwarf magical-shop owner",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A representative who gives Max an invitation to her faction's property and shows active interest in recruiting his party.",
+      "id": "faction-representative",
+      "name": "Faction representative",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful figure beyond Max's world who seeks an audience after learning that a black skill has been released on one of the worlds tied to his plans.",
+      "id": "black-skill-observer",
+      "name": "Black-skill observer",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "shattered-limits"
+}
