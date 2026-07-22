@@ -1,0 +1,399 @@
+{
+  "characters": [
+    {
+      "description": "The masked leader behind a growing street faction in the Damned Plains. Spider repairs Violet's advancement, entrusts her and a young demon leader with uniting nearby gangs, and prepares them for resistance from stronger powers.",
+      "id": "spider",
+      "name": "Spider",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A newly advanced rank-three demon whose strength and identity center on protecting the people she regards as family. Spider repairs her failed rune combination and appoints her as a defender of his emerging faction.",
+      "id": "violet",
+      "name": "Violet",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young demon whom Spider charges with bringing local gangs under one banner. He shares responsibility with Violet for consolidating the surrounding gangs, protecting their group, and preparing for stronger opposition.",
+      "id": "spiders-street-lord-proxy",
+      "name": "Spider's Street-Lord Proxy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shadow-wielding killer who becomes the young street-lord proxy's second-in-command. Her private arrangement with him cannot be readily replaced, giving their alliance a foundation beyond ordinary gang loyalty.",
+      "id": "the-proxys-assassin-ally",
+      "name": "The Proxy's Assassin Ally",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Spider",
+        "Vermil"
+      ],
+      "description": "The man operating as Spider while stranded in the Damned Plains. He is building a demon power base, collecting runes, and studying the way demon runes shape their bearers in the hope of repairing Lee's unstable condition.",
+      "id": "noah-vines",
+      "name": "Noah Vines",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Noah's demon companion, a capable protector, and the focus of his rune research. Her fused Master Rune and demon rune break familiar rules, leaving Noah determined to preserve both her power and her sense of self.",
+      "id": "lee",
+      "name": "Lee",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A horned, teleporting cat capable of crossing into the Damned Plains. Its arrival offers Noah's stranded group a possible way to send word to their allies, although it does not provide them with a route home.",
+      "id": "mascot",
+      "name": "Mascot",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human intruder who establishes a foothold in the Damned Plains with Barb. His overwhelming mind magic turns captives into compliant informants as he searches for Sievan, a demon lord said to have returned from the afterlife.",
+      "id": "wizen",
+      "name": "Wizen",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Wizen's associate in the Damned Plains. She remains with him as he establishes a base and begins pursuing his objective there.",
+      "id": "barb",
+      "name": "Barb",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon lord reputed to have crossed the afterlife and returned. Wizen begins hunting him soon after entering the Damned Plains, making Sievan central to a purpose Wizen has not yet disclosed and will pursue through force.",
+      "id": "sievan",
+      "name": "Sievan",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deity observing Noah's group with Decras. Renewal follows Noah's study of demon runes and considers whether Lee's unusual condition shows that their flaws might be repairable.",
+      "id": "renewal",
+      "name": "Renewal",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A deity observing Noah's group with Renewal. Decras regards demons as failed experiments but acknowledges that Lee is exceptional, and he is concerned that Noah and Wizen may clash over a Master Rune.",
+      "id": "decras",
+      "name": "Decras",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Noah's rank-four partner and a principal defender of Spider's camp. She captures hired killers with powerful vine magic and takes responsibility for stopping threats before they can expose the faction or endanger its residents.",
+      "id": "moxie",
+      "name": "Moxie",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The identity used to summon Spider to a private mansion. A masked figure occupies Pirren's throne during the deceptive meeting, but Spider detects the false display of power and kills the figure after a demand for submission.",
+      "id": "pirren",
+      "name": "Pirren",
+      "reveal": {
+        "chapter": 9
+      }
+    },
+    {
+      "description": "The ruler identified as the dominant power in the walking demon city. His position defines the political order Spider is entering and the authority surrounding its elite auctions, even before he takes direct notice of the Web.",
+      "id": "belkus",
+      "name": "Belkus",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A covert seeker directing a search for an undisclosed target in an original Linwick crypt. Father orders Janice to report as soon as she locates the crypt and not to enter it herself.",
+      "id": "father",
+      "name": "Father",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Father's researcher, charged with locating an original Linwick crypt without entering it. She traces a deliberately erased period in the family records and expects the search to reach its objective soon.",
+      "id": "janice",
+      "name": "Janice",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-six Linwick family head who oversees Vermil's students during their teacher's absence. He recognizes that their improvised formation work is far ahead of conventional training and receives proof that Vermil is alive.",
+      "id": "jalen",
+      "name": "Jalen",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vermil's half-brother"
+      ],
+      "description": "Vermil's half-brother and one of the temporary guardians supervising the students. He works alongside Jalen during their improvised formation practice and is present when Mascot confirms that Vermil survived in the Damned Plains.",
+      "id": "brayden",
+      "name": "Brayden",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The servant of an unnamed mistress who approaches Pirren with an offer of access to the next auction. He knows about Pirren's private task for Spider and leads her toward the only route he claims will succeed.",
+      "id": "taleel",
+      "name": "Taleel",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-five demon whom Pirren identifies as serving no man. At this point, the reason Pirren mentions Yoku while discussing Spider's independence remains unresolved.",
+      "id": "yoku",
+      "name": "Yoku",
+      "reveal": {
+        "chapter": 11
+      }
+    },
+    {
+      "description": "A King-family rune researcher connected to Otto. Jalen pressures her to provide two runes for each of Vermil's students, and she bargains for instruction in the shieldless combat method she has been extending through her own research.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat instructor helping Vermil's students while their usual teachers are absent. He works directly with Alexandra on sword technique and joins the wider group preparing the students for an approaching examination.",
+      "id": "silvertide",
+      "name": "Silvertide",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Vermil's students preparing for an examination under temporary instructors. She cannot safely accept new runes, so Silvertide continues developing her sword work while the group arranges other forms of practical support.",
+      "id": "alexandra",
+      "name": "Alexandra",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unannounced masked, silver-haired demon waiting in Pirren's auction booth. She recognizes Spider on sight and is associated with the unexplained arrangement that secured Pirren's access to the auction.",
+      "id": "masked-auction-stranger",
+      "name": "Masked Auction Stranger",
+      "reveal": {
+        "chapter": 19
+      }
+    },
+    {
+      "aliases": [
+        "Yoku",
+        "the Rising Moon"
+      ],
+      "description": "The masked silver-haired demon who joins Spider's auction booth and permits him to call her Yoru. She is Yoku, the Rising Moon, and she quietly tests possible futures involving Spider while concealing her full intentions.",
+      "id": "yoru",
+      "name": "Yoru",
+      "reveal": {
+        "chapter": 20
+      }
+    },
+    {
+      "description": "A rank-five gluttony demon who competes for Bleeding Blades at the auction. He physically clashes with Matis during the bidding, is injured, and loses the lot after Matis intimidates the other bidders.",
+      "id": "feebog",
+      "name": "Feebog",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A rank-five slaughter demon who intimidates other auction bidders and competes directly with Spider for a rune Spider wants as material for Lee's reconstruction.",
+      "id": "matis",
+      "name": "Matis",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A rank-five auction attendee whom Pirren knows and fears. Her presence places another powerful bidder near Spider as he begins openly competing for valuable runes.",
+      "id": "sinclaire",
+      "name": "Sinclaire",
+      "reveal": {
+        "chapter": 22
+      }
+    },
+    {
+      "description": "One of Vermil's students training under Jalen and Silvertide during his absence. Isabel becomes interested in learning to fight without ordinary sight while the group works toward the domain-based perception expected at rank four.",
+      "id": "isabel",
+      "name": "Isabel",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An organizer within the Web who manages the camp's practical needs and gathers intelligence. Vrith identifies Igris as the likely source of the attacks directed at Spider and the young knowledge demon.",
+      "id": "vrith",
+      "name": "Vrith",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-five wealth demon affiliated with Belkus. Intelligence gathered by the Web points to him as the likely sponsor of attacks on Spider's camp and its young knowledge demon leader, prompting Noah to plan a direct confrontation.",
+      "id": "igris",
+      "name": "Igris",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An axe-wielding rank-five demon acting on Sievan's orders. She tracks Spider to recover a death-associated Master Rune, observes his operation against Igris, and treats lethal combat as an object of intense fascination.",
+      "id": "axil",
+      "name": "Axil",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Belkus's commander, sent to bring Spider to an audience after Sievan's interest changes the political stakes. His task is diplomatic, but it carries the authority of the city's ruler and follows Belkus's abrupt cancellation of earlier hostilities.",
+      "id": "zorin",
+      "name": "Zorin",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Sievan's authorized representative, whom Axil offers to introduce to Noah. The harbinger can negotiate on Sievan's behalf over the death-associated Master Rune Noah holds.",
+      "id": "sievans-harbinger",
+      "name": "Sievan's Harbinger",
+      "reveal": {
+        "chapter": 64
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A weak local child who knows the City of Gold's dens. An artifact occupies the place of her heart, and Wizen spares her after she exposes false directions and agrees to guide him.",
+      "id": "young-demon-girl",
+      "name": "Young Demon Girl",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A death-rune user who serves Sievan. He presents Noah and Belkus with a shadow record of Wizen's challenge in the City of Gold and treats direct death magic there as dangerously destructive.",
+      "id": "zath",
+      "name": "Zath",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Vermil's students, continuing intensive formation and combat practice during his absence. Todd uses stone protection on his limbs and bracelet-fired magic while adapting to close-range opponents.",
+      "id": "todd",
+      "name": "Todd",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Vermil's students, still training at Arbitage under Jalen, Brayden, Silvertide, and a masked combat instructor. James takes a support position when the group is assigned a dangerous live-monster formation exercise.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Vermil's students, continuing formation and combat work while her teacher remains in the Damned Plains. Emily serves in a support position during the group's escalating live-monster exercise under its temporary guardians.",
+      "id": "emily",
+      "name": "Emily",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Wizen's dead daughter. He seeks Sievan in the belief that the demon lord can open a path to the afterlife and allow him to retrieve her.",
+      "id": "bella",
+      "name": "Bella",
+      "reveal": {
+        "chapter": 78
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The young guide traveling with Wizen is Hollow, unable to form or bind even a demon rune because her soul is improperly formed. Sievan can delay her death with death energy, but does not expect her to survive the day.",
+      "id": "hollow-demon-girl",
+      "name": "Hollow Demon Girl",
+      "reveal": {
+        "chapter": 81
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "return-of-the-runebound-professor-6-a-progression-fantasy-epic"
+}
