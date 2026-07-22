@@ -1,0 +1,202 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Seth Pendell"
+      ],
+      "description": "The leader of a five-person tower party, also called Seth Pendell by his companions. He combines close combat with defensive stone magic while directing the group through the revived floor-19 boss.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A principal ranged caster in Max's party and his partner. She helps control dangerous enemies while the group survives the unusual floor-19 boss encounter, contributing magic from behind the frontline defenders.",
+      "id": "tanila",
+      "name": "Tanila",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The party's dwarf shield warrior and frontline defender. He holds dangerous enemies away from the group's ranged fighters and healer during the floor-19 battle, relying on his shield and durability to protect his companions.",
+      "id": "fowl",
+      "name": "Fowl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dwarf healer and defensive support in Max's five-person party. Her restorative and protective abilities help keep the group alive through the floor-19 boss, its revival, and the destructive blast that follows.",
+      "id": "batrire",
+      "name": "Batrire",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf archer and precise ranged fighter in Max's party. She identifies vulnerable growths on the floor-19 boss and lands an important attack on the purple cube that keeps rebuilding it, helping the group halt its revival.",
+      "id": "cordelia",
+      "name": "Cordelia",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of Golden Axe and a sponsor of Max's party. He coordinates faction resources, tracks rewards offered for restored Gorgon victims, and seeks board support for Tanila's future advancement as the climbers prepare for higher floors.",
+      "id": "everett",
+      "name": "Everett",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Golden Axe's materials manager, responsible for overseeing the faction's crafting supplies.",
+      "id": "alfreda",
+      "name": "Alfreda",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unidentified dragonkin who knows Max's name and petitions system gatekeepers on his behalf. The visitor spends power to improve his chances of receiving valuable future items, but gives no clear motive.",
+      "id": "dragonkin-visitor",
+      "name": "Dragonkin visitor",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Golden Axe trainer and operational leader. He mobilizes faction teams during a manticore dungeon break and emphasizes that closing the dungeon is the priority.",
+      "id": "tom",
+      "name": "Tom",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Inner skill"
+      ],
+      "description": "A dangerous autonomous presence bound to Max and associated with his unusual powers.",
+      "id": "inner-entity",
+      "name": "Inner entity",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Golden Axe fighter who remains behind to protect wounded climbers after an elven ambush in the tower. Her fate is initially uncertain as the survivors reach the exit without her and report that hostile elves still hold the field.",
+      "id": "dexic",
+      "name": "Dexic",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tanila's father, an exceptionally dangerous figure who can painfully compel even his resistant children to obey. His unexplained power appears to be a red skill, leaving Max's inner entity uncertain that it could protect him against the threat.",
+      "id": "tanilas-father",
+      "name": "Tanila's father",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Tanila's father and the elven king. Tanila identifies herself as his third daughter while confronting the Mind Reaver, placing the offstage ruler at the center of her concealed royal history and the painful memories raised by the encounter.",
+      "id": "king-cervantes",
+      "name": "King Cervantes",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An elven ruler whose attendance turns Max and Dexic's Coliseum duel into a major public event. She controls the selection of their opponents, draws a large crowd to the arena, and represents the faction challenging Golden Axe.",
+      "id": "elven-queen",
+      "name": "Elven queen",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Queen Macy"
+      ],
+      "description": "A queen who formally witnesses the expanded Coliseum challenge arranged by Max. She helps confirm the terms under which the original team match will be followed by two solo fights, all conducted without healer-provided recovery for Max.",
+      "id": "macy",
+      "name": "Macy",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Queen Molly"
+      ],
+      "description": "A queen who formally witnesses and confirms Max's expanded Coliseum challenge. Her authority makes the wagers and unusual sequence of three matches an official public confrontation between Golden Axe and Enlightened Souls.",
+      "id": "molly",
+      "name": "Molly",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified assassin observing the Coliseum while searching for a way to kill Max. The hunter cannot measure his strength, knows he has survived poison, and delays the next attempt while looking for a weakness.",
+      "id": "hunter",
+      "name": "Hunter",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The ruler and champion of an underwater city. He doubts that Max's group truly consists of tower climbers and requires Max to prove the claim in an unarmed arena duel where skills remain permitted, taking the role of champion himself.",
+      "id": "merfolk-king",
+      "name": "Merfolk king",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Max",
+        "Seth Pendell"
+      ],
+      "description": "Max's real identity, disclosed to Cordelia after his survival in the merfolk duel forces an explanation. He tells her that his concealed black skill can sometimes take abilities from those he kills, bringing the entire party into his confidence.",
+      "id": "max-host",
+      "name": "Max Host",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "protagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "new-freedoms"
+}
