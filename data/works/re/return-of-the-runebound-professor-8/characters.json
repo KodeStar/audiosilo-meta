@@ -1,0 +1,414 @@
+{
+  "characters": [
+    {
+      "description": "An Arbitage professor who protects a class of human and demon students. Acting as the masked Spider, he stages Vermil's survival and invents a noble conspiracy to keep the houses divided and reduce the danger facing Isabel.",
+      "id": "noah-vines",
+      "name": "Noah Vines",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An ally who impersonates Vermil during Spider's presentation to the advanced track. Her performance supports Noah's attempt to turn the noble houses against one another before they can unite against Isabel.",
+      "id": "karina",
+      "name": "Karina",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon student and close ally of Noah who helps sustain the Spider and Vermil deception. She stands with the students while Noah directs the advanced track's suspicions toward an invented conspiracy.",
+      "id": "lee",
+      "name": "Lee",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient guardian of Arbitage whom the artifact thief leaves mortally wounded. He merges his runes and reaches rank seven, briefly resisting death long enough to help Garina confront the theft underway.",
+      "id": "jalen",
+      "name": "Jalen",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rank-seven mage who arrives when Jalen advances and immediately confronts the artifact thief at the artifact.",
+      "id": "garina",
+      "name": "Garina",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A covert observer for the artifact thief inside Arbitage. She tracks Spider's public claims while maintaining a personal attachment to Brayden, and recognizes that the invented conspiracy may overlap with her superior's artifact operation.",
+      "id": "janice",
+      "name": "Janice",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Janice's superior and the mage directing a covert artifact operation in Arbitage. He has already reached the artifact, and he mortally wounds Jalen before Jalen's rank-seven breakthrough summons Garina.",
+      "id": "artifact-thief",
+      "name": "Artifact Thief",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A healer who saves Jalen after his rank-seven breakthrough by directing the advancement's excess energy. The treatment preserves Jalen's life but leaves him heavily scarred.",
+      "id": "ferdinand",
+      "name": "Ferdinand",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Noah's closest combat partner and a trusted ally to his students. Jalen reaches her with an urgent warning that the artifact thief is rank seven, has stolen a dangerous artifact, and has forced Jalen to leave the Empire.",
+      "id": "moxie",
+      "name": "Moxie",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Inquisitor who challenges Spider's accusations but insists on evidence before attacking him. Her attempt to seal the meeting and contain a suspected traitor instead prompts Janice to flee, lending public credibility to Noah's fabrication.",
+      "id": "fuyin",
+      "name": "Fuyin",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful demon student who has lost both hands. She joins Noah's mixed class as he gathers the human and demon students for formation practice and accelerated training.",
+      "id": "yoru",
+      "name": "Yoru",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The person whose home provides refuge for the demons allied with Noah.",
+      "id": "tim",
+      "name": "Tim",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human student whose sword pattern draws magical power from the surrounding world even after her body runes are removed. Her unusual progress makes her the clearest early example of what personal patterns may achieve.",
+      "id": "alexandra",
+      "name": "Alexandra",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A student developing a pattern that makes him difficult to notice. His stealth and illusion skills distinguish him during Noah's review of the class's progress before formation training begins.",
+      "id": "james",
+      "name": "James",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A student whose training combines swordwork with spatial awareness. She carries a master rune and remains the target Noah sought to protect by turning the noble houses against one another.",
+      "id": "isabel",
+      "name": "Isabel",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An imbuement-focused student in Noah's mixed class. His personal pattern is stable enough for him to advance into formation study alongside the other experienced students.",
+      "id": "todd",
+      "name": "Todd",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A student who has developed frost mist into an offensive personal pattern. She joins the class's move from individual pattern practice into the more dangerous study of formations.",
+      "id": "emily",
+      "name": "Emily",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A creature manifested by Noah's sentient grimoire during his confrontation with three disguised Inquisitors. It calls Noah a Herald while his developing musical pattern contains the attackers' magic.",
+      "id": "sentient-grimoire-creature",
+      "name": "Sentient Grimoire Creature",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "sentient grimoire creature"
+      ],
+      "description": "A creature manifested by Noah's sentient grimoire during a fight with three Inquisitors. It calls Noah a Herald as his new musical pattern seizes control of hostile magic, but offers no immediate explanation of the title.",
+      "id": "grim",
+      "name": "Grim",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally dangerous figure concealed in a cave. Decras does not regard him as a disciple or dependable ally. He receives Tillian's report about rising chaos.",
+      "id": "hidden-cave-figure",
+      "name": "Hidden Cave Figure",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Inquisitor of the Crimson Wake who serves the Red Lady. He investigates a sharp increase in chaos energy at an old hideout and seeks help from a dangerous hidden associate.",
+      "id": "tillian",
+      "name": "Tillian",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A god connected to the Apostles who watches Alexandra's early efforts to teach pattern work. He recognizes the hidden figure approached by Tillian as a dangerous former associate whose presence and intentions are difficult to predict.",
+      "id": "decras",
+      "name": "Decras",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An exceptionally dangerous hidden figure whom Decras regards as neither a present disciple nor a predictable ally. He answers Tillian's request concerning rising chaos and agrees to travel toward Arbitage.",
+      "id": "former-eighth-apostle",
+      "name": "Former Eighth Apostle",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The young Tauren student bound to the hidden cave figure's training. She can match her leaked energy to her surroundings so precisely that even Tillian's domain fails to detect her.",
+      "id": "young-tauren-trainee",
+      "name": "Young Tauren Trainee",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A demon student connected to Orlan whom Tillian wants to question. Noah prevents Tillian from approaching her directly, then discovers that she has disappeared before the discussion can take place.",
+      "id": "missing-demon-student",
+      "name": "Missing Demon Student",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An inner-circle Truth Seeker who confronts Noah and Lee, rejects Noah as a false Herald, and neutralizes Unstable Pandemonium before escaping through a portal.",
+      "id": "inner-circle-truth-seeker",
+      "name": "Inner-Circle Truth Seeker",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A familiar that intervenes when a demon infiltrates the rooms occupied by Karina and another resident. The intruder is already dead when they discover it, showing that Mascot is actively guarding Noah's allies.",
+      "id": "mascot",
+      "name": "Mascot",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A previously repaired demon who is already a member of Noah Vines's class.",
+      "id": "sticky",
+      "name": "Sticky",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon student taking part in Garina's soul-shaping exercise. She cannot yet direct the edge of her soul easily and forces it to move through sustained effort rather than immediate insight.",
+      "id": "violet",
+      "name": "Violet",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Apostle called the God-eater. Watching unseen, he regards Noah's performance against a rune-restricted Garina as remarkable and chooses not to interfere.",
+      "id": "god-eater",
+      "name": "God-eater",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A figure whose attention Garina is careful to avoid. Rules limit how much she can intervene in the Arbalest Empire, and his scrutiny adds to the danger of her actions.",
+      "id": "prophet",
+      "name": "Prophet",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The goddess of reincarnation who meets Jalen while he is near death. She recognizes the burden of his centuries-long duty and gives him messages before he returns to his body.",
+      "id": "renewal",
+      "name": "Renewal",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful observer who watches Noah complete his first full merge alongside Renewal. Its exceptional duration leads both gods to view him as a promising candidate for eventual godhood.",
+      "id": "fallen-god",
+      "name": "Fallen God",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A repaired vengeance demon among Noah's combat-ready allies. Once Noah replaces the damage to her runes with the method derived from Sticky, her unusually clear sense of self lets her form a personal fragment almost immediately.",
+      "id": "captured-vengeance-demon",
+      "name": "Captured Vengeance Demon",
+      "reveal": {
+        "chapter": 67
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed supernatural figure who periodically loses stability. Restored to clarity after ninety-four years, he senses the Night's Shadow storms, judges the creature stirred but not fully awake, and believes someone is studying an avatar of Order in pursuit of godhood.",
+      "id": "unstable-observer",
+      "name": "Unstable Observer",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Apostle whose original soul has been replaced while the body and memories remain convincing. The altered figure reports Garina's conduct to a powerful demon master and participates in hostile scrutiny of Noah.",
+      "id": "false-prophet",
+      "name": "False Prophet",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The third of the seven Apostles, an unnamed ferryman who appears in Noah's room and commands him to attend an Apostle gathering that night.",
+      "id": "apostle-ferryman",
+      "name": "Apostle Ferryman",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An allied transporter who evacuates Noah's students from the Night's Shadow crisis. Moving the group to safety consumes most of his available power but prevents their loss during the attack.",
+      "id": "brayden",
+      "name": "Brayden",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Apostle who arranges Noah's participation in a contest among Apostles' disciples. He demands that Noah sabotage another competitor so his own apprentice can win the offered prize.",
+      "id": "kyle",
+      "name": "Kyle",
+      "reveal": {
+        "chapter": 78
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Kyle's highly capable apprentice and his entrant in the contest for a rank-six rune. She begins the competition as the intended beneficiary of Kyle's effort to force Noah into sabotaging her strongest rival.",
+      "id": "alice",
+      "name": "Alice",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An armored disciple entered in the Apostles' contest and identified as its strongest expected competitor. Kyle specifically orders Noah to impede her so that Alice can reach the rank-six prize first.",
+      "id": "carmen",
+      "name": "Carmen",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A masked contestant in the Apostles' contest who has deliberately cultivated his soul and can sense the souls of others. He dismisses Noah as unworthy of a challenge before entering the underground maze.",
+      "id": "masked-disciple",
+      "name": "Masked Disciple",
+      "reveal": {
+        "chapter": 80
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A masked contestant whose path centers on deliberate cultivation of the soul. He can sense the souls of others and initially dismisses Noah as unworthy of attention before entering the underground maze.",
+      "id": "sin",
+      "name": "Sin",
+      "reveal": {
+        "chapter": 81
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mage who gathers his allies as Arbitage falls into disorder and retrieves his student from secluded training.",
+      "id": "silvertide",
+      "name": "Silvertide",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "return-of-the-runebound-professor-8"
+}
