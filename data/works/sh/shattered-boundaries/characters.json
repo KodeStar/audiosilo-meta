@@ -1,0 +1,231 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Seth Pendell"
+      ],
+      "description": "A formidable fighter also known as Seth Pendell. After an inner presence takes control during Berserker, he kills a group of attacking elves and is detained under a murderer flag. The presence spares Tanila, but Max is left unsure how much control he truly has.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A dwarf shield fighter and one of Max's closest companions. He serves on the party's front line as a defender.",
+      "id": "fowl",
+      "name": "Fowl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elf elemental mage traveling with Max. Although horrified when Berserker changes him, she recognizes when he regains control and physically places herself between him and the arriving guards.",
+      "id": "tanila",
+      "name": "Tanila",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vela"
+      ],
+      "description": "The guard captain who investigates the slain elves. She detains Max after the system marks him for murder while allowing Tanila to remain unharmed pending an explanation. Her response balances public safety with a willingness to examine what happened.",
+      "id": "captain-vela",
+      "name": "Captain Vela",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Max's internal power"
+      ],
+      "description": "A conscious presence within Max that takes command of his body during Berserker. It drives him to kill attacking and fleeing elves, yet prevents him from striking Tanila before surrendering control. Its motives and the limits of its influence are unknown.",
+      "id": "inner-entity",
+      "name": "Inner entity",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dwarf healer, Fowl's partner, and member of Max's party. Reunited with the group after being held in stasis, she confronts Max about the danger his transformation may pose. Her concern is rooted in protecting both the party and the people close to her.",
+      "id": "batrire",
+      "name": "Batrire",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The head of Golden Axe, introduced when an elven guide brings Max's four-person party to an unusually early meeting with him. His willingness to receive them before formal membership signals that the faction sees unusual promise in the established team.",
+      "id": "everett",
+      "name": "Everett",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Golden Axe crafting authority asked to assess the party's rare ogre, skeleton, and mimic materials. She immediately recognizes the collection as exceptionally valuable and joins Everett in treating both the haul and its origin as sensitive faction business.",
+      "id": "alfreda",
+      "name": "Alfreda",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An alchemist associated with a life-saving potion used on Batrire after the party's earlier encounter with a rare scorpion. Tang Mu is identified when Everett discusses the quality of Golden Axe's potions and the aid already given to the group.",
+      "id": "tang-mu",
+      "name": "Tang Mu",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A plate-armored warrior in a five-person adventuring group that joins Max's party during the ogre dungeon break. She helps form the temporary combined defense as the creatures attack outside the threatened city.",
+      "id": "nuala",
+      "name": "Nuala",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An off-tank warrior fighting with the allied five-person group during the ogre dungeon break. He joins Max, Fowl, Tanila, and Batrire in holding against increasingly large packs while the defenders try to stabilize the area outside the city.",
+      "id": "asher",
+      "name": "Asher",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A level-45 dwarf warrior who assumes field command when several adventuring groups unite against the ogre horde. Her greater experience gives the scattered defenders a common formation as they face numbers and elite enemies beyond their expectations.",
+      "id": "brunhilde",
+      "name": "Brunhilde",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A mage who coordinates ranged fighters and spellcasters under Brunhilde's battlefield command. He helps organize the combined defense as the adventurers form a wedge against the advancing ogres, though the position is already beginning to fail.",
+      "id": "dagon",
+      "name": "Dagon",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A powerful older Golden Axe member assigned as the party's trainer and faction liaison after the ogre crisis. He explains that Everett has arranged substantial funding, facilities, and a training shard to help the four companions prepare for harder dungeons.",
+      "id": "tom",
+      "name": "Tom",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A level-50 elf archer whom Everett considers for the party's open fifth position. She already belongs to a tower group, so any approach must be discreet. Everett prefers her over another candidate whose leadership style might conflict with Max's team.",
+      "id": "prospective-elf-archer",
+      "name": "Prospective elf archer",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler presiding over the demon dungeon's coliseum trial. Bound by ancient challenge rules, the demon lord fills the stands with an audience and compels the party to fight a chosen champion. It also strips away Tanila's concealment and recognizes her as a princess.",
+      "id": "demon-lord",
+      "name": "Demon lord",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The demon lord's chosen champion for the coliseum trial. A female demon who wields fire, inflicts curses, and moves through teleportation portals, she nearly kills Tanila with her opening attack and leaves Max critically injured.",
+      "id": "demon-champion",
+      "name": "Demon champion",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The immense gold dragon who rules the dragon dungeon and speaks directly into the party's minds. Already aware that the demon trial involved attempted cheating, the dragon receives the four without immediate violence and invites them to discuss its test.",
+      "id": "gold-dragon",
+      "name": "Gold dragon",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gold-scaled authority of immense power who is consulted about a newly released black skill. The ancient dragonkin refuses to help locate its bearer, returns part of the petitioner's payment, and warns that preparation matters more than continued tracking.",
+      "id": "ancient-dragonkin",
+      "name": "Ancient dragonkin",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A ruler who offers enormous payment for the ancient dragonkin's help in finding the bearer of a black skill. Refused direct aid and warned about a wider approaching conflict, the petitioner turns toward building alliances and increasing personal power.",
+      "id": "young-world-ruling-petitioner",
+      "name": "Young world-ruling petitioner",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A professional killer paid to find Max Host. The hunter receives a dossier stating that the target carries a black skill, murders the courier who delivered it, and begins the pursuit with the intention of giving Max no warning.",
+      "id": "contract-hunter",
+      "name": "Contract hunter",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The rulers financing the contract to locate and kill Max Host. Their identities and motives are not established, but the hunter's dossier indicates that their search for the black-skill bearer has already consumed resources on a scale that threatens their kingdom.",
+      "id": "unnamed-queens",
+      "name": "Unnamed queens",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An innkeeper and local supporter already known to Max's party before this book begins.",
+      "id": "alexander",
+      "name": "Alexander",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "shattered-boundaries"
+}
