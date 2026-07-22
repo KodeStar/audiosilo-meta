@@ -1,0 +1,399 @@
+{
+  "characters": [
+    {
+      "description": "The Unbound Autark of Nagast and king of Pax Rell, Felix is a formidable territorial ruler surrounded by trusted companions. He carries unusual authority and power while preparing his people for conflicts extending well beyond his existing domains.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's loyal bonded Tenku companion, Pit is a powerful guardian and storm fighter. Their unusually close connection lets them support one another across physical and spiritual dangers, and Pit often acts with judgment independent of Felix's direction.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dragoon heir, field commander, and Felix's partner, Vessilia is an accomplished fighter who shares a willing bond with a dragon. She brings both military judgment and personal resolve to Felix's alliance.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vessilia's voluntarily bonded dragon is her combat partner and a guardian of dragonkind. Their bond reflects the older alliance between dragons and dragoons that much of Pax Rell has forgotten or rejected.",
+      "id": "vessilias-bonded-dragon",
+      "name": "Vessilia's bonded dragon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted frontline commander in Felix's coalition, Evie is an experienced combatant who works effectively with powerful allied units. She joins dangerous operations without losing sight of the people depending on them.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young Earth-born Unbound, Beef combines necromancy with an instinct for building defenses and protecting others. He travels with an independent undead companion and continues developing sturdier constructs for battle.",
+      "id": "beef",
+      "name": "Beef",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Beef's surviving undead companion is an independent, shape-changing graven aegis that can become living armor. It supports Beef's necromancy and provides material assistance beyond that of an ordinary risen servant.",
+      "id": "beefs-undead-companion",
+      "name": "Beef's undead companion",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born Unbound fugitive inhabiting a Delvin body, Archie is wary of authority and hunted by the Hierocracy. His unusual movement ability lets him pass through stone, making him a valuable but guarded ally.",
+      "id": "archie",
+      "name": "Archie",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An entity that gives Felix Nevarre limited help while he survives a dangerous fourth-threshold influx.",
+      "id": "hunger",
+      "name": "Hunger",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran commander, forge master, and practical adviser, Harn is one of Felix's dependable senior allies. His experience and arcanite prosthetic legs do not diminish his exceptional effectiveness in combat.",
+      "id": "harn",
+      "name": "Harn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Felix's fire-mage ally and Alistair's partner, Atar is also a highly capable sigildry specialist. His technical knowledge and destructive magic make him important to both field operations and intricate magical work.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A force mage, inscriptionist, and representative of Felix's rule, Alistair combines administrative responsibility with magical skill. He is Atar V'as's partner and a steady member of Felix's inner coalition.",
+      "id": "alistair",
+      "name": "Alistair",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Cantus organizer and diplomat allied with Felix, Zara contributes magical expertise, political judgment, and knowledge of distant institutions. She often helps turn Felix's broad aims into workable plans.",
+      "id": "zara-cyrene",
+      "name": "Zara Cyrene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Nagast's learned chancellor and one of Felix's principal advisers, Karys helps manage territorial questions, defenses, and the consequences of Felix's expanding authority. His counsel gives Felix an experienced view of unfamiliar institutions and ancient systems.",
+      "id": "karys-taiv",
+      "name": "Karys Taiv",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of the Hierocracy in Amaranth, the Hierophant retains limited territorial control after the Pathless's death throws the city into crisis. She commands Imara while coordinating with gods who seek freedom from their remaining bonds.",
+      "id": "the-hierophant",
+      "name": "The Hierophant",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An oath-bound vessel under the gods' influence, Imara is an immensely powerful weapon directed by the Hierophant. She has regained awareness after the Pathless's death, but divine compulsion still governs what she can do.",
+      "id": "imara",
+      "name": "Imara",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "description": "Felix's sword instructor, Darius taught him the disciplined forms he continues practicing as his strength grows. His instruction gives Felix a framework for controlling power that has become difficult to restrain.",
+      "id": "darius",
+      "name": "Darius",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Vessilia's father and a former duke, Roland accepts appointment as Chancellor of Pax Rell after Felix restores the territory's true seal. He takes responsibility for daily government and the recovery of its neglected defenses.",
+      "id": "roland-dayne",
+      "name": "Roland Dayne",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Seen beside the Hierophant during a public execution, Gabby shows distress that does not fit Felix's understanding of her condition. Her emotional response suggests that some awareness remains despite the divine forces surrounding her.",
+      "id": "gabby",
+      "name": "Gabby",
+      "reveal": {
+        "chapter": 12
+      }
+    },
+    {
+      "description": "An endangered reptilian Unbound holding off magically tainted vermin in tunnels below Amaranth's White City. Felix's distant vision permits a two-way exchange with him.",
+      "id": "reptilian-unbound",
+      "name": "Reptilian Unbound",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fire-associated urge inhabiting or influencing Atar V'as, it uses his body to absorb the sabotage explosions and attack the saboteur. Its nature and its effect on his survival remain uncertain.",
+      "id": "atar-vas-fire-urge",
+      "name": "Atar V'as's fire urge",
+      "reveal": {
+        "chapter": 19
+      }
+    },
+    {
+      "description": "The reanimated hundredth hatchling emerges when Beef and his undead companion save a failing dragon egg through necromancy. Unlike a typical risen creature, the small undead dragon retains the potential to grow.",
+      "id": "beefs-risen-dragon-hatchling",
+      "name": "Beef's risen dragon hatchling",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tevin's acting ruler, Princess Lavin commands an outnumbered coalition of Tevin soldiers and Naga allies against invading Grelden princes. She continues the defense even after enemy lightning traps much of her force.",
+      "id": "princess-lavin",
+      "name": "Princess Lavin",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Naga ruler allied with Tevin and Felix, the Deep King helps defend Tevin against the Grelden invasion. He is caught with allied troops inside Prince Kael's lethal lightning enclosure while supporting Princess Lavin's outnumbered defense.",
+      "id": "deep-king",
+      "name": "Deep King",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An attacking Grelden ruler, Prince Kael abandons the princes' customary distance from direct combat. He traps Tevin and Naga forces inside a deadly lightning enclosure before Felix intervenes, then accepts a formal duel meant to decide the battle.",
+      "id": "prince-kael",
+      "name": "Prince Kael",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Grelden prince resisting the reunification of the divided territory, Garan holds tortured Hierocratic prisoners beneath his palace. He opposes Felix's effort to locate and restore the ancient seat and seal.",
+      "id": "prince-garan",
+      "name": "Prince Garan",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of Garan's surviving cousins, Kaivin joins the attack meant to prevent Felix from restoring the ancient seal. The restoration strips him of the territorial authority that sustained the divided Grelden order.",
+      "id": "prince-kaivin",
+      "name": "Prince Kaivin",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "One of Garan's surviving cousins, Tyvon joins the attempt to stop Felix from restoring the ancient seal. When the old territory is reunited, he loses the authority attached to his former rule and faces an uncertain place in the restored domain.",
+      "id": "prince-tyvon",
+      "name": "Prince Tyvon",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An anima that voluntarily binds to the Heart of Shadows, Atlantis gains access to both ends of the paired Shadowgates and helps restore their incomplete connections.",
+      "id": "atlantis-anima",
+      "name": "Atlantis anima",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A previously unseen pale female Tenku encountered within Sunara's storm, she is fleeing an enormous shadow creature when Pit leaves the fleet's protection and attempts to rescue her.",
+      "id": "pale-tenku",
+      "name": "Pale Tenku",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Pit's feline cousin joins the expedition to assist him and see more of the wider realm. Though not the same species as Pit, the two share a familial affinity.",
+      "id": "pits-feline-cousin",
+      "name": "Pit's feline cousin",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Azek is Pit's feline cousin and a Chimera traveling with his party in Euphonia.",
+      "id": "azek",
+      "name": "Azek",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The feared ruler behind Morva's coercive order, the Overlord uses mounted serpent-knights to enforce submission. His system profits from dangerous poison-field labor while residents are intimidated into silence.",
+      "id": "overlord",
+      "name": "Overlord",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An elderly elven Grandmaster, inventor, and former senior figure of the Violet Tower, this mage recognizes unusual internal forces within Atar and Felix. His knowledge may provide a route into the institution he left behind.",
+      "id": "former-violet-tower-page-right",
+      "name": "Former Violet Tower senior page-right",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Theron mage and Violet Tower Fate-right, Elowen helped create the Thonic Star and appears closely tied to its test. Her role in the project connects her to both a devastating weapon and the power influencing its development.",
+      "id": "elowen",
+      "name": "Elowen",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Sylphan Unbound sheltered in Euphonia, the princess can open gateways between realms. She has repeatedly endangered herself to rescue communities escaping the Void, making her both a refuge leader and a target of divine pursuit.",
+      "id": "sylphan-princess",
+      "name": "Sylphan princess",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of two Earth-born kobolds operating the Wormkin resistance's hidden defenses, Kevin helps maintain an elaborate false leadership structure. He is cautious, combative, and determined to protect the local uprising.",
+      "id": "kevin",
+      "name": "Kevin",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kevin's kobold twin and co-creator of the invented Worm identity, Shadow helps conceal and direct the resistance. The deception protects local fighters and supports the twins' refusal to abandon their territory before it is free.",
+      "id": "shadow",
+      "name": "Shadow",
+      "reveal": {
+        "chapter": 61
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful hobgoblin who rules the oath-bound Violet Tower, the Tower Master is suspicious of a returning former insider. He oversees a secret major undertaking that has emptied much of the tower of normal activity.",
+      "id": "violet-tower-master",
+      "name": "Violet Tower Master",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An adamant guard defending the approach to the Overlord's tower, Cade fights with two oversized swords and strong force-mana defenses. His position makes him a major obstacle to Harn's advancing rescue force.",
+      "id": "cade",
+      "name": "Cade",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A storm-tested guide who leads Pit through Sunara's wind tunnels, Scylla serves as the required witness when he undertakes the Tempest test.",
+      "id": "scylla",
+      "name": "Scylla",
+      "reveal": {
+        "chapter": 73
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Sylphan princess's blind Corva guardian is a mind-protecting mage and true seer. Her visions reveal a greater disaster than Euphonia's leaders admit, leading her to support the princess's evacuation with Pit.",
+      "id": "blind-corva-guardian",
+      "name": "Euphonia's blind Corva guardian",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silver-threaded divine power acting through Gabby, the goddess of fortune threatens Felix's bound allies and uses possessed soldiers against him. Her control of oaths and vessels makes separating her from innocent hosts exceptionally difficult.",
+      "id": "goddess-of-fortune",
+      "name": "Goddess of fortune",
+      "reveal": {
+        "chapter": 79
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "empire"
+}
