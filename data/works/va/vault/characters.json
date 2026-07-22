@@ -1,0 +1,352 @@
+{
+  "characters": [
+    {
+      "description": "The Unbound Autark of Nagast and the Leviathan Depths, Felix is a powerful territorial ruler whose bonded companion is Pit. His strength, unusual core, and responsibilities place him at the center of the struggle against the Hierocracy and the approaching Ruin.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's loyal bonded Tenku companion, guardian, and combat partner. Pit fights beside Felix while carrying permanent wounds from a cursed weapon. Their shared bond lets them support one another through dangers that neither could face as effectively alone.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "A capable dragoon heir allied with Felix. Vessilia is an experienced fighter whose voluntary bond with a reduced dragon companion has reshaped her path. She brings disciplined combat training and the perspective of someone prepared for both leadership and war.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Evie"
+      ],
+      "description": "A frontline ally of Felix and an experienced commander who fights with ice and binding chains.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young Earth-born Unbound allied with Felix. Beef is a powerful necromantic fighter accompanied by a surviving undead creation that can alter its shape. His unusual abilities and rapid growth make careful training as important as his considerable strength.",
+      "id": "beef",
+      "name": "Beef",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Homunculus",
+        "Three-bodied undead companion"
+      ],
+      "description": "Beef's surviving shape-changing undead companion.",
+      "id": "beefs-undead-companion",
+      "name": "Beef's undead companion",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Zara"
+      ],
+      "description": "A Chanter, diplomat, and organizer allied with Felix. Zara understands the Cantus Sodalis and helps connect its plans with Nagast's political and magical needs. Her position requires balancing the order's priorities against Felix's deep suspicion of outside control.",
+      "id": "zara-cyrene",
+      "name": "Zara Cyrene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran commander, forge master, and practical adviser in Felix's circle. Harn trains and equips allies while bringing hard-earned judgment to dangerous expeditions. He is equally valuable when directing a battlefield, improving equipment, or challenging a reckless plan.",
+      "id": "harn",
+      "name": "Harn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Atar"
+      ],
+      "description": "Felix's fire-mage ally and a specialist in sigildry.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A force mage and inscriptionist allied with Felix who collaborates with Atar.",
+      "id": "alistair",
+      "name": "Alistair",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Karys"
+      ],
+      "description": "Felix's ancient Nemean adviser and the chancellor of Nagast. Karys offers administrative and progression knowledge, though important gaps remain in what he remembers. He presses Felix to weigh the survival of his territories against the risks he takes personally.",
+      "id": "karys-taiv",
+      "name": "Karys Taiv",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lady Isla"
+      ],
+      "description": "A healer connected to the Cantus Sodalis.",
+      "id": "isla",
+      "name": "Isla",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Dragon companion"
+      ],
+      "description": "Vessilia's voluntary dragon partner, presently reduced from his former state.",
+      "id": "vessilias-bonded-dragon",
+      "name": "Vessilia's bonded dragon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A small fugitive who moves through stone and can influence other minds. Archie relies on unusual senses while fleeing a heavily armored Hierocracy pursuer through the Rimefang winter. He survives through concealment, quick judgment, and a readiness to leave danger behind.",
+      "id": "archie",
+      "name": "Archie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lillian Nacht"
+      ],
+      "description": "A covert enemy of Felix who enters Elder Throne under an assumed identity. With enchanted concealment and an accomplice, Ophelia seeks a position inside the alchemy hall from which to act against him.",
+      "id": "ophelia",
+      "name": "Ophelia",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Ophelia's protective companion and accomplice in her concealed entry into Elder Throne.",
+      "id": "roderick",
+      "name": "Roderick",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Risi diplomatic envoy sent north to contact the witches of Cold Rock.",
+      "id": "frost-giant-representative",
+      "name": "Frost-giant representative",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The political leader of Cold Rock coven. She rejects outside rule while her people face a failing domain.",
+      "id": "cold-rock-coven-leader",
+      "name": "Cold Rock coven leader",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A supreme elemental fused with the mountain at the heart of the Ironskin domain. The Frostfather attacks Felix after he exceeds the formal limits of the Path of Rule and refuses demands for submission.",
+      "id": "the-frostfather",
+      "name": "The Frostfather",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The most influential surviving leader of the Cantus Sodalis, present with the order's arriving group.",
+      "id": "cantus-elder",
+      "name": "Cantus elder",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous Unbound under Hierocracy control who relentlessly hunts Archie for the Hierophant.",
+      "id": "imara",
+      "name": "Imara",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dwarven Chanter who joins Felix's northern expedition under oath as its dwarf-culture specialist. Her expertise may help the group approach old northern ruins, though Felix grants her only limited trust.",
+      "id": "dwarven-chanter",
+      "name": "Dwarven Chanter",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elven Chanter accepted into Felix's northern expedition under oath. Her specialty is wards and shielding, making her valuable on routes protected by old and dangerous magic. She serves under terms meant to protect both the expedition and the Chanters from coercion.",
+      "id": "elven-chanter",
+      "name": "Elven Chanter",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former rival giant witch appointed by Felix as Chancellor of Kalheim, with authority over the territory and responsibility for defending the Hoarfrost.",
+      "id": "kalheim-chancellor",
+      "name": "Kalheim chancellor",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed local dwarven vanguard captain who commands soldiers threatened by sun trolls. After Felix helps save his force, the captain identifies the destructive Titan and offers to escort the group into the city.",
+      "id": "local-dwarven-vanguard-captain",
+      "name": "Local dwarven vanguard captain",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The criminal leader behind Birchstone's Cask. Thrum reacts violently when Felix asks about Archie, ordering hidden assassins to attack rather than disclose what he knows. His crew and concealed routes make him an important figure in the city's unofficial networks.",
+      "id": "rat-lord-thrum",
+      "name": "Rat Lord Thrum",
+      "reveal": {
+        "chapter": 75
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Archie"
+      ],
+      "description": "The full identity of the fugitive known as Archie. Archibald Ross is an Earth-born Unbound who chose the ancient Delvin race, giving him strong earth-linked abilities and leaving him dependent on vibration-based Blind Sense rather than ordinary vision.",
+      "id": "archibald-ross",
+      "name": "Archibald Ross",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Master Tier priest and covert Cantus contact. Calis admits that he brought Imara to Archie under the belief that she would capture rather than destroy him, and expresses regret for his part in the pursuit.",
+      "id": "calis-fair",
+      "name": "Calis Fair",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commander of Birchstone's Ironclads. Doric organizes the city's defense during Imara's assault and fights beside Felix's group against an enemy far beyond ordinary local forces. He remains focused on protecting the city even as its watch suffers catastrophic losses.",
+      "id": "captain-doric",
+      "name": "Captain Doric",
+      "reveal": {
+        "chapter": 78
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of Redshield Hold, whose representative invites Felix's assumed identity to a grand gala honoring Birchstone's hero.",
+      "id": "redshield-hinterlord",
+      "name": "Redshield Hinterlord",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Hierocracy commander who leads the force that locates Imara after Felix hurls her into the mountains. Belar recognizes her as the Chosen and begins extracting her from the crater.",
+      "id": "lord-inquisitor-belar",
+      "name": "Lord Inquisitor Belar",
+      "reveal": {
+        "chapter": 83
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A captive superior elemental discovered in a concealed workshop beneath the vault.",
+      "id": "captive-superior-elemental",
+      "name": "Captive superior elemental",
+      "reveal": {
+        "chapter": 97
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Four grandmaster-level guardians that attack when the Mote of Frenzy is removed from its secured place. Their construct bodies wield freezing violet power and trap Felix's party in the hidden workshop.",
+      "id": "four-eidolon-exalts",
+      "name": "Four Eidolon exalts",
+      "reveal": {
+        "chapter": 98
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unnamed, physically decayed sponsor directing a secret alchemical project. The benefactor supplies a strange refining device and orders the operative inside Felix's laboratory to move future testing elsewhere.",
+      "id": "hidden-laboratory-benefactor",
+      "name": "Hidden laboratory benefactor",
+      "reveal": {
+        "chapter": 103
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "vault"
+}
