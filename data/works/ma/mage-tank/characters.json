@@ -1,0 +1,273 @@
+{
+  "characters": [
+    {
+      "description": "A 35-year-old man from Earth who dies in a bicycle accident and accepts an offered respawn. He awakens in a younger body inside an unfamiliar character-creation room, able to understand writing he has never learned.",
+      "id": "arlo",
+      "name": "Arlo",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The unidentified divine being attached to Arlo's character record. The patron appears responsible for his unusual arrival benefits and has intervened in his former life, but its identity and purpose remain unknown.",
+      "id": "arlos-divine-patron",
+      "name": "Arlo's divine patron",
+      "reveal": {
+        "chapter": 2
+      }
+    },
+    {
+      "description": "The pale, armored leader of Arlo's creation party. Varrin distrusts the poorly equipped newcomer's lack of preparation.",
+      "id": "varrin",
+      "name": "Varrin",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A red-skinned cleric who is capable of fighting on the front line.",
+      "id": "xim",
+      "name": "Xim",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A low-lord archer and trained associate of Varrin in the newly formed creation party. Her ranged attacks give the group an answer to threats that Arlo cannot safely reach.",
+      "id": "chilla-stormreiss",
+      "name": "Chilla Stormreiss",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A beast-person spear fighter and Littan Empire candidate assigned to Arlo's creation party.",
+      "id": "sayil-starion",
+      "name": "Sayil Starion",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Core 1156",
+        "Delve Core"
+      ],
+      "description": "The displaced executive core of Toxic Grotto, carried in a rune-covered orb. Hognay has coerced Grotto into drawing candidates to their deaths, making the core both a crucial guide and an ally the survivors cannot fully trust.",
+      "id": "grotto",
+      "name": "Grotto",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Intruder"
+      ],
+      "description": "A level-two infiltrator who coerces Grotto, stages wounds on murdered candidates, and drains Toxic Grotto through a summoned C'thun. He can impose mental commands and escapes Arlo's first attack through a shifting breach.",
+      "id": "hognay",
+      "name": "Hognay",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Guardian"
+      ],
+      "description": "An armed Guardian assigned to escort and monitor Arlo after officials discover that he is missing from the creation-group records. Lito watches the unregistered newcomer closely while the facility investigates his entry.",
+      "id": "lito",
+      "name": "Lito",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gold-level official who retrieves Arlo's Delver record and accepts its redacted nationality as enough to clear the immediate records dispute. Grotto quietly suppresses the unusual emotional effect her presence has on Arlo.",
+      "id": "myria",
+      "name": "Myria",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Tribal patriarch"
+      ],
+      "description": "A powerful Third Layer traveler who welcomes Arlo at a family dinner and begins the process of admitting him to the tribe. He also accepts Grotto, recognizing that the core and Arlo are bound together.",
+      "id": "drel-gethed",
+      "name": "Drel'Gethed",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Arlo"
+      ],
+      "description": "The new permanent name of the Earth-born Delver after his adoption into a Third Layer tribe. Xim sponsors him, Drel'Gethed conducts the rite, and Grotto is admitted alongside him, giving Arlo a recognized community and identity.",
+      "id": "arlo-xor-drel",
+      "name": "Arlo Xor'Drel",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A senior member of the Ravvenblaq family who meets Arlo alongside his wife and thanks him for saving Varrin.",
+      "id": "ealdric",
+      "name": "Ealdric",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A platinum-level Eschendur captive found beside Xim beneath the warehouse. Nuralie has scales, a tail, and practical skill with alchemy and medicine, using an improvised stimulant to revive Xim after their captor withdraws.",
+      "id": "nuralie",
+      "name": "Nuralie",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Devouring entity"
+      ],
+      "description": "An immense cave-dwelling entity whose soul overwhelms Arlo's perception. Orexis absorbs fallen Delvers and claims that the rebels acted under the influence of its desires before seizing Varrin.",
+      "id": "orexis",
+      "name": "Orexis",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An overwhelming divine attacker who defeats high-level Delvers with speed, multiple limbs, shielding, and varied magic, then forces the survivors into the inactive Calvani Caverns.",
+      "id": "divine-captor",
+      "name": "Divine captor",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Avatar of release"
+      ],
+      "description": "Orexis's sister and an imprisoned divine avatar embodying release. Fortune removes Anesis from Cage through the portal network and takes her to Hiward, leaving Orexis's soul fragment behind.",
+      "id": "anesis",
+      "name": "Anesis",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Bound construct"
+      ],
+      "description": "A six-armed clay figure animated through a primordial obelisk to complete the captor's forced five-person Cage team. The construct is intended to hold part of its creator's soul, but Grotto interrupts the procedure before stabilization is complete.",
+      "id": "clay-construct",
+      "name": "Clay construct",
+      "reveal": {
+        "chapter": 51
+      }
+    },
+    {
+      "aliases": [
+        "Clay construct"
+      ],
+      "description": "The name chosen by the clay construct after Cage runes expel the possessing soul fragment. Etja says her original imposed purpose ended with that separation, and Arlo prevents her execution while the party assesses her independent will.",
+      "id": "etja",
+      "name": "Etja",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Delve 9998 core"
+      ],
+      "description": "The core of a containment Delve destabilized by a Void Sphere. Cage assigns the trapped team to prevent collapse and stop a divine specter from breaching central confinement.",
+      "id": "cage",
+      "name": "Cage",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive divine aspect that Cage considers the safest available countermeasure. Freeing Fortune may stop the specter, or Anesis if needed, though the party remains wary of every prisoner in the failing Delve.",
+      "id": "fortune",
+      "name": "Fortune",
+      "reveal": {
+        "chapter": 55
+      }
+    },
+    {
+      "aliases": [
+        "Arlo's divine patron"
+      ],
+      "description": "Fortune is the divine being responsible for Arlo's arrival. He confirms that he transported the continuous Arlo from Earth and that the world Arlo left is now millennia beyond recovery.",
+      "id": "fortune-patron-identity",
+      "name": "Fortune",
+      "reveal": {
+        "chapter": 62
+      }
+    },
+    {
+      "aliases": [
+        "Arlo's grade-five summoned C'thun"
+      ],
+      "description": "A powerful extradimensional creature summoned by Arlo during the battle for Cage's first lock. Shog Tuatha protects Etja, opposes the swarming aberrations, and remains bound to Arlo for the spell's duration.",
+      "id": "shog-tuatha",
+      "name": "Shog Tuatha",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Ravvenblaq family elder who meets Arlo with Ealdric and thanks him for saving Varrin.",
+      "id": "ravvenblaq-matriarch",
+      "name": "Ravvenblaq matriarch",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Ravvenblaq family elder who joins the expedition investigating Calvani Caverns and the attack on the family's lands.",
+      "id": "ravvenblaq-patriarch",
+      "name": "Ravvenblaq patriarch",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "mage-tank"
+}
