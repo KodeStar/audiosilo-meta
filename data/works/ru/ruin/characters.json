@@ -1,0 +1,436 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Silas Vale"
+      ],
+      "description": "The Nemean Emperor, an Unbound leader whose growing alliance spans multiple territories. Felix carries dangerous primordial power, shares a profound bond with Pit, and works to protect his people from the approaching Ruin.",
+      "id": "felix-nevarre",
+      "name": "Felix Nevarre",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Felix's bonded Tenku companion and fellow Stormlord. Pit shares power, perception, and authority with Felix while remaining a distinct partner, and meets danger beside him as readily as any soldier in the alliance.",
+      "id": "pit",
+      "name": "Pit",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A distinct beast dwelling within Felix Nevarre. It speaks directly to him from within.",
+      "id": "felixs-internal-beast",
+      "name": "Felix's internal beast",
+      "reveal": {
+        "chapter": 2
+      }
+    },
+    {
+      "description": "A weakened deity linked to the fallen moon. The Hierophant binds her beneath ruined Amaranth, drains her power, and takes her remaining core.",
+      "id": "moon-associated-goddess",
+      "name": "Moon-associated goddess",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Vess"
+      ],
+      "description": "A dragon-bonded dragoon commander, Felix Nevarre's partner, and Yin's bonded companion. Vessilia Dayne is an established allied leader whose fighting partnership with Yin joins martial command with draconic power.",
+      "id": "vessilia-dayne",
+      "name": "Vessilia Dayne",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vessilia's bonded dawn drake and constant companion. Yin's connection with her anchors their shared fighting style and places the pair at the center of the expedition's hopes for Vessilia's safe return and survival.",
+      "id": "yin",
+      "name": "Yin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Felix Nevarre's sister, a formidable Titan, and a powerful but constrained ally after serving as a divine vessel.",
+      "id": "gabby",
+      "name": "Gabby",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gabby"
+      ],
+      "description": "The identity through which Gabby previously acted as a divine vessel. When Gabby joins the fight against the moon-shadow echo, her allies establish that Imara was not a separate person, leaving Gabby to confront the power and constraints attached to that past.",
+      "id": "imara",
+      "name": "Imara",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born Unbound who combines necromancy with battlefield engineering. Beef directs risen servants and builds elaborate chitin structures, bringing unusual technical versatility to Felix's allied force.",
+      "id": "beef",
+      "name": "Beef",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Beef"
+      ],
+      "description": "Beef's Earth identity, revealed when Wendell recognizes the accomplished Unbound as his son. Michael's confidence and command of engineered earth-and-chitin constructs show Wendell how much his son has changed since leaving Earth.",
+      "id": "michael",
+      "name": "Michael",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Beef's sentient graven aegis and independent spirit companion.",
+      "id": "hallow",
+      "name": "Hallow",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A seasoned Unbound whose completed omen path produced remarkable gains in stature, power, and resilience.",
+      "id": "wendell",
+      "name": "Wendell",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Archie"
+      ],
+      "description": "An Earth-born Unbound whose stone-travel abilities make him especially valuable for moving civilians through danger. Archie joins the effort to recover Vessilia and confront the unstable territory around Amaranth.",
+      "id": "archie-ross",
+      "name": "Archie Ross",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ally whose realm-rending abilities can open short-lived passages and repair breaches between realms.",
+      "id": "ondine",
+      "name": "Ondine",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born kobold Unbound and Shadow's brother. Once held captive by the Hierophant, Kevin is now allied with Felix's group.",
+      "id": "kevin",
+      "name": "Kevin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born kobold Unbound, Kevin's brother, and a gifted archer. Once held captive by the Hierophant, he is now allied with Felix's group.",
+      "id": "shadow",
+      "name": "Shadow",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Theron seer and mage who once served the Violet Tower and now aids Felix. Elowen is a knowledgeable ally who regrets her former service.",
+      "id": "elowen",
+      "name": "Elowen",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted frontline commander and one of Felix's close combat allies.",
+      "id": "evie-aren",
+      "name": "Evie Aren",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Atar"
+      ],
+      "description": "A fire mage, commander, and Alistair's partner. Atar V'as is one of Felix's established allies and brings high-level fire magic, battlefield experience, and personal loyalty to the empire's military response.",
+      "id": "atar-vas",
+      "name": "Atar V'as",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A distinct fire presence sharing Atar V'as's actions and power. Flame becomes apparent while Atar V'as works inside Volantris and helps direct the precise, dangerous attack needed against the enslaved supreme elemental.",
+      "id": "flame",
+      "name": "Flame",
+      "reveal": {
+        "chapter": 117
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A force mage, imperial commander, and Atar V'as's partner. Alistair is a trusted military and political ally to Felix.",
+      "id": "alistair",
+      "name": "Alistair",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A veteran commander, forge master, and practical adviser to Felix.",
+      "id": "harn",
+      "name": "Harn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A cautious Chimera commander, an ally to Felix's group, and Pit's partner.",
+      "id": "scylla",
+      "name": "Scylla",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A strategic adviser who helps assess how the Ruin destroys significance and how the empire might resist it.",
+      "id": "karys-taiv",
+      "name": "Karys Taiv",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adviser who judges that the proposed use of the Song of Exile against the Ruin is not yet sufficiently understood.",
+      "id": "zara",
+      "name": "Zara",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A bodiless construct tied to Felix's territorial thrones. Knowledge gathers intelligence and can divide off another instance for an assignment.",
+      "id": "knowledge",
+      "name": "Knowledge",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed risen draconic hatchling under Beef’s command. It helps his array group restrain an earth elemental concealed in another form.",
+      "id": "risen-draconic-hatchling",
+      "name": "Risen draconic hatchling",
+      "reveal": {
+        "chapter": 86
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A risen draconic under Beef’s command. Fafnir joins the fight against several greater elementals but cannot overcome them alone.",
+      "id": "fafnir",
+      "name": "Fafnir",
+      "reveal": {
+        "chapter": 105
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A colossal whale-mawed entity accompanied by corrupted void creatures. It spreads a flesh curse as it closes on the expedition's ship in an unstable dark passage.",
+      "id": "whale-maw",
+      "name": "Whale Maw",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A huge creature of moon-shadow that rises from Amaranth’s crater, attacks Felix Nevarre, and threatens his incomplete territorial claim.",
+      "id": "crater-moon-shadow-creature",
+      "name": "Crater moon-shadow creature",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A weakened echo of the moon-imprisoned goddess, retaining only a diminished fragment of her power and mind. Its liquid shadow body releases hostile offspring and holds an omen door within its chest.",
+      "id": "moon-shadow-echo",
+      "name": "Moon-shadow echo",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The former ruler of Amaranth and a recurring divine adversary. She survives Moonfall, binds and drains the weakened moon-associated goddess beneath her ruined city, and escapes with the deity's remaining core.",
+      "id": "the-hierophant",
+      "name": "The Hierophant",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Paragon ruler of the floating-island empire. Emperor Kanad confronts Felix and Pit inside the Obsidian Tumult after they return from the authority node carrying the Exalted Bell and a nascent shared legacy.",
+      "id": "emperor-kanad",
+      "name": "Emperor Kanad",
+      "reveal": {
+        "chapter": 120
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Wormkin defender fighting beside Kevin during the battle for Jast. Makos helps hold the line against superior forces and places himself between Kevin and danger when Volantris launches a devastating lava attack.",
+      "id": "makos",
+      "name": "Makos",
+      "reveal": {
+        "chapter": 116
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An unnamed Supreme Elemental shaped like a walking volcano. It enters the battle as a major threat and demands Felix Nevarre’s location.",
+      "id": "walking-volcano-supreme-elemental",
+      "name": "Walking-volcano Supreme Elemental",
+      "reveal": {
+        "chapter": 114
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Supreme Elemental shaped like a walking volcano. Volantris overwhelms allied defenses around Jast despite attempts to contain it and the arrival of reinforcements.",
+      "id": "volantris",
+      "name": "Volantris",
+      "reveal": {
+        "chapter": 115
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A shadow power possessing the sixth dwarven Imperator. The half-divine repairs damage to its puppet, directs the opposition against Gabby and Vessilia, and remains constrained by the empire's authority.",
+      "id": "half-divine-of-shadow",
+      "name": "Half-divine of shadow",
+      "reveal": {
+        "chapter": 115
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A bound deity associated with rot and decay. He enters through the rift with damaged chains as divine servants besiege the Legion.",
+      "id": "god-of-rot-and-decay",
+      "name": "God of rot and decay",
+      "reveal": {
+        "chapter": 122
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A bound deity associated with a bloodstorm. She takes a core of shadow from the revived half-divine while the divine assault closes around the Legion.",
+      "id": "goddess-of-the-bloodstorm",
+      "name": "Goddess of the bloodstorm",
+      "reveal": {
+        "chapter": 122
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A pair of metallic-blue deities who emerge through the rift. They seize three divine cores, turn dwarven troops into controlled servants, and seek help breaking the gods' remaining chains.",
+      "id": "metallic-blue-divine-twins",
+      "name": "Metallic-blue divine twins",
+      "reveal": {
+        "chapter": 122
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The mutilated body of the invading twins' divine sibling. The twins pull the corpse through a breach carrying three divine cores.",
+      "id": "divine-sibling-corpse",
+      "name": "Divine sibling corpse",
+      "reveal": {
+        "chapter": 128
+      }
+    },
+    {
+      "description": "The divine being revealed to have become the Ruin after taking power contributed by another god. The resulting transformation devastated the continent before the Compact expelled it beyond the void.",
+      "id": "god-of-destruction",
+      "name": "God of destruction",
+      "reveal": {
+        "chapter": 132
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A shadow or vessel concealed within the Whale Maw. She recognizes Felix Nevarre as a scion and opposes him before he destroys her and takes control of the larger creature.",
+      "id": "unending-maw",
+      "name": "Unending Maw",
+      "reveal": {
+        "chapter": 132
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The former power of the Unseen Tides encountered beyond the three realms. This presence expels the pursuing hostile god, names Felix Nevarre as its scion, and grants him authority across the four Cardinal domains.",
+      "id": "former-cardinal-of-the-unseen-tides",
+      "name": "Former Cardinal of the Unseen Tides",
+      "reveal": {
+        "chapter": 134
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A now-mortal former god associated with chaos and flame. He approaches the mortally wounded Felix after the god of annihilation falls and offers a divine core of change without stating a bargain, price, or obligation.",
+      "id": "former-god-of-chaos-and-flame",
+      "name": "Former god of chaos and flame",
+      "reveal": {
+        "chapter": 136
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "ruin"
+}
