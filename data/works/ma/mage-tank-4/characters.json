@@ -1,0 +1,356 @@
+{
+  "characters": [
+    {
+      "description": "Fortune's Folly's dimensional mage and a co-arbiter of Closetland. An outside influence is affecting his judgment, so he accepts Etja's authority over the party's dealings while the group considers a Littan expedition.",
+      "id": "arlo-xordrel",
+      "name": "Arlo Xor'Drel",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Arlo's soul-linked Delve co-operator and partner in developing Closetland. Unlike most of Fortune's Folly, he appears unaffected by the influence altering the party's decisions and relays Etja's approvals to the others.",
+      "id": "grotto",
+      "name": "Grotto",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Fortune's Folly's frontline swordsman. His unusual conduct is among the early signs that an outside force is changing the party's priorities and judgment, leaving him subject to Etja's authority during outside dealings.",
+      "id": "varrin",
+      "name": "Varrin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A divine fighter and healer in Fortune's Folly. She is affected by the same hidden influence as most of the party, but continues with the group under Etja's safeguards while they cautiously pursue diplomacy and advancement.",
+      "id": "xim",
+      "name": "Xim",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A construct-bodied mage whose mental defenses resist much of the party's unknown influence. The group gives her final authority over outside dealings while its members cannot trust their own decisions.",
+      "id": "etja",
+      "name": "Etja",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Fortune's Folly's alchemist, archer, and scout. The same hidden influence affecting most of the party has altered her judgment while the group considers joining a future Littan expedition.",
+      "id": "nuralie",
+      "name": "Nuralie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A transactional, avatar-linked power who supplies Closetland with thousands of useful essences and warns that most of Fortune's Folly is under an influence whose explanation the affected members cannot retain.",
+      "id": "avarice",
+      "name": "Avarice",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Imperial officer who rewards Fortune's Folly after an infiltrator is exposed. He helps propose a future joint expedition pairing the party with a five-person Littan team and serves as a principal contact for the arrangement.",
+      "id": "littan-major",
+      "name": "Littan major",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spectral vault guardian formed from several souls in a mechanical shell. Bound to serve the hostile Delve Core, the guardian rejects combat, prefers crafting, and accepts Arlo's plan to compromise the binding rituals and carry it to freedom.",
+      "id": "spectral-vault-guardian",
+      "name": "Spectral vault guardian",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Leader of the undead army"
+      ],
+      "description": "A masked Grade 51 commander who emerges when the party damages a containment weave. He is far more powerful than the undead officers already encountered, and the remaining army submits to him immediately.",
+      "id": "elder-lich-general",
+      "name": "Elder Lich general",
+      "reveal": {
+        "chapter": 9
+      }
+    },
+    {
+      "aliases": [
+        "Former Delve Core 9963",
+        "Core of Throne of Hubris"
+      ],
+      "description": "The defeated Core of a hostile ancient military Delve. After the undead army departs and the Delve is cleared, Arlo takes the Core into his custody. It accepts the name Throne and enters the party's care.",
+      "id": "throne",
+      "name": "Throne",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The higher power associated with Heavenly Gates, a proposed evolution that would make Arlo's portals and teleports deific while changing the Delves available to him. The party delays its decision while weighing that connection.",
+      "id": "dread-star",
+      "name": "Dread Star",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Retained soul fragment"
+      ],
+      "description": "The power behind a fragment retained within Etja. The party begins investigating the fragment while mapping otherwise hidden anomalies in the affected members' souls.",
+      "id": "hysteria",
+      "name": "Hysteria",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Former princess"
+      ],
+      "description": "A former enemy held as a prisoner and compelled to maintain a monster. Once a princess, she questions whether a blood-rune resurrection left her as a copy rather than the same person who died, and believes her former associates are gone.",
+      "id": "captive-beastmaster",
+      "name": "Captive beastmaster",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A hostile divine influence already connected to Etja's history. Nuralie's earlier work on a soul poison aimed at Orexis provides a starting point for removing a different hostile influence from the party.",
+      "id": "orexis",
+      "name": "Orexis",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An Elder Lich who commands the undead Corps of Volunteers on the moon. An asylum-seeking collaborator of Avarice, the lich observes her experiments on the imprisoned Hysteria.",
+      "id": "lunar-elder-lich",
+      "name": "Lunar Elder Lich",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A System Core operating from the moon alongside Avarice and the Corps of Volunteers.",
+      "id": "system-core-2",
+      "name": "System Core 2",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A formidable figure controlling access to a mountain complex. The gatekeeper accepts Avarice's token for the party's admission and requires each entrant to undertake a separate test.",
+      "id": "mountain-gatekeeper",
+      "name": "Mountain gatekeeper",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A powerful young ruler encountered during Arlo's dimensional trial. She tries to expel him with spatial force, but his resistance prevents the non-consensual movement. An older ruler calls her a hatchling and says Arlo has earned her audience.",
+      "id": "dimensional-hatchling",
+      "name": "Dimensional hatchling",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older ruler connected to the hatchling whom Arlo encounters during his dimensional trial. She takes control of the test and returns Arlo to it by moving the rulers' chamber away from him.",
+      "id": "dimensional-ruler",
+      "name": "Dimensional ruler",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Grade 25 elemental remembrance who presides over Varrin's Physical Dungeon trial. A master crafter and dangerous swordfighter, he begins a demanding sword duel with Varrin amid the dungeon's fire.",
+      "id": "caldera-ruler",
+      "name": "Caldera ruler",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A massive, damaged creature, likely undead, that the System identifies only as a Great Unknown. Undead hunters bring it living victims, whose souls it extracts and consumes to restore itself.",
+      "id": "great-unknown",
+      "name": "Great Unknown",
+      "reveal": {
+        "chapter": 36
+      }
+    },
+    {
+      "description": "The silver dragon revealed when the dimensional ruler's daughter transforms during her duel with Arlo. Her durability and teleportation continue in dragon form, prompting the older ruler to end the contest.",
+      "id": "dragon-princess",
+      "name": "Dragon princess",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A colossal crystalline woman who administers Xim's divine knowledge test. She recognizes Xim as the first seeker in nearly three thousand years to pursue all seven revelations, recounts earlier failed attempts to become a divine vessel, and grants the vision that reveals the six-monolith catastrophe.",
+      "id": "crystalline-test-administrator",
+      "name": "Crystalline test administrator",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A colossal dragon and one of five rulers judging Fortune's Folly's account of Hysteria. Scarlet joins the rulers in demanding evidence after the party reports the avatar's death.",
+      "id": "scarlet-ruler",
+      "name": "Scarlet ruler",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the five dragon rulers who meet Fortune's Folly. Gold ends their magical confrontation by imposing Conciliation, temporarily preventing those affected from harming one another while the rulers assess the party's claims.",
+      "id": "gold-ruler",
+      "name": "Gold ruler",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the five dragon rulers who receive Fortune's Folly for an audience about Hysteria and the continuing avatar threat. Cerulean joins Scarlet, Violet, Gold, and Silver in examining the party's evidence.",
+      "id": "cerulean-ruler",
+      "name": "Cerulean ruler",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the five dragon rulers evaluating Fortune's Folly's account of Hysteria and the party's proposed information-sharing relationship. Violet joins the rulers' forceful demand for evidence about the claimed death.",
+      "id": "violet-ruler",
+      "name": "Violet ruler",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the five dragon rulers who receive Fortune's Folly. Silver helps assess the party's claims concerning avatars and Hysteria during an audience shaped by competing magical pressure.",
+      "id": "silver-ruler",
+      "name": "Silver ruler",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An avatar-linked power from Arlo's earlier dealings. The dragon rulers identify Fortune, along with Avarice, as an essential participant in an earlier multinational effort to build a prison for avatars with System cooperation.",
+      "id": "fortune",
+      "name": "Fortune",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The level-16 officer leading the five-person Littan party assigned to travel with Fortune's Folly under the major's command. Her companion team will share the coming forest expedition while the visitors operate as foreign consultants.",
+      "id": "littan-captain",
+      "name": "Littan captain",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An observant investigator and dimensional combat caster on the Littan companion team. He joins the expedition flight as the two parties begin assessing their new partners.",
+      "id": "littan-dimensional-mage",
+      "name": "Littan dimensional mage",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hammer fighter"
+      ],
+      "description": "A hammer-using frontline fighter on the Littan companion team. He joins the expedition flight with the team's captain, dimensional mage, and identical-twin combatants.",
+      "id": "littan-frontline-fighter",
+      "name": "Littan frontline fighter",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The more readily perceived member of the identical-twin combatants on the Littan companion team. Her sister's concealment effect makes the contrast apparent when the teams meet.",
+      "id": "littan-martial-twin",
+      "name": "Littan martial twin",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the identical Littan twins, concealed by an effect that makes observers overlook her until Etja addresses her. Nuralie's magic keeps her perceptible to Fortune's Folly, allowing the new allies to account for her presence.",
+      "id": "littan-stealth-focused-twin",
+      "name": "Littan stealth-focused twin",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Forest alpha"
+      ],
+      "description": "A huge quadrupedal mana monster directing the assault on a Littan border city. Birds that land in its living canopy emerge stronger, and five elite avian hybrids guard it while the city's automated defenses struggle against the swarm.",
+      "id": "hierophant",
+      "name": "Hierophant",
+      "reveal": {
+        "chapter": 66
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "mage-tank-4"
+}
