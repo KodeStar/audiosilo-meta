@@ -1,0 +1,724 @@
+{
+  "characters": [
+    {
+      "description": "A member of the Swak family whom Randidly is preparing to confront while his damaged left arm is failing. The approaching Zurt Brigade prevents Randidly from moving against him immediately.",
+      "id": "khan-swak",
+      "name": "Khan Swak",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Randidly's soulbound partner is an Aether and engraving specialist. She studies Yestix's living engravings in hopes of helping him replace his damaged arm, and she can conceal her bone-worm identity with an illusion.",
+      "id": "nevaeh",
+      "name": "Nevaeh",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Randidly",
+        "Ghosthound"
+      ],
+      "description": "Karen's founder and Earth's protector begins this volume under pressure from several directions. He is training Yggdrasil, the Stillborn Phoenix, and the Grim Chimera to act through one body, while his damaged metal left arm is failing and a major Nether assault threatens Earth.",
+      "id": "randidly-ghosthound",
+      "name": "Randidly Ghosthound",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A visibly troubled Nemesai who arrives with a winged serpent under an agreement with Randidly. Thea helps deliver a mysterious weapon while showing fear, anger, and envy after her time away.",
+      "id": "thea-glasshammer",
+      "name": "Thea Glasshammer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The creator of a body of living-engraving work that Nevaeh is studying. Randidly needs to understand this material before it can help improve his failing arm.",
+      "id": "yestix",
+      "name": "Yestix",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A winged serpent that arrives with Thea Glasshammer under the Nemesai agreement and brings Randidly a mysterious weapon.",
+      "id": "winged-serpent",
+      "name": "Winged serpent",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's eager living spear is sent away to kill powerful monsters and gather their bones for his replacement arm. Acri is both a weapon and an active companion capable of pursuing a task independently.",
+      "id": "acri",
+      "name": "Acri",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A figure whose living status is a central source of doubt for Thea. She rejects Randidly’s assurance that Chrysanthemum is alive.",
+      "id": "chrysanthemum",
+      "name": "Chrysanthemum",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted offworld combat leader whom Randidly leaves visible when the Zurt Brigade inspects Earth. Her presence helps his preparations appear ordinary while his other offworld associates remain concealed.",
+      "id": "helen",
+      "name": "Helen",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's contact in the Zurt Brigade. She advises him on how to handle the visiting investigators and warns him to appear unexceptional before the ambitious Smog Clan captain.",
+      "id": "octavia-shrike",
+      "name": "Octavia Shrike",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Smog Clan commander leads the Zurt Brigade inspection force on Earth. Captain Quill establishes a temporary command center on Randidly's island while his forces complete their work.",
+      "id": "captain-quill",
+      "name": "Captain Quill",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Captain Quill's gray-skinned aide and a skilled evaluator of engravings. Wuva accompanies Quill when the Zurt Brigade establishes its temporary base on Randidly's island.",
+      "id": "wuva",
+      "name": "Wuva",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A guard at Zone 1's restricted Mjolnir facility. His shift creates the opening Acri uses to enter the complex and reach its large stock of monster cores, placing him at the edge of Randidly's effort to build a replacement arm.",
+      "id": "kale",
+      "name": "Kale",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Order Dukies applicant whose combat class is suited to clearing groups of monsters. Derek helps welcome survivors recruited for Karen and explains that citizenship brings demanding training and a duty to defend other people.",
+      "id": "derek-moss",
+      "name": "Derek Moss",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Derek Moss's mentor in the Order Dukies. Naffer presents the order as a way for ordinary people to build strength of their own.",
+      "id": "naffer",
+      "name": "Naffer",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Karen's civic leader manages the city's shortages of space, teachers, industry coordination, and predictable travel. She gives Randidly room to set broad priorities while preparing to turn his ambitious expansion ideas into workable administration.",
+      "id": "tatiana",
+      "name": "Tatiana",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A long-incapacitated fighter under Sydney’s care. He has suffered severe pain for nearly a year, and Sydney remains at his bedside.",
+      "id": "drake",
+      "name": "Drake",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Firun relentlessly hunts the Nemesai after their interference almost sent Ifran into the sea.",
+      "id": "firun",
+      "name": "Firun",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Naffer's prospective wife. Maureen asks Randidly to approve their marriage because she regards him as a father figure in Naffer's life.",
+      "id": "maureen",
+      "name": "Maureen",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Drake's protector and Ace's former partner cares for Drake through a long, unexplained incapacitation. When Thea tries to provoke her, Sydney suppresses her anger with a cold image and refuses the offered fight.",
+      "id": "sydney",
+      "name": "Sydney",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A paralyzed Zone 1 fighter following a deviant path. Nether use has left him in continual pain, but he remains involved in the president's plan to infiltrate and betray a joint expedition for control of a runic tablet.",
+      "id": "richter",
+      "name": "Richter",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Zone 1's president is under impeachment pressure when she orders Nether-using subordinates to join an expedition, betray its allies, and seize a runic tablet. Her decision presents political survival as worth a planned attack on rival forces.",
+      "id": "theodora-grayman",
+      "name": "Theodora Grayman",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Ace"
+      ],
+      "description": "Randidly's former friend possesses Yestix's stolen memories even though they reject his attempts to use them. He is also cultivating an immense fleshy egg fed by negative emotion, making his hidden work an urgent danger.",
+      "id": "ace-ridge",
+      "name": "Ace Ridge",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A highly influential child in Karen whose inherited Aether connection helps her lead other children. Tatiana compares Delilah's influence among the young to the authority Randidly carries among adults.",
+      "id": "delilah",
+      "name": "Delilah",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Karen’s committed chief of police. Commissioner Arrietty reports that public interest in joining the Order Dukies has increased after refugees witnessed the order fighting.",
+      "id": "commissioner-arrietty",
+      "name": "Commissioner Arrietty",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An undead Hero living under Nevaeh's care. Something experienced while dead has left Roy disturbingly resigned, and his refusal to discuss the change makes his passive obedience more troubling to her.",
+      "id": "roy",
+      "name": "Roy",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An engraving specialist whom Randidly recruits to help guide the development of Karen Academy.",
+      "id": "lucretia",
+      "name": "Lucretia",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Donington's absent village spirit has not been seen for several weeks. Her unexplained disappearance matters to Randidly as he checks the people and places he may leave behind when he travels to the Nexus.",
+      "id": "lyra",
+      "name": "Lyra",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An engineer who examines Randidly's failed metallic arm and advises how it might be reinforced. She also provides technical guidance for the developing Karen Academy.",
+      "id": "wendy",
+      "name": "Wendy",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Zurt Brigade investigator intent on proving that Randidly is a Nether agent. He enters Randidly's prepared enclosure, deploys a suppression space, and isolates his target from both Nevaeh and the Nether power on which the trap depends.",
+      "id": "zurt-brigade-special-investigator",
+      "name": "Zurt Brigade special investigator",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Ace's collaborator watches Randidly's preparations with him and helps ready the large egg intended to disrupt the coming confrontation.",
+      "id": "ezekiel",
+      "name": "Ezekiel",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spear fighter who responds to the recent destructive battle by training harder. Alana decides Earth must develop defenders who do not depend on Randidly and prepares to enter his duos tournament with a powerful partner.",
+      "id": "alana",
+      "name": "Alana",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alana's frost-dragon partner and a broodmother. Wyvanya urges Alana to enter the duos tournament with her and already has a preferred name for Earth if they win the naming tablet that serves as its prize.",
+      "id": "wyvanya",
+      "name": "Wyvanya",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Ace's grieving former second-in-command is digging his grave when Randidly finds her. An observant analyst with broad skill knowledge, Rose helps bury Ace and then asks Randidly to give her useful work.",
+      "id": "rose-calloway",
+      "name": "Rose Calloway",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A provisional Karen investigator whose passive image worsens surrounding circumstances when her emotions slip. Heidi works with Derek to examine an attempted killing, using the violent image traces left at the scene.",
+      "id": "heidi-mordath",
+      "name": "Heidi Mordath",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Bagel Guy"
+      ],
+      "description": "The injured owner of a bagel shop and the witness in Derek and Heidi's investigation of an attempted killing. Gary exaggerates how well he resisted the attack, while the image traces show that he was nearly killed.",
+      "id": "gary-dietz",
+      "name": "Gary Dietz",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Tim",
+        "Timothy"
+      ],
+      "description": "Derek's young son has a rare affinity with Karen's moss spirits and an ability that seems to teach him image use naturally. Randidly considers whether Timothy could learn the specialized engraving needed to create permanent floating islands.",
+      "id": "timothy-moss",
+      "name": "Timothy Moss",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A contact whose advice Randidly awaits while considering a dungeon as a place to train his unstable images.",
+      "id": "octavius",
+      "name": "Octavius",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's offworld contact is mentally depleted while undergoing severe training. Their secret Nether Ritual allows him to reach her.",
+      "id": "vuala",
+      "name": "Vuala",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced construction professional whom Randidly recruits to advise the Karen Academy project.",
+      "id": "ed-doug",
+      "name": "Ed Doug",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The first Karen citizenship applicant to complete the image challenge is also an accomplished educator. Gertrude can hold the attention of more than a hundred children with simple illusions shaped by clear motives.",
+      "id": "gertrude-collins",
+      "name": "Gertrude Collins",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elite smith with a longstanding friendship and Aether bond to Randidly. Sam agrees to support Karen Academy's specialized construction in exchange for the first human expedition to a corrupted world.",
+      "id": "sam",
+      "name": "Sam",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Academy worker who joins Randidly's planned six-month dungeon expedition. Dinesh is part of the mixed contingent using the isolated space for combat training, construction, and institutional planning.",
+      "id": "dinesh",
+      "name": "Dinesh",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat trainer assigned alongside Helen to prepare Karen's police force during its six-month dungeon expedition.",
+      "id": "ajax",
+      "name": "Ajax",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The memory portrays this figure as the System's creator and as having once been married to the woman who appears with Lyra's face. He uses runes to keep her pure-energy child intact, then confines that being as the System's power source.",
+      "id": "aether-historian",
+      "name": "Aether historian",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "This unnamed being was born from a union between a Nether King and the woman who resembles Lyra. The Aether historian prevents his energy from dispersing, but holds him captive to power the System. Records sealed on Halom could help Nevaeh devise a rescue.",
+      "id": "pure-energy-son",
+      "name": "Pure-energy son",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Appearing with Lyra's face, this woman says the historian was once her husband. She directs Randidly toward sealed records on Halom that could help Nevaeh release her confined son.",
+      "id": "woman-wearing-lyras-face",
+      "name": "Woman wearing Lyra's face",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Delilah's father reacts protectively when she reports that a boy named Anon claimed she loved him.",
+      "id": "dozer",
+      "name": "Dozer",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Donington’s leader enters the duos tournament with Glendal, whose captured raid-boss spirits overwhelm opponents during their desert preliminary.",
+      "id": "donington-leader",
+      "name": "Donington’s leader",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hank Howard's horse and his declared tournament partner. Ancho is not presented as a conventional combatant, but his place in Hank's identity is essential to the marksman's image and to the partnership they bring into the contest.",
+      "id": "ancho",
+      "name": "Ancho",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Donington’s ghost-using tournament partner. Glendal deploys captured raid-boss spirits against opponents in a desert preliminary.",
+      "id": "glendal",
+      "name": "Glendal",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hank"
+      ],
+      "description": "A marksman who enters the duos tournament with his ordinary horse rather than a conventional fighter. Hank treats Ancho as an inseparable part of his gunslinger image, making their partnership more substantial than it first appears.",
+      "id": "hank-howard",
+      "name": "Hank Howard",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Dinesh’s tournament partner first appears opposite Lyra and her unresponsive partner in a mist-filled preliminary. Their opening confrontation begins as Lyra clears the mist during her exchange with Tykes.",
+      "id": "tykes",
+      "name": "Tykes",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lyra's living tournament partner is physically present during the mist-filled preliminary but remains unresponsive when Dinesh addresses him.",
+      "id": "stan",
+      "name": "Stan",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A tournament fighter who competes alongside Kale under a wager that has them exchange their usual weapons.",
+      "id": "paolo",
+      "name": "Paolo",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A concealed tournament identity paired with Richter and listed among the projected semifinalists. The person behind the title is not yet established.",
+      "id": "black-hand",
+      "name": "Black Hand",
+      "reveal": {
+        "chapter": 63
+      }
+    },
+    {
+      "description": "Lucifer’s tournament partner and one of the contestants identified during a live broadcast as a projected semifinalist.",
+      "id": "juliana",
+      "name": "Juliana",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Juliana's tournament partner and one of the contestants identified during a live broadcast as a projected semifinalist.",
+      "id": "lucifer",
+      "name": "Lucifer",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adopted member of the Huang family who serves as Zone 7’s royal-guard captain. He prepares to enter the tournament alongside an older adoptive relative despite political strain between them.",
+      "id": "zone-7-captain",
+      "name": "Zone 7 captain",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Zone 7 captain’s older adoptive relative and tournament partner. This politically influential elder joins him as they prepare to compete despite strain between them.",
+      "id": "elderly-zone-7-partner",
+      "name": "Elderly Zone 7 partner",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Theodora Grayman"
+      ],
+      "description": "Black Hand is revealed as the impeached former president Theodora Grayman. She has converted more of her body into a source of caustic Nether power for the tournament fight, exposing the connection between the political figure and the masked combatant.",
+      "id": "black-hand-theodora-grayman",
+      "name": "Black Hand",
+      "reveal": {
+        "chapter": 69
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Zone 7's captain and Huang Shou's adoptive grandson. After reaching the tournament quarterfinals, he struggles with contamination in his wounded image and the prospect of facing Paolo and Kale.",
+      "id": "huang-li",
+      "name": "Huang Li",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Huang Li's adoptive grandfather and tournament partner. He identifies the foreign influence destabilizing Huang Li's wounded image and redirects him toward confidence in his accumulated effort.",
+      "id": "huang-shou",
+      "name": "Huang Shou",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The crab-mutated owner of an isolated villa operates banks and lending businesses whose influence has reached Karen through their customers. Randidly confronts him while assessing social pressures that could threaten the city after his departure.",
+      "id": "villa-owner",
+      "name": "Villa owner",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Vuala"
+      ],
+      "description": "The drain is Vuala's new identity after she gives up her former Nexus citizenship. She needs active-cohort citizenship coins from Randidly to pursue Tier Three standing and a civilian position on the Nexus Council.",
+      "id": "drain",
+      "name": "Drain",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Donington’s leader"
+      ],
+      "description": "Donington’s leader, now identified as Donnie, partners with Glendal in the duos tournament. Their defensive effort is overcome by Tykes and Dinesh in the fight for a semifinal place.",
+      "id": "donnie",
+      "name": "Donnie",
+      "reveal": {
+        "chapter": 76
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Randidly's official guide meets him at a crowded relay after his arrival in the Nexus. The overseer bypasses the ordinary queue and begins escorting him toward the Nexus proper, giving him his first direct contact there.",
+      "id": "seventh-cohort-overseer",
+      "name": "Seventh-cohort overseer",
+      "reveal": {
+        "chapter": 112
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An independent artificial intelligence whose concealed production operation Randidly moves to the former winged-serpent island. In return for a future favor from Randidly or Nevaeh, it agrees to aid Karen as many as three times and remain available through the city's calamities.",
+      "id": "independent-ai",
+      "name": "Independent AI",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Randidly's original soul seeds, now sufficiently independent that he advises Arbor to choose a purposeful life of its own.",
+      "id": "arbor",
+      "name": "Arbor",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Randidly's original soul seeds, now acting independently. Thorn intends to root at Xperia's center and protect its people.",
+      "id": "thorn",
+      "name": "Thorn",
+      "reveal": {
+        "chapter": 111
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous older near-double of Vuala whom Randidly meets in the Nexus Undercity. Her exact relationship to Vuala is not explained when she offers him a position as a military drill sergeant in an emergency program.",
+      "id": "original-vuala",
+      "name": "Original Vuala",
+      "reveal": {
+        "chapter": 113
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A frontline military leader allied with the original Vuala's faction. She arranges Randidly's tribunal interview and instructs him to display only the controlled healing aspect of Yggdrasil before the divided panel.",
+      "id": "military-woman",
+      "name": "Military woman",
+      "reveal": {
+        "chapter": 114
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Zurt Brigade investigator on the Nexus tribunal that tests Randidly's image control and suitability for military command. At the investigator's request, Randidly works around the room's wards to manifest a physical tree. The investigator then abstains from the initial decision.",
+      "id": "nexus-zurt-brigade-investigator",
+      "name": "Nexus Zurt Brigade investigator",
+      "reveal": {
+        "chapter": 115
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Nexus military authority who maims a Swak-family applicant for insubordination. Wick then makes Randidly's reconsideration for head drill sergeant conditional on healing the injured applicant.",
+      "id": "commandant-wick",
+      "name": "Commandant Wick",
+      "reveal": {
+        "chapter": 117
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A metallic applicant from the Swak family whom Commandant Wick maims for insubordination. Wick makes healing the applicant the condition for reconsidering Randidly’s candidacy.",
+      "id": "metallic-swak-family-applicant",
+      "name": "Metallic Swak-family applicant",
+      "reveal": {
+        "chapter": 117
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An energy reader in a deep-Web household who gives Randidly three territory coins as insurance against failure. The organizer brings together people who want to change how the Nexus treats lives and worlds.",
+      "id": "residential-household-organizer",
+      "name": "Residential household organizer",
+      "reveal": {
+        "chapter": 120
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "the-legend-of-randidly-ghosthound-12"
+}
