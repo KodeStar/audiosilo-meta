@@ -1,0 +1,231 @@
+{
+  "characters": [
+    {
+      "description": "A Seattle man displaced into an unfamiliar wilderness, Hal bears a glowing mark placed through an assassin's ritual. The mark terrifies local people, while visible prompts and attributes suggest that this world follows rules resembling a game.",
+      "id": "hal",
+      "name": "Hal",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A skilled young archer who finds Hal after villagers drive him into the forest. She gives him water, examines his hidden mark, and leads him away from pursuit. Her magic and fieldcraft make her his first capable protector in the unfamiliar world.",
+      "id": "huntress",
+      "name": "Huntress",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A horned prison attendant assigned to preserve the stories of people condemned to die. She tells the wounded Hal that his execution will occur at dawn. Her position inside the dungeon places her between official duty and the fate of a marked outsider.",
+      "id": "keeper",
+      "name": "Keeper",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A political dissident imprisoned for opposing the exclusion of people raised outside the sanctum. Hal frees him while beginning the prison break.",
+      "id": "political-prisoner",
+      "name": "Political prisoner",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The banned songwriter whom Hal freed from prison. After the ranger rescue, he remains with Hal's party.",
+      "id": "songwriter",
+      "name": "Songwriter",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An allied rescuer who had been searching for Hal. She urges him to consider providing a protected place for people drawn to his cause, although he still hopes to return home.",
+      "id": "ashira",
+      "name": "Ashira",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the ranger force that rescues Hal from a patrol outside the sanctum. She and her rangers escort his group away through the forest.",
+      "id": "ranger-leader",
+      "name": "Ranger leader",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive coblin healer who saves Hal after he awakens in a goblin prison. He asks Hal to free his clan and destroy the cave where coblins and other prisoners are being held, beginning an alliance grounded in rescue and mutual protection.",
+      "id": "coblin-healer",
+      "name": "Coblin healer",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A coblin whose life Hal saves inside the goblin prison. The rescued captive attaches to him and becomes an eager helper as he prepares to free the remaining clan members.",
+      "id": "coblin-helper",
+      "name": "Coblin helper",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive coblin with exceptional stealth who temporarily joins Hal's cave party. He can disappear into shadows, helps eliminate guards, and protects Hal during the attempt to reach the remaining prisoners after the alarm is raised.",
+      "id": "coblin-thief",
+      "name": "Coblin thief",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The final coblin captive Hal frees while rescuing the healer's clan. This prisoner is an explosives-minded tinkerer.",
+      "id": "coblin-explosives-maker",
+      "name": "Coblin explosives-maker",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A wary but pragmatic city watch captain who investigates Hal's report of rescued people outside the sanctuary town. He keeps the rangers guarded while inspecting the situation with Hal.",
+      "id": "city-watch-captain",
+      "name": "City watch captain",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A horned tavernkeeper encountered while Hal seeks lodging for the coblins. He recognizes one of Hal's freed companions as a member of his own people and reacts cautiously to Hal's arrival.",
+      "id": "horned-tavernkeeper",
+      "name": "Horned tavernkeeper",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced elf adventurer who explains that the nearby city is under Founder rule and that its authorities keep the Adventurers Guild weak.",
+      "id": "elf-adventurer",
+      "name": "Elf adventurer",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The gnome proprietor of a concealed secondhand equipment shop. The elf adventurer introduces Hal's new party to him, and he offers them favorable treatment through her.",
+      "id": "gnome-merchant",
+      "name": "Gnome merchant",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The sanctum's apparent ruler. His regime treats marked outsiders, including Hal, as threats.",
+      "id": "ruling-founder",
+      "name": "Ruling Founder",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An agent dispatched by the ruling Founder after Hal uses Founder magic to breach the sealed district. The archmage is entrusted with directing the search westward and represents the established ruler's immediate response to the appearance of a rival mark.",
+      "id": "archmage",
+      "name": "Archmage",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A high-level elven combatant in Hal's contract party. The party display shows that the dragoon and the other experienced companions greatly exceed Hal's level as they begin exploring the sealed district.",
+      "id": "dragoon",
+      "name": "Dragoon",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A female psychopomp encountered while Hal is close to death. She cannot compel his unusually resistant soul to pass on and warns that refusing death carries its own danger. When Hal returns to his body, she is unintentionally pulled toward life with him.",
+      "id": "reaper",
+      "name": "Reaper",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A small chest-like creature cornered by an aberration in the underground complex. Hal finds it while separated from most of his party and prepares to confront the creature threatening it.",
+      "id": "mimic-companion",
+      "name": "Mimic companion",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dead, armored alternate version of Hal found beside the infected roots beneath the sealed district. The number 37 marks his body, and his soul remains voluntarily bound to his Founder mark for a purpose the Reaper cannot yet explain.",
+      "id": "hal-37",
+      "name": "Hal 37",
+      "reveal": {
+        "chapter": 80
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a concealed dwarf trading clan whose people surround Hal's party as it emerges from mountain tunnels. After inspecting Hal's genuine Founder mark, he ends the confrontation and offers the exhausted travelers shelter in the clan's camp.",
+      "id": "dwarven-clan-leader",
+      "name": "Dwarven clan leader",
+      "reveal": {
+        "chapter": 92
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The matron of the Adventurers Guild, who defends the guild's jurisdiction from the ruling Founder's agents. She ends their coercive magic, expels them, confirms the contract rewards, protects the party's names, and assigns guards to the district.",
+      "id": "adventurers-guild-matron",
+      "name": "Adventurers Guild matron",
+      "reveal": {
+        "chapter": 98
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young woman leading six desperate, unarmed followers who trail Hal and the dwarf leader. Three blue crystals in her forehead identify her as an oracle, but her abilities, motives, and reason for seeking Hal remain to be explained.",
+      "id": "oracle",
+      "name": "Oracle",
+      "reveal": {
+        "chapter": 102
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-founder-a-litrpg-saga"
+}
