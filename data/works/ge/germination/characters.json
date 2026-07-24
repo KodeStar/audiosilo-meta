@@ -1,0 +1,269 @@
+{
+  "characters": [
+    {
+      "description": "A former soldier who owns Sutton Farm.",
+      "id": "john-sutton",
+      "name": "John Sutton",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "John's companion and a co-operator of Sutton Farm.",
+      "id": "ellie",
+      "name": "Ellie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Sutton Farm worker who practices with a dagger before beginning his daily duties.",
+      "id": "ben",
+      "name": "Ben",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "John's former military adjutant and an exceptionally capable farmhand at Sutton Farm.",
+      "id": "thomas",
+      "name": "Thomas",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An orphan once assisted by the Esters who now works at Sutton Farm. His regular responsibilities include milking with Thomas and making daily dairy deliveries, placing him within the operation that supports the farm's growing cheese business.",
+      "id": "evan",
+      "name": "Evan",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "the bull"
+      ],
+      "description": "A mana-altered bull at Sutton Farm. He guards a strange podded plant, feeds it mana crystals, and behaves as though he understands more than an ordinary animal. His connection to the plant becomes part of John's new investigation.",
+      "id": "ferdie",
+      "name": "Ferdie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the rooster"
+      ],
+      "description": "An enormous mana-fed rooster at Sutton Farm. Although an old eye injury has healed, he still wears an eye patch and displays unusually purposeful behavior. John suspects that his intelligence may share a cause with Ferdie's changes.",
+      "id": "sigvald",
+      "name": "Sigvald",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unusual pod-bearing plant at Sutton Farm that Ferdie guards and supplies with mana crystals. It draws mana through its pods, sends the energy into its roots, and reacts defensively to John. Its behavior starts an investigation into its root system and the unexplained intelligence of the plant, Ferdie, and Sigvald.",
+      "id": "strange-podded-plant",
+      "name": "Strange Podded Plant",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A historical water mage whose research and six spell scrolls came to John through Katrine.",
+      "id": "storm-master-kelvis",
+      "name": "Storm Master Kelvis",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The person from whom John recovered six water spell scrolls and research associated with a historical mage.",
+      "id": "katrine",
+      "name": "Katrine",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A merchant who brings Sutton Farm a forge, metal, coal, and transport capacity. He handles the farm's growing trade, accounts for its cheese proceeds, and joins John and Ellie in financing a guarded cart service to Kingsmouth.",
+      "id": "gofreid",
+      "name": "Gofreid",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Fairford information-gatherer with a rogue subclass. When suspicion falls on a classholder assassin, he explains that his abilities concern intelligence rather than murder and says the killings began before he arrived.",
+      "id": "sven",
+      "name": "Sven",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Wolf King"
+      ],
+      "description": "The commanding leader of Wolf Den. John confirms that his people are not responsible for the valley murders, then hires him to watch the region during the journey to Kingsmouth and report suspicious movement.",
+      "id": "haver",
+      "name": "Haver",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The red-bearded classholder in command of the caravan's professional guards. During an undead assault, he organizes the defense around fire and directs his fighters to destroy the crystals controlling the attackers.",
+      "id": "mercenary-captain",
+      "name": "Mercenary Captain",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A novice practitioner of necromancy who attacks the caravan with drugged bandits and reanimated corpses. She relies on a powerful external artifact to sustain the undead and appears to serve a more dangerous master.",
+      "id": "novice-necromancer",
+      "name": "Novice Necromancer",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The leader of a five-tribe mounted alliance whose large force intercepts John's grain convoy. Food scarcity and exclusion from city markets have pushed his people toward raiding, but he has authority to consider John's trade proposal.",
+      "id": "horse-bandit-leader",
+      "name": "Horse-Bandit Leader",
+      "reveal": {
+        "chapter": 15
+      }
+    },
+    {
+      "aliases": [
+        "Vosik"
+      ],
+      "description": "A noble whose encrypted orders direct an agent to capture Ellie alive and investigate both Sandra and an object sought by Red Coral. His involvement places him behind the pursuit into Ellie's childhood valley.",
+      "id": "earl-vosik",
+      "name": "Earl Vosik",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A floating blue spirit that welcomes Ellie at the manor hidden behind the defensive maze. It appears to serve as the estate's guardian and caretaker, presenting her as the lady of a place she has been unable to enter for sixteen years.",
+      "id": "manor-guardian",
+      "name": "Manor Guardian",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    },
+    {
+      "description": "John's trained stallion, received as a gift from a horse-bandit leader and named after a storybook mage.",
+      "id": "merlin",
+      "name": "Merlin",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The late witch who trained Ellie. Her cottage near Kingsmouth still holds a botanical library that Ellie and John hope to recover.",
+      "id": "ellies-grandmother",
+      "name": "Ellie's Grandmother",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The blue-painted leader of a grimm group John encountered before the Shadow Tower expedition. He joins the fight against the giant centipedes threatening his settlement.",
+      "id": "grimm-leader",
+      "name": "grimm Leader",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A large purple-flowered plant that appears to direct the Shadow Tower's root-bodied guardians. It communicates with John through visions and indicates that energy must be supplied to a crystal at the tower summit to restore balance.",
+      "id": "purple-flowered-plant",
+      "name": "Purple-Flowered Plant",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The plant from the Shadow Tower after it takes human form and identifies itself. It carries the experiences of Tower Master Kelvis's deceased student while regarding itself as a separate being.",
+      "id": "flower-of-promise",
+      "name": "Flower of Promise",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The legendary wartime figure whose identity Ellie now recognizes as John Sutton. He founded a far-reaching service organization, and revealing himself exposes the scale of the power and history John has concealed.",
+      "id": "the-eternal-flame",
+      "name": "the Eternal Flame",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The historical water mage now identified as Tower Master Kelvis. The Flower of Promise confirms that he mastered the Shadow Tower, where he concealed his student and their plant research before joining the war.",
+      "id": "tower-master-kelvis",
+      "name": "Tower Master Kelvis",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A legendary necromancer whom John and his soldiers drove from a wartime battlefield. The necromancer survived, operates through apprentices and undead artifacts, knows John's location, and may threaten Sutton Farm.",
+      "id": "legendary-necromancer",
+      "name": "Legendary Necromancer",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Ellie's mare, given to her by a horse-bandit leader after John passes the brotherhood trial.",
+      "id": "storm",
+      "name": "Storm",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "germination"
+}
