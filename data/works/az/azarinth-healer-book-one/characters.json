@@ -1,0 +1,317 @@
+{
+  "characters": [
+    {
+      "description": "A young kickboxer from Earth who wakes alone in an unfamiliar forest. She has only her pajamas and no explanation for her arrival. After seeing a drake, she receives the visible skill Identify.",
+      "id": "ilea",
+      "name": "Ilea",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Ilea"
+      ],
+      "description": "The status display confirms Ilea's full name and shows her quantified attributes, health, stamina, mana, and Identify skill while she searches for safety in the unfamiliar world.",
+      "id": "ilea-spears",
+      "name": "Ilea Spears",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A senior Riverwatch guard who recruits Ilea to heal casualties after an ambush. He pays her fairly, helps her obtain clothing and shelter, and becomes her first dependable contact among the people of Elos.",
+      "id": "dale",
+      "name": "Dale",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young attendant at the Riverwatch library who provides Ilea with a practical introduction to Elos. She explains local geography, classes, advancement, currency, dungeons, and the dangers surrounding the independent cities.",
+      "id": "maria",
+      "name": "Maria",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young Corinth healer whom Ilea rescues from kidnappers and saves from a grave wound. Alice studies enchantment in Dawntree, agrees to protect Ilea's secrets, and offers her rescuer hospitality while they travel to Riverwatch.",
+      "id": "alice-forkspear",
+      "name": "Alice Forkspear",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Riverwatch smith who assesses Ilea's charred drake scales and advises her on building light armor around them. His interest in her unusual close-range fighting style makes him an important equipment contact.",
+      "id": "earl",
+      "name": "Earl",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A level-60 bard competing in Riverwatch's tournament. He combines rock armor, earth spikes, heavy melee force, and a weaponized lute to defeat a teleporting opponent, showing that his music and enhancement magic are both practical combat tools.",
+      "id": "aaron",
+      "name": "Aaron",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A traveling enchantress and beast tamer in the Riverwatch tournament. She directs birds carrying enchanted explosives and relies on prepared magical defenses, demonstrating a coordinated style built around her animal companions.",
+      "id": "eleonora",
+      "name": "Eleonora",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ellie"
+      ],
+      "description": "The traveling enchantress Eleonora also introduces herself as Ellie while the survivors organize their temporary party inside Calys Dungeon.",
+      "id": "eleonora-ellie",
+      "name": "Eleonora",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A pyromancer from the Riverwatch College of Magic who shapes molten glass into attacks and platforms. When elves strike the tournament, he joins Ilea and other survivors fleeing through the arena tunnels.",
+      "id": "oliver",
+      "name": "Oliver",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Riverwatch guard who leads lower-level survivors away from the elven attack on the arena. He guides the retreat toward an abandoned mine, keeps the frightened group moving, and faces immediate danger when a powerful elf pursues them underground.",
+      "id": "glenn",
+      "name": "Glenn",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "One of the fighters escaping Riverwatch through the arena tunnels while a powerful elf pursues the survivors underground.",
+      "id": "geronimo",
+      "name": "Geronimo",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The barkeeper in the Vultures' Brotherhood's underground refuge, encountered while Ilea's unexpected arrival is being assessed.",
+      "id": "walter",
+      "name": "Walter",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The guard captain of a caravan preparing to travel west from Riverwatch toward Salia.",
+      "id": "arvin",
+      "name": "Arvin",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A quiet, armored axe fighter serving as a caravan guard. Roland and Ilea become lovers during the journey toward Salia.",
+      "id": "roland",
+      "name": "Roland",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mage, Roland’s first wife, and a member of his household in Salia. She welcomes Ilea when Roland offers her a place to stay after the caravan reaches the city.",
+      "id": "samantha",
+      "name": "Samantha",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Roland’s husband, a warrior, and the cook in their Salia household. He welcomes Ilea into the family home after the caravan survivors reach the city.",
+      "id": "george",
+      "name": "George",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Roland’s second wife and a member of his household in Salia. She meets Ilea during a family meal after the caravan survivors arrive in the city.",
+      "id": "sophie",
+      "name": "Sophie",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful ice mage traveling with the Salia caravan. When a large Nazark force attacks, Mia freezes its leading ranks before a basilisk's cry paralyzes the caravan.",
+      "id": "mia",
+      "name": "Mia",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A child in Roland's Salia household and Samantha's daughter. Lily knows the city well and acts as Ilea's guide. She secretly cares for seven stray dogs in the sewers, bringing Ilea into her private project when two of the animals need healing.",
+      "id": "lily",
+      "name": "Lily",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alice Forkspear's manservant, who objects when Alice sends Ilea into the Taleen ruin under a false justification. His protest shows concern for the danger Ilea faces and unease with Alice's treatment of her rescuer.",
+      "id": "jamie",
+      "name": "Jamie",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A formidable wind mage whose startled attack nearly kills Ilea in the Taleen city. Felicia immediately apologizes and approaches with two companions, turning a dangerous first encounter into a cautious meeting.",
+      "id": "felicia-redleaf",
+      "name": "Felicia Redleaf",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An armed companion traveling with Felicia Redleaf and a dark-armored warrior in the Taleen ruin. Aliana approaches Ilea after Felicia's mistaken attack and helps establish a wary pause rather than another fight.",
+      "id": "aliana",
+      "name": "Aliana",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A cautious warrior in dark armor traveling with Felicia Redleaf and Aliana in the Taleen ruin. He evaluates Ilea's movement and healing while warning that she could be an assassin.",
+      "id": "dark-armored-warrior",
+      "name": "Dark-armored warrior",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Felicia Redleaf's brother and the cautious leader of her party. Edwin is an exceptionally fast warrior who tests Ilea in a spar, points out counters to her abilities, and weighs whether her healing is useful enough to justify an alliance.",
+      "id": "edwin-redleaf",
+      "name": "Edwin Redleaf",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Dawntree historian and College of Magic teacher who joins the Forkspear-funded Taleen expedition. Jeremy combines the Ground Caller and Heavy Paladin classes, serving as a durable frontline fighter with limited healing.",
+      "id": "jeremy",
+      "name": "Jeremy",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The swordmaster leading a large Forkspear-funded expedition into the Taleen ruin. Jasper helps direct its teams and scouts as they follow a route lined with recently destroyed guardians.",
+      "id": "jasper",
+      "name": "Jasper",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the leaders of the Forkspear expedition into the Taleen ruin. Agor helps decide whether the expedition should follow a route lined with recently destroyed guardians.",
+      "id": "agor",
+      "name": "Agor",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Agor"
+      ],
+      "description": "The expedition leader previously known as Agor confirms his full name after fighting beside Ilea. He wields a massive sword and uses red fire to propel explosive attacks.",
+      "id": "lorcan-agor",
+      "name": "Lorcan Agor",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Sword Dancer in the Forkspear-funded expedition. Rin fights with curved swords and is among the adventurers establishing a base in the Taleen Great Hall as the expedition follows a route cleared by an unknown predecessor.",
+      "id": "rin",
+      "name": "Rin",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Jasper"
+      ],
+      "description": "The expedition's swordmaster leader survives the battle with the Taleen Praetorians. Ilea restores his missing arm when the survivors gather at the rendezvous.",
+      "id": "jasper-horim",
+      "name": "Jasper Horim",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "sentient dagger"
+      ],
+      "description": "A speaking relic discovered beside an elf skeleton behind a wall in the Taleen ruin. The dagger knows the common language, reacts to Ilea with open hostility, and burns her when she touches it. Its presence turns a valuable hidden cache into a more uncertain discovery.",
+      "id": "dagger-of-akelion",
+      "name": "Dagger of Akelion",
+      "reveal": {
+        "chapter": 57
+      }
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "azarinth-healer-book-one"
+}
