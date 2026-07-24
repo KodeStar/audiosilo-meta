@@ -1,0 +1,296 @@
+{
+  "characters": [
+    {
+      "description": "A scarred, undersized student whose long history of corrective surgery has not dulled his skill or ambition. Rei plans to take the CAD assignment exam and hopes to attend Galen's Institute with his closest friend, Viviana Arada.",
+      "id": "rei",
+      "name": "Rei",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Rei's only close friend at Grand Crest, a leading school combat scorer who openly defends him from hostile teammates. She shares his goal of receiving a CAD and entering Galen's Institute.",
+      "id": "viviana-arada",
+      "name": "Viviana Arada",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile member of Rei's school combat team who treats Rei's physical limitations as a liability and publicly blames him after a tournament loss.",
+      "id": "lee-jackson",
+      "name": "Lee Jackson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A highly trained prospective CAD user from the influential Laurent family. Pressured into a private evaluation by her controlling mother, she pursues Galen's summer program as an early route away from the family estate.",
+      "id": "aria-laurent",
+      "name": "Aria Laurent",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A controlling authority within Aria Laurent's family who values its reputation and expects Aria to excel. She directs Aria away from the public CAD exam and into a private evaluation.",
+      "id": "aria-laurents-mother",
+      "name": "Aria Laurent's mother",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The sympathetic evaluator assigned to Rei's physical assessment. He recognizes Rei's determination but rejects him because the medical and performance results do not meet the required standard.",
+      "id": "reis-physical-examiner",
+      "name": "Rei's physical examiner",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The artificial intelligence that governs the Inter-System Collective and conducts Rei's confidential final CAD interview through an avatar. It treats his unusual condition as a potentially valuable experimental variable.",
+      "id": "the-mind",
+      "name": "The Mind",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A celebrated former SCT competitor who later chose service at the front. At this point she is introduced only as an example of a fighter whose career extended beyond the tournament circuit.",
+      "id": "valera-dent",
+      "name": "Valera Dent",
+      "reveal": {
+        "chapter": 5
+      }
+    },
+    {
+      "description": "Rei's newly assigned A-type CAD. It begins at F8 with a single striking gauntlet and extremely weak specifications, but its unprecedented S-ranked Growth offers a path far beyond its initial state.",
+      "id": "shido",
+      "name": "Shido",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A D7 Mauler applicant whom Galen's Institute expects to compete for leadership among the incoming first years.",
+      "id": "logan-grant",
+      "name": "Logan Grant",
+      "reveal": {
+        "chapter": 8
+      }
+    },
+    {
+      "description": "Galen's SCT coordinator and principal arbiter. He opposes Rei's admission, arguing that Rei's low starting rank and medical history make him unsuitable for the Institute.",
+      "id": "dyrk-reese",
+      "name": "Dyrk Reese",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The chief medical officer at Galen's Institute. After reviewing Rei's case, he believes Shido's genetic corrections may halt the illness behind Rei's many surgeries.",
+      "id": "willem-mayd",
+      "name": "Willem Mayd",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Aria Laurent's uncle, the commanding officer of Galen's Institute, and an experienced sparring partner. He practices phalanx footwork and defensive positioning with Aria and warns that unexpected contenders can displace favored Sectionals candidates.",
+      "id": "aria-laurents-uncle",
+      "name": "Aria Laurent's uncle",
+      "reveal": {
+        "chapter": 10
+      }
+    },
+    {
+      "description": "A welcoming D5 Saber user assigned to Canes 304 with Rei and Viviana Arada. After meeting Rei, he checks the public record and immediately recognizes that his new roommate's history is unusual.",
+      "id": "catcher",
+      "name": "Catcher",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted assistant to Galen's commanding officer and a familiar figure to Aria Laurent. She gives Aria guarded guidance for interpreting the available evidence about Rei without disclosing confidential information.",
+      "id": "galens-commanding-officers-chief-assistant",
+      "name": "Galen's commanding officer's chief assistant",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A brawler instructor introduced among the staff of Galen's Institute.",
+      "id": "michael-bretz",
+      "name": "Michael Bretz",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Lancer assigned to Canes 304 with Rei, Viviana Arada, and Catcher. Her initial introduction is simply as one of their new suite mates.",
+      "id": "chancery-cash",
+      "name": "Chancery Cash",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A D8 Brawler from the Galen's summer training program and the remaining member of the Canes 304 suite.",
+      "id": "jack-benally",
+      "name": "Jack Benally",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A high-performing Brawler in Rei's class. He apologizes for his roommate's earlier confrontation with Rei, accepts that Rei cannot explain his unusual admission, and begins treating him with friendly respect.",
+      "id": "bandt-senson",
+      "name": "Bandt Senson",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Saber classmate who defeats Rei in sanctioned training through superior rank, speed, and reach. He regards Rei's willingness to challenge stronger opponents as foolish.",
+      "id": "mateus-selick",
+      "name": "Mateus Selick",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A medical officer overseeing Rei's continuing treatment. She confirms that a suspected abnormal growth in his ankle has already resolved.",
+      "id": "amina-ashton",
+      "name": "Amina Ashton",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The highest-ranked Saber in Rei's class. She uses Magnetic Hunt to create an opening and defeats him in his first intraschool tournament match.",
+      "id": "class-1as-top-saber",
+      "name": "Class 1A's top Saber",
+      "reveal": {
+        "chapter": 38
+      }
+    },
+    {
+      "description": "An upper-year cadet who accepts Valera Dent's offer of personal training twice a week and agrees to use the second weekly session to help another cadet.",
+      "id": "unnamed-upper-year-trainer",
+      "name": "Unnamed upper-year trainer",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Brawler who previously trained alongside Rei and took part in the attack on him. She is named when the intraschool bracket assigns her as his next opponent.",
+      "id": "camilla-warren",
+      "name": "Camilla Warren",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The elite A-type mentor earlier assigned to Rei's group, also known on the field as the Lasher. His demanding instruction exposes each first year's habits and gives Rei experience against a far more advanced opponent.",
+      "id": "christopher-lennon",
+      "name": "Christopher Lennon",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Stone Lily"
+      ],
+      "description": "A Saber sub-instructor at Galen's Institute and former SCT competitor. Her exceptional defense supports a dangerous close-range style.",
+      "id": "claire-de-soto",
+      "name": "Claire De Soto",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Central Command authority whose directive forces the Galen's commander to alter the intraschool tournament despite strong objections.",
+      "id": "general-abel",
+      "name": "General Abel",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Catcher"
+      ],
+      "description": "Catcher's full name, announced when he and Rei are reassigned to face each other in the sixth tournament round. He insists that they compete seriously, and Rei's victory eliminates him.",
+      "id": "layton-catchwick",
+      "name": "Layton Catchwick",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Central Command Sergeant Major who notices the high-priority alert generated by Rei's C4 development and immediately orders that General Abel be awakened.",
+      "id": "cassidy-moran",
+      "name": "Cassidy Moran",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A powerful corporate authority who recognizes Rei in released tournament footage and urgently summons members of the family. The reason for that interest is not yet known.",
+      "id": "head-of-kamiya-corporation",
+      "name": "Head of Kamiya Corporation",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The public nickname newly attached to Rei after recordings of his intraschool matches circulate. Viewers connect the title with Valera Dent's own competitive identity.",
+      "id": "iron-prince",
+      "name": "Iron Prince",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "protagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    },
+    {
+      "ref": "audiosilo-sidecars",
+      "type": "community"
+    }
+  ],
+  "work": "iron-prince"
+}
