@@ -78,6 +78,14 @@ Check the changed records for:
 - Sidecars: character/recap text within reasonable length (recap text under ~3000 chars, character description under ~1500, in_short under ~1500, ending under ~2000), reveal/through spoiler positions are non-negative integers.
 - Fabrication signals: invented ASINs/ISBNs, implausible narrator/author names, or facts that look made up.
 
+Review sidecars with these model-specific rules:
+- An automated sidecar source ref such as audible:<region>:<asin>, isbn:<isbn>, or audiosilo-meta:recording:<work>/<recording> is concrete provenance. A bare community source is valid for manual authoring, but "audiosilo-sidecars" by itself only names a tool and is not a source edition.
+- Character entries may deliberately split an unnamed/provisional identity from a later named identity so the later name remains spoiler-gated. Do not flag that pattern merely as a duplicate. Flag it only when the entries contradict each other, leak the later identity in the earlier entry, or are indistinguishable duplicate cards at the same spoiler point.
+- A minor unnamed character may use a concise descriptive label. Do not treat the lack of a proper name alone as fabrication.
+- Character lists and chaptered recaps are selective, not exhaustive. A fact or person appearing only in ending/in_short is not suspicious merely because earlier recaps omit it.
+- Positions are logical work chapters, not necessarily raw recording track numbers. Do not infer an off-by-one from recording markers unless the diff itself establishes a direct logical mapping.
+- Curly punctuation, a familiar fictional/real-world name, or a title slug resembling another franchise is not by itself evidence of copying, fabrication, or wrong-work attachment.
+
 Schema validity and formatting are already enforced by CI - do NOT re-report those. Focus on judgement a machine check cannot make.
 
 Respond with ONLY a JSON object, no prose, of the form:

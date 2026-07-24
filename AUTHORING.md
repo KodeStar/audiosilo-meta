@@ -187,8 +187,14 @@ style:
 
 ## Format and validation
 
-- `license` is `"CC-BY-SA-3.0"` and `sources` is `[{ "type": "community" }]`
-  (add `ref`/`imported_at` if a specific source applies).
+- `license` is `"CC-BY-SA-3.0"`. A manual contribution from the author's own
+  knowledge may use `sources: [{ "type": "community" }]`. An automated
+  audiobook/ebook extraction **must** use one community source whose `ref`
+  identifies the edition actually processed, for example
+  `audible:us:B012345678`, `isbn:9780123456789`, or
+  `audiosilo-meta:recording:<work>/<recording>`. The authoring tool or pipeline
+  name alone is not provenance. Add `imported_at` when the extraction date is
+  known.
 - Run the gate before submitting:
   ```sh
   go run ./cmd/metafmt --write     # canonical formatting (sorted keys, 2-space)
