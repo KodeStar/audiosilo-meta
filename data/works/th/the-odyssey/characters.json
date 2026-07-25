@@ -1,0 +1,116 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Ulysses"
+      ],
+      "description": "The king of Ithaca and a hero of the Trojan War, famed above all for his cleverness, cunning, and gift for deception. Ten years after the war he has still not reached home, kept from it by shipwreck, monsters, and the anger of a god. Enduring and resourceful, he longs for his wife, son, and homeland, and works his way back through every obstacle by wit as much as by strength.",
+      "id": "odysseus",
+      "name": "Odysseus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Odysseus's wife and the queen of Ithaca, faithful through her husband's long absence. Her hall is crowded with suitors who press her to remarry and consume the household's wealth, and she holds them off with patience and cunning of her own, matching her missing husband in shrewdness while she waits and hopes for his return.",
+      "id": "penelope",
+      "name": "Penelope",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The son of Odysseus and Penelope, grown from a boy into a young man during his father's twenty-year absence. Frustrated and powerless before the suitors overrunning his home, he is roused by the goddess Athena to assert himself and to sail abroad in search of news of his father.",
+      "id": "telemachus",
+      "name": "Telemachus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The goddess of wisdom and war and Odysseus's steadfast divine protector. Admiring his cleverness, she pleads his case among the gods and intervenes repeatedly on his behalf and his son's, frequently taking on mortal disguises to guide, advise, and shield them.",
+      "id": "athena",
+      "name": "Athena",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The god of the sea, who bears a deep grudge against Odysseus and works to keep him from ever reaching home. His anger drives much of the hero's suffering at sea, raising storms and wrecking his craft, and it is rooted in a wrong done to him during Odysseus's wanderings.",
+      "id": "poseidon",
+      "name": "Poseidon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The most arrogant and aggressive of the suitors courting Penelope while feasting at Odysseus's expense. A ringleader among them, he treats the household as his own, mocks Telemachus, and takes the lead in plotting against the young man's life.",
+      "id": "antinous",
+      "name": "Antinous",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A nymph who has kept Odysseus on her remote island for years, in love with him and offering him immortality if he will stay. He remains a reluctant guest, weeping for home, until the gods send word ordering her to release him and help him depart.",
+      "id": "calypso",
+      "name": "Calypso",
+      "reveal": {
+        "chapter": 5
+      }
+    },
+    {
+      "description": "The young princess of the Phaeacians, who comes upon the shipwrecked, exhausted Odysseus washed up on the shore. Poised and kind, she gives him clothing and food and directs him to the palace of her parents, where he can seek help for his journey home.",
+      "id": "nausicaa",
+      "name": "Nausicaa",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Cyclops"
+      ],
+      "description": "A gigantic one-eyed Cyclops and a son of Poseidon, who traps Odysseus and his men in his cave and devours several of them. Odysseus escapes by blinding him with a sharpened stake and hiding his crew among the giant's sheep, a trick that saves them but earns Poseidon's lasting wrath.",
+      "id": "polyphemus",
+      "name": "Polyphemus",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful enchantress living on an island, who transforms part of Odysseus's crew into swine. Protected by a herb and overcoming her, Odysseus wins her friendship, and she becomes his host and counselor for a year, later advising him on the dangers still ahead and on how to seek guidance from the dead.",
+      "id": "circe",
+      "name": "Circe",
+      "reveal": {
+        "chapter": 10
+      }
+    },
+    {
+      "description": "Odysseus's loyal swineherd, who has remained faithful to his absent master for all the years of his absence. When Odysseus returns to Ithaca disguised as a ragged beggar, Eumaeus shelters and feeds the stranger with generosity, not knowing that he is the king himself.",
+      "id": "eumaeus",
+      "name": "Eumaeus",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-odyssey"
+}
