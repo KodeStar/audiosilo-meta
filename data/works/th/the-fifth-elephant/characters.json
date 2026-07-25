@@ -1,0 +1,144 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Commander Vimes",
+        "Duke of Ankh"
+      ],
+      "description": "Commander of the Ankh-Morpork City Watch and Duke of Ankh, a blunt, working-class copper who dislikes his own title and distrusts diplomacy. Lord Vetinari sends him abroad as an ambassador to the distant, dangerous country of Uberwald, a role he is spectacularly unsuited for and which he treats, at heart, as police work.",
+      "id": "sam-vimes",
+      "name": "Sam Vimes",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Lady Sybil Ramkin"
+      ],
+      "description": "Vimes's wife, a large, warm, immensely capable aristocrat and famous breeder of swamp dragons. Well-connected and unflappable, she accompanies Vimes on his diplomatic mission and handles the social side of it far more gracefully than he does.",
+      "id": "lady-sybil",
+      "name": "Sybil Vimes",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Captain Carrot"
+      ],
+      "description": "A very tall man raised by dwarfs and a captain of the City Watch, honest and literal-minded, with a natural gift for leadership. He is romantically attached to the werewolf Angua.",
+      "id": "captain-carrot",
+      "name": "Carrot Ironfoundersson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sergeant Angua"
+      ],
+      "description": "A sergeant of the City Watch and a werewolf, originally from an aristocratic werewolf family in Uberwald that she left behind. Capable and self-controlled, she is uneasy about the prospect of her homeland and her relatives re-entering her life.",
+      "id": "angua",
+      "name": "Angua von Uberwald",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf member of the Watch who works on forensic detection and who, unusually for a dwarf, openly presents as female. Precise and clever, she travels with Vimes into dwarf country, where such openness is provocative.",
+      "id": "cheery-littlebottom",
+      "name": "Cheery Littlebottom",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sergeant Colon",
+        "Acting Captain Colon"
+      ],
+      "description": "A stout, cautious sergeant of the Watch who is left in charge of policing Ankh-Morpork while his superiors are abroad, a responsibility that quickly reveals the limits of his leadership.",
+      "id": "sergeant-colon",
+      "name": "Fred Colon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Corporal Nobbs"
+      ],
+      "description": "A scruffy, opportunistic corporal of the Watch of dubious pedigree, who carries a document certifying that he is human. He remains behind in the city with the skeleton Watch.",
+      "id": "corporal-nobbs",
+      "name": "Nobby Nobbs",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A troll sergeant of the City Watch, hugely strong and slower-witted in the heat, who accompanies Vimes on the journey to Uberwald as bodyguard and muscle.",
+      "id": "detritus",
+      "name": "Detritus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A scruffy, disreputable Ankh-Morpork street dog who can talk, a fact he keeps quiet. Cynical and streetwise, he attaches himself to the story as it moves and offers unsolicited canine commentary.",
+      "id": "gaspode",
+      "name": "Gaspode",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Rhys Rhysson"
+      ],
+      "description": "The dwarf about to be crowned ruler of the dwarfs at a grand coronation in Uberwald, a moment of high political tension. The ceremony depends on an ancient dwarf artefact of deep symbolic importance.",
+      "id": "the-low-king",
+      "name": "The Low King",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Angua's brother, a powerful and aggressive werewolf of the Uberwald aristocracy who leads his family's clan. Physically imposing and openly contemptuous of weakness, he treats hunting and dominance as sport.",
+      "id": "wolfgang",
+      "name": "Wolfgang von Uberwald",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A servant of the traditional Uberwald type, an Igor: lisping, scarred, endlessly helpful, and a master of surgery and stitchwork. He is assigned to assist Vimes at the embassy.",
+      "id": "the-igor",
+      "name": "Igor",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-fifth-elephant"
+}

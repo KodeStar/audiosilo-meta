@@ -1,0 +1,90 @@
+{
+  "characters": [
+    {
+      "description": "The demigod hero of the earlier Percy Jackson stories, a son of the sea god, here stripped of nearly all his memory. He begins this book on the run from monsters, remembering little but his own name and one word he clings to: Annabeth. Brave, loyal, and quick with a sword, he stumbles toward a strange fortified camp with no idea why he is being guided there. Even without his past, his instincts as a fighter and his stubborn decency remain, and he slowly draws others to him while aching to recover the life and the girl he can only half remember.",
+      "id": "percy-jackson",
+      "name": "Percy Jackson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A quiet, kindhearted girl who serves in the least respected unit of the Roman demigod camp, Camp Jupiter. She is a daughter of Pluto, the Roman god of the underworld and of hidden riches, and can summon precious metals and gems out of the ground, though she dreads a curse that clings to the treasures she raises. Gentle and observant, she carries a heavy secret about her past that she hides from those around her, and she quickly becomes a steadfast friend and ally to the newcomer Percy.",
+      "id": "hazel-levesque",
+      "name": "Hazel Levesque",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A big, gentle, self-doubting teenager of Chinese Canadian heritage who serves in Camp Jupiter's lowest-ranked cohort and feels clumsy and out of place. A gifted archer with a good heart, he yearns to prove himself worthy. He learns he is a son of Mars, the Roman god of war, and comes from an old family line with unusual gifts, though a fragile secret ties his very life to a small object he must guard. Loyal and brave beneath his shyness, he rises to the demands of a dangerous quest.",
+      "id": "frank-zhang",
+      "name": "Frank Zhang",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the two elected leaders, or praetors, of Camp Jupiter, a stern and self-possessed young woman who commands the Roman legion of demigods. A daughter of Bellona, a Roman war goddess, she is disciplined, guarded, and burdened by the weight of leadership. Wary of the memory-less stranger who appears at her camp, she nonetheless values order and honor, and holds the fractious legion together as darker threats close in.",
+      "id": "reyna",
+      "name": "Reyna",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The camp's augur, who claims to read the will of the gods by gutting stuffed animals for omens. Ambitious, sly, and hungry for power, he distrusts outsiders and works to undermine anyone who threatens his influence over the legion. Persuasive and manipulative, he wraps his self-interest in appeals to Roman tradition, making him a constant source of friction at Camp Jupiter.",
+      "id": "octavian",
+      "name": "Octavian",
+      "reveal": {
+        "chapter": 2
+      }
+    },
+    {
+      "aliases": [
+        "Hera"
+      ],
+      "description": "The queen of the gods in her Roman aspect, the same goddess Greek demigods know as Hera. She appears disguised as a frail, ragged old woman who guides Percy toward the Roman camp, and reveals herself as a powerful and demanding patron. Proud and secretive, she is steering a vast and risky plan to unite the Greek and Roman demigods against a rising threat, and she expects the heroes to play the parts she has chosen for them.",
+      "id": "juno",
+      "name": "Juno",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A pale, brooding son of the underworld god, known from the earlier Percy Jackson stories, who can command the dead and travel through shadows. Solitary and secretive, he moves between worlds that few others can reach and seems to know more about the mysteries surrounding Camp Jupiter than he will say. He has a quiet connection to Hazel and an unsettling familiarity with the realm of the dead that becomes important as the quest unfolds.",
+      "id": "nico-di-angelo",
+      "name": "Nico di Angelo",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Gaia"
+      ],
+      "description": "The primordial earth goddess, the sleeping enemy stirring behind the story's dangers. She speaks through dreams and through the ground, patient and immense, working to wake her monstrous children, the giants, and to break the boundary between life and death so that slain monsters no longer stay dead. Her design threatens both demigod camps, and her servants hound the heroes at every turn as she edges closer to waking.",
+      "id": "gaea",
+      "name": "Gaea",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-son-of-neptune"
+}

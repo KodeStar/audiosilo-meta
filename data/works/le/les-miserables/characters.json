@@ -1,0 +1,106 @@
+{
+  "characters": [
+    {
+      "description": "A powerful, weathered ex-convict released after serving nineteen years of hard labor for stealing bread to feed his sister's starving children and for repeated escape attempts. Embittered and hardened by prison and by a society that brands him a criminal, he is turned away everywhere as a marked man, until an act of unexpected mercy sets him on a lifelong struggle to become an honest and good man while hiding his past.",
+      "id": "jean-valjean",
+      "name": "Jean Valjean",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A stern, incorruptible police inspector who believes absolutely in law, order, and authority. Born on the margins of society himself, he has devoted his life to the rules and views any lawbreaker as permanently guilty. Rigid, tireless, and utterly certain of his duty, he becomes the relentless pursuer of Jean Valjean.",
+      "id": "javert",
+      "name": "Javert",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Monseigneur Bienvenu"
+      ],
+      "description": "A humble, saintly provincial bishop who lives simply and gives nearly everything he has to the poor. Gentle, generous, and without judgment, he offers hospitality to the outcast Valjean when no one else will, and his extraordinary kindness plants the seed of Valjean's moral transformation.",
+      "id": "bishop-myriel",
+      "name": "Bishop Myriel",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusting, beautiful young working woman abandoned by her lover and left to raise a daughter alone. To pay for the child's keep she sacrifices everything she has, sinking step by step into poverty and degradation. Loving and long-suffering, she embodies the cruelty society inflicts on the vulnerable poor.",
+      "id": "fantine",
+      "name": "Fantine",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Fantine's young daughter, boarded out to a cruel innkeeping family who treat her as a drudge and mistreat her. A frightened, overworked child longing for tenderness, she is the person Fantine sacrifices everything to protect, and her fate becomes bound to Valjean's.",
+      "id": "cosette",
+      "name": "Cosette",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A grasping, dishonest innkeeper who, with his hard-hearted wife, takes in the child Cosette only to exploit her and extort money from her mother. Greedy, deceitful, and cruel, he schemes constantly to profit at others' expense, and his villainy follows the main characters across the years.",
+      "id": "thenardier",
+      "name": "Monsieur Thenardier",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An idealistic, poor young law student estranged from his wealthy royalist grandfather over politics. Passionate and romantic, drawn to republican ideas and the memory of his soldier father, he lives in near-poverty among student radicals, and falls deeply in love at first sight with a young woman he sees in a public garden.",
+      "id": "marius-pontmercy",
+      "name": "Marius Pontmercy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Thenardiers' elder daughter, once pampered as a child and now grown up in poverty and squalor among her family's criminal schemes. Sharp, streetwise, and neglected, she carries a hopeless, secret love for the young student Marius.",
+      "id": "eponine",
+      "name": "Eponine",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The charismatic, austere young leader of a group of idealistic student revolutionaries in Paris. Devoted single-mindedly to the cause of republican liberty and the people, he is eloquent, fearless, and uncompromising, and he inspires his friends toward insurrection.",
+      "id": "enjolras",
+      "name": "Enjolras",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A cheeky, resourceful Paris street urchin who lives by his wits, homeless and unbowed. Quick-witted, generous to other lost children, and full of irreverent courage, he roams the city and drifts toward the excitement of the coming uprising.",
+      "id": "gavroche",
+      "name": "Gavroche",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "les-miserables"
+}

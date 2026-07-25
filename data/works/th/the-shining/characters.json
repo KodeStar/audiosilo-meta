@@ -1,0 +1,85 @@
+{
+  "characters": [
+    {
+      "description": "A recovering alcoholic and former prep-school English teacher who takes the job of winter caretaker at the isolated Overlook Hotel, hoping the quiet months will let him finish his writing and rebuild his life. He is a talented, ambitious man with a violent temper he can no longer excuse: he lost his teaching post after beating a student who vandalized his car, and once, drunk, he broke his small son's arm. He has stayed sober for months through sheer will, helped by his friend Al Shockley, but resentment and self-doubt gnaw at him. He loves his wife and son and is terrified of failing them, yet part of him chafes at the burden of family. The caretaker post is his last chance to prove he can hold everything together.",
+      "id": "jack-torrance",
+      "name": "Jack Torrance",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Jack's wife and Danny's mother, a watchful, self-reliant woman whose marriage has been strained near to breaking by Jack's drinking and temper. She grew up under a cruel, domineering mother and is determined that her own child will be safe and loved. She stayed with Jack after he broke Danny's arm, and she watches her husband constantly for signs of relapse, torn between hope that the fresh start at the Overlook will save them and fear of being trapped, snowbound, with a man she is no longer sure she can trust.",
+      "id": "wendy-torrance",
+      "name": "Wendy Torrance",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Torrances' five-year-old son, an unusually perceptive and gentle boy who possesses a powerful psychic gift. He can sometimes sense the thoughts and moods of the people around him and glimpse things that have happened or are about to happen. His visions reach him through Tony, a figure only he can see, who shows him frightening images he does not understand, including a word that appears in mirror writing. Bright and articulate beyond his years, Danny feels the tension between his parents keenly and tries to shield them from his fear, terrified that the family will come apart.",
+      "id": "danny-torrance",
+      "name": "Danny Torrance",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A figure that appears only to Danny, whom the boy thinks of as a kind of imaginary friend. Tony shows Danny visions of things distant in place or time, some reassuring and many alarming, and speaks to him in warnings the boy cannot always interpret. Tony began appearing during episodes of Danny's psychic gift and becomes his guide to the dangers gathering around the family, though Danny does not fully understand who or what Tony is.",
+      "id": "tony",
+      "name": "Tony",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Overlook Hotel's officious manager, a small, self-important man who interviews Jack for the caretaker position and makes clear that he opposed the hiring. He takes obvious pride in the resort's prestigious guest list and is defensive about its darker past, which he recounts only reluctantly, including the previous caretaker who killed his family during a winter alone at the hotel. Cold and disapproving, he treats Jack with barely concealed distaste.",
+      "id": "stuart-ullman",
+      "name": "Stuart Ullman",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A previous winter caretaker of the Overlook, whose story Jack is told when he is hired. Some years earlier Grady, isolated and unbalanced by the long snowbound months, killed his wife and two young daughters and then himself inside the hotel. His name and his crime hang over the Torrances' stay from the beginning, an example of what the empty place and its solitude can do to the man left alone to mind it.",
+      "id": "grady",
+      "name": "Grady",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Overlook Hotel's head cook, a warm, plain-spoken man from Florida who works the resort each summer and helps close it down for the winter. He shares Danny's psychic gift, which he calls 'the shining,' and recognizes at once that the boy has it more strongly than anyone he has met. Before he leaves for the season he quietly warns Danny that an old, empty hotel can hold echoes of terrible things, cautions him to stay out of certain rooms, and tells him that if he is ever in real danger he can call out with his mind, and Hallorann will hear him and come.",
+      "id": "dick-hallorann",
+      "name": "Dick Hallorann",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A grand, isolated resort hotel high in the Colorado mountains, cut off from the world by snow through the long winter. Gracious and storied on the surface, it has a violent history stretching back decades: suicides, gangland killings, and the caretaker who murdered his family within its walls. The hotel seems to retain and feed on the dreadful things that have happened inside it, and it exerts a growing, malevolent pull on the family left alone to mind it, drawn most of all to the psychic gift of the youngest of them.",
+      "id": "the-overlook-hotel",
+      "name": "The Overlook Hotel",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-shining"
+}

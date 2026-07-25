@@ -1,0 +1,67 @@
+{
+  "characters": [
+    {
+      "description": "A Harvard professor of religious symbology who wakes in a Florence hospital with a head wound and no memory of how he got to Italy or of the past two days. Disoriented and hunted almost at once, he must use his knowledge of art, history, and hidden meaning, especially the imagery of Dante's Inferno, to reconstruct what has happened and to unravel a threat he cannot remember agreeing to stop.",
+      "id": "robert-langdon",
+      "name": "Robert Langdon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young doctor at the hospital who shelters Langdon and helps him escape when gunfire erupts. Strikingly intelligent and calm under pressure, she becomes his companion and guide through Florence as they flee their pursuers and chase the clues, her own quick mind matching the danger they are thrown into.",
+      "id": "sienna-brooks",
+      "name": "Sienna Brooks",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A brilliant geneticist and biotechnology billionaire consumed by fear of overpopulation, which he regards as an existential threat to humanity. A fervent admirer of Dante, he leaves behind a trail of clues woven through the poet's vision of Hell. He dies at the very start of the story, but the scheme he set in motion drives the entire chase.",
+      "id": "bertrand-zobrist",
+      "name": "Bertrand Zobrist",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The director of the World Health Organization, a dedicated and formidable public-health leader racing to head off a global threat. She has been tracking Zobrist and his intentions, and her pursuit intersects with Langdon's, though the full shape of their prior involvement is part of what Langdon cannot remember.",
+      "id": "elizabeth-sinskey",
+      "name": "Elizabeth Sinskey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The head of a secretive private organization that offers wealthy clients elaborate services, discretion, and manufactured realities, no questions asked. Coldly professional and bound by his firm's code of confidentiality, he has done work for Zobrist and finds his organization drawn ever deeper into a crisis larger than any contract.",
+      "id": "the-provost",
+      "name": "The Provost",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A hardened field agent pursuing Langdon in the early chapters, relentless and dangerous. A professional operative working for shadowy employers, she stalks Langdon and Sienna through the streets of Florence as they try to stay ahead of her.",
+      "id": "vayentha",
+      "name": "Vayentha",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "inferno-dan-brown"
+}

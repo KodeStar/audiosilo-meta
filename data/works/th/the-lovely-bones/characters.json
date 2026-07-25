@@ -1,0 +1,103 @@
+{
+  "characters": [
+    {
+      "description": "A fourteen-year-old girl growing up in suburban Pennsylvania in the early 1970s, and the novel's narrator. She is raped and murdered by a neighbor near the start of the story and tells everything that follows from her own personal heaven, watching over the family and friends she left behind. Curious, observant, and still very much a teenager in her longings, she describes her killing plainly and then turns her attention to how her death ripples through the living. From above she can see the people she loves but cannot touch or warn them, and much of her ache is the ordinary future that was taken from her: a first real kiss, growing up, an ordinary life.",
+      "id": "susie-salmon",
+      "name": "Susie Salmon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A solitary, unremarkable neighbor of the Salmons who builds and repairs dollhouses for a living. Outwardly quiet and easy to overlook, he lures Susie into an underground hiding place he has dug in a nearby cornfield and murders her there. He is careful, methodical, and practiced at avoiding notice, keeping to himself in a tidy house and deflecting attention with mild, forgettable manners. To the neighborhood he is merely an odd bachelor; the reader knows from the outset what he is.",
+      "id": "george-harvey",
+      "name": "George Harvey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Susie's father, a gentle, devoted family man who is shattered by her disappearance and death. He grieves openly and refuses to let go, becoming convinced early on that the quiet neighbor George Harvey is responsible even when the police find nothing to act on. His need to know the truth and to protect his remaining children hardens into an obsession that strains his marriage and his health.",
+      "id": "jack-salmon",
+      "name": "Jack Salmon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Susie's mother, a woman who had set aside her own restless ambitions to raise a family and who once dreamed of a wider life. Susie's death opens a distance in her that had been there before the tragedy. Where her husband clings tighter to the family, Abigail withdraws, unable to bear the shape her grief and her marriage have taken.",
+      "id": "abigail-salmon",
+      "name": "Abigail Salmon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Susie's younger sister, close to her in age and fiercely intelligent. After the murder she has to grow up as the surviving daughter, carrying both her own grief and the pity and scrutiny of everyone around her. Composed and determined, she becomes the family member most willing to take action, and Susie watches her sister's life go on with a mix of love and longing.",
+      "id": "lindsey-salmon",
+      "name": "Lindsey Salmon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Susie's little brother, only four years old when she is killed and too young to fully understand where his sister has gone. He grows up in the shadow of a loss he can barely name, shaped by the grief that fills the house around him.",
+      "id": "buckley-salmon",
+      "name": "Buckley Salmon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A thoughtful boy at Susie's school, of Indian and English background, on whom Susie had a crush. He had given her what would have been her first kiss just before her death, and afterward he remains one of the people most quietly marked by her absence. Sensitive and a little apart from his classmates, he carries the memory of the girl he barely got to know.",
+      "id": "ray-singh",
+      "name": "Ray Singh",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A quiet, artistic outsider at Susie's school who is touched by Susie's spirit as it leaves the earth. Odd and solitary, drawn to poetry and to the unseen, Ruth becomes privately preoccupied with Susie and with the girls and women who have been harmed and forgotten. Of everyone left living, she is the one most attuned to the presence of the dead.",
+      "id": "ruth-connors",
+      "name": "Ruth Connors",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The police detective assigned to Susie's case, a widower who carries his own quiet sorrow. He works the investigation earnestly but is hemmed in by a lack of evidence, unable to move against the man Jack Salmon suspects. His involvement with the grieving family draws him closer to them than a detective should be.",
+      "id": "len-fenerman",
+      "name": "Len Fenerman",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Abigail's mother, a glamorous, hard-drinking, plain-spoken woman who arrives to help hold the household together. Unafraid of the family's grief in a way the others cannot manage, she brings a brash warmth and a refusal to tiptoe around the loss, and she becomes an unexpected steadying force for the surviving children.",
+      "id": "grandma-lynn",
+      "name": "Grandma Lynn",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-lovely-bones"
+}

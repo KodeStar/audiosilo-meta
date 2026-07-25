@@ -1,0 +1,110 @@
+{
+  "characters": [
+    {
+      "description": "Captain of the Night Watch of Ankh-Morpork, a cynical, hard-drinking man who has watched his once-proud force dwindle into a joke that patrols only when it is safe to do so. Beneath the bitterness he keeps a stubborn, unfashionable belief in the law.",
+      "id": "sam-vimes",
+      "name": "Samuel Vimes",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young man well over six feet tall, raised from infancy by dwarfs in the mountains and sent to Ankh-Morpork to make his way in the world. Honest to the point of embarrassment and utterly literal about the law, he joins the Night Watch and sets about enforcing the city's long-ignored ordinances exactly as written.",
+      "id": "carrot-ironfoundersson",
+      "name": "Carrot Ironfoundersson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Night Watch's stout, middle-aged sergeant, a cautious man of comfortable habits who has survived a long career mainly by avoiding trouble wherever possible.",
+      "id": "fred-colon",
+      "name": "Fred Colon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Watch's disreputable corporal, a small, grubby, light-fingered man of uncertain ancestry who treats his position chiefly as an opportunity for minor larceny.",
+      "id": "nobby-nobbs",
+      "name": "Nobby Nobbs",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The Patrician",
+        "Havelock Vetinari"
+      ],
+      "description": "The Patrician of Ankh-Morpork, the cold, precise, and formidably intelligent man who rules the city. He governs by understanding exactly how everyone's self-interest can be balanced against everyone else's.",
+      "id": "lord-vetinari",
+      "name": "Lord Vetinari",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lady Sybil"
+      ],
+      "description": "A large, hearty, and immensely wealthy noblewoman, the last of an old Ankh-Morpork family and the city's foremost breeder of swamp dragons. Brisk and kind, she keeps a yard full of the temperamental, frequently exploding little creatures.",
+      "id": "sybil-ramkin",
+      "name": "Lady Sybil Ramkin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The hooded, unnamed leader of a secret brotherhood of small, resentful men. Manipulative and coldly ambitious, he flatters and goads his gullible followers into working a stolen magic that will summon a dragon, meaning to use the ensuing terror to place a puppet king on the throne and rule through him.",
+      "id": "the-supreme-grand-master",
+      "name": "The Supreme Grand Master",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A great fire-breathing dragon called into Ankh-Morpork by the brotherhood's stolen magic. Far more than its summoners bargained for, it is proud, intelligent, and soon begins terrorizing the city on its own terms.",
+      "id": "the-dragon",
+      "name": "The Dragon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The librarian of Unseen University, a wizard long ago transformed into an orangutan and perfectly content to remain one. Fiercely protective of his books, he takes a keen interest when a dangerous volume is stolen from his library.",
+      "id": "the-librarian",
+      "name": "The Librarian",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The runt of one of Lady Sybil's swamp dragon litters, a small, sickly creature with a feeble flame and an indiscriminate appetite for anything it can swallow. She entrusts him to the Watch, and Vimes reluctantly takes him in.",
+      "id": "errol",
+      "name": "Errol",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "guards-guards"
+}

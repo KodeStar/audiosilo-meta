@@ -1,0 +1,85 @@
+{
+  "characters": [
+    {
+      "description": "A young FBI trainee at the academy in Quantico, ambitious, sharp, and driven to prove herself in a world dominated by men. She came from a poor background in rural West Virginia and was orphaned young after her father, a town night marshal, was killed in the line of duty, a loss that shaped her determination to protect others. Recruited by the head of the Behavioral Science unit for a delicate assignment, she is asked to interview a notorious imprisoned killer, testing her nerve, her intelligence, and her composure far beyond her training. Courageous and self-possessed but keenly aware of how much she has to prove, she throws herself into the case.",
+      "id": "clarice-starling",
+      "name": "Clarice Starling",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The head of the FBI's Behavioral Science unit, a seasoned, calculating investigator who selects the trainee Clarice Starling for a sensitive errand connected to a serial-murder case. He is a mentor and a manipulator at once, using Starling as an instrument while genuinely recognizing her ability. Carrying heavy professional and personal burdens, he runs the hunt for an active killer under intense public and political pressure.",
+      "id": "jack-crawford",
+      "name": "Jack Crawford",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The vain, self-important director of the secure hospital that holds Hannibal Lecter. Resentful that his celebrated patient will talk to visitors but not to him, and hungry for recognition and advancement, he interferes in the arrangements around Lecter and the investigation, repeatedly putting his own ambitions ahead of everyone else's safety.",
+      "id": "frederick-chilton",
+      "name": "Frederick Chilton",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A brilliant forensic psychiatrist and cannibalistic murderer, kept in a maximum-security cell after his capture years before. Extraordinarily intelligent, perceptive, and manipulative, he agrees to trade insight into an active killer for personal information about Clarice Starling, turning each interview into a psychological duel. Refined and courteous on the surface, he reads people effortlessly and bends every conversation toward his own ends, making him as dangerous behind bars as any killer at large.",
+      "id": "hannibal-lecter",
+      "name": "Hannibal Lecter",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The large, soft-spoken head orderly on the ward where Hannibal Lecter is confined. Calm, courteous, and unusually shrewd, he handles the hospital's most dangerous patient with careful, unfailing procedure and a measure of mutual respect. He treats Starling decently and understands, better than his superiors, exactly how careful one must be around Lecter.",
+      "id": "barney",
+      "name": "Barney",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The press nickname for an unidentified serial killer the FBI is hunting, a murderer who abducts young women, holds them captive for several days, and then kills them and removes portions of their skin. His pattern terrifies the country, and cracking his identity and method is the case at the heart of the investigation. At the outset he is only a shadow defined by his crimes, the reason Starling is sent to seek insight from an imprisoned expert on such minds.",
+      "id": "buffalo-bill",
+      "name": "Buffalo Bill",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A young woman abducted by the killer known as Buffalo Bill and held prisoner. She is the daughter of a United States senator, which turns her disappearance into a high-profile national crisis and puts enormous pressure on the investigation to find her alive before she meets the fate of the killer's earlier victims. Resourceful and frightened, she fights to survive her captivity.",
+      "id": "catherine-martin",
+      "name": "Catherine Martin",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A United States senator and the mother of the abducted Catherine. Powerful and desperate, she uses her political influence to force action on her daughter's case and makes a public appeal to the kidnapper. Her involvement raises the stakes of the manhunt and complicates the maneuvering around the imprisoned Lecter, whose supposed help she is willing to bargain for.",
+      "id": "ruth-martin",
+      "name": "Ruth Martin",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-silence-of-the-lambs"
+}

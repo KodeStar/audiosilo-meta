@@ -1,0 +1,76 @@
+{
+  "characters": [
+    {
+      "description": "A young German girl sent to live with foster parents in a small town near Munich at the start of the Second World War, after her brother's death and the loss of her mother. Grieving and unable to read at first, she steals her first book at her brother's graveside and grows into a passionate reader, finding refuge from a frightening world in words and stories.",
+      "id": "liesel-meminger",
+      "name": "Liesel Meminger",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Liesel's foster father, a gentle, quiet housepainter who plays the accordion. Patient and deeply kind, he wins the frightened girl's trust, sits with her through her nightmares, and teaches her to read in the small hours of the night.",
+      "id": "hans-hubermann",
+      "name": "Hans Hubermann",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liesel's foster mother, a stout, sharp-tongued woman who takes in washing to help the household scrape by. Gruff and quick to scold, she hides a fierce loyalty and love for her family beneath a coarse and blustering manner.",
+      "id": "rosa-hubermann",
+      "name": "Rosa Hubermann",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The lemon-haired boy next door who becomes Liesel's best friend and constant companion. Bold, loyal, and mischievous, he idolizes the athlete Jesse Owens and is forever hoping, in vain, that Liesel will give him a kiss.",
+      "id": "rudy-steiner",
+      "name": "Rudy Steiner",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young Jewish man whom the Hubermanns shelter from the Nazis, hiding him in their home at enormous risk. A fighter by temperament and haunted by what is happening to his people, he forms a deep bond with Liesel through their shared love of words and the stories he writes for her.",
+      "id": "max-vandenburg",
+      "name": "Max Vandenburg",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The narrator of the story, a weary, watchful personification of death who gathers up the souls of the dying throughout the war. Curious about human nature and unexpectedly compassionate, Death is haunted and fascinated by the girl whose story it tells.",
+      "id": "death",
+      "name": "Death",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The grieving, withdrawn wife of the town's mayor, who lost a son years earlier. She quietly notices Liesel's hunger for books and opens her personal library to the girl, offering a wordless kindness across the gulf between their stations.",
+      "id": "ilsa-hermann",
+      "name": "Ilsa Hermann",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-book-thief"
+}

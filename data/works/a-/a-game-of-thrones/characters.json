@@ -1,0 +1,151 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Ned",
+        "Ned Stark",
+        "Lord Eddard"
+      ],
+      "description": "Lord of Winterfell and Warden of the North, ruler of the vast northern half of the Seven Kingdoms. Stern, plainspoken, and devoted to duty, family, and the old gods of his homeland. Years earlier he helped his friend Robert Baratheon win the throne in rebellion, and he still keeps to the harder, more honest customs of the North. Married to Catelyn Tully, he is father to five trueborn children and guardian of a baseborn son. He prizes honor above ambition and is deeply uneasy with the flattery and scheming of the southern court.",
+      "id": "eddard-stark",
+      "name": "Eddard Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Catelyn Tully",
+        "Cat"
+      ],
+      "description": "Lady of Winterfell, born to House Tully of Riverrun in the south and wed to Eddard Stark. A strong-willed, capable, and protective mother who keeps the worship of the Seven rather than her husband's old gods. Warm toward her own children but cold toward her husband's bastard, whose presence she has never forgiven. Politically shrewd, she is fiercely loyal to her family and its interests.",
+      "id": "catelyn-stark",
+      "name": "Catelyn Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The eldest trueborn son of Eddard and Catelyn Stark and heir to Winterfell. A dutiful, well-trained youth in his mid-teens who carries himself with the seriousness of a boy raised to one day rule the North.",
+      "id": "robb-stark",
+      "name": "Robb Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Eddard Stark's bastard son, raised at Winterfell beside the trueborn children but always set a little apart by his birth. Close in age and friendship to Robb, quiet and skilled with a blade, he knows a bastard can inherit nothing. He is drawn toward the Night's Watch, the sworn brotherhood that mans the great Wall guarding the realm's far north.",
+      "id": "jon-snow",
+      "name": "Jon Snow",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The elder Stark daughter, a graceful and courteous girl devoted to songs, courtesy, and the ideals of southern chivalry. She dreams of marrying a gallant highborn prince and becoming a great lady of the court.",
+      "id": "sansa-stark",
+      "name": "Sansa Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The younger Stark daughter, a willful, restless tomboy who prefers riding, adventure, and swordplay to needlework and ladylike manners, and who is often at odds with her prim elder sister.",
+      "id": "arya-stark",
+      "name": "Arya Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Brandon Stark"
+      ],
+      "description": "The second Stark son, a boy of seven who loves to scale the walls and towers of Winterfell and dreams of one day growing up to be a knight.",
+      "id": "bran-stark",
+      "name": "Bran Stark",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "King Robert"
+      ],
+      "description": "King of the Seven Kingdoms, who seized the crown in a rebellion years before with Eddard Stark at his side. Once a mighty warrior and Ned's closest friend, he has grown fat, restless, and weary of the labor of ruling, far fonder of feasting, hunting, and drink than of governance. He is wed, unhappily, to Cersei of House Lannister.",
+      "id": "robert-baratheon",
+      "name": "Robert Baratheon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Queen Cersei"
+      ],
+      "description": "Queen to King Robert and a proud, beautiful daughter of the immensely wealthy House Lannister of Casterly Rock. Ambitious and watchful, she guards her family's power and her own standing at court with cold intelligence.",
+      "id": "cersei-lannister",
+      "name": "Cersei Lannister",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Kingslayer",
+        "Ser Jaime"
+      ],
+      "description": "Cersei's dazzling twin brother, a gifted and handsome knight of the Kingsguard. He is known as the Kingslayer for having slain the previous king, the very man he had sworn to protect, during the rebellion that put Robert on the throne, a deed that stains his golden reputation.",
+      "id": "jaime-lannister",
+      "name": "Jaime Lannister",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Imp",
+        "Halfman"
+      ],
+      "description": "The youngest of the Lannister siblings, a dwarf mocked as the Imp and little loved by his own family. Denied a warrior's stature, he arms himself instead with a sharp tongue, wide reading, and a keen understanding of people, and takes his pleasures in wine and clever talk. He is the cleverest Lannister and the least respected.",
+      "id": "tyrion-lannister",
+      "name": "Tyrion Lannister",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Dany",
+        "Daenerys Stormborn"
+      ],
+      "description": "A young princess of the fallen House Targaryen, the dynasty that once ruled the Seven Kingdoms astride dragons until Robert's rebellion cast it down. Exiled across the narrow sea since infancy, she has lived in poverty and fear under her domineering elder brother Viserys, who clings to the dream of reclaiming the throne. Timid at the outset, she is sold in marriage to a powerful warlord of the nomadic Dothraki to buy her brother an army.",
+      "id": "daenerys-targaryen",
+      "name": "Daenerys Targaryen",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "a-game-of-thrones"
+}

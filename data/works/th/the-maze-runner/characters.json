@@ -1,0 +1,84 @@
+{
+  "characters": [
+    {
+      "description": "The protagonist, a teenage boy who arrives in a rising metal box with no memory except his own name. Thrust into the Glade, a walled compound at the center of a vast Maze and inhabited by boys who all arrived the same way, he is bewildered but stubbornly curious. Drawn to the mystery of the Maze and desperate to understand where he is and why, he quickly makes both friends and enemies.",
+      "id": "thomas",
+      "name": "Thomas",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The leader of the Gladers, one of the first boys to arrive and the one who keeps order in the Glade. Firm and short-tempered with newcomers, he enforces the community's hard-won rules and guards its fragile stability.",
+      "id": "alby",
+      "name": "Alby",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A calm, level-headed older Glader who serves as second-in-command and Alby's right hand. Kinder to Thomas than most beneath a no-nonsense manner, he helps hold the community together and keep it running.",
+      "id": "newt",
+      "name": "Newt",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A talkative, good-natured younger boy who becomes Thomas's first real friend in the Glade. Insecure but loyal, he attaches himself to Thomas and longs, like all of them, to go home.",
+      "id": "chuck",
+      "name": "Chuck",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tough, belligerent Glader who leads the builders and takes an immediate dislike to Thomas. Suspicious and confrontational, he treats the newcomer as a threat and clashes with him openly.",
+      "id": "gally",
+      "name": "Gally",
+      "reveal": {
+        "chapter": 4
+      }
+    },
+    {
+      "description": "The Glade's cook, a friendly, hardworking boy who keeps the community fed. Easygoing and steady, he is one of the familiar faces of daily life in the Glade.",
+      "id": "frypan",
+      "name": "Frypan",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Keeper of the Runners, the fittest and most experienced of the boys who venture into the Maze each day to map it. Confident, blunt, and highly capable, he knows the Maze better than anyone and becomes a crucial ally to Thomas.",
+      "id": "minho",
+      "name": "Minho",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The first and only girl ever delivered to the Glade, arriving in the box the day after Thomas, seemingly unconscious, and carrying a note declaring she is the last newcomer. Her arrival unsettles the Gladers, and she and Thomas sense an inexplicable, unremembered connection between them.",
+      "id": "teresa",
+      "name": "Teresa",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-maze-runner"
+}

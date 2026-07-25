@@ -1,0 +1,128 @@
+{
+  "characters": [
+    {
+      "description": "Captain of the City Watch, hard-bitten and grudgingly staying sober, on the verge of retiring from the force to marry the noblewoman Lady Sybil Ramkin. A natural policeman who distrusts wealth and power even as he prepares to join them.",
+      "id": "sam-vimes",
+      "name": "Samuel Vimes",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The Watch's most popular member, a huge, good-natured young man raised by dwarfs who still treats every citizen as a neighbor and every law as sacred. His plain sincerity gives him a strange authority over people.",
+      "id": "carrot-ironfoundersson",
+      "name": "Carrot Ironfoundersson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Watch's stout, cautious sergeant, a comfortable creature of habit who prefers a quiet patrol and a quiet life.",
+      "id": "fred-colon",
+      "name": "Fred Colon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Watch's grubby, disreputable corporal, a small scrounger of uncertain ancestry whose instincts run to theft and self-preservation.",
+      "id": "nobby-nobbs",
+      "name": "Nobby Nobbs",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The Patrician",
+        "Havelock Vetinari"
+      ],
+      "description": "The cold, brilliant Patrician of Ankh-Morpork, who rules by balancing every faction against the others. He has no love for the Watch but understands exactly how useful, and how dangerous, it could become.",
+      "id": "lord-vetinari",
+      "name": "Lord Vetinari",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lady Sybil"
+      ],
+      "description": "Vimes's fiancee, a large-hearted, immensely wealthy noblewoman who breeds swamp dragons and is steadily drawing the reluctant captain into a comfortable, respectable life.",
+      "id": "sybil-ramkin",
+      "name": "Lady Sybil Ramkin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the Watch's new recruits, taken on as the force is broadened to reflect the city's many peoples. A capable, watchful young woman who keeps the details of her background firmly to herself.",
+      "id": "angua",
+      "name": "Angua",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A troll newly recruited to the Watch, previously employed as a nightclub bouncer. Enormously strong and slow-witted in the warmth, he thinks far more clearly when the air turns cold.",
+      "id": "detritus",
+      "name": "Detritus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf recruited to the Watch alongside the troll Detritus, at first wary of his people's traditional enemy. Steady and practical, he brings a dwarf's eye for stone and detail to the work.",
+      "id": "cuddy",
+      "name": "Cuddy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young, impoverished member of the Assassins' Guild, obsessed with bloodlines and the vanished monarchy of Ankh-Morpork. Convinced the city has been diminished by the loss of its kings, he sets a dangerous plan in motion.",
+      "id": "edward-death",
+      "name": "Edward d'Eath",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The head of the Assassins' Guild, master of an institution that teaches killing as a refined profession. Formidable and self-controlled, he takes a close interest when a unique item goes missing from the Guild's museum.",
+      "id": "dr-cruces",
+      "name": "Dr Cruces",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A unique weapon held in the Assassins' Guild museum, the only one of its kind on the Disc, a device that kills at a distance with terrible ease. It seems to exert a will and a whispering influence over anyone who carries it.",
+      "id": "the-gonne",
+      "name": "The Gonne",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "men-at-arms"
+}

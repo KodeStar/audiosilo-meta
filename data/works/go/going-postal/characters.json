@@ -1,0 +1,107 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Albert Spangler"
+      ],
+      "description": "A charming, quick-witted confidence trickster and forger who has spent his life swindling people under false names. Caught at last and condemned to hang, he is given an unexpected second chance by Lord Vetinari: take charge of Ankh-Morpork's derelict Post Office, or die. Talented at persuasion and improvisation, he must now try to make an honest institution work, watched constantly to keep him from running.",
+      "id": "moist-von-lipwig",
+      "name": "Moist von Lipwig",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "The Patrician"
+      ],
+      "description": "The calm, calculating ruler of Ankh-Morpork, who offers the condemned Moist a stark choice and then sets him to reviving the Post Office. He watches the experiment closely, expecting Moist's talents to be more useful alive than hanged.",
+      "id": "lord-vetinari",
+      "name": "Lord Vetinari",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Miss Dearheart",
+        "Spike"
+      ],
+      "description": "A prickly, chain-smoking young woman who runs a trust dedicated to buying the freedom of golems. Guarded, sharp-tongued, and entirely unimpressed by Moist's charm, she carries a personal grievance against the powerful company that dominates long-distance communication.",
+      "id": "adora-belle-dearheart",
+      "name": "Adora Belle Dearheart",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A golem, a tireless clay man of enormous strength, assigned by Lord Vetinari to be Moist's parole officer and bodyguard. Patient, literal, and impossible to outrun or bribe, he ensures Moist stays at his new job.",
+      "id": "mr-pump",
+      "name": "Mr. Pump",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Junior Postman Groat"
+      ],
+      "description": "The elderly, superstitious clerk who has kept the near-dead Post Office nominally staffed for decades, never promoted above 'Junior Postman.' Devoted to old regulations and folk remedies, he becomes Moist's loyal, eccentric right-hand man.",
+      "id": "tolliver-groat",
+      "name": "Tolliver Groat",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A nervous young man raised by peas, who works at the Post Office and has an intense, obsessive enthusiasm for collecting and cataloguing, first pins and later other small objects. Harmless and easily upset, he proves unexpectedly important to Moist's plans.",
+      "id": "stanley",
+      "name": "Stanley Howler",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The flamboyant, gold-toothed chairman of the company that controls the Grand Trunk, the network of signalling towers that carries messages across the continent. Charismatic, ruthless, and a master of grand talk that hides plain theft, he runs the Trunk into the ground for profit and sees the revived Post Office as a threat to be crushed.",
+      "id": "reacher-gilt",
+      "name": "Reacher Gilt",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The overworked, anxious engineer responsible for keeping the Grand Trunk's signalling towers running despite deliberate underinvestment. He knows the system is failing and is caught between his conscience and his employers.",
+      "id": "mr-pony",
+      "name": "Mr. Pony",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Lord Vetinari's quiet, meticulous personal clerk, who manages the Patrician's appointments and paperwork and is a discreet, ever-present witness to his employer's dealings.",
+      "id": "drumknott",
+      "name": "Rufus Drumknott",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "going-postal"
+}

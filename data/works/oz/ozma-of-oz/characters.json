@@ -1,0 +1,112 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Dorothy Gale"
+      ],
+      "description": "The practical, kind-hearted Kansas girl who once traveled to Oz, now on a sea voyage with her Uncle Henry when a storm sweeps her overboard. Washed up alone in a strange fairy country, she keeps her courage and good sense amid marvels and dangers, making friends easily and facing threats with steady nerve. Her earlier adventures have given her a fondness for magical lands, and she soon finds herself caught up in a new quest.",
+      "id": "dorothy",
+      "name": "Dorothy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A yellow hen who is swept ashore in the same storm as Dorothy and, in this fairy country, turns out to be able to talk. Tart, opinionated, and shrewd, she is a practical companion who grumbles and argues but proves clever and brave when it matters. She becomes Dorothy's constant friend through the adventure.",
+      "id": "billina",
+      "name": "Billina",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A round copper mechanical man found standing motionless in a rocky place, who runs by clockwork and must be wound up separately for thinking, speaking, and moving. Not truly alive but faithful and dependable when wound, he serves as a guardian and helper to Dorothy, though he tends to run down at inconvenient moments and needs rewinding.",
+      "id": "tik-tok",
+      "name": "Tik-Tok",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The vain and imperious princess who rules the land of Ev in the absence of its royal family. She owns a cabinet of thirty beautiful interchangeable heads, which she swaps to suit her mood, and she is quick to anger and cruelty. When she covets Dorothy's head for her collection, she becomes a dangerous threat to the young traveler.",
+      "id": "princess-langwidere",
+      "name": "Princess Langwidere",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Princess Ozma"
+      ],
+      "description": "The young and gracious girl ruler of the land of Oz, wise and kind beyond her years. Learning of the plight of the enslaved royal family of neighboring Ev, she leads an expedition across the deadly desert with her army and her closest friends to attempt a rescue. Gentle but resolute, she guides the quest with fairness and courage.",
+      "id": "ozma",
+      "name": "Ozma",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The clever, good-natured man made of straw, proud of the brains the Wizard once gave him, and one of Ozma's most trusted companions. He joins her rescue party across the desert, ready to puzzle out problems and stand by his friends in danger.",
+      "id": "scarecrow",
+      "name": "The Scarecrow",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The kind and sentimental man made of tin, who treasures his heart and keeps himself polished bright. A loyal friend of Ozma and the Scarecrow, he comes along on the expedition to rescue the royal family of Ev, gentle in feeling but steadfast in a crisis.",
+      "id": "tin-woodman",
+      "name": "The Tin Woodman",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The great Lion who once feared his own timidity but has become a brave and noble friend to Dorothy and the others. He helps draw Ozma's royal chariot on the journey and lends his strength and courage to the rescue, still quick to admit his fears even as he faces them.",
+      "id": "cowardly-lion",
+      "name": "The Cowardly Lion",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A huge tiger, companion to the Cowardly Lion, who complains constantly of a ravenous appetite and longs to eat a fat baby, yet whose tender conscience will never let him actually harm anything. Gentle beneath his fearsome talk, he too helps pull Ozma's chariot and guard her company.",
+      "id": "hungry-tiger",
+      "name": "The Hungry Tiger",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Roquat"
+      ],
+      "description": "The rich and crafty king of the underground Nomes, ruler of a vast mountain kingdom of caverns and treasure. He holds the royal family of Ev captive, having transformed them by magic into ornaments hidden among his countless possessions. Sly and treacherous, he sets cruel bargains and traps for those who come to challenge him.",
+      "id": "nome-king",
+      "name": "The Nome King",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "ozma-of-oz"
+}
