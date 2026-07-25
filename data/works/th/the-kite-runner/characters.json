@@ -1,0 +1,103 @@
+{
+  "characters": [
+    {
+      "description": "The narrator, a boy from a prosperous family in Kabul who grows up in a large house with his widowed father and their two servants. Sensitive, imaginative, and drawn to reading and writing stories, he aches for the approval of his father, who seems to value physical courage and confidence Amir feels he lacks. His closest companion is Hassan, the son of a household servant, who is fiercely loyal to him. Amir loves Hassan but is also jealous of him and ashamed of his own timidity, a tangle of feeling that shapes a childhood he narrates as an adult looking back on a defining wrong.",
+      "id": "amir",
+      "name": "Amir",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The son of the family's servant Ali, a Hazara boy born with a cleft lip who grows up alongside Amir and serves the household. Devoted, honest, and physically brave, he cannot read but has a quick, generous mind and an unshakable loyalty to Amir, whom he treats as his dearest friend. He is a gifted kite runner, able to predict where a cut kite will fall. As a Hazara, an ethnic and religious minority, he and his father occupy a lower place in Kabul society, and Hassan endures slights and cruelty with a steadiness Amir both admires and fails to match.",
+      "id": "hassan",
+      "name": "Hassan",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Amir's father, a wealthy and imposing Kabul businessman admired for his strength, generosity, and force of personality. He built his fortune himself and funded good works, including an orphanage, and holds a firm private moral code that does not always match convention. Physically commanding and socially confident, he is baffled by his bookish son and wishes Amir were tougher, which leaves the boy longing for a closeness his father rarely offers. Widowed when Amir's mother died in childbirth, Baba is the towering figure against whom Amir measures himself.",
+      "id": "baba",
+      "name": "Baba",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hassan's father and a longtime servant in Baba's household, a Hazara man who grew up beside Baba. A childhood illness left him with a partially paralyzed face and a withered, dragging leg, which makes him a target for neighborhood taunts, yet he carries himself with quiet dignity and deep faith. Gentle and dutiful, he raises Hassan alone and is treated by Baba more as an old fixture of the family than as a hired man, though the social gulf between servant and master remains.",
+      "id": "ali",
+      "name": "Ali",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Baba's closest friend and business partner, a warm, cultured man who is a steady presence in Amir's childhood. Where Baba is stern and hard to please, Rahim Khan is encouraging and attentive, taking a genuine interest in Amir's writing and giving the boy the approval he craves. He understands both father and son and often serves as a bridge between them. His kindness and quiet perceptiveness make him one of the few adults Amir can confide in.",
+      "id": "rahim-khan",
+      "name": "Rahim Khan",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An older boy from the neighborhood, the son of an Afghan father and a German mother, notorious for his cruelty and his brass knuckles. A bully who terrorizes younger children, he holds vicious ideas about ethnic purity and openly despises Hazaras, singling out Hassan for contempt. Charming to adults and menacing to those beneath him, he combines a violent temper with a chilling, unbothered confidence, and he nurses grudges against both Amir and Hassan after Hassan once faced him down.",
+      "id": "assef",
+      "name": "Assef",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A young Afghan woman Amir meets among the immigrant community in California, the daughter of a proud former general. Intelligent, warm, and forthright, she hopes to become a teacher and is candid with Amir about a past that, by the community's harsh standards, has marked her reputation. Amir is drawn to her honesty and grace, and their courtship unfolds under the watchful eyes of their families and the customs both still observe far from home.",
+      "id": "soraya",
+      "name": "Soraya Taheri",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Soraya's father, a former general of the Afghan army now living in California among fellow exiles. Proud and traditional, he clings to the dignity of his old rank and refuses ordinary work while he waits for a return to Afghanistan that he believes is coming. He guards his family's honor closely and observes the customs of courtship strictly, making him a formality Amir must navigate to win Soraya.",
+      "id": "general-taheri",
+      "name": "General Taheri",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hassan's young son, a quiet, watchful boy who has inherited his father's skill with a slingshot. Orphaned and left alone in a Kabul devastated by war and Taliban rule, he becomes the focus of a debt Amir is called to repay. Reserved and easily frightened, he carries the marks of loss and hardship far beyond his years.",
+      "id": "sohrab",
+      "name": "Sohrab",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Afghan driver who guides Amir back into Taliban-controlled Afghanistan. A hardened war veteran who has lost family and fingers to the fighting, he is at first scornful of Amir as a soft exile who abandoned the country, but he warms to him as Amir's true purpose becomes clear, becoming a wary ally on a dangerous journey.",
+      "id": "farid",
+      "name": "Farid",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-kite-runner"
+}
