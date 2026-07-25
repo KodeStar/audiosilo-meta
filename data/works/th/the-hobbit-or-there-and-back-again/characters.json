@@ -1,0 +1,110 @@
+{
+  "characters": [
+    {
+      "description": "A comfortable, respectable hobbit from Bag End who wants nothing more than a quiet life with good food and no adventures. His peace is broken when the wizard Gandalf and a company of thirteen dwarves arrive and enlist him, against his instincts, as their burglar for a journey to reclaim a treasure guarded by a dragon far to the east. Small, unwarlike, and fond of home, he is chosen partly for a boldness even he does not yet believe he has. He sets out reluctant and homesick, unsure why he agreed to go.",
+      "id": "bilbo-baggins",
+      "name": "Bilbo Baggins",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A wandering wizard, known for his fireworks and for stirring quiet folk into adventures. He arranges the whole expedition, selecting Bilbo as the company's burglar and vouching for him to the doubtful dwarves. Wise, sharp-tongued, and secretive about his purposes, he guides and rescues the travellers through their early dangers but comes and goes on business of his own, leaving them to rely on themselves for stretches of the road.",
+      "id": "gandalf",
+      "name": "Gandalf",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Thorin",
+        "Oakenshield"
+      ],
+      "description": "The proud leader of the company of dwarves and heir to the kings who once ruled beneath the Lonely Mountain before the dragon drove his people out and seized their wealth. He means to reclaim that mountain, its halls, and its hoard. Dignified and conscious of his lineage, he can be pompous and stubborn, but he carries genuine authority and a deep sense of the wrong done to his family. The quest is, above all, his.",
+      "id": "thorin-oakenshield",
+      "name": "Thorin Oakenshield",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A great fire-breathing dragon who long ago descended on the dwarf kingdom under the Lonely Mountain, destroyed the nearby town of Dale, drove out or killed its people, and took the vast treasure for himself. He has slept upon that hoard ever since, and reclaiming the mountain means dealing with him. Cunning, greedy, and vain, he knows every piece of gold he lies on and is the central obstacle standing between the dwarves and their inheritance.",
+      "id": "smaug",
+      "name": "Smaug",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of the older dwarves of the company, mild-mannered and observant, who often serves as its lookout. Of all the dwarves he is the friendliest toward Bilbo and the readiest to think well of him, and over the journey the two become genuine companions.",
+      "id": "balin",
+      "name": "Balin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The wise and kindly master of Rivendell, the Last Homely House, a refuge of elves in a valley near the edge of the wild. He gives the travellers rest and food and, reading the moon-letters hidden on their map, reveals instructions they will need to open the secret door in the mountain. Learned in old lore, he also identifies the ancient blades the company recovered on the road.",
+      "id": "elrond",
+      "name": "Elrond",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A slimy, secretive creature who lives alone on an island in a cold underground lake beneath the Misty Mountains, far from sunlight. When Bilbo, lost and separated from the company, stumbles into his domain, Gollum challenges him to a contest of riddles with Bilbo's life as the stake. He treasures a magic ring above all else, and its unexpected loss will turn the game desperate.",
+      "id": "gollum",
+      "name": "Gollum",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A huge, gruff man who lives alone with his animals at the edge of the wild and can change his shape into that of a great bear. He keeps to himself and trusts strangers slowly, but he takes in the weary travellers, feeds and shelters them, and sends them on toward the forest with supplies and warnings. He has no love for the goblins that infest the mountains.",
+      "id": "beorn",
+      "name": "Beorn",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "King of the Wood-elves"
+      ],
+      "description": "The ruler of the Wood-elves of Mirkwood, who dwell in caverns deep within the forest. Suspicious of the trespassing dwarves and mistrustful of their purpose, he has them seized and held prisoner in his underground halls when they will not explain their errand. He is fond of treasure and wine, and his people are wary and secretive after long years guarding their darkening woods.",
+      "id": "the-elvenking",
+      "name": "The Elvenking",
+      "reveal": {
+        "chapter": 8
+      }
+    },
+    {
+      "aliases": [
+        "Bard the Bowman"
+      ],
+      "description": "A grim, plain-spoken archer and captain among the men of Lake-town, descended from the old lords of Dale that the dragon destroyed. Steady and clear-headed while others panic, he stands his ground when danger comes to the town on the lake. He carries a black arrow handed down in his family and a stern sense of duty to his people.",
+      "id": "bard",
+      "name": "Bard",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "the-hobbit-or-there-and-back-again"
+}
