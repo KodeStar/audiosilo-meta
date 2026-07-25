@@ -1,0 +1,58 @@
+{
+  "characters": [
+    {
+      "description": "The vampire who narrates this book, telling his own life story in his own voice after rising from decades of dormancy into the modern age, where he reinvents himself as a flamboyant rock star and sets out to reveal the secret history of his kind. Bold, defiant, sensual, and hungry for life and attention, he recounts his origins as a rebellious young nobleman in eighteenth-century France and his transformation into a vampire. Where the earlier book's narrator was mournful, Lestat is fierce and unrepentant, determined to be seen and to make his own meaning out of immortality.",
+      "id": "lestat",
+      "name": "Lestat de Lioncourt",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Lestat's mother, a proud, remote noblewoman trapped in a crumbling provincial estate and a disappointing marriage, gravely ill and closer to her restless son than to anyone else. Fiercely intelligent and hungry for a freedom her life has never allowed, she shares a deep, unusual bond with Lestat, and her fate becomes tightly bound to his as his own story turns toward the supernatural.",
+      "id": "gabrielle",
+      "name": "Gabrielle",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lestat's closest friend in his human youth, a gifted, temperamental violinist from a merchant family who runs off with him to Paris to seek a life in the theater. Passionate, brilliant, and prone to despair, Nicolas shares Lestat's rebellious hunger for experience, and their intense friendship is one of the central relationships of Lestat's early life.",
+      "id": "nicolas",
+      "name": "Nicolas",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient, gaunt, and monstrous vampire who abducts the young Lestat in Paris and forces the dark gift upon him, transforming him into a vampire. Powerful, secretive, and driven by his own mysterious ends, Magnus sets Lestat on his immortal path before withdrawing from it, leaving his new fledgling suddenly alone with his changed nature and a great inheritance.",
+      "id": "magnus",
+      "name": "Magnus",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An ancient vampire with the deceptive appearance of a youth, who leads an old coven of vampires clinging to rigid, superstitious beliefs about what their kind may and may not do. Centuries old, powerful, and unsettlingly composed, he confronts the newly made Lestat, whose modern defiance and refusal to obey the coven's laws bring the two into direct conflict.",
+      "id": "armand",
+      "name": "Armand",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-vampire-lestat"
+}

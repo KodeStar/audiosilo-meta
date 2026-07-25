@@ -1,0 +1,98 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Pooh",
+        "Pooh Bear"
+      ],
+      "description": "A gentle, good-natured teddy bear who lives in the Hundred Acre Wood and describes himself as a Bear of Very Little Brain. Devoted to honey and to his friends, he muddles through the Forest's small adventures with hums, kindly intentions, and an accidental sort of wisdom, and he is closest of all to the boy Christopher Robin.",
+      "id": "winnie-the-pooh",
+      "name": "Winnie-the-Pooh",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A very small and easily frightened animal who is Pooh's dearest friend and constant companion. Timid by nature, Piglet nonetheless keeps trying to be brave for the sake of his friends, and his loyalty and good heart matter more than his size.",
+      "id": "piglet",
+      "name": "Piglet",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An old grey donkey with a gloomy, resigned outlook, who expects little and is rarely surprised to receive it. Beneath the melancholy he is fond of his friends in his own way, and the others go out of their way to look after him, beginning with building him a house.",
+      "id": "eeyore",
+      "name": "Eeyore",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A bouncy, exuberant tiger who arrives in the Forest as a newcomer and immediately makes himself at home. Bold, cheerful, and entirely sure of himself, he bounces everywhere and insists on finding out what Tiggers do and do not like to eat, causing friendly commotion wherever he goes.",
+      "id": "tigger",
+      "name": "Tigger",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A busy, self-important animal who prides himself on being clever and organized, with many friends-and-relations and a fondness for schemes and plans. Fussy and managing, he means well even when his busy notions do not go as intended.",
+      "id": "rabbit",
+      "name": "Rabbit",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A bird regarded by the others as the wisest resident of the Forest, given to long words and grand talk, though his spelling and his learning are not quite as reliable as he supposes. He lives in a lofty house and is consulted on matters that call for brains.",
+      "id": "owl",
+      "name": "Owl",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A calm, motherly kangaroo who looks after her small child, Roo, and keeps a sensible, caring household. Her practical warmth makes her a steadying presence among the Forest's animals.",
+      "id": "kanga",
+      "name": "Kanga",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Kanga's tiny, lively child, eager and fearless in the way of the very young. He adores excitement and quickly takes to the bouncing newcomer Tigger as a hero and playmate.",
+      "id": "roo",
+      "name": "Roo",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The young boy who is friend and gentle authority to all the animals of the Hundred Acre Wood. Kind and reassuring, he sorts out difficulties and joins the adventures, and the Forest and its creatures are, in a sense, the world of his childhood.",
+      "id": "christopher-robin",
+      "name": "Christopher Robin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-house-at-pooh-corner"
+}

@@ -1,0 +1,115 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Kalle Blomkvist"
+      ],
+      "description": "A middle-aged financial journalist and co-owner of the Stockholm magazine Millennium. As the story opens he has just been convicted of libel for a story accusing the industrialist Hans-Erik Wennerstrom of fraud, a verdict that fines him, threatens him with prison, and damages both his reputation and his magazine. Dogged, principled, and easygoing with women, he steps back from Millennium to serve a private commission on a remote family estate, ostensibly to write a Vanger family chronicle while quietly reinvestigating a decades-old disappearance.",
+      "id": "mikael-blomkvist",
+      "name": "Mikael Blomkvist",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A brilliant, guarded young woman in her twenties who works as a freelance investigator for Milton Security, where she produces uncannily thorough background reports. Slight, pierced, and heavily tattooed, she is a world-class computer hacker with a photographic memory and little patience for social convention. A legal ward of the state deemed incompetent to manage her own affairs, she is fiercely private, distrustful of authority, and quietly formidable, hiding a sharp analytical mind behind a deliberately off-putting exterior.",
+      "id": "lisbeth-salander",
+      "name": "Lisbeth Salander",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Editor-in-chief and co-owner of Millennium magazine, and Blomkvist's closest professional partner. Confident and decisive, she keeps the magazine running through the crisis caused by the libel verdict. She is also Blomkvist's long-standing lover in an open arrangement that coexists with her marriage, and the two share deep loyalty and trust.",
+      "id": "erika-berger",
+      "name": "Erika Berger",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The aging former head of the Vanger Corporation, patriarch of a large and fractious industrial dynasty based on the island of Hedeby in northern Sweden. Retired and wealthy, he is haunted by the disappearance of his beloved grand-niece Harriet in the 1960s, a case he has privately obsessed over for decades. He hires Blomkvist under the pretext of writing a family history, secretly asking him to reopen the mystery, and dangles both money and damaging information about Wennerstrom as payment.",
+      "id": "henrik-vanger",
+      "name": "Henrik Vanger",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Henrik Vanger's grand-niece, who vanished as a teenager during a family gathering on Hedeby island decades before the present-day story. On the day she disappeared, an accident on the only bridge to the mainland sealed the island off, so she seemingly disappeared from a closed community with no way out. Her fate has never been explained, and Henrik has received a pressed flower every year on his birthday, as she once gave him, deepening his conviction that she was murdered by someone in the family.",
+      "id": "harriet-vanger",
+      "name": "Harriet Vanger",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Harriet's older brother and the current chief executive of the struggling Vanger Corporation. Outwardly genial, hospitable, and hard-working, he is one of the few family members who greets Blomkvist's arrival on Hedeby warmly. He carries the burden of steering the family business through hard times and appears to be a steady, likeable presence among the feuding Vanger relatives.",
+      "id": "martin-vanger",
+      "name": "Martin Vanger",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of the Vanger family living on Hedeby island, a schoolteacher who is separated from her husband. Intelligent and independent, she becomes close to Blomkvist after he moves to the island and enters into an affair with him. She is candid about the family's tensions but evasive about certain events surrounding the day Harriet disappeared.",
+      "id": "cecilia-vanger",
+      "name": "Cecilia Vanger",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Henrik Vanger's longtime lawyer and trusted adviser, who acts as the intermediary in recruiting Blomkvist. It is he who commissions the confidential background investigation of Blomkvist from Milton Security, and he manages the legal and financial arrangements of the commission on the old man's behalf.",
+      "id": "dirch-frode",
+      "name": "Dirch Frode",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The chief operating officer of Milton Security and Lisbeth Salander's employer. He recognizes her exceptional talent as an investigator and feels a complicated protectiveness toward her, even as her unpredictability and secrecy unsettle him. He values the quality of her work while never fully understanding the woman who produces it.",
+      "id": "dragan-armansky",
+      "name": "Dragan Armansky",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A lawyer appointed as Lisbeth Salander's new legal guardian after her previous guardian falls ill. Holding legal control over her money and her declared competence, he abuses that power over her, using his authority to coerce and exploit the young woman placed in his charge. His cruelty sets Salander on a course of calculated retaliation.",
+      "id": "nils-bjurman",
+      "name": "Nils Bjurman",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful and wealthy Swedish financier and industrialist whom Blomkvist accused of fraud in the article that led to his libel conviction. Wennerstrom's apparent triumph in court ruins Blomkvist and hangs over the journalist throughout the story, and the promise of proof against him is part of what draws Blomkvist into the Vanger commission.",
+      "id": "hans-erik-wennerstrom",
+      "name": "Hans-Erik Wennerstrom",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-girl-with-the-dragon-tattoo"
+}

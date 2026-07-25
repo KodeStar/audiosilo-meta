@@ -1,0 +1,97 @@
+{
+  "characters": [
+    {
+      "description": "The protagonist, a teenage boy who survived the deadly Maze and its Glade. Resourceful and driven to understand the organization behind his ordeal, he clings to his friendships and to fragments of his lost past as a new set of trials begins.",
+      "id": "thomas",
+      "name": "Thomas",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The former Keeper of the Runners from the Glade, tough, blunt, and highly capable. One of Thomas's closest allies, he emerges as a natural leader among the surviving boys.",
+      "id": "minho",
+      "name": "Minho",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A calm, level-headed friend from the Glade who often steadies the group and once served as its second-in-command. Loyal and thoughtful, he is one of Thomas's most trusted companions.",
+      "id": "newt",
+      "name": "Newt",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Glade's former cook, a steady, good-natured survivor of the Maze who stays with the group through the ordeals that follow.",
+      "id": "frypan",
+      "name": "Frypan",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The only girl to arrive in the Glade, who shares an unexplained mental connection and a forgotten past with Thomas. Sharp and self-possessed, she survived the Maze alongside the boys.",
+      "id": "teresa",
+      "name": "Teresa",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A boy who appears among the survivors in place of the vanished Teresa, having come through an experience parallel to theirs. Wary and observant, he says he is the only boy from a separate group of girls.",
+      "id": "aris",
+      "name": "Aris",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Rat Man"
+      ],
+      "description": "An official of the organization WICKED, nicknamed Rat Man by the survivors, who informs them of the next phase of their trials. Cold and businesslike, he delivers WICKED's demands and the rules of the ordeal ahead.",
+      "id": "janson-rat-man",
+      "name": "Janson",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A young woman the group meets while crossing the ruined, sun-blasted wasteland, infected by the same plague as the world around her but not yet far gone. Quick and tough, she helps guide the survivors and grows close to Thomas.",
+      "id": "brenda",
+      "name": "Brenda",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a band of infected survivors in the wasteland who strikes a bargain to guide Thomas and the others toward safety in exchange for a promised cure. Shrewd and protective, he becomes an uneasy ally.",
+      "id": "jorge",
+      "name": "Jorge",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-scorch-trials"
+}

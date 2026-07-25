@@ -1,0 +1,106 @@
+{
+  "characters": [
+    {
+      "description": "The Disc's personification of death, a robed skeleton with a scythe who rides a white horse and speaks in a voice that lands directly in the mind. Long fascinated by the humans he collects, he takes an unusual personal interest when the midwinter gift-bringer, the Hogfather, goes missing, and resolves to keep the tradition going himself.",
+      "id": "death",
+      "name": "Death",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Death's granddaughter, a practical, strong-minded young woman who has chosen a deliberately ordinary life as a governess to a well-to-do Ankh-Morpork family. She has inherited some of her grandfather's uncanny abilities, among them a knack for going unnoticed when she wishes and for perceiving things others cannot, and she uses her level head to deal with the monsters her young charges fear. When the order of the season starts to go wrong, she is drawn in to investigate.",
+      "id": "susan-sto-helit",
+      "name": "Susan Sto Helit",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Death's aged manservant, a sour, practical old man who has kept house in his master's domain for longer than seems possible. Gruff and set in his ways, he grumbles at any disruption to routine but reluctantly assists as Death takes on the Hogfather's duties.",
+      "id": "albert",
+      "name": "Albert",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young member of the Assassins' Guild, unusually gifted and regarded by his own colleagues as deeply unsettling. He has a mismatched pair of eyes, one of them glass, a relentlessly cheerful manner, and a reputation for taking on commissions others consider unthinkable. He is engaged for an extraordinary and secret contract.",
+      "id": "mr-teatime",
+      "name": "Mr Teatime",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The head of the Assassins' Guild, a smooth and outwardly respectable man who accepts a lucrative but highly irregular commission on behalf of a mysterious client and hands it to his most talented and most troubling member.",
+      "id": "lord-downey",
+      "name": "Lord Downey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The Disc's midwinter gift-bringer, a jolly fat man in red said to ride a sledge pulled by four wild boars and to leave presents for children on Hogswatch night. A figure of long tradition and childhood belief, he has gone missing as the story opens.",
+      "id": "the-hogfather",
+      "name": "The Hogfather",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Faceless powers who oversee the orderly running of the universe and regard human belief, imagination, and untidy individuality as flaws to be corrected. They are behind the effort to be rid of the Hogfather and the childish faith he represents.",
+      "id": "the-auditors",
+      "name": "The Auditors of Reality",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The large, loud, plain-speaking Archchancellor of Unseen University, far more fond of the outdoors and blunt action than of scholarship. He presides over the wizards as strange phenomena begin appearing around the University during the season.",
+      "id": "mustrum-ridcully",
+      "name": "Mustrum Ridcully",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The most practically minded of the younger wizards at Unseen University, who looks after Hex, the University's growing thinking-engine. Methodical and perpetually harried, he tries to make sense of the odd surplus of belief manifesting around the campus.",
+      "id": "ponder-stibbons",
+      "name": "Ponder Stibbons",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "The Oh God of Hangovers"
+      ],
+      "description": "A minor deity who wakes in the wizards' bathroom with no memory and a wretched constitution, the accidental personification of the morning-after effects of drinking, brought into being by loose belief. Bewildered and unwell, he is swept up in the season's disorder.",
+      "id": "bilious",
+      "name": "Bilious",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "hogfather"
+}

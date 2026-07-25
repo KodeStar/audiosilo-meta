@@ -1,0 +1,79 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Edward Daniels"
+      ],
+      "description": "A U.S. Marshal in 1954 who travels by ferry to Ashecliffe Hospital, a facility for the criminally insane on remote Shutter Island, to investigate the impossible disappearance of a patient. A World War II veteran troubled by memories of combat and of liberating a concentration camp, he is also a grieving widower who lost his wife in a fire and suffers blinding migraines. Determined and suspicious, he comes to the island with private motives as well as his official case, and quickly senses that the doctors are hiding something.",
+      "id": "teddy-daniels",
+      "name": "Teddy Daniels",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Teddy's new partner, a U.S. Marshal assigned to work the case with him. Relaxed and affable where Teddy is intense, he provides easy companionship and a steadying presence as the two investigate the hospital, though he is newly paired with Teddy and something of an unknown quantity.",
+      "id": "chuck-aule",
+      "name": "Chuck Aule",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The lead psychiatrist and head of Ashecliffe Hospital, a cultured, self-possessed man who champions humane, progressive treatment of the criminally insane. Courteous but guarded, he cooperates with the marshals only up to a point, withholding records and access in ways that deepen Teddy's suspicion that the institution is concealing its true activities.",
+      "id": "dr-cawley",
+      "name": "Dr. John Cawley",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The patient whose vanishing brings the marshals to the island. Committed after drowning her three children, she has somehow disappeared from a locked, guarded room with no apparent way out, leaving behind only a cryptic note. Her seemingly impossible escape is the mystery Teddy is sent to solve.",
+      "id": "rachel-solando",
+      "name": "Rachel Solando",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Teddy's late wife, who haunts him in dreams and memories throughout his time on the island. He believes she died in an apartment fire, and he blames a man he holds responsible for setting it. His grief for her and his need to make sense of her death shadow everything he does on Shutter Island.",
+      "id": "dolores-chanal",
+      "name": "Dolores Chanal",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior psychiatrist at Ashecliffe with a clipped European manner that Teddy finds coldly menacing. His probing, clinical interest in the marshals and his unsettling remarks reinforce Teddy's conviction that sinister experiments are being carried out on the island.",
+      "id": "dr-naehring",
+      "name": "Dr. Naehring",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The hospital's deputy warden, who meets the marshals when they arrive and escorts them through the island's security. Polite but firm about the facility's rules, he is one of the officials managing the marshals' movements and access during their stay.",
+      "id": "mcpherson",
+      "name": "Deputy Warden McPherson",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "shutter-island"
+}

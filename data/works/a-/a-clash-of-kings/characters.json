@@ -1,0 +1,148 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "the Imp",
+        "Halfman"
+      ],
+      "description": "The dwarf son of the powerful Lord Tywin Lannister, clever, well-read, and sharp-tongued. Long disdained by his own family, he has been named acting Hand of the King by his father and sent to the capital to bring the young King Joffrey and the fractious royal council to heel, and to defend the Lannister hold on the throne. He must play a dangerous game of wits against his ruthless sister, Queen Cersei.",
+      "id": "tyrion-lannister",
+      "name": "Tyrion Lannister",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Catelyn Tully"
+      ],
+      "description": "Widow of the executed Eddard Stark and mother of the newly crowned King in the North. Grieving and resolute, she serves her son Robb as counselor and envoy, seeking alliances among the rival kings while aching for her scattered children.",
+      "id": "catelyn-stark",
+      "name": "Catelyn Stark",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Young Wolf",
+        "King in the North"
+      ],
+      "description": "The eldest Stark son, proclaimed King in the North after his father's murder. Young but undefeated in the field, he leads the northern host in war against the Lannisters while trying to hold his bannermen and his cause together.",
+      "id": "robb-stark",
+      "name": "Robb Stark",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The elder Stark daughter, held captive at court and betrothed to the cruel boy king Joffrey, who had her father killed. She survives by masking her true feelings behind flawless courtesy, learning how perilous the games of the court can be.",
+      "id": "sansa-stark",
+      "name": "Sansa Stark",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Arry"
+      ],
+      "description": "The younger Stark daughter, separated from her family and traveling north in disguise, passing as a common boy to stay alive in a war-torn realm where her name would make her a prize or a target.",
+      "id": "arya-stark",
+      "name": "Arya Stark",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Brandon Stark"
+      ],
+      "description": "The crippled second Stark son, left as the acting lord of Winterfell while his elder brother is at war. Unable to walk since his fall, he is troubled by strange, vivid dreams in which he seems to run as his direwolf.",
+      "id": "bran-stark",
+      "name": "Bran Stark",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Eddard Stark's bastard son, now a sworn brother of the Night's Watch. He rides north of the Wall with a great ranging expedition sent to learn why rangers have vanished and what is drawing the free folk of the wild together beyond the reach of the realm.",
+      "id": "jon-snow",
+      "name": "Jon Snow",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Queen Cersei"
+      ],
+      "description": "Queen Regent for her son, the boy king Joffrey, and the effective power behind the throne in the capital. Proud, jealous, and mistrustful, she resents the arrival of her brother Tyrion as Hand and schemes to keep the crown's authority in her own hands.",
+      "id": "cersei-lannister",
+      "name": "Cersei Lannister",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Heir to the Iron Islands, who was raised as a ward and hostage in Winterfell after his father's failed rebellion. A proud, prickly young man torn between the Starks who reared him and the ironborn blood he was born to, he is sent by Robb to his home islands to win his father's fleet for the northern cause.",
+      "id": "theon-greyjoy",
+      "name": "Theon Greyjoy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The elder of King Robert's two younger brothers, a hard, humorless, and rigidly just man who holds the island fortress of Dragonstone. Believing himself the lawful heir to the Iron Throne, he presses his claim with grim determination, though he lacks the warmth to win men easily to his side.",
+      "id": "stannis-baratheon",
+      "name": "Stannis Baratheon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Onion Knight"
+      ],
+      "description": "A former smuggler raised to knighthood for once running food to a besieged garrison, now one of Stannis Baratheon's most loyal servants. Low-born, honest, and clear-eyed, he keeps the shortened fingers Stannis took as fair price for his old crimes, and offers his king blunt counsel others fear to give.",
+      "id": "davos-seaworth",
+      "name": "Davos Seaworth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Red Woman",
+        "Melisandre of Asshai"
+      ],
+      "description": "A red-robed priestess from a distant eastern land who serves a fire god called the Lord of Light. She has attached herself to Stannis Baratheon, proclaiming him a prophesied savior, and wields an unsettling influence over him with her visions in the flames and hints of real and dangerous power.",
+      "id": "melisandre",
+      "name": "Melisandre",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "a-clash-of-kings"
+}

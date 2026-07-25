@@ -1,0 +1,88 @@
+{
+  "characters": [
+    {
+      "description": "The last gunslinger of Gilead, leading his ka-tet along the path of the Beam. When a deadly storm forces the company to shelter, he passes the time by telling two nested stories from his past, revealing more of the young man he once was and the world of Mid-World in its earlier days.",
+      "id": "roland-deschain",
+      "name": "Roland Deschain",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young man from New York, drawn into Mid-World and now a gunslinger of the ka-tet, married to Susannah. Here he is chiefly a listener, sheltering with the others while Roland tells his tales.",
+      "id": "eddie-dean",
+      "name": "Eddie Dean",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A woman from 1960s New York, drawn into Mid-World and made whole from a divided self, a gunslinger married to Eddie. She waits out the storm with the ka-tet as Roland tells his stories.",
+      "id": "susannah-dean",
+      "name": "Susannah Dean",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A boy from New York, drawn into Mid-World and now a gunslinger of the ka-tet, bonded to Oy. He listens closely as Roland unfolds the nested tales.",
+      "id": "jake-chambers",
+      "name": "Jake Chambers",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A billy-bumbler, a small, clever animal of Mid-World that can echo human speech, devoted to Jake and to the company. His unease helps warn the ka-tet of the coming storm.",
+      "id": "oy",
+      "name": "Oy",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young fellow gunslinger and friend of Roland's from his early days, appearing in the tale Roland tells of his youth. Steady and reliable, he rides with Roland when the pair are sent to a far barony to hunt a killer that the local people fear is more than a man.",
+      "id": "jamie-decurry",
+      "name": "Jamie DeCurry",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Tim Stoutheart"
+      ],
+      "description": "A boy in a fairy tale within Roland's story, the son of a woodsman in a forest village. After his father dies and his mother falls under the power of a cruel new husband, Tim sets out alone into the dangerous forest, seeking a way to set things right for her. His courage is tested against wonders and threats far beyond his years.",
+      "id": "tim-ross",
+      "name": "Tim Ross",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A tax collector who rides into Tim's village in the fairy tale, a smiling, menacing figure with an air of dark magic about him. He shows the boy tempting visions and steers him toward the deep forest, offering help that seems to hide a colder purpose.",
+      "id": "the-covenant-man",
+      "name": "The Covenant Man",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-wind-through-the-keyhole"
+}

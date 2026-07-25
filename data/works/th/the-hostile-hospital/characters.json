@@ -1,0 +1,76 @@
+{
+  "characters": [
+    {
+      "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think. Now a fugitive falsely accused of murder, she leads her siblings as they hide from both Count Olaf and the law while searching for the truth about V.F.D. and their family.",
+      "id": "violet-baudelaire",
+      "name": "Violet Baudelaire",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The middle Baudelaire, twelve, bespectacled, and endlessly well-read. On the run with his sisters, he uses his research to hunt for information that might clear their names and explain the secret V.F.D.",
+      "id": "klaus-baudelaire",
+      "name": "Klaus Baudelaire",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The youngest Baudelaire, a small child who speaks in short exclamations and bites with four sharp teeth. Brave and increasingly clever, she plays her part as the children hide and scheme.",
+      "id": "sunny-baudelaire",
+      "name": "Sunny Baudelaire",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The murderous actor who hunts the Baudelaire fortune, known by his single eyebrow and ankle tattoo. Having framed the children for murder, he pursues them with his troupe and his accomplice Esme, ready to appear in a new disguise wherever they hide.",
+      "id": "count-olaf",
+      "name": "Count Olaf",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Count Olaf's fashionable girlfriend and accomplice, who works at his side to capture the children and seize their fortune. Vain and cruel, she takes an active part in his schemes.",
+      "id": "esme-squalor",
+      "name": "Esme Squalor",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A gentle, elderly man who works in the Library of Records at Heimlich Hospital, keeping careful track of the hospital's files. Trusting and devoted to his records, he lets the disguised children help him, unaware of who they really are as they search for information about their family.",
+      "id": "hal",
+      "name": "Hal",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The new head of Human Resources at Heimlich Hospital, who keeps his face hidden and issues orders and inspections over the intercom. His voice and manner lead the Baudelaires to recognize him as Count Olaf in disguise, using control of the hospital to search for them.",
+      "id": "mattathias",
+      "name": "Mattathias",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "imported_at": "2026-07-25",
+      "ref": "model-knowledge:best-effort",
+      "type": "community"
+    }
+  ],
+  "work": "the-hostile-hospital"
+}
