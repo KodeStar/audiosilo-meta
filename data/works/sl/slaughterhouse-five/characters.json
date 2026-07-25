@@ -1,0 +1,95 @@
+{
+  "characters": [
+    {
+      "description": "The book's author, who appears in the opening chapter in his own voice. He describes his decades-long struggle to write a book about the firebombing of Dresden, which he survived as an American prisoner of war, and the difficulty of putting such a massacre into words. He recounts visiting an old army friend, promising the friend's wife that the book will not glorify war, and deciding to tell the story through an invented figure, Billy Pilgrim. He notes that he was himself present at some of the events described.",
+      "id": "narrator",
+      "name": "The narrator",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An ungainly, passive man from the fictional city of Ilium, New York, who becomes a prosperous optometrist after the war. As a young, untrained chaplain's assistant he was sent to Europe in World War II and captured during a German offensive, ending up as a prisoner in Dresden. He claims to have become unstuck in time, experiencing the moments of his life out of order, and to have been abducted by aliens. Whether this is genuine or a symptom of his wartime trauma is left open.",
+      "id": "billy-pilgrim",
+      "name": "Billy Pilgrim",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Valencia Merble"
+      ],
+      "description": "Billy's wife, the daughter of the wealthy owner of the optometry school Billy attends. Overweight, good-natured, and devoted to Billy, she is overjoyed to have married him and provides him with a comfortable, prosperous home life after the war.",
+      "id": "valencia-pilgrim",
+      "name": "Valencia Merble Pilgrim",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young American soldier captured alongside Billy behind enemy lines. Stupid, cruel, and full of violent war fantasies, he imagines himself the hero of a valiant trio and both keeps the helpless Billy moving and abuses him, blaming Billy for the group being cut off and captured.",
+      "id": "roland-weary",
+      "name": "Roland Weary",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A sickly, vicious American prisoner obsessed with revenge, who collects grudges and promises to repay every wrong done to him. When Roland Weary dies as a prisoner and blames Billy for his death, Lazzaro swears that he will one day have Billy killed for it.",
+      "id": "paul-lazzaro",
+      "name": "Paul Lazzaro",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An alien species from the planet Tralfamadore who, in Billy's account, abduct him and put him on display in a zoo. They perceive time in four dimensions, seeing all moments of past, present, and future as permanently existing at once, so that death is merely one unpleasant moment among many. Their calm acceptance of fate, summed up in the refrain so it goes, shapes the way Billy comes to view his own life.",
+      "id": "tralfamadorians",
+      "name": "The Tralfamadorians",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young film actress whom, in Billy's account, the Tralfamadorians abduct and place in the zoo enclosure with him as a mate. She and Billy come to live together contentedly on display, and she grows to trust him.",
+      "id": "montana-wildhack",
+      "name": "Montana Wildhack",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A middle-aged former high school teacher who volunteered for military service despite his age and is among the American prisoners held in Dresden. Decent, steady, and physically fit, he is chosen by the other captives as their leader.",
+      "id": "edgar-derby",
+      "name": "Edgar Derby",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A largely unknown and commercially unsuccessful science fiction writer whose strange novels Billy has long read and admired. Billy eventually meets him in person in Ilium and finds him working as the manager of a crew of newspaper delivery boys. Bitter and eccentric, Trout is astonished to discover that he has a devoted reader.",
+      "id": "kilgore-trout",
+      "name": "Kilgore Trout",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "type": "community"
+    }
+  ],
+  "work": "slaughterhouse-five"
+}
