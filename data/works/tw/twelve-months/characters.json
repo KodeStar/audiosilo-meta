@@ -1,0 +1,438 @@
+{
+  "characters": [
+    {
+      "description": "Chicago's wizard and Winter Knight is recovering from the Battle of Chicago while grieving Karrin Murphy. He shelters displaced families in his castle, protects Demon Reach, and faces Mab's order to court Lara Raith.",
+      "id": "harry-dresden",
+      "name": "Harry Dresden",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Harry's deceased partner, whose recent death shapes his grief and fragile recovery. Her absence weighs on his choices as he tries to care for his daughter, his household, and post-battle Chicago.",
+      "id": "karrin-murphy",
+      "name": "Karrin Murphy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry's former apprentice and the Winter Lady. She can perceive his troubled dreams, recognizes the danger in his grief, and warns him that Lara must not use supernatural influence during their first public date.",
+      "id": "molly",
+      "name": "Molly",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry’s daughter and his strongest reason to resist despair. His concern for her safety governs his limits with Winter and his determination to remain alive.",
+      "id": "maggie",
+      "name": "Maggie",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A werewolf ally who manages the daily operation of Harry's castle and its refugee community. He coordinates residents, security, and practical arrangements while Harry recovers.",
+      "id": "will-borden",
+      "name": "Will Borden",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry's intended political spouse under Mab's alliance plan. Their first required public date is approaching, and Winter has forbidden her from using supernatural influence during the meeting.",
+      "id": "lara-raith",
+      "name": "Lara Raith",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lara Raith's half brother, held in Demon Reach stasis while physically healing from the attack on Etri.",
+      "id": "thomas",
+      "name": "Thomas",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The predatory drive within Thomas, which is stirring and attacking him during his confinement. If he is released before it is controlled, its need to feed could make him kill one or more people.",
+      "id": "thomass-hunger",
+      "name": "Thomas's Hunger",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Thomas's pregnant partner, missing somewhere in Europe while possessed by an enemy. Harry and Lara are searching for her, but their tracking efforts provide only a weak lead.",
+      "id": "justine",
+      "name": "Justine",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Winter authority who has ordered Harry to marry Lara Raith and begin the arrangement with monitored public dates.",
+      "id": "mab",
+      "name": "Mab",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Etri"
+      ],
+      "description": "Etri leads the Svartals. Mab assigns Harry to mend their relationship after Thomas's attack.",
+      "id": "king-etri",
+      "name": "King Etri",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Valkyrie sent by Lara with a long-term contract to protect Harry, his home, and its residents. Her personal name is not established, but her credentials are confirmed and she immediately joins the castle's security.",
+      "id": "valkyrie-bodyguard",
+      "name": "Valkyrie bodyguard",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry's skull-bound spirit assistant, now integrated with the castle's magical systems. He serves as its resident intelligence and helps Harry understand and operate the building's defenses.",
+      "id": "bob",
+      "name": "Bob",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The personification of Demon Reach, recovering after the island's imprisonment of Ethniu.",
+      "id": "alfred",
+      "name": "Alfred",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young ectomancy student whose magic has expanded across several elements since the Battle of Chicago. Mort brings him to Harry because his growing power could become uncontrollable without broader instruction.",
+      "id": "fitz",
+      "name": "Fitz",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Mort"
+      ],
+      "description": "An ectomancer and Fitz's first magical mentor. He asks Harry to train the young man's wider abilities, which extend beyond the shade-work Mort can safely teach.",
+      "id": "mort-lindquist",
+      "name": "Mort Lindquist",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Carlos",
+        "Ramirez"
+      ],
+      "description": "A White Council Warden and estranged former ally of Harry. During a tense inspection visit, he and Harry preserve a narrow basis for cooperation and agree to pursue their friends who were taken by the Black Court.",
+      "id": "carlos-ramirez",
+      "name": "Carlos Ramirez",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A White Council Warden who distrusts Harry and attempts an unannounced inspection under warlock protocol. Her hostility is influenced by the harm caused when her twin sister became a warlock.",
+      "id": "ileana",
+      "name": "Ileana",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A retired Knight and trusted moral guide who is caring for Maggie while Harry struggles with grief. He confronts Harry's worsening condition and presses him to reconnect with his daughter and accept family support.",
+      "id": "michael-carpenter",
+      "name": "Michael Carpenter",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "LeChase"
+      ],
+      "description": "A leading ghoul figure whom Harry seeks out over the large number of disappearances in Chicago.",
+      "id": "carter-lechase",
+      "name": "Carter LeChase",
+      "reveal": {
+        "chapter": 11
+      }
+    },
+    {
+      "aliases": [
+        "Daniel"
+      ],
+      "description": "Michael Carpenter's eldest son and one of the volunteers organized to resist supernatural threats in Chicago. He arrives with the Brotherhood of St. Brigid when Harry is overwhelmed by a coordinated ghoul ambush.",
+      "id": "daniel-carpenter",
+      "name": "Daniel Carpenter",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A priest who accompanies the Brotherhood of St. Brigid when it intervenes against the ghouls attacking Harry. He joins the volunteers and other religious leaders in protecting Chicago residents from supernatural threats.",
+      "id": "father-forthill",
+      "name": "Father Forthill",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rabbi who joins the Brotherhood of St. Brigid during its intervention against the ghoul ambush. His shofar helps drive the attackers away.",
+      "id": "brotherhood-rabbi",
+      "name": "Brotherhood rabbi",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A White Court security specialist who manages guest safety and the event's protections at Lara Raith's Halloween party.",
+      "id": "freydis-gard",
+      "name": "Freydis Gard",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Maggie's companion who will accompany her to a secure boarding school.",
+      "id": "mouse",
+      "name": "Mouse",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lara Raith's Halloween gathering receives an unanticipated guest when Dracul is announced.",
+      "id": "dracul",
+      "name": "Dracul",
+      "reveal": {
+        "chapter": 16
+      }
+    },
+    {
+      "description": "The proprietor of Bach Ordered Books and an influential minor practitioner. She seeks protection after attacks on Chicago's magical community, but is prepared to organize retaliation if Harry's safer plan fails.",
+      "id": "artemis-bach",
+      "name": "Artemis Bach",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "McCoy",
+        "Blackstaff"
+      ],
+      "description": "Harry's grandfather and the White Council's Blackstaff. He visits the castle to acknowledge that fear and hatred of the White Court drove his earlier attack on Harry, and he seeks a limited family reconciliation.",
+      "id": "ebenezer-mccoy",
+      "name": "Ebenezer McCoy",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lara Raith's father and the former power behind the White Court. Although Lara now controls the court, he remains dangerous and uses guest right to confront Harry with warnings about Lara's Hunger and an unspecified threat.",
+      "id": "lord-raith",
+      "name": "Lord Raith",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A militant member of the Brotherhood of St. Brigid. After a nearly lethal curse strikes Daniel Carpenter, fear leads Carl to accuse Harry and break from the Brotherhood's leadership with several supporters.",
+      "id": "carl",
+      "name": "Carl",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An ancient gargoyle guardian who enters the castle after Harry inadvertently invites him inside. He leads six other gargoyles and offers their allegiance because they judge Harry a worthy protector and sense greater turmoil ahead.",
+      "id": "basil",
+      "name": "Basil",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the living gargoyles serving as a defender of Harry's castle.",
+      "id": "cinnamon",
+      "name": "Cinnamon",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Harry’s werewolf ally, whose strength and healing have increased since the Battle of Chicago. He trains Harry in close combat as Harry works to rebuild his defensive skills.",
+      "id": "bear",
+      "name": "Bear",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The former police detective who accidentally shot Karrin Murphy during the Battle of Chicago. Harry tried to kill him afterward but was stopped, and Rudolph has since fled or vanished.",
+      "id": "rudolph",
+      "name": "Rudolph",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Major General Toot Toot Minimus"
+      ],
+      "description": "The Little Folk commander responsible for guarding Harry's castle. He follows Harry's orders during Basil's unexpected arrival and can quickly summon other trusted defenders.",
+      "id": "toot-toot",
+      "name": "Toot Toot",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning ally who accepts Harry's apology for the violence and harm that followed Karrin Murphy's death. He is still using a cane while recovering from serious injuries.",
+      "id": "butters",
+      "name": "Butters",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A memory-based spiritual imprint of Karrin Murphy rather than Karrin Murphy herself. It urges Harry to grieve with living people instead of summoning it each night.",
+      "id": "murphys-shade",
+      "name": "Murphy's shade",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The unborn son of Thomas and Justine, revealed when Mab brings his pregnant mother to Demon Reach during Thomas's rescue. His life becomes part of the effort to persuade Thomas to survive.",
+      "id": "thomas-and-justines-son",
+      "name": "Thomas and Justine's son",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Winter's crone queen and Mab's mother. She arrives during the dangerous ritual on Demon Reach and orders the island's spirit not to obstruct the Winter Queens while their promises are being fulfilled.",
+      "id": "mother-winter",
+      "name": "Mother Winter",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Summer counterpart to Mother Winter. She can intervene directly in mortal affairs only with mortal permission, and Harry authorizes her aid when Justine goes into labor on Demon Reach.",
+      "id": "mother-summer",
+      "name": "Mother Summer",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile Black Court leader whose faction warns Harry to expect an imminent attack on his castle.",
+      "id": "mavra",
+      "name": "Mavra",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A female Black Court elder who commands part of the force assaulting Harry's castle. Harry informally calls her Cleo as she directs the attackers testing the building's defenses.",
+      "id": "cleo",
+      "name": "Cleo",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A parent housed in Harry Dresden's castle who elects to help when an attack is imminent. Harry gives him a lookout post by the stairs leading to the roof.",
+      "id": "castle-resident-father",
+      "name": "Castle resident father",
+      "reveal": {
+        "chapter": 52
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A castle resident and father whom Harry previously rescued from Fomorian huntsmen. He accepts a limited defensive post to protect his family.",
+      "id": "mateus",
+      "name": "Mateus",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rabbi whose shofar blast helps drive back ghouls during the defense of Harry's castle.",
+      "id": "rabbi-aronson",
+      "name": "Rabbi Aronson",
+      "reveal": {
+        "chapter": 55
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0FC2Q4M6N",
+      "type": "community"
+    }
+  ],
+  "work": "twelve-months"
+}
