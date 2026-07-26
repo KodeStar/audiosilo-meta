@@ -1,0 +1,260 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Founder",
+        "Beastborn"
+      ],
+      "description": "A Founder leading a refugee caravan west in search of a free home in the Shiverglades. Hal combines costly Founder abilities with volatile Beastborn magic, and his determination to protect the caravan repeatedly puts him at personal risk.",
+      "id": "hal",
+      "name": "Hal",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Sin Keeper"
+      ],
+      "description": "A Sin Keeper traveling with Hal's party who begins bleeding severely from Broken Faith. Ordinary healing cannot cure the condition, leaving her in immediate danger as Hal enters her mind to investigate its cause.",
+      "id": "ashera",
+      "name": "Ashera",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "ranger"
+      ],
+      "description": "A protective ranger traveling with Hal's party. Elora is pursuing a strange quest tied to a sound only she can hear, even as she works to keep the badly injured Ashera alive during the group's westward journey.",
+      "id": "elora",
+      "name": "Elora",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "former Reaper"
+      ],
+      "description": "A former Reaper who has recently become mortal and no longer has the directives that once defined her existence. She is tied to Hal and enters this story searching for a purpose, a community, and a way to understand her new life.",
+      "id": "noth",
+      "name": "Noth",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "dragoon"
+      ],
+      "description": "A highly skilled aerial and close-quarters fighter accompanying Hal's caravan. Mira supports the opening battle, helps pursue Elora's quest, and shows signs that she is withholding something about the quest prompt.",
+      "id": "mira",
+      "name": "Mira",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Hal's westbound party who fights alongside Hal, Mira, Elora, and Ashera against giant noxus on the Felton Plains.",
+      "id": "angram",
+      "name": "Angram",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Founder"
+      ],
+      "description": "A ruling Founder whose willingness to abuse control troubles Hal. His distant authority threatens the caravan's pursuit of freedom.",
+      "id": "rinbast",
+      "name": "Rinbast",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A mysterious figure named by the quest that guides Elora's party toward a heart-shaped lake. Mira knows more about the wording of that quest than she admits, leaving Komachi's nature and connection to Elora initially uncertain.",
+      "id": "komachi",
+      "name": "Komachi",
+      "reveal": {
+        "chapter": 3
+      }
+    },
+    {
+      "aliases": [
+        "oracle"
+      ],
+      "description": "An oracle associated with a route through the Crystal Groves and Mirror Lands that could provide the caravan with needed supplies.",
+      "id": "luda",
+      "name": "Luda",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf associated with Clan Bouldergut, whose durable equipment supplies Hal's group.",
+      "id": "durvin",
+      "name": "Durvin",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "mimic"
+      ],
+      "description": "An intelligent mimic bonded to Hal as family. Vorax carries extradimensional storage, travels with his slime companion Quibbles, and protects Hal with a loyalty that extends beyond ordinary ownership or service.",
+      "id": "vorax",
+      "name": "Vorax",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vorax's pet slime, carried within one of the mimic's extradimensional stomachs.",
+      "id": "quibbles",
+      "name": "Quibbles",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gnome ally traveling with Hal's caravan.",
+      "id": "rondo",
+      "name": "Rondo",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A blue-feathered carrick fitted with armor and weapons who insists on joining Hal's scouting expedition.",
+      "id": "blue-feathered-carrick",
+      "name": "Blue-feathered carrick",
+      "reveal": {
+        "chapter": 105
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hal's inner Beast"
+      ],
+      "description": "The dangerous inner counterpart bound to Hal's Beastborn class. Hal believes Besal will exploit weakness to escape and threaten his friends, making every increase in Beastborn power a struggle over control as well as survival.",
+      "id": "besal",
+      "name": "Besal",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "ranger"
+      ],
+      "description": "A caravan ranger whose knowledge of the Mirror Lands helps the travelers avoid concealed chasms and other hidden hazards.",
+      "id": "yesel",
+      "name": "Yesel",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The local leader who orders her scouts to test Hal's caravan instead of destroying the intruders. She believes her people must adapt to changing dangers and uses a controlled trial to judge whether the newcomers might alter their fate.",
+      "id": "ebon-star-war-leader",
+      "name": "Ebon Star war leader",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A local scout leader who questions the war leader's departure from tradition, then follows her order to shadow Hal's caravan.",
+      "id": "ebon-star-scout-leader",
+      "name": "Ebon Star scout leader",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An intelligent gold-scaled dragon who commands the keens within a warded mountain complex. He meets Vorax in a book-filled chamber and says he has been expecting him, though his intentions are not yet known.",
+      "id": "gold-dragon",
+      "name": "Gold dragon",
+      "reveal": {
+        "chapter": 77
+      }
+    },
+    {
+      "description": "A wounded wild creature spared by Hal after a battle between monster families. It remains nearby without attacking him, though it is not yet an established companion.",
+      "id": "rhinoceros-beetle",
+      "name": "Rhinoceros beetle",
+      "reveal": {
+        "chapter": 115
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The rhinoceros beetle that remained near Hal during his isolation in the Shiverglades. After tending his fire and accompanying him through dangerous territory without hostility, the creature receives the simple name Beetle.",
+      "id": "beetle",
+      "name": "Beetle",
+      "reveal": {
+        "chapter": 138
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A hostile survivor of an ancient marked order, encountered in sealed ruins beneath a temple. He bears a copper-colored mark related to Hal's and tries to seize Hal's superior mark after identifying himself as one of his order's last members.",
+      "id": "copper-mage",
+      "name": "Copper mage",
+      "reveal": {
+        "chapter": 131
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A discorporated member of the ancient council who covertly approaches Hal in the abyss. Acting at another council member's request, he warns that the awakened mages may use Hal in their internal conflict and offers help toward an exit.",
+      "id": "iron-mage",
+      "name": "Iron mage",
+      "reveal": {
+        "chapter": 136
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "scarred counterpart"
+      ],
+      "description": "A scarred alternate version of Hal who bears a dark branded mark. He mirrors Hal's magic, calls Hal a renegade, and attacks with the practiced knowledge of someone who shares Hal's fundamental nature.",
+      "id": "kinslayer-36",
+      "name": "Kinslayer 36",
+      "reveal": {
+        "chapter": 166
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:1774249170",
+      "type": "community"
+    }
+  ],
+  "work": "exiled-lands"
+}
