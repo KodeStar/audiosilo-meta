@@ -36,6 +36,8 @@ func main() {
 		os.Exit(runSource("openaudible", os.Args[2:], importer.Run))
 	case "libation":
 		os.Exit(runSource("libation", os.Args[2:], importer.RunLibation))
+	case "audiosilo-books":
+		os.Exit(runSource("audiosilo-books", os.Args[2:], importer.RunAudiosiloBooks))
 	case "-h", "--help", "help":
 		usage()
 		os.Exit(0)
@@ -116,4 +118,5 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "usage:")
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 }
