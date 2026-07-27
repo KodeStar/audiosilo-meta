@@ -1,0 +1,195 @@
+{
+  "characters": [
+    {
+      "description": "A human Ritual Architect and apprentice to Havoc. Joe arrives in the giant world among the displaced refugees and immediately takes a leading role in recovering the Pyramid of Panacea before its connection to their former world closes.",
+      "id": "joe",
+      "name": "Joe",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A dwarven master crafter, Joe's mentor, and McPoundy's brother. Havoc supports the refugees' immediate survival work while arguing that the new settlement needs a working forge as soon as possible.",
+      "id": "havoc",
+      "name": "Havoc",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dwarven leader coordinating the refugees' first response to the giant world's cold, scarce resources, and monster threat. Grandmaster Snow directs the urgent work of turning an exposed camp into a settlement capable of survival.",
+      "id": "grandmaster-snow",
+      "name": "Grandmaster Snow",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarven grandmaster smith and Havoc's brother. McPoundy presses for the immediate establishment of a forge while the refugee leadership decides which basic needs must receive their limited labor and materials first.",
+      "id": "mcpoundy",
+      "name": "McPoundy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An alchemist closely tied to the Pyramid of Panacea. Jake urgently supports recovering the artifact building during the refugees' escape.",
+      "id": "jake",
+      "name": "Jake",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A world boss pulled through the relocation portal while clinging to the Pyramid of Panacea. Transformed into a lava creature in the giant world, the Lava Phoenix attacks the refugees and the damaged building they have just recovered.",
+      "id": "lava-phoenix",
+      "name": "Lava Phoenix",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An absent contact whose history with Joe and Jaxon remains unsettled. Joe remembers both Daniela's betrayal and her role in rescuing them, leaving him uncertain how to understand what she did or what he owes her.",
+      "id": "daniela",
+      "name": "Daniela",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adviser on settlement layout who explains building-slot limits and helps Joe choose where new structures should be placed.",
+      "id": "city-planner",
+      "name": "City planner",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Joe's human ally and an experienced combatant. Jaxon reunites with him in the refugee settlement as its residents prepare defenses, shelter, and supplies for the formal monster waves threatening their new home.",
+      "id": "jaxon",
+      "name": "Jaxon",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarven engineer and logistics specialist. Bauen commits engineers and earth mages to emergency trenches and rough walls as the exposed settlement prepares for its first scheduled beast waves.",
+      "id": "bauen",
+      "name": "Bauen",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarven master who sits on the council by a technicality after losing a masters' contest to Joe. The Master of Sarcasm is already hostile to Joe as the refugees begin organizing the government and defenses of their settlement.",
+      "id": "master-of-sarcasm",
+      "name": "Master of Sarcasm",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A smith who accepts responsibility for managing Joe's volatile new smithy. Smitty operates the facility for the settlement's crafters and works with Joe to establish how its users will pay for access.",
+      "id": "smitty",
+      "name": "Smitty",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Joe's contracted life-draining summon. The pseudo-lich is deployed through a ritual orb during a beast wave, attaching itself to an elite attacker and weakening the creature while the defenders try to contain it.",
+      "id": "joes-pseudo-lich",
+      "name": "Joe's pseudo-lich",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A dwarven official who reports expected monster-core yields, confirms Joe's ownership of creatures he kills, and arranges a corpse-storage warehouse that grants Joe a share of its materials.",
+      "id": "resource-manager",
+      "name": "Resource manager",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Captain Cleavage"
+      ],
+      "description": "A returning dwarven officer now serving as a council messenger. Major Cleavage exposes the flaw in a building-limit law aimed at Joe and openly questions the council's treatment of him after her experience working alongside humans.",
+      "id": "major-cleavage",
+      "name": "Major Cleavage",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human mage who studies formations and variant architecture. Havoc assigns Socar to Joe's defensive-design team, where his understanding of linked magical layouts offers a way to make settlement-scale rituals work together.",
+      "id": "socar",
+      "name": "Socar",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human bow fighter whose expertise covers planned target orders and intersecting firing lanes. Heartpiercer McShootypants joins Joe's design team and quickly finds a geometric improvement that can reduce the mana cost of his defensive bubbles.",
+      "id": "heartpiercer-mcshootypants",
+      "name": "Heartpiercer McShootypants",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An upgrade-wave boss encased in regenerative ice armor and supported by elite salamanders. The Armored Iceberg Rhinocelus smashes through a long section of the village wall and prepares to charge the defenders behind it.",
+      "id": "armored-iceberg-rhinocelus",
+      "name": "Armored Iceberg Rhinocelus",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An intelligent boss commanding a gathered monster force during the settlement's upgrade trial. The Frozen Cyclops speaks to the defenders, demands that they destroy their own city center, and can delay its army while later waves approach.",
+      "id": "frozen-cyclops",
+      "name": "Frozen Cyclops",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An adviser Joe contacts through Query when the system presents a choice between experience and ritual resources. The Query adviser recommends rejecting both offered restrictions, though the person's identity and authority remain unclear.",
+      "id": "query-adviser",
+      "name": "Query adviser",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0CK52KV5S",
+      "type": "community"
+    }
+  ],
+  "work": "tenacity"
+}
