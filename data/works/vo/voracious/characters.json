@@ -1,0 +1,327 @@
+{
+  "characters": [
+    {
+      "description": "Brightsong's founder and council leader. He begins the book badly injured after defeating two dragons, unable to contact Besal, and troubled that the resulting oath has placed both dragons under his control.",
+      "id": "hal",
+      "name": "Hal",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Hal's separated inner counterpart, missing and beyond Hal's reach after the dragon battle. His location, condition, and prospects for surviving their separation are unknown.",
+      "id": "besal",
+      "name": "Besal",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hal's romantic partner and a leader on Brightsong's council.",
+      "id": "noth",
+      "name": "Noth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hal's envoy"
+      ],
+      "description": "Hal's envoy in Brightsong. She is among the established allies present as the council confronts the consequences of Hal's victory over the dragons.",
+      "id": "ashera",
+      "name": "Ashera",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hal's mimic familiar and a member of Brightsong's council. Vorax serves as a trusted companion within the settlement's leadership circle.",
+      "id": "vorax",
+      "name": "Vorax",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Hal's close protector, described as his koblin shadow. Lurklox remains near him as Brightsong prepares for further danger.",
+      "id": "lurklox",
+      "name": "Lurklox",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Fire dragon"
+      ],
+      "description": "A fire-aligned dragon who can assume human form. Hal's recent victory has bound him by an oath.",
+      "id": "gold-dragon",
+      "name": "Gold dragon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ice dragon"
+      ],
+      "description": "An ice-aligned dragon who can take human form. Newly subject to Hal through the dragon oath, she openly describes the arrangement as enslavement.",
+      "id": "tyrant-white-dragon",
+      "name": "Tyrant white dragon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A childlike figure who becomes distressed during the meeting about the dragon oath and leaves.",
+      "id": "childlike-oracle",
+      "name": "Childlike oracle",
+      "reveal": {
+        "chapter": 1
+      }
+    },
+    {
+      "aliases": [
+        "Childlike oracle"
+      ],
+      "description": "A disguised adult elf-like figure who binds Besal to secrecy after assuring him that her proposal will not directly endanger Hal. She offers to find his weakened form a sturdier vessel.",
+      "id": "oracle-like-helper",
+      "name": "Oracle-like helper",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Ashera's familiar and the intended user of a commissioned mithril frying pan.",
+      "id": "asheras-appa-familiar",
+      "name": "Ashera's Appa familiar",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf artisan hired by Ashera to forge cookware from mithril. Payment for the work includes the use of dragonfire.",
+      "id": "dwarf-goldsmith",
+      "name": "Dwarf goldsmith",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hostile founder whom Hal believes may be an alternate version of himself. Rinbast controls other alternate selves and stands behind the Kinslayer threat facing Brightsong.",
+      "id": "rinbast",
+      "name": "Rinbast",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A powerful drow operative who takes charge of the weakened Besal in the unstable Fathomways. She subjects him to dangerous tests while keeping her larger purpose concealed.",
+      "id": "drow-assassin",
+      "name": "Drow assassin",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An independent founder travelling under a false identity with the hidden Kinslayer expedition. She considers turning against its increasingly unstable archmage but does not know whether Hal would accept her help.",
+      "id": "undercover-founder",
+      "name": "Undercover founder",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A tribal scout guiding the concealed expedition near Brightsong. His knowledge of the region helps the party remain hidden while Hal's patrols search for it.",
+      "id": "poisonheart-scout",
+      "name": "Poisonheart scout",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The unstable leader of the hidden expedition near Brightsong. He serves Rinbast, cannot penetrate the settlement's anti-magic barrier, and is becoming harder for his own companions to trust.",
+      "id": "tower-archmage",
+      "name": "Tower archmage",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Brightsong ally who joins Angram in assessing an unexpected tower mage while Hal is unconscious.",
+      "id": "mira",
+      "name": "Mira",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Brightsong ranger ally who works with Mira to question the newly arrived tower mage and determine whether he poses a danger to the settlement.",
+      "id": "angram",
+      "name": "Angram",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A noncombatant mage brought toward Brightsong with urgent news. He admits relying on stolen travel scrolls while his abilities and loyalties remain under scrutiny.",
+      "id": "tower-mage",
+      "name": "Tower mage",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The tower mage identifies himself as a food mage after demonstrating magic that produces hardy, edible crops. He asks to remain in Brightsong and continue his research.",
+      "id": "food-mage",
+      "name": "Food mage",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A long-time acquaintance of the newly arrived tower mage. Lay brings him toward Brightsong with urgent information and vouches for him while both remain under assessment.",
+      "id": "lay",
+      "name": "Lay",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Brightsong's resident brewing creature. When the town hall and its equipment undergo an unexplained transformation, the innkeeper denies causing the change.",
+      "id": "appa-innkeeper",
+      "name": "Appa innkeeper",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A critically weakened female Kinslayer who arrives at Brightsong seeking asylum. Hal recognizes her connection to Besal's apparent death and initially responds as if she remains an enemy.",
+      "id": "female-kinslayer",
+      "name": "Female Kinslayer",
+      "reveal": {
+        "chapter": 32
+      }
+    },
+    {
+      "description": "The second Kinslayer seeking refuge at Brightsong after breaking from Rinbast. Like the wounded woman beside him, he is an alternate version of Hal whose intentions have not yet been proven.",
+      "id": "second-kinslayer",
+      "name": "Second Kinslayer",
+      "reveal": {
+        "chapter": 32
+      }
+    },
+    {
+      "description": "A scarred and visibly impaired returnee recognized by Mira and Elora. Lamora blocks Hal's attack on the wounded female Kinslayer, though the extent of his free will remains uncertain.",
+      "id": "lamora",
+      "name": "Lamora",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Female Kinslayer"
+      ],
+      "description": "The female Kinslayer now living under guarded sanctuary in Brightsong. She identifies herself as Val, an alternate-sex counterpart of Hal, and asks him to end her life if strain ever destroys her identity.",
+      "id": "val",
+      "name": "Val",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dwarf construction organizer who mobilizes Brightsong's workers with his son to begin the settlement's urgent smithy project.",
+      "id": "barden",
+      "name": "Barden",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Second Kinslayer"
+      ],
+      "description": "The other Kinslayer granted sanctuary in Brightsong. Dale is a druid who can assume one monster form and use that creature's powers, but cannot combine traits from different forms.",
+      "id": "dale",
+      "name": "Dale",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning Brightsong ally who objects when the Appa innkeeper accepts Val as an apprentice. Her concern places her directly in the debate over how the former Kinslayer should be received.",
+      "id": "elora",
+      "name": "Elora",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A weakened dwarf council member whose missing soul fragment may be recoverable through a dungeon expedition.",
+      "id": "durvin",
+      "name": "Durvin",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Barden's son, weakened after losing a soul fragment during the return to Aldim.",
+      "id": "bardens-son",
+      "name": "Barden's son",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ashera's Appa familiar"
+      ],
+      "description": "Brightsong's Appa innkeeper is the familiar for whom Ashera commissioned a mithril cooking implement. The innkeeper needs it to improve the inn's food.",
+      "id": "appa-innkeeper-identity",
+      "name": "Appa innkeeper",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0D2JJ44M9",
+      "type": "community"
+    }
+  ],
+  "work": "voracious"
+}
