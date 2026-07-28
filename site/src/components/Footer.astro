@@ -1,5 +1,8 @@
 ---
 import Logo from './Logo.astro'
+import { HERO, HERO_IS_SHARE_ALIKE } from '../lib/hero'
+
+const img = HERO.attribution
 
 const columns = [
   {
@@ -87,13 +90,40 @@ const columns = [
       </div>
     </div>
 
-    <div
-      class="mt-10 flex flex-col gap-2 border-t border-edge pt-6 text-dim sm:flex-row sm:items-center sm:justify-between"
-    >
-      <p>
-        Data dedicated to the public domain (CC0-1.0) &middot; code AGPL-3.0.
+    <div class="mt-10 space-y-3 border-t border-edge pt-6 text-dim">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          Data dedicated to the public domain (CC0-1.0) &middot; code AGPL-3.0.
+        </p>
+        <p>&copy; 2026 KodeStar</p>
+      </div>
+
+      {/* The hero photograph's credit. Its licence requires the title, the
+          author, a link to the source and to the licence, and a statement of
+          the changes made - so all five are here, not a shortened version. */}
+      <p class="text-xs leading-relaxed">
+        Hero photograph:{' '}
+        <a
+          class="text-body transition-colors hover:text-pink-500"
+          href={img.sourceUrl}
+          target="_blank"
+          rel="noopener"
+        >{img.title}</a>{' '}
+        by {img.author}, {img.changes}, used under{' '}
+        <a
+          class="text-body transition-colors hover:text-pink-500"
+          href={img.licenceUrl}
+          target="_blank"
+          rel="noopener license"
+        >{img.licence}</a>.
+        {
+          HERO_IS_SHARE_ALIKE ? (
+            <>
+              {' '}The modified image is offered under the same licence.
+            </>
+          ) : null
+        }
       </p>
-      <p>&copy; 2026 KodeStar</p>
     </div>
   </div>
 </footer>

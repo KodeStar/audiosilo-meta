@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
 import CoveragePanel from '../components/contribute/CoveragePanel.tsx'
 
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
@@ -11,7 +12,7 @@ const AUTHORING = `${REPO}/blob/main/AUTHORING.md`
   description="Help fill in the open audiobook metadata database: add character guides and story-so-far recaps to the books that need them, and see which series are missing volumes."
 >
   <section class="relative pb-20">
-    <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
+    <Backdrop variant="page" />
     <div class="container relative z-10">
       <div class="reveal mx-auto max-w-2xl text-center">
         <span

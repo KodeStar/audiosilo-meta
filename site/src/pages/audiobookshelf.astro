@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
 import Button from '../components/Button.astro'
 import Icon from '../components/Icon.astro'
 
@@ -24,7 +25,7 @@ const PROVIDER_GIVES = [
   description="Use the open AudioSilo Meta database as a custom metadata provider in Audiobookshelf, and contribute your Audiobookshelf library back to the catalogue - all with community data, narrators as first-class people, and one work per narration."
 >
   <section class="relative pb-20">
-    <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
+    <Backdrop variant="page" />
     <div class="container relative z-10">
       <div class="reveal mx-auto max-w-2xl text-center">
         <span class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500">

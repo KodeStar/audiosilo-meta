@@ -521,10 +521,38 @@ function SeriesGapsBrowser() {
 // Module-scope so its identity is stable across renders (useEntity depends on it).
 const fetchCoverage = (_id: string, signal: AbortSignal) => getCoverage(signal)
 
+const FILTERS: CoverageFilter[] = ['missing', 'has_characters', 'has_recaps', 'has_recap_summary']
+
+/** Read `?filter=` so the browser is deep-linkable - the home page's characters
+    and recaps stats link straight to the works that HAVE them, which is the only
+    way a reader gets from "601 works have characters" to actually seeing one. */
+function filterFromUrl(): CoverageFilter {
+  if (typeof window === 'undefined') return 'missing'
+  const want = new URLSearchParams(window.location.search).get('filter')
+  return FILTERS.find((f) => f === want) ?? 'missing'
+}
+
 export default function CoveragePanel() {
   const state = useEntity<CoverageResponse>('coverage', fetchCoverage)
-  const [filter, setFilter] = useState<CoverageFilter>('missing')
+  const [filter, setFilter] = useState<CoverageFilter>(filterFromUrl)
   const browserRef = useRef<HTMLDivElement | null>(null)
+
+  // Keep the URL honest so the view can be linked or reloaded.
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    if (filter === 'missing') url.searchParams.delete('filter')
+    else url.searchParams.set('filter', filter)
+    window.history.replaceState(null, '', url)
+  }, [filter])
+
+  // Arriving with a filter already applied should land on the list it names,
+  // not at the top of the page with a silently pre-selected control.
+  useEffect(() => {
+    if (state.status !== 'ready' || filterFromUrl() === 'missing') return
+    requestAnimationFrame(() =>
+      browserRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' })
+    )
+  }, [state.status])
 
   // Selecting a stat card jumps the reader down to the (now-filtered) browser.
   const pick = (f: CoverageFilter) => {

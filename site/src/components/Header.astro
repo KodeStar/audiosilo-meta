@@ -1,13 +1,20 @@
 ---
 import Logo from './Logo.astro'
 import Icon from './Icon.astro'
+import HeaderSearch from './search/HeaderSearch.tsx'
+
+interface Props {
+  /** The home page's hero owns a full-size search box, so the header's copy
+      stays hidden until that one scrolls away. */
+  hasHero?: boolean
+}
+const { hasHero = false } = Astro.props
 
 const GITHUB = 'https://github.com/kodestar/audiosilo-meta'
 const DISCORD = 'https://discord.gg/nFFqRbkRn6'
 
 const nav = [
   { label: 'Import', href: '/import', external: false },
-  { label: 'Audiobookshelf', href: '/audiobookshelf', external: false },
   { label: 'Contribute', href: '/contribute', external: false },
   {
     label: 'Docs',
@@ -19,7 +26,7 @@ const nav = [
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-transparent" data-scrolled="false">
-  <div class="container flex items-center justify-between gap-4 py-3">
+  <div class="container flex items-center gap-4 py-3">
     <!-- Brand -->
     <a class="flex items-center gap-3" href="/" aria-label="AudioSilo Meta home">
       <Logo class="w-9 shrink-0" />
@@ -31,8 +38,14 @@ const nav = [
       </span>
     </a>
 
+    <!-- Site-wide search: takes the middle of the bar, and on the home page
+         fades in only once the hero's box has scrolled out of reach. -->
+    <div class="flex flex-1 justify-end sm:justify-center">
+      <HeaderSearch client:load deferToHero={hasHero} />
+    </div>
+
     <!-- Desktop nav -->
-    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+    <nav class="hidden shrink-0 items-center gap-5 md:flex" aria-label="Primary">
       {
         nav.map((item) => (
           <a

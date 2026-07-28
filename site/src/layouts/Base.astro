@@ -70,7 +70,7 @@ const ogImage = new URL('/android-chrome-512x512.png', Astro.site).href
     >
       Skip to content
     </a>
-    <Header />
+    <Header hasHero={hasHero} />
     <main id="main" class:list={['flex-grow', !hasHero && 'pt-10 sm:pt-14']}>
       <slot />
     </main>

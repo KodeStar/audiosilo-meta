@@ -1,0 +1,172 @@
+---
+/**
+ * Photographic backdrop, shared by the home hero and every page header.
+ *
+ * A library photograph, treated hard enough that it reads as brand surface
+ * rather than stock photography: drained of its own colour, crushed toward the
+ * navy page background, spotlit behind the headline, and dissolved to
+ * `--color-deep` at every edge so the section has no visible rectangle. Purely
+ * decorative - it carries no information, so it is `aria-hidden` and never
+ * announced.
+ *
+ * Every treatment number is a custom property with its default declared once,
+ * below, on `.hero-backdrop`, so the whole look can be read and retuned from a
+ * single block instead of hunting through the rules.
+ */
+import { HERO } from '../lib/hero'
+
+interface Props {
+  /** `hero` fills its section; `page` is a fixed-height band behind a page
+      header, so it cannot stretch down a long article. */
+  variant?: 'hero' | 'page'
+}
+
+const { variant = 'hero' } = Astro.props
+// The image resolves through the shared `--img-trinity` tier variable in
+// global.css, so every component that shows it fetches the SAME file rather
+// than each picking a tier independently.
+const style = [
+  `--hero-image: var(--img-trinity)`,
+  `--hero-brightness: ${HERO.brightness}`,
+  `--hero-position: ${HERO.position}`,
+].join('; ')
+---
+
+<div
+  class:list={['hero-backdrop', variant === 'page' && 'hero-backdrop--page']}
+  style={style}
+  aria-hidden="true"
+>
+  <div class="hero-backdrop__photo"></div>
+  <div class="hero-backdrop__tint"></div>
+  <div class="hero-backdrop__grain"></div>
+</div>
+
+<style>
+  .hero-backdrop {
+    /* --- treatment defaults (the shipped look) --- */
+    --hero-saturate: 0; /* 0 = monochrome. The photo brings shape, not colour. */
+    --hero-contrast: 1.17;
+    --hero-brightness: 0.45;
+    --hero-position: 50% 40%;
+
+    /* Navy ramp strength (0 = photo shows through raw). Above ~1.14 the ramp's
+       last stop clamps to fully opaque, so further increases only deepen the
+       upper half - which is the intent here: the photo lives in the top of the
+       frame and the bottom is solid page background. */
+    --hero-tint: 1.4;
+    --hero-pink: 0; /* accent lift behind the headline; off - the headline
+                       gradient and the logo carry the accent on their own */
+    --hero-indigo: 0; /* counterweight low-left; off by default */
+    --hero-grain: 0.35;
+
+    --hero-mask-solid: 38%; /* radial mask: fully opaque out to here... */
+    --hero-mask-edge: 78%; /* ...fully transparent by here */
+    --hero-bleed: 5.75rem; /* how far the image runs up behind the header */
+
+    /* The backdrop deliberately bleeds UPWARD behind the sticky header so the
+       photo starts above the logo rather than butting into it. */
+    position: absolute;
+    inset: calc(-1 * var(--hero-bleed)) 0 0 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* 1. The photograph. Drained and darkened BEFORE anything is layered on top,
+     so the navy ramp colours a neutral base instead of fighting the warm wood
+     and gilt most library interiors are lit with. */
+  .hero-backdrop__photo {
+    position: absolute;
+    inset: 0;
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: var(--hero-position);
+    filter: saturate(var(--hero-saturate)) contrast(var(--hero-contrast))
+      brightness(var(--hero-brightness));
+    /* Dissolve to nothing at every edge: a soft ellipse for the sides
+       intersected with a vertical ramp, so the section never shows a seam
+       against the page background. */
+    -webkit-mask-image:
+      radial-gradient(
+        120% 95% at 50% 28%,
+        #000 var(--hero-mask-solid),
+        transparent var(--hero-mask-edge)
+      ),
+      linear-gradient(180deg, #000 0%, #000 52%, transparent 92%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      radial-gradient(
+        120% 95% at 50% 28%,
+        #000 var(--hero-mask-solid),
+        transparent var(--hero-mask-edge)
+      ),
+      linear-gradient(180deg, #000 0%, #000 52%, transparent 92%);
+    mask-composite: intersect;
+  }
+
+  /* 2. The navy ramp is what actually colours the hero now that the photo is
+     monochrome - the image reads as a navy duotone rather than a grey one.
+     Layer order is top-down, so both accent blobs paint OVER the ramp and each
+     must fall off to transparent well INSIDE the box: a blob still carrying
+     colour at the bottom edge gets clipped there and shows as a hard seam. */
+  .hero-backdrop__tint {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        58% 42% at 50% 22%,
+        rgba(236, 72, 153, var(--hero-pink)),
+        transparent 70%
+      ),
+      radial-gradient(
+        42% 38% at 14% 58%,
+        rgba(99, 102, 241, var(--hero-indigo)),
+        transparent 72%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(11, 17, 27, calc(0.62 * var(--hero-tint))) 0%,
+        rgba(11, 17, 27, calc(0.5 * var(--hero-tint))) 35%,
+        rgba(11, 17, 27, calc(0.88 * var(--hero-tint))) 76%,
+        var(--color-deep) 93%
+      );
+  }
+
+  /* The page-header band is short and sits under an already-dark header, so it
+     is capped in height and fades sooner than the hero's full-section version.
+     Without the cap the image would stretch the length of the whole article. */
+  .hero-backdrop--page {
+    /* A page section sits below the sticky header AND below <main>'s top
+       padding, so the band has to climb past both to reach the top of the
+       viewport; the hero has neither above it and uses the plain bleed. */
+    --hero-bleed: 9rem;
+    inset: calc(-1 * var(--hero-bleed)) 0 auto 0;
+    height: 34rem;
+  }
+  @media (min-width: 640px) {
+    .hero-backdrop--page {
+      --hero-bleed: 10rem;
+    }
+  }
+  .hero-backdrop--page .hero-backdrop__photo {
+    --hero-brightness: 0.34;
+    -webkit-mask-image:
+      radial-gradient(120% 90% at 50% 18%, #000 26%, transparent 74%),
+      linear-gradient(180deg, #000 0%, #000 42%, transparent 88%);
+    mask-image:
+      radial-gradient(120% 90% at 50% 18%, #000 26%, transparent 74%),
+      linear-gradient(180deg, #000 0%, #000 42%, transparent 88%);
+  }
+
+  /* 3. Film grain - breaks the webp banding in the large flat gradients and
+     stops the photo reading as a glossy stock image. Matters more now the photo
+     is monochrome: a mono gradient bands harder than a coloured one. */
+  .hero-backdrop__grain {
+    position: absolute;
+    inset: 0;
+    opacity: var(--hero-grain);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+</style>
