@@ -1,11 +1,9 @@
 package extract
 
 import (
-	"archive/zip"
 	"os"
-	gopath "path"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -23,35 +21,7 @@ import (
 // nothing, and asserts only a floor - so it cannot break when the corpus changes,
 // but it does fail if a parser change regresses recognition below the floor.
 func TestCorpusChapterRecognition(t *testing.T) {
-	dir := os.Getenv("AUDIOSILO_EPUB_DIR")
-	if dir == "" {
-		t.Skip("AUDIOSILO_EPUB_DIR not set; skipping the real-corpus measurement")
-	}
-	if strings.HasPrefix(dir, "~") {
-		home, err := os.UserHomeDir()
-		if err != nil {
-			t.Fatalf("resolve ~: %v", err)
-		}
-		dir = filepath.Join(home, strings.TrimPrefix(dir, "~"))
-	}
-
-	var epubs []string
-	err := filepath.WalkDir(dir, func(p string, d os.DirEntry, err error) error {
-		if err != nil {
-			return nil // an unreadable subtree must not fail the sweep
-		}
-		if !d.IsDir() && strings.EqualFold(filepath.Ext(p), ".epub") {
-			epubs = append(epubs, p)
-		}
-		return nil
-	})
-	if err != nil {
-		t.Fatalf("walk %s: %v", dir, err)
-	}
-	if len(epubs) == 0 {
-		t.Skipf("no .epub files under %s", dir)
-	}
-	sort.Strings(epubs)
+	epubs := corpusEpubs(t)
 
 	var strictOK, looseOK, readable int
 	for _, p := range epubs {
@@ -254,7 +224,7 @@ func corpusEpubs(t *testing.T) []string {
 	if len(epubs) == 0 {
 		t.Skipf("no .epub files under %s", dir)
 	}
-	sort.Strings(epubs)
+	slices.Sort(epubs)
 	return epubs
 }
 
@@ -262,26 +232,13 @@ func corpusEpubs(t *testing.T) []string {
 // reading only the container, the OPF and the toc document - never a content
 // document. It reuses the package's own resolution path, so the measurement sees
 // exactly what Split sees.
-func tocLabelsOf(path string) ([]string, error) {
-	zr, err := zip.OpenReader(path)
+func tocLabelsOf(p string) ([]string, error) {
+	zr, files, pkg, opfDir, err := openEpub(p)
 	if err != nil {
 		return nil, err
 	}
 	defer func() { _ = zr.Close() }()
 
-	files := make(map[string]*zip.File, len(zr.File))
-	for _, f := range zr.File {
-		files[f.Name] = f
-	}
-	opfPath, err := findOPFPath(files)
-	if err != nil {
-		return nil, err
-	}
-	pkg, err := parseOPF(files, opfPath)
-	if err != nil {
-		return nil, err
-	}
-	opfDir := path2Dir(opfPath)
 	labels, _ := readTOC(files, pkg, opfDir)
 	out := make([]string, 0, len(labels))
 	for _, l := range labels {
@@ -290,15 +247,6 @@ func tocLabelsOf(path string) ([]string, error) {
 		}
 	}
 	return out, nil
-}
-
-// path2Dir mirrors Split's opfDir derivation (a top-level OPF has no directory).
-func path2Dir(opfPath string) string {
-	d := gopath.Dir(opfPath)
-	if d == "." {
-		return ""
-	}
-	return d
 }
 
 func mark(ok bool) string {
@@ -315,10 +263,12 @@ func pct(n, total int) float64 {
 	return float64(n) * 100 / float64(total)
 }
 
+// trimName truncates by RUNE, not by byte: a corpus is full of accented and
+// non-Latin titles, and cutting one mid-rune turns the log column into mojibake.
 func trimName(p string) string {
 	b := filepath.Base(p)
-	if len(b) > 52 {
-		return b[:52]
+	if r := []rune(b); len(r) > 52 {
+		return string(r[:52])
 	}
 	return b
 }

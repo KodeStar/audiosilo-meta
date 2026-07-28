@@ -366,6 +366,56 @@ func TestSplitUnlocatableAnchorsWarnRatherThanGuess(t *testing.T) {
 	}
 }
 
+// TestSplitPartialAnchorsWarn: when SOME of a document's toc anchors exist and
+// others do not, the split still happens - but the chapter whose anchor is missing
+// merges into the section before it and loses its label. That loss is invisible in
+// the manifest (an unlabeled section looks exactly like front matter), so it must
+// be warned about; without the warning the operator has no way to know a named
+// chapter went missing.
+func TestSplitPartialAnchorsWarn(t *testing.T) {
+	opf := `<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>T</dc:title></metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="c1" href="body.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine><itemref idref="c1"/></spine>
+</package>`
+	// #c1 is named by the toc but never defined in the markup; #c2 is.
+	nav := `<html xmlns:epub="http://www.idpf.org/2007/ops"><body>
+    <nav epub:type="toc"><ol>
+      <li><a href="body.xhtml#c1">Chapter 1</a></li>
+      <li><a href="body.xhtml#c2">Chapter 2</a></li>
+    </ol></nav></body></html>`
+	epub := buildEpub(t, map[string]string{
+		"META-INF/container.xml": container,
+		"OEBPS/content.opf":      opf,
+		"OEBPS/nav.xhtml":        nav,
+		"OEBPS/body.xhtml":       `<html><body><p>alpha alpha</p><h2 id="c2">Two</h2><p>bravo</p></body></html>`,
+	})
+
+	man, err := Split(epub, t.TempDir())
+	if err != nil {
+		t.Fatalf("Split: %v", err)
+	}
+	if len(man.Docs) != 2 {
+		t.Fatalf("Docs = %d, want 2 (the locatable anchor still cuts)", len(man.Docs))
+	}
+	if man.Docs[1].Label != "Chapter 2" {
+		t.Errorf("Docs[1].Label = %q, want Chapter 2", man.Docs[1].Label)
+	}
+	var warned bool
+	for _, w := range man.Warnings {
+		if strings.Contains(w, "could not be used as a cut point") && strings.Contains(w, `"c1"`) {
+			warned = true
+		}
+	}
+	if !warned {
+		t.Errorf("Warnings = %v, want one naming the unusable anchor c1", man.Warnings)
+	}
+}
+
 func TestSplitDuplicateSpineReference(t *testing.T) {
 	opf := `<?xml version="1.0"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0">

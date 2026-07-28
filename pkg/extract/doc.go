@@ -1,9 +1,12 @@
 // Package extract supports the Phase 3 epub -> characters/recaps extraction
 // pipeline. It has two independent halves:
 //
-//   - Split turns an epub into one plain-text file per spine document (in spine
-//     order) plus a manifest.json describing the chapter list. The chapter list
-//     drives the spoiler position model authors key characters/recaps against.
+//   - Split turns an epub into one plain-text file per chapter (in spine order) -
+//     a spine document, or one anchored section of a spine document that holds
+//     several chapters - plus a manifest.json describing the chapter list and the
+//     book's OPF metadata. The chapter list drives the spoiler position model
+//     authors key characters/recaps against, and ChapterFromLabel/Contiguous are
+//     the toc-label vocabulary it is derived from.
 //   - NGram mechanically checks authored sidecar JSON (characters/recaps) for
 //     near-verbatim overlap with the source text, enforcing the no-verbatim
 //     copyright rule documented in AUTHORING.md.

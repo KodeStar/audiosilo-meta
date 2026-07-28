@@ -143,9 +143,13 @@ func renderHTML(src []byte, wantIDs map[string]bool) (string, map[string]int) {
 		// Record a wanted anchor AFTER the block newline above, so the separator
 		// stays with the preceding section and the new one starts on content.
 		if offsets != nil && !isEnd && inHead == 0 {
-			if id := tagAnchorID(s[i:next]); id != "" && wantIDs[id] {
-				if _, seen := offsets[id]; !seen {
-					offsets[id] = b.Len()
+			id, name := tagAnchorIDs(s[i:next])
+			for _, cand := range [2]string{id, name} {
+				if cand == "" || !wantIDs[cand] {
+					continue
+				}
+				if _, seen := offsets[cand]; !seen {
+					offsets[cand] = b.Len()
 				}
 			}
 		}
@@ -155,14 +159,21 @@ func renderHTML(src []byte, wantIDs map[string]bool) (string, map[string]int) {
 	return b.String(), offsets
 }
 
-// tagAnchorID returns the fragment identifier a raw start tag declares, or "".
-// It accepts both the modern `id` attribute and the legacy `<a name="...">` form
-// that older epubs still use as link targets.
+// tagAnchorIDs returns the fragment identifiers a raw start tag declares: the
+// modern `id` attribute and the legacy `<a name="...">` form older epubs still use
+// as a link target. Either may be "".
+//
+// BOTH are returned rather than one being preferred, because only the caller knows
+// which of them the toc actually points at, and a converter can emit a tag whose
+// `id` and `name` differ.
 //
 // It parses the attribute list rather than searching for `id=`, so `data-id` and
 // an `id` appearing inside another attribute's quoted value cannot be mistaken for
-// the real thing.
-func tagAnchorID(raw string) string {
+// the real thing. Whitespace around the equals sign (`id = "c2"`, legal XML) and a
+// valueless attribute (`<p hidden id="c2">`, legal HTML) are both tolerated
+// mid-list: bailing out on either would silently lose the anchor, and a lost anchor
+// merges two chapters and mis-numbers every chapter after them.
+func tagAnchorIDs(raw string) (id, name string) {
 	i := 0
 	// Skip '<' and the element name.
 	if i < len(raw) && raw[i] == '<' {
@@ -172,24 +183,24 @@ func tagAnchorID(raw string) string {
 		i++
 	}
 	for i < len(raw) {
-		for i < len(raw) && (raw[i] == ' ' || raw[i] == '\t' || raw[i] == '\n' || raw[i] == '\r') {
-			i++
-		}
+		i = skipTagSpace(raw, i)
 		start := i
 		for i < len(raw) && isNameChar(raw[i]) {
 			i++
 		}
 		if i == start {
-			return "" // '>' , '/' or malformed input: no more attributes
+			break // '>', '/' or malformed input: no more attributes
 		}
 		attr := strings.ToLower(raw[start:i])
-		for i < len(raw) && (raw[i] == ' ' || raw[i] == '=') {
-			if raw[i] == '=' {
-				i++
-				break
-			}
-			i++
+
+		// A valueless attribute simply has no '=' before the next attribute name.
+		eq := skipTagSpace(raw, i)
+		if eq >= len(raw) || raw[eq] != '=' {
+			i = eq
+			continue
 		}
+		i = skipTagSpace(raw, eq+1)
+
 		var value string
 		if i < len(raw) && (raw[i] == '"' || raw[i] == '\'') {
 			quote := raw[i]
@@ -204,16 +215,28 @@ func tagAnchorID(raw string) string {
 			}
 		} else {
 			vs := i
-			for i < len(raw) && raw[i] != ' ' && raw[i] != '>' && raw[i] != '/' {
+			for i < len(raw) && !isTagSpace(raw[i]) && raw[i] != '>' && raw[i] != '/' {
 				i++
 			}
 			value = raw[vs:i]
 		}
-		if (attr == "id" || attr == "name") && value != "" {
-			return value
+		switch {
+		case attr == "id" && id == "":
+			id = value
+		case attr == "name" && name == "":
+			name = value
 		}
 	}
-	return ""
+	return id, name
+}
+
+func isTagSpace(c byte) bool { return c == ' ' || c == '\t' || c == '\n' || c == '\r' }
+
+func skipTagSpace(s string, i int) int {
+	for i < len(s) && isTagSpace(s[i]) {
+		i++
+	}
+	return i
 }
 
 // parseTag parses the tag starting at s[i] (which must be '<'). It returns the

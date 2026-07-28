@@ -268,7 +268,15 @@ func leadingNumberWords(rest string) (n int, remainder string, ok bool) {
 			i = start
 			break
 		}
-		total += v
+		// "hundred" MULTIPLIES what came before it - composing it additively made
+		// "Chapter Two Hundred" read as 102, a wrong number at Strict confidence,
+		// which is exactly the silent spoiler shift this package exists to avoid.
+		// Everything else composes additively ("twenty-one" = 21).
+		if v == 100 && total > 0 {
+			total *= v
+		} else {
+			total += v
+		}
 		consumed++
 	}
 	if consumed == 0 || total <= 0 || total > maxDecimalChapter {

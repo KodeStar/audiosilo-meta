@@ -155,6 +155,10 @@ func TestLeadingNumberWords(t *testing.T) {
 		ok   bool
 	}{
 		{"One", 1, "", true},
+		// "hundred" multiplies rather than adds, or "Two Hundred" would be 102.
+		{"One Hundred", 100, "", true},
+		{"Two Hundred", 200, "", true},
+		{"Hundred", 100, "", true},
 		{"Twenty-One: The Thing", 21, ": The Thing", true},
 		{"Twenty One - The Thing", 21, " - The Thing", true},
 		{"Seven ....", 7, " ....", true},

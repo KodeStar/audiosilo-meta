@@ -120,6 +120,41 @@ func TestMetadataOfKeepsUntaggedCreators(t *testing.T) {
 	}
 }
 
+// TestMetadataOfIgnoresCollectionTitle: EPUB 3 types each dc:title, and a
+// "collection" title is the SERIES name. Taking it as the book's title (it is
+// often written first) would attach the book to the wrong catalogue work - and a
+// series name reads as a perfectly plausible title, so nothing downstream could
+// catch it.
+func TestMetadataOfIgnoresCollectionTitle(t *testing.T) {
+	pkg := &opfPackage{Meta: opfMetadata{
+		Titles: []opfText{
+			{Value: "The Lord of the Rings", ID: "t1"},
+			{Value: "The Fellowship of the Ring", ID: "t2"},
+		},
+		Metas: []opfMeta{
+			{Refines: "#t1", Property: "title-type", Value: "collection"},
+			{Refines: "#t2", Property: "title-type", Value: "main"},
+		},
+	}}
+	if got := metadataOf(pkg); got.Title != "The Fellowship of the Ring" {
+		t.Errorf("Title = %q, want the main title, not the collection", got.Title)
+	}
+}
+
+// TestTrimSeriesIndex: calibre writes the index as a fixed-point number, so the
+// catalogue's "1" and "1.5" arrive as "1.00" and "1.50".
+func TestTrimSeriesIndex(t *testing.T) {
+	cases := map[string]string{
+		"1.00": "1", "1.0": "1", "1.50": "1.5", "2.25": "2.25",
+		"10": "10", "1": "1", "": "", "1.5a": "1.5a", "first": "first",
+	}
+	for in, want := range cases {
+		if got := trimSeriesIndex(in); got != want {
+			t.Errorf("trimSeriesIndex(%q) = %q, want %q", in, got, want)
+		}
+	}
+}
+
 func TestMetadataOfEmpty(t *testing.T) {
 	got := metadataOf(&opfPackage{})
 	if got == nil {

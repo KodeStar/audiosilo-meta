@@ -3,6 +3,7 @@ package extract
 import (
 	"archive/zip"
 	"bytes"
+	"cmp"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -12,13 +13,13 @@ import (
 	"path"
 	"path/filepath"
 	"slices"
-	"sort"
 	"strconv"
 	"strings"
 )
 
-// Manifest describes the result of splitting an epub: one entry per spine
-// document, in spine order, plus any toc anomalies that need an operator's eye.
+// Manifest describes the result of splitting an epub: one entry per EMITTED text
+// document (a whole spine document, or one anchored section of one), in spine
+// order, plus any toc anomalies that need an operator's eye.
 type Manifest struct {
 	Epub     string     `json:"epub"`               // base name of the input file
 	Title    string     `json:"title"`              // dc:title, "" if absent
@@ -45,33 +46,17 @@ type DocEntry struct {
 	Words   int    `json:"words"`
 }
 
-// Split parses the epub at epubPath and writes one UTF-8 text file per spine
-// document (001.txt, 002.txt, ...) plus manifest.json into outDir, creating
-// outDir if needed. It returns the manifest it wrote.
+// Split parses the epub at epubPath and writes one UTF-8 text file per emitted
+// section (001.txt, 002.txt, ...) plus manifest.json into outDir, creating outDir
+// if needed. A spine document is one section, unless its toc entries target
+// fragments inside it - then it is split at those anchors. It returns the manifest
+// it wrote.
 func Split(epubPath, outDir string) (*Manifest, error) {
-	zr, err := zip.OpenReader(epubPath)
+	zr, files, pkg, opfDir, err := openEpub(epubPath)
 	if err != nil {
 		return nil, err
 	}
 	defer func() { _ = zr.Close() }()
-
-	files := make(map[string]*zip.File, len(zr.File))
-	for _, f := range zr.File {
-		files[f.Name] = f
-	}
-
-	opfPath, err := findOPFPath(files)
-	if err != nil {
-		return nil, err
-	}
-	pkg, err := parseOPF(files, opfPath)
-	if err != nil {
-		return nil, err
-	}
-	opfDir := path.Dir(opfPath)
-	if opfDir == "." {
-		opfDir = ""
-	}
 
 	idToItem := make(map[string]opfItem, len(pkg.Items))
 	for _, it := range pkg.Items {
@@ -137,20 +122,29 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		Metadata: meta,
 		Warnings: warnings,
 	}
-	emitted := 0
+	emitted, splitDocs, splitSections := 0, 0, 0
 	for i, d := range docs {
 		data, err := readZipFile(files[d.zipPath])
 		if err != nil {
 			return nil, fmt.Errorf("read %q: %w", d.zipPath, err)
 		}
 		entries := perDoc[i]
-		secs := sectionsForDoc(data, entries)
-		if secs == nil {
-			// One chapter (or none) in this document: emit it whole, as before.
-			secs = []section{{text: htmlToText(data)}}
-			if len(entries) > 0 {
-				secs[0].label = entries[0].Label
+		secs, unusable := sectionsForDoc(data, entries)
+		switch {
+		case len(secs) > 1:
+			splitDocs++
+			splitSections += len(secs)
+			if len(unusable) > 0 {
+				// A partial split still happens, but a chapter whose anchor is
+				// unusable silently merges into the section before it and loses
+				// its label - so say so, or the loss is invisible.
+				man.Warnings = append(man.Warnings, fmt.Sprintf(
+					"%s: split at its toc anchors, but %d anchor(s) could not be used as a cut point (absent from the markup, or landing where another already cuts), so their chapters were not separated: %s",
+					d.href, len(unusable), quoteJoin(unusable)))
 			}
+		case len(entries) > 0:
+			// One chapter (or none) in this document: emit it whole, as before.
+			secs[0].label = entries[0].Label
 			if len(entries) > 1 {
 				// The toc names several chapters here but we could not locate
 				// their anchors in the markup, so the chapters cannot be
@@ -161,9 +155,6 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 					"%03d.txt (%s): multiple toc labels target this file and its anchors could not be located, so they share one text file: %s",
 					emitted+1, d.href, quoteJoin(labelTexts(entries))))
 			}
-		} else if len(secs) > 1 {
-			man.Warnings = append(man.Warnings, fmt.Sprintf(
-				"%s: split into %d sections at its toc anchors", d.href, len(secs)))
 		}
 
 		for _, sec := range secs {
@@ -186,6 +177,14 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 			}
 			man.Docs = append(man.Docs, entry)
 		}
+	}
+	if splitDocs > 0 {
+		// One line, not one per document: a book can legitimately split dozens of
+		// spine documents, and burying the real anomalies under that is how an
+		// operator stops reading the warnings at all.
+		man.Warnings = append(man.Warnings, fmt.Sprintf(
+			"%d spine document(s) held several toc chapters and were split at their anchors into %d sections",
+			splitDocs, splitSections))
 	}
 
 	out, err := json.MarshalIndent(man, "", "  ")
@@ -254,6 +253,36 @@ type opfSpine struct {
 	Items []struct {
 		IDRef string `xml:"idref,attr"`
 	} `xml:"itemref"`
+}
+
+// openEpub opens the epub at epubPath, indexes its zip entries, and parses the OPF
+// its container declares, returning the package plus the directory the OPF lives in
+// (empty for a top-level OPF, so hrefs resolve against the archive root).
+//
+// The caller owns zr and must close it. Every entry point into an epub goes through
+// here, so Split, ReadMetadata and the tests all resolve the package identically.
+func openEpub(epubPath string) (zr *zip.ReadCloser, files map[string]*zip.File, pkg *opfPackage, opfDir string, err error) {
+	zr, err = zip.OpenReader(epubPath)
+	if err != nil {
+		return nil, nil, nil, "", err
+	}
+	files = make(map[string]*zip.File, len(zr.File))
+	for _, f := range zr.File {
+		files[f.Name] = f
+	}
+	opfPath, err := findOPFPath(files)
+	if err == nil {
+		pkg, err = parseOPF(files, opfPath)
+	}
+	if err != nil {
+		_ = zr.Close()
+		return nil, nil, nil, "", err
+	}
+	opfDir = path.Dir(opfPath)
+	if opfDir == "." {
+		opfDir = ""
+	}
+	return zr, files, pkg, opfDir, nil
 }
 
 func findOPFPath(files map[string]*zip.File) (string, error) {
@@ -460,10 +489,14 @@ type section struct {
 	text   string
 }
 
-// sectionsForDoc splits a spine content document at the fragment anchors its toc
-// entries point at, returning one section per chapter in document order. It
-// returns nil when the document should be emitted whole - either the toc names at
-// most one chapter in it, or the anchors could not be found in the markup.
+// sectionsForDoc renders a spine content document and splits it at the fragment
+// anchors its toc entries point at, returning one section per chapter in document
+// order plus the fragments the toc named that could NOT be used as a cut point.
+//
+// It always returns at least one section: when the toc names at most one chapter
+// in the document, or when no usable cut point survives, the whole rendered
+// document comes back as a single, label-less section for the caller to name.
+// Rendering happens exactly once either way - the caller must never re-render.
 //
 // This matters more than it looks. Many epubs put several chapters in one spine
 // document and distinguish them only by fragment ("ch07.xhtml#c8"). Emitting one
@@ -476,46 +509,53 @@ type section struct {
 // Anchors that the toc names but the markup does not define are skipped rather
 // than guessed, so a mislabelled toc degrades to today's whole-document behaviour
 // (with a warning) instead of cutting the text at an invented boundary.
-func sectionsForDoc(data []byte, entries []tocLabel) []section {
-	if len(entries) < 2 {
-		return nil
-	}
+func sectionsForDoc(data []byte, entries []tocLabel) (secs []section, unusable []string) {
 	want := make(map[string]bool, len(entries))
 	for _, e := range entries {
 		if f := fragmentOf(e.Src); f != "" {
 			want[f] = true
 		}
 	}
-	if len(want) == 0 {
-		return nil
+	if len(entries) < 2 || len(want) == 0 {
+		return []section{{text: htmlToText(data)}}, nil
 	}
 
+	// One render serves both jobs. The offsets index the UN-normalized text,
+	// because each section is normalized on its own once it has been cut.
 	raw, offsets := renderHTML(data, want)
-	if len(offsets) == 0 {
-		return nil
-	}
 
-	// Cut points in toc order, de-duplicated, then sorted by where they actually
-	// occur - a toc's order should match the document's, but nothing guarantees it.
+	// Cut points in toc order, then sorted by where they actually occur - a toc's
+	// order should match the document's, but nothing guarantees it.
 	type cut struct {
 		label, anchor string
 		off           int
 	}
 	var cuts []cut
-	seen := make(map[string]bool, len(offsets))
+	seenFrag := make(map[string]bool, len(want))
+	seenOff := make(map[int]bool, len(want))
 	for _, e := range entries {
 		f := fragmentOf(e.Src)
-		if f == "" || seen[f] {
+		if f == "" || seenFrag[f] {
 			continue
 		}
+		seenFrag[f] = true
 		off, ok := offsets[f]
 		if !ok {
+			unusable = append(unusable, f) // named by the toc, absent from the markup
 			continue
 		}
-		seen[f] = true
+		// Two fragments that render to the same position cannot separate
+		// anything; cutting there anyway would emit an empty file for the first
+		// of them, which reads downstream as a chapter with no text.
+		if seenOff[off] {
+			unusable = append(unusable, f)
+			continue
+		}
+		seenOff[off] = true
 		cuts = append(cuts, cut{label: e.Label, anchor: f, off: off})
 	}
-	sort.Slice(cuts, func(i, j int) bool { return cuts[i].off < cuts[j].off })
+	// Stable, so cuts the toc lists in one order keep it.
+	slices.SortStableFunc(cuts, func(a, b cut) int { return cmp.Compare(a.off, b.off) })
 
 	// The text before the first anchor belongs to whichever toc entry targeted the
 	// document without a fragment; if there is none and the lead is blank, there is
@@ -534,7 +574,7 @@ func sectionsForDoc(data []byte, entries []tocLabel) []section {
 		}
 	}
 	if len(bounds) < 2 {
-		return nil // nothing to separate
+		return []section{{text: normalizeText(raw)}}, unusable // nothing to separate
 	}
 
 	out := make([]section, 0, len(bounds))
@@ -549,7 +589,7 @@ func sectionsForDoc(data []byte, entries []tocLabel) []section {
 			text:   normalizeText(raw[b.off:end]),
 		})
 	}
-	return out
+	return out, unusable
 }
 
 // fragmentOf returns the #fragment of an href, or "".

@@ -94,6 +94,41 @@ func TestHTMLToText(t *testing.T) {
 	}
 }
 
+// TestTagAnchorIDs pins the attribute scanner that locates a toc's cut points. A
+// missed anchor is not a cosmetic loss: the two chapters either side of it merge
+// into one file, and every chapter after them is numbered too low - which is a
+// silent spoiler shift in everything built from the text.
+func TestTagAnchorIDs(t *testing.T) {
+	cases := []struct{ raw, id, name string }{
+		{`<p id="c2">`, "c2", ""},
+		{`<p id='c2'>`, "c2", ""},
+		{`<p id=c2>`, "c2", ""},
+		{`<h2 class="chap" id="c2">`, "c2", ""},
+		// Whitespace around the equals sign is legal XML; it used to abort the scan.
+		{`<p id = "c2">`, "c2", ""},
+		// A valueless attribute has no '='; it must be stepped over, not bailed on.
+		{`<p hidden id="c2">`, "c2", ""},
+		{`<p id="c2" hidden>`, "c2", ""},
+		// Legacy link targets, and a tag carrying both forms with DIFFERENT values -
+		// only the caller knows which one the toc points at, so both come back.
+		{`<a name="old">`, "", "old"},
+		{`<a name="old" id="new">`, "new", "old"},
+		{`<a id="same" name="same">`, "same", "same"},
+		// Neither `data-id` nor an "id=" inside another value is an anchor.
+		{`<div data-id="x">`, "", ""},
+		{`<p title="id=nope">`, "", ""},
+		{`<p>`, "", ""},
+		{`<br/>`, "", ""},
+		{`<svg:rect id="c2"/>`, "c2", ""},
+	}
+	for _, c := range cases {
+		id, name := tagAnchorIDs(c.raw)
+		if id != c.id || name != c.name {
+			t.Errorf("tagAnchorIDs(%q) = (%q, %q), want (%q, %q)", c.raw, id, name, c.id, c.name)
+		}
+	}
+}
+
 // TestSplitChapterInference pins what Split writes into DocEntry.Chapter: only a
 // Strict reading from ChapterFromLabel, so the manifest field never carries a
 // guess. A consumer that wants the ambiguous readings calls ChapterFromLabel on
