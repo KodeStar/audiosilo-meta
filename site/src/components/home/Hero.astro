@@ -1,32 +1,36 @@
 ---
 import SearchBox from '../search/SearchBox.tsx'
 import Waveform from '../Waveform.astro'
+import Backdrop from '../Backdrop.astro'
 
 const examples = ['Project Hail Mary', 'Stephen Fry', 'The Stormlight Archive']
 ---
 
-<section class="relative pt-16 pb-14 sm:pt-24 sm:pb-20">
-  <!-- Soft radial glow behind the hero, clipped by its own inset wrapper so the
-       section itself needs no overflow-hidden (which would clip a tall open
-       search dropdown at the section boundary). -->
-  <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
-    <div class="glow left-1/2 top-[-6rem] h-[34rem] w-[34rem] -translate-x-1/2"></div>
-  </div>
+<section class="relative pt-20 pb-16 sm:pt-32 sm:pb-24">
+  <!-- Photographic backdrop. It clips itself, so the section needs no
+       overflow-hidden (which would clip a tall open search dropdown at the
+       section boundary). -->
+  <Backdrop />
 
   <!-- z-20: must stack ABOVE the waveform strip container below (z-10). They
        are siblings; at equal z-index the later-in-DOM waveform would paint OVER
        the open search dropdown (the bug visual QA caught). -->
   <div class="container relative z-20">
     <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
-      <!-- Overline chip -->
+      <!-- Overline chip. Translucent + blurred so the photo reads through it
+           instead of the chip punching an opaque hole in the image. -->
       <span
-        class="mb-6 inline-flex items-center gap-2 rounded-full border border-edge bg-surface/60 px-4 py-1.5 text-xs font-medium text-dim"
+        class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-deep/50 px-4 py-1.5 text-xs font-medium text-dim backdrop-blur-md"
       >
         <span class="h-1.5 w-1.5 rounded-full bg-pink-500"></span>
         Open data &middot; CC0 &middot; community maintained
       </span>
 
       <!-- Headline: one pink gradient keyword -->
+      <!-- No text-shadow here. The accent line is `bg-clip-text
+           text-transparent`, so a shadow paints THROUGH the letterforms instead
+           of behind them and reads as mud. The backdrop is dark enough on its
+           own; if it is ever lightened, add contrast there, not here. -->
       <h1
         class="text-4xl font-black leading-[1.05] tracking-tight text-hi sm:text-5xl md:text-6xl"
       >
@@ -39,20 +43,30 @@ const examples = ['Project Hail Mary', 'Stephen Fry', 'The Stormlight Archive']
         </span>
       </h1>
 
-      <p class="mt-5 max-w-xl text-lg leading-relaxed text-body">
+      <p class="hero-sub mt-5 max-w-xl text-lg leading-relaxed text-body">
         Works, recordings, narrators, series and chapters - free to use, built by
         listeners.
       </p>
 
-      <!-- THE search box -->
-      <div class="mt-9 w-full">
+      <!-- THE search box. `data-hero-search` is the handover marker: the header
+           search watches this element and reveals itself once it scrolls out of
+           reach, so exactly one search field is ever within reach. -->
+      <div class="mt-9 w-full" data-hero-search>
         <SearchBox client:load examples={examples} />
       </div>
     </div>
   </div>
 
   <!-- Animated waveform strip under the fold -->
-  <div class="container relative z-10 mt-14">
+  <div class="container relative z-10 mt-16">
     <Waveform animated bars={64} class="mx-auto max-w-2xl opacity-80" />
   </div>
 </section>
+
+<style>
+  /* The standfirst is plain text, so a shadow here is safe and still buys a
+     little separation from the photograph. */
+  .hero-sub {
+    text-shadow: 0 1px 12px rgba(11, 17, 27, 0.9);
+  }
+</style>

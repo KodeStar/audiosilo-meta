@@ -1,0 +1,94 @@
+---
+/**
+ * The three "what this is" cards.
+ *
+ * Each carries a library photograph, treated exactly like the hero backdrop -
+ * monochrome, darkened, dissolved at the edges - so the art reads as the same
+ * material as the rest of the page rather than three decorative stock images.
+ * The photo occupies the top-right of the card, leaving the heading and body on
+ * the quiet side; nothing sits over a busy region. There is no icon: a glyph
+ * here labelled nothing the heading did not already say.
+ */
+const cards = [
+  {
+    image: '/img/card/narrators.webp',
+    title: 'Narrators are first class',
+    body: 'Every recording lists its narrators - the field most databases simply do not have. One work can hold many recordings, each with its own cast and ASINs.',
+  },
+  {
+    image: '/img/card/recordings.webp',
+    title: 'Recordings and chapters',
+    body: 'Runtimes, release dates, publishers, region-scoped ASINs, ISBNs and full chapter lists - the specifics that identify an exact production.',
+  },
+  {
+    image: '/img/card/open.webp',
+    title: 'Free and open',
+    body: 'The factual core is dedicated to the public domain (CC0). Use it in any app, for any purpose, with no key and no rate card.',
+  },
+] as const
+---
+
+<div class="reveal grid gap-6 md:grid-cols-3">
+  {
+    cards.map((c) => (
+      <article class="value-card">
+        <div
+          class="value-card__art"
+          style={`background-image:url('${c.image}')`}
+          aria-hidden="true"
+        />
+        <div class="relative">
+          <h3 class="text-lg font-semibold text-hi">{c.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-body">{c.body}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .value-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--color-edge);
+    background: var(--color-surface);
+    padding: 1.75rem 1.5rem 1.5rem;
+    transition: border-color 0.25s ease;
+  }
+  .value-card:hover {
+    border-color: color-mix(in srgb, var(--color-pink-600) 45%, var(--color-edge));
+  }
+
+  /* Same recipe as the hero: drain the colour, darken hard, then dissolve at the
+     edges so the photograph has no rectangle of its own. Anchored top-right and
+     kept off the lower-left, which is where the heading and body sit. */
+  .value-card__art {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: 50% 30%;
+    filter: saturate(0) contrast(1.18) brightness(0.5);
+    opacity: 0.3;
+    /* The art is COMPOSED for this: subject upper-right, falling to black
+       lower-left, which is where the heading and body sit. That is what lets
+       the image be this present without costing any legibility. */
+    -webkit-mask-image: radial-gradient(115% 105% at 76% 6%, #000 12%, transparent 82%);
+    mask-image: radial-gradient(115% 105% at 76% 6%, #000 12%, transparent 82%);
+    transition:
+      opacity 0.25s ease,
+      transform 0.5s ease;
+  }
+  .value-card:hover .value-card__art {
+    opacity: 0.42;
+    transform: scale(1.03);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .value-card__art {
+      transition: none;
+    }
+    .value-card:hover .value-card__art {
+      transform: none;
+    }
+  }
+</style>

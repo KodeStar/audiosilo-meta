@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
 import Waveform from '../components/Waveform.astro'
 ---
 
 <Base title="Not found - AudioSilo Meta" description="This page could not be found.">
-  <section class="relative overflow-hidden">
-    <div class="glow left-1/2 top-0 h-[24rem] w-[24rem] -translate-x-1/2"></div>
+  <section class="relative">
+    <Backdrop variant="page" />
     <div class="container relative z-10 py-24 text-center sm:py-32">
       <p class="text-6xl font-black tracking-tight text-edge sm:text-7xl">404</p>
       <h1 class="mt-4 text-2xl font-bold text-hi sm:text-3xl">This chapter doesn't exist</h1>

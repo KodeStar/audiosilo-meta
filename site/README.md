@@ -95,7 +95,7 @@ and Jim Dale), and `The Stormlight Archive` (a two-book series). Try the ASIN
 
 | Route | File | What it is |
 |---|---|---|
-| `/` | `src/pages/index.astro` | Landing page - search hero, stats band, latest additions, contribute band |
+| `/` | `src/pages/index.astro` | Landing page - photographic search hero, stats band (characters/recaps lead the catalogue totals), latest additions, what-it-is cards, contribute band |
 | `/work?id=<id>` | `src/pages/work.astro` | A work: cover, authors, series, and each recording (narrators, runtime, publisher, ASIN/ISBN chips, expandable chapters) |
 | `/person?id=<id>` | `src/pages/person.astro` | A person: works they wrote and audiobooks they narrated |
 | `/series?id=<id>` | `src/pages/series.astro` | A series: authors and works in reading order |
@@ -114,20 +114,25 @@ the client. They handle their own loading, not-found (404), and error states.
 ```
 src/
   lib/api.ts              the ONE typed API client (wire shapes + fetch + formatters)
+  lib/hero.ts             the hero photograph: file, treatment nudges, and its licence attribution
   layouts/Base.astro      shell: head/meta, header, footer, skip link, scroll-reveal
   components/
-    Header.astro          sticky nav (Contribute, Docs, audiosilo.app, Discord, GitHub)
-    Footer.astro          Data / Community / AudioSilo columns + CC0 note
+    Header.astro          sticky nav + the site-wide search (Contribute, Docs, audiosilo.app, Discord, GitHub)
+    Footer.astro          Data / Community / AudioSilo columns + CC0 note + the hero photo credit
+    Backdrop.astro        the shared photographic backdrop (hero + page-header band)
     Logo.astro            brand logo (rotated 180deg - the raw SVG is upside down)
     Icon.astro Waveform.astro Button.astro   shared primitives
-    search/SearchBox.tsx  debounced combobox island (grouped results, keyboard nav, ASIN/ISBN lookup)
-    home/                 StatsBand.tsx, LatestAdditions.tsx (islands), Hero.astro, Contribute.astro
+    search/SearchBox.tsx  debounced combobox island (kind tabs with counts, keyboard nav, ASIN/ISBN lookup)
+    search/HeaderSearch.tsx  the header's copy of it; on home it appears once the hero's box scrolls away
+    home/                 StatsBand.tsx, LatestAdditions.tsx (islands), Hero.astro, ValueCards.astro, Contribute.astro
     cards/                WorkCard, CoverImage (fallback tile), PersonLinks, SeriesBadge
     detail/               WorkDetail, PersonDetail, SeriesDetail + shared detail-common
   pages/                  index, work, person, series, 404
   styles/global.css       Tailwind v4 entry + @theme design tokens (mirrors the product)
 mock/                     throwaway local API + fixtures (not shipped)
 public/                   logo, favicons, CNAME (meta.audiosilo.app), robots.txt
+public/img/hero/          the hero photograph in three width tiers (greyscale webp)
+public/img/card/          card art (greyscale webp, generated - no attribution owed)
 ```
 
 ## Conventions
@@ -140,3 +145,21 @@ public/                   logo, favicons, CNAME (meta.audiosilo.app), robots.txt
 - **Hyphens, never em dashes.** British-neutral English.
 - Animations respect `prefers-reduced-motion`; scroll-reveal degrades to fully
   visible without JavaScript.
+- **The hero photograph carries a licence obligation.** It is CC BY-SA 4.0, so
+  the footer credit (title, author, source link, licence link, and a statement
+  of the changes made) is required, not decorative - and because it is
+  share-alike, our modified version is offered under the same terms. All of it
+  is generated from `src/lib/hero.ts`, where `attribution` is a REQUIRED field
+  precisely so a replacement image cannot ship with the credit silently absent.
+  Verify a new image's author against the source's own metadata, never a
+  third-party search index. The card art is generated and owes nothing.
+- **Photographic art is monochrome by encoding, not by CSS.** The files are
+  greyscale webp because the design renders them that way, and dropping the
+  chroma planes is a saving no filter can give back. Images sit behind copy at
+  low opacity with a mask that clears the text, so art is composed
+  subject-upper-right, dark-lower-left.
+- **Do not put `scroll-padding-top` on `html`.** An input inside the sticky
+  header can never satisfy it: the browser scrolls the focused element into view
+  on every keystroke, the header travels with the scroll, and the page walks to
+  the top one character at a time. Anchor offsets belong on the targets
+  (`:where([id]) { scroll-margin-top }`), which `global.css` does.

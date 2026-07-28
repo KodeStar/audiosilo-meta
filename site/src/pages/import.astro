@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
 import ImportTool from '../components/import/ImportTool.tsx'
 
 const REPO = 'https://github.com/kodestar/audiosilo-meta'
@@ -10,7 +11,7 @@ const REPO = 'https://github.com/kodestar/audiosilo-meta'
   description="Drop an OpenAudible, Libation, Audiobookshelf, or folder-scan export to see which of your audiobooks are already in the open metadata database and which are new - checked entirely in your browser. The API receives only identifiers and, for unmatched books, author names."
 >
   <section class="relative pb-20">
-    <div class="glow left-[-8rem] top-0 h-[26rem] w-[26rem]"></div>
+    <Backdrop variant="page" />
     <div class="container relative z-10">
       <div class="reveal mx-auto max-w-2xl text-center">
         <span

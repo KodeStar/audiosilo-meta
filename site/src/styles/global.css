@@ -37,6 +37,30 @@
   --color-gray-150: #eeedf2;
 }
 
+/* -------------------------------------------------------------------------
+   The shipped hero photograph, in three width tiers.
+   A CSS background has no `srcset`, and `image-set()` selects on device pixel
+   ratio rather than viewport width, so the tiers are plain media queries. They
+   resolve ONE custom property, and every consumer (the hero backdrop, the page
+   header band, the closing CTA panel) reads that property - so a page fetches
+   exactly one of these files, not one per component.
+   The file is encoded GRAYSCALE: the design renders it monochrome, and dropping
+   the chroma planes is a saving no CSS filter can give back.
+   ------------------------------------------------------------------------- */
+:root {
+  --img-trinity: url('/img/hero/trinity-1920.webp');
+}
+@media (max-width: 900px) {
+  :root {
+    --img-trinity: url('/img/hero/trinity-1280.webp');
+  }
+}
+@media (min-width: 1800px) {
+  :root {
+    --img-trinity: url('/img/hero/trinity-2560.webp');
+  }
+}
+
 /* Replicate the old Tailwind v2 `container` (center: true) under v4, where the
    container utility no longer centres by default. */
 @utility container {
@@ -80,7 +104,20 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+}
+
+/* Keep in-page anchors clear of the sticky header from the TARGET side, not
+   with `html { scroll-padding-top }`.
+   Container-side padding is unsatisfiable for anything inside the sticky header
+   itself: the browser scrolls the focused element into view on every input
+   event, the header travels with the scroll, so each attempt gains only the
+   header's height and the next keystroke tries again - the page walks to the
+   top one character at a time. That is exactly what the header search field
+   did. Negative scroll-margin does not rescue it (Chrome will not converge on a
+   sticky target); moving the offset onto the anchor targets removes the
+   unsatisfiable case entirely and leaves anchor behaviour identical. */
+:where([id]) {
+  scroll-margin-top: 5rem;
 }
 body {
   font-family: 'Roboto', sans-serif;
@@ -241,6 +278,14 @@ body {
   color: var(--color-pink-400);
   font-weight: 600;
 }
+/* On the secondary line the query often matches the WHOLE string (searching an
+   author name, say), so the accent treatment would turn every row's second line
+   solid pink. Lift it out of the dim ramp instead - enough to show why the row
+   matched, quiet enough that the title keeps the emphasis. */
+.search-option .search-sub mark {
+  color: var(--color-body);
+  font-weight: 500;
+}
 
 /* -------------------------------------------------------------------------
    Import tool: a determinate progress bar (native <progress>, brand-styled).
@@ -269,4 +314,19 @@ body {
 .import-progress::-moz-progress-bar {
   background-color: var(--color-pink-600);
   border-radius: 9999px;
+}
+
+/* -------------------------------------------------------------------------
+   Feature-stat card art. The hero recipe at card scale: drained of colour,
+   darkened, and dissolved from the top-right so the number and copy on the
+   left never sit over a busy region. Lives here because the card is a React
+   island and the class must be reachable from it.
+   ------------------------------------------------------------------------- */
+.stat-art {
+  background-size: cover;
+  background-position: 50% 35%;
+  filter: saturate(0) contrast(1.18) brightness(0.5);
+  opacity: 0.3;
+  -webkit-mask-image: radial-gradient(105% 115% at 84% 0%, #000 8%, transparent 78%);
+  mask-image: radial-gradient(105% 115% at 84% 0%, #000 8%, transparent 78%);
 }
