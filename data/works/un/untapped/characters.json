@@ -1,0 +1,351 @@
+{
+  "characters": [
+    {
+      "description": "A skilled ritual worker who arrives in the unfamiliar city of Vanaheim with three companions. He must learn how its sealed towers admit visitors.",
+      "id": "joe",
+      "name": "Joe",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Heartpiercer"
+      ],
+      "description": "An archer traveling with Joe through Vanaheim. She is stranded outside the city's inaccessible towers with the rest of the group and argues that Joe needs replacement clothing.",
+      "id": "heartpiercer-mcshootypants",
+      "name": "Heartpiercer McShootypants",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A formation specialist accompanying Joe in Vanaheim. His ability to detect a hidden nexus in the street activates a tower gate and separates him from his companions.",
+      "id": "socar",
+      "name": "Socar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Joe's companion, concealed in the appearance of an ordinary cat familiar while the group explores Vanaheim.",
+      "id": "nimue",
+      "name": "Nimue",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A traveling cheese merchant whose mobile wagon serves Vanaheim. He explains the local towers, their entrance tests, and the unusual currency and honor systems to Joe's separated party.",
+      "id": "mak",
+      "name": "Mak",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Neanderthal merchant with catlike ears who works from Mak's wagon, offering flowers, chocolate, and coffee. Her repetitive speech seems prewritten, so her awareness is unclear.",
+      "id": "beth",
+      "name": "Beth",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Pete",
+        "Tower Master of Rituals"
+      ],
+      "description": "The head of Vanaheim's Tower of Rituals. He offers to sponsor Joe with lodging, advanced instruction, and access to selected teachers, while postponing disclosure of what he expects in return.",
+      "id": "grandmaster-pete",
+      "name": "Grandmaster Pete",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Master Cosmo Hollows"
+      ],
+      "description": "A master ritualist who founded the Tower of Rituals mathematics club. He is among the residents interested in exchanging specialized instruction with Joe.",
+      "id": "cosmo-hollows",
+      "name": "Cosmo Hollows",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Master Darling"
+      ],
+      "description": "A master of enchanted ritual circles whose earlier enchanting expertise transferred into ritual work. After Joe spots a flaw in her active design, they discuss a possible exchange of instruction.",
+      "id": "hilda-darling",
+      "name": "Hilda Darling",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed figure whose presence carries enough authority to interrupt Pete's attempt to pressure Joe over a mythic core. The visitor exposes the demand as a loyalty test, though his identity and purpose remain undisclosed.",
+      "id": "powerful-visitor",
+      "name": "Powerful visitor",
+      "reveal": {
+        "chapter": 6
+      }
+    },
+    {
+      "aliases": [
+        "Mir"
+      ],
+      "description": "The powerful visitor from Pete's office, now introduced as a Sage elementalist and Vanaheim's strongest individual combatant. Pete offers Mir's direct mentorship as part of Joe's proposed mythic-core arrangement.",
+      "id": "sage-mirascible",
+      "name": "Sage Mirascible",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Grandmaster of the Tower of Blood Rites. He challenges Pete's tower for a greatly increased honor wager and claims to have discovered a weakness in its defenses.",
+      "id": "istvan",
+      "name": "Istvan",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A ruler of Ardania whose immense natural power prevents ordinary movement around weaker people. He joins Queen Marie in receiving Joe after the kingdom formally ends Joe's exile.",
+      "id": "king-henry",
+      "name": "King Henry",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A co-ruler of Ardania who, like King Henry, possesses natural characteristics too high to suppress safely around most people. She participates in the private royal audience following the end of Joe's exile.",
+      "id": "queen-marie",
+      "name": "Queen Marie",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Joe's mother. She tells him that more than two Midgard years passed during his absence and asks him to serve as best man at her approaching wedding to Bloss.",
+      "id": "brenda",
+      "name": "Brenda",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Captain of the Ardania city guard and Brenda's fiance. His wedding to Brenda gives Joe a personal deadline after returning to Midgard.",
+      "id": "bloss",
+      "name": "Bloss",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Boris the Shamed"
+      ],
+      "description": "A scholar who explains the time lost during Joe's travel between worlds. He has been removed as head librarian and replaced by Lindon, leaving his present circumstances uncertain.",
+      "id": "boris",
+      "name": "Boris",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lindon of the Trifold Path"
+      ],
+      "description": "A battle scholar who replaced Boris as head librarian. He attacks Joe inside the library and intends to capture him for unnamed sponsors who seek Joe's knowledge.",
+      "id": "lindon",
+      "name": "Lindon",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Joe's deity and faction leader. From a hidden temple connected to the Pathfinder's Hall, he warns that directly seeking truths lost in the void can destroy a mortal mind.",
+      "id": "tatum",
+      "name": "Tatum",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A juggernaut resembling an unoccupied suit of armor. Assigned as Boris's guard, Jugs must obey his commands except when they are given under coercion.",
+      "id": "jugs",
+      "name": "Jugs",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Papadopoulos Whisperfoot"
+      ],
+      "description": "An old friend Joe encounters at the Golden Greens' embattled farm. He confirms that Papadopoulos Whisperfoot is his formal name but asks friends to call him Poppy.",
+      "id": "poppy",
+      "name": "Poppy",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of a farming guild whose cultivated fields are under repeated attack by creatures that restore worked land to wilderness. The guildmaster welcomes Joe after his intervention stabilizes the farm's perimeter.",
+      "id": "golden-greens-guildmaster",
+      "name": "Golden Greens guildmaster",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Golden Greens' animal handler. His summoned goats can assist with labor, making him useful as Joe begins building the farm's animal infrastructure.",
+      "id": "kenny-mcgruff",
+      "name": "Kenny McGruff",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A member of Joe's ritualist coven. His description of magic as a language helps Joe recognize a new field of magical study and refine the way he analyzes ritual designs.",
+      "id": "robert",
+      "name": "Robert",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Joe's coffee elemental. Automate is becoming more verbal while continuing to supply Joe with coffee.",
+      "id": "automate",
+      "name": "Automate",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The unnamed leader of a guild battling the insect swarm outside a sealed site. The leader accepts Joe's group as temporary allies and provides volunteers, while remaining wary of his request for mana.",
+      "id": "forest-guild-leader",
+      "name": "Forest guild leader",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Joe's ritualist coven who is injured while helping establish overlapping fire rituals against an insect swarm. Joe heals her before the group confronts the swarm's greater threat.",
+      "id": "hannah",
+      "name": "Hannah",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The airborne guardian of a sealed site and the source of an insect swarm. This master-level threat continually produces young, consumes them to recover from injuries, and becomes more dangerous as its health falls.",
+      "id": "matriarch",
+      "name": "Matriarch",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A member of Joe's ritualist coven who fights in the operation against the airborne Matriarch and its rapidly multiplying swarm.",
+      "id": "taka",
+      "name": "Taka",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Joe's coven who joins the other trainees in choosing independent defensive work and specialization practice as the guild settlement prepares for an expected attack.",
+      "id": "kirby",
+      "name": "Kirby",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The fifth member of Joe's ritualist coven. Alongside the other trainees, this ritualist chooses to remain in town, build defenses, and work without Joe's direct protection.",
+      "id": "unnamed-coven-member",
+      "name": "Unnamed coven member",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A transformed many-armed being Joe believed he had buried. Hostile forces bring it through an external gate as the system-weakened legendary monster assigned to the settlement's upgrade trial.",
+      "id": "game-over",
+      "name": "Game Over",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An expert accursed summoner who commands a battalion of mages. Joe recruits Conrad and his unit to supply mana for the hidden defensive ritual instead of joining the direct battle at the wall.",
+      "id": "conrad-stevens",
+      "name": "Conrad Stevens",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An independent defender with exceptional physical power. The mercenary saves Joe from a crushing blow and tears one of the legendary monster's arms away.",
+      "id": "freelance-mercenary",
+      "name": "Freelance mercenary",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The sole person extracted alive from the Cauldron of Avarice during Tatum and Joe's rescue attempt. He has severe memory loss and can recall only his name.",
+      "id": "ed",
+      "name": "Ed",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0FHL2V4QP",
+      "type": "community"
+    }
+  ],
+  "work": "untapped"
+}
