@@ -11,8 +11,8 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"regexp"
 	"slices"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -22,17 +22,26 @@ import (
 type Manifest struct {
 	Epub     string     `json:"epub"`               // base name of the input file
 	Title    string     `json:"title"`              // dc:title, "" if absent
+	Metadata *Metadata  `json:"metadata,omitempty"` // OPF identity: authors, ISBN, series, ...
 	Warnings []string   `json:"warnings,omitempty"` // omitted when none
 	Docs     []DocEntry `json:"docs"`
 }
 
-// DocEntry is one spine content document written to <outdir>/<file>.
+// DocEntry is one emitted text document, written to <outdir>/<file>.
+//
+// It is usually a whole spine content document, but when a document holds several
+// toc entries that target fragments inside it, that document is split at those
+// anchors and each section becomes its own DocEntry sharing the same Spine and
+// Href. Index therefore counts EMITTED files (and always matches File), while
+// Spine records where the text came from.
 type DocEntry struct {
-	Index   int    `json:"index"`             // 1-based spine position
+	Index   int    `json:"index"`             // 1-based position among the emitted files
+	Spine   int    `json:"spine"`             // 1-based spine position this text came from
 	File    string `json:"file"`              // "001.txt", ...
 	Href    string `json:"href"`              // manifest href, relative to the OPF
-	Label   string `json:"label,omitempty"`   // toc label, when one targets this file
-	Chapter *int   `json:"chapter,omitempty"` // inferred chapter number, when unambiguous
+	Anchor  string `json:"anchor,omitempty"`  // fragment id, when this is one section of a document
+	Label   string `json:"label,omitempty"`   // toc label, when one targets this text
+	Chapter *int   `json:"chapter,omitempty"` // chapter number, when the label states one outright
 	Words   int    `json:"words"`
 }
 
@@ -100,10 +109,10 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		return nil, fmt.Errorf("spine has no content documents")
 	}
 
-	// All toc labels that target each spine document, in toc order. The first
-	// wins; extras mean the toc is not file-aligned and the operator is warned.
+	// All toc entries that target each spine document, in toc order, each keeping
+	// its #fragment so a document holding several chapters can be split at them.
 	labels, tocDir := readTOC(files, pkg, opfDir)
-	perDoc := make([][]string, len(docs))
+	perDoc := make([][]tocLabel, len(docs))
 	for _, lb := range labels {
 		if lb.Label == "" {
 			continue
@@ -113,7 +122,7 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 			continue
 		}
 		if di, ok := zipToDoc[tp]; ok {
-			perDoc[di] = append(perDoc[di], lb.Label)
+			perDoc[di] = append(perDoc[di], lb)
 		}
 	}
 
@@ -121,28 +130,62 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 		return nil, err
 	}
 
-	man := &Manifest{Epub: filepath.Base(epubPath), Title: strings.TrimSpace(pkg.Title), Warnings: warnings}
+	meta := metadataOf(pkg)
+	man := &Manifest{
+		Epub:     filepath.Base(epubPath),
+		Title:    meta.Title,
+		Metadata: meta,
+		Warnings: warnings,
+	}
+	emitted := 0
 	for i, d := range docs {
 		data, err := readZipFile(files[d.zipPath])
 		if err != nil {
 			return nil, fmt.Errorf("read %q: %w", d.zipPath, err)
 		}
-		text := htmlToText(data)
-		fileName := fmt.Sprintf("%03d.txt", i+1)
-		if err := os.WriteFile(filepath.Join(outDir, fileName), []byte(text), 0o644); err != nil {
-			return nil, err
-		}
-		entry := DocEntry{Index: i + 1, File: fileName, Href: d.href, Words: wordCount(text)}
-		if names := perDoc[i]; len(names) > 0 {
-			entry.Label = names[0]
-			entry.Chapter = inferChapter(names[0])
-			if len(names) > 1 {
-				man.Warnings = append(man.Warnings, fmt.Sprintf(
-					"%s (%s): multiple toc labels target this file: %s",
-					fileName, d.href, quoteJoin(names)))
+		entries := perDoc[i]
+		secs := sectionsForDoc(data, entries)
+		if secs == nil {
+			// One chapter (or none) in this document: emit it whole, as before.
+			secs = []section{{text: htmlToText(data)}}
+			if len(entries) > 0 {
+				secs[0].label = entries[0].Label
 			}
+			if len(entries) > 1 {
+				// The toc names several chapters here but we could not locate
+				// their anchors in the markup, so the chapters cannot be
+				// separated. Warn loudly: silently emitting one file would give
+				// every later chapter the wrong number, and chapter numbers are
+				// the spoiler positions downstream.
+				man.Warnings = append(man.Warnings, fmt.Sprintf(
+					"%03d.txt (%s): multiple toc labels target this file and its anchors could not be located, so they share one text file: %s",
+					emitted+1, d.href, quoteJoin(labelTexts(entries))))
+			}
+		} else if len(secs) > 1 {
+			man.Warnings = append(man.Warnings, fmt.Sprintf(
+				"%s: split into %d sections at its toc anchors", d.href, len(secs)))
 		}
-		man.Docs = append(man.Docs, entry)
+
+		for _, sec := range secs {
+			emitted++
+			fileName := fmt.Sprintf("%03d.txt", emitted)
+			if err := os.WriteFile(filepath.Join(outDir, fileName), []byte(sec.text), 0o644); err != nil {
+				return nil, err
+			}
+			entry := DocEntry{
+				Index:  emitted,
+				Spine:  i + 1,
+				File:   fileName,
+				Href:   d.href,
+				Anchor: sec.anchor,
+				Label:  sec.label,
+				Words:  wordCount(sec.text),
+			}
+			if n, _, conf := ChapterFromLabel(sec.label); conf == Strict {
+				entry.Chapter = &n
+			}
+			man.Docs = append(man.Docs, entry)
+		}
 	}
 
 	out, err := json.MarshalIndent(man, "", "  ")
@@ -159,9 +202,44 @@ func Split(epubPath, outDir string) (*Manifest, error) {
 // --- OPF / container ---
 
 type opfPackage struct {
-	Title string    `xml:"metadata>title"`
-	Items []opfItem `xml:"manifest>item"`
-	Spine opfSpine  `xml:"spine"`
+	Meta  opfMetadata `xml:"metadata"`
+	Items []opfItem   `xml:"manifest>item"`
+	Spine opfSpine    `xml:"spine"`
+}
+
+// opfMetadata is the OPF <metadata> block. encoding/xml matches on the LOCAL
+// element name, so these fields pick up the dc:-prefixed Dublin Core elements
+// without the package having to know the namespace bindings.
+type opfMetadata struct {
+	Titles      []opfText  `xml:"title"`
+	Creators    []opfText  `xml:"creator"`
+	Languages   []string   `xml:"language"`
+	Publishers  []string   `xml:"publisher"`
+	Identifiers []opfIdent `xml:"identifier"`
+	Metas       []opfMeta  `xml:"meta"`
+}
+
+type opfText struct {
+	Value string `xml:",chardata"`
+	ID    string `xml:"id,attr"`
+	Role  string `xml:"role,attr"` // EPUB 2 opf:role, e.g. "aut"
+}
+
+type opfIdent struct {
+	Value  string `xml:",chardata"`
+	ID     string `xml:"id,attr"`
+	Scheme string `xml:"scheme,attr"` // EPUB 2 opf:scheme, e.g. "ISBN"
+}
+
+// opfMeta covers both <meta> dialects: EPUB 2's name/content pair (calibre writes
+// its series there) and EPUB 3's property/refines form.
+type opfMeta struct {
+	Value    string `xml:",chardata"`
+	ID       string `xml:"id,attr"`
+	Name     string `xml:"name,attr"`
+	Content  string `xml:"content,attr"`
+	Property string `xml:"property,attr"`
+	Refines  string `xml:"refines,attr"`
 }
 
 type opfItem struct {
@@ -372,23 +450,130 @@ func flattenNCX(points []ncxPoint, out *[]tocLabel) {
 	}
 }
 
-// --- helpers ---
+// --- splitting a document at its toc anchors ---
 
-// reChapterLabel matches the only two label shapes we infer a chapter number
-// from: "Chapter 7" (any case) or a bare "7".
-var reChapterLabel = regexp.MustCompile(`(?i)^(?:chapter\s+)?(\d+)$`)
+// section is one emitted text document: a whole spine document, or one anchored
+// slice of it.
+type section struct {
+	label  string
+	anchor string
+	text   string
+}
 
-// inferChapter conservatively extracts a chapter number from a toc label:
-// "Chapter 7" (any case) or a bare "7". Anything else yields nil - we never
-// guess.
-func inferChapter(label string) *int {
-	if m := reChapterLabel.FindStringSubmatch(strings.TrimSpace(label)); m != nil {
-		if v, err := strconv.Atoi(m[1]); err == nil {
-			return &v
+// sectionsForDoc splits a spine content document at the fragment anchors its toc
+// entries point at, returning one section per chapter in document order. It
+// returns nil when the document should be emitted whole - either the toc names at
+// most one chapter in it, or the anchors could not be found in the markup.
+//
+// This matters more than it looks. Many epubs put several chapters in one spine
+// document and distinguish them only by fragment ("ch07.xhtml#c8"). Emitting one
+// file per spine document then silently merges those chapters, and since chapter
+// numbers ARE the spoiler positions for the sidecars built from this text, the
+// damage is invisible: every later chapter is numbered too low, so every reveal
+// and recap is gated one or more chapters early. In a 34-book validation corpus,
+// 12 books had this shape.
+//
+// Anchors that the toc names but the markup does not define are skipped rather
+// than guessed, so a mislabelled toc degrades to today's whole-document behaviour
+// (with a warning) instead of cutting the text at an invented boundary.
+func sectionsForDoc(data []byte, entries []tocLabel) []section {
+	if len(entries) < 2 {
+		return nil
+	}
+	want := make(map[string]bool, len(entries))
+	for _, e := range entries {
+		if f := fragmentOf(e.Src); f != "" {
+			want[f] = true
 		}
 	}
-	return nil
+	if len(want) == 0 {
+		return nil
+	}
+
+	raw, offsets := renderHTML(data, want)
+	if len(offsets) == 0 {
+		return nil
+	}
+
+	// Cut points in toc order, de-duplicated, then sorted by where they actually
+	// occur - a toc's order should match the document's, but nothing guarantees it.
+	type cut struct {
+		label, anchor string
+		off           int
+	}
+	var cuts []cut
+	seen := make(map[string]bool, len(offsets))
+	for _, e := range entries {
+		f := fragmentOf(e.Src)
+		if f == "" || seen[f] {
+			continue
+		}
+		off, ok := offsets[f]
+		if !ok {
+			continue
+		}
+		seen[f] = true
+		cuts = append(cuts, cut{label: e.Label, anchor: f, off: off})
+	}
+	sort.Slice(cuts, func(i, j int) bool { return cuts[i].off < cuts[j].off })
+
+	// The text before the first anchor belongs to whichever toc entry targeted the
+	// document without a fragment; if there is none and the lead is blank, there is
+	// no lead section at all.
+	bounds := cuts
+	if len(cuts) > 0 && cuts[0].off > 0 {
+		lead := cut{off: 0}
+		for _, e := range entries {
+			if fragmentOf(e.Src) == "" {
+				lead.label = e.Label
+				break
+			}
+		}
+		if lead.label != "" || strings.TrimSpace(raw[:cuts[0].off]) != "" {
+			bounds = append([]cut{lead}, cuts...)
+		}
+	}
+	if len(bounds) < 2 {
+		return nil // nothing to separate
+	}
+
+	out := make([]section, 0, len(bounds))
+	for i, b := range bounds {
+		end := len(raw)
+		if i+1 < len(bounds) {
+			end = bounds[i+1].off
+		}
+		out = append(out, section{
+			label:  b.label,
+			anchor: b.anchor,
+			text:   normalizeText(raw[b.off:end]),
+		})
+	}
+	return out
 }
+
+// fragmentOf returns the #fragment of an href, or "".
+func fragmentOf(href string) string {
+	i := strings.IndexByte(href, '#')
+	if i < 0 {
+		return ""
+	}
+	frag := strings.TrimSpace(href[i+1:])
+	if dec, err := url.PathUnescape(frag); err == nil {
+		return dec
+	}
+	return frag
+}
+
+func labelTexts(entries []tocLabel) []string {
+	out := make([]string, len(entries))
+	for i, e := range entries {
+		out[i] = e.Label
+	}
+	return out
+}
+
+// --- helpers ---
 
 func attrValue(attrs []xml.Attr, local string) string {
 	for _, a := range attrs {

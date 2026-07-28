@@ -94,7 +94,17 @@ func TestHTMLToText(t *testing.T) {
 	}
 }
 
-func TestInferChapter(t *testing.T) {
+// TestSplitChapterInference pins what Split writes into DocEntry.Chapter: only a
+// Strict reading from ChapterFromLabel, so the manifest field never carries a
+// guess. A consumer that wants the ambiguous readings calls ChapterFromLabel on
+// the Label itself and confirms them with Contiguous.
+//
+// "Chapter Seven" and "Chapter 7: The Return" resolve here where the original
+// inferChapter refused them - that widening is the point of the label vocabulary,
+// and both are unambiguous statements of a chapter number. "Part 7" must still
+// refuse: reading a structural divider as chapter 7 would collide with the real
+// chapter 7 and shift every spoiler position after it.
+func TestSplitChapterInference(t *testing.T) {
 	seven := 7
 	tests := []struct {
 		label string
@@ -104,21 +114,24 @@ func TestInferChapter(t *testing.T) {
 		{"chapter 7", &seven},
 		{"CHAPTER 7", &seven},
 		{"7", &seven},
+		{"Chapter Seven", &seven},
+		{"Chapter 7: The Return", &seven},
 		{"Epilogue", nil},
-		{"Chapter Seven", nil},
-		{"Chapter 7: The Return", nil},
 		{"Part 7", nil},
 		{"", nil},
 	}
 	for _, tc := range tests {
-		got := inferChapter(tc.label)
+		var got *int
+		if n, _, conf := ChapterFromLabel(tc.label); conf == Strict {
+			got = &n
+		}
 		switch {
 		case tc.want == nil && got != nil:
-			t.Errorf("inferChapter(%q) = %d, want nil", tc.label, *got)
+			t.Errorf("Strict ChapterFromLabel(%q) = %d, want none", tc.label, *got)
 		case tc.want != nil && got == nil:
-			t.Errorf("inferChapter(%q) = nil, want %d", tc.label, *tc.want)
+			t.Errorf("Strict ChapterFromLabel(%q) = none, want %d", tc.label, *tc.want)
 		case tc.want != nil && got != nil && *got != *tc.want:
-			t.Errorf("inferChapter(%q) = %d, want %d", tc.label, *got, *tc.want)
+			t.Errorf("Strict ChapterFromLabel(%q) = %d, want %d", tc.label, *got, *tc.want)
 		}
 	}
 }

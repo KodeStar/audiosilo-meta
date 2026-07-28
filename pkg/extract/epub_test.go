@@ -243,6 +243,129 @@ func TestSplitMultipleLabelsWarning(t *testing.T) {
 	}
 }
 
+// TestSplitAtTocAnchors covers the shape that silently mis-chapters a book: one
+// spine document holding several chapters, distinguished only by the fragment in
+// each toc href. Emitting a single file per spine document merges them, and since
+// chapter numbers are the spoiler positions for anything built from this text,
+// every later chapter would be numbered too low.
+func TestSplitAtTocAnchors(t *testing.T) {
+	opf := `<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>Anchored</dc:title></metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="c1" href="body.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine><itemref idref="c1"/></spine>
+</package>`
+	nav := `<html xmlns:epub="http://www.idpf.org/2007/ops"><body>
+    <nav epub:type="toc"><ol>
+      <li><a href="body.xhtml">Chapter 1</a></li>
+      <li><a href="body.xhtml#c2">Chapter 2</a></li>
+      <li><a href="body.xhtml#c3">Chapter 3</a></li>
+    </ol></nav></body></html>`
+	body := `<html><body>
+      <p>alpha alpha alpha</p>
+      <h2 id="c2">Two</h2><p>bravo bravo</p>
+      <h2 id="c3">Three</h2><p>charlie</p>
+    </body></html>`
+	epub := buildEpub(t, map[string]string{
+		"META-INF/container.xml": container,
+		"OEBPS/content.opf":      opf,
+		"OEBPS/nav.xhtml":        nav,
+		"OEBPS/body.xhtml":       body,
+	})
+
+	dir := t.TempDir()
+	man, err := Split(epub, dir)
+	if err != nil {
+		t.Fatalf("Split: %v", err)
+	}
+	if len(man.Docs) != 3 {
+		t.Fatalf("Docs = %d, want 3 sections", len(man.Docs))
+	}
+
+	want := []struct {
+		file, anchor, label, contains string
+		chapter                       int
+	}{
+		{"001.txt", "", "Chapter 1", "alpha", 1},
+		{"002.txt", "c2", "Chapter 2", "bravo", 2},
+		{"003.txt", "c3", "Chapter 3", "charlie", 3},
+	}
+	for i, w := range want {
+		d := man.Docs[i]
+		if d.File != w.file || d.Anchor != w.anchor || d.Label != w.label {
+			t.Errorf("Docs[%d] = {file:%q anchor:%q label:%q}, want {%q %q %q}",
+				i, d.File, d.Anchor, d.Label, w.file, w.anchor, w.label)
+		}
+		if d.Spine != 1 {
+			t.Errorf("Docs[%d].Spine = %d, want 1 (all three come from one spine doc)", i, d.Spine)
+		}
+		if d.Chapter == nil || *d.Chapter != w.chapter {
+			t.Errorf("Docs[%d].Chapter = %v, want %d", i, d.Chapter, w.chapter)
+		}
+		body, err := os.ReadFile(filepath.Join(dir, w.file))
+		if err != nil {
+			t.Fatalf("read %s: %v", w.file, err)
+		}
+		if !strings.Contains(string(body), w.contains) {
+			t.Errorf("%s = %q, want it to contain %q", w.file, body, w.contains)
+		}
+		// Each section must hold ONLY its own text, or the split is cosmetic.
+		for _, other := range want {
+			if other.contains != w.contains && strings.Contains(string(body), other.contains) {
+				t.Errorf("%s leaked %q from another section", w.file, other.contains)
+			}
+		}
+	}
+}
+
+// TestSplitUnlocatableAnchorsWarnRatherThanGuess: when the toc names several
+// chapters in one document but their anchors are absent from the markup, we must
+// NOT invent cut points. The document stays whole and the operator is warned,
+// because a guessed boundary is worse than a merged one - it is wrong in a way
+// nothing downstream can detect.
+func TestSplitUnlocatableAnchorsWarnRatherThanGuess(t *testing.T) {
+	opf := `<?xml version="1.0"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>T</dc:title></metadata>
+  <manifest>
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="c1" href="body.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine><itemref idref="c1"/></spine>
+</package>`
+	nav := `<html xmlns:epub="http://www.idpf.org/2007/ops"><body>
+    <nav epub:type="toc"><ol>
+      <li><a href="body.xhtml#nope1">Chapter 1</a></li>
+      <li><a href="body.xhtml#nope2">Chapter 2</a></li>
+    </ol></nav></body></html>`
+	epub := buildEpub(t, map[string]string{
+		"META-INF/container.xml": container,
+		"OEBPS/content.opf":      opf,
+		"OEBPS/nav.xhtml":        nav,
+		"OEBPS/body.xhtml":       `<p>alpha</p><p>bravo</p>`,
+	})
+
+	man, err := Split(epub, t.TempDir())
+	if err != nil {
+		t.Fatalf("Split: %v", err)
+	}
+	if len(man.Docs) != 1 {
+		t.Fatalf("Docs = %d, want 1 (anchors unlocatable, so no split)", len(man.Docs))
+	}
+	var warned bool
+	for _, w := range man.Warnings {
+		if strings.Contains(w, "anchors could not be located") {
+			warned = true
+		}
+	}
+	if !warned {
+		t.Errorf("Warnings = %v, want one naming the unlocatable anchors", man.Warnings)
+	}
+}
+
 func TestSplitDuplicateSpineReference(t *testing.T) {
 	opf := `<?xml version="1.0"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0">
