@@ -94,7 +94,52 @@ func TestHTMLToText(t *testing.T) {
 	}
 }
 
-func TestInferChapter(t *testing.T) {
+// TestTagAnchorIDs pins the attribute scanner that locates a toc's cut points. A
+// missed anchor is not a cosmetic loss: the two chapters either side of it merge
+// into one file, and every chapter after them is numbered too low - which is a
+// silent spoiler shift in everything built from the text.
+func TestTagAnchorIDs(t *testing.T) {
+	cases := []struct{ raw, id, name string }{
+		{`<p id="c2">`, "c2", ""},
+		{`<p id='c2'>`, "c2", ""},
+		{`<p id=c2>`, "c2", ""},
+		{`<h2 class="chap" id="c2">`, "c2", ""},
+		// Whitespace around the equals sign is legal XML; it used to abort the scan.
+		{`<p id = "c2">`, "c2", ""},
+		// A valueless attribute has no '='; it must be stepped over, not bailed on.
+		{`<p hidden id="c2">`, "c2", ""},
+		{`<p id="c2" hidden>`, "c2", ""},
+		// Legacy link targets, and a tag carrying both forms with DIFFERENT values -
+		// only the caller knows which one the toc points at, so both come back.
+		{`<a name="old">`, "", "old"},
+		{`<a name="old" id="new">`, "new", "old"},
+		{`<a id="same" name="same">`, "same", "same"},
+		// Neither `data-id` nor an "id=" inside another value is an anchor.
+		{`<div data-id="x">`, "", ""},
+		{`<p title="id=nope">`, "", ""},
+		{`<p>`, "", ""},
+		{`<br/>`, "", ""},
+		{`<svg:rect id="c2"/>`, "c2", ""},
+	}
+	for _, c := range cases {
+		id, name := tagAnchorIDs(c.raw)
+		if id != c.id || name != c.name {
+			t.Errorf("tagAnchorIDs(%q) = (%q, %q), want (%q, %q)", c.raw, id, name, c.id, c.name)
+		}
+	}
+}
+
+// TestSplitChapterInference pins what Split writes into DocEntry.Chapter: only a
+// Strict reading from ChapterFromLabel, so the manifest field never carries a
+// guess. A consumer that wants the ambiguous readings calls ChapterFromLabel on
+// the Label itself and confirms them with Contiguous.
+//
+// "Chapter Seven" and "Chapter 7: The Return" resolve here where the original
+// inferChapter refused them - that widening is the point of the label vocabulary,
+// and both are unambiguous statements of a chapter number. "Part 7" must still
+// refuse: reading a structural divider as chapter 7 would collide with the real
+// chapter 7 and shift every spoiler position after it.
+func TestSplitChapterInference(t *testing.T) {
 	seven := 7
 	tests := []struct {
 		label string
@@ -104,21 +149,24 @@ func TestInferChapter(t *testing.T) {
 		{"chapter 7", &seven},
 		{"CHAPTER 7", &seven},
 		{"7", &seven},
+		{"Chapter Seven", &seven},
+		{"Chapter 7: The Return", &seven},
 		{"Epilogue", nil},
-		{"Chapter Seven", nil},
-		{"Chapter 7: The Return", nil},
 		{"Part 7", nil},
 		{"", nil},
 	}
 	for _, tc := range tests {
-		got := inferChapter(tc.label)
+		var got *int
+		if n, _, conf := ChapterFromLabel(tc.label); conf == Strict {
+			got = &n
+		}
 		switch {
 		case tc.want == nil && got != nil:
-			t.Errorf("inferChapter(%q) = %d, want nil", tc.label, *got)
+			t.Errorf("Strict ChapterFromLabel(%q) = %d, want none", tc.label, *got)
 		case tc.want != nil && got == nil:
-			t.Errorf("inferChapter(%q) = nil, want %d", tc.label, *tc.want)
+			t.Errorf("Strict ChapterFromLabel(%q) = none, want %d", tc.label, *tc.want)
 		case tc.want != nil && got != nil && *got != *tc.want:
-			t.Errorf("inferChapter(%q) = %d, want %d", tc.label, *got, *tc.want)
+			t.Errorf("Strict ChapterFromLabel(%q) = %d, want %d", tc.label, *got, *tc.want)
 		}
 	}
 }

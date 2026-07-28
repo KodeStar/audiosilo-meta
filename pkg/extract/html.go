@@ -31,8 +31,28 @@ var (
 // word). The accepted consequence: when a source uses whitespace-less inline
 // boundaries between words, ngram shingle runs can shorten there.
 func htmlToText(src []byte) string {
+	raw, _ := renderHTML(src, nil)
+	return normalizeText(raw)
+}
+
+// renderHTML is htmlToText's engine. It returns the UN-normalized rendered text
+// plus, for each id in wantIDs that it encountered, the offset in that text where
+// the element carrying the id begins.
+//
+// The offsets are into the raw output rather than the normalized one because a
+// caller splitting a document at those points must slice BEFORE normalizing -
+// normalizeText collapses whitespace and would invalidate any offset taken across
+// it. Each slice is then normalized on its own.
+//
+// wantIDs may be nil, which skips the id bookkeeping entirely so the common
+// whole-document path pays nothing for it.
+func renderHTML(src []byte, wantIDs map[string]bool) (string, map[string]int) {
 	s := string(src)
 	var b strings.Builder
+	var offsets map[string]int
+	if len(wantIDs) > 0 {
+		offsets = make(map[string]int, len(wantIDs))
+	}
 	inHead := 0 // >0 while inside a <head> element; its text is dropped
 	i, n := 0, len(s)
 
@@ -119,10 +139,104 @@ func htmlToText(src []byte) string {
 		case blockElements[name] && inHead == 0:
 			b.WriteByte('\n')
 		}
+
+		// Record a wanted anchor AFTER the block newline above, so the separator
+		// stays with the preceding section and the new one starts on content.
+		if offsets != nil && !isEnd && inHead == 0 {
+			id, name := tagAnchorIDs(s[i:next])
+			for _, cand := range [2]string{id, name} {
+				if cand == "" || !wantIDs[cand] {
+					continue
+				}
+				if _, seen := offsets[cand]; !seen {
+					offsets[cand] = b.Len()
+				}
+			}
+		}
 		i = next
 	}
 
-	return normalizeText(b.String())
+	return b.String(), offsets
+}
+
+// tagAnchorIDs returns the fragment identifiers a raw start tag declares: the
+// modern `id` attribute and the legacy `<a name="...">` form older epubs still use
+// as a link target. Either may be "".
+//
+// BOTH are returned rather than one being preferred, because only the caller knows
+// which of them the toc actually points at, and a converter can emit a tag whose
+// `id` and `name` differ.
+//
+// It parses the attribute list rather than searching for `id=`, so `data-id` and
+// an `id` appearing inside another attribute's quoted value cannot be mistaken for
+// the real thing. Whitespace around the equals sign (`id = "c2"`, legal XML) and a
+// valueless attribute (`<p hidden id="c2">`, legal HTML) are both tolerated
+// mid-list: bailing out on either would silently lose the anchor, and a lost anchor
+// merges two chapters and mis-numbers every chapter after them.
+func tagAnchorIDs(raw string) (id, name string) {
+	i := 0
+	// Skip '<' and the element name.
+	if i < len(raw) && raw[i] == '<' {
+		i++
+	}
+	for i < len(raw) && isNameChar(raw[i]) {
+		i++
+	}
+	for i < len(raw) {
+		i = skipTagSpace(raw, i)
+		start := i
+		for i < len(raw) && isNameChar(raw[i]) {
+			i++
+		}
+		if i == start {
+			break // '>', '/' or malformed input: no more attributes
+		}
+		attr := strings.ToLower(raw[start:i])
+
+		// A valueless attribute simply has no '=' before the next attribute name.
+		eq := skipTagSpace(raw, i)
+		if eq >= len(raw) || raw[eq] != '=' {
+			i = eq
+			continue
+		}
+		i = skipTagSpace(raw, eq+1)
+
+		var value string
+		if i < len(raw) && (raw[i] == '"' || raw[i] == '\'') {
+			quote := raw[i]
+			i++
+			vs := i
+			for i < len(raw) && raw[i] != quote {
+				i++
+			}
+			value = raw[vs:i]
+			if i < len(raw) {
+				i++
+			}
+		} else {
+			vs := i
+			for i < len(raw) && !isTagSpace(raw[i]) && raw[i] != '>' && raw[i] != '/' {
+				i++
+			}
+			value = raw[vs:i]
+		}
+		switch {
+		case attr == "id" && id == "":
+			id = value
+		case attr == "name" && name == "":
+			name = value
+		}
+	}
+	return id, name
+}
+
+func isTagSpace(c byte) bool { return c == ' ' || c == '\t' || c == '\n' || c == '\r' }
+
+func skipTagSpace(s string, i int) int {
+	for i < len(s) && isTagSpace(s[i]) {
+		i++
+	}
+	return i
 }
 
 // parseTag parses the tag starting at s[i] (which must be '<'). It returns the

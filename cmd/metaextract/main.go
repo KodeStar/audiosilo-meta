@@ -2,9 +2,10 @@
 // pipeline. It has two subcommands:
 //
 //	metaextract split --epub <book.epub> -o <outdir>
-//	    Split an epub into one plain-text file per spine document (001.txt, ...)
-//	    plus a manifest.json describing the chapter list. Exits 0 on success,
-//	    2 on a usage/IO/parse error.
+//	    Split an epub into one plain-text file per chapter (001.txt, ...) - a
+//	    spine document, or one anchored section of a spine document that holds
+//	    several chapters - plus a manifest.json describing the chapter list and
+//	    the book's OPF metadata. Exits 0 on success, 2 on a usage/IO/parse error.
 //
 //	metaextract ngram --source <dir-or-file> [--n 8] <sidecar.json> [more.json...]
 //	    Check authored characters/recaps sidecars for near-verbatim overlap with

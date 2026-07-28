@@ -53,16 +53,30 @@ the mechanical check in step 4 then proves it.
 go run ./cmd/metaextract split --epub book.epub -o /tmp/book-split
 ```
 
-This writes one plain-text file per spine document (`001.txt`, ...) plus
-`manifest.json`: each doc's toc label, a conservatively inferred chapter
-number (only labels like "Chapter 12" or "12" infer; anything else stays
-unnumbered), and word counts.
+This writes one plain-text file per emitted section (`001.txt`, ...) plus
+`manifest.json`. Usually a section is a whole spine document; when the toc
+points several entries at fragments INSIDE one document
+(`ch07.xhtml#c8`), that document is split at those anchors and each chapter
+gets its own file. Every entry records `index` (the emitted file), `spine`
+(the spine document the text came from), the `anchor` it was cut at, the toc
+`label`, a `chapter` number when the label states one outright, and word
+counts. The manifest also carries a `metadata` block read from the OPF -
+title/subtitle, authors, language, publisher, a check-digit-validated ISBN,
+and the series - which is what identifies the book to the catalogue.
+
+`chapter` is only ever filled from a label that STATES a number ("Chapter 12",
+"12", "12. The Reckoning", "Chapter Twelve", "CHAPTER XII. The Reckoning").
+Labels that merely look numeric ("XII An Irate Neighbor", where "I" is also an
+English word) are left unnumbered here on purpose; a consumer that wants them
+parses `label` itself and confirms the reading against the whole book.
 
 Review the manifest before going further - it IS the position model:
 
 - The chaptered docs should match the book's real chapter count. If the toc
-  has no usable labels (or one file holds many chapters), the manifest carries
-  warnings; you will need to split or map chapters by hand before step 2.
+  has no usable labels (or one file holds many chapters whose anchors are
+  missing from the markup), the manifest carries warnings; you will need to
+  split or map chapters by hand before step 2. Split never invents a cut
+  point - an anchor it cannot find is reported, not guessed at.
 - Unlabeled docs at the edges are front matter and back matter. Check the back
   matter: epubs often carry a teaser excerpt of ANOTHER book (the Killing
   Floor epub ends with the opening chapter of Die Trying). Excerpts must not
