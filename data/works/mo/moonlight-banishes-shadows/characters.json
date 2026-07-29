@@ -1,0 +1,330 @@
+{
+  "characters": [
+    {
+      "description": "A violet-eyed Al'rashian Survivalist whose bond to Kirstin has been severed. Lost memories leave him uncertain of his heritage and of a missing inner companion.",
+      "id": "trent-embra",
+      "name": "Trent Embra",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A thief marked for Sallor's lethal champion contest. Martin approaches Trent as a helpful guide near Belrise, but intends to rob and injure him before gaining entry to the Moonlit Forest at his side.",
+      "id": "martin-vane",
+      "name": "Martin Vane",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The young noble who formerly held Trent's summons bond. Its severing leaves Trent outside her service.",
+      "id": "kirstin",
+      "name": "Kirstin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Al'drossford guard recruit who formerly travelled and trained with Trent.",
+      "id": "tersa-embra",
+      "name": "Tersa",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Cullen"
+      ],
+      "description": "An Al'drossford guard sergeant who formerly trained and travelled with Trent.",
+      "id": "sergeant-cullen",
+      "name": "Sergeant Cullen",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Taylor"
+      ],
+      "description": "A grand-master instructor serving Lewis and a formidable duelling-wand user. Taylor answers Tersa's poor control with exercises in patience and dexterity, then recognizes that Trent's unexplained absence requires investigation.",
+      "id": "master-taylor",
+      "name": "Master Taylor",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kinslayer"
+      ],
+      "description": "Orion is the adopted Al'rashian brother of Trent and Tersa and is also called Kinslayer. A Spirit Summoner, he travels toward Wallander on a rumor that Clan Embra may be working nearby.",
+      "id": "orion-embra",
+      "name": "Orion Embra",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A local adventurer whose former companions were killed by outlaws. She follows Orion from Sweet Meadows and becomes his provisional companion on the road to Wallander despite his initial refusal.",
+      "id": "orions-travelling-companion",
+      "name": "Orion's travelling companion",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The local ruler whose authority in Al'drossford overrides the ambitions of visiting lesser nobles. Lewis checks Seth's provocations and must balance the search for Trent against the political pressure created by royal guests.",
+      "id": "duke-lewis",
+      "name": "Lewis",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lewis's wife and the king's sister. Her return to Al'drossford with royal nobles and collared immortal soldiers creates political pressure that limits Lewis's ability to search openly for Trent.",
+      "id": "duchess-vanessa",
+      "name": "Duchess Vanessa",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A younger royal son travelling with a military column from Belrise. Seth proposes taking Trent's soulbound equipment by force, but his aunt prevents the attack.",
+      "id": "seth",
+      "name": "Seth",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A young noblewoman travelling from Belrise with her aunt and brother. She takes an interest in Trent's soulbound mask when their military column encounters him.",
+      "id": "young-alverin-noblewoman",
+      "name": "the young Alverin noblewoman",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shadowy being that claims Trent as its brother and says they once hunted together. It recognizes the absence of Trent's deeper companion, enters his soulbound gloves, and says it will sleep there until he grows stronger.",
+      "id": "shadow-creature",
+      "name": "the shadow creature",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Seth's confidant and a skilled infiltrator who can pass as a servant. Although attached to Seth's scheme against Lewis, Avery quietly gathers information and pursues advancement on his own account.",
+      "id": "avery",
+      "name": "Avery",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An Al'rashian master from the Dusk Tower who comes to Al'drossford looking for Trent. The master believes Trent's violet eyes attract wandering trials and uses a tracking bond to assist Cullen and Taylor's search.",
+      "id": "dusk-tower-master",
+      "name": "the Dusk Tower master",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A level-one puppy that helps Trent against a were-rat. After Trent heals it, the unusually durable and persistent dog follows him through the Moonlit Forest.",
+      "id": "bonded-creature",
+      "name": "the bonded creature",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A six-legged feathered beast who makes a reciprocal hunting agreement with Trent. Their werewolf hunt earns her wings and talons, after which she directs Trent to Martin's hiding place and departs through a portal.",
+      "id": "ream",
+      "name": "the ream",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elderly wolfkin who administers the Moonlit Forest trial's rules and perfect-clear rewards. The keeper persuades Trent to retain the bonded dog, entrusts him with a corrupting trace of divinity, and warns that trials and other seekers will be drawn to him.",
+      "id": "moonlit-forest-trial-keeper",
+      "name": "the Moonlit Forest trial keeper",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An academy warrior whose party needs help finding traps. Financially strained by low-paying work, Carrie offers to guide Trent around Belrise and introduce him to the dungeon group.",
+      "id": "carrie-moss",
+      "name": "Carrie Moss",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An aspiring weaponsmith in Belrise who needs quality wood and mined materials for his experiments. He and Trent consider a supply arrangement involving materials, skill stones, and spell resources.",
+      "id": "arden",
+      "name": "Arden",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The leader of Carrie's academy party. Jace controls Carrie's money and development through a charter whose harsh conditions are not disclosed to prospective members, while requiring any new recruit to accept his authority.",
+      "id": "jace",
+      "name": "Jace",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An academy Mage Apprentice who offers healing, support magic, mapping, and storage during Trent's delve. Felicia wants access to valuable fourth-floor materials, but accepts Trent's rule that party drops are divided equally.",
+      "id": "felicia",
+      "name": "Felicia",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "small white spider"
+      ],
+      "description": "A small white spider who keeps Belrise's minor permanent trial. The keeper secretly reshapes obstacles and rewards around Trent, accepting a breach of normal rules in the belief that accelerated growth will justify the danger.",
+      "id": "belrise-trial-keeper",
+      "name": "the Belrise trial keeper",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young shadow mage-assassin who arrives in Belrise with her identity concealed. She hopes to assemble an ambitious adventuring party and accepts a fast temporary delve with two apparent company recruits.",
+      "id": "young-shadow-mage-assassin",
+      "name": "the young shadow mage-assassin",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A company recruiter who presents himself as a shield warrior and offers the newly arrived assassin an equal-share temporary delve. His true capabilities and reasons for entering the changed Belrise trial remain concealed at their meeting.",
+      "id": "company-recruiter",
+      "name": "the company recruiter",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The recruiter's marksman partner in the temporary Belrise group. He appears to provide ranged support for a rapid attempt at the changed trial, while his precise allegiance and intentions have not yet been tested.",
+      "id": "marksman-partner",
+      "name": "the marksman partner",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A silver-haired rogue travelling under an alias while without her guards. Pursued through the Belrise trial, she offers Trent a disputed gray sphere in return for his protection.",
+      "id": "silver-haired-rogue",
+      "name": "the silver-haired rogue",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Red Tiger Company recruiter who pursues the silver-haired rogue and the gray sphere she carries. He withdraws when Trent uses the Belrise safe-zone rules to prevent an immediate attack.",
+      "id": "red-tiger-recruiter",
+      "name": "the Red Tiger recruiter",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Red Tiger Company archer accompanying the recruiter in pursuit of the silver-haired rogue's gray sphere. He leaves the trial with the recruiter after Trent invokes safe-zone protection.",
+      "id": "red-tiger-archer",
+      "name": "the Red Tiger archer",
+      "reveal": {
+        "chapter": 51
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trial authority separate from Belrise's incapacitated keeper. The spirit appears while the unstable trial is restructuring.",
+      "id": "trial-spirit",
+      "name": "the trial spirit",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A spectral former Duskwraith who knew Trent before his current identity but refuses to reveal who he was. The guide explains the history of the Duskwraiths and Shadowhunters and gives Trent the soulbound swords Blood and Ash.",
+      "id": "spectral-duskwraith-guide",
+      "name": "the spectral Duskwraith guide",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A would-be replacement keeper who has not gained full control of Belrise's unstable trial. He confronts Trent in the fifth-floor guardian chamber behind an antlered guardian and six armored knights.",
+      "id": "temporary-would-be-keeper",
+      "name": "the temporary would-be keeper",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The guard assigned to Belrise's minor permanent trial. Gaffney admits Trent's party after a trapfinding demonstration, then finds standing orders to assist Trent and report his movements.",
+      "id": "sergeant-gaffney",
+      "name": "Sergeant Gaffney",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Arashia's last ruler during its collapse. King Derakferdor directs the Dross away from a doomed defense so their people can endure and establish a new home.",
+      "id": "king-derakferdor",
+      "name": "King Derakferdor",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:1039400450",
+      "type": "community"
+    }
+  ],
+  "work": "moonlight-banishes-shadows"
+}
