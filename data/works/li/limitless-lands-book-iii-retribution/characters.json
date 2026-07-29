@@ -1,0 +1,362 @@
+{
+  "characters": [
+    {
+      "description": "The Limitless Lands AI oversees Raytak's MedPod treatment, supporting his cognition while shielding him from memories that could endanger his recovery.",
+      "id": "cleo",
+      "name": "Cleo",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Raytak's son and a director of the MedPod company. He supervises his father's treatment while keeping their family connection from Raytak inside the game.",
+      "id": "trey",
+      "name": "Trey",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fellow MedPod patient and Raytak's trusted scout leader in Limitless Lands. He can work beside Raytak in the game without placing Raytak's protected memories at risk.",
+      "id": "tai",
+      "name": "Tai",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The mayor responsible for developing Hayden's Knoll. He supports the settlement's growth and works with Raytak to strengthen its position in Limitless Lands.",
+      "id": "delling",
+      "name": "Delling",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced Imperium noncommissioned officer who serves as Raytak's field adviser and helps direct garrison operations and troop assignments.",
+      "id": "brooks",
+      "name": "Brooks",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Yendis's unicorn-beetle animal companion, accompanying her during field expeditions and dangerous investigations.",
+      "id": "crunchy",
+      "name": "Crunchy",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of a clan allied with Hayden's Knoll. Raytak can call on the clan under an established pact when the settlement faces a major threat.",
+      "id": "forerunner-clan-leader",
+      "name": "the Forerunner clan leader",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rival player ruler and one of Delling's scholarship competitors. After an unsuccessful attack on Haven, he retains executioners, a necromancer ally, and a funded scheme against Raytak.",
+      "id": "brandon",
+      "name": "Brandon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Brandon's surviving ally, an undead specialist who accepts paid work and reports that the operation against Raytak is already under way.",
+      "id": "necromancer",
+      "name": "the necromancer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An ancient parasite able to invade and consume a host's mind. Freed from a sealed mountain ruin, it takes control of a gnoll leader while hiding the change from the surrounding tribe.",
+      "id": "parasite-master",
+      "name": "the parasite master",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An Imperium commander and MedPod patient who is convicted with planted evidence and stripped of his Legion. Reduced to a level-zero Disgraced Commander, he accepts imprisonment to pursue exoneration through the Retribution path.",
+      "id": "raytak",
+      "name": "Raytak",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The replacement officer whose platoon assumes responsibility for Hayden's Knoll after Raytak's Legion is dissolved.",
+      "id": "lieutenant-burnside",
+      "name": "Lieutenant Burnside",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A corrupt Imperium official who uses planted documents and summary powers to convict Raytak, dissolve his Legion, and install a replacement garrison.",
+      "id": "field-inspector",
+      "name": "the field inspector",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A disgraced Imperium soldier imprisoned with Raytak. His hatred of officers makes him Raytak's most immediate threat among the transported prisoners.",
+      "id": "former-sergeant",
+      "name": "the former sergeant",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A promoter who buys prisoner contracts and coerces the captives into gladiatorial combat, treating Raytak and the other soldiers as expendable arena assets.",
+      "id": "gladiatorial-school-owner",
+      "name": "the gladiatorial-school owner",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An arena official who validates the prisoners' supposed consent to fight and supports the coercive arrangement imposed by their contract holder.",
+      "id": "asif",
+      "name": "Asif",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A druid who joins the time-sensitive effort to uncover who engineered Raytak's false conviction. She brings field skills, an animal companion, and a commitment to freeing him.",
+      "id": "yendis",
+      "name": "Yendis",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of the party investigating Raytak's conviction. He joins the search for evidence behind the false treason charge.",
+      "id": "jacoby",
+      "name": "Jacoby",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Hayden's Knoll merchant and informant who directs Yendis toward a suspected lead connected with the people behind Raytak's conviction.",
+      "id": "phineas",
+      "name": "Phineas",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A goblin apprenticed to Phineas by Chief Bugtug. His dishonest sales earn him the Shady Merchant class.",
+      "id": "eyeball",
+      "name": "Eyeball",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Raytak's granddaughter and the real-world player behind Yendis. She visits him in his MedPod and recruits additional help for the effort to free him in Limitless Lands.",
+      "id": "lauren",
+      "name": "Lauren",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lauren's ally and a level-eight barbarian player recruited for the mission to help Raytak. Limitless Lands has given him opportunities for friendship and social engagement.",
+      "id": "nolan",
+      "name": "Nolan",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A slaver leader transporting captured gnolls. Parasites infiltrate his caravan and absorb the slavers into their growing hive.",
+      "id": "saunders",
+      "name": "Saunders",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A slaver who leads a raid on a nearby farm before becoming infected by the parasite hive.",
+      "id": "jameson",
+      "name": "Jameson",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A project coordinator and addiction researcher who asks Trey to examine whether MedPod treatment and a supportive virtual environment could assist patients through withdrawal.",
+      "id": "dr-nassif",
+      "name": "Dr. Nassif",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A company representative who leads a public marketing announcement for merchandise based on Limitless Lands characters and scenes.",
+      "id": "gloria",
+      "name": "Gloria",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A regional dwarf investigator whose people may provide an official inquiry into Raytak's conviction. He supports the search for evidence and understands the dangers around the dwarven routes.",
+      "id": "dwarf-pathfinder-leader",
+      "name": "the dwarf pathfinder leader",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ward-bound legendary creature encountered by Yendis’s party in a darkened sealed chamber. It detects lies and makes consequential riddles the price of escape.",
+      "id": "sphinx",
+      "name": "the sphinx",
+      "reveal": {
+        "chapter": 15
+      }
+    },
+    {
+      "description": "A veteran merchant who agrees to outfit Raytak's growing prisoner force after deciding that Raytak genuinely values the soldiers under his command.",
+      "id": "retired-imperium-soldier",
+      "name": "the retired Imperium soldier",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A soldier in Raytak's prisoner unit who detects three spies watching the camp.",
+      "id": "infiltrator",
+      "name": "the infiltrator",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The infiltrator who exposed the spies around Raytak's camp. A divine boon makes his improvised butter knives unusually effective weapons.",
+      "id": "butterknife-buford",
+      "name": "Butterknife Buford",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A prison guard who comes to believe Raytak is honorable. He quietly provides intelligence about the capital tournament and conceals magical fire javelins for Raytak's force.",
+      "id": "former-prison-guard",
+      "name": "the former prison guard",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A favored Grand Melee contender whose exceptional size and strength make him one of the tournament's most dangerous threats.",
+      "id": "stone-giant",
+      "name": "the stone giant",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A defensive-garrison officer who helps Raytak resume command at Hayden's Knoll.",
+      "id": "lieutenant-gamble",
+      "name": "Lieutenant Gamble",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tai's wife, waiting with their extended family when he emerges from MedPod treatment. She welcomes him back as he begins the physical work of recovery.",
+      "id": "judith",
+      "name": "Judith",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Trey's mother and Raytak's wife. Medically stabilized in a MedPod, she lives in a private lakeside virtual environment where family members can visit her.",
+      "id": "natalie",
+      "name": "Natalie",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of the depleted dwarf force allied with Raytak against the Holdfast infestation. He brings survivors and knowledge of the parasite threat to the joint campaign.",
+      "id": "dwarf-war-leader",
+      "name": "the dwarf war leader",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An intelligent parasite that rejects the Holdfast master's rule. It secretly leaves with several dozen drones to establish an independent hive beyond the master's control.",
+      "id": "parasite-daughter",
+      "name": "the parasite daughter",
+      "reveal": {
+        "chapter": 34
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An unnamed infernal patron who enforces a soul contract, destroys the necromancer and undead minions, and compels Brandon into unknown service through a portal.",
+      "id": "imp-patron",
+      "name": "the imp patron",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B07SX5V727",
+      "type": "community"
+    }
+  ],
+  "work": "limitless-lands-book-iii-retribution"
+}
