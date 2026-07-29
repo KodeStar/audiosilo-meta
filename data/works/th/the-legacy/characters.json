@@ -1,0 +1,338 @@
+{
+  "characters": [
+    {
+      "description": "The Blood Kingdoms' only archwizard, troubled by visions of destruction on the scale of the Cataclysm. He resists the law demanding a newborn's death and tries to protect children whose magic puts them in danger.",
+      "id": "gideon",
+      "name": "Gideon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Gideon's fourteen-year-old apprentice, found abandoned as a child and raised privately as his daughter.",
+      "id": "gideons-adopted-daughter",
+      "name": "Gideon's Adopted Daughter",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Gideon's longtime closest friend, an elven scholar who teaches at the University of Magic. His wife and son Ciaran operate the family's merchant-protection ships.",
+      "id": "gideons-elven-scholar-friend",
+      "name": "Gideon's Elven Scholar Friend",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The son of Gideon's closest elven friend. He helps his mother operate the family's ships, which protect merchants at sea.",
+      "id": "ciaran",
+      "name": "Ciaran",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A frightened child whose disturbing glimpses of possible harm mark him as a potential seer. Gideon places him with an oracle priest instead of continuing his training as a wizard.",
+      "id": "young-prophetic-child",
+      "name": "The Young Prophetic Child",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young pupil who manipulates an elemental with exceptional power despite having no earth bond. The elven school is expected to guide the child's rapidly growing ability.",
+      "id": "young-elemental-child",
+      "name": "The Young Elemental Child",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A formidable royal warrior and friend of Gideon. He is deeply wary of magic despite his loyalty to the archwizard.",
+      "id": "northman-champion",
+      "name": "The Northman Champion",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler who hears Gideon's warning about the approaching Black Sun. He authorizes sending the threatened child to a world without magic rather than enforcing immediate execution.",
+      "id": "king-of-sethos",
+      "name": "The King of Sethos",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Gideon's pregnant elven wife and a sorceress. Their first biological child is due near the approaching Black Sun.",
+      "id": "gideons-elven-wife",
+      "name": "Gideon's Elven Wife",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Gideon's son, born during the Black Sun and condemned by the kind of magic he may inherit. Gideon carries him through a dimensional bridge and leaves him with a family in a nonmagical world.",
+      "id": "kale",
+      "name": "Kale",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A masked, yellow-eyed assassin carrying a broken wooden blade. She tries to reach the Black Sun infant during the exile ritual and resembles a mysterious figure from Gideon's ancient vision.",
+      "id": "elisa-blackmist",
+      "name": "Elisa Blackmist",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified Fae woman who uses a stable portal to reach a nonmagical world and leaves an infant there. She believes the child may be the last Fae born on Talona.",
+      "id": "unidentified-fae-mother",
+      "name": "The Unidentified Fae Mother",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unidentified watcher on the nonmagical world who learns where both displaced infants have been placed. The watcher receives an unresolved assignment to protect or kill them.",
+      "id": "earth-based-observer",
+      "name": "The Earth-Based Observer",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kale's wife and lifelong companion in Sam's Bay. A gifted medical student preparing for an advanced research career, she is pulled into the black vortex with Kale and Max.",
+      "id": "ember",
+      "name": "Ember",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The county sheriff and a close friend of Kale and Ember. He saved them during an earlier gang attack, later trained Kale to fight, and is caught with the couple when the vortex opens.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The woman who treats Kale after monsters attack him in the Forsaken Lands. She understands that exceptionally powerful magic brought him to Talona and becomes his first guide through the unfamiliar world.",
+      "id": "kales-guide",
+      "name": "Kale's Guide",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A field leader among the Dead Sisters. She commands one of the witch teams sent to search for Kale and to strike at Gideon.",
+      "id": "arabella",
+      "name": "Arabella",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An enslaved healer forced to support the Dead Sisters' search teams.",
+      "id": "nikia",
+      "name": "Nikia",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kale"
+      ],
+      "description": "The adult Kale under the name used for him in Talona. His first offensive spell erupts as black-and-purple lightning, convincing his vampire guide that he may possess the feared power of a death wizard.",
+      "id": "kael",
+      "name": "Kael",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A coastal master wizard abducted with his apprentices by unfamiliar invaders. Their devices defeat established magic and lock their captives' powers behind suppressing collars.",
+      "id": "older-master-wizard",
+      "name": "The Older Master Wizard",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful dragonkin ruler who believes Kael must survive because of sacrifices already made by several magical peoples. Unable to intervene directly, she appeals to the death god when Kael is mortally wounded.",
+      "id": "dragonkin-queen",
+      "name": "The Dragonkin Queen",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The divine origin of Kael's inherited power. When the dragonkin queen appeals for help, he guides Kael through healing an otherwise fatal wound but warns that the intervention carries an unpredictable magical price.",
+      "id": "death-god",
+      "name": "The Death God",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive wizard held in the vast prison beneath the mountains. He is among the many prisoners whose magic the masked invaders plan to exploit.",
+      "id": "galen",
+      "name": "Galen",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive wizard in the prison beneath the mountains and the grandfather of Kael's vampire companion. Their meeting brings a reconciliation after a long separation.",
+      "id": "gabriel",
+      "name": "Gabriel",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the Dead Sisters and the authority behind Kael's attempted conversion. She orders increasingly severe physical and dream-based torture, demanding that Arabella either break him or turn him into the coven's death wizard.",
+      "id": "cardessa",
+      "name": "The Cardessa",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "The Dragonkin Queen"
+      ],
+      "description": "The dragonkin ruler whom Gideon's party seeks for help locating Kael. Entry to her islands and an audience with her require Wraithlord binding stones.",
+      "id": "queen-superior",
+      "name": "Queen Superior",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The queen's only daughter and successor among the dragonkin. Memories inherited through her family line were intentionally hidden.",
+      "id": "selyse",
+      "name": "Selyse",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king's only heir, an accomplished whip fighter determined to prove that she can defend her realm and eventually rule it. After being confined for challenging her father, she escapes to pursue the death wizard herself.",
+      "id": "princess",
+      "name": "The Princess",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The princess's trusted companion and combat instructor. She is imprisoned because of the princess's defiance, then freed by her pupil and joins the unauthorized pursuit.",
+      "id": "princess-lady-in-waiting",
+      "name": "The Princess's Lady-in-Waiting",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Nikia"
+      ],
+      "description": "The healer previously known as Nikia, now asking Kael to call her Kia. Freed from the Dead Sisters' control, she remains loyal to Kael and explains how threats against families and trainees were used to enforce her obedience.",
+      "id": "kia",
+      "name": "Kia",
+      "reveal": {
+        "chapter": 41
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient and exceptionally dangerous woman awakening beneath Tazamore Mountain. Feared by the deep-dwellers, she feeds on them to recover enough strength to fight toward the surface.",
+      "id": "freed-deep-survivor",
+      "name": "The Freed Deep Survivor",
+      "reveal": {
+        "chapter": 44
+      }
+    },
+    {
+      "description": "A masked nonhuman captor who defeats Kael, imprisons his vampire companion, and locks Kael's magic behind a painful suppressing collar. He intends to drain the captive wizards' power for his allies.",
+      "id": "masked-nonhuman-captor",
+      "name": "The Masked Nonhuman Captor",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "The Young Prophetic Child"
+      ],
+      "description": "Gideon's monastery-raised ward, revealed as the frightened child once placed with an oracle priest. Cortina transforms him into the first true prophet in centuries and charges him with showing Gideon his mistake.",
+      "id": "monastery-prophet",
+      "name": "The Monastery Prophet",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The necromancer ruler of Dorma Sai. After securing peace with Eloria, he and his queen secretly prepare an expedition to seize Ember and locate Kael because they believe both are tied to prophecy.",
+      "id": "king-of-dorma-sai",
+      "name": "The King of Dorma Sai",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Dorma Sai's warrior queen, a necromancer who can command the dead. Intelligence from her sister in Corinth helps her and the king plan a covert expedition to seize Ember and find Kael.",
+      "id": "queen-of-dorma-sai",
+      "name": "The Queen of Dorma Sai",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0747VMPCH",
+      "type": "community"
+    }
+  ],
+  "work": "the-legacy"
+}
