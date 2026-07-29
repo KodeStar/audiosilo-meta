@@ -1,0 +1,350 @@
+{
+  "characters": [
+    {
+      "description": "Trey's father, a retired Army colonel whose long physical and cognitive decline has left him unconscious and near death. He becomes the first patient placed in an experimental treatment pod directed by the game company's artificial intelligence.",
+      "id": "colonel-james-raytak",
+      "name": "Colonel James Raytak",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Colonel Raytak's son and legal guardian, as well as the medical liaison for the company's treatment partnership. He authorizes the experimental pod treatment and its use of AI-directed nanobots, placing his father's survival in the new system's care.",
+      "id": "trey",
+      "name": "Trey",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Louie"
+      ],
+      "description": "Trey's technically skilled colleague, responsible for bringing the treatment pod online and connecting its systems to the game AI. Lou handles the activation while the medical team prepares Colonel Raytak for the sealed first treatment cycle.",
+      "id": "lou",
+      "name": "Lou",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The FDA observer assigned to the experimental treatment. Dr. Greenway monitors medication decisions and can override the AI's plan or halt the procedure if the patient's condition declines, providing independent oversight during the first treatment.",
+      "id": "dr-greenway",
+      "name": "Dr. Greenway",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A media host who enters Limitless Lands during the public presentation and demonstrates its sensory realism, pain settings, and accelerated passage of game time.",
+      "id": "media-host",
+      "name": "The Media Host",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The game company's principal public-relations representative. She conducts the initial public presentation of Limitless Lands, introducing the game's features and beta launch to the media.",
+      "id": "gloria-treese",
+      "name": "Gloria Treese",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The artificial intelligence that operates Limitless Lands and directs Colonel Raytak's medical treatment. She reports his early repairs and proposes using his responses inside the game to help map his damaged mind and reconstruct lost memories.",
+      "id": "cleo",
+      "name": "Cleo",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Colonel James Raytak",
+        "James Raytak"
+      ],
+      "description": "Colonel James Raytak's identity inside Limitless Lands. Drawing on his military experience, he chooses the unique Commander class, whose progress depends on leading, paying, equipping, and protecting troops rather than seeking personal combat power.",
+      "id": "commander-raytak",
+      "name": "Commander Raytak",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The halfling proprietor of the Commencement Commissary, who guides Raytak through character creation and uncovers his real-world combat record before presenting his class options. Finley explains the unusual demands attached to the Commander class.",
+      "id": "finley",
+      "name": "Finley",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A scout in Raytak's original nine-soldier squad.",
+      "id": "private-tremble",
+      "name": "Private Tremble",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A soldier in Raytak's starting squad. A navigation shortcut leaves the unit lost, and Long is badly wounded during its first clash with goblins. His condition immediately tests Raytak's responsibility for casualties, supplies, and the welfare of his followers.",
+      "id": "private-long",
+      "name": "Private Long",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Drex"
+      ],
+      "description": "The medic assigned to Raytak's starting squad, responsible for treating the unit during its dangerous first journey. Private Drex accompanies the soldiers as they attempt to reach the garrison town while meeting the mission's strict casualty requirement.",
+      "id": "private-drex",
+      "name": "Private Drex",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Brazilian fighter player who joins Raytak in defending stranded loggers from a goblin attack. He fights alongside the commander's squad despite their difficult position, and the two add each other as in-game friends after the rescue.",
+      "id": "jacoby-player",
+      "name": "Jacoby",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A logger rescued by Raytak's force during a goblin attack. He is among the survivors whom Raytak agrees to escort toward the garrison town, adding civilian protection to the commander's already dangerous introductory mission.",
+      "id": "barnaby",
+      "name": "Barnaby",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Brooks"
+      ],
+      "description": "The senior non-commissioned officer assigned as Raytak's field adviser for the mission to Hayden's Knoll. He joins Raytak's frontier command as the new deployment begins.",
+      "id": "sergeant-brooks",
+      "name": "Sergeant Brooks",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The garrison commander who gives Raytak independent authority at Hayden's Knoll and promises soldiers, supplies, and funding for the frontier assignment. His orders make the settlement's security Raytak's first sustained command responsibility.",
+      "id": "lieutenant-colonel-jacoby",
+      "name": "Lieutenant Colonel Jacoby",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rogue player who murders a town guard. Raytak intervenes and is critically wounded before other guards kill Hacksaw and heal Raytak.",
+      "id": "hacksaw",
+      "name": "Hacksaw",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A capable supply clerk who assembles a discounted package of weapons, armor, tools, medical kits, and uniforms for Raytak's new recruits. Krebs helps stretch the commander's limited funds before the unit begins its two-week march.",
+      "id": "krebs",
+      "name": "Krebs",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The official responsible for the settlers' caravan, including its route and marching order. He hires additional guards shortly before the journey to Hayden's Knoll begins and must coordinate their presence with Raytak's newly assigned military escort.",
+      "id": "caravan-operator",
+      "name": "The Caravan Operator",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of the caravan's hired guards. He clashes with Raytak and permits lax watchkeeping, making his company an uncertain part of the expedition's defenses. His approach contrasts with the fortified camps and regular watches imposed by Raytak.",
+      "id": "mercenary-captain",
+      "name": "The Mercenary Captain",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ten-year-old player travelling with the rangers Drake and Quimby on a starter quest. She meets Raytak while the three accompany the northbound caravan, and her druid abilities give the small player group a different set of skills from his soldiers.",
+      "id": "druid-player",
+      "name": "The Druid Player",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ranger player travelling beside Quimby and the young druid player as their group pursues its starter quests. Drake meets Raytak on the road north and brings scouting and wilderness experience to the trio accompanying the caravan.",
+      "id": "drake",
+      "name": "Drake",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ranger player and companion to Drake and the young druid player during their journey with the caravan. Quimby is part of the trio pursuing starter quests while Raytak trains his soldiers along the same northern route.",
+      "id": "quimby",
+      "name": "Quimby",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Barnaby's wife and Bella's mother, travelling with the logging families who are relocating to Hayden's Knoll. Claire is part of the civilian community whose safety depends on the caravan's guards and Raytak's soldiers during the long journey.",
+      "id": "claire",
+      "name": "Claire",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mercenary who follows Raytak's orders when the caravan faces a likely goblin assault. Raytak places him in charge of the hired guards who remain at the wagon defense, trusting him to organize them alongside the settlers and soldiers.",
+      "id": "liam",
+      "name": "Liam",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A giant unicorn beetle that bonds with the young druid player as her animal companion after Raytak's party reaches the goblin camp. The bond transforms the creature and gives the druid a powerful companion during the captive rescue.",
+      "id": "crunchy",
+      "name": "Crunchy",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A child orphaned when his parents die during the goblin assault on the caravan. Raytak seeks a lasting home for him among the surviving settlers, recognizing that the expedition must care for those harmed along the road as well as defeat its enemies.",
+      "id": "edwin",
+      "name": "Edwin",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of the northern transition-point garrison. He expects Raytak to assume responsibility for Hayden's Knoll. His post is the expedition’s final secure stop before the frontier settlement.",
+      "id": "captain-reynolds",
+      "name": "Captain Reynolds",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Phineas"
+      ],
+      "description": "A merchant who advertises his emporium at the northern transition point, where Raytak's caravan stops before continuing toward Hayden's Knoll. Phineas is introduced as a commercial presence at the fortified post.",
+      "id": "phineas-t-moore",
+      "name": "Phineas T. Moore",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The acting leader of an understrength transition-point squad that has endured hunger, poor equipment, and repeated raids. He comes under Raytak's command when the caravan enters the Hayden's Knoll zone and is ordered to help fortify the position.",
+      "id": "private-spring-man",
+      "name": "Private Spring Man",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A survivor of a destroyed goblin tribe who travels in Phineas's service. Raytak allows him and his son to accompany the caravan after making Phineas responsible for their conduct, placing the pair under clear terms while entering the threatened zone.",
+      "id": "goblin-chief",
+      "name": "The Goblin Chief",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The young survivor travelling beside his father under Phineas's protection. He is permitted to join the caravan into the Hayden's Knoll zone after Raytak establishes that Phineas will be personally responsible for both goblins' behavior.",
+      "id": "goblin-chiefs-son",
+      "name": "The Goblin Chief's Son",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Delling"
+      ],
+      "description": "A level-2 player with authority over town construction for the displaced people of Hayden's Knoll. He and Raytak agree to provide food, shelter, defenses, and the civic buildings needed to rebuild, dividing civilian and military responsibilities.",
+      "id": "mayor-delling",
+      "name": "Mayor Delling",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former miner who survives a cave survey and reports that spiders seized a villager. He guides Raytak's force to the newly rediscovered copper mine, where recoverable resources could support the settlement if the underground threat is removed.",
+      "id": "lemuel",
+      "name": "Lemuel",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Sergeant Tai",
+        "Tai"
+      ],
+      "description": "A one-armed half-orc player who leads newly arrived advanced troops and two regular squads into the battle against the elite spider threatening Raytak's force. Tai's timely arrival prevents the creature from finishing its attack without opposition.",
+      "id": "scout-team-leader-tai",
+      "name": "Scout Team Leader Tai",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B07JKH2QJ3",
+      "type": "community"
+    }
+  ],
+  "work": "limitless-lands-the-commanders-tale-a-litrpg-adventure"
+}
