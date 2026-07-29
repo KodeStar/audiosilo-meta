@@ -49,10 +49,26 @@ jobs:
     # Same-repo branches (secrets + write token available), a maintainer-applied
     # `ai-verify` label, or a manual dispatch. Fork PRs without the label are
     # skipped - they cannot reach the secret anyway.
-    if: >
+    #
+    # A `labeled` event is narrowed to the opt-in `ai-verify` label and EXCLUDES
+    # the two outcome labels this workflow applies at the end (ai-verified /
+    # ai-flagged). Without that exclusion the labeling step below re-fires a
+    # `labeled` run for every PR it just verified: a second, wasted model call
+    # whose only effect is to cancel the in-flight run through the concurrency
+    # group above, leaving a cancelled `verify` check on a PR that was in fact
+    # verified. That accounted for 36 of 60 consecutive runs. `intake.yml` guards
+    # its own outcome labels the same way.
+    if: >-
       github.event_name == 'workflow_dispatch' ||
-      github.event.pull_request.head.repo.full_name == github.repository ||
-      contains(github.event.pull_request.labels.*.name, 'ai-verify')
+      (
+        (
+          github.event.action != 'labeled' ||
+          github.event.label.name == 'ai-verify'
+        ) && (
+          github.event.pull_request.head.repo.full_name == github.repository ||
+          contains(github.event.pull_request.labels.*.name, 'ai-verify')
+        )
+      )
     steps:
       - name: Checkout
         uses: actions/checkout@v4
