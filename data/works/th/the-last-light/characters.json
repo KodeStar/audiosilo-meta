@@ -1,0 +1,514 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "King of Destruction"
+      ],
+      "description": "A returned king rebuilding a realm fragmented during his twenty-year sleep. Trey and Therese serve as his reluctant aides and challenge the assumptions of obedience that surround his rule.",
+      "id": "floss",
+      "name": "Floss",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An Earth-born twin serving in Floss's household. He refuses to treat the king as infallible and objects when Floss keeps a dead companion's remains as a private reminder.",
+      "id": "trey",
+      "name": "Trey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Trey's Earth-born twin and one of Floss's personal aides. She directly challenges the king and insists that neither twin chose to become his subject.",
+      "id": "therese",
+      "name": "Therese",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Floss's trusted steward and military organizer. He maintained the diminished kingdom through the king's long sleep and now directs its defenses and the search for scattered loyalists.",
+      "id": "orthenon",
+      "name": "Orthenon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elite warrior among Floss's returning vassals who is associated with illusion magic.",
+      "id": "mars",
+      "name": "Mars",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A feared Gazer scout and one of Floss's vassals.",
+      "id": "ghazi",
+      "name": "Ghazi",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A ruler of territory once held by Floss who arrives in armed opposition to the returned king.",
+      "id": "veneth",
+      "name": "Veneth",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful northern noble already interested in Ryoka and major events across Izril. She treats the continent's political and military dangers as matters requiring coordinated action.",
+      "id": "magnolia-reinhart",
+      "name": "Magnolia Reinhart",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced general travelling with a Wall Lord from Salazsar. He regards the Goblin Lord as a major regional threat and warns that the armies advancing against him are dangerously inadequate.",
+      "id": "zel",
+      "name": "Zel",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Wall Lord from Salazsar seeking the truth about his missing lieutenant. He travels with armed retainers and has contacts watching for Ryoka's location.",
+      "id": "wall-lord-from-salazsar",
+      "name": "The Wall Lord from Salazsar",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Erin Solstice"
+      ],
+      "description": "An Earth-born innkeeper near Liscor whose Wandering Inn has become a home for an unusually varied community. Her magic, hospitality, and friendships draw adventurers, Antinium, Gnolls, and Drakes together.",
+      "id": "erin",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Ryoka Griffin"
+      ],
+      "description": "A classless Earth-born runner and Erin's friend. She travels through winter with Ivolethe and carries dangerous knowledge and obligations from her recent deliveries.",
+      "id": "ryoka",
+      "name": "Ryoka",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A member of Ryoka's circle whose family owns a farm. Ryoka proposes a group visit there with Fals and the young white-furred Gnoll.",
+      "id": "garia",
+      "name": "Garia",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Lion"
+      ],
+      "description": "A barmaid at the Wandering Inn who helps Erin run the business and cares for the young white-furred Gnoll sheltered there.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Stone Spears survivor"
+      ],
+      "description": "An orphaned white-furred Gnoll child living at the Wandering Inn. Traumatized by the loss of his tribe, he remains under Lionette's devoted care.",
+      "id": "young-white-furred-gnoll",
+      "name": "The young white-furred Gnoll",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An individual Antinium archer who hunts birds and accepts Erin's offer of a permanent guard post in the inn's planned watchtower.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An individual Antinium associated with Erin's inn.",
+      "id": "pawn",
+      "name": "Pawn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Slayer"
+      ],
+      "description": "A senior Antinium official of the Free Hive and an ally of Erin. He supports the growth of individual Antinium while balancing the Hive's needs and treaty obligations.",
+      "id": "klbkch",
+      "name": "Klbkch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Small Queen"
+      ],
+      "description": "An Antinium Progenitor and powerful mage who comes to Liscor to assess the Free Hive's emerging individuals. Her arrival brings the judgment of an ancient Antinium survivor.",
+      "id": "xrn",
+      "name": "Xrn",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "masked dungeon swordswoman"
+      ],
+      "description": "An intelligent undead skeleton who survives the loss of Erin's sustaining mana link by entering Liscor's dungeon. He hides his nature beneath scavenged armor and passes as a mute masked swordswoman.",
+      "id": "torrin",
+      "name": "Torrin",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ceria Springwalker"
+      ],
+      "description": "The Horns' ice mage and an established adventurer.",
+      "id": "ceria",
+      "name": "Ceria",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Horns' necromancer, whose unusual undead magic makes him valuable and controversial.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A frontline adventurer in the Horns. She fights despite severe damage to her metal-fused arms and seeks equipment that will let her protect the team effectively.",
+      "id": "yvlon",
+      "name": "Yvlon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium fighter and member of the Horns.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "old man"
+      ],
+      "description": "A tremendously powerful magical patron whom Ryoka knows in the guise of an old man. His instruction and resources have already shaped her obligations and her standing with Liscor's Gnolls.",
+      "id": "terriarch",
+      "name": "Terriarch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Frost Faerie"
+      ],
+      "description": "Ryoka's faerie companion and winter guide. Iron is dangerous to her.",
+      "id": "ivolethe",
+      "name": "Ivolethe",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commander of a major goblin army advancing across Izril. His organized force is large enough to concern generals, cities, and nobles well before it reaches Liscor.",
+      "id": "goblin-lord",
+      "name": "The Goblin Lord",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A living Necromancer who acts through the Goblin Lord, his apprentice, during the battle against the suppression army. He kills one of its generals and raises the battlefield dead against the survivors.",
+      "id": "necromancer",
+      "name": "The Necromancer",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Garen"
+      ],
+      "description": "An established Hobgoblin leader known to adventurers and goblins.",
+      "id": "garen-redfang",
+      "name": "Garen Redfang",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Laken Goddard",
+        "Emperor"
+      ],
+      "description": "A blind Earth-born ruler protecting River Farm after disaster. His growing imperial authority and bond with Durene make him the center of the settlement's survival and rebuilding.",
+      "id": "laken",
+      "name": "Laken",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Laken's half-troll companion and protector at River Farm. Her strength and loyalty make her the settlement's first defense when physical danger reaches its people.",
+      "id": "durene",
+      "name": "Durene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A River Farm farmer whom Laken appoints to organize reconstruction and daily operations. His practical knowledge makes him the ruler's steward as the settlement is rebuilt.",
+      "id": "prost",
+      "name": "Prost",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A witch serving with the Silver-rank Celestial Trackers at River Farm. She works under the team's mace-wielding leader.",
+      "id": "celestial-trackers-witch",
+      "name": "The Celestial Trackers' witch",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The mace-wielding head of the Silver-rank Celestial Trackers, one of the adventuring teams hired to help protect River Farm.",
+      "id": "celestial-trackers-leader",
+      "name": "The Celestial Trackers' leader",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The saboteur at River Farm who posed as the Celestial Trackers' leader. She incapacitates Durene and the witch, discloses that she serves Magnolia Reinhart, and escapes before Laken can question her.",
+      "id": "magnolia-reinharts-river-farm-spy",
+      "name": "Magnolia Reinhart's River Farm spy",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The Queen who leads the Free Hive, restored Klbkch, and created Ksmvr. She independently resumes forbidden experiments intended to restore Antinium queens and create other specialized Antinium.",
+      "id": "free-antinium-queen",
+      "name": "The Free Antinium Queen",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born battlefield doctor in Baleros who performs surgery and triage for anyone she can save. Exhaustion and scarce supplies test her commitment to care without regard to military side.",
+      "id": "geneva-scala",
+      "name": "Geneva Scala",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Selfid who shares Geneva's living body, controls her right arm, and assists during surgery. She can take control when the exhausted doctor can no longer safely continue.",
+      "id": "okasha",
+      "name": "Okasha",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kenjiro Murata"
+      ],
+      "description": "A Japanese university student transported from Melbourne to Baleros. Inexperienced in combat, he joins Grave Tender's Fist with other stranded arrivals and tries to keep his companions together.",
+      "id": "ken",
+      "name": "Ken",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Japanese Earth arrival and Ken's former schoolmate. She enters Grave Tender's Fist without combat experience and faces the new world's undead beside Ken and Luan.",
+      "id": "aiko",
+      "name": "Aiko",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A South African athlete transported from Melbourne to Baleros. His conditioning helps him endure mercenary training, and he becomes a protective companion to Ken and Aiko.",
+      "id": "luan",
+      "name": "Luan",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The captain of Grave Tender's Fist, a mercenary company that clears battlefields of corpses and naturally arising undead. He recruits promising but inexperienced arrivals for suppression work.",
+      "id": "qualet",
+      "name": "Qualet",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Selfid honor guard protecting Geneva's medical camp. He knows Okasha inhabits Geneva and remains because he believes Geneva may be able to cure the Selfids' wasting.",
+      "id": "collectus",
+      "name": "Collectus",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A renowned Grandmaster Strategist, teacher, former named adventurer, and senior officer of the Forgotten Wing Company. He considers retirement while his oldest friend warns that his departure could weaken the company.",
+      "id": "niers",
+      "name": "Niers",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Liscor chess-newsletter author who circulates Niers's game and introduces Go, allowing Niers to trace his unknown opponent to the city.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Gnoll champion and named adventurer who arrives in Liscor with a powerful Drake mage. They present themselves as a newly formed two-person team.",
+      "id": "regrika-blackpaw",
+      "name": "Regrika Blackpaw",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Drake mage travelling with Regrika Blackpaw when the pair reach Liscor. The two present themselves as a newly formed adventuring team.",
+      "id": "regrikas-drake-mage-companion",
+      "name": "Regrika's Drake mage companion",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ivory-boned undead warrior serving the Necromancer who used Regrika Blackpaw's identity to approach Ryoka.",
+      "id": "undead-woman-servant",
+      "name": "The undead woman servant",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A black skeletal mage serving the Necromancer who accompanied the false Regrika while disguised as a Drake.",
+      "id": "undead-skeletal-mage",
+      "name": "The undead skeletal mage",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Gold-rank adventurer who leads the defense of the Wandering Inn. The disguised undead woman kills this team leader during the attack.",
+      "id": "gold-rank-defenders-leader",
+      "name": "The Gold-rank team leader",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Gold-rank adventurer who fights with a flail and struggles with self-loathing. The disguised undead woman kills this defender during the attack on the Wandering Inn.",
+      "id": "gold-rank-flail-fighter",
+      "name": "The Gold-rank flail fighter",
+      "reveal": {
+        "chapter": 36
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B09FR6RBVY",
+      "type": "community"
+    }
+  ],
+  "work": "the-last-light"
+}
