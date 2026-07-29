@@ -1,0 +1,366 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Erin Solstice"
+      ],
+      "description": "An injured young woman from Michigan who reaches an abandoned inn after being stranded in an unfamiliar world. Alone and short of food, she takes shelter there and soon receives the Innkeeper class.",
+      "id": "erin",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A drake City Watch guard and Spearmaster who visits Erin's isolated inn with his partner. Blunt and formidable, he becomes one of her first local contacts.",
+      "id": "relc",
+      "name": "Relc",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Free Antinium guardsman partnered with Relc. He is observant, restrained, and prepared to help Erin understand dangers that she cannot yet recognize.",
+      "id": "klbkch",
+      "name": "Klbkch",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A seemingly skeletal stranger who forces his way into the inn and demands food. His appearance and intentions make him an immediate threat to Erin.",
+      "id": "skeletal-looking-intruder",
+      "name": "Skeletal-looking intruder",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A drake receptionist at Liscor's Adventurers' Guild. She gives Erin practical guidance when the unfamiliar city and its customs leave the new innkeeper out of her depth.",
+      "id": "selys",
+      "name": "Selys",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A drake tactician and enthusiastic chess player. Confident in his formal skills, he discovers that Erin's experience with the game far exceeds his own.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A drake guardsman associated with Relc and Klbkch. He shows concern for Erin and helps investigate the merchant who cheated her.",
+      "id": "ralk",
+      "name": "Ralk",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gnoll shopkeeper who offers Erin fair prices after her difficult first experience in Liscor's market. Her practical help and straightforward manner make her a welcome friend and supplier.",
+      "id": "krshia",
+      "name": "Krshia",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ryoka Griffin"
+      ],
+      "description": "A displaced young woman from Earth who earns money as a barefoot runner. Fast, guarded, and determined to remain classless, she takes dangerous delivery work while concealing where she came from.",
+      "id": "ryoka",
+      "name": "Ryoka",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A powerful noblewoman who hires runners for valuable deliveries. Her perceptive abilities and interest in Ryoka make evasion difficult for the secretive runner.",
+      "id": "magnolia-reinhart",
+      "name": "Magnolia Reinhart",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sociable city runner who warns Ryoka about a lethal request and proposes that they work together. Her friendliness persists despite Ryoka's preference for running alone.",
+      "id": "garia",
+      "name": "Garia",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An influential senior runner who expects others to respect the profession's informal rules. He uses his standing among local runners to pressure Ryoka over desirable requests.",
+      "id": "fals",
+      "name": "Fals",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hungry human mage trained at Wistram whose studies include necromancy. After a hostile beginning with Erin, he becomes a recurring customer with an unpaid obligation to the inn.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of a decaying empire who had withdrawn from conquest. After two displaced twins describe their technologically advanced world, he resumes command, mobilizes his vassals, and forces the twins into his service.",
+      "id": "king-of-destruction",
+      "name": "King of Destruction",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of Liscor's Antinium Hive. She permits Klbkch to bring workers to Erin's inn as a limited experiment while warning him about opposition to contact with other species.",
+      "id": "antinium-queen",
+      "name": "Antinium Queen",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Minotaur captain of the Horns of Hammerad. He is bound by honor to repay Ryoka after her dangerous potion delivery allows his adventuring company to survive a battle.",
+      "id": "calruz",
+      "name": "Calruz",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A rival city runner who contests Ryoka's access to profitable work. She responds to losing a desirable delivery with threats of retaliation.",
+      "id": "persua",
+      "name": "Persua",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The young female leader of a small goblin group that accepts food and chess lessons at Erin's inn. She is watchful, quick to learn, and willing to cooperate when her people are threatened.",
+      "id": "rags",
+      "name": "Rags",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium worker who begins to see himself as an individual while grieving Klbkch. He chooses a name and turns to chess as he tries to understand a life beyond assigned labor.",
+      "id": "pawn",
+      "name": "Pawn",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ceria"
+      ],
+      "description": "A half-Elf mage in the Horns of Hammerad. She helps Ryoka seek treatment for a shattered leg and offers candid warnings about the price attached to powerful aid.",
+      "id": "ceria-springwalker",
+      "name": "Ceria Springwalker",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Vice-captain of the Horns of Hammerad and one of the adventurers indebted to Ryoka. Jelaqua shares responsibility for the company's members and its obligations.",
+      "id": "jelaqua",
+      "name": "Jelaqua",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ghazi the Omniscient"
+      ],
+      "description": "A renowned part-gazer adventurer who encounters Erin after a shield-spider hunt. Known as a Pathseeker, she is a veteran fighter whose presence draws immediate attention in Liscor.",
+      "id": "ghazi",
+      "name": "Ghazi",
+      "reveal": {
+        "chapter": 35
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An animated skeleton supplied by Pisces as payment toward his inn debt. Bound to obey Erin, it becomes a tireless cleaner, servant, and improvised guard despite its limited understanding.",
+      "id": "unnamed-skeleton-warrior",
+      "name": "Unnamed skeleton warrior",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient gold-scaled dragon who can appear as an elderly, pointed-eared man. When Ryoka reaches his hidden cave injured and poisoned, he recognizes her condition and magically stops her bleeding.",
+      "id": "unnamed-dragon",
+      "name": "Unnamed dragon",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mage associated with the Horns of Hammerad. His Repair spell restores Ryoka's damaged phone even though the device is not magical.",
+      "id": "sostrom",
+      "name": "Sostrom",
+      "reveal": {
+        "chapter": 43
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The name Erin gives to the skeleton serving at her inn. Its persistence, growing combat ability, and attempts to be useful suggest more development than she expected from an undead servant.",
+      "id": "toren",
+      "name": "Toren",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The armored captain of the Silver Spears and a member of the Byres noble family. Distantly related to Magnolia Reinhart, she joins the companies preparing to explore Liscor's newly uncovered ruins.",
+      "id": "yvlon-byres",
+      "name": "Yvlon Byres",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An archer captain leading the Flawless Flight. He considers joining the first organized raid into Liscor's ruins if the participating mages judge the risk acceptable.",
+      "id": "cervial",
+      "name": "Cervial",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A mage captain involved in discussions about the ruins expedition. He initially declines to enter because the confined passages and unknown dangers make the venture unusually hazardous.",
+      "id": "lir",
+      "name": "Lir",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An adventurer leader whose company joins the coalition preparing to investigate the ruins near Liscor.",
+      "id": "gerald",
+      "name": "Gerald",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Liscor's temporary Antinium prognogator, deliberately made to resemble the dead Klbkch. He treats Pawn's claim to individuality as a possible aberration and asserts the Hive's authority over him.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A former chess-playing Antinium worker who chooses an individual name during Liscor's undead crisis. He leads other newly named workers in forming a defensive line around Erin's inn.",
+      "id": "knight",
+      "name": "Knight",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Bird joins the workers defending the inn.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Gary joins the workers defending the inn.",
+      "id": "gary",
+      "name": "Gary",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Belgrade joins the workers defending the inn.",
+      "id": "belgrade",
+      "name": "Belgrade",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Anand joins the workers defending the inn.",
+      "id": "anand",
+      "name": "Anand",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An undead guardian released from the crypt below Liscor's ruins. It wears layers of harvested skin, can strip victims by touch, and projects supernatural terror that prevents opponents from fighting effectively.",
+      "id": "skinner",
+      "name": "Skinner",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Liscor's Watch Captain. When Skinner's undead force enters the city, she organizes guards and civilians to resist the assault.",
+      "id": "zevara",
+      "name": "Zevara",
+      "reveal": {
+        "chapter": 60
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:1774240327",
+      "type": "community"
+    }
+  ],
+  "work": "the-wandering-inn"
+}
