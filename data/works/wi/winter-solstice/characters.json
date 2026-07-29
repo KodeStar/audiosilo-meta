@@ -1,0 +1,411 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Erin Solstice"
+      ],
+      "description": "The Earth-born proprietor of the Wandering Inn, known for extending friendship across the divisions surrounding Liscor. Her inn has become a refuge for people who rarely find acceptance elsewhere.",
+      "id": "erin",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Ryoka Griffin"
+      ],
+      "description": "A classless runner from Earth and one of Erin's friends. She travels with the Frost Faerie Ivolethe and approaches unfamiliar powers, secret knowledge, and dangerous commissions with persistent caution.",
+      "id": "ryoka",
+      "name": "Ryoka",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Lion"
+      ],
+      "description": "Erin's barmaid and the person entrusted with the Wandering Inn when Erin is absent. She is building a life through the inn's daily work and its unusual community.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Flooded Waters Chieftain"
+      ],
+      "description": "The young chieftain of the Flooded Waters tribe and an established battlefield leader.",
+      "id": "rags",
+      "name": "Rags",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "aliases": [
+        "Garen"
+      ],
+      "description": "Leader of the Redfang tribe and its elite warriors. Though Rags defeated him before this campaign, he retains independent command and commands more personal loyalty within their coalition.",
+      "id": "garen-redfang",
+      "name": "Garen Redfang",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Great Chieftain of the Mountain City Tribe"
+      ],
+      "description": "The immense Great Chieftain of a powerful northern Goblin tribe. He offers an alliance that commits his mountain only if the Goblin Lord attacks it, and he treats Rags' authority with open contempt.",
+      "id": "tremborag",
+      "name": "Tremborag",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Hobgoblin chieftain whose loyalty to Rags is visible even within Tremborag's territory. He remains close enough to act as one of her guards when much of the coalition's support wavers.",
+      "id": "goldstone-chieftain",
+      "name": "Goldstone Chieftain",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Stone Spears tribe survivor"
+      ],
+      "description": "The orphaned last survivor of the Stone Spears tribe, now sheltered at the Wandering Inn under Lionette's care. Trauma and fear surrounding her white fur leave her convinced that disaster follows her.",
+      "id": "white-furred-gnoll-child",
+      "name": "The young white-furred Gnoll",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sword-bearing skeleton that pursues the young Gnoll to a dungeon fissure, then pauses when she is left hanging above the drop.",
+      "id": "torrin",
+      "name": "Torrin",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Zel Shivertail"
+      ],
+      "description": "A Drake general who helped defend the young Gnoll during the destruction of her tribe. At the inn he supports Lionette and takes an active role when the child needs rescue.",
+      "id": "zel",
+      "name": "Zel",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Azure Antinium who joins the effort to recover the young Gnoll from the dungeon. Her magic enables the rescuers to descend into the fissure and return to the surface.",
+      "id": "xrn",
+      "name": "Xrn",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tremborag's chief shaman and a practitioner of magic drawn from the strength of a tribe. She presents herself to Rags as a potential ally and claims power far beyond the mountain's lesser shamans.",
+      "id": "ulvama",
+      "name": "Ulvama",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The former Goldstone Chieftain, newly named by Rags. His conduct in Tremborag's restricted quarter proves protective rather than exploitative, and he will refuse commands that violate his understanding of what Goblins should be.",
+      "id": "pyrite",
+      "name": "Pyrite",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Redfang vanguard commander"
+      ],
+      "description": "A Redfang Warrior who speaks for the contingent that followed Rags out of the mountain. He presses her to devise a practical defense against cavalry, one of the tribe's most dangerous battlefield threats.",
+      "id": "red-scar",
+      "name": "Red Scar",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "white-bearded stranger"
+      ],
+      "description": "Ryoka's mysterious client, appearing as a white-bearded stranger with overwhelming command of basic magic. He seeks Erin's help understanding an artifact from Earth after easily defeating the Horns.",
+      "id": "terriarch",
+      "name": "Terriarch",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An elderly Hobgoblin who hides the extent of his intelligence. His personal memories reach back to earlier Goblin Kings, giving Rags evidence of a past in which Goblins formed peaceful alliances with other peoples.",
+      "id": "greybeard",
+      "name": "Greybeard",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Goblin commander who leads a separate group within Rags' enlarged tribe. She challenges Rags' decision to require regular training because it conflicts with Goblin custom.",
+      "id": "poison-bite",
+      "name": "Poison Bite",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A half-Elf adventurer and ice mage who belongs to the Horns of Hammerad.",
+      "id": "ceria",
+      "name": "Ceria",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A mage of the Horns of Hammerad whose unusual command of undead magic sets him apart.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A true stone construct charged with preserving Wistrom and enforcing its rules. She warns new arrivals about the academy's restricted places, dangerous experiments, and golems.",
+      "id": "cognita",
+      "name": "Cognita",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A severe Wistrom instructor who criticizes Ceria's spell construction and refuses ordinary access to combat teaching. Her challenges demand resourcefulness as well as magical strength.",
+      "id": "ice-mage",
+      "name": "The ice mage",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The frontline fighter of the re-formed Horns of Hammerad. She travels with Ceria, Pisces, and Ksmvr as the team makes its way back toward Liscor.",
+      "id": "yvlon-byres",
+      "name": "Yvlon Byres",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium fighter and member of the Horns of Hammerad. His place in the adventuring team brings him into Erin's growing circle of people from different species.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An alchemist who collaborates with Erin on practical inventions.",
+      "id": "octavia",
+      "name": "Octavia",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Antinium of the Liscor Hive and one of Erin's friends. His responsibilities to the Hive coexist uneasily with the individual relationships he has formed around the inn.",
+      "id": "klbkch",
+      "name": "Klbkch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An individual Antinium associated with Erin and the Wandering Inn. He has begun developing a life and responsibilities beyond the role ordinarily assigned to a worker.",
+      "id": "pawn",
+      "name": "Pawn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Drake strategist and chess player within Erin's established circle in Liscor.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium sub-leader who directs workers alongside Anand during Esthelm's reconstruction. The pair coordinate the force without spoken orders.",
+      "id": "belgrade",
+      "name": "Belgrade",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium sub-leader who shares responsibility with Belgrade for directing the workers sent to rebuild Esthelm. The two can coordinate their forces mind-to-mind.",
+      "id": "anand",
+      "name": "Anand",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A visiting Antinium Progenitor from another Hive. Tersk accompanies Xrn to Esthelm as an observer of Liscor's increasingly individual Antinium and their relief mission.",
+      "id": "tersk",
+      "name": "Tersk",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Emperor"
+      ],
+      "description": "A blind man devoted to protecting River Farm and to Durene, his half-troll companion. He has established authority over the village while adapting to a world he cannot see.",
+      "id": "laken",
+      "name": "Laken",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Laken's half-troll guide and protective companion. She helps him navigate the world and remains central to his efforts to secure River Farm.",
+      "id": "durene",
+      "name": "Durene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ryoka's Frost Faerie friend"
+      ],
+      "description": "A Frost Faerie who travels with Ryoka. She serves as a guide to powers and dangers that mortal knowledge does not readily explain.",
+      "id": "ivolethe",
+      "name": "Ivolethe",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The head of the Reinhart household, whose protection gives Ryoka shelter and access while placing her movements under the household's supervision.",
+      "id": "magnolia-reinhart",
+      "name": "Magnolia Reinhart",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Magnolia Reinhart's butler and Ryoka's assigned guide in Invercil. His service gives Ryoka privileged access while also tying her movements to Magnolia Reinhart's household.",
+      "id": "reynold",
+      "name": "Reynold",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A runner whose unexpected absence from his usual delivery circuit prompts concern at the Invercil Runners' Guild. Ryoka asks the guild to investigate where he has gone.",
+      "id": "valsaif-godfrey",
+      "name": "Valsaif Godfrey",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A blue fledgling being raised by Laken and Durene. Caring for the young bird has given Laken a new class connected to handling animals.",
+      "id": "frostwing",
+      "name": "Frostwing",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Black Mage"
+      ],
+      "description": "A caller who reaches Ryoka through her phone and claims to be an Earth arrival seeking others like himself. Ryoka and Laken cannot verify his identity or whether his connection to Wistrom is safe.",
+      "id": "wistrom-caller",
+      "name": "The Wistrom caller",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Klbkch's partner in an improvised Christmas mission. He helps distribute presents and stop burglars, then privately exchanges a gift with Klbkch after learning that Santa is fictional.",
+      "id": "klbkchs-christmas-partner",
+      "name": "Klbkch's Christmas partner",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A surviving Antinium Progenitor identified as the one who killed Zel's mentor.",
+      "id": "deathless",
+      "name": "The Deathless",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:1039403360",
+      "type": "community"
+    }
+  ],
+  "work": "winter-solstice"
+}
