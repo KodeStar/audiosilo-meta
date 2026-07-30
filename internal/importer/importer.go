@@ -121,14 +121,25 @@ type planner struct {
 	dataDir string
 	// people is the set of known person slugs. The slug IS the normalized
 	// identity: two names that slug the same are the same person.
-	people    map[string]bool
-	works     map[string]*workState
-	series    map[string]*seriesState
-	asins     map[string]bool
-	writes    map[string][]byte
-	curSource OutSource
-	fatal     error
-	summary   Summary
+	people map[string]bool
+	works  map[string]*workState
+	series map[string]*seriesState
+	asins  map[string]bool
+	// isbns is the set of ISBNs already recorded on some recording (seeded from
+	// disk in loadExisting, then extended as recordings are emitted), so an
+	// emitted tree can never violate checkUniqueness's global ISBN rule. Keys are
+	// uppercased to match the rule's normISBN comparison.
+	isbns  map[string]bool
+	writes map[string][]byte
+	// genres is the source-genre-string -> vocabulary mapping table (one
+	// embedded table, looked up once per run rather than once per book).
+	genres genreTable
+	// unmappedGenres collects every distinct source genre string that has no
+	// vocabulary mapping, reported once per run rather than once per book.
+	unmappedGenres map[string]bool
+	curSource      OutSource
+	fatal          error
+	summary        Summary
 }
 
 // Run imports booksPath (an OpenAudible export) into opts.DataDir. On a dry run
@@ -150,19 +161,43 @@ func Run(booksPath string, opts Options) (Summary, error) {
 // sourceBook is the parsed, source-independent view of one export entry. raw
 // carries only the shared-key passthrough fields the planner reads directly
 // (asin, title, title_short, author, narrated_by, language, region,
-// release_date, publisher, image_url, and OpenAudible's chapters array); any
-// fact a source derives differently at parse time is promoted to a typed field
-// here, never smuggled through raw. Invariant: every seriesRef carries a
-// non-empty name (the parsers skip empties and never emit one).
+// release_date, publisher, image_url, and a chapters array); any fact a source
+// derives differently at parse time is promoted to a typed field here, never
+// smuggled through raw in another source's key shape. Invariant: every
+// seriesRef carries a non-empty name (the parsers skip empties and never emit
+// one).
 type sourceBook struct {
 	raw        rawBook
-	series     []seriesRef // the book's series claims (>1 only for Libation)
-	runtimeMin int         // whole minutes; 0 = unknown
-	abridged   *bool       // tri-state: nil = the source did not state it
+	series     []seriesRef  // the book's series claims (>1 only for Libation)
+	runtimeMin int          // whole minutes; 0 = unknown
+	abridged   *bool        // tri-state: nil = the source did not state it
+	genres     []genreClaim // raw genre claims, mapped onto our vocabulary on work creation
+	isbns      []string     // well-formed ISBNs the source stated (validated at parse)
+	// authors / narrators are the source's STRUCTURED credit lists, set when it
+	// provides one name per element. They are used verbatim (each still passed
+	// through StripRoleQualifier) instead of splitting raw's comma-joined
+	// string, so a name that contains a comma ("Alexandre Dumas, pere") stays
+	// one person. Empty means the source only has the joined string.
+	authors   []string
+	narrators []string
+	// chapters is the source's own chapter rows, read when non-nil instead of
+	// raw's chapters array. buildChapters accepts either documented offset
+	// spelling (see rawChapter.startMS), so a parser hands its rows over
+	// as-is.
+	chapters []rawChapter
 }
 
 // str is a convenience passthrough to the underlying raw entry.
 func (s sourceBook) str(key string) string { return s.raw.str(key) }
+
+// chapterRows returns the book's chapter rows: the typed field when the parser
+// set one, else the raw entry's own chapters array.
+func (s sourceBook) chapterRows() []rawChapter {
+	if s.chapters != nil {
+		return s.chapters
+	}
+	return s.raw.chapters()
+}
 
 // primarySeriesClaim returns the book's first fully-valid series claim (a name
 // with a valid position), for the work-title disambiguation pre-pass.
@@ -197,12 +232,15 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // sourceType is the provenance stamped on every created record.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
 	p := &planner{
-		dataDir: opts.DataDir,
-		people:  map[string]bool{},
-		works:   map[string]*workState{},
-		series:  map[string]*seriesState{},
-		asins:   map[string]bool{},
-		writes:  map[string][]byte{},
+		dataDir:        opts.DataDir,
+		people:         map[string]bool{},
+		works:          map[string]*workState{},
+		series:         map[string]*seriesState{},
+		asins:          map[string]bool{},
+		isbns:          map[string]bool{},
+		writes:         map[string][]byte{},
+		genres:         audibleGenreTable().withRunMemo(),
+		unmappedGenres: map[string]bool{},
 	}
 	p.loadExisting()
 
@@ -243,6 +281,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		}
 	}
 	p.finalizeSeries()
+	p.reportUnmappedGenres()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -285,6 +324,9 @@ func (p *planner) loadExisting() {
 			for _, a := range r.ASIN {
 				ri.asins[a.ASIN] = true
 				p.asins[a.ASIN] = true
+			}
+			for _, isbn := range r.ISBN {
+				p.isbns[strings.ToUpper(isbn)] = true
 			}
 			ws.recs[r.ID] = ri
 		}
@@ -370,12 +412,12 @@ func (p *planner) addBook(b sourceBook, workTitle string) {
 		warn("unknown language %q; skipped", b.str("language"))
 		return
 	}
-	narratorNames := SplitNames(b.str("narrated_by"))
+	narratorNames := creditNames(b.narrators, b.str("narrated_by"))
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
 		return
 	}
-	authorNames := SplitNames(b.str("author"))
+	authorNames := creditNames(b.authors, b.str("author"))
 	if len(authorNames) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
@@ -386,14 +428,8 @@ func (p *planner) addBook(b sourceBook, workTitle string) {
 		return
 	}
 
-	authorSlugs := make([]string, 0, len(authorNames))
-	for _, name := range authorNames {
-		authorSlugs = append(authorSlugs, p.getOrCreatePerson(name, warn))
-	}
-	narratorSlugs := make([]string, 0, len(narratorNames))
-	for _, name := range narratorNames {
-		narratorSlugs = append(narratorSlugs, p.getOrCreatePerson(name, warn))
-	}
+	authorSlugs := p.creditSlugs(authorNames, warn)
+	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's series claims (one for OpenAudible, possibly several for
 	// Libation). The first that resolves to an already-known series (on disk or
@@ -410,12 +446,27 @@ func (p *planner) addBook(b sourceBook, workTitle string) {
 		}
 	}
 
-	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, warn)
-	p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
+	// The book's genre claims are mapped from the source's own strings onto this
+	// project's vocabulary (LICENSING.md: never a retailer's taxonomy verbatim)
+	// inside getOrCreateWork, and ONLY when it creates the work - a work already
+	// in the catalogue is not modified by a normal import, so mapping a row whose
+	// genres could never be stored would only add noise to the unmapped report.
+	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, b.genres, warn)
+	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
-	// new recording or merged the ASIN into an existing one, this tail records it.
-	if asin != "" {
+	// new recording or merged the ASIN into an existing one, this tail records
+	// it - but ONLY when the ASIN actually landed on a recording. An ASIN the
+	// region check rejected is nowhere in the tree, so claiming it would make a
+	// later, well-formed row for the same book dedupe against nothing and be
+	// skipped, losing the ASIN for the whole run.
+	//
+	// What a merge carries is deliberately narrow: the ASIN, this run's
+	// provenance stamp, and any globally-unclaimed ISBN. The incumbent
+	// recording's cover, publisher, chapters and release date are left alone -
+	// backfilling absent facts onto records already in the catalogue is the
+	// separate enrichment mode's job, not a side effect of a new-books import.
+	if asin != "" && recorded {
 		p.asins[asin] = true
 	}
 
@@ -437,6 +488,52 @@ type seriesRef struct {
 	seq    string
 	seqOK  bool
 	rawSeq string
+}
+
+// makeSeriesRef builds a book's claim to a position in a named series,
+// validating the raw position token through the shared rules. Every source
+// builds its refs here so one spelling of a position ("1.0") can never become a
+// different position from another ("1").
+func makeSeriesRef(name, rawSeq string) seriesRef {
+	pos, ok := NormalizeSequence(rawSeq)
+	return seriesRef{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}
+}
+
+// creditNames resolves one credit list (authors or narrators). A source that
+// parsed structured credits passes them in typed, and they are used verbatim
+// (trimmed, role-qualifier-stripped, empties dropped) - splitting them on commas
+// would tear "Alexandre Dumas, pere" into two people. A source that only has the
+// retailer's comma-joined string passes it as joined and it is split.
+func creditNames(typed []string, joined string) []string {
+	if len(typed) == 0 {
+		return SplitNames(joined)
+	}
+	out := make([]string, 0, len(typed))
+	for _, name := range typed {
+		if n := strings.TrimSpace(name); n != "" {
+			out = append(out, StripRoleQualifier(n))
+		}
+	}
+	return out
+}
+
+// creditSlugs resolves a credit list to person slugs, creating people as needed,
+// and deduplicates BY SLUG in first-seen order. The slug is the identity, so two
+// spellings of one person on the same book ("Ramon de Ocampo" and "Ramon De
+// Ocampo") are one credit - listing the slug twice would emit a record whose
+// narrators/authors array repeats itself.
+func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []string {
+	out := make([]string, 0, len(names))
+	seen := make(map[string]bool, len(names))
+	for _, name := range names {
+		slug := p.getOrCreatePerson(name, warn)
+		if seen[slug] {
+			continue
+		}
+		seen[slug] = true
+		out = append(out, slug)
+	}
+	return out
 }
 
 // getOrCreatePerson returns the slug for name, creating the person record when
@@ -485,8 +582,10 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 // re-derived from the full title, with the candidate chain (author suffix,
 // then numeric) only as the last-resort collision fallback. A collision with a
 // different author set appends the first author's slug, then numeric suffixes,
-// and warns.
-func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, warn func(string, ...any)) *workState {
+// and warns. genreClaims are the book's raw genre claims; they are mapped onto
+// the project vocabulary only on the branch that creates a work (the only place
+// they can be stored), and ride through the full-title retry unchanged.
+func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, genreClaims []genreClaim, warn func(string, ...any)) *workState {
 	base := Slugify(title)
 	if base == "" {
 		base = "untitled"
@@ -503,6 +602,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			p.works[slug] = ws
 			p.emit(filepath.Join("works", model.Shard(slug), slug, "work.json"), outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
+				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
 				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
@@ -518,7 +618,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// the last resort when that is unusable. Titles are already cleaned of
 			// trailing edition markers at the batch boundary.
 			if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
-				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, warn)
+				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, genreClaims, warn)
 			}
 		}
 	}
@@ -554,7 +654,11 @@ func (p *planner) findSeries(name string) *seriesState {
 // this entry is merged into it (runtime-guarded) rather than dropped or minted
 // as a sibling work; a genuinely different production (both runtimes known and
 // diverging beyond 10 percent) becomes a distinct recording under the same work.
-func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) {
+//
+// asinRecorded reports whether asin ended up on a recording (newly attached,
+// merged, or already there). It is false when the region check rejected it, so
+// the caller does not claim an ASIN that is nowhere in the tree.
+func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (asinRecorded bool) {
 	base := narratorSlugs[0]
 	if year := YearOf(b.str("release_date")); year != "" {
 		base += "-" + year
@@ -572,11 +676,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	slug := freeSlug
 	if len(matches) > 0 {
 		if asin == "" {
-			return // nothing new to add (same production, no new ASIN)
+			return false // nothing new to add (same production, no new ASIN)
 		}
 		for _, m := range matches {
 			if m.info.asins[asin] {
-				return // idempotent: this ASIN is already recorded
+				return true // idempotent: this ASIN is already recorded
 			}
 		}
 		// A new ASIN on this entry is a re-release of an existing production when
@@ -589,10 +693,13 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 			if runtimesCompatible(m.info.runtimeMin, b.runtimeMin) && !abridgedConflict(m.info.abridged, b.abridged) {
 				region, ok := p.resolveASINRegion(b, warn)
 				if !ok {
-					return
+					return false
 				}
-				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin)
-				return
+				// The entry's ISBNs ride along with the ASIN: they are the same
+				// edition's identifiers, and dropping them silently (as an
+				// earlier version did) loses a fact no later run would restore.
+				p.mergeRecordingASIN(m.info, ws.slug, m.slug, region, asin, p.claimISBNs(b.isbns, warn))
+				return true
 			}
 		}
 	}
@@ -617,9 +724,11 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	if asin != "" {
 		if region, ok := p.resolveASINRegion(b, warn); ok {
 			rec.ASIN = []OutASIN{{Region: region, ASIN: asin}}
+			asinRecorded = true
 		}
 	}
-	if chs := buildChapters(b.raw, warn); chs != nil {
+	rec.ISBN = p.claimISBNs(b.isbns, warn)
+	if chs := buildChapters(b.chapterRows(), warn); chs != nil {
 		rec.Chapters = chs
 	}
 
@@ -631,6 +740,7 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	ws.recs[slug] = ri
 	p.emit(relPath, rec)
 	p.summary.NewRecordings++
+	return asinRecorded
 }
 
 // resolveASINRegion maps the book's marketplace region to a canonical region
@@ -645,6 +755,45 @@ func (p *planner) resolveASINRegion(b sourceBook, warn func(string, ...any)) (st
 	return region, ok
 }
 
+// claimISBNs registers the book's ISBNs against the run's global ISBN set and
+// returns the ones this recording may carry. An ISBN already recorded elsewhere
+// (on disk or emitted earlier this run) is dropped with a warning rather than
+// emitted: checkUniqueness requires ISBNs to be globally unique, so a duplicate
+// would fail the post-import validation of the whole tree. Values are already
+// well-formed (the parsers validate against the schema pattern); the set key is
+// uppercased to match the rule's case-insensitive comparison.
+func (p *planner) claimISBNs(isbns []string, warn func(string, ...any)) []string {
+	var out []string
+	for _, isbn := range isbns {
+		key := strings.ToUpper(isbn)
+		if p.isbns[key] {
+			warn("ISBN %s is already recorded on another recording; not added", isbn)
+			continue
+		}
+		p.isbns[key] = true
+		out = append(out, isbn)
+	}
+	return out
+}
+
+// reportUnmappedGenres appends one run-level warning naming every distinct
+// source genre string that had no vocabulary mapping (sorted, so the line is
+// deterministic). Unmapped strings are DROPPED by design - LICENSING.md forbids
+// storing a retailer's genre strings verbatim - and this warning is how a
+// maintainer learns the vocabulary or the mapping table needs extending.
+func (p *planner) reportUnmappedGenres() {
+	if len(p.unmappedGenres) == 0 {
+		return
+	}
+	names := make([]string, 0, len(p.unmappedGenres))
+	for name := range p.unmappedGenres {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	p.summary.Warnings = append(p.summary.Warnings,
+		fmt.Sprintf("unmapped genre strings: %s", strings.Join(names, ", ")))
+}
+
 // abridgedConflict reports whether two recording abridged tri-states are
 // incompatible enough to block a merge. An absent flag is read as "unabridged"
 // (the audiobook default, and what an unmarked title implies), so an entry KNOWN
@@ -657,12 +806,13 @@ func abridgedConflict(a, b *bool) bool {
 
 func boolOrFalse(p *bool) bool { return p != nil && *p }
 
-// mergeRecordingASIN appends {region, asin} to an existing recording's asin
-// array and re-emits it, preserving every other field byte-for-byte. The record
-// (located from its work + recording slugs) is loaded from this run's queued
-// write when present (a recording emitted earlier in the same run) or from disk
-// otherwise. The caller has already checked that asin is not present on ri.
-func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string) {
+// mergeRecordingASIN appends {region, asin} (and any ISBN the caller claimed for
+// this entry) to an existing recording and re-emits it, preserving every other
+// field byte-for-byte. The record (located from its work + recording slugs) is
+// loaded from this run's queued write when present (a recording emitted earlier
+// in the same run) or from disk otherwise. The caller has already checked that
+// asin is not present on ri, and that every isbn is globally unclaimed.
+func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string) {
 	if p.fatal != nil {
 		return
 	}
@@ -681,6 +831,13 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 	}
 	arr, _ := raw["asin"].([]any)
 	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
+	if len(isbns) > 0 {
+		existing, _ := raw["isbn"].([]any)
+		for _, isbn := range isbns {
+			existing = append(existing, isbn)
+		}
+		raw["isbn"] = existing
+	}
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	srcArr, _ := raw["sources"].([]any)
@@ -891,18 +1048,18 @@ func (p *planner) flush() error {
 	return nil
 }
 
-// buildChapters maps a book's chapters, trimming titles and enforcing the same
-// monotonic-from-zero rule metacheck applies. On any structural violation it
-// warns and returns nil (the recording is emitted without chapters).
-func buildChapters(b rawBook, warn func(string, ...any)) []outChapter {
-	raw := b.chapters()
+// buildChapters maps a book's chapter rows (sourceBook.chapterRows), trimming
+// titles and enforcing the same monotonic-from-zero rule metacheck applies. On
+// any structural violation it warns and returns nil (the recording is emitted
+// without chapters).
+func buildChapters(raw []rawChapter, warn func(string, ...any)) []outChapter {
 	if len(raw) == 0 {
 		return nil
 	}
 	out := make([]outChapter, 0, len(raw))
 	for i, rc := range raw {
-		start, sOK := rc.intVal("start_offset_ms")
-		length, lOK := rc.intVal("length_ms")
+		start, sOK := rc.startMS()
+		length, lOK := rc.lengthMS()
 		if !sOK || !lOK || length <= 0 || start < 0 {
 			warn("chapter %d has invalid offsets; chapters omitted", i+1)
 			return nil
@@ -933,20 +1090,31 @@ type recCandidate struct {
 	info *recInfo
 }
 
-// sameNarratorRecs walks the whole base candidate chain under ws, returning
-// EVERY recording whose narrator set matches (a re-release ASIN can land on any
-// same-narrator sibling, not just the first) together with the first free slug
-// for a new recording. The walk terminates at the first free slug, so the chain
-// is finite.
+// sameNarratorRecs returns EVERY recording under ws whose narrator set matches
+// (in slug order, so a merge target is deterministic), together with the first
+// free slug along base's candidate chain for a genuinely new recording.
+//
+// The match scan deliberately covers ALL of the work's recordings rather than
+// just base's chain: the slug embeds the release YEAR, so the US (2019-12) and
+// UK (2020-01) releases of one production sit on unrelated chains. Walking only
+// the incoming chain minted a second recording for the sibling instead of
+// merging its ASIN. The runtime and abridged guards in addRecording remain the
+// correctness gate for what may merge.
 func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (matches []recCandidate, freeSlug string) {
-	for i := 0; ; i++ {
-		slug := recSlugAt(base, i)
-		existing, ok := ws.recs[slug]
-		if !ok {
-			return matches, slug
-		}
+	slugs := make([]string, 0, len(ws.recs))
+	for slug, existing := range ws.recs {
 		if SameSet(existing.narrators, narrators) {
-			matches = append(matches, recCandidate{slug: slug, info: existing})
+			slugs = append(slugs, slug)
+		}
+	}
+	sort.Strings(slugs)
+	for _, slug := range slugs {
+		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
+	}
+	for i := 0; ; i++ {
+		freeSlug = recSlugAt(base, i)
+		if _, taken := ws.recs[freeSlug]; !taken {
+			return matches, freeSlug
 		}
 	}
 }

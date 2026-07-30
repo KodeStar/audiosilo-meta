@@ -59,10 +59,19 @@ var marketplaces = map[string]bool{
 	"es": true, "it": true, "jp": true, "in": true, "br": true,
 }
 
-// mapRegion lowercases a region word and reports whether it is a known
-// marketplace. ok is false for an unknown or empty region.
+// regionAliases maps alternate spellings of a marketplace onto the code the
+// recording schema accepts. Audible's UK marketplace is "uk" in the enum, but an
+// ISO-3166-shaped mirror (libex) carries "gb" for the same marketplace.
+var regionAliases = map[string]string{"gb": "uk"}
+
+// mapRegion lowercases a region word, resolves the known aliases, and reports
+// whether the result is a known marketplace. ok is false for an unknown or empty
+// region.
 func mapRegion(word string) (region string, ok bool) {
 	region = strings.ToLower(strings.TrimSpace(word))
+	if alias, isAlias := regionAliases[region]; isAlias {
+		region = alias
+	}
 	if region == "" || !marketplaces[region] {
 		return "", false
 	}
@@ -74,14 +83,72 @@ func mapRegion(word string) (region string, ok bool) {
 // will pass schema validation.
 var sequencePattern = regexp.MustCompile(`^\d+(\.\d+)?(-\d+(\.\d+)?)?$`)
 
-// NormalizeSequence trims a raw series_sequence and reports whether it is a
-// valid position (single number or a range like "1-3.5").
+// NormalizeSequence trims a raw series_sequence, canonicalizes it, and reports
+// whether it is a valid position (a single number or a range like "1-3.5").
+//
+// A position is a STRING in the schema, so two spellings of the same number are
+// two different positions to every rule that compares them (series membership,
+// the position-uniqueness check, the importer's same-position merge test).
+// Sources spell them differently - a Postgres numeric renders "1" as "1.0" -
+// so trailing fractional zeros are stripped ("1.0" -> "1", "2.50" -> "2.5",
+// both endpoints of a range) and one book cannot occupy a series twice.
 func NormalizeSequence(raw string) (pos string, ok bool) {
 	pos = strings.TrimSpace(raw)
 	if pos == "" || !sequencePattern.MatchString(pos) {
 		return "", false
 	}
-	return pos, true
+	if !strings.Contains(pos, ".") {
+		return pos, true
+	}
+	parts := strings.Split(pos, "-")
+	for i, part := range parts {
+		parts[i] = trimFractionalZeros(part)
+	}
+	return strings.Join(parts, "-"), true
+}
+
+// trimFractionalZeros drops the trailing zeros (and then a bare trailing dot) of
+// a decimal number. It is only ever called on a value the sequence pattern
+// matched, and only touches a value that HAS a fractional part - so "10" keeps
+// its zero.
+func trimFractionalZeros(n string) string {
+	if !strings.Contains(n, ".") {
+		return n
+	}
+	return strings.TrimSuffix(strings.TrimRight(n, "0"), ".")
+}
+
+var (
+	// isbnPattern mirrors common.schema.json #/$defs/isbn, so an ISBN that
+	// passes NormalizeISBN passes schema validation.
+	isbnPattern = regexp.MustCompile(`^(\d{9}[0-9Xx]|\d{13})$`)
+	isbnStripRE = regexp.MustCompile(`[-\s]`)
+)
+
+// NormalizeISBN strips the hyphens and whitespace an ISBN is printed with
+// ("978-1-234-56789-7") and reports whether the remainder is a well-formed
+// ISBN-10/13. It is the repo's ONE definition of an acceptable ISBN, shared with
+// internal/issueform so a typed form field and a bulk import accept the same
+// values.
+func NormalizeISBN(raw string) (isbn string, ok bool) {
+	isbn = isbnStripRE.ReplaceAllString(strings.TrimSpace(raw), "")
+	if !isbnPattern.MatchString(isbn) {
+		return "", false
+	}
+	return isbn, true
+}
+
+// isoDatePart reduces an ISO timestamp to its YYYY-MM-DD date part;
+// addRecording validates the result before use. Both separators a source may
+// use are cut: the ISO "T" ("2018-10-18T23:00:00") and the space a SQL
+// timestamp renders ("2018-10-18 23:00:00"). Shared by every source whose
+// release date arrives as a timestamp (Libation, libex).
+func isoDatePart(ts string) string {
+	ts = strings.TrimSpace(ts)
+	if i := strings.IndexAny(ts, "T "); i >= 0 {
+		ts = ts[:i]
+	}
+	return ts
 }
 
 // roleQualifiers are the credit roles Audible appends to names in the author

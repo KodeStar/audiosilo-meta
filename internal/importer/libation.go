@@ -83,7 +83,7 @@ func libationToBook(e rawBook) sourceBook {
 	if pub := e.str("Publisher"); pub != "" {
 		b["publisher"] = pub
 	}
-	if rd := libationDate(e.str("DatePublished")); rd != "" {
+	if rd := isoDatePart(e.str("DatePublished")); rd != "" {
 		b["release_date"] = rd
 	}
 	if mins, ok := coerceInt(e["LengthInMinutes"]); ok && mins > 0 {
@@ -125,16 +125,6 @@ func mapLibationLocale(locale string) (string, bool) {
 	}
 	code, ok := libationLocaleNames[l]
 	return code, ok
-}
-
-// libationDate reduces an ISO timestamp ("2018-10-18T23:00:00") to its
-// YYYY-MM-DD date part; addRecording validates it before use.
-func libationDate(ts string) string {
-	ts = strings.TrimSpace(ts)
-	if i := strings.IndexByte(ts, 'T'); i >= 0 {
-		ts = ts[:i]
-	}
-	return ts
 }
 
 // libationCover builds the Amazon cover CDN URL from a PictureId. The id can
@@ -211,12 +201,12 @@ func parseLibationSeries(order, names string) []seriesRef {
 	return refs
 }
 
-// makeLibationSeriesRef validates a single order token against the position
-// rules; the unsorted sentinel and an empty order both become "no position".
+// makeLibationSeriesRef validates a single order token against the shared
+// position rules; the unsorted sentinel and an empty order both become "no
+// position".
 func makeLibationSeriesRef(order, name string) seriesRef {
 	if order == libationUnsorted {
 		order = ""
 	}
-	pos, ok := NormalizeSequence(order)
-	return seriesRef{name: name, seq: pos, seqOK: ok, rawSeq: order}
+	return makeSeriesRef(name, order)
 }

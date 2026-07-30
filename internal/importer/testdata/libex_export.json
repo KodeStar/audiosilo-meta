@@ -1,0 +1,57 @@
+[
+  {
+    "asin": "B0LIBEX001",
+    "title": "The Lost Cartographer",
+    "subtitle": "A Tale of Maps",
+    "region": "gb",
+    "regions": ["gb", "us"],
+    "publisher": "Lost Press",
+    "isbn": "9781234567897",
+    "language": "english",
+    "bookFormat": "unabridged",
+    "releaseDate": "2024-03-01T00:00:00Z",
+    "imageUrl": "https://m.media-amazon.com/images/I/51libex0001.jpg",
+    "lengthMinutes": 600,
+    "authors": [{ "name": "Ada Mapmaker" }],
+    "narrators": [{ "name": "Bea Reader" }],
+    "genres": [
+      { "asin": "99900000001", "name": "Epic Fantasy", "type": "Genres" },
+      { "asin": "99900000002", "name": "Adventure", "type": "Tags" },
+      { "asin": "99900000003", "name": "Totally Made Up Category", "type": "Tags" }
+    ],
+    "series": [{ "name": "Cartographer Chronicles", "position": 1 }],
+    "chapters": [
+      { "title": "Prologue", "startOffsetMs": 0, "lengthMs": 60000 },
+      { "title": "Chapter One", "startOffsetMs": 60000, "lengthMs": 120000 }
+    ],
+    "description": "A spoilery publisher blurb that must never be imported.",
+    "summary": "Another blurb nobody may import.",
+    "rating": 4.87,
+    "copyright": "(P) 2024 Mapmaker Media"
+  },
+  {
+    "asin": "B0LIBEX002",
+    "title": "The Second Map",
+    "region": "us",
+    "publisher": "Lost Press",
+    "isbn": "9781234567897",
+    "language": "english",
+    "bookFormat": "abridged",
+    "releaseDate": "2025-01-05T00:00:00Z",
+    "lengthMinutes": 300,
+    "authors": [{ "name": "Ada Mapmaker" }],
+    "narrators": [{ "name": "Bea Reader" }],
+    "genres": [{ "asin": "99900000003", "name": "Totally Made Up Category", "type": "Tags" }],
+    "series": [{ "name": "Cartographer Chronicles", "position": "2" }],
+    "description": "A spoilery publisher blurb that must never be imported.",
+    "rating": 4.87
+  },
+  {
+    "asin": "nope",
+    "title": "No Identity",
+    "region": "us",
+    "language": "english",
+    "authors": [{ "name": "Ada Mapmaker" }],
+    "narrators": [{ "name": "Bea Reader" }]
+  }
+]

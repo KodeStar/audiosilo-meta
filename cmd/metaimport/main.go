@@ -6,6 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
 //
 // --dry-run prints the plan without writing. A real run writes the new/changed
 // files, then validates the whole tree and exits non-zero if that fails. Import
@@ -38,6 +39,8 @@ func main() {
 		os.Exit(runSource("libation", os.Args[2:], importer.RunLibation))
 	case "audiosilo-books":
 		os.Exit(runSource("audiosilo-books", os.Args[2:], importer.RunAudiosiloBooks))
+	case "libex":
+		os.Exit(runSource("libex", os.Args[2:], importer.RunLibex))
 	case "-h", "--help", "help":
 		usage()
 		os.Exit(0)
@@ -49,7 +52,7 @@ func main() {
 }
 
 // runSource parses the shared flags for a source subcommand and runs its
-// importer (Run for openaudible, RunLibation for libation).
+// importer (Run for openaudible, RunLibation for libation, RunLibex for libex).
 func runSource(name string, args []string, run func(string, importer.Options) (importer.Summary, error)) int {
 	fs := flag.NewFlagSet(name, flag.ContinueOnError)
 	data := fs.String("data", "data", "path to the data directory")
@@ -119,4 +122,5 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 }

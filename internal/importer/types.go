@@ -17,6 +17,7 @@ const (
 	licenseCC0     = "CC0-1.0"
 	sourceOpenAud  = "openaudible-import"
 	sourceLibation = "libation-import"
+	sourceLibex    = "libex-import"
 )
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
@@ -35,12 +36,16 @@ type OutPerson struct {
 }
 
 type outWork struct {
-	ID       string      `json:"id"`
-	Title    string      `json:"title"`
-	Authors  []string    `json:"authors"`
-	Language string      `json:"language"`
-	License  string      `json:"license"`
-	Sources  []OutSource `json:"sources"`
+	ID       string   `json:"id"`
+	Title    string   `json:"title"`
+	Authors  []string `json:"authors"`
+	Language string   `json:"language"`
+	// Genres are the project's own vocabulary slugs, sorted ascending
+	// (checkGenresSorted pins the order). Omitted when the source carried no
+	// genre that maps - never a retailer's raw genre strings (LICENSING.md).
+	Genres  []string    `json:"genres,omitempty"`
+	License string      `json:"license"`
+	Sources []OutSource `json:"sources"`
 }
 
 // OutASIN is a region-scoped ASIN entry on a recording.
@@ -65,6 +70,7 @@ type outRecording struct {
 	ReleaseDate string       `json:"release_date,omitempty"`
 	Publisher   string       `json:"publisher,omitempty"`
 	ASIN        []OutASIN    `json:"asin,omitempty"`
+	ISBN        []string     `json:"isbn,omitempty"`
 	CoverURL    string       `json:"cover_url,omitempty"`
 	Chapters    []outChapter `json:"chapters,omitempty"`
 	License     string       `json:"license"`

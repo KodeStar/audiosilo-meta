@@ -166,9 +166,7 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 	sb.abridged = coerceBoolPtr(e["abridged"])
 
 	if name := e.str("series"); name != "" {
-		rawSeq := e.str("series_position")
-		pos, ok := NormalizeSequence(rawSeq)
-		sb.series = []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
+		sb.series = []seriesRef{makeSeriesRef(name, e.str("series_position"))}
 	}
 	return sb
 }

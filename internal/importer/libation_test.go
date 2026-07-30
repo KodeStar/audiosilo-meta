@@ -341,18 +341,6 @@ func TestLibationCover(t *testing.T) {
 	}
 }
 
-func TestLibationDate(t *testing.T) {
-	if got := libationDate("2024-12-06T03:00:00"); got != "2024-12-06" {
-		t.Errorf("date = %q, want 2024-12-06", got)
-	}
-	if got := libationDate("2024-12-06"); got != "2024-12-06" {
-		t.Errorf("date = %q, want 2024-12-06", got)
-	}
-	if got := libationDate(""); got != "" {
-		t.Errorf("empty date = %q", got)
-	}
-}
-
 func TestMapLibationLocale(t *testing.T) {
 	cases := []struct {
 		in   string

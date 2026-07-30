@@ -148,7 +148,7 @@ cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md and EXTRACTION-AUDIO.md
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
-cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation)
+cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
 pkg/model           PUBLIC entity structs, slug/shard rules, location parsing (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
@@ -156,7 +156,7 @@ pkg/check           PUBLIC schema validation + integrity/uniqueness/chapter/seri
 pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
                     (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
-internal/importer   OpenAudible books.json + Libation export -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook)
+internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
 internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> canonical records, the ok/duplicate/needs-human/invalid verdict the intake workflow branches on
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
@@ -304,11 +304,18 @@ export type), surfacing the importer warnings.
   a mirror. Landed: the normalized **genres** vocabulary end-to-end (schema
   `$defs/genre` enum -> `Work.Genres` -> `checkGenresSorted` -> artifact
   schema_version 4 `work_genres` -> `workDetail.genres` + ABS facade -> site
-  chips) plus metabuild prepared statements. In flight: the site `/add` lookup
-  assist (search libex -> confirm card -> prefilled add-work issue), the
-  `metaimport libex` source (mapping retailer genre strings onto the vocabulary
-  via an embedded table), the `--enrich` ASIN-matched backfill mode, and the
-  `libex-select` series-completion subset tool. Follow-ups tracked in the plan:
+  chips) plus metabuild prepared statements; the site `/add` lookup assist
+  (search libex -> confirm card -> prefilled add-work issue; whitelist-parsed,
+  descriptions/ratings structurally excluded); and the `metaimport libex`
+  source (JSON/NDJSON rows -> the shared sourceBook pipeline; Audible genre
+  names/browse-node ids map onto the vocabulary via the embedded, drift-guarded
+  `audiblegenres.json` - validated at 99.7% coverage against the full 1.13M-book
+  dump, with per-node overrides disambiguating fiction/nonfiction name
+  collisions via the browse-tree hierarchy). In flight: the `--enrich`
+  ASIN-matched backfill mode and the
+  `libex-select` series-completion subset tool (+ the dump-to-rows export SQL;
+  the received dump is Postgres 16 custom format - restore, query to NDJSON,
+  feed metaimport). Follow-ups tracked in the plan:
   intake `libex: <ASIN>` provenance typing, a genres field on the add-work
   form, re-shard (the 2-char shard's `th/` skew), and surfacing genres in the
   player (three-repo seam).
