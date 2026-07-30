@@ -15,7 +15,9 @@
       "minLength": 1
     },
     "authors": {
+      "description": "The series' authors as person slugs. The slug is the identity, so the list may not repeat one.",
       "type": "array",
+      "uniqueItems": true,
       "items": {
         "$ref": "common.schema.json#/$defs/slug"
       }

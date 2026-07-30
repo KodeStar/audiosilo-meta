@@ -51,9 +51,10 @@ func TestLibexImportBasic(t *testing.T) {
 	if sum.NewWorks != 2 || sum.NewRecordings != 2 {
 		t.Errorf("NewWorks/NewRecordings = %d/%d, want 2/2", sum.NewWorks, sum.NewRecordings)
 	}
-	// Ada Mapmaker + Bea Reader, shared by both books.
-	if sum.NewPeople != 2 {
-		t.Errorf("NewPeople = %d, want 2", sum.NewPeople)
+	// Ada Mapmaker + Bea Reader (shared by both books) + the first book's
+	// role-qualified translator credit.
+	if sum.NewPeople != 3 {
+		t.Errorf("NewPeople = %d, want 3", sum.NewPeople)
 	}
 	if sum.NewSeries != 1 {
 		t.Errorf("NewSeries = %d, want 1", sum.NewSeries)
@@ -89,6 +90,21 @@ func TestLibexImportBasic(t *testing.T) {
 	}
 	if work.Language != "en" {
 		t.Errorf("language = %q, want en", work.Language)
+	}
+	// End-to-end credit hygiene: the export's doubled role qualifier ("Dan
+	// Veksler - Translator - translator") is stripped down to the bare name
+	// before the person slug is derived, so the tranche cannot mint a
+	// "dan-veksler-translator-translator" person.
+	if !reflect.DeepEqual(work.Authors, []string{"ada-mapmaker", "dan-veksler"}) {
+		t.Errorf("authors = %v, want [ada-mapmaker dan-veksler]", work.Authors)
+	}
+	var translator struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+	}
+	readJSON(t, filepath.Join(dataDir, "people/da/dan-veksler.json"), &translator)
+	if translator.ID != "dan-veksler" || translator.Name != "Dan Veksler" {
+		t.Errorf("translator person = %+v, want dan-veksler / %q", translator, "Dan Veksler")
 	}
 	// Mapped onto the project vocabulary and SORTED ("Epic Fantasy" came first in
 	// the export, action-adventure sorts before it); the unmapped string is gone.

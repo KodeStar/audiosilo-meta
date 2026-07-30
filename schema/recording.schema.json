@@ -14,8 +14,10 @@
       "$ref": "common.schema.json#/$defs/slug"
     },
     "narrators": {
+      "description": "The recording's narrators as person slugs. The slug is the identity, so the list may not repeat one.",
       "type": "array",
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "$ref": "common.schema.json#/$defs/slug"
       }

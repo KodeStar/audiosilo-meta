@@ -126,14 +126,25 @@ func (c *composer) addWork(s sections) {
 	c.placeInSeries(s, workSlug, sourceRef)
 }
 
-// slugsFor resolves a list of person names to slugs, creating person records.
+// slugsFor resolves a list of person names to slugs, creating person records,
+// and deduplicates BY SLUG in first-seen order (mirroring
+// importer.creditSlugs). The slug is the identity, so two spellings of one
+// person on the same form ("Stan Lee" and "Created by Stan Lee", which credit
+// cleaning collapses onto one name) are one credit - listing the slug twice
+// would compose a record whose authors/narrators array repeats itself, which
+// the schema's uniqueItems now rejects outright.
 func (c *composer) slugsFor(names []string, sourceRef string) []string {
 	out := make([]string, 0, len(names))
+	seen := make(map[string]bool, len(names))
 	for _, name := range names {
 		slug, ok := c.getOrCreatePerson(name, sourceRef)
 		if !ok {
 			return out
 		}
+		if seen[slug] {
+			continue
+		}
+		seen[slug] = true
 		out = append(out, slug)
 	}
 	return out
