@@ -319,13 +319,17 @@ export type), surfacing the importer warnings.
   (ASIN-matched backfill: fills ONLY absent facts on existing records with
   libex-import provenance, existing values always win, a runtime/date
   contradiction disqualifies the whole row, enrich never creates anything, and
-  a second identical run is a byte-level no-op). In flight: the
-  `libex-select` series-completion subset tool (+ the dump-to-rows export SQL;
-  the received dump is Postgres 16 custom format - restore, query to NDJSON,
-  feed metaimport). Follow-ups tracked in the plan:
-  intake `libex: <ASIN>` provenance typing, a genres field on the add-work
-  form, re-shard (the 2-char shard's `th/` skew), and surfacing genres in the
-  player (three-repo seam).
+  a second identical run is a byte-level no-op); `metaimport libex-select`
+  (streams the full dump, keeps only series-completing rows with a free
+  position slot and mappable language/region, per-series cap, verbatim-row
+  output, a report that partitions every row read; `scripts/
+  libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
+  operator flow - the received dump is Postgres 16 custom format); and the
+  intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
+  and the add-work form's Genres field validated against the embedded schema
+  enum, prefilled by /add through the shared audiblegenres.json). Remaining
+  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew) and
+  surfacing genres in the player (three-repo seam).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four

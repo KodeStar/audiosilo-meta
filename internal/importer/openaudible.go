@@ -22,6 +22,15 @@ type rawChapter map[string]any
 // a file the /import page accepts also imports here).
 var wrapperKeys = []string{"Books", "books", "Items", "items", "Library", "library"}
 
+// errNotAnEntryList is the refusal for a file that is neither an array of
+// entries nor an envelope holding one. It is a function rather than an inline
+// Errorf because the libex STREAMING reader (libexselect.go) must refuse the
+// same file with the same words: an operator who is told to select a file and
+// then to import it should never see two descriptions of one problem.
+func errNotAnEntryList(label string) error {
+	return fmt.Errorf("parse %s: expected a JSON array of objects (or a wrapper object holding one)", label)
+}
+
 // decodeEntries decodes an export's entries into rawBooks: a top-level JSON
 // array of objects, or a wrapper object carrying the array under one of
 // wrapperKeys. Non-object entries are skipped (same as the site parser).
@@ -54,7 +63,7 @@ func decodeEntries(data []byte, label string) ([]rawBook, error) {
 		}
 	}
 	if !ok {
-		return nil, fmt.Errorf("parse %s: expected a JSON array of objects (or a wrapper object holding one)", label)
+		return nil, errNotAnEntryList(label)
 	}
 	books := make([]rawBook, 0, len(arr))
 	for _, el := range arr {
