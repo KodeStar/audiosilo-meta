@@ -1,0 +1,424 @@
+{
+  "characters": [
+    {
+      "description": "The Earth-born innkeeper of the Wandering Inn and an ally of the Horns. Her magical door connects the inn to distant places.",
+      "id": "erin-solstice",
+      "name": "Erin Solstice",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young Gnoll under Erin's protection at the Wandering Inn. She is a protected member of the inn's household.",
+      "id": "mrsha",
+      "name": "Mrsha",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sentient skeleton once animated by Erin and now acting independently from within Liscor's dungeon. He commands other undead while concealing himself behind the identity of a masked warrior, with his broken connection to his creator still unresolved.",
+      "id": "toren",
+      "name": "Toren",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Horns' necromancer, known for creating and controlling bone constructs. Wistram is pursuing him over his past and his forbidden craft.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ceria"
+      ],
+      "description": "The ice mage and captain of the Horns.",
+      "id": "ceria-springwalker",
+      "name": "Ceria Springwalker",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Horns fighter whose metal-infused arms remain badly damaged. She continues adventuring with the team despite their condition and the uncertainty surrounding their recovery, refusing to let the injury separate her from the Horns.",
+      "id": "yvlon",
+      "name": "Yvlon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium skirmisher and loyal member of the Horns.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's Watch Captain, responsible for the city's defense and the lawful custody of Calruz.",
+      "id": "zevara",
+      "name": "Zevara",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A one-armed Minotaur prisoner and former commander held under Zevara's authority while his conduct in the dungeon remains unresolved.",
+      "id": "calruz",
+      "name": "Calruz",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Antinium guardsman in Liscor's Watch.",
+      "id": "klbkch",
+      "name": "Klbkch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Liscor Watch officer associated with Erin and the Wandering Inn.",
+      "id": "relc",
+      "name": "Relc",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Goblin resident of the Wandering Inn and a protected member of Erin's household.",
+      "id": "numbtongue",
+      "name": "Numbtongue",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ryoka"
+      ],
+      "description": "An Earth-born, classless courier travelling north.",
+      "id": "ryoka-griffin",
+      "name": "Ryoka Griffin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An influential Reinhart noble whose interests extend across Izril.",
+      "id": "magnolia-reinhart",
+      "name": "Magnolia Reinhart",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Foliana's fellow leader in the Forgotten Wing Company. He directs her urgent assignment and teaches students at his academy.",
+      "id": "niers-astoragon",
+      "name": "Niers Astoragon",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born Black Mage confined at Wistram with other arrivals from Earth. Called a guest but forbidden to leave the island, he builds a battery-powered gauntlet that channels lightning while the group's prospects for leaving remain uncertain.",
+      "id": "erin-black-mage",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Wistram authority who orders an Archmage to correct the academy's public claim about Pisces and Ceria, confirming that she granted them graduate status despite their expulsion.",
+      "id": "cognita",
+      "name": "Cognita",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trained warhound retrieved by Ryoka from kennels devastated in a Drake attack. Ryoka takes the dog north and intends to place it with adventurers who lost their previous hound in battle, giving the animal a new working home.",
+      "id": "mousy",
+      "name": "Mousy",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A regional ruler and close friend of Magnolia Reinhart. Her force destroys an ogre band and its chieftain, though twelve of her soldiers die in the fighting. She leaves a second band beyond her territory to the approaching Order of Seasons.",
+      "id": "lady-pride",
+      "name": "Lady Pride",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A dangerous witch who escapes an attempt by the Order of Seasons to kill her. She uses hostages to halt pursuit, and the Order suppresses public knowledge of her because widespread knowledge and fear may increase her power.",
+      "id": "stitch-witch",
+      "name": "Stitch Witch",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A knight of the Order of Seasons who joins the armored Goblin Slayer in hunting an ogre band. Her ability marks him as a person of consequence, and she promises support if he continues to act honorably.",
+      "id": "dame-talia",
+      "name": "Dame Talia",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Order of Seasons knight who fights beside Dame Talia and the Goblin Slayer during the campaign against the ogres. He shares the danger of the night attack and the final battle as the knights test their secretive new ally.",
+      "id": "sir-eldene",
+      "name": "Sir Eldene",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Rabbit Eater",
+        "Goblin Slayer"
+      ],
+      "description": "A hobgoblin Champion hidden beneath armor and accepted by the Order of Seasons as a human goblin hunter. He defeats ogres while secretly preserving the Rolling Rocks goblins, then adopts the Solstice name and gains the Knight class.",
+      "id": "sir-solstice",
+      "name": "Sir Solstice",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A goblin ally who helps Sir Solstice supply the Rolling Rocks settlement while it remains hidden. His practical support helps the tribe survive while Sir Solstice maintains a separate identity among the human knights.",
+      "id": "bad-arrow",
+      "name": "Bad Arrow",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A goblin ally who works with Bad Arrow and Sir Solstice to provision the concealed Rolling Rocks settlement. She helps sustain the tribe while its protector continues to conceal both his nature and the goblins' survival.",
+      "id": "snap-jaw",
+      "name": "Snap Jaw",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Wistram mage attempting to repair relations with Erin. He objects to the unannounced pursuit of Pisces, offers valuable spices as an apology, and remains barred from the inn when people harmed by his team are present.",
+      "id": "palt",
+      "name": "Palt",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of the Wistram team pursuing Pisces. She inspects Liscor's damaged wards while the group tries to improve its standing in the city.",
+      "id": "montressa",
+      "name": "Montressa",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful mage whose help depends on sufficient leverage. He distinguishes professional interest from friendship and will not risk conflict with Wistram merely because Erin asks, though he advises her on more practical ways to protect Pisces.",
+      "id": "grimalkin",
+      "name": "Grimalkin",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demoted Watch guard on a final chance. He participated in abuse of a Minotaur prisoner but also tried to prevent the worst violence and protect Mrsha. Klbkch still considers him capable and assigns him ordinary patrol work under close scrutiny.",
+      "id": "t-kern",
+      "name": "T'Kern",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A junior Gnoll guardswoman whom Klbkch trains during the investigation of stolen flowers. She begins learning to patrol alongside T'Kern, gaining practical experience while working with a partner whose position in the Watch is precarious.",
+      "id": "jersey",
+      "name": "Jersey",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An undead Chosen serving Oskarosh as a covert agent. Skilled in runes, prepared divination, teleportation work, and stored combat magic, she is ordered to observe Pisces, Wistram, and Erin's inn while preparing a route toward her master's lair.",
+      "id": "ijvani",
+      "name": "Ijvani",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Ijvani's undead master. He forgives her earlier failure, renews his command, and directs surveillance around Liscor. His particular interest in Pisces, the Wistram mages, and Erin's inn has not yet been explained.",
+      "id": "oskarosh",
+      "name": "Oskarosh",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Three-color Stalker"
+      ],
+      "description": "A squirrel beastkin rogue, feared assassin, and co-leader of the Forgotten Wing Company. Her ability to pass unnoticed makes her the operative sent to prevent an attack on the Titan's academy before a dangerous magical artifact can be deployed.",
+      "id": "foliana",
+      "name": "Foliana",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A founding Player of Selim and the troupe's lead actor. His performance as Macbeth helps the company win a large audience in Sovex, establishing him as one of the performers central to the company's effort to reach larger cities.",
+      "id": "wesle",
+      "name": "Wesle",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A founding Drake performer with the Players of Selim. Her title performance in Elysial wins an audience in Inverisil and advances her to Lead Actress as the troupe expands.",
+      "id": "players-of-selim-lead-actress",
+      "name": "Players of Selim Lead Actress",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Players of Selim's half-dwarf director. He oversees adaptations, casting, recruitment, finances, and the troupe's pursuit of larger audiences.",
+      "id": "players-of-selim-director",
+      "name": "Players of Selim Director",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A green-haired mage who drives away robbers targeting the Players of Selim and then joins the troupe, offering magic and combat ability.",
+      "id": "players-of-selim-green-haired-mage",
+      "name": "Players of Selim Green-haired Mage",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A defensive mage from Wistram who defies her faction's decision to abandon the hunt for Pisces. Certain that he is guilty of murder, she brings an Oldblood Drake and a Minotaur companion to confront the Horns beside the road project.",
+      "id": "hostile-wistram-aegiscaster",
+      "name": "Wistram Aegiscaster",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An Oldblood Drake mage from Wistram who joins the Aegiscaster's unauthorized pursuit of Pisces and faces Ceria in the duel beside the roadworks.",
+      "id": "oldblood-drake-wistram-mage",
+      "name": "Oldblood Drake Wistram Mage",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Minotaur mage from Wistram who joins the Aegiscaster's unauthorized pursuit of Pisces and faces Yvlon in the duel beside the roadworks.",
+      "id": "minotaur-wistram-mage",
+      "name": "Minotaur Wistram Mage",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A resident of the Wandering Inn who is badly injured while escaping the Creller outbreak.",
+      "id": "seaborn",
+      "name": "Seaborn",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A resident of the Wandering Inn who is badly injured while escaping the Creller outbreak.",
+      "id": "moor",
+      "name": "Moor",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Selfid spellcaster who leaves the hostile Wistram group after the Creller siege and begins a trial recruitment with the Halfseekers.",
+      "id": "wistram-selfid-spellcaster",
+      "name": "Wistram Selfid Spellcaster",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "King of Destruction"
+      ],
+      "description": "A ruler rebuilding his kingdom while publicly maintaining peace. Refugees, veteran soldiers, and half-giant nomads strengthen his capital, but food and military needs continue to press his realm as he restores its population and vassal network.",
+      "id": "flos",
+      "name": "Flos",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0DCCZ5MG2",
+      "type": "community"
+    }
+  ],
+  "work": "hells-wardens"
+}
