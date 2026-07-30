@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 2364813,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 2547879,
+      "start_ms": 2364813,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 2498653,
+      "start_ms": 4912692,
+      "title": "Chapter 3"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/51NA3bGdeQL._SL500_.jpg",
   "id": "ralph-cosham-2011",
   "language": "en",
@@ -26,6 +43,11 @@
       "imported_at": "2026-07-17",
       "ref": "B004Y0K5V6",
       "type": "audible-lookup"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B004Y0K5V6",
+      "type": "libex-import"
     }
   ],
   "work": "the-metamorphosis"

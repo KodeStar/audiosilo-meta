@@ -6,6 +6,28 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 3147140,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 2975451,
+      "start_ms": 3147140,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 3385051,
+      "start_ms": 6122591,
+      "title": "Chapter 3"
+    },
+    {
+      "length_ms": 3357234,
+      "start_ms": 9507642,
+      "title": "Chapter 4"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/81ugNe0KrOL.jpg",
   "id": "stephen-briggs-2007",
   "language": "en",
@@ -21,6 +43,11 @@
       "imported_at": "2026-07-25",
       "ref": "B0032N2VEK",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B0032N2VEK",
+      "type": "libex-import"
     }
   ],
   "work": "diggers"

@@ -6,6 +6,18 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 1962945,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 1059850,
+      "start_ms": 1962945,
+      "title": "Chapter 2"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/81Xq2quNTVL.jpg",
   "id": "elisabeth-rodgers-2019",
   "language": "en",
@@ -21,6 +33,11 @@
       "imported_at": "2026-07-25",
       "ref": "1549151525",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "1549151525",
+      "type": "libex-import"
     }
   ],
   "work": "with-open-eyes"

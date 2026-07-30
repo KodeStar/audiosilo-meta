@@ -6,6 +6,28 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 1868207,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 1761047,
+      "start_ms": 1868207,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 1800010,
+      "start_ms": 3629254,
+      "title": "Chapter 3"
+    },
+    {
+      "length_ms": 1590031,
+      "start_ms": 5429264,
+      "title": "Chapter 4"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/51cNlR3+BEL._SL500_.jpg",
   "id": "ramon-de-ocampo-2008",
   "language": "en",
@@ -20,6 +42,11 @@
     {
       "ref": "B002V0KHTG",
       "type": "audible-lookup"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002V0KHTG",
+      "type": "libex-import"
     }
   ],
   "work": "diary-of-a-wimpy-kid"

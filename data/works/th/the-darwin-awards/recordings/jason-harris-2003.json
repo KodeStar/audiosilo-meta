@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 4307627,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 4064746,
+      "start_ms": 4307627,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 4384020,
+      "start_ms": 8372373,
+      "title": "Chapter 3"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/711Yq-nkGeL.jpg",
   "id": "jason-harris-2003",
   "language": "en",
@@ -21,6 +38,11 @@
       "imported_at": "2026-07-25",
       "ref": "B002UZHPTC",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002UZHPTC",
+      "type": "libex-import"
     }
   ],
   "work": "the-darwin-awards"

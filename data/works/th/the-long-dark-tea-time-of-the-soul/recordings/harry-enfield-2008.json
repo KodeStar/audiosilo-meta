@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 3988515,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 3977462,
+      "start_ms": 3988515,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 3911030,
+      "start_ms": 7965977,
+      "title": "Chapter 3"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/61HDW1UJrEL.jpg",
   "id": "harry-enfield-2008",
   "language": "en",
@@ -21,6 +38,11 @@
       "imported_at": "2026-07-25",
       "ref": "B002V0GHP4",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002V0GHP4",
+      "type": "libex-import"
     }
   ],
   "work": "the-long-dark-tea-time-of-the-soul"

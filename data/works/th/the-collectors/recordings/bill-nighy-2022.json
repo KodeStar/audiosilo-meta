@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 18412,
+      "start_ms": 0,
+      "title": "Opening Credits"
+    },
+    {
+      "length_ms": 1930646,
+      "start_ms": 18412,
+      "title": "The Collectors"
+    },
+    {
+      "length_ms": 31439,
+      "start_ms": 1949058,
+      "title": "Closing Credits"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/41km5v-OhTL._SL500_.jpg",
   "id": "bill-nighy-2022",
   "language": "en",
@@ -26,6 +43,11 @@
       "imported_at": "2026-07-17",
       "ref": "B0B3Y7CVXT",
       "type": "audible-lookup"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B0B3Y7CVXT",
+      "type": "libex-import"
     }
   ],
   "work": "the-collectors"

@@ -6,6 +6,18 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 1412840,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 162446,
+      "start_ms": 1412840,
+      "title": "Chapter 2"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/51i4ydefqxL._SL500_.jpg",
   "id": "olivia-colman-2020",
   "language": "en",
@@ -26,6 +38,11 @@
       "imported_at": "2026-07-17",
       "ref": "0241481015",
       "type": "audible-lookup"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "0241481015",
+      "type": "libex-import"
     }
   ],
   "work": "serpentine"

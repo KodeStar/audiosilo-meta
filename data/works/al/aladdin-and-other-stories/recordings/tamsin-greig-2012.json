@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 1065400,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 524910,
+      "start_ms": 1065400,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 1171864,
+      "start_ms": 1590310,
+      "title": "Chapter 3"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/81PcBdG4DUL.jpg",
   "id": "tamsin-greig-2012",
   "language": "en",
@@ -22,6 +39,11 @@
       "imported_at": "2026-07-25",
       "ref": "B009I44XBQ",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B009I44XBQ",
+      "type": "libex-import"
     }
   ],
   "work": "aladdin-and-other-stories"
