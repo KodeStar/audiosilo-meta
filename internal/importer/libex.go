@@ -8,6 +8,10 @@ import (
 	"io"
 	"os"
 	"strings"
+	"unicode"
+	"unicode/utf8"
+
+	"golang.org/x/text/unicode/norm"
 )
 
 // libex.go maps a libex (libex.lostcartographer.xyz) Audible-metadata export
@@ -83,6 +87,7 @@ type libexWarnClass int
 const (
 	warnNoASIN libexWarnClass = iota
 	warnUnknownRegion
+	warnAINarrator
 	warnCoverNotHTTPS
 	warnMalformedISBN
 )
@@ -96,6 +101,8 @@ func (c libexWarnClass) aggregateForm(n int) string {
 		return fmt.Sprintf("%d rows skipped: no well-formed ASIN", n)
 	case warnUnknownRegion:
 		return fmt.Sprintf("%d rows skipped: region is not a known marketplace", n)
+	case warnAINarrator:
+		return fmt.Sprintf("%d rows skipped: narrated by an AI voice", n)
 	case warnCoverNotHTTPS:
 		return fmt.Sprintf("%d cover URLs were not https; dropped", n)
 	case warnMalformedISBN:
@@ -220,7 +227,18 @@ func parseLibex(data []byte) (libexParse, error) {
 			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
 			continue
 		}
-		lp.books = append(lp.books, libexToBook(e, asin, region, &lp))
+		// AI narrations do not enter the catalogue at all (see aiNarratorNames).
+		// Refusing them HERE rather than in a planner is what makes the rule hold
+		// for every libex mode - create, enrich and recordings-only alike - and
+		// keeps them out of the run's ASIN accounting entirely. The credit list is
+		// read once and handed to libexToBook, which would otherwise re-read it.
+		narrators := libexNames(e["narrators"])
+		if name, isAI := firstAINarrator(narrators); isAI {
+			lp.skipped++
+			lp.add(warnAINarrator, asin, "%s: narrator %q is an AI voice; row skipped", asin, name)
+			continue
+		}
+		lp.books = append(lp.books, libexToBook(e, asin, region, narrators, &lp))
 	}
 	return lp, nil
 }
@@ -272,12 +290,13 @@ func decodeLibexEntries(data []byte) ([]rawBook, error) {
 // libexToBook normalizes one libex row into a sourceBook, translating field
 // names and shapes to the OpenAudible keys addBook understands and reading only
 // the factual fields (description / summary / rating / copyright are never
-// touched). asin and region are already normalized by parseLibex. The credits,
+// touched). asin, region and narrators are already resolved by parseLibex (the
+// credit list because the AI-narration refusal has to read it first). The credits,
 // runtime, abridged flag, series claims, genre claims, ISBNs and chapters are
 // parse-time facts carried as typed fields on the sourceBook, never smuggled
 // through raw in another source's key shape. Its warnings go to the parse
 // collector class-tagged, so a large enrichment run can report them in aggregate.
-func libexToBook(e rawBook, asin, region string, lp *libexParse) sourceBook {
+func libexToBook(e rawBook, asin, region string, narrators []string, lp *libexParse) sourceBook {
 	raw := rawBook{}
 	sb := sourceBook{raw: raw}
 	raw["asin"] = asin
@@ -300,7 +319,7 @@ func libexToBook(e rawBook, asin, region string, lp *libexParse) sourceBook {
 	}
 
 	sb.authors = libexNames(e["authors"])
-	sb.narrators = libexNames(e["narrators"])
+	sb.narrators = narrators
 	if lang := e.str("language"); lang != "" {
 		raw["language"] = lang // a word ("english"); mapLanguage resolves it
 	}
@@ -485,4 +504,147 @@ func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
 		out = append(out, isbn)
 	}
 	return out
+}
+
+// ---------------------------------------------------------------------------
+// AI-narration exclusion
+//
+// AI-narrated productions do not belong in this catalogue: the data model is
+// about who narrated a book, and a synthetic voice is not a person - importing
+// one mints a person record for a text-to-speech engine (the full-dump
+// recordings-only run really did create eleven "ai-voice-*" people before this
+// rule existed).
+//
+// libex carries an is_vvab ("virtual voice") flag, and scripts/libex-export-rows.sql
+// filters on it - but the flag cannot be relied on. Measured over the full
+// 1.13M-row dump: 145,558 books credit an AI voice, and is_vvab is FALSE on
+// 145,550 of them and true on only 8. The evidence that a production is
+// AI-narrated therefore lives in the narrator credit, not in the flag, which is
+// why this rule exists at all.
+//
+// The vocabulary below is EVIDENCE-DRIVEN, measured over that dump, in the same
+// spirit as mapping.go's roleQualifiers: every entry is a form the data actually
+// contains, and nothing is a guess at what a retailer might emit. That restraint
+// is load-bearing here - a substring search for "tts" or a bare "ai"/"ki" token
+// matches Watts, Pitts, Ricketts, Ki Hong Lee and Ai-jen Poo, all real people.
+// The three shapes below are the only ones that discriminate cleanly.
+//
+// KEEP IN STEP with the SQL-side list in scripts/libex-export-rows.sql, which
+// applies the same three shapes at export time (belt and braces, so a future
+// dump is filtered before it ever reaches this parser).
+
+// aiNarratorNames are credits that are WHOLLY an AI-voice label, in every
+// localization the dump carries. Matched as a whole name (normAINarrator form),
+// never as a substring. Counts are credits in the 1.13M-row dump.
+var aiNarratorNames = map[string]bool{
+	"virtual voice":    true, // 143,559 - English, and the overwhelming majority
+	"voz virtual":      true, // 281 - Spanish
+	"voix virtuelle":   true, // 171 - French
+	"voce virtuale":    true, // 134 - Italian
+	"voz sintetica":    true, // 10 - Spanish "synthetic voice" (diacritics folded)
+	"voce artificiale": true, // 2 - Italian "artificial voice"
+	"virtuelle stimme": true, // 1 - German
+	"voz virual":       true, // 1 - a Spanish typo the dump really carries
+	"digital voices":   true, // 1 - Loudly, an AI audio publisher
+}
+
+// aiNarratorPrefix is the one prefix family: Audible's "AI Voice <persona>"
+// credits (236 distinct names, 1,139 credits), including the bare "AI Voice".
+// A prefix rather than a set because the persona is free text. The boundary
+// check after it is what keeps a hypothetical real name ("Ai Voicu") out.
+const aiNarratorPrefix = "ai voice"
+
+// aiNarratorMarkers are trailing parenthetical (or bracketed) markers that
+// declare the credit synthetic: "Santiago (Voz de IA)", "Elise (AI)", "Mar Cabra
+// (Réplica de voz autorizada)". Compared as whole markers against this set,
+// because the same position also carries perfectly human qualifiers the dump
+// shows - "(Skyboat Media)", "(TheVoiceOgre)", "(The Captain's Voice)".
+var aiNarratorMarkers = map[string]bool{
+	"voz de ia":                 true, // 500 credits, 33 names - Spanish "AI voice"
+	"ai":                        true, // 7
+	"replica de voz autorizada": true, // 3 - an authorized synthetic voice replica
+	"authorized voice replica":  true, // 2 - the same, in English
+	"virtual voice":             true, // 2
+	"ki sprecher":               true, // 1 - German "AI narrator"
+	"kokoro tts":                true, // 1 - a named TTS engine
+}
+
+// firstAINarrator reports whether ANY credit in the row's narrator list is an AI
+// voice, naming the first one it finds (for the warning).
+//
+// ANY rather than "all of them", deliberately. The two rules are
+// indistinguishable on the measured data - of the 145,558 AI-narrated books in
+// the dump, ZERO credit a human alongside the synthetic voice, so no row today
+// is decided differently - and they diverge only on a mixed production that does
+// not yet exist. The failure asymmetry picks the rule: refusing a row costs
+// nothing (it is counted, reported, and can be added by hand), while admitting
+// one mints a person record for a TTS engine, which is exactly what this rule
+// exists to prevent.
+func firstAINarrator(names []string) (name string, isAI bool) {
+	for _, n := range names {
+		if isAINarratorName(n) {
+			return n, true
+		}
+		// A credit qualifier can hide the marker from the trailing-paren test
+		// ("Elise (AI) - narrator"), so the cleaned form gets a look too - that is
+		// the name that would become the person record. No such form is in the
+		// dump today; this is the cheap guard against the day one appears.
+		if cleaned := CleanCreditName(n); cleaned != n && isAINarratorName(cleaned) {
+			return n, true
+		}
+	}
+	return "", false
+}
+
+// isAINarratorName applies the three measured shapes to one credit name.
+func isAINarratorName(name string) bool {
+	canon := normAINarrator(name)
+	if canon == "" {
+		return false
+	}
+	if aiNarratorNames[canon] {
+		return true
+	}
+	if rest, found := strings.CutPrefix(canon, aiNarratorPrefix); found && !continuesWord(rest) {
+		return true
+	}
+	if m := trailingParenRE.FindStringSubmatchIndex(name); m != nil {
+		return aiNarratorMarkers[normAINarrator(name[m[2]:m[3]])]
+	}
+	return false
+}
+
+// continuesWord reports whether s picks up mid-word - whether the text right
+// after the "ai voice" prefix is more of the same word rather than a boundary.
+// It is what makes the prefix a WORD prefix: "AI Voice Nina" matches the family,
+// a hypothetical "Ai Voicu" does not. An empty remainder is the bare "AI Voice"
+// credit, which is a boundary.
+func continuesWord(s string) bool {
+	if s == "" {
+		return false
+	}
+	r, _ := utf8.DecodeRuneInString(s)
+	return unicode.IsLetter(r) || unicode.IsDigit(r)
+}
+
+// normAINarrator is the canonical comparison form for a credit name or a
+// trailing marker: lowercased, diacritics folded away, and collapsed to single
+// spaces. Folding the diacritics is what lets one entry cover every spelling of
+// "Voz sintética" / "Réplica de voz autorizada" a source may emit - precomposed
+// (NFC), decomposed (NFD, which a Mac-side exporter really does produce), or
+// typed without the accent - the same problem stripRoleQualifier solves for its
+// role list. Note the SQL half of this rule (scripts/libex-export-rows.sql)
+// compares the literal accented spellings instead, which is why the Go rule is
+// the backstop rather than a duplicate.
+func normAINarrator(s string) string {
+	decomposed := norm.NFD.String(strings.ToLower(strings.TrimSpace(s)))
+	var b strings.Builder
+	b.Grow(len(decomposed))
+	for _, r := range decomposed {
+		if isCombiningMark(r) {
+			continue
+		}
+		b.WriteRune(r)
+	}
+	return strings.Join(strings.Fields(b.String()), " ")
 }

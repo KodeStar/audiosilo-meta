@@ -341,7 +341,16 @@ export type), surfacing the importer warnings.
   position slot and mappable language/region, per-series cap, verbatim-row
   output, a report that partitions every row read; `scripts/
   libex-export-rows.sql` + `scripts/README.md` document the dump-to-rows
-  operator flow - the received dump is Postgres 16 custom format); and the
+  operator flow - the received dump is Postgres 16 custom format); the
+  **AI-narration exclusion** (a synthetic voice is not a person, so a row
+  crediting one is refused at the libex PARSE layer - `aiNarratorNames` /
+  `aiNarratorPrefix` / `aiNarratorMarkers` in `libex.go`, an evidence-driven
+  vocabulary measured over the full dump, ANY AI credit disqualifying the row -
+  which applies to every libex mode and reports as one aggregated warning.
+  libex's own `is_vvab` flag cannot do this job: 145,558 dump books credit an AI
+  voice and the flag is `false` on 145,550 of them, so
+  `scripts/libex-export-rows.sql` filters on the credit too and the two lists
+  are kept in step by cross-referenced comments); and the
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json). Remaining
