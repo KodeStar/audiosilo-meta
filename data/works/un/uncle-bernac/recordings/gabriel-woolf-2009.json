@@ -6,6 +6,23 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 7167164,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 7198697,
+      "start_ms": 7167164,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 5946352,
+      "start_ms": 14365861,
+      "title": "Chapter 3"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/614sPK68CLL.jpg",
   "id": "gabriel-woolf-2009",
   "language": "en",
@@ -21,6 +38,11 @@
       "imported_at": "2026-07-25",
       "ref": "B0035A8R7A",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B0035A8R7A",
+      "type": "libex-import"
     }
   ],
   "work": "uncle-bernac"

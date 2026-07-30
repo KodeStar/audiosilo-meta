@@ -6,6 +6,28 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 3543180,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 3583582,
+      "start_ms": 3543180,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 3497204,
+      "start_ms": 7126762,
+      "title": "Chapter 3"
+    },
+    {
+      "length_ms": 3473473,
+      "start_ms": 10623966,
+      "title": "Chapter 4"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/81YlICOv4IL.jpg",
   "id": "stephen-briggs-2009",
   "language": "en",
@@ -21,6 +43,11 @@
       "imported_at": "2026-07-25",
       "ref": "B0032N2VF4",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B0032N2VF4",
+      "type": "libex-import"
     }
   ],
   "work": "wings"

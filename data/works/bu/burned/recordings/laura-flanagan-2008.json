@@ -6,6 +6,33 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 3895472,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 4025226,
+      "start_ms": 3895472,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 3934296,
+      "start_ms": 7920698,
+      "title": "Chapter 3"
+    },
+    {
+      "length_ms": 3880333,
+      "start_ms": 11854994,
+      "title": "Chapter 4"
+    },
+    {
+      "length_ms": 3552235,
+      "start_ms": 15735327,
+      "title": "Chapter 5"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/51eK5DspjKL._SL500_.jpg",
   "id": "laura-flanagan-2008",
   "language": "en",
@@ -26,6 +53,11 @@
       "imported_at": "2026-07-17",
       "ref": "B002V59R1U",
       "type": "audible-lookup"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002V59R1U",
+      "type": "libex-import"
     }
   ],
   "work": "burned"

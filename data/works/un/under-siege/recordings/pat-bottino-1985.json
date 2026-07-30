@@ -6,6 +6,18 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 2750032,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 2740791,
+      "start_ms": 2750032,
+      "title": "Chapter 2"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/51EV3HGhjyL.jpg",
   "id": "pat-bottino-1985",
   "language": "en",
@@ -21,6 +33,11 @@
       "imported_at": "2026-07-25",
       "ref": "B002VA9INC",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002VA9INC",
+      "type": "libex-import"
     }
   ],
   "work": "under-siege"

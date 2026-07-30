@@ -6,6 +6,28 @@
       "region": "us"
     }
   ],
+  "chapters": [
+    {
+      "length_ms": 3763212,
+      "start_ms": 0,
+      "title": "Chapter 1"
+    },
+    {
+      "length_ms": 4091356,
+      "start_ms": 3763212,
+      "title": "Chapter 2"
+    },
+    {
+      "length_ms": 3931185,
+      "start_ms": 7854568,
+      "title": "Chapter 3"
+    },
+    {
+      "length_ms": 4189437,
+      "start_ms": 11785753,
+      "title": "Chapter 4"
+    }
+  ],
   "cover_url": "https://m.media-amazon.com/images/I/81D4AJqOg1L.jpg",
   "id": "full-cast-2005",
   "language": "en",
@@ -21,6 +43,11 @@
       "imported_at": "2026-07-25",
       "ref": "B002VA9NQY",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B002VA9NQY",
+      "type": "libex-import"
     }
   ],
   "work": "uncle-johns-bathroom-reader"
