@@ -168,8 +168,15 @@ into already-catalogued series. Existing values always win; a row whose runtime
 or release date contradicts the recorded production is not used at all; every
 change is stamped with a `libex-import` source. Rows for books the catalogue
 does not hold are counted and ignored, so a large row set is safe input.
-Selection tooling for working from a full catalogue dump (`libex-select`) is a
-planned follow-up.
+
+`metaimport libex-select <export.ndjson> -o <subset.ndjson> [--max-per-series N]`
+reduces a full catalogue export to the bounded subset the import posture allows:
+rows that COMPLETE series the catalogue already tracks (valid position, slot not
+already taken, language and region mappable, ASIN not already present), with a
+per-series cap for runaway franchises and a report that accounts for every row
+read. The full dump-to-rows operator flow (restore the Postgres dump, export
+NDJSON, select, review, import in tranches, then backfill with `--enrich`) is
+documented in [scripts/README.md](scripts/README.md).
 
 - `--dry-run` prints the plan (how many works, recordings, people, and series
   would be created, how many books were skipped as already present, and any

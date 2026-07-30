@@ -1,8 +1,10 @@
 package main
 
 import (
+	"flag"
 	"io"
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -29,6 +31,174 @@ func captureStdout(t *testing.T, fn func()) string {
 		t.Fatal(err)
 	}
 	return string(out)
+}
+
+// seedSelectFixture writes a minimal catalogue (one series holding volume 1)
+// plus a libex export whose one row completes it, and returns the data dir, the
+// export path, and the export's exact bytes.
+func seedSelectFixture(t *testing.T) (dataDir, exportPath, exportBody string) {
+	t.Helper()
+	dir := t.TempDir()
+	dataDir = filepath.Join(dir, "data")
+	for rel, body := range map[string]string{
+		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
+		"people/be/bea-reader.json":   `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
+		"works/vo/volume-one/work.json": `{"authors":["ada-mapmaker"],"id":"volume-one","language":"en","license":"CC0-1.0",` +
+			`"sources":[{"type":"user"}],"title":"Volume One"}`,
+		"works/vo/volume-one/recordings/bea-reader-2024.json": `{"asin":[{"asin":"B0PRESENT1","region":"us"}],"id":"bea-reader-2024",` +
+			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"volume-one"}`,
+		"series/ca/cartographer-chronicles.json": `{"id":"cartographer-chronicles","license":"CC0-1.0","name":"Cartographer Chronicles",` +
+			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"volume-one"}]}`,
+	} {
+		path := filepath.Join(dataDir, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte(body+"\n"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	exportBody = `{"asin":"B0SELECT02","title":"Volume Two","region":"us","language":"english",` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],` +
+		`"series":[{"name":"Cartographer Chronicles","position":"2"}]}` + "\n"
+	exportPath = filepath.Join(dir, "full.ndjson")
+	if err := os.WriteFile(exportPath, []byte(exportBody), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	return dataDir, exportPath, exportBody
+}
+
+// TestLibexSelectArgumentOrders is the regression guard for the destructive
+// argument mis-parse: with the flags BEFORE the positional, a "first argument
+// that does not start with -" split reads the -o VALUE as the input export and
+// writes the subset over the real one - truncating an operator's multi-GB dump
+// to nothing and exiting 0. Both orders must name the same input and the same
+// output, and the input must come out untouched.
+func TestLibexSelectArgumentOrders(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		args func(export, out, data string) []string
+	}{
+		{"positional first", func(export, out, data string) []string {
+			return []string{export, "--data", data, "-o", out}
+		}},
+		{"flags first", func(export, out, data string) []string {
+			return []string{"-o", out, "--data", data, export}
+		}},
+		{"positional between flags", func(export, out, data string) []string {
+			return []string{"-o", out, export, "--data", data}
+		}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dataDir, export, body := seedSelectFixture(t)
+			out := filepath.Join(t.TempDir(), "subset.ndjson")
+
+			var code int
+			stdout := captureStdout(t, func() { code = runLibexSelect(tc.args(export, out, dataDir)) })
+			if code != 0 {
+				t.Fatalf("exit code = %d, want 0 (%s)", code, stdout)
+			}
+
+			// The input export is never a write target.
+			got, err := os.ReadFile(export)
+			if err != nil {
+				t.Fatalf("the input export is gone: %v", err)
+			}
+			if string(got) != body {
+				t.Errorf("the input export was rewritten:\n got %q\nwant %q", got, body)
+			}
+			// The subset went where -o said, and holds the completing row.
+			subset, err := os.ReadFile(out)
+			if err != nil {
+				t.Fatalf("read subset: %v", err)
+			}
+			if !strings.Contains(string(subset), "B0SELECT02") {
+				t.Errorf("subset = %q, want the selected row", subset)
+			}
+			if !strings.Contains(stdout, "selected 1 of 1 rows") || !strings.Contains(stdout, "wrote "+out) {
+				t.Errorf("report does not describe the run:\n%s", stdout)
+			}
+		})
+	}
+}
+
+// TestLibexSelectRefusesOutputOverInput is the belt-and-braces half: whatever
+// the arguments meant, -o naming the input export is refused rather than acted
+// on, and the export survives.
+func TestLibexSelectRefusesOutputOverInput(t *testing.T) {
+	dataDir, export, body := seedSelectFixture(t)
+
+	var code int
+	stdout := captureStdout(t, func() {
+		code = runLibexSelect([]string{"-o", export, export, "--data", dataDir})
+	})
+	if code != 1 {
+		t.Errorf("exit code = %d, want 1 (%s)", code, stdout)
+	}
+	if got, err := os.ReadFile(export); err != nil || string(got) != body {
+		t.Errorf("the input export was written over: %q (err %v)", got, err)
+	}
+}
+
+// TestLibexSelectSuppressesReportOnAbort pins fix 6: a run that failed
+// mid-stream must not print its report. The counts it holds cover only the rows
+// it managed to read, so the breakdown would describe a fraction of the export
+// as though it were the whole thing - and this report is the artifact a
+// reviewer signs a tranche off from.
+func TestLibexSelectSuppressesReportOnAbort(t *testing.T) {
+	dataDir, _, _ := seedSelectFixture(t)
+	dir := t.TempDir()
+	truncated := filepath.Join(dir, "truncated.ndjson")
+	body := `[{"asin":"B0SELECT02","title":"Volume Two","region":"us","language":"english",` +
+		`"series":[{"name":"Cartographer Chronicles","position":"2"}]}`
+	if err := os.WriteFile(truncated, []byte(body), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	out := filepath.Join(dir, "subset.ndjson")
+
+	var code int
+	stdout := captureStdout(t, func() {
+		code = runLibexSelect([]string{truncated, "--data", dataDir, "-o", out})
+	})
+	if code != 1 {
+		t.Errorf("exit code = %d, want 1", code)
+	}
+	if strings.Contains(stdout, "selected ") || strings.Contains(stdout, "excluded ") {
+		t.Errorf("an aborted run printed its report:\n%s", stdout)
+	}
+	if !strings.Contains(stdout, "aborted after 1 rows; no output written") {
+		t.Errorf("stdout does not say how far the run got:\n%s", stdout)
+	}
+	if _, err := os.Stat(out); !os.IsNotExist(err) {
+		t.Errorf("an aborted run left an output file (stat err = %v)", err)
+	}
+}
+
+// TestParsePositionalRejectsAmbiguousArgs pins the two argument shapes that
+// must not be guessed at: none, and more than one.
+func TestParsePositionalRejectsAmbiguousArgs(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		args []string
+		want string
+	}{
+		{"none", []string{"--data", "data"}, "missing <export.json> path"},
+		{"two", []string{"a.json", "--data", "data", "b.json"}, "expected one <export.json> path, got 2: a.json b.json"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			fs := flag.NewFlagSet("t", flag.ContinueOnError)
+			fs.SetOutput(io.Discard)
+			fs.String("data", "data", "")
+			got, err := parsePositional(fs, tc.args, "<export.json>")
+			if err == nil {
+				t.Fatalf("parsePositional accepted %v as %q", tc.args, got)
+			}
+			if err.Error() != tc.want {
+				t.Errorf("error = %q, want %q", err, tc.want)
+			}
+		})
+	}
 }
 
 func TestPrintSummaryIncludesMergedASINs(t *testing.T) {
