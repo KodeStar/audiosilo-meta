@@ -20,7 +20,7 @@ func TestFieldLabelsExistInTemplates(t *testing.T) {
 	}{
 		{"add-work.yml", []string{
 			fWorkTitle, fWorkSubtitle, fWorkAuthors, fWorkLanguage, fWorkFirstPublished,
-			fWorkSeriesName, fWorkSeriesPosition, fWorkISBN, fWorkWikidata, fWorkOpenLibrary,
+			fWorkGenres, fWorkSeriesName, fWorkSeriesPosition, fWorkISBN, fWorkWikidata, fWorkOpenLibrary,
 			fRecNarrators, fRecAbridged, fRecRuntime, fRecRelease, fRecPublisher,
 			fRecASINs, fRecISBNs, fRecCoverURL, fSources, fCC0,
 		}},

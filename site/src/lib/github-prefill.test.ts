@@ -195,6 +195,7 @@ describe('addWorkIssueUrlFromLibex', () => {
     authors: [{ name: 'Lee Child' }],
     narrators: [{ name: 'Dick Hill' }],
     series: [{ name: 'Jack Reacher', position: '1' }],
+    genres: [{ name: 'Crime Thrillers' }, { name: 'Not A Real Category' }],
   }
   const prefill = libexToPrefill(book, '2026-07-29')
 
@@ -214,6 +215,9 @@ describe('addWorkIssueUrlFromLibex', () => {
     expect(p.get('work_title')).toBe('Killing Floor')
     expect(p.get('work_authors')).toBe('Lee Child')
     expect(p.get('work_language')).toBe('en')
+    // Only the claim that maps onto the controlled vocabulary rides; the
+    // unmappable retailer category is dropped rather than passed through.
+    expect(p.get('work_genres')).toBe('thriller-suspense')
     expect(p.get('work_series_name')).toBe('Jack Reacher')
     expect(p.get('work_series_position')).toBe('1')
     expect(p.get('rec_narrators')).toBe('Dick Hill')
@@ -243,13 +247,21 @@ describe('addWorkIssueUrlFromLibex', () => {
 
   it('omits the fields the lookup did not state', () => {
     const bare = libexToPrefill(
-      { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [] },
+      {
+        asin: 'B0BARE0001',
+        title: 'A Bare Record',
+        authors: [],
+        narrators: [],
+        series: [],
+        genres: [],
+      },
       '2026-07-29'
     )
     const p = params(addWorkIssueUrlFromLibex(bare))
     expect(p.get('work_title')).toBe('A Bare Record')
     expect(p.get('work_authors')).toBeNull()
     expect(p.get('work_language')).toBeNull()
+    expect(p.get('work_genres')).toBeNull()
     expect(p.get('work_series_name')).toBeNull()
     expect(p.get('rec_narrators')).toBeNull()
     expect(p.get('rec_abridged')).toBeNull()
@@ -758,6 +770,7 @@ describe('the add-work.yml contract this module prefills into', () => {
     // A renamed input silently stops prefilling, so each id is pinned to the form.
     for (const id of [
       'work_subtitle',
+      'work_genres',
       'work_series_name',
       'work_series_position',
       'work_first_published',

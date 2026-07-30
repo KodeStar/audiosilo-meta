@@ -20,6 +20,7 @@ const (
 	fWorkAuthors        = "Author(s)"
 	fWorkLanguage       = "Language"
 	fWorkFirstPublished = "First published (year)"
+	fWorkGenres         = "Genres"
 	fWorkSeriesName     = "Series name"
 	fWorkSeriesPosition = "Series position"
 	fWorkISBN           = "ISBN(s)"
@@ -72,6 +73,10 @@ func (c *composer) addWork(s sections) {
 		c.fail(StatusInvalid, "Sources is required for provenance")
 		return
 	}
+	genres, genresOK := c.parseGenres(s.get(fWorkGenres))
+	if !genresOK {
+		return
+	}
 
 	// Dedup before writing anything: an existing ASIN/ISBN or work slug means
 	// this book (or edition) is already in the catalog.
@@ -101,8 +106,8 @@ func (c *composer) addWork(s sections) {
 	// Work record.
 	work := outWork{
 		ID: workSlug, Title: title, Subtitle: s.get(fWorkSubtitle),
-		Authors: authorSlugs, Language: lang, License: licenseCC0,
-		Sources: []outSource{c.source(sourceRef)},
+		Authors: authorSlugs, Language: lang, Genres: genres, License: licenseCC0,
+		Sources: c.sources(sourceRef),
 	}
 	if yr := s.get(fWorkFirstPublished); yr != "" {
 		if dateYearRE.MatchString(yr) {
@@ -171,7 +176,7 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 	rec := outRecording{
 		ID: recSlug, Work: workSlug, Narrators: narratorSlugs, Language: lang,
 		Abridged: abridgedFromForm(s.get(fRecAbridged)),
-		License:  licenseCC0, Sources: []outSource{c.source(sourceRef)},
+		License:  licenseCC0, Sources: c.sources(sourceRef),
 	}
 	if rt := s.get(fRecRuntime); rt != "" {
 		if n, err := strconv.Atoi(rt); err == nil && n > 0 {
@@ -280,7 +285,7 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 	c.emit(path.Join("series", model.Shard(seriesSlug), seriesSlug+".json"), outSeries{
 		ID: seriesSlug, Name: name, License: licenseCC0,
 		Works:   []outSeriesWork{{Work: workSlug, Position: pos}},
-		Sources: []outSource{c.source(sourceRef)},
+		Sources: c.sources(sourceRef),
 	})
 }
 

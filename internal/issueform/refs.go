@@ -85,6 +85,11 @@ func normalizeRegion(raw string) (string, bool) {
 // the site's issue prefill emits a region-less ASIN whenever the source book has
 // no marketplace (always the case for Audiobookshelf and folder-scan books), and
 // dropping it would lose the recording's primary identity/dedup key.
+//
+// Every ASIN it accepts is also recorded on the composer
+// (noteSubmissionASIN), because provenance.go's libex marker is only honored
+// for an ASIN the submission itself carries. Recording it HERE rather than at
+// the call sites means a future form that parses ASINs cannot forget to.
 func (c *composer) parseASINs(block string) []outASIN {
 	var out []outASIN
 	for _, line := range strings.Split(block, "\n") {
@@ -96,6 +101,7 @@ func (c *composer) parseASINs(block string) []outASIN {
 		if i < 0 {
 			if asin := importer.NormalizeASIN(line); asin != "" {
 				c.note("ASIN %s had no region prefix - defaulted to us", asin)
+				c.noteSubmissionASIN(asin)
 				out = append(out, outASIN{Region: "us", ASIN: asin})
 			} else {
 				c.note("ASIN line %q is neither \"region: ASIN\" nor a bare ASIN - skipped", line)
@@ -112,6 +118,7 @@ func (c *composer) parseASINs(block string) []outASIN {
 			c.note("value %q is not a valid ASIN - skipped", strings.TrimSpace(line[i+1:]))
 			continue
 		}
+		c.noteSubmissionASIN(asin)
 		out = append(out, outASIN{Region: region, ASIN: asin})
 	}
 	return out
