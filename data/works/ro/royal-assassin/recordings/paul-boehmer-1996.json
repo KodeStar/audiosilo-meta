@@ -1,5 +1,15 @@
 {
   "abridged": false,
+  "asin": [
+    {
+      "asin": "B008Y463VE",
+      "region": "us"
+    },
+    {
+      "asin": "B003NTPCVM",
+      "region": "us"
+    }
+  ],
   "id": "paul-boehmer-1996",
   "language": "en",
   "license": "CC0-1.0",
@@ -13,6 +23,16 @@
     {
       "imported_at": "2026-07-17",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B008Y463VE",
+      "type": "libex-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B003NTPCVM",
+      "type": "libex-import"
     }
   ],
   "work": "royal-assassin"
