@@ -1,0 +1,411 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "death wizard"
+      ],
+      "description": "An injured wizard whose ether magic gives him an unusual advantage against the ancient enemy. He joins an assault on a chasm settlement, but turns against the goddess of death when she targets civilians and abuses prisoners.",
+      "id": "kael",
+      "name": "Kael",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A divine combatant allied with Kael against the ancient enemy. She can shield dragons from hostile magic and devastate a settlement, but her willingness to kill civilians and torture survivors brings her into direct conflict with Kael.",
+      "id": "goddess-of-death",
+      "name": "the goddess of death",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient dragon who fights beside Kael and protects the blind white dragon. He opposes the slaughter of civilians during the chasm assault and plans to urge his own people to enter the wider war against their common enemy.",
+      "id": "black-dragon",
+      "name": "the black dragon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient dragon and companion of the black dragon who joins Kael's attack on the enemy settlement. Like Kael and her fellow dragon, she resists the needless killing of civilians and assists their withdrawal after the assault.",
+      "id": "blind-white-dragon",
+      "name": "the blind white dragon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kael's demon-kind ally"
+      ],
+      "description": "Kael's ally and a capable fighter who reports the consequences of the chasm assault. Although frustrated by Kael's secrecy and withdrawal from the diplomatic coalition, he continues with Queen Bael's effort to gather support for war.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A queen leading the diplomatic effort against the ancient enemy. Kael's refusal to join the state coalition does not deter her, and she continues seeking allies while balancing the new concern raised by a death wizard's apparent return.",
+      "id": "queen-bael",
+      "name": "Queen Bael",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A guardian whose death-flower marks retain a magical connection to a former charge. When the marks flare violently, she recognizes them as evidence that a death wizard she once raised has returned from the afterlife.",
+      "id": "elisa",
+      "name": "Elisa",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Elisa's former charge, whose forced return from the afterlife is first indicated by Elisa's painful magical marks. Her physical condition, purpose, and immediate plans are still unknown when her survival is inferred.",
+      "id": "returned-death-wizard",
+      "name": "the returned death wizard",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dragon ruler who confronts the sole warrior left behind after an ancient battle force escapes its seal. The warrior wounds her mortally, but emergency intervention leaves her alive in critical condition.",
+      "id": "dragon-queen",
+      "name": "the dragon queen",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A high wizard and portal specialist who commands the ancient battle force released from a weakened dragon seal. After assessing the troops as magically depleted, the commander evacuates them rather than engaging the dragons and leaves one warrior behind.",
+      "id": "escaped-battle-force-commander",
+      "name": "the escaped battle-force commander",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "comatose boy"
+      ],
+      "description": "Kael's living child, born in the afterlife to Kael and a demon queen. The returned death wizard brings the weak, unconscious boy back to prevent demonic corruption, and Kael recognizes him before taking him into hiding.",
+      "id": "kaels-son",
+      "name": "Kael's son",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "vampire ally"
+      ],
+      "description": "A trusted travelling ally who accompanies Kael to the Black Ark and helps him secure the returned death wizard and his son. She is part of the small circle responsible for protecting the pair's survival, care, and secrecy.",
+      "id": "kaels-vampire-companion",
+      "name": "Kael's vampire companion",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Elisa's daughter"
+      ],
+      "description": "Elisa's daughter and a guardian-magic student whom Kael considers trustworthy enough to help protect his refuge. She is discussed as a possible caregiver while Kael's newly recovered son and the returned death wizard need secrecy and care.",
+      "id": "cassie",
+      "name": "Cassie",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kael's apprentice"
+      ],
+      "description": "Kael's new apprentice, a young magic user willing to challenge his habit of pushing past safe limits. She knows about an earlier incident in which his power escaped his control and presses him to take the danger seriously.",
+      "id": "kenna",
+      "name": "Kenna",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Kael's wider circle who is connected to Kenna's account of an earlier uncontrolled-magic incident involving Kael. At this point, he is notable mainly because he did not know the incident had occurred.",
+      "id": "tanner",
+      "name": "Tanner",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Fae diplomat who identifies siren magic as the outside force amplifying Kael's altered memories. The ambassador breaks his magical connection before it traps him in a memory coma and warns him against trying the same approach again.",
+      "id": "fae-ambassador",
+      "name": "the Fae ambassador",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kael's father"
+      ],
+      "description": "Kael's father and an archwizard who is drawn into a prophetic dream after ignoring an earlier warning. Inara awakens his Elder Blood and charges him with rallying the faithful against an invasion expected through the Black Chasm.",
+      "id": "gideon",
+      "name": "Gideon",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kael's late wife"
+      ],
+      "description": "Kael's dead wife, concealed in the divine realm while seeking to protect both him and the afterlife. She secretly witnesses Inara breaking the gods' noninterference agreement, and Inara shields her from discovery.",
+      "id": "ember",
+      "name": "Ember",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "goddess of magic"
+      ],
+      "description": "The goddess of magic, sister to the prophecy goddess and daughter of the death god. Despite a divine agreement against mortal intervention, she awakens Gideon's Elder Blood and protects Ember's concealment.",
+      "id": "inara",
+      "name": "Inara",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An outsider scholar who proposes restoring a preserved soul to a newly dead body. The ancient faction redirects her work toward binding souls into objects and weapons, while she secretly retains loyalties outside her new hosts.",
+      "id": "human-researcher",
+      "name": "the human researcher",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An experienced member of a religious order assigned to supervise the human researcher's dangerous soul-magic project. The appointment makes the two equal collaborators on the advanced work.",
+      "id": "religious-order-research-partner",
+      "name": "the religious-order research partner",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The king of Dorma Sai and one of the trusted rulers allied with Kael. He and the queen are secretly seeking the Dead Forge while six necromancers exhaust themselves keeping the true human Animus Seal closed.",
+      "id": "dorma-sai-king",
+      "name": "the Dorma Sai king",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The queen of Dorma Sai and one of the trusted rulers allied with Kael. She and the king are secretly seeking the Dead Forge while six necromancers exhaust themselves keeping the true human Animus Seal closed.",
+      "id": "dorma-sai-queen",
+      "name": "the Dorma Sai queen",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "bonded flying creature"
+      ],
+      "description": "A young flying creature bonded to Kael who can share her sight with him. During his hunt for a magical bear, she detects an ambush, attacks the animal, and uses a caustic spray to seal wounds that might otherwise kill him.",
+      "id": "kaels-bird-companion",
+      "name": "Kael's bird companion",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A channeler who assists Kael in the deep caves while carefully limiting how much power she draws from him. Their magical link permits telepathic contact, and she helps him work with his sentient silver-scaled magic instead of forcing it.",
+      "id": "half-blood-channeler",
+      "name": "the half-blood channeler",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A demon ruler with a history involving Kael and the rare ability to possess mortals. She takes control of a fortress commander while searching for something she needs to pursue a thief, until Kael's ether magic forces her spirit out.",
+      "id": "demon-queen",
+      "name": "the demon queen",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "guild leader"
+      ],
+      "description": "The leader of an assassin guild fractured by dissension. After learning that rogue members restored contracts on Kael, Max, and Queen Bael, she dissolves the council and dispatches loyal agents to protect the targets and stop their pursuers.",
+      "id": "broken-blade-headmistress",
+      "name": "the Broken Blade headmistress",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A professional killer travelling as one of Kael's protectors during his search for a city of power. She accompanies him and Kenna into a mountain trading town after their immediate local contact proves unavailable.",
+      "id": "travelling-assassin",
+      "name": "the travelling assassin",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An impaired goddess who can use the Garden to observe the past, present, and possible futures. A horrific vision damaged her mind, and looking beyond the present worsens her condition. Ember agrees to become her friend while remaining under Inara's protection.",
+      "id": "seer-goddess",
+      "name": "the seer goddess",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The eldest daughter of the port rulers and the officer charged with protecting the city and enforcing its laws. She receives the guarded delegation of Queen Bael and begins a cooperative rapport with Max while the request for military aid remains undecided.",
+      "id": "port-commander",
+      "name": "the port commander",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The younger daughter of the port rulers. She openly opposes military aid for Queen Bael, favors accommodating the mercenary governing body, and is scheduled to face Max in a combat demonstration.",
+      "id": "port-rulers-younger-daughter",
+      "name": "the younger daughter of the port rulers",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An imprisoned traveller on the northern island whom Kael seeks for help. Reaching the Viter requires permission from the island's high king and the approval of the fortress seer.",
+      "id": "viter",
+      "name": "the Viter",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Kael's chosen sister"
+      ],
+      "description": "An islander captain and Kael's sister by chosen kinship. She agrees to carry his party to the northern island and explains that royal permission and a seer's approval are required before he can enter its guarded fortress.",
+      "id": "shasta",
+      "name": "Shasta",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader rebuilding the ancient faction's forces and research program. She recruits a newly released commander and his surviving elite troops, then makes Kael and the remnants of an allied ancient bloodline their first targets.",
+      "id": "ancient-factions-leader",
+      "name": "the ancient faction's leader",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A commander released after more than ten thousand years in stasis. Once hostile to the faction's present leader, he accepts her account of the intervening age and pledges nearly two thousand surviving elite soldiers to her war.",
+      "id": "ancient-factions-elite-commander",
+      "name": "the ancient faction's elite commander",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A religious-order researcher collaborating with the human scholar on soul magic. Their immediate plan is to restore a dead ancient soul to its matching body, with the broader aim of moving souls between bodies or objects.",
+      "id": "ancient-priestess",
+      "name": "the ancient priestess",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the island seer"
+      ],
+      "description": "Tanner is the seer at the runemaster fortress. Visions warn of Kael's approach and danger, leading Tanner to rescue his wounded party and reveal that the ancient magic holding the island in place is failing.",
+      "id": "tanner-seer",
+      "name": "Tanner",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient wizard working with the island seer to prevent the island from drifting or striking the mainland. Contrary to Kael's expectation, he is free rather than imprisoned and can heal most of the party's ambush injuries.",
+      "id": "ancient-island-wizard",
+      "name": "the ancient island wizard",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A local guide who leads Kael's party to a corrupted wellspring beneath Black Hollow. He treats Kael as a clan brother until the remaining wells are healed and uses his knowledge of underground creatures during the ensuing battle.",
+      "id": "black-hollow-shaman",
+      "name": "the Black Hollow shaman",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former novice who survived Kael's earlier attack on her coven and later rose to lead it. She ambushes the exhausted Kael with demon venom and a suppression collar, seeking his power as a way to end her coven's demonic dependence.",
+      "id": "new-coven-leader",
+      "name": "the new coven leader",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0C8ZKVCSK",
+      "type": "community"
+    }
+  ],
+  "work": "inaras-grace"
+}
