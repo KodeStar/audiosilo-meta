@@ -26,3 +26,30 @@ export function addWorkFromQueryUrl(query: string): string {
   }
   return `${ISSUE_BASE}?${p.toString()}`
 }
+
+/** The lookup-assist page, which searches libex (the public Audible metadata
+    mirror) so the reader can pick the right edition instead of typing every
+    field by hand. */
+const ADD_PATH = '/add'
+
+/**
+ * The query-string parameter /add reads its opening term from. This module
+ * WRITES it and the /add island READS it, so it lives here as one exported
+ * constant - renaming it on one side alone would silently break the funnel
+ * (the page would just sit idle) with nothing to catch it.
+ */
+export const ADD_QUERY_PARAM = 'q'
+
+/**
+ * Link the search empty state to the /add lookup assist, carrying the query the
+ * reader already typed so the page can act on it immediately. An empty query
+ * yields the bare page.
+ *
+ * One param covers both cases: a pasted product code arrives here as the query
+ * too, and /add resolves an ASIN-shaped `q` straight to that record instead of
+ * searching for it - so there is no separate ASIN route to keep in step.
+ */
+export function addFromLibexUrl(query: string): string {
+  const q = query.trim()
+  return q ? `${ADD_PATH}?${ADD_QUERY_PARAM}=${encodeURIComponent(q)}` : ADD_PATH
+}

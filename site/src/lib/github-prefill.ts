@@ -6,9 +6,10 @@
 // All are free of React and DOM. The issue builders read today's date at call
 // time (in the browser), never at module scope, so the module is SSR-safe.
 
-import { href } from './api'
+import { href, today } from './api'
 import { FORMATS } from './import-parse'
 import type { ParsedBook, WorkMatch } from './import-parse'
+import type { LibexPrefill } from './libex-map'
 
 // The repo's new-issue endpoint. Exported so the search CTA (search-cta.ts)
 // builds its add-work URL from the same base instead of duplicating the literal.
@@ -29,13 +30,77 @@ const REPO_BLOB = 'https://github.com/kodestar/audiosilo-meta/blob/main'
  */
 export const importLibraryIssueUrl = `${ISSUE_BASE}?template=import-library.yml`
 
+/**
+ * The work-half facts every prefill builder needs. ParsedBook (an import export)
+ * and LibexPrefill (a libex lookup) both satisfy it structurally, so the two
+ * hand-offs share one mapping to the form's work_* fields.
+ */
+export interface WorkSource {
+  title: string
+  authors: string[]
+  language?: string
+  seriesName?: string
+  seriesPosition?: string
+}
+
+/**
+ * The recording-half facts every prefill builder needs. ParsedBook (an import
+ * export) and LibexPrefill (a libex lookup) both satisfy it structurally, so
+ * the two hand-offs share one mapping to the form's rec_* fields.
+ */
+export interface RecordingSource {
+  narrators: string[]
+  abridged?: boolean
+  runtimeMin?: number
+  releaseDate?: string
+  publisher?: string
+  asin?: string
+  region?: string
+  isbn?: string
+  coverUrl?: string
+}
+
+// Set the work-half fields shared by add-work.yml's two hand-offs (an import
+// export and a libex lookup). Only stated facts are prefilled (omit-unknown).
+// Three of the form's work fields are deliberately never set from either source:
+//  - work_first_published and work_isbn describe the PRINT edition, and a retail
+//    audio listing states the RECORDING's date/ISBN, not the work's;
+//  - work_subtitle, because a retail "subtitle" is a marketing tagline or a
+//    series designation far more often than a bibliographic subtitle ("The first
+//    Jack Reacher novel in the No.1 Sunday Times bestselling thriller series",
+//    "Jack Reacher, Book 1"). Not one of the 7846 works in the tree carries a
+//    subtitle and the Go importer never emits one, so prefilling it would seed a
+//    field the database does not use with text that is usually not the fact. The
+//    form keeps the input for a human who has a real one.
+function applyWorkParams(p: URLSearchParams, book: WorkSource): void {
+  if (book.title) p.set('work_title', book.title)
+  if (book.authors.length) p.set('work_authors', book.authors.join(', '))
+  if (book.language) p.set('work_language', book.language)
+  if (book.seriesName) p.set('work_series_name', book.seriesName)
+  if (book.seriesPosition) p.set('work_series_position', book.seriesPosition)
+}
+
+/**
+ * How a region-scoped ASIN is written: `US: B015RQON6I` when the source named a
+ * real marketplace, the bare ASIN otherwise. Exported so the /add confirmation
+ * card renders the SAME line the issue's rec_asins field carries (libex-map's
+ * prefillFacts) - the review can never drift from the submission.
+ */
+export function formatAsinLine(asin: string, region?: string): string {
+  return region ? `${region.toUpperCase()}: ${asin}` : asin
+}
+
 // Set the recording-half fields shared by add-work.yml and add-recording.yml.
 // Only stated facts are prefilled (omit-unknown): rec_abridged is set only when
 // the source stated it (the form's dropdown default covers review), an ASIN
-// carries a region prefix only when the export named a real marketplace, and an
-// export ISBN goes in rec_isbns (it identifies the AUDIOBOOK edition - never
+// carries a region prefix only when the source named a real marketplace, and an
+// ISBN goes in rec_isbns (it identifies the AUDIOBOOK edition - never
 // work_isbn, which is the print/ebook edition).
-function applyRecordingParams(p: URLSearchParams, book: ParsedBook): void {
+//
+// `sources` is passed in rather than derived here: the form's Sources field is
+// required and is the provenance record, so each hand-off states its own origin
+// (an export format and review date, or a libex lookup marker).
+function applyRecordingParams(p: URLSearchParams, book: RecordingSource, sources: string): void {
   if (book.narrators.length) p.set('rec_narrators', book.narrators.join(', '))
   if (book.abridged !== undefined) {
     p.set('rec_abridged', book.abridged ? 'Abridged' : 'Unabridged')
@@ -43,13 +108,17 @@ function applyRecordingParams(p: URLSearchParams, book: ParsedBook): void {
   if (book.runtimeMin != null) p.set('rec_runtime_min', String(book.runtimeMin))
   if (book.releaseDate) p.set('rec_release_date', book.releaseDate)
   if (book.publisher) p.set('rec_publisher', book.publisher)
-  if (book.asin) {
-    p.set('rec_asins', book.region ? `${book.region.toUpperCase()}: ${book.asin}` : book.asin)
-  }
+  if (book.asin) p.set('rec_asins', formatAsinLine(book.asin, book.region))
   if (book.isbn) p.set('rec_isbns', book.isbn)
   if (book.coverUrl) p.set('rec_cover_url', book.coverUrl)
-  const today = new Date().toISOString().slice(0, 10)
-  p.set('sources', `${FORMATS[book.format].label} (reviewed ${today})`)
+  p.set('sources', sources)
+}
+
+// The Sources line for an import-export hand-off: the format's label and the
+// date the contributor reviewed it. The date is read at call time (in the
+// browser), never at module scope, so this module stays SSR-safe.
+function exportSources(book: ParsedBook): string {
+  return `${FORMATS[book.format].label} (reviewed ${today()})`
 }
 
 /**
@@ -60,12 +129,23 @@ export function addWorkIssueUrl(book: ParsedBook): string {
   const p = new URLSearchParams()
   p.set('template', 'add-work.yml')
   p.set('title', `[work] ${book.title}`)
-  if (book.title) p.set('work_title', book.title)
-  if (book.authors.length) p.set('work_authors', book.authors.join(', '))
-  if (book.language) p.set('work_language', book.language)
-  if (book.seriesName) p.set('work_series_name', book.seriesName)
-  if (book.seriesPosition) p.set('work_series_position', book.seriesPosition)
-  applyRecordingParams(p, book)
+  applyWorkParams(p, book)
+  applyRecordingParams(p, book, exportSources(book))
+  return `${ISSUE_BASE}?${p.toString()}`
+}
+
+/**
+ * Build a prefilled add-work.yml issue URL from a libex lookup - the /add page's
+ * hand-off, for a book the catalogue does not have. Same template and the same
+ * work/recording mapping as addWorkIssueUrl; the difference is the source of the
+ * facts, which the prefill's own Sources text records (libex-map.ts).
+ */
+export function addWorkIssueUrlFromLibex(prefill: LibexPrefill): string {
+  const p = new URLSearchParams()
+  p.set('template', 'add-work.yml')
+  p.set('title', `[work] ${prefill.title}`)
+  applyWorkParams(p, prefill)
+  applyRecordingParams(p, prefill, prefill.sources)
   return `${ISSUE_BASE}?${p.toString()}`
 }
 
@@ -79,7 +159,7 @@ export function addRecordingIssueUrl(book: ParsedBook, work: WorkMatch): string 
   p.set('template', 'add-recording.yml')
   p.set('title', `[recording] ${book.title}`)
   p.set('work_ref', META_SITE + href.work(work.id))
-  applyRecordingParams(p, book)
+  applyRecordingParams(p, book, exportSources(book))
   return `${ISSUE_BASE}?${p.toString()}`
 }
 

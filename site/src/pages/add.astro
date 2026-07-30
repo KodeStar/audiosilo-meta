@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro'
+import Backdrop from '../components/Backdrop.astro'
+import AddFromLibex from '../components/add/AddFromLibex.tsx'
+
+const REPO = 'https://github.com/kodestar/audiosilo-meta'
+---
+
+<Base
+  title="Add a book - AudioSilo Meta"
+  description="Look a missing audiobook up on Libex, check the facts, and open a prefilled issue to add it to the open metadata database. Factual data only - no blurbs, no ratings."
+>
+  <section class="relative pb-20">
+    <Backdrop variant="page" />
+    <div class="container relative z-10">
+      <div class="reveal mx-auto max-w-2xl text-center">
+        <span
+          class="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-pink-500"
+        >
+          Contribute
+        </span>
+        <h1 class="text-3xl font-bold tracking-tight text-hi sm:text-4xl">Add a book</h1>
+        <p class="mt-4 text-lg leading-relaxed text-body">
+          Not in the database yet? Look the audiobook up on Libex, a public mirror of
+          Audible's catalogue, pick the exact narration, and check what we would record.
+          The last step opens a prefilled issue on GitHub - a maintainer bot takes it from
+          there.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-dim">
+          Only factual metadata is carried over: title, credits, series, identifiers,
+          runtime, and a cover URL. Descriptions, summaries and ratings are never
+          imported. Everything you contribute is dedicated to the public domain (CC0) -
+          see the
+          <a
+            href={`${REPO}/blob/main/CONTRIBUTING.md`}
+            target="_blank"
+            rel="noopener"
+            class="text-pink-400 transition-colors hover:text-pink-300">contributing guide</a
+          >
+          and the
+          <a
+            href={`${REPO}/blob/main/LICENSING.md`}
+            target="_blank"
+            rel="noopener"
+            class="text-pink-400 transition-colors hover:text-pink-300">licensing terms</a
+          >.
+        </p>
+      </div>
+
+      <div class="reveal mx-auto mt-10 max-w-2xl">
+        <AddFromLibex client:only="react" />
+      </div>
+
+      <div class="reveal mx-auto mt-12 max-w-2xl">
+        <h2 class="text-xl font-bold tracking-tight text-hi">Adding several at once</h2>
+        <p class="mt-3 text-sm leading-relaxed text-body">
+          Backing up a whole library? The
+          <a href="/import" class="text-pink-400 transition-colors hover:text-pink-300"
+            >import page</a
+          >
+          reads an OpenAudible, Libation, Audiobookshelf or folder-scan export in your browser
+          and tells you which books are new - one hand-off for the lot, instead of one lookup
+          at a time.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

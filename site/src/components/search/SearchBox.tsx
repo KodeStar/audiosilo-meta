@@ -10,7 +10,7 @@ import {
   type SearchResult,
   type LookupResponse,
 } from '../../lib/api'
-import { addWorkFromQueryUrl } from '../../lib/search-cta'
+import { addFromLibexUrl, addWorkFromQueryUrl } from '../../lib/search-cta'
 import { Icon } from '../ui'
 
 interface Props {
@@ -136,6 +136,11 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
   const [tab, setTab] = useState<Tab>('all')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+  /** The exact ASIN/ISBN lookup ran, ANSWERED, and had no match. Distinct from
+      "no pinned result": the lookup can also simply have failed, and the notice
+      below states a negative ("nothing carries this ASIN") that only an answer
+      establishes. */
+  const [exactMissed, setExactMissed] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(-1)
 
@@ -152,6 +157,7 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
       setGroups(EMPTY)
       setLoading(false)
       setError(false)
+      setExactMissed(false)
       setActiveIndex(-1)
       setTab('all')
       return
@@ -159,6 +165,7 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
     const ctrl = new AbortController()
     setLoading(true)
     setError(false)
+    setExactMissed(false)
     const timer = setTimeout(async () => {
       try {
         const wantLookup = looksLikeAsin(trimmed) || looksLikeIsbn(trimmed)
@@ -168,12 +175,21 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
             : lookup('isbn', normaliseIsbn(trimmed), ctrl.signal)
           : Promise.resolve(null)
 
+        // A failed exact lookup is swallowed so the text results still render,
+        // but it is REMEMBERED: without this flag a 500 from /lookup reads
+        // exactly like "answered, no match" and the notice below would tell the
+        // reader a product code is not catalogued on no evidence at all.
+        let lookupAnswered = true
         const [res, pinned] = await Promise.all([
           search(trimmed, 20, ctrl.signal),
-          lookupPromise.catch(() => null),
+          lookupPromise.catch(() => {
+            lookupAnswered = false
+            return null
+          }),
         ])
         if (ctrl.signal.aborted) return
         setGroups(resultsToGroups(res.results ?? [], pinned))
+        setExactMissed(wantLookup && lookupAnswered && pinned === null)
         setActiveIndex(-1)
         setLoading(false)
       } catch (err) {
@@ -437,18 +453,30 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
             ) : null}
 
             {!loading && !error && total === 0 && !groups.exact ? (
+              /* Nothing here yet. The primary route is the /add lookup assist,
+                 which finds the book on Libex and prefills the whole issue from
+                 the real record - far better than the reader retyping every
+                 field. The query rides along, and /add resolves an ASIN-shaped
+                 one straight to that record. Typing it all in by hand stays
+                 available as the secondary route. */
               <li className="px-4 py-5 text-center" role="presentation">
                 <p className="text-sm text-dim">No matches for &ldquo;{trimmed}&rdquo;.</p>
                 <p className="mt-1 text-sm font-medium text-hi">Not in the database yet.</p>
                 <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
                   <a
-                    href={addWorkFromQueryUrl(trimmed)}
-                    target="_blank"
-                    rel="noopener"
+                    href={addFromLibexUrl(trimmed)}
                     className="inline-flex items-center gap-1.5 rounded-lg bg-pink-600 px-3 py-1.5 text-sm font-medium text-white shadow-lg shadow-pink-600/20 transition-colors hover:bg-pink-500"
                   >
                     <Icon name="plus" className="h-4 w-4" />
-                    Add this book
+                    Find it on Libex
+                  </a>
+                  <a
+                    href={addWorkFromQueryUrl(trimmed)}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-xs text-dim underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+                  >
+                    or add it by hand
                   </a>
                   <a
                     href="/contribute"
@@ -488,6 +516,26 @@ export default function SearchBox({ examples = [], autoFocus = false, compact = 
                 className={row.divider ? 'mt-1 border-t border-edge/70 pt-1' : undefined}
               />
             ))}
+
+            {/* A pasted ASIN the exact lookup ANSWERED for and did not have, but
+                which still drew text matches: the rows above are guesses, so say
+                plainly that this product code is not catalogued and offer the
+                direct route. Gated on exactMissed rather than on a merely absent
+                pin, so a lookup that FAILED never gets reported as a definite
+                "not catalogued". The no-results case is the empty state above. */}
+            {!loading && !error && exactMissed && looksLikeAsin(trimmed) && total > 0 ? (
+              <li className="border-t border-edge px-4 py-3 text-center" role="presentation">
+                <p className="text-xs text-dim">
+                  No catalogued recording carries the ASIN {trimmed}.
+                </p>
+                <a
+                  href={addFromLibexUrl(trimmed)}
+                  className="mt-1 inline-block text-xs font-medium text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline"
+                >
+                  Look it up on Libex and add it
+                </a>
+              </li>
+            ) : null}
           </ul>
         </div>
       ) : null}

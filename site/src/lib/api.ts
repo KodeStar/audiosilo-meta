@@ -370,6 +370,16 @@ export async function lookup(
 
 // --- Formatting + href helpers (shared by every card/detail view) ---------
 
+/**
+ * Today in YYYY-MM-DD. Read at CALL time (never at module scope) so a module
+ * that stamps a provenance date stays safe to import during the static build -
+ * the date belongs to the reader's browser session, not to the build machine.
+ * Shared by every "reviewed/retrieved <date>" line (github-prefill, libex-map).
+ */
+export function today(): string {
+  return new Date().toISOString().slice(0, 10)
+}
+
 /** "16h 36m" / "45m" from a runtime in minutes. */
 export function formatRuntime(min?: number): string | null {
   if (!min || min <= 0) return null

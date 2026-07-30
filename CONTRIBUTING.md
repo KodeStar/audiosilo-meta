@@ -60,6 +60,13 @@ those are authoritative. `metacheck` validates against them.
 
 ### (a) Issue forms - no JSON required
 
+**Fastest route for one book**: the [add page](https://meta.audiosilo.app/add)
+looks a missing audiobook up on Libex (a public mirror of Audible's catalogue),
+shows you exactly which facts would be recorded, and opens the add-work form
+prefilled - you review and submit on GitHub. Descriptions, summaries and ratings
+never cross (see [LICENSING.md](LICENSING.md)); a lookup failure just falls back
+to the blank form.
+
 If you would rather not edit JSON, open an issue and pick a form:
 
 - **Add a work** - a new book plus its first recording.

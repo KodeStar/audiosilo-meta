@@ -1,6 +1,8 @@
+import { readFileSync } from 'node:fs'
 import { describe, it, expect } from 'vitest'
 import {
   addWorkIssueUrl,
+  addWorkIssueUrlFromLibex,
   addWorkIssueFormUrl,
   addRecordingIssueUrl,
   addRecordingIssueUrlForWork,
@@ -16,6 +18,8 @@ import {
 } from './github-prefill'
 import { parseExport } from './import-parse'
 import type { ParsedBook, WorkMatch } from './import-parse'
+import { libexToPrefill } from './libex-map'
+import type { LibexBook } from './libex'
 
 function parsedBook(extra: Partial<ParsedBook> = {}): ParsedBook {
   return {
@@ -48,6 +52,7 @@ describe('addWorkIssueUrl', () => {
       addWorkIssueUrl(
         parsedBook({
           title: 'Skysworn',
+          subtitle: 'Cradle, Book 4',
           authors: ['Will Wight', 'Second Author'],
           language: 'en',
           seriesName: 'Cradle',
@@ -56,6 +61,11 @@ describe('addWorkIssueUrl', () => {
       )
     )
     expect(p.get('work_title')).toBe('Skysworn')
+    // work_subtitle is deliberately NEVER prefilled, from either hand-off: a
+    // retail "subtitle" is a marketing tagline or a series designation far more
+    // often than a bibliographic subtitle, no work in the tree carries one, and
+    // the Go importer never emits one. The form keeps the input for a human.
+    expect(p.has('work_subtitle')).toBe(false)
     expect(p.get('work_authors')).toBe('Will Wight, Second Author')
     expect(p.get('work_language')).toBe('en')
     expect(p.get('work_series_name')).toBe('Cradle')
@@ -65,6 +75,7 @@ describe('addWorkIssueUrl', () => {
 
   it('omits work fields that are absent', () => {
     const p = params(addWorkIssueUrl(parsedBook({ title: 'Bare', authors: [] })))
+    expect(p.has('work_subtitle')).toBe(false)
     expect(p.has('work_authors')).toBe(false)
     expect(p.has('work_language')).toBe(false)
     expect(p.has('work_series_name')).toBe(false)
@@ -165,6 +176,89 @@ describe('addRecordingIssueUrl', () => {
     expect(p.get('rec_narrators')).toBe('Vox Player')
     expect(p.get('rec_asins')).toBe('US: B0ABCDEFGH')
     expect(p.get('rec_abridged')).toBe('Unabridged')
+  })
+})
+
+describe('addWorkIssueUrlFromLibex', () => {
+  // The field ids below are pinned to .github/ISSUE_TEMPLATE/add-work.yml - a
+  // renamed input there silently stops prefilling, so every name is asserted.
+  const book: LibexBook = {
+    asin: 'B015RQON6I',
+    title: 'Killing Floor (Unabridged)',
+    region: 'us',
+    publisher: 'Random House Audio',
+    language: 'english',
+    bookFormat: 'unabridged',
+    releaseDate: '2015-10-27T00:00:00+00:00',
+    imageUrl: 'https://m.media-amazon.com/images/I/71WZxAS.jpg',
+    lengthMinutes: 1067,
+    authors: [{ name: 'Lee Child' }],
+    narrators: [{ name: 'Dick Hill' }],
+    series: [{ name: 'Jack Reacher', position: '1' }],
+  }
+  const prefill = libexToPrefill(book, '2026-07-29')
+
+  it('uses the add-work.yml template on the issues host', () => {
+    const u = new URL(addWorkIssueUrlFromLibex(prefill))
+    expect(u.host).toBe('github.com')
+    expect(u.pathname).toBe('/kodestar/audiosilo-meta/issues/new')
+    expect(u.searchParams.get('template')).toBe('add-work.yml')
+  })
+
+  it('titles the issue with the cleaned work title', () => {
+    expect(params(addWorkIssueUrlFromLibex(prefill)).get('title')).toBe('[work] Killing Floor')
+  })
+
+  it('prefills every add-work.yml field the lookup states', () => {
+    const p = params(addWorkIssueUrlFromLibex(prefill))
+    expect(p.get('work_title')).toBe('Killing Floor')
+    expect(p.get('work_authors')).toBe('Lee Child')
+    expect(p.get('work_language')).toBe('en')
+    expect(p.get('work_series_name')).toBe('Jack Reacher')
+    expect(p.get('work_series_position')).toBe('1')
+    expect(p.get('rec_narrators')).toBe('Dick Hill')
+    expect(p.get('rec_abridged')).toBe('Unabridged')
+    expect(p.get('rec_runtime_min')).toBe('1067')
+    expect(p.get('rec_release_date')).toBe('2015-10-27')
+    expect(p.get('rec_publisher')).toBe('Random House Audio')
+    expect(p.get('rec_asins')).toBe('US: B015RQON6I')
+    expect(p.get('rec_cover_url')).toBe('https://m.media-amazon.com/images/I/71WZxAS.jpg')
+    expect(p.get('sources')).toBe(
+      'libex: B015RQON6I\nLibex (libex.lostcartographer.xyz) lookup for B015RQON6I (retrieved 2026-07-29)'
+    )
+  })
+
+  it('never sets a subtitle, a work-level date, or any ISBN from a libex lookup', () => {
+    const p = params(addWorkIssueUrlFromLibex(prefill))
+    // work_first_published / work_isbn describe the PRINT edition, which an audio
+    // listing does not state. work_subtitle is a tagline far more often than a
+    // subtitle. And a libex `isbn` is at least sometimes the print edition's,
+    // while recording.isbn is a hard dedup key upstream - a wrong one would
+    // mechanically refuse a legitimate future narration, so it never rides at all.
+    expect(p.get('work_subtitle')).toBeNull()
+    expect(p.get('work_first_published')).toBeNull()
+    expect(p.get('work_isbn')).toBeNull()
+    expect(p.get('rec_isbns')).toBeNull()
+  })
+
+  it('omits the fields the lookup did not state', () => {
+    const bare = libexToPrefill(
+      { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [] },
+      '2026-07-29'
+    )
+    const p = params(addWorkIssueUrlFromLibex(bare))
+    expect(p.get('work_title')).toBe('A Bare Record')
+    expect(p.get('work_authors')).toBeNull()
+    expect(p.get('work_language')).toBeNull()
+    expect(p.get('work_series_name')).toBeNull()
+    expect(p.get('rec_narrators')).toBeNull()
+    expect(p.get('rec_abridged')).toBeNull()
+    expect(p.get('rec_runtime_min')).toBeNull()
+    expect(p.get('rec_cover_url')).toBeNull()
+    // The ASIN is always known - it is how the record was found - and rides
+    // without a region prefix when no marketplace was stated.
+    expect(p.get('rec_asins')).toBe('B0BARE0001')
+    expect(p.get('sources')).toContain('libex: B0BARE0001')
   })
 })
 
@@ -617,5 +711,65 @@ describe('newBooksPayload', () => {
     expect(out.books).toHaveLength(1)
     expect(out.books[0].title).toBe('Killing Floor')
     expect(out.books[0].chapterCount).toBe(34)
+  })
+})
+
+describe('the add-work.yml contract this module prefills into', () => {
+  // Read the real issue form, so a change to it that this module has to know
+  // about breaks a test here rather than silently degrading a hand-off.
+  const form = readFileSync(
+    new URL('../../../.github/ISSUE_TEMPLATE/add-work.yml', import.meta.url),
+    'utf8'
+  )
+
+  /** Every field id the form marks `validations: required: true`. Parsed rather
+      than hand-listed so the assertion below reads the form, not a copy of it.
+      The 6-space indent, anchored, is what distinguishes a field's own
+      `validations` block from a checkbox OPTION's deeper `required:` line (the
+      two consent checkboxes are acknowledgements, not prefillable fields). */
+  function requiredIds(yml: string): string[] {
+    return yml
+      .split(/^ {2}- type:/m)
+      .slice(1)
+      .flatMap((block) => {
+        const id = /^ {4}id: (\S+)$/m.exec(block)?.[1]
+        return id && /^ {6}required: true$/m.test(block) ? [id] : []
+      })
+      .sort()
+  }
+
+  it('requires exactly the fields the /add card tells the reader to complete', () => {
+    // The Confirm card names title, author(s), narrator(s) and language as the
+    // required ones; `sources` is always prefilled, and rec_abridged is a
+    // dropdown whose "Unknown" default already satisfies its requirement - so
+    // neither is ever something the reader has to fill in. If this list changes,
+    // the card's copy (components/add/AddFromLibex.tsx) changes with it.
+    expect(requiredIds(form)).toEqual([
+      'rec_abridged',
+      'rec_narrators',
+      'sources',
+      'work_authors',
+      'work_language',
+      'work_title',
+    ])
+  })
+
+  it('still carries every optional input the prefill builders target', () => {
+    // A renamed input silently stops prefilling, so each id is pinned to the form.
+    for (const id of [
+      'work_subtitle',
+      'work_series_name',
+      'work_series_position',
+      'work_first_published',
+      'work_isbn',
+      'rec_runtime_min',
+      'rec_release_date',
+      'rec_publisher',
+      'rec_asins',
+      'rec_isbns',
+      'rec_cover_url',
+    ]) {
+      expect(form).toContain(`id: ${id}\n`)
+    }
   })
 })

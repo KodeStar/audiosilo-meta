@@ -286,7 +286,11 @@ export type), surfacing the importer warnings.
   (`cmd/metaimport {openaudible,libation}`, `internal/importer` - a shared pipeline
   over a typed sourceBook), the **meta.audiosilo.app site** with search + the
   in-browser `/import` diff (OpenAudible / Libation / Audiobookshelf export /
-  metascan folder-scan), and **issue-form-to-PR automation** (`cmd/metaissue` +
+  metascan folder-scan) plus the `/add` lookup assist (search libex from the
+  browser -> whitelist-parsed facts, descriptions/ratings structurally excluded
+  -> confirm card -> a prefilled add-work issue; `site/src/lib/libex.ts` +
+  `libex-map.ts`, CORS-open, client-side only), and **issue-form-to-PR
+  automation** (`cmd/metaissue` +
   `internal/issueform` + `intake.yml`) have all landed. Remaining: Open
   Library/Wikidata crosswalk seeding and per-title ASIN lookup assist.
 - **Phase 1.5 (integration landed)**: AudioSilo server/player integration.
