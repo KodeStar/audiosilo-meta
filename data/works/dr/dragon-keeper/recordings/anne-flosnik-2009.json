@@ -1,5 +1,15 @@
 {
   "abridged": false,
+  "asin": [
+    {
+      "asin": "0063007800",
+      "region": "us"
+    },
+    {
+      "asin": "B0035YKYD6",
+      "region": "us"
+    }
+  ],
   "id": "anne-flosnik-2009",
   "language": "en",
   "license": "CC0-1.0",
@@ -13,6 +23,16 @@
     {
       "imported_at": "2026-07-17",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "0063007800",
+      "type": "libex-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B0035YKYD6",
+      "type": "libex-import"
     }
   ],
   "work": "dragon-keeper"

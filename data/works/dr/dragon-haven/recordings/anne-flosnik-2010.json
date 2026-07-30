@@ -1,5 +1,15 @@
 {
   "abridged": false,
+  "asin": [
+    {
+      "asin": "0063007827",
+      "region": "us"
+    },
+    {
+      "asin": "B003L19894",
+      "region": "us"
+    }
+  ],
   "id": "anne-flosnik-2010",
   "language": "en",
   "license": "CC0-1.0",
@@ -13,6 +23,16 @@
     {
       "imported_at": "2026-07-17",
       "type": "audiosilo-books-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "0063007827",
+      "type": "libex-import"
+    },
+    {
+      "imported_at": "2026-07-30",
+      "ref": "B003L19894",
+      "type": "libex-import"
     }
   ],
   "work": "dragon-haven"
