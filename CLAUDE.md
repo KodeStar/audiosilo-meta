@@ -315,8 +315,11 @@ export type), surfacing the importer warnings.
   names/browse-node ids map onto the vocabulary via the embedded, drift-guarded
   `audiblegenres.json` - validated at 99.7% coverage against the full 1.13M-book
   dump, with per-node overrides disambiguating fiction/nonfiction name
-  collisions via the browse-tree hierarchy). In flight: the `--enrich`
-  ASIN-matched backfill mode and the
+  collisions via the browse-tree hierarchy); and `metaimport libex --enrich`
+  (ASIN-matched backfill: fills ONLY absent facts on existing records with
+  libex-import provenance, existing values always win, a runtime/date
+  contradiction disqualifies the whole row, enrich never creates anything, and
+  a second identical run is a byte-level no-op). In flight: the
   `libex-select` series-completion subset tool (+ the dump-to-rows export SQL;
   the received dump is Postgres 16 custom format - restore, query to NDJSON,
   feed metaimport). Follow-ups tracked in the plan:

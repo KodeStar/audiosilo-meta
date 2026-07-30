@@ -1090,11 +1090,22 @@ func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	}
 }
 
-// snapshotTree reads every file under dataDir into a path -> content map, so a
-// test can assert that a second run changed nothing at all.
-func snapshotTree(t *testing.T, dataDir string) map[string]string {
+// fileState is one file's content and modification time. The mod time is what
+// lets a test prove a run wrote NOTHING at all, rather than only that it wrote
+// the same bytes back.
+type fileState struct {
+	content string
+	modTime int64
+}
+
+// treeSnapshot maps each data-relative path to its state.
+type treeSnapshot map[string]fileState
+
+// snapshotTree reads every file under dataDir into a snapshot, so a test can
+// assert that a second run changed nothing at all.
+func snapshotTree(t *testing.T, dataDir string) treeSnapshot {
 	t.Helper()
-	out := map[string]string{}
+	out := treeSnapshot{}
 	err := filepath.Walk(dataDir, func(p string, info os.FileInfo, err error) error {
 		if err != nil || info.IsDir() {
 			return err
@@ -1107,7 +1118,7 @@ func snapshotTree(t *testing.T, dataDir string) map[string]string {
 		if rerr != nil {
 			return rerr
 		}
-		out[filepath.ToSlash(rel)] = string(raw)
+		out[filepath.ToSlash(rel)] = fileState{content: string(raw), modTime: info.ModTime().UnixNano()}
 		return nil
 	})
 	if err != nil {
@@ -1117,7 +1128,7 @@ func snapshotTree(t *testing.T, dataDir string) map[string]string {
 }
 
 // keysOf renders a snapshot's paths for a failure message.
-func keysOf(snapshot map[string]string) []string {
+func keysOf(snapshot treeSnapshot) []string {
 	out := make([]string, 0, len(snapshot))
 	for k := range snapshot {
 		out = append(out, k)

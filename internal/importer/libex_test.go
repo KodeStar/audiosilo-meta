@@ -377,26 +377,26 @@ func TestLibexParserShapes(t *testing.T) {
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			books, warnings, err := parseLibex([]byte(tc.input))
+			parsed, err := parseLibex([]byte(tc.input))
 			if err != nil {
 				t.Fatalf("parseLibex: %v", err)
 			}
-			if len(warnings) != 0 {
-				t.Errorf("unexpected warnings: %v", warnings)
+			if len(parsed.warnings) != 0 || parsed.skipped != 0 {
+				t.Errorf("unexpected warnings/skips: %+v", parsed.warnings)
 			}
-			if len(books) != tc.want {
-				t.Fatalf("parsed %d books, want %d", len(books), tc.want)
+			if len(parsed.books) != tc.want {
+				t.Fatalf("parsed %d books, want %d", len(parsed.books), tc.want)
 			}
-			if books[0].str("title_short") != "Row One" {
-				t.Errorf("first book title_short = %q", books[0].str("title_short"))
+			if parsed.books[0].str("title_short") != "Row One" {
+				t.Errorf("first book title_short = %q", parsed.books[0].str("title_short"))
 			}
 		})
 	}
 
-	if _, _, err := parseLibex([]byte("   ")); err == nil {
+	if _, err := parseLibex([]byte("   ")); err == nil {
 		t.Error("empty input should fail loud")
 	}
-	if _, _, err := parseLibex([]byte(`"not a book"`)); err == nil {
+	if _, err := parseLibex([]byte(`"not a book"`)); err == nil {
 		t.Error("a non-object/array root should fail loud")
 	}
 }
@@ -409,17 +409,17 @@ func TestLibexParserRefusesAmbiguousFiles(t *testing.T) {
 	row1 := `{"asin":"B0LIBEX011","title":"Row One","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"lengthMinutes":600}`
 	row2 := `{"asin":"B0LIBEX012","title":"Row Two","region":"us","language":"english","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"lengthMinutes":600}`
 
-	if _, _, err := parseLibex([]byte(`{"data":[` + row1 + `]}`)); err == nil {
+	if _, err := parseLibex([]byte(`{"data":[` + row1 + `]}`)); err == nil {
 		t.Error("a wrapper under an unrecognized key must fail loud, not import 0 books")
 	}
-	if _, _, err := parseLibex([]byte("[" + row1 + "][" + row2 + "]")); err == nil {
+	if _, err := parseLibex([]byte("[" + row1 + "][" + row2 + "]")); err == nil {
 		t.Error("trailing content after the array must fail loud, not drop the rest")
 	}
 	// The inverse: a lone row that happens to carry a wrapper-ish key is still a
 	// row, because it has an "asin".
-	books, _, err := parseLibex([]byte(`{"asin":"B0LIBEX011","title":"Row One","region":"us","language":"english","library":"my shelf","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`))
-	if err != nil || len(books) != 1 {
-		t.Errorf("a lone row with a wrapper-ish key: %d books, err %v", len(books), err)
+	parsed, err := parseLibex([]byte(`{"asin":"B0LIBEX011","title":"Row One","region":"us","language":"english","library":"my shelf","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`))
+	if err != nil || len(parsed.books) != 1 {
+		t.Errorf("a lone row with a wrapper-ish key: %d books, err %v", len(parsed.books), err)
 	}
 }
 
@@ -621,8 +621,12 @@ func TestLibexChapters(t *testing.T) {
 	if err := jsonInto(`{"chapters":[{"title":"One","startOffsetMs":0,"lengthMs":1000},{"title":" ","startOffsetMs":1000,"lengthMs":500}]}`, &e); err != nil {
 		t.Fatal(err)
 	}
+	var lp libexParse
 	warn := func(string, ...any) { t.Error("no warning expected") }
-	sb := libexToBook(e, "B0LIBEX050", "us", warn)
+	sb := libexToBook(e, "B0LIBEX050", "us", &lp)
+	if len(lp.warnings) != 0 {
+		t.Errorf("no parse warning expected: %+v", lp.warnings)
+	}
 	chs := buildChapters(sb.chapterRows(), warn)
 	if len(chs) != 2 || chs[0].Title != "One" || chs[0].LengthMS != 1000 || chs[1].Title != "Chapter 2" {
 		t.Errorf("chapters = %+v", chs)
