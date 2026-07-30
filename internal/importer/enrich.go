@@ -2,7 +2,7 @@ package importer
 
 import "strings"
 
-// enrich.go implements the ASIN-matched ENRICHMENT mode (Options.Enrich), the
+// enrich.go implements the ASIN-matched ENRICHMENT mode (ModeEnrich), the
 // second of the three import shapes LICENSING.md's import posture accepts:
 // "filling absent facts on catalogued works/recordings, matched by identifier,
 // from a source whose operator permits it".

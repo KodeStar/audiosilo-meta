@@ -105,7 +105,57 @@ the full export:
 go run ./cmd/metaimport libex full.ndjson --data data --enrich
 ```
 
-### 7. Clean up
+### 7. Pick up the alternate narrations
+
+The steps so far only ever add books the catalogue does not have. A **second
+narration of a book it already holds** falls through every one of them: its ASIN
+matches nothing, so step 6 ignores it; it fills no free series position, so step
+3 excludes it; and the plain create path would mint a duplicate work rather than
+a sibling recording. That is why the catalogue could hold Harry Potter and the
+Chamber of Secrets with only the Stephen Fry narration while the Jim Dale one
+and the full-cast edition sat in the export, unreachable.
+
+The recordings-only pass is the step that picks them up:
+
+```sh
+go run ./cmd/metaimport libex full.ndjson --data data --recordings-only --dry-run
+go run ./cmd/metaimport libex full.ndjson --data data --recordings-only
+```
+
+It is bounded by **this** catalogue, like the enrichment pass. Each row is
+resolved to a work already here by its cleaned title and its exact author set;
+if it resolves, the row becomes a new recording under that work (or its ASIN
+merges into a matching sibling recording, which is how a regional re-release
+attaches to the narration that already exists). If it does not resolve, the row
+is counted and dropped - the mode **never creates a work and never touches a
+series file**.
+
+Read the two skip buckets on the summary line:
+
+- *skipped (already present)* - the ASIN is catalogued; nothing to do.
+- *skipped (work not in the catalogue)* - the expected outcome for most rows.
+  The run names a few examples in one aggregated warning; skim them. They should
+  be books we genuinely do not hold, plus the things that are deliberately not
+  the work at all: excerpts, trivia and companion titles, "making of" episodes.
+  A row you recognize as a book we DO hold means the title matching missed it -
+  worth a look before you dismiss it.
+
+Run it after step 6 so the two passes do not compete for the same rows, and land
+its diff as its own reviewable PR: the recordings it adds are mostly high-profile
+alternate narrations, which is exactly the diff a reviewer can sanity-check by
+eye.
+
+**Memory.** This pass shares the libex parse layer, which slurps the whole file
+into memory before planning discards the rows that do not apply - roughly 6GB of
+live heap for the full 1.06M-row dump, the same caveat step 6 carries. Unlike
+step 6 there is no pre-filter that helps: an alternate narration is by
+definition a row `libex-select` excluded, so the natural input here IS the
+unfiltered dump. On a machine that cannot hold it, split `full.ndjson` into
+chunks with `split -l` and run the pass over each. A **streaming row iterator**
+for the parse layer (the shape `libex-select` already uses) is the known
+follow-up that would remove the caveat for all three libex passes.
+
+### 8. Clean up
 
 Drop the scratch container and the exported rows when you are done; neither the
 dump nor `full.ndjson` belongs in the repo.

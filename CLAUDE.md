@@ -156,7 +156,7 @@ pkg/check           PUBLIC schema validation + integrity/uniqueness/chapter/seri
 pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
                     (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
-internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
+internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook, with three disjoint planning modes over it: create, enrich.go's ASIN-matched backfill, recordings.go's alternate-narration pass; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
 internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> canonical records, the ok/duplicate/needs-human/invalid verdict the intake workflow branches on
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
@@ -325,7 +325,18 @@ export type), surfacing the importer warnings.
   (ASIN-matched backfill: fills ONLY absent facts on existing records with
   libex-import provenance, existing values always win, a runtime/date
   contradiction disqualifies the whole row, enrich never creates anything, and
-  a second identical run is a byte-level no-op); `metaimport libex-select`
+  a second identical run is a byte-level no-op); `metaimport libex
+  --recordings-only` (the ALTERNATE-NARRATION pass: a row is resolved to a work
+  the catalogue already holds by cleaned title slug + exact author set - seeing
+  through a trailing `, Book N` volume marker and a trailing `(Full-Cast
+  Edition)` production qualifier, but never an `(Excerpt)` or a companion title -
+  and lands as a new recording under it, or merges its ASIN into a matching
+  sibling recording; a row whose work is not here is counted as `SkippedNoWork`
+  and dropped, so the mode never creates a work and never touches a series file.
+  It closes the gap the other modes leave: a second narration matches no ASIN, so
+  `--enrich` ignores it, fills no free series position, so `libex-select`
+  excludes it, and would mint a duplicate work on the create path. Mutually
+  exclusive with `--enrich`); `metaimport libex-select`
   (streams the full dump, keeps only series-completing rows with a free
   position slot and mappable language/region, per-series cap, verbatim-row
   output, a report that partitions every row read; `scripts/
@@ -334,8 +345,14 @@ export type), surfacing the importer warnings.
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json). Remaining
-  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew) and
-  surfacing genres in the player (three-repo seam).
+  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew),
+  surfacing genres in the player (three-repo seam), and a **streaming row
+  iterator for the libex parse layer** - it currently slurps the whole file
+  (~6GB of live heap for the 1.06M-row dump) before planning discards what does
+  not apply, which `--recordings-only` feels most: an alternate narration is by
+  definition a row `libex-select` excluded, so its natural input IS the
+  unfiltered dump (`scripts/README.md` step 7 documents the `split -l`
+  workaround).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four
