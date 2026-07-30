@@ -450,11 +450,18 @@ func TestWorkTitleCandidates(t *testing.T) {
 			},
 		},
 		{
-			// A title that genuinely ends in a volume-looking phrase is offered
-			// FIRST as itself, so a catalogued work of that name wins.
-			name:  "the stated title always comes first",
+			// A sequel whose own name ends in "Book <N>" prints no separator, so
+			// nothing strips: "The Jungle Book" must never become a candidate, or
+			// the sequel's narration would land on the base work.
+			name:  "a sequel title is never stripped",
 			short: "The Jungle Book 2",
-			want:  []string{"The Jungle Book 2", "The Jungle"},
+			want:  []string{"The Jungle Book 2"},
+		},
+		{
+			// Nothing marker-shaped at all.
+			name:  "an ordinary title is left alone",
+			short: "Ready Player One",
+			want:  []string{"Ready Player One"},
 		},
 		{
 			name:  "the fuller title seeds the chain too",
@@ -488,24 +495,38 @@ func TestWorkTitleCandidates(t *testing.T) {
 	}
 }
 
-// TestStripVolumeMarker pins the volume-marker rule's edges, including the two
-// shapes it must refuse.
+// TestStripVolumeMarker pins the volume-marker rule's edges. The REFUSALS carry
+// the weight: a marker missed only sends the row to SkippedNoWork, while a strip
+// that eats part of a title's own name attaches a narration to the wrong work.
 func TestStripVolumeMarker(t *testing.T) {
 	cases := []struct{ in, want string }{
+		// Every separator the dump prints, tight or spaced on either side.
 		{"Title, Book 2", "Title"},
 		{"Title - Book 2", "Title"},
 		{"Title: Volume 3", "Title"},
-		{"Title Vol. 4", "Title"},
+		{"Title; Book 2", "Title"},
+		{"Title – Book 2", "Title"},
+		{"Title-Book 2", "Title"},
+		{"Title , Book 2", "Title"},
+		{"Title - Vol. 4", "Title"},
 		{"Title, Book 2.5", "Title"},
 		{"Title, BOOK 2", "Title"},
+		// No separator: the number is part of the title's own name. "The Jungle
+		// Book 2" is a sequel, and the dump's separator-less rows are mostly
+		// anthology titles that would otherwise collapse onto a base title.
+		{"The Jungle Book 2", "The Jungle Book 2"},
+		{"33 Essays on Nondual Spirituality Volume 2", "33 Essays on Nondual Spirituality Volume 2"},
+		{"Title Vol. 4", "Title Vol. 4"},
 		// "part" is never stripped: a split release's half is not the whole work.
 		{"Title, Part 2", "Title, Part 2"},
 		// A marker with no number is just words.
 		{"The Jungle Book", "The Jungle Book"},
+		{"Ready Player One", "Ready Player One"},
 		// Mid-title markers are untouched - only a TRAILING one decorates.
 		{"Book 2 of the Series", "Book 2 of the Series"},
 		// Stripping would leave nothing, so nothing is stripped.
 		{"Book 2", "Book 2"},
+		{", Book 2", ", Book 2"},
 	}
 	for _, tc := range cases {
 		if got := stripVolumeMarker(tc.in); got != tc.want {

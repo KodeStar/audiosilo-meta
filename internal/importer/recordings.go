@@ -231,20 +231,35 @@ func titleStripChain(title string) []string {
 	}
 }
 
-// volumeMarkerRE matches the trailing volume marker retailers append to a series
+// volumeMarkerRE matches the trailing volume marker retailers APPEND to a series
 // volume's title ("Harry Potter and the Chamber of Secrets, Book 2", "The Lost
 // Cartographer - Vol. 3"). The marker names the volume's place in its series,
 // not the work, so the work it decorates is the same work without it.
 //
-// "part" is deliberately NOT in the list: "Part 1" is routinely a real half of a
-// split release, and stripping it would map that half onto the whole work.
+// Two deliberate narrowings, both chosen by the same asymmetry: a marker this
+// rule fails to strip merely lands the row in SkippedNoWork, which costs
+// nothing, while a strip that fires on a title's own words attaches a narration
+// to the WRONG work, which writes bad data.
+//
+//  1. The SEPARATOR IS MANDATORY. An appended marker always prints one - a
+//     comma, colon, semicolon, hyphen or en dash (all four attested in the libex
+//     dump, en dash included; that character is data here, same rationale as
+//     qualifierPunct). Where there is only a space the number is usually part of
+//     the title itself: "The Jungle Book 2" is a sequel, and the dump's ~2300
+//     separator-less rows are overwhelmingly anthology titles like "33 Essays on
+//     Nondual Spirituality Volume 2", every one of which would otherwise collapse
+//     onto its base title. The separator may be tight on either side, so
+//     "Title-Book 2" and "Title , Book 2" both strip.
+//  2. "part" is NOT in the marker list: "Part 1" is routinely a real half of a
+//     split release, and stripping it would map that half onto the whole work.
 //
 // pkg/scan/derive.go's trailingVol is the sibling pattern on the folder-scanning
-// side, and it DOES accept "part" - correctly, because there the marker is being
-// read to DERIVE a series position from a folder name, not to decide that two
-// titles name the same work. The two lists diverge on purpose; keep them in step
-// on everything else.
-var volumeMarkerRE = regexp.MustCompile(`(?i)\s*[,:;-]?\s*(?:book|vol\.?|volume)\s*\d+(?:\.\d+)?\s*$`)
+// side and diverges on BOTH points - it accepts "part" and makes the separator
+// optional. That is correct there: it reads the marker to DERIVE a series
+// position from a folder name, where a wrong reading yields a position the
+// importer re-validates, not a work identity. Keep the two in step on everything
+// else.
+var volumeMarkerRE = regexp.MustCompile(`(?i)\s*[,:;–-]\s*(?:book|vol\.?|volume)\s*\d+(?:\.\d+)?\s*$`)
 
 // stripVolumeMarker drops one trailing volume marker, or returns the title
 // unchanged when there is none (or when stripping would leave nothing).
