@@ -1,0 +1,453 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Windrunner"
+      ],
+      "description": "A classless city runner known locally as the Windrunner. An independent wind gathers around her and assists her movement as she takes dangerous work near Raismelt.",
+      "id": "ryoka-griffin",
+      "name": "Ryoka Griffin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A sickly information broker in Raismelt who secretly examines letters carried by runners. She keeps her true nature hidden at the inn where she lives.",
+      "id": "young-vampire",
+      "name": "Young vampire",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A badly injured member of the Pithfire Hounds. Ryoka carries him to safety during an emergency delivery after bringing the trapped adventurers the potions they need, and his survival helps establish her as a dependable runner.",
+      "id": "lamont",
+      "name": "Lamont",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Erin"
+      ],
+      "description": "The innkeeper of the Wandering Inn, a refuge for guests of many species. Her unusual inn, its magical door, and the household gathered around it remain central to her life near Liscor.",
+      "id": "erin-solstice",
+      "name": "Erin Solstice",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Erin's capable inn manager and Mrsha's guardian. She helps sustain the Wandering Inn as a home and shares responsibility for the young Gnoll.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young mute Gnoll in the care of Erin and Lionette. Recovering from earlier trauma, she is part of the close household formed around the Wandering Inn.",
+      "id": "mrsha",
+      "name": "Mrsha",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A member of Erin's chosen family who has a permanent home at the Wandering Inn.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A wounded Redfang Goblin bard and resident of the Wandering Inn.",
+      "id": "numbtongue",
+      "name": "Numbtongue",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fallen Goblin who took part in the defense of Liscor.",
+      "id": "pyrite",
+      "name": "Pyrite",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Stitch Person alchemist based in Selim whose cloth body can be taken apart and repaired. Her business connection to the inn's magical door brings her to check on Erin while the inn is closed by grief.",
+      "id": "octavia",
+      "name": "Octavia",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Wall Lord Ilvriss"
+      ],
+      "description": "A Drake Wall Lord and established ally in Liscor.",
+      "id": "ilvriss",
+      "name": "Ilvriss",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ceria"
+      ],
+      "description": "The half-elf leader of the Horns of Hammerad. She has unresolved business with the team's imprisoned former captain and the dungeon beneath Liscor.",
+      "id": "ceria-springwalker",
+      "name": "Ceria Springwalker",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Springwalker's former captain"
+      ],
+      "description": "The imprisoned former captain of Ceria's team. Disabled and awaiting judgment, he remains connected to the dungeon disaster and to the companions whose deaths and unfinished work continue to weigh on the Horns.",
+      "id": "calruz",
+      "name": "Calruz",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's strategist.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The necromancer formerly behind the Goblin Lord and a concealed danger to the Drake cities.",
+      "id": "azkerash",
+      "name": "Az'kerash",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Ken"
+      ],
+      "description": "A Japanese arrival from Earth and negotiator for the United Nations Company. His language skill and local contacts help hold together a precarious refuge made up of other Earth arrivals, former mercenaries, and local allies.",
+      "id": "kenjiro-murata",
+      "name": "Kenjiro Murata",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Australian captain of the Bush Rangers, a silver-rank team using camouflage, traps, crossbows, and poisoned bolts. He seeks safer paid work for the United Nations Company while he and his teammates carry the effects of earlier battles.",
+      "id": "dally",
+      "name": "Dally",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Swedish member of the Bush Rangers who specializes in camouflage. She joined the team after surviving apart from its original members.",
+      "id": "siri",
+      "name": "Siri",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Australian aspiring writer who proposed supporting the United Nations Company by selling her romance fiction. She disappeared without a known resolution, leaving Dally with her unfinished work.",
+      "id": "caroline",
+      "name": "Caroline",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Dullahan adventurer who commands the silver-rank Rustless Guard. A dispute over an assignment ends when Dally offers her an honorable apology and a drink.",
+      "id": "eldemar",
+      "name": "Eldemar",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Last Light of Boleros"
+      ],
+      "description": "An Italian physician whose medicine is indispensable to the United Nations Company. Known locally as the Last Light of Boleros, she wants her work to support the group, though her value and limited protection make battlefield service especially dangerous.",
+      "id": "geneva-scala",
+      "name": "Geneva Scala",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The United Nations Company's treasurer and an inventive designer. She manages the group's dwindling shared funds, improves the Bush Rangers' crossbows, and looks for practical ways to preserve equipment brought from Earth.",
+      "id": "paige",
+      "name": "Paige",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A South African Olympic rowing hopeful who has turned his abilities toward courier work. He plans to earn income for the United Nations Company by carrying messages over water in a canoe.",
+      "id": "luan",
+      "name": "Luan",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Italian arrival from Earth found malnourished after hiding from violent attackers. Her diabetes becomes an immediate danger because she has no insulin, leaving the rescuers to stabilize her until Geneva returns.",
+      "id": "diana",
+      "name": "Diana",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A traumatized New Zealand arrival from Earth rescued with three Italian survivors. He gives the Bush Rangers their first account of other Earth humans attacking the group with two young centaurs.",
+      "id": "blake",
+      "name": "Blake",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A distinct being sharing Geneva's living body. Able to control parts of that body with precision, the self-ed assists her medical work directly while remaining a separate presence with medical uncertainties of its own.",
+      "id": "self-ed",
+      "name": "Self-ed",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Geneva's nurse and surgical assistant. She supports the doctor's medical research and helps during emergency treatment, including a difficult operation to save a centaur mother and her child.",
+      "id": "aiko",
+      "name": "Aiko",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Minotaur planner who covertly hires Luan for a time-sensitive future delivery connected to the Titan's recurring game.",
+      "id": "vanaz",
+      "name": "Vanaz",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Titan"
+      ],
+      "description": "The Titan and head of the Forgotten Wing Company. Presented with unfamiliar nonmagical devices and reports about the United Nations Company, he privately concludes that people from another world are probably involved and begins an encrypted inquiry.",
+      "id": "niers-astoragon",
+      "name": "Niers Astoragon",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A bee bonded to Lionette and protective of her and Mrsha. It serves as a messenger and uses sustained flame-powered flight to outlast an attacking swarm's queen and claim territory.",
+      "id": "lionettes-ashfire-bee",
+      "name": "Lionette's ashfire bee",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's Watch captain. She accepts Lionette's plan to repay damage from earlier crimes and keeps the confiscated artifacts until the agreed fine is paid.",
+      "id": "zevara",
+      "name": "Zevara",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Gnoll bartender who owns Tails and Scales with his wife, Lassica. He comforts Erin and helps organize opposition to a concealed visitor fee.",
+      "id": "rufelt",
+      "name": "Rufelt",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Drake chef who owns Tails and Scales with her husband, Rufelt. She comforts Erin and helps organize opposition to a concealed visitor fee.",
+      "id": "lassica",
+      "name": "Lassica",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A skilled and expensive Drake scribe in Liscor. Olesm hires her to reproduce his strategy and chess publication, making her craft part of the effort to preserve and distribute the city's hard-won lessons.",
+      "id": "ressa",
+      "name": "Ressa",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "King of Destruction"
+      ],
+      "description": "The King of Destruction and ruler of Rhyme. He enters Germina's succession as its foreign witness, offers its reborn ruler protected self-rule within his realm, and then takes Helios after its queen abdicates.",
+      "id": "flos",
+      "name": "Flos",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Flos's steward and left hand, responsible for turning conquest into administration. He prepares control arrangements for Germina and Helios and receives a desert clan whose young blacksmith has sworn to forge Flos an exceptional weapon.",
+      "id": "orthenon",
+      "name": "Orthenon",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born teenage mage chosen as Flos's companion. Training under Rhyme's formidable vassals, he learns to cast Farsight without a staff while becoming involved with the arrival of a desert clan and its demanding oath.",
+      "id": "trey",
+      "name": "Trey",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An independent ruler formerly associated with Flos. At a neutral gathering of southern powers, she refuses to join opposition to him and commits her country to honoring his peace declaration and the return of those who claim his allegiance.",
+      "id": "empress-of-beasts",
+      "name": "Empress of Beasts",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The martial champion of a neutral sanctuary. The champion enforces its rules, refuses political killing, and ends a violent clash among visiting rulers without taking a life.",
+      "id": "neutral-sanctuary-champion",
+      "name": "Neutral sanctuary champion",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Drake secretary who manages a neutral sanctuary. She secretly uses her document-copying ability to preserve the Emperor of Sands' proposal.",
+      "id": "neutral-sanctuary-secretary",
+      "name": "Neutral sanctuary secretary",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former mercenary captain allied with the United Nations Company. He urges the group to seek paid contracts, while recognizing that Geneva is too valuable and too poorly protected to serve safely as a battlefield doctor.",
+      "id": "qualet",
+      "name": "Qualet",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A child incarnation who inherits Germina's cuirass office and memories while remaining a distinct person. As Germina's ruler, she accepts Flos's protection and an alliance that preserves her territory's self-rule within Rhyme.",
+      "id": "reborn-cuirass-of-germina",
+      "name": "Reborn cuirass of Germina",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The only remaining smith in her desert clan able to work its rare metal. She arrives in Rhyme under an oath to forge Flos an exceptional weapon and bears responsibility for preserving the craft taught by her father.",
+      "id": "desert-clan-blacksmith",
+      "name": "Desert-clan blacksmith",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Lizardfolk sorcerer allied with the United Nations Company. After losing a foot in battle, she received a peg leg made by Geneva.",
+      "id": "kexa",
+      "name": "Kexa",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A half-Gazer who puts Trey through demanding magical training. Under her instruction, he learns to cast Farsight without a staff.",
+      "id": "ghazi",
+      "name": "Ghazi",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The twin of Trey, from whom she has grown distant after a disagreement. They resume warmer contact and agree to speak privately as they begin repairing their relationship.",
+      "id": "therese",
+      "name": "Therese",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0C82TS539",
+      "type": "community"
+    }
+  ],
+  "work": "the-wind-runner"
+}
