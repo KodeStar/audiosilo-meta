@@ -89,9 +89,15 @@ func recordingsFixture(t *testing.T) string {
 // real-shaped rows against a catalogue holding the Chamber of Secrets with only
 // the Fry narration must produce exactly two new recordings under that work -
 // the Jim Dale narration (whose ", Book 2" volume marker has to be seen through)
-// and the full-cast one (whose "(Full-Cast Edition)" qualifier has to be) - while
-// the excerpt and the trivia title land in the no-work bucket rather than
-// creating anything.
+// and the full-cast one (whose "(Full-Cast Edition)" qualifier has to be) -
+// while neither of the other two creates anything.
+//
+// The two rejected rows are refused at different layers, which is deliberate:
+// the excerpt reaches this planner and lands in the no-work bucket (an excerpt
+// is not the work), while the trivia title never gets that far - it is narrated
+// by "Virtual Voice" in the real dump, so libex.go's AI-narrator rule refuses it
+// at parse time and it is counted in SkippedRows. That a companion title also
+// fails to resolve by TITLE is pinned by TestWorkTitleCandidates.
 func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	dataDir := seedRecordingsTree(t)
 	before := snapshotTree(t, dataDir)
@@ -101,8 +107,11 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	if sum.NewRecordings != 2 {
 		t.Errorf("NewRecordings = %d, want 2", sum.NewRecordings)
 	}
-	if sum.SkippedNoWork != 2 {
-		t.Errorf("SkippedNoWork = %d, want 2 (the excerpt and the trivia title)", sum.SkippedNoWork)
+	if sum.SkippedNoWork != 1 {
+		t.Errorf("SkippedNoWork = %d, want 1 (the excerpt)", sum.SkippedNoWork)
+	}
+	if sum.SkippedRows != 1 {
+		t.Errorf("SkippedRows = %d, want 1 (the AI-narrated trivia title)", sum.SkippedRows)
 	}
 	if sum.NewWorks != 0 || sum.NewSeries != 0 {
 		t.Errorf("the mode created a work or a series: NewWorks=%d NewSeries=%d", sum.NewWorks, sum.NewSeries)
@@ -188,8 +197,8 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	if sum2.NewRecordings != 0 || sum2.NewPeople != 0 || sum2.MergedASINs != 0 {
 		t.Errorf("second run was not a no-op: %+v", sum2)
 	}
-	if sum2.Skipped != 2 || sum2.SkippedNoWork != 2 {
-		t.Errorf("second run counters = %d skipped / %d no-work, want 2/2", sum2.Skipped, sum2.SkippedNoWork)
+	if sum2.Skipped != 2 || sum2.SkippedNoWork != 1 {
+		t.Errorf("second run counters = %d skipped / %d no-work, want 2/1", sum2.Skipped, sum2.SkippedNoWork)
 	}
 	if got := snapshotTree(t, dataDir); !reflect.DeepEqual(got, after) {
 		t.Error("a second identical run changed the tree")
@@ -289,8 +298,8 @@ func TestRecordingsOnlyDryRunWritesNothing(t *testing.T) {
 
 	sum := runRecordingsOnly(t, dataDir, recordingsFixture(t), true)
 
-	if sum.NewRecordings != 2 || sum.SkippedNoWork != 2 {
-		t.Errorf("dry-run plan = %+v, want the same 2 recordings / 2 unmatched", sum)
+	if sum.NewRecordings != 2 || sum.SkippedNoWork != 1 {
+		t.Errorf("dry-run plan = %+v, want the same 2 recordings / 1 unmatched", sum)
 	}
 	if got := snapshotTree(t, dataDir); !reflect.DeepEqual(got, before) {
 		t.Error("a dry run wrote to the tree")

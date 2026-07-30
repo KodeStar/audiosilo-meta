@@ -10,12 +10,35 @@ recorded so they are reproducible and reviewable.
 (libex.lostcartographer.xyz) database dump into the NDJSON row shape
 `metaimport libex` parses. It emits one JSON object per line with only the
 factual columns the importer reads; the dump's description, summary, rating and
-copyright columns are never selected. It excludes AI-narrated rows (`is_vvab`)
+copyright columns are never selected. It excludes AI-narrated rows (see below)
 and everything that is not a book (it keeps `content_delivery_type`
 `SinglePartBook` and `MultiPartBook`, so podcasts, periodicals, parts, bundles
 and series containers are out), and it orders by `sku_group` so the per-region
 editions of one title come out adjacent - the importer folds those into one
 recording through its same-narrator ASIN merge.
+
+### AI narrations are excluded twice
+
+A synthetic voice is not a person, so an AI-narrated production has no place in
+a catalogue built around who narrated a book - importing one mints a person
+record for a text-to-speech engine. libex has an `is_vvab` ("virtual voice")
+flag that looks like the filter for this, and the query still applies it, **but
+it does not work**: measured over the full 1.13M-row dump, 145,558 books credit
+an AI voice and `is_vvab` is `false` on 145,550 of them. The evidence lives in
+the narrator credit.
+
+So the query also filters on the credit itself, using an evidence-driven list of
+the forms the dump actually contains ("Virtual Voice" and its Spanish, French,
+Italian and German siblings; Audible's "AI Voice *persona*" family; trailing
+markers like "(Voz de IA)" and "(AI)"). Any one AI credit disqualifies the row.
+That removes ~145,550 rows from a full export.
+
+The same three shapes are implemented in `internal/importer/libex.go`
+(`aiNarratorNames` / `aiNarratorPrefix` / `aiNarratorMarkers`), which refuses
+the same rows at parse time for every `metaimport libex` mode - so a dump
+exported without this filter, or one an older copy of this script produced, is
+still safe. **The two lists must be kept in step**; each file's comment says so.
+The refusals are reported as one aggregated warning line per run.
 
 ## The import posture (read this first)
 
@@ -53,6 +76,13 @@ Check psql's exit status before going any further (`echo $?`, or run it under
 `set -e`). The redirect creates `full.ndjson` whether the query succeeded or
 not, so a connection dropped halfway through leaves a short file that looks
 perfectly importable - and the selection step reads it as the whole dump.
+
+The row count is roughly 918k on the current dump: 1.06M books minus the ~145k
+AI-narrated ones the credit filter drops (see "AI narrations are excluded
+twice"). If your export is nearer 1.06M, the credit filter did not run - your
+copy of the query is out of date. Nothing breaks either way, because
+`metaimport libex` refuses those rows again at parse time and says so in one
+aggregated warning line, but the export is the cheaper place to lose them.
 
 ### 3. Select a tranche
 
