@@ -145,6 +145,16 @@ its diff as its own reviewable PR: the recordings it adds are mostly high-profil
 alternate narrations, which is exactly the diff a reviewer can sanity-check by
 eye.
 
+**Memory.** This pass shares the libex parse layer, which slurps the whole file
+into memory before planning discards the rows that do not apply - roughly 6GB of
+live heap for the full 1.06M-row dump, the same caveat step 6 carries. Unlike
+step 6 there is no pre-filter that helps: an alternate narration is by
+definition a row `libex-select` excluded, so the natural input here IS the
+unfiltered dump. On a machine that cannot hold it, split `full.ndjson` into
+chunks with `split -l` and run the pass over each. A **streaming row iterator**
+for the parse layer (the shape `libex-select` already uses) is the known
+follow-up that would remove the caveat for all three libex passes.
+
 ### 8. Clean up
 
 Drop the scratch container and the exported rows when you are done; neither the

@@ -61,7 +61,7 @@ func seedEnrichTree(t *testing.T, overrides map[string]string) string {
 func runEnrich(t *testing.T, dataDir, exportJSON string, dryRun bool) Summary {
 	t.Helper()
 	sum, err := RunLibex(writeBooks(t, exportJSON), Options{
-		DataDir: dataDir, ImportDate: testImportDate, DryRun: dryRun, Enrich: true,
+		DataDir: dataDir, ImportDate: testImportDate, DryRun: dryRun, Mode: ModeEnrich,
 	})
 	if err != nil {
 		t.Fatalf("enrich run: %v", err)
@@ -94,11 +94,16 @@ const fullRow = `[{
   "rating": 4.87
 }]`
 
-// enrichedRecording is the recording fields the tests assert on.
-type enrichedRecording struct {
+// recordingFile is the recording fields the mode tests assert on - shared by
+// the enrichment and recordings-only suites, which read the same file shape for
+// different reasons. Description is here so a test can prove publisher copy
+// never lands, not because the importer ever writes it.
+type recordingFile struct {
 	ID          string   `json:"id"`
+	Work        string   `json:"work"`
 	Narrators   []string `json:"narrators"`
 	Abridged    *bool    `json:"abridged"`
+	Language    string   `json:"language"`
 	RuntimeMin  int      `json:"runtime_min"`
 	ReleaseDate string   `json:"release_date"`
 	Publisher   string   `json:"publisher"`
@@ -113,6 +118,7 @@ type enrichedRecording struct {
 		StartMS  int64  `json:"start_ms"`
 		LengthMS int64  `json:"length_ms"`
 	} `json:"chapters"`
+	License string `json:"license"`
 	Sources []struct {
 		Type       string `json:"type"`
 		Ref        string `json:"ref"`
@@ -163,7 +169,7 @@ func TestEnrichFillsAbsentFacts(t *testing.T) {
 		t.Fatalf("enriched tree failed validation:\n%v", res.Problems)
 	}
 
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if rec.RuntimeMin != 600 {
 		t.Errorf("runtime_min = %d, want 600", rec.RuntimeMin)
@@ -348,7 +354,7 @@ func TestEnrichDoesNotWarnOnALessPreciseRecordedDate(t *testing.T) {
 	if hasWarning(sum.Warnings, "release date") {
 		t.Errorf("a precision difference is not a conflict: %v", sum.Warnings)
 	}
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if rec.ReleaseDate != "2024" {
 		t.Errorf("release_date = %q, want the recorded value kept", rec.ReleaseDate)
@@ -360,7 +366,7 @@ func TestEnrichNeverReplacesChapters(t *testing.T) {
 	dataDir := seedEnrichTree(t, map[string]string{recRel: chapteredRec})
 
 	runEnrich(t, dataDir, fullRow, false)
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if len(rec.Chapters) != 1 || rec.Chapters[0].Title != "Only Chapter" {
 		t.Errorf("existing chapters must never be merged or replaced: %+v", rec.Chapters)
@@ -379,7 +385,7 @@ func TestEnrichISBNGlobalDuplicateGuard(t *testing.T) {
 	if !hasWarning(sum.Warnings, "ISBN 9781234567897 is already recorded on another recording") {
 		t.Errorf("expected an ISBN collision warning, got %v", sum.Warnings)
 	}
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if len(rec.ISBN) != 0 {
 		t.Errorf("a globally-claimed ISBN must not be added: %v", rec.ISBN)
@@ -557,7 +563,7 @@ func TestEnrichReportsAnASINOnTwoRecordings(t *testing.T) {
 	if got := readRaw(t, dataDir, "works/th/the-second-map/recordings/twin.json"); got != twinRec {
 		t.Errorf("the second claimant must be untouched:\n got %s\nwant %s", got, twinRec)
 	}
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if rec.Publisher != "Lost Press" {
 		t.Errorf("the first claimant should have been enriched: %+v", rec)
@@ -626,7 +632,7 @@ func TestEnrichIsIdempotent(t *testing.T) {
 	assertTreeUnchanged(t, dataDir, after)
 
 	// And provenance was stamped exactly once per record.
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	libexStamps := 0
 	for _, s := range rec.Sources {
@@ -670,7 +676,7 @@ func TestEnrichComposesRowsTouchingOneRecording(t *testing.T) {
 		t.Errorf("EnrichedRecordings = %d, want 2 (one per changing row)", sum.EnrichedRecordings)
 	}
 
-	var rec enrichedRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
 	if rec.Publisher != "Lost Press" || rec.RuntimeMin != 600 {
 		t.Errorf("the first row's facts were lost: %+v", rec)
@@ -696,7 +702,7 @@ func TestEnrichIsSourceAgnosticInTheCore(t *testing.T) {
 	// --enrich to the source whose operator permits the pass).
 	dataDir := seedEnrichTree(t, nil)
 	books := `[{"asin":"B0LIBEX001","title_short":"The Lost Cartographer","author":"Ada Mapmaker","narrated_by":"Bea Reader","language":"english","region":"uk","publisher":"Lost Press"}]`
-	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate, Enrich: true})
+	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
 	if err != nil {
 		t.Fatal(err)
 	}

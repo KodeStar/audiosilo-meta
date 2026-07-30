@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -64,7 +65,7 @@ func seedRecordingsTree(t *testing.T) string {
 func runRecordingsOnly(t *testing.T, dataDir, exportJSON string, dryRun bool) Summary {
 	t.Helper()
 	sum, err := RunLibex(writeBooks(t, exportJSON), Options{
-		DataDir: dataDir, ImportDate: testImportDate, DryRun: dryRun, RecordingsOnly: true,
+		DataDir: dataDir, ImportDate: testImportDate, DryRun: dryRun, Mode: ModeRecordingsOnly,
 	})
 	if err != nil {
 		t.Fatalf("recordings-only run: %v", err)
@@ -82,29 +83,6 @@ func recordingsFixture(t *testing.T) string {
 		t.Fatal(err)
 	}
 	return string(raw)
-}
-
-// recordingsOnlyRecording is the recording shape these tests assert on.
-type recordingsOnlyRecording struct {
-	ID          string   `json:"id"`
-	Work        string   `json:"work"`
-	Narrators   []string `json:"narrators"`
-	Abridged    *bool    `json:"abridged"`
-	Language    string   `json:"language"`
-	RuntimeMin  int      `json:"runtime_min"`
-	ReleaseDate string   `json:"release_date"`
-	Publisher   string   `json:"publisher"`
-	CoverURL    string   `json:"cover_url"`
-	ASIN        []struct {
-		Region string `json:"region"`
-		ASIN   string `json:"asin"`
-	} `json:"asin"`
-	License string `json:"license"`
-	Sources []struct {
-		Type       string `json:"type"`
-		Ref        string `json:"ref"`
-		ImportedAt string `json:"imported_at"`
-	} `json:"sources"`
 }
 
 // TestRecordingsOnlyAddsAlternateNarrations is the mode's acceptance test. Four
@@ -144,7 +122,7 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 
 	// The Jim Dale narration is a NEW recording under the EXISTING work, not a
 	// new work: ", Book 2" is a volume marker, not part of the title.
-	var dale recordingsOnlyRecording
+	var dale recordingFile
 	readJSON(t, filepath.Join(dataDir, hpChamberDaleRel), &dale)
 	if dale.Work != "harry-potter-and-the-chamber-of-secrets" {
 		t.Errorf("jim dale recording work = %q", dale.Work)
@@ -170,7 +148,7 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	}
 
 	// The full-cast edition is another recording under the same work.
-	var cast recordingsOnlyRecording
+	var cast recordingFile
 	readJSON(t, filepath.Join(dataDir, hpChamberCastRel), &cast)
 	if cast.Work != "harry-potter-and-the-chamber-of-secrets" {
 		t.Errorf("full-cast recording work = %q", cast.Work)
@@ -237,7 +215,7 @@ func TestRecordingsOnlyMergesRegionalASIN(t *testing.T) {
 		t.Errorf("the merge created something: %+v", sum)
 	}
 
-	var rec recordingsOnlyRecording
+	var rec recordingFile
 	readJSON(t, filepath.Join(dataDir, hpGobletDaleRel), &rec)
 	if len(rec.ASIN) != 2 {
 		t.Fatalf("asin = %+v, want the seeded one plus the merged one", rec.ASIN)
@@ -319,19 +297,105 @@ func TestRecordingsOnlyDryRunWritesNothing(t *testing.T) {
 	}
 }
 
-// TestRecordingsOnlyAndEnrichAreExclusive pins the refusal at the core, not just
-// at the CLI: the two modes plan disjointly, so a caller asking for both would
-// otherwise get whichever branch happened to be first.
-func TestRecordingsOnlyAndEnrichAreExclusive(t *testing.T) {
+// TestRecordingsOnlyResolvesCollisionSuffixedWorks pins the slug-candidate
+// walk. A work whose bare title slug was claimed by a different author's book is
+// stored under "<title>-<author>", and probing only the bare slug would make
+// that work - and every alternate narration of it - permanently invisible to
+// this mode.
+func TestRecordingsOnlyResolvesCollisionSuffixedWorks(t *testing.T) {
+	// "Chamber of Secrets" is squatted by a different author's book, so ours
+	// lives at the author-suffixed slug exactly as getOrCreateWork would mint it.
+	const squatterWork = `{"authors":["someone-else"],"id":"chamber-of-secrets","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Chamber of Secrets"}`
+	const suffixedWork = `{"authors":["j-k-rowling"],"id":"chamber-of-secrets-j-k-rowling","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Chamber of Secrets"}`
 	dataDir := seedRecordingsTree(t)
-	_, err := RunLibex(writeBooks(t, recordingsFixture(t)), Options{
-		DataDir: dataDir, ImportDate: testImportDate, Enrich: true, RecordingsOnly: true,
+	seedTree(t, dataDir, map[string]string{
+		"people/so/someone-else.json":                       `{"id":"someone-else","license":"CC0-1.0","name":"Someone Else","sources":[{"type":"user"}]}`,
+		"works/ch/chamber-of-secrets/work.json":             squatterWork,
+		"works/ch/chamber-of-secrets-j-k-rowling/work.json": suffixedWork,
 	})
-	if err == nil {
-		t.Fatal("runBooks accepted both planning modes at once")
+	row := `{"asin":"B0SUFFIXD1","title":"Chamber of Secrets, Book 2","region":"us","language":"english","bookFormat":"unabridged","releaseDate":"2015-11-20 00:00:00+00","lengthMinutes":542,"authors":[{"name":"J.K. Rowling"}],"narrators":[{"name":"Jim Dale"}]}`
+
+	sum := runRecordingsOnly(t, dataDir, row, false)
+
+	if sum.SkippedNoWork != 0 || sum.NewRecordings != 1 {
+		t.Fatalf("the author-suffixed work was not found: %+v", sum)
 	}
-	if !strings.Contains(err.Error(), "mutually exclusive") {
-		t.Errorf("error = %v, want it to name the conflict", err)
+	var rec recordingFile
+	readJSON(t, filepath.Join(dataDir, "works/ch/chamber-of-secrets-j-k-rowling/recordings/jim-dale-2015.json"), &rec)
+	if rec.Work != "chamber-of-secrets-j-k-rowling" {
+		t.Errorf("recording landed under %q", rec.Work)
+	}
+	// And the squatter is untouched: the author set is still the identity.
+	if exists(filepath.Join(dataDir, "works/ch/chamber-of-secrets/recordings/jim-dale-2015.json")) {
+		t.Error("the recording landed under the different author's work")
+	}
+}
+
+// TestRecordingsOnlyDoesNotWarnAboutRowsItNeverWanted pins the step ORDER. The
+// mode's natural input is an unfiltered export, so the language and narrator
+// checks must run only for rows that already matched a work - otherwise every
+// Finnish edition and every narrator-less row in a million-row dump earns a
+// per-row line about a book we were never importing.
+func TestRecordingsOnlyDoesNotWarnAboutRowsItNeverWanted(t *testing.T) {
+	dataDir := seedRecordingsTree(t)
+	rows := strings.Join([]string{
+		// Unmatched AND unusable: an unknown language and no narrator. Neither
+		// may produce a per-row warning.
+		`{"asin":"B0FINNISH1","title":"Jokin Kirja","region":"us","language":"finnish","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`,
+		`{"asin":"B0NONARRA1","title":"A Book Nobody Catalogued","region":"us","language":"english","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[]}`,
+	}, "\n")
+
+	sum := runRecordingsOnly(t, dataDir, rows, false)
+
+	if sum.SkippedNoWork != 2 {
+		t.Errorf("SkippedNoWork = %d, want 2", sum.SkippedNoWork)
+	}
+	if len(sum.Warnings) != 1 {
+		t.Fatalf("want exactly the one aggregated warning, got %v", sum.Warnings)
+	}
+	if !strings.Contains(sum.Warnings[0], "2 rows matched no catalogued work") {
+		t.Errorf("warning = %q", sum.Warnings[0])
+	}
+
+	// The same two failures on a row that DOES match a work still warn per row -
+	// there the operator asked for the book, so the reason it was dropped is
+	// exactly what they need.
+	matching := `{"asin":"B0MATCHBD1","title":"Harry Potter and the Chamber of Secrets, Book 2","region":"us","language":"finnish","lengthMinutes":542,"authors":[{"name":"J.K. Rowling"}],"narrators":[{"name":"Jim Dale"}]}`
+	sum = runRecordingsOnly(t, dataDir, matching, false)
+	if sum.SkippedNoWork != 0 || sum.NewRecordings != 0 {
+		t.Errorf("summary = %+v", sum)
+	}
+	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], `unknown language "finnish"`) {
+		t.Errorf("a matched row's rejection must be reported per row: %v", sum.Warnings)
+	}
+}
+
+// TestRecordingsOnlyCapsUnmatchedExamples pins that the aggregate warning
+// retains only the handful of labels it prints. The mode reads exports in which
+// nearly every row is unmatched, so retaining one string per row would grow the
+// slice to the size of the input for output nobody sees.
+func TestRecordingsOnlyCapsUnmatchedExamples(t *testing.T) {
+	var rows []string
+	for i := 0; i < maxWarnExamples+3; i++ {
+		rows = append(rows, fmt.Sprintf(
+			`{"asin":"B0NOWRK%03d","title":"Uncatalogued Number %d","region":"us","language":"english","lengthMinutes":300,"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}`, i, i))
+	}
+	dataDir := seedRecordingsTree(t)
+
+	sum := runRecordingsOnly(t, dataDir, strings.Join(rows, "\n"), false)
+
+	if sum.SkippedNoWork != maxWarnExamples+3 {
+		t.Errorf("SkippedNoWork = %d, want %d", sum.SkippedNoWork, maxWarnExamples+3)
+	}
+	if len(sum.Warnings) != 1 {
+		t.Fatalf("warnings = %v", sum.Warnings)
+	}
+	// The COUNT is every unmatched row; the EXAMPLES are capped.
+	if !strings.Contains(sum.Warnings[0], fmt.Sprintf("%d rows matched no catalogued work", maxWarnExamples+3)) {
+		t.Errorf("the count is not the full tally: %q", sum.Warnings[0])
+	}
+	if named := strings.Count(sum.Warnings[0], "B0NOWRK"); named != maxWarnExamples {
+		t.Errorf("named %d examples, want %d: %q", named, maxWarnExamples, sum.Warnings[0])
 	}
 }
 
@@ -340,11 +404,10 @@ func TestRecordingsOnlyAndEnrichAreExclusive(t *testing.T) {
 // form a fallback rather than a rewrite.
 func TestWorkTitleCandidates(t *testing.T) {
 	cases := []struct {
-		name       string
-		short      string
-		full       string
-		want       []string
-		wantAbsent []string
+		name  string
+		short string
+		full  string
+		want  []string
 	}{
 		{
 			name:  "trailing volume marker",
@@ -366,16 +429,16 @@ func TestWorkTitleCandidates(t *testing.T) {
 			// An excerpt is not the work. "(Excerpt)" is not a production
 			// qualifier, and it also blocks the volume marker from being trailing,
 			// so the row can only match a work actually called this.
-			name:       "excerpt keeps its whole title",
-			short:      "Harry Potter and the Goblet of Fire, Book 4 (Excerpt)",
-			want:       []string{"Harry Potter and the Goblet of Fire, Book 4 (Excerpt)"},
-			wantAbsent: []string{"Harry Potter and the Goblet of Fire"},
+			name:  "excerpt keeps its whole title",
+			short: "Harry Potter and the Goblet of Fire, Book 4 (Excerpt)",
+			want:  []string{"Harry Potter and the Goblet of Fire, Book 4 (Excerpt)"},
 		},
 		{
-			name:       "companion title is not the work",
-			short:      "Harry Potter and The Chamber of Secrets Ultimate Trivia Test",
-			want:       []string{"Harry Potter and The Chamber of Secrets Ultimate Trivia Test"},
-			wantAbsent: []string{"Harry Potter and The Chamber of Secrets"},
+			// A companion title is a different book that merely quotes ours; no
+			// rule fires on it, so it can only match a work actually called this.
+			name:  "companion title is not the work",
+			short: "Harry Potter and The Chamber of Secrets Ultimate Trivia Test",
+			want:  []string{"Harry Potter and The Chamber of Secrets Ultimate Trivia Test"},
 		},
 		{
 			name:  "both decorations strip",
@@ -420,13 +483,6 @@ func TestWorkTitleCandidates(t *testing.T) {
 			got := workTitleCandidates(sourceBook{raw: raw})
 			if !reflect.DeepEqual(got, tc.want) {
 				t.Errorf("candidates = %q, want %q", got, tc.want)
-			}
-			for _, absent := range tc.wantAbsent {
-				for _, cand := range got {
-					if cand == absent {
-						t.Errorf("candidates must not contain %q: %q", absent, got)
-					}
-				}
 			}
 		})
 	}
@@ -477,6 +533,18 @@ func TestStripProductionQualifier(t *testing.T) {
 	for _, tc := range cases {
 		if got := stripProductionQualifier(tc.in); got != tc.want {
 			t.Errorf("stripProductionQualifier(%q) = %q, want %q", tc.in, got, tc.want)
+		}
+	}
+}
+
+// TestProductionQualifiersAreCanonical pins the table's key form. A key that is
+// not already normQualifier's output is unreachable - the lookup normalizes the
+// title's qualifier before comparing - so a hyphenated or capitalized entry
+// would silently never match the release it was added for.
+func TestProductionQualifiersAreCanonical(t *testing.T) {
+	for qualifier := range productionQualifiers {
+		if got := normQualifier(qualifier); got != qualifier {
+			t.Errorf("key %q is not canonical (normQualifier gives %q); it can never match", qualifier, got)
 		}
 	}
 }

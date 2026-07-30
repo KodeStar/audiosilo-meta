@@ -345,8 +345,14 @@ export type), surfacing the importer warnings.
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json). Remaining
-  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew) and
-  surfacing genres in the player (three-repo seam).
+  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew),
+  surfacing genres in the player (three-repo seam), and a **streaming row
+  iterator for the libex parse layer** - it currently slurps the whole file
+  (~6GB of live heap for the 1.06M-row dump) before planning discards what does
+  not apply, which `--recordings-only` feels most: an alternate narration is by
+  definition a row `libex-select` excluded, so its natural input IS the
+  unfiltered dump (`scripts/README.md` step 7 documents the `split -l`
+  workaround).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four

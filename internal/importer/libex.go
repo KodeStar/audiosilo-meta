@@ -58,7 +58,7 @@ var utf8BOM = []byte{0xEF, 0xBB, 0xBF}
 // Run / RunLibation. Parse-time warnings (a row with no usable ASIN or no
 // marketplace, an invalid ISBN, an unusable cover URL) are prepended to the
 // run's warnings so the caller prints them together - per row when creating, in
-// aggregate when enriching (see libexParse.warningLines).
+// aggregate in the catalogue-bounded modes (see libexParse.warningLines).
 func RunLibex(exportPath string, opts Options) (Summary, error) {
 	raw, err := os.ReadFile(exportPath)
 	if err != nil {
@@ -70,7 +70,7 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 	}
 	sum, runErr := runBooks(parsed.books, sourceLibex, opts)
 	sum.SkippedRows = parsed.skipped
-	sum.Warnings = append(parsed.warningLines(opts.Enrich), sum.Warnings...)
+	sum.Warnings = append(parsed.warningLines(opts.Mode.boundedByCatalogue()), sum.Warnings...)
 	return sum, runErr
 }
 
@@ -133,14 +133,30 @@ func (lp *libexParse) rowWarn(class libexWarnClass, asin string) func(string, ..
 	return func(format string, args ...any) { lp.add(class, asin, format, args...) }
 }
 
-// maxWarnExamples caps how many rows an aggregated class names. A handful is
+// maxWarnExamples caps how many rows an aggregated warning names. A handful is
 // enough to go and look at the data; a full list would be the per-row output the
 // aggregation exists to avoid.
 const maxWarnExamples = 5
 
+// withExamples appends a "(for example: a, b, c)" tail to an aggregated warning
+// line, naming at most maxWarnExamples rows. Every aggregated warning the
+// importer emits - the parse layer's per-class buckets and the recordings-only
+// pass's unmatched rows - renders through here, so they read identically and a
+// caller cannot forget the cap.
+func withExamples(line string, examples []string) string {
+	if len(examples) == 0 {
+		return line
+	}
+	if len(examples) > maxWarnExamples {
+		examples = examples[:maxWarnExamples]
+	}
+	return line + " (for example: " + strings.Join(examples, ", ") + ")"
+}
+
 // warningLines renders the parse-layer warnings for the caller to print. In
 // create mode every row's own line is kept (a curated tranche is small, and the
-// detail is what a contributor acts on). In enrichment mode the input is an
+// detail is what a contributor acts on). In the catalogue-bounded modes
+// (Mode.boundedByCatalogue: enrichment and recordings-only) the input is an
 // export whose rows are overwhelmingly irrelevant to this catalogue, so the
 // lines are folded into one per class with a count and a few example rows -
 // otherwise a full export buries the run's real output under six figures of
@@ -167,11 +183,7 @@ func (lp libexParse) warningLines(aggregate bool) []string {
 	}
 	lines := make([]string, 0, len(order))
 	for _, class := range order {
-		line := "libex: " + class.aggregateForm(counts[class])
-		if ex := examples[class]; len(ex) > 0 {
-			line += " (for example: " + strings.Join(ex, ", ") + ")"
-		}
-		lines = append(lines, line)
+		lines = append(lines, withExamples("libex: "+class.aggregateForm(counts[class]), examples[class]))
 	}
 	return lines
 }

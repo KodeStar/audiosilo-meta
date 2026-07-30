@@ -8,7 +8,6 @@ package importer
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -150,10 +149,14 @@ type planner struct {
 	// unmappedGenres collects every distinct source genre string that has no
 	// vocabulary mapping, reported once per run rather than once per book.
 	unmappedGenres map[string]bool
-	// noWorkRows labels the rows a RECORDINGS-ONLY run could not place because
-	// their work is not in the catalogue, reported in aggregate at the end of the
-	// pass (see reportUnmatchedWorks). Empty in every other mode.
-	noWorkRows []string
+	// noWorkExamples labels a FEW of the rows a RECORDINGS-ONLY run could not
+	// place because their work is not in the catalogue, for the aggregate warning
+	// at the end of the pass (see reportUnmatchedWorks). It is capped at
+	// maxWarnExamples as it fills: the mode's natural input is the unfiltered
+	// dump, where nearly every row lands here, and only a handful are ever
+	// printed - the COUNT comes from Summary.SkippedNoWork. Empty in every other
+	// mode.
+	noWorkExamples []string
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -276,21 +279,10 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // the existing catalog, then (on a real run) writes and re-validates the tree.
 // sourceType is the provenance stamped on every created (or enriched) record.
 //
-// The three planning modes are disjoint by design, and each is selected by one
-// Options field (they are mutually exclusive):
-//
-//   - default (importer.go): CREATES work/recording/person/series records for
-//     books the catalogue does not have.
-//   - opts.Enrich (enrich.go): fills absent facts on records an ASIN already
-//     matches; creates nothing.
-//   - opts.RecordingsOnly (recordings.go): adds an alternate NARRATION to a work
-//     the catalogue already holds; never creates a work or touches a series.
-//
+// The three planning modes are disjoint by design and selected by opts.Mode
+// (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
-	if opts.Enrich && opts.RecordingsOnly {
-		return Summary{}, errors.New("enrich and recordings-only are mutually exclusive planning modes")
-	}
 	p := &planner{
 		dataDir:        opts.DataDir,
 		people:         map[string]bool{},
@@ -304,17 +296,17 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
 	}
-	if opts.Enrich {
+	if opts.Mode == ModeEnrich {
 		p.asinLoc = map[string]recRef{}
 	}
 	p.loadExisting()
 
-	switch {
-	case opts.Enrich:
+	switch opts.Mode {
+	case ModeEnrich:
 		p.planEnrich(books)
-	case opts.RecordingsOnly:
+	case ModeRecordingsOnly:
 		p.planRecordings(books)
-	default:
+	case ModeCreate:
 		p.planCreate(books)
 	}
 	if p.fatal != nil {
@@ -346,8 +338,9 @@ func (p *planner) planCreate(books []sourceBook) {
 	normalizeEditionMarkers(books)
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
-		p.setSource(NormalizeASIN(b.str("asin")))
-		p.addBook(b, titles[i])
+		asin := NormalizeASIN(b.str("asin"))
+		p.setSource(asin)
+		p.addBook(b, asin, titles[i])
 		if p.fatal != nil {
 			return
 		}
@@ -501,30 +494,23 @@ func resolveWorkTitles(books []sourceBook) []string {
 	return titles
 }
 
-// addBook maps one export entry to records. workTitle is the pre-pass-resolved
-// title for the book's work. It returns quietly (recording a warning or a skip)
-// whenever the entry cannot be imported cleanly.
-func (p *planner) addBook(b sourceBook, workTitle string) {
+// addBook maps one export entry to records. asin is the row's normalized ASIN
+// (computed once by the caller) and workTitle is the pre-pass-resolved title for
+// the book's work. It returns quietly (recording a warning or a skip) whenever
+// the entry cannot be imported cleanly.
+func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	warn := p.bookWarn(b)
-	asin := NormalizeASIN(b.str("asin"))
 
 	// Dedup first: an already-present ASIN is a skip, not a warning.
-	if asin != "" && p.asins[asin] {
-		p.summary.Skipped++
+	if p.dedupeByASIN(asin) {
 		return
 	}
 
-	lang, ok := mapLanguage(b.str("language"))
+	lang, narratorNames, ok := admitRecordingFacts(b, warn)
 	if !ok {
-		warn("unknown language %q; skipped", b.str("language"))
 		return
 	}
-	narratorNames := creditNames(b.narrators, b.str("narrated_by"))
-	if len(narratorNames) == 0 {
-		warn("no narrator; a recording requires narrators; skipped")
-		return
-	}
-	authorNames := creditNames(b.authors, b.str("author"))
+	authorNames := rowAuthorNames(b)
 	if len(authorNames) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
@@ -585,6 +571,47 @@ func (p *planner) addBook(b sourceBook, workTitle string) {
 		}
 	}
 }
+
+// dedupeByASIN is the first gate of every planner that CREATES a recording: a
+// row whose ASIN the catalogue already holds is a skip, not a warning. A row
+// with no well-formed ASIN can never dedupe, so it always passes.
+func (p *planner) dedupeByASIN(asin string) bool {
+	if asin != "" && p.asins[asin] {
+		p.summary.Skipped++
+		return true
+	}
+	return false
+}
+
+// admitRecordingFacts validates the two things a RECORDING cannot be built
+// without - a language the schema knows and at least one narrator - and returns
+// them. ok=false means the row was warned about and must be dropped.
+//
+// It is shared by the create and recordings-only planners so the two can never
+// drift on what a usable row is, or on how a rejected one is worded. They differ
+// only in WHEN they call it: the create path validates before it resolves a
+// work, while recordings-only resolves the work FIRST, so a row for a book the
+// catalogue does not hold is never warned about at all.
+func admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames []string, ok bool) {
+	lang, ok = mapLanguage(b.str("language"))
+	if !ok {
+		warn("unknown language %q; skipped", b.str("language"))
+		return "", nil, false
+	}
+	narratorNames = rowNarratorNames(b)
+	if len(narratorNames) == 0 {
+		warn("no narrator; a recording requires narrators; skipped")
+		return "", nil, false
+	}
+	return lang, narratorNames, true
+}
+
+// rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
+// the source's structured list when it has one and from its comma-joined string
+// otherwise (creditNames owns that choice).
+func rowAuthorNames(b sourceBook) []string { return creditNames(b.authors, b.str("author")) }
+
+func rowNarratorNames(b sourceBook) []string { return creditNames(b.narrators, b.str("narrated_by")) }
 
 // seriesRef is a book's claim to a position in a named series. name is always
 // non-empty (the sourceBook invariant). seqOK reports whether seq passed

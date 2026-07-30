@@ -133,7 +133,12 @@ const (
 )
 
 var (
-	// "Title, Book 3" / "Title - Book 3" (trailing volume marker).
+	// "Title, Book 3" / "Title - Book 3" (trailing volume marker). The importer's
+	// volumeMarkerRE (internal/importer/recordings.go) is the sibling pattern on
+	// the metadata-row side and deliberately EXCLUDES "part": there the marker is
+	// stripped to decide two titles name the same work, and a "Part 1" release is
+	// genuinely half of one. Here it is only read to derive a position from a
+	// folder name, so "part" is safe. Keep the two in step on everything else.
 	trailingVol = regexp.MustCompile(`(?i)^(.+?)[,\-]?\s+(?:book|vol|volume|part)\.?\s+(` + posPat + `)\s*$`)
 	// "Book 3 - Title" / "Volume 3: Title" / "#3 Title" (leading volume marker).
 	leadingVol = regexp.MustCompile(`(?i)^(?:book|vol|volume|part|#)\.?\s*(` + posPat + `)\s*` + sepPat + `+\s*(.+)$`)

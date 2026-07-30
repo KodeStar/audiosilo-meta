@@ -205,7 +205,7 @@ func TestPrintSummaryIncludesMergedASINs(t *testing.T) {
 	// Fix 7: the merged-ASIN count must be surfaced in the summary line so a
 	// maintainer sees re-releases folded into existing recordings.
 	out := captureStdout(t, func() {
-		printSummary(importer.Summary{NewWorks: 1, NewRecordings: 2, MergedASINs: 3}, false, false, false)
+		printSummary(importer.Summary{NewWorks: 1, NewRecordings: 2, MergedASINs: 3}, false, importer.ModeCreate)
 	})
 	if !strings.Contains(out, "3 asins merged into existing recordings") {
 		t.Errorf("summary line missing the merged-ASIN count: %q", out)
@@ -221,7 +221,7 @@ func TestPrintSummaryEnrichMode(t *testing.T) {
 		printSummary(importer.Summary{
 			EnrichedWorks: 1, EnrichedRecordings: 2, SeriesPlacements: 3,
 			Matched: 4, NotInCatalog: 5, SkippedRows: 6,
-		}, false, true, false)
+		}, false, importer.ModeEnrich)
 	})
 	for _, want := range []string{
 		"enriched:", "1 works", "2 recordings", "3 works placed in a series",
@@ -244,7 +244,7 @@ func TestPrintSummaryRecordingsOnlyMode(t *testing.T) {
 	out := captureStdout(t, func() {
 		printSummary(importer.Summary{
 			NewRecordings: 2, NewPeople: 15, Skipped: 3, SkippedNoWork: 4, MergedASINs: 1,
-		}, false, false, true)
+		}, false, importer.ModeRecordingsOnly)
 	})
 	for _, want := range []string{
 		"added:", "2 new recordings", "15 new people", "3 skipped (already present)",
@@ -265,21 +265,22 @@ func TestPrintSummaryRecordingsOnlyMode(t *testing.T) {
 // heading rather than borrowing "imported", which it never does.
 func TestPrintSummaryDryRunHeadings(t *testing.T) {
 	cases := []struct {
-		name                           string
-		dryRun, enrich, recordingsOnly bool
-		want                           string
+		name   string
+		mode   importer.Mode
+		dryRun bool
+		want   string
 	}{
-		{name: "create", want: "imported:"},
-		{name: "create dry run", dryRun: true, want: "plan (dry run, no files written):"},
-		{name: "enrich", enrich: true, want: "enriched:"},
-		{name: "enrich dry run", dryRun: true, enrich: true, want: "enrichment plan (dry run, no files written):"},
-		{name: "recordings only", recordingsOnly: true, want: "added:"},
-		{name: "recordings only dry run", dryRun: true, recordingsOnly: true, want: "recordings-only plan (dry run, no files written):"},
+		{name: "create", mode: importer.ModeCreate, want: "imported:"},
+		{name: "create dry run", mode: importer.ModeCreate, dryRun: true, want: "plan (dry run, no files written):"},
+		{name: "enrich", mode: importer.ModeEnrich, want: "enriched:"},
+		{name: "enrich dry run", mode: importer.ModeEnrich, dryRun: true, want: "enrichment plan (dry run, no files written):"},
+		{name: "recordings only", mode: importer.ModeRecordingsOnly, want: "added:"},
+		{name: "recordings only dry run", mode: importer.ModeRecordingsOnly, dryRun: true, want: "recordings-only plan (dry run, no files written):"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			out := captureStdout(t, func() {
-				printSummary(importer.Summary{}, tc.dryRun, tc.enrich, tc.recordingsOnly)
+				printSummary(importer.Summary{}, tc.dryRun, tc.mode)
 			})
 			if !strings.HasPrefix(out, tc.want) {
 				t.Errorf("heading = %q, want it to start with %q", out, tc.want)
@@ -290,7 +291,7 @@ func TestPrintSummaryDryRunHeadings(t *testing.T) {
 
 // TestEnrichFlagReachesTheImporter is the ACCEPT half of the --enrich flag's
 // pair: the refusal test below proves the wrong source is rejected, but without
-// this one, deleting the flag's threading into Options would leave the suite
+// this one, deleting the flag's mapping onto Options.Mode would leave the suite
 // green while --enrich silently ran a CREATE import over the whole export.
 func TestEnrichFlagReachesTheImporter(t *testing.T) {
 	var got importer.Options
@@ -306,8 +307,8 @@ func TestEnrichFlagReachesTheImporter(t *testing.T) {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if !got.Enrich {
-		t.Error("--enrich did not reach Options.Enrich")
+	if got.Mode != importer.ModeEnrich {
+		t.Errorf("--enrich reached Options.Mode as %v, want ModeEnrich", got.Mode)
 	}
 
 	// And the flag is opt-in: the same invocation without it must not enrich.
@@ -317,8 +318,8 @@ func TestEnrichFlagReachesTheImporter(t *testing.T) {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if got.Enrich {
-		t.Error("Options.Enrich set without the flag")
+	if got.Mode != importer.ModeCreate {
+		t.Errorf("Options.Mode = %v without the flag, want ModeCreate", got.Mode)
 	}
 }
 
@@ -340,7 +341,7 @@ func TestEnrichFlagRejectedForOtherSources(t *testing.T) {
 
 // TestRecordingsOnlyFlagReachesTheImporter is the ACCEPT half of the
 // --recordings-only flag's pair (see TestEnrichFlagReachesTheImporter): without
-// it, deleting the flag's threading into Options would leave the suite green
+// it, deleting the flag's mapping onto Options.Mode would leave the suite green
 // while --recordings-only silently ran a CREATE import and minted duplicate
 // works.
 func TestRecordingsOnlyFlagReachesTheImporter(t *testing.T) {
@@ -357,8 +358,8 @@ func TestRecordingsOnlyFlagReachesTheImporter(t *testing.T) {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if !got.RecordingsOnly {
-		t.Error("--recordings-only did not reach Options.RecordingsOnly")
+	if got.Mode != importer.ModeRecordingsOnly {
+		t.Errorf("--recordings-only reached Options.Mode as %v, want ModeRecordingsOnly", got.Mode)
 	}
 
 	// And the flag is opt-in: the same invocation without it must not switch mode.
@@ -368,8 +369,8 @@ func TestRecordingsOnlyFlagReachesTheImporter(t *testing.T) {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
-	if got.RecordingsOnly {
-		t.Error("Options.RecordingsOnly set without the flag")
+	if got.Mode != importer.ModeCreate {
+		t.Errorf("Options.Mode = %v without the flag, want ModeCreate", got.Mode)
 	}
 }
 
@@ -392,7 +393,9 @@ func TestRecordingsOnlyFlagRejectedForOtherSources(t *testing.T) {
 // TestModeFlagsAreMutuallyExclusive pins the refusal of the one combination
 // that has no meaning: enrichment fills absent facts on ASIN-matched records
 // while recordings-only adds narrations the catalogue has never seen, so a run
-// asked for both would have to silently pick one.
+// asked for both would have to silently pick one. The CLI is the only place the
+// combination can even be expressed - Options carries a single Mode - so this is
+// where it has to be refused.
 func TestModeFlagsAreMutuallyExclusive(t *testing.T) {
 	called := false
 	run := func(string, importer.Options) (importer.Summary, error) {

@@ -106,17 +106,9 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		usage()
 		return 2
 	}
-	for _, mode := range []struct {
-		flag string
-		on   bool
-	}{{"--enrich", *enrich}, {"--recordings-only", *recordingsOnly}} {
-		if mode.on && name != boundedSource {
-			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", mode.flag, boundedSource, name)
-			return 2
-		}
-	}
-	if *enrich && *recordingsOnly {
-		fmt.Fprintln(os.Stderr, "metaimport: --enrich and --recordings-only are different modes; pass one or the other")
+	mode, err := selectMode(name, *enrich, *recordingsOnly)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 2
 	}
 
@@ -129,19 +121,46 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 
 	sum, err := run(exportPath, importer.Options{
-		DataDir:        *data,
-		ImportDate:     stamp,
-		DryRun:         *dryRun,
-		Enrich:         *enrich,
-		RecordingsOnly: *recordingsOnly,
+		DataDir:    *data,
+		ImportDate: stamp,
+		DryRun:     *dryRun,
+		Mode:       mode,
 	})
 
-	printSummary(sum, *dryRun, *enrich, *recordingsOnly)
+	printSummary(sum, *dryRun, mode)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 1
 	}
 	return 0
+}
+
+// selectMode maps the two mode flags onto the importer's single Mode, which is
+// where their exclusivity stops being a rule and becomes a type: past this
+// point there is one mode, so no layer downstream has a combination to police.
+// Both flags are catalogue-bounded passes permitted for boundedSource alone, so
+// pointing either at another source is refused here rather than silently
+// honoured.
+func selectMode(source string, enrich, recordingsOnly bool) (importer.Mode, error) {
+	if enrich && recordingsOnly {
+		return 0, fmt.Errorf("--enrich and --recordings-only are different modes; pass one or the other")
+	}
+	var (
+		flagName string
+		mode     importer.Mode
+	)
+	switch {
+	case enrich:
+		flagName, mode = "--enrich", importer.ModeEnrich
+	case recordingsOnly:
+		flagName, mode = "--recordings-only", importer.ModeRecordingsOnly
+	default:
+		return importer.ModeCreate, nil
+	}
+	if source != boundedSource {
+		return 0, fmt.Errorf("%s is only supported for the %s source, not %q", flagName, boundedSource, source)
+	}
+	return mode, nil
 }
 
 // runLibexSelect parses the flags for the libex-select subcommand and runs the
@@ -224,42 +243,52 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 	return positional[0], nil
 }
 
-// printSummary renders the run's outcome. Each mode reports its own counters -
-// the ones it structurally cannot move are all zero and would only be noise -
-// while sharing the warning list. Enrichment's row accounting is deliberately
+// printSummary renders the run's outcome for the selected mode. Each mode
+// reports its own counters - the ones it structurally cannot move are all zero
+// and would only be noise - while sharing the warning list and the dry-run
+// heading rule (summaryHead). Enrichment's row accounting is deliberately
 // printed as an identity - rows read = matched + not in the catalogue + skipped
 // at parse - so a row can never go missing without the line failing to add up.
-func printSummary(s importer.Summary, dryRun, enrich, recordingsOnly bool) {
-	var head string
-	switch {
-	case enrich && dryRun:
-		head = "enrichment plan (dry run, no files written)"
-	case enrich:
-		head = "enriched"
-	case recordingsOnly && dryRun:
-		head = "recordings-only plan (dry run, no files written)"
-	case recordingsOnly:
-		head = "added"
-	case dryRun:
-		head = "plan (dry run, no files written)"
-	default:
-		head = "imported"
-	}
-	switch {
-	case enrich:
+func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
+	switch mode {
+	case importer.ModeEnrich:
 		rows := s.Matched + s.NotInCatalog + s.SkippedRows
 		fmt.Printf("%s: %d works, %d recordings; %d works placed in a series; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
-			head, s.EnrichedWorks, s.EnrichedRecordings, s.SeriesPlacements,
+			summaryHead(mode, dryRun), s.EnrichedWorks, s.EnrichedRecordings, s.SeriesPlacements,
 			rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
-	case recordingsOnly:
+	case importer.ModeRecordingsOnly:
 		fmt.Printf("%s: %d new recordings, %d new people; %d skipped (already present); %d skipped (work not in the catalogue); %d asins merged into existing recordings; %d warnings\n",
-			head, s.NewRecordings, s.NewPeople, s.Skipped, s.SkippedNoWork, s.MergedASINs, len(s.Warnings))
-	default:
+			summaryHead(mode, dryRun), s.NewRecordings, s.NewPeople, s.Skipped, s.SkippedNoWork, s.MergedASINs, len(s.Warnings))
+	case importer.ModeCreate:
 		fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d asins merged into existing recordings; %d warnings\n",
-			head, s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
+			summaryHead(mode, dryRun), s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
 	}
 	for _, w := range s.Warnings {
 		fmt.Println("  warning:", w)
+	}
+}
+
+// summaryHead is the summary line's leading verb. Each mode gets its own rather
+// than borrowing "imported", which only the create mode ever does - and the
+// create wording is long-standing output a user (and any log-reading habit)
+// recognizes, so it stays exactly as it was.
+func summaryHead(mode importer.Mode, dryRun bool) string {
+	switch mode {
+	case importer.ModeEnrich:
+		if dryRun {
+			return "enrichment plan (dry run, no files written)"
+		}
+		return "enriched"
+	case importer.ModeRecordingsOnly:
+		if dryRun {
+			return "recordings-only plan (dry run, no files written)"
+		}
+		return "added"
+	default:
+		if dryRun {
+			return "plan (dry run, no files written)"
+		}
+		return "imported"
 	}
 }
 

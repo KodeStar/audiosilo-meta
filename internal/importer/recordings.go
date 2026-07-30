@@ -7,8 +7,8 @@ import (
 )
 
 // recordings.go implements the RECORDINGS-ONLY planning mode
-// (Options.RecordingsOnly): adding an alternate NARRATION to a work the
-// catalogue already holds.
+// (ModeRecordingsOnly): adding an alternate NARRATION to a work the catalogue
+// already holds.
 //
 // It is the third planning mode, and it fills a gap the other two left open.
 // The catalogue models one work with many recordings, but no tooling path could
@@ -40,8 +40,9 @@ import (
 func (p *planner) planRecordings(books []sourceBook) {
 	normalizeEditionMarkers(books)
 	for _, b := range books {
-		p.setSource(NormalizeASIN(b.str("asin")))
-		p.addRecordingToExistingWork(b)
+		asin := NormalizeASIN(b.str("asin"))
+		p.setSource(asin)
+		p.addRecordingToExistingWork(b, asin)
 		if p.fatal != nil {
 			return
 		}
@@ -50,46 +51,39 @@ func (p *planner) planRecordings(books []sourceBook) {
 }
 
 // addRecordingToExistingWork plans one row as a recording under a catalogued
-// work. It returns quietly (recording a skip or a warning) whenever the row
-// cannot be placed - crucially including the case where its work is not in the
-// catalogue, which must never fall through to work creation.
-func (p *planner) addRecordingToExistingWork(b sourceBook) {
-	warn := p.bookWarn(b)
-	asin := NormalizeASIN(b.str("asin"))
-
+// work. asin is the row's normalized ASIN (computed once by the caller). It
+// returns quietly (recording a skip or a warning) whenever the row cannot be
+// placed - crucially including the case where its work is not in the catalogue,
+// which must never fall through to work creation.
+//
+// The step ORDER is the mode's own, and deliberately not the create path's:
+// work resolution comes BEFORE the language and narrator validation, so a row
+// for a book the catalogue does not hold produces no per-row warning and no
+// person record. Its natural input is an unfiltered export in which nearly
+// every row is about a book we do not have; warning about each one's Finnish
+// language or missing narrator would bury the run's real output, and would
+// scold the operator for rows they never asked to import.
+func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	// Dedup first, exactly as the create mode does: an already-present ASIN is a
 	// skip, not a warning.
-	if asin != "" && p.asins[asin] {
-		p.summary.Skipped++
+	if p.dedupeByASIN(asin) {
 		return
 	}
 
-	lang, ok := mapLanguage(b.str("language"))
-	if !ok {
-		warn("unknown language %q; skipped", b.str("language"))
-		return
-	}
-	narratorNames := creditNames(b.narrators, b.str("narrated_by"))
-	if len(narratorNames) == 0 {
-		warn("no narrator; a recording requires narrators; skipped")
-		return
-	}
-	authorNames := creditNames(b.authors, b.str("author"))
-	if len(authorNames) == 0 {
-		warn("no author; a work is identified by its authors; skipped")
-		return
-	}
-
-	// The work match runs BEFORE any person is created, so a row that matches
-	// nothing leaves no trace at all - a narrator record for a book we do not
-	// hold would be an orphan the run never explains.
-	ws := p.resolveExistingWork(b, authorNames)
+	ws := p.resolveExistingWork(b)
 	if ws == nil {
 		p.summary.SkippedNoWork++
-		p.noWorkRows = append(p.noWorkRows, bookLabel(b))
+		if len(p.noWorkExamples) < maxWarnExamples {
+			p.noWorkExamples = append(p.noWorkExamples, bookLabel(b))
+		}
 		return
 	}
 
+	warn := p.bookWarn(b)
+	lang, narratorNames, ok := admitRecordingFacts(b, warn)
+	if !ok {
+		return
+	}
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 	if p.addRecording(ws, b, asin, lang, narratorSlugs, warn) && asin != "" {
 		// Single owner of the global ASIN registry, as in addBook: claim the ASIN
@@ -104,22 +98,50 @@ func (p *planner) addRecordingToExistingWork(b sourceBook) {
 // (workTitleCandidates), so a retailer's volume/production decoration cannot
 // hide a work we already have.
 //
+// Each title candidate walks the SAME slug-candidate chain getOrCreateWork
+// walks (workCandidates), the way findSeries mirrors getOrCreateSeries: a work
+// whose bare title slug was taken by a different author's book is stored under
+// "<title>-<author>", and probing only the bare slug would make that work - and
+// every alternate narration of it - invisible. The walk stops at the first slug
+// that does not exist, because getOrCreateWork would have claimed exactly that
+// slug, so nothing beyond it can be in the catalogue.
+//
+// The author set (and the CleanCreditName pass behind it) is built LAZILY, only
+// once a title candidate's bare slug actually hits: on an unfiltered dump the
+// overwhelming majority of rows are about books we do not have, and for those
+// the single map lookup per candidate is the whole cost. A work can only sit on
+// a suffixed slug if the bare one is taken too, so the bare-slug hit is a sound
+// gate for entering the chain.
+//
 // It only ever READS p.works. A recordings-only run creates no work, so the map
 // is exactly the catalogue on disk, and a nil result means "not in the
 // catalogue" rather than "not created yet".
-func (p *planner) resolveExistingWork(b sourceBook, authorNames []string) *workState {
-	want := ToSet(slugCredits(authorNames))
+func (p *planner) resolveExistingWork(b sourceBook) *workState {
+	var want map[string]bool
+	var firstAuthor string
 	for _, title := range workTitleCandidates(b) {
-		slug := Slugify(title)
-		if slug == "" {
+		base := Slugify(title)
+		if base == "" {
 			continue
 		}
-		ws, exists := p.works[slug]
-		if !exists {
+		if _, taken := p.works[base]; !taken {
 			continue
 		}
-		if SameSet(ws.authors, want) {
-			return ws
+		if want == nil {
+			authorSlugs := slugCredits(rowAuthorNames(b))
+			if len(authorSlugs) == 0 {
+				return nil // no author: nothing to identify a work by
+			}
+			want, firstAuthor = ToSet(authorSlugs), authorSlugs[0]
+		}
+		for _, slug := range workCandidates(base, firstAuthor) {
+			ws, exists := p.works[slug]
+			if !exists {
+				break
+			}
+			if SameSet(ws.authors, want) {
+				return ws
+			}
 		}
 	}
 	return nil
@@ -128,21 +150,16 @@ func (p *planner) resolveExistingWork(b sourceBook, authorNames []string) *workS
 // reportUnmatchedWorks appends one run-level warning naming how many rows
 // matched no catalogued work, with a few examples. It is aggregated rather than
 // per-row because "this book is not in the catalogue" is the EXPECTED outcome
-// for most of a filtered row set - the same reasoning enrichment's aggregate
-// parse warnings use - while the examples are what an operator checks the title
+// for most of a row set - the same reasoning enrichment's aggregate parse
+// warnings use - while the examples are what an operator checks the title
 // matching against.
 func (p *planner) reportUnmatchedWorks() {
-	if len(p.noWorkRows) == 0 {
+	if p.summary.SkippedNoWork == 0 {
 		return
 	}
-	line := fmt.Sprintf("%d rows matched no catalogued work; no recording added", len(p.noWorkRows))
-	if ex := p.noWorkRows; len(ex) > 0 {
-		if len(ex) > maxWarnExamples {
-			ex = ex[:maxWarnExamples]
-		}
-		line += " (for example: " + strings.Join(ex, ", ") + ")"
-	}
-	p.summary.Warnings = append(p.summary.Warnings, line)
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d rows matched no catalogued work; no recording added", p.summary.SkippedNoWork),
+		p.noWorkExamples))
 }
 
 // slugCredits maps a credit list to person slugs WITHOUT creating any person
@@ -163,11 +180,6 @@ func slugCredits(names []string) []string {
 	}
 	return out
 }
-
-// maxTitleStrips bounds the candidate chain. Each strip can only shorten the
-// title, so the chain converges long before this; the cap exists so a future
-// rule that could grow one cannot spin.
-const maxTitleStrips = 4
 
 // workTitleCandidates returns the ordered work-title candidates for a row: the
 // title as the source states it first, then progressively de-decorated forms.
@@ -200,18 +212,23 @@ func workTitleCandidates(b sourceBook) []string {
 // titleStripChain returns title followed by each successively de-decorated form
 // of it (a trailing volume marker, a trailing production qualifier, or both).
 // The chain stops as soon as a pass changes nothing.
+//
+// Termination is structural, so the loop needs no iteration cap: both strip
+// rules either return their input unchanged or return a strictly shorter
+// string, and the fixpoint test ends the loop the first time neither fires. A
+// future rule that could GROW a title would break that and needs a cap added
+// with it.
 func titleStripChain(title string) []string {
 	out := []string{title}
 	cur := title
-	for i := 0; i < maxTitleStrips; i++ {
+	for {
 		next := strings.TrimSpace(stripProductionQualifier(stripVolumeMarker(cur)))
 		if next == "" || next == cur {
-			break
+			return out
 		}
 		cur = next
 		out = append(out, cur)
 	}
-	return out
 }
 
 // volumeMarkerRE matches the trailing volume marker retailers append to a series
@@ -221,6 +238,12 @@ func titleStripChain(title string) []string {
 //
 // "part" is deliberately NOT in the list: "Part 1" is routinely a real half of a
 // split release, and stripping it would map that half onto the whole work.
+//
+// pkg/scan/derive.go's trailingVol is the sibling pattern on the folder-scanning
+// side, and it DOES accept "part" - correctly, because there the marker is being
+// read to DERIVE a series position from a folder name, not to decide that two
+// titles name the same work. The two lists diverge on purpose; keep them in step
+// on everything else.
 var volumeMarkerRE = regexp.MustCompile(`(?i)\s*[,:;-]?\s*(?:book|vol\.?|volume)\s*\d+(?:\.\d+)?\s*$`)
 
 // stripVolumeMarker drops one trailing volume marker, or returns the title
@@ -248,8 +271,13 @@ func stripVolumeMarker(title string) string {
 // A stripped qualifier carries no abridged signal - only abridgedFromMarker
 // reads a title for the abridged tri-state, and it looks for the abridged
 // markers alone - so removing one here cannot invent an edition fact.
+//
+// Keys are in normQualifier's canonical form: lowercase, single-spaced, and
+// HYPHEN-FREE. Folding hyphens into spaces is what makes "Full-Cast Edition" and
+// "Full Cast Edition" one entry rather than two, so a punctuation variant of a
+// future qualifier cannot silently fail to match the entry meant to cover it.
+// TestProductionQualifiersAreCanonical pins the form.
 var productionQualifiers = map[string]bool{
-	"full-cast edition": true,
 	"full cast edition": true,
 }
 
@@ -257,17 +285,30 @@ var productionQualifiers = map[string]bool{
 // bracketed) qualifier, with its surrounding whitespace.
 var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
 
+// qualifierPunct folds the punctuation a qualifier is spelled with into the
+// spaces normQualifier then collapses. The en dash is listed because retailer
+// titles really do print one; it is DATA being folded here, not prose, so it
+// does not breach the hyphens-only writing rule.
+var qualifierPunct = strings.NewReplacer("-", " ", "–", " ", "_", " ")
+
+// normQualifier is the canonical form of a production qualifier: lowercase,
+// punctuation folded to spaces, runs of whitespace collapsed to one. Both the
+// table's keys and a title's captured qualifier go through it, so the lookup
+// cannot depend on how the release happened to punctuate the phrase.
+func normQualifier(s string) string {
+	return strings.Join(strings.Fields(qualifierPunct.Replace(strings.ToLower(s))), " ")
+}
+
 // stripProductionQualifier drops one trailing parenthetical qualifier when it is
-// a listed production qualifier, matched case-insensitively on single-spaced
-// text. Anything else - and anything that would strip the title away entirely -
-// is left exactly as it is.
+// a listed production qualifier (compared in normQualifier's canonical form).
+// Anything else - and anything that would strip the title away entirely - is
+// left exactly as it is.
 func stripProductionQualifier(title string) string {
 	m := trailingParenRE.FindStringSubmatchIndex(title)
 	if m == nil {
 		return title
 	}
-	qualifier := strings.ToLower(strings.Join(strings.Fields(title[m[2]:m[3]]), " "))
-	if !productionQualifiers[qualifier] {
+	if !productionQualifiers[normQualifier(title[m[2]:m[3]])] {
 		return title
 	}
 	stripped := strings.TrimSpace(title[:m[0]])
