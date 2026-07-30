@@ -130,7 +130,9 @@ const LANGUAGE_MAP: Record<string, string> = {
 }
 
 // Audible marketplaces the recording schema accepts (recording.schema.json).
-const MARKETPLACES = new Set([
+// Reached only through mapRegion, which every consumer (the parsers here and the
+// libex prefill mapping) validates through, so there is one copy of the list.
+const MARKETPLACES: ReadonlySet<string> = new Set([
   'us',
   'uk',
   'ca',
@@ -198,7 +200,12 @@ function splitNames(joined: string): string[] {
   return out
 }
 
-function mapRegion(word: string): string | undefined {
+/**
+ * A validated, lowercase Audible marketplace code, else undefined. Exported so
+ * the libex prefill mapping (libex-map.ts) validates a region against the SAME
+ * schema list instead of keeping a second copy that could drift from it.
+ */
+export function mapRegion(word: string): string | undefined {
   const r = word.trim().toLowerCase()
   return r !== '' && MARKETPLACES.has(r) ? r : undefined
 }
@@ -225,7 +232,10 @@ export function normalizeIsbn(s: string): string {
 
 // --- Parsing ----------------------------------------------------------------
 
-function isObject(v: unknown): v is Record<string, unknown> {
+/** A plain object (not null, not an array) - the guard every raw-record read
+    starts from. Exported so libex.ts's whitelist parser shares it rather than
+    keeping a second copy of the same three-clause test. */
+export function isObject(v: unknown): v is Record<string, unknown> {
   return typeof v === 'object' && v !== null && !Array.isArray(v)
 }
 
@@ -446,10 +456,16 @@ const ISO_639_3_TO_1: Record<string, string> = {
   tur: 'tr',
 }
 
-// The folder-scan language may be an ISO 639-1 code, an ISO 639-2/3 code (ID3
-// TLAN), or a word. Map a known word or 3-letter code, accept a bare 2-letter
-// code, else undefined (the raw value stays visible via languageRaw).
-function mapLanguageLoose(raw: string): string | undefined {
+/**
+ * The folder-scan language may be an ISO 639-1 code, an ISO 639-2/3 code (ID3
+ * TLAN), or a word. Map a known word or 3-letter code, accept a bare 2-letter
+ * code, else undefined (the raw value stays visible via languageRaw).
+ *
+ * Exported so the libex prefill mapping (libex-map.ts) normalizes a language
+ * word through the SAME table as the import parsers rather than growing a
+ * second copy - libex reports "english"-style words too.
+ */
+export function mapLanguageLoose(raw: string): string | undefined {
   const w = raw.trim().toLowerCase()
   if (LANGUAGE_MAP[w]) return LANGUAGE_MAP[w]
   if (ISO_639_3_TO_1[w]) return ISO_639_3_TO_1[w]

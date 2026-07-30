@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { addWorkFromQueryUrl } from './search-cta'
+import { ADD_QUERY_PARAM, addFromLibexUrl, addWorkFromQueryUrl } from './search-cta'
 
 function params(url: string): URLSearchParams {
   return new URL(url).searchParams
@@ -37,5 +37,38 @@ describe('addWorkFromQueryUrl', () => {
     expect(p.get('template')).toBe('add-work.yml')
     expect(p.get('work_title')).toBeNull()
     expect(p.get('title')).toBeNull()
+  })
+})
+
+describe('addFromLibexUrl', () => {
+  it('carries the trimmed query to the /add lookup assist', () => {
+    expect(addFromLibexUrl('  Killing Floor  ')).toBe('/add?q=Killing%20Floor')
+  })
+
+  it('encodes characters that would otherwise break the query string', () => {
+    const url = addFromLibexUrl("Harry Potter & the Sorcerer's Stone")
+    expect(url).toContain('%26')
+    const q = new URL(url, 'https://meta.audiosilo.app').searchParams.get('q')
+    expect(q).toBe("Harry Potter & the Sorcerer's Stone")
+  })
+
+  it('falls back to the bare page for an empty query', () => {
+    expect(addFromLibexUrl('   ')).toBe('/add')
+  })
+
+  it('carries a pasted ASIN as the query too - /add resolves it directly', () => {
+    // There is deliberately no second ?asin= route: the page checks whether the
+    // query looks like a product code and resolves it instead of searching.
+    expect(addFromLibexUrl(' B015RQON6I ')).toBe('/add?q=B015RQON6I')
+  })
+
+  it('writes the parameter the /add island reads', () => {
+    // This module WRITES the param and components/add/AddFromLibex.tsx READS it
+    // through this same constant. Renaming one side alone would leave the page
+    // sitting idle with a query it never sees, and nothing would report it - so
+    // the name is pinned here and shared, not spelled out twice.
+    expect(ADD_QUERY_PARAM).toBe('q')
+    const url = new URL(addFromLibexUrl('Killing Floor'), 'https://meta.audiosilo.app')
+    expect(url.searchParams.get(ADD_QUERY_PARAM)).toBe('Killing Floor')
   })
 })
