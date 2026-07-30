@@ -39,6 +39,10 @@ export interface WorkSource {
   title: string
   authors: string[]
   language?: string
+  /** Controlled-vocabulary slugs, already mapped and sorted by the source's own
+      mapper - the form rejects anything off the vocabulary, so a raw retailer
+      category must never reach here. */
+  genres?: string[]
   seriesName?: string
   seriesPosition?: string
 }
@@ -76,6 +80,7 @@ function applyWorkParams(p: URLSearchParams, book: WorkSource): void {
   if (book.title) p.set('work_title', book.title)
   if (book.authors.length) p.set('work_authors', book.authors.join(', '))
   if (book.language) p.set('work_language', book.language)
+  if (book.genres?.length) p.set('work_genres', book.genres.join(', '))
   if (book.seriesName) p.set('work_series_name', book.seriesName)
   if (book.seriesPosition) p.set('work_series_position', book.seriesPosition)
 }

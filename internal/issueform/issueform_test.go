@@ -131,6 +131,7 @@ func addWorkBody(title, authors, lang, narrators, asins, sources string, cc0 boo
 		field(fWorkAuthors, authors) +
 		field(fWorkLanguage, lang) +
 		field(fWorkFirstPublished, "1997") +
+		field(fWorkGenres, "") +
 		field(fWorkSeriesName, "") +
 		field(fWorkSeriesPosition, "") +
 		field(fWorkISBN, "") +

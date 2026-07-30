@@ -24,6 +24,7 @@ function libexBook(extra: Partial<LibexBook> = {}): LibexBook {
     authors: [{ name: 'Lee Child' }],
     narrators: [{ name: 'Dick Hill' }],
     series: [],
+    genres: [],
     ...extra,
   }
 }
@@ -144,6 +145,30 @@ describe('libexToPrefill', () => {
     // The form field is required, so the contributor fills it in - we never guess.
     expect(libexToPrefill(libexBook({ language: 'klingon' }), RETRIEVED).language).toBeUndefined()
     expect(libexToPrefill(libexBook(), RETRIEVED).language).toBeUndefined()
+  })
+
+  it('maps genre claims onto the controlled vocabulary, sorted and deduplicated', () => {
+    const p = libexToPrefill(
+      libexBook({
+        genres: [{ name: 'Epic' }, { name: 'Crime Thrillers' }, { name: 'epic' }],
+      }),
+      RETRIEVED
+    )
+    expect(p.genres).toEqual(['epic-fantasy', 'thriller-suspense'])
+  })
+
+  it('drops a claim that maps to nothing, and omits genres entirely when none map', () => {
+    // A retailer category we do not carry is never passed through verbatim.
+    expect(
+      libexToPrefill(
+        libexBook({ genres: [{ name: 'Not A Real Category' }, { name: 'Epic' }] }),
+        RETRIEVED
+      ).genres
+    ).toEqual(['epic-fantasy'])
+    expect(
+      libexToPrefill(libexBook({ genres: [{ name: 'Not A Real Category' }] }), RETRIEVED).genres
+    ).toBeUndefined()
+    expect(libexToPrefill(libexBook(), RETRIEVED).genres).toBeUndefined()
   })
 
   it('maps the first series membership to name + position', () => {
@@ -278,6 +303,7 @@ describe('prefillFacts', () => {
       imageUrl: 'https://m.media-amazon.com/images/I/71WZxAS.jpg',
       lengthMinutes: 1067,
       series: [{ name: 'Jack Reacher', position: '1' }],
+      genres: [{ name: 'Crime Thrillers' }],
     }),
     RETRIEVED
   )
@@ -293,6 +319,7 @@ describe('prefillFacts', () => {
       'authors',
       'narrators',
       'language',
+      'genres',
       'series',
       'abridged',
       'runtime',
@@ -306,6 +333,7 @@ describe('prefillFacts', () => {
     expect(value(facts, 'authors')).toBe('Lee Child')
     expect(value(facts, 'narrators')).toBe('Dick Hill')
     expect(value(facts, 'language')).toBe('English (en)')
+    expect(value(facts, 'genres')).toBe('thriller-suspense')
     expect(value(facts, 'series')).toBe('Jack Reacher #1')
     expect(value(facts, 'abridged')).toBe('Unabridged')
     expect(value(facts, 'runtime')).toBe('17h 47m (1067 minutes)')
@@ -341,12 +369,20 @@ describe('prefillFacts', () => {
   it('shows an unstated fact as null rather than hiding the row', () => {
     const facts = prefillFacts(
       libexToPrefill(
-        { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [] },
+        { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [], genres: [] },
         RETRIEVED
       )
     )
     // Every row is present so the reader sees what they will need to complete.
-    for (const key of ['authors', 'narrators', 'language', 'series', 'abridged', 'runtime']) {
+    for (const key of [
+      'authors',
+      'narrators',
+      'language',
+      'genres',
+      'series',
+      'abridged',
+      'runtime',
+    ]) {
       expect(value(facts, key)).toBeNull()
     }
     expect(value(facts, 'asin')).toBe('B0BARE0001')
@@ -359,7 +395,7 @@ describe('canOpenPrefilledIssue', () => {
     // card must not offer "Continue on GitHub" for one - that hand-off would land
     // the reader on a submission that is rejected on arrival.
     const untitled = libexToPrefill(
-      { asin: 'B0NOTITLE1', authors: [], narrators: [], series: [] },
+      { asin: 'B0NOTITLE1', authors: [], narrators: [], series: [], genres: [] },
       RETRIEVED
     )
     expect(untitled.title).toBe('')
@@ -370,7 +406,7 @@ describe('canOpenPrefilledIssue', () => {
     // Authors, narrators and language are required by the form too, but a reader
     // can type those in - a gap there is a prompt, not a blocker.
     const bare = libexToPrefill(
-      { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [] },
+      { asin: 'B0BARE0001', title: 'A Bare Record', authors: [], narrators: [], series: [], genres: [] },
       RETRIEVED
     )
     expect(canOpenPrefilledIssue(bare)).toBe(true)

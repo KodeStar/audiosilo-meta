@@ -105,6 +105,13 @@ type composer struct {
 	asinRec map[string]string // ASIN -> "data/works/.../recordings/<id>.json"
 	isbnRec map[string]string // ISBN -> recording path
 
+	// submissionASINs is the set of normalized ASINs THIS submission stated in
+	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
+	// marker against it, so a marker can only vouch for a book the submission
+	// actually identifies. Nil until an ASIN is parsed (lookups on a nil map are
+	// fine), so a form with no ASIN field never mints a typed libex source.
+	submissionASINs map[string]bool
+
 	writes   map[string][]byte // data-relative slash path -> canonical bytes
 	messages []string
 	status   Status
@@ -356,8 +363,10 @@ func (c *composer) note(format string, args ...any) {
 	c.messages = append(c.messages, fmt.Sprintf(format, args...))
 }
 
-// source builds the provenance stamp for a composed record from the form's
-// free-text sources/evidence field.
+// source builds the `user` provenance stamp for a composed record from the
+// form's free-text sources/evidence field. Composition paths call sources()
+// (provenance.go) instead, which adds a typed entry when the field carries a
+// machine-written lookup marker.
 func (c *composer) source(ref string) outSource {
 	return outSource{Type: sourceUser, Ref: strings.TrimSpace(ref), ImportedAt: c.date}
 }
@@ -375,7 +384,7 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 	}
 	c.people[slug] = true
 	c.emit(filepath.ToSlash(filepath.Join("people", model.Shard(slug), slug+".json")), outPerson{
-		ID: slug, Name: strings.TrimSpace(name), License: licenseCC0, Sources: []outSource{c.source(sourceRef)},
+		ID: slug, Name: strings.TrimSpace(name), License: licenseCC0, Sources: c.sources(sourceRef),
 	})
 	return slug, true
 }

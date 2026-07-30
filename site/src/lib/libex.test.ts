@@ -64,14 +64,17 @@ describe('parseLibexBook', () => {
       expect(keys).not.toContain(forbidden)
       expect((book as unknown as Record<string, unknown>)[forbidden]).toBeUndefined()
     }
-    // Nor may any other unlisted field ride along (genres, link, sku, explicit),
-    // nor the two misleading ones: an Audible `subtitle` is a tagline or a series
+    // Nor may any other unlisted field ride along (link, sku, explicit), nor the
+    // two misleading ones: an Audible `subtitle` is a tagline or a series
     // designation, and its `isbn` is at least sometimes the PRINT edition's.
+    // `genres` IS whitelisted, but only as raw claims to be mapped onto our own
+    // vocabulary (audible-genres.ts) - never stored as the retailer wrote them.
     expect(keys.sort()).toEqual(
       [
         'asin',
         'authors',
         'bookFormat',
+        'genres',
         'imageUrl',
         'language',
         'lengthMinutes',
@@ -101,6 +104,28 @@ describe('parseLibexBook', () => {
     expect(book.authors).toEqual([{ name: 'Lee Child' }])
     expect(book.narrators).toEqual([{ name: 'Dick Hill' }])
     expect(book.series).toEqual([{ name: 'Jack Reacher', position: '1' }])
+    // A genre entry's "asin" is a browse-NODE id; the node `type` is not kept.
+    expect(book.genres).toEqual([{ node: '18574426011', name: 'Literature & Fiction' }])
+  })
+
+  it('reads genre claims in every shape libex sends, dropping the empty ones', () => {
+    const book = parseLibexBook({
+      asin: 'B0TEST0009',
+      genres: [
+        { asin: '18574426011', name: 'Literature & Fiction', type: 'Genres' },
+        { name: 'Epic' }, // no node id
+        { asin: '12641527051' }, // no name
+        'Crime Thrillers', // a bare string
+        { type: 'Tags' }, // neither node nor name
+        null,
+      ],
+    }) as LibexBook
+    expect(book.genres).toEqual([
+      { node: '18574426011', name: 'Literature & Fiction' },
+      { name: 'Epic' },
+      { node: '12641527051' },
+      { name: 'Crime Thrillers' },
+    ])
   })
 
   it('returns null without an ASIN, and for a non-object', () => {
@@ -138,6 +163,7 @@ describe('parseLibexBook', () => {
     expect(book.authors).toEqual([])
     expect(book.narrators).toEqual([])
     expect(book.series).toEqual([])
+    expect(book.genres).toEqual([])
   })
 
   it('rounds a fractional runtime rather than dropping it', () => {

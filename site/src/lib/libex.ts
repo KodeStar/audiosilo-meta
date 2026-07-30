@@ -9,11 +9,15 @@
 //     includes `description`, `summary`, `copyright` and `rating` - publisher
 //     copy and derived ratings that our licensing policy (LICENSING.md) forbids
 //     us from importing. parseLibexBook therefore builds its result by copying
-//     ONLY the fields named in the STRING_FIELDS list below (plus the four with
-//     their own coercion: asin, region, lengthMinutes, and the people/series
-//     arrays); it never spreads the raw object and never reads any other key.
-//     That list IS the whitelist - the forbidden fields cannot reach a LibexBook
-//     structurally, so no downstream consumer has to remember to strip them.
+//     ONLY the fields named in the STRING_FIELDS list below (plus the ones with
+//     their own coercion: asin, region, lengthMinutes, and the people/series/
+//     genre-claim arrays); it never spreads the raw object and never reads any
+//     other key. That list IS the whitelist - the forbidden fields cannot reach a
+//     LibexBook structurally, so no downstream consumer has to remember to strip
+//     them. The genre claims are the one whitelisted field that is not itself
+//     storable: they are a retailer's category strings, kept solely so
+//     audible-genres.ts can map them onto this project's own vocabulary (and drop
+//     the rest), never carried through verbatim.
 //
 //  2. USER-INITIATED ONLY. Every call here is a third-party request from the
 //     reader's browser. Nothing in this module is called speculatively - a fetch
@@ -52,6 +56,24 @@ export interface LibexSeriesRef {
 }
 
 /**
+ * One raw genre claim from a record's `genres` array ([{asin, name, type}]),
+ * where `asin` is a browse-NODE id, not a product ASIN. Both halves are optional
+ * because a claim is usable with either one.
+ *
+ * A claim is NOT a genre: it is a retailer's category string, which LICENSING.md
+ * forbids storing verbatim. It is kept only so audible-genres.ts can map it onto
+ * this project's own controlled vocabulary and DROP whatever does not map -
+ * exactly what the Go importer does with the same field. The node `type`
+ * ("Genres"/"Tags") is deliberately not kept: the mapping table, not the node
+ * type, decides what becomes a vocabulary genre.
+ */
+export interface LibexGenreClaim {
+  /** The browse-node id, when the record states one. */
+  node?: string
+  name?: string
+}
+
+/**
  * The whitelisted subset of libex's BookResponse. Every field here is factual
  * catalogue data (CC0-compatible in our model). Deliberately ABSENT, and
  * unreachable by construction: description, summary, copyright, rating - see
@@ -86,6 +108,9 @@ export interface LibexBook {
   authors: LibexPerson[]
   narrators: LibexPerson[]
   series: LibexSeriesRef[]
+  /** Raw category claims, mapped onto our vocabulary at prefill time and never
+      carried verbatim - see LibexGenreClaim. */
+  genres: LibexGenreClaim[]
 }
 
 // --- Errors -----------------------------------------------------------------
@@ -146,6 +171,33 @@ function people(v: unknown): LibexPerson[] {
   return out
 }
 
+/**
+ * Named-field copy of a genre claim. libex sends objects ({asin, name, type});
+ * a bare string is tolerated as a name-only claim, mirroring the Go importer's
+ * libexGenreClaims. A claim with neither a node nor a name is dropped.
+ */
+function genreClaims(v: unknown): LibexGenreClaim[] {
+  if (!Array.isArray(v)) return []
+  const out: LibexGenreClaim[] = []
+  for (const el of v) {
+    if (typeof el === 'string') {
+      const name = str(el)
+      if (name) out.push({ name })
+      continue
+    }
+    if (!isObject(el)) continue
+    // The claim's "asin" is a browse-node id (Audible's own field name).
+    const node = str(el['asin'])
+    const name = str(el['name'])
+    if (!node && !name) continue
+    const claim: LibexGenreClaim = {}
+    if (node) claim.node = node
+    if (name) claim.name = name
+    out.push(claim)
+  }
+  return out
+}
+
 /** Named-field copy of a series membership; unnamed entries are dropped. */
 function seriesRefs(v: unknown): LibexSeriesRef[] {
   if (!Array.isArray(v)) return []
@@ -193,6 +245,7 @@ export function parseLibexBook(raw: unknown): LibexBook | null {
     authors: people(raw['authors']),
     narrators: people(raw['narrators']),
     series: seriesRefs(raw['series']),
+    genres: genreClaims(raw['genres']),
   }
   for (const field of STRING_FIELDS) {
     const value = str(raw[field])

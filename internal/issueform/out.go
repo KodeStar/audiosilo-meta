@@ -43,6 +43,7 @@ type outWork struct {
 	Subtitle       string       `json:"subtitle,omitempty"`
 	Authors        []string     `json:"authors"`
 	Language       string       `json:"language"`
+	Genres         []string     `json:"genres,omitempty"`
 	FirstPublished string       `json:"first_published,omitempty"`
 	Xref           *outWorkXref `json:"xref,omitempty"`
 	License        string       `json:"license"`

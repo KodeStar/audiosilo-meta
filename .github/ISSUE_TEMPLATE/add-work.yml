@@ -64,6 +64,20 @@ body:
       required: false
 
   - type: input
+    id: work_genres
+    attributes:
+      label: Genres
+      description: >-
+        Optional. Comma-separated values from this project's own controlled
+        vocabulary (the `genre` list in
+        [schema/common.schema.json](https://github.com/kodestar/audiosilo-meta/blob/main/schema/common.schema.json)) -
+        not a retailer's categories. A value that is not on that list is
+        rejected rather than guessed at.
+      placeholder: epic-fantasy, coming-of-age
+    validations:
+      required: false
+
+  - type: input
     id: work_series_name
     attributes:
       label: Series name

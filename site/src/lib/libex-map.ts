@@ -16,13 +16,16 @@
 //    state it otherwise (cleanWorkTitle / abridgedFromMarker);
 //  - a region is kept only when it names a real Audible marketplace;
 //  - the release date is the RECORDING's release, never the work's first
-//    publication - an audiobook of a 1997 novel is not a 2015 book.
-// Genres are deliberately dropped: there is no genre field in the schema yet, and
-// so are libex's `subtitle` and `isbn` - see the LibexBook doc in libex.ts for
-// why neither is the fact its name suggests.
+//    publication - an audiobook of a 1997 novel is not a 2015 book;
+//  - genre claims are resolved against the shared mapping table
+//    (audible-genres.ts, the same file the Go importer embeds) and anything that
+//    does not map is dropped, so a retailer's category never travels verbatim.
+// libex's `subtitle` and `isbn` are dropped entirely - see the LibexBook doc in
+// libex.ts for why neither is the fact its name suggests.
 
 import { formatLanguage, formatRuntime, looksLikeAsin, today } from './api'
 import type { LookupResponse } from './api'
+import { mapGenreClaims } from './audible-genres'
 // formatAsinLine only: github-prefill's own reference back to this module is
 // type-only (erased at build time), so there is no runtime import cycle.
 import { formatAsinLine } from './github-prefill'
@@ -42,6 +45,10 @@ export interface LibexPrefill {
   /** BCP-47, when the language word maps to one. Blank means "the contributor
       fills the required field in" - never a guess. */
   language?: string
+  /** Slugs from the project's controlled vocabulary, deduplicated and sorted.
+      Absent when the record stated no claim we could map - a retailer category
+      we do not carry is dropped, never passed through. */
+  genres?: string[]
   seriesName?: string
   /** A position in the intake form's grammar ("1", "2.5", "1-3.5"). A stated
       position we cannot parse is omitted and NOTED in `sources` instead. */
@@ -129,13 +136,17 @@ const SERIES_POSITION_RE = /^\d+(\.\d+)?(-\d+(\.\d+)?)?$/
 /**
  * The Sources text for a libex-seeded issue.
  *
- * The first line is exactly `libex: <ASIN>`. Today nothing sniffs it - it rides
- * as ordinary provenance text like the rest of the field - and it is written in
- * that fixed shape as GROUNDWORK for a PLANNED intake change that would
- * recognise a lookup-seeded submission by it. `notes` carries every stated fact
- * no form field can hold (a second series membership, a region or a position we
- * could not validate): the form has one series field and a validated region/
- * position, so dropping these silently would lose a fact the reviewer needs.
+ * The first line is exactly `libex: <ASIN>`, and intake SNIFFS it: when a
+ * submission's Sources field opens with that line, the composer
+ * (internal/issueform provenance.go) stamps every composed record with a typed
+ * `libex-import` source carrying the ASIN, and the remaining lines ride as the
+ * usual `user` source. The shape is therefore a contract - keep the marker on
+ * the FIRST line, lower-case `libex:`, and nothing else on it.
+ *
+ * `notes` carries every stated fact no form field can hold (a second series
+ * membership, a region or a position we could not validate): the form has one
+ * series field and a validated region/position, so dropping these silently
+ * would lose a fact the reviewer needs.
  */
 function composeSources(book: LibexBook, retrieved: string, notes: string[]): string {
   return [
@@ -194,6 +205,8 @@ export function libexToPrefill(book: LibexBook, retrieved: string = today()): Li
   }
   const language = book.language ? mapLanguageLoose(book.language) : undefined
   if (language) prefill.language = language
+  const genres = mapGenreClaims(book.genres)
+  if (genres.length) prefill.genres = genres
   if (first) prefill.seriesName = first.name
   if (seriesPosition) prefill.seriesPosition = seriesPosition
   if (abridged !== undefined) prefill.abridged = abridged
@@ -239,6 +252,11 @@ export function prefillFacts(p: LibexPrefill): PrefillFact[] {
       key: 'language',
       label: 'Language',
       value: p.language ? `${formatLanguage(p.language)} (${p.language})` : null,
+    },
+    {
+      key: 'genres',
+      label: 'Genres',
+      value: p.genres?.length ? p.genres.join(', ') : null,
     },
     {
       key: 'series',
