@@ -1,0 +1,372 @@
+{
+  "characters": [
+    {
+      "description": "The ruler of Solakir and an off-world healer who went missing during a portal crossing.",
+      "id": "kale",
+      "name": "Kale",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An Alliance commander and ally of Queen Bael who was also Kale's trusted ally before Kale disappeared.",
+      "id": "max",
+      "name": "Max",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Solakir's necromancer queen, widow of King Bael, and a leader in the coalition that survived the earlier conflict.",
+      "id": "queen-bael",
+      "name": "Queen Bael",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Queen Bael's late husband and a former defender of Solakir whose death still shapes the realm's leadership.",
+      "id": "king-bael",
+      "name": "King Bael",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted protector responsible for Kale's children and other young people in his household at Solakir.",
+      "id": "cassie",
+      "name": "Cassie",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kale and Ember's younger daughter, living under the protection of Kale's household at Solakir.",
+      "id": "kales-younger-daughter",
+      "name": "Kale and Ember's younger daughter",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kale's magical ally and a member of his circle.",
+      "id": "lecory",
+      "name": "LeCory",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Magi who directs Rainer City's final defense. He draws on the Koraz Font and a black key in a desperate attempt to stop the invaders, but the result leaves his fate uncertain.",
+      "id": "simeon-grey",
+      "name": "Simeon Grey",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Simeon Grey's deceased Magi friend, whose appearance is adopted by a higher enemy power during its confrontation with him.",
+      "id": "elena",
+      "name": "Elena",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Twin Magi whose linked magic strengthens Simeon Grey's Font working during Rainer City's final defense.",
+      "id": "calvin-and-tracy-walker",
+      "name": "Calvin and Tracy Walker",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A large, speaking, armored invader presented as an enemy overseer during Rainer City's last defense. Simeon Grey and the Walker twins imprison the creature in hardened magma beneath the citadel.",
+      "id": "armored-apparent-overseer",
+      "name": "Armored apparent overseer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A higher power within the invading enemy hierarchy. It confronts Simeon Grey while disguised as his deceased friend Elena, reveals another form, and attacks him during the Font catastrophe.",
+      "id": "higher-enemy-power",
+      "name": "Higher enemy power",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "General Bree"
+      ],
+      "description": "The highest-ranking surviving general and a longtime comrade of Simeon Grey. During Rainer City's evacuation, he leads a reduced force south to divert the invading army from fleeing civilians.",
+      "id": "general-cornwall-bree",
+      "name": "General Cornwall Bree",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Abigail"
+      ],
+      "description": "A young local who finds Kale injured in Colter Forest. Familiar with the danger posed by witches and daemons, she guides him toward her town and helps him seek shelter.",
+      "id": "abby",
+      "name": "Abby",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "spirit companion"
+      ],
+      "description": "A sentient ally housed in Kale's white weapon. Newly returned to him, the spirit warns that he is depleted and separated from the magic of his home world.",
+      "id": "kales-bound-spirit",
+      "name": "Kale's bound spirit",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A revolver-carrying deacon probationer who pulls Kale out of a witch attack. His suspicion eases after he sees Kale defend children and other civilians.",
+      "id": "jake-nash",
+      "name": "Jake Nash",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A child whom Kale saves from feral-witch corruption after conventional healing fails.",
+      "id": "shelley-winston",
+      "name": "Shelley Winston",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The church authority in Abby's town. He treats Kale's unfamiliar magic as a possible daemon threat and orders him restrained despite Kale's help against the witches.",
+      "id": "proctor-james",
+      "name": "Proctor James",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The chief deacon under Proctor James and the leader of the town's armed deacons.",
+      "id": "father-pasch",
+      "name": "Father Pasch",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "avian companion"
+      ],
+      "description": "Kale's animal companion, carried through the portal but caught in crystal threads inside a living geode. Kale finds the creature badly hurt and frees it with flowering vine magic.",
+      "id": "kales-vesha-companion",
+      "name": "Kale's vesha companion",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Abby's mother, who was killed by a daemon years before Kale's arrival while the creature left Abby unharmed.",
+      "id": "abbys-mother",
+      "name": "Abby's mother",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Abby's father, who objects when she insists on accompanying Kale during a dangerous expedition.",
+      "id": "abbys-father",
+      "name": "Abby's father",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former local woman granted power by abyssal beings to watch for the return of magic. She drains prisoners in the western caves and traps Kale in an illusion before he kills her.",
+      "id": "abyss-empowered-witch",
+      "name": "Abyss-empowered witch",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A cave-search survivor who returns delirious and reports that captives remain in the western caves.",
+      "id": "deacon-sawyer",
+      "name": "Deacon Sawyer",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Alliance archwizard"
+      ],
+      "description": "An archwizard investigating the unexplained abandonment of mountain settlements on Talona. A small masked attacker counters his magic and leaves him unconscious during an ambush.",
+      "id": "missing-archwizard",
+      "name": "Missing archwizard",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A band of hovering, hooded undead that abducts the train's passengers and holds them at a ruined fort. The group controls a geode that traps Abby in spreading crystal.",
+      "id": "hooded-undead",
+      "name": "Hooded undead",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The guard captain who accompanies an archwizard into an abruptly abandoned mountain town. He survives the attacker's first assault, and his condition after a second magical blast is unknown.",
+      "id": "archwizards-guard-captain",
+      "name": "Archwizard's guard captain",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "missing archwizard's wife"
+      ],
+      "description": "The missing archwizard's wife, whose soul bond with an angel grants shared awareness and access to angelic memory magic. She joins the effort to learn what happened to him.",
+      "id": "angel-hosted-woman",
+      "name": "Angel-hosted woman",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A representative of a witch coven who brokers Queen Bael's demon summoning. She receives the summoning platform as the coven's agreed payment and takes it away.",
+      "id": "witch-coven-representative",
+      "name": "Witch-coven representative",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A summoned demon who performs Queen Bael's heart-bond ritual, then tries and fails to seize her womb and unborn child. Its claim on the child remains unresolved.",
+      "id": "demon-overlord",
+      "name": "Demon overlord",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The leader of a Dead Sister faction who denies responsibility for an attack on the Dead Forge convoy. She punishes the captured rebels and offers an uneasy escort against the remaining rogue force.",
+      "id": "dead-sister-leader",
+      "name": "Dead Sister leader",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An ancient, bloodstone-infected warrior near the Midnight Canopy. He distrusts the Dead Forge and permits its use at the Animus Seal only if his people may seize it should the attempt fail.",
+      "id": "northern-warrior-leader",
+      "name": "Northern warrior leader",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Four survivors among six volunteers who accept bloodstone infection to rebuild the Animus Seal. They channel void magic through the Dead Forge as living anchors for the new lock.",
+      "id": "four-seal-necromancers",
+      "name": "Four seal necromancers",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "off-world overseer"
+      ],
+      "description": "A wolf-like being released from a fissure below the Magi Citadel. It understands speech, knows that daemons and witches are attacking Abby's world, and relies on a smaller companion to open portals.",
+      "id": "wolf-like-overseer",
+      "name": "Wolf-like overseer",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "small masked companion"
+      ],
+      "description": "The overseer's smaller companion, equipped with a censer that emits corrosive green smoke and can create passages between worlds.",
+      "id": "portal-making-scion",
+      "name": "Portal-making scion",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "abyss woman"
+      ],
+      "description": "A powerful woman released from the crystal dome beneath the citadel. She identifies herself as a goddess of the abyss and overwhelms Kale after emerging from long imprisonment.",
+      "id": "abyss-goddess",
+      "name": "Abyss goddess",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An archwizard's adopted dragonkin daughter and a powerful magic user. She helps her father trace a tear between realities in the forest south of Solakir.",
+      "id": "archwizards-adopted-dragonkin-daughter",
+      "name": "Archwizard's adopted dragonkin daughter",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0GCNLB1T5",
+      "type": "community"
+    }
+  ],
+  "work": "worlds-apart"
+}
