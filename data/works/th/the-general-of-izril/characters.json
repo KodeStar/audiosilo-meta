@@ -1,0 +1,405 @@
+{
+  "characters": [
+    {
+      "description": "The proprietor of the Wandering Inn, where she protects a varied community and insists that peaceful goblins deserve to be treated as people.",
+      "id": "erin",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young white-furred Gnoll in Lionette's care. She lives at the inn and is grieving losses that have left her frightened and vulnerable.",
+      "id": "mrsha",
+      "name": "Mrsha",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Erin's barmaid and partner in running the Wandering Inn. She looks after Mrsha while helping keep the inn's unsettled household together.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium archer who guards the Wandering Inn. He takes the safety of Erin and her guests seriously, though his ideas about danger can conflict with hers.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium leader concerned with the spiritual and social lives of individuals in the hive. He supports the painted Antinium as they develop identities beyond their assigned functions.",
+      "id": "pawn",
+      "name": "Pawn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful northern noblewoman who can marshal wealth, servants, artifacts, and political influence. She is gathering resources against the Goblin Lord's advance.",
+      "id": "magnolia-reinhart",
+      "name": "Magnolia Reinhart",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's tactician and a devoted chess player. He helps defend the city while applying his curiosity to threats that others might overlook.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Horns of Hammerad's necromancer, an accomplished but controversial specialist in controlled undead. His methods often repel the people whose problems they might solve.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Antinium adventurer with the Horns of Hammerad. His unusual background and array of weapons make him a distinctive member of the team.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adventurer and returning member of the Horns of Hammerad.",
+      "id": "ceria",
+      "name": "Ceria",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A returning member of the Horns of Hammerad.",
+      "id": "yvlon",
+      "name": "Yvlon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The young chieftain of the Flooded Waters tribe. She can read, uses magic, equips her people carefully, and tries to restrain violence against humans even while raiding for survival.",
+      "id": "rags",
+      "name": "Rags",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Hobgoblin and former chieftain who serves as Rags' dependable lieutenant. He respects her intelligence and backs her efforts to lead the Flooded Waters tribe.",
+      "id": "pyrite",
+      "name": "Pyrite",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of the Redfang tribe, currently based in another chief's mountain stronghold. He recognizes the Goblin Lord's power but refuses to submit to his authority.",
+      "id": "garen-redfang",
+      "name": "Garen Redfang",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of an immense goblin army supported by undead. He passes Liscor under orders and seeks to absorb other goblins through obedience or death.",
+      "id": "the-goblin-lord",
+      "name": "The Goblin Lord",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Earth-born clown"
+      ],
+      "description": "A summoned American and former clown who has withdrawn from fighting after a violent breakdown. He carries guilt over those he killed and hears a hostile voice that may be part of his own mind.",
+      "id": "tom",
+      "name": "Tom",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A mounted knight and one of the leaders among the surviving Americans in the Blighted Kingdom. His progress has helped earn the group an audience and lodging at court.",
+      "id": "richard",
+      "name": "Richard",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hydromancer and one of the principal leaders among the summoned Americans. Her advancement helps make the Blighted King interested in the group's military value.",
+      "id": "emily",
+      "name": "Emily",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The imposing ruler of a kingdom at war with demons. A chronomancer preserves his life by slowing his aging, and his interest in the summoned Americans determines their treatment at court.",
+      "id": "the-blighted-king",
+      "name": "The Blighted King",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A royal entertainer who rescues Tom's failed performance and becomes his friend. He can make temporary copies of objects and shows a protective concern for the younger princess.",
+      "id": "the-court-fool",
+      "name": "The court fool",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A closely guarded daughter of the Blighted King who has endured the loss of much of her family. The court fool treats her with particular care.",
+      "id": "the-young-princess",
+      "name": "The young princess",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of six starving Redfang warriors who have recently become Hobgoblins. He travels south with the group after they reject Garen Redfang's direction.",
+      "id": "head-scratcher",
+      "name": "Head Scratcher",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Redfang group's skilled archer, newly transformed into a Hobgoblin. His long-range shooting is accurate enough to suppress Bird's position at the inn.",
+      "id": "bad-arrow",
+      "name": "Bad Arrow",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the six Redfang warriors travelling south as newly transformed Hobgoblins. Hunger and the Goblin Lord's nearby army leave the group searching for a safer path.",
+      "id": "bug-ear",
+      "name": "Bug Ear",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "One of six starving Redfang warriors who have recently become Hobgoblins. He travels south with the group after they reject Garen Redfang's direction.",
+      "id": "rabbit-eater",
+      "name": "Rabbit Eater",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of six starving Redfang warriors who have recently become Hobgoblins. He travels south with the group after they reject Garen Redfang's direction.",
+      "id": "numbtongue",
+      "name": "Numbtongue",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of six starving Redfang warriors who have recently become Hobgoblins. He travels south with the group after they reject Garen Redfang's direction.",
+      "id": "shorthilt",
+      "name": "Shorthilt",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The blind ruler known as the Unseen Emperor. Territorial markers extend his awareness, allowing him to observe his growing domain and coordinate its defense from afar.",
+      "id": "laken-godart",
+      "name": "Laken Godart",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Laken Godart's champion and a Paladin. Her abilities strengthen allies and create openings in battle as she helps defend caravans and settlements from goblin raids.",
+      "id": "durene",
+      "name": "Durene",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The commander organizing military operations for Laken Godart's expanding territory. She recruits defenders and directs coordinated responses to goblin attacks.",
+      "id": "wiscaria",
+      "name": "Wiscaria",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Laken Godart's cavalry leader, a cataphract who commands mounted attacks. He serves as a decisive battlefield officer in the defense of the emerging empire.",
+      "id": "beniar",
+      "name": "Beniar",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Titan"
+      ],
+      "description": "A renowned strategist who leads the Forgotten Wing Company. He follows Olesm's chess publication and sends the younger tactician a puzzle and a magical aid.",
+      "id": "niers-astoragon",
+      "name": "Niers Astoragon",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Walllord Ilvriss"
+      ],
+      "description": "A Drake Wall Lord stranded in Liscor by the Goblin Lord's army. He sees promise in Olesm and offers mentorship, though grief has left him drinking heavily.",
+      "id": "ilvriss",
+      "name": "Ilvriss",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A supposed member of the Blackpaw tribe whose early life cannot be verified. Ilvriss and Zel Shivertail find that her travels align with suspicious deaths and secretly investigate her connection to the Necromancer.",
+      "id": "regrika-blackpaw",
+      "name": "Regrika Blackpaw",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Tidebreaker"
+      ],
+      "description": "A Drake general who accepts responsibility for the recent fighting at the Wandering Inn. He pays for the damage and helps Liscor prepare for the Goblin Lord's advance.",
+      "id": "zel-shivertail",
+      "name": "Zel Shivertail",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Magnolia Reinhart's trusted butler and an exceptional carriage driver. He willingly enters danger to delay goblins and help fleeing villagers reach safety.",
+      "id": "reynold",
+      "name": "Reynold",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An old goblin travelling with Rags' people. When elite human knights threaten the tribe, he reveals extraordinary skill with a sword and intervenes in its defense.",
+      "id": "greybeard",
+      "name": "Greybeard",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Sergeant Yellow Splatters"
+      ],
+      "description": "A painted Antinium soldier and level 12 sergeant who leads troops against dungeon incursions. He cares deeply about soldiers' lives, but constant losses are making him rigid and angry.",
+      "id": "yellow-splatters",
+      "name": "Yellow Splatters",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A painted Antinium soldier who leads surface patrols with a flexible, exploratory manner. Pawn is considering him for a sergeant's responsibilities.",
+      "id": "purple-smile",
+      "name": "Purple Smile",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newer painted Antinium marked by pink stripes on his face. Although he has developed individuality, he suddenly becomes an aberration and must be confined.",
+      "id": "twin-stripes",
+      "name": "Twin Stripes",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A worker tactician helping direct the hive's defense against dungeon monsters. He prefers prepared positions and fixed choke points.",
+      "id": "belgrade",
+      "name": "Belgrade",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A worker tactician coordinating the hive's dungeon defense. He favors mobile ambushes and uses competing monsters to reduce Antinium casualties.",
+      "id": "anand",
+      "name": "Anand",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B09SJ1T9KF",
+      "type": "community"
+    }
+  ],
+  "work": "the-general-of-izril"
+}
