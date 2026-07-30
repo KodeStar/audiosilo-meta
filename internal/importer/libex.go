@@ -17,15 +17,21 @@ import (
 //
 // This is the NEW-IMPORT source: it creates works/recordings/people/series that
 // are not in the catalogue yet. The ASIN-matched enrichment of records already
-// here, and the bounded subset selection LICENSING.md's import posture requires,
-// are separate tools - this file must stay usable by them (its parse layer is a
-// plain []byte -> []sourceBook function with no I/O).
+// here (enrich.go, reached with --enrich), and the bounded subset selection
+// LICENSING.md's import posture requires, build on the same parse layer, which
+// stays a plain []byte -> rows function with no I/O.
 //
-// The parse layer is deliberately all-in-memory: the intended input is the
-// BOUNDED row set the libex-select tool emits (a series completion, a
-// contributor's shelf), not libex's raw 1.13M-row dump. Feeding it the whole
-// dump is out of contract for the import posture and for this parser's memory
-// profile alike.
+// RECOMMENDED INPUT, both modes: a PRE-FILTERED row set - what the libex-select
+// tool emits (a series completion, a contributor's shelf), or rows filtered to
+// the catalogue's ASINs at export time - not libex's raw 1.06M-row dump. For the
+// CREATE mode that is the import posture itself: importing the dump would be
+// mirroring it, which LICENSING.md refuses. For the ENRICHMENT mode the posture
+// is satisfied (the run is bounded by our catalogue, not by the source's), and
+// the remaining limit is purely mechanical: this parse layer is all-in-memory
+// and slurps every row before the ASIN match discards the ones that do not
+// apply, measured at roughly 6GB of live heap for the 1.06M-row dump. Feeding it
+// the whole dump therefore works only on a machine sized for it - filtering
+// first is cheaper for everyone.
 //
 // Only factual fields are read. Per LICENSING.md the row's description /
 // summary / rating / copyright fields are never touched at all, and the row's
@@ -50,20 +56,124 @@ var utf8BOM = []byte{0xEF, 0xBB, 0xBF}
 // RunLibex imports exportPath (a libex export) into opts.DataDir. Rows are
 // normalized into the shared sourceBook, so behaviour is otherwise identical to
 // Run / RunLibation. Parse-time warnings (a row with no usable ASIN or no
-// marketplace, an invalid ISBN) are prepended to the run's warnings so the
-// caller prints them together.
+// marketplace, an invalid ISBN, an unusable cover URL) are prepended to the
+// run's warnings so the caller prints them together - per row when creating, in
+// aggregate when enriching (see libexParse.warningLines).
 func RunLibex(exportPath string, opts Options) (Summary, error) {
 	raw, err := os.ReadFile(exportPath)
 	if err != nil {
 		return Summary{}, fmt.Errorf("read %s: %w", exportPath, err)
 	}
-	books, warnings, err := parseLibex(raw)
+	parsed, err := parseLibex(raw)
 	if err != nil {
 		return Summary{}, err
 	}
-	sum, runErr := runBooks(books, sourceLibex, opts)
-	sum.Warnings = append(warnings, sum.Warnings...)
+	sum, runErr := runBooks(parsed.books, sourceLibex, opts)
+	sum.SkippedRows = parsed.skipped
+	sum.Warnings = append(parsed.warningLines(opts.Enrich), sum.Warnings...)
 	return sum, runErr
+}
+
+// libexWarnClass buckets a parse-layer warning by the KIND of problem it
+// reports, so an enrichment run over a large export can say "1234 rows skipped:
+// no well-formed ASIN" instead of printing 1234 near-identical lines about rows
+// it was never going to touch. The declaration order is the report order.
+type libexWarnClass int
+
+const (
+	warnNoASIN libexWarnClass = iota
+	warnUnknownRegion
+	warnCoverNotHTTPS
+	warnMalformedISBN
+)
+
+// aggregateForm is the class's one-line summary, taking the count of rows in the
+// bucket. Kept beside the class list so adding a class without a summary form is
+// a compile error, not a silently unreported bucket.
+func (c libexWarnClass) aggregateForm(n int) string {
+	switch c {
+	case warnNoASIN:
+		return fmt.Sprintf("%d rows skipped: no well-formed ASIN", n)
+	case warnUnknownRegion:
+		return fmt.Sprintf("%d rows skipped: region is not a known marketplace", n)
+	case warnCoverNotHTTPS:
+		return fmt.Sprintf("%d cover URLs were not https; dropped", n)
+	case warnMalformedISBN:
+		return fmt.Sprintf("%d ISBNs were malformed; dropped", n)
+	}
+	return fmt.Sprintf("%d rows warned", n)
+}
+
+// libexWarning is one parse-layer warning: its class, the row it came from (the
+// ASIN when the row has one, else its title), and the full per-row line.
+type libexWarning struct {
+	class libexWarnClass
+	label string
+	text  string
+}
+
+// libexParse is the outcome of decoding an export: the usable rows, the count of
+// rows the parse layer refused, and every parse-layer warning.
+type libexParse struct {
+	books    []sourceBook
+	skipped  int
+	warnings []libexWarning
+}
+
+// add records a parse-layer warning. label names the row (its ASIN, else its
+// title) so an aggregate report can still point at concrete examples.
+func (lp *libexParse) add(class libexWarnClass, label, format string, args ...any) {
+	lp.warnings = append(lp.warnings, libexWarning{class: class, label: label, text: fmt.Sprintf(format, args...)})
+}
+
+// rowWarn returns the per-row warning sink for one accepted row, bound to a
+// class and the row's ASIN, so the deeper field parsers (covers, ISBNs) keep the
+// plain warn-func shape every other parser uses.
+func (lp *libexParse) rowWarn(class libexWarnClass, asin string) func(string, ...any) {
+	return func(format string, args ...any) { lp.add(class, asin, format, args...) }
+}
+
+// maxWarnExamples caps how many rows an aggregated class names. A handful is
+// enough to go and look at the data; a full list would be the per-row output the
+// aggregation exists to avoid.
+const maxWarnExamples = 5
+
+// warningLines renders the parse-layer warnings for the caller to print. In
+// create mode every row's own line is kept (a curated tranche is small, and the
+// detail is what a contributor acts on). In enrichment mode the input is an
+// export whose rows are overwhelmingly irrelevant to this catalogue, so the
+// lines are folded into one per class with a count and a few example rows -
+// otherwise a full export buries the run's real output under six figures of
+// warnings about rows it never touched.
+func (lp libexParse) warningLines(aggregate bool) []string {
+	if !aggregate {
+		lines := make([]string, 0, len(lp.warnings))
+		for _, w := range lp.warnings {
+			lines = append(lines, "libex: "+w.text)
+		}
+		return lines
+	}
+	counts := map[libexWarnClass]int{}
+	examples := map[libexWarnClass][]string{}
+	var order []libexWarnClass
+	for _, w := range lp.warnings {
+		if counts[w.class] == 0 {
+			order = append(order, w.class)
+		}
+		counts[w.class]++
+		if w.label != "" && len(examples[w.class]) < maxWarnExamples {
+			examples[w.class] = append(examples[w.class], w.label)
+		}
+	}
+	lines := make([]string, 0, len(order))
+	for _, class := range order {
+		line := "libex: " + class.aggregateForm(counts[class])
+		if ex := examples[class]; len(ex) > 0 {
+			line += " (for example: " + strings.Join(ex, ", ") + ")"
+		}
+		lines = append(lines, line)
+	}
+	return lines
 }
 
 // parseLibex decodes a libex export and converts every usable row into the
@@ -73,21 +183,18 @@ func RunLibex(exportPath string, opts Options) (Summary, error) {
 // key) or a marketplace the recording schema knows. Rows missing a title,
 // author, narrator or language are left to addBook, which owns those rules for
 // every source.
-func parseLibex(data []byte) ([]sourceBook, []string, error) {
+func parseLibex(data []byte) (libexParse, error) {
 	entries, err := decodeLibexEntries(data)
 	if err != nil {
-		return nil, nil, err
+		return libexParse{}, err
 	}
-	books := make([]sourceBook, 0, len(entries))
-	var warnings []string
-	warn := func(format string, args ...any) {
-		warnings = append(warnings, "libex: "+fmt.Sprintf(format, args...))
-	}
+	lp := libexParse{books: make([]sourceBook, 0, len(entries))}
 	for _, e := range entries {
 		asin := NormalizeASIN(e.str("asin"))
 		if asin == "" {
 			label := firstNonEmpty(e.str("title"), e.str("asin"), "(unknown row)")
-			warn("row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
+			lp.skipped++
+			lp.add(warnNoASIN, label, "row %q has no well-formed ASIN (%q); skipped", label, e.str("asin"))
 			continue
 		}
 		// A row whose marketplace does not map would import as a work and a
@@ -97,12 +204,13 @@ func parseLibex(data []byte) ([]sourceBook, []string, error) {
 		// sibling row that does state a marketplace.
 		region, rawRegion, ok := libexRegion(e)
 		if !ok {
-			warn("%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
+			lp.skipped++
+			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
 			continue
 		}
-		books = append(books, libexToBook(e, asin, region, warn))
+		lp.books = append(lp.books, libexToBook(e, asin, region, &lp))
 	}
-	return books, warnings, nil
+	return lp, nil
 }
 
 // decodeLibexEntries accepts the three shapes a libex export can arrive in: a
@@ -155,8 +263,9 @@ func decodeLibexEntries(data []byte) ([]rawBook, error) {
 // touched). asin and region are already normalized by parseLibex. The credits,
 // runtime, abridged flag, series claims, genre claims, ISBNs and chapters are
 // parse-time facts carried as typed fields on the sourceBook, never smuggled
-// through raw in another source's key shape.
-func libexToBook(e rawBook, asin, region string, warn func(string, ...any)) sourceBook {
+// through raw in another source's key shape. Its warnings go to the parse
+// collector class-tagged, so a large enrichment run can report them in aggregate.
+func libexToBook(e rawBook, asin, region string, lp *libexParse) sourceBook {
 	raw := rawBook{}
 	sb := sourceBook{raw: raw}
 	raw["asin"] = asin
@@ -196,7 +305,7 @@ func libexToBook(e rawBook, asin, region string, warn func(string, ...any)) sour
 			// The schema requires an https cover URL, so an http one cannot be
 			// recorded - but dropping a stated fact silently hides that the row
 			// HAD a cover.
-			warn("%s: cover URL %q is not https; dropped", asin, img)
+			lp.add(warnCoverNotHTTPS, asin, "%s: cover URL %q is not https; dropped", asin, img)
 		}
 	}
 	if mins, ok := coerceInt(e["lengthMinutes"]); ok && mins > 0 {
@@ -207,7 +316,7 @@ func libexToBook(e rawBook, asin, region string, warn func(string, ...any)) sour
 	sb.abridged = libexAbridged(e.str("bookFormat"))
 	sb.series = libexSeries(e["series"])
 	sb.genres = libexGenreClaims(e["genres"])
-	sb.isbns = libexISBNs(e["isbn"], asin, warn)
+	sb.isbns = libexISBNs(e["isbn"], asin, lp.rowWarn(warnMalformedISBN, asin))
 	sb.chapters = e.chapters()
 	return sb
 }

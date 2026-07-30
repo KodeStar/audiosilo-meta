@@ -94,6 +94,12 @@ func recordingPath(workSlug, recSlug string) string {
 	return filepath.ToSlash(filepath.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json"))
 }
 
+// workPath returns a work file's data-relative, slash-separated location
+// (works/<shard>/<slug>/work.json) from its slug.
+func workPath(workSlug string) string {
+	return filepath.ToSlash(filepath.Join("works", model.Shard(workSlug), workSlug, "work.json"))
+}
+
 // workState tracks a work's identity (slug + author set) and its recordings.
 type workState struct {
 	slug    string
@@ -131,15 +137,49 @@ type planner struct {
 	// uppercased to match the rule's normISBN comparison.
 	isbns  map[string]bool
 	writes map[string][]byte
+	// asinLoc locates the recording each already-catalogued ASIN sits on. It is
+	// allocated ONLY when enriching (the create path needs the p.asins membership
+	// test alone), so a normal import's memory profile is unchanged - a nil map
+	// IS the "not enriching" signal, so there is no separate mode flag to keep in
+	// step with it.
+	asinLoc map[string]recRef
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
 	// unmappedGenres collects every distinct source genre string that has no
 	// vocabulary mapping, reported once per run rather than once per book.
 	unmappedGenres map[string]bool
-	curSource      OutSource
-	fatal          error
-	summary        Summary
+	// sourceType / importDate are the run-wide halves of every provenance stamp
+	// (the per-row half is the book's ASIN); setSource composes the three.
+	sourceType string
+	importDate string
+	curSource  OutSource
+	fatal      error
+	summary    Summary
+}
+
+// setSource points the planner's provenance stamp at the row being planned. Every
+// record a row creates or changes carries it (see stampSource).
+func (p *planner) setSource(asin string) {
+	p.curSource = OutSource{Type: p.sourceType, Ref: asin, ImportedAt: p.importDate}
+}
+
+// stampSource appends this row's provenance to an existing record's raw sources[]
+// array. It goes through appendSourceUnique, so a second pass over the same row
+// never double-stamps.
+func (p *planner) stampSource(raw map[string]any) {
+	srcArr, _ := raw["sources"].([]any)
+	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
+}
+
+// bookWarn returns the warning sink for one book: every line it records is
+// prefixed with the book's label (its ASIN, else its title), so a warning always
+// names the row it came from.
+func (p *planner) bookWarn(b sourceBook) func(string, ...any) {
+	label := bookLabel(b)
+	return func(format string, args ...any) {
+		p.summary.Warnings = append(p.summary.Warnings, label+": "+fmt.Sprintf(format, args...))
+	}
 }
 
 // Run imports booksPath (an OpenAudible export) into opts.DataDir. On a dry run
@@ -229,7 +269,12 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 
 // runBooks is the shared import core: it plans every book into records against
 // the existing catalog, then (on a real run) writes and re-validates the tree.
-// sourceType is the provenance stamped on every created record.
+// sourceType is the provenance stamped on every created (or enriched) record.
+//
+// The two planning modes are disjoint by design (see enrich.go): the default
+// CREATES records for books the catalogue does not have, while opts.Enrich only
+// fills absent facts on records an ASIN already matches and creates nothing.
+// Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
 	p := &planner{
 		dataDir:        opts.DataDir,
@@ -241,9 +286,45 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		writes:         map[string][]byte{},
 		genres:         audibleGenreTable().withRunMemo(),
 		unmappedGenres: map[string]bool{},
+		sourceType:     sourceType,
+		importDate:     opts.ImportDate,
+	}
+	if opts.Enrich {
+		p.asinLoc = map[string]recRef{}
 	}
 	p.loadExisting()
 
+	if opts.Enrich {
+		p.planEnrich(books)
+	} else {
+		p.planCreate(books)
+	}
+	if p.fatal != nil {
+		return p.summary, p.fatal
+	}
+	p.finalizeSeries()
+	p.reportUnmappedGenres()
+	if p.fatal != nil {
+		return p.summary, p.fatal
+	}
+
+	if opts.DryRun {
+		return p.summary, nil
+	}
+
+	if err := p.flush(); err != nil {
+		return p.summary, err
+	}
+	if res := check.Load(opts.DataDir); !res.OK() {
+		return p.summary, fmt.Errorf("post-import validation failed:\n%s", problemLines(res.Problems))
+	}
+	return p.summary, nil
+}
+
+// planCreate is the default (create) planning pass: every book that the
+// catalogue does not already hold by ASIN becomes work/recording/person/series
+// records, each stamped with the planner's run provenance.
+func (p *planner) planCreate(books []sourceBook) {
 	// At the batch boundary, for every book: (1) derive the abridged tri-state
 	// from the title's edition marker when the source did not state it, then
 	// (2) clean the trailing (Unabridged)/(Abridged) markers off the raw
@@ -274,29 +355,12 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 
 	titles := resolveWorkTitles(books)
 	for i, b := range books {
-		p.curSource = OutSource{Type: sourceType, Ref: NormalizeASIN(b.str("asin")), ImportedAt: opts.ImportDate}
+		p.setSource(NormalizeASIN(b.str("asin")))
 		p.addBook(b, titles[i])
 		if p.fatal != nil {
-			return p.summary, p.fatal
+			return
 		}
 	}
-	p.finalizeSeries()
-	p.reportUnmappedGenres()
-	if p.fatal != nil {
-		return p.summary, p.fatal
-	}
-
-	if opts.DryRun {
-		return p.summary, nil
-	}
-
-	if err := p.flush(); err != nil {
-		return p.summary, err
-	}
-	if res := check.Load(opts.DataDir); !res.OK() {
-		return p.summary, fmt.Errorf("post-import validation failed:\n%s", problemLines(res.Problems))
-	}
-	return p.summary, nil
 }
 
 // loadExisting seeds the planner's identity maps from the current data tree so
@@ -324,6 +388,7 @@ func (p *planner) loadExisting() {
 			for _, a := range r.ASIN {
 				ri.asins[a.ASIN] = true
 				p.asins[a.ASIN] = true
+				p.locateASIN(a.ASIN, w.ID, r.ID)
 			}
 			for _, isbn := range r.ISBN {
 				p.isbns[strings.ToUpper(isbn)] = true
@@ -346,6 +411,30 @@ func (p *planner) loadExisting() {
 		}
 		p.series[s.ID] = ss
 	}
+}
+
+// locateASIN records which catalogued recording an ASIN sits on, for the
+// enrichment mode's identifier match. It is a no-op unless asinLoc was allocated
+// (create mode needs the p.asins membership test alone).
+//
+// ASSUMPTION, deliberately made visible: uniqueness upstream is (region, ASIN),
+// so two recordings could legally carry the same ASIN STRING in different
+// marketplaces - while an export row states one bare ASIN and nothing that could
+// pick between them. No such pair exists in the catalogue today. If one appears,
+// the FIRST recording (in the catalogue's stable load order) keeps the match and
+// the collision is reported, so the day it happens it is visible rather than
+// silently decided by whichever file loaded last.
+func (p *planner) locateASIN(asin, workSlug, recSlug string) {
+	if p.asinLoc == nil {
+		return
+	}
+	if prev, taken := p.asinLoc[asin]; taken {
+		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
+			"catalogue: ASIN %s is recorded on both %s and %s; enrichment matched it to the first",
+			asin, recordingPath(prev.work, prev.rec), recordingPath(workSlug, recSlug)))
+		return
+	}
+	p.asinLoc[asin] = recRef{work: workSlug, rec: recSlug}
 }
 
 // resolveWorkTitles is the deterministic pre-pass over the parsed batch that
@@ -394,11 +483,7 @@ func resolveWorkTitles(books []sourceBook) []string {
 // title for the book's work. It returns quietly (recording a warning or a skip)
 // whenever the entry cannot be imported cleanly.
 func (p *planner) addBook(b sourceBook, workTitle string) {
-	label := bookLabel(b)
-	warn := func(format string, args ...any) {
-		p.summary.Warnings = append(p.summary.Warnings, label+": "+fmt.Sprintf(format, args...))
-	}
-
+	warn := p.bookWarn(b)
 	asin := NormalizeASIN(b.str("asin"))
 
 	// Dedup first: an already-present ASIN is a skip, not a warning.
@@ -600,7 +685,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			}
 			ws = &workState{slug: slug, authors: want, recs: map[string]*recInfo{}}
 			p.works[slug] = ws
-			p.emit(filepath.Join("works", model.Shard(slug), slug, "work.json"), outWork{
+			p.emit(workPath(slug), outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
 				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
 				License: licenseCC0, Sources: []OutSource{p.curSource},
@@ -817,31 +902,16 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 		return
 	}
 	recPath := recordingPath(workSlug, recSlug)
-	var raw map[string]any
-	if queued, ok := p.writes[recPath]; ok {
-		if err := json.Unmarshal(queued, &raw); err != nil {
-			p.fatal = fmt.Errorf("parse queued recording %s: %w", recPath, err)
-			return
-		}
-	} else {
-		raw = p.loadRawJSON(recPath)
-		if p.fatal != nil {
-			return
-		}
+	raw := p.loadRecordRaw(recPath)
+	if raw == nil {
+		return
 	}
 	arr, _ := raw["asin"].([]any)
 	raw["asin"] = append(arr, map[string]any{"region": region, "asin": asin})
-	if len(isbns) > 0 {
-		existing, _ := raw["isbn"].([]any)
-		for _, isbn := range isbns {
-			existing = append(existing, isbn)
-		}
-		raw["isbn"] = existing
-	}
+	appendISBNs(raw, isbns)
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
-	srcArr, _ := raw["sources"].([]any)
-	raw["sources"] = appendSourceUnique(srcArr, p.curSource)
+	p.stampSource(raw)
 	p.emitRaw(recPath, raw)
 	ri.asins[asin] = true
 	// p.asins is registered by addBook's tail for every path (merge and new
@@ -870,6 +940,32 @@ func appendSourceUnique(srcArr []any, src OutSource) []any {
 	return append(srcArr, sourceMap(src))
 }
 
+// appendISBNs appends isbns to an existing record's raw isbn[] array. The caller
+// has already checked that every value is globally unclaimed (claimISBNs) and not
+// already on this record, so this is a plain append.
+func appendISBNs(raw map[string]any, isbns []string) {
+	if len(isbns) == 0 {
+		return
+	}
+	existing, _ := raw["isbn"].([]any)
+	for _, isbn := range isbns {
+		existing = append(existing, isbn)
+	}
+	raw["isbn"] = existing
+}
+
+// fillStr records val at key on an existing record when the row states one and
+// the record does not already carry it, reporting whether it changed anything. It
+// is the "absent facts only, the existing value always wins" rule for a plain
+// string field, in one place.
+func fillStr(raw map[string]any, key, val string) bool {
+	if val == "" || coerceStr(raw[key]) != "" {
+		return false
+	}
+	raw[key] = val
+	return true
+}
+
 // sourceMap renders an OutSource as a JSON-object map for splicing into an
 // existing record's raw sources[] array, honoring the same omitempty rules as
 // the OutSource struct (canonical.Format sorts the keys, so order is irrelevant).
@@ -882,6 +978,29 @@ func sourceMap(s OutSource) map[string]any {
 		m["imported_at"] = s.ImportedAt
 	}
 	return m
+}
+
+// loadRecordRaw reads a record's raw JSON from this run's QUEUED write when one
+// is pending, else from disk. Queued-write-first is what lets several rows
+// touching the same file COMPOSE within a run (a re-release ASIN merged into a
+// recording an earlier row already enriched, or two enrichment rows filling
+// different absent fields) instead of the last one silently discarding the
+// earlier one's edits. It returns nil when p.fatal is (or becomes) set.
+func (p *planner) loadRecordRaw(rel string) map[string]any {
+	if p.fatal != nil {
+		return nil
+	}
+	rel = filepath.ToSlash(rel)
+	queued, pending := p.writes[rel]
+	if !pending {
+		return p.loadRawJSON(rel)
+	}
+	var raw map[string]any
+	if err := json.Unmarshal(queued, &raw); err != nil {
+		p.fatal = fmt.Errorf("parse queued record %s: %w", rel, err)
+		return nil
+	}
+	return raw
 }
 
 // loadRawJSON reads a data-relative JSON file into a fresh map, setting p.fatal

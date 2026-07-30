@@ -101,6 +101,11 @@ type Options struct {
 	ImportDate string
 	// DryRun plans without writing any files.
 	DryRun bool
+	// Enrich selects the ASIN-matched ENRICHMENT mode instead of the default
+	// create mode: rows whose ASIN is not already in the catalogue are counted
+	// and ignored, and a matched row only fills facts the existing records do
+	// not have. Nothing is ever created. See enrich.go.
+	Enrich bool
 }
 
 // Summary is the outcome counts of a run.
@@ -116,6 +121,33 @@ type Summary struct {
 	// same-work, same-narrator entry whose only new fact was another ASIN),
 	// rather than minting a sibling work or dropping the ASIN.
 	MergedASINs int
+	// EnrichedWorks / EnrichedRecordings count the existing records an
+	// enrichment run actually changed (a record whose every fact was already
+	// present is not counted - enrichment never rewrites a file it did not
+	// change). Always 0 in create mode.
+	EnrichedWorks      int
+	EnrichedRecordings int
+	// SeriesPlacements counts works an enrichment run placed into an existing
+	// series they were not yet a member of. Always 0 in create mode.
+	SeriesPlacements int
+	// Matched counts enrichment rows whose ASIN located a catalogued recording,
+	// whether or not the row then changed anything (a row every one of whose
+	// facts was already recorded, and a row dropped for contradicting the record,
+	// both count as matched). Always 0 in create mode.
+	Matched int
+	// NotInCatalog counts enrichment rows whose ASIN matches nothing in the
+	// catalogue. They are ignored (enrichment never creates), so this is the
+	// expected outcome for the overwhelming majority of a large export's rows.
+	// Always 0 in create mode.
+	NotInCatalog int
+	// SkippedRows counts rows the source's PARSE layer refused before planning
+	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
+	// It is what makes the run's accounting reconcile: in enrichment mode the
+	// rows read are exactly Matched + NotInCatalog + SkippedRows, so a row can
+	// never vanish unexplained - which matters precisely because enrichment
+	// reports its parse warnings in aggregate rather than per row. Set in both
+	// modes; only the libex parser refuses rows of its own today.
+	SkippedRows int
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string

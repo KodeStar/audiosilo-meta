@@ -158,8 +158,18 @@ imports**: they follow the bounded posture in [LICENSING.md](LICENSING.md) and
 the batch-import rules in [GOVERNANCE.md](GOVERNANCE.md) (named source, stated
 selection rationale, reviewable tranches - never a catalogue mirror). Retailer
 genre strings are mapped onto the normalized vocabulary in code; anything
-unmapped is dropped with a warning. Selection tooling for working from a full
-catalogue dump (`libex-select`) is a planned follow-up.
+unmapped is dropped with a warning.
+
+`metaimport libex <rows.json> --enrich [--dry-run]` is the **backfill** half:
+instead of creating anything, it fills ONLY absent facts (genres, ISBNs,
+runtime, release date, publisher, cover, chapters) on works and recordings the
+catalogue already holds, matched by ASIN, and places already-catalogued works
+into already-catalogued series. Existing values always win; a row whose runtime
+or release date contradicts the recorded production is not used at all; every
+change is stamped with a `libex-import` source. Rows for books the catalogue
+does not hold are counted and ignored, so a large row set is safe input.
+Selection tooling for working from a full catalogue dump (`libex-select`) is a
+planned follow-up.
 
 - `--dry-run` prints the plan (how many works, recordings, people, and series
   would be created, how many books were skipped as already present, and any
