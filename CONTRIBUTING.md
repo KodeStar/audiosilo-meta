@@ -156,9 +156,9 @@ go run ./cmd/metaimport libation <path-to/LibationExport.json> --data data
 
 **Only factual fields are imported.** Titles, authors, narrators, series order
 and position, runtime, region-scoped ASIN, publisher, cover URL, and chapter
-titles/timestamps come across; the publisher `description`/`summary`, `genre`,
-ratings, and your personal library state are dropped (see
-[LICENSING.md](LICENSING.md)). The importer **deduplicates by ASIN** against the
+titles/timestamps come across; the publisher `description`/`summary`, raw
+retailer genre strings, ratings, and your personal library state are dropped
+(see [LICENSING.md](LICENSING.md)). The importer **deduplicates by ASIN** against the
 existing catalogue, so re-running it, or importing a book someone else already
 added, is a no-op rather than a duplicate.
 
@@ -175,6 +175,11 @@ only from a library you may share this way.
 - **No publisher blurbs.** Do not paste a publisher or retailer synopsis. A
   description, if you add one, must be **your own words**.
 - **Covers are URLs only** (`cover_url`). Never commit an image file.
+- **Genres come from the controlled vocabulary.** A work's optional `genres`
+  array takes values from the enum in `schema/common.schema.json`, sorted
+  ascending. Never copy a retailer's genre strings verbatim; if none of the
+  vocabulary fits, leave the field off (proposing a new genre is a schema
+  change - open an issue).
 - **`sources[]` is required** on every record - say where the facts came from.
 - **CC0 dedication.** By submitting, you dedicate the data to the public domain
   (CC0-1.0) and confirm you may do so. See [LICENSING.md](LICENSING.md).

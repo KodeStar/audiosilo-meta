@@ -193,5 +193,23 @@ func checkSeriesPositions(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	}
 }
 
+// checkGenresSorted enforces that a work's genres are in ascending order, so
+// the same set of genres always serializes identically. The schema already
+// rejects duplicates (uniqueItems) and unknown values (the controlled enum);
+// this rule only pins the order.
+func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, w := range cat.Works {
+		if len(w.Genres) < 2 {
+			continue
+		}
+		rel := idx.work[w]
+		for i := 1; i < len(w.Genres); i++ {
+			if w.Genres[i] < w.Genres[i-1] {
+				add(rel, "genres must be sorted: %q comes after %q", w.Genres[i], w.Genres[i-1])
+			}
+		}
+	}
+}
+
 // normISBN lowercases the check digit so 10-char ISBNs compare case-insensitively.
 func normISBN(s string) string { return strings.ToUpper(s) }

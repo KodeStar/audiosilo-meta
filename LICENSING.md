@@ -40,7 +40,8 @@ public domain under
 [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/). This covers:
 
 - Works: title, subtitle, authors, language, first-published year, series
-  membership.
+  membership, and genre labels drawn from the project's own controlled
+  vocabulary (see "Genres" below).
 - Recordings: narrators, abridged flag, runtime, release date, publisher name,
   region-scoped ASINs, ISBNs, chapter titles and timestamps, cover URL.
 - People: author and narrator names and their identifiers.
@@ -68,15 +69,51 @@ repository:
   contributor's own words**. Pasting a publisher or retailer synopsis will be
   rejected.
 
+## Genres
+
+A work may carry `genres`: labels from a **controlled vocabulary this project
+owns** (the enum in `schema/common.schema.json`). The vocabulary is a flat,
+retailer-neutral list maintained by schema change (so every addition is
+maintainer-reviewed), and a genre label on a work is a community-assigned
+classification dedicated to the public domain with the rest of the record.
+
+What is deliberately **not** accepted is any retailer's genre *taxonomy*: the
+category trees that stores curate (their node names, hierarchy, and typed
+tags) are their editorial arrangement, and copying one wholesale is exactly the
+"selection and arrangement" that compilation copyright and database rights
+protect. Importers therefore never store a retailer's genre strings verbatim -
+they map them onto our vocabulary in code, and anything that does not map is
+dropped.
+
 ## Imports bring facts only
 
-The import path (OpenAudible `books.json`, Libation exports, and per-title
-Audible/Audnexus lookup at contribution time) ingests **factual fields only** -
-title, ASIN, narrator names, series order, runtime, chapter titles and
-timestamps. Publisher marketing copy (the `description` / `summary` fields) and
-cover images are copyrighted expression and are stripped, not imported. We rely
-on the tolerated per-title-lookup pattern, never bulk mirroring of any
-third-party catalogue.
+The import path (OpenAudible `books.json`, Libation exports, per-title
+Audible/Audnexus/Libex lookup at contribution time, and curated batch imports
+from a cooperating catalogue) ingests **factual fields only** - title, ASIN,
+narrator names, series order, runtime, chapter titles and timestamps, and
+normalized genres per the section above. Publisher marketing copy (the
+`description` / `summary` fields), ratings, and cover images are copyrighted or
+derived expression and are stripped, not imported.
+
+Facts are free, but *bulk extraction from someone else's database* is not the
+same act as recording a fact: the EU/UK sui generis database right protects a
+catalogue against the extraction of a substantial part of it, whatever the
+copyright status of the individual rows. The import posture is therefore
+**bounded and auditable**, in three accepted shapes:
+
+- **Per-title lookup at contribution time** - a contributor adds one book and a
+  lookup fills in its facts.
+- **Enrichment of records already here** - filling absent facts on catalogued
+  works/recordings, matched by identifier, from a source whose operator permits
+  it.
+- **Curated batch imports** - bounded, human-reviewed tranches with a stated
+  selection rationale (for example, completing series the catalogue already
+  holds volumes of), landed as reviewable pull requests, never as an unbounded
+  mirror.
+
+Wholesale mirroring of a third-party catalogue remains out of bounds. Every
+imported record is stamped with a typed `sources[]` entry naming its origin, so
+the retraction promise below covers an entire source at once.
 
 ## Provenance and retraction
 

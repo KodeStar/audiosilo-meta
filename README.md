@@ -254,9 +254,10 @@ The endpoint is `GET /abs/search`. ABS sends `?mediaType=book&query=<title>`
 `{"matches": [...]}` with one entry per **recording**, up to 10 - an exact ISBN
 lookup first, otherwise an FTS title search with loose author boosting. Each
 match carries title, subtitle, author, narrator, publisher, publishedYear,
-description, cover, ISBN, ASIN, series + sequence, language, and duration (in
-minutes). Genres and tags are deliberately never returned - the data model does
-not carry publisher genres/tags. The [`/audiobookshelf`](https://meta.audiosilo.app/audiobookshelf)
+description, cover, ISBN, ASIN, series + sequence, language, duration (in
+minutes), and genres when the work carries them (values from the project's own
+normalized genre vocabulary - never a retailer's category tree). Tags are
+deliberately never returned. The [`/audiobookshelf`](https://meta.audiosilo.app/audiobookshelf)
 site page walks through both directions (adding the provider, and exporting an
 ABS library into `/import`).
 

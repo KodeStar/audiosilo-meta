@@ -60,6 +60,14 @@ for untrusted or non-data changes is a judgement gate (is the data plausible, is
 the source legitimate, is the schema change sound), not a re-check of what CI
 already verified.
 
+**Batch imports** (a pull request adding many records from one external source)
+get extra scrutiny regardless of who opens them: the source must be named and
+permitted (LICENSING.md's bounded import posture), the selection rationale
+stated (never an unbounded mirror), the records stamped with the source's typed
+`sources[]` entry so the whole source stays retractable, and the batch landed in
+reviewable tranches rather than one giant diff. A maintainer approves each
+tranche; batch imports never auto-merge.
+
 ## Automated intake and AI verification
 
 Two automations sit in front of the human review step. Neither bypasses it.

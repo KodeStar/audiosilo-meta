@@ -129,6 +129,8 @@ export interface Work {
   language?: string
   first_published?: string
   description?: string
+  /** Genre slugs from the project's own normalized vocabulary; absent when unknown. */
+  genres?: string[]
   series?: SeriesRef[]
   recordings: Recording[]
   /** Print ISBNs attached to the work itself (not a recording). */

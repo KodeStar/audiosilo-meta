@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
+	"strconv"
 	"sync"
 	"sync/atomic"
 	"testing"
@@ -29,6 +30,7 @@ func fixtureCatalog() *model.Catalog {
 	phm := &model.Work{
 		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		Genres:  []string{"hard-science-fiction", "science-fiction"},
 		Recordings: []*model.Recording{{
 			ID: "ray-porter-2021", Work: "project-hail-mary", Language: "en",
 			RuntimeMin: 970, Publisher: "Audible Studios", ReleaseDate: "2021-05-04",
@@ -110,6 +112,41 @@ func buildFixtureDB(t *testing.T, cat *model.Catalog, added map[string]string) s
 		t.Fatal(err)
 	}
 	return out
+}
+
+// downgradedServer builds the fixture artifact, rolls it back to an OLDER
+// artifact shape (dropping dropTables and stamping meta(schema_version) to
+// version), and serves it. That is the "a newer metaserve binary briefly serves
+// an older release" case every version-gated query has to tolerate: it must
+// degrade to "no data" rather than 500 on the missing table.
+func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest.Server {
+	t.Helper()
+	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
+	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
+
+	db, err := sql.Open("sqlite", dbPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, tbl := range dropTables {
+		if _, err := db.Exec("DROP TABLE " + tbl); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := db.Exec("UPDATE meta SET value=? WHERE key='schema_version'", strconv.Itoa(version)); err != nil {
+		t.Fatal(err)
+	}
+	if err := db.Close(); err != nil {
+		t.Fatal(err)
+	}
+
+	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
+	if err != nil {
+		t.Fatal(err)
+	}
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+	return ts
 }
 
 func newTestServer(t *testing.T) (*Server, *httptest.Server) {
@@ -434,38 +471,70 @@ func TestWorkDetailRecapSummary(t *testing.T) {
 	}
 }
 
-// TestRecapSummaryToleratesV2Artifact simulates a newer metaserve binary
-// serving an older (schema_version 2) artifact that has the characters/recaps
-// tables but not recap_summaries: the summary query no-ops on the version, so
-// the work still serves with its characters/recaps but no recap_summary.
+func TestWorkDetailGenres(t *testing.T) {
+	_, ts := newTestServer(t)
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	genres, ok := body["genres"].([]any)
+	if !ok {
+		t.Fatalf("genres = %v", body["genres"])
+	}
+	if len(genres) != 2 || genres[0] != "hard-science-fiction" || genres[1] != "science-fiction" {
+		t.Errorf("genres = %v", genres)
+	}
+
+	// A work with no genres omits the key entirely (omitempty).
+	_, wbody := getJSON(t, ts.URL, "/api/v1/works/the-way-of-kings")
+	if _, has := wbody["genres"]; has {
+		t.Errorf("work without genres should omit the key, got %v", wbody["genres"])
+	}
+}
+
+// TestGenresToleratesV3Artifact serves a schema_version 3 artifact that predates
+// the work_genres table: the genre query no-ops on the version, so the work still
+// serves without genres while its v3 payload keeps working.
+func TestGenresToleratesV3Artifact(t *testing.T) {
+	ts := downgradedServer(t, 3, "work_genres")
+	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
+	if code != 200 {
+		t.Fatalf("status %d, body %v", code, body)
+	}
+	if body["error"] != nil {
+		t.Errorf("expected no error, got %v", body["error"])
+	}
+	if _, has := body["genres"]; has {
+		t.Errorf("missing work_genres table should yield no genres key, got %v", body["genres"])
+	}
+	// The v3 payload (recaps + the recap summary) is still served.
+	if _, has := body["recap_summary"]; !has {
+		t.Errorf("v3 artifact should still serve recap_summary")
+	}
+}
+
+// TestGenresToleratesV3ArtifactABS covers the same downgrade on the ABS facade,
+// whose batched genre lookup gates on the version separately from workGenres.
+func TestGenresToleratesV3ArtifactABS(t *testing.T) {
+	ts := downgradedServer(t, 3, "work_genres")
+	code, matches := absMatches(t, ts.URL, "/abs/search?query=hail")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	if len(matches) == 0 {
+		t.Fatalf("expected a match on a v3 artifact")
+	}
+	m := matches[0].(map[string]any)
+	if _, has := m["genres"]; has {
+		t.Errorf("missing work_genres table should yield no genres key, got %v", m["genres"])
+	}
+}
+
+// TestRecapSummaryToleratesV2Artifact serves a schema_version 2 artifact that has
+// the characters/recaps tables but not recap_summaries: the summary query no-ops
+// on the version, so the work still serves its characters/recaps.
 func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
-
-	db, err := sql.Open("sqlite", dbPath)
-	if err != nil {
-		t.Fatal(err)
-	}
-	stmts := []string{
-		"DROP TABLE recap_summaries",
-		"UPDATE meta SET value='2' WHERE key='schema_version'",
-	}
-	for _, stmt := range stmts {
-		if _, err := db.Exec(stmt); err != nil {
-			t.Fatal(err)
-		}
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
-	}
-
-	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
-	if err != nil {
-		t.Fatal(err)
-	}
-	ts := httptest.NewServer(srv.Handler())
-	t.Cleanup(ts.Close)
-
+	ts := downgradedServer(t, 2, "work_genres", "recap_summaries")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -482,43 +551,12 @@ func TestRecapSummaryToleratesV2Artifact(t *testing.T) {
 	}
 }
 
-// TestWorkDetailToleratesOlderArtifact simulates a newer metaserve binary
-// briefly serving an older (schema_version 1) artifact that predates the
-// characters/recaps tables: the sidecar queries no-op on the version, so the
-// work still serves, just without them.
+// TestWorkDetailToleratesOlderArtifact serves a schema_version 1 artifact that
+// predates the characters/recaps tables: every sidecar query no-ops on the
+// version, so the work still serves, just without them.
 func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
-
-	// Roll the artifact back to a v1 shape: the tables are gone and the stamped
-	// version says 1, exactly as a pre-sidecar release would look.
-	db, err := sql.Open("sqlite", dbPath)
-	if err != nil {
-		t.Fatal(err)
-	}
-	stmts := []string{
-		"DROP TABLE characters",
-		"DROP TABLE character_aliases",
-		"DROP TABLE recaps",
-		"DROP TABLE recap_summaries",
-		"UPDATE meta SET value='1' WHERE key='schema_version'",
-	}
-	for _, stmt := range stmts {
-		if _, err := db.Exec(stmt); err != nil {
-			t.Fatal(err)
-		}
-	}
-	if err := db.Close(); err != nil {
-		t.Fatal(err)
-	}
-
-	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
-	if err != nil {
-		t.Fatal(err)
-	}
-	ts := httptest.NewServer(srv.Handler())
-	t.Cleanup(ts.Close)
-
+	ts := downgradedServer(t, 1,
+		"work_genres", "characters", "character_aliases", "recaps", "recap_summaries")
 	code, body := getJSON(t, ts.URL, "/api/v1/works/project-hail-mary")
 	if code != 200 {
 		t.Fatalf("status %d, body %v", code, body)
@@ -526,14 +564,10 @@ func TestWorkDetailToleratesOlderArtifact(t *testing.T) {
 	if body["error"] != nil {
 		t.Errorf("expected no error, got %v", body["error"])
 	}
-	if _, has := body["characters"]; has {
-		t.Errorf("missing table should yield no characters key, got %v", body["characters"])
-	}
-	if _, has := body["recaps"]; has {
-		t.Errorf("missing table should yield no recaps key")
-	}
-	if _, has := body["recap_summary"]; has {
-		t.Errorf("missing table should yield no recap_summary key")
+	for _, key := range []string{"genres", "characters", "recaps", "recap_summary"} {
+		if _, has := body[key]; has {
+			t.Errorf("missing table should yield no %s key, got %v", key, body[key])
+		}
 	}
 }
 

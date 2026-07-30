@@ -167,6 +167,7 @@ type workDetail struct {
 	Language       string            `json:"language"`
 	FirstPublished string            `json:"first_published,omitempty"`
 	Description    string            `json:"description,omitempty"`
+	Genres         []string          `json:"genres,omitempty"`
 	Series         []seriesRef       `json:"series"`
 	Xref           *workXref         `json:"xref,omitempty"`
 	Recordings     []recordingDetail `json:"recordings"`
@@ -193,6 +194,9 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 	d.Description = desc.String
 
 	if d.Authors, err = s.authorsOf(id); err != nil {
+		return nil, err
+	}
+	if d.Genres, err = s.workGenres(id); err != nil {
 		return nil, err
 	}
 	if d.Series, err = s.seriesOf(id); err != nil {
@@ -227,8 +231,10 @@ func (s *snapshot) workDetail(id string) (*workDetail, error) {
 // but NO chapter count), and NONE of the characters/recaps/recap-summary
 // sidecars. absSearch calls it once per candidate on the public /abs/search hot
 // path, so it deliberately skips workDetail's ~100+ discarded round-trips.
+// genresByWork is the batched work id -> genre slugs map absSearch resolves for
+// the whole candidate set up front, so this runs no per-work genre query either.
 // Returns (nil, nil) when the work is absent.
-func (s *snapshot) workForABS(id string) (*workDetail, error) {
+func (s *snapshot) workForABS(id string, genresByWork map[string][]string) (*workDetail, error) {
 	var d workDetail
 	var subtitle, firstPub, desc sql.NullString
 	err := s.db.QueryRow(
@@ -247,6 +253,7 @@ func (s *snapshot) workForABS(id string) (*workDetail, error) {
 	if d.Authors, err = s.authorsOf(id); err != nil {
 		return nil, err
 	}
+	d.Genres = genresByWork[id]
 	if d.Series, err = s.seriesOf(id); err != nil {
 		return nil, err
 	}
@@ -275,6 +282,12 @@ const sidecarSchemaVersion = 2
 // older (v2) release must degrade to "no summary", so the query no-ops below
 // this version rather than probing for the table.
 const summarySchemaVersion = 3
+
+// genresSchemaVersion is the artifact schema_version that first carried the
+// work_genres table. A newer binary serving an older (v3 or earlier) release
+// must degrade to "no genres", so the query no-ops below this version rather
+// than probing for the table.
+const genresSchemaVersion = 4
 
 // charactersOf returns the per-work character sidecar entries in authored order,
 // or nil when the work has none (or the artifact predates the sidecar tables).
@@ -390,6 +403,21 @@ func (s *snapshot) seriesOf(workID string) ([]seriesRef, error) {
 		out = append(out, sr)
 	}
 	return out, rows.Err()
+}
+
+// workGenres returns a work's normalized genre slugs ascending, or nil when the
+// work has none (or the artifact predates the work_genres table). Genres are a
+// set, so genre is the order (checkGenresSorted pins the authored files to the
+// same ascending order).
+func (s *snapshot) workGenres(workID string) ([]string, error) {
+	if s.schemaVersion < genresSchemaVersion {
+		return nil, nil
+	}
+	rows, err := s.db.Query(`SELECT genre FROM work_genres WHERE work_id=? ORDER BY genre`, workID)
+	if err != nil {
+		return nil, err
+	}
+	return scanIDs(rows)
 }
 
 func (s *snapshot) workISBNs(workID string) ([]string, error) {

@@ -38,8 +38,12 @@ type absSeriesRef struct {
 
 // absBook is the ABS BookMetadata shape. Only Title is required; the rest are
 // omitted when empty. Names are comma-joined; Duration is minutes; PublishedYear
-// is a string. genres/tags are always empty for us (the data model deliberately
-// does not carry publisher genres/tags - see LICENSING.md), so they are omitted.
+// is a string. Genres carry the work's entries from this project's own
+// normalized vocabulary, never a retailer's taxonomy (see LICENSING.md), as
+// human-facing DISPLAY LABELS (ABS renders them as chips for an admin) rather
+// than the raw slugs the JSON API serves; a work with none omits the key. Tags
+// stay empty - the data model has no tag concept, so there is nothing to fill
+// them with.
 type absBook struct {
 	Title         string         `json:"title"`
 	Subtitle      string         `json:"subtitle,omitempty"`
@@ -108,7 +112,11 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 			return nil, err
 		}
 		if res != nil {
-			d, err := s.workForABS(res.Work.ID)
+			genres, err := s.genresForWorks([]string{res.Work.ID})
+			if err != nil {
+				return nil, err
+			}
+			d, err := s.workForABS(res.Work.ID, genres)
 			if err != nil {
 				return nil, err
 			}
@@ -129,13 +137,17 @@ func (s *snapshot) absSearch(query, author, isbn string, limit int) ([]absBook, 
 			return nil, err
 		}
 	}
+	genres, err := s.genresForWorks(workIDs)
+	if err != nil {
+		return nil, err
+	}
 
 	out := []absBook{}
 	for _, id := range workIDs {
 		if len(out) >= limit {
 			break
 		}
-		d, err := s.workForABS(id)
+		d, err := s.workForABS(id, genres)
 		if err != nil {
 			return nil, err
 		}
@@ -213,11 +225,84 @@ func (s *snapshot) authorNamesForWorks(workIDs []string) (map[string][]string, e
 	return out, rows.Err()
 }
 
+// genresForWorks fetches every genre slug for the given works in one query (work
+// id -> slugs ascending), mirroring authorNamesForWorks: absSearch resolves the
+// whole candidate set up front so workForABS runs no per-work genre query on the
+// public hot path. An empty input, or an artifact predating the work_genres
+// table, yields an empty map.
+func (s *snapshot) genresForWorks(workIDs []string) (map[string][]string, error) {
+	out := make(map[string][]string, len(workIDs))
+	if len(workIDs) == 0 || s.schemaVersion < genresSchemaVersion {
+		return out, nil
+	}
+	placeholders := make([]string, len(workIDs))
+	args := make([]any, len(workIDs))
+	for i, id := range workIDs {
+		placeholders[i] = "?"
+		args[i] = id
+	}
+	rows, err := s.db.Query(
+		`SELECT work_id, genre FROM work_genres WHERE work_id IN (`+strings.Join(placeholders, ",")+
+			`) ORDER BY work_id, genre`, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	for rows.Next() {
+		var wid, genre string
+		if err := rows.Scan(&wid, &genre); err != nil {
+			return nil, err
+		}
+		out[wid] = append(out[wid], genre)
+	}
+	return out, rows.Err()
+}
+
+// genreAcronyms are the vocabulary values whose display label is not plain title
+// case. A new acronym-shaped or oddly-capitalized value added to the
+// common.schema.json genre enum needs an entry here; a plain word never does.
+var genreAcronyms = map[string]string{
+	"lgbtq":  "LGBTQ",
+	"litrpg": "LitRPG",
+}
+
+// genreLabel renders a stored genre slug as the human-facing label ABS shows in
+// its match chips ("hard-science-fiction" -> "Hard Science Fiction"). It lives on
+// the ABS edge only: the JSON API keeps the raw slug, since that is the machine
+// contract consumers match on.
+func genreLabel(slug string) string {
+	if label, ok := genreAcronyms[slug]; ok {
+		return label
+	}
+	words := strings.Split(slug, "-")
+	for i, w := range words {
+		if w == "" {
+			continue
+		}
+		words[i] = strings.ToUpper(w[:1]) + w[1:]
+	}
+	return strings.Join(words, " ")
+}
+
+// genreLabels maps a work's stored slugs to display labels, nil for none (so the
+// absBook omits the key rather than emitting an empty array).
+func genreLabels(slugs []string) []string {
+	if len(slugs) == 0 {
+		return nil
+	}
+	out := make([]string, 0, len(slugs))
+	for _, s := range slugs {
+		out = append(out, genreLabel(s))
+	}
+	return out
+}
+
 // absBooksFor maps a work's detail to one BookMetadata per recording (or a
 // single work-only entry when the work has no recordings). Work-level fields
-// (title/subtitle/authors/language/publishedYear/description/series) are shared;
+// (title/subtitle/authors/language/publishedYear/description/genres/series) are shared;
 // recording-level fields (narrators/publisher/cover/duration/asin/isbn) vary. If
-// preferredRID is set and present, that recording is moved to the front.
+// preferredRID is set and present, that recording is moved to the front. This is
+// the ONE place genre slugs become display labels.
 func absBooksFor(d *workDetail, preferredRID string) []absBook {
 	series := make([]absSeriesRef, 0, len(d.Series))
 	for _, sr := range d.Series {
@@ -233,6 +318,7 @@ func absBooksFor(d *workDetail, preferredRID string) []absBook {
 		PublishedYear: publishedYear(d.FirstPublished),
 		Description:   d.Description,
 		Language:      d.Language,
+		Genres:        genreLabels(d.Genres),
 		Series:        series,
 	}
 

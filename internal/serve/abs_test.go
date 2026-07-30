@@ -60,6 +60,7 @@ func absFixture() *model.Catalog {
 		ID: "project-hail-mary", Title: "Project Hail Mary", Subtitle: "A Novel",
 		Language: "en", Authors: []string{"andy-weir"}, FirstPublished: "2021",
 		Description: "A lone astronaut must save the earth.", License: "CC0-1.0",
+		Genres:      []string{"hard-science-fiction", "science-fiction"},
 		Recordings: []*model.Recording{
 			{
 				ID: "ray-porter-2021", Work: "project-hail-mary", Language: "en",
@@ -209,9 +210,15 @@ func TestABSTitleSearch(t *testing.T) {
 	if _, has := m2["isbn"]; has {
 		t.Errorf("uk-only recording should omit empty isbn")
 	}
-	// genres/tags are never emitted (omitted, not null).
-	if _, has := m["genres"]; has {
-		t.Errorf("genres should be omitted")
+	// The work's normalized genres ride on every one of its recordings, as display
+	// labels (ABS renders them as chips); tags stay empty (omitted, not null)
+	// because the data model has no tag concept.
+	genres, ok := m["genres"].([]any)
+	if !ok || len(genres) != 2 || genres[0] != "Hard Science Fiction" || genres[1] != "Science Fiction" {
+		t.Errorf("genres = %v", m["genres"])
+	}
+	if g2, ok := m2["genres"].([]any); !ok || len(g2) != 2 {
+		t.Errorf("the work's other recording should carry the same genres, got %v", m2["genres"])
 	}
 	if _, has := m["tags"]; has {
 		t.Errorf("tags should be omitted")
@@ -247,6 +254,10 @@ func TestABSCommaJoinedAndSeries(t *testing.T) {
 	s0 := ser[0].(map[string]any)
 	if s0["series"] != "The Stormlight Archive" || s0["sequence"] != "1" {
 		t.Errorf("series entry = %v", s0)
+	}
+	// A work carrying no genres omits the key (omitted, not null).
+	if _, has := wok["genres"]; has {
+		t.Errorf("genreless work should omit genres, got %v", wok["genres"])
 	}
 	// A work with no series omits the key.
 	code, matches = absMatches(t, base, "/abs/search?query=hail")
@@ -471,5 +482,25 @@ func TestAbsBooksForMapping(t *testing.T) {
 	}
 	if books[0].Narrator != "Nar One" {
 		t.Errorf("narrator = %q", books[0].Narrator)
+	}
+}
+
+// TestGenreLabel pins the slug-to-label rule the ABS chips use: plain title case
+// for a normal value, the exception table for the acronym-shaped ones.
+func TestGenreLabel(t *testing.T) {
+	cases := map[string]string{
+		"hard-science-fiction": "Hard Science Fiction",
+		"horror":               "Horror",
+		"lgbtq":                "LGBTQ",
+		"litrpg":               "LitRPG",
+	}
+	for slug, want := range cases {
+		if got := genreLabel(slug); got != want {
+			t.Errorf("genreLabel(%q) = %q, want %q", slug, got, want)
+		}
+	}
+	// The whole-slice mapper omits rather than emits an empty array.
+	if got := genreLabels(nil); got != nil {
+		t.Errorf("genreLabels(nil) = %v, want nil", got)
 	}
 }
