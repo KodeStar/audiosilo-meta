@@ -34,6 +34,10 @@
     "description": {
       "type": "string"
     },
+    "genres": {
+      "description": "The work's genres, drawn from this project's own normalized vocabulary (never a retailer's taxonomy). Optional: omit it rather than guess.",
+      "$ref": "common.schema.json#/$defs/genre_list"
+    },
     "xref": {
       "type": "object",
       "additionalProperties": false,

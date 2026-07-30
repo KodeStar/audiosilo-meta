@@ -263,6 +263,19 @@ function MetadataBlock({ work }: { work: Work }) {
   if (language) rows.push({ label: 'Language', content: language })
   if (work.first_published)
     rows.push({ label: 'First published', content: year ?? work.first_published })
+  if (work.genres && work.genres.length > 0)
+    rows.push({
+      label: 'Genres',
+      content: (
+        <span className="flex flex-wrap gap-1.5">
+          {/* The badge is CSS-uppercased, so the slug only needs its hyphens
+              turned back into spaces - capitalization would be invisible. */}
+          {work.genres.map((g) => (
+            <Badge key={g}>{g.replace(/-/g, ' ')}</Badge>
+          ))}
+        </span>
+      ),
+    })
   rows.push({ label: 'Recordings', content: String(work.recordings?.length ?? 0) })
   if (work.isbn && work.isbn.length > 0)
     rows.push({
@@ -307,7 +320,9 @@ function MetadataBlock({ work }: { work: Work }) {
   )
 }
 
-/** A small uppercase pill used for character roles and recap scopes. */
+/** A small uppercase pill used for work genres, character roles and recap
+    scopes. It uppercases its content in CSS, so callers pass readable text and
+    never bother title-casing it. */
 function Badge({ children }: { children: ReactNode }) {
   return (
     <span className="shrink-0 rounded-full border border-edge bg-raised px-2 py-0.5 text-[0.65rem] uppercase tracking-wide text-dim">

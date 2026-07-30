@@ -61,6 +61,7 @@ type Work struct {
 	Language       string    `json:"language"`
 	FirstPublished string    `json:"first_published,omitempty"`
 	Description    string    `json:"description,omitempty"`
+	Genres         []string  `json:"genres,omitempty"`
 	Xref           *WorkXref `json:"xref,omitempty"`
 	License        string    `json:"license"`
 	Sources        []Source  `json:"sources"`

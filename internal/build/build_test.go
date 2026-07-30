@@ -3,6 +3,7 @@ package build
 import (
 	"database/sql"
 	"path/filepath"
+	"slices"
 	"testing"
 	"time"
 
@@ -19,6 +20,7 @@ func fixtureCatalog() *model.Catalog {
 	phm := &model.Work{
 		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		Genres:  []string{"hard-science-fiction", "science-fiction"},
 		Recordings: []*model.Recording{{
 			ID: "ray-porter-2021", Work: "project-hail-mary", Abridged: false, Language: "en",
 			RuntimeMin: 970, Publisher: "Audible Studios", License: "CC0-1.0",
@@ -105,7 +107,7 @@ func buildFixture(t *testing.T) *sql.DB {
 func TestBuildMeta(t *testing.T) {
 	db := buildFixture(t)
 	want := map[string]string{
-		"schema_version":   "3",
+		"schema_version":   "4",
 		"built_at":         "2026-07-11T00:00:00Z",
 		"count_works":      "2",
 		"count_recordings": "2",
@@ -318,6 +320,38 @@ func TestBuildCharacters(t *testing.T) {
 	}
 	if n != 0 {
 		t.Errorf("rocky alias count = %d, want 0", n)
+	}
+}
+
+// TestBuildWorkGenres covers the work_genres set: two columns, no order column,
+// read back ascending the way the serve query does.
+func TestBuildWorkGenres(t *testing.T) {
+	db := buildFixture(t)
+	rows, err := db.Query(`SELECT genre FROM work_genres WHERE work_id=? ORDER BY genre`, "project-hail-mary")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = rows.Close() }()
+	var got []string
+	for rows.Next() {
+		var g string
+		if err := rows.Scan(&g); err != nil {
+			t.Fatal(err)
+		}
+		got = append(got, g)
+	}
+	want := []string{"hard-science-fiction", "science-fiction"}
+	if !slices.Equal(got, want) {
+		t.Errorf("genres = %v, want %v", got, want)
+	}
+
+	// A work with no genres yields no rows at all.
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM work_genres WHERE work_id=?`, "the-way-of-kings").Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 0 {
+		t.Errorf("the-way-of-kings genre rows = %d, want 0", n)
 	}
 }
 

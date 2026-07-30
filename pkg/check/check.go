@@ -171,6 +171,7 @@ func Load(dir string) Result {
 	checkUniqueness(cat, pendingRecs, idx, add)
 	checkChapters(pendingRecs, add)
 	checkSeriesPositions(cat, idx, add)
+	checkGenresSorted(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)
 

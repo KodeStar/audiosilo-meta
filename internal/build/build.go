@@ -19,8 +19,9 @@ import (
 
 // SchemaVersion is written to meta(schema_version). Bumped to 2 when the
 // characters/recaps tables were added; bumped to 3 when the recap_summaries
-// table (per-work in_short / ending) was added.
-const SchemaVersion = 3
+// table (per-work in_short / ending) was added; bumped to 4 when work genres
+// arrived in the work_genres table.
+const SchemaVersion = 4
 
 const ddl = `
 CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -43,6 +44,8 @@ CREATE INDEX idx_work_authors_person ON work_authors(person_id);
 CREATE INDEX idx_work_authors_work ON work_authors(work_id);
 CREATE TABLE work_isbns (work_id TEXT NOT NULL, isbn TEXT NOT NULL);
 CREATE INDEX idx_work_isbns_isbn ON work_isbns(isbn);
+CREATE TABLE work_genres (work_id TEXT NOT NULL, genre TEXT NOT NULL);
+CREATE INDEX idx_work_genres_work ON work_genres(work_id);
 
 CREATE TABLE recordings (
   work_id      TEXT NOT NULL,
@@ -181,6 +184,12 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 		}
 	}()
 
+	st, closeStmts, err := prepareStmts(tx)
+	if err != nil {
+		return err
+	}
+	defer closeStmts()
+
 	people := append([]*model.Person(nil), cat.People...)
 	sort.Slice(people, func(i, j int) bool { return people[i].ID < people[j].ID })
 	nameByID := map[string]string{}
@@ -202,13 +211,13 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 		}
 	}
 
-	if err = insertPeople(tx, people); err != nil {
+	if err = insertPeople(st, people); err != nil {
 		return err
 	}
-	if err = insertWorks(tx, works, nameByID, seriesNamesByWork, added); err != nil {
+	if err = insertWorks(st, works, nameByID, seriesNamesByWork, added); err != nil {
 		return err
 	}
-	if err = insertSeries(tx, series); err != nil {
+	if err = insertSeries(st, series); err != nil {
 		return err
 	}
 
@@ -224,13 +233,13 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 	for _, rc := range recaps {
 		nRecap += len(rc.Recaps)
 	}
-	if err = insertCharacters(tx, characters); err != nil {
+	if err = insertCharacters(st, characters); err != nil {
 		return err
 	}
-	if err = insertRecaps(tx, recaps); err != nil {
+	if err = insertRecaps(st, recaps); err != nil {
 		return err
 	}
-	if err = insertRecapSummaries(tx, recaps); err != nil {
+	if err = insertRecapSummaries(st, recaps); err != nil {
 		return err
 	}
 
@@ -258,45 +267,139 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 	return tx.Commit()
 }
 
-func insertPeople(tx *sql.Tx, people []*model.Person) error {
+// stmts holds every per-row INSERT statement the build writes through, prepared
+// once for the whole transaction. database/sql re-parses the SQL text on every
+// tx.Exec, which at catalogue scale dominates the build, so every row loop goes
+// through a statement prepared once instead. The 8-row meta table stays on a
+// plain tx.Exec - preparing for it would cost more than it saves.
+type stmts struct {
+	person    *sql.Stmt
+	personFTS *sql.Stmt
+
+	work       *sql.Stmt
+	workAuthor *sql.Stmt
+	workISBN   *sql.Stmt
+	workGenre  *sql.Stmt
+	workFTS    *sql.Stmt
+
+	recording   *sql.Stmt
+	recNarrator *sql.Stmt
+	recASIN     *sql.Stmt
+	recISBN     *sql.Stmt
+	chapter     *sql.Stmt
+
+	series       *sql.Stmt
+	seriesWork   *sql.Stmt
+	seriesAuthor *sql.Stmt
+	seriesFTS    *sql.Stmt
+
+	character      *sql.Stmt
+	characterAlias *sql.Stmt
+
+	recap        *sql.Stmt
+	recapSummary *sql.Stmt
+}
+
+// prepareStmts prepares every insert statement on tx and returns the set plus a
+// func releasing them all. The first failure returns immediately (closing what
+// was already prepared), so a caller can never be handed a set holding a nil
+// statement. Build owns the transaction, so it is the single prepare and close
+// site for the whole build.
+func prepareStmts(tx *sql.Tx) (*stmts, func(), error) {
+	var prepared []*sql.Stmt
+	closeAll := func() {
+		for _, st := range prepared {
+			_ = st.Close()
+		}
+	}
+
+	s := &stmts{}
+	for _, spec := range []struct {
+		dst   **sql.Stmt
+		query string
+	}{
+		{&s.person, `INSERT INTO people(id, name, sort_name, description, wikidata, openlibrary, audible, license) VALUES(?,?,?,?,?,?,?,?)`},
+		{&s.personFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('person', ?, ?, '')`},
+
+		{&s.work, `INSERT INTO works(id, title, subtitle, language, first_published, description, added_at, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?,?)`},
+		{&s.workAuthor, `INSERT INTO work_authors(work_id, person_id, ord) VALUES(?,?,?)`},
+		{&s.workISBN, `INSERT INTO work_isbns(work_id, isbn) VALUES(?,?)`},
+		{&s.workGenre, `INSERT INTO work_genres(work_id, genre) VALUES(?,?)`},
+		{&s.workFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('work', ?, ?, ?)`},
+
+		{&s.recording, `INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license) VALUES(?,?,?,?,?,?,?,?,?)`},
+		{&s.recNarrator, `INSERT INTO recording_narrators(work_id, recording_id, person_id, ord) VALUES(?,?,?,?)`},
+		{&s.recASIN, `INSERT INTO recording_asins(region, asin, work_id, recording_id) VALUES(?,?,?,?)`},
+		{&s.recISBN, `INSERT INTO recording_isbns(work_id, recording_id, isbn) VALUES(?,?,?)`},
+		{&s.chapter, `INSERT INTO chapters(work_id, recording_id, idx, title, start_ms, length_ms) VALUES(?,?,?,?,?,?)`},
+
+		{&s.series, `INSERT INTO series(id, name, wikidata, goodreads, license) VALUES(?,?,?,?,?)`},
+		{&s.seriesWork, `INSERT INTO series_works(series_id, work_id, position) VALUES(?,?,?)`},
+		{&s.seriesAuthor, `INSERT INTO series_authors(series_id, person_id, ord) VALUES(?,?,?)`},
+		{&s.seriesFTS, `INSERT INTO search_fts(kind, id, title, names) VALUES('series', ?, ?, '')`},
+
+		{&s.character, `INSERT INTO characters(work_id, id, name, role, reveal_chapter, description, wikidata, goodreads, ord, license) VALUES(?,?,?,?,?,?,?,?,?,?)`},
+		{&s.characterAlias, `INSERT INTO character_aliases(work_id, character_id, alias, ord) VALUES(?,?,?,?)`},
+
+		{&s.recap, `INSERT INTO recaps(work_id, through_chapter, scope, text, license) VALUES(?,?,?,?,?)`},
+		{&s.recapSummary, `INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`},
+	} {
+		st, err := tx.Prepare(spec.query)
+		if err != nil {
+			closeAll()
+			return nil, nil, fmt.Errorf("prepare %q: %w", spec.query, err)
+		}
+		prepared = append(prepared, st)
+		*spec.dst = st
+	}
+	return s, closeAll, nil
+}
+
+func insertPeople(st *stmts, people []*model.Person) error {
 	for _, p := range people {
 		var wiki, ol, aud string
 		if p.Xref != nil {
 			wiki, ol, aud = p.Xref.Wikidata, p.Xref.Openlibrary, p.Xref.Audible
 		}
-		if _, err := tx.Exec(
-			`INSERT INTO people(id, name, sort_name, description, wikidata, openlibrary, audible, license) VALUES(?,?,?,?,?,?,?,?)`,
+		if _, err := st.person.Exec(
 			p.ID, p.Name, nullStr(p.SortName), nullStr(p.Description), nullStr(wiki), nullStr(ol), nullStr(aud), p.License,
 		); err != nil {
 			return err
 		}
-		if _, err := tx.Exec(`INSERT INTO search_fts(kind, id, title, names) VALUES('person', ?, ?, '')`, p.ID, p.Name); err != nil {
+		if _, err := st.personFTS.Exec(p.ID, p.Name); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string, added map[string]string) error {
+func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string, added map[string]string) error {
 	for _, w := range works {
 		var wiki, ol, gr string
 		var isbns []string
 		if w.Xref != nil {
 			wiki, ol, gr, isbns = w.Xref.Wikidata, w.Xref.Openlibrary, w.Xref.Goodreads, w.Xref.ISBN
 		}
-		if _, err := tx.Exec(
-			`INSERT INTO works(id, title, subtitle, language, first_published, description, added_at, wikidata, openlibrary, goodreads, license) VALUES(?,?,?,?,?,?,?,?,?,?,?)`,
+		if _, err := st.work.Exec(
 			w.ID, w.Title, nullStr(w.Subtitle), w.Language, nullStr(w.FirstPublished), nullStr(w.Description), addedAt(w, added), nullStr(wiki), nullStr(ol), nullStr(gr), w.License,
 		); err != nil {
 			return err
 		}
 		for i, a := range w.Authors {
-			if _, err := tx.Exec(`INSERT INTO work_authors(work_id, person_id, ord) VALUES(?,?,?)`, w.ID, a, i); err != nil {
+			if _, err := st.workAuthor.Exec(w.ID, a, i); err != nil {
 				return err
 			}
 		}
 		for _, isbn := range isbns {
-			if _, err := tx.Exec(`INSERT INTO work_isbns(work_id, isbn) VALUES(?,?)`, w.ID, isbn); err != nil {
+			if _, err := st.workISBN.Exec(w.ID, isbn); err != nil {
+				return err
+			}
+		}
+		// Genres are a SET, like work_isbns: no order column, because checkGenresSorted
+		// already pins the file order to ascending, so the rows are deterministic and
+		// a reader just orders by genre.
+		for _, g := range w.Genres {
+			if _, err := st.workGenre.Exec(w.ID, g); err != nil {
 				return err
 			}
 		}
@@ -309,7 +412,7 @@ func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, se
 		recs := append([]*model.Recording(nil), w.Recordings...)
 		sort.Slice(recs, func(i, j int) bool { return recs[i].ID < recs[j].ID })
 		for _, r := range recs {
-			if err := insertRecording(tx, w.ID, r); err != nil {
+			if err := insertRecording(st, w.ID, r); err != nil {
 				return err
 			}
 			for _, n := range r.Narrators {
@@ -321,63 +424,62 @@ func insertWorks(tx *sql.Tx, works []*model.Work, nameByID map[string]string, se
 		}
 
 		ftsTitle := strings.TrimSpace(w.Title + " " + w.Subtitle)
-		if _, err := tx.Exec(`INSERT INTO search_fts(kind, id, title, names) VALUES('work', ?, ?, ?)`, w.ID, ftsTitle, strings.Join(names, " ")); err != nil {
+		if _, err := st.workFTS.Exec(w.ID, ftsTitle, strings.Join(names, " ")); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func insertRecording(tx *sql.Tx, workID string, r *model.Recording) error {
-	if _, err := tx.Exec(
-		`INSERT INTO recordings(work_id, id, abridged, language, runtime_min, release_date, publisher, cover_url, license) VALUES(?,?,?,?,?,?,?,?,?)`,
+func insertRecording(st *stmts, workID string, r *model.Recording) error {
+	if _, err := st.recording.Exec(
 		workID, r.ID, boolInt(r.Abridged), r.Language, nullInt(r.RuntimeMin), nullStr(r.ReleaseDate), nullStr(r.Publisher), nullStr(r.CoverURL), r.License,
 	); err != nil {
 		return err
 	}
 	for i, n := range r.Narrators {
-		if _, err := tx.Exec(`INSERT INTO recording_narrators(work_id, recording_id, person_id, ord) VALUES(?,?,?,?)`, workID, r.ID, n, i); err != nil {
+		if _, err := st.recNarrator.Exec(workID, r.ID, n, i); err != nil {
 			return err
 		}
 	}
 	for _, a := range r.ASIN {
-		if _, err := tx.Exec(`INSERT INTO recording_asins(region, asin, work_id, recording_id) VALUES(?,?,?,?)`, a.Region, a.ASIN, workID, r.ID); err != nil {
+		if _, err := st.recASIN.Exec(a.Region, a.ASIN, workID, r.ID); err != nil {
 			return err
 		}
 	}
 	for _, isbn := range r.ISBN {
-		if _, err := tx.Exec(`INSERT INTO recording_isbns(work_id, recording_id, isbn) VALUES(?,?,?)`, workID, r.ID, isbn); err != nil {
+		if _, err := st.recISBN.Exec(workID, r.ID, isbn); err != nil {
 			return err
 		}
 	}
 	for i, ch := range r.Chapters {
-		if _, err := tx.Exec(`INSERT INTO chapters(work_id, recording_id, idx, title, start_ms, length_ms) VALUES(?,?,?,?,?,?)`, workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS); err != nil {
+		if _, err := st.chapter.Exec(workID, r.ID, i, ch.Title, ch.StartMS, ch.LengthMS); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func insertSeries(tx *sql.Tx, series []*model.Series) error {
+func insertSeries(st *stmts, series []*model.Series) error {
 	for _, s := range series {
 		var wiki, gr string
 		if s.Xref != nil {
 			wiki, gr = s.Xref.Wikidata, s.Xref.Goodreads
 		}
-		if _, err := tx.Exec(`INSERT INTO series(id, name, wikidata, goodreads, license) VALUES(?,?,?,?,?)`, s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License); err != nil {
+		if _, err := st.series.Exec(s.ID, s.Name, nullStr(wiki), nullStr(gr), s.License); err != nil {
 			return err
 		}
 		for _, sw := range s.Works {
-			if _, err := tx.Exec(`INSERT INTO series_works(series_id, work_id, position) VALUES(?,?,?)`, s.ID, sw.Work, sw.Position); err != nil {
+			if _, err := st.seriesWork.Exec(s.ID, sw.Work, sw.Position); err != nil {
 				return err
 			}
 		}
 		for i, a := range s.Authors {
-			if _, err := tx.Exec(`INSERT INTO series_authors(series_id, person_id, ord) VALUES(?,?,?)`, s.ID, a, i); err != nil {
+			if _, err := st.seriesAuthor.Exec(s.ID, a, i); err != nil {
 				return err
 			}
 		}
-		if _, err := tx.Exec(`INSERT INTO search_fts(kind, id, title, names) VALUES('series', ?, ?, '')`, s.ID, s.Name); err != nil {
+		if _, err := st.seriesFTS.Exec(s.ID, s.Name); err != nil {
 			return err
 		}
 	}
@@ -387,21 +489,20 @@ func insertSeries(tx *sql.Tx, series []*model.Series) error {
 // insertCharacters writes the per-work character sidecars. Each file's entries
 // keep their authored order (ord); characters is pre-sorted by work id for a
 // deterministic build.
-func insertCharacters(tx *sql.Tx, characters []*model.Characters) error {
+func insertCharacters(st *stmts, characters []*model.Characters) error {
 	for _, cf := range characters {
 		for i, ch := range cf.Characters {
 			var wiki, gr string
 			if ch.Xref != nil {
 				wiki, gr = ch.Xref.Wikidata, ch.Xref.Goodreads
 			}
-			if _, err := tx.Exec(
-				`INSERT INTO characters(work_id, id, name, role, reveal_chapter, description, wikidata, goodreads, ord, license) VALUES(?,?,?,?,?,?,?,?,?,?)`,
+			if _, err := st.character.Exec(
 				cf.Work, ch.ID, ch.Name, nullStr(ch.Role), ch.Reveal.Chapter, nullStr(ch.Description), nullStr(wiki), nullStr(gr), i, cf.License,
 			); err != nil {
 				return err
 			}
 			for j, alias := range ch.Aliases {
-				if _, err := tx.Exec(`INSERT INTO character_aliases(work_id, character_id, alias, ord) VALUES(?,?,?,?)`, cf.Work, ch.ID, alias, j); err != nil {
+				if _, err := st.characterAlias.Exec(cf.Work, ch.ID, alias, j); err != nil {
 					return err
 				}
 			}
@@ -413,13 +514,10 @@ func insertCharacters(tx *sql.Tx, characters []*model.Characters) error {
 // insertRecaps writes the per-work recap sidecars. No stored order column is
 // needed: recaps are keyed (and served) by their unique through-chapter, so
 // recapsOf orders by it directly.
-func insertRecaps(tx *sql.Tx, recaps []*model.Recaps) error {
+func insertRecaps(st *stmts, recaps []*model.Recaps) error {
 	for _, rf := range recaps {
 		for _, r := range rf.Recaps {
-			if _, err := tx.Exec(
-				`INSERT INTO recaps(work_id, through_chapter, scope, text, license) VALUES(?,?,?,?,?)`,
-				rf.Work, r.Through.Chapter, nullStr(r.Scope), r.Text, rf.License,
-			); err != nil {
+			if _, err := st.recap.Exec(rf.Work, r.Through.Chapter, nullStr(r.Scope), r.Text, rf.License); err != nil {
 				return err
 			}
 		}
@@ -432,15 +530,12 @@ func insertRecaps(tx *sql.Tx, recaps []*model.Recaps) error {
 // pre-sorted by work id, so rows land in a deterministic order; an empty field
 // is stored as NULL and a sidecar with neither field yields no row. The row's
 // license mirrors the sidecar's so a source can be retracted wholesale.
-func insertRecapSummaries(tx *sql.Tx, recaps []*model.Recaps) error {
+func insertRecapSummaries(st *stmts, recaps []*model.Recaps) error {
 	for _, rf := range recaps {
 		if rf.InShort == "" && rf.Ending == "" {
 			continue
 		}
-		if _, err := tx.Exec(
-			`INSERT INTO recap_summaries(work_id, in_short, ending, license) VALUES(?,?,?,?)`,
-			rf.Work, nullStr(rf.InShort), nullStr(rf.Ending), rf.License,
-		); err != nil {
+		if _, err := st.recapSummary.Exec(rf.Work, nullStr(rf.InShort), nullStr(rf.Ending), rf.License); err != nil {
 			return err
 		}
 	}

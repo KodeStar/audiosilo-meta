@@ -74,7 +74,10 @@ tooling via `schema.go`, so schema edits are code changes with tests.
 
 - **work** `data/works/<shard>/<slug>/work.json` - the abstract book: title,
   authors (person ids), language, first_published, xrefs (wikidata/openlibrary/
-  goodreads/print ISBNs).
+  goodreads/print ISBNs), optional `genres` (values from the controlled
+  vocabulary enum `common.schema.json#/$defs/genre` - a flat, retailer-neutral
+  list the project owns; sorted ascending, enforced by `checkGenresSorted`;
+  never a retailer's taxonomy verbatim, see LICENSING.md "Genres").
 - **recording** `data/works/<shard>/<slug>/recordings/<rec-slug>.json` - a
   specific narration/production: narrators, abridged (**optional**: absence =
   unknown, so importers omit it rather than guess), runtime_min, release_date,
@@ -124,12 +127,14 @@ Characters/recaps flow all the way through: `metabuild` writes them into the
 SQLite artifact (`characters`/`character_aliases`/`recaps` tables, added in
 **artifact schema_version 2**; the per-work `recap_summaries` table for
 `in_short`/`ending` was added in **schema_version 3**, one row per work whose
-recaps sidecar carries at least one of the two fields; character `ord`/recap
-position order preserved, deterministic), and `metaserve` returns them inline on
-`GET /works/{id}` (`workDetail.characters`/`.recaps`/`.recap_summary`,
-`omitempty`). The serve queries degrade gracefully if the tables are absent (a
-newer binary briefly serving a v1/v2 release): characters/recaps gate on
-schema_version >= 2 and the recap summary on >= 3, so a table's absence is "no
+recaps sidecar carries at least one of the two fields; work genres landed in
+**schema_version 4** as the `work_genres(work_id, genre)` set table; character
+`ord`/recap position order preserved, deterministic), and `metaserve` returns
+them inline on `GET /works/{id}`
+(`workDetail.characters`/`.recaps`/`.recap_summary`/`.genres`, `omitempty`). The
+serve queries degrade gracefully if the tables are absent (a newer binary
+briefly serving an older release): characters/recaps gate on schema_version >= 2,
+the recap summary on >= 3, and genres on >= 4, so a table's absence is "no
 data", not a 500. **Authoring the expressive
 layer is documented in [AUTHORING.md](AUTHORING.md)** (the reusable process:
 positions, spoiler model, copyright caps, checklist) - read it before adding
@@ -169,8 +174,9 @@ recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
 transport-only handler over testable `*snapshot` methods): ABS sends
 `?mediaType=book&query=&author=&isbn=` (never an ASIN), and we return
 `{"matches":[...]}`, one `absBook` per recording (ISBN exact-lookup first, else an
-FTS work search with loose author boosting), capped at 10; duration in minutes,
-no genres/tags by design. It never writes: all data is
+FTS work search with loose author boosting), capped at 10; duration in minutes;
+genres from the work's normalized vocabulary when present, tags never (there is
+no tag concept in the data model). It never writes: all data is
 public so there is no auth, and responses carry permissive CORS. The current
 artifact lives behind an atomic pointer (`snapshot`); with `--poll` a background
 loop fetches the newest DATA release conditionally (`If-None-Match`/304) - the
@@ -212,8 +218,8 @@ final token prefixed with `*`) so no user input can break the MATCH. Business
 logic stays in `internal/serve`; `cmd/metaserve` is flag wiring only.
 
 The importer maps one export entry to a work + recording (+ people + series),
-importing **factual fields only** (LICENSING.md): it drops publisher
-copy/genre/ratings/personal state, deduplicates by ASIN against the catalogue,
+importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
+retailer genre strings, ratings and personal state, deduplicates by ASIN against the catalogue,
 and writes canonical files, then runs `pkg/check`. Identity rules: a
 **person slug is the identity** (spelling/diacritic variants of one name merge
 into the existing record; no numbered duplicates), and trailing Audible credit
@@ -292,6 +298,20 @@ export type), surfacing the importer warnings.
   envelope changes; see workspace CROSS-REPO.md §17). The "before any ABS facade"
   ordering is now satisfied: the **Audiobookshelf metadata-provider facade**
   (`GET /abs/search`, `internal/serve/abs.go`) has since shipped on top of it.
+- **Libex integration (in progress)**: libex (libex.lostcartographer.xyz, a
+  public Audible-metadata mirror, ~1.1M books; scrape/export permitted by its
+  developer) becomes a BOUNDED source per LICENSING.md's import posture - never
+  a mirror. Landed: the normalized **genres** vocabulary end-to-end (schema
+  `$defs/genre` enum -> `Work.Genres` -> `checkGenresSorted` -> artifact
+  schema_version 4 `work_genres` -> `workDetail.genres` + ABS facade -> site
+  chips) plus metabuild prepared statements. In flight: the site `/add` lookup
+  assist (search libex -> confirm card -> prefilled add-work issue), the
+  `metaimport libex` source (mapping retailer genre strings onto the vocabulary
+  via an embedded table), the `--enrich` ASIN-matched backfill mode, and the
+  `libex-select` series-completion subset tool. Follow-ups tracked in the plan:
+  intake `libex: <ASIN>` provenance typing, a genres field on the add-work
+  form, re-shard (the 2-char shard's `th/` skew), and surfacing genres in the
+  player (three-repo seam).
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four

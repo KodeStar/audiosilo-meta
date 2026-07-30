@@ -74,6 +74,23 @@ func TestRecordingAbridgedOptional(t *testing.T) {
 	}
 }
 
+// TestWorkGenresValid covers the optional normalized genres field: a work
+// carrying sorted vocabulary values validates and the values reach the catalog.
+func TestWorkGenresValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["epic-fantasy","fantasy","science-fiction"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("work with sorted genres should validate, got: %v", res.Problems)
+	}
+	got := res.Catalog.Works[0].Genres
+	if len(got) != 3 || got[0] != "epic-fantasy" || got[2] != "science-fiction" {
+		t.Errorf("genres did not load: %v", got)
+	}
+}
+
 // validCharacters / validRecaps are minimal, valid per-work sidecars for the
 // given work, in canonical (sorted-key) form.
 func validCharacters(work string) string {
@@ -229,6 +246,27 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"},{"position":"1","work":"book-two"}]}`
 			},
 			want: `duplicate series position "1"`,
+		},
+		{
+			name: "unknown genre value",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["fantasy","sci-fi-ish"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/genres/1",
+		},
+		{
+			name: "duplicate genre value",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["fantasy","fantasy"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/genres",
+		},
+		{
+			name: "genres not sorted",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["science-fiction","fantasy"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: `genres must be sorted: "fantasy" comes after "science-fiction"`,
 		},
 		{
 			name: "schema violation: missing required title",
