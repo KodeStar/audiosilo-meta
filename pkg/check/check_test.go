@@ -155,6 +155,25 @@ func TestRecapsSummaryFields(t *testing.T) {
 	}
 }
 
+// TestCreditListsDistinctSlugs is the passing fixture for the credit-list
+// uniqueItems rule (its violating fixtures live in TestLoadRuleViolations): a
+// work and a recording crediting two DIFFERENT people still validate, so the
+// rule only ever rejects a repeated slug.
+func TestCreditListsDistinctSlugs(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/au/author-two.json"] = `{"id":"author-two","license":"CC0-1.0","name":"Author Two","sources":[{"type":"user"}]}`
+	files["people/na/narrator-two.json"] = `{"id":"narrator-two","license":"CC0-1.0","name":"Narrator Two","sources":[{"type":"user"}]}`
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one","author-two"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	files["works/bo/book-one/recordings/rec-one.json"] = `{"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one","narrator-two"],"sources":[{"type":"user"}],"work":"book-one"}`
+	files["series/se/series-one.json"] = `{"authors":["author-one","author-two"],"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("distinct credit slugs should validate, got: %v", res.Problems)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -415,6 +434,31 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recaps.json"] = `{"ending":42,"license":"CC-BY-SA-3.0","recaps":[{"text":"A.","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
 			},
 			want: "/ending",
+		},
+		// A credit list may not repeat a person slug: the slug IS the identity,
+		// so a doubled entry is a composition bug, never two credits. The
+		// schema's uniqueItems is the mechanical backstop behind the
+		// dedupe-by-slug in importer.creditSlugs / issueform.slugsFor.
+		{
+			name: "work authors repeat a slug",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one","author-one"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/authors: items at 0 and 1 are equal",
+		},
+		{
+			name: "recording narrators repeat a slug",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/recordings/rec-one.json"] = `{"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one","narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
+			},
+			want: "/narrators: items at 0 and 1 are equal",
+		},
+		{
+			name: "series authors repeat a slug",
+			mutate: func(f map[string]string) {
+				f["series/se/series-one.json"] = `{"authors":["author-one","author-one"],"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
+			},
+			want: "/authors: items at 0 and 1 are equal",
 		},
 	}
 

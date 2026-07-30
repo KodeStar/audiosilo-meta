@@ -222,9 +222,15 @@ importing **factual fields only** (LICENSING.md): it drops publisher copy, raw
 retailer genre strings, ratings and personal state, deduplicates by ASIN against the catalogue,
 and writes canonical files, then runs `pkg/check`. Identity rules: a
 **person slug is the identity** (spelling/diacritic variants of one name merge
-into the existing record; no numbered duplicates), and trailing Audible credit
-qualifiers (`"J. Kharkova - translator"`) are stripped from names against a
-fixed role list - the person stays in the credit list; a **work** is (title slug
+into the existing record; no numbered duplicates), and credit names are cleaned
+by `CleanCreditName` (a bounded fixpoint over three evidence-driven rules:
+trailing `" - <role>"` qualifiers stripped iteratively against a multilingual
+role list measured from the libex dump, with a separator tolerant of missing
+spaces/repeated hyphens and NFC-normalized case-insensitive role matching;
+leading `Created by `/`Creato da ` prefix credits dropped; exactly-doubled
+names collapsed to one half, two-plus words per half so "Duran Duran" stays) -
+the person stays in the credit list; credit lists dedupe by slug and the
+schema's `uniqueItems` rejects doubled credits; a **work** is (title slug
 + author set), but series volumes that share a `title_short` (or a book mapping
 onto an existing work at a different position in the same series) derive their
 work from the **full title** instead, so distinct volumes never merge - a batch

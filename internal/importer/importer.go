@@ -215,7 +215,7 @@ type sourceBook struct {
 	isbns      []string     // well-formed ISBNs the source stated (validated at parse)
 	// authors / narrators are the source's STRUCTURED credit lists, set when it
 	// provides one name per element. They are used verbatim (each still passed
-	// through StripRoleQualifier) instead of splitting raw's comma-joined
+	// through CleanCreditName) instead of splitting raw's comma-joined
 	// string, so a name that contains a comma ("Alexandre Dumas, pere") stays
 	// one person. Empty means the source only has the joined string.
 	authors   []string
@@ -586,7 +586,7 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 
 // creditNames resolves one credit list (authors or narrators). A source that
 // parsed structured credits passes them in typed, and they are used verbatim
-// (trimmed, role-qualifier-stripped, empties dropped) - splitting them on commas
+// (trimmed, credit-cleaned, empties dropped) - splitting them on commas
 // would tear "Alexandre Dumas, pere" into two people. A source that only has the
 // retailer's comma-joined string passes it as joined and it is split.
 func creditNames(typed []string, joined string) []string {
@@ -596,7 +596,7 @@ func creditNames(typed []string, joined string) []string {
 	out := make([]string, 0, len(typed))
 	for _, name := range typed {
 		if n := strings.TrimSpace(name); n != "" {
-			out = append(out, StripRoleQualifier(n))
+			out = append(out, CleanCreditName(n))
 		}
 	}
 	return out

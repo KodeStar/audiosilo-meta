@@ -181,6 +181,51 @@ func TestAddWorkOK(t *testing.T) {
 	}
 }
 
+// TestAddWorkCollapsesDuplicateCredits covers the dedupe-by-slug in slugsFor.
+// Credit cleaning collapses two spellings of one person onto one name ("Stan
+// Lee" and "Created by Stan Lee"; "Bob Reader" and "Bob Reader - narrator"), so
+// each is ONE credit and the composed record must carry a single-entry list.
+// Without the dedupe the array would repeat the slug - which the schema's
+// uniqueItems now rejects, so Process would fail its post-write validation.
+func TestAddWorkCollapsesDuplicateCredits(t *testing.T) {
+	dir := seedTree(t)
+	body := addWorkBody("Doubled Credits", "Stan Lee\nCreated by Stan Lee", "en",
+		"Bob Reader, Bob Reader - narrator", "", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+
+	var work struct {
+		Authors []string `json:"authors"`
+	}
+	if err := json.Unmarshal([]byte(readFile(t, dir, "works/do/doubled-credits/work.json")), &work); err != nil {
+		t.Fatalf("unmarshal work: %v", err)
+	}
+	if len(work.Authors) != 1 || work.Authors[0] != "stan-lee" {
+		t.Errorf("authors = %v, want [stan-lee]", work.Authors)
+	}
+
+	recPath := ""
+	for _, f := range res.Files {
+		if strings.Contains(f, "/doubled-credits/recordings/") {
+			recPath = strings.TrimPrefix(f, "data/")
+		}
+	}
+	if recPath == "" {
+		t.Fatalf("no recording emitted: %v", res.Files)
+	}
+	var rec struct {
+		Narrators []string `json:"narrators"`
+	}
+	if err := json.Unmarshal([]byte(readFile(t, dir, recPath)), &rec); err != nil {
+		t.Fatalf("unmarshal recording: %v", err)
+	}
+	if len(rec.Narrators) != 1 || rec.Narrators[0] != "bob-reader" {
+		t.Errorf("narrators = %v, want [bob-reader]", rec.Narrators)
+	}
+}
+
 func TestAddWorkSeriesCreated(t *testing.T) {
 	dir := seedTree(t)
 	body := addWorkBody("Solo Book", "Cara Writer", "en", "Dan Voice", "", "web", true)

@@ -18,13 +18,13 @@ func slugify(s string) string { return importer.Slugify(s) }
 func normalizeSequence(raw string) (string, bool) { return importer.NormalizeSequence(raw) }
 
 // splitNames splits a "one per line or comma-separated" name list, trimming
-// each, stripping trailing Audible credit qualifiers (via the importer), and
-// dropping empties.
+// each, cleaning the credit (role qualifiers, prefix credits, doubled names -
+// via the importer), and dropping empties.
 func splitNames(joined string) []string {
 	var out []string
 	for _, line := range strings.FieldsFunc(joined, func(r rune) bool { return r == '\n' || r == ',' }) {
 		if name := strings.TrimSpace(line); name != "" {
-			out = append(out, importer.StripRoleQualifier(name))
+			out = append(out, importer.CleanCreditName(name))
 		}
 	}
 	return out

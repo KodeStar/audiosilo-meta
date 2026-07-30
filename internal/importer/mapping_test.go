@@ -2,7 +2,10 @@ package importer
 
 import (
 	"reflect"
+	"strings"
 	"testing"
+
+	"golang.org/x/text/unicode/norm"
 )
 
 func TestMapLanguage(t *testing.T) {
@@ -218,52 +221,220 @@ func TestBoolPtrTriState(t *testing.T) {
 	}
 }
 
-func TestStripRoleQualifier(t *testing.T) {
+func TestCleanCreditName(t *testing.T) {
 	cases := []struct {
+		name string
 		in   string
 		want string
 	}{
 		// Every known role strips, case-insensitively.
-		{"J. Kharkova - translator", "J. Kharkova"},
-		{"Valeria Kornosenko - introduction", "Valeria Kornosenko"},
-		{"Graham Hancock - Introduction", "Graham Hancock"},
-		{"Charles S. Terry - TRANSLATOR", "Charles S. Terry"},
-		{"Someone - intro", "Someone"},
-		{"Someone - foreword", "Someone"},
-		{"Someone - afterword", "Someone"},
-		{"Someone - preface", "Someone"},
-		{"Someone - editor", "Someone"},
-		{"Someone - illustrator", "Someone"},
-		{"Someone - adaptation", "Someone"},
-		{"Someone - contributor", "Someone"},
-		{"Someone - narrator", "Someone"},
-		{"Someone - ghostwriter", "Someone"},
-		{"Someone - compilation", "Someone"},
-		// Never strip an arbitrary " - X" suffix.
-		{"The All - Stars", "The All - Stars"},
-		{"Jean - Luc Picard", "Jean - Luc Picard"},
-		{"Ampersand - Sound", "Ampersand - Sound"},
+		{"translator", "J. Kharkova - translator", "J. Kharkova"},
+		{"introduction", "Valeria Kornosenko - introduction", "Valeria Kornosenko"},
+		{"mixed case", "Graham Hancock - Introduction", "Graham Hancock"},
+		{"upper case", "Charles S. Terry - TRANSLATOR", "Charles S. Terry"},
+		{"intro", "Someone - intro", "Someone"},
+		{"foreword", "Someone - foreword", "Someone"},
+		{"afterword", "Someone - afterword", "Someone"},
+		{"preface", "Someone - preface", "Someone"},
+		{"editor", "Someone - editor", "Someone"},
+		{"illustrator", "Someone - illustrator", "Someone"},
+		{"adaptation", "Someone - adaptation", "Someone"},
+		{"contributor", "Someone - contributor", "Someone"},
+		{"narrator", "Someone - narrator", "Someone"},
+		{"ghostwriter", "Someone - ghostwriter", "Someone"},
+		{"compilation", "Someone - compilation", "Someone"},
+
+		// The libex tranche's real shapes: a DOUBLED qualifier (the source
+		// string was "Dan Veksler - Translator - translator") and a separator
+		// with no space after the hyphen in front of a multi-word role.
+		{"doubled qualifier", "Dan Veksler - Translator - translator", "Dan Veksler"},
+		{"no space after hyphen", "Dan Veksler -translated by", "Dan Veksler"},
+		{"repeated hyphens", "Dan Veksler -- translator", "Dan Veksler"},
+		{"multi-word role", "Someone - edited by", "Someone"},
+		{"foreword by", "Someone - foreword by", "Someone"},
+		{"translation", "Someone - translation", "Someone"},
+		{"adaptor", "Someone - adaptor", "Someone"},
+		{"producer", "Someone - producer", "Someone"},
+		{"instrumental soloist", "Yo Player - instrumental soloist", "Yo Player"},
+		{"illustration", "Someone - illustration", "Someone"},
+
+		// The role list is not English-only, and the German role appears both
+		// accented and ASCII-folded.
+		{"creator", "Gertrude Chandler Warner - creator", "Gertrude Chandler Warner"},
+		{"ubersetzer accented", "Claudia Kern - Übersetzer", "Claudia Kern"},
+		{"ubersetzer folded", "Claudia Kern - Ubersetzer", "Claudia Kern"},
+		{"ubersetzerin", "Claudia Kern - Übersetzerin", "Claudia Kern"},
+		{"herausgeber", "Hans Held - Herausgeber", "Hans Held"},
+		{"traducteur", "Claude Gilbert - traducteur", "Claude Gilbert"},
+		{"traductrice", "Claire Gilbert - traductrice", "Claire Gilbert"},
+		{"illustrateur", "Claude Gilbert - illustrateur", "Claude Gilbert"},
+		{"illustratrice", "Claire Gilbert - illustratrice", "Claire Gilbert"},
+		{"traduttore", "Simona Brogli - traduttore", "Simona Brogli"},
+		{"traduttrice", "Simona Brogli - traduttrice", "Simona Brogli"},
+		{"curatore", "Simona Brogli - curatore", "Simona Brogli"},
+		{"traductor", "Juan Perez - traductor", "Juan Perez"},
+		{"traductora", "Ana Perez - traductora", "Ana Perez"},
+		{"tradutor", "Joao Silva - tradutor", "Joao Silva"},
+		{"traducao", "Joao Silva - tradução", "Joao Silva"},
+		{"traducator", "Ion Popa - traducător", "Ion Popa"},
+
+		// An accented role must match however the source ENCODES it: precomposed
+		// (NFC, the map's own spelling), decomposed (NFD - "U" + U+0308, what a
+		// Mac filesystem or an older exporter emits), and upper-cased.
+		{"NFD ubersetzer", norm.NFD.String("Claudia Kern - Übersetzer"), "Claudia Kern"},
+		{"NFD traducao", norm.NFD.String("Joao Silva - tradução"), "Joao Silva"},
+		{"upper case accented role", "Claudia Kern - ÜBERSETZER", "Claudia Kern"},
+
+		// The role capture is whitespace-collapsed before the lookup, so a
+		// double-spaced multi-word role still matches its single-spaced key.
+		{"double-spaced role", "Someone - translated  by", "Someone"},
+
+		// Prefix credits, both observed languages.
+		{"created by", "Created by Stan Lee", "Stan Lee"},
+		{"creato da", "Creato da Stan Lee", "Stan Lee"},
+		{"created by lowercase", "created by Stan Lee", "Stan Lee"},
+		// A prefix and a suffix on the same name: the fixpoint loop applies both.
+		{"prefix and suffix", "Created by Stan Lee - editor", "Stan Lee"},
+
+		// Exact-half doubled names collapse.
+		{"doubled multi-word name", "Melissa K. Roehrich Melissa K. Roehrich", "Melissa K. Roehrich"},
+		{"doubled two-word name", "Full Cast Full Cast", "Full Cast"},
+		{"doubled with differing case", "full cast Full Cast", "full cast"},
+
+		// Negative cases. Never strip an arbitrary " - X" suffix, never collapse
+		// a repeated single word, never collapse an odd word count.
+		{"pen name with spaced hyphen", "The All - Stars", "The All - Stars"},
+		{"hyphenated given name", "Jean - Luc Picard", "Jean - Luc Picard"},
+		{"non-role suffix", "Anna - Maria Sound", "Anna - Maria Sound"},
+		{"ampersand sound", "Ampersand - Sound", "Ampersand - Sound"},
+		{"repeated single word", "Duran Duran", "Duran Duran"},
+		{"odd word count", "Mitz Mitz Vah", "Mitz Mitz Vah"},
+		{"prefix word is not a prefix credit", "Created Beings", "Created Beings"},
+		// A multibyte LEADING rune must not be sliced mid-rune by the prefix
+		// compare: the first rune simply is not "c", so nothing strips and the
+		// name comes back byte-identical (never mangled into invalid UTF-8).
+		{"multibyte leading name", "Ćreated by Someone", "Ćreated by Someone"},
+		{"accented plain name", "Émile Zola", "Émile Zola"},
+		// A name whose rune boundaries straddle len("created by ") - slicing it
+		// at that byte offset would hand a half-rune to the comparison.
+		{"multibyte name straddling the prefix length", "Created b文 Someone", "Created b文 Someone"},
+		// Ambiguous connectors are deliberately absent from the role list.
+		{"bare with is not a role", "Someone - with", "Someone - with"},
 		// Empty-after-strip falls back to the unstripped name.
-		{"- translator", "- translator"},
+		{"strip would empty", "- translator", "- translator"},
+		{"strip would empty with leading space", " - translator", " - translator"},
+		{"prefix strip would empty", "Created by ", "Created by "},
 		// No qualifier at all.
-		{"Plain Name", "Plain Name"},
+		{"plain", "Plain Name", "Plain Name"},
 	}
 	for _, c := range cases {
-		if got := StripRoleQualifier(c.in); got != c.want {
-			t.Errorf("StripRoleQualifier(%q) = %q, want %q", c.in, got, c.want)
-		}
+		t.Run(c.name, func(t *testing.T) {
+			if got := CleanCreditName(c.in); got != c.want {
+				t.Errorf("CleanCreditName(%q) = %q, want %q", c.in, got, c.want)
+			}
+		})
 	}
-	// The " - translator" (leading-space) shape: idx 0, cleaned empty -> original.
-	if got := StripRoleQualifier(" - translator"); got != " - translator" {
-		t.Errorf("empty-after-strip fallback failed: %q", got)
+
+	// Cleaning is a FIXPOINT: the function loops until the name stops changing,
+	// so re-cleaning an already-cleaned name must be a no-op. A rule that kept
+	// nibbling (or that only converged for the shapes above) would show up here
+	// across the whole table, including the negative cases.
+	t.Run("idempotent", func(t *testing.T) {
+		for _, c := range cases {
+			once := CleanCreditName(c.in)
+			if twice := CleanCreditName(once); twice != once {
+				t.Errorf("%s: CleanCreditName is not idempotent: %q -> %q -> %q", c.name, c.in, once, twice)
+			}
+		}
+	})
+}
+
+// TestCutPrefixFold pins the two properties that made the prefix compare
+// rune-aware rather than a byte slice at len(prefix):
+//   - a multibyte leading rune is never cut in half (the old name[:len(prefix)]
+//     produced invalid UTF-8, which no comparison can reason about);
+//   - a case fold that CHANGES the byte length still matches - "İ" (U+0130, two
+//     bytes) folds to the one-byte "i", so a byte-length-equal compare could
+//     never have matched it.
+func TestCutPrefixFold(t *testing.T) {
+	cases := []struct {
+		name     string
+		s        string
+		prefix   string
+		wantRest string
+		wantOK   bool
+	}{
+		{"exact", "created by Stan Lee", "created by ", "Stan Lee", true},
+		{"case-insensitive", "CREATED BY Stan Lee", "created by ", "Stan Lee", true},
+		{"whole string is the prefix", "created by ", "created by ", "", true},
+		{"shorter than the prefix", "created", "created by ", "", false},
+		{"multibyte leading rune", "Ćreated by Someone", "created by ", "", false},
+		{"multibyte straddling the prefix length", "Created b文 Someone", "created by ", "", false},
+		{"fold changes byte length", "İstanbul Press", "i", "stanbul Press", true},
+		{"remainder keeps its multibyte runes", "Created by Émile Zola", "created by ", "Émile Zola", true},
+		{"invalid UTF-8 never matches", "\xff\xfeated by X", "created by ", "", false},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			rest, ok := cutPrefixFold(c.s, c.prefix)
+			if ok != c.wantOK || rest != c.wantRest {
+				t.Errorf("cutPrefixFold(%q, %q) = (%q, %v), want (%q, %v)", c.s, c.prefix, rest, ok, c.wantRest, c.wantOK)
+			}
+		})
 	}
 }
 
-func TestSplitNamesStripsRoles(t *testing.T) {
-	got := SplitNames("Kirill Klevanski, Valeria Kornosenko - introduction, J. Kharkova - Translator, The All - Stars")
-	want := []string{"Kirill Klevanski", "Valeria Kornosenko", "J. Kharkova", "The All - Stars"}
+// TestRoleQualifiersVocabulary pins the shape of the credit vocabularies. Each
+// property is load-bearing for the lookup, not cosmetic:
+//   - lowercase + NFC, because stripRoleQualifier lowercases and NFC-normalizes
+//     the captured role before the map lookup, so a key that is neither could
+//     never be matched by anything.
+//   - single-spaced and untrimmed-free, because the capture is collapsed with
+//     strings.Fields.
+//   - HYPHEN-FREE, because roleSuffixRE's capture is `[^-]+`: a key containing a
+//     hyphen is unreachable by construction.
+//
+// prefixCredits are matched rune-by-rune under case folding by cutPrefixFold and
+// each must keep its trailing space, so a name merely STARTING with the word
+// ("Created Beings") is left alone.
+func TestRoleQualifiersVocabulary(t *testing.T) {
+	for role := range roleQualifiers {
+		if role == "" {
+			t.Error("roleQualifiers contains an empty key")
+			continue
+		}
+		if lower := strings.ToLower(role); role != lower {
+			t.Errorf("role %q is not lowercase (want %q)", role, lower)
+		}
+		if nfc := norm.NFC.String(role); role != nfc {
+			t.Errorf("role %q is not NFC-normalized (want %q)", role, nfc)
+		}
+		if collapsed := strings.Join(strings.Fields(role), " "); role != collapsed {
+			t.Errorf("role %q is not trimmed/single-spaced (want %q)", role, collapsed)
+		}
+		if strings.Contains(role, "-") {
+			t.Errorf("role %q contains a hyphen; roleSuffixRE captures [^-]+ so it can never match", role)
+		}
+	}
+	for _, prefix := range prefixCredits {
+		if lower := strings.ToLower(prefix); prefix != lower {
+			t.Errorf("prefix credit %q is not lowercase (want %q)", prefix, lower)
+		}
+		if !strings.HasSuffix(prefix, " ") {
+			t.Errorf("prefix credit %q must end with a space so a name merely starting with the word is untouched", prefix)
+		}
+	}
+}
+
+func TestSplitNamesCleansCredits(t *testing.T) {
+	got := SplitNames("Kirill Klevanski, Valeria Kornosenko - introduction, J. Kharkova - Translator, " +
+		"Dan Veksler - Translator - translator, Created by Stan Lee, Full Cast Full Cast, The All - Stars")
+	want := []string{
+		"Kirill Klevanski", "Valeria Kornosenko", "J. Kharkova",
+		"Dan Veksler", "Stan Lee", "Full Cast", "The All - Stars",
+	}
 	if !reflect.DeepEqual(got, want) {
-		t.Errorf("SplitNames role stripping = %#v, want %#v", got, want)
+		t.Errorf("SplitNames credit cleaning = %#v, want %#v", got, want)
 	}
 }
 
