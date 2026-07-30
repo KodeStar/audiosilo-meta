@@ -1,0 +1,372 @@
+{
+  "characters": [
+    {
+      "description": "The innkeeper of the Wandering Inn outside Liscor, where Goblins and members of several species can find protection and meet on uncertain common ground. Her hospitality repeatedly draws her into the city's disputes and makes the inn more than an ordinary business.",
+      "id": "erin",
+      "name": "Erin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The inn's practical manager and Mrsha's guardian. She organizes its staff, household, and daily security while building a life apart from the royal identity she once knew. Her sense of order complements Erin's more instinctive way of handling guests and crises.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A young white-furred Gnoll who lives at the Wandering Inn under Erin and Lionette's care. She is part of the household they are trying to protect while floods, dungeon activity, and hostility toward the inn make ordinary life increasingly difficult.",
+      "id": "mrsha",
+      "name": "Mrsha",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An individual Antinium who leads Painted Soldiers and newly individual Workers. He is trying to give both groups purpose beyond their assigned duties, and to find voluntary activities that can unite Antinium whose training and daily responsibilities are very different.",
+      "id": "pawn",
+      "name": "Pawn",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Pawn's Antinium sergeants, responsible for chess and other activities among the individual Workers. He communicates largely through gestures and helps guide a group that is only beginning to develop preferences, friendships, and recreation of its own.",
+      "id": "purple-smile",
+      "name": "Purple Smile",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Painted Antinium sergeant who helps train the soldiers under Pawn’s command.",
+      "id": "yellow-splatters",
+      "name": "Yellow Splatters",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A senior Liscor guardsman and the Free Antinium's revelantor, balancing his obligations to the city with the needs of his Hive. His authority crosses the uneasy boundary between Liscor and the Antinium beneath it, especially when dungeon access becomes contested.",
+      "id": "klbkch",
+      "name": "Klbkch",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An independent Antinium Hunter employed at Erin's inn as a guard and bird hunter. He earns wages, owns personal belongings, and follows interests that differ sharply from the obedience expected by the Hive. Erin's protection allows that individuality to continue.",
+      "id": "bird",
+      "name": "Bird",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The ruler of Liscor's Free Antinium, directing thousands through a mental network while testing whether genuine individuals can strengthen her Hive. She and Klbkch have pursued Antinium individuality for years, but she still measures each new person against the Hive's survival.",
+      "id": "free-queen",
+      "name": "Free Queen",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Emperor of the Unseen Empire"
+      ],
+      "description": "The blind ruler of River Farm and Durene's partner. He is building an engineering-centered realm called the Unseen Empire.",
+      "id": "laken-godart",
+      "name": "Laken Godart",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Laken's witch and general, entrusted with covert military work as danger approaches the Unseen Empire. She leaves River Farm with part of its forces for a concealed operation, supported by message magic and an urgently prepared alchemical weapon.",
+      "id": "wiscaria",
+      "name": "Wiscaria",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Oddveig"
+      ],
+      "description": "Magnolia Reinhart's spy, formerly known to Wiscaria as Oddveig. She approaches Laken Godart with Magnolia's offer of recognition, support, and peace in exchange for temporarily withholding his trebuchets and their construction secrets.",
+      "id": "sacra",
+      "name": "Sacra",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Chieftain of the Flooded Waters tribe, commanding a mixed Goblin force that includes Redfang riders.",
+      "id": "rags",
+      "name": "Rags",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Rags's experienced Hobgoblin second-in-command and a seasoned organizer within the Flooded Waters tribe.",
+      "id": "pyrite",
+      "name": "Pyrite",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Redscar"
+      ],
+      "description": "A leader among the Redfang riders serving the Flooded Waters tribe. He accepts Rags's command while his warriors still remember their former chieftain, Garen Redfang. His loyalty gives Rags authority over an elite force with its own history and identity.",
+      "id": "red-scar",
+      "name": "Red Scar",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A noblewoman held with her travelling party by the Flooded Waters tribe after earlier fighting against Goblins. She recognizes that Rags is willing to take prisoners and negotiate, and offers ransom, protection, and safe passage in return for the people the tribe holds.",
+      "id": "lady-bethel",
+      "name": "Lady Bethel",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An independent Redfang chieftain who joins Tremborag in rejecting the Goblin Lord's demand that their tribes submit to him. He sees the Goblin Lord's reliance on a human master as another form of enslavement and is prepared to resist a much larger army.",
+      "id": "garen-redfang",
+      "name": "Garen Redfang",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The immense leader of the Mountain City Goblins, defending his stronghold alongside Garen Redfang against the Goblin Lord. His mountain fortress has prepared passages and choke points, and his own body can transform into a more powerful fighting form.",
+      "id": "tremborag",
+      "name": "Tremborag",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Goblin Lord"
+      ],
+      "description": "An undead-backed Goblin war leader whose army is blamed for Zel Shivertail's death and remains a major threat. He commands disciplined Goblins and undead in a campaign that is drawing the attention of Liscor, northern armies, and rival Goblin chieftains.",
+      "id": "rhys",
+      "name": "Rhys",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The missing former captain of the Horns of Hammerad, described as a one-armed Minotaur who may still be somewhere inside Liscor's dungeon. Erin offers a substantial reward for truthful information, while his former teammates prepare to confront the place where he vanished.",
+      "id": "calruz",
+      "name": "Calruz",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Springwalker"
+      ],
+      "description": "A half-elf adventurer who leads the present Horns of Hammerad.",
+      "id": "ceria",
+      "name": "Ceria",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "The Horns of Hammerad's necromancer, willing to use undead as practical scouts and fighters despite the distrust his magic attracts.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fighter and member of the Horns of Hammerad.",
+      "id": "yvlon-byres",
+      "name": "Yvlon Byres",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Antinium adventurer on Ceria's Horns of Hammerad team.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Redfang Hobgoblin who once came to kill Erin but now lives at her inn, guards it, and wants to protect his companions.",
+      "id": "head-scratcher",
+      "name": "Head Scratcher",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of the Redfang Hobgoblins sheltered by Erin. He is quietly teaching himself to play guitar in the inn's basement while also serving among its defenders.",
+      "id": "numbtongue",
+      "name": "Numbtongue",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Redfang Hobgoblin archer living at the inn as one of Erin's protected guests.",
+      "id": "bad-arrow",
+      "name": "Bad Arrow",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Redfang Hobgoblin fighter and one of Erin's protected guests at the inn.",
+      "id": "rabbit-eater",
+      "name": "Rabbit Eater",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sword fighter among the five Redfang Hobgoblins living under Erin's protection.",
+      "id": "shorthilt",
+      "name": "Shorthilt",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Wall Lord Ilvriss"
+      ],
+      "description": "An influential Drake Wall Lord in Liscor who is grieving Zel Shivertail.",
+      "id": "ilvriss",
+      "name": "Ilvriss",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's Watch Captain, responsible for the city's security.",
+      "id": "zevara",
+      "name": "Zevara",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Liscor strategist and officer in the city Watch.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A human from Earth studying magic at an academy where powerful factions guard, monitor, and exploit his knowledge. His real name is withheld because names can be used in hostile magic. Although his magical progress is rapid, protection also makes him a controlled political asset.",
+      "id": "black-mage",
+      "name": "Black Mage",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A Revivalist mage who brokers information. After tracking Black Mage to a hidden academy complex, she connects him with her faction.",
+      "id": "montressa",
+      "name": "Montressa",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A half-troll Paladin, Laken Godart's consort, and a defender of River Farm.",
+      "id": "durene",
+      "name": "Durene",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of an all-female Goblin warrior unit in the Flooded Waters tribe. She wants her force to become effective without depending on the male-dominated Redfang riders.",
+      "id": "poison-bite",
+      "name": "Poison Bite",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Lionette's ashfire bee, able to ignite herself in flight even though the effort leaves her exhausted.",
+      "id": "apista",
+      "name": "Apista",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A captive Cave Goblin allowed to live under the watch of the Redfang Hobgoblins.",
+      "id": "pebblesnatch",
+      "name": "Pebblesnatch",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0BDP2WRX7",
+      "type": "community"
+    }
+  ],
+  "work": "blood-of-liscor"
+}
