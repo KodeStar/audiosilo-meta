@@ -1,0 +1,372 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Erin"
+      ],
+      "description": "The Earth-born innkeeper of the Wandering Inn. She has made a home near Liscor and protects the varied people who gather there.",
+      "id": "erin-solstice",
+      "name": "Erin Solstice",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "A young Gnoll who lives under the protection of Erin, Lionette, and the inn's wider household.",
+      "id": "mrsha",
+      "name": "Mrsha",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's Watch Captain, responsible for the imprisoned Minotaur.",
+      "id": "zevara",
+      "name": "Zevara",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An imprisoned Minotaur commander held under Zevara's lawful authority in Liscor.",
+      "id": "calruz",
+      "name": "Calruz",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The Horns' necromancer"
+      ],
+      "description": "An inventive necromancer and member of the Horns.",
+      "id": "pisces",
+      "name": "Pisces",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ceria"
+      ],
+      "description": "The half-elf leader and ice mage of the Horns, an adventuring team based around Liscor.",
+      "id": "ceria-springwalker",
+      "name": "Ceria Springwalker",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An adventurer and member of the Horns.",
+      "id": "yvlon",
+      "name": "Yvlon",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Antinium adventurer in the Horns.",
+      "id": "ksmvr",
+      "name": "Ksmvr",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Goblin survivor who lives at the Wandering Inn under Erin's protection.",
+      "id": "numbtongue",
+      "name": "Numbtongue",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A manager of the Wandering Inn and one of Mrsha's guardians.",
+      "id": "lionette",
+      "name": "Lionette",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Masked female warrior"
+      ],
+      "description": "A damaged, sentient skeleton confined to Liscor's mana-rich dungeon. Toren also moves through a masked female form and, burdened by abandoning Erin, has begun choosing to protect living beings.",
+      "id": "toren",
+      "name": "Toren",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former-miner adventuring team led by Erlea. Its members recover valuable materials by dismantling inactive traps in Liscor's dungeon.",
+      "id": "gemhammer",
+      "name": "Gemhammer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Anith's silver-rank adventuring team. They guard Gemhammer's salvage work and regard the dungeon's masked warrior as a benefactor.",
+      "id": "vuleil-dre",
+      "name": "Vuleil Dre",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The gold-rank Wings of Pallass are commanded by Bavusa. She questions the identity of a masked dungeon combatant, but relents when she understands the figure's behavior around a destroyed zombie as mourning.",
+      "id": "bavusa",
+      "name": "Bavusa",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An intelligent black skeleton created as one of a necromancer's Chosen. After a failed attack on Zel Shivertail, she waits for new orders and fears her creator has abandoned her.",
+      "id": "black-skeleton",
+      "name": "Black skeleton",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Liscor's strategist and the administrative guide for its newly seated council, helping the inexperienced body turn its proposed reforms into policy.",
+      "id": "olesm",
+      "name": "Olesm",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An armorer chosen for Liscor's new Gnoll council. Her trade plan would send ore from Esselm to Pallass in return for metal goods and instruction for local smiths.",
+      "id": "regrika",
+      "name": "Regrika",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Liscor resident entrusted with the Heartflame armor.",
+      "id": "selys",
+      "name": "Selys",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An officer of Liscor's Watch.",
+      "id": "relc",
+      "name": "Relc",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The Wall Lord of Salazsar. He gave Erin a family ring protected by an enchantment that makes it easy to overlook, and he secretly shelters a surviving Pallasian captain.",
+      "id": "ilvriss",
+      "name": "Ilvriss",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A military survivor and the niece of a dead Pallasian general. Ilvriss conceals her identity, presents her as his bodyguard, and entrusts her with organizing a covert force.",
+      "id": "pallasian-captain",
+      "name": "Pallasian captain",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Former human archmage"
+      ],
+      "description": "An undead former human archmage ruling a concealed castle west of the Bloodfields. He commands an army, specialized Chosen, and distant puppets, and has begun teaching Pisces through an undead rat.",
+      "id": "hidden-necromancer",
+      "name": "Hidden necromancer",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The ruler of a beast-taming empire under coalition invasion. She directs war elephants and other animal-supported defenders while the enemy closes around her capital.",
+      "id": "empress-of-beasts",
+      "name": "Empress of Beasts",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "An unnamed correspondent whose unusually detailed accounts from the war front place the reporter at risk. A magic academy sends a team to find and recover the correspondent.",
+      "id": "unnamed-frontline-reporter",
+      "name": "Unnamed frontline reporter",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "King of Destruction"
+      ],
+      "description": "A distant monarch whose peace proclamation limits his response to the war against the Empress. With her capital surrounded, she asks him to decide her empire's fate.",
+      "id": "flos",
+      "name": "Flos",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The elected leader of a golem-state in the coalition. He remains at the front despite expecting a devastating final assault and prepares his command for the possibility of his death.",
+      "id": "magus-crafter",
+      "name": "Magus-crafter",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Commander of the defeated empire's remaining field army. During the surrender, the general leads soldiers and civilians north toward the Kaleel Steppes.",
+      "id": "empresss-general",
+      "name": "Empress's general",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The Quarass"
+      ],
+      "description": "Germina's child ruler, carrying the memories and knowledge of earlier Quarasses despite the limited magic and strength of her present body. She allies with Flos to protect her country.",
+      "id": "quarass-of-germina",
+      "name": "Quarass of Germina",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Earth-born envoy traveling on Flos's behalf. He explains his world's technology to the Quarass and accompanies her into negotiations with Kelt.",
+      "id": "trey",
+      "name": "Trey",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kelt's ancient ruler and guardian. He withdraws his army while talks proceed, but demands lasting safeguards before aiding a conqueror whose reign he considers temporary.",
+      "id": "kelts-undead-king",
+      "name": "Kelt's undead king",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Titan"
+      ],
+      "description": "A smallfolk strategist, professor, and second-in-command of a great mercenary company. He uses live deceptions to test his advanced students and expects them to challenge authority as well as master logistics.",
+      "id": "niers-astoragon",
+      "name": "Niers Astoragon",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A stealth specialist who leads Niers's mercenary company. She can pass unnoticed at close range and selectively remove memories.",
+      "id": "head-of-nierss-company",
+      "name": "Head of Niers's company",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Niers's unconventional students, strong at tactical surprise but still developing the authority and appetite for risk needed for larger commands.",
+      "id": "lizardfolk-strategist-student",
+      "name": "Lizardfolk strategist student",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A strategist student with a gift for logistics and a direct approach to command. Family duty competes with his private wish to pursue a great discovery.",
+      "id": "human-lord-student",
+      "name": "Human lord student",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The leader of five Wistram mages and a former associate of Pisces and Ceria. She forcibly detains Pisces and the Horns without first consulting Liscor's Watch.",
+      "id": "wistram-team-leader",
+      "name": "Wistram team leader",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of the five Wistram mages who participates in the team's unsanctioned seizure of Pisces and the Horns.",
+      "id": "wistram-team-mage",
+      "name": "Wistram team mage",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Pisces"
+      ],
+      "description": "Pisces's full identity, revealed when he admits his common-born Terandrian upbringing and accepts responsibility for the fatal Wistram tomb theft. He refuses surrender, and the Horns reaffirm their loyalty to him.",
+      "id": "pisces-jilnet",
+      "name": "Pisces Jilnet",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0D7F6BZBC",
+      "type": "community"
+    }
+  ],
+  "work": "the-empress-of-beasts"
+}
