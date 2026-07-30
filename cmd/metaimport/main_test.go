@@ -205,7 +205,7 @@ func TestPrintSummaryIncludesMergedASINs(t *testing.T) {
 	// Fix 7: the merged-ASIN count must be surfaced in the summary line so a
 	// maintainer sees re-releases folded into existing recordings.
 	out := captureStdout(t, func() {
-		printSummary(importer.Summary{NewWorks: 1, NewRecordings: 2, MergedASINs: 3}, false, false)
+		printSummary(importer.Summary{NewWorks: 1, NewRecordings: 2, MergedASINs: 3}, false, false, false)
 	})
 	if !strings.Contains(out, "3 asins merged into existing recordings") {
 		t.Errorf("summary line missing the merged-ASIN count: %q", out)
@@ -221,7 +221,7 @@ func TestPrintSummaryEnrichMode(t *testing.T) {
 		printSummary(importer.Summary{
 			EnrichedWorks: 1, EnrichedRecordings: 2, SeriesPlacements: 3,
 			Matched: 4, NotInCatalog: 5, SkippedRows: 6,
-		}, false, true)
+		}, false, true, false)
 	})
 	for _, want := range []string{
 		"enriched:", "1 works", "2 recordings", "3 works placed in a series",
@@ -236,24 +236,51 @@ func TestPrintSummaryEnrichMode(t *testing.T) {
 	}
 }
 
+// TestPrintSummaryRecordingsOnlyMode pins the recordings-only line. The mode
+// creates no work and no series, so reporting those counters would be noise -
+// but the two skip buckets are exactly what an operator reads the run from, so
+// both must be on the line.
+func TestPrintSummaryRecordingsOnlyMode(t *testing.T) {
+	out := captureStdout(t, func() {
+		printSummary(importer.Summary{
+			NewRecordings: 2, NewPeople: 15, Skipped: 3, SkippedNoWork: 4, MergedASINs: 1,
+		}, false, false, true)
+	})
+	for _, want := range []string{
+		"added:", "2 new recordings", "15 new people", "3 skipped (already present)",
+		"4 skipped (work not in the catalogue)", "1 asins merged into existing recordings",
+	} {
+		if !strings.Contains(out, want) {
+			t.Errorf("recordings-only summary line missing %q: %q", want, out)
+		}
+	}
+	if strings.Contains(out, "new works") || strings.Contains(out, "new series") {
+		t.Errorf("recordings-only summary must not report work/series counters: %q", out)
+	}
+}
+
 // TestPrintSummaryDryRunHeadings pins each mode's dry-run wording. The create
 // heading is long-standing output a user (and any log-reading habit) recognizes,
-// so adding enrichment must not quietly reword it; enrichment gets its own
+// so adding a mode must not quietly reword it; each new mode gets its own
 // heading rather than borrowing "imported", which it never does.
 func TestPrintSummaryDryRunHeadings(t *testing.T) {
 	cases := []struct {
-		name           string
-		dryRun, enrich bool
-		want           string
+		name                           string
+		dryRun, enrich, recordingsOnly bool
+		want                           string
 	}{
 		{name: "create", want: "imported:"},
 		{name: "create dry run", dryRun: true, want: "plan (dry run, no files written):"},
 		{name: "enrich", enrich: true, want: "enriched:"},
 		{name: "enrich dry run", dryRun: true, enrich: true, want: "enrichment plan (dry run, no files written):"},
+		{name: "recordings only", recordingsOnly: true, want: "added:"},
+		{name: "recordings only dry run", dryRun: true, recordingsOnly: true, want: "recordings-only plan (dry run, no files written):"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			out := captureStdout(t, func() { printSummary(importer.Summary{}, tc.dryRun, tc.enrich) })
+			out := captureStdout(t, func() {
+				printSummary(importer.Summary{}, tc.dryRun, tc.enrich, tc.recordingsOnly)
+			})
 			if !strings.HasPrefix(out, tc.want) {
 				t.Errorf("heading = %q, want it to start with %q", out, tc.want)
 			}
@@ -275,7 +302,7 @@ func TestEnrichFlagReachesTheImporter(t *testing.T) {
 		return importer.Summary{}, nil
 	}
 	captureStdout(t, func() {
-		if code := runSource(enrichSource, []string{"export.json", "--enrich"}, run); code != 0 {
+		if code := runSource(boundedSource, []string{"export.json", "--enrich"}, run); code != 0 {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
@@ -286,7 +313,7 @@ func TestEnrichFlagReachesTheImporter(t *testing.T) {
 	// And the flag is opt-in: the same invocation without it must not enrich.
 	got = importer.Options{}
 	captureStdout(t, func() {
-		if code := runSource(enrichSource, []string{"export.json"}, run); code != 0 {
+		if code := runSource(boundedSource, []string{"export.json"}, run); code != 0 {
 			t.Errorf("exit code = %d, want 0", code)
 		}
 	})
@@ -308,5 +335,74 @@ func TestEnrichFlagRejectedForOtherSources(t *testing.T) {
 	}
 	if called {
 		t.Error("the importer ran despite the refused --enrich flag")
+	}
+}
+
+// TestRecordingsOnlyFlagReachesTheImporter is the ACCEPT half of the
+// --recordings-only flag's pair (see TestEnrichFlagReachesTheImporter): without
+// it, deleting the flag's threading into Options would leave the suite green
+// while --recordings-only silently ran a CREATE import and minted duplicate
+// works.
+func TestRecordingsOnlyFlagReachesTheImporter(t *testing.T) {
+	var got importer.Options
+	run := func(path string, opts importer.Options) (importer.Summary, error) {
+		got = opts
+		if path != "export.json" {
+			t.Errorf("export path = %q", path)
+		}
+		return importer.Summary{}, nil
+	}
+	captureStdout(t, func() {
+		if code := runSource(boundedSource, []string{"export.json", "--recordings-only"}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	if !got.RecordingsOnly {
+		t.Error("--recordings-only did not reach Options.RecordingsOnly")
+	}
+
+	// And the flag is opt-in: the same invocation without it must not switch mode.
+	got = importer.Options{}
+	captureStdout(t, func() {
+		if code := runSource(boundedSource, []string{"export.json"}, run); code != 0 {
+			t.Errorf("exit code = %d, want 0", code)
+		}
+	})
+	if got.RecordingsOnly {
+		t.Error("Options.RecordingsOnly set without the flag")
+	}
+}
+
+func TestRecordingsOnlyFlagRejectedForOtherSources(t *testing.T) {
+	// Same per-source licensing decision as --enrich: the mode is bounded by
+	// this catalogue and permitted for libex alone.
+	called := false
+	run := func(string, importer.Options) (importer.Summary, error) {
+		called = true
+		return importer.Summary{}, nil
+	}
+	if code := runSource("openaudible", []string{"books.json", "--recordings-only"}, run); code != 2 {
+		t.Errorf("exit code = %d, want 2", code)
+	}
+	if called {
+		t.Error("the importer ran despite the refused --recordings-only flag")
+	}
+}
+
+// TestModeFlagsAreMutuallyExclusive pins the refusal of the one combination
+// that has no meaning: enrichment fills absent facts on ASIN-matched records
+// while recordings-only adds narrations the catalogue has never seen, so a run
+// asked for both would have to silently pick one.
+func TestModeFlagsAreMutuallyExclusive(t *testing.T) {
+	called := false
+	run := func(string, importer.Options) (importer.Summary, error) {
+		called = true
+		return importer.Summary{}, nil
+	}
+	if code := runSource(boundedSource, []string{"export.json", "--enrich", "--recordings-only"}, run); code != 2 {
+		t.Errorf("exit code = %d, want 2", code)
+	}
+	if called {
+		t.Error("the importer ran despite two conflicting mode flags")
 	}
 }

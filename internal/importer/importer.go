@@ -8,6 +8,7 @@ package importer
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -149,6 +150,10 @@ type planner struct {
 	// unmappedGenres collects every distinct source genre string that has no
 	// vocabulary mapping, reported once per run rather than once per book.
 	unmappedGenres map[string]bool
+	// noWorkRows labels the rows a RECORDINGS-ONLY run could not place because
+	// their work is not in the catalogue, reported in aggregate at the end of the
+	// pass (see reportUnmatchedWorks). Empty in every other mode.
+	noWorkRows []string
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -271,11 +276,21 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // the existing catalog, then (on a real run) writes and re-validates the tree.
 // sourceType is the provenance stamped on every created (or enriched) record.
 //
-// The two planning modes are disjoint by design (see enrich.go): the default
-// CREATES records for books the catalogue does not have, while opts.Enrich only
-// fills absent facts on records an ASIN already matches and creates nothing.
+// The three planning modes are disjoint by design, and each is selected by one
+// Options field (they are mutually exclusive):
+//
+//   - default (importer.go): CREATES work/recording/person/series records for
+//     books the catalogue does not have.
+//   - opts.Enrich (enrich.go): fills absent facts on records an ASIN already
+//     matches; creates nothing.
+//   - opts.RecordingsOnly (recordings.go): adds an alternate NARRATION to a work
+//     the catalogue already holds; never creates a work or touches a series.
+//
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
+	if opts.Enrich && opts.RecordingsOnly {
+		return Summary{}, errors.New("enrich and recordings-only are mutually exclusive planning modes")
+	}
 	p := &planner{
 		dataDir:        opts.DataDir,
 		people:         map[string]bool{},
@@ -294,9 +309,12 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p.loadExisting()
 
-	if opts.Enrich {
+	switch {
+	case opts.Enrich:
 		p.planEnrich(books)
-	} else {
+	case opts.RecordingsOnly:
+		p.planRecordings(books)
+	default:
 		p.planCreate(books)
 	}
 	if p.fatal != nil {
@@ -325,14 +343,27 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 // catalogue does not already hold by ASIN becomes work/recording/person/series
 // records, each stamped with the planner's run provenance.
 func (p *planner) planCreate(books []sourceBook) {
-	// At the batch boundary, for every book: (1) derive the abridged tri-state
-	// from the title's edition marker when the source did not state it, then
-	// (2) clean the trailing (Unabridged)/(Abridged) markers off the raw
-	// title/title_short. This is the SINGLE marker-derivation mechanism for ALL
-	// sources (the ABS path already cleans its titles locally to fix its subtitle
-	// split, but never derives abridged), so it must run BEFORE the titles are
-	// mutated. Cleaning once here means downstream work-title resolution and
-	// full-title re-derivation read undecorated titles without re-cleaning.
+	normalizeEditionMarkers(books)
+	titles := resolveWorkTitles(books)
+	for i, b := range books {
+		p.setSource(NormalizeASIN(b.str("asin")))
+		p.addBook(b, titles[i])
+		if p.fatal != nil {
+			return
+		}
+	}
+}
+
+// normalizeEditionMarkers is the batch-boundary title pre-pass every planning
+// mode that reads titles runs first. For every book it: (1) derives the abridged
+// tri-state from the title's edition marker when the source did not state it,
+// then (2) cleans the trailing (Unabridged)/(Abridged) markers off the raw
+// title/title_short. This is the SINGLE marker-derivation mechanism for ALL
+// sources (the ABS path already cleans its titles locally to fix its subtitle
+// split, but never derives abridged), so step 1 must run BEFORE the titles are
+// mutated. Cleaning once here means downstream work-title resolution and
+// full-title re-derivation read undecorated titles without re-cleaning.
+func normalizeEditionMarkers(books []sourceBook) {
 	for i := range books {
 		if books[i].abridged == nil {
 			for _, key := range []string{"title_short", "title"} {
@@ -350,15 +381,6 @@ func (p *planner) planCreate(books []sourceBook) {
 			if cleaned := cleanWorkTitle(raw); cleaned != "" && cleaned != raw {
 				books[i].raw[key] = cleaned
 			}
-		}
-	}
-
-	titles := resolveWorkTitles(books)
-	for i, b := range books {
-		p.setSource(NormalizeASIN(b.str("asin")))
-		p.addBook(b, titles[i])
-		if p.fatal != nil {
-			return
 		}
 	}
 }
@@ -627,9 +649,8 @@ func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []strin
 // same person - the first record (existing catalog first, then batch order)
 // wins and keeps its name; spelling variants never fork a numbered duplicate.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
-	slug := Slugify(name)
-	if slug == "" {
-		slug = "person"
+	slug, fellBack := personSlug(name)
+	if fellBack {
 		warn("name %q produced an empty slug; using %q", name, slug)
 	}
 	if p.people[slug] {
@@ -641,6 +662,19 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	})
 	p.summary.NewPeople++
 	return slug
+}
+
+// personSlug derives a credit name's person identity, substituting the shared
+// "person" fallback when the name slugs away to nothing (a name in a script that
+// folds entirely). fellBack reports that substitution so a caller that CREATES
+// the record can warn about it, while a caller that only MATCHES (slugCredits)
+// stays silent. Both go through here so a name resolves to one identity
+// everywhere.
+func personSlug(name string) (slug string, fellBack bool) {
+	if slug = Slugify(name); slug == "" {
+		return "person", true
+	}
+	return slug, false
 }
 
 // seriesClaim is a book's claim to a position in an already-known series.

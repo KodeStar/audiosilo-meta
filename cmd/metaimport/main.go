@@ -6,7 +6,7 @@
 //
 //	metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]
 //	metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]
-//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich]
+//	metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]
 //	metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]
 //
 // libex-select writes no records: it reduces a full libex export to the
@@ -29,6 +29,16 @@
 // recommended input is still a pre-filtered row set: the libex-select output, or
 // rows filtered to catalogued ASINs at export time. Feeding the raw dump needs a
 // machine sized for it.
+//
+// --recordings-only (libex only) switches to adding ALTERNATE NARRATIONS to
+// works the catalogue already holds: a row is resolved to an existing work by
+// title and author set, and lands as a new recording under it (or its ASIN
+// merges into a matching sibling recording). A row whose work is not here is
+// counted and dropped - the mode never creates a work and never touches a series
+// file. It is what closes the gap the other modes leave: a second narration of a
+// catalogued book matches no ASIN (so --enrich ignores it), fills no free series
+// position (so libex-select excludes it), and would mint a duplicate work on the
+// create path. Mutually exclusive with --enrich.
 package main
 
 import (
@@ -70,12 +80,12 @@ func main() {
 	}
 }
 
-// enrichSource is the one source whose operator permits the ASIN-matched
-// enrichment pass, so --enrich is accepted for it alone. The importer core
-// supports the mode for any source; restricting it here keeps the licensing
-// posture a deliberate, per-source decision rather than a flag anyone can point
-// at any export.
-const enrichSource = "libex"
+// boundedSource is the one source whose operator permits the two
+// catalogue-bounded planning modes (--enrich and --recordings-only), so both
+// flags are accepted for it alone. The importer core supports the modes for any
+// source; restricting them here keeps the licensing posture a deliberate,
+// per-source decision rather than a flag anyone can point at any export.
+const boundedSource = "libex"
 
 // runSource parses the shared flags for a source subcommand and runs its
 // importer (Run for openaudible, RunLibation for libation, RunLibex for libex).
@@ -84,9 +94,10 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	data := fs.String("data", "data", "path to the data directory")
 	dryRun := fs.Bool("dry-run", false, "print the plan without writing any files")
 	date := fs.String("date", "", "imported_at stamp (YYYY-MM-DD); defaults to today (UTC)")
-	// Registered for every source so pointing it at the wrong one produces a
+	// Registered for every source so pointing one at the wrong one produces a
 	// clear refusal instead of flag's bare "not defined" line.
 	enrich := fs.Bool("enrich", false, "fill absent facts on ASIN-matched existing records instead of creating any (libex only)")
+	recordingsOnly := fs.Bool("recordings-only", false, "add alternate narrations to works already in the catalogue; never create a work or touch a series (libex only)")
 
 	// Accept the positional export path either before or after the flags.
 	exportPath, err := parsePositional(fs, args, "<export.json>")
@@ -95,8 +106,17 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		usage()
 		return 2
 	}
-	if *enrich && name != enrichSource {
-		fmt.Fprintf(os.Stderr, "metaimport: --enrich is only supported for the %s source, not %q\n", enrichSource, name)
+	for _, mode := range []struct {
+		flag string
+		on   bool
+	}{{"--enrich", *enrich}, {"--recordings-only", *recordingsOnly}} {
+		if mode.on && name != boundedSource {
+			fmt.Fprintf(os.Stderr, "metaimport: %s is only supported for the %s source, not %q\n", mode.flag, boundedSource, name)
+			return 2
+		}
+	}
+	if *enrich && *recordingsOnly {
+		fmt.Fprintln(os.Stderr, "metaimport: --enrich and --recordings-only are different modes; pass one or the other")
 		return 2
 	}
 
@@ -109,13 +129,14 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 	}
 
 	sum, err := run(exportPath, importer.Options{
-		DataDir:    *data,
-		ImportDate: stamp,
-		DryRun:     *dryRun,
-		Enrich:     *enrich,
+		DataDir:        *data,
+		ImportDate:     stamp,
+		DryRun:         *dryRun,
+		Enrich:         *enrich,
+		RecordingsOnly: *recordingsOnly,
 	})
 
-	printSummary(sum, *dryRun, *enrich)
+	printSummary(sum, *dryRun, *enrich, *recordingsOnly)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 1
@@ -203,29 +224,37 @@ func parsePositional(fs *flag.FlagSet, args []string, label string) (string, err
 	return positional[0], nil
 }
 
-// printSummary renders the run's outcome. Enrichment reports its own counters
-// (it creates nothing, so the create counters are all zero and would only be
-// noise) while sharing the warning list. Its row accounting is deliberately
+// printSummary renders the run's outcome. Each mode reports its own counters -
+// the ones it structurally cannot move are all zero and would only be noise -
+// while sharing the warning list. Enrichment's row accounting is deliberately
 // printed as an identity - rows read = matched + not in the catalogue + skipped
 // at parse - so a row can never go missing without the line failing to add up.
-func printSummary(s importer.Summary, dryRun, enrich bool) {
+func printSummary(s importer.Summary, dryRun, enrich, recordingsOnly bool) {
 	var head string
 	switch {
 	case enrich && dryRun:
 		head = "enrichment plan (dry run, no files written)"
 	case enrich:
 		head = "enriched"
+	case recordingsOnly && dryRun:
+		head = "recordings-only plan (dry run, no files written)"
+	case recordingsOnly:
+		head = "added"
 	case dryRun:
 		head = "plan (dry run, no files written)"
 	default:
 		head = "imported"
 	}
-	if enrich {
+	switch {
+	case enrich:
 		rows := s.Matched + s.NotInCatalog + s.SkippedRows
 		fmt.Printf("%s: %d works, %d recordings; %d works placed in a series; %d rows read = %d matched + %d not in the catalogue + %d skipped at parse; %d warnings\n",
 			head, s.EnrichedWorks, s.EnrichedRecordings, s.SeriesPlacements,
 			rows, s.Matched, s.NotInCatalog, s.SkippedRows, len(s.Warnings))
-	} else {
+	case recordingsOnly:
+		fmt.Printf("%s: %d new recordings, %d new people; %d skipped (already present); %d skipped (work not in the catalogue); %d asins merged into existing recordings; %d warnings\n",
+			head, s.NewRecordings, s.NewPeople, s.Skipped, s.SkippedNoWork, s.MergedASINs, len(s.Warnings))
+	default:
 		fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d asins merged into existing recordings; %d warnings\n",
 			head, s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
 	}
@@ -239,8 +268,10 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  metaimport openaudible <books.json>  [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport libation    <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
 	fmt.Fprintln(os.Stderr, "  metaimport audiosilo-books <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD]")
-	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich]")
+	fmt.Fprintln(os.Stderr, "  metaimport libex       <export.json> [--data data] [--dry-run] [--date YYYY-MM-DD] [--enrich | --recordings-only]")
 	fmt.Fprintln(os.Stderr, "  metaimport libex-select <export.ndjson> -o <subset.ndjson> [--data data] [--max-per-series N]")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "  --enrich (libex only) fills absent facts on ASIN-matched existing records; it never creates.")
+	fmt.Fprintln(os.Stderr, "  --recordings-only (libex only) adds alternate narrations to works already in the catalogue;")
+	fmt.Fprintln(os.Stderr, "    it never creates a work and never touches a series.")
 }

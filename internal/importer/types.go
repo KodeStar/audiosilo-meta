@@ -106,6 +106,13 @@ type Options struct {
 	// and ignored, and a matched row only fills facts the existing records do
 	// not have. Nothing is ever created. See enrich.go.
 	Enrich bool
+	// RecordingsOnly selects the RECORDINGS-ONLY mode instead of the default
+	// create mode: a row is added as an alternate narration under a work the
+	// catalogue already holds (or its ASIN merges into a matching sibling
+	// recording), and a row whose work is not here is counted and dropped. It
+	// never creates a work and never touches a series. Mutually exclusive with
+	// Enrich. See recordings.go.
+	RecordingsOnly bool
 }
 
 // Summary is the outcome counts of a run.
@@ -140,6 +147,12 @@ type Summary struct {
 	// expected outcome for the overwhelming majority of a large export's rows.
 	// Always 0 in create mode.
 	NotInCatalog int
+	// SkippedNoWork counts RECORDINGS-ONLY rows whose work is not in the
+	// catalogue. That mode never creates a work, so those rows are dropped -
+	// which makes this the counter that proves an excerpt, a trivia title or a
+	// book we simply do not hold did NOT fall through to work creation. Always 0
+	// in the other modes.
+	SkippedNoWork int
 	// SkippedRows counts rows the source's PARSE layer refused before planning
 	// ever saw them (no well-formed ASIN, or a marketplace that does not map).
 	// It is what makes the run's accounting reconcile: in enrichment mode the

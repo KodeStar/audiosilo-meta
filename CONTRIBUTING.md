@@ -169,14 +169,27 @@ or release date contradicts the recorded production is not used at all; every
 change is stamped with a `libex-import` source. Rows for books the catalogue
 does not hold are counted and ignored, so a large row set is safe input.
 
+`metaimport libex <rows.json> --recordings-only [--dry-run]` is the
+**alternate-narration** half. The catalogue models one work with many
+recordings, but a second narration of a book already here matches no ASIN (so
+`--enrich` ignores it) and would mint a duplicate work on the create path. This
+mode resolves each row to a work the catalogue already holds - by its cleaned
+title and its exact author set, seeing through a trailing `, Book 2` volume
+marker or a `(Full-Cast Edition)` qualifier - and adds it as a new recording
+under that work, or merges its ASIN into a matching sibling recording. A row
+whose work is not here is counted and dropped: the mode never creates a work and
+never touches a series file, so a large row set is safe input here too. It is
+mutually exclusive with `--enrich`.
+
 `metaimport libex-select <export.ndjson> -o <subset.ndjson> [--max-per-series N]`
 reduces a full catalogue export to the bounded subset the import posture allows:
 rows that COMPLETE series the catalogue already tracks (valid position, slot not
 already taken, language and region mappable, ASIN not already present), with a
 per-series cap for runaway franchises and a report that accounts for every row
 read. The full dump-to-rows operator flow (restore the Postgres dump, export
-NDJSON, select, review, import in tranches, then backfill with `--enrich`) is
-documented in [scripts/README.md](scripts/README.md).
+NDJSON, select, review, import in tranches, backfill with `--enrich`, then pick
+up the alternate narrations with `--recordings-only`) is documented in
+[scripts/README.md](scripts/README.md).
 
 - `--dry-run` prints the plan (how many works, recordings, people, and series
   would be created, how many books were skipped as already present, and any
