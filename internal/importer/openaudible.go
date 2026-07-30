@@ -27,12 +27,20 @@ var wrapperKeys = []string{"Books", "books", "Items", "items", "Library", "libra
 // wrapperKeys. Non-object entries are skipped (same as the site parser).
 // Numbers are preserved as json.Number so integer offsets keep their exact
 // value. label names the source in the error ("books.json", "libation export").
+//
+// Content AFTER the first value is an error, not a silent truncation: two
+// concatenated arrays ("[...][...]") are a mis-assembled export, and importing
+// only the first half of someone's library while reporting success is worse
+// than refusing the file.
 func decodeEntries(data []byte, label string) ([]rawBook, error) {
 	dec := json.NewDecoder(bytes.NewReader(data))
 	dec.UseNumber()
 	var root any
 	if err := dec.Decode(&root); err != nil {
 		return nil, fmt.Errorf("parse %s: %w", label, err)
+	}
+	if dec.More() {
+		return nil, fmt.Errorf("parse %s: trailing content after the first JSON value (concatenated exports?)", label)
 	}
 	arr, ok := root.([]any)
 	if !ok {
@@ -79,9 +87,7 @@ func parseOpenAudible(data []byte) ([]sourceBook, error) {
 func openAudibleToBook(b rawBook) sourceBook {
 	sb := sourceBook{raw: b}
 	if name := b.str("series_name"); name != "" {
-		rawSeq := b.str("series_sequence")
-		pos, ok := NormalizeSequence(rawSeq)
-		sb.series = []seriesRef{{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}}
+		sb.series = []seriesRef{makeSeriesRef(name, b.str("series_sequence"))}
 	}
 	if secs, ok := b.intVal("seconds"); ok && secs > 0 {
 		sb.runtimeMin = int((secs + 30) / 60)
@@ -111,11 +117,27 @@ func (b rawBook) chapters() []rawChapter {
 
 func (c rawChapter) str(key string) string { return coerceStr(c[key]) }
 
+// startMS / lengthMS read a chapter's offsets under either spelling a source
+// documents for them: OpenAudible's snake_case (start_offset_ms / length_ms) or
+// libex's camelCase (startOffsetMs / lengthMs). Accepting both here is what lets
+// each parser hand buildChapters its own chapter rows instead of re-boxing them
+// into the other source's key names.
+func (c rawChapter) startMS() (int64, bool)  { return c.firstInt("start_offset_ms", "startOffsetMs") }
+func (c rawChapter) lengthMS() (int64, bool) { return c.firstInt("length_ms", "lengthMs") }
+
+// firstInt reads the first of keys that is present and non-null.
+func (c rawChapter) firstInt(keys ...string) (int64, bool) {
+	for _, k := range keys {
+		if v, ok := c[k]; ok && v != nil {
+			return coerceInt(v)
+		}
+	}
+	return 0, false
+}
+
 // intVal returns an integer field. ok is false when the value is missing, null,
 // or not parseable as a whole number (a float like 12.9 truncates toward zero).
 func (b rawBook) intVal(key string) (int64, bool) { return coerceInt(b[key]) }
-
-func (c rawChapter) intVal(key string) (int64, bool) { return coerceInt(c[key]) }
 
 // boolPtr returns a tri-state boolean: nil when the field is absent, null, or
 // otherwise not an explicit boolean; a pointer to the value when it is an

@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 
@@ -1086,5 +1087,150 @@ func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	}
 	if len(warned) != 1 || !strings.Contains(warned[0], "empty series name") {
 		t.Errorf("expected one empty-name warning, got %v", warned)
+	}
+}
+
+// snapshotTree reads every file under dataDir into a path -> content map, so a
+// test can assert that a second run changed nothing at all.
+func snapshotTree(t *testing.T, dataDir string) map[string]string {
+	t.Helper()
+	out := map[string]string{}
+	err := filepath.Walk(dataDir, func(p string, info os.FileInfo, err error) error {
+		if err != nil || info.IsDir() {
+			return err
+		}
+		raw, rerr := os.ReadFile(p)
+		if rerr != nil {
+			return rerr
+		}
+		rel, rerr := filepath.Rel(dataDir, p)
+		if rerr != nil {
+			return rerr
+		}
+		out[filepath.ToSlash(rel)] = string(raw)
+		return nil
+	})
+	if err != nil {
+		t.Fatalf("snapshot %s: %v", dataDir, err)
+	}
+	return out
+}
+
+// keysOf renders a snapshot's paths for a failure message.
+func keysOf(snapshot map[string]string) []string {
+	out := make([]string, 0, len(snapshot))
+	for k := range snapshot {
+		out = append(out, k)
+	}
+	sort.Strings(out)
+	return out
+}
+
+func TestRejectedASINStaysAvailable(t *testing.T) {
+	// An ASIN whose region did not map is recorded NOWHERE, so it must not be
+	// claimed in the run's ASIN registry either: a later, well-formed entry for
+	// the same book would otherwise dedupe against a recording that does not
+	// carry the ASIN, and the run would lose it entirely.
+	books := `[
+		{"asin":"B0LOSTASIN","title_short":"Wandering Book","author":"Some Author","narrated_by":"A Reader","language":"english","region":"narnia","release_date":"2021-01-01"},
+		{"asin":"B0LOSTASIN","title_short":"Wandering Book","author":"Some Author","narrated_by":"A Reader","language":"english","region":"us","release_date":"2021-01-01"}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if !hasWarning(sum.Warnings, "not a known marketplace") {
+		t.Errorf("expected a region warning, got %v", sum.Warnings)
+	}
+	if sum.Skipped != 0 {
+		t.Errorf("Skipped = %d; the second entry must not dedupe against an unrecorded ASIN", sum.Skipped)
+	}
+	if sum.MergedASINs != 1 {
+		t.Errorf("MergedASINs = %d, want the good entry's ASIN merged into the recording", sum.MergedASINs)
+	}
+	asins := asinsOf(t, filepath.Join(dataDir, "works/wa/wandering-book/recordings/a-reader-2021.json"))
+	if asins["B0LOSTASIN"] != "us" {
+		t.Errorf("asins = %v, want B0LOSTASIN recorded under us", asins)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestCrossYearSiblingMerges(t *testing.T) {
+	// The recording slug embeds the release YEAR, so a production released in the
+	// US in December and in the UK the following January lands on two unrelated
+	// slug chains. The same-narrator scan therefore looks at ALL of the work's
+	// recordings: the UK re-release must merge its ASIN into the existing
+	// recording, not mint a second one for the same production.
+	books := `[
+		{"asin":"B0DEC20190","title_short":"One Production","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2019-12-15","seconds":36000},
+		{"asin":"B0JAN20200","title_short":"One Production","author":"Some Author","narrated_by":"A Reader","language":"english","region":"UK","release_date":"2020-01-05","seconds":36000}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.MergedASINs != 1 {
+		t.Fatalf("summary = %+v, want 1 work / 1 recording / 1 merged ASIN", sum)
+	}
+	if exists(filepath.Join(dataDir, "works/on/one-production/recordings/a-reader-2020.json")) {
+		t.Errorf("a second recording was minted for the same production")
+	}
+	asins := asinsOf(t, filepath.Join(dataDir, "works/on/one-production/recordings/a-reader-2019.json"))
+	if asins["B0DEC20190"] != "us" || asins["B0JAN20200"] != "uk" {
+		t.Errorf("asins = %v, want both releases on one recording", asins)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("tree failed validation: %v", res.Problems)
+	}
+}
+
+func TestCrossYearDifferentRuntimeStaysDistinct(t *testing.T) {
+	// The runtime guard is still the correctness gate for the widened scan: a
+	// genuinely different production of the same book by the same narrator gets
+	// its own recording even though the scan now considers it a candidate.
+	books := `[
+		{"asin":"B0LONG2019","title_short":"Two Productions","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2019-12-15","seconds":36000},
+		{"asin":"B0SHRT2020","title_short":"Two Productions","author":"Some Author","narrated_by":"A Reader","language":"english","region":"UK","release_date":"2020-01-05","seconds":18000}
+	]`
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewRecordings != 2 || sum.MergedASINs != 0 {
+		t.Fatalf("summary = %+v, want 2 distinct recordings", sum)
+	}
+	if !exists(filepath.Join(dataDir, "works/tw/two-productions/recordings/a-reader-2020.json")) {
+		t.Errorf("the second production did not get its own recording")
+	}
+}
+
+func TestMergedRecordingCarriesISBN(t *testing.T) {
+	// A merged re-release brings its ISBN along: it identifies the same edition,
+	// and no later run would restore a silently dropped one. A duplicate ISBN
+	// (already recorded elsewhere) is still refused, with the warning.
+	dataDir := t.TempDir()
+	seedTree(t, dataDir, map[string]string{
+		"people/so/some-author.json":                       `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}`,
+		"people/a-/a-reader.json":                          `{"id":"a-reader","license":"CC0-1.0","name":"A Reader","sources":[{"type":"user"}]}`,
+		"works/re/rerelease/work.json":                     `{"authors":["some-author"],"id":"rerelease","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Rerelease"}`,
+		"works/re/rerelease/recordings/a-reader-2021.json": `{"asin":[{"asin":"B0FIRST001","region":"us"}],"id":"a-reader-2021","isbn":["9780306406157"],"language":"en","license":"CC0-1.0","narrators":["a-reader"],"sources":[{"type":"user"}],"work":"rerelease"}`,
+		"works/ol/older/work.json":                         `{"authors":["some-author"],"id":"older","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Older"}`,
+		"works/ol/older/recordings/only.json":              `{"id":"only","isbn":["9781234567897"],"language":"en","license":"CC0-1.0","narrators":["a-reader"],"sources":[{"type":"user"}],"work":"older"}`,
+	})
+
+	export := `[{"asin":"B0LIBEX080","title":"Rerelease","region":"uk","language":"english","isbn":["9780007560776","9781234567897"],` +
+		`"authors":[{"name":"Some Author"}],"narrators":[{"name":"A Reader"}],"releaseDate":"2021-05-01T00:00:00Z"}]`
+	sum, err := RunLibex(writeBooks(t, export), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("import: %v", err)
+	}
+	if sum.MergedASINs != 1 || sum.NewRecordings != 0 {
+		t.Fatalf("summary = %+v, want a merge", sum)
+	}
+	if !hasWarning(sum.Warnings, "ISBN 9781234567897 is already recorded") {
+		t.Errorf("expected the duplicate ISBN to be refused, got %v", sum.Warnings)
+	}
+	var rec struct {
+		ISBN []string `json:"isbn"`
+	}
+	readJSON(t, filepath.Join(dataDir, "works/re/rerelease/recordings/a-reader-2021.json"), &rec)
+	if !reflect.DeepEqual(rec.ISBN, []string{"9780306406157", "9780007560776"}) {
+		t.Errorf("isbn = %v, want the incumbent's plus the merged one", rec.ISBN)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("merged tree failed validation: %v", res.Problems)
 	}
 }

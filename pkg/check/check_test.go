@@ -91,6 +91,24 @@ func TestWorkGenresValid(t *testing.T) {
 	}
 }
 
+// TestLibexImportSourceType covers the source-type enum addition the libex
+// importer produces: a record stamped "libex-import" validates, and the stamp
+// survives into the catalog (so a whole source stays auditable and retractable).
+func TestLibexImportSourceType(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["epic-fantasy"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"imported_at":"2026-07-29","ref":"B0LIBEX001","type":"libex-import"}],"title":"Book One"}`
+	writeTree(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("a libex-import source should validate, got: %v", res.Problems)
+	}
+	srcs := res.Catalog.Works[0].Sources
+	if len(srcs) != 1 || srcs[0].Type != "libex-import" || srcs[0].Ref != "B0LIBEX001" {
+		t.Errorf("libex source did not load: %+v", srcs)
+	}
+}
+
 // validCharacters / validRecaps are minimal, valid per-work sidecars for the
 // given work, in canonical (sorted-key) form.
 func validCharacters(work string) string {

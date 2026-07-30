@@ -48,8 +48,6 @@ var (
 	dateFlexRE  = regexp.MustCompile(`^\d{4}(-\d{2}(-\d{2})?)?$`)
 	wikidataRE  = regexp.MustCompile(`^Q\d+$`)
 	olWorkRE    = regexp.MustCompile(`^OL\d+W$`)
-	isbnRE      = regexp.MustCompile(`^(\d{9}[0-9Xx]|\d{13})$`)
-	isbnStripRE = regexp.MustCompile(`[-\s]`)
 	worksPathRE = regexp.MustCompile(`works/[^/]+/([^/]+)`)
 )
 
@@ -63,15 +61,9 @@ func normalizeLanguage(raw string) (string, bool) {
 	return lang, true
 }
 
-// normalizeISBN strips hyphens/spaces and reports whether the remainder is a
-// valid ISBN-10/13.
-func normalizeISBN(raw string) (string, bool) {
-	v := isbnStripRE.ReplaceAllString(strings.TrimSpace(raw), "")
-	if !isbnRE.MatchString(v) {
-		return "", false
-	}
-	return v, true
-}
+// normalizeISBN wraps the importer's ISBN validator, so a typed form field and a
+// bulk import accept (and store) exactly the same values.
+func normalizeISBN(raw string) (string, bool) { return importer.NormalizeISBN(raw) }
 
 // regionAliases maps the region words a submitter is likely to type onto the
 // recording schema's marketplace enum (which uses "uk", not "gb").

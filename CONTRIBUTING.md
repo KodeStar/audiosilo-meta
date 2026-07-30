@@ -151,6 +151,16 @@ go run ./cmd/metaimport libation <path-to/LibationExport.json> --data data --dry
 go run ./cmd/metaimport libation <path-to/LibationExport.json> --data data
 ```
 
+There is also `metaimport libex <rows.json>` for JSON/NDJSON rows exported from
+the Libex catalogue (a public Audible-metadata mirror whose operator permits it).
+Unlike the personal-library paths above, libex imports are **curated batch
+imports**: they follow the bounded posture in [LICENSING.md](LICENSING.md) and
+the batch-import rules in [GOVERNANCE.md](GOVERNANCE.md) (named source, stated
+selection rationale, reviewable tranches - never a catalogue mirror). Retailer
+genre strings are mapped onto the normalized vocabulary in code; anything
+unmapped is dropped with a warning. Selection tooling for working from a full
+catalogue dump (`libex-select`) is a planned follow-up.
+
 - `--dry-run` prints the plan (how many works, recordings, people, and series
   would be created, how many books were skipped as already present, and any
   warnings) **without writing anything**. Run it first.

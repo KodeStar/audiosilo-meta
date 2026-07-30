@@ -45,6 +45,11 @@ func TestMapRegion(t *testing.T) {
 		{"US", "us", true},
 		{" jp ", "jp", true},
 		{"br", "br", true},
+		// ISO-3166 spells the UK marketplace "gb"; the alias resolves here so
+		// every source gets it, not just the one that first hit it.
+		{"gb", "uk", true},
+		{"GB", "uk", true},
+		{" gb ", "uk", true},
 		{"XX", "", false},
 		{"", "", false},
 		{"europe", "", false},
@@ -68,6 +73,15 @@ func TestNormalizeSequence(t *testing.T) {
 		{"1-3.5", "1-3.5", true},
 		{" 2 ", "2", true},
 		{"12-13", "12-13", true},
+		// A position is a STRING, so two spellings of one number would be two
+		// different positions: trailing fractional zeros are canonicalized away
+		// (a Postgres numeric renders book 1 as "1.0"). "10" keeps its zero.
+		{"1.0", "1", true},
+		{"2.50", "2.5", true},
+		{"1.00", "1", true},
+		{"10", "10", true},
+		{"10.0", "10", true},
+		{"1.0-3.50", "1-3.5", true},
 		{"", "", false},
 		{"one", "", false},
 		{"1.2.3", "", false},
@@ -250,5 +264,49 @@ func TestSplitNamesStripsRoles(t *testing.T) {
 	want := []string{"Kirill Klevanski", "Valeria Kornosenko", "J. Kharkova", "The All - Stars"}
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("SplitNames role stripping = %#v, want %#v", got, want)
+	}
+}
+
+func TestISODatePart(t *testing.T) {
+	cases := []struct{ in, want string }{
+		{"2024-12-06T03:00:00", "2024-12-06"},
+		{"2024-12-06T03:00:00Z", "2024-12-06"},
+		// A SQL timestamp renders with a SPACE, not a "T" - reading only the "T"
+		// left the whole string in place, which then failed the date pattern and
+		// dropped the release date silently.
+		{"2019-05-01 00:00:00", "2019-05-01"},
+		{"2019-05-01 00:00:00+00", "2019-05-01"},
+		{"2024-12-06", "2024-12-06"},
+		{"  2024-12-06  ", "2024-12-06"},
+		{"", ""},
+	}
+	for _, c := range cases {
+		if got := isoDatePart(c.in); got != c.want {
+			t.Errorf("isoDatePart(%q) = %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
+func TestNormalizeISBN(t *testing.T) {
+	cases := []struct {
+		in     string
+		want   string
+		wantOK bool
+	}{
+		{"9781234567897", "9781234567897", true},
+		// Printed with hyphens (the form field has always accepted this shape;
+		// a bulk import used to reject it).
+		{"978-1-234-56789-7", "9781234567897", true},
+		{" 978 1 234 56789 7 ", "9781234567897", true},
+		{"030640615X", "030640615X", true},
+		{"123", "", false},
+		{"", "", false},
+		{"97812345678979", "", false},
+	}
+	for _, c := range cases {
+		got, ok := NormalizeISBN(c.in)
+		if got != c.want || ok != c.wantOK {
+			t.Errorf("NormalizeISBN(%q) = (%q,%v), want (%q,%v)", c.in, got, ok, c.want, c.wantOK)
+		}
 	}
 }
