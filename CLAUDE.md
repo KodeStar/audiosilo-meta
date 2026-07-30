@@ -353,7 +353,11 @@ export type), surfacing the importer warnings.
   as Phase 3 (below). Also: **contributor role modeling** -
   translator/introduction/editor credits are currently plain people on the work
   (the importer strips the role qualifier from the name); a future schema field
-  should carry the role.
+  should carry the role. Related: **corporate credits** (Marvel Press, Lucasfilm
+  Press, Audible Studios, Full Cast) are modeled as person records when they are
+  the author/narrator of record - an established pattern from the earliest
+  imports; if roles ever get modeled, an entity-kind field belongs in the same
+  design.
 - **Phase 3 (pipeline landed)**: the source -> characters/recaps extraction
   pipeline: `cmd/metaextract` (epub split + n-gram check) plus the documented
   agent process in **[EXTRACTION.md](EXTRACTION.md)** (AUTHORING.md's sibling:
