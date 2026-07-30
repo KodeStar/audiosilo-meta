@@ -7,13 +7,16 @@
 -- podcasts, periodicals, parts, bundles and series containers are out).
 -- is_vvab is nullable, and NOT NULL is NULL, not TRUE - so `IS NOT TRUE` is what
 -- keeps a row whose AI-narration flag was never recorded.
+-- books.isbn is deliberately NOT exported: it is sometimes the PRINT edition's
+-- ISBN (verified against live records), and recording.isbn is a hard dedup key
+-- upstream - a wrong one would mechanically refuse legitimate future
+-- narrations. Same omit-never-guess call the site's /add prefill makes.
 SELECT json_build_object(
   'asin', b.asin,
   'title', b.title,
   'subtitle', b.subtitle,
   'region', b.region,
   'publisher', b.publisher,
-  'isbn', b.isbn,
   'language', b.language,
   'bookFormat', b.book_format,
   'releaseDate', b.release_date,
