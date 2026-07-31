@@ -40,10 +40,13 @@ type Store struct {
 	// pulls are targeted removals used by relocation: an entry has to leave the
 	// wrong pack, which is not the pack its slug looks up to.
 	pulls map[Family]map[string]map[string]bool // family -> pack path -> slugs
+	// remove holds whole files Heal set aside: a file that is not a bound is
+	// deleted once its entries have been re-queued elsewhere.
+	remove map[Family]map[string]bool // family -> pack path
 	// touch marks packs no queued write reached that must still be reshaped on
 	// Flush, which is how an entry-count split reaches a pack nobody wrote to.
 	touch map[Family]map[string]PackRef
-	refs  map[string]PackRef // pack path -> ref, for pulls and touches
+	refs  map[string]PackRef // pack path -> ref, for packs the queue created
 }
 
 type op struct {
@@ -62,6 +65,7 @@ func Open(dataDir string) (*Store, error) {
 		cache:   map[string]*File{},
 		ops:     map[Family]map[string]op{},
 		pulls:   map[Family]map[string]map[string]bool{},
+		remove:  map[Family]map[string]bool{},
 		touch:   map[Family]map[string]PackRef{},
 		refs:    map[string]PackRef{},
 	}
@@ -80,6 +84,31 @@ func Open(dataDir string) (*Store, error) {
 			return nil, err
 		}
 		s.trees[d.Family] = t
+	}
+	return s, nil
+}
+
+// OpenFor opens dataDir and refuses it unless every named family is one this
+// store may write: a family still in the file-per-entity layout fails with an
+// ErrLegacyLayout-wrapped error naming it.
+//
+// It is what a writer wants. The migration is a flag day (PACK-SPEC.md), so a
+// legacy family is a run to refuse rather than a second write path to maintain,
+// and refusing at Open - before anything is planned - means a refused run has
+// written nothing.
+func OpenFor(dataDir string, families ...Family) (*Store, error) {
+	s, err := Open(dataDir)
+	if err != nil {
+		return nil, fmt.Errorf("open %s: %w", dataDir, err)
+	}
+	for _, f := range families {
+		if _, ok := Def(f); !ok {
+			return nil, fmt.Errorf("unknown pack family %q", f)
+		}
+		if s.Layout(f) == LayoutLegacy {
+			return nil, fmt.Errorf("%s/%s: %w; convert the tree to the pack layout first",
+				dataDir, f.Root(), ErrLegacyLayout)
+		}
 	}
 	return s, nil
 }
@@ -166,15 +195,6 @@ func (s *Store) Upsert(f Family, slug string, entry json.RawMessage) error {
 	return nil
 }
 
-// UpsertValue marshals v and queues it under slug.
-func (s *Store) UpsertValue(f Family, slug string, v any) error {
-	raw, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-	return s.Upsert(f, slug, raw)
-}
-
 // Delete queues the removal of slug's entry. Nothing is written until Flush.
 func (s *Store) Delete(f Family, slug string) error {
 	if _, err := s.def(f); err != nil {
@@ -203,14 +223,8 @@ func (s *Store) Pack(ref PackRef) (*File, error) {
 		return nil, err
 	}
 	want := ref.Path()
-	found := false
-	for _, p := range s.trees[ref.Family].Packs() {
-		if p.Path() == want {
-			found = true
-			break
-		}
-	}
-	if !found {
+	t := s.trees[ref.Family]
+	if i := t.Index(ref.Bound); i < 0 || t.Packs()[i].Path() != want {
 		return nil, fmt.Errorf("no such pack %s", want)
 	}
 	f, err := s.load(ref)
@@ -239,29 +253,35 @@ func (s *Store) Touch(ref PackRef) error {
 	return nil
 }
 
-// load reads a pack, caching it. A pack file that does not exist loads as an
-// empty pack, so a first Upsert into a new family works without ceremony.
+// load reads the pack at ref, remembering the ref so Flush can place a pack the
+// queue created.
 func (s *Store) load(ref PackRef) (*File, error) {
-	p := ref.Path()
-	if f, ok := s.cache[p]; ok {
+	s.refs[ref.Path()] = ref
+	return s.loadPath(ref.Path())
+}
+
+// loadPath reads a file by its data-relative path, caching it. A file that does
+// not exist loads as an empty pack, so a first Upsert into a new family works
+// without ceremony. Paths rather than refs, because a file Heal has to salvage
+// need not sit at a pack location at all.
+func (s *Store) loadPath(rel string) (*File, error) {
+	if f, ok := s.cache[rel]; ok {
 		return f, nil
 	}
-	raw, err := os.ReadFile(filepath.Join(s.dir, filepath.FromSlash(p)))
+	raw, err := os.ReadFile(filepath.Join(s.dir, filepath.FromSlash(rel)))
 	if err != nil {
 		if os.IsNotExist(err) {
 			f := NewFile()
-			s.cache[p] = f
-			s.refs[p] = ref
+			s.cache[rel] = f
 			return f, nil
 		}
 		return nil, err
 	}
 	f, err := Parse(raw)
 	if err != nil {
-		return nil, fmt.Errorf("%s: %w", p, err)
+		return nil, fmt.Errorf("%s: %w", rel, err)
 	}
-	s.cache[p] = f
-	s.refs[p] = ref
+	s.cache[rel] = f
 	return f, nil
 }
 
@@ -275,13 +295,23 @@ type Written struct {
 
 // planPack is one pack's state while Flush works out the family's final shape.
 type planPack struct {
-	origRef  PackRef // zero for a pack that does not exist on disk yet
-	origPath string  // "" for a pack that does not exist on disk yet
-	dir      string
-	bound    string
-	file     *File // nil while the pack is unread and unchanged
-	size     int
-	dirty    bool
+	// origRef is where the pack sits on disk now. Its zero value (an empty
+	// bound, which no pack may carry) marks a pack the queue created.
+	origRef PackRef
+	dir     string
+	bound   string
+	file    *File // nil while the pack is unread and unchanged
+	size    int
+	dirty   bool
+}
+
+// orig returns the pack's current path on disk, empty for one that does not
+// exist yet.
+func (p planPack) orig() string {
+	if p.origRef.Bound == "" {
+		return ""
+	}
+	return p.origRef.Path()
 }
 
 type packGroup struct {
@@ -317,6 +347,7 @@ func (s *Store) Flush() (Written, error) {
 	sort.Strings(w.Deleted)
 	s.ops = map[Family]map[string]op{}
 	s.pulls = map[Family]map[string]map[string]bool{}
+	s.remove = map[Family]map[string]bool{}
 	s.touch = map[Family]map[string]PackRef{}
 	s.cache = map[string]*File{}
 	s.refs = map[string]PackRef{}
@@ -325,7 +356,8 @@ func (s *Store) Flush() (Written, error) {
 
 func (s *Store) flushFamily(def FamilyDef) (Written, error) {
 	f := def.Family
-	if len(s.ops[f]) == 0 && len(s.pulls[f]) == 0 && len(s.touch[f]) == 0 && s.trees[f].Len() == 0 {
+	if len(s.ops[f]) == 0 && len(s.pulls[f]) == 0 && len(s.remove[f]) == 0 &&
+		len(s.touch[f]) == 0 && s.trees[f].Len() == 0 {
 		return Written{}, nil
 	}
 
@@ -378,18 +410,18 @@ func (s *Store) applyPulls(f Family, touched map[string]bool) error {
 	}
 	sort.Strings(paths)
 	for _, p := range paths {
-		ref, ok := s.refs[p]
-		if !ok {
-			return fmt.Errorf("relocation target %s was never loaded", p)
-		}
-		file, err := s.load(ref)
+		file, err := s.loadPath(p)
 		if err != nil {
 			return err
 		}
 		for slug := range s.pulls[f][p] {
 			file.Remove(slug)
 		}
-		touched[p] = true
+		// A file already set aside for deletion is not part of the plan; its
+		// entries were re-queued elsewhere and its bytes are never rewritten.
+		if !s.removed(f, p) {
+			touched[p] = true
+		}
 	}
 	return nil
 }
@@ -427,7 +459,10 @@ func (s *Store) planFamily(def FamilyDef, touched map[string]bool) ([]planPack, 
 	f := def.Family
 	byPath := map[string]planPack{}
 	for _, ref := range s.trees[f].Packs() {
-		byPath[ref.Path()] = planPack{origRef: ref, origPath: ref.Path(), dir: ref.Dir, bound: ref.Bound}
+		if s.removed(f, ref.Path()) {
+			continue // set aside by Heal: its entries have already moved
+		}
+		byPath[ref.Path()] = planPack{origRef: ref, dir: ref.Dir, bound: ref.Bound}
 	}
 	for p := range touched {
 		ref := s.refs[p]
@@ -452,7 +487,7 @@ func (s *Store) planFamily(def FamilyDef, touched map[string]bool) ([]planPack, 
 			}
 			pp.size = size
 		} else {
-			info, err := os.Stat(filepath.Join(s.dir, filepath.FromSlash(pp.origPath)))
+			info, err := os.Stat(filepath.Join(s.dir, filepath.FromSlash(pp.orig())))
 			if err != nil {
 				return nil, err
 			}
@@ -512,7 +547,7 @@ func (s *Store) reshape(def FamilyDef, packs []planPack) ([]planPack, error) {
 			}
 			np := planPack{dir: pp.dir, bound: part.Bound, file: part.File, size: size, dirty: true}
 			if i == 0 {
-				np.origRef, np.origPath = pp.origRef, pp.origPath
+				np.origRef = pp.origRef
 			}
 			split = append(split, np)
 		}
@@ -544,8 +579,15 @@ func (s *Store) reshape(def FamilyDef, packs []planPack) ([]planPack, error) {
 
 // rebind lowers a pack's bound to its container's, which a deletion of the
 // lowest pack forces. Widening downward is always safe: nothing covered the
-// range below it.
+// range below it. RAISING a bound is not, and is refused - every entry below the
+// new bound would be orphaned, and the pack's own first entry would fall outside
+// it. The survey rejects the misplacements that used to reach here, so this is
+// the enforcement of a documented invariant rather than a path anyone takes.
 func (s *Store) rebind(pp *planPack, bound string) error {
+	if bound > pp.bound {
+		return fmt.Errorf("%s: refusing to raise the pack bound to %q, which would orphan every entry below it",
+			pp.orig(), bound)
+	}
 	if pp.file == nil {
 		file, err := s.load(pp.origRef)
 		if err != nil {
@@ -561,14 +603,22 @@ func (s *Store) rebind(pp *planPack, bound string) error {
 // commit writes the final shape and removes the files it replaced.
 func (s *Store) commit(def FamilyDef, before, after []planPack) (Written, error) {
 	var w Written
-	keep := map[string]bool{}
+	seen := map[string]bool{}
 	refs := make([]PackRef, 0, len(after))
 	for _, pp := range after {
 		ref := PackRef{Family: def.Family, Dir: pp.dir, Bound: pp.bound}
 		refs = append(refs, ref)
 		p := ref.Path()
-		keep[p] = true
-		if !pp.dirty && p == pp.origPath {
+		// Two planned packs on one path would make the second write silently
+		// replace the first, losing every entry the first held. Nothing should
+		// be able to produce it once the survey has classified the family, so
+		// this is the backstop that turns a future bug into a failed run
+		// instead of missing data.
+		if seen[p] {
+			return Written{}, fmt.Errorf("%s: two packs planned onto one path, refusing to write", p)
+		}
+		seen[p] = true
+		if !pp.dirty && p == pp.orig() {
 			continue
 		}
 		file := pp.file
@@ -602,14 +652,21 @@ func (s *Store) commit(def FamilyDef, before, after []planPack) (Written, error)
 		old[ref.Path()] = true
 	}
 	for _, pp := range before {
-		if pp.origPath != "" {
-			old[pp.origPath] = true
+		if o := pp.orig(); o != "" {
+			old[o] = true
 		}
 	}
+	for p := range s.remove[def.Family] {
+		old[p] = true
+	}
+	gone := make([]string, 0, len(old))
 	for p := range old {
-		if keep[p] {
-			continue
+		if !seen[p] {
+			gone = append(gone, p)
 		}
+	}
+	sort.Strings(gone)
+	for _, p := range gone {
 		if err := os.Remove(filepath.Join(s.dir, filepath.FromSlash(p))); err != nil && !os.IsNotExist(err) {
 			return Written{}, err
 		}
