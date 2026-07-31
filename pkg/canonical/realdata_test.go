@@ -13,7 +13,7 @@ func TestRealDataCanonical(t *testing.T) {
 	if _, err := os.Stat(dataDir); err != nil {
 		t.Skipf("no data tree at %s: %v", dataDir, err)
 	}
-	bad, err := CheckTree(dataDir)
+	bad, _, err := CheckTree(dataDir)
 	if err != nil {
 		t.Fatal(err)
 	}
