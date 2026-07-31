@@ -1,6 +1,7 @@
 package pack
 
 import (
+	"bytes"
 	"encoding/json"
 	"os"
 )
@@ -47,16 +48,39 @@ func DetectLayout(dataDir string, f Family) (Layout, error) {
 	if err != nil {
 		return LayoutAbsent, err
 	}
-	var top map[string]json.RawMessage
-	if err := json.Unmarshal(raw, &top); err != nil {
-		// An unparseable file identifies nothing. Call it legacy so the
-		// per-file reader reports the JSON error against the file itself.
-		return LayoutLegacy, nil
-	}
-	if _, ok := top["entries"]; ok {
+	if hasEntriesKey(json.NewDecoder(bytes.NewReader(raw))) {
 		return LayoutPack, nil
 	}
 	return LayoutLegacy, nil
+}
+
+// hasEntriesKey reports whether the next JSON value is an object with a
+// top-level "entries" member. It reads keys only - the values are skipped - so
+// identifying the layout costs a token scan of one object rather than decoding
+// a whole pack. A file it cannot read identifies nothing and reads as legacy,
+// where the per-file reader reports the JSON error against the file itself.
+func hasEntriesKey(dec *json.Decoder) bool {
+	tok, err := dec.Token()
+	if err != nil {
+		return false
+	}
+	if d, ok := tok.(json.Delim); !ok || d != '{' {
+		return false
+	}
+	for dec.More() {
+		kt, err := dec.Token()
+		if err != nil {
+			return false
+		}
+		if key, _ := kt.(string); key == "entries" {
+			return true
+		}
+		var skip json.RawMessage
+		if err := dec.Decode(&skip); err != nil {
+			return false
+		}
+	}
+	return false
 }
 
 // Detect reports the layout of every family under dataDir.
