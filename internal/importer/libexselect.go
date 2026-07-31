@@ -494,7 +494,7 @@ func (idx seriesIndex) match(refs []seriesRef) (slug string, matched seriesRef, 
 
 // find resolves a series NAME to the catalogue slug it would import into. It
 // walks exactly the candidate chain the importer's findSeries walks - the same
-// numberedSlugAt formula, so the two cannot drift apart - matching on the stored
+// NumberedSlugAt formula, so the two cannot drift apart - matching on the stored
 // name case-insensitively, so a row is judged "completes a series we have" by
 // the same rule that will later place it there. Keying on the slug alone would
 // wrongly match a numeric-suffix collision between two different-named series.
@@ -504,7 +504,7 @@ func (idx seriesIndex) find(name string) (string, bool) {
 		base = "series"
 	}
 	for i := 0; ; i++ {
-		slug := numberedSlugAt(base, i)
+		slug := NumberedSlugAt(base, i)
 		stored, exists := idx.bySlug[slug]
 		if !exists {
 			return "", false

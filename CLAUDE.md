@@ -237,8 +237,15 @@ work from the **full title** instead, so distinct volumes never merge - a batch
 pre-pass (grouping by title slug only, since Audible's author field varies per
 volume) detects this before any slug is claimed; different-author title
 collisions get an author suffix (numeric only as last resort); series collide to
-numeric. A work title is **cleaned of a trailing `(Unabridged)`/`(Abridged)`
-edition marker before identity** (`cleanWorkTitle`), so "Mageling" and "Mageling
+numeric. Every composed slug is **bounded to `MaxSlugLen` by
+`BoundedSlugTail`/`NumberedSlugAt`** (shared by the work, recording and series
+chains and by `internal/issueform`): the TITLE (or narrator, or series name) is
+shortened at a word boundary and the disambiguating credit/year/number always
+survives, so a long name can never mint an invalid id - and because truncation
+can make two long titles by one author meet on one slug, a merge onto a
+shortened candidate warns. A work title is **cleaned of a trailing
+`(Unabridged)`/`(Abridged)` edition marker before identity**
+(`cleanWorkTitle`), so "Mageling" and "Mageling
 (Unabridged)" are the same work - the stripped marker is not lost: it seeds the
 recording's tri-state `abridged` when the source did not state it
 (`abridgedFromMarker`; the title printing the edition is a source statement, so

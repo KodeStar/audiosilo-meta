@@ -238,14 +238,18 @@ func abridgedFromForm(v string) *bool {
 }
 
 // uniqueRecordingSlug derives a recording slug from the first narrator plus the
-// release year, and disambiguates against a work's existing recordings.
+// release year, and disambiguates against a work's existing recordings. It
+// composes the same bounded chain the bulk importer's addRecording walks
+// (importer.BoundedSlugTail / importer.NumberedSlugAt), so a long full-cast or
+// corporate narrator credit yields a valid id here too rather than an over-long
+// one the composer's own validation would then reject.
 func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, releaseDate string) string {
 	base := "unknown-narrator"
 	if len(narratorSlugs) > 0 && narratorSlugs[0] != "" {
 		base = narratorSlugs[0]
 	}
 	if yr := importer.YearOf(releaseDate); yr != "" {
-		base += "-" + yr
+		base = importer.BoundedSlugTail(base, "-"+yr)
 	}
 	existing := map[string]bool{}
 	if w := c.works[workSlug]; w != nil {
@@ -253,11 +257,11 @@ func (c *composer) uniqueRecordingSlug(workSlug string, narratorSlugs []string, 
 			existing[r.ID] = true
 		}
 	}
-	slug := base
-	for i := 2; existing[slug]; i++ {
-		slug = base + "-" + strconv.Itoa(i)
+	for i := 0; ; i++ {
+		if slug := importer.NumberedSlugAt(base, i); !existing[slug] {
+			return slug
+		}
 	}
-	return slug
 }
 
 // placeInSeries adds the work to the named series (creating it or extending an

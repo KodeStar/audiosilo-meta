@@ -413,32 +413,46 @@ func Slugify(s string) string {
 	return slug
 }
 
-// boundedSlugTail joins a base slug and a disambiguating tail (an author credit,
+// BoundedSlugTail joins a base slug and a disambiguating tail (an author credit,
 // a release year, a numeric collision suffix) into a slug of at most
-// MaxSlugLen, shortening only the BASE. The tail survives intact by design: it
-// is what tells two candidates apart, so cutting it would collapse a
-// collision chain into one repeated slug - the defect this exists to prevent.
+// MaxSlugLen, shortening only the BASE. The tail's END survives every regime by
+// design: it carries whatever tells one candidate from the next, so cutting it
+// would collapse a collision chain onto one repeated slug - the defect this
+// exists to prevent.
 //
 // The base is cut at a hyphen (word) boundary when one leaves room, which also
 // keeps the join a valid slug; a base whose leading word alone overruns the room
 // is hard-cut instead, with the cut edge trimmed so no stray hyphen meets the
 // tail. Callers pass a NONEMPTY base that is already a valid slug (every caller
 // substitutes a fallback token for an empty Slugify result), so the result can
-// never be empty or start with a hyphen.
-func boundedSlugTail(base, tail string) string {
+// never be empty or start with a hyphen. Slugs are ASCII by construction
+// (Slugify folds everything else away), so every cut here is a byte index that
+// cannot split a rune.
+//
+// Bounding does NOT make a candidate globally unique: two bases agreeing up to
+// the cut produce the same candidate. Chain walkers are built for that - see
+// NumberedSlugAt and workSlugAt.
+func BoundedSlugTail(base, tail string) string {
 	if slug, ok := wordBoundedSlugTail(base, tail); ok {
 		return slug
 	}
 	room := model.MaxSlugLen - len(tail)
 	if room <= 0 {
-		// A tail that alone fills the cap leaves nothing of the base; a caller
-		// that can shorten its own tail does so before calling (see workSlugAt).
-		return strings.Trim(tail[:model.MaxSlugLen], "-")
+		// Defensive regime no current caller reaches (the longest tail any of them
+		// composes is an author credit plus a numeric suffix, ~53 bytes): a tail
+		// that alone fills the cap leaves nothing of the base, and the suffix lives
+		// at the tail's END, so keep the END and drop the tail's own head - at a
+		// hyphen boundary when there is one.
+		cut := len(tail) - model.MaxSlugLen
+		if b := strings.IndexByte(tail[cut:], '-'); b >= 0 {
+			cut += b
+		}
+		return strings.Trim(tail[cut:], "-")
 	}
 	return strings.TrimRight(base[:room], "-") + tail
 }
 
-// wordBoundedSlugTail is boundedSlugTail's whole-words half: it reports the
+// wordBoundedSlugTail is BoundedSlugTail's whole-words half: it reports the
 // joined slug when base+tail fits within MaxSlugLen outright or after cutting
 // base at a hyphen boundary, and ok=false when only a hard cut can fit it.
 // Callers that want to shrink their own tail before conceding to a hard cut ask
@@ -456,17 +470,24 @@ func wordBoundedSlugTail(base, tail string) (string, bool) {
 	return "", false
 }
 
-// numberedSlugAt is the numeric collision-suffix formula shared by the recording
+// NumberedSlugAt is the numeric collision-suffix formula shared by the recording
 // and series candidate chains: base for the first candidate, then base-2,
 // base-3, ... with the suffix bounded to MaxSlugLen. Every walker of a chain
 // (getOrCreateSeries and its read-only twins findSeries and seriesIndex.find)
 // must go through this one implementation, or two of them would disagree about
 // which slug a name resolves to.
-func numberedSlugAt(base string, i int) string {
+//
+// The NUMBERED candidates are pairwise distinct: each ends in its own "-<n>", so
+// two of them could only match if a hyphen matched a digit. Candidate 0 (the
+// bare base) is not covered by that argument - a base that itself ends in "-<n>"
+// coincides with the n'th candidate - which costs a walk one wasted iteration on
+// a slug it has already tested, and nothing more: the walk stops at the first
+// FREE slug either way.
+func NumberedSlugAt(base string, i int) string {
 	if i == 0 {
 		return base
 	}
-	return boundedSlugTail(base, fmt.Sprintf("-%d", i+1))
+	return BoundedSlugTail(base, fmt.Sprintf("-%d", i+1))
 }
 
 // isCombiningMark reports whether r is a Unicode combining diacritical mark
