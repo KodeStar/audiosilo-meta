@@ -70,7 +70,7 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 
 	// Validate it is well-formed JSON and normalize the work backref so the
 	// sidecar's entry-key invariant holds regardless of what the file claimed.
-	obj, err := decodeObject(raw)
+	obj, err := pack.DecodeEntry(raw)
 	if err != nil {
 		c.fail(StatusInvalid, "the attached %s is not valid JSON: %v", names.fileName, err)
 		return

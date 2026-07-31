@@ -127,11 +127,15 @@ func runSource(name string, args []string, run func(string, importer.Options) (i
 		Mode:       mode,
 	})
 
-	printSummary(sum, *dryRun, mode)
+	// The summary prints only on success. A run can fail BEFORE it plans anything
+	// - a data tree still in the file-per-entity layout is refused at open - and
+	// a "0 new works, 0 new recordings" plan line is fiction there, read as a
+	// result rather than as a run that never happened.
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "metaimport:", err)
 		return 1
 	}
+	printSummary(sum, *dryRun, mode)
 	return 0
 }
 

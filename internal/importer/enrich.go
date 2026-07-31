@@ -28,11 +28,15 @@ import "strings"
 // present is not rewritten - so an unchanged input queues zero writes and a
 // second identical run is a full no-op.
 
-// recRef locates a recording by its work and recording slugs (the pack entry it
+// RecRef locates a recording by its work and recording slugs (the pack entry it
 // sits in is derived from the pair on demand, never stored).
-type recRef struct {
-	work string
-	rec  string
+//
+// It is exported so internal/issueform can share it rather than redeclare the
+// same pair: both writers address a recording the same way, because a recording
+// has no identity of its own - it is a key inside its work's composite entry.
+type RecRef struct {
+	Work string
+	Rec  string
 }
 
 // planEnrich is the enrichment planning pass: each row is matched to a
@@ -68,8 +72,8 @@ func (p *planner) enrichBook(b sourceBook, asin string) {
 	if !p.enrichRecording(b, ref, warn) {
 		return
 	}
-	p.enrichWork(b, ref.work)
-	p.enrichSeries(b, ref.work, warn)
+	p.enrichWork(b, ref.Work)
+	p.enrichSeries(b, ref.Work, warn)
 }
 
 // enrichRecording fills the recording facts the matched record does not carry,
@@ -83,8 +87,8 @@ func (p *planner) enrichBook(b sourceBook, asin string) {
 // narrators (a differing credit list means a different production, not a missing
 // fact), and asin[] (the row's own ASIN is by definition already recorded -
 // that is how we found this file).
-func (p *planner) enrichRecording(b sourceBook, ref recRef, warn func(string, ...any)) (usable bool) {
-	entry, raw := p.recordingRaw(ref.work, ref.rec)
+func (p *planner) enrichRecording(b sourceBook, ref RecRef, warn func(string, ...any)) (usable bool) {
+	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
 	if raw == nil {
 		return false
 	}
@@ -134,7 +138,7 @@ func (p *planner) enrichRecording(b sourceBook, ref recRef, warn func(string, ..
 		return true
 	}
 	p.stampSource(raw)
-	p.putWorkEntry(ref.work, entry)
+	p.putWorkEntry(ref.Work, entry)
 	p.summary.EnrichedRecordings++
 	return true
 }

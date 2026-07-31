@@ -97,7 +97,7 @@ func (c *composer) addWork(s sections) {
 	// People.
 	authorSlugs := c.slugsFor(authorNames, sourceRef)
 	narratorSlugs := c.slugsFor(narratorNames, sourceRef)
-	if c.status == StatusInvalid {
+	if c.failed() {
 		return
 	}
 
@@ -117,7 +117,12 @@ func (c *composer) addWork(s sections) {
 		}
 	}
 	work.Xref = c.buildWorkXref(s)
-	c.putEntry(pack.FamilyWorks, workSlug, work)
+	// putNewEntry, not putEntry: c.works comes from a best-effort catalogue load,
+	// so a work the loader could not decode passes the duplicate check above, and
+	// a plain upsert would replace its whole composite entry - recordings and all.
+	if !c.putNewEntry(pack.FamilyWorks, workSlug, work) {
+		return
+	}
 
 	// First recording.
 	c.emitRecording(workSlug, lang, narratorSlugs, asins, recISBNs, s, sourceRef)
@@ -235,12 +240,10 @@ func (c *composer) putRecording(workSlug, recSlug string, rec any) {
 		c.fail(StatusInvalid, "work %q has no entry to attach a recording to", workSlug)
 		return
 	}
-	recs, _ := entry["recordings"].(map[string]any)
-	if recs == nil {
-		recs = map[string]any{}
-		entry["recordings"] = recs
+	if err := pack.SetRecording(entry, recSlug, rec); err != nil {
+		c.fail(StatusInvalid, "works entry %q: %v", workSlug, err)
+		return
 	}
-	recs[recSlug] = rec
 	c.putEntry(pack.FamilyWorks, workSlug, entry)
 }
 
@@ -321,7 +324,7 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 	}
 
 	// New series entry with this one work.
-	c.putEntry(pack.FamilySeries, seriesSlug, outSeries{
+	c.putNewEntry(pack.FamilySeries, seriesSlug, outSeries{
 		ID: seriesSlug, Name: name, License: licenseCC0,
 		Works:   []outSeriesWork{{Work: workSlug, Position: pos}},
 		Sources: c.sources(sourceRef),

@@ -47,7 +47,7 @@ func (c *composer) addRecording(s sections) {
 	}
 
 	narratorSlugs := c.slugsFor(narratorNames, sourceRef)
-	if c.status == StatusInvalid {
+	if c.failed() {
 		return
 	}
 
@@ -56,7 +56,7 @@ func (c *composer) addRecording(s sections) {
 	for _, r := range work.Recordings {
 		if importer.SameSet(importer.ToSet(r.Narrators), want) {
 			c.fail(StatusDuplicate, "a recording with these narrators already exists at %s",
-				c.recLocation(recRef{work: workSlug, rec: r.ID}))
+				c.recLocation(recRef{Work: workSlug, Rec: r.ID}))
 			return
 		}
 	}
