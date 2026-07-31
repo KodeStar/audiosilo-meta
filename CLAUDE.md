@@ -153,6 +153,7 @@ cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machin
 pkg/model           PUBLIC entity structs, slug/shard rules, location parsing (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
 pkg/check           PUBLIC schema validation + integrity/uniqueness/chapter/series rules
+pkg/pack            PUBLIC pack-file storage: family/cap definitions, bound math + binary-search lookup, pack parse/serialize (canonical, raw entries), median split + directory split, the read-through Store (queued-write-first reads, Flush performs due splits), relocation self-healing, and legacy/pack layout detection. The one shared implementation every reader and writer builds on (see ../PACK-SPEC.md)
 pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
                     (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
