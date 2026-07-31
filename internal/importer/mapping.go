@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 	"unicode"
@@ -410,6 +411,62 @@ func Slugify(s string) string {
 		slug = strings.Trim(slug[:model.MaxSlugLen], "-")
 	}
 	return slug
+}
+
+// boundedSlugTail joins a base slug and a disambiguating tail (an author credit,
+// a release year, a numeric collision suffix) into a slug of at most
+// MaxSlugLen, shortening only the BASE. The tail survives intact by design: it
+// is what tells two candidates apart, so cutting it would collapse a
+// collision chain into one repeated slug - the defect this exists to prevent.
+//
+// The base is cut at a hyphen (word) boundary when one leaves room, which also
+// keeps the join a valid slug; a base whose leading word alone overruns the room
+// is hard-cut instead, with the cut edge trimmed so no stray hyphen meets the
+// tail. Callers pass a NONEMPTY base that is already a valid slug (every caller
+// substitutes a fallback token for an empty Slugify result), so the result can
+// never be empty or start with a hyphen.
+func boundedSlugTail(base, tail string) string {
+	if slug, ok := wordBoundedSlugTail(base, tail); ok {
+		return slug
+	}
+	room := model.MaxSlugLen - len(tail)
+	if room <= 0 {
+		// A tail that alone fills the cap leaves nothing of the base; a caller
+		// that can shorten its own tail does so before calling (see workSlugAt).
+		return strings.Trim(tail[:model.MaxSlugLen], "-")
+	}
+	return strings.TrimRight(base[:room], "-") + tail
+}
+
+// wordBoundedSlugTail is boundedSlugTail's whole-words half: it reports the
+// joined slug when base+tail fits within MaxSlugLen outright or after cutting
+// base at a hyphen boundary, and ok=false when only a hard cut can fit it.
+// Callers that want to shrink their own tail before conceding to a hard cut ask
+// this first.
+func wordBoundedSlugTail(base, tail string) (string, bool) {
+	if len(base)+len(tail) <= model.MaxSlugLen {
+		return base + tail, true
+	}
+	// len(base) > room follows from the overflow, so base[:room+1] is in range.
+	if room := model.MaxSlugLen - len(tail); room > 0 {
+		if cut := strings.LastIndexByte(base[:room+1], '-'); cut > 0 {
+			return base[:cut] + tail, true
+		}
+	}
+	return "", false
+}
+
+// numberedSlugAt is the numeric collision-suffix formula shared by the recording
+// and series candidate chains: base for the first candidate, then base-2,
+// base-3, ... with the suffix bounded to MaxSlugLen. Every walker of a chain
+// (getOrCreateSeries and its read-only twins findSeries and seriesIndex.find)
+// must go through this one implementation, or two of them would disagree about
+// which slug a name resolves to.
+func numberedSlugAt(base string, i int) string {
+	if i == 0 {
+		return base
+	}
+	return boundedSlugTail(base, fmt.Sprintf("-%d", i+1))
 }
 
 // isCombiningMark reports whether r is a Unicode combining diacritical mark

@@ -423,6 +423,97 @@ func TestOverlongTitleCollisionProducesValidSlugs(t *testing.T) {
 	}
 }
 
+// TestOverlongNarratorRecordingSlugs pins the recording chain's bound: a
+// full-cast credit slugifying to the cap plus the release year already overran
+// MaxSlugLen before the collision chain appended a single suffix.
+func TestOverlongNarratorRecordingSlugs(t *testing.T) {
+	narrator := strings.Repeat("Narrator ", 12) + "Voice"
+	if len(Slugify(narrator)) != model.MaxSlugLen {
+		t.Fatalf("fixture narrator slug is %d chars, want %d", len(Slugify(narrator)), model.MaxSlugLen)
+	}
+	// Same work, same narrator, same year, runtimes far enough apart to be two
+	// productions - so the second lands on the chain's numeric candidate.
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGNAR1","title_short":"Cast Recording","author":"Some Author","narrated_by":%[1]q,"language":"english","release_date":"2020-03-01","seconds":600},
+		{"asin":"B0LONGNAR2","title_short":"Cast Recording","author":"Some Author","narrated_by":%[1]q,"language":"english","release_date":"2020-09-01","seconds":7200}
+	]`, narrator)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 {
+		t.Fatalf("expected 1 work with 2 recordings, got %+v", sum)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	recs, err := os.ReadDir(filepath.Join(dataDir, "works/ca/cast-recording/recordings"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]bool{}
+	for _, e := range recs {
+		id := strings.TrimSuffix(e.Name(), ".json")
+		if !model.ValidSlug(id) {
+			t.Errorf("recording id %q (%d chars) is not a valid slug", id, len(id))
+		}
+		if seen[id] {
+			t.Errorf("duplicate recording id %q", id)
+		}
+		seen[id] = true
+	}
+	if len(seen) != 2 {
+		t.Errorf("expected 2 recording files, got %v", seen)
+	}
+}
+
+// TestOverlongSeriesNameCollision pins the series chain's bound AND that all
+// three walkers of it agree: getOrCreateSeries places the second series on the
+// suffixed slug, findSeries puts a later volume in that same series, and
+// libexselect's seriesIndex.find resolves the name to the slug on disk.
+func TestOverlongSeriesNameCollision(t *testing.T) {
+	// Two different names whose slugs truncate to the same MaxSlugLen-bounded
+	// base: the second series can only exist on a numeric candidate.
+	prefix := strings.Repeat("Long ", 25)
+	seriesA, seriesB := prefix+"Alpha", prefix+"Beta"
+	if Slugify(seriesA) != Slugify(seriesB) {
+		t.Fatalf("fixture names do not collide: %q vs %q", Slugify(seriesA), Slugify(seriesB))
+	}
+	if len(Slugify(seriesB))+len("-2") <= model.MaxSlugLen {
+		t.Fatalf("fixture base is only %d chars; a numeric suffix must overflow the cap", len(Slugify(seriesB)))
+	}
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGSER1","title_short":"Alpha One","author":"Series Author","narrated_by":"Voice","series_name":%[1]q,"series_sequence":"1","language":"english","seconds":600},
+		{"asin":"B0LONGSER2","title_short":"Beta One","author":"Series Author","narrated_by":"Voice","series_name":%[2]q,"series_sequence":"1","language":"english","seconds":600},
+		{"asin":"B0LONGSER3","title_short":"Beta Two","author":"Series Author","narrated_by":"Voice","series_name":%[2]q,"series_sequence":"2","language":"english","seconds":600}
+	]`, seriesA, seriesB)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewSeries != 2 {
+		t.Fatalf("expected 2 distinct series, got %d (%v)", sum.NewSeries, sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+
+	idx, _ := loadSeriesIndex(dataDir)
+	slugB, found := idx.find(seriesB)
+	if !found {
+		t.Fatalf("seriesIndex.find does not resolve the suffixed series; index holds %v", idx.bySlug)
+	}
+	if !model.ValidSlug(slugB) {
+		t.Errorf("series id %q (%d chars) is not a valid slug", slugB, len(slugB))
+	}
+	if slugA, _ := idx.find(seriesA); slugA == slugB {
+		t.Errorf("both names resolved to %q", slugB)
+	}
+	// Both Beta volumes must have landed in the series find resolved to: that is
+	// getOrCreateSeries and findSeries agreeing with the selector's chain.
+	var series struct {
+		Works []struct{ Work string } `json:"works"`
+	}
+	readJSON(t, filepath.Join(dataDir, "series", model.Shard(slugB), slugB+".json"), &series)
+	if len(series.Works) != 2 {
+		t.Errorf("series %q holds %d works, want the 2 Beta volumes", slugB, len(series.Works))
+	}
+}
+
 func TestSameWorkMergesRecordings(t *testing.T) {
 	// Two books, same title AND authors, different narrations -> one work, two recordings.
 	books := `[

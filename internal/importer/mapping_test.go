@@ -1,10 +1,12 @@
 package importer
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -150,6 +152,57 @@ func TestSlugifyMaxLen(t *testing.T) {
 	}
 	if got[len(got)-1] == '-' {
 		t.Errorf("Slugify trimmed slug ends with a hyphen: %q", got)
+	}
+}
+
+// TestBoundedSlugTail pins the three regimes: the join fits, the base is cut at
+// a hyphen boundary, the base is hard-cut because no boundary leaves room. The
+// tail must come through intact in all of them.
+func TestBoundedSlugTail(t *testing.T) {
+	hyphenated := strings.Repeat("word-", 19) + "last" // 99 chars
+	cases := []struct {
+		name, base, tail, want string
+	}{
+		{"fits", "short-title", "-2020", "short-title-2020"},
+		{"word boundary cut", hyphenated, "-2020", strings.Repeat("word-", 18) + "word-2020"},
+		{"hard cut, no boundary", strings.Repeat("a", model.MaxSlugLen), "-2020", strings.Repeat("a", 95) + "-2020"},
+		{"tail alone fills the cap", "a-title", "-" + strings.Repeat("b", 120), strings.Repeat("b", 99)},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := boundedSlugTail(c.base, c.tail)
+			if got != c.want {
+				t.Errorf("boundedSlugTail(%q, %q) = %q, want %q", c.base, c.tail, got, c.want)
+			}
+			if !model.ValidSlug(got) {
+				t.Errorf("result %q (%d chars) is not a valid slug", got, len(got))
+			}
+		})
+	}
+}
+
+// TestNumberedSlugAtBounded pins the shared numeric-suffix chain (recordings and
+// series): candidate 0 is the bare base and every later candidate keeps its
+// distinguishing number inside the cap.
+func TestNumberedSlugAtBounded(t *testing.T) {
+	base := strings.Repeat("narrator-", 11) + "voice" // 104 chars, cut by Slugify in real use
+	base = base[:model.MaxSlugLen]
+	seen := map[string]bool{}
+	for i := 0; i < 12; i++ {
+		got := numberedSlugAt(base, i)
+		if i == 0 && got != base {
+			t.Fatalf("candidate 0 = %q, want the bare base", got)
+		}
+		if !model.ValidSlug(got) {
+			t.Errorf("candidate %d = %q (%d chars) is not a valid slug", i, got, len(got))
+		}
+		if seen[got] {
+			t.Errorf("candidate %d = %q duplicates an earlier candidate", i, got)
+		}
+		seen[got] = true
+		if i > 0 && !strings.HasSuffix(got, fmt.Sprintf("-%d", i+1)) {
+			t.Errorf("candidate %d = %q lost its number", i, got)
+		}
 	}
 }
 
