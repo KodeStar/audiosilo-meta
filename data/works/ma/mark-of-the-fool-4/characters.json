@@ -1,0 +1,406 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Alex",
+        "the Fool"
+      ],
+      "description": "A Generasi student and expedition mage returning to Tameland under dangerous circumstances. Alex joins the Greymoor mission while concealing the Mark of the Fool from local authorities, relying on his companions and magical training to protect that secret.",
+      "id": "alex-roth",
+      "name": "Alex Roth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alex's partner, an accomplished hunter and expedition fighter. Theresa accompanies him into Greymoor, understands the danger surrounding his hidden identity, and is prepared to defend him and protect his secret.",
+      "id": "theresa",
+      "name": "Theresa",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex and Selina's four-armed combat golem and a powerful guardian of their companions. Claygon enters Greymoor as an expedition fighter, following Alex's direction and protecting Alex and his allies.",
+      "id": "claygon",
+      "name": "Claygon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Chancellor Baelin"
+      ],
+      "description": "Chancellor of the University of Generasi, leader of its Greymoor presence, and Alex's formidable mentor.",
+      "id": "baelin",
+      "name": "Baelin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Head of Generasi University's potions department and the expedition's alchemy division. Professor Jules directs scientific work and field assignments in Greymoor, balancing specimen collection, surveys, and the safety of the university teams.",
+      "id": "professor-jules",
+      "name": "Professor Jules",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's trusted ally and a heavy fighter with the Greymoor expedition. Thundar helps protect Alex's secret, supports the effort to conceal the visible mark, and stays alert to the danger posed by Tamish authorities.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The knight and warden responsible for Luthering and its fief. Sir Sean Swift accepts the Generasi expedition as lawful neighbors under Tamish law, offers reciprocal aid, and presents them with a notice ordering the wanted Fool's detention.",
+      "id": "sir-sean-swift",
+      "name": "Sir Sean Swift",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Tameland's overarching hostile power, directing dungeon cores and Ravener spawn against its enemies. At the opening of the campaign, the Ravener gives special priority to an unidentified usurper and dispatches its remaining hunter in the realm.",
+      "id": "the-ravener",
+      "name": "The Ravener",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "final hunter"
+      ],
+      "description": "An intelligent assassin and field commander serving the Ravener. It is sent south with silent spiders and venom walkers to find and kill the being its master calls the usurper.",
+      "id": "ravener-hunter",
+      "name": "Ravener hunter",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Theresa's hunting companion and a keen tracker for the expedition. Brutus helps detect danger in Greymoor, including the scent of a decaying body near the expedition's route, and provides dependable support when the survey team enters uncertain terrain.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Alex's expedition allies and a combat mage assigned to the Witherhand Bog survey.",
+      "id": "khalik",
+      "name": "Khalik",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An expedition mage and member of Alex's survey team in Witherhand Bog. Isolde works alongside Alex's closest companions as they investigate the former dungeon and the intelligent predator occupying the surrounding wetlands.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A heavily built expedition fighter assigned to Alex's survey group in Witherhand Bog.",
+      "id": "grimlock",
+      "name": "Grimlock",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Khalik's aerial familiar and a scout for the Greymoor expedition. Najyah accompanies the Witherhand Bog survey, extending the team's ability to observe dangerous ground, examine routes, and detect threats from above before they reach the group.",
+      "id": "najyah",
+      "name": "Najyah",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Mikara"
+      ],
+      "description": "An expedition medic assigned to the Witherhand Bog survey. Makara helps examine a body found near the expedition's route for signs of disease or magical contamination.",
+      "id": "makara",
+      "name": "Makara",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An intelligent, illusion-using resident hidden near Witherhand Bog. The resident offers Ravener-made weapons and other valuables in exchange for a human child, then seizes Alex and Khalik when Alex tries to withdraw from the negotiation.",
+      "id": "bog-resident",
+      "name": "Bog resident",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Bog resident"
+      ],
+      "description": "The cannibalistic illusion mage who attacked Alex's team in Witherhand Bog. Identified as a blue anise hag after retreating from her defeated guardians, she abandons a lair filled with monster-made weapons, disturbing furnishings, and a captive local fey.",
+      "id": "blue-anise-hag-of-witherhand-bog",
+      "name": "Blue anise hag of Witherhand Bog",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A sunlight-vulnerable local fey rescued from the blue anise hag's cage. Rather than claim a life debt, Alex asks for local knowledge and neighborly relations.",
+      "id": "asrai-fey-guide",
+      "name": "Asrai fey guide",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Leader of a secret order within the Church of Uldar. The First Apostle authorizes covert observation of Greymoor, preferring lay agents over an open priestly presence while the order searches for the missing Fool and watches Generasi's discoveries.",
+      "id": "first-apostle",
+      "name": "First Apostle",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An investigator in Uldar's concealed apostolic order, responsible for reporting on Generasi and the marked heroes. The Third Apostle views the missing Fool, the expedition, and the Ravener's unusual aggression as connected signs requiring discreet attention.",
+      "id": "third-apostle",
+      "name": "Third Apostle",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "the Chosen"
+      ],
+      "description": "Uldar's Chosen and the expected leader among Tameland's marked heroes. Cedric is a powerful fighter, divine wielder, and mage who enters negotiations with the fey while the heroes seek allies against an exceptionally dangerous Ravener cycle.",
+      "id": "cedric",
+      "name": "Cedric",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Sage",
+        "Drestra of Kremlin Swamp"
+      ],
+      "description": "Uldar's Sage and a witch mage serving among Tameland's active heroes. Drestra is an exceptionally capable magic user and one of the marked figures whose unusual strength has drawn the attention of Uldar's secret apostolic order.",
+      "id": "drestra",
+      "name": "Drestra",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Saint"
+      ],
+      "description": "Uldar's Saint and one of Tameland's four active heroes. Merzhin belongs to the marked group whose unusual power is being assessed by Uldar's secret apostolic order as the search for the missing Fool continues.",
+      "id": "merzhin",
+      "name": "Merzhin",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful fey ruler approached by Cedric, Drestra, and Merzhin for military assistance. The Fae Lord receives the heroes in a magically tailored hall and immediately questions why the Champion and Fool are absent.",
+      "id": "fae-lord",
+      "name": "Fae Lord",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hart",
+        "Heart",
+        "the Champion"
+      ],
+      "description": "Uldar's Champion and a front-line hero commanding knights and rangers against Ravener threats. Hart carries a blade made from a Hive Queen claw and follows a trail left by an unknown armed group after defeating a force of chitterers.",
+      "id": "hart-red-fletcher",
+      "name": "Hart Red Fletcher",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A lava mage and expedition combatant whose survey team recovers a chitterer found observing Greymoor. The specimen gives Professor Jules a new lead on whether the Ravener has begun scouting the university's growing foothold.",
+      "id": "tyrus",
+      "name": "Tyrus",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Alex's Blood Magic instructor. Professor Hack introduces the course's foundational spells and sets clear limits for her students.",
+      "id": "professor-hack",
+      "name": "Professor Hack",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's younger sister and a novice beginning formal magical education. Selina is interested in constructive magic, and Alex offers to teach her the basic spell circuits he learned during his own training.",
+      "id": "selina",
+      "name": "Selina",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's summoned small water elemental. Bubbles understands and speaks a water-elemental language, and can form a dry space within its body to carry objects without mixing them into its water.",
+      "id": "bubbles",
+      "name": "Bubbles",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tyrus's enormous volcanic familiar, whose eruption marks the expedition's approach to an active battle around two newly discovered dungeons.",
+      "id": "vesuvius",
+      "name": "Vesuvius",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Commander of the reinforcement force sent to aid the expedition teams near two newly discovered dungeons.",
+      "id": "watcher-shaw",
+      "name": "Watcher Shaw",
+      "reveal": {
+        "chapter": 25
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A nine-headed, airborne blood-drak commander leading the assault near the paired dungeons. Its spilled blood carries disease, and wounds that are not burned can regenerate.",
+      "id": "blood-hydra",
+      "name": "Blood hydra",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The target at the bottom of a concealed chitterer stronghold. Magical reconnaissance finds the core guarded within an extensive tunnel network filled with spawn, victims' remains, refuse, and secret passages.",
+      "id": "chitterer-dungeon-core",
+      "name": "Chitterer dungeon core",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Two blue anise hags who form a voluntary alliance with the Ravener hunter after a third hag dies in their first clash. They provide local intelligence about the expedition and its dangerous fighters.",
+      "id": "two-windmill-blue-anise-hags",
+      "name": "Two windmill blue anise hags",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Alex's former mana-manipulation professor. Val’Rok evaluates his advanced control and agrees to teach him the foundations of faster mana regeneration.",
+      "id": "professor-val-rok",
+      "name": "Professor Val’Rok",
+      "reveal": {
+        "chapter": 46
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A researcher caught by Professor Jules's ward while trying to steal protected dungeon-core material. He is removed from the expedition and faces disciplinary and possible legal action.",
+      "id": "stefan",
+      "name": "Stefan",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Alex's former laboratory partner and the replacement assigned to Professor Jules's alchemical research team. Carey London arrives after another researcher is dismissed for attempting to steal protected dungeon-core material.",
+      "id": "carey-london",
+      "name": "Carey London",
+      "reveal": {
+        "chapter": 48
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An apostolic agent embedded in the royal delegation visiting Greymoor. The spy covertly studies the encampment and its people on behalf of Uldar's secret order while presenting as an ordinary representative.",
+      "id": "uldar-spy",
+      "name": "Uldar spy",
+      "reveal": {
+        "chapter": 68
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "young eld tree"
+      ],
+      "description": "A young eld tree discovered near the route used by Church operatives.",
+      "id": "eld-sapling",
+      "name": "Eld sapling",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A bladed Ravener-spawn commander leading the windmill ambush force. The Hive Queen attacks Alex with webs while directing the other spawn against him.",
+      "id": "hive-queen",
+      "name": "Hive Queen",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "antagonist"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0CK8XBNVL",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool-4"
+}

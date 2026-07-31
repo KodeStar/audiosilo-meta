@@ -1,0 +1,367 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Alex",
+        "the Fool"
+      ],
+      "description": "A Generasi student, force mage, and potion-maker who conceals the divine mark that impedes his spellcraft and fighting. He supports his frightened younger sister while entering Baelin's dangerous solo trial in the Barrens.",
+      "id": "alex-roth",
+      "name": "Alex Roth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alex's ten-year-old sister. The discovery of her powerful fire affinity has revived painful memories of their family tragedy, leaving her withdrawn and afraid of what her magic might make her.",
+      "id": "selina",
+      "name": "Selina",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Theresa"
+      ],
+      "description": "Alex's trusted household companion, a hunter and life-force cultivator who trains steadily while helping him reassure and protect Selina through her distress over fire magic.",
+      "id": "theresa-lu",
+      "name": "Theresa Lu",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Chancellor Baelin"
+      ],
+      "description": "Generasi's chancellor and Alex's combat instructor. He oversees a hazardous Barrens exercise with emergency safeguards and expects students to solve lethal-looking problems through preparation and judgment.",
+      "id": "baelin",
+      "name": "Baelin",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A minotaur classmate who joins Alex's Barrens group after securing his own trial orb.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A large, exceptionally strong sharkman classmate who teams with Alex after both students secure their trial orbs.",
+      "id": "grimlock",
+      "name": "Grimlock",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A highly capable classmate in Alex's combat cohort who completes the Barrens exercise with Najyah. He is already established as one of Alex's dependable student allies.",
+      "id": "khalik",
+      "name": "Khalik",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Khalik's eagle familiar and partner in the combat course. She supports his work in the Barrens and gives him an aerial companion able to scout and act alongside the student group.",
+      "id": "najyah",
+      "name": "Najyah",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A student who completes the Barrens trial separately under a protective working of water and darkness. She is part of the broader combat cohort around Alex and Grimlock.",
+      "id": "nua-oge",
+      "name": "Nua-Oge",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Jules"
+      ],
+      "description": "Alex's potions professor and academic sponsor. She recognizes the care and progress in his laboratory work and provides a reference supporting his effort to gain practical workshop experience.",
+      "id": "professor-jules",
+      "name": "Professor Jules",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Carey"
+      ],
+      "description": "A Generasi student and supporter of Uldar who works with Derek Warren on a campaign for priests to regain access to campus.",
+      "id": "carey-london",
+      "name": "Carey London",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Generasi student who works with Carey London to distribute flyers for a campaign seeking renewed campus access for priests of Uldar.",
+      "id": "derek-warren",
+      "name": "Derek Warren",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A student mage who reacts with immediate anger when she sees Derek and leaves rather than joining the conversation.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Val'Rok"
+      ],
+      "description": "Generasi's mana-manipulation professor. He permits Alex to challenge the examination for first-year credit, giving the unusually advanced student a chance to prove both theoretical and practical mastery.",
+      "id": "professor-val-rok",
+      "name": "Professor Val'Rok",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's Cerberus, present with Alex's group during the Barrens trial.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Captain of the Red Siren. He and his brother welcome Alex's household aboard and teach Alex and Theresa further elements of their spear-and-oar dance.",
+      "id": "fan-dor",
+      "name": "Fan-Dor",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A newly hired assistant at the same golem workshop as Alex. Alex is unsettled to find him entering Shale's workshop as a coworker.",
+      "id": "minervus",
+      "name": "Minervus",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Ram"
+      ],
+      "description": "Alex's force-magic professor, who has begun watching his conspicuously slow combat casting. His concern places pressure on Alex to improve without exposing the secret cause of his difficulty.",
+      "id": "professor-ram",
+      "name": "Professor Ram",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fire wielder who offers Selina a gentler understanding of her affinity. Drawing on a culture that reveres fire, she explains that controlled flame can protect and heal as well as destroy.",
+      "id": "shiani",
+      "name": "Shiani",
+      "reveal": {
+        "chapter": 20
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An orc golem crafter who supervises Alex at Shale's workshop. He gives the young assistant practical experience preparing cores and sculpting bodies for working constructs.",
+      "id": "lagor",
+      "name": "Lagor",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "mana vampire"
+      ],
+      "description": "An uncaught mana vampire whose attacks disrupt travel around Generasi. Its bounty draws guards, professional hunters, and reckless seekers into the search.",
+      "id": "the-man-of-empire",
+      "name": "The Man of Empire",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Isolde's landed cousin and the host of a country villa. He guides her visiting friends along an authorized path toward the neighboring dryads' territory.",
+      "id": "giuseppe-marco-de-paolo",
+      "name": "Giuseppe Marco de Paolo",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The dryad leader who ends her people's armed detention of Giuseppe's visitors, apologizes, and explains the threats that prompted their caution.",
+      "id": "harmonia",
+      "name": "Harmonia",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A graduate student assigned to oversee Alex's laboratory sessions for the term. His absent-minded supervision limits Alex's opportunities to conduct private experiments.",
+      "id": "amir-abu-salah",
+      "name": "Amir Abu Salah",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat student assigned to Alex's group for Baelin's Bone Tunnels exercise.",
+      "id": "rain",
+      "name": "Rain",
+      "reveal": {
+        "chapter": 37
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A second-year cold-magic student who knows Call Through Ice. He admits that teleporting a key during the Bone Tunnels exercise likely caused the unexplained magical flash detected by Baelin.",
+      "id": "malcolm",
+      "name": "Malcolm",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An earth-magic combat student whose group escaped the Bone Tunnels by opening a direct route through the surrounding stone, demonstrating a useful approach to difficult terrain.",
+      "id": "evander",
+      "name": "Evander",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A sentient flying predator assigned as the combat class's next quarry. It guards a nest near a mana vent and can attack with a force-coated lance, a force ray, and a cry that disrupts mana.",
+      "id": "xyrthak",
+      "name": "Xyrthak",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Kabbot-Xin"
+      ],
+      "description": "A life-force cultivation teacher and Theresa's training authority. Kabbot-Xin assesses whether Grimlock can safely begin cultivation and oversees his demanding first step with Theresa assisting.",
+      "id": "professor-kabbot-xin",
+      "name": "Professor Kabbot-Xin",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A combat student participating in the class expedition against a nesting Xyrthak.",
+      "id": "rhea",
+      "name": "Rhea",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Generasi guard captain who recognizes Alex's claim to the captured mana vampire as a university specimen. He requires proof of its destruction or an extension request within one day.",
+      "id": "giorno",
+      "name": "Giorno",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Alex's clay golem"
+      ],
+      "description": "The name adopted for the large four-armed clay golem designed by Alex and Selina. Its completed body and dungeon-core-derived core await activation using the mana recovered from the defeated mana vampire.",
+      "id": "claygon",
+      "name": "Claygon",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The foremost member of a trio of related assassins seeking the Ravener's quarry. It understands mortal speech, imitates voices, and helps direct monsters from a hidden lair.",
+      "id": "lead-ravener-hunter",
+      "name": "Lead Ravener Hunter",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An assassin allied with two siblings in the search for the Ravener's quarry. It copies beast calls and takes part in assembling monsters for an attack.",
+      "id": "scarred-ravener-hunter",
+      "name": "Scarred Ravener Hunter",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "An assassin allied with two siblings in the search for the Ravener's quarry. It copies beast calls and helps ready a hidden monster force beyond the city wall.",
+      "id": "ravener-hunter-sibling",
+      "name": "Ravener Hunter Sibling",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A dryad who invites Khalik to visit the forest and is beginning a relationship with him.",
+      "id": "sinope",
+      "name": "Sinope",
+      "reveal": {
+        "chapter": 85
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0BKB1MH2X",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool-2"
+}

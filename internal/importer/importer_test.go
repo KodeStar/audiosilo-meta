@@ -12,6 +12,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // testImportDate is the imported_at stamp every test run uses.
@@ -316,6 +317,272 @@ func TestWorkSlugCollisionAppendsAuthor(t *testing.T) {
 	}
 	if !hasWarning(sum.Warnings, "taken by a different book") {
 		t.Errorf("expected a slug-collision warning, got %v", sum.Warnings)
+	}
+}
+
+// spikeTitleSlug is a real Slugify output from the 142k-book validation spike:
+// a German title truncated to exactly MaxSlugLen. Appending an author slug to
+// it used to mint a 115-char work id that failed model.ValidSlug and cascaded
+// into recording and series reference failures.
+const spikeTitleSlug = "die-ideale-welt-fur-den-soziopathen-ein-apokalyptisches-litrpg-abenteuer-die-ideale-welt-fur-den-soz"
+
+// assertCandidateChain checks the invariants every workCandidates result must
+// hold: every candidate is a valid slug, every NUMBERED candidate still carries
+// its own "-<i>", and the numbered candidates are therefore pairwise distinct.
+//
+// Global distinctness is deliberately NOT asserted: candidates 0 and 1 carry no
+// number, so a base or author slug ending in digits can make one of them equal a
+// later candidate. That costs the walk one wasted probe of a slug it has already
+// tested and nothing more (see workSlugAt).
+func assertCandidateChain(t *testing.T, got []string) {
+	t.Helper()
+	if len(got) != 51 {
+		t.Fatalf("candidate chain has %d entries, want 51", len(got))
+	}
+	seen := map[string]bool{}
+	for i, slug := range got {
+		if !model.ValidSlug(slug) {
+			t.Errorf("candidate %d = %q (%d chars) is not a valid slug", i, slug, len(slug))
+		}
+		if i < 2 {
+			continue
+		}
+		if !strings.HasSuffix(slug, fmt.Sprintf("-%d", i)) {
+			t.Errorf("candidate %d = %q lost its numeric suffix", i, slug)
+		}
+		if seen[slug] {
+			t.Errorf("numbered candidate %d = %q duplicates an earlier numbered candidate", i, slug)
+		}
+		seen[slug] = true
+	}
+}
+
+func TestWorkCandidatesShortBaseUnchanged(t *testing.T) {
+	got := workCandidates("the-gathering", "bob-south")
+	assertCandidateChain(t, got)
+	want := []string{"the-gathering", "the-gathering-bob-south", "the-gathering-bob-south-2", "the-gathering-bob-south-3"}
+	if !reflect.DeepEqual(got[:len(want)], want) {
+		t.Errorf("candidate chain = %v, want prefix %v", got[:len(want)], want)
+	}
+	if got[50] != "the-gathering-bob-south-50" {
+		t.Errorf("last candidate = %q", got[50])
+	}
+}
+
+func TestWorkCandidatesBoundedToMaxSlugLen(t *testing.T) {
+	if len(spikeTitleSlug) != model.MaxSlugLen {
+		t.Fatalf("fixture base is %d chars, want %d", len(spikeTitleSlug), model.MaxSlugLen)
+	}
+	const author = "oleg-sapphire"
+	got := workCandidates(spikeTitleSlug, author)
+	assertCandidateChain(t, got)
+	if got[0] != spikeTitleSlug {
+		t.Errorf("first candidate = %q, want the bare base untouched", got[0])
+	}
+	head := strings.TrimSuffix(got[1], "-"+author)
+	if head == got[1] {
+		t.Fatalf("candidate %q does not end in -%s", got[1], author)
+	}
+	if !strings.HasPrefix(spikeTitleSlug, head) || spikeTitleSlug[len(head)] != '-' {
+		t.Errorf("head %q is not the base cut at a word boundary", head)
+	}
+}
+
+func TestWorkCandidatesFallbackWithoutWordBoundary(t *testing.T) {
+	// Neither base can be cut at a hyphen and still leave room for the tail: the
+	// first has no hyphen at all, the second's author slug alone fills the cap.
+	cases := []struct{ name, base, author string }{
+		{"single-word title", strings.Repeat("a", model.MaxSlugLen), "oleg-sapphire"},
+		{"author fills the cap", "a-long-enough-title-to-cut", strings.Repeat("b", model.MaxSlugLen)},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			assertCandidateChain(t, workCandidates(c.base, c.author))
+		})
+	}
+}
+
+func TestOverlongTitleCollisionProducesValidSlugs(t *testing.T) {
+	// Same over-long title, two authors: the second book walks onto the
+	// author-suffixed candidate, which must still validate end to end.
+	const title = "Die ideale Welt fur den Soziopathen: Ein apokalyptisches LitRPG Abenteuer, die ideale Welt fur den Soziopathen Band Zwei"
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGTTL1","title_short":%[1]q,"author":"Oleg Sapphire","narrated_by":"V One","language":"german","seconds":600},
+		{"asin":"B0LONGTTL2","title_short":%[1]q,"author":"Other Author","narrated_by":"V Two","language":"german","seconds":600}
+	]`, title)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 2 {
+		t.Fatalf("expected 2 distinct works, got %d (%v)", sum.NewWorks, sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	for _, path := range listWorks(t, dataDir) {
+		if filepath.Base(path) != "work.json" {
+			continue
+		}
+		var work struct {
+			ID string `json:"id"`
+		}
+		readJSON(t, path, &work)
+		if !model.ValidSlug(work.ID) {
+			t.Errorf("work id %q (%d chars) is not a valid slug", work.ID, len(work.ID))
+		}
+	}
+}
+
+// TestOverlongNarratorRecordingSlugs pins the recording chain's bound: a
+// full-cast credit slugifying to the cap plus the release year already overran
+// MaxSlugLen before the collision chain appended a single suffix.
+func TestOverlongNarratorRecordingSlugs(t *testing.T) {
+	narrator := strings.Repeat("Narrator ", 12) + "Voice"
+	if len(Slugify(narrator)) != model.MaxSlugLen {
+		t.Fatalf("fixture narrator slug is %d chars, want %d", len(Slugify(narrator)), model.MaxSlugLen)
+	}
+	// Same work, same narrator, same year, runtimes far enough apart to be two
+	// productions - so the second lands on the chain's numeric candidate.
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGNAR1","title_short":"Cast Recording","author":"Some Author","narrated_by":%[1]q,"language":"english","release_date":"2020-03-01","seconds":600},
+		{"asin":"B0LONGNAR2","title_short":"Cast Recording","author":"Some Author","narrated_by":%[1]q,"language":"english","release_date":"2020-09-01","seconds":7200}
+	]`, narrator)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 1 || sum.NewRecordings != 2 {
+		t.Fatalf("expected 1 work with 2 recordings, got %+v", sum)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	recs, err := os.ReadDir(filepath.Join(dataDir, "works/ca/cast-recording/recordings"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	seen := map[string]bool{}
+	for _, e := range recs {
+		id := strings.TrimSuffix(e.Name(), ".json")
+		if !model.ValidSlug(id) {
+			t.Errorf("recording id %q (%d chars) is not a valid slug", id, len(id))
+		}
+		if seen[id] {
+			t.Errorf("duplicate recording id %q", id)
+		}
+		seen[id] = true
+	}
+	if len(seen) != 2 {
+		t.Errorf("expected 2 recording files, got %v", seen)
+	}
+}
+
+// TestOverlongTitleMergeWarnsOnConflation pins the one behaviour the bound
+// changes rather than fixes: two DIFFERENT long titles by one author that agree
+// up to the truncation point land on the same shortened candidate and merge as a
+// single work. The unbounded formula "reported" this by minting an invalid slug
+// for metacheck to reject, so the merge must not be silent.
+func TestOverlongTitleMergeWarnsOnConflation(t *testing.T) {
+	// Two 90-char bases sharing everything up to the cut at 84.
+	prefix := strings.Repeat("Saga ", 17)
+	titleA, titleO := prefix+"Alpha", prefix+"Omega"
+	// The bare bases are claimed by other authors first, so the shared-author
+	// books fall through to the author-suffixed (and therefore shortened)
+	// candidate.
+	books := fmt.Sprintf(`[
+		{"asin":"B0CONFL001","title_short":%[1]q,"author":"Yuri Vale","narrated_by":"V One","language":"english","seconds":600},
+		{"asin":"B0CONFL002","title_short":%[2]q,"author":"Zara Nile","narrated_by":"V Two","language":"english","seconds":600},
+		{"asin":"B0CONFL003","title_short":%[1]q,"author":"Xavier Poe","narrated_by":"V Three","language":"english","seconds":600},
+		{"asin":"B0CONFL004","title_short":%[2]q,"author":"Xavier Poe","narrated_by":"V Four","language":"english","seconds":600}
+	]`, titleA, titleO)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 3 {
+		t.Fatalf("expected 3 works (the two squatters plus one merged), got %d: %v", sum.NewWorks, listWorks(t, dataDir))
+	}
+	if !hasWarning(sum.Warnings, "was shortened to fit") {
+		t.Errorf("a merge onto a truncated slug must warn, got %v", sum.Warnings)
+	}
+	if !hasWarning(sum.Warnings, titleO) {
+		t.Errorf("the warning must name the incoming title, got %v", sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestReimportOverlongSlugsIsNoop pins idempotency for the bounded slugs
+// specifically: the existing idempotency tests all use short names, so nothing
+// would catch a bound that resolved differently on the second pass (which would
+// re-create every truncated work, recording and series as a sibling).
+func TestReimportOverlongSlugsIsNoop(t *testing.T) {
+	narrator := strings.Repeat("Narrator ", 12) + "Voice"
+	title := "Die ideale Welt fur den Soziopathen: Ein apokalyptisches LitRPG Abenteuer, die ideale Welt fur den Soziopathen Band Zwei"
+	seriesA, seriesB := strings.Repeat("Long ", 25)+"Alpha", strings.Repeat("Long ", 25)+"Beta"
+	books := fmt.Sprintf(`[
+		{"asin":"B0REIMP001","title_short":%[1]q,"author":"Oleg Sapphire","narrated_by":%[2]q,"language":"german","region":"US","release_date":"2020-03-01","seconds":600,"series_name":%[3]q,"series_sequence":"1"},
+		{"asin":"B0REIMP002","title_short":%[1]q,"author":"Other Author","narrated_by":%[2]q,"language":"german","region":"US","release_date":"2020-09-01","seconds":600,"series_name":%[4]q,"series_sequence":"1"}
+	]`, title, narrator, seriesA, seriesB)
+
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 2 || sum.NewSeries != 2 {
+		t.Fatalf("setup: NewWorks/NewSeries = %d/%d, want 2/2", sum.NewWorks, sum.NewSeries)
+	}
+	before := snapshotTree(t, dataDir)
+
+	sum2, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err != nil {
+		t.Fatalf("second run: %v", err)
+	}
+	if sum2.Skipped != 2 || sum2.NewWorks != 0 || sum2.NewRecordings != 0 || sum2.NewSeries != 0 {
+		t.Errorf("second run should be all skips: %+v", sum2)
+	}
+	if after := snapshotTree(t, dataDir); !reflect.DeepEqual(before, after) {
+		t.Errorf("second run rewrote the tree:\nbefore %v\nafter  %v", keysOf(before), keysOf(after))
+	}
+}
+
+// TestOverlongSeriesNameCollision pins the series chain's bound AND that all
+// three walkers of it agree: getOrCreateSeries places the second series on the
+// suffixed slug, findSeries puts a later volume in that same series, and
+// libexselect's seriesIndex.find resolves the name to the slug on disk.
+func TestOverlongSeriesNameCollision(t *testing.T) {
+	// Two different names whose slugs truncate to the same MaxSlugLen-bounded
+	// base: the second series can only exist on a numeric candidate.
+	prefix := strings.Repeat("Long ", 25)
+	seriesA, seriesB := prefix+"Alpha", prefix+"Beta"
+	if Slugify(seriesA) != Slugify(seriesB) {
+		t.Fatalf("fixture names do not collide: %q vs %q", Slugify(seriesA), Slugify(seriesB))
+	}
+	if len(Slugify(seriesB))+len("-2") <= model.MaxSlugLen {
+		t.Fatalf("fixture base is only %d chars; a numeric suffix must overflow the cap", len(Slugify(seriesB)))
+	}
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGSER1","title_short":"Alpha One","author":"Series Author","narrated_by":"Voice","series_name":%[1]q,"series_sequence":"1","language":"english","seconds":600},
+		{"asin":"B0LONGSER2","title_short":"Beta One","author":"Series Author","narrated_by":"Voice","series_name":%[2]q,"series_sequence":"1","language":"english","seconds":600},
+		{"asin":"B0LONGSER3","title_short":"Beta Two","author":"Series Author","narrated_by":"Voice","series_name":%[2]q,"series_sequence":"2","language":"english","seconds":600}
+	]`, seriesA, seriesB)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewSeries != 2 {
+		t.Fatalf("expected 2 distinct series, got %d (%v)", sum.NewSeries, sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+
+	idx, _ := loadSeriesIndex(dataDir)
+	slugB, found := idx.find(seriesB)
+	if !found {
+		t.Fatalf("seriesIndex.find does not resolve the suffixed series; index holds %v", idx.bySlug)
+	}
+	if !model.ValidSlug(slugB) {
+		t.Errorf("series id %q (%d chars) is not a valid slug", slugB, len(slugB))
+	}
+	if slugA, _ := idx.find(seriesA); slugA == slugB {
+		t.Errorf("both names resolved to %q", slugB)
+	}
+	// Both Beta volumes must have landed in the series find resolved to: that is
+	// getOrCreateSeries and findSeries agreeing with the selector's chain.
+	var series struct {
+		Works []struct{ Work string } `json:"works"`
+	}
+	readJSON(t, filepath.Join(dataDir, "series", model.Shard(slugB), slugB+".json"), &series)
+	if len(series.Works) != 2 {
+		t.Errorf("series %q holds %d works, want the 2 Beta volumes", slugB, len(series.Works))
 	}
 }
 

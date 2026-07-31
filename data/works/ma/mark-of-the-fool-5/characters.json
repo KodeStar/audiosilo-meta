@@ -1,0 +1,370 @@
+{
+  "characters": [
+    {
+      "description": "A Generasi student who secretly bears the Fool's mark. He protects that identity while pursuing advanced magic and leading a trusted circle built around Theresa and Claygon.",
+      "id": "alex",
+      "name": "Alex",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Generasi's chancellor, Alex's mentor, and commander of the Greymoor project. He combines overwhelming magical power with a determination to protect Alex and the secret of the Fool.",
+      "id": "baelin",
+      "name": "Baelin",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A lava mage and returning combatant with the Greymoor expedition.",
+      "id": "tyrus",
+      "name": "Tyrus",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The hostile power behind dungeon cores and their spawn. Its continuing war against Thameland places Alex and his allies in recurring danger.",
+      "id": "the-ravener",
+      "name": "The Ravener",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Alex's partner and a keen-sensed hunter trained in life enforcement.",
+      "id": "theresa",
+      "name": "Theresa",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's four-armed guardian golem. Claygon protects Alex and carefully carries the rescued eld sapling back to Greymoor.",
+      "id": "claygon",
+      "name": "Claygon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The expedition's alchemy professor and a senior Greymoor researcher. She takes charge of the unusual corpse recovered at the windmill and insists that Alex exercise greater caution.",
+      "id": "professor-jules",
+      "name": "Professor Jules",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shark-like fighter in Alex's expedition circle. He has an appetite for difficult battles and wants to be included when serious threats appear.",
+      "id": "grimloch",
+      "name": "Grimloch",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A local Fae contact bound by an earlier promise to Alex's group. The guide leads Alex to the threatened eld tree before leaving after its rescue.",
+      "id": "asrai-fae-guide",
+      "name": "Asrai Fae guide",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "eld sapling"
+      ],
+      "description": "A rescued young tree that conveys fear, curiosity, and other feelings through its aura. Claygon safeguards it while Greymoor's experts prepare to plant it.",
+      "id": "eld-tree",
+      "name": "Eld tree",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's three-headed Cerberus companion, trained to track danger and fight beside her.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A magical botany professor who joins Baelin in overseeing the rescued eld tree's specialized planting.",
+      "id": "professor-salinger",
+      "name": "Professor Salinger",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A visiting prince who joins Alex's close circle.",
+      "id": "expedition-prince",
+      "name": "Expedition prince",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A trusted heavy fighter in Alex's circle. He remains committed to the expedition after learning that its enemies may be watching and targeting the group.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An expedition mage and member of Alex's trusted circle who accepts the risks surrounding the Greymoor mission.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An expedition mage in Alex's circle.",
+      "id": "khalik",
+      "name": "Khalik",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's younger sister and a novice mage with an unusually strong fire affinity. She begins confronting her fear and shame around fire by choosing to study what her affinity can do.",
+      "id": "selena",
+      "name": "Selena",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's named summoned water elemental.",
+      "id": "bubbles",
+      "name": "Bubbles",
+      "reveal": {
+        "chapter": 4
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Selena's magical-theory teacher. She explains elemental affinities with care and checks that lessons about fire do not overwhelm Selena.",
+      "id": "miss-sutton",
+      "name": "Miss Sutton",
+      "reveal": {
+        "chapter": 5
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An alchemy researcher devoted to Uldar. During controlled tests, she proves able to sense pathways inside the living dungeon core that senior researchers cannot perceive.",
+      "id": "carey",
+      "name": "Carey",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Sage",
+        "Drestra of Crymlyn Swamp"
+      ],
+      "description": "Uldar's Sage and a witch of Crymlyn who preserves older ties to land, spirits, and the Fae. She seeks military aid without accepting the Fae Lord's demand for mortal children.",
+      "id": "drestra",
+      "name": "Drestra",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A powerful Fae ruler whom Drestra approaches for military support. His proposed price is mortal children, forcing her to seek a lasting alternative he might value.",
+      "id": "fae-lord",
+      "name": "Fae Lord",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "the Saint"
+      ],
+      "description": "An orthodox follower of Uldar who opposes further bargaining with the Fae Lord.",
+      "id": "merzhin",
+      "name": "Merzhin",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Chosen"
+      ],
+      "description": "Uldar's Chosen and the leader of the active heroes. He comes to Generasi with Drestra and Hart to examine the expedition's urgent discovery.",
+      "id": "cedric",
+      "name": "Cedric",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A messenger who reports an eastern cult concern and brings Drestra an urgent summons from Generasi.",
+      "id": "hart",
+      "name": "Hart",
+      "reveal": {
+        "chapter": 14
+      }
+    },
+    {
+      "aliases": [
+        "Hart",
+        "the Champion"
+      ],
+      "description": "Uldar's Champion and an experienced front-line hero. He joins Cedric and Drestra in assessing the living-core discovery and the risks around it.",
+      "id": "hart-red-fletcher",
+      "name": "Hart Red Fletcher",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Drestra's adoptive mother and the elder of Crymlyn village. She presents evidence linking the disappearances in the swamp to a demon-worshipping cult.",
+      "id": "crymlyn-village-elder",
+      "name": "Crymlyn village elder",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An unnamed demon commander who controls the cult's forces in Crymlyn as they seek dungeon cores.",
+      "id": "demon-commander",
+      "name": "Demon commander",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Crymlyn witch, Drestra's friend, and a prisoner of the demon-aligned cult. Her confirmed survival gives the rescuers a personal stake in reaching the captive witches.",
+      "id": "ffion",
+      "name": "Ffion",
+      "reveal": {
+        "chapter": 31
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The unnamed leader of a Crymlyn witch faction allied with the demon commander. This faction seeks to remove Uldar's influence and seize territory bordering the swamp.",
+      "id": "traitor-witch-leader",
+      "name": "Traitor-witch leader",
+      "reveal": {
+        "chapter": 26
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "One of two soldiers from Ulrich who joins Drestra's descent into the uncharted passages below the Traveler's cave.",
+      "id": "peter",
+      "name": "Peter",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "minor"
+    },
+    {
+      "description": "One of two Ulrich soldiers who follows Drestra into the uncharted passages below the Traveler's cave.",
+      "id": "paul",
+      "name": "Paul",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Theresa's great-grandfather, whose paired swords passed to her as a family inheritance. A trace of life force remains in the blades, but any deeper function is unconfirmed.",
+      "id": "twinblade",
+      "name": "Twinblade",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An intelligent Ravener commander created to hunt the three known usurpers, destroy witnesses, and erase itself when its mission is complete. It combines camouflage with petrifying attacks.",
+      "id": "the-petrifier",
+      "name": "The Petrifier",
+      "reveal": {
+        "chapter": 58
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Theresa's adviser, who examines her inherited swords and detects traces of a life force resembling Theresa's without finding how it entered the blades.",
+      "id": "theresas-life-enforcement-professor",
+      "name": "Theresa's life-enforcement professor",
+      "reveal": {
+        "chapter": 59
+      },
+      "role": "minor"
+    },
+    {
+      "description": "The first warrior supplied by the Fae alliance. He gives Drestra, Cedric, and Hart a magical travel map and is assigned to guide and fight for them.",
+      "id": "stocky-fae-guide",
+      "name": "Stocky Fae guide",
+      "reveal": {
+        "chapter": 65
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Greymoor watcher who coordinates the castle's defense. He orders Alex to protect the surface and evacuation effort instead of entering the endangered tunnels.",
+      "id": "watcher-shaw",
+      "name": "Watcher Shaw",
+      "reveal": {
+        "chapter": 71
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A blue-skinned Fae road warden summoned through an ancient appeal to guide late reinforcements toward Greymoor.",
+      "id": "blue-skinned-fae-road-warden",
+      "name": "Blue-skinned Fae road warden",
+      "reveal": {
+        "chapter": 77
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0CXFHQGRL",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool-5"
+}

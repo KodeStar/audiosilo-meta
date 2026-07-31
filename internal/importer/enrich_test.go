@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -392,6 +393,47 @@ func TestEnrichISBNGlobalDuplicateGuard(t *testing.T) {
 	}
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestEnrichFindsSuffixedLongNameSeries is findSeries' own lock: enrichment is
+// the only caller that MUST walk past candidate 0 to do anything (it never
+// creates a series, so a walk that stops at the bare slug silently places
+// nothing). The two series here have long names colliding on one bounded base,
+// so the target only exists on the numeric candidate - and its slug is written
+// out literally, independent of the production formula, so a chain that stops
+// early or lands elsewhere fails rather than agrees with itself.
+func TestEnrichFindsSuffixedLongNameSeries(t *testing.T) {
+	prefix := strings.Repeat("Long ", 25)
+	nameA, nameB := prefix+"Alpha", prefix+"Beta"
+	const (
+		slugA = "long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long" // 99 chars: the shared truncated base
+		slugB = "long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-long-2"    // the bounded numeric candidate
+		relA  = "series/lo/" + slugA + ".json"
+		relB  = "series/lo/" + slugB + ".json"
+	)
+	dataDir := seedEnrichTree(t, map[string]string{
+		relA: fmt.Sprintf(`{"id":%q,"license":"CC0-1.0","name":%q,"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-second-map"}]}`, slugA, nameA),
+		relB: fmt.Sprintf(`{"id":%q,"license":"CC0-1.0","name":%q,"sources":[{"type":"user"}],"works":[{"position":"1","work":"the-second-map"}]}`, slugB, nameB),
+	})
+	row := fmt.Sprintf(`[{"asin":"B0LIBEX001","title":"The Lost Cartographer","region":"gb","language":"english",
+	  "authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],
+	  "series":[{"name":%q,"position":"2"}]}]`, nameB)
+
+	sum := runEnrich(t, dataDir, row, false)
+	if sum.SeriesPlacements != 1 || sum.NewSeries != 0 {
+		t.Fatalf("SeriesPlacements/NewSeries = %d/%d, want 1/0 (the suffixed series must be found, not skipped): %v",
+			sum.SeriesPlacements, sum.NewSeries, sum.Warnings)
+	}
+	var series struct {
+		Works []struct{ Work, Position string } `json:"works"`
+	}
+	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(relB)), &series)
+	if len(series.Works) != 2 {
+		t.Fatalf("the suffixed series holds %+v, want the enriched work added", series.Works)
+	}
+	if before := readRaw(t, dataDir, relA); !strings.Contains(before, `"position":"1"`) || strings.Contains(before, "the-lost-cartographer") {
+		t.Errorf("the same-base series A was touched: %s", before)
 	}
 }
 

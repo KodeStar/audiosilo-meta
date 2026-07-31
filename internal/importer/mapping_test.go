@@ -1,10 +1,12 @@
 package importer
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -150,6 +152,72 @@ func TestSlugifyMaxLen(t *testing.T) {
 	}
 	if got[len(got)-1] == '-' {
 		t.Errorf("Slugify trimmed slug ends with a hyphen: %q", got)
+	}
+}
+
+// TestBoundedSlugTail pins the three regimes: the join fits, the base is cut at
+// a hyphen boundary, the base is hard-cut because no boundary leaves room. The
+// tail must come through intact in all of them.
+func TestBoundedSlugTail(t *testing.T) {
+	hyphenated := strings.Repeat("word-", 19) + "last" // 99 chars
+	cases := []struct {
+		name, base, tail, want string
+	}{
+		{"fits", "short-title", "-2020", "short-title-2020"},
+		{"word boundary cut", hyphenated, "-2020", strings.Repeat("word-", 18) + "word-2020"},
+		{"hard cut, no boundary", strings.Repeat("a", model.MaxSlugLen), "-2020", strings.Repeat("a", 95) + "-2020"},
+		// Defensive regime: no caller composes a tail this long (the longest is an
+		// author credit plus a numeric suffix), but the END of the tail - where the
+		// distinguishing suffix lives - must still survive it.
+		{"tail alone fills the cap", "a-title", "-" + strings.Repeat("bb-", 40) + "cast-7", "bb-" + strings.Repeat("bb-", 30) + "cast-7"},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			got := BoundedSlugTail(c.base, c.tail)
+			if got != c.want {
+				t.Errorf("BoundedSlugTail(%q, %q) = %q, want %q", c.base, c.tail, got, c.want)
+			}
+			if !model.ValidSlug(got) {
+				t.Errorf("result %q (%d chars) is not a valid slug", got, len(got))
+			}
+			if !strings.HasSuffix(got, "7") {
+				return // only the long-tail case carries a distinguishing suffix
+			}
+			if !strings.HasSuffix(got, "cast-7") {
+				t.Errorf("result %q dropped the tail's distinguishing suffix", got)
+			}
+		})
+	}
+}
+
+// TestNumberedSlugAtBounded pins the shared numeric-suffix chain (recordings and
+// series): candidate 0 is the bare base and every later candidate keeps its
+// distinguishing number inside the cap, which makes the numbered candidates
+// pairwise distinct. Candidate 0 is excluded from that claim on purpose - a base
+// ending in "-<n>" equals the n'th candidate, which a walk absorbs as one wasted
+// probe.
+func TestNumberedSlugAtBounded(t *testing.T) {
+	base := strings.Repeat("narrator-", 11) + "voice" // 104 chars, cut by Slugify in real use
+	base = base[:model.MaxSlugLen]
+	seen := map[string]bool{}
+	for i := 0; i < 12; i++ {
+		got := NumberedSlugAt(base, i)
+		if !model.ValidSlug(got) {
+			t.Errorf("candidate %d = %q (%d chars) is not a valid slug", i, got, len(got))
+		}
+		if i == 0 {
+			if got != base {
+				t.Fatalf("candidate 0 = %q, want the bare base", got)
+			}
+			continue
+		}
+		if !strings.HasSuffix(got, fmt.Sprintf("-%d", i+1)) {
+			t.Errorf("candidate %d = %q lost its number", i, got)
+		}
+		if seen[got] {
+			t.Errorf("numbered candidate %d = %q duplicates an earlier one", i, got)
+		}
+		seen[got] = true
 	}
 }
 

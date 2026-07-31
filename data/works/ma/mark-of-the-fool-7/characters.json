@@ -1,0 +1,481 @@
+{
+  "characters": [
+    {
+      "description": "A Generasi mage, summoner, and crafter who bears the concealed Mark of the Fool. He leads the survivors of a Hell expedition through a shifting maze while drawing on the Traveler's unusual power.",
+      "id": "alex",
+      "name": "Alex",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alex's trusted partner and a formidable life-enforcement fighter. She cares for Brutus and shares Alex's commitment to protecting their family while confronting the Ravener threat.",
+      "id": "theresa",
+      "name": "Theresa",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's younger sister and a promising student of magical theory. After hearing confidential news about Hannah, she looks for a safe way to earn money without disrupting her schooling.",
+      "id": "selina",
+      "name": "Selina",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's sapient four-armed golem and adopted family member. Claygon calls Alex Father, communicates through their mental link, and is determined to protect him during the escape from Hell.",
+      "id": "claygon",
+      "name": "Claygon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Chancellor Baelin"
+      ],
+      "description": "Generasi's chancellor, Alex's mentor, and an exceptionally powerful archwizard. He concludes his cabal's campaign in Hell, reunites with Alex's surviving party, and arranges their return.",
+      "id": "baelin",
+      "name": "Baelin",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A swiftling scout serving with Alex's Hell expedition. Rip ranges ahead through the moving maze and helps the party search for a route to its portal.",
+      "id": "rip",
+      "name": "Rip",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A dark-elf demon hunter in Alex's escape party who scouts the shifting maze as the group searches for a way back to its portal.",
+      "id": "spirit-killer",
+      "name": "Spirit Killer",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A greater demon pursuing Alex's trapped expedition through Kratalikon's shifting maze. He traces the unusual energy previously used against him and resumes his hunt for the party.",
+      "id": "pursuing-greater-demon",
+      "name": "Pursuing greater demon",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A hired fighter traveling with Alex's party during its escape from Hell.",
+      "id": "tattoo-bound-former-king",
+      "name": "Tattoo-bound former king",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A half-orc mercenary traveling with Alex's party during its escape from Hell.",
+      "id": "half-orc-stone-thrower",
+      "name": "Half-orc stone-thrower",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An armored mercenary who belonged to the eight-member expedition into Hell and is confirmed among the party's fallen.",
+      "id": "armored-mercenary",
+      "name": "Armored mercenary",
+      "reveal": {
+        "chapter": 6
+      },
+      "role": "minor"
+    },
+    {
+      "description": "One of Uldar's heroes, an ally of Alex, and a dragon capable of fighting in humanoid form.",
+      "id": "drestra",
+      "name": "Drestra",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Chosen"
+      ],
+      "description": "Uldar's Chosen and an ally of Alex.",
+      "id": "cedric",
+      "name": "Cedric",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hart",
+        "the Champion"
+      ],
+      "description": "Hart Red Fletcher is Uldar's Champion and a powerful front-line fighter.",
+      "id": "hart-red-fletcher",
+      "name": "Hart Red Fletcher",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Prince Khalik"
+      ],
+      "description": "An earth mage, Alex's close friend, and the second son of Tekizash's monarchs. His earlier generosity helped Lucia establish the shipping network she now brings to Alex as a business opportunity.",
+      "id": "khalik-bermeder",
+      "name": "Khalik Bermeder",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Khalik's partner in the Games' lightweight proxy tournament.",
+      "id": "naja",
+      "name": "Naja",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An illusionist and dependable member of Alex's circle. Thundar steadies Alex after a nightmare and helps the trapped party survive its flight through Hell.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A shark-man life-force fighter and friend of Alex. Grimloch arrives with companions as the Roth Family Bakery's first paying customer and helps give the new business an encouraging start.",
+      "id": "grimloch",
+      "name": "Grimloch",
+      "reveal": {
+        "chapter": 23
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's loyal canine companion and combat tracker.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An alchemy professor and magical researcher who assigns Alex a demanding solo wand-crafting project while he is balancing study, business, and his work with the Traveler's power.",
+      "id": "professor-jules",
+      "name": "Professor Jules",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A master crafter and Alex's golem-business partner. Taraka Shale evaluates Lucia's shipping proposal cautiously, seeing immediate value in cheaper materials but requiring a successful trial before deeper cooperation.",
+      "id": "taraka-shale",
+      "name": "Taraka Shale",
+      "reveal": {
+        "chapter": 13
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A former sky gondolier who returns prosperous, healthy, and newly confident. She credits Alex and his friends with helping change her circumstances and proposes a business arrangement.",
+      "id": "lucia",
+      "name": "Lucia",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A baker employed by Alex who develops the recipes for the Roth Family Bakery. His practical skill makes him central to preparing the new business for its opening.",
+      "id": "troy",
+      "name": "Troy",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Troy's wife and a paid member of the Roth Family Bakery staff. Lorraine works in the kitchen and serves customers as the household prepares the business for its opening day.",
+      "id": "lorraine",
+      "name": "Lorraine",
+      "reveal": {
+        "chapter": 22
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A noble mage and member of Alex's cabal.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Khalik's mother, the Queen of Tekizash, and a visiting royal with a conspicuous facial scar. She takes an immediate and unusual interest in Selina when the families meet.",
+      "id": "queen-ishtar",
+      "name": "Queen Ishtar",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "King Aksuma"
+      ],
+      "description": "Khalik's father and the King of Tekizash. He warmly receives Khalik's friends, shows enthusiasm for magical beasts, and quietly studies his son's life in Generasi.",
+      "id": "king-aksuma-bermeder",
+      "name": "King Aksuma Bermeder",
+      "reveal": {
+        "chapter": 39
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A masked entrant in the super-heavyweight proxy tournament. Magnus Echever commands Prime, an imposing force construct that unexpectedly defeats Tyrus and Vesuvius to reach the final.",
+      "id": "magnus-echever",
+      "name": "Magnus Echever",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Magnus Echever's force construct and the opposing fighter set to face Alex and Claygon in the super-heavyweight proxy tournament final.",
+      "id": "prime",
+      "name": "Prime",
+      "reveal": {
+        "chapter": 53
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Magnus Echever"
+      ],
+      "description": "Alex's former force-magic professor and the man behind the masked tournament identity Magnus Echever. He created Prime as a prototype combat servant produced entirely through spellcraft.",
+      "id": "harsha-ram",
+      "name": "Harsha Ram",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A competitor and allied fighter who enters the super-heavyweight proxy tournament with Vesuvius. Claygon hopes to face the pair in a rematch during the later rounds.",
+      "id": "tyrus",
+      "name": "Tyrus",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Tyrus's super-heavyweight proxy fighter and Claygon's anticipated rematch opponent. Vesuvius is one of the few competitors whose presence does not leave the rest of the field intimidated.",
+      "id": "vesuvius",
+      "name": "Vesuvius",
+      "reveal": {
+        "chapter": 50
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A Thameish expedition member whose faith in Uldar is faltering. Carey remains committed to opposing the Ravener, but privately finds more comfort in the Traveler than in her former prayers.",
+      "id": "carey",
+      "name": "Carey",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Saint Merzhin"
+      ],
+      "description": "The sincere but isolated Saint of Uldar. Merzhin wields Uldar's divinity against Ravener spawn and defends his deity's purpose even as Carey's doubts challenge his certainty.",
+      "id": "merzhin",
+      "name": "Merzhin",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior authority in a covert branch of Uldar's church. After receiving a warning about approaching threats and divine servants, he summons the Third Apostle to begin a secret response.",
+      "id": "first-apostle",
+      "name": "First Apostle",
+      "reveal": {
+        "chapter": 15
+      }
+    },
+    {
+      "aliases": [
+        "Third Apostle Isis"
+      ],
+      "description": "The Third Apostle of Uldar's hidden church, summoned by the First Apostle after he receives a divine servant's warning about approaching threats and Uldar's servants.",
+      "id": "isis",
+      "name": "Isis",
+      "reveal": {
+        "chapter": 15
+      }
+    },
+    {
+      "description": "A priest of Uldar's hidden order who delivers the First Apostle's summons to Isis.",
+      "id": "elden",
+      "name": "Elden",
+      "reveal": {
+        "chapter": 15
+      },
+      "role": "minor"
+    },
+    {
+      "description": "An assassin-priest of Uldar's hidden order who can travel through stone. He is assigned to observe Merzhin and eliminate dangers to the order.",
+      "id": "stone-walking-assassin",
+      "name": "Stone-walking assassin",
+      "reveal": {
+        "chapter": 86
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A Watcher commander responsible for planning the captives' rescue. Hill favors a stealth extraction supported by Alex's teleportation, with the larger strike force held back unless the operation is exposed.",
+      "id": "watcher-hill",
+      "name": "Watcher Hill",
+      "reveal": {
+        "chapter": 88
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A masked Taleo from Generasi who joins Alex's countertrap as a precision-disintegration specialist.",
+      "id": "reaper",
+      "name": "Reaper",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "the Traveler"
+      ],
+      "description": "A cross-world traveler whose unusual power remains accessible to Alex after her death. Prayer appears to strengthen her influence, and Alex regards her as a source of aid distinct from Uldar.",
+      "id": "hannah-kim",
+      "name": "Hannah Kim",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An earlier Fool whose abandoned lair may hold evidence about the mark and Uldar's hidden church. Alex intends to pursue the site after strengthening his abilities and securing his affairs.",
+      "id": "kelda",
+      "name": "Kelda",
+      "reveal": {
+        "chapter": 11
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "the General's Folly"
+      ],
+      "description": "A historical Fool in the hidden church's account. The order claims Cain controlled dungeon cores, raised a monster army, and caused a disastrous cycle, but its story has not been independently confirmed.",
+      "id": "cain",
+      "name": "Cain",
+      "reveal": {
+        "chapter": 85
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A fey hunter who has been secretly observing Alex. The Stalker considers him promising prey and intends to seek permission from a lord before beginning a hunt.",
+      "id": "the-stalker",
+      "name": "The Stalker",
+      "reveal": {
+        "chapter": 87
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The deity associated with Thameland's five-hero cycle. His church presents him as the guiding authority behind the heroes and the continuing struggle against the Ravener.",
+      "id": "uldar",
+      "name": "Uldar",
+      "reveal": {
+        "chapter": 0
+      }
+    },
+    {
+      "description": "The source of Thameland's recurring monster threat. Its spawn and dungeon cores drive the cycle that Uldar's heroes are expected to oppose.",
+      "id": "the-ravener",
+      "name": "The Ravener",
+      "reveal": {
+        "chapter": 0
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "Khalik's dryad partner, who leads her kin in supporting the Roth Family Bakery when false food-poisoning claims threaten its opening day.",
+      "id": "khaliks-dryad-partner",
+      "name": "Khalik's dryad partner",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A goblin student who enters the Games' middleweight proxy division with Harmless, a crocodile near the division's weight limit.",
+      "id": "goblin-student",
+      "name": "Goblin student",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A crocodile entered in the Games' middleweight proxy division by his goblin student master. He competes just below the division's maximum weight.",
+      "id": "harmless",
+      "name": "Harmless",
+      "reveal": {
+        "chapter": 44
+      },
+      "role": "minor"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0DM9LMPRH",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool-7"
+}
