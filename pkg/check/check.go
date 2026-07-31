@@ -1,57 +1,85 @@
 // Package check loads the data/ tree, validates every record against its JSON
-// Schema, and enforces the cross-record rules (location, id/shard agreement,
+// Schema, and enforces the cross-record rules (placement, key/id agreement,
 // referential integrity, global uniqueness, chapter ordering, series
-// positions). It returns both the discovered problems and, best-effort, the
-// loaded Catalog so metabuild can reuse the same load.
+// positions). It returns the discovered problems, any advisory warnings, and,
+// best-effort, the loaded Catalog so metabuild can reuse the same load.
+//
+// Load handles both storage layouts, detected per family (pack.DetectLayout):
+// the range-packed layout pkg/pack defines, and - for the migration window
+// only - the file-per-entity layout in legacy.go. A mixed tree is legal, so a
+// family can convert on its own. Whichever walker reads a family, the resulting
+// model.Catalog is the same, and every cross-record rule in rules.go runs on
+// that Catalog without knowing which layout produced it.
 //
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency, so its exported surface is a contract.
 package check
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
-	"io/fs"
-	"os"
-	"path/filepath"
 	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
-	"github.com/santhosh-tekuri/jsonschema/v6"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Problem is one validation failure, tied to the file it came from.
+//
+// Path names the smallest thing that can be wrong. In the legacy layout that is
+// a file. In the pack layout a file holds many entities, so Path carries the
+// entry too, in the form model.PackLocation renders:
+//
+//	works/0/0.json                                    (a pack-wide problem)
+//	works/0/0.json: entry book-one                    (an entry's own problem)
+//	works/0/0.json: entry book-one: recording rec-one  (a nested recording)
+//	works-community/0/0.json: entry book-one: characters
+//
+// String() joins Path and Msg with ": ", so a problem always reads as one line
+// that locates itself from the data root down to the field.
 type Problem struct {
-	Path string // data-relative, slash-separated path
+	Path string // data-relative, slash-separated path, plus the entry for a pack
 	Msg  string
 }
 
 func (p Problem) String() string { return p.Path + ": " + p.Msg }
 
-// Result is the outcome of a load: any problems plus the loaded catalog.
+// Result is the outcome of a load: any problems, any advisories, and the
+// loaded catalog.
 type Result struct {
+	// Problems are rule violations. Any of them fails the check.
 	Problems []Problem
+	// Warnings are advisories: something worth a look that is not a violation.
+	// They never fail a check, so a caller that ignores them still behaves
+	// exactly as it did before this field existed.
+	Warnings []Problem
 	Catalog  *model.Catalog
 }
 
-// OK reports whether the load found no problems.
+// OK reports whether the load found no problems. Warnings are advisory and do
+// not affect it.
 func (r Result) OK() bool { return len(r.Problems) == 0 }
 
-// addFunc accumulates a formatted problem for a path.
+// addFunc accumulates a formatted problem or warning for a path.
 type addFunc func(path, format string, args ...any)
 
-// recordWithPath carries a recording alongside its parent-work slug and file
-// path, so it can be attached to its work after all works are read.
+// recordWithPath carries a recording alongside its parent-work slug and the
+// path (file, or pack entry) it was read from, so it can be attached to its
+// work and reported against after all works are read.
 type recordWithPath struct {
 	rec      *model.Recording
 	workSlug string
 	path     string
+	// attached reports that the walker already hung this recording off its
+	// work. A pack works entry is a composite, so its recordings arrive
+	// attached; a legacy recording is a separate file and is attached by Load
+	// once every work has been read.
+	attached bool
 }
 
 // pathIndex remembers where each entity was loaded from, for later problem
-// reporting during cross-record checks.
+// reporting during cross-record checks. Both walkers fill it, so the rules in
+// rules.go report identically whichever layout a family is in.
 type pathIndex struct {
 	work       map[*model.Work]string
 	rec        map[*model.Recording]string
@@ -61,20 +89,8 @@ type pathIndex struct {
 	recaps     map[*model.Recaps]string
 }
 
-// Load walks dir, validates it, and returns the result. dir is the data root.
-func Load(dir string) Result {
-	var probs []Problem
-	add := func(path, format string, args ...any) {
-		probs = append(probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
-	}
-
-	schemas, err := compileSchemas()
-	if err != nil {
-		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}
-	}
-
-	cat := &model.Catalog{}
-	idx := &pathIndex{
+func newPathIndex() *pathIndex {
+	return &pathIndex{
 		work:       map[*model.Work]string{},
 		rec:        map[*model.Recording]string{},
 		person:     map[*model.Person]string{},
@@ -82,179 +98,121 @@ func Load(dir string) Result {
 		characters: map[*model.Characters]string{},
 		recaps:     map[*model.Recaps]string{},
 	}
-	var pendingRecs []recordWithPath
+}
+
+// loader is one walk's accumulating state, shared by both layout walkers.
+type loader struct {
+	cat     *model.Catalog
+	idx     *pathIndex
+	schemas schemaSet
+	add     addFunc
+	warn    addFunc
+}
+
+// Load walks dir, validates it, and returns the result. dir is the data root.
+func Load(dir string) Result {
+	var probs, warns []Problem
+	add := func(path, format string, args ...any) {
+		probs = append(probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	}
+	warn := func(path, format string, args ...any) {
+		warns = append(warns, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
+	}
+
+	schemas, err := compileSchemas()
+	if err != nil {
+		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}
+	}
 
 	files, err := jsonFiles(dir)
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
-
-	for _, path := range files {
-		rel := relSlash(dir, path)
-		loc, ok := model.ParseLocation(rel)
-		if !ok {
-			add(rel, "unrecognized location (not a work, recording, person, or series file)")
-			continue
-		}
-
-		raw, err := os.ReadFile(path)
-		if err != nil {
-			add(rel, "read: %v", err)
-			continue
-		}
-
-		inst, err := jsonschema.UnmarshalJSON(bytes.NewReader(raw))
-		if err != nil {
-			add(rel, "invalid JSON: %s", collapse(err.Error()))
-			continue
-		}
-		for _, m := range schemas.validate(loc.Kind, inst) {
-			add(rel, "%s", m)
-		}
-
-		checkStructure(rel, loc, raw, add)
-
-		switch loc.Kind {
-		case model.KindWork:
-			var w model.Work
-			if json.Unmarshal(raw, &w) == nil {
-				cat.Works = append(cat.Works, &w)
-				idx.work[&w] = rel
-			}
-		case model.KindRecording:
-			var r model.Recording
-			if json.Unmarshal(raw, &r) == nil {
-				pendingRecs = append(pendingRecs, recordWithPath{rec: &r, workSlug: loc.WorkSlug, path: rel})
-				idx.rec[&r] = rel
-			}
-		case model.KindPerson:
-			var p model.Person
-			if json.Unmarshal(raw, &p) == nil {
-				cat.People = append(cat.People, &p)
-				idx.person[&p] = rel
-			}
-		case model.KindSeries:
-			var s model.Series
-			if json.Unmarshal(raw, &s) == nil {
-				cat.Series = append(cat.Series, &s)
-				idx.series[&s] = rel
-			}
-		case model.KindCharacters:
-			var c model.Characters
-			if json.Unmarshal(raw, &c) == nil {
-				cat.Characters = append(cat.Characters, &c)
-				idx.characters[&c] = rel
-			}
-		case model.KindRecaps:
-			var rc model.Recaps
-			if json.Unmarshal(raw, &rc) == nil {
-				cat.Recaps = append(cat.Recaps, &rc)
-				idx.recaps[&rc] = rel
-			}
-		}
+	layouts, err := pack.Detect(dir)
+	if err != nil {
+		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
 
-	// Attach recordings to their parent works (integrity flags orphans below).
+	l := &loader{cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas, add: add, warn: warn}
+
+	// Partition the tree's JSON files by family. A pack-layout family's files
+	// are walked from its pack listing instead, so they are handed to that
+	// walker only to spot files the listing does not account for. Everything
+	// else - including a file under no family root at all - goes to the legacy
+	// reader, which reports an unrecognized location.
+	packFiles := map[pack.Family][]string{}
+	var legacyFiles []string
+	for _, abs := range files {
+		rel := relSlash(dir, abs)
+		if f, ok := familyOf(rel); ok && layouts[f] == pack.LayoutPack {
+			packFiles[f] = append(packFiles[f], rel)
+			continue
+		}
+		legacyFiles = append(legacyFiles, rel)
+	}
+
+	recs := l.loadLegacy(dir, legacyFiles)
+	for _, def := range pack.Families() {
+		if layouts[def.Family] != pack.LayoutPack {
+			continue
+		}
+		// A pack works entry composes its own recordings, so these arrive
+		// already attached to their work and only need reporting paths.
+		recs = append(recs, l.loadPackFamily(dir, def, packFiles[def.Family])...)
+	}
+
+	cat, idx := l.cat, l.idx
 	workByID := map[string]*model.Work{}
 	for _, w := range cat.Works {
 		if _, dup := workByID[w.ID]; !dup {
 			workByID[w.ID] = w
 		}
 	}
-	for _, pr := range pendingRecs {
+	// Attach legacy recordings to their parent works (integrity flags orphans
+	// below). Pack recordings are already attached, so they are skipped here.
+	for _, pr := range recs {
+		if pr.attached {
+			continue
+		}
 		if w := workByID[pr.workSlug]; w != nil {
 			w.Recordings = append(w.Recordings, pr.rec)
 		}
 	}
 
-	checkIntegrity(cat, workByID, pendingRecs, idx, add)
-	checkUniqueness(cat, pendingRecs, idx, add)
-	checkChapters(pendingRecs, add)
+	checkIntegrity(cat, workByID, recs, idx, add)
+	checkUniqueness(cat, recs, idx, add)
+	checkChapters(recs, add)
 	checkSeriesPositions(cat, idx, add)
 	checkGenresSorted(cat, idx, add)
 	checkCharacters(cat, idx, add)
 	checkRecaps(cat, idx, add)
 
-	sort.Slice(probs, func(i, j int) bool {
-		if probs[i].Path != probs[j].Path {
-			return probs[i].Path < probs[j].Path
+	sortProblems(probs)
+	sortProblems(warns)
+
+	return Result{Problems: probs, Warnings: warns, Catalog: cat}
+}
+
+func sortProblems(ps []Problem) {
+	sort.Slice(ps, func(i, j int) bool {
+		if ps[i].Path != ps[j].Path {
+			return ps[i].Path < ps[j].Path
 		}
-		return probs[i].Msg < probs[j].Msg
+		return ps[i].Msg < ps[j].Msg
 	})
-
-	return Result{Problems: probs, Catalog: cat}
 }
 
-// checkStructure verifies id == slug and shard == first-two-chars, using the raw
-// JSON so it works even when the typed struct would zero a bad field.
-func checkStructure(rel string, loc model.Location, raw []byte, add addFunc) {
-	var head struct {
-		ID   string `json:"id"`
-		Work string `json:"work"`
+// familyOf maps a data-relative path onto the pack family whose root it sits
+// under. ok is false for a path under no family root.
+func familyOf(rel string) (pack.Family, bool) {
+	root, _, ok := strings.Cut(rel, "/")
+	if !ok {
+		return "", false
 	}
-	if err := json.Unmarshal(raw, &head); err != nil {
-		return // JSON errors already reported elsewhere.
-	}
-	// Per-work sidecars (characters/recaps) have no own id; they are identified
-	// by their parent work dir and its shard, and carry a work backref instead.
-	if loc.Kind == model.KindCharacters || loc.Kind == model.KindRecaps {
-		if !model.ValidSlug(loc.WorkSlug) {
-			add(rel, "slug %q is not a valid slug", loc.WorkSlug)
+	for _, d := range pack.Families() {
+		if d.Family.Root() == root {
+			return d.Family, true
 		}
-		if want := model.Shard(loc.WorkSlug); loc.Shard != want {
-			add(rel, "shard dir %q must be %q (first two chars of work slug %q)", loc.Shard, want, loc.WorkSlug)
-		}
-		if head.Work != loc.WorkSlug {
-			add(rel, "work %q must equal the parent work dir id %q", head.Work, loc.WorkSlug)
-		}
-		return
 	}
-	if head.ID != loc.Slug {
-		add(rel, "id %q does not match its file/dir slug %q", head.ID, loc.Slug)
-	}
-	if !model.ValidSlug(loc.Slug) {
-		add(rel, "slug %q is not a valid slug", loc.Slug)
-	}
-	// For a recording the shard directory belongs to its parent work, not the
-	// recording's own slug.
-	shardSlug := loc.Slug
-	if loc.Kind == model.KindRecording {
-		shardSlug = loc.WorkSlug
-	}
-	if want := model.Shard(shardSlug); loc.Shard != want {
-		add(rel, "shard dir %q must be %q (first two chars of slug %q)", loc.Shard, want, shardSlug)
-	}
-	if loc.Kind == model.KindRecording && head.Work != loc.WorkSlug {
-		add(rel, "recording work %q must equal the parent work dir id %q", head.Work, loc.WorkSlug)
-	}
-}
-
-func jsonFiles(dir string) ([]string, error) {
-	var files []string
-	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		if d.IsDir() {
-			return nil
-		}
-		if strings.EqualFold(filepath.Ext(path), ".json") {
-			files = append(files, path)
-		}
-		return nil
-	})
-	if err != nil {
-		return nil, err
-	}
-	sort.Strings(files)
-	return files, nil
-}
-
-// relSlash returns path relative to dir with forward slashes.
-func relSlash(dir, path string) string {
-	rel, err := filepath.Rel(dir, path)
-	if err != nil {
-		rel = path
-	}
-	return filepath.ToSlash(rel)
+	return "", false
 }

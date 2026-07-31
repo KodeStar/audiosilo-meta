@@ -1,7 +1,11 @@
-// Command metacheck validates the entire data/ tree: schema, id/shard
-// agreement, referential integrity, uniqueness, chapter ordering, and series
-// positions. It prints one line per problem ("path: message") and exits 1 if
-// any are found.
+// Command metacheck validates the entire data/ tree: schema, key/id agreement,
+// pack placement, caps and bounds, referential integrity, uniqueness, chapter
+// ordering, and series positions. It prints one line per problem
+// ("path: message") and exits 1 if any are found.
+//
+// Advisories are printed to stderr with an "advisory:" prefix and never affect
+// the exit status: they name something worth a look (an entry too large to ever
+// be split out of its pack, say) rather than a rule violation.
 package main
 
 import (
@@ -20,10 +24,13 @@ func main() {
 	for _, p := range res.Problems {
 		fmt.Println(p.String())
 	}
+	for _, w := range res.Warnings {
+		fmt.Fprintf(os.Stderr, "advisory: %s\n", w.String())
+	}
 	if !res.OK() {
 		fmt.Fprintf(os.Stderr, "%d problem(s) found\n", len(res.Problems))
 		os.Exit(1)
 	}
-	fmt.Fprintf(os.Stderr, "ok: %d works, %d people, %d series\n",
-		len(res.Catalog.Works), len(res.Catalog.People), len(res.Catalog.Series))
+	fmt.Fprintf(os.Stderr, "ok: %d works, %d people, %d series (%d advisory)\n",
+		len(res.Catalog.Works), len(res.Catalog.People), len(res.Catalog.Series), len(res.Warnings))
 }
