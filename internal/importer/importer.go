@@ -1325,13 +1325,66 @@ func runtimesCompatible(a, b int) bool {
 
 // workCandidates yields the ordered slug candidates for a work: the bare title
 // slug, then the title plus first-author slug, then numeric suffixes on that.
+// Every candidate is a valid slug (workSlugAt bounds it to model.MaxSlugLen);
+// the bare base already is, coming from Slugify. resolveExistingWork walks this
+// same chain to FIND a work, so the bound must live here rather than at either
+// call site or the two would stop agreeing on where a work sits.
 func workCandidates(base, firstAuthor string) []string {
-	withAuthor := base + "-" + firstAuthor
-	out := []string{base, withAuthor}
-	for i := 2; i <= 50; i++ {
-		out = append(out, fmt.Sprintf("%s-%d", withAuthor, i))
+	out := make([]string, 0, 51)
+	out = append(out, base)
+	for i := 1; i <= 50; i++ {
+		out = append(out, workSlugAt(base, firstAuthor, i))
 	}
 	return out
+}
+
+// workSlugAt builds the i'th disambiguated work-slug candidate (i >= 1):
+// "<base>-<firstAuthor>" for i == 1, then "-2", "-3", ... appended for the
+// later ones, bounded to model.MaxSlugLen.
+//
+// The bound shortens the TITLE, never the tail: the author slug is what
+// separates two different books sharing a title and the numeric suffix is what
+// separates the candidates from each other, so truncating either would collapse
+// the collision chain into one repeated slug. The title is cut at a hyphen
+// (word) boundary, which also guarantees the join stays a valid slug - no
+// trailing, leading or doubled hyphen. A title whose first word alone overruns
+// the room, or an author slug that alone fills the cap, leaves no such boundary;
+// that falls back to a hard cut of both halves, still keeping the suffix.
+func workSlugAt(base, firstAuthor string, i int) string {
+	numeric := ""
+	if i > 1 {
+		numeric = fmt.Sprintf("-%d", i)
+	}
+	tail := "-" + firstAuthor + numeric
+	if len(base)+len(tail) <= model.MaxSlugLen {
+		return base + tail
+	}
+	if room := model.MaxSlugLen - len(tail); room > 0 && room < len(base) {
+		// The last hyphen at or before base[room]: base[:cut] then fits and ends
+		// on an alphanumeric.
+		if cut := strings.LastIndexByte(base[:room+1], '-'); cut > 0 {
+			return base[:cut] + tail
+		}
+	}
+	// No boundary fits: cut both halves instead. The credit keeps at most half of
+	// what the numeric suffix leaves, so a cap-length author slug cannot swallow
+	// the title (which would make every candidate the same author string), and a
+	// cap-length title cannot swallow the credit (which would make the first
+	// candidate a repeat of the bare base).
+	avail := model.MaxSlugLen - len(numeric)
+	credit := "-" + firstAuthor
+	if len(credit) > avail/2 {
+		credit = credit[:avail/2]
+	}
+	head := base
+	if room := avail - len(credit); len(head) > room {
+		head = head[:room]
+	}
+	slug := strings.Trim(strings.TrimRight(head, "-")+credit, "-")
+	if slug == "" {
+		slug = "work" // never yield an empty or hyphen-only slug
+	}
+	return slug + numeric
 }
 
 func NormalizeASIN(s string) string {

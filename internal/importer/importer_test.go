@@ -12,6 +12,7 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // testImportDate is the imported_at stamp every test run uses.
@@ -316,6 +317,109 @@ func TestWorkSlugCollisionAppendsAuthor(t *testing.T) {
 	}
 	if !hasWarning(sum.Warnings, "taken by a different book") {
 		t.Errorf("expected a slug-collision warning, got %v", sum.Warnings)
+	}
+}
+
+// spikeTitleSlug is a real Slugify output from the 142k-book validation spike:
+// a German title truncated to exactly MaxSlugLen. Appending an author slug to
+// it used to mint a 115-char work id that failed model.ValidSlug and cascaded
+// into recording and series reference failures.
+const spikeTitleSlug = "die-ideale-welt-fur-den-soziopathen-ein-apokalyptisches-litrpg-abenteuer-die-ideale-welt-fur-den-soz"
+
+// assertCandidateChain checks the invariants every workCandidates result must
+// hold: valid slugs, all distinct, and the numeric suffix that distinguishes
+// candidate i from its siblings still present.
+func assertCandidateChain(t *testing.T, got []string) {
+	t.Helper()
+	if len(got) != 51 {
+		t.Fatalf("candidate chain has %d entries, want 51", len(got))
+	}
+	seen := map[string]bool{}
+	for i, slug := range got {
+		if !model.ValidSlug(slug) {
+			t.Errorf("candidate %d = %q (%d chars) is not a valid slug", i, slug, len(slug))
+		}
+		if seen[slug] {
+			t.Errorf("candidate %d = %q duplicates an earlier candidate", i, slug)
+		}
+		seen[slug] = true
+		if i >= 2 && !strings.HasSuffix(slug, fmt.Sprintf("-%d", i)) {
+			t.Errorf("candidate %d = %q lost its numeric suffix", i, slug)
+		}
+	}
+}
+
+func TestWorkCandidatesShortBaseUnchanged(t *testing.T) {
+	got := workCandidates("the-gathering", "bob-south")
+	assertCandidateChain(t, got)
+	want := []string{"the-gathering", "the-gathering-bob-south", "the-gathering-bob-south-2", "the-gathering-bob-south-3"}
+	if !reflect.DeepEqual(got[:len(want)], want) {
+		t.Errorf("candidate chain = %v, want prefix %v", got[:len(want)], want)
+	}
+	if got[50] != "the-gathering-bob-south-50" {
+		t.Errorf("last candidate = %q", got[50])
+	}
+}
+
+func TestWorkCandidatesBoundedToMaxSlugLen(t *testing.T) {
+	if len(spikeTitleSlug) != model.MaxSlugLen {
+		t.Fatalf("fixture base is %d chars, want %d", len(spikeTitleSlug), model.MaxSlugLen)
+	}
+	const author = "oleg-sapphire"
+	got := workCandidates(spikeTitleSlug, author)
+	assertCandidateChain(t, got)
+	if got[0] != spikeTitleSlug {
+		t.Errorf("first candidate = %q, want the bare base untouched", got[0])
+	}
+	head := strings.TrimSuffix(got[1], "-"+author)
+	if head == got[1] {
+		t.Fatalf("candidate %q does not end in -%s", got[1], author)
+	}
+	if !strings.HasPrefix(spikeTitleSlug, head) || spikeTitleSlug[len(head)] != '-' {
+		t.Errorf("head %q is not the base cut at a word boundary", head)
+	}
+}
+
+func TestWorkCandidatesFallbackWithoutWordBoundary(t *testing.T) {
+	// Neither base can be cut at a hyphen and still leave room for the tail: the
+	// first has no hyphen at all, the second's author slug alone fills the cap.
+	cases := []struct{ name, base, author string }{
+		{"single-word title", strings.Repeat("a", model.MaxSlugLen), "oleg-sapphire"},
+		{"author fills the cap", "a-long-enough-title-to-cut", strings.Repeat("b", model.MaxSlugLen)},
+	}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			assertCandidateChain(t, workCandidates(c.base, c.author))
+		})
+	}
+}
+
+func TestOverlongTitleCollisionProducesValidSlugs(t *testing.T) {
+	// Same over-long title, two authors: the second book walks onto the
+	// author-suffixed candidate, which must still validate end to end.
+	const title = "Die ideale Welt fur den Soziopathen: Ein apokalyptisches LitRPG Abenteuer, die ideale Welt fur den Soziopathen Band Zwei"
+	books := fmt.Sprintf(`[
+		{"asin":"B0LONGTTL1","title_short":%[1]q,"author":"Oleg Sapphire","narrated_by":"V One","language":"german","seconds":600},
+		{"asin":"B0LONGTTL2","title_short":%[1]q,"author":"Other Author","narrated_by":"V Two","language":"german","seconds":600}
+	]`, title)
+	sum, dataDir := runImport(t, books, false)
+	if sum.NewWorks != 2 {
+		t.Fatalf("expected 2 distinct works, got %d (%v)", sum.NewWorks, sum.Warnings)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+	for _, path := range listWorks(t, dataDir) {
+		if filepath.Base(path) != "work.json" {
+			continue
+		}
+		var work struct {
+			ID string `json:"id"`
+		}
+		readJSON(t, path, &work)
+		if !model.ValidSlug(work.ID) {
+			t.Errorf("work id %q (%d chars) is not a valid slug", work.ID, len(work.ID))
+		}
 	}
 }
 
