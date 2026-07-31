@@ -85,3 +85,28 @@ func TestParseLocation(t *testing.T) {
 		}
 	}
 }
+
+func TestPackLocationString(t *testing.T) {
+	cases := []struct {
+		loc  PackLocation
+		want string
+	}{
+		{
+			PackLocation{Kind: KindWork, Family: "works", Pack: "works/0/0.json", Slug: "dune"},
+			"works/0/0.json: entry dune",
+		},
+		{
+			PackLocation{Kind: KindRecording, Family: "works", Pack: "works/0/0.json", Slug: "dune", RecSlug: "rec-one"},
+			"works/0/0.json: entry dune: recording rec-one",
+		},
+		{
+			PackLocation{Kind: KindCharacters, Family: "works-community", Pack: "works-community/0/0.json", Slug: "dune"},
+			"works-community/0/0.json: entry dune",
+		},
+	}
+	for _, c := range cases {
+		if got := c.loc.String(); got != c.want {
+			t.Errorf("String() = %q, want %q", got, c.want)
+		}
+	}
+}

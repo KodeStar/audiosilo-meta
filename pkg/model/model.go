@@ -63,10 +63,16 @@ type Work struct {
 	Description    string    `json:"description,omitempty"`
 	Genres         []string  `json:"genres,omitempty"`
 	Xref           *WorkXref `json:"xref,omitempty"`
-	License        string    `json:"license"`
-	Sources        []Source  `json:"sources"`
+	// AddedAt is the date the work entered the database, YYYY-MM-DD. It is
+	// stamped at creation rather than derived from git history, which pack
+	// files cannot support (a pack's add-date is not its entries').
+	AddedAt string   `json:"added_at,omitempty"`
+	License string   `json:"license"`
+	Sources []Source `json:"sources"`
 
-	// Recordings is populated by the loader, not read from work.json.
+	// Recordings is populated by the loader, not read from work.json. In the
+	// pack layout the recordings are a map inside the work's entry; see
+	// pkg/pack.WorkEntry, which keeps this wire shape untouched.
 	Recordings []*Recording `json:"-"`
 }
 
@@ -97,8 +103,10 @@ type Recording struct {
 	ISBN        []string  `json:"isbn,omitempty"`
 	CoverURL    string    `json:"cover_url,omitempty"`
 	Chapters    []Chapter `json:"chapters,omitempty"`
-	License     string    `json:"license"`
-	Sources     []Source  `json:"sources"`
+	// AddedAt is the date the recording entered the database, YYYY-MM-DD.
+	AddedAt string   `json:"added_at,omitempty"`
+	License string   `json:"license"`
+	Sources []Source `json:"sources"`
 }
 
 // SeriesWork is one work's membership in a series, with its ordering position.

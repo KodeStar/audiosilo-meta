@@ -25,6 +25,40 @@ func Shard(slug string) string {
 	return slug[:2]
 }
 
+// PackLocation addresses one entity inside a pack file. It is the pack layout's
+// answer to Location: a pack holds many entities, so a path alone no longer
+// identifies one and the entry key has to travel with it. It is a plain
+// addressing value with no bound math of its own - pkg/pack owns that - so
+// every walker and rule can report against it without importing the storage
+// layer.
+type PackLocation struct {
+	// Kind is the entity the entry holds.
+	Kind Kind
+	// Family is the pack family's root directory name ("works",
+	// "works-community", "people", "series").
+	Family string
+	// Pack is the pack file's data-relative, slash-separated path.
+	Pack string
+	// Slug is the entry key: the work, person, or series slug. For a
+	// characters/recaps sidecar and for a recording it is the parent work's
+	// slug, since that is what the entry is keyed by.
+	Slug string
+	// RecSlug is the recording's key within its work entry's recordings map.
+	// It is empty unless Kind is KindRecording.
+	RecSlug string
+}
+
+// String renders the location the way a problem report names it:
+// "works/0/0.json: entry harry-potter" or "... : entry harry-potter: recording
+// stephen-fry".
+func (l PackLocation) String() string {
+	s := l.Pack + ": entry " + l.Slug
+	if l.RecSlug != "" {
+		s += ": recording " + l.RecSlug
+	}
+	return s
+}
+
 // Location is the parsed meaning of a data-tree file path.
 type Location struct {
 	Kind Kind
