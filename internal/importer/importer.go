@@ -738,7 +738,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 		warn("title %q produced an empty slug; using %q", title, base)
 	}
 	want := ToSet(authorSlugs)
-	for _, slug := range workCandidates(base, authorSlugs[0]) {
+	for i, slug := range workCandidates(base, authorSlugs[0]) {
 		ws, exists := p.works[slug]
 		if !exists {
 			if slug != base {
@@ -756,6 +756,14 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 		}
 		if SameSet(ws.authors, want) {
 			if claim.compatible(ws) {
+				// A merge onto a SHORTENED candidate is the one case where the slug
+				// no longer carries the whole title: two different long titles by
+				// one author agreeing up to the cut land here as a single work. The
+				// identity model accepts that collision risk, but it must not be
+				// silent - on the unbounded formula it surfaced as an invalid slug.
+				if workSlugTruncated(base, authorSlugs[0], i) {
+					warn("work slug for %q was shortened to fit; merging into existing work %q - verify these are the same book", title, slug)
+				}
 				return ws
 			}
 			// Same authors, but this slug's work sits in the book's series at a
@@ -768,7 +776,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			}
 		}
 	}
-	// Unreachable: workCandidates yields an unbounded numeric tail.
+	// Unreachable in practice: 50 numeric candidates never all collide.
 	return nil
 }
 
@@ -781,11 +789,7 @@ func (p *planner) findSeries(name string) *seriesState {
 		base = "series"
 	}
 	for i := 0; ; i++ {
-		slug := base
-		if i > 0 {
-			slug = fmt.Sprintf("%s-%d", base, i+1)
-		}
-		ss, exists := p.series[slug]
+		ss, exists := p.series[NumberedSlugAt(base, i)]
 		if !exists {
 			return nil
 		}
@@ -805,12 +809,18 @@ func (p *planner) findSeries(name string) *seriesState {
 // merged, or already there). It is false when the region check rejected it, so
 // the caller does not claim an ASIN that is nowhere in the tree.
 func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, narratorSlugs []string, warn func(string, ...any)) (asinRecorded bool) {
+	// Defensive only: personSlug substitutes "person" for an unslugifiable name
+	// and admitRecordingFacts guarantees at least one narrator, so the slug is
+	// never empty. Checked before the year so the guard cannot produce "-2020".
 	base := narratorSlugs[0]
-	if year := YearOf(b.str("release_date")); year != "" {
-		base += "-" + year
-	}
 	if base == "" {
 		base = "unknown-narrator"
+	}
+	// The year is bounded onto the narrator slug, which Slugify already capped at
+	// MaxSlugLen: a long full-cast or corporate credit would otherwise overrun
+	// the cap before the collision chain adds a single suffix.
+	if year := YearOf(b.str("release_date")); year != "" {
+		base = BoundedSlugTail(base, "-"+year)
 	}
 	narrSet := ToSet(narratorSlugs)
 
@@ -1127,10 +1137,7 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 		warn("series name %q produced an empty slug; using %q", name, base)
 	}
 	for i := 0; ; i++ {
-		slug := base
-		if i > 0 {
-			slug = fmt.Sprintf("%s-%d", base, i+1)
-		}
+		slug := NumberedSlugAt(base, i)
 		ss, exists := p.series[slug]
 		if !exists {
 			if slug != base {
@@ -1291,21 +1298,14 @@ func sameNarratorRecs(ws *workState, base string, narrators map[string]bool) (ma
 	for _, slug := range slugs {
 		matches = append(matches, recCandidate{slug: slug, info: ws.recs[slug]})
 	}
+	// The recording candidate formula: base (narrator plus release year), then
+	// base-2, base-3, ... - NumberedSlugAt keeps every one within MaxSlugLen.
 	for i := 0; ; i++ {
-		freeSlug = recSlugAt(base, i)
+		freeSlug = NumberedSlugAt(base, i)
 		if _, taken := ws.recs[freeSlug]; !taken {
 			return matches, freeSlug
 		}
 	}
-}
-
-// recSlugAt is the recording slug-candidate formula: base for the first
-// candidate, then base-2, base-3, ... for subsequent ones.
-func recSlugAt(base string, i int) string {
-	if i == 0 {
-		return base
-	}
-	return fmt.Sprintf("%s-%d", base, i+1)
 }
 
 // runtimesCompatible reports whether two recording runtimes (whole minutes; 0 or
@@ -1325,13 +1325,66 @@ func runtimesCompatible(a, b int) bool {
 
 // workCandidates yields the ordered slug candidates for a work: the bare title
 // slug, then the title plus first-author slug, then numeric suffixes on that.
+// Every candidate is a valid slug (workSlugAt bounds it to model.MaxSlugLen);
+// the bare base already is, coming from Slugify. resolveExistingWork walks this
+// same chain to FIND a work, so the bound must live here rather than at either
+// call site or the two would stop agreeing on where a work sits.
 func workCandidates(base, firstAuthor string) []string {
-	withAuthor := base + "-" + firstAuthor
-	out := []string{base, withAuthor}
-	for i := 2; i <= 50; i++ {
-		out = append(out, fmt.Sprintf("%s-%d", withAuthor, i))
+	out := make([]string, 0, 51)
+	out = append(out, base)
+	for i := 1; i <= 50; i++ {
+		out = append(out, workSlugAt(base, firstAuthor, i))
 	}
 	return out
+}
+
+// workSlugAt builds the i'th disambiguated work-slug candidate (i >= 1):
+// "<base>-<firstAuthor>" for i == 1, then "-2", "-3", ... appended for the
+// later ones, bounded to model.MaxSlugLen by BoundedSlugTail - so the TITLE is
+// what gets shortened. The author credit tells two books sharing a title apart
+// and the numeric suffix tells the candidates apart, so neither may be cut away.
+//
+// The work-specific policy sits on top: when no word boundary fits the pair, the
+// credit takes at most half of what the numeric suffix leaves. Otherwise a
+// cap-length author slug would swallow the title (every candidate collapsing
+// onto the same author string) and a cap-length title would swallow the credit
+// (the first candidate repeating the bare base).
+//
+// Like NumberedSlugAt's, the numbered candidates (i >= 2) are pairwise distinct
+// because each ends in its own "-<i>"; candidates 0 and 1 carry no number, so a
+// base or a digit-bearing author slug cut at just the wrong offset can make one
+// of them equal a later candidate. getOrCreateWork's walk absorbs that as one
+// wasted probe of a slug it has already tested.
+func workSlugAt(base, firstAuthor string, i int) string {
+	numeric := ""
+	if i > 1 {
+		numeric = fmt.Sprintf("-%d", i)
+	}
+	credit := "-" + firstAuthor
+	if slug, ok := wordBoundedSlugTail(base, credit+numeric); ok {
+		return slug
+	}
+	// TrimRight so a credit cut mid-hyphen cannot meet the numeric suffix as a
+	// doubled hyphen; firstAuthor is a valid slug, so a leading run survives.
+	if half := (model.MaxSlugLen - len(numeric)) / 2; len(credit) > half {
+		credit = strings.TrimRight(credit[:half], "-")
+	}
+	return BoundedSlugTail(base, credit+numeric)
+}
+
+// workSlugTruncated reports whether the i'th candidate had to shorten the title
+// to fit MaxSlugLen, i.e. whether the bounded candidate differs from the plain
+// "<base>-<author>(-<i>)" formula. Candidate 0 is never shortened here (Slugify
+// already bounded the bare base).
+func workSlugTruncated(base, firstAuthor string, i int) bool {
+	if i == 0 {
+		return false
+	}
+	n := len(base) + len("-"+firstAuthor)
+	if i > 1 {
+		n += len(fmt.Sprintf("-%d", i))
+	}
+	return n > model.MaxSlugLen
 }
 
 func NormalizeASIN(s string) string {

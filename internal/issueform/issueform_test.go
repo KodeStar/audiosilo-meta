@@ -7,7 +7,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // seedTree writes a small, self-consistent data tree to a temp dir so tests
@@ -338,6 +340,73 @@ func TestAddRecordingOK(t *testing.T) {
 	if !hasFile(res.Files, "data/works/ex/existing-work/recordings/new-voice-2021.json") {
 		t.Errorf("expected new recording file: %v", res.Files)
 	}
+}
+
+// TestRecordingSlugBoundedForLongNarrator pins that intake composes the same
+// BOUNDED recording chain the bulk importer walks. A full-cast credit slugifying
+// to the cap plus the release year used to exceed MaxSlugLen before any
+// disambiguation, so a legitimate submission was rejected by the composer's own
+// post-write validation.
+func TestRecordingSlugBoundedForLongNarrator(t *testing.T) {
+	dir := seedTree(t)
+	cast := strings.Repeat("Full Cast ", 10) + "Ensemble"
+	if got := len(importer.Slugify(cast)); got < 96 {
+		t.Fatalf("fixture narrator slug is %d chars; it must approach the %d cap", got, model.MaxSlugLen)
+	}
+
+	// The work form's release year is 1999, so the base is "<cast>-1999" bounded.
+	res := Process(Options{DataDir: dir, Template: "add-work",
+		Body: addWorkBody("Cast Book", "Alice Author", "en", cast, "US: B333333331", "publisher page", true)})
+	if res.Status != StatusOK {
+		t.Fatalf("add-work status = %q, messages = %v", res.Status, res.Messages)
+	}
+	first := recordingIDOf(t, res.Files, "data/works/ca/cast-book/recordings/")
+	if !model.ValidSlug(first) {
+		t.Fatalf("recording id %q (%d chars) is not a valid slug", first, len(first))
+	}
+	if !strings.HasSuffix(first, "-1999") {
+		t.Errorf("recording id %q lost the release year the bound must preserve", first)
+	}
+
+	// A second submission whose narrator SET differs but whose first narrator is
+	// the same collides on that slug and must take the bounded numeric candidate.
+	body := field(fWorkRef, "cast-book") +
+		field(fRecNarrators, cast+", Second Voice") +
+		field(fRecAbridged, "Unabridged") +
+		field(fRecRuntime, "410") +
+		field(fRecRelease, "1999-11-01") +
+		field(fRecPublisher, "Other Audio") +
+		field(fRecASINs, "US: B333333332") +
+		field(fRecISBNs, "") +
+		field(fRecCoverURL, "") +
+		field(fSources, "web") +
+		"### Factual data\n\n- [x] factual\n\n### " + fCC0 + "\n\n" + checkedBox()
+	res2 := Process(Options{DataDir: dir, Template: "add-recording", Body: body})
+	if res2.Status != StatusOK {
+		t.Fatalf("add-recording status = %q, messages = %v", res2.Status, res2.Messages)
+	}
+	second := recordingIDOf(t, res2.Files, "data/works/ca/cast-book/recordings/")
+	if !model.ValidSlug(second) {
+		t.Errorf("second recording id %q (%d chars) is not a valid slug", second, len(second))
+	}
+	if second == first || !strings.HasSuffix(second, "-2") {
+		t.Errorf("second recording id = %q, want a distinct numbered candidate after %q", second, first)
+	}
+}
+
+// recordingIDOf returns the single recording id a result wrote under prefix.
+func recordingIDOf(t *testing.T, files []string, prefix string) string {
+	t.Helper()
+	var out []string
+	for _, f := range files {
+		if strings.HasPrefix(f, prefix) {
+			out = append(out, strings.TrimSuffix(strings.TrimPrefix(f, prefix), ".json"))
+		}
+	}
+	if len(out) != 1 {
+		t.Fatalf("expected exactly one recording under %s, got %v", prefix, files)
+	}
+	return out[0]
 }
 
 func TestAddRecordingWorkNotFound(t *testing.T) {
