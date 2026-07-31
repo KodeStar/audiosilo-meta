@@ -62,8 +62,8 @@
       }
     },
     "added_at": {
-      "description": "The date this work entered the database. Stamped at creation by the importer and the intake bot; optional, since records predating the field carry none.",
-      "$ref": "common.schema.json#/$defs/date_day"
+      "description": "When this work entered the database. Stamped at creation by the importer and the intake bot as a plain date; records dated by the one-time git-history backfill carry that commit's full timestamp verbatim. Optional, since records predating the field carry none.",
+      "$ref": "common.schema.json#/$defs/date_or_datetime"
     },
     "recordings": {
       "description": "The work's recordings, keyed by recording slug. Present only in a works-family pack entry, where the map key replaces the recording's filename; a standalone work record never carries it.",

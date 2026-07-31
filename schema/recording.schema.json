@@ -90,8 +90,8 @@
       }
     },
     "added_at": {
-      "description": "The date this recording entered the database. Stamped at creation by the importer and the intake bot; optional, since records predating the field carry none.",
-      "$ref": "common.schema.json#/$defs/date_day"
+      "description": "When this recording entered the database. Stamped at creation by the importer and the intake bot as a plain date; records dated by the one-time git-history backfill carry that commit's full timestamp verbatim. Optional, since records predating the field carry none.",
+      "$ref": "common.schema.json#/$defs/date_or_datetime"
     },
     "license": {
       "$ref": "common.schema.json#/$defs/license"

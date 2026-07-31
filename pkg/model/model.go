@@ -63,9 +63,12 @@ type Work struct {
 	Description    string    `json:"description,omitempty"`
 	Genres         []string  `json:"genres,omitempty"`
 	Xref           *WorkXref `json:"xref,omitempty"`
-	// AddedAt is the date the work entered the database, YYYY-MM-DD. It is
-	// stamped at creation rather than derived from git history, which pack
-	// files cannot support (a pack's add-date is not its entries').
+	// AddedAt is when the work entered the database, stamped at creation
+	// rather than derived from git history, which pack files cannot support
+	// (a pack's add-date is not its entries'). It is a plain YYYY-MM-DD date
+	// everywhere except for records dated by the one-time backfill, which
+	// carry the commit's full RFC 3339 timestamp verbatim so the release
+	// artifact's bytes survive the storage migration unchanged.
 	AddedAt string   `json:"added_at,omitempty"`
 	License string   `json:"license"`
 	Sources []Source `json:"sources"`
@@ -103,7 +106,8 @@ type Recording struct {
 	ISBN        []string  `json:"isbn,omitempty"`
 	CoverURL    string    `json:"cover_url,omitempty"`
 	Chapters    []Chapter `json:"chapters,omitempty"`
-	// AddedAt is the date the recording entered the database, YYYY-MM-DD.
+	// AddedAt is when the recording entered the database, in the same two
+	// accepted shapes as Work.AddedAt.
 	AddedAt string   `json:"added_at,omitempty"`
 	License string   `json:"license"`
 	Sources []Source `json:"sources"`

@@ -93,23 +93,47 @@ const (
 	}`
 )
 
-// added_at is optional and, when present, a full calendar date.
+// added_at is optional and, when present, either a plain calendar date (what
+// the importer and the intake bot stamp) or a full RFC 3339 timestamp with an
+// offset (what the one-time git-history backfill writes verbatim, so the
+// release artifact's bytes survive the storage migration unchanged).
 func TestAddedAtField(t *testing.T) {
 	set := compileAll(t)
+	good := []string{
+		"2026-07-31",
+		"2026-07-12T18:23:45+01:00",
+		"2026-07-12T17:23:45-05:00",
+		"2026-07-12T17:23:45Z",
+		"2026-07-12T17:23:45.123456Z",
+	}
+	bad := []string{
+		"2026-07",                    // a partial date
+		"2026-07-12T18:23:45",        // a local time is not a point in time
+		"2026-07-12 18:23:45+01:00",  // no T separator
+		"2026-07-12T18:23:45+0100",   // an unseparated offset
+		"2026-07-31T",                // truncated
+		"yesterday",                  // junk
+		"2026-07-12T18:23:45+01:00Z", // two offsets
+	}
 	for name, valid := range map[string]string{
 		"work.schema.json":      validWork,
 		"recording.schema.json": validRecording,
 	} {
-		if err := validateJSON(t, set[name], valid); err != nil {
-			t.Errorf("%s rejected a valid added_at: %v", name, err)
-		}
 		without := strings.Replace(valid, `"added_at": "2026-07-31",`, "", 1)
 		if err := validateJSON(t, set[name], without); err != nil {
 			t.Errorf("%s rejected a record without added_at: %v", name, err)
 		}
-		bad := strings.Replace(valid, `"2026-07-31"`, `"2026-07"`, 1)
-		if err := validateJSON(t, set[name], bad); err == nil {
-			t.Errorf("%s accepted a partial added_at date", name)
+		for _, v := range good {
+			raw := strings.Replace(valid, `"2026-07-31"`, `"`+v+`"`, 1)
+			if err := validateJSON(t, set[name], raw); err != nil {
+				t.Errorf("%s rejected added_at %q: %v", name, v, err)
+			}
+		}
+		for _, v := range bad {
+			raw := strings.Replace(valid, `"2026-07-31"`, `"`+v+`"`, 1)
+			if err := validateJSON(t, set[name], raw); err == nil {
+				t.Errorf("%s accepted added_at %q", name, v)
+			}
 		}
 	}
 }

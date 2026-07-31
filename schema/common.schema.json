@@ -198,6 +198,23 @@
       "type": "string",
       "format": "date",
       "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "date_time_offset": {
+      "description": "An RFC 3339 date-time that states its UTC offset, e.g. 2026-07-12T18:23:45+01:00 or 2026-07-12T17:23:45Z. The offset is required: a local time with no offset is not a point in time.",
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "date_or_datetime": {
+      "description": "Either a plain calendar date or a full RFC 3339 date-time with offset. Both shapes are accepted so the one-time git-history backfill can write commit timestamps verbatim - the release artifact's bytes must not change across the storage migration - while everything stamped afterwards is a plain date, as imported_at already is.",
+      "anyOf": [
+        {
+          "$ref": "common.schema.json#/$defs/date_day"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/date_time_offset"
+        }
+      ]
     }
   }
 }
