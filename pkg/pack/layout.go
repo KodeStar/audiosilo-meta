@@ -3,8 +3,6 @@ package pack
 import (
 	"encoding/json"
 	"os"
-	"path/filepath"
-	"sort"
 )
 
 // Layout is the storage layout a family root is in.
@@ -38,15 +36,14 @@ func (l Layout) String() string {
 // decide it on its own, because a people pack that has gained a directory level
 // sits at the same depth as a legacy people record.
 func DetectLayout(dataDir string, f Family) (Layout, error) {
-	files, err := jsonFilesUnder(dataDir, f.Root())
+	sample, err := firstJSONUnder(dataDir, f.Root())
 	if err != nil {
 		return LayoutAbsent, err
 	}
-	if len(files) == 0 {
+	if sample == "" {
 		return LayoutAbsent, nil
 	}
-	sort.Strings(files)
-	raw, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(files[0])))
+	raw, err := os.ReadFile(sample)
 	if err != nil {
 		return LayoutAbsent, err
 	}

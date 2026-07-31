@@ -66,9 +66,9 @@ func (p Pending) Empty() bool {
 // queueing or writing anything. Unlike Flush it reads every pack, so entry-count
 // violations in packs no writer touched are found too.
 func (s *Store) Pending(f Family) (Pending, error) {
-	def, ok := Def(f)
-	if !ok {
-		return Pending{}, fmt.Errorf("unknown pack family %q", f)
+	def, err := s.def(f)
+	if err != nil {
+		return Pending{}, err
 	}
 	var p Pending
 	t := s.trees[f]
@@ -108,13 +108,22 @@ func (s *Store) Pending(f Family) (Pending, error) {
 	return p, nil
 }
 
-// Heal queues the moves that put every entry of family f in its bound-correct
-// pack and returns what will move. Nothing is written until Flush, which also
-// performs the due pack and directory splits Pending reports.
+// Heal queues everything family f needs to become well-formed and returns the
+// entries that will move. Nothing is written until Flush.
+//
+// It queues the relocations AND marks every pack Pending flagged as due-split,
+// which is what makes the pair complete: Flush on its own judges packs no write
+// reached by their on-disk size, so an entry-count violation would survive.
+// After Heal + Flush, Pending on the family is empty.
 func (s *Store) Heal(f Family) ([]Misplaced, error) {
 	p, err := s.Pending(f)
 	if err != nil {
 		return nil, err
+	}
+	for _, d := range p.Packs {
+		if err := s.Touch(d.Pack); err != nil {
+			return nil, err
+		}
 	}
 	for _, m := range p.Misplaced {
 		file, err := s.load(m.From)

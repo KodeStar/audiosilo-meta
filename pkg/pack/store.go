@@ -3,11 +3,17 @@ package pack
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
 )
+
+// ErrLegacyLayout is returned for a family still in the file-per-entity layout.
+// pkg/pack only reads and writes pack layout; during the dual-layout window a
+// caller checks Store.Layout first and falls back to the legacy reader.
+var ErrLegacyLayout = errors.New("family is in the legacy file-per-entity layout")
 
 // Store is a read-through, write-behind view over a data tree's pack files: it
 // answers reads from the queue first and from disk second, and writes nothing
@@ -18,16 +24,26 @@ import (
 // slug sees the queued entry, exactly as a per-file writer would have seen the
 // file it just wrote.
 //
+// A store is layout-aware per family, so it is safe on a mixed tree: a family
+// in pack layout, or absent entirely, is readable and writable; a family still
+// in legacy layout fails every operation with ErrLegacyLayout and Flush never
+// touches it. Without that a legacy people/ or series/ root would parse as a
+// pack tree, since its records also sit one directory deep.
+//
 // A Store is not safe for concurrent use.
 type Store struct {
-	dir   string
-	trees map[Family]*Tree
-	cache map[string]*File // pack path -> loaded pack
-	ops   map[Family]map[string]op
+	dir     string
+	layouts map[Family]Layout
+	trees   map[Family]*Tree
+	cache   map[string]*File // pack path -> loaded pack
+	ops     map[Family]map[string]op
 	// pulls are targeted removals used by relocation: an entry has to leave the
 	// wrong pack, which is not the pack its slug looks up to.
 	pulls map[Family]map[string]map[string]bool // family -> pack path -> slugs
-	refs  map[string]PackRef                    // pack path -> ref, for pulls
+	// touch marks packs no queued write reached that must still be reshaped on
+	// Flush, which is how an entry-count split reaches a pack nobody wrote to.
+	touch map[Family]map[string]PackRef
+	refs  map[string]PackRef // pack path -> ref, for pulls and touches
 }
 
 type op struct {
@@ -35,18 +51,30 @@ type op struct {
 	del   bool
 }
 
-// Open reads the pack listing of every family under dataDir. It assumes the
-// tree is in pack layout; call Detect first when that is in doubt.
+// Open detects each family's layout under dataDir and reads the pack listing of
+// the ones in pack layout. A family that is absent is still writable: its first
+// Upsert creates the reserved "0" pack.
 func Open(dataDir string) (*Store, error) {
 	s := &Store{
-		dir:   dataDir,
-		trees: map[Family]*Tree{},
-		cache: map[string]*File{},
-		ops:   map[Family]map[string]op{},
-		pulls: map[Family]map[string]map[string]bool{},
-		refs:  map[string]PackRef{},
+		dir:     dataDir,
+		layouts: map[Family]Layout{},
+		trees:   map[Family]*Tree{},
+		cache:   map[string]*File{},
+		ops:     map[Family]map[string]op{},
+		pulls:   map[Family]map[string]map[string]bool{},
+		touch:   map[Family]map[string]PackRef{},
+		refs:    map[string]PackRef{},
 	}
 	for _, d := range Families() {
+		l, err := DetectLayout(dataDir, d.Family)
+		if err != nil {
+			return nil, err
+		}
+		s.layouts[d.Family] = l
+		if l == LayoutLegacy {
+			s.trees[d.Family] = NewTree(d.Family, nil)
+			continue
+		}
 		t, err := ReadTree(dataDir, d.Family)
 		if err != nil {
 			return nil, err
@@ -59,16 +87,32 @@ func Open(dataDir string) (*Store, error) {
 // Dir returns the data root the store was opened on.
 func (s *Store) Dir() string { return s.dir }
 
-// Tree returns family f's current pack listing.
+// Layout returns the layout family f was detected in at Open time.
+func (s *Store) Layout(f Family) Layout { return s.layouts[f] }
+
+// Tree returns family f's current pack listing. A legacy family has none.
 func (s *Store) Tree(f Family) *Tree { return s.trees[f] }
+
+// def resolves a family, rejecting an unknown one and one the store may not
+// touch because it is still in legacy layout.
+func (s *Store) def(f Family) (FamilyDef, error) {
+	d, ok := Def(f)
+	if !ok {
+		return FamilyDef{}, fmt.Errorf("unknown pack family %q", f)
+	}
+	if s.layouts[f] == LayoutLegacy {
+		return FamilyDef{}, fmt.Errorf("%s: %w", f.Root(), ErrLegacyLayout)
+	}
+	return d, nil
+}
 
 // Locate returns the pack that holds slug, or would hold it. A family with no
 // packs yet locates to its reserved first pack (MinBound, under directory
 // MinBound for a family that carries a directory level).
 func (s *Store) Locate(f Family, slug string) (PackRef, error) {
-	def, ok := Def(f)
-	if !ok {
-		return PackRef{}, fmt.Errorf("unknown pack family %q", f)
+	def, err := s.def(f)
+	if err != nil {
+		return PackRef{}, err
 	}
 	t := s.trees[f]
 	if t != nil && t.Len() > 0 {
@@ -87,15 +131,15 @@ func (s *Store) Locate(f Family, slug string) (PackRef, error) {
 // writes. The lookup only consults the pack the slug's bound points at: an
 // entry sitting in the wrong pack is invisible until Heal relocates it.
 func (s *Store) Get(f Family, slug string) (json.RawMessage, bool, error) {
+	ref, err := s.Locate(f, slug)
+	if err != nil {
+		return nil, false, err
+	}
 	if o, ok := s.ops[f][slug]; ok {
 		if o.del {
 			return nil, false, nil
 		}
 		return o.entry, true, nil
-	}
-	ref, err := s.Locate(f, slug)
-	if err != nil {
-		return nil, false, err
 	}
 	file, err := s.load(ref)
 	if err != nil {
@@ -113,8 +157,8 @@ func (s *Store) Has(f Family, slug string) (bool, error) {
 
 // Upsert queues entry under slug. Nothing is written until Flush.
 func (s *Store) Upsert(f Family, slug string, entry json.RawMessage) error {
-	if _, ok := Def(f); !ok {
-		return fmt.Errorf("unknown pack family %q", f)
+	if _, err := s.def(f); err != nil {
+		return err
 	}
 	cp := make(json.RawMessage, len(entry))
 	copy(cp, entry)
@@ -133,8 +177,8 @@ func (s *Store) UpsertValue(f Family, slug string, v any) error {
 
 // Delete queues the removal of slug's entry. Nothing is written until Flush.
 func (s *Store) Delete(f Family, slug string) error {
-	if _, ok := Def(f); !ok {
-		return fmt.Errorf("unknown pack family %q", f)
+	if _, err := s.def(f); err != nil {
+		return err
 	}
 	s.queue(f, slug, op{del: true})
 	return nil
@@ -145,6 +189,54 @@ func (s *Store) queue(f Family, slug string, o op) {
 		s.ops[f] = map[string]op{}
 	}
 	s.ops[f][slug] = o
+}
+
+// Pack returns an independent copy of a pack as it is ON DISK. Queued writes
+// are deliberately not folded in - a pack is the unit Flush rewrites, so a
+// half-applied view of one would invite a caller to write it back and lose the
+// rest of the queue. Use Get for a single entry read queued-write-first.
+//
+// The ref must name a pack the family's tree holds; a pack that does not exist
+// is an error rather than an empty file, so a typo does not read as "no data".
+func (s *Store) Pack(ref PackRef) (*File, error) {
+	if _, err := s.def(ref.Family); err != nil {
+		return nil, err
+	}
+	want := ref.Path()
+	found := false
+	for _, p := range s.trees[ref.Family].Packs() {
+		if p.Path() == want {
+			found = true
+			break
+		}
+	}
+	if !found {
+		return nil, fmt.Errorf("no such pack %s", want)
+	}
+	f, err := s.load(ref)
+	if err != nil {
+		return nil, err
+	}
+	return f.Clone(), nil
+}
+
+// Touch marks a pack for reshaping on the next Flush without changing any of
+// its entries. It is what carries a split that no write triggered: Flush judges
+// packs the queue never reached by their on-disk size alone, so an entry-count
+// violation (1,000 people is well under the 512KB size cap) would otherwise
+// survive untouched. Heal calls it for every pack Pending reports, so the
+// Heal-then-Flush pair always leaves a family Pending-clean.
+func (s *Store) Touch(ref PackRef) error {
+	if _, err := s.def(ref.Family); err != nil {
+		return err
+	}
+	p := ref.Path()
+	if s.touch[ref.Family] == nil {
+		s.touch[ref.Family] = map[string]PackRef{}
+	}
+	s.touch[ref.Family][p] = ref
+	s.refs[p] = ref
+	return nil
 }
 
 // load reads a pack, caching it. A pack file that does not exist loads as an
@@ -211,6 +303,9 @@ type packGroup struct {
 func (s *Store) Flush() (Written, error) {
 	var w Written
 	for _, d := range Families() {
+		if s.layouts[d.Family] == LayoutLegacy {
+			continue
+		}
 		fw, err := s.flushFamily(d)
 		if err != nil {
 			return Written{}, err
@@ -222,6 +317,7 @@ func (s *Store) Flush() (Written, error) {
 	sort.Strings(w.Deleted)
 	s.ops = map[Family]map[string]op{}
 	s.pulls = map[Family]map[string]map[string]bool{}
+	s.touch = map[Family]map[string]PackRef{}
 	s.cache = map[string]*File{}
 	s.refs = map[string]PackRef{}
 	return w, nil
@@ -229,11 +325,14 @@ func (s *Store) Flush() (Written, error) {
 
 func (s *Store) flushFamily(def FamilyDef) (Written, error) {
 	f := def.Family
-	if len(s.ops[f]) == 0 && len(s.pulls[f]) == 0 && s.trees[f].Len() == 0 {
+	if len(s.ops[f]) == 0 && len(s.pulls[f]) == 0 && len(s.touch[f]) == 0 && s.trees[f].Len() == 0 {
 		return Written{}, nil
 	}
 
 	touched := map[string]bool{}
+	if err := s.applyTouches(f, touched); err != nil {
+		return Written{}, err
+	}
 	if err := s.applyPulls(f, touched); err != nil {
 		return Written{}, err
 	}
@@ -250,6 +349,24 @@ func (s *Store) flushFamily(def FamilyDef) (Written, error) {
 		return Written{}, err
 	}
 	return s.commit(def, packs, final)
+}
+
+// applyTouches loads the packs Touch marked so reshape sees their real entry
+// counts. It changes no entry; a pack that reshape leaves alone is not rewritten
+// either, because commit compares the rendered bytes with what is on disk.
+func (s *Store) applyTouches(f Family, touched map[string]bool) error {
+	paths := make([]string, 0, len(s.touch[f]))
+	for p := range s.touch[f] {
+		paths = append(paths, p)
+	}
+	sort.Strings(paths)
+	for _, p := range paths {
+		if _, err := s.load(s.touch[f][p]); err != nil {
+			return err
+		}
+		touched[p] = true
+	}
+	return nil
 }
 
 // applyPulls performs relocation's targeted removals: an entry leaves the pack

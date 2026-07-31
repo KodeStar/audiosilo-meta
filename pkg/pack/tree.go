@@ -175,6 +175,31 @@ func packBound(name string) (string, bool) {
 	return base, true
 }
 
+// firstJSONUnder returns the absolute path of the lexically first *.json file
+// under root, or "" when there is none. It stops at the first hit, so layout
+// detection costs a directory descent rather than a walk of the whole family.
+func firstJSONUnder(dataDir, root string) (string, error) {
+	base := filepath.Join(dataDir, root)
+	var found string
+	err := filepath.WalkDir(base, func(p string, d fs.DirEntry, err error) error {
+		if err != nil {
+			if os.IsNotExist(err) && p == base {
+				return fs.SkipAll
+			}
+			return err
+		}
+		if d.IsDir() || !strings.EqualFold(filepath.Ext(p), ".json") {
+			return nil
+		}
+		found = p
+		return fs.SkipAll
+	})
+	if err != nil {
+		return "", err
+	}
+	return found, nil
+}
+
 // jsonFilesUnder returns every *.json file under root, data-relative and
 // slash-separated, sorted. A missing root yields nothing.
 func jsonFilesUnder(dataDir, root string) ([]string, error) {
