@@ -58,12 +58,31 @@ func compileSchemas() (schemaSet, error) {
 	return set, nil
 }
 
-// validate checks inst against the schema for kind, returning human-readable
-// messages (one per underlying violation). An empty slice means it validated.
-func (s schemaSet) validate(kind model.Kind, inst any) []string {
+// violation is one schema failure kept apart from its rendering: Loc is the
+// JSON-pointer instance location inside the validated value (or "(root)"), Msg
+// the reason. The pack walker needs the two separately - a violation inside a
+// composite's recordings map is re-reported against that recording, with its
+// location rebased - so validate() is a thin renderer over violations().
+type violation struct {
+	Loc string
+	Msg string
+}
+
+// String renders the violation the way a problem message reads. An empty Loc
+// carries no location at all (a whole-value failure), so it renders bare.
+func (v violation) String() string {
+	if v.Loc == "" {
+		return v.Msg
+	}
+	return v.Loc + ": " + v.Msg
+}
+
+// violations checks inst against the schema for kind. An empty slice means it
+// validated.
+func (s schemaSet) violations(kind model.Kind, inst any) []violation {
 	sch, ok := s[kind]
 	if !ok {
-		return []string{fmt.Sprintf("no schema for kind %q", kind)}
+		return []violation{{Msg: fmt.Sprintf("no schema for kind %q", kind)}}
 	}
 	err := sch.Validate(inst)
 	if err == nil {
@@ -71,18 +90,29 @@ func (s schemaSet) validate(kind model.Kind, inst any) []string {
 	}
 	verr, ok := err.(*jsonschema.ValidationError)
 	if !ok {
-		return []string{collapse(err.Error())}
+		return []violation{{Msg: collapse(err.Error())}}
 	}
-	var msgs []string
-	collectLeaves(verr.BasicOutput(), &msgs)
-	if len(msgs) == 0 {
-		msgs = append(msgs, collapse(verr.Error()))
+	var out []violation
+	collectLeaves(verr.BasicOutput(), &out)
+	if len(out) == 0 {
+		out = append(out, violation{Msg: collapse(verr.Error())})
+	}
+	return out
+}
+
+// validate checks inst against the schema for kind, returning human-readable
+// messages (one per underlying violation). An empty slice means it validated.
+func (s schemaSet) validate(kind model.Kind, inst any) []string {
+	vs := s.violations(kind, inst)
+	msgs := make([]string, 0, len(vs))
+	for _, v := range vs {
+		msgs = append(msgs, v.String())
 	}
 	return msgs
 }
 
-// collectLeaves walks a BasicOutput tree, emitting one message per leaf error.
-func collectLeaves(u *jsonschema.OutputUnit, out *[]string) {
+// collectLeaves walks a BasicOutput tree, emitting one violation per leaf error.
+func collectLeaves(u *jsonschema.OutputUnit, out *[]violation) {
 	if u == nil {
 		return
 	}
@@ -91,7 +121,7 @@ func collectLeaves(u *jsonschema.OutputUnit, out *[]string) {
 		if loc == "" {
 			loc = "(root)"
 		}
-		*out = append(*out, fmt.Sprintf("%s: %s", loc, collapse(u.Error.String())))
+		*out = append(*out, violation{Loc: loc, Msg: collapse(u.Error.String())})
 	}
 	for i := range u.Errors {
 		collectLeaves(&u.Errors[i], out)
