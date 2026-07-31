@@ -1,20 +1,19 @@
 // Package format is metafmt's business logic: canonical formatting of the data
-// tree plus, for families already in pack layout, the self-healing placement
-// pass (relocating misplaced entries and performing due pack and directory
-// splits).
+// tree plus, for families already in pack layout, the self-healing structural
+// pass (salvaging files that are not packs, relocating misplaced entries,
+// resolving duplicate slugs, and performing due splits and rebinds).
 //
 // It is the glue between two packages that deliberately do not know about each
 // other: pkg/canonical owns per-file canonical form and is layout-agnostic,
-// pkg/pack owns bound math, relocation and splitting. Sequencing them (format
-// first, then heal the families the store reports as packed) is metafmt's
-// concern, so it lives here rather than in either public package - cmd/metafmt
-// stays flag wiring, per the repo's thin-CLI convention.
+// pkg/pack owns the layout - what is wrong with a family, and how one Heal plus
+// one Flush makes it right. This package sequences them and renders the result;
+// it decides nothing about the layout itself, and it does not restate pkg/pack's
+// phrasing, so metafmt's model of "wrong" cannot drift from metacheck's.
+// cmd/metafmt stays flag wiring, per the repo's thin-CLI convention.
 package format
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"path/filepath"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
@@ -24,27 +23,22 @@ import (
 // Report is what one metafmt run found (Check) or did (Write).
 type Report struct {
 	// Dir is the data directory the run was made against. Pack paths are
-	// data-relative, so the reported lines are prefixed with it to match the
+	// data-relative, so the reported lines are rendered beneath it to match the
 	// file paths pkg/canonical reports.
 	Dir string
-	// NonCanonical holds the files Check found not in canonical form.
+	// NonCanonical holds the files Check found not in canonical form, and
+	// Formatted the ones Write rewrote. Only one is ever set.
 	NonCanonical []string
-	// Formatted holds the files Write rewrote into canonical form.
-	Formatted []string
-	// Invalid holds files that do not parse as JSON. They are left untouched,
-	// and they suppress the placement pass: a pack that cannot be read cannot
-	// be healed.
+	Formatted    []string
+	// Invalid holds files that are not valid JSON, left untouched. A file under
+	// a packed family root is reported by Pending.Unreadable instead, which says
+	// more, so it appears here only when no packed family owns it.
 	Invalid []string
-	// Misplaced holds the entries sitting outside their bound-correct pack -
-	// reported by Check, moved by Write.
-	Misplaced []pack.Misplaced
-	// Splits holds the packs over a hard cap, and Dirs the directories over the
-	// pack cap. Both are measured before the flush, so a split the relocation
-	// itself caused is not listed here; Wrote and Deleted are the exact file
-	// effects.
-	Splits []pack.DueSplit
-	Dirs   []pack.DueDirSplit
-	// Wrote and Deleted hold the pack files the placement pass created,
+	// Pending is every structural problem the packed families have, merged
+	// across them. It is pkg/pack's own report: Check names it, Write performs
+	// all of it but the unreadable files.
+	Pending pack.Pending
+	// Wrote and Deleted hold the pack files the structural pass created,
 	// rewrote, or removed, data-relative.
 	Wrote   []string
 	Deleted []string
@@ -53,7 +47,38 @@ type Report struct {
 // Clean reports whether the tree needs no work at all.
 func (r Report) Clean() bool {
 	return len(r.NonCanonical) == 0 && len(r.Formatted) == 0 && len(r.Invalid) == 0 &&
-		len(r.Misplaced) == 0 && len(r.Splits) == 0 && len(r.Dirs) == 0
+		r.Pending.Empty()
+}
+
+// NeedsHuman reports whether something outstanding is beyond what --write can
+// fix: a file the tooling cannot read is never rewritten or deleted for the
+// contributor, it is only named.
+func (r Report) NeedsHuman() bool {
+	return len(r.Invalid) > 0 || !r.Pending.Healable()
+}
+
+// fixable reports whether anything outstanding is something --write performs.
+// An unparseable file is not: it is listed as non-canonical too, so that count
+// only means work when it exceeds the files nothing can parse.
+func (r Report) fixable() bool {
+	p := r.Pending
+	return len(r.NonCanonical) > len(r.Invalid) || len(r.Formatted) > 0 ||
+		len(p.Salvage) > 0 || len(p.Misplaced) > 0 || len(p.Conflicts) > 0 ||
+		len(p.Rebinds) > 0 || len(p.Packs) > 0 || len(p.Dirs) > 0
+}
+
+// Advice is what to do about the report, for the failure line. Telling a
+// contributor to run --write against a tree only a human can fix would send
+// them in a circle.
+func (r Report) Advice() string {
+	switch {
+	case !r.NeedsHuman():
+		return "run metafmt --write to fix"
+	case !r.fixable():
+		return "metafmt cannot fix these, they need a human"
+	default:
+		return "run metafmt --write to fix the rest; the unreadable files need a human"
+	}
 }
 
 // path renders a data-relative pack path the way pkg/canonical reports file
@@ -62,55 +87,18 @@ func (r Report) path(rel string) string {
 	return filepath.Join(r.Dir, filepath.FromSlash(rel))
 }
 
-// CheckLines returns one line per problem, in the order metafmt --check prints
-// them: non-canonical files first, then the placement work with the canonical
-// location named.
-func (r Report) CheckLines() []string {
-	out := make([]string, 0, len(r.NonCanonical)+len(r.Misplaced)+len(r.Splits)+len(r.Dirs))
+// Lines returns one line per problem (Check) or change (Write). The structural
+// sentences are pkg/pack's, rendered beneath the data directory: it owns the
+// vocabulary of what is wrong and what the fix is, and metafmt only frames it
+// with the files it formatted and the files the flush touched.
+func (r Report) Lines() []string {
+	pending := r.Pending.LinesUnder(r.Dir)
+	out := make([]string, 0, len(r.NonCanonical)+len(r.Formatted)+len(pending)+len(r.Wrote)+len(r.Deleted))
 	out = append(out, r.NonCanonical...)
-	for _, m := range r.Misplaced {
-		out = append(out, fmt.Sprintf("entry %q belongs in %s, not %s",
-			m.Slug, r.path(m.To.Path()), r.path(m.From.Path())))
-	}
-	for _, s := range r.Splits {
-		out = append(out, fmt.Sprintf("pack %s is over its hard %s cap (%d entries, %d bytes), split due",
-			r.path(s.Pack.Path()), s.Reason, s.Entries, s.Size))
-	}
-	for _, d := range r.Dirs {
-		if d.Dir == "" {
-			out = append(out, fmt.Sprintf("family %s holds %d packs and has to gain a directory level, split due",
-				r.path(d.Family.Root()), d.Packs))
-			continue
-		}
-		out = append(out, fmt.Sprintf("directory %s holds %d packs, over the pack cap, split due",
-			r.path(d.Family.Root()+"/"+d.Dir), d.Packs))
-	}
-	return out
-}
-
-// WriteLines returns one line per change metafmt --write made.
-func (r Report) WriteLines() []string {
-	out := make([]string, 0, len(r.Formatted)+len(r.Misplaced)+len(r.Splits)+len(r.Dirs)+len(r.Wrote)+len(r.Deleted))
 	for _, f := range r.Formatted {
 		out = append(out, "formatted "+f)
 	}
-	for _, m := range r.Misplaced {
-		out = append(out, fmt.Sprintf("moved entry %q to %s (from %s)",
-			m.Slug, r.path(m.To.Path()), r.path(m.From.Path())))
-	}
-	for _, s := range r.Splits {
-		out = append(out, fmt.Sprintf("split pack %s (%d entries, %d bytes, over its hard %s cap)",
-			r.path(s.Pack.Path()), s.Entries, s.Size, s.Reason))
-	}
-	for _, d := range r.Dirs {
-		if d.Dir == "" {
-			out = append(out, fmt.Sprintf("split family %s into directories (%d packs)",
-				r.path(d.Family.Root()), d.Packs))
-			continue
-		}
-		out = append(out, fmt.Sprintf("split directory %s (%d packs)",
-			r.path(d.Family.Root()+"/"+d.Dir), d.Packs))
-	}
+	out = append(out, pending...)
 	for _, f := range r.Wrote {
 		out = append(out, "wrote "+r.path(f))
 	}
@@ -135,9 +123,13 @@ func (r Report) Summary() string {
 	add(len(r.NonCanonical), "file not canonical", "files not canonical")
 	add(len(r.Formatted), "file formatted", "files formatted")
 	add(len(r.Invalid), "file with invalid JSON", "files with invalid JSON")
-	add(len(r.Misplaced), "misplaced entry", "misplaced entries")
-	add(len(r.Splits), "pack split due", "packs split due")
-	add(len(r.Dirs), "directory split due", "directories split due")
+	add(len(r.Pending.Unreadable), "file that is not a readable pack", "files that are not readable packs")
+	add(len(r.Pending.Salvage), "file that is not a pack", "files that are not packs")
+	add(len(r.Pending.Conflicts), "duplicate entry", "duplicate entries")
+	add(len(r.Pending.Misplaced), "misplaced entry", "misplaced entries")
+	add(len(r.Pending.Rebinds), "pack rebind due", "pack rebinds due")
+	add(len(r.Pending.Packs), "pack split due", "packs split due")
+	add(len(r.Pending.Dirs), "directory split due", "directory splits due")
 	if len(parts) == 0 {
 		return ""
 	}
@@ -148,46 +140,41 @@ func (r Report) Summary() string {
 	return out
 }
 
-// Check reports the tree's outstanding formatting and placement work without
+// Check reports the tree's outstanding formatting and structural work without
 // writing anything.
 func Check(dataDir string) (Report, error) {
 	rep := Report{Dir: dataDir}
-	bad, err := canonical.CheckTree(dataDir)
+	nonCanonical, invalid, err := canonical.CheckTree(dataDir)
 	if err != nil {
 		return Report{}, err
 	}
-	rep.NonCanonical = bad
-	rep.Invalid, err = unparseable(bad)
-	if err != nil {
-		return Report{}, err
-	}
-	if len(rep.Invalid) > 0 {
-		return rep, nil
-	}
+	rep.NonCanonical, rep.Invalid = nonCanonical, invalid
 	err = withPackedFamilies(dataDir, func(s *pack.Store, families []pack.Family) error {
 		for _, f := range families {
 			p, perr := s.Pending(f)
 			if perr != nil {
 				return perr
 			}
-			rep.Misplaced = append(rep.Misplaced, p.Misplaced...)
-			rep.Splits = append(rep.Splits, p.Packs...)
-			rep.Dirs = append(rep.Dirs, p.Dirs...)
+			mergePending(&rep.Pending, p)
 		}
 		return nil
 	})
 	if err != nil {
 		return Report{}, err
 	}
+	rep.dropUnreadableDuplicates()
 	return rep, nil
 }
 
-// Write formats every file canonically and, for families in pack layout, moves
-// misplaced entries into their bound-correct pack and performs the due pack and
-// directory splits. An already well-formed tree is left byte-identical.
+// Write formats every file canonically and makes every packed family
+// well-formed: files that are not packs are salvaged and deleted, entries move
+// to their bound-correct pack, duplicate slugs resolve to the correctly-placed
+// copy, and due splits and rebinds are performed. One pass converges - a second
+// run is a byte-level no-op - and a file the tooling cannot read is only
+// reported, never touched.
 func Write(dataDir string) (Report, error) {
 	rep := Report{Dir: dataDir}
-	// Formatting runs first: Store.Flush judges a pack no writer touched by its
+	// Formatting runs first: Flush judges a pack no write reached by its
 	// on-disk size, which is only the pack's canonical size once the file is in
 	// canonical form.
 	changed, failed, err := canonical.WriteTree(dataDir)
@@ -195,25 +182,28 @@ func Write(dataDir string) (Report, error) {
 		return Report{}, err
 	}
 	rep.Formatted, rep.Invalid = changed, failed
-	if len(failed) > 0 {
-		return rep, nil
-	}
 	err = withPackedFamilies(dataDir, func(s *pack.Store, families []pack.Family) error {
+		healed := false
 		for _, f := range families {
-			// Pending runs only to report what is about to be fixed: Heal
-			// queues the relocations and marks the due splits, and Heal + Flush
-			// is what leaves the family Pending-clean.
+			// One Pending per family, for the report. A family that is already
+			// well-formed is then left entirely alone: no heal, and no flush at
+			// all if that holds for every family, which is what makes a clean
+			// tree cost one pass over it and nothing more.
 			p, perr := s.Pending(f)
 			if perr != nil {
 				return perr
 			}
-			rep.Splits = append(rep.Splits, p.Packs...)
-			rep.Dirs = append(rep.Dirs, p.Dirs...)
-			moved, herr := s.Heal(f)
-			if herr != nil {
+			mergePending(&rep.Pending, p)
+			if p.Empty() {
+				continue
+			}
+			if _, herr := s.Heal(f); herr != nil {
 				return herr
 			}
-			rep.Misplaced = append(rep.Misplaced, moved...)
+			healed = true
+		}
+		if !healed {
+			return nil
 		}
 		w, ferr := s.Flush()
 		if ferr != nil {
@@ -225,22 +215,47 @@ func Write(dataDir string) (Report, error) {
 	if err != nil {
 		return Report{}, err
 	}
+	rep.dropUnreadableDuplicates()
 	return rep, nil
 }
 
-// unparseable returns the files among paths that are not valid JSON.
-func unparseable(paths []string) ([]string, error) {
-	var out []string
-	for _, p := range paths {
-		raw, err := os.ReadFile(p)
-		if err != nil {
-			return nil, err
-		}
-		if !json.Valid(raw) {
-			out = append(out, p)
-		}
+// dropUnreadableDuplicates removes the files pkg/pack already reported as
+// unreadable from the plain JSON lists. Both are true of the same file - it does
+// not parse, and it is not a pack - but the structural sentence says what
+// happens to it, so it is the one that prints.
+func (r *Report) dropUnreadableDuplicates() {
+	if len(r.Pending.Unreadable) == 0 {
+		return
 	}
-	return out, nil
+	seen := make(map[string]bool, len(r.Pending.Unreadable))
+	for _, u := range r.Pending.Unreadable {
+		seen[r.path(u.Path)] = true
+	}
+	drop := func(in []string) []string {
+		out := in[:0:0]
+		for _, p := range in {
+			if !seen[p] {
+				out = append(out, p)
+			}
+		}
+		return out
+	}
+	r.NonCanonical = drop(r.NonCanonical)
+	r.Formatted = drop(r.Formatted)
+	r.Invalid = drop(r.Invalid)
+}
+
+// mergePending folds one family's report into the run's. Every item names its
+// own family, so the merge loses nothing and the rendered order stays
+// category-first.
+func mergePending(dst *pack.Pending, p pack.Pending) {
+	dst.Salvage = append(dst.Salvage, p.Salvage...)
+	dst.Unreadable = append(dst.Unreadable, p.Unreadable...)
+	dst.Misplaced = append(dst.Misplaced, p.Misplaced...)
+	dst.Conflicts = append(dst.Conflicts, p.Conflicts...)
+	dst.Rebinds = append(dst.Rebinds, p.Rebinds...)
+	dst.Packs = append(dst.Packs, p.Packs...)
+	dst.Dirs = append(dst.Dirs, p.Dirs...)
 }
 
 // withPackedFamilies runs fn against the tree's store and the families in pack

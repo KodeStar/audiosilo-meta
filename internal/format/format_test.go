@@ -78,7 +78,7 @@ func assertClean(t *testing.T, dir string) {
 	t.Helper()
 	rep := mustCheck(t, dir)
 	if !rep.Clean() {
-		t.Fatalf("tree is not clean after --write:\n  %s", strings.Join(rep.CheckLines(), "\n  "))
+		t.Fatalf("tree is not clean after --write:\n  %s", strings.Join(rep.Lines(), "\n  "))
 	}
 }
 
@@ -86,7 +86,7 @@ func assertClean(t *testing.T, dir string) {
 // to enforce: everything it writes is already in canonical form.
 func assertCanonical(t *testing.T, dir string) {
 	t.Helper()
-	bad, err := canonical.CheckTree(dir)
+	bad, _, err := canonical.CheckTree(dir)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -100,7 +100,7 @@ func entry(slug string, pad int) string {
 }
 
 // packOf renders a compact (deliberately non-canonical) pack file holding the
-// given entries, so a test exercises formatting and placement in one run.
+// given entries, so a test exercises formatting and structure in one run.
 func packOf(entries ...string) string {
 	return `{"entries":{` + strings.Join(entries, ",") + `}}`
 }
@@ -110,32 +110,32 @@ func keyed(slug string, pad int) string {
 }
 
 // A contributor may add an entry to the wrong pack; --write moves it and the
-// tree comes out placement-clean.
+// tree comes out structurally clean.
 func TestWriteRelocatesAMisplacedEntry(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(keyed("aa", 4), keyed("zz", 4)))
 	writeFile(t, filepath.Join(dir, "people", "mm.json"), packOf(keyed("mm", 4)))
 
 	rep := mustWrite(t, dir)
-	if len(rep.Misplaced) != 1 || rep.Misplaced[0].Slug != "zz" {
-		t.Fatalf("misplaced = %+v, want just zz", rep.Misplaced)
+	if len(rep.Pending.Misplaced) != 1 || rep.Pending.Misplaced[0].Slug != "zz" {
+		t.Fatalf("misplaced = %+v, want just zz", rep.Pending.Misplaced)
 	}
-	if got, want := rep.Misplaced[0].To.Path(), "people/mm.json"; got != want {
+	if got, want := rep.Pending.Misplaced[0].To.Path(), "people/mm.json"; got != want {
 		t.Errorf("target = %s, want %s", got, want)
 	}
-	// Placement lines carry the data-dir prefix, like the formatted lines.
-	want := fmt.Sprintf("moved entry %q to %s (from %s)", "zz",
-		filepath.Join(dir, "people", "mm.json"), filepath.Join(dir, "people", "0.json"))
-	if !hasLine(rep.WriteLines(), want) {
-		t.Errorf("write lines = %v, want one reading %q", rep.WriteLines(), want)
+	// The sentence is pkg/pack's, rendered beneath the data directory.
+	want := `entry "zz" belongs in ` + filepath.Join(dir, "people", "mm.json")
+	if !hasPrefix(rep.Lines(), want) {
+		t.Errorf("lines = %v, want one starting %q", rep.Lines(), want)
+	}
+	if !hasLine(rep.Lines(), "wrote "+filepath.Join(dir, "people", "mm.json")) {
+		t.Errorf("lines = %v, want the written pack named", rep.Lines())
 	}
 
-	lower := readPack(t, dir, "people/0.json")
-	if got := lower.Slugs(); len(got) != 1 || got[0] != "aa" {
+	if got := readPack(t, dir, "people/0.json").Slugs(); len(got) != 1 || got[0] != "aa" {
 		t.Errorf("people/0.json = %v, want [aa]", got)
 	}
-	upper := readPack(t, dir, "people/mm.json")
-	if got := upper.Slugs(); len(got) != 2 || got[1] != "zz" {
+	if got := readPack(t, dir, "people/mm.json").Slugs(); len(got) != 2 || got[1] != "zz" {
 		t.Errorf("people/mm.json = %v, want [mm zz]", got)
 	}
 	assertClean(t, dir)
@@ -143,7 +143,7 @@ func TestWriteRelocatesAMisplacedEntry(t *testing.T) {
 }
 
 // An entry count over the cap is the case a pack's on-disk size cannot reveal,
-// so it is the one that proves the split pass is driven by Pending.
+// so it is the one that proves the split is driven by the structural report.
 func TestWriteSplitsAPackOverTheEntryCap(t *testing.T) {
 	dir := t.TempDir()
 	def, _ := pack.Def(pack.FamilyPeople)
@@ -154,8 +154,8 @@ func TestWriteSplitsAPackOverTheEntryCap(t *testing.T) {
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(entries...))
 
 	rep := mustWrite(t, dir)
-	if len(rep.Splits) != 1 || rep.Splits[0].Reason != "entry count" {
-		t.Fatalf("splits = %+v, want one entry-count split", rep.Splits)
+	if len(rep.Pending.Packs) != 1 || rep.Pending.Packs[0].Reason != "entry count" {
+		t.Fatalf("splits = %+v, want one entry-count split", rep.Pending.Packs)
 	}
 	if len(rep.Wrote) < 2 {
 		t.Fatalf("wrote %v, want the pack split in two or more", rep.Wrote)
@@ -177,10 +177,9 @@ func TestWriteSplitsAPackOverTheEntryCap(t *testing.T) {
 	before := snapshot(t, dir)
 	second := mustWrite(t, dir)
 	if !second.Clean() {
-		t.Errorf("second run reported work: %v", second.WriteLines())
+		t.Errorf("second run reported work: %v", second.Lines())
 	}
-	after := snapshot(t, dir)
-	if diff := treeDiff(before, after); diff != "" {
+	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
 		t.Errorf("second run changed the tree: %s", diff)
 	}
 }
@@ -196,8 +195,8 @@ func TestWriteSplitsAPackOverTheSizeCap(t *testing.T) {
 	writeFile(t, filepath.Join(dir, "works", "0", "0.json"), packOf(entries...))
 
 	rep := mustWrite(t, dir)
-	if len(rep.Splits) != 1 || rep.Splits[0].Reason != "size" {
-		t.Fatalf("splits = %+v, want one size split", rep.Splits)
+	if len(rep.Pending.Packs) != 1 || rep.Pending.Packs[0].Reason != "size" {
+		t.Fatalf("splits = %+v, want one size split", rep.Pending.Packs)
 	}
 	tree, err := pack.ReadTree(dir, pack.FamilyWorks)
 	if err != nil {
@@ -229,11 +228,11 @@ func TestWriteSplitsAFlatFamilyIntoDirectories(t *testing.T) {
 	}
 
 	rep := mustWrite(t, dir)
-	if len(rep.Dirs) != 1 || rep.Dirs[0].Dir != "" {
-		t.Fatalf("dirs = %+v, want the flat family over its cap", rep.Dirs)
+	if len(rep.Pending.Dirs) != 1 || rep.Pending.Dirs[0].Dir != "" {
+		t.Fatalf("dirs = %+v, want the flat family over its cap", rep.Pending.Dirs)
 	}
-	if !hasPrefix(rep.WriteLines(), "split family "+filepath.Join(dir, "series")+" into directories") {
-		t.Errorf("write lines lack the directory split: %v", rep.Dirs)
+	if !hasPrefix(rep.Lines(), "family "+filepath.Join(dir, "series")+" holds") {
+		t.Errorf("lines lack the directory split: %v", rep.Pending.Dirs)
 	}
 	tree, err := pack.ReadTree(dir, pack.FamilySeries)
 	if err != nil {
@@ -275,7 +274,7 @@ func TestWriteIsANoOpOnAWellFormedPackTree(t *testing.T) {
 	before := snapshot(t, dir)
 	rep := mustWrite(t, dir)
 	if !rep.Clean() {
-		t.Errorf("no-op run reported work: %v", rep.WriteLines())
+		t.Errorf("no-op run reported work: %v", rep.Lines())
 	}
 	if len(rep.Wrote) != 0 || len(rep.Deleted) != 0 {
 		t.Errorf("no-op run touched files: wrote %v, deleted %v", rep.Wrote, rep.Deleted)
@@ -300,8 +299,8 @@ func TestCheckNamesTheCanonicalLocation(t *testing.T) {
 	if len(rep.NonCanonical) != 2 {
 		t.Errorf("non-canonical = %v, want both compact packs", rep.NonCanonical)
 	}
-	if !hasPrefix(rep.CheckLines(), `entry "zz" belongs in `+filepath.Join(dir, "people", "mm.json")) {
-		t.Errorf("check lines do not name the canonical location: %v", rep.CheckLines())
+	if !hasPrefix(rep.Lines(), `entry "zz" belongs in `+filepath.Join(dir, "people", "mm.json")) {
+		t.Errorf("lines do not name the canonical location: %v", rep.Lines())
 	}
 	if want := "misplaced entry"; !strings.Contains(rep.Summary(), want) {
 		t.Errorf("summary = %q, want it to mention %q", rep.Summary(), want)
@@ -321,11 +320,11 @@ func TestCheckReportsDueSplits(t *testing.T) {
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(entries...))
 
 	rep := mustCheck(t, dir)
-	if len(rep.Splits) != 1 {
-		t.Fatalf("splits = %+v, want one", rep.Splits)
+	if len(rep.Pending.Packs) != 1 {
+		t.Fatalf("splits = %+v, want one", rep.Pending.Packs)
 	}
-	if !hasPrefix(rep.CheckLines(), "pack "+filepath.Join(dir, "people", "0.json")+" is over its hard entry count cap") {
-		t.Errorf("check lines do not name the due split: %v", rep.Splits)
+	if !hasPrefix(rep.Lines(), "pack "+filepath.Join(dir, "people", "0.json")+" is over its hard entry count cap") {
+		t.Errorf("lines do not name the due split: %v", rep.Lines())
 	}
 	if !strings.Contains(rep.Summary(), "pack split due") {
 		t.Errorf("summary = %q, want the due split counted", rep.Summary())
@@ -346,15 +345,15 @@ func TestLegacyTreeIsFormattedOnly(t *testing.T) {
 	if len(check.NonCanonical) != 3 {
 		t.Errorf("non-canonical = %v, want all three legacy files", check.NonCanonical)
 	}
-	if len(check.Misplaced) != 0 || len(check.Splits) != 0 || len(check.Dirs) != 0 {
-		t.Errorf("legacy tree reported placement work: %+v", check)
+	if !check.Pending.Empty() {
+		t.Errorf("legacy tree reported structural work: %+v", check.Pending)
 	}
 
 	rep := mustWrite(t, dir)
 	if len(rep.Formatted) != 3 {
 		t.Errorf("formatted = %v, want all three legacy files", rep.Formatted)
 	}
-	if len(rep.Wrote) != 0 || len(rep.Deleted) != 0 || len(rep.Misplaced) != 0 {
+	if len(rep.Wrote) != 0 || len(rep.Deleted) != 0 || !rep.Pending.Empty() {
 		t.Errorf("legacy tree was restructured: %+v", rep)
 	}
 	got := paths(snapshot(t, dir))
@@ -376,8 +375,8 @@ func TestMixedTreeHealsOnlyThePackedFamily(t *testing.T) {
 	writeFile(t, legacy, `{"name":"Frank Herbert","id":"frank-herbert"}`)
 
 	rep := mustWrite(t, dir)
-	if len(rep.Misplaced) != 1 || rep.Misplaced[0].To.Path() != "works/mm/mm.json" {
-		t.Fatalf("misplaced = %+v, want zz moved into works/mm/mm.json", rep.Misplaced)
+	if len(rep.Pending.Misplaced) != 1 || rep.Pending.Misplaced[0].To.Path() != "works/mm/mm.json" {
+		t.Fatalf("misplaced = %+v, want zz moved into works/mm/mm.json", rep.Pending.Misplaced)
 	}
 	if got := readPack(t, dir, "works/mm/mm.json").Slugs(); len(got) != 2 {
 		t.Errorf("works/mm/mm.json = %v, want mm and zz", got)
@@ -397,44 +396,97 @@ func TestMixedTreeHealsOnlyThePackedFamily(t *testing.T) {
 	assertClean(t, dir)
 }
 
-// A file that does not parse blocks the placement pass: a pack that cannot be
-// read cannot be healed.
-func TestInvalidJSONSuppressesThePlacementPass(t *testing.T) {
-	dir := t.TempDir()
-	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(keyed("aa", 4), keyed("zz", 4)))
-	broken := filepath.Join(dir, "people", "mm.json")
-	writeFile(t, broken, `{"entries":{`)
+// A file the tooling cannot read is named and left exactly as it is - both the
+// one that is not JSON and the one that is JSON but not a pack - while the rest
+// of the family still heals. It used to abort the whole run with an empty
+// report, after the formatting pass had already rewritten files.
+func TestUnreadableFilesAreNamedAndTheRestStillHeals(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		body string
+	}{
+		{"not JSON", `{"entries":{`},
+		{"not a pack wrapper", `{"id":"zz-bad","name":"a record, not a pack"}`},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			dir := t.TempDir()
+			writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(keyed("aa", 4), keyed("zz", 4)))
+			writeFile(t, filepath.Join(dir, "people", "mm.json"), packOf(keyed("mm", 4)))
+			broken := filepath.Join(dir, "people", "zz-bad.json")
+			writeFile(t, broken, tc.body)
 
-	check := mustCheck(t, dir)
-	if len(check.Invalid) != 1 || check.Invalid[0] != broken {
-		t.Fatalf("invalid = %v, want %s", check.Invalid, broken)
-	}
-	if len(check.Misplaced) != 0 {
-		t.Errorf("placement ran over an unreadable tree: %+v", check.Misplaced)
-	}
-	if check.Clean() {
-		t.Error("Check reported an unparseable file as clean")
-	}
+			check := mustCheck(t, dir)
+			if len(check.Pending.Unreadable) != 1 || check.Pending.Unreadable[0].Path != "people/zz-bad.json" {
+				t.Fatalf("unreadable = %+v, want people/zz-bad.json", check.Pending.Unreadable)
+			}
+			if check.Pending.Healable() {
+				t.Error("Healable reported a tree holding an unreadable file")
+			}
+			if !check.NeedsHuman() || check.Clean() {
+				t.Error("Check called an unreadable tree clean or fixable")
+			}
+			// The rest of the report survives: the misplaced entry is still named.
+			if len(check.Pending.Misplaced) != 1 {
+				t.Errorf("misplaced = %+v, want zz still reported", check.Pending.Misplaced)
+			}
+			if !hasPrefix(check.Lines(), broken+" cannot be read as a pack") {
+				t.Errorf("lines do not name the unreadable file: %v", check.Lines())
+			}
+			// One problem, one line: it is not also listed as plain invalid JSON.
+			if len(check.Invalid) != 0 {
+				t.Errorf("invalid = %v, want the unreadable file reported once", check.Invalid)
+			}
 
-	rep := mustWrite(t, dir)
-	if len(rep.Invalid) != 1 {
-		t.Fatalf("invalid = %v, want the broken pack", rep.Invalid)
-	}
-	if len(rep.Misplaced) != 0 || len(rep.Wrote) != 0 {
-		t.Errorf("placement ran despite the broken pack: %+v", rep)
-	}
-	raw, err := os.ReadFile(broken)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if string(raw) != `{"entries":{` {
-		t.Errorf("broken file was rewritten: %s", raw)
+			rep := mustWrite(t, dir)
+			if !rep.NeedsHuman() {
+				t.Error("Write did not report that the tree still needs a human")
+			}
+			if len(rep.Pending.Misplaced) != 1 {
+				t.Errorf("Write did not heal the rest: %+v", rep.Pending)
+			}
+			if got := readPack(t, dir, "people/mm.json").Slugs(); len(got) != 2 {
+				t.Errorf("people/mm.json = %v, want the relocated entry", got)
+			}
+			// The file is still there, holding what it held. Canonical
+			// formatting may have reindented it - that is the layout-agnostic
+			// formatter doing its job and it changes no meaning - but nothing
+			// restructured or deleted it.
+			raw, err := os.ReadFile(broken)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if string(raw) != tc.body && string(raw) != canonicalOf(tc.body) {
+				t.Errorf("the unreadable file was rewritten:\n%s", raw)
+			}
+
+			// What is left needs a human, so the advice must not send the
+			// contributor back to --write.
+			after := mustCheck(t, dir)
+			if len(after.Pending.Misplaced) != 0 || len(after.Pending.Salvage) != 0 {
+				t.Errorf("the heal did not converge: %+v", after.Pending)
+			}
+			if got, want := after.Advice(), "they need a human"; !strings.Contains(got, want) {
+				t.Errorf("advice = %q, want it to mention %q", got, want)
+			}
+			// A tree whose only remaining problem is unreadable still settles:
+			// re-running --write forever must not rewrite anything.
+			snap := snapshot(t, dir)
+			mustWrite(t, dir)
+			if diff := treeDiff(snap, snapshot(t, dir)); diff != "" {
+				t.Errorf("a second --write changed the tree: %s", diff)
+			}
+		})
 	}
 }
 
-// The committed tree is guarded by the gate's own `metafmt --check` step and by
-// pkg/canonical's real-data test; repeating that whole-tree walk here would
-// only buy the same assurance twice.
+// canonicalOf renders a fixture body the way the formatter would.
+func canonicalOf(body string) string {
+	out, err := canonical.Format([]byte(body))
+	if err != nil {
+		return body
+	}
+	return string(out)
+}
 
 func readPack(t *testing.T, dir, rel string) *pack.File {
 	t.Helper()
