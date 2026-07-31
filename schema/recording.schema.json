@@ -89,6 +89,10 @@
         }
       }
     },
+    "added_at": {
+      "description": "The date this recording entered the database. Stamped at creation by the importer and the intake bot; optional, since records predating the field carry none.",
+      "$ref": "common.schema.json#/$defs/date_day"
+    },
     "license": {
       "$ref": "common.schema.json#/$defs/license"
     },
