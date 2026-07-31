@@ -7,6 +7,8 @@ import (
 	"regexp"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // --- The marker's cross-language contract ------------------------------------
@@ -140,19 +142,33 @@ func TestSplitLibexMarker(t *testing.T) {
 }
 
 // recordSources reads the sources array of a composed record.
-func recordSources(t *testing.T, dir, rel string) []map[string]string {
+func recordSources(t *testing.T, dir, address string) []map[string]string {
 	t.Helper()
-	data, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(rel)))
-	if err != nil {
-		t.Fatalf("read %s: %v", rel, err)
-	}
 	var doc struct {
 		Sources []map[string]string `json:"sources"`
 	}
-	if err := json.Unmarshal(data, &doc); err != nil {
-		t.Fatalf("parse %s: %v", rel, err)
+	if err := json.Unmarshal([]byte(readFile(t, dir, address)), &doc); err != nil {
+		t.Fatalf("parse %s: %v", address, err)
 	}
 	return doc.Sources
+}
+
+// composedRecords returns the records in dir that seedTree did not put there:
+// exactly what a submission composed. Result.Files names packs now, so a test
+// that wants to iterate the composed RECORDS asks the tree.
+func composedRecords(t *testing.T, dir string) []string {
+	t.Helper()
+	seeded := map[string]bool{}
+	for address := range seedFiles() {
+		seeded[address] = true
+	}
+	var out []string
+	for _, address := range testpack.Addresses(t, dir) {
+		if !seeded[address] {
+			out = append(out, address)
+		}
+	}
+	return out
 }
 
 // TestAddWorkLibexMarkerTypedSource proves the site's `libex: <ASIN>` marker
@@ -170,25 +186,25 @@ func TestAddWorkLibexMarkerTypedSource(t *testing.T) {
 	}
 	// Iterate what was actually composed rather than a hard-coded list, so a
 	// record kind added later through the plain c.source() helper fails here.
-	if len(res.Files) < 4 {
-		t.Fatalf("composed %d files, expected work + recording + person + series: %v", len(res.Files), res.Files)
+	composed := composedRecords(t, dir)
+	if len(composed) < 4 {
+		t.Fatalf("composed %d records, expected work + recording + person + series: %v", len(composed), composed)
 	}
 
-	for _, file := range res.Files {
-		rel := strings.TrimPrefix(file, "data/")
-		sources := recordSources(t, dir, rel)
+	for _, address := range composed {
+		sources := recordSources(t, dir, address)
 		if len(sources) != 2 {
-			t.Fatalf("%s: got %d sources, want 2: %v", rel, len(sources), sources)
+			t.Fatalf("%s: got %d sources, want 2: %v", address, len(sources), sources)
 		}
 		typed, user := sources[0], sources[1]
 		if typed["type"] != sourceLibexImport || typed["ref"] != "B015RQON6I" || typed["imported_at"] != "2026-07-30" {
-			t.Errorf("%s: typed source = %v", rel, typed)
+			t.Errorf("%s: typed source = %v", address, typed)
 		}
 		if user["type"] != sourceUser || user["ref"] != human {
-			t.Errorf("%s: user source = %v, want the human line only", rel, user)
+			t.Errorf("%s: user source = %v, want the human line only", address, user)
 		}
 		if strings.Contains(user["ref"], "libex:") {
-			t.Errorf("%s: marker line was not stripped from the user source: %q", rel, user["ref"])
+			t.Errorf("%s: marker line was not stripped from the user source: %q", address, user["ref"])
 		}
 	}
 }
@@ -248,13 +264,13 @@ func TestAddWorkLibexMarkerASINNotInSubmission(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	for _, file := range res.Files {
-		sources := recordSources(t, dir, strings.TrimPrefix(file, "data/"))
+	for _, address := range composedRecords(t, dir) {
+		sources := recordSources(t, dir, address)
 		if len(sources) != 1 {
-			t.Fatalf("%s: got %d sources, want 1 (no typed entry): %v", file, len(sources), sources)
+			t.Fatalf("%s: got %d sources, want 1 (no typed entry): %v", address, len(sources), sources)
 		}
 		if sources[0]["type"] != sourceUser || sources[0]["ref"] != raw {
-			t.Errorf("%s: source = %v, want the user entry with the full original text", file, sources[0])
+			t.Errorf("%s: source = %v, want the user entry with the full original text", address, sources[0])
 		}
 	}
 }

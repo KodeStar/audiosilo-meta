@@ -28,8 +28,8 @@ import "strings"
 // present is not rewritten - so an unchanged input queues zero writes and a
 // second identical run is a full no-op.
 
-// recRef locates a recording by its work and recording slugs (the file path is
-// derived from the pair via recordingPath, never stored).
+// recRef locates a recording by its work and recording slugs (the pack entry it
+// sits in is derived from the pair on demand, never stored).
 type recRef struct {
 	work string
 	rec  string
@@ -84,8 +84,7 @@ func (p *planner) enrichBook(b sourceBook, asin string) {
 // fact), and asin[] (the row's own ASIN is by definition already recorded -
 // that is how we found this file).
 func (p *planner) enrichRecording(b sourceBook, ref recRef, warn func(string, ...any)) (usable bool) {
-	relPath := recordingPath(ref.work, ref.rec)
-	raw := p.loadRecordRaw(relPath)
+	entry, raw := p.recordingRaw(ref.work, ref.rec)
 	if raw == nil {
 		return false
 	}
@@ -135,7 +134,7 @@ func (p *planner) enrichRecording(b sourceBook, ref recRef, warn func(string, ..
 		return true
 	}
 	p.stampSource(raw)
-	p.emitRaw(relPath, raw)
+	p.putWorkEntry(ref.work, entry)
 	p.summary.EnrichedRecordings++
 	return true
 }
@@ -226,8 +225,7 @@ func (p *planner) enrichWork(b sourceBook, workSlug string) {
 	if len(b.genres) == 0 {
 		return
 	}
-	rel := workPath(workSlug)
-	raw := p.loadRecordRaw(rel)
+	raw := p.workEntryRaw(workSlug)
 	if raw == nil {
 		return
 	}
@@ -242,7 +240,9 @@ func (p *planner) enrichWork(b sourceBook, workSlug string) {
 	}
 	raw["genres"] = mapped
 	p.stampSource(raw)
-	p.emitRaw(rel, raw)
+	// The read-modify-write is on the whole composite, so the work's recordings
+	// ride along untouched; added_at is left as found (enrichment never creates).
+	p.putWorkEntry(workSlug, raw)
 	p.summary.EnrichedWorks++
 }
 

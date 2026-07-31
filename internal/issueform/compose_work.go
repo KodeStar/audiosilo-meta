@@ -1,15 +1,12 @@
 package issueform
 
 import (
-	"encoding/json"
-	"os"
-	"path"
-	"path/filepath"
 	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Field labels for add-work.yml. Kept in one place so a template label edit is a
@@ -92,7 +89,8 @@ func (c *composer) addWork(s sections) {
 		return
 	}
 	if _, exists := c.works[workSlug]; exists {
-		c.fail(StatusDuplicate, "a work already exists at %s; use the Add a recording form to add another narration", "data/"+path.Join("works", model.Shard(workSlug), workSlug, "work.json"))
+		c.fail(StatusDuplicate, "a work already exists at %s; use the Add a recording form to add another narration",
+			c.entryLocation(pack.FamilyWorks, workSlug, ""))
 		return
 	}
 
@@ -103,10 +101,12 @@ func (c *composer) addWork(s sections) {
 		return
 	}
 
-	// Work record.
+	// Work record. added_at is stamped here because this path CREATES the work;
+	// no other issue-form path writes the field.
 	work := outWork{
 		ID: workSlug, Title: title, Subtitle: s.get(fWorkSubtitle),
-		Authors: authorSlugs, Language: lang, Genres: genres, License: licenseCC0,
+		Authors: authorSlugs, Language: lang, Genres: genres,
+		AddedAt: c.date, License: licenseCC0,
 		Sources: c.sources(sourceRef),
 	}
 	if yr := s.get(fWorkFirstPublished); yr != "" {
@@ -117,7 +117,7 @@ func (c *composer) addWork(s sections) {
 		}
 	}
 	work.Xref = c.buildWorkXref(s)
-	c.emit(path.Join("works", model.Shard(workSlug), workSlug, "work.json"), work)
+	c.putEntry(pack.FamilyWorks, workSlug, work)
 
 	// First recording.
 	c.emitRecording(workSlug, lang, narratorSlugs, asins, recISBNs, s, sourceRef)
@@ -217,7 +217,31 @@ func (c *composer) emitRecording(workSlug, lang string, narratorSlugs []string, 
 			c.note("Cover image URL %q must start with https:// - dropped", cover)
 		}
 	}
-	c.emit(recordingPath(workSlug, recSlug), rec)
+	// Both issue-form recording paths (a work's first recording and an added
+	// narration) create a recording, so both stamp added_at.
+	rec.AddedAt = c.date
+	c.putRecording(workSlug, recSlug, rec)
+}
+
+// putRecording splices a recording into its work's composite entry. The entry is
+// read queued-write-first, so the recording composed right after a brand-new
+// work lands in the entry that work is still queued as.
+func (c *composer) putRecording(workSlug, recSlug string, rec any) {
+	entry, found, ok := c.entryRaw(pack.FamilyWorks, workSlug)
+	if !ok {
+		return
+	}
+	if !found {
+		c.fail(StatusInvalid, "work %q has no entry to attach a recording to", workSlug)
+		return
+	}
+	recs, _ := entry["recordings"].(map[string]any)
+	if recs == nil {
+		recs = map[string]any{}
+		entry["recordings"] = recs
+	}
+	recs[recSlug] = rec
+	c.putEntry(pack.FamilyWorks, workSlug, entry)
 }
 
 // abridgedFromForm maps the rec_abridged dropdown to the recording's tri-state
@@ -296,15 +320,15 @@ func (c *composer) placeInSeries(s sections, workSlug, sourceRef string) {
 		return
 	}
 
-	// New series file with this one work.
-	c.emit(path.Join("series", model.Shard(seriesSlug), seriesSlug+".json"), outSeries{
+	// New series entry with this one work.
+	c.putEntry(pack.FamilySeries, seriesSlug, outSeries{
 		ID: seriesSlug, Name: name, License: licenseCC0,
 		Works:   []outSeriesWork{{Work: workSlug, Position: pos}},
 		Sources: c.sources(sourceRef),
 	})
 }
 
-// extendSeries appends the work to an existing series file, preserving every
+// extendSeries appends the work to an existing series entry, preserving every
 // field the form does not manage.
 func (c *composer) extendSeries(existing *model.Series, seriesSlug, workSlug, pos string) {
 	for _, sw := range existing.Works {
@@ -317,18 +341,15 @@ func (c *composer) extendSeries(existing *model.Series, seriesSlug, workSlug, po
 			return
 		}
 	}
-	rel := path.Join("series", model.Shard(seriesSlug), seriesSlug+".json")
-	raw, err := os.ReadFile(filepath.Join(c.dataDir, filepath.FromSlash(rel)))
-	if err != nil {
-		c.fail(StatusInvalid, "read existing series %s: %v", rel, err)
+	obj, found, ok := c.entryRaw(pack.FamilySeries, seriesSlug)
+	if !ok {
 		return
 	}
-	var obj map[string]any
-	if err := json.Unmarshal(raw, &obj); err != nil {
-		c.fail(StatusInvalid, "parse existing series %s: %v", rel, err)
+	if !found {
+		c.fail(StatusInvalid, "series %q is in the catalogue but has no entry to extend", seriesSlug)
 		return
 	}
 	works, _ := obj["works"].([]any)
 	obj["works"] = append(works, map[string]any{"work": workSlug, "position": pos})
-	c.writeRaw(rel, obj)
+	c.putEntry(pack.FamilySeries, seriesSlug, obj)
 }

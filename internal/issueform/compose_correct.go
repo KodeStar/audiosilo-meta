@@ -1,13 +1,11 @@
 package issueform
 
 import (
-	"encoding/json"
-	"os"
-	"path/filepath"
 	"strconv"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Field labels for correct-data.yml.
@@ -64,19 +62,23 @@ var fieldSynonyms = map[string]string{
 
 // correctData applies a single-field correction to an existing record, or bails
 // to needs-human when the field is not a cleanly-mappable scalar.
+//
+// A recording correction edits the recording INSIDE its work's composite entry
+// and writes the whole entry back, which is the granularity the pack store
+// stores; every other kind is an entry of its own.
 func (c *composer) correctData(s sections) {
 	if !s.checked(fCC0) {
 		c.fail(StatusInvalid, "the CC0 public-domain dedication checkbox is not ticked")
 		return
 	}
-	rel, loc, ok := resolveRecordPath(s.get(fCorrectRecord))
+	loc, ok := resolveRecordRef(s.get(fCorrectRecord))
 	if !ok {
 		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", s.get(fCorrectRecord))
 		return
 	}
-	full := filepath.Join(c.dataDir, filepath.FromSlash(rel))
-	if _, err := os.Stat(full); err != nil {
-		c.fail(StatusNeedsHuman, "record %s does not exist - a maintainer will locate the right file", "data/"+rel)
+	addr, ok := entryAddress(loc)
+	if !ok {
+		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", loc.Kind)
 		return
 	}
 
@@ -105,27 +107,68 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 
-	raw, err := os.ReadFile(full)
-	if err != nil {
-		c.fail(StatusInvalid, "read %s: %v", rel, err)
+	// entry is the unit the store writes; record is the object being corrected,
+	// which for a recording is a live sub-map of entry.
+	entry, found, ok := c.entryRaw(addr.family, addr.slug)
+	if !ok {
 		return
 	}
-	var obj map[string]any
-	if err := json.Unmarshal(raw, &obj); err != nil {
-		c.fail(StatusInvalid, "parse %s: %v", rel, err)
+	if !found {
+		c.fail(StatusNeedsHuman, "record %s does not exist - a maintainer will locate the right record", addr.label(c))
 		return
 	}
-	obj[fieldName] = value
+	record := entry
+	if addr.recSlug != "" {
+		recs, _ := entry["recordings"].(map[string]any)
+		record, _ = recs[addr.recSlug].(map[string]any)
+		if record == nil {
+			c.fail(StatusNeedsHuman, "record %s does not exist - a maintainer will locate the right record", addr.label(c))
+			return
+		}
+	}
+	record[fieldName] = value
 
 	// Record the correction's provenance so the source can be audited later.
-	obj["sources"] = appendSource(obj["sources"], map[string]any{
+	record["sources"] = appendSource(record["sources"], map[string]any{
 		"type": sourceUser, "ref": evidence, "imported_at": c.date,
 	})
 
-	if !c.writeRaw(rel, obj) {
+	if !c.putEntry(addr.family, addr.slug, entry) {
 		return
 	}
-	c.note("applied %s = %v on %s", fieldName, value, "data/"+rel)
+	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
+}
+
+// entryAddr is an entity's address in the pack layout: the family and entry key
+// it lives under, plus the recordings-map key when it is a recording nested in
+// its work's composite entry.
+type entryAddr struct {
+	family  pack.Family
+	slug    string
+	recSlug string
+}
+
+// label renders the address for a human-facing message.
+func (a entryAddr) label(c *composer) string {
+	return c.entryLocation(a.family, a.slug, a.recSlug)
+}
+
+// entryAddress maps a parsed record reference onto its pack address. ok is false
+// for a kind no correction may touch.
+func entryAddress(loc model.Location) (entryAddr, bool) {
+	switch loc.Kind {
+	case model.KindWork:
+		return entryAddr{family: pack.FamilyWorks, slug: loc.Slug}, true
+	case model.KindRecording:
+		return entryAddr{family: pack.FamilyWorks, slug: loc.WorkSlug, recSlug: loc.Slug}, true
+	case model.KindPerson:
+		return entryAddr{family: pack.FamilyPeople, slug: loc.Slug}, true
+	case model.KindSeries:
+		return entryAddr{family: pack.FamilySeries, slug: loc.Slug}, true
+	default:
+		// The CC BY-SA sidecars: community prose, never a scalar correction.
+		return entryAddr{}, false
+	}
 }
 
 // normalizeFieldName lowercases a field name, turns spaces into underscores, and

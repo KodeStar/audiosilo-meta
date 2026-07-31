@@ -3,7 +3,6 @@ package importer
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
@@ -100,7 +99,6 @@ func recordingsFixture(t *testing.T) string {
 // fails to resolve by TITLE is pinned by TestWorkTitleCandidates.
 func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	dataDir := seedRecordingsTree(t)
-	before := snapshotTree(t, dataDir)
 
 	sum := runRecordingsOnly(t, dataDir, recordingsFixture(t), false)
 
@@ -132,7 +130,7 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 	// The Jim Dale narration is a NEW recording under the EXISTING work, not a
 	// new work: ", Book 2" is a volume marker, not part of the title.
 	var dale recordingFile
-	readJSON(t, filepath.Join(dataDir, hpChamberDaleRel), &dale)
+	readEntity(t, dataDir, hpChamberDaleRel, &dale)
 	if dale.Work != "harry-potter-and-the-chamber-of-secrets" {
 		t.Errorf("jim dale recording work = %q", dale.Work)
 	}
@@ -158,7 +156,7 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 
 	// The full-cast edition is another recording under the same work.
 	var cast recordingFile
-	readJSON(t, filepath.Join(dataDir, hpChamberCastRel), &cast)
+	readEntity(t, dataDir, hpChamberCastRel, &cast)
 	if cast.Work != "harry-potter-and-the-chamber-of-secrets" {
 		t.Errorf("full-cast recording work = %q", cast.Work)
 	}
@@ -169,24 +167,23 @@ func TestRecordingsOnlyAddsAlternateNarrations(t *testing.T) {
 		t.Errorf("full-cast runtime = %d, want 577", cast.RuntimeMin)
 	}
 
-	// Nothing else moved: no new work directory, and the seeded files (the works,
-	// the Fry recording, the series) are byte-for-byte what they were.
-	for rel, was := range before {
-		now, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(rel)))
-		if err != nil {
-			t.Fatalf("seeded file %s disappeared: %v", rel, err)
-		}
-		if string(now) != was.content {
-			t.Errorf("seeded file %s was rewritten:\n%s", rel, now)
+	// Nothing else moved: no new work, and every seeded RECORD is exactly what it
+	// was. The comparison is per record rather than per file, because the run
+	// legitimately rewrote the works pack - that is where the two new recordings
+	// landed.
+	seed := recordingsSeedFiles()
+	for rel := range seed {
+		if got := readRaw(t, dataDir, rel); got != seed[rel] {
+			t.Errorf("seeded record %s was rewritten:\n got %s\nwant %s", rel, got, seed[rel])
 		}
 	}
-	for _, rel := range []string{
-		"works/ha/harry-potter-and-the-chamber-of-secrets-book-2",
-		"works/ha/harry-potter-and-the-goblet-of-fire-book-4-excerpt",
-		"works/ha/harry-potter-and-the-chamber-of-secrets-ultimate-trivia-test",
+	for _, slug := range []string{
+		"harry-potter-and-the-chamber-of-secrets-book-2",
+		"harry-potter-and-the-goblet-of-fire-book-4-excerpt",
+		"harry-potter-and-the-chamber-of-secrets-ultimate-trivia-test",
 	} {
-		if exists(filepath.Join(dataDir, filepath.FromSlash(rel))) {
-			t.Errorf("the run created work directory %s", rel)
+		if entryExists(t, dataDir, workAddr(slug)) {
+			t.Errorf("the run created work %s", slug)
 		}
 	}
 
@@ -225,7 +222,7 @@ func TestRecordingsOnlyMergesRegionalASIN(t *testing.T) {
 	}
 
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, hpGobletDaleRel), &rec)
+	readEntity(t, dataDir, hpGobletDaleRel, &rec)
 	if len(rec.ASIN) != 2 {
 		t.Fatalf("asin = %+v, want the seeded one plus the merged one", rec.ASIN)
 	}
@@ -285,7 +282,7 @@ func TestRecordingsOnlyRequiresTheSameAuthorSet(t *testing.T) {
 	if sum.SkippedNoWork != 1 || sum.NewRecordings != 0 {
 		t.Errorf("a different author set matched the work: %+v", sum)
 	}
-	if exists(filepath.Join(dataDir, filepath.FromSlash(hpChamberDaleRel))) {
+	if entryExists(t, dataDir, hpChamberDaleRel) {
 		t.Error("a differently-authored row added a recording to our work")
 	}
 }
@@ -330,12 +327,12 @@ func TestRecordingsOnlyResolvesCollisionSuffixedWorks(t *testing.T) {
 		t.Fatalf("the author-suffixed work was not found: %+v", sum)
 	}
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, "works/ch/chamber-of-secrets-j-k-rowling/recordings/jim-dale-2015.json"), &rec)
+	readEntity(t, dataDir, "works/ch/chamber-of-secrets-j-k-rowling/recordings/jim-dale-2015.json", &rec)
 	if rec.Work != "chamber-of-secrets-j-k-rowling" {
 		t.Errorf("recording landed under %q", rec.Work)
 	}
 	// And the squatter is untouched: the author set is still the identity.
-	if exists(filepath.Join(dataDir, "works/ch/chamber-of-secrets/recordings/jim-dale-2015.json")) {
+	if entryExists(t, dataDir, "works/ch/chamber-of-secrets/recordings/jim-dale-2015.json") {
 		t.Error("the recording landed under the different author's work")
 	}
 }

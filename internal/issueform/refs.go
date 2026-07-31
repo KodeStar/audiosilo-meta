@@ -137,11 +137,6 @@ func (c *composer) parseISBNs(block string) []string {
 	return out
 }
 
-// recordingPath returns the data-relative slash path of a recording file.
-func recordingPath(workSlug, recSlug string) string {
-	return path.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json")
-}
-
 // resolveWorkRef resolves a "work" reference (a slug, a data-tree path, or a
 // meta.audiosilo.app / GitHub URL) to a work slug. ok is false when nothing
 // slug-shaped can be extracted.
@@ -180,32 +175,38 @@ func sanitizeSlug(s string) (string, bool) {
 	return "", false
 }
 
-// resolveRecordPath resolves a "record" reference to a data-relative file path
-// and its parsed location. It accepts a data-tree path (with or without a
-// leading data/), a GitHub blob URL, or a meta.audiosilo.app
-// work?id=/series?id=/person?id= URL. ok is false when it cannot be mapped to a
-// recognized data-tree location.
-func resolveRecordPath(ref string) (rel string, loc model.Location, ok bool) {
+// resolveRecordRef resolves a "record" reference to the entity it names. It
+// accepts a meta.audiosilo.app work?id=/series?id=/person?id= URL, a GitHub blob
+// URL, or a data-tree path (with or without a leading data/).
+//
+// The path forms it understands are the per-entity ones a submitter has always
+// typed ("works/th/the-thing/work.json"); they are a REFERENCE syntax, not a
+// storage location, and compose_correct maps the parsed result onto the pack
+// entry the record now lives in. ok is false when nothing recognizable can be
+// extracted.
+func resolveRecordRef(ref string) (loc model.Location, ok bool) {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
-		return "", model.Location{}, false
+		return model.Location{}, false
 	}
 	if strings.Contains(ref, "://") {
 		u, err := url.Parse(ref)
 		if err != nil {
-			return "", model.Location{}, false
+			return model.Location{}, false
 		}
 		if id := u.Query().Get("id"); id != "" {
+			slug, sok := sanitizeSlug(id)
+			if !sok {
+				return model.Location{}, false
+			}
 			switch {
 			case strings.Contains(u.Path, "series"):
-				rel = path.Join("series", model.Shard(id), id+".json")
+				return model.Location{Kind: model.KindSeries, Slug: slug}, true
 			case strings.Contains(u.Path, "person"):
-				rel = path.Join("people", model.Shard(id), id+".json")
+				return model.Location{Kind: model.KindPerson, Slug: slug}, true
 			default: // work?id=
-				rel = path.Join("works", model.Shard(id), id, "work.json")
+				return model.Location{Kind: model.KindWork, Slug: slug}, true
 			}
-			loc, lok := model.ParseLocation(rel)
-			return rel, loc, lok
 		}
 		ref = u.Path // fall through to path handling for blob URLs
 	}
@@ -215,9 +216,5 @@ func resolveRecordPath(ref string) (rel string, loc model.Location, ok bool) {
 	if i := strings.Index(ref, "data/"); i >= 0 {
 		ref = ref[i+len("data/"):]
 	}
-	loc, lok := model.ParseLocation(ref)
-	if !lok {
-		return "", model.Location{}, false
-	}
-	return ref, loc, true
+	return model.ParseLocation(ref)
 }

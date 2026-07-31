@@ -15,17 +15,16 @@
 package issueform
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
-	"os"
-	"path/filepath"
 	"sort"
 	"strings"
 	"time"
 
-	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Status is the outcome of processing a submission.
@@ -92,18 +91,31 @@ type Options struct {
 	Fetch Fetcher
 }
 
+// recRef locates a recording by its work and recording slugs. The pack entry it
+// sits in is derived from the pair on demand (a recording lives inside its
+// work's composite entry), never stored.
+type recRef struct {
+	work string
+	rec  string
+}
+
 // composer accumulates the writes, messages, and status for one submission.
 type composer struct {
 	dataDir string
 	date    string
 	fetch   Fetcher
+	// store is the write layer: composed records land as pack entries and
+	// nothing reaches disk until flush. Its reads are queued-write-first, so a
+	// submission that writes a work and then its first recording composes both
+	// into one works-family entry.
+	store *pack.Store
 
 	// Identity maps seeded from the existing catalog for dedup.
 	people  map[string]bool
 	works   map[string]*model.Work
 	series  map[string]*model.Series
-	asinRec map[string]string // ASIN -> "data/works/.../recordings/<id>.json"
-	isbnRec map[string]string // ISBN -> recording path
+	asinRec map[string]recRef // ASIN -> the recording carrying it
+	isbnRec map[string]recRef // ISBN -> the recording carrying it
 
 	// submissionASINs is the set of normalized ASINs THIS submission stated in
 	// its own ASIN field, filled by parseASINs. provenance.go checks a libex
@@ -112,7 +124,12 @@ type composer struct {
 	// fine), so a form with no ASIN field never mints a typed libex source.
 	submissionASINs map[string]bool
 
-	writes   map[string][]byte // data-relative slash path -> canonical bytes
+	// queued counts the entries this submission wrote through the store. The
+	// store's queue is not introspectable, and "nothing to write" is a verdict,
+	// so the count is kept here.
+	queued int
+	// wrote is the pack files flush actually rewrote, data-relative.
+	wrote    []string
 	messages []string
 	status   Status
 	// handled is set by paths that write to disk and validate themselves
@@ -169,10 +186,14 @@ func process(opts Options) Result {
 		people:  map[string]bool{},
 		works:   map[string]*model.Work{},
 		series:  map[string]*model.Series{},
-		asinRec: map[string]string{},
-		isbnRec: map[string]string{},
-		writes:  map[string][]byte{},
+		asinRec: map[string]recRef{},
+		isbnRec: map[string]recRef{},
 	}
+	store, err := openStore(opts.DataDir)
+	if err != nil {
+		return Result{Status: StatusInvalid, Messages: []string{err.Error()}}
+	}
+	c.store = store
 	c.loadExisting()
 
 	sections := parseBody(opts.Body)
@@ -207,7 +228,7 @@ func process(opts Options) Result {
 	if c.status != "" && c.status != StatusOK {
 		return Result{Status: c.status, Messages: c.messages}
 	}
-	if len(c.writes) == 0 {
+	if c.queued == 0 {
 		return Result{Status: StatusInvalid, Messages: appendIfEmpty(c.messages, "nothing to write")}
 	}
 
@@ -232,12 +253,12 @@ func (c *composer) loadExisting() {
 	for _, w := range cat.Works {
 		c.works[w.ID] = w
 		for _, r := range w.Recordings {
-			recPath := recordingPath(w.ID, r.ID)
+			ref := recRef{work: w.ID, rec: r.ID}
 			for _, a := range r.ASIN {
-				c.asinRec[a.ASIN] = recPath
+				c.asinRec[a.ASIN] = ref
 			}
 			for _, isbn := range r.ISBN {
-				c.isbnRec[isbn] = recPath
+				c.isbnRec[isbn] = ref
 			}
 		}
 	}
@@ -246,41 +267,102 @@ func (c *composer) loadExisting() {
 	}
 }
 
-// emit canonicalizes v and queues it for writing at rel (a data-relative,
-// slash-separated path).
-func (c *composer) emit(rel string, v any) {
-	data, err := json.Marshal(v)
-	if err != nil {
-		c.fail(StatusInvalid, "marshal %s: %v", rel, err)
-		return
-	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		c.fail(StatusInvalid, "canonicalize %s: %v", rel, err)
-		return
-	}
-	c.writes[filepath.ToSlash(rel)] = formatted
+// writeFamilies are the families a submission may write. Every one of them has
+// to be in the pack layout: the composer speaks pack only, so a tree still in
+// the file-per-entity layout is refused rather than written through a second
+// path (PACK-SPEC.md's migration is a flag day).
+var writeFamilies = []pack.Family{
+	pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilyPeople, pack.FamilySeries,
 }
 
-// writeRaw canonicalizes an already-decoded record (a map read back from disk or
-// assembled field-by-field) and queues it at rel (a data-relative, slash path).
-// It returns false and fails the run on a marshal/canonicalize error, so a caller
-// writes `if !c.writeRaw(rel, obj) { return }`. Unlike emit, it takes the decoded
-// object so a path can edit an existing file in place while preserving every
-// field the form does not manage.
-func (c *composer) writeRaw(rel string, obj map[string]any) bool {
-	data, err := json.Marshal(obj)
+// openStore opens dataDir's pack store, refusing a legacy family before anything
+// is composed.
+func openStore(dataDir string) (*pack.Store, error) {
+	s, err := pack.Open(dataDir)
 	if err != nil {
-		c.fail(StatusInvalid, "marshal %s: %v", "data/"+rel, err)
+		return nil, fmt.Errorf("open %s: %w", dataDir, err)
+	}
+	for _, f := range writeFamilies {
+		if s.Layout(f) == pack.LayoutLegacy {
+			return nil, fmt.Errorf("data/%s: %w; convert the tree to the pack layout before intake can write to it",
+				f.Root(), pack.ErrLegacyLayout)
+		}
+	}
+	return s, nil
+}
+
+// putEntry marshals v and queues it as family f's entry for slug. It returns
+// false and fails the run on a marshal error, so a caller writes
+// `if !c.putEntry(...) { return }`.
+func (c *composer) putEntry(f pack.Family, slug string, v any) bool {
+	data, err := json.Marshal(v)
+	if err != nil {
+		c.fail(StatusInvalid, "marshal %s entry %q: %v", f.Root(), slug, err)
 		return false
 	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		c.fail(StatusInvalid, "canonicalize %s: %v", "data/"+rel, err)
+	if err := c.store.Upsert(f, slug, data); err != nil {
+		c.fail(StatusInvalid, "queue %s entry %q: %v", f.Root(), slug, err)
 		return false
 	}
-	c.writes[rel] = formatted
+	c.queued++
 	return true
+}
+
+// entryRaw reads family f's entry for slug into a mutable map, queued-write
+// first. found is false when there is no such entry; ok is false when the run
+// has already been failed (a read or decode error).
+func (c *composer) entryRaw(f pack.Family, slug string) (obj map[string]any, found, ok bool) {
+	raw, found, err := c.store.Get(f, slug)
+	if err != nil {
+		c.fail(StatusInvalid, "read %s entry %q: %v", f.Root(), slug, err)
+		return nil, false, false
+	}
+	if !found {
+		return nil, false, true
+	}
+	obj, err = decodeObject(raw)
+	if err != nil {
+		c.fail(StatusInvalid, "parse %s entry %q: %v", f.Root(), slug, err)
+		return nil, false, false
+	}
+	return obj, true, true
+}
+
+// decodeObject decodes a JSON object into a mutable map, preserving numbers
+// exactly (json.Number). Exactness matters because an entry is read, edited in
+// one field, and written back whole: a float round-trip would reformat every
+// number the edit never touched.
+func decodeObject(raw []byte) (map[string]any, error) {
+	dec := json.NewDecoder(bytes.NewReader(raw))
+	dec.UseNumber()
+	var obj map[string]any
+	if err := dec.Decode(&obj); err != nil {
+		return nil, err
+	}
+	if obj == nil {
+		return nil, fmt.Errorf("not a JSON object")
+	}
+	return obj, nil
+}
+
+// entryLocation names where an entity lives, for a human-facing message: the
+// pack file plus the entry key (and the recording key inside it). It is what a
+// maintainer needs to open the right file and find the right entry.
+func (c *composer) entryLocation(f pack.Family, slug, recSlug string) string {
+	loc := model.PackLocation{Family: f.Root(), Slug: slug, RecSlug: recSlug}
+	ref, err := c.store.Locate(f, slug)
+	if err != nil {
+		// Only reachable for a family the store may not touch, where naming the
+		// entry is still more use than naming nothing.
+		return "entry " + slug
+	}
+	loc.Pack = ref.Path()
+	return "data/" + loc.String()
+}
+
+// recLocation names a recording inside its work's composite entry.
+func (c *composer) recLocation(ref recRef) string {
+	return c.entryLocation(pack.FamilyWorks, ref.work, ref.rec)
 }
 
 // dedupIdentifiers fails with StatusDuplicate when any of the submission's ASINs
@@ -290,37 +372,28 @@ func (c *composer) writeRaw(rel string, obj map[string]any) bool {
 // form, add-recording passes "".
 func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint string) bool {
 	for _, a := range asins {
-		if p, ok := c.asinRec[a.ASIN]; ok {
-			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, "data/"+p, asinHint)
+		if ref, ok := c.asinRec[a.ASIN]; ok {
+			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
 			return true
 		}
 	}
 	for _, isbn := range isbns {
-		if p, ok := c.isbnRec[isbn]; ok {
-			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, "data/"+p)
+		if ref, ok := c.isbnRec[isbn]; ok {
+			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, c.recLocation(ref))
 			return true
 		}
 	}
 	return false
 }
 
-// flush writes every queued file to disk, creating parent directories. Returns
-// a non-empty error message on an I/O failure.
+// flush writes every queued entry, performing any due pack or directory splits.
+// Returns a non-empty error message on an I/O failure.
 func (c *composer) flush() string {
-	rels := make([]string, 0, len(c.writes))
-	for rel := range c.writes {
-		rels = append(rels, rel)
+	w, err := c.store.Flush()
+	if err != nil {
+		return fmt.Sprintf("write packs: %v", err)
 	}
-	sort.Strings(rels)
-	for _, rel := range rels {
-		full := filepath.Join(c.dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			return fmt.Sprintf("mkdir %s: %v", rel, err)
-		}
-		if err := os.WriteFile(full, c.writes[rel], 0o644); err != nil {
-			return fmt.Sprintf("write %s: %v", rel, err)
-		}
-	}
+	c.wrote = w.Wrote
 	return ""
 }
 
@@ -339,10 +412,12 @@ func (c *composer) validate() []string {
 	return msgs
 }
 
-// fileList returns the written paths, data/-prefixed and sorted, for the Result.
+// fileList returns the pack files flush rewrote, data/-prefixed and sorted. It
+// is what the intake workflow commits, so it names FILES rather than entries -
+// one pack usually carries several of a submission's records.
 func (c *composer) fileList() []string {
-	out := make([]string, 0, len(c.writes))
-	for rel := range c.writes {
+	out := make([]string, 0, len(c.wrote))
+	for _, rel := range c.wrote {
 		out = append(out, "data/"+rel)
 	}
 	sort.Strings(out)
@@ -383,7 +458,7 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 		return slug, true
 	}
 	c.people[slug] = true
-	c.emit(filepath.ToSlash(filepath.Join("people", model.Shard(slug), slug+".json")), outPerson{
+	c.putEntry(pack.FamilyPeople, slug, outPerson{
 		ID: slug, Name: strings.TrimSpace(name), License: licenseCC0, Sources: c.sources(sourceRef),
 	})
 	return slug, true

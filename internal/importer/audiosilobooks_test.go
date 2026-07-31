@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"path/filepath"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -75,7 +74,7 @@ func TestRunAudiosiloBooks(t *testing.T) {
 			Ref  string `json:"ref"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-way-of-kings/work.json"), &work)
+	readEntity(t, dataDir, "works/th/the-way-of-kings/work.json", &work)
 	if work.Title != "The Way of Kings" {
 		t.Errorf("work title = %q", work.Title)
 	}
@@ -97,7 +96,7 @@ func TestRunAudiosiloBooks(t *testing.T) {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-way-of-kings/recordings/kate-reading-2010.json"), &rec)
+	readEntity(t, dataDir, "works/th/the-way-of-kings/recordings/kate-reading-2010.json", &rec)
 	if len(rec.Narrators) != 2 {
 		t.Errorf("narrators = %v, want 2", rec.Narrators)
 	}
@@ -118,8 +117,7 @@ func TestRunAudiosiloBooks(t *testing.T) {
 		Abridged *bool  `json:"abridged"`
 		CoverURL string `json:"cover_url"`
 	}
-	recPath := filepath.Join(dataDir, "works/un/unknown-abridgement/recordings/a-narrator.json")
-	readJSON(t, recPath, &rec2)
+	readEntity(t, dataDir, "works/un/unknown-abridgement/recordings/a-narrator.json", &rec2)
 	if rec2.Abridged != nil {
 		t.Errorf("abridged = %v, want absent (unstated)", rec2.Abridged)
 	}

@@ -1,12 +1,8 @@
 package issueform
 
 import (
-	"encoding/json"
-	"os"
-	"path"
-	"path/filepath"
-
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // Field labels for add-characters.yml / add-recaps.yml.
@@ -16,11 +12,21 @@ const (
 	fSidecarLicense        = "License" // the CC BY-SA confirmation checkbox
 )
 
-// addSidecar places a community CC BY-SA sidecar (characters.json or
-// recaps.json) for an existing work from an attached/pasted JSON file. It
-// refuses to silently overwrite an existing sidecar (that needs a human) and
-// leans on the schema validation in the post-write metacheck to enforce the
-// license layer, length caps, and spoiler positions.
+// sidecarMembers names the works-community entry member each sidecar kind
+// occupies, alongside the file name the issue form talks about.
+var sidecarMembers = map[model.Kind]struct{ member, fileName string }{
+	model.KindCharacters: {member: "characters", fileName: "characters.json"},
+	model.KindRecaps:     {member: "recaps", fileName: "recaps.json"},
+}
+
+// addSidecar places a community CC BY-SA sidecar (characters or recaps) for an
+// existing work from an attached/pasted JSON file. Both sidecars share ONE
+// works-community entry keyed by the work slug, so the write is a
+// read-modify-write: adding recaps to a work that already has characters
+// preserves the characters member. It refuses to silently overwrite the member
+// it is placing (that needs a human) and leans on the schema validation in the
+// post-write metacheck to enforce the license layer, length caps, and spoiler
+// positions.
 func (c *composer) addSidecar(s sections, kind model.Kind) {
 	if !s.checked(fSidecarLicense) {
 		c.fail(StatusInvalid, "the CC BY-SA 3.0 license checkbox is not ticked")
@@ -37,17 +43,23 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 		return
 	}
 
-	fileName := "characters.json"
+	names := sidecarMembers[kind]
 	attachLabel := fSidecarCharactersFile
 	if kind == model.KindRecaps {
-		fileName = "recaps.json"
 		attachLabel = fSidecarRecapsFile
 	}
-	rel := path.Join("works", model.Shard(workSlug), workSlug, fileName)
 
-	// Refuse to silently overwrite an existing sidecar.
-	if _, err := os.Stat(filepath.Join(c.dataDir, filepath.FromSlash(rel))); err == nil {
-		c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer", fileName, "data/"+rel)
+	entry, found, ok := c.entryRaw(pack.FamilyWorksCommunity, workSlug)
+	if !ok {
+		return
+	}
+	if !found {
+		entry = map[string]any{}
+	} else if _, taken := entry[names.member]; taken {
+		// Only this member blocks: the sibling sidecar sharing the entry is
+		// exactly what the read-modify-write below preserves.
+		c.fail(StatusNeedsHuman, "a %s sidecar already exists at %s; replacing it needs a maintainer",
+			names.fileName, c.entryLocation(pack.FamilyWorksCommunity, workSlug, "")+": "+names.member)
 		return
 	}
 
@@ -57,15 +69,16 @@ func (c *composer) addSidecar(s sections, kind model.Kind) {
 	}
 
 	// Validate it is well-formed JSON and normalize the work backref so the
-	// sidecar's parent-dir invariant holds regardless of what the file claimed.
-	var obj map[string]any
-	if err := json.Unmarshal(raw, &obj); err != nil {
-		c.fail(StatusInvalid, "the attached %s is not valid JSON: %v", fileName, err)
+	// sidecar's entry-key invariant holds regardless of what the file claimed.
+	obj, err := decodeObject(raw)
+	if err != nil {
+		c.fail(StatusInvalid, "the attached %s is not valid JSON: %v", names.fileName, err)
 		return
 	}
 	obj["work"] = workSlug
 
-	c.writeRaw(rel, obj)
+	entry[names.member] = obj
+	c.putEntry(pack.FamilyWorksCommunity, workSlug, entry)
 }
 
 // attachmentBytes resolves a sidecar/import attachment field to bytes: an

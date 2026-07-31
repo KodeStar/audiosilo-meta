@@ -46,22 +46,28 @@ type outWork struct {
 	Genres         []string     `json:"genres,omitempty"`
 	FirstPublished string       `json:"first_published,omitempty"`
 	Xref           *outWorkXref `json:"xref,omitempty"`
-	License        string       `json:"license"`
-	Sources        []outSource  `json:"sources"`
+	// AddedAt is the date this work entered the database, stamped only on a
+	// record the submission CREATES (never by a correction, which edits a record
+	// that entered earlier). Same value family as sources[].imported_at.
+	AddedAt string      `json:"added_at,omitempty"`
+	License string      `json:"license"`
+	Sources []outSource `json:"sources"`
 }
 
 type outRecording struct {
-	ID          string      `json:"id"`
-	Work        string      `json:"work"`
-	Narrators   []string    `json:"narrators"`
-	Abridged    *bool       `json:"abridged,omitempty"`
-	Language    string      `json:"language"`
-	RuntimeMin  int         `json:"runtime_min,omitempty"`
-	ReleaseDate string      `json:"release_date,omitempty"`
-	Publisher   string      `json:"publisher,omitempty"`
-	ASIN        []outASIN   `json:"asin,omitempty"`
-	ISBN        []string    `json:"isbn,omitempty"`
-	CoverURL    string      `json:"cover_url,omitempty"`
-	License     string      `json:"license"`
-	Sources     []outSource `json:"sources"`
+	ID          string    `json:"id"`
+	Work        string    `json:"work"`
+	Narrators   []string  `json:"narrators"`
+	Abridged    *bool     `json:"abridged,omitempty"`
+	Language    string    `json:"language"`
+	RuntimeMin  int       `json:"runtime_min,omitempty"`
+	ReleaseDate string    `json:"release_date,omitempty"`
+	Publisher   string    `json:"publisher,omitempty"`
+	ASIN        []outASIN `json:"asin,omitempty"`
+	ISBN        []string  `json:"isbn,omitempty"`
+	CoverURL    string    `json:"cover_url,omitempty"`
+	// AddedAt is stamped only on a recording the submission CREATES; see outWork.
+	AddedAt string      `json:"added_at,omitempty"`
+	License string      `json:"license"`
+	Sources []outSource `json:"sources"`
 }

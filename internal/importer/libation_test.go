@@ -40,7 +40,7 @@ func TestLibationImportBasic(t *testing.T) {
 	if sum.NewSeries != 3 {
 		t.Errorf("NewSeries = %d, want 3", sum.NewSeries)
 	}
-	if exists(filepath.Join(dataDir, "series/th/the-cosmere.json")) {
+	if entryExists(t, dataDir, "series/th/the-cosmere.json") {
 		t.Errorf("The Cosmere series should not be created (unknown position)")
 	}
 	// The only warning is the Cosmere unknown-position note.
@@ -64,7 +64,7 @@ func TestLibationImportBasic(t *testing.T) {
 			ImportedAt string `json:"imported_at"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/wi/wind-and-truth/work.json"), &work)
+	readEntity(t, dataDir, "works/wi/wind-and-truth/work.json", &work)
 	if work.Title != "Wind and Truth" {
 		t.Errorf("work title = %q, want %q", work.Title, "Wind and Truth")
 	}
@@ -92,7 +92,7 @@ func TestLibationImportBasic(t *testing.T) {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/wi/wind-and-truth/recordings/kate-reading-2024.json"), &rec)
+	readEntity(t, dataDir, "works/wi/wind-and-truth/recordings/kate-reading-2024.json", &rec)
 	if !reflect.DeepEqual(rec.Narrators, []string{"kate-reading", "michael-kramer"}) {
 		t.Errorf("narrators = %v", rec.Narrators)
 	}
@@ -122,7 +122,7 @@ func TestLibationImportBasic(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/th/the-stormlight-archive.json"), &series)
+	readEntity(t, dataDir, "series/th/the-stormlight-archive.json", &series)
 	found := false
 	for _, sw := range series.Works {
 		if sw.Work == "wind-and-truth" && sw.Position == "5" {
@@ -134,7 +134,7 @@ func TestLibationImportBasic(t *testing.T) {
 	}
 
 	// The single-series book carries its position.
-	readJSON(t, filepath.Join(dataDir, "series/th/the-primal-hunter.json"), &series)
+	readEntity(t, dataDir, "series/th/the-primal-hunter.json", &series)
 	if len(series.Works) != 1 || series.Works[0].Work != "the-primal-hunter-14" || series.Works[0].Position != "14" {
 		t.Errorf("the-primal-hunter series = %+v", series.Works)
 	}
@@ -171,17 +171,17 @@ func TestLibationStripsRoleQualifierAndAbridged(t *testing.T) {
 	var work struct {
 		Authors []string `json:"authors"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/dr/dragon-heart/work.json"), &work)
+	readEntity(t, dataDir, "works/dr/dragon-heart/work.json", &work)
 	if !reflect.DeepEqual(work.Authors, []string{"kirill-klevanski", "valeria-kornosenko"}) {
 		t.Errorf("authors = %v, want role qualifier stripped", work.Authors)
 	}
-	if exists(filepath.Join(dataDir, "people/va/valeria-kornosenko-introduction.json")) {
+	if entryExists(t, dataDir, "people/va/valeria-kornosenko-introduction.json") {
 		t.Errorf("qualifier-suffixed person record was created")
 	}
 	var person struct {
 		Name string `json:"name"`
 	}
-	readJSON(t, filepath.Join(dataDir, "people/va/valeria-kornosenko.json"), &person)
+	readEntity(t, dataDir, "people/va/valeria-kornosenko.json", &person)
 	if person.Name != "Valeria Kornosenko" {
 		t.Errorf("person name = %q, want qualifier stripped", person.Name)
 	}
@@ -193,7 +193,7 @@ func TestLibationStripsRoleQualifierAndAbridged(t *testing.T) {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/dr/dragon-heart/recordings/kevin-t-collins-2020.json"), &rec)
+	readEntity(t, dataDir, "works/dr/dragon-heart/recordings/kevin-t-collins-2020.json", &rec)
 	if rec.Abridged == nil || *rec.Abridged != true {
 		t.Errorf("abridged = %v, want explicit true", rec.Abridged)
 	}
@@ -386,7 +386,7 @@ func TestLibationFullLocaleNameKeepsASIN(t *testing.T) {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/de/der-titel/recordings/eine-stimme.json"), &rec)
+	readEntity(t, dataDir, "works/de/der-titel/recordings/eine-stimme.json", &rec)
 	if len(rec.ASIN) != 1 || rec.ASIN[0].Region != "de" || rec.ASIN[0].ASIN != "B0GERMANY1" {
 		t.Errorf("asin = %+v, want de/B0GERMANY1", rec.ASIN)
 	}
@@ -402,7 +402,7 @@ func TestLibationCommaSeriesNameOnDisk(t *testing.T) {
 	if len(sum.Warnings) != 0 {
 		t.Errorf("no warnings expected, got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "series/re/ready.json")) {
+	if entryExists(t, dataDir, "series/re/ready.json") {
 		t.Errorf("truncated series %q was minted", "ready")
 	}
 	var series struct {
@@ -412,7 +412,7 @@ func TestLibationCommaSeriesNameOnDisk(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/re/ready-set-go-the-story.json"), &series)
+	readEntity(t, dataDir, "series/re/ready-set-go-the-story.json", &series)
 	if series.Name != "Ready, Set, Go: The Story" {
 		t.Errorf("series name = %q", series.Name)
 	}
@@ -440,7 +440,7 @@ func TestLibationEmptyTitleWithSubtitleSkipped(t *testing.T) {
 	if !hasWarning(sum.Warnings, "no title") {
 		t.Errorf("expected a no-title warning, got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "works")) {
+	if len(listWorks(t, dataDir)) != 0 {
 		t.Errorf("no work should be written")
 	}
 }
@@ -453,7 +453,7 @@ func TestLibationStringBoolAbridged(t *testing.T) {
 	var rec struct {
 		Abridged *bool `json:"abridged"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/st/string-bool/recordings/a-voice.json"), &rec)
+	readEntity(t, dataDir, "works/st/string-bool/recordings/a-voice.json", &rec)
 	if rec.Abridged == nil || *rec.Abridged != false {
 		t.Errorf("abridged = %v, want explicit false from string \"False\"", rec.Abridged)
 	}
