@@ -9,6 +9,12 @@
 // its family's first pack, which is where the writers would put it at test
 // scale.
 //
+// Raw and Read return a record in CANONICAL form (pkg/canonical), whatever
+// family it came from and whether or not extracting it needed a re-marshal.
+// That is one view, not two: a test comparing a record against the literal that
+// seeded it is comparing values, and a canonical rendering is the only form
+// where "unchanged" means the same bytes.
+//
 // It is test support only: nothing outside a _test.go file imports it.
 package testpack
 
@@ -18,7 +24,6 @@ import (
 	"path"
 	"path/filepath"
 	"sort"
-	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
@@ -83,14 +88,13 @@ func Seed(t testing.TB, dataDir string, files map[string]string) {
 	entries := map[pack.Family]map[string]map[string]any{}
 	for _, address := range sortedKeys(files) {
 		a := resolve(t, address)
-		// UseNumber so a seed's numbers reach the pack exactly as written: a
-		// float round-trip would reformat them, and several tests compare a
-		// record against the literal that seeded it.
-		dec := json.NewDecoder(strings.NewReader(files[address]))
-		dec.UseNumber()
-		var obj map[string]any
-		if err := dec.Decode(&obj); err != nil {
-			t.Fatalf("testpack: %s is not a JSON object: %v", address, err)
+		// pack.DecodeEntry, so a seed's numbers reach the pack exactly as written
+		// (a float round-trip would reformat them, and several tests compare a
+		// record against the literal that seeded it) and a seed with a duplicate
+		// key is rejected rather than silently halved.
+		obj, err := pack.DecodeEntry(json.RawMessage(files[address]))
+		if err != nil {
+			t.Fatalf("testpack: %s is not a usable JSON object: %v", address, err)
 		}
 		if entries[a.family] == nil {
 			entries[a.family] = map[string]map[string]any{}
@@ -108,12 +112,9 @@ func Seed(t testing.TB, dataDir string, files map[string]string) {
 				entry[k] = v
 			}
 		case a.key != "":
-			nested, _ := entry[a.member].(map[string]any)
-			if nested == nil {
-				nested = map[string]any{}
-				entry[a.member] = nested
+			if err := pack.SetRecording(entry, a.key, obj); err != nil {
+				t.Fatalf("testpack: %s: %v", address, err)
 			}
-			nested[a.key] = obj
 		default:
 			entry[a.member] = obj
 		}
@@ -144,6 +145,43 @@ func Seed(t testing.TB, dataDir string, files map[string]string) {
 		}
 		if err := os.WriteFile(full, data, 0o644); err != nil {
 			t.Fatalf("testpack: write %s: %v", full, err)
+		}
+	}
+}
+
+// SeedLegacyPerson writes ONE file-per-entity person record into dataDir,
+// putting the people family in the legacy layout without laying out a whole
+// legacy tree. It is what the writers' legacy-refusal tests refuse: pack layout
+// is detected per family from the shape of a file under its root, so a single
+// record is enough to make the family legacy.
+//
+// It returns the record's bytes so a test can prove a refused run left the tree
+// exactly as it found it (see AssertUntouched).
+func SeedLegacyPerson(t testing.TB, dataDir, slug, name string) string {
+	t.Helper()
+	body := `{"id":"` + slug + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}` + "\n"
+	full := filepath.Join(dataDir, "people", model.Shard(slug), slug+".json")
+	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+		t.Fatalf("testpack: mkdir %s: %v", filepath.Dir(full), err)
+	}
+	if err := os.WriteFile(full, []byte(body), 0o644); err != nil {
+		t.Fatalf("testpack: write %s: %v", full, err)
+	}
+	return body
+}
+
+// AssertUntouched checks that a refused run wrote nothing: the legacy record
+// still holds want, and no family root the run would have written was created.
+func AssertUntouched(t testing.TB, dataDir, slug, want string) {
+	t.Helper()
+	full := filepath.Join(dataDir, "people", model.Shard(slug), slug+".json")
+	got, err := os.ReadFile(full)
+	if err != nil || string(got) != want {
+		t.Errorf("testpack: the legacy record was touched (err=%v): %s", err, got)
+	}
+	for _, f := range []pack.Family{pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilySeries} {
+		if _, err := os.Stat(filepath.Join(dataDir, f.Root())); !os.IsNotExist(err) {
+			t.Errorf("testpack: the refused run created %s/ (stat err = %v)", f.Root(), err)
 		}
 	}
 }
@@ -180,23 +218,12 @@ func Recordings(t testing.TB, dataDir, workSlug string) []string {
 	if !ok {
 		t.Fatalf("testpack: no work %q", workSlug)
 	}
-	var aux struct {
-		Recordings map[string]json.RawMessage `json:"recordings"`
-	}
-	if err := json.Unmarshal(entry, &aux); err != nil {
-		t.Fatalf("testpack: parse works entry %q: %v", workSlug, err)
-	}
-	out := make([]string, 0, len(aux.Recordings))
-	for slug := range aux.Recordings {
-		out = append(out, slug)
-	}
-	sort.Strings(out)
-	return out
+	return recordingSlugs(t, workSlug, entry)
 }
 
-// Raw returns a record's raw JSON from the pack tree, asserting on the way that
-// the pack holding it is in canonical form. found is false when the entry (or
-// the nested record inside it) is absent.
+// Raw returns a record's CANONICAL JSON from the pack tree, asserting on the way
+// that the pack holding it is in canonical form. found is false when the entry
+// (or the nested record inside it) is absent.
 //
 // A WORK address returns the work's own fields, without the "recordings" map
 // spliced into its entry - the record a work.json used to hold. Use Recordings
@@ -216,6 +243,24 @@ func Raw(t testing.TB, dataDir, address string) (raw json.RawMessage, found bool
 		return nil, false
 	}
 	assertCanonical(t, dataDir, store, a)
+
+	record, found := extract(t, a, entry)
+	if !found {
+		return nil, false
+	}
+	// One view for every family: extracting a work needs a re-marshal (the
+	// recordings map comes off) and the others do not, so canonicalizing here is
+	// what stops Raw returning two different renderings of the same thing.
+	formatted, err := canonical.Format(record)
+	if err != nil {
+		t.Fatalf("testpack: canonicalize %s: %v", address, err)
+	}
+	return formatted, true
+}
+
+// extract pulls the addressed record out of its entry.
+func extract(t testing.TB, a addr, entry json.RawMessage) (json.RawMessage, bool) {
+	t.Helper()
 	if a.member == "" {
 		if a.family == pack.FamilyWorks {
 			return withoutRecordings(t, entry), true
@@ -267,6 +312,31 @@ func Exists(t testing.TB, dataDir, address string) bool {
 func Addresses(t testing.TB, dataDir string) []string {
 	t.Helper()
 	var out []string
+	eachEntry(t, dataDir, func(f pack.Family, slug string, entry json.RawMessage) {
+		out = append(out, entryAddresses(t, f, slug, entry)...)
+	})
+	sort.Strings(out)
+	return out
+}
+
+// Slugs returns a family's entry keys, sorted.
+func Slugs(t testing.TB, dataDir string, f pack.Family) []string {
+	t.Helper()
+	var out []string
+	eachEntry(t, dataDir, func(got pack.Family, slug string, _ json.RawMessage) {
+		if got == f {
+			out = append(out, slug)
+		}
+	})
+	sort.Strings(out)
+	return out
+}
+
+// eachEntry walks every family's packs in bound order and calls fn for each
+// entry. It is the one tree read the package makes, so a caller only decides
+// what to do with an entry, never how to find one.
+func eachEntry(t testing.TB, dataDir string, fn func(f pack.Family, slug string, entry json.RawMessage)) {
+	t.Helper()
 	for _, def := range pack.Families() {
 		tree, err := pack.ReadTree(dataDir, def.Family)
 		if err != nil {
@@ -283,36 +353,25 @@ func Addresses(t testing.TB, dataDir string) []string {
 			}
 			for _, slug := range file.Slugs() {
 				entry, _ := file.Get(slug)
-				out = append(out, entryAddresses(t, def.Family, slug, entry)...)
+				fn(def.Family, slug, entry)
 			}
 		}
 	}
-	sort.Strings(out)
-	return out
 }
 
 // entryAddresses renders the per-entity addresses one pack entry holds.
 func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMessage) []string {
 	t.Helper()
-	dir := path.Join(f.Root(), model.Shard(slug))
+	// Every address a works or works-community entry yields sits under the
+	// work's directory, so the shard is computed once for all of them.
+	dir := path.Join(f.Root(), model.Shard(slug), slug)
 	switch f {
 	case pack.FamilyPeople, pack.FamilySeries:
-		return []string{dir + "/" + slug + ".json"}
+		return []string{path.Join(f.Root(), model.Shard(slug), slug+".json")}
 	case pack.FamilyWorks:
-		out := []string{path.Join("works", model.Shard(slug), slug, "work.json")}
-		var aux struct {
-			Recordings map[string]json.RawMessage `json:"recordings"`
-		}
-		if err := json.Unmarshal(entry, &aux); err != nil {
-			t.Fatalf("testpack: parse works entry %q: %v", slug, err)
-		}
-		recs := make([]string, 0, len(aux.Recordings))
-		for rec := range aux.Recordings {
-			recs = append(recs, rec)
-		}
-		sort.Strings(recs)
-		for _, rec := range recs {
-			out = append(out, path.Join("works", model.Shard(slug), slug, "recordings", rec+".json"))
+		out := []string{path.Join(dir, "work.json")}
+		for _, rec := range recordingSlugs(t, slug, entry) {
+			out = append(out, path.Join(dir, "recordings", rec+".json"))
 		}
 		return out
 	case pack.FamilyWorksCommunity:
@@ -323,6 +382,8 @@ func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMess
 		var out []string
 		for _, name := range []string{"characters", "recaps"} {
 			if _, ok := members[name]; ok {
+				// A sidecar's address still names the WORK's directory: the
+				// works-community family is a storage split, not a rename.
 				out = append(out, path.Join("works", model.Shard(slug), slug, name+".json"))
 			}
 		}
@@ -331,24 +392,18 @@ func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMess
 	return nil
 }
 
-// Slugs returns a family's entry keys, sorted.
-func Slugs(t testing.TB, dataDir string, f pack.Family) []string {
+// recordingSlugs returns the recordings-map keys of a works entry, sorted.
+func recordingSlugs(t testing.TB, slug string, entry json.RawMessage) []string {
 	t.Helper()
-	tree, err := pack.ReadTree(dataDir, f)
-	if err != nil {
-		t.Fatalf("testpack: read %s tree: %v", f.Root(), err)
+	var aux struct {
+		Recordings map[string]json.RawMessage `json:"recordings"`
 	}
-	var out []string
-	for _, ref := range tree.Packs() {
-		raw, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(ref.Path())))
-		if err != nil {
-			t.Fatalf("testpack: read %s: %v", ref.Path(), err)
-		}
-		file, err := pack.Parse(raw)
-		if err != nil {
-			t.Fatalf("testpack: parse %s: %v", ref.Path(), err)
-		}
-		out = append(out, file.Slugs()...)
+	if err := json.Unmarshal(entry, &aux); err != nil {
+		t.Fatalf("testpack: parse works entry %q: %v", slug, err)
+	}
+	out := make([]string, 0, len(aux.Recordings))
+	for rec := range aux.Recordings {
+		out = append(out, rec)
 	}
 	sort.Strings(out)
 	return out
@@ -372,8 +427,8 @@ func assertCanonical(t testing.TB, dataDir string, store *pack.Store, a addr) {
 }
 
 // withoutRecordings strips the recordings map from a works entry, leaving the
-// work's own record. Members are kept raw, so numbers and nested formatting
-// survive; json.Marshal sorts the keys, which is the canonical order anyway.
+// work's own record. Members are kept raw, so numbers survive; Raw canonicalizes
+// what comes back, so the re-marshal's rendering never leaks out.
 func withoutRecordings(t testing.TB, entry json.RawMessage) json.RawMessage {
 	t.Helper()
 	var obj map[string]json.RawMessage

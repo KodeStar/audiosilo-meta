@@ -15,13 +15,13 @@
 package issueform
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
 	"time"
 
+	"github.com/kodestar/audiosilo-meta/internal/importer"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -91,13 +91,12 @@ type Options struct {
 	Fetch Fetcher
 }
 
-// recRef locates a recording by its work and recording slugs. The pack entry it
-// sits in is derived from the pair on demand (a recording lives inside its
-// work's composite entry), never stored.
-type recRef struct {
-	work string
-	rec  string
-}
+// recRef locates a recording by its work and recording slugs. It is the
+// importer's type: both writers address a recording the same way, because a
+// recording has no identity of its own - it is a key inside its work's
+// composite entry - and out.go already shares every record shape the two paths
+// have in common.
+type recRef = importer.RecRef
 
 // composer accumulates the writes, messages, and status for one submission.
 type composer struct {
@@ -189,9 +188,12 @@ func process(opts Options) Result {
 		asinRec: map[string]recRef{},
 		isbnRec: map[string]recRef{},
 	}
-	store, err := openStore(opts.DataDir)
+	store, err := openStore(opts.DataDir, tmpl)
 	if err != nil {
-		return Result{Status: StatusInvalid, Messages: []string{err.Error()}}
+		// needs-human, not invalid: the submission is fine, the repository is
+		// mid-migration. StatusInvalid is the contributor-fault verdict, and the
+		// intake workflow would tell a submitter THEIR form was wrong.
+		return Result{Status: StatusNeedsHuman, Messages: []string{err.Error()}}
 	}
 	c.store = store
 	c.loadExisting()
@@ -225,7 +227,7 @@ func process(opts Options) Result {
 
 	// A terminal status (duplicate/needs-human/invalid) short-circuits: never
 	// write partial records for a submission we are not accepting.
-	if c.status != "" && c.status != StatusOK {
+	if c.failed() {
 		return Result{Status: c.status, Messages: c.messages}
 	}
 	if c.queued == 0 {
@@ -253,7 +255,7 @@ func (c *composer) loadExisting() {
 	for _, w := range cat.Works {
 		c.works[w.ID] = w
 		for _, r := range w.Recordings {
-			ref := recRef{work: w.ID, rec: r.ID}
+			ref := recRef{Work: w.ID, Rec: r.ID}
 			for _, a := range r.ASIN {
 				c.asinRec[a.ASIN] = ref
 			}
@@ -267,26 +269,33 @@ func (c *composer) loadExisting() {
 	}
 }
 
-// writeFamilies are the families a submission may write. Every one of them has
-// to be in the pack layout: the composer speaks pack only, so a tree still in
-// the file-per-entity layout is refused rather than written through a second
-// path (PACK-SPEC.md's migration is a flag day).
-var writeFamilies = []pack.Family{
-	pack.FamilyWorks, pack.FamilyWorksCommunity, pack.FamilyPeople, pack.FamilySeries,
+// coreFamilies are the CC0 families every template may touch: a work, its
+// recordings, the people they credit, and the series they sit in.
+var coreFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyPeople, pack.FamilySeries}
+
+// writeFamilies are the families a template writes. Gating per template rather
+// than on the union matters during the dual-layout window: works-community
+// converts on its own schedule, and an add-work submission that never touches a
+// sidecar must not be refused because that family is still legacy.
+func writeFamilies(tmpl string) []pack.Family {
+	switch tmpl {
+	case "characters", "recaps":
+		// The sidecar entry only; the compose path reads the work from the
+		// catalogue but writes nothing outside works-community.
+		return []pack.Family{pack.FamilyWorksCommunity}
+	default:
+		return coreFamilies
+	}
 }
 
-// openStore opens dataDir's pack store, refusing a legacy family before anything
-// is composed.
-func openStore(dataDir string) (*pack.Store, error) {
-	s, err := pack.Open(dataDir)
+// openStore opens dataDir for the families tmpl writes, refusing a legacy one
+// before anything is composed (pack.OpenFor owns that rule). The clause it
+// appends names who refused, since the wrapped error only says what is wrong
+// with the tree.
+func openStore(dataDir, tmpl string) (*pack.Store, error) {
+	s, err := pack.OpenFor(dataDir, writeFamilies(tmpl)...)
 	if err != nil {
-		return nil, fmt.Errorf("open %s: %w", dataDir, err)
-	}
-	for _, f := range writeFamilies {
-		if s.Layout(f) == pack.LayoutLegacy {
-			return nil, fmt.Errorf("data/%s: %w; convert the tree to the pack layout before intake can write to it",
-				f.Root(), pack.ErrLegacyLayout)
-		}
+		return nil, fmt.Errorf("%w (the intake bot writes the pack layout only)", err)
 	}
 	return s, nil
 }
@@ -308,6 +317,31 @@ func (c *composer) putEntry(f pack.Family, slug string, v any) bool {
 	return true
 }
 
+// putNewEntry queues a record the submission is CREATING, refusing to write over
+// an entry that is already there.
+//
+// The guard is not belt-and-braces: the dedup maps come from check.Load's
+// Catalog, which is best-effort. An entry the loader could not decode is
+// reported as a problem but is ABSENT from the Catalog, so the composer's
+// duplicate check passes and the create path would replace the whole entry -
+// for a work, destroying every recording it held - while the run reported ok,
+// because what it wrote back is itself valid. The verdict is needs-human: the
+// submission is fine, the repository is not.
+func (c *composer) putNewEntry(f pack.Family, slug string, v any) bool {
+	taken, err := c.store.Has(f, slug)
+	if err != nil {
+		c.fail(StatusInvalid, "read %s entry %q: %v", f.Root(), slug, err)
+		return false
+	}
+	if taken {
+		c.fail(StatusNeedsHuman, "an entry already exists at %s but is missing from the loaded catalogue; "+
+			"a maintainer must run metacheck and fix what it reports before this can be composed",
+			c.entryLocation(f, slug, ""))
+		return false
+	}
+	return c.putEntry(f, slug, v)
+}
+
 // entryRaw reads family f's entry for slug into a mutable map, queued-write
 // first. found is false when there is no such entry; ok is false when the run
 // has already been failed (a read or decode error).
@@ -320,7 +354,7 @@ func (c *composer) entryRaw(f pack.Family, slug string) (obj map[string]any, fou
 	if !found {
 		return nil, false, true
 	}
-	obj, err = decodeObject(raw)
+	obj, err = pack.DecodeEntry(raw)
 	if err != nil {
 		c.fail(StatusInvalid, "parse %s entry %q: %v", f.Root(), slug, err)
 		return nil, false, false
@@ -328,26 +362,12 @@ func (c *composer) entryRaw(f pack.Family, slug string) (obj map[string]any, fou
 	return obj, true, true
 }
 
-// decodeObject decodes a JSON object into a mutable map, preserving numbers
-// exactly (json.Number). Exactness matters because an entry is read, edited in
-// one field, and written back whole: a float round-trip would reformat every
-// number the edit never touched.
-func decodeObject(raw []byte) (map[string]any, error) {
-	dec := json.NewDecoder(bytes.NewReader(raw))
-	dec.UseNumber()
-	var obj map[string]any
-	if err := dec.Decode(&obj); err != nil {
-		return nil, err
-	}
-	if obj == nil {
-		return nil, fmt.Errorf("not a JSON object")
-	}
-	return obj, nil
-}
-
-// entryLocation names where an entity lives, for a human-facing message: the
-// pack file plus the entry key (and the recording key inside it). It is what a
-// maintainer needs to open the right file and find the right entry.
+// entryLocation names where an entity lives: the pack file plus the entry key
+// (and the recording key inside it). It is the MAINTAINER-facing address form,
+// and every intake message is maintainer-facing - a verdict is read by whoever
+// has to act on it, and acting means opening a file. The importer's per-row
+// warnings use the entity form instead (see importer.recLabel), because a
+// warning is a run report with nothing to open.
 func (c *composer) entryLocation(f pack.Family, slug, recSlug string) string {
 	loc := model.PackLocation{Family: f.Root(), Slug: slug, RecSlug: recSlug}
 	ref, err := c.store.Locate(f, slug)
@@ -362,7 +382,7 @@ func (c *composer) entryLocation(f pack.Family, slug, recSlug string) string {
 
 // recLocation names a recording inside its work's composite entry.
 func (c *composer) recLocation(ref recRef) string {
-	return c.entryLocation(pack.FamilyWorks, ref.work, ref.rec)
+	return c.entryLocation(pack.FamilyWorks, ref.Work, ref.Rec)
 }
 
 // dedupIdentifiers fails with StatusDuplicate when any of the submission's ASINs
@@ -433,6 +453,15 @@ func (c *composer) fail(status Status, format string, args ...any) {
 	c.messages = append(c.messages, fmt.Sprintf(format, args...))
 }
 
+// failed reports whether a terminal status has already been set, so a compose
+// path can stop rather than build on a half-composed submission. It is not
+// specific to one status: a person record that could not be created fails
+// needs-human, and the work that would have credited it must not be written
+// either.
+func (c *composer) failed() bool {
+	return c.status != "" && c.status != StatusOK
+}
+
 // note appends an informational message without changing the status.
 func (c *composer) note(format string, args ...any) {
 	c.messages = append(c.messages, fmt.Sprintf(format, args...))
@@ -458,9 +487,11 @@ func (c *composer) getOrCreatePerson(name, sourceRef string) (string, bool) {
 		return slug, true
 	}
 	c.people[slug] = true
-	c.putEntry(pack.FamilyPeople, slug, outPerson{
+	if !c.putNewEntry(pack.FamilyPeople, slug, outPerson{
 		ID: slug, Name: strings.TrimSpace(name), License: licenseCC0, Sources: c.sources(sourceRef),
-	})
+	}) {
+		return "", false
+	}
 	return slug, true
 }
 

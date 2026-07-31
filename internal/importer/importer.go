@@ -129,7 +129,7 @@ type planner struct {
 	// test alone), so a normal import's memory profile is unchanged - a nil map
 	// IS the "not enriching" signal, so there is no separate mode flag to keep in
 	// step with it.
-	asinLoc map[string]recRef
+	asinLoc map[string]RecRef
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -291,7 +291,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		importDate:     opts.ImportDate,
 	}
 	if opts.Mode == ModeEnrich {
-		p.asinLoc = map[string]recRef{}
+		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
 
@@ -439,10 +439,10 @@ func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 	if prev, taken := p.asinLoc[asin]; taken {
 		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
 			"catalogue: ASIN %s is recorded on both %s and %s; enrichment matched it to the first",
-			asin, recLabel(prev.work, prev.rec), recLabel(workSlug, recSlug)))
+			asin, recLabel(prev.Work, prev.Rec), recLabel(workSlug, recSlug)))
 		return
 	}
-	p.asinLoc[asin] = recRef{work: workSlug, rec: recSlug}
+	p.asinLoc[asin] = RecRef{Work: workSlug, Rec: recSlug}
 }
 
 // resolveWorkTitles is the deterministic pre-pass over the parsed batch that
@@ -677,7 +677,7 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 		return slug
 	}
 	p.people[slug] = true
-	p.putEntry(pack.FamilyPeople, slug, OutPerson{
+	p.putNewEntry(pack.FamilyPeople, slug, OutPerson{
 		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
@@ -742,7 +742,12 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// added_at is stamped here and only here for a work: this is the
 			// branch that CREATES one. A merge onto an existing work, and every
 			// enrichment backfill, leave the field as they found it.
-			p.putEntry(pack.FamilyWorks, slug, outWork{
+			//
+			// putNewEntry, not putEntry: p.works comes from a best-effort
+			// catalogue load, so a work the loader could not decode looks free
+			// here, and a plain upsert would replace its whole composite entry -
+			// every recording included.
+			p.putNewEntry(pack.FamilyWorks, slug, outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
 				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
 				AddedAt: p.importDate,
@@ -1134,7 +1139,7 @@ func (p *planner) finalizeSeries() {
 			continue
 		}
 		if ss.isNew {
-			p.putEntry(pack.FamilySeries, ss.slug, ss.out)
+			p.putNewEntry(pack.FamilySeries, ss.slug, ss.out)
 		} else {
 			p.putEntry(pack.FamilySeries, ss.slug, ss.raw)
 		}

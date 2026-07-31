@@ -8,6 +8,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -136,39 +139,113 @@ func addedAtOf(t *testing.T, dir, address string) string {
 }
 
 // TestIntakeRefusesLegacyLayout pins the dual-layout window's guard on the
-// intake side: the composer speaks pack only, so a tree still in the
-// file-per-entity layout is an invalid verdict rather than a second write path.
+// intake side. The verdict is needs-human, not invalid: the submission is fine
+// and the repository is mid-migration, and invalid is the contributor-fault
+// verdict the intake workflow comments back at the submitter.
 func TestIntakeRefusesLegacyLayout(t *testing.T) {
 	dir := t.TempDir()
-	legacy := filepath.Join(dir, "people", "ja", "jane-doe.json")
-	if err := os.MkdirAll(filepath.Dir(legacy), 0o755); err != nil {
-		t.Fatal(err)
-	}
-	body := `{"id":"jane-doe","license":"CC0-1.0","name":"Jane Doe","sources":[{"type":"user"}]}` + "\n"
-	if err := os.WriteFile(legacy, []byte(body), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	seeded := testpack.SeedLegacyPerson(t, dir, "jane-doe", "Jane Doe")
 
 	res := Process(Options{DataDir: dir, Template: "add-work",
 		Body: addWorkBody("Legacy Book", "Leo Author", "en", "Lia Voice", "", "web", true)})
-	if res.Status != StatusInvalid {
-		t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
 	}
 	if !anyContains(res.Messages, pack.ErrLegacyLayout.Error()) {
 		t.Errorf("messages must name the legacy layout: %v", res.Messages)
 	}
-	if !anyContains(res.Messages, "data/people") {
+	if !anyContains(res.Messages, pack.FamilyPeople.Root()) {
 		t.Errorf("messages must name the family that is still legacy: %v", res.Messages)
 	}
-	if got, rerr := os.ReadFile(legacy); rerr != nil || string(got) != body {
-		t.Errorf("the legacy tree was touched (err=%v): %s", rerr, got)
-	}
-	if _, serr := os.Stat(filepath.Join(dir, "works")); !os.IsNotExist(serr) {
-		t.Errorf("the refused submission created works/ (stat err = %v)", serr)
-	}
+	testpack.AssertUntouched(t, dir, "jane-doe", seeded)
 	// Guard the errors.Is contract the message is derived from.
-	if _, err := openStore(dir); !errors.Is(err, pack.ErrLegacyLayout) {
+	if _, err := openStore(dir, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
 		t.Errorf("openStore error = %v, want it to wrap pack.ErrLegacyLayout", err)
+	}
+}
+
+// TestSidecarTemplateIgnoresACoreFamilysLayout is the per-template half of the
+// gate: works-community converts on its own schedule during the dual-layout
+// window, so the families a template does NOT write must not be able to refuse
+// it - and the family it does write still must.
+func TestSidecarTemplateGatesOnlyItsOwnFamily(t *testing.T) {
+	// The community family is absent (so writable) while people is legacy: a
+	// characters submission writes only works-community, so the store opens.
+	legacyCore := t.TempDir()
+	testpack.SeedLegacyPerson(t, legacyCore, "jane-doe", "Jane Doe")
+	if _, err := openStore(legacyCore, "characters"); err != nil {
+		t.Errorf("a sidecar submission was refused for a family it never writes: %v", err)
+	}
+	if _, err := openStore(legacyCore, "add-work"); !errors.Is(err, pack.ErrLegacyLayout) {
+		t.Errorf("add-work writes people; it must still be refused: %v", err)
+	}
+
+	// The mirror image: works-community legacy, the core families untouched.
+	legacySidecar := t.TempDir()
+	writeLegacySidecar(t, legacySidecar, "some-work")
+	if _, err := openStore(legacySidecar, "characters"); !errors.Is(err, pack.ErrLegacyLayout) {
+		t.Errorf("a sidecar submission must be refused when its own family is legacy: %v", err)
+	}
+	for _, tmpl := range []string{"add-work", "add-recording", "correct-data"} {
+		if _, err := openStore(legacySidecar, tmpl); err != nil {
+			t.Errorf("%s never writes works-community; it must not be refused: %v", tmpl, err)
+		}
+	}
+}
+
+// writeLegacySidecar puts the works-community family in the legacy layout with
+// one per-entity characters file.
+func writeLegacySidecar(t *testing.T, dir, workSlug string) {
+	t.Helper()
+	full := filepath.Join(dir, pack.FamilyWorksCommunity.Root(), model.Shard(workSlug), workSlug, "characters.json")
+	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(full, []byte(validCharactersJSON+"\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+}
+
+// TestComposeNeverOverwritesAnUndecodableEntry is the intake side of the guard
+// against silent recording loss: the dedup maps come from check.Load's Catalog,
+// which drops an entry it cannot decode, so the duplicate check passes and the
+// create path would replace the whole composite entry - recordings and all.
+func TestComposeNeverOverwritesAnUndecodableEntry(t *testing.T) {
+	dir := t.TempDir()
+	const workAddress = "works/br/broken-book/work.json"
+	// "authors" is a string, not an array: valid JSON, valid pack, but the work
+	// does not decode into model.Work, so it never reaches the Catalog.
+	testpack.Seed(t, dir, map[string]string{
+		workAddress: `{"authors":"jane-doe","id":"broken-book","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Broken Book"}`,
+		"works/br/broken-book/recordings/john-smith-2020.json": `{"asin":[{"asin":"B0KEEPME01","region":"us"}],"id":"john-smith-2020","language":"en","license":"CC0-1.0","narrators":["john-smith"],"sources":[{"type":"user"}],"work":"broken-book"}`,
+	})
+	if cat := check.Load(dir).Catalog; cat != nil {
+		for _, w := range cat.Works {
+			if w.ID == "broken-book" {
+				t.Fatalf("fixture no longer defeats the loader; the work reached the Catalog")
+			}
+		}
+	}
+
+	res := Process(Options{DataDir: dir, Template: "add-work",
+		Body: addWorkBody("Broken Book", "Jane Doe", "en", "Nina Voice", "", "web", true)})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "broken-book") || !anyContains(res.Messages, worksPack) {
+		t.Errorf("messages must name the slug and the pack holding it: %v", res.Messages)
+	}
+	if recs := testpack.Recordings(t, dir, "broken-book"); len(recs) != 1 || recs[0] != "john-smith-2020" {
+		t.Errorf("recordings = %v, want the seeded john-smith-2020 intact", recs)
+	}
+	var work struct {
+		Authors any `json:"authors"`
+	}
+	if err := json.Unmarshal([]byte(readFile(t, dir, workAddress)), &work); err != nil {
+		t.Fatal(err)
+	}
+	if work.Authors != "jane-doe" {
+		t.Errorf("the undecodable work was rewritten: authors = %v", work.Authors)
 	}
 }
 

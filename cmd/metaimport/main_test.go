@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 )
 
 // captureStdout runs fn with os.Stdout redirected to a pipe and returns what it
@@ -408,4 +409,68 @@ func TestModeFlagsAreMutuallyExclusive(t *testing.T) {
 	if called {
 		t.Error("the importer ran despite two conflicting mode flags")
 	}
+}
+
+// TestFailedRunPrintsNoSummary pins the ordering of the two things a finished
+// run reports. A run can fail BEFORE it plans anything - a data tree still in
+// the file-per-entity layout is refused when the store is opened - and printing
+// the Summary regardless produced a "plan (dry run): 0 new works, 0 new
+// recordings ..." line that is fiction: nothing was planned, so nothing was
+// planned to be zero.
+func TestFailedRunPrintsNoSummary(t *testing.T) {
+	dir := t.TempDir()
+	dataDir := filepath.Join(dir, "data")
+	if err := os.MkdirAll(dataDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	testpack.SeedLegacyPerson(t, dataDir, "some-author", "Some Author")
+
+	books := filepath.Join(dir, "books.json")
+	body := `[{"asin":"B0LEGACY01","title_short":"Legacy Book","author":"Some Author",` +
+		`"narrated_by":"A Reader","language":"english","region":"US","seconds":600}]`
+	if err := os.WriteFile(books, []byte(body), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	var (
+		code   int
+		stderr string
+	)
+	stdout := captureStdout(t, func() {
+		stderr = captureStderr(t, func() {
+			code = runSource("openaudible", []string{books, "--data", dataDir, "--dry-run"}, importer.Run)
+		})
+	})
+	if code != 1 {
+		t.Errorf("exit code = %d, want 1", code)
+	}
+	if stdout != "" {
+		t.Errorf("a failed run printed a summary:\n%s", stdout)
+	}
+	if !strings.Contains(stderr, "legacy file-per-entity layout") {
+		t.Errorf("stderr does not explain the refusal:\n%s", stderr)
+	}
+}
+
+// captureStderr runs fn with os.Stderr redirected to a pipe and returns what it
+// printed, so a test asserting on a refusal does not spill the message into the
+// suite's own output.
+func captureStderr(t *testing.T, fn func()) string {
+	t.Helper()
+	old := os.Stderr
+	r, w, err := os.Pipe()
+	if err != nil {
+		t.Fatal(err)
+	}
+	os.Stderr = w
+	fn()
+	if err := w.Close(); err != nil {
+		t.Fatal(err)
+	}
+	os.Stderr = old
+	out, err := io.ReadAll(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(out)
 }

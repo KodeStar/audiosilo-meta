@@ -2,11 +2,11 @@ package importer
 
 import (
 	"errors"
-	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -94,16 +94,9 @@ func TestEnrichDoesNotStampAddedAt(t *testing.T) {
 // path.
 func TestImportRefusesLegacyLayout(t *testing.T) {
 	dataDir := t.TempDir()
-	// A legacy per-entity person record: no pack wrapper, so DetectLayout reads
-	// the people family as legacy.
-	legacy := filepath.Join(dataDir, "people", "so", "some-author.json")
-	if err := os.MkdirAll(filepath.Dir(legacy), 0o755); err != nil {
-		t.Fatal(err)
-	}
-	body := `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}` + "\n"
-	if err := os.WriteFile(legacy, []byte(body), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	// One file-per-entity person record is enough: layout is detected per family
+	// from the shape of a file under its root.
+	seeded := testpack.SeedLegacyPerson(t, dataDir, "some-author", "Some Author")
 
 	books := `[{"asin":"B0LEGACY01","title_short":"Legacy Book","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","seconds":600}]`
 	_, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
@@ -113,15 +106,56 @@ func TestImportRefusesLegacyLayout(t *testing.T) {
 	if !errors.Is(err, pack.ErrLegacyLayout) {
 		t.Errorf("error = %v, want it to wrap pack.ErrLegacyLayout", err)
 	}
-	if !strings.Contains(err.Error(), "data/people") {
+	if !strings.Contains(err.Error(), pack.FamilyPeople.Root()) {
 		t.Errorf("error = %v, want it to name the family that is still legacy", err)
 	}
 
 	// Refused safely: the run wrote nothing at all.
-	if got, rerr := os.ReadFile(legacy); rerr != nil || string(got) != body {
-		t.Errorf("the legacy tree was touched (err=%v): %s", rerr, got)
+	testpack.AssertUntouched(t, dataDir, "some-author", seeded)
+}
+
+// TestCreateNeverOverwritesAnUndecodableEntry is the guard against silent
+// recording loss. check.Load is best-effort: an entry it cannot decode is
+// reported as a problem but is ABSENT from the Catalog the planner seeds its
+// identity maps from, so the create branch believes the slug is free. A plain
+// upsert there replaces the whole composite entry - every recording with it -
+// and the run exits 0, because the replacement is itself valid.
+func TestCreateNeverOverwritesAnUndecodableEntry(t *testing.T) {
+	dataDir := t.TempDir()
+	const workAddress = "works/br/broken-book/work.json"
+	// "authors" is a string, not an array: valid JSON, valid pack, but the work
+	// does not decode into model.Work, so it never reaches the Catalog.
+	seedTree(t, dataDir, map[string]string{
+		"people/so/some-author.json": `{"id":"some-author","license":"CC0-1.0","name":"Some Author","sources":[{"type":"user"}]}`,
+		workAddress:                  `{"authors":"some-author","id":"broken-book","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Broken Book"}`,
+		"works/br/broken-book/recordings/a-reader-2019.json": `{"asin":[{"asin":"B0KEEPME01","region":"us"}],"id":"a-reader-2019","language":"en","license":"CC0-1.0","narrators":["a-reader"],"sources":[{"type":"user"}],"work":"broken-book"}`,
+	})
+	// The premise: the loader really does drop this work.
+	if cat := check.Load(dataDir).Catalog; cat != nil {
+		for _, w := range cat.Works {
+			if w.ID == "broken-book" {
+				t.Fatalf("fixture no longer defeats the loader; the work reached the Catalog")
+			}
+		}
 	}
-	if _, serr := os.Stat(filepath.Join(dataDir, "works")); !os.IsNotExist(serr) {
-		t.Errorf("the refused run created works/ (stat err = %v)", serr)
+
+	books := `[{"asin":"B0BROKEN01","title_short":"Broken Book","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","release_date":"2019-01-01","seconds":36000}]`
+	_, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
+	if err == nil {
+		t.Fatal("creating over an entry the loader dropped must fail, not overwrite it")
+	}
+	if !strings.Contains(err.Error(), "broken-book") || !strings.Contains(err.Error(), "works/0/0.json") {
+		t.Errorf("error = %v, want it to name the slug and the pack holding it", err)
+	}
+	// The recording the entry held is still there.
+	if recs := recSlugsOf(t, dataDir, "broken-book"); len(recs) != 1 || recs[0] != "a-reader-2019" {
+		t.Errorf("recordings = %v, want the seeded a-reader-2019 intact", recs)
+	}
+	var work struct {
+		Authors any `json:"authors"`
+	}
+	readEntity(t, dataDir, workAddress, &work)
+	if work.Authors != "some-author" {
+		t.Errorf("the undecodable work was rewritten: authors = %v", work.Authors)
 	}
 }

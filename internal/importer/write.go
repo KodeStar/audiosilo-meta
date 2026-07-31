@@ -1,7 +1,6 @@
 package importer
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 
@@ -27,41 +26,16 @@ import (
 // among them: the importer never touches the CC BY-SA sidecars.
 var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyPeople, pack.FamilySeries}
 
-// openStore opens dataDir's pack store and refuses a tree whose target families
-// are still file-per-entity. The migration is a flag day (PACK-SPEC.md), so a
-// legacy family is an error to report rather than a second write path to
-// maintain - and failing here, before anything is planned, means a refused run
-// has written nothing.
+// openStore opens dataDir for the families an import writes, refusing a tree
+// whose target families are still file-per-entity (pack.OpenFor owns that rule).
+// The clause it appends names who refused, since the wrapped error only says
+// what is wrong with the tree.
 func openStore(dataDir string) (*pack.Store, error) {
-	s, err := pack.Open(dataDir)
+	s, err := pack.OpenFor(dataDir, writeFamilies...)
 	if err != nil {
-		return nil, fmt.Errorf("open %s: %w", dataDir, err)
-	}
-	for _, f := range writeFamilies {
-		if s.Layout(f) == pack.LayoutLegacy {
-			return nil, fmt.Errorf("data/%s: %w; convert the tree to the pack layout before importing",
-				f.Root(), pack.ErrLegacyLayout)
-		}
+		return nil, fmt.Errorf("%w (metaimport writes the pack layout only)", err)
 	}
 	return s, nil
-}
-
-// decodeEntry decodes a raw entry into a mutable map, preserving numbers exactly
-// (json.Number). Exactness matters because an entry is read, edited in one
-// field, and written back whole: a float round-trip would reformat every number
-// the edit never touched, and a second identical run would stop being a
-// byte-level no-op.
-func decodeEntry(raw json.RawMessage) (map[string]any, error) {
-	dec := json.NewDecoder(bytes.NewReader(raw))
-	dec.UseNumber()
-	var m map[string]any
-	if err := dec.Decode(&m); err != nil {
-		return nil, err
-	}
-	if m == nil {
-		return nil, fmt.Errorf("entry is not a JSON object")
-	}
-	return m, nil
 }
 
 // putEntry marshals v and queues it as family f's entry for slug. It is a no-op
@@ -78,6 +52,49 @@ func (p *planner) putEntry(f pack.Family, slug string, v any) {
 	if err := p.store.Upsert(f, slug, data); err != nil {
 		p.fatal = fmt.Errorf("queue %s entry %q: %w", f.Root(), slug, err)
 	}
+}
+
+// putNewEntry queues a record the run is CREATING, refusing to write over an
+// entry that is already there.
+//
+// The guard is not belt-and-braces: the planner's identity maps come from
+// check.Load's Catalog, which is best-effort. An entry the loader could not
+// decode is reported as a problem but is ABSENT from the Catalog, so the planner
+// believes its slug is free and the create branch would replace the whole entry
+// - for a work, destroying every recording it held - while the run exited 0,
+// because what it wrote back is itself valid. The write layer is the only place
+// that can see what the loader dropped, so the check belongs here.
+func (p *planner) putNewEntry(f pack.Family, slug string, v any) {
+	if p.fatal != nil {
+		return
+	}
+	taken, err := p.store.Has(f, slug)
+	if err != nil {
+		p.fatal = fmt.Errorf("read %s entry %q: %w", f.Root(), slug, err)
+		return
+	}
+	if taken {
+		p.fatal = fmt.Errorf("%s: refusing to create over an entry that is already there; "+
+			"it is missing from the loaded catalogue, so run metacheck and fix what it reports",
+			p.entryLocation(f, slug))
+		return
+	}
+	p.putEntry(f, slug, v)
+}
+
+// entryLocation names an entry by the pack file holding it plus its key. It is
+// the MAINTAINER-facing address form: a message that asks someone to go and fix
+// a record has to say which file to open. Per-row warnings use the entity form
+// instead (see recLabel), because a contributor triaging a warning has no file
+// to open.
+func (p *planner) entryLocation(f pack.Family, slug string) string {
+	ref, err := p.store.Locate(f, slug)
+	if err != nil {
+		// Only reachable for a family the store may not touch, where naming the
+		// entry is still more use than naming nothing.
+		return fmt.Sprintf("%s entry %q", f.Root(), slug)
+	}
+	return fmt.Sprintf("%s: entry %q", ref.Path(), slug)
 }
 
 // entryRaw reads family f's entry for slug into a mutable map, queued-write
@@ -97,7 +114,7 @@ func (p *planner) entryRaw(f pack.Family, slug string) map[string]any {
 		p.fatal = fmt.Errorf("read %s entry %q: no such entry", f.Root(), slug)
 		return nil
 	}
-	m, err := decodeEntry(raw)
+	m, err := pack.DecodeEntry(raw)
 	if err != nil {
 		p.fatal = fmt.Errorf("parse %s entry %q: %w", f.Root(), slug, err)
 		return nil
@@ -126,12 +143,10 @@ func (p *planner) putRecording(workSlug, recSlug string, rec any) {
 	if entry == nil {
 		return
 	}
-	recs, _ := entry["recordings"].(map[string]any)
-	if recs == nil {
-		recs = map[string]any{}
-		entry["recordings"] = recs
+	if err := pack.SetRecording(entry, recSlug, rec); err != nil {
+		p.fatal = fmt.Errorf("works entry %q: %w", workSlug, err)
+		return
 	}
-	recs[recSlug] = rec
 	p.putWorkEntry(workSlug, entry)
 }
 
@@ -152,9 +167,12 @@ func (p *planner) recordingRaw(workSlug, recSlug string) (entry, rec map[string]
 	return entry, rec
 }
 
-// recLabel names a recording for a human-facing message. A pack path would be a
-// worse answer here than the identity: the pack a slug sits in can change on a
-// split, while the work/recording pair is what the message is actually about.
+// recLabel names a recording for a per-row WARNING. Warnings are read as a run
+// report, by someone triaging which books came out odd, so they name the entity
+// rather than a location: there is nothing to open, and the pack a slug sits in
+// changes on a split while the work/recording pair does not. Messages that ask
+// someone to go and fix a record use the pack-path form instead (see
+// entryLocation, and issueform's entryLocation for the intake side).
 func recLabel(workSlug, recSlug string) string {
 	return fmt.Sprintf("work %q recording %q", workSlug, recSlug)
 }
