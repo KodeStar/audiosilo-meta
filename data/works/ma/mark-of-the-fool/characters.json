@@ -1,0 +1,340 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Alex"
+      ],
+      "description": "An orphaned young man who supports his younger sister, Selina, while teaching himself magic. On his eighteenth birthday, he gains the means to pursue his acceptance at Generasi and hopes to build a new life there with her.",
+      "id": "alex-roth",
+      "name": "Alex Roth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alex Roth's younger sister and the person at the center of his plans for the future. She is preparing to leave Ulrich with him so that he can attend Generasi.",
+      "id": "selina",
+      "name": "Selina",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Theresa"
+      ],
+      "description": "Alex's longtime friend and a daughter of the family sheltering the Roth siblings. She is part of the Lu household when Alex finds it barred and its residents making urgent, unexplained preparations.",
+      "id": "theresa-lu",
+      "name": "Theresa Lu",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's three-headed Cerberus companion.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "The Recurring Enemy",
+        "recurring enemy entity"
+      ],
+      "description": "The returning power behind hostile dungeons and the monsters they produce. Its reappearance brings forth five marked heroes and drives the people of Tameland to flee or prepare for war.",
+      "id": "ravener",
+      "name": "Ravener",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A red-haired marked hero who reaches Alex's camp after the travelers defeat a silent, armored spider creature. He bears the scales mark associated with the Chosen.",
+      "id": "the-chosen",
+      "name": "The Chosen",
+      "reveal": {
+        "chapter": 7
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Chosen"
+      ],
+      "description": "After using divine magic to heal Brutus, this marked hero gives his name. He warns the group that silent spider creatures are emerging from an active dungeon in the cave nearby.",
+      "id": "cedric",
+      "name": "Cedric",
+      "reveal": {
+        "chapter": 8
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mummified figure found in the portal-filled depths of the cave sanctum. Its lantern-marked blue magic creates a refuge that the dungeon's spiders avoid.",
+      "id": "the-traveler",
+      "name": "The Traveler",
+      "reveal": {
+        "chapter": 14
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "unnamed hunter"
+      ],
+      "description": "One of five specialized assassin-creatures sent to find and kill the unknown person who took control of a dungeon core. Unlike ordinary dungeon monsters, the hunters can travel independently across great distances.",
+      "id": "raveners-hunter",
+      "name": "Ravener's Hunter",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Captain Fan-Dor"
+      ],
+      "description": "The Selicar captain of the Red Siren, which carries Alex's party from Port Mausar toward Generasi. He welcomes Selina aboard without charging her fare.",
+      "id": "fan-dor",
+      "name": "Fan-Dor",
+      "reveal": {
+        "chapter": 19
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A gaunt passenger aboard the Red Siren who eats with unusual intensity and watches Alex and Theresa as the ship departs for Generasi.",
+      "id": "thin-passenger",
+      "name": "Thin Passenger",
+      "reveal": {
+        "chapter": 21
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A passenger aboard the Red Siren whose attack on Alex reveals its nature. The creature feeds on mana and uses magic to disable the ship's night watch.",
+      "id": "mana-vampire",
+      "name": "Mana Vampire",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "The blue-skinned, horned registrar at the University of Generasi. He handles Alex's registration, housing, Theresa's auditor status, and Selina's enrollment in the junior school.",
+      "id": "hobb",
+      "name": "Hobb",
+      "reveal": {
+        "chapter": 27
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A university student who publicly ends her relationship with Derek after accusing him of copying their potion work and repeatedly betraying her trust.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Derek"
+      ],
+      "description": "Isolde's former partner. She publicly accuses him of infidelity, cheating at gambling, and copying her academic work before ending their relationship.",
+      "id": "derek-warren",
+      "name": "Derek Warren",
+      "reveal": {
+        "chapter": 28
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A goat-like professor who notices Alex considering COMB 1000 in the university library. He identifies himself as the course's teacher, giving Alex an early encounter with the person responsible for its survival-focused instruction.",
+      "id": "comb-1000-instructor",
+      "name": "The COMB 1000 Instructor",
+      "reveal": {
+        "chapter": 29
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Chancellor Baelin"
+      ],
+      "description": "The University of Generasi's chancellor and the goat-like professor Alex met in the library. His COMB 1000 course teaches survival through judgment, preparation, and any resource that works.",
+      "id": "baelin",
+      "name": "Baelin",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Jules"
+      ],
+      "description": "A potions professor who enforces academic discipline and laboratory safety. She tells Alex that first-years must establish their fundamentals before receiving access to advanced analysis equipment or personal projects.",
+      "id": "professor-jules",
+      "name": "Professor Jules",
+      "reveal": {
+        "chapter": 32
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's neighboring student and a fellow COMB 1000 enrollee. He travels with his eagle familiar, Najyah, and agrees to train with Alex before the course begins.",
+      "id": "khalik",
+      "name": "Khalik",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Khalik's large eagle familiar. Her mischievous nature is immediately apparent when she pretends to be dead in order to frighten Khalik and Alex.",
+      "id": "najyah",
+      "name": "Najyah",
+      "reveal": {
+        "chapter": 33
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Professor Kabbot-Xin"
+      ],
+      "description": "The elderly professor of Life Force Enhancement 1 and a practitioner of Tarim-Lung cultivation. He tests Theresa's affinity and begins opening her life-force channels under controlled conditions.",
+      "id": "kabbot-xin",
+      "name": "Kabbot-Xin",
+      "reveal": {
+        "chapter": 38
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A minotaur first-year assigned to the same COMB 1000 field-test group as Alex, Khalik, and Isolde. He carries a mace and uses body-strengthening magic and an illusory duplicate.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 40
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A flight-capable COMB 1000 candidate who reaches the escarpment during the Barrens test. Baelin criticizes him and another flying student for undermining their group and abandoning a teammate to danger.",
+      "id": "minervus",
+      "name": "Minervus",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Carey"
+      ],
+      "description": "A student from Tameland who asks Professor Jules about Generasi's research into the recurring dungeon threat. Her interest overlaps with Alex's private investigation.",
+      "id": "carey-london",
+      "name": "Carey London",
+      "reveal": {
+        "chapter": 47
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Val'Rok"
+      ],
+      "description": "Alex's mana-manipulation professor. He assigns glyph-box exercises and teaches precise control useful for maintained spells, magical items, potions, and golems.",
+      "id": "professor-val-rok",
+      "name": "Professor Val'Rok",
+      "reveal": {
+        "chapter": 49
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A COMB 1000 participant who joins the class exercise at the wild mana vents. Grimlock, an enormous shark-like beastfolk fighter, accompanies Nua-Oge as part of the expanded training group.",
+      "id": "nua-oge",
+      "name": "Nua-Oge",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "description": "Nua-Oge's enormous shark-like beastfolk companion, who joins the expanded COMB 1000 training group at the wild mana vents.",
+      "id": "grimlock",
+      "name": "Grimlock",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "description": "A participant who arrives at the wild mana vent exercise with Minervus and his five coordinated attendants.",
+      "id": "rain",
+      "name": "Rain",
+      "reveal": {
+        "chapter": 57
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Shale"
+      ],
+      "description": "The owner of a golem workshop. Val'Rok offers to provide Alex a reference to the workshop if Alex successfully challenges his mana-manipulation course.",
+      "id": "toraka-shale",
+      "name": "Toraka Shale",
+      "reveal": {
+        "chapter": 62
+      },
+      "role": "minor"
+    },
+    {
+      "aliases": [
+        "Ram"
+      ],
+      "description": "A force-magic professor with a right arm formed from black magical force. He teaches students that force spells can be countered or broken and must be practiced with that vulnerability in mind.",
+      "id": "professor-ram",
+      "name": "Professor Ram",
+      "reveal": {
+        "chapter": 64
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Khalik",
+        "Prince Khalik",
+        "Raptor of Tekizash",
+        "Lord of the Sapphire Sea"
+      ],
+      "description": "The full identity of Alex's friend Khalik, revealed privately as Tekizash's second prince. Alex promises to keep the royal connection confidential.",
+      "id": "khalik-bermeder",
+      "name": "Khalik Bermeder",
+      "reveal": {
+        "chapter": 70
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:uk:B0B6JQCDLL",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool"
+}
