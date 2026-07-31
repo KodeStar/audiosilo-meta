@@ -32,8 +32,7 @@ func (p PackRef) String() string { return p.Path() }
 // directory's bound equals its first pack's bound; Tree itself asserts none of
 // that, so pkg/check can report a tree that violates it.
 type Tree struct {
-	family Family
-	packs  []PackRef
+	packs []PackRef
 }
 
 // NewTree builds a tree from a pack listing. The listing is copied and sorted
@@ -42,11 +41,8 @@ func NewTree(f Family, packs []PackRef) *Tree {
 	cp := make([]PackRef, len(packs))
 	copy(cp, packs)
 	sort.SliceStable(cp, func(i, j int) bool { return cp[i].Bound < cp[j].Bound })
-	return &Tree{family: f, packs: cp}
+	return &Tree{packs: cp}
 }
-
-// Family returns the tree's family.
-func (t *Tree) Family() Family { return t.family }
 
 // Packs returns the packs in bound order.
 func (t *Tree) Packs() []PackRef { return t.packs }
@@ -163,12 +159,21 @@ func ReadTree(dataDir string, f Family) (*Tree, error) {
 	return NewTree(f, packs), nil
 }
 
+// jsonExt is the ONLY extension a pack file may carry. The match is
+// case-sensitive on purpose: on a case-sensitive filesystem, accepting "X.JSON"
+// would list a pack with bound "X" whose every subsequent read and write then
+// targeted an "X.json" that does not exist.
+const jsonExt = ".json"
+
+// isJSONFile reports whether name is a JSON file by this project's spelling.
+func isJSONFile(name string) bool { return strings.HasSuffix(name, jsonExt) }
+
 // packBound strips a pack file name's .json extension.
 func packBound(name string) (string, bool) {
-	if !strings.EqualFold(filepath.Ext(name), ".json") {
+	if !isJSONFile(name) {
 		return "", false
 	}
-	base := name[:len(name)-len(".json")]
+	base := name[:len(name)-len(jsonExt)]
 	if base == "" {
 		return "", false
 	}
@@ -188,7 +193,7 @@ func firstJSONUnder(dataDir, root string) (string, error) {
 			}
 			return err
 		}
-		if d.IsDir() || !strings.EqualFold(filepath.Ext(p), ".json") {
+		if d.IsDir() || !isJSONFile(p) {
 			return nil
 		}
 		found = p
@@ -212,7 +217,7 @@ func jsonFilesUnder(dataDir, root string) ([]string, error) {
 			}
 			return err
 		}
-		if d.IsDir() || !strings.EqualFold(filepath.Ext(p), ".json") {
+		if d.IsDir() || !isJSONFile(p) {
 			return nil
 		}
 		rel, rerr := filepath.Rel(dataDir, p)
