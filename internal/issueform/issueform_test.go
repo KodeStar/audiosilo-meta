@@ -284,6 +284,12 @@ func TestAddWorkDuplicateASIN(t *testing.T) {
 	if res.Status != StatusDuplicate {
 		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
 	}
+	// The message locates the incumbent: the pack a maintainer opens, plus the
+	// entry and recording keys to find inside it.
+	want := worksPack + ": entry existing-work: recording john-smith-2020"
+	if !anyContains(res.Messages, want) {
+		t.Errorf("messages must locate the duplicate as %q: %v", want, res.Messages)
+	}
 }
 
 func TestAddWorkDuplicateSlug(t *testing.T) {
