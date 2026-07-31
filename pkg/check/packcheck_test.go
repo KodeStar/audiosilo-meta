@@ -517,12 +517,16 @@ func TestPackRuleViolations(t *testing.T) {
 			},
 			want: `work "book-other" must equal the entry key "book-one"`,
 		},
+		// The next two are the works-community wrapper schema's own rules
+		// (minProperties, additionalProperties), reached because the walker
+		// validates an entry THROUGH its family wrapper rather than through a
+		// hand-written Go equivalent.
 		{
 			name: "community entry holds neither sidecar",
 			mutate: func(f map[string]string) {
 				f["works-community/0/0.json"] = packOf(map[string]string{"book-one": `{}`})
 			},
-			want: "entry holds neither characters nor recaps",
+			want: "works-community/0/0.json: entry book-one: (root): minProperties: got 0, want 1",
 		},
 		{
 			name: "community entry holds an unknown member",
@@ -531,7 +535,7 @@ func TestPackRuleViolations(t *testing.T) {
 					"book-one": `{"notes":{},"recaps":` + validRecaps("book-one") + `}`,
 				})
 			},
-			want: `unknown member "notes"`,
+			want: "additional properties 'notes' not allowed",
 		},
 		// --- license lock (schema-enforced, reported on the pack path) ------
 		{

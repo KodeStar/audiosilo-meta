@@ -161,9 +161,6 @@ func (l *loader) checkPackBounds(def pack.FamilyDef, tree *pack.Tree) {
 			continue
 		}
 		withDir++
-		if !model.ValidSlug(ref.Dir) {
-			l.add(path.Join(root, ref.Dir), "directory name %q is not a valid slug bound", ref.Dir)
-		}
 	}
 	if withDir > 0 && flat > 0 {
 		l.add(root, "family mixes packs directly under its root (%d) with packs in directories (%d): it is either flat or one level deep, never both", flat, withDir)
@@ -200,6 +197,11 @@ func (l *loader) checkPackBounds(def pack.FamilyDef, tree *pack.Tree) {
 		if len(dp) == 0 {
 			continue
 		}
+		// Once per directory, not once per pack in it: a badly named directory
+		// is one fact, however many packs happen to sit under it.
+		if !model.ValidSlug(d) {
+			l.add(path.Join(root, d), "directory name %q is not a valid slug bound", d)
+		}
 		if dp[0].Bound != d {
 			l.add(path.Join(root, d), "directory bound %q must equal its first pack's bound %q", d, dp[0].Bound)
 		}
@@ -218,27 +220,26 @@ func (l *loader) checkPackBounds(def pack.FamilyDef, tree *pack.Tree) {
 	}
 }
 
-// readPackEntry validates one entry and folds it into the catalog.
+// readPackEntry validates one entry and folds it into the catalog. The entry
+// key is validated inside each reader, through the family wrapper's own
+// propertyNames rule.
 func (l *loader) readPackEntry(def pack.FamilyDef, packPath, slug string, raw json.RawMessage) []recordWithPath {
-	if !model.ValidSlug(slug) {
-		l.add(entryPath(packPath, slug), "entry key %q is not a valid slug", slug)
-	}
 	switch def.Family {
 	case pack.FamilyWorks:
-		return l.readWorkEntry(packPath, slug, raw)
+		return l.readWorkEntry(def.Family, packPath, slug, raw)
 	case pack.FamilyWorksCommunity:
-		l.readCommunityEntry(packPath, slug, raw)
+		l.readCommunityEntry(def.Family, packPath, slug, raw)
 	case pack.FamilyPeople:
-		l.readPersonEntry(packPath, slug, raw)
+		l.readPersonEntry(def.Family, packPath, slug, raw)
 	case pack.FamilySeries:
-		l.readSeriesEntry(packPath, slug, raw)
+		l.readSeriesEntry(def.Family, packPath, slug, raw)
 	}
 	return nil
 }
 
-// instance parses an entry (or one of its members) into the shape the schema
-// validator consumes. ok is false when it is not JSON at all, which is only
-// reachable for a member: pack.Parse already proved the entry itself parses.
+// instance parses an entry into the shape the schema validator consumes. ok is
+// false when it is not JSON at all, which pack.Parse has already ruled out for
+// an entry read from a pack file.
 func (l *loader) instance(reportPath string, raw json.RawMessage) (any, bool) {
 	inst, err := jsonschema.UnmarshalJSON(bytes.NewReader(raw))
 	if err != nil {
@@ -248,46 +249,78 @@ func (l *loader) instance(reportPath string, raw json.RawMessage) (any, bool) {
 	return inst, true
 }
 
-// readWorkEntry reads a works-family composite: a work's own fields plus its
-// recordings keyed by recording slug.
-func (l *loader) readWorkEntry(packPath, slug string, raw json.RawMessage) []recordWithPath {
+// validateEntry checks one entry, and its key, against the family wrapper's own
+// declaration of what an entry is. route re-points a violation that landed
+// inside a named sub-value (a nested recording, a sidecar member) at that
+// sub-value, so a problem names the smallest thing that is wrong.
+//
+// It reports whether the entry is schema-clean, which is what makes a later Go
+// decode failure meaningful: a value the schema already rejected explains
+// itself, but one it accepted and Go cannot represent would otherwise vanish.
+func (l *loader) validateEntry(family pack.Family, packPath, slug string, raw json.RawMessage,
+	route func(violation) (string, violation),
+) bool {
 	ep := entryPath(packPath, slug)
+	clean := true
+	for _, v := range l.schemas.keyViolations(family, slug) {
+		l.add(ep, "entry key %q is not a valid slug: %s", slug, v.Msg)
+		clean = false
+	}
 	inst, ok := l.instance(ep, raw)
 	if !ok {
-		return nil
+		return false
 	}
-	// The work schema carries the whole composite - it defines "recordings" and
-	// $refs the recording schema - so one validation covers both layers. A
-	// violation that landed inside the recordings map is re-reported against
-	// the recording it belongs to, so its path stays precise.
-	for _, v := range l.schemas.violations(model.KindWork, inst) {
-		p, msg := routeRecordingViolation(packPath, slug, v)
-		l.add(p, "%s", msg)
+	for _, v := range l.schemas.entryViolations(family, inst) {
+		clean = false
+		p, rebased := ep, v
+		if route != nil {
+			p, rebased = route(v)
+		}
+		l.add(p, "%s", rebased.String())
 	}
+	return clean
+}
 
-	e, ok := decodeWorkEntry(raw)
-	if !ok {
+// readWorkEntry reads a works-family composite: a work's own fields plus its
+// recordings keyed by recording slug.
+func (l *loader) readWorkEntry(family pack.Family, packPath, slug string, raw json.RawMessage) []recordWithPath {
+	ep := entryPath(packPath, slug)
+	// The works wrapper says an entry is a work, and the work schema defines
+	// "recordings" and $refs the recording schema, so one validation covers both
+	// layers; a violation inside the recordings map is re-reported against the
+	// recording it belongs to.
+	clean := l.validateEntry(family, packPath, slug, raw, func(v violation) (string, violation) {
+		if rec, inner, ok := rebaseInMap(v, "recordings"); ok {
+			return recPath(packPath, slug, rec), inner
+		}
+		return ep, v
+	})
+
+	e, err := decodeWorkEntry(raw)
+	if err != nil {
+		l.reportUndecodable(ep, clean, err)
 		return nil
 	}
-	w := e.Compose()
+	w := e.entry.Compose()
 	if w.ID != slug {
 		l.add(ep, "id %q does not match its entry key %q", w.ID, slug)
 	}
 	l.cat.Works = append(l.cat.Works, w)
 	l.idx.work[w] = ep
 
-	recSlugs := make([]string, 0, len(e.Recordings))
-	for k := range e.Recordings {
+	for _, rs := range e.badRecordings {
+		l.reportUndecodable(recPath(packPath, slug, rs.slug), clean, rs.err)
+	}
+
+	recSlugs := make([]string, 0, len(e.entry.Recordings))
+	for k := range e.entry.Recordings {
 		recSlugs = append(recSlugs, k)
 	}
 	sort.Strings(recSlugs)
 
 	out := make([]recordWithPath, 0, len(recSlugs))
 	for _, rs := range recSlugs {
-		r := e.Recordings[rs]
-		if r == nil {
-			continue
-		}
+		r := e.entry.Recordings[rs]
 		rp := recPath(packPath, slug, rs)
 		if r.ID != rs {
 			l.add(rp, "id %q does not match its recordings map key %q", r.ID, rs)
@@ -302,68 +335,117 @@ func (l *loader) readWorkEntry(packPath, slug string, raw json.RawMessage) []rec
 	return out
 }
 
-// decodeWorkEntry reads a composite one part at a time rather than through
-// pack.WorkEntry's own all-or-nothing UnmarshalJSON, so a recording whose type
-// the schema already rejected is dropped on its own instead of taking its work
-// (and everything that references it) out of the catalog with it.
-func decodeWorkEntry(raw json.RawMessage) (pack.WorkEntry, bool) {
-	var w model.Work
-	if json.Unmarshal(raw, &w) != nil {
-		return pack.WorkEntry{}, false
+// reportUndecodable reports a record the schema accepted but Go cannot
+// represent - "runtime_min": 1e3 is a valid JSON-Schema integer and not an int.
+// Skipping it silently would drop it from the catalog and the artifact with the
+// gate still green, so it is a problem, always. When the schema already
+// rejected the record the decode failure is a consequence of that and adds
+// nothing, so it is left to the schema message.
+func (l *loader) reportUndecodable(reportPath string, schemaClean bool, err error) {
+	if !schemaClean {
+		return
 	}
-	e := pack.WorkEntry{Work: &w}
-	var aux struct {
-		Recordings map[string]json.RawMessage `json:"recordings"`
-	}
-	if json.Unmarshal(raw, &aux) != nil || len(aux.Recordings) == 0 {
-		return e, true
-	}
-	e.Recordings = make(map[string]*model.Recording, len(aux.Recordings))
-	for slug, rr := range aux.Recordings {
-		var r model.Recording
-		if json.Unmarshal(rr, &r) != nil {
-			continue
-		}
-		e.Recordings[slug] = &r
-	}
-	return e, true
+	l.add(reportPath, "passes its schema but cannot be decoded into the model, so it would be silently lost: %s",
+		collapse(err.Error()))
 }
 
-// routeRecordingViolation re-points a composite violation that landed inside
-// the recordings map at the recording itself, and rebases its instance location
-// so the message reads relative to that recording.
-func routeRecordingViolation(packPath, slug string, v violation) (reportPath, msg string) {
-	const prefix = "/recordings/"
-	if !strings.HasPrefix(v.Loc, prefix) {
-		return entryPath(packPath, slug), v.String()
+// decodedWork is a composite decoded one part at a time.
+type decodedWork struct {
+	entry pack.WorkEntry
+	// badRecordings holds the recordings that would not decode. They are kept
+	// out of the catalog but never dropped silently - one unrepresentable
+	// recording must not take its work, or everything referencing that work,
+	// down with it.
+	badRecordings []badRecording
+}
+
+type badRecording struct {
+	slug string
+	err  error
+}
+
+// decodeWorkEntry reads a composite in a single pass: the work's own fields
+// through model.Work, the recordings left raw so each can be decoded (and
+// failed) on its own. pack.WorkEntry is a plain struct with no JSON methods, so
+// the composite's shape is spelled out here, once.
+func decodeWorkEntry(raw json.RawMessage) (decodedWork, error) {
+	var doc struct {
+		model.Work
+		Recordings map[string]json.RawMessage `json:"recordings"`
 	}
-	recSlug, tail, _ := strings.Cut(strings.TrimPrefix(v.Loc, prefix), "/")
-	inner := violation{Loc: "(root)", Msg: v.Msg}
+	if err := json.Unmarshal(raw, &doc); err != nil {
+		return decodedWork{}, err
+	}
+	work := doc.Work
+	out := decodedWork{entry: pack.WorkEntry{Work: &work}}
+	if len(doc.Recordings) == 0 {
+		return out, nil
+	}
+	out.entry.Recordings = make(map[string]*model.Recording, len(doc.Recordings))
+	slugs := make([]string, 0, len(doc.Recordings))
+	for slug := range doc.Recordings {
+		slugs = append(slugs, slug)
+	}
+	sort.Strings(slugs)
+	for _, slug := range slugs {
+		var r model.Recording
+		if err := json.Unmarshal(doc.Recordings[slug], &r); err != nil {
+			out.badRecordings = append(out.badRecordings, badRecording{slug: slug, err: err})
+			continue
+		}
+		out.entry.Recordings[slug] = &r
+	}
+	return out, nil
+}
+
+// rebaseInMap re-points a violation that landed inside a named map at the map's
+// member, returning that member's key and the violation rebased onto it.
+func rebaseInMap(v violation, member string) (key string, inner violation, ok bool) {
+	rest, ok := v.rebase("/" + member)
+	if !ok || rest.Loc == "" {
+		return "", v, false
+	}
+	key, tail, _ := strings.Cut(strings.TrimPrefix(rest.Loc, "/"), "/")
+	inner = violation{Msg: v.Msg}
 	if tail != "" {
 		inner.Loc = "/" + tail
 	}
-	return recPath(packPath, slug, recSlug), inner.String()
+	return unescapePointerToken(key), inner, true
 }
 
-// communityMembers are the only members a works-community entry may hold. Both
-// are optional; an entry with neither is not an entry.
+// unescapePointerToken decodes RFC 6901's escapes. A slug never needs them, but
+// an invalid key that does must still be named as it is written.
+func unescapePointerToken(tok string) string {
+	tok = strings.ReplaceAll(tok, "~1", "/")
+	return strings.ReplaceAll(tok, "~0", "~")
+}
+
+// communityMembers are the members a works-community entry may hold. The
+// wrapper schema is what REJECTS anything else (and an entry holding neither);
+// this map only says how to fold an accepted member into the catalog.
 var communityMembers = map[string]model.Kind{
 	"characters": model.KindCharacters,
 	"recaps":     model.KindRecaps,
 }
 
 // readCommunityEntry reads a works-community entry: the CC BY-SA sidecars for
-// one work, keyed by that work's slug. Each member is validated against its own
-// schema, which is where the share-alike license lock lives.
-func (l *loader) readCommunityEntry(packPath, slug string, raw json.RawMessage) {
+// one work, keyed by that work's slug. The wrapper's entry schema carries both
+// members, so one validation covers the member set, the "at least one" rule and
+// each sidecar's own schema - including the share-alike license lock.
+func (l *loader) readCommunityEntry(family pack.Family, packPath, slug string, raw json.RawMessage) {
 	ep := entryPath(packPath, slug)
+	clean := l.validateEntry(family, packPath, slug, raw, func(v violation) (string, violation) {
+		for name := range communityMembers {
+			if inner, ok := v.rebase("/" + name); ok {
+				return memberPath(packPath, slug, name), inner
+			}
+		}
+		return ep, v
+	})
+
 	var members map[string]json.RawMessage
 	if err := json.Unmarshal(raw, &members); err != nil {
-		l.add(ep, "invalid entry: %s", collapse(err.Error()))
-		return
-	}
-	if len(members) == 0 {
-		l.add(ep, "entry holds neither characters nor recaps")
+		l.reportUndecodable(ep, clean, err)
 		return
 	}
 	names := make([]string, 0, len(members))
@@ -375,21 +457,14 @@ func (l *loader) readCommunityEntry(packPath, slug string, raw json.RawMessage) 
 	for _, name := range names {
 		kind, known := communityMembers[name]
 		if !known {
-			l.add(ep, "unknown member %q (a works-community entry holds only characters and recaps)", name)
-			continue
+			continue // the wrapper schema already rejected it
 		}
 		mp := memberPath(packPath, slug, name)
-		inst, ok := l.instance(mp, members[name])
-		if !ok {
-			continue
-		}
-		for _, m := range l.schemas.validate(kind, inst) {
-			l.add(mp, "%s", m)
-		}
 		switch kind {
 		case model.KindCharacters:
 			var c model.Characters
-			if json.Unmarshal(members[name], &c) != nil {
+			if err := json.Unmarshal(members[name], &c); err != nil {
+				l.reportUndecodable(mp, clean, err)
 				continue
 			}
 			if c.Work != slug {
@@ -399,7 +474,8 @@ func (l *loader) readCommunityEntry(packPath, slug string, raw json.RawMessage) 
 			l.idx.characters[&c] = mp
 		case model.KindRecaps:
 			var rc model.Recaps
-			if json.Unmarshal(members[name], &rc) != nil {
+			if err := json.Unmarshal(members[name], &rc); err != nil {
+				l.reportUndecodable(mp, clean, err)
 				continue
 			}
 			if rc.Work != slug {
@@ -411,17 +487,12 @@ func (l *loader) readCommunityEntry(packPath, slug string, raw json.RawMessage) 
 	}
 }
 
-func (l *loader) readPersonEntry(packPath, slug string, raw json.RawMessage) {
+func (l *loader) readPersonEntry(family pack.Family, packPath, slug string, raw json.RawMessage) {
 	ep := entryPath(packPath, slug)
-	inst, ok := l.instance(ep, raw)
-	if !ok {
-		return
-	}
-	for _, m := range l.schemas.validate(model.KindPerson, inst) {
-		l.add(ep, "%s", m)
-	}
+	clean := l.validateEntry(family, packPath, slug, raw, nil)
 	var p model.Person
-	if json.Unmarshal(raw, &p) != nil {
+	if err := json.Unmarshal(raw, &p); err != nil {
+		l.reportUndecodable(ep, clean, err)
 		return
 	}
 	if p.ID != slug {
@@ -431,17 +502,12 @@ func (l *loader) readPersonEntry(packPath, slug string, raw json.RawMessage) {
 	l.idx.person[&p] = ep
 }
 
-func (l *loader) readSeriesEntry(packPath, slug string, raw json.RawMessage) {
+func (l *loader) readSeriesEntry(family pack.Family, packPath, slug string, raw json.RawMessage) {
 	ep := entryPath(packPath, slug)
-	inst, ok := l.instance(ep, raw)
-	if !ok {
-		return
-	}
-	for _, m := range l.schemas.validate(model.KindSeries, inst) {
-		l.add(ep, "%s", m)
-	}
+	clean := l.validateEntry(family, packPath, slug, raw, nil)
 	var s model.Series
-	if json.Unmarshal(raw, &s) != nil {
+	if err := json.Unmarshal(raw, &s); err != nil {
+		l.reportUndecodable(ep, clean, err)
 		return
 	}
 	if s.ID != slug {

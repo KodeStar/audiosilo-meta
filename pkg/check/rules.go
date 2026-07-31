@@ -1,6 +1,7 @@
 package check
 
 import (
+	"sort"
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/model"
@@ -58,6 +59,48 @@ func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []
 			add(idx.recaps[rc], "parent work %q does not exist", rc.Work)
 		}
 	}
+}
+
+// checkSidecarUniqueness enforces that a work has at most ONE characters
+// sidecar and at most one recaps sidecar.
+//
+// Nothing about the file layout guarantees it during the dual-layout window: a
+// work whose sidecars were packed into works-community while its legacy
+// works/<shard>/<slug>/characters.json still exists loads both copies, and the
+// two walkers each think they are the only source. Without this rule the pair
+// reaches metabuild, which fails on a raw UNIQUE constraint naming no file.
+func checkSidecarUniqueness(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	// Reported in path order rather than load order, so which of the two copies
+	// is named as the duplicate does not depend on which walker ran first.
+	type sidecar struct{ work, path string }
+	report := func(kind string, items []sidecar) {
+		sort.Slice(items, func(i, j int) bool {
+			if items[i].work != items[j].work {
+				return items[i].work < items[j].work
+			}
+			return items[i].path < items[j].path
+		})
+		seen := map[string]string{}
+		for _, it := range items {
+			if prev, dup := seen[it.work]; dup {
+				add(it.path, "work %q already has a %s sidecar in %s: a work may have only one", it.work, kind, prev)
+				continue
+			}
+			seen[it.work] = it.path
+		}
+	}
+
+	chars := make([]sidecar, 0, len(cat.Characters))
+	for _, c := range cat.Characters {
+		chars = append(chars, sidecar{work: c.Work, path: idx.characters[c]})
+	}
+	report("characters", chars)
+
+	recaps := make([]sidecar, 0, len(cat.Recaps))
+	for _, rc := range cat.Recaps {
+		recaps = append(recaps, sidecar{work: rc.Work, path: idx.recaps[rc]})
+	}
+	report("recaps", recaps)
 }
 
 // checkCharacters enforces that character ids are unique within each per-work

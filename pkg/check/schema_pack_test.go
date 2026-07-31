@@ -9,9 +9,12 @@ import (
 	"github.com/santhosh-tekuri/jsonschema/v6"
 )
 
-// compileAll compiles every embedded schema file, including the pack wrappers
-// that compileSchemas does not yet carry. It is the guard that a new or edited
-// schema file is still a valid, resolvable document.
+// compileAll compiles every embedded schema file on its own, which is the guard
+// that a new or edited schema file is still a valid, resolvable document.
+// compileSchemas carries all of them too, so this differs from the real thing
+// only in reaching each schema by name; it must match it in every other way,
+// AssertFormat included, or these tests would prove something the tool does not
+// do.
 func compileAll(t *testing.T) map[string]*jsonschema.Schema {
 	t.Helper()
 	ents, err := meta.SchemaFS.ReadDir("schema")
@@ -19,6 +22,7 @@ func compileAll(t *testing.T) map[string]*jsonschema.Schema {
 		t.Fatal(err)
 	}
 	c := jsonschema.NewCompiler()
+	c.AssertFormat()
 	var names []string
 	for _, e := range ents {
 		if !strings.HasSuffix(e.Name(), ".json") {
@@ -114,6 +118,13 @@ func TestAddedAtField(t *testing.T) {
 		"2026-07-31T",                // truncated
 		"yesterday",                  // junk
 		"2026-07-12T18:23:45+01:00Z", // two offsets
+		// The pattern says the SHAPE; only the asserted "format" says the
+		// value is a real point in time. Each of these matches the regex.
+		"2026-02-30",           // February has no 30th
+		"2026-13-01",           // no 13th month
+		"2026-00-10",           // no zeroth month
+		"2025-02-29",           // 2025 is not a leap year
+		"2026-07-12T25:61:61Z", // no such time of day
 	}
 	for name, valid := range map[string]string{
 		"work.schema.json":      validWork,

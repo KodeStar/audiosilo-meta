@@ -47,66 +47,92 @@ func (l *loader) loadLegacy(dir string, rels []string) []recordWithPath {
 			l.add(rel, "invalid JSON: %s", collapse(err.Error()))
 			continue
 		}
-		for _, m := range l.schemas.validate(loc.Kind, inst) {
+		msgs := l.schemas.validate(loc.Kind, inst)
+		for _, m := range msgs {
 			l.add(rel, "%s", m)
 		}
+		// A record the schema rejected explains itself; only one it ACCEPTED and
+		// Go cannot represent needs the decode failure reported, or it would
+		// leave the catalog silently. See loader.reportUndecodable.
+		clean := len(msgs) == 0
 
 		checkStructure(rel, loc, raw, l.add)
 
 		switch loc.Kind {
 		case model.KindWork:
 			var w model.Work
-			if json.Unmarshal(raw, &w) == nil {
-				l.cat.Works = append(l.cat.Works, &w)
-				l.idx.work[&w] = rel
+			if err := json.Unmarshal(raw, &w); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			l.cat.Works = append(l.cat.Works, &w)
+			l.idx.work[&w] = rel
 		case model.KindRecording:
 			var r model.Recording
-			if json.Unmarshal(raw, &r) == nil {
-				pendingRecs = append(pendingRecs, recordWithPath{rec: &r, workSlug: loc.WorkSlug, path: rel})
-				l.idx.rec[&r] = rel
+			if err := json.Unmarshal(raw, &r); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			pendingRecs = append(pendingRecs, recordWithPath{rec: &r, workSlug: loc.WorkSlug, path: rel})
+			l.idx.rec[&r] = rel
 		case model.KindPerson:
 			var p model.Person
-			if json.Unmarshal(raw, &p) == nil {
-				l.cat.People = append(l.cat.People, &p)
-				l.idx.person[&p] = rel
+			if err := json.Unmarshal(raw, &p); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			l.cat.People = append(l.cat.People, &p)
+			l.idx.person[&p] = rel
 		case model.KindSeries:
 			var s model.Series
-			if json.Unmarshal(raw, &s) == nil {
-				l.cat.Series = append(l.cat.Series, &s)
-				l.idx.series[&s] = rel
+			if err := json.Unmarshal(raw, &s); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			l.cat.Series = append(l.cat.Series, &s)
+			l.idx.series[&s] = rel
 		case model.KindCharacters:
 			var c model.Characters
-			if json.Unmarshal(raw, &c) == nil {
-				l.cat.Characters = append(l.cat.Characters, &c)
-				l.idx.characters[&c] = rel
+			if err := json.Unmarshal(raw, &c); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			l.cat.Characters = append(l.cat.Characters, &c)
+			l.idx.characters[&c] = rel
 		case model.KindRecaps:
 			var rc model.Recaps
-			if json.Unmarshal(raw, &rc) == nil {
-				l.cat.Recaps = append(l.cat.Recaps, &rc)
-				l.idx.recaps[&rc] = rel
+			if err := json.Unmarshal(raw, &rc); err != nil {
+				l.reportUndecodable(rel, clean, err)
+				continue
 			}
+			l.cat.Recaps = append(l.cat.Recaps, &rc)
+			l.idx.recaps[&rc] = rel
 		}
 	}
 
 	return pendingRecs
 }
 
-// checkStructure verifies id == slug and shard == first-two-chars, using the raw
-// JSON so it works even when the typed struct would zero a bad field. The pack
-// layout's replacement is checkPackKeys, which agrees an entry key with its
-// entity id instead of a path with a filename.
+// checkStructure verifies id == slug, shard == first-two-chars, and that a work
+// file carries no pack-only field, using the raw JSON so it works even when the
+// typed struct would zero a bad field. The pack layout's equivalent is the
+// key/id agreement the entry readers in packcheck.go perform, which agrees an
+// entry key with its entity id instead of a path with a filename.
 func checkStructure(rel string, loc model.Location, raw []byte, add addFunc) {
 	var head struct {
-		ID   string `json:"id"`
-		Work string `json:"work"`
+		ID   string          `json:"id"`
+		Work string          `json:"work"`
+		Recs json.RawMessage `json:"recordings"`
 	}
 	if err := json.Unmarshal(raw, &head); err != nil {
 		return // JSON errors already reported elsewhere.
+	}
+	// "recordings" exists on the work schema for the PACK composite's sake, so
+	// a per-file work now validates with one. It must not: model.Work drops the
+	// field (json:"-"), so the recordings would load as nothing at all and the
+	// gate would stay green while the data vanished.
+	if loc.Kind == model.KindWork && len(head.Recs) > 0 {
+		add(rel, `"recordings" is a pack-composite field: a per-file work record may not carry it (its recordings are files under recordings/)`)
 	}
 	// Per-work sidecars (characters/recaps) have no own id; they are identified
 	// by their parent work dir and its shard, and carry a work backref instead.
