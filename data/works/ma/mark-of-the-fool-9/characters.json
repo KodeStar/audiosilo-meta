@@ -1,0 +1,410 @@
+{
+  "characters": [
+    {
+      "aliases": [
+        "Alex",
+        "Alexander Roth",
+        "the Fool"
+      ],
+      "description": "Thameland's current Fool and a marked mage leading the search for Kelda's lost sanctum. At the Guild entrance, he senses the Traveler's power in its hidden gate.",
+      "id": "alex-roth",
+      "name": "Alex Roth",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "protagonist"
+    },
+    {
+      "description": "Alex's fiancee and an accomplished fighter who accompanies him in the search for Kelda's lost sanctum.",
+      "id": "theresa",
+      "name": "Theresa",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's Cerberus companion, traveling with Alex's party during the search for Kelda's sanctum. He is both a close companion and a formidable part of the group's fighting strength.",
+      "id": "brutus",
+      "name": "Brutus",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Kelda's former associate and Björgrund's father. His old Coin of Silent Friends and knowledge of a secret guild gain the party entry to its hidden meeting place.",
+      "id": "birger",
+      "name": "Birger",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Birger's rune-marked son and a capable firbolg warrior. He accompanies his father and Alex into the Rhinean Empire, taking an active part in the dangerous search rather than remaining sheltered.",
+      "id": "bjorgrund",
+      "name": "Björgrund",
+      "reveal": {
+        "chapter": 1
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "prior Fool"
+      ],
+      "description": "A deceased former Fool whose hidden refuge may hold research Alex needs. A secret guild claims its records can help narrow the search for her sanctum.",
+      "id": "kelda",
+      "name": "Kelda",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "the Traveler"
+      ],
+      "description": "The Traveler whose power is bound to Alex's remarkable teleportation. Her magic resonates with the guild's distant gates, allowing Alex to sense and interact with the concealed network.",
+      "id": "hannah-kim",
+      "name": "Hannah Kim",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The gem-eyed negotiating authority for the Guild of the Red Mouse. The leader offers Alex information about Kelda's sanctum in exchange for stealing selected books from Brightfire University.",
+      "id": "guild-of-the-red-mouse-leader",
+      "name": "Guild of the Red Mouse leader",
+      "reveal": {
+        "chapter": 2
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's sapient golem, regarded as family and chosen as emergency support for the planned Brightfire theft.",
+      "id": "claygon",
+      "name": "Claygon",
+      "reveal": {
+        "chapter": 3
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "The hidden church's leading attacker in the sanctified-soil ambush. He critically wounds Alex and proves far stronger than Theresa and Brutus in direct combat while the interdiction restricts the party's escape.",
+      "id": "first-apostle",
+      "name": "First Apostle",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A hidden-church commander supporting the ambush against Alex's party. The apostle helps sustain the attackers' advantage while sanctified soil interferes with Alex's Traveler power.",
+      "id": "third-apostle",
+      "name": "Third Apostle",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "First Apostle"
+      ],
+      "description": "The First Apostle and leader of the hidden church force hunting Alex. After a failed ambush, he continues the pursuit through the Fey Roads while resisting plans that could provoke a broader conflict with Generasi.",
+      "id": "gabrian",
+      "name": "Gabrian",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Third Apostle"
+      ],
+      "description": "The hidden church's Third Apostle and a commander serving under Gabrian. She supports the pursuit of Alex and considers indirect ways to threaten his position when an open strike on Generasi would be too dangerous.",
+      "id": "isis",
+      "name": "Isis",
+      "reveal": {
+        "chapter": 16
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Fae hunter"
+      ],
+      "description": "A predatory Fae guide allied with the hidden church. Mounted on a great moose, the hunter joins the ambush against Alex's party, selects Alex as personal quarry, and provides the attackers with access to Fae routes.",
+      "id": "the-stalker",
+      "name": "The Stalker",
+      "reveal": {
+        "chapter": 9
+      },
+      "role": "antagonist"
+    },
+    {
+      "aliases": [
+        "Saint Merzhin"
+      ],
+      "description": "Uldar's Saint and an ally Alex seeks after the ambush leaves his party close to death.",
+      "id": "merzhin",
+      "name": "Merzhin",
+      "reveal": {
+        "chapter": 10
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's younger sister and a developing fire mage. She remains with the protected household while Alex draws the hidden church away, and her safety is central to the family's defensive plans.",
+      "id": "selina",
+      "name": "Selina",
+      "reveal": {
+        "chapter": 12
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Theresa's Ravener-hunting ally. While Alex searches abroad, Grimloch joins Theresa and other companions in harvesting dungeon cores needed for the household's golem business and the wider defense effort.",
+      "id": "grimloch",
+      "name": "Grimloch",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Theresa's companions in Thameland. Kibus joins her, Grimloch, and Thundar in regularly harvesting dungeon cores needed for the household's golem business.",
+      "id": "kibus",
+      "name": "Kibus",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's cabal ally and the Lord of the Sapphire Sea. He joins the Generasi group discussing preparations against the Ravener and explains how growing recognition of the Traveler may strengthen her.",
+      "id": "khalik",
+      "name": "Khalik",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's cabal ally and one of Thameland's heroes. He joins Theresa and Grimloch in gathering dungeon cores while Alex draws the hidden church's attention away from Generasi.",
+      "id": "thundar",
+      "name": "Thundar",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Professor Jules"
+      ],
+      "description": "Alex's academic advocate and a research leader in Generasi. She helps arrange protection and continued schooling for his household, alerts the city's leadership, and treats the hidden church's pursuit as a serious public threat.",
+      "id": "professor-vernia-jules",
+      "name": "Professor Vernia Jules",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's summoning professor. Concerned for both him and his exceptional potential, she offers spirit guards for the household and help searching for the forces hunting him.",
+      "id": "professor-mangal",
+      "name": "Professor Mangal",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's golem-business partner. She supplies armed iron golems to defend his relocated household without charging for them, while also facing a growing shortage of the dungeon-core essence her workshop needs.",
+      "id": "taraka-shale",
+      "name": "Taraka Shale",
+      "reveal": {
+        "chapter": 17
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A Generasi councillor who warns Thameland's king that an organized faction may have infiltrated the realm's church and army. She withholds her evidence from officials who might be compromised and demands an internal investigation.",
+      "id": "councillor-kartika",
+      "name": "Councillor Kartika",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "King Athelstan"
+      ],
+      "description": "The king of Thameland. When warned that a secret faction may have infiltrated his church and army, he begins weighing an investigation despite having no proof yet and facing resistance from within his court.",
+      "id": "king-athelstan-mercier",
+      "name": "King Athelstan Mercier",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A senior Thameish priest serving King Athelstan. He questions the accepted account of the coordinated attack on Alex and recognizes that a silent deity can leave room for secret doctrinal factions to form.",
+      "id": "high-priest-tobias",
+      "name": "High Priest Tobias",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "King Athelstan's court wizard. When the court is warned of a faction within Thameland's church and army, Errol defends the official account of Rockmoot and rejects the claim of an internal conspiracy.",
+      "id": "court-wizard-errol",
+      "name": "Court Wizard Errol",
+      "reveal": {
+        "chapter": 18
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Thameland's dead god, whose original technical writings may supply what Kelda lacked. Alex plans to compare Uldar's design notes with the surviving sanctum research before risking any alteration to his mark.",
+      "id": "uldar",
+      "name": "Uldar",
+      "reveal": {
+        "chapter": 24
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A reasoning construct bound by protocols created by Uldar and the recurring enemy of Thameland. The return of a General triggers an urgent response, but it delays acting while it seeks confirmation of its creator's intent.",
+      "id": "the-ravener",
+      "name": "The Ravener",
+      "reveal": {
+        "chapter": 30
+      },
+      "role": "antagonist"
+    },
+    {
+      "description": "A formidable summoned spirit whom Alex contains while proposing an alliance for the coming battle and the eventual fight against the Ravener. Its answer remains uncertain when it first appears.",
+      "id": "war-spirit",
+      "name": "War Spirit",
+      "reveal": {
+        "chapter": 42
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "war spirit"
+      ],
+      "description": "Alex's war-spirit champion, fighting beside his summoned army with several of Uldar's holy weapons.",
+      "id": "unmaker",
+      "name": "Unmaker",
+      "reveal": {
+        "chapter": 54
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A mage working with Professor Vernia Jules on theories for ending the Ravener permanently. She remains in Generasi with Theresa's group, pursuing technical answers that cannot yet be tested directly.",
+      "id": "isolde",
+      "name": "Isolde",
+      "reveal": {
+        "chapter": 45
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Uldar's longstanding Fae associate, introduced when the god's hidden journal begins recounting their first meeting. At this point, his place in Uldar's history has only begun to emerge.",
+      "id": "aenflynn",
+      "name": "Aenflynn",
+      "reveal": {
+        "chapter": 63
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A hero commanding forces on the Ravener front as attacks become more organized and relentless. He bears the strain of leadership while treating Alex as a strategic peer when reinforcements arrive.",
+      "id": "cedric",
+      "name": "Cedric",
+      "reveal": {
+        "chapter": 66
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Hart"
+      ],
+      "description": "A hero who urges the marked group to claim their powers for their own purposes. He argues that Uldar's manipulation need not determine how they understand or use the abilities they now possess.",
+      "id": "hart-red-fletcher",
+      "name": "Hart Red Fletcher",
+      "reveal": {
+        "chapter": 72
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "One of Thameland's heroes and Thundar's partner. She joins the delegation that briefs King Athelstan on the hidden church, Uldar's death, and the danger now facing the realm.",
+      "id": "drestra",
+      "name": "Drestra",
+      "reveal": {
+        "chapter": 74
+      },
+      "role": "supporting"
+    },
+    {
+      "aliases": [
+        "Registrar Hob"
+      ],
+      "description": "Generasi's devil registrar, empowered to approve access to the university library's highest floors. He tests Alex's ninth-tier summoning, recognizes him as an archwizard, and challenges him to adjust to his new stature.",
+      "id": "hob",
+      "name": "Hob",
+      "reveal": {
+        "chapter": 82
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "A fighter allied with Alex's forces. She joins Claygon, Björgrund, Merzhin, and Hart in destroying a dungeon and killing eight petrifiers.",
+      "id": "asmodesta",
+      "name": "Asmodesta",
+      "reveal": {
+        "chapter": 89
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "An Unmaker summoned by Alex through Conjure Ultimate Ally. She reports that the fighting in Thameland is intensifying and that stronger enemies are appearing more often.",
+      "id": "asmoldester",
+      "name": "Asmoldester",
+      "reveal": {
+        "chapter": 91
+      },
+      "role": "supporting"
+    },
+    {
+      "description": "Alex's former force-magic professor, approached so they can address their earlier conflict over the concealed Fool mark. His demanding teaching helped Alex survive, though the two still differ over the value of hardship.",
+      "id": "professor-ram",
+      "name": "Professor Ram",
+      "reveal": {
+        "chapter": 92
+      },
+      "role": "supporting"
+    }
+  ],
+  "license": "CC-BY-SA-3.0",
+  "sources": [
+    {
+      "ref": "audible:us:B0FCYRLKRP",
+      "type": "community"
+    }
+  ],
+  "work": "mark-of-the-fool-9"
+}
