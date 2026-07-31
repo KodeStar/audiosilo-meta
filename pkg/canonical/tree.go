@@ -27,24 +27,31 @@ func jsonFiles(dir string) ([]string, error) {
 	return files, nil
 }
 
-// CheckTree returns the JSON files under dir that are not in canonical form.
-// A file that fails to parse is reported (so metafmt surfaces it too).
-func CheckTree(dir string) (nonCanonical []string, err error) {
+// CheckTree returns the JSON files under dir that are not in canonical form,
+// and separately the ones that do not parse at all. An unparseable file appears
+// in both: it is not canonical, and naming it invalid saves every caller a
+// second read to work out why. The split mirrors WriteTree's changed/failed.
+func CheckTree(dir string) (nonCanonical, invalid []string, err error) {
 	files, err := jsonFiles(dir)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	for _, f := range files {
 		raw, err := os.ReadFile(f)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 		ok, ferr := IsCanonical(raw)
-		if ferr != nil || !ok {
+		if ferr != nil {
+			nonCanonical = append(nonCanonical, f)
+			invalid = append(invalid, f)
+			continue
+		}
+		if !ok {
 			nonCanonical = append(nonCanonical, f)
 		}
 	}
-	return nonCanonical, nil
+	return nonCanonical, invalid, nil
 }
 
 // WriteTree rewrites every non-canonical JSON file under dir in place and

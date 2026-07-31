@@ -96,12 +96,15 @@ func TestCheckAndWriteTree(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	nonCanon, err := CheckTree(dir)
+	nonCanon, invalid, err := CheckTree(dir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(nonCanon) != 1 || nonCanon[0] != bad {
 		t.Errorf("CheckTree = %v, want [%s]", nonCanon, bad)
+	}
+	if len(invalid) != 0 {
+		t.Errorf("CheckTree invalid = %v, want none", invalid)
 	}
 
 	changed, failed, err := WriteTree(dir)
@@ -115,11 +118,31 @@ func TestCheckAndWriteTree(t *testing.T) {
 		t.Errorf("WriteTree changed = %v, want [%s]", changed, bad)
 	}
 
-	after, err := CheckTree(dir)
+	after, _, err := CheckTree(dir)
 	if err != nil {
 		t.Fatal(err)
 	}
 	if len(after) != 0 {
 		t.Errorf("tree still non-canonical after write: %v", after)
+	}
+}
+
+// An unparseable file is reported twice over: not canonical, and invalid. The
+// second list is what saves a caller re-reading the file to tell the two apart.
+func TestCheckTreeNamesInvalidFiles(t *testing.T) {
+	dir := t.TempDir()
+	broken := filepath.Join(dir, "broken.json")
+	if err := os.WriteFile(broken, []byte(`{"a":`), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	nonCanon, invalid, err := CheckTree(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(nonCanon) != 1 || nonCanon[0] != broken {
+		t.Errorf("CheckTree nonCanonical = %v, want [%s]", nonCanon, broken)
+	}
+	if len(invalid) != 1 || invalid[0] != broken {
+		t.Errorf("CheckTree invalid = %v, want [%s]", invalid, broken)
 	}
 }

@@ -2,8 +2,6 @@ package issueform
 
 import (
 	"encoding/json"
-	"os"
-	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
@@ -36,22 +34,18 @@ func TestGenreVocabulary(t *testing.T) {
 
 // workGenres reads the genres of a composed work record. ok is false when the
 // record carries no genres key at all.
-func workGenres(t *testing.T, dir, rel string) (genres []string, ok bool) {
+func workGenres(t *testing.T, dir, address string) (genres []string, ok bool) {
 	t.Helper()
-	data, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(rel)))
-	if err != nil {
-		t.Fatalf("read %s: %v", rel, err)
-	}
 	var doc map[string]json.RawMessage
-	if err := json.Unmarshal(data, &doc); err != nil {
-		t.Fatalf("parse %s: %v", rel, err)
+	if err := json.Unmarshal([]byte(readFile(t, dir, address)), &doc); err != nil {
+		t.Fatalf("parse %s: %v", address, err)
 	}
 	raw, present := doc["genres"]
 	if !present {
 		return nil, false
 	}
 	if err := json.Unmarshal(raw, &genres); err != nil {
-		t.Fatalf("parse %s genres: %v", rel, err)
+		t.Fatalf("parse %s genres: %v", address, err)
 	}
 	return genres, true
 }
@@ -114,8 +108,8 @@ func TestAddWorkGenresUnknownInvalid(t *testing.T) {
 		t.Errorf("message must name the bad value and the vocabulary: %v", res.Messages)
 	}
 	// Nothing was written for a rejected submission.
-	if _, err := os.Stat(filepath.Join(dir, "works", "ba", "bad-genre-book")); !os.IsNotExist(err) {
-		t.Errorf("a rejected submission must not write records (stat err = %v)", err)
+	if recordExists(t, dir, "works/ba/bad-genre-book/work.json") {
+		t.Error("a rejected submission must not write records")
 	}
 }
 

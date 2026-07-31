@@ -7,17 +7,15 @@
 package importer
 
 import (
-	"encoding/json"
 	"fmt"
 	"os"
-	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
 
-	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 var (
@@ -71,8 +69,8 @@ func cleanWorkTitle(title string) string {
 // recInfo remembers enough about a recording under a work to detect a
 // same-identity re-import (idempotency) versus a genuine slug collision, and to
 // merge a re-release ASIN into an existing recording rather than minting a
-// sibling work (see addRecording). Its file location is derived on demand from
-// the work + recording slugs (recordingPath), never stored.
+// sibling work (see addRecording). Its storage location is the work's composite
+// pack entry, reached on demand from the work + recording slugs, never stored.
 type recInfo struct {
 	narrators  map[string]bool
 	asins      map[string]bool
@@ -85,19 +83,6 @@ type recInfo struct {
 	// them apart is not worth it, so a disk incumbent never blocks a merge on
 	// abridged grounds. See abridgedConflict.
 	abridged *bool
-}
-
-// recordingPath returns a recording file's data-relative, slash-separated
-// location (works/<shard>/<work>/recordings/<rec>.json) from its work and
-// recording slugs.
-func recordingPath(workSlug, recSlug string) string {
-	return filepath.ToSlash(filepath.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json"))
-}
-
-// workPath returns a work file's data-relative, slash-separated location
-// (works/<shard>/<slug>/work.json) from its slug.
-func workPath(workSlug string) string {
-	return filepath.ToSlash(filepath.Join("works", model.Shard(workSlug), workSlug, "work.json"))
 }
 
 // workState tracks a work's identity (slug + author set) and its recordings.
@@ -113,7 +98,6 @@ type workState struct {
 type seriesState struct {
 	slug      string
 	name      string
-	path      string
 	isNew     bool
 	dirty     bool
 	out       *OutSeries        // populated for a newly created series
@@ -135,14 +119,17 @@ type planner struct {
 	// disk in loadExisting, then extended as recordings are emitted), so an
 	// emitted tree can never violate checkUniqueness's global ISBN rule. Keys are
 	// uppercased to match the rule's normISBN comparison.
-	isbns  map[string]bool
-	writes map[string][]byte
+	isbns map[string]bool
+	// store is the run's write layer: every record lands as a pack entry through
+	// it, and its queued-write-first reads are what let several rows compose one
+	// record within a run (see write.go).
+	store *pack.Store
 	// asinLoc locates the recording each already-catalogued ASIN sits on. It is
 	// allocated ONLY when enriching (the create path needs the p.asins membership
 	// test alone), so a normal import's memory profile is unchanged - a nil map
 	// IS the "not enriching" signal, so there is no separate mode flag to keep in
 	// step with it.
-	asinLoc map[string]recRef
+	asinLoc map[string]RecRef
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -283,6 +270,13 @@ func RunLibation(exportPath string, opts Options) (Summary, error) {
 // (see the Mode constants), so there is no combination to police here.
 // Loading, emitting, flushing and post-run validation are shared.
 func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, error) {
+	// Opened before anything is planned: a tree still in the file-per-entity
+	// layout is refused here, having written nothing and read nothing it could
+	// misinterpret.
+	store, err := openStore(opts.DataDir)
+	if err != nil {
+		return Summary{}, err
+	}
 	p := &planner{
 		dataDir:        opts.DataDir,
 		people:         map[string]bool{},
@@ -290,14 +284,14 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		series:         map[string]*seriesState{},
 		asins:          map[string]bool{},
 		isbns:          map[string]bool{},
-		writes:         map[string][]byte{},
+		store:          store,
 		genres:         audibleGenreTable().withRunMemo(),
 		unmappedGenres: map[string]bool{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
 	}
 	if opts.Mode == ModeEnrich {
-		p.asinLoc = map[string]recRef{}
+		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
 
@@ -416,7 +410,6 @@ func (p *planner) loadExisting() {
 		ss := &seriesState{
 			slug:      s.ID,
 			name:      s.Name,
-			path:      filepath.Join("series", model.Shard(s.ID), s.ID+".json"),
 			members:   map[string]string{},
 			positions: map[string]string{},
 		}
@@ -446,10 +439,10 @@ func (p *planner) locateASIN(asin, workSlug, recSlug string) {
 	if prev, taken := p.asinLoc[asin]; taken {
 		p.summary.Warnings = append(p.summary.Warnings, fmt.Sprintf(
 			"catalogue: ASIN %s is recorded on both %s and %s; enrichment matched it to the first",
-			asin, recordingPath(prev.work, prev.rec), recordingPath(workSlug, recSlug)))
+			asin, recLabel(prev.Work, prev.Rec), recLabel(workSlug, recSlug)))
 		return
 	}
-	p.asinLoc[asin] = recRef{work: workSlug, rec: recSlug}
+	p.asinLoc[asin] = RecRef{Work: workSlug, Rec: recSlug}
 }
 
 // resolveWorkTitles is the deterministic pre-pass over the parsed batch that
@@ -684,7 +677,7 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 		return slug
 	}
 	p.people[slug] = true
-	p.emit(filepath.Join("people", model.Shard(slug), slug+".json"), OutPerson{
+	p.putNewEntry(pack.FamilyPeople, slug, OutPerson{
 		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
@@ -746,9 +739,18 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			}
 			ws = &workState{slug: slug, authors: want, recs: map[string]*recInfo{}}
 			p.works[slug] = ws
-			p.emit(workPath(slug), outWork{
+			// added_at is stamped here and only here for a work: this is the
+			// branch that CREATES one. A merge onto an existing work, and every
+			// enrichment backfill, leave the field as they found it.
+			//
+			// putNewEntry, not putEntry: p.works comes from a best-effort
+			// catalogue load, so a work the loader could not decode looks free
+			// here, and a plain upsert would replace its whole composite entry -
+			// every recording included.
+			p.putNewEntry(pack.FamilyWorks, slug, outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
 				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
+				AddedAt: p.importDate,
 				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
@@ -887,14 +889,16 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 	if chs := buildChapters(b.chapterRows(), warn); chs != nil {
 		rec.Chapters = chs
 	}
+	// Stamped only on this branch, which is the one that CREATES a recording;
+	// the ASIN merge above returns before reaching it.
+	rec.AddedAt = p.importDate
 
-	relPath := recordingPath(ws.slug, slug)
 	ri := &recInfo{narrators: narrSet, asins: map[string]bool{}, runtimeMin: b.runtimeMin, abridged: b.abridged}
 	for _, a := range rec.ASIN {
 		ri.asins[a.ASIN] = true
 	}
 	ws.recs[slug] = ri
-	p.emit(relPath, rec)
+	p.putRecording(ws.slug, slug, rec)
 	p.summary.NewRecordings++
 	return asinRecorded
 }
@@ -963,17 +967,18 @@ func abridgedConflict(a, b *bool) bool {
 func boolOrFalse(p *bool) bool { return p != nil && *p }
 
 // mergeRecordingASIN appends {region, asin} (and any ISBN the caller claimed for
-// this entry) to an existing recording and re-emits it, preserving every other
-// field byte-for-byte. The record (located from its work + recording slugs) is
-// loaded from this run's queued write when present (a recording emitted earlier
-// in the same run) or from disk otherwise. The caller has already checked that
-// asin is not present on ri, and that every isbn is globally unclaimed.
+// this entry) to an existing recording and re-queues it, preserving every other
+// field byte-for-byte. The recording is read from inside its work's composite
+// entry, queued-write-first (so a recording written earlier in the same run is
+// the one edited), and the whole entry goes back. It never stamps added_at: the
+// recording being merged into entered the database earlier. The caller has
+// already checked that asin is not present on ri, and that every isbn is
+// globally unclaimed.
 func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asin string, isbns []string) {
 	if p.fatal != nil {
 		return
 	}
-	recPath := recordingPath(workSlug, recSlug)
-	raw := p.loadRecordRaw(recPath)
+	entry, raw := p.recordingRaw(workSlug, recSlug)
 	if raw == nil {
 		return
 	}
@@ -983,7 +988,7 @@ func (p *planner) mergeRecordingASIN(ri *recInfo, workSlug, recSlug, region, asi
 	// Stamp provenance for the merged fact: the source ref is the incoming ASIN,
 	// so the merge stays auditable and retractable per the sources[] contract.
 	p.stampSource(raw)
-	p.emitRaw(recPath, raw)
+	p.putWorkEntry(workSlug, entry)
 	ri.asins[asin] = true
 	// p.asins is registered by addBook's tail for every path (merge and new
 	// recording alike), so it is intentionally NOT set here - one owner.
@@ -1051,50 +1056,6 @@ func sourceMap(s OutSource) map[string]any {
 	return m
 }
 
-// loadRecordRaw reads a record's raw JSON from this run's QUEUED write when one
-// is pending, else from disk. Queued-write-first is what lets several rows
-// touching the same file COMPOSE within a run (a re-release ASIN merged into a
-// recording an earlier row already enriched, or two enrichment rows filling
-// different absent fields) instead of the last one silently discarding the
-// earlier one's edits. It returns nil when p.fatal is (or becomes) set.
-func (p *planner) loadRecordRaw(rel string) map[string]any {
-	if p.fatal != nil {
-		return nil
-	}
-	rel = filepath.ToSlash(rel)
-	queued, pending := p.writes[rel]
-	if !pending {
-		return p.loadRawJSON(rel)
-	}
-	var raw map[string]any
-	if err := json.Unmarshal(queued, &raw); err != nil {
-		p.fatal = fmt.Errorf("parse queued record %s: %w", rel, err)
-		return nil
-	}
-	return raw
-}
-
-// loadRawJSON reads a data-relative JSON file into a fresh map, setting p.fatal
-// on any error (and returning nil). rel is slash-separated. Shared by the
-// recording-merge disk branch and loadSeriesRaw so the read -> unmarshal ->
-// fatal shape lives in one place.
-func (p *planner) loadRawJSON(rel string) map[string]any {
-	if p.fatal != nil {
-		return nil
-	}
-	data, err := os.ReadFile(filepath.Join(p.dataDir, filepath.FromSlash(rel)))
-	if err != nil {
-		p.fatal = fmt.Errorf("read %s: %w", rel, err)
-		return nil
-	}
-	var raw map[string]any
-	if err := json.Unmarshal(data, &raw); err != nil {
-		p.fatal = fmt.Errorf("parse %s: %w", rel, err)
-		return nil
-	}
-	return raw
-}
-
 // addToSeries places work at position pos in the named series, creating the
 // series when new. Duplicate memberships and position clashes warn and leave the
 // existing entry.
@@ -1146,7 +1107,6 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 			ss = &seriesState{
 				slug:      slug,
 				name:      name,
-				path:      filepath.Join("series", model.Shard(slug), slug+".json"),
 				isNew:     true,
 				out:       &OutSeries{ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource}},
 				members:   map[string]string{},
@@ -1162,77 +1122,28 @@ func (p *planner) getOrCreateSeries(name string, warn func(string, ...any)) *ser
 	}
 }
 
-// loadSeriesRaw reads an existing series file into ss.raw the first time it is
+// loadSeriesRaw reads an existing series entry into ss.raw the first time it is
 // extended, so its non-managed fields (authors, xref, existing sources) survive.
+// The read is queued-write-first, so a series two rows extend composes.
 func (p *planner) loadSeriesRaw(ss *seriesState) {
 	if ss.raw != nil || p.fatal != nil {
 		return
 	}
-	ss.raw = p.loadRawJSON(ss.path)
+	ss.raw = p.entryRaw(pack.FamilySeries, ss.slug)
 }
 
-// finalizeSeries queues the JSON for every new or extended series.
+// finalizeSeries queues the entry for every new or extended series.
 func (p *planner) finalizeSeries() {
 	for _, ss := range p.series {
 		if !ss.dirty {
 			continue
 		}
 		if ss.isNew {
-			p.emit(ss.path, ss.out)
+			p.putNewEntry(pack.FamilySeries, ss.slug, ss.out)
 		} else {
-			p.emitRaw(ss.path, ss.raw)
+			p.putEntry(pack.FamilySeries, ss.slug, ss.raw)
 		}
 	}
-}
-
-// emit canonicalizes v and queues it for writing at rel (a data-relative path).
-func (p *planner) emit(rel string, v any) {
-	if p.fatal != nil {
-		return
-	}
-	data, err := json.Marshal(v)
-	if err != nil {
-		p.fatal = fmt.Errorf("marshal %s: %w", rel, err)
-		return
-	}
-	p.emitRaw(rel, json.RawMessage(data))
-}
-
-func (p *planner) emitRaw(rel string, v any) {
-	if p.fatal != nil {
-		return
-	}
-	data, err := json.Marshal(v)
-	if err != nil {
-		p.fatal = fmt.Errorf("marshal %s: %w", rel, err)
-		return
-	}
-	formatted, err := canonical.Format(data)
-	if err != nil {
-		p.fatal = fmt.Errorf("canonicalize %s: %w", rel, err)
-		return
-	}
-	p.writes[filepath.ToSlash(rel)] = formatted
-}
-
-// flush writes every queued file to disk under the data dir, creating parent
-// directories. Paths are written in sorted order for a deterministic run.
-func (p *planner) flush() error {
-	rels := make([]string, 0, len(p.writes))
-	for rel := range p.writes {
-		rels = append(rels, rel)
-	}
-	sort.Strings(rels)
-	for _, rel := range rels {
-		full := filepath.Join(p.dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			return fmt.Errorf("mkdir %s: %w", rel, err)
-		}
-		if err := os.WriteFile(full, p.writes[rel], 0o644); err != nil {
-			return fmt.Errorf("write %s: %w", rel, err)
-		}
-	}
-	return nil
 }
 
 // buildChapters maps a book's chapter rows (sourceBook.chapterRows), trimming

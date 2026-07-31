@@ -2,12 +2,12 @@ package issueform
 
 import (
 	"encoding/json"
-	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
+	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
@@ -19,7 +19,17 @@ import (
 func seedTree(t *testing.T) string {
 	t.Helper()
 	dir := t.TempDir()
-	files := map[string]string{
+	testpack.Seed(t, dir, seedFiles())
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree does not validate: %v", res.Problems)
+	}
+	return dir
+}
+
+// seedFiles is the seed catalogue, keyed by per-entity address. It is a function
+// so a test can subtract it from the tree to see what a submission composed.
+func seedFiles() map[string]string {
+	return map[string]string{
 		"people/ja/jane-doe.json": `{
   "id": "jane-doe",
   "license": "CC0-1.0",
@@ -59,19 +69,6 @@ func seedTree(t *testing.T) string {
   "works": [{"position": "1", "work": "existing-work"}]
 }`,
 	}
-	for rel, content := range files {
-		full := filepath.Join(dir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatalf("mkdir %s: %v", rel, err)
-		}
-		if err := os.WriteFile(full, []byte(content+"\n"), 0o644); err != nil {
-			t.Fatalf("write %s: %v", rel, err)
-		}
-	}
-	if res := check.Load(dir); !res.OK() {
-		t.Fatalf("seed tree does not validate: %v", res.Problems)
-	}
-	return dir
 }
 
 // field renders one issue-form field section.
@@ -85,13 +82,27 @@ func field(label, value string) string {
 func checkedBox() string   { return "- [x] I agree.\n\n" }
 func uncheckedBox() string { return "- [ ] I agree.\n\n" }
 
-func readFile(t *testing.T, dir, rel string) string {
+// readFile returns a composed record's canonical JSON, read out of the pack it
+// now lives in. The address is the per-entity form
+// ("works/br/brand-new-book/work.json"); canonical rendering is what keeps the
+// tests' `"language": "en-gb"` style assertions meaningful.
+func readFile(t *testing.T, dir, address string) string {
 	t.Helper()
-	data, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(rel)))
-	if err != nil {
-		t.Fatalf("read %s: %v", rel, err)
+	raw, ok := testpack.Raw(t, dir, address)
+	if !ok {
+		t.Fatalf("no record at %s", address)
 	}
-	return string(data)
+	formatted, err := canonical.Format(raw)
+	if err != nil {
+		t.Fatalf("canonicalize %s: %v", address, err)
+	}
+	return string(formatted)
+}
+
+// recordExists reports whether the tree holds a record at a per-entity address.
+func recordExists(t *testing.T, dir, address string) bool {
+	t.Helper()
+	return testpack.Exists(t, dir, address)
 }
 
 func hasFile(files []string, want string) bool {
@@ -102,6 +113,15 @@ func hasFile(files []string, want string) bool {
 	}
 	return false
 }
+
+// The pack files a submission's records land in. Result.Files names FILES (what
+// the intake bot commits), and at test scale every family has exactly one pack.
+const (
+	worksPack     = "data/works/0/0.json"
+	communityPack = "data/works-community/0/0.json"
+	peoplePack    = "data/people/0.json"
+	seriesPack    = "data/series/0.json"
+)
 
 func TestParseBody(t *testing.T) {
 	body := field("Title", "Hello World") +
@@ -165,12 +185,18 @@ func TestAddWorkOK(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	wantWork := "data/works/br/brand-new-book/work.json"
-	if !hasFile(res.Files, wantWork) {
-		t.Fatalf("expected %s in files: %v", wantWork, res.Files)
+	// Files names the packs the intake bot commits, one per family touched.
+	if !hasFile(res.Files, worksPack) {
+		t.Fatalf("expected %s in files: %v", worksPack, res.Files)
 	}
-	if !hasFile(res.Files, "data/people/al/alice-author.json") {
-		t.Errorf("expected new author person file: %v", res.Files)
+	if !hasFile(res.Files, peoplePack) {
+		t.Errorf("expected the people pack for the new author: %v", res.Files)
+	}
+	if !recordExists(t, dir, "works/br/brand-new-book/work.json") {
+		t.Fatal("the work record was not written")
+	}
+	if !recordExists(t, dir, "people/al/alice-author.json") {
+		t.Error("the new author record was not written")
 	}
 	// Language must be lowercased to satisfy the schema (en-GB -> en-gb).
 	work := readFile(t, dir, "works/br/brand-new-book/work.json")
@@ -208,19 +234,12 @@ func TestAddWorkCollapsesDuplicateCredits(t *testing.T) {
 		t.Errorf("authors = %v, want [stan-lee]", work.Authors)
 	}
 
-	recPath := ""
-	for _, f := range res.Files {
-		if strings.Contains(f, "/doubled-credits/recordings/") {
-			recPath = strings.TrimPrefix(f, "data/")
-		}
-	}
-	if recPath == "" {
-		t.Fatalf("no recording emitted: %v", res.Files)
-	}
+	recSlug := onlyRecordingOf(t, dir, "doubled-credits")
 	var rec struct {
 		Narrators []string `json:"narrators"`
 	}
-	if err := json.Unmarshal([]byte(readFile(t, dir, recPath)), &rec); err != nil {
+	recAddress := "works/do/doubled-credits/recordings/" + recSlug + ".json"
+	if err := json.Unmarshal([]byte(readFile(t, dir, recAddress)), &rec); err != nil {
 		t.Fatalf("unmarshal recording: %v", err)
 	}
 	if len(rec.Narrators) != 1 || rec.Narrators[0] != "bob-reader" {
@@ -238,7 +257,7 @@ func TestAddWorkSeriesCreated(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if !hasFile(res.Files, "data/series/fr/fresh-saga.json") {
+	if !hasFile(res.Files, seriesPack) {
 		t.Errorf("expected new series file: %v", res.Files)
 	}
 }
@@ -264,6 +283,12 @@ func TestAddWorkDuplicateASIN(t *testing.T) {
 	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
 	if res.Status != StatusDuplicate {
 		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+	// The message locates the incumbent: the pack a maintainer opens, plus the
+	// entry and recording keys to find inside it.
+	want := worksPack + ": entry existing-work: recording john-smith-2020"
+	if !anyContains(res.Messages, want) {
+		t.Errorf("messages must locate the duplicate as %q: %v", want, res.Messages)
 	}
 }
 
@@ -337,7 +362,7 @@ func TestAddRecordingOK(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if !hasFile(res.Files, "data/works/ex/existing-work/recordings/new-voice-2021.json") {
+	if !hasFile(res.Files, worksPack) {
 		t.Errorf("expected new recording file: %v", res.Files)
 	}
 }
@@ -360,7 +385,7 @@ func TestRecordingSlugBoundedForLongNarrator(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("add-work status = %q, messages = %v", res.Status, res.Messages)
 	}
-	first := recordingIDOf(t, res.Files, "data/works/ca/cast-book/recordings/")
+	first := onlyRecordingOf(t, dir, "cast-book")
 	if !model.ValidSlug(first) {
 		t.Fatalf("recording id %q (%d chars) is not a valid slug", first, len(first))
 	}
@@ -385,7 +410,7 @@ func TestRecordingSlugBoundedForLongNarrator(t *testing.T) {
 	if res2.Status != StatusOK {
 		t.Fatalf("add-recording status = %q, messages = %v", res2.Status, res2.Messages)
 	}
-	second := recordingIDOf(t, res2.Files, "data/works/ca/cast-book/recordings/")
+	second := otherRecordingOf(t, dir, "cast-book", first)
 	if !model.ValidSlug(second) {
 		t.Errorf("second recording id %q (%d chars) is not a valid slug", second, len(second))
 	}
@@ -394,17 +419,29 @@ func TestRecordingSlugBoundedForLongNarrator(t *testing.T) {
 	}
 }
 
-// recordingIDOf returns the single recording id a result wrote under prefix.
-func recordingIDOf(t *testing.T, files []string, prefix string) string {
+// onlyRecordingOf returns the single recording slug a work carries. Result.Files
+// names packs now, so a recording id comes from the work's composite entry.
+func onlyRecordingOf(t *testing.T, dir, workSlug string) string {
+	t.Helper()
+	recs := testpack.Recordings(t, dir, workSlug)
+	if len(recs) != 1 {
+		t.Fatalf("expected exactly one recording under %s, got %v", workSlug, recs)
+	}
+	return recs[0]
+}
+
+// otherRecordingOf returns the one recording slug under a work that is not
+// exclude - the id a second submission composed.
+func otherRecordingOf(t *testing.T, dir, workSlug, exclude string) string {
 	t.Helper()
 	var out []string
-	for _, f := range files {
-		if strings.HasPrefix(f, prefix) {
-			out = append(out, strings.TrimSuffix(strings.TrimPrefix(f, prefix), ".json"))
+	for _, slug := range testpack.Recordings(t, dir, workSlug) {
+		if slug != exclude {
+			out = append(out, slug)
 		}
 	}
 	if len(out) != 1 {
-		t.Fatalf("expected exactly one recording under %s, got %v", prefix, files)
+		t.Fatalf("expected one recording under %s besides %q, got %v", workSlug, exclude, out)
 	}
 	return out[0]
 }
@@ -495,7 +532,7 @@ func TestCharactersInlineOK(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if !hasFile(res.Files, "data/works/ex/existing-work/characters.json") {
+	if !hasFile(res.Files, communityPack) {
 		t.Errorf("expected characters sidecar: %v", res.Files)
 	}
 }
@@ -518,11 +555,10 @@ func TestCharactersFetchOK(t *testing.T) {
 
 func TestCharactersOverwriteRefused(t *testing.T) {
 	dir := seedTree(t)
-	// Pre-create a sidecar so the submission would overwrite it.
-	pre := filepath.Join(dir, "works/ex/existing-work/characters.json")
-	if err := os.WriteFile(pre, []byte(validCharactersJSON+"\n"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	// Pre-create the sidecar so the submission would overwrite it.
+	testpack.Seed(t, dir, map[string]string{
+		"works/ex/existing-work/characters.json": validCharactersJSON,
+	})
 	body := charactersBody("existing-work", validCharactersJSON, true)
 	res := Process(Options{DataDir: dir, Template: "characters", Body: body})
 	if res.Status != StatusNeedsHuman {
@@ -551,7 +587,7 @@ func TestCharactersFencedInlineOK(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if !hasFile(res.Files, "data/works/ex/existing-work/characters.json") {
+	if !hasFile(res.Files, communityPack) {
 		t.Errorf("expected characters sidecar: %v", res.Files)
 	}
 }
@@ -601,8 +637,8 @@ func TestImportOpenAudibleOK(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if _, err := os.Stat(filepath.Join(dir, "works/im/imported-title/work.json")); err != nil {
-		t.Errorf("imported work not written: %v", err)
+	if !recordExists(t, dir, "works/im/imported-title/work.json") {
+		t.Error("imported work not written")
 	}
 }
 
@@ -658,8 +694,8 @@ func TestImportSniffsAudiosiloBooksEnvelope(t *testing.T) {
 	if res.Status != StatusOK {
 		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
 	}
-	if _, err := os.Stat(filepath.Join(dir, "works/im/imported-abs-book/work.json")); err != nil {
-		t.Errorf("envelope not imported via sniff: %v", err)
+	if !recordExists(t, dir, "works/im/imported-abs-book/work.json") {
+		t.Error("envelope not imported via sniff")
 	}
 }
 

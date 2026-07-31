@@ -1,9 +1,9 @@
 package importer
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
-	"os"
-	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
@@ -139,14 +139,17 @@ type enrichedWork struct {
 	} `json:"sources"`
 }
 
-// readRaw returns a data-relative file's exact bytes.
-func readRaw(t *testing.T, dataDir, rel string) string {
+// readRaw returns a record's exact JSON, compacted. It is the pack-layout
+// answer to reading a record's file: the seed literals it is compared against
+// are compact and key-sorted, which is the form a pack stores an entry in, so an
+// unchanged record compares equal to the literal that seeded it.
+func readRaw(t *testing.T, dataDir, address string) string {
 	t.Helper()
-	raw, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(rel)))
-	if err != nil {
-		t.Fatalf("read %s: %v", rel, err)
+	var buf bytes.Buffer
+	if err := json.Compact(&buf, rawEntity(t, dataDir, address)); err != nil {
+		t.Fatalf("compact %s: %v", address, err)
 	}
-	return string(raw)
+	return buf.String()
 }
 
 func TestEnrichFillsAbsentFacts(t *testing.T) {
@@ -171,7 +174,7 @@ func TestEnrichFillsAbsentFacts(t *testing.T) {
 	}
 
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if rec.RuntimeMin != 600 {
 		t.Errorf("runtime_min = %d, want 600", rec.RuntimeMin)
 	}
@@ -211,7 +214,7 @@ func TestEnrichFillsAbsentFacts(t *testing.T) {
 	}
 
 	var work enrichedWork
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(workRel)), &work)
+	readEntity(t, dataDir, workRel, &work)
 	if !reflect.DeepEqual(work.Genres, []string{"action-adventure", "epic-fantasy"}) {
 		t.Errorf("genres = %v, want [action-adventure epic-fantasy]", work.Genres)
 	}
@@ -233,7 +236,7 @@ func TestEnrichFillsAbsentFacts(t *testing.T) {
 			Ref  string `json:"ref"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(seriesRel)), &series)
+	readEntity(t, dataDir, seriesRel, &series)
 	if len(series.Works) != 2 {
 		t.Fatalf("series works = %+v, want 2", series.Works)
 	}
@@ -356,7 +359,7 @@ func TestEnrichDoesNotWarnOnALessPreciseRecordedDate(t *testing.T) {
 		t.Errorf("a precision difference is not a conflict: %v", sum.Warnings)
 	}
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if rec.ReleaseDate != "2024" {
 		t.Errorf("release_date = %q, want the recorded value kept", rec.ReleaseDate)
 	}
@@ -368,7 +371,7 @@ func TestEnrichNeverReplacesChapters(t *testing.T) {
 
 	runEnrich(t, dataDir, fullRow, false)
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if len(rec.Chapters) != 1 || rec.Chapters[0].Title != "Only Chapter" {
 		t.Errorf("existing chapters must never be merged or replaced: %+v", rec.Chapters)
 	}
@@ -387,7 +390,7 @@ func TestEnrichISBNGlobalDuplicateGuard(t *testing.T) {
 		t.Errorf("expected an ISBN collision warning, got %v", sum.Warnings)
 	}
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if len(rec.ISBN) != 0 {
 		t.Errorf("a globally-claimed ISBN must not be added: %v", rec.ISBN)
 	}
@@ -428,7 +431,7 @@ func TestEnrichFindsSuffixedLongNameSeries(t *testing.T) {
 	var series struct {
 		Works []struct{ Work, Position string } `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(relB)), &series)
+	readEntity(t, dataDir, relB, &series)
 	if len(series.Works) != 2 {
 		t.Fatalf("the suffixed series holds %+v, want the enriched work added", series.Works)
 	}
@@ -449,7 +452,7 @@ func TestEnrichSeriesOnlyExistingAndOnlyOnce(t *testing.T) {
 	if sum.SeriesPlacements != 1 || sum.NewSeries != 0 {
 		t.Errorf("SeriesPlacements/NewSeries = %d/%d, want 1/0", sum.SeriesPlacements, sum.NewSeries)
 	}
-	if exists(filepath.Join(dataDir, "series/no/nonexistent-saga.json")) {
+	if entryExists(t, dataDir, "series/no/nonexistent-saga.json") {
 		t.Error("enrichment created a series")
 	}
 	if len(sum.Warnings) != 0 {
@@ -606,7 +609,7 @@ func TestEnrichReportsAnASINOnTwoRecordings(t *testing.T) {
 		t.Errorf("the second claimant must be untouched:\n got %s\nwant %s", got, twinRec)
 	}
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if rec.Publisher != "Lost Press" {
 		t.Errorf("the first claimant should have been enriched: %+v", rec)
 	}
@@ -675,7 +678,7 @@ func TestEnrichIsIdempotent(t *testing.T) {
 
 	// And provenance was stamped exactly once per record.
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	libexStamps := 0
 	for _, s := range rec.Sources {
 		if s.Type == "libex-import" {
@@ -719,7 +722,7 @@ func TestEnrichComposesRowsTouchingOneRecording(t *testing.T) {
 	}
 
 	var rec recordingFile
-	readJSON(t, filepath.Join(dataDir, filepath.FromSlash(recRel)), &rec)
+	readEntity(t, dataDir, recRel, &rec)
 	if rec.Publisher != "Lost Press" || rec.RuntimeMin != 600 {
 		t.Errorf("the first row's facts were lost: %+v", rec)
 	}

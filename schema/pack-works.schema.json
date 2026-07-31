@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/pack-works.schema.json",
+  "title": "works pack",
+  "description": "One data/works/<dir>/<pack>.json file: work composites keyed by work slug, covering the slug range [the file's own bound, the next sibling's). Every entry is CC0 by the work schema's license lock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "description": "The pack's entries, keyed by work slug. Canonical formatting sorts them, so the file is always in slug order.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/slug"
+      },
+      "additionalProperties": {
+        "$ref": "work.schema.json"
+      }
+    }
+  }
+}

@@ -76,7 +76,7 @@ func TestLibexImportBasic(t *testing.T) {
 			ImportedAt string `json:"imported_at"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-lost-cartographer/work.json"), &work)
+	readEntity(t, dataDir, "works/th/the-lost-cartographer/work.json", &work)
 
 	// The subtitle is never a stored fact of its own. It composes the full title
 	// that distinguishes same-titled volumes, so it CAN end up inside work.title
@@ -102,7 +102,7 @@ func TestLibexImportBasic(t *testing.T) {
 		ID   string `json:"id"`
 		Name string `json:"name"`
 	}
-	readJSON(t, filepath.Join(dataDir, "people/da/dan-veksler.json"), &translator)
+	readEntity(t, dataDir, "people/da/dan-veksler.json", &translator)
 	if translator.ID != "dan-veksler" || translator.Name != "Dan Veksler" {
 		t.Errorf("translator person = %+v, want dan-veksler / %q", translator, "Dan Veksler")
 	}
@@ -134,7 +134,7 @@ func TestLibexImportBasic(t *testing.T) {
 			LengthMS int64  `json:"length_ms"`
 		} `json:"chapters"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-lost-cartographer/recordings/bea-reader-2024.json"), &rec)
+	readEntity(t, dataDir, "works/th/the-lost-cartographer/recordings/bea-reader-2024.json", &rec)
 
 	if !reflect.DeepEqual(rec.Narrators, []string{"bea-reader"}) {
 		t.Errorf("narrators = %v", rec.Narrators)
@@ -171,7 +171,7 @@ func TestLibexImportBasic(t *testing.T) {
 		Abridged *bool    `json:"abridged"`
 		ISBN     []string `json:"isbn"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-second-map/recordings/bea-reader-2025.json"), &rec2)
+	readEntity(t, dataDir, "works/th/the-second-map/recordings/bea-reader-2025.json", &rec2)
 	if rec2.Abridged == nil || *rec2.Abridged != true {
 		t.Errorf("second book abridged = %v, want explicit true", rec2.Abridged)
 	}
@@ -188,7 +188,7 @@ func TestLibexImportBasic(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/ca/cartographer-chronicles.json"), &series)
+	readEntity(t, dataDir, "series/ca/cartographer-chronicles.json", &series)
 	if series.Name != "Cartographer Chronicles" || len(series.Works) != 2 {
 		t.Fatalf("series = %+v", series)
 	}
@@ -275,12 +275,13 @@ func TestLibexDryRunWritesNothing(t *testing.T) {
 // onto catalogued records is the separate enrichment mode's job.)
 func TestLibexGenresOnlyOnNewWorks(t *testing.T) {
 	dataDir := t.TempDir()
-	existingWork := `{"authors":["ada-mapmaker"],"id":"the-lost-cartographer","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"The Lost Cartographer"}`
-	seedTree(t, dataDir, map[string]string{
-		"people/ad/ada-mapmaker.json":                             `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
-		"works/th/the-lost-cartographer/work.json":                existingWork,
+	const workAddress = "works/th/the-lost-cartographer/work.json"
+	seed := map[string]string{
+		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
+		workAddress:                   `{"authors":["ada-mapmaker"],"id":"the-lost-cartographer","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"The Lost Cartographer"}`,
 		"works/th/the-lost-cartographer/recordings/existing.json": `{"asin":[{"asin":"B0OLDREC01","region":"us"}],"id":"existing","language":"en","license":"CC0-1.0","narrators":["ada-mapmaker"],"sources":[{"type":"user"}],"work":"the-lost-cartographer"}`,
-	})
+	}
+	seedTree(t, dataDir, seed)
 
 	export := `[{"asin":"B0LIBEX001","title":"The Lost Cartographer","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],"lengthMinutes":600,` +
@@ -292,13 +293,7 @@ func TestLibexGenresOnlyOnNewWorks(t *testing.T) {
 	if sum.NewWorks != 0 || sum.NewRecordings != 1 {
 		t.Errorf("expected a new recording under the existing work: %+v", sum)
 	}
-	raw, err := os.ReadFile(filepath.Join(dataDir, "works/th/the-lost-cartographer/work.json"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	if string(raw) != existingWork {
-		t.Errorf("existing work was modified:\n%s", raw)
-	}
+	assertEntryUnchanged(t, dataDir, workAddress, seed)
 }
 
 func TestLibexDedupByASIN(t *testing.T) {
@@ -348,7 +343,7 @@ func TestLibexDiskISBNBlocksDuplicate(t *testing.T) {
 	var rec struct {
 		ISBN []string `json:"isbn"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/br/brand-new-book/recordings/bea-reader.json"), &rec)
+	readEntity(t, dataDir, "works/br/brand-new-book/recordings/bea-reader.json", &rec)
 	if len(rec.ISBN) != 0 {
 		t.Errorf("isbn = %v, want none (already on disk)", rec.ISBN)
 	}
@@ -364,7 +359,7 @@ func TestLibexMalformedISBNDropped(t *testing.T) {
 	var rec struct {
 		ISBN []string `json:"isbn"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/ba/bad-isbn/recordings/bea-reader.json"), &rec)
+	readEntity(t, dataDir, "works/ba/bad-isbn/recordings/bea-reader.json", &rec)
 	if !reflect.DeepEqual(rec.ISBN, []string{"9781234567897"}) {
 		t.Errorf("isbn = %v, want only the well-formed one", rec.ISBN)
 	}
@@ -462,7 +457,7 @@ func TestLibexUnmappableRegionSkipped(t *testing.T) {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/no/nowhere-book/recordings/bea-reader.json"), &rec)
+	readEntity(t, dataDir, "works/no/nowhere-book/recordings/bea-reader.json", &rec)
 	if len(rec.ASIN) != 1 || rec.ASIN[0].Region != "us" || rec.ASIN[0].ASIN != "B0LIBEX021" {
 		t.Errorf("asin = %+v, want the good sibling's us/B0LIBEX021", rec.ASIN)
 	}
@@ -576,7 +571,7 @@ func TestLibexNameWithComma(t *testing.T) {
 	var work struct {
 		Authors []string `json:"authors"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-comma/work.json"), &work)
+	readEntity(t, dataDir, "works/th/the-comma/work.json", &work)
 	if !reflect.DeepEqual(work.Authors, []string{"alexandre-dumas-pere"}) {
 		t.Errorf("authors = %v, want one person", work.Authors)
 	}
@@ -594,7 +589,7 @@ func TestLibexCreditsDedupeBySlug(t *testing.T) {
 	var rec struct {
 		Narrators []string `json:"narrators"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/tw/two-spellings/recordings/ramon-de-ocampo.json"), &rec)
+	readEntity(t, dataDir, "works/tw/two-spellings/recordings/ramon-de-ocampo.json", &rec)
 	if !reflect.DeepEqual(rec.Narrators, []string{"ramon-de-ocampo"}) {
 		t.Errorf("narrators = %v, want the slug listed once", rec.Narrators)
 	}
@@ -620,7 +615,7 @@ func TestLibexSubtitleDisambiguates(t *testing.T) {
 		Title    string `json:"title"`
 		Subtitle string `json:"subtitle"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/dr/dragon-heart-book-2-land-of-war/work.json"), &work)
+	readEntity(t, dataDir, "works/dr/dragon-heart-book-2-land-of-war/work.json", &work)
 	if work.Title != "Dragon Heart: Book 2: Land of War" {
 		t.Errorf("title = %q, want the composed full title", work.Title)
 	}
@@ -662,7 +657,7 @@ func TestLibexHTTPCoverWarns(t *testing.T) {
 	var rec struct {
 		CoverURL string `json:"cover_url"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/pl/plain-cover/recordings/bea-reader.json"), &rec)
+	readEntity(t, dataDir, "works/pl/plain-cover/recordings/bea-reader.json", &rec)
 	if rec.CoverURL != "" {
 		t.Errorf("cover_url = %q, want none", rec.CoverURL)
 	}
@@ -681,7 +676,7 @@ func TestLibexISBNAcceptsHyphens(t *testing.T) {
 	var rec struct {
 		ISBN []string `json:"isbn"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/hy/hyphenated/recordings/bea-reader.json"), &rec)
+	readEntity(t, dataDir, "works/hy/hyphenated/recordings/bea-reader.json", &rec)
 	if !reflect.DeepEqual(rec.ISBN, []string{"9781234567897"}) {
 		t.Errorf("isbn = %v, want the normalized form", rec.ISBN)
 	}

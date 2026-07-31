@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/pack-works-community.schema.json",
+  "title": "works-community pack",
+  "description": "One data/works-community/<dir>/<pack>.json file: the CC BY-SA characters and recaps sidecars keyed by work slug. A separate family from works/ so the license boundary is directory-structural as well as schema-structural; every entry is share-alike by the sidecar schemas' license lock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "description": "The pack's entries, keyed by work slug. Canonical formatting sorts them, so the file is always in slug order.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/slug"
+      },
+      "additionalProperties": {
+        "description": "One work's community sidecars. Either member may be absent; an entry carrying neither is not an entry.",
+        "type": "object",
+        "additionalProperties": false,
+        "minProperties": 1,
+        "properties": {
+          "characters": {
+            "$ref": "characters.schema.json"
+          },
+          "recaps": {
+            "$ref": "recaps.schema.json"
+          }
+        }
+      }
+    }
+  }
+}

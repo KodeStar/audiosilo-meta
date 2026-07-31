@@ -2,7 +2,6 @@ package importer
 
 import (
 	"os"
-	"path/filepath"
 	"strings"
 	"testing"
 
@@ -39,10 +38,10 @@ func TestLibexRefusesAINarratedRows(t *testing.T) {
 	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.NewPeople != 1 {
 		t.Errorf("summary = %d works / %d recordings / %d people, want 1/1/1", sum.NewWorks, sum.NewRecordings, sum.NewPeople)
 	}
-	if !exists(filepath.Join(dataDir, "works/ju/just-so/work.json")) {
+	if !entryExists(t, dataDir, "works/ju/just-so/work.json") {
 		t.Error("the human-narrated row was not imported")
 	}
-	if !exists(filepath.Join(dataDir, "people/al/alan-watts.json")) {
+	if !entryExists(t, dataDir, "people/al/alan-watts.json") {
 		t.Error("the human narrator got no person record")
 	}
 	// No AI voice became a person, and no AI-narrated book became a work.
@@ -55,7 +54,7 @@ func TestLibexRefusesAINarratedRows(t *testing.T) {
 		"works/in/in-the-abyss/work.json",
 		"works/ma/magia-de-los-celtas/work.json",
 	} {
-		if exists(filepath.Join(dataDir, filepath.FromSlash(rel))) {
+		if entryExists(t, dataDir, rel) {
 			t.Errorf("an AI-narrated row created %s", rel)
 		}
 	}

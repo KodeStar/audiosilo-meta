@@ -43,7 +43,12 @@ type outWork struct {
 	// Genres are the project's own vocabulary slugs, sorted ascending
 	// (checkGenresSorted pins the order). Omitted when the source carried no
 	// genre that maps - never a retailer's raw genre strings (LICENSING.md).
-	Genres  []string    `json:"genres,omitempty"`
+	Genres []string `json:"genres,omitempty"`
+	// AddedAt is the date this work entered the database, stamped only on the
+	// record a run CREATES (never on a merge or an enrichment backfill, which
+	// touch records that entered earlier). Same value family as
+	// sources[].imported_at: the run's import date, YYYY-MM-DD.
+	AddedAt string      `json:"added_at,omitempty"`
 	License string      `json:"license"`
 	Sources []OutSource `json:"sources"`
 }
@@ -73,8 +78,10 @@ type outRecording struct {
 	ISBN        []string     `json:"isbn,omitempty"`
 	CoverURL    string       `json:"cover_url,omitempty"`
 	Chapters    []outChapter `json:"chapters,omitempty"`
-	License     string       `json:"license"`
-	Sources     []OutSource  `json:"sources"`
+	// AddedAt is stamped only on a recording the run CREATES; see outWork.
+	AddedAt string      `json:"added_at,omitempty"`
+	License string      `json:"license"`
+	Sources []OutSource `json:"sources"`
 }
 
 // OutSeriesWork is one (work, position) membership in a series record.

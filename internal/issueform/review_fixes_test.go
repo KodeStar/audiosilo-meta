@@ -1,11 +1,11 @@
 package issueform
 
 import (
-	"os"
-	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // --- Fix 1: a bare ASIN with no region prefix defaults to us ----------------
@@ -79,24 +79,25 @@ func TestAbridgedTriState(t *testing.T) {
 
 // --- Fix 6: a person meta URL resolves to a people/ path --------------------
 
-func TestResolveRecordPathURLKinds(t *testing.T) {
+func TestResolveRecordRefURLKinds(t *testing.T) {
 	cases := []struct {
-		name string
-		ref  string
-		want string
+		name     string
+		ref      string
+		wantKind model.Kind
+		wantSlug string
 	}{
-		{"work", "https://meta.audiosilo.app/work?id=some-book", "works/so/some-book/work.json"},
-		{"series", "https://meta.audiosilo.app/series?id=some-series", "series/so/some-series.json"},
-		{"person", "https://meta.audiosilo.app/person?id=some-author", "people/so/some-author.json"},
+		{"work", "https://meta.audiosilo.app/work?id=some-book", model.KindWork, "some-book"},
+		{"series", "https://meta.audiosilo.app/series?id=some-series", model.KindSeries, "some-series"},
+		{"person", "https://meta.audiosilo.app/person?id=some-author", model.KindPerson, "some-author"},
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			rel, _, ok := resolveRecordPath(c.ref)
+			loc, ok := resolveRecordRef(c.ref)
 			if !ok {
-				t.Fatalf("resolveRecordPath(%q) not ok", c.ref)
+				t.Fatalf("resolveRecordRef(%q) not ok", c.ref)
 			}
-			if rel != c.want {
-				t.Errorf("resolveRecordPath(%q) = %q, want %q", c.ref, rel, c.want)
+			if loc.Kind != c.wantKind || loc.Slug != c.wantSlug {
+				t.Errorf("resolveRecordRef(%q) = %v/%q, want %v/%q", c.ref, loc.Kind, loc.Slug, c.wantKind, c.wantSlug)
 			}
 		})
 	}
@@ -193,8 +194,7 @@ func anyContains(msgs []string, sub string) bool {
 	return false
 }
 
-func fileExists(t *testing.T, dir, rel string) bool {
+func fileExists(t *testing.T, dir, address string) bool {
 	t.Helper()
-	_, err := os.Stat(filepath.Join(dir, filepath.FromSlash(rel)))
-	return err == nil
+	return recordExists(t, dir, address)
 }

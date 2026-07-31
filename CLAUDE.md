@@ -115,6 +115,13 @@ onto these ordinals; text-to-audio alignment is a consumer concern, out of
 schema scope. The object shape is deliberately extensible (a later `paragraph`/
 `offset_ms` can be added without a breaking change).
 
+**work** and **recording** additionally carry an optional `added_at`
+(`common.schema.json#/$defs/date_or_datetime`): `YYYY-MM-DD` when stamped by
+the importer/intake bot at creation, or a full RFC 3339 timestamp with offset
+for the one-time git-history backfill the migration PR performs (the values
+must match the old release.yml git walk byte-for-byte, which is what keeps the
+artifact equivalence proof valid).
+
 Every entity carries `license` and `sources[]` (provenance: type/ref/
 imported_at) so any source can be audited or retracted wholesale. **Two license
 layers, enforced structurally by the schema** (`$defs/license` vs
@@ -144,24 +151,27 @@ Scholomance, Lord of the Rings, Magic Faraway Tree) are the worked reference.
 ## Package layout
 
 ```
-cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/
+cmd/metacheck|metafmt|metabuild   thin CLIs; logic lives in internal/ (metafmt drives internal/format; metacheck prints advisories to stderr without affecting the exit status)
 cmd/metaserve       thin CLI: the read-only HTTP API server (flag wiring only)
 cmd/metaextract     thin CLI: epub -> chapter text + manifest (split), n-gram no-verbatim check (ngram); see EXTRACTION.md and EXTRACTION-AUDIO.md
 cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag wiring only)
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
-pkg/model           PUBLIC entity structs, slug/shard rules, location parsing (leaf; also reached through pkg/check's exported Catalog)
+pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render) plus the legacy Shard()/ParseLocation path parsing, which the migration PR deletes (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
-pkg/check           PUBLIC schema validation + integrity/uniqueness/chapter/series rules
+pkg/check           PUBLIC dual-layout load (pack.DetectLayout per family: packcheck.go's pack walker, legacy.go's file-per-entity reader kept only for the migration window; a mixed tree is legal and both walkers produce the same Catalog and the same message text) + schema validation (wrapper schemas load-bearing; $ref reasons preserved via detailed output) + the pack storage invariants (placement, caps + single-entry exemption, bound validity, key/id agreement) + integrity/uniqueness/chapter/series/sidecar-uniqueness rules; Result carries Problems (fail) and Warnings (advisory, e.g. a single entry over the 256KB target); schema-valid entries that fail Go decoding are reported, never silently dropped
+pkg/pack            PUBLIC pack-file storage: family/cap definitions, bound math + binary-search lookup, pack parse/serialize (canonical via pkg/canonical, raw entries, duplicate keys rejected), median split + directory split, and the read-through Store (queued-write-first reads; Flush performs due splits, directory splits and bound normalization, and errors rather than ever writing two plans to one path). survey.go classifies every JSON file under a family root BEFORE bound math sees it, so a misfiled/misnamed/empty/too-deep file is relocatable content (Salvage), never an authoritative bound; Pending covers every structural invariant metacheck enforces (Salvage/Unreadable/Misplaced/Conflicts/Rebinds/Packs/Dirs) and Heal + Flush converges to a metacheck-green, entry-preserving tree in one pass (duplicate slugs: the correctly-placed copy wins, reported as a Conflict). The Store is layout-aware PER FAMILY (mixed trees safe: pack/absent writable, legacy fails with ErrLegacyLayout). The one shared implementation every reader and writer builds on (see PACK-SPEC.md)
 pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
                     (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
-internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, canonical writes (shared pipeline over a typed sourceBook, with three disjoint planning modes over it: create, enrich.go's ASIN-matched backfill, recordings.go's alternate-narration pass; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
-internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> canonical records, the ok/duplicate/needs-human/invalid verdict the intake workflow branches on
+internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, writes through the pack.Store (write.go: one works-family composite entry per work, so a recording edit is a read-modify-write of its work's entry; nothing reaches disk until flush; a legacy-layout tree is refused before anything is planned; a create at a slug the store already holds fails loudly rather than overwriting - the guard against a loader-dropped entry being clobbered). added_at is stamped ONLY on the branches that create a record, never on an ASIN merge or enrichment backfill. (Shared pipeline over a typed sourceBook, with three disjoint planning modes over it: create, enrich.go's ASIN-matched backfill, recordings.go's alternate-narration pass; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
+internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> pack entries through the pack.Store (both community sidecars share ONE works-community entry, so placing recaps preserves an existing characters member; family gating is per template; a legacy tree is needs-human, not the contributor's fault), the ok/duplicate/needs-human/invalid verdict the intake workflow branches on; Result.Files names the pack files flush rewrote
+internal/format     metafmt's business logic: canonical formatting (pkg/canonical) sequenced with the self-healing placement pass (pack.Pending -> Heal -> Flush) for pack-layout families; Report embeds pack.Pending so every category surfaces in --check/--write; unreadable files are reported and left for a human while the rest still heals; formatting runs FIRST because Flush judges an untouched pack by its on-disk size
+internal/testpack   test support (imported only by _test.go files): seeds and reads a pack-layout tree addressed by the familiar per-entity path syntax, resolved onto family + entry key; shared by the importer and issueform suites
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes, added_at)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
-schema/             JSON Schemas (the contract), embedded via schema.go
-data/               the database (works/recordings/people/series + per-work characters/recaps sidecars)
+schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments)
+data/               the database (works/recordings/people/series + per-work characters/recaps sidecars; still the file-per-entity tree until the migration PR converts it to the PACK-SPEC.md range-packed layout - the tooling on this branch reads both, writes packs only)
 Dockerfile          image: site build + metaserve + baked data
 .github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows
 ```

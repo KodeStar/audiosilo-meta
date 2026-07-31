@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://meta.audiosilo.app/schema/pack-series.schema.json",
+  "title": "series pack",
+  "description": "One data/series/<pack>.json file (or data/series/<dir>/<pack>.json once the family has gained a directory level): series records keyed by series slug. Every entry is CC0 by the series schema's license lock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "description": "The pack's entries, keyed by series slug. Canonical formatting sorts them, so the file is always in slug order.",
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/slug"
+      },
+      "additionalProperties": {
+        "$ref": "series.schema.json"
+      }
+    }
+  }
+}

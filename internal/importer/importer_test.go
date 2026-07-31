@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
 	"path/filepath"
 	"reflect"
 	"sort"
 	"strings"
 	"testing"
 
-	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
 	"github.com/kodestar/audiosilo-meta/pkg/model"
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
 // testImportDate is the imported_at stamp every test run uses.
@@ -54,38 +56,57 @@ func runImport(t *testing.T, booksJSON string, dryRun bool) (Summary, string) {
 	return runWith(t, Run, booksJSON, dryRun)
 }
 
-// seedTree writes a map of data-relative path -> JSON content into dataDir,
-// creating parent directories.
+// seedTree writes a catalogue into dataDir's pack tree. Keys are per-entity
+// addresses ("works/th/the-thing/work.json"), which is how a seed literal reads
+// as the record it is; testpack resolves each to its pack family and entry key.
 func seedTree(t *testing.T, dataDir string, files map[string]string) {
 	t.Helper()
-	for rel, content := range files {
-		full := filepath.Join(dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(full, []byte(content), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	testpack.Seed(t, dataDir, files)
 }
 
-func readJSON(t *testing.T, path string, v any) {
+// readEntity decodes the record at a per-entity address out of the pack tree,
+// asserting the pack holding it is canonical.
+func readEntity(t *testing.T, dataDir, address string, v any) {
 	t.Helper()
-	raw, err := os.ReadFile(path)
-	if err != nil {
-		t.Fatalf("read %s: %v", path, err)
-	}
-	if ok, ferr := canonical.IsCanonical(raw); ferr != nil || !ok {
-		t.Errorf("%s is not canonical (err=%v)", path, ferr)
-	}
-	if err := json.Unmarshal(raw, v); err != nil {
-		t.Fatalf("unmarshal %s: %v", path, err)
-	}
+	testpack.Read(t, dataDir, address, v)
 }
 
-func exists(path string) bool {
-	_, err := os.Stat(path)
-	return err == nil
+// entryExists reports whether the pack tree holds a record at the address.
+func entryExists(t *testing.T, dataDir, address string) bool {
+	t.Helper()
+	return testpack.Exists(t, dataDir, address)
+}
+
+// rawEntity returns the record's raw JSON, for the few assertions that inspect
+// bytes rather than a decoded shape.
+func rawEntity(t *testing.T, dataDir, address string) []byte {
+	t.Helper()
+	raw, ok := testpack.Raw(t, dataDir, address)
+	if !ok {
+		t.Fatalf("no record at %s", address)
+	}
+	return raw
+}
+
+// workAddr / recAddr / personAddr / seriesAddr compose the per-entity addresses
+// the helpers above take, for the tests that build one from a computed slug.
+func workAddr(slug string) string {
+	return path.Join("works", model.Shard(slug), slug, "work.json")
+}
+
+func recAddr(workSlug, recSlug string) string {
+	return path.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json")
+}
+
+func seriesAddr(slug string) string {
+	return path.Join("series", model.Shard(slug), slug+".json")
+}
+
+// recSlugsOf returns a work's recording slugs, sorted - the pack-layout answer
+// to listing its recordings directory.
+func recSlugsOf(t *testing.T, dataDir, workSlug string) []string {
+	t.Helper()
+	return testpack.Recordings(t, dataDir, workSlug)
 }
 
 func TestImportBasic(t *testing.T) {
@@ -127,7 +148,7 @@ func TestImportBasic(t *testing.T) {
 			ImportedAt string `json:"imported_at"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-iron-ledger/work.json"), &work)
+	readEntity(t, dataDir, "works/th/the-iron-ledger/work.json", &work)
 	if work.Title != "The Iron Ledger" {
 		t.Errorf("work title = %q, want title_short", work.Title)
 	}
@@ -166,7 +187,7 @@ func TestImportBasic(t *testing.T) {
 			LengthMS int64  `json:"length_ms"`
 		} `json:"chapters"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/th/the-iron-ledger/recordings/priya-lund-2025.json"), &rec)
+	readEntity(t, dataDir, "works/th/the-iron-ledger/recordings/priya-lund-2025.json", &rec)
 	if len(rec.Narrators) != 2 || rec.Narrators[0] != "priya-lund" {
 		t.Errorf("narrators = %v", rec.Narrators)
 	}
@@ -193,7 +214,7 @@ func TestImportBasic(t *testing.T) {
 	}
 
 	// Second Ledger recording: abridged null -> field omitted entirely.
-	raw, _ := os.ReadFile(filepath.Join(dataDir, "works/th/the-bronze-ledger/recordings/priya-lund-2025.json"))
+	raw := rawEntity(t, dataDir, "works/th/the-bronze-ledger/recordings/priya-lund-2025.json")
 	if strings.Contains(string(raw), "abridged") {
 		t.Errorf("abridged should be omitted for a null source value: %s", raw)
 	}
@@ -205,7 +226,7 @@ func TestImportBasic(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/th/the-ledger-wars.json"), &series)
+	readEntity(t, dataDir, "series/th/the-ledger-wars.json", &series)
 	if len(series.Works) != 3 {
 		t.Fatalf("series works = %d, want 3", len(series.Works))
 	}
@@ -265,7 +286,7 @@ func TestSkipMissingNarrator(t *testing.T) {
 	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], "no narrator") {
 		t.Errorf("expected a no-narrator warning, got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "works")) {
+	if len(listWorks(t, dataDir)) != 0 {
 		t.Errorf("no work should be written")
 	}
 }
@@ -292,7 +313,7 @@ func TestChapterMonotonicFallback(t *testing.T) {
 	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], "chapters") {
 		t.Errorf("expected a chapters warning, got %v", sum.Warnings)
 	}
-	raw, _ := os.ReadFile(filepath.Join(dataDir, "works/ba/bad-chapters/recordings/nadia-vox-2023.json"))
+	raw := rawEntity(t, dataDir, "works/ba/bad-chapters/recordings/nadia-vox-2023.json")
 	if strings.Contains(string(raw), `"chapters"`) {
 		t.Errorf("invalid chapters should be omitted, got: %s", raw)
 	}
@@ -309,10 +330,10 @@ func TestWorkSlugCollisionAppendsAuthor(t *testing.T) {
 	if sum.NewWorks != 2 {
 		t.Fatalf("expected 2 distinct works, got %d", sum.NewWorks)
 	}
-	if !exists(filepath.Join(dataDir, "works/th/the-gathering/work.json")) {
+	if !entryExists(t, dataDir, "works/th/the-gathering/work.json") {
 		t.Errorf("first work should own the bare slug")
 	}
-	if !exists(filepath.Join(dataDir, "works/th/the-gathering-bob-south/work.json")) {
+	if !entryExists(t, dataDir, "works/th/the-gathering-bob-south/work.json") {
 		t.Errorf("second work should be disambiguated by author: %v", listWorks(t, dataDir))
 	}
 	if !hasWarning(sum.Warnings, "taken by a different book") {
@@ -417,14 +438,11 @@ func TestOverlongTitleCollisionProducesValidSlugs(t *testing.T) {
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
 	}
-	for _, path := range listWorks(t, dataDir) {
-		if filepath.Base(path) != "work.json" {
-			continue
-		}
+	for _, slug := range listWorks(t, dataDir) {
 		var work struct {
 			ID string `json:"id"`
 		}
-		readJSON(t, path, &work)
+		readEntity(t, dataDir, workAddr(slug), &work)
 		if !model.ValidSlug(work.ID) {
 			t.Errorf("work id %q (%d chars) is not a valid slug", work.ID, len(work.ID))
 		}
@@ -452,23 +470,16 @@ func TestOverlongNarratorRecordingSlugs(t *testing.T) {
 	if res := check.Load(dataDir); !res.OK() {
 		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
 	}
-	recs, err := os.ReadDir(filepath.Join(dataDir, "works/ca/cast-recording/recordings"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	seen := map[string]bool{}
-	for _, e := range recs {
-		id := strings.TrimSuffix(e.Name(), ".json")
+	// Recording ids are the entry keys of the work's recordings map, so
+	// uniqueness is structural; validity is what this pins.
+	recs := recSlugsOf(t, dataDir, "cast-recording")
+	for _, id := range recs {
 		if !model.ValidSlug(id) {
 			t.Errorf("recording id %q (%d chars) is not a valid slug", id, len(id))
 		}
-		if seen[id] {
-			t.Errorf("duplicate recording id %q", id)
-		}
-		seen[id] = true
 	}
-	if len(seen) != 2 {
-		t.Errorf("expected 2 recording files, got %v", seen)
+	if len(recs) != 2 {
+		t.Errorf("expected 2 recordings, got %v", recs)
 	}
 }
 
@@ -580,7 +591,7 @@ func TestOverlongSeriesNameCollision(t *testing.T) {
 	var series struct {
 		Works []struct{ Work string } `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series", model.Shard(slugB), slugB+".json"), &series)
+	readEntity(t, dataDir, seriesAddr(slugB), &series)
 	if len(series.Works) != 2 {
 		t.Errorf("series %q holds %d works, want the 2 Beta volumes", slugB, len(series.Works))
 	}
@@ -599,10 +610,8 @@ func TestSameWorkMergesRecordings(t *testing.T) {
 	if sum.NewRecordings != 2 {
 		t.Errorf("expected 2 recordings under the shared work, got %d", sum.NewRecordings)
 	}
-	recsDir := filepath.Join(dataDir, "works/tw/twin-tale/recordings")
-	entries, _ := os.ReadDir(recsDir)
-	if len(entries) != 2 {
-		t.Errorf("expected 2 recording files, got %v", entries)
+	if recs := recSlugsOf(t, dataDir, "twin-tale"); len(recs) != 2 {
+		t.Errorf("expected 2 recordings, got %v", recs)
 	}
 }
 
@@ -631,7 +640,7 @@ func TestExtendExistingSeries(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/my/my-series.json"), &series)
+	readEntity(t, dataDir, "series/my/my-series.json", &series)
 	if len(series.Authors) != 1 || series.Authors[0] != "existing-author" {
 		t.Errorf("existing series authors were lost: %+v", series.Authors)
 	}
@@ -643,16 +652,11 @@ func TestExtendExistingSeries(t *testing.T) {
 	}
 }
 
+// listWorks returns every work slug in the tree, sorted - the pack-layout
+// answer to walking works/ for work.json files.
 func listWorks(t *testing.T, dataDir string) []string {
 	t.Helper()
-	var out []string
-	_ = filepath.Walk(filepath.Join(dataDir, "works"), func(p string, info os.FileInfo, err error) error {
-		if err == nil && !info.IsDir() {
-			out = append(out, p)
-		}
-		return nil
-	})
-	return out
+	return testpack.Slugs(t, dataDir, pack.FamilyWorks)
 }
 
 func hasWarning(warnings []string, sub string) bool {
@@ -678,14 +682,14 @@ func TestPersonSpellingVariantsMerge(t *testing.T) {
 	if len(sum.Warnings) != 0 {
 		t.Errorf("variant merge must not warn: %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "people/b-/b-v-larson-2.json")) {
+	if entryExists(t, dataDir, "people/b-/b-v-larson-2.json") {
 		t.Errorf("numbered duplicate person was created")
 	}
 	// First occurrence's name wins.
 	var person struct {
 		Name string `json:"name"`
 	}
-	readJSON(t, filepath.Join(dataDir, "people/ra/ramon-de-ocampo.json"), &person)
+	readEntity(t, dataDir, "people/ra/ramon-de-ocampo.json", &person)
 	if person.Name != "Ramón De Ocampo" {
 		t.Errorf("first-seen name should win, got %q", person.Name)
 	}
@@ -694,7 +698,7 @@ func TestPersonSpellingVariantsMerge(t *testing.T) {
 		var work struct {
 			Authors []string `json:"authors"`
 		}
-		readJSON(t, filepath.Join(dataDir, w), &work)
+		readEntity(t, dataDir, w, &work)
 		if len(work.Authors) != 1 || work.Authors[0] != "b-v-larson" {
 			t.Errorf("%s authors = %v, want [b-v-larson]", w, work.Authors)
 		}
@@ -705,14 +709,11 @@ func TestPersonVariantReusesExistingRecord(t *testing.T) {
 	// A diacritic variant of a person already in the catalog reuses the existing
 	// record; its committed name is kept and no new file is emitted.
 	dataDir := t.TempDir()
-	seedFile := `{"id":"ramon-de-ocampo","license":"CC0-1.0","name":"Ramón De Ocampo","sources":[{"type":"user"}]}`
-	full := filepath.Join(dataDir, "people/ra/ramon-de-ocampo.json")
-	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
-		t.Fatal(err)
+	const personAddress = "people/ra/ramon-de-ocampo.json"
+	seed := map[string]string{
+		personAddress: `{"id":"ramon-de-ocampo","license":"CC0-1.0","name":"Ramón De Ocampo","sources":[{"type":"user"}]}`,
 	}
-	if err := os.WriteFile(full, []byte(seedFile), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	seedTree(t, dataDir, seed)
 
 	books := `[{"asin":"B0REUSE001","title_short":"Wimpy Tales","author":"Ramon de Ocampo","narrated_by":"Fresh Voice","language":"english","region":"US","seconds":600}]`
 	sum, err := Run(writeBooks(t, books), Options{DataDir: dataDir, ImportDate: testImportDate})
@@ -722,14 +723,11 @@ func TestPersonVariantReusesExistingRecord(t *testing.T) {
 	if sum.NewPeople != 1 { // only the narrator is new
 		t.Errorf("NewPeople = %d, want 1 (author variant must reuse existing)", sum.NewPeople)
 	}
-	raw, _ := os.ReadFile(full)
-	if string(raw) != seedFile {
-		t.Errorf("existing person record was rewritten: %s", raw)
-	}
+	assertEntryUnchanged(t, dataDir, personAddress, seed)
 	var work struct {
 		Authors []string `json:"authors"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/wi/wimpy-tales/work.json"), &work)
+	readEntity(t, dataDir, "works/wi/wimpy-tales/work.json", &work)
 	if len(work.Authors) != 1 || work.Authors[0] != "ramon-de-ocampo" {
 		t.Errorf("work should reference the existing person, got %v", work.Authors)
 	}
@@ -755,7 +753,7 @@ func TestSeriesVolumesSharingShortTitle(t *testing.T) {
 	if len(sum.Warnings) != 0 {
 		t.Errorf("no merge warnings expected, got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "works/dr/dragon-heart/work.json")) {
+	if entryExists(t, dataDir, "works/dr/dragon-heart/work.json") {
 		t.Errorf("no volume may squat the ambiguous short-title slug")
 	}
 	wantWorks := map[string]string{
@@ -764,7 +762,7 @@ func TestSeriesVolumesSharingShortTitle(t *testing.T) {
 		"dragon-heart-book-10-land-of-war": "10",
 	}
 	for slug := range wantWorks {
-		if !exists(filepath.Join(dataDir, "works", slug[:2], slug, "work.json")) {
+		if !entryExists(t, dataDir, workAddr(slug)) {
 			t.Errorf("missing full-title work %q; works: %v", slug, listWorks(t, dataDir))
 		}
 	}
@@ -774,7 +772,7 @@ func TestSeriesVolumesSharingShortTitle(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/dr/dragon-heart.json"), &series)
+	readEntity(t, dataDir, "series/dr/dragon-heart.json", &series)
 	if len(series.Works) != 3 {
 		t.Fatalf("series should hold 3 works, got %d", len(series.Works))
 	}
@@ -808,21 +806,18 @@ func TestExistingWorkDifferentSeriesPosition(t *testing.T) {
 	if sum.NewWorks != 1 {
 		t.Fatalf("NewWorks = %d, want 1 (a new volume, not a merge)", sum.NewWorks)
 	}
-	if !exists(filepath.Join(dataDir, "works/dr/dragon-heart-book-5-sea-of-sand/work.json")) {
+	if !entryExists(t, dataDir, "works/dr/dragon-heart-book-5-sea-of-sand/work.json") {
 		t.Errorf("full-title work missing; works: %v", listWorks(t, dataDir))
 	}
-	// The existing volume kept its slug, file, and lone recording-less state.
-	raw, _ := os.ReadFile(filepath.Join(dataDir, "works/dr/dragon-heart/work.json"))
-	if string(raw) != seed["works/dr/dragon-heart/work.json"] {
-		t.Errorf("existing work was rewritten: %s", raw)
-	}
+	// The existing volume kept its slug and its lone recording-less state.
+	assertEntryUnchanged(t, dataDir, "works/dr/dragon-heart/work.json", seed)
 	var series struct {
 		Works []struct {
 			Work     string `json:"work"`
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/dr/dragon-heart.json"), &series)
+	readEntity(t, dataDir, "series/dr/dragon-heart.json", &series)
 	if len(series.Works) != 2 {
 		t.Fatalf("series should hold 2 works, got %+v", series.Works)
 	}
@@ -857,7 +852,7 @@ func TestSeriesPositionConflictStillWarns(t *testing.T) {
 			Work string `json:"work"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/ha/halo.json"), &series)
+	readEntity(t, dataDir, "series/ha/halo.json", &series)
 	if len(series.Works) != 1 || series.Works[0].Work != "first-strike" {
 		t.Errorf("only the first claimant should hold the position: %+v", series.Works)
 	}
@@ -880,7 +875,7 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 	if len(sum.Warnings) != 0 {
 		t.Errorf("no warnings expected, got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "works/dr/dragon-heart/work.json")) {
+	if entryExists(t, dataDir, "works/dr/dragon-heart/work.json") {
 		t.Errorf("volume 1 squatted the bare slug despite extra credits; works: %v", listWorks(t, dataDir))
 	}
 	for _, slug := range []string{
@@ -888,7 +883,7 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 		"dragon-heart-book-5-sea-of-sand",
 		"dragon-heart-book-10-land-of-war",
 	} {
-		if !exists(filepath.Join(dataDir, "works", slug[:2], slug, "work.json")) {
+		if !entryExists(t, dataDir, workAddr(slug)) {
 			t.Errorf("missing full-title work %q", slug)
 		}
 	}
@@ -897,7 +892,7 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 	var work struct {
 		Authors []string `json:"authors"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/dr/dragon-heart-book-1-iron-will/work.json"), &work)
+	readEntity(t, dataDir, "works/dr/dragon-heart-book-1-iron-will/work.json", &work)
 	wantAuthors := []string{"kirill-klevanski", "valeria-kornosenko", "j-kharkova"}
 	if !reflect.DeepEqual(work.Authors, wantAuthors) {
 		t.Errorf("volume 1 authors = %v, want %v", work.Authors, wantAuthors)
@@ -905,11 +900,11 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 	var person struct {
 		Name string `json:"name"`
 	}
-	readJSON(t, filepath.Join(dataDir, "people/va/valeria-kornosenko.json"), &person)
+	readEntity(t, dataDir, "people/va/valeria-kornosenko.json", &person)
 	if person.Name != "Valeria Kornosenko" {
 		t.Errorf("credited person name = %q, want qualifier stripped", person.Name)
 	}
-	if exists(filepath.Join(dataDir, "people/va/valeria-kornosenko-introduction.json")) {
+	if entryExists(t, dataDir, "people/va/valeria-kornosenko-introduction.json") {
 		t.Errorf("qualifier-suffixed person record was created")
 	}
 	if res := check.Load(dataDir); !res.OK() {
@@ -922,7 +917,7 @@ func TestPrePassGroupsByTitleSlugOnly(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/dr/dragon-heart.json"), &series)
+	readEntity(t, dataDir, "series/dr/dragon-heart.json", &series)
 	if len(series.Works) != 3 {
 		t.Errorf("series should hold 3 works, got %+v", series.Works)
 	}
@@ -953,13 +948,13 @@ func TestImportStripsEditionMarker(t *testing.T) {
 	if sum.NewWorks != 1 {
 		t.Fatalf("NewWorks = %d, want 1", sum.NewWorks)
 	}
-	if !exists(filepath.Join(dataDir, "works/sy/system-collapse/work.json")) {
+	if !entryExists(t, dataDir, "works/sy/system-collapse/work.json") {
 		t.Fatalf("edition marker not stripped from work slug; works: %v", listWorks(t, dataDir))
 	}
 	var work struct {
 		Title string `json:"title"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/sy/system-collapse/work.json"), &work)
+	readEntity(t, dataDir, "works/sy/system-collapse/work.json", &work)
 	if work.Title != "System Collapse" {
 		t.Errorf("stored title = %q, want %q", work.Title, "System Collapse")
 	}
@@ -972,20 +967,38 @@ func TestAudiosiloBooksSubtitlePrefixTitle(t *testing.T) {
 		{"title":"Fugitive Telemetry: Murderbot Diaries, Book 6","subtitle":"Murderbot Diaries, Book 6","authors":["Martha Wells"],"narrators":["Kevin Free"],"language":"en","asin":"B0FUGITEL1","runtime_min":180}
 	]}`
 	_, dataDir := runWith(t, RunAudiosiloBooks, env, false)
-	if !exists(filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json")) {
+	if !entryExists(t, dataDir, "works/fu/fugitive-telemetry/work.json") {
 		t.Fatalf("subtitle-derived work slug missing; works: %v", listWorks(t, dataDir))
 	}
 	var work struct {
 		Title string `json:"title"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json"), &work)
+	readEntity(t, dataDir, "works/fu/fugitive-telemetry/work.json", &work)
 	if work.Title != "Fugitive Telemetry" {
 		t.Errorf("stored title = %q, want %q", work.Title, "Fugitive Telemetry")
 	}
 }
 
-// asinsOf reads a recording file's ASIN values as a set.
-func asinsOf(t *testing.T, path string) map[string]string {
+// assertEntryUnchanged checks the record at address still decodes to exactly
+// what the seed put there. It compares decoded values rather than bytes: an
+// entry's bytes now carry the indentation of the pack it sits in, which the seed
+// literal does not.
+func assertEntryUnchanged(t *testing.T, dataDir, address string, seed map[string]string) {
+	t.Helper()
+	var got, want any
+	if err := json.Unmarshal(rawEntity(t, dataDir, address), &got); err != nil {
+		t.Fatalf("decode %s: %v", address, err)
+	}
+	if err := json.Unmarshal([]byte(seed[address]), &want); err != nil {
+		t.Fatalf("decode seed %s: %v", address, err)
+	}
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("%s was rewritten:\n got %v\nwant %v", address, got, want)
+	}
+}
+
+// asinsOf reads a recording's ASIN values as a set.
+func asinsOf(t *testing.T, dataDir, address string) map[string]string {
 	t.Helper()
 	var rec struct {
 		ASIN []struct {
@@ -993,7 +1006,7 @@ func asinsOf(t *testing.T, path string) map[string]string {
 			ASIN   string `json:"asin"`
 		} `json:"asin"`
 	}
-	readJSON(t, path, &rec)
+	readEntity(t, dataDir, address, &rec)
 	out := map[string]string{}
 	for _, a := range rec.ASIN {
 		out[a.ASIN] = a.Region
@@ -1016,14 +1029,14 @@ func TestSameEditionASINMergesOneRun(t *testing.T) {
 	if len(sum.Warnings) != 0 {
 		t.Errorf("no warnings expected (esp. no position collision), got %v", sum.Warnings)
 	}
-	if exists(filepath.Join(dataDir, "works/ma/mageling-unabridged/work.json")) {
+	if entryExists(t, dataDir, "works/ma/mageling-unabridged/work.json") {
 		t.Errorf("edition variant minted a sibling work; works: %v", listWorks(t, dataDir))
 	}
-	recs, _ := os.ReadDir(filepath.Join(dataDir, "works/ma/mageling/recordings"))
+	recs := recSlugsOf(t, dataDir, "mageling")
 	if len(recs) != 1 {
-		t.Fatalf("expected 1 recording file, got %v", recs)
+		t.Fatalf("expected 1 recording, got %v", recs)
 	}
-	got := asinsOf(t, filepath.Join(dataDir, "works/ma/mageling/recordings", recs[0].Name()))
+	got := asinsOf(t, dataDir, recAddr("mageling", recs[0]))
 	if len(got) != 2 || got["B0MAGELING"] == "" || got["B0MAGELUNA"] == "" {
 		t.Errorf("recording ASINs = %v, want both B0MAGELING and B0MAGELUNA", got)
 	}
@@ -1033,7 +1046,7 @@ func TestSameEditionASINMergesOneRun(t *testing.T) {
 			Position string `json:"position"`
 		} `json:"works"`
 	}
-	readJSON(t, filepath.Join(dataDir, "series/ma/mage-series.json"), &series)
+	readEntity(t, dataDir, "series/ma/mage-series.json", &series)
 	if len(series.Works) != 1 || series.Works[0].Work != "mageling" || series.Works[0].Position != "1" {
 		t.Errorf("series should list mageling once at 1, got %+v", series.Works)
 	}
@@ -1062,11 +1075,11 @@ func TestSameEditionASINMergesIntoExisting(t *testing.T) {
 	if sum.NewWorks != 0 || sum.NewRecordings != 0 || sum.MergedASINs != 1 {
 		t.Fatalf("summary = %+v, want 0 work / 0 recording / 1 merged ASIN", sum)
 	}
-	if exists(filepath.Join(dataDir, "works/ma/mageling-unabridged/work.json")) {
+	if entryExists(t, dataDir, "works/ma/mageling-unabridged/work.json") {
 		t.Errorf("a sibling work directory was created; works: %v", listWorks(t, dataDir))
 	}
-	recPath := filepath.Join(dataDir, "works/ma/mageling/recordings/a-reader-2021.json")
-	got := asinsOf(t, recPath)
+	const recAddress = "works/ma/mageling/recordings/a-reader-2021.json"
+	got := asinsOf(t, dataDir, recAddress)
 	if len(got) != 2 || got["B0MAGELING"] == "" || got["B0MAGELUNA"] == "" {
 		t.Errorf("recording ASINs = %v, want both", got)
 	}
@@ -1075,7 +1088,7 @@ func TestSameEditionASINMergesIntoExisting(t *testing.T) {
 		RuntimeMin int      `json:"runtime_min"`
 		Work       string   `json:"work"`
 	}
-	readJSON(t, recPath, &rec)
+	readEntity(t, dataDir, recAddress, &rec)
 	if rec.RuntimeMin != 600 || rec.Work != "mageling" || len(rec.Narrators) != 1 || rec.Narrators[0] != "a-reader" {
 		t.Errorf("unmanaged fields changed on merge: %+v", rec)
 	}
@@ -1095,9 +1108,8 @@ func TestDifferentRuntimeMakesDistinctRecording(t *testing.T) {
 	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.MergedASINs != 0 {
 		t.Fatalf("summary = %+v, want 1 work / 2 recordings / 0 merged", sum)
 	}
-	recs, _ := os.ReadDir(filepath.Join(dataDir, "works/di/divergent-tale/recordings"))
-	if len(recs) != 2 {
-		t.Fatalf("expected 2 recording files, got %v", recs)
+	if recs := recSlugsOf(t, dataDir, "divergent-tale"); len(recs) != 2 {
+		t.Fatalf("expected 2 recordings, got %v", recs)
 	}
 	if len(listWorks(t, dataDir)) == 0 {
 		t.Fatalf("no works written")
@@ -1155,20 +1167,16 @@ func TestReReleaseMergesIntoMatchingRuntimeSibling(t *testing.T) {
 	if sum.NewRecordings != 0 || sum.MergedASINs != 1 {
 		t.Fatalf("summary = %+v, want 0 new recordings / 1 merged ASIN", sum)
 	}
-	if exists(filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021-3.json")) {
+	if entryExists(t, dataDir, "works/tw/two-takes/recordings/a-reader-2021-3.json") {
 		t.Errorf("a third recording was minted instead of merging into the runtime match")
 	}
-	// The 600-min recording is untouched (still the hand-seeded file, so it is not
-	// re-read through the canonical-enforcing asinsOf); it must not have gained
-	// the re-release ASIN.
-	firstRaw, err := os.ReadFile(filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021.json"))
-	if err != nil {
-		t.Fatal(err)
-	}
+	// The 600-min recording is untouched; it must not have gained the re-release
+	// ASIN.
+	firstRaw := rawEntity(t, dataDir, "works/tw/two-takes/recordings/a-reader-2021.json")
 	if !strings.Contains(string(firstRaw), "B0FIRST001") || strings.Contains(string(firstRaw), "B0RERELES1") {
 		t.Errorf("600-min recording changed: %s", firstRaw)
 	}
-	second := asinsOf(t, filepath.Join(dataDir, "works/tw/two-takes/recordings/a-reader-2021-2.json"))
+	second := asinsOf(t, dataDir, "works/tw/two-takes/recordings/a-reader-2021-2.json")
 	if len(second) != 2 || second["B0SECOND02"] == "" || second["B0RERELES1"] == "" {
 		t.Errorf("300-min recording ASINs = %v, want both B0SECOND02 and B0RERELES1", second)
 	}
@@ -1191,18 +1199,16 @@ func TestAbridgedConflictBlocksMerge(t *testing.T) {
 	if sum.NewWorks != 1 || sum.NewRecordings != 2 || sum.MergedASINs != 0 {
 		t.Fatalf("summary = %+v, want 1 work / 2 recordings / 0 merged", sum)
 	}
-	recDir := filepath.Join(dataDir, "works/fo/foo/recordings")
-	recs, _ := os.ReadDir(recDir)
-	if len(recs) != 2 {
-		t.Fatalf("expected 2 recording files, got %v", recs)
+	if recs := recSlugsOf(t, dataDir, "foo"); len(recs) != 2 {
+		t.Fatalf("expected 2 recordings, got %v", recs)
 	}
 	// The abridged edition landed on the numeric-suffixed slug and must carry the
 	// derived abridged:true; the plain "Foo" recording must have no abridged flag.
-	abridged := readAbridged(t, filepath.Join(recDir, "a-reader-2021-2.json"))
+	abridged := readAbridged(t, dataDir, recAddr("foo", "a-reader-2021-2"))
 	if abridged == nil || *abridged != true {
 		t.Errorf("abridged edition recording abridged = %v, want true", abridged)
 	}
-	plain := readAbridged(t, filepath.Join(recDir, "a-reader-2021.json"))
+	plain := readAbridged(t, dataDir, recAddr("foo", "a-reader-2021"))
 	if plain != nil {
 		t.Errorf("plain recording abridged = %v, want omitted (nil)", plain)
 	}
@@ -1211,14 +1217,14 @@ func TestAbridgedConflictBlocksMerge(t *testing.T) {
 	}
 }
 
-// readAbridged reads a recording file's abridged tri-state (nil when the field
-// is absent).
-func readAbridged(t *testing.T, path string) *bool {
+// readAbridged reads a recording's abridged tri-state (nil when the field is
+// absent).
+func readAbridged(t *testing.T, dataDir, address string) *bool {
 	t.Helper()
 	var rec struct {
 		Abridged *bool `json:"abridged"`
 	}
-	readJSON(t, path, &rec)
+	readEntity(t, dataDir, address, &rec)
 	return rec.Abridged
 }
 
@@ -1269,7 +1275,7 @@ func TestAudiosiloBooksStripsEditionMarkerBeforeSplit(t *testing.T) {
 		{"title":"Fugitive Telemetry: Murderbot Diaries, Book 6 (Unabridged)","subtitle":"Murderbot Diaries, Book 6","authors":["Martha Wells"],"narrators":["Kevin Free"],"language":"en","asin":"B0FUGITEL2","runtime_min":180}
 	]}`
 	_, dataDir := runWith(t, RunAudiosiloBooks, env, false)
-	if !exists(filepath.Join(dataDir, "works/fu/fugitive-telemetry/work.json")) {
+	if !entryExists(t, dataDir, "works/fu/fugitive-telemetry/work.json") {
 		t.Fatalf("marker not stripped from work slug; works: %v", listWorks(t, dataDir))
 	}
 }
@@ -1300,7 +1306,7 @@ func TestMergedASINGetsProvenance(t *testing.T) {
 			Ref  string `json:"ref"`
 		} `json:"sources"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/ma/mageling/recordings/a-reader-2021.json"), &rec)
+	readEntity(t, dataDir, "works/ma/mageling/recordings/a-reader-2021.json", &rec)
 	if len(rec.Sources) != 2 {
 		t.Fatalf("sources = %+v, want 2 entries after merge", rec.Sources)
 	}
@@ -1345,7 +1351,7 @@ func TestAppendSourceUnique(t *testing.T) {
 func TestAddToSeriesRejectsEmptyName(t *testing.T) {
 	// Defense in depth below the parsers' non-empty-name invariant: a direct
 	// caller must never mint a nameless series (slug "series").
-	p := &planner{series: map[string]*seriesState{}, writes: map[string][]byte{}}
+	p := &planner{series: map[string]*seriesState{}}
 	var warned []string
 	warn := func(format string, args ...any) { warned = append(warned, fmt.Sprintf(format, args...)) }
 	p.addToSeries("", "some-work", "1", warn)
@@ -1423,7 +1429,7 @@ func TestRejectedASINStaysAvailable(t *testing.T) {
 	if sum.MergedASINs != 1 {
 		t.Errorf("MergedASINs = %d, want the good entry's ASIN merged into the recording", sum.MergedASINs)
 	}
-	asins := asinsOf(t, filepath.Join(dataDir, "works/wa/wandering-book/recordings/a-reader-2021.json"))
+	asins := asinsOf(t, dataDir, "works/wa/wandering-book/recordings/a-reader-2021.json")
 	if asins["B0LOSTASIN"] != "us" {
 		t.Errorf("asins = %v, want B0LOSTASIN recorded under us", asins)
 	}
@@ -1446,10 +1452,10 @@ func TestCrossYearSiblingMerges(t *testing.T) {
 	if sum.NewWorks != 1 || sum.NewRecordings != 1 || sum.MergedASINs != 1 {
 		t.Fatalf("summary = %+v, want 1 work / 1 recording / 1 merged ASIN", sum)
 	}
-	if exists(filepath.Join(dataDir, "works/on/one-production/recordings/a-reader-2020.json")) {
+	if entryExists(t, dataDir, "works/on/one-production/recordings/a-reader-2020.json") {
 		t.Errorf("a second recording was minted for the same production")
 	}
-	asins := asinsOf(t, filepath.Join(dataDir, "works/on/one-production/recordings/a-reader-2019.json"))
+	asins := asinsOf(t, dataDir, "works/on/one-production/recordings/a-reader-2019.json")
 	if asins["B0DEC20190"] != "us" || asins["B0JAN20200"] != "uk" {
 		t.Errorf("asins = %v, want both releases on one recording", asins)
 	}
@@ -1470,7 +1476,7 @@ func TestCrossYearDifferentRuntimeStaysDistinct(t *testing.T) {
 	if sum.NewRecordings != 2 || sum.MergedASINs != 0 {
 		t.Fatalf("summary = %+v, want 2 distinct recordings", sum)
 	}
-	if !exists(filepath.Join(dataDir, "works/tw/two-productions/recordings/a-reader-2020.json")) {
+	if !entryExists(t, dataDir, "works/tw/two-productions/recordings/a-reader-2020.json") {
 		t.Errorf("the second production did not get its own recording")
 	}
 }
@@ -1504,7 +1510,7 @@ func TestMergedRecordingCarriesISBN(t *testing.T) {
 	var rec struct {
 		ISBN []string `json:"isbn"`
 	}
-	readJSON(t, filepath.Join(dataDir, "works/re/rerelease/recordings/a-reader-2021.json"), &rec)
+	readEntity(t, dataDir, "works/re/rerelease/recordings/a-reader-2021.json", &rec)
 	if !reflect.DeepEqual(rec.ISBN, []string{"9780306406157", "9780007560776"}) {
 		t.Errorf("isbn = %v, want the incumbent's plus the merged one", rec.ISBN)
 	}
