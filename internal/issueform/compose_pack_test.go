@@ -285,3 +285,65 @@ func TestStrayFieldsSurviveACorrection(t *testing.T) {
 		t.Errorf("the parent work was rewritten by a recording correction:\n%s", work)
 	}
 }
+
+// TestWorkCreditsSurviveIntake pins the intake side of contributor credits.
+// The forms deliberately do NOT gain a credits field this round (the surface
+// stays minimal pre-seed), so the only thing intake owes the field is that its
+// read-modify-writes preserve it: a work seeded with credits must still carry
+// them after a submission splices a recording into its composite entry, and
+// after a correction rewrites one of its other fields.
+//
+// It is a real risk rather than a theoretical one - both paths rewrite the
+// WHOLE works entry, so a composer that rebuilt the work from typed fields
+// instead of editing the decoded record would drop every field it does not know
+// about, credits included.
+func TestWorkCreditsSurviveIntake(t *testing.T) {
+	files := seedFiles()
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "credits": [{"person": "john-smith", "role": "translator"}],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "user", "imported_at": "2026-07-01"}],
+  "title": "Existing Work"
+}`
+	dir := t.TempDir()
+	testpack.Seed(t, dir, files)
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("seed tree with credits does not validate: %v", res.Problems)
+	}
+
+	// A second narration is spliced into the same works entry.
+	res := Process(Options{DataDir: dir, Template: "add-recording",
+		Body: addRecordingBody("existing-work", "Nora Voice", "US: B444444442", true),
+		Date: "2026-07-31"})
+	if res.Status != StatusOK {
+		t.Fatalf("add-recording status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if work := readFile(t, dir, "works/ex/existing-work/work.json"); !strings.Contains(work, `"role": "translator"`) {
+		t.Errorf("adding a recording dropped the work's credits:\n%s", work)
+	}
+
+	// A correction rewrites another field of the same record.
+	fix := Process(Options{DataDir: dir, Template: "correct-data",
+		Body: field(fCorrectRecord, "works/ex/existing-work/work.json") +
+			field(fCorrectField, "title") +
+			field(fCorrectCorrected, "Existing Work, Corrected") +
+			field(fCorrectEvidence, "the publisher's page") +
+			"### " + fCC0 + "\n\n" + checkedBox(),
+		Date: "2026-07-31"})
+	if fix.Status != StatusOK {
+		t.Fatalf("correction status = %q, messages = %v", fix.Status, fix.Messages)
+	}
+	work := readFile(t, dir, "works/ex/existing-work/work.json")
+	if !strings.Contains(work, `"role": "translator"`) {
+		t.Errorf("a correction dropped the work's credits:\n%s", work)
+	}
+	if !strings.Contains(work, `"title": "Existing Work, Corrected"`) {
+		t.Errorf("the correction was not applied:\n%s", work)
+	}
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("tree failed validation after intake:\n%v", res.Problems)
+	}
+}

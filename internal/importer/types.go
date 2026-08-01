@@ -42,10 +42,14 @@ type OutPerson struct {
 }
 
 type outWork struct {
-	ID       string   `json:"id"`
-	Title    string   `json:"title"`
-	Authors  []string `json:"authors"`
-	Language string   `json:"language"`
+	ID      string   `json:"id"`
+	Title   string   `json:"title"`
+	Authors []string `json:"authors"`
+	// Credits are the role-qualified contributor credits a source STATED, as
+	// (person, role) pairs from the schema's controlled vocabulary. Omitted
+	// when the source stated no role - the overwhelming majority of rows.
+	Credits  []model.Credit `json:"credits,omitempty"`
+	Language string         `json:"language"`
 	// Genres are the project's own vocabulary slugs, sorted ascending
 	// (checkGenresSorted pins the order). Omitted when the source carried no
 	// genre that maps - never a retailer's raw genre strings (LICENSING.md).
@@ -189,6 +193,13 @@ type Summary struct {
 	// than the catalogue churning between two users. Always 0 for a libex run,
 	// whose contradictions are ordinary source noise and only warn.
 	Conflicts int
+	// Credits counts the (person, role) contributor credits a run wrote onto a
+	// work, whether it created that work or filled the field on an existing one.
+	// It is the counter that makes role capture VISIBLE in a seed wave: the
+	// qualifiers were previously stripped and discarded, so a wave summary that
+	// did not report this would look identical whether roles were captured or
+	// silently lost again.
+	Credits int
 	// SeriesPlacements counts works an enrichment run placed into an existing
 	// series they were not yet a member of. Always 0 outside ModeEnrich.
 	SeriesPlacements int

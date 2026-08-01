@@ -42,11 +42,14 @@ public domain under
 [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/). This covers:
 
 - Works: title, subtitle, authors, language, first-published year, series
-  membership, and genre labels drawn from the project's own controlled
+  membership, contributor credits (who translated, edited or illustrated the
+  book - a role someone held is a fact about the book, stated by a source and
+  never inferred), and genre labels drawn from the project's own controlled
   vocabulary (see "Genres" below).
 - Recordings: narrators, abridged flag, runtime, release date, publisher name,
   region-scoped ASINs, ISBNs, chapter titles and timestamps, cover URL.
-- People: author and narrator names and their identifiers.
+- People: author and narrator names, their identifiers, and the entity kind
+  (individual / group / publisher) when someone has classified the record.
 - Series: names and the ordered list of member works (with string positions such
   as `"2.5"`).
 - Identifiers and cross-references of every kind.
@@ -92,8 +95,9 @@ dropped.
 The import path (OpenAudible `books.json`, Libation exports, per-title
 Audible/Audnexus/Libex lookup at contribution time, and curated batch imports
 from a cooperating catalogue) ingests **factual fields only** - title, ASIN,
-narrator names, series order, runtime, chapter titles and timestamps, and
-normalized genres per the section above. Publisher marketing copy (the
+narrator names, series order, runtime, chapter titles and timestamps,
+contributor roles a source stated on a credit, and normalized genres per the
+section above. Publisher marketing copy (the
 `description` / `summary` fields), ratings, and cover images are copyrighted or
 derived expression and are stripped, not imported.
 

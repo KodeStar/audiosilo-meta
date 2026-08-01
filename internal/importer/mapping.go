@@ -3,6 +3,7 @@ package importer
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -160,12 +161,21 @@ func isoDatePart(ts string) string {
 // never strip an arbitrary " - X" suffix, since a band/pen name can legitimately
 // contain a spaced hyphen ("The All - Stars").
 //
-// The list is EVIDENCE-DRIVEN, measured over the full libex dump (~1.06M books):
-// every entry below appears as a trailing qualifier on at least three distinct
-// credit names. It is deliberately NOT a guess at what a retailer might emit -
-// widening it risks eating a real name. Ambiguous fragments are excluded on
-// purpose: a bare "with" is a co-author connector as often as a credit role, so
-// it is not here.
+// It is BOTH the strip vocabulary and the qualifier -> role mapping. The value
+// is the set of schema roles the qualifier states, which is how a stripped
+// qualifier survives as data (work.credits) instead of being discarded: one
+// role for almost every entry, SEVERAL for the combined strings the dump really
+// carries ("editor and translator"), and NONE for a qualifier that is a genuine
+// credit word with no home in the controlled vocabulary. A nil value means
+// "strip exactly as before, emit no credit" - facts only, never a guessed role.
+//
+// The list is EVIDENCE-DRIVEN, measured over the full libex dump (~1.06M books;
+// the counts in the comments are distinct books backing that exact spelling).
+// The inclusion bar is 3 books, which is what keeps out the long tail of
+// one-off scraping typos. It is deliberately NOT a guess at what a retailer
+// might emit - widening it risks eating a real name. Ambiguous fragments are
+// excluded on purpose: a bare "with" is a co-author connector as often as a
+// credit role, so it is not here.
 //
 // Keys are lowercase, single-spaced, NFC-normalized and hyphen-free (pinned by
 // TestRoleQualifiersVocabulary); lookup lowercases with the Unicode-aware
@@ -174,54 +184,139 @@ func isoDatePart(ts string) string {
 // filesystem or an older exporter really does emit "U" + U+0308). Both the
 // accented and the ASCII-folded spelling of a German role are listed because the
 // dump carries both.
-var roleQualifiers = map[string]bool{
+var roleQualifiers = map[string][]string{
 	// English.
-	"translator":           true,
-	"translated by":        true,
-	"translation":          true,
-	"introduction":         true,
-	"intro":                true,
-	"foreword":             true,
-	"foreword by":          true,
-	"afterword":            true,
-	"preface":              true,
-	"editor":               true,
-	"edited by":            true,
-	"illustrator":          true,
-	"illustration":         true,
-	"adaptation":           true,
-	"adaptor":              true,
-	"contributor":          true,
-	"narrator":             true,
-	"ghostwriter":          true,
-	"compilation":          true,
-	"creator":              true,
-	"producer":             true,
-	"instrumental soloist": true,
+	"translator":        {model.RoleTranslator},   // 10,624
+	"translated by":     {model.RoleTranslator},   // 54
+	"translation":       {model.RoleTranslator},   // 53
+	"introduction":      {model.RoleIntroduction}, // 2,490
+	"introduction by":   {model.RoleIntroduction}, // 10
+	"introductions":     {model.RoleIntroduction}, // 5
+	"intro":             {model.RoleIntroduction}, // 2, kept from the pre-measurement list
+	"foreword":          {model.RoleForeword},     // 2,175
+	"foreword by":       {model.RoleForeword},     // 96
+	"foreward":          {model.RoleForeword},     // 21, a misspelling the dump carries
+	"afterword":         {model.RoleAfterword},    // 89
+	"afterword by":      {model.RoleAfterword},    // 5
+	"preface":           {model.RolePreface},      // 72
+	"editor":            {model.RoleEditor},       // 2,454
+	"edited by":         {model.RoleEditor},       // 37
+	"illustrator":       {model.RoleIllustrator},  // 852
+	"illustration":      {model.RoleIllustrator},  // 54
+	"illustrated by":    {model.RoleIllustrator},  // 21
+	"illustrations":     {model.RoleIllustrator},  // 7
+	"cover illustrator": {model.RoleIllustrator},  // 7
+	"ilustrator":        {model.RoleIllustrator},  // 3, a misspelling
+	"adaptation":        {model.RoleAdaptation},   // 248
+	"adaptor":           {model.RoleAdaptation},   // 84
+	"adapter":           {model.RoleAdaptation},   // 18
+	"adaption":          {model.RoleAdaptation},   // 8, a variant spelling
+	"adaptations":       {model.RoleAdaptation},   // 3
+	"contributor":       {model.RoleContributor},  // 435
+
+	// Stripped, but NOT credit roles in the controlled vocabulary. They stay in
+	// the strip list because they are real qualifiers a name should not keep;
+	// they map to nothing because the vocabulary has no honest home for them and
+	// inventing one would be a guess:
+	"narrator":             nil, // narration is modeled by recording.narrators
+	"ghostwriter":          nil, // uncredited authorship, not a contributor role
+	"compilation":          nil, // a `compiler` role is a separate, later call
+	"creator":              nil, // ~14 books; under-attested, held for a maintainer call
+	"producer":             nil, // 3 books, all narrator-side
+	"instrumental soloist": nil, // 1 book, narrator-side
 
 	// German.
-	"herausgeber":  true,
-	"übersetzer":   true,
-	"übersetzerin": true,
-	"ubersetzer":   true,
+	"herausgeber":  {model.RoleEditor},       // 44
+	"übersetzer":   {model.RoleTranslator},   // 5,364
+	"ubersetzer":   {model.RoleTranslator},   // the ASCII-folded spelling
+	"übersetzerin": {model.RoleTranslator},   // 65
+	"ubersetzerin": {model.RoleTranslator},   //
+	"übersetzung":  {model.RoleTranslator},   // 13
+	"ubersetzung":  {model.RoleTranslator},   //
+	"vorwort":      {model.RoleForeword},     // 10
+	"einführung":   {model.RoleIntroduction}, // 4
+	"einfuhrung":   {model.RoleIntroduction}, //
+	"bearbeitung":  {model.RoleAdaptation},   // 6
 
 	// French.
-	"traducteur":    true,
-	"traductrice":   true,
-	"illustrateur":  true,
-	"illustratrice": true,
+	"traducteur":    {model.RoleTranslator},   // 1,191
+	"traductrice":   {model.RoleTranslator},   // 154
+	"traduction":    {model.RoleTranslator},   // 12
+	"illustrateur":  {model.RoleIllustrator},  // 136
+	"illustratrice": {model.RoleIllustrator},  // 58
+	"illustateur":   {model.RoleIllustrator},  // 10, a misspelling
+	"préface":       {model.RolePreface},      // 10
+	"présentation":  {model.RoleIntroduction}, // 4
+	"postface":      {model.RoleAfterword},    // 3
 
 	// Italian.
-	"traduttore":  true,
-	"traduttrice": true,
-	"curatore":    true,
+	"traduttore":   {model.RoleTranslator},   // 1,516
+	"traduttrice":  {model.RoleTranslator},   // the feminine form
+	"traduzione":   {model.RoleTranslator},   // 35
+	"curatore":     {model.RoleEditor},       // 29
+	"illustratore": {model.RoleIllustrator},  // 11
+	"introduzione": {model.RoleIntroduction}, // 10
+	"prefazione":   {model.RolePreface},      // 8
+	"postfazione":  {model.RoleAfterword},    // 7
 
 	// Spanish / Portuguese / Romanian.
-	"traductor":  true,
-	"traductora": true,
-	"tradutor":   true,
-	"tradução":   true,
-	"traducător": true,
+	"traductor":    {model.RoleTranslator},   // 668
+	"tradutor":     {model.RoleTranslator},   // 286
+	"tradução":     {model.RoleTranslator},   // 229
+	"traducător":   {model.RoleTranslator},   // 32
+	"traductora":   {model.RoleTranslator},   // 20
+	"traduccion":   {model.RoleTranslator},   // 3, the unaccented spelling
+	"adaptador":    {model.RoleAdaptation},   // 19
+	"editora":      {model.RoleEditor},       // 17, the feminine "editor" in a credit position
+	"ilustrador":   {model.RoleIllustrator},  // 7
+	"adaptação":    {model.RoleAdaptation},   // 4 across both numbers
+	"adaptações":   {model.RoleAdaptation},   //
+	"introducción": {model.RoleIntroduction}, // 3
+
+	// Combined qualifiers: one string naming TWO roles. They are a real,
+	// recurring pattern in the dump, and they are exactly why credits is a list
+	// of (person, role) pairs rather than a role field on the person - the same
+	// person gets one entry per role. Spellings of a combo whose dominant form
+	// clears the bar ride along with it.
+	"editor and translator":   {model.RoleEditor, model.RoleTranslator},   // 9
+	"editor translator":       {model.RoleEditor, model.RoleTranslator},   // 6
+	"translator and editor":   {model.RoleEditor, model.RoleTranslator},   // 3
+	"translator/editor":       {model.RoleEditor, model.RoleTranslator},   // 3
+	"editor/translator":       {model.RoleEditor, model.RoleTranslator},   // 3
+	"editor introduction":     {model.RoleEditor, model.RoleIntroduction}, // 7
+	"editor and introduction": {model.RoleEditor, model.RoleIntroduction}, // 6
+	"editor/introduction":     {model.RoleEditor, model.RoleIntroduction}, // 2
+	"introduction editor":     {model.RoleEditor, model.RoleIntroduction}, // 2
+	"editor and contributor":  {model.RoleContributor, model.RoleEditor},  // 4
+	// "author" is not a credit role - authorship is already the work's authors
+	// list - so these two state exactly one role that credits can carry.
+	"author/editor": {model.RoleEditor}, // 4
+	"editor/author": {model.RoleEditor}, // 4
+}
+
+// credentialTitles are the academic and generational title fragments the source
+// stacks AFTER a role in one qualifier blob ("X - Introduction M.D.", "X -
+// Editor Jr."). roleSuffixRE captures the whole tail as one string, so the role
+// would not match its own vocabulary entry with the title still attached.
+//
+// Trimming them is safe because it only ever CHANGES an outcome when what
+// remains is a listed role: "smith jr." trims to "smith", which is not a role,
+// so that name keeps its suffix exactly as before.
+var credentialTitles = map[string]bool{
+	"m.d.": true, "md": true, "ph.d.": true, "phd": true, "jr.": true, "jr": true,
+}
+
+// trimCredentialTitles drops trailing credential fragments from a captured
+// qualifier, repeatedly - the dump really does stack them ("introduction md
+// md", "editor ph.d. ph.d."). It never returns an empty string: a qualifier
+// that is NOTHING but a credential ("md") is left whole, and would not match a
+// role anyway.
+func trimCredentialTitles(qualifier string) string {
+	words := strings.Fields(qualifier)
+	for len(words) > 1 && credentialTitles[words[len(words)-1]] {
+		words = words[:len(words)-1]
+	}
+	return strings.Join(words, " ")
 }
 
 // prefixCredits are the leading credit phrases the dump carries in front of a
@@ -263,20 +358,59 @@ const maxCleanPasses = 8
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
 //
-// The person stays in the credit list under the cleaned name - there is no role
-// modeling yet (a future schema item; see the roadmap note in CLAUDE.md). Every
-// rule is a no-op when it would leave an empty name, so a degenerate input like
-// "- translator" is returned unchanged.
+// The person stays in the credit list under the cleaned name. The stripped role
+// is no longer discarded - CreditWithRoles returns it, and the importer records
+// it as a work credit (schema work.credits). Every rule is a no-op when it would
+// leave an empty name, so a degenerate input like "- translator" is returned
+// unchanged.
 func CleanCreditName(name string) string {
-	cleaned := name
+	cleaned, _ := CreditWithRoles(name)
+	return cleaned
+}
+
+// CreditWithRoles is CleanCreditName plus the ROLES the qualifiers it stripped
+// stated, mapped onto the schema's controlled vocabulary and returned sorted and
+// deduplicated (so "X - Translator - translator" states translator once).
+//
+// roles is nil unless a stripped qualifier actually maps: a qualifier with no
+// vocabulary entry strips exactly as it always did and states nothing, which is
+// the facts-only posture - an unmapped role is not a role we may invent.
+//
+// It is the shared half of the two questions every caller has about a source
+// credit ("what is this person called?" and "what did the source say they
+// did?"), answered in ONE pass so the name and the roles can never come from
+// different cleanings.
+func CreditWithRoles(name string) (cleaned string, roles []string) {
+	cleaned = name
+	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
-		next := collapseDoubledName(stripRoleQualifier(stripPrefixCredit(cleaned)))
+		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
+		next := collapseDoubledName(stripped)
 		if next == cleaned {
 			break
 		}
 		cleaned = next
+		stated = append(stated, passRoles...)
 	}
-	return cleaned
+	return cleaned, sortedUniqueRoles(stated)
+}
+
+// sortedUniqueRoles sorts and deduplicates a collected role list, returning nil
+// for an empty one. Sorting is what makes an import DETERMINISTIC: the order
+// roles were stripped in is an artifact of how the source spelled the name, not
+// a fact about the book.
+func sortedUniqueRoles(roles []string) []string {
+	if len(roles) == 0 {
+		return nil
+	}
+	sort.Strings(roles)
+	out := roles[:1]
+	for _, r := range roles[1:] {
+		if r != out[len(out)-1] {
+			out = append(out, r)
+		}
+	}
+	return out
 }
 
 // stripPrefixCredit drops one leading phrase from prefixCredits when a non-empty
@@ -318,26 +452,32 @@ func cutPrefixFold(s, prefix string) (rest string, ok bool) {
 }
 
 // stripRoleQualifier drops ONE trailing role qualifier (see roleSuffixRE and
-// roleQualifiers). It returns the name unchanged when the suffix is not a listed
-// role or when stripping would leave nothing.
+// roleQualifiers) and reports the schema roles that qualifier stated. It returns
+// the name unchanged, and no roles, when the suffix is not a listed role or when
+// stripping would leave nothing.
 //
 // The captured role is lowercased, collapsed to single spaces AND re-composed to
 // NFC before the lookup: the map keys are NFC, so a decomposed "Übersetzer"
-// ("U" + U+0308) would otherwise never match its own entry.
-func stripRoleQualifier(name string) string {
+// ("U" + U+0308) would otherwise never match its own entry. A capture that does
+// not match is retried with its trailing credential titles trimmed, which is the
+// one shape the source stacks onto an otherwise ordinary role.
+func stripRoleQualifier(name string) (string, []string) {
 	m := roleSuffixRE.FindStringSubmatchIndex(name)
 	if m == nil {
-		return name
+		return name, nil
 	}
 	role := norm.NFC.String(strings.ToLower(strings.Join(strings.Fields(name[m[2]:m[3]]), " ")))
-	if !roleQualifiers[role] {
-		return name
+	roles, listed := roleQualifiers[role]
+	if !listed {
+		if roles, listed = roleQualifiers[trimCredentialTitles(role)]; !listed {
+			return name, nil
+		}
 	}
 	cleaned := strings.TrimSpace(name[:m[0]])
 	if cleaned == "" {
-		return name
+		return name, nil
 	}
-	return cleaned
+	return cleaned, roles
 }
 
 // collapseDoubledName collapses a name whose words split into two identical
@@ -357,17 +497,50 @@ func collapseDoubledName(name string) string {
 	return strings.Join(words[:half], " ")
 }
 
-// SplitNames splits a comma-joined list of names ("A, B, C"), trimming each,
-// cleaning the credit (CleanCreditName), and dropping empties. It returns nil
-// when nothing usable remains.
-func SplitNames(joined string) []string {
-	var out []string
+// credit is one source credit: the cleaned name, and the roles the trailing
+// qualifier it was cleaned of stated (nil for the overwhelming majority, which
+// carry no qualifier at all).
+type credit struct {
+	name  string
+	roles []string
+}
+
+// splitCredits splits a comma-joined list of names ("A, B, C"), trimming each,
+// cleaning the credit and keeping the roles it stated, and dropping empties. It
+// returns nil when nothing usable remains.
+func splitCredits(joined string) []credit {
+	var out []credit
 	for _, part := range strings.Split(joined, ",") {
 		if name := strings.TrimSpace(part); name != "" {
-			out = append(out, CleanCreditName(name))
+			cleaned, roles := CreditWithRoles(name)
+			out = append(out, credit{name: cleaned, roles: roles})
 		}
 	}
 	return out
+}
+
+// creditNamesOf is a credit list's names, for the callers that only need the
+// people (every narrator path, and the recordings-only work matcher).
+func creditNamesOf(credits []credit) []string {
+	if len(credits) == 0 {
+		return nil
+	}
+	out := make([]string, 0, len(credits))
+	for _, c := range credits {
+		out = append(out, c.name)
+	}
+	return out
+}
+
+// SplitNames splits a comma-joined list of names ("A, B, C"), trimming each,
+// cleaning the credit (CleanCreditName), and dropping empties. It returns nil
+// when nothing usable remains.
+//
+// It is the name-only view of splitCredits, kept as the shared public helper
+// (pkg/scan reads tags through it) because a consumer outside the importer has
+// no work record to hang a role on.
+func SplitNames(joined string) []string {
+	return creditNamesOf(splitCredits(joined))
 }
 
 var (

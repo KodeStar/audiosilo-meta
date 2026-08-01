@@ -13,13 +13,22 @@ Four kinds of thing live in `data/`:
 
 - **Work** - the *abstract book*: its title, subtitle, authors, language, and
   series membership. A work does not have a narrator or a runtime, because those
-  belong to a specific narration.
+  belong to a specific narration. It may also carry **credits**: contributors in
+  a role that is not authorship (translator, editor, illustrator, introduction
+  and the rest of the controlled list in
+  `schema/common.schema.json` `$defs/credit_role`), each one a
+  `{"person": "<slug>", "role": "<role>"}` pair. Credits are optional and only
+  ever recorded when a source *stated* the role; the person also stays in
+  `authors` when the source credited them there.
 - **Recording** - a *specific narration* of a work: its narrators, whether it is
   abridged, its runtime, release date, publisher, region-scoped ASINs, ISBNs,
   cover URL, and chapters. One work can have many recordings.
 - **Person** - a human, shared across roles. The same `people/` entity is
   referenced by a work as an **author** and by a recording as a **narrator**. A
-  person can be both.
+  person can be both. An optional `kind` (`person` / `group` / `publisher`)
+  marks the records that are not an individual - a full cast credited as a unit,
+  or a corporate credit of record. Leaving it off is normal: absence reads as
+  "an individual, or nobody has classified it", never as a guess.
 - **Series** - a named series with an ordered list of member works. Positions are
   strings, so half-numbered entries like `"2.5"` work.
 
@@ -210,12 +219,15 @@ imports**: they follow the bounded posture in [LICENSING.md](LICENSING.md) and
 the batch-import rules in [GOVERNANCE.md](GOVERNANCE.md) (named source, stated
 selection rationale, reviewable tranches - never a catalogue mirror). Retailer
 genre strings are mapped onto the normalized vocabulary in code; anything
-unmapped is dropped with a warning.
+unmapped is dropped with a warning. A trailing role qualifier on an author
+credit ("Marco Rossi - Traduttore") is cleaned off the person's name, as it
+always was, and the role it stated is now recorded as a work credit; a qualifier
+with no place in the controlled vocabulary is still just stripped.
 
 `metaimport libex <rows.json> --enrich [--dry-run]` is the **backfill** half:
-instead of creating anything, it fills ONLY absent facts (genres, ISBNs,
-runtime, release date, publisher, cover, chapters) on works and recordings the
-catalogue already holds, matched by ASIN, and places already-catalogued works
+instead of creating anything, it fills ONLY absent facts (genres, credits,
+ISBNs, runtime, release date, publisher, cover, chapters) on works and
+recordings the catalogue already holds, matched by ASIN, and places already-catalogued works
 into already-catalogued series. Existing values always win; a row whose runtime
 or release date contradicts the recorded production is not used at all; every
 change is stamped with a `libex-import` source. Rows for books the catalogue

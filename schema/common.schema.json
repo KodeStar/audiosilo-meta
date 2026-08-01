@@ -170,6 +170,44 @@
         "$ref": "common.schema.json#/$defs/genre"
       }
     },
+    "credit_role": {
+      "description": "One contributor role from the project's own controlled vocabulary. Authorship and narration are deliberately absent: they are modeled by work.authors and recording.narrators, and a credit never restates them. The list is owned by this project (never a retailer's), starts from the roles the import sources actually attest, and grows only by amending this enum - which is additive, so a consumer that does not know a value can ignore it.",
+      "type": "string",
+      "enum": [
+        "adaptation",
+        "afterword",
+        "contributor",
+        "editor",
+        "foreword",
+        "illustrator",
+        "introduction",
+        "preface",
+        "translator"
+      ]
+    },
+    "credit": {
+      "description": "One contributor credit: a person, in a stated role. The person is a slug into the people family, exactly like an author or a narrator.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["person", "role"],
+      "properties": {
+        "person": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "role": {
+          "$ref": "common.schema.json#/$defs/credit_role"
+        }
+      }
+    },
+    "credit_list": {
+      "description": "Role-qualified contributor credits. One person MAY appear several times in different roles (a source really does credit one person as 'editor and translator'), but never twice in the SAME role: uniqueItems rejects the exactly-repeated object and pkg/check's credit-pair rule reports it in human terms.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common.schema.json#/$defs/credit"
+      }
+    },
     "isbn": {
       "type": "string",
       "pattern": "^(\\d{9}[0-9Xx]|\\d{13})$"

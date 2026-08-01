@@ -371,7 +371,12 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // Audible subtitle is marketing or series copy, not the edition's own subtitle -
 // see libexToBook), and added_at (a creation stamp).
 func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
-	if len(b.genres) == 0 && !p.userTier {
+	// The credits the row STATES, restricted to people the catalogue already
+	// holds - enrichment creates nothing, so a role qualifier naming a person we
+	// do not have states a credit we cannot reference (metacheck's credit
+	// integrity rule) and is dropped rather than written dangling.
+	credits := p.workCredits(rowAuthorCredits(b))
+	if len(b.genres) == 0 && len(credits) == 0 && !p.userTier {
 		return
 	}
 	raw := p.workEntryRaw(workSlug)
@@ -398,6 +403,17 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 			raw["genres"] = mapped
 			changed = true
 		}
+	}
+	// Credits fill on the same terms as genres: the whole list is written only
+	// when the work carries none. It is deliberately not merged entry by entry -
+	// a work that already lists credits has been described by someone, and
+	// splicing a second source's roles into that list would silently mix two
+	// accounts of who did what with no way to tell them apart afterwards.
+	existingCredits, _ := raw["credits"].([]any)
+	if len(credits) > 0 && (len(existingCredits) == 0 || overwrite) {
+		raw["credits"] = credits
+		p.summary.Credits += len(credits)
+		changed = true
 	}
 	if !changed && !overwrite {
 		return

@@ -18,6 +18,11 @@
       "type": "string",
       "minLength": 1
     },
+    "kind": {
+      "description": "What sort of entity this record names. ABSENCE MEANS \"person\" - the field exists to mark the records that are not one: a group credited as a unit (a full cast, a band) or a corporate credit of record (a publisher's in-house imprint). Nothing infers it; a record only carries it when a human classified it, so an absent value is 'unclassified or an individual', never a guess.",
+      "type": "string",
+      "enum": ["person", "group", "publisher"]
+    },
     "description": {
       "type": "string"
     },

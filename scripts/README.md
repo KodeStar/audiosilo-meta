@@ -17,6 +17,13 @@ and series containers are out), and it orders by `sku_group` so the per-region
 editions of one title come out adjacent - the importer folds those into one
 recording through its same-narrator ASIN merge.
 
+Authors, narrators, genres and series come from their join tables as JSON
+arrays. Chapters come from `tracks`, whose `chapters` column is an **object
+wrapping the list** (`{"chapters": [...]}`) - the query unwraps it with
+`->'chapters'`, because the importer type-asserts an array and silently reads
+"no chapters" from anything else. `books.isbn` is deliberately not exported: it
+is sometimes the print edition's ISBN, and `recording.isbn` is a hard dedup key.
+
 ### AI narrations are excluded twice
 
 A synthetic voice is not a person, so an AI-narrated production has no place in

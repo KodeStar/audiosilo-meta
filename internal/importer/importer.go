@@ -515,8 +515,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	if !ok {
 		return
 	}
-	authorNames := rowAuthorNames(b)
-	if len(authorNames) == 0 {
+	authorCredits := rowAuthorCredits(b)
+	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
 	}
@@ -526,7 +526,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 		return
 	}
 
-	authorSlugs := p.creditSlugs(authorNames, warn)
+	authorSlugs := p.creditSlugs(creditNamesOf(authorCredits), warn)
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's series claims (one for OpenAudible, possibly several for
@@ -549,7 +549,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	// inside getOrCreateWork, and ONLY when it creates the work - a work already
 	// in the catalogue is not modified by a normal import, so mapping a row whose
 	// genres could never be stored would only add noise to the unmapped report.
-	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, b.genres, warn)
+	// The contributor credits ride along on the same terms and for the same
+	// reason: they are a work-creation fact here, and filling them onto a work
+	// that already exists is the enrichment pass's job (applyToWork).
+	facts := workFacts{genres: b.genres, credits: p.workCredits(authorCredits)}
+	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, facts, warn)
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
@@ -611,12 +615,31 @@ func admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, 
 	return lang, narratorNames, true
 }
 
+// rowAuthorCredits is a row's cleaned AUTHOR-side credit list, each entry
+// carrying the roles its trailing qualifier stated. It is the author side only:
+// a narrator-side qualifier is stripped exactly as before and states nothing.
+//
+// That asymmetry is deliberate, not an omission. A qualifier on a narrator
+// credit sits on a RECORDING, and work.credits is a fact about the WORK, so
+// promoting it would assert a work-level credit from edition-level evidence
+// (the same book's other narration need not carry it). It is also negligible:
+// measured over the full libex dump, 4.8% of author credits carry a trailing
+// qualifier against 0.027% of narrator credits, and most of that 0.027% is the
+// same scraping junk - production-company names and bio fragments - that the
+// vocabulary refuses anyway. Recording-level credits stay unmodeled until
+// there is evidence worth modeling.
+func rowAuthorCredits(b sourceBook) []credit {
+	return sourceCredits(b.authors, b.str("author"))
+}
+
 // rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
 // the source's structured list when it has one and from its comma-joined string
-// otherwise (creditNames owns that choice).
-func rowAuthorNames(b sourceBook) []string { return creditNames(b.authors, b.str("author")) }
+// otherwise (sourceCredits owns that choice).
+func rowAuthorNames(b sourceBook) []string { return creditNamesOf(rowAuthorCredits(b)) }
 
-func rowNarratorNames(b sourceBook) []string { return creditNames(b.narrators, b.str("narrated_by")) }
+func rowNarratorNames(b sourceBook) []string {
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by")))
+}
 
 // seriesRef is a book's claim to a position in a named series. name is always
 // non-empty (the sourceBook invariant). seqOK reports whether seq passed
@@ -638,21 +661,67 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 	return seriesRef{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}
 }
 
-// creditNames resolves one credit list (authors or narrators). A source that
+// sourceCredits resolves one credit list (authors or narrators). A source that
 // parsed structured credits passes them in typed, and they are used verbatim
 // (trimmed, credit-cleaned, empties dropped) - splitting them on commas
 // would tear "Alexandre Dumas, pere" into two people. A source that only has the
 // retailer's comma-joined string passes it as joined and it is split.
-func creditNames(typed []string, joined string) []string {
+//
+// Either way each entry keeps the roles its qualifier stated, so the two shapes
+// a source can hand credits over in produce the same facts.
+func sourceCredits(typed []string, joined string) []credit {
 	if len(typed) == 0 {
-		return SplitNames(joined)
+		return splitCredits(joined)
 	}
-	out := make([]string, 0, len(typed))
+	out := make([]credit, 0, len(typed))
 	for _, name := range typed {
 		if n := strings.TrimSpace(name); n != "" {
-			out = append(out, CleanCreditName(n))
+			cleaned, roles := CreditWithRoles(n)
+			out = append(out, credit{name: cleaned, roles: roles})
 		}
 	}
+	return out
+}
+
+// workCredits turns a row's author-side credits into the work's credits list:
+// one (person, role) entry per stated role, in sorted, deduplicated order.
+//
+// It filters to people the planner KNOWS - already on disk or created earlier
+// this run - which is what makes the emitted list satisfy metacheck's
+// credit-integrity rule by construction. On the create path every author has
+// just been created, so nothing is dropped; on the enrichment path, which
+// creates nothing, an unknown person is silently skipped rather than written as
+// a dangling reference.
+//
+// The person keeps their ordinary membership in authors: a credit ADDS the role
+// the source stated, it never replaces the credit list the identity model is
+// built on.
+func (p *planner) workCredits(credits []credit) []model.Credit {
+	var out []model.Credit
+	seen := map[model.Credit]bool{}
+	for _, c := range credits {
+		if len(c.roles) == 0 {
+			continue
+		}
+		slug, _ := personSlug(c.name)
+		if !p.people[slug] {
+			continue
+		}
+		for _, role := range c.roles {
+			entry := model.Credit{Person: slug, Role: role}
+			if seen[entry] {
+				continue
+			}
+			seen[entry] = true
+			out = append(out, entry)
+		}
+	}
+	sort.Slice(out, func(i, j int) bool {
+		if out[i].Person != out[j].Person {
+			return out[i].Person < out[j].Person
+		}
+		return out[i].Role < out[j].Role
+	})
 	return out
 }
 
@@ -727,16 +796,26 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 	return !in || existing == c.pos
 }
 
+// workFacts are the facts a row contributes ONLY to a work it creates: the raw
+// genre claims (mapped onto the project vocabulary at the point of storage) and
+// the role-qualified contributor credits. They travel as one value so the
+// full-title retry below carries them through unchanged, and so adding a
+// creation-only fact is one field rather than one more parameter on every hop.
+type workFacts struct {
+	genres  []genreClaim
+	credits []model.Credit
+}
+
 // getOrCreateWork returns the work identified by (title-slug, author set),
 // creating it when new. A same-author work that the book's series claim rules
 // out (same series, different position) is not a merge target: the slug is
 // re-derived from the full title, with the candidate chain (author suffix,
 // then numeric) only as the last-resort collision fallback. A collision with a
 // different author set appends the first author's slug, then numeric suffixes,
-// and warns. genreClaims are the book's raw genre claims; they are mapped onto
-// the project vocabulary only on the branch that creates a work (the only place
-// they can be stored), and ride through the full-title retry unchanged.
-func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, genreClaims []genreClaim, warn func(string, ...any)) *workState {
+// and warns. facts are the creation-only facts (genres, credits); they are
+// stored only on the branch that creates a work, which is the only place they
+// can be stored, and ride through the full-title retry unchanged.
+func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, facts workFacts, warn func(string, ...any)) *workState {
 	base := Slugify(title)
 	if base == "" {
 		base = "untitled"
@@ -761,11 +840,13 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// every recording included.
 			p.putNewEntry(pack.FamilyWorks, slug, outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
-				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
+				Credits: facts.credits,
+				Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
 				AddedAt: p.importDate,
 				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
+			p.summary.Credits += len(facts.credits)
 			return ws
 		}
 		if SameSet(ws.authors, want) {
@@ -786,7 +867,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// the last resort when that is unusable. Titles are already cleaned of
 			// trailing edition markers at the batch boundary.
 			if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
-				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, genreClaims, warn)
+				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, facts, warn)
 			}
 		}
 	}

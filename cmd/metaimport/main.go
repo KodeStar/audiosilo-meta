@@ -276,6 +276,14 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 		fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d asins merged into existing recordings; %d warnings\n",
 			summaryHead(mode, dryRun), s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
 	}
+	// Same rule as the trust-tier line below: printed only when the run actually
+	// recorded a role, so every summary that predates contributor credits reads
+	// exactly as it did. A seed wave needs this visible - the qualifiers used to
+	// be stripped and discarded, and silently losing them again would look
+	// identical to capturing them.
+	if s.Credits > 0 {
+		fmt.Printf("  recorded %d contributor credits from source-stated role qualifiers\n", s.Credits)
+	}
 	// The trust-tier line is printed only when a run moved something, so the
 	// long-standing summary wording above is untouched for every run that did
 	// not (every libex run, and any user import that met no mirror seed).

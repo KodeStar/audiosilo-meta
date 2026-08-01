@@ -1,6 +1,7 @@
 package format
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io/fs"
@@ -492,4 +493,67 @@ func treeDiff(before, after map[string]string) string {
 		}
 	}
 	return ""
+}
+
+// TestCanonicalRenderingOfCreditsAndKind pins that the two fields added for
+// contributor roles round-trip through canonical formatting like any other:
+// object keys sorted, ARRAY order preserved (a credits list is ordered data, not
+// a set the formatter may reshuffle), and a second --write byte-identical to the
+// first.
+//
+// Array order matters here in a way it does not for most fields: the importer
+// emits credits sorted by (person, role) so a re-import is a no-op, and that
+// property only holds if nothing downstream reorders them. The fixture states
+// its credits in the REVERSE of that order for exactly that reason - a
+// formatter that sorted them would silently pass a weaker test.
+func TestCanonicalRenderingOfCreditsAndKind(t *testing.T) {
+	dir := t.TempDir()
+	// Deliberately written compact and with keys out of order, so the pass has
+	// something to do.
+	writeFile(t, filepath.Join(dir, "people", "0.json"), packOf(
+		`"ada-author":{"name":"Ada Author","id":"ada-author","license":"CC0-1.0","sources":[{"type":"user"}]}`,
+		`"full-cast":{"name":"Full Cast","kind":"group","id":"full-cast","license":"CC0-1.0","sources":[{"type":"user"}]}`,
+	))
+	writeFile(t, filepath.Join(dir, "works", "0", "0.json"), packOf(
+		`"a-book":{"title":"A Book","credits":[{"role":"translator","person":"full-cast"},{"person":"ada-author","role":"editor"}],`+
+			`"id":"a-book","authors":["ada-author"],"language":"en","license":"CC0-1.0","sources":[{"type":"user"}]}`,
+	))
+
+	mustWrite(t, dir)
+	assertClean(t, dir)
+	assertCanonical(t, dir)
+
+	// Order preserved: the entries are still in the order the record stated
+	// them, decoded rather than pattern-matched so the assertion is about the
+	// DATA and not about how deep in a pack file it happens to sit.
+	var packed struct {
+		Entries map[string]struct {
+			Credits []struct {
+				Person string `json:"person"`
+				Role   string `json:"role"`
+			} `json:"credits"`
+		} `json:"entries"`
+	}
+	if err := json.Unmarshal([]byte(snapshot(t, dir)["works/0/0.json"]), &packed); err != nil {
+		t.Fatalf("decode formatted works pack: %v", err)
+	}
+	got := packed.Entries["a-book"].Credits
+	if len(got) != 2 ||
+		got[0].Person != "full-cast" || got[0].Role != "translator" ||
+		got[1].Person != "ada-author" || got[1].Role != "editor" {
+		t.Errorf("credits array was reordered or lost by formatting: %+v", got)
+	}
+	if people := snapshot(t, dir)["people/0.json"]; !strings.Contains(people, `"kind": "group"`) {
+		t.Errorf("person kind did not survive formatting:\n%s", people)
+	}
+
+	// A second pass changes nothing at all.
+	before := snapshot(t, dir)
+	mustWrite(t, dir)
+	after := snapshot(t, dir)
+	for path, want := range before {
+		if after[path] != want {
+			t.Errorf("second --write changed %s:\n%s\n---\n%s", path, want, after[path])
+		}
+	}
 }
