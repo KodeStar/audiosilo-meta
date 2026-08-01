@@ -4007,7 +4007,7 @@
       "added_at": "2026-08-01",
       "authors": [
         "amy-blankenship",
-        "r-k-melton"
+        "rk-melton"
       ],
       "genres": [
         "erotica",
@@ -4023,6 +4023,10 @@
           "asin": [
             {
               "asin": "B00RIEWRRA",
+              "region": "us"
+            },
+            {
+              "asin": "B07BTLCMTK",
               "region": "us"
             }
           ],
@@ -4041,6 +4045,11 @@
               "imported_at": "2026-08-01",
               "ref": "B00RIEWRRA",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07BTLCMTK",
+              "type": "libex-import"
             }
           ],
           "work": "black-winged-angel"
@@ -4050,58 +4059,6 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B00RIEWRRA",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Black Winged Angel"
-    },
-    "black-winged-angel-amy-blankenship": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "amy-blankenship",
-        "rk-melton"
-      ],
-      "genres": [
-        "paranormal",
-        "romance"
-      ],
-      "id": "black-winged-angel-amy-blankenship",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeff-bower-2018": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07BTLCMTK",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81-mpAXo+tL.jpg",
-          "id": "jeff-bower-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeff-bower"
-          ],
-          "publisher": "Tektime",
-          "release_date": "2018-04-02",
-          "runtime_min": 365,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07BTLCMTK",
-              "type": "libex-import"
-            }
-          ],
-          "work": "black-winged-angel-amy-blankenship"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07BTLCMTK",
           "type": "libex-import"
         }
       ],

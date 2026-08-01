@@ -6240,7 +6240,7 @@
       "added_at": "2026-08-01",
       "authors": [
         "amy-blankenship",
-        "r-k-melton"
+        "rk-melton"
       ],
       "genres": [
         "erotica",
@@ -6257,6 +6257,10 @@
           "asin": [
             {
               "asin": "B00WRQ4JVQ",
+              "region": "us"
+            },
+            {
+              "asin": "B07BTLF9JN",
               "region": "us"
             }
           ],
@@ -6275,6 +6279,11 @@
               "imported_at": "2026-08-01",
               "ref": "B00WRQ4JVQ",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07BTLF9JN",
+              "type": "libex-import"
             }
           ],
           "work": "a-guardians-possession"
@@ -6284,59 +6293,6 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B00WRQ4JVQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "A Guardian's Possession"
-    },
-    "a-guardians-possession-amy-blankenship": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "amy-blankenship",
-        "rk-melton"
-      ],
-      "genres": [
-        "erotica",
-        "paranormal",
-        "romance"
-      ],
-      "id": "a-guardians-possession-amy-blankenship",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jeff-bower-2018": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07BTLF9JN",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51uG1LFfsyL.jpg",
-          "id": "jeff-bower-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jeff-bower"
-          ],
-          "publisher": "Tektime",
-          "release_date": "2018-04-04",
-          "runtime_min": 690,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07BTLF9JN",
-              "type": "libex-import"
-            }
-          ],
-          "work": "a-guardians-possession-amy-blankenship"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07BTLF9JN",
           "type": "libex-import"
         }
       ],

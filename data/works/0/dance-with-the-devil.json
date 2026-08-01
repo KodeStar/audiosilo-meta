@@ -1243,6 +1243,10 @@
             {
               "asin": "B07D6VKKCH",
               "region": "us"
+            },
+            {
+              "asin": "B07DHTQFH3",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81Zkk5d6+sL.jpg",
@@ -1260,6 +1264,11 @@
               "imported_at": "2026-08-01",
               "ref": "B07D6VKKCH",
               "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-01",
+              "ref": "B07DHTQFH3",
+              "type": "libex-import"
             }
           ],
           "work": "dangerous-things"
@@ -1269,60 +1278,6 @@
         {
           "imported_at": "2026-08-01",
           "ref": "B07D6VKKCH",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Dangerous Things"
-    },
-    "dangerous-things-amy-blankenship": {
-      "added_at": "2026-08-01",
-      "authors": [
-        "amy-blankenship",
-        "r-k-melton"
-      ],
-      "genres": [
-        "erotica",
-        "fantasy",
-        "paranormal",
-        "romance"
-      ],
-      "id": "dangerous-things-amy-blankenship",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "kb-stanford-2018": {
-          "abridged": false,
-          "added_at": "2026-08-01",
-          "asin": [
-            {
-              "asin": "B07DHTQFH3",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91oNrKO02OL.jpg",
-          "id": "kb-stanford-2018",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "kb-stanford"
-          ],
-          "publisher": "Tektime",
-          "release_date": "2018-06-06",
-          "runtime_min": 464,
-          "sources": [
-            {
-              "imported_at": "2026-08-01",
-              "ref": "B07DHTQFH3",
-              "type": "libex-import"
-            }
-          ],
-          "work": "dangerous-things-amy-blankenship"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B07DHTQFH3",
           "type": "libex-import"
         }
       ],
