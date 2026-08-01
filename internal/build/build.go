@@ -583,9 +583,17 @@ func addedAt(w *model.Work) any {
 // normalized to UTC first.
 //
 // The key is only ever compared, never stored: addedAt returns the ORIGINAL
-// string, so normalizing here cannot change a byte in the artifact. Today's
-// imported_at values are all date-only, which makes this a no-op on the current
-// data by construction, and correct the moment one is not.
+// string, so normalizing here cannot change a byte in the artifact.
+//
+// Two things keep it safe rather than merely careful. The schema pins
+// imported_at to a date or an RFC 3339 timestamp, so the "not parseable" branch
+// is unreachable from validated data and exists only so an unvalidated caller
+// gets an ordering rather than a panic; and a date sorts before every timestamp
+// on the same day, which is the right answer when the two are mixed (a date-only
+// value is the start of its day). Every imported_at in the tree today is
+// date-only, so the normalization is a no-op on current data by construction -
+// which is what let the storage migration's artifact equivalence proof pass with
+// this fix already in place.
 func timeKey(s string) string {
 	if t, err := time.Parse(time.RFC3339, s); err == nil {
 		return t.UTC().Format(time.RFC3339)

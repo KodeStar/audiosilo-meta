@@ -67,6 +67,23 @@ func TestEverySchemaCompiles(t *testing.T) {
 	}
 }
 
+// TestEveryEntitySchemaCompiles is the drift guard that used to sit on the load
+// path: every per-record schema compiles on its own. Load itself no longer does
+// this - it compiles the four pack wrappers, and every entity schema is $ref'd
+// from one of them - so a defect in a schema would otherwise only surface
+// through whichever wrapper happened to reach the broken part of it.
+//
+// It reads entitySchemas rather than the directory, so it also fails when that
+// map stops naming a real file.
+func TestEveryEntitySchemaCompiles(t *testing.T) {
+	set := compileAll(t)
+	for kind, file := range entitySchemas {
+		if set[file] == nil {
+			t.Errorf("the schema for kind %q (%s) did not compile", kind, file)
+		}
+	}
+}
+
 func validateJSON(t *testing.T, sch *jsonschema.Schema, raw string) error {
 	t.Helper()
 	inst, err := jsonschema.UnmarshalJSON(strings.NewReader(raw))

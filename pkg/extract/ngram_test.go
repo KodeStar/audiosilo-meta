@@ -181,14 +181,29 @@ func TestNGramCommunityPack(t *testing.T) {
 
 // A pack holding no sidecar entries at all is the wrong file, not a clean bill
 // of health: silently reporting zero findings would pass the no-verbatim gate
-// for text nobody checked.
+// for text nobody checked. A pack whose sidecars are simply free of prose IS
+// nothing to check, and must not be reported as the wrong file - the same
+// distinction a bare sidecar record gets.
 func TestNGramPackWithoutSidecarsIsError(t *testing.T) {
 	dir := t.TempDir()
 	src := writeFile(t, dir, "src.txt", "some source text that is long enough to shingle over")
-	pack := writeFile(t, dir, "0.json", `{"entries":{"the-book":{"id":"the-book","title":"The Book"}}}`)
 
-	if _, err := NGram(src, []string{pack}, 8); err == nil {
-		t.Fatal("NGram succeeded on a pack with no sidecars")
+	wrongFile := writeFile(t, dir, "works.json", `{"entries":{"the-book":{"id":"the-book","title":"The Book"}}}`)
+	if _, err := NGram(src, []string{wrongFile}, 8); err == nil {
+		t.Error("NGram succeeded on a pack with no sidecars")
+	}
+
+	// Sidecars that carry no checkable prose: a character with no description
+	// and a recaps member with no entries.
+	empty := writeFile(t, dir, "community.json", `{"entries":{"the-book":{`+
+		`"characters":{"work":"the-book","characters":[{"id":"x","name":"X","reveal":{"chapter":1}}]},`+
+		`"recaps":{"work":"the-book","recaps":[]}}}}`)
+	found, err := NGram(src, []string{empty}, 8)
+	if err != nil {
+		t.Fatalf("a pack whose sidecars hold no prose was rejected as the wrong file: %v", err)
+	}
+	if len(found) != 0 {
+		t.Errorf("findings = %+v, want none", found)
 	}
 }
 

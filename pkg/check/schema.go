@@ -13,11 +13,14 @@ import (
 
 const schemaBase = "https://meta.audiosilo.app/schema/"
 
-// entitySchemas are the per-record schemas. The walker reaches every record
-// through its family's pack wrapper, which $refs these, so they are listed here
-// to be COMPILED: a schema no compile touches is a contract free to drift, and
-// an error in one would otherwise only surface through whichever wrapper
-// happened to reference it.
+// entitySchemas are the per-record schemas, listed here so they are ADDED as
+// resources: the pack wrappers $ref them, which is how the walker reaches a
+// record, and a resource the compiler was never given cannot be resolved.
+//
+// Nothing compiles them individually on the load path - every one of them is
+// reachable from a wrapper, so compiling the wrappers compiles them. That they
+// all compile ON THEIR OWN is a drift guard, and drift guards belong in tests
+// (TestEveryEntitySchemaCompiles).
 var entitySchemas = map[model.Kind]string{
 	model.KindWork:       "work.schema.json",
 	model.KindRecording:  "recording.schema.json",
@@ -98,13 +101,6 @@ func compileSchemas() (schemaSet, error) {
 			return nil, fmt.Errorf("compile schema %s: %w", ref, err)
 		}
 		return sch, nil
-	}
-	// Compiled for the drift guard described on entitySchemas; the result is
-	// discarded because every record is validated through its family's wrapper.
-	for _, f := range entitySchemas {
-		if _, err := compile(f); err != nil {
-			return schemaSet{}, err
-		}
 	}
 	for family, f := range wrapperSchemas {
 		entry, err := compile(f + entryFragment)

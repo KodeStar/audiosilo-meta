@@ -191,6 +191,7 @@ func collectExprs(path string) ([]expr, error) {
 		}
 		slices.Sort(slugs)
 		var out []expr
+		sidecars := 0
 		for _, slug := range slugs {
 			entry, ok := entries[slug].(map[string]any)
 			if !ok {
@@ -202,11 +203,17 @@ func collectExprs(path string) ([]expr, error) {
 				if !ok {
 					continue
 				}
+				sidecars++
 				out = append(out, collectRecord(member, slug+"."+kind+".")...)
 			}
 		}
-		if len(out) == 0 {
-			return nil, fmt.Errorf("%s: a pack file holding no characters or recaps entries", path)
+		// Same distinction as for a bare record: a pack whose sidecars happen to
+		// carry no prose is nothing to check, while a pack holding no sidecars at
+		// all is the wrong file - a works pack, say - and reporting zero findings
+		// for it would pass the no-verbatim gate for text nobody looked at.
+		if sidecars == 0 {
+			return nil, fmt.Errorf("%s: a pack file holding no %s entries",
+				path, strings.Join(sidecarKinds(), " or "))
 		}
 		return out, nil
 	}
