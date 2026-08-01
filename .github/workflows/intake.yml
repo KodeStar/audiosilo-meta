@@ -21,6 +21,12 @@ name: intake
 on:
   issues:
     types: [opened, edited, labeled]
+  # A merge to main can leave an already-open intake PR conflicting in a pack
+  # file, so the rebase job below re-bases the bot's OWN branches. It runs on
+  # push, which is a trusted event: the code it runs is main's, and the branches
+  # it touches were created by this workflow.
+  push:
+    branches: [main]
 
 # Least privilege: open a PR, comment on the issue, and label it. Nothing more.
 permissions:
@@ -50,6 +56,7 @@ jobs:
     # verdict. A genuine routing label (data:add-work, data:add-characters, ...)
     # starts with `data:` but is none of those outcomes.
     if: >-
+      github.event_name == 'issues' && (
       (
         github.event.action != 'labeled' &&
         contains(join(github.event.issue.labels.*.name), 'data:')
@@ -59,7 +66,7 @@ jobs:
         github.event.label.name != 'data:invalid' &&
         github.event.label.name != 'data:needs-human' &&
         github.event.label.name != 'data:duplicate'
-      )
+      ))
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -171,3 +178,99 @@ jobs:
           } > comment.md
           gh issue comment "$ISSUE" --body-file comment.md
           gh issue edit "$ISSUE" --add-label "data:${STATUS}" || true
+
+  # Keep the bot's own open pull requests mergeable after a merge to main.
+  #
+  # Records are stored in pack files (PACK-SPEC.md), so two PRs adding entries in
+  # the same slug range touch the same file and the second one conflicts. The
+  # resolution is mechanical - keep both sides' entries and re-render canonically
+  # - and it is scripted here so a maintainer never hand-merges a bot PR. Only
+  # the same entry key changing on both sides is a real conflict, and that is
+  # left for a human with a comment.
+  #
+  # SECURITY: this job runs on `push` to main, so the code it executes is main's
+  # and the branches it rewrites are ones this workflow created (label
+  # bot-intake). It never checks out or runs anything from a fork.
+  rebase:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # The rebase needs real history, and the PAT (when present) is what
+          # makes the force-push re-trigger the required checks - the same
+          # reasoning as the create-pull-request step above.
+          fetch-depth: 0
+          token: ${{ secrets.INTAKE_PAT || github.token }}
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Rebase open intake pull requests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "audiosilo-intake-bot"
+          git config user.email "intake-bot@users.noreply.github.com"
+
+          gh pr list --state open --label bot-intake --json number,headRefName \
+            --jq '.[] | [.number, .headRefName] | @tsv' > prs.tsv
+          if [ ! -s prs.tsv ]; then
+            echo "no open intake pull requests"
+            exit 0
+          fi
+
+          while IFS=$'\t' read -r number branch; do
+            echo "::group::PR #${number} (${branch})"
+            git fetch --quiet origin main "$branch"
+            if git merge-base --is-ancestor origin/main "origin/${branch}"; then
+              echo "already on top of main"
+              git rebase --abort 2>/dev/null || true
+              echo "::endgroup::"
+              continue
+            fi
+            git checkout --quiet -B "$branch" "origin/${branch}"
+
+            failure=""
+            if ! git rebase origin/main; then
+              # Union every conflicted pack file, then let metafmt place and
+              # re-render the result. Anything else - a conflict outside data/,
+              # or one entry key edited on both sides - stops the run.
+              conflicts="$(git diff --name-only --diff-filter=U)"
+              for f in $conflicts; do
+                case "$f" in
+                  data/*.json) scripts/pack-union-merge.sh "$f" || failure="union merge failed on ${f}" ;;
+                  *) failure="conflict outside the data tree: ${f}" ;;
+                esac
+                [ -z "$failure" ] || break
+              done
+              if [ -z "$failure" ]; then
+                go run ./cmd/metafmt --write || failure="metafmt could not normalize the merged tree"
+              fi
+              if [ -z "$failure" ]; then
+                go run ./cmd/metacheck || failure="metacheck rejected the merged tree"
+              fi
+              if [ -z "$failure" ]; then
+                git add data
+                GIT_EDITOR=true git rebase --continue || failure="the rebase could not be continued"
+              fi
+            fi
+
+            if [ -n "$failure" ]; then
+              git rebase --abort 2>/dev/null || true
+              git checkout --quiet --force main
+              gh pr comment "$number" --body "The intake bot could not rebase this branch onto \`main\` mechanically: ${failure}. It needs a maintainer - see CONTRIBUTING.md, \"When two pull requests touch the same pack\"."
+              echo "::warning::PR #${number} needs a human: ${failure}"
+              echo "::endgroup::"
+              continue
+            fi
+
+            git push --force-with-lease origin "$branch"
+            echo "rebased and pushed"
+            git checkout --quiet --force main
+            echo "::endgroup::"
+          done < prs.tsv
