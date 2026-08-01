@@ -630,6 +630,100 @@ func TestPerson(t *testing.T) {
 	}
 }
 
+// TestPersonPagination pins the additive window on a person's credit lists: the
+// default returns everything a small person has (with the unpaged totals
+// alongside), and ?limit/?offset slice the title-ordered list without changing
+// the totals.
+func TestPersonPagination(t *testing.T) {
+	_, ts := newTestServer(t)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	if got := body["authored_total"].(float64); got != 3 {
+		t.Errorf("authored_total = %v, want 3", got)
+	}
+	if got := body["narrated_total"].(float64); got != 0 {
+		t.Errorf("narrated_total = %v, want 0", got)
+	}
+	if got := body["limit"].(float64); got != personPageDefault {
+		t.Errorf("limit = %v, want the default %d", got, personPageDefault)
+	}
+
+	// The full title order, to slice against.
+	var all []string
+	for _, w := range body["authored"].([]any) {
+		all = append(all, w.(map[string]any)["id"].(string))
+	}
+	if len(all) != 3 {
+		t.Fatalf("authored = %v, want 3 works", all)
+	}
+
+	code, body = getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=1&offset=1")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	page := body["authored"].([]any)
+	if len(page) != 1 || page[0].(map[string]any)["id"] != all[1] {
+		t.Errorf("page = %v, want just %q", page, all[1])
+	}
+	if got := body["authored_total"].(float64); got != 3 {
+		t.Errorf("authored_total under a window = %v, want the unpaged 3", got)
+	}
+	if got := body["offset"].(float64); got != 1 {
+		t.Errorf("offset = %v, want 1", got)
+	}
+
+	// An over-large limit is clamped, not honoured verbatim.
+	_, body = getJSON(t, ts.URL, "/api/v1/people/brandon-sanderson?limit=999999")
+	if got := body["limit"].(float64); got != personPageMax {
+		t.Errorf("limit = %v, want the clamp %d", got, personPageMax)
+	}
+}
+
+// TestSeriesPagination pins the series window: absent ?limit means the WHOLE
+// series (audiosilo-server composes the player's series rail from it), and an
+// explicit window slices the position-ordered list.
+func TestSeriesPagination(t *testing.T) {
+	_, ts := newTestServer(t)
+
+	code, body := getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	if got := len(body["works"].([]any)); got != 3 {
+		t.Errorf("default works = %d, want all 3", got)
+	}
+	if got := body["works_total"].(float64); got != 3 {
+		t.Errorf("works_total = %v, want 3", got)
+	}
+	if got := body["limit"].(float64); got != 0 {
+		t.Errorf("limit = %v, want 0 (no window)", got)
+	}
+
+	_, body = getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?limit=1&offset=1")
+	works := body["works"].([]any)
+	if len(works) != 1 {
+		t.Fatalf("windowed works = %d, want 1", len(works))
+	}
+	if got := works[0].(map[string]any)["position"]; got != "2" {
+		t.Errorf("windowed position = %v, want \"2\" (position order, offset 1)", got)
+	}
+	if got := body["works_total"].(float64); got != 3 {
+		t.Errorf("works_total under a window = %v, want the unpaged 3", got)
+	}
+
+	// An offset past the end is an empty page, not an error.
+	code, body = getJSON(t, ts.URL, "/api/v1/series/the-stormlight-archive?offset=99")
+	if code != 200 {
+		t.Fatalf("status %d", code)
+	}
+	if got := len(body["works"].([]any)); got != 0 {
+		t.Errorf("works past the end = %d, want 0", got)
+	}
+}
+
 func TestPersonNotFound(t *testing.T) {
 	_, ts := newTestServer(t)
 	code, _ := getJSON(t, ts.URL, "/api/v1/people/nobody")

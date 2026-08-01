@@ -1,8 +1,13 @@
 name: image
 
-# Build and publish the metaserve container image (API server + baked data + the
-# static site) to GHCR. Runs on a v* tag push and on manual dispatch. Data-only
-# releases are handled by release.yml; this ships the server itself.
+# Build and publish the metaserve container image (API server + the static site)
+# to GHCR. Runs on a v* tag push and on manual dispatch. Data-only releases are
+# handled by release.yml; this ships the server itself.
+#
+# The image carries NO data: metaserve fetches the newest data release at boot
+# (see Dockerfile). So this workflow never validates or compiles the catalogue,
+# its build time is independent of catalogue size, and a data release needs no
+# new image.
 on:
   push:
     tags:

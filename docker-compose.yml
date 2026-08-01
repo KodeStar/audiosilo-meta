@@ -1,10 +1,16 @@
-# Production-shaped deployment: the image bundles the API server (metaserve),
-# a baked copy of the data, and the static site. It serves immediately, accepts
-# signed refresh notifications, and polls GitHub Releases as a fallback, so data
-# updates need no redeploy - only code changes do.
+# Production-shaped deployment: the image bundles the API server (metaserve) and
+# the static site - NO data. On boot it downloads the newest published data
+# release (or reuses the cache volume below), then accepts signed refresh
+# notifications and polls GitHub Releases as a fallback, so data updates need no
+# redeploy - only code changes do.
+#
+# If GitHub is unreachable at boot the container stays up and retries every 30s:
+# the site is served, /healthz answers 503 `{"status":"starting"}` and the API
+# answers 503 until a release loads. Watch the logs, not a restart count.
 #
 # Put a TLS-terminating reverse proxy (nginx, Caddy, Ploi) in front:
-# proxy https://meta.example.com -> 127.0.0.1:8080. Health check: GET /healthz.
+# proxy https://meta.example.com -> 127.0.0.1:8080. Health check: GET /healthz
+# (200 only once data is loaded - it is a readiness check).
 services:
   meta:
     image: ghcr.io/kodestar/audiosilo-meta:latest
@@ -19,14 +25,14 @@ services:
     # set `user:` to the host owner's uid:gid instead:
     # user: "1001:1001"
     volumes:
-      # Downloaded data releases persist here, so a restarted container serves
-      # the newest data immediately instead of re-fetching. The contents are a
-      # disposable cache (re-downloaded if lost) - a named volume or a bind
-      # mount (e.g. /home/you/containers/audiosilo-meta/data:/data, pre-chowned
-      # to the `user:` above) both work.
+      # Downloaded data releases persist here. The contents are a disposable
+      # cache (re-downloaded if lost, and superseded artifacts are pruned after
+      # each swap) - a named volume or a bind mount (e.g.
+      # /home/you/containers/audiosilo-meta/data:/data, pre-chowned to the
+      # `user:` above) both work. Size it for about two artifacts.
       - meta-cache:/data
     # The image entrypoint already runs:
-    #   metaserve --db /app/meta.sqlite --site /app/site --poll --cache /data/cache
+    #   metaserve --site /app/site --poll --cache /data/cache
     # `command:` APPENDS flags to that, e.g. a faster poll cadence:
     # command: ["--interval", "15m"]
     #

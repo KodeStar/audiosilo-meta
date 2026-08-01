@@ -3,7 +3,10 @@ package serve
 import (
 	"database/sql"
 	"fmt"
+	"sort"
 	"strconv"
+	"strings"
+	"sync"
 
 	_ "modernc.org/sqlite"
 )
@@ -17,6 +20,12 @@ type snapshot struct {
 	path          string // on-disk path of the artifact
 	stats         Stats  // precomputed once, at load
 	schemaVersion int    // meta(schema_version); characters/recaps arrived in v2, recap_summaries in v3, work_genres in v4
+
+	// The series-gap set is derived from the whole series table, so it is
+	// computed lazily and kept: the artifact behind a snapshot never changes.
+	gapsMu   sync.Mutex
+	gaps     []seriesGap
+	gapsDone bool
 }
 
 // Stats is the /api/v1/stats payload; it is cached per snapshot.
@@ -141,6 +150,199 @@ func (s *snapshot) workCard(id string) (*workCard, error) {
 		return nil, err
 	}
 	return wc, nil
+}
+
+// idChunkSize bounds one IN (...) list. SQLite's default bound-parameter limit
+// is far higher, but a person's credit list is unbounded (a corporate credit
+// like "Full Cast" already narrates ~2,000 works), so the batch queries chunk
+// rather than assume the list is small.
+const idChunkSize = 400
+
+// chunkIDs splits ids into slices of at most n (the last one shorter). An empty
+// input yields no chunks, so a caller's loop body never runs on an empty IN ().
+func chunkIDs(ids []string, n int) [][]string {
+	var out [][]string
+	for len(ids) > n {
+		out = append(out, ids[:n])
+		ids = ids[n:]
+	}
+	if len(ids) > 0 {
+		out = append(out, ids)
+	}
+	return out
+}
+
+// idArgs renders "?,?,..." for n bound parameters plus the args slice for them.
+func idArgs(ids []string) (string, []any) {
+	args := make([]any, len(ids))
+	for i, id := range ids {
+		args[i] = id
+	}
+	return strings.TrimSuffix(strings.Repeat("?,", len(ids)), ","), args
+}
+
+// eachChunk runs fn over each id chunk with the rendered placeholder list and
+// bound args. It is the single place the chunking rule lives, so no batch query
+// can forget it.
+func eachChunk(ids []string, fn func(placeholders string, args []any) error) error {
+	for _, c := range chunkIDs(ids, idChunkSize) {
+		ph, args := idArgs(c)
+		if err := fn(ph, args); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// cardsByID builds the work cards for a whole id set in a FIXED number of
+// queries per chunk (works + authors + series + covers), instead of the four
+// queries per work a workCard loop costs. That is what keeps a prolific
+// narrator's page from issuing thousands of sequential round-trips. Ids absent
+// from the catalogue are simply missing from the map.
+func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
+	out := make(map[string]*workCard, len(ids))
+	if len(ids) == 0 {
+		return out, nil
+	}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(`SELECT id, title, added_at FROM works WHERE id IN (`+ph+`)`, args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var id, title string
+			var addedAt sql.NullString
+			if err := rows.Scan(&id, &title, &addedAt); err != nil {
+				return err
+			}
+			wc := &workCard{ID: id, Title: title, Authors: []personRef{}}
+			if addedAt.Valid {
+				wc.AddedAt = &addedAt.String
+			}
+			out[id] = wc
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// Only ids that actually exist need the follow-up queries.
+	found := make([]string, 0, len(out))
+	for id := range out {
+		found = append(found, id)
+	}
+	sort.Strings(found) // deterministic query shape; the per-work order is the SQL's
+
+	authors, err := s.authorsByWork(found)
+	if err != nil {
+		return nil, err
+	}
+	series, err := s.firstSeriesByWork(found)
+	if err != nil {
+		return nil, err
+	}
+	covers, err := s.coversByWork(found)
+	if err != nil {
+		return nil, err
+	}
+	for id, wc := range out {
+		if a := authors[id]; a != nil {
+			wc.Authors = a
+		}
+		wc.Series = series[id]
+		wc.CoverURL = covers[id]
+	}
+	return out, nil
+}
+
+// authorsByWork returns each work's authors in credit order, keyed by work id.
+func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
+	out := map[string][]personRef{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(
+			`SELECT wa.work_id, p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id `+
+				`WHERE wa.work_id IN (`+ph+`) ORDER BY wa.work_id, wa.ord`, args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var workID string
+			var p personRef
+			if err := rows.Scan(&workID, &p.ID, &p.Name); err != nil {
+				return err
+			}
+			out[workID] = append(out[workID], p)
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// firstSeriesByWork returns each work's FIRST series membership (series id
+// order, matching firstSeriesOf), keyed by work id. Works with no series are
+// absent from the map.
+func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error) {
+	out := map[string]*seriesRef{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(
+			`SELECT sw.work_id, s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id `+
+				`WHERE sw.work_id IN (`+ph+`) ORDER BY sw.work_id, s.id`, args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var workID string
+			var sr seriesRef
+			if err := rows.Scan(&workID, &sr.ID, &sr.Name, &sr.Position); err != nil {
+				return err
+			}
+			if _, seen := out[workID]; !seen { // ORDER BY makes the first row the winner
+				out[workID] = &sr
+			}
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// coversByWork returns each work's first non-empty recording cover URL
+// (recording id order, matching coverOf), keyed by work id.
+func (s *snapshot) coversByWork(ids []string) (map[string]*string, error) {
+	out := map[string]*string{}
+	err := eachChunk(ids, func(ph string, args []any) error {
+		rows, err := s.db.Query(
+			`SELECT work_id, cover_url FROM recordings WHERE work_id IN (`+ph+`) `+
+				`AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY work_id, id`, args...)
+		if err != nil {
+			return err
+		}
+		defer func() { _ = rows.Close() }()
+		for rows.Next() {
+			var workID, cover string
+			if err := rows.Scan(&workID, &cover); err != nil {
+				return err
+			}
+			if _, seen := out[workID]; !seen {
+				c := cover
+				out[workID] = &c
+			}
+		}
+		return rows.Err()
+	})
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (s *snapshot) authorsOf(workID string) ([]personRef, error) {

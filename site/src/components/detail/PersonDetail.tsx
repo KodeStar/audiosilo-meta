@@ -20,16 +20,39 @@ function WorkGrid({ works }: { works: WorkCardData[] }) {
   )
 }
 
-function Section({ title, count, children }: { title: string; count: number; children: React.ReactNode }) {
+/** One credit section. `note` carries the truncation line when the API returned
+    a page rather than the whole list, so a prolific narrator's page says what it
+    is showing instead of quietly under-reporting. */
+function Section({
+  title,
+  count,
+  note,
+  children,
+}: {
+  title: string
+  count: number
+  note?: string
+  children: React.ReactNode
+}) {
   return (
     <section className="mt-12 first:mt-0">
       <h2 className="mb-5 text-xl font-semibold text-hi">
         {title}
         <span className="ml-2 text-sm font-normal text-dim">{count}</span>
       </h2>
+      {note ? <p className="mb-5 text-sm text-dim">{note}</p> : null}
       {children}
     </section>
   )
+}
+
+/** The "you are seeing a page" line, or undefined when the whole list arrived.
+    The API caps a person's credit lists (see PERSON_PAGE_MAX) because they are
+    unbounded - a corporate credit such as "Full Cast" narrates thousands of
+    works. */
+function truncationNote(shown: number, total: number | undefined, unit: string): string | undefined {
+  if (typeof total !== 'number' || shown >= total) return undefined
+  return `Showing the first ${shown} of ${total} ${unit}.`
 }
 
 function Loaded({ person }: { person: Person }) {
@@ -73,13 +96,25 @@ function Loaded({ person }: { person: Person }) {
       </header>
 
       {person.authored && person.authored.length > 0 ? (
-        <Section title="Wrote" count={person.authored.length}>
+        <Section
+          title="Wrote"
+          count={person.authored_total ?? person.authored.length}
+          note={truncationNote(person.authored.length, person.authored_total, 'works')}
+        >
           <WorkGrid works={person.authored} />
         </Section>
       ) : null}
 
       {narratedWorks.length > 0 ? (
-        <Section title="Narrated" count={narratedWorks.length}>
+        <Section
+          title="Narrated"
+          count={narratedWorks.length}
+          note={truncationNote(
+            person.narrated?.length ?? 0,
+            person.narrated_total,
+            'narration credits'
+          )}
+        >
           <WorkGrid works={narratedWorks} />
         </Section>
       ) : null}

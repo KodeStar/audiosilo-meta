@@ -207,11 +207,11 @@ internal/issueform  issue-form parse + compose (add-work/recording/correction/ch
 internal/format     metafmt's business logic: canonical formatting (pkg/canonical) sequenced with the self-healing placement pass (pack.Pending -> Heal -> Flush); a tree holding a non-pack family is refused before the first write (tidying files no reader will load would make a stale checkout look maintained); Report embeds pack.Pending so every category surfaces in --check/--write; unreadable files are reported and left for a human while the rest still heals; formatting runs FIRST because Flush judges an untouched pack by its on-disk size
 internal/testpack   test support (imported only by _test.go files): seeds and reads a pack-layout tree addressed by the old per-record path syntax (a fixture syntax it parses itself), resolved onto family + entry key; shared by the importer, issueform and metaimport suites
 internal/migrate    metamigrate's business logic: its OWN parsing of the retired file-per-record layout as a storage location (issueform and testpack parse the same shape as a reference/fixture syntax - see pkg/model), the added_at git walk with release.yml's exact semantics extended to recordings, entry composition from RAW record bytes (only added_at spliced in), and greedy planning to ~50% of the caps (sized by pkg/pack's own renderer, never by re-spelled arithmetic). Renders every pack before deleting anything, and refuses what it cannot do safely: a shallow clone (which would date every record at the tip commit), an uncommitted in-place tree (git is the only recovery from an interrupted run), a tree holding no works, a non-JSON file, an already-converted family. Deterministic; the fixture-scale artifact equivalence proof lives in its tests
-internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes; added_at from the record, else the newest sources[].imported_at compared chronologically)
+internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes plus the per-(work,recording) and per-series covering indexes every serve request reads - `TestServeLookupsAreIndexed` EXPLAIN-QUERY-PLANs each of those queries and fails on a full table scan; adding an index does NOT bump SchemaVersion, which versions what a reader may SELECT; added_at from the record, else the newest sources[].imported_at compared chronologically)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments)
 data/               the database, in the PACK-SPEC.md range-packed layout: works/ (composites), works-community/ (the CC BY-SA sidecars), people/, series/
-Dockerfile          image: site build + metaserve + baked data
+Dockerfile          image: site build + metaserve, NO baked data (the catalogue is fetched from the newest data release at boot; a UI change never rebuilds the database)
 scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README), and pack-union-merge.sh - the mechanical resolution for a pack-file conflict (a three-way merge of the entries, then metafmt --write), with packmerge_test.go driving it through real rebases including every case it must REFUSE
 .github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows. intake.yml also rebases the bot's own open PRs on every push to main that touches data/ (three-way merge + metafmt + metacheck, per-PR failures contained to a comment); permissions are per-job and the rebase sweep has its own concurrency group; release.yml is a SHALLOW checkout now that added_at lives in the data
 ```
@@ -219,7 +219,14 @@ scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README)
 **The API server (`internal/serve`)** opens the SQLite artifact read-only and
 serves JSON under `/api/v1` (stats, `search?q=`, `works/latest`, `works/{id}`,
 recording `chapters`, `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`) plus
-`/healthz`; it can also serve a static site at `/`. It additionally exposes an
+`/healthz`; it can also serve a static site at `/`. Membership lists are resolved
+in a fixed number of queries (`cardsByID` batches works + authors + series +
+covers over an id set) rather than four per work, and the two unbounded lists are
+windowed: `people/{id}` pages by default (100, max 500 - a corporate credit like
+"Full Cast" narrates thousands of works) while `series/{id}` returns the whole
+series unless `?limit` is given, because audiosilo-server composes the player's
+series rail from the full list. Both report unpaged totals, so the window is
+additive to every existing consumer. It additionally exposes an
 **Audiobookshelf custom metadata provider** at `GET /abs/search` (`abs.go`,
 transport-only handler over testable `*snapshot` methods): ABS sends
 `?mediaType=book&query=&author=&isbn=` (never an ASIN), and we return
@@ -236,21 +243,37 @@ scans the release list and selects by max `published_at`, since the list order
 is not publish-chronological; GitHub's "latest" can be a code release with no
 data assets). On a
 new release the poller first tries a `--patch-from` binary delta against the
-currently-loaded artifact (`tryPatch` -> `applyPatch`: zstd raw-dict id 0, the
-CLI's patch-from convention; `--long=31` window; the patched file verified
+currently-loaded artifact (`tryPatch` -> `applyPatchFile`: zstd raw-dict id 0,
+the CLI's patch-from convention; `--long=31` window; the patched file verified
 byte-for-byte against `meta.sqlite.sha256` before it is installed) and falls back
 unconditionally to a full `meta.sqlite.gz` download (`fullRefresh`, verified
 against `meta.sqlite.gz.sha256`) whenever a patch is unavailable or fails - the
-first refresh after boot is always full. Either way it gunzips/reconstructs into
-the cache and hot-swaps the pointer; in-flight requests finish on the old handle
-(closed after a grace delay), a rejected patch never swaps, and a poll failure
-only logs and retries, never crashes the process. The poll loop runs one refresh
-**immediately at startup**, before the first `--interval` tick, so the production
-Docker boot (a baked `--db` artifact **and** `--poll`, where `New()` skips the
-poll-only synchronous first refresh) catches a recreated container up to the
-newest release within seconds instead of serving build-time data for a full
-interval; on a poll-only boot `New()` already refreshed, so the startup poll is a
-cheap conditional 304.
+first refresh after boot is always full. **Every artifact-sized asset streams to
+disk** (`downloadTo` -> `installVerified`: temp file + digest as it writes +
+rename, so a corrupted download never becomes a file), and only the ~80-byte
+checksum assets are read into memory (`downloadSmall`, size-capped); the one
+thing that cannot stream is the patch BASE, which a raw zstd dictionary requires
+as a contiguous slice, so `tryPatch` refuses outright above
+`defaultMaxPatchBase` (1 GiB) and takes the streamed full download instead.
+Either way it gunzips/reconstructs into the cache and hot-swaps the pointer;
+in-flight requests finish on the old handle (closed after a grace delay), a
+rejected patch never swaps, and a poll failure only logs and retries, never
+crashes the process. When the grace elapses the superseded cache files are
+**pruned** (`pruneCache`, under the refresh lock, never touching the live
+artifact or a `--db` path), so the cache volume holds about one artifact rather
+than one per release forever. The poll loop runs one refresh **immediately at
+startup**, before the first `--interval` tick, which matters for any boot that
+loaded a local `--db` artifact (`New()` skips the poll-only synchronous refresh
+in that case); on a poll-only boot `New()` already refreshed, so the startup poll
+is a cheap conditional 304.
+
+**The production image ships no data** (see Dockerfile): the boot is poll-only,
+so `New()`'s synchronous first refresh IS the load. A first fetch that fails is
+not fatal - `New` logs it and returns a server with no snapshot, which serves the
+static site, answers `/healthz` with 503 `{"status":"starting"}` and every API
+route with 503 (`requireSnapshot`), and retries every `bootRetry` (30s) until a
+release lands. A crash loop would be the worse failure mode; this one is visible
+in the logs and in the readiness check.
 Production can additionally set `METASERVE_WEBHOOK_SECRET` (at least 32 bytes)
 while keeping `--poll` enabled. That registers
 `POST /hooks/github/release`, which accepts only HMAC-SHA256-signed release
@@ -420,6 +443,16 @@ export type), surfacing the importer warnings.
   definition a row `libex-select` excluded, so its natural input IS the
   unfiltered dump (`scripts/README.md` step 7 documents the `split -l`
   workaround).
+- **Serving at scale (pre-seed, landed)**: the measured serve/distribution fixes
+  from the workspace's SCALE-RESEARCH.md (section D), all invisible at 9.5k works
+  and real at 100k+. D1: the six covering indexes every request path was missing
+  (guarded by `TestServeLookupsAreIndexed`), membership lists batched through
+  `cardsByID`, `people/{id}`/`series/{id}` windowed additively, and the coverage
+  browser's `?q=` moved off an unindexed `LIKE '%...%'` onto the FTS index (plus
+  a per-snapshot memo for the series-gap set). D2: release assets stream to disk
+  instead of being buffered in RAM, superseded cache files are pruned after each
+  swap, and the patch path declines a base artifact over 1 GiB. D3: the image no
+  longer bakes data - see the Dockerfile note above.
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four

@@ -1,17 +1,29 @@
 # syntax=docker/dockerfile:1
 
-# AudioSilo Meta - the read-only metadata API server, its baked-in data
-# artifact, and the static site, in one image.
+# AudioSilo Meta - the read-only metadata API server and the static site, in one
+# image. NO data is baked in: the catalogue comes from the published data
+# release at boot.
 #
 # Three stages:
 #   1. site    - build the Astro static site (site/ -> dist/)
-#   2. build   - compile metaserve and bake the current data/ into meta.sqlite
+#   2. build   - compile metaserve
 #   3. runtime - a minimal, non-root alpine image running metaserve
 #
-# At runtime metaserve serves the baked artifact immediately and hot-swaps in
-# published data releases. The release workflow can trigger an immediate refresh
-# through the signed webhook; --poll remains the recovery path. The baked db is
-# the offline fallback; release artifacts carry git-derived added_at dates.
+# Why the data is not in the image: the artifact is a data release, published on
+# its own cadence, and it grows with the catalogue (hundreds of MB once the
+# libex seed lands). Baking it made every site tweak re-validate and re-compile
+# the whole catalogue and ship a data-sized image, and a container that outlived
+# its build served stale bytes until the first poll. Now the image is code +
+# site only, a UI change rebuilds neither, and metaserve fetches the newest
+# release before it serves the first request (poll-only boot: New() does the
+# first refresh synchronously).
+#
+# Boot failure mode - deliberate: if GitHub is unreachable at startup the
+# process does NOT exit (that would be a container crash loop). It comes up
+# degraded, logs the reason, serves the static site, answers /healthz with
+# `{"status":"starting"}` + 503 and every API route with 503, and retries every
+# 30s until a release loads. A health check therefore reports the container
+# unready - accurately - instead of the container flapping.
 
 # ---- 1. site -----------------------------------------------------------------
 FROM node:24-alpine AS site
@@ -39,9 +51,6 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
 RUN go build -trimpath -ldflags="-s -w" -o /out/metaserve ./cmd/metaserve
-# Bake the current data tree into an artifact. added_at falls back to
-# sources[].imported_at here; the polled release carries git-derived dates.
-RUN go run ./cmd/metabuild -o /out/meta.sqlite
 
 # ---- 3. runtime --------------------------------------------------------------
 # Track the current stable Alpine (3.20 went EOL in April 2026).
@@ -51,11 +60,11 @@ RUN apk add --no-cache ca-certificates \
     && mkdir -p /app /data/cache && chown -R app:app /data
 WORKDIR /app
 COPY --from=build /out/metaserve /app/metaserve
-COPY --from=build /out/meta.sqlite /app/meta.sqlite
 COPY --from=site /site/dist /app/site
 
 USER app
 EXPOSE 8080
-# /data holds the downloaded/hot-swapped release artifacts (poll cache).
+# /data holds the downloaded/hot-swapped release artifacts. It is a cache (lose
+# it and the next boot re-downloads), but keeping it makes a restart instant.
 VOLUME ["/data"]
-ENTRYPOINT ["/app/metaserve", "--db", "/app/meta.sqlite", "--site", "/app/site", "--poll", "--cache", "/data/cache"]
+ENTRYPOINT ["/app/metaserve", "--site", "/app/site", "--poll", "--cache", "/data/cache"]

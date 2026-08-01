@@ -153,12 +153,20 @@ export interface ChaptersResponse {
   chapters: Chapter[]
 }
 
+/** A person plus a PAGE of each credit list. The *_total fields are the unpaged
+    counts: a prolific narrator (or a corporate credit like "Full Cast") has more
+    credits than one response carries, so counts come from the totals and the
+    lists are what is shown. */
 export interface Person {
   id: string
   name: string
   sort_name?: string
   authored: WorkCard[]
   narrated: { work: WorkCard; recording_id: string }[]
+  authored_total: number
+  narrated_total: number
+  limit: number
+  offset: number
 }
 
 export interface Series {
@@ -166,6 +174,9 @@ export interface Series {
   name: string
   authors: PersonRef[]
   works: { position: string; work: WorkCard }[]
+  works_total: number
+  limit: number
+  offset: number
 }
 
 export interface LookupResponse {
@@ -307,8 +318,16 @@ export function getChapters(
   )
 }
 
+/** The largest page /api/v1/people/{id} will serve (its clamp). The person page
+    asks for it outright: one request covers all but the handful of corporate
+    credits, and those are labelled as truncated rather than silently cut. */
+export const PERSON_PAGE_MAX = 500
+
 export function getPerson(id: string, signal?: AbortSignal): Promise<Person> {
-  return getJSON<Person>(`/api/v1/people/${encodeURIComponent(id)}`, signal)
+  return getJSON<Person>(
+    `/api/v1/people/${encodeURIComponent(id)}?limit=${PERSON_PAGE_MAX}`,
+    signal
+  )
 }
 
 export function getSeries(id: string, signal?: AbortSignal): Promise<Series> {

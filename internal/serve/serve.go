@@ -36,7 +36,22 @@ type Config struct {
 
 	// swapGrace is how long an old snapshot is kept open after a swap so that
 	// in-flight requests finish on it. Overridable for tests; default 60s.
+	// Superseded cache files are pruned once it elapses.
 	swapGrace time.Duration
+
+	// maxPatchBase caps the artifact size for which a binary-delta refresh is
+	// attempted (see applyPatchFile). Overridable for tests; default
+	// defaultMaxPatchBase.
+	maxPatchBase int64
+
+	// bootRetry is how long the poller waits between attempts while it has NO
+	// artifact at all (see pollLoop). Overridable for tests; default
+	// defaultBootRetry.
+	bootRetry time.Duration
+
+	// apiBase overrides the GitHub API base URL. Test-only: production always
+	// talks to api.github.com.
+	apiBase string
 }
 
 // Server holds the current snapshot and serves the API. The snapshot is swapped
@@ -61,6 +76,14 @@ type Server struct {
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
 // (with Poll) the newest data release is fetched synchronously so the server
 // never starts empty.
+//
+// A poll-only boot whose first fetch FAILS is not fatal: the image ships no
+// baked artifact, so a GitHub outage at boot time must not turn into a container
+// crash-loop. New logs the failure and returns a Server with no snapshot; it
+// listens, serves the static site, answers /healthz with "starting" and every
+// API route with 503, and the poll loop retries every cfg.bootRetry until an
+// artifact lands (see pollLoop). Nothing serves stale or partial data in the
+// meantime, because there is nothing to serve.
 func New(cfg Config) (*Server, error) {
 	if cfg.Logger == nil {
 		cfg.Logger = log.Default()
@@ -84,7 +107,7 @@ func New(cfg Config) (*Server, error) {
 	}
 	s := &Server{cfg: cfg, log: cfg.Logger}
 	if cfg.Poll {
-		s.gh = newGHClient(cfg.Repo, cfg.Token, "")
+		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
 	}
 
 	if cfg.DBPath != "" {
@@ -95,7 +118,8 @@ func New(cfg Config) (*Server, error) {
 		s.cur.Store(snap)
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
-			return nil, err
+			s.log.Printf("serve: no artifact at boot: %v", err)
+			s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying every %s)", s.bootRetry())
 		}
 	} else {
 		return nil, errors.New("serve: no --db and --poll not set: nothing to serve")
@@ -135,16 +159,34 @@ func (s *Server) Run(ctx context.Context) error {
 	return err
 }
 
-// current returns the live snapshot.
+// current returns the live snapshot, or nil when none has loaded yet (a
+// poll-only boot whose first fetch failed - see New).
 func (s *Server) current() *snapshot { return s.cur.Load() }
 
+// defaultBootRetry is how often a server with NO artifact retries. It is much
+// shorter than the steady-state poll interval: a boot that could not reach
+// GitHub is an outage to recover from in seconds, not in an hour.
+const defaultBootRetry = 30 * time.Second
+
+func (s *Server) bootRetry() time.Duration {
+	if s.cfg.bootRetry > 0 {
+		return s.cfg.bootRetry
+	}
+	return defaultBootRetry
+}
+
 // swap installs a new snapshot and schedules the old one's close after the grace
-// period, so requests that already grabbed the old handle finish cleanly.
+// period, so requests that already grabbed the old handle finish cleanly. The
+// cache files the swap superseded are pruned at the same moment - once nothing
+// can still be reading them.
 func (s *Server) swap(next *snapshot) {
 	old := s.cur.Swap(next)
 	if old != nil && old != next {
 		grace := s.cfg.swapGrace
-		time.AfterFunc(grace, old.close)
+		time.AfterFunc(grace, func() {
+			old.close()
+			s.pruneCache()
+		})
 	}
 }
 
@@ -176,9 +218,24 @@ func (s *Server) buildMux() http.Handler {
 	return mux
 }
 
-// api wraps a JSON API handler with CORS and gzip.
+// api wraps a JSON API handler with CORS, gzip, and the loaded-artifact gate.
 func (s *Server) api(h http.HandlerFunc) http.Handler {
-	return gzipMW(corsMW(h))
+	return gzipMW(corsMW(s.requireSnapshot(h)))
+}
+
+// requireSnapshot answers 503 while no artifact has loaded, so every data
+// handler can assume s.current() is non-nil. Only a poll-only boot that could
+// not reach GitHub is in that state (see New); it is temporary by construction,
+// hence Retry-After.
+func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if s.current() == nil {
+			w.Header().Set("Retry-After", strconv.Itoa(int(s.bootRetry().Seconds())))
+			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
+			return
+		}
+		next(w, r)
+	}
 }
 
 // ---- middleware -------------------------------------------------------------
@@ -227,6 +284,23 @@ func clampLimit(raw string, def, max int) int {
 	return n
 }
 
+// clampLimitAll parses an OPTIONAL ?limit= param for an endpoint whose default
+// is "no window at all": absent or invalid yields 0, meaning every row; a
+// supplied value is clamped to [1, max].
+func clampLimitAll(raw string, max int) int {
+	if raw == "" {
+		return 0
+	}
+	n, err := strconv.Atoi(raw)
+	if err != nil || n <= 0 {
+		return 0
+	}
+	if n > max {
+		return max
+	}
+	return n
+}
+
 // clampOffset parses the ?offset= param into a non-negative row offset,
 // defaulting to 0 when absent, invalid, or negative.
 func clampOffset(raw string) int {
@@ -242,8 +316,16 @@ func clampOffset(raw string) int {
 
 // ---- handlers ---------------------------------------------------------------
 
+// handleHealthz reports readiness, not liveness: a server that has not loaded an
+// artifact yet answers 503 with status "starting", so a container health check
+// or a load balancer keeps it out of rotation until it can actually answer.
 func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
+	if snap == nil {
+		w.Header().Set("Retry-After", strconv.Itoa(int(s.bootRetry().Seconds())))
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
+		return
+	}
 	writeJSON(w, http.StatusOK, map[string]any{
 		"status":   "ok",
 		"built_at": snap.stats.BuiltAt,
@@ -289,9 +371,21 @@ func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
 }
 
+// personPageDefault / personPageMax bound one page of a person's credit lists.
+// The default is a page, not the whole list: a corporate credit ("Full Cast")
+// already narrates ~2,000 works, and that count grows with the catalogue. The
+// unpaged totals travel in the response so a client always knows what it is
+// missing.
+const (
+	personPageDefault = 100
+	personPageMax     = 500
+)
+
 func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	p, err := snap.person(r.PathValue("id"))
+	q := r.URL.Query()
+	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
+	p, err := snap.person(r.PathValue("id"), limit, clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
@@ -303,9 +397,15 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, p)
 }
 
+// seriesPageMax bounds an explicitly requested series page. There is no
+// default: ?limit absent means the whole series (see snapshot.series - the
+// player's series rail is composed from the full list).
+const seriesPageMax = 500
+
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	ser, err := snap.series(r.PathValue("id"))
+	q := r.URL.Query()
+	ser, err := snap.series(r.PathValue("id"), clampLimitAll(q.Get("limit"), seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
