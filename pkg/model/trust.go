@@ -43,37 +43,62 @@ const (
 	TierUserLibrary
 )
 
-// bulkMirrorSources are the source types that mean "seeded in bulk from a
-// third-party mirror". Today this is exactly libex-import, which is why the
-// policy is written as "libex-only" in the docs; a second mirror source would
-// join this table and nothing else would change.
-var bulkMirrorSources = map[string]bool{
-	"libex-import": true,
-}
+// The source-type vocabulary: the values schema/common.schema.json's
+// #/$defs/source type enum allows. They live here, beside the table that ranks
+// them, so the writers that STAMP a type and the rule that reads it back cannot
+// drift onto two spellings of one type - a re-spelled stamp would otherwise fall
+// through to TierReference with no compile error and no failing test.
+// internal/importer and internal/issueform alias the ones they stamp.
+const (
+	// The user-library tier: a person's own library export or submission.
+	SourceUser                 = "user" // an issue-form submission or a hand edit
+	SourceOpenAudibleImport    = "openaudible-import"
+	SourceLibationImport       = "libation-import"
+	SourceAudiosiloBooksImport = "audiosilo-books-import" // metascan scans and the site's /import
 
-// userLibrarySources are the source types that mean "a person attested this":
-// their own library export, or their own submission. Keep this list and the
-// schema's source-type enum (schema/common.schema.json #/$defs/source) in step
-// - TestSourceTiersCoverSchemaEnum pins that every enum value is classified.
-var userLibrarySources = map[string]bool{
-	"user":                   true, // an issue-form submission or a hand edit
-	"openaudible-import":     true,
-	"libation-import":        true,
-	"audiosilo-books-import": true, // metascan folder scans and the site's /import
+	// The bulk-mirror tier. Today this is exactly libex-import, which is why the
+	// policy is written as "libex-only" in the docs; a second mirror source would
+	// join the table below and nothing else would change.
+	SourceLibexImport = "libex-import"
+
+	// The reference tier: crosswalks and lookups, which carry no policy.
+	SourceAudibleLookup = "audible-lookup"
+	SourceOpenLibrary   = "openlibrary"
+	SourceWikidata      = "wikidata"
+	SourceInventaire    = "inventaire"
+	SourceCommunity     = "community"
+)
+
+// sourceTiers is THE table: every source type the schema allows, ranked once.
+// Keep it and the schema's enum in step - TestSourceTiersCoverSchemaEnum pins
+// that every enum value appears here, so a type added to the schema without a
+// decision fails a test rather than silently defaulting.
+//
+// The reference entries carry no policy, but naming them anyway is what keeps
+// "deliberately inert" distinguishable from "nobody has classified this yet".
+var sourceTiers = map[string]SourceTier{
+	SourceLibexImport: TierBulkMirror,
+
+	SourceUser:                 TierUserLibrary,
+	SourceOpenAudibleImport:    TierUserLibrary,
+	SourceLibationImport:       TierUserLibrary,
+	SourceAudiosiloBooksImport: TierUserLibrary,
+
+	SourceAudibleLookup: TierReference,
+	SourceOpenLibrary:   TierReference,
+	SourceWikidata:      TierReference,
+	SourceInventaire:    TierReference,
+	SourceCommunity:     TierReference,
 }
 
 // TierOfSource ranks one sources[] entry type. An unrecognized type is
 // TierReference (see the constant): unknown means "not classified", never
 // "overwritable".
 func TierOfSource(sourceType string) SourceTier {
-	switch {
-	case userLibrarySources[sourceType]:
-		return TierUserLibrary
-	case bulkMirrorSources[sourceType]:
-		return TierBulkMirror
-	default:
-		return TierReference
+	if tier, ok := sourceTiers[sourceType]; ok {
+		return tier
 	}
+	return TierReference
 }
 
 // BulkMirrorOnly reports whether a record is still nothing but a bulk-mirror

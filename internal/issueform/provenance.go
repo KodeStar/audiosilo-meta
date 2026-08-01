@@ -5,13 +5,15 @@ import (
 	"strings"
 
 	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // sourceLibexImport is the schema source type for a fact that came out of a
-// libex lookup (common.schema.json #/$defs/source). It matches the type
-// `metaimport libex` stamps, so a book seeded through the site's /add assist
-// carries the same provenance as one imported in bulk from the same mirror.
-const sourceLibexImport = "libex-import"
+// libex lookup. It is the vocabulary pkg/model ranks (model.TierOfSource), so
+// this is the same type `metaimport libex` stamps: a book seeded through the
+// site's /add assist carries the same provenance - and the same trust tier - as
+// one imported in bulk from the same mirror.
+const sourceLibexImport = model.SourceLibexImport
 
 // libexMarkerRE matches the structured marker line the site's /add lookup assist
 // writes as the FIRST line of the Sources field ("libex: B015RQON6I"). The site

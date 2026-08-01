@@ -23,6 +23,11 @@ const (
 	tierWork = `{"added_at":"2026-01-05","authors":["ada-mapmaker"],"id":"the-lost-cartographer","language":"en","license":"CC0-1.0","sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"}],"title":"The Lost Cartographer"}`
 	//nolint:lll // one record per line reads as the record it is
 	tierRecording = `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"us"}],"chapters":[{"length_ms":60000,"start_ms":0,"title":"Mirror Chapter"}],"cover_url":"https://m.media-amazon.com/images/I/mirror.jpg","id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Mirror Press","release_date":"2019","runtime_min":600,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"}],"work":"the-lost-cartographer"}`
+	// The same recording once a user HAS attested it: their facts won and their
+	// stamp rode along, so the record is no longer bulk-mirror-only and no later
+	// run - mirror or user - may overwrite it again.
+	//nolint:lll // one record per line reads as the record it is
+	tierRecordingAttested = `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"us"}],"cover_url":"https://m.media-amazon.com/images/I/user.jpg","id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Lost Press","release_date":"2019-05-04","runtime_min":605,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"},{"imported_at":"2026-07-11","ref":"B0LIBEX001","type":"openaudible-import"}],"work":"the-lost-cartographer"}`
 )
 
 const (
@@ -78,6 +83,21 @@ const userRowBare = `[{
   "narrated_by": "Bea Reader",
   "language": "english",
   "region": "us"
+}]`
+
+// userRowConflicting is a SECOND user's row for the same book, disagreeing on
+// the runtime: 54000s = 900 minutes against the 605 the first user recorded, far
+// outside the 10% window that means "the same production". It also states a
+// publisher of its own, so a run that applied anything at all would be visible.
+const userRowConflicting = `[{
+  "asin": "B0LIBEX001",
+  "title_short": "The Lost Cartographer",
+  "author": "Ada Mapmaker",
+  "narrated_by": "Bea Reader",
+  "language": "english",
+  "region": "us",
+  "seconds": 54000,
+  "publisher": "Another Imprint"
 }]`
 
 // runUserImport runs a user-library (OpenAudible) import against dataDir.
@@ -234,19 +254,7 @@ func TestSecondUserContradictionWarnsAndKeepsTheFirst(t *testing.T) {
 	runUserImport(t, dataDir, userRowFull)
 	before := snapshotTree(t, dataDir)
 
-	// 54000s = 900 minutes against the recorded 605: far outside the 10% window
-	// that means "the same production".
-	conflicting := `[{
-	  "asin": "B0LIBEX001",
-	  "title_short": "The Lost Cartographer",
-	  "author": "Ada Mapmaker",
-	  "narrated_by": "Bea Reader",
-	  "language": "english",
-	  "region": "us",
-	  "seconds": 54000,
-	  "publisher": "Another Imprint"
-	}]`
-	sum := runUserImport(t, dataDir, conflicting)
+	sum := runUserImport(t, dataDir, userRowConflicting)
 	if sum.Conflicts != 1 {
 		t.Errorf("Conflicts = %d, want 1", sum.Conflicts)
 	}
@@ -274,8 +282,6 @@ func TestUserImportIsIdempotent(t *testing.T) {
 // trust runs one way. Neither libex planning mode may touch a record a user has
 // attested, whatever the mirror states.
 func TestLibexImportNeverOverwritesAUserAttestedRecord(t *testing.T) {
-	//nolint:lll // one record per line reads as the record it is
-	attested := `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"us"}],"cover_url":"https://m.media-amazon.com/images/I/user.jpg","id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Lost Press","release_date":"2019-05-04","runtime_min":605,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"},{"imported_at":"2026-07-11","ref":"B0LIBEX001","type":"openaudible-import"}],"work":"the-lost-cartographer"}`
 	// The mirror states a different publisher and cover for facts the record
 	// already carries, so a run that honours the ordering writes nothing at all.
 	row := `[{"asin":"B0LIBEX001","title":"The Lost Cartographer","region":"us","language":"english","publisher":"Mirror Press","releaseDate":"2019-05-04T00:00:00Z","lengthMinutes":605,"imageUrl":"https://m.media-amazon.com/images/I/mirror.jpg","authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}]`
@@ -285,7 +291,7 @@ func TestLibexImportNeverOverwritesAUserAttestedRecord(t *testing.T) {
 		mode Mode
 	}{{"create", ModeCreate}, {"enrich", ModeEnrich}} {
 		t.Run(mode.name, func(t *testing.T) {
-			dataDir := seedTierTree(t, map[string]string{tierRecRel: attested})
+			dataDir := seedTierTree(t, map[string]string{tierRecRel: tierRecordingAttested})
 			before := snapshotTree(t, dataDir)
 			sum, err := RunLibex(writeBooks(t, row), Options{
 				DataDir: dataDir, ImportDate: testImportDate, Mode: mode.mode,
@@ -343,9 +349,7 @@ func TestUserImportAttestsOnAnASINMerge(t *testing.T) {
 // long-standing narrowness for every record the tier does not open: the ASIN,
 // the ISBN and the provenance stamp, and nothing else.
 func TestUserImportMergeLeavesAnAttestedRecordAlone(t *testing.T) {
-	//nolint:lll // one record per line reads as the record it is
-	attested := `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"us"}],"cover_url":"https://m.media-amazon.com/images/I/user.jpg","id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Lost Press","release_date":"2019-05-04","runtime_min":605,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"},{"imported_at":"2026-07-11","ref":"B0LIBEX001","type":"openaudible-import"}],"work":"the-lost-cartographer"}`
-	dataDir := seedTierTree(t, map[string]string{tierRecRel: attested})
+	dataDir := seedTierTree(t, map[string]string{tierRecRel: tierRecordingAttested})
 	row := `[{
 	  "asin": "B0USER0001",
 	  "title_short": "The Lost Cartographer",
@@ -403,9 +407,8 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 	if seed.NewWorks != 1 || seed.NewRecordings != 1 {
 		t.Fatalf("seed summary = %+v", seed)
 	}
-	recRel := "works/th/the-lost-cartographer/recordings/bea-reader-2019.json"
 	var rec recordingFile
-	readEntity(t, dataDir, recRel, &rec)
+	readEntity(t, dataDir, tierRecRel, &rec)
 	if got := sourceTypes(rec); len(got) != 1 || got[0] != "libex-import" {
 		t.Fatalf("seeded sources = %v, want libex-only", got)
 	}
@@ -415,7 +418,7 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 	if first.AttestedRecordings != 1 || first.AttestedWorks != 1 {
 		t.Errorf("first user summary = %+v", first)
 	}
-	readEntity(t, dataDir, recRel, &rec)
+	readEntity(t, dataDir, tierRecRel, &rec)
 	if rec.Publisher != "Lost Press" || rec.RuntimeMin != 605 || rec.ReleaseDate != "2019-05-04" {
 		t.Errorf("the first user's facts must win over the seed: %+v", rec)
 	}
@@ -426,16 +429,7 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 	// 3. A second user disagrees: the first writer's values stand and the
 	// disagreement is flagged rather than applied.
 	before := snapshotTree(t, dataDir)
-	conflicting := `[{
-	  "asin": "B0LIBEX001",
-	  "title_short": "The Lost Cartographer",
-	  "author": "Ada Mapmaker",
-	  "narrated_by": "Bea Reader",
-	  "language": "english",
-	  "region": "us",
-	  "seconds": 54000
-	}]`
-	second := runUserImport(t, dataDir, conflicting)
+	second := runUserImport(t, dataDir, userRowConflicting)
 	if second.Conflicts != 1 || second.AttestedRecordings != 0 {
 		t.Errorf("second user summary = %+v, want one flagged conflict and no takeover", second)
 	}
@@ -446,34 +440,3 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 	}
 }
 
-func TestSameChaptersAndSameStrings(t *testing.T) {
-	// The two equality helpers exist so the overwrite posture does not re-queue a
-	// record whose value is already what the row states.
-	existing := []any{map[string]any{"title": "One", "start_ms": jsonNum(t, "0"), "length_ms": jsonNum(t, "1000")}}
-	if !sameChapters(existing, []outChapter{{Title: "One", StartMS: 0, LengthMS: 1000}}) {
-		t.Error("identical chapter tables must compare equal")
-	}
-	if sameChapters(existing, []outChapter{{Title: "Two", StartMS: 0, LengthMS: 1000}}) {
-		t.Error("a differing title must compare unequal")
-	}
-	if sameChapters(existing, nil) {
-		t.Error("a different length must compare unequal")
-	}
-	if !sameStrings([]any{"fantasy", "sci-fi"}, []string{"fantasy", "sci-fi"}) {
-		t.Error("identical string sets must compare equal")
-	}
-	if sameStrings([]any{"fantasy"}, []string{"sci-fi"}) {
-		t.Error("differing string sets must compare unequal")
-	}
-}
-
-// jsonNum builds the json.Number a decoded pack entry holds, so the equality
-// helpers are tested against the shape they really see.
-func jsonNum(t *testing.T, s string) any {
-	t.Helper()
-	var v any
-	if err := jsonInto(s, &v); err != nil {
-		t.Fatal(err)
-	}
-	return v
-}

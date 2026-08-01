@@ -1073,9 +1073,6 @@ func fillStr(raw map[string]any, key, val string, overwrite bool) bool {
 		return false
 	}
 	cur := coerceStr(raw[key])
-	if cur == val {
-		return false
-	}
 	if cur != "" && !overwrite {
 		return false
 	}

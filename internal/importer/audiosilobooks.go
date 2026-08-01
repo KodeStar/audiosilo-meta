@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // audiosilobooks.go ingests the site's "audiosilo-books" envelope - the bulk
@@ -29,8 +31,9 @@ import (
 // newBooksPayload for the Audiobookshelf source).
 const audiosiloBooksFormat = "audiosilo-books"
 
-// sourceAudiosiloBooks is the provenance stamped on every record from this source.
-const sourceAudiosiloBooks = "audiosilo-books-import"
+// sourceAudiosiloBooks is the provenance stamped on every record from this
+// source - the vocabulary pkg/model ranks (see types.go's note on aliasing).
+const sourceAudiosiloBooks = model.SourceAudiosiloBooksImport
 
 // audiosiloBooksEnvelope is the self-identifying wrapper the site emits. Books
 // stay loosely typed (decoded with UseNumber) and are lifted through the same

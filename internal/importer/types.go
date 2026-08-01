@@ -1,5 +1,7 @@
 package importer
 
+import "github.com/kodestar/audiosilo-meta/pkg/model"
+
 // The out* types are the importer's own view of each entity's on-disk shape.
 // They exist separately from pkg/model so the importer controls exactly
 // which fields are emitted - notably abridged, which is a tri-state pointer here
@@ -13,11 +15,15 @@ package importer
 // outChapter stay unexported: issueform emits a richer work/recording shape of
 // its own, so only the entities with an identical shape are shared.
 
+// The source types this package stamps are the vocabulary pkg/model ranks - see
+// model.TierOfSource. Aliasing rather than re-spelling is what keeps a stamp and
+// its trust tier from drifting apart (a re-spelled literal here would silently
+// become an unranked reference source).
 const (
 	licenseCC0     = "CC0-1.0"
-	sourceOpenAud  = "openaudible-import"
-	sourceLibation = "libation-import"
-	sourceLibex    = "libex-import"
+	sourceOpenAud  = model.SourceOpenAudibleImport
+	sourceLibation = model.SourceLibationImport
+	sourceLibex    = model.SourceLibexImport
 )
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
@@ -213,4 +219,21 @@ type Summary struct {
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string
+}
+
+// Produced counts the outcomes that mean a run actually CHANGED the tree: it
+// created records, merged a re-release ASIN into one, or attested a
+// bulk-mirror-only record on the submitter's behalf (LICENSING.md's trust tiers
+// - an export whose every book is already catalogued still takes those records
+// over, and reporting that as "nothing new" would silently discard it).
+//
+// It lives beside the counters rather than at the caller that asks the question
+// (internal/issueform's import composer, which branches its duplicate verdict on
+// it) so that adding a counter here is visibly a decision about this verdict too.
+//
+// Deliberately excluded: Skipped, which is the opposite of a change, and the
+// Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
+func (s Summary) Produced() int {
+	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
+		s.AttestedWorks + s.AttestedRecordings
 }

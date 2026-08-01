@@ -151,6 +151,11 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// An exact-ASIN row about a record it may not overwrite has already had its
 	// say: a disagreement was flagged just above, and its agreeing facts are
 	// what the record states. The create path's skip stays a skip.
+	//
+	// This return is also what makes re-running an import a full no-op, and it is
+	// the TIER that gets it there rather than any field comparison: the first run's
+	// attestation ended the record's bulk-mirror-only status, so every later run
+	// finds overwrite false and stops here without inspecting a single fact.
 	if scope == scopeAttestExact && !overwrite {
 		return true
 	}
@@ -161,8 +166,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// 601 minutes for a recorded 600, or a full date for a recorded year - never
 	// a re-statement of a different production.
 	if b.runtimeMin > 0 {
-		cur, known := coerceInt(raw["runtime_min"])
-		if !known || cur <= 0 || (overwrite && int(cur) != b.runtimeMin) {
+		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
 			raw["runtime_min"] = b.runtimeMin
 			changed = true
 		}
@@ -188,7 +192,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	// grants overwrite) AND the row's own chapter rows build cleanly. Merging two
 	// sources' chapter tables would produce a timeline neither source states.
 	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || overwrite {
-		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 && !sameChapters(existing, chs) {
+		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 {
 			raw["chapters"] = chs
 			changed = true
 		}
@@ -258,28 +262,6 @@ func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn fu
 		}
 	}
 	return false
-}
-
-// sameChapters reports whether a recording's already-recorded chapter table is
-// the one the row would write. It exists for the overwrite posture: replacing a
-// table with an identical one would stamp and re-queue a record nothing changed
-// on, which is exactly what makes a second identical run stop being a no-op.
-func sameChapters(existing []any, incoming []outChapter) bool {
-	if len(existing) != len(incoming) {
-		return false
-	}
-	for i, e := range existing {
-		m, _ := e.(map[string]any)
-		start, sOK := coerceInt(m["start_ms"])
-		length, lOK := coerceInt(m["length_ms"])
-		if !sOK || !lOK || start != incoming[i].StartMS || length != incoming[i].LengthMS {
-			return false
-		}
-		if coerceStr(m["title"]) != incoming[i].Title {
-			return false
-		}
-	}
-	return true
 }
 
 // datesConflict reports whether two release dates genuinely disagree. A release
@@ -359,7 +341,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	if len(b.genres) > 0 && (len(existing) == 0 || overwrite) {
 		// Mapped only on the branch that can store the result, so a row whose
 		// genres could never be recorded adds nothing to the unmapped-genre report.
-		if mapped := p.genres.mapGenres(b.genres, p.unmappedGenres); len(mapped) > 0 && !sameStrings(existing, mapped) {
+		if mapped := p.genres.mapGenres(b.genres, p.unmappedGenres); len(mapped) > 0 {
 			raw["genres"] = mapped
 			changed = true
 		}
@@ -376,21 +358,6 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	} else {
 		p.summary.EnrichedWorks++
 	}
-}
-
-// sameStrings reports whether a recorded string array is the one a run would
-// write. Like sameChapters, it keeps the overwrite posture from re-queueing a
-// record whose value is already what the row states.
-func sameStrings(existing []any, incoming []string) bool {
-	if len(existing) != len(incoming) {
-		return false
-	}
-	for i, e := range existing {
-		if coerceStr(e) != incoming[i] {
-			return false
-		}
-	}
-	return true
 }
 
 // enrichSeries places the matched work into the series it claims - but only

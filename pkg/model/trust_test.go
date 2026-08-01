@@ -76,7 +76,7 @@ func TestBulkMirrorOnly(t *testing.T) {
 	}
 }
 
-// TestSourceTiersCoverSchemaEnum keeps the trust tables and the schema's
+// TestSourceTiersCoverSchemaEnum keeps the trust table and the schema's
 // source-type enum in step: a type added to the schema without a decision here
 // would silently fall into TierReference, which is safe but is a decision
 // someone should make on purpose.
@@ -103,17 +103,10 @@ func TestSourceTiersCoverSchemaEnum(t *testing.T) {
 	if len(enum) == 0 {
 		t.Fatal("no source-type enum found in the schema")
 	}
-	// The reference tier is the default, so "classified" means the type is
-	// named in one of the two policy tables OR is a known reference source.
-	reference := map[string]bool{
-		"audible-lookup": true, "openlibrary": true, "wikidata": true,
-		"inventaire": true, "community": true,
-	}
 	for _, tp := range enum {
-		if userLibrarySources[tp] || bulkMirrorSources[tp] || reference[tp] {
-			continue
+		if _, ok := sourceTiers[tp]; !ok {
+			t.Errorf("schema source type %q is not classified in pkg/model/trust.go - "+
+				"add it to sourceTiers (TierReference if it should carry no policy)", tp)
 		}
-		t.Errorf("schema source type %q is not classified in pkg/model/trust.go - "+
-			"add it to userLibrarySources, bulkMirrorSources, or this test's reference set", tp)
 	}
 }

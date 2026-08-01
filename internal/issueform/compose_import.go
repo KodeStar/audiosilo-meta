@@ -64,14 +64,13 @@ func (c *composer) importLibrary(s sections) {
 		c.fail(StatusInvalid, "import failed: %v", err)
 		return
 	}
-	// Attestations count as an outcome: a library export whose every book is
-	// already catalogued still CHANGES the tree when those records were libex
-	// mirror seeds, because the submitter's data replaced theirs (LICENSING.md's
-	// trust tiers). Without them such a run would be reported as a duplicate and
-	// the pull request never opened, silently discarding the takeover.
-	newCount := sum.NewWorks + sum.NewRecordings + sum.NewPeople + sum.NewSeries + sum.MergedASINs +
-		sum.AttestedWorks + sum.AttestedRecordings
-	if newCount == 0 {
+	// Summary.Produced is what "the run changed something" means, defined next to
+	// the counters it reads. Notably it counts ATTESTATIONS: a library export
+	// whose every book is already catalogued still changes the tree when those
+	// records were libex mirror seeds, because the submitter's data replaced
+	// theirs (LICENSING.md's trust tiers). Reporting that as a duplicate would
+	// open no pull request and silently discard the takeover.
+	if sum.Produced() == 0 {
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
