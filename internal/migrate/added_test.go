@@ -2,6 +2,7 @@ package migrate
 
 import (
 	"encoding/json"
+	"path/filepath"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -132,6 +133,41 @@ func TestBackfillRefusesAHistorylessTree(t *testing.T) {
 	}
 	if len(treeSnapshot(t, dir)) != len(legacyFixture()) {
 		t.Error("the failed run changed the tree")
+	}
+}
+
+// --repo names the repository whose history dates the records; the pathspec is
+// derived from where the data directory sits inside it, so a tree that is not at
+// the conventional data/ still walks the right paths (and one outside the
+// repository is refused rather than walked as if it were at the root).
+func TestRepoTargetPathspec(t *testing.T) {
+	cases := map[string]struct {
+		repo, data string
+		want       string
+		wantErr    bool
+	}{
+		"the conventional layout": {repo: "/r", data: "/r/data", want: "data/works"},
+		"a tree one level deeper": {repo: "/r", data: "/r/checkout/data", want: "checkout/data/works"},
+		"the repository root":     {repo: "/r", data: "/r", want: "works"},
+		"a tree outside the repo": {repo: "/r", data: "/elsewhere/data", wantErr: true},
+		"a sibling with a prefix": {repo: "/r", data: "/r2/data", wantErr: true},
+	}
+	for name, c := range cases {
+		t.Run(name, func(t *testing.T) {
+			repo, spec, err := repoTarget(filepath.FromSlash(c.data), filepath.FromSlash(c.repo))
+			if c.wantErr {
+				if err == nil {
+					t.Fatalf("repoTarget = %q/%q, want an error", repo, spec)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatal(err)
+			}
+			if repo != filepath.FromSlash(c.repo) || spec != c.want {
+				t.Errorf("repoTarget = %q/%q, want %q/%q", repo, spec, c.repo, c.want)
+			}
+		})
 	}
 }
 

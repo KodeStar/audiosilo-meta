@@ -130,6 +130,12 @@ func seedRepoHistory(t *testing.T, repo string) {
 	git("init", "-q")
 	git("config", "user.name", "Fixture")
 	git("config", "user.email", "fixture@example.com")
+	// A developer's ~/.gitconfig is inherited by a fresh repository, and a
+	// signing setup there (commit.gpgsign with an agent behind it) makes these
+	// commits prompt, stall, or fail. The fixture's commits are throwaway; pin
+	// signing off so the test depends on git alone.
+	git("config", "commit.gpgsign", "false")
+	git("config", "tag.gpgsign", "false")
 
 	all := legacyFixture()
 	pick := func(keys ...string) map[string]string {

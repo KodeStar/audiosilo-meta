@@ -10,14 +10,21 @@ import (
 	"strings"
 )
 
-// The pre-migration layout, parsed here and nowhere else.
+// The pre-migration layout, parsed here as a STORAGE LOCATION - the only place
+// left that reads it as one.
 //
-// This parsing is metamigrate's OWN on purpose. The migration is the LAST
-// consumer of the file-per-entity tree, and the same change set deletes
+// This parsing is metamigrate's OWN on purpose. The migration is the last thing
+// that opens a file-per-record tree, and the same change set deleted
 // model.ParseLocation and pkg/check's legacy reader - so if this package leaned
-// on either, retiring them would mean retiring the tool that still has to read
-// the old tree. A private copy is what lets the rest of the tooling stop knowing
-// the old layout ever existed.
+// on either, retiring them would have meant retiring the tool that still has to
+// read the old tree.
+//
+// Two other packages parse the same path SHAPE, and neither is a reader of it:
+// internal/issueform, because a correction form's `record` field is a reference
+// a submitter types (and every older issue and link spells it that way), and
+// internal/testpack, because a fixture address reads better than a family plus
+// two map keys. Three small parsers, three different jobs, no shared dependency
+// on a layout that no longer exists.
 //
 // The shapes it recognizes, and nothing else:
 //
@@ -116,9 +123,12 @@ func sortedKeys[V any](m map[string]V) []string {
 
 // scan reads the whole pre-migration tree under dataDir.
 //
-// Every JSON file has to land somewhere: a path it does not recognize is a hard
-// error, never a skip. A migration that silently left a file behind would delete
-// it in the same run.
+// EVERY file has to land somewhere: a JSON file at a path it does not recognize
+// is a hard error, and so is a file that is not JSON at all. The conversion
+// deletes what it read and leaves nothing else behind, so a file it neither
+// converts nor deletes would survive into the packed tree as debris that
+// metacheck then reports forever - and one it converted from a shape it guessed
+// at would be worse.
 func scan(dataDir string) (*legacyTree, error) {
 	t := &legacyTree{
 		works:  map[string]*legacyWork{},
@@ -126,12 +136,12 @@ func scan(dataDir string) (*legacyTree, error) {
 		series: map[string][]byte{},
 	}
 
-	var unrecognized []string
+	var unrecognized, foreign []string
 	err := filepath.WalkDir(dataDir, func(p string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		if d.IsDir() || !strings.HasSuffix(p, ".json") {
+		if d.IsDir() {
 			return nil
 		}
 		relOS, rerr := filepath.Rel(dataDir, p)
@@ -139,6 +149,10 @@ func scan(dataDir string) (*legacyTree, error) {
 			return rerr
 		}
 		rel := filepath.ToSlash(relOS)
+		if !strings.HasSuffix(p, ".json") {
+			foreign = append(foreign, rel)
+			return nil
+		}
 		l, ok := parsePath(rel)
 		if !ok {
 			unrecognized = append(unrecognized, rel)
@@ -158,6 +172,11 @@ func scan(dataDir string) (*legacyTree, error) {
 		sort.Strings(unrecognized)
 		return nil, fmt.Errorf("%d file(s) are not part of the pre-migration layout and would be lost: %s",
 			len(unrecognized), strings.Join(unrecognized, ", "))
+	}
+	if len(foreign) > 0 {
+		sort.Strings(foreign)
+		return nil, fmt.Errorf("%d file(s) under %s are not JSON and the data tree holds nothing else: %s "+
+			"(move them out, then convert)", len(foreign), dataDir, strings.Join(foreign, ", "))
 	}
 	sort.Strings(t.files)
 

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os/exec"
 	"path"
+	"path/filepath"
 	"strings"
 )
 
@@ -48,7 +49,23 @@ func (a addedDates) rec(workSlug, recSlug string) string { return a.recs[workSlu
 
 // gitAddedDates runs the history walk in repoDir over pathspec (the works root,
 // repo-relative) and returns the first-add dates it found.
+//
+// It refuses a SHALLOW clone. A shallow clone still answers `git log
+// --diff-filter=A` - with every path "added" by the one commit it has - so the
+// walk would succeed, the run would report a full backfill, and every record in
+// the database would be dated the day of the migration. That is the worst
+// failure this tool has: plausible, uniform, wrong, and unrecoverable once the
+// old tree is gone.
 func gitAddedDates(repoDir, pathspec string) (addedDates, error) {
+	shallow, err := gitOutput(repoDir, "rev-parse", "--is-shallow-repository")
+	if err != nil {
+		return addedDates{}, err
+	}
+	if shallow == "true" {
+		return addedDates{}, fmt.Errorf("%s is a shallow clone: the added_at backfill reads the whole history, "+
+			"and a shallow clone would date every record at the tip commit. "+
+			"Run `git fetch --unshallow` (or clone without --depth) and try again", repoDir)
+	}
 	cmd := exec.Command("git", "log", "--reverse", "--diff-filter=A", "--date-order",
 		"--format=COMMIT\t%aI", "--name-only", "--", pathspec)
 	cmd.Dir = repoDir
@@ -124,19 +141,39 @@ func (d addedDates) put(p, date string) {
 	}
 }
 
-// resolveRepo locates the git repository dataDir sits in and the works pathspec
-// to walk, both as release.yml's checkout would have seen them: the repository
-// root, and the data directory's repo-relative path plus "works".
-func resolveRepo(dataDir string) (repoDir, pathspec string, err error) {
-	top, err := gitOutput(dataDir, "rev-parse", "--show-toplevel")
-	if err != nil {
-		return "", "", err
+// repoTarget resolves the repository whose history dates the records and the
+// works pathspec inside it, both as release.yml's checkout would have seen them:
+// the repository root, and the data directory's repo-relative path plus "works".
+//
+// With no override the repository is the one the data directory sits in. With
+// one, the pathspec is derived from where the data directory sits RELATIVE to
+// that repository rather than assumed to be "data/", so an override works for a
+// tree that is not at the conventional path (a rehearsal against a checkout of
+// an older commit, say).
+func repoTarget(dataDir, override string) (repoDir, pathspec string, err error) {
+	if override == "" {
+		top, terr := gitOutput(dataDir, "rev-parse", "--show-toplevel")
+		if terr != nil {
+			return "", "", terr
+		}
+		prefix, perr := gitOutput(dataDir, "rev-parse", "--show-prefix")
+		if perr != nil {
+			return "", "", perr
+		}
+		return top, path.Join(strings.TrimSuffix(prefix, "/"), "works"), nil
 	}
-	prefix, err := gitOutput(dataDir, "rev-parse", "--show-prefix")
-	if err != nil {
-		return "", "", err
+	rel, rerr := filepath.Rel(override, dataDir)
+	if rerr != nil {
+		return "", "", fmt.Errorf("locate %s inside %s: %w", dataDir, override, rerr)
 	}
-	return top, path.Join(strings.TrimSuffix(prefix, "/"), "works"), nil
+	rel = filepath.ToSlash(rel)
+	if rel == ".." || strings.HasPrefix(rel, "../") {
+		return "", "", fmt.Errorf("%s is not inside the repository %s, so its history cannot date it", dataDir, override)
+	}
+	if rel == "." {
+		rel = ""
+	}
+	return override, path.Join(rel, "works"), nil
 }
 
 func gitOutput(dir string, args ...string) (string, error) {

@@ -243,8 +243,13 @@ func TestAlreadyConvertedIsRefused(t *testing.T) {
 	if err == nil {
 		t.Fatal("a converted tree was converted again")
 	}
-	if !strings.Contains(err.Error(), "already in the pack layout") {
+	if !strings.Contains(err.Error(), "already reads as the pack layout") {
 		t.Errorf("error = %v, want it to say the tree is already converted", err)
+	}
+	// The message has to name the file that made the family read as converted:
+	// one pack-shaped file in a legacy family hides every record under it.
+	if !strings.Contains(err.Error(), "people/0.json") {
+		t.Errorf("error = %v, want it to name the deciding pack file", err)
 	}
 	after := treeSnapshot(t, dir)
 	if !equalStrings(paths(before), paths(after)) {

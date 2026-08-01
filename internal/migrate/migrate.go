@@ -24,15 +24,27 @@
 //
 // Step 5's order is load-bearing: a directory bound is a work slug, so a
 // two-character work slug ("it") names a directory that the legacy shard "it"
-// already occupies. Everything is in memory by then, so nothing is at risk.
+// already occupies. Everything is in memory by then, so a failed render cannot
+// have deleted anything.
+//
+// It is NOT crash-safe on its own, and does not pretend to be: a run killed
+// between the delete and the write leaves a half-converted tree, and a re-run
+// over what survived would convert that subset perfectly happily. The safety net
+// is git, and Run insists on it - an in-place conversion is refused unless the
+// data tree is committed and clean, so the recovery from any interruption is
+// `git checkout -- data` (or `git status`, which shows the damage immediately).
+// A conversion that found no works at all is refused for the same reason.
 package migrate
 
 import (
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"os"
+	"path"
 	"path/filepath"
 	"sort"
+	"strings"
 
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
@@ -73,8 +85,6 @@ type Summary struct {
 	// Packs and Dirs count the files and directories written, per family.
 	Packs map[pack.Family]int
 	Dirs  map[pack.Family]int
-	// Files are the pack files written, data-relative and sorted.
-	Files []string
 	// Removed is the number of legacy files deleted.
 	Removed int
 }
@@ -103,34 +113,39 @@ func Run(opts Options) (Summary, error) {
 	if err := refuseConverted(opts.DataDir); err != nil {
 		return Summary{}, err
 	}
-	if !sum.InPlace {
-		if err := refuseOccupied(outDir); err != nil {
+	if sum.InPlace {
+		if err := refuseUncommitted(opts.DataDir); err != nil {
 			return Summary{}, err
 		}
+	} else if err := refuseOccupied(outDir); err != nil {
+		return Summary{}, err
 	}
 
 	tree, err := scan(opts.DataDir)
 	if err != nil {
 		return Summary{}, err
 	}
+	// A conversion that found no works is not a conversion. It is the shape an
+	// interrupted in-place run leaves behind (and the shape a wrong --data
+	// leaves), and reporting success over it would be this tool destroying a
+	// database and saying it went well.
+	if len(tree.works) == 0 {
+		return Summary{}, fmt.Errorf("%s holds no works: nothing to convert (is this the data directory, "+
+			"and is it the tree you meant?)", opts.DataDir)
+	}
 
 	dates := newAddedDates()
 	if opts.Backfill {
-		repo, spec := opts.RepoDir, ""
-		if repo == "" {
-			repo, spec, err = resolveRepo(opts.DataDir)
-			if err != nil {
-				return Summary{}, err
-			}
-		} else {
-			spec = "data/works"
+		repo, spec, rerr := repoTarget(opts.DataDir, opts.RepoDir)
+		if rerr != nil {
+			return Summary{}, rerr
 		}
 		if dates, err = gitAddedDates(repo, spec); err != nil {
 			return Summary{}, err
 		}
 		if dates.empty() {
-			return Summary{}, fmt.Errorf("the git-history walk of %s in %s dated nothing; "+
-				"a shallow clone cannot backfill added_at (release.yml used fetch-depth: 0 for this)", spec, repo)
+			return Summary{}, fmt.Errorf("the git-history walk of %s in %s dated nothing: "+
+				"the records cannot be backfilled from a history that does not describe them", spec, repo)
 		}
 	}
 
@@ -143,7 +158,11 @@ func Run(opts Options) (Summary, error) {
 	// the tree exactly as it was.
 	files := map[string][]byte{}
 	for _, def := range pack.Families() {
-		packs := planFamily(def, entries[def.Family])
+		overhead, merr := measure(entries[def.Family])
+		if merr != nil {
+			return Summary{}, fmt.Errorf("%s: %w", def.Family.Root(), merr)
+		}
+		packs := planFamily(def, entries[def.Family], overhead)
 		dirs := map[string]bool{}
 		for _, p := range packs {
 			data, rerr := render(p)
@@ -166,12 +185,12 @@ func Run(opts Options) (Summary, error) {
 		sum.Removed = len(tree.files)
 	}
 
-	sum.Files = make([]string, 0, len(files))
+	written := make([]string, 0, len(files))
 	for rel := range files {
-		sum.Files = append(sum.Files, rel)
+		written = append(written, rel)
 	}
-	sort.Strings(sum.Files)
-	for _, rel := range sum.Files {
+	sort.Strings(written)
+	for _, rel := range written {
 		abs := filepath.Join(outDir, filepath.FromSlash(rel))
 		if err := os.MkdirAll(filepath.Dir(abs), 0o755); err != nil {
 			return Summary{}, err
@@ -185,18 +204,99 @@ func Run(opts Options) (Summary, error) {
 
 // refuseConverted rejects a tree that is already (even partly) in pack layout,
 // so a second run cannot re-pack packs into packs.
+//
+// It names the file that made the family read as converted. A family in the old
+// layout classifies as pack the moment ONE pack-shaped file lands in it, and
+// then every legacy record under it is invisible to this check - so the message
+// has to point at the file rather than assert that there is nothing to do.
 func refuseConverted(dataDir string) error {
 	layouts, err := pack.Detect(dataDir)
 	if err != nil {
 		return err
 	}
 	for _, def := range pack.Families() {
-		if layouts[def.Family] == pack.LayoutPack {
-			return fmt.Errorf("%s/%s is already in the pack layout: nothing to migrate",
-				dataDir, def.Family.Root())
+		if layouts[def.Family] != pack.LayoutPack {
+			continue
 		}
+		culprit, ferr := firstPackFile(dataDir, def.Family)
+		if ferr != nil {
+			return ferr
+		}
+		return fmt.Errorf("%s/%s already reads as the pack layout (%s is a pack file): "+
+			"nothing to migrate. If that file does not belong there, remove it - while it is there, "+
+			"every file-per-record file in that family is ignored",
+			dataDir, def.Family.Root(), culprit)
 	}
 	return nil
+}
+
+// firstPackFile returns the data-relative path of the lexically first file under
+// the family root that parses as a pack.
+func firstPackFile(dataDir string, f pack.Family) (string, error) {
+	var found string
+	root := filepath.Join(dataDir, f.Root())
+	err := filepath.WalkDir(root, func(p string, d fs.DirEntry, err error) error {
+		if err != nil {
+			if os.IsNotExist(err) && p == root {
+				return fs.SkipAll
+			}
+			return err
+		}
+		if d.IsDir() || !strings.HasSuffix(p, ".json") {
+			return nil
+		}
+		raw, rerr := os.ReadFile(p)
+		if rerr != nil {
+			return rerr
+		}
+		if _, perr := pack.Parse(raw); perr != nil {
+			return nil
+		}
+		rel, rerr := filepath.Rel(dataDir, p)
+		if rerr != nil {
+			return rerr
+		}
+		found = filepath.ToSlash(rel)
+		return fs.SkipAll
+	})
+	if err != nil {
+		return "", err
+	}
+	if found == "" {
+		return path.Join(f.Root(), "(a file the pack reader accepted)"), nil
+	}
+	return found, nil
+}
+
+// refuseUncommitted rejects an in-place conversion of a data tree that is not
+// committed and clean.
+//
+// The conversion deletes the whole old tree and writes the new one; it is not
+// atomic, and it cannot be. What makes that acceptable is that the old tree is
+// one `git checkout -- data` away at every moment - which is only true if it was
+// committed when the run started. It is also the check that stops the worst
+// re-run: an interrupted conversion leaves a half-deleted tree that a second run
+// would convert, happily and completely, into a fraction of the database.
+//
+// A tree that is not in a git repository at all has no such net and no such
+// signal; it is allowed, because fixtures and scratch trees are exactly that,
+// and the package doc says what the model is.
+func refuseUncommitted(dataDir string) error {
+	if _, err := gitOutput(dataDir, "rev-parse", "--is-inside-work-tree"); err != nil {
+		return nil // not a repository: nothing to check, and nothing to restore from
+	}
+	status, err := gitOutput(dataDir, "status", "--porcelain", "--", ".")
+	if err != nil {
+		return err
+	}
+	if status == "" {
+		return nil
+	}
+	return fmt.Errorf("%s has uncommitted changes:\n%s\n"+
+		"commit or stash them first. The conversion deletes the whole tree before writing the new one, "+
+		"so a committed tree is what makes `git checkout -- %s` a complete recovery - and an already "+
+		"half-converted tree (an interrupted run) shows up here rather than being converted again",
+		dataDir, status, dataDir)
 }
 
 // refuseOccupied rejects an output directory that already holds one of the
