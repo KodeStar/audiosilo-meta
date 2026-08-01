@@ -1,6 +1,9 @@
 package issueform
 
-import "github.com/kodestar/audiosilo-meta/internal/importer"
+import (
+	"github.com/kodestar/audiosilo-meta/internal/importer"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
+)
 
 // The out* types are issueform's view of each entity's on-disk shape. They exist
 // so a form submission is composed into exactly the JSON a hand-authored pull
@@ -17,8 +20,9 @@ import "github.com/kodestar/audiosilo-meta/internal/importer"
 const (
 	licenseCC0 = "CC0-1.0"
 	// sourceUser is the provenance stamped on records composed from an issue
-	// form. It matches the common.schema.json source.type enum.
-	sourceUser = "user"
+	// form. It is the vocabulary pkg/model ranks (model.TierOfSource), which is
+	// what makes a submission user-library tier.
+	sourceUser = model.SourceUser
 )
 
 // These four entities are byte-identical to a bulk import, so issueform reuses

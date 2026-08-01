@@ -388,22 +388,91 @@ func (c *composer) recLocation(ref recRef) string {
 	return c.entryLocation(pack.FamilyWorks, ref.Work, ref.Rec)
 }
 
-// dedupIdentifiers fails with StatusDuplicate when any of the submission's ASINs
-// or ISBNs already resolves to a recording in the catalog, returning true so the
-// caller stops before writing anything. asinHint is appended to the ASIN-
-// duplicate message: the add-work path steers the submitter to the add-recording
-// form, add-recording passes "".
+// dedupIdentifiers fails when any of the submission's ASINs or ISBNs already
+// resolves to a recording in the catalog, returning true so the caller stops
+// before writing anything. asinHint is appended to the ASIN-duplicate message:
+// the add-work path steers the submitter to the add-recording form,
+// add-recording passes "".
+//
+// The verdict depends on the matched record's TRUST TIER (LICENSING.md). An
+// ordinary duplicate is StatusDuplicate, as it always was. A duplicate of a
+// record that is still bulk-mirror-only is StatusNeedsHuman instead: the
+// submitter is a person attesting a book nobody has attested yet, so their data
+// should take over the mirror seed - but the compose paths only ever CREATE
+// records, so the bot cannot apply it mechanically and a maintainer does. That
+// is the intake-side expression of the same rule the bulk importer applies
+// automatically for a whole library export.
 func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint string) bool {
 	for _, a := range asins {
 		if ref, ok := c.asinRec[a.ASIN]; ok {
-			c.fail(StatusDuplicate, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
+			c.failDuplicate(ref, "ASIN %s already exists (duplicate of %s)%s", a.ASIN, c.recLocation(ref), asinHint)
 			return true
 		}
 	}
 	for _, isbn := range isbns {
 		if ref, ok := c.isbnRec[isbn]; ok {
-			c.fail(StatusDuplicate, "ISBN %s already exists (duplicate of %s)", isbn, c.recLocation(ref))
+			c.failDuplicate(ref, "ISBN %s already exists (duplicate of %s)", isbn, c.recLocation(ref))
 			return true
+		}
+	}
+	return false
+}
+
+// failDuplicate records the terminal verdict for a submission that collides with
+// the catalogued recording at ref, choosing the status by that record's trust
+// tier (see dedupIdentifiers). The duplicate message is the caller's; the
+// bulk-mirror case replaces it with one that tells the submitter their data is
+// wanted rather than that they duplicated something.
+func (c *composer) failDuplicate(ref recRef, format string, args ...any) {
+	if c.bulkMirrorOnly(ref) {
+		c.failMirrorSeed(c.recLocation(ref))
+		return
+	}
+	c.fail(StatusDuplicate, format, args...)
+}
+
+// failDuplicateWork is failDuplicate for the WORK-slug collision on the add-work
+// form - the third duplicate gate, and the one that fires when a submission
+// names a book the catalogue holds under a DIFFERENT edition (a fresh ASIN and a
+// different narrator set pass the identifier and narrator gates). The tier
+// question is the same one, asked of the work record rather than a recording: a
+// work nobody but the mirror has ever stated is a takeover a maintainer applies,
+// not a duplicate to close.
+//
+// A work the catalogue load could not decode is absent from c.works and reads as
+// not-overwritable, the same safe answer bulkMirrorOnly gives.
+func (c *composer) failDuplicateWork(workSlug, format string, args ...any) {
+	if w := c.works[workSlug]; w != nil && model.BulkMirrorOnly(w.Sources) {
+		c.failMirrorSeed(c.entryLocation(pack.FamilyWorks, workSlug, ""))
+		return
+	}
+	c.fail(StatusDuplicate, format, args...)
+}
+
+// failMirrorSeed is the verdict every duplicate gate shares for a record that is
+// still nothing but a bulk-mirror seed: the submitter's data is wanted, and the
+// message says so rather than telling them they duplicated something.
+func (c *composer) failMirrorSeed(location string) {
+	c.fail(StatusNeedsHuman, "%s was seeded from the libex mirror and no user has attested it yet, "+
+		"so your submission should replace what is recorded there - a maintainer will apply it "+
+		"(the intake bot only composes new records, it cannot rewrite one)", location)
+}
+
+// bulkMirrorOnly reports whether the catalogued recording at ref is still
+// nothing but a bulk-mirror seed. It is the intake side's only tier test, and it
+// asks pkg/model rather than comparing source-type strings of its own.
+//
+// A recording the catalogue load could not decode is absent from c.works and
+// reads as false: not overwritable, which is the safe answer for a record whose
+// provenance we cannot see.
+func (c *composer) bulkMirrorOnly(ref recRef) bool {
+	w := c.works[ref.Work]
+	if w == nil {
+		return false
+	}
+	for _, r := range w.Recordings {
+		if r.ID == ref.Rec {
+			return model.BulkMirrorOnly(r.Sources)
 		}
 	}
 	return false

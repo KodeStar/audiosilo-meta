@@ -125,11 +125,18 @@ type planner struct {
 	// record within a run (see write.go).
 	store *pack.Store
 	// asinLoc locates the recording each already-catalogued ASIN sits on. It is
-	// allocated ONLY when enriching (the create path needs the p.asins membership
-	// test alone), so a normal import's memory profile is unchanged - a nil map
-	// IS the "not enriching" signal, so there is no separate mode flag to keep in
-	// step with it.
+	// allocated only for the runs that need to REACH a record an ASIN already
+	// sits on: an enrichment pass, and any user-tier run (whose ASIN-matched
+	// rows attest the record they matched - see attest.go). A libex create or
+	// recordings-only run needs the p.asins membership test alone and pays
+	// nothing, so a nil map is still "this run never looks a record up".
 	asinLoc map[string]RecRef
+	// userTier reports whether THIS run's source type carries user-library trust
+	// (model.TierUserLibrary): a person's own library export, as opposed to the
+	// libex bulk mirror. It is the run-wide half of the overwrite decision; the
+	// per-record half is whether the record the row matched is still
+	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
+	userTier bool
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -289,8 +296,9 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		unmappedGenres: map[string]bool{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
+		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
 	}
-	if opts.Mode == ModeEnrich {
+	if opts.Mode == ModeEnrich || p.userTier {
 		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
@@ -498,8 +506,12 @@ func resolveWorkTitles(books []sourceBook) []string {
 func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	warn := p.bookWarn(b)
 
-	// Dedup first: an already-present ASIN is a skip, not a warning.
+	// Dedup first: an already-present ASIN is a skip, not a warning. It is also
+	// the one place a USER's own library meets a record the libex mirror seeded,
+	// so the skip is where the trust-tier attestation happens (attest.go); for a
+	// libex run attestExisting is a no-op and the skip is exactly what it was.
 	if p.dedupeByASIN(asin) {
+		p.attestExisting(b, asin)
 		return
 	}
 
@@ -857,6 +869,15 @@ func (p *planner) addRecording(ws *workState, b sourceBook, asin, lang string, n
 				if !ok {
 					return false
 				}
+				// A user import merging into a BULK-MIRROR-ONLY recording attests
+				// it, and must do so BEFORE the merge stamps this run's source on
+				// the record: that stamp is what ends the record's
+				// bulk-mirror-only status, so reading the tier afterwards would
+				// see a user-attested record and apply nothing - the row's facts
+				// would be lost in the very act that claims a user attested them.
+				// On any other record this is a no-op, so the merge stays as
+				// narrow as it has always been (see addBook's note above).
+				p.attestOnMerge(b, RecRef{Work: ws.slug, Rec: m.slug}, warn)
 				// The entry's ISBNs ride along with the ASIN: they are the same
 				// edition's identifiers, and dropping them silently (as an
 				// earlier version did) loses a fact no later run would restore.
@@ -1034,12 +1055,29 @@ func appendISBNs(raw map[string]any, isbns []string) {
 	raw["isbn"] = existing
 }
 
-// fillStr records val at key on an existing record when the row states one and
-// the record does not already carry it, reporting whether it changed anything. It
-// is the "absent facts only, the existing value always wins" rule for a plain
-// string field, in one place.
-func fillStr(raw map[string]any, key, val string) bool {
-	if val == "" || coerceStr(raw[key]) != "" {
+// fillStr records val at key on an existing record when the row states one,
+// reporting whether it changed anything. It is the one place the "existing value
+// wins" rule lives for a plain string field - and, with overwrite, the one place
+// the trust-tier exception to it lives:
+//
+//   - overwrite false (the default posture): the value is written only when the
+//     record carries none. A recorded value always wins.
+//   - overwrite true: the row's stated value REPLACES the recorded one. Only a
+//     user-library run against a bulk-mirror-only record gets this (see
+//     attest.go and LICENSING.md's trust tiers), and after that first
+//     attestation the record is no longer bulk-mirror-only, so the next run is
+//     back to the default posture. That is what makes the takeover a one-way
+//     step rather than last-writer-wins churn.
+//
+// A row that states nothing (val == "") never clears a recorded value in either
+// posture: overwriting is about a fact the row ASSERTS, and silence is not an
+// assertion.
+func fillStr(raw map[string]any, key, val string, overwrite bool) bool {
+	if val == "" {
+		return false
+	}
+	cur := coerceStr(raw[key])
+	if cur != "" && !overwrite {
 		return false
 	}
 	raw[key] = val

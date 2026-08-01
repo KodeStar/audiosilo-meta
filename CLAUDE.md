@@ -198,7 +198,7 @@ cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
 cmd/metamigrate     thin CLI: the ONE-OFF conversion of a pre-pack file-per-record tree into the pack layout, with the added_at git-history backfill (--out rehearses out of place; logic in internal/migrate)
-pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render). The file-path addressing the old layout needed (Shard, ParseLocation) is gone. THREE places still parse the retired per-record path shape, each its own copy and each for a different reason: internal/issueform (a correction form's `record` field is a reference a submitter types), internal/testpack (fixture addresses read better than family + two map keys), and internal/migrate (the only one that reads it as a STORAGE location, because it is the only thing that still reads the old tree). (leaf; also reached through pkg/check's exported Catalog)
+pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render). The file-path addressing the old layout needed (Shard, ParseLocation) is gone. THREE places still parse the retired per-record path shape, each its own copy and each for a different reason: internal/issueform (a correction form's `record` field is a reference a submitter types), internal/testpack (fixture addresses read better than family + two map keys), and internal/migrate (the only one that reads it as a STORAGE location, because it is the only thing that still reads the old tree). Also the SOURCE TRUST TIERS (trust.go): the one table ranking sources[] types and the one bulk-mirror-only test the overwrite policy is written in terms of. (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
 pkg/check           PUBLIC pack-layout load (packcheck.go walks each family's pack listing; a family that is not in the pack layout is ONE loud problem naming metamigrate, and every JSON file the listing does not account for is an unrecognized location - never silence) + schema validation (wrapper schemas load-bearing; $ref reasons preserved via detailed output) + the pack storage invariants (placement, caps + single-entry exemption, bound validity, key/id agreement) + integrity/uniqueness/chapter/series/sidecar-uniqueness rules; Result carries Problems (fail) and Warnings (advisory, e.g. a single entry over the 256KB target); schema-valid entries that fail Go decoding are reported, never silently dropped. ONE walk per load (pack.Listing supplies the file accounting, the layouts and every family's tree; a data root or family root that is not a directory is an error, never an empty family), and `LoadStore(*pack.Store)` is the writers' door in: it validates the tree the store was opened on over the store's own walk, so a validating writer walks the tree once instead of twice. It is AS-OF-OPEN by construction (documented on LoadStore) and it never grows the writer's memory: a pack it reads is released as soon as it has been validated, and the canonical render memo the cap check leaves is released with it - the store re-reads the handful of packs it writes to, which is what it always did. After a Flush the store's walk is stale, so LoadStore takes a fresh one - post-write validation stays a full independent load
 pkg/pack            PUBLIC pack-file storage: family/cap definitions, bound math + binary-search lookup, pack parse/serialize (canonical via pkg/canonical, raw entries, duplicate keys rejected), median split + directory split, and the read-through Store (queued-write-first reads; Flush performs due splits, directory splits and bound normalization, and errors rather than ever writing two plans to one path). survey.go classifies every JSON file under a family root BEFORE bound math sees it, so a misfiled/misnamed/empty/too-deep file is relocatable content (Salvage), never an authoritative bound; Pending covers every structural invariant metacheck enforces (Salvage/Unreadable/Misplaced/Conflicts/Rebinds/Packs/Dirs) and Heal + Flush converges to a metacheck-green, entry-preserving tree in one pass (duplicate slugs: the correctly-placed copy wins, reported as a Conflict). The Store is layout-aware PER FAMILY (absent is writable; a family in the retired file-per-record layout fails with ErrLegacyLayout, which is the loud refusal every writer inherits - DetectLayout says pack as soon as ANY file under the root reads as one, so a stray file cannot flip a converted family back). Reading a tree costs ONE walk per run: Listing is that walk (file-to-family partition, per-family layout, per-family tree - Detect/ReadTree without re-walking) and Reader is the writer's parse cache, so a pack the store reads and rewrites is parsed once; a Store keeps both and exposes them (Store.Listing/Store.Reader), and gives both up at Flush - including a flush that FAILED part-way, which has still written something. The listing is as-of-Open and is a reading optimization only: survey re-scans the family root, because what gets relocated, rewritten or deleted has to be decided from the files that are there now. A borrower validating the tree (check.LoadStore) reads the cache but never fills it - retaining every pack for the rest of a run costs hundreds of megabytes to save a handful of re-reads. Store.HealPending is Heal plus the Pending it computed, so metafmt surveys a family once instead of twice. The one shared implementation every reader and writer builds on (see PACK-SPEC.md)
@@ -370,6 +370,41 @@ form's export-type dropdown** (the file is trusted over the form), and a
 deduped nothing is `needs-human` (the file likely does not match the selected
 export type), surfacing the importer warnings.
 
+**Trust tiers / the user-overwrite rule** (`pkg/model/trust.go` +
+`internal/importer/attest.go`; policy in LICENSING.md, governance consequence in
+GOVERNANCE.md). Source types are ranked - user-library submissions (`user`,
+`openaudible-import`, `libation-import`, `audiosilo-books-import`) outrank the
+bulk mirror (`libex-import`), with everything else in an inert reference tier -
+and a record is **bulk-mirror-only** iff it has sources and every one of them is
+mirror-tier. `model.TierOfSource` / `model.BulkMirrorOnly(Types)` are the ONLY
+place source-type strings are compared. When a user-library run matches such a
+record by ASIN (the create/recordings-only dedup skip, and the ASIN-merge path,
+which must attest BEFORE its own stamp ends the record's mirror-only status),
+the facts the export states OVERWRITE the recorded ones and the run's source
+entry is appended - the record is user-attested from then on, counted as
+`Summary.Attested{Works,Recordings}`, and every later run is back to the
+ordinary posture (existing wins, fill-only-absent, the runtime/date
+contradiction guards, `added_at` never touched). A contradiction on a user run
+is counted as `Summary.Conflicts` and warned: first writer wins, flagged for
+review, never last-writer-wins churn - and a refused row writes NOTHING, not even
+a stamp, so a mirror seed stays attestable by the next agreeing import.
+`applyScope` in `enrich.go` is what keeps the three call paths honest - only
+enrichment fills a record it may not overwrite, an exact-ASIN attestation still
+flags contradictions, and the inferred ASIN-merge match is silent. The merge
+scope is also the ONE place the release-date guard does not apply: a regional
+re-release legitimately carries its own date, and the merge stamps the run's
+provenance either way, so refusing the row there would end the record's
+mirror-only status while freezing the mirror's facts in place (the runtime
+guard, which is what tells a re-release from a different production, already ran
+upstream). A stated date never coarsens a recorded one either
+(`fillReleaseDate`: a recorded value that is a strict extension of the stated one
+stays). On the intake side a duplicate of a bulk-mirror-only record is
+`needs-human` rather than `duplicate` at all three gates - ASIN/ISBN, narrator
+set and work slug (the bot only composes new records, so a maintainer applies the
+takeover) - an import that only attested still opens a pull request, and an
+import whose ONLY effect was a conflict is `needs-human` with the adjudication
+note rather than a closed duplicate.
+
 ## Conventions
 
 - **Facts only, never fabricated.** Seed/contributed data is real and
@@ -465,7 +500,11 @@ export type), surfacing the importer warnings.
   are kept in step by cross-referenced comments); and the
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
-  enum, prefilled by /add through the shared audiblegenres.json). Remaining
+  enum, prefilled by /add through the shared audiblegenres.json); and the
+  **trust tiers / user-overwrite rule** (`pkg/model/trust.go` +
+  `internal/importer/attest.go`), landed BEFORE the seed so the takeover
+  machinery exists the moment users start submitting against mirror-seeded
+  records - see the importer section above and LICENSING.md. Remaining
   follow-ups tracked in the plan:
   surfacing genres in the player (three-repo seam), and a **streaming row
   iterator for the libex parse layer** - it currently slurps the whole file

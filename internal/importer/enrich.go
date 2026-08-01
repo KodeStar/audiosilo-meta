@@ -23,6 +23,13 @@ import "strings"
 // whole input into memory before any of this runs (see libex.go), so a
 // pre-filtered row set is still the recommended input.
 //
+// The field-application core below (applyToRecording / applyToWork) is shared
+// with the trust-tier attestation the create and ASIN-merge paths perform, so
+// "the existing value always wins" has exactly one documented exception, in one
+// place: a USER-library run meeting a record that is still bulk-mirror-only
+// overwrites it (attest.go, LICENSING.md). Enrichment itself is a libex mode, so
+// it never takes that branch - p.userTier is false for the whole run.
+//
 // Every changed record gets one provenance stamp (appendSourceUnique, so a
 // second pass never double-stamps), and a record whose facts were all already
 // present is not rewritten - so an unchanged input queues zero writes and a
@@ -69,77 +76,155 @@ func (p *planner) enrichBook(b sourceBook, asin string) {
 	}
 	p.summary.Matched++
 	warn := p.bookWarn(b)
-	if !p.enrichRecording(b, ref, warn) {
+	if !p.applyToRecording(b, ref, warn, scopeFill) {
 		return
 	}
-	p.enrichWork(b, ref.Work)
+	p.applyToWork(b, ref.Work, scopeFill)
 	p.enrichSeries(b, ref.Work, warn)
 }
 
-// enrichRecording fills the recording facts the matched record does not carry,
-// reporting whether the row was usable at all - false means nothing was filled
-// from it here OR anywhere else, because it contradicted the record (or the
-// record would not load, which has already set p.fatal). A present value is
-// never replaced.
+// applyScope is how much authority a row has over the record it matched, on top
+// of the trust-tier decision. It exists because three call paths share one
+// core for applying fields while differing in what they may do when the tier
+// does NOT grant overwrite - and each of those three answers is deliberate.
+type applyScope int
+
+const (
+	// scopeFill is the ENRICHMENT pass: fill facts the record does not carry
+	// (and overwrite when the tier grants it). It is the only scope that writes
+	// to a record the run may not overwrite.
+	scopeFill applyScope = iota
+	// scopeAttestExact is an EXACT-ASIN attestation from the create/
+	// recordings-only dedup skip. It overwrites when the tier grants it and
+	// otherwise writes nothing at all - a skip stays a skip, so a re-import of an
+	// already-attested library is unchanged. The contradiction guard still runs,
+	// because two people stating different facts about the SAME edition is the
+	// case the policy asks to flag for review.
+	scopeAttestExact
+	// scopeAttestMerged is the ASIN-MERGE path, where the record was matched by
+	// work and narrator set rather than by identifier and the row is a different
+	// (usually regional) edition. It overwrites when the tier grants it and is
+	// otherwise completely silent: a re-release's own release date differing from
+	// the recorded one is expected, not a disagreement to flag.
+	//
+	// Because the edition differs, the release-date half of the contradiction
+	// guard does not apply in this scope AT ALL (see recordingContradicts): the
+	// merge stamps the run's provenance either way, so refusing the row over a
+	// legitimately different regional date would end the record's
+	// bulk-mirror-only status while leaving the mirror's facts frozen in place
+	// and the user's unreachable forever. The runtime half is what distinguishes
+	// a re-release from a different production, and it is already applied
+	// upstream (runtimesCompatible, addRecording) before a merge is even
+	// considered.
+	scopeAttestMerged
+)
+
+// applyToRecording applies one row's stated facts to the recording its ASIN
+// matched, reporting whether the row was usable at all - false means nothing
+// was applied from it here OR anywhere else, because it contradicted the record
+// (or the record would not load, which has already set p.fatal).
 //
-// Deliberately never touched: abridged (a tri-state whose absence the model
-// cannot distinguish from a stated false, so a fill could invent a fact),
-// narrators (a differing credit list means a different production, not a missing
-// fact), and asin[] (the row's own ASIN is by definition already recorded -
-// that is how we found this file).
-func (p *planner) enrichRecording(b sourceBook, ref RecRef, warn func(string, ...any)) (usable bool) {
+// Which values win is the TRUST TIER's decision, made once for this record (see
+// attest.go):
+//
+//   - the ordinary posture: only facts the record does not carry are filled;
+//     a recorded value always wins.
+//   - the overwrite posture (a user-library run against a bulk-mirror-only
+//     record): a fact the row STATES replaces the recorded one, and the record
+//     is written even when no field changed, because the run's source entry is
+//     itself the attestation that ends the record's bulk-mirror-only status.
+//
+// scope narrows what a caller that is NOT enriching may do; see applyScope.
+//
+// Deliberately never touched in either posture: abridged (a tri-state whose
+// absence the model cannot distinguish from a stated false, so a write could
+// invent a fact), narrators (a differing credit list means a different
+// production, not a fact to reconcile), asin[] (the row's own ASIN is by
+// definition already recorded - that is how we found this record) and added_at
+// (a creation stamp, not a fact an export states).
+func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, ...any), scope applyScope) (usable bool) {
 	entry, raw := p.recordingRaw(ref.Work, ref.Rec)
 	if raw == nil {
 		return false
 	}
-	if p.recordingContradicts(b, raw, warn) {
+	overwrite := p.overwrites(raw)
+	// A merged-in row is a DIFFERENT edition of the same production, so on a
+	// record it may not overwrite it has nothing to say: its regional release
+	// date legitimately differs, and reporting that as a conflict would flag an
+	// expected fact as a disagreement.
+	if scope == scopeAttestMerged && !overwrite {
+		return true
+	}
+	if p.recordingContradicts(b, raw, warn, scope) {
 		return false
+	}
+	// An exact-ASIN row about a record it may not overwrite has already had its
+	// say: a disagreement was flagged just above, and its agreeing facts are
+	// what the record states. The create path's skip stays a skip.
+	//
+	// This return is also what makes re-running an import a full no-op, and it is
+	// the TIER that gets it there rather than any field comparison: the first run's
+	// attestation ended the record's bulk-mirror-only status, so every later run
+	// finds overwrite false and stops here without inspecting a single fact.
+	if scope == scopeAttestExact && !overwrite {
+		return true
 	}
 	changed := false
 
+	// Runtime and release date reach here only in agreement (recordingContradicts
+	// refused the row otherwise), so an overwrite is a precision improvement -
+	// 601 minutes for a recorded 600, or a full date for a recorded year - never
+	// a re-statement of a different production.
 	if b.runtimeMin > 0 {
-		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 {
+		if cur, known := coerceInt(raw["runtime_min"]); !known || cur <= 0 || overwrite {
 			raw["runtime_min"] = b.runtimeMin
 			changed = true
 		}
 	}
 
-	if rd := b.str("release_date"); datePattern.MatchString(rd) && fillStr(raw, "release_date", rd) {
+	if rd := b.str("release_date"); datePattern.MatchString(rd) && fillReleaseDate(raw, rd, overwrite) {
 		changed = true
 	}
 
 	// Publisher names are spelled a dozen ways across marketplaces and imprints,
-	// so a differing one is noise rather than a conflict worth reporting - the
-	// recorded spelling simply wins.
-	if fillStr(raw, "publisher", b.str("publisher")) {
+	// so a differing one is noise rather than a conflict worth reporting - in the
+	// ordinary posture the recorded spelling simply wins, silently.
+	if fillStr(raw, "publisher", b.str("publisher"), overwrite) {
 		changed = true
 	}
 
-	if img := b.str("image_url"); strings.HasPrefix(img, "https://") && fillStr(raw, "cover_url", img) {
+	if img := b.str("image_url"); strings.HasPrefix(img, "https://") && fillStr(raw, "cover_url", img, overwrite) {
 		changed = true
 	}
 
 	// Chapters are all-or-nothing: a recording's chapter list is one coherent
-	// timeline, so it is filled only when the record has none AND the row's own
-	// chapter rows build cleanly. Merging two sources' chapter tables would
-	// produce a timeline neither source states.
-	if existing, _ := raw["chapters"].([]any); len(existing) == 0 {
+	// timeline, so it is written only when the record has none (or the tier
+	// grants overwrite) AND the row's own chapter rows build cleanly. Merging two
+	// sources' chapter tables would produce a timeline neither source states.
+	if existing, _ := raw["chapters"].([]any); len(existing) == 0 || overwrite {
 		if chs := buildChapters(b.chapterRows(), warn); len(chs) > 0 {
 			raw["chapters"] = chs
 			changed = true
 		}
 	}
 
+	// ISBNs are only ever APPENDED, in every tier: they are identifiers, and
+	// checkUniqueness makes them globally unique, so an overwrite would be a
+	// retraction of someone else's identifier rather than a better value.
 	if p.enrichISBNs(raw, b.isbns, warn) {
 		changed = true
 	}
 
-	if !changed {
+	if !changed && !overwrite {
 		return true
 	}
 	p.stampSource(raw)
 	p.putWorkEntry(ref.Work, entry)
-	p.summary.EnrichedRecordings++
+	if overwrite {
+		p.summary.AttestedRecordings++
+	} else {
+		p.summary.EnrichedRecordings++
+	}
 	return true
 }
 
@@ -157,20 +242,72 @@ func (p *planner) enrichRecording(b sourceBook, ref RecRef, warn func(string, ..
 //
 // It warns at most once - the first contradiction found is enough to disqualify
 // the row, and a second line about the same row would only repeat that verdict.
-func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn func(string, ...any)) bool {
+//
+// This guard holds in EVERY trust tier, which is what makes it the policy's
+// "first wins, flag for review" rule as well as its safety net: when a second
+// user's export disagrees with what a record already states, the recorded value
+// stands, the row is refused whole, and the disagreement is counted
+// (Summary.Conflicts) and warned about for a human to adjudicate. It is never
+// resolved by letting the later writer win.
+//
+// The one scope it does not fully apply to is scopeAttestMerged, where the row
+// is a DIFFERENT edition by construction: its release date is expected to
+// differ, and refusing the row over that would be worse than useless, because
+// the merge stamps this run's provenance regardless - the record would leave the
+// bulk-mirror tier holding the mirror's facts, with the user's facts
+// unreachable for good and the same unresolvable conflict recounted on every
+// later run. The runtime half - the fact that actually distinguishes a
+// re-release from a different production - is applied upstream by
+// runtimesCompatible before a merge is considered at all, so nothing is lost.
+func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn func(string, ...any), scope applyScope) bool {
+	contradiction := func(format string, args ...any) bool {
+		warn(format, args...)
+		// Counted only for a user-library run: a bulk mirror disagreeing with the
+		// catalogue is an expected data-quality artefact of the source, while a
+		// person's own library disagreeing is the case a maintainer should look
+		// at (and the intake bot reports). An inferred edition match (the merge
+		// scope) is not a disagreement between two people about one edition, so
+		// it is never counted either.
+		if p.userTier && scope != scopeAttestMerged {
+			p.summary.Conflicts++
+		}
+		return true
+	}
+	// Defense in depth in the merge scope: addRecording only reaches a merge for a
+	// sibling whose runtime is already compatible, so this cannot fire there.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); known && cur > 0 && !runtimesCompatible(int(cur), b.runtimeMin) {
-			warn("runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
-			return true
+			return contradiction("runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
 		}
+	}
+	if scope == scopeAttestMerged {
+		return false
 	}
 	if rd := b.str("release_date"); datePattern.MatchString(rd) {
 		if cur := coerceStr(raw["release_date"]); cur != "" && datesConflict(cur, rd) {
-			warn("release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
-			return true
+			return contradiction("release date %s conflicts with the recorded %s; the row was not used for enrichment", rd, cur)
 		}
 	}
 	return false
+}
+
+// fillReleaseDate is fillStr for release_date plus the PRECISION rule the field
+// needs, and it is where the overwrite posture stops short of a plain
+// replacement.
+//
+// A release date is recorded at whatever precision its source stated ("2015",
+// "2015-03", "2015-03-24"), and datesConflict deliberately reads a prefix as
+// agreement rather than a contradiction - so without this a user's year-only
+// "2019" would silently REPLACE a recorded "2019-05-04" and destroy a fact
+// nobody disputed. When the recorded value is a strict extension of the stated
+// one it stays, in every posture. The other direction (a full date over a
+// recorded year) is a precision improvement and still applies, which is exactly
+// what the overwrite posture is for.
+func fillReleaseDate(raw map[string]any, val string, overwrite bool) bool {
+	if cur := coerceStr(raw["release_date"]); len(cur) > len(val) && strings.HasPrefix(cur, val) {
+		return false
+	}
+	return fillStr(raw, "release_date", val, overwrite)
 }
 
 // datesConflict reports whether two release dates genuinely disagree. A release
@@ -214,40 +351,66 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 	return true
 }
 
-// enrichWork fills the work facts the matched work does not carry - today only
-// genres, mapped from the source's own strings onto this project's vocabulary
-// (LICENSING.md forbids storing a retailer's taxonomy verbatim). Genres are
-// set only when the work has none, so the result is crisp and rerun-deterministic
-// rather than an accreting union.
+// applyToWork applies a row's stated facts to the work the matched recording
+// belongs to - today only genres, mapped from the source's own strings onto this
+// project's vocabulary (LICENSING.md forbids storing a retailer's taxonomy
+// verbatim). Genres are a SET, never an accreting union: in the ordinary posture
+// they are written only when the work has none, and in the overwrite posture the
+// row's mapped set replaces the recorded one wholesale, so the result stays
+// crisp and rerun-deterministic either way. A row whose genres map to nothing
+// never clears a recorded set - silence is not an assertion.
+//
+// A user-library run attests a bulk-mirror-only work even when it changes no
+// field: the source entry is the attestation. That is also why the early return
+// for a genre-less row is conditional on the run's tier - a libex enrichment run
+// still pays no read at all for a row with no genres.
 //
 // Deliberately never touched: title and authors (identity - a change is a
-// correction, not an enrichment), first_published and xref (facts a retailer row
-// does not state), description (community-written, never imported), and subtitle
-// (an Audible subtitle is marketing or series copy, not the edition's own
-// subtitle - see libexToBook).
-func (p *planner) enrichWork(b sourceBook, workSlug string) {
-	if len(b.genres) == 0 {
+// correction, not an import), first_published and xref (facts a retailer row
+// does not state), description (community-written, never imported), subtitle (an
+// Audible subtitle is marketing or series copy, not the edition's own subtitle -
+// see libexToBook), and added_at (a creation stamp).
+func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
+	if len(b.genres) == 0 && !p.userTier {
 		return
 	}
 	raw := p.workEntryRaw(workSlug)
 	if raw == nil {
 		return
 	}
-	if existing, _ := raw["genres"].([]any); len(existing) > 0 {
+	overwrite := p.overwrites(raw)
+	// Defense in depth, and deliberately kept: only the enrichment scope may write
+	// to a work this run cannot overwrite, because an attestation's "a skip stays
+	// a skip" promise covers the work as well as the recording. It writes nothing
+	// TODAY whatever it does - no user-library export states genres, so b.genres is
+	// empty on every attest-scope call and the changed/overwrite return below
+	// catches it - so this guard is the rule surviving a source that later does
+	// state them, not live behaviour.
+	if scope != scopeFill && !overwrite {
 		return
 	}
-	// Mapped only on the branch that can store the result, so a row whose genres
-	// could never be recorded adds nothing to the unmapped-genre report.
-	mapped := p.genres.mapGenres(b.genres, p.unmappedGenres)
-	if len(mapped) == 0 {
+	changed := false
+	existing, _ := raw["genres"].([]any)
+	if len(b.genres) > 0 && (len(existing) == 0 || overwrite) {
+		// Mapped only on the branch that can store the result, so a row whose
+		// genres could never be recorded adds nothing to the unmapped-genre report.
+		if mapped := p.genres.mapGenres(b.genres, p.unmappedGenres); len(mapped) > 0 {
+			raw["genres"] = mapped
+			changed = true
+		}
+	}
+	if !changed && !overwrite {
 		return
 	}
-	raw["genres"] = mapped
 	p.stampSource(raw)
 	// The read-modify-write is on the whole composite, so the work's recordings
-	// ride along untouched; added_at is left as found (enrichment never creates).
+	// ride along untouched; added_at is left as found (nothing here creates).
 	p.putWorkEntry(workSlug, raw)
-	p.summary.EnrichedWorks++
+	if overwrite {
+		p.summary.AttestedWorks++
+	} else {
+		p.summary.EnrichedWorks++
+	}
 }
 
 // enrichSeries places the matched work into the series it claims - but only

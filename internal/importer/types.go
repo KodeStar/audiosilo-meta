@@ -1,5 +1,7 @@
 package importer
 
+import "github.com/kodestar/audiosilo-meta/pkg/model"
+
 // The out* types are the importer's own view of each entity's on-disk shape.
 // They exist separately from pkg/model so the importer controls exactly
 // which fields are emitted - notably abridged, which is a tri-state pointer here
@@ -13,11 +15,15 @@ package importer
 // outChapter stay unexported: issueform emits a richer work/recording shape of
 // its own, so only the entities with an identical shape are shared.
 
+// The source types this package stamps are the vocabulary pkg/model ranks - see
+// model.TierOfSource. Aliasing rather than re-spelling is what keeps a stamp and
+// its trust tier from drifting apart (a re-spelled literal here would silently
+// become an unranked reference source).
 const (
 	licenseCC0     = "CC0-1.0"
-	sourceOpenAud  = "openaudible-import"
-	sourceLibation = "libation-import"
-	sourceLibex    = "libex-import"
+	sourceOpenAud  = model.SourceOpenAudibleImport
+	sourceLibation = model.SourceLibationImport
+	sourceLibex    = model.SourceLibexImport
 )
 
 // OutSource is a record's provenance stamp (type/ref/imported_at).
@@ -160,12 +166,29 @@ type Summary struct {
 	// same-work, same-narrator entry whose only new fact was another ASIN),
 	// rather than minting a sibling work or dropping the ASIN.
 	MergedASINs int
-	// EnrichedWorks / EnrichedRecordings count the existing records an
-	// enrichment run actually changed (a record whose every fact was already
-	// present is not counted - enrichment never rewrites a file it did not
-	// change). Always 0 outside ModeEnrich.
+	// EnrichedWorks / EnrichedRecordings count the existing records a run
+	// changed by FILLING facts they did not carry (a record whose every fact was
+	// already present is not counted - a run never rewrites a record it did not
+	// change). A record the run took over from the bulk mirror is counted as
+	// Attested* instead, so the two are disjoint.
 	EnrichedWorks      int
 	EnrichedRecordings int
+	// AttestedWorks / AttestedRecordings count the bulk-mirror-only records a
+	// USER-library run took over: the row's stated facts overwrote the mirror's
+	// and the run's source entry was appended, so the record is user-attested
+	// from now on (LICENSING.md's trust tiers; internal/importer/attest.go).
+	// Counted even when no field changed - the attestation itself is the change,
+	// and it is what a "libex-only records remaining" metric watches fall. Always
+	// 0 for a libex run.
+	AttestedWorks      int
+	AttestedRecordings int
+	// Conflicts counts rows a USER-library run refused because they contradicted
+	// what a record already states (see recordingContradicts). The recorded value
+	// stands - first writer wins - and this is the "flag for review" half of that
+	// rule: the intake bot surfaces the count so a maintainer adjudicates rather
+	// than the catalogue churning between two users. Always 0 for a libex run,
+	// whose contradictions are ordinary source noise and only warn.
+	Conflicts int
 	// SeriesPlacements counts works an enrichment run placed into an existing
 	// series they were not yet a member of. Always 0 outside ModeEnrich.
 	SeriesPlacements int
@@ -196,4 +219,21 @@ type Summary struct {
 	// Warnings are informational "asin/title: reason" lines for books or fields
 	// that could not be imported cleanly.
 	Warnings []string
+}
+
+// Produced counts the outcomes that mean a run actually CHANGED the tree: it
+// created records, merged a re-release ASIN into one, or attested a
+// bulk-mirror-only record on the submitter's behalf (LICENSING.md's trust tiers
+// - an export whose every book is already catalogued still takes those records
+// over, and reporting that as "nothing new" would silently discard it).
+//
+// It lives beside the counters rather than at the caller that asks the question
+// (internal/issueform's import composer, which branches its duplicate verdict on
+// it) so that adding a counter here is visibly a decision about this verdict too.
+//
+// Deliberately excluded: Skipped, which is the opposite of a change, and the
+// Enriched*/Matched/NotInCatalog family, which only a libex mode ever sets.
+func (s Summary) Produced() int {
+	return s.NewWorks + s.NewRecordings + s.NewPeople + s.NewSeries + s.MergedASINs +
+		s.AttestedWorks + s.AttestedRecordings
 }

@@ -68,6 +68,24 @@ stated (never an unbounded mirror), the records stamped with the source's typed
 reviewable tranches rather than one giant diff. A maintainer approves each
 tranche; batch imports never auto-merge.
 
+**Overwriting an existing record.** Imports do not normally rewrite what is
+already recorded - a recorded value wins and a run fills only what is absent.
+The one exception is the trust-tier rule in
+[LICENSING.md](LICENSING.md#trust-tiers-and-the-user-overwrite-rule): a record
+whose provenance is nothing but a bulk-mirror import has never been attested by
+a person, so the first user-library import that matches it by ASIN replaces its
+facts and takes over its provenance. After that the ordinary rules resume, and
+where two users disagree the first writer's value stands. The disagreement is
+surfaced in the pull request for a maintainer to adjudicate **when the import
+rules detect it** - a runtime more than 10% apart, or a release date that is not
+the same date at another precision. A differing publisher spelling, cover URL or
+chapter table is not detected: the recorded value stands silently and a
+correction is the route to changing it. Either way the review step is never
+bypassed, and the catalogue never churns between contributors. A form
+submission that duplicates a mirror-seeded record is routed to a maintainer
+(`data:needs-human`) rather than closed as a duplicate, because the bot can only
+compose new records and the submitter's data should win.
+
 ## Automated intake and AI verification
 
 Two automations sit in front of the human review step. Neither bypasses it.

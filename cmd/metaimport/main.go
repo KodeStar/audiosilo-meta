@@ -19,6 +19,15 @@
 // warnings (a book skipped for a missing narrator, an odd field) are
 // informational and never fail the run.
 //
+// A USER-library source (openaudible, libation, audiosilo-books) additionally
+// ATTESTS what it matches: a row whose ASIN is already in the catalogue on a
+// record seeded only from the libex mirror overwrites that record's facts with
+// the ones the export states, and stamps the run's provenance on it, so real
+// users become the provenance over time. Once a record carries any user
+// attestation the ordinary rules resume - a recorded value wins, a
+// contradicting row is refused and counted for review. See LICENSING.md's trust
+// tiers; libex runs are unaffected.
+//
 // --enrich (libex only) switches from creating records to ENRICHING the ones
 // already here: a row whose ASIN the catalogue does not hold is counted and
 // ignored, and a matched row only fills facts the existing work/recording does
@@ -266,6 +275,13 @@ func printSummary(s importer.Summary, dryRun bool, mode importer.Mode) {
 	case importer.ModeCreate:
 		fmt.Printf("%s: %d new works, %d new recordings, %d new people, %d new series; %d skipped (already present); %d asins merged into existing recordings; %d warnings\n",
 			summaryHead(mode, dryRun), s.NewWorks, s.NewRecordings, s.NewPeople, s.NewSeries, s.Skipped, s.MergedASINs, len(s.Warnings))
+	}
+	// The trust-tier line is printed only when a run moved something, so the
+	// long-standing summary wording above is untouched for every run that did
+	// not (every libex run, and any user import that met no mirror seed).
+	if s.AttestedWorks+s.AttestedRecordings+s.Conflicts > 0 {
+		fmt.Printf("  attested %d works and %d recordings that were previously libex-only; %d rows conflicted with a recorded value and were not applied\n",
+			s.AttestedWorks, s.AttestedRecordings, s.Conflicts)
 	}
 	for _, w := range s.Warnings {
 		fmt.Println("  warning:", w)

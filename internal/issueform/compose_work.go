@@ -89,7 +89,9 @@ func (c *composer) addWork(s sections) {
 		return
 	}
 	if _, exists := c.works[workSlug]; exists {
-		c.fail(StatusDuplicate, "a work already exists at %s; use the Add a recording form to add another narration",
+		// Tier-aware like the ASIN/ISBN and narrator-set gates: a work only the
+		// mirror has ever stated routes to a maintainer, not to a closed duplicate.
+		c.failDuplicateWork(workSlug, "a work already exists at %s; use the Add a recording form to add another narration",
 			c.entryLocation(pack.FamilyWorks, workSlug, ""))
 		return
 	}
