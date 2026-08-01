@@ -324,8 +324,24 @@ export function getChapters(
 export const PERSON_PAGE_MAX = 500
 
 export function getPerson(id: string, signal?: AbortSignal): Promise<Person> {
+  return getPersonPage(id, {}, signal)
+}
+
+/** One page of a person's credit lists. The window is the API's own (limit is
+    clamped to PERSON_PAGE_MAX server-side), and the response reports
+    authored_total/narrated_total, so a caller that needs the WHOLE list can page
+    on offset until it has them all - see collectAuthoredWorks in import-parse.ts,
+    which is what keeps the import diff from proposing a duplicate work that sits
+    past the first page of a prolific author's shelf. */
+export function getPersonPage(
+  id: string,
+  opts: { limit?: number; offset?: number } = {},
+  signal?: AbortSignal
+): Promise<Person> {
+  const params = new URLSearchParams({ limit: String(opts.limit ?? PERSON_PAGE_MAX) })
+  if (opts.offset) params.set('offset', String(opts.offset))
   return getJSON<Person>(
-    `/api/v1/people/${encodeURIComponent(id)}?limit=${PERSON_PAGE_MAX}`,
+    `/api/v1/people/${encodeURIComponent(id)}?${params.toString()}`,
     signal
   )
 }

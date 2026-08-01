@@ -193,9 +193,15 @@ func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string,
 }
 
 // coverageWorks lists works for the coverage browser: filtered by expressive-
-// layer status, optionally narrowed by a title/author substring query, ordered
-// by title then id, and paginated. It runs a COUNT plus one page query rather
-// than materializing the whole catalogue, so it scales to any library size.
+// layer status, optionally narrowed by a full-text query, ordered by title then
+// id, and paginated. It runs a COUNT plus one page query rather than
+// materializing the whole catalogue, so it scales to any library size.
+//
+// The query goes through the same FTS index as /search, whose work rows carry
+// title plus the names of authors, narrators and series - so q matches all four,
+// by whole word or word prefix. That is wider and shallower than the LIKE
+// '%...%' scan it replaced (which matched mid-word but read every row): the
+// unindexed scan is what could not survive the seed.
 //
 // Availability degrades with the artifact schema_version: a "has X" filter for
 // a dimension whose table is absent (recap_summary before v3; everything before

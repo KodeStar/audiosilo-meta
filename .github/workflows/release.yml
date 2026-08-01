@@ -1,13 +1,19 @@
 name: release
 
 # Build the SQLite data artifact and publish it as a dated GitHub Release.
-# Runs after data or schema changes land on main (and on manual dispatch).
+# Runs after a change lands on main that can change the ARTIFACT: the data or
+# schema it is built from, or the builder that shapes it. The builder counts
+# because the artifact is a compiled thing, not a copy: a new index, a
+# SchemaVersion bump or a changed column would otherwise sit unreleased until
+# some unrelated data edit happened to trigger a build.
 on:
   push:
     branches: [main]
     paths:
       - "data/**"
       - "schema/**"
+      - "internal/build/**"
+      - "cmd/metabuild/**"
   workflow_dispatch:
 
 # This workflow publishes a release, so it needs write access to contents.

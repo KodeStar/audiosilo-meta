@@ -1,4 +1,10 @@
 import { getPerson, type Person, type WorkCard as WorkCardData } from '../../lib/api'
+import {
+  authoredNote,
+  narratedWorks,
+  narrationNote,
+  workCount,
+} from '../../lib/person-credits'
 import WorkCard from '../cards/WorkCard'
 import {
   useQueryParam,
@@ -20,9 +26,11 @@ function WorkGrid({ works }: { works: WorkCardData[] }) {
   )
 }
 
-/** One credit section. `note` carries the truncation line when the API returned
-    a page rather than the whole list, so a prolific narrator's page says what it
-    is showing instead of quietly under-reporting. */
+/** One credit section. `count` is the count of the cards rendered below, already
+    written with its unit (see person-credits.workCount); `note` carries the
+    truncation line when the API returned a page rather than the whole list, so a
+    prolific narrator's page says what it is showing instead of quietly
+    under-reporting. */
 function Section({
   title,
   count,
@@ -30,7 +38,7 @@ function Section({
   children,
 }: {
   title: string
-  count: number
+  count: string
   note?: string
   children: React.ReactNode
 }) {
@@ -46,32 +54,14 @@ function Section({
   )
 }
 
-/** The "you are seeing a page" line, or undefined when the whole list arrived.
-    The API caps a person's credit lists (see PERSON_PAGE_MAX) because they are
-    unbounded - a corporate credit such as "Full Cast" narrates thousands of
-    works. */
-function truncationNote(shown: number, total: number | undefined, unit: string): string | undefined {
-  if (typeof total !== 'number' || shown >= total) return undefined
-  return `Showing the first ${shown} of ${total} ${unit}.`
-}
-
 function Loaded({ person }: { person: Person }) {
   usePageTitle(person.name)
 
-  // De-duplicate narrated works by work id (a narrator can appear on several
-  // recordings of the same work).
-  const narratedWorks: WorkCardData[] = []
-  const seen = new Set<string>()
-  for (const n of person.narrated ?? []) {
-    if (n.work && !seen.has(n.work.id)) {
-      seen.add(n.work.id)
-      narratedWorks.push(n.work)
-    }
-  }
+  const narrated: WorkCardData[] = narratedWorks(person.narrated)
 
   const roles: string[] = []
   if ((person.authored?.length ?? 0) > 0) roles.push('Author')
-  if (narratedWorks.length > 0) roles.push('Narrator')
+  if (narrated.length > 0) roles.push('Narrator')
 
   return (
     <div className="container py-10">
@@ -95,37 +85,37 @@ function Loaded({ person }: { person: Person }) {
         ) : null}
       </header>
 
-      {/* One rule for both sections: the heading count is always the number of
-          cards rendered below it, and the note - shown only when the API
-          returned a window - always states that window in the API's own unit.
-          Mixing the two (a total in the heading, a page length in the note) is
-          what made a truncated narrator page report numbers that agreed with
-          nothing on screen. */}
+      {/* One rule for both sections: the heading counts the cards rendered below
+          it and NAMES that unit, and the note - shown only when the API returned
+          a window - states that window in the API's own unit and names it too.
+          The two units genuinely differ for a narrator (several recordings of
+          one work are several credits, one card), so leaving either number bare
+          made a truncated narrator page look self-contradictory. */}
       {person.authored && person.authored.length > 0 ? (
         <Section
           title="Wrote"
-          count={person.authored.length}
-          note={truncationNote(person.authored.length, person.authored_total, 'works')}
+          count={workCount(person.authored.length)}
+          note={authoredNote(person.authored.length, person.authored_total)}
         >
           <WorkGrid works={person.authored} />
         </Section>
       ) : null}
 
-      {narratedWorks.length > 0 ? (
+      {narrated.length > 0 ? (
         <Section
           title="Narrated"
-          count={narratedWorks.length}
-          note={truncationNote(
+          count={workCount(narrated.length)}
+          note={narrationNote(
             person.narrated?.length ?? 0,
             person.narrated_total,
-            'narration credits'
+            narrated.length
           )}
         >
-          <WorkGrid works={narratedWorks} />
+          <WorkGrid works={narrated} />
         </Section>
       ) : null}
 
-      {(person.authored?.length ?? 0) === 0 && narratedWorks.length === 0 ? (
+      {(person.authored?.length ?? 0) === 0 && narrated.length === 0 ? (
         <p className="rounded-xl border border-edge bg-surface px-6 py-12 text-center text-sm text-dim">
           No works are linked to this person yet.
         </p>

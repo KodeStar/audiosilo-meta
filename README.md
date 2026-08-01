@@ -144,8 +144,9 @@ top-line band only - how many works carry characters/recaps/whole-book recap
 summaries - so it stays tiny at any catalogue size. `coverage/works?filter=&q=
 &limit=&offset=` is the paginated, searchable browser: `filter` is `missing`
 (missing any dimension) or `has_characters`/`has_recaps`/`has_recap_summary`; `q`
-matches title/author through the same full-text index as `search` (token
-prefixes, not mid-word substrings); the response carries a per-filter
+matches a work's title, authors, narrators and series through the same full-text
+index as `search` (whole words and word prefixes, not mid-word substrings); the
+response carries a per-filter
 `available` flag that is
 false when the dimension is not evaluable at the artifact's schema version.
 `coverage/series-gaps?q=&limit=&offset=` is the paginated, name-searchable list
@@ -158,10 +159,17 @@ Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 runs - the server fetches the newest data release (the newest release carrying
 `meta.sqlite.gz`; code/image `v*` releases are skipped) on boot, streaming it to
 the cache directory and verifying the published checksum before it counts. If
-that first fetch fails the process does not exit: it comes up degraded (static
-site served, `/healthz` and every API route 503 with a clear message) and
-retries every 30s, so an unreachable GitHub is a logged outage rather than a
-container crash loop. With `--db` as well, the local artifact serves immediately
+that first fetch fails the process does not exit. It first falls back to the
+newest artifact already in the cache directory - what the previous container was
+serving - and serves that, logged as stale, until a release loads. Only with
+nothing cached does it come up empty (static site served, `/healthz` and every
+API route 503 with a clear message, and a `Retry-After` reporting the wait
+actually in force). Either way it retries after 30s and then backs off, doubling
+up to `--interval`, so an unreachable GitHub is a logged outage rather than a
+container crash loop. A restart while GitHub is reachable does not re-download
+what the cache already holds either: the cached artifact for the newest release
+is verified against that release's published checksum and adopted as is. With
+`--db` as well, the local artifact serves immediately
 and the poller still runs a refresh at startup (not just once per `--interval`).
 Superseded artifacts are pruned from the cache after each hot-swap. Set
 `GITHUB_TOKEN` to raise the API rate limit.

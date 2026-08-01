@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { lookup, search, getPerson, formatRuntime, type SearchResult } from '../../lib/api'
+import { lookup, search, getPersonPage, formatRuntime, type SearchResult } from '../../lib/api'
 import {
   parseExport,
   partitionByIdentifier,
@@ -8,7 +8,9 @@ import {
   authorKey,
   authorSearchKeys,
   candidatesForBook,
+  collectAuthoredWorks,
   dedupeCandidates,
+  unconfirmedAuthors,
   type ParsedBook,
   type ParseOutcome,
   type WorkCandidate,
@@ -74,6 +76,19 @@ interface Results {
   noIdentifier: number // books in cannotMatch that carry no ASIN/ISBN (couldn't be checked)
   total: number // books across the result stats: deduped identified + all unidentified
   skipped: number
+  // Authors whose catalogue shelf we could not read in full (see runDiff). Their
+  // books in "New" are unconfirmed, so the UI says so rather than implying every
+  // listed book is definitely missing from the database.
+  partialAuthors: string[]
+}
+
+// "Brandon Sanderson, Stephen King and 3 more" - the author list for the
+// unconfirmed-shelf notice, kept short so the notice stays one sentence.
+function nameList(names: string[], max = 3): string {
+  if (names.length <= max) {
+    return names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`
+  }
+  return `${names.slice(0, max).join(', ')} and ${names.length - max} more`
 }
 
 // A one-line summary of a book for the review rows.
@@ -234,7 +249,12 @@ export default function ImportTool() {
     // FTS-indexed query - and match the work title locally.
     setMatching(true)
     const worksByAuthor = new Map<string, WorkCandidate[]>()
-    await runPool([...authorSearchKeys(misses)], POOL_SIZE, ctrl.signal, async ([key, name]) => {
+    // Author keys whose shelf we know we did NOT see in full. Any of their books
+    // can be in the database without us matching it, so the results warn instead
+    // of presenting them as confidently new.
+    const partial = new Set<string>()
+    const authorNames = authorSearchKeys(misses)
+    await runPool([...authorNames], POOL_SIZE, ctrl.signal, async ([key, name]) => {
       try {
         const res = await search(name, AUTHOR_WORKS_LIMIT, ctrl.signal)
         let works: WorkCandidate[] = res.results
@@ -243,23 +263,47 @@ export default function ImportTool() {
         // A prolific author can have more works than the search cap returns. When
         // the result is truncated, resolve the author's person id and pull the
         // complete authored list, so an existing work past the cap still matches.
+        // That list is itself PAGED by the API (a page, plus authored_total), so
+        // it is collected page by page - reading only the first page would put a
+        // 500-plus-credit author's later works back out of sight and propose them
+        // as new.
         if (res.results.length >= AUTHOR_WORKS_LIMIT) {
           const person = res.results.find(
             (r): r is Extract<SearchResult, { kind: 'person' }> =>
               r.kind === 'person' && authorKey(r.name) === key
           )
-          if (person) {
+          if (!person) {
+            // The search was capped and there is no person record to page from,
+            // so this shelf is knowably incomplete.
+            partial.add(key)
+          } else {
             try {
-              const p = await getPerson(person.id, ctrl.signal)
-              works = dedupeCandidates([...works, ...p.authored.map(toCandidate)])
+              const shelf = await collectAuthoredWorks(async (offset) => {
+                const p = await getPersonPage(person.id, { offset }, ctrl.signal)
+                return {
+                  authored: p.authored.map(toCandidate),
+                  authored_total: p.authored_total,
+                  limit: p.limit,
+                }
+              })
+              works = dedupeCandidates([...works, ...shelf.works])
+              // partial is keyed by AUTHOR KEY (what candidatesForBook and the
+              // notice filter below both join on), never by display name.
+              if (shelf.truncated) partial.add(key)
             } catch {
-              // Keep the (truncated) search works if the person fetch fails.
+              // Keep the (truncated) search works if the person fetch fails - but
+              // the shelf stayed capped, so the caller must not read a miss as
+              // "not in the database".
+              if (!ctrl.signal.aborted) partial.add(key)
             }
           }
         }
         worksByAuthor.set(key, works)
       } catch {
-        if (!ctrl.signal.aborted) worksByAuthor.set(key, [])
+        if (!ctrl.signal.aborted) {
+          worksByAuthor.set(key, [])
+          partial.add(key)
+        }
       }
     })
     if (ctrl.signal.aborted) return
@@ -269,6 +313,12 @@ export default function ImportTool() {
       existingWork: matchExistingWork(book, candidatesForBook(book, worksByAuthor)),
     }))
 
+    // Only warn about an incomplete shelf that actually affects the output: an
+    // author whose books all matched an existing work (or produced none) tells
+    // the contributor nothing useful.
+    const unmatched = newBooks.filter((n) => !n.existingWork).flatMap((n) => n.book.authors)
+    const partialAuthors = unconfirmedAuthors(partial, authorNames, unmatched)
+
     abortRef.current = null
     setResults({
       inDatabase,
@@ -277,6 +327,7 @@ export default function ImportTool() {
       noIdentifier: unidentified.length,
       total: totalBooks,
       skipped,
+      partialAuthors,
     })
     setPhase('results')
   }
@@ -427,6 +478,17 @@ export default function ImportTool() {
             To check these books, match your library against a provider in your audiobook app (in
             Audiobookshelf, use <span className="text-hi">Match</span>) and export again, or
             import an OpenAudible or Libation export - both include the identifiers.
+          </p>
+        </IconCard>
+      ) : null}
+
+      {results.partialAuthors.length > 0 ? (
+        <IconCard icon="database" heading="We could not check every book by some authors">
+          <p className="mt-2 text-sm leading-relaxed text-body">
+            The database holds more books by {nameList(results.partialAuthors)} than we could read
+            back in one go, so a few of their titles below may already be catalogued. Search for
+            them before you open an issue - a duplicate costs a reviewer more time than a missing
+            book does.
           </p>
         </IconCard>
       ) : null}

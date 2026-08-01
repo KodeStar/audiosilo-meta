@@ -13,6 +13,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -70,6 +71,17 @@ type Server struct {
 	mu     sync.Mutex // guards refresh() so two polls never race
 	loaded string     // tag of the currently-loaded release ("" for local db)
 
+	// retired counts the artifact files of snapshots that have been swapped out
+	// but not yet closed, so the cache prune spares every one of them (see
+	// swap/pruneCacheLocked). Refcounted, because two retired snapshots can share
+	// a path. Guarded by mu.
+	retired map[string]int
+
+	// nextRetry is the poll loop's CURRENT wait while no artifact has loaded, in
+	// nanoseconds - what the 503s advertise as Retry-After. Written by the poll
+	// loop, read by handlers, hence atomic.
+	nextRetry atomic.Int64
+
 	webhookRefreshing atomic.Bool // coalesces webhook-triggered refreshes to one in flight
 }
 
@@ -79,11 +91,13 @@ type Server struct {
 //
 // A poll-only boot whose first fetch FAILS is not fatal: the image ships no
 // baked artifact, so a GitHub outage at boot time must not turn into a container
-// crash-loop. New logs the failure and returns a Server with no snapshot; it
-// listens, serves the static site, answers /healthz with "starting" and every
-// API route with 503, and the poll loop retries every cfg.bootRetry until an
-// artifact lands (see pollLoop). Nothing serves stale or partial data in the
-// meantime, because there is nothing to serve.
+// crash-loop. New logs the failure and falls back to the newest artifact on the
+// cache volume - the one the previous container was serving - flagged as stale
+// (see adoptStaleCache). Only when there is nothing there either does it return
+// a Server with no snapshot; it then listens, serves the static site, answers
+// /healthz with "starting" and every API route with 503, and the poll loop
+// retries from cfg.bootRetry (backing off) until an artifact lands (see
+// pollLoop).
 func New(cfg Config) (*Server, error) {
 	if cfg.Logger == nil {
 		cfg.Logger = log.Default()
@@ -111,7 +125,8 @@ func New(cfg Config) (*Server, error) {
 			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
 		}
 	}
-	s := &Server{cfg: cfg, log: cfg.Logger}
+	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
+	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
 		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
 	}
@@ -125,8 +140,13 @@ func New(cfg Config) (*Server, error) {
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
 			s.log.Printf("serve: no artifact at boot: %v", err)
-			s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying in %s, backing off to %s)",
-				cfg.bootRetry, cfg.Interval)
+			// A cache volume that outlived the last container usually still holds
+			// its artifact. Serving that, loudly flagged as stale, beats answering
+			// 503 with usable data on disk.
+			if !s.adoptStaleCache() {
+				s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying in %s, backing off to %s)",
+					cfg.bootRetry, cfg.Interval)
+			}
 		}
 	} else {
 		return nil, errors.New("serve: no --db and --poll not set: nothing to serve")
@@ -180,15 +200,30 @@ const defaultBootRetry = 30 * time.Second
 // period, so requests that already grabbed the old handle finish cleanly. Once
 // the grace elapses the old artifact's file is prunable, so a prune runs then
 // too - adopt already pruned everything else at swap time.
+//
+// The old snapshot's FILE is registered as retired for exactly as long as the
+// handle lives, because the handle is not enough to keep it usable: SQLite opens
+// pooled connections lazily, so a request still on the old snapshot can need to
+// open that path after the swap. Several snapshots can be in grace at once, and
+// the prune must spare all of them (see pruneCacheLocked).
+//
+// The caller must hold s.mu (adopt does): s.retired is refresh-owned state.
 func (s *Server) swap(next *snapshot) {
 	old := s.cur.Swap(next)
-	if old != nil && old != next {
-		grace := s.cfg.swapGrace
-		time.AfterFunc(grace, func() {
-			old.close()
-			s.pruneCache()
-		})
+	if old == nil || old == next {
+		return
 	}
+	s.retired[old.path]++
+	time.AfterFunc(s.cfg.swapGrace, func() {
+		old.close()
+		s.mu.Lock()
+		defer s.mu.Unlock()
+		s.retired[old.path]--
+		if s.retired[old.path] <= 0 {
+			delete(s.retired, old.path)
+		}
+		s.pruneCacheLocked()
+	})
 }
 
 // ---- routing ----------------------------------------------------------------
@@ -231,12 +266,23 @@ func (s *Server) api(h http.HandlerFunc) http.Handler {
 func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
-			w.Header().Set("Retry-After", strconv.Itoa(int(s.cfg.bootRetry.Seconds())))
+			w.Header().Set("Retry-After", s.retryAfter())
 			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
 			return
 		}
 		next(w, r)
 	}
+}
+
+// retryAfter is the Retry-After value for the 503s a server with no artifact
+// answers: the poll loop's CURRENT wait, not the initial bootRetry. After
+// several failed attempts the loop has backed off (up to --interval), and
+// advertising 30s then would send every client back long before anything can
+// have changed. Whole seconds, rounded up, never below 1 - a "0" would read as
+// "retry immediately".
+func (s *Server) retryAfter() string {
+	secs := int(math.Ceil(time.Duration(s.nextRetry.Load()).Seconds()))
+	return strconv.Itoa(max(secs, 1))
 }
 
 // ---- middleware -------------------------------------------------------------
@@ -308,7 +354,7 @@ func clampOffset(raw string) int {
 func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
 	if snap == nil {
-		w.Header().Set("Retry-After", strconv.Itoa(int(s.cfg.bootRetry.Seconds())))
+		w.Header().Set("Retry-After", s.retryAfter())
 		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
 		return
 	}
@@ -433,8 +479,8 @@ func (s *Server) handleCoverage(w http.ResponseWriter, _ *http.Request) {
 
 // handleCoverageWorks serves one filtered, searchable, paginated page of works
 // for the contribute-page coverage browser. ?filter selects the dimension
-// (missing|has_characters|has_recaps|has_recap_summary), ?q is a title/author
-// substring, ?limit/?offset paginate. It always returns 200 and degrades to an
+// (missing|has_characters|has_recaps|has_recap_summary), ?q is a full-text query
+// over title/authors/narrators/series (word prefixes), ?limit/?offset paginate. It always returns 200 and degrades to an
 // empty page with available:false when the filter's dimension is unevaluable at
 // the current artifact schema_version (see snapshot.coverageWorks).
 func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {

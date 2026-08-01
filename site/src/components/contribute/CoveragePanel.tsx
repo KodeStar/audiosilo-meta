@@ -379,8 +379,9 @@ function WorksBrowser({
       <h2 className="text-xl font-semibold text-hi">Browse books by coverage</h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-dim">
         Pick a stat above or a tab below to see which books need work - or which already have each
-        layer - then open a work or jump straight into the guided builder. Search by title or
-        author.
+        layer - then open a work or jump straight into the guided builder. Search matches a book&rsquo;s
+        title, authors, narrators and series - whole words or the start of one, the same way search
+        works everywhere else on the site.
       </p>
 
       <div className="mt-6 flex flex-wrap gap-2">
@@ -405,8 +406,8 @@ function WorksBrowser({
         <SearchBox
           value={rawQuery}
           onChange={setRawQuery}
-          placeholder="Search by title or author..."
-          label="Search books by title or author"
+          placeholder="Search by title, author, narrator or series..."
+          label="Search books by title, author, narrator or series - whole words or word beginnings"
         />
       </div>
 

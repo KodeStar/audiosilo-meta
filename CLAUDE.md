@@ -50,7 +50,10 @@ go run ./cmd/metaserve --db meta.sqlite --addr :8080   # serve the read-only API
 **Before a change is done, all of the above must pass.** CI
 (`.github/workflows/check.yml`) gates build/vet/test/metacheck/metafmt on every
 PR and push to main; `release.yml` builds and publishes a dated release
-(`data-vYYYY.MM.DD-<shortsha>`) when data or schema changes land on main. Asset
+(`data-vYYYY.MM.DD-<shortsha>`) when data, schema or the BUILDER
+(`internal/build/**`, `cmd/metabuild/**`) changes land on main - the artifact is
+compiled, so a new index or a `SchemaVersion` bump must reach a release without
+waiting for an unrelated data edit. Asset
 contract: `meta.sqlite.gz` + `meta.sqlite.gz.sha256` (the universal anchor),
 `meta.sqlite.sha256` (raw-file digest, for verifying a patched artifact), and a
 best-effort `meta.sqlite.patch.from-<PREV_TAG>.zst` (a zstd `--patch-from` binary
@@ -261,12 +264,24 @@ costs about as much again, so peak transient is ~2x the base and `tryPatch`
 refuses outright above `defaultMaxPatchBase` (1 GiB), taking the streamed full
 download instead. Either way it hot-swaps the pointer; in-flight requests finish
 on the old handle (closed after a grace delay), a rejected patch never swaps, and
-a poll failure only logs and retries, never crashes the process. Superseded cache
-files are **pruned on every successful adopt** and again once the swap grace
-elapses (`pruneCache`/`pruneCacheLocked`, under the refresh lock, never touching
-the live artifact, the snapshot still draining, or a `--db` path) - pruning at
+a poll failure only logs and retries, never crashes the process. Before either
+download it checks the CACHE: if the volume already holds a file for the newest
+tag it is hashed against that release's published `meta.sqlite.sha256` and
+adopted as is (`cachedRefresh`), so a restarted container does not re-download
+the artifact it already has - verified, never trusted by name. Superseded cache
+files are **pruned on every successful adopt** and again once each swap grace
+elapses (`pruneCacheLocked`, under the refresh lock, never touching the live
+artifact, a `--db` path, or ANY retired artifact - `swap` refcounts the file of
+every snapshot that has been swapped out but not yet closed, because several can
+be draining at once and SQLite reopens pooled connections lazily, so unlinking
+one still in grace breaks its in-flight queries). Pruning at
 adopt time is what cleans up after a cold boot, whose first adopt supersedes
-nothing. The poll loop runs one refresh **immediately at
+nothing. Request deadlines are split by KIND rather than shared: the release
+metadata gets a whole-request timeout (30s - a slow small JSON is a broken one)
+while an asset download gets a generous ceiling plus a no-progress watchdog
+(`stallGuard`, 60s), because one number cannot bound both an 80-byte checksum and
+a hundreds-of-MB artifact without either aborting healthy slow downloads or
+tolerating dead ones for just as long. The poll loop runs one refresh **immediately at
 startup**, before the first `--interval` tick, which matters for any boot that
 loaded a local `--db` artifact (`New()` skips the poll-only synchronous refresh
 in that case); on a poll-only boot `New()` already refreshed, so the startup poll
@@ -274,12 +289,19 @@ is a cheap conditional 304.
 
 **The production image ships no data** (see Dockerfile): the boot is poll-only,
 so `New()`'s synchronous first refresh IS the load. A first fetch that fails is
-not fatal - `New` logs it and returns a server with no snapshot, which serves the
+not fatal - `New` logs it and falls back to the newest artifact on the CACHE
+VOLUME (`adoptStaleCache`), the one the previous container was serving, flagged
+as stale in the log and deliberately NOT recorded as `loaded`, so the first
+reachable poll confirms it against the release (one checksum request, no
+download). Only with nothing cached does it return a server with no snapshot,
+which serves the
 static site, answers `/healthz` with 503 `{"status":"starting"}` and every API
 route with 503 (`requireSnapshot`), and retries until a release lands - first
 after `bootRetry` (30s), then doubling up to `--interval` (`nextBootBackoff`),
 because a failed fetch of a large artifact is not free and an outage can last
-hours. The backoff resets as soon as an artifact loads. A crash loop would be the
+hours. Those 503s carry a `Retry-After` reporting the wait the loop is ACTUALLY
+on (`nextRetry`), not the initial 30s it has long since backed off from. The
+backoff resets as soon as an artifact loads. A crash loop would be the
 worse failure mode; this one is visible in the logs and in the readiness check.
 The image build context excludes `data/` (`.dockerignore`), so image build time
 is genuinely independent of catalogue size rather than only nominally so.
@@ -461,12 +483,18 @@ export type), surfacing the importer warnings.
   `people/{id}`/`series/{id}` windowed additively with totals counted over the
   same join that produces the page, `works/latest` two-phase (series memberships
   for the candidates, full cards only for the winners), and the coverage
-  browser's `?q=` moved off an unindexed `LIKE '%...%'` onto the FTS index (plus
-  a per-snapshot memo for the series-gap set). D2: release assets stream - the
+  browser's `?q=` moved off an unindexed `LIKE '%...%'` onto the FTS index (which
+  widens it to narrators and series names and narrows it to word prefixes - the
+  right trade, and stated that way everywhere it is described) plus
+  a per-snapshot memo for the series-gap set. D2: release assets stream - the
   full refresh downloads, hashes and decompresses in ONE pass with no staged
   `.gz` - superseded cache files are pruned on every adopt and again after the
-  swap grace, and the patch path declines a base artifact over 1 GiB. D3: the image no
-  longer bakes data - see the Dockerfile note above.
+  swap grace (sparing every artifact still draining, not just the newest), and the
+  patch path declines a base artifact over 1 GiB. D3: the image no
+  longer bakes data - see the Dockerfile note above - and the cache volume is
+  what makes that safe: a restart adopts the artifact it already holds after
+  verifying it, and a boot that cannot reach GitHub serves it as stale rather
+  than answering 503 with data on disk.
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four
