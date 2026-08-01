@@ -330,7 +330,7 @@ func (l *loader) readWorkEntry(family pack.Family, packPath, slug string, raw js
 		}
 		l.idx.rec[r] = rp
 		// Compose already hung the recordings off the work, in this same order.
-		out = append(out, recordWithPath{rec: r, workSlug: slug, path: rp, attached: true})
+		out = append(out, recordWithPath{rec: r, workSlug: slug, path: rp})
 	}
 	return out
 }

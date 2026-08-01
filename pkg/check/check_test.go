@@ -3,11 +3,22 @@ package check
 import (
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"testing"
+
+	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
-// baseValid returns a minimal, fully valid data tree (relpath -> content).
+// The rule suite in this file is written in PER-ENTITY addresses
+// ("works/bo/book-one/recordings/rec-one.json"), the shape the tree had before
+// the pack migration. That is a fixture syntax and nothing more: writeEntities
+// resolves each address onto the pack entry that holds the record now, so a
+// case reads as one record at a time while the tree it validates is the real
+// layout. Storage rules (placement, bounds, caps) are packcheck_test.go's; this
+// file is about what the records SAY and how they relate.
+
+// baseValid returns a minimal, fully valid catalogue (address -> content).
 func baseValid() map[string]string {
 	return map[string]string{
 		"people/au/author-one.json":                 `{"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`,
@@ -16,6 +27,92 @@ func baseValid() map[string]string {
 		"works/bo/book-one/recordings/rec-one.json": `{"abridged":false,"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`,
 		"series/se/series-one.json":                 `{"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`,
 	}
+}
+
+// writeEntities materializes a per-entity fixture map as a pack tree: one works
+// pack holding each work with its recordings nested, one works-community pack
+// pairing each work's sidecars, and a flat pack for people and for series. An
+// address it does not recognize is written VERBATIM at that path, which is how a
+// case puts a stray file in the tree.
+func writeEntities(t *testing.T, dir string, files map[string]string) {
+	t.Helper()
+	works := map[string]string{}
+	recs := map[string]map[string]string{}
+	community := map[string]map[string]string{}
+	people := map[string]string{}
+	series := map[string]string{}
+	raw := map[string]string{}
+
+	for _, address := range sortedAddresses(files) {
+		body := files[address]
+		parts := strings.Split(address, "/")
+		switch {
+		case len(parts) == 4 && parts[0] == "works" && parts[3] == "work.json":
+			works[parts[2]] = body
+		case len(parts) == 4 && parts[0] == "works" && parts[3] == "characters.json":
+			member(community, parts[2])["characters"] = body
+		case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
+			member(community, parts[2])["recaps"] = body
+		case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
+			member(recs, parts[2])[strings.TrimSuffix(parts[4], ".json")] = body
+		case len(parts) == 3 && parts[0] == "people":
+			people[strings.TrimSuffix(parts[2], ".json")] = body
+		case len(parts) == 3 && parts[0] == "series":
+			series[strings.TrimSuffix(parts[2], ".json")] = body
+		default:
+			raw[address] = body
+		}
+	}
+
+	out := map[string]string{}
+	if len(works) > 0 || len(recs) > 0 {
+		entries := map[string]string{}
+		for slug, work := range works {
+			entries[slug] = composite(work, recs[slug])
+		}
+		for slug := range recs {
+			if _, ok := works[slug]; !ok {
+				t.Fatalf("check_test: recordings for %q with no work record: a pack composite is the work", slug)
+			}
+		}
+		out["works/0/0.json"] = packOf(entries)
+	}
+	if len(community) > 0 {
+		entries := map[string]string{}
+		for slug, members := range community {
+			entries[slug] = jsonObject(members)
+		}
+		out["works-community/0/0.json"] = packOf(entries)
+	}
+	if len(people) > 0 {
+		out["people/0.json"] = packOf(people)
+	}
+	if len(series) > 0 {
+		out["series/0.json"] = packOf(series)
+	}
+	for rel, body := range raw {
+		out[rel] = body
+	}
+	writeTree(t, dir, out)
+}
+
+// member returns m[key], creating it on first use.
+func member(m map[string]map[string]string, key string) map[string]string {
+	if m[key] == nil {
+		m[key] = map[string]string{}
+	}
+	return m[key]
+}
+
+// sortedAddresses returns the fixture's addresses in a stable order, so a fixture
+// always composes the same tree.
+func sortedAddresses(files map[string]string) []string {
+	out := make([]string, 0, len(files))
+	for k := range files {
+		out = append(out, k)
+	}
+	sort.Strings(out)
+	return out
 }
 
 // writeTree materializes files into dir.
@@ -34,7 +131,7 @@ func writeTree(t *testing.T, dir string, files map[string]string) {
 
 func TestLoadValid(t *testing.T) {
 	dir := t.TempDir()
-	writeTree(t, dir, baseValid())
+	writeEntities(t, dir, baseValid())
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("valid tree reported problems: %v", res.Problems)
@@ -54,7 +151,7 @@ func TestOmnibusSeriesPosition(t *testing.T) {
 	files := baseValid()
 	files["works/bo/book-two/work.json"] = `{"authors":["author-one"],"id":"book-two","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book Two"}`
 	files["series/se/series-one.json"] = `{"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"},{"position":"1-3.5","work":"book-two"}]}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("omnibus range position should validate, got: %v", res.Problems)
@@ -67,7 +164,7 @@ func TestRecordingAbridgedOptional(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	files["works/bo/book-one/recordings/rec-one.json"] = `{"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("recording without abridged should validate, got: %v", res.Problems)
@@ -80,7 +177,7 @@ func TestWorkGenresValid(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["epic-fantasy","fantasy","science-fiction"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("work with sorted genres should validate, got: %v", res.Problems)
@@ -98,7 +195,7 @@ func TestLibexImportSourceType(t *testing.T) {
 	dir := t.TempDir()
 	files := baseValid()
 	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["epic-fantasy"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"imported_at":"2026-07-29","ref":"B0LIBEX001","type":"libex-import"}],"title":"Book One"}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("a libex-import source should validate, got: %v", res.Problems)
@@ -126,7 +223,7 @@ func TestCharactersRecapsValid(t *testing.T) {
 	files := baseValid()
 	files["works/bo/book-one/characters.json"] = validCharacters("book-one")
 	files["works/bo/book-one/recaps.json"] = validRecaps("book-one")
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("valid characters/recaps reported problems: %v", res.Problems)
@@ -144,7 +241,7 @@ func TestRecapsSummaryFields(t *testing.T) {
 	files := baseValid()
 	longText := strings.Repeat("word ", 500) // 2500 chars, over the old 2000 cap
 	files["works/bo/book-one/recaps.json"] = `{"ending":"The hero wins and goes home.","in_short":"A hero sets out, struggles, and prevails.","license":"CC-BY-SA-3.0","recaps":[{"scope":"book","text":"` + longText + `","through":{"chapter":3}}],"sources":[{"type":"community"}],"work":"book-one"}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("recaps with in_short/ending and a 2500-char text should validate, got: %v", res.Problems)
@@ -167,7 +264,7 @@ func TestCreditListsDistinctSlugs(t *testing.T) {
 	files["works/bo/book-one/work.json"] = `{"authors":["author-one","author-two"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
 	files["works/bo/book-one/recordings/rec-one.json"] = `{"id":"rec-one","language":"en","license":"CC0-1.0","narrators":["narrator-one","narrator-two"],"sources":[{"type":"user"}],"work":"book-one"}`
 	files["series/se/series-one.json"] = `{"authors":["author-one","author-two"],"id":"series-one","license":"CC0-1.0","name":"Series One","sources":[{"type":"user"}],"works":[{"position":"1","work":"book-one"}]}`
-	writeTree(t, dir, files)
+	writeEntities(t, dir, files)
 	res := Load(dir)
 	if !res.OK() {
 		t.Fatalf("distinct credit slugs should validate, got: %v", res.Problems)
@@ -186,36 +283,29 @@ func TestLoadRuleViolations(t *testing.T) {
 			want:   "unrecognized location",
 		},
 		{
-			name: "id does not match slug",
+			name: "id does not match its entry key",
 			mutate: func(f map[string]string) {
 				f["people/au/author-one.json"] = strings.Replace(f["people/au/author-one.json"], `"id":"author-one"`, `"id":"someone-else"`, 1)
 			},
-			want: "does not match its file/dir slug",
+			want: "does not match its entry key",
 		},
 		{
-			name: "wrong person shard",
+			// The composite is the only way a recording can lose its work: the
+			// entry key is what its recordings hang off, so a work whose own id
+			// disagrees with that key leaves them pointing at nothing.
+			name: "recording orphaned by a work id that is not its entry key",
 			mutate: func(f map[string]string) {
-				f["people/xx/author-one.json"] = f["people/au/author-one.json"]
-				delete(f, "people/au/author-one.json")
+				f["works/bo/book-one/work.json"] = strings.Replace(
+					f["works/bo/book-one/work.json"], `"id":"book-one"`, `"id":"other-book"`, 1)
 			},
-			want: "shard dir",
+			want: `parent work "book-one" does not exist`,
 		},
 		{
-			name: "wrong recording shard uses work slug",
-			mutate: func(f map[string]string) {
-				f["works/xx/book-one/recordings/rec-one.json"] = f["works/bo/book-one/recordings/rec-one.json"]
-				f["works/xx/book-one/work.json"] = f["works/bo/book-one/work.json"]
-				delete(f, "works/bo/book-one/recordings/rec-one.json")
-				delete(f, "works/bo/book-one/work.json")
-			},
-			want: "shard dir",
-		},
-		{
-			name: "recording work mismatches parent dir",
+			name: "recording work mismatches its parent entry",
 			mutate: func(f map[string]string) {
 				f["works/bo/book-one/recordings/rec-one.json"] = strings.Replace(f["works/bo/book-one/recordings/rec-one.json"], `"work":"book-one"`, `"work":"other-book"`, 1)
 			},
-			want: "must equal the parent work dir id",
+			want: "must equal the parent entry key",
 		},
 		{
 			name:   "missing author",
@@ -233,11 +323,6 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["series/se/series-one.json"] = strings.Replace(f["series/se/series-one.json"], `"work":"book-one"`, `"work":"ghost-book"`, 1)
 			},
 			want: `series work "ghost-book" does not exist`,
-		},
-		{
-			name:   "orphan recording (no parent work)",
-			mutate: func(f map[string]string) { delete(f, "works/bo/book-one/work.json") },
-			want:   `parent work "book-one" does not exist`,
 		},
 		{
 			name: "duplicate region+asin",
@@ -327,13 +412,6 @@ func TestLoadRuleViolations(t *testing.T) {
 			want: "additional",
 		},
 		{
-			name: "invalid slug in id/dir",
-			mutate: func(f map[string]string) {
-				f["people/Au/Author_One.json"] = `{"id":"Author_One","license":"CC0-1.0","name":"X","sources":[{"type":"user"}]}`
-			},
-			want: "not a valid slug",
-		},
-		{
 			name: "characters with CC0 license rejected (must be CC BY-SA)",
 			mutate: func(f map[string]string) {
 				f["works/bo/book-one/characters.json"] = strings.Replace(validCharacters("book-one"), `"CC-BY-SA-3.0"`, `"CC0-1.0"`, 1)
@@ -363,18 +441,11 @@ func TestLoadRuleViolations(t *testing.T) {
 			want: `parent work "ghost-book" does not exist`,
 		},
 		{
-			name: "characters work backref mismatches dir",
+			name: "characters work backref mismatches its entry key",
 			mutate: func(f map[string]string) {
 				f["works/bo/book-one/characters.json"] = validCharacters("other-book")
 			},
-			want: "must equal the parent work dir id",
-		},
-		{
-			name: "characters wrong shard",
-			mutate: func(f map[string]string) {
-				f["works/xx/book-one/characters.json"] = validCharacters("book-one")
-			},
-			want: "shard dir",
+			want: "must equal the entry key",
 		},
 		{
 			name: "duplicate recap through-position",
@@ -467,7 +538,7 @@ func TestLoadRuleViolations(t *testing.T) {
 			dir := t.TempDir()
 			files := baseValid()
 			c.mutate(files)
-			writeTree(t, dir, files)
+			writeEntities(t, dir, files)
 			res := Load(dir)
 			if res.OK() {
 				t.Fatalf("expected a problem containing %q, got none", c.want)
@@ -498,12 +569,27 @@ func joinProblems(ps []Problem) string {
 	return b.String()
 }
 
-// TestRealDataTree guards the committed seed data: it must validate and be
-// canonically formatted so it can never silently drift.
+// TestRealDataTree guards the committed data: it must validate so it can never
+// silently drift.
+//
+// A tree that is not in the pack layout at all is the ONE thing it does not
+// report, because that is not drift: it is a checkout from before the storage
+// migration, where every one of the thousands of problems says the same thing.
+// metacheck says it there, once per family, and says how to fix it.
 func TestRealDataTree(t *testing.T) {
 	const dataDir = "../../data"
 	if _, err := os.Stat(dataDir); err != nil {
 		t.Skipf("no data tree at %s: %v", dataDir, err)
+	}
+	layouts, err := pack.Detect(dataDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, def := range pack.Families() {
+		if layouts[def.Family] == pack.LayoutLegacy {
+			t.Skipf("%s/%s predates the pack migration; convert it with `go run ./cmd/metamigrate`",
+				dataDir, def.Family.Root())
+		}
 	}
 	res := Load(dataDir)
 	if !res.OK() {

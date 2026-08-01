@@ -88,18 +88,28 @@ func rawEntity(t *testing.T, dataDir, address string) []byte {
 	return raw
 }
 
+// shard is the directory a slug used to live under, before the pack migration.
+// The addresses below still spell it because that is testpack's fixture syntax;
+// nothing in the tooling computes a shard any more.
+func shard(slug string) string {
+	if len(slug) < 2 {
+		return slug
+	}
+	return slug[:2]
+}
+
 // workAddr / recAddr / personAddr / seriesAddr compose the per-entity addresses
 // the helpers above take, for the tests that build one from a computed slug.
 func workAddr(slug string) string {
-	return path.Join("works", model.Shard(slug), slug, "work.json")
+	return path.Join("works", shard(slug), slug, "work.json")
 }
 
 func recAddr(workSlug, recSlug string) string {
-	return path.Join("works", model.Shard(workSlug), workSlug, "recordings", recSlug+".json")
+	return path.Join("works", shard(workSlug), workSlug, "recordings", recSlug+".json")
 }
 
 func seriesAddr(slug string) string {
-	return path.Join("series", model.Shard(slug), slug+".json")
+	return path.Join("series", shard(slug), slug+".json")
 }
 
 // recSlugsOf returns a work's recording slugs, sorted - the pack-layout answer

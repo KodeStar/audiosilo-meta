@@ -13,8 +13,11 @@ import (
 
 const schemaBase = "https://meta.audiosilo.app/schema/"
 
-// entitySchemas are the per-record schemas, which the legacy file-per-entity
-// reader validates against directly.
+// entitySchemas are the per-record schemas. The walker reaches every record
+// through its family's pack wrapper, which $refs these, so they are listed here
+// to be COMPILED: a schema no compile touches is a contract free to drift, and
+// an error in one would otherwise only surface through whichever wrapper
+// happened to reference it.
 var entitySchemas = map[model.Kind]string{
 	model.KindWork:       "work.schema.json",
 	model.KindRecording:  "recording.schema.json",
@@ -47,8 +50,6 @@ const (
 
 // schemaSet holds every compiled schema one load needs.
 type schemaSet struct {
-	// kinds holds the per-record schemas, keyed by entity kind.
-	kinds map[model.Kind]*jsonschema.Schema
 	// entries holds the shape of one pack entry, keyed by family.
 	entries map[pack.Family]*jsonschema.Schema
 	// keys holds the shape of one pack entry's key, keyed by family.
@@ -88,7 +89,6 @@ func compileSchemas() (schemaSet, error) {
 	}
 
 	set := schemaSet{
-		kinds:   make(map[model.Kind]*jsonschema.Schema, len(entitySchemas)),
 		entries: make(map[pack.Family]*jsonschema.Schema, len(wrapperSchemas)),
 		keys:    make(map[pack.Family]*jsonschema.Schema, len(wrapperSchemas)),
 	}
@@ -99,12 +99,12 @@ func compileSchemas() (schemaSet, error) {
 		}
 		return sch, nil
 	}
-	for kind, f := range entitySchemas {
-		sch, err := compile(f)
-		if err != nil {
+	// Compiled for the drift guard described on entitySchemas; the result is
+	// discarded because every record is validated through its family's wrapper.
+	for _, f := range entitySchemas {
+		if _, err := compile(f); err != nil {
 			return schemaSet{}, err
 		}
-		set.kinds[kind] = sch
 	}
 	for family, f := range wrapperSchemas {
 		entry, err := compile(f + entryFragment)
@@ -122,10 +122,9 @@ func compileSchemas() (schemaSet, error) {
 
 // violation is one schema failure kept apart from its rendering: Loc is the
 // JSON-pointer instance location inside the validated value ("" is the value
-// itself), Msg the reason. The pack walker needs the two separately - a
+// itself), Msg the reason. The walker needs the two separately, because a
 // violation inside a composite's recordings map is re-reported against that
-// recording, with its location rebased - so validate() is a thin renderer over
-// violations().
+// recording with its location rebased (see rebase).
 type violation struct {
 	Loc string
 	Msg string
@@ -172,26 +171,6 @@ func (s schemaSet) keyViolations(family pack.Family, key string) []violation {
 	return validateWith(s.keys[family], fmt.Sprintf("no pack schema for family %q", family), key)
 }
 
-// violations checks inst against the per-record schema for kind.
-func (s schemaSet) violations(kind model.Kind, inst any) []violation {
-	return validateWith(s.kinds[kind], fmt.Sprintf("no schema for kind %q", kind), inst)
-}
-
-// validate checks inst against the per-record schema for kind, returning
-// human-readable messages (one per underlying violation). An empty slice means
-// it validated.
-func (s schemaSet) validate(kind model.Kind, inst any) []string {
-	return renderViolations(s.violations(kind, inst))
-}
-
-func renderViolations(vs []violation) []string {
-	msgs := make([]string, 0, len(vs))
-	for _, v := range vs {
-		msgs = append(msgs, v.String())
-	}
-	return msgs
-}
-
 // validateWith runs one compiled schema, flattening the failure into
 // violations. missing is the message for a schema that was never compiled,
 // which is a programming error rather than a data one.
@@ -220,10 +199,9 @@ func validateWith(sch *jsonschema.Schema, missing string, inst any) []violation 
 // It walks the DETAILED output, not the basic one: the basic output collapses
 // every failure behind a $ref to the bare string "validation failed", which
 // costs the reason for anything a schema reached through a $ref - a nested
-// recording, an added_at date, a license enum. The detailed tree keeps the
-// reason at the same instance location, so a message is the same whether the
-// value was validated directly or through two levels of $ref, which is what
-// makes the legacy and pack walkers report a defect identically.
+// recording, an added_at date, a license enum. Every record is now reached
+// through two levels of $ref (its family's pack wrapper, then its own schema),
+// so without the detailed tree almost every message would be that bare string.
 func collectLeaves(u *jsonschema.OutputUnit, out *[]violation) {
 	if u == nil {
 		return

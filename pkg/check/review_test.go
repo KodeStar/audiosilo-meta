@@ -46,24 +46,6 @@ func TestUndecodableRecordIsReported(t *testing.T) {
 			}(),
 			path: "works-community/0/0.json: entry book-one: characters",
 		},
-		"legacy recording": {
-			files: func() map[string]string {
-				f := legacyTwin()
-				f["works/bo/book-one/recordings/rec-one.json"] = strings.Replace(
-					f["works/bo/book-one/recordings/rec-one.json"], `"language":"en"`, `"language":"en","runtime_min":1e3`, 1)
-				return f
-			}(),
-			path: "works/bo/book-one/recordings/rec-one.json",
-		},
-		"legacy community sidecar": {
-			files: func() map[string]string {
-				f := legacyTwin()
-				f["works/bo/book-one/recaps.json"] = strings.Replace(
-					validRecaps("book-one"), `"through":{"chapter":3}`, `"through":{"chapter":3e0}`, 1)
-				return f
-			}(),
-			path: "works/bo/book-one/recaps.json",
-		},
 	}
 	for name, c := range cases {
 		t.Run(name, func(t *testing.T) {
@@ -106,29 +88,17 @@ func TestUndecodableIsQuietWhenTheSchemaAlreadyFailed(t *testing.T) {
 	}
 }
 
-// work.schema.json gained "recordings" so a PACK entry can carry the composite.
-// That must not make a per-file work legal with one: model.Work drops the field,
-// so the recordings would load as nothing while the gate stayed green.
-func TestLegacyWorkRejectsRecordingsMember(t *testing.T) {
-	dir := t.TempDir()
-	files := legacyTwin()
-	files["works/bo/book-one/work.json"] = composite(pkWorkOne, map[string]string{"rec-one": pkRecOne})
-	writeTree(t, dir, files)
-
-	res := Load(dir)
-	if !hasProblem(res.Problems, `"recordings" is a pack-composite field`) {
-		t.Fatalf("a legacy work carrying a recordings map was accepted; problems:\n%s", joinProblems(res.Problems))
-	}
-}
-
-// Nothing about the layout stops a work from having its sidecars in BOTH places
-// during the migration window - packed into works-community and still sitting in
-// its legacy work directory. Both copies load, and metabuild then dies on a raw
-// UNIQUE constraint naming no file, so the duplicate has to be caught here.
+// Nothing in the layout stops a work's sidecars from being read twice: an entry
+// that drifted into the wrong pack still parses, so one work slug can hold a
+// characters/recaps sidecar in two packs at once. Both copies load, and
+// metabuild then dies on a raw UNIQUE constraint naming no file, so the
+// duplicate has to be caught here.
 func TestSidecarUniqueness(t *testing.T) {
 	dir := t.TempDir()
-	files := legacyTwin() // works/people/series legacy, sidecars in the work dir
-	files["works-community/0/0.json"] = packOf(map[string]string{
+	files := packValid()
+	// "aa" sorts before "book-one", so this second pack legitimately covers the
+	// slug and the copy in 0.json is the misplaced one: two entries, one work.
+	files["works-community/0/aa.json"] = packOf(map[string]string{
 		"book-one": `{"characters":` + validCharacters("book-one") + `,"recaps":` + validRecaps("book-one") + `}`,
 	})
 	writeTree(t, dir, files)
@@ -192,54 +162,45 @@ func TestPackDuplicateKeyReported(t *testing.T) {
 	}
 }
 
-// The two walkers must describe the same defect with the same words. They are
-// different code reading different files, so the only thing keeping them in
-// step is that both reach the reason through the same schemas - which is why
-// this compares the MESSAGE, not just that each side failed.
-func TestMessagesIdenticalAcrossLayouts(t *testing.T) {
+// A schema violation inside a composite is reported against the RECORDING it
+// belongs to, in the schema's own words. The text is pinned here because it is
+// what a contributor acts on: the entry path locates the record, and the reason
+// has to reach them through the schema unedited.
+func TestSchemaMessagesAtRecordingPrecision(t *testing.T) {
 	cases := map[string]struct {
-		legacyRec string // replaces the legacy recording file
-		want      string
+		rec  string // replaces rec-one inside the composite
+		want string
 	}{
 		"missing a required property": {
-			legacyRec: strings.Replace(pkRecOne, `"narrators":["narrator-one"],`, "", 1),
-			want:      "(root): missing property 'narrators'",
+			rec:  strings.Replace(pkRecOne, `"narrators":["narrator-one"],`, "", 1),
+			want: "(root): missing property 'narrators'",
 		},
 		"wrong type": {
-			legacyRec: strings.Replace(pkRecOne, `"language":"en"`, `"language":"en","runtime_min":"nope"`, 1),
-			want:      "/runtime_min: got string, want integer",
+			rec:  strings.Replace(pkRecOne, `"language":"en"`, `"language":"en","runtime_min":"nope"`, 1),
+			want: "/runtime_min: got string, want integer",
 		},
 		"share-alike license on a CC0 record": {
-			legacyRec: strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-3.0"`, 1),
-			want:      "/license: value must be 'CC0-1.0'",
+			rec:  strings.Replace(pkRecOne, `"license":"CC0-1.0"`, `"license":"CC-BY-SA-3.0"`, 1),
+			want: "/license: value must be 'CC0-1.0'",
 		},
 		// An anyOf reports every branch it tried, which is the useful answer for
 		// a value that is neither a date nor a timestamp.
 		"an impossible calendar date": {
-			legacyRec: strings.Replace(pkRecOne, `"language":"en"`, `"added_at":"2026-02-30","language":"en"`, 1),
+			rec: strings.Replace(pkRecOne, `"language":"en"`, `"added_at":"2026-02-30","language":"en"`, 1),
 			want: "/added_at: '2026-02-30' is not valid date-time: less than 20 characters long\n" +
 				"/added_at: '2026-02-30' is not valid date: parsing time \"2026-02-30\": day out of range",
 		},
 	}
 	for name, c := range cases {
 		t.Run(name, func(t *testing.T) {
-			legacy := legacyTwin()
-			legacy["works/bo/book-one/recordings/rec-one.json"] = c.legacyRec
-			legacyRes := Load(mustWrite(t, legacy))
-
 			packed := packValid()
 			packed["works/0/0.json"] = packOf(map[string]string{
-				"book-one": composite(pkWorkOne, map[string]string{"rec-one": c.legacyRec}),
+				"book-one": composite(pkWorkOne, map[string]string{"rec-one": c.rec}),
 			})
-			packRes := Load(mustWrite(t, packed))
-
-			legacyMsgs := messagesAt(legacyRes.Problems, "works/bo/book-one/recordings/rec-one.json")
-			packMsgs := messagesAt(packRes.Problems, "works/0/0.json: entry book-one: recording rec-one")
-			if legacyMsgs != c.want {
-				t.Errorf("legacy said:\n%s\nwant:\n%s\nall:\n%s", legacyMsgs, c.want, joinProblems(legacyRes.Problems))
-			}
-			if packMsgs != legacyMsgs {
-				t.Errorf("pack said:\n%s\nlegacy said:\n%s\nall:\n%s", packMsgs, legacyMsgs, joinProblems(legacyRes.Problems))
+			res := Load(mustWrite(t, packed))
+			got := messagesAt(res.Problems, "works/0/0.json: entry book-one: recording rec-one")
+			if got != c.want {
+				t.Errorf("said:\n%s\nwant:\n%s\nall:\n%s", got, c.want, joinProblems(res.Problems))
 			}
 		})
 	}

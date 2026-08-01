@@ -144,6 +144,9 @@ func (r Report) Summary() string {
 // writing anything.
 func Check(dataDir string) (Report, error) {
 	rep := Report{Dir: dataDir}
+	if err := refuseLegacy(dataDir); err != nil {
+		return Report{}, err
+	}
 	nonCanonical, invalid, err := canonical.CheckTree(dataDir)
 	if err != nil {
 		return Report{}, err
@@ -174,6 +177,11 @@ func Check(dataDir string) (Report, error) {
 // reported, never touched.
 func Write(dataDir string) (Report, error) {
 	rep := Report{Dir: dataDir}
+	// Before anything is rewritten: a family that is not in the pack layout is
+	// refused, not tidied.
+	if err := refuseLegacy(dataDir); err != nil {
+		return Report{}, err
+	}
 	// Formatting runs first: Flush judges a pack no write reached by its
 	// on-disk size, which is only the pack's canonical size once the file is in
 	// canonical form.
@@ -258,11 +266,30 @@ func mergePending(dst *pack.Pending, p pack.Pending) {
 	dst.Dirs = append(dst.Dirs, p.Dirs...)
 }
 
+// refuseLegacy rejects a tree holding a family that is not in the pack layout.
+//
+// metafmt is a WRITER, and the one thing it must never do to a family it cannot
+// read is tidy it: canonical formatting would rewrite thousands of files that
+// the rest of the tooling then refuses to load, making a stale checkout look
+// freshly maintained. Refusing before the first write leaves the tree untouched
+// and names the conversion, which is the only thing that helps.
+func refuseLegacy(dataDir string) error {
+	layouts, err := pack.Detect(dataDir)
+	if err != nil {
+		return err
+	}
+	for _, d := range pack.Families() {
+		if layouts[d.Family] == pack.LayoutLegacy {
+			return fmt.Errorf("%s/%s: %w; convert the tree with `go run ./cmd/metamigrate`",
+				dataDir, d.Family.Root(), pack.ErrLegacyLayout)
+		}
+	}
+	return nil
+}
+
 // withPackedFamilies runs fn against the tree's store and the families in pack
-// layout, in family order. fn is not called at all when no family is packed,
-// which is the whole tree until the migration lands. The store is layout-aware,
-// so a family still in the legacy layout is simply not passed to fn and Flush
-// never touches it.
+// layout, in family order. fn is not called at all when no family is packed - an
+// empty tree, or one holding only families that do not exist yet.
 func withPackedFamilies(dataDir string, fn func(*pack.Store, []pack.Family) error) error {
 	s, err := pack.Open(dataDir)
 	if err != nil {

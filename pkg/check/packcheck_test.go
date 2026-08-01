@@ -2,6 +2,7 @@ package check
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"sort"
 	"strconv"
@@ -12,9 +13,9 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
-// The records below are byte-identical to the ones baseValid() writes as
-// separate files, so a legacy fixture tree and its pack-converted twin hold the
-// same data and TestPackLegacyEquivalence can compare the two loads.
+// The records below are the fixture catalogue every pack test builds on: one
+// work with one recording, its two credits, one series, and the work's two
+// community sidecars.
 const (
 	pkAuthorOne   = `{"id":"author-one","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
 	pkNarratorOne = `{"id":"narrator-one","license":"CC0-1.0","name":"Narrator One","sources":[{"type":"user"}]}`
@@ -80,15 +81,6 @@ func packValid() map[string]string {
 	}
 }
 
-// legacyTwin returns the file-per-entity tree holding exactly the same records
-// as packValid().
-func legacyTwin() map[string]string {
-	files := baseValid()
-	files["works/bo/book-one/characters.json"] = validCharacters("book-one")
-	files["works/bo/book-one/recaps.json"] = validRecaps("book-one")
-	return files
-}
-
 func hasProblem(ps []Problem, want string) bool {
 	for _, p := range ps {
 		if strings.Contains(p.String(), want) {
@@ -121,23 +113,33 @@ func TestPackLoadValid(t *testing.T) {
 	}
 }
 
-// TestPackLegacyEquivalence is the migration's safety net: the same records in
-// the legacy layout and in the pack layout must produce the same Catalog, so
-// every rule that runs on it behaves identically either side of the flag day.
-func TestPackLegacyEquivalence(t *testing.T) {
-	legacyDir, packDir := t.TempDir(), t.TempDir()
-	writeTree(t, legacyDir, legacyTwin())
-	writeTree(t, packDir, packValid())
+// TestPackRepackingIsCatalogPreserving pins that the SHAPE of the tree is not
+// something the catalog can see: the same records split across a different set
+// of packs, in a different number of directories, load to the same Catalog. It
+// is what lets metafmt split and relocate freely, and what the migration relied
+// on when it repacked every record in the repository.
+func TestPackRepackingIsCatalogPreserving(t *testing.T) {
+	oneDir, splitDir := t.TempDir(), t.TempDir()
+	writeTree(t, oneDir, packValid())
 
-	legacyRes, packRes := Load(legacyDir), Load(packDir)
-	if !legacyRes.OK() {
-		t.Fatalf("legacy fixture reported problems:\n%s", joinProblems(legacyRes.Problems))
+	// The same entries, spread over two works packs and two people packs.
+	split := packValid()
+	split["works/0/0.json"] = packOf(map[string]string{
+		"book-one": composite(pkWorkOne, map[string]string{"rec-one": pkRecOne}),
+	})
+	split["people/0.json"] = packOf(map[string]string{"author-one": pkAuthorOne})
+	split["people/narrator-one.json"] = packOf(map[string]string{"narrator-one": pkNarratorOne})
+	writeTree(t, splitDir, split)
+
+	oneRes, splitRes := Load(oneDir), Load(splitDir)
+	if !oneRes.OK() {
+		t.Fatalf("single-pack fixture reported problems:\n%s", joinProblems(oneRes.Problems))
 	}
-	if !packRes.OK() {
-		t.Fatalf("pack fixture reported problems:\n%s", joinProblems(packRes.Problems))
+	if !splitRes.OK() {
+		t.Fatalf("split fixture reported problems:\n%s", joinProblems(splitRes.Problems))
 	}
-	if got, want := catalogDigest(t, packRes.Catalog), catalogDigest(t, legacyRes.Catalog); got != want {
-		t.Errorf("pack and legacy catalogs differ\npack:\n%s\nlegacy:\n%s", got, want)
+	if got, want := catalogDigest(t, splitRes.Catalog), catalogDigest(t, oneRes.Catalog); got != want {
+		t.Errorf("repacking changed the catalog\nsplit:\n%s\nsingle:\n%s", got, want)
 	}
 }
 
@@ -177,63 +179,58 @@ func catalogDigest(t *testing.T, cat *model.Catalog) string {
 	return string(out)
 }
 
-// TestPackMixedLayout covers the migration window: the layout is detected per
-// family, so a tree part-converted (and one with a family not there at all -
-// the live tree's works-community) loads exactly as a uniform one does.
-func TestPackMixedLayout(t *testing.T) {
-	cases := map[string]func() map[string]string{
-		// The live tree during the migration window.
-		"all legacy, works-community absent": func() map[string]string { return legacyTwin() },
-		"people packed, the rest legacy": func() map[string]string {
-			files := legacyTwin()
-			delete(files, "people/au/author-one.json")
-			delete(files, "people/na/narrator-one.json")
-			files["people/0.json"] = packOf(map[string]string{
-				"author-one":   pkAuthorOne,
-				"narrator-one": pkNarratorOne,
-			})
-			return files
-		},
-		"works packed, people and series legacy": func() map[string]string {
-			files := legacyTwin()
-			for rel := range files {
-				if strings.HasPrefix(rel, "works/") {
-					delete(files, rel)
-				}
-			}
-			files["works/0/0.json"] = packOf(map[string]string{
-				"book-one": composite(pkWorkOne, map[string]string{"rec-one": pkRecOne}),
-			})
-			files["works-community/0/0.json"] = packOf(map[string]string{
-				"book-one": `{"characters":` + validCharacters("book-one") + `,"recaps":` + validRecaps("book-one") + `}`,
-			})
-			return files
-		},
+// A family with no data at all is absent, not empty: no root directory, no
+// packs, nothing to report. works-community is exactly that for most of the
+// tree's history, so the load has to treat it as "no sidecars" rather than as a
+// missing family.
+func TestPackAbsentFamilyLoads(t *testing.T) {
+	files := packValid()
+	delete(files, "works-community/0/0.json")
+
+	res := Load(mustWrite(t, files))
+	if !res.OK() {
+		t.Fatalf("a tree without works-community reported problems:\n%s", joinProblems(res.Problems))
 	}
-	for name, build := range cases {
-		t.Run(name, func(t *testing.T) {
-			dir := t.TempDir()
-			writeTree(t, dir, build())
-			res := Load(dir)
-			if !res.OK() {
-				t.Fatalf("mixed-layout tree reported problems:\n%s", joinProblems(res.Problems))
-			}
-			if got, want := catalogDigest(t, res.Catalog), catalogDigest(t, mustLoad(t, legacyTwin())); got != want {
-				t.Errorf("catalog differs from the all-legacy load\ngot:\n%s\nwant:\n%s", got, want)
-			}
-		})
+	if len(res.Catalog.Characters) != 0 || len(res.Catalog.Recaps) != 0 {
+		t.Errorf("sidecars appeared from nowhere: %d characters, %d recaps",
+			len(res.Catalog.Characters), len(res.Catalog.Recaps))
+	}
+	if len(res.Catalog.Works) != 1 {
+		t.Errorf("the rest of the tree did not load: %d works", len(res.Catalog.Works))
 	}
 }
 
-func mustLoad(t *testing.T, files map[string]string) *model.Catalog {
-	t.Helper()
-	dir := t.TempDir()
-	writeTree(t, dir, files)
+// TestLegacyTreeIsRejected is what is left of the file-per-entity layout: the
+// reader is gone, so a tree still in that shape must fail LOUDLY at both ends -
+// metacheck reports it and names the fix, and every writer refuses to open it.
+// Silence would mean a converted repository quietly ignoring records that a
+// stale branch or an old backup put back.
+func TestLegacyTreeIsRejected(t *testing.T) {
+	dir := mustWrite(t, map[string]string{
+		"works/bo/book-one/work.json":               pkWorkOne,
+		"works/bo/book-one/recordings/rec-one.json": pkRecOne,
+		"people/au/author-one.json":                 pkAuthorOne,
+	})
+
 	res := Load(dir)
-	if !res.OK() {
-		t.Fatalf("fixture reported problems:\n%s", joinProblems(res.Problems))
+	if res.OK() {
+		t.Fatalf("a legacy tree loaded clean; catalog: %d works", len(res.Catalog.Works))
 	}
-	return res.Catalog
+	if len(res.Catalog.Works) != 0 || len(res.Catalog.People) != 0 {
+		t.Errorf("legacy records reached the catalog: %d works, %d people",
+			len(res.Catalog.Works), len(res.Catalog.People))
+	}
+	for _, want := range []string{"works", "people"} {
+		if !hasProblem(res.Problems, want+": family is not in the pack layout") {
+			t.Errorf("no legacy-layout problem for %s; problems:\n%s", want, joinProblems(res.Problems))
+		}
+	}
+	if !hasProblem(res.Problems, "cmd/metamigrate") {
+		t.Errorf("the problems do not name the fix; problems:\n%s", joinProblems(res.Problems))
+	}
+	if _, err := pack.OpenFor(dir, pack.FamilyWorks); !errors.Is(err, pack.ErrLegacyLayout) {
+		t.Errorf("a writer opened a legacy tree: err = %v, want pack.ErrLegacyLayout", err)
+	}
 }
 
 // TestPackProblemPaths pins the reporting format: a pack problem locates itself

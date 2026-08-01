@@ -1,6 +1,7 @@
-// Package model defines the on-disk entity types and the rules that tie a file
-// to its slug, shard, and location. It has no dependency on validation or
-// storage; both metacheck and metabuild build on it.
+// Package model defines the on-disk entity types, the slug rules every id
+// follows, and PackLocation, the address a problem report names an entity by.
+// It has no dependency on validation or storage; both metacheck and metabuild
+// build on it.
 //
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency (and reached through pkg/check's

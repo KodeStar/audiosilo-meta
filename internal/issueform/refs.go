@@ -175,37 +175,50 @@ func sanitizeSlug(s string) (string, bool) {
 	return "", false
 }
 
+// recordRef is a resolved "record" reference: the kind of entity a submitter
+// named and the slug (or slug pair) that names it.
+type recordRef struct {
+	kind model.Kind
+	// slug is the entity's own slug - the RECORDING slug for a recording.
+	slug string
+	// workSlug is the parent work of a recording, empty otherwise.
+	workSlug string
+}
+
 // resolveRecordRef resolves a "record" reference to the entity it names. It
 // accepts a meta.audiosilo.app work?id=/series?id=/person?id= URL, a GitHub blob
 // URL, or a data-tree path (with or without a leading data/).
 //
 // The path forms it understands are the per-entity ones a submitter has always
-// typed ("works/th/the-thing/work.json"); they are a REFERENCE syntax, not a
-// storage location, and compose_correct maps the parsed result onto the pack
-// entry the record now lives in. ok is false when nothing recognizable can be
-// extracted.
-func resolveRecordRef(ref string) (loc model.Location, ok bool) {
+// typed ("works/th/the-thing/work.json"). They are a REFERENCE SYNTAX, not a
+// storage location - the tree has not looked like that since the pack migration,
+// and refPath below is this package's own parsing of it, kept because it is what
+// people write and what older issues, docs and links still say. compose_correct
+// maps the result onto the pack entry the record actually lives in.
+//
+// ok is false when nothing recognizable can be extracted.
+func resolveRecordRef(ref string) (rr recordRef, ok bool) {
 	ref = strings.TrimSpace(ref)
 	if ref == "" {
-		return model.Location{}, false
+		return recordRef{}, false
 	}
 	if strings.Contains(ref, "://") {
 		u, err := url.Parse(ref)
 		if err != nil {
-			return model.Location{}, false
+			return recordRef{}, false
 		}
 		if id := u.Query().Get("id"); id != "" {
 			slug, sok := sanitizeSlug(id)
 			if !sok {
-				return model.Location{}, false
+				return recordRef{}, false
 			}
 			switch {
 			case strings.Contains(u.Path, "series"):
-				return model.Location{Kind: model.KindSeries, Slug: slug}, true
+				return recordRef{kind: model.KindSeries, slug: slug}, true
 			case strings.Contains(u.Path, "person"):
-				return model.Location{Kind: model.KindPerson, Slug: slug}, true
+				return recordRef{kind: model.KindPerson, slug: slug}, true
 			default: // work?id=
-				return model.Location{Kind: model.KindWork, Slug: slug}, true
+				return recordRef{kind: model.KindWork, slug: slug}, true
 			}
 		}
 		ref = u.Path // fall through to path handling for blob URLs
@@ -216,5 +229,39 @@ func resolveRecordRef(ref string) (loc model.Location, ok bool) {
 	if i := strings.Index(ref, "data/"); i >= 0 {
 		ref = ref[i+len("data/"):]
 	}
-	return model.ParseLocation(ref)
+	return refPath(ref)
+}
+
+// refPath parses the per-entity path forms a submitter may type. The shard
+// directory is accepted but ignored: it addressed a file that no longer exists,
+// and the slug is what resolves the record.
+func refPath(rel string) (recordRef, bool) {
+	parts := strings.Split(path.Clean(rel), "/")
+	jsonName := func(s string) (string, bool) {
+		if !strings.HasSuffix(s, ".json") || len(s) <= len(".json") {
+			return "", false
+		}
+		return strings.TrimSuffix(s, ".json"), true
+	}
+	switch {
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "work.json":
+		return recordRef{kind: model.KindWork, slug: parts[2]}, true
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "characters.json":
+		return recordRef{kind: model.KindCharacters, slug: parts[2], workSlug: parts[2]}, true
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
+		return recordRef{kind: model.KindRecaps, slug: parts[2], workSlug: parts[2]}, true
+	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
+		if slug, ok := jsonName(parts[4]); ok {
+			return recordRef{kind: model.KindRecording, slug: slug, workSlug: parts[2]}, true
+		}
+	case len(parts) == 3 && parts[0] == "people":
+		if slug, ok := jsonName(parts[2]); ok {
+			return recordRef{kind: model.KindPerson, slug: slug}, true
+		}
+	case len(parts) == 3 && parts[0] == "series":
+		if slug, ok := jsonName(parts[2]); ok {
+			return recordRef{kind: model.KindSeries, slug: slug}, true
+		}
+	}
+	return recordRef{}, false
 }

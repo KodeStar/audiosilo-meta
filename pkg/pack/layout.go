@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"os"
+	"path/filepath"
 )
 
 // Layout is the storage layout a family root is in.
@@ -36,20 +37,33 @@ func (l Layout) String() string {
 // additionalProperties:false and none defines "entries"). File depth cannot
 // decide it on its own, because a people pack that has gained a directory level
 // sits at the same depth as a legacy people record.
+//
+// ANY file that reads as a pack makes the family pack layout; only a root where
+// no file does at all is legacy. One stray or unreadable file must not be able
+// to flip a converted family back - the readers refuse a legacy family outright
+// now, so a misdetection would hide every record in it, while a stray file in a
+// pack family is reported as exactly that (metacheck's unrecognized location,
+// metafmt's salvage). The scan stops at the first pack, so the normal case costs
+// one file read.
 func DetectLayout(dataDir string, f Family) (Layout, error) {
-	sample, err := firstJSONUnder(dataDir, f.Root())
+	files, err := jsonFilesUnder(dataDir, f.Root())
 	if err != nil {
 		return LayoutAbsent, err
 	}
-	if sample == "" {
+	if len(files) == 0 {
 		return LayoutAbsent, nil
 	}
-	raw, err := os.ReadFile(sample)
-	if err != nil {
-		return LayoutAbsent, err
-	}
-	if hasEntriesKey(json.NewDecoder(bytes.NewReader(raw))) {
-		return LayoutPack, nil
+	for _, rel := range files {
+		raw, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(rel)))
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue // raced with a delete: it identifies nothing either way
+			}
+			return LayoutAbsent, err
+		}
+		if hasEntriesKey(json.NewDecoder(bytes.NewReader(raw))) {
+			return LayoutPack, nil
+		}
 	}
 	return LayoutLegacy, nil
 }
