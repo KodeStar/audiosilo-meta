@@ -35,26 +35,48 @@ recordings. The work belongs to the **Harry Potter series** at position `"1"`.
 This is the whole point of the project: narrators and recordings are first-class
 data, which no existing open database has.
 
-## Where files live (and the shard rule)
+## Where records live (pack files)
+
+Records are stored **many to a file**, in four families of *pack files*:
 
 ```
 data/
-  works/<shard>/<work-slug>/work.json
-  works/<shard>/<work-slug>/recordings/<recording-slug>.json
-  people/<shard>/<slug>.json
-  series/<shard>/<slug>.json
+  works/<dir>/<bound>.json            each entry = a work, with its recordings nested
+  works-community/<dir>/<bound>.json  each entry = that work's characters + recaps
+  people/<bound>.json                 each entry = a person
+  series/<bound>.json                 each entry = a series
 ```
 
+A pack is one JSON object, `{"entries": {"<slug>": {...}, ...}}`, holding a
+slug range: the file name (minus `.json`) is its **lower bound**, and it covers
+everything up to the next file's bound. A work's entry carries its recordings as
+a `"recordings"` map keyed by recording slug, so one book is one entry.
+
 - **Slugs** are lowercase, hyphen-separated: `^[a-z0-9]+(-[a-z0-9]+)*$`
-  (for example `harry-potter-and-the-philosophers-stone-j-k-rowling`).
-- **Shard** is the **first two characters of the slug**. So a work slugged
-  `ha...` lives under `data/works/ha/`, a person slugged `st...` under
-  `data/people/st/`. Sharding keeps directories small and diffs clean.
-- Every entity has a `license: "CC0-1.0"` field and a `sources[]` array
-  (`{type, ref?, imported_at?}`) recording where the facts came from.
+  (for example `harry-potter-and-the-philosophers-stone-j-k-rowling`). The slug
+  is the identity; the file it happens to sit in is not.
+- Every entity has a `license` field and a `sources[]` array
+  (`{type, ref?, imported_at?}`) recording where the facts came from. The core
+  families are `CC0-1.0`; `works-community` entries are `CC-BY-SA-3.0`.
+- Works and recordings also carry an optional `added_at` - the date the record
+  entered the database. The importer and the intake bot stamp it; leave it out
+  of a hand-written record and it will simply be absent.
+
+**You never have to work out which pack a record goes in.** Add your entry to
+roughly the right file - or the wrong one - and run `go run ./cmd/metafmt
+--write`: it moves entries to the pack their slug belongs in, splits a pack that
+has grown too big, and re-renders everything canonically. `metafmt --check`
+(what CI runs) names the file an entry should have been in. This is deliberate:
+placement is arithmetic, and arithmetic is the tooling's job.
 
 The exact required fields are defined by the JSON Schemas in `schema/*.schema.json` -
 those are authoritative. `metacheck` validates against them.
+
+*(The tree used to be one file per record, `works/<shard>/<slug>/work.json` and
+friends. That layout is gone - see [PACK-SPEC.md](PACK-SPEC.md) for why and
+`cmd/metamigrate` for the one-off conversion. Older issues and links that spell
+a per-record path still resolve: the intake bot reads those paths as a way of
+naming a record.)*
 
 ## Two ways to contribute
 
@@ -97,31 +119,52 @@ way to fix a single fact without touching JSON.
 If you are comfortable with JSON and Git, edit the files directly. Walk-through
 for adding a new work with its first recording and a new author:
 
-1. **Add the person** (if the author is not already in `data/people/`). Slug them
-   (for example `j-k-rowling`), pick the shard (`data/people/j-/`... note: the
-   shard is the first two characters, so `j-`), and write
-   `data/people/j-/j-k-rowling.json` with their name, `license`, and `sources[]`.
-2. **Add the work.** Create
-   `data/works/<shard>/<work-slug>/work.json` with the title, authors (referencing
-   the person slug), language, and series if any. The shard is the first two
-   characters of the work slug.
-3. **Add the recording.** Create
-   `data/works/<shard>/<work-slug>/recordings/<recording-slug>.json` with the
-   narrators (referencing person slugs), abridged flag, runtime, release date,
-   publisher, ASINs (`{region, asin}`), ISBNs, cover URL, and chapters.
-4. **Add the series** (if new), or add this work to an existing series' `works[]`
-   list with a string position.
+1. **Add the person** (if the author is not already in the `people` family). Slug
+   them (for example `j-k-rowling`) and add a `"j-k-rowling": { ... }` entry -
+   name, `license`, `sources[]` - to the people pack whose range covers that
+   slug. Pick the closest one by name; `metafmt --write` will move it if you
+   guessed wrong.
+2. **Add the work.** Add a `"<work-slug>": { ... }` entry to a works pack with
+   the title, authors (referencing the person slug), and language.
+3. **Add the recording.** Inside that work's entry, add a `"recordings"` map
+   keyed by recording slug, with the narrators (referencing person slugs),
+   abridged flag, runtime, release date, publisher, ASINs (`{region, asin}`),
+   ISBNs, cover URL, and chapters.
+4. **Add the series** (if new), or add this work to an existing series entry's
+   `works[]` list with a string position.
 5. **Format and validate before pushing:**
 
    ```sh
-   go run ./cmd/metafmt --write    # canonicalise JSON (sorted keys, 2-space indent)
+   go run ./cmd/metafmt --write    # canonicalise, place entries, split full packs
    go run ./cmd/metacheck          # schema + referential integrity + uniqueness
    ```
 
    Fix anything `metacheck` reports, then commit and open a pull request.
 
-Reference the entity model above and copy the shape of an existing record of the
+Reference the entity model above and copy the shape of an existing entry of the
 same kind - that is the fastest way to get the fields right.
+
+### When two pull requests touch the same pack
+
+Because records share files, a pull request that sits open while another one
+merges can conflict in a pack file. Nothing is really in dispute - each side
+added its own entries - so the resolution is mechanical:
+
+```sh
+git fetch origin
+git rebase origin/main
+# for each conflicted pack file, keep BOTH sides' entries:
+scripts/pack-union-merge.sh data/works/0/0.json
+go run ./cmd/metafmt --write     # re-render and re-place the merged entries
+go run ./cmd/metacheck
+git add data && git rebase --continue
+git push --force-with-lease
+```
+
+The intake bot runs exactly this recipe on its own pull requests after every
+merge to main, so a bot PR is normally already rebased for you. The one case the
+script refuses is the one that is a real conflict: the **same entry key** edited
+on both sides. That needs a person to decide which fact is right.
 
 ## Importing a library export
 

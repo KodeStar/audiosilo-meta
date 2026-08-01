@@ -17,21 +17,35 @@ in [EXTRACTION-AUDIO.md](EXTRACTION-AUDIO.md). They establish chapter-accurate
 positions and add a mechanical no-verbatim check. Everything in this guide
 still applies to their output.
 
-## The two files
+## The two sidecars
 
-Both are **per-work sidecars** that live inside the work's directory:
+Both are **per-work sidecars**, and both live in the same place: one entry in the
+`works-community` family, keyed by the work slug, holding up to two members.
 
 ```
-data/works/<shard>/<work-slug>/characters.json   # the cast, spoiler-tagged
-data/works/<shard>/<work-slug>/recaps.json       # position-keyed "story so far"
+data/works-community/<dir>/<bound>.json
+
+{
+  "entries": {
+    "a-deadly-education": {
+      "characters": { ... },   # the cast, spoiler-tagged
+      "recaps":     { ... }    # position-keyed "story so far"
+    }
+  }
+}
 ```
 
-`<shard>` is the first two characters of the **work** slug (the same shard the
-`work.json` is under). Each file carries `work` (the parent work slug, which
-must equal the directory), `license` (**must** be `"CC-BY-SA-3.0"`), and
-`sources`.
+The family is separate from `data/works/` so the licence boundary is structural:
+everything in `works-community` is **CC BY-SA 3.0**, everything in the core
+families is CC0. Each member carries `work` (the parent work slug, which must
+equal the entry key), `license` (**must** be `"CC-BY-SA-3.0"`), and `sources`.
 
-### characters.json
+Add your entry to the community pack whose range covers the work slug - or the
+nearest one - and run `go run ./cmd/metafmt --write`: it places the entry
+correctly and re-renders the file. The two sections below describe each member's
+own shape; where they say "the file", read "the member".
+
+### characters
 
 ```json
 {
@@ -70,7 +84,7 @@ must equal the directory), `license` (**must** be `"CC-BY-SA-3.0"`), and
   book gets its own card, and the QID ties them together. Only include a QID you
   have actually verified points at this character.
 
-### recaps.json
+### recaps
 
 ```json
 {
@@ -156,7 +170,7 @@ Guidance:
   changes dramatically later, that is a *different, later* recap's job, or a
   second character card in a later book.
 - For **recaps**, place a `through` at natural catch-up points (see the
-  recaps.json section for how many and how often, and always include a
+  recaps section for how many and how often, and always include a
   `chapter: 0` series recap for book 2+). Each recap may freely reveal
   everything **up to and including** its `through` chapter, and nothing after.
 
@@ -207,7 +221,7 @@ style:
 ## Checklist
 
 - [ ] The work, its recording(s), author, and narrator already exist and validate.
-- [ ] `work` equals the directory slug; file is under the work's shard.
+- [ ] `work` equals the entry key both members sit under.
 - [ ] `license` is `"CC-BY-SA-3.0"`; `sources` present.
 - [ ] Every character has an `id` (unique in file), `name`, and `reveal`.
 - [ ] Descriptions/texts are your own words, within the caps, and accurate
