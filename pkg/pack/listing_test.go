@@ -89,9 +89,11 @@ func TestListingTreeMatchesReadTree(t *testing.T) {
 	}
 }
 
-// TestListingLayoutsMatchDetect pins the walk-derived layouts against the
-// per-family detection they replaced, legacy trees included.
-func TestListingLayoutsMatchDetect(t *testing.T) {
+// TestListingLayoutsMatchDetectLayout pins the walk-derived layouts (Detect,
+// one walk of the tree) against the per-family detection (DetectLayout, a scan
+// of one family root), legacy trees included. The two list a family's files by
+// different routes and must never disagree about what layout they imply.
+func TestListingLayoutsMatchDetectLayout(t *testing.T) {
 	trees := listingTrees()
 	trees["legacy"] = map[string]string{
 		"people/an/ann-doe.json": `{"id":"ann-doe"}`,
@@ -101,20 +103,20 @@ func TestListingLayoutsMatchDetect(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			dir := t.TempDir()
 			writeFiles(t, dir, files)
-			want, err := Detect(dir)
-			if err != nil {
-				t.Fatal(err)
+			want := map[Family]Layout{}
+			for _, d := range Families() {
+				lay, err := DetectLayout(dir, d.Family)
+				if err != nil {
+					t.Fatal(err)
+				}
+				want[d.Family] = lay
 			}
-			l, err := List(dir)
-			if err != nil {
-				t.Fatal(err)
-			}
-			got, err := l.Layouts()
+			got, err := Detect(dir)
 			if err != nil {
 				t.Fatal(err)
 			}
 			if !reflect.DeepEqual(got, want) {
-				t.Errorf("layouts = %v, Detect = %v", got, want)
+				t.Errorf("Detect = %v, per-family DetectLayout = %v", got, want)
 			}
 		})
 	}

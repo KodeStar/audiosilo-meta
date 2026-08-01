@@ -113,15 +113,20 @@ func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []stri
 // read or parse failure against the file itself. ok is false when there is
 // nothing to validate.
 //
-// It goes through the loader's shared parse cache: a pack a writer's store has
-// already read is taken from there, and one this load reads is left there for
-// the store. The reading is still done here rather than through Reader.Read
-// because a missing file is a PROBLEM to this package (a listed pack that has
-// gone away) where the store reads it as an empty pack to write into, and
-// because the two failures are reported differently.
+// It goes through the loader's shared parse cache when there is one: a pack a
+// writer's store has already read is taken from there, and one this load reads
+// is left there for the store. A plain Load shares with nobody (l.rdr is nil)
+// and keeps nothing, so a pack is released once it has been validated.
+//
+// The reading is done here rather than through Reader.Read because a missing
+// file is a PROBLEM to this package (a listed pack that has gone away) where
+// the store reads it as an empty pack to write into, and because the two
+// failures are reported differently.
 func (l *loader) readPack(p string) (*pack.File, bool) {
-	if file, ok := l.rdr.Cached(p); ok {
-		return file, true
+	if l.rdr != nil {
+		if file, ok := l.rdr.Cached(p); ok {
+			return file, true
+		}
 	}
 	raw, err := os.ReadFile(filepath.Join(l.dir, filepath.FromSlash(p)))
 	if err != nil {
@@ -133,7 +138,9 @@ func (l *loader) readPack(p string) (*pack.File, bool) {
 		l.add(p, "invalid pack: %s", collapse(err.Error()))
 		return nil, false
 	}
-	l.rdr.Hold(p, file)
+	if l.rdr != nil {
+		l.rdr.Hold(p, file)
+	}
 	return file, true
 }
 

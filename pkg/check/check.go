@@ -101,9 +101,10 @@ func newPathIndex() *pathIndex {
 // loader is one walk's accumulating state, shared by both layout walkers.
 type loader struct {
 	dir string
-	// rdr is the parse cache every pack is read through, so a pack a caller has
-	// already parsed (a writer's pack.Store, via LoadStore) is not parsed again,
-	// and one this load parses is available to that caller afterwards.
+	// rdr is the parse cache this load SHARES with a writer (a pack.Store, via
+	// LoadStore): a pack the store has already parsed is not parsed again, and
+	// one this load parses is left there for the store. It is nil for a plain
+	// Load, which shares with nobody and keeps no pack it has finished with.
 	rdr     *pack.Reader
 	cat     *model.Catalog
 	idx     *pathIndex
@@ -113,12 +114,17 @@ type loader struct {
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
+//
+// Nothing else is reading the tree, so nothing is kept: a pack is parsed,
+// validated and released as the walk moves past it, and the load's peak memory
+// is one pack plus the Catalog it is building. A caller that is also WRITING
+// wants its parses kept and shared - that is LoadStore.
 func Load(dir string) Result {
 	lst, err := pack.List(dir)
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
-	return load(lst, pack.NewReader(dir))
+	return load(lst, nil)
 }
 
 // LoadStore validates the tree store s was opened on, sharing the store's walk
@@ -138,15 +144,14 @@ func Load(dir string) Result {
 func LoadStore(s *pack.Store) Result {
 	lst := s.Listing()
 	if lst == nil {
-		var err error
-		if lst, err = pack.List(s.Dir()); err != nil {
-			return Result{Problems: []Problem{{Path: s.Dir(), Msg: err.Error()}}}
-		}
+		return Load(s.Dir())
 	}
 	return load(lst, s.Reader())
 }
 
-// load validates a walked tree, reading every pack through rdr.
+// load validates a walked tree. rdr is the parse cache the load shares with a
+// writer, or nil when it shares with nobody and each pack is released as soon
+// as it has been validated.
 func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	dir := lst.Dir()
 	var probs, warns []Problem

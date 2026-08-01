@@ -31,9 +31,6 @@ func NewReader(dataDir string) *Reader {
 	return &Reader{dir: dataDir, cache: map[string]*File{}}
 }
 
-// Dir returns the data root the reader reads under.
-func (r *Reader) Dir() string { return r.dir }
-
 // Read returns the parsed pack at rel, a data-relative path, reading and parsing
 // it only the first time.
 //

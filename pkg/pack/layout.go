@@ -106,14 +106,14 @@ func hasEntriesKey(dec *json.Decoder) bool {
 }
 
 // Detect reports the layout of every family under dataDir.
+//
+// It takes ONE walk of the tree, not one per family: a caller that already
+// holds a Listing asks it directly (Listing.Layouts), and this is that, over a
+// walk taken for the occasion.
 func Detect(dataDir string) (map[Family]Layout, error) {
-	out := make(map[Family]Layout, len(defs))
-	for _, d := range Families() {
-		l, err := DetectLayout(dataDir, d.Family)
-		if err != nil {
-			return nil, err
-		}
-		out[d.Family] = l
+	l, err := listFor(dataDir)
+	if err != nil {
+		return nil, err
 	}
-	return out, nil
+	return l.Layouts()
 }

@@ -126,37 +126,16 @@ func Covers(lo, hi, slug string) bool {
 // in pack layout (use Detect first when that is in doubt): every *.json file
 // directly under the family root, or one directory deeper, is taken to be a
 // pack, whatever its name. A missing root yields an empty tree.
+//
+// It is Listing.Tree over a scan of one family root rather than a walk of the
+// whole tree - the same classification (packRefs), so the two can never
+// disagree about what a pack is.
 func ReadTree(dataDir string, f Family) (*Tree, error) {
-	root := filepath.Join(dataDir, f.Root())
-	ents, err := os.ReadDir(root)
+	rels, err := jsonFilesUnder(dataDir, f.Root())
 	if err != nil {
-		if os.IsNotExist(err) {
-			return NewTree(f, nil), nil
-		}
 		return nil, err
 	}
-	var packs []PackRef
-	for _, e := range ents {
-		if !e.IsDir() {
-			if b, ok := packBound(e.Name()); ok {
-				packs = append(packs, PackRef{Family: f, Bound: b})
-			}
-			continue
-		}
-		sub, err := os.ReadDir(filepath.Join(root, e.Name()))
-		if err != nil {
-			return nil, err
-		}
-		for _, se := range sub {
-			if se.IsDir() {
-				continue
-			}
-			if b, ok := packBound(se.Name()); ok {
-				packs = append(packs, PackRef{Family: f, Dir: e.Name(), Bound: b})
-			}
-		}
-	}
-	return NewTree(f, packs), nil
+	return NewTree(f, packRefs(f, rels)), nil
 }
 
 // jsonExt is the ONLY extension a pack file may carry. The match is

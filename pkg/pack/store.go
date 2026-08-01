@@ -295,6 +295,17 @@ func (s *Store) load(ref PackRef) (*File, error) {
 // pack location at all.
 func (s *Store) loadPath(rel string) (*File, error) { return s.reader.Read(rel) }
 
+// packFiles returns family f's JSON files, from the walk the store was opened
+// on. Nothing reaches disk before Flush, so that walk still describes the tree
+// for as long as the store holds it; once a Flush has dropped it, the tree has
+// changed and a fresh scan of the family root is the right answer.
+func (s *Store) packFiles(f Family) ([]string, error) {
+	if s.listing != nil {
+		return s.listing.packFiles(f), nil
+	}
+	return jsonFilesUnder(s.dir, f.Root())
+}
+
 // cached returns the pack the store's reader holds for rel, or nil.
 func (s *Store) cached(rel string) *File {
 	f, _ := s.reader.Cached(rel)

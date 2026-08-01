@@ -50,7 +50,7 @@ type surveyed struct {
 // survey classifies every JSON file under family f's root.
 func (s *Store) survey(def FamilyDef) (*familySurvey, error) {
 	root := def.Family.Root()
-	rels, err := jsonFilesUnder(s.dir, root)
+	rels, err := s.packFiles(def.Family)
 	if err != nil {
 		return nil, err
 	}
