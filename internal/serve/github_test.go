@@ -95,12 +95,17 @@ func writeFile(t *testing.T, dir, name string, data []byte) string {
 	return path
 }
 
-func TestGunzipFileTo(t *testing.T) {
+// TestGunzipStreamTo covers the one-pass download path: the COMPRESSED bytes are
+// what the published checksum covers, so the digest is taken over the gz while
+// the artifact is decompressed straight to disk. A gz whose digest does not match
+// must leave nothing behind, even though the decompression itself succeeded.
+func TestGunzipStreamTo(t *testing.T) {
 	payload := []byte("hello sqlite")
+	gz := gzOf(t, payload)
 	dir := t.TempDir()
-	gzPath := writeFile(t, dir, "in.gz", gzOf(t, payload))
+
 	dst := filepath.Join(dir, "nested", "out.bin")
-	if err := gunzipFileTo(gzPath, dst); err != nil {
+	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz)); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(dst)
@@ -109,6 +114,39 @@ func TestGunzipFileTo(t *testing.T) {
 	}
 	if !bytes.Equal(got, payload) {
 		t.Errorf("gunzip = %q, want %q", got, payload)
+	}
+
+	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
+	// gate does not, and no file is installed.
+	bad := filepath.Join(dir, "bad.bin")
+	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz))
+	if err == nil {
+		t.Errorf("gz with a mismatched digest accepted")
+	}
+	if _, err := os.Stat(bad); !os.IsNotExist(err) {
+		t.Errorf("destination created despite a digest mismatch")
+	}
+}
+
+// TestNextBootBackoff pins the boot-retry schedule: start at bootRetry, double
+// per consecutive failure, never exceed the steady-state interval, and start
+// over once an artifact loads (prev 0).
+func TestNextBootBackoff(t *testing.T) {
+	const base, limit = 30 * time.Second, 8 * time.Minute
+	want := []time.Duration{30 * time.Second, time.Minute, 2 * time.Minute, 4 * time.Minute, 8 * time.Minute, 8 * time.Minute}
+	got := time.Duration(0)
+	for i, w := range want {
+		got = nextBootBackoff(got, base, limit)
+		if got != w {
+			t.Fatalf("attempt %d: backoff = %s, want %s", i+1, got, w)
+		}
+	}
+	// A success resets to the base, and a base above the limit is clamped.
+	if got := nextBootBackoff(0, base, limit); got != base {
+		t.Errorf("after reset = %s, want %s", got, base)
+	}
+	if got := nextBootBackoff(0, time.Hour, limit); got != limit {
+		t.Errorf("base over the limit = %s, want %s", got, limit)
 	}
 }
 

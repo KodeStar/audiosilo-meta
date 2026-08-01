@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"path/filepath"
 	"slices"
-	"strings"
 	"testing"
 	"time"
 
@@ -534,80 +533,5 @@ func TestBuildNarratorOrder(t *testing.T) {
 	}
 	if len(got) != 2 || got[0] != "michael-kramer" || got[1] != "kate-reading" {
 		t.Errorf("narrator order = %v, want [michael-kramer kate-reading]", got)
-	}
-}
-
-// queryPlan returns the EXPLAIN QUERY PLAN steps for query, joined for
-// reporting.
-func queryPlan(t *testing.T, db *sql.DB, query string, args ...any) []string {
-	t.Helper()
-	rows, err := db.Query("EXPLAIN QUERY PLAN "+query, args...)
-	if err != nil {
-		t.Fatalf("EXPLAIN QUERY PLAN %s: %v", query, err)
-	}
-	defer func() { _ = rows.Close() }()
-	var plan []string
-	for rows.Next() {
-		var id, parent, notused int
-		var detail string
-		if err := rows.Scan(&id, &parent, &notused, &detail); err != nil {
-			t.Fatal(err)
-		}
-		plan = append(plan, detail)
-	}
-	if err := rows.Err(); err != nil {
-		t.Fatal(err)
-	}
-	return plan
-}
-
-// TestServeLookupsAreIndexed is the regression guard for the serving indexes: it
-// runs EXPLAIN QUERY PLAN over the exact per-request queries internal/serve
-// issues and fails if any of them degrades to a full table scan. Every one of
-// these was a measured SCAN before the covering indexes were added, on the
-// hottest paths in the API - each GET /works/{id} runs the first three once per
-// recording, so the cost was multiplied by the catalogue size on every hit.
-func TestServeLookupsAreIndexed(t *testing.T) {
-	db := buildFixture(t)
-	cases := []struct {
-		name  string
-		query string
-		args  []any
-	}{
-		{"narrators of a recording",
-			`SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id WHERE rn.work_id=? AND rn.recording_id=? ORDER BY rn.ord`,
-			[]any{"project-hail-mary", "ray-porter-2021"}},
-		{"asins of a recording",
-			`SELECT region, asin FROM recording_asins WHERE work_id=? AND recording_id=? ORDER BY region, asin`,
-			[]any{"project-hail-mary", "ray-porter-2021"}},
-		{"isbns of a recording",
-			`SELECT isbn FROM recording_isbns WHERE work_id=? AND recording_id=? ORDER BY isbn`,
-			[]any{"the-way-of-kings", "kramer-reading-2010"}},
-		{"narrators of a work",
-			`SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id WHERE rn.work_id=? GROUP BY p.id, p.name ORDER BY MIN(rn.ord)`,
-			[]any{"the-way-of-kings"}},
-		{"works of a series",
-			`SELECT work_id, position FROM series_works WHERE series_id=?`,
-			[]any{"the-stormlight-archive"}},
-		{"authors of a series",
-			`SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id WHERE sa.series_id=? ORDER BY sa.ord`,
-			[]any{"the-stormlight-archive"}},
-		{"character aliases of a work",
-			`SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`,
-			[]any{"project-hail-mary"}},
-	}
-	for _, tc := range cases {
-		t.Run(tc.name, func(t *testing.T) {
-			plan := queryPlan(t, db, tc.query, tc.args...)
-			// "SCAN <table>" alone is a full table scan; "SCAN ... USING INDEX"
-			// walks an index (what an ORDER BY over a covering index looks
-			// like). Only the former is the regression this guards.
-			for _, step := range plan {
-				if strings.HasPrefix(step, "SCAN ") && !strings.Contains(step, "USING") {
-					t.Errorf("full table scan in plan: %s\nfull plan: %s", step, strings.Join(plan, " | "))
-				}
-			}
-			t.Logf("%s -> %s", tc.name, strings.Join(plan, " | "))
-		})
 	}
 }

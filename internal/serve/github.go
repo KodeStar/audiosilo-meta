@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"hash"
 	"io"
 	"net/http"
 	"os"
@@ -229,6 +230,21 @@ func (s *Server) assetTo(ctx context.Context, rel *ghRelease, name, dstPath, wan
 	return s.gh.downloadTo(ctx, url, dstPath, wantHexDigest)
 }
 
+// assetBody finds the named asset on rel and opens its body for streaming. The
+// caller owns (and must close) the returned reader. Used by the path that
+// transforms an asset while it downloads rather than landing it as a file.
+func (s *Server) assetBody(ctx context.Context, rel *ghRelease, name string) (io.ReadCloser, error) {
+	url, ok := findAsset(rel, name)
+	if !ok {
+		return nil, fmt.Errorf("release %s has no %s asset", rel.TagName, name)
+	}
+	resp, err := s.gh.get(ctx, url)
+	if err != nil {
+		return nil, err
+	}
+	return resp.Body, nil
+}
+
 // patchWindowLog is the log2 of the zstd window the release patches are
 // compressed with (--long=31 in .github/workflows/release.yml - a bump is a
 // deliberate two-file edit, there and here). The decoder options below must
@@ -256,11 +272,16 @@ func expectedDigest(checksumFile []byte) (string, error) {
 	return strings.ToLower(fields[0]), nil
 }
 
-// installVerified streams src into dstPath atomically (temp file + rename in
-// dstPath's directory). When wantHexDigest is non-empty, the streamed bytes'
-// sha256 must equal it or nothing is installed. Any failure removes the temp
-// file and never creates dstPath. Returns the number of bytes written.
-func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error) {
+// installStream streams src into dstPath atomically (temp file + rename in
+// dstPath's directory). When verify is non-nil it runs AFTER the copy and BEFORE
+// the rename: an error from it means nothing is installed. Any failure removes
+// the temp file and never creates dstPath. Returns the number of bytes written.
+//
+// The gate is a callback rather than a digest because the bytes that must be
+// verified are not always the bytes being written: fullRefresh decompresses
+// while it downloads, so what it can check against the published checksum is the
+// COMPRESSED input, not the artifact landing on disk.
+func installStream(src io.Reader, dstPath string, verify func() error) (int64, error) {
 	if err := os.MkdirAll(filepath.Dir(dstPath), 0o755); err != nil {
 		return 0, err
 	}
@@ -271,13 +292,7 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error
 	tmpName := tmp.Name()
 	defer func() { _ = os.Remove(tmpName) }()
 
-	// Only pay for hashing when a digest will actually be checked.
-	hasher := sha256.New()
-	var w io.Writer = tmp
-	if wantHexDigest != "" {
-		w = io.MultiWriter(tmp, hasher)
-	}
-	n, err := io.Copy(w, src) //nolint:gosec // trusted release artifact: the caller verified the compressed bytes, or the digest gate below rejects the output
+	n, err := io.Copy(tmp, src) //nolint:gosec // trusted release artifact: verify below gates the rename, so unverified bytes never become dstPath
 	if err != nil {
 		_ = tmp.Close()
 		return 0, err
@@ -285,10 +300,9 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error
 	if err := tmp.Close(); err != nil {
 		return 0, err
 	}
-	if wantHexDigest != "" {
-		got := hex.EncodeToString(hasher.Sum(nil))
-		if got != wantHexDigest {
-			return 0, fmt.Errorf("sha256 mismatch: got %s, want %s", got, wantHexDigest)
+	if verify != nil {
+		if err := verify(); err != nil {
+			return 0, err
 		}
 	}
 	if err := os.Rename(tmpName, dstPath); err != nil {
@@ -297,23 +311,54 @@ func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error
 	return n, nil
 }
 
-// gunzipFileTo decompresses the gz file at gzPath into a new file at path
-// (atomically via a temp file + rename), holding neither the compressed nor the
-// decompressed bytes in memory. No digest is enforced here: the caller verified
-// the gz file's bytes as they were written (fullRefresh), and existing releases
-// publish no raw-file digest alongside the gz.
-func gunzipFileTo(gzPath, path string) error {
-	f, err := os.Open(gzPath) //nolint:gosec // gzPath is our own cache file, not user input
-	if err != nil {
-		return err
+// checkDigest compares an accumulated hash against an expected lowercase hex
+// digest.
+func checkDigest(h hash.Hash, wantHexDigest string) error {
+	got := hex.EncodeToString(h.Sum(nil))
+	if got != wantHexDigest {
+		return fmt.Errorf("sha256 mismatch: got %s, want %s", got, wantHexDigest)
 	}
-	defer func() { _ = f.Close() }()
-	zr, err := gzip.NewReader(bufio.NewReaderSize(f, downloadBufferBytes))
+	return nil
+}
+
+// installVerified streams src into dstPath atomically, requiring the streamed
+// bytes to hash to wantHexDigest (empty = no digest check) before anything is
+// installed.
+func installVerified(src io.Reader, dstPath, wantHexDigest string) (int64, error) {
+	if wantHexDigest == "" {
+		return installStream(src, dstPath, nil)
+	}
+	h := sha256.New()
+	return installStream(io.TeeReader(src, h), dstPath, func() error {
+		return checkDigest(h, wantHexDigest)
+	})
+}
+
+// gunzipStreamTo decompresses src into dstPath in ONE pass, verifying the
+// COMPRESSED bytes against wantGzDigest before the result is installed. This is
+// what lets fullRefresh go from the network straight to the finished artifact:
+// no intermediate .gz file, and neither the compressed nor the decompressed
+// bytes are ever held in memory.
+//
+// The digest is taken at the tee, i.e. over everything read from src, and the
+// reader is drained before the check so trailing bytes cannot be skipped by the
+// gzip reader stopping at its trailer. installStream runs the check before the
+// rename, so a corrupted download is discarded with the temp file - the same
+// "verified before it counts" property the old download-then-compare had.
+func gunzipStreamTo(src io.Reader, dstPath, wantGzDigest string) error {
+	h := sha256.New()
+	tee := io.TeeReader(src, h)
+	zr, err := gzip.NewReader(bufio.NewReaderSize(tee, downloadBufferBytes))
 	if err != nil {
 		return err
 	}
 	defer func() { _ = zr.Close() }()
-	_, err = installVerified(zr, path, "")
+	_, err = installStream(zr, dstPath, func() error {
+		if _, err := io.Copy(io.Discard, tee); err != nil {
+			return err
+		}
+		return checkDigest(h, wantGzDigest)
+	})
 	return err
 }
 
@@ -339,8 +384,10 @@ const downloadBufferBytes = 1 << 20
 //
 // The patch itself and the reconstructed output both stream (file in, file out),
 // but the PREVIOUS artifact is unavoidably held in memory: a raw zstd dictionary
-// must be one contiguous byte slice. That is what maxPatchBaseBytes caps - past
-// that size tryPatch refuses to start and the full download runs instead.
+// must be one contiguous byte slice, and the decoder's history window over it
+// costs about as much again, so peak transient is roughly twice the base
+// artifact. That is what defaultMaxPatchBase caps - past that size tryPatch
+// refuses to start and the full download (which streams end to end) runs instead.
 func applyPatchFile(patchPath, prevPath, dstPath, wantHexDigest string) (int64, error) {
 	prev, err := os.ReadFile(prevPath) //nolint:gosec // prevPath is our own cache file, not user input
 	if err != nil {
@@ -387,30 +434,36 @@ func (s *Server) dbCachePath(tag string) string {
 
 // defaultMaxPatchBase caps the artifact size at which the patch path is still
 // worth taking (see applyPatchFile: the base artifact must be one contiguous
-// slice in memory). 1 GiB leaves the 142k-work artifact comfortably inside the
-// patch path while refusing the multi-GB shapes where the transient would
-// dominate the serving process.
+// slice in memory). Peak transient is roughly TWICE the base, not once: the
+// contiguous dictionary copy plus the decoder's history window over it. So this
+// 1 GiB cap bounds the patch path at about 2 GiB of transient - it leaves the
+// 142k-work artifact comfortably inside the patch path while refusing the
+// multi-GB shapes where that transient would dominate the serving process.
 const defaultMaxPatchBase = 1 << 30
 
-func (s *Server) maxPatchBase() int64 {
-	if s.cfg.maxPatchBase > 0 {
-		return s.cfg.maxPatchBase
-	}
-	return defaultMaxPatchBase
-}
-
-// pruneCache deletes every cache file that is not the live artifact: superseded
-// releases (one full artifact per adopted release, which otherwise accumulate
-// forever on the cache volume) and any .gz/.patch.zst/tmp leftovers from a
-// refresh that died mid-flight. It runs after the swap grace period, so the
-// snapshot it replaced is already closed.
-//
-// It takes the refresh lock: a refresh in flight owns the transient files it is
-// writing, and the live snapshot's path must not move underneath the check.
-func (s *Server) pruneCache() {
+// pruneCache deletes every cache file that is not live, taking the refresh lock
+// first. See pruneCacheLocked.
+func (s *Server) pruneCache(alsoKeep ...string) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
+	s.pruneCacheLocked(alsoKeep...)
+}
 
+// pruneCacheLocked deletes every cache file this server owns except the live
+// artifact, s.cfg.DBPath, and the paths in alsoKeep: superseded releases (one
+// full artifact per adopted release, which otherwise accumulate forever on the
+// cache volume) and any .patch.zst/tmp leftovers from a refresh that died
+// mid-flight.
+//
+// It runs at two moments, which together cover the whole lifecycle: from adopt,
+// naming the just-superseded snapshot's file in alsoKeep because in-flight
+// requests are still reading it (this is the pass that cleans up after a cold
+// boot, whose first adopt supersedes nothing at all); and again once the swap
+// grace elapses, by which point that file is closed and prunable too.
+//
+// The caller must hold s.mu: a refresh in flight owns the transient files it is
+// writing, and the live snapshot's path must not move underneath the check.
+func (s *Server) pruneCacheLocked(alsoKeep ...string) {
 	dir := s.cacheDir()
 	entries, err := os.ReadDir(dir)
 	if err != nil {
@@ -419,9 +472,12 @@ func (s *Server) pruneCache() {
 		}
 		return
 	}
-	keep := ""
+	keep := map[string]bool{s.cfg.DBPath: true}
 	if cur := s.current(); cur != nil {
-		keep = cur.path
+		keep[cur.path] = true
+	}
+	for _, p := range alsoKeep {
+		keep[p] = true
 	}
 	for _, e := range entries {
 		if e.IsDir() {
@@ -431,10 +487,10 @@ func (s *Server) pruneCache() {
 		if !strings.HasPrefix(name, cachePrefix) && !strings.HasPrefix(name, "."+cachePrefix) {
 			continue
 		}
+		// Never delete what we are serving, what a request may still be reading,
+		// or a --db artifact a deployment happens to keep in the cache directory.
 		path := filepath.Join(dir, name)
-		// Never delete what we are serving, and never delete a --db artifact a
-		// deployment happens to keep in the cache directory.
-		if path == keep || path == s.cfg.DBPath {
+		if keep[path] {
 			continue
 		}
 		if err := os.Remove(path); err != nil {
@@ -446,14 +502,26 @@ func (s *Server) pruneCache() {
 }
 
 // adopt opens the artifact at dbPath as the snapshot for tag and hot-swaps it
-// in. Shared tail of the full and patch refresh paths.
+// in, then prunes the cache. Shared tail of the full and patch refresh paths.
+// Always called with s.mu held (refresh owns it), hence pruneCacheLocked.
 func (s *Server) adopt(dbPath, tag string) (*snapshot, error) {
 	snap, err := openSnapshot(dbPath, tag)
 	if err != nil {
 		return nil, err
 	}
+	prev := s.current()
 	s.swap(snap)
 	s.loaded = tag
+	// Prune on EVERY successful adopt, not only when the grace timer fires, so a
+	// cold boot (which supersedes no snapshot) still clears what an earlier
+	// container left on the volume. The snapshot just replaced is still serving
+	// in-flight requests, so its file survives this pass and is collected by the
+	// grace callback.
+	if prev != nil {
+		s.pruneCacheLocked(prev.path)
+	} else {
+		s.pruneCacheLocked()
+	}
 	return snap, nil
 }
 
@@ -496,14 +564,16 @@ func (s *Server) refresh(ctx context.Context) error {
 }
 
 // fullRefresh downloads meta.sqlite.gz, verifies it against meta.sqlite.gz.sha256,
-// gunzips it into the cache, and hot-swaps the snapshot. This is the universal
-// path: it works for the first refresh and whenever a patch is unavailable.
+// and decompresses it into the cache in ONE streaming pass, then hot-swaps the
+// snapshot. This is the universal path: it works for the first refresh and
+// whenever a patch is unavailable.
 //
-// The checksum is fetched FIRST so the gz can be verified as it streams to disk:
-// the digest gate lives inside installVerified, so a corrupted download is
-// deleted with the temp file and no gz file is ever created - the same
-// "verified before it counts" property the old buffer-then-compare had, without
-// holding the asset in memory.
+// The checksum is fetched FIRST so the download can be gated on it without ever
+// materializing the compressed asset: the response body is hashed as it is
+// decompressed straight into the artifact's temp file, and gunzipStreamTo checks
+// the digest before the rename. So the network transfer, the decompression and
+// the verification all happen once, over one pass, with no .gz file on the cache
+// volume and neither form of the asset in memory.
 func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 	sumData, err := s.smallAsset(ctx, rel, dataAssetName+".sha256")
 	if err != nil {
@@ -514,13 +584,14 @@ func (s *Server) fullRefresh(ctx context.Context, rel *ghRelease) error {
 		return err
 	}
 
-	dbPath := s.dbCachePath(rel.TagName)
-	gzPath := dbPath + ".gz"
-	defer func() { _ = os.Remove(gzPath) }() // the artifact is what we keep, not the gz
-	if _, err := s.assetTo(ctx, rel, dataAssetName, gzPath, want); err != nil {
+	body, err := s.assetBody(ctx, rel, dataAssetName)
+	if err != nil {
 		return err
 	}
-	if err := gunzipFileTo(gzPath, dbPath); err != nil {
+	defer func() { _ = body.Close() }()
+
+	dbPath := s.dbCachePath(rel.TagName)
+	if err := gunzipStreamTo(body, dbPath, want); err != nil {
 		return err
 	}
 	snap, err := s.adopt(dbPath, rel.TagName)
@@ -556,7 +627,7 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 	// costs more than it saves and the full download (which streams end to end)
 	// is the better trade - the fallback is unconditional, so refusing here is
 	// safe, not a failure.
-	if maxBase := s.maxPatchBase(); info.Size() > maxBase {
+	if maxBase := s.cfg.maxPatchBase; info.Size() > maxBase {
 		return fmt.Errorf("loaded artifact is %d bytes, over the %d-byte patch-base cap", info.Size(), maxBase)
 	}
 	// The most common bail-out - the server is 2+ releases behind, so no delta
@@ -611,15 +682,21 @@ func (s *Server) tryPatch(ctx context.Context, rel *ghRelease) error {
 // this immediate refresh is a cheap conditional 304 - harmless.
 //
 // While NO artifact has loaded at all (a poll-only boot whose first fetch
-// failed - the production image ships no baked data), the wait is the much
-// shorter bootRetry instead of Interval: the server is answering 503 and must
-// recover as soon as GitHub does, not an hour later.
+// failed - the production image ships no baked data), the wait starts at the
+// much shorter bootRetry instead of Interval: the server is answering 503 and
+// must recover as soon as GitHub does, not an hour later. It then BACKS OFF,
+// doubling up to Interval, because this is the normal boot path and a failure
+// is not always cheap: a download that dies near the end of a hundreds-of-MB
+// artifact costs real bandwidth, and retrying that at full price every 30s
+// indefinitely would hammer both ends of an outage that may last hours. The
+// backoff resets the moment an artifact loads.
 //
 // refresh() is ctx-bound, so a slow first download aborts on shutdown rather
 // than delaying it. The wait uses time.After, not a Ticker, so the interval is
 // measured from the END of the previous refresh - a refresh slower than a short
 // Interval can never pend a tick and fire again back-to-back.
 func (s *Server) pollLoop(ctx context.Context) {
+	var backoff time.Duration
 	for {
 		// A refresh cut short by shutdown is not a poll failure - stay silent.
 		if err := s.refresh(ctx); err != nil && ctx.Err() == nil {
@@ -627,7 +704,11 @@ func (s *Server) pollLoop(ctx context.Context) {
 		}
 		wait := s.cfg.Interval
 		if s.current() == nil {
-			wait = s.bootRetry()
+			backoff = nextBootBackoff(backoff, s.cfg.bootRetry, s.cfg.Interval)
+			wait = backoff
+			s.log.Printf("serve: still no artifact; retrying in %s", wait)
+		} else {
+			backoff = 0
 		}
 		select {
 		case <-ctx.Done():
@@ -635,4 +716,19 @@ func (s *Server) pollLoop(ctx context.Context) {
 		case <-time.After(wait):
 		}
 	}
+}
+
+// nextBootBackoff returns the next boot-retry wait: base on the first failure,
+// then doubling, never exceeding limit (the steady-state poll interval). A base
+// already larger than limit is clamped, so the wait is never longer than a
+// normal poll.
+func nextBootBackoff(prev, base, limit time.Duration) time.Duration {
+	next := base
+	if prev > 0 {
+		next = prev * 2
+	}
+	if next > limit {
+		return limit
+	}
+	return next
 }

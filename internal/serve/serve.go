@@ -40,13 +40,13 @@ type Config struct {
 	swapGrace time.Duration
 
 	// maxPatchBase caps the artifact size for which a binary-delta refresh is
-	// attempted (see applyPatchFile). Overridable for tests; default
+	// attempted (see applyPatchFile). Overridable for tests; New defaults it to
 	// defaultMaxPatchBase.
 	maxPatchBase int64
 
-	// bootRetry is how long the poller waits between attempts while it has NO
-	// artifact at all (see pollLoop). Overridable for tests; default
-	// defaultBootRetry.
+	// bootRetry is the FIRST wait between poll attempts while no artifact has
+	// loaded at all (it then backs off - see pollLoop). Overridable for tests;
+	// New defaults it to defaultBootRetry.
 	bootRetry time.Duration
 
 	// apiBase overrides the GitHub API base URL. Test-only: production always
@@ -97,6 +97,12 @@ func New(cfg Config) (*Server, error) {
 	if cfg.swapGrace <= 0 {
 		cfg.swapGrace = 60 * time.Second
 	}
+	if cfg.bootRetry <= 0 {
+		cfg.bootRetry = defaultBootRetry
+	}
+	if cfg.maxPatchBase <= 0 {
+		cfg.maxPatchBase = defaultMaxPatchBase
+	}
 	if cfg.WebhookSecret != "" {
 		if !cfg.Poll {
 			return nil, errors.New("serve: METASERVE_WEBHOOK_SECRET requires --poll")
@@ -119,7 +125,8 @@ func New(cfg Config) (*Server, error) {
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
 			s.log.Printf("serve: no artifact at boot: %v", err)
-			s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying every %s)", s.bootRetry())
+			s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying in %s, backing off to %s)",
+				cfg.bootRetry, cfg.Interval)
 		}
 	} else {
 		return nil, errors.New("serve: no --db and --poll not set: nothing to serve")
@@ -163,22 +170,16 @@ func (s *Server) Run(ctx context.Context) error {
 // poll-only boot whose first fetch failed - see New).
 func (s *Server) current() *snapshot { return s.cur.Load() }
 
-// defaultBootRetry is how often a server with NO artifact retries. It is much
-// shorter than the steady-state poll interval: a boot that could not reach
-// GitHub is an outage to recover from in seconds, not in an hour.
+// defaultBootRetry is the first retry wait for a server with NO artifact. It is
+// much shorter than the steady-state poll interval: a boot that could not reach
+// GitHub is an outage to recover from in seconds, not in an hour. Consecutive
+// failures back off from here up to cfg.Interval (see pollLoop).
 const defaultBootRetry = 30 * time.Second
 
-func (s *Server) bootRetry() time.Duration {
-	if s.cfg.bootRetry > 0 {
-		return s.cfg.bootRetry
-	}
-	return defaultBootRetry
-}
-
 // swap installs a new snapshot and schedules the old one's close after the grace
-// period, so requests that already grabbed the old handle finish cleanly. The
-// cache files the swap superseded are pruned at the same moment - once nothing
-// can still be reading them.
+// period, so requests that already grabbed the old handle finish cleanly. Once
+// the grace elapses the old artifact's file is prunable, so a prune runs then
+// too - adopt already pruned everything else at swap time.
 func (s *Server) swap(next *snapshot) {
 	old := s.cur.Swap(next)
 	if old != nil && old != next {
@@ -230,7 +231,7 @@ func (s *Server) api(h http.HandlerFunc) http.Handler {
 func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if s.current() == nil {
-			w.Header().Set("Retry-After", strconv.Itoa(int(s.bootRetry().Seconds())))
+			w.Header().Set("Retry-After", strconv.Itoa(int(s.cfg.bootRetry.Seconds())))
 			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
 			return
 		}
@@ -269,7 +270,9 @@ func writeErr(w http.ResponseWriter, status int, msg string) {
 }
 
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
-// def when absent or invalid.
+// def when absent or invalid. A def of 0 is how an endpoint spells "no window at
+// all by default" (snapshot.series), since 0 is never reachable from a supplied
+// value.
 func clampLimit(raw string, def, max int) int {
 	if raw == "" {
 		return def
@@ -277,23 +280,6 @@ func clampLimit(raw string, def, max int) int {
 	n, err := strconv.Atoi(raw)
 	if err != nil || n <= 0 {
 		return def
-	}
-	if n > max {
-		return max
-	}
-	return n
-}
-
-// clampLimitAll parses an OPTIONAL ?limit= param for an endpoint whose default
-// is "no window at all": absent or invalid yields 0, meaning every row; a
-// supplied value is clamped to [1, max].
-func clampLimitAll(raw string, max int) int {
-	if raw == "" {
-		return 0
-	}
-	n, err := strconv.Atoi(raw)
-	if err != nil || n <= 0 {
-		return 0
 	}
 	if n > max {
 		return max
@@ -322,7 +308,7 @@ func clampOffset(raw string) int {
 func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
 	if snap == nil {
-		w.Header().Set("Retry-After", strconv.Itoa(int(s.bootRetry().Seconds())))
+		w.Header().Set("Retry-After", strconv.Itoa(int(s.cfg.bootRetry.Seconds())))
 		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
 		return
 	}
@@ -405,7 +391,7 @@ const seriesPageMax = 500
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
 	q := r.URL.Query()
-	ser, err := snap.series(r.PathValue("id"), clampLimitAll(q.Get("limit"), seriesPageMax), clampOffset(q.Get("offset")))
+	ser, err := snap.series(r.PathValue("id"), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return

@@ -21,9 +21,10 @@
 # Boot failure mode - deliberate: if GitHub is unreachable at startup the
 # process does NOT exit (that would be a container crash loop). It comes up
 # degraded, logs the reason, serves the static site, answers /healthz with
-# `{"status":"starting"}` + 503 and every API route with 503, and retries every
-# 30s until a release loads. A health check therefore reports the container
-# unready - accurately - instead of the container flapping.
+# `{"status":"starting"}` + 503 and every API route with 503, and retries -
+# first after 30s, then backing off to the poll interval - until a release
+# loads. A health check therefore reports the container unready - accurately -
+# instead of the container flapping.
 
 # ---- 1. site -----------------------------------------------------------------
 FROM node:24-alpine AS site
@@ -64,7 +65,10 @@ COPY --from=site /site/dist /app/site
 
 USER app
 EXPOSE 8080
-# /data holds the downloaded/hot-swapped release artifacts. It is a cache (lose
-# it and the next boot re-downloads), but keeping it makes a restart instant.
+# /data holds the downloaded/hot-swapped release artifacts. It is a disposable
+# cache: a boot always fetches the newest release (the first refresh is always
+# full - there is no loaded artifact to patch against), so persisting it does
+# NOT shorten startup. What it buys is the patch base for the refreshes that
+# follow, so later updates transfer a delta instead of the whole artifact.
 VOLUME ["/data"]
 ENTRYPOINT ["/app/metaserve", "--site", "/app/site", "--poll", "--cache", "/data/cache"]

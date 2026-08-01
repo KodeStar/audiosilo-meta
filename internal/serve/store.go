@@ -3,7 +3,7 @@ package serve
 import (
 	"database/sql"
 	"fmt"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -124,32 +124,17 @@ type workCard struct {
 	AddedAt  *string     `json:"added_at"`
 }
 
-// workCard builds the card for a work id. It returns (nil, nil) when the work
-// does not exist.
+// workCard builds the card for a single work id, through the same batched
+// implementation the lists use. It returns (nil, nil) when the work does not
+// exist. Keeping ONE implementation is what stops the card's composition rules
+// (which series membership wins, which cover wins) from being spelled twice and
+// drifting apart.
 func (s *snapshot) workCard(id string) (*workCard, error) {
-	var title string
-	var addedAt sql.NullString
-	err := s.db.QueryRow(`SELECT title, added_at FROM works WHERE id=?`, id).Scan(&title, &addedAt)
-	if err == sql.ErrNoRows {
-		return nil, nil
-	}
+	byID, err := s.cardsByID([]string{id})
 	if err != nil {
 		return nil, err
 	}
-	wc := &workCard{ID: id, Title: title, Authors: []personRef{}}
-	if addedAt.Valid {
-		wc.AddedAt = &addedAt.String
-	}
-	if wc.Authors, err = s.authorsOf(id); err != nil {
-		return nil, err
-	}
-	if wc.Series, err = s.firstSeriesOf(id); err != nil {
-		return nil, err
-	}
-	if wc.CoverURL, err = s.coverOf(id); err != nil {
-		return nil, err
-	}
-	return wc, nil
+	return byID[id], nil
 }
 
 // idChunkSize bounds one IN (...) list. SQLite's default bound-parameter limit
@@ -158,40 +143,45 @@ func (s *snapshot) workCard(id string) (*workCard, error) {
 // rather than assume the list is small.
 const idChunkSize = 400
 
-// chunkIDs splits ids into slices of at most n (the last one shorter). An empty
-// input yields no chunks, so a caller's loop body never runs on an empty IN ().
-func chunkIDs(ids []string, n int) [][]string {
-	var out [][]string
-	for len(ids) > n {
-		out = append(out, ids[:n])
-		ids = ids[n:]
-	}
-	if len(ids) > 0 {
-		out = append(out, ids)
-	}
-	return out
-}
-
-// idArgs renders "?,?,..." for n bound parameters plus the args slice for them.
-func idArgs(ids []string) (string, []any) {
-	args := make([]any, len(ids))
-	for i, id := range ids {
-		args[i] = id
-	}
-	return strings.TrimSuffix(strings.Repeat("?,", len(ids)), ","), args
-}
-
 // eachChunk runs fn over each id chunk with the rendered placeholder list and
 // bound args. It is the single place the chunking rule lives, so no batch query
-// can forget it.
+// can forget it. An empty input runs fn zero times, so no caller can issue an
+// empty IN ().
 func eachChunk(ids []string, fn func(placeholders string, args []any) error) error {
-	for _, c := range chunkIDs(ids, idChunkSize) {
-		ph, args := idArgs(c)
+	for c := range slices.Chunk(ids, idChunkSize) {
+		args := make([]any, len(c))
+		for i, id := range c {
+			args[i] = id
+		}
+		ph := strings.TrimSuffix(strings.Repeat("?,", len(c)), ",")
 		if err := fn(ph, args); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// The batch queries' SQL, rendered around an IN placeholder list. They are
+// functions rather than inline strings so the index guard in the tests can
+// EXPLAIN exactly what runs instead of a hand-copied lookalike that silently
+// drifts.
+func worksByIDSQL(ph string) string {
+	return `SELECT id, title, added_at FROM works WHERE id IN (` + ph + `)`
+}
+
+func authorsByWorkSQL(ph string) string {
+	return `SELECT wa.work_id, p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id ` +
+		`WHERE wa.work_id IN (` + ph + `) ORDER BY wa.work_id, wa.ord`
+}
+
+func firstSeriesByWorkSQL(ph string) string {
+	return `SELECT sw.work_id, s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id ` +
+		`WHERE sw.work_id IN (` + ph + `) ORDER BY sw.work_id, s.id`
+}
+
+func coversByWorkSQL(ph string) string {
+	return `SELECT work_id, cover_url FROM recordings WHERE work_id IN (` + ph + `) ` +
+		`AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY work_id, id`
 }
 
 // cardsByID builds the work cards for a whole id set in a FIXED number of
@@ -204,8 +194,21 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 	if len(ids) == 0 {
 		return out, nil
 	}
-	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(`SELECT id, title, added_at FROM works WHERE id IN (`+ph+`)`, args...)
+	// Callers legitimately repeat ids - a narrator credited on two recordings of
+	// one work yields that work twice - and a repeat would otherwise ride along
+	// in every IN list and count against the chunk size.
+	uniq := make([]string, 0, len(ids))
+	seen := make(map[string]struct{}, len(ids))
+	for _, id := range ids {
+		if _, dup := seen[id]; dup {
+			continue
+		}
+		seen[id] = struct{}{}
+		uniq = append(uniq, id)
+	}
+
+	err := eachChunk(uniq, func(ph string, args []any) error {
+		rows, err := s.db.Query(worksByIDSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -228,12 +231,14 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 		return nil, err
 	}
 
-	// Only ids that actually exist need the follow-up queries.
+	// Only ids that actually exist need the follow-up queries. Walking uniq (not
+	// the map) keeps the chunk boundaries deterministic without a sort.
 	found := make([]string, 0, len(out))
-	for id := range out {
-		found = append(found, id)
+	for _, id := range uniq {
+		if _, ok := out[id]; ok {
+			found = append(found, id)
+		}
 	}
-	sort.Strings(found) // deterministic query shape; the per-work order is the SQL's
 
 	authors, err := s.authorsByWork(found)
 	if err != nil {
@@ -261,9 +266,7 @@ func (s *snapshot) cardsByID(ids []string) (map[string]*workCard, error) {
 func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
 	out := map[string][]personRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(
-			`SELECT wa.work_id, p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id `+
-				`WHERE wa.work_id IN (`+ph+`) ORDER BY wa.work_id, wa.ord`, args...)
+		rows, err := s.db.Query(authorsByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -284,15 +287,13 @@ func (s *snapshot) authorsByWork(ids []string) (map[string][]personRef, error) {
 	return out, nil
 }
 
-// firstSeriesByWork returns each work's FIRST series membership (series id
-// order, matching firstSeriesOf), keyed by work id. Works with no series are
-// absent from the map.
+// firstSeriesByWork returns each work's FIRST series membership in series id
+// order, keyed by work id. Works with no series are absent from the map. This is
+// the only definition of "the card's series" - workCard goes through it too.
 func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error) {
 	out := map[string]*seriesRef{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(
-			`SELECT sw.work_id, s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id `+
-				`WHERE sw.work_id IN (`+ph+`) ORDER BY sw.work_id, s.id`, args...)
+		rows, err := s.db.Query(firstSeriesByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -315,14 +316,13 @@ func (s *snapshot) firstSeriesByWork(ids []string) (map[string]*seriesRef, error
 	return out, nil
 }
 
-// coversByWork returns each work's first non-empty recording cover URL
-// (recording id order, matching coverOf), keyed by work id.
+// coversByWork returns each work's first non-empty recording cover URL in
+// recording id order, keyed by work id. As with firstSeriesByWork, this is the
+// only place the "which cover wins" rule is written down.
 func (s *snapshot) coversByWork(ids []string) (map[string]*string, error) {
 	out := map[string]*string{}
 	err := eachChunk(ids, func(ph string, args []any) error {
-		rows, err := s.db.Query(
-			`SELECT work_id, cover_url FROM recordings WHERE work_id IN (`+ph+`) `+
-				`AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY work_id, id`, args...)
+		rows, err := s.db.Query(coversByWorkSQL(ph), args...)
 		if err != nil {
 			return err
 		}
@@ -345,41 +345,16 @@ func (s *snapshot) coversByWork(ids []string) (map[string]*string, error) {
 	return out, nil
 }
 
+// authorsOfSQL is the single-work author query (workDetail and the ABS path read
+// a work's authors on their own, without a card). Shared with the index guard.
+const authorsOfSQL = `SELECT p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id=? ORDER BY wa.ord`
+
 func (s *snapshot) authorsOf(workID string) ([]personRef, error) {
-	rows, err := s.db.Query(
-		`SELECT p.id, p.name FROM work_authors wa JOIN people p ON p.id = wa.person_id WHERE wa.work_id=? ORDER BY wa.ord`, workID)
+	rows, err := s.db.Query(authorsOfSQL, workID)
 	if err != nil {
 		return nil, err
 	}
 	return scanPersonRefs(rows)
-}
-
-func (s *snapshot) firstSeriesOf(workID string) (*seriesRef, error) {
-	var sr seriesRef
-	err := s.db.QueryRow(
-		`SELECT s.id, s.name, sw.position FROM series_works sw JOIN series s ON s.id = sw.series_id WHERE sw.work_id=? ORDER BY s.id LIMIT 1`, workID).
-		Scan(&sr.ID, &sr.Name, &sr.Position)
-	if err == sql.ErrNoRows {
-		return nil, nil
-	}
-	if err != nil {
-		return nil, err
-	}
-	return &sr, nil
-}
-
-func (s *snapshot) coverOf(workID string) (*string, error) {
-	var cover string
-	err := s.db.QueryRow(
-		`SELECT cover_url FROM recordings WHERE work_id=? AND cover_url IS NOT NULL AND cover_url <> '' ORDER BY id LIMIT 1`, workID).
-		Scan(&cover)
-	if err == sql.ErrNoRows {
-		return nil, nil
-	}
-	if err != nil {
-		return nil, err
-	}
-	return &cover, nil
 }
 
 func scanPersonRefs(rows *sql.Rows) ([]personRef, error) {

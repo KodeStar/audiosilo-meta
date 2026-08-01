@@ -281,28 +281,9 @@ func TestCoverageSearchIsIndexed(t *testing.T) {
 	if !ok {
 		t.Fatal("coverage filter unexpectedly unavailable")
 	}
-	rows, err := snap.db.Query(`EXPLAIN QUERY PLAN SELECT COUNT(*) FROM works w WHERE `+where, args...)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer func() { _ = rows.Close() }()
-	var plan []string
-	for rows.Next() {
-		var id, parent, notused int
-		var detail string
-		if err := rows.Scan(&id, &parent, &notused, &detail); err != nil {
-			t.Fatal(err)
-		}
-		plan = append(plan, detail)
-	}
-	joined := strings.Join(plan, " | ")
-	t.Logf("coverage q plan -> %s", joined)
-	for _, step := range plan {
-		if strings.HasPrefix(step, "SCAN w") {
-			t.Errorf("full works scan in the coverage search plan: %s\nfull plan: %s", step, joined)
-		}
-	}
-	if !strings.Contains(joined, "search_fts") {
+	plan := queryPlan(t, snap, `SELECT COUNT(*) FROM works w WHERE `+where, args...)
+	assertNoFullScan(t, plan)
+	if joined := strings.Join(plan, " | "); !strings.Contains(joined, "search_fts") {
 		t.Errorf("plan does not use the FTS index: %s", joined)
 	}
 }

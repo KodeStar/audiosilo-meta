@@ -1,12 +1,12 @@
 # Production-shaped deployment: the image bundles the API server (metaserve) and
 # the static site - NO data. On boot it downloads the newest published data
-# release (or reuses the cache volume below), then accepts signed refresh
-# notifications and polls GitHub Releases as a fallback, so data updates need no
-# redeploy - only code changes do.
+# release, then accepts signed refresh notifications and polls GitHub Releases as
+# a fallback, so data updates need no redeploy - only code changes do.
 #
-# If GitHub is unreachable at boot the container stays up and retries every 30s:
-# the site is served, /healthz answers 503 `{"status":"starting"}` and the API
-# answers 503 until a release loads. Watch the logs, not a restart count.
+# If GitHub is unreachable at boot the container stays up and retries - first
+# after 30s, then backing off to the poll interval: the site is served, /healthz
+# answers 503 `{"status":"starting"}` and the API answers 503 until a release
+# loads. Watch the logs, not a restart count.
 #
 # Put a TLS-terminating reverse proxy (nginx, Caddy, Ploi) in front:
 # proxy https://meta.example.com -> 127.0.0.1:8080. Health check: GET /healthz
@@ -25,11 +25,19 @@ services:
     # set `user:` to the host owner's uid:gid instead:
     # user: "1001:1001"
     volumes:
-      # Downloaded data releases persist here. The contents are a disposable
-      # cache (re-downloaded if lost, and superseded artifacts are pruned after
-      # each swap) - a named volume or a bind mount (e.g.
+      # The live data artifact lives here. It is a disposable cache: a boot
+      # always fetches the newest release afresh (the first refresh has nothing
+      # to patch against), so persisting this does not speed startup - it
+      # provides the patch base that lets LATER refreshes transfer a delta
+      # instead of the whole artifact. A named volume or a bind mount (e.g.
       # /home/you/containers/audiosilo-meta/data:/data, pre-chowned to the
-      # `user:` above) both work. Size it for about two artifacts.
+      # `user:` above) both work.
+      #
+      # Sizing: steady state is one artifact (superseded ones are pruned once
+      # the swap grace elapses). Peak, during a refresh, is the old artifact
+      # plus the new one - plus the patch file on the delta path, which is
+      # small. Allow room for two artifacts. The download itself is streamed
+      # straight into the new artifact, so no compressed copy is ever staged.
       - meta-cache:/data
     # The image entrypoint already runs:
     #   metaserve --site /app/site --poll --cache /data/cache

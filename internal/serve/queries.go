@@ -40,6 +40,12 @@ const latestSeriesCap = 2
 // over-fetches candidate rows so capped skips still leave enough to fill the
 // page; the SQL ordering (id as the final tie-break) keeps the walk
 // deterministic.
+//
+// It runs in TWO phases because the cap only needs to know each candidate's
+// series: phase one resolves just that over the ~200 candidates, phase two
+// builds full cards for the <=limit survivors. Building cards for every
+// candidate would mean authors, series and covers for 200 works to return 12 -
+// on the home page, the most-hit endpoint there is.
 func (s *snapshot) latestWorks(limit int) ([]*workCard, error) {
 	fetch := limit * 4
 	if fetch < 200 {
@@ -54,29 +60,25 @@ func (s *snapshot) latestWorks(limit int) ([]*workCard, error) {
 	if err != nil {
 		return nil, err
 	}
-	byID, err := s.cardsByID(ids)
+	series, err := s.firstSeriesByWork(ids)
 	if err != nil {
 		return nil, err
 	}
-	out := make([]*workCard, 0, limit)
+	winners := make([]string, 0, limit)
 	perSeries := map[string]int{}
 	for _, id := range ids {
-		if len(out) == limit {
+		if len(winners) == limit {
 			break
 		}
-		card := byID[id]
-		if card == nil {
-			continue
-		}
-		if card.Series != nil {
-			if perSeries[card.Series.ID] >= latestSeriesCap {
+		if sr := series[id]; sr != nil {
+			if perSeries[sr.ID] >= latestSeriesCap {
 				continue
 			}
-			perSeries[card.Series.ID]++
+			perSeries[sr.ID]++
 		}
-		out = append(out, card)
+		winners = append(winners, id)
 	}
-	return out, nil
+	return s.cards(winners)
 }
 
 // cards builds work cards for the given ids, preserving order and skipping ids
@@ -315,7 +317,7 @@ func (s *snapshot) charactersOf(workID string) ([]characterOut, error) {
 		return nil, err
 	}
 
-	arows, err := s.db.Query(`SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`, workID)
+	arows, err := s.db.Query(characterAliasSQL, workID)
 	if err != nil {
 		return nil, err
 	}
@@ -477,7 +479,7 @@ func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
 		return nil, err
 	}
 	for i := range recs {
-		if err = s.db.QueryRow(`SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`, workID, recs[i].ID).
+		if err = s.db.QueryRow(recordingCountSQL, workID, recs[i].ID).
 			Scan(&recs[i].ChapterCount); err != nil {
 			return nil, err
 		}
@@ -485,9 +487,21 @@ func (s *snapshot) recordingsOf(workID string) ([]recordingDetail, error) {
 	return recs, nil
 }
 
+// The per-recording queries. GET /works/{id} runs all three once per recording,
+// so their plans are the ones the covering indexes exist for; they are named
+// constants so the index guard checks the real text.
+const (
+	narratorsOfSQL = `SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
+		`WHERE rn.work_id=? AND rn.recording_id=? ORDER BY rn.ord`
+	asinsOfSQL          = `SELECT region, asin FROM recording_asins WHERE work_id=? AND recording_id=? ORDER BY region, asin`
+	recordingISBNsSQL   = `SELECT isbn FROM recording_isbns WHERE work_id=? AND recording_id=? ORDER BY isbn`
+	characterAliasSQL   = `SELECT character_id, alias FROM character_aliases WHERE work_id=? ORDER BY character_id, ord`
+	recordingCountSQL   = `SELECT COUNT(*) FROM chapters WHERE work_id=? AND recording_id=?`
+	seriesWorksCountSQL = `SELECT COUNT(*) FROM series_works WHERE series_id=?`
+)
+
 func (s *snapshot) narratorsOf(workID, rid string) ([]personRef, error) {
-	rows, err := s.db.Query(
-		`SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id WHERE rn.work_id=? AND rn.recording_id=? ORDER BY rn.ord`, workID, rid)
+	rows, err := s.db.Query(narratorsOfSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
@@ -495,8 +509,7 @@ func (s *snapshot) narratorsOf(workID, rid string) ([]personRef, error) {
 }
 
 func (s *snapshot) asinsOf(workID, rid string) ([]asinRef, error) {
-	rows, err := s.db.Query(
-		`SELECT region, asin FROM recording_asins WHERE work_id=? AND recording_id=? ORDER BY region, asin`, workID, rid)
+	rows, err := s.db.Query(asinsOfSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
@@ -513,8 +526,7 @@ func (s *snapshot) asinsOf(workID, rid string) ([]asinRef, error) {
 }
 
 func (s *snapshot) recordingISBNs(workID, rid string) ([]string, error) {
-	rows, err := s.db.Query(
-		`SELECT isbn FROM recording_isbns WHERE work_id=? AND recording_id=? ORDER BY isbn`, workID, rid)
+	rows, err := s.db.Query(recordingISBNsSQL, workID, rid)
 	if err != nil {
 		return nil, err
 	}
@@ -582,6 +594,19 @@ type personDetail struct {
 	Offset        int             `json:"offset"`
 }
 
+// The person page's four queries. Each total counts over exactly the join its
+// page query pages, so the total and the list can never disagree; they are named
+// constants so the index guard EXPLAINs what actually runs.
+const (
+	authoredTotalSQL = `SELECT COUNT(*) FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=?`
+	narratedTotalSQL = `SELECT COUNT(*) FROM recording_narrators rn JOIN works w ON w.id = rn.work_id WHERE rn.person_id=?`
+
+	authoredPageSQL = `SELECT wa.work_id FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=? ` +
+		`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`
+	narratedPageSQL = `SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id ` +
+		`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`
+)
+
 // person returns one page of a person's authored and narrated credits. limit
 // and offset are applied to each list independently (both are ordered by work
 // title, then id, so the window is stable across requests on one artifact).
@@ -598,16 +623,18 @@ func (s *snapshot) person(id string, limit, offset int) (*personDetail, error) {
 	d.SortName = sortName.String
 	d.Limit, d.Offset = limit, offset
 
-	if d.AuthoredTotal, err = s.scalarInt(`SELECT COUNT(*) FROM work_authors WHERE person_id=?`, id); err != nil {
+	// The totals count over the SAME join as the page queries, so "showing 4 of
+	// 5" can never be reported when the 5th row references a work the artifact
+	// does not carry: such a row is dropped from the page and must not be counted
+	// in the total either.
+	if d.AuthoredTotal, err = s.scalarInt(authoredTotalSQL, id); err != nil {
 		return nil, err
 	}
-	if d.NarratedTotal, err = s.scalarInt(`SELECT COUNT(*) FROM recording_narrators WHERE person_id=?`, id); err != nil {
+	if d.NarratedTotal, err = s.scalarInt(narratedTotalSQL, id); err != nil {
 		return nil, err
 	}
 
-	rows, err := s.db.Query(
-		`SELECT wa.work_id FROM work_authors wa JOIN works w ON w.id = wa.work_id WHERE wa.person_id=? `+
-			`ORDER BY w.title, wa.work_id LIMIT ? OFFSET ?`, id, limit, offset)
+	rows, err := s.db.Query(authoredPageSQL, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -622,9 +649,7 @@ func (s *snapshot) person(id string, limit, offset int) (*personDetail, error) {
 		d.Authored = []*workCard{}
 	}
 
-	nrows, err := s.db.Query(
-		`SELECT rn.work_id, rn.recording_id FROM recording_narrators rn JOIN works w ON w.id = rn.work_id `+
-			`WHERE rn.person_id=? ORDER BY w.title, rn.work_id, rn.recording_id LIMIT ? OFFSET ?`, id, limit, offset)
+	nrows, err := s.db.Query(narratedPageSQL, id, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -696,6 +721,17 @@ type seriesDetail struct {
 	Offset     int           `json:"offset"`
 }
 
+// The series detail queries. seriesWorksSQL joins works so WorksTotal counts
+// exactly the members that can be rendered: a membership row pointing at a work
+// the artifact does not carry is dropped from the list, so counting it in the
+// total would report a page shorter than it claims.
+const (
+	seriesAuthorsSQL = `SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id ` +
+		`WHERE sa.series_id=? ORDER BY sa.ord`
+	seriesWorksSQL = `SELECT sw.work_id, sw.position FROM series_works sw JOIN works w ON w.id = sw.work_id ` +
+		`WHERE sw.series_id=?`
+)
+
 // series returns a series with its member works. limit 0 means "all works",
 // which is the endpoint's DEFAULT: unlike a person's credit list, series
 // membership is bounded by what a series is (175 works at the top of the
@@ -718,8 +754,7 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 	}
 	d.Limit, d.Offset = limit, offset
 
-	arows, err := s.db.Query(
-		`SELECT p.id, p.name FROM series_authors sa JOIN people p ON p.id = sa.person_id WHERE sa.series_id=? ORDER BY sa.ord`, id)
+	arows, err := s.db.Query(seriesAuthorsSQL, id)
 	if err != nil {
 		return nil, err
 	}
@@ -727,7 +762,7 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 		return nil, err
 	}
 
-	wrows, err := s.db.Query(`SELECT work_id, position FROM series_works WHERE series_id=?`, id)
+	wrows, err := s.db.Query(seriesWorksSQL, id)
 	if err != nil {
 		return nil, err
 	}

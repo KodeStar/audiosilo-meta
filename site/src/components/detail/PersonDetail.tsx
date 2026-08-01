@@ -95,10 +95,16 @@ function Loaded({ person }: { person: Person }) {
         ) : null}
       </header>
 
+      {/* One rule for both sections: the heading count is always the number of
+          cards rendered below it, and the note - shown only when the API
+          returned a window - always states that window in the API's own unit.
+          Mixing the two (a total in the heading, a page length in the note) is
+          what made a truncated narrator page report numbers that agreed with
+          nothing on screen. */}
       {person.authored && person.authored.length > 0 ? (
         <Section
           title="Wrote"
-          count={person.authored_total ?? person.authored.length}
+          count={person.authored.length}
           note={truncationNote(person.authored.length, person.authored_total, 'works')}
         >
           <WorkGrid works={person.authored} />

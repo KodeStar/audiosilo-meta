@@ -207,7 +207,7 @@ internal/issueform  issue-form parse + compose (add-work/recording/correction/ch
 internal/format     metafmt's business logic: canonical formatting (pkg/canonical) sequenced with the self-healing placement pass (pack.Pending -> Heal -> Flush); a tree holding a non-pack family is refused before the first write (tidying files no reader will load would make a stale checkout look maintained); Report embeds pack.Pending so every category surfaces in --check/--write; unreadable files are reported and left for a human while the rest still heals; formatting runs FIRST because Flush judges an untouched pack by its on-disk size
 internal/testpack   test support (imported only by _test.go files): seeds and reads a pack-layout tree addressed by the old per-record path syntax (a fixture syntax it parses itself), resolved onto family + entry key; shared by the importer, issueform and metaimport suites
 internal/migrate    metamigrate's business logic: its OWN parsing of the retired file-per-record layout as a storage location (issueform and testpack parse the same shape as a reference/fixture syntax - see pkg/model), the added_at git walk with release.yml's exact semantics extended to recordings, entry composition from RAW record bytes (only added_at spliced in), and greedy planning to ~50% of the caps (sized by pkg/pack's own renderer, never by re-spelled arithmetic). Renders every pack before deleting anything, and refuses what it cannot do safely: a shallow clone (which would date every record at the tip commit), an uncommitted in-place tree (git is the only recovery from an interrupted run), a tree holding no works, a non-JSON file, an already-converted family. Deterministic; the fixture-scale artifact equivalence proof lives in its tests
-internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes plus the per-(work,recording) and per-series covering indexes every serve request reads - `TestServeLookupsAreIndexed` EXPLAIN-QUERY-PLANs each of those queries and fails on a full table scan; adding an index does NOT bump SchemaVersion, which versions what a reader may SELECT; added_at from the record, else the newest sources[].imported_at compared chronologically)
+internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes plus the per-(work,recording) and per-series covering indexes every serve request reads - guarded by `TestServeLookupsAreIndexed` in internal/serve, which EXPLAIN-QUERY-PLANs the very query CONSTANTS the request path uses and fails on a full table scan, so an edited query cannot drift away from its index; adding an index does NOT bump SchemaVersion, which versions what a reader may SELECT; added_at from the record, else the newest sources[].imported_at compared chronologically)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments)
 data/               the database, in the PACK-SPEC.md range-packed layout: works/ (composites), works-community/ (the CC BY-SA sidecars), people/, series/
@@ -248,20 +248,25 @@ the CLI's patch-from convention; `--long=31` window; the patched file verified
 byte-for-byte against `meta.sqlite.sha256` before it is installed) and falls back
 unconditionally to a full `meta.sqlite.gz` download (`fullRefresh`, verified
 against `meta.sqlite.gz.sha256`) whenever a patch is unavailable or fails - the
-first refresh after boot is always full. **Every artifact-sized asset streams to
-disk** (`downloadTo` -> `installVerified`: temp file + digest as it writes +
-rename, so a corrupted download never becomes a file), and only the ~80-byte
-checksum assets are read into memory (`downloadSmall`, size-capped); the one
-thing that cannot stream is the patch BASE, which a raw zstd dictionary requires
-as a contiguous slice, so `tryPatch` refuses outright above
-`defaultMaxPatchBase` (1 GiB) and takes the streamed full download instead.
-Either way it gunzips/reconstructs into the cache and hot-swaps the pointer;
-in-flight requests finish on the old handle (closed after a grace delay), a
-rejected patch never swaps, and a poll failure only logs and retries, never
-crashes the process. When the grace elapses the superseded cache files are
-**pruned** (`pruneCache`, under the refresh lock, never touching the live
-artifact or a `--db` path), so the cache volume holds about one artifact rather
-than one per release forever. The poll loop runs one refresh **immediately at
+first refresh after boot is always full. **Every artifact-sized asset streams**,
+never buffered: `fullRefresh` hashes the response body while decompressing it
+straight into the artifact's temp file in ONE pass (`gunzipStreamTo`), so no
+`.gz` is ever staged on the cache volume, and the patch asset streams to disk
+(`downloadTo`). Both land through `installStream`, which runs the verification
+gate AFTER the copy and BEFORE the rename, so unverified bytes never become a
+file. Only the ~80-byte checksum assets are read into memory (`downloadSmall`,
+size-capped); the one thing that cannot stream is the patch BASE, which a raw
+zstd dictionary requires as a contiguous slice - and the decoder's window over it
+costs about as much again, so peak transient is ~2x the base and `tryPatch`
+refuses outright above `defaultMaxPatchBase` (1 GiB), taking the streamed full
+download instead. Either way it hot-swaps the pointer; in-flight requests finish
+on the old handle (closed after a grace delay), a rejected patch never swaps, and
+a poll failure only logs and retries, never crashes the process. Superseded cache
+files are **pruned on every successful adopt** and again once the swap grace
+elapses (`pruneCache`/`pruneCacheLocked`, under the refresh lock, never touching
+the live artifact, the snapshot still draining, or a `--db` path) - pruning at
+adopt time is what cleans up after a cold boot, whose first adopt supersedes
+nothing. The poll loop runs one refresh **immediately at
 startup**, before the first `--interval` tick, which matters for any boot that
 loaded a local `--db` artifact (`New()` skips the poll-only synchronous refresh
 in that case); on a poll-only boot `New()` already refreshed, so the startup poll
@@ -271,9 +276,13 @@ is a cheap conditional 304.
 so `New()`'s synchronous first refresh IS the load. A first fetch that fails is
 not fatal - `New` logs it and returns a server with no snapshot, which serves the
 static site, answers `/healthz` with 503 `{"status":"starting"}` and every API
-route with 503 (`requireSnapshot`), and retries every `bootRetry` (30s) until a
-release lands. A crash loop would be the worse failure mode; this one is visible
-in the logs and in the readiness check.
+route with 503 (`requireSnapshot`), and retries until a release lands - first
+after `bootRetry` (30s), then doubling up to `--interval` (`nextBootBackoff`),
+because a failed fetch of a large artifact is not free and an outage can last
+hours. The backoff resets as soon as an artifact loads. A crash loop would be the
+worse failure mode; this one is visible in the logs and in the readiness check.
+The image build context excludes `data/` (`.dockerignore`), so image build time
+is genuinely independent of catalogue size rather than only nominally so.
 Production can additionally set `METASERVE_WEBHOOK_SECRET` (at least 32 bytes)
 while keeping `--poll` enabled. That registers
 `POST /hooks/github/release`, which accepts only HMAC-SHA256-signed release
@@ -446,12 +455,17 @@ export type), surfacing the importer warnings.
 - **Serving at scale (pre-seed, landed)**: the measured serve/distribution fixes
   from the workspace's SCALE-RESEARCH.md (section D), all invisible at 9.5k works
   and real at 100k+. D1: the six covering indexes every request path was missing
-  (guarded by `TestServeLookupsAreIndexed`), membership lists batched through
-  `cardsByID`, `people/{id}`/`series/{id}` windowed additively, and the coverage
+  (guarded by `TestServeLookupsAreIndexed`), every membership list AND the search
+  hit page batched through `cardsByID` (one implementation - `workCard` is a
+  single-id call into it, so a card's composition rules exist once),
+  `people/{id}`/`series/{id}` windowed additively with totals counted over the
+  same join that produces the page, `works/latest` two-phase (series memberships
+  for the candidates, full cards only for the winners), and the coverage
   browser's `?q=` moved off an unindexed `LIKE '%...%'` onto the FTS index (plus
-  a per-snapshot memo for the series-gap set). D2: release assets stream to disk
-  instead of being buffered in RAM, superseded cache files are pruned after each
-  swap, and the patch path declines a base artifact over 1 GiB. D3: the image no
+  a per-snapshot memo for the series-gap set). D2: release assets stream - the
+  full refresh downloads, hashes and decompresses in ONE pass with no staged
+  `.gz` - superseded cache files are pruned on every adopt and again after the
+  swap grace, and the patch path declines a base artifact over 1 GiB. D3: the image no
   longer bakes data - see the Dockerfile note above.
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
