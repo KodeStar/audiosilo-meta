@@ -21,6 +21,7 @@ func fixtureCatalog() *model.Catalog {
 		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
 		Genres:  []string{"hard-science-fiction", "science-fiction"},
+		AddedAt: "2026-07-10T00:00:00Z",
 		Recordings: []*model.Recording{{
 			ID: "ray-porter-2021", Work: "project-hail-mary", Abridged: false, Language: "en",
 			RuntimeMin: 970, Publisher: "Audible Studios", License: "CC0-1.0",
@@ -92,8 +93,7 @@ func fixtureCatalog() *model.Catalog {
 func buildFixture(t *testing.T) *sql.DB {
 	t.Helper()
 	out := filepath.Join(t.TempDir(), "meta.sqlite")
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC), added); err != nil {
+	if err := Build(fixtureCatalog(), out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
 		t.Fatal(err)
 	}
 	db, err := sql.Open("sqlite", out)
@@ -193,15 +193,16 @@ func TestBuildFTS(t *testing.T) {
 }
 
 func TestBuildAddedAt(t *testing.T) {
-	// project-hail-mary is in the added map (file-derived date wins); the-way-of
-	// -kings is absent and has no sources[].imported_at, so it stays NULL.
+	// project-hail-mary carries an added_at of its own (the record's field
+	// wins); the-way-of-kings carries neither that nor a sources[].imported_at,
+	// so it stays NULL.
 	db := buildFixture(t)
 	var phm sql.NullString
 	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, "project-hail-mary").Scan(&phm); err != nil {
 		t.Fatal(err)
 	}
 	if !phm.Valid || phm.String != "2026-07-10T00:00:00Z" {
-		t.Errorf("phm added_at = %v, want file date", phm)
+		t.Errorf("phm added_at = %v, want the record's own added_at", phm)
 	}
 	var wok sql.NullString
 	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, "the-way-of-kings").Scan(&wok); err != nil {
@@ -213,7 +214,8 @@ func TestBuildAddedAt(t *testing.T) {
 }
 
 func TestBuildAddedAtFallback(t *testing.T) {
-	// With no file-derived map, a work falls back to the newest imported_at.
+	// With no added_at on the record, a work falls back to the newest
+	// imported_at.
 	out := filepath.Join(t.TempDir(), "meta.sqlite")
 	cat := &model.Catalog{
 		People: []*model.Person{{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}},
@@ -226,7 +228,7 @@ func TestBuildAddedAtFallback(t *testing.T) {
 			},
 		}},
 	}
-	if err := Build(cat, out, time.Time{}, nil); err != nil {
+	if err := Build(cat, out, time.Time{}); err != nil {
 		t.Fatal(err)
 	}
 	db, err := sql.Open("sqlite", out)
@@ -240,6 +242,79 @@ func TestBuildAddedAtFallback(t *testing.T) {
 	}
 	if got != "2026-06-15" {
 		t.Errorf("added_at fallback = %q, want newest imported_at 2026-06-15", got)
+	}
+}
+
+// buildOneWork builds an artifact holding a single work and returns its
+// added_at column.
+func buildOneWork(t *testing.T, w *model.Work) sql.NullString {
+	t.Helper()
+	out := filepath.Join(t.TempDir(), "meta.sqlite")
+	cat := &model.Catalog{
+		People: []*model.Person{{ID: "andy-weir", Name: "Andy Weir", License: "CC0-1.0"}},
+		Works:  []*model.Work{w},
+	}
+	if err := Build(cat, out, time.Time{}); err != nil {
+		t.Fatal(err)
+	}
+	db, err := sql.Open("sqlite", out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = db.Close() }()
+	var got sql.NullString
+	if err := db.QueryRow(`SELECT added_at FROM works WHERE id=?`, w.ID).Scan(&got); err != nil {
+		t.Fatal(err)
+	}
+	return got
+}
+
+func TestBuildAddedAtFieldBeatsImportedAt(t *testing.T) {
+	// The record's own added_at wins even when a source claims a later import:
+	// added_at is when the work entered the database, imported_at is only the
+	// fallback for records that predate the field.
+	got := buildOneWork(t, &model.Work{
+		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		AddedAt: "2026-02-02",
+		Sources: []model.Source{{Type: "openaudible-import", ImportedAt: "2026-09-09"}},
+	})
+	if !got.Valid || got.String != "2026-02-02" {
+		t.Errorf("added_at = %v, want the record's own 2026-02-02", got)
+	}
+}
+
+// TestBuildAddedAtFallbackTimezones is the C4 fix: the imported_at fallback
+// compares timestamps CHRONOLOGICALLY, not lexicographically. The two values
+// below are one hour apart with the earlier one sorting later as a string, so a
+// plain string max picks the wrong source.
+func TestBuildAddedAtFallbackTimezones(t *testing.T) {
+	got := buildOneWork(t, &model.Work{
+		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		Sources: []model.Source{
+			// 07:00Z, but sorts last as a string.
+			{Type: "openaudible-import", ImportedAt: "2026-06-15T09:00:00+02:00"},
+			// 08:00Z: genuinely the newest.
+			{Type: "libex-import", ImportedAt: "2026-06-15T08:00:00Z"},
+		},
+	})
+	if !got.Valid || got.String != "2026-06-15T08:00:00Z" {
+		t.Errorf("added_at fallback = %v, want the chronologically newest 2026-06-15T08:00:00Z", got)
+	}
+}
+
+// TestBuildAddedAtFallbackKeepsSourceBytes pins that the timezone normalization
+// is a comparison key only: the value written is the source's own string, so
+// normalizing cannot move a byte in the artifact.
+func TestBuildAddedAtFallbackKeepsSourceBytes(t *testing.T) {
+	got := buildOneWork(t, &model.Work{
+		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
+		Authors: []string{"andy-weir"}, License: "CC0-1.0",
+		Sources: []model.Source{{Type: "libex-import", ImportedAt: "2026-06-15T09:00:00+02:00"}},
+	})
+	if !got.Valid || got.String != "2026-06-15T09:00:00+02:00" {
+		t.Errorf("added_at = %v, want the imported_at verbatim", got)
 	}
 }
 
@@ -418,7 +493,7 @@ func TestBuildRecapSummaryAbsentWithoutFields(t *testing.T) {
 			Recaps:  []model.Recap{{Through: model.Position{Chapter: 1}, Text: "It begins."}},
 		}},
 	}
-	if err := Build(cat, out, time.Time{}, nil); err != nil {
+	if err := Build(cat, out, time.Time{}); err != nil {
 		t.Fatal(err)
 	}
 	db, err := sql.Open("sqlite", out)

@@ -148,11 +148,11 @@ CREATE VIRTUAL TABLE search_fts USING fts5(kind UNINDEXED, id UNINDEXED, title, 
 `
 
 // Build writes the SQLite artifact for cat to outPath. builtAt is recorded in
-// meta(built_at); pass the zero time to use the current UTC time. added maps a
-// work id to the date it first entered the dataset (ISO 8601); a work absent
-// from the map falls back to the newest sources[].imported_at on the work, and
-// to NULL when neither is known. A nil map disables the file-derived source.
-func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[string]string) (err error) {
+// meta(built_at); pass the zero time to use the current UTC time. A work's
+// added_at comes from the record itself (see addedAt), which is why this takes
+// no date map: the pack layout moved that value into the data, where the
+// importer and the intake bot stamp it and the migration backfilled it.
+func Build(cat *model.Catalog, outPath string, builtAt time.Time) (err error) {
 	if builtAt.IsZero() {
 		builtAt = time.Now().UTC()
 	}
@@ -214,7 +214,7 @@ func Build(cat *model.Catalog, outPath string, builtAt time.Time, added map[stri
 	if err = insertPeople(st, people); err != nil {
 		return err
 	}
-	if err = insertWorks(st, works, nameByID, seriesNamesByWork, added); err != nil {
+	if err = insertWorks(st, works, nameByID, seriesNamesByWork); err != nil {
 		return err
 	}
 	if err = insertSeries(st, series); err != nil {
@@ -373,7 +373,7 @@ func insertPeople(st *stmts, people []*model.Person) error {
 	return nil
 }
 
-func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string, added map[string]string) error {
+func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, seriesNamesByWork map[string][]string) error {
 	for _, w := range works {
 		var wiki, ol, gr string
 		var isbns []string
@@ -381,7 +381,7 @@ func insertWorks(st *stmts, works []*model.Work, nameByID map[string]string, ser
 			wiki, ol, gr, isbns = w.Xref.Wikidata, w.Xref.Openlibrary, w.Xref.Goodreads, w.Xref.ISBN
 		}
 		if _, err := st.work.Exec(
-			w.ID, w.Title, nullStr(w.Subtitle), w.Language, nullStr(w.FirstPublished), nullStr(w.Description), addedAt(w, added), nullStr(wiki), nullStr(ol), nullStr(gr), w.License,
+			w.ID, w.Title, nullStr(w.Subtitle), w.Language, nullStr(w.FirstPublished), nullStr(w.Description), addedAt(w), nullStr(wiki), nullStr(ol), nullStr(gr), w.License,
 		); err != nil {
 			return err
 		}
@@ -549,23 +549,48 @@ func appendName(names []string, n string) []string {
 	return append(names, n)
 }
 
-// addedAt resolves a work's added_at value: the file-derived date when present,
-// else the newest sources[].imported_at on the work, else NULL. Dates are ISO
-// 8601, so a lexicographic max is also the chronological max.
-func addedAt(w *model.Work, added map[string]string) any {
-	if d := added[w.ID]; d != "" {
-		return d
+// addedAt resolves a work's added_at value: the record's own added_at when it
+// has one, else the newest sources[].imported_at on it, else NULL.
+//
+// The field is the primary source because a pack file cannot be dated from git
+// history the way one file per work could (a pack's add-date is not its
+// entries'): the importer and the intake bot stamp added_at at creation, and the
+// storage migration backfilled it from that history one final time. The
+// imported_at fallback stays for records that carry neither.
+func addedAt(w *model.Work) any {
+	if w.AddedAt != "" {
+		return w.AddedAt
 	}
-	newest := ""
+	newest, newestKey := "", ""
 	for _, s := range w.Sources {
-		if s.ImportedAt > newest {
-			newest = s.ImportedAt
+		if s.ImportedAt == "" {
+			continue
+		}
+		if key := timeKey(s.ImportedAt); newestKey == "" || key > newestKey {
+			newest, newestKey = s.ImportedAt, key
 		}
 	}
 	if newest != "" {
 		return newest
 	}
 	return nil
+}
+
+// timeKey returns a value that orders timestamps CHRONOLOGICALLY under string
+// comparison. A plain date ("2026-07-29") is already such a key; a full RFC 3339
+// timestamp is not, because the offset travels with it - "2026-07-29T01:00:00Z"
+// is later than "2026-07-29T02:00:00+05:00" but sorts before it - so it is
+// normalized to UTC first.
+//
+// The key is only ever compared, never stored: addedAt returns the ORIGINAL
+// string, so normalizing here cannot change a byte in the artifact. Today's
+// imported_at values are all date-only, which makes this a no-op on the current
+// data by construction, and correct the moment one is not.
+func timeKey(s string) string {
+	if t, err := time.Parse(time.RFC3339, s); err == nil {
+		return t.UTC().Format(time.RFC3339)
+	}
+	return s
 }
 
 func nullStr(s string) any {

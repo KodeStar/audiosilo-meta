@@ -40,7 +40,7 @@ func writeSiteFixture(t *testing.T) string {
 
 func newSiteTestServer(t *testing.T) *httptest.Server {
 	t.Helper()
-	dbPath := buildFixtureDB(t, fixtureCatalog(), nil)
+	dbPath := buildFixtureDB(t, fixtureCatalog())
 	srv, err := New(Config{DBPath: dbPath, Site: writeSiteFixture(t), swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
