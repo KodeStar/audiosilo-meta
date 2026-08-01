@@ -28,7 +28,10 @@ import (
 )
 
 // The fixture records are minimal but schema-valid, so check.Load's verdict is
-// about structure rather than about missing fields.
+// about structure rather than about missing fields. A person's name is the
+// rendering of their slug because the id has to BE the name's slug
+// (checkPersonSlug) - the one fixture that deliberately breaks that is the
+// stale duplicate below, which every case drops before metacheck sees it.
 func personRec(slug, name string) string {
 	return `{"id":"` + slug + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
 }
@@ -55,7 +58,7 @@ func packWith(entries map[string]string) string {
 // people is the base every fixture carries: the author the works reference, so
 // nothing fails integrity for a reason that is not the point of the case.
 func peopleBase() map[string]string {
-	return map[string]string{"p-aa": personRec("p-aa", "Author AA")}
+	return map[string]string{"p-aa": personRec("p-aa", "P Aa")}
 }
 
 // entrySet lists every entry in the tree as "<family>/<slug>", so a heal can be
@@ -147,8 +150,8 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "stray subdirectory in a flat family",
 			files: map[string]string{
 				"people/0.json":        packWith(peopleBase()),
-				"people/p-mm.json":     packWith(map[string]string{"p-mm": personRec("p-mm", "Person MM")}),
-				"people/sub/p-zz.json": packWith(map[string]string{"p-zz": personRec("p-zz", "Person ZZ")}),
+				"people/p-mm.json":     packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}),
+				"people/sub/p-zz.json": packWith(map[string]string{"p-zz": personRec("p-zz", "P Zz")}),
 				"works/0/0.json":       packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: "people/sub/p-zz.json is not a pack",
@@ -159,7 +162,7 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "invalid slug as a pack name",
 			files: map[string]string{
 				"people/0.json":        packWith(peopleBase()),
-				"people/Bad_Name.json": packWith(map[string]string{"p-zz": personRec("p-zz", "Person ZZ")}),
+				"people/Bad_Name.json": packWith(map[string]string{"p-zz": personRec("p-zz", "P Zz")}),
 				"works/0/0.json":       packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: "people/Bad_Name.json is not a pack",
@@ -182,10 +185,10 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "duplicate entry across two packs",
 			files: map[string]string{
 				"people/0.json": packWith(map[string]string{
-					"p-aa": personRec("p-aa", "Author AA"),
-					"p-mm": personRec("p-mm", "Stale Copy"),
+					"p-aa": personRec("p-aa", "P Aa"),
+					"p-mm": personRec("p-mm", "P Mm Stale Copy"),
 				}),
-				"people/p-mm.json": packWith(map[string]string{"p-mm": personRec("p-mm", "Correct Copy")}),
+				"people/p-mm.json": packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}),
 				"works/0/0.json":   packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: `entry "p-mm" is in both`,
@@ -251,11 +254,11 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 func TestConflictKeepsTheCorrectlyPlacedCopy(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packWith(map[string]string{
-		"p-aa": personRec("p-aa", "Author AA"),
-		"p-mm": personRec("p-mm", "Stale Copy"),
+		"p-aa": personRec("p-aa", "P Aa"),
+		"p-mm": personRec("p-mm", "P Mm Stale Copy"),
 	}))
 	writeFile(t, filepath.Join(dir, "people", "p-mm.json"),
-		packWith(map[string]string{"p-mm": personRec("p-mm", "Correct Copy")}))
+		packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}))
 
 	rep := mustCheck(t, dir)
 	if len(rep.Pending.Conflicts) != 1 {
@@ -271,7 +274,7 @@ func TestConflictKeepsTheCorrectlyPlacedCopy(t *testing.T) {
 	if !ok {
 		t.Fatal("the surviving entry is gone")
 	}
-	if !strings.Contains(string(got), "Correct Copy") {
+	if strings.Contains(string(got), "Stale") {
 		t.Errorf("survivor = %s, want the correctly-placed copy", got)
 	}
 	if _, dup := readPack(t, dir, "people/0.json").Get("p-mm"); dup {

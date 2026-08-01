@@ -194,7 +194,7 @@ func TestAINarratorRoleQualifiedCredit(t *testing.T) {
 }
 
 // TestAINarratorVocabularyIsCanonical pins the shape of both tables. Lookups go
-// through normAINarrator (lowercased, diacritics folded, single-spaced), so a
+// through foldCredit (lowercased, diacritics folded, single-spaced), so a
 // key that is not already in that form is unreachable by construction - it would
 // silently never match the release it was added for. Mirrors
 // TestRoleQualifiersVocabulary.
@@ -209,12 +209,12 @@ func TestAINarratorVocabularyIsCanonical(t *testing.T) {
 				t.Errorf("%s contains an empty key", table)
 				continue
 			}
-			if got := normAINarrator(entry); got != entry {
-				t.Errorf("%s key %q is not canonical (normAINarrator gives %q); it can never match", table, entry, got)
+			if got := foldCredit(entry); got != entry {
+				t.Errorf("%s key %q is not canonical (foldCredit gives %q); it can never match", table, entry, got)
 			}
 		}
 	}
-	if got := normAINarrator(aiNarratorPrefix); got != aiNarratorPrefix {
+	if got := foldCredit(aiNarratorPrefix); got != aiNarratorPrefix {
 		t.Errorf("aiNarratorPrefix %q is not canonical (want %q)", aiNarratorPrefix, got)
 	}
 }

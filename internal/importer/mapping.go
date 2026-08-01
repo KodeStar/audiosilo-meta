@@ -356,7 +356,7 @@ const minDoubledHalfWords = 2
 const maxCleanPasses = 8
 
 // CleanCreditName normalizes one credit name from an external source. It applies
-// three evidence-driven rules, repeatedly until the name stops changing (the dump
+// four evidence-driven rules, repeatedly until the name stops changing (the dump
 // really does carry doubled qualifiers like "Dan Veksler - Translator -
 // translator"):
 //
@@ -369,6 +369,10 @@ const maxCleanPasses = 8
 //  3. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
+//  4. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
+//     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
+//     four, and two of its three tiers need an ATTESTATION universe this entry
+//     point has no access to - see studiotail.go and CreditWithRolesAttested.
 //
 // The person stays in the credit list under the cleaned name. The stripped role
 // is no longer discarded - CreditWithRoles returns it, and the importer records
@@ -393,11 +397,22 @@ func CleanCreditName(name string) string {
 // did?"), answered in ONE pass so the name and the roles can never come from
 // different cleanings.
 func CreditWithRoles(name string) (cleaned string, roles []string) {
+	return CreditWithRolesAttested(name, nil)
+}
+
+// CreditWithRolesAttested is CreditWithRoles with the studio-concatenation
+// rule's ATTESTATION universe supplied: the question "is this half of the string
+// independently a credit?", which decides tier 3 (studiotail.go). A nil
+// attestFunc attests nothing, so the two tiers that carry their own evidence
+// still apply and the third never fires - which is exactly what a caller with no
+// catalogue in hand (pkg/scan reading tags, a single typed issue-form name)
+// should get.
+func CreditWithRolesAttested(name string, attested attestFunc) (cleaned string, roles []string) {
 	cleaned = name
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
-		next := collapseDoubledName(stripped)
+		next := stripStudioConcat(collapseDoubledName(stripped), attested)
 		if next == cleaned {
 			break
 		}
@@ -532,12 +547,13 @@ type credit struct {
 
 // splitCredits splits a comma-joined list of names ("A, B, C"), trimming each,
 // cleaning the credit and keeping the roles it stated, and dropping empties. It
-// returns nil when nothing usable remains.
-func splitCredits(joined string) []credit {
+// returns nil when nothing usable remains. attested is the studio-concatenation
+// rule's evidence universe and may be nil (see CreditWithRolesAttested).
+func splitCredits(joined string, attested attestFunc) []credit {
 	var out []credit
 	for _, part := range strings.Split(joined, ",") {
 		if name := strings.TrimSpace(part); name != "" {
-			cleaned, roles := CreditWithRoles(name)
+			cleaned, roles := CreditWithRolesAttested(name, attested)
 			out = append(out, credit{name: cleaned, roles: roles})
 		}
 	}
@@ -581,53 +597,20 @@ func creditNamesOf(credits []credit) []string {
 //
 // It is the name-only view of splitCredits, kept as the shared public helper
 // (pkg/scan reads tags through it) because a consumer outside the importer has
-// no work record to hang a role on.
+// no work record to hang a role on - and, for the same reason, no attestation
+// universe, so it cleans with the two self-evidencing studio-tail tiers only.
 func SplitNames(joined string) []string {
-	return creditNamesOf(splitCredits(joined))
+	return creditNamesOf(splitCredits(joined, nil))
 }
 
-var (
-	apostrophes  = strings.NewReplacer("'", "", "’", "", "ʼ", "", "`", "")
-	multiHyphen  = regexp.MustCompile(`-+`)
-	yearPrefixRE = regexp.MustCompile(`^\d{4}`)
-)
+var yearPrefixRE = regexp.MustCompile(`^\d{4}`)
 
-// Slugify turns arbitrary text into a slug matching the dataset's slug rules:
-// lowercase, ASCII-folded diacritics, apostrophes stripped, every other
-// non-alphanumeric run collapsed to a single hyphen, trimmed, capped at
-// MaxSlugLen. It returns "" when nothing slug-worthy survives (for example a
-// title in a non-Latin script that folds away entirely); callers substitute a
-// fallback token.
-func Slugify(s string) string {
-	// Strip apostrophes first so "Philosopher's" -> "philosophers", not
-	// "philosopher-s".
-	s = apostrophes.Replace(s)
-
-	// Decompose accented letters, then drop the combining marks so "café" folds
-	// to "cafe" and "Motörhead" to "motorhead".
-	decomposed := norm.NFD.String(s)
-	var b strings.Builder
-	b.Grow(len(decomposed))
-	for _, r := range decomposed {
-		switch {
-		case r >= 'A' && r <= 'Z':
-			b.WriteRune(r + ('a' - 'A'))
-		case (r >= 'a' && r <= 'z') || (r >= '0' && r <= '9'):
-			b.WriteRune(r)
-		case isCombiningMark(r):
-			// drop
-		default:
-			b.WriteByte('-')
-		}
-	}
-
-	slug := multiHyphen.ReplaceAllString(b.String(), "-")
-	slug = strings.Trim(slug, "-")
-	if len(slug) > model.MaxSlugLen {
-		slug = strings.Trim(slug[:model.MaxSlugLen], "-")
-	}
-	return slug
-}
+// Slugify turns arbitrary text into a slug matching the dataset's slug rules.
+// The implementation is model.Slugify - the leaf copy pkg/check can reach too
+// (checkPersonSlug verifies a person's id against their name, and pkg/check
+// cannot import this package without a cycle). This is the name every existing
+// caller inside and outside the module knows it by.
+func Slugify(s string) string { return model.Slugify(s) }
 
 // BoundedSlugTail joins a base slug and a disambiguating tail (an author credit,
 // a release year, a numeric collision suffix) into a slug of at most
@@ -704,16 +687,6 @@ func NumberedSlugAt(base string, i int) string {
 		return base
 	}
 	return BoundedSlugTail(base, fmt.Sprintf("-%d", i+1))
-}
-
-// isCombiningMark reports whether r is a Unicode combining diacritical mark
-// (the ranges NFD decomposition produces for accented Latin letters).
-func isCombiningMark(r rune) bool {
-	return (r >= 0x0300 && r <= 0x036f) || // combining diacritical marks
-		(r >= 0x1ab0 && r <= 0x1aff) ||
-		(r >= 0x1dc0 && r <= 0x1dff) ||
-		(r >= 0x20d0 && r <= 0x20ff) ||
-		(r >= 0xfe20 && r <= 0xfe2f)
 }
 
 // YearOf returns the four-digit year prefix of a date string, or "" when the

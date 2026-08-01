@@ -84,7 +84,7 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	}
 
 	warn := p.bookWarn(b)
-	lang, narratorNames, ok := admitRecordingFacts(b, warn)
+	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		return
 	}
@@ -132,7 +132,7 @@ func (p *planner) resolveExistingWork(b sourceBook) *workState {
 			continue
 		}
 		if want == nil {
-			authorSlugs := slugCredits(rowAuthorNames(b))
+			authorSlugs := slugCredits(p.rowAuthorNames(b))
 			if len(authorSlugs) == 0 {
 				return nil // no author: nothing to identify a work by
 			}

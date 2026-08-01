@@ -202,8 +202,11 @@ func bulkyTree(n, size int) map[string]string {
 			if first == "" {
 				first = id
 			}
-			entries[id] = `{"id":"` + id + `","license":"CC0-1.0","name":"` +
-				strings.Repeat("Na", perEntry/2-120) + `","sources":[{"type":"user"}]}`
+			// The name has to slug back to the id (checkPersonSlug), so the
+			// padding that gives the entry its size is punctuation: Slugify
+			// collapses it to one trailing hyphen and trims that away.
+			entries[id] = `{"id":"` + id + `","license":"CC0-1.0","name":"Person ` +
+				fmt.Sprintf("%06d", slug-1) + strings.Repeat("!", perEntry-133) + `","sources":[{"type":"user"}]}`
 		}
 		name := first
 		if p == 0 {

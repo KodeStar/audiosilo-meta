@@ -301,3 +301,36 @@ func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 
 // normISBN lowercases the check digit so 10-char ISBNs compare case-insensitively.
 func normISBN(s string) string { return strings.ToUpper(s) }
+
+// unslugPersonID is the id personSlug (internal/importer) mints for a name that
+// slugs away to nothing - a credit written entirely in a script Slugify folds.
+// That record is the ONE person whose id is legitimately not its name's slug,
+// so checkPersonSlug names it rather than reporting the shared catch-all as a
+// defect forever.
+const unslugPersonID = "person"
+
+// checkPersonSlug enforces that a person's id IS the slug of their name.
+//
+// "Person slug is the identity" is the importer's central dedup rule: two
+// spellings of one name slug the same and merge into one record. The rule only
+// holds if every record's id is reachable FROM its name - a record whose id was
+// minted under an older slug rule sits at an address nothing will ever probe
+// again, so the next import of that person mints a second record instead of
+// finding this one. That is exactly how "Madeleine L'Engle" came to exist twice
+// (once as madeleine-l-engle, minted before Slugify learned to strip
+// apostrophes, and once as madeleine-lengle).
+//
+// It is a cheap, exact rule, and it is what makes any future change to Slugify
+// self-reporting: the day the folding rules move, every record the change
+// strands fails here instead of silently forking on the next import.
+func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, p := range cat.People {
+		want := model.Slugify(p.Name)
+		if want == "" {
+			want = unslugPersonID
+		}
+		if p.ID != want {
+			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
+		}
+	}
+}
