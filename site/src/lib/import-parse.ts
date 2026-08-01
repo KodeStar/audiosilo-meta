@@ -1131,3 +1131,91 @@ export function dedupeCandidates(candidates: WorkCandidate[]): WorkCandidate[] {
   }
   return out
 }
+
+// --- Paging an author's catalogue shelf --------------------------------------
+// The person endpoint returns a PAGE of credits (default 100, clamped to 500)
+// plus the unpaged authored_total, because a prolific author's shelf is
+// unbounded. The import diff must see the WHOLE shelf: a work it does not see is
+// a work it proposes as new, and at seed scale that means silently telling a
+// contributor to add a book the database already holds. So we page.
+
+/** How many pages the author-shelf sweep will pull before giving up. A bound is
+    required: without one, an endpoint that stops advancing (or reports a total
+    it never serves) would spin forever inside the diff. Ten pages of the API's
+    max window is 5,000 works - past any real author, so hitting this cap means
+    something is wrong, and the caller says so rather than guessing. */
+export const MAX_AUTHOR_PAGES = 10
+
+/** One page of a person's authored list - the fields collectAuthoredWorks reads
+    from the API's Person response, so the sweep is testable without a network. */
+export interface AuthoredPage {
+  authored: WorkCandidate[]
+  /** The unpaged count. Absent on an older API that did not report it. */
+  authored_total?: number
+  /** The page size the API actually served. Absent on an older API. */
+  limit?: number
+}
+
+/**
+ * Pull an author's COMPLETE authored list by paging on offset, deduped by work
+ * id. `truncated` is true only when the list is provably still incomplete when
+ * the sweep stops - the caller must then warn rather than treat "not found" as
+ * "not in the database".
+ *
+ * Completeness is decided from authored_total when the API reports it; an older
+ * API without totals falls back to the short-page signal (a page smaller than
+ * the served limit is the end of the list). Pure apart from the injected page
+ * fetcher.
+ */
+export async function collectAuthoredWorks(
+  fetchPage: (offset: number) => Promise<AuthoredPage>,
+  maxPages: number = MAX_AUTHOR_PAGES
+): Promise<{ works: WorkCandidate[]; truncated: boolean }> {
+  const works: WorkCandidate[] = []
+  let offset = 0
+  for (let page = 0; page < maxPages; page++) {
+    const p = await fetchPage(offset)
+    const got = p.authored ?? []
+    works.push(...got)
+    const total = p.authored_total
+    const complete =
+      typeof total === 'number'
+        ? works.length >= total
+        : got.length === 0 || (typeof p.limit === 'number' && got.length < p.limit)
+    if (complete) return { works: dedupeCandidates(works), truncated: false }
+    // A total says there is more but the page was empty: the offset cannot
+    // advance, so stop and report the list as incomplete instead of looping.
+    if (got.length === 0) break
+    offset += got.length
+  }
+  return { works: dedupeCandidates(works), truncated: true }
+}
+
+/**
+ * The display names to warn about: authors whose catalogue shelf could not be
+ * read in full AND who still have an unmatched book in the diff. An incomplete
+ * shelf for an author whose books all matched an existing work changes nothing
+ * the contributor would act on, so it is not worth a notice.
+ *
+ * Both inputs are joined on the AUTHOR KEY - the same key candidatesForBook and
+ * authorSearchKeys use - and only the output is display names. Mixing the two up
+ * (adding a display name to the incomplete set) does not fail loudly; it just
+ * makes the warning silently never appear, which is the failure this function
+ * exists to make testable. Pure.
+ */
+export function unconfirmedAuthors(
+  incompleteKeys: Iterable<string>,
+  names: Map<string, string>,
+  unmatchedAuthors: Iterable<string>
+): string[] {
+  const affected = new Set<string>()
+  for (const a of unmatchedAuthors) {
+    const key = authorKey(a)
+    if (key) affected.add(key)
+  }
+  const out: string[] = []
+  for (const key of incompleteKeys) {
+    if (affected.has(key)) out.push(names.get(key) ?? key)
+  }
+  return out.sort()
+}

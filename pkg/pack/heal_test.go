@@ -494,3 +494,60 @@ func TestRenderMemoIsInvalidatedByMutation(t *testing.T) {
 		t.Error("Bytes handed out the memo itself")
 	}
 }
+
+// TestHealPendingReportsWhatItHeals pins the report HealPending hands back
+// against the Pending it replaced: a caller that wants both no longer surveys
+// the family twice, and must not get a different answer for it.
+func TestHealPendingReportsWhatItHeals(t *testing.T) {
+	trees := map[string]map[string]string{
+		"clean": {
+			"people/0.json": packOfEntries([2]string{"aa", "A"}),
+		},
+		"misplaced and salvage": {
+			"people/0.json":         packOfEntries([2]string{"aa", "A"}, [2]string{"zz", "Z"}),
+			"people/mm.json":        packOfEntries([2]string{"mm", "M"}),
+			"people/Not Bound.json": packOfEntries([2]string{"nn", "N"}),
+		},
+		"duplicate slug": {
+			"people/0.json":  packOfEntries([2]string{"aa", "A"}, [2]string{"mm", "X"}),
+			"people/mm.json": packOfEntries([2]string{"mm", "M"}),
+		},
+		"unreadable": {
+			"people/0.json":  packOfEntries([2]string{"aa", "A"}),
+			"people/zz.json": `{`,
+		},
+	}
+	for name, files := range trees {
+		t.Run(name, func(t *testing.T) {
+			want := t.TempDir()
+			writeFiles(t, want, files)
+			got := t.TempDir()
+			writeFiles(t, got, files)
+
+			wantP := pendingOf(t, want, FamilyPeople)
+			s, err := Open(got)
+			if err != nil {
+				t.Fatal(err)
+			}
+			gotP, err := s.HealPending(FamilyPeople)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if a, b := strings.Join(gotP.Lines(), "\n"), strings.Join(wantP.Lines(), "\n"); a != b {
+				t.Errorf("HealPending report:\n%s\nPending report:\n%s", a, b)
+			}
+			// And it still heals: Heal is the same pass with the report dropped,
+			// so what HealPending queues has to converge exactly as Heal's did.
+			if _, err := s.Flush(); err != nil {
+				t.Fatal(err)
+			}
+			healFlush(t, want, FamilyPeople)
+			if a, b := entriesOf(t, got, FamilyPeople), entriesOf(t, want, FamilyPeople); !equalStrings(a, b) {
+				t.Errorf("entries after HealPending = %v, after Heal = %v", a, b)
+			}
+			if a, b := packPaths(t, got, FamilyPeople), packPaths(t, want, FamilyPeople); !equalStrings(a, b) {
+				t.Errorf("packs after HealPending = %v, after Heal = %v", a, b)
+			}
+		})
+	}
+}

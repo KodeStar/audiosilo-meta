@@ -403,8 +403,12 @@ func normalizeEditionMarkers(books []sourceBook) {
 
 // loadExisting seeds the planner's identity maps from the current data tree so
 // new records dedupe against what is already committed.
+//
+// It loads THROUGH the store, so the catalogue read and the run's own entry
+// reads share one walk and one parse of each pack: the packs the planner then
+// composes into are already in hand rather than read a second time.
 func (p *planner) loadExisting() {
-	cat := check.Load(p.dataDir).Catalog
+	cat := check.LoadStore(p.store).Catalog
 	if cat == nil {
 		return
 	}

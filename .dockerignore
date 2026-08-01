@@ -1,0 +1,27 @@
+# Build-context exclusions for the metaserve image (see Dockerfile).
+#
+# The image is code + site only - it bakes NO data - so the catalogue must not
+# ride into the build context either. Without this, `COPY . .` in the build
+# stage ships the whole data/ tree into the builder layer, which would make the
+# image build time and cache invalidation grow with the catalogue: exactly what
+# dropping the baked artifact was meant to stop. Nothing in metaserve's build
+# path reads data/ (the only embedded files are schema/*.json and
+# internal/importer/audiblegenres.json).
+data/
+
+# Git history is not read by any build step (added_at lives in the records now,
+# so no stage walks the log) and it is the largest thing in the repo.
+.git
+.github
+
+# Rebuilt inside the site stage by `yarn install` / `yarn build`; copying the
+# host's copies in would defeat the dependency layer and can mix architectures.
+site/node_modules
+site/dist
+site/.astro
+
+# Local runtime/build leftovers that must never end up in an image.
+*.sqlite
+*.sqlite.gz
+bin/
+cache/

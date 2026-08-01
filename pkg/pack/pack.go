@@ -16,6 +16,14 @@
 // reserved minimum bound "0". Bounds change only on split (plus the narrow
 // rebind a deletion of the lowest pack forces, see Store.Flush), so the sorted
 // tree listing IS the index and lookup is a binary search over it.
+//
+// Reading a tree costs ONE walk and ONE parse per pack, however many things ask
+// for it. The walk is a Listing (which family every file sits under, each
+// family's layout, each family's tree) and the parse is a Reader (a pack path to
+// its parsed contents). A Store keeps both and hands them out, so a run that
+// validates the catalogue and then writes into it - every importer and intake
+// run - neither walks the tree twice nor parses a pack twice; see
+// check.LoadStore.
 package pack
 
 import "sort"

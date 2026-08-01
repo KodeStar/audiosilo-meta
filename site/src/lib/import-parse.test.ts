@@ -8,6 +8,8 @@ import {
   matchExistingWork,
   authorSearchKeys,
   candidatesForBook,
+  collectAuthoredWorks,
+  unconfirmedAuthors,
   dedupeCandidates,
   authorKey,
   type ParsedBook,
@@ -1008,5 +1010,117 @@ describe('dedupeCandidates', () => {
     const b: WorkCandidate = { id: 'w1', title: 'Second', authors: [] }
     const c: WorkCandidate = { id: 'w2', title: 'Other', authors: [] }
     expect(dedupeCandidates([a, b, c])).toEqual([a, c])
+  })
+})
+
+describe('collectAuthoredWorks', () => {
+  // A page of `size` synthetic candidates starting at `offset`.
+  function page(offset: number, size: number, total: number, limit: number) {
+    const authored: WorkCandidate[] = []
+    for (let i = offset; i < Math.min(offset + size, total); i++) {
+      authored.push({ id: `w${i}`, title: `Work ${i}`, authors: [{ name: 'Prolific Author' }] })
+    }
+    return { authored, authored_total: total, limit }
+  }
+
+  it('pages until every credit of a shelf larger than one page is collected', async () => {
+    // The regression: reading only the first page hides works 500..1199, and an
+    // import diff that cannot see them proposes them as new (duplicates).
+    const total = 1200
+    const limit = 500
+    const offsets: number[] = []
+    const res = await collectAuthoredWorks(async (offset) => {
+      offsets.push(offset)
+      return page(offset, limit, total, limit)
+    })
+    expect(res.truncated).toBe(false)
+    expect(res.works).toHaveLength(total)
+    expect(res.works[0].id).toBe('w0')
+    expect(res.works[total - 1].id).toBe(`w${total - 1}`)
+    expect(offsets).toEqual([0, 500, 1000])
+  })
+
+  it('makes one request when the first page already holds the whole list', async () => {
+    let calls = 0
+    const res = await collectAuthoredWorks(async (offset) => {
+      calls++
+      return page(offset, 500, 3, 500)
+    })
+    expect(calls).toBe(1)
+    expect(res.works).toHaveLength(3)
+    expect(res.truncated).toBe(false)
+  })
+
+  it('reports truncated when the page budget runs out before the total', async () => {
+    const res = await collectAuthoredWorks(async (offset) => page(offset, 10, 1000, 10), 3)
+    expect(res.truncated).toBe(true)
+    expect(res.works).toHaveLength(30)
+  })
+
+  it('stops instead of looping when a page comes back empty below the total', async () => {
+    let calls = 0
+    const res = await collectAuthoredWorks(async () => {
+      calls++
+      return { authored: [], authored_total: 42, limit: 500 }
+    })
+    expect(calls).toBe(1)
+    expect(res.truncated).toBe(true)
+    expect(res.works).toEqual([])
+  })
+
+  it('treats a short page as the end of the list when the API reports no total', async () => {
+    // An older API without authored_total: a page smaller than the served limit
+    // is the last one, so this is complete rather than a warning.
+    const res = await collectAuthoredWorks(async () => ({
+      authored: [{ id: 'w1', title: 'Only', authors: [] }],
+      limit: 500,
+    }))
+    expect(res.truncated).toBe(false)
+    expect(res.works).toHaveLength(1)
+  })
+
+  it('deduplicates works repeated across pages', async () => {
+    const dupe: WorkCandidate = { id: 'w1', title: 'Same', authors: [] }
+    let call = 0
+    const res = await collectAuthoredWorks(async () => {
+      call++
+      return call === 1
+        ? { authored: [dupe], authored_total: 2, limit: 1 }
+        : { authored: [dupe], authored_total: 2, limit: 1 }
+    })
+    expect(res.works).toEqual([dupe])
+    expect(res.truncated).toBe(false)
+  })
+})
+
+describe('unconfirmedAuthors', () => {
+  const names = new Map([
+    ['brandon sanderson', 'Brandon Sanderson'],
+    ['stephen king', 'Stephen King'],
+  ])
+
+  it('names an author whose shelf was incomplete and who still has an unmatched book', () => {
+    expect(
+      unconfirmedAuthors(['brandon sanderson'], names, ['Brandon Sanderson'])
+    ).toEqual(['Brandon Sanderson'])
+  })
+
+  it('stays quiet when the incomplete shelf changed nothing in the diff', () => {
+    expect(unconfirmedAuthors(['brandon sanderson'], names, ['Stephen King'])).toEqual([])
+  })
+
+  it('joins on the author key, so a display name in the incomplete set is not a silent no-op', () => {
+    // The bug this guards: adding "Brandon Sanderson" instead of its key made the
+    // notice disappear rather than misfire, so nothing looked wrong.
+    expect(unconfirmedAuthors(['brandon sanderson'], names, ['brandon  SANDERSON'])).toEqual([
+      'Brandon Sanderson',
+    ])
+    expect(unconfirmedAuthors(['Brandon Sanderson'], names, ['Brandon Sanderson'])).toEqual([])
+  })
+
+  it('falls back to the key when no display name was recorded, and sorts', () => {
+    expect(
+      unconfirmedAuthors(['stephen king', 'ada palmer'], names, ['Stephen King', 'Ada Palmer'])
+    ).toEqual(['Stephen King', 'ada palmer'])
   })
 })

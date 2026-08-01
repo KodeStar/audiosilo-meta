@@ -51,8 +51,18 @@ func ftsQuery(q string) string {
 	return strings.Join(parts, " ")
 }
 
+// searchHit is one row of the FTS result, kept in rank order while the work
+// cards are resolved in a single batch.
+type searchHit struct{ kind, id string }
+
 // search runs the FTS query and assembles heterogeneous results (work / person
 // / series) into a single ranked slice.
+//
+// The hits are materialized FIRST and the work cards resolved for the whole page
+// at once (cardsByID), rather than four queries per work hit inside the scan
+// loop. This is the busiest endpoint in the API - every keystroke of the site's
+// search box - so the per-page query count is fixed instead of proportional to
+// the number of work hits.
 func (s *snapshot) search(q string, limit int) ([]any, error) {
 	match := ftsQuery(q)
 	rows, err := s.db.Query(
@@ -60,24 +70,33 @@ func (s *snapshot) search(q string, limit int) ([]any, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = rows.Close() }()
+	hits, err := scanPairs(rows, func(kind, id string) searchHit {
+		return searchHit{kind: kind, id: id}
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	workIDs := make([]string, 0, len(hits))
+	for _, h := range hits {
+		if h.kind == "work" {
+			workIDs = append(workIDs, h.id)
+		}
+	}
+	cards, err := s.cardsByID(workIDs)
+	if err != nil {
+		return nil, err
+	}
 
 	out := []any{}
-	for rows.Next() {
-		var kind, id string
-		if err := rows.Scan(&kind, &id); err != nil {
-			return nil, err
-		}
-		switch kind {
+	for _, h := range hits {
+		switch h.kind {
 		case "work":
-			card, err := s.workCard(id)
-			if err != nil {
-				return nil, err
-			}
+			card := cards[h.id]
 			if card == nil {
 				continue
 			}
-			narrators, err := s.workNarrators(id)
+			narrators, err := s.workNarrators(h.id)
 			if err != nil {
 				return nil, err
 			}
@@ -87,26 +106,30 @@ func (s *snapshot) search(q string, limit int) ([]any, error) {
 				Narrators: narrators,
 			})
 		case "person":
-			name, err := s.personName(id)
+			name, err := s.personName(h.id)
 			if err != nil {
 				return nil, err
 			}
-			out = append(out, personResult{Kind: "person", ID: id, Name: name})
+			out = append(out, personResult{Kind: "person", ID: h.id, Name: name})
 		case "series":
-			name, n, err := s.seriesSummary(id)
+			name, n, err := s.seriesSummary(h.id)
 			if err != nil {
 				return nil, err
 			}
-			out = append(out, seriesResult{Kind: "series", ID: id, Name: name, Works: n})
+			out = append(out, seriesResult{Kind: "series", ID: h.id, Name: name, Works: n})
 		}
 	}
-	return out, rows.Err()
+	return out, nil
 }
+
+// workNarratorsSQL reads the distinct narrators across a work's recordings. It
+// rides the (work_id, recording_id) index by prefix; shared with the index guard.
+const workNarratorsSQL = `SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id ` +
+	`WHERE rn.work_id=? GROUP BY p.id, p.name ORDER BY MIN(rn.ord)`
 
 // workNarrators returns the distinct narrators across a work's recordings.
 func (s *snapshot) workNarrators(workID string) ([]personRef, error) {
-	rows, err := s.db.Query(
-		`SELECT p.id, p.name FROM recording_narrators rn JOIN people p ON p.id = rn.person_id WHERE rn.work_id=? GROUP BY p.id, p.name ORDER BY MIN(rn.ord)`, workID)
+	rows, err := s.db.Query(workNarratorsSQL, workID)
 	if err != nil {
 		return nil, err
 	}
@@ -125,7 +148,7 @@ func (s *snapshot) seriesSummary(id string) (string, int, error) {
 		return "", 0, err
 	}
 	var n int
-	if err := s.db.QueryRow(`SELECT COUNT(*) FROM series_works WHERE series_id=?`, id).Scan(&n); err != nil {
+	if err := s.db.QueryRow(seriesWorksCountSQL, id).Scan(&n); err != nil {
 		return "", 0, err
 	}
 	return name, n, nil

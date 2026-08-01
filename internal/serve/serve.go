@@ -13,6 +13,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"strings"
@@ -36,7 +37,22 @@ type Config struct {
 
 	// swapGrace is how long an old snapshot is kept open after a swap so that
 	// in-flight requests finish on it. Overridable for tests; default 60s.
+	// Superseded cache files are pruned once it elapses.
 	swapGrace time.Duration
+
+	// maxPatchBase caps the artifact size for which a binary-delta refresh is
+	// attempted (see applyPatchFile). Overridable for tests; New defaults it to
+	// defaultMaxPatchBase.
+	maxPatchBase int64
+
+	// bootRetry is the FIRST wait between poll attempts while no artifact has
+	// loaded at all (it then backs off - see pollLoop). Overridable for tests;
+	// New defaults it to defaultBootRetry.
+	bootRetry time.Duration
+
+	// apiBase overrides the GitHub API base URL. Test-only: production always
+	// talks to api.github.com.
+	apiBase string
 }
 
 // Server holds the current snapshot and serves the API. The snapshot is swapped
@@ -55,12 +71,33 @@ type Server struct {
 	mu     sync.Mutex // guards refresh() so two polls never race
 	loaded string     // tag of the currently-loaded release ("" for local db)
 
+	// retired counts the artifact files of snapshots that have been swapped out
+	// but not yet closed, so the cache prune spares every one of them (see
+	// swap/pruneCacheLocked). Refcounted, because two retired snapshots can share
+	// a path. Guarded by mu.
+	retired map[string]int
+
+	// nextRetry is the poll loop's CURRENT wait while no artifact has loaded, in
+	// nanoseconds - what the 503s advertise as Retry-After. Written by the poll
+	// loop, read by handlers, hence atomic.
+	nextRetry atomic.Int64
+
 	webhookRefreshing atomic.Bool // coalesces webhook-triggered refreshes to one in flight
 }
 
 // New builds a Server. When DBPath is set it is loaded immediately; otherwise
 // (with Poll) the newest data release is fetched synchronously so the server
 // never starts empty.
+//
+// A poll-only boot whose first fetch FAILS is not fatal: the image ships no
+// baked artifact, so a GitHub outage at boot time must not turn into a container
+// crash-loop. New logs the failure and falls back to the newest artifact on the
+// cache volume - the one the previous container was serving - flagged as stale
+// (see adoptStaleCache). Only when there is nothing there either does it return
+// a Server with no snapshot; it then listens, serves the static site, answers
+// /healthz with "starting" and every API route with 503, and the poll loop
+// retries from cfg.bootRetry (backing off) until an artifact lands (see
+// pollLoop).
 func New(cfg Config) (*Server, error) {
 	if cfg.Logger == nil {
 		cfg.Logger = log.Default()
@@ -74,6 +111,12 @@ func New(cfg Config) (*Server, error) {
 	if cfg.swapGrace <= 0 {
 		cfg.swapGrace = 60 * time.Second
 	}
+	if cfg.bootRetry <= 0 {
+		cfg.bootRetry = defaultBootRetry
+	}
+	if cfg.maxPatchBase <= 0 {
+		cfg.maxPatchBase = defaultMaxPatchBase
+	}
 	if cfg.WebhookSecret != "" {
 		if !cfg.Poll {
 			return nil, errors.New("serve: METASERVE_WEBHOOK_SECRET requires --poll")
@@ -82,9 +125,10 @@ func New(cfg Config) (*Server, error) {
 			return nil, fmt.Errorf("serve: METASERVE_WEBHOOK_SECRET must be at least %d bytes", minWebhookSecretBytes)
 		}
 	}
-	s := &Server{cfg: cfg, log: cfg.Logger}
+	s := &Server{cfg: cfg, log: cfg.Logger, retired: map[string]int{}}
+	s.nextRetry.Store(int64(cfg.bootRetry))
 	if cfg.Poll {
-		s.gh = newGHClient(cfg.Repo, cfg.Token, "")
+		s.gh = newGHClient(cfg.Repo, cfg.Token, cfg.apiBase)
 	}
 
 	if cfg.DBPath != "" {
@@ -95,7 +139,14 @@ func New(cfg Config) (*Server, error) {
 		s.cur.Store(snap)
 	} else if cfg.Poll {
 		if err := s.refresh(context.Background()); err != nil {
-			return nil, err
+			s.log.Printf("serve: no artifact at boot: %v", err)
+			// A cache volume that outlived the last container usually still holds
+			// its artifact. Serving that, loudly flagged as stale, beats answering
+			// 503 with usable data on disk.
+			if !s.adoptStaleCache() {
+				s.log.Printf("serve: starting WITHOUT data; the API answers 503 until a release loads (retrying in %s, backing off to %s)",
+					cfg.bootRetry, cfg.Interval)
+			}
 		}
 	} else {
 		return nil, errors.New("serve: no --db and --poll not set: nothing to serve")
@@ -135,17 +186,44 @@ func (s *Server) Run(ctx context.Context) error {
 	return err
 }
 
-// current returns the live snapshot.
+// current returns the live snapshot, or nil when none has loaded yet (a
+// poll-only boot whose first fetch failed - see New).
 func (s *Server) current() *snapshot { return s.cur.Load() }
 
+// defaultBootRetry is the first retry wait for a server with NO artifact. It is
+// much shorter than the steady-state poll interval: a boot that could not reach
+// GitHub is an outage to recover from in seconds, not in an hour. Consecutive
+// failures back off from here up to cfg.Interval (see pollLoop).
+const defaultBootRetry = 30 * time.Second
+
 // swap installs a new snapshot and schedules the old one's close after the grace
-// period, so requests that already grabbed the old handle finish cleanly.
+// period, so requests that already grabbed the old handle finish cleanly. Once
+// the grace elapses the old artifact's file is prunable, so a prune runs then
+// too - adopt already pruned everything else at swap time.
+//
+// The old snapshot's FILE is registered as retired for exactly as long as the
+// handle lives, because the handle is not enough to keep it usable: SQLite opens
+// pooled connections lazily, so a request still on the old snapshot can need to
+// open that path after the swap. Several snapshots can be in grace at once, and
+// the prune must spare all of them (see pruneCacheLocked).
+//
+// The caller must hold s.mu (adopt does): s.retired is refresh-owned state.
 func (s *Server) swap(next *snapshot) {
 	old := s.cur.Swap(next)
-	if old != nil && old != next {
-		grace := s.cfg.swapGrace
-		time.AfterFunc(grace, old.close)
+	if old == nil || old == next {
+		return
 	}
+	s.retired[old.path]++
+	time.AfterFunc(s.cfg.swapGrace, func() {
+		old.close()
+		s.mu.Lock()
+		defer s.mu.Unlock()
+		s.retired[old.path]--
+		if s.retired[old.path] <= 0 {
+			delete(s.retired, old.path)
+		}
+		s.pruneCacheLocked()
+	})
 }
 
 // ---- routing ----------------------------------------------------------------
@@ -176,9 +254,35 @@ func (s *Server) buildMux() http.Handler {
 	return mux
 }
 
-// api wraps a JSON API handler with CORS and gzip.
+// api wraps a JSON API handler with CORS, gzip, and the loaded-artifact gate.
 func (s *Server) api(h http.HandlerFunc) http.Handler {
-	return gzipMW(corsMW(h))
+	return gzipMW(corsMW(s.requireSnapshot(h)))
+}
+
+// requireSnapshot answers 503 while no artifact has loaded, so every data
+// handler can assume s.current() is non-nil. Only a poll-only boot that could
+// not reach GitHub is in that state (see New); it is temporary by construction,
+// hence Retry-After.
+func (s *Server) requireSnapshot(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if s.current() == nil {
+			w.Header().Set("Retry-After", s.retryAfter())
+			writeErr(w, http.StatusServiceUnavailable, "no data loaded yet: the server is fetching the latest release")
+			return
+		}
+		next(w, r)
+	}
+}
+
+// retryAfter is the Retry-After value for the 503s a server with no artifact
+// answers: the poll loop's CURRENT wait, not the initial bootRetry. After
+// several failed attempts the loop has backed off (up to --interval), and
+// advertising 30s then would send every client back long before anything can
+// have changed. Whole seconds, rounded up, never below 1 - a "0" would read as
+// "retry immediately".
+func (s *Server) retryAfter() string {
+	secs := int(math.Ceil(time.Duration(s.nextRetry.Load()).Seconds()))
+	return strconv.Itoa(max(secs, 1))
 }
 
 // ---- middleware -------------------------------------------------------------
@@ -212,7 +316,9 @@ func writeErr(w http.ResponseWriter, status int, msg string) {
 }
 
 // clampLimit parses the ?limit= param and clamps it to [1, max], defaulting to
-// def when absent or invalid.
+// def when absent or invalid. A def of 0 is how an endpoint spells "no window at
+// all by default" (snapshot.series), since 0 is never reachable from a supplied
+// value.
 func clampLimit(raw string, def, max int) int {
 	if raw == "" {
 		return def
@@ -242,8 +348,16 @@ func clampOffset(raw string) int {
 
 // ---- handlers ---------------------------------------------------------------
 
+// handleHealthz reports readiness, not liveness: a server that has not loaded an
+// artifact yet answers 503 with status "starting", so a container health check
+// or a load balancer keeps it out of rotation until it can actually answer.
 func (s *Server) handleHealthz(w http.ResponseWriter, _ *http.Request) {
 	snap := s.current()
+	if snap == nil {
+		w.Header().Set("Retry-After", s.retryAfter())
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"status": "starting"})
+		return
+	}
 	writeJSON(w, http.StatusOK, map[string]any{
 		"status":   "ok",
 		"built_at": snap.stats.BuiltAt,
@@ -289,9 +403,21 @@ func (s *Server) handleChapters(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, map[string]any{"chapters": chs})
 }
 
+// personPageDefault / personPageMax bound one page of a person's credit lists.
+// The default is a page, not the whole list: a corporate credit ("Full Cast")
+// already narrates ~2,000 works, and that count grows with the catalogue. The
+// unpaged totals travel in the response so a client always knows what it is
+// missing.
+const (
+	personPageDefault = 100
+	personPageMax     = 500
+)
+
 func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	p, err := snap.person(r.PathValue("id"))
+	q := r.URL.Query()
+	limit := clampLimit(q.Get("limit"), personPageDefault, personPageMax)
+	p, err := snap.person(r.PathValue("id"), limit, clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
@@ -303,9 +429,15 @@ func (s *Server) handlePerson(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, p)
 }
 
+// seriesPageMax bounds an explicitly requested series page. There is no
+// default: ?limit absent means the whole series (see snapshot.series - the
+// player's series rail is composed from the full list).
+const seriesPageMax = 500
+
 func (s *Server) handleSeries(w http.ResponseWriter, r *http.Request) {
 	snap := s.current()
-	ser, err := snap.series(r.PathValue("id"))
+	q := r.URL.Query()
+	ser, err := snap.series(r.PathValue("id"), clampLimit(q.Get("limit"), 0, seriesPageMax), clampOffset(q.Get("offset")))
 	if err != nil {
 		writeErr(w, http.StatusInternalServerError, err.Error())
 		return
@@ -347,8 +479,8 @@ func (s *Server) handleCoverage(w http.ResponseWriter, _ *http.Request) {
 
 // handleCoverageWorks serves one filtered, searchable, paginated page of works
 // for the contribute-page coverage browser. ?filter selects the dimension
-// (missing|has_characters|has_recaps|has_recap_summary), ?q is a title/author
-// substring, ?limit/?offset paginate. It always returns 200 and degrades to an
+// (missing|has_characters|has_recaps|has_recap_summary), ?q is a full-text query
+// over title/authors/narrators/series (word prefixes), ?limit/?offset paginate. It always returns 200 and degrades to an
 // empty page with available:false when the filter's dimension is unevaluable at
 // the current artifact schema_version (see snapshot.coverageWorks).
 func (s *Server) handleCoverageWorks(w http.ResponseWriter, r *http.Request) {

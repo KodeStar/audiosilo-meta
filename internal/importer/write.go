@@ -2,6 +2,7 @@ package importer
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -28,12 +29,20 @@ var writeFamilies = []pack.Family{pack.FamilyWorks, pack.FamilyPeople, pack.Fami
 
 // openStore opens dataDir for the families an import writes, refusing a tree
 // whose target families are still file-per-entity (pack.OpenFor owns that rule).
-// The clause it appends names who refused, since the wrapped error only says
-// what is wrong with the tree.
+//
+// Opening also READS the tree, so it can now fail for reasons that have nothing
+// to do with the layout - an unreadable directory, a data root that is not one -
+// and it fails BEFORE anything is written rather than after. Only the layout
+// refusal gets the clause naming who refused; an I/O error is reported as it
+// came, since "metaimport writes the pack layout only" would be a false
+// explanation of it.
 func openStore(dataDir string) (*pack.Store, error) {
 	s, err := pack.OpenFor(dataDir, writeFamilies...)
 	if err != nil {
-		return nil, fmt.Errorf("%w (metaimport writes the pack layout only)", err)
+		if errors.Is(err, pack.ErrLegacyLayout) {
+			return nil, fmt.Errorf("%w (metaimport writes the pack layout only)", err)
+		}
+		return nil, err
 	}
 	return s, nil
 }

@@ -35,7 +35,13 @@ type Store struct {
 	dir     string
 	layouts map[Family]Layout
 	trees   map[Family]*Tree
-	cache   map[string]*File // pack path -> loaded pack
+	// reader holds every pack the store has parsed. It is shareable, which is
+	// how a validating writer reads each pack once (see check.LoadStore).
+	reader *Reader
+	// listing is the walk the store was opened on, kept so a caller that reads
+	// the same tree need not walk it again. Flush clears it: the files on disk
+	// are no longer the ones that were walked.
+	listing *Listing
 	ops     map[Family]map[string]op
 	// pulls are targeted removals used by relocation: an entry has to leave the
 	// wrong pack, which is not the pack its slug looks up to.
@@ -56,34 +62,46 @@ type op struct {
 
 // Open detects each family's layout under dataDir and reads the pack listing of
 // the ones in pack layout. A family that is absent is still writable: its first
-// Upsert creates the reserved "0" pack.
+// Upsert creates the reserved "0" pack, and a data root that does not exist yet
+// is not an error either.
+//
+// It takes ONE walk of the tree and answers both questions from it, and it keeps
+// that walk (Listing) and its parse cache (Reader) so a caller reading the same
+// tree - pkg/check, validating what the writer is about to write into - can
+// share both instead of repeating them.
 func Open(dataDir string) (*Store, error) {
+	l, err := listFor(dataDir)
+	if err != nil {
+		return nil, err
+	}
+	return openListing(l, NewReader(dataDir))
+}
+
+// openListing builds a store over an already-walked tree and a parse cache.
+func openListing(l *Listing, r *Reader) (*Store, error) {
 	s := &Store{
-		dir:     dataDir,
+		dir:     l.Dir(),
 		layouts: map[Family]Layout{},
 		trees:   map[Family]*Tree{},
-		cache:   map[string]*File{},
+		reader:  r,
+		listing: l,
 		ops:     map[Family]map[string]op{},
 		pulls:   map[Family]map[string]map[string]bool{},
 		remove:  map[Family]map[string]bool{},
 		touch:   map[Family]map[string]PackRef{},
 		refs:    map[string]PackRef{},
 	}
+	layouts, err := l.Layouts()
+	if err != nil {
+		return nil, err
+	}
 	for _, d := range Families() {
-		l, err := DetectLayout(dataDir, d.Family)
-		if err != nil {
-			return nil, err
-		}
-		s.layouts[d.Family] = l
-		if l == LayoutLegacy {
+		s.layouts[d.Family] = layouts[d.Family]
+		if layouts[d.Family] == LayoutLegacy {
 			s.trees[d.Family] = NewTree(d.Family, nil)
 			continue
 		}
-		t, err := ReadTree(dataDir, d.Family)
-		if err != nil {
-			return nil, err
-		}
-		s.trees[d.Family] = t
+		s.trees[d.Family] = l.Tree(d.Family)
 	}
 	return s, nil
 }
@@ -118,6 +136,23 @@ func (s *Store) Dir() string { return s.dir }
 
 // Layout returns the layout family f was detected in at Open time.
 func (s *Store) Layout(f Family) Layout { return s.layouts[f] }
+
+// Reader returns the store's parse cache, so a caller reading the same tree can
+// answer from a pack the store has already parsed instead of parsing it again
+// (see check.LoadStore). What it holds is what the store has read, as of when it
+// read it - a borrower validating the tree must not fill it with packs the store
+// never asked for, or the whole tree stays resident for the rest of the run.
+func (s *Store) Reader() *Reader { return s.reader }
+
+// Listing returns the walk the store was opened on, or nil once a Flush has
+// made it stale (including a flush that failed part-way, which has still written
+// something). A caller that needs a listing either way takes a fresh one when
+// this returns nil.
+//
+// It is the tree as of Open. Anything deciding what to write - survey, and
+// therefore healing and relocation - re-scans instead, because those act on the
+// files that are there now.
+func (s *Store) Listing() *Listing { return s.listing }
 
 // Tree returns family f's current pack listing. A legacy family has none.
 func (s *Store) Tree(f Family) *Tree { return s.trees[f] }
@@ -260,29 +295,21 @@ func (s *Store) load(ref PackRef) (*File, error) {
 	return s.loadPath(ref.Path())
 }
 
-// loadPath reads a file by its data-relative path, caching it. A file that does
-// not exist loads as an empty pack, so a first Upsert into a new family works
-// without ceremony. Paths rather than refs, because a file Heal has to salvage
-// need not sit at a pack location at all.
-func (s *Store) loadPath(rel string) (*File, error) {
-	if f, ok := s.cache[rel]; ok {
-		return f, nil
-	}
-	raw, err := os.ReadFile(filepath.Join(s.dir, filepath.FromSlash(rel)))
-	if err != nil {
-		if os.IsNotExist(err) {
-			f := NewFile()
-			s.cache[rel] = f
-			return f, nil
-		}
-		return nil, err
-	}
-	f, err := Parse(raw)
-	if err != nil {
-		return nil, fmt.Errorf("%s: %w", rel, err)
-	}
-	s.cache[rel] = f
-	return f, nil
+// loadPath reads a file by its data-relative path through the store's reader,
+// so it is parsed at most once however many times it is asked for - by this
+// store, or by anything sharing the reader. A file that does not exist loads as
+// an empty pack, so a first Upsert into a new family works without ceremony.
+// Paths rather than refs, because a file Heal has to salvage need not sit at a
+// pack location at all.
+func (s *Store) loadPath(rel string) (*File, error) { return s.reader.Read(rel) }
+
+// cached returns the pack the store's reader holds for rel, or nil. It peeks
+// rather than asking Cached, because a pack this store is CREATING is held as
+// the empty stand-in for a file that is not there yet, with the queued entries
+// already composed into it - which is precisely the file a flush has to render.
+func (s *Store) cached(rel string) *File {
+	f, _ := s.reader.peek(rel)
+	return f
 }
 
 // Written reports the files a Flush touched, data-relative and sorted.
@@ -331,6 +358,14 @@ type packGroup struct {
 // re-read: an entry count only grows through this store, and that path loads
 // the pack.
 func (s *Store) Flush() (Written, error) {
+	// Whatever happens from here, the Open-time walk and the parsed packs no
+	// longer describe the tree - and that includes a flush that FAILS part-way,
+	// which has already committed the families it got through. A defer, so no
+	// early return can leave the store certifying bytes it has overwritten.
+	defer func() {
+		s.reader.Drop()
+		s.listing = nil
+	}()
 	var w Written
 	for _, d := range Families() {
 		if s.layouts[d.Family] == LayoutLegacy {
@@ -349,7 +384,6 @@ func (s *Store) Flush() (Written, error) {
 	s.pulls = map[Family]map[string]map[string]bool{}
 	s.remove = map[Family]map[string]bool{}
 	s.touch = map[Family]map[string]PackRef{}
-	s.cache = map[string]*File{}
 	s.refs = map[string]PackRef{}
 	return w, nil
 }
@@ -468,11 +502,11 @@ func (s *Store) planFamily(def FamilyDef, touched map[string]bool) ([]planPack, 
 		ref := s.refs[p]
 		if pp, ok := byPath[p]; ok {
 			pp.dirty = true
-			pp.file = s.cache[p]
+			pp.file = s.cached(p)
 			byPath[p] = pp
 			continue
 		}
-		byPath[p] = planPack{dir: ref.Dir, bound: ref.Bound, file: s.cache[p], dirty: true}
+		byPath[p] = planPack{dir: ref.Dir, bound: ref.Bound, file: s.cached(p), dirty: true}
 	}
 
 	out := make([]planPack, 0, len(byPath))

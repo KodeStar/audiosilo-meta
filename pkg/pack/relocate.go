@@ -266,8 +266,8 @@ func (s *Store) pendingFrom(fs *familySurvey) (Pending, error) {
 	}
 
 	for _, sv := range fs.salvage {
-		file, ok := s.cache[sv.Path]
-		if !ok {
+		file := s.cached(sv.Path)
+		if file == nil {
 			continue
 		}
 		for _, slug := range file.Slugs() {
@@ -312,7 +312,7 @@ func (s *Store) noteMove(p *Pending, def FamilyDef, fs *familySurvey, claimed ma
 			Slug:      slug,
 			Kept:      kept,
 			Dropped:   fromPath,
-			Identical: sameEntry(s.cache[fromPath], s.cache[kept], slug),
+			Identical: sameEntry(s.cached(fromPath), s.cached(kept), slug),
 		})
 		return
 	}
@@ -439,17 +439,32 @@ func dueDirSplits(def FamilyDef, t *Tree) []DueDirSplit {
 // It narrows the family's tree to the packs that survive, so no later Upsert or
 // Flush can address a file that is on its way out.
 func (s *Store) Heal(f Family) ([]Misplaced, error) {
-	def, err := s.def(f)
+	p, err := s.HealPending(f)
 	if err != nil {
 		return nil, err
+	}
+	return p.Misplaced, nil
+}
+
+// HealPending is Heal plus the report it computed on the way: exactly what
+// Pending would have returned for the family, at the moment the healing was
+// planned.
+//
+// A caller that wants both - metafmt reports what is outstanding and then fixes
+// it - would otherwise survey the family twice, reading and classifying every
+// file in it for a second answer identical to the first.
+func (s *Store) HealPending(f Family) (Pending, error) {
+	def, err := s.def(f)
+	if err != nil {
+		return Pending{}, err
 	}
 	fs, err := s.survey(def)
 	if err != nil {
-		return nil, err
+		return Pending{}, err
 	}
 	p, err := s.pendingFrom(fs)
 	if err != nil {
-		return nil, err
+		return Pending{}, err
 	}
 
 	// From here on only the surviving packs are addressable.
@@ -466,7 +481,7 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 	for _, sv := range p.Salvage {
 		file, lerr := s.loadPath(sv.Path)
 		if lerr != nil {
-			return nil, lerr
+			return Pending{}, lerr
 		}
 		for _, slug := range file.Slugs() {
 			if dropped[sv.Path][slug] {
@@ -474,7 +489,7 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 			}
 			entry, _ := file.Get(slug)
 			if uerr := s.Upsert(f, slug, entry); uerr != nil {
-				return nil, uerr
+				return Pending{}, uerr
 			}
 		}
 		s.markRemoved(f, sv.Path)
@@ -483,21 +498,21 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 	for _, m := range p.Misplaced {
 		file, lerr := s.loadPath(m.From.Path())
 		if lerr != nil {
-			return nil, lerr
+			return Pending{}, lerr
 		}
 		entry, ok := file.Get(m.Slug)
 		if !ok {
 			continue
 		}
 		if uerr := s.Upsert(f, m.Slug, entry); uerr != nil {
-			return nil, uerr
+			return Pending{}, uerr
 		}
 		s.pull(f, m.From.Path(), m.Slug)
 	}
 
 	paths := make([]string, 0, len(dropped))
-	for p := range dropped {
-		paths = append(paths, p)
+	for dp := range dropped {
+		paths = append(paths, dp)
 	}
 	sort.Strings(paths)
 	for _, dropPath := range paths {
@@ -511,10 +526,10 @@ func (s *Store) Heal(f Family) ([]Misplaced, error) {
 
 	for _, d := range p.Packs {
 		if terr := s.Touch(d.Pack); terr != nil {
-			return nil, terr
+			return Pending{}, terr
 		}
 	}
-	return p.Misplaced, nil
+	return p, nil
 }
 
 // pull records that slug must leave a specific pack, which relocation needs

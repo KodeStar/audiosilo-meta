@@ -21,6 +21,11 @@ import (
 // characters/recaps tables were added; bumped to 3 when the recap_summaries
 // table (per-work in_short / ending) was added; bumped to 4 when work genres
 // arrived in the work_genres table.
+//
+// It versions what a reader may SELECT, so it is bumped only when a table or
+// column appears. Adding an index is invisible to every reader (the same rows
+// come back, faster), so the index additions below did not bump it - an older
+// artifact without them still serves correctly, just more slowly.
 const SchemaVersion = 4
 
 const ddl = `
@@ -61,6 +66,15 @@ CREATE TABLE recordings (
 );
 CREATE TABLE recording_narrators (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
 CREATE INDEX idx_recording_narrators_person ON recording_narrators(person_id);
+-- Every GET /works/{id} and every search hit reads these three tables per
+-- recording, by (work_id, recording_id). Without a work_id index that is a full
+-- table scan each time (measured with EXPLAIN QUERY PLAN) - invisible at a few
+-- thousand rows, a real cost at 100k+ works. The index is (work_id,
+-- recording_id) rather than the work_id alone the scale report named: the
+-- predicate always carries both columns, and a work_id-only index still leaves
+-- the recording filter to a row scan of that work's rows. A work-only lookup
+-- (search.go's workNarrators) uses the same index by prefix.
+CREATE INDEX idx_recording_narrators_recording ON recording_narrators(work_id, recording_id);
 
 CREATE TABLE recording_asins (
   region       TEXT NOT NULL,
@@ -70,9 +84,11 @@ CREATE TABLE recording_asins (
   UNIQUE (region, asin)
 );
 CREATE INDEX idx_recording_asins_asin ON recording_asins(asin);
+CREATE INDEX idx_recording_asins_recording ON recording_asins(work_id, recording_id);
 
 CREATE TABLE recording_isbns (work_id TEXT NOT NULL, recording_id TEXT NOT NULL, isbn TEXT NOT NULL);
 CREATE INDEX idx_recording_isbns_isbn ON recording_isbns(isbn);
+CREATE INDEX idx_recording_isbns_recording ON recording_isbns(work_id, recording_id);
 
 CREATE TABLE chapters (
   work_id      TEXT NOT NULL,
@@ -104,7 +120,12 @@ CREATE TABLE series (
 );
 CREATE TABLE series_works (series_id TEXT NOT NULL, work_id TEXT NOT NULL, position TEXT NOT NULL);
 CREATE INDEX idx_series_works_work ON series_works(work_id);
+-- GET /series/{id} reads both of these by series_id; measurement found the same
+-- full scans the scale report reported for the recording tables, so they get the
+-- same treatment.
+CREATE INDEX idx_series_works_series ON series_works(series_id);
 CREATE TABLE series_authors (series_id TEXT NOT NULL, person_id TEXT NOT NULL, ord INTEGER NOT NULL);
+CREATE INDEX idx_series_authors_series ON series_authors(series_id);
 
 CREATE TABLE characters (
   work_id        TEXT NOT NULL,
@@ -126,6 +147,9 @@ CREATE TABLE character_aliases (
   alias        TEXT NOT NULL,
   ord          INTEGER NOT NULL
 );
+-- charactersOf reads the aliases of one work per GET /works/{id}; unindexed that
+-- is a scan of every alias in the catalogue.
+CREATE INDEX idx_character_aliases_work ON character_aliases(work_id);
 
 CREATE TABLE recaps (
   work_id         TEXT NOT NULL,
