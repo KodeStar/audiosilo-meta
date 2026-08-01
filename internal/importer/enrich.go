@@ -106,6 +106,16 @@ const (
 	// (usually regional) edition. It overwrites when the tier grants it and is
 	// otherwise completely silent: a re-release's own release date differing from
 	// the recorded one is expected, not a disagreement to flag.
+	//
+	// Because the edition differs, the release-date half of the contradiction
+	// guard does not apply in this scope AT ALL (see recordingContradicts): the
+	// merge stamps the run's provenance either way, so refusing the row over a
+	// legitimately different regional date would end the record's
+	// bulk-mirror-only status while leaving the mirror's facts frozen in place
+	// and the user's unreachable forever. The runtime half is what distinguishes
+	// a re-release from a different production, and it is already applied
+	// upstream (runtimesCompatible, addRecording) before a merge is even
+	// considered.
 	scopeAttestMerged
 )
 
@@ -145,7 +155,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 	if scope == scopeAttestMerged && !overwrite {
 		return true
 	}
-	if p.recordingContradicts(b, raw, warn) {
+	if p.recordingContradicts(b, raw, warn, scope) {
 		return false
 	}
 	// An exact-ASIN row about a record it may not overwrite has already had its
@@ -172,7 +182,7 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 		}
 	}
 
-	if rd := b.str("release_date"); datePattern.MatchString(rd) && fillStr(raw, "release_date", rd, overwrite) {
+	if rd := b.str("release_date"); datePattern.MatchString(rd) && fillReleaseDate(raw, rd, overwrite) {
 		changed = true
 	}
 
@@ -239,22 +249,39 @@ func (p *planner) applyToRecording(b sourceBook, ref RecRef, warn func(string, .
 // stands, the row is refused whole, and the disagreement is counted
 // (Summary.Conflicts) and warned about for a human to adjudicate. It is never
 // resolved by letting the later writer win.
-func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn func(string, ...any)) bool {
+//
+// The one scope it does not fully apply to is scopeAttestMerged, where the row
+// is a DIFFERENT edition by construction: its release date is expected to
+// differ, and refusing the row over that would be worse than useless, because
+// the merge stamps this run's provenance regardless - the record would leave the
+// bulk-mirror tier holding the mirror's facts, with the user's facts
+// unreachable for good and the same unresolvable conflict recounted on every
+// later run. The runtime half - the fact that actually distinguishes a
+// re-release from a different production - is applied upstream by
+// runtimesCompatible before a merge is considered at all, so nothing is lost.
+func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn func(string, ...any), scope applyScope) bool {
 	contradiction := func(format string, args ...any) bool {
 		warn(format, args...)
 		// Counted only for a user-library run: a bulk mirror disagreeing with the
 		// catalogue is an expected data-quality artefact of the source, while a
 		// person's own library disagreeing is the case a maintainer should look
-		// at (and the intake bot reports).
-		if p.userTier {
+		// at (and the intake bot reports). An inferred edition match (the merge
+		// scope) is not a disagreement between two people about one edition, so
+		// it is never counted either.
+		if p.userTier && scope != scopeAttestMerged {
 			p.summary.Conflicts++
 		}
 		return true
 	}
+	// Defense in depth in the merge scope: addRecording only reaches a merge for a
+	// sibling whose runtime is already compatible, so this cannot fire there.
 	if b.runtimeMin > 0 {
 		if cur, known := coerceInt(raw["runtime_min"]); known && cur > 0 && !runtimesCompatible(int(cur), b.runtimeMin) {
 			return contradiction("runtime %d min conflicts with the recorded %d min; the row was not used for enrichment", b.runtimeMin, cur)
 		}
+	}
+	if scope == scopeAttestMerged {
+		return false
 	}
 	if rd := b.str("release_date"); datePattern.MatchString(rd) {
 		if cur := coerceStr(raw["release_date"]); cur != "" && datesConflict(cur, rd) {
@@ -262,6 +289,25 @@ func (p *planner) recordingContradicts(b sourceBook, raw map[string]any, warn fu
 		}
 	}
 	return false
+}
+
+// fillReleaseDate is fillStr for release_date plus the PRECISION rule the field
+// needs, and it is where the overwrite posture stops short of a plain
+// replacement.
+//
+// A release date is recorded at whatever precision its source stated ("2015",
+// "2015-03", "2015-03-24"), and datesConflict deliberately reads a prefix as
+// agreement rather than a contradiction - so without this a user's year-only
+// "2019" would silently REPLACE a recorded "2019-05-04" and destroy a fact
+// nobody disputed. When the recorded value is a strict extension of the stated
+// one it stays, in every posture. The other direction (a full date over a
+// recorded year) is a precision improvement and still applies, which is exactly
+// what the overwrite posture is for.
+func fillReleaseDate(raw map[string]any, val string, overwrite bool) bool {
+	if cur := coerceStr(raw["release_date"]); len(cur) > len(val) && strings.HasPrefix(cur, val) {
+		return false
+	}
+	return fillStr(raw, "release_date", val, overwrite)
 }
 
 // datesConflict reports whether two release dates genuinely disagree. A release
@@ -333,6 +379,13 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 		return
 	}
 	overwrite := p.overwrites(raw)
+	// Defense in depth, and deliberately kept: only the enrichment scope may write
+	// to a work this run cannot overwrite, because an attestation's "a skip stays
+	// a skip" promise covers the work as well as the recording. It writes nothing
+	// TODAY whatever it does - no user-library export states genres, so b.genres is
+	// empty on every attest-scope call and the changed/overwrite return below
+	// catches it - so this guard is the rule surviving a source that later does
+	// state them, not live behaviour.
 	if scope != scopeFill && !overwrite {
 		return
 	}

@@ -71,6 +71,18 @@ func (c *composer) importLibrary(s sections) {
 	// theirs (LICENSING.md's trust tiers). Reporting that as a duplicate would
 	// open no pull request and silently discard the takeover.
 	if sum.Produced() == 0 {
+		// A run that produced nothing but DISAGREED with the catalogue is not a
+		// duplicate, and closing it as one would throw away the one thing it did
+		// say. A submitter whose export contradicts a recorded runtime or release
+		// date has stated a fact about a book they own; the importer refused the
+		// row (first writer wins) and only a maintainer can adjudicate it, so the
+		// verdict is needs-human with the same warnings the ok path emits.
+		if sum.Conflicts > 0 {
+			c.fail(StatusNeedsHuman, "nothing new to import, but %d row(s) of the export disagree with the catalog", sum.Conflicts)
+			c.noteConflicts(sum)
+			c.noteImportWarnings(sum)
+			return
+		}
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
 			c.fail(StatusDuplicate, "nothing new to import: every book in the export is already in the catalog (%d skipped)", sum.Skipped)
@@ -101,19 +113,33 @@ func (c *composer) importLibrary(s sections) {
 		c.note("attested %d work(s) and %d recording(s) that were previously seeded from the libex mirror - your library's values replaced the mirror's",
 			sum.AttestedWorks, sum.AttestedRecordings)
 	}
-	// "Flag for review", not a rejection: the conflicting rows were each refused
-	// individually (the recorded value stands) and everything else applied, so
-	// the pull request is still the right outcome - a maintainer adjudicates the
-	// disagreements from this note during the review the bot never bypasses.
-	if sum.Conflicts > 0 {
-		c.note("%d row(s) disagreed with a value already recorded and were not applied - the recorded value stands; see the warnings below and adjudicate before merging",
-			sum.Conflicts)
+	c.noteConflicts(sum)
+	c.noteImportWarnings(sum)
+	// The importer wrote and validated the tree; the intake workflow diffs it
+	// to build the pull request, so an explicit file list is not needed here.
+}
+
+// noteConflicts reports the rows the importer refused because they disagreed
+// with a recorded value. It is "flag for review", not a rejection: each row was
+// refused individually (the recorded value stands) and a maintainer adjudicates
+// from this note during the review the bot never bypasses. Shared by the two
+// outcomes that can carry conflicts - a run that also produced records (ok) and
+// one whose only effect was the disagreement (needs-human) - so the submitter
+// reads the same sentence either way.
+func (c *composer) noteConflicts(sum importer.Summary) {
+	if sum.Conflicts == 0 {
+		return
 	}
+	c.note("%d row(s) disagreed with a value already recorded and were not applied - the recorded value stands; see the warnings below and adjudicate before merging",
+		sum.Conflicts)
+}
+
+// noteImportWarnings echoes the importer's per-row warnings, which are what name
+// the records a conflict note refers to.
+func (c *composer) noteImportWarnings(sum importer.Summary) {
 	for _, w := range sum.Warnings {
 		c.note("import warning: %s", w)
 	}
-	// The importer wrote and validated the tree; the intake workflow diffs it
-	// to build the pull request, so an explicit file list is not needed here.
 }
 
 // supportedExportType reports whether an import export-type dropdown selection

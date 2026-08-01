@@ -154,3 +154,92 @@ func TestAddRecordingDuplicateNarratorOnLibexOnlyRecordNeedsHuman(t *testing.T) 
 		t.Errorf("the message must say why a maintainer is needed: %v", res.Messages)
 	}
 }
+
+// TestImportConflictOnlySubmissionNeedsHuman is the verdict gap the "flag for
+// review" promise had: an export whose ONLY effect was a disagreement produces
+// nothing, so Produced() == 0 and Skipped > 0, and the submission was closed as
+// a plain duplicate - the adjudication note and the importer warnings never
+// reached anyone. (TestImportConflictIsFlaggedNotRejected passes either way,
+// because its export also carries a brand-new book.)
+func TestImportConflictOnlySubmissionNeedsHuman(t *testing.T) {
+	dir := seedTree(t) // attested records; the seed recording is 400 minutes
+	// One row, and it is the same book with a runtime far outside the 10% window.
+	export := `[{"asin":"B000000001","title":"Existing Work","author":"Jane Doe","narrated_by":"John Smith",` +
+		`"language":"english","region":"us","seconds":72000}]`
+	res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", export)})
+
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "disagreed with a value already recorded") {
+		t.Errorf("the conflict must be surfaced for adjudication: %v", res.Messages)
+	}
+	// The warning naming the record is what a maintainer adjudicates from.
+	if !anyContains(res.Messages, "conflicts with the recorded") {
+		t.Errorf("the importer warning must ride along: %v", res.Messages)
+	}
+}
+
+// TestImportPlainDuplicateStaysDuplicate is the boundary of the fix above: an
+// export that only re-states what is already recorded, with nothing to
+// adjudicate, is still the long-standing duplicate.
+func TestImportPlainDuplicateStaysDuplicate(t *testing.T) {
+	dir := seedTree(t)
+	export := `[{"asin":"B000000001","title":"Existing Work","author":"Jane Doe","narrated_by":"John Smith",` +
+		`"language":"english","region":"us"}]`
+	res := Process(Options{DataDir: dir, Template: "import", Body: importBody("OpenAudible (books.json)", export)})
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+}
+
+// TestAddWorkSlugDuplicateOfMirrorOnlyWorkNeedsHuman covers the THIRD duplicate
+// gate - the work-slug collision - which routed to a plain duplicate while the
+// ASIN/ISBN and narrator-set gates already consulted the trust tier. A
+// submission naming a work only the mirror has ever stated is the first person
+// to attest it, so it goes to a maintainer like the other two.
+func TestAddWorkSlugDuplicateOfMirrorOnlyWorkNeedsHuman(t *testing.T) {
+	dir := t.TempDir()
+	files := seedFiles()
+	// BOTH the work and its recording are mirror seeds.
+	files["works/ex/existing-work/work.json"] = `{
+  "authors": ["jane-doe"],
+  "id": "existing-work",
+  "language": "en",
+  "license": "CC0-1.0",
+  "sources": [{"type": "libex-import", "ref": "B000000001", "imported_at": "2026-07-01"}],
+  "title": "Existing Work"
+}`
+	files["works/ex/existing-work/recordings/john-smith-2020.json"] = libexOnlyRecording
+	testpack.Seed(t, dir, files)
+
+	// A fresh ASIN and a different narrator, so the identifier and narrator gates
+	// both pass and only the work-slug gate can fire.
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "Different Narrator", "US: B0FRESH001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if !anyContains(res.Messages, "seeded from the libex mirror") {
+		t.Errorf("the message must say why a maintainer is needed: %v", res.Messages)
+	}
+	// It locates the WORK entry - what the maintainer has to rewrite here.
+	if !anyContains(res.Messages, worksPack+": entry existing-work") {
+		t.Errorf("the message must locate the work: %v", res.Messages)
+	}
+}
+
+// TestAddWorkSlugDuplicateOfAttestedWorkStaysDuplicate is that gate's other
+// side: a work someone has attested is an ordinary duplicate, as it always was.
+func TestAddWorkSlugDuplicateOfAttestedWorkStaysDuplicate(t *testing.T) {
+	dir := seedTree(t) // the ordinary seed: user-sourced records
+	body := addWorkBody("Existing Work", "Jane Doe", "en", "Different Narrator", "US: B0FRESH001", "web", true)
+	res := Process(Options{DataDir: dir, Template: "add-work", Body: body})
+	if res.Status != StatusDuplicate {
+		t.Fatalf("status = %q, want duplicate; messages = %v", res.Status, res.Messages)
+	}
+	if anyContains(res.Messages, "libex mirror") {
+		t.Errorf("an attested work must not be reported as a mirror seed: %v", res.Messages)
+	}
+}

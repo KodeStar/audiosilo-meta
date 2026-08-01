@@ -422,12 +422,37 @@ func (c *composer) dedupIdentifiers(asins []outASIN, isbns []string, asinHint st
 // wanted rather than that they duplicated something.
 func (c *composer) failDuplicate(ref recRef, format string, args ...any) {
 	if c.bulkMirrorOnly(ref) {
-		c.fail(StatusNeedsHuman, "%s was seeded from the libex mirror and no user has attested it yet, "+
-			"so your submission should replace what is recorded there - a maintainer will apply it "+
-			"(the intake bot only composes new records, it cannot rewrite one)", c.recLocation(ref))
+		c.failMirrorSeed(c.recLocation(ref))
 		return
 	}
 	c.fail(StatusDuplicate, format, args...)
+}
+
+// failDuplicateWork is failDuplicate for the WORK-slug collision on the add-work
+// form - the third duplicate gate, and the one that fires when a submission
+// names a book the catalogue holds under a DIFFERENT edition (a fresh ASIN and a
+// different narrator set pass the identifier and narrator gates). The tier
+// question is the same one, asked of the work record rather than a recording: a
+// work nobody but the mirror has ever stated is a takeover a maintainer applies,
+// not a duplicate to close.
+//
+// A work the catalogue load could not decode is absent from c.works and reads as
+// not-overwritable, the same safe answer bulkMirrorOnly gives.
+func (c *composer) failDuplicateWork(workSlug, format string, args ...any) {
+	if w := c.works[workSlug]; w != nil && model.BulkMirrorOnly(w.Sources) {
+		c.failMirrorSeed(c.entryLocation(pack.FamilyWorks, workSlug, ""))
+		return
+	}
+	c.fail(StatusDuplicate, format, args...)
+}
+
+// failMirrorSeed is the verdict every duplicate gate shares for a record that is
+// still nothing but a bulk-mirror seed: the submitter's data is wanted, and the
+// message says so rather than telling them they duplicated something.
+func (c *composer) failMirrorSeed(location string) {
+	c.fail(StatusNeedsHuman, "%s was seeded from the libex mirror and no user has attested it yet, "+
+		"so your submission should replace what is recorded there - a maintainer will apply it "+
+		"(the intake bot only composes new records, it cannot rewrite one)", location)
 }
 
 // bulkMirrorOnly reports whether the catalogued recording at ref is still

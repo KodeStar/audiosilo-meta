@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -28,6 +29,12 @@ const (
 	// run - mirror or user - may overwrite it again.
 	//nolint:lll // one record per line reads as the record it is
 	tierRecordingAttested = `{"added_at":"2026-01-05","asin":[{"asin":"B0LIBEX001","region":"us"}],"cover_url":"https://m.media-amazon.com/images/I/user.jpg","id":"bea-reader-2019","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"publisher":"Lost Press","release_date":"2019-05-04","runtime_min":605,"sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"},{"imported_at":"2026-07-11","ref":"B0LIBEX001","type":"openaudible-import"}],"work":"the-lost-cartographer"}`
+	// The WORK once a user has attested it. Attesting a recording also stamps its
+	// work, so a fixture that starts from an attested recording must carry this
+	// too - otherwise the work is still a mirror seed and a later run legitimately
+	// rewrites it, which would look like the recording rule leaking.
+	//nolint:lll // one record per line reads as the record it is
+	tierWorkAttested = `{"added_at":"2026-01-05","authors":["ada-mapmaker"],"id":"the-lost-cartographer","language":"en","license":"CC0-1.0","sources":[{"imported_at":"2026-01-05","ref":"B0LIBEX001","type":"libex-import"},{"imported_at":"2026-07-11","ref":"B0LIBEX001","type":"openaudible-import"}],"title":"The Lost Cartographer"}`
 )
 
 const (
@@ -217,9 +224,24 @@ func TestUserImportKeepsLibexValuesItDoesNotState(t *testing.T) {
 // been attested the ordinary posture resumes. A second user's differing (but
 // compatible) values do not win, and the create path's skip is a skip again -
 // nothing is written at all.
+//
+// The fixture is deliberate on two points, because a weaker one would prove
+// less than it looks:
+//
+//   - the WORK is seeded attested as well as the recording, so the tree holds
+//     nothing this run may overwrite. With a mirror-seed work, applyToWork would
+//     legitimately stamp it and the "unchanged" assertion would be about a
+//     different rule.
+//   - the second row states CHAPTERS, which tierRecordingAttested does not
+//     carry. That is what separates "a skip stays a skip" from enrichment: a
+//     fill-only pass would add the absent chapter table (its "existing wins" rule
+//     never fires on an absent field), while the attestation scope writes nothing
+//     at all.
 func TestUserImportDoesNotOverwriteAnAttestedRecord(t *testing.T) {
-	dataDir := seedTierTree(t, nil)
-	runUserImport(t, dataDir, userRowFull)
+	dataDir := seedTierTree(t, map[string]string{
+		tierWorkRel: tierWorkAttested,
+		tierRecRel:  tierRecordingAttested,
+	})
 	before := snapshotTree(t, dataDir)
 
 	second := `[{
@@ -230,7 +252,10 @@ func TestUserImportDoesNotOverwriteAnAttestedRecord(t *testing.T) {
 	  "language": "english",
 	  "region": "us",
 	  "publisher": "Another Imprint",
-	  "image_url": "https://m.media-amazon.com/images/I/second.jpg"
+	  "image_url": "https://m.media-amazon.com/images/I/second.jpg",
+	  "chapters": [
+	    { "title": "A Chapter The Record Lacks", "start_offset_ms": 0, "length_ms": 90000 }
+	  ]
 	}]`
 	sum := runUserImport(t, dataDir, second)
 	if sum.AttestedRecordings != 0 || sum.AttestedWorks != 0 {
@@ -440,3 +465,225 @@ func TestRecordWalksFromLibexSeedToUserAttestation(t *testing.T) {
 	}
 }
 
+// TestUserImportMergeAppliesFactsWhenTheEditionDateDiffers is the ASIN-MERGE
+// half of the attestation rule, and the case that used to lose a user's data
+// outright: their regional re-release folds its ASIN into the mirror-seeded
+// recording, and a regional edition legitimately carries its own release date.
+//
+// The merge stamps the user's provenance either way, which ENDS the record's
+// bulk-mirror-only status - so refusing the row over that date left the mirror's
+// facts frozen in a record no later run could ever overwrite, with the user's
+// facts unreachable and the same unresolvable conflict recounted on every run.
+// The release-date guard therefore does not apply in the merge scope; the
+// runtime guard, which is what tells a re-release from a different production,
+// is applied upstream before a merge is considered.
+func TestUserImportMergeAppliesFactsWhenTheEditionDateDiffers(t *testing.T) {
+	dataDir := seedTierTree(t, nil) // the mirror seed records "2019", 600 min
+	row := `[{
+	  "asin": "B0USER0001",
+	  "title_short": "The Lost Cartographer",
+	  "author": "Ada Mapmaker",
+	  "narrated_by": "Bea Reader",
+	  "language": "english",
+	  "region": "uk",
+	  "publisher": "Lost Press",
+	  "release_date": "2020-01-09",
+	  "seconds": 36300,
+	  "image_url": "https://m.media-amazon.com/images/I/user.jpg"
+	}]`
+	sum := runUserImport(t, dataDir, row)
+
+	if sum.MergedASINs != 1 || sum.AttestedRecordings != 1 {
+		t.Errorf("summary = %+v, want one merged ASIN and one attestation", sum)
+	}
+	if sum.Conflicts != 0 {
+		t.Errorf("Conflicts = %d, want 0 - a regional edition's own date is not a disagreement", sum.Conflicts)
+	}
+	var rec recordingFile
+	readEntity(t, dataDir, tierRecRel, &rec)
+	if rec.Publisher != "Lost Press" || rec.RuntimeMin != 605 {
+		t.Errorf("the merged row's facts must have won over the mirror's: %+v", rec)
+	}
+	if rec.ReleaseDate != "2020-01-09" {
+		t.Errorf("release_date = %q, want the attesting user's %q", rec.ReleaseDate, "2020-01-09")
+	}
+	if rec.CoverURL != "https://m.media-amazon.com/images/I/user.jpg" {
+		t.Errorf("cover_url = %q, want the user's", rec.CoverURL)
+	}
+	if len(rec.ASIN) != 2 {
+		t.Errorf("asin = %+v, want both editions", rec.ASIN)
+	}
+	// The stamp is only honest if the facts came with it: the record must be
+	// user-attested AND hold the user's values.
+	if got := sourceTypes(rec); len(got) != 2 || got[1] != "openaudible-import" {
+		t.Errorf("sources = %v, want the user stamp appended", got)
+	}
+
+	// The disagreement is RESOLVED, not deferred: no later run recounts it. (The
+	// second run still does one thing, and it is not this one: a merge attests
+	// only the recording, so the work is stamped by the exact-ASIN skip that now
+	// matches the merged ASIN. That is a one-time follow-on - the run after it
+	// writes nothing at all, which is where convergence is asserted.)
+	second := runUserImport(t, dataDir, row)
+	if second.Conflicts != 0 || second.AttestedRecordings != 0 || second.MergedASINs != 0 {
+		t.Errorf("second run = %+v, want no conflict, no re-merge, no re-attestation", second)
+	}
+	before := snapshotTree(t, dataDir)
+	third := runUserImport(t, dataDir, row)
+	if third.Conflicts != 0 || third.AttestedWorks != 0 || third.AttestedRecordings != 0 {
+		t.Errorf("third run = %+v, want a full no-op", third)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("attested tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestUserImportExactASINDateConflictRefusesWithoutStamping is the merge fix's
+// boundary: on an EXACT-ASIN match the two rows are about the same edition, so a
+// differing release date is a genuine disagreement and the guard still refuses
+// the row whole. Crucially the refusal writes NOTHING - no provenance stamp - so
+// the record is still a mirror seed and the next (agreeing) import can take it
+// over. That is what makes "first writer wins, flag for review" a deferral
+// rather than a silent freeze.
+func TestUserImportExactASINDateConflictRefusesWithoutStamping(t *testing.T) {
+	dataDir := seedTierTree(t, nil) // the mirror seed records "2019"
+	before := snapshotTree(t, dataDir)
+
+	conflicting := `[{
+	  "asin": "B0LIBEX001",
+	  "title_short": "The Lost Cartographer",
+	  "author": "Ada Mapmaker",
+	  "narrated_by": "Bea Reader",
+	  "language": "english",
+	  "region": "us",
+	  "publisher": "Another Imprint",
+	  "release_date": "2021-07-02"
+	}]`
+	sum := runUserImport(t, dataDir, conflicting)
+	if sum.Conflicts != 1 {
+		t.Errorf("Conflicts = %d, want 1", sum.Conflicts)
+	}
+	if sum.AttestedRecordings != 0 || sum.AttestedWorks != 0 {
+		t.Errorf("a refused row must attest nothing: %+v", sum)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+
+	// Still attestable: the refusal left the record bulk-mirror-only.
+	next := runUserImport(t, dataDir, userRowFull)
+	if next.AttestedRecordings != 1 || next.AttestedWorks != 1 {
+		t.Errorf("the record must still be attestable after a refused row: %+v", next)
+	}
+}
+
+// userRowDated states one book with a given release date, so a test can vary
+// only the precision of the date the export claims.
+const userRowDated = `[{
+  "asin": "B0LIBEX001",
+  "title_short": "The Lost Cartographer",
+  "author": "Ada Mapmaker",
+  "narrated_by": "Bea Reader",
+  "language": "english",
+  "region": "us",
+  "publisher": "Lost Press",
+  "release_date": %q,
+  "seconds": 36300
+}]`
+
+// TestAttestationKeepsTheMorePreciseReleaseDate pins the precision rule the
+// overwrite posture needs. A release date is recorded at whatever precision its
+// source stated, and datesConflict reads a prefix as agreement - so without the
+// rule a year-only export would silently coarsen a recorded full date under the
+// banner of "the user's facts win". Only the improving direction applies.
+func TestAttestationKeepsTheMorePreciseReleaseDate(t *testing.T) {
+	for _, tc := range []struct{ name, recorded, stated, want string }{
+		{"a year-only export never coarsens a recorded full date", "2019-05-04", "2019", "2019-05-04"},
+		{"a full date over a recorded year is a precision improvement", "2019", "2019-05-04", "2019-05-04"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			seedRec := strings.Replace(tierRecording, `"release_date":"2019"`, `"release_date":"`+tc.recorded+`"`, 1)
+			dataDir := seedTierTree(t, map[string]string{tierRecRel: seedRec})
+			sum := runUserImport(t, dataDir, fmt.Sprintf(userRowDated, tc.stated))
+
+			// The attestation itself still happens - this is about ONE field.
+			if sum.AttestedRecordings != 1 || sum.Conflicts != 0 {
+				t.Fatalf("summary = %+v, want a clean attestation", sum)
+			}
+			var rec recordingFile
+			readEntity(t, dataDir, tierRecRel, &rec)
+			if rec.ReleaseDate != tc.want {
+				t.Errorf("release_date = %q, want %q", rec.ReleaseDate, tc.want)
+			}
+			if rec.Publisher != "Lost Press" {
+				t.Errorf("publisher = %q, want the attesting user's - the rest of the row still applies", rec.Publisher)
+			}
+		})
+	}
+}
+
+// TestLibexEnrichDoesNotOverwriteAMirrorSeed is the run-wide half of the
+// overwrite rule, asked of the tier that must never have it: libex meeting a
+// record libex itself seeded. Both halves must hold, and a bulk-mirror run fails
+// the first one however overwritable the record looks - so a row restating every
+// fact differently fills nothing, stamps nothing, and writes nothing.
+func TestLibexEnrichDoesNotOverwriteAMirrorSeed(t *testing.T) {
+	dataDir := seedTierTree(t, nil)
+	before := snapshotTree(t, dataDir)
+
+	// Every stated fact is already recorded (differently), and the runtime agrees
+	// so the row is not refused as a contradiction: whatever this run writes, it
+	// writes because it believed it could overwrite.
+	row := `[{"asin":"B0LIBEX001","title":"The Lost Cartographer","region":"us","language":"english",` +
+		`"publisher":"Some Other Press","imageUrl":"https://m.media-amazon.com/images/I/other.jpg",` +
+		`"lengthMinutes":600,"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}]`
+	sum, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if sum.Matched != 1 {
+		t.Fatalf("Matched = %d, want 1 - the row must reach the record for this to prove anything", sum.Matched)
+	}
+	if sum.AttestedRecordings != 0 || sum.AttestedWorks != 0 {
+		t.Errorf("a libex run must never attest: %+v", sum)
+	}
+	if sum.EnrichedRecordings != 0 || sum.EnrichedWorks != 0 {
+		t.Errorf("every stated fact is already recorded, so nothing may be enriched: %+v", sum)
+	}
+	var rec recordingFile
+	readEntity(t, dataDir, tierRecRel, &rec)
+	if rec.Publisher != "Mirror Press" || rec.CoverURL != "https://m.media-amazon.com/images/I/mirror.jpg" {
+		t.Errorf("the mirror seed's own values must stand: %+v", rec)
+	}
+	if got := sourceTypes(rec); len(got) != 1 || got[0] != "libex-import" {
+		t.Errorf("sources = %v, want the single seed stamp - a libex run adds no attestation", got)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+}
+
+// TestLibexEnrichContradictionIsNotCountedAsAConflict makes the "Conflicts is
+// always 0 for a libex run" claim non-vacuous: the row DOES contradict the
+// record (it is warned about and refused), and the counter still does not move.
+// Summary.Conflicts is the intake bot's "a person disagreed with what we hold"
+// signal, and a mirror disagreeing with the catalogue is an expected artefact of
+// the source, not something to put in front of a maintainer.
+func TestLibexEnrichContradictionIsNotCountedAsAConflict(t *testing.T) {
+	dataDir := seedTierTree(t, nil) // the mirror seed records 600 min
+	before := snapshotTree(t, dataDir)
+
+	row := `[{"asin":"B0LIBEX001","title":"The Lost Cartographer","region":"us","language":"english",` +
+		`"publisher":"Some Other Press","lengthMinutes":900,` +
+		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}]}]`
+	sum, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
+	if err != nil {
+		t.Fatal(err)
+	}
+	// The contradiction really happened: the row was warned about and refused.
+	if len(sum.Warnings) != 1 || !strings.Contains(sum.Warnings[0], "conflicts with the recorded") {
+		t.Fatalf("warnings = %v, want one contradiction line", sum.Warnings)
+	}
+	if sum.Conflicts != 0 {
+		t.Errorf("Conflicts = %d, want 0 - only a user-library run's disagreement is counted", sum.Conflicts)
+	}
+	assertTreeUnchanged(t, dataDir, before)
+}

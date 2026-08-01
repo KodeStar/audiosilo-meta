@@ -332,13 +332,24 @@ entry is appended - the record is user-attested from then on, counted as
 ordinary posture (existing wins, fill-only-absent, the runtime/date
 contradiction guards, `added_at` never touched). A contradiction on a user run
 is counted as `Summary.Conflicts` and warned: first writer wins, flagged for
-review, never last-writer-wins churn. `applyScope` in `enrich.go` is what keeps
-the three call paths honest - only enrichment fills a record it may not
-overwrite, an exact-ASIN attestation still flags contradictions, and the
-inferred ASIN-merge match is silent. On the intake side a duplicate of a
-bulk-mirror-only record is `needs-human` rather than `duplicate` (the bot only
-composes new records, so a maintainer applies the takeover), and an import that
-only attested still opens a pull request.
+review, never last-writer-wins churn - and a refused row writes NOTHING, not even
+a stamp, so a mirror seed stays attestable by the next agreeing import.
+`applyScope` in `enrich.go` is what keeps the three call paths honest - only
+enrichment fills a record it may not overwrite, an exact-ASIN attestation still
+flags contradictions, and the inferred ASIN-merge match is silent. The merge
+scope is also the ONE place the release-date guard does not apply: a regional
+re-release legitimately carries its own date, and the merge stamps the run's
+provenance either way, so refusing the row there would end the record's
+mirror-only status while freezing the mirror's facts in place (the runtime
+guard, which is what tells a re-release from a different production, already ran
+upstream). A stated date never coarsens a recorded one either
+(`fillReleaseDate`: a recorded value that is a strict extension of the stated one
+stays). On the intake side a duplicate of a bulk-mirror-only record is
+`needs-human` rather than `duplicate` at all three gates - ASIN/ISBN, narrator
+set and work slug (the bot only composes new records, so a maintainer applies the
+takeover) - an import that only attested still opens a pull request, and an
+import whose ONLY effect was a conflict is `needs-human` with the adjudication
+note rather than a closed duplicate.
 
 ## Conventions
 

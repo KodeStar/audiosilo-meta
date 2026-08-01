@@ -143,16 +143,32 @@ The rule, applied at **record** granularity (not per field):
    appended. Facts the export does not state keep the mirror's values - silence
    is not an assertion. The record is now user-attested.
 3. After that first attestation the ordinary rules resume, unchanged: the
-   recorded value wins, a run fills only what is absent, and a row that
-   contradicts the record is refused whole. Where two users disagree the **first
-   writer's value stands** and the disagreement is flagged for a maintainer to
-   adjudicate - never resolved by letting the later writer win.
+   recorded value wins and a row that contradicts the record is refused whole.
+   On the **create path** an already-catalogued book is a skip, and a skip stays
+   a skip - a later user import does not backfill an attested record, even where
+   a fact is absent from it. Only **enrichment** (`metaimport ... --enrich`)
+   fills what is absent. Where two users disagree on a fact the import rules
+   *check* - a runtime more than 10% apart, or a release date that is not the
+   same date at another precision - the **first writer's value stands** and the
+   disagreement is flagged for a maintainer to adjudicate, never resolved by
+   letting the later writer win. Disagreements on the other fields (publisher
+   spelling, cover URL, chapter tables) are **not** detected: the recorded value
+   simply stands, silently, so the first writer wins there too but nobody is
+   told. Correcting one is what the "Correct data" form is for.
 4. The safety guards hold in every tier: a runtime more than 10% apart, or a
    genuinely different release date, means the row describes a different
-   production and is not applied at all. Identity is never rewritten by an
-   import - a work's title and authors, a recording's narrators, and the
-   ASIN/ISBN identifier sets are corrections (the "Correct data" form), not
-   imports. `added_at` is a creation stamp, never a fact from an export.
+   production and is not applied at all. The release-date guard has one
+   deliberate exception - the **ASIN merge**, where a user's regional re-release
+   folds its ASIN into an existing recording. That match is inferred (same work,
+   same narrators) and a regional edition legitimately carries its own date, so
+   the date is not treated as a disagreement there; the runtime guard, which is
+   what distinguishes a re-release from a different production, still decides
+   whether the merge happens at all. A stated date also never *coarsens* a
+   recorded one: a year-only export leaves a recorded full date alone. Identity
+   is never rewritten by an import - a work's title and authors, a recording's
+   narrators, and the ASIN/ISBN identifier sets are corrections (the "Correct
+   data" form), not imports. `added_at` is a creation stamp, never a fact from
+   an export.
 
 The intake bot applies the same rule from the other side: a form submission that
 duplicates a bulk-mirror-only record is routed to a maintainer rather than
@@ -165,6 +181,16 @@ a *mixed* record we cannot tell which individual fields the mirror seeded.
 Closing that would mean recording the filled field names in the source entry (or
 per-field provenance); it is not done today, and the retraction promise below is
 therefore whole-record for mixed records.
+
+The same gap shapes what a retraction may *delete*. Once users have attested
+part of a mirror tranche, a whole-record retraction of the mirror must keep the
+records that attested works still depend on - in particular the **people**: a
+credit resolves by slug, and a person record seeded by the mirror is reused by
+later imports without ever being stamped by them, so it can still read as
+bulk-mirror-only while attested works credit it. Deleting it would leave
+dangling references. `metacheck` catches exactly that (an unresolvable author or
+narrator id is a problem, not a warning), so a retraction sweep is run through
+the validator before it is merged rather than trusted to the tier test alone.
 
 ## Provenance and retraction
 
