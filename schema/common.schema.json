@@ -200,7 +200,7 @@
       }
     },
     "credit_list": {
-      "description": "Role-qualified contributor credits. One person MAY appear several times in different roles (a source really does credit one person as 'editor and translator'), but never twice in the SAME role: uniqueItems rejects the exactly-repeated object and pkg/check's credit-pair rule reports it in human terms.",
+      "description": "Role-qualified contributor credits. One person MAY appear several times in different roles (a source really does credit one person as 'editor and translator'), but never twice in the SAME role: uniqueItems rejects the exactly-repeated object and pkg/check's credit-pair rule reports it in human terms. ORDER IS NOT SIGNIFICANT and is not checked: unlike authors, whose order is the source's statement about billing, a credit list is a set of independent (person, role) facts. The importer nonetheless emits it sorted by (person, role) so one set of credits has one byte-form and a re-import is a no-op; a hand-written record is free to order it however reads best.",
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,

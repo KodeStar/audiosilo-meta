@@ -2,6 +2,7 @@ package importer
 
 import (
 	"reflect"
+	"slices"
 	"strings"
 	"testing"
 
@@ -61,11 +62,14 @@ func TestCreditWithRoles(t *testing.T) {
 		{"doubled qualifier", "Dan Veksler - Translator - translator", "Dan Veksler", []string{model.RoleTranslator}},
 		{"two different qualifiers", "Pat Two - Editor - translator", "Pat Two", []string{model.RoleEditor, model.RoleTranslator}},
 
-		// A credential title stacked onto the role is trimmed before lookup.
-		{"credential suffix", "Dr Reed - Introduction M.D.", "Dr Reed", []string{model.RoleIntroduction}},
-		{"repeated credential suffix", "Dr Reed - Introduction MD MD", "Dr Reed", []string{model.RoleIntroduction}},
-		{"generational suffix", "Ed Ward - Editor Jr.", "Ed Ward", []string{model.RoleEditor}},
-		{"credential on foreword", "Dr Reed - Foreword PhD", "Dr Reed", []string{model.RoleForeword}},
+		// A credential title stacked onto the role is trimmed before lookup, and
+		// the trimmed fragment goes back onto the NAME - it is part of what the
+		// person is called, and a generational suffix is part of who they are.
+		// See TestCredentialSuffixKeptOnName.
+		{"credential suffix", "Dr Reed - Introduction M.D.", "Dr Reed M.D.", []string{model.RoleIntroduction}},
+		{"repeated credential suffix", "Dr Reed - Introduction MD MD", "Dr Reed MD MD", []string{model.RoleIntroduction}},
+		{"generational suffix", "Ed Ward - Editor Jr.", "Ed Ward Jr.", []string{model.RoleEditor}},
+		{"credential on foreword", "Dr Reed - Foreword PhD", "Dr Reed PhD", []string{model.RoleForeword}},
 
 		// Stripped, but NOT a modeled role: the name is cleaned exactly as before
 		// and nothing is stated. This is the facts-only boundary.
@@ -147,26 +151,91 @@ func TestDoNotMapJunkIsNeitherStrippedNorARole(t *testing.T) {
 }
 
 // TestTrimCredentialTitles covers the helper directly, including the guard that
-// keeps it from ever returning an empty qualifier.
+// keeps it from ever returning an empty qualifier, and the dropped-word count
+// the caller re-appends to the name with (see TestCredentialSuffixKeptOnName).
 func TestTrimCredentialTitles(t *testing.T) {
-	cases := map[string]string{
-		"introduction m.d.":           "introduction",
-		"introduction ph.d.":          "introduction",
-		"introduction md md":          "introduction",
-		"introduction jr. m.d. ph.d.": "introduction",
-		"editor ph.d. ph.d.":          "editor",
-		"foreword phd":                "foreword",
-		"translator":                  "translator",
-		"md":                          "md", // nothing but a credential: left whole
-		"jr.":                         "jr.",
-		"smith jr.":                   "smith", // trims, but "smith" is not a role
-		"editor  and   translator":    "editor and translator",
+	cases := map[string]struct {
+		want    string
+		dropped int
+	}{
+		"introduction m.d.":           {"introduction", 1},
+		"introduction ph.d.":          {"introduction", 1},
+		"introduction md md":          {"introduction", 2},
+		"introduction jr. m.d. ph.d.": {"introduction", 3},
+		"editor ph.d. ph.d.":          {"editor", 2},
+		"foreword phd":                {"foreword", 1},
+		"translator":                  {"translator", 0},
+		"md":                          {"md", 0}, // nothing but a credential: left whole
+		"jr.":                         {"jr.", 0},
+		"smith jr.":                   {"smith", 1}, // trims, but "smith" is not a role
+		"editor  and   translator":    {"editor and translator", 0},
 	}
 	for in, want := range cases {
-		if got := trimCredentialTitles(in); got != want {
-			t.Errorf("trimCredentialTitles(%q) = %q, want %q", in, got, want)
+		got, dropped := trimCredentialTitles(in)
+		if got != want.want || dropped != want.dropped {
+			t.Errorf("trimCredentialTitles(%q) = %q, %d; want %q, %d", in, got, dropped, want.want, want.dropped)
 		}
 	}
+}
+
+// TestCredentialSuffixKeptOnName pins the review finding: a credential trim is
+// only allowed to enable the ROLE match, never to delete part of the name. "Jr."
+// is a generational suffix, and dropping it merges a son's records into his
+// father's.
+func TestCredentialSuffixKeptOnName(t *testing.T) {
+	cases := []struct {
+		in    string
+		name  string
+		roles []string
+	}{
+		// The finding's exact case: the trim enabled "editor", so "Jr." goes back
+		// on the name - in its source spelling, not the lowercased lookup form.
+		{"Theodore C. Van Alst - editor Jr.", "Theodore C. Van Alst Jr.", []string{model.RoleEditor}},
+		{"Ann Fisher - Introduction M.D.", "Ann Fisher M.D.", []string{model.RoleIntroduction}},
+		{"Ann Fisher - introduction md md", "Ann Fisher md md", []string{model.RoleIntroduction}},
+		// Negative controls: no role matched even after trimming, so nothing is
+		// stripped and nothing is moved.
+		{"Sam Jones - MD", "Sam Jones - MD", nil},
+		{"Robert Downey - Jr.", "Robert Downey - Jr.", nil},
+		{"Md. Rahman", "Md. Rahman", nil},
+		{"Some Author - Smith Jr.", "Some Author - Smith Jr.", nil},
+		// A role that needs no trimming keeps its behaviour exactly.
+		{"Rosa Vidal - Translator", "Rosa Vidal", []string{model.RoleTranslator}},
+	}
+	for _, c := range cases {
+		t.Run(c.in, func(t *testing.T) {
+			gotName, gotRoles := CreditWithRoles(c.in)
+			if gotName != c.name {
+				t.Errorf("name = %q, want %q", gotName, c.name)
+			}
+			if !reflect.DeepEqual(gotRoles, c.roles) {
+				t.Errorf("roles = %v, want %v", gotRoles, c.roles)
+			}
+		})
+	}
+
+	// The suffix must reach the person's IDENTITY too, not just the display
+	// name: that is what keeps the two Van Alsts apart.
+	if got, _ := personSlug("Theodore C. Van Alst Jr."); got == "theodore-c-van-alst" {
+		t.Fatalf("suffix did not reach the slug: %q", got)
+	}
+	plain, _ := personSlug("Theodore C. Van Alst")
+	suffixed, _ := personSlug(mustCleanName(t, "Theodore C. Van Alst - editor Jr."))
+	if plain == suffixed {
+		t.Errorf("the suffixed and plain names share one identity (%q)", plain)
+	}
+}
+
+// mustCleanName is CleanCreditName with the test's assertion that it changed
+// something, so a case that silently stops matching cannot pass by comparing
+// two unchanged names.
+func mustCleanName(t *testing.T, in string) string {
+	t.Helper()
+	out := CleanCreditName(in)
+	if out == in {
+		t.Fatalf("CleanCreditName(%q) stripped nothing", in)
+	}
+	return out
 }
 
 // TestRoleQualifiersMapIntoSchemaEnum is the drift guard between the importer's
@@ -372,4 +441,296 @@ func enrichSeed(extra string) map[string]string {
 			`"id":"enrich-me","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Enrich Me"}`,
 		"works/en/enrich-me/recordings/enrich-me-bea-reader.json": `{"asin":[{"asin":"B0CRED0003","region":"us"}],"id":"enrich-me-bea-reader","language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"enrich-me"}`,
 	}
+}
+
+// TestCreditsNeverNameTheCatchAllPerson is the HIGH finding's regression test.
+// personSlug substitutes the shared "person" record for a name Slugify folds to
+// nothing - every Korean, Cyrillic and CJK credit in the seed wave - and the
+// first cut of workCredits wrote {person: "person", role: ...} for those, a
+// metacheck-green statement that one shared record translated every such book.
+//
+// An unidentifiable person is not credited at all, and the drop is reported.
+func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
+	export := `[{
+		"asin":"B0CRED0010","title":"A Korean Translation","region":"us","language":"english",
+		"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+		"authors":[
+			{"name":"Original Author"},
+			{"name":"김영하 - Translator"},
+			{"name":"Александр Пушкин - Editor"}
+		],
+		"narrators":[{"name":"Bea Reader"}]
+	}]`
+	sum, dataDir := runLibex(t, export, false)
+
+	var work struct {
+		Authors []string       `json:"authors"`
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, "works/ak/a-korean-translation/work.json", &work)
+
+	if len(work.Credits) != 0 {
+		t.Errorf("credits = %+v, want none: neither credited name resolves to a person", work.Credits)
+	}
+	if sum.Credits != 0 {
+		t.Errorf("Summary.Credits = %d, want 0", sum.Credits)
+	}
+	// The pre-existing conflation on the AUTHORS side is deliberately unchanged:
+	// this branch fixes the false ROLE claim, not Slugify (see the PR notes).
+	if !slices.Contains(work.Authors, "person") {
+		t.Errorf("authors = %v, want the pre-existing catch-all author entry", work.Authors)
+	}
+
+	// The drop is visible, once, with the count and an example - not silent, and
+	// not one line per occurrence.
+	var lines []string
+	for _, w := range sum.Warnings {
+		if strings.Contains(w, "credits dropped") {
+			lines = append(lines, w)
+		}
+	}
+	if len(lines) != 1 {
+		t.Fatalf("want exactly one aggregated drop warning, got %v", lines)
+	}
+	if !strings.Contains(lines[0], "2 role-qualified credits dropped") || !strings.Contains(lines[0], "김영하") {
+		t.Errorf("warning does not report the count and an example: %q", lines[0])
+	}
+
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestBareStringAuthorsStateTheSameCredits is the MEDIUM finding's regression
+// test: libexNames used to CLEAN a bare-string author list before sourceCredits
+// could read its qualifiers, so the same facts spelled as a joined string
+// silently lost every role. No row in the received dump uses that shape, so
+// this pins a latent difference, not an observed loss.
+func TestBareStringAuthorsStateTheSameCredits(t *testing.T) {
+	const arrayForm = `{
+		"asin":"B0CRED0011","title":"Array Form","region":"us","language":"english",
+		"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+		"authors":[{"name":"Original Author"},{"name":"Tessa Word - Translator"}],
+		"narrators":[{"name":"Bea Reader"}]
+	}`
+	const stringForm = `{
+		"asin":"B0CRED0012","title":"String Form","region":"us","language":"english",
+		"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+		"authors":"Original Author, Tessa Word - Translator",
+		"narrators":"Bea Reader"
+	}`
+	sum, dataDir := runLibex(t, "["+arrayForm+","+stringForm+"]", false)
+
+	var fromArray, fromString struct {
+		Authors []string       `json:"authors"`
+		Credits []model.Credit `json:"credits"`
+	}
+	readEntity(t, dataDir, "works/ar/array-form/work.json", &fromArray)
+	readEntity(t, dataDir, "works/st/string-form/work.json", &fromString)
+
+	want := []model.Credit{{Person: "tessa-word", Role: model.RoleTranslator}}
+	if !reflect.DeepEqual(fromArray.Credits, want) {
+		t.Errorf("array-form credits = %+v, want %+v", fromArray.Credits, want)
+	}
+	if !reflect.DeepEqual(fromString.Credits, fromArray.Credits) {
+		t.Errorf("the two shapes disagree: string form %+v, array form %+v",
+			fromString.Credits, fromArray.Credits)
+	}
+	if !reflect.DeepEqual(fromString.Authors, fromArray.Authors) {
+		t.Errorf("the two shapes disagree on authors: %v vs %v", fromString.Authors, fromArray.Authors)
+	}
+	if sum.Credits != 2 {
+		t.Errorf("Summary.Credits = %d, want 2 (one per work)", sum.Credits)
+	}
+	if res := check.Load(dataDir); !res.OK() {
+		t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+	}
+}
+
+// TestUserAttestationWritesCredits is the test the trust-tier comment was
+// missing. A user-library export states no genres, which is why applyToWork's
+// attest-scope branch was documented as inert - but it DOES state a credit
+// whenever a credit name carries a role qualifier, so the branch is live.
+//
+// The tier rule then applies unchanged: a bulk-mirror-only work takes the
+// credit, an already-attested work does not.
+func TestUserAttestationWritesCredits(t *testing.T) {
+	const rowWithRole = `[{
+	  "asin": "B0LIBEX001",
+	  "title_short": "The Lost Cartographer",
+	  "author": "Ada Mapmaker - Editor",
+	  "narrated_by": "Bea Reader",
+	  "language": "english",
+	  "region": "us"
+	}]`
+
+	t.Run("a mirror-seeded work takes the credit", func(t *testing.T) {
+		dataDir := seedTierTree(t, nil)
+		sum := runUserImport(t, dataDir, rowWithRole)
+		if sum.AttestedWorks != 1 || sum.Credits != 1 {
+			t.Errorf("AttestedWorks = %d, Credits = %d; want 1 and 1", sum.AttestedWorks, sum.Credits)
+		}
+		var work struct {
+			Authors []string       `json:"authors"`
+			Credits []model.Credit `json:"credits"`
+		}
+		readEntity(t, dataDir, tierWorkRel, &work)
+		want := []model.Credit{{Person: "ada-mapmaker", Role: model.RoleEditor}}
+		if !reflect.DeepEqual(work.Credits, want) {
+			t.Errorf("credits = %+v, want %+v", work.Credits, want)
+		}
+		// The role ADDS to the person's standing; it never removes them from the
+		// authors list the identity model is built on.
+		if !reflect.DeepEqual(work.Authors, []string{"ada-mapmaker"}) {
+			t.Errorf("authors = %v, want the recorded author list", work.Authors)
+		}
+		if res := check.Load(dataDir); !res.OK() {
+			t.Fatalf("attested tree failed validation:\n%v", res.Problems)
+		}
+	})
+
+	t.Run("an attested work is left alone", func(t *testing.T) {
+		dataDir := seedTierTree(t, map[string]string{
+			tierWorkRel: tierWorkAttested,
+			tierRecRel:  tierRecordingAttested,
+		})
+		before := string(rawEntity(t, dataDir, tierWorkRel))
+		sum := runUserImport(t, dataDir, rowWithRole)
+		if sum.Credits != 0 {
+			t.Errorf("Summary.Credits = %d, want 0: first writer wins", sum.Credits)
+		}
+		if after := string(rawEntity(t, dataDir, tierWorkRel)); after != before {
+			t.Errorf("an attested work was rewritten:\n%s\n%s", before, after)
+		}
+	})
+}
+
+// TestSecondRowOfARunAddsMissingCredits is the in-run drop finding's regression
+// test, on both planning paths. Within one run a work's credits accrete; across
+// runs the documented fill-absent rule is unchanged, which the last subtest
+// pins from the other side.
+func TestSecondRowOfARunAddsMissingCredits(t *testing.T) {
+	t.Run("create path: two rows merging into one work", func(t *testing.T) {
+		// Same title, same author SET (so the second row merges into the work the
+		// first created), different role qualifier on the shared person.
+		const rows = `[{
+			"asin":"B0CRED0020","title":"Merged Work","region":"us","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author"},{"name":"Tessa Word - Translator"}],
+			"narrators":[{"name":"Bea Reader"}]
+		},{
+			"asin":"B0CRED0021","title":"Merged Work","region":"uk","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author"},{"name":"Tessa Word - Illustrator"}],
+			"narrators":[{"name":"Cal Voice"}]
+		}]`
+		sum, dataDir := runLibex(t, rows, false)
+
+		var work struct {
+			Credits []model.Credit `json:"credits"`
+			Sources []struct {
+				Ref string `json:"ref"`
+			} `json:"sources"`
+		}
+		readEntity(t, dataDir, "works/me/merged-work/work.json", &work)
+		want := []model.Credit{
+			{Person: "tessa-word", Role: model.RoleIllustrator},
+			{Person: "tessa-word", Role: model.RoleTranslator},
+		}
+		if !reflect.DeepEqual(work.Credits, want) {
+			t.Errorf("credits = %+v, want %+v", work.Credits, want)
+		}
+		if sum.Credits != 2 {
+			t.Errorf("Summary.Credits = %d, want 2", sum.Credits)
+		}
+		// The second row contributed a fact to the work, so its provenance is on
+		// the work too.
+		var refs []string
+		for _, s := range work.Sources {
+			refs = append(refs, s.Ref)
+		}
+		if !slices.Contains(refs, "B0CRED0021") {
+			t.Errorf("work sources = %v, want the contributing row's ref", refs)
+		}
+		if res := check.Load(dataDir); !res.OK() {
+			t.Fatalf("imported tree failed validation:\n%v", res.Problems)
+		}
+	})
+
+	t.Run("enrich path: two ASINs of one work in one run", func(t *testing.T) {
+		dataDir := t.TempDir()
+		seed := enrichSeed("")
+		// A second recording of the seeded work, with an ASIN of its own, so one
+		// run matches the same work twice.
+		seed["works/en/enrich-me/recordings/enrich-me-cal-voice.json"] =
+			`{"asin":[{"asin":"B0CRED0004","region":"uk"}],"id":"enrich-me-cal-voice","language":"en",` +
+				`"license":"CC0-1.0","narrators":["cal-voice"],"sources":[{"type":"user"}],"work":"enrich-me"}`
+		seed["people/ca/cal-voice.json"] =
+			`{"id":"cal-voice","license":"CC0-1.0","name":"Cal Voice","sources":[{"type":"user"}]}`
+		seedTree(t, dataDir, seed)
+
+		const rows = `[{
+			"asin":"B0CRED0003","title":"Enrich Me","region":"us","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author"},{"name":"Tessa Word - Translator"}],
+			"narrators":[{"name":"Bea Reader"}]
+		},{
+			"asin":"B0CRED0004","title":"Enrich Me","region":"uk","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author - Editor"},{"name":"Tessa Word - Translator"}],
+			"narrators":[{"name":"Cal Voice"}]
+		}]`
+		sum := runEnrich(t, dataDir, rows, false)
+
+		var work struct {
+			Credits []model.Credit `json:"credits"`
+		}
+		readEntity(t, dataDir, "works/en/enrich-me/work.json", &work)
+		want := []model.Credit{
+			{Person: "original-author", Role: model.RoleEditor},
+			{Person: "tessa-word", Role: model.RoleTranslator},
+		}
+		if !reflect.DeepEqual(work.Credits, want) {
+			t.Errorf("credits = %+v, want %+v", work.Credits, want)
+		}
+		// Two written, and the pair the second row REPEATED is not counted twice.
+		if sum.Credits != 2 {
+			t.Errorf("Summary.Credits = %d, want 2", sum.Credits)
+		}
+		if res := check.Load(dataDir); !res.OK() {
+			t.Fatalf("enriched tree failed validation:\n%v", res.Problems)
+		}
+	})
+
+	t.Run("a LATER run never adds to a recorded credits list", func(t *testing.T) {
+		// The cross-run rule, from the other side of the same code: run one fills
+		// the list, run two states a role the work does not carry, and it is
+		// dropped - the recorded description of who did what belongs to whoever
+		// wrote it.
+		dataDir := t.TempDir()
+		seedTree(t, dataDir, enrichSeed(""))
+		first := runEnrich(t, dataDir, `[{
+			"asin":"B0CRED0003","title":"Enrich Me","region":"us","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author"},{"name":"Tessa Word - Translator"}],
+			"narrators":[{"name":"Bea Reader"}]
+		}]`, false)
+		if first.Credits != 1 {
+			t.Fatalf("first run wrote %d credits, want 1", first.Credits)
+		}
+		before := string(rawEntity(t, dataDir, "works/en/enrich-me/work.json"))
+
+		second := runEnrich(t, dataDir, `[{
+			"asin":"B0CRED0003","title":"Enrich Me","region":"us","language":"english",
+			"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
+			"authors":[{"name":"Original Author - Editor"},{"name":"Tessa Word - Translator"}],
+			"narrators":[{"name":"Bea Reader"}]
+		}]`, false)
+		if second.Credits != 0 {
+			t.Errorf("second run wrote %d credits, want 0", second.Credits)
+		}
+		if after := string(rawEntity(t, dataDir, "works/en/enrich-me/work.json")); after != before {
+			t.Errorf("a later run changed a recorded credits list:\n%s\n%s", before, after)
+		}
+	})
 }

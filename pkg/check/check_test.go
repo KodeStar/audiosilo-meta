@@ -291,6 +291,32 @@ func TestWorkCreditsValid(t *testing.T) {
 	}
 }
 
+// TestCreditPairReportedOnce pins that a repeated (person, role) credit is
+// reported ONCE per work however many copies it has: the fix is one edit either
+// way, so five copies must not push four identical lines into a report a
+// contributor has to read.
+func TestCreditPairReportedOnce(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	dupe := strings.Repeat(`{"person":"author-one","role":"editor"},`, 5)
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[` + strings.TrimSuffix(dupe, ",") +
+		`],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if res.OK() {
+		t.Fatal("a work crediting one person five times in one role must fail")
+	}
+	n := 0
+	for _, p := range res.Problems {
+		if strings.Contains(p.Msg, `credit "author-one" is listed twice as "editor"`) {
+			n++
+		}
+	}
+	if n != 1 {
+		t.Errorf("checkCreditPairs reported the same pair %d times, want 1; problems: %v", n, res.Problems)
+	}
+}
+
 // TestPersonKindValid is the passing fixture for the optional person kind: the
 // field is accepted, absence stays the norm, and the value reaches the catalog.
 func TestPersonKindValid(t *testing.T) {

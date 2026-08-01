@@ -302,6 +302,13 @@ var roleQualifiers = map[string][]string{
 // Trimming them is safe because it only ever CHANGES an outcome when what
 // remains is a listed role: "smith jr." trims to "smith", which is not a role,
 // so that name keeps its suffix exactly as before.
+//
+// What it must NOT do is discard the fragment. "Jr." is a generational suffix -
+// part of the person's name, and part of their identity: dropping it merges
+// "Theodore C. Van Alst Jr." into "Theodore C. Van Alst", who may well be his
+// father. So the trimmed words are handed back to the caller (see
+// trimCredentialTitles' second return) and re-appended to the NAME the
+// qualifier was stripped from.
 var credentialTitles = map[string]bool{
 	"m.d.": true, "md": true, "ph.d.": true, "phd": true, "jr.": true, "jr": true,
 }
@@ -311,12 +318,17 @@ var credentialTitles = map[string]bool{
 // md", "editor ph.d. ph.d."). It never returns an empty string: a qualifier
 // that is NOTHING but a credential ("md") is left whole, and would not match a
 // role anyway.
-func trimCredentialTitles(qualifier string) string {
+//
+// dropped is how many trailing WORDS it removed, which is what lets the caller
+// take the same count off the original (uncased, un-normalized) capture and put
+// those words back on the name.
+func trimCredentialTitles(qualifier string) (trimmed string, dropped int) {
 	words := strings.Fields(qualifier)
-	for len(words) > 1 && credentialTitles[words[len(words)-1]] {
-		words = words[:len(words)-1]
+	kept := len(words)
+	for kept > 1 && credentialTitles[words[kept-1]] {
+		kept--
 	}
-	return strings.Join(words, " ")
+	return strings.Join(words[:kept], " "), len(words) - kept
 }
 
 // prefixCredits are the leading credit phrases the dump carries in front of a
@@ -455,15 +467,30 @@ func cutPrefixFold(s, prefix string) (rest string, ok bool) {
 // ("U" + U+0308) would otherwise never match its own entry. A capture that does
 // not match is retried with its trailing credential titles trimmed, which is the
 // one shape the source stacks onto an otherwise ordinary role.
+//
+// A trim that ENABLES the match hands its words back to the name, in their
+// original spelling ("Theodore C. Van Alst - editor Jr." -> "Theodore C. Van
+// Alst Jr.", credited as editor). The alternative - dropping them with the
+// qualifier - would silently rewrite a generational suffix out of a person's
+// identity and merge them with the person of the same name who has none.
 func stripRoleQualifier(name string) (string, []string) {
 	m := roleSuffixRE.FindStringSubmatchIndex(name)
 	if m == nil {
 		return name, nil
 	}
-	role := norm.NFC.String(strings.ToLower(strings.Join(strings.Fields(name[m[2]:m[3]]), " ")))
+	// The capture's words in their SOURCE form, alongside the normalized string
+	// the vocabulary is keyed by. Neither lowercasing nor NFC changes the word
+	// count, so the two stay index-for-index aligned.
+	words := strings.Fields(name[m[2]:m[3]])
+	role := norm.NFC.String(strings.ToLower(strings.Join(words, " ")))
 	roles, listed := roleQualifiers[role]
+	keep := ""
 	if !listed {
-		roles, listed = roleQualifiers[trimCredentialTitles(role)]
+		if trimmed, dropped := trimCredentialTitles(role); dropped > 0 {
+			if roles, listed = roleQualifiers[trimmed]; listed {
+				keep = strings.Join(words[len(words)-dropped:], " ")
+			}
+		}
 	}
 	if !listed {
 		return name, nil
@@ -471,6 +498,9 @@ func stripRoleQualifier(name string) (string, []string) {
 	cleaned := strings.TrimSpace(name[:m[0]])
 	if cleaned == "" {
 		return name, nil
+	}
+	if keep != "" {
+		cleaned += " " + keep
 	}
 	return cleaned, roles
 }
@@ -509,6 +539,24 @@ func splitCredits(joined string) []credit {
 		if name := strings.TrimSpace(part); name != "" {
 			cleaned, roles := CreditWithRoles(name)
 			out = append(out, credit{name: cleaned, roles: roles})
+		}
+	}
+	return out
+}
+
+// splitRawNames splits a comma-joined list of names into the source's OWN
+// spellings - trimmed and de-emptied, but not cleaned. It is what a parser
+// reaches for when it is filling sourceBook.authors/narrators from a bare
+// string: those fields are the source's structured credit list, and cleaning
+// them here would run the credit cleaner a pass too early, discarding the very
+// role qualifier sourceCredits exists to read ("Rosa Vidal - Translator" would
+// arrive as "Rosa Vidal", stating nothing). Every credit is cleaned exactly
+// once, at sourceCredits, whichever shape the source handed it over in.
+func splitRawNames(joined string) []string {
+	var out []string
+	for _, part := range strings.Split(joined, ",") {
+		if name := strings.TrimSpace(part); name != "" {
+			out = append(out, name)
 		}
 	}
 	return out

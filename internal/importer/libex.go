@@ -358,10 +358,18 @@ func libexToBook(e rawBook, asin, region string, narrators []string, lp *libexPa
 // that itself contains a comma ("Alexandre Dumas, pere") would be re-split into
 // two people. A plain string array is accepted too, and a bare string falls back
 // to the comma-split every source shares.
+//
+// Names come back in the source's own spelling on BOTH shapes: the array path
+// never cleaned them, and the bare-string path must not either (splitRawNames,
+// not SplitNames). Cleaning here would strip a trailing role qualifier before
+// sourceCredits could read it, so a hand-made row using the joined form would
+// lose every contributor role while the array form kept it - the same file,
+// two different sets of facts. No row in the received dump uses the bare form,
+// so this is a latent difference being closed, not one observed in the seed.
 func libexNames(v any) []string {
 	arr, ok := v.([]any)
 	if !ok {
-		return SplitNames(coerceStr(v))
+		return splitRawNames(coerceStr(v))
 	}
 	seen := map[string]bool{}
 	out := make([]string, 0, len(arr))

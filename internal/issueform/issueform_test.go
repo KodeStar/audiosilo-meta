@@ -502,6 +502,42 @@ func TestCorrectDataComplexField(t *testing.T) {
 	}
 }
 
+// TestCorrectDataPersonKind is the passing fixture for correcting a person's
+// entity kind - the contributor path that classifies a publisher or a full-cast
+// group without a raw pack-file PR. The submitted value is "Publisher" to pin
+// the case-insensitive coercion: the schema enum is lowercase, so the record
+// must carry "publisher".
+func TestCorrectDataPersonKind(t *testing.T) {
+	dir := seedTree(t)
+	body := correctBody("data/people/jo/john-smith.json", "kind", "Publisher", "the publisher's own about page", true)
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	person := readFile(t, dir, "people/jo/john-smith.json")
+	if !strings.Contains(person, `"kind": "publisher"`) {
+		t.Errorf("kind not corrected:\n%s", person)
+	}
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("tree failed validation after the correction:\n%v", res.Problems)
+	}
+}
+
+// TestCorrectDataPersonKindInvalid is its violating fixture: a value outside
+// the person/group/publisher enum is rejected as invalid rather than written as
+// a schema-invalid record.
+func TestCorrectDataPersonKindInvalid(t *testing.T) {
+	dir := seedTree(t)
+	body := correctBody("data/people/jo/john-smith.json", "kind", "corporation", "a hunch", true)
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+	if res.Status != StatusInvalid {
+		t.Fatalf("status = %q, want invalid; messages = %v", res.Status, res.Messages)
+	}
+	if person := readFile(t, dir, "people/jo/john-smith.json"); strings.Contains(person, `"kind"`) {
+		t.Errorf("an out-of-enum kind reached the record:\n%s", person)
+	}
+}
+
 func TestCorrectDataRecordNotFound(t *testing.T) {
 	dir := seedTree(t)
 	body := correctBody("data/works/zz/ghost/work.json", "title", "New Title", "web", true)

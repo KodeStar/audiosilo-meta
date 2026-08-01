@@ -77,6 +77,7 @@ Check the changed records for:
 - No copyrighted prose: descriptions/character text/recap text must read as neutral own-words reference writing, NOT a publisher blurb or marketing copy (no back-cover hype, no review quotes).
 - Sidecars: character/recap text within reasonable length (recap text under ~3000 chars, character description under ~1500, in_short under ~1500, ending under ~2000), reveal/through spoiler positions are non-negative integers.
 - Fabrication signals: invented ASINs/ISBNs, implausible narrator/author names, or facts that look made up.
+- Optional contributor fields, NOT fabrication signals: a work may carry credits, an array of {person, role} objects whose role comes from the project's controlled vocabulary (adaptation, afterword, contributor, editor, foreword, illustrator, introduction, preface, translator); a person may carry a kind of person, group, or publisher. A credit is legitimate when the source stated the role, and an absent kind means unclassified or an individual - neither is suspicious on its own.
 
 Review sidecars with these model-specific rules:
 - An automated sidecar source ref such as audible:<region>:<asin>, isbn:<isbn>, or audiosilo-meta:recording:<work>/<recording> is concrete provenance. A bare community source is valid for manual authoring, but "audiosilo-sidecars" by itself only names a tool and is not a source edition.

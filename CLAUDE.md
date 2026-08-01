@@ -115,7 +115,10 @@ it, `pkg/check` and every writer now refuse it loudly.
   purely parallel to `authors`, which stays the identity list - a person credited
   here is not removed from it. One person MAY hold several roles (a source really
   does say "editor and translator") but never the same role twice:
-  `checkCreditPairs`. Emitted only when a source STATED the role)) PLUS its
+  `checkCreditPairs`. Emitted only when a source STATED the role. ORDER is
+  deliberately NOT checked - a credit list is a set of independent facts, not a
+  billing order like `authors` - but the importer emits it sorted by
+  (person, role) so one set of credits has exactly one byte-form)) PLUS its
   recordings, nested as `"recordings": {"<rec-slug>": {...}}`.
   One book is one entry, so a recording edit is a read-modify-write of its work.
   Contributor roles are a WORK-level fact: a qualifier on a narrator credit is
@@ -133,8 +136,11 @@ it, `pkg/check` and every writer now refuse it loudly.
   the records that are not an individual - a full cast, a corporate credit of
   record (Audible Studios, Marvel Press). ABSENCE MEANS person: nothing infers
   the field, so an unset kind is "an individual, or unclassified", never a
-  guess. Classifying the existing corporate records is deliberately left to a
-  later, human pass.
+  guess. Nothing WRITES it automatically; the contributor path is the
+  correct-data issue form, whose allowlist takes `kind` and validates it against
+  the enum (`internal/issueform`), so classifying a record never needs a raw
+  pack-file PR. Classifying the existing corporate records is deliberately left
+  to a later, human pass.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position.
@@ -302,7 +308,16 @@ map; a nil value means "strip, state nothing", which is every qualifier with no
 home in the enum), and `planner.workCredits` records them as the work's
 `credits`, sorted by (person, role) and restricted to people the planner knows,
 so the emitted list satisfies metacheck's credit-integrity rule by
-construction; credit lists dedupe by slug and the
+construction - and NEVER naming the shared catch-all `person` record: a name
+that slugs away to nothing (Korean/Cyrillic/CJK) is a known conflation on the
+authors list but would be a false claim as a role credit, so those are dropped
+and reported in aggregate. Credits fill-absent ACROSS runs (a recorded list is
+somebody's account of the work and is never spliced into) and accrete WITHIN one
+(`addRunCredits`: a work the run itself created or filled takes the pairs later
+rows state, so a second region's row is not silently dropped). A trailing
+credential/generational fragment that had to be trimmed for the role to match is
+re-appended to the NAME ("X - editor Jr." is X Jr., an editor), never discarded.
+Credit lists dedupe by slug and the
 schema's `uniqueItems` rejects doubled credits; a **work** is (title slug
 + author set), but series volumes that share a `title_short` (or a book mapping
 onto an existing work at a different position in the same series) derive their
@@ -481,8 +496,13 @@ note rather than a closed duplicate.
   re-processing the whole dump. The importer now maps a stripped qualifier onto
   the enum (all measured language variants; combined strings like "editor and
   translator" emit two entries; an unmapped qualifier still just strips) on the
-  create path and, fill-absent, on `--enrich`; `Summary.Credits` reports what a
-  wave captured. The artifact and the API deliberately do NOT surface credits
+  create path and, fill-absent, on `--enrich`. A USER-tier attestation writes
+  credits too: a personal export states no genres but does state a role
+  whenever a credit name carries a qualifier, so `applyToWork`'s attest scope is
+  live behaviour under the tier rule (mirror-only work takes it, attested work
+  keeps what it has), not the inert guard the first draft described.
+  `Summary.Credits` reports what a wave captured, and a run-level warning
+  reports the role-qualified credits dropped for naming nobody identifiable. The artifact and the API deliberately do NOT surface credits
   yet - no schema_version bump - so the data accrues ahead of its readers.
   Remaining
   follow-ups tracked in the plan:

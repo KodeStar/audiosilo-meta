@@ -273,6 +273,11 @@ func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
 // the same defect - but it reports it as "items at index 1 and 3 are equal",
 // naming neither the person nor the role. This rule exists so the message a
 // contributor reads names both.
+//
+// Each offending (person, role) pair is reported ONCE per work, however many
+// times it repeats: the fix for five copies is the same single edit as for two,
+// so repeating an identical line per extra occurrence only buries the other
+// problems in the report.
 func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, w := range cat.Works {
 		if len(w.Credits) < 2 {
@@ -280,9 +285,13 @@ func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 		}
 		rel := idx.work[w]
 		seen := make(map[model.Credit]bool, len(w.Credits))
+		reported := make(map[model.Credit]bool)
 		for _, c := range w.Credits {
 			if seen[c] {
-				add(rel, "credit %q is listed twice as %q; one person holds a role once", c.Person, c.Role)
+				if !reported[c] {
+					reported[c] = true
+					add(rel, "credit %q is listed twice as %q; one person holds a role once", c.Person, c.Role)
+				}
 				continue
 			}
 			seen[c] = true

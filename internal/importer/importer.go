@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -151,6 +152,23 @@ type planner struct {
 	// printed - the COUNT comes from Summary.SkippedNoWork. Empty in every other
 	// mode.
 	noWorkExamples []string
+	// unnamedCredits counts the role-qualified credits workCredits refused
+	// because the person's name does not resolve to an identity of their own,
+	// and unnamedCreditNames keeps a few distinct spellings for the aggregate
+	// warning (capped at maxWarnExamples as it fills). Aggregated because the
+	// cause is one property of Slugify, not of any individual row: the seed wave
+	// hit it 38 times and 38 identical per-row lines would say no more than one
+	// counted line does.
+	unnamedCredits     int
+	unnamedCreditNames []string
+	// runCredits is the set of contributor credits THIS RUN has written onto
+	// each work it created or filled, keyed by work slug. Its PRESENCE is the
+	// permission: a work the run itself put credits on (or created) accretes the
+	// pairs later rows of the same run state, while a work whose credits came
+	// from disk keeps the documented cross-run rule (fill only what is absent).
+	// Without it a second row naming a new (person, role) pair on a work the run
+	// already touched would be dropped silently.
+	runCredits map[string]map[model.Credit]bool
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -295,6 +313,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		store:          store,
 		genres:         audibleGenreTable().withRunMemo(),
 		unmappedGenres: map[string]bool{},
+		runCredits:     map[string]map[model.Credit]bool{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
 		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
@@ -317,6 +336,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p.finalizeSeries()
 	p.reportUnmappedGenres()
+	p.reportUnnamedCredits()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -696,6 +716,17 @@ func sourceCredits(typed []string, joined string) []credit {
 // creates nothing, an unknown person is silently skipped rather than written as
 // a dangling reference.
 //
+// A name that slugs away to nothing is dropped too, and that one is a FACTS
+// rule rather than a referential one. personSlug substitutes the shared
+// catch-all "person" record for a name written entirely in a script Slugify
+// folds (Korean, Cyrillic, CJK); on the authors list that fallback is a known,
+// visible conflation, but a credit is an explicit claim about who did what, so
+// writing {person: "person", role: "translator"} would assert that one shared
+// record translated every such book - metacheck-green and false. An
+// unidentifiable person cannot be credited. The drop is reported in aggregate
+// (reportUnnamedCredits) rather than silently, because the fix is upstream in
+// Slugify, not in the row.
+//
 // The person keeps their ordinary membership in authors: a credit ADDS the role
 // the source stated, it never replaces the credit list the identity model is
 // built on.
@@ -706,7 +737,11 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 		if len(c.roles) == 0 {
 			continue
 		}
-		slug, _ := personSlug(c.name)
+		slug, fellBack := personSlug(c.name)
+		if fellBack {
+			p.noteUnnamedCredit(c.name)
+			continue
+		}
 		if !p.people[slug] {
 			continue
 		}
@@ -719,12 +754,7 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 			out = append(out, entry)
 		}
 	}
-	sort.Slice(out, func(i, j int) bool {
-		if out[i].Person != out[j].Person {
-			return out[i].Person < out[j].Person
-		}
-		return out[i].Role < out[j].Role
-	})
+	sortCredits(out)
 	return out
 }
 
@@ -852,10 +882,17 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			})
 			p.summary.NewWorks++
 			p.summary.Credits += len(credits)
+			p.recordRunCredits(slug, credits)
 			return ws
 		}
 		if SameSet(ws.authors, want) {
 			if claim.compatible(ws) {
+				// A later row of this run, merging into a work the run created:
+				// its credits are not a second source's account of an existing
+				// work, they are more of the same import, so the pairs the entry
+				// does not carry yet are merged in (a no-op for a work loaded
+				// from disk, which is never in runCredits).
+				p.mergeCreatedWorkCredits(ws.slug, facts.credits)
 				// A merge onto a SHORTENED candidate is the one case where the slug
 				// no longer carries the whole title: two different long titles by
 				// one author agreeing up to the cut land here as a single work. The
@@ -1059,6 +1096,135 @@ func (p *planner) reportUnmappedGenres() {
 	sort.Strings(names)
 	p.summary.Warnings = append(p.summary.Warnings,
 		fmt.Sprintf("unmapped genre strings: %s", strings.Join(names, ", ")))
+}
+
+// noteUnnamedCredit records one credit workCredits refused because the name has
+// no identity of its own (see the fell-back branch there). Distinct spellings
+// only, capped, so the aggregate line names examples without listing a run's
+// worth of them; the COUNT is what says how much was dropped.
+func (p *planner) noteUnnamedCredit(name string) {
+	p.unnamedCredits++
+	if len(p.unnamedCreditNames) >= maxWarnExamples || slices.Contains(p.unnamedCreditNames, name) {
+		return
+	}
+	p.unnamedCreditNames = append(p.unnamedCreditNames, name)
+}
+
+// reportUnnamedCredits appends one run-level warning for the credits dropped
+// because their person could not be identified. It is deliberately a warning
+// and not a silent drop: the names are real contributors the catalogue is
+// failing to represent, and the line is the standing evidence for fixing
+// Slugify's handling of non-Latin scripts (which would also un-conflate the
+// authors those same names already produce).
+func (p *planner) reportUnnamedCredits() {
+	if p.unnamedCredits == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d role-qualified credits dropped: the credited name does not resolve to an identifiable person",
+			p.unnamedCredits),
+		p.unnamedCreditNames))
+}
+
+// recordRunCredits remembers what this run wrote onto a work, and is what a
+// later row of the same run merges into (see runCredits). Called on the branch
+// that CREATES a work - with an empty list when the row stated no role, because
+// the permission to accrete comes from the run having created the work, not
+// from the first row happening to carry a credit.
+func (p *planner) recordRunCredits(workSlug string, credits []model.Credit) {
+	set := make(map[model.Credit]bool, len(credits))
+	for _, c := range credits {
+		set[c] = true
+	}
+	p.runCredits[workSlug] = set
+}
+
+// addRunCredits merges the (person, role) pairs a later row of the SAME run
+// states onto a work this run already wrote, and reports how many were new.
+//
+// It exists because the two planning paths both resolve several rows onto one
+// work - the create path merges every same-author row into it, and an
+// enrichment run matches every ASIN of one book to it - and the first row was
+// the only one whose credits were kept: every later row met a non-empty list
+// and the fill-absent rule dropped it. Within a run that rule is the wrong one.
+// It says an EXISTING description of a work is not to be spliced together from
+// two sources, and a work this run is itself writing has no such description to
+// protect.
+//
+// Cross-run semantics are untouched: p.runCredits starts empty every run, so a
+// work whose credits are on disk is never merged into, and a re-run of an
+// identical import writes nothing.
+//
+// The merged list is built from the TRACKED set rather than from the record's
+// decoded credits. They are the same list - the run wrote it, and every branch
+// that writes updates the set in the same breath - and building it from what
+// the run knows keeps the merge from depending on re-decoding a raw JSON array
+// it just serialized. added is 0, and merged nil, when the row states nothing
+// the work does not already carry, so the caller writes nothing.
+func (p *planner) addRunCredits(workSlug string, stated []model.Credit) (merged []model.Credit, added int) {
+	have, touched := p.runCredits[workSlug]
+	if !touched {
+		return nil, 0
+	}
+	for _, c := range stated {
+		if have[c] {
+			continue
+		}
+		have[c] = true
+		added++
+	}
+	if added == 0 {
+		return nil, 0
+	}
+	merged = make([]model.Credit, 0, len(have))
+	for c := range have {
+		merged = append(merged, c)
+	}
+	sortCredits(merged)
+	return merged, added
+}
+
+// mergeCreatedWorkCredits is the create path's half of the in-run merge: a row
+// that resolved onto a work THIS RUN created contributes the (person, role)
+// pairs the work does not carry yet.
+//
+// It is a no-op - and costs no store read - for a work loaded from disk, for a
+// row that states no role, and for a row whose every pair is already there,
+// which is the overwhelming majority of rows. A row that does add one stamps
+// its provenance on the work, because the work now records a fact that came
+// from it. (A store read that fails is fatal to the whole run, so the tracked
+// set having moved ahead of the record is never observable.)
+func (p *planner) mergeCreatedWorkCredits(workSlug string, stated []credit) {
+	if _, touched := p.runCredits[workSlug]; !touched {
+		return
+	}
+	merged, added := p.addRunCredits(workSlug, p.workCredits(stated))
+	if added == 0 {
+		return
+	}
+	raw := p.workEntryRaw(workSlug)
+	if raw == nil {
+		return
+	}
+	raw["credits"] = merged
+	p.summary.Credits += added
+	p.stampSource(raw)
+	p.putWorkEntry(workSlug, raw)
+}
+
+// sortCredits orders credits by (person, role), which is the ONE byte-form a
+// given set of credits ever has in an imported record. The list is not
+// source-ordered like authors: an author list's order is the source's statement
+// about billing, while a credit list is a set of independent (person, role)
+// facts, so a total order is what keeps two runs that state the same facts in a
+// different sequence from producing two different files.
+func sortCredits(credits []model.Credit) {
+	sort.Slice(credits, func(i, j int) bool {
+		if credits[i].Person != credits[j].Person {
+			return credits[i].Person < credits[j].Person
+		}
+		return credits[i].Role < credits[j].Role
+	})
 }
 
 // abridgedConflict reports whether two recording abridged tri-states are
