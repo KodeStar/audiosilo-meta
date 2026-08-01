@@ -228,7 +228,7 @@ pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + 
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
                     (pkg/* are consumed by the sibling audiosilo-sidecars module as ordinary deps, mirroring how audiosilo-server promoted pkg/launcher + pkg/match; pkg/scan still imports internal/importer for its pure normalization helpers, which is legal within-module and does not leak into pkg/scan's exported API)
 internal/importer   OpenAudible books.json + Libation export + libex rows -> work/recording/person/series, ASIN-dedup, writes through the pack.Store (write.go: one works-family composite entry per work, so a recording edit is a read-modify-write of its work's entry; nothing reaches disk until flush; a legacy-layout tree is refused before anything is planned; a create at a slug the store already holds fails loudly rather than overwriting - the guard against a loader-dropped entry being clobbered). added_at is stamped ONLY on the branches that create a record, never on an ASIN merge or enrichment backfill. (Shared pipeline over a typed sourceBook, with three disjoint planning modes over it: create, enrich.go's ASIN-matched backfill, recordings.go's alternate-narration pass; audiblegenres.json maps Audible genre names/browse-node ids onto the schema's genre enum, drift-guard + golden-anchor tested)
-internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> pack entries through the pack.Store (both community sidecars share ONE works-community entry, so placing recaps preserves an existing characters member; family gating is per template; a legacy tree is needs-human, not the contributor's fault), the ok/duplicate/needs-human/invalid verdict the intake workflow branches on; Result.Files names the pack files flush rewrote
+internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> pack entries through the pack.Store (both community sidecars share ONE works-community entry, so placing recaps preserves an existing characters member; family gating is per template; a legacy tree is needs-human, not the contributor's fault; a person-name correction that would change the record's SLUG is a rename - the record moves and every work crediting it has to be rewritten - so it is needs-human too, rather than being written and then reported as "invalid" by the person-slug metacheck rule), the ok/duplicate/needs-human/invalid verdict the intake workflow branches on; Result.Files names the pack files flush rewrote
 internal/format     metafmt's business logic: canonical formatting (pkg/canonical) sequenced with the self-healing placement pass (--check surveys with pack.Pending; --write uses pack.HealPending -> Flush, one survey for both the report and the fix); a tree holding a non-pack family is refused before the first write (tidying files no reader will load would make a stale checkout look maintained); Report embeds pack.Pending so every category surfaces in --check/--write; unreadable files are reported and left for a human while the rest still heals; formatting runs FIRST because Flush judges an untouched pack by its on-disk size
 internal/testpack   test support (imported only by _test.go files): seeds and reads a pack-layout tree addressed by the old per-record path syntax (a fixture syntax it parses itself), resolved onto family + entry key; shared by the importer, issueform and metaimport suites
 internal/migrate    metamigrate's business logic: its OWN parsing of the retired file-per-record layout as a storage location (issueform and testpack parse the same shape as a reference/fixture syntax - see pkg/model), the added_at git walk with release.yml's exact semantics extended to recordings, entry composition from RAW record bytes (only added_at spliced in), and greedy planning to ~50% of the caps (sized by pkg/pack's own renderer, never by re-spelled arithmetic). Renders every pack before deleting anything, and refuses what it cannot do safely: a shallow clone (which would date every record at the tip commit), an uncommitted in-place tree (git is the only recovery from an interrupted run), a tree holding no works, a non-JSON file, an already-converted family. Deterministic; the fixture-scale artifact equivalence proof lives in its tests
@@ -354,28 +354,50 @@ gaps that identity had, both measured over the full 1.13M-book dump
 
 - **initials spellings are one person** (Class B). `Slugify` turns both the dot
   and the space into hyphens, so "A.B. Kovacs" (`a-b-kovacs`) and "AB Kovacs"
-  (`ab-kovacs`) forked. `getOrCreatePerson` now mints the slug exactly as before
-  and, only when it would CREATE a record, probes the name's other initials
-  spellings; a hit is reused only if the record found there carries a name with
-  the same **marked key** (a maximal single-letter run, a dotted cluster and an
-  ALL-CAPS 2-4 letter cluster are one initials group `I:ab`; a mixed-case short
-  token is a word `W:em`). That case gate is what keeps "E. M. Brown" off "Em
-  Brown" and "M. R. James" off "Mr James". No existing id changes, no migration,
-  symmetric in both directions.
+  (`ab-kovacs`) forked. Two spellings meet only when they share a **marked key**
+  (a maximal single-letter run, a dotted cluster and an ALL-CAPS 2-4 letter
+  cluster are one initials group `I:ab`; a mixed-case short token is a word
+  `W:em`), and a cluster of EITHER spelling needs case evidence - so
+  "E. M. Brown" stays off "Em Brown" and the dotted honorifics ("Mr.", "Dr.",
+  "St.", "Jr.", "Ms.") key as words rather than as the initials they are spelled
+  like. WHICH spelling survives is decided in a batch pre-pass
+  (`initialsCensus`, `decideInitialsOf`): the catalogue's spelling if it already
+  holds one, else the batch's majority, ties by slug order - so no id depends on
+  row order or on where a `split -l` cut the input. `getOrCreatePerson` mints the
+  slug exactly as before, consults the decision only when it would CREATE a
+  record, and creates it under the DECIDED spelling; the variant slug is never
+  written into `p.people` (it would be a dangling id), so every path that
+  RESOLVES a credit rather than creating one goes through `personSlugTarget` -
+  without which a merge silently dropped the role credit it had just resolved.
+  No existing id changes and no migration: a slug that already names a record is
+  always returned as-is.
 - **studio concatenations are split off a name** (Class A) - a fourth step of the
   credit-cleaning fixpoint, in three tiers by how much evidence the string
-  carries: a closed MULTI-WORD role-label tail ("Aery Talento de Voz") and
-  `<person, 2+ tokens> for <studio tail>` carry their own evidence; every other form
-  (of/at connectors, a whitespace-delimited dash, parens/brackets/slash/pipe, and
-  the bare concatenation) requires the person half to have been **independently
-  seen as a credit**, and the bare form requires the removed tail to have been
-  seen too. That evidence is the **credit census** (`creditCensusOf`): the
-  catalogue's person slugs plus a census of the batch's credit names,
-  snapshotted before planning so nothing depends on row order. It is deliberately
-  NOT called "attested" - the trust-tier vocabulary (attest.go, LICENSING.md)
-  owns that word for a different question. Single-word labels (vox/voz/voce/sprecher) are never in the vocabulary
-  and the legal suffixes (llc/ltd/inc/gmbh) are excluded from the bare tier, so
-  "John Voce", "Barry Press" and "Walt Disney Company Ltd." are untouched.
+  carries. The two tiers that need no census are the ones the public door
+  (`CleanCreditName`/`SplitNames`) applies to unmeasured populations, so both are
+  bounded to the shape the dump measured: a closed MULTI-WORD role-label tail
+  over a **2+ token** head, and `<person, 2+ tokens> for <house, 2+ tokens ending
+  in production(s)/studio(s)>` with no connector inside the head. Every other
+  form (of/at connectors, a whitespace-delimited dash - EVERY dash form needs the
+  whitespace, an en dash inside a surname is not a boundary - parens/brackets/
+  slash/pipe, and the bare concatenation over a 2+ token tail) requires the
+  person half to have been **independently seen as a credit**, and the bare form
+  requires the removed tail to have been seen too. That evidence is the **credit
+  census** (`creditCensusOf`): the catalogue's person slugs plus a census of the
+  batch's credit names, snapshotted before planning so nothing depends on row
+  order. It is deliberately NOT called "attested" - the trust-tier vocabulary
+  (attest.go, LICENSING.md) owns that word for a different question. Single-word
+  labels (vox/voz/voce/sprecher) are never in the vocabulary and the legal
+  suffixes (llc/ltd/inc/gmbh) are excluded from the bare tier, so "John Voce",
+  "Barry Press" and "Walt Disney Company Ltd." are untouched - as are the
+  corporate names whose own name spans a connector ("The Foundation for Economic
+  Education Press") and the one-token heads a role label alone cannot vouch for
+  ("Aery Talento de Voz", "Producciones Talento de Voz"), both of which are
+  hand-remediation items rather than rule targets. A role qualifier the source
+  stacked in front of a separated studio ("Jane Doe - translator Punch Audio")
+  survives the cut as a credit; the one construction left out of model is a
+  two-token BRAND in front of a role label ("Cool Beans Voice Over"), pinned by
+  a test.
 
 Credit names are cleaned
 by `CleanCreditName` (a bounded fixpoint over four evidence-driven rules:

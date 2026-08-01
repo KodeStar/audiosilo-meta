@@ -147,6 +147,19 @@ type planner struct {
 	// depend on the order the rows arrive in. Unrelated to the trust-tier sense
 	// of "attested" (attest.go), which is why it does not use that word.
 	creditCensus creditSeenFunc
+	// initialsSurvivors is the initials rule's decision for this run
+	// (initials.go): for every person slug whose initials group is written more
+	// than one way across the catalogue and the batch, the record that group
+	// resolves to. Like creditCensus it is a SNAPSHOT taken before planning, and
+	// for the same reason - a merge decided against a map that grows during the
+	// run depends on row order, so two runs over the same rows in a different
+	// order (or one export split into chunks) would mint different ids.
+	//
+	// It is consulted BOTH where a person is created (getOrCreatePerson) and
+	// where a credit list resolves one (personSlugTarget): the variant slug is
+	// never written into p.people, so a credit minted under it has to be
+	// redirected here or it would name a record that does not exist.
+	initialsSurvivors initialsSurvivors
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -332,6 +345,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p.loadExisting()
 	p.creditCensus = p.creditCensusOf(books)
+	p.initialsSurvivors = p.decideInitialsOf(books)
 
 	switch opts.Mode {
 	case ModeEnrich:
@@ -749,6 +763,30 @@ func (p *planner) creditCensusOf(books []sourceBook) creditSeenFunc {
 	return func(name string) bool { return universe[Slugify(name)] }
 }
 
+// decideInitialsOf is the initials rule's batch pre-pass (initials.go): which
+// spelling each initials group resolves to, decided over the catalogue as loaded
+// plus every credit name the batch carries, before a single row is planned.
+//
+// It runs AFTER creditCensusOf and cleans each name through the finished census,
+// because the name getOrCreatePerson will be handed is the CLEANED one - a row
+// spelling a narrator "<name> for HotGhost Productions" contributes that
+// narrator's spelling, not the concatenation's. That is also why this cannot be
+// folded into the census loop: the census has to be complete before a name can
+// be cleaned through it.
+func (p *planner) decideInitialsOf(books []sourceBook) initialsSurvivors {
+	c := newInitialsCensus()
+	for slug, name := range p.people {
+		c.addCatalogue(slug, name)
+	}
+	for _, b := range books {
+		for _, name := range rowRawCreditNames(b) {
+			cleaned, _ := creditWithRoles(name, p.creditCensus)
+			c.addBatch(cleaned)
+		}
+	}
+	return c.decide()
+}
+
 // seriesRef is a book's claim to a position in a named series. name is always
 // non-empty (the sourceBook invariant). seqOK reports whether seq passed
 // position validation; rawSeq is the original text (for the "invalid position"
@@ -848,6 +886,11 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 			p.noteUnnamedCredit(c.name)
 			continue
 		}
+		// The person may have been created under another spelling of their
+		// initials, which is a record this credit must NAME rather than miss:
+		// resolving "A.B. Kovacs" straight through personSlug lands on a slug
+		// nothing created, and the role credit was silently dropped.
+		slug = p.personSlugTarget(slug)
 		if _, known := p.people[slug]; !known {
 			continue
 		}
@@ -891,12 +934,16 @@ func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []strin
 //
 // The one identity Slugify cannot see is an initials group respelled across the
 // separator boundary ("A.B. Kovacs" -> a-b-kovacs, "AB Kovacs" -> ab-kovacs).
-// That is a PROBE, deliberately, and only on the create branch: the slug is
-// minted exactly as it always was, and only when it is about to become a NEW
-// record are the name's other initials spellings looked up. So no existing id
-// changes, nothing needs migrating, and the probe is symmetric - each spelling
-// finds the other. See initials.go for why the match is re-checked against the
-// candidate's own stored name.
+// The run's pre-pass has already decided which spelling each such group resolves
+// to (initials.go), and it is consulted only when the minted slug is about to
+// become a NEW record: an id already in the catalogue or already created this
+// run is returned untouched, so nothing on disk ever moves and nothing needs
+// migrating.
+//
+// When the decision names a spelling that does not exist yet, the record is
+// created under THAT spelling rather than the one this row happens to use.
+// Otherwise the surviving name would be whichever row arrived first, which is
+// the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
 	slug, fellBack := personSlug(name)
 	if fellBack {
@@ -905,14 +952,44 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	if _, known := p.people[slug]; known {
 		return slug
 	}
-	if alt, found := p.findInitialsVariant(name); found {
-		return alt
+	if survivor, merges := p.initialsMerge(name); merges {
+		if _, known := p.people[survivor.slug]; known {
+			return survivor.slug
+		}
+		return p.createPerson(survivor.slug, survivor.name)
 	}
+	return p.createPerson(slug, name)
+}
+
+// createPerson emits a new person record. The caller has already established
+// that slug is free.
+func (p *planner) createPerson(slug, name string) string {
 	p.people[slug] = name
 	p.putNewEntry(pack.FamilyPeople, slug, OutPerson{
 		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
 	p.summary.NewPeople++
+	return slug
+}
+
+// personSlugTarget resolves a minted person slug onto the record that actually
+// holds that person. It is the read-only half of the initials merge: the variant
+// slug is deliberately never written into p.people (an id nothing created is a
+// dangling reference), so every path that RESOLVES a credit rather than creating
+// one has to ask here or it would drop the credit - the merged record is real,
+// but it sits at the other spelling's address.
+//
+// A slug that names an existing record is always returned as-is. That is the
+// guard that keeps the decision from redirecting credits away from a record the
+// catalogue already holds: a pre-existing pair of spellings stays a pair, each
+// serving its own credits, until a maintainer merges them.
+func (p *planner) personSlugTarget(slug string) string {
+	if _, known := p.people[slug]; known {
+		return slug
+	}
+	if survivor, decided := p.initialsSurvivors[slug]; decided {
+		return survivor.slug
+	}
 	return slug
 }
 

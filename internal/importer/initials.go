@@ -1,6 +1,7 @@
 package importer
 
 import (
+	"slices"
 	"strings"
 	"unicode"
 )
@@ -38,6 +39,13 @@ import (
 // mixed-case and could be a given name - which it is, and in that one case it is
 // also the same person. A missed merge leaves two records for a maintainer to
 // join; a wrong merge fabricates an identity. The rule never guesses.
+//
+// WHICH spelling survives is decided in a batch PRE-PASS (initialsCensus), not
+// by arrival order. A group's survivor is the catalogue's spelling if it already
+// holds one, else the batch's majority spelling, ties broken by slug order. The
+// probe then only ever resolves a name ONTO that decision, so the ids a run
+// mints do not depend on the order the rows arrive in - or on where a `split -l`
+// happened to cut the input.
 
 // maxInitialsCluster bounds an ALL-CAPS token read as an initials cluster.
 // Two-to-four letters covers every real form ("AB", "JRR", "JCH"); a longer
@@ -53,6 +61,7 @@ const maxProbeGroups = 3
 // letters, lowercased) or a plain word.
 type nameToken struct {
 	letters  string // for an initials group: "ab"; for a word: the folded token
+	raw      string // the token as the name spells it; empty for a merged run
 	initials bool
 }
 
@@ -91,7 +100,7 @@ func parseNameTokens(name string) []nameToken {
 			out[len(out)-1].letters += letters
 			continue
 		}
-		out = append(out, nameToken{letters: letters, initials: kind != tokenWord})
+		out = append(out, nameToken{letters: letters, raw: raw, initials: kind != tokenWord})
 	}
 	return out
 }
@@ -116,12 +125,25 @@ func classifyToken(raw string, shouted bool) (letters string, kind tokenKind) {
 	if len([]rune(letters)) == 1 {
 		return letters, tokenSingleLetter
 	}
-	// A dotted cluster states its own shape: the dots are the boundaries a
-	// spelling without them ("AB") elides, so no case evidence is needed.
+	if shouted || !isAllUpper(raw) {
+		// No case evidence, so nothing here is an initials group. This is the
+		// gate that keeps a DOTTED HONORIFIC off the initials of the same
+		// letters: "Mr." is spelled exactly like a dotted cluster (letters and
+		// dots, nothing else), so without it markedKey("Mr. James") equals
+		// markedKey("M. R. James") and a catalogue "Mr. James" absorbs the real
+		// M. R. James - 246 credits in the dump, and 61 records in the committed
+		// tree sit on Mr./Dr./St./Jr./Ms. spellings. Capitalized-word honorifics
+		// carry a lowercase letter; genuine initials ("A.B.", "J.R.R.", "P.J.",
+		// "M.D.") do not.
+		return letters, tokenWord
+	}
+	// A dotted cluster states its own boundaries, which is what a spelling
+	// without them ("AB") elides - so unlike the bare cluster it carries no
+	// length cap: "J.R.R." and "L.M.R." are as much one group as "A.B." is.
 	if isDottedCluster(raw) {
 		return letters, tokenCluster
 	}
-	if !shouted && isAllUpper(raw) && len([]rune(letters)) <= maxInitialsCluster {
+	if len([]rune(letters)) <= maxInitialsCluster {
 		return letters, tokenCluster
 	}
 	return letters, tokenWord
@@ -131,6 +153,13 @@ func classifyToken(raw string, shouted bool) (letters string, kind tokenKind) {
 // "J.R.R.", "M.D."), the spelling that states an initials group explicitly. At
 // least two letters and at least one interior dot are required, so "Smith." is
 // a word and "A." is handled as a single letter before this is reached.
+//
+// The SHAPE is all this answers. It is deliberately not the whole test:
+// "Mr."/"Dr."/"St."/"Jr."/"Ms." have exactly this shape, and classifyToken only
+// asks once the token's case has already said "initials". A dotted cluster
+// written in lowercase therefore keys as a word, which is a missed merge - the
+// safe direction for a rule whose only job is to decide two spellings are one
+// person.
 func isDottedCluster(raw string) bool {
 	letters, dots := 0, 0
 	for _, r := range raw {
@@ -186,6 +215,14 @@ func isAllUpper(s string) bool {
 // a name string and put through Slugify, rather than assembled from slug
 // fragments, so a variant can only ever be a slug the importer itself could
 // mint.
+//
+// The word tokens are re-rendered from the token's RAW spelling, not from its
+// comparison letters: foldToLetters drops the punctuation Slugify keeps, so a
+// letters-rendered "A.B. Hyde-White" probed "ab-hydewhite" - an address nothing
+// mints - and the whole hyphenated-surname population (every "Hyde-White",
+// "Lloyd-Jones", "Sklodowska-Curie") was unreachable. The markedKey re-check on
+// the record found there is unchanged, so this only ADDS merges the rule already
+// judged safe.
 func initialsVariantSlugs(name string) []string {
 	return initialsVariantSlugsOf(name, parseNameTokens(name))
 }
@@ -220,7 +257,7 @@ func initialsVariantSlugsOf(name string, tokens []nameToken) []string {
 		g := 0
 		for _, t := range tokens {
 			if !t.initials {
-				parts = append(parts, t.letters)
+				parts = append(parts, t.raw)
 				continue
 			}
 			if mask&(1<<g) != 0 {
@@ -248,31 +285,195 @@ func spacedInitials(letters string) string {
 	return strings.Join(parts, " ")
 }
 
-// findInitialsVariant probes the catalogue (and what this run has already
-// created) for a record holding the SAME person under a different initials
-// spelling, returning its slug.
+// initialsSurvivor is the record one initials group resolves to: the slug that
+// survives, and the name that record carries.
+type initialsSurvivor struct {
+	slug string
+	name string
+}
+
+// initialsSurvivors maps EVERY member slug of a decided group onto that group's
+// survivor - including the survivor's own slug, so one lookup answers both "does
+// this spelling merge somewhere else?" and "what name should the record I am
+// about to create carry?".
 //
-// The re-check on the candidate's own stored name is what makes the probe safe,
-// and it is not optional: "E. M. Brown" probes straight onto "em-brown", which
-// is a real and different author. Only when the record found there carries a
-// name with the same marked key - initials meeting initials - is it the same
-// person. The comparison is the marked key rather than the slug precisely
-// because the slug is what conflated them.
-func (p *planner) findInitialsVariant(name string) (slug string, found bool) {
-	// The name is parsed ONCE and the probe declines before building anything
-	// when there is no initials group to respell - which is the overwhelming
-	// majority of credits, and this runs for every person the import creates.
+// A group with only ONE slug is absent: there is nothing to decide, and a lookup
+// miss is what tells getOrCreatePerson to mint the name exactly as it always did.
+type initialsSurvivors map[string]initialsSurvivor
+
+// initialsCensus accumulates the spellings each marked key is written in, over
+// the catalogue and the batch, so the survivor can be decided BEFORE the first
+// row is planned. It is the same batch-pre-pass shape resolveWorkTitles and
+// creditCensusOf use, and for the same reason: a decision read off a map that
+// grows during the run is a decision that depends on row order - which means on
+// where a `split -l` cut the input.
+type initialsCensus struct{ groups map[string]*initialsGroup }
+
+// initialsGroup is one marked key's spellings.
+type initialsGroup struct {
+	// catalogue is the committed records in this group, slug -> the name the
+	// record carries. Its presence is decisive: an existing id is never
+	// redirected onto a spelling the batch happens to prefer.
+	catalogue map[string]string
+	// counts is how many batch credits each slug was spelled as, and names is
+	// the spellings behind each slug. Both are needed: the SLUG is the identity
+	// the majority decides, and the NAME is what the created record carries.
+	counts map[string]int
+	names  map[string]map[string]int
+}
+
+func newInitialsCensus() *initialsCensus {
+	return &initialsCensus{groups: map[string]*initialsGroup{}}
+}
+
+// group returns the group for a name, or nil when the name has no initials group
+// to respell (the overwhelming majority of credits) and so can never merge.
+func (c *initialsCensus) group(name string) (*initialsGroup, string, bool) {
 	tokens := parseNameTokens(name)
 	if _, ok := probeableGroups(tokens); !ok {
-		return "", false
+		return nil, "", false
+	}
+	slug, fellBack := personSlug(name)
+	if fellBack {
+		// The shared catch-all record, which is not an identity: never a merge
+		// target and never a member of one.
+		return nil, "", false
 	}
 	key := markedKeyOf(tokens)
-	for _, candidate := range initialsVariantSlugsOf(name, tokens) {
-		stored, known := p.people[candidate]
-		if !known || markedKey(stored) != key {
+	g := c.groups[key]
+	if g == nil {
+		g = &initialsGroup{
+			catalogue: map[string]string{},
+			counts:    map[string]int{},
+			names:     map[string]map[string]int{},
+		}
+		c.groups[key] = g
+	}
+	return g, slug, true
+}
+
+// addCatalogue records a committed person record. The record's OWN id is used
+// rather than the slug of its name: a record whose id predates a Slugify change
+// sits where it sits, and pointing a merge at an address that holds nothing
+// would strand the credit (checkPersonSlug is what stops that state arising).
+func (c *initialsCensus) addCatalogue(slug, name string) {
+	g, _, ok := c.group(name)
+	if !ok {
+		return
+	}
+	g.catalogue[slug] = name
+}
+
+// addBatch records one credit name the run is about to import, in the form
+// getOrCreatePerson will receive it.
+func (c *initialsCensus) addBatch(name string) {
+	g, slug, ok := c.group(name)
+	if !ok {
+		return
+	}
+	g.counts[slug]++
+	if g.names[slug] == nil {
+		g.names[slug] = map[string]int{}
+	}
+	g.names[slug][name]++
+}
+
+// decide resolves every group that spans more than one slug.
+//
+//	catalogue first  a spelling already committed always wins, so no existing id
+//	                 moves and no run rewrites what is on disk. Two committed
+//	                 spellings of one group are a pre-existing pair a maintainer
+//	                 owns; the lower slug is named as the survivor, and the
+//	                 consumers' "an existing record is never redirected" guard
+//	                 keeps the other one serving its own credits.
+//	then majority    the spelling the batch writes most often, which is the
+//	                 project's own "the surviving record is the one the world
+//	                 writes more often" preference.
+//	then slug order  a tie is broken lexicographically, never by arrival.
+func (c *initialsCensus) decide() initialsSurvivors {
+	out := initialsSurvivors{}
+	for _, g := range c.groups {
+		members := make([]string, 0, len(g.catalogue)+len(g.counts))
+		for slug := range g.catalogue {
+			members = append(members, slug)
+		}
+		for slug := range g.counts {
+			if _, dup := g.catalogue[slug]; !dup {
+				members = append(members, slug)
+			}
+		}
+		if len(members) < 2 {
 			continue
 		}
-		return candidate, true
+		slices.Sort(members)
+
+		survivor := initialsSurvivor{}
+		if len(g.catalogue) > 0 {
+			for _, slug := range members {
+				if name, committed := g.catalogue[slug]; committed {
+					survivor = initialsSurvivor{slug: slug, name: name}
+					break
+				}
+			}
+		} else {
+			best := 0
+			for _, slug := range members {
+				if n := g.counts[slug]; n > best {
+					best, survivor.slug = n, slug
+				}
+			}
+			survivor.name = topSpelling(g.names[survivor.slug])
+		}
+		for _, slug := range members {
+			out[slug] = survivor
+		}
 	}
-	return "", false
+	return out
+}
+
+// topSpelling is the most frequent name string, ties broken lexicographically -
+// the survivor record's name has to be decided as deterministically as its slug.
+func topSpelling(spellings map[string]int) string {
+	best, top := 0, ""
+	for name, n := range spellings {
+		if n > best || (n == best && name < top) {
+			best, top = n, name
+		}
+	}
+	return top
+}
+
+// initialsMerge reports the record a name should resolve to, when the pre-pass
+// decided that its initials group merges.
+//
+// The decision is re-checked against the name's OWN variant spellings, which is
+// what keeps the marked key from being trusted further than it was measured: a
+// survivor is only accepted when it is a slug THIS name's initials, respelled,
+// actually produce. "E. M. Brown" cannot reach "em-brown" through it, because
+// the two are not in one group at all - "Em" is mixed-case and keys as a word -
+// and no future widening of the key can make the merge happen without the
+// respelling also lining up.
+func (p *planner) initialsMerge(name string) (initialsSurvivor, bool) {
+	if len(p.initialsSurvivors) == 0 {
+		return initialsSurvivor{}, false
+	}
+	tokens := parseNameTokens(name)
+	if _, ok := probeableGroups(tokens); !ok {
+		return initialsSurvivor{}, false
+	}
+	slug, fellBack := personSlug(name)
+	if fellBack {
+		return initialsSurvivor{}, false
+	}
+	survivor, decided := p.initialsSurvivors[slug]
+	if !decided || survivor.slug == "" {
+		return initialsSurvivor{}, false
+	}
+	if survivor.slug == slug {
+		return survivor, true
+	}
+	if slices.Contains(initialsVariantSlugsOf(name, tokens), survivor.slug) {
+		return survivor, true
+	}
+	return initialsSurvivor{}, false
 }

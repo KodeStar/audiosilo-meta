@@ -155,6 +155,23 @@ var roleLabelsParsed = func() []roleLabel {
 // the two contaminants are already refused by the person-half guards.
 const tier2Connector = "for"
 
+// tier2HouseTail is tier 2's tail vocabulary, and it is deliberately NARROWER
+// than studioTail. Tier 2 cuts a name on the strength of the string alone, with
+// no census behind it, so the only shape it may claim is the one that was
+// actually measured: 66 of the 79 dump names carrying "for" are "<narrator> for
+// <house> Production(s)".
+//
+// Everything the wider vocabulary adds is a corporate name whose OWN name spans
+// the connector - "The Foundation for Economic Education Press", "Christian
+// Books for Children Publishing", "Mothers United for Literacy Media" - and
+// nothing in the string separates those from a narrator credited to a house.
+// Restricting the tail is what refuses all three, and it costs nothing that
+// evidence can recover: a "for" name with a publisher-shaped tail is not
+// cleaned rather than cleaned wrongly.
+var tier2HouseTail = map[string]bool{
+	"production": true, "productions": true, "studio": true, "studios": true,
+}
+
 // tier3Connectors are the connectors that need attestation. "of" is the reason
 // they cannot share tier 2's rule: it is only ~56% clean, because it appears
 // INSIDE whole corporate names ("Way of Life Press", "Acts of The Word
@@ -168,11 +185,12 @@ var tier3Connectors = map[string]bool{
 // ("Bob Carter & the Neighborhood Studio" must not become "Bob Carter &").
 var personTailStop = map[string]bool{"&": true, "and": true, "'s": true, "’s": true}
 
-// dashSepRE is the dash separator, and it is deliberately asymmetric: an ASCII
-// hyphen must be surrounded by whitespace, because a hyphenated surname carries
-// one without ("Alex Hyde-White"), while an en/em dash is a separator wherever
-// it appears - no name contains one.
-var dashSepRE = regexp.MustCompile(`\s+-{1,2}\s+|\s*[–—]\s*`)
+// dashSepRE is the dash separator. EVERY dash form must be surrounded by
+// whitespace, because a hyphenated surname carries one without: the ASCII case
+// is "Alex Hyde-White", and a name really is spelled with an en dash too
+// ("Marie Curie–Sklodowska"), which a bare-dash alternative cut in half. The
+// whitespace is the boundary marker; the character is only which dash was typed.
+var dashSepRE = regexp.MustCompile(`\s+(?:-{1,2}|[–—]{1,2})\s+`)
 
 // slashPipeRE is the slash/pipe separator ("Eileen Rizzo/Eye Hear Voices"). No
 // whitespace is required: neither character appears inside a name.
@@ -189,11 +207,29 @@ const (
 	closeBracketChars = ")]"
 )
 
-// minPersonTokens is the floor on a person half. One token is not enough
-// evidence to cut a name on: "Ken" is itself an attested mononym credit, so a
-// one-token floor turns "Ken Clark Smooth Voiceovers" into "Ken". Tier 1 is
-// exempt because its tail is a closed vocabulary rather than an attestation.
+// minPersonTokens is the floor on a person half, and it applies to EVERY tier.
+// One token is not enough evidence to cut a name on: "Ken" is itself an attested
+// mononym credit, so a one-token floor turns "Ken Clark Smooth Voiceovers" into
+// "Ken".
+//
+// Tier 1 used to be exempt, on the argument that a closed-vocabulary role tail
+// is evidence enough to leave a single token standing. It is not: the same cut
+// that reads "Aery Talento de Voz" as a narrator named Aery reads "Producciones
+// Talento de Voz" - a studio whose whole name is "voice talent productions" - as
+// a narrator named Producciones, and one token is precisely the shape that
+// carries no evidence either way. Both are n=1 in the dump. A one-token role-tail
+// name is now imported as the source spelled it and left for a maintainer, which
+// is what the credit-quality report already listed "Aery" as.
 const minPersonTokens = 2
+
+// minTailTokens is the floor on the removed tail in the two tiers that infer a
+// boundary rather than being handed one - the bare concatenation and tier 2.
+// Every measured target has an entity name of at least two tokens ("Punch
+// Audio", "Storyteller Productions", "HotGhost Productions"), while a ONE-token
+// tail is the shape of a surname that happens to be a studio word: "Katherine
+// Anne Press" becomes "Katherine Anne" and "Walt Disney Records" collapses onto
+// a different entity. Requiring two removes that class for free.
+const minTailTokens = 2
 
 // creditSeenFunc reports whether a name has been SEEN as a credit in its own
 // right - somewhere in the catalogue, or elsewhere in the batch being imported.
@@ -214,20 +250,25 @@ func (f creditSeenFunc) seen(name string) bool { return f != nil && f(name) }
 // returning the name unchanged when no tier's evidence bar is met. It only ever
 // shortens the name, which is what lets CreditWithRoles' fixpoint converge.
 //
+// roles is the credit roles the REMOVED tail stated, which only an explicit
+// separator can carry ("Jane Doe - translator Punch Audio"): the qualifier and
+// the studio arrive as one tail, and without this the studio strip would take
+// the role with it. It never affects the name.
+//
 // The name is tokenized ONCE here and the tokens handed down: all three tiers
 // work over the same split, and this runs per credit per row.
-func stripStudioConcat(name string, seen creditSeenFunc) string {
+func stripStudioConcat(name string, seen creditSeenFunc) (string, []string) {
 	tokens := strings.Fields(name)
 	if cleaned, ok := tier1RoleLabel(tokens, seen); ok {
-		return cleaned
+		return cleaned, nil
 	}
 	if cleaned, ok := tier2ForConnector(tokens); ok {
-		return cleaned
+		return cleaned, nil
 	}
-	if cleaned, ok := tier3SeenSplit(name, tokens, seen); ok {
-		return cleaned
+	if cleaned, roles, ok := tier3SeenSplit(name, tokens, seen); ok {
+		return cleaned, roles
 	}
-	return name
+	return name, nil
 }
 
 // tier1RoleLabel strips a closed multi-word role-label tail. The remaining
@@ -235,6 +276,13 @@ func stripStudioConcat(name string, seen creditSeenFunc) string {
 // at minPersonTokens) so a brand adjective the label dragged along goes with it
 // ("Ken Clark Smooth Voiceovers"); with nothing seen the whole prefix is
 // kept, minus any trailing connector or possessive.
+//
+// What it CANNOT tell apart is a two-token person and a two-token brand in front
+// of the same label: "Cool Beans Voice Over" is a studio, "Marnye Young Voice
+// Talent" is a narrator, and the strings are the same shape. That one is
+// out-of-model - separating them needs a name gazetteer, not another guard - and
+// pinned as such in studiotail_test.go rather than papered over by narrowing the
+// tail vocabulary until the measured targets stop cleaning too.
 func tier1RoleLabel(tokens []string, seen creditSeenFunc) (string, bool) {
 	for _, label := range roleLabelsParsed {
 		if len(tokens) <= label.tokens {
@@ -244,10 +292,7 @@ func tier1RoleLabel(tokens []string, seen creditSeenFunc) (string, bool) {
 			continue
 		}
 		person := trimPersonTail(walkDownSeen(tokens[:len(tokens)-label.tokens], seen))
-		// The 2-token floor does not apply (the tail is closed-vocabulary
-		// evidence, so "Aery Talento de Voz" -> "Aery" is sound), but the
-		// remaining guards do.
-		if !personHalfOK(person, 1) {
+		if !personHalfOK(person, minPersonTokens) {
 			continue
 		}
 		return strings.Join(person, " "), true
@@ -255,12 +300,20 @@ func tier1RoleLabel(tokens []string, seen creditSeenFunc) (string, bool) {
 	return "", false
 }
 
-// tier2ForConnector strips "<person, 2+ tokens> for <tail ending in a studio
-// word>". It consults no census at all - the "for" connector between a name and
-// a production house is its own evidence - which is why it takes none.
+// tier2ForConnector strips "<person, 2+ tokens> for <house, 2+ tokens ending in
+// a tier2HouseTail word>". It consults no census at all - the "for" connector
+// between a name and a production house is its own evidence - which is why it
+// takes none, and why every guard it does apply is structural.
+//
+// The person half may not itself CONTAIN a connector: a second one in the head
+// means the string's own name spans the first, which is the corporate shape
+// ("The Staff of Entrepreneur Media for X Productions"), not a credit to a house.
 func tier2ForConnector(tokens []string) (string, bool) {
 	person, tail, ok := splitAtConnector(tokens, func(t string) bool { return t == tier2Connector })
-	if !ok || !tailIsStudio(tail, studioTail) || !personHalfOK(person, minPersonTokens) {
+	if !ok || len(tail) < minTailTokens || !tailIsStudio(tail, tier2HouseTail) {
+		return "", false
+	}
+	if !personHalfOK(person, minPersonTokens) || containsBoundaryToken(person) {
 		return "", false
 	}
 	return strings.Join(person, " "), true
@@ -272,13 +325,13 @@ func tier2ForConnector(tokens []string) (string, bool) {
 //
 // The explicit-separator forms are tried before the bare scan, so a string that
 // carries a boundary marker is always cut AT it.
-func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, bool) {
+func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, []string, bool) {
 	// With no census, every branch below fails its seen() guard. That is the
 	// majority caller (the libex parse layer, the census bootstrap itself,
 	// SplitNames, pkg/scan), so it is worth not running the separator regexes
 	// and the bare scan to reach a foregone "no".
 	if seen == nil {
-		return "", false
+		return "", nil, false
 	}
 
 	// accept applies the guards the separator and connector forms share. The
@@ -300,14 +353,21 @@ func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, 
 			continue
 		}
 		sawSeparator = true
-		if cleaned, ok := accept(strings.Fields(personText), strings.Fields(tailText), personText); ok {
-			return cleaned, true
+		tail := strings.Fields(tailText)
+		if cleaned, ok := accept(strings.Fields(personText), tail, personText); ok {
+			// The separator carried a boundary, so what sits just inside it may
+			// be a role qualifier the source stacked in front of the studio
+			// ("Jane Doe - translator Punch Audio"). Offering the tail's leading
+			// words back to the closed role vocabulary is what keeps the credit
+			// when the studio strip takes the tail; the NAME is unaffected either
+			// way, so a miss costs a role, never an identity.
+			return cleaned, leadingRoleQualifier(tail), true
 		}
 	}
 
 	if person, tail, ok := splitAtConnector(tokens, func(t string) bool { return tier3Connectors[t] }); ok {
 		if cleaned, ok := accept(person, tail, strings.Join(person, " ")); ok {
-			return cleaned, true
+			return cleaned, nil, true
 		}
 	}
 
@@ -316,16 +376,16 @@ func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, 
 	// LONGEST person half whose two sides have both been seen, so a cut keeps as
 	// much of the name as the evidence supports.
 	if !isBareShape(tokens, sawSeparator) || !tailIsStudio(tokens, bareStudioTail()) {
-		return "", false
+		return "", nil, false
 	}
-	for i := len(tokens) - 1; i >= minPersonTokens; i-- {
+	for i := len(tokens) - minTailTokens; i >= minPersonTokens; i-- {
 		person, tail := tokens[:i], tokens[i:]
 		personText, tailText := strings.Join(person, " "), strings.Join(tail, " ")
 		if personHalfOK(person, minPersonTokens) && seen.seen(personText) && seen.seen(tailText) {
-			return personText, true
+			return personText, nil, true
 		}
 	}
-	return "", false
+	return "", nil, false
 }
 
 // bareStudioTail is studioTail without the corporate legal suffixes. It is
@@ -382,11 +442,19 @@ func splitAtRegexp(sep *regexp.Regexp, trigger string) func(string) (string, str
 	}
 }
 
-// walkDownSeen returns the longest strictly-shorter prefix of tokens that has
-// independently been seen as a credit, floored at minPersonTokens, and the
-// whole slice when none has.
+// walkDownSeen returns the longest prefix of tokens that has independently been
+// seen as a credit, floored at minPersonTokens, and the whole slice when none
+// has.
+//
+// The walk starts at the WHOLE slice, not one token short of it. Starting short
+// made the full prefix the one candidate that could never win, so an attested
+// name whose own shorter prefix is also attested was truncated to that shorter
+// prefix: "Mary Jane Watson Voice Talent" became "Mary Jane" whenever "Mary
+// Jane" was a credit somewhere, even with "Mary Jane Watson" attested. The
+// longest attested form is the answer at every other length; it has to be the
+// answer at this one too.
 func walkDownSeen(tokens []string, seen creditSeenFunc) []string {
-	for k := len(tokens) - 1; k >= minPersonTokens; k-- {
+	for k := len(tokens); k >= minPersonTokens; k-- {
 		if seen.seen(strings.Join(tokens[:k], " ")) {
 			return tokens[:k]
 		}
@@ -401,6 +469,19 @@ func walkDownSeen(tokens []string, seen creditSeenFunc) []string {
 // means the string is not the bare shape (isBareShape).
 func isBoundaryToken(folded string) bool {
 	return personTailStop[folded] || tier3Connectors[folded] || folded == tier2Connector
+}
+
+// containsBoundaryToken reports whether any token of a candidate person half is
+// a boundary token. It is the "the entity's own name spans a connector" test:
+// the head of "The Foundation for Economic Education Press" carries none, but
+// the head of a string with a SECOND connector in it always does.
+func containsBoundaryToken(tokens []string) bool {
+	for _, t := range tokens {
+		if isBoundaryToken(foldCredit(t)) {
+			return true
+		}
+	}
+	return false
 }
 
 // trimPersonTail drops the trailing tokens a person's name never ends on: a
@@ -444,13 +525,5 @@ func tailIsStudio(tail []string, vocab map[string]bool) bool {
 // here (it only returns early on an ACCEPTED cut), so re-running the regexes to
 // ask the same question would be pure duplicate work.
 func isBareShape(tokens []string, sawSeparator bool) bool {
-	if sawSeparator {
-		return false
-	}
-	for _, t := range tokens {
-		if isBoundaryToken(foldCredit(t)) {
-			return false
-		}
-	}
-	return true
+	return !sawSeparator && !containsBoundaryToken(tokens)
 }

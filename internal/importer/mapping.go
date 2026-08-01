@@ -413,12 +413,13 @@ func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
-		next := stripStudioConcat(collapseDoubledName(stripped), seen)
+		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), seen)
 		if next == cleaned {
 			break
 		}
 		cleaned = next
 		stated = append(stated, passRoles...)
+		stated = append(stated, tailRoles...)
 	}
 	return cleaned, sortedUniqueRoles(stated)
 }
@@ -519,6 +520,38 @@ func stripRoleQualifier(name string) (string, []string) {
 		cleaned += " " + keep
 	}
 	return cleaned, roles
+}
+
+// maxRoleQualifierWords is the longest roleQualifiers key, in words, derived
+// from the vocabulary rather than spelled out so the two cannot drift.
+var maxRoleQualifierWords = func() int {
+	most := 0
+	for role := range roleQualifiers {
+		if n := len(strings.Fields(role)); n > most {
+			most = n
+		}
+	}
+	return most
+}()
+
+// leadingRoleQualifier reports the schema roles the LEADING words of a removed
+// tail state, longest match first ("editor and translator" before "editor").
+//
+// It is the counterpart to stripRoleQualifier, for the one shape that reaches
+// the credit rules from the wrong end: a source that appends a role AND a studio
+// behind one separator ("Jane Doe - translator Punch Audio") hands the qualifier
+// to the studio-tail rule as part of the tail, where stripRoleQualifier can no
+// longer see it. Only a listed role ever matches, so the worst case is silence -
+// and it states roles about a tail that has already been REMOVED from the name,
+// never about the name itself.
+func leadingRoleQualifier(tail []string) []string {
+	for n := min(maxRoleQualifierWords, len(tail)); n >= 1; n-- {
+		role := norm.NFC.String(strings.ToLower(strings.Join(tail[:n], " ")))
+		if roles, listed := roleQualifiers[role]; listed {
+			return roles
+		}
+	}
+	return nil
 }
 
 // collapseDoubledName collapses a name whose words split into two identical
