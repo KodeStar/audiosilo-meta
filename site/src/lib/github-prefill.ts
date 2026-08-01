@@ -20,8 +20,6 @@ const META_SITE = 'https://meta.audiosilo.app'
 // The GitHub new-issue chooser (the template picker) - the "add it" hand-off for
 // the not-found empty states, where no specific template/prefill applies yet.
 export const issueChooserUrl = `${ISSUE_BASE}/choose`
-// The repo's canonical blob base, for deep-linking a record's source JSON file.
-const REPO_BLOB = 'https://github.com/kodestar/audiosilo-meta/blob/main'
 
 /**
  * The library-import issue form - the hand-off for a Libation/other export and
@@ -225,10 +223,15 @@ export function addRecordingIssueUrlForWork(workId: string): string {
 export type RecordKind = 'work' | 'person' | 'series'
 
 /**
- * The repo-relative data path of an entity's source JSON file - the identity the
- * correct-data issue form's `record` field is seeded with, and the tail of the
- * GitHub edit deep link. The shard directory is the slug's first two characters
- * (the data-model rule), matching how the tooling lays the tree out on disk.
+ * How the correct-data issue form's `record` field identifies an entity.
+ *
+ * It is a REFERENCE, not a location. Records are stored many to a pack file
+ * (PACK-SPEC.md), so no per-record file exists to link to - but the per-record
+ * path is the syntax contributors have always typed, every older issue and link
+ * spells it, and the intake bot parses it (internal/issueform's refPath) to
+ * resolve the entity. So it stays exactly as it was, and there is deliberately
+ * no GitHub deep link beside it: a link to a file that does not exist is worse
+ * than no link, and the supported edit path for a single fact is the form.
  */
 export function recordDataPath(kind: RecordKind, id: string): string {
   const shard = id.slice(0, 2)
@@ -243,24 +246,10 @@ export function recordDataPath(kind: RecordKind, id: string): string {
 }
 
 /**
- * A GitHub "view / edit the source file" deep link for an entity record - the
- * "Edit this <kind> on GitHub" half of the ImproveRecord affordance. Each path
- * segment is percent-encoded (ids match the slug grammar, so this is a no-op in
- * practice, but an odd id can never break the URL).
- */
-export function recordEditUrl(kind: RecordKind, id: string): string {
-  const encoded = recordDataPath(kind, id)
-    .split('/')
-    .map((seg) => encodeURIComponent(seg))
-    .join('/')
-  return `${REPO_BLOB}/${encoded}`
-}
-
-/**
  * Build a prefilled correct-data.yml issue URL with the record pre-identified -
- * the "report a problem" half of ImproveRecord. Only `record` (the entity's data
- * path) rides in the URL; the contributor fills field/values/evidence. The param
- * key mirrors the form's `record` input id.
+ * the whole of the ImproveRecord affordance. Only `record` (the entity's
+ * reference path) rides in the URL; the contributor fills field/values/evidence.
+ * The param key mirrors the form's `record` input id.
  */
 export function correctDataIssueUrl(kind: RecordKind, id: string): string {
   const p = new URLSearchParams()

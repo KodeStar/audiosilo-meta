@@ -1,0 +1,1480 @@
+{
+  "entries": {
+    "mark-of-the-fool-10": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Alex",
+              "Alexander Roth",
+              "General of Thameland"
+            ],
+            "description": "Thameland's returned General and an accomplished wizard. When Ravener spawn begin alternating between violence and unexpected aid, Alex searches for the cause while developing a way to stop the Ravener from returning after its next defeat.",
+            "id": "alex-roth",
+            "name": "Alex Roth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alex's fiancee and trusted frontline partner. A skilled warrior who fights beside her familiar Brutus, she remains part of the close group preparing to defend Thameland and bring the Ravener's repeating cycle to a permanent end.",
+            "id": "theresa",
+            "name": "Theresa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's sapient golem son and steadfast protector. Claygon assists the search for the Ravener and supports Thameland's defense, combining formidable constructed strength with an independent mind and a deep bond with the person he calls father.",
+            "id": "claygon",
+            "name": "Claygon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's familiar and constant combat companion. He accompanies her in Thameland's defense and belongs to the central circle supporting Alex's effort to survive the war and end the Ravener's cycle.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Rhinean noblewoman, lightning mage, and established member of Alex's allied circle. She continues the group's research and war preparations while approaching the completion of her own studies at the University of Generasi.",
+            "id": "isolde",
+            "name": "Isolde",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thameland's dead former deity and the creator of the Ravener. His missing corpse and throne are central targets of the search, while the mechanisms he left behind continue to shape the heroes, the realm, and the enemy they must destroy.",
+            "id": "uldar",
+            "name": "Uldar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Thameland's cycle-bound enemy, created by Uldar and capable of returning after physical destruction. Its spawn now behave in bafflingly different ways, with some committing massacres while others rescue and provision mortals, leaving its intentions uncertain.",
+            "id": "ravener",
+            "name": "The Ravener",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A knight commander who reports a wider pattern of Ravener spawn aiding people across Thameland.",
+            "id": "sir-sean-swift",
+            "name": "Sir Sean Swift",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Traveler",
+              "Saint of Ulrich"
+            ],
+            "description": "A rising divine power linked to Alex and increasingly worshiped in Thameland. Alex wonders whether her influence explains the helpful Ravener spawn, and her growing strength may be essential to the effort against the Ravener.",
+            "id": "hannah-kim",
+            "name": "Hannah Kim",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's lizardfolk mana-manipulation professor and mentor, who regards him as an exceptional and diligent student.",
+            "id": "val-rok",
+            "name": "Professor Val'Rok",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin wizard serving as Professor Salinger's assistant at Greymoor, where he works near the growing eld tree.",
+            "id": "keebus",
+            "name": "Keebus",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Keebus's crocodile familiar, enlarged to the size of a tree and protected by heavy armor. Custom potions and dungeon-core work let him overcome bone chargers and other large predators.",
+            "id": "harmless",
+            "name": "Harmless",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Selina"
+            ],
+            "description": "Alex's younger sister and a developing fire mage. She remains at Greymoor while Alex prepares for the coming war, part of the family whose safety and future give his campaign personal stakes beyond strategy.",
+            "id": "selina-roth",
+            "name": "Selina Roth",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chancellor Baelin"
+            ],
+            "description": "The University of Generasi's chancellor, an ancient archwizard, and one of Alex's principal mentors. He unexpectedly returns after an extended absence while Alex studies the Ravener's fear and restoration mechanisms.",
+            "id": "baelin",
+            "name": "Baelin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior researcher developing a poison from Uldar's material for use against the Ravener. She and Alex divide the permanent-kill problem between alchemical work and the study of the enemy's fear and restoration mechanisms.",
+            "id": "vernia-jules",
+            "name": "Vernia Jules",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carey"
+            ],
+            "description": "A fallen member of the earlier expedition whose death weighs heavily on the research group. Her loss is confirmed when Baelin returns, and grief over the choices surrounding her final battle strains the allies who survived her.",
+            "id": "carey-london",
+            "name": "Carey London",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Saint Merzhin"
+            ],
+            "description": "A divine hero and healer who joins the anti-Ravener research while burdened by guilt over Carey. He recognizes that the enemy's fear-derived power cannot simply be handled like mana and helps seek a religious countermeasure.",
+            "id": "merzhin",
+            "name": "Merzhin",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran ally and Björgrund's father who has long lived without his left leg. He consents to become the first major test of Merzhin's newly strengthened Mark of the Saint, with his son present in support.",
+            "id": "birger",
+            "name": "Birger",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Björgrin"
+            ],
+            "description": "Birger's son and an ally of Alex's group. He is present when Merzhin begins an experimental healing and supports his father's decision to undergo it.",
+            "id": "bjorgund",
+            "name": "Björgrund",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sage of Thameland"
+            ],
+            "description": "The dragon hero known as the Sage of Thameland. She volunteers to take part in Alex's next effort to unlock the hidden potential of a hero mark.",
+            "id": "drestra",
+            "name": "Drestra",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hart",
+              "Champion of Thameland"
+            ],
+            "description": "The martial hero known as the Champion of Thameland. He joins the continuing fight against Ravener spawn alongside Merzhin, Claygon, Birger, and allied soldiers.",
+            "id": "hart-red-fletcher",
+            "name": "Hart Red Fletcher",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Alex's closest cabal allies and a gifted spellcaster with a talent for languages. He develops simultaneous verbal and movement-based casting while helping prepare the heroes and their allies for the final campaign.",
+            "id": "khalik",
+            "name": "Khalik",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An illusionist and member of Alex's cabal who fights Ravener spawn and supports the group's intensive training. His magic contributes to the combined arms and spellcraft the allies are building before the decisive confrontation.",
+            "id": "thundar",
+            "name": "Thundar",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tobias"
+            ],
+            "description": "Thameland's high priest, preparing to tell the realm that the improved hero marks and battlefield aid point toward the Traveler's growing power. He sees public belief as a practical part of strengthening Thameland's defense.",
+            "id": "tobias-j",
+            "name": "High Priest Tobias J.",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chosen of Thameland",
+              "Chosen of Uldar"
+            ],
+            "description": "The Chosen of Thameland and the final hero Alex must train before testing the General's own reward. His demanding program must unite prayer, combat movement, mana control, spellcasting, and the disciplines represented by the other heroes.",
+            "id": "cedric",
+            "name": "Cedric",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied fighter who can openly wield one of Uldar's weapons as Thameland's forces prepare for the campaign against the Ravener.",
+            "id": "asmoldester",
+            "name": "Asmoldester",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fae Lord"
+            ],
+            "description": "A Fae Lord strongly implicated in the Ravener's hidden Feywild operation. He possesses Uldar's throne, and the loose wording of his pact with three Thameish heroes leaves him dangerous freedom to act against their realm.",
+            "id": "aenflynn",
+            "name": "Aenflynn",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "King Athelstan"
+            ],
+            "description": "Thameland's king, gravely wounded while defending his wife and infant son during the Ravener's assault on the capital. After receiving emergency healing, he remains with the city's defenders instead of withdrawing from the siege.",
+            "id": "king-athelstan-mercier",
+            "name": "King Athelstan Mercier",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shale"
+            ],
+            "description": "Alex's golem-business partner and a supplier of heavy magical constructs. During Thameland's kingdom-wide emergency, she offers a reserve force stronger than the ordinary dungeon-core golems Alex first requests.",
+            "id": "taraka-shale",
+            "name": "Taraka Shale",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ravener hunter and ally of Theresa who joins the expedition into the Feywild.",
+            "id": "grimloch",
+            "name": "Grimloch",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Asrai survivor who witnesses Alex's force destroy Ravener spawn and enter a mushroom-circle gate. His encounter with the strike team places him near the opening of the direct Thameish intervention in Och Fir Nog.",
+            "id": "gwilain",
+            "name": "Gwilain",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Ulrich guard restored by Hannah when Ravener spawn attack the town.",
+            "id": "peter",
+            "name": "Peter",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Ulrich guard whom Hannah saves from lethal venom during the Ravener spawn attack.",
+            "id": "paul",
+            "name": "Paul",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Asmoldester"
+            ],
+            "description": "A war spirit also known as Asmoldester. She uses greater power against the Ravener because her summoner promised a battle of extraordinary scale.",
+            "id": "the-unmaker",
+            "name": "The Unmaker",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young bakery assistant mistreated by Macarras. Alex provides funds and proposes a job in the Roth family's future Ulrich bakery.",
+            "id": "martin",
+            "name": "Martin",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Alex's summoning professor, whose observation of Alex's ninth-tier summoning removes the need for a practical examination and supports a recommendation for graduation.",
+            "id": "professor-mangle",
+            "name": "Professor Mangle",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Grimloch's older sister and a graduating wizard. She plans to continue her studies through research into tidal magic.",
+            "id": "nua-oge",
+            "name": "Nua-Oge",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit-killer whom Alex unexpectedly meets again at the Whetstone Tavern while seeking reinforcements for Thameland.",
+            "id": "kiembe",
+            "name": "Kiembe",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former king whom Alex unexpectedly meets again at the Whetstone Tavern while seeking reinforcements for Thameland.",
+            "id": "azarak-kai",
+            "name": "Azarak Kai",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0GQWJQBWT",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-10"
+      },
+      "recaps": {
+        "ending": "The Ravener is permanently dead, its active spawn have collapsed, and it can no longer create dungeon cores or return through Thameland's fear. Aenflynn and Uldar's throne are also destroyed. Uldar's corpse is recovered, publicly honored under a stabilizing account that omits his treachery, then secretly sealed away. Carey serves as Hannah's first divine herald, Merzhin opens a Church of the Traveler, and Thameland rebuilds with Claygon's cleansing and agricultural creations. Alex and Baelin make a limited supply of immortality elixirs from purified divine essence. Alex, Theresa, Khalik, Thundar, Isolde, and Grimloch drink them, while Selina must wait and several other allies defer. Och Fir Nog remains fractured into petty realms, with Gwilain offering Alex an information alliance. Alex's businesses, golem work, and flying ships expand. He considers a distant invitation to Baelin's cabal. Alex and Theresa marry in the Traveler's temple, then depart as immortal spouses to travel among other worlds.",
+        "in_short": "Alex Roth prepares Thameland for a final war while investigating the fear that restores the Ravener. He helps the heroes evolve their marks, graduates from the University of Generasi, and discovers that Aenflynn has hidden the Ravener and Uldar's stolen body and throne in Och Fir Nog. During the invasion, Alex's coalition attacks both enemies. Hannah returns as the Traveler, Carey becomes her divine herald, and Alex learns to act in several places at once. Aenflynn dies when Uldar's throne is destroyed. The Traveler and Merzhin sever the Ravener's link to Thameland, while Alex and Claygon cripple its internal mana network. Alex prevents its attempted detonation and kills it permanently. Thameland rebuilds under the Traveler's faith, and Uldar's essence yields limited immortality elixirs. Alex, Theresa, Khalik, Thundar, Isolde, and Grimloch accept immortality. More than a year later, Alex and Theresa marry and leave for an interworld honeymoon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Alex Roth overcame the Mark of the Fool and restored the lost Mark of the General, becoming the commander Uldar had tried to erase from Thameland's cycle of heroes. The truth behind that cycle was exposed: Uldar created the Ravener, and the dead deity's legacy now threatens the realm he claimed to protect. Alex and his companions survived the Hidden Church, war, and the loss of Carey London, but the Ravener remains capable of returning after destruction. Uldar's corpse and throne are missing. Alex's closest allies include his fiancee Theresa and her familiar Brutus, his sapient golem son Claygon, his sister Selina, his cabal, the heroes of Thameland, and researchers from the University of Generasi. Hannah Kim, remembered as the Saint of Ulrich and increasingly known as the Traveler, has become a growing divine presence connected to Alex. With Uldar dead and the old pattern broken, Alex's coalition must locate the Ravener, understand how it restores itself, and prevent another century of fear and destruction.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ravener spawn begin behaving in unprecedented ways. Some still massacre mortals and create major dungeon outbreaks, while others rescue travelers, disarm attackers, and leave usable food. Alex considers whether Hannah's influence is responsible, but no cause is established. Seeking a permanent victory, he consults Professor Val'Rok and shifts the problem away from raw mana manipulation toward the energy that rebuilds the Ravener after death. Their leading theory is that fear gathered across Thameland fuels its return. Alex develops several overlapping safeguards: poison the enemy's mana generation with material derived from Uldar, disrupt its restoration protocols, deny its fear supply, and sever any divine bond tying it to Thameland. Baelin returns and accepts a supporting role, though he warns that even his own power may not guarantee victory. Alex also completes more of his university requirements, publishes his blood-magic research, and starts viewing his long future as a succession of possible callings rather than one fixed vocation. Meanwhile, competition for dungeon-core substance draws mercenaries into Thameland as the war intensifies.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex's researchers identify many redundant restoration systems inside the Ravener and prepare both a terrain-stabilizing machine and an injector for their nearly finished poison. Merzhin concludes that a kingdom-wide divine interdiction could separate Thameland from the enemy's fear-based power. His first proposal would destroy his soul gate and kill him, a sacrifice he seeks out of guilt over Carey. Alex persuades him that living to undo Uldar's legacy is the better form of atonement, and Hannah becomes the preferred bearer of the interdiction if she can return fully. A hidden feature of the hero marks then emerges. When a hero masters a useful discipline taught by the General, the mark can evolve from gold to white. Merzhin's transformed mark vastly improves his divine capacity, allowing him to restore Birger's missing leg. Alex adapts nonverbal magic to Drestra's true dragon form, evolving the Sage's mark, then trains Hart in movement and aerial combat, evolving the Champion's mark. The Ravener recognizes the heroes' growing strength, remains divided between aid and destruction, and begins producing Skyfire Swarms to kill Alex. Cedric starts the final and most complex hero-training program.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex completes his remaining examinations and graduates from the University of Generasi with distinction. Isolde is named valedictorian and uses her address to emphasize responsibility alongside power. Afterward, she gives Cedric a traditional Rhinean courtship gift and asks to court him. He accepts, and her family agrees to learn more about him rather than reject the match. At Alex's own celebration, he looks toward a future in which Thameland no longer faces recurring Ravener cycles. The military preparation continues alongside these milestones. Cedric combines prayer, movement, grounding, mana control, and spellcraft as he works toward the final mark evolution. Tobias publicly recognizes the Traveler's divine elevation, reveals Alex's new status as General, and announces that the other hero marks have improved. Alex then leads field operations while directing faith toward the Traveler. The heroes, cabal, and university allies strengthen their magic and refine anti-Ravener venom, mana-draining devices, and protection against dungeon terrain control. Thameland's forces grow more confident and capable, but the central strategic problem remains unchanged: no search has found the Ravener.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Surface searches fail to locate the Ravener, Uldar's corpse, or the missing throne. Alex recruits elite fighters from the Whetstone Tavern, including former allies Kiembe and Azarak, while the heroes continue defeating spawn in the field. Cedric finally casts nonverbally through his integrated fighting style, causing his mark to turn white. Contact among all five heroes then evolves Alex's Mark of the General. Its new power divides his awareness into coordinated streams, letting him perceive and cast several spells at once. The Ravener reacts by restoring ancient offensive processes and sending three Skyfire Swarms to hunt the General. Alex organizes a defense away from Welling. His simultaneous spellwork, Drestra's acid tornado, and the combined attacks of the allies drive all three fiery swarms into the sea and destroy them. The defenders follow the broad trail of devastation back toward its apparent origin but find no entrance or divine trace. Brutus retrieves a mushroom fragment that Drestra recognizes as part of a Fae gate. The clue explains the failed search and points to the Feywild as the Ravener's hiding place.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The heroes realize their earlier pact with Aenflynn may have supplied the Fae Lord with Ravener spawn and broad freedom to work against Thameland. Aenflynn is then revealed using Uldar's throne, while the Ravener launches a coordinated invasion through Feygates. The capital is breached, King Athelstan is wounded defending his family, and settlements across the realm face specialized spawn. Alex empowers defenders and races between threatened strongpoints. Taraka Shale supplies cannon-equipped golems, Vernia Jules holds the research castle with chaos bombs, and Baelin secures Generacian reinforcements. Unable to win by responding to every attack, the allies form a sixteen-member strike force and enter the Feywild. Aenflynn admits stealing Uldar's corpse and throne and allowing the invasion while he uses divine power against rival Fae realms. His offer to evacuate Thameland in exchange for surrender is rejected. Baelin traces the Fae Lord to his palace and leaves to confront him. In Och Fir Nog, Alex's force discovers open dungeon craters producing spawn and a gate network carrying them into Thameland. The group splits to bury gates, find Uldar's body, and locate the Ravener.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex's courage spell suppresses fear across Thameland, unexpectedly starving the Ravener of fuel for new cores and spawn. While Baelin battles Aenflynn, Alex uses invisible astral Angeli to follow immense divine traces from the Fae Lord's castle. Aenflynn confirms the alliance by sending the Ravener divine power. The enemy responds with elite spawn and living dungeon cores that can rapidly create armies, causing severe losses in Thameland. Alex destroys an ambush and follows the trail underground, where the separate teams reunite above the probable lair. Merzhin senses Uldar's presence below. The assault plan gives highest protection to the machine that prevents dungeon terrain control, the poison injectors, and Merzhin. Alex intends to enter the Ravener with Claygon and disable its internal mana nodes, while Merzhin and Alex later destroy Aenflynn's throne. The group enters a vast tunnel network, defeats petrifiers, and confirms that the stabilizing machine can stop the Ravener from crushing them with moving stone. Björgrund proposes digging directly toward Uldar's body instead of following prepared passages. The bypass succeeds, but the Ravener detects their approach and sends elite defenders to intercept them.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party defeats a tunneling ambush and reaches the Ravener's cavern, where Uldar's corpse sits across a lake. Merzhin attempts a conversation. The Ravener confirms that Uldar changed Generals into Fools and still insists that Thameland must face endless trials, even though its creator is dead. Claygon argues that a created being can choose a new purpose, but the Ravener refuses. Alex threatens Uldar's corpse to expose the enemy's priority, and battle begins. The coalition seals entrances and fights through death beams, ethereal parasites, mana poison, and waves of spawn. Alex touches the Ravener but cannot teleport into its shifting interior. He therefore draws another poison attack, feigns defeat, and leaves with Merzhin to destroy the throne sustaining Aenflynn's aid. At Aenflynn's castle, they enter invisibly but are trapped between two lethal divine wards. Merzhin's interdiction prevents the Fae Lord from directly killing them, though guards can still enter. Baelin refuses to surrender and continues fighting outside. Alex holds the confined space in a steel body while Merzhin works on the ward. At the same time, Alex's courage spell expires across Thameland, allowing fear to feed the Ravener again.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thameland's defenses approach collapse as fear multiplies the Ravener's forces. Selina builds a shrine to the Traveler and joins her faith with that of the royal family and other believers. The resulting connection lets Alex and Selina briefly reach their dead parents and find Hannah and Carey beyond life. Hannah returns as the Traveler, with Carey transformed beside her. She empowers Tobias, rescues threatened settlements, heals defenders, and gives the realm a decisive reprieve. Carey appears inside Aenflynn's throne room and helps Merzhin attack the inner ward. Strengthened by Hannah, Alex passes through the outer barrier. He then understands the Traveler's gift as control of space itself and learns to exist in several places at once. He renews the courage protecting Thameland, assists at the throne, and enters the Ravener's crystalline inner world with a mana-siphoning poison device. Despite the construct's attacks and regenerating pathways, Alex reaches a mana-generation tower and injects the prepared toxin. The node cracks, loses control, and must be cut away from the Ravener's network. Outside, Alex also captures a dungeon core and orders its fire cloud to defend mortals, turning the enemy's own production against it.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claygon chooses to absorb the energy in one of the Ravener's nodes and evolves into steel mixed with dungeon-core substance. He gains death beams and the ability to create spawn, which he directs against the Ravener while Alex continues poisoning towers. At Aenflynn's castle, Merzhin, Carey, and Alex finally breach the inner ward and begin breaking Uldar's throne. Baelin overpowers Aenflynn and brings him into the chamber. Alex traps the Fae Lord in the rupturing throne, whose released divinity kills him and destroys the castle. In the Ravener's central node, Alex finds a replica throne room carrying mana, divinity, and mortal fear through the entire construct. The Traveler and Merzhin impose the realm-wide interdiction, severing Thameland from the Ravener. Facing permanent death, the Ravener tries to detonate itself and every dungeon core in the realm. The companions return to help restrain it while Theresa removes Uldar's corpse. Alex uses Kelda's conductive coin to complete his rewired circuit. Poisoned mana burns through the Ravener, stops the explosion, and destroys its ability to recover. The Ravener dies permanently, all active spawn collapse, and every principal fighter survives.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The coalition returns with Uldar's corpse and the Ravener's remains. Claygon turns his new abilities toward restoration, creating fog cleansers that remove battlefield hazards and earth tillers that renew damaged soil. Carey identifies herself as the Traveler's first divine herald, reconciles with Vernia Jules, and joins Merzhin in treating the wounded. Three months later, Thameland is rebuilding and no surviving spawn have been found. The leadership publicly announces Uldar's death but hides his treachery to preserve stability. His funeral is staged as an ascent, while Alex and Carey secretly move the body to a sealed throne room under Baelin's wards. The Traveler becomes Uldar's public successor. Aenflynn's death fractures Och Fir Nog, and Gwilain offers to serve as Alex's source of information there. Nine months after victory, Merzhin opens a rebuilt Church of the Traveler. Alex and Baelin use purified essence taken from Uldar to make a limited supply of immortality elixirs. Alex, Theresa, Khalik, Thundar, Isolde, and Grimloch drink them. Drestra, Cedric, Hart, Björgrund, and Merzhin defer or decline for now, while Selina's choice is reserved until she is fully grown.",
+            "through": {
+              "chapter": 97
+            }
+          },
+          {
+            "scope": "book",
+            "text": "More than a year and a half after the Ravener's fall, Thameland and Generasi benefit from Claygon's protective creations, improved harvests, growing trade, and safer medical uses of Alex and Hart's blood-magic work. Alex's bakeries, magic shops, golem partnership with Shale, and flying-ship projects flourish. Selina advances as a fire mage and looks toward independent adventures. Alex and Theresa hold a small wedding in the Temple of the Traveler rather than accept a state ceremony. Hannah officiates under the Thameish Circle tradition, and the couple exchange vows before their families and closest companions. At the reception, Khalik and Sinope reveal that their own wedding is approaching, while the wider group reaffirms its lasting bonds. Alex briefly dreams that old enemies have returned, but wakes and confirms that Minervus, Leopold, the Ravener, Aenflynn, and Uldar remain gone. Before leaving with Theresa, he visits Ulrich, helps an abused bakery assistant named Martin, and receives a carved tribute from the town guards. Alex and Theresa then depart as immortal spouses for a honeymoon among other worlds, with the Traveler's power and Baelin's spells supporting their journey.",
+            "through": {
+              "chapter": 102
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0GQWJQBWT",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-10"
+      }
+    },
+    "mark-of-the-fool-2": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Alex",
+              "the Fool"
+            ],
+            "description": "A Generasi student, force mage, and potion-maker who conceals the divine mark that impedes his spellcraft and fighting. He supports his frightened younger sister while entering Baelin's dangerous solo trial in the Barrens.",
+            "id": "alex-roth",
+            "name": "Alex Roth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alex's ten-year-old sister. The discovery of her powerful fire affinity has revived painful memories of their family tragedy, leaving her withdrawn and afraid of what her magic might make her.",
+            "id": "selina",
+            "name": "Selina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theresa"
+            ],
+            "description": "Alex's trusted household companion, a hunter and life-force cultivator who trains steadily while helping him reassure and protect Selina through her distress over fire magic.",
+            "id": "theresa-lu",
+            "name": "Theresa Lu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chancellor Baelin"
+            ],
+            "description": "Generasi's chancellor and Alex's combat instructor. He oversees a hazardous Barrens exercise with emergency safeguards and expects students to solve lethal-looking problems through preparation and judgment.",
+            "id": "baelin",
+            "name": "Baelin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A minotaur classmate who joins Alex's Barrens group after securing his own trial orb.",
+            "id": "thundar",
+            "name": "Thundar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, exceptionally strong sharkman classmate who teams with Alex after both students secure their trial orbs.",
+            "id": "grimlock",
+            "name": "Grimlock",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A highly capable classmate in Alex's combat cohort who completes the Barrens exercise with Najyah. He is already established as one of Alex's dependable student allies.",
+            "id": "khalik",
+            "name": "Khalik",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Khalik's eagle familiar and partner in the combat course. She supports his work in the Barrens and gives him an aerial companion able to scout and act alongside the student group.",
+            "id": "najyah",
+            "name": "Najyah",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A student who completes the Barrens trial separately under a protective working of water and darkness. She is part of the broader combat cohort around Alex and Grimlock.",
+            "id": "nua-oge",
+            "name": "Nua-Oge",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jules"
+            ],
+            "description": "Alex's potions professor and academic sponsor. She recognizes the care and progress in his laboratory work and provides a reference supporting his effort to gain practical workshop experience.",
+            "id": "professor-jules",
+            "name": "Professor Jules",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carey"
+            ],
+            "description": "A Generasi student and supporter of Uldar who works with Derek Warren on a campaign for priests to regain access to campus.",
+            "id": "carey-london",
+            "name": "Carey London",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Generasi student who works with Carey London to distribute flyers for a campaign seeking renewed campus access for priests of Uldar.",
+            "id": "derek-warren",
+            "name": "Derek Warren",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A student mage who reacts with immediate anger when she sees Derek and leaves rather than joining the conversation.",
+            "id": "isolde",
+            "name": "Isolde",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Val'Rok"
+            ],
+            "description": "Generasi's mana-manipulation professor. He permits Alex to challenge the examination for first-year credit, giving the unusually advanced student a chance to prove both theoretical and practical mastery.",
+            "id": "professor-val-rok",
+            "name": "Professor Val'Rok",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's Cerberus, present with Alex's group during the Barrens trial.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Red Siren. He and his brother welcome Alex's household aboard and teach Alex and Theresa further elements of their spear-and-oar dance.",
+            "id": "fan-dor",
+            "name": "Fan-Dor",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly hired assistant at the same golem workshop as Alex. Alex is unsettled to find him entering Shale's workshop as a coworker.",
+            "id": "minervus",
+            "name": "Minervus",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ram"
+            ],
+            "description": "Alex's force-magic professor, who has begun watching his conspicuously slow combat casting. His concern places pressure on Alex to improve without exposing the secret cause of his difficulty.",
+            "id": "professor-ram",
+            "name": "Professor Ram",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fire wielder who offers Selina a gentler understanding of her affinity. Drawing on a culture that reveres fire, she explains that controlled flame can protect and heal as well as destroy.",
+            "id": "shiani",
+            "name": "Shiani",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An orc golem crafter who supervises Alex at Shale's workshop. He gives the young assistant practical experience preparing cores and sculpting bodies for working constructs.",
+            "id": "lagor",
+            "name": "Lagor",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "mana vampire"
+            ],
+            "description": "An uncaught mana vampire whose attacks disrupt travel around Generasi. Its bounty draws guards, professional hunters, and reckless seekers into the search.",
+            "id": "the-man-of-empire",
+            "name": "The Man of Empire",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Isolde's landed cousin and the host of a country villa. He guides her visiting friends along an authorized path toward the neighboring dryads' territory.",
+            "id": "giuseppe-marco-de-paolo",
+            "name": "Giuseppe Marco de Paolo",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dryad leader who ends her people's armed detention of Giuseppe's visitors, apologizes, and explains the threats that prompted their caution.",
+            "id": "harmonia",
+            "name": "Harmonia",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A graduate student assigned to oversee Alex's laboratory sessions for the term. His absent-minded supervision limits Alex's opportunities to conduct private experiments.",
+            "id": "amir-abu-salah",
+            "name": "Amir Abu Salah",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combat student assigned to Alex's group for Baelin's Bone Tunnels exercise.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A second-year cold-magic student who knows Call Through Ice. He admits that teleporting a key during the Bone Tunnels exercise likely caused the unexplained magical flash detected by Baelin.",
+            "id": "malcolm",
+            "name": "Malcolm",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earth-magic combat student whose group escaped the Bone Tunnels by opening a direct route through the surrounding stone, demonstrating a useful approach to difficult terrain.",
+            "id": "evander",
+            "name": "Evander",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient flying predator assigned as the combat class's next quarry. It guards a nest near a mana vent and can attack with a force-coated lance, a force ray, and a cry that disrupts mana.",
+            "id": "xyrthak",
+            "name": "Xyrthak",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Kabbot-Xin"
+            ],
+            "description": "A life-force cultivation teacher and Theresa's training authority. Kabbot-Xin assesses whether Grimlock can safely begin cultivation and oversees his demanding first step with Theresa assisting.",
+            "id": "professor-kabbot-xin",
+            "name": "Professor Kabbot-Xin",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combat student participating in the class expedition against a nesting Xyrthak.",
+            "id": "rhea",
+            "name": "Rhea",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Generasi guard captain who recognizes Alex's claim to the captured mana vampire as a university specimen. He requires proof of its destruction or an extension request within one day.",
+            "id": "giorno",
+            "name": "Giorno",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Alex's clay golem"
+            ],
+            "description": "The name adopted for the large four-armed clay golem designed by Alex and Selina. Its completed body and dungeon-core-derived core await activation using the mana recovered from the defeated mana vampire.",
+            "id": "claygon",
+            "name": "Claygon",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The foremost member of a trio of related assassins seeking the Ravener's quarry. It understands mortal speech, imitates voices, and helps direct monsters from a hidden lair.",
+            "id": "lead-ravener-hunter",
+            "name": "Lead Ravener Hunter",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An assassin allied with two siblings in the search for the Ravener's quarry. It copies beast calls and takes part in assembling monsters for an attack.",
+            "id": "scarred-ravener-hunter",
+            "name": "Scarred Ravener Hunter",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An assassin allied with two siblings in the search for the Ravener's quarry. It copies beast calls and helps ready a hidden monster force beyond the city wall.",
+            "id": "ravener-hunter-sibling",
+            "name": "Ravener Hunter Sibling",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dryad who invites Khalik to visit the forest and is beginning a relationship with him.",
+            "id": "sinope",
+            "name": "Sinope",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0BKB1MH2X",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-2"
+      },
+      "recaps": {
+        "ending": "Alex ends his first year with a trusted circle rather than carrying the Fool's secret alone. Theresa, Selina, Khalik, Thundar, Isolde, and Baelin know his identity. Alex and Theresa openly affirm their relationship, while Theresa anticipates explaining their dangerous life and partnership when her parents visit. Selina has chosen magical education despite her continuing fear of fire. Khalik reveals his princely identity to the full cabal, which agrees to remain together, and Thundar continues recovering from damage to his mana pool.\n\nThe Man of Empire and all three Ravener hunters are dead. Claygon is active, mentally linked to Alex, and proven capable of destroying powerful monsters, although its evolving dungeon-core-derived power requires further study. The hunters' wider origin, their reason for identifying Alex, the uncaught demon summoner, and the Ravener remain unresolved. Baelin has preliminary approval for a Generasi research expedition to Tameland, contingent on royal permission and a camp without priests. Alex and Professor Jules agree to join. A centuries-old foreign account places similar hunters beyond Tameland, and a marginal note in that book uses the same unidentified language as the Book of the Traveler.",
+        "in_short": "At Generasi, Alex Roth turns the Mark of the Fool's restrictions into a program of defensive magic, alchemy, teamwork, and golemcraft. He forms a cabal with Khalik, Thundar, and Isolde, eventually trusting them and Baelin with his identity. His secret study of dungeon-core remains becomes legitimate research and produces Claygon, a self-sustaining combat golem. The group kills a Xyrthak, captures the mana vampire known as the Man of Empire, and uses its processed wild mana to activate Claygon, though Thundar suffers recoverable damage. Three Ravener hunters then trace Alex to a masquerade and lead a monster siege against the estate. Alex, Theresa, Claygon, Brutus, and their allies kill all three hunters and break the attack. Alex and Theresa acknowledge their love, Selina chooses to study wizardry, and the cabal remains united. Baelin outlines a Generasi-led mission to Tameland, with Alex and Jules committed if the king approves and priests are excluded. An old account reports comparable creatures in another land. Separately, writing in its margin matches the unidentified script found in the Traveler book.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Alex Roth was marked as the Fool, one of five heroes chosen to confront the Ravener in Tameland. The mark obstructs combat, spellcraft, and divine pursuits, but greatly accelerates his learning in other fields. Rather than submit to the role, Alex fled with his younger sister Selina and his close companion Theresa Lu. Their escape took them through the Traveler's cave, where Alex gained control of a dungeon core and destroyed it, keeping fragments and an unreadable book. They reached Generasi, where Alex entered the university and concealed his identity from priests and authorities. He began developing force magic, alchemy, and indirect methods that might work around the mark. Theresa pursued martial training and life-force cultivation, while the household built a safer life around Selina. Alex also formed friendships with students including Khalik, Thundar, Isolde, and their companions. The Ravener and its forces remain active in Tameland, and discovery of Alex's mark could draw divine or political attention back to him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Selina's newly confirmed fire affinity has left her frightened, sleepless, and ashamed because fire is bound to the family's trauma. Alex and Theresa try to support her without forcing her to discuss it. At the same time, Baelin sends his combat students into the Barrens alone to locate assigned orbs and reach an extraction point. Alex uses potions, force spells, and the Mark's guidance to survive bright spitters and earth elementals. He discovers that the Mark tolerates restraint and redirection more readily than direct harm, giving him a new path for experimentation. After finding his orb, he joins Grimlock, Thundar, and another injured student. A giant earth elemental blocks their only route and pursues them through the crevices. The group combines Alex's mana sensing and force magic with Thundar's enhancement spells and Grimlock's strength to shatter it. Baelin extracts the survivors and awards successful students half pendants of apprenticeship, with the matching halves promised upon completion of the course.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex passes the first-year mana-manipulation challenge exam with exceptional results, attracting Baelin's attention both for his progress and for how unusually easy he is to teleport. Professor Jules and Val'Rok support his application to Shale's golem workshop, where he earns an assistant position alongside the more experienced Minervus. Alex also advances his force defenses, but the Mark continues to slow overt combat casting. Midterm honors place him first in several subjects and at the top of Baelin's combat class. Thundar proposes a cooperative wizarding society with Alex, Khalik, and Isolde, and the four agree to share knowledge and protection.\n\nCarey London organizes a rally seeking campus access for priests of Uldar. A giant demon erupts beside the gathering, unleashing fear and lesser creatures until Baelin subdues it and removes the assisting priests from campus. The summoner remains unknown. A mana vampire is also attacking around Generasi. As the new cabal prepares for its first meeting, Professor Ram's scrutiny of Alex's slow force casting increases. Recognizing that mutual defense requires trust, Alex resolves to tell Khalik the truth about the Mark after the meeting.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cabal begins meeting without a formal leader, pooling help on spell design, combat tactics, and coursework. Shiani speaks to Selina about fire as a controlled force that can heal and protect, giving the child a less frightening way to view her affinity. Alex then tells Khalik that he is the Fool and shows him the mark. Khalik reveals that he is a prince of Tekizash, accepts Alex without hesitation, and promises to protect the secret.\n\nProfessor Ram confronts Alex over his dangerously slow combat casting, but Alex refuses to reveal the cause. Thundar introduces him to a meditative movement discipline centered on redirection. Because the Mark does not treat the practice as combat, Alex sees a possible foundation for better defense. During the Festival of Ghosts, the friends prepare memorial dishes and watch harmless spirits appear above Generasi. Selina does not find their parents among them, but takes comfort in the remembrance. Alex finishes the term strongly despite failing to master Force Missile at practical speed. Professor Jules grants him supervised independent laboratory work for the next semester. He privately plans to use that access to study the dungeon-core remains while spending the break sculpting a golem with Selina.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the break, Alex and Selina begin building a large clay combat golem. A visit to Isolde's cousin's estate introduces two nearby threats: the mana-draining shapeshifter called the Man of Empire and an unidentified scaled creature that has killed dryads. Back at Generasi, Alex secretly analyzes dungeon-core dust during assigned potion work. Early results suggest a resemblance to stabilized chaos essence. He considers using the material in his golem core, though its nature and the power needed for activation remain unresolved.\n\nThe second semester brings advanced mana manipulation, redirection-based force magic, and another combat trial. Baelin sends groups through the Bone Tunnels, a trapped underground maze filled with animated skeletons and haunts. Alex, Thundar, Rain, and Brutus fight through the undead, survive a crushing trap, and expose an imitation of Theresa by testing its lack of scent and private memories. A second haunt creates false threats and apparent spell failure, but Alex uses meditation and careful testing to recognize the illusions. The group reaches the exit circle. Baelin then reports that he detected a brief teleportation or summoning effect inside the tunnels that was not part of his exercise, raising concern because the demon summoner has not been caught.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Malcolm admits that his ice teleportation probably caused the Bone Tunnels anomaly, though Alex remains uncertain. Alex continues unauthorized tests and finds that dungeon-core material conducts mana exceptionally well and appears to contain damaged artificial pathways. He develops the hypothesis that cores may be constructed systems linked to the Ravener and redesigns his golem to use the recovered material. At Shale's workshop, a lightning-equipped golem runs out of control. Investigation proves its components were deliberately sabotaged, but Minervus uses the uncertainty to attack Alex's reputation. Soon afterward, the Man of Empire kills Minervus.\n\nBaelin assigns the combat class to kill a Xyrthak and recover an egg. The dangerous flying creature can disrupt mana, and the students begin planning around its weaknesses. Minervus's death also forces Alex to consider what would happen if his own discoveries died with him. With Theresa's support, he tells Baelin that he is the Fool and gives him the core remains, research records, and the Traveler's unreadable book. Baelin refuses to punish, expel, or return him. He ends Alex's secret laboratory work but judges the research sound and establishes a supervised joint project that can legitimately continue the investigation.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex tells Thundar and Isolde about the Mark, bringing the full cabal into his confidence. He and Selina finish the four-armed golem body, while Baelin's better equipment confirms the recovered core material is recent matter with extraordinary mana conductivity and chaos-like properties. Alex, Baelin, and Professor Jules forge it into a large golem core, but Alex still lacks the power needed to activate it. Theresa improves her martial cultivation, and Grimlock begins the same discipline under Professor Kabbot-Xin.\n\nThe combat class enters the Barrens to kill a nesting Xyrthak. Their planned ambush fails, and the creature's mana-disrupting cry removes several students from the fight. Alex adapts a defective flight potion into a trap. Rain risks a low aerial pass to position the creature, and Malcolm teleports the potion above it. The resulting magic sends the Xyrthak through uncontrolled crashes. Theresa and Grimlock hold it in close combat while Isolde's modified lightning and the others' attacks wear it down. Najyah blinds it, Grimlock tears out its throat, and the corpse falls into a mana vent. Baelin rescues the students who nearly fall after it and declares the trial won.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the Xyrthak victory, Baelin credits the class's improvisation and opens access to more advanced spells. Alex improves mobile force defenses and begins learning Call Through Ice. Selina admits that ice and water remind her of family happiness and that she resents being limited to fire. Remembering Shiani's lessons, she nevertheless chooses to begin wizardry so she can protect others.\n\nThe decision is immediately followed by a crisis: Khalik senses Najyah being drained. The group finds the Man of Empire feeding on her and two dead hunters. The mana vampire puts Khalik and Thundar to sleep, but Alex frees Najyah and the group wounds the creature. It severely drains Thundar before escaping. Theresa organizes a pursuit using Brutus's enhanced scent to penetrate its shapeshifting disguise. They expose it at a crowded sky pier, where it uses sleep magic and stolen mana to recover. Alex realizes that solid conjured projectiles bypass its ability to absorb spells. The students steadily exhaust it, and Alex uses a precisely thrown stone to trip it as it charges Selina. Grimlock, Theresa, and Brutus subdue the Man of Empire alive. Thundar has been taken for urgent treatment, and the extent of damage to his mana pool is still unknown.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex claims the captive Man of Empire under Generasi's right to dangerous specimens and takes responsibility for proving its destruction. With Theresa, Khalik, Najyah, Grimlock, Brutus, and Nua-Oge, he transports it to the mana vent in the former Xyrthak territory. The group lowers the bound creature into the vent, forcing it to absorb more wild mana than it can safely process. Alex keeps it alive with a mana conductor long enough to return to Baelin's laboratory, where the group extracts the converted mana. The vampire dies when its remaining power is drained, ending the immediate bounty threat.\n\nNua-Oge's phrasing gives Alex and Selina's golem the name Claygon. Thundar is alive and expected to recover from damage to his mana pool, though he must avoid magic for several weeks. Baelin approves Alex's harvesting plan, while Jules condemns its danger and ethics. Both nevertheless supervise Claygon's activation. The stored mana starts the dungeon-core-derived core, which becomes self-sustaining and produces mana of its own. Claygon links mentally to Alex, obeys movement commands, and carries three embedded fire gems. It is now Alex's property, but its evolving power and combat ability still require formal testing.",
+            "through": {
+              "chapter": 73
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three Ravener hunters locate their quarry near Generasi, gather a monster horde, and tunnel beneath the city's defenses. Unaware of the pursuit, Alex receives his share of the mana-vampire and Xyrthak rewards, visits the recovering Thundar, and takes Claygon to a masquerade at Isolde's cousin's estate. The hunters identify Alex as their target and drive their horde against the gathering. As the attack begins, Alex and Theresa finally confess their love.\n\nThe hunters use Bonedrinkers and lesser monsters to split the defenders before striking Alex directly. Claygon arrives and destroys both Bonedrinkers with its fire gems. Working through injuries, Alex uses the golem to kill the lead hunter, while Theresa and Claygon kill the scarred sibling. The last hunter flees into a flour-filled granary, mimics Theresa's voice, and traps Alex beyond Claygon's reach. Alex avoids using fire in the explosive dust and instead forces the creature to inhale a sabotaged flight potion. The potion tears it apart, but it feigns death for one final ambush. Brutus kills it permanently. The estate's defenders defeat or drive off the remaining horde. Alex, Theresa, and Selina survive, and Alex plans to take the hunter's body to Baelin for investigation.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the estate siege, Generasi expands its defenses against tunneling while Baelin, Alex, and Isolde study the hunters' remains. Their unusual voice and mana-sensing organs provide leads but no clear origin. The city returns toward normal life as final examinations approach. Alex, Khalik, Thundar, and Isolde agree to continue their cabal. Khalik tells the others that he is a prince, while Thundar continues recovering and the group prepares for a delayed dune-worm combat final. Alex and Theresa openly affirm their relationship, and Theresa learns that her parents will soon visit.\n\nBaelin finds a roughly three-century-old foreign account describing a creature that matches the hunters in lands outside Tameland. A connection to the Ravener's cycle is possible but unproved. The demon summoner also remains uncaught. More decisively, Baelin obtains preliminary approval for a Generasi expedition to Tameland, subject to royal permission. The university would establish a southern research camp and teleportation link to study dungeon cores. Baelin agrees that priests can be excluded, so Alex accepts the invitation; Professor Jules has already joined. Finally, Alex discovers that a marginal note in the foreign book uses the same unidentified language as the Book of the Traveler, opening a new path for the expedition's research.",
+            "through": {
+              "chapter": 87
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0BKB1MH2X",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-2"
+      }
+    },
+    "mark-of-the-fool-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "One of Tameland's historical marked heroes. The saint requires time to complete a seasonal miracle that destroys a horde of muck warpers, and favors overwhelming force despite the delay and exhaustion involved.",
+            "id": "historical-saint",
+            "name": "Historical saint",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted Generasi student preparing for a research expedition to Tameland. Alex combines alchemy, combat magic, and careful planning, directs Claygon through a mental link, and privately carries the dangerous burden of being the Fool.",
+            "id": "alex-roth",
+            "name": "Alex Roth",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alex's partner and a highly skilled hunter whose archery is central to the group's plan against a dune worm. She works smoothly with Alex and Claygon and is willing to test specialized alchemical arrows in live combat.",
+            "id": "theresa-lu",
+            "name": "Theresa Lu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's younger sister, a talented young sculptor, and one of Claygon's creators. She is recovering from trauma connected to fire while continuing to shape clay figures and take an active interest in magic.",
+            "id": "selina",
+            "name": "Selina",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A four-armed clay golem created by Alex and Selina. Claygon is Alex's exceptionally strong bodyguard, follows commands through their mental connection, and gives the student combat group a durable front-line fighter.",
+            "id": "claygon",
+            "name": "Claygon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chancellor Baelin"
+            ],
+            "description": "Generasi's chancellor, Alex's combat instructor, and the organizer of a proposed research mission to Tameland. He directs the students' final practical while pursuing historical questions surrounding Alex's unusual magic.",
+            "id": "baelin",
+            "name": "Baelin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prince of Tekizash and one of Alex's student allies. Khalik belongs to Alex's combat cabal and works alongside his eagle familiar, Najyah, as the group plans its final practical.",
+            "id": "khalik",
+            "name": "Khalik",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Khalik's eagle familiar and aerial partner. Najyah serves as a mobile scout and combatant within Alex's circle, giving Khalik a capable presence in the air during the group's training and expedition preparations.",
+            "id": "najyah",
+            "name": "Najyah",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Rhinian noble student and member of Alex's combat cabal. Isolde is Alex's academic rival and works on the flight spell Claygon will need for the group's final practical.",
+            "id": "isolde",
+            "name": "Isolde",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful minotaur student in Alex's combat cabal. Thundar brings considerable physical strength to the group as it prepares for its final practical against a dune worm.",
+            "id": "thundar",
+            "name": "Thundar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable sharkman student and Nua-Oge's adopted younger brother. Grimlock trains with Alex's friends and belongs to their wider combat group.",
+            "id": "grimlock",
+            "name": "Grimlock",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Grimlock's adopted older sister and a friend of Alex's household.",
+            "id": "nua-oge",
+            "name": "Nua-Oge",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dryad who has become openly affectionate with Khalik. Sinope joins the group's social circle during the Games, though the exact nature and future of their developing relationship are not yet defined.",
+            "id": "sinope",
+            "name": "Sinope",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's trusted Cerberus, hunting companion, and household protector. Once a source of concern for Alex, Brutus is now a reliable member of the family circle.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's father, arriving in Generasi for a month-long family visit. He reunites warmly with Theresa, Alex, and Selina before a magical disturbance interrupts their arrival.",
+            "id": "mr-lu",
+            "name": "Mr. Lu",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's mother, arriving in Generasi for a month-long family visit. She reunites warmly with Theresa, Alex, and Selina before a magical disturbance interrupts their arrival.",
+            "id": "mrs-lu",
+            "name": "Mrs. Lu",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's father, identified when the visiting family registers for university lodging after the disturbance at City Hall.",
+            "id": "yutong-liu",
+            "name": "Yutong Liu",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's mother, identified when the visiting family registers for university lodging after the disturbance at City Hall.",
+            "id": "tse-moi-liu",
+            "name": "Tse Moi Liu",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's alchemy professor, who advises him when Claygon appears to react unexpectedly. The professor explains why ordinary golem behavior offers little certainty about Claygon's unusual core.",
+            "id": "alchemy-professor",
+            "name": "Alchemy professor",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's summoning instructor for the condensed summer course. The instructor teaches a respectful, contract-based approach in which summoned beings may negotiate terms or refuse an alliance.",
+            "id": "summoning-instructor",
+            "name": "Summoning instructor",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The instructor for Alex and Khalik's Magical Botany course, where dangerous plants demand careful identification and handling.",
+            "id": "magical-botany-instructor",
+            "name": "Magical Botany instructor",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Magical Botany professor who receives Keebus's warning that the demon summoner is concealed in the botanical gardens and immediately calls for Baelin.",
+            "id": "professor-salinger",
+            "name": "Professor Salinger",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A professor involved in reorganizing the delayed Tameland expedition after the Games attack. Professor Jules also discusses the sentences imposed on the conspirators.",
+            "id": "professor-jules",
+            "name": "Professor Jules",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's summoning professor, who emphasizes the risks of provoking demons and of relying on poorly controlled summoning contracts.",
+            "id": "professor-mangle",
+            "name": "Professor Mangle",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin student accompanied by Harmless, his crocodile familiar. Keebus reconnects with Alex's group when they meet before the Games.",
+            "id": "keebus",
+            "name": "Keebus",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keebus's crocodile familiar, already about four feet long when the pair reconnect with Alex's group before the Games.",
+            "id": "harmless",
+            "name": "Harmless",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Isolde's former partner and a member of a student society marked by a two-headed-beast emblem. He previously cheated by using Isolde's work, and his presence still unsettles her.",
+            "id": "derek-warren",
+            "name": "Derek Warren",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Amir's graduate associates connected to the planned expedition. Leopold discusses Generasi's history and the dangers of divine power, but Alex has no proof that he or the others are involved in the recent attacks.",
+            "id": "leopold-richter",
+            "name": "Leopold Richter",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Amir"
+            ],
+            "description": "Alex's former laboratory supervisor and a graduate associate assigned to the expedition. Amir appears nervous while the research group is under scrutiny, giving Alex reason for caution but not enough evidence for an accusation.",
+            "id": "amir-abu-saleh",
+            "name": "Amir Abu Saleh",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, three-eyed demon that singles Alex out during the attack and reacts to his unusual teleportation magic. Alex gives it a temporary name while trying to disrupt its sharp senses and survive its assault.",
+            "id": "burnsaw",
+            "name": "Burnsaw",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful crystalline demon compelled by a life debt to support the attack on the centaur priests and stadium defenders. The knight enters the conflict as a contracted servant rather than a willing subordinate.",
+            "id": "abyssal-knight",
+            "name": "Abyssal knight",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A lava mage competing in Claygon's Duel of Proxies division. Tyrus meets Alex as a confident prospective rival and has entered several Games events, making her a likely obstacle beyond their first tournament.",
+            "id": "tyrus-goldtooth",
+            "name": "Tyrus Goldtooth",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous tournament entrant accompanying Tyrus Goldtooth. Its shell contains a functioning volcano, and Tyrus treats the creature with familiarity and care.",
+            "id": "tyrus-goldtooths-volcano-tortoise",
+            "name": "Tyrus Goldtooth's volcano tortoise",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tyrus Goldtooth's enormous volcano tortoise and tournament companion. Vesuvius carries a working volcano on his shell and presents Claygon with a rival of extraordinary size and destructive potential.",
+            "id": "vesuvius",
+            "name": "Vesuvius",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The obstacle-marathon winner and an opposing Grand Battle competitor. His life-force enhancement grants exceptional speed, senses, strength, and stamina.",
+            "id": "indrajit-hanuman",
+            "name": "Indrajit Hanuman",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Taraka Shale's son and a competitor in the super-heavyweight Duel of Proxies, where he is accompanied by a stone golem.",
+            "id": "sim-shale",
+            "name": "Sim Shale",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sim Shale's stone golem and Claygon's tournament opponent. Shaleleaf attacks with force magic and detachable flying forearms while using five duplicates to conceal the real golem.",
+            "id": "shaleleaf",
+            "name": "Shaleleaf",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical blood mage assigned to accompany Alex's survey team. Hiragi Makaira joins the mission as its dedicated field healer when the expedition is ready to enter Tameland and begin the first Greymoor survey.",
+            "id": "hiragi-makaira",
+            "name": "Hiragi Makaira",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tameland's king, who receives Generasi's delegation and questions how it obtained dungeon-core remains. He negotiates the terms that authorize Generasi's research territory and expedition.",
+            "id": "king-athelstan-mercio",
+            "name": "King Athelstan Mercio",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The hostile presence that Tameland's high priest identifies within the kingdom's pervasive magic. Its signature resembles the force associated with Claygon, making it central to the proposed dungeon-core investigation.",
+            "id": "the-ravener",
+            "name": "The Ravener",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unresolved historical figure linked to an old foreign book, an unknown language, and the strange force affecting Alex's transportation magic. Baelin continues searching records and distant contacts for a reliable lead.",
+            "id": "the-traveler",
+            "name": "The Traveler",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A woman whom a demon once sought across other demonic domains. Burnsaw's reaction gives Baelin reason to consider a connection with the Traveler, but the known dates conflict and leave the identification unproven.",
+            "id": "hannah-sim",
+            "name": "Hannah Sim",
+            "reveal": {
+              "chapter": 92
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BX4KRJGZ",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-3"
+      },
+      "recaps": {
+        "ending": "Leopold Richter's demon attack fails after Keebus exposes his position and Baelin captures him. Leopold is sentenced to disintegration for treason, mass murder, and abuse of wizardry. Amir Abu Saleh, who concealed Leopold's crimes because of a life debt, receives fifteen years of hard labor and permanent banishment. Alex, Selina, Theresa, and their close allies survive, although Alex keeps the scar Burnsaw left on his arm and several competitors require recovery. Burnsaw and the abyssal knight may both reform in their own domains. Claygon's apparent initiative remains unconfirmed but increasingly significant. Alex masters Life to Mana, pursues summoning and blood magic, and works with Thundar on hiding the Fool's mark. Theresa's parents return to the Rhinian Empire after accepting the couple's choices. Alex, Theresa, Selina, Khalik, Isolde, Thundar, Grimlock, Claygon, and Hiragi Makaira join the Greymoor mission. They teleport into priest-free Luthering to begin the survey. The Ravener immediately senses Alex and the anomalous mana connected to him, turning the expedition into an active confrontation.",
+        "in_short": "Alex completes his first year of combat training, broadens his studies into summoning and blood magic, and helps secure Generasi's official right to investigate dungeon cores in Tameland. He and Theresa deepen their relationship while her parents visit, and his friends enter the Games. Khalik and Najyah, Claygon, and the Theresa-Thundar-Grimlock trio win major events, while Alex's team takes third in the Grand Battle. The Games end in a demon assault organized by Leopold Richter, whose attacks are exposed by Keebus and stopped by Baelin. Alex and his allies survive, but Burnsaw links Alex's unusual transportation magic to a new historical mystery and escapes permanent destruction. Leopold is condemned, Amir is imprisoned for concealing him, and the expedition proceeds after the dead are honored. Alex masters Life to Mana and enters Luthering with his survey team. The Ravener senses his return and begins preparing against him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Alex Roth escaped Tameland after receiving the mark of the Fool, a role that places him among the kingdom's marked heroes while obstructing direct combat magic. He concealed that identity and built a new life as a student in Generasi with his younger sister, Selina, and his partner, Theresa Lu. Alex learned to exploit the mark's ability to accelerate non-combat learning, developed his skills in alchemy and magic, and assembled a close circle of capable student allies. He and Selina created Claygon, a powerful four-armed golem whose core came from a dungeon connected to the Ravener. Attacks on Alex's household and an old foreign book also raised questions about the Traveler, an obscure figure tied to an unknown language and to the unusual power behind Alex's transportation magic. Baelin, Generasi's chancellor and Alex's instructor, knows Alex is the Fool and has begun investigating those mysteries. The group is now considering an expedition to Tameland that could study dungeon cores while keeping Alex away from hostile priests.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In a past Tameland battle, the marked heroes defend standing stones from a horde of muck warpers while their Fool remains missing and is feared dead. The saint completes a slow seasonal miracle that destroys the attackers, but the defenders suffer casualties and argue over the method before continuing their search for a nearby dungeon. In the present, Alex's cabal completes Baelin's final Combat 2 practical by confronting a dune worm in the Barrens. The group stays beyond the creature's effective earth-magic range, lures it into exposing itself, and uses Theresa's alchemical arrows, Alex's teleported potions, Isolde's lightning, Khalik's sound magic, Thundar's strength, and Claygon's power to exhaust and kill it. Baelin confirms that Alex's group finishes first and credits its success to flexibility, preparation, and trust. The students pass the course and receive completed charm pendants marking their association with Baelin. The proposed Tameland expedition remains months away and still requires political approval. Baelin asks Alex to help with preparations but warns him not to let the future mission consume the university life and family responsibilities immediately before him. Alex therefore enters summer with a successful first year behind him and a need to balance further study, Selina's welfare, and the uncertain expedition.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex begins a lighter summer term while pursuing several paths that can work around the Fool's mark. He studies stronger force defenses, body enhancement, blood magic, and summoning, where his unusual sensitivity to transportation magic makes the tower's portals especially noticeable. Lessons on names and voluntary contracts suggest that summoning could eventually provide lasting allies and new evidence about the Traveler. Alex also suspects that Claygon may have briefly responded through their mental bond, although neither Baelin nor his alchemy professor can yet establish that the golem is becoming aware. Outside class, Selina asks for greater responsibility in protecting herself and Alex promises to support her magical education. He starts building her a self-guiding messenger construct for her birthday. Alex and Theresa also make time for their relationship. Their first formal date survives bad weather, and they tell each other that they are in love. They then prepare to take a monster-hunting contract together for both experience and money.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex and Theresa take a contract against a Vespara blamed for destroying an estate's hives and livestock. Their investigation reveals human tracks, a guarded camp, and evidence that several tamers are deliberately using the creature for commercial sabotage. Alex, Theresa, Brutus, and Claygon defeat the Vespara, capture all four operatives, and recover letters from an unidentified client. Baelin praises the result while advising Alex to avoid lethal conflict where possible and to build enough strength that mercy remains an option. In Tameland, Baelin and Generasi's delegation negotiate directly with the king. Generasi receives a large coastal territory at Greymoor, priority rights to dungeon cores, and authority to conduct research while priests remain five miles away. The expedition is now official. Alex masters Force Armor and joins his friends in registering for the Games, including the second-division Grand Battle. Theresa's parents arrive for a month-long visit just as a magical disturbance at City Hall interrupts their reunion.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The City Hall disturbance is a demon summoning, prompting curfews and intensified security while the attacker remains unidentified. Baelin nevertheless continues the Greymoor project and assigns Alex and Isolde to assemble a survey team and help prepare magical equipment. Theresa's parents learn how much danger she, Alex, and Selina have concealed from them. The resulting family strain eases after Selina's birthday, and Theresa's father accepts Alex's serious intentions toward his daughter while warning him about the risks surrounding all three young people. Alex also discovers that Keebus has built an illicit tunnel garden beneath Magical Botany to grow potion ingredients for Harmless. He keeps the secret but warns Keebus that the search for the summoner makes it especially dangerous. As the Games approach, Alex's Grand Battle team studies stronger opponents and declines a paid offer to merge with the Hydra Companions, preferring a limited pact against a shared rival. Alex then survives a malformed summoning, masters the intended elemental beetle spell, and recognizes another possible link between summoning, teleportation, and the force associated with the Traveler. Temple attacks timed to Baelin's absence expose a likely leak from the expedition research group.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Baelin reveals that his departure was bait known only to the expedition research team. The timing of the temple attacks places every member under suspicion. Investigators question Alex about his religious views, the attacks, and his seemingly impossible arrival in Generasi after leaving Tameland. He protects the secrets of the mark and his teleportation while giving verifiable alibis, then is released without knowing whether he has been cleared. Alex, Theresa, and Selina decide to remain in the city and compete. The Games open under heavy security. Khalik and Najyah dominate the lightweight Duel of Proxies through flight, sound, earth magic, and careful mana conservation. They defeat Keebus and Harmless in a close semifinal and win the championship. Claygon's super-heavyweight tournament begins next, with Tyrus Goldtooth among the prospective rivals Alex hopes to face. Theresa also begins considering whether a familiar bond with Brutus might be possible through life force rather than mana.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex and Claygon advance through the super-heavyweight Duel of Proxies by combining Claygon's exceptional power with tactical adaptation. They defeat a brass golem, overcome Shaleleaf's force attacks and convincing duplicates, and reach a difficult match against Tyrus Goldtooth and Vesuvius. Tyrus controls lava, ice, flight, and other spells through her volcano tortoise, winning the opening round. Alex changes strategy, using Claygon's strength and leverage to overturn the vastly heavier familiar and force a close aerial finish. Claygon wins the match on points, then advances through the remaining field and takes the championship when the final opponent is surrendered. Alex receives a gold medal and prize money that can support his education and alchemical work. Tyrus leaves determined to do better in the Grand Battle, establishing her team as a serious future threat. Alex's group also recognizes that its growing list of public victories will encourage rival teams to target it.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Games continue with mixed results for Alex's circle. Theresa places third in archery and receives an enchanted bowstring. Grimlock wins the Great Water Hunt decisively, while Theresa, Alex, and Brutus lose the Great Land Hunt almost immediately to an illusion specialist with superior scouting magic. Theresa answers that disappointment in the Grand Melee, where she, Thundar, and Grimlock defeat a crowded field and win first place. Their victories add wealth and valuable equipment but make the team an even more visible Grand Battle target. Alex also meets Amir Abu Saleh's graduate associates and notices nervous behavior among them, yet refuses to turn suspicion into an accusation without evidence. The returning champion Outcasts of the Divine Wind, Tyrus and Vesuvius, and several specialized teams all remain serious opponents. On the final morning, security concentrates around the stadium and the Grand Battle begins. At the same time, Keebus and Harmless move toward the concealed garden tunnels, expecting the event to draw attention away from campus.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex's team gains an early lead in the Grand Battle through ambushes, flags, and coordinated attacks, but loses members as increasingly powerful rivals converge near the central mountain. The Outcasts reveal divine archery, Tyrus attacks with Vesuvius, and a hidden illusion user manipulates several clashes. Alex ensures that Tyrus is eliminated with him, leaving Isolde and her companion to preserve the team's accumulated score. Isolde defeats Derek after he ambushes the last two members in a cave. Tyrus's team finishes first, the Outcasts take second, and Alex's team secures third place. Away from the battlefield, Keebus hears an invisible spellcaster using unfamiliar words in the botanical gardens. He identifies the intruder as the demon summoner and warns Professor Salinger, who calls for Baelin. The Grand Battle is over, but the hidden attacker is now present on campus and the warning has made the threat immediate.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The demon summoner opens portals around the island and stadium, releasing demons against competitors, staff, civilians, and the centaur priests. Alex and Baelin's warnings prevent complete surprise, while Baelin strengthens the defenders before pursuing the summoner in the botanical gardens. A scarred three-eyed demon notices Alex's unusual transportation magic and mistakes him for an unresolved figure. Alex names it Burnsaw and uses potions and battlefield improvisation to resist it. Burnsaw decides Alex is instead connected to that figure's power, then wounds his arm before Claygon destroys its manifested body and those of its allies. In the gardens, the summoner uses a life debt to compel a crystalline abyssal knight to delay Baelin. Baelin overwhelms the knight, but it destroys its own body to avoid capture and possible enslavement. Baelin's concealed servants seize the fleeing summoner, causing the portals to close. The assault ends with deaths and severe injuries, including a dead centaur priest and wounds to Alex, Isolde, and Vesuvius. Amir leaves campus, then turns himself in because of his connection to the captured attacker.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The demon assault spreads across the island, stadium, and botanical gardens. Alex names the three-eyed attacker Burnsaw and uses potions and battlefield improvisation to resist it. Burnsaw concludes that Alex is connected to the power of the being it first mistook him for, then wounds his arm before Claygon destroys its manifested body and those of its allies. Baelin traps a crystalline abyssal knight that is delaying him under a life-debt command. The knight destroys its own body to avoid capture, while Baelin's hidden servants seize the fleeing summoner and close the portals. Defenders suffer deaths and serious injuries, but Alex's family and closest allies survive. Keebus's warning receives public credit for saving lives. The captive is identified as Leopold Richter, who claims violent attacks were necessary to prevent divine influence after his childhood in a predatory cult. Amir confesses that Leopold once saved him from sacrifice, creating the life debt that led him to conceal Leopold's crimes. Alex learns that finding Burnsaw again will be extremely difficult and begins studying demonic languages, hierarchies, and the unresolved identity the demon mentioned.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leopold is convicted of treason, mass murder, and abuse of wizardry, with disintegration set as his sentence. Amir receives fifteen years of hard labor followed by permanent banishment for concealing crimes that led to deaths. Generasi clears the attack sites, honors the fallen with a memorial, and awards the survivors and Keebus for their service. Alex receives his Grand Battle prize and resumes preparing for the delayed expedition. He successfully begins Life to Mana, while Claygon independently shields him and his books from rain in what may be the golem's first self-directed act. Baelin cautions that any developing intelligence remains uncertain and may be linked to dungeon cores or the Ravener. Alex's wounded arm heals fully, though he chooses to retain Burnsaw's scar. Baelin also recalls an old demonic request to find Hannah Sim, a woman who had humiliated an abyssal knight. Burnsaw's reaction suggests a possible connection between Hannah and the Traveler, but the search predates the Traveler's apparent birth by more than a century. The identity therefore remains only a lead.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex returns to classes, completes Life to Mana, begins another summoning spell, and works with Thundar on an illusion that can conceal the Fool's mark. Theresa receives the second of her family's paired swords and a new expedition bow. Her parents accept the choices made by Alex, Theresa, and Selina, then depart Generasi for the Rhinian Empire. The expedition headquarters opens with stricter security, supplies, medical support, and procedures shaped by the betrayal within the original research group. Baelin leads the first force into Tameland through Luthering after confirming that local priests are absent under Generasi's agreement. Hiragi Makaira joins Alex's survey team as its medical blood mage. Alex, Theresa, Selina, Claygon, and their allies teleport into Luthering, ready to establish the Greymoor encampment and inspect their assigned territory. Their arrival does not go unnoticed. The Ravener senses the return of the person who controlled one of its dungeon cores and recognizes the anomalous mana signature accompanying him. It begins preparing a response, leaving the authorized expedition active but already threatened.",
+            "through": {
+              "chapter": 98
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0BX4KRJGZ",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool-3"
+      }
+    }
+  }
+}

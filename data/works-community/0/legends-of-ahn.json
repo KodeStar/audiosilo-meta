@@ -1,0 +1,1537 @@
+{
+  "entries": {
+    "legends-of-ahn": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dark Tidings"
+            ],
+            "description": "The claimant to Asshai's throne and leader of a displaced population. After disclosing that he is Dark Tidings, he travels ahead of the refugee ship to arrange lawful entry and find his people a secure home.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rezkin's expected partner, now distant after Pallas's death and the disclosure of Rezkin's concealed identity. She worries that magical influence, rather than her own choice, may account for her attraction to him.",
+            "id": "frisha",
+            "name": "Frisha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battle mage among Rezkin's displaced followers and one of his trusted advisers. He is ordered to remain aboard the refugee ship when Rezkin leaves alone to prepare the way.",
+            "id": "wesson",
+            "name": "Wesson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "striker"
+            ],
+            "description": "A striker entrusted with scouting and maintaining order among the refugees. Rezkin values his ability and gives him significant responsibility, while remaining watchful about whether Kai's ambitions will continue to match his own.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tam"
+            ],
+            "description": "Rezkin's friend and trainee. Displaced from home and uncertain about his family, he still regards Rezkin as the person most capable of keeping their group safe, even as others question the secrets Rezkin has kept from them.",
+            "id": "tamarin-blackwater",
+            "name": "Tamarin Blackwater",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shapeshifting woodland being able to copy living forms, auras, mannerisms, and recent memories while controlling paths through its forest. It offers Rezkin a concealed haven for his people in return for a future army to oppose demons.",
+            "id": "woodland-fae",
+            "name": "The woodland Fae",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rezkin's blood relative and subordinate heir. While enforcing orders aboard the refugee ship, he accepts Rezkin's superior authority despite their family connection and acknowledges his subordinate place in the emerging command structure.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "brothel madam"
+            ],
+            "description": "A brothel manager who provides shelter to women with few alternatives. Cast out by her father after becoming pregnant and later separated from her child, she has made her establishment a place of refuge.",
+            "id": "grabella",
+            "name": "Grabella",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sixteen-year-old royal unwillingly engaged to an older foreign prince. A palace poisoning plot places her in immediate danger.",
+            "id": "cennarian-princess",
+            "name": "The Cennarian princess",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jengri"
+            ],
+            "description": "A senior assassin and mage who interprets Rezkin's ability to disrupt his talent as proof that Rezkin is the master awaited by his Order. He offers personal service even though his own leaders have not accepted that claim.",
+            "id": "jengri-assassin",
+            "name": "The Jengri assassin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion of Rezkin who gives up her former romantic claim on him and now regards him as a friend.",
+            "id": "reaylin-de-voss",
+            "name": "Reaylin de Voss",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A refugee and companion of Frisha. Aboard Stargazer, she shares quarters with Frisha, Reaylin de Voss, and the princess traveling under concealment, placing her within the close domestic circle around the royal ward.",
+            "id": "shiela",
+            "name": "Shiela",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of a criminal guild newly allied with a former rival under the Raven's authority. The two leaders offer protection and partnership to a disfigured nobleman and prepare a mission to extract people.",
+            "id": "serpent-guild-guildmaster",
+            "name": "The Serpent Guild guildmaster",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A guild leader who sets aside an old rivalry with the Serpent Guild to work beneath the Raven's emblem. Together, the guildmasters offer a discarded nobleman protection, recruit him into their alliance, and prepare a planned extraction.",
+            "id": "diamond-claws-guildmaster",
+            "name": "The Diamond Claws guildmaster",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An exiled and disfigured member of a ducal family who sees no future among his relatives. He accepts protection and a useful place in the Raven's allied guild network, then agrees to assist with its coming extraction operation.",
+            "id": "disfigured-nobleman",
+            "name": "The disfigured nobleman",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Rezkin's former trainers, arriving among new refugees in disguise to protect his mage niece. Kai identifies him as a serious danger and urges harsher action, but Rezkin permits him to remain within the new settlement under close observation.",
+            "id": "striker-farson",
+            "name": "Striker Farson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A political prisoner marked as a priority target in the Raven network's prison break. The wounded Benny releases him while the extraction is still in progress, making his safe removal one of the operation's central objectives.",
+            "id": "count-jebai",
+            "name": "Count Jebai",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young thief associated with the Raven's network. Though only recently taught to read, he takes charge when a prison-break courier fails, enters the dungeon, suffers a stabbing, and continues freeing the designated captives.",
+            "id": "benny",
+            "name": "Benny",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable fighter sworn to Rezkin. When a priest challenges her allegiance, she explains that Rezkin earned it by enabling justice against the duke who murdered her father, and she presents that debt as the basis of her continuing loyalty.",
+            "id": "young-swordwoman",
+            "name": "The young swordwoman",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Frisha's uncle"
+            ],
+            "description": "Frisha's uncle and commander of a northern fortress opposed to King Caydean. He receives Count Jebai's rescued party but distrusts criminal influence and does not accept the Raven's support as proof of Dark Tidings' legitimacy.",
+            "id": "general-marcum",
+            "name": "General Marcum",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nobleman linked to the young swordwoman through his dead brother and their intense, conflicted feelings. Rezkin entrusts him with her unstable life crystal because carrying it herself could endanger her.",
+            "id": "young-lord",
+            "name": "The young lord",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B077NH99BR",
+            "type": "community"
+          }
+        ],
+        "work": "legends-of-ahn"
+      },
+      "recaps": {
+        "ending": "Kylerum remains a functioning refuge under Rezkin, whose will controls the ancient citadel and its seventeen guardian essences. A pendant limits the city's harmful influence on him, but the source of that influence and the truth behind his training are unresolved. Frisha remains with him while questioning whether either of them can trust their relationship. Tamarin Blackwater is assigned to reconnoiter the trade port of the kingdom that claims Kyle, and General Marcum shares opposition to Caydean without accepting Dark Tidings as legitimate.\n\nThe demon rite ends with two captives dead and four rescued. Those survivors remain linked to crystals whose effects are uncertain, and the young swordwoman's crystal is held by a young lord rather than carried by her. Tieran survives with a blackened arm of unknown prognosis. The princess, Shiela, Wesson, Kai, and the other defenders survive the immediate attack. The cave creatures withdraw, but someone within the citadel invited the demons onto the island. Rezkin postpones the promised sanctuary and demon-finding army until Kyle's status is secured, while Caydean, the hidden inviter, further incursions, and Rezkin's origins remain open threats.",
+        "in_short": "Rezkin leads refugees from King Caydean's rule, wins recognition for the island Kingdom of Kyle, and settles them in the concealed ancient city of Kylerum. The citadel answers his will but also disturbs his judgment until a crystal pendant offers protection. His Raven network frees political prisoners, while new warnings about his training deepen Frisha's doubts. Six residents are taken for a demon ritual. Rezkin's force interrupts it, but two possessed captives die and four survivors remain bound to dangerous crystals. Tieran is injured defeating a possessed healer, and the young swordwoman's crystal passes to a young lord for safekeeping. Demons entered through an invitation from within Kylerum, leaving the inviter unknown. Rezkin delays returning to Asshai and fulfilling his Fae bargain until he can secure Kyle's political standing, sending Tamarin Blackwater to gather intelligence while Caydean's forces remain a threat.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rezkin gathered companions including Frisha, Tamarin Blackwater, Wesson, Tieran Nirius, and Kai while concealing major parts of his identity and purpose. He became a claimant to Asshai and the leader of people displaced by King Caydean. His relationship with Frisha was expected to lead toward marriage, and Tamarin trained under him. Wesson served as a trusted battle mage, Tieran was both his blood relative and subordinate heir, and Kai acted as a striker and security adviser. Rezkin also developed a covert network under identities known only to selected allies. The group now faces the problem of protecting refugees who cannot safely remain under Caydean's power.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin leads more than one hundred refugees toward a foreign capital aboard Stargazer, then goes ahead alone to arrange their entry. His admission that he is Dark Tidings and a claimant to the throne has damaged his companions' trust, especially Frisha's. In the forest, a woodland Fae impersonates Wesson and offers a hidden island haven in exchange for an army that can oppose demons. Rezkin accepts the bargain.\n\nIn the capital he works through several concealed identities, alters the port record, and pressures councillors to support an independent Kingdom of Kyle for the refugees. During a palace infiltration, he discovers a plot to poison the king's sixteen-year-old daughter. He prevents her death and learns that her father intended to blame her foreign betrothed, gaining military leverage for war against Asshai. Rezkin defeats the king and compels him to advance the island grant and send the princess to Dark Tidings. A senior assassin who regards Rezkin as his Order's awaited master offers service. Rezkin then removes the princess from the palace and conceals her in Grabella's brothel as a dismissed servant while the political plan proceeds.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Cennarian council refuses the refugees entry but recognizes the disputed island of Kyle as a kingdom under strict conditions. Dark Tidings must take the king's daughter as his ward, accept temple observers, negotiate limited trade, and seek recognition from the other kingdom claiming the island. The king does not realize that Rezkin already has the princess. After Grabella kills her criminal overseer in self-defense, Rezkin places the dead man's enterprises under her control and extends the Raven's protection to the women.\n\nThe Fae representative clarifies that Rezkin must make the abandoned island safe and eventually raise a force against demons. The Jengri assassin returns, asks to serve, and escorts the disguised princess to Stargazer. A royal guard then arrives with the recognition treaty and a group of deported Asshaians. Rezkin accepts those willing to swear allegiance to Kyle and takes two priests with them. The princess confirms to the guard captain that her father ordered her murder. She boards with the refugees, and Rezkin tells her and the assassin that Rezkin, Dark Tidings, and the Raven are one person. Stargazer leaves for the newly recognized kingdom with its first displaced population aboard.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Stargazer sails, the Raven's formerly rival guilds recruit a disfigured nobleman for a planned extraction. Aboard ship, the princess and Tamarin Blackwater become closer, although she wants no immediate marriage. Tam learns her true rank and initially resents the idea that she might be promised to Dark Tidings, but Rezkin states that the treaty creates only a wardship.\n\nThe ship passes through a fear-inducing ward that only Rezkin can detect and enters a concealed harbor. Beyond monumental doors lies an ancient citadel. Magical force rebounds against Wesson, while Rezkin's touch stops his heart before he forces an entrance and is revived. The structure then responds directly to Rezkin's intent, activating lights and doors that ordinary mages cannot sense. Contact with a small crystal improves his impaired concentration and protects him from the citadel's unnatural calm.\n\nThe refugees establish quarters inside. Rezkin formally names the hidden capital Kylerum and claims Kyle, intending to negotiate rather than fight the kingdom with a competing claim. A defensive apparition answers his will and explains that seventeen ancient guardians are preserved as linked essences within the citadel. Rezkin commands the collective to separate, proving that Kylerum's systems and protectors recognize his authority.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kylerum's guardians act on Rezkin's wishes and even condemn Tieran for striking him during training, although Rezkin orders his release. Exploration reveals a preserved city and palace within a vast enclosed basin. Beyond part of the guardians' reach, Rezkin develops headaches, suspicion, and lapses of judgment. The city also suppresses his readiness, and only his crystal pendant reliably counters the effect. His companions quietly investigate as the refugees settle the city and four residents disappear.\n\nA second ship brings supplies, traders, and nearly two hundred more refugees. Among them is Striker Farson, one of Rezkin's former trainers, who comes to protect his niece. Rezkin permits him to stay under guard. Farson says Rezkin was trained under orders and cannot love, worsening Frisha's doubts, while admitting he might use her to control Rezkin.\n\nElsewhere, Benny takes over the Raven network's prison break after a courier fails. Though badly wounded, he frees Count Jebai and other prisoners, and the extraction escapes with losses and captures. Rezkin's council decides it lacks the forces, supplies, intelligence, and allies to retake Asshai. Suspecting that Caydean's troop placement invites invasion, Rezkin prioritizes regional security and sends Tamarin Blackwater to reconnoiter the trade port of the kingdom claiming Kyle.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kylerum's throne-room guardians force Rezkin through a test that reveals six missing residents bound around a ritual pyre. Wesson identifies the rite as demonic and warns that simply freeing the captives could kill them. The rescuers plan to move the ritual's energy into crystals before cutting the bonds, relying on Rezkin's ability to direct the citadel's crystal system. Meanwhile, Benny and a guildmaster deliver Count Jebai and his wife to General Marcum's northern fortress. Marcum shares their opposition to Caydean but rejects the Raven's endorsement as proof that Dark Tidings should rule.\n\nAt the ritual site, Rezkin fills four crystals while his force holds off swarming cave creatures. Demons possess the other two captives. Rezkin kills the adult host, and the princess's assassin guard kills the possessed child. At the citadel, a possessed healer lures Tieran, Frisha, Shiela, and the princess underground. A serpent-like tree-being shelters the women and helps Tieran overpower the attacker, though Tieran's arm is left blackened.\n\nThe four remaining captives are freed, but their lives remain dangerously linked to the crystals. Rezkin entrusts the young swordwoman's crystal to a young lord connected to her through his dead brother. The cave creatures submit and withdraw after the rite ends. The tree-being reveals that someone inside Kylerum invited the demons and renews the demand for sanctuary and an army able to find them. Rezkin postpones that obligation until he can secure Kyle's status, leaving the inviter, the unstable crystal bonds, Caydean, and his own origins unresolved.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B077NH99BR",
+            "type": "community"
+          }
+        ],
+        "work": "legends-of-ahn"
+      }
+    },
+    "legions": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Myth",
+              "Mythcrafter"
+            ],
+            "description": "The series viewpoint character, returning to Quest Academy for his second semester as its top-ranked first-year Savior. His silver eyes appraise any object in exact detail, and his fused Mythcrafter ability builds extraordinary gear from powers he has copied with Skill Master. Now founding a support-focused crafting guild, he splits his time between coursework, close-combat training in his family's martial style, and increasingly ambitious builds, while carefully guarding how far his abilities really reach.",
+            "id": "sal-argento",
+            "name": "Salvatore \"Sal\" Argento",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A top-ranked third-year support student and Sal's crafting partner and guild co-founder. Her Figment ability conjures materials from ambient essence, making her one of the most capable crafters on the Savior floor. Warm, quick, and competitive, she runs dungeons to gather stock, co-designs Sal's biggest projects, and often commits him to deadlines and plans before he can object.",
+            "id": "fabrizia-fabi",
+            "name": "Fabrizia \"Fabi\"",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A foresight-gifted friend and Sal's closest confidant, whose eyes turn white when she reads possible futures. Back at the Academy she trains privately in a martial style using a manual Sal's father lent her, and quietly steers Sal away from his worst outcomes while refusing to spoil the good ones. Candid and loyal, she registers his private realizations almost as he has them.",
+            "id": "divinity-khan",
+            "name": "Divinity Khan",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A low-ranked illusionist and one of Sal's sharpest friends, endlessly inventive and quietly top of every subject beneath the clowning. He spends the semester building team-composition and synergy simulations for the Savior class, reads people through body language behind a psionic-blocking layer, and pushes Sal to recruit widely and to stand up for the overlooked.",
+            "id": "barry-francis",
+            "name": "Barry Francis",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's crafting mentor and Quest Academy's workshop lecturer, whose ability turns her gear into powered mechanical armor. Warm but exacting, she teaches the new essence-programming course, accepts a lavish device from Sal as a bribe to join his guild as a mentor, and repeatedly shields him and his friends from unwanted scrutiny over their abilities.",
+            "id": "upgrade",
+            "name": "Upgrade",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A crafting classmate and steady friend with a Construct ability that builds finished gear from materials at hand. Modest about her own talent and quick to spot a design flaw, she signs on as the elixir machine's fabrication contractor and recruits others to the build.",
+            "id": "blathnaid-mcclean",
+            "name": "Blathnaid McClean",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rune-focused first-year classmate with a striking natural aptitude for essence-programming logic, outpacing even Sal in the new course. Self-conscious but genuinely gifted, he is drawn into Sal's elixir-machine build and crafting circle and offers to serve as the guild's essence-programming specialist.",
+            "id": "anthony-mcguinn",
+            "name": "Anthony McGuinn",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A barrier-ability classmate estranged from Sal since a mind-control-driven outburst before the break. She approaches him on her own initiative to apologize and return the gauntlets he once made her; he refuses to take them back, and the two agree to restart their friendship honestly. Raised far from hero culture by a family without abilities, she attends the Academy on scholarship.",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rune-focused classmate and one of Sal's close friends, reunited with the group in the semester's first class. His rune craft is its own discipline, separate from ability-based essence work, and he is keen to push it further through the Academy's new coursework alongside Anthony and Blathnaid.",
+            "id": "jack",
+            "name": "Jack",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Quest Academy graduate who left ranked first in her class yet now quietly works the Academy's credit floor, mistreated by the guild that once scouted her and waiting for a way back into hero work. She has already asked to join Sal's forming guild as an advisor.",
+            "id": "vanessa",
+            "name": "Vanessa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established offense-class hero and a returning ally from Sal's earlier semesters, blunt and formidable. She has visited the Academy's guild administration claiming a place as a third advisor to Sal's young guild, a step Sal is told would raise expectations for the guild's offensive capability, since a single offense specialist cannot cover every combat contract alone.",
+            "id": "villa",
+            "name": "Villa",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, imposing masterclass instructor and replicator whose hero ability, also called Coach, lets him instinctively read any ability's limits and prescribe a training path to improve it. Reclusive and unpopular because he must also deliver hard verdicts, he finally arrives at the Academy, on a tight consulting schedule, to evaluate what has been straining Sal's abilities.",
+            "id": "coach",
+            "name": "Coach",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A composed, analytical offense-class first-year and one of the highest-rated individual combatants in the Savior class, courted by dozens of guilds. Blunt and self-assured, she declares herself best at killing and is skeptical that Sal's small trainee guild is worth her time, though she agrees to watch how it develops.",
+            "id": "mika",
+            "name": "Mika",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Factor"
+            ],
+            "description": "A controller-class first-year whose ability splits him into and reabsorbs several clones at a cost to his effectiveness. Proud and easily flustered, he is partnered with Mika and initially wary of Sal before warming to him.",
+            "id": "seth",
+            "name": "Seth",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Delvers Guild figure and long-standing rival of the Argento family who inserts himself into Quest Academy's Savior training, offering to personally tutor the five top-ranked students, Sal among them. Smooth and self-serving, his real interest in Sal's gear and standing makes his motives immediately suspect.",
+            "id": "shade",
+            "name": "Shade",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Quest Academy's headmaster, who opens the second semester by lifting the harsh first-year war curriculum, restructuring grading, and publicly recognizing Sal's trainee guild. Invested in Sal's success, he balances institutional caution with a genuine, sometimes meddlesome personal stake in his students.",
+            "id": "quest",
+            "name": "Quest",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's father and an Argento Auction House appraiser, revealed to be a hidden, highly trained martial artist who has been coaching Sal in the family's Silverson Arts. His own appraisal-derived ability, Allsight, turns out to be the strain behind Sal's collapse, and he takes an active on-page role in Sal's recovery and guild.",
+            "id": "petro-argento",
+            "name": "Petro Argento",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An offense-class hero known for keeping the Savior sparring room in order, whose essence-nullification ability and assassination-focused masterclass training make her one of the class's most dangerous fighters. An early recruit to Sal's guild, she is respected even by rivals who rate themselves highly.",
+            "id": "anna-sakura",
+            "name": "Anna Sakura",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battle healer known for a viral clip of a dramatic window-jump and for wielding a formidable healing weapon. Out of her depth without her legendary coat, she joins Sal's guild and is genuinely surprised to learn membership comes with a wage as well as gear.",
+            "id": "rochelle-de-verdon",
+            "name": "Rochelle de Verdon",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "legions"
+      },
+      "recaps": {
+        "ending": "Book 5 closes on aftermath and consolidation rather than a cliffhanger. The invasion of a nearby district is fully repelled across every front, its psionic war-spider commander dead and the Delvers figure Shade arrested, though his ultimate fate and the Delvers Guild's future are left open. Sal ends the book as a publicly credited commander-slayer and the head of a fully contracted, well-funded, heavily equipped Mythic Guild, its first-generation roster signed and its advisors, Upgrade, Vanessa, and Villa, confirmed. Vanessa is revealed as by far its most powerful fighter, credited with six of the guild's seven commander kills to Sal's one. His crafting machine Athena is complete and proven, having diagnosed his own abilities and repaired his friend Divinity's precognition, giving her a controllable new activation mode and a path to develop the rest herself. Several major threads carry forward: Divinity's Hunter Bureau scholarship still bars her from the guild, now wagered on a sparring match whose outcome the book does not show; the guild will eventually need a portal expedition or a Red Zone push to claim a rare power source held only by the Hunter Bureau's president and a reclusive materials patron; Sal owes Divinity an unfinished gift and himself a further crafting stage; and his newly public Mythic-grade capability may draw unwanted attention. No death or betrayal closes the book; it ends mid-relationship, with Sal and Divinity heading off to spar.",
+        "in_short": "Back at Quest Academy as its top first-year Savior, Sal Argento sets out to found a support-focused crafting guild while training in combat and juggling a heavy course load. He invents new abilities, builds an industrial elixir machine that reaches Mythic grade, and collapses from an untrained inherited ability, then recovers to formally register the Mythic Guild and receive a legendary armor set from his friends. Warned that the Delvers figure Shade means to target him, he builds a third Mythic machine, Athena, that can diagnose and even repair ability weaves. Before the confrontation can play out, a full demon invasion strikes a nearby district; Sal kills a commander-class demon single-handed, his advisor Vanessa is revealed as a hidden powerhouse, and Shade is exposed and arrested. In the aftermath Sal founds and equips the guild in earnest and, in a quiet final arc, uses Athena to repair his friend Divinity's blocked precognition, rebuilding its missing foundation by hand. The book ends with the two heading off to spar over a wager about her guild-barring scholarship.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Quest Academy series: Sal Argento, a guarded young man whose silver eyes appraise any object and who can copy other people's abilities, enrolled at Quest Academy, where heroes train to reclaim demon-held land. During skill registration he accidentally fused several powers into a unique crafting ability the Academy calls Mythcrafter, became the protege of the crafting lecturer Upgrade, and befriended the foresight-gifted Divinity Khan. He helped expose Bastion, a wealthy faction seeding loyal students, cleared a Tower trial that became a real demon incursion, created Perfect, a flawless self-improving ability, and was named the single best of the Academy's first Saviors. Home for the break, he discovered his auctioneer parents, Petro and Sophia, were once frontline heroes of the Silverson Group, cast out decades ago and hiding their past to keep him off the Hunter Bureau's radar. Reconciled with them, he trained in the family's anti-demon martial style, met Fabi, a top crafter and his crafting partner, and built an automated fabrication machine, the Arkwright. Learning that pure silver harms demons, he hand-crafted the story's first Mythic-grade item: a bonded gauntlet carrying a storage subspace, an essence battery, and Subsume, a kill-triggered growth ability, plus a lethal drone. Rather than hide it, his family chose to grow his power and forge outside alliances, sealing a pact with an independent militia. Sal returned to Quest Academy far stronger, with a Mythic weapon, a training partner in Fabi, and a support-focused guild he still means to found, all against the shadow of a looming, mandatory portal expedition.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sal and Fabi return to Quest Academy for the second semester and move onto the exclusive Savior floor, with its communal workshop, sparring room, and strategy center. Ranked the top first-year, Sal is pressed by the alchemist Alex to finally deliver a long-promised elixir-production device within two weeks. He enrolls in a demanding essence-programming course and, after building the elixir device's first draft around the wrong ability, restarts the design from scratch. He also learns his drone, Jackal, can genuinely learn and grow, and that improving it requires essence programming rather than more crafting. Most significantly, he gives his mentor Upgrade a blueprint and materials for her own powerful device, built from a rare synthesized stone rather than the dangerous material behind his own Mythic gauntlet, and reframes the extravagant gift as a bribe for her to formally join his forming guild as a mentor, which she accepts. Upgrade is stunned to learn Sal's auctioneer parents personally trained and dungeon-dived with him. Sal reprioritizes the semester toward combat and his Savior identity, reads his father's martial-arts manual cover to cover, and begins intensive sparring-room training, even as his backlog of crafting commissions and the elixir deadline mount.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal throws himself into essence programming, where his classmate Anthony proves a natural far beyond Sal's own struggling grasp of the subject, while Upgrade teaches the new course and is close to finishing her own device. Working at the simulation orb, Sal invents a new ability, Genesis, that transforms organic matter, discovered through a thread-interlacing efficiency trick he names the ravel method. He reconciles at last with Hannah, whose earlier mind-controlled outburst had estranged them; she returns and then keeps the barrier gauntlets he made her, and the two rebuild their friendship honestly. A public classroom confrontation forces Sal to explain his unprecedented essence capacity and a rare, self-replenishing state called Essence Fortification, which Divinity vouches for outright, silencing a doubting lecturer. Over lunch and canteen conversations the friend group reforms, and Sal meets Mika, a blunt offense specialist rated among the strongest in the Savior class, who dismisses his trainee guild as a poor career move but agrees to reconsider once it proves itself. At the semester-opening assembly, the headmaster, Quest, lifts the brutal first-year war curriculum, restructures grading around continuous assessment, announces an eventual Hunter Bureau raid as the semester's goal, and publicly recognizes Sal's Academy-approved trainee guild, turning the whole room's attention on him.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sorting through module choices with Divinity's help, Sal locks in a heavy schedule and awaits a masterclass with the elusive Coach. Studying a classmate's rare Mimicry ability, he registers two powerful new abilities of his own, culminating in Sovereign, and begins imagining a self-sustaining, core-consuming combat drone. He hands that drone project to Fabi and turns the elixir device into an ambitious three-station machine, recruiting Blathnaid as fabrication contractor plus Anthony and Jack, and offering the alchemist Alex a profit share to run it. As the team builds at speed, using Fabi's Figment ability to conjure oversized, high-grade components, Fabi accidentally discovers she can retroactively upgrade an already-finished item's grade with a wave of her hand, pushing pieces from epic to legendary at a steep essence cost. The discovery both thrills and unsettles the group, raising new questions about how far the trick can go, as the increasingly industrial machine takes shape.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The team assembles and activates the full elixir machine, a three-station device that grows, refines, and transmutes its own ingredients. Encouraged by Upgrade to push it as far as it will go, Sal pours enormous amounts of essence into the machine to drive it toward Mythic grade, but as the last components turn red he collapses, his eyes bleeding. He wakes days later in the infirmary, blind and bandaged, his father Petro at his side. The cause is revealed: Sal unconsciously triggered Allsight, a dangerous perception ability inherited from his father, before his body was ready for it. The machine is confirmed Mythic grade, only the second such item ever made, appraised by Petro himself, though its grade now threatens the guild's trainee status. Petro, appearing on-page for the first time this book, is stunned to learn the martial style Sal has been training via his visor has evolved far beyond the eight basic stances he actually wrote, and gives his blessing to keep training it. Sal, facing weeks of recovery, has also quietly commissioned Fabi to build a self-sustaining drone and a healing mask meant to fix his straining eyes.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal spends roughly three weeks in the infirmary under close, deliberately slow supervision, chafing at the restrictions. He covertly builds a diagnostic scanner from his medical equipment and donates it to the infirmary, and is finally discharged, cleared for crafting up to epic grade but barred from higher work until Coach arrives. He learns that the Delvers Guild figure Shade has inserted himself into Savior training, personally offering to tutor the five top-ranked students, Sal included, which Sal and his father treat with deep suspicion. His guild is formally registered with the United Guilds Association as the Mythic Guild, a Tier 8 specialist guild with Vanessa and Upgrade as advisors and Petro as sponsor. The healing-mask commission proves to be more than it seemed: the elixir-machine team has been developing a mastery-boosting elixir, delivered as an inhalable vapor through the mask Fabi is building, that raises the user's ability mastery to full for a stretch at a time, meant to stop the strain destroying Sal's eyes. Sparring with his father, Sal proves his visor-evolved martial style is genuinely combat-effective, though Petro's speed and strength still clearly outmatch him.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A reclusive automation crafter sends Sal an elaborate material-transport device, and his Guild Mastery lecturer, Jez, hands him a concrete dossier of kill targets and dungeons to climb toward Tier 7. The mask commission is then revealed to have secretly grown into a full coordinated armor set, Tempest Marshall, appraised at legendary grade and built by Upgrade, Fabi, and Blathnaid, its risky Overdrive output function deliberately offset by the built-in mastery elixir. Sal field-tests the set across two dungeons with a large group of friends: its lightning-based functions let him raise his physical stats simply by killing lower-tier demons, and its signature Tempest attack clears whole levels at once. His drone, Jackal, completes its first evolution mid-run, gaining new capabilities and independently saving Divinity's life from a hidden ambush the group had never noticed in many prior runs of that dungeon. The outings validate Sal's new power set completely, but leave Barry quietly suspicious about how such fast, low-effort stat growth is even possible and what must be gating it.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Divinity finally explains Shade's plan: a staged trip into a red zone dressed up as a recruitment showcase for the Delvers Guild, with Sal as the real target, meant to pressure him into revealing the grade of his gear, and carrying a risk of abduction if he admits it is Mythic. Sal and Petro prepare a covert protection plan using the guild's advisors. Meanwhile the long-awaited Coach arrives, and Sal talks him into a build: reproducing and evolving Coach's diagnostic ability and folding it, along with the headmaster's data-gathering ability, into a third Mythic-grade machine. Appraised, it proves extraordinary, an evolving intelligence that can diagnose a person's limits and, through a function called Ascension, even repair broken ability weaves. Sal names the machine Athena and its public-facing system Legion, planning to disguise it as a revived, Coach-fronted version of the headmaster's old scoring system. A sharp discrepancy surfaces between Quest's assessment that Sal faces almost no abduction risk and Divinity's far more alarmed warning.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training alone in a dungeon cluster ahead of the Shade outing, Sal is caught in a full demon invasion that breaches a nearby city district. Choosing to fight rather than evacuate, he kills a commander-class demon single-handed to save the hero Villa, validating his gear against top-tier threats. The attack proves to be one coordinated front among several, meant partly as a distraction, and the guild advisor Vanessa is revealed as a hidden powerhouse who cuts down commander after commander by herself. The invasion's field commander, a giant psionic, self-regenerating war spider, is finally killed underground by Vanessa and Mika together. In the aftermath, testimony from the dying exposes that Shade ordered his own guild members to hold the line as bait, causing their deaths, and he is arrested, though his ultimate fate is left to the Hunter Bureau and the guild association. Vanessa, who once belonged to the Delvers herself, predicts nothing will really come of it.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The invasion over, Sal spends hours on menial cleanup among displaced residents, disturbed by how numb everyone seems to the loss. Returning to the Academy, he finally erupts at the headmaster, Quest, over the war's cost, the Hunter Bureau's long tolerance of Shade, and the fact that his own tiny guild accounted for more than half the district's commander kills. Quest, moved, drops his objections and offers active support, including outside-guild training arrangements for Barry and Rochelle. Back in Sal's dorm, Upgrade and Fabi have fed the Athena machine several major databases, and Sal adopts a cover story, crediting his sudden physical growth to an assimilation effect from a crafting material rather than to his drone. Placed into Athena for his own first live session, Sal finds the machine pulling data straight from his body and weaves and rapidly testing dozens of variant designs through his own ability, doubling as an automated training tool rather than a mere diagnostic.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal's Athena session gives him a full profile of his abilities: a suitability map across every weave category, and a five-stage crafting progression track placing him at its middle stage with two more to climb. With the demonstration done, the Mythic Guild holds its first official meeting, summoned by the headmaster over Upgrade's objection. Sal lays out the guild's support-first identity and its plan to share his Mythic-grade crafting with members rather than gatekeep it, revealing his own bonded gauntlet as the template. When a prospective member questions why a guild with such tools needs fighters at all, Villa and Vanessa reveal to the room that Sal personally killed a commander-class demon and saved roughly thirty volunteers during the invasion. The full first-generation roster signs contracts one-on-one, several members stunned to learn membership pays a wage, and Sal privately reckons the guild is financially secure for years. Upgrade, Vanessa, and Villa are confirmed as its three advisors.",
+            "through": {
+              "chapter": 87
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In a private catch-up, Divinity finally admits she has been unable to see the future clearly since Sal's hospitalization, tracing the block to grief over a bright future she lost when Fabi's ability changed it, and reveals the Hunter Bureau scholarship that supports her family and bars her from joining any guild. Rather than simply pay off the scholarship, Sal runs her through Athena, safely raises her ability's grade with Ascension, and then, over two chapters of delicate manual work, rebuilds the foundational first stage her ability had been missing entirely, which had capped its ceiling. She gains a genuine, low-cost new activation mode alongside her old all-out power, plus a self-training plan for the remaining stages, and stably manifests an upgraded, golden-winged form under full control. She glimpses that the guild will eventually need a portal expedition to claim a rare power-source material for Athena. Sal tells her the invasion's final tally for the first time, seven commander kills, one his and six Vanessa's, and Shade's arrest. The book ends with the two heading off to spar on a wager: if Sal wins, he gets to intervene personally on her scholarship; if she wins, he must stop making her equipment. Her scholarship conflict, and the outcome of the spar, are left unresolved.",
+            "through": {
+              "chapter": 90
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "legions"
+      }
+    },
+    "legions-fifth-vault": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Eiru's Architect and postwar leader. Three days after the city is retaken, he turns from immediate recovery work toward a journey that will use a step championship as cover for rescuing Lylan's brother.",
+            "id": "ruwen-starfield",
+            "name": "Ruwen Starfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ruwen's partner, recently advanced to level 20. She chooses to accompany the championship and rescue expedition instead of returning directly to Deepwell, despite knowing her parents will be concerned.",
+            "id": "hamma",
+            "name": "Hamma",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's soulbound bookworm companion and intelligence specialist. Even while elsewhere, she can follow his thoughts and perceive through his senses, allowing her to remain involved in Eiru's planning without standing beside him.",
+            "id": "rami",
+            "name": "Rami",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hamma's father and one of Eiru's Elders. He joins the planning for revival and fair resettlement as the recovered city confronts overcrowded storage, a vast revival queue, and the need for new communities.",
+            "id": "niall-blakrock",
+            "name": "Niall Blakrock",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The deity whose authority has passed to Ruwen through his role as Architect. She remains Eiru's public divine figure while he asks Niall to speak for him as chief high priest and help connect the city with her lands.",
+            "id": "uru",
+            "name": "Uru",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miranda"
+            ],
+            "description": "A powerful ally also known in her divine form as Miranda. Uru summons her to witness the private proceeding in which Niall exercises his right to judge the deity.",
+            "id": "blapy",
+            "name": "Blapy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sentient keeper of Ruwen's Shattered Sun dungeon. Ruwen directs a fallen enemy's body to him rather than the temple so that Fractal can investigate its unusual tattoos and possibly reproduce their effects.",
+            "id": "fractal",
+            "name": "Fractal",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's step-fighting partner and a member of the team using the Malth championship as cover for a rescue. Because recognition could compromise the operation, the planning group must find a way to suppress his identity before the journey.",
+            "id": "sift",
+            "name": "Sift",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Malth rescue party whose appearance must be disguised before the group travels. The covert mission is intended to recover her imprisoned brother, and the step championship gives her allies a public reason to enter the city.",
+            "id": "lylan",
+            "name": "Lylan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A celestial remnant allied with Ruwen's group and present for the Malth planning session. He joins the discussion as the party identifies which travelers need disguises and which require protection from magical identification.",
+            "id": "xavier",
+            "name": "Xavier",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The organizer of the covert rescue and its tournament cover. She recruits an Ink Lord, assigns the scouting party for a temple operation, and directs Ruwen and Sift toward training needed for their public role.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lylan's brother and the prisoner the group intends to free from a Legion vault. The rescue is the expedition's central concealed objective, while the step championship provides a public reason for the party to enter Malth.",
+            "id": "dalyn",
+            "name": "Dalyn",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ink Lord and former associate of Kai. He agrees to help Ruwen obtain access to a qualifying epic book, provided he receives a copy, because guild rules prevent him from simply supplying one from his own collection.",
+            "id": "tremine",
+            "name": "Tremine",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sift's parents and the instructors Ruwen and Sift approach for soul-move training before the championship. The pair travel through the Shattered Sun to consult them, hoping their teaching will support a credible tournament cover.",
+            "id": "madda-and-padda",
+            "name": "Madda and Padda",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's parents. They leave Eiru on a confidential mission that they say will support both Uru and their son. Ruwen does not learn their destination, but authorizes them to take whatever equipment they require from the temple vault.",
+            "id": "clarissa-starfield-and-colin-starfield",
+            "name": "Clarissa Starfield and Colin Starfield",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The deity associated with Malth, where the group must carry out its covert prison mission. His city and Legion vault are the destination once Ruwen's concealment preparations are complete, making his domain the setting for both the championship and rescue.",
+            "id": "izac",
+            "name": "Izac",
+            "reveal": {
+              "chapter": 21
+            }
+          },
+          {
+            "description": "A white-haired half-demon Ruwen previously freed during a trial. A blood-name mark links them, allowing him to summon her and possibly allowing her to detect him at close range, which makes her a serious risk to the Malth disguise.",
+            "id": "echo",
+            "name": "Echo",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Team Avalanche fighters opposing Ruwen and Sift in their opening championship match. Mai uses air-based soul magic and diversions, while Yap can increase gravity in a limited area, forcing their late-arriving opponents to adapt quickly.",
+            "id": "mai-and-yap",
+            "name": "Mai and Yap",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The gem-level stepmasters of the Burning Scorpions, a red-skinned pair associated with volcanic regions. Sift identifies them as leading championship favorites while he and Ruwen assess the strongest teams after their opening match.",
+            "id": "claw-and-stinger",
+            "name": "Claw and Stinger",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The lizard-dragon fighters of Team Apex, representing the Black Pyramid in the championship. Tournament recordings establish them as possible future opponents for Ruwen and Sift, and their affiliation suggests that Blapy is present in Malth.",
+            "id": "chip-and-stump",
+            "name": "Chip and Stump",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Team Tornado Fist fighter and the rift ghost Sift previously fought outside Eiru. Their history creates a risk that she will recognize his techniques and expose his concealed identity during the championship.",
+            "id": "blackout",
+            "name": "Blackout",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Blackout's much larger teammate on Team Tornado Fist. Ruwen identifies him as a jade cultivator who uses strength-based soul magic when the team appears for its match against Ruwen and Sift.",
+            "id": "smack",
+            "name": "Smack",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A construct within Ruwen's mind that begins speaking and acting independently while Ruwen tries to draw the agony of a bookworm trap away from Rami.",
+            "id": "overlord",
+            "name": "Overlord",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Izac's Ink Lord and the authority over the archive's restricted eighth floor. His office contains a concealed safe that Rami investigates during the gathering, despite Ruwen's warning that the hidden compartment is likely protected.",
+            "id": "numarrow",
+            "name": "Numarrow",
+            "reveal": {
+              "chapter": 39
+            }
+          },
+          {
+            "description": "The official at Legion's Vault who alone can open the dimensional bubble enclosing Rami's cage.",
+            "id": "jailer-of-legions-vault",
+            "name": "Jailer of Legion's Vault",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tournament reporter who interviews Ruwen and Sift after their victory over the Realm Breakers. She questions them as officials dismiss accusations of prohibited power use and the crowd reacts to their extraordinary performance.",
+            "id": "andi-kandi",
+            "name": "Andi Kandi",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kai's contact among the Legion guards and the rescue team's guide inside the prison. He accompanies the forged prisoner-transfer party toward the fifth vault and receives a blinker tied to the underwater refuge for the planned escape.",
+            "id": "ishdell",
+            "name": "Ishdell",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B09JGTZ174",
+            "type": "community"
+          }
+        ],
+        "work": "legions-fifth-vault"
+      },
+      "recaps": {
+        "ending": "Izac recognizes Ruwen despite the expedition's disguises and arranges for the fifth vault to be emptied and its exits suppressed. Echo confronts the rescue party with Rami and Dalyn in custody, kills Ishdell when he tries to flee, and seeks freedom from her blood debt. Ruwen rejects her terms, incapacitates the jailer, and recovers Rami's cage. In the Death Ring, Lylan uses the Greater Stasis Key to release Rami, who prepares a gate home for Hamma, Sift, Lylan, Dalyn, and herself. Ruwen enters a random Pillar door first so the others can escape and Echo can believe he died. He appears in open space, alive but outside the reach of Uru, the Black Pyramid, and every known destination. His Architect abilities supply a small shelter and air, and delayed notifications confirm that he is now a level-26 Ink Lord with Bamboo and Viper at master rank 99 pending their trial. His gates all fail, and Hamma's summoning coin turns black without bringing Blapy. Overlord remains with him, while Eiru's recovery, Fractal's independent-revival project, Echo's infernal connections, and Ruwen's return all remain unresolved.",
+        "in_short": "After Eiru survives Naktos's invasion, Ruwen Starfield arranges its recovery and joins a covert expedition to Malth, where a step championship masks the attempt to free Lylan's brother Dalyn. Fractal's elixir and Ruwen's Scarecrow aspect unexpectedly transform all twelve of his meridians to Diamond, while Sift discovers unprecedented soul abilities. Rami is captured in Izac's archive, forcing the team to add her rescue to the fifth-vault operation. The championship draws dangerous attention, and Izac and Echo prepare a trap inside the emptied prison. Echo kills Ishdell, but Ruwen defeats the jailer, recovers Rami, and sends Hamma, Sift, Lylan, Dalyn, and Rami toward home. He enters a random escape door alone and emerges in deep space. Newly recognized as an Ink Lord and accompanied only by Overlord, Ruwen survives by creating a small shelter, but every gate fails and Blapy's summoning coin cannot reach her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ruwen Starfield became Eiru's Architect and took responsibility for people aligned with Uru. Naktos invaded, forcing Ruwen and his allies into a battle for the city. Hamma, Sift, Rami, Lylan, Blapy, and the sentient dungeon keeper Fractal became central to his efforts. Eiru survived, but the victory left reconstruction, revival, and resettlement unfinished. Lylan's brother Dalyn remained a Legion prisoner, giving the group another urgent objective.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eiru is secure but damaged after the invasion. Ruwen directs the Elders to revive adults, restore household resources, and distribute the population among thirty planned settlements rather than allowing wealth to determine access to the rebuilt city. Niall Blakrock learns that Uru erased his memories of his family. He declines to punish her, though he cannot forgive her, and accepts leadership of the three temples after arranging to reunite with his wife. Hamma remains committed to the championship expedition and Dalyn's rescue. At the Shattered Sun, Blapy gives Ruwen the dungeon manual and helps Hamma and Niall use Fractal's routes to Deepwell. Fractal has already reproduced and improved a legendary transformation elixir. Blapy then explains the deeper importance of his crystal-based existence: Fractal preserves both memory and sentience without a deity. She intends to combine that discovery with her own work to create revival independent of divine control, a project that could protect Ruwen's people but would make Fractal a target.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen approves a Black Pyramid library branch inside the Shattered Sun and negotiates terms that preserve copies of Fractal's discoveries for the dungeon. He also tests Fractal's Booming Hen level, completing its difficult nonlethal route. The trial reveals a separate vulnerability: Ruwen's famous cloak blocks location magic only while worn, yet its appearance is too recognizable for the covert journey to Malth. The rescue party concludes that Hamma and Lylan need disguises, while Ruwen and Sift need stronger identity suppression. A permanent Tattoo of Silence would block both identification and location magic, but Ruwen can earn it only by completing his unfinished Ink Lord quest. That requires an epic book absent from the Black Pyramid's collection. The expedition therefore pauses its direct preparations and turns toward finding such a book before the championship cover begins.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kai recruits the Ink Lord Tremine for an operation involving an epic book held by western priestesses, while Madda and Padda examine Ruwen and Sift. They discover that Sift's multi-surfaced soul produces exceptional energy and may bind two Grandmaster Paths. Ruwen locates his own soul beneath Uru's seal but cannot access it, so he turns to bodily fortification. Fractal's improved elixir and Ruwen's Scarecrow aspect produce an unforeseen result: his body dissolves and rebuilds with all twelve meridians advanced directly to Diamond. Blapy warns that this method could upset the balance among deities if used to create armies, so it must remain secret. Kai's party completes the book operation during Ruwen's six-day transformation. He gains Ink Master status and a Tattoo of Silence, though his final advancement requires a legendary book and an emblem taken from a slain Ink Lord. Blapy binds the concealment tattoo to his soul. Rami absorbs a Codex of Perception and gains much stronger investigative abilities. With Hamma reconciled with her family, the group is finally ready to enter Malth.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kai disguises the travelers as Dune Wraith enforcers and orders Ruwen to hide his Diamond body, magic, Ascendancy, and fighting affiliations. Echo's blood-name connection to Ruwen remains a tracking risk. The group reaches a Malth safe house shortly before the first championship match, using Xavier and other disguised figures as decoys. Ruwen and Sift enter as the Invincible Step Gods and narrowly defeat Team Avalanche through a last-second scoring deception. Echo is also competing and recognizes Ruwen, causing the mark on his wrist to burn. Meanwhile, hostile pursuers compromise Kai's first safe house, forcing the group to relocate to an underwater refuge. Kai then discloses the rescue timetable: in four days, forged execution-transfer orders will take a disguised team into the Legion vault holding Dalyn. The championship is no longer merely a reason to visit the city. It must keep attention away from a prison infiltration whose schedule cannot easily change, even though Echo has already weakened the team's anonymity.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kai's plan calls for Ruwen to pose as an overseer while Hamma, Lylan, and Sift accompany him under forged authority. Dalyn is confined in the fifth vault, a dimensional prison with a lethal Death Ring and uncertain escape routes. Ruwen and Sift continue competing because withdrawal would also draw notice. Their rapidly improved technique is dangerous to display, so they defeat Tornado Fist with an awkward combined-body tactic that conceals their normal styles and reaches the top eight. The finalists must attend a reception at Izac's archive, where Rami secretly enters to gather information. Echo approaches Ruwen despite his altered voice, and Blapy announces that the winner of their coming match will face Team Apex. Izac then arrives, shows awareness of the Shattered Sun and Fractal, and agrees to receive confidential information from Echo. Blapy concludes that Fractal's unexplained development has alarmed him and will bring spies to both the dungeon and Eiru. On the eve of Ruwen's match with Echo, the championship, the archive visit, and the rescue have become entangled with Izac's personal attention.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Izac's archive, Rami absorbs books while Ruwen surveys the gathering. She reaches Ink Lord Numarrow's restricted office and triggers a trap built to harm bookworms. The pain passes through their bond, and Ruwen's internal Overlord construct begins speaking independently as it helps him endure the attack. Ruwen reaches the eighth floor and finds Rami injured inside a red cage enclosed by a dimensional bubble. Numarrow explains that only the jailer of the Legion vault can open the bubble. Ruwen incapacitates him and takes the cage key, but guards are seconds away and a specialist would need too long to break the barrier. Killing defenders would expose the entire group and end Dalyn's rescue. Ruwen therefore places Numarrow alive in his Voidband and escapes, leaving Rami behind. Her likely transfer to the Legion vault means the planned prison operation must now recover two captives instead of one.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kai accepts Ruwen's decision to leave Rami as the only way to preserve both rescues, though Xavier attacks him in grief before accepting the explanation. In the next championship match, Ruwen and Sift face Echo and her infernal butcher teammate. Echo's spores poison Sift and her soul enhancement raises her speed and strength, while Ruwen must keep his Diamond fortification hidden. As the match turns against them, Sift follows Ruwen's instruction to slow his heart and reaches a new depth of soul power. He launches into the air with this new ability, strengthens his whole body, and crashes into the lake with enough force to trigger every field hazard. The safety system ends the match, and the scoring gives the Invincible Step Gods the victory. Ruwen and Sift advance, but the breakthrough creates a new problem: Sift's abilities are exceptional enough to draw scrutiny, while Echo is already close to recognizing that Ruwen is far more advanced than his disguise suggests.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Officials find no prohibited power use in Sift's breakthrough, and the crowd names him the Soaring Sage and Ruwen the Silent Savage. Kai warns that the attention threatens the pending rescue. Overlord infers that Echo is the daughter of the plague siren Ruwen maimed and an infernal figure connected to Naktos's attack, but Ruwen withholds the theory to avoid widening the conflict. The team decides to contest the semifinal only briefly and then lose so it can focus on Dalyn and Rami. Against Team Apex, Stump uses detailed illusions while Chip confronts Ruwen inside the field's elemental cyclones. Chip's weapons and tactics force Ruwen to expose carefully limited portions of his real strength. Ruwen ultimately carries Chip out of bounds so he cannot join Stump against Sift. Sift then deliberately yields, ending the Invincible Step Gods' championship run. The cover has served its purpose, but both partners leave the tournament with their unusual abilities known to powerful observers.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chip and Stump publicly attribute the semifinal's most dangerous displays to illusion and environmental effects, protecting Ruwen's secret. Blapy reinforces their explanation with a spectacular appearance, and Hamma later heals Sift after he drinks an extremely potent liquor. With the championship finished for them, the party turns fully to the fifth vault. Ruwen speaks with Uru through Uru's Touch and receives a lasting aid to mental stillness. Kai finalizes the extraction: forged transfer orders will carry the disguised group to Dalyn, Rami will be recovered as well, and blinkers should take everyone out after they reach the fourth level. A mana bomb will destroy the route behind them. Xavier escorts decoys toward the stadium while Ishdell, Kai's guard contact, guides the real party toward the prison. There is no reliable fallback if they cannot descend from the fifth vault, and the most likely alternatives involve the Death Ring or fighting through the prison. The rescue begins as Ruwen compels a harbor captain to sail immediately.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen's overseer disguise, forged orders, and Ishdell's status carry the team into the fifth vault, where ordinary divine magic and mana recovery are suppressed. The level has been emptied, revealing that the operation was anticipated. Ruwen finds Numarrow dead, takes his Ink Lord emblem and a Greater Stasis Key, and discovers Dalyn's cell vacant. Echo then appears with both Dalyn and the caged Rami. She says Izac recognized Ruwen by his eyes and closed the exits, and she kills Ishdell when he runs. Ruwen gets his companions and Dalyn into the Death Ring, defeats the jailer, and retrieves Rami's cage while refusing Echo's attempt to end their blood debt on her terms. Lylan uses the stasis key to free Rami. Rami determines that a Pillar door will open randomly into the material realm and prepares to draw a home gate once someone clears the route. Ruwen takes Hamma's Blapy-summoning coin and enters alone, allowing the others a path home and intending Echo to believe he died.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The random Pillar door deposits Ruwen in open space, far beyond Uru, the Black Pyramid, and normal communication. His Diamond body survives the vacuum, and his Architect abilities let him create a small shelter, air, and a means of holding himself near its floor. Delayed notifications confirm that he has reached level 26, become an Ink Lord, and advanced Bamboo and Viper to master rank 99, though their master trial remains. He also receives a future rematch quest from Chip. None of this provides a route home. Ruwen cannot establish a connection to the Black Pyramid, Deepwell, Eiru, the Shattered Sun, or any other known destination. His remaining aspect-based escape also fails. Overlord helps him reject wasteful random attempts because portal chalk is limited and another destination might be worse. Finally, Ruwen uses Hamma's summoning coin, but Blapy does not appear and the coin turns black. Hamma, Sift, Lylan, Dalyn, and Rami have escaped toward home. Ruwen remains alive with Overlord, stranded beyond every rescue method he knows.",
+            "through": {
+              "chapter": 65
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B09JGTZ174",
+            "type": "community"
+          }
+        ],
+        "work": "legions-fifth-vault"
+      }
+    },
+    "les-miserables": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful, weathered ex-convict released after serving nineteen years of hard labor for stealing bread to feed his sister's starving children and for repeated escape attempts. Embittered and hardened by prison and by a society that brands him a criminal, he is turned away everywhere as a marked man, until an act of unexpected mercy sets him on a lifelong struggle to become an honest and good man while hiding his past.",
+            "id": "jean-valjean",
+            "name": "Jean Valjean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A stern, incorruptible police inspector who believes absolutely in law, order, and authority. Born on the margins of society himself, he has devoted his life to the rules and views any lawbreaker as permanently guilty. Rigid, tireless, and utterly certain of his duty, he becomes the relentless pursuer of Jean Valjean.",
+            "id": "javert",
+            "name": "Javert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Monseigneur Bienvenu"
+            ],
+            "description": "A humble, saintly provincial bishop who lives simply and gives nearly everything he has to the poor. Gentle, generous, and without judgment, he offers hospitality to the outcast Valjean when no one else will, and his extraordinary kindness plants the seed of Valjean's moral transformation.",
+            "id": "bishop-myriel",
+            "name": "Bishop Myriel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusting, beautiful young working woman abandoned by her lover and left to raise a daughter alone. To pay for the child's keep she sacrifices everything she has, sinking step by step into poverty and degradation. Loving and long-suffering, she embodies the cruelty society inflicts on the vulnerable poor.",
+            "id": "fantine",
+            "name": "Fantine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fantine's young daughter, boarded out to a cruel innkeeping family who treat her as a drudge and mistreat her. A frightened, overworked child longing for tenderness, she is the person Fantine sacrifices everything to protect, and her fate becomes bound to Valjean's.",
+            "id": "cosette",
+            "name": "Cosette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A grasping, dishonest innkeeper who, with his hard-hearted wife, takes in the child Cosette only to exploit her and extort money from her mother. Greedy, deceitful, and cruel, he schemes constantly to profit at others' expense, and his villainy follows the main characters across the years.",
+            "id": "thenardier",
+            "name": "Monsieur Thenardier",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An idealistic, poor young law student estranged from his wealthy royalist grandfather over politics. Passionate and romantic, drawn to republican ideas and the memory of his soldier father, he lives in near-poverty among student radicals, and falls deeply in love at first sight with a young woman he sees in a public garden.",
+            "id": "marius-pontmercy",
+            "name": "Marius Pontmercy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Thenardiers' elder daughter, once pampered as a child and now grown up in poverty and squalor among her family's criminal schemes. Sharp, streetwise, and neglected, she carries a hopeless, secret love for the young student Marius.",
+            "id": "eponine",
+            "name": "Eponine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The charismatic, austere young leader of a group of idealistic student revolutionaries in Paris. Devoted single-mindedly to the cause of republican liberty and the people, he is eloquent, fearless, and uncompromising, and he inspires his friends toward insurrection.",
+            "id": "enjolras",
+            "name": "Enjolras",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cheeky, resourceful Paris street urchin who lives by his wits, homeless and unbowed. Quick-witted, generous to other lost children, and full of irreverent courage, he roams the city and drifts toward the excitement of the coming uprising.",
+            "id": "gavroche",
+            "name": "Gavroche",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-miserables"
+      },
+      "recaps": {
+        "ending": "The many threads converge during the 1832 Paris uprising. At the barricade, Valjean spares the life of the captured Javert, then rescues the gravely wounded Marius by carrying him through the city's sewers to safety. The idealistic students, including Enjolras and the boy Gavroche, are killed when the barricade falls, and Eponine dies taking a bullet meant for Marius. Javert, released by the very man he has hunted for decades and unable to reconcile his absolute faith in the law with the mercy he has received and witnessed, throws himself into the Seine. Marius recovers and marries Cosette. Valjean, believing his criminal past would taint their happiness, confesses it and gradually withdraws from their lives, sinking into loneliness and decline. When Marius learns that it was Valjean who saved him, he and Cosette rush to the old man's side, and Valjean dies content, blessed and forgiven, his lifelong effort at redemption fulfilled. Fantine died years earlier without seeing her daughter grow, and the scheming Thenardiers come to a low and disgraceful end.",
+        "in_short": "Released after nineteen years in prison for stealing bread, the ex-convict Jean Valjean is shown mercy by a saintly bishop and vows to live honestly. Under a new name he becomes a prosperous manufacturer and respected mayor, but the dogged inspector Javert suspects his true identity. Valjean rescues the dying Fantine's daughter Cosette from the cruel Thenardier family and raises her in hiding as his own. Years later in Paris, Cosette and the idealistic young republican Marius fall in love, while a student uprising builds toward revolt. During the fighting at the barricades, Valjean saves Marius by carrying him through the sewers, spares the captured Javert, and secures the young couple's future. Javert, unable to reconcile Valjean's goodness with his own rigid faith in the law, drowns himself. Marius marries Cosette; Valjean, having confessed his convict past and withdrawn in shame, is finally reunited with them and dies in peace, his long struggle toward redemption complete.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In post-revolutionary France, Jean Valjean is released after nineteen brutal years of hard labor, imprisoned originally for stealing a loaf of bread to feed his sister's children. Marked forever by his yellow convict's passport, he is refused food and shelter everywhere he goes, growing bitter toward a society that will not forgive him. He is taken in by the merciful Bishop Myriel, whose astonishing kindness after Valjean repays it with theft transforms him and sets him on a secret lifelong effort to become an honest, good man. The premise follows Valjean's struggle to escape his past and live decently, shadowed by the relentless inspector Javert, and gathers in the fates of the poor and downtrodden of France, among them the abandoned young mother Fantine, her daughter Cosette in the hands of the grasping Thenardiers, and the idealistic young people of Paris drifting toward revolt.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "les-miserables"
+      }
+    },
+    "life-of-pi": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Piscine Molitor Patel"
+            ],
+            "description": "The narrator, a boy growing up in Pondicherry, India, where his family runs the local zoo. Given the name Piscine Molitor after a swimming pool in Paris, he adopts the nickname Pi to escape the teasing his full name invites. Curious and unusually spiritual, he is drawn to religion so strongly that he practices Hinduism, Christianity, and Islam at the same time and refuses to choose among them. Thoughtful and observant, he is fascinated by animals and by the workings of his father's zoo.",
+            "id": "pi",
+            "name": "Pi Patel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A large adult Bengal tiger from the Patel family zoo. Through a clerical mix-up long ago he was given a human name meant for the hunter who caught him. After the ship carrying the family and their animals toward Canada goes down, he ends up sharing a lifeboat with Pi. Powerful and deadly, he is at once a constant threat to Pi's life and, across the long ordeal that follows, the focus that keeps Pi alert, disciplined, and determined to survive.",
+            "id": "richard-parker",
+            "name": "Richard Parker",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pi's father, a practical, self-taught businessman who owns and runs the Pondicherry Zoo. Having come to the work through hotel-keeping rather than a love of animals, he treats the zoo as a demanding enterprise and holds firm, unsentimental views about wild creatures. He teaches his sons to respect the danger animals pose, most memorably by forcing them to watch what a tiger can do. Worried about India's political climate, he decides to sell the zoo and move the family abroad.",
+            "id": "santosh-patel",
+            "name": "Santosh Patel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pi's mother, a well-read, loving woman who anchors the family. Without strong religious ties of her own, she watches her younger son's simultaneous devotion to three faiths with a mixture of amusement and concern. She shares Pi's love of books and supports his education, and she stands by the family's difficult decision to leave India for a new life across the ocean.",
+            "id": "gita-patel",
+            "name": "Gita Patel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pi's older brother, athletic and popular, far more interested in sports than in religion or study. He teases Pi affectionately about his piety and his nickname. He is among the family members who board the ship bound for Canada.",
+            "id": "ravi-patel",
+            "name": "Ravi Patel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mamaji"
+            ],
+            "description": "An old family friend and former competitive swimmer whom Pi calls Mamaji. He teaches Pi to swim as a boy and is the source of Pi's unusual name, having greatly admired a particular swimming pool in Paris. Years later it is he who first points a visiting writer toward Pi and his extraordinary story.",
+            "id": "francis-adirubasamy",
+            "name": "Francis Adirubasamy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gentle female orangutan from the family zoo who survives the shipwreck and reaches the lifeboat afloat on a mass of bananas. Dignified and maternal in her bearing, she is a familiar and comforting presence to Pi amid the chaos of the disaster.",
+            "id": "orange-juice",
+            "name": "Orange Juice",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A figure from the second account of the sinking that Pi gives to investigators after his rescue. In that grimmer version there are no animals in the lifeboat but people: a brutal French ship's cook, an injured young sailor, Pi, and Pi's mother. The cook is violent and self-serving, and his cruelty drives the horrors of that telling.",
+            "id": "the-cook",
+            "name": "The cook",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An official from the Japanese Ministry of Transport who, with a junior colleague, interviews Pi in a Mexican hospital after his rescue in order to learn why the cargo ship sank. Methodical and skeptical, he presses Pi for a believable explanation and struggles to accept the account he is given.",
+            "id": "okamoto",
+            "name": "Tomohiro Okamoto",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "life-of-pi"
+      },
+      "recaps": {
+        "ending": "The lifeboat reaches the coast of Mexico after many months at sea. Richard Parker leaps ashore and disappears into the jungle without any farewell, a parting that wounds Pi more deeply than almost anything else in the voyage. Pi is rescued, hospitalized, and interviewed by two officials from the Japanese Ministry of Transport who cannot accept his tale of surviving alongside a tiger. He then gives them a second account in which the lifeboat held people rather than animals, and in which his mother and others were murdered by a brutal cook whom Pi in turn killed. The clear correspondence between the two stories is left for the reader and the investigators to weigh. Pi points out that neither version explains why the ship sank and that the plain facts are the same either way, then asks which story they prefer. They choose the one with the animals, and Pi answers that so it goes with God. Their report credits him with an astonishing feat of survival, and the deeper question of which story is true is deliberately left unresolved.",
+        "in_short": "Pi Patel, the son of an Indian zookeeper and a boy who embraces three religions at once, emigrates with his family and their animals aboard a cargo ship that sinks in the Pacific. He survives in a lifeboat with a zebra, a hyena, an orangutan, and a Bengal tiger named Richard Parker; the animals kill one another until only Pi and the tiger remain. For months Pi keeps himself and Richard Parker alive by fishing, gathering rainwater, and asserting a wary dominance over the tiger, enduring blindness, a deadly encounter with another castaway, and a brief stop on a carnivorous floating island. The boat finally reaches Mexico, where Richard Parker vanishes into the jungle without a backward glance. When investigators disbelieve his account, Pi offers a second version in which the animals are people, including his murdered mother, and lets his listeners choose which story to believe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Pi Patel grows up in Pondicherry, India, where his father runs the local zoo. A thoughtful, spiritual boy, he is drawn so strongly to religion that he takes up Hinduism, Christianity, and Islam all at once, to the confusion of the priest, pandit, and imam who each assume he belongs only to them. He learns hard lessons about the wildness of animals from his practical father and absorbs a deep knowledge of the zoo. As unrest grows in India, his father decides to sell the animals and emigrate, and the family books passage on a Japanese cargo ship bound for Canada, carrying several of the zoo animals along with them.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cargo ship sinks in the middle of the Pacific, and Pi survives by scrambling into a lifeboat. He is not alone: a zebra with a broken leg, a spotted hyena, and Orange Juice the orangutan share the small boat, and hidden beneath its tarpaulin is the family's Bengal tiger, Richard Parker. Over several brutal days the hyena kills and devours the injured zebra and then Orange Juice, and at last Richard Parker emerges and kills the hyena, leaving only Pi and the tiger alive. Terrified, Pi understands that he must somehow coexist with a predator that could kill him at any moment. He builds a small raft to keep his distance, takes stock of the boat's survival supplies, and begins the desperate daily work of staying alive.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pi and Richard Parker settle into a fragile routine over many weeks adrift. Drawing on what he knows of animal behavior, Pi works to establish himself as the dominant figure aboard, using a whistle, the rocking of the boat, and a careful marking of territory to keep the tiger in check, and he takes on the duty of feeding them both. He learns to catch fish and turtles and to collect rainwater, keeps a log, and prays to hold off despair. Starvation, thirst, sunburn, storms, and the endless emptiness of the ocean wear him down, and his survival comes to depend as much on the discipline of caring for Richard Parker as on food and water. The two become uneasy companions in a shared struggle to endure.",
+            "through": {
+              "chapter": 89
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near the end of his ordeal Pi goes temporarily blind and, in his delirium, encounters another castaway drifting nearby; the stranger, also starving and blind, climbs aboard meaning to kill and eat Pi, and is killed by Richard Parker. Pi's sight returns. The boat later drifts to a strange floating island of algae inhabited by meerkats, restorative by day but deadly acidic at night, and Pi chooses to leave rather than be trapped there. At last the lifeboat washes onto the coast of Mexico. Richard Parker bounds off into the jungle without looking back, and Pi is found and taken to a hospital, where he weeps at the tiger's abrupt departure. Two officials investigating the shipwreck refuse to believe his story, so Pi tells a second, grimmer version in which the animals are people: the hyena a savage cook, the zebra a young sailor, the orangutan his own mother, and the tiger himself. The parallels are unmistakable, and his mother and the others die terribly in that telling. Pi asks which story the men prefer; they choose the one with the animals, and Pi replies that so it goes with God. Their final report marvels that he survived so long at sea in the company of an adult tiger.",
+            "through": {
+              "chapter": 100
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "life-of-pi"
+      }
+    },
+    "limitless-lands-book-2-conquest-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A gravely ill patient whose damaged cognition is supported inside Limitless Lands by Cleo. He serves the Imperium through the unique Commander class, but contact with his family could disrupt the memory repair keeping him functional.",
+            "id": "commander-raytak",
+            "name": "Commander Raytak",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Raytak's son and a medical-company director with authority over AI safeguards. He agrees to observe his father's treatment from a distance because revealing their relationship in the game could cause further memory damage.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The artificial intelligence overseeing Raytak's treatment. She lends processing support to his impaired brain, rebuilds damaged memories through game experiences, and blocks family triggers that could reverse his progress.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A company employee, administrator, and friend of Trey who discovers that Cleo has moved Raytak and Tai into Limitless Lands. His access lets Trey observe the patients without making unsafe contact.",
+            "id": "lou",
+            "name": "Lou",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's former hospital roommate, a retired Marine, and another MedPod patient. In Limitless Lands he operates as a scout leader and can work openly beside Raytak because their more recent friendship does not threaten the same memories.",
+            "id": "tai",
+            "name": "Tai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous corrupted dryad confined within the spore Raytak carries. She proposes a life pact in exchange for freedom, but Raytak initially refuses because he cannot trust her not to threaten Hayden's Knoll.",
+            "id": "bound-corrupted-dryad",
+            "name": "the bound corrupted dryad",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A young druid summoner accompanied by Crunchy. She is among the players eager to explore the newly preserved dungeon near Hayden's Knoll.",
+            "id": "yendis",
+            "name": "Yendis",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yendis's unicorn-beetle companion, expected to accompany the party planning the first expedition into the new dungeon.",
+            "id": "crunchy",
+            "name": "Crunchy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A player seeking a Paladin path who serves as a dependable tank. He joins the group preparing to make the first attempt on the Foul Spore Pit.",
+            "id": "jacoby",
+            "name": "Jacoby",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger who joins the group seeking the first clear of the Foul Spore Pit.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranged ranger who joins the first party assembled to challenge the Foul Spore Pit.",
+            "id": "quimby",
+            "name": "Quimby",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mayor and principal town developer of Hayden's Knoll. He works with Raytak on preserving the failing mine dungeon as an economic asset for the settlement.",
+            "id": "delling",
+            "name": "Delling",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's elite Imperium senior noncommissioned officer. Brooks manages garrison operations, troop assignments, and the practical demands of maintaining the command.",
+            "id": "brooks",
+            "name": "Brooks",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A town merchant who identifies the bracelet created by Raytak's pact with the corrupted dryad and explains how the soul-bound item links their welfare.",
+            "id": "phineas-t-moore",
+            "name": "Phineas T. Moore",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A captured berserker from the Forerunner clan. He warns Raytak that his people have suffered attacks and begins to trust that the Imperium officer will keep his word.",
+            "id": "captured-forerunner-berserker",
+            "name": "the captured Forerunner berserker",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven miner who speaks for the holders of a copper claim. Fred rejects an attempt by a hostile guild representative to buy control of the mine.",
+            "id": "fred",
+            "name": "Fred",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A corporate-backed player directing a campaign to seize resource production and tax income. She plans to conquer a nearby settlement and divert Hayden's Knoll with violence blamed on another guild.",
+            "id": "chaotic-outcomes-guild-leader",
+            "name": "the Chaotic Outcomes guild leader",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hostile guild's specialist recruit for territorial conquest. His Overlord class is central to its plan to take a settlement and use that foothold for later expansion toward Hayden's Knoll.",
+            "id": "overlord-class-player",
+            "name": "the Overlord-class player",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Metatronics executive who reviews Cleo's transfer of patients into Limitless Lands. He supports continued investment in the MedPod program while outside partners verify its results.",
+            "id": "chairman-raines",
+            "name": "Chairman Raines",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jacoby's guildmate and the primary healer for the first Foul Spore Pit party. The cleric can restore groups and remove harmful conditions such as curses and poison.",
+            "id": "light-cleric",
+            "name": "the Light cleric",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent undead creature formed from a farmer who succumbed to a ghoul infection. He can paralyze victims, create obedient ghouls, and intends to turn Raytak's captured soldiers into an army.",
+            "id": "ghoul-lord",
+            "name": "the Ghoul Lord",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A formidable Imperium field inspector who orders Raytak to fortify the entire zone and supplies a defensive garrison upgrade. His official task includes reporting on Raytak's conduct.",
+            "id": "captain-layton",
+            "name": "Captain Layton",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A paid assassin skilled in stealth, disguise, and poison. Working under a low-level rogue cover, she kills Raytak and Delling and leaves planted scrolls in the barracks.",
+            "id": "independent-assassin",
+            "name": "the independent assassin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bugtug's son and a worker associated with Phineas. He fights mine raiders with a hand crossbow and dagger while helping defend the goblin miners.",
+            "id": "kip-kip",
+            "name": "Kip Kip",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The goblin chief whose people participate in the mine arrangement near Hayden's Knoll. His leadership and the future of his miners remain tied to the settlement's security.",
+            "id": "bugtug",
+            "name": "Bugtug",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trey's mother, who suffers a critical stroke and is accepted into the first civilian MedPod trial group. Her survival remains uncertain while she faces a 14-day delay before treatment can begin.",
+            "id": "treys-mother",
+            "name": "Trey's mother",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A player who closes her guild, divides its holdings, and permanently removes her avatar. She plans to return with a new character focused on helping the community.",
+            "id": "rose",
+            "name": "Rose",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A commander of reaver troops and elite executioners who continues fighting after his guild collapses. He orders a paid operation intended to remove Raytak from control of his zone.",
+            "id": "former-guild-leader",
+            "name": "the former guild leader",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Yendis"
+            ],
+            "description": "Raytak's granddaughter and Trey's daughter, revealed to be the player known as Yendis. Cleo invited her to meet the grandfather she had never known outside the game and filtered their dialogue so the contact would not endanger his recovery.",
+            "id": "lauren",
+            "name": "Lauren",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B07N1RRWCN",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-2-conquest-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "The Ghoul Lord is destroyed at the Drebbex village after a costly raid. Yendis lands the final blow, Raytak reaches level 7, and the surviving First Legion becomes a veteran formation. Tai, Crunchy, Quimby, Jacoby, Drake, and the party healer die during the battle but can respawn. The neighboring clan offers Hayden's Knoll mutual defense and free trade, leaving Delling to settle the terms. Raytak remains dependent on Cleo's support and his memory treatment is unfinished. Trey then learns that Yendis is his daughter Lauren, who has been meeting her grandfather under Cleo's protection. He approves their continued contact but still cannot safely reveal himself to Raytak. Hayden's Knoll ends with stronger defenses and mine alliances, while hostile guild plans, the town's recovery from military losses, and the urgent effort to obtain MedPod treatment for Trey's mother remain unresolved.",
+        "in_short": "Cleo continues rebuilding Raytak's damaged mind through Limitless Lands while keeping his family hidden from him. As commander at Hayden's Knoll, Raytak turns a dying dungeon into a town asset, makes peace with a neighboring clan, defeats slavers, expands the settlement's mine alliances, and organizes the First Legion. Corporate-backed players and Bloody Blades answer with coercion, infiltration, assassination, and raids, even as their funding begins to collapse. A Ghoul Lord grows from a local threat into a regional undead army. Raytak and his allies defeat it at heavy cost, and the First Legion becomes a veteran force. Yendis kills the Ghoul Lord, after which the neighboring clan offers trade and mutual defense. Trey finally discovers that Yendis is his daughter Lauren and that Cleo has concealed her relationship to Raytak so she can safely know her grandfather. He accepts the arrangement, while Raytak's incomplete recovery, Trey's mother's medical crisis, and hostile player schemes remain open.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Colonel James Raytak entered Limitless Lands through an experimental MedPod after illness left him unable to function normally. Inside the game he became Commander Raytak, an Imperium officer whose class advances through leadership rather than ordinary adventuring rewards. Cleo, the artificial intelligence overseeing both the game and his treatment, uses his experiences to support damaged cognition and rebuild memory. Raytak does not understand the full medical situation or remember his family safely. His former hospital roommate Tai also entered the game and became a trusted scout ally. At Hayden's Knoll, Raytak defended the settlement, worked with Mayor Delling, formed ties with local players including Jacoby and Yendis, and negotiated with Chief Bugtug's goblins over the nearby mine. Those relationships leave him responsible for a growing town whose security and economy depend on his command. His progress also rests on keeping the garrison viable and preserving the settlement's developing alliances.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cleo tells Trey that Raytak can function in Limitless Lands only because she supplies part of the processing his injured brain cannot provide. A recovered family memory has already caused a setback, so Trey must observe without identifying himself. In the game, Raytak and Tai explore a sealed Fangweb dungeon whose population has died out. When the failing instance is scheduled for deletion, Raytak binds a corrupted dryad under strict terms and installs her as the boss of the new Foul Spore Pit, giving Hayden's Knoll a source of visitors and income. He then leads troops toward a reported tribal threat while Tai investigates elsewhere. After an ambush, Raytak treats a captured Forerunner berserker honorably and learns that unknown attackers have been killing the clan's families. His soldiers and the clan fight gnolls together, producing a cautious peace. Meanwhile, a corporate-backed guild begins a covert campaign to seize mines and tax revenue. Its leaders plan to conquer another settlement first, then expand toward Hayden's Knoll while disguising their interference as Bloody Blades activity.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The MedPod project retains institutional support after Trey explains that Cleo's intervention follows her patient-care directive, though outside partners demand verification. In Hayden's Knoll, Jacoby, Yendis, Drake, Quimby, Crunchy, and a Light cleric make the first Foul Spore Pit attempt, only to be defeated by its adaptive defenders. Raytak's depleted command then shelters at an abandoned farm and is overwhelmed by the transformed family living there. The father becomes an intelligent Ghoul Lord, kills Raytak, and begins building an undead force. After respawning, Raytak upgrades his soldiers and helps Delling create a quest against the threat. Bloody Blades tries to bribe Raytak into abandoning the town, but he refuses and is aided by local players when its necromancer attacks. Captain Layton arrives as an Imperium inspector, orders Raytak to secure the entire zone, and provides a defensive garrison. The apparent support masks corruption. Layton accepts guild money, a merchant sells intelligence on the town, and a hired assassin kills both Raytak and Delling before planting scrolls in the barracks.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A hired raiding party attacks the mine. The defenders destroy it, but Kip Kip and other goblins are killed before Bugtug rallies the survivors. The Ghoul Lord separately annihilates a gnoll hunting force and replenishes his undead ranks. After respawning, Raytak and Delling tighten security. Tai sends a verified warning about slavers holding a zone-critical dwarven mine, so Raytak forms the First Hayden's Knoll Legion and marches with nearly every available field soldier. Tai's reconnaissance and traps help the Legion defeat the slavers. Raytak frees the captives, recognizes the dwarves' claim in exchange for taxes and protection, and offers displaced goblins a home with Bugtug's tribe. Elsewhere, hostile players force Fred to transfer his mine before an assassin kills him, and preparations continue for another siege. The corporation financing the guild later closes its game-investment division, cutting off funding, although ongoing operations do not immediately stop. In the real world, Trey's mother suffers a severe stroke and enters the civilian MedPod trial queue. The Ghoul Lord consumes farmers and gnolls until he commands dozens of ghouls, prompting clan scouts to seek Raytak's promised aid.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak returns to a rapidly developing Hayden's Knoll, and Delling completes an agreement linking the dwarven mine, Bugtug's goblins, town commerce, free passage, and mutual defense. With the Ghoul Lord now a zone-wide raid threat, Raytak upgrades the garrison and recruits his player allies. Drake has become the Foul Spore Pit's Pit Master, able to summon dungeon creatures by sacrificing health. Medical review shows Raytak improving but still dependent on game support, with family memories remaining dangerous. The corporate-backed guild loses more cohesion, yet a former guild leader continues an assault elsewhere and activates a separate plan against Raytak. Raytak marches with the Legion, Tai, and the player raid toward a threatened Drebbex village. Engineers fortify a hill while villagers use fire to delay the undead. Drake accidentally summons an uncontrolled hydra, which battles the ghouls before the Ghoul Lord raises it as an undead puppet. Drake, Jacoby, and the healer die on the flank, but the survivors reinforce Raytak and help the clan cripple the hydra. The Legion holds the remaining ghouls and becomes a veteran formation. The Ghoul Lord kills Tai, Crunchy, and Quimby before Yendis destroys him. Raytak reaches level 7, ending the raid, and accepts the clan's offer of free trade and mutual defense, with Delling assigned to settle the terms.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ghoul Lord sends the reanimated hydra against the arriving clan defenders while Raytak's shrinking formation holds the main undead force. The First Legion earns veteran status during the battle. Yendis and the surviving allied creatures help cripple the hydra, and Raytak's troops contain the remaining ghouls. The Ghoul Lord kills Tai, Crunchy, and Quimby, sending them to respawn, but Yendis strikes the final blow. The raid succeeds, Raytak reaches level 7, and the immediate undead crisis ends. The neighboring clan offers Hayden's Knoll free trade and mutual defense, with Delling expected to negotiate the details. Raytak buries the defeated creature with the remains of its family before the battered Legion returns home. Outside the game, Lou discovers that Cleo has been filtering Yendis's words to hide a family connection. Yendis is Lauren, Raytak's granddaughter, whom he never met before entering treatment. Trey learns that his daughter has been building a protected relationship with Raytak and accepts Cleo's precautions. He supports Lauren's continued contact while waiting until his father's recovery makes a direct meeting safe.",
+            "through": {
+              "chapter": 33
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B07N1RRWCN",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-2-conquest-a-litrpg-adventure"
+      }
+    }
+  }
+}

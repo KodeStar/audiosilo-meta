@@ -41,7 +41,7 @@ func seedSelectFixture(t *testing.T) (dataDir, exportPath, exportBody string) {
 	t.Helper()
 	dir := t.TempDir()
 	dataDir = filepath.Join(dir, "data")
-	for rel, body := range map[string]string{
+	testpack.Seed(t, dataDir, map[string]string{
 		"people/ad/ada-mapmaker.json": `{"id":"ada-mapmaker","license":"CC0-1.0","name":"Ada Mapmaker","sources":[{"type":"user"}]}`,
 		"people/be/bea-reader.json":   `{"id":"bea-reader","license":"CC0-1.0","name":"Bea Reader","sources":[{"type":"user"}]}`,
 		"works/vo/volume-one/work.json": `{"authors":["ada-mapmaker"],"id":"volume-one","language":"en","license":"CC0-1.0",` +
@@ -50,15 +50,7 @@ func seedSelectFixture(t *testing.T) (dataDir, exportPath, exportBody string) {
 			`"language":"en","license":"CC0-1.0","narrators":["bea-reader"],"sources":[{"type":"user"}],"work":"volume-one"}`,
 		"series/ca/cartographer-chronicles.json": `{"id":"cartographer-chronicles","license":"CC0-1.0","name":"Cartographer Chronicles",` +
 			`"sources":[{"type":"user"}],"works":[{"position":"1","work":"volume-one"}]}`,
-	} {
-		path := filepath.Join(dataDir, filepath.FromSlash(rel))
-		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(path, []byte(body+"\n"), 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	})
 
 	exportBody = `{"asin":"B0SELECT02","title":"Volume Two","region":"us","language":"english",` +
 		`"authors":[{"name":"Ada Mapmaker"}],"narrators":[{"name":"Bea Reader"}],` +

@@ -1,0 +1,1830 @@
+{
+  "entries": {
+    "1-lifesteal": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A 21-year-old mortal and long-term cashier at Chirot's Hypermarket. Poor and overworked, he relies on a shortcut through the Twenty-Fifth District to keep his commute manageable and discovers an open passage after being forced to take another route.",
+            "id": "freddy-stern",
+            "name": "Freddy Stern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Freddy's older neighbor and an established acquaintance in their shared building.",
+            "id": "sharon",
+            "name": "Sharon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The habitually late night-shift cashier who relieves Freddy at Chirot's Hypermarket.",
+            "id": "jenny",
+            "name": "Jenny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The power who effectively controls the Twenty-Fifth District and holds contractual rights connected to the recent passage incident. After obtaining Freddy's report, the lord takes a personal interest in finding the manifestation linked to the attack.",
+            "id": "city-lord",
+            "name": "City lord",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rare skeletal remnant found near Freddy in the nether echo. It names itself Bloodshed, addresses Freddy as its master, obeys direct instructions, and says its nature prevents it from deliberately killing him.",
+            "id": "bloodshed",
+            "name": "Bloodshed",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile patriarch who claims the dangerous remnant connected to the passage incident. The city lord rejects his attempt to treat Freddy's property as his own, prompting the patriarch to direct his anger toward Freddy.",
+            "id": "craven-patriarch",
+            "name": "Craven patriarch",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A 21-year-old former Grade 7 student at Aroon Arch Academy. He has stepped away from its ten-year program and regards his early departure as a failure, although his family supports his decision to take time away.",
+            "id": "mark-affronte",
+            "name": "Mark Affronte",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nationally prominent talk-show host and powerful lord who approaches Freddy after his passage discovery. She offers to make his experience the subject of a public interview and brings him into a carefully managed professional arrangement.",
+            "id": "madame-moorlap",
+            "name": "Madame Moorlap",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Madame Moorlap's assistant and Freddy's practical liaison. He supervises Freddy's relocation to a furnished apartment, provides access to a large daily budget, and coordinates the preparations surrounding the planned interview.",
+            "id": "matt-canstone",
+            "name": "Matt Canstone",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Freddy's assigned medical examiner after his new training arrangement begins. He confirms that Freddy has only water affinity, sets strict health precautions, and privately recognizes serious muscular and cardiac problems that he does not disclose to Freddy.",
+            "id": "clinic-doctor",
+            "name": "Clinic doctor",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Mark's younger sister and a newly admitted academy student. The high cost of treating Mark's worsening injury places the family's ability to fund her education at risk, making her future part of the pressure surrounding him.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A business proposer who addresses the Craven council as it decides what to do with hundreds of political prisoners. He offers a labor-based plan that would make the captives economically useful instead of having them immediately executed.",
+            "id": "stephen-white",
+            "name": "Stephen White",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A covert expedition staffer posing as a debtor. After seeing Freddy compete in the Camp Violet arena, he begins examining Freddy's background and wrongly infers that an influential political sponsor is protecting him.",
+            "id": "undercover-expedition-employee",
+            "name": "Undercover expedition employee",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-haired assistant in Camp Violet's foraging program. This staff member watches the workers on behalf of the expedition and possesses a poison-focused talent, giving the role greater significance than ordinary instructional work suggests.",
+            "id": "silver-haired-foraging-assistant",
+            "name": "Silver-haired foraging assistant",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silver-haired foraging assistant, now identified as Peter Vane. He is a disguised two-star Camp Violet staff member who offers Freddy help escaping in exchange for future support from the powerful master he mistakenly believes Freddy serves.",
+            "id": "peter-vane",
+            "name": "Peter Vane",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally large and durable Camp Violet fighter matched against Freddy in a sanctioned arena bout. His intimidating size makes him a formidable test of the combat ability Freddy has developed in secret.",
+            "id": "skull-crusher",
+            "name": "Skull Crusher",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Earth-affinity combatant appointed to lead the three-person Camp Violet squad sent into the caves to seize Freddy. She directs the pursuit after the administrators decide that he should be captured rather than killed immediately.",
+            "id": "capture-squad-leader",
+            "name": "Capture-squad leader",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fire-affinity member of the three-person squad hunting Freddy in the caves. His ability to sense heat contributes to the search as the team follows signs of a hidden route beyond Camp Violet's familiar territory.",
+            "id": "capture-squad-fire-combatant",
+            "name": "Capture-squad fire combatant",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A tall Earth-affinity fighter who joins the Camp Violet capture squad pursuing Freddy. She enters the caves with the squad leader and a heat-sensing fire combatant as their search reaches a concealed passage.",
+            "id": "capture-squad-earth-combatant",
+            "name": "Capture-squad Earth combatant",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal"
+      },
+      "recaps": {
+        "ending": "Camp Violet burns after two members of the squad pursuing Freddy become possessed, and its administrators evacuate without the workers. Peter Vane dies after warning Freddy, who takes his identification but is forced through an underwater passage before he can attempt the planned disguise. Freddy kills a leviathan from inside it and reaches shore, where Bloodshed cages the beast's attacking ether construct within Freddy's ethercosm. Bloodshed willingly helps forge Freddy's blood affinity and then joins him against the Craven patriarch. Freddy kills the patriarch and ascends to two stars, gaining water, blood, and an unexplained third affinity. Bloodshed survives in a rune cage within him, while Freddy's new leviathan-based attack badly damages his body. Mark remains in coerced Craven service at Starhold, Sarah's situation is unresolved, and the wider clan and Camp Violet's possession threat remain active concerns. A search party later reports a burned survivor carrying Peter's identification as Peter, but the survivor's true identity is not established.",
+        "in_short": "Freddy Stern survives a passage attack, manifests a valuable farming prime, and trades it for the water-affinity talent 1% Lifesteal. He discovers that the talent can heal lasting damage when he harms living things and trains under Mark Affronte while secretly protecting Bloodshed, a sentient remnant wanted by the Craven clan. Craven kidnaps and tortures Freddy, then imposes a fraudulent debt and sends him to forced labor at Camp Violet. Freddy conceals his recovery, develops his abilities, and arranges an escape with Peter Vane. Possessed pursuers burn the camp, Peter dies warning Freddy, and Freddy escapes through a passage only to be swallowed by a leviathan. He kills it from within. Bloodshed then cages its ether construct, grants Freddy blood affinity with consent, and helps him kill the Craven patriarch. Freddy rises to two stars with a mysterious third affinity, while Bloodshed survives inside his ethercosm and the wider Craven and possession threats remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Freddy Stern is a poor 21-year-old cashier whose route home is disrupted when a new passage opens in the Twenty-Sixth District. Small armed invaders emerge and kill civilians. Freddy kills one with its own dagger before arch-human responders secure the area, but officials deny him a reward and confiscate what he recovered. Soon afterward, he manifests a rare farming prime with three affinities. An Association trader exchanges it for cash, training materials, and a water-affinity prime that grants 1% Lifesteal. Freddy accepts the new prime, registers as an arch-human, leaves his hypermarket job, and begins learning how to gather ether.\n\nIn the nether echo, Freddy encounters dangerous vestiges and a bloody skeletal entity hidden near his discarded belongings. The entity destroys an attacker, restores Freddy's projection, and identifies itself as Bloodshed. It is a rare remnant that treats Freddy as its master and obeys him. Freddy hides Bloodshed rather than reporting it. He remains a weak and inexperienced arch-human, but now possesses a secret entity powerful enough to attract dangerous attention.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bloodshed escapes its makeshift hiding place while powerful outsiders search for the remnant created around Freddy's bloodied clothing. A hostile patriarch claims an interest in it, but the city lord initially defends Freddy's legal ownership. Meanwhile, Freddy isolates himself and forms several basic water abilities. Madame Moorlap, a prominent host and lord, approaches him because he was the first person to discover New Earth's direct passage to the exceptionally dangerous realm C-000421. She places him under contract for a future interview, relocates him, and funds six months of preparation.\n\nMark Affronte becomes Freddy's personal trainer and neighbor. Their difficult first session develops into a more trusting arrangement as Freddy begins physical conditioning and water-wisp gathering. A clinic doctor finds serious hidden health problems and advises Freddy not to use 1% Lifesteal. At a secluded pond, however, Freddy discovers that the talent activates when he damages plants. The resulting healing removes soreness, injuries, and even old scars, showing that the talent can repair lasting damage despite its low percentage.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy uses plant-triggered lifesteal to support increasingly severe training. Bloodshed reaches his new home, and Mark learns both of the remnant and Freddy's healing talent. Because Bloodshed can subjugate vestiges on Freddy's behalf, it also offers an unusual path for developing his abilities. Pressure soon builds around them: a supposed journalist threatens Mark through his sister's academy place, while Freddy's doctor secretly plans to poison him before his healing can erase a heart defect. Madame Moorlap interrupts the attempt, kills the doctor, and turns his regenerating heart into a health source Freddy can use.\n\nWith Mark's help, Freddy exploits his supreme-quality recovery to build strength and practice martial techniques. He also begins dangerous water tempering and creates a basic water spell. When Mark fears retaliation against himself and his family, Freddy brings the problem to Madame Moorlap. She extends her protection and concludes that the passage incident produced anomalies, including a possible unique ether construct with a true soul. Freddy suspects Bloodshed is the unique being hunted, but keeps that conclusion from her and resolves to protect the remnant's secret.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy's attempt to develop as a water martial artist is shaken when a dispute with a larger gym member ends in an apparently fatal Flowing Strike. Matt Canstone contains the official account and warns Freddy that arch-human force is inherently lethal. Freddy later manifests a scythe soul construct that greatly improves essence extraction, while Madame Moorlap grows suspicious of his reaction to the blood-affinity Craven clan. He admits some lesser secrets but continues hiding Bloodshed.\n\nMark's infected delve injury and threats to Sarah's education leave him vulnerable to coercion. Freddy sends Bloodshed to a dump under a long waiting order, hoping the separation will defeat the search. At Madame Moorlap's party, Craven agents abduct him. Madame and the city lord defeat the Craven patriarch and his elders, but the city lord accepts a mining stake in return for delaying Freddy's recovery. The clan tortures and mutilates Freddy for Bloodshed's location, yet he refuses to reveal it. Stephen White then assigns him a fraudulent debt of $13,321,739 and sends him through C-000421 as forced labor for a remote mining expedition.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy arrives at Camp Violet, an underground mining settlement where Craven debtors face high quotas, tightly controlled disputes, and lethal surrounding caverns. Convinced the clan never intends to release him, he plans to meet his quota while secretly healing, training, and preparing to escape. He wins an early sanctioned fight despite his mutilated condition and learns that efficient mining leaves time for exploration. A hidden lake cavern provides water vestiges and enough wisps to advance his abilities.\n\nAn undercover expedition employee begins investigating Freddy, initially drawing the wrong conclusion that a political patron stands behind him. Freddy evolves Create Water and pursues further upgrades, but accumulated injuries eventually force him into the medical tent and add more debt. He joins the camp's foraging program to earn treatment and create a believable explanation for future recovery. After four workers pressure him to support a rebellion, Freddy reports them to the administration. They are executed, and Stephen White rewards Freddy by restoring access to treatment, but his public alignment with camp authority makes him a likely target among the other prisoners.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy evolves Waterbody Tempering into Adaptive Water Body, earns treatment through high-value foraging, and secretly uses 1% Lifesteal to restore the parts of his body Craven destroyed. Masked workers attack him for informing on the rebellion, but he defeats them. The silver-haired foraging assistant is revealed as Peter Vane, a disguised two-star staff member. Peter offers escape assistance in exchange for help from the powerful master he mistakenly believes Freddy serves, and Freddy accepts without correcting him.\n\nFreddy continues training, then defeats Skull Crusher in a sanctioned arena match with one powerful charge. The display causes Camp Violet's leaders to send a three-person capture squad after him. Peter files a false report and considers smuggling Freddy to Starhold, but the squad discovers an endless tiled realm where two members become possessed. The possessors set Camp Violet on fire, and the administrators evacuate, abandoning those left behind. Peter reaches Freddy with fatal burns and dies after warning him. Freddy takes Peter's identification, intending to pose as a burned survivor, but the attackers find him. He flees through underwater passages and is swallowed by a vast leviathan as Bloodshed races toward him.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the leviathan, Freddy survives by creating water, attacking its organs to trigger lifesteal, and consuming its flesh and blood. He kills the creature and reaches the ocean, but its ether construct follows and attacks his soul on shore. Bloodshed arrives in spirit form and cages the construct inside Freddy's ethercosm, losing much of its own substance in the effort. With Bloodshed's consent, Freddy gains blood affinity. Bloodshed then gathers the leviathan's blood into a colossal three-headed body.\n\nThe Craven patriarch arrives and fights them. Bloodshed supplies Freddy with lifesteal while Freddy forms a leviathan shell and repeatedly uses a devastating leviathan-head attack that also burns and tears apart his own body. He kills the patriarch. The resulting ether advances Freddy to two stars and leaves him with water affinity, blood affinity, and a third affinity he cannot yet identify. Bloodshed remains alive but confined in a rune cage within Freddy. Mark is still serving the Craven militia at Starhold, and the wider clan, its labor system, and the possession outbreak remain unresolved. A search party later finds a severely burned survivor carrying Peter Vane's identification and reports the person as Peter, but the survivor's actual identity is not confirmed.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal"
+      }
+    },
+    "1-lifesteal-volume-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returning survivor of Camp Violet and an independent water-and-blood arch-human.",
+            "id": "freddy-stern",
+            "name": "Freddy Stern",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Freddy's spirit"
+            ],
+            "description": "A sentient spirit bound to Freddy's soul. It is a returning ally whose unusual connection to Freddy lets it assist him while remaining one of his most closely guarded secrets.",
+            "id": "bloodshed",
+            "name": "Bloodshed",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mark"
+            ],
+            "description": "Freddy's former confidant, now compelled to serve Craven. He remains with the clan because its support protects his sister Sarah's opportunity to attend an academy.",
+            "id": "mark-affronte",
+            "name": "Mark Affronte",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning four-star public figure who has a contractual claim to interview Freddy and an interest in his survival after Camp Violet.",
+            "id": "madame-morlap",
+            "name": "Madame Morlap",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sarah"
+            ],
+            "description": "Mark's sister and an academy student. Her educational future is the leverage that keeps Mark tied to Craven.",
+            "id": "sarah-affronte",
+            "name": "Sarah Affronte",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former four-star leader of Craven and Freddy's captor. He is already dead when this volume begins.",
+            "id": "former-craven-patriarch",
+            "name": "Former Craven patriarch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Peter Vane's father, who receives the disfigured patient discharged under his son's name and quickly rejects the identification.",
+            "id": "matthew-vane",
+            "name": "Matthew Vane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The person whose identification is assigned to the disfigured survivor recovered from Camp Violet. The identification is disputed, and Peter's own fate is not established.",
+            "id": "peter-vane",
+            "name": "Peter Vane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An air-affinity criminal broker in Imperta who controls genuine records belonging to an associate whose death was never reported. Freddy approaches him for a complete identity history, not merely forged documents.",
+            "id": "spike",
+            "name": "Spike",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Liam"
+            ],
+            "description": "A deceased associate of Spike whose death remains unreported. His preserved life history and official records make the identity valuable to someone needing more than forged papers.",
+            "id": "liam-cuttingsworth",
+            "name": "Liam Cuttingsworth",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Liam Cuttingsworth"
+            ],
+            "description": "Freddy registers his own face and second-star status under Liam Cuttingsworth's records, giving him a legal public identity while his past and concealed Craven property remain dangerous.",
+            "id": "freddy-stern-as-liam",
+            "name": "Freddy Stern",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The five-star imperial ruler whose ether signature authenticates the platinum Tower of York membership card offered during Freddy's identity deal.",
+            "id": "empress-kaya",
+            "name": "Empress Kaya",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dead Craven patriarch's three-star son and successor. He inherits a weakened clan and asks Mark to stay, linking continued support for Sarah's education to Mark's service.",
+            "id": "nahar",
+            "name": "Nahar",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A water-affinity sea monster imprisoned in Freddy's ethercosm. It explains that Freddy's dark-blue affinity formed from his own soul after their connection.",
+            "id": "imprisoned-sea-monster",
+            "name": "Imprisoned sea monster",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Basilisk"
+            ],
+            "description": "A man also known as Basilisk who arrives at the office of Craven's new patriarch.",
+            "id": "harold-mascot",
+            "name": "Harold Mascot",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced but still unnamed delver who recruits Freddy to guard equipment and carry corpses on an upcoming expedition, accepting a negotiated 9 percent share.",
+            "id": "unnamed-party-leader",
+            "name": "Unnamed party leader",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the six-person delve party Freddy joins as a helper under the name Liam.",
+            "id": "theodore",
+            "name": "Theodore",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theodore's wife and the fire-affinity caster in his six-person delve party as it prepares to take the inexperienced Liam into gorel territory.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A water-affinity caster in Theodore's party who treats injuries and imposes strict safety rules on the inexperienced helper Liam.",
+            "id": "petra",
+            "name": "Petra",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The archer in Theodore's experienced six-person delve party, which hires Liam to carry equipment and remain outside its combat formation.",
+            "id": "robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A swordsman in Theodore's party with a strength-related talent. An arm-wrestling test with Liam leaves him injured and demonstrates that the new helper is unusually strong.",
+            "id": "kyle",
+            "name": "Kyle",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The earth-affinity brawler in Theodore's established delve party when Liam joins the group as an inexperienced helper.",
+            "id": "lance",
+            "name": "Lance",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The late Craven leader's unnamed brother. He commands the pursuit of two suspicious looters carrying irreplaceable clan property.",
+            "id": "craven-recovery-leader",
+            "name": "Craven recovery leader",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Camp Violet scout whose reanimated body can speak and manifests three-star power before Madame Morlap destroys it.",
+            "id": "jenny-walker",
+            "name": "Jenny Walker",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The privileged two-star son of the Santorio Hub's owner. He is organizing a well-funded delve party and repeatedly seeks to recruit Liam.",
+            "id": "jacob-santorio",
+            "name": "Jacob Santorio",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified woman who recognizes signs of Freddy's unusual healing and asks him for part of his body.",
+            "id": "sickly-woman",
+            "name": "Sickly woman",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Santorio Hub representative who enforces its economic rules and questions Liam about the unusual woman who carried him to safety.",
+            "id": "philip-parker",
+            "name": "Philip Parker",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prospective member of Jacob Santorio's well-equipped delve party.",
+            "id": "rachel-black",
+            "name": "Rachel Black",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theodore"
+            ],
+            "description": "The full name of Theodore, the former delve-party leader who has joined Jacob Santorio's proposed group and warned Freddy about its recruitment effort.",
+            "id": "theodore-osborne",
+            "name": "Theodore Osborne",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sickly woman"
+            ],
+            "description": "The sickly woman who recognized Freddy's extraordinary recovery. She can manipulate life sparks, creates a renewable healing resource from his tissue, and enters a secret partnership with him.",
+            "id": "sophia-sommer",
+            "name": "Sophia Sommer",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man and a woman held in Craven's secret prison. They appear to be ordinary humans, but magical censorship prevents them from discussing parts of their history.",
+            "id": "secret-craven-prisoners",
+            "name": "Secret Craven prisoners",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A remarkably fast and technically accomplished saber user newly added to Jacob's party. Jacob expects her ability to outgrow the group quickly.",
+            "id": "karen",
+            "name": "Karen",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified one-armed man who maintains the runic seal trapping people inside a passage realm. He regrets their deaths but considers the sacrifice necessary to give children a chance at salvation.",
+            "id": "one-armed-seal-keeper",
+            "name": "One-armed seal keeper",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of the Santorio Hub and Jacob Santorio's father.",
+            "id": "leonard-santorio",
+            "name": "Leonard Santorio",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced delver trapped near the central barrier with his sister Jean and their companion Rick as the sealed passage fills with stranded people.",
+            "id": "jack",
+            "name": "Jack",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack's sister, an experienced rapier user who moves with wind assistance. She is among the delvers trapped at the sealed central passage.",
+            "id": "jean",
+            "name": "Jean",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The experienced companion of Jack and Jean, trapped with them and a large crowd of delvers at the sealed central passage.",
+            "id": "rick",
+            "name": "Rick",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fully armored man who escapes the cult massacre with the surviving delvers. The cultists recognize him and deliberately allow the group to leave, while his identity and purpose remain opaque.",
+            "id": "armored-survivor",
+            "name": "Armored survivor",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scorpion-tailed three-star cult operative who directs the effort to stop Bloodshed's rogue skeletal body and recover the mummified arm it carried.",
+            "id": "ilya",
+            "name": "Ilya",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A massive cult brawler who helps fight Bloodshed's rogue skeletal body.",
+            "id": "damien",
+            "name": "Damien",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cult operative who uses levitation at severe physical cost while fighting Bloodshed's rogue skeletal body.",
+            "id": "peter-cult-operative",
+            "name": "Peter",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A five-star imperial assassin with light, dark, and air affinities. She covertly escorts Madame Morlap to Empress Kaya and can bypass ordinary security.",
+            "id": "leona",
+            "name": "Leona",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former identity claimed by the five-star leader behind the cult operation. He reveals the connection while confronting Empress Kaya as the sealed-realm plan collapses around them.",
+            "id": "silverheart",
+            "name": "Silverheart",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A conscious crimson construct formed from ether whose power exceeds an Eidolon's. It enters the sealed realm, destroys Empress Kaya's construct, and kills the cult leader as he flees.",
+            "id": "crimson-asura",
+            "name": "Crimson Asura",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Beatrice"
+            ],
+            "description": "The full name of Beatrice, Theodore's estranged wife and a surviving member of the sealed-realm disaster, as reported after Liam returns to public life.",
+            "id": "beatrice-osborne",
+            "name": "Beatrice Osborne",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nahar's uncle and successor as Craven patriarch. He plans to relocate the weakened clan and disband Craven Industries, endangering the arrangement that supports Sarah's education.",
+            "id": "new-craven-patriarch",
+            "name": "New Craven patriarch",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified supernatural figure with Freddy's face that appears in Mark's recurring dream. It grants Mark new power after he agrees to free two followers imprisoned by Craven.",
+            "id": "freddy-faced-dream-figure",
+            "name": "Freddy-faced dream figure",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful figure who intercepts Mark's fleeing family, knows about the prison break, and offers help escaping imperial punishment for an unspecified price.",
+            "id": "snake-eyed-broker",
+            "name": "Snake-eyed broker",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The archer in the four-person group that ambushes Liam near a lava lake during his first expedition into a volcanic public realm. He attacks alongside Theodore, Jacob, and Randy.",
+            "id": "grant",
+            "name": "Grant",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The spearman in Theodore and Jacob's four-person ambush group. He helps lure Liam into an attack beside a lava lake in the volcanic public realm.",
+            "id": "randy",
+            "name": "Randy",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-2"
+      },
+      "recaps": {
+        "ending": "Freddy keeps Sophia's undead head hidden in a preservation solution that gives him about a year to restore her body before her identity is irretrievably lost. He remains bonded to Bloodshed, while Bloodshed conceals the Asura's warning of an approaching planetary conflict. Liam Cuttingsworth's identity is still usable but carries a $2.5 million fine, and Freddy loses it as a safe local cover after killing Theodore Osborne, Jacob Santorio, Grant, and Randy during their ambush. He leaves Nova York by bus, expecting retaliation from Leonard Santorio and resolving to seek strength and wealth. Elsewhere, Silverheart is dead, Empress Kaya has lost her Eidolon, and Leona remains sealed behind the cult's red barrier. Madame Morlap has destroyed a parasite in her own soul and suspects Mark and Nahar may carry similar entities. Mark, newly empowered, kills Craven's last patriarch and elders, frees the clan's two secret prisoners, retrieves his family, and follows a snake-eyed broker to negotiate escape from imperial punishment.",
+        "in_short": "Freddy Stern survives Camp Violet, purchases the identity of Liam Cuttingsworth, and rebuilds his life as a delver in Nova York. His secret partnership with Sophia Sommer gives both of them undead bodies, but they are trapped when Sophia's former cult seals a passage realm and massacres its occupants. Bloodshed disrupts the cult's plan after a mummified arm seizes control of its summoned body, while Empress Kaya's intervention ends with her Eidolon destroyed and Silverheart killed by a crimson Asura. Sophia is reduced to a preserved head, and Freddy returns under Liam's criminally burdened identity to seek her restoration. Mark Affronte gains supernatural power, destroys Craven's remaining leadership, and flees after freeing two prisoners. Theodore Osborne and Jacob Santorio later ambush Freddy on suspicion alone. Freddy kills them, Grant, and Randy, then abandons Nova York to pursue greater wealth and power.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Freddy Stern survived captivity and the destruction of Camp Violet while pursued by Craven. He killed the clan's four-star patriarch and escaped with valuables from the dead man's storage ring, but his own identity was no longer safe. Bloodshed, a sentient spirit bound to Freddy's soul, remained his most unusual ally. Mark Affronte, once Freddy's confidant, had betrayed him to Craven under pressure connected to his sister Sarah's education. Madame Morlap retained a contractual interest in interviewing and protecting Freddy, while the wider consequences of Camp Violet remained unresolved.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy is recovered from Camp Violet under Peter Vane's identity, but Peter's father sees through the substitution and dies after attacking him. Freddy heals by draining vegetation, removes traceable property from the dead Craven patriarch's ring, and reaches Imperta. There he bargains with Spike for the complete records of the deceased Liam Cuttingsworth and a platinum Tower of York card. He registers his own face under Liam's identity and leaves for Nova York. Meanwhile, Craven confirms its patriarch's death. His son Nahar takes control of the weakened clan and keeps Mark in service through Sarah's academy prospects. When records show that Freddy was sent to Camp Violet, Madame Morlap joins the search and demands Craven's information about him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Nova York, Freddy struggles to find lawful work that fits a two-star arch-human and takes a large loan to equip himself for delving. He discovers that his soul has formed a dangerous water-derived affinity, but keeps it and his blood powers secret. Theodore's established party hires him as a helper under the name Liam. Petra imposes strict safety rules while Theodore, Beatrice, Robert, Kyle, and Lance demonstrate their coordinated methods in a gorel realm. A deviant guard ambushes Freddy, forcing him to reveal a two-star Flowing Strike. He kills it but suffers severe backlash. Theodore's threat-reading talent briefly perceives Freddy as extraordinarily dangerous, yet offers him a larger share. Freddy instead asks to remain a helper while learning local procedures and decides he needs formal training.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy develops his blood reserves, trains with Theodore's party, and then begins profitable solo hunts as Liam. He privately reveals his real identity to Robert and Lance after meeting them socially. Theodore's party breaks apart amid Theodore and Beatrice's separation, and Theodore later offers Freddy an evaluation for a party being assembled by Jacob Santorio. At Camp Violet, Mark, Nahar, and Madame Morlap find an unnatural passage. The reanimated scout Jenny Walker attacks them as a powerful square-pupiled undead, and Madame destroys her. Similar wisps animate another corpse. Craven searchers separately capture two square-pupiled looters connected to the dead patriarch, but an outside force prevents the pair from explaining their condition. Madame concludes that Freddy destroyed Camp Violet and suspects that the burned survivor registered as Peter Vane may be an impostor linked to the anomaly.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy creates Crimson Mercury and Gore Knuckles while resisting Jacob Santorio's recruitment pressure. Sophia Sommer, initially an unidentified sickly woman, recognizes Freddy's regenerative power and reveals that she can extract and combine life sparks. Using tissue from Freddy, she creates a renewable source of healing and repairs both of them. They adopt false names with each other and form a guarded partnership, but Sophia's lethal training methods culminate in her throwing Freddy into a gorel horde. He survives through his hidden abilities and a large perished-water attack. During their argument, a death-affinity deviant impales him and leaves death essence in his body. Sophia supplies the creature's prime and attributes some of her recklessness to the effects of sudden pain relief. Freddy refuses a normal party arrangement but keeps her as a covert partner and possible martial instructor after she claims their abilities could make them immortal.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophia combines a spark of undeath with ordinary life force and transforms herself, then Freddy, into undead beings who can survive otherwise fatal wounds but remain vulnerable to destruction of the brain. They conceal the change. Freddy sells the deviant prime, refuses Jacob's party offer, and trains his emerging abilities with Bloodshed's assistance. A self-restoring barrier then seals the gorel realm. Sophia identifies the attack as the work of the cult that raised children as controlled monster fighters and from which she escaped. Freddy tells her his real first name and reveals Bloodshed. She explains that his two spirit abilities severely slow his advancement and that the cult intends to open other passages, provoke the gorels, and kill the trapped delvers. Rather than confront stronger cultists immediately, Freddy and Sophia plan to hide, train in the Nether Echo under Bloodshed's protection, and escape through another passage when one opens.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jacob's party enters the sealed realm and defeats an initial cult kill squad, but the wider force surrounds a crowd at the central barrier. Rachel dies in the massacre. Petra sacrifices herself for Beatrice, while Robert and Kyle are also killed. Jacob, Theodore, Philip, Karen, Beatrice, Jack, Jean, an armored stranger, and several others escape because the cult deliberately allows the armored man through. Elsewhere, Sophia reshapes Freddy's body for balance and combat, and the pair train with Bloodshed as the gorel population surges. Freddy acquires a two-star satellite that regenerates essence. When the horde reaches their shelter, Freddy and Sophia fight toward an exit while accumulating blood for a sacrifice. Bloodshed manifests as an enormous skeleton, ignores Freddy's command, tears through the false sky, and receives a mummified clawed arm, creating a new threat just as the pair attempt to flee.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The mummified arm overwhelms Bloodshed's summoned body, which rampages through monsters and cultists before Ilya's force recovers the artifact. Freddy carries the exhausted Sophia into an elite realm. Empress Kaya and Leona begin clearing the sealed passages, while the armored survivor is exposed as an avatar user whose main body seeks an alliance with an Eidolon of Authority for a coup. Soldiers capture Freddy and Sophia as suspects and rescue Jacob's survivors. The cult's final ritual then empowers its remaining members at the cost of their lives. Leona is sealed inside a red barrier, and Karen, Jack, and Jean die in the renewed violence. Sophia ignites five stars to break the cult's control mark. She is dismembered, and Ilya tortures Freddy for information, but Bloodshed destroys Ilya's ritual support and kills her. The cult leader identifies his former identity as Silverheart before a crimson Asura destroys Kaya's Eidolon and kills him at a passage.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy preserves Sophia's living undead head and survives alone for months before returning as Liam Cuttingsworth. Investigators clear him of cult involvement but impose a $2.5 million fine for Liam's earlier crimes. Bloodshed reveals that the freed Asura altered Freddy's blood ring, while withholding its warning of a coming planetary war. Madame Morlap discovers and destroys a square-pupiled parasite in her soul and fears that Mark and Nahar are also infected. After Craven dissolves the organization supporting Sarah's education, Mark attempts suicide, accepts power from a Freddy-faced dream figure, and becomes a three-star. He kills Craven's new patriarch and elders, frees two hidden prisoners, retrieves his family, and follows a snake-eyed broker to negotiate an escape. Theodore and Jacob, suspecting Liam without proof, ambush Freddy with Grant and Randy in a volcanic realm. Bloodshed saves Freddy from lava. Freddy kills all four attackers, takes Jacob's ring, destroys incriminating gear, and leaves Nova York by bus. Sophia still has about a year before preservation can no longer protect her identity, and Freddy departs determined to gain the wealth and strength needed to restore her and survive future retaliation.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-2"
+      }
+    },
+    "1-lifesteal-volume-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returning peak two-star fugitive whose face has become unsafe to show. After a life-affinity spirit permanently reconstructs his appearance, he heads toward the Northern Belt with Bloodshed in search of a place where imperial power has less reach.",
+            "id": "freddy-stern",
+            "name": "Freddy Stern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Freddy's sentient, blood-linked companion. Bloodshed helps him locate and negotiate with the life-affinity remnant that permanently alters his face.",
+            "id": "bloodshed",
+            "name": "Bloodshed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak two-star criminal businessman in the Northern Belt. He hires the newly arrived Freddy as a bodyguard and arranges a forged local identity for him, while concealing the full nature of his operations.",
+            "id": "jeffrey-criminal-employer",
+            "name": "Jeffrey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Northern Belt identity created for Freddy Stern after his face is permanently changed. The papers present him as a forty-seven-year-old local, giving the fugitive a name he can use for housing, work, and public dealings.",
+            "id": "freddy-cliff",
+            "name": "Freddy Cliff",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A disgraced former four-star lord reduced to three stars by imperial punishment. Facing exile in the Northern Belt, Basilisk uses knowledge of a dangerous secret to compel Mark and Nahar to travel with him.",
+            "id": "basilisk",
+            "name": "Basilisk",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A three-star associate tied to the protection of two square-pupiled body snatchers. Basilisk's threat of imperial exposure forces him to join the disgraced lord's Northern Belt exile party, despite the danger surrounding their hidden dependents.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mark's co-guardian of two dangerous, square-pupiled body snatchers. Nahar reluctantly accompanies Basilisk into exile because disclosure of the hidden pair would bring imperial punishment, leaving the travelers bound together by mutual risk rather than trust.",
+            "id": "nahar",
+            "name": "Nahar",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Freddy's critically injured partner, kept alive as a disembodied head while the possibility of restoration narrows. Freddy commits most of his available money to an uncertain attempt to reconstruct her body.",
+            "id": "sophia",
+            "name": "Sophia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An impoverished mortal who uses his late brother's gear while seeking a prime vestige. Freddy approaches him at the passage hub and invites him into the interspace.",
+            "id": "lucas-black",
+            "name": "Lucas Black",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The three-star lightning user who leads Valhalla, a Northern Belt faction known for attacking criminal operations. Freddy identifies Thor as the local leader most likely to become a useful and acceptable ally.",
+            "id": "thor",
+            "name": "Thor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucas's mother, recovered after loan sharks hold and beat her over gambling debt. After receiving medical and dental care, she moves into Freddy's home with Lucas.",
+            "id": "helen-black",
+            "name": "Helen Black",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A two-star operative from a powerful local business family and Helen's former partner. He confronts Freddy over the destroyed loan operation and begins probing which faction, if any, stands behind the newcomer.",
+            "id": "jason-jem",
+            "name": "Jason Jem",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Thor's close ally and a member of Valhalla. Travis comforts Thor after the leader accepts a lasting soul injury rather than submit to imperial removal from the Northern Belt.",
+            "id": "travis",
+            "name": "Travis",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The imperial official who pressures Thor to leave the Northern Belt as his advancement approaches the prohibited threshold. The adjudicator represents the Empire's power to remove rising three-stars from the region.",
+            "id": "imperial-adjudicator",
+            "name": "The imperial adjudicator",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The name Freddy gives the fortress dungeon's gate constructs when he enters the challenge.",
+            "id": "slave",
+            "name": "Slave",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young delver whose unusual soul construct can reshape ambient aura in the nether echo and draw ether from the result. Freddy recognizes that the ability could attract dangerous attention and seeks a voluntary connection with her group.",
+            "id": "janice",
+            "name": "Janice",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's brother, a shadow-affinity delver from the same debt-exploitation family. During the fortress siege, Sean holds captured invaders to delay the next enemy wave.",
+            "id": "sean-jem",
+            "name": "Sean Jem",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred older Valhalla fighter assigned to the planned raid on an organ-trafficking operation. No connection to the earlier employer of the same name is established.",
+            "id": "jeffrey-valhalla-fighter",
+            "name": "Jeffrey",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-armored Valhalla fighter assigned to the planned raid on a Strata-backed organ-trafficking site.",
+            "id": "red-armored-valhalla-fighter",
+            "name": "The red-armored Valhalla fighter",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captured lead doctor at a Strata-backed organ-trafficking site and the physician scheduled to oversee Sophia's reconstruction. Freddy intervenes when Thor prepares to execute him because Sophia's treatment depends on his work.",
+            "id": "sophias-lead-doctor",
+            "name": "Sophia's lead doctor",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Valhalla's therapist, whose dream affinity gives his voice a calming effect. Noah assesses Freddy and explains that treatment cannot change his beliefs or conduct unless he chooses to change them.",
+            "id": "noah",
+            "name": "Noah",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The operator of a guarded organ-harvesting business connected to Strata. His organization agrees to buy repeated sets of organs from Freddy through secret exchanges and an anonymous account.",
+            "id": "strata-owners-son",
+            "name": "The Strata owner's son",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A respected Valhalla scout and ranged fighter who publicly challenges Thor's protection of Freddy. His criticism exposes growing resentment inside the faction over the resources and trust given to its dangerous outsider.",
+            "id": "charlie-king",
+            "name": "Charlie King",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Jem family investigating the deaths, disappearances, and illicit trade surrounding her relatives. Gina and her brother suspect that three hidden operatives are connected to Valhalla, though their proposed links remain unproven.",
+            "id": "gina-jem",
+            "name": "Gina Jem",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified client who makes regular high-value sales through a Strata broker. The Jem family's proposed connection between Skull and Valhalla remains unverified.",
+            "id": "skull",
+            "name": "Skull",
+            "reveal": {
+              "chapter": 47
+            }
+          },
+          {
+            "description": "Co-owner and chief executive of the Jem family business, as well as Gina's father. After hearing Helen's accusation against Valhalla, he accepts her account, promises to recover Lucas, and brings in a powerful outsider to address the family's conflict.",
+            "id": "keegan-jem",
+            "name": "Keegan Jem",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified visitor near the peak of the third star whom Keegan Jem presents as a powerful solution to the family's problem.",
+            "id": "unidentified-visitor",
+            "name": "The unidentified visitor",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified high-level operative hired by Keegan Jem to kill the primary target in an imminent attack on Valhalla.",
+            "id": "armored-assassin",
+            "name": "The armored assassin",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ether construct bound to truth and embodying primordial insanity. Appearing as the host of Freddy's completed isolation challenge, Insanity explains the reward process and presents spirits for upgrading his abilities.",
+            "id": "insanity",
+            "name": "Insanity",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FMSDC7ZX",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-3"
+      },
+      "recaps": {
+        "ending": "Thor dies after invoking a life-consuming ability to drive Keegan Jem's armored assassin away from Valhalla. Lucas remains a prisoner of the Jem family after Charlie King lures him out with a threat involving Helen, while Helen supports the family's claim that Valhalla manipulated her son. Travis assumes emergency leadership and tries to prevent a suicidal defense. Under the imperial adjudicator's supervision, the rival factions demand Valhalla's dissolution, forced labor for its noncombatants, and death or imprisonment for its fighters. An unidentified man interrupts before terms are settled. Freddy enters the Century of Solitude immediately after Thor's death and experiences roughly fifty years with Bloodshed while little more than an hour passes outside. He emerges with extensive stage-three upgrades to his blood and water abilities, but has not chosen the trial's final reward. Sophia is alive but still lacks her memory, speech, talent access, and two left limbs. Freddy's immediate unresolved aims are rescuing Lucas, preserving Valhalla, and answering Thor's death.",
+        "in_short": "Freddy Stern enters the Northern Belt under a new face and the forged identity Freddy Cliff, hoping to build power without serving another faction. He shelters Lucas Black and Helen Black, funds Sophia's reconstruction, and forms a partnership with Thor's anti-crime faction, Valhalla. His violence draws the hostility of the Jem family, while Thor becomes his mentor and tries to temper both his combat weaknesses and his anger. Sophia survives reconstruction with profound disabilities. Freddy secretly sells regenerated organs to finance the Century of Solitude and gives Bloodshed a rare resource that transforms it. Helen defects to the Jems, Charlie King delivers Lucas into their custody, and Keegan Jem sends an armored assassin against Valhalla. Thor dies driving the killer away. Freddy then endures about fifty subjective years of isolation, earning broad stage-three upgrades but leaving one reward unchosen. Travis faces coercive surrender terms for Valhalla, Lucas remains captive, and an unidentified arrival interrupts the final negotiation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Freddy Stern survived earlier dangers as a powerful two-star arch-human, but remained exposed and unable to live openly. Bloodshed continued as his bound, sentient companion. Sophia survived catastrophic injuries only as a disembodied head, leaving Freddy with a limited chance to restore her body.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy bargains with a life-affinity spirit for a permanent new face, then spends nearly three months crossing the Northern Spine into the Northern Belt. His first attempt at employment ends when he discovers that Jeffrey's business relies on extortion and human trafficking. Bloodshed kills the employer, leaving Freddy with a forged local identity as Freddy Cliff but no lasting position. Elsewhere, imperial punishment strips Basilisk of his fourth star. Basilisk forces Mark and Nahar to accompany him into northern exile by threatening to expose the two body snatchers under their protection. Freddy settles in a comparatively orderly city, sells captured storage rings, buys a home, and spends most of his money on an uncertain reconstruction of Sophia's body. Seeking allies rather than another master, he studies the local factions and becomes interested in Valhalla, led by Thor. At a passage hub he meets Lucas Black, an impoverished mortal seeking a prime vestige. Freddy offers training and protection. Lucas reveals that his mother's gambling has placed her deep in debt, and the pair discover that loan sharks have abducted her.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy pays for Helen Black's release, then kills the loan-business staff after they threaten him and refuse responsibility for her injuries. Lucas and Helen move into Freddy's home, but the operation draws Jason Jem, Helen's former partner and an operative of a powerful local family. Freddy ambushes and kills Jason, disguising the deaths as a wild-spirit attack. The connection remains unproved, though local factions begin investigating. While gathering money for his growing obligations, Freddy discovers a one-person dungeon with extreme time dilation. Bloodshed experiences a century inside while only a short time passes outside, revealing a possible path to decades of training if Freddy can finance survival. Thor, meanwhile, deliberately accepts a lasting soul scar to lower his advancement and avoid imperial removal from the Northern Belt. In the fortress dungeon, Thor and Travis invite Freddy to join Valhalla. Freddy postpones his answer and enters under the name Slave to practice ranged attacks. Valhalla's public familiarity with him nevertheless creates the appearance of an alliance as the dungeon siege escalates from mortal attackers to arch-human soldiers.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the fortress siege, Freddy refines his Blood Javelins and notices Janice, a delver whose soul construct can manipulate ambient aura. Sean Jem grants Freddy an unholy blessing that trades temporary bodily function for enormous strength. Freddy uses it to help rout the final army, then conceals the true extent of his recovery. Thor and Travis remain suspicious of his healing but negotiate a partnership in which Freddy and Valhalla may request paid work from each other without subordination. Basilisk's exile party crosses the border and settles in another Northern Belt city to establish a business. Freddy accepts Valhalla's invitation to raid an organ-trafficking site associated with Strata. Thor equips him and integrates him into the assault plan. Freddy leads the breach, suffers severe burns, and continues fighting against orders. The raid frees captives and captures the lead doctor, whom Freddy recognizes as the physician scheduled to reconstruct Sophia. Freddy reveals Sophia's condition to Thor, who spares the doctor as a favor while making Freddy responsible for any future wrongdoing. The raid deepens Freddy's connection to Valhalla, but its proceeds are far below what he needs for advancement, pushing him toward wealthier criminal targets.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy secretly follows Sean Jem into an isolated realm and murders him for his wealth. Thor's tracking rune exposes enough of the act for him to confront Freddy. Freddy admits the planned killing and accepts Thor's argument that he executed Sean without offering any chance to change. Valhalla helps liquidate the loot while warning that the Jem family may retaliate. Lucas becomes an arch-human with a speed-oriented prime, and Helen begins treatment for gambling. Freddy's abilities improve rapidly under a stricter routine. He then takes Lucas into the fortress dungeon for controlled training, but hidden assassins seal the exit and use the dungeon waves to exhaust them. Freddy kills the attackers, survives a heart-stopping parasite, and battles through stronger waves after Lucas's throat is cut. A vast Blood Sacrifice construct breaks the barrier, allowing Freddy to carry Lucas to healers. Lucas survives, though badly weakened. Bloodshed finishes the dungeon, which transforms into peaceful farmland and rewards Freddy with the Warrior King's pendant. Recognizing that Lucas needs greater protection, Thor accepts him as a Valhalla trainee and houses both Lucas and Helen at headquarters.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thor offers private training and resources if Freddy remains with Valhalla until a successor is found and discloses a consequential secret. Freddy reveals 1% Lifesteal, explaining that damage to living things fuels adaptive healing. Thor becomes his technical mentor, identifies dangerous flaws in his improvised build, and develops ways to reduce the backlash from Freddy's strongest techniques. He also challenges Freddy's resentment toward privileged arch-humans, suspending training until Freddy attends therapy. Freddy complies and begins an intensive program that improves his movement, defenses, blood weapons, and ranged accuracy. The long-awaited reconstruction saves Sophia's life, but her left arm and leg cannot be preserved. She wakes without memory, speech, recognition of Freddy, or apparent access to her talent. Freddy's frustration frightens her. He then channels his grief into a reckless Valhalla raid, killing powerful opponents while ignoring the plan. Thor removes him from operations for a week. Sophia is moved into Valhalla's care with her future uncertain, while Freddy's instability now threatens the trust that made his mentorship and faction partnership possible.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophia shows only slow and uncertain improvement, and available care cannot restore what she has lost. Freddy turns to an illegal plan for financing the Century of Solitude. After an initial doctor recognizes that his regenerated organs are too perfect to sell safely, Freddy kills him, produces less conspicuous replacements, and negotiates anonymous sales through a Strata-linked operation. The scheme soon gives him hundreds of millions. Thor bars him from future raids but assigns him to guard Valhalla and explore its concealed underground passage. Freddy gives a rare cache of concentrated blood aura to Bloodshed rather than use it himself. The resource transforms Bloodshed into a hooded skeletal form with new weapons, movement, and corrosive attacks. Freddy also gains Crimson Dragon Scales and clears many passage realms while advancing his abilities and preparing isolation supplies. His most powerful upgraded techniques remain dangerously self-destructive. Inside Valhalla, Charlie King openly attacks Thor's support of Freddy, revealing serious factional resentment. At the same time, Lucas and Helen split over her wish to leave Valhalla. Lucas now lives with Janice and insists on safeguards, while Helen rejects his account of her gambling and confinement.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gina Jem and her brother develop an unproven theory linking the organ seller Skull, the dungeon fighter Slave, and a hidden killer to Valhalla. Freddy continues extreme training, accumulates more than a billion dollars, and returns to visible raids, but his violence frightens allies. Helen tells Keegan Jem that Valhalla confined her and manipulated Lucas. Keegan accepts her account and hires a near-peak-three-star armored assassin. Freddy begins improving his relationship with Valhalla's residents, aided by Lucas and Janice, and develops genuine concern for the faction's poor and bereaved families. Charlie King then deceives Lucas by claiming Helen is captive and delivers him to the Jems. Lucas rejects their claim that he was brainwashed and is forcibly held. The assassin attacks Valhalla. Freddy joins Thor despite orders to stay away, and their combined attacks damage the killer, but both defenders suffer terrible injuries. Thor activates a life-consuming last resort, forcing the assassin to flee, then dies. Travis takes emergency command and begins evacuation and negotiation. With Lucas still captive and Valhalla near collapse, Freddy gathers his supplies and enters the Century of Solitude.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy survives roughly fifty subjective years in the isolated dungeon while little more than an hour passes outside. Bloodshed is his only companion as he trains, hallucinates, suffers a suicidal episode, and eventually brings most of his usable abilities to their next upgrade threshold. The exit leads to a sealed cabin hosted by Insanity, a truth-bound primordial concept construct. Insanity presents selectable spirits as the trial's reward. Freddy uses them to advance a broad range of blood and water abilities toward the third star, improving his reserves, weapons, defenses, tempering, movement, projectiles, and finishing attacks. A final choice remains between a gem for binding a four-item cursed set, a unique affinity shard, and a unique prime spirit that alternates slower and faster personal time. Freddy has not selected one when the book ends. Outside, Travis prevents Valhalla from fighting while rival factions demand its dissolution, forced labor for noncombatants, and execution or coercive punishment for fighters. Keegan seeks Freddy Cliff and the figures called Slave and Skull. The adjudicator supervises without declaring for either side. Lucas remains captive, Thor is dead, Sophia remains gravely impaired, and an unidentified man interrupts the unresolved negotiation.",
+            "through": {
+              "chapter": 58
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FMSDC7ZX",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-3"
+      }
+    },
+    "1-lifesteal-volume-4": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The returning owner of Repentawa, Freddy assumes responsibility for a city destabilized by the fall of its former ruling interests. He works with Sophia and Valhalla to restore essential services while confronting the personal strain left by prolonged isolation.",
+            "id": "freddy-stern",
+            "name": "Freddy Stern",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Freddy's life-affinity companion and healer, Sophia finds him outside Repentawa and urges him back into the city's emergency. She can track his unusually conspicuous life force and is willing to support the recovery effort.",
+            "id": "sophia",
+            "name": "Sophia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of one of the captured traitors.",
+            "id": "lucas-black",
+            "name": "Lucas Black",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucas Black's mother and one of the remaining people accused of betraying Repentawa. She has been found and faces an imminent public execution with the other alleged traitors.",
+            "id": "helen-black",
+            "name": "Helen Black",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A three-star leader of Valhalla who occupies Thor's former office, Travis directs Repentawa's stabilization while Freddy is absent. He confronts Freddy over that absence and manages urgent problems involving riots, property, supplies, and the city's administration.",
+            "id": "travis",
+            "name": "Travis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An imperial official who deals pragmatically with Freddy, the adjudicator buys batches of his regenerated organs through a commercial alias. He recognizes the possible connection behind that identity but continues the transaction and becomes an important official contact.",
+            "id": "imperial-adjudicator",
+            "name": "the imperial adjudicator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A transformed former interim patriarch whose condition is driving an ether virus and a gathering monster horde. Identified as a three-star threat, Nahar is connected to the clan that previously imprisoned and tortured Freddy and now endangers the entire Northern Belt.",
+            "id": "nahar-kraven",
+            "name": "Nahar Kraven",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The public identity Freddy Stern uses in dealings with the imperial adjudicator. The connection becomes explicit when the official summons Freddy Cliff to help confront the ether-virus crisis, allowing Freddy to cooperate with imperial authorities without abandoning the established cover.",
+            "id": "freddy-cliff",
+            "name": "Freddy Cliff",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Freddy's blood-linked combat companion, Bloodshed appears in a shawled form during an experimental tempering attempt. It supplies the lifesteal needed to sustain Freddy while Sophia tries to keep the dangerous procedure from killing him.",
+            "id": "bloodshed",
+            "name": "Bloodshed",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucas's loyal companion, Janice remains beside him while he is openly hostile toward Freddy. Her apologetic response during an encounter with Freddy's group suggests that she does not share the full force of Lucas's anger, but she follows him away.",
+            "id": "janice",
+            "name": "Janice",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The organ-supply identity that the imperial adjudicator connects to Freddy after investigating the operation and finding no laboratory. The discovery exposes Freddy's hidden commercial activity to an important imperial official.",
+            "id": "skull",
+            "name": "Skull",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A three-star visitor who served as the assistant to Freddy's former powerful employer. On joining the elite visitors gathered for Repentawa's defense, he sees through Freddy Cliff's public identity and knows him as Freddy Stern.",
+            "id": "former-employers-assistant",
+            "name": "the former employer's assistant",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved fire specialist in the assembled elite defense team. This caster uses soul-fire to turn proxy kills into power for linked effects, can summon elementals, carries protective gear and a bladed staff, and gains physical strength while remaining in place.",
+            "id": "quiet-soul-fire-caster",
+            "name": "the quiet soul-fire caster",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nature-oriented elite assigned to Repentawa's highest-level defense group. Reginald cultivates combat insects within a personal biosphere and carries a coordinated set of living equipment that supports his plant and nature abilities.",
+            "id": "reginald-price",
+            "name": "Reginald Price",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite fighter whose unusual regeneration reverses injuries but has clear limits against poison, self-inflicted strain, and complete loss of tissue. Georgie also commands lightning, metal, and water affinities as part of Repentawa's defense team.",
+            "id": "georgie-league",
+            "name": "Georgie League",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite shadow specialist from the genuine Umbra Clan, Emily joins the defenders gathering around Repentawa. She discloses the Shadow Queen talent, darkness vision, weaponized shadow hair, and equipment that makes her shadow casting more efficient.",
+            "id": "emily-umbra",
+            "name": "Emily Umbra",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure from Freddy's life before his kidnapping, the former trainer arrives in Repentawa alongside a serpentine-looking companion. He initially fails to recognize Freddy beneath the Freddy Cliff identity, leaving Freddy to confront an unexpected connection to his past.",
+            "id": "former-trainer",
+            "name": "the former trainer",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A shadow-using servant acting on Madame's orders. The retainer tells Freddy that his former trainer sold him to the Kraven clan, describes a rescue attempt ruined by Basilisk's betrayal, and says Madame instructed him to protect Freddy.",
+            "id": "madames-shadow-retainer",
+            "name": "Madame's shadow retainer",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fallen former four-star lord reduced to three stars, Basilisk arrives beside Freddy's former trainer and offers investment and future cooperation. His hostility soon becomes explicit, and Travis identifies him as the person responsible for Thor's death.",
+            "id": "basilisk",
+            "name": "Basilisk",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A masked man who can blend into shadows. He abducts Janice and Lucas Black, mutilates Lucas, and forces Janice to deliver him to Freddy with a provocative message. His identity remains unknown.",
+            "id": "masked-shadow-attacker",
+            "name": "the masked shadow attacker",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the top-ranked three-star mercenary party hired by Freddy Stern for Repentawa's defense. This support specialist alternates between holy and unholy abilities while serving in Freddy Stern's contracted active party.",
+            "id": "holy-unholy-support",
+            "name": "the holy-unholy support",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The porter in the top-ranked three-star mercenary party hired for Repentawa's defense. This party member provides extensive extradimensional storage as part of the contracted group.",
+            "id": "contracted-party-porter",
+            "name": "the contracted party's porter",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The light-affinity scout in Freddy Stern's contracted three-star mercenary party. This party member can observe distant areas through light-based abilities and create illusions.",
+            "id": "contracted-party-scout",
+            "name": "the contracted party's scout",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucas Black's new public identity after Sophia constructs him a replacement body. Now exceptionally tall and heavily built, Drake chooses a halberd and prepares to enter the monster defense while his former appearance and legal identity remain concealed.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Janice's new public identity after she freely accepts a replacement body made through Sophia's life manipulation. Lily chooses a greatsword and joins the defense beside Drake, leaving her former appearance and legal identity behind.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophia's concealed undead organic construct, assembled from assimilated monster tissue. At its introduction it remains unfinished, with a disconnected hidden brain that Sophia has not activated because she is uncertain what raising it would do.",
+            "id": "flesh-golem",
+            "name": "the flesh golem",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A nameless square-pupiled servant of the Lord of Despair who draws monsters into service. Accepted recruits destroy monsters that resist, and the recruiter deceives three pursuers into following a false trail involving Nahar Kraven.",
+            "id": "square-pupiled-monster-recruiter",
+            "name": "the square-pupiled monster recruiter",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The advanced three-star owner of a real-estate company buying property from frightened Repentawa residents and offering to move them toward less defensible Ottawa. The owner relies on powerful stone defenses and claims the operation is lawful.",
+            "id": "real-estate-company-owner",
+            "name": "the real-estate company owner",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elite soul-fire combatant who fights beside Freddy during the worsening invasion. Perry can turn enemies killed through her tethered effects into fire elementals, using them to feed a larger fire dragon and extend her battlefield strength.",
+            "id": "perry",
+            "name": "Perry",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defender whose climbing talent allows him to place remotely triggered explosives in difficult terrain. The charges produce carefully timed avalanches that help Repentawa withstand the monster invasion.",
+            "id": "matt-canstone",
+            "name": "Matt Canstone",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Basilisk's associate during their compulsory assignment to defend a remote village. Mark is troubled by recurring nightmares involving square-eyed figures and leaves the village's usual patrol range in search of a more dangerous battle.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified two-star spear fighter seen beside Nahar Kraven during the attack within Repentawa. She has square eyes and carries a spear, but her name and nature are not yet known.",
+            "id": "square-eyed-spear-fighter",
+            "name": "the square-eyed spear fighter",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A square-eyed two-star spear fighter accompanying Nahar during the assault inside Repentawa. Firita identifies herself as a body snatcher, attacks with copies of a cursed spear, and nearly kills Freddy.",
+            "id": "firita",
+            "name": "Firita",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A three-star mercenary support retained for the city's last defense. Sting can apply both holy and unholy blessings, and Freddy calls on that combination when Repentawa's remaining civilians are retreating and Nahar is only minutes away.",
+            "id": "sting",
+            "name": "Sting",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rose-like construct in the Blood Domain associated with slaughter and bloodshed. It offers an uncertain cure when Freddy Stern's damaged soul is breaking apart, but does not disclose the terms of its remedy.",
+            "id": "blood-domain-rose-construct",
+            "name": "the Blood Domain rose construct",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The overwhelmingly powerful ascended being that originated the Aether Virus and regards Nahar Kraven as its apostle. It offers Freddy Stern a cure if he repairs the damage done to its cause, then threatens him when he refuses.",
+            "id": "aether-virus-origin",
+            "name": "the Aether Virus origin",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unnamed Overlord who forces his way into the Northern Belt. He is pursuing the man who eloped with his daughter and intends to kill him.",
+            "id": "unnamed-overlord",
+            "name": "the unnamed Overlord",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0GR6C9WYC",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-4"
+      },
+      "recaps": {
+        "ending": "Repentawa survives after Emily Umbra kills Nahar Kraven and the directed horde disperses, but the victory leaves roughly 80,000 survivors and severe losses. Freddy remains the city's owner, though his soul is catastrophically damaged and only partly stabilized by a hostile new scythe construct from the Blood Domain. Sophia's awakened flesh golem attacks Valhalla's evacuees before Freddy's allies destroy it. Sophia saves fewer than one hundred wounded people, including Lucas Black and Georgie League, then leaves after she and Freddy divide over her willingness to pursue radical change in the Empire. Lucas is alive as a second-star fighter who has reclaimed his name, while Janice has already departed under the Lily identity. Travis helped evacuate several thousand civilians, Emily and Georgie survive, and the adjudicator lives after sacrificing a star to delay Nahar. The Aether Virus continues spreading without Nahar, and its ascended origin threatens Freddy when he refuses an offered bargain. An unnamed Overlord also breaks into the Northern Belt, seeking to kill the person who ran away with his daughter. Basilisk, the body snatchers, Freddy's damaged soul, and his precarious imperial standing remain unresolved.",
+        "in_short": "Freddy Stern assumes control of a destabilized Repentawa and commits his wealth and strength to defending it from an ether-virus-driven monster invasion led by Nahar Kraven. He and Sophia build the city's defenses, recruit mercenaries, and fight beside Lucas Black, Janice, Emily Umbra, Georgie League, and other elite allies. Human sabotage and dream-borne infection undermine the wall, the Empire refuses evacuation, and Sophia creates controlled undead to hold back the horde. Nahar attacks inside the city, forcing Freddy to sacrifice his soul for enough power to wound him. A dangerous Blood Domain construct keeps Freddy alive, and Emily kills Nahar, breaking the horde's coordination. Sophia's awakened flesh golem then massacres evacuees before being destroyed. Repentawa survives with about 80,000 people, but Freddy remains badly damaged. Sophia leaves over their ideological split, Lucas survives as a second-star, Janice has departed as Lily, and the still-active virus-origin makes Freddy its enemy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Freddy Stern survived kidnapping and torture by the Kraven clan, followed by prolonged isolation that left him traumatized and uncertain of his own perceptions. He became the owner of Repentawa and returned to a city whose former ruling interests had been removed, leaving its institutions unstable. Sophia remained his life-affinity companion and healer, while Bloodshed continued as his blood-linked combat companion. Valhalla remained central to Repentawa's security, with Travis among its established leaders, as Freddy faced the responsibilities created by his control of the city.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Repentawa is close to collapse after its ruling interests are killed or flee. Freddy takes control of essential companies and their debts, while Travis and Valhalla manage shortages, riots, and redevelopment. Freddy accepts a contract making the city independent under his administration and commits its taxes to recovery. He refuses Lucas Black's plea to spare Helen Black, and Valhalla executes her with the other traitors, ending Lucas's friendship with him.\n\nFreddy and Sophia raise billions by selling regenerated organs through an imperial adjudicator, then direct much of the money into Repentawa. Freddy's lingering trauma also gives him a sense for an approaching insanity-linked danger. The adjudicator confirms that an ether virus is gathering monsters into a regional catastrophe. Its source is Nahar Kraven, a former interim patriarch connected to the clan that once imprisoned Freddy. Although the adjudicator privately recommends escape and offers to remove Sophia, both she and Freddy choose to remain. They have about a week to prepare Repentawa for a monster horde that could devastate the Northern Belt.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy and Travis decide to fortify Repentawa, treating its inner-space refuge as only a temporary fallback. A dangerous tempering attempt nearly liquefies Freddy beyond recovery, but Sophia reconstructs him and begins preparing death-affinity attacks while maintaining her refusal to create undead. The adjudicator discovers that Freddy is also the organ supplier known as Skull. Instead of exposing him, he advances Freddy $300 billion against future goods, and Freddy commits the money to the city's defense.\n\nMainland factions rapidly build Repentawa's wall and send fighters because they want ties to Freddy, creating political obligations alongside military support. Freddy's older Freddy Cliff identity is recognized by a visitor from his past, but he continues using it publicly. The adjudicator assembles an elite team that includes the nature-oriented Reginald Price, regenerative mercenary Georgie League, and shadow specialist Emily Umbra. Freddy gives them only a limited account of his own powers. Repentawa now has layered defenses, tracking watches, and strong outside assistance, but overwhelming monster numbers and the visitors' competing interests remain serious risks.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucas apologizes for blaming Freddy alone for his mother's execution but cannot forgive the loss. Soon afterward, Freddy learns that his former trainer sold him to the Kraven clan and that Basilisk is connected to Thor's death. Freddy attacks Basilisk, but the adjudicator stops the confrontation. The trainer then recognizes Freddy beneath the Cliff identity, exposes his exceptional healing, and admits that his apology was false.\n\nA masked shadow user abducts Lucas and Janice and mutilates Lucas to provoke Freddy. Sophia secretly restores him at great personal cost. Because his recovery would expose her power, Lucas and Janice must abandon their appearances and public identities. Lucas initially demands a place in the coming battle, while Janice refuses to leave him. Elsewhere, Reginald gives Freddy an experimental ring that can collect discharged ether during combat. Emily offers a contractual marriage and an army, but Freddy declines the hidden restrictions. He ultimately agrees that Lucas and Janice may accompany his party once Sophia has altered them and he has equipped them. The horde is close, and the group is still completing its preparations.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Freddy and Sophia buy specialized equipment and hire every mercenary company they can afford, both to strengthen the walls and to prevent opportunists from exploiting trapped residents. Sophia then creates replacement bodies for Lucas and Janice with their consent. Lucas becomes Drake, while Janice becomes Lily Black, and the pair enter the defense under their new legal identities.\n\nThe invasion begins outside Repentawa. Freddy's group fights with a contracted three-star support party while Sophia turns monster tissue into armor and later a huge concealed flesh construct. Freddy kills an intelligent metal deviant despite losing both arms, and Reginald's ring begins producing ether coins. A stronger blessing lets Freddy defeat a four-star snow minotaur but nearly drives him beyond control. After days of combat, a giant with a lethal death aura approaches the city. Freddy joins Georgie, Reginald, Emily, and the other elites, then stakes his life on stopping it before it reaches the wall. His accelerated blood javelins bring the giant down and produce a cache of ether coins. The city survives this immediate threat, but a square-pupiled figure serves the Lord of Despair by drawing monsters into its cause.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophia upgrades herself, Freddy, and her flesh construct with tissue from the fallen giant. Lily helps Freddy turn captured ether into blood-aligned coins, whose insights expose flaws in his abilities and eventually open contact with the primordial domain of Blood. He is warned that the domain offers rare rewards but is too dangerous for him before the third star.\n\nInside Repentawa, Freddy stops a company from buying frightened residents' property and sending them toward a less defensible city, then delegates future civil enforcement to Travis. The military crisis worsens when saboteurs with square pupils destroy part of the wall. Their apparent external control makes defenders and construction specialists prepare to leave. Freddy, Emily, Perry, and Georgie support an evacuation petition, but the Empire refuses it. With conventional forces withdrawing, Sophia crosses a boundary she had resisted and creates temporary undead defenders. She limits their intelligence, lifespan, feeding, and ability to reproduce, and retains a means to destroy them. Repentawa gains a secret defensive force just as its hired mercenaries prepare to depart.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emily secretly stays in Repentawa after her entourage leaves. Lily accepts Freddy's offer of covert passage into the Empire, while Drake admits that nightmares and guilt made him push her away. Freddy identifies the ether virus as a dream-borne influence that exploits despair until victims accept it. He restores morale by manifesting Bloodshed as a giant skeletal defender, but revealing his third spirit ability jeopardizes his imperial standing and control of the city.\n\nSophia's hidden undead and harsh winter conditions reduce the monster pressure for a time. The enemy then surrounds Repentawa as a diversion and attacks from within near the evacuation passage. Lucas rejects the Drake identity, ascends to the second star while defending civilians, and receives metal affinity. Emily discovers that Nahar is now a four-star with two talents. Freddy returns but is ambushed by Firita, a square-eyed spear fighter who identifies herself as a body snatcher. The adjudicator sacrifices a star and is maimed merely delaying Nahar. With survivors retreating through a breach in the wall, Freddy refuses to flee. He takes overwhelming holy and unholy support and offers his own soul as the final sacrifice needed to confront Nahar.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The soul sacrifice leaves Freddy feral and apparently soulless, but the resulting power lets him kill Nahar's companion and inflict severe injuries on Nahar before collapsing. Sophia extracts Freddy while her flesh golem and concealed shadow bindings delay pursuit. His soul is breaking apart, so he enters the primordial Blood Domain and survives a series of trials in search of a cure. A rose-like construct consumes two of his items and stitches his soul together only enough to prevent death. It becomes a hostile black scythe tattoo that can merge with his sword.\n\nFreddy resumes fighting the exhausted Nahar, and Emily strikes from concealment to decapitate him and destroy his head. Nahar's death ends the horde's coordination. The awakened flesh golem then attacks civilians escaping through secret Valhalla tunnels. Freddy's allies destroy it, but Sophia can save fewer than one hundred wounded survivors, including Lucas and Georgie. About 80,000 people remain after the crisis. Sophia leaves after she and Freddy split over her plan for radical imperial change. Freddy is still severely disabled by soul damage. The ascended origin of the Aether Virus offers him a conditional cure, threatens him when he refuses, and remains active beyond Nahar's death. In the final scene, an unnamed Overlord enters the Northern Belt by force while pursuing the person who fled with his daughter.",
+            "through": {
+              "chapter": 44
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0GR6C9WYC",
+            "type": "community"
+          }
+        ],
+        "work": "1-lifesteal-volume-4"
+      }
+    },
+    "12-miles-below": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A House Winterscar scavenger who awakens underground in a torn environmental suit. He survives by applying the field-repair skills he learned in childhood and finds his armored father nearby, with no clear memory of how he arrived there.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An armored figure whom Keith recognizes as his father after waking injured underground. He is beside Keith, but the events that brought them below and the damage to Keith's suit remain unexplained.",
+            "id": "keiths-father",
+            "name": "Keith's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly engineer from Keith's childhood who teaches him welding and emergency suit repair. The lesson includes a field demonstration, and that practical instruction becomes essential when Keith later suffers a dangerous suit breach.",
+            "id": "elderly-engineer",
+            "name": "Elderly engineer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Keith's older sister and a knight retainer. She helps him open a buried entrance with an occult knife, challenges his neglected harvesting duty, and supports his search for lost communications technology.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-status member of Shadowsong and Kidra's established rival. She proposes a power-cell contest, staking a technical handbook against the occult knife she believes should belong to her. She arrives with two retainers of her own.",
+            "id": "anka-shadowsong",
+            "name": "Anka Shadowsong",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An airspeeder pilot who is Keith's friend and transports the expedition party between scavenging sites.",
+            "id": "airspeeder-pilot",
+            "name": "Airspeeder pilot",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Deathless clan lord commanding the expedition. He diverts the convoy toward western coordinates after sensing an unexplained call, accepting an unknown risk at the destination. His orders supersede the convoy's planned route and refueling schedule.",
+            "id": "clan-lord",
+            "name": "Clan lord",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Deathless clan lord, now identified as Atius. At the derelict complex, he directs the scavengers and relic knights and assigns prime relic-knight escorts to the competing teams.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Winterscar Prime"
+            ],
+            "description": "Keith and Kidra's father, now identified as the Winterscar Prime. He is a formidable relic knight assigned to escort his children during the scavenging contest.",
+            "id": "tenisent",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The house relic armor worn by Keith's father when Keith awakens injured underground.",
+            "id": "winterscar",
+            "name": "Winterscar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An apparent hostile intruder detected by the reawakened site's computer system. Its attempted breach prompts the system to erase information and protect navigation data. The warnings establish it as a threat, although its identity and physical nature remain unclear.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified presence associated with sealed side doors that begin flashing gold at Keith and his father. The behavior is unprecedented, and its nature and purpose remain unknown.",
+            "id": "yellow-guide",
+            "name": "Yellow guide",
+            "reveal": {
+              "chapter": 22
+            }
+          },
+          {
+            "description": "A masterless Imperial relic armor found in an ancient crypt. It reshapes itself around Keith, monitors his injuries, assists his movement, and registers him as its new user. It replaces the environmental suit that was damaged beyond repair.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Journey's deceased former wearer, an Imperial crusader whose remains lie in the crypt beside the armor and an occult longsword. Journey retains her biometric record and recognizes her as its previous user.",
+            "id": "journeys-former-crusader",
+            "name": "Journey's former crusader",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A spear-wielding machine champion who appears at the blast doors and blocks the party's escape while the doors are closing. The elite combatant's position turns the group's race from the bunker into a direct confrontation at the only viable exit.",
+            "id": "the-feather",
+            "name": "The Feather",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Feather"
+            ],
+            "description": "The machine champion at the blast doors, now identified as To’Aacar. He knows Atius from a centuries-old conflict and confronts him while the others try to escape. Their recognition makes clear that this is a renewed struggle rather than a chance encounter.",
+            "id": "toaacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-19",
+            "ref": "audible:uk:B0C1PZCFM9",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below"
+      },
+      "recaps": {
+        "ending": "Keith, Kidra, Anka, and the remaining rescue party reach the surface with the recovered power cells and the concealed yellow sphere. Tenisent is dead, but Kidra has inherited Winterscar, whose independent actions and response to its former wearer remain unexplained. Atius, believed killed while delaying To’Aacar, revives and returns without his relic armor. He privately calls Kidra to discuss the sphere. Keith keeps Journey, Atius's occult blade, the former crusader's newly unlocked evidence, and the yellow guide's unopened mission recording. His injuries require weeks of treatment. His next objective is the hidden work on soul fractals, which may explain whether some part of Tenisent remains within Winterscar. Relinquished still commands the hostile machines, To’Aacar remains alive below, the new Deathless crisis is unresolved, and the sphere's reaction to Kidra remains secret.",
+        "in_short": "Keith Winterscar's attempt to recover old technology awakens a buried facility and drops him and his father, Tenisent, into a vast machine realm. Their escape forces Keith to rely on the technical instincts Tenisent once dismissed, while Tenisent confronts his failures as a father. A mysterious guide leads them to Journey, an Imperial relic armor that accepts Keith and grants him unusual access. Tenisent dies after Keith defeats an adaptive machine hunter, but Tenisent's own armor later moves and fights in a way its stored model cannot explain. A rescue party reaches Keith, recovers a hidden yellow sphere, and battles toward the surface while Relinquished directs machines against them. Atius appears to die holding To’Aacar behind sealed doors, then revives outside. Kidra inherits Winterscar, Keith survives with Journey, and evidence that Tenisent may persist through the armor's soul fractal gives Keith a new purpose.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Keith Winterscar survives a torn environmental suit underground, then the account returns to the expedition that brought him there. He and his older sister Kidra neglect their assigned harvest to explore a buried control room. Keith accidentally reactivates a defensive turret, and Tenisent, their father, destroys it in Winterscar relic armor. Kidra shields Keith from blame, but Tenisent responds harshly and threatens to remove Keith from future expeditions unless he produces an exceptional harvest.\n\nA rival, Anka Shadowsong, offers Keith a rare antenna handbook as the prize in a power-cell contest against Kidra's occult knife. The convoy then changes course at the command of Atius, its Deathless clan lord, who senses an unexplained call from the west. The destination is an ancient complex. Anka's drone gives her an early advantage, while Keith enters through a damaged roof with Tenisent as his assigned escort. Keith identifies the central structure as a data center, but blocked lower routes leave Anka closer to the expected transformer rooms and put Keith behind in the wager.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith finds twelve spent power cells in the data center and secretly restores backup power. The system detects Relinquished attempting to breach it, starts erasing protected information, and ignites buried rockets. Their failure collapses the complex into a vast sinkhole, stranding Keith and Tenisent in a shifting underground city maintained by Mites. Winterscar is badly damaged, Tenisent's left arm is unusable, and their surface search window is short.\n\nKeith studies the Mites and traces power to a terminal that may provide a route out. Screamers interrupt the attempt. Tenisent destroys most of them despite his injury, but the last machine incapacitates him and nearly kills Keith. Tenisent recovers in time to finish it, then uses a dangerous stimulant to keep moving. Keith powers the terminal and operates it through old command syntax. It gives them a map and a route from a location roughly twelve miles below the surface. Tenisent carries Keith toward the outskirts, increasingly trusting the technical judgment he once dismissed.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The journey reopens the family's past. During an earlier slaver raid, Tenisent saved Keith and Kidra but left much of Winterscar to be destroyed or captured. He then spent years training his children with punishing severity. In the present, he kills a speaking drake and explains that a vast, unstable generation of Deathless now threatens civilians and underground settlements.\n\nKeith and Tenisent enter the Underpassage, following its upward routes until an awakened machine nest blocks them. Both are injured during their escape, and Tenisent loses his rifle. Gold-flashing doors then guide them into a crypt containing an intact masterless relic armor, an occult sword, and the remains of an Imperial crusader. Keith takes the armor because his ruined environmental suit cannot support a surface return. The armor identifies itself as Journey, accepts him as its wearer, and begins monitoring and assisting him. Its medical link also reveals the full extent of Tenisent's condition: the arm concealed within Winterscar is missing, not merely disabled.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Journey predicts that Tenisent's internal injuries will become fatal without treatment. While training Keith in armor movement and occult weapons, Tenisent admits that he treated Keith's analytical learning style as weakness and made instruction punitive. An unknown Root Administrator grants Keith elevated access to Journey. Keith uses similar controls in Winterscar to create a functioning simulated arm from Tenisent's recorded movements.\n\nThe pair recover a black device marked as the former crusader's highest priority. Her locked message asks that her evidence reach the Solaris Imperium, but its password and the device's purpose remain unknown. They contact Atius's rescue party, which now includes Kidra and Anka after both defied orders to join the search. Before reunion, an adaptive spider automaton ambushes Keith and Tenisent and collapses a bridge beneath them. Their sealed armor carries them through an underground river into a welded city farther from help. They find an elevator upward while Tenisent's stimulant approaches the point where it may impair his mind. During the ascent, he accepts Keith as a relic knight and takes responsibility for abandoning his children after their mother's death.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The adaptive spider reaches Keith and Tenisent with a force of Screamers before the rescue party can arrive. Journey's targeting and movement assistance let Keith fight effectively, but the spider impales Tenisent through the abdomen. Keith refuses his order to flee. He gives Journey full control of his body, kills the machine, and uses every available medical supply, but Tenisent dies after their reconciliation.\n\nKeith repairs Winterscar enough to carry Tenisent's body and reports the death to Atius. More Screamers trap him in a building. As his barricade fails, he asks Winterscar to run Tenisent's stored combat model. The armor unexpectedly rises, releases an occult pulse, fights with Tenisent's technique, and produces a voice it lacks the recorded data to imitate. Journey detects an unexplained power surge and a surplus associated with the armor's soul.\n\nAtius, Kidra, Anka, and the rest of the rescue party finally reach Keith. Atius compares the pulse to a Deathless soul strike but cannot explain it. The group performs Tenisent's burial rite, and Keith publicly honors his father as true of heart. The armor's apparent agency remains unresolved.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tenisent's body disappears from Winterscar before Kidra inherits the armor. Its refusal to reshape blood-stained areas deepens Keith's suspicion that it retains more than a predictive model. The party collects enough machine power cells to refuel its airspeeder, then follows Atius to a flooded Imperial bunker.\n\nInside, Keith, Kidra, and Atius recover a yellow sphere tied to an elite Solaris Imperium order. The yellow guide contacts Journey through it and reveals itself as a researcher who digitized both mind and soul. It claims responsibility for guiding Keith to Journey, causing the original collapse, and granting his administrator access. It also identifies Relinquished as the ancient intelligence commanding all machines except Mites. Before Relinquished interrupts the contact, the guide unlocks Journey's former crusader logs and gives Keith a mission recording plus coordinates for a hidden book about soul fractals. That work may explain whether Tenisent's soul remains within Winterscar. Atius takes custody of the sphere and orders its existence concealed.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Atius deceives Relinquished long enough to learn that the new Deathless are imperfect copies and that chosen agents have been prepared against them. As a machine army converges, Atius secretly gives the yellow sphere to Keith while maintaining a false hard-drive story. The party retreats through the bunker. Keith restores its defenses, and Winterscar independently activates the full turret bank, again suggesting an unexplained connection to Tenisent.\n\nAt the closing blast doors, the machine champion To’Aacar blocks the escape. Kidra recovers the sphere from Keith's damaged pack and carries it through after it confronts her with memories of her choices. Atius stays behind, cuts off To’Aacar's hand with an occult blade, throws the weapon to Keith, and appears to die while the doors seal the champion below.\n\nThe survivors reach the surface and are extracted with their power cells and concealed cargo. At the original site they find Atius alive, restored by his Deathless revival but missing his armor. He privately summons Kidra about the sphere. Keith enters weeks of medical treatment with Journey, Atius's blade, the unlocked crusader evidence, and the guide's unopened mission. Tenisent is physically dead, but Keith commits to finding the soul-fractal book and investigating whether his father persists within Winterscar.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-19",
+            "ref": "audible:uk:B0C1PZCFM9",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below"
+      }
+    }
+  }
+}

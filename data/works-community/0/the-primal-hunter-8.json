@@ -1,0 +1,1862 @@
+{
+  "entries": {
+    "the-primal-hunter-8": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The founder of Haven, a hunter and alchemist, and Villy's Chosen.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jake's primordial patron and the head of the Order where Jake trains. He protects Jake's place in the Order and guides his development through the legacy of the Malefic Viper.",
+            "id": "villy",
+            "name": "Villy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's capable leader and Jake's principal political adviser.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A unique lifeform also known as the King of the Forest and a representative of monsters.",
+            "id": "fallen-king",
+            "name": "Fallen King",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the Risen and an experienced dungeon engineer.",
+            "id": "casper",
+            "name": "Casper",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Holy Church leader and diviner.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's leading inventor and a technologist with a void-related legacy.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's hawk companion and a gifted wind user.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A body-forging warrior allied with Jake.",
+            "id": "carmen",
+            "name": "Carmen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established leader among Earth's factions.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Noboru Clan alchemist and swordswoman trained by her great-grandfather.",
+            "id": "reika",
+            "name": "Reika",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order liaison who accompanies Jake into the Indigo Caverns and helps the party search for ingredients.",
+            "id": "irin",
+            "name": "Irin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beastfolk alchemist with a corpse-dismantling ability who joins the Indigo Caverns expedition despite her reluctance and lack of combat experience.",
+            "id": "bastilla",
+            "name": "Bastilla",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragonkin blessed by the Malefic Viper who joins Jake's dungeon party as a powerful close-range fighter. He possesses Sense of the Malefic Viper.",
+            "id": "malefic-dragonkin",
+            "name": "Malefic Dragonkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's contract-bound household steward. She studies at his Order residence and is cautiously beginning to form friendships despite little experience with ordinary social life.",
+            "id": "elf-steward",
+            "name": "Elf Steward",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order student who visits Jake's residence as an apparent friend of his elf steward.",
+            "id": "nella",
+            "name": "Nella",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A version of Jake created by an earlier simulation and retained within his soul space. His advice helps Jake solve the final Indigo Caverns craft.",
+            "id": "sim-jake",
+            "name": "Sim Jake",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order hallmaster who agrees to contain the report that could expose Jake's identity as Villy's Chosen.",
+            "id": "viridia",
+            "name": "Viridia",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Altmar elf who has helped teach Jake's household steward and wants to meet Jake.",
+            "id": "altmar-elf-associate",
+            "name": "Altmar Elf Associate",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The S-grade head of the Order's Humanoid Resources Department who offers Irin a place as her disciple.",
+            "id": "velvet-mistress",
+            "name": "Velvet Mistress",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sword Saint"
+            ],
+            "description": "The Sword Saint and protector of the Noboru Clan. He is attacked after refusing the invaders' demand that he join their campaign.",
+            "id": "miyamoto",
+            "name": "Miyamoto",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the United Cities Alliance. He launches a coordinated takeover of Earth while presenting his campaign as an effort to shield humanity from control by gods and their factions.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A disciple shaped by the guidance of an unidentified primordial who supports the invading forces.",
+            "id": "william",
+            "name": "William",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An off-world Chosen who leads the attack on Haven.",
+            "id": "rival-chosen",
+            "name": "Rival Chosen",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The unidentified primordial behind the rival Chosen and William, whose agents support the invasion of Earth.",
+            "id": "rival-primordial",
+            "name": "Rival Primordial",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ash-and-flame unique lifeform that challenges the Fallen King in his territory.",
+            "id": "ash-and-flame-unique-lifeform",
+            "name": "Ash-and-Flame Unique Lifeform",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A teleportation-circle specialist who helps Miranda prepare Haven's evacuation after Jake warns her to flee.",
+            "id": "neil",
+            "name": "Neil",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful sandworm who agrees to guide and carry Jake through a distant desert in exchange for valuable earth-affinity items.",
+            "id": "sandworm-guide",
+            "name": "Sandworm Guide",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An entity bound within Casper's pendant whose released soul power enables him to survive an ambush and escape.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Risen leader who joins Casper in deciding that their faction must withdraw from Earth.",
+            "id": "priscilla",
+            "name": "Priscilla",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sandworm traveling with Jake. He gives her the name Sandy after they hunt C-grade scorpions and recover fragments of a space-attuned meteorite.",
+            "id": "sandy",
+            "name": "Sandy",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A humanoid C-grade snake who arrives while Miranda's refugees are surrounded at the Grand Mangrove River. Her loyalties and intentions are initially unknown.",
+            "id": "alabaster-crimson-eye-snake",
+            "name": "Alabaster Crimson-Eye Snake",
+            "reveal": {
+              "chapter": 32
+            }
+          },
+          {
+            "description": "A long-standing collaborator of Miyamoto who uses illusion and hypnosis to impersonate his corpse, helping him preserve the appearance of his death.",
+            "id": "former-monarch-of-blood",
+            "name": "Former Monarch of Blood",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A late-tier C-grade beast that represents aquatic creatures seeking protection under Jake's future rule and enters a tentative cooperative relationship with him.",
+            "id": "sky-whale",
+            "name": "Sky Whale",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed old master shown in a legacy vision as Villy's respected alchemy teacher. Jake notices that the master and Villy share the same bloodline signature.",
+            "id": "old-master",
+            "name": "Old Master",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Villy's deceased alchemy master, identified as a brilliant pre-System scholar with perfect memory who taught Villy alchemy and principles of the System.",
+            "id": "first-sage",
+            "name": "First Sage",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ash-and-space unique lifeform fighting the Fallen King. Its domain-like soul shape allows rapid movement and escape.",
+            "id": "ashen-phantom-devourer",
+            "name": "Ashen Phantom Devourer",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Snappy",
+              "Lord Protector of the Order of the Malefic Viper"
+            ],
+            "description": "A god who grants Sandy a true blessing and makes the cosmic worm its Chosen.",
+            "id": "boundless-hydra",
+            "name": "Boundless Hydra",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "He and his children are safe in their cavern. He is nearing C-grade and popular with dungeon visitors.",
+            "id": "rick",
+            "name": "Rick",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Scarlet"
+            ],
+            "description": "The alabaster crimson-eye snake who protected Miranda's refugees and sheltered them at the Grand Mangrove River settlement. She chooses the full name Scarlet Allyson when Jake visits her home.",
+            "id": "scarlet-allyson",
+            "name": "Scarlet Allyson",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sylphie's father, who has returned to Haven with Misty.",
+            "id": "hawkey",
+            "name": "Hawkey",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sylphie's mother, who has returned to Haven with Hawkey.",
+            "id": "misty",
+            "name": "Misty",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CQYWHTCQ",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-8"
+      },
+      "recaps": {
+        "ending": "Jake closes the book as Earth's elected World Leader, supported by ministers Miranda, the Fallen King, Miyamoto, and Arthur, while the final beast seat remains open. Earth has chosen to face its Prima Guardian without a planetary alliance. The Guardian and its army will arrive in five years, and Earth will then have five years to protect the key to its planetary core. The rival Chosen has withdrawn, the Ashen Phantom Devourer is dead, William has rejected his former master's blessing, the Risen have relocated, and the Holy Church is leaving Earth. Jake returns to the Order with Scarlet Allyson, while Sandy, Sylphie, Misty, and Sylphie's father stay behind. His nine Malefic Viper legacy skills are legendary, but his D-grade work is unfinished. In Villy's time chamber, Jake and Sim Jake repeatedly duel while preparing an uncertain mythical skill built around Shadow Vault and a proposed merger between Sim Jake and Eternal Hunger. Jake's evolution, the merger's result, the fifth minister, and the planetary trial remain unresolved.",
+        "in_short": "Jake clears the Indigo Caverns, reveals his status as the Malefic Viper's Chosen to his party, and continues refining his legacy. A coordinated alien-backed coup then isolates Earth's factions and drives him far from Haven. He befriends the evolving cosmic worm Sandy, develops new escape and combat skills, and returns by helping the Fallen King destroy the Ashen Phantom Devourer. Miyamoto forces the rival Chosen to withdraw, while William breaks from the primordial who manipulated him. The Risen leave Earth and the Holy Church begins its own retreat. Jake returns to Haven, accepts a council-based government, and wins election as World Leader with Miranda, the Fallen King, Miyamoto, and Arthur as ministers. Earth chooses to face its future Prima Guardian alone. After bringing Scarlet Allyson to the Order, Jake completes all nine legendary legacy skills. The book ends with Jake and Sim Jake training in a time-dilated chamber for a risky mythical skill and an unresolved merger with Eternal Hunger before Jake evolves.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jake Thayne became the founder of Haven, a powerful hunter and alchemist, and the concealed Chosen of Villy, the Malefic Viper. His closest allies include Haven's administrator Miranda, his hawk companion Sylphie, the warrior Carmen, and fellow Earth leaders such as Jacob, Casper, Caleb, Arnold, and the Sword Saint. Jake's connection to Villy gives him access to the Malefic Viper's legacy, but he wants his accomplishments and relationships to stand on their own. He trains at the Order of the Malefic Viper while remaining tied to the unsettled politics of Earth. Sim Jake, a distinct self created through a prior simulation, persists inside Jake's soul space with memories and abilities that differ from Jake's own. Earth remains divided among factions and powerful individuals, with no single accepted world government.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake, Reika, Irin, Bastilla, and a malefic dragonkin enter the Nine Floors of the Indigo Caverns. They complete the four mandatory floors, then continue through increasingly difficult alchemical trials. Bastilla's dismantling supplies materials, Irin supports the party, and Reika works beside Jake on the required crafts. The dragonkin keeps fighting on a flooded floor despite trauma tied to the loss of his community and becomes Jake's primary combat partner. On the ninth floor, Jake, Reika, and the dragonkin turn their shared hostility toward the dungeon's Mushroom Men into a specialized life-affinity curse. The party then confronts the C-grade Mushroom Man King and the enormous fungus sustaining it. Jake poisons the connected root system while the dragonkin kills the king. A legacy vision helps Jake complete a legendary upgrade to Touch of the Malefic Viper, but the vision exposes his hidden connection to his patron. Irin recognizes him as the Chosen, and Villy publicly confirms that he is the Malefic Viper. Jake refuses to silence his companions and instead entrusts them with the truth.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reika helps the dungeon party accept Jake's identity and preserve the ordinary friendship he wants. Viridia redirects Irin's official report so the secret does not spread through the Order. At Jake's residence, an Altmar elf exposes Nella and her half-ogre attendant as exploiters of Jake's contract-bound elf steward. Jake confronts them and offers the steward a path to freedom, but she chooses to remain with him. When the pair insult Jake and Villy, the steward requests punishment. Jake kills the attendant, while Nella is taken into Order custody under a cover story that reports both as dead. The steward rejects retaliation against their families. Afterward, Jake returns to long-term training. He gains Anomalous Soul of the Heretic Chosen, greatly expanding his mana capacity, and purchases endurance elixirs, rare alchemical materials, new legacy gloves, and a complete defensive equipment set for the steward. He begins a prolonged ritual intended to develop a bee queen. The calm ends when Jake senses an approaching crisis.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A coordinated attack destroys Earth's teleportation network and isolates its major powers. Arthur's United Cities Alliance brings in off-world allies led by a rival Chosen and begins a planetary takeover. The rival attacks Haven, manipulates Jake's emotions, and uses a prepared celestial array to throw him across the planet. Jake kills two of the rival's elite companions before being displaced and orders Miranda to evacuate Haven. The Risen face a combined Church and Alliance assault while Jacob remains unknowingly off Earth. The Fallen King is drawn into a separate fight with an ash-and-flame unique lifeform. Miranda escapes Haven with most of its important residents, and Jake begins crossing a desert with the aid of a powerful sandworm. Casper and the Risen commit to abandoning Earth for a refuge of their own. Arthur also binds the Court of Shadows into his campaign by purchasing assassinations of obstructive city leaders. Caleb accepts the Court's authority despite his personal objections, leaving the takeover supported by several distinct factions with different aims.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake and the sandworm hunt C-grade scorpions and recover fragments of a space-attuned meteorite. Jake names the worm Sandy, who consumes the restored object and evolves into a Juvenile Cosmic Genesis Worm with rapid travel and internal spatial chambers. Sandy chooses to accompany Jake after the former sandworm community rejects the new form. While William uses karmic magic to direct vengeful beasts against humans, Jake develops a way to escape confinement by sacrificing his wings to form a corrosive cocoon. A Malefic Viper vision confirms the method, and Wings of the Malefic Viper becomes legendary. Elsewhere, an outside operative tries to recruit Arnold through incentives and emotional influence, but Arnold detects the manipulation and remains neutral. Carmen and Sylphie reject their faction's passive stance and keep hunting together. Jake gains a new momentum-based class skill and coordinates a response with Miranda. At the Grand Mangrove River, Alliance pursuers surround Miranda's refugees just as an unknown humanoid C-grade snake arrives.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The unknown snake protects Miranda's group after learning they serve Jake, then shelters them in the Grand Mangrove River settlement. Miranda gradually replaces the snakes' rule by fear with practical civil order. Jake spends a month hunting C-grades with Sandy, upgrades several archery skills, and tests himself underwater against a powerful shark. He survives severe injury and turns the fight into a breakthrough for his blood-based combat. A legacy vision then shows Villy studying under an old master who shares his bloodline signature. Jake uses the lesson to upgrade Blood of the Malefic Viper, gaining stronger regeneration and a personalized healing potion. Villy identifies the teacher as the First Sage, a pre-System genius with perfect memory. That bloodline made every loss impossible to forget. At the First Sage's request, Villy killed him, preserved his records, and later received his bloodline through a System reward. Jake and Sandy meanwhile approach the Fallen King's battlefield, where the Ashen Phantom Devourer is steadily gaining the advantage.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake studies the Ashen Phantom Devourer, a unique lifeform whose ash-filled soul shape enables rapid movement and recovery. He begins creating a mass-delivery neurotoxin designed to restrict that metaphysical body while the Fallen King holds it in place. Across Earth, the Alliance consolidates political control through Court of Shadows assassinations, the Noboru Clan fractures, and Haven remains contested. William seeks a confrontation with Jake as the missing step in his evolution. Sandy receives a true blessing from the Boundless Hydra and becomes its Chosen without giving up independence. The blessing improves Sandy and grants a secret divine skill that produces a sphere Jake can use to call the worm. Because Sandy cannot descend through Earth's restricted cloud layers with him, Jake continues alone. He coordinates with Miranda, the Fallen King, and Miyamoto. Their plan is to let the Devourer believe the Fallen King is nearly defeated, then spring Jake's poison attack while Miyamoto keeps the rival Chosen away from the battlefield.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake prepares a large supply of soul-targeting poison and waits for the Ashen Phantom Devourer to attack again. The Fallen King feigns weakness, restrains the Devourer's domain, and gives Jake the opening for a vast arrow barrage. The explosions destroy much of the ash body, and Jake keeps the poison active as the unique lifeform collapses inward. The Fallen King spends his innate trump card to shatter the weakened soul and kill the Devourer, leaving himself seriously weakened. Miyamoto intercepts the rival Chosen near Haven. His water, sword, transcendence, and time techniques overcome the invader's artificial sun, after which the rival accepts the mission's failure and leaves Earth. Jake then meets William, who admits helping the invasion under his primordial master's guidance. Jake and the Fallen King expose the false ideas used to control him and press him to choose his own reason for progressing. William rejects his blessing. Jake lets him live under a firm warning never to threaten Jake's family or allies again, then departs for Haven with the weakened Fallen King.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sandy carries Jake and the Fallen King back to Haven, where Miranda has resumed leadership and Miyamoto has contained the Alliance personnel. Jake declares his intention to seek world leadership. Miranda proposes a government in which Jake serves as Earth's deterrent while up to five ministers handle administration and represent humans and monsters. The group selects Arthur as the needed human representative despite his failed coup. Arthur surrenders, accepts responsibility, and agrees to serve without abandoning his independent convictions. The Risen have moved their dungeon and surviving population to a refuge world, while the Holy Church withdraws its faithful and pressures the newly evolved Jacob to leave Earth. Jake visits his family and receives their support before returning to political preparations. Arnold remains independent and asks Jake for materials for his C-grade technology and artificial-soul constructs. At the Grand Mangrove River, Jake activates a formation that can reach the first universe. The snake who saved Miranda chooses the name Scarlet Allyson, and Jake gains a controlled route back to the Order.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scarlet accepts Jake's invitation to seek membership in the Order. Jake upgrades Sense of the Malefic Viper through a vision of Villy adapting beast alchemy to a soul-bound cauldron, reaching the D-grade profession cap. He reunites with Sylphie and meets her parents, Hawkey and Misty. At the Third World Congress, Jake openly identifies himself as the Malefic Viper's Chosen and proposes a ministerial government. He wins election as World Leader with 93 percent of the vote and appoints Miranda, the Fallen King, Miyamoto, and Arthur, leaving one beast seat vacant. The Congress then reveals Earth's final trial. A Prima Guardian and army will arrive in five years, and Earth will have another five years to defeat them before losing the key to the planetary core. Earth votes to fight without joining a planetary alliance.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake uses his new authority to permit Scarlet and other powerful beasts to enter human territory. He gathers Sandy, Sylphie, Misty, and Sylphie's father in Haven, but only Scarlet chooses to accompany him to the Order. There, Irin registers Scarlet for a membership evaluation, while Jake's elf steward continues maintaining the delayed bee-queen ritual and remains contract-bound. Jake turns to Sagacity of the Malefic Viper. A final legacy vision reveals that the First Sage helped young Villy create Sagacity as an expandable library of alchemical knowledge, but an unknown attention notices Jake within the vision and abruptly ends it. Jake upgrades Sagacity to legendary, absorbs Herbology and Toxicology into it, and improves Identify. All nine of his Malefic Viper legacy skills are now legendary. Villy provides a time-dilated chamber for Jake's last major preparation before evolution. Jake and Sim Jake begin repeated soul-space duels while working toward a mythical skill based on Shadow Vault and a risky plan to merge Sim Jake with Eternal Hunger. The merger and Jake's C-grade evolution have not yet occurred.",
+            "through": {
+              "chapter": 78
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CQYWHTCQ",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-8"
+      }
+    },
+    "the-primal-hunter-9-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jake"
+            ],
+            "description": "Haven's leader and an accomplished hunter and alchemist with a close connection to Villy.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "simulation-derived self"
+            ],
+            "description": "Jake's separate simulation-derived self within his soul space. With his temporary vessel failing and their training at its limit, he prepares to merge with Eternal Hunger.",
+            "id": "sim-jake",
+            "name": "Sim Jake",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Malefic Viper"
+            ],
+            "description": "The primordial patron who leads the Malefic Order and supports Jake's path.",
+            "id": "villy",
+            "name": "Villy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Villy's disciple and a Grand Elder of the Malefic Order. While observing Jake in the time chamber, he recognizes the exceptional concentration required to sustain Jake's long experiment.",
+            "id": "duskleaf",
+            "name": "Duskleaf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alabaster Crimson Eyes Snake"
+            ],
+            "description": "A powerful C-grade snake connected to Jake's circle.",
+            "id": "scarlet",
+            "name": "Scarlet",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's chief administrator and a leader of Haven. She handles the settlement's practical and political affairs, coordinating responses to threats while Jake focuses on combat, advancement, and alchemy.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's inventor and a specialist in advanced machinery and void-related technology.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of the Forest"
+            ],
+            "description": "A C-grade unique lifeform and combatant allied with Jake.",
+            "id": "fallen-king",
+            "name": "Fallen King",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sword Saint"
+            ],
+            "description": "The Sword Saint, a transcendent swordsman and one of Earth's foremost combatants. He follows a highly disciplined path centered on sword technique.",
+            "id": "miyamoto",
+            "name": "Miyamoto",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's hawk companion and a gifted wielder of wind magic.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Juvenile Cosmic Genesis Worm"
+            ],
+            "description": "Jake's cosmic-worm ally. Although Jake influenced an earlier transformation, Sandy retains an independent path and remains an unusual, powerful member of Earth's allied circle.",
+            "id": "sandy",
+            "name": "Sandy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of an ocean-based faction that seeks admission to Haven's protected region. It becomes the settlement council's final minister and explains that its unique origin limits its faction's role in the coming Prima Guardian conflict.",
+            "id": "sky-whale",
+            "name": "Sky Whale",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A newly hatched C-grade humanoid bee queen created by Jake's completed ritual. She has four wings and antennae and addresses Jake as her honored sire, while her identity, abilities, and allegiance remain unknown.",
+            "id": "newly-hatched-bee-queen",
+            "name": "newly hatched bee queen",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vespernat Hive Queen",
+              "true royal"
+            ],
+            "description": "A Vespernat Hive Queen and true royal born from Jake's completed ritual. She calls Jake her sire, possesses extensive inherited lineage knowledge, and regards her new life as a debt even after Jake states that she owes him no service.",
+            "id": "vesperia",
+            "name": "Vesperia",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order liaison and Humanoid Resources worker who understands its internal customs and politics. She assists Jake and his associates with enrollment, preparation, coordination, and access to the Order's services.",
+            "id": "irin",
+            "name": "Irin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly elven specialist in magical barriers. He studies Jake's stable arcane constructs, confirms that they have physical substance while remaining magical, and retains a record of the demonstration for further analysis.",
+            "id": "elderly-barrier-researcher",
+            "name": "elderly barrier researcher",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jake's contract-bound household attendant, an alchemist studying under Duskleaf. As she approaches C-grade, Jake insists that she choose a free future, leaving her to consider Order membership and what role she wants afterward.",
+            "id": "elven-household-worker",
+            "name": "elven household worker",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragonkin representative who cultivates a friendship with Jake's elven attendant while seeking information about Jake and his presumed backer.",
+            "id": "emberflight-representative",
+            "name": "Emberflight representative",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An A-grade true dragon of the Amber Flight who serves as the senior Emberflight participant in a meeting about Jake's bloodline. Her presence and authority signal that the flight considers the matter important.",
+            "id": "alba-ramaz",
+            "name": "Alba Ramaz",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A C-grade member of the Malefic Order who agrees to help Jake discourage the Emberflight's investigation. He and Jake plan to appear as equal friends at a meeting with the dragonkin flight.",
+            "id": "malefic-dragonkin",
+            "name": "malefic dragonkin",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-239 Isoptera Hive Queen blessed by the Fourth Desert Queen. She leads a local hive force and supports her guards with earth magic and healing.",
+            "id": "local-isoptera-hive-queen",
+            "name": "local Isoptera Hive Queen",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-239 defensive Isoptera variant assigned to protect the local Hive Queen among her cavern defenders.",
+            "id": "isoptera-queens-protector",
+            "name": "Isoptera Queen's Protector",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The divine patron associated with the Isoptera queens. After Jake kills one of her queens, she unsuccessfully attempts to place a divine brand and tracking mark on him.",
+            "id": "fourth-desert-queen",
+            "name": "Fourth Desert Queen",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-272 Isoptera queen carrying the Fourth Desert Queen's greater blessing. She identifies herself as the hive's true queen, claims Earth for the Endless Empire, and seals the cavern when Jake rejects her terms.",
+            "id": "deeper-isoptera-hive-queen",
+            "name": "deeper Isoptera Hive Queen",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-272 Isoptera combatant encountered beside the deeper Hive Queen in a cavern far below the surface. It is substantially stronger than when Jake encountered it earlier.",
+            "id": "isoptera-hive-king",
+            "name": "Isoptera Hive King",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the Azure flight with the Venerated Azure Dragon's blessing. Hostile toward Jake's group, he falsely claims friendship with Villy's Chosen.",
+            "id": "azure-dragonkin",
+            "name": "Azure Dragonkin",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An associate of Scarlet who accompanies the Azure Dragonkin at dinner and appears subordinate to and afraid of him.",
+            "id": "thunder-venom-adder",
+            "name": "Thunder Venom Adder",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The C-grade Chosen of the god challenging Villy. His patron presents him as Jake's coming opponent in Nevermore, shifting the divine conflict toward a public competition between their respective champions.",
+            "id": "rival-chosen",
+            "name": "rival Chosen",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An uninvited god who interrupts the Malefic Order's public ceremony and confronts Villy with an aura of equal force. His arrival turns the celebration of Villy's return into a direct divine challenge.",
+            "id": "rival-god",
+            "name": "rival god",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A primordial associated with karma whose aura halts the confrontation between Villy and the rival god. In private, he supports the rival god's effort to turn Jake against Villy and wants Villy killed.",
+            "id": "primordial-of-karma",
+            "name": "primordial of karma",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An eldritch entity who intercepts the travelers during inter-universal transit and gives Jake the bound Vision of Oris.",
+            "id": "void-god",
+            "name": "void god",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancient life-aligned god, Villy's former father-in-law, and the patriarch of a nature-communion bloodline. He brings his sheltered dryad granddaughter to be considered for Jake's final Nevermore party position.",
+            "id": "nature-attendant",
+            "name": "nature attendant",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young dryad and highly trained druid-healer who has lived a sheltered life under her grandfather's protection. Selected as Jake's fifth Nevermore member, she specializes entirely in nature magic and brings a guardian with her.",
+            "id": "dina",
+            "name": "Dina",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soul tree supported by two Ethgleam Elderbark Treants, encountered in Haven's forest during a standoff with a group of C-grade fire bears.",
+            "id": "ethgleam-mother-tree",
+            "name": "Ethgleam Mother Tree",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Jake's Earth delegation whose prior exposure to Jake's bloodline helps him withstand divine presence.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mortal Hallmaster of the Malefic Order and a late S-grade disciple of the Verdant Witches. She helps prepare the public ceremony for Jake and Vesperia.",
+            "id": "viridia",
+            "name": "Viridia",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A devoted Primordial Church sculptor who presents his life's work as a ceremonial gift honoring Jake and Villy.",
+            "id": "felix",
+            "name": "Felix",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sheltered young dryad and highly trained druid brought by her grandfather for consideration as the fifth member of Jake's Nevermore party.",
+            "id": "dryad-candidate",
+            "name": "dryad candidate",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0D6GXP9K2",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-9-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Vesperia confirms that Jake placed no binding claim on her and chooses the Endless Empire as her home. The Empire names her a future Grand Hive Queen, while she affirms Jake as permanent family and keeps a paired means of contacting him. Earth gains a controlled United Tribes presence, and Sylphie receives a protective divine feather. Miranda takes charge of contracts covering 120 million enslaved arrivals and the resulting settlement burden. Arnold receives the Automata Legion's gifted spaceship for study, while the surviving underground Isoptera hive remains a threat.\n\nDina fills the final support position beside Jake, Miyamoto, the Fallen King, and Sylphie. In Nevermore City, Jake publicly rejects the rival Chosen's proposed truce because of the attacks and manipulation on Earth. The five companions then leap into Nevermore together, beginning a potentially fifty-year C-grade run. The competition with the rival Chosen, Villy's larger conflict with the rival god and Valhall, Vesperia's future loyalties, and the limits of Jake's origin-altering ability remain unresolved.",
+        "in_short": "Jake Thayne creates Eternal Shadow by merging Sim Jake with Eternal Hunger, then completes his evolution into a C-grade human, alchemist, and hunter. After destroying the leaders of an Endless Empire Isoptera hive, he uses their cores in a ritual that unexpectedly restores Vesperia, a lost Vespernat true royal. Jake accepts public recognition as Villy's Chosen, bringing both himself and Vesperia into multiversal politics. Vesperia chooses to return freely to the Endless Empire as a future Grand Hive Queen while keeping Jake as family. Haven must still contain the surviving hive and resettle 120 million enslaved people, tasks left to Miranda and Arnold. A rival god allied with Valhall sets his own Chosen against Jake at Nevermore. Dina joins Jake, Miyamoto, the Fallen King, and Sylphie as the fifth party member. Jake rejects the rival Chosen's overture, and the completed team enters Nevermore.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jake Thayne leads Haven while pursuing his own path as a hunter and alchemist under Villy, the Malefic Viper. His allies include the administrator Miranda, inventor Arnold, wind-wielding hawk Sylphie, cosmic worm Sandy, the Fallen King, and the Sword Saint Miyamoto. Jake's bloodline and earlier interventions have contributed to unusual transformations among those around him, though they retain independent paths. He is also linked to Sim Jake, a separate counterpart within his soul space, and carries the cursed weapon Eternal Hunger. Earth continues adapting to the system while Haven prepares for future threats, including the Prima Guardian.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake and Sim Jake end decades of subjective training at practical parity. Sim Jake lets Eternal Hunger consume his failing vessel, merging his records and identity into Jake and the weapon. The result is Eternal Shadow of the Primal Hunter, a mythical skill that lets Jake manifest two responses to a situation and choose which outcome becomes his own. Jake tests it by defeating the Malefic Order's hydra image, earning an upgraded title and binding Eternal Hunger more securely to his soul.\n\nBack on Earth, Jake admits the Sky Whale's ocean faction into Haven but learns it cannot help fight the future Prima Guardian. In Haven's forest he intervenes in a standoff between fire bears and an Ethgleam Mother Tree. The tree initially offers an alliance, then attempts to place coercive soul energy in Jake and demands humans as vessels for its offspring. Jake rejects the scheme, kills the bears, the tree's two guardians, and the Mother Tree itself, and reaches level 199 in both race and class.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the peak of D-grade, Jake learns that his human race evolution has no normal quest objective. Villy finds this unprecedented and suspects Jake's bloodline and accumulated records have made him an exceptional human variant. Jake completes the final level with a long-range one-shot kill and evolves into Human C, selecting the Path of the Hunter and gaining major improvements to perception, mobility, endurance, and hunting growth.\n\nJake then chooses how his profession and class will develop. He rejects paths that would force him toward governance, religious leadership, uncontrolled transformation, beast mastery, or dependence on Eternal Hunger. He remains an alchemist by becoming a Heretic Chosen Alchemist of the Malefic Viper, permanently deepening his bond with Villy and gaining a grimoire-making skill. For his class, he selects Arcane Hunter of Horizon's Edge, preserving an independent combat path built around archery, arcane power, close fighting, and the pursuit of stronger prey. His race, profession, and class are all C-grade.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake tests Sylphie's evolved abilities in a destructive spar and confirms that her speed, wind form, offense, healing support, and survival skills qualify her for Nevermore. He returns to the Order to rebuild the bee-queen ritual for C-grade power. Duskleaf teaches him more advanced ritual principles, while Jake experiments with refining and altering cores in hopes of improving the queen's evolution.\n\nJake also confronts the uncertain future of his contract-bound elven household worker. He makes emancipation non-negotiable but assures her that freedom does not require leaving his residence or employment. They agree that she will seek Order membership before C-grade and can later remain under a voluntary arrangement. She reveals that a dragonkin woman befriended her partly to investigate Jake and his backer. Wanting to stop the intrusion without revealing his status as Villy's Chosen, Jake recruits a C-grade dragonkin ally from the Order and arranges a meeting with the interested flight.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake rejects the Emberflight's interest in his bloodline, and Villy extracts him from the meeting in a way that reinforces the impression that Jake has a powerful backer. Arnold provides Jake with an experimental nanoblade and launches an exploratory vessel into the solar system. When Jake investigates the nearby Isoptera hive for cores, he discovers that it has expanded far beyond expectations. Arnold's drones begin mapping a network that may span a continent.\n\nDeep underground, Jake kills a local queen, resists an attempted brand from the Fourth Desert Queen, and reaches the hive's true leadership. The deeper queen claims Earth for the Endless Empire and fights beside a heavily empowered Hive King. Jake survives petrification, pushes Arcane Awakening to its limit, and kills both. He escapes with their bodies and cores as thousands of C-grade Isoptera approach. Their deaths do not end the threat: dozens of lesser queens and vast competing forces remain underground. Miranda begins planning containment and elimination while Jake keeps the materials for his bee-queen ritual.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake returns to the Order and attempts to transform the slain Hive Queen's core into an evolution catalyst. After repeated failures, he concentrates the remnants of multiple queen records into the strongest core and infuses it with his own origin-related power. The process damages and exhausts him but creates a unique core tied to one hundred true royals. When added to the completed bee ritual, it produces Vesperia, a C-grade Vespernat Hive Queen and supposedly extinct true royal.\n\nVesperia possesses inherited racial knowledge, regards Jake as her sire, and considers her birth a debt, although Jake refuses to claim ownership or service. Her lineage gives her combat power and authority over wasp and bee hives across the multiverse. The Endless Empire detects the restoration and begins searching for her. Because secrecy cannot last, Vesperia accepts a binding confidentiality agreement and plans eventually to join the Empire. Jake decides to acknowledge publicly that he is Villy's Chosen and that his costly, limited ability created her. Villy schedules a major ceremony, while Vesperia declines Nevermore to pursue her hive responsibilities.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake prepares for the public reveal by replacing and upgrading much of his C-grade equipment. Irin guides him through Order markets, helps secure armor and magical wrappings, and coordinates repairs to his soulbound bow. At dinner with Scarlet, Villy exposes an arrogant dragonkin's false claim of friendship with his Chosen and leaves the offender permanently maimed after an attack. Jake and Irin later begin a consensual casual relationship, and she accepts in principle the role of his official Order liaison.\n\nJake's bow is reforged, his boots, cloak, necklace, and gloves are improved, and he acquires new alchemical and perception tools. An unexplained message appears inside his upgraded boots, suggesting unknown scrutiny. The Order then announces Villy's return ceremony, Jake's identity as the chosen, and Vesperia's restored true-royal lineage. The announcement presents Jake's transformative ritual as repeatable but costly and limited. The Automata Legion treats Vesperia as a strategic threat, the Endless Empire offers support, and Villy warns that hostile action against Jake will draw his direct retaliation.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the ceremony approaches, Jake finishes poisons and confirms that Sylphie, Miyamoto, and the Fallen King will form the core of his Nevermore team. Sandy declines to join, leaving a fifth support position open. Jake's elven household worker enters the Order and remains at his residence while considering Duskleaf's offer of formal discipleship. Miranda coordinates the Earth delegation and ceremony logistics. Elsewhere, the elf studying barriers cannot explain the recorded arcane construction and seeks help from the Altmar Empire. Before his report can depart, both its storage orb and the researcher go missing. The empty tower leaves an unresolved question about who is monitoring Jake's affinity.\n\nDuring inter-universal transit, two eldritch entities intercept the travelers. One gives Jake the dangerous Vision of Oris, a bound record that can grant perception at potentially lethal risk. The encounter incapacitates the Fallen King because of its resonance with his soul magic, though he later recovers. At the Order, Caleb notices that the household worker's old slave contract remains active. Jake locates and nullifies it, formally freeing her while she continues to stay by choice. Vesperia meets Jake's allies and spars with Miyamoto before Viridia arrives to lead the assembled group into the public ceremony.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Viridia opens the ceremony by announcing the Malefic Order's renewed expansion. Sandy is revealed as the Lord Protector's Chosen, Jake is publicly confirmed as Villy's Chosen, and Vesperia appears as the restored Vespernat true royal. Villy declares that his return is permanent and that the Order will again seek a leading multiversal position.\n\nA rival god interrupts with an aura matching Villy's and announces an alliance with Valhall that lasts until Villy dies. A stronger primordial prevents an immediate battle. The rival redirects the confrontation toward Nevermore, positioning his own C-grade Chosen as Jake's competitor. Villy later explains that the challenger gains power from legend and public belief, including the story that he might kill a primordial. The disruption was anticipated, but Villy regards allowing the rival's narrative to develop as a calculated risk. The coming contest will be fought through Nevermore rankings and political perception rather than an immediate duel, while Villy keeps his broader counterplan secret.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ceremony resumes with the major factions still present. Jake's four-person Nevermore group is presented publicly while candidates for the final position are assessed. Gifts include alchemical materials, an improved Altmar Empire signet, long-term craft instruction, a divine puzzle box, and a mythical shrine that produces rare venom. More troublingly, factions offer 120 million enslaved people. Miranda takes control of the immense transfer and settlement problem.\n\nIn a closed meeting, Vesperia speaks with representatives of three major powers: the United Tribes, the Endless Empire, and the Automata Legion. She confirms that Jake has placed no contract or restriction on her. Jake refuses any attempt to buy or compel her death and makes no promise to reproduce his limited, poorly understood transformation ability. The Automata Legion leaves him a full-sized spaceship for Arnold to study. Vesperia chooses to return to the Endless Empire, which names her a future Grand Hive Queen and gives Jake a paired contact token. She affirms Jake as permanent family despite uncertainty about any future conflict of loyalties. Sylphie receives a protective divine feather, and Jake permits a controlled United Tribes presence on Earth.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miyamoto dominates the public arena trials, showing that the available candidates cannot match the party's level. Viridia then introduces an ancient life-aligned god who is Villy's former father-in-law. He offers his granddaughter Dina, a young dryad with extensive druid training but little real combat experience. After meeting the group, Dina is accepted as the fifth member. Her nature magic supplies the healing and support the team lacked, and her guardian will accompany her under Nevermore's rules.\n\nBefore departing, Jake places the contracts for more than one hundred million incoming enslaved people under Miranda's practical control and gives the Automata Legion spaceship to Arnold for study. Haven must also manage the surviving Isoptera threat and an expected United Tribes presence while Jake is away. Jake, Miyamoto, the Fallen King, Sylphie, and Dina then leave for Nevermore. The dungeon can occupy as much as fifty subjective years during a C-grade run, making the completed party's departure a long-term commitment.",
+            "through": {
+              "chapter": 73
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake's party reaches Nevermore City and learns that scores combine individual and group performance across floors, quests, challenges, achievements, and level gains. They reject the option to skip early floors, preferring to gather points and develop teamwork. At the leaderboards, they discover that entrants from the newly integrated universe have already finished low-ranking runs and that the rival Chosen is staging an appearance in the northern arenas.\n\nJake conceals his identity and observes with Miyamoto while the Fallen King keeps Sylphie and Dina away from the rival's bloodline influence. The rival Chosen offers an alliance or mutual tolerance and presents a party of elite C-grades. Jake reveals himself and publicly rejects the offer, citing the rival's role in deaths, destruction, manipulation, and betrayal on Earth. Afterward, the Fallen King easily defeats an ordinary five-person arena team, and a brief spar confirms Miyamoto can pierce his formidable barrier. The five companions regroup, ignore further arena attention, and leap together into Nevermore's abyssal entrance, beginning their C-grade competitive run.",
+            "through": {
+              "chapter": 77
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0D6GXP9K2",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-9-a-litrpg-adventure"
+      }
+    },
+    "the-princess-bride": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young woman raised on a farm in the country of Florin who grows into the most beautiful woman in the world. In her youth she takes for granted the poor farm boy who does her bidding, and only understands that she loves him once he leaves to seek his fortune overseas. When word comes that his ship was taken and that he was killed, she resolves never to love again, and in time she consents to marry the prince who chooses her, though her heart is empty.",
+            "id": "buttercup",
+            "name": "Buttercup",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The poor farm boy who works for Buttercup's family and answers her every command with the words 'As you wish', which she comes to understand as his way of saying that he loves her. Determined to earn enough to marry her, he sails away to make his fortune in a distant land. Soon afterward comes news that his vessel was attacked at sea by a notorious pirate said to leave no survivors.",
+            "id": "westley",
+            "name": "Westley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The heir to the throne of Florin, a powerful and physically imposing man whose great passions are hunting and the pursuit of dangerous game. Obliged to take a wife, he searches his realm for a suitable bride. Beneath his royal bearing he is calculating and ruthless, and his true intentions toward the woman he selects are not what they appear.",
+            "id": "prince-humperdinck",
+            "name": "Prince Humperdinck",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A nobleman who serves as the prince's closest confidant and advisor. Cold and studious, he has a scholarly fascination with the nature of pain, which he studies deliberately. He has six fingers on one hand, a feature that sets him apart from other men. He is trusted with the prince's schemes and with his cruelest work.",
+            "id": "count-rugen",
+            "name": "Count Rugen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Spanish master of the sword and one of three outlaws hired to abduct Buttercup. As a boy he watched a six-fingered nobleman murder his father, a gifted swordmaker, and he has since devoted his life to perfecting his fencing so that one day he can find the killer and take his revenge. He is loyal, honorable in his own fashion, and given to drink when despair overtakes him.",
+            "id": "inigo-montoya",
+            "name": "Inigo Montoya",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous, immensely strong man from Turkey, gentle and good-natured despite his frightening size and his reputation as a wrestler. Slow to anger and fond of rhymes and word games, he is devoted to his friend Inigo. He is one of the trio hired to carry out the kidnapping of Buttercup.",
+            "id": "fezzik",
+            "name": "Fezzik",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hunchbacked Sicilian criminal who considers himself the most intelligent man alive and never tires of saying so. He leads the small band hired to seize Buttercup and provoke a war between kingdoms, ordering the swordsman and the giant about with open contempt. He prides himself above all on his cunning and his certainty that he can outthink any opponent.",
+            "id": "vizzini",
+            "name": "Vizzini",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A miracle worker who was dismissed from the prince's service and now lives in bitter retirement with his wife. Cantankerous and easily provoked, he is nonetheless the one person who might be able to restore a man who is only 'mostly dead'. He is sought out when Buttercup's rescuers find themselves in need of the impossible.",
+            "id": "miracle-max",
+            "name": "Miracle Max",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-princess-bride"
+      },
+      "recaps": {
+        "ending": "Westley and Buttercup are reunited and freed. The prince's plot to murder Buttercup and start a war has failed, and Humperdinck is left alive but humiliated, bound and beaten by Westley's bluff. Count Rugen is dead, killed by Inigo Montoya, who has finally completed the revenge that shaped his whole life and is now unsure what to do with himself; Westley suggests he might become the next Dread Pirate Roberts. Fezzik provides horses for their escape. Westley, still weak from his ordeal, rides away with Buttercup, Inigo, and Fezzik as pursuit gathers behind them. The narrator, keeping up the conceit that he is merely abridging an older tale, declines to promise a clean happy ending, remarking that the characters faced further hardships and that life is not always fair, and leaving their long-term fate open.",
+        "in_short": "On a farm in Florin, the beautiful Buttercup and the farm boy Westley fall in love, but Westley sails away to make his fortune and is reported killed by a fearsome pirate. Years later Buttercup, resigned to a loveless marriage with Prince Humperdinck, is kidnapped by three outlaws and rescued by a masked man in black who turns out to be Westley, alive and now living as that same pirate. Humperdinck recaptures them, and Westley is tortured to death by the sadistic Count Rugen, only to be revived by a retired miracle worker. With the swordsman Inigo and the giant Fezzik, Westley storms the castle. Inigo avenges his murdered father by killing Count Rugen, Westley defeats Humperdinck without killing him, and the four escape together, their future left deliberately uncertain by the storytelling narrator.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a farm in the country of Florin, a beautiful young woman named Buttercup takes for granted the poor farm boy Westley, who does whatever she asks and always answers, 'As you wish'. Only when he leaves to seek his fortune across the sea does she understand that they love each other. Soon afterward comes news that his ship was attacked by a pirate famous for sparing no one, and Buttercup, believing Westley dead, vows never to love again. Meanwhile the reader is introduced to Prince Humperdinck, heir to the throne of Florin, a keen hunter who must find a bride to satisfy his father and the demands of the realm.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Prince Humperdinck settles on Buttercup as his future princess. She agrees to marry him despite feeling nothing for him, resigned to a loveless match. Before the wedding she is kidnapped by three strangers working together: a boastful Sicilian mastermind named Vizzini, a huge and gentle wrestler named Fezzik, and a Spanish swordsman named Inigo Montoya who dreams of avenging his murdered father. Their plan is to kill Buttercup and leave evidence framing a neighboring kingdom, giving Humperdinck a pretext for war. As they flee by boat and then climb toward a mountain pass, they realize that a mysterious masked man dressed all in black is following them, gaining steadily, and none of them can shake him off.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The man in black overcomes each of Buttercup's captors in turn: he duels and defeats the master swordsman Inigo, wrestles down the giant Fezzik, and outwits Vizzini in a deadly contest involving poison. Left alone with Buttercup, he is at first harsh with her, but soon reveals himself to be Westley, alive after all. He had not died at the pirate's hands; instead he had taken on the identity of that very pirate, the Dread Pirate Roberts, and has come back for her. Their reunion restores Buttercup's hope, and together they try to escape Prince Humperdinck, who is close behind and determined to reclaim his bride.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fleeing through the treacherous Fire Swamp, Westley and Buttercup survive its dangers only to be caught by Prince Humperdinck. To save Westley's life, Buttercup agrees to return to the prince, but Humperdinck breaks his word and has Westley imprisoned and tortured on a cruel machine devised by Count Rugen, killing him. The swordsman Inigo and the giant Fezzik, now allies, seek out the retired Miracle Max, who revives the barely living Westley. The three storm the castle during the royal wedding. Inigo confronts Count Rugen, recognizes him as the six-fingered man who killed his father, and kills him in a duel. Westley bluffs the cowardly Humperdinck into surrender and spares his life. Buttercup is freed, and she, Westley, Inigo, and Fezzik ride off together, with the frame narrator leaving open whether their happiness truly lasted forever.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-princess-bride"
+      }
+    },
+    "the-queen-of-the-damned": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The flamboyant vampire whose modern reinvention as a rock star and public exposure of his kind set off the events of this book. Bold, defiant, and hungry for meaning, he has been lifted away by an awakened ancient being at the close of the previous book, and he finds himself caught up in her designs, thrilled and appalled by turns. His restless will and his conscience remain the story's driving force as far larger powers close in around him.",
+            "id": "lestat",
+            "name": "Lestat de Lioncourt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The primeval queen from whom all vampires descend, an Egyptian ruler of the ancient world transformed into the first vampire thousands of years ago and kept ever since in a statue-like stillness. Newly awakened after her endless silence, she is immensely powerful, serenely certain of her own divinity, and has taken Lestat to her side. Beautiful and terrible, she moves with the calm of a being who regards herself as a goddess and mortals and vampires alike as material for her will.",
+            "id": "akasha",
+            "name": "Akasha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient Roman-born vampire, roughly two thousand years old, learned and civilized, who for centuries served as the secret guardian of the primeval king and queen, keeping them hidden and safe. Wise, measured, and burdened by his long responsibility, he is one of the elders drawn into the crisis that the queen's awakening unleashes upon their kind.",
+            "id": "marius",
+            "name": "Marius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient vampire with the face of a youth, once the leader of an old Parisian coven, known from the earlier books as a figure of great age and power. In this book he is among the immortals swept up in the upheaval that follows the queen's awakening, his fate bound to that of the others of his kind.",
+            "id": "armand",
+            "name": "Armand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The reflective, guilt-haunted vampire who narrated the first book, still enduring his immortality with a mournful conscience. Known to readers from his own earlier account, he is among the vampires caught up in the gathering danger, his gentleness and doubt a quiet counterpoint to the mightier beings around him.",
+            "id": "louis",
+            "name": "Louis de Pointe du Lac",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lestat's mother, whom he transformed into a vampire in the previous book, a cool, self-sufficient immortal who long ago withdrew from ordinary human concerns to roam the wild places of the world. Detached and formidable, she returns to the unfolding crisis out of her enduring bond with her son.",
+            "id": "gabrielle",
+            "name": "Gabrielle",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young man who years earlier, as a reporter, recorded the vampire Louis's confession, an encounter that consumed his life and left him obsessed with the immortals. Since then he has become entangled with the vampire world and bound to the ancient Armand, and he is drawn into the events set off by the queen's awakening.",
+            "id": "daniel",
+            "name": "Daniel Molloy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman and member of the Talamasca, a secret order that studies the supernatural, who has a gift for sensing spirits and the dead. Sent to investigate vampire phenomena, and connected through her family to a long, mysterious lineage, she follows her research toward the immortals themselves, her ordinary life pulled steadily into their hidden world.",
+            "id": "jesse",
+            "name": "Jesse",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An immensely ancient red-haired vampire, calm, powerful, and older than almost any of her kind, who has quietly watched over her mortal descendants across thousands of years, keeping a vast record of her human family. Serene and formidable, she carries deep knowledge of the origins of the vampires, and she moves to gather the others as the awakened queen's designs threaten them all.",
+            "id": "maharet",
+            "name": "Maharet",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-queen-of-the-damned"
+      },
+      "recaps": {
+        "ending": "Akasha's plan reaches its crisis when she gathers the surviving vampires before her and demands they accept her as a goddess and help her rule a world purged of most of its men. One by one they argue against the horror of her scheme, and she threatens to annihilate them all for their defiance. At that moment the ancient twin Mekare, sister of Maharet and lost to the world for thousands of years, arrives, driven by a vow sworn in the earliest age of the vampires. Because the primal spirit that animates every vampire is rooted in Akasha, killing her would doom them all unless another host receives that force at once. Mekare destroys Akasha by taking her head, and in the same instant consumes the sacred core, so that the animating power passes into her and every vampire survives. Akasha is dead, her tyranny ended, and Mekare, mute and remote, becomes the new bearer of the vampires' life, reunited at last with her twin Maharet. The surviving immortals, Lestat among them, gather at Maharet's sanctuary to mourn, reckon with what they have witnessed, and take up their endless existence again, changed by having come so close to their extinction and their queen's terrible dream.",
+        "in_short": "Lestat's rock concert and his public exposure of the vampires rouse Akasha, the primeval queen and mother of all vampires, who has slept as a living statue for thousands of years. Awakened, she takes Lestat as her chosen consort and begins a monstrous plan to remake the world: she destroys most of her own kind and slaughters much of humanity's male population, intending to rule as a goddess over a remade, peaceful order. Across the globe the surviving vampires, among them Marius, Armand, Louis, Gabrielle, Daniel, the researcher Jesse, and ancient elders, are drawn together by dreams and by the pull of the eldest of their kind. They converge on a refuge kept by the ancient red-haired Maharet, who reveals the true origin of the vampires and the long-buried legend of her and her lost twin sister. When Akasha confronts the gathered immortals and demands they join her or die, they resist her vision. At the climax Maharet's twin, Mekare, long thought mad and lost, appears and destroys Akasha, taking into herself the primal force that keeps every vampire alive, ending the queen's reign and saving their kind.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in this series: the first book gave the vampire Louis's sorrowful account of being made by Lestat, of the doomed child-vampire Claudia, and of the Paris coven under Armand. The second book turned to Lestat himself, who woke in the modern age, became a rock star, and broke the vampires' secret while telling his origins, reaching back to eighteenth-century France and forward to the deepest mystery of his kind: that all vampires descend from a primeval Egyptian king and queen, Akasha and Enkil, kept for millennia as living statues by the ancient guardian Marius. Lestat's reckless contact with the silent queen stirred her, and his public defiance enraged other vampires who wanted him destroyed, while an unseen force began wiping out immortals across the world. That book ended as the awakened Akasha rose from her long stillness and carried Lestat away with her, her purpose unknown. This third book opens in the aftermath of that awakening, with the ancient queen loose in the world and her plans about to unfold.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-queen-of-the-damned"
+      }
+    },
+    "the-rascor-plains": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Red Listed Tomb Spark known as the Scourer. He rejects renewed Academy and House control and leads the seven-person escape party.",
+            "id": "scorio",
+            "name": "Scorio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Nightmare Lady"
+            ],
+            "description": "Scorio's formidable companion and fellow fugitive. Her clawed transformed body, bladed tail, and quick movement make her a decisive protector during the group's flight from Academy pursuers.",
+            "id": "naomi",
+            "name": "Naomi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jova"
+            ],
+            "description": "An exceptional Tomb Spark and uneasy ally of Scorio. She refuses renewed Academy and House control and joins the seven-person escape party.",
+            "id": "jova-spike",
+            "name": "Jova Spike",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Scorio's closest companions and a member of the seven-person escape party. He rejects renewed Academy and House affiliation.",
+            "id": "leonis",
+            "name": "Leonis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Scorio's closest companions and a member of the seven-person escape party leaving the Academy.",
+            "id": "lianshi",
+            "name": "Lianshi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion of Jova who takes part in the seven-person flight from the Academy.",
+            "id": "juniper",
+            "name": "Juniper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jova's butterfly-using companion and a member of the seven-person escape party.",
+            "id": "zala",
+            "name": "Zala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "House Hydra's chancellor and the principal force behind the pursuit of Scorio's group. He offers Academy placement to students who capture the fugitives and uses Bastion's instability to extend Hydra's control.",
+            "id": "praximar",
+            "name": "Praximar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "House Kraken's autocrator, who intercepts the seven fugitives, warns them about Praximar's offer to their pursuers, and renews her House's offer of support.",
+            "id": "house-kraken-autocrator",
+            "name": "House Kraken's autocrator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Red List exile who has become an ignited Great Soul and public leader of Bastion's civilian rebellion. She survives a House Hydra fire attack, shelters Scorio's group, and offers them access to underground safe houses.",
+            "id": "nissa",
+            "name": "Nissa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prominent civilian rebellion leader who carries an older grievance against Scorio. Despite that history, she grants him ten days to seek the White Queen's intervention before the uprising resumes.",
+            "id": "dola",
+            "name": "Dola",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticore Dread Blaze sent to assess and escort the seven fugitives. Her animated hair can bind opponents, form defenses, and move her through a fight, and she offers the group a provisional route out of Bastion.",
+            "id": "evelyn",
+            "name": "Evelyn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticore Dread Blaze who tests the seven prospective recruits during their journey. He can assume a durable copper form, become insubstantial copper mist, and use a shroud.",
+            "id": "manticore-copper-dread-blaze",
+            "name": "the Manticore copper Dread Blaze",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior House Kraken defender responsible for security across the farmlands. She can create a six-sword obsidian construct, raise black-glass blades, and assume a six-armed combat form against threats on the plains.",
+            "id": "house-kraken-pyre-lady",
+            "name": "House Kraken Pyre Lady",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Charnel Duchess whose preeminence covers the Fiery Shoals and much of the Rascor Plains. She destroys the fiends overwhelming Scorio's party, heals the wounded, and agrees to hear his appeal concerning Bastion.",
+            "id": "white-queen",
+            "name": "the White Queen",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A House Hydra Pyre Lady serving as a liaison at the Fiery Shoals. She approaches Scorio to assess his appeal, frames political truth as dependent on values, and warns him against trusting easy certainty.",
+            "id": "house-hydra-pyre-lady",
+            "name": "House Hydra Pyre Lady",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Blood Baron who supports the White Queen's planned transfer of authority and is intended to arbitrate the new order. His standing makes him an important military and political power beyond Bastion's four Houses.",
+            "id": "iron-tyrant",
+            "name": "the Iron Tyrant",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's Dread Blaze strategist and nominal leader. He directs long-range planning and evaluates Scorio's group through a team match.",
+            "id": "manticore-leader",
+            "name": "Manticore's leader",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Academy acquaintance of Scorio who has joined House Kraken and now wears the House's robes.",
+            "id": "ravenna-accardi",
+            "name": "Ravenna Accardi",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "House Kraken's autocrator. She intends to recruit Scorio and uses Ravenna to approach him during a House gathering.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A political figure about whom Octavia directs Ravenna to seek information from Scorio.",
+            "id": "moira",
+            "name": "Moira",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Imperial Ghost Toad"
+            ],
+            "description": "A coal-mana fiend whom Scorio previously aided. Nox recognizes Scorio's mana, regards him as a friend, and challenges Bastion's simple claim that Great Souls and fiends are natural enemies.",
+            "id": "nox",
+            "name": "Nox",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Manticore's sloop pilot and Simeon's partner.",
+            "id": "manticore-sloop-pilot",
+            "name": "the Manticore sloop pilot",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Manticore member who explains the vanished Chasm colonies and the expedition's search for an artifact.",
+            "id": "simeon",
+            "name": "Simeon",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The planner leading a small, hunted remnant of House Basilisk in Bastion's ruins. Her ability becomes more effective as a problem grows more complex, and she analyzes Scorio's account to organize a covert approach to Ravenna.",
+            "id": "former-basilisk-instructor",
+            "name": "the former Basilisk instructor",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Manticore operative working with House Kraken during the assault on the Basilisk refuge. The prison-maker creates white prisms that immobilize captives and personally seals Scorio inside one.",
+            "id": "manticore-prison-maker",
+            "name": "the Manticore prison-maker",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0C3F4PCVF",
+            "type": "community"
+          }
+        ],
+        "work": "the-rascor-plains"
+      },
+      "recaps": {
+        "ending": "Scorio escapes Praximar's prison with Nox, frees the captive House Kraken Pyre Lady and Jova, and leads a counterattack at Manticore's farewell feast. Leonis and Lianshi reject Praximar's orders despite having no memories of their earlier lives with Scorio. Manticore's leader escapes, but Scorio pursues Praximar to the Academy and kills him. The Iron Tyrant's inquiry clears Scorio and Naomi of the Celestial Coffer attack. They refuse House and military patronage and leave Bastion together, seeking the escaped Manticore leader, Last Rock's lost library, and information about the Shepherds of Goodwill. Leonis and Lianshi depart for service in the Iron Weald, Jova travels independently toward Last Rock, and Ravenna leaves to support the war against the Blood Ox. Bastion remains politically unstable after Hydra's losses and the destruction of its rebel leadership.",
+        "in_short": "Scorio and six companions flee Bastion, win a pause in its civilian uprising, and help secure reforms before joining Manticore for training in the Chasm. Manticore uses Scorio to trigger the Celestial Coffer disaster, frames him, and drops him into a gold-mana Crucible. His long imprisonment restores his fractured heart and carries him to Flame Vault. He escapes, reunites with Naomi, and returns to a Bastion ruled through Praximar's crackdown. After House Kraken captures them, Nox frees Scorio and the conspiracy is exposed. Scorio liberates Jova and the imprisoned House Kraken Pyre Lady, regains the support of reborn Leonis and Lianshi, and kills Praximar. Cleared by the Iron Tyrant, Scorio and Naomi reject every patron and leave together to hunt Manticore's escaped leader and investigate Last Rock, the Shepherds of Goodwill, and Hell's hidden order.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Scorio returned to life in Bastion as a Red Listed Great Soul and formed close bonds with Naomi, Leonis, and Lianshi. He advanced to Tomb Spark despite Praximar's attempts to control his Academy progress. Jova Spike emerged as both rival and ally, driven by her own search for power and the truth concealed by Bastion's institutions. Scorio and his companions ultimately rejected the Academy and all four Houses. Their independence left them exposed inside a city divided by House politics, poverty, and growing civilian anger.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio, Naomi, Leonis, Lianshi, Jova, Juniper, and Zala leave the Academy together, only to face students promised rewards by Praximar for their capture. Their escape crosses a city sliding into martial law. When a House Hydra enforcer burns protesters, the fugitives intervene and Scorio kills him. Nissa, now an ignited rebel leader, shelters them underground. The rebellion is ready to rise against the Houses, but Scorio argues that an open revolt will become a massacre. Dola and the other leaders grant him ten days to seek intervention from the White Queen. House Basilisk's support for Nissa complicates the rebellion's motives, while the fugitives still need a way out of Bastion. At the Flame, Evelyn tests the group and accepts them provisionally on Manticore's behalf. She will escort them toward the Fiery Shoals, where Scorio hopes to secure reforms and pursue answers kept from them by the Academy and Houses.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evelyn leads the seven fugitives out of Bastion and across the Ash Belt, rain wall, and protected farmlands. Along the way, Scorio and Jova compare their Tomb Spark abilities and begin moving from rivalry toward respect, while the remaining Emberlings train for advancement. Manticore's escorts test the group's coordination and make clear how far they remain below Dread Blaze strength. The journey grows more dangerous as powerful fiends press into settled territory. A poisonous swarm leaves much of the party incapacitated, and a second fiend attack gravely wounds Scorio and Jova. The White Queen arrives before the group is overwhelmed. She destroys the attackers, heals the wounded, and transports everyone to the Fiery Shoals. Scorio now has direct access to the regional power whose intervention he promised Bastion's rebels, but the sharp increase in fiend incursions signals a larger crisis across the Rascor Plains.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Fiery Shoals, Scorio learns how vital the protected gold Crucible and Celestial Coffer are to the region. He presents Bastion's poverty, overcrowding, and political exclusion to the White Queen's council. She announces that she will leave the Rascor Plains for deep Hell and must replace her personal rule before departing. Her plan expands the Celestial Consortium, distributes gold mana among the Houses, imposes audits and hard oaths, and makes the Iron Tyrant an arbiter. Scorio reconnects the White Queen with Nissa, Dola, and the uprising's leadership. After several days of negotiation, the Queen's Accords incorporate almost all of the civilians' demands into Bastion's charter. The political victory creates tension between Scorio and Jova. He considers the reforms meaningful, while she fears he is losing focus on advancement and hidden truths. Their disagreement remains unresolved as Manticore's leader arrives to evaluate the group.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Manticore's leader tests Scorio's companions and offers them probationary membership, but Scorio's fractured heart makes his place conditional on exceptional work. He refuses an individual offer from the Iron Tyrant because it excludes his friends. Ravenna Accardi, now oath-bound to House Kraken, is ordered to compromise and question him. She admits the assignment, and Scorio gives her information linking Praximar to stolen mana. Scorio also meets Nox, an Imperial Ghost Toad whose account challenges Bastion's teaching about fiends. The White Queen then seals the new charter by taking hard oaths from the four autocrators and leaves the region. Bastion's immediate uprising has been diverted into political reform, but its strongest outside protector is gone. Scorio and his companions depart with Manticore for the Chasm, seeking advancement, independence, and deeper answers.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Manticore flies the recruits across the Rascor Plains to a camp at the Chasm, where it seeks an artifact in the ruins of vanished colonies. Scorio's reputation earns challenges, but his damaged heart and coal-tempered body leave him far behind established fighters. Manticore prescribes a punishing purge: he and Naomi spend months breaking stone, hauling debris, and wrestling without igniting their hearts. Their friends train conventionally, and Jova reaches Flame Vault while her estrangement from Scorio deepens. Leonis and Lianshi delay committing fully to Manticore because they will not abandon Scorio and Naomi. After five months, the pair has expelled an exceptional amount of coal mana and can begin tempering anew with stronger mana. Scorio's heart still leaks badly, but he is finally ready to train toward recovery. Manticore has meanwhile located its target vault and arranged for House Kraken's Pyre Lady to help breach it.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio begins healing his fractured heart with bronze mana while Manticore retrieves the Font from the Chasm's gold level at severe cost. The artifact can draw gold mana from underground, and Manticore intends to sell it to House Kraken. Scorio is entrusted with its activation sequence and travels with the recovering House Kraken Pyre Lady to demonstrate it at the Fiery Shoals. Instead of producing a controlled supply, the Font drains the Celestial Coffer, its ship, and nearby Great Souls. The Pyre Lady accuses the ship of theft, and House Kraken attacks as House Hydra enters the conflict. Scorio tries to stop her but is overwhelmed. Evelyn reveals that she is part of the operation, seals him inside a light coffin, and casts him down the shaft beneath the fortress. The apparent accident is a coordinated betrayal, and Scorio is left immobilized in the gold-mana Crucible while armed conflict erupts above.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio remains trapped in a stasis coffin beneath the Crucible for an unknown span, unable to move or learn what happened after the Coffer attack. Isolation nearly destroys his mind. When a gold saurian cracks the coffin, lethal mana begins entering it. Scorio adapts his training technique to pass the excess through his heart and into nearby fiends. The sustained flow repairs his fractures, enlarges and completes his heart, and tempers his body in gold. Once the coffin fails, he survives the Crucible's hostile creatures and the disorienting effects of gold mana. Reflexive ignition opens his third trial, where he confronts a former life's decision between political advantage and punitive justice. He completes the trial and reaches Flame Vault. His transformed body gains wings, his shroud and command aura become far stronger, and his perfected heart can sustain ignition from ambient mana. Still unaware of events above, he begins climbing out to find his friends and confront those responsible.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio escapes into a House Hydra facility and learns that more than a year has passed. Manticore has prospered, Praximar has risen, and Scorio is believed dead. Acting on reports that Naomi, Leonis, and Lianshi were killed, he accepts covert help from the House Hydra Pyre Lady and kills Evelyn. He then travels to the Chasm, where graves bearing his friends' names appear to confirm the loss. An attempt to kill another Manticore Dread Blaze nearly ends with Scorio's death, but Naomi emerges from the Chasm and saves him. She survived by advancing to Tomb Spark through silver mana and developing shadow movement, darkness, and new bladed-tail powers. Together they kill the Dread Blaze and reconcile after each had believed the other dead. Naomi confirms that the earlier Dread Blaze killed Leonis while she and Lianshi were forced to watch. Reunited, Scorio and Naomi commit to destroying Manticore's remaining leaders and eventually killing Praximar.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio and Naomi attack Manticore's floating island, but its leader escapes to Bastion with a teleporter. Jova defends him, saying he promised the answers she wanted. Scorio later catches her during a battle in the rain wall and saves her from falling, but she breaks away without resolving their conflict. Scorio and Naomi return secretly to Bastion and find House Hydra openly terrorizing civilians. The rebellion has been crushed, Dola is dead, and the public has been taught that Scorio caused the Celestial Coffer disaster. Nissa admits that she knew some plot against him was coming but failed to warn him. She explains that Praximar used a loophole in the Queen's Accords to attack House Kraken, execute rebel leaders, and destroy or absorb House Basilisk. Nissa now serves a small surviving Basilisk cell and offers Scorio a route to its hidden leader.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The former Basilisk instructor studies Scorio's account and identifies Ravenna as the safest route to allies, although she expects House Kraken to set a trap. The attempted contact ends with Kraken and Manticore forces overrunning the Basilisk refuge. Ravenna participates in the ambush, Octavia turns public feeling against Scorio, and Manticore's prison-maker seals him in a white prism. Leonis and Lianshi are revealed alive after rebirth, now without memories of Scorio and under Praximar's authority. In the deepest Hydra dungeon, Nox answers Scorio's signal, dissolves the prism, and helps him free the captive House Kraken Pyre Lady. She reveals that Manticore used the Font to drain the Coffer, imprisoned her, and framed both Kraken and Scorio. The three kill the prison-maker and Simeon, then free Jova from another prism. Jova realizes that Manticore deceived her and joins the counterattack. Naomi survives but has lost the use of her legs to a mana-cutting wound. The reunited group enters Praximar's farewell feast to confront Hydra and Manticore openly.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The captive Pyre Lady's appearance turns House Kraken against Praximar, and the farewell feast erupts into battle. Manticore's leader flees. Zala joins Scorio after revealing that Manticore also imprisoned her, while Leonis and Lianshi reject Praximar's control despite lacking their former memories. Scorio pursues Praximar to the Academy. By continuously absorbing iron mana, he outlasts the chancellor's stronger attacks and kills him. A damaged book in Praximar's study points toward the Shepherds of Goodwill and a complete record in Last Rock's lost library. The Iron Tyrant investigates the conspiracy and clears Scorio and Naomi of the Coffer attack and related killings. They refuse every new affiliation and ask Bastion's rulers to honor civilian protections. Leonis and Lianshi choose service in the Iron Weald, Jova heads independently toward Last Rock, and Ravenna leaves for the war against the Blood Ox. Scorio and Naomi depart together, planning to hunt Manticore's escaped leader, investigate Last Rock and Hell's hidden order, and continue advancing toward Dread Blaze.",
+            "through": {
+              "chapter": 69
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0C3F4PCVF",
+            "type": "community"
+          }
+        ],
+        "work": "the-rascor-plains"
+      }
+    },
+    "the-red-pyramid": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A serious, well-mannered teenage boy who has spent his life traveling the world with his father, an Egyptologist, living out of a suitcase and soaking up history. Careful, studious, and eager to please, he feels the strain of never having a real home and of a distant relationship with his younger sister, who was raised apart from him. Thoughtful and observant, he narrates half of the story and is thrust, unprepared, into a world of ancient Egyptian magic and gods.",
+            "id": "carter-kane",
+            "name": "Carter Kane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Carter's younger sister, raised by their grandparents in London and used to a settled life and her own friends. Bold, sarcastic, and quick to speak her mind, she resents only seeing her father and brother a couple of times a year. Independent and stubborn, she narrates the other half of the story and, like her brother, is pulled abruptly into a hidden world of Egyptian magic she never knew existed.",
+            "id": "sadie-kane",
+            "name": "Sadie Kane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Dr. Julius Kane"
+            ],
+            "description": "The children's father, a brilliant and driven Egyptologist grieving the death of their mother years earlier. Warm but secretive, he gathers his family for a rare visit and takes them to a museum, where he attempts a dangerous private ritual that he refuses to explain. His actions there set the whole story in motion and place him at the center of its mysteries.",
+            "id": "julius-kane",
+            "name": "Julius Kane",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The children's uncle, a poised, impeccably dressed man who appears after their father's ritual goes wrong and spirits them away to a hidden mansion in Brooklyn. Calm, commanding, and clearly versed in secrets the children do not understand, he begins to reveal that their family has an ancient and dangerous heritage, though he holds back much of what he knows.",
+            "id": "amos-kane",
+            "name": "Amos Kane",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient Egyptian god of chaos, storms, and the desert, unleashed by the ritual at the museum. Fiery, cruel, and cunning, he seals the children's father away and sets out to use his power for destruction on a catastrophic scale. He becomes the force the Kanes must race to stop before his plans come to fruition.",
+            "id": "set",
+            "name": "Set",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Egyptian cat goddess, who had been living quietly in the guise of the family's house cat, watching over Sadie. Playful, fierce, and fiercely protective, she reveals her true nature to help defend the children and guide them through the dangers of the awakening gods. Loyal and quick to fight, she becomes their guardian and companion.",
+            "id": "bast",
+            "name": "Bast",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The falcon-headed Egyptian god of kingship and war, an ancient warrior spirit who becomes linked to Carter, lending him strength and counsel. Proud, forceful, and hungry to reclaim a throne, Horus urges bold action against Set, and Carter must learn to draw on the god's power without being overwhelmed by his will.",
+            "id": "horus",
+            "name": "Horus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Egyptian goddess of magic, whose power becomes bound to Sadie. Clever and formidable, versed in secret names and potent spells, she offers Sadie extraordinary magical ability and urges her against Set. Sadie must learn to wield the goddess's power while resisting the danger of losing herself to Isis's ambitions.",
+            "id": "isis",
+            "name": "Isis",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, disciplined magician of the House of Life, the ancient order that polices Egyptian magic. A gifted fire-caster loyal to her superiors, she first crosses the Kanes as an enforcer of the order's rules, which forbid the path they are taking. Serious and dutiful, she becomes an uneasy ally as their goals begin to align against a common danger.",
+            "id": "zia-rashid",
+            "name": "Zia Rashid",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Egyptian god of funerals and the dead, who appears to Sadie as a strikingly ordinary-looking young man rather than a fearsome figure. Solemn and knowledgeable about the paths of the dead and the Duat, the underworld realm, he offers cryptic help and guidance as the Kanes seek what they need to challenge Set.",
+            "id": "anubis",
+            "name": "Anubis",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-red-pyramid"
+      },
+      "recaps": {
+        "ending": "The Kanes reach Set's red pyramid rising over Phoenix, where the god of chaos means to release enough destructive power to level much of North America on his day of ascendancy. Carter, channeling the war god Horus, and Sadie, channeling the magic goddess Isis, lead the fight, and rather than destroy Set, they force him down by learning and speaking his secret name, binding him to their will. In the process they discover that an even greater danger stands behind Set: Apophis, the ancient serpent of Chaos, whom even the gods fear, and who is straining to break free and swallow the world. The children's father, Julius Kane, does not return to them as before; instead he becomes the host of Osiris, the lord of the dead, taking a throne in the underworld and passing on a legacy to his children. Carter and Sadie also learn that the young magician Zia they met was a magical duplicate, and that the true Zia lies hidden elsewhere. Choosing the forbidden path of the gods over the rules of the House of Life, the siblings return to the Brooklyn mansion and resolve to seek out and train other descendants of the pharaohs, building a new house of magic to prepare for the rise of Apophis.",
+        "in_short": "Carter and Sadie Kane, siblings raised apart, are reunited when their Egyptologist father performs a secret ritual at a London museum that goes disastrously wrong: he unleashes five ancient Egyptian gods and is imprisoned by Set, the god of chaos. Their uncle Amos takes them to a hidden mansion in Brooklyn, where they learn their family descends from the pharaohs and can host the power of gods. Carter becomes linked to Horus, the war god, and Sadie to Isis, the goddess of magic. Hunted by both Set's forces and the suspicious magicians of the House of Life, and aided by the cat goddess Bast and other allies, they race across the world to stop Set, who is building a great red pyramid in the American desert to unleash destruction on his day of power. At Phoenix they confront and overpower Set, but learn a greater enemy, the chaos serpent Apophis, looms behind him. Their father takes on the role of Osiris, lord of the dead, and the siblings return to Brooklyn to begin training other young descendants of the pharaohs, knowing far worse is coming.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Carter Kane has spent his childhood traveling the world with his father, a renowned Egyptologist, rarely staying anywhere long. His younger sister, Sadie, was raised separately by their grandparents in London and sees her father and brother only a couple of times a year. Their mother died years earlier under circumstances the children do not fully understand. As the story begins, the family comes together for a rare visit, with old tension between the siblings and a sense that their father is preoccupied with some private purpose he will not share.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a London museum, the children's father performs a secret ritual that goes catastrophically wrong, unleashing ancient Egyptian powers and causing him to vanish, sealed away by a dangerous, fiery god. Their uncle Amos appears and hurries them to a hidden mansion in Brooklyn, where they begin to learn that their family descends from the magicians of ancient Egypt and that the old gods are real and now loose in the world. The family cat proves to be far more than an ordinary pet, revealing herself as a protective goddess, and the siblings, frightened and out of their depth, start to grasp that they have inherited strange and dangerous gifts.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Kanes come to understand that they are hosting the power of Egyptian gods, Carter linked to the warrior Horus and Sadie to the magician Isis, and that the god of chaos who imprisoned their father intends to unleash a catastrophe. Pursued by that god's servants and distrusted by the House of Life, the ancient order of magicians who forbid the path the children are taking, they travel by magic across the world, gaining allies and learning to use their new abilities. A young enforcer of the House of Life crosses their path, and the siblings begin to piece together what they will need to stand against their enemy before his deadline arrives.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children learn that the chaos god is raising a great red pyramid in the American desert, a monument meant to release destructive power on the day his strength peaks, threatening to devastate a vast region. Racing to reach Phoenix in time, the Kanes gather the artifacts and allies they need and press through mounting dangers, suffering losses along the way. Torn between the strict rules of the House of Life and the risky power of the gods within them, Carter and Sadie commit to the path of the gods and drive toward a final confrontation with the enemy who took their father.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-red-pyramid"
+      }
+    },
+    "the-reptile-room": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair with a ribbon when she concentrates and builds clever devices from odd materials. After the fire that killed her parents and a narrow escape from the greedy Count Olaf, she is the resourceful eldest guardian of her younger siblings as they are moved to a new home.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The bespectacled middle Baudelaire, twelve years old, who reads constantly and retains almost everything he learns. His knowledge repeatedly helps the children survive. Having already outwitted Count Olaf once, he remains watchful for the villain's return and devoted to protecting his sisters.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The infant Baudelaire, who communicates in short exclamations her siblings interpret and whose four large, sharp teeth let her bite through almost anything. Small but brave, she does her part to help her brother and sister in the family's continuing troubles.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The cruel, fortune-hungry actor who was the children's first guardian and tried to steal their inheritance before being exposed and fleeing. Recognizable by his single long eyebrow and the eye tattooed on his ankle, he is a skilled disguiser who has sworn to pursue the Baudelaires until he gets their money, and the children fear he may reappear at any time.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The chronically coughing banker at Mulctuary Money Management who manages the Baudelaire fortune and keeps arranging where the orphans will live. Well-meaning but obtuse, he trusts appearances far too easily and is slow to believe the children when they warn him of danger.",
+            "id": "mr-poe",
+            "name": "Mr. Poe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Uncle Monty"
+            ],
+            "description": "A cheerful, world-renowned herpetologist and a distant relative who becomes the children's new guardian. He keeps an enormous collection of snakes and reptiles in a glass-walled Reptile Room and is planning a scientific expedition to Peru. Warm, generous, and delighted to have the children, he treats them with the kindness they have been missing and makes them feel truly welcome.",
+            "id": "montgomery-montgomery",
+            "name": "Dr. Montgomery Montgomery",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A menacing, shabbily disguised man who arrives to work as Uncle Monty's new laboratory assistant, replacing a previous helper. Rude to the children, oddly greedy, and far too interested in Monty's plans, possessions, and travel arrangements, he alarms the Baudelaires the moment he appears in the household.",
+            "id": "stephano",
+            "name": "Stephano",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-reptile-room"
+      },
+      "recaps": {
+        "ending": "The Baudelaires expose Stephano as Count Olaf and prove that he murdered Uncle Monty, not the Incredibly Deadly Viper, which turns out to be a friendly, harmless creature despite its frightening name. They demonstrate that Olaf injected Monty with venom from another snake to fake an accidental death and clear the viper's name before Mr. Poe and the authorities. But at the moment of exposure Olaf and an accomplice escape once more, slipping away before they can be arrested, and Olaf renews his threat to keep chasing the children and their money. Uncle Monty, who had been a genuinely loving guardian, is dead, and his planned expedition to Peru will never happen. Grieving and shaken, the orphans are returned to Mr. Poe's charge to be placed with yet another relative, and Count Olaf remains at large, certain to reappear in the children's lives.",
+        "in_short": "After escaping Count Olaf, the Baudelaire orphans are placed with Uncle Monty, a kind herpetologist who fills a great Reptile Room with snakes and plans to take the children on an expedition to Peru. Their happiness ends when a sinister new assistant, Stephano, joins the household, and the children recognize him as Count Olaf in disguise, come to seize their fortune. Before they can convince anyone, Monty is found dead, and Stephano claims one of Monty's snakes, the Incredibly Deadly Viper, killed him. The children know the viper is actually gentle and harmless and that Olaf murdered Monty with venom to make it look like an accident. Working to expose him, they prove the snake is safe and strip away Stephano's disguise in front of Mr. Poe, revealing Count Olaf and his crime. Yet Olaf escapes capture once again, and the children, having lost another beloved guardian, are left in Poe's care to be sent somewhere new.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The three Baudelaire children, teenage inventor Violet, bookish Klaus, and biting baby Sunny, were orphaned when a fire destroyed their home and killed their parents, leaving them a large fortune held in trust. The banker Mr. Poe placed them with a distant relative, the cruel actor Count Olaf, who cared only for their money. Olaf schemed to seize the inheritance by tricking Violet into a legally binding marriage during one of his plays, and even kidnapped baby Sunny to force her cooperation. Violet foiled the plan by signing the marriage document with the wrong hand, so a judge ruled it invalid, but Olaf, marked by his single eyebrow and the eye tattooed on his ankle, escaped before he could be arrested. He vowed to pursue the children until he took their fortune, and Mr. Poe removed the orphans from his care to find them a new home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr. Poe brings the Baudelaires to their new guardian, Dr. Montgomery Montgomery, a famous and delightfully kind herpetologist whom they come to call Uncle Monty. His country home holds an enormous Reptile Room full of snakes and other creatures, and he is preparing an expedition to Peru on which he plans to bring the children. For the first time since the fire, the orphans feel safe, welcomed, and genuinely happy. Their contentment is disturbed by the arrival of a rude, greedy new laboratory assistant who calls himself Stephano and has come to replace Monty's previous helper. Stephano is unpleasant to the children, unusually curious about Monty's plans and belongings, and clearly not the scientist he pretends to be, and his presence fills the Baudelaires with a growing dread that their troubles have followed them to this new home.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children soon recognize Stephano as Count Olaf in disguise, betrayed by his single eyebrow and the eye tattooed on his ankle, and understand that he has come to steal their fortune again. Olaf, as Stephano, threatens them privately and makes clear he intends to use the trip abroad to get them alone and gain control of their money. The Baudelaires desperately try to warn Uncle Monty and to get word to Mr. Poe, but Olaf cleverly blocks their efforts and twists the situation so the adults do not grasp the danger. Monty, misreading the tension, believes Stephano is a spy from a rival herpetological society rather than a murderer, and reassures the children that he has taken care of the matter. With the departure for Peru looming, the orphans are left frightened and unable to convince anyone of who Stephano really is.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The situation turns tragic when Uncle Monty is discovered dead, with two puncture marks on his face. Stephano immediately claims that one of Monty's own snakes, the Incredibly Deadly Viper, escaped and bit him, and he uses the supposed accident as an excuse to whisk the children away toward Peru to carry out his scheme. The Baudelaires, however, know that the Incredibly Deadly Viper, despite its terrifying name, is in fact a gentle and harmless creature that could not have killed anyone. Certain that Stephano murdered their beloved guardian and disguised it as a snakebite, they refuse to go quietly and set out to gather proof of both the murder and Stephano's true identity before Mr. Poe and the doctor investigating the death can be fooled into letting Olaf take them.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children expose the truth: they demonstrate that the friendly Incredibly Deadly Viper is harmless and could not have killed Monty, and reveal that the venom used to murder him came from another of Monty's snakes, deliberately administered by Stephano. Peeling away his disguise in front of Mr. Poe, they show that Stephano is Count Olaf and that he committed the murder to get at their fortune. Yet even caught red-handed, Olaf manages to escape with an accomplice before he can be seized, vanishing once again and repeating his threat to keep hunting the children. Uncle Monty, a rare loving guardian, is dead, and his Peru expedition is over before it began. Grieving and unsettled, the orphans are placed back in Mr. Poe's care to be sent to a new relative, while Count Olaf remains free to trouble them another day.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-reptile-room"
+      }
+    }
+  }
+}

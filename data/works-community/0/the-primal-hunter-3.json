@@ -1,0 +1,1512 @@
+{
+  "entries": {
+    "the-primal-hunter-3": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jake"
+            ],
+            "description": "A hunter, archer, and alchemist linked to the Malefic Viper. Jake hunts in the upper atmosphere with a wind hawk while his primordial patron watches his progress and considers him an unusually promising ally.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Villy"
+            ],
+            "description": "A primordial god, Jake's patron, and the source of his alchemical legacy. He begins rebuilding the Malefic Order, recalls former members to leadership, and treats Jake as a friend instead of an ordinary subordinate.",
+            "id": "malefic-viper",
+            "name": "Malefic Viper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wind-manipulating hawk who hunts beside Jake and corrects his aerial movement. Jake gives him the name Hawkie after their partnership carries them into battles against the cloud continent's elementals.",
+            "id": "hawkie",
+            "name": "Hawkie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miranda"
+            ],
+            "description": "The Principal City Lord managing a tiny pylon settlement for its absent, undisclosed owner. She studies the settlement interface, plans for future residents, and worries that its four occupants cannot withstand a stronger group alone.",
+            "id": "miranda-wells",
+            "name": "Miranda Wells",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the four original residents of the hidden pylon settlement. He belongs to Miranda's small group and helps maintain the foothold while its owner is away.",
+            "id": "hank",
+            "name": "Hank",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the hidden settlement's original residents and Hank's daughter. She is part of Miranda's small group holding the valley in its owner's absence.",
+            "id": "louise",
+            "name": "Louise",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A space and kinetic caster leading a displaced five-person team. Repeated long-distance escapes have brought his group to the valley, where he asks Miranda for temporary refuge and possible cooperation.",
+            "id": "neil",
+            "name": "Neil",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The archer and scout in Neil's team. She enters the valley ahead of her companions to examine the settlement before the stronger visiting party approaches Miranda's group.",
+            "id": "eleanor",
+            "name": "Eleanor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Neil's defender and blacksmith. She arrives with his displaced team while Silas continues treating a curse-related wound that has resisted a quick recovery.",
+            "id": "christen",
+            "name": "Christen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The healer and lie detector in Neil's five-person team. He treats Christen's lingering wound and helps the visitors test what Miranda's group says about the valley and its unseen owner.",
+            "id": "silas",
+            "name": "Silas",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A magic-swordsman hybrid and one of Neil's long-standing companions. He reaches the valley with the rest of the displaced party after their repeated spatial escapes.",
+            "id": "levi",
+            "name": "Levi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Neil's cousin, a rival inheritor of a powerful space-mage path, and leader of the force pursuing his team. She can track Neil through his inherited class and the legendary spatial orb he won.",
+            "id": "abby",
+            "name": "Abby",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Abby's father and a manipulative leader among the forces besieging the lodge. He tries to pressure Miranda into surrender after the defenders retreat behind overlapping barriers.",
+            "id": "donald",
+            "name": "Donald",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The god who rules the Brimstone Conglomerate and rejects the returning Malefic Order's ultimatum. The Malefic Viper responds by entering his divine realm.",
+            "id": "brimstone-hegemon",
+            "name": "Brimstone Hegemon",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Augur of Hope who directs a coordinated assault on a pylon defender. His class prevents him from joining the battle directly, so he guides the rituals, containment, ranged attacks, and explosives that secure victory.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's brother and the principal authority within Earth's Court of Shadows. He directs his faction's prolonged hunt for a pylon defender while enduring the mental pressure of a dangerous darkness-and-lightning legacy.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The god connected to Caleb's dangerous legacy. Umbra directed Caleb to accept the darkness-and-lightning power now used by the Court of Shadows.",
+            "id": "umbra",
+            "name": "Umbra",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mystsong Hawk"
+            ],
+            "description": "A D-grade Mystsong Hawk, Hawkie's mate, and guardian of their egg. Jake names her Mystie as the hawks prepare a records-enhancing incubation ritual and ask him to contribute the Storm Elemental's orb.",
+            "id": "mystie",
+            "name": "Mystie",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leader at a death-affinity pylon settlement. He prepares a ritual intended to let living people join the undead, but refuses to regard his deceased girlfriend Lyra as a resource to be spent.",
+            "id": "casper",
+            "name": "Casper",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Casper's deceased girlfriend, now a Blight Wraith bound to him through a legendary locket. Others see her as an extension of Casper's power, an interpretation he firmly rejects.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Casper's co-operator in preparing a large underground ritual for living people who wish to become undead. She urges him to treat Lyra's condition as a usable advantage.",
+            "id": "priscilla",
+            "name": "Priscilla",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miranda's assistant and a member of the delegation sent to contact the nearby fort. She travels beside Miranda as Jake's settlement begins negotiating from a position of superior force.",
+            "id": "lillian",
+            "name": "Lillian",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-49 leader of a sixteen-person caravan newly accepted into the settlement. He joins Miranda's party on its first direct approach to the nearby fort.",
+            "id": "mikkel",
+            "name": "Mikkel",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The suspicious leader of a nearby fort. He initially keeps Miranda's delegation at a distance because he fears that negotiation skills could influence him.",
+            "id": "phillip",
+            "name": "Phillip",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sapient D-grade bovine controller holding human captives under mental domination. It engineered repeated herd attacks on the fort to strengthen both the human defenders and a future D-grade herd leader.",
+            "id": "minotaur-mindchief",
+            "name": "Minotaur Mindchief",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The newly hatched daughter of Hawkie and Mystie. The female chick begins gaining levels almost immediately while her parents and Jake share in her early care.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A regenerative pugilist whose power rises as her health falls. She returns to defeat the Slothful Warden, the final boss she failed to reach during her tutorial, and dedicates the victory to Valhall.",
+            "id": "carmen",
+            "name": "Carmen",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An underground fungal creature that Jake identifies as the target of his specialized fungicide work.",
+            "id": "indigo-fungus-mycorrhiza",
+            "name": "Indigo Fungus Mycorrhiza",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A level-62 preacher leading roughly four hundred followers. He seeks a meeting with Haven's owner and presses Miranda for permission to establish a major temple in the growing settlement.",
+            "id": "kenneth",
+            "name": "Kenneth",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Three allied gods affiliated with the Malefic Viper. They invite Miranda to their realm and offer her a blessing because of her service as Jake's city lord.",
+            "id": "ladies-of-the-verdant-lagoon",
+            "name": "Ladies of the Verdant Lagoon",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven sculptor and former combat fire mage who now shapes stone, metal, and glass through craftwork. He accepts a confidential city-office audition to produce statues for a temple under construction.",
+            "id": "felix",
+            "name": "Felix",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jacob's standing guardian at a Sanct Domo leadership meeting. He remains close while the noncombatant Augur directs the immense pylon city's affairs.",
+            "id": "bertram",
+            "name": "Bertram",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed wind-manipulating hawk who hunts beside Jake and helps him improve his movement in the air.",
+            "id": "wind-hawk",
+            "name": "Wind Hawk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the hidden settlement's four original residents and Hank's son. He helps maintain the small foothold while its owner is absent.",
+            "id": "mark",
+            "name": "Mark",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving follower of Abby and Donald who reports that Donald murdered his sister, helping Jake assess the pair's treatment of their own people.",
+            "id": "chris",
+            "name": "Chris",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A D-grade Mystsong Hawk guarding an egg while her mate gathers resources for its incubation formation.",
+            "id": "mystsong-hawk",
+            "name": "Mystsong Hawk",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven craftsperson who makes the eleven timed injectors commissioned for Jake's prepared operation against the underground fungus.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0B6JNZTBN",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-3"
+      },
+      "recaps": {
+        "ending": "Haven is a growing pylon city governed by Miranda under Jake's final authority. Phillip maintains the old fort as an allied outpost, and Neil's teleportation circle carries goods between the two settlements. Hawkie, Mystie, and Sylphie remain powerful resident allies. The Minotaur Mindchief is dead, its captives are free, and its engineered herd attacks have ended. The Indigo Fungus Mycorrhiza is also dead, leaving valuable materials and the locked Under Growth of the Deep Dwellers dungeon.\n\nJake finishes all three D-grade transitions as a Human D, an Avaricious Arcane Hunter, and a Heretic Chosen Alchemist of the Malefic Viper. His blessing is now mutually binding until death or his ascension, although he still rejects championhood and religious subservience. His first legacy experience upgrades Palette of the Malefic Viper to legendary, and he begins refining the fungus life core. Jacob orders Sanct Domo not to interfere with Haven, while Caleb's Court of Shadows and Casper's death-affinity settlement remain active powers. The First World Congress is about five and a half days away when Jake postpones the nearby dungeon and heads into the deeper forest.",
+        "in_short": "Jake Thayne strengthens his archery, mana control, and alchemy while his hidden settlement grows into Haven under Miranda Wells. He kills Abby and Donald after their siege, helps Hawkie and Mystie complete their egg ritual, and gains Sylphie as a young companion. At the nearby fort, Jake discovers that the Minotaur Mindchief engineered recurring herd attacks and kills it, freeing its captives. The fort then becomes Haven's allied outpost. Jake develops a covert fungicide and destroys the Indigo Fungus Mycorrhiza, exposing an unopened D-grade dungeon. He completes a perfect Human D evolution, chooses Avaricious Arcane Hunter, and becomes the Malefic Viper's heretic chosen rather than his champion. A legacy experience reveals the Viper's past as the Wyvern of the Desolates and upgrades Jake's Palette of the Malefic Viper to legendary. With the First World Congress days away, Jake leaves Hawkie caring for Sylphie and explores the deeper forest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Jake Thayne enters this volume as a hunter and alchemist allied with the Malefic Viper, who is both his patron and his friend. Jacob and Casper remain important figures following separate paths. Jake already relies on archery, poison, Powershot, Infused Powershot, and Venomfang as he continues growing stronger after the events of the earlier volumes.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake hunts across a high-altitude cloud continent with a wind hawk he names Hawkie. After discovering that ordinary arrows and poison perform poorly against semi-intangible Cloud Elementals, he learns to create explosive Mana Bolts and later combines that structure with his arrows. Their repeated hunts raise both partners' levels, though they avoid two D-grade powers near the continent's great lightning tree.\n\nElsewhere, the Malefic Viper begins rebuilding his order. He recalls the three sisters of the Verdant Lagoon, places them in leadership, and plans to recruit Jake into the order's academy while keeping his identity secret.\n\nAt the hidden pylon settlement, Miranda Wells studies her City Lord authority. Only four residents are registered, the city remains undeveloped, and Jake is its absent owner. Miranda learns how ownership can be challenged but initially refuses to begin such a claim. Jake then receives notice that she has started a thirty-day contest for the pylon. Believing the residents may have betrayed him, he abandons the cloud continent and races back toward the valley.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Neil arrives with Eleanor, Christen, Silas, and Levi, a stronger five-person team fleeing Neil's cousin Abby. Neil inherited a space-mage path and won a legendary spatial orb, prompting Abby and her followers to hunt his party. Miranda grants the visitors temporary refuge, and both groups prepare the lodge for attack.\n\nAbby arrives with more than a hundred people and rejects the settlement's claim to the land. Her assault forces the defenders behind paired mana and spatial barriers, while Levi suffers a devastating injury. With the barriers failing, Miranda initiates a pylon contest solely to alert the absent owner. Jake returns in a rage but listens to her explanation before turning on the attackers. He kills Donald and Abby after learning that their rule relied on coercion, abuse, and murder.\n\nMiranda surrenders the ownership contest and remains City Lord. Jake recognizes that his bloodline may amplify perceived betrayal into dangerous loss of control. The surviving followers are registered as citizens, and Neil's entire team chooses to stay. Jake leaves administration to Miranda, infrastructure to Hank, and local defense to Neil's party whenever he is away.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake returns to Hawkie and the cloud islands, refining both Mana Bolt and his archery. At class level ninety he chooses Arrow of the Ambitious Hunter, a costly prepared attack that adapts itself to a specific envisioned target. He proves it against both physical and elemental enemies, then kills the D-grade Thunder Rock in a solo fight. The victory shows him that some D-grades are already within his reach.\n\nThe Malefic Viper enters the Brimstone Hegemon's realm after the Hegemon refuses the Malefic Order's demand. He overcomes the Hegemon and emerges after the realm is shattered, then clashes with an unnamed god. They agree that their chosen representatives will meet in a future proxy conflict.\n\nCaleb, Jake's brother, leads the Court of Shadows in claiming Earth's sixth pylon while carrying a dangerous legacy connected to Umbra. Jacob separately directs a successful pylon battle despite a class that prevents him from fighting personally.\n\nHawkie introduces Jake to his D-grade mate and their egg, which rests within a resource-intensive formation. Jake agrees to hunt the D-grade Storm Elemental whose orb the hawks need. From more than 175 kilometers away, he kills it through repeated target-specific arrows, then recovers its orb from scavenging birds. Meanwhile, Miranda's settlement grows through former members of Abby's force and postpones contact with a much larger nearby fort until Jake can approve the approach.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake gives the Storm Elemental's orb to Hawkie's mate, whom he names Mystie, and creates another rare orb from the Thunder Rock's remains. The hawks use both resources in their egg ritual, after which they move their nest to Jake's protected valley. Miranda remains in charge of expansion and receives permission to contact the nearby fort.\n\nCasper, meanwhile, helps govern a death-affinity pylon settlement of nearly ten thousand undead and others. With Lyra and Priscilla, he prepares a ritual intended to let living people become undead, although he refuses to treat Lyra as an expendable extension of his own power.\n\nMiranda's delegation reaches the fort with Jake, Mystie, Neil's team, Lillian, and Mikkel. Phillip distrusts their offer of refuge and initially keeps negotiations at a distance. The fort holds thousands in poor conditions but possesses enchanted firearms, drones, communications equipment, and a capable smithy. During the talks, another large bovine stampede attacks. The fort's defenders finish the attack without Jake intervening. The herd leader's self-destructive behavior and the pattern of repeated assaults lead Jake to suspect that an unknown force may be directing the herds.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake tracks the source of the fort's repeated attacks and finds the Minotaur Mindchief, a D-grade controller holding about a hundred humans captive. The creature has been sacrificing bovines to strengthen the fort's defenders while cultivating a future D-grade herd leader. It tries to coerce Jake through hostages and mental intrusion. When it enters his deepest memories, it encounters the primal predator within his bloodline, panics, and dies. Its control network collapses, freeing the captives.\n\nA final herd attacks the fort, but Mystie's summoned mist beasts and Neil's team help destroy it. Phillip agrees to move his people into Jake's protected settlement while preserving the fort as an outpost. Mikkel remains there to develop modern weapons. Miranda creates a council-like administration, and the settlement receives its permanent name, Haven.\n\nJake reaches class level ninety-nine and accepts a quest requiring both his class and profession to reach the evolution threshold before D-grade. He turns to intensive alchemy, especially a poison intended for the dangerous indigo fungus beneath the valley. Hawkie and Mystie's egg then hatches. Their daughter, Sylphie, rapidly gains her first level, and Jake accepts a close role in helping raise her.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Haven expands through commerce, city quests, construction, and new arrivals. Carmen defeats the Slothful Warden and receives her own pylon-related objective elsewhere. Jake advances his profession and studies how to kill the Indigo Fungus Mycorrhiza. His first direct test in its biodome nearly kills him when its tendrils trap him and a mana beam destroys much of his body, but he escapes with a rare lifevine sample.\n\nKenneth arrives with hundreds of followers and seeks a temple that would place Haven's pylon under his god's influence. Jake rejects the proposal, and Kenneth leaves. Miranda then accepts a blessing from the Ladies of the Verdant Lagoon and evolves into a Neophyte Verdant Witch. Hawkie also evolves, becoming a Stormsong Hawk.\n\nUsing the lifevine and soul-related ingredients, Jake develops an uncommon fungicide designed to spread unnoticed through the fungus. Arnold's timed injectors let him seed the biodome from multiple points. Once the poison weakens and exposes the fungus, Jake destroys its vulnerable soul with specialized arrows. The dead level-105 creature leaves rare lifevines, an epic life core, and the entrance to Under Growth of the Deep Dwellers, a D-grade dungeon that remains locked to him.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the fungus dead, Jake upgrades his poison sense, discovers his personal arcane affinity, and evolves Infused Powershot into a more powerful arcane version. He also develops Touch of the Malefic Viper into a transmutation skill, using it to reshape a cursed scimitar after destroying the souls bound within it. Miranda learns that Villy is the Malefic Viper, but Jake rejects her sudden formality and restores their friendship. Haven may build a shared temple, but neither leader accepts divine control.\n\nJake raises his profession and race to the required levels, kills another Thunder Rock, and begins his race evolution. He rejects a Dragonkin divergence that would conflict with both his human identity and his broader path. Instead he becomes Human D with a perfect evolution, an enhanced bloodline, and greatly expanded perception. The new sensory range initially incapacitates him before he learns to filter it.\n\nSanct Domo is revealed as a Holy Church pylon city of nearly twenty million people, with Jacob as its D-grade spiritual and nominal leader. His class prevents him from fighting. When his council reports Haven as a small northern pylon settlement with a hidden owner and D-grade beasts, Jacob explicitly orders Sanct Domo to leave it alone.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake chooses Avaricious Arcane Hunter for his D-grade class, preserving his bow, arcane magic, and close-combat ability while refusing a champion path that would make him the Malefic Viper's instrument. New arcane arrows strengthen him enough to defeat Hawkie and Mystie together in a controlled spar.\n\nHaven continues developing as a forest city. Felix wins a confidential contract to sculpt statues for its temple, and Neil completes a goods-only teleportation circle between Haven and the fort. The hundredth pylon is claimed, scheduling the First World Congress in seven days. Jake must remain near Haven's pylon to attend and may bring two representatives.\n\nFor his profession, Jake rejects paths centered on leadership or spreading the Viper's religion. He instead becomes the first recorded Heretic Chosen Alchemist of the Malefic Viper. The choice strengthens their blessing while making it mutually nonrevocable by ordinary means. Jake gains new alchemical abilities and the Path of the Heretic Chosen, which allows him to study episodes from the Viper's legacy. Despite its warning of possible lasting effects, he immediately uses it.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake's first legacy experience places him within the past of the being who later became the Malefic Viper. As the Wyvern of the Desolates, the Viper uses a disguised alchemist identity and a compromised antitoxin to poison a capital's protector. The wyvern kills the fleeing defender and king, then takes the blue gem powering the city's barrier. It transmutes and refines the treasure through earlier forms of two abilities Jake inherited.\n\nJake returns to the lodge after only minutes outside the experience, but carries enough insight to upgrade Palette of the Malefic Viper to legendary. The skill can hold one natural treasure in a metaphysical stomach, gradually improve it, and teach Jake its properties during refinement. The upgrade advances his profession twice and his race once. He begins testing it on the epic life core taken from the Indigo Fungus Mycorrhiza.\n\nJake closes the book as a Human D, Avaricious Arcane Hunter, and Heretic Chosen Alchemist of the Malefic Viper. Haven remains under Miranda's administration, with the fort as an allied outpost and the hawk family resident nearby. With the World Congress about five and a half days away, Jake postpones the locked dungeon, leaves Sylphie with Hawkie, and sets out to explore the deeper forest.",
+            "through": {
+              "chapter": 68
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0B6JNZTBN",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-3"
+      }
+    },
+    "the-primal-hunter-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jake",
+              "Lord Thane"
+            ],
+            "description": "Haven’s owner, a D-grade hunter and accomplished alchemist preparing for the Treasure Hunt. At Miranda’s request, he makes his strength unmistakable to the independent fighters gathered in his city.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jake's powerful hawk companion, treated as family and already capable of operating on her own. She accompanies him before the Treasure Hunt and helps establish that Haven is far better defended than its visitors first assume.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's organizer and a user of green magic. She assembles the city's prospective Treasure Hunt entrants, manages their preparations, and asks Jake to demonstrate the power protecting Haven before visitors mistake restraint for weakness.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A secluded Haven craftsman who is initially the highest-level person visible among the city's assembled entrants. His reputation rests more on making things than on public displays of combat power, leaving many visitors unsure what he can do.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Malefic Viper"
+            ],
+            "description": "Jake’s primordial patron, also known as the Malefic Viper. Their divine connection is an established part of Jake’s path before the Treasure Hunt.",
+            "id": "villy",
+            "name": "Villy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven space mage and teleportation researcher known before the Treasure Hunt begins. His work gives the city expertise in spatial travel and magical transport, making him an important part of its developing infrastructure.",
+            "id": "neil",
+            "name": "Neil",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Caleb Thayne"
+            ],
+            "description": "Jake's brother and a leader of the Court of Shadows. While his organization prepares its Treasure Hunt force, Caleb trains alone in a chamber designed to impose extreme pressure, leaving the immediate entry arrangements to others.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Holy Church's Augur, responsible for organizing its Treasure Hunt groups and guiding their search. He assigns himself to a treasure-seeking party with Bertram while directing the wider Church effort.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jacob's guardian and a Holy Church fighter. He joins the Augur's treasure-seeking group as the Church divides its entrants into smaller teams, providing direct combat support while Jacob guides the wider search.",
+            "id": "bertram",
+            "name": "Bertram",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A curse-focused Risen combatant who plans to enter the Treasure Hunt with Lyra. He belongs to the large Risen force under Priscilla’s political leadership.",
+            "id": "casper",
+            "name": "Casper",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Casper's Risen co-operator and intended Treasure Hunt partner. She enters with him as part of the organized force led by Priscilla, giving Casper a trusted partner within the faction's much larger expedition.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The political leader of the large Risen contingent entering the Treasure Hunt. Casper and Lyra are among the roughly one thousand entrants assembled under her direction, making the Risen one of the event's largest organized forces.",
+            "id": "priscilla",
+            "name": "Priscilla",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Noboru Clan patriarch and an elite swordsman who expects to confront Jake during the Treasure Hunt. His personal strength makes him one of the event's most dangerous known entrants.",
+            "id": "sword-saint",
+            "name": "Sword Saint",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent merchant who offers to travel with Miranda after entering the mist-covered realm. When she declines, he proceeds with his remaining follower.",
+            "id": "sultan",
+            "name": "Sultan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable Valhal fighter who encounters Sylphie while hunting vampiric creatures in a bunker. Despite an awkward first approach and no shared language, she chooses to cooperate with the hawk against the surrounding enemies.",
+            "id": "carmen",
+            "name": "Carmen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Noboru Clan patriarch's great-granddaughter, combining sword training with alchemy and advanced magical theory. After hearing that Jake killed a Count of Blood, she joins him at a cursed puzzle and identifies a flaw in his model.",
+            "id": "reika",
+            "name": "Reika",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified fighter able to heal so rapidly that he outlasts a Viscount. Feeding on him poisons the vampire, and after winning he searches for a more dangerous foe.",
+            "id": "regenerating-fighter",
+            "name": "Regenerating Fighter",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Caleb identifies Aaron as a dangerous opponent after hearing that he lived through a clash with an uncontrolled Count.",
+            "id": "aaron",
+            "name": "Aaron",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archer serving in Bertram's coordinated Holy Church party. She supports the group's Count hunt alongside its healer, light mage, and swordsman, contributing ranged attacks to a tightly organized team.",
+            "id": "maria",
+            "name": "Maria",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carmen"
+            ],
+            "description": "The title used for Carmen by Valhal fighters when reinforcements arrive to support her group. She is already established as a powerful close-range combatant and Sylphie's current hunting partner, and the arriving party clearly recognizes her standing.",
+            "id": "rune-maiden",
+            "name": "Rune Maiden",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leader of the Valhal party arriving to support Carmen, Miranda, and Sylphie. He addresses Carmen as the Rune Maiden when the reinforcements join her group.",
+            "id": "sven",
+            "name": "Sven",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sultan's contracted pathfinder. Her ability to mark targets and perceive through them helps him locate a defended vault in the expanded Treasure Hunt territory, supplying the guidance needed for his armed ship to approach its objective.",
+            "id": "summer",
+            "name": "Summer",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elemental mage trapped with Jake and several others by a vast cube puzzle. He specializes in construction, reinforcement, material alteration, and elemental magic circles, making him one of the group's principal solvers.",
+            "id": "elemental-mage",
+            "name": "Elemental Mage",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An assassin from the Court of Shadows trapped with Jake's group by the cube puzzle. Knowledge of gunsmithing, enchantment, and runes makes this fighter one of the principal contributors to solving it.",
+            "id": "court-of-shadows-assassin",
+            "name": "Court of Shadows Assassin",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A swordsmith and close-range fighter trapped with Jake's group by the cube puzzle. She provides limited help with the puzzle while the group works to escape the hidden space.",
+            "id": "swordsmith-rogue",
+            "name": "Swordsmith Rogue",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earth mage trapped with Jake's group by the cube puzzle. He takes part in the group's effort to complete the puzzle and leave the hidden space.",
+            "id": "earth-mage",
+            "name": "Earth Mage",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-130 healer and pioneering city lord who commands the independent force surrounding Jake's cube-vault group. He leads the organized effort to drive Jake out of the Treasure Hunt.",
+            "id": "independent-city-lord",
+            "name": "Independent City Lord",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elemental mage from the cube puzzle group. He receives the Staff of Elemental Confluence when the rewards are divided, then continues exploring with Felicia after expressing interest in visiting Haven.",
+            "id": "roman",
+            "name": "Roman",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The swordsmith rogue who helped Jake's group survive the cube vault and the ambush that followed. Primarily a melee fighter, she receives a protective spatial ring when the group divides its rewards, then chooses to continue exploring with Roman.",
+            "id": "felicia",
+            "name": "Felicia",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yalsten's awakened vampire ruler, initially degraded by the realm's curse. He rises amid hundreds of cursed soldiers and five royal guards as the world begins collapsing, becoming the final quest's central enemy.",
+            "id": "cursed-monarch",
+            "name": "Cursed Monarch",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Cursed Monarch"
+            ],
+            "description": "The restored form of Yalsten's cursed ruler after he invokes Sanguine's blood legacy. Freed from the realm's curse and accompanied by blood elementals made from the fallen, he becomes an even greater threat to the exhausted coalition.",
+            "id": "monarch-of-blood",
+            "name": "Monarch of Blood",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Sword Saint"
+            ],
+            "description": "The personal name of the Sword Saint, the Noboru Clan patriarch now dueling Jake for Sanguine's blood legacy. He rejected a divine blessing that demanded his clan's submission to the Holy Church and has built his path around swordsmanship and responsibility to his family.",
+            "id": "miyamoto",
+            "name": "Miyamoto",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unresponsive unique lifeform residing in Jake's mask after the King of the Forest dies. It may possess the king's memories, but whether it shares the king's identity or intentions remains unknown.",
+            "id": "mask-lifeform",
+            "name": "Mask Lifeform",
+            "reveal": {
+              "chapter": 70
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0C34D1FYC",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-5"
+      },
+      "recaps": {
+        "ending": "Yalsten collapses after the Monarch of Blood destroys himself, leaving Sanguine's blood legacy and a bound projection able to guide its future holder. Jake and Miyamoto duel for the legacy. Miyamoto reaches a costly transcendent state through Springtime Advent and wins the final exchange by a fraction, though both fighters would probably have died without the Treasure Hunt ending. Miyamoto keeps the legacy and returns greatly weakened, while Jake accepts the loss and resolves to improve his melee technique.\n\nThe survivors return to Earth fully restored from their event injuries. Carmen and Casper have withdrawn safely, Sylphie later departs Haven to pursue independent growth, and Miranda turns to screening new residents and organizing auction goods. Sultan becomes a prospective broker for Haven and Jake, and Neil continues work on long-range teleportation. Jake holds the Premier Treasure Hunter title and extensive treasure, including the charged curse root and a level-locked Chimera weapon. His mask contains an unresponsive new lifeform tied to the dead King of the Forest. With the auction one week away, Neil teleports Jake closer to his family, and Jake begins the remaining journey overland.",
+        "in_short": "Jake Thayne enters a ten-day Treasure Hunt in the ruined vampire realm of Yalsten with Sylphie and Haven's allies. He uncovers the realm's cursed history, kills several Counts of Blood, gathers powerful relics, and joins rival factions in activating a spire that begins Yalsten's collapse. The coalition defeats the awakened Monarch of Blood after severe losses and withdrawals. Jake then wagers the resulting divine blood legacy in his long-awaited duel with Miyamoto. Miyamoto's costly transcendence turns the battle, and Jake loses by a fraction as the event ends. Back on Earth, Jake receives the Premier Treasure Hunter title, learns that a new lifeform linked to the dead King of the Forest inhabits his mask, and prepares for an auction. Sylphie leaves to train independently, while Jake takes a replacement bow and begins traveling toward his family.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jake Thayne became the owner and principal defender of Haven while developing as both a hunter and an alchemist. Sylphie, his powerful hawk companion, is treated as family and shares a close bond with him. Miranda manages Haven's affairs, Neil researches spatial magic and teleportation, and Jake's brother Caleb leads within the Court of Shadows. Jake follows a path connected to his primordial patron Villy, the Malefic Viper.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Haven attracts more than forty independent D-grades ahead of the Treasure Hunt, but many doubt the settlement until Jake and Sylphie display enough power to deter them. Miranda briefs the entrants, Jake supplies potions, and the major factions organize their own forces. Jake and Sylphie enter together, arriving with the Haven group in a mist-covered fallen realm where divine contact is blocked and early departure forfeits all rewards.\n\nThe participants split up. Arnold establishes technological reconnaissance, while Jake and Sylphie discover that their hunt storage is shared even across distance. Jake enters an abandoned city within a mountain and survives an archive's defenses. Its record names the realm Yalsten and explains that a vampire king tried to sustain his people through a vast curse ritual. The curse instead corrupted the mist and consumed almost the entire world. A hidden structure in the Mistless Plains holds power associated with the vampires' true ancestor, but opening it requires nine keys held by Counts of Blood. Jake now knows the hunt's central objective, while the Sword Saint and the Holy Church are already locating vampire chambers of their own.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake pushes toward the Count hidden in the mountain tower. Elsewhere, Carmen meets Sylphie in a bunker, and the two become effective combat partners despite their limited communication. They defeat a Viscount of Blood and obtain the rune Jake needs to open the Count's chamber through his shared storage with Sylphie.\n\nThe Count proves intelligent, mobile, and highly regenerative. After a prolonged fight, Jake pursues it into the tower atrium, prevents it from healing on other participants, and kills it publicly. He gains levels, valuable vampire remains, and one of the nine Keys of Blood. A Court of Shadows thief steals part of the chamber's loot, but Jake tracks him down, recovers the items, and forces him to leave the hunt. Caleb accepts his subordinate's loss rather than escalating the dispute.\n\nJake then examines a cursed puzzle guarding another treasury. Reika, the Noboru Clan patriarch's great-granddaughter, recognizes a flaw in his model and joins him. Their practical and theoretical approaches complement each other, allowing them to solve the puzzle and open the hidden armory.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The opened armory belonged to Yalsten's Pure Ones, inhabitants who resisted vampirism. Jake and Reika divide its anti-vampire weapons and crafting resources before joining the wider race for keys. Jake obtains the Root of Yalsten's Eternal Resentment from a manifestation of the realm's curse, giving him a powerful one-use weapon against vampires and protection from the surrounding mist.\n\nJake kills two more Counts and combines three of their weapons into a transforming blade. Carmen, Sylphie, and Miranda join Valhal fighters against another Count; Carmen sacrifices an arm to cripple it, and Sylphie takes the kill. Meanwhile, the Holy Church and Noboru Clan cooperate to secure the final keys. Jacob hires Aaron, a fighter with extreme conscious regeneration, to delay Jake. Jake repeatedly destroys Aaron's body but cannot kill him, so he traps him long enough to breach the Church's barrier. He arrives too late: the last Count is already dead, though the Church leaves compensation.\n\nAll nine keys are now assembled. The Noboru Clan has won the agreed key competition, while Jake has accumulated more Count loot. With more than a week remaining inside the event, the Treasure Hunt is ready to enter its second phase.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake and Aaron exchange knowledge after their clash. Aaron admits that his regeneration requires conscious control and teaches Jake about directing vital energy, but abruptly leaves after examining Jake's soul-bound mask. At the Mistless Plains, the nine keyholders activate linked altars. A crystalline spire rises and absorbs the curse instead of destroying it, reopening Yalsten's sealed vaults while revealing that something powerful sleeps inside.\n\nThe factions scatter to claim the new rewards. Casper enters a floating vault for the Risen, while Jake forces entry into a tree-shaped Nalkar vault. An old projection recognizes his connection to the Malefic Order and grants him mental-magic relics, an alchemy token, and a powerful vampire heart. This establishes an unexplained link between Jake's patron and Yalsten's vampire past.\n\nJake later joins several independent fighters at a buried cube vault. The cube traps them in a hidden space, but Jake, an elemental mage, and a Court of Shadows assassin solve it after nearly a day. The group receives several exceptional rewards. As soon as the treasure appears, more than one hundred attackers surround the valley, and one of Jake's temporary companions reveals his part in the ambush.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The independent coalition tries to force Jake out of the hunt. Jake kills many attackers with his gaze, defeats their city-lord leader, and accepts compensation from the survivors rather than pursuing a wider political conflict. He divides the cube rewards with his companions; Roman receives an elemental staff, Felicia receives a protective spatial ring, and Jake keeps a legendary shared-storage safe.\n\nJake clears more vaults and nearly dies in one filled with magically compressed water. By learning to circulate the surrounding water mana, he restores his movement and spellcasting, kills the vault's eel lord, and upgrades his defensive scales. Elsewhere, Miranda and Sultan trap Aaron inside a competitive maze, while factional raiding intensifies. The Sword Saint attacks the Court of Shadows, killing fourteen members and forcing many more from the hunt, though Caleb escapes with most of its treasure.\n\nCasper completes a set of World Fragments needed to form a quasi-core. He reveals that the Risen want Jake's curse root for an undead-favorable dungeon on Earth. When the fragments reach the central spire, Yalsten begins collapsing and a final quest orders the hunters to kill the awakened cursed monarch. Miranda and Arnold withdraw during the safe interval, while Jake, Sylphie, the Sword Saint, Caleb, Casper, Carmen, Reika, Priscilla, and major faction forces remain.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The cursed monarch awakens with hundreds of soldiers and five royal guards. The Holy Church, the Risen, Haven, Valhal, the Court of Shadows, and the Noboru Clan combine rituals and elite fighters against them. Aaron joins as a nearly indestructible healer. Jake poisons the monarch while Carmen, Caleb, Casper, Sylphie, and the Sword Saint help break through his defenses.\n\nThe monarch invokes Sanguine's blood legacy, purging his curse and becoming the level-170 Monarch of Blood. Blood elementals rise from the fallen. Carmen inflicts a severe wound but loses an arm and must withdraw. Casper also leaves after the monarch counters his strongest form. The Holy Church sacrifices fourteen ritualists to empower an ancient sword; Bertram spends his life using it to maim the monarch, with Jacob expecting to restore him later. A final blood-draining judgment kills or expels many remaining hunters.\n\nJake and the Sword Saint gain the advantage in the last exchange. The monarch uses his remaining strength to teleport the Holy Church survivors away and destroys himself. Jake receives the kill. Sanguine's blood legacy remains as a divine necklace, with the defeated monarch bound to it as a guide. Jake and the Sword Saint agree to settle ownership through their long-awaited duel.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the monarch's defeat, Carmen helps Jake refine his physical boost into Limit Shatter. Jake also fuses all nine Count weapons into an ancient Chimera weapon, though he cannot wield it before level 150. As Yalsten's remaining time runs out, Jake and the Sword Saint begin their duel for Sanguine's blood legacy.\n\nThe Sword Saint is revealed as Miyamoto. Jake's superior attributes and archery win the opening phase, but Miyamoto revisits a wartime survival memory and manifests Springtime Advent. The transformation makes him young again and grants overwhelming rain-based power. Under that pressure, Jake integrates his arcane energy with his body, eventually developing Arcane Awakening. He poisons and badly wounds Miyamoto, severing one arm, but both refuse to stop as the realm collapses.\n\nThe shrinking battlefield forces every observer to withdraw. Jake loses part of a leg but continues fighting, first with an improvised support and then unarmed. In the final seconds, Jake recovers his bow as Miyamoto retrieves his sword. Jake fires while Miyamoto strikes, and the Treasure Hunt ends during their clash. The result is not yet known at this point.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake returns to Haven healed but carrying a bow cut in two. From the damage and timing, he concludes Miyamoto's sword reached his neck just before his arrow would have landed, making the duel a narrow loss. Miyamoto keeps Sanguine's blood legacy but pays heavily for Springtime Advent, returning physically diminished and needing to rebuild lost levels. Jake receives the Premier Treasure Hunter title for his performance and empties an enormous collection of loot from his insignia.\n\nVilly explains that Miyamoto's transformation was a transcendence, a self-created power outside ordinary System limits. Jake accepts that his own melee fighting lacks learned technique and decides to develop a short-weapon style that better complements his poison and arcane magic. Villy also confirms that the King of the Forest died, but a new and unresponsive lifeform linked to it now resides in Jake's mask.\n\nHaven prepares for an auction one week away. Miranda screens prospective residents, and Sultan becomes a likely broker for Haven and Jake. Sylphie leaves to train independently. Neil gives Jake teleportation research and a compass, then sends him closer to his family. After defeating creatures at his arrival point, Jake begins the remaining journey overland.",
+            "through": {
+              "chapter": 71
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0C34D1FYC",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-5"
+      }
+    },
+    "the-primal-hunter-6": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Haven's founder, an accomplished hunter and alchemist, and the Malefic Viper's Chosen. After the Yalsten treasure hunt, Jake turns toward unfinished obligations, family, and the dangerous projects waiting for him at home.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Malefic Viper"
+            ],
+            "description": "Jake's primordial patron and the head of the Malefic Order.",
+            "id": "villy",
+            "name": "Villy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's practical leader and a verdant witch. She manages the city's defenses and interests while Jake is away, balancing his ambitions against the needs of the people who rely on Haven. She remains one of Jake's principal allies and handles the city's daily direction.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's young hawk companion, whom he helped raise. They share a private, unusual bond, and she has an affinity for wind.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miyamoto"
+            ],
+            "description": "The patriarch of the Noboru Clan and Reika's great-grandfather. He remains weakened after his duel with Jake and retains possession of the disputed blood legacy.",
+            "id": "sword-saint",
+            "name": "Sword Saint",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Noboru Clan alchemist and the Sword Saint's great-granddaughter.",
+            "id": "reika",
+            "name": "Reika",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Risen curse expert and dungeon engineer who is among Jake's established contacts.",
+            "id": "casper",
+            "name": "Casper",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Casper's Risen co-operator and a curse-sensitive contact. She works with him on matters involving dangerous curse energy, contributing a distinct sensitivity that supports their shared efforts and helps them recognize threats related to their work.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Haven's merchant and one of Jake's established allies.",
+            "id": "sultan",
+            "name": "Sultan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's inventor and infrastructure builder.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven mage considered as a possible recipient of a rare legacy centered on light magic.",
+            "id": "lillian",
+            "name": "Lillian",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jake's brother, who pursues William after the intruder bypasses the Court of Shadows' defenses and questions Caleb's family. Caleb investigates William's unexplained strength, travel, and interest in Jake.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful former human who infiltrates the Court of Shadows to gather information about Jake and Caleb. Years in Nevermore have made him far stronger, and the unknown means by which he returned to Earth adds to the threat.",
+            "id": "william",
+            "name": "William",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Holy Church's augur in Sanct Domo, whom William intends to consult while investigating Jake's past.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Risen representative who works with Casper on plans for a refuge suited to their kind. She warns Jake that strengthening his hunger curse could change or overwhelm him.",
+            "id": "priscilla",
+            "name": "Priscilla",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-100 builder overseeing Jake's underground alchemy complex. He brings Jake into the nearly finished facility to help fit its resistant entrance gates.",
+            "id": "hank",
+            "name": "Hank",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "King of the Forest"
+            ],
+            "description": "The former final foe of Jake's tutorial, restored from the soul fragment preserved in Jake's mask. Their accidental life bond gives Jake power over his continued existence, so they pursue a voluntary alliance and a safer route to his freedom.",
+            "id": "fallen-king",
+            "name": "Fallen King",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A disciple of the Malefic Viper who administers the Order's academy. Duskleaf observes Jake's handling of his curse and helps assess how his new title will affect future creations. The approaching enrollment date also places Jake's recovery on a firm schedule.",
+            "id": "duskleaf",
+            "name": "Duskleaf",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven builder blessed by the Malefic Viper. He oversees a Viper-directed monument designed to connect Earth with the Malefic Order once its charge is complete. Chris treats the project as a direct commission and regards Jake as Haven's lord.",
+            "id": "chris",
+            "name": "Chris",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wounded human axe warrior seen in a historical record of the Malefic Viper's S-grade past. Faced with a physically superior dragon, he continues fighting with absolute confidence and turns the Viper's broken fang into a weapon.",
+            "id": "valdemar",
+            "name": "Valdemar",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-109 elf enslaved after her clan's fall. The Order conditioned her to withstand poisons, used her in toxin trials, and prepared her for service. She is selected as the permanent steward of an important new academy entrant, whom she soon learns is Jake.",
+            "id": "mira",
+            "name": "Mira",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CC6HZ3SR",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-6"
+      },
+      "recaps": {
+        "ending": "Jake remains at the Malefic Order's academy on Primordial 4. He has unrestricted access to its lessons and begins repairing the narrow theoretical base revealed by his entrance examination, with neurotoxins and Soulflames among his new interests. His false identity conceals most of his records and his status as Villy's Chosen, but his bloodline remains visible. A red-dragon faction has already identified him as a valuable new-universe bloodline bearer and opened a channel for future recruitment.\n\nMira remains contract-bound to Jake because release inside the Order would expose her to greater danger. Jake refuses to treat her as property, gives her broad lesson and travel permissions, and encourages her to choose a future that might eventually help her enslaved family. Reika studies separately with the Noboru Clan contingent, while Miranda leads Haven on Earth and completes a powerful ritual circle. Sylphie returns from an Altmar evaluation with a medal. The Fallen King continues independently while his true soul remains tied to Jake's mask. Eternal Hunger is contained but still capable of pressuring Jake, and William's monster-supported investigation remains unresolved.",
+        "in_short": "After returning from the Yalsten treasure hunt, Jake reunites with family, helps Haven profit from a system auction, and restores the Fallen King from his mask. His attempt to forge a stronger cursed weapon causes the worldwide Great Famine, but he seals the curse within his soul and creates Eternal Hunger. He then survives a disastrous encounter with a C-grade hive defender, strengthens Haven's alliances, and leaves Earth for the revived Malefic Order. Training lets him falsify most of his visible records, though not his bloodline. At the Order academy, Jake's entrance tests expose both exceptional talent and major gaps in his alchemical education. A historical vision of Valdemar's victory over Villy gives him a true melee style. Jake is admitted with exceptional privileges and reluctantly accepts responsibility for Mira, an enslaved elf assigned to his household. He begins helping her develop an independent path while studying Soulflames and neurotoxins. A dragonflight detects his bloodline and attempts to recruit him, leaving his identity and inherited power under growing scrutiny.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jake Thayne became a powerful hunter, alchemist, and the Malefic Viper's Chosen while helping establish Haven on newly integrated Earth. His closest allies include Haven's leader Miranda, the merchant Sultan, the inventor Arnold, his hawk companion Sylphie, and his brother Caleb, who leads the Court of Shadows. Jake's rivalry with the Sword Saint culminated in a damaging duel during the Yalsten treasure hunt, leaving possession of a blood legacy disputed between them. The hunt also gave Jake dangerous materials and obligations, including a promise connected to the vampire lineage Nalkar, the cursed Root of Yalsten's Eternal Resentment, and a mask containing a surviving consciousness. Casper, a Risen curse specialist, remains one of the few people qualified to advise him about such items. With the treasure hunt over, Jake is returning to family and Haven while considering how to develop his alchemy, settle unfinished bargains, and eventually visit the Malefic Order.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake travels toward Caleb while Villy explains the history of vampires and the surviving Nalkar lineage. At the Court of Shadows, William has already penetrated the hidden faction's defenses, questioned Caleb's family, and defeated pursuing assassins without killing them. Caleb discovers that William spent years in Nevermore and suspects a powerful monster enabled his return. William later meets a plane-shifting jellyfish that supplies his transport network and sets out for Sanct Domo to investigate Jake's past.\n\nJake reaches the Court's public decoy city, finds its concealed headquarters, and reunites with Caleb and their family. He meets his infant nephew Adam and helps Caleb expose recruits to controlled pressure so they can build resistance. Caleb also shows him an Umbral Lotus growing around the Court's pylon and gives him three ancient leaves for future neurotoxin work.\n\nA system auction then opens for treasure-hunt participants. Jake joins Miranda, Sultan, Sylphie, Arnold, and Neil to sort Haven's haul. They retain practical defenses and alchemical materials, sell less useful treasures, and keep the dangerous Root of Yalsten's Eternal Resentment until Casper can assess it. Sultan takes charge of Jake's listings and bids as the auction begins.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The auction gives Jake a private booth, where he delegates trading to Sultan and spends much of the event making potions. His sales produce an enormous credit balance. He negotiates with the Sword Saint over the disputed blood legacy, agreeing to exchange selected Yalsten artifacts for continuing access while both men publicly call their duel a tie.\n\nJake acquires replacement armor, cursed bracers, a blood-focused dagger, a renewable quiver, and other useful materials. Arnold buys a damaged Yalsten transport pod for repair. When Casper examines Jake's cursed scimitar, he identifies a hunger-based sin curse that could eventually alter or consume its wielder. Casper warns Jake against combining it with the cursed root and an ancient weapon, but Jake retains the materials.\n\nThe auction's restricted bonus round includes the most valuable prizes. Caleb obtains the Heart of Darkness, Casper wins a dungeon core, and Jake purchases the Gift of Wind for Sylphie. She consumes it and falls into a restorative sleep. Jake finally gains a soulbound bow suited to an apex hunter. At the request of the consciousness in his mask, he spends heavily on Soul Renewal, a unique item that even Villy cannot clearly interpret. The auction ends with Jake planning several long-delayed projects.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake returns to Haven after the auction. Sultan receives the event's highest merchant title, while Villy confirms that Sylphie's Gift of Wind may reshape her development. Jake prepares an underground alchemy complex, assisted by Hank and Arnold, and establishes a renewable supply of serene water. Villy warns that Jake's planned curse ritual will create an intense urge to kill and advises him to perform it far from people.\n\nOver the following months, Jake rebuilds his potion supply, improves his attributes, and finalizes his ritual plan. Sylphie wakes with a changed connection to wind, and Reika prepares to bring a Noboru Clan alchemical delegation to Haven. Jake then travels to the Insect Plains and pours Soul Renewal onto his mask.\n\nThe restored being is the Fallen King, the same King of the Forest who served as Jake's final tutorial foe. A fragment of his soul survived within the mask and recovered by drawing on Jake's soul-linked mana. The bond now ties the King's life to Jake, while his true soul remains in the mask. They reject a master-servant relationship, fight to an endurance stalemate, and agree to cooperate while seeking a safe way to separate. The Fallen King departs independently after giving Jake temporary protection against soul influence.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake transfers the hunger curse from his scimitar into an ancient weapon and draws the Root of Yalsten's Eternal Resentment into the ritual. When the Fallen King's temporary soul protection expires, the curse overwhelms him and drives him through a termite hive in search of life energy. The effect spreads worldwide, emptying food stores and causing mass hunger even in major settlements.\n\nJake reinforces the failing weapon with a Nalkar Vampire Heart and an alchemical catalyst, then retreats into his soul space to regain control. After eighteen days of transmutation, the global hunger returns to him as a curse manifestation. Jake binds it rather than allowing it to replace his identity and completes the mythical soulbound weapon Eternal Hunger. The crisis ends after more than three weeks and becomes known as the Great Famine, though its cause remains hidden. Eternal Hunger can drain many forms of energy and capture the souls of Jake's kills, but its appetite continues to pressure him.\n\nJake rejects further curse specialization and instead gains a soul-ritual skill. He pushes deeper into the termite hive, kills several D-grade queens, and attacks a C-grade hive queen. A combat-specialized hive king appears and nearly kills him within seconds. Jake escapes only by teleporting away and hiding underground with catastrophic injuries.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake remains hidden until his wounds heal, developing an improved arcane stealth skill that lets him mimic the surrounding tunnels. He escapes the hive and concludes that its deeper castes may become a planetary threat. In Haven, Miranda, Sultan, Roman, Felicia, and Lillian spare an intelligent undergrowth cave troll and its young during a dungeon expedition. Sultan relocates the family, and Jake offers the adult troll a place as caretaker of a new life-affinity garden.\n\nArnold studies Jake's cracked Altmar cauldron and discovers a rune that can restore it through repeated infusions of Jake's soul energies. He also finds sealed potential in Jake's storage necklace, though upgrading it will require additional expertise. Chris completes a monument designed as a gateway to the Malefic Order.\n\nReika arrives with a Noboru Clan delegation seeking alchemical exchange and stronger ties with Haven. Jake states that intelligent non-humans may live in the city if they follow its rules, despite the political resistance this policy may cause. He repairs his cauldron fully and spends three weeks sharing alchemical knowledge with the visitors. When Villy announces that the gateway is ready, Jake leaves Earth through it for secret training.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake reaches Primordial 4, where Villy trains him to control Shroud of the Primordial. The blessing already hides his records and karmic trail, but Jake must learn to decide what an observer sees. Villy repeatedly brings him near death under accelerated time so he can sense the shroud responding to scrutiny. Jake eventually develops an adaptive method that alters each incoming Identify attempt rather than relying on fixed false records.\n\nAfter thirteen subjective years, Jake can display a fabricated race, level, blessing, and religious status. The shroud cannot conceal his bloodline, leaving him vulnerable to detection and unwanted attention. During this period, the Sword Saint accepts a blessing from the human time primordial and gains Weight of Time, strengthening the lasting record of his actions.\n\nJake briefly returns to Earth, authorizes a link between Haven and Sanct Domo, visits family, and invites Reika and eight other Noboru Clan alchemists to the Order academy. Miranda and Sylphie remain behind. On Primordial 4, an expired Nalkar token fails to pay for entry but may still be redeemed for compensation. Meanwhile, Villy publicly announces his return to more than five hundred gods and begins rebuilding his Order. His many newly blessed candidates also help conceal Jake's exceptional status.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake and the Noboru contingent enter the academy's placement process. Each applicant faces an individual dungeon whose performance determines benefits. Jake's examination begins with alchemy. He excels at identifying herbs and controlling mana, but the evaluator exposes how narrow and self-focused his practical experience is. His poison and potion work is potent yet limited, and his habit of forcing flawed energy out of creations wastes material. After reflecting on this criticism, he performs unevenly in transmutation before producing a powerful curse-bound weapon from the test materials. A month-long focus trial confirms his ability to sustain a ritual.\n\nThe combat examination better suits him. Jake clears escalating groups with bare hands, mental pressure, poison, archery, and Arcane Awakening. He defeats a coordinated five-person party by breaking its soul restraint and eliminating its healer first, then kills a level-186 manticore. The judges deem his performance exceptional and offer an optional eighth test.\n\nJake accepts a one-hour challenge against a two-headed incarnation of the Lord Protector, a level-160 hydra. His opening arrow barrage fails because the creature consumes mana-based attacks, absorbs their poison, and returns his magic. The hydra locates him and forces a direct confrontation in a highly unfavorable matchup.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake learns that the Lord Protector can consume his energy attacks but not ordinary physical blows, so he switches to melee. The hydra compresses its body into a faster, tougher form and overwhelms him. At the point of defeat, a childhood memory leads Jake into a historical record from Villy's path.\n\nThe record shows the Malefic Viper as an S-grade dragon fighting an injured human axe warrior over a sealed golden orb. Despite losing an arm and his weapon, the human breaks off one of the Viper's fangs, turns it into an axe, and wins. He is Valdemar, a future primordial. Repeated views of the battle let Jake study both fighters. Back in the trial, he develops Fangs of Man, a melee style that temporarily integrates compatible weapons with his soul shape, and upgrades his venom skill so toxins can flow through anything he treats as part of his weaponry. Time expires before he defeats the hydra, but he leaves with a viable future approach.\n\nJake receives an exceptional academy token and a replenishing petrifying venom reward. Villy explains that Valdemar's victory broke his former belief in innate monster superiority. Reika earns a lower placement and accepts criticism of her rigid alchemical method. Jake is formally admitted to the academy.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Academy entrants exchange their placement rewards for Order tokens that control identity, travel, contracts, and housing. Mira, an elf enslaved after her clan's defeat and trained in toxins and service, is assigned as the permanent steward and property of an important new entrant. Jake discovers her kneeling in his private residence and immediately confronts Villy.\n\nVilly explains that the Order routinely uses slavery contracts to secure loyalty and secrecy, and that Mira receives protection through Jake's status. Jake wants to free her, but an openly released former Order slave would face grave danger and she now knows sensitive details about him. Given the choice, Mira asks to remain under his protection as the safest available course. Jake keeps the contract but rejects treating her as property, asks her not to call him master, and tries to give her room to act for herself.\n\nJake learns that his status as Villy's Chosen grants free access to every Order lesson. Mira demonstrates substantial knowledge of herbology and toxicology, prompting Jake to consider extending educational access to her. When she explains that generations of coercion have left her unable to identify personal desires, Jake gives her hundreds of lesson options and directs her to choose five for her own interest rather than his service.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake explores the academy's teaching while trying to broaden the theoretical foundation his entrance test found lacking. A combat-cauldron course proves poorly suited to him but introduces Soulflames. An A-grade dragon explains how willpower can make alchemical flame serve creation and destruction, and demonstrates an integrated Soulflame. Jake learns that these rare, semi-living treasures come from failed elemental births and can kill or cripple an incompatible alchemist. He postpones integration while studying safer fundamentals and neurotoxins.\n\nMira initially chooses lessons aimed only at becoming more useful. By imagining a better future for her enslaved father and siblings, she eventually selects subjects that could develop her own abilities. Jake grants her a subordinate token with broad permissions, and she begins attending lessons. In Haven, Miranda completes a powerful Yalsten-altar ritual circle, while Sylphie finishes an Altmar evaluation that cannot fully classify her transformed wind nature and returns with a medal.\n\nA dragonflight investigates Jake after detecting signs of his bloodline. A young female dragonkin confirms the resonance and offers faction connections, which Jake declines while maintaining the name Hunter. Villy explains that a primordial-enforced treaty protects bloodline holders from abduction, enslavement, and reproductive coercion, but not recruitment or manipulation. The book closes with Jake pursuing neurotoxicology and Mira beginning to assert herself, both settling into sustained study at the Order.",
+            "through": {
+              "chapter": 78
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CC6HZ3SR",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-6"
+      }
+    },
+    "the-primal-hunter-7-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Haven's founder is a hunter, an alchemist, and the Malefic Viper's Chosen.",
+            "id": "jake-thayne",
+            "name": "Jake Thayne",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Malefic Viper"
+            ],
+            "description": "Jake's primordial patron, the Malefic Viper, and the head of the Order where Jake studies and develops.",
+            "id": "villy",
+            "name": "Villy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's principal administrator and Jake's political adviser.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's hawk companion and union-oath partner, already a formidable combatant in her own right.",
+            "id": "sylphie",
+            "name": "Sylphie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Haven merchant and political operator.",
+            "id": "sultan",
+            "name": "Sultan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Risen curse expert, Jake's friend, and a skilled dungeon engineer.",
+            "id": "casper",
+            "name": "Casper",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Holy Church's leading representative on Earth and a gifted diviner.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Haven's perception-focused inventor, whose machines support the city's growth.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's brother and a leading figure in the Court of Shadows.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran warrior and major faction figure on Earth.",
+            "id": "sword-saint",
+            "name": "Sword Saint",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist of the Noboru Clan studying at the Malefic Viper's Order.",
+            "id": "reika",
+            "name": "Reika",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jake's contract-bound elven residence steward and a developing healer. She supports his studies and is beginning to express preferences of her own while pursuing lessons in healing and metaphysiology.",
+            "id": "elf-steward",
+            "name": "Elf steward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior disciple within the Malefic Viper's Order who assists Villy with an experiment.",
+            "id": "duskleaf",
+            "name": "Duskleaf",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragonkin combatant blessed by the Malefic Viper. Shunned by his original people, he survived alone, became exceptionally dangerous, and recognizes Jake as a genuine equal rather than another political contact.",
+            "id": "malefic-dragonkin",
+            "name": "Malefic dragonkin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order management contact present at the gathering for students from Earth's universe. Irin handles introductions and tries to contain the political consequences when powerful attendees take an interest in Jake.",
+            "id": "irin",
+            "name": "Irin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A unique lifeform who arrives at the Second World Congress with overwhelming voting power. The Fallen King proposes a settlement shared by humans and sapient beasts.",
+            "id": "fallen-king",
+            "name": "Fallen King",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A body-forging fighter who is turning her own limbs into weapons. Carmen asks Jake to help trace her missing family because she trusts his tracking ability.",
+            "id": "carmen",
+            "name": "Carmen",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fallen King"
+            ],
+            "description": "The former King of the Forest, whom Jake killed during the tutorial and later restored from the soul fragment held in his mask. Their continuing bond limits the King's advancement and makes Jake a check on his power.",
+            "id": "king-of-the-forest",
+            "name": "King of the Forest",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A C-grade vampire of the Nalkar lineage who serves as Jake's guide during his visit to their House.",
+            "id": "alcor",
+            "name": "Alcor",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Nalkar jeweler and former human blood disciple nearing C-grade. Ruby Lake recognizes Jake's soulbound necklace as a suitable evolutionary project and undertakes to awaken more of its sealed potential.",
+            "id": "ruby-lake",
+            "name": "Ruby Lake",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified many-eyed entity that intercepts Jake in the void and makes him carry an unexplained object for delivery.",
+            "id": "unidentified-void-entity",
+            "name": "Unidentified void entity",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dual-blade warrior and the son of Puddle Rock's leader. Peter welcomes Jake's group and offers local help in tracing Carmen's relatives.",
+            "id": "peter",
+            "name": "Peter",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carmen's cousin and a member of the family group traced toward Paradise.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Paradise's owner and city leader, a follower of Deontay, and a member of the Golden Road Emporium. Renato approaches Jake after noticing his casino success.",
+            "id": "renato",
+            "name": "Renato",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The version of Jake shown by the Path of Myriad Choices after a different childhood outcome: his parents die and Caleb is never born, so he grows up orphaned and alone, developing the same bloodline without suppressing its instincts and becoming an isolated hunter with extensive combat experience.",
+            "id": "alternate-jake",
+            "name": "Alternate Jake",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unknown bloodline-bearing alien whom Jake meets on the Seat's Administrator's Terrace. The stranger appears strong but does not initially register as a threat.",
+            "id": "unidentified-alien",
+            "name": "Unidentified alien",
+            "reveal": {
+              "chapter": 59
+            }
+          },
+          {
+            "description": "The unidentified alien from the Administrator's Terrace, now recognized as the Chosen of a primordial opposed to Villy.",
+            "id": "rival-chosen",
+            "name": "Rival Chosen",
+            "reveal": {
+              "chapter": 61
+            }
+          },
+          {
+            "description": "The green-haired S-grade Hallmaster who addresses the Order's new Academy students. Viridia explains membership rules, recognizes Jake's standing as the Malefic Viper's Chosen, and privately summons him.",
+            "id": "viridia",
+            "name": "Viridia",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Reika's beastfolk roommate and friend, as well as a talented perception-focused alchemist.",
+            "id": "bastilla",
+            "name": "Bastilla",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CLNGJ4TS",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-7-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Earth still has no world leader, and the Fallen King's human-beast settlement remains under observation. Miranda knows Jake caused the Great Famine, while the wider world does not. Carmen has found her family, killed the relatives responsible for her abuse, and secured her mother's freedom. The Holy Church's possible campaign against the Risen remains unresolved. Jake has killed a C-grade Phantomshade Panther, kept the Seat of the Exalted Prima within reach, and become a possible administrator for its Milky Way branch. Sim Jake survives through a soulbound bone in Jake's soul space and is training him in a counter-focused melee style, though their records are gradually merging. A rival primordial's Chosen has identified Jake and is preparing an indirect operation on Earth. At the Order, Jake continues his studies and helps his elf steward gain skill and independence. The final scene leaves Jake, the malefic dragonkin, Irin, Reika, and Bastilla alive inside the Nine Floors of the Indigo Caverns, facing a mushroom-filled first floor.",
+        "in_short": "Jake divides his time between the Malefic Viper's Order and a changing Earth. The Second World Congress elects no leader, while the restored Fallen King asks to be judged as a future candidate. Jake helps Carmen cross continents, destroy a slave operation, and confront the abusive Salvento family, most of whom she kills while freeing her mother. After defeating a C-grade Phantomshade Panther, Jake enters the Seat of the Exalted Prima and observes an alternate life. He preserves that parallel self, Sim Jake, within his soul space and gains a possible route to become an administrator of the Seat. He also encounters a rival Chosen whose bloodline manipulates trust. Back at the Order, Jake studies alchemy, formations, and melee combat, supports his elf steward's training, and recruits Reika and Bastilla for an expedition with Irin and a Viper-blessed dragonkin. The book ends as the five enter the Nine Floors of the Indigo Caverns and find mushrooms covering the first floor.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jake Thayne became a hunter, alchemist, and the Malefic Viper's Chosen after Earth entered the wider multiverse. He founded Haven but left much of its daily leadership to Miranda, preferring personal advancement and difficult hunts to political rule. Sylphie, his hawk companion, shares a union oath with him and has developed into a powerful combatant. Jake remains connected to figures across Earth's major factions, including his brother Caleb, Holy Church leader Jacob, Risen curse expert Casper, inventor Arnold, merchant Sultan, and the Sword Saint. Reika of the Noboru Clan is studying alchemy within the Malefic Viper's Order.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake expands his poison craft at the Order and attends a gathering for promising students from Earth's universe. He befriends a Viper-blessed dragonkin, rejects attempts to recruit him, and loses control of a secret when an Ember Flight dragon publicly identifies him as a bloodline bearer. His status as Villy's Chosen remains concealed, but outside factions now have a stronger reason to pursue him. On Earth, the Second World Congress is disrupted by the Fallen King, a unique lifeform who arrives with enough voting power to dominate the election. He proposes a settlement where humans and sapient beasts can coexist and offers himself as world leader, while acknowledging a hidden connection to Jake. Rather than force a decision, he asks the delegates to judge his rule over time. Jake and Miranda insist that Haven remain neutral and independent. Caleb warns that temporary compromises will not protect smaller factions if one power later dominates Earth and its wider territory. The delegates deliberately prevent any candidate from winning, leaving Earth without a leader after the first vote.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Congress selects Paths of the Unusual Unions for Earth's coming path event. Jake then tells Miranda that he restored the Fallen King from the King of the Forest's soul fragment and admits that his cursed crafting caused the Great Famine. Miranda makes clear that his secrecy exposed Haven to political danger, and Jake agrees to resume regular briefings. A new quest announces the Seat of the Exalted Prima, which requires a key assembled from three fragments. Meanwhile, Jacob privately warns Casper that the Holy Church may use propaganda, infiltration, assassination, or war to drive the Risen from Earth. At the Order, Jake trades relics from a hidden Nalkar world for rare hemotoxic materials and an upgrade to his soulbound necklace. Ruby Lake transforms it into the legendary Heart of the Alchemist and completes her own evolutionary quest. Jake then spends more than two months in laboratory seclusion, develops stronger blood-damaging poisons, raises his profession substantially, and gains Advanced Core Manipulation. When Carmen reports a lead on her missing family, Jake ends his seclusion and prepares to return to Earth with a new inter-universal travel route.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During Jake's return to Earth, a many-eyed void entity intercepts him and leaves a dangerous black cube intended for Arnold. Arnold perceives its influence as patterns rather than eyes, safely contains it, and gives Jake a map for the journey to Carmen. In Ambermill, Carmen uncovers a false recruitment program that enslaves vulnerable residents. She destroys its local operators with Jake and Sylphie's help, while Sultan frees the victims and admits he helped steer Carmen toward the scheme to remove a commercial rival. The three companions then hunt Primas for new event keys. They defeat an Earth Elemental Prima, survive its attempt to bury them inside a collapsing mountain, and escape through a drill formed from Jake's alchemical flame and Sylphie's wind. Inside the Grand Mangrove River, Jake develops curved arrows while hunting another Prima. A C-grade frog nearly kills the group, but a far stronger white snake intervenes after recognizing Jake's connection to the Malefic Viper. Jake reveals that he is Villy's Chosen, and Villy blesses the snake through him. The snake and five other C-grades escort the party safely across the river, allowing the search for Carmen's family to continue from Changlun.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Changlun's water-aligned allies transport Jake, Carmen, and Sylphie across the ocean. At Puddle Rock, Peter helps trace Carmen's relatives to Paradise, and an old wand confirms that Carmen's father is inside the concealed city. Paradise's leader, Renato, agrees not to obstruct Carmen if Jake warns him before violence. Peter, meanwhile, is secretly gathering leverage for the United Cities Alliance, though his operation is not directed against Jake or Carmen. Carmen reveals that the Salventos abused her for years, that Beatrice's assault led to Carmen's violent retaliation, and that the family then arranged her imprisonment. Her parents believed she was dead. At the family mansion, Carmen's mother welcomes her, but the Salventos try to confine and exploit them. Beatrice's partner uses demonic contracts and transformed prisoners as weapons. Jake kills attacking guards, Carmen defeats the warlock, and Renato supports them rather than defend the family. Carmen then kills Beatrice and more than twenty other Salventos who participated in her abuse. She spares her father only at her mother's request and leaves him to Paradise's judgment. Carmen secures her mother's freedom, ends her ties to the family, and begins a casual, nonexclusive relationship with Jake.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carmen remains in Paradise to arrange protection and transport for her mother, while Jake hunts alone before the Seat event. Casper completes an intermediate dungeon with support from the Risen, gaining the ability to create low-tier C-grade monsters. In the jungle, Jake selects the basic Stealth Attack skill and develops it through experimentation, extending its effect to magical archery and preserving it briefly after a target notices an attack. He then challenges a level 204 C-grade Phantomshade Panther. The apparent first kill proves to be only one of several linked clones, each death strengthening the survivors. Jake loses wings, an arm, and eventually his sight while using stealth, poison, marks, and spatial movement to isolate them. He survives a collapsing spatial attack through an improved movement skill and finally kills the last body with Eternal Hunger after poisoning it at close range. The victory raises both his class and race, while One Step Mile becomes the legendary One Step, Thousand Miles. Still recovering, Jake opens his completed key. He joins Carmen, Sylphie, Miranda, Arnold, Sultan, and other Earth entrants as the universe-wide Seat of the Exalted Prima begins its one-week opening.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Seat gathers keyholders, surviving Primas, and visitors from many worlds under a strict ban on violence. Jake enters the Path of Myriad Choices, which offers simulations of lives shaped by different decisions. He chooses the branch where a childhood tantrum did not delay his parents, causing their fatal accident and preventing Caleb's birth. The alternate Jake grows up alone, embraces rather than suppresses his bloodline instincts, and becomes a mercenary and assassin before the system arrives. In the tutorial he follows Umbra, rejects professions, fights with paired katars, and develops exceptional melee skill. He also becomes aware that Jake is observing him, and the two establish limited communication. The system confirms that they are genuine parallels with identical true soul signatures, preventing them from living separately in the same universe. A soulbound inanimate vessel offers another route. The alternate spends his remaining event rewards to obtain the Bone of the Virtual Gap and temporary refuge in Jake's soul space. Jake reconstructs his fading records around the bone. Some are lost, but Sim Jake survives as a distinct simulated presence, with an eventual consensual re-merger expected.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jake's event result places him among those who may administer the Milky Way Seat. Sim Jake shapes his soulbound bone into a katar and proposes teaching Jake a perception-led melee style. On the Administrator's Terrace, an alien bloodline bearer manipulates Jake's trust and draws out information about his levels and status as the Malefic Viper's Chosen. Jake breaks the influence before revealing his own bloodline. Villy later identifies the stranger as the Chosen of a rival primordial and expects him to work indirectly. Jake gives Casper the Root of Eternal Resentment, then returns to the Order. Villy explains that Sim Jake came from a true parallel-world simulation and considers their gradual, consensual merger reasonably safe. Jake begins formation work, alchemical study, and melee training in his soul space. Duskleaf leaves a capable clone to instruct both Jake and his elf steward. The steward studies core refinement and learns to withstand powerful presences in preparation for a future Bee Queen ritual. Over several weeks, Sim Jake trains Jake to read an opponent's momentum and counter without overextending. Elsewhere, the rival Chosen prepares an Earth operation involving contracted humans and an ash-and-flame unique lifeform.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Order's student orientation, Jake learns that Viper-blessed students can claim automatic membership and discovers that he has effectively already been registered. The friendly malefic dragonkin invites him on an alchemy-focused dungeon expedition. A separate misunderstanding has led senior figures to believe Jake wants help propagating his bloodline, but Villy agrees to stop the plan while warning that the involved witches may still act independently. Jake recruits Reika, whose studies at the Order are progressing, and she brings her beastfolk roommate Bastilla as the second required alchemist. Irin completes the five-person party. The Nine Floors of the Indigo Caverns requires exactly five D-grade entrants. Each floor contains guarded materials that must be crafted into the means of opening the next, with an optional weak C-grade boss after the ninth floor. The dungeon normally takes weeks and collapses after four. Jake, the malefic dragonkin, Irin, Reika, and Bastilla travel through a mana-dense cavern and enter successfully. All five are alive and committed to the expedition when the book ends. Their first immediate obstacle is not combat but the sight of a first floor filled with mushrooms, which Jake strongly dislikes.",
+            "through": {
+              "chapter": 71
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CLNGJ4TS",
+            "type": "community"
+          }
+        ],
+        "work": "the-primal-hunter-7-a-litrpg-adventure"
+      }
+    }
+  }
+}

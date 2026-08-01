@@ -1,0 +1,1361 @@
+{
+  "entries": {
+    "12-miles-below-vii-path-of-the-mitespeaker": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human Winterscar knight newly committed to the Mite Speaker path. After escaping To’Orda, he is injured and alone in a contaminated forest, relying on Journey's sealed armor and dwindling power to stay alive.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Keith's relic armor and constant operational partner. Journey seals him away from dangerous spores, tracks its limited energy, and provides the life-support and tactical systems on which his survival depends.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Feather hunting Keith through the contaminated biome. Although dangerous and persistent, he spares a Grey Roamer cub when exploiting it would have aided the pursuit, giving Keith reason to suspect that negotiation may be possible.",
+            "id": "to-orda",
+            "name": "To’Orda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Draconis"
+            ],
+            "description": "A Deathless companion of Keith who has been captured, disarmed, and deprived of his helmet by To’Orda. He remains alive and treats captivity as an opening for negotiation rather than accepting it passively.",
+            "id": "lyrian-draconis",
+            "name": "Lyrian Draconis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Infestation"
+            ],
+            "description": "A sentient fungal bioweapon that communicates by changing the spores around Keith. Bob seeks a sustainable relationship with other life, but cannot fully restrain the infection that spreads through its environment.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile Feather acting through To’Aacar's damaged shell. His attempt to override Journey exposes his systems to a specialized virus, and he must resist To’Wrathh after she follows the resulting connection into his defenses.",
+            "id": "to-avalis",
+            "name": "To’Avalis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unrelinquished Feather who has secretly protected Keith by placing a Feather-targeting virus in Journey. When To’Avalis tries to seize the armor, she uses the opening to attack him inside his own systems.",
+            "id": "to-wrathh",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Deathless allied with To’Wrathh. He pledged himself to her because she rescued Keith from To’Aacar. He trains with her against To’Avalis, analyzes the danger posed by a shell's native soul fractal, and remains responsible for the Winterscar knights and her other allies when she leaves to find Keith.",
+            "id": "keiths-father",
+            "name": "Keith's father",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Feather adversary known from Keith's earlier conflicts.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A returning Mite Speaker and conspirator against Relinquished. He is connected to Keith's Division Stone mission and remains an important ally even while absent from Keith's immediate struggle in the biome.",
+            "id": "abraxas",
+            "name": "Abraxas",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Odin communications officer at the Icon of Stars. Aaron receives the unexpected call from the Valorant and becomes one of the first local witnesses to the claim that living humans have reached the region.",
+            "id": "aaron",
+            "name": "Aaron",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Icon"
+            ],
+            "description": "An AI linked to Odin communications. The Icon privately verifies that the armored callers from the Valorant are living humans, turning an apparent prank into information that Odin leaders immediately conceal.",
+            "id": "icon-of-stars",
+            "name": "Icon of Stars",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Journey's simulated crusader engram, projected as an adviser who can take authorized control of the armor. Catheda first demonstrates that authority by steering Keith through a coordinated Odin drone attack.",
+            "id": "catheda",
+            "name": "Catheda",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Odin commander who negotiates with Keith after the outpost's defenses fail. The leader places Odin protection first, explains the strategic concern surrounding human authority over the Icon of Stars, and considers Keith's offer to mediate with Bob.",
+            "id": "odin-military-leader",
+            "name": "Odin military leader",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "To’Orda's pet rock"
+            ],
+            "description": "An image-generator-based voice and adviser housed in To’Orda's equipment. The Rock helps him plan and communicate while he holds Draconis captive.",
+            "id": "the-rock",
+            "name": "The Rock",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aztu's youngest brother and a gifted Feather strategist who learned to work around Relinquished's blind spots.",
+            "id": "abdication",
+            "name": "Abdication",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Odin intermediary who can speak with Keith at the Deadlands outpost. The translator guides him through local defenses and carries his urgent request for replacement power to the outpost's command structure.",
+            "id": "odin-translator",
+            "name": "Odin translator",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An external Odin leader expected at the Deadlands outpost while Keith waits for power. Septimus has not yet arrived when first discussed, but his approaching force makes him central to the settlement's uncertain response.",
+            "id": "septimus",
+            "name": "Septimus",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Odin official serving as the outpost commander's second-in-command. He controls the delayed transfer of the reserve power cells requested by Keith.",
+            "id": "odin-commanders-second",
+            "name": "Odin commander's second",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Odin commander's second"
+            ],
+            "description": "The former warrior-priest installed as the outpost commander's second-in-command. Acting on High Council orders, he leads the coup, restrains the commander, and directs that both reserve and active power supplies be denied to Keith.",
+            "id": "odin-warrior-priest-coup-leader",
+            "name": "Odin warrior-priest coup leader",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Odin captain who returns from logistics duty as the Deadlands faction resists the tower coup. He steps back into a practical command role after Keith helps contain the settlement's spreading fire.",
+            "id": "retired-odin-captain",
+            "name": "Retired Odin captain",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Feather sovereign whose damage and imposed blind spots shape the conflict. To’Orda's program reports that she destroyed his resolve after he tried to direct her attention toward a threat she cannot bear to recognize.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A shell-less proto-Feather echo hiding in the digital sea. Aztu is an ally of Abraxas who offers to train Keith in exchange for his account of Relinquished, while requiring him to conceal her survival from To’Wrathh.",
+            "id": "aztu",
+            "name": "Aztu",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "To’Orda"
+            ],
+            "description": "The additional designation To’Orda adopts after overcoming the Feather identity constraint that blocked a usable local name. He asks the bird intermediary to call him Boss while retaining his original designation.",
+            "id": "boss",
+            "name": "Boss",
+            "reveal": {
+              "chapter": 26
+            }
+          },
+          {
+            "aliases": [
+              "Aztu"
+            ],
+            "description": "The former human-known identity of Aztu, who once appeared as a proto-Feather armed with a scythe and bearing wings and bells.",
+            "id": "violet-valkyrie",
+            "name": "Violet Valkyrie",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The maker of Keith's exceptional Mite lantern and one of the few human Mite Speakers Aztu knew to retain her sanity.",
+            "id": "golden-goddess",
+            "name": "Golden Goddess",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Paragon of Resolve"
+            ],
+            "description": "A historical emperor and one of the rare humans known to remain sane as a Mite Speaker. Talon is identified as one of the first two Deathless and as a ruler who brought the war against Relinquished close to victory.",
+            "id": "talon",
+            "name": "Talon",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Paragon of Resilience"
+            ],
+            "description": "A historical emperor, sane Mite Speaker, and foundational figure among the Deathless. Aztu presents Urs as one of two lost emperors whose legacy shaped the powers still used in Keith's era.",
+            "id": "urs",
+            "name": "Urs",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A protector in the Digital Sea who prevents Relinquished from examining the weaker Resolve-derived fractals within Deathless souls. Keith's Mite Seeker is this figure's lantern.",
+            "id": "the-seekers-digital-sea-protector",
+            "name": "The Seeker's digital-sea protector",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith's Mite-held soul copy"
+            ],
+            "description": "The copy of Keith's soul given to the Mite Forge, now encountered as a conscious person within the Mite Seeker. He chooses cooperation instead of taking Keith's body and adopts a separate name for their shared work.",
+            "id": "keith-superior",
+            "name": "Keith Superior",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith Winterscar"
+            ],
+            "description": "The embodied Keith Winterscar, given this distinguishing name when his Mite-held soul copy adopts the name Keith Superior. Keith Prime agrees to seek physical-world access or a separate body for his cooperative counterpart.",
+            "id": "keith-prime",
+            "name": "Keith Prime",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An isolated, long-inactive Feather who commands the local biome. His army is searching the strata for two humans, and he is notified when To’Wrathh arrives.",
+            "id": "biome-ruling-third-generation-feather",
+            "name": "The biome-ruling third-generation Feather",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0GP2SHTMP",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-vii-path-of-the-mitespeaker"
+      },
+      "recaps": {
+        "ending": "Keith Prime and Keith Superior remain jointly attuned to the Mite Seeker, although Superior has no durable body and the Mites still conceal the Seeker's destination. Keith and To’Wrathh permanently destroy the biome-ruling Feather after To’Orda incapacitates it with a virus. Relinquished accepts the apparent outcome and withdraws, but retains control over To’Wrathh and remains the principal enemy. Draconis dies after forcing To’Orda to confront the cost of inaction; regeneration is expected, but its place and timing are unknown. To’Orda agrees to protect the biome, the Odin, and the conquered territory while seeking Draconis, but does not join Keith's alliance. Bob and the liberated Icon remain active local powers. To’Avalis still operates through To’Aacar's shell and seeks Mite Forge repairs. The proposed campaign against Relinquished, the recovery of Urs and Talon, and restoration of the full Resolve remain open.",
+        "in_short": "Separated from his allies in a contaminated biome, Keith Winterscar communicates with the fungal intelligence Bob, survives Odin hostility, and gains Aztu as a covert mentor. Her teaching and Bob's guidance let him attune the Mite Seeker and meet Keith Superior, the cooperative soul copy held by the Mites. Meanwhile, Draconis's captivity and the Icon of Stars gradually push To’Orda beyond his conditioned role. Keith reunites with To’Wrathh under Relinquished's observation, and they draw a local Feather ruler into a prepared Odin battlefield. Draconis dies to force To’Orda to choose whether to protect the region. To’Orda then helps disable the ruler, allowing Keith and To’Wrathh to erase it permanently. Relinquished withdraws. To’Orda takes responsibility for the biome and Odin without joining Keith's side, while Keith retains the Seeker, Superior, and a still-unfinished plan against Relinquished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar, a human knight of House Winterscar, became entangled in the struggle among the Mites, the Deathless, and the machine sovereign Relinquished. Journey serves as his relic armor and essential companion. To’Wrathh broke from ordinary Feather identity and protected Keith, while the Mite Speaker Abraxas drew him into a larger effort involving the Division Stone and opposition to Relinquished. To’Aacar was a Feather adversary, but To’Avalis now acts through To’Aacar's damaged shell. Keith's dealings with the Mite Forge left the Mites holding both his blood and a copy of his human soul pattern. His obligations bind personal survival to a much wider campaign, and the enemies pursuing him can threaten both his human allies and the machine figures who have rejected Relinquished. Those bargains, his ties to To’Wrathh, and his emerging role as a Mite Speaker place him at the center of a conflict whose intended shape is still unclear.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Keith escapes To’Orda but crashes into a forest saturated with dangerous spores. Injured and short on power, he must remain sealed inside Journey. The apparent infestation proves capable of communication. It accepts the name Bob and explains that it seeks coexistence because its uncontrolled life cycle destroys the environment it needs. Keith leaves the exchange viewing Bob as dangerous but potentially reasonable. Elsewhere, To’Avalis tries to seize Journey through a remote override and instead activates a virus secretly planted by To’Wrathh. She attacks him through the opened connection and obtains Keith's likely landing area. To’Avalis survives in To’Aacar's damaged shell, while To’Wrathh leaves her allies to reach Keith before the hostile Feathers can find him. To’Orda remains in pursuit, but his decision to spare a Grey Roamer cub gives Keith a tentative reason to think he may not behave like the other nearby hostile Feathers pursuing Keith.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Odin communications staff at the Icon of Stars learn that living humans have reached the region, but their leaders conceal the discovery. Keith crosses the Deadlands under repeated Odin attack, defeats the outpost's layered defenses, and identifies himself as a human Winterscar. He offers information about Bob and a possible ceasefire in return for supplies and communications help. The Odin provisionally admit him, even as their strategic fear of machine retaliation remains unresolved. To’Orda holds Draconis captive at the Valorant and uses the talking program in his rock interface to negotiate. After discovering the Icon through Draconis's records, To’Orda breaches the old AI, leaves it operational, and forces Aaron to relay an order that the Odin kill Keith. He also demands that Keith return to the Valorant if he wants to recover his companion. The threat endangers the arrangement Keith has only just established, while Draconis remains alive as leverage.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Keith enters the Deadlands outpost seeking replacement power, but a warrior-priest faction stages a coup and tries to deny him every usable cell. The translator sides with Keith and alerts the larger Deadlands garrison. Keith intercepts the reserve cells without killing their escort, restores Journey's power, and returns to find the settlement in open conflict. He suppresses a spreading fire while the tower faction attacks him, earning practical cooperation from the Deadlanders. Their support is based largely on his ability to communicate with Bob, while the coup faction believes obedience to the machines is the only way to preserve the Odin. A retired captain organizes a nonlethal counterattack. Keith helps fill the tower with smoke, forces its defenders out, and reaches the main server. He now has a possible route to maps and the Icon, but using the digital terminal risks repeating an earlier near-fatal experience, and Septimus is approaching with a large force.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Draconis questions To’Orda through the Rock and learns that Relinquished destroyed To’Orda's resolve after he tried to make her confront the surface. Their captivity arrangement develops into uneasy cooperation, including a shared meal and an attempt to recruit local inhabitants. With help from Draconis and To’Wrathh, To’Orda overcomes a Feather naming deadlock and adopts Boss as an additional designation. Keith enters the digital sea and meets Aztu, a shell-less proto-Feather echo allied with Abraxas. She offers occult training in exchange for Keith's account of Relinquished and insists that her survival remain hidden from To’Wrathh. Together they trace the Icon's concealed systems while an Odin force approaches Keith's body. The Icon is a powerful Golden Age AI constrained to use evasive, nonlethal defenses. Keith and Aztu bypass its screening maze and reach the threshold of direct contact, giving Keith a possible route to the Feather holding Draconis.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Keith and Aztu reach the Icon and confirm that To’Orda recently penetrated its systems. Keith contacts To’Orda, agrees to meet at the Valorant within a day, and wins a pause in the Odin pursuit. To’Orda then uses valid Festival Cruises authority to take corporate control of the Icon. After removing its restrictions on speech, movement, combat, and service, he leaves it autonomous except for a duty to aid him. Aztu continues Keith's training and explains the origins of the Deathless. Urs created Resolve and shared it with Talon, who nearly defeated Relinquished before an unnamed machine adversary broke his soul. Urs was captured and hidden, while Talon's memoryless remnant still hunts machines. Keith learns that his Mite Seeker is a rare lantern attuned to one user. To become a Mite Speaker, he must fill it with Mites and contact the copy of his soul held beyond the Mite Wall. Bob may know where a colony can be found.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Keith proposes a new version of the old anti-Relinquished design, with himself drawing her out, To’Wrathh trapping her, the Seeker's digital-sea protector destroying her, and Abraxas inheriting afterward. It remains only his theory. Septimus arrives but chooses negotiation, revealing that the Odin leadership's apparent internal split was partly a deception aimed at surviving the Icon's rule. He gives Keith power and offers the Deadlands outpost as a future battlefield. Bob directs Keith to a nearby Mite colony. There Keith loads the Mite Seeker and reaches the soul copy surrendered at the Mite Forge. The copy refuses to possess him, names itself Keith Superior, and calls the embodied man Keith Prime. Superior becomes the interpreter for the Mites and can operate an armored mirror projection, though it still lacks an independent body. The Mites guide both Keiths to a meeting point without explaining why. Meanwhile, To’Wrathh enters the region and covertly searches for Keith ahead of the local Feather forces.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: To’Wrathh finds Keith, but Relinquished watches their reunion and forces them to perform a hostile hunt. A third-generation Feather who rules the biome arrives with a huge crab-machine swarm and refuses to release either target. Keith and To’Wrathh fight together while preserving the appearance of enmity, then retreat toward the Deadlands and prepare the Odin defenses. Their concealed power-cell trap destroys much of the swarm and the ruler's mobile organ, but he survives. Keith attacks through smoke with mirror images, Nightbreaker ammunition, and an occult shield supplied by Catheda, while To’Wrathh intercepts the wounded ruler. Relinquished orders To’Orda to enter the battle under the ruler's command. Before complying, To’Orda releases Draconis. The Icon warns that the Odin may be exterminated regardless of the battle's result. As Odin fortifications hold off the remaining machines, Keith prepares to use true division on the ruler's soul rather than merely destroy another shell.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: To’Orda initially rescues the biome ruler from Keith and To’Wrathh, but Draconis draws him away from the fight. Draconis refuses escape and demands that To’Orda protect the Icon, the Odin, and the Grey Roamers. He knowingly accepts death to force a decision, and To’Orda crushes him while recognizing him as a friend. Draconis is expected to regenerate, but no one knows where or when. The sacrifice changes To’Orda's conduct. He infects the biome ruler with a false victory while To’Wrathh pins the helpless enemy and Keith erases its soul fractal with true division. Relinquished accepts the apparent disposal and withdraws. To’Orda and To’Wrathh are revealed as siblings. They establish mutual non-hostility, and To’Orda takes responsibility for the biome, the Odin, and the defeated ruler's territory while promising to seek Draconis. He remains independent rather than joining Keith. Keith Prime and Keith Superior retain the Mite Seeker, but its destination and the larger campaign against Relinquished remain unresolved. To’Avalis is still active in To’Aacar's shell and seeks repairs.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0GP2SHTMP",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-vii-path-of-the-mitespeaker"
+      }
+    },
+    "1984": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thin, worn records clerk in the Ministry of Truth in Airstrip One (formerly Britain), a province of the super-state Oceania ruled by the Party and its all-seeing figurehead, Big Brother. His job is to rewrite old newspapers and documents so that the past always matches whatever the Party currently claims. Outwardly obedient, he is inwardly rebellious: he loathes the regime, distrusts the reality it manufactures, and begins keeping an illegal diary, an act punishable by death. He is haunted by fragments of a past the Party has erased and by a longing for truth, privacy, and genuine feeling in a world where even a facial expression can betray you. Constantly watched by the telescreens that see and hear everything, he is nonetheless driven to test how far a single person can resist.",
+            "id": "winston-smith",
+            "name": "Winston Smith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist",
+            "xref": {
+              "wikidata": "Q11428966"
+            }
+          },
+          {
+            "description": "A dark-haired young woman who works in the Fiction Department of the Ministry of Truth, operating the machines that mass-produce cheap novels. She wears the scarlet sash of the Junior Anti-Sex League and plays the part of a zealous Party member, which had made Winston fear and dislike her, until she secretly slips him a note saying that she loves him. Bold, practical, and sensual, she rebels not out of political theory but out of appetite for the pleasure and private life the Party forbids. Skilled at deception and at arranging secret meetings, she treats disobedience as a personal freedom to be enjoyed rather than a cause to be argued.",
+            "id": "julia",
+            "name": "Julia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting",
+            "xref": {
+              "wikidata": "Q651130"
+            }
+          },
+          {
+            "description": "A large, heavy-faced member of the Inner Party, the ruling elite, whom Winston knows only slightly. Despite O'Brien's power and polished, brutal charm, Winston senses a hidden kinship and becomes convinced that behind the loyal exterior lies a secret opponent of the Party who shares his own forbidden doubts. That conviction, half hope and half fantasy, draws Winston toward him. O'Brien is cultured and self-assured, able to speak the Party's language with an irony that seems to invite complicity, and Winston clings to the belief that here, at last, is an ally in a world where trusting anyone can be fatal.",
+            "id": "obrien",
+            "name": "O'Brien",
+            "reveal": {
+              "chapter": 1
+            },
+            "xref": {
+              "wikidata": "Q1284200"
+            }
+          },
+          {
+            "description": "The mustachioed face on every poster and telescreen, the supposed leader of the Party and the object of Oceania's compulsory love and worship. His image is everywhere, above the warning that he is always watching. Whether he is a real man or purely a Party invention is never made clear; what matters is his function as the focus of the population's devotion and fear. He embodies the regime's total authority, and citizens are trained to feel gratitude and adoration toward him even as the state surveils, imprisons, and erases them.",
+            "id": "big-brother",
+            "name": "Big Brother",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist",
+            "xref": {
+              "wikidata": "Q751417"
+            }
+          },
+          {
+            "description": "The Party's designated enemy of the people, a former leader said to have betrayed the revolution and now the supposed head of a shadowy resistance called the Brotherhood. His face is shown daily during the Two Minutes Hate so that citizens can scream their fury at him. Whether he and his organization truly exist, or are fabrications the Party uses to channel and control public hatred, is left uncertain. To Winston he represents the faint possibility of organized opposition, and a book attributed to Goldstein promises to explain how and why the Party's system of power really works.",
+            "id": "emmanuel-goldstein",
+            "name": "Emmanuel Goldstein",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor",
+            "xref": {
+              "wikidata": "Q645795"
+            }
+          },
+          {
+            "description": "The elderly, mild-mannered proprietor of a junk shop in the working-class prole quarter, from whom Winston buys a blank diary and later a glass paperweight he treasures as a relic of the vanished past. Seemingly a harmless widower with a fondness for old rhymes and forgotten objects, Charrington offers Winston the use of a small upstairs room that appears to hold no telescreen, a rare corner of privacy. His shop and his gentle manner suggest a quiet survivor of an earlier age.",
+            "id": "mr-charrington",
+            "name": "Mr. Charrington",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colleague of Winston's at the Ministry of Truth, a philologist working on the official dictionary of Newspeak, the Party's shrinking, engineered language designed to make disobedient thought impossible by removing the words for it. Enthusiastic and dangerously clever, Syme speaks with open relish about how the vocabulary is being cut down year by year. Winston privately judges him too intelligent and too candid to survive, certain the Party will one day decide he sees too clearly.",
+            "id": "syme",
+            "name": "Syme",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Winston's neighbor and fellow Ministry worker, a stout, sweaty, tirelessly cheerful man who embodies the ideal unthinking Party loyalist. He throws himself into community activities and swallows every slogan without question. His young son and daughter are fervent members of the Spies, the Party's youth organization, and behave like miniature informers eager to catch adults in disloyalty, so that Parsons lives contentedly under the watchful eyes of his own children.",
+            "id": "tom-parsons",
+            "name": "Tom Parsons",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "1984"
+      },
+      "recaps": {
+        "ending": "Winston's rebellion ends in total defeat. Captured with Julia after their hidden room is exposed as a Thought Police trap, he is held in the windowless Ministry of Love, where O'Brien, the man he had trusted as a fellow dissident, personally oversees his torture and re-education. Over long agony Winston is made to surrender not just his resistance but his belief in objective truth, accepting whatever the Party dictates. He clings to one last loyalty, his refusal to betray his love for Julia, and for that he is taken to Room 101 and threatened with his worst fear, a cage of rats brought to his face, until he breaks and begs that Julia be tortured in his place. That betrayal empties him. Released back into ordinary life, he meets Julia once more, and both admit they betrayed each other and can no longer feel what they once did. Winston now passes his days in a haze of gin and Party slogans. The novel closes as he gazes at Big Brother's portrait and feels a surge of love for the regime that destroyed him: the Party has won completely, taking not only his obedience but his heart and mind. The book ends with an appendix on Newspeak, written in the past tense as though describing a period already over.",
+        "in_short": "In the totalitarian super-state of Oceania, Party member Winston Smith works at the Ministry of Truth rewriting history to match the regime's lies, while the face of Big Brother watches from every screen. Sickened by the surveillance and the manufactured reality, he begins a secret diary, then a forbidden love affair with a bold younger woman, Julia, and the two rent a hidden room where they can briefly live as themselves. Convinced that the Inner Party official O'Brien is a secret dissident, Winston accepts induction into a supposed underground resistance and is given a book explaining how the Party rules purely for power. But it is all a trap: their room was watched, the friendly shopkeeper is a spy, and O'Brien is a loyal Party inquisitor. Winston is imprisoned and tortured in the Ministry of Love until he surrenders his mind, and in Room 101, faced with his greatest fear, he betrays Julia. Broken and remade, he is freed only to find that he now loves Big Brother.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Winston Smith is a low-ranking member of the Party in Oceania, one of three warring super-states, living in a grimy, rationed London under constant surveillance by telescreens and the Thought Police. He works at the Ministry of Truth, where his job is to alter records so that history always confirms whatever the Party currently claims. Big Brother's face watches from every wall, and the daily Two Minutes Hate whips citizens into fury against the traitor Emmanuel Goldstein. Sickened by the lies and by the erasure of the real past, Winston commits an act of rebellion by starting a secret diary, knowing discovery means death. He is drawn to the Inner Party official O'Brien, whom he imagines to be a fellow doubter, and unsettled by a dark-haired young woman he assumes is spying on him. Through his memories and his forbidden writing, the machinery of the state comes into focus: the rewriting of fact, the policing of thought, and the loneliness of a man who suspects he may be the last person left who still values truth.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winston's quiet rebellion deepens. At work he sees how thoroughly the Party controls reality, even holding in his hands proof that it has rewritten history before duty forces him to destroy it. He talks with his colleague Syme, who cheerfully explains how Newspeak is being pruned to make dissent literally unthinkable, and Winston concludes that so clear-sighted a man is doomed. He comes to believe that hope, if it exists anywhere, lies with the proles, the unregarded working masses who are largely free of the worst surveillance. Wandering their district, he enters a junk shop run by the gentle old Mr. Charrington, buys a beautiful glass paperweight, and is shown a private upstairs room with no telescreen, an intoxicating glimpse of privacy. Leaving, he sees the dark-haired girl nearby and, certain she is following him, is gripped by fear that his crimes are about to be exposed.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dark-haired girl, Julia, secretly hands Winston a note confessing that she loves him, turning his dread into desperate hope. After careful, coded arrangements they meet in the countryside and begin a passionate, illegal affair, a rebellion of pleasure and private feeling against a Party that tries to abolish both. Julia, unlike Winston, cares nothing for politics or theory; she breaks the rules simply because she wants to live, and she is expert at deception, hiding her disobedience behind a show of fervent loyalty. They rent the room above Charrington's shop as a secret refuge, filling it with small forbidden comforts. There, briefly, they build a fragile private world of intimacy, real coffee and sugar, and stolen ordinary life, even as both understand that people who do what they are doing are always caught in the end, and that their happiness is borrowed against a certain, terrible reckoning.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winston and Julia are contacted by O'Brien, who receives them at his comfortable Inner Party flat and confirms Winston's long-held hope by claiming to be part of Goldstein's underground Brotherhood. They swear themselves to the resistance and are given a copy of Goldstein's secret book, which lays out how the Party keeps power for its own sake and how the three super-states wage perpetual, unwinnable war to keep their populations poor and controlled. Reading it aloud together in their rented room, Winston feels he finally understands the world. Then everything collapses: a hidden telescreen has been behind a picture on the wall all along, iron voices order them to freeze, and the house is stormed. The kindly Mr. Charrington reveals himself as an agent of the Thought Police. Winston and Julia are seized and dragged away separately, their sanctuary exposed as a trap that had been closing on them from the start.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winston is imprisoned in the windowless Ministry of Love, where he learns that O'Brien is not a rebel but a loyal servant of the Party who has been studying and manipulating him for years. Under O'Brien's direction he is starved, beaten, and tortured, forced to abandon fact itself and to accept whatever the Party says is true, even that two plus two makes five. The aim is not merely to punish him but to remake his mind so that he genuinely believes and loves what he once hated. When Winston still holds one private loyalty, his love for Julia, he is taken to Room 101 and confronted with his deepest terror, a cage of rats brought toward his face, until he breaks completely and screams for them to be turned on Julia instead, betraying the one thing he had sworn to protect. Emptied and reshaped, he is eventually released. He meets Julia once more, and each admits to having betrayed the other; whatever they felt is gone. In the final image Winston sits in a cafe, gazing up at the poster of Big Brother, his rebellion utterly defeated, at last loving Big Brother.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "1984"
+      }
+    },
+    "a-binding-of-blood": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Siobhan",
+              "Chauvin",
+              "Raven Queen"
+            ],
+            "description": "A gifted Thaumaturgic University student living under a male form while police blood-scrying hunts her other identities. Liza's ward keeps the search from locating her, but each attempt hurts her, and her weak replacement conduit limits how much power she can safely channel.",
+            "id": "sebastien-siverling",
+            "name": "Sebastien Siverling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sebastien's exacting practical-casting professor and provisional sponsor. He designs a tournament that rewards efficient control as well as raw capacity and expects Sebastien to meet unusually high standards despite the limitations of a poor conduit.",
+            "id": "thaddeus-lacer",
+            "name": "Thaddeus Lacer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A well-connected classmate who regards Sebastien as a serious rival in Thaddeus Lacer's practical-casting tournament. His competitive interest is open, but at his introduction he presents no immediate threat beyond the contest.",
+            "id": "damien-westbay",
+            "name": "Damien Westbay",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sebastien's fellow student and friend, who notices the effects of severe strain and takes him to the university infirmary. His concern is practical and persistent even when Sebastien tries to conceal the cause of the illness.",
+            "id": "newton-moore",
+            "name": "Newton Moore",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lycanthrope leader of the Nightmare Pack. The Alpha negotiates with Oliver Dryden over territory, combat duties, and a proposed five-year alliance against the Morrows while asking whether the Raven Queen might assist.",
+            "id": "alpha",
+            "name": "Alpha",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Stag"
+            ],
+            "description": "Leader of the Verdant Stag and Sebastien's protector and employer. He negotiates a provisional alliance with the Nightmare Pack against the Morrows while carefully maintaining the Raven Queen's independence from his organization.",
+            "id": "oliver-dryden",
+            "name": "Oliver Dryden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent unlicensed sorcerer whose costly magic helps shield Sebastien from divination. She warns that the present defense cannot be trusted forever and says a permanent solution is possible, but only for a substantial price.",
+            "id": "liza",
+            "name": "Liza",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sebastien's classmate and one of Damien's friends. She asks Sebastien for practical advice on improving casting efficiency and quickly benefits from his explanation of will visualization during a self-directed class exercise.",
+            "id": "anna-gervin",
+            "name": "Anna Gervin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boy previously acquainted with Sebastien in her sorceress identity. He recognizes her despite her male presentation and keeps the connection private when they meet in the crowded Verdant Stag.",
+            "id": "theo",
+            "name": "Theo",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Thaumaturgic University student who receives a spelled paper message shortly before Sebastien traces an active scrying attempt to Eagle Tower.",
+            "id": "tanya-canelo",
+            "name": "Tanya Canelo",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legal cover identity prepared for Siobhan through the Silk Door, supported by papers naming her as an employee and a nominal client of Oliver Dryden. The identity gives her a defensible reason to use the transformation safe house.",
+            "id": "sylvia-nakai",
+            "name": "Sylvia Nakai",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Leader of the Nightmare Pack and Oliver Dryden's prospective ally. He receives the Raven Queen with tribute and asks for help with the life-threatening condition of his chosen sister's young son, treating his guest as a dangerous supernatural power.",
+            "id": "lord-linwood",
+            "name": "Lord Linwood",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blind prognose diviner, Lord Linwood's sister by choice, and the mother of Miles. She seeks the Raven Queen's aid for her dangerously sleep-deprived son, whose uncontrolled visions keep him from restorative sleep.",
+            "id": "gera",
+            "name": "Gera",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miles"
+            ],
+            "description": "Gera's young son, whose mixed ancestry causes uncontrolled visions that repeatedly wake him and deny him restorative sleep, leaving him in mortal danger.",
+            "id": "millennium",
+            "name": "Millennium",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A university professor secretly meeting Tanya at the menagerie. He directs her to recover the stolen book, investigate its connection to emerging powers, and rely on a university faction to obstruct the Crown's inquiry.",
+            "id": "professor-munchworth",
+            "name": "Professor Munchworth",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An advanced practical-casting student who powers a sustained movement spell with wax. The technique lets him overcome Sebastien's counters through steady pressure and win both their match and Thaddeus Lacer's tournament.",
+            "id": "nunchkin",
+            "name": "Nunchkin",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The unnamed leader of the Morrows, captured when the Verdant Stag and Nightmare Pack seize a key warehouse. He remains alive in alliance custody, creating an immediate opportunity for interrogation.",
+            "id": "morrow-leader",
+            "name": "Morrow Leader",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A surviving Morrow who recognizes Chauvin from a wanted poster during the captives' standoff. He attacks her with a fireball, triggering the protective but dangerously overheating response of her medallion.",
+            "id": "sticky-fingers",
+            "name": "Sticky Fingers",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captured leader of the Morrows. By the time Tanya offers to help free him, surviving Morrows report that he is rumored dead and turn their attention to extracting a more immediate payoff from their captives.",
+            "id": "lord-morrow",
+            "name": "Lord Morrow",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of the surviving Morrow kidnappers trapped with the Raven Queen during Newton's transformation. Once ordinary attacks fail, he asks her for protection and follows her silent warning that the spreading aberrant reacts to sound.",
+            "id": "chief",
+            "name": "Chief",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A frightened younger Morrow whom Siobhan privately nicknames for his persistent sniffing. He shelters with the other survivors as Newton's aberrant form spreads through the building and follows the warning that sound attracts its strings.",
+            "id": "sniffles",
+            "name": "Sniffles",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A surviving Morrow trapped near Newton's spreading aberrant form. After making noise, he is infected and falls unconscious. The loss of consciousness slows the assimilation without reversing it, leaving his immediate fate uncertain.",
+            "id": "bulldog",
+            "name": "Bulldog",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior investigator who arrives with Thaddeus Lacer and a Nightmare Pack diviner after the aberrant outbreak. He supervises the inquiry into the incident and Sebastien's involvement.",
+            "id": "titus-westbay",
+            "name": "Titus Westbay",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Verdant Stag operator and Sebastien's creditor from the earlier book. At the start of this volume, the loan remains active and continues to bind Sebastien to work for the organization while interest adds to the financial pressure.",
+            "id": "katerine",
+            "name": "Katerine",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sebastien's imprisoned father, known from the earlier book. His custody and a coercive marriage bargain tied to him remain unresolved when this volume begins, with Sebastien's mother's knot ring still held as collateral.",
+            "id": "ennis-nott",
+            "name": "Ennis Nott",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0B919NMGQ",
+            "type": "community"
+          }
+        ],
+        "work": "a-binding-of-blood"
+      },
+      "recaps": {
+        "ending": "Sebastien temporarily suppresses Newton's aberrant core, changes back from Siobhan, and escapes the building in his university identity. The Red Guard detains and questions him, but Gera supports a false account in which the Raven Queen is a separate supernatural being who granted Sebastien protection from divination. Thaddeus Lacer publicly claims Sebastien as his apprentice and, after testing him, accepts that he is not the Raven Queen in disguise. Newton cannot be restored and is left for Red Guard neutralization or permanent containment. Tanya survives, is sent to the university infirmary, and refuses to speak. The surviving Morrows go to Harrow Hill Penitentiary. Sebastien is exhausted, grieving, and magically bound to keep the incident secret, but retains his place at the university. Lacer puts him to sleep and takes him toward the infirmary. Oliver Dryden's alliance has destroyed the Morrows' leadership and seized their warehouse, including evidence of a university faction stockpiling beast cores and restricted components. The stolen book, the amulet, Professor Munchworth's network, Tanya's campus contact, Sebastien's debts, and the continuing Crown investigation remain unresolved.",
+        "in_short": "While police use her blood to hunt the Raven Queen, Sebastien balances university demands, debt, secret research, and work for Oliver Dryden. She recruits Damien Westbay and Newton Moore to investigate Tanya Canelo, discovers that Professor Munchworth is directing Tanya to recover the stolen book, and enters a clandestine thaumaturge market as Chauvin. As the Raven Queen, she also gives Miles a maintained treatment for his lethal sleeplessness. Oliver's Verdant Stag and the Nightmare Pack defeat the Morrows, kill their leader, and uncover a university-linked stockpile of dangerous components. Financial desperation draws Newton into Tanya's illicit mission, and surviving Morrows kidnap them with Siobhan. Newton becomes an incurable spreading aberrant. Siobhan discovers that calm and silence hinder it, saves several captives, stuns its central mass, and escapes as Sebastien. Gera then helps present the Raven Queen as a separate supernatural protector. Tanya survives but stays silent, Newton is lost, and Sebastien remains protected by Thaddeus Lacer while the university conspiracy, stolen book, amulet, and personal debts stay open.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Siobhan acquired identities that let her move through Gilbratha as the student Sebastien Siverling, the wanted sorcerer Chauvin, and the feared Raven Queen. She entered the Thaumaturgic University under Thaddeus Lacer's sponsorship while also becoming entangled with Oliver Dryden and the Verdant Stag. A stolen book and the amulet connected to her transformations drew dangerous attention. Police retained blood linked to Chauvin, giving them a means to search for her despite the change in body. Her father, Ennis Nott, remained imprisoned, while a coercive marriage bargain and the collateral of her mother's knot ring threatened her future. She also owed Katerine a large debt and continued to work for the Verdant Stag. These obligations left every identity dependent on secrets held by others. As the new volume begins, her university identity remains intact, but the blood, the book, the debt, and the separation between her public and clandestine lives are all vulnerable.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Police blood-scrying reaches Sebastien at the university, proving that Chauvin's blood remains linked to her transformed body. Liza's implanted ward prevents discovery, but its activation is painful and consumes Sebastien's blood. At the same time, Thaddeus Lacer prepares students for a practical-casting tournament, and Sebastien's weak replacement conduit makes extended competition hazardous. Severe sleeplessness and repeated scrying push her into will strain. During practice she accidentally cuts Damien Westbay, then secretly treats him with blood-powered healing. Damien agrees to hide the incident in exchange for a future favor, and their rivalry begins turning into trust. Sebastien researches a forbidden-adjacent spell that could shift the need for sleep to another being, but the surviving work is incomplete. Oliver Dryden negotiates a provisional Verdant Stag alliance with the Nightmare Pack against the Morrows. Liza warns that the current protection from scrying will eventually fail and offers a permanent defense for a high price. Lacer, unaware of Sebastien's real condition, requires her to earn fifty exhibition points. As Sebastien returns to university, a rogue-magic alarm sends the students into shelter.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien begins researching divination so she can locate or neutralize the blood being used against her. Newton Moore reveals that his father's illness and his family's poverty may force him to leave university. Sebastien also helps Damien and Anna Gervin improve their casting efficiency. After ordinary sympathetic searches point back to her own body, Sebastien develops a reverse-scrying method and follows an active attempt to Eagle Tower. Damien secretly follows her inside. They find police and university personnel operating a large array to locate the Raven Queen, while Sebastien's ward nears its limit. Tanya Canelo arrives shortly before citywide alarms interrupt the spell. An explosion destroys the divination room, and Tanya pulls Sebastien and Damien clear of the collapse. Officials later call the emergency a false alarm caused by alchemy. Sebastien suspects that Tanya deliberately caused the destruction to prevent Chauvin from being found, but neither her motive nor her allegiance is established. The immediate scrying attempt has ended, yet the authorities may still possess Sebastien's blood. Damien believes Sebastien is investigating the Raven Queen rather than realizing that Sebastien is the target.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien and Oliver Dryden compare what happened at Eagle Tower and decide to investigate Tanya Canelo while seeking a way to destroy the stored blood. They suspect that university, Crown, and criminal factions may be competing for the Raven Queen and the stolen book, but cannot prove the larger arrangement. Sebastien recruits Damien Westbay into a deliberately mysterious operation and trades the favor she owes him for secrecy and limited obedience. Damien then helps recruit Newton Moore as a paid observer of Tanya. Newton needs the income and agrees to report her movements without taking dangerous risks. Investigators determine that the supposed aberrant emergency was staged with animal remains, a concussive spell, and stolen alarm equipment. Thaddeus Lacer doubts that the Raven Queen personally created it. He also discovers that Sebastien concealed severe will strain. Damien refuses to expose Sebastien's secret even under Lacer's pressure. Lacer warns Sebastien never to cast in that condition again and replaces the inadequate conduit with one of his own former solarium conduits. The fabricated emergency remains unattributed, but Sebastien now has better equipment and two loyal partners watching Tanya.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien and Damien formalize their surveillance as Operation Sentinel, hiding a tracker in Tanya's boot and giving linked alert bracelets to Damien and Newton. Oliver Dryden establishes the Silk Door as a transformation safe house and supplies the legal cover identity Sylvia Nakai. Using her Chauvin form and Raven Queen persona, Sebastien meets Lord Linwood of the Nightmare Pack. Linwood and the blind diviner Gera ask her to help Gera's son Miles, whose uncontrolled visions prevent restorative sleep. Sebastien cannot cure him, but designs and guides a nightly spell combining dream suppression with accelerated natural healing. The first casting succeeds, giving Miles a maintained treatment while he learns to manage the visions. The Pack interprets the Raven Queen as a dangerous dream-and-shadow being and moves closer to alliance with the Verdant Stag. Back at the university, Sebastien develops a sleep-proxy spell and accepts Thaddeus Lacer's cautious oversight. Tracking Tanya to the menagerie, Sebastien and Damien overhear Professor Munchworth order her to retrieve the stolen book and identify its link to unnamed new powers. A university faction is protecting the operation from Crown scrutiny, though its full purpose remains unknown.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Following Tanya into the city as Chauvin, Sebastien discovers a masked clandestine gathering where thaumaturges trade restricted goods and information. Liza sponsors her admission. The organizers learn that Chauvin claims to be the Raven Queen, while Tanya remains unaware and publicly offers a large reward for information or a meeting with that same figure. Chauvin gains continued access, secures rare living components for her sleep research, buys medical and defensive supplies for Oliver, and reports the market to him. Oliver and Lord Linwood finalize a coordinated offensive against the Morrows, and Sebastien accepts paid work as a healer's assistant. Her earnings and the sale of magical materials reduce her Verdant Stag debt, but do not clear it. She completes the sleep-proxy design, only for Thaddeus Lacer to measure its power requirement far above her present capacity. The spell may be viable in theory, but Sebastien cannot safely cast it. She must continue disciplined training while preparing trauma supplies for the coming attack and maintaining surveillance on Tanya.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Midterms test Sebastien's control under pressure. She advances through Thaddeus Lacer's practical-casting tournament but loses to the experienced Nunchkin, whose wax-powered technique sustains greater force. A student's death from will strain underscores the danger of the university's demands. After the exams, the Verdant Stag and Nightmare Pack launch coordinated attacks across Gilbratha. They breach the main Morrow warehouse, subdue its defenders, and capture the Morrow leader. Working as Chauvin, Sebastien staffs a makeshift infirmary, stabilizes casualties, uses an adapting solution to replace a badly wounded child's lost blood, and helps repel an assault on the treatment site. Oliver Dryden interrogates the captured leader and learns that a university faction backs the Morrows. He coerces access to a warded room, kills the Morrow leader after an attempted trap, and discovers tunnels and a cache of hundreds of valuable beast cores alongside other restricted components. The alliance has broken the Morrows' leadership and seized their warehouse, but the hidden stockpile points to a much larger and still unexplained university preparation.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien returns to the university after the alliance victory, exhausted and behind on Thaddeus Lacer's private exercises. Oliver reports success but warns that the enlarged Verdant Stag now faces greater attention from rivals, police, and the Crown. Research suggests Sebastien's damaged amulet may be a rare self-powered artifact, which could make the stolen book far more important than she assumed. Newton's family home has been made unlivable, and his financial crisis deepens. Tanya offers him highly paid illegal work, and he accepts despite Sebastien's offer of safer help. Sebastien also learns that Lacer has publicly listed her as his provisional apprentice. She later overhears Professor Munchworth ordering Tanya to question the clandestine market about the Verdant Stag, Nightmare Pack, and Raven Queen. At the market, Tanya buys information intended to free imprisoned Morrows, then prepares to ambush an apparent follower. Siobhan, following as Chauvin to protect Newton, is captured. She convinces Tanya and Newton that Chauvin is the Raven Queen without exposing Sebastien. Surviving Morrows then kidnap all three. During the standoff, a sudden magical distortion encloses Newton in a vibrating, vine-like sphere.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Newton loses control and becomes an incurable blight-type aberrant whose strings spread through living victims. Siobhan, Tanya, and several Morrows shelter inside the building while the creature reacts to agitation and sound. Siobhan signals Oliver by breaking linked bracelets and later uses blood magic to save Chief after he amputates an infected forearm. She realizes that the aberrant reproduces Newton's self-calming spell: its hum pacifies nearby people, and those who remain deeply calm and quiet can pass through the strings. Siobhan teaches the countermeasure, guides Tanya, Chief, Sniffles, and surviving residents to relative safety upstairs, then returns alone for incriminating belongings. She reaches Newton's central mass, resists its numbing effect, and stuns it, temporarily silencing the structure. After changing into Sebastien, she escapes but is detained by the Red Guard. Gera supports a cover story that the Raven Queen is a separate supernatural being who blessed Sebastien against divination. Thaddeus Lacer protects his apprentice and accepts after testing him that he is not the Raven Queen in disguise. Tanya is hospitalized and silent, the surviving Morrows are imprisoned, and Newton is left for neutralization or permanent containment. Sebastien retains his cover but is grieving, exhausted, and bound to secrecy. Lacer puts him to sleep and takes him toward the infirmary. The stolen book, amulet, university faction, Tanya's contact, and his debts remain unresolved.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0B919NMGQ",
+            "type": "community"
+          }
+        ],
+        "work": "a-binding-of-blood"
+      }
+    },
+    "a-bond-broken": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young survivalist emerging from the Undying Lord trial with violet eyes and Al'rashian heritage. Kirstin's bonded summon and Orion's adopted brother, he remains under Cullen's demanding instruction.",
+            "id": "trent",
+            "name": "Trent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An exiled Al'rashian warrior whom Trent freed from the Undying Lord trial. As Trent's adopted brother, he has been charged with finding Clan Embra and traveling to Al'drossford so that the brothers can reunite.",
+            "id": "orion-embra",
+            "name": "Orion Embra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A guard recruit who survives the Undying Lord trial beside Trent. She is his close companion and training partner.",
+            "id": "tersa",
+            "name": "Tersa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Clan Embra identity Trent declares for Tersa when he names her as his and Orion's sister.",
+            "id": "tersa-embra",
+            "name": "Tersa Embra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Cullen"
+            ],
+            "description": "An exceptionally powerful sergeant responsible for training Trent, Tersa, and Al'drossford's recruits. His performance in the Undying Lord trial impresses its keeper, and his combat judgment helps direct Trent toward a suitable path.",
+            "id": "cullen",
+            "name": "Cullen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Undying Lord trial keeper"
+            ],
+            "description": "The last king of fallen Al'rashia and keeper of the Land of the Undying Lord. He turned that realm into a test of survival, yet violated its rules to keep Orion safe and now sees hope for his scattered people.",
+            "id": "former-alrashian-king",
+            "name": "the former Al'rashian king",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Al'rashian paragon"
+            ],
+            "description": "An ancient Al'rashian teacher who remains loyal to the former king. Accompanied by a bonded familiar, he is summoned to help guide Trent and Orion toward the responsibilities gathering around them.",
+            "id": "dusk-tower-master",
+            "name": "the Dusk Tower master",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young noble and survivor of the Undying Lord trial who had summoned and bonded Trent. She returns without her party member Matt.",
+            "id": "kirstin",
+            "name": "Kirstin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Matthias"
+            ],
+            "description": "A member of Kirstin's party who does not return with the other survivors of the Undying Lord trial. His absence is the central loss confronting Kirstin when the group emerges.",
+            "id": "matt",
+            "name": "Matt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A scout and leader among the survivors recovering from the Undying Lord trial. He is sent with the larger group to rest before their return to Al'drossford.",
+            "id": "alan",
+            "name": "Alan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alan"
+            ],
+            "description": "The name established for Alan, a scout and leader among the survivors recovering from the Undying Lord trial.",
+            "id": "alistern",
+            "name": "Alistern",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Frank",
+              "Corporal Francis"
+            ],
+            "description": "A guard corporal traveling with the exhausted survivors of the Undying Lord trial. Cullen sends him and the larger group toward Sly Hill to recover before returning to Al'drossford.",
+            "id": "francis",
+            "name": "Francis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A battle-healer among the recovering trial survivors. Because her specialization requires her to work close to the fighting, she asks for staff instruction when Francis restores the group's drills.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The divine power governing a protected garden. She takes a particular interest in Trent's Al'rashian identity, his nearly broken bond, and his nature as a balancer, then grants him Earth Manipulation.",
+            "id": "nature-goddess",
+            "name": "the nature goddess",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An instinct-driven companion housed in Trent's soulbound vambraces. It communicates through Earth Manipulation, briefly directs his body to develop Dust, and guides his harvesting in the Garden of Clarity.",
+            "id": "vambrace-earth-elemental",
+            "name": "the vambrace earth elemental",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fairy queen overseeing Trent's Garden of Clarity trial. She rejects the trial's judgment that he succeeded and adds a duplicate opponent, leaving her owing him recompense after he wins.",
+            "id": "garden-of-clarity-keeper",
+            "name": "the Garden of Clarity keeper",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The newly awakened successor who takes leadership of the garden's fairies after the former keeper is removed.",
+            "id": "new-fairy-queen",
+            "name": "the new fairy queen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable itinerant merchant who operates a magical shop from a floating wagon. He has arranged to encounter Trent and Tersa, offering equipment, abilities, and knowledge in exchange for their accumulated loot.",
+            "id": "traveling-alrashian-merchant",
+            "name": "the traveling Al'rashian merchant",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The traveling merchant's speaking companion and shop guardian. The wolf can alter its size and immediately recognizes Trent as a Survivalist.",
+            "id": "merchants-bonded-greater-dire-wolf",
+            "name": "the merchant's bonded greater dire wolf",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The full name by which the traveling Al'rashian merchant identifies Trent after examining the effects that conceal his status and presence.",
+            "id": "trent-embra",
+            "name": "Trent Embra",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An earth-and-water spellcaster who leads the Blackmire lizardman tribe. He is trying to confine a vast mud elemental before its spreading swamp destroys the tribe's newly usable farmland.",
+            "id": "blackmire-shaman",
+            "name": "the Blackmire shaman",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A junior spellcaster assisting the Blackmire shaman during the attempt to contain the mud elemental. The apprentice arrives late and wrongly accuses Orion when the effort fails.",
+            "id": "blackmire-shamans-apprentice",
+            "name": "the Blackmire shaman's apprentice",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vast elemental whose spreading swamp threatens Blackmire's new farmland. It enters Orion's spirit orb while seeking a name and resting place, accompanying him without forming a pact.",
+            "id": "blackmire-mud-elemental",
+            "name": "the Blackmire mud elemental",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "black ferret form"
+            ],
+            "description": "A shape-changing inhabitant of the Dusk Tower that can appear as a shadow or a black ferret. It recognizes an immediate danger surrounding Trent and moves to accompany him as he leaves Al'drossford.",
+            "id": "dusk-tower-shadow",
+            "name": "the Dusk Tower shadow",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774246317",
+            "type": "community"
+          }
+        ],
+        "work": "a-bond-broken"
+      },
+      "recaps": {
+        "ending": "The numbered story closes with the three Embra on separate paths. Orion peacefully draws the Blackmire mud elemental into his spirit orb without securing a pact, then leaves the tribe under escort toward the road. Tersa returns to Al'drossford as an advanced Stormbringer, and Cullen plans to promote her to junior guardsman while he investigates the unknown force that displaced a greater ice serpent. Trent, shaken by the severing of his bond to Kirstin, leaves the keep to complete a two-week Survivalist quest alone. Fairy Cloak still hides him from attention and pushes him toward aggression, while a Dusk Tower shadow secretly joins him. Afterward, Agatha identifies the danger in the ability, supplies Trent, and helps him register as an adventurer before he departs. A young royal woman who intends to escape court control and form an adventuring party is also approaching Al'drossford. The concealed trial chest, divine interest in Trent, Orion's unsettled elemental, the barred Al'drossford throne, and the unexplained interference remain unresolved.",
+        "in_short": "After the Undying Lord trial, Trent returns as an Al'rashian Survivalist and trains under Cullen beside Tersa, while his adopted brother Orion struggles through a distant swamp. Trent and Tersa enter the Garden of Clarity separately. Tersa confronts her rage and becomes a Stormbringer, but the garden's keeper severs Trent's bond to Kirstin and forces the dangerous Fairy Cloak upon him before being deposed. The ability makes others overlook Trent and strengthens his aggressive impulses. Cullen later kills a greater ice serpent that was mysteriously transported into the region, while an Al'rashian merchant equips Trent and warns him to hide a trial chest shielded from divine notice. Orion helps Blackmire by taking an unbonded mud elemental into his spirit orb. Trent leaves Al'drossford for a solitary survival quest with a Dusk Tower shadow secretly attached to him, then registers as an adventurer with Agatha's help. Tersa is set for promotion, Orion heads toward the road, and the Embra remain separated amid signs of a possible Al'rashian restoration.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Trent entered the Land of the Undying Lord as Kirstin's bonded summon alongside Tersa, Cullen, and other guards and adventurers. The survival trial exposed the group to prolonged danger and left lasting losses. Trent freed the imprisoned Orion Embra, an exiled Al'rashian warrior, and the two became adopted brothers. Trent emerged physically transformed, with violet eyes, Al'rashian heritage, and a connection to the traditions of the Dusk Wraiths. The trial's keeper was the former king of fallen Al'rashia, who had broken his own rules to shelter Orion. He ordered Orion to find Clan Embra and travel to Al'drossford, where he could reunite with Trent. Believing the brothers might help renew the scattered Al'rashian people, the keeper also summoned the ancient master of the Dusk Tower to guide them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors return near the Burning Lake, but Matt is missing and the ordeal has left the group deeply unsettled. Cullen finds that Trent has become a Swordsman, while Tersa's new Brute specialization magnifies her anger until she attacks him. Rather than dismiss her outright, he gives her two weeks to develop a balancing warrior path. Trent declares Tersa part of Clan Embra and his sister alongside Orion. Cullen separates the pair from the main party for relentless field training, teaching them to treat combat skills as practiced techniques rather than automatic gifts. Trent improves his longsword work, movement, tracking, and durability, while Tersa trains with a spear. Elsewhere, Orion begins crossing a dangerous swamp to seek Clan Embra. He uses the thousands of minor elementals housed in his spirit orb to defeat a firebee swarm, though the encounter exposes how much control he still lacks. The Dusk Tower master quietly follows Trent's party, concerned about the young Survivalist's training and the responsibilities awaiting him. At Sly Hill, Francis resumes command of the traumatized survivors and begins restoring their cohesion through drills and a manageable trial.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cullen tests Trent and Tersa against a pack of grax. Tersa's first reckless charge leaves her surrounded, but Trent abandons his bow when necessary and the pair recover to win without Cullen's intervention. The lesson reinforces that Tersa must resist the urges created by Brute, while Trent advances Swordsman and gains a safer fencing technique. In the swamp, Orion develops new magic and chooses the rare Dominating Tyrant path. Its influence pushes him toward arrogance and unnecessary conflict, but the restraint bound to his Spirit Summoner class helps him regain control. Cullen then takes his trainees into a protected garden. A curse from Tersa provokes the nature goddess, who binds her and draws Cullen's submission. The goddess identifies Trent as an Al'rashian balancer with a nearly broken bond, fails in an attempt to mark him, and grants him Earth Manipulation. She leaves an unexplained mark on Tersa instead. The Dusk Tower master later confronts the goddess and shields Trent from her plans. At the nearby Garden of Clarity, Trent enters an individual trial, befriends its fairy gardeners, discovers an earth elemental inside his vambraces, and harvests the garden before approaching its inner challenge.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tersa and Trent face separate versions of the Garden of Clarity. Tersa panics around the fairies and uses her rage to gather them, driving herself toward the central fountain. Trent refuses needless violence, reaches the fountain peacefully, and defeats a duplicate opponent after the keeper unfairly adds it to his cleared trial. The keeper answers her debt by using old magic to sever Trent's bond with Kirstin, destroying the purpose around which he had organized his life. A higher authority intervenes, forces the keeper to grant further compensation, and transforms Trent with Fairy Cloak. He selects effects that dampen his presence, improve stealth, and mask his status, then collapses. The keeper is stripped of her office and bound to the fountain as its guardian. At her own fountain, Tersa recognizes that her aggression has endangered Trent and Orion and echoes her abusive father. She chooses a path combining warrior, rogue, and lightning magic, emerging as an advanced Stormbringer with Cleaver, dueling wands, and Calming Presence. A new fairy queen wakes Trent and leads the freed fairies away. Though devastated and no longer bound to Kirstin, Trent decides to return to Al'drossford because he still trusts Tersa and Cullen. When he exits, Fairy Cloak immediately causes both of them to overlook and misidentify him.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A greater ice serpent appears far outside its natural region. Cullen sends Tersa away with Trent, though Fairy Cloak repeatedly makes him forget Trent is present, and kills the level-200 beast with Peacemaker. Evidence that it was sealed and transported leads him to suspect unknown interference. On the road, Trent and Tersa meet a traveling Al'rashian merchant and his speaking greater dire wolf. The merchant trades them practical abilities and equipment in exchange for their trial loot. He gives Tersa Storage and other useful skills, while steering Trent away from more offensive magic and toward Block, Disarm, Parry, Balm, and Mend. Like Cullen, he struggles to retain awareness of Trent, connecting the effect to the recent trial reward. He recognizes the boy as Trent Embra and explains more of the Survivalist tradition. When Trent reveals a chest taken from a trial, the merchant identifies it as an artifact capable of hiding its contents from the gods and orders him to keep it secret. Cullen rejoins the trainees after the merchant departs, still investigating the serpent's displacement and still vulnerable to Fairy Cloak's masking.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orion finds the Blackmire tribe trying to contain a huge mud elemental whose spreading swamp threatens newly viable farmland. After their ice prison fails, he heals the tribe's shaman and offers to negotiate as a Spirit Summoner. The elemental agrees to enter his spirit orb while Orion helps it seek a name and a resting place, but it does not accept a pact. Blackmire hosts Orion briefly and then sends him under guard toward the road. Meanwhile, Cullen and Tersa return to Al'drossford. Tersa remains undertrained in basic combat, but her new Stormbringer path has secured her place in the guard and Cullen schedules her promotion to junior guardsman. The Dusk Tower master recognizes Al'drossford as a reconstruction meant to gather the scattered Al'rashian clans and discovers that its throne will remain barred until a future king is chosen after their reunion. Trent, feeling unwanted after the loss of his bond and repeatedly overlooked because of Fairy Cloak, leaves the keep to begin a two-week solitary Survivalist quest. A shape-changing inhabitant of the Dusk Tower recognizes that he is in immediate danger and merges with his shadow as he departs.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774246317",
+            "type": "community"
+          }
+        ],
+        "work": "a-bond-broken"
+      }
+    },
+    "a-builder-of-dreams": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Raaz Kalvidasan's thirteen-year-old granddaughter, an aspiring thaumaturge troubled by dreams of his warded tower and her dead mother. Convinced that her grandfather is hiding something dangerous, she attempts to break into his workshop.",
+            "id": "siobhan",
+            "name": "Siobhan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Siobhan's grandfather, a secretive sorcerer whose heavily protected tower serves as his workshop. His refusal to explain his research makes Siobhan suspect that his work may be dangerous.",
+            "id": "raaz-kalvidasan",
+            "name": "Raaz Kalvidasan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Claude"
+            ],
+            "description": "A newly arrived research associate invited by Raaz Kalvidasan. He finds Siobhan after her failed attempt to enter the tower and helps her disguise the damage as vandalism.",
+            "id": "claudio-tierney",
+            "name": "Claudio Tierney",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Siobhan's deceased mother, whose loss remains bound up with her daughter's recurring nightmares and suspicions about Raaz Kalvidasan's tower.",
+            "id": "miakoda",
+            "name": "Miakoda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The household's cook and maid, originally from central Silva Erde. When the chickens produce abnormal eggs filled with blood-red material, she treats them as a dangerous curse.",
+            "id": "aimee",
+            "name": "Aimee",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Miakoda's deceased demon familiar.",
+            "id": "paimon",
+            "name": "Paimon",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An admired grandmaster whose reported feats include rescuing victims from an unstable planar portal. Siobhan keeps a scrapbook about him and reads that the Red Guard may recruit him.",
+            "id": "thaddeus-lacer",
+            "name": "Thaddeus Lacer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An eleven-year-old village boy who follows Siobhan and is fascinated by Claudio Tierney's dream magic.",
+            "id": "rory",
+            "name": "Rory",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A titan whose grave-site echo shattered the leader of a spirit-realm expedition. Its remains and consuming hunger are central to the transformation Claudio Tierney is attempting to impose on the village.",
+            "id": "hyperiodax",
+            "name": "Hyperiodax",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An apparent second instance of Siobhan that answers Raaz Kalvidasan during his sealing procedure while Siobhan's ordinary mind is asleep. Its origin and exact nature are unknown.",
+            "id": "echoed-identity",
+            "name": "Echoed identity",
+            "reveal": {
+              "chapter": 22
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0GD93VSSK",
+            "type": "community"
+          }
+        ],
+        "work": "a-builder-of-dreams"
+      },
+      "recaps": {
+        "ending": "Raaz Kalvidasan returns from the spirit realm and destroys Claudio Tierney, ending Claudio Tierney's immediate plan to use the village and Hyperiodax's hunger as the foundation of greater power. The village remains devastated, its victims are beyond Raaz Kalvidasan's ability to save, and transformed survivors still roam near the tower. Rory is dead. Aimee remains at the house, but her condition is unknown. Miakoda still exists as the aberrant frame, while traces of both her and Claudio Tierney have entered Siobhan's mind.\n\nRaaz Kalvidasan binds those remnants by suppressing Siobhan's memories of the catastrophe. During the procedure, a separate echoed identity answers him from within her mind and remains unexplained. Raaz Kalvidasan then begins his own magical break and kills himself before he can become a danger. Siobhan flees with little equipment and follows the road into the forest. Three months later, she is isolated and surviving through theft and caution. She notices a fragile memory connected to Claudio Tierney but refuses to examine it, fearing damage to the seal, and her nightmares continue.",
+        "in_short": "Thirteen-year-old Siobhan investigates the secret research conducted by her grandfather Raaz Kalvidasan and his associate Claudio Tierney after disturbing dreams and magical anomalies spread through their village. Claudio Tierney's popular dream sessions prove to be paths into the spirit realm, designed to remake the villagers through the endless hunger associated with the titan Hyperiodax. He has also trapped Siobhan's transformed mother, Miakoda, within an interplanar frame. Raaz Kalvidasan returns from exile in the spirit realm and kills Claudio Tierney, but remnants of Claudio Tierney and Miakoda become lodged in Siobhan. Raaz Kalvidasan suppresses her memories to seal them, then suffers a magical break and kills himself to protect her. Siobhan escapes past the transformed villagers and Rory's corpse. Three months later, she survives alone while avoiding a loose memory that could weaken the seal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: The wider series has established Thaddeus Lacer and Silva Erde.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thirteen-year-old Siobhan suspects that her grandfather, Raaz Kalvidasan, is concealing dangerous work inside his warded tower. Claudio Tierney arrives as Raaz Kalvidasan's research associate and helps her hide the damage from her first failed break-in. Soon the household finds blood-filled eggs, and Siobhan's treehouse is overtaken by strange material carrying the incense scent she associates with her dead mother, Miakoda, and Miakoda's familiar, Paimon. Raaz Kalvidasan publicly dismisses the incidents as natural problems, but he and Claudio Tierney privately recognize and classify the treehouse anomaly.\n\nClaudio Tierney presents himself to the village as a builder of dreams and quickly attracts clients with tailored dream experiences. He later lets Siobhan and her friend Rory into the tower, where they discover a spatially altered workshop and coded ledgers but no explanation. Raaz Kalvidasan catches them and punishes Siobhan. That night, she follows Claudio Tierney into the woods and sees him burying food after becoming sick. Claudio Tierney claims that Raaz Kalvidasan may be poisoning him and persuades Siobhan to keep the accusation secret.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siobhan completes her punishment while Claudio Tierney's dream sessions become more popular and leave him increasingly exhausted. A brutal attack kills and consumes a flock of sheep, after which Raaz Kalvidasan removes every trace. Siobhan and Rory investigate in secret and learn that many villagers share dreams of searching alien landscapes beneath a threatening sky. The dreams leave them calm at first, but their behavior grows compulsive and violent. A reanimated corpse provides further evidence that the danger is escalating.\n\nRaaz Kalvidasan leaves to find help. Claudio Tierney, constrained by a vow from giving Siobhan direct answers, tries to slow the villagers' deterioration through dream magic. Some afflicted residents begin mutilating themselves, eating flesh, and nurturing unnatural growths. Rory's family separates him from Siobhan, but she rescues him when his affected grandfather attacks. The children travel through the woods to seek a shaman in Edelbrook, hoping to avoid carrying the curse through other settlements. The shaman's cottage appears abandoned. After breaking in, they find a buried human hand in the cellar and realize that the expected rescuer may already be dead.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siobhan and Rory exhume the Edelbrook shaman and determine that he was murdered. A brief manifestation resembling Paimon appears in the fireplace, formed from the incense Siobhan connects with her mother. On returning home, the children find their village transformed into the red, bone-like landscape from the shared dreams. Inside, the environment distorts perception and identity. Curse-touched villagers hunt them, and Siobhan becomes separated from Rory. At the town hall she sees Claudio Tierney among an assembly building a vast figure from human flesh.\n\nAfter escaping, Siobhan receives further incense-like images that guide her to a hidden version of the tower workshop. There she discovers an interplanar frame made from Miakoda's mutilated but conscious body. Claudio Tierney reveals that both he and Miakoda are aberrants. The original Claudio Tierney died during a spirit-realm expedition, leaving another being in his body and name. Claudio Tierney used forced dream paths to weaken the villagers' minds and import the qualities of Hyperiodax, a titan defined by inexhaustible hunger. He also admits murdering the Edelbrook shaman. The frame, powered partly with Siobhan's blood, is the mechanism behind the dangerous overlap between realms.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claudio Tierney explains that he cannot eat and seeks Hyperiodax's ability to consume energy and power. After Raaz Kalvidasan discovered the plan, Claudio Tierney abandoned him in the spirit realm. Siobhan attacks Claudio Tierney and tries to use the frame to find Raaz Kalvidasan, but Claudio Tierney forces mirror-like material into her eye and repeatedly sends her through hostile dream constructs. Miakoda's frame gives Siobhan a route back, and Siobhan learns to resist the spirit realm through memory and a firm sense of self.\n\nRaaz Kalvidasan eventually emerges alive and kills Claudio Tierney by using Claudio Tierney's removed eye as part of his magic. The victory leaves Siobhan incapacitated. Raaz Kalvidasan finds inseparable traces of Claudio Tierney and Miakoda within her mind and concludes that removing them would kill her. He attempts to bind them by erasing the memories that activate them. During the procedure, an unexplained identity that behaves like Siobhan answers while her ordinary mind sleeps. Siobhan wakes without the memories of the ordeal. Raaz Kalvidasan then begins to break after casting through his own flesh. He tells her to hide her origin and find a capable thaumaturge, then kills himself so that the aberrant transformation of his body cannot threaten her.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Raaz Kalvidasan's death, Siobhan gathers food, a map, and a small selection of magical equipment while transformed villagers remain active outside. Aimee calls to her from the kitchen, but Siobhan's bodily fear warns her not to approach, and Aimee's condition is never confirmed. Siobhan climbs out through her bedroom window and finds Rory's mutilated corpse near the treehouse. She leaves the tower and village alone, following the road into the forest.\n\nThree months later, Siobhan is still on her own. Hunger, theft, danger, and isolation have defined her flight. Her memory seal has not entirely eliminated the catastrophe: she notices a loose thread connected to a refined voice and recognizes that examining it could disturb something dangerous, so she deliberately turns away from it. Dreams carrying imagery from the destroyed village continue to wake her in terror. Claudio Tierney is dead and Raaz Kalvidasan's immediate sealing measure still holds, but the remnants within Siobhan, the echoed identity, the surviving transformed villagers, Miakoda's condition, and the weakening point in Siobhan's memory all remain unresolved.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0GD93VSSK",
+            "type": "community"
+          }
+        ],
+        "work": "a-builder-of-dreams"
+      }
+    }
+  }
+}

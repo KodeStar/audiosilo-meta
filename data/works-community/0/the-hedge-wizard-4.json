@@ -1,0 +1,1339 @@
+{
+  "entries": {
+    "the-hedge-wizard-4": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Humphrey",
+              "the White Flame"
+            ],
+            "description": "A hedge wizard trained by the late Sethril Woodrow and the bearer of the Book of Infinite Pages, a living spellbook bound to his soul. Publicly hailed in Sheercliff as the White Flame after the siege there, he leaves the city with Celaine and his newly hatched dragon and rides north for the Dragon Keeper trials at Drakalyn, partly to secure the bond and partly to stay ahead of those who can now sense his spellbook.",
+            "id": "hump",
+            "name": "Hump",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A non-human archer and dragon-keeper companion who guarded Hump's dragon egg through the siege of Sheercliff. She is the one who persuaded him to attempt the Dragon Keeper trials, and she rides north with him alone once the rest of the party splits off at the fork outside the city.",
+            "id": "celaine",
+            "name": "Celaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nisha"
+            ],
+            "description": "Hump's bonded wolf dragon, hatched at the close of the previous book and named by him for the night storm. Black and gold scaled and violet eyed, she is small enough at first to travel hidden in a pouch. She has grown attached to Dylan as well as to Hump.",
+            "id": "nishari",
+            "name": "Nishari",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The Countess of Sheercliff and the party's patron, left unable to walk by a wound taken in the siege and moving now in an essence-powered chair. She already knows, unprompted, that Hump is bound for Drakalyn and the goddess Owalyn, and sends him off with a sealed letter proposing open communication between Sheercliff and the dragon keepers, to be delivered if he ever meets them.",
+            "id": "countess-daston",
+            "name": "Countess Daston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Robert Blackthorne"
+            ],
+            "description": "A knight sworn to Kelisia, the Goddess of Winter, and heir to House Blackthorne. He rides out of Sheercliff with Hump and turns off toward home at the fork, escorting his cousin's funeral wagon, with the surviving Blackthorne knights blaming him for the deaths at the siege and a kingdom-wide call to arms waiting for him there.",
+            "id": "bud",
+            "name": "Bud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vivienne's apprentice, a druid who carried and healed Hump through his collapse after the siege of Sheercliff. Hump's hatchling has taken to him too, which Celaine puts down to normal pack behaviour in a newly hatched wolf dragon. He parts from them at the fork outside the city and travels on to House Blackthorne with Bud and Emilia.",
+            "id": "dylan",
+            "name": "Dylan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noblewoman and rapier fighter who fought through the siege of Sheercliff alongside Hump's party. She leaves Hump at the fork outside the city, riding on to House Blackthorne with Bud and Dylan to await the kingdom's call to arms.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wizard, Dylan's mentor, and an old associate of Hump's late master. She rides out of Sheercliff with the party and then turns back, having entered Countess Daston's service to watch the imprisoned Inquisitor who betrayed them and to gather intelligence.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goddess whose protection is said to cover the Dragon Keeper trial grounds at Drakalyn, and the power whose trials Hump is travelling north to attempt. Countess Daston names her without prompting when she guesses where Hump is bound.",
+            "id": "owalyn",
+            "name": "Owalyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Winston"
+            ],
+            "description": "A tall stranger in a black leather coat, heavily tattooed, who walks uninvited into the mayor's office in Suncrest claiming to be hunting a wizard and a huntress who passed through, and calling them warlocks. Pressed on who he is, his eyes turn black with small red markings. What he is, and why he wants Hump, is not explained.",
+            "id": "winston-irons",
+            "name": "Winston Irons",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wounded, starving gnoll found with her pup near the border, who begs Hump and Celaine not to kill them and, unusually for her kind, speaks broken common tongue, taught to her by her mother. Driven out of the mountains with her pup by a figure she calls the dead queen, she has fled into human lands alone. Healed by Hump, she agrees to guide the party over the mountains by a route that avoids the watched pass.",
+            "id": "rehk",
+            "name": "Rehk",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tok"
+            ],
+            "description": "Rehk's young pup, found alongside her near the border. Curious and friendly, he takes quickly to Hump's hatchling.",
+            "id": "tokdaar",
+            "name": "Tokdaar",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Celaine's sister, spoken of but not seen. On the road north Celaine admits that Myra was struggling badly when Celaine left home, and that her own departure is part of the reason why. What she will find on returning after a long absence, and how her people will receive her for having stayed with Hump instead, is much of what Celaine dreads about going back.",
+            "id": "myra",
+            "name": "Myra",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Walter Flint"
+            ],
+            "description": "A spirit bound inside an unusually large, smooth essence stone, found among centuries-old bones in an abandoned mine. He says he was a miner from Alveron, raised in Elenvine, who died in a collapse some four hundred years ago, and he is shaken to learn what year it now is. Talkative and afraid of being destroyed, he is whole and coherent in a way Hump privately notes that trapped spirits are not.",
+            "id": "walt",
+            "name": "Walt",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silver-furred, black-striped chieftain of a gnoll warband roughly fifty strong, who answers Rehk's howl and destroys the undead pursuing Hump's party. Suspicious at first that the party serves the dead queen, he defers to Rehk's word, grants them escort toward the land of the Huntress, and hosts them at his river encampment.",
+            "id": "rakar",
+            "name": "Rakar",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A grey-haired dragon keeper of the sixth circle, a chosen of Owalyn, third in rank among the keepers, and Vamir's own teacher. She lands at the gnoll encampment with two other riders and greets Hump with measured curiosity rather than hostility, notes the rare gold colouring of his hatchling, and invites him to fly back to keeper territory with her.",
+            "id": "tessa",
+            "name": "Tessa",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Finn"
+            ],
+            "description": "A young dragon keeper who lands at the gnoll encampment alongside Tessa and immediately accuses Hump of stealing the wolf-dragon egg that became his hatchling, demanding he be killed for it. Celaine, who is clearly on close, familiar terms with him, restrains him. His hostility toward Hump is open from the first moment.",
+            "id": "finnian",
+            "name": "Finnian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragon keeper of Drakalyn, bonded to the dragon Onyxia, and one of the three riders who land at the gnoll encampment alongside Tessa and Finnian. Once the tension eases he is the one who suggests ending the meeting on a good note and taking the matter up again after Hump reaches Drakalyn itself.",
+            "id": "gawain",
+            "name": "Gawain",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lich queen, named at last as the dead queen whose undead have hunted Hump's party through the Charred Heights. Pale, gaunt, red-lipped and purple-eyed, she commands undead armies and fleshy constructs from a stronghold with cells beneath it, and she is expanding her reach by binding other dangerous creatures into her service.",
+            "id": "irila",
+            "name": "Irila",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A fixer and a companion of Hump's, and a former student of the keeper Tessa. He returned to Drakalyn ahead of Hump and Celaine and, by Tessa's account, stirred up a good deal of unspecified trouble on arrival. He is waiting in the welcoming party at the tree line and waves the pair forward.",
+            "id": "vamir",
+            "name": "Vamir",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder of Drakalyn's ruling Elder Trinity, who greets Celaine with an emotional embrace after her year away and then formally welcomes Hump and asks to be introduced. She guides the first proceedings over whether an outsider may be allowed to remain.",
+            "id": "rena",
+            "name": "Rena",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder of the Elder Trinity, her skin partially scaled, who distrusts Hump purely as an outsider and argues against letting him stay even after Owalyn has personally endorsed him, insisting he remains subject to the trials still ahead of him.",
+            "id": "ashera",
+            "name": "Ashera",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third member of Drakalyn's Elder Trinity, comparatively even-handed toward Hump, who argues that Owalyn's personal approval is reason enough to give an outsider his chance.",
+            "id": "sulamir",
+            "name": "Sulamir",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shaman of Owalyn, well versed in essence and soul manipulation and capable of being a dragon keeper though he does not serve as one, assigned by the council as Hump's personal instructor. Vamir privately warns that Ado's son was killed years ago by dragon hunters out of Alveron, that he withdrew into seclusion afterward, and that no apprentice of his has lasted long.",
+            "id": "ado",
+            "name": "Ado",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Stormcaller"
+            ],
+            "description": "Command of Drakalyn's dragon keepers rests with her, and by repute no other of Owalyn's chosen matches her in strength. She is away from the settlement when the council declares war on the lich queen. Word is sent for her return, along with the other keepers currently abroad.",
+            "id": "yunillia",
+            "name": "Yunillia",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A true dragon, vast and ancient, whom no one in Alveron has laid eyes on in over ten centuries, who appears inside Hump's mind during his trial and presents himself by image and title rather than by any spoken name. A silver owl stands beside him, the same presence Hump has felt within his spellbook. He studies Hump closely and vanishes without explaining anything. Owalyn afterward calls him an old acquaintance of hers, and declines to say more.",
+            "id": "skyfire",
+            "name": "Skyfire",
+            "reveal": {
+              "chapter": 43
+            }
+          },
+          {
+            "description": "A veteran dragon keeper who commands ground operations because his dragon, Brutus, is too heavy and bulky to fly well, and who leads the six-person squad Hump and Celaine are placed under. He was Myra's old party leader and teacher.",
+            "id": "leif",
+            "name": "Leif",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous, ancient wolf dragon housed behind an iron door in a hidden chamber of the Temple of the Everflame, missing one front and one back leg, tended closely by Elder Ashera. She examines Hump's soul directly and grants him a soul-name. Her intelligence is unlike that of the other wolf dragons, enough that Hump privately wonders what she really is.",
+            "id": "algwyn",
+            "name": "Algwyn",
+            "reveal": {
+              "chapter": 57
+            }
+          },
+          {
+            "description": "Drakalyn's brood mother, a former dragon keeper who lost her own dragon years ago and now oversees the nests, the eggs, and the education of hatchlings. She appears to be about fifty and is implied to be considerably older. Warm and excitable around hatchlings but distant in ordinary conversation, she takes on the training of Hump's dragon.",
+            "id": "janeen",
+            "name": "Janeen",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silver owl familiar of the wandering wizard in Owalyn's legend, called his mightiest, wisest and most loyal companion, and killed protecting his escape from the thirteen who had captured and robbed him of his power. His heartstone was forged into the weapon that destroyed their city. Hearing the story, Hump begins privately associating his own spellbook with the name.",
+            "id": "glyndaril",
+            "name": "Glyndaril",
+            "reveal": {
+              "chapter": 86
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-4"
+      },
+      "recaps": {
+        "ending": "Irila is destroyed in body and soul, and her undead army and the corrupted sky over Drakalyn collapse with her, implying her power had held both together. The cost is heavy: four dragon keepers and six dragons die at Estora, Elder Ashera is killed as well, and 462 more are confirmed dead from the wider lake battle, including six of Vamir's students. Vamir survives, healed and raised to the fourth circle by Owalyn herself, but is left guilt-ridden. Yunillia survives Irila's attempt to possess her. Finnian has fully reconciled with Hump and Celaine. Rehk and the gnolls leave to reclaim the mountains as their home. Walt, revealed as a house spirit rather than a human ghost, takes over Irila's former phylactery, a pocket-dimension library, and the elders formally award it to Hump as payment. Owalyn appears to Hump in person, free at last of a binding to the Great Tree that turns out to have been her prison, gives him a healing artifact and a standing favour, and tells him an unverified legend in which the Pantheon's founders stole their power from a wandering wizard whose slain owl familiar was Glyndaril. Hump now privately associates his spellbook with that name, and chooses to keep the whole account from Bud, Dylan and Emilia over Celaine's objection. The Great Tree is left dying. Hump, Celaine, Nishari and the keeper Tessa are set to leave for Sheercliff by dragonback within the week, to formalise Drakalyn's new alliance with Countess Daston.",
+        "in_short": "Hump and Celaine ride north to Drakalyn so he can attempt the Dragon Keeper trials and secure his bond with his hatched dragon, Nishari. On the road they take in a gnoll and her pup, pick up a trapped spirit named Walt from an abandoned mine, and are hunted by a shapeshifter who is soon captured and enslaved by Irila, an ancient lich queen whose undead are pressing on Drakalyn from the ruined city of Estora. Hump passes all three trials, is made dragon-blooded, and then refuses the goddess Owalyn's blessing, choosing his own path and his place as an outsider. Drakalyn goes to war. In the climax beneath Estora, Hump cripples Irila with White Flame and launches Walt into her exposed phylactery, Yunillia destroys her body, and Celaine destroys her fleeing soul for good. Walt proves to be a house spirit and claims the lich's phylactery, a pocket-dimension library, which the elders award to Hump. A freed Owalyn tells Hump the Pantheon may have stolen its power from a wandering wizard whose owl familiar was named Glyndaril, and Hump prepares to leave for Sheercliff with Celaine, keeping the story secret.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Hump is a hedge wizard, raised and trained by the wizard Sethril Woodrow, who died before the story began under circumstances still disputed. From him Hump inherited the Book of Infinite Pages, a living spellbook bound to his soul. Over the previous book he was framed as a suspect in his master's death and then caught up in the Blackstone Warlocks' siege of Sheercliff. A warlock of extraordinary power set a citywide ritual that would have sacrificed every soul in the city to summon Baelkor, the first servant of a fallen god; Hump broke the ritual by destroying its anchoring tree with an original spell, White Flame, and the warlock escaped by blood magic and vowed to return. In the aftermath Hump absorbed every foreign essence imprinted on his soul and achieved a full soul manifestation, and a posthumous letter from his master confirmed that the spellbook is alive and grows more detectable to hunters as its wielder advances. An Inquisitor who had ambushed him to steal it was imprisoned, having named an order that styles itself the heir to the book. Publicly hailed as the White Flame, Hump was gifted a manor, library access and a new staff by Countess Daston, who survived her wounds but lost the use of her legs. His party then split: Bud, Dylan and Emilia rode for House Blackthorne to await a kingdom-wide call to arms, and Vivienne stayed in Sheercliff in the Countess's service. Hump's dragon egg hatched into a bonded companion, Nishari, and he set out north with Celaine for the Dragon Keeper trials. In the closing scene his spellbook revealed a hidden, god-tier essence core marked with a silver owl, left unexplained.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Five days after the siege, Countess Daston intercepts Hump on his last afternoon of library access. She already knows he is bound for Drakalyn and the goddess Owalyn, and gives him a sealed letter proposing open communication between Sheercliff and the dragon keepers. The next morning the party rides out and splits at a fork: Bud, Dylan and Emilia continue to Blackthorne Manor with a funeral wagon and a cold escort of knights, Vivienne turns back to the city, and Hump and Celaine ride north alone with the hatchling Nishari hidden in a pouch.\n\nTwo weeks on, in the border town of Suncrest, Celaine is harassed at a tavern and subdues an off-duty guard. The town's mayor accuses the pair of assault and demands they submit to a warlock test. Hump manifests his soul to overwhelm her guards, Celaine holds a blade to her throat, and the two ride out, leaving a regional bounty behind them. A stranger named Winston Irons then walks uninvited into the mayor's office claiming to hunt the same wizard and huntress, his eyes turning black and red when she presses him on who he is.\n\nBeyond the border, Hump heals a wounded gnoll, Rehk, in exchange for guidance over the mountains, and she and her pup Tokdaar join the party. Rehk speaks repeatedly of a dead queen who destroyed her pack. Crossing into the Fallen Lands, the group is ambushed at night by monsters carried on an animated mist, and flees through a corrupted marsh, where Hump and Celaine go over a cliff edge and are swept down a river gorge while Rehk, Tokdaar and the horses take another route and rejoin them. They shelter in an abandoned essence mine, where a voice calls out of the dark asking to be freed.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voice in the mine belongs to Walt, a spirit sealed in an unusually large essence stone among centuries-old bones, who gives his full name as Walter Flint. He says he was a miner who died some four hundred years ago and is shaken to learn the year. Hump's attempt to release him fails, an unexplained surge of power flows into Hump instead, and the party brings the stone along rather than leave him.\n\nAt the mountain pass, Winston intercepts them with six hired men. Celaine's ambush opens the fight, and Winston proves to be a shapeshifter, turning through cat, snake, bear and fox as runes move beneath his skin and his wounds knit shut. Hump kills several mercenaries with a lava spell and drives Winston off wounded. A dying man reveals Winston was following a scent rather than hunting the pair by name; his hunger fixed on both the spellbook and Nishari.\n\nFrom a ridge the party sights Estora, an ancient ruined city, lit by a flash of purple light that Hump reads as death magic. Hump buries two giants under an avalanche that destroys the road and draws a flying scout, and the dead queen's forces come after them: zombie wolves, skeletal horsemen and specters under unnatural storm clouds. Making a stand at Fire Pass, Hump opens a lava barrier across the valley and sees the Lich Queen herself at a distance, pale and gaunt with glowing purple eyes. Her spell disintegrates the ground; Hump survives behind his staff's enchantment while Celaine wounds her at point-blank range. Rehk's howls bring a gnoll warband that destroys the pursuing undead, and its chieftain grants the party passage.\n\nElsewhere, Bud reaches home to a cold reception and breaks with his father for good.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The chieftain gives his name as Rakar and hosts the party, until three dragons land at his encampment. The riders are Tessa, a senior keeper and Vamir's teacher; Gawain; and Finnian, who accuses Hump of stealing the egg that became Nishari and demands his death. Tessa is courteous instead, notes Nishari's rare gold colouring, and invites him to fly back to keeper territory with her.\n\nMeanwhile Winston wakes chained in a cell. The lich queen is named on the page for the first time as Irila. She has tortured out of him that a wizard carries something of interest to her, binds a rune collar into his soul, and takes him into her service, promising him more than a hatchling.\n\nHump and Celaine reach Drakalyn: a colossal tree at its heart, the Temple of the Everflame beside it, and wolf dragons at the settlement's edge. Rehk and Tokdaar say their farewells. At the threshold Owalyn draws Hump's spirit into her domain, senses the lingering essence of the fallen god Uvdar on him and demands an explanation, then begins his first trial on the spot. It proves to be an assault on his soul that drives him back through his own memories; when he stops resisting and answers honestly that he seeks the strength to protect what matters to him, she passes him. She also tells him plainly that she was once mortal, and implies the same of gods generally.\n\nThe Elder Trinity, Rena, Ashera and Sulamir, argue over an outsider's presence and accept him on Owalyn's endorsement, over Ashera's objection. Countess Daston's letter is delivered and taken under consideration. Hump is assigned a personal instructor: Ado, a shaman whose son was killed years ago by dragon hunters out of Alveron, and under whom no apprentice has lasted long.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vamir tells Hump the wilderness around Drakalyn has grown far more dangerous over the past year, and wonders whether it connects to warnings of a coming War of the Firmament. He reacts with open discomfort to Owalyn's claim that gods were once mortal, and tells Hump to keep it to himself.\n\nTraining under Ado begins. He is gruff, sixth circle, and deliberately not a keeper, having taken some other path tied to tattoos on his body. He keeps his dead son's dragon, Stonefang, crippled and joyless in a barn behind his house, and shows Hump plainly what becomes of a dragon whose keeper dies. Celaine's sister Myra visits the old dragon regularly; she is flat and distant, and Ado notes the two share a great loss. At the Temple of Moss, Ado teaches Hump the lesson he keeps failing: to work with essence's natural tendencies rather than command it by will.\n\nAt a family dinner, Celaine's household proves warm, though her uncle distrusts outsiders and the Pantheon, doubts the elders will answer Countess Daston's letter, and presses Celaine toward Finnian. Celaine explains that Owalyn cannot leave her territory around Drakalyn, bound by a pact with the Pantheon; she rejects Hump's suggestion that this makes the goddess a prisoner. The Everflame flares, and keepers fly south: Irila is scouting Drakalyn's borders with undead crows.\n\nHump enchants a pair of boots for stealth ahead of a hunt organised to celebrate Celaine's return, its purpose to kill the guardian of a new dungeon north of the settlement.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt goes into an acid-corrupted dungeon. Finnian, fifth circle, dominates most of the fighting; Hump holds a defensive role, and Celaine kills the guardian, a giant beetle queen. As her graduation offering she claims the dungeon core, and her sixth blessing begins manifesting on the spot. With her soul exposed, Irila's power reaches her directly and starts to kill her. Hump shields her soul with his own until Owalyn manifests through Celaine's body, names the attacker as Irila, and drives the corruption out. The dead beetles rise as undead; Hump burns the dungeon by having Finnian's dragon ignite its toxic fog while he shelters the group behind his staff's stored enchantment.\n\nShamans conclude Irila had been secretly corrupting the essence spring beneath the dungeon, likely through a dark artifact, which is how she reached inside Owalyn's own domain.\n\nThen the Everflame burns green: a keeper and dragon have been killed in an ambush at Fire Pass. The wounded patrol leader reports the old fortification Highgaze has fully fallen, and calls for war. Sulamir reports Owalyn is not answering and that there is a sickness in the tree, his theory being that she is personally holding back the corruption at cost to herself. Word is sent to Yunillia, the Stormcaller, who leads the keepers and is said to be the most powerful of Owalyn's chosen.\n\nRena declares Drakalyn will go to war, targeting the summer solstice to retake lost ground. Ado proposes Hump attempt the second trial, the Trial of Resolve: to be made dragon-blooded outright, a transformation normally undergone gradually from childhood and excruciating when forced on an adult. Hump accepts.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside Estora, Winston secretly maps Irila's palace while still bound to her, finding a workshop of unfinished corpse-and-metal monstrosities. Irila feeds him a slain wolf dragon.\n\nDrakalyn mobilises fully. Celaine presents the dungeon core at the Everflame and takes Nishari to her mother Vindari's heartstone in the temple crypt. Tracing the corruption with Ado and Sulamir, Hump uncovers a network of buried rat remains laid out as a deliberate formation, apparently used for years to spread Irila's influence through the forest unseen. Ado demonstrates a partial dragon transformation, is addressed as Packmaster, and is revealed to have once led Owalyn's elite hunters.\n\nFinnian takes Celaine to dinner and asks her to commit to a future together in Drakalyn. She refuses, saying she means to keep travelling. He calls Hump nothing and a weak little man, dismisses his part in saving her, and grabs her hand when she tries to leave; she strikes him with a shadow bolt and goes. She is reassigned away from his unit to hunt under Keeper Rujan instead, and it is confirmed she has agreed to leave Drakalyn with Hump once the war ends. Hump admits to her he does not like the idea of her settling down with Finnian.\n\nHer uncle apologises to Hump for his earlier rudeness and thanks him for saving her. Then Hump walks to the altar in the Temple of the Everflame, is bound at the wrists and ankles, and Rena drives six needles of dragon blood into his heart. Enduring it, he unintentionally reaches every wolf dragon in Drakalyn at once, and the whole village erupts in a chorus roar. The crowd calls him a demon. Something beyond even Owalyn turns to watch him.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The presence is Skyfire, a true dragon unseen in Alveron for over a thousand years. A silver owl stands beside him, the same presence bound to the heartstone in Hump's spellbook. Skyfire studies him and leaves without explanation; Owalyn, who calls him an old acquaintance, will not elaborate. She confirms Hump has passed the Trial of Resolve and names him dragon-blooded, saying he is the first outsider Drakalyn has blooded in centuries. He wakes with one eye red and slit-pupilled, stronger, faster, and permanently hungrier.\n\nCommanding the book to show him its heart, Hump transforms its cover into the silver-owl heartstone and pushes his soul to reach it. A voice says \"Not yet\" and knocks him out.\n\nYunillia arrives home mid-trial, hostile at first, then takes both Hump and Celaine into her own hunting unit. Under keeper Leif, they storm a lich-held lake temple to purify a poisoned essence spring; Hump destroys a skeletal spellcaster with a new spell, Yunillia kills the garrison's skeleton lord, and the corrupted agents are cut down. Hump concludes Irila's light defence means her real objective lies elsewhere.\n\nHe then collapses a second smuggled tunnel through the mountains, overshooting so badly that he carves a chasm into the peak. Over the following weeks his standing shifts from suspect outsider to trusted heavy asset, and Drakalyn reclaims nearly all its lost ground except Fort Highgaze. On the morning of the solstice counterattack, Yunillia takes him aside and gives him an assignment she implies is dangerous.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The assignment is to infiltrate Fort Highgaze through a hidden passage and bring down its shield from within. Celaine insists on coming. Before the army, Owalyn manifests in person and grants every hunter her boon; Hump, not one of her chosen, finds he can draw on it anyway, and Nishari breathes real fire for the first time.\n\nInside, Walt speaks privately into Hump's mind for the first time, warns of a hidden ward that Hump's own essence sight missed, and is proven right. It is revealed that Ashera once led Drakalyn's keepers before losing her dragon, which explains her hostility. Yunillia leaps alone among the undead giants and manifests a seventh blessing, a spear of living lightning. Two of Irila's lieutenants hold the keep: a robed commander who denies being Irila, and a skeletal High General who summons a plague demon. Hump melts one shield runestone and Finnian destroys another; the shield falls, and Hump forges a compressed molten projectile that blows the fortress gates apart. Ado's healer is killed by a wraith, which Celaine kills in turn. Hump destroys the plague demon.\n\nYunillia runs the robed commander through, but at the moment of death Irila speaks through the body to taunt her and casts a curse directly onto her soul. The fort is retaken, but the mood is grim.\n\nHump takes a fractured rib. Ado reveals the war's next objective: Irila's phylactery, believed hidden somewhere in Estora. Yunillia thanks Hump publicly and implies his third trial is near. He privately reaffirms that he still means to leave once the war is over.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Days later Hump is summoned without warning before nearly everyone he knows in Drakalyn. Owalyn manifests above the great tree and announces his final trial, the Trial of the Heart, a test of character rather than skill, and then offers him her personal blessing and a place as a keeper.\n\nThe offered power nearly takes him. He is shown the life he could have: belonging, protection, status. Walt's voice and his dead master's teaching pull him back, and he recognises the offer as the same shape as every easy power he has refused before. He declines, respectfully, choosing his own path as a wizard. Owalyn confirms the offer was genuine, says she is not disappointed in his reasoning, and tells him he will never be of Drakalyn. The crowd reacts with shock and anger, and many refuse to meet his eyes. Yunillia publicly defends his right to refuse and calls him a friend, and the crowd falls silent. She then asks him to step back from combat while the elders work out what to do with a man who is bonded and dragon-blooded but not a keeper. Celaine admits she is relieved.\n\nYunillia then leads him through a hidden passage in the Temple of the Everflame to an enormous, ancient wolf dragon named Algwyn, missing one front and one back leg and tended by Ashera. Algwyn examines his soul and grants him a soul-name, Ignarok, fire and stone; both women react with a shock they refuse to explain. Yunillia reveals that no one has ascended to godhood in a thousand years, since the War of the Firmament, and that Owalyn is confined to Drakalyn by the Pantheon. Drakalyn's brood mother, Janeen, takes on Nishari's training. Celaine is redeployed toward Estora.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over the following month Celaine takes her first independent command, holding a watchtower with ten hunters, killing an undead commander with a single arrow to trigger an ambush, and later destroying a five-thousand-strong force by capturing the mobile shrine that powers Irila's armies with essence. The war itself grinds to a stalemate; Drakalyn's only real path to victory is the phylactery.\n\nSidelined in Drakalyn, Hump trains Nishari and unlocks a rare dragon-blooded ability through his red eye: spirit sight, which lets him perceive souls and essence directly. Ado says Elder Ashera is the only other living person known to have it. Ashera confirms it in him and then refuses to teach him, revealing why she hates outsiders: her bonded dragon Hisarun was killed roughly two hundred years ago by Alveronian chosen she had sheltered and fed, who cut his throat while she slept. She does not quite close the door. Ado, for his part, speaks his dead son's name aloud for the first time.\n\nYunillia spends nearly a month in isolation managing Irila's curse. Gnoll distress howls bring Ado's hunters south, where Rakar's pack, including Rehk and Tokdaar, is in fighting retreat; Hump destroys the shadow chariot shielding the undead from sunlight, and the gnolls are given refuge. Rakar warns the undead came through tunnels beneath the mountains in numbers never seen, and that more are coming.\n\nIrila then launches a full coordinated assault. The corruption formation near the lake temple, believed destroyed, erupts back to life. Hump joins Celaine's squad unofficially. Then Nishari senses something badly wrong at the temple's dragon nest.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "They reach the nest too late. Janeen has been killed and partly eaten, a quarter of the eggs are smashed, and the thing feeding on a hatchling is Winston, half man and half dragon now and far stronger, with Irila's runes burned into his neck. Hump manifests his soul as a dragon, drawing on power he realises Owalyn is lending him; Celaine saves a hostage egg and Finnian and his dragon savage Winston enough to take him alive.\n\nThe runes burn him whenever he tries to speak against Irila. Owalyn speaks privately into Hump's mind, has the interrogation moved, and guides him through an unfamiliar ritual that suppresses the binding. Winston gives up the phylactery's location: tunnels far beneath the palace at Estora. Yunillia kills him with a knife and calls the strike immediately.\n\nOwalyn gives Hump a seed of the great tree to sharpen his spirit sight against Irila's power, an identical seed to Ashera as backup, a permanent affinity with nature, and a promise to explain the silver owl afterward. Yunillia explains her curse honestly and agrees that Ashera takes command, and that the others should stop her, if it takes her.\n\nNine fly to Estora. Hump reads the city and judges the arena a lure and the palace's faint reading a concealment; Yunillia bypasses Ado's besieged force and strikes the palace directly. An armoured champion rides out on the reanimated corpse of a keeper's dragon. Inside the great hall the team is broken: Lia is killed, a pale red-eyed woman mauls Yunillia, and Yunillia is run through and left behind holding the enemy. Ashera takes command and finds a hidden stair down.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Below the palace they pass through Irila's laboratory, kill two stitched-together hybrids that may once have been people, and emerge over a vast cavern. At its centre a huge white stone burns, the corrupted core of an older dungeon Irila simply took over as her power source, surrounded by thirteen chanting apprentices behind a shield. Ashera reveals Estora and its tunnels were built by that ancient dungeon long before Irila's time. Spirit sight pierces a veil at the back: Irila herself, a shrunken husk dormant on a stone throne, wearing a golden crown that might be the phylactery. Walt, near the chamber, turns quiet and serious and says he senses something ancient ahead.\n\nAshera's plan is to bring the ceiling down. Hump carves four rockslide formations into it in under ten minutes, falling into a flow state that finally makes sense of Ado's teaching. Then Irila rises in person, halts the battle by presence alone, calls Hump's work potential, and offers to recruit him against what she calls the stain of the gods. He refuses. Ashera holds her off alone and Hump triggers the collapse without waiting for her to reach safety, over Finnian's objection. The roof breaks through to the surface. Celaine shatters her pendant and Hump calls the dragons over distance through his blood bond; they answer with the name Ignarok.\n\nYunillia returns alive with the keepers. Irila's shield survives the collapse. She reveals she holds a weapon that can slay gods, and that the keepers were only ever a decoy. Hump's spirit sight finds soul-essence rising from beneath the throne, not the crown.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Drakalyn, Owalyn appears to a dying Vamir, heals him and raises him to the fourth circle. Moments later a wave of purple light rolls out of Estora and the Great Tree visibly wilts. Gawain's dragon is killed in the cavern. Hump breaks the throne's five-point ward with a technique Vivienne taught him, opening a stairwell; Ashera reappears alive to drive Irila back, and Hump and Celaine descend alone.\n\nWalt warns them not to touch the walls: countless suffering souls are sealed in the stone. The phylactery is an exposed crystal orb behind a ward that drains essence and is reinforced by those spirits. Walt proposes going inside it himself to contest Irila's soul, and Hump agrees.\n\nIrila arrives. Nothing they have touches her. She reveals that a figure called Hestia created Fishers Lake to destroy the Temple of the Three Eyes during the War of the Firmament, confirms her weapon was aimed at Owalyn and has already struck, and recognises the Book of Infinite Pages as having belonged to a man who brought the pantheon to its knees. As her pressure nearly breaks him, Hump channels the trapped souls' suffering into White Flame, and burns away her arm and much of her torso. She rises anyway and tortures him. Celaine shatters the ward with a precision shot through a flaw Irila tore in it herself, and Hump launches Walt into the orb.\n\nIrila's soul flees back into her body and heals it, but Yunillia arrives and puts a fist through her heart. The soul then possesses the curse-weakened Yunillia; Hump and Celaine force it out, and Celaine cuts it apart until it stops reforming. Irila is dead. The undead army and the dark sky collapse at once.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Walt reveals himself: not a human ghost but a house spirit, a minor deity-adjacent being whose home city was destroyed generations ago by Pantheon forces, later trapped in an amulet and used as a power source until his captor died in the mine. The library is a pocket dimension Irila had converted into her true phylactery, and he has begun taking it over. The cost of victory is counted: four dragon keepers and six dragons dead at Estora, Elder Ashera killed as well, and 462 more from the wider lake battle, including six of Vamir's students. Through a buried Eye, Hump witnesses Owalyn killing a powerful man in the War of the Firmament while a young, human Irila cries out to him as Father. Hump nearly kills himself training his spirit well alone at night, but survives with a deeper soul.\n\nThe elders accept Countess Daston's alliance, send Celaine to represent Drakalyn with Tessa negotiating, invite Hump and Nishari along, grant Celaine leave to rejoin her old party afterward, and award Hump the lich's phylactery as payment. Finnian apologises to them both. Rehk's gnolls leave to reclaim their mountains.\n\nOwalyn then appears to Hump in person, free of the binding that turns out to have been her prison, having used the aftermath of Irila's strike to break her own seal. Irila's father was a minor plague god whom Owalyn had killed personally, and Irila forged her weapon from his dying hate. Owalyn gives Hump a healing sprig cut from the dying tree and a standing favour, and he declines her blessing a second time. She then tells him, as an explicitly unverified story, that the Pantheon's thirteen founders stole their power from a wandering wizard, the original owner of his spellbook, whose silver owl familiar Glyndaril died protecting his escape and whose heartstone became the weapon that destroyed their city. Hump keeps this from Bud, Dylan and Emilia over Celaine's objection. The book ends with the two of them planning to leave for Sheercliff by dragonback within the week.",
+            "through": {
+              "chapter": 86
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-4"
+      }
+    },
+    "the-hedge-wizard-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Humphrey",
+              "the White Flame"
+            ],
+            "description": "A hedge wizard trained by the late Sethril Woodrow and the bearer of the Book of Infinite Pages, a living spellbook bound to his soul. Publicly hailed as the White Flame for breaking the warlock siege of Sheercliff, and now dragon-blooded after his time at Drakalyn, he sets out from the dragon settlement with Celaine and his young dragon, riding south for Sheercliff to rejoin his old companions and stay ahead of those who can sense his book.",
+            "id": "hump",
+            "name": "Hump",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A dragon-blooded archer and a chosen of the goddess Owalyn, honored at Drakalyn as the Huntress of Owalyn. She fights with shadow-aligned blessings and a black dagger, and travels south from her home at Drakalyn at Hump's side, having chosen to stay with him rather than settle among her own people.",
+            "id": "celaine",
+            "name": "Celaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nisha"
+            ],
+            "description": "Hump's bonded wolf dragon, hatched at the close of the previous book and called Nisha for short. Black-scaled with a growing golden sheen and violet eyes, she is still small and learning to hunt. She shares a mind-bond with Hump and travels hidden among the party as they leave Drakalyn.",
+            "id": "nishari",
+            "name": "Nishari",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A senior dragon keeper of Drakalyn and a chosen of Owalyn who escorts Hump, Celaine, and Nisha south toward Sheercliff on her dragon Igni, to help formalise Drakalyn's new alliance with the Dastons. Grey-haired and measured, she tutors Hump in dragon-bond craft along the road.",
+            "id": "tessa",
+            "name": "Tessa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess of the hunt worshipped at Drakalyn, patron of the dragon keepers and of Celaine, and the power who sets the Dragon Keeper trials. Bound for ages to the great tree at Drakalyn's heart, she has, unknown to almost everyone, recently freed herself of that binding, a secret Hump carries alone.",
+            "id": "owalyn",
+            "name": "Owalyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Silver Owl"
+            ],
+            "description": "The silver owl whose presence Hump senses within the Book of Infinite Pages, named in the legend of the wandering wizard as that mage's mightiest and most loyal familiar, slain protecting his escape. Its heartstone is bound into Hump's spellbook, and Hump has come to associate the book's guarding presence with the name.",
+            "id": "glyndaril",
+            "name": "Glyndaril",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The Countess of Sheercliff and Hump's patron, still confined to a wheelchair by the wound that cost her the use of her legs in the siege of Sheercliff. She welcomes Hump's party back to her estate and is eager to formalise the alliance between Sheercliff and the dragon keepers of Drakalyn.",
+            "id": "countess-daston",
+            "name": "Countess Daston",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noblewoman of House Daston and a skilled rapier fighter who fought beside Hump through the siege of Sheercliff. Recently returned home to recover from an injury taken on a Fallen Lands expedition, she is preparing to march north again to the front and invites Hump and Celaine to travel with her.",
+            "id": "marcela",
+            "name": "Marcela",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wizard and an old associate of Hump's late master, now in Countess Daston's service at Sheercliff. She watched over the city in Hump's absence and becomes his confidante in studying the ancient books recovered from the lich queen's library, insisting their dangerous secrets stay hidden from the Pantheon.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gold-ranked adventurer and one of Alveron's most powerful chosen, named to lead the expedition sent to reinforce Fort Nordric and destroy the demon dungeon called the Infernal Halls. Spoken of with awe long before he is ever seen, he means to time his assault for after the next monster wave.",
+            "id": "corteg",
+            "name": "General Corteg",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A disgraced young lord whose father fled after siding with the warlocks, leaving House Ferrand under a cloud of treason. Shunned by most of the expedition and abandoned by former companions, he marches north gaunt and careworn, asking only to be judged on his own deeds rather than his father's.",
+            "id": "randall",
+            "name": "Randall Ferrand",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A steadfast fighter and one of the few companions who stood by the disgraced Lord Randall Ferrand after his family's fall from grace. She reunites with Hump at the expedition muster and joins his roadside hunt against a demon raiding party, fighting on through the northern campaign.",
+            "id": "madeline",
+            "name": "Madeline",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord Robert Blackthorne"
+            ],
+            "description": "A knight sworn to Kelisia, the goddess of winter, and heir to House Blackthorne, now serving at the Fallen Lands front. He commands a company of some thirty soldiers and carries a heavy guilt over those lost under his orders.",
+            "id": "bud",
+            "name": "Bud",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A druid and Vivienne's former apprentice, a chosen of a nature god who fights with grasping vines, bear-aspect strength, and a giant guardian tree-form. He serves in Bud's company at the Fallen Lands front and can bend a dungeon's own growths to his will.",
+            "id": "dylan",
+            "name": "Dylan",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noblewoman and rapier duelist who fights through the Fallen Lands campaign alongside Bud's company. Fourth-circle and close to awakening her soul, she carries a martial style inherited from her family and has grown into one of the front's steadier blades.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran overseer, once Hump's commander at the Bledsbury dungeon, now directing operations along the Golden River from Fort Nordric. Gruff and demanding, he keeps Bud's company in near-constant motion clearing keeps and investigating new dungeon nodes.",
+            "id": "oswald",
+            "name": "Oswald",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A knight of House Blackthorne and Bud's sister-in-arms, who leads the light infantry of his company. She and Bud carry an old tension over the death of their cousin Arthur, but she fights at his side through the Fallen Lands battles, warding the company with frostfire.",
+            "id": "henrietta",
+            "name": "Henrietta",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marcela's father and a senior Alveron commander, reported to have been wounded in the demon assault on Fort Nordric but recovered enough to host a homecoming feast for his daughter. He greets Hump warmly and lends the party his family's backing at the front.",
+            "id": "count-daston",
+            "name": "Count Daston",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the First Order wizard"
+            ],
+            "description": "A wizard of the First Order and a self-described warlock specialist, assisting the Inquisition's hunt for warlocks around Fort Nordric. Grey-haired and sharp-eyed, he regards the fast-rising Hump, a hedge wizard beholden to no god, with open, unexplained suspicion.",
+            "id": "iron-hand",
+            "name": "The Iron Hand",
+            "reveal": {
+              "chapter": 22
+            }
+          },
+          {
+            "description": "A black-winged, tailed demon glimpsed through a portal from the Infernal Halls, who names himself Karlak Gormoth. He recognises the Book of Infinite Pages on sight and refuses to burn it, hailing Hump as its wielder and bearer of Glyndaril before vowing they will meet again with an offer Hump cannot refuse.",
+            "id": "karlak-gormoth",
+            "name": "Karlak Gormoth",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A marshal of Alveron and a chosen of a god of flowers and meadows, a nature mage in forest-green leathers who senses the dragon blood in Hump and Celaine and recognises the goddess's gift they carry. She leads one of the small squads chosen to infiltrate the Infernal Halls, and her gentle flower-craft conceals real power.",
+            "id": "anara-thane",
+            "name": "Anara Thane",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A marshal in dark steel armour who leads a second squad tasked with infiltrating the Infernal Halls. He greets Hump as the White Flame and fights his way through heavy losses to link up with Hump's squad at the enemy fort guarding the demon dungeon's gate.",
+            "id": "marshal-merrick",
+            "name": "Marshal Merrick",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shadow-cloaked operative so unremarkable he is easy to overlook entirely, a spy and dungeon-infiltration expert tasked with opening the way into the Infernal Halls. Having spent months inside, he is the architect of the whole infiltration plan and leads a third squad of his own.",
+            "id": "drexel",
+            "name": "Drexel",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The massive, plate-clad leader of the forward party that scouts ahead into the Infernal Halls, a fifth-circle chosen of a lesser storm god who wields an anvil-headed giant hammer. Broad-shouldered and generous-spirited, he judges Hump by his heart and deeds rather than his lack of a god.",
+            "id": "owen",
+            "name": "Owen",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older metal-sorcerer of Owen's forward party, a chosen of the earth-god Osidium clad in a liquid, second-skin metal armour and gold robes. He shapes and melts stone and metal at will, a craft that proves invaluable in breaching the enemy's defences.",
+            "id": "sorin",
+            "name": "Sorin",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A javelin-armed warrior of Owen's forward party, a chosen of a god of death. She can shift a whole squad onto the spirit plane, a grey parallel world through which they cross open ground unseen by the enemy.",
+            "id": "lani",
+            "name": "Lani",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gorvol the Invincible"
+            ],
+            "description": "A towering demon that poses as a god, worshipped as Gorvol the Invincible by the orc tribe holding the fort before the Infernal Gate. He commands the fort's defence, and his warriors build a trap-laden killbox meant to slaughter any army that assaults the gate.",
+            "id": "gorvol",
+            "name": "Gorvol",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A knight of the earth-god Assydium and a renowned crystal sorcerer, said to be well over a century old though she looks about forty. Silver-haired and stern, she is one of the army's few high-circle earth-wielders and leads the team that must tunnel through the demon citadel's living wall.",
+            "id": "fentress",
+            "name": "Lady Fentress",
+            "reveal": {
+              "chapter": 65
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord of the Red Sky",
+              "Keeper of the Emberstone"
+            ],
+            "description": "A tall, winged, human-featured devil with red eyes and a noble's bearing, the ruler of the Infernal Halls, who names himself Dravor, Lord of the Red Sky and Keeper of the Emberstone. He enters the siege of his citadel with a wave of purple power that erases hundreds of Alveron's soldiers from existence, then seals the army in with no line of retreat.",
+            "id": "dravor",
+            "name": "Dravor",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the first mage",
+              "the world whisperer"
+            ],
+            "description": "The long-dead creator of the Book of Infinite Pages, known in legend as the wandering wizard, the first mage, and the world whisperer. Betrayed and stripped of his power by the thirteen who became the Pantheon, he forged the book as an instrument of revenge and a hidden archive of stolen magic; in the finale it names Hump his heir. His true fate is left uncertain.",
+            "id": "wandering-wizard",
+            "name": "The wandering wizard",
+            "reveal": {
+              "chapter": 83
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-5"
+      },
+      "recaps": {
+        "ending": "Book 5 ends mid-turn, launching a larger war rather than resolving one. The Infernal Halls citadel is taken, but the victory is hollow: the demon lord Dravor escaped with the dungeon core, and the campaign was a deliberate feint to draw Alveron's army away while the warlock Order of Ancients struck the kingdom's twelve world-seals. Cities burn; only already-fallen Sheercliff and Fort Nordric are spared, and whether the seals hold or the old gods are freed is left open. Hump survives, transformed: acknowledged as heir to the wandering wizard who created his book, he now knows the book is a weapon against the Pantheon and that the gods' blessings enslave their Chosen, a secret he keeps from all but Celaine. He has forced the book to obey him and opened a warlock Greater Gateway to Alveron, but has not yet reached the seventh rank; the Iron Hand, revealed as one of the Three Eyes, has invited him to join their order for training and protection. Karlak Gormoth is sealed off in his soul-domain, alive and permanently half-blinded, vowing to hunt Hump forever. The core party ends intact and pledged to stay together: Celaine his sole confidante; Bud healed of grievous wounds and hailing a holy war he does not know binds his own soul; Dylan advanced to his fifth circle; Emilia healed of a near-fatal wound; and Nisha exhausted, her golden transformation still unexplained. The final image is Hump opening a red rift onto a dark, ruined Alveron and ordering the elite army through. Open threads: the outcome of the invasion and the seals war, Karlak's and Dravor's eventual reckoning, the true fate of the wandering wizard, and whether Hump joins the Three Eyes and breaks the seventh rank.",
+        "in_short": "Hump returns from Drakalyn to Sheercliff as the famous White Flame, then rides to the Fort Nordric front with Celaine and his dragon Nisha to reunite with Bud, Dylan, and Emilia and help destroy the demon dungeon called the Infernal Halls. Along the way he foils warlocks at the Sapphire Docks, learns that twelve seals hold back the ancient gods, and is folded into an elite force that infiltrates the Halls, a pocket world ruled by the demon lord Dravor. Breaking through a living wall and taking the citadel, Hump is dragged into the private soul-domain of the ancient devil Karlak Gormoth, who hunts his living spellbook; Hump masters hellfire and maims Karlak, and the Iron Hand, secretly a member of the Three Eyes, arrives to seal the devil away. But the whole campaign was bait: Dravor escapes with the dungeon core while the warlock Order of Ancients strikes the kingdom's seals, burning Alveron's cities. The book reveals it was made by a wandering wizard the Pantheon betrayed and names Hump his heir, exposing that the gods' blessings enslave their Chosen. Overriding the book's guardian, Hump seizes a warlock gateway and tears open a rift to the invaded homeland, commanding the army to advance as the series ends on the brink of open war against the Pantheon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Hump is a hedge wizard, raised and trained by the wizard Sethril Woodrow, who died before the series began. From him Hump inherited the Book of Infinite Pages, a living spellbook bound to his soul that grows more detectable to hunters as its wielder advances. Framed and hunted, Hump was drawn into the warlocks' siege of Sheercliff, which he broke with an original spell, White Flame, becoming publicly known as the White Flame; Countess Daston, crippled in the siege, made him her patron. His party then scattered, with the knight Bud, the druid Dylan, and the duelist Emilia riding to the Fallen Lands front, while Hump and the archer Celaine travelled north to Drakalyn, home of the wolf dragons, where his egg had hatched into his bonded dragon, Nisha. At Drakalyn Hump passed the Dragon Keeper trials and was made dragon-blooded, but refused the goddess Owalyn's blessing, keeping his own path as a wizard and an outsider. Drakalyn then went to war with the lich queen Irila; in the climax Hump, Celaine, and their allies destroyed her, and the spirit Walt, freed from her phylactery, became Hump's librarian in a captured pocket-dimension library. A newly freed Owalyn told Hump a secret legend: the Pantheon's founders stole their power from a wandering wizard whose slain owl familiar, Glyndaril, is bound into Hump's book, a story Hump keeps from all but Celaine. The book ended with Hump, Celaine, and Nisha preparing to leave for Sheercliff.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hump, Celaine, and the hatchling Nisha fly south from Drakalyn escorted by the dragon keeper Tessa, bound for Sheercliff to formalise Drakalyn's alliance with the Dastons. Crossing Alveron's dragon-hostile borderlands they are ambushed by an adventuring band that mistakes them for poachers; the three subdue the group without killing them, and an older archer recognises Hump as the White Flame who burned the Tree of Damnation. Reaching Sheercliff, they are welcomed at Countess Daston's estate: the Countess still wheelchair-bound, the noblewoman Marcela recovered from a Fallen Lands injury, and the wizard Vivienne now in the Countess's service. Hump is besieged by factions eager to recruit the famous White Flame, chiefly the Sheercliff Wizard Society. He learns the inquisitor Eliana was executed for murdering his master, and reads a backlog of letters confirming Bud, Dylan, and Emilia are alive and fighting at Fort Nordric, though Bud is wracked with guilt over soldiers lost under his command. Hump heals Countess Daston enough to walk again with Owalyn's silver sprig, and privately shares the full Drakalyn story, including the wandering-wizard legend, with Vivienne, who swears it to secrecy. With the spirit Walt sorting the captured lich library, Hump confirms that items can be removed from the pocket-dimension, and the party prepares to leave for Fort Nordric with Marcela's expedition.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Touring the Sheercliff Wizard Society, Hump quietly gathers spells while deflecting both the Society's and the Inquisition's competing offers to recruit him, trading Drakalyn heartstones for high-tier spellbooks rather than committing to either. Tessa and her dragon depart for Drakalyn, leaving Hump a dragon-keeper's primer for Nisha, whose growth and golden sheen are unusually strong for her age, perhaps tied to essence she absorbed before hatching. Vivienne, decoding the lich library, finds warlock binding-runes that tie the books to the losing side of the ancient War of the Firmament and the fallen god Uvdar. Then Countess Daston summons Hump with grave news: the Fallen Lands dungeon near Fort Nordric, now named the Infernal Halls, has loosed a demon assault that nearly overran the fortress. She and Marcela formally ask Hump and Celaine to join the reinforcement expedition, led by the gold-ranked General Corteg, to clear the dungeon. Fearing for their friends, the pair accept, and both pass the Adventurers' Guild exam to be certified Silver Rank.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Certified and equipped, Hump and Celaine march north with the roughly three-hundred-strong expedition, reunited on the road with the disgraced Lord Randall Ferrand, shunned since his father sided with the warlocks. The column finds a massacred convoy, and Hump leads a small team to hunt the demon raiders, wiping them out and healing a mutilated survivor with the silver sprig. Meanwhile, at the front, Bud, now known as the Frost Knight, leads his company clearing keeps under Overseer Oswald, haunted by his losses, while the Inquisition begins to suspect the demons that breached Fort Nordric had human help. The expedition reaches the war-scarred fortress-city, and Hump, Celaine, and Nisha reunite with Dylan, then Bud and Emilia. The friends trade stories: Hump recounts Drakalyn and the lich queen's fall, still hiding Owalyn's freedom even from Celaine; Bud and Emilia have both reached the fourth circle; and Fort Nordric now stands as the last great fortress on the northern line. The reunited party agrees to fight together under Bud's command, with their first joint mission a suspected new dungeon node near Rock Tower Keep.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a homecoming feast for Marcela, Hump meets a First Order wizard, a warlock specialist who eyes his swift rise with suspicion, and an inquisitor, both seeking his help against local warlocks; Bud and Emilia quietly acknowledge they are now engaged. The party then marches on the Rock Tower node, a fungal dungeon worked by enslaved fellspawn demons. Fighting down through mushroom grottos, they weather an ambush and a ceiling collapse that Hump single-handedly catches and redirects, and reach the node's core, guarded by some fifty demons. Dylan fells a beast-juggernaut with his guardian tree-form, and the party confronts the true node-master: a floating, many-mouthed mind eater that turns soldiers into puppets and downs the company's casters. They lure it into Dylan's vine-domain and pin it; Hump opens a molten pit against it, and Emilia, discarding the buckler that held her back, drives her family's soul-piercing transcending blade through its core, killing it, and awakens her own soul in the act.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the emptied node the party finds a portal into another world, through which a black-winged demon speaks: Karlak Gormoth, who recognises the Book of Infinite Pages, refuses to burn it, hails Hump as its wielder and bearer of Glyndaril, and vows to return with an offer he cannot refuse; the shaken party agrees to keep the encounter secret. Handing the node to the Inquisition, Hump bargains his way into their warlock intelligence and meets the First Order wizard properly, the legendary hunter called the Iron Hand, who reveals that twelve seals across Alveron imprison the ancient gods and hold back another War of the Firmament, and that the warlocks destroyed the second of them at Sheercliff. He suspects the Infernal Halls itself may be a warlock-created dungeon. Hump gains high-tier spells and is folded into the expedition's protection. Then a monster wave crashes against Fort Nordric; mid-battle the Iron Hand warns that warlocks inside the city are steering the deadly red fog from the Sapphire Docks and striking at the Temple of Sanctum, and sends Bud's party to destroy the fog at its source.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bud's party fights through the docks to a warlock base beneath a tavern, where a warlock turns her patrons into monsters before they capture her. Descending sea-carved tunnels, they find over twenty warlocks channelling power into a fleshy artifact; Hump's plan to collapse the cavern is frozen and hurled back by a telekinetic greater demon, and only Bud's frostfire and Celaine's final arrow bring it down. The artifact proves to be the source of the red fog, sitting beside a two-way Infernal Gateway to the demon dungeon, power beyond the party and handed to High Command. The fog recedes and the Temple's seal holds. The campaign turns to a northern counter-offensive, and Bud's company leaves Oswald's command for the Sheercliff retinue. That night a foreign warlock breaks into their lodgings hunting the Book, mistakes Celaine for the wizard he was sent for, and is killed by Hump and Nisha, marking the book as the target of an unknown faction from lands across the sea.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hump revives the ensorcelled Celaine and studies the dead intruder's strange ouroboros mark, a magic even the Iron Hand does not recognise. At High Command, the party is folded into an elite operation against the Infernal Halls: a pocket world tethered by a dungeon core, ringed by twelve chieftain-run regions that feed a demon lord's central keep. Three small squads will slip in through defeated dungeon nodes to disrupt the fortified gate from within so the army can breach it; Celaine's rare veil-piercing sight is the party's qualifying asset, and a soul-touching oath binds them all against a suspected leak in High Command. The Iron Hand privately reveals the recent Temple battle was a trap engineered by Countess Daston's foresight: Count Daston's injury was faked, and General Corteg had secretly risen to the eighth circle. The warlocks' true base lies inside the Infernal Halls, and he judges Hump near tier-six magic, held back only by self-doubt. The combined squad sails and marches north to the coastal dungeon node that will carry them in.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crossing through the glass-transmuted node and its unsettling halls of memory, where Hump's mirror shows his childhood as a beaten Elenvine orphan, the squad links with the forward party and slips into the Infernal Halls: a scorched pocket world under a starless crimson sky, ruled from an obsidian keep by an Imp Lord. Guided through traps and illusions, they are caught in a mist-ambush at a false lake hiding hundreds of demons. Given a focus-flower by the marshal Anara, Hump finally casts Rivers of Lava for the first time, flooding the battlefield and incinerating the horde, a tier-six breakthrough. Anara charm-marks the Imp Lord and drains his life with her flowers, killing him. Hump, confirmed now a rank-five wizard, sees his book's second internal seal break, unlocking the Secret Arts left by a past owner, beginning with Spell Sculpting, the aligning of a spell with one's own soul.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "From a ridge of bones the squad overlooks the Infernal Gate, a fort held by an orc tribe that worships the demon Gorvol the Invincible, its killbox built to slaughter any assault. Crossing onto a death-god's spirit plane, they infiltrate the fort and set about disabling the essence source that powers its defences. Warlocks teleport reinforcements into the keep; when one pins the wounded Hump, Nisha's scales blaze fully gold and she kills for him, a phoenix-driven transformation that leaves her drained. The defences fall, and General Corteg and Count Daston lead Alveron's army through the opened gate. In the pitched battle the gatekeeper Gorvol proves nearly unkillable; the wounded Anara uses her last charm to force the demon to turn and expose the one scar on its back, Celaine's arrow pierces it clean through, Emilia's blade follows, and the shadow-operative Drexel drives a dagger through its heart to finish it.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Infernal Gate fort falls and the army takes its foothold, though the metal-sorcerer Sorin is among the dead and Karlak Gormoth is glimpsed watching from afar, still hunting the Book. The Iron Hand gives Hump a new task: lead a disguised supply convoy as bait for warlock saboteurs on the road to the demon lord's citadel. The trap works, and Hump's party captures a warlock band led by Fiona Heinlock, a highly placed traitor tied to the Fort Nordric siege, with almost no losses. Between duties Hump grinds at Spell Sculpting, and on the eve of the citadel siege he achieves a first real breakthrough, aligning a stone-shaping spell with his soul so the earth moves as an extension of himself. His name is now known to the senior Inquisition, and the mystery of who hunts his book, and why, remains the personal thread he means to chase once free of the dungeon.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before the Demon Citadel, the army's first breach becomes a massacre: the outer wall is a living amalgam of stitched-together demons that heals instantly and devours the soldiers who pour in. Count Daston proposes a counter drawn from old accounts, in which destruction-specialist earth-wielders tunnel through the wall faster than it can heal, and names the newly rank-five Hump one of the army's key earth-mages, gifting the party fire-and-earth opal amulets. Hump trains for days with the crystal-knight Lady Fentress and the chosen of Assydium to coordinate the breach. When the assault comes, a winged, human-featured devil appears and erases hundreds of soldiers with a wave of purple power, then seals the army inside a barrier with no retreat. It names itself Dravor, Lord of the Red Sky, ruler of the Infernal Halls; while General Corteg holds its attention, the tunnel team begins boring into the living wall.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Count Daston shatters the living wall with his own seventh blessing and hands the breach to Anara before turning to duel Dravor, and Hump, fusing his soul, his stone-shaping, and a wind-mastery technique, holds the tunnel open at great cost as the army pours into the citadel. Pushing up toward the black keep and the dungeon core, Hump's party frees caged slaves until Karlak Gormoth finally appears in person and demands the Book, offering to spare everyone if Hump names him his heir. Hump refuses, and Karlak drags him, Celaine, and Nisha down into his own soul-domain, a lavish throne hall proving him an ancient being past the seventh rank, older than the Pantheon. He cannot take the Book by force, for it is soul-bound to Hump by blood and guarded by Glyndaril, so he must coerce Hump into surrendering it. Cornered and hunted through the domain's shadows, Celaine calls on Owalyn and, impossibly for a chosen, manifests her own soul as a veil of darkness, turning hunter once more.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aided by Glyndaril, who manifests from the book, Hump learns to stop resisting Karlak's hellfire and instead to wield it, becoming one with the flame and burning the devil's hoard of trophies. Unable to beat Karlak outright, Hump blinds his right eye with a point-blank blast from an enchanted ring, shattering his own hand in the process and taking a savage beating alongside Celaine. Karlak then reveals the campaign's great deception: the whole Infernal Halls invasion was bait. While Alveron's army was committed here, the warlock Order of Ancients left the dungeon to strike the kingdom's twelve seals; Karlak shows windows of burning cities, Emilia lying gravely wounded, and Sheercliff already fallen. His aim is chaos and the return of the old gods. At that moment the Iron Hand tears through the weakened veil into the domain to confront the devil.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Iron Hand reveals himself as a seventh-rank master of a soul domain and a member of the secretive Three Eyes, come specifically to keep the Book from Karlak. Fighting the devil to a standstill with silver water-magic, he shields Hump, Celaine, and Nisha out through the veil back into the Infernal Halls, where Marcela severs the veil-stones and seals Karlak, alive and permanently one-eyed and vowing to hunt Hump forever, away in his domain. Hump heals the grievously wounded Bud and Emilia with the silver sprig, and the dying dungeon's red sky dissolves as its core is lost. But the victory is hollow: climbing to the core chamber, the party finds it empty. The demon lord Dravor escaped and carried off the dungeon core, exactly as the enemy intended. On the chamber floor lies a vast warlock teleportation formation, and Hump proposes firing it to follow the enemy straight home to Alveron.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Forcing his will on the book, Hump overrides Glyndaril's refusal for the first time and takes control of the warlock Greater Gateway formation. The book then reveals its author at last: the long-dead wandering wizard, first mage and world whisperer, who made it for revenge on the thirteen who became the Pantheon and stripped him of his power; through Glyndaril's acknowledgement, Hump becomes his heir. The book is a declaration of war on the gods, its message being that the Pantheon's blessings enslave the souls of their Chosen, jail the old gods, and killed its maker, a secret Hump shares only with Celaine, even as a tide of divine blessings recasts the march as a holy war and Bud, ignorant that his own goddess binds him, hails it as righteous. The Iron Hand, revealing his own soul-wound from a warlock group that also killed Hump's master, invites Hump to join the Three Eyes for protection and a path past the seventh rank. With the enemy's catalysts assembled, Hump opens a tall red rift onto a dark, ruined landscape, Alveron under invasion, and commands the elite army to advance. The series ends there, on a war only just beginning: the dungeon core stolen, the seals falling, cities burning, and the true conflict against the Pantheon unfought.",
+            "through": {
+              "chapter": 84
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-5"
+      }
+    },
+    "the-help": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A middle-aged Black maid in Jackson, Mississippi, in the early 1960s, who has spent her life raising white families' children. Wise, devout, and observant, she is quietly grieving the recent death of her grown son and pours her tenderness into the neglected little white girl she now cares for. She narrates much of the story.",
+            "id": "aibileen-clark",
+            "name": "Aibileen Clark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Aibileen's closest friend, a Black maid famous for her cooking and her sharp, defiant tongue. Bold and quick-tempered, she struggles to hold jobs because she refuses to be humbled by her white employers, and she carries burdens of her own at home.",
+            "id": "minny-jackson",
+            "name": "Minny Jackson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young white woman just home from college, tall and awkward and set apart from her friends by her ambition to become a writer. Uneasy with the rigid racial rules of her Jackson social circle, she is also troubled by the sudden, unexplained departure of the beloved Black maid who raised her.",
+            "id": "skeeter",
+            "name": "Eugenia \"Skeeter\" Phelan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The domineering queen of Jackson's white society and Skeeter's longtime friend. Charming to her equals but ruthless beneath, she polices the town's racial and social order, and she promotes an initiative to require separate bathrooms for Black domestic workers.",
+            "id": "hilly-holbrook",
+            "name": "Hilly Holbrook",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A tense, insecure young housewife who employs Aibileen and defers to Hilly in everything. Anxious about appearances and money, she pays little real attention to her small daughter, leaving the child largely to Aibileen.",
+            "id": "elizabeth-leefolt",
+            "name": "Elizabeth Leefolt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Leefolts' toddler, a chubby, affectionate little girl overlooked by her mother and lovingly raised by Aibileen, who works to make her feel she matters.",
+            "id": "mae-mobley",
+            "name": "Mae Mobley Leefolt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A warm, guileless young woman from a poor rural background, married to a well-off man and shut out by Hilly's circle. Lonely and eager for friendship, she hires Minny in secret and treats her with an unexpected, unguarded kindness.",
+            "id": "celia-foote",
+            "name": "Celia Foote",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Black maid who raised Skeeter and gave her the affection her own mother withheld. She has left the Phelan household under circumstances no one will explain, and Skeeter is determined to learn what became of her.",
+            "id": "constantine",
+            "name": "Constantine Bates",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The son of a state senator, set up with Skeeter and courting her. Confident and conventional, he offers Skeeter a path into the respectable married life her mother wants for her, though his views and hers do not always sit easily together.",
+            "id": "stuart-whitworth",
+            "name": "Stuart Whitworth",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Skeeter's mother, an ailing, image-conscious woman who despairs of her unmarried, unladylike daughter and constantly pushes her toward finding a husband and conforming to Jackson's expectations.",
+            "id": "charlotte-phelan",
+            "name": "Charlotte Phelan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-help"
+      },
+      "recaps": {
+        "ending": "The anonymous book of the maids' testimonies, titled simply for the help who told them, is published and read all over Jackson, throwing the town's white households into suspicion and unease. Hilly Holbrook recognizes herself in one of the stories and burns to expose and punish the maids and Skeeter, but she is trapped: to prove the book is about Jackson would be to admit that she is the woman fooled by Minny's notorious secret revenge, the pie she was tricked into eating, and so she is forced into silence. The fallout still lands hard on the women. Aibileen is falsely accused of theft by Hilly and dismissed from the Leefolt house, yet she walks away with a sense of freedom and a possible future as a writer, having found her own voice. Minny, emboldened, finally resolves to leave her abusive husband and holds a secure place with the loyal Celia Foote. Skeeter, shunned by her old circle but offered a publishing job, departs for New York with her family's blessing to pursue her ambitions. Skeeter has also learned the sad truth of what became of Constantine, the maid who raised her. The three narrators part changed, having risked everything to tell the truth.",
+        "in_short": "In Jackson, Mississippi, in the early 1960s, a young white would-be writer, Skeeter, secretly sets out to record the true experiences of the Black maids who raise white families' children and keep their homes. Aibileen, a wise, grieving maid, cautiously agrees to talk, followed by her sharp-tongued friend Minny and, after the murder of Medgar Evers, many others. The project is dangerous in a town ruled by the segregationist socialite Hilly Holbrook, who champions separate bathrooms for the help. Minny takes a job with Celia Foote, a kind outcast, and holds a secret weapon against Hilly, a humiliating trick she once played on her. Skeeter also uncovers what happened to Constantine, the maid who raised her. The book of the maids' stories is published anonymously and sends shockwaves through Jackson. Hilly, recognizing herself, is silenced by fear of exposure. Aibileen loses her job but steps toward a freer future, Minny gains security, and Skeeter leaves for New York, the three women changed by what they dared to do.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Jackson, Mississippi, in 1962, Aibileen Clark, a Black maid, works for the anxious young Elizabeth Leefolt, raising the couple's neglected toddler while quietly mourning her own grown son, who died not long before. Aibileen's best friend, Minny Jackson, a superb cook with a defiant streak, has just been fired by the imperious Hilly Holbrook and struggles to find a new position. Meanwhile Eugenia 'Skeeter' Phelan, a white college graduate and aspiring writer, returns home restless and out of step with her marriage-minded friends, and troubled by the unexplained disappearance of Constantine, the maid who raised her. Hilly, the ruthless leader of their social set, pushes a campaign to make white families install separate bathrooms for their Black help, an initiative that unsettles Skeeter and sets her thinking about the gulf between the women she knows and the women who serve them.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skeeter lands a small newspaper job answering housekeeping questions and turns to Aibileen for the answers, and through their careful conversations an idea takes shape: a book that would tell, honestly, what it is like to be a Black maid working for white families in Mississippi. The notion is perilous for everyone involved, since discovery could cost the maids their jobs, their safety, or their lives. After long hesitation, Aibileen agrees to be interviewed and to help persuade others. Minny, meanwhile, finds work with Celia Foote, a naive, warm-hearted young woman married into money but frozen out by Hilly's circle, who treats Minny with a startling and disarming kindness. As Skeeter begins secretly recording Aibileen's story, the risks mount and the distance grows between Skeeter and the friends whose prejudices she is quietly coming to reject.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The secret project inches forward as Skeeter and Aibileen record more of the maids' experiences, meeting in hiding to avoid discovery. Minny settles into the strange, tender arrangement of working for Celia, whose loneliness and unfitness for Jackson society gradually reveal a genuine, vulnerable friend beneath the awkwardness. Skeeter is drawn into a courtship with Stuart Whitworth, a senator's son, even as her growing double life pulls her away from Hilly and the others. Hilly's petty cruelties sharpen, and the danger of the book presses closer, with only a handful of maids willing to risk speaking. The white and Black worlds of Jackson remain rigidly divided, and Skeeter walks an ever finer line between the society she was raised in and the truth she is helping to set down, aware that exposure would ruin them all.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The murder of the civil rights leader Medgar Evers shakes Jackson's Black community and hardens the stakes of everything Skeeter and the maids are doing. In its wake, and with growing trust, many more maids come forward to add their stories, giving the book the range it needs to have a chance at publication. The work is exhausting and frightening, carried out in stolen hours under constant threat of being found out. Aibileen and Minny help gather and shape the accounts, weighing how much can safely be told. Skeeter's romance with Stuart falters as her secret life and her changing conscience pull her further from the expectations of her mother and her friends. As the manuscript takes form and a New York editor shows cautious interest, the women race to finish while shielding their identities and the identity of the town itself.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a grand society benefit, the tensions of Jackson boil over in public embarrassment, and the fault lines among the women widen. To protect the maids if the book is ever traced to Jackson, they include a disguised account of the humiliating trick Minny once played on Hilly, calculating that Hilly's dread of being identified as its victim will keep her from ever admitting the book is about their town. As publication nears, the collaborators brace for the consequences. Skeeter finally learns the painful truth about Constantine, the maid who raised her: a cruelty involving Constantine's daughter and Skeeter's own mother that drove Constantine from the household. With the manuscript complete and heading into print, the three women wait, knowing that once it appears, nothing in their lives will be the same.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book is published anonymously and races through Jackson, as white women anxiously wonder whether they appear in it and which maids might have spoken. Hilly recognizes herself and is enraged, but the buried story of her humiliation traps her: to prove the book is set in Jackson would be to confess to being its victim, so she is forced into a furious silence. The consequences still fall unevenly. Hilly engineers Aibileen's firing on a false accusation, yet Aibileen leaves the Leefolt house with a new sense of freedom and the hope of becoming a writer, having discovered her own voice. Minny, made braver by all that has happened, resolves to leave her abusive husband and holds a secure place beside the devoted Celia. Skeeter, cut off from her old friends but offered a job at a New York publisher, departs to build the life she wants. The three narrators, bound by what they risked together, part changed and unbowed.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-help"
+      }
+    },
+    "the-hitchhikers-guide-to-the-galaxy": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An ordinary, mild-mannered Englishman whose morning begins with bulldozers arriving to demolish his house for a bypass. Bewildered and often still in his dressing gown, he is swept off the planet moments before its destruction and dragged through a series of cosmic events he barely understands. He spends much of his journey confused, indignant, and wishing for a decent cup of tea.",
+            "id": "arthur-dent",
+            "name": "Arthur Dent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Arthur's friend of several years, who has passed as an out-of-work actor but is in fact an alien from a small planet near Betelgeuse and a roving researcher for the Guide. Stranded on Earth far longer than he intended, he keeps his composure in a crisis and rescues Arthur by hitching them both aboard a passing spaceship just before the planet is destroyed.",
+            "id": "ford-prefect",
+            "name": "Ford Prefect",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of a Vogon Constructor Fleet, a bureaucratic and thoroughly unpleasant alien who oversees the demolition of Earth to clear the way for a hyperspace bypass. Devoted to paperwork and procedure and proud of his own extremely bad poetry, he inflicts a recital of it on the two stowaways he catches before having them thrown into space.",
+            "id": "prostetnic-vogon-jeltz",
+            "name": "Prostetnic Vogon Jeltz",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The flamboyant, self-obsessed former President of the Galaxy, who has two heads and three arms and a talent for outrageous stunts. Acting on impulses he does not fully understand himself, he steals a remarkable new starship, setting in motion the chase and the voyage that sweep up the others.",
+            "id": "zaphod-beeblebrox",
+            "name": "Zaphod Beeblebrox",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "aliases": [
+              "Tricia McMillan"
+            ],
+            "description": "A clever human woman with a background in mathematics and astrophysics, whom Arthur had once met and failed to impress at a party on Earth. She left the planet earlier in the company of Zaphod, and she now travels aboard his stolen ship, one of only a handful of humans left after Earth's destruction.",
+            "id": "trillian",
+            "name": "Trillian",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Paranoid Android"
+            ],
+            "description": "A robot aboard the stolen starship, built with a vast intellect but afflicted by overwhelming boredom and depression. Convinced that his abilities are hopelessly wasted on trivial tasks, he complains constantly and views everything with gloom, though his gifts prove unexpectedly useful.",
+            "id": "marvin",
+            "name": "Marvin",
+            "reveal": {
+              "chapter": 11
+            }
+          },
+          {
+            "description": "An elderly designer of planets on the ancient world of Magrathea, who takes special pride in crafting elaborate coastlines. Kindly and a little wistful, he leads Arthur through a vast hidden factory and reveals the astonishing truth about what the planet Earth really was and why it was built.",
+            "id": "slartibartfast",
+            "name": "Slartibartfast",
+            "reveal": {
+              "chapter": 22
+            }
+          },
+          {
+            "description": "A colossal supercomputer built long ago by a race of hyper-intelligent beings to determine the Answer to the ultimate question of Life, the Universe, and Everything. After calculating for millions of years, it delivers a result that its makers find both simple and useless without knowing what the actual question was.",
+            "id": "deep-thought",
+            "name": "Deep Thought",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "Hyper-intelligent, pan-dimensional beings who appear in our world in the humble form of laboratory mice. They are the ones who commissioned the building of the Earth for a grand experiment, and they take a keen and self-interested interest in what may have survived its destruction.",
+            "id": "the-mice",
+            "name": "The mice",
+            "reveal": {
+              "chapter": 31
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hitchhikers-guide-to-the-galaxy"
+      },
+      "recaps": {
+        "ending": "On Magrathea, Arthur discovers that the Earth was not simply a planet but an immense computer, built to work out the Ultimate Question of Life, the Universe, and Everything, to match the long-known Answer of 42. It was destroyed by the Vogons only minutes before it would have finished, after ten million years of running. The mice, hyper-intelligent beings who commissioned the whole experiment, decide that the last fragment of the program may be lodged in Arthur's brain and try to obtain it, first by offering to buy it and then by force. The attempt collapses when galactic police, chasing Zaphod for stealing the Heart of Gold, burst in shooting. Marvin, the depressed robot, plugs into the police ship's computer and makes it so miserable that it shuts itself down, killing the officers. Arthur, Ford, Zaphod, Trillian, and Marvin get away aboard the Heart of Gold. Hungry and shaken, they decide to go and eat at the Restaurant at the End of the Universe, leaving the question unresolved and their journey still under way.",
+        "in_short": "Arthur Dent's house is about to be bulldozed when his friend Ford Prefect, secretly an alien, reveals that the whole Earth is about to be demolished by the Vogons to make room for a hyperspace bypass. Ford hitchhikes them onto a passing ship, and after being thrown out into space the pair are improbably rescued by the stolen starship Heart of Gold, crewed by Zaphod Beeblebrox, the two-headed former President of the Galaxy, the human Trillian, and the depressed robot Marvin. They travel to the myth-shrouded planet Magrathea, where Arthur learns that a supercomputer, Deep Thought, long ago found the Answer to Life, the Universe, and Everything to be 42, and that the Earth was an even greater computer, built to discover the actual question, destroyed just before it finished. The beings behind it, who appear as mice, want Arthur's brain. He escapes with the others, and they set off for the Restaurant at the End of the Universe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Arthur Dent wakes to find bulldozers ready to knock down his house to build a bypass. His friend Ford Prefect, who is secretly an alien, tries to explain something far more urgent: the Earth itself is about to be destroyed. A fleet of Vogons arrives and demolishes the planet to clear a route for a galactic hyperspace bypass. Ford saves Arthur by hitchhiking them both aboard a Vogon ship in the last seconds before the end. Discovered as stowaways, the two are forced to endure a recital of dreadful Vogon poetry and are then thrown out into open space.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the edge of death in the vacuum, Arthur and Ford are picked up, against staggering odds, by a stolen starship called the Heart of Gold, which runs on an Improbability Drive that makes wildly unlikely things happen. Aboard are the ship's thief, Zaphod Beeblebrox, the reckless two-headed former President of the Galaxy; Trillian, a human woman Arthur had once met at a party on Earth; and Marvin, a brilliant but hopelessly depressed robot. The unlikely group takes stock of one another as the ship carries them onward.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zaphod steers the Heart of Gold toward Magrathea, a planet long dismissed as a myth, whose people once grew fabulously rich by building custom-made luxury worlds for the wealthy. As the ship approaches, automated defenses launch missiles at it. The crew survives when Arthur triggers the Improbability Drive, briefly turning the incoming missiles into harmless things, and they set down on the ancient, seemingly lifeless world to look for whatever remains of it.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Magrathea, Arthur is led away by Slartibartfast, one of the old planet designers, who explains the world's history. Long ago a race of hyper-intelligent beings built a vast computer, Deep Thought, to find the Answer to the ultimate question of Life, the Universe, and Everything. After millions of years of calculation, Deep Thought delivered its result: the number 42, an answer that meant nothing to anyone, because no one actually knew what the ultimate question itself was.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To discover the question, Deep Thought designed an even greater computer to work it out: the planet Earth, with its living creatures and people forming part of a program meant to run for ten million years. The Vogons destroyed the Earth only minutes before the calculation would have finished. Arthur learns that the beings who commissioned the Earth appear in our world as mice, and that two of them were kept by Trillian as pets. Believing the last of the program may survive inside a human brain, they set out to obtain Arthur's.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arthur refuses to give up his brain, and the mice's attempt to take it by force is interrupted when galactic police, hunting Zaphod for stealing the Heart of Gold, storm in and open fire. The confrontation ends when Marvin, connected to the police ship's computer, so thoroughly depresses it that it shuts itself down, killing the officers. Battered, hungry, and reunited, the group escapes together aboard the Heart of Gold and decides to travel on to the Restaurant at the End of the Universe, their adventures far from over.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hitchhikers-guide-to-the-galaxy"
+      }
+    },
+    "the-hobbit": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A comfortable, respectable hobbit of Bag End who wants nothing to do with adventures until Gandalf and a company of dwarves arrive uninvited and sweep him into a quest as their hired burglar. Fond of good food, his pipe, and his warm home, he surprises everyone - himself most of all - with unexpected nerve and cleverness once he is on the road east.",
+            "id": "bilbo-baggins",
+            "name": "Bilbo Baggins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the wizard"
+            ],
+            "description": "A wandering wizard famous for his fireworks and for a knack of drawing quiet folk into adventures. He arranges Bilbo's involvement with the dwarves and steers the company through its early dangers, though he comes and goes on errands of his own and does not stay with them the whole way.",
+            "id": "gandalf",
+            "name": "Gandalf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proud leader of the company of dwarves and heir to a kingdom beneath the Lonely Mountain that the dragon Smaug seized long ago. He means to reclaim his people's halls and treasure, and carries the weight of that lost inheritance with grave, sometimes stubborn, dignity.",
+            "id": "thorin-oakenshield",
+            "name": "Thorin Oakenshield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wise and kindly master of Rivendell, the Last Homely House east of the mountains. He offers the travellers rest and reads the hidden moon-letters on their map, revealing a clue about the secret door into the Lonely Mountain.",
+            "id": "elrond",
+            "name": "Elrond",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A slippery, secretive creature who lives on an island in a cold lake deep beneath the goblins' mountain, muttering to himself and hissing. He challenges the lost Bilbo to a riddle-game with high stakes, and guards a magic ring he calls his precious - a ring Bilbo happens upon in the dark tunnels.",
+            "id": "gollum",
+            "name": "Gollum",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge, gruff man who can take the shape of a great bear, living alone with his remarkable animals in a hall between the mountains and Mirkwood. Wary of strangers, he nonetheless shelters and provisions the company once Gandalf carefully wins him over.",
+            "id": "beorn",
+            "name": "Beorn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thranduil",
+              "King of the Wood-elves"
+            ],
+            "description": "The stern king of the wood-elves of Mirkwood, who holds the dwarves prisoner in his underground halls when they trespass in his forest. Fond of treasure and good wine, he is not evil but deeply suspicious of the travellers and their unexplained business.",
+            "id": "the-elvenking",
+            "name": "The Elvenking",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The great fire-breathing dragon who drove the dwarves from the Lonely Mountain generations ago and has slept on their heaped gold ever since. Cunning, vain, and immensely dangerous, he wakes when a thief disturbs his hoard and trades flattering, probing words with the unseen burglar who has crept into his lair.",
+            "id": "smaug",
+            "name": "Smaug",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bard the Bowman"
+            ],
+            "description": "A grim, far-sighted man of Lake-town descended from the old lords of Dale, and a deadly archer. When the enraged dragon comes to burn the town, he alone keeps his head, and a whispered word about a bare patch in the beast's armor gives him his chance.",
+            "id": "bard",
+            "name": "Bard",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hobbit"
+      },
+      "recaps": {
+        "ending": "The book closes after the Battle of Five Armies. Thorin Oakenshield dies of his wounds, reconciled with Bilbo at the last, and his nephews Fili and Kili fall beside him; leadership of the mountain and its recovered wealth passes to Thorin's kinsman Dain. The alliance of dwarves, elves, and men that formed against the goblins holds afterward in friendship, the treasure is divided, and Bard rebuilds the ruined Lake-town and the old city of Dale. Bilbo, refusing all but a small share of the gold and silver, travels back to the Shire with Gandalf, resting again at Rivendell. He arrives to find he has been given up for dead and his home and belongings being auctioned off, and must reclaim them; his reputation among respectable hobbits never quite recovers, but he is content. He keeps the friendship of Gandalf and the surviving dwarves and settles back into a quiet life at Bag End. Crucially, he says nothing about the ring he found under the mountain, keeping it as a private curiosity. Neither he nor Gandalf yet understands what it truly is, a thread left hanging that will reopen years later when the ring's real nature and danger come to light.",
+        "in_short": "Bilbo Baggins, a settled and unadventurous hobbit, is swept into an expedition with the wizard Gandalf and thirteen dwarves led by Thorin Oakenshield to reclaim their ancestral treasure from the dragon Smaug. Along the way they survive trolls, goblins, and giant spiders; in the goblin-tunnels Bilbo finds a magic ring of invisibility, winning it from the creature Gollum after a riddle-game. He grows into a resourceful burglar, rescuing the dwarves from wood-elves by floating them downriver in barrels. At the Lonely Mountain he confronts Smaug and spots a weak point in the dragon's armor; Smaug then attacks Lake-town, where the archer Bard kills him. A quarrel over the treasure nearly sets dwarves, men, and elves against one another, but a goblin invasion forces them to unite in the Battle of Five Armies. Thorin dies reconciled with Bilbo, who returns home richer and wiser, quietly keeping the ring whose true nature no one yet suspects.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bilbo Baggins, a comfortable and unadventurous hobbit of Bag End, is visited by the wizard Gandalf and then by thirteen dwarves led by Thorin Oakenshield. Over supper Thorin explains their errand: long ago the dragon Smaug drove his people from the Lonely Mountain and seized their wealth, and the dwarves mean to reclaim it. Gandalf produces a map of the mountain and a key to a hidden side-door, and the reluctant dwarves accept Bilbo as their burglar. The company rides east. In the wild they are caught by three trolls who plan to eat them, but Gandalf keeps the trolls arguing until sunrise turns them to stone. From the trolls' hoard Gandalf and Thorin take two old elvish swords, and Bilbo picks up a small knife that will later serve him as a sword. They come to Rivendell, the valley of the elf-lord Elrond, who welcomes them and studies Thorin's map. By moonlight he reads hidden moon-letters on it, revealing that the secret door can only be opened at one time of year, when the last light of Durin's Day falls on the keyhole. Rested and better informed, the travellers press on toward the mountains.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crossing the Misty Mountains, the company shelters in a cave that proves to be a goblin entrance; the goblins seize them and drag them underground. Gandalf reappears, kills the Great Goblin, and leads an escape, but in the dark Bilbo is knocked out and left behind. Groping along, he finds a plain gold ring lying on the stone and pockets it, then meets Gollum, a slimy creature dwelling by an underground lake. The two play a riddle-game with Bilbo's life as the stake, and Bilbo wins on a doubtful last question, asking aloud what he has in his pocket. Gollum paddles off to fetch his ring, finds it gone, and hunts Bilbo in a fury; Bilbo, slipping it on by chance, discovers it makes him invisible. He follows the raging Gollum to a back exit and escapes into daylight, rejoining the dwarves. Their relief is short-lived: wargs and goblins corner the company and drive them up trees, then set the trees alight. Great eagles, friends of Gandalf, swoop down and carry the whole party to safety.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The eagles set the travellers down near the home of Beorn, a fierce man who can take the shape of a great bear. Beorn feeds and re-equips them, then guides them to the edge of Mirkwood, a vast, dark, enchanted forest, where Gandalf leaves the company on other business. Warned to keep to the path, the dwarves and Bilbo push into the gloom. They nearly starve, Bombur falls into an enchanted stream and sleeps for days, and, straying off the track toward the lights of elvish feasts, they are trapped by giant spiders. Bilbo, using the ring and his little sword, which he now names Sting, kills several spiders and frees the dwarves. But wood-elves capture the company and imprison them in their king's caverns, holding Thorin separately. Bilbo, invisible, haunts the halls until he devises an escape: he packs the dwarves into empty wine barrels the elves are floating down the river and rides out clinging to a barrel himself. Bruised and soaked, they drift downriver toward Lake-town, in the shadow of the Lonely Mountain at last.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The barrels wash up at Lake-town, a settlement of Men built out over the Long Lake. The dwarves climb free and Thorin declares himself the King under the Mountain returned; the townsfolk, remembering old songs and hoping for renewed wealth, feast and outfit them, though the town's Master privately doubts the venture. After a time the company travels up to the Lonely Mountain and, guided by the map, searches its western side for the hidden door. They find the narrow ledge and the smooth stone but cannot open it, and days pass in frustration. At last, on the evening of Durin's Day, a thrush knocks a snail against the rock, the last ray of the setting sun strikes the wall, and a keyhole appears. Thorin fits his key, and the secret door swings inward, opening the dark passage that leads down toward the dragon's hall.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bilbo is sent down the tunnel to face the dragon. Wearing the ring, he creeps into the treasure-hall and finds Smaug asleep on a mountain of gold. He steals a great cup, and later returns to trade riddling talk with the wakened dragon, flattering him into showing off his armored belly, and notices a bare patch on his left breast where the jeweled crust has not formed. A thrush overhears this. Smaug, certain the theft was aided by the men of Lake-town, flies off in the night to burn the town in revenge. Meanwhile the dwarves enter the hall, and Bilbo secretly finds and pockets the Arkenstone, the greatest jewel of Thorin's house. At Lake-town, Smaug rains fire on the roofs, but the archer Bard rallies the defenders. As the dragon wheels overhead, the thrush tells Bard of the bare patch; Bard looses his last black arrow into the gap, and Smaug crashes dead into the lake, wrecking the town as he falls. The homeless people look to Bard and turn their anger on the fleeing Master.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the dragon dead, word of the unguarded hoard spreads. Bard, now hailed by the survivors, and the Elvenking of Mirkwood march to the mountain, Bard asking a share of the treasure as compensation for the ruin of Lake-town and for old wealth of his people. But Thorin, his mind poisoned by the gold, refuses every claim and sends word to his kinsman Dain to bring an army of dwarves from the Iron Hills. To break the deadlock and prevent bloodshed, Bilbo slips out at night and hands the Arkenstone to Bard and the Elvenking, giving them a bargaining piece Thorin cannot ignore. When Thorin learns of it he is enraged and names Bilbo a traitor. Just as dwarves, men, and elves stand ready to fight one another, a vast host of goblins and wolves pours out of the mountains, and the rival armies unite against them in the Battle of Five Armies. The fighting is desperate until the eagles and Beorn, in bear-shape, arrive; Beorn breaks the goblin ranks and the enemy is destroyed.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The victory is costly. Thorin is mortally wounded in the battle, and his nephews Fili and Kili die defending him. Before he dies, Thorin sends for Bilbo and makes peace with him, taking back his angry words and admitting the hobbit's worth. Dain becomes the new King under the Mountain, the treasure is fairly shared, and Bard rebuilds a town and rewards the survivors. Bilbo accepts only a modest chest or two of gold and silver, wanting no more. With Gandalf he journeys home the long way, resting again at Rivendell. Reaching the Shire, he finds himself presumed dead and his belongings up for auction; he has to buy back much of his own property and is regarded ever after as slightly disreputable for his adventuring. He settles again at Bag End, keeps up his friendships with the dwarves and Gandalf, and says nothing to his neighbours about the magic ring, which he quietly keeps.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hobbit"
+      }
+    }
+  }
+}

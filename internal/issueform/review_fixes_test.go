@@ -92,12 +92,12 @@ func TestResolveRecordRefURLKinds(t *testing.T) {
 	}
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			loc, ok := resolveRecordRef(c.ref)
+			ref, ok := resolveRecordRef(c.ref)
 			if !ok {
 				t.Fatalf("resolveRecordRef(%q) not ok", c.ref)
 			}
-			if loc.Kind != c.wantKind || loc.Slug != c.wantSlug {
-				t.Errorf("resolveRecordRef(%q) = %v/%q, want %v/%q", c.ref, loc.Kind, loc.Slug, c.wantKind, c.wantSlug)
+			if ref.kind != c.wantKind || ref.slug != c.wantSlug {
+				t.Errorf("resolveRecordRef(%q) = %v/%q, want %v/%q", c.ref, ref.kind, ref.slug, c.wantKind, c.wantSlug)
 			}
 		})
 	}

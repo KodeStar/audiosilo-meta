@@ -1,0 +1,1423 @@
+{
+  "entries": {
+    "the-hobbit-or-there-and-back-again": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A comfortable, respectable hobbit from Bag End who wants nothing more than a quiet life with good food and no adventures. His peace is broken when the wizard Gandalf and a company of thirteen dwarves arrive and enlist him, against his instincts, as their burglar for a journey to reclaim a treasure guarded by a dragon far to the east. Small, unwarlike, and fond of home, he is chosen partly for a boldness even he does not yet believe he has. He sets out reluctant and homesick, unsure why he agreed to go.",
+            "id": "bilbo-baggins",
+            "name": "Bilbo Baggins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A wandering wizard, known for his fireworks and for stirring quiet folk into adventures. He arranges the whole expedition, selecting Bilbo as the company's burglar and vouching for him to the doubtful dwarves. Wise, sharp-tongued, and secretive about his purposes, he guides and rescues the travellers through their early dangers but comes and goes on business of his own, leaving them to rely on themselves for stretches of the road.",
+            "id": "gandalf",
+            "name": "Gandalf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thorin",
+              "Oakenshield"
+            ],
+            "description": "The proud leader of the company of dwarves and heir to the kings who once ruled beneath the Lonely Mountain before the dragon drove his people out and seized their wealth. He means to reclaim that mountain, its halls, and its hoard. Dignified and conscious of his lineage, he can be pompous and stubborn, but he carries genuine authority and a deep sense of the wrong done to his family. The quest is, above all, his.",
+            "id": "thorin-oakenshield",
+            "name": "Thorin Oakenshield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A great fire-breathing dragon who long ago descended on the dwarf kingdom under the Lonely Mountain, destroyed the nearby town of Dale, drove out or killed its people, and took the vast treasure for himself. He has slept upon that hoard ever since, and reclaiming the mountain means dealing with him. Cunning, greedy, and vain, he knows every piece of gold he lies on and is the central obstacle standing between the dwarves and their inheritance.",
+            "id": "smaug",
+            "name": "Smaug",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the older dwarves of the company, mild-mannered and observant, who often serves as its lookout. Of all the dwarves he is the friendliest toward Bilbo and the readiest to think well of him, and over the journey the two become genuine companions.",
+            "id": "balin",
+            "name": "Balin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The wise and kindly master of Rivendell, the Last Homely House, a refuge of elves in a valley near the edge of the wild. He gives the travellers rest and food and, reading the moon-letters hidden on their map, reveals instructions they will need to open the secret door in the mountain. Learned in old lore, he also identifies the ancient blades the company recovered on the road.",
+            "id": "elrond",
+            "name": "Elrond",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A slimy, secretive creature who lives alone on an island in a cold underground lake beneath the Misty Mountains, far from sunlight. When Bilbo, lost and separated from the company, stumbles into his domain, Gollum challenges him to a contest of riddles with Bilbo's life as the stake. He treasures a magic ring above all else, and its unexpected loss will turn the game desperate.",
+            "id": "gollum",
+            "name": "Gollum",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A huge, gruff man who lives alone with his animals at the edge of the wild and can change his shape into that of a great bear. He keeps to himself and trusts strangers slowly, but he takes in the weary travellers, feeds and shelters them, and sends them on toward the forest with supplies and warnings. He has no love for the goblins that infest the mountains.",
+            "id": "beorn",
+            "name": "Beorn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of the Wood-elves"
+            ],
+            "description": "The ruler of the Wood-elves of Mirkwood, who dwell in caverns deep within the forest. Suspicious of the trespassing dwarves and mistrustful of their purpose, he has them seized and held prisoner in his underground halls when they will not explain their errand. He is fond of treasure and wine, and his people are wary and secretive after long years guarding their darkening woods.",
+            "id": "the-elvenking",
+            "name": "The Elvenking",
+            "reveal": {
+              "chapter": 8
+            }
+          },
+          {
+            "aliases": [
+              "Bard the Bowman"
+            ],
+            "description": "A grim, plain-spoken archer and captain among the men of Lake-town, descended from the old lords of Dale that the dragon destroyed. Steady and clear-headed while others panic, he stands his ground when danger comes to the town on the lake. He carries a black arrow handed down in his family and a stern sense of duty to his people.",
+            "id": "bard",
+            "name": "Bard",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hobbit-or-there-and-back-again"
+      },
+      "recaps": {
+        "ending": "The dwarves reclaim the Lonely Mountain, but at a heavy cost. When Bard's people and the Wood-elves come to claim a share of the hoard, Thorin refuses and prepares for war, so Bilbo secretly hands the Arkenstone to the besiegers to force a settlement. Before it can take effect, an army of goblins and wolves falls on them all, and dwarves, elves, and men join together in the Battle of Five Armies. The eagles and the bear-man Beorn turn the tide. Thorin is mortally wounded in the fighting; before he dies he forgives Bilbo and takes back his angry words. Dain, Thorin's kinsman, becomes King under the Mountain and honours the agreed shares, and the surviving peoples are reconciled. Bilbo, wanting no great wealth, accepts only a modest portion of gold and silver. He travels home with Gandalf, quietly keeping the magic ring, and finds that he has been presumed dead and his belongings are being auctioned off. He resettles at Bag End, changed by his journey and no longer quite respectable in the eyes of his neighbours, content with his memories and his small treasures.",
+        "in_short": "Bilbo Baggins, a home-loving hobbit, is swept into a quest by the wizard Gandalf and thirteen dwarves led by Thorin Oakenshield to reclaim their ancestral mountain and its treasure from the dragon Smaug. Along the way he survives trolls, goblins, and giant spiders, and beneath the mountains he wins a magic ring of invisibility from the creature Gollum in a riddle contest. Reaching the Lonely Mountain, Bilbo enters the dragon's lair, provokes Smaug, and quietly keeps a great gem, the Arkenstone, for himself. Smaug attacks the nearby lake-town and is shot dead by the archer Bard. Dwarves, elves, and men then quarrel over the unguarded hoard, and Bilbo gives the Arkenstone to Thorin's opponents to force a peace. Before terms are settled, goblins and wolves attack, and all sides unite in the Battle of Five Armies. Thorin is mortally wounded but reconciles with Bilbo before dying. Bilbo takes only a small share of the treasure and journeys home, keeping the ring.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bilbo Baggins, a comfortable hobbit who wants no adventures, is visited by the wizard Gandalf and a company of thirteen dwarves led by Thorin Oakenshield. They enlist him as their burglar for a journey east to reclaim the Lonely Mountain and its treasure, taken long ago by the dragon Smaug. Bilbo reluctantly joins them. On the road they are captured by three trolls and nearly eaten, but Gandalf tricks the trolls into arguing until sunrise turns them to stone, and the travellers recover fine old swords from the trolls' hoard. They rest at Rivendell, where the elf-lord Elrond reads hidden moon-letters on their map. Crossing the Misty Mountains, they are seized by goblins and dragged underground. In the tunnels Bilbo is knocked out and left behind. Lost in the dark, he finds a plain gold ring and then meets Gollum, a creature who challenges him to a riddle contest for his life. Bilbo wins, discovers the ring makes him invisible, and uses it to slip past Gollum and escape into the open.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bilbo rejoins the dwarves outside the mountains, but goblins and wolves pursue them and trap them up in trees, from which great eagles rescue the whole company. They shelter with Beorn, a fierce man who can take the shape of a bear, and he sends them on toward the forest of Mirkwood with food and warnings. Gandalf leaves them at the forest's edge on business of his own. In the dark, tangled woods the travellers grow starving and disoriented; they stray from the path and are caught in the webs of giant spiders. Bilbo, using his ring and the small sword he took from the trolls, fights off the spiders and frees the captured dwarves almost single-handed, earning their real respect for the first time. But their troubles are not over: the Wood-elves of the forest capture the dwarves and lock them away in the underground halls of their king, leaving Bilbo, unseen in his ring, alone and free but with no plan to free his friends.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hiding invisibly in the Elvenking's caverns, Bilbo works out an escape: he packs the dwarves into empty barrels that the elves float down the river, and rides out clinging to the wood himself. Battered and soaked, the company reaches Lake-town, a settlement of men built on the long lake near the mountain. The townsfolk, recalling old prophecies about the return of the King under the Mountain, welcome Thorin and his company and supply them for the last stage of the journey. They travel on to the Lonely Mountain and search its slopes until they find the hidden door described on their map. Using Elrond's instructions about the light of the setting sun, they uncover the keyhole and open the secret passage into the mountain, leaving Bilbo to face what waits inside.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bilbo creeps down the passage alone and enters the dragon's lair. He steals a cup, then returns to talk with Smaug, keeping himself invisible and trading riddling words while secretly noting a bare patch in the scales of the dragon's underside. Smaug, enraged by the theft and certain the men of Lake-town are behind it, flies out to destroy the town. Meanwhile the dwarves enter the treasure hall, and Bilbo finds the Arkenstone, the great jewel Thorin prizes above all else, and quietly hides it for himself. Over the lake, Smaug rains fire on the town, but the archer Bard, learning from a thrush of the dragon's one weak spot, looses his black arrow into the bare patch. Smaug falls dead into the water, and the town is left ruined and grieving but free of the dragon at last.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Smaug dead, the treasure lies unguarded, and everyone wants a share. Bard, now a hero, and the Elvenking march on the mountain: Bard asks compensation for the destroyed town and a portion of the hoard, but Thorin, seized by greed and pride, refuses and shuts himself and the dwarves inside the mountain, sending word for his kinsman Dain to bring an army. To break the deadlock, Bilbo secretly slips out and gives the Arkenstone to Bard and the Elvenking, so they can bargain with the one thing Thorin most desires. Thorin is furious at the betrayal when he learns of it. Before the dispute can turn to war between dwarves, elves, and men, a great host of goblins and wolves sweeps down on them all. The three peoples unite against the common enemy in the Battle of Five Armies, and the eagles and Beorn arrive to turn the fight, but the cost is high and Thorin is struck down in the thick of it.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath of the battle, Bilbo is brought to the dying Thorin, who takes back his angry words and parts from him as a friend before he passes. The goblins are defeated and the surviving peoples make peace; Thorin's kinsman Dain becomes King under the Mountain and honours fair shares of the treasure with the men and elves. Bilbo, wanting no great wealth, accepts only a small portion of gold and silver that he can carry. He journeys home with Gandalf, stopping again at Rivendell, and quietly keeps the magic ring he never told anyone about. Reaching Bag End, he finds he has been declared dead and his belongings are being sold off, and he has to reclaim his home and his standing. He settles back into hobbit life, forever after regarded as a little odd by his respectable neighbours, but richer in memory and adventure than any of them.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hobbit-or-there-and-back-again"
+      }
+    },
+    "the-hostile-hospital": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think. Now a fugitive falsely accused of murder, she leads her siblings as they hide from both Count Olaf and the law while searching for the truth about V.F.D. and their family.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire, twelve, bespectacled, and endlessly well-read. On the run with his sisters, he uses his research to hunt for information that might clear their names and explain the secret V.F.D.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The youngest Baudelaire, a small child who speaks in short exclamations and bites with four sharp teeth. Brave and increasingly clever, she plays her part as the children hide and scheme.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The murderous actor who hunts the Baudelaire fortune, known by his single eyebrow and ankle tattoo. Having framed the children for murder, he pursues them with his troupe and his accomplice Esme, ready to appear in a new disguise wherever they hide.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Count Olaf's fashionable girlfriend and accomplice, who works at his side to capture the children and seize their fortune. Vain and cruel, she takes an active part in his schemes.",
+            "id": "esme-squalor",
+            "name": "Esme Squalor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A gentle, elderly man who works in the Library of Records at Heimlich Hospital, keeping careful track of the hospital's files. Trusting and devoted to his records, he lets the disguised children help him, unaware of who they really are as they search for information about their family.",
+            "id": "hal",
+            "name": "Hal",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The new head of Human Resources at Heimlich Hospital, who keeps his face hidden and issues orders and inspections over the intercom. His voice and manner lead the Baudelaires to recognize him as Count Olaf in disguise, using control of the hospital to search for them.",
+            "id": "mattathias",
+            "name": "Mattathias",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hostile-hospital"
+      },
+      "recaps": {
+        "ending": "Klaus and Sunny, disguised as medical staff, rescue Violet from Count Olaf's plan to kill her with a fraudulent surgery, exposing the plot at the last moment. But as they flee, a fire breaks out and destroys Heimlich Hospital, and the children, still wanted for a murder they did not commit, cannot simply walk away to safety. In a desperate choice, they hide inside the trunk of Count Olaf's automobile as his troupe escapes the burning hospital, deciding that staying close to their enemy is their best chance of finding the truth about V.F.D., their family, and whether one of their parents might still be alive. They obtained only a fragment of the Snicket file before losing it, deepening the mystery rather than solving it. The book ends with the Baudelaires traveling, hidden, alongside the very villain who has hunted them, carried toward an unknown destination and a new set of dangers.",
+        "in_short": "Now fugitives falsely accused of murder, the Baudelaires hear themselves branded criminals and take cover by joining a cheerful group of volunteers traveling to Heimlich Hospital. Hiding under false identities, they work in the hospital's Library of Records with a trusting old man named Hal, searching for the Snicket file, which may reveal the truth about V.F.D. and whether a parent survived the fire. Count Olaf, disguised as the intercom-bound head of Human Resources called Mattathias, seizes control of the hospital with Esme's help and hunts for the children. The villains capture Violet, drug her, and disguise her as a patient about to undergo a deadly fake surgery. Klaus and Sunny, posing as medical staff, rescue her just in time. A fire then engulfs the hospital, and to escape both the flames and the law, the children hide in the trunk of Olaf's car as his troupe drives away, choosing to follow their enemy toward the answers they seek.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Baudelaire orphans, Violet, Klaus, and Sunny, lost their parents to a fire and a fortune to the schemes of the greedy actor Count Olaf, who has pursued them through guardian after guardian in ever-changing disguises, always escaping after the children exposed him. They befriended the kidnapped Quagmire triplets and, over several homes, chased both their captive friends and the meaning of a secret called V.F.D. In the town of the Village of Fowl Devotees, they freed the Quagmires, who escaped by flying machine, but Olaf, disguised as a detective, murdered a stranger named Jacques Snicket and framed the children for it. Now falsely wanted for murder and stripped of any guardian, the Baudelaires have become fugitives, hunted by Olaf, his accomplice Esme, and the law alike, and are searching on their own for the truth about V.F.D. and their family's past.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the run and hearing themselves denounced as murderers, the Baudelaires need a place to hide. They fall in with a relentlessly cheerful group of volunteers who sing and hand out balloons, the Volunteers Fighting Disease, and travel with them to Heimlich Hospital. Taking on false identities, the children get work in the hospital's Library of Records, a vast archive overseen by a kindly, trusting old man named Hal. There they begin secretly searching the files for anything about their family and the secret V.F.D., focusing on a document called the Snicket file that they believe holds crucial answers, perhaps even about whether one of their parents survived the fire. Working under Hal's unsuspecting eye, the orphans try to stay hidden from the authorities while pursuing the information that might finally explain the mystery shadowing their lives.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Baudelaires press their search for the Snicket file, hoping in particular that its thirteenth page will reveal the truth about V.F.D. and their family. Their hunt grows perilous when Count Olaf, disguised as a hidden figure called Mattathias, the new head of Human Resources, takes command of the hospital and begins conducting sinister inspections, with his accomplice Esme aiding him. Olaf is searching for the disguised children, and the hospital, meant to be a place of safety, becomes a trap closing around them. Slipping through corridors and dodging Mattathias's staff, the orphans try to find and protect the file before the villains find them, aware that their enemy now controls the very building in which they are hiding.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The villains capture Violet and drug her into unconsciousness, then disguise her as a patient scheduled for a deadly fake operation, meaning to kill her under the pretense of surgery while she cannot defend herself. Klaus and Sunny, still hidden behind false identities, discover the plan and race against time to reach her. Posing as medical personnel, they make their way toward the operating theater where their sister is to be harmed, trying to find and free Violet before the surgery can be carried out. With the hospital under Olaf's control and the authorities still hunting them, the two youngest Baudelaires must rescue Violet themselves, using disguise and quick thinking to get to her in time.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Klaus and Sunny reach Violet and save her from the fraudulent surgery just before it can be carried out, exposing Count Olaf's murderous plot. But in the chaos a fire breaks out and engulfs Heimlich Hospital. Still wanted for a murder they did not commit and unable to escape openly, the Baudelaires make a desperate choice: they hide inside the trunk of Count Olaf's automobile as his troupe flees the burning building. They recovered only a fragment of the Snicket file, which raises new questions rather than answering old ones, including a haunting hint that one of their parents might have survived. As the book ends, the orphans are traveling secretly alongside the very villain who hunts them, carried toward an unknown destination in the hope of finally uncovering the truth about V.F.D. and their family.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-hostile-hospital"
+      }
+    },
+    "the-house-at-pooh-corner": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Pooh",
+              "Pooh Bear"
+            ],
+            "description": "A gentle, good-natured teddy bear who lives in the Hundred Acre Wood and describes himself as a Bear of Very Little Brain. Devoted to honey and to his friends, he muddles through the Forest's small adventures with hums, kindly intentions, and an accidental sort of wisdom, and he is closest of all to the boy Christopher Robin.",
+            "id": "winnie-the-pooh",
+            "name": "Winnie-the-Pooh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A very small and easily frightened animal who is Pooh's dearest friend and constant companion. Timid by nature, Piglet nonetheless keeps trying to be brave for the sake of his friends, and his loyalty and good heart matter more than his size.",
+            "id": "piglet",
+            "name": "Piglet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old grey donkey with a gloomy, resigned outlook, who expects little and is rarely surprised to receive it. Beneath the melancholy he is fond of his friends in his own way, and the others go out of their way to look after him, beginning with building him a house.",
+            "id": "eeyore",
+            "name": "Eeyore",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bouncy, exuberant tiger who arrives in the Forest as a newcomer and immediately makes himself at home. Bold, cheerful, and entirely sure of himself, he bounces everywhere and insists on finding out what Tiggers do and do not like to eat, causing friendly commotion wherever he goes.",
+            "id": "tigger",
+            "name": "Tigger",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A busy, self-important animal who prides himself on being clever and organized, with many friends-and-relations and a fondness for schemes and plans. Fussy and managing, he means well even when his busy notions do not go as intended.",
+            "id": "rabbit",
+            "name": "Rabbit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bird regarded by the others as the wisest resident of the Forest, given to long words and grand talk, though his spelling and his learning are not quite as reliable as he supposes. He lives in a lofty house and is consulted on matters that call for brains.",
+            "id": "owl",
+            "name": "Owl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A calm, motherly kangaroo who looks after her small child, Roo, and keeps a sensible, caring household. Her practical warmth makes her a steadying presence among the Forest's animals.",
+            "id": "kanga",
+            "name": "Kanga",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kanga's tiny, lively child, eager and fearless in the way of the very young. He adores excitement and quickly takes to the bouncing newcomer Tigger as a hero and playmate.",
+            "id": "roo",
+            "name": "Roo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young boy who is friend and gentle authority to all the animals of the Hundred Acre Wood. Kind and reassuring, he sorts out difficulties and joins the adventures, and the Forest and its creatures are, in a sense, the world of his childhood.",
+            "id": "christopher-robin",
+            "name": "Christopher Robin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-house-at-pooh-corner"
+      },
+      "recaps": {
+        "ending": "The final chapter turns from the small comedies of the Forest to a quiet farewell. Christopher Robin is growing older and will soon have to leave the Hundred Acre Wood for school and the wider world, though the animals do not fully understand this. He takes Pooh alone to a peaceful, enchanted spot at the top of the Forest, and there, gently and without quite spelling it out, he tries to say goodbye. He asks Pooh to promise to remember him and never to forget, whatever happens as they both grow up. The book does not undo this parting or pretend it away; instead it lingers on the tenderness of it. It closes with the boy and his bear still together in that enchanted place, the narrator leaving them there so that, however much Christopher Robin must move on, a small boy and his bear will always be playing in that Forest.",
+        "in_short": "In a series of gentle episodes in the Hundred Acre Wood, Pooh and Piglet build a house for Eeyore, and a bouncy newcomer, Tigger, joins the Forest and sets about discovering what Tiggers like. The friends share small adventures: Tigger gets stuck up a tree and later must be calmed of his endless bouncing, Rabbit hatches a busy scheme, Pooh invents the stick-dropping game of Poohsticks on a bridge, and Piglet performs a brave deed when things go wrong at Owl's house. When a storm blows Owl's home down, Eeyore proudly finds him a new one, which turns out to be Piglet's house, and Piglet generously gives it up so that Piglet moves in with Pooh. At the last, Christopher Robin, who is growing up and must soon go away to school, takes Pooh to a quiet enchanted place to say goodbye, asking him to remember and never quite to forget, and the two are left there together as that childhood world is gently closed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In the earlier stories, the toys and animals of the Hundred Acre Wood, chiefly the honey-loving bear Winnie-the-Pooh and his small friend Piglet, along with gloomy Eeyore, busy Rabbit, learned Owl, motherly Kanga and little Roo, shared a string of gentle adventures under the friendly eye of the boy Christopher Robin. This book continues in the same world, following the same friends through new episodes in the Forest.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book opens in the Hundred Acre Wood, where Pooh and Piglet decide to build a house for Eeyore in a corner of the Forest, giving the place its name of Pooh Corner. A lively newcomer arrives: Tigger, a bouncy tiger who turns up at Pooh's door and quickly becomes part of Forest life. Much fuss follows as the friends try to work out what Tiggers like to eat, since Tigger is very sure of himself but not at all sure about food, and one attempt leads to a small expedition involving Kanga and Roo. The early chapters set the cheerful, episodic tone, each a self-contained adventure among the familiar animals.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gentle adventures continue. Tigger's boldness gets him into a scrape when he and Roo end up stuck high in a tree and must be helped down, proving that Tiggers, whatever they claim, do not climb trees well. Rabbit, always fond of a plan, has a very busy day organizing the others, and there is a passing mystery about what Christopher Robin gets up to in the mornings. Pooh invents a new game, later famous as Poohsticks, in which the friends drop sticks from one side of a bridge and watch to see whose comes out first on the other, a simple pleasure that becomes a favorite pastime by the little river.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The friends turn their attention to Tigger's ceaseless bouncing, which some find too much, and there is a scheme to take him down a peg that does not go quite as planned. Piglet, so often timid, does a very grand and brave thing when trouble strikes at Owl's house during rough weather. When a storm blows Owl's home down entirely, Eeyore sets out importantly to find him a new one and proudly presents a house he has discovered, which turns out to be Piglet's own home. Rather than let Owl be homeless, Piglet generously gives his house up, and the matter is happily settled by Piglet going to live with Pooh.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final chapter steps away from comedy into a quiet goodbye. It becomes clear that Christopher Robin is growing up and will soon have to leave the Forest for school, though the animals only half understand what is changing. He takes Pooh by himself to a still, enchanted place at the top of the Forest and, gently and a little awkwardly, tries to say farewell. He asks Pooh to remember him and to promise never to forget, however grown-up he may become. The story does not soften the parting away, but ends on its tenderness, leaving the boy and his bear together in that enchanted place so that, whatever comes, a little boy and his bear will always be there, playing.",
+            "through": {
+              "chapter": 10
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-house-at-pooh-corner"
+      }
+    },
+    "the-house-of-hades": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A son of the sea god and hero of the earlier stories, who at this book's opening has fallen with Annabeth into Tartarus, the deepest pit of the underworld, a place no living demigod is meant to survive. Brave, stubborn, and powerful over water, he refuses to be parted from her as the two struggle across a nightmarish landscape toward the underside of the Doors of Death. His loyalty and quick thinking are tested to their limits in a realm where the very air is poison.",
+            "id": "percy-jackson",
+            "name": "Percy Jackson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A daughter of Athena, a brilliant strategist and architect, who has fallen into Tartarus alongside Percy. Resourceful and clear-headed even in terror, she navigates the pit by wits as much as by strength, determined that the two of them will reach the Doors of Death and rejoin their friends. Her intelligence and resolve carry them through horrors that would break most heroes.",
+            "id": "annabeth-chase",
+            "name": "Annabeth Chase",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A son of the sky god and former Roman praetor, steady and dutiful, with command over wind and lightning. With Percy and Annabeth lost below, he helps lead the remaining crew of the Argo II toward the mortal side of the Doors of Death. He continues to weigh his divided loyalty to the Greek and Roman camps as he shoulders more of the burden of the quest.",
+            "id": "jason-grace",
+            "name": "Jason Grace",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of Aphrodite with a persuasive charmspeak, braver and more capable with each trial. Loyal to Jason and her friends, she uses her voice and her cool head to steer the crew through danger and to steady frightened allies, growing surer of her own strength on the voyage to Greece.",
+            "id": "piper-mclean",
+            "name": "Piper McLean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A son of Hephaestus and the inventive builder and pilot of the warship Argo II, able to summon fire and improvise machines from scraps. His jokes still hide a private loneliness at being the odd one out among the couples aboard, a loneliness that shapes his part of the journey as the ship crosses the Mediterranean.",
+            "id": "leo-valdez",
+            "name": "Leo Valdez",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of Pluto who can draw metals and gems from the earth, gentle and brave, with a growing sensitivity to the mists and magic of the underworld. Close to Frank and to her half-brother Nico, she begins to explore deeper powers over illusion and perception as the crew faces enemies that ordinary strength cannot beat.",
+            "id": "hazel-levesque",
+            "name": "Hazel Levesque",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A son of Mars and a skilled archer who can shift into animal forms, loyal and increasingly self-assured, though his life is still bound to a fragile piece of wood he guards. Devoted to Hazel, he keeps proving his courage as the quest grows more perilous, stepping into a larger role among the crew.",
+            "id": "frank-zhang",
+            "name": "Frank Zhang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A son of the underworld god who commands the dead and travels through shadows, freed after being held captive in the previous book. Solitary, guarded, and drained by his ordeal, he sails with the crew, uniquely able to sense the dead and the Doors of Death, and carrying private burdens he keeps to himself.",
+            "id": "nico-di-angelo",
+            "name": "Nico di Angelo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Coach Hedge"
+            ],
+            "description": "The gruff, club-wielding satyr who chaperones the young demigods aboard the Argo II. Quick to threaten and quicker to fight, he guards his charges fiercely beneath the bluster and keeps a rough order on the ship as the dangers mount.",
+            "id": "coach-hedge",
+            "name": "Gleeson Hedge",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gaia"
+            ],
+            "description": "The primordial earth goddess, still stirring toward full wakefulness. Speaking through the ground and through dreams, she drives her giants and monsters against the demigods and schemes to keep the Doors of Death open so her forces cannot be stopped, edging ever closer to the moment she can rise and remake the world.",
+            "id": "gaea",
+            "name": "Gaea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-house-of-hades"
+      },
+      "recaps": {
+        "ending": "Both journeys converge on the House of Hades in the Greek region of Epirus. In Tartarus, Percy and Annabeth reach the Doors of Death with the help of the kindly Titan Bob and the giant Damasen, who give their lives so the two demigods can pass through, and the couple emerges battered but alive on the mortal side. There the rest of the crew has fought its way to the same place, and together they seal the Doors of Death, cutting off Gaea's endless supply of revived monsters. Along the way the heroes have grown stronger and closer: Hazel has mastered a magic of illusion, Frank has come into his full power, and Leo, briefly cast away on the hidden island of Ogygia, has fallen in love with the immortal Calypso and sworn to return and free her. With the Doors closed and all seven reunited, the crew turns toward Athens, where Gaea intends to wake fully and where the giants plan to make their final stand. To keep the Greek and Roman camps from destroying each other in the meantime, Nico di Angelo, the Roman leader Reyna, and Coach Hedge take on the dangerous task of carrying the Athena Parthenos statue across the world to Camp Half-Blood as a token of peace. The book ends with the two efforts underway: the ship racing to Athens for the reckoning with Gaea, and the statue's bearers setting out to prevent a war between the camps.",
+        "in_short": "The story follows two paths. Below, Percy and Annabeth struggle across Tartarus toward the underside of the Doors of Death, surviving on nerve and each other, and are aided by a gentle, memory-clouded Titan named Bob and a lonely giant, Damasen. Above, the crew of the Argo II, Jason, Piper, Leo, Hazel, Frank, Nico, and Coach Hedge, sails to the House of Hades in Greece to close the Doors from the mortal side so their friends can escape and Gaea's forces can be shut out. Along the way each hero grows: Hazel learns to bend the mist and work magic, Frank comes fully into his strength, Leo is stranded on a hidden island and meets and falls for the sorceress Calypso, and Nico wrestles with secrets of his own. The two groups fight through to the Doors at the same moment; with sacrifices from their underworld allies, Percy and Annabeth escape Tartarus and the Doors are sealed. All seven are reunited, but Gaea's rising nears its climax, and Nico, Reyna, and Coach Hedge set out on a separate mission to carry the Athena Parthenos statue home and stop a war between the Greek and Roman camps.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Seven demigods, Greek and Roman, were prophesied to stop the primordial earth goddess Gaea, who is waking and raising the giants. After the goddess Hera swapped heroes to force the two long-separated camps together, the Greek hero Percy Jackson, son of the sea god, and the Roman newcomers Hazel and Frank joined the sky god's son Jason and the new demigods Piper and Leo. Aboard the flying warship Argo II they sailed for the ancient lands to close the Doors of Death, the passage that lets Gaea's slain monsters return. Reaching Rome, Annabeth, daughter of Athena, recovered a lost statue meant to reconcile the camps, but in the process she and Percy fell together into Tartarus, the abyss beneath the underworld. As this book opens, the couple is trapped below, trying to reach the underside of the Doors, while their friends sail on toward the House of Hades in Greece to close the Doors from the mortal side and bring them home.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-house-of-hades"
+      }
+    },
+    "the-hunger-games": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old girl from the Seam, the poorest quarter of District 12, the coal-mining district of the nation of Panem. Since her father died in a mine explosion she has kept her mother and younger sister alive by hunting illegally in the woods beyond the fence with a bow, trading her kills at the black market. Guarded, self-reliant, and quick to distrust the Capitol that rules the districts, she volunteers to take her sister's place when the girl is chosen for the Hunger Games. She is a practical survivor rather than a natural performer, uneasy with the cameras and public roles the Games force on her.",
+            "id": "katniss-everdeen",
+            "name": "Katniss Everdeen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of District 12's baker, chosen as the male tribute alongside Katniss. Sturdy and strong from hauling flour, he is also warm, well-spoken, and good at charming a crowd. Years earlier, when Katniss and her family were starving, he deliberately burned two loaves of bread so he could give them to her, a kindness she has never forgotten. He decorates the bakery's cakes and has a painter's eye that later proves useful.",
+            "id": "peeta-mellark",
+            "name": "Peeta Mellark",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prim"
+            ],
+            "description": "Katniss's gentle younger sister, twelve years old, whose name is drawn at the reaping. She loves animals, keeps a scruffy tomcat and a goat, and is learning healing from their mother. She is the person Katniss loves most and the reason Katniss volunteers for the Games.",
+            "id": "primrose-everdeen",
+            "name": "Primrose Everdeen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Katniss's closest friend and hunting partner, an eighteen-year-old from the Seam who also supports a fatherless family. Skilled with snares and openly resentful of the Capitol, he shares Katniss's illegal trips into the woods and her anger at the district's poverty.",
+            "id": "gale-hawthorne",
+            "name": "Gale Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "District 12's only living victor of the Hunger Games and therefore the mentor assigned to guide Katniss and Peeta. He is almost always drunk and appears at the reaping in a stupor, but beneath the wreckage he is shrewd about how the Games and their Capitol audience really work.",
+            "id": "haymitch-abernathy",
+            "name": "Haymitch Abernathy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Capitol escort for District 12's tributes, with elaborate wigs, bright costumes, and fussy, cheerful manners. She conducts the reaping, drawing the names, and is obsessed with schedules, etiquette, and making a good impression in the Capitol, largely oblivious to the horror of what she is arranging.",
+            "id": "effie-trinket",
+            "name": "Effie Trinket",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Katniss's stylist for the Games, notably understated for a Capitol resident. Rather than making her merely pretty, he dresses her in costumes evoking flame, presenting her as the girl on fire and helping the audience remember her. Calm and quietly sympathetic, he becomes one of the few Capitol figures Katniss trusts.",
+            "id": "cinna",
+            "name": "Cinna",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The twelve-year-old girl tribute from District 11, small, light, and easy to overlook, who reminds Katniss painfully of her sister Prim. Katniss first notices her during the training days, where Rue proves nimble and knowledgeable about plants and moves through high places with ease.",
+            "id": "rue",
+            "name": "Rue",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, aggressive tribute from District 2 and the dominant member of the Career pack, the tributes from wealthier districts who train for the Games and treat them as an honor. Ruthless and physically powerful, he is an early favorite to win and leads the hunt for the other tributes.",
+            "id": "cato",
+            "name": "Cato",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A tribute from District 2 and a member of the Career pack, deadly with thrown knives. She corners Katniss at the feast, taunting her before trying to kill her.",
+            "id": "clove",
+            "name": "Clove",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The powerful male tribute from District 11, large and strong, who keeps to himself throughout the Games. He shares a district with Rue, a fact that shapes a decisive choice he makes toward Katniss at the feast.",
+            "id": "thresh",
+            "name": "Thresh",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The president of Panem and head of the Capitol, who presides over the ceremony crowning the victors. Composed and coldly controlled, he embodies the regime whose authority Katniss's actions in the arena have quietly challenged.",
+            "id": "president-snow",
+            "name": "President Snow",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hunger-games"
+      },
+      "recaps": {
+        "ending": "Katniss and Peeta are the last tributes alive when the Gamemakers revoke the rule that would have let a district's pair win together, ordering them to fight to a single victor. Katniss instead proposes that they both eat poisonous nightlock berries, denying the Games any winner. Before they can, the Capitol relents and declares them joint victors, and both survive to be crowned. Afterward, Haymitch warns Katniss that her gesture was read as an act of rebellion and that the authorities, led by President Snow, are furious with her. Peeta is wounded to learn that some of her tenderness in the arena was a performance for the cameras and sponsors, leaving their relationship unresolved. They ride the train home to District 12 as celebrated champions, but Katniss now stands as an accidental symbol of defiance against the Capitol, a position that marks her as a target and sets up the wider unrest of the books that follow.",
+        "in_short": "In the nation of Panem, the wealthy Capitol keeps its twelve districts obedient with the annual Hunger Games, a televised fight to the death between children chosen by lottery. When her twelve-year-old sister is drawn, sixteen-year-old Katniss Everdeen of impoverished District 12 volunteers to take her place and is sent to the arena alongside Peeta Mellark, the baker's son who once helped her survive. Coached by their drunken mentor Haymitch and made memorable by her stylist Cinna, Katniss becomes a public favorite. In the arena she survives the opening slaughter, allies with a small girl named Rue whose death hardens her against the Capitol, and reunites with a wounded Peeta after a rule change allows two tributes from one district to win together. The pair play up a romance to win sponsors and outlast their rivals. When the rule is reversed and only one may live, they threaten to poison themselves together, forcing the Capitol to crown them both. Katniss returns home a victor, but her defiance has made her an enemy of the ruling Capitol.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the poor coal-mining District 12 of Panem, sixteen-year-old Katniss Everdeen hunts illegally in the woods to feed her mother and younger sister, Prim, after her father's death in a mine accident. The ruling Capitol forces each of its twelve districts to send one boy and one girl each year to the Hunger Games, a televised fight to the death, as punishment for a long-ago rebellion. At the reaping ceremony, run by the Capitol escort Effie Trinket, Prim's name is drawn, and Katniss immediately volunteers to take her place. The boy chosen is Peeta Mellark, the baker's son, who once secretly gave Katniss bread when her family was starving. Watched over by their perpetually drunk mentor Haymitch, the district's only living victor, Katniss says her goodbyes to Prim, her mother, and her hunting partner Gale, and is given a small mockingjay pin as a token from home before she is taken away to the Capitol.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Katniss and Peeta travel to the gleaming Capitol, where Katniss's stylist Cinna dresses her in flames for the opening ceremony, making her the memorable girl on fire. During several days of training with the other tributes, she sizes up her rivals, including the deadly, well-fed Career tributes who treat the Games as an honor and a tiny twelve-year-old from District 11 named Rue. In her private session before the Gamemakers she shoots an arrow near them to force their attention and earns a surprisingly high score. Haymitch coaches the pair to appear as a team. In the televised interviews, Peeta stuns everyone by confessing on air that he has long been in love with Katniss, casting them as doomed sweethearts, a story she cannot tell is genuine or a survival strategy Haymitch has approved.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tributes are lifted into an outdoor arena, and Katniss avoids the bloodbath at the central Cornucopia, fleeing into the woods and relying on her hunting skills to find water and stay hidden. Several tributes die in the opening minutes. The Career pack, now traveling with Peeta, hunts Katniss and traps her up a tall tree. Rue, hiding in a nearby tree, silently points out a nest of venomous tracker jacker wasps hanging above the sleeping Careers. Katniss saws the nest loose so it drops onto them, killing one and scattering the rest, and she seizes a fallen bow and arrows. Badly stung and hallucinating from the venom, she stumbles away and is quietly tended by Rue until she recovers.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Katniss and Rue form an alliance, sharing food and knowledge. They plan to cripple the Careers by destroying the supplies the pack has hoarded near the Cornucopia; Katniss triggers the buried mines protecting the pile and blows it up, cutting off the Careers' food. Returning to find Rue, she arrives just as another tribute spears the girl. Katniss kills him, then stays with Rue as she dies, singing to her and covering her body with wildflowers, a quiet gesture of defiance meant to shame the Capitol on camera. In gratitude for what she did for their tribute, the people of District 11 send Katniss a gift of bread. Grieving and newly determined, Katniss is left more openly opposed to the Games than ever.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Gamemakers announce a change: two tributes from the same district may now win together, and Katniss sets out to find Peeta. She discovers him gravely wounded and camouflaged beside a stream, his leg infected, and hides them both in a cave. To win gifts from sponsors she plays up their romance, and her displays of affection earn small parcels of aid. When a feast is announced offering each tribute something they desperately need, Katniss goes to retrieve medicine for Peeta despite the danger. There Clove of District 2 pins her down and taunts her, but Thresh of District 11 kills Clove and spares Katniss because of her kindness to Rue. Katniss brings the medicine back and heals Peeta as their numbers dwindle.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Peeta recovering, the remaining tributes are drawn together. Foxface, the cunning girl from District 5, dies after eating poisonous nightlock berries that Peeta had gathered without knowing what they were. The Gamemakers unleash monstrous creatures to force a final confrontation at the Cornucopia with Cato, who is eventually killed, leaving Katniss and Peeta as the last two alive. The Gamemakers then revoke the rule allowing two victors, demanding that only one survive. Rather than kill each other, Katniss and Peeta threaten to eat the deadly nightlock together, denying the Capitol any winner; the Gamemakers relent and declare them both victors. Crowned as champions, Katniss learns from Haymitch that her defiant stunt has embarrassed and angered the Capitol and its president, Snow. Peeta is hurt to realize her arena romance was partly an act, and the two return home united in name but uncertain with each other, and dangerously out of favor with the regime.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-hunger-games"
+      }
+    },
+    "the-kite-runner": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a boy from a prosperous family in Kabul who grows up in a large house with his widowed father and their two servants. Sensitive, imaginative, and drawn to reading and writing stories, he aches for the approval of his father, who seems to value physical courage and confidence Amir feels he lacks. His closest companion is Hassan, the son of a household servant, who is fiercely loyal to him. Amir loves Hassan but is also jealous of him and ashamed of his own timidity, a tangle of feeling that shapes a childhood he narrates as an adult looking back on a defining wrong.",
+            "id": "amir",
+            "name": "Amir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The son of the family's servant Ali, a Hazara boy born with a cleft lip who grows up alongside Amir and serves the household. Devoted, honest, and physically brave, he cannot read but has a quick, generous mind and an unshakable loyalty to Amir, whom he treats as his dearest friend. He is a gifted kite runner, able to predict where a cut kite will fall. As a Hazara, an ethnic and religious minority, he and his father occupy a lower place in Kabul society, and Hassan endures slights and cruelty with a steadiness Amir both admires and fails to match.",
+            "id": "hassan",
+            "name": "Hassan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Amir's father, a wealthy and imposing Kabul businessman admired for his strength, generosity, and force of personality. He built his fortune himself and funded good works, including an orphanage, and holds a firm private moral code that does not always match convention. Physically commanding and socially confident, he is baffled by his bookish son and wishes Amir were tougher, which leaves the boy longing for a closeness his father rarely offers. Widowed when Amir's mother died in childbirth, Baba is the towering figure against whom Amir measures himself.",
+            "id": "baba",
+            "name": "Baba",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hassan's father and a longtime servant in Baba's household, a Hazara man who grew up beside Baba. A childhood illness left him with a partially paralyzed face and a withered, dragging leg, which makes him a target for neighborhood taunts, yet he carries himself with quiet dignity and deep faith. Gentle and dutiful, he raises Hassan alone and is treated by Baba more as an old fixture of the family than as a hired man, though the social gulf between servant and master remains.",
+            "id": "ali",
+            "name": "Ali",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Baba's closest friend and business partner, a warm, cultured man who is a steady presence in Amir's childhood. Where Baba is stern and hard to please, Rahim Khan is encouraging and attentive, taking a genuine interest in Amir's writing and giving the boy the approval he craves. He understands both father and son and often serves as a bridge between them. His kindness and quiet perceptiveness make him one of the few adults Amir can confide in.",
+            "id": "rahim-khan",
+            "name": "Rahim Khan",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older boy from the neighborhood, the son of an Afghan father and a German mother, notorious for his cruelty and his brass knuckles. A bully who terrorizes younger children, he holds vicious ideas about ethnic purity and openly despises Hazaras, singling out Hassan for contempt. Charming to adults and menacing to those beneath him, he combines a violent temper with a chilling, unbothered confidence, and he nurses grudges against both Amir and Hassan after Hassan once faced him down.",
+            "id": "assef",
+            "name": "Assef",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young Afghan woman Amir meets among the immigrant community in California, the daughter of a proud former general. Intelligent, warm, and forthright, she hopes to become a teacher and is candid with Amir about a past that, by the community's harsh standards, has marked her reputation. Amir is drawn to her honesty and grace, and their courtship unfolds under the watchful eyes of their families and the customs both still observe far from home.",
+            "id": "soraya",
+            "name": "Soraya Taheri",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Soraya's father, a former general of the Afghan army now living in California among fellow exiles. Proud and traditional, he clings to the dignity of his old rank and refuses ordinary work while he waits for a return to Afghanistan that he believes is coming. He guards his family's honor closely and observes the customs of courtship strictly, making him a formality Amir must navigate to win Soraya.",
+            "id": "general-taheri",
+            "name": "General Taheri",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hassan's young son, a quiet, watchful boy who has inherited his father's skill with a slingshot. Orphaned and left alone in a Kabul devastated by war and Taliban rule, he becomes the focus of a debt Amir is called to repay. Reserved and easily frightened, he carries the marks of loss and hardship far beyond his years.",
+            "id": "sohrab",
+            "name": "Sohrab",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Afghan driver who guides Amir back into Taliban-controlled Afghanistan. A hardened war veteran who has lost family and fingers to the fighting, he is at first scornful of Amir as a soft exile who abandoned the country, but he warms to him as Amir's true purpose becomes clear, becoming a wary ally on a dangerous journey.",
+            "id": "farid",
+            "name": "Farid",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kite-runner"
+      },
+      "recaps": {
+        "ending": "Amir wins the right to raise Sohrab after nearly losing him: told he might be sent back to an orphanage while adoption is arranged, the boy attempts suicide and barely survives. Amir brings him home to California, but Sohrab, hollowed by trauma, retreats into silence for months and will not respond to affection. Amir also confronts the buried history of his family, having at last atoned for his childhood betrayal of Hassan by risking his life for Hassan's son. At a gathering of the Afghan community, Amir flies a kite with Sohrab and, running the cut kite for the boy just as Hassan once did for him, sees the faintest smile cross Sohrab's face. It is not a full recovery, only a beginning, but Amir takes it as a sign of hope and repeats to the boy the promise Hassan once made to him: for you, a thousand times over. The novel closes on that small, uncertain opening toward healing.",
+        "in_short": "Amir, the son of a wealthy Kabul family, grows up with Hassan, the loyal Hazara boy who serves in his household. After Amir wins a kite tournament, he watches Hassan be brutally assaulted by a bully and does nothing, then, unable to bear his guilt, frames Hassan for theft and drives him and his father away. When the Soviets invade, Amir and his father flee to America, where Amir builds a new life, marries Soraya, and loses his father to cancer. Years later a dying family friend, Rahim Khan, summons Amir back and reveals two truths: Hassan has been killed by the Taliban, and Hassan was secretly Amir's half-brother. Hassan's orphaned son Sohrab remains in Kabul. Amir returns to a ruined Afghanistan, discovers the boy is held by his old tormentor, now a Taliban official, and is beaten nearly to death before Sohrab wounds the man and they escape. Amir adopts Sohrab and brings him to America, where the traumatized, withdrawn boy slowly begins to heal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the Kabul of the 1970s, Amir grows up in a grand house with his powerful, self-made father, Baba, whose approval he desperately wants and rarely feels he earns. His constant companion is Hassan, the devoted son of the family's servant Ali, a Hazara boy who cannot read but is brave, honest, and endlessly loyal to Amir. The two are inseparable, though the divide between master's son and servant's son, and between their ethnic groups, is always present. Baba's warm friend Rahim Khan encourages Amir's love of storytelling where Baba is dismissive. The boys run afoul of Assef, a vicious older neighborhood bully who despises Hazaras and threatens them, backing off only when Hassan confronts him with a slingshot, an act Assef does not forget. As winter comes, the great kite-fighting tournament approaches, an event that means everything to Amir as a chance to finally win his father's pride, with Hassan set to run the kites he cuts down.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Amir wins the kite tournament, and Hassan races off to retrieve the prized last kite for him. When Amir goes searching, he finds Hassan cornered in an alley by Assef and his friends, and he watches, hidden, as Hassan is brutally assaulted for refusing to give up the kite. Too much of a coward to intervene, Amir runs away and pretends he saw nothing. The betrayal poisons everything: unable to look at the boy he wronged, Amir grows cruel and distant, and finally hides money and a watch among Hassan's things to frame him for theft. Though Baba forgives the supposed crime, Ali and Hassan choose to leave the household for good. Not long after, the political order collapses and the Soviets invade Afghanistan. Amir and Baba escape the country in secret, enduring a harrowing journey, and eventually make their way to a new and diminished life as refugees in California.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In California, Baba works a humble job at a gas station while Amir finishes school and pursues his dream of writing. At a weekend flea market frequented by the Afghan community, Amir meets Soraya Taheri, the daughter of a proud former general, and falls in love with her honesty and warmth. As their courtship proceeds under old customs, Baba is diagnosed with terminal cancer, and he uses his last strength to ask for Soraya's hand on Amir's behalf. Amir and Soraya marry, and Baba dies soon after, leaving Amir grieving the towering father whose approval he had chased all his life. Years pass; Amir becomes a published novelist, and he and Soraya build a marriage shadowed only by their inability to have a child. Then a call comes from Rahim Khan, now old and gravely ill in Pakistan, asking Amir to come see him and telling him there is a way to be good again. Amir travels back to be at his old friend's side.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rahim Khan tells Amir what became of the people he left behind. Years earlier he had brought Hassan back to care for Baba's old house; Hassan had married and had a son, Sohrab. Then the Taliban seized power, and Hassan and his wife were murdered for defending the home, leaving Sohrab orphaned in a Kabul reduced to rubble and fear. Rahim Khan asks Amir to find the boy and bring him to safety, and then reveals the secret that reshapes everything: Hassan was Baba's son too, born of an affair, which makes Hassan Amir's half-brother and Sohrab his nephew. Shaken by the truth and the chance to atone, Amir crosses into Taliban-controlled Afghanistan with a hardened driver, Farid. In a devastated Kabul he searches for Sohrab and learns the boy was taken from his orphanage by a Taliban official, whom Amir must confront to have any hope of reaching him.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Taliban official proves to be Assef, the childhood bully, who now keeps Sohrab as a servant and abuses him. Assef agrees to release the boy only if Amir fights him, and he beats Amir savagely until Sohrab, wielding his father's slingshot, blinds Assef in one eye and lets them flee. Amir recovers slowly and resolves to adopt the boy and take him to America. But the process stalls, and when Amir suggests Sohrab might have to return to an orphanage while it is arranged, the terrified child attempts suicide and nearly dies. Amir manages at last to bring him home to Soraya, yet Sohrab, hollowed by all he has suffered, sinks into a silence that lasts for months. In the final scene, at a community gathering, Amir flies a kite with Sohrab and runs the winning kite for him, and the boy responds with the smallest of smiles. It is only a beginning, but Amir seizes it as hope, having finally paid the debt he owed to Hassan by saving Hassan's son.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-kite-runner"
+      }
+    },
+    "the-knife-of-never-letting-go": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a boy weeks away from his thirteenth birthday and the last remaining child in Prentisstown, a rough frontier settlement on a distant colonized planet. On this world a phenomenon called the Noise makes every man's thoughts audible and visible to everyone around him, an unending broadcast no one can silence. Raised by two guardians and taught that his town is the only surviving remnant of the colony, Todd knows nothing of the wider world. Plainspoken, loyal, and quick-tempered, he narrates in his own rough voice and is on the verge of a coming-of-age his town treats as the passage into manhood.",
+            "id": "todd-hewitt",
+            "name": "Todd Hewitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Todd's dog, a birthday gift he never especially wanted. Because of the Noise, Manchee can talk, though his thoughts are simple and doggish, full of food, walks, and devotion to Todd. Faithful, brave, and endearing, he becomes Todd's constant companion and comfort on the journey ahead.",
+            "id": "manchee",
+            "name": "Manchee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two men who raised Todd after the loss of his parents, a kind and steady farmer who loves the boy like a son. Gentle where the town is harsh, Ben has done his best to shield Todd, and he holds knowledge about Prentisstown and the wider world that he has kept from the boy until the day everything changes.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The other of Todd's two guardians, gruffer and sterner than his partner Ben but no less devoted to the boy they have raised together. Practical and hardworking, he often clashes with Todd's temper while quietly protecting him from the dangers of their town.",
+            "id": "cillian",
+            "name": "Cillian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fervent, frightening preacher of Prentisstown, whose fire-and-brimstone sermons dominate the town's religious life. Fanatical and relentless, he takes an intense and menacing interest in Todd. His zeal masks a dangerous and violent purpose, and he becomes a pursuer Todd cannot seem to escape.",
+            "id": "aaron",
+            "name": "Aaron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The cold, controlled leader of Prentisstown, a man who has disciplined his own Noise into an unnatural silence, unreadable where every other man is an open book. Calculating and hungry for power, he commands the town with quiet menace and harbors ambitions that reach far beyond its borders.",
+            "id": "mayor-prentiss",
+            "name": "Mayor Prentiss",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mr. Prentiss Jr."
+            ],
+            "description": "The Mayor's son, a swaggering, cruel young man eager to prove himself to his father. Armed and vicious, he joins the hunt for Todd, though his bluster often outruns his competence.",
+            "id": "davy-prentiss",
+            "name": "Davy Prentiss",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A girl Todd discovers in the swamp, remarkable because she casts no Noise at all, a pocket of complete silence in a world where Todd has never known a mind to be quiet. She is guarded, resourceful, and frightened, the survivor of a disaster that left her alone. Her very existence overturns everything Todd was taught about his world, and she becomes his companion in flight.",
+            "id": "viola-eade",
+            "name": "Viola Eade",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A slow-speaking, plain man driving a cart along the road, unbothered and hard to read, who offers Todd and Viola unexpected help. Beneath his simple manner he proves quietly kind and more shrewd than he first appears.",
+            "id": "wilf",
+            "name": "Wilf",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-knife-of-never-letting-go"
+      },
+      "recaps": {
+        "ending": "Todd and Viola's desperate flight ends at Haven, the city they had believed would be their sanctuary. Along the way Todd loses his faithful dog Manchee, killed by the men hunting them, and is finally forced into a lethal confrontation with the preacher Aaron, whom he kills. Carrying the gravely wounded Viola, Todd staggers into Haven only to discover there is no safety there: the city has surrendered without a fight, and Mayor Prentiss and his army are already in control. The Mayor greets Todd almost warmly and announces that he is now President, master of a new and larger domain. Todd is left holding Viola, cornered and defeated, everything he ran toward turned into another trap. The truth about Prentisstown and the wider world has been laid bare, but the boy who could not become the kind of man his town wanted now faces a conqueror who has only begun. The book closes on this cliffhanger, with the war for the planet just beginning and Viola's life hanging in the balance.",
+        "in_short": "On a colonized planet where a phenomenon called the Noise makes every man's thoughts audible, Todd Hewitt is the last boy in the isolated, all-male settlement of Prentisstown, raised to believe it is the sole surviving remnant of the colony. Weeks before the birthday that would make him a man, he stumbles on an impossible thing in the swamp: a pocket of total silence, which turns out to be a girl, Viola, the survivor of a crashed scout ship. His guardians force him to flee, giving him his dead mother's journal and warning that Prentisstown's story is a lie. Pursued by the fanatical preacher Aaron and the army of the cold, silent Mayor Prentiss, Todd and Viola race across the wider, unknown world toward the city of Haven, discovering that women and other towns exist and that Prentisstown's men committed a terrible crime the boy was never told. Along the way Todd is tested by whether he can bring himself to kill. They finally reach Haven only to find it has already surrendered to Mayor Prentiss, now declaring himself President, with Viola gravely wounded and no refuge left, the story breaking off on the edge of a wider war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Todd Hewitt is the last boy in Prentisstown, a bleak all-male settlement on a colonized planet where the Noise makes every man's thoughts loudly audible and where he has been taught his town is all that survives of the colony. Weeks before his thirteenth birthday, he finds something impossible in the swamp near town: a hole of perfect silence in the endless Noise. When his Noise betrays the discovery, his guardians Ben and Cillian react with alarm, hurriedly pack him a bag with his dead mother's journal, and force him to flee, warning that Prentisstown is not what he believes. As he escapes with his dog Manchee, the fanatical preacher Aaron attacks, and Todd discovers that the source of the silence is a living person: a girl, something he was told no longer existed.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The silent girl is Viola, the survivor of a crashed scout ship, and she and Todd flee together, aiming for a distant city called Haven in hope of safety. As they travel, Todd's entire understanding of his world unravels: there are other settlements, women live freely in them, and the plague story that shaped Prentisstown does not match what he sees. They pass through a farming settlement and receive help from strangers, but the Mayor of Prentisstown has raised an army that is now marching in pursuit, and the preacher Aaron, seemingly unkillable, keeps hunting Todd with terrifying persistence. Todd begins to grasp that becoming a man in Prentisstown meant something monstrous, and that he can never go back.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hunted across the countryside, Todd and Viola piece together the dark truth Prentisstown hid from Todd all his life: its men committed a terrible crime in the town's founding, and the history he was raised on is a lie built to conceal it. The knowledge shakes Todd deeply and explains why his guardians risked everything to get him out before his birthday. The Mayor's army continues its relentless advance behind them, apparently gathering rather than merely chasing, and Aaron will not stop. Todd and Viola grow closer through shared danger even as the world they are crossing grows more perilous, and Todd is forced again and again to reckon with what he is and is not willing to do to survive.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The journey turns increasingly desperate as the pursuers close in. Todd and Viola are hurt, separated at times and reunited, and pushed to their limits by the army and by Aaron's fanatical determination. Settlements that might have offered refuge fall under threat of the advancing forces, and the pair realize that Haven may be their only remaining hope, though they cannot be sure what they will find there. Todd wrestles with the central test the world keeps setting him, whether he can bring himself to take a life, and clings to Manchee and Viola as the last good things in a collapsing world while the reckoning with the Mayor and the preacher rushes toward them.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the final stretch Todd loses his loyal dog Manchee, killed by their pursuers, and is forced at last into a deadly confrontation with Aaron, whom he kills. Carrying the badly wounded Viola, he reaches Haven expecting sanctuary, only to find that the city has surrendered without resistance and that Mayor Prentiss and his army already hold it. The Mayor greets Todd and proclaims himself President of a new and larger dominion. There is no refuge and no escape; everything Todd fled toward has become another trap. The book ends on this cliffhanger, with Viola gravely hurt, Prentisstown's crimes and the wider world finally exposed, and a war for the whole planet only just beginning.",
+            "through": {
+              "chapter": 42
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-knife-of-never-letting-go"
+      }
+    },
+    "the-land-forging": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The feared ruler of the Light Court. He orders his court to observe the newly detected traces of chaos and the surviving pixie chrysalis while privately remembering his responsibility for the plague that destroyed the pixies.",
+            "id": "king-of-light",
+            "name": "King of Light",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lord Richter"
+            ],
+            "description": "The master of the Mist Village and a Chaos Seed. He accepts a mission to clear advancing goblin and bugbear camps, shares access to his concealed glade with Sion, and agrees to plant a blessed seed core at his place of power.",
+            "id": "richter",
+            "name": "Richter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sionavar"
+            ],
+            "description": "A wood sprite, Hisako's son, and Richter's companion and scout. He joins Richter's forest mission and gains access to the hidden glade. Daniella favors his longer name, Sionavar, despite his preference for Sion.",
+            "id": "sion",
+            "name": "Sion",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Hearth Mother of the wood sprites and an ally of Richter. She directs the investigation of the eastern incursion, blesses the seed core for planting, and hopes to establish trade between her people and the Mist Village.",
+            "id": "hisako",
+            "name": "Hisako",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-sprite, half-human warrior and swordsmanship adept. He begins training Richter, first through punishing bouts and then through formal instruction in sword forms.",
+            "id": "yoshi",
+            "name": "Yoshi",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wood sprite with a familiar, teasing relationship with Sion. Her use of his longer name shows both their closeness and her willingness to unsettle him.",
+            "id": "daniella",
+            "name": "Daniella",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder wood sprite and Life Magic master. She travels to the Mist Village as a prospective ambassador and begins teaching Richter healing magic during the journey.",
+            "id": "sumiko",
+            "name": "Sumiko",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fragmentary remnant of an ancient mage, bound to serve the current master of the Mist Village. He advises waiting for the storm so the village nexus can better support the seed-core ceremony.",
+            "id": "futen",
+            "name": "Futen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Mist Village specialist responsible for overseeing construction of the forge.",
+            "id": "wood-elf-carpenter",
+            "name": "Wood-Elf Carpenter",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A high-elf vessel builder who uses water and earth magic to strengthen her work. She can perform the specialist bonding required for a spirit-bound vessel and expects to have a river-ready ship completed in three months.",
+            "id": "high-elf-shipbuilder",
+            "name": "High-Elf Shipbuilder",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Richter's companion and a leader of the Mist Village guard. Formerly a mounted messenger and later an innkeeper, he is given leave from village duties so that he and Isabel can continue recovering from earlier trauma.",
+            "id": "terrod",
+            "name": "Terrod",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A village herbalist and the woman Terrod loves. At her introduction, both she and Terrod are still recovering from their recent ordeal.",
+            "id": "isabel",
+            "name": "Isabel",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Randy"
+            ],
+            "description": "Richter's chamberlain and village administrator. Richter informally calls him Randy.",
+            "id": "randolphus",
+            "name": "Randolphus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Richter's newly summoned female soul familiar. Their permanent Psi Bond permits willing mental communication, and her future growth and magical access are tied to the Mist Village's place of power.",
+            "id": "psi-dragonling",
+            "name": "Psi Dragonling",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Richter"
+            ],
+            "description": "Richter's given name on Earth. He shares it with Sion while explaining that he had been training as a doctor before entering the Land and has now chosen the Land as his home.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Psi Dragonling"
+            ],
+            "description": "The name Richter gives his female Psi Dragonling familiar, which she accepts. She remains linked to him through their Psi Bond and to the Mist Village through its place of power.",
+            "id": "alma",
+            "name": "Alma",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sole surviving royal Pixie Queen, preserved in a chrysalis through the plague that destroyed her people. She binds herself to the new quickening, becomes its caretaker and Richter's companion, and begins the effort to restore the pixies.",
+            "id": "elora",
+            "name": "Elora",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed attacker who directs dark magic during the bugbear assault on the Mist Village. The mage escapes the first clash after a summoned celestial servant intervenes.",
+            "id": "enemy-dark-mage",
+            "name": "Enemy Dark Mage",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dark-elf necromancer and an established enemy of Hisako. She supports the bugbear assault, raises skeletons from a mass grave, and confronts the defenders with death magic.",
+            "id": "modara",
+            "name": "Modara",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Mountain Dwarf, journeyman smith, and near-journeyman enchanter. He voluntarily pledges fealty to Richter and becomes Smith of the Mist Village, improving the effectiveness of arms and armor made there.",
+            "id": "krom",
+            "name": "Krom",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-elf crafter experienced in enchanted jewelry. He explains that enchanting depends on captured souls, suitable soul stones, sound materials, and specialized knowledge, and he can create the needed stones.",
+            "id": "gloran",
+            "name": "Gloran",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The controller of the undead Drow Elite Guards in the dungeon's guarded crypt. Although Richter's party has obtained the means to leave, freeing her bound guards becomes their immediate objective.",
+            "id": "crypt-mistress",
+            "name": "Crypt Mistress",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient queen released when Richter returns her remains to their sarcophagus and frees her consort and warriors from undead control. She offers him an inherited skill and warns that portals allow danger to travel both ways.",
+            "id": "tefonim-queen",
+            "name": "Tefonim Queen",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sion's childhood best friend. During an effort to free captive forest creatures, human animal-capturers seize both boys and kill Kurian, leaving Sion with lasting guilt and hostility toward humans.",
+            "id": "kurian",
+            "name": "Kurian",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wood-elf hunter from the Mist Village. Richter's returning party mistakes him for an enemy in the dark and breaks his leg during an ambush before recognizing him.",
+            "id": "jitol",
+            "name": "Jitol",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An imp to whom Richter owes a binding, unspecified future favor. He does not appear in the present story, but the debt and his purpose remain unresolved.",
+            "id": "xuetrix",
+            "name": "Xuetrix",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The surviving leader of the Night Blades and a hostile figure who knows Richter's group. He remains at large as the new story begins.",
+            "id": "ronan",
+            "name": "Ronan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A noble of Yves connected to Isabel's former captivity. Richter's group robbed him without confronting him directly, leaving the possibility of retaliation open.",
+            "id": "count-stonuk",
+            "name": "Count Stonuk",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "the-land-forging"
+      },
+      "recaps": {
+        "ending": "Richter, Sion, Yoshi, Daniella, Alma, and Futen return from the Time Worn Dungeon alive. The Crypt Mistress is dead, the Tefonim dead are free, and Sion has accepted that Kurian's murder was not solely his fault. Richter is level 18, has chosen mastery of life, and carries the dungeon's Magic Core, though the lower stairway and the eaters below remain unexamined. Hisako cures the party's cankerous rot and heals Jitol. Sumiko begins treating Yoshi's lingering internal injury, whose complete effect is still concealed. The larger danger has increased: awakening Richter's place of power will draw and strengthen monsters, bugbears remain in the region, and an eater attack takes priority. Hisako sends Sion and Daniella to investigate, calls for northern wood-elf assistance, and directs Richter to win dwarf support in the Serrated Mountains. Elora and the quickening still require protection, the village's magic forge still needs suitable metal, Modara remains free under Richter's vengeance oath, and the inherited threats involving Xuetrix, Ronan, Count Stonuk, and the remaining captives are unresolved. Randolphus then reports unidentified prisoners in the village.",
+        "in_short": "Richter strengthens the Mist Village by planting a blessed seed core, creating a quickening that awakens Elora, the surviving Pixie Queen, and seals an alliance with Hisako's wood sprites. The quickening exposes the village during a lapse in its protective mist, leading to a destructive bugbear assault. The defenders prevail, but Modara escapes and Richter swears vengeance. Richter then enters a Time Worn Dungeon with Sion, Yoshi, Daniella, Alma, and Futen. They overcome traps, undead, and the Crypt Mistress, free the Tefonim dead, and survive Sion's painful trial concerning Kurian's death. Richter gains life mastery and removes the dungeon's Magic Core. After Hisako cures the returning party, she warns that Richter's awakened power will attract stronger monsters. Eaters have attacked, bugbears remain active, and Richter must seek dwarf allies in the Serrated Mountains. Randolphus closes the story by reporting unidentified prisoners at the village.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Richter entered the Land and became master of the Mist Village. The wood sprite Sion became his companion and scout. Sion's mother Hisako, the Hearth Mother of her people, became Richter's ally, as did the warrior Yoshi. Richter's new settlement brought together people who now depend on his leadership and protection. Terrod joined him as a companion and guard leader, but still carries an obligation to help free captives connected to the Night Blades. Isabel, whom Terrod loves, survived captivity linked to the noble Count Stonuk and is recovering in the village. Several dangers remain beyond the settlement. Ronan, the surviving Night Blades leader, is at large and knows Richter's group. Count Stonuk remains alive in Yves and may retaliate after being robbed without a direct confrontation. Richter also owes the imp Xuetrix a binding favor whose future terms and purpose are unknown. Richter therefore begins this volume responsible for a growing community, an unfinished captive search, a dangerous personal debt, and hostile figures who have not yet been brought to account.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Light Court detects stable traces of raw chaos at several locations and learns that a surviving pixie chrysalis has reached a Life Master in the River Peninsula. The King of Light orders observation while privately recalling that he caused the plague that destroyed the pixies. Hisako asks Richter and Sion to investigate goblin and bugbear camps advancing from the east. She also blesses a recovered seed core so Richter can plant it at the Mist Village and use its released life energy to revive the chrysalis. During preparations, Yoshi begins teaching Richter swordsmanship, Sumiko joins as a prospective ambassador and Life Magic instructor, and Futen advises waiting for a storm that will strengthen the planting. Richter also summons a female Psi Dragonling as his soul familiar, temporarily spending the mana needed to maintain the village's protective mist. The planting creates a powerful quickening. Elora wakes as the sole surviving royal Pixie Queen, binds herself to the tree, and becomes Richter's companion and its caretaker. Richter pledges to protect her, and he and Hisako formally unite the village with her people.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richter names his Psi Dragonling Alma and tells Sion that he has chosen the Land as his home. The celebration is followed by a nighttime bugbear assault. The quickening's burst of light had revealed the village while the Confusing Mist was down, allowing attackers to breach the defenses and burn the longhouse. Richter, Hisako, Sion, Daniella, Yoshi, Alma, and the villagers mount a defense. Hisako summons a celestial servant, Yoshi kills the bugbear leader, and Alma exposes an ambush hidden by dark magic. Hisako then recognizes Modara, a dark-elf necromancer from her past, among the enemy casters. Modara raises skeletons while Hisako shields the defenders. At dawn Richter restores the mist, and the survivors use it to regroup and hunt the invaders. Yoshi kills Modara's allied dark mage, collapsing the skeletons, and no bugbear escapes. Modara kills a sprite and flees through a tear in space. The village mourns its dead and begins rebuilding. Richter publicly accepts responsibility for lowering its protection, organizes continuous guards, and awakens air magic in new village students. He also swears to avenge the attack's responsible parties within one year.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the attack, Richter prioritizes a smithy and stronger village production. Krom pledges fealty and becomes Smith of the Mist Village, while Gloran explains the soul stones and materials needed for enchanting. The villagers debate using a Magic Core to create a magic forge, but better base metal must be found first. Richter chooses an honorable governing tenet, arranges a trade mission to Leafs Crossing, and prepares to unlock another of his powers. Hisako assigns Yoshi and Daniella to join Richter, Sion, Alma, and Futen on the expedition. The group enters a concealed dungeon, but Richter triggers its mechanism and drops everyone underground. They discover they are trapped in a Time Worn Dungeon whose entrance route has collapsed. A swarm of predatory beetles attacks, and the party escapes through a corroded door after Richter loosens its mechanism. Yoshi identifies the infestation as a returning forest danger, and Richter agrees to destroy its nest. The group then reaches a chamber covered in traps. Yoshi begins teaching Richter how to detect and disarm them, but supplies and tools are being consumed as the party pauses partway across.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dungeon party crosses the trapped chamber and studies several deadly doors. A riddle opens the red route into a water-filled cavern, where Richter swims behind a waterfall, disables lightning-crystal defenses, and retrieves valuable equipment from a dead noble who had been seeking an unidentified family artifact called the link. The bone-door route leads to undead Fades. A Pillar of Life suppresses their defenses, allowing the party to destroy them and clear the sepulcher. Farther in, eight Drow Elite Guards surround a central crypt. Richter and Yoshi disarm a nearby chest while Futen dismantles its layered magical wards, gaining the bone key and hatch wheel needed to continue. Although the group can now pursue an exit, Richter accepts a quest to free the guards from the Crypt Mistress controlling them, and Yoshi stays to help. The assault leaves Sion and Daniella unconscious and Yoshi badly injured. The Crypt Mistress revives her guards, spreads a debilitating disease, and shields herself behind a barrier. Alma's psychic attack helps Richter turn one guard against the others. Richter cracks the barrier, strikes with life magic and a mana-heavy arrow, captures the Crypt Mistress's soul, and kills her.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Richter and his companions survive the crypt battle but contract cankerous rot, which their weak healing cannot cure. By returning the former queen's remains to her sarcophagus, Richter releases the Tefonim Queen, her consort, and their warriors from undead control. The queen grants him an inherited skill, and he chooses Portal Construction. Her treasure also contains specialized metals that may serve the village's future magic forge. The next passage isolates Sion and forces him to relive the childhood death of Kurian. Human animal-capturers seized the two boys after they tried to free captive creatures, then tortured and killed Kurian. The dungeon repeats the memory until Sion accepts that the outcome arose from both boys' choices, the captors' evil, and chance, rather than from his fault alone. He survives the trial, gains resistance to enchantment, later explains his former hostility to Richter, and apologizes. Richter solves the dungeon's final door mechanism and chooses mastery of life, gaining stronger Life Magic and the ability to teach it to qualified users. Before leaving, he removes the dungeon's Magic Core. The party postpones the lower stairway and its eater threat until they can recover and return with help.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While returning through the forest, Richter's party mistakes two concealed watchers for enemies and ambushes Jitol, a Mist Village hunter, breaking his leg. They splint the injury and carry him home. Because Richter, Sion, Daniella, and Yoshi still have cankerous rot, Richter keeps the group outside the village until healers can prevent an outbreak. Hisako cures the disease and heals Jitol, while Sumiko confirms the others are clear. The dungeon expedition has succeeded: the Crypt Mistress is dead, the Tefonim dead are free, Sion has survived his personal trial, and Richter has gained life mastery and a Magic Core. The victory also exposes a larger strategic danger. Hisako explains that awakening Richter's place of power will attract stronger monsters and empower creatures already nearby. Yoshi reports that eaters have attacked, causing Hisako to place that threat above the continuing bugbear problem. She sends Sion and Daniella with sprite warriors to investigate, assigns Sumiko to Yoshi's internal injuries, and seeks help from northern wood elves. Richter receives a mandatory mission to win dwarf allies in the Serrated Mountains, possibly by purchasing their support. The story ends when Randolphus reports that the village is holding unidentified prisoners.",
+            "through": {
+              "chapter": 31
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "the-land-forging"
+      }
+    }
+  }
+}

@@ -1,0 +1,1742 @@
+{
+  "entries": {
+    "reign-of-madness": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Frisha’s formidable suitor and the organizer of the tournament journey. He adopts the manner of an exceptionally powerful noble and uses the deference he attracts to improve Frisha’s treatment among her highborn relatives.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rezkin’s intended partner and General Marcum’s heir through his sister. Rezkin presents her as his girlfriend before her noble relatives, while she defends the practical abilities they dismiss and recognizes that he is performing a role without knowing its full purpose.",
+            "id": "frisha",
+            "name": "Frisha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tam"
+            ],
+            "description": "Frisha's sworn escort and Rezkin's friend. His honor is challenged by one of Frisha's noble cousins, but Rezkin publicly affirms both his oath and their friendship while placing him within the expedition's protected inner circle.",
+            "id": "tamarin-blackwater",
+            "name": "Tamarin Blackwater",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A warrior traveling with Rezkin's party who continues training for combat. She recognizes that his high-noble manner is a performance without knowing its full purpose.",
+            "id": "reaylin-de-voss",
+            "name": "Reaylin de Voss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Duke of Wellenven's heir"
+            ],
+            "description": "The wary heir of the Duke of Wellenven, traveling with the party to the tournament.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An army officer accompanying the travelers on their journey to the tournament.",
+            "id": "captain-jimson",
+            "name": "Captain Jimson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "elder count"
+            ],
+            "description": "Frisha’s older cousin and the future head of her noble house. Though initially class-conscious, he responds strongly to Rezkin’s approval and begins treating him as a model of honorable highborn behavior.",
+            "id": "frishas-house-heir",
+            "name": "Frisha's house heir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "younger count"
+            ],
+            "description": "A young noble traveling with his siblings to compete at the tournament. He is interested in the competition and follows his older brother’s lead.",
+            "id": "frishas-younger-cousin",
+            "name": "Frisha's younger cousin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A status-conscious noblewoman who disparages commoners and pursues Rezkin despite his declared relationship with Frisha. Her insults toward Frisha and Tamarin provoke a public rebuke from Rezkin.",
+            "id": "frishas-female-cousin",
+            "name": "Frisha's female cousin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young noble who travels to the tournament with Frisha's cousins as their friend.",
+            "id": "young-noble-friend",
+            "name": "Young noble friend",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The reigning king of Ashai. At the opening of the book, his growing taxes and military musters are contributing to instability, while serious accusations concerning King Bordran and Prince Thresson remain allegations rather than established events.",
+            "id": "king-caydean",
+            "name": "King Caydean",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "The only fortress striker known to have escaped Rezkin's final test. He remains missing and is Rezkin's principal lead to the purpose of the hidden fortress, the orders given there, and the fate intended for its trainees.",
+            "id": "striker-farson",
+            "name": "Striker Farson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stranded journeyman mage who wanted to follow life magic but possesses a powerful destructive affinity. He is reluctant to kill and cannot heal effectively himself, yet his instruction lets Reaylin direct her dangerous new gift, prompting Rezkin to hire him.",
+            "id": "wesson",
+            "name": "Wesson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A badly beaten prisoner rushed through a mob trial after admitting that he killed the mayor's son. The legal question of murder remains untested when Rezkin challenges the proceeding, removes the magistrate, and takes Kai into custody for an investigation.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ashai officer traveling with Rezkin's party. When Kai denounces King Caydean and questions the royal succession, Drascon objects, demonstrating his continued formal loyalty to the reigning monarch.",
+            "id": "lieutenant-drascon",
+            "name": "Lieutenant Drascon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lady Hilith Gadderand"
+            ],
+            "description": "The widow of Lord Gadderand and a former Razor Edges guildmaster. She approaches Rezkin under the mistaken belief that the Raven has ordered her to observe him.",
+            "id": "hilith-gadderand",
+            "name": "Hilith Gadderand",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "host duke"
+            ],
+            "description": "The noble who hosts Tieran at his Scutton estate during the tournament.",
+            "id": "duke-of-scutton",
+            "name": "Duke of Scutton",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A master swordsmith in Scutton who grants Rezkin access to exceptional weapons after seeing evidence of his skill.",
+            "id": "scutton-swordsmith",
+            "name": "Scutton swordsmith",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "another duke's youngest son"
+            ],
+            "description": "A guest at the Duke of Scutton's estate and the youngest son of another duke. He covertly directs mage power at Rezkin when Rezkin answers Tieran's summons.",
+            "id": "duke-of-scuttons-guest",
+            "name": "Duke of Scutton's guest",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "fifth-tier swordwoman"
+            ],
+            "description": "A common-born fifth-tier competitor trained by her late father, once a royal guard in their homeland. She places seventh in her division and earns recognition as a swordmaster, drawing the younger count's admiration and Kai's interest as a recruit.",
+            "id": "young-swordwoman",
+            "name": "Young swordwoman",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving trainer from Rezkin's hidden fortress who recognizes his former pupil. He believes Rezkin was created to serve an unknown master and may hold crucial knowledge about the purpose of the training and the instructions that never reached Rezkin.",
+            "id": "former-fortress-striker",
+            "name": "Former fortress striker",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of an Eastern Mountains contingent. Dark Tidings bests him using his own axe, then brings him back from death. By keeping the axe, Dark Tidings holds the symbol of temporary chieftaincy.",
+            "id": "eastern-mountains-chieftain",
+            "name": "Eastern Mountains chieftain",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "dissenting arresting strikers"
+            ],
+            "description": "Two of seven royal strikers sent to arrest Dark Tidings for treason. Unlike their companions, they refuse to begin fighting before examining his evidence of authority, separating themselves from the immediate attack.",
+            "id": "two-aligned-strikers",
+            "name": "Two aligned strikers",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the traveling military escort who faces a choice when Dark Tidings organizes the flight from Scutton. After being told that no one is compelled to follow, Millens chooses to remain with the escape column.",
+            "id": "millens",
+            "name": "Millens",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A merchant-ship captain who once commanded in the royal navy. He lost that post after King Bordran died because he spoke against the succeeding government, and now agrees to carry Rezkin's refugees toward safety.",
+            "id": "merchant-ship-captain",
+            "name": "Merchant-ship captain",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dark Tidings",
+              "the Raven"
+            ],
+            "description": "The man behind the Raven plans a masked tournament identity named Dark Tidings to attract striker attention while avoiding recognition.",
+            "id": "rezkin-identities",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Ashai general whose approval Rezkin sought before marrying Frisha. He rejected the proposal despite respecting Rezkin professionally.",
+            "id": "general-marcum",
+            "name": "General Marcum",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-19",
+            "ref": "audible:uk:B01LYTW8KT",
+            "type": "community"
+          }
+        ],
+        "work": "reign-of-madness"
+      },
+      "recaps": {
+        "ending": "Rezkin wins both the melee and fifth-tier tournament as Dark Tidings. When seven strikers attempt to arrest him, two wait to examine King Bordran's certificate and ultimately swear fealty, while the other five die fighting him. Caydean's forces turn the arena lockdown into a wider campaign against foreigners, so Rezkin organizes fighters, companions, and spectators into an escape column. They breach the Duke of Scutton's estate, evacuate surviving captives from its slave prison, and flee through the sea cave. The young swordwoman executes the duke for his crimes and her father's apparent murder. Frisha’s younger cousin is killed while shielding the young swordwoman during the final fight. A former royal-navy commander carries the survivors away on his merchant ship. At sea, Rezkin unmasks before the traveling party and identifies himself as Dark Tidings and the true king. Frisha, Tam, Reaylin, Wesson, Kai, Tieran, Jimson, Drascon, Millens, the aligned strikers, and the other refugees are fugitives pursued by the royal navy. Caydean has targeted their houses and General Marcum has fled. Rezkin's exact royal lineage, Bordran's complete plan, Striker Farson's location, and the fortress order remain unresolved.",
+        "in_short": "Rezkin leads Frisha and their companions toward the king's tournament while cultivating noble allies and investigating the authority left to him by King Bordran. Kai, a former striker, identifies Rezkin as the rightful king, and Wesson verifies both his royal certificate and his unusual magic. In Scutton, Rezkin competes secretly as Dark Tidings, builds public support, survives surveillance and poison plots, and discovers the host duke's hidden slave prison. King Caydean's attempt to arrest Dark Tidings expands into mass detention of foreigners. Rezkin wins the tournament, kills five attacking strikers, and leads an armed evacuation through the duke's estate. The duke is executed, surviving captives are rescued, and Frisha's younger cousin dies protecting the young swordwoman. The refugees escape by sea, where Rezkin reveals that he is both Dark Tidings and the true king. Caydean moves against their families and sends the royal navy after them as they seek foreign refuge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rezkin emerged from a hidden upbringing with extraordinary martial and practical training, two royal blades, and authority connected to the late King Bordran. He formed close ties with Frisha, her sworn escort Tamarin Blackwater, the warrior Reaylin de Voss, and Captain Jimson. Rezkin sought General Marcum's approval to marry Frisha, but Marcum rejected the proposal despite respecting Rezkin professionally. Rezkin also operated a covert network as the Raven, while keeping his identities and purposes divided among those around him. King Caydean ruled Ashai after Bordran's death, Prince Thresson was missing, and serious questions remained about the royal succession. Rezkin's former trainer Striker Farson was still at large and represented the best available lead to the hidden fortress, its final orders, and the reason Rezkin had been prepared there. As the new journey begins, Rezkin is committed to protecting his friends, understanding the authority he carries, and taking the group to the king's tournament.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin takes command of the tournament voyage by assuming the manner of a powerful high noble. He uses the travelers' deference to defend Frisha and Tamarin from class-based insults and to encourage Frisha's relatives and Tieran Nirius to treat them with respect. When a falling beam injures Rezkin, Reaylin's natural healing power awakens. She resists the discovery, but later heals a donkey and a gravely injured prisoner under the instruction of Wesson, a reluctant destructive mage whom Rezkin hires as her teacher. The prisoner, Kai, has admitted killing the mayor's son, but Rezkin stops a corrupt and hurried trial so the charge can be investigated. Kai recognizes signs that Rezkin possesses royal sword-bearer authority and demands proof. Under a mage oath, Wesson authenticates King Bordran's certificate and two Shailen blades, confirms that they are keyed to Rezkin, and finds that Bordran freed them from the reigning king's bond. Kai swears fealty to Rezkin as king. Rezkin accepts responsibility for protecting him but rejects the title and orders secrecy. Kai then accuses Caydean of killing Bordran and abusing Prince Thresson, though neither claim has been independently established.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin uncovers evidence that the mayor and dismissed magistrate covered up the rape committed by the mayor's son. He kills the two officials while making their deaths appear to result from a mutual struggle. The baron later dismisses the charge against Kai, who joins the voyage. During shipboard practice, Rezkin defeats Kai and exposes his mastery of two blades. Kai identifies Rezkin's dead fortress trainers as strikers and learns that Rezkin killed fourteen of them during his final test while Farson escaped. Rezkin does not know who issued the final order or whom it truly targeted. Tamarin recoils from Rezkin's history, but Frisha argues that killings carried out as lawful duties require context. After reflection, Tam apologizes and swears fealty to Rezkin. Economic decline, taxation, and military musters under Caydean are worsening across Ashai. Kai tells the young nobles that Bordran named an alternative successor, while concealing that it is Rezkin. Wesson notices a possible magical effect that discourages scrutiny of Rezkin's assumed roles. At Port Manai, Hilith Gadderand approaches Rezkin believing the Raven ordered her to spy on him. Wesson again authenticates the claimant's authority, and Reaylin reveals her rebel allegiance before swearing to the unnamed true king through Rezkin.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin accepts Reaylin's oath on behalf of the unnamed true king but refuses similar offers from Frisha and the young nobles because association with the claimant could endanger their houses. Wesson identifies the subtle spell on Rezkin: a plausible disguise or assumed role becomes unusually convincing, and observers are discouraged from questioning it. As the Raven, Rezkin takes command of the Razor Edges and then establishes control in Scutton by destroying the defiant Ghouls guild and threatening the Stalkers. Meanwhile, Reaylin begins functioning as the party's healer, Wesson explores constructive applications for his destructive power, and Tieran becomes increasingly receptive to a lawful alternative to Caydean. The party reaches Scutton for the king's tournament, where Tieran stays with the Duke of Scutton. Rezkin plans to enter without letting the strikers recognize him. He and his closest allies choose the name Dark Tidings, and a swordsmith supplies a distinctive black blade. Wesson creates a mask and enchantments that hide the wearer's features and prevent observers from remembering the disguised voice. With black clothing, altered hair, the new sword, and the secured mask, Dark Tidings is ready for the tournament while most of Rezkin's companions believe he will not compete.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dark Tidings registers for the melee and fifth-tier duels, passes the trial by disarming a royal-guard captain, and sponsors qualified commoners who cannot afford entry. His skill attracts public support and close attention from Caydean's strikers, though he repeatedly evades their surveillance. At the Duke of Scutton's estate, another noble guest directs mage power at Rezkin. Rezkin then finds triania poison on Tieran's intended practice equipment and moves him to safety. After seeing Bordran's certificate and learning about Rezkin's concealment spell, Tieran realizes that Rezkin is the named heir. Wesson's blood test establishes that the two men are close relatives without determining the exact relationship. Tieran swears fealty, and Rezkin tells him that he is Dark Tidings. Poison later strikes Frisha's house heir before a tournament bout, but Rezkin administers an antidote and the count recovers. Rumors of a true king spread while Rezkin covertly pressures the host duke to support the rising claimant. Investigating heavily warded passages beneath the duke's manor, Rezkin, Wesson, and Tieran discover a hidden slave prison. Dozens have been confined and starved, only a fraction appear likely to survive, and records expose the duke's trade and a concealed sea route.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin covertly supplies the surviving captives while arranging a ship and preparing to leave after the tournament. A common-born fifth-tier swordwoman learns that Rezkin is both the true king and Dark Tidings, swears fealty, and accepts his guardianship. A former fortress striker then recognizes Rezkin and claims he was created to serve an unknown master. Rezkin shows him Bordran's certificate and offers the strikers a lawful basis for changing allegiance, but the incomplete fortress plan remains unexplained. Dark Tidings wins the tournament. Seven strikers try to arrest him for treason; two pause to inspect his proof and swear fealty, while he kills the other five. Caydean's forces seal the arena and begin detaining foreigners for ransom, enslavement, or death. Rezkin forms an armed escape column, fights through Scutton, and breaches the Duke of Scutton's estate. The young swordwoman executes the duke, and the group evacuates surviving captives through the sea cave. Frisha's younger cousin dies protecting the swordwoman during the final fight. The refugees board a merchant ship commanded by a former royal-navy officer. At sea, Rezkin removes the Dark Tidings mask and confirms to the travelers that he is the true king. Caydean has targeted their families and replaced General Marcum, who fled rather than obey. With the royal navy pursuing, Rezkin's coalition sails toward foreign refuge.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-19",
+            "ref": "audible:uk:B01LYTW8KT",
+            "type": "community"
+          }
+        ],
+        "work": "reign-of-madness"
+      }
+    },
+    "requirements": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A mythical void adventurer who protects his Savannah household. He combines overwhelming combat power with portal travel and takes responsibility for the people who have gathered around him.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Cydaria's champion, a powerful fighter, and one of Derek's strongest allies.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Derek's bonded void companion, a formidable fighter, and an enthusiastic cook who is treated as part of his family.",
+            "id": "silvi",
+            "name": "Silvi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Crown fighter, Alana's ally, and Lyra's bonded partner.",
+            "id": "avery",
+            "name": "Avery",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prince of Cydaria and a powerful lightning fighter allied with Derek and Alana.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Avery's bonded psionic amphitheer. She is an intelligent dragonkin whose tactical judgment complements Avery's direct approach to combat.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The manager of the Void Emporium and Derek's Savannah household. She oversees the business, its staff, and the practical needs of the people based there.",
+            "id": "malorie",
+            "name": "Malorie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Savannah's leader and security organizer, responsible for guiding the rapidly growing city through political and commercial change.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted craftsperson at the Void Emporium whose inventive approach joins smithing with related disciplines. Roman teaches her without suppressing her independent methods.",
+            "id": "brandy",
+            "name": "Brandy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young fighter in Alana's circle who also shows considerable aptitude for management.",
+            "id": "stella",
+            "name": "Stella",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A weaponsmith allied with Derek and the maker who helped construct secure containment for dragonkin.",
+            "id": "walking-forge",
+            "name": "the Walking Forge",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Walking Forge's worm-like dragonkin companion, associated with the construction of the dragonkin kennel.",
+            "id": "rocky",
+            "name": "Rocky",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A returning guard and trainer connected to Derek's household. He is seeking the people responsible for the kidnapping and murder of his family.",
+            "id": "jacks",
+            "name": "Jacks",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Indarian royal and established political ally who directs his kingdom's information network.",
+            "id": "indarian-duke",
+            "name": "the Indarian duke",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The operator of Derek's contract shop. His expanding business is nearing a major class upgrade, and he hopes to gain the rare ability to create soul contracts.",
+            "id": "rudy",
+            "name": "Rudy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former assassin now serving as a butler in Derek's household. He worries that his old guild could target both him and Ogre outside Savannah.",
+            "id": "bones",
+            "name": "Bones",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bones's former associate and another potential target of the Assassin's Guild outside Savannah.",
+            "id": "ogre",
+            "name": "Ogre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Derek's ward, currently away from the Savannah household while studying at the capital academy. Derek has promised Thomas's grandparents that he will protect him.",
+            "id": "thomas",
+            "name": "Thomas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Void Emporium guard who has exchanged binding commoner vows with his pregnant wind-using partner. They plan to establish a home in Savannah while remaining close to the shop.",
+            "id": "jax",
+            "name": "Jax",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer who joined Jax's dungeon party alongside Stella and other young adventurers before the war interrupted their plans.",
+            "id": "jensen",
+            "name": "Jensen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior alchemist and Brandy's mentor. Derek brings him rare monster materials in hopes of developing permanent-stat potions and other valuable products.",
+            "id": "roman",
+            "name": "Roman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roman's assistant and apprentice, an eager alchemical researcher who is keen to test potions.",
+            "id": "freia",
+            "name": "Freia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, classless fighter training in the capital. She favors water-assisted brawling and is deliberately building skills and affinity before committing to a class.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced combat trainer who supervises Claire and her companions as they develop their abilities.",
+            "id": "walter",
+            "name": "Walter",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dedicated beast tamer at the secured dragonkin kennel. A member of House Barnes, she has not yet formed a bond and is interested in finding a compatible companion.",
+            "id": "lindsay",
+            "name": "Lindsay",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncle of an exceptionally durable academy student on Thomas's team.",
+            "id": "cain",
+            "name": "Cain",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient founder and leader of the Adventurers Guild. He can disperse and reconstruct his molecular body, an extraordinary defensive ability that has preserved him for thousands of years at a lasting personal cost.",
+            "id": "klaus",
+            "name": "Klaus",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zach"
+            ],
+            "description": "A young yellow-lightning fighter training with Claire and his brother Lucas. Their coordinated attacks pair his lightning with Claire's water.",
+            "id": "zachary",
+            "name": "Zachary",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Luke"
+            ],
+            "description": "Zachary's brother, a young tank who uses metal magic to extend his shield. He sees protecting Zachary as his central place in their developing team.",
+            "id": "lucas",
+            "name": "Lucas",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient Indarian former elder and immensely powerful sand wielder. Rather than wait quietly for death, he arrives in Savannah while preparing for a final open-ended journey.",
+            "id": "marrick",
+            "name": "Marrick",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A contractor Derek plans to bring along when assessing housing prices for members of his household.",
+            "id": "jeffrey",
+            "name": "Jeffrey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alana"
+            ],
+            "description": "The feared identity behind Alana's transformation and controlling voice. Mastering the last skill of this form has let her speak without involuntary influence, but it has also completed the conditions that will force her to leave for another system.",
+            "id": "dawn-siren",
+            "name": "Dawn Siren",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient, intelligent void beast drawn by Derek's Void Call. He speaks, uses Void Steps without a system, and seeks enough self-developed mastery to ascend.",
+            "id": "asher",
+            "name": "Asher",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0DS2SYXT4",
+            "type": "community"
+          }
+        ],
+        "work": "requirements"
+      },
+      "recaps": {
+        "ending": "The Echoing Willow dies under the combined assault of Derek, Alana, Silvi, Avery, Edgar, the Walking Forge, and Rocky. The party receives a World Boss reward and harvests the creature before Linderis can organize a larger response. When a local party attacks, Derek incapacitates most of it and Alana kills its leader, openly confirming that she is the Dawn Siren. Alana has recovered her mother's damaged doll and has only days before ascension removes her to an unknown system. Derek reaches level 245 with every core stat above 1,500, three Origin System skill upgrade points, and one advancement requirement still unmet. Silvi remains at his side, while Avery and Edgar move closer to their own advancement. Asher is still voluntarily training inside Derek's inner void, with his survival and future allegiance unknown. The unassigned dragonkin, Thomas's developing dungeon team, the younger trainees, Marrick's travels, and the unanswered responsibility for Jacks's family remain open as Derek's group prepares to leave Linderis.",
+        "in_short": "Back in Savannah after the war, Derek strengthens his household, earns Diamond rank, supports Brandy's inventions, and prepares Thomas and other young fighters for independent growth. Alana then takes him through high-level dungeons, where they devise ways to preserve golem cores and push Derek and Silvi beyond every 1,500-point stat threshold. Alana reveals that she has qualified for ascension and will soon be forced into another system. Derek discloses his origin on Earth and discovers that the Origin System still reaches him. His Void Call attracts Asher, an intelligent void beast who chooses to train inside Derek's inner void. Derek and Alana cross the sea to Linderis, recover the doll Alana's mother made for her, and assemble allies to kill the Echoing Willow. After defeating the World Boss and repelling a hostile party, they prepare to leave before Linderis responds. Derek is level 245 and still lacks one advancement condition, while Alana's departure is imminent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Derek became a mythical void adventurer and built a household around the Void Emporium in Savannah. Silvi, his bonded companion, remained both a powerful combat partner and a fiercely independent member of that family. Derek formed close ties with Cydaria's champion Alana, Prince Edgar, Avery, Malorie, Natalie, and the kingdom's royal house. War and invasion drew this circle into conflicts involving Cydaria, Indaria, and hostile nobles. Gerald Torith was defeated, but the larger chain behind the destruction of Jacks's family was not fully exposed. Derek also took responsibility for Thomas, supported Brandy's unusual crafting talent, and helped secure several captured dragonkin whose future bonds remained unsettled. The immediate war ended with political settlements left to the royal families. Derek returned to a Savannah that was safe for the moment, but his own advancement, the danger of the void, the placement of the dragonkin, and the future of the people under his protection all remained unresolved.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek returns to Savannah and resumes the practical work of supporting his household. Rudy approaches a class upgrade that may permit soul contracts, while Bones worries that the Assassin's Guild could pursue him and Ogre. Jax and his pregnant partner establish a family and decide to find a home in the city. Brandy's new legendary smithing path produces a working pair of explosive flight boots and a powerful combination of combat skills. Derek also supplies Roman and Freia with rare monster materials under a potion-production agreement. At the dragonkin kennel, Stella and the beast tamer Lindsay emerge as possible future partners for unassigned creatures, although Lyra advises patience. The fate of each bond remains undecided. Meanwhile, Malorie reports that the Void Emporium is profitable after its auction. Natalie allows Derek to buy its site, and he purchases the two adjacent lots as well. The household therefore shifts from wartime survival toward permanent expansion, training, craft development, and preparations for longer journeys.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek travels to the capital academy to check on Thomas. After gaining royal authorization to enter, he watches Thomas perform as a capable second-year spear fighter in supervised team combat. Derek spars against students and instructors, demonstrates his control of void techniques, and encourages Thomas to cultivate reliable teammates, especially an unusually resilient tank connected to capital guildmaster Cain. The academy's structure and reopened dungeon access give Thomas a path toward real adventuring experience under controlled conditions. Derek then visits the capital Adventurers Guild to resolve his delayed promotion. There he meets Klaus, the ancient founder and leader of the Guild. Klaus can disperse and rebuild his molecular body, making him exceptionally hard to kill despite the lasting cost of repeatedly altering himself. Derek's void attacks affect that body in a way Klaus has never encountered. After seeing Derek's strength, Klaus grants him Diamond Adventurer rank without a conventional test. Their meeting opens a new line of inquiry into Derek's unusual physical nature and creates a direct connection between him and the Guild's founder.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Klaus studies Derek and concludes that his human and void structures are fused rather than merely layered. In return for permission to examine a regenerated sample, Klaus accepts confidentiality and owes Derek open-ended assistance. Derek declines an offer to lead the Adventurers Guild. He then checks on Claire, Zachary, and Lucas, who are developing a coordinated, skill-first combat style under Walter and Jensen. Claire remains below level ten to strengthen her abilities before choosing a class, while the brothers combine lightning and metal defenses around her water techniques. Back in Savannah, public teleportation between allied kingdoms resumes and Edward becomes king of Cydaria. Brandy improves her flight equipment, Roman and Freia begin contracted potion supply, and the Void Emporium prepares to expand. Marrick, an ancient Indarian sand wielder, arrives instead of waiting passively for death. He befriends Brandy, encourages her to protect her creativity from exhaustion, commissions travel comforts, and sets out on a final open-ended adventure. Derek plans to check on him periodically, leaving Marrick's destination and survival uncertain.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Thomas prepares a regular dungeon party, and Derek gives him escape scrolls for emergencies. As the Void Emporium undergoes a major renovation, Alana finally returns and invites Derek on a circuit of level-250 dungeons. Before beginning, they inspect Cordonia and confirm that Indaria's old exploitative servant contracts have been destroyed and that reforms are taking effect. In a golem dungeon, Derek and Alana discover several methods for shutting down cores without destroying them, creating a valuable source of advanced crafting materials. They also arrange their attacks to slow Derek's experience gain while accelerating his underdeveloped skills. After the first clear, Alana explains the change in her voice and behavior. She is the Dawn Siren, and mastering the final skill of that transformation has given her control over its compulsive influence. The same achievement completed her advancement conditions. A system countdown now means she will soon ascend into an unknown system and leave her companions behind. Bound by restrictions on what she may disclose, she asks Derek to look after Stella. Derek agrees and begins considering how void resources might help the rest of their circle advance.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek tells Alana the history he had concealed. He came from Earth, survived its lethal Universal System tutorial, and was stranded in the void after rescuing an ambushed team. When he eventually reached Cydaria, the local system suppressed but could not erase the earlier one. This explains his retained strength, rapid growth, and extraordinary fusion with void power. Alana brings controlled Deathsworn into repeated golem runs so Derek can train skills while receiving only a fraction of the normal experience. Their experiments prove that multiple elements can preserve intact cores, and Derek leaves the highest-level materials with Brandy for future use. He reaches level 242 before shifting to an avian dungeon where Silvi gathers rare cooking ingredients and develops her combat abilities. Derek and Silvi then push their final core stat above 1,500. Derek has now crossed all six thresholds before level 250, but his advancement notice shows one additional condition remains. The local system seeks outside help, and the Origin System answers, granting Derek The Impossible and a large permanent stat reward. Its intervention confirms that the older system still has an active connection to him.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After finishing Alana's remaining puzzle dungeons, Derek turns to Void Call and learns that intelligent, systemless void beasts exist. One such being responds without the usual mindless aggression. In the next encounter, the creature identifies himself as Asher, an ancient void user seeking ascension through his own mastery. Derek discovers that his aura produces fear and a degree of compulsion in Asher, suggesting a deeper authority over void beasts than he understood. Rather than kill him, Derek allows Asher to enter the dangerous inner void space connected to Derek's abilities. Asher chooses to remain there and train, leaving his eventual power and loyalty uncertain. Derek also examines a void beast held in his Time Prison after Void Travel and finds that the combination has catastrophically damaged it. He ends its suffering and abandons the idea of using that method for transport or training. Alana then postpones other travel to complete a final task across the sea. She and Derek reach the Indarian coast and begin the long crossing toward the continent where she was born.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the sea crossing, Alana decides she cannot safely take her captured wyvern into another system. She will annul the contract before ascending rather than risk lethal bond sickness, leaving the creature's future partner unresolved. Derek and Alana reach the far continent and travel covertly through several kingdoms toward Linderis, where humans and half-elves face severe persecution. Alana briefly confirms that a former party member survived and now leads a powerful noble family, but she avoids revealing herself. Using the local name Alana Brighton, she and Derek pass through neighboring cities and cross the hostile border under concealment. Near the Echoing Abyss, they find fortified camps where Linderis trains nobles and soldiers against mental influence. Derek brings an Indarian duke to investigate and uses his accepted status as a full elf to secure a path through the defenses. The duke confirms that Alana is remembered as a feared legend. At the Abyss edge, Alana reveals that she survived its madness as a child. With only days left before her forced departure, she and Derek descend toward the source of the controlling vibrations.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Echoing Willow, an immense tree monster, creates the madness that defines the Echoing Abyss. Alana leads Derek to the hidden cave where she survived alone at thirteen and recovers a damaged doll made by her mother, her only remaining possession from her. When the Willow enters a vulnerable interval, Derek summons Silvi, Avery, Edgar, the Walking Forge, and Rocky. Their coordinated attack tears open the trunk, burns the canopy, and floods the roots with lava. Derek attacks from inside while the others prevent the tree from recovering. The Echoing Willow falls and is recognized as a rare, non-respawning World Boss. Derek gains a World Boss achievement, additional Origin System skill points, and reaches level 245. Avery learns why Alana's departure is urgent and discovers that he too is nearing the advancement standard, while Edgar applies his reward toward the same long-term goal. A local party attacks over the Willow's destruction. Derek incapacitates most of them, Alana kills their persistent leader, and she openly identifies herself as the Dawn Siren. The survivors retreat. Derek's group resumes harvesting the Willow and prepares to leave Linderis before a larger force arrives.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0DS2SYXT4",
+            "type": "community"
+          }
+        ],
+        "work": "requirements"
+      }
+    },
+    "resistance": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran Earth Forerunner who enters the Wild Hunt with his bonded Eidolon, Erg. Faced with a vast artificial arena and four other human competitors, he begins by searching for Asta while assessing the event's competing routes to victory.",
+            "id": "silas-renner",
+            "name": "Silas Renner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Silas's bonded Eidolon and established companion. Erg can manifest beside him inside the Wild Hunt arena, giving Silas a trusted partner from the moment the event begins.",
+            "id": "erg",
+            "name": "Erg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established companion of Silas from before the Wild Hunt.",
+            "id": "samvek",
+            "name": "Samvek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth Forerunner equipped with a powerful mech suit obtained through outside assistance. She proposes a temporary alliance against Morvarg and says her choices were made to protect her family, though Silas distrusts both her equipment and her apparent ability to influence others.",
+            "id": "anika",
+            "name": "Anika",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Earth's five Wild Hunt competitors and an associate of Anika. At this stage, her agreement is still needed before the proposed human truce against Morvarg can take effect.",
+            "id": "nuri",
+            "name": "Nuri",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally dangerous hostile Forerunner whose kills produce unusually large gains. The threat he poses to Earth is serious enough that Anika proposes postponing human rivalries until he is dead.",
+            "id": "morvarg",
+            "name": "Morvarg",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Emil's daughter and the Earth Forerunner Silas has been seeking. Long-term alterations from her father changed her into Homo pragmaticum and gave her inherited abilities. She is also a genetic alchemist with a trait that can preserve consenting living beings in spatial storage.",
+            "id": "asta",
+            "name": "Asta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Asta's father, whose years of biological modifications shaped her before her induction. His work left her with enhanced attributes, inherited abilities, and a changed human evolution.",
+            "id": "emil",
+            "name": "Emil",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Earth Forerunner whose mass-producer occupation can duplicate common objects from a pattern and suitable raw materials. He joins Silas and Asta and accepts a provisional truce against Morvarg while reserving judgment about the other human competitors.",
+            "id": "jiang",
+            "name": "Jiang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Asta's newly tamed rare Brush Raptor Pack Leader. She names the creature after the party survives its pack, adding a powerful animal companion to the group.",
+            "id": "mr-chompems",
+            "name": "Mr. Chompems",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thumper of Veil"
+            ],
+            "description": "Leader of the Lepun encountered on Veil. She seeks an alliance with Silas against machine invaders who threaten her people and their sacred groves, offering local guidance in return for human aid.",
+            "id": "vex",
+            "name": "Vex",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured and cursed rare elf Forerunner located at long range by Silas's new drone network. Her condition and position make her the next known rival target in the Wild Hunt.",
+            "id": "daina",
+            "name": "Daina",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Flame Jackal"
+            ],
+            "description": "The chained being found inside the Flame Den and targeted by the event under the name Flame Jackal. He rejects that label as a slave name and identifies himself as Yeodirrath, turning an apparent monster hunt into an encounter with a captive who can destroy Erg's manifestation and incapacitate Jiang.",
+            "id": "yeodirrath",
+            "name": "Yeodirrath",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hunter at the center of the Wild Hunt. He is scheduled to enter the arena after 72 hours at epic tier, accompanied by hounds able to follow prey across realities.",
+            "id": "the-huntsman",
+            "name": "The Huntsman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Legendary head of the Rayden clan and Samvek's father. Silas summons him through the clan symbol when the Huntsman is about to overwhelm the group, bringing a far stronger ally into the confrontation.",
+            "id": "samuel-rayden",
+            "name": "Samuel Rayden",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cease"
+            ],
+            "description": "Silas's inducted sister, already known before this book. Mana is changing her, and Silas has worked to prepare her for the dangers surrounding Earth's induction.",
+            "id": "cecilia-renner",
+            "name": "Cecilia Renner",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A United States military leader already connected to Silas before this book. He serves as a conditional ally within Earth's developing defense network.",
+            "id": "krulak",
+            "name": "Krulak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0D9YV85R1",
+            "type": "community"
+          }
+        ],
+        "work": "resistance"
+      },
+      "recaps": {
+        "ending": "Earth wins the Wild Hunt after Asta voluntarily accepts limited subordination to Silas, following the deaths of Nuri and Anika and the destruction of Morvarg. The Huntsman is freed from Veil, and the artificial world is set to disintegrate. Samuel Rayden survives his clash with the Huntsman by using an escape token. Silas fulfills his agreement with Vex by transporting 986,312 Lepun to Earth and granting them asylum and native status. Their arrival produces a widening high-mana region that disables nearby technology. Earth earned the most points in the event but cannot receive normal induction because it is a contested-sector dungeon world with six incursion slots. Fewer than 34 days remain before induction, while monster attacks and evacuations are already widespread. Cecilia Renner, Asta, Jiang, and human forces defend Normandy, where Silas and Erg destroy an invading force. The communication ban then falls, and Silas commits to leading Earth's response to the approaching war. Anika's children and successor remain his responsibility, the Lepun must be integrated, Yeodirrath's permanent fate is unknown, and Silas and Asta leave their personal relationship undefined.",
+        "in_short": "Silas Renner enters the Wild Hunt with Erg and joins Asta and Jiang in a tense alliance with Anika and Nuri against Morvarg. Their campaign on Veil draws them into the Lepun struggle with the Conti Collective and into the Flame Den, where they free bound souls, exploit years of time-dilated training, and defeat the Wild Hunt incarnation of the chained devil prince Yeodirrath. Silas accepts a dangerous devil-derived evolution. Nuri breaks the human oath and dies, Mr. Chompems is killed, and Silas and Erg destroy Morvarg after a struggle involving life, order, chaos, and Veil itself. Anika later dies after transferring her successor right to Silas. The group survives the Huntsman's final pursuit with Samuel Rayden's intervention, and Asta's voluntary subordination gives Earth victory. Silas evacuates 986,312 Lepun before Veil disintegrates, only to learn that Earth is a contested-sector dungeon world nearing induction. He and Erg destroy an invasion at Normandy, communication restrictions end, and Silas accepts an open leadership role in the coming war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Silas Renner became a veteran Earth Forerunner and formed a voluntary bond with the Eidolon Erg. His inducted sister, Cecilia Renner, was changing under mana, and he worked to prepare her for the dangers surrounding Earth. Krulak became a conditional ally within the planet's emerging defense network. These relationships leave Silas entering the next crisis with personal obligations to his family and a growing place in Earth's defense.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Wild Hunt places Earth's five Forerunners in a huge constructed arena and offers victory through eliminating or subordinating their rivals, defeating the Huntsman, or consuming a special prey. Silas begins with Erg and quickly encounters Anika, who proposes a temporary human truce against Morvarg. He finds Asta, learns that Emil's alterations made her Homo pragmaticum, and reunites with Jiang, a mass producer. Asta tames a rare raptor later named Mr. Chompems. The Huntsman awakens early and grows stronger when the competitors fail to kill one another. Silas's group then meets Vex and the Lepun of Veil, whose sacred groves are being destroyed by the artificial Conti Collective. Silas accepts a binding alliance that commits the humans and Lepun to mutual protection and opposition to the Conti presence. Lepun scouts guide the group to a Conti outpost, where Silas must choose between testing the constructs and resuming the search for rival Forerunners. Morvarg makes the Hunt's first Forerunner kill, confirming that the most dangerous rival is already active while the human alliance remains incomplete and distrustful.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "All five human Forerunners swear not to harm one another or deny needed support until Morvarg dies, but the oath does not resolve their hostility. A spore attack exploits a loophole and compels Jiang and Nuri to attack allies. Silas cures both without killing them, restoring the group. Two elf Forerunners later ambush Silas and Erg and are killed, giving Earth valuable rewards while provoking an argument over who deserves the gains. Anika and Nuri continue unexplained private activity, deepening Silas's suspicions. Silas builds a clockwork drone, Jiang reproduces it, and their linked reconnaissance network greatly expands Silas's ability to map and identify distant targets. The network locates Daina, an injured and cursed elf Forerunner about fifty miles away. Earth has climbed to third place in world points. As the Hunt's first three days end, a system warning announces dire consequences for failure and introduces a new mandatory threat.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Morvarg attacks plant-world Forerunners near the volcanic region, kills one, and consumes the victim's soul. Silas's group wounds him, but he escapes, and the two rescued Forerunners turn on their rescuers and die. A separate quest identifies Morvarg as a Soul-Reaper and requires Silas to kill him before the Wild Hunt ends. Jiang offers to subordinate himself to Silas if they defeat Morvarg and protect Earth. Inside the Flame Den, the party discovers burned Lepun souls forced into fiery bodies. Silas uses spirit singing to break their chains and free them, gaining a title tied to liberating bound souls. He then evolves his support and healing magic. The dungeon's accelerating time allows the group to train for more than two subjective years while little outside time passes. Silas and Jiang become genuine friends, while Silas and Asta acknowledge mutual attraction but defer a relationship. Asta develops her alchemy, and the party emerges from training much stronger with about eighteen hours left to find the Flame Jackal.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party defeats a vast volcanic hornet nest, and Asta keeps frozen eggs for a possible future swarm. Battles with hell-mana-infected creatures leave Silas with an incomplete evolution and equipment that increases his connection to dangerous outside power. At the center of the dungeon, the supposed Flame Jackal identifies himself as Yeodirrath and rejects the event's name as a mark of enslavement. He is a bound devil prince and prisoner of war rather than a simple beast. Silas removes two of his restraints but refuses to free him completely. Yeodirrath begins the hunt at a much higher level and chases Silas across Veil. Vex and willing Lepun dead help delay him long enough for the group to reunite. In the final battle, Yeodirrath forces Silas into a struggle over his soul and life essence. Asta and Erg destroy the devil's physical incarnation, ending the event, while Silas saves the critically wounded Jiang. The victory does not establish Yeodirrath's permanent destruction. His blood completes Silas's devil evolution and leaves Silas with 24 hours to accept it or cleanse it.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas accepts the aberrant devil evolution, gaining new abilities and a probationary connection to another system. Jiang completes a rare evolution and voluntarily subordinates himself to Silas under reasonable Forerunner commitments. Asta reveals a controlled volcanic hornet swarm. The group then finds Nuri mortally cursed by Morvarg. She attacks Silas and breaks the human oath, allowing Jiang to kill her. The surviving factions converge on Daina and the remaining elf, both of whom die after Silas's team ensures shared rewards. Morvarg arrives wielding an oblivion-like force connected to the remnants of his people. He kills Mr. Chompems and overwhelms the combined attacks of Silas, Asta, Jiang, Erg, and Anika. With aid from Veil and the Lepun, Silas drives life mana into Morvarg's void and is drawn into chaotic space. Order and chaos join life in the struggle, while Erg's bond gives Silas the final connection needed to fill the emptiness. Morvarg and his people are eliminated. Silas returns to Veil after 59 days with new affinities and the title System Intermediary, finding Asta and Jiang far away and Anika marked as hostile.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas reunites with Asta and Jiang after his long absence, only to expose their refuge to the Huntsman's hounds. He and Asta's hornet swarm destroy all twelve manifestations, though they will reform. Silas then reaches Anika, who has immobilized Asta and Jiang. Before dying, Anika transfers to Silas the right to choose her successor and identifies the intended replacement for Nuri. Asta and Jiang kill her after she releases them, and Silas accepts responsibility for protecting her children. Rather than end the Hunt immediately through Asta's subordination, the group returns to Vex. They learn that Veil is an artificial fusion of several worlds and that its limits prevent the Lepun from advancing. Silas offers the remaining Lepun asylum on Earth in exchange for long-term nonaggression, cooperation in Earth's defense, and a sacred root for study. The agreement is sworn. The allies destroy the final Conti compounds and recover sacred roots, but the Huntsman confronts Silas and imposes a last test: Silas, Asta, and Jiang must survive as his prey for one full day.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas, Asta, and Jiang flee through a landscape controlled by the Huntsman, then ambush and briefly destroy his body. He simply recreates his manifestation, disables Silas, and tears apart Erg's manifested form. Silas summons Samuel Rayden, whose intervention lets the group escape even after the Hunt raises the Huntsman to match the legendary clan leader. Samuel survives through an escape token, and the group completes the 24-hour condition. The Huntsman tells Silas that the struggle freed him from Veil, rewards him, and departs. Veil will now disintegrate. With little time left, Asta voluntarily accepts limited subordination to Silas, completing a victory condition and winning the Wild Hunt for Earth. Silas honors his compact with Vex by transporting 986,312 Lepun to Earth, where their mana disables nearby technology. Earth earned the most points but is an ineligible contested-sector dungeon world with six incursion slots and fewer than 34 days before induction. Silas races to Normandy, joins Cecilia Renner, Asta, Jiang, and human defenders, and destroys an invading force with Erg. Communication restrictions then end as open war approaches, and Silas commits to leading Earth's defense.",
+            "through": {
+              "chapter": 51
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0D9YV85R1",
+            "type": "community"
+          }
+        ],
+        "work": "resistance"
+      }
+    },
+    "restoration-of-faith": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young wizard working as a hired investigator for a Chicago detective agency, still early in his career and not yet the established professional he will become. Idealistic, sharp-tongued, and unwilling to look away from a child in trouble, he already shows the reckless compassion and raw magical power that will come to define him.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The seasoned private detective who employs Harry at the Ragged Angel investigations agency. Practical and world-weary, he is focused on doing the job and getting paid, and serves as an older, more cautious counterpoint to Harry's impulsive idealism.",
+            "id": "nick-christian",
+            "name": "Nick Christian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young runaway girl whom Harry and Nick are hired to find and return to her wealthy parents. Frightened and defiant, she has fled home for reasons that make Harry question whether bringing her back is truly the right thing to do.",
+            "id": "faith-astor",
+            "name": "Faith Astor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Chicago police officer who becomes involved in the course of the case, one of the few willing to take an open-minded view of the strange events surrounding it. Tough and direct, she represents Harry's early, uneasy relationship with the city's police.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A troll, a large and dangerous creature of Faerie, that becomes entangled in the search for the runaway girl and poses a direct supernatural threat Harry must confront to save her.",
+            "id": "the-troll",
+            "name": "The Troll",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "restoration-of-faith"
+      },
+      "recaps": {
+        "in_short": "In this early prequel story, a young Harry Dresden, working as an investigator for the Ragged Angel agency under the detective Nick Christian, is hired to find a runaway girl named Faith and return her to her affluent parents. When they locate her, the job goes wrong: the girl falls into the hands of a troll, a genuine and deadly creature of Faerie, and Harry must use his magic to save her at real risk to himself. In the process he comes to suspect that the home Faith fled was itself the true danger, and that the people paying to retrieve her are not the innocents they appear. A police officer, Karrin Murphy, arrives in the aftermath, an early step in Harry's wary relationship with Chicago's law. Harry rescues the child and, troubled by what he has learned, refuses simply to hand her back to be hurt again.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Early in his career, before he is established as Chicago's professional wizard, Harry Dresden works for a small private detective agency. He and his employer are hired to track down a runaway girl from a wealthy family and bring her home, a routine-seeming job that soon begins to take a darker and stranger turn.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "restoration-of-faith"
+      }
+    },
+    "return-of-the-runebound-professor": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Vermil",
+              "Magus Vermil"
+            ],
+            "description": "An Earth teacher whose memories survive a disrupted reincarnation. He awakens in the recently dead body of Magus Vermil with fragments of its former owner's knowledge, a book of runes, and a dangerous need to understand his new magic.",
+            "id": "noah-vines",
+            "name": "Noah Vines",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The deity who selects Noah for reincarnation after his death. Her attempt to send him into a new life is disrupted when a many-voiced black entity attacks the place where souls await renewal.",
+            "id": "renewal",
+            "name": "Renewal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rank-one student assigned to Vermil's neglected class. He arrives late because the professor normally does not teach and is startled to find a real lesson beginning.",
+            "id": "todd",
+            "name": "Todd",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blue-haired rank-one student in Vermil's class. Like Todd, she expects an absent and unhelpful professor, so Vermil's sudden insistence on teaching immediately puts her on guard.",
+            "id": "isabel",
+            "name": "Isabel",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arbitage magus who encounters Vermil while he searches the library for rune-combination material. She knows his prior reputation and openly regards him as a disgrace to the Linwick family.",
+            "id": "moxie",
+            "name": "Moxie",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The operator of Arbitage's transport cannon. He manages fixed-duration journeys to places such as the Scorched Acres and is responsible for retrieving travelers when their allotted window ends.",
+            "id": "tim",
+            "name": "Tim",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A monster found near Arbitage whose master rune has pushed it close to the third rank. Moxie tells Noah that the rank-two creature is far beyond his ability to fight.",
+            "id": "hellreaver",
+            "name": "Hellreaver",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Silvertide"
+            ],
+            "description": "A senior magus with a runework silver right leg and responsibility for Tyler's instruction. He interrupts Noah's reflexive attack on his apprentice and interprets it as the reaction of someone conditioned by combat.",
+            "id": "magus-silvertide",
+            "name": "Magus Silvertide",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Moxie's noble student, equipped with family-provided runes and an education that extends beyond combat. Moxie initially allows Noah to observe her lessons only on the condition that he not interact with Emily.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Linwick family who threatens Isabel in the Arbitage library. He relies on runed clothing and a shield for protection, but Noah bypasses those defenses with a physical feint and breaks his nose.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A second man with Vermil's exact appearance, discovered standing beside Todd after mutilated monsters are found in the Scorched Acres. His identity and purpose are not yet known.",
+            "id": "duplicate-vermil",
+            "name": "Duplicate Vermil",
+            "reveal": {
+              "chapter": 34
+            }
+          },
+          {
+            "description": "Edward's rank-four professor and mentor. He waits at Arbitage with Edward after Noah's confrontation with the younger Linwick, prepared to pursue his student's grievance.",
+            "id": "allen",
+            "name": "Allen",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The apparent skinwalker who took the body Noah lost in the Scorched Acres and appeared as a duplicate Vermil. After explaining that the body was consumed and memorized, the creature asks Noah for a name and chooses Lee from his suggestion.",
+            "id": "lee",
+            "name": "Lee",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arbitage enforcer investigating the Hellreaver's death and the disappearance of its master rune. Neir questions Noah at the transport cannon but accepts Tim's assessment that a rank-one professor could not have killed the monster alone.",
+            "id": "neir",
+            "name": "Neir",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Vermil's elder brother and a Linwick investigator. He arrives on official family business, blocks outside listening, and demands to know why Vermil survived a task that was expected to end with his apparent death.",
+            "id": "brayden",
+            "name": "Brayden",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evergreen"
+            ],
+            "description": "A senior authority in Moxie's noble house who manifests through plant magic to receive a secret report. Magus Evergreen orders Moxie to exploit her new Linwick connection while continuing to keep Emily safe.",
+            "id": "magus-evergreen",
+            "name": "Magus Evergreen",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Arbalest Empire soldier encountered during an active root-fiend hunt. He fights in heavily inscribed armor, flies, and channels powerful magic through a hammer while warning the nearby travelers about the monster.",
+            "id": "gavin",
+            "name": "Gavin",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gavin's soldier partner and a specialist in rune research and imbuement. She arrives by portal and explains that her work powers Gavin's armor and weapon, with designs that draw much of their energy from the environment.",
+            "id": "jess",
+            "name": "Jess",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CQPWYHML",
+            "type": "community"
+          }
+        ],
+        "work": "return-of-the-runebound-professor"
+      },
+      "recaps": {
+        "ending": "Noah reaches Linwick city as a rank-two mage with Sunder, the Hellreaver's Combustion master rune, and a perfected pyroclastic resonance rune. Lee remains beside him as a willing ally rather than a bound servant. Todd and Isabel have passed their first examination and developed into capable fighters, though Todd's unusual knowledge of body imbuement and Isabel's exhausting secret training remain unexplained. Brayden continues to protect the claim that Vermil could not have killed the Hellreaver and escorts Noah, Lee, Todd, Isabel, Allen, and Edward into Linwick territory. Moxie and Emily separate from the party before the border because of hostility between Moxie's house and the Linwicks; they plan to train and reunite with the others in two weeks. Noah intends to face Vermil and Brayden's father using a controlled-demon explanation for his changed identity. The poisoner, Father's exact plan, the intended outcome of Vermil's summoning, and the possible escape of a stronger demon all remain unresolved.",
+        "in_short": "After dying on Earth, teacher Noah Vines awakens in the poisoned body of the disreputable Magus Vermil and discovers that the master rune Sunder binds his resurrection to a gourd. At Arbitage, he uses Vermil's identity to learn magic while genuinely training neglected students Todd and Isabel. An apparent skinwalker named Lee becomes his ally and is later revealed as a lesser demon released by Vermil's failed summoning. Noah kills the Hellreaver, inherits its Combustion rune, reaches rank two, and uses Sunder to perfect a pyroclastic resonance rune. The kill brings an Arbitage investigation, while Vermil's brother Brayden reveals that their father expected a demon-related assignment to alter Vermil's fate. Noah travels toward Linwick territory with his students, Lee, Brayden, Allen, and Edward. Moxie and Emily remain outside the territory to train. The book ends at the gates of Linwick city, where Noah intends to confront Vermil's father and uncover the unfinished summoning plan.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Earth teacher Noah Vines dies and is selected for reincarnation by Renewal, but a many-voiced black entity attacks during the process. Noah retains his memories and awakens in the recently dead body of Magus Vermil, who appears to have been poisoned by a supposed healing potion. After a monster kills him in the Scorched Acres, Noah repeatedly reforms beside Vermil's gourd. He confirms that the vessel anchors his return and learns that killing monsters restores energy. Rescuers take him to Arbitage, where he claims memory loss and assumes Vermil's identity. Vermil was a protected but disreputable rank-one professor who rarely taught and mistreated students. Noah chooses teaching as both cover and a route to understanding magic. His only students, Todd and Isabel, initially expect the old arrangement of neglect and corruption, but respond to Noah's first-principles lesson. They explain rune slots and advancement. Examining Vermil's soul, Noah finds seven ordinary runes and an anomalous eighth rune called Sunder, apparently connected to the force that disrupted his reincarnation.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah learns that monster kills charge individual runes and begins rebuilding Vermil's weak set around wind, ash, and vibration. Moxie, a hostile magus who knew Vermil, gives him basic rune information after a skinwalker incident leaves Noah with leverage over her. Todd and Isabel reveal that Vermil normally took payment to falsify their examination, which requires each student to kill a slasher. Noah instead offers a month of real training. Their fire and sword abilities are promising, but both rely on slow, costly shields and initially freeze against live monsters. Noah studies monster patterns through dangerous hunts and repeated deaths, discovering that every death leaves accumulating damage in his mind or soul. His demonstrations help the students understand that slashers can be predicted, and both begin defeating smaller monsters without shields. During a later training trip, a rock-throwing Chucker gravely wounds Noah. Under pressure, he discovers that ash magic can shape the burned surroundings into lethal spikes. He kills the monster, dies, and returns to his gourd, only to find that the body he left behind has vanished.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah reunites with Todd and Isabel and continues preparing them for the exam while investigating the cost of his resurrection. Damage from repeated deaths causes hallucinations and a reflexive attack on Tyler, but the condition recedes as Noah avoids dying and his soul heals. He secretly shares Vermil's greater-rune book with his students, allowing Todd to copy a greater fire rune and Isabel a greater stone rune. They replace weaker runes and learn to kill slashers as a coordinated team. Noah buys a cheap flying sword, develops vibration magic, and hunts stronger monsters to build energy and income. Moxie's lessons show him how much access noble students receive compared with Todd and Isabel. During a large vibration test in the Scorched Acres, Noah uproots trees and empties his vibration rune. He then discovers a huge burning ape within a contained ring of fire. Sunder reacts to it, identifying the creature as the Hellreaver. When it opens its eyes, Noah recognizes the same gaze he saw inside the damaged region of his mind. He is trapped inside the ring with much of his equipment outside and his strongest tested rune depleted.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Hellreaver kills Noah, but he delays his return long enough to memorize its location. Back at Arbitage, Noah finds Edward threatening Isabel and breaks the Linwick student's nose. Tim warns that someone may be tracking Noah's regular travel pattern. While Todd and Isabel approach exam readiness, the missing corpse reappears as a second Vermil standing beside Todd. The duplicate is an apparent skinwalker that knows Noah returns from death. Noah protects his secret by calling it a clone, then accepts a reciprocal rune oath that prevents the creature from exposing his revivals or attacking unprovoked humans. Edward's mentor, Allen, responds to the library incident by arranging an exam contest between Edward and Isabel, with a greater rune at stake. The apparent skinwalker takes the name Lee and agrees to watch for sabotage. During the exam, Todd passes by killing a slasher. Allen delays Isabel, and Edward attacks her while she engages another monster, but Lee secretly moves her to safety. Isabel passes and gains more kills than Edward. Allen honors the wager, allowing her to take a rune page from his grimoire. Both Todd and Isabel officially pass.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moxie concludes that Noah is not the original Vermil and learns that the body's former owner was poisoned, though Noah keeps Sunder and his full history secret. She agrees to exchange information and let Emily join Noah's expanded class. Noah attacks the Hellreaver again and dies, then learns from Lee that master runes are unique powers with inverse passive effects. He identifies Sunder as the source of the binding that returns him to the gourd. Lee enters Arbitage as an unofficial physical-combat instructor and demonstrates exceptional speed, flexibility, and body imbuement. Moxie accepts the arrangement, and the class begins preparing for a later three-day survival examination. Seeking stronger wind runes, Noah travels to Windscorned Plateau with rune-collecting paper. The local woolly monsters resist his wind and vibration attacks. Noah calls a small amount of Sunder for the first time, bisecting one creature but suffering severe internal damage and another death. After further training with Lee, he returns to the plateau and successfully captures a greater wind rune. He now has the resource needed to upgrade his magic and renew his attempt to kill the Hellreaver.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah converts his remaining weak wind runes into greater ones and returns to the Scorched Acres. The Hellreaver proves able to burn away ash and remove the air, preventing both breathing and wind magic. Lee follows and challenges Noah's willingness to treat his deaths as expendable. After several failed attacks, Noah prepares Sunder before entering the fight, uses ash to remain mobile without air, and reaches the monster despite another mental assault. Sunder decapitates the Hellreaver. Its falling body kills Noah, while the victory fills his runes enough for rank two and triggers a beacon. Lee removes Noah's nameplate before investigators arrive. Arbitage concludes that a group killed the monster and stole its master rune, and enforcer Neir orders Noah not to leave the academy, although Tim convinces him that rank-one Vermil could not be responsible. Noah discovers that he inherited the Hellreaver's fire-producing master rune and its air-stilling passive. Brayden then arrives as Vermil's elder brother and asks why Vermil survived a family task. Noah privately admits the Hellreaver kill to Moxie under a narrow oath, while the hidden Linwick assignment becomes the next immediate danger.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moxie supplies a Linwick family reference and promises to care for Todd and Isabel if Noah cannot continue. Noah uses Lee and alcohol to question Brayden without remaining impaired, learning that their father tied Vermil's task to a long-planned summoning and an election meant to elevate their family branch. The intended result of Vermil's apparent death remains unclear. Lee then reveals that she is a rank-three lesser demon, not a skinwalker. Vermil's flawed summoning bound arrivals to his will and trapped them in the Scorched Acres, while Noah's command accidentally freed her. She stayed from loyalty and believes the stronger demon Vermil intended to summon may also have escaped. Noah decides to approach the Linwicks while posing as a demon contained in Vermil's body. Todd and Isabel learn about the Hellreaver and the possible demon threat, then consider joining the journey voluntarily. Preparing for the trip, Noah combines two wind, two ash, and three vibration runes. The result is an imperfect rank-two pyroclastic resonance rune that controls sound, heat, smoke, and air-related effects. He has finally advanced, but plans to use Sunder to improve the combination.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah confirms that Sunder can split a completed rune combination back into its seven components without destroying them. By storing runes in his grimoire, he gains a unique way to test and revise combinations. Moxie discovers Lee's demonic nature and tries to have her killed, forcing Noah to defeat and restrain Moxie without lethal force. After speaking privately with Lee, Moxie accepts that Lee's conduct contradicts the danger she expected and apologizes. Lee promises not to harm the students, and the two agree to rebuild trust. Todd and Isabel choose to accompany Noah toward Linwick territory, while Moxie and Emily join for the part of the route they can safely travel. Noah deceives Brayden into believing the Hellreaver is contained within him and asks to meet their father. Allen and Edward unexpectedly join the party, preserving the hostility created by the exam dispute. During the overland journey, Lee begins teaching gradual body imbuement. Moxie secretly reports to Magus Evergreen, a senior authority in her house. Evergreen orders her to exploit the Linwick connection and reminds her that protecting Emily and serving the house take priority over teaching or personal loyalty.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The traveling party continues training while crossing monster territory. Noah studies local snufflers, blind burrowers that track movement through the ground, and uses them as supervised opponents. Todd displays effective but painful fire-based body imbuement, Emily defeats one with an ice and water bow, and Isabel develops reinforced stone armor and weapons while secretly practicing alone. Lee covertly protects Isabel from a more dangerous aerial monster. The group then encounters Gavin, an Arbalest Empire soldier fighting a root fiend with heavily imbued equipment. His partner Jess arrives by portal and explains that her environmental-energy imbuements power much of his gear. When two more root fiends awaken, Gavin and Jess take one while Noah's party holds the other. Brayden shields the students from underground roots, Allen restrains the creature with ice, and Moxie binds it with vines. Noah fills its body with ash and smoke, then uses the Hellreaver's Combustion rune to destroy it from within. Gavin and Jess kill the other fiend. They acknowledge the danger their operation caused, offer Noah possible future help, and depart as the party resumes its journey.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a village stop, Moxie explains that professors are mentors and researchers rather than merely combat instructors. She also describes rank-four domains and the longer lives available at higher ranks. Noah realizes that Sunder might eventually help both Moxie and Lee overcome dangerous advancement barriers, but keeps that possibility secret until the Linwick confrontation is resolved. He learns how noble control and counterfeit sales restrict access to reliable runes, and how badly unbalanced combinations can damage a mage's body. Noah begins imbuing pyroclastic resonance into his lungs and places Combustion into his soul, developing controlled fire-breath, inert air near his skin, and explosive attacks delivered through smoke. Todd's unexpectedly fluent advice about body imbuement makes Noah suspect the student has concealed part of his experience. Before the group crosses the Deadlands, Noah uses Sunder to dismantle his partly filled rank-two rune while preserving its energy. He rebuilds pyroclastic resonance from three vibration, three wind, and one ash rune. The redesigned combination is perfect, expands his soul, and leaves him with a stronger foundation for later magic.",
+            "through": {
+              "chapter": 89
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party enters the Deadlands, where a pale worm drags Brayden underground. Moxie and Isabel defend the group while Todd's fire and Allen's ice prove ineffective against it. Brayden kills the creature from inside by striking its three hearts, and everyone survives. After leaving the Deadlands, Noah completes a cleaner pyroclastic resonance imbuement on his lungs, improving its coordination with Combustion. Isabel grows increasingly exhausted and repeatedly disappears from her tent at night, which Noah suspects is secret training. At the edge of Linwick territory, Moxie and Emily separate from the others because Moxie's house is hostile to the Linwicks. They will train for the survival exam and meet the party again in two weeks. Brayden leads Noah, Lee, Todd, Isabel, Allen, and Edward to the walled Linwick city. Noah arrives as a rank-two mage with Sunder, Combustion, and a perfected pyroclastic resonance rune. He intends to confront Vermil and Brayden's father using a controlled-demon cover, secure Vermil's standing, and uncover the unfinished summoning plan. The poisoner, the stronger escaped demon, and Father's exact purpose remain unresolved.",
+            "through": {
+              "chapter": 91
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CQPWYHML",
+            "type": "community"
+          }
+        ],
+        "work": "return-of-the-runebound-professor"
+      }
+    },
+    "return-of-the-runebound-professor-2": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Vermil"
+            ],
+            "description": "An Arbitage professor traveling under Vermil's identity with his students as he enters unsettled Linwick territory. Noah is protective of his pupils and wary of the noble family's internal struggle.",
+            "id": "noah-vines",
+            "name": "Noah Vines",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Noah's close traveling companion, who accompanies him into Linwick territory with Todd and Isabel.",
+            "id": "lee",
+            "name": "Lee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Noah's students, traveling with him into Linwick territory. Todd trains alongside Isabel and faces the disadvantages imposed on students without noble backing.",
+            "id": "todd",
+            "name": "Todd",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Noah's students and Todd's close training partner. Isabel enters Linwick territory with Noah's group.",
+            "id": "isabel",
+            "name": "Isabel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vermil's elder brother and the group's Linwick escort. He brings Vermil before the family head.",
+            "id": "brayden",
+            "name": "Brayden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rank-five member of a Linwick side branch who has returned from a long excursion and gathered support to challenge the family head. His rise makes the estate politically unstable.",
+            "id": "dayton",
+            "name": "Dayton",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "Linwick branch head"
+            ],
+            "description": "The calculating head of Vermil and Brayden's Linwick branch. He seeks proof that a demon occupies Vermil's body and discusses terms for possible cooperation.",
+            "id": "father",
+            "name": "Father",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A fearful offshoot Linwick rune researcher ordered to answer Noah's questions about the family and its rivals.",
+            "id": "janice",
+            "name": "Janice",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arbitage magus who keeps Noah alive during his coma and safeguards his belongings while he recovers from grave injuries.",
+            "id": "moxie",
+            "name": "Moxie",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Moxie's noble student, training with Todd and Isabel while Noah recovers.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rank-three inquisitor who confronts Noah's group, claims a demon is among them, and confines them with anti-demon magic.",
+            "id": "johan",
+            "name": "Johan",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Johan's approaching rank-four inquisitor partner, whose work formed the containment dome around Noah's group.",
+            "id": "inaros",
+            "name": "Inaros",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A goddess associated with the waters of life. She notices a brief contact with her power after Noah's failed rune formation and turns her attention toward the unidentified mortal responsible.",
+            "id": "renewal",
+            "name": "Renewal",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rank-two operative of the Torrin main branch who confronts Moxie on family orders. Her authority over Moxie makes her arrival an immediate threat to Noah's recovering group.",
+            "id": "contessa",
+            "name": "Contessa",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An investigator assigned to the Hellreaver's unexplained death. Noah seeks Neir's permission before taking the students away from Arbitage for survival training.",
+            "id": "neir",
+            "name": "Neir",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Neir’s former teacher, a magus with a rune-engraved silver prosthetic leg who takes an interest in the unresolved Hellreaver investigation.",
+            "id": "silvertide",
+            "name": "Silvertide",
+            "reveal": {
+              "chapter": 48
+            }
+          },
+          {
+            "description": "A rank-three Arbitage professor who prepares James for dangerous survival work through severe practical training.",
+            "id": "revin",
+            "name": "Revin",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Revin's rank-one student, a light and wind user preparing for the survival exam. His stealth and ranged attacks are tested under his godfather's harsh instruction.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly advanced rank-seven mage who completes the Consuming Flame of the Bloodied Lord after nearly a century of work. Garina defeats him and orders him to leave the Arbalest Empire.",
+            "id": "alistair",
+            "name": "Alistair",
+            "reveal": {
+              "chapter": 73
+            }
+          },
+          {
+            "description": "A rank-seven enforcer who expels a newly advanced mage from the Arbalest Empire. She acts with overwhelming authority and asks about a person who cannot remain dead.",
+            "id": "garina",
+            "name": "Garina",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-haired woman presenting herself as a concealed Torrin main-branch student. She intercepts Contessa's search for Moxie and insists on taking charge of the pursuit.",
+            "id": "bria",
+            "name": "Bria",
+            "reveal": {
+              "chapter": 82
+            }
+          },
+          {
+            "aliases": [
+              "Evergreen"
+            ],
+            "description": "A formidable Torrin rival. Dayton fears her and believes she can call forth a demon.",
+            "id": "magus-evergreen",
+            "name": "Magus Evergreen",
+            "reveal": {
+              "chapter": 17
+            }
+          },
+          {
+            "description": "A guarded member of the Linwick main branch who has recently returned from secluded meditation. She is hostile toward Vermil and previously sent him a gift.",
+            "id": "karina",
+            "name": "Karina",
+            "reveal": {
+              "chapter": 74
+            }
+          },
+          {
+            "description": "The real Torrin participant whose appearance Karina previously borrowed.",
+            "id": "eline",
+            "name": "Eline",
+            "reveal": {
+              "chapter": 93
+            }
+          },
+          {
+            "description": "A Torrin main-branch assassin associated with Eline. Karina identifies him as a likely threat at the survival exam, where his attention may fall on Moxie.",
+            "id": "garrick",
+            "name": "Garrick",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Tenfort"
+            ],
+            "description": "The Arbitage magus who starts the final survival exam and dispatches student teams into Snowfield through a transport cannon.",
+            "id": "magus-tenfort",
+            "name": "Magus Tenfort",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A demon who emerges from Noah's soul, attacks Magus Evergreen, and claims that Noah's healing restored its fragmented soul.",
+            "id": "the-demon",
+            "name": "The Demon",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A rank-five demon who emerges from Noah's soul and claims the original Vermil summoned him. His name becomes known as Noah investigates the bond that prevents either of them from separating safely.",
+            "id": "azel",
+            "name": "Azel",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful representative of the Great Church of Repose who enters the survival-exam grounds in search of a large city where he can ask questions. He easily overcomes Tenfort's attempt to enforce neutrality.",
+            "id": "ferdinand",
+            "name": "Ferdinand",
+            "reveal": {
+              "chapter": 108
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D5JST64Q",
+            "type": "community"
+          }
+        ],
+        "work": "return-of-the-runebound-professor-2"
+      },
+      "recaps": {
+        "ending": "Todd, Isabel, Emily, and James pass the Snowfield survival exam after revealing that they reached rank two during their training. Eline fails, but Revin spares her and makes her his shadow-bound trainee, with freedom possible only after she grows strong enough. The real Magus Evergreen accepts Emily's result and gives Moxie two months away from tutoring. Noah, Moxie, and Lee plan to spend that break together, while the students separate for further training. Noah is now rank three and can use Fragment of Renewal to repair some of Lee's soul damage, but Azel remains contained inside his soul. The unknown force behind the exam sabotage and the hijacked Evergreen replica is still active. Renewal is searching for Noah, the Church of Repose has entered the Empire, and the Linwick plot, Karina's obligations, and Todd and Isabel's family grievances all remain unresolved.",
+        "in_short": "Noah enters Linwick territory under Vermil's identity, deceives the family head into believing a demon controls Vermil's body, and drives Dayton away while learning more about the destruction of Todd and Isabel's families. After surviving an arranged inquisitor attack, he returns to Arbitage and takes Todd, Isabel, and Emily through intensive wilderness training with Moxie and Lee. Noah reaches rank three, creates Fragment of Renewal, and begins healing Lee's damaged soul, but this draws Renewal's attention and restores Azel, a rank-five demon bound inside him. At the final survival exam, an Evergreen replica is exposed as the tool of an unknown saboteur. Todd, Isabel, Emily, and James reveal their rank-two advancement, take Eline's tokens, and pass. Revin makes the defeated Eline his bound trainee, while Moxie receives a two-month leave and joins Noah and Lee for the break.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Noah Vines awoke in the body of the dead magus Vermil and continued using Vermil's identity at Arbitage. As a professor, he took responsibility for Todd and Isabel, students disadvantaged by the academy's noble hierarchy. His unusual return from death and the rune Sunder let him dismantle and recombine runes in ways other mages could not. Lee became his close companion and co-operator, while Moxie emerged as a trusted fellow professor. Noah's conflicts at Arbitage included the death of a Hellreaver, an event that left official attention focused on Vermil. By the start of this volume, Noah's true identity, his repeated revivals, and Lee's nature all remain secrets that could endanger the group.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah enters the Linwick estate with Brayden, Lee, Todd, and Isabel while Dayton challenges the local family head. In private, Noah tells Father that Vermil died during a demon summoning and that a demon called Spider now uses his body. Lee copies Noah's form, and Noah allows Father to kill him before returning in a replacement body, making the multiple-body deception credible. Father grants limited rune information but continues testing the supposed demon with poison and surveillance. Todd and Isabel each receive an armor rune, then secretly watch Dayton because of harm he caused their families. Lee rescues them from Dayton's guard. Father subsequently commissions Spider to make Dayton flee or die without implicating the Linwick branch. Noah accepts, both to gain knowledge and to keep Father from destroying Dayton's entire household.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah intimidates Dayton through staged deaths, impossible returns, and Lee's public impersonation of him. Dayton concludes that an immortal demon serves Magus Evergreen and surrenders his grimoire before fleeing the estate. Father accepts the result while continuing to investigate Noah's weakness. From the stolen material, Noah uses Sunder to create Focal Quake and retains several valuable runes connected to Evergreen. Todd and Isabel then explain their shared history. Their allied noble families were destroyed after Isabel's father found a master rune and refused to surrender it. Their parents were killed, the surviving children lost the right to use their surnames, and the missing master rune was never recovered. Dayton was among those who pursued Isabel's father, confirming why both students want eventual revenge.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Father secretly arranges for inquisitors to kill Noah’s party on the road back to Arbitage. Johan traps Noah, Lee, Todd, and Isabel with anti-demon magic while Inaros intercepts Brayden. The students defend Noah and Lee, and the separated fights become deadly. Johan kills Noah, but Noah briefly pulls his soul back into his body and kills Johan before dying again. Brayden drives Inaros away, and Noah later regenerates from his gourd. Lee then explains that she is the source of Noah’s supposed duplicate bodies. Brayden, Todd, and Isabel learn enough of the truth to understand that the person they know is not the original Vermil and can revive after death. The group survives and returns toward Arbitage, but Father’s involvement in the attack cannot yet be proved, and the official inquiry into the Hellreaver remains another danger to Noah’s cover.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah spends weeks unconscious after the inquisitor attack while Moxie guards him and trains the students with Lee. A failed rune-forming attempt unexpectedly restores Noah's damaged soul and draws the attention of immense powers searching for mortals touched by the divine. Soon after waking, Noah confronts Contessa, a Torrin operative controlling Moxie. He binds Contessa to secrecy, forces her to report through Moxie, and tells Moxie that Vermil is dead and Noah occupies his body. He also reveals that Sunder lets him break down and rebuild runes. Moxie accepts him as a friend despite having once reported on Vermil. Noah promises that, after growing stronger, he can repair flawed runes belonging to Moxie and Lee. The professors then plan an off-campus program to prepare Todd, Isabel, and Emily for the survival exam, subject to Neir granting Noah permission to leave Arbitage.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Neir permits the group to leave Arbitage for a month. Noah, Moxie, and Lee take Todd, Isabel, and Emily to the Vibrant Woods, where their first battles expose poor teamwork. Todd and Isabel crowd Emily out of their plans, while Emily's slow but powerful ice attacks need protection and clear firing space. The instructors stage a dangerous gorilla encounter that forces all three students to cooperate: Isabel absorbs its lightning, Todd carries Emily to safety, and Emily kills it with a charged shot. The students acknowledge one another's strengths and begin training as a unit. Moxie then pushes them through exhaustion and energy-control drills before beginning an overnight exercise in which the depleted students must evade her until morning.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The students complete Moxie's pursuit exercise and continue developing better coordination. Revin and his student James are also training in the Vibrant Woods, and Revin becomes interested in Noah's group. A highly intelligent shadow-moving monster begins stalking the travelers and threatens the students to force a confrontation. Noah draws it away and, with Lee waiting in concealment, kills it. Sunder releases powerful runes from the corpse. Lee tears out two of her own runes to absorb a pair of Umbral Body runes, causing severe soul damage and leaving her unconscious. The group carries her out of the woods and redirects its journey toward the Red Barrens. Ordinary medicine cannot restore her soul, but Noah tells Moxie that his earlier failed rune formation healed similar damage. He begins considering how to reproduce that effect safely for Lee.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lee wakes but remains weakened, while Noah searches for the final components of a coherent rank-three path. In the Red Barrens he studies the local monsters and chooses a natural-disaster theme rather than advancing through a wasteful shortcut. Garina separately demonstrates why rank-seven mages are absent from the Arbalest Empire: she effortlessly defeats a newly advanced rank seven and orders him to leave. She also asks about someone who cannot remain dead. Noah uses runes taken from Dayton's grimoire to create Deafening Thunderstorm and rebuild his water and fire components. With seven rank-two runes prepared, he begins the student-led desert phase. Todd shows exceptional imbuement knowledge by helping the others adapt to sand, but his damaged neck continues to limit his combat role.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Revin deliberately draws dangerous monsters to the students' camp and throws James into the defense, forcing Noah, Moxie, and the four students into separate battles. Everyone survives, but Revin's interest in Noah and the survival exam remains unexplained. Todd develops a brief workaround for his neck injury by maintaining several body imbuements at once. In Grey Barrow, Noah fills his runes and combines them into Natural Disaster, reaching rank three. Contessa arrives with orders showing that Magus Evergreen intends to test Moxie's loyalty through Emily's performance. A supposed Torrin student named Bria attacks Noah and escapes. The attacker is then revealed as Karina, a rank-three Linwick and Vermil's arranged fiancée. Her father refuses to release her from the marriage and keeps her constrained by a rune oath.",
+            "through": {
+              "chapter": 86
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noah tests Natural Disaster, then deliberately dies to recreate the force that once healed his soul. He forms Fragment of Renewal despite resistance from an immense presence. Renewal recognizes that a mortal has taken part of her power and begins searching for him discreetly. The rune successfully starts repairing Lee's soul, though its capacity is limited and its existence must remain secret. Back at Arbitage, Karina reveals herself and seeks Noah's help ending her engagement. She warns that the real Eline and her rank-four trainer Garrick may threaten the students and Moxie. In exchange for possible help with the marriage and the students' blacklist, Karina accepts a temporary protective oath. James joins Todd, Isabel, and Emily's exam team. Revin diverts Garrick's demon detection toward his transplanted demon eye, then wagers that James will pass while Eline fails. Tenfort sends the teams into Snowfield for the final survival exam.",
+            "through": {
+              "chapter": 97
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Snowfield exam requires each student to survive seven days and return with a token from a marked monster. While the students fight repeated attacks, Noah challenges the woman appearing as Magus Evergreen over her treatment of Moxie. Noah's anger releases a rank-five demon from his soul. The demon claims the original Vermil summoned him and that Noah's healing restored his fragmented soul. Noah discovers that their souls share a fold that cannot be severed without destroying both of them, and forces the demon back inside by threatening mutual ruin. The apparent Evergreen proves powerless without her staff and is exposed as a replica rather than the real mage. In Noah's mind, the demon gives his name as Azel and admits to nudging Noah's emotions. Azel identifies the replica as a powerful formation and recommends destroying its staff to erase what it has learned.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eline steals supplies and tokens from other teams while Isabel's group withstands a prolonged siege without encountering any marked monsters. Noah and Moxie conclude that someone is engineering their failure. Revin deciphers the Evergreen replica's staff and learns that an unknown party hijacked the construct to sabotage Emily's team and distract the real Evergreen from events at Arbitage. The controller briefly speaks through the construct and proposes a meeting without explaining its purpose. Revin destroys and rebuilds the replica, removing its acquired memories, and the group restores the appearance that nothing happened. The saboteur's identity and larger objective remain unknown, while the students still lack the four tokens needed to pass.",
+            "through": {
+              "chapter": 107
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ferdinand of the Great Church of Repose invades the exam grounds and defeats Tenfort, prompting an early end to the test. Garina intervenes under imperial law and shadows Ferdinand, preventing open Church interference while leaving his true mission concealed. Before the students are recalled, Karina attacks Eline and Isabel's team joins the fight. Todd, Isabel, Emily, and James reveal that they reached rank two during their Grey Barrow training. They defeat Eline, take four of her stolen tokens, and all pass. The real Magus Evergreen accepts Emily's performance and grants Moxie two months of leave. Revin invokes his wager but spares Eline, binding her with a shadow chain and taking her as a trainee who may eventually earn freedom. Todd and Isabel plan independent training, Emily will train with James, and Noah, Moxie, and Lee will spend the break together. Azel remains contained inside Noah, while the exam sabotage, Renewal's search, the Church's interest, and the Linwick conflict remain open.",
+            "through": {
+              "chapter": 112
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D5JST64Q",
+            "type": "community"
+          }
+        ],
+        "work": "return-of-the-runebound-professor-2"
+      }
+    }
+  }
+}

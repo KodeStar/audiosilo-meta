@@ -277,8 +277,8 @@ func v2Catalog() *model.Catalog {
 // the bytes as release assets.
 func buildV1V2(t *testing.T) (v1Path string, v1 []byte, v2Path string, v2 []byte) {
 	t.Helper()
-	v1Path = buildFixtureDB(t, fixtureCatalog(), nil)
-	v2Path = buildFixtureDB(t, v2Catalog(), nil)
+	v1Path = buildFixtureDB(t, fixtureCatalog())
+	v2Path = buildFixtureDB(t, v2Catalog())
 	return v1Path, readDB(t, v1Path), v2Path, readDB(t, v2Path)
 }
 
@@ -340,7 +340,7 @@ func setupR1(t *testing.T, v1Path string, v1 []byte) (*Server, *fakeGitHub) {
 }
 
 func TestRefreshETagAndSwap(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newPollServer(t, seed, fake)
 
@@ -368,7 +368,7 @@ func TestRefreshETagAndSwap(t *testing.T) {
 }
 
 func TestRefreshRejectsCorruptDownload(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	assets := makeAssets(t, readDB(t, seed), "", nil)
 	// A checksum that does not match the gz payload.
 	assets[dataAssetName+".sha256"] = []byte("deadbeef  " + dataAssetName + "\n")
@@ -638,7 +638,7 @@ func TestRefreshTieBreaksLikeJq(t *testing.T) {
 // list holding only code releases yields a descriptive error and the serving
 // snapshot is untouched.
 func TestRefreshErrorsWithoutDataRelease(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	srv, fake := setupR1(t, seed, readDB(t, seed))
 
 	fake.setReleases(codeOnlyRel)

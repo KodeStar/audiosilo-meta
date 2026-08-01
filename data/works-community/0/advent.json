@@ -1,0 +1,1660 @@
+{
+  "entries": {
+    "advent": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Coast Guard intelligence specialist isolated deep in a Washington, DC bunker when Advent begins. Aevis guides him through the new system, which grants him an unusually large selection of Xatherite.",
+            "id": "drew",
+            "name": "Drew",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Earth-3's tutorial artificial intelligence. Aevis explains Advent, the Human Protectorate, Xatherite, and the planet's new function as a dangerous training environment.",
+            "id": "aevis",
+            "name": "Aevis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large furred biped that strikes Drew in the bunker and withdraws before he can identify it. Its behavior appears intelligent or tactical.",
+            "id": "unidentified-furred-biped",
+            "name": "Unidentified furred biped",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Coast Guard petty officer sheltering with other survivors inside the bunker. Her abilities provide light and a summoned armored construct.",
+            "id": "katie",
+            "name": "Katie",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The full name of the Coast Guard petty officer traveling with Drew. As Sarah remains unconscious, Katie helps equip the party, carry their injured companion, and decide how to distribute the Xatherite won from Chakri.",
+            "id": "katie-sabin",
+            "name": "Katie Sabin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Coast Guard ensign who leads the bunker shelter group. She has exhausted much of her energy healing others.",
+            "id": "sarah-rothschild",
+            "name": "Sarah Rothschild",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor with red Xatherite who shelters with the bunker group. Before meeting Drew, he was the group's only person able to attack at range.",
+            "id": "mitch",
+            "name": "Mitch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An indigo-Xatherite survivor whose abilities include illusory attacks and a lesser earth elemental. He joins Drew's original bunker party as a ranged combatant and scout.",
+            "id": "juan",
+            "name": "Juan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge, furred, light-averse creature that breaks open Juan's tomb and leads the transformed Juan away. The survivors recognize him as Rob Omondi in an altered state.",
+            "id": "rob-omondi",
+            "name": "Rob Omondi",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of an orc force attacking Drew's group in the bunker. Chakri calls Drew a Death Weaver, claims his clans oppose such mages, and demands that Katie and Sarah be surrendered.",
+            "id": "chakri",
+            "name": "Chakri",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An invisible survivor who escaped the DIA captors. He seeks help freeing his captive wife and offers Drew shelter and intelligence as a mana storm approaches.",
+            "id": "daryl",
+            "name": "Daryl",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daryl's spouse, held with hundreds of other people inside the DIA complex. Her captivity is the central reason he remains near the enemy position and works toward a rescue.",
+            "id": "daryls-wife",
+            "name": "Daryl's wife",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chief petty officer among the first prisoners freed from the DIA captors. The conditions governing this officer’s healing ability are not yet clear.",
+            "id": "chief-petty-officer",
+            "name": "Chief petty officer",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Navy chief among the first prisoners freed from the DIA captors. He becomes their acting leader and has a healing ability that works through an embrace, along with several strengthening abilities.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The full name of the Coast Guard intelligence specialist leading the effort to free the DIA captives.",
+            "id": "drew-michalik",
+            "name": "Drew Michalik",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A 17-year-old former captive who can cause headaches and temporary deafness. She joins the party traveling to find Katie and Sarah after the first successful prisoner rescue.",
+            "id": "jolie",
+            "name": "Jolie",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A 19-year-old Army private freed from captivity. His abilities create stationary illusions and duplicate images, making him useful to the developing rescue plan.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police officer scouting from the large survivor community at Nats Park. He carries several firearms and volunteers to help free the DIA prisoners.",
+            "id": "jp",
+            "name": "JP",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A police officer and Nats Park scout equipped for close combat. He creates protective illusions and wears defensive armor.",
+            "id": "robbi",
+            "name": "Robbi",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Olympus escort aligned with the Order of the Scale. Themis receives Drew during his sleep-sink visit and enforces limits on what may be disclosed to someone from a newly Advented world.",
+            "id": "themis",
+            "name": "Themis",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ares"
+            ],
+            "description": "The admiral of Olympus and an Order of the Dragon assault mage. He identifies the strategic importance of the Washington, DC primary nexus and offers Drew a position as a page, with possible future training.",
+            "id": "cassius-felix-ares",
+            "name": "Cassius Felix Ares",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed defender in the survivors’ field position who intervenes when a troll threatens Drew and is killed during the assault.",
+            "id": "unnamed-defender",
+            "name": "Unnamed defender",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A defender in the survivors' field position who dies protecting Drew during the massed assault.",
+            "id": "frank",
+            "name": "Frank",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An inner presence connected to Drew's cold rage. It identifies itself as a part of him awakened through Xatherite, although the outside powers who contact him say it has emerged dangerously early.",
+            "id": "retribution",
+            "name": "Retribution",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A firearms combatant with red Xatherite whose shots can leave a trail of fire. She joins Drew, Daryl, Sarah, and Robbi on the rescue mission through the tunnel.",
+            "id": "red-xatherite-shooter",
+            "name": "Red-Xatherite shooter",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defender whose Penetrating Shot is designed to pass through armor and other protections. He remains with Katie, JP, and Trey when Drew forms the tunnel rescue team.",
+            "id": "brady-cook",
+            "name": "Brady Cook",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the larger survivor group who sends Drew a warning through Daryl. She reports that Robbi is secretly communicating with someone and discussing a movement toward a bridge, but cannot establish his purpose.",
+            "id": "kara",
+            "name": "Kara",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A captive teenager with red Xatherite. When he and two companions ask to join the pit rescue, Drew instead appoints him to lead the young defenders holding the tunnel entrance.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Daryl's wife. She dies from injuries inflicted by the trolls despite Sarah Rothschild's efforts to heal her.",
+            "id": "angela",
+            "name": "Angela",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified robed figure seen presiding over a live human sacrifice at the DIA complex.",
+            "id": "robed-ritual-leader",
+            "name": "Robed ritual leader",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The shaman who earlier presided over a human sacrifice at the DIA complex. The figure reappears during the attack on Katie's supply party and strikes Drew from range.",
+            "id": "troll-shaman",
+            "name": "Troll shaman",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Major Hoffacker"
+            ],
+            "description": "An Air Force major among the people rescued from the excavation complex. Her rank places her among the senior officers available to organize the exhausted survivors.",
+            "id": "tracy-hoffacker",
+            "name": "Tracy Hoffacker",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Snyder"
+            ],
+            "description": "A naval captain rescued from the excavation complex. He assumes senior authority, establishes a military command structure, and orders preparations for the survivors to leave at first light.",
+            "id": "matt-snyder",
+            "name": "Matt Snyder",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A PFC who accompanies Drew to inspect the buried structure. His orange Xatherite can turn his skin to stone, although using it imposes severe fatigue.",
+            "id": "dax-kyle",
+            "name": "Dax Kyle",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An airman who accompanies Drew to the buried node. His violet Xatherite grants pterokinesis, which he uses to clear the gate after having covertly slowed the captors' excavation work.",
+            "id": "adam-jones",
+            "name": "Adam Jones",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An airman who joins Drew's inspection of the buried node. His abilities include magical throwing daggers and protection against incoming projectiles.",
+            "id": "glenn-wilson",
+            "name": "Glenn Wilson",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An alternate iteration of Drew based in Colorado Springs. Contacted through Aevis, he serves as a superior officer and advises Drew Michalik III about node ownership, development, and the future danger posed by world bosses.",
+            "id": "drew-michalik-i",
+            "name": "Drew Michalik I",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The identity Drew learns after Aevis connects him with another iteration of himself. He is the third known Drew Michalik and the newly recognized owner of the DIA node.",
+            "id": "drew-michalik-iii",
+            "name": "Drew Michalik III",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B07MB6K9GX",
+            "type": "community"
+          }
+        ],
+        "work": "advent"
+      },
+      "recaps": {
+        "ending": "The pit rescue leaves 228 survivors together, including many children, but their food and water are almost gone. Daryl's wife dies from her injuries and he buries her near the node before returning to scouting. Drew claims the buried DIA node, keeps it configured as a Dungeon Training Center, and begins converting it to produce Korath. The claim raises him to level two and sub-lieutenant, while making him responsible for defending a strategic site that future world bosses may seize. Sarah directs security, Katie remains among the defenders, and Major Hoffacker and Captain Snyder join the evacuation leadership. As corpses throughout the tunnels become wereghouls, a more aware wereghast appears to coordinate them. The survivors choose an immediate nighttime withdrawal toward the soccer-field camp and eventual stadium reunion, with Drew covering the rear. The node's defense, Robbi's secret contact and bridge plan, Drew's hazardous Retribution, and the aims of Ares and the wider orders remain unresolved.",
+        "in_short": "When Advent transforms Earth-3, Coast Guard specialist Drew escapes an underground bunker with Katie Sabin and Sarah Rothschild after losing their first companions to hostile creatures. He meets Daryl, frees an initial group of captives from the Ashala at DIA, and builds a larger rescue force. A sleep-sink encounter with Cassius Felix Ares identifies Drew as an unusually early assault mage and directs him toward the primary nexus, while secretly arming him with Aeon. After a troll assault triggers the dangerous inner Retribution, Drew leads a tunnel operation that frees hundreds more prisoners, though Daryl's wife dies. Drew kills the troll shaman and claims the buried DIA node, learning that he is Drew Michalik III. He retains the node as a Dungeon Training Center and gains new rank and gravity abilities. The book closes with 228 survivors evacuating the tunnels at night as wereghouls gather behind them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Advent disables Earth's technology and turns Earth-3 into a monster-filled training environment under the Human Protectorate. Trapped five floors underground, Coast Guard intelligence specialist Drew receives an unusually extensive tutorial from Aevis and slots eight Xatherite abilities. He fights through giant spiders, finds a rare teleportation crystal, and collapses from his injuries at another watch floor.\n\nFour survivors save him: Katie, Sarah Rothschild, Mitch, and Juan. Their abilities complement one another, with Sarah providing healing and sensing, Mitch serving as the close-range defender, Juan using illusions and an earth elemental, and Katie supplying light, barriers, and an armored construct. Drew's exceptional number of nodes and ability to cast without spoken words distinguish him from the group. Together they recover his supplies and destroy a spider egg nest. With food secured but no relief likely to arrive, they decide to abandon the shelter and seek other survivors.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The group's escape is interrupted by an organized ambush from green-skinned humanoids who specifically call for red mages to be killed. Juan dies during the attack, and the survivors later see his body rise in a furred, light-averse form and depart with the transformed Rob Omondi. The group concludes that some human corpses can become wereghouls.\n\nOn a lower floor, Chakri leads another force against them, identifies Drew as a Death Weaver, and demands Katie and Sarah. Drew slots his teleportation ability during the battle and draws Chakri's pursuers away. He defeats Chakri, but returns to find Mitch dead and Sarah unconscious with a broken leg. Chakri's death raises Drew to level one, promotes him within the Protectorate, inducts him into the Order of the Dragon, and awards additional Xatherite. Drew and Katie burn Mitch's body to prevent transformation, then face the task of carrying Sarah out of the bunker.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew and Katie equip themselves from the defeated attackers, splint Sarah's leg, and carry her into daylight. They establish a temporary shelter in a base exchange, but Sarah remains unconscious. While searching alone for transport, Drew encounters the transformed Juan, kills him when he attacks, and burns his remains.\n\nDrew continues toward Joint Base Anacostia-Bolling and reaches the DIA complex. From a rooftop he witnesses robed figures sacrificing living prisoners. He attacks the ritual with storm magic and discovers that the captors are nonhuman, green-blooded beings he tentatively considers trolls. The sight of the burned victims also revives memories of an earlier fire trauma. Daryl, an invisible survivor who escaped capture, finds Drew as a mana storm approaches. He explains that the captors emerged from DIA, rounded up hundreds of people, and conduct repeated sacrifices before storms. Daryl's wife remains among the prisoners. Drew takes shelter with him and gains an ally for a rescue, though Katie and Sarah remain behind at the exchange.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew and Daryl ambush a guarded food detail and free nineteen prisoners. Chief Bill heals Drew and helps organize the liberated group, while Jolie and Trey contribute abilities useful to a larger rescue. Drew returns to the exchange with Bill and Jolie, reunites with Katie, and finds Sarah still alive behind an illusion-protected wall. Bill restores Sarah, and police scouts JP and Robbi offer support from a survivor community at Nats Park.\n\nDuring Drew's first real sleep since Advent, Themis takes him through a sleep sink to Olympus. Admiral Cassius Felix Ares identifies him as an exceptionally early assault mage and says the Washington, DC primary nexus must be claimed. Ares offers him a place as a page and gives him a mental defense plus Aeon, a singular Xatherite whose name Drew is bound by a lethal contract not to reveal. Katie and Sarah reject Ares's claim that Drew should value his strategic survival above individuals. Drew remains committed to freeing the DIA captives as the expanded group prepares armor, provisions, and an extraction plan.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rescue group plans to open an exterior escape route from DIA and move the captives toward Nats Park, but a large Ashala attack forces a change. The survivors leave the commissary and form a defensive position in the open. Katie transfers Metallurgy to Drew for safekeeping, and the two acknowledge their romantic commitment before the expected battle. Sarah organizes the formation, while Daryl scouts invisibly through a summoned bird's vision.\n\nDuring the assault, a ranged caster injures Drew and Bill heals him. An unnamed defender dies while protecting Drew, triggering an unfamiliar cold rage. Drew kills more than fifty attackers and collapses from mana exhaustion. While he is unconscious, Ares and Themis warn that the power activated far too early, may destroy his humanity if repeatedly used, and has exposed Earth to outside attention. An inner presence identifies itself as Retribution, a part of Drew awakened through Xatherite. Drew wakes nearly a day later to find that the survivors held their position and gained several new abilities, but his new power remains involuntary and dangerous.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daryl discovers a tunnel leading toward the captives. Drew enters it with Daryl, Sarah, Robbi, and a firearms combatant while Katie, JP, Trey, and Brady Cook defend the camp. The rescue team breaches the far door, kills the guards, and frees dozens of prisoners from cages. A warning from Kara alleges that Robbi has a secret contact and intends to move people toward a bridge without a senator's knowledge, but neither his contact nor his purpose is established.\n\nDaryl locates hundreds more prisoners forced to excavate a buried blue-metal structure. Three captive teenagers help hold the tunnel entrance while the main team attacks the pit. During a brief parley, the troll shaman claims the system displaced its species and drove its people into conflict, promising freedom in exchange for human sacrifices. The battle saves only part of the pit population. Drew kills the shaman, but Sarah cannot heal Daryl's wife, who dies from catastrophic injuries. The living regroup in the entrance room. Major Tracy Hoffacker and Captain Matt Snyder emerge as senior officers, Sarah takes charge of combat organization, and shortages make a rapid rendezvous with the stadium survivors essential. Drew prepares to inspect the still-unclaimed node despite Snyder's objections.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew enters the buried structure with Dax Kyle, Adam Jones, and Glenn Wilson. Aevis identifies it as Primary Nexus Subnode 8-3 and transfers ownership to Drew, who renames it the DIA node. The facility is a fourth-tier Dungeon Training Center, but Aevis lacks the records needed to price its upgrades. Through a mana-funded consultation, Drew meets Drew Michalik I and learns that he himself is Drew Michalik III. His alternate counterpart advises him to retain the training center, develop food and fighters, and prepare for world bosses that may seize nodes.\n\nDrew keeps the current designation, purchases remote monitoring, and selects Korath as the future base creature. Claiming the node raises him to level two and sub-lieutenant and completes a constellation that grants new gravity abilities. Before the survivors can depart normally, corpses in the pit begin rising as wereghouls. Drew also sees a more aware type, which he calls a wereghast, apparently directing the others. Daryl buries his wife, accepts Major Mental Blow from Drew, and returns to scouting. With 228 survivors, little food or water, and undead gathering in the tunnels, the group chooses an immediate nighttime evacuation. Sarah directs security, the rescued officers accompany the column, and Drew takes the rear guard as they leave for the soccer-field camp.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B07MB6K9GX",
+            "type": "community"
+          }
+        ],
+        "work": "advent"
+      }
+    },
+    "advent-of-the-density-god": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Madra-linked Challenger who awakens alone in a Tier 4 trial with dangerously high density already packed into his body. Separated from his allies and uncertain whether they survived the war against the Graymin, he enters the arena determined to survive without absorbing any more.",
+            "id": "jiran",
+            "name": "Jiran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An unidentified feral being on the arena mountain that can move with extreme speed and rebuild its furred humanoid body from bones and smoke. It appears sentient and is connected to the vast column of mana rising from the peak.",
+            "id": "mountain-anomaly",
+            "name": "Mountain anomaly",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Jiran's partner and an allied commander helping to hold a damaged defensive line during his disappearance. She remains certain that he is alive and listens when Olive admits her feelings for him.",
+            "id": "mayalyn",
+            "name": "Mayalyn",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Imperial princess"
+            ],
+            "description": "An Imperial diviner and political leader helping defend the alliance while Jiran is missing. She confides in Mayalyn that she has romantic feelings for Jiran, though he has not yet answered them.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Another Tier 4 Challenger from Madra. The arena scoreboard places him first, ahead of Jiran, making him the only other contestant shown with a positive result.",
+            "id": "kane",
+            "name": "Kane",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful telepathic entity who sponsors Jiran and contacts him after his Tier 4 trial. She judges him unworthy, and her mental presence overwhelms his defenses.",
+            "id": "jirans-sponsor",
+            "name": "Jiran's sponsor",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lost host"
+            ],
+            "description": "A dormant Lost host assigned to guard a sealed teleportation temple. A Found parasite controls his body and, speaking through it, claims that hosts willingly unite with the Found upon reaching adulthood.",
+            "id": "jed",
+            "name": "Jed",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A crystal-bearing captive held by Jiran in the wasteland. He explains how the local body-grown crystals manipulate mana and describes Seekers as feared collectors of information whose secrets are dangerous to discuss.",
+            "id": "doric",
+            "name": "Doric",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Found Seeker"
+            ],
+            "description": "A Found operative sent aboard an experimental vessel to investigate the disturbance caused by Jiran in the wasteland.",
+            "id": "seeker-captain",
+            "name": "Seeker captain",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the captive Found hosts at the desert temple. She accepts Jiran's memory-altering Mana Venom treatment as a condition of survival.",
+            "id": "tori",
+            "name": "Tori",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Timberling scout who greets Jiran when he returns to the Valley of Melodies. She reports the allied retreat through his portals and helps establish that Olive was captured during the Church assault.",
+            "id": "knife",
+            "name": "Knife",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Instructor Lenton"
+            ],
+            "description": "An Imperial high Ranker and Jiran's mentor. During the battle with the Graymin, he exhausts his reserves and gravely injures himself using his Aspect of Balance to slow a devastating energy wave long enough to save the surrounding Rankers.",
+            "id": "lenton",
+            "name": "Lenton",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The public identity Jiran used among Imperial forces. When he takes command of the soldiers in the valley, he openly confirms that Mortimer is an alias and gives them his real name.",
+            "id": "mortimer",
+            "name": "Mortimer",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jiran’s cousin, a healer and combat-support specialist serving the allied force. Timberling leaders credit her with reviving wounded fighters.",
+            "id": "niya",
+            "name": "Niya",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jiran's friend and an ally concerned for Olive. He believes the Church is likely to keep her alive because of her political value, and he joins the group preparing to recover her.",
+            "id": "cameron",
+            "name": "Cameron",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Leader of the hostile Church faction"
+            ],
+            "description": "The senior Church leader holding Olive in Church custody. He seeks to control both her confinement and her public position, using political pressure and sealed formations while presenting her captivity through formal Church authority.",
+            "id": "the-cardinal",
+            "name": "The cardinal",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Matthias",
+              "The emperor's eldest son"
+            ],
+            "description": "An imperial prince aligned with the Church. At a gathering arranged around Olive's captivity, he credits the Church for the recent military victory and dismisses the contribution of Olive's soldiers and allies.",
+            "id": "deacon-matthias",
+            "name": "Deacon Matthias",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of the combined Imperial Defense Forces and the Fifth Imperial Corps for the Sanctum operation. He receives nearly two hundred thousand soldiers with orders to provide a nonaggressive distraction and withdraw if the rescue party fails.",
+            "id": "colonel-ropeter",
+            "name": "Colonel Ropeter",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Imperial officer involved in preparing the force deployed near Sanctum. He initially objects to Jiran's condition that the new weapons cannot harm allied peoples, then accepts it.",
+            "id": "colonel-mart",
+            "name": "Colonel Mart",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jiran's soul-linked entity"
+            ],
+            "description": "A divinatory presence connected to Jiran and Madra. She confirms that Olive is somewhere in Sanctum, but cannot determine the precise location because a barrier blocks closer examination.",
+            "id": "daughter",
+            "name": "Daughter",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Former bandit king"
+            ],
+            "description": "A former bandit ruler and late Tier VI ascender whom Jiran encounters inside Sanctum. He says he has come to expose a major Church operation and claims that Silence secretly performs work the Church cannot conduct openly.",
+            "id": "markhiss",
+            "name": "Markhiss",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jiran's first master"
+            ],
+            "description": "A powerful Ranker and Jiran's returning mentor. He destroys the green spectral threat attacking Olive and discovers that five of her siblings are imprisoned nearby with white bones implanted in their bodies.",
+            "id": "feylon-samris",
+            "name": "Feylon Samris",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran female Ranker who mistakes Jiran's pure mana ice body for one of the beasts attacking Sanctum and shatters it with a strike.",
+            "id": "veteran-female-ranker",
+            "name": "Veteran female Ranker",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Olive's younger sister"
+            ],
+            "description": "Olive's younger sister, found alive but unresponsive after Church captivity. Her condition leaves the extent of her injuries and recovery uncertain.",
+            "id": "melania",
+            "name": "Melania",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The world-linked source of mana known to Jiran from earlier events. Her nature and agency remain uncertain, but Jiran understands his soul connection and obligations in relation to her before this volume begins.",
+            "id": "madra",
+            "name": "Madra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A famous Imperial healer whom Niya admired as a child. The cardinal mortally wounds her with an emperors’ dagger during the fighting in Sanctum, and Jiran cannot save her.",
+            "id": "renowned-imperial-healer",
+            "name": "Renowned Imperial healer",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A high-tier Imperial survivor and Olive’s brother. Though already injured, he enters the Tier X beast’s lightning to recover Jiran’s burned body.",
+            "id": "olives-brother",
+            "name": "Olive’s brother",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A semi-sapient Tier X entity directing the undead assault on Sanctum. It can possess victims, corrupt mana, and manipulate its forces from a distance.",
+            "id": "tier-x-corruption-beast",
+            "name": "Tier X corruption beast",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of three high Rankers caught in the emperors' rupture of reality. She awakens alone in an unfamiliar jungle with her aura and physical strength severely suppressed, facing dangerous local creatures.",
+            "id": "isolated-high-ranker",
+            "name": "Isolated high Ranker",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Imperial commander who confronts Jiran after soldiers under his authority steal weapons reserved for allied peoples. Jiran strips away his mana and removes him from command.",
+            "id": "hostile-imperial-general",
+            "name": "Hostile Imperial general",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The two rulers traveling with three high Rankers after concluding that their ascent to Tier 11 endangers the world's weave. They entrust the empire's people to their companions, rupture reality together, and are scattered when the fissure engulfs the group.",
+            "id": "two-emperors",
+            "name": "Two emperors",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0F8KPYXMS",
+            "type": "community"
+          }
+        ],
+        "work": "advent-of-the-density-god"
+      },
+      "recaps": {
+        "ending": "Jiran and Lenton end the Sanctum coup by defeating the cardinal and the remaining Templari, but the cardinal’s death breaks the undead truce. A Tier X corruption beast attacks the city. Lenton drives it away, while Jiran survives its corruption by evolving Mana Transcendence and then develops a way to cleanse other victims. Olive takes command of the former Third Corps, and Jiran wins support for a battlefield academy defended by his allied peoples. Jiran, Mayalyn, and Olive commit to remaining together. Melania’s terror at seeing Jiran remains unexplained. In the epilogue, two emperors rupture reality because Tier 11 ascenders threaten the world’s weave. The fissure scatters them along with three accompanying high Rankers. One Ranker awakens alone, greatly weakened in a hostile jungle, while the identities, destinations, and survival of the others remain unknown.",
+        "in_short": "Jiran completes the Tier 4 Challenger arena, forms an ice aspect, reaches Tier 5, and gains Mana Venom before becoming stranded in a wasteland controlled by the parasitic Found. He defeats a Seeker vessel, alters the captives’ memories, and returns home to learn that the Church has seized Olive. Jiran, Mayalyn, Niya, Cameron, Lenton, and their allies infiltrate Sanctum as the cardinal launches a coup using branded Templari, hidden beasts, implanted white bones, and green corruption. Olive escapes with new blood-based powers, while Jiran and Lenton kill the cardinal. His death ends the undead truce and releases a Tier X beast. Jiran survives its corruption through Mana Transcendence and learns to cleanse other victims. Olive takes military command, Jiran proposes an allied battlefield academy, and he, Mayalyn, and Olive form a committed relationship. Two emperors rupture reality, and the fissure scatters them and three accompanying high Rankers, leaving one Ranker weakened in an unknown hostile jungle.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jiran is bound to Madra and has grown into a leader among several allied peoples while accumulating obligations to protect them. Mayalyn is his partner, Niya is his cousin and a healer, and Olive is an Imperial princess and diviner whose political position connects the alliance to the Empire. Lenton has served as Jiran's instructor and mentor. The allied force has been fighting the Graymin, while Church forces and imperial interests create additional danger. Jiran also has unresolved connections to Daughter, a soul-linked presence, and to a powerful sponsor associated with the Challenger arenas.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran awakens alone in a Tier 4 Challenger facility carrying dangerously high density. After surviving a corridor of lethal traps and Guardians, he chooses ice for his Quintessence Infusion. The Crucible places him in a blizzard inhabited by Frost Revenants that drain aura and resist his elemental attacks. He hides his aura with a suit, builds goggles to see through the storm, and selects a cave whose absolute stillness matches his ideal of cold. By opening his soul wall to the cave's frost, he completes the transformation and draws the cave's icy heart into his soul space. Away from the arena, Mayalyn and Olive help hold the damaged alliance line. Olive tells Mayalyn that she loves Jiran, and Mayalyn is willing to consider a shared relationship. Their forces remain pressed by the Graymin and other attackers while Jiran's fate is unknown.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The arena orders Jiran to exterminate the remaining Frost Revenants, but a regenerative anomaly assembled around formation-bones becomes the greater threat. Jiran learns to immobilize Revenants with his ice aspect and turns them against the construct. After the anomaly nearly destroys him, he isolates enough of its bones in mana-draining containers to prevent another reconstruction. He refuses to kill the surviving Revenants and successfully petitions the system to accept completion. Jiran finishes second behind Kane, advances to Tier 5, and gains Armament, the Cartography System, Pediamus, and Mana Venom. His sponsor then contacts him telepathically. She offers two favors for a confidential account of the hidden arena and summons him to a mandatory Psionic Tournament in roughly 104 days. Jiran does not accept the bargain, but intends to use the tournament to investigate the powers behind the arenas.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A teleportation node carries Jiran to a sealed temple in a three-sun wasteland, where pale crystal-bearing guards attack him. Pediamus reveals parasites controlling their bodies through their mana pools. The local civilization calls the parasites the Found and their hosts the Lost, presenting the takeover as voluntary union. Jiran interrogates Jed, then removes his parasite and discovers that Jed's own mind is dormant. The parasite cannot keep the body alive once separated, and Jed dies despite Jiran's attempt to save him. Meanwhile, the Found dispatch a Seeker captain aboard an experimental high-speed vessel to investigate Jiran's arrival. Stranded by the enormous cost of returning home, Jiran studies the guards' crystals, learns how their distortions project mana, and begins exploring ambient density as a possible source of the power he needs.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran learns to use the Found crystals to convert ambient density into mana, awakening Armament as a large separate reserve. When the Seeker vessel attacks, he seizes its minefield, drains its exhaust, forces it down, and subdues the captain with Mana Venom. He hides the damaged vessel and its concentrated mana reserve beneath ancient ruins. Experiments on Doric and Tori show that Mana Venom can remove awareness of Jiran and prevent related memories from forming. Jiran applies the same protection to the Seeker, leaves the surviving captives at the temple, and uses the transport platform to return to the Valley of Melodies. Knife and Mayalyn explain that the allies retreated through his portals after attacks from both the Graymin and a southern Church army. Olive was captured. Jiran returns with new power and resources, but immediately redirects them toward recovering her.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The circumstances of Olive's capture become clear. During the Graymin battle, Lenton exhausted himself shielding Imperial Rankers from a devastating wave. The survivors returned to find the Imperial city ruined and Church forces threatening the remaining defenders with planted explosives. The Church seized Olive and coerced the depleted Rankers into accompanying them. In the valley, Jiran publicly confirms that Mortimer is his alias, removes a hostile general from command, and takes operational control of the Imperial contingent. Allied leaders place a large winged force under him, though he leaves it to defend the Timberlings. Niya, credited with reviving wounded allies, supplies charged Sanctuary crystals. Jiran also proposes a future portal-linked settlement for the coalition. With Mayalyn, Niya, Cameron, and the Imperial soldiers assembled, he makes Olive's rescue the immediate priority.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Olive remains confined by the cardinal, concealing a reserve of Jiran's mana while probing the seal on her room. Jiran upgrades Mayalyn, Niya, and Cameron's suits, giving them stronger defenses and specialized weapons. An ambush by two branded Tier IX attackers reveals a much larger nearby force, but the attackers escape. Jiran then returns nearly two hundred thousand Imperial soldiers to the Outlands under Colonel Ropeter. Their task is to draw attention without starting a conflict while Jiran's smaller group infiltrates Sanctum. The army receives ally-safe weapons and orders to retreat if the rescuers fail to return. Jiran closes the portals behind the deployment so the route cannot be used against the valley. The diversion is in place, but the branded force and Olive's exact location remain unresolved.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Daughter confirms that Olive is in Sanctum, though a barrier blocks precise divination. Mayalyn gives up her suit's flight system so her racial obfuscation can hide her while she scouts. Inside the city, Jiran meets Markhiss, a former bandit king investigating the Church. Markhiss says Silence secretly serves the Church and engineers disasters that leave children available for its Ascendancy Program. They confront Deacon Matthias, the emperor's eldest son and the cardinal's deputy. Under Mana Venom, Matthias reveals that the cardinal plans a parade declaring Church independence, supported by underground beast labyrinths and more than two hundred branded fighters raised from orphans, including twenty Tier IXs. Jiran incapacitates Matthias and erases both men's memories of his involvement. Separately, Mayalyn tracks Olive through a damaged cathedral toward a concealed penance chamber. She is close to the captive princess but blocked by a hidden route as Jiran prepares to draw the branded force away.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mayalyn locates Olive beneath the cathedral and guides Niya and Cameron toward her. Niya destroys the Grandam Papal, forcing the hidden conflict into the open. Fifteen Tier IX Templari pin the group, but Jiran drains and contains them after discovering the Mana Confluence sigil embedded in his soul wall. Olive, imprisoned in a sensory-deprived restraint chamber, develops External Unification, concentrates her blood-based ability, and snaps a single ankle restraint, but remains injured and largely secured. Feylon Samris destroys a spectral green attacker and finds Olive’s five siblings implanted with white bones. He protects Mayalyn long enough for her to continue the rescue, then leaves to fight the cardinal's Templari. Across Sanctum, the Church releases labyrinth beasts and tries to blame the Rankers. Jiran turns himself into a mana ice body and destroys the invading beasts, only to be shattered by a Ranker who mistakes him for another monster. His physical state and survival are unresolved. Olive is not yet fully accounted for.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran discovers that the Templari's implanted white bones regenerate them through green corruption. The taint briefly invades his own mana and retreats into the frozen heart in his soul space, leaving an unresolved threat inside him. Working with Lenton, he learns to cleanse the bones and destroy their blood anchors, making the Templari mortal. The cardinal enters the fight with an emperors' dagger and kills a renowned Imperial healer. Madra answers Jiran's call by consuming the dagger's formation, and Lenton kills the remaining Templari. Jiran confirms that Olive is alive among the evacuees. Lenton immobilizes the cardinal, Jiran strips away his corruption and implants, and Lenton executes him. The victory immediately breaks the undead truce. A Tier X corruption beast directs an overwhelming assault on Sanctum, so Lenton confronts it while Jiran holds a breached wall and converts purified undead mana into new reserves.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran and Lenton burn much of the undead horde, but the Tier X beast rebuilds itself from corpses and strikes Jiran with corruptive lightning. Niya's healing worsens the infection. With his body and soul nearly lost, Jiran chooses Mana Transcendence, disintegrates, and reforms free of the corruption. Lenton drives the beast away but does not kill it. Jiran then uses Mana Venom to remove corruption from within Olive's injured brother's soul space and cleanse other victims. He also develops a controlled method for locating the taps of Cameron and Niya. Olive and Jiran kiss, and he, Olive, and Mayalyn enter a committed three-person relationship. At the post-battle council, Olive accepts command of the former Third Corps. Jiran rejects a general portal evacuation that could expose his allies, but wins backing for unified academies whose students will train under coalition protection. The Graymin, the absent emperors, the surviving undead beast, and Melania's unexplained terror at seeing Jiran remain open threats.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Far from Sanctum, two emperors and three high Rankers travel to confront a former ruler's active creation. The emperors explain that advancement to Tier 11 makes the world reject their presence and destabilizes its weave. Believing they can no longer remain safely, they entrust the empire's people to the Rankers and jointly rupture reality. The resulting fissure engulfs all five travelers and scatters them in darkness. One high Ranker awakens alone in an unfamiliar jungle where crushing conditions suppress her aura and physical strength. A spiked creature nearly kills her before a bipedal lizard kills it and then turns on her. The locations, identities, and survival of the other travelers are unknown. The empire is therefore left with its highest powers displaced, Olive taking military command, Jiran's coalition plans only beginning, and several external enemies still active.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0F8KPYXMS",
+            "type": "community"
+          }
+        ],
+        "work": "advent-of-the-density-god"
+      }
+    },
+    "all-these-worlds": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Robert"
+            ],
+            "description": "A replicant who lives among the Deltans through a concealed Deltan-form android called Robert. He helps Camelot's hunters resist raids while limiting displays of his artificial strength and speed so that the settlement will continue to regard him as one of its own.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Camelot hunter who stands with Robert when hunters from the neighboring settlement try to seize Camelot's kill. He helps Robert prepare an ambush intended to stop the attacks without exposing Robert's unusual capabilities.",
+            "id": "donald",
+            "name": "Donald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a hostile hunting group from the settlement near Camelot. He tries to claim another party's kill and develops a personal grievance after Robert defeats him, adding a focused rivalry to the wider conflict between the communities.",
+            "id": "fred",
+            "name": "Fred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Howard's human partner and confidante. She supports him after the failed defense of the Pav homeworld, offering personal stability while he absorbs the scale of the defeat and the continuing danger posed to every inhabited world.",
+            "id": "bridget",
+            "name": "Bridget",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The people of Delta Pavonis, whose homeworld has fallen to the Others. Jacques's emergency plan can rescue only 20,000 of them, leaving the surviving group dependent on a hurried evacuation and an uncertain refuge.",
+            "id": "the-pav",
+            "name": "The Pav",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A system-stripping force whose victory at the Pav homeworld places Earth, Epsilon Eridani, and every other known inhabited world at risk. Their campaign makes the survival of separate colonies part of one shared strategic crisis.",
+            "id": "the-others",
+            "name": "The Others",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A replicant on Poseidon with no formal political authority and enough independence to resist the Council's control. He meets trusted residents in secret after elections are postponed indefinitely and decides to create a public distraction.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The assistant governor of Southern Mat 3 and a cautious participant in the private opposition to Poseidon's Council. He has come to share Marcus's fear that postponed elections and expanding official powers are leading toward authoritarian rule.",
+            "id": "cal",
+            "name": "Cal",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mid-level Poseidon security officer and friend of Marcus. Her knowledge of local authority makes her an important member of the small group concerned that the Council is using its emergency position to make its power permanent.",
+            "id": "gina",
+            "name": "Gina",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's daughter, who opposes her mother's relationship with Howard and pressures other relatives to take the same position. Her disapproval adds family conflict to the public unease surrounding a human relationship with an android-bodied replicant.",
+            "id": "rosie",
+            "name": "Rosie",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bill's new replicant copies, assigned with Icarus to supervise an extreme mover experiment involving accelerated planetary bodies. He accepts that the untested mission may be fatal and departs to manage one half of the paired operation.",
+            "id": "daedalus",
+            "name": "Daedalus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bill's new replicant copies and Daedalus's partner in a high-risk mover mission. He knowingly accepts the danger of controlling a rapidly accelerated body and leaves Epsilon Eridani to carry out the second half of the coordinated test.",
+            "id": "icarus",
+            "name": "Icarus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colonel known to Howard who receives a diagnosis of advanced, incurable dementia. He chooses death and withdraws permission for his mind to be scanned for replication.",
+            "id": "butterworth",
+            "name": "Butterworth",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Howard's human-form android avatar rather than an independent person. Howard can alter its apparent age, allowing his physical presentation to reflect his life with Bridget instead of remaining fixed at the younger appearance inherited from Bob.",
+            "id": "manny",
+            "name": "Manny",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Poseidon resident who joins Marcus, Cal, Gina, and Vinny in person as their opposition to the Council becomes organized. The discovery of listening devices and official interference places Dinu inside a movement that must communicate secretly.",
+            "id": "dinu",
+            "name": "Dinu",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the small Poseidon group organizing with Marcus, Cal, Gina, and Dinu. Council surveillance and restrictions turn their shared concern into a coordinated resistance, though the group still seeks to avoid violence.",
+            "id": "vinny",
+            "name": "Vinny",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Camelot toolmaker, Bob's friend, and Buster's father. His son assists him with basic flintwork, placing Archimedes's practical knowledge and family at the center of the settlement Robert has chosen to protect.",
+            "id": "archimedes",
+            "name": "Archimedes",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Archimedes's son and an accomplished bow hunter in Camelot. He also helps his father with basic flintwork, combining the hunting ability valued by the settlement with experience in the craft behind its tools.",
+            "id": "buster",
+            "name": "Buster",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Julia Hendricks's son and a distant nephew of Riker. A Space Corps captain, he regards replication as an extension of service rather than a form of personal survival.",
+            "id": "justin-hendricks",
+            "name": "Justin Hendricks",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A descendant of Riker's sister Andrea whose fatal aneurysm brings Riker to Romulus. Her death renews his grief over the mortal family generations connected to him.",
+            "id": "julia-hendricks",
+            "name": "Julia Hendricks",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The replicant assigned to establish colonies in 82 Eridani. He escorts settlers to the system, assesses its habitable worlds, and begins distributing manufacturing capacity so the new Canadian and Japanese communities can become less dependent on outside support.",
+            "id": "mac",
+            "name": "Mac",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combat replicant sent to protect Mac's surviving matrix after a Medeiros attack at 82 Eridani. He confirms that the cube is intact and takes responsibility for moving it beyond the attacker's reach while sensitive Bob technology is destroyed.",
+            "id": "thor",
+            "name": "Thor",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile probe that disables Mac's vessel at 82 Eridani and seeks the system's auto factories. Its presence leaves both young colonies exposed while the Bobs disperse manufacturing equipment and assess their limited defenses.",
+            "id": "medeiros",
+            "name": "Medeiros",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A replicant surveyor who boards two disabled Others cargo carriers with Neil. Their inspection of the less damaged vessel uncovers an intact and unfamiliar power facility, prompting a cautious investigation before they report the discovery more widely.",
+            "id": "herschel",
+            "name": "Herschel",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Herschel's replicant partner in the survey of abandoned Others carriers drifting from Delta Pavonis. He helps confirm that the derelicts are inactive and that one contains a power system unlike the fusion technology used by the Bobs.",
+            "id": "neil",
+            "name": "Neil",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Poseidon's Council identified as the official who directed missile attacks against the flying cities. Marcus and Gina's forces capture him after tracing surviving attackers to a concealed Council airbase.",
+            "id": "brennan",
+            "name": "Brennan",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bridget's son, contacted after her activation as a replicant. He responds with conflict and emotional distance as he tries to understand the new Bridget as a distinct person rather than simply the return of the mother who died.",
+            "id": "howie",
+            "name": "Howie",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A replicant colony-ship operator bringing Pav refugees and preserved biological material to their new world. He works with Jacques and Ferb on a settlement plan that restores part of the Pav ecology before the colonists leave stasis.",
+            "id": "phineas",
+            "name": "Phineas",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A replicant colony-ship operator carrying Pav colonists and biological samples to the refuge prepared by Jacques. With Phineas, he proposes rebuilding essential pieces of their ecology before the refugees awaken.",
+            "id": "ferb",
+            "name": "Ferb",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civilian leader among the awakened Pav refugees and Jacques's principal liaison during resettlement. After hearing why the survivors were moved and why their home remains unsafe, the councillor agrees to organize the population's decanting.",
+            "id": "pav-councillor",
+            "name": "Pav councillor",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bob's modified Deltan-form android, adopted after he retires the Robert identity. The change accompanies his decision to leave his long attachment to Camelot and seek a different way of living after Archimedes's death.",
+            "id": "charlie",
+            "name": "Charlie",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A returning replicant and Bob's fellow associate among the Deltans. His shared history with Bob and Camelot gives him an established place in the part of Bob's life centered on the Deltan settlement.",
+            "id": "marvin",
+            "name": "Marvin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant who has pioneered physical life through android embodiments. He is Bridget's intimate partner and carries an established personal stake in both human relationships and the practical possibilities of embodied replicant life.",
+            "id": "howard",
+            "name": "Howard",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bob's early independent copies and a returning organizer of engineering and strategic work. He coordinates projects across the Bob network and approaches the threat to inhabited systems as both a technical and military problem.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Will"
+            ],
+            "description": "An early Bob copy and the returning coordinator for Sol and humanity's evacuation. Known as Will to his human family, he balances large-scale survival planning with ties to descendants whose lives continue on a mortal timescale.",
+            "id": "riker",
+            "name": "Riker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant and Bill's established engineering collaborator. He contributes to the industrial and technical projects that support both long-term settlement and defense against threats beyond the human colonies.",
+            "id": "garfield",
+            "name": "Garfield",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant who works on behalf of the endangered Pav.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant whose established work includes scouting beyond the settled systems.",
+            "id": "mario",
+            "name": "Mario",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant committed to the Gamma Pavonis group and its defense.",
+            "id": "claude",
+            "name": "Claude",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "all-these-worlds"
+      },
+      "recaps": {
+        "ending": "The Others' attack on Sol is defeated when Riker recognizes that the Jokers' near-light-speed nuclear detonations can produce a lethal radiation strike. The victory costs most of the Bob fleet, and an earlier zap kills 150,000 people in Cuba. Bellerophon escapes with everyone else from Earth, including six million awake passengers housed in its cargo bays. Humanity heads toward three viable worlds in 82 Eridani, while Earth is left to recover over millennia. Icarus and Daedalus destroy GL-877, and Bill confirms that every known Others unit in Sol is gone, though patrols continue to search for survivors or other nests. The Pav are secure and increasingly autonomous, Poseidon is governed by Gina's elected administration, and Howard and replicated Bridget share life and research in Odin's cloud cities. Mac still cannot account for Medeiros's hidden industrial support. After Archimedes dies, Bob leaves Camelot and retires the Robert identity. The Bob network establishes that help to humanity will be voluntary, and Bob sets out to explore beyond his old commitments while building relays back to BobNet.",
+        "in_short": "As the Others threaten every inhabited system, the Bobs pursue several survival plans at once. Bob tries to end violence between two Deltan settlements, Marcus overturns Poseidon's authoritarian Council, Howard secures Bridget's lawful replication, and Mac defeats a Medeiros probe at 82 Eridani. Herschel and Neil convert an Others carrier into Bellerophon, which ultimately evacuates everyone remaining on Earth except 150,000 people killed in Cuba. Riker and Bill lead a costly defense of Sol, while Icarus and Daedalus destroy the Others' home system. The Pav establish an autonomous refuge with a path toward restoring their former world. Archimedes dies, prompting Bob to leave Camelot. With the known Others forces gone, the Bobs reject any automatic obligation to serve humanity. Earth is abandoned for recovery, its survivors head toward new worlds, and Bob begins an independent journey while maintaining relay links to BobNet.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bob and his independent replicant descendants spread through nearby star systems while helping human colonies survive beyond Earth. Their growing network includes Bill as a strategic and engineering organizer, Riker as Sol's evacuation coordinator, Howard as a pioneer of android embodiment, Garfield as Bill's technical collaborator, and Jacques as an organizer for the endangered Pav. Bob maintains a separate attachment to the Deltans, living among them through an artificial body and sharing that work with Marvin. Howard has formed a close relationship with the human biologist Bridget, while Riker remains connected to his mortal relatives. The Bobs' separate missions are tied together by threats that no single colony can contain. The hostile Others have become a danger to inhabited systems, and the Bobs' technical reach has placed them in the continuing position of defending and supporting both humanity and other vulnerable peoples.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bob is living among the Deltans as Robert when hunters from a neighboring settlement begin stealing Camelot's kills and attacking its people. He and Donald stage an ambush that humiliates Fred's group without killing anyone, but Bob doubts Fred has been deterred. Elsewhere, the defense of the Pav homeworld has failed. Jacques can evacuate only 20,000 Pav, and Howard concludes that the Others remain a threat to every inhabited world. On Poseidon, Marcus, Cal, and Gina privately oppose a Council that has indefinitely postponed elections and expanded its authority. The Council rejects Marcus's flying-city plan, interferes with suspected supporters, and places listening devices in Cal's home. Dinu and Vinny join the group as it shifts into organized resistance while still hoping to avoid violence. Bill tests an extreme mover system and sends his new copies Icarus and Daedalus on a dangerous paired mission. Howard and Bridget continue their relationship despite public disapproval. After Butterworth chooses death rather than replication following a terminal diagnosis, Howard is left confronting the prospect of repeatedly outliving the humans he loves.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fred begins stalking Robert, but Bob evades him without revealing the android's abilities. The wider conflict appears to have a cause beyond Fred's hostility, so Bob and Donald plan to investigate the other settlement. Mario reports that the Others have erased life from five more worlds, confirming a broad campaign of extermination and resource extraction. Riker loses his relative Julia Hendricks and learns from her son Justin that many humans regard replication as endless duty rather than survival. On Poseidon, Marcus unveils Helium, a residential flying city intended to let people leave Council control voluntarily. Gina persuades him to take security seriously. Howard begins introducing his embodied existence openly among Bridget's friends, hoping familiarity will reduce suspicion of the Bobs. Sol's evacuation has moved nearly one million people, but accessible materials are running out. At the present construction rate, Earth cannot be emptied in time. Riker proposes placing the remaining population in stasis, but the UN rejects a plan that would leave many people without pods and could keep survivors unconscious indefinitely.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Poseidon's Council blocks access to the new flying cities, but Marcus uses cargo drones to move residents without violence. Four cities accept settlers before the Council declares them deserters, seizes assets, cuts trade, and destroys one of Marcus's decoys. Marcus refuses to attack first while warning that violence against civilians will draw a broader response. Icarus and Daedalus continue their synchronized mover flight. At 82 Eridani, Mac escorts Canadian and Japanese colonists to two habitable planets and begins building independent manufacturing capacity. Howard confirms a complex aerial ecosystem on Odin and invites Bridget to study it through virtual reality, but she again declines replication. During Bill's call with Mac, a Medeiros vessel attacks and disables Mac's ship. Thor saves Mac's intact matrix while Bob-controlled machines destroy sensitive communications, sensor, and weapons technology before it can be captured. The active Medeiros probe appears to be seeking Mac's industrial capacity and threatens both colonies. With Mac offline and outside assistance years away, 82 Eridani must disperse its printers and prepare to defend itself.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Herschel and Neil investigate two abandoned Others carriers and find an intact alien power core in the less damaged vessel. After isolating its combat drones, they activate the core and learn that it produces far more energy than expected. Bill sees that the repaired carrier could become a giant Earth evacuation ship. Bridget dies suddenly, and her will authorizes Howard to seek her replication. Her children challenge that decision in court, leaving her body in stasis while Howard waits. On Poseidon, the Council accepts Marcus's staged death as real, then attacks the flying cities and destroys Thark. Marcus's hidden defenses defeat the assault and seize strategic sites, though Council leaders remain at large. Bob and Archimedes discover that the neighboring Deltan settlement's poor tools and failing hunting may be driving its raids. At 82 Eridani, Medeiros turns an ingot into a crude impact weapon. The colonies counterattack with busters and insect-control drones, cripple his vessel, and attempt to seize his matrix. Medeiros destroys himself rather than be captured. Mac returns online and starts rebuilding, although the source of Medeiros's industrial capacity remains unknown.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marcus and Gina trace the remaining Council attackers to a hidden airbase, capture Brennan, and break the organized resistance. Marcus briefly leads Poseidon while elections are arranged, then transfers industrial authority to local people. Gina becomes elected chairperson, and Marcus begins considering an oceanographic role. Bob, Donald, and Buster rescue Archimedes after Fred's group kidnaps and beats him. Buster kills Fred, while Archimedes proposes ending the conflict by teaching the other settlement better toolmaking. Herschel and Neil rebuild the alien carrier as Bellerophon. Its superior power system, mover plates, and planned stasis capacity make it the center of a renewed effort to evacuate Earth. Riker redirects Sol's manufacturing toward the ship and its supporting equipment. A court upholds Bridget's will. Anticipating sabotage, Howard and Bill secure her scan before Rosie's device damages and shuts down the stasis pod. Howard builds and activates Bridget's replicant matrix. She understands that she is a new person formed from the deceased Bridget's scan, resumes her relationship with Howard, and chooses a future studying Odin. Her son Howie remains distant, and Rosie remains hostile.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mac's expanded searches find no trace of the manufacturing source that supported Medeiros, so he starts a new replicant cohort and system-wide defenses at 82 Eridani. Icarus and Daedalus enter the timing-critical final arcs of their mission toward GL-877. Howard and Bridget test flying android bodies among Odin's native life, and Bridget is welcomed at her first public Bob moot. They also begin designing a buoyant city where they can live in Odin's atmosphere. Jacques prepares HIP 84051-2 for the rescued Pav with Phineas and Ferb. The three restore Pav crops and animals, build homes and defenses, and then awaken the refugees' leadership. Jacques presents himself openly as an alien helper and promises the Pav autonomy. Riker proposes low-technology probes disguised as asteroids to examine GL-877 without exposing newer Bob systems, and Mario positions them. The probes observe continued construction but find almost none of the expected Death Asteroids or cargo carriers. With no harvesting activity visible in nearby systems, Riker and Mario conclude that the missing Others fleet has probably deployed elsewhere. Its unknown destination becomes an immediate strategic danger.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trade begins between Camelot and the neighboring Deltan settlement, and Archimedes teaches several of its apprentices. His cough and pain persist, leaving Bob worried about his health. Bill expands Sol's defense fleet while Garfield improves weapons and completes a concealed backup site. Neil suggests that the missing Others force may be approaching Sol through a surveillance gap, prompting construction of an enormous observation network. Earth's last major farming operation then fails, making evacuation or stasis increasingly urgent. Claude refuses Bill's request to abandon Gamma Pavonis and reinforce Earth, arguing that his group must protect its own prospective colony. Howard and Bridget successfully lower Rivendell into Odin's atmosphere and begin living there through android bodies. The surveillance grid finally detects an incoming Others force containing roughly 50 Death Asteroids and 100 carriers. Thor estimates that the carriers could deploy tens of thousands of combat units. The Bobs immediately begin preparing stealth weapons, battle groups, and evacuation measures. Herschel and Neil are bringing Bellerophon toward Sol, but the confirmed invasion may arrive before Earth has enough stasis pods for its population.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bellerophon reaches Sol when only three million stasis pods exist for nearly fourteen million people. A preemptive Bob strike destroys part of the Others force, but captured information lets the invaders detect the attack and eliminate much of it. Howard and Bridget reconcile with Howie at his wedding, though Rosie remains estranged. As Archimedes declines, Bob accepts that his friend is nearing death. Herschel realizes Bellerophon can hold an atmosphere and carry the remaining six million evacuees awake in its cargo bays once almost eight million pods are installed. The ship begins collecting every enclave while the battle moves closer. Riker uses concealed nuclear rounds to destroy Death Asteroids capable of striking Earth, but one zap kills 150,000 people in Cuba before they can be evacuated. Bellerophon escapes with everyone else. The conventional battle continues to deteriorate until Riker identifies a final use for the near-light-speed Jokers. Their nuclear detonations create a radiation strike that sterilizes the Others fleet. About fifty Bob Dreadnoughts are lost in the radiation cone, but the surviving defenders finish the enemy force and win the Battle of Sol.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Archimedes dies, and Buster recognizes that Robert is Bob. After the funeral, Bob leaves Camelot, later retires the Robert identity, and adopts a modified Deltan avatar called Charlie. Marvin helps him accept grief as a consequence of being alive. Icarus and Daedalus strike GL-877 from opposite directions and escape as their payloads destroy the Others' star and home system. Bill confirms that every known Others unit in Sol is also gone, though patrols continue searching for survivors or other nests. The Pav learn that the war is over and take increasing control of their refuge, with restored ecology and nearby metals offering a possible route to rebuilding their home system. Bellerophon departs Sol with Earth's surviving population for 82 Eridani, where three viable worlds are available. Earth is left to recover. Thor and Garfield lead the Bobs in rejecting any automatic collective duty to humanity, while preserving each replicant's freedom to help voluntarily. Bob visits the frozen remains of Las Vegas, then begins an open-ended journey beyond his former obligations, planning relay stations that will keep him connected to BobNet.",
+            "through": {
+              "chapter": 76
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "all-these-worlds"
+      }
+    },
+    "allegiant": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Beatrice Prior"
+            ],
+            "description": "The narrator and one of two viewpoint characters, a Divergent young woman who has survived the fall of the faction system. Brave and stubborn, still carrying grief and guilt from the war, she is determined to learn the truth of the world beyond the wall now that the city's founding secret has been revealed.",
+            "id": "beatrice-tris-prior",
+            "name": "Tris Prior",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Tobias Eaton"
+            ],
+            "description": "Tobias Eaton, once the Dauntless instructor called Four, Tris's love and fellow leader, and the book's second viewpoint character. The son of Marcus and Evelyn, he struggles with his loyalties as his mother rules the city and the truth about the outside world begins to unfold.",
+            "id": "four",
+            "name": "Four",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tris's brother, a brilliant and cautious Erudite mind who betrayed her to Jeanine during the war and now awaits punishment under the new regime. Guilt-ridden and estranged, he is desperate for a chance to make amends.",
+            "id": "caleb-prior",
+            "name": "Caleb Prior",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tris's blunt, loyal friend, a former Candor transfer to Dauntless who has stood with her through the war. Grieving her own losses, she remains one of Tris's closest companions.",
+            "id": "christina",
+            "name": "Christina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cruel, self-serving former initiate who has repeatedly been Tris's enemy. Unpredictable and out only for himself, he attaches to the group again for reasons of his own.",
+            "id": "peter",
+            "name": "Peter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Evelyn Eaton"
+            ],
+            "description": "Tobias's mother and leader of the factionless, who has seized control of the city after the faction system collapsed. Ruling harshly, she confiscates weapons and suppresses dissent, provoking resistance and straining her fragile bond with Tobias.",
+            "id": "evelyn-johnson",
+            "name": "Evelyn Johnson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tobias's father and a former Abnegation leader, determined to restore the factions and reclaim power. Self-justifying and manipulative, he aligns himself with those who oppose Evelyn's rule.",
+            "id": "marcus-eaton",
+            "name": "Marcus Eaton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scarred former spokeswoman of Amity, who now leads the Allegiant, a movement loyal to the old factions and to the message urging the city's people to leave for the world outside.",
+            "id": "johanna-reyes",
+            "name": "Johanna Reyes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-humored, brave Dauntless-born friend of Tris who joins the group leaving the city. Loyal and quick to joke, he has lost much in the fighting.",
+            "id": "uriah",
+            "name": "Uriah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-headed Erudite woman, sister of Tris's dead friend Will, who has become a voice of reason among the Allegiant. Logical and calm under pressure, she joins the group venturing beyond the wall.",
+            "id": "cara",
+            "name": "Cara",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The director of the Bureau of Genetic Welfare, the government compound the travelers discover beyond the wall. Composed and authoritative, he presents himself as the steward of the outside world's order and of the long project that created and watched the city.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "description": "A young scientist at the Bureau of Genetic Welfare who takes an interest in the newcomers and quietly helps Tris and Tobias understand the compound, its history, and its aims.",
+            "id": "matthew",
+            "name": "Matthew",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "allegiant"
+      },
+      "recaps": {
+        "ending": "The Bureau of Genetic Welfare decides to end the uprising in the city by releasing a serum that will erase everyone's memories, including those of Tobias's family and friends. Tris and her group resolve to stop it by turning the memory serum on the Bureau's own staff instead. The plan requires someone to enter a heavily guarded Weapons Lab protected by a lethal death serum. Caleb, seeking to atone for betraying Tris, volunteers for what is meant to be a suicide mission, but at the last moment Tris takes his place. She endures the death serum and succeeds in releasing the memory serum, resetting the Bureau, but David, the Bureau's director, shoots her before it can take him. Tris dies. Tobias, shattered by grief, works to prevent all-out war in the city and helps bring Evelyn to give up her hold on power, easing the conflict between the factionless and the Allegiant. Uriah, gravely injured earlier, dies of his wounds. In an epilogue set more than two years later, the survivors have begun to rebuild a freer life, and Tobias scatters Tris's ashes by zip-lining over the city, honoring her.",
+        "in_short": "After the city's founding secret is revealed, it fractures under Evelyn's harsh factionless rule, and a group loyal to the old factions, the Allegiant, forms to obey the message urging people to go outside. Tris, Tobias, Caleb, Christina, Peter, and others escape beyond the wall and reach the Bureau of Genetic Welfare, where they learn the truth: long ago, attempts to genetically engineer away human flaws produced people deemed genetically damaged, and the walled cities are experiments meant to restore genetically pure humans over generations. Divergents are the genetically healed. Tris is judged genetically pure while Tobias is called damaged, which shakes him. When the Bureau prepares to wipe the memories of everyone in the rebelling city with a serum, Tris and her friends resolve to turn that serum on the Bureau instead. Caleb volunteers for the deadly mission, but Tris takes his place, survives the death serum, and releases the memory serum, only to be shot and killed by David. Tobias, devastated, helps broker peace in the city, and after Uriah dies of his injuries, the survivors slowly rebuild. Years later, Tobias scatters Tris's ashes over the city she helped free.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, across Divergent and Insurgent: in a walled city sorted into five virtue-based factions, Beatrice Prior discovered she was Divergent and left Abnegation to join Dauntless as Tris, falling in love with her instructor Tobias, known as Four. She helped stop the Erudite leader Jeanine Matthews, who used a mind-control serum to turn Dauntless against Abnegation, losing her parents and being forced to kill her friend Will. In the turmoil that followed, the factions collapsed. The factionless, led by Tobias's presumed-dead mother Evelyn, rose to power, and the uprising ended with Jeanine's death and the seizure of a hidden message. That recording, from an ancestor named Edith Prior, revealed that the city is a controlled experiment and that its people are meant to leave the walls for a wider world once enough Divergents emerge, shattering everything the survivors believed about their world.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The revelation throws the city into turmoil. Evelyn and her factionless rule harshly, confiscating weapons and crushing opposition, while a group loyal to the old factions and to Edith Prior's message, the Allegiant, forms under Johanna Reyes to defy her and go outside. Tris, Tobias, Caleb, Christina, Peter, Uriah, and others decide they must see the truth of the world beyond the wall for themselves. Slipping past the factionless, the small group escapes the city and crosses into the unknown land outside, uncertain what they will find and leaving a fracturing city behind them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Beyond the wall the travelers reach the Bureau of Genetic Welfare, a government compound that has watched their city for generations. There they learn the truth behind the experiment: long ago, efforts to genetically engineer away human flaws created people labeled genetically damaged, and the walled cities were established to breed and restore genetically pure humans over time. Divergents are the genetically healed the project sought. Tris is judged genetically pure while Tobias is called damaged, a distinction that wounds him and tests their bond. As they navigate the Bureau's politics under its director, David, word arrives that Evelyn's grip on the city is tightening toward open war.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Learning that the Bureau means to quell the city's uprising by wiping everyone's memories with a serum, Tris and her friends resolve to turn that serum on the Bureau instead. The mission requires braving a Weapons Lab guarded by a lethal death serum; Caleb volunteers to atone for betraying Tris, but she takes his place at the last moment. Tris survives the death serum and releases the memory serum, but David shoots her before it takes effect, and she dies. Tobias, devastated, helps stop all-out war in the city and persuades Evelyn to relinquish power, easing the conflict, while Uriah dies of earlier injuries. In an epilogue years later, the survivors have begun to rebuild a freer world, and Tobias scatters Tris's ashes over the city she gave her life to save.",
+            "through": {
+              "chapter": 56
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "allegiant"
+      }
+    },
+    "american-gods": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Mike Ainsel"
+            ],
+            "description": "A big, quiet, watchful man nearing the end of a prison sentence for assault. Days before his release he learns that his wife has been killed in a car crash, leaving him with nothing to go home to. Guarded and slow to anger, he keeps his thoughts to himself, does coin tricks to pass the time, and mostly wants a quiet life. Adrift after prison, he accepts a job as bodyguard and driver for a strange older man he meets on his way home, and is pulled into a hidden world he does not yet understand.",
+            "id": "shadow",
+            "name": "Shadow Moon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A charming, disreputable old con man with a glass eye and an unnerving knack for knowing a great deal about Shadow before they ever meet. He offers Shadow work as a bodyguard and errand man, hinting at business that is stranger and older than ordinary swindles. Genial, grandiose, and always working an angle, he travels the country meeting a network of odd, faded acquaintances, and clearly has some larger scheme in motion.",
+            "id": "mr-wednesday",
+            "name": "Mr. Wednesday",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shadow's wife, whose sudden death in a car accident just before his release drives him out of prison and into the story. Shadow loved her deeply and clung to the thought of her through his imprisonment. Her loss is the wound at the center of his early journey, and the circumstances of her death carry a bitter complication that shadows his grief.",
+            "id": "laura",
+            "name": "Laura Moon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, belligerent, red-bearded man who drinks hard and claims to be a leprechaun, encountered in a roadside bar. Loud and spoiling for a fight, he shows Shadow a coin trick beyond anything ordinary and presses a magical gold coin on him, a gift that turns out to carry serious and lasting consequences.",
+            "id": "mad-sweeney",
+            "name": "Mad Sweeney",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An arrogant, sneering young man, fat and nervous, who travels in a limousine full of flickering screens and reeks of a synthetic newness. He represents the modern powers of computers, data, and the internet, and he accosts Shadow early on with threats and demands, treating Wednesday and his kind as obsolete. He is one of the new forces arrayed against the old.",
+            "id": "technical-boy",
+            "name": "The Technical Boy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A grim, aging Slavic immigrant living in a shabby Chicago apartment with his sisters, the Zorya. Once a killer of cattle in the stockyards, he still keeps the sledgehammer of his old trade and speaks of a darker, godlier past. Sour and fatalistic, he plays checkers with Shadow and strikes a grim wager over the young man's head, but Wednesday needs him for the gathering to come.",
+            "id": "czernobog",
+            "name": "Czernobog",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A polished, shape-shifting presence who speaks to Shadow out of television screens, wearing the faces of old sitcom and talk-show stars. She embodies the modern power of broadcast and celebrity, the thing millions give their attention and devotion to every day. Smooth and seductive, she tries to win Shadow over to the side of the new powers.",
+            "id": "media",
+            "name": "Media",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Anansi"
+            ],
+            "description": "A dapper, sharp-tongued old man with a gift for stories and a sly sense of humor, one of the old gods Wednesday gathers. Behind the elderly, joking exterior is the ancient trickster spider of West African and Caribbean tale. Quick, wily, and warmer than most of the company, he becomes a companion to Shadow.",
+            "id": "mr-nancy",
+            "name": "Mr. Nancy",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A precise, scholarly undertaker who runs a funeral home in a faded river town with his partner Mr. Jacquel, and who fills notebooks with the histories of forgotten immigrants and their gods. Courtly and old-fashioned, he offers Shadow shelter among the dead. He and his partner are ancient Egyptian powers keeping to quiet work in a country that has largely forgotten them.",
+            "id": "mr-ibis",
+            "name": "Mr. Ibis",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The smooth, faceless, coordinating leader of the new gods, a bland and reasonable-sounding man who directs the modern powers moving against Wednesday's coalition. Where the Technical Boy is petulant and Media seductive, Mr. World is the calm strategist, seemingly the most dangerous of the opposition, and the driving intelligence behind the coming war.",
+            "id": "mr-world",
+            "name": "Mr. World",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A beloved old man in the quiet northern town of Lakeside, a tireless teller of tall tales and organizer of the town's traditions, including a winter contest built around a car left out on the frozen lake. Warm, grandfatherly, and seemingly everyone's friend, he takes a kindly interest in the newcomer Shadow while he hides there.",
+            "id": "hinzelmann",
+            "name": "Hinzelmann",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "american-gods"
+      },
+      "recaps": {
+        "ending": "Shadow discovers that the war between old and new gods was never real. Wednesday, who is the American Odin, secretly conspired with the trickster Loki, who had been posing as both Shadow's old cellmate and the new gods' cold leader Mr. World, to provoke a battle in which the deaths of gods on both sides would become a great sacrifice, feeding the two of them and restoring their power. Wednesday's own murder was staged as the spark. Having died on the world-tree and returned from the dead, Shadow understands the con and confronts the gods massing for battle at Lookout Mountain, laying the whole scheme bare so that the assembled powers, cheated of their war, disperse rather than slaughter one another. Loki's plot collapses and both conspirators are undone. Shadow also learns the truth of his own origins: Wednesday fathered him as part of the long game, so the con man he served was his father. Afterward Shadow returns to Lakeside and solves its mystery, revealing that the beloved old Hinzelmann is a kobold who has kept the town safe and prosperous for generations by taking the life of one child every winter; exposed, Hinzelmann's hold ends. Freed of the gods' schemes and his grief for Laura settled, Shadow leaves America and travels to Iceland, where he meets the older, original Odin and, in a small final gesture, hands over a token, walking away lighter than he came.",
+        "in_short": "Released from prison to the news that his wife Laura has died in a car crash, Shadow Moon takes a job as bodyguard for a charismatic con man calling himself Mr. Wednesday. Traveling America, Shadow discovers that the odd old people Wednesday visits are gods brought over by generations of immigrants, now faded and forgotten, and that Wednesday is Odin, rallying them for war against a rising pantheon of new gods of media, technology, and money. Laura returns from the grave, uncannily animate thanks to a magical coin Shadow was given, and repeatedly protects him. For his safety Shadow hides in the pleasant lakeside town of Lakeside, whose prosperity conceals a grim secret. When Wednesday is killed during a parley with the new gods, the old gods rally for battle, and Shadow keeps a death-vigil bound to a great tree, dying and passing to the land of the dead before returning. There he realizes the whole war is a con: Wednesday and his hidden partner Loki, disguised as the new gods' leader Mr. World, engineered it so the slaughter would be a sacrifice feeding them both. Shadow exposes the grift to the assembled gods and stops the battle. He also learns Wednesday was his father. He then returns to Lakeside and uncovers that the kindly old Hinzelmann has kept the town prosperous by sacrificing a child each winter, ending the arrangement before leaving to find a kind of peace abroad.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Days before his release from prison, Shadow Moon is told that his wife, Laura, has died in a car accident, and he leaves incarceration with nothing left to come home to. On the journey he keeps meeting a strange one-eyed old man calling himself Mr. Wednesday, who seems to know all about him and offers him work as a bodyguard and driver. With no better options, Shadow takes the job. Almost at once his new life turns uncanny: a foul-mouthed brawler claiming to be a leprechaun, Mad Sweeney, forces a magical gold coin on him, and a menacing young man surrounded by screens threatens him out of nowhere. At Laura's funeral Shadow learns a painful truth about how she died. Grieving and bewildered, he follows Wednesday into a country that is clearly stranger than it looks.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Traveling with Wednesday, Shadow is introduced to a widening circle of shabby, aging eccentrics, from a grim old hammer-wielding Slav named Czernobog and his sisters to a sly storytelling gentleman, Mr. Nancy, and scholarly undertakers in a river town. He gradually grasps the secret behind them: these are gods, carried to America in the hearts of immigrants over the centuries and now weakened and half-forgotten, and Wednesday is one of them, going from one to the next to recruit them for a coming war against a new breed of powers born of television, computers, and modern life. Laura, meanwhile, rises from her grave, cold and uncannily preserved but still herself, and begins appearing to protect Shadow. The new gods, led by figures like Media and the smooth Mr. World, make plain that they consider the old ones obsolete and want them gone, and Shadow finds himself a marked man.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As tensions mount, Wednesday stashes Shadow for safekeeping in Lakeside, a small, unusually pleasant and prosperous town in the far north, where he lives quietly under a false name and is welcomed by the locals, especially a warm, story-spinning old man named Hinzelmann. Shadow comes to like the place, though he notices an unsettling pattern: every winter a child vanishes from the town without explanation. Between spells in Lakeside he keeps helping Wednesday, who continues gathering the old gods and pressing them toward open conflict, holding councils and forging alliances. Laura drifts in and out of Shadow's life, still watching over him from beyond death, while the standoff with the new gods sharpens toward violence and Shadow is drawn ever deeper into a war he only partly understands.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conflict finally breaks. During what is supposed to be a truce and negotiation with the new gods, Wednesday is shot and killed, an act that outrages the old gods and drives them toward all-out war, with Shadow now bound up in their cause. Honoring a promise he made to Wednesday, Shadow agrees to hold the old man's death-vigil, and is tied to a great ash tree to keep watch. There, exposed and without food or water, he suffers, weakens, and dies, his spirit passing out of the world entirely and into the realm of the dead, where he faces a reckoning of his life and of everything he has done and been. The gods, meanwhile, gather their forces for a decisive battle, believing Wednesday a martyr to their cause.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shadow returns from death with the truth in hand: the war is a swindle. Wednesday, the American Odin, and the trickster Loki, who has been posing as Shadow's former cellmate and as the new gods' leader Mr. World, staged the entire conflict so that a battlefield full of dying gods would become a sacrifice restoring both conspirators to power; Wednesday even engineered his own killing as the trigger, and had fathered Shadow as part of the plan. Shadow reaches the assembled armies at Lookout Mountain and exposes the con, so that the cheated gods break off rather than fight, and Loki's scheme falls apart. With the crisis past and his grief for Laura finally laid to rest, Shadow goes back to Lakeside and unravels its secret, revealing that the kindly Hinzelmann is an ancient household spirit who has bought the town's prosperity by sacrificing one child every winter for generations; once he is exposed, the bargain ends. Free at last, Shadow leaves the country and travels to Iceland, where he meets the old original Odin and, in a quiet parting gesture, walks away unburdened.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "american-gods"
+      }
+    }
+  }
+}

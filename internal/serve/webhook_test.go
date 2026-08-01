@@ -56,7 +56,7 @@ func TestWebhookConfigValidation(t *testing.T) {
 }
 
 func TestWebhookDisabledWithoutSecret(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	srv, err := New(Config{DBPath: seed, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -70,7 +70,7 @@ func TestWebhookDisabledWithoutSecret(t *testing.T) {
 }
 
 func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":"published","repository":{"full_name":"owner/name"}}`
@@ -100,7 +100,7 @@ func TestWebhookRejectsUnauthenticatedAndOversizedRequests(t *testing.T) {
 }
 
 func TestWebhookIgnoresUnrelatedSignedEvents(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 
@@ -152,7 +152,7 @@ func TestWebhookRefreshesPublishedRelease(t *testing.T) {
 }
 
 func TestWebhookRejectsMalformedSignedJSON(t *testing.T) {
-	seed := buildFixtureDB(t, fixtureCatalog(), nil)
+	seed := buildFixtureDB(t, fixtureCatalog())
 	fake := newFakeGitHub(t, tagR1, makeAssets(t, readDB(t, seed), "", nil))
 	srv := newWebhookServer(t, seed, fake)
 	body := `{"action":`

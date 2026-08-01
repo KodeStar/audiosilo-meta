@@ -10,7 +10,6 @@ import (
 
 	"github.com/kodestar/audiosilo-meta/internal/testpack"
 	"github.com/kodestar/audiosilo-meta/pkg/check"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -193,11 +192,21 @@ func TestSidecarTemplateGatesOnlyItsOwnFamily(t *testing.T) {
 	}
 }
 
+// legacyShard is the directory a slug used to live under before the pack
+// migration: its first two characters. Only the legacy-refusal fixtures below
+// still need it, so it is spelled out here rather than exported from anywhere.
+func legacyShard(slug string) string {
+	if len(slug) < 2 {
+		return slug
+	}
+	return slug[:2]
+}
+
 // writeLegacySidecar puts the works-community family in the legacy layout with
 // one per-entity characters file.
 func writeLegacySidecar(t *testing.T, dir, workSlug string) {
 	t.Helper()
-	full := filepath.Join(dir, pack.FamilyWorksCommunity.Root(), model.Shard(workSlug), workSlug, "characters.json")
+	full := filepath.Join(dir, pack.FamilyWorksCommunity.Root(), legacyShard(workSlug), workSlug, "characters.json")
 	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
 		t.Fatal(err)
 	}

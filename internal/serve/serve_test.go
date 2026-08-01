@@ -30,7 +30,11 @@ func fixtureCatalog() *model.Catalog {
 	phm := &model.Work{
 		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
-		Genres:  []string{"hard-science-fiction", "science-fiction"},
+		Genres: []string{"hard-science-fiction", "science-fiction"},
+		// The one fixture work with an added_at, so the "latest" ordering has
+		// something to put first. It sits on the record now: the builder takes
+		// no date map.
+		AddedAt: "2026-07-10T00:00:00Z",
 		Recordings: []*model.Recording{{
 			ID: "ray-porter-2021", Work: "project-hail-mary", Language: "en",
 			RuntimeMin: 970, Publisher: "Audible Studios", ReleaseDate: "2021-05-04",
@@ -103,12 +107,11 @@ func fixtureCatalog() *model.Catalog {
 	}
 }
 
-// buildFixtureDB writes a fixture artifact and returns its path. added is the
-// file-derived added_at map passed to the builder.
-func buildFixtureDB(t *testing.T, cat *model.Catalog, added map[string]string) string {
+// buildFixtureDB writes a fixture artifact and returns its path.
+func buildFixtureDB(t *testing.T, cat *model.Catalog) string {
 	t.Helper()
 	out := filepath.Join(t.TempDir(), "meta.sqlite")
-	if err := build.Build(cat, out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC), added); err != nil {
+	if err := build.Build(cat, out, time.Date(2026, 7, 11, 0, 0, 0, 0, time.UTC)); err != nil {
 		t.Fatal(err)
 	}
 	return out
@@ -121,8 +124,7 @@ func buildFixtureDB(t *testing.T, cat *model.Catalog, added map[string]string) s
 // degrade to "no data" rather than 500 on the missing table.
 func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest.Server {
 	t.Helper()
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
+	dbPath := buildFixtureDB(t, fixtureCatalog())
 
 	db, err := sql.Open("sqlite", dbPath)
 	if err != nil {
@@ -151,8 +153,7 @@ func downgradedServer(t *testing.T, version int, dropTables ...string) *httptest
 
 func newTestServer(t *testing.T) (*Server, *httptest.Server) {
 	t.Helper()
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	dbPath := buildFixtureDB(t, fixtureCatalog(), added)
+	dbPath := buildFixtureDB(t, fixtureCatalog())
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -312,7 +313,7 @@ func TestLatestSeriesDiversityCap(t *testing.T) {
 			},
 		}},
 	}
-	dbPath := buildFixtureDB(t, cat, nil)
+	dbPath := buildFixtureDB(t, cat)
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -796,15 +797,14 @@ func TestPositionStart(t *testing.T) {
 // concurrently, swaps mid-flight, and asserts the stat flips atomically without
 // a race (run under -race).
 func TestHotSwap(t *testing.T) {
-	added := map[string]string{"project-hail-mary": "2026-07-10T00:00:00Z"}
-	db1 := buildFixtureDB(t, fixtureCatalog(), added)
+	db1 := buildFixtureDB(t, fixtureCatalog())
 
 	cat2 := fixtureCatalog()
 	cat2.Works = append(cat2.Works, &model.Work{
 		ID: "artemis", Title: "Artemis", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
 	})
-	db2 := buildFixtureDB(t, cat2, added)
+	db2 := buildFixtureDB(t, cat2)
 
 	srv, err := New(Config{DBPath: db1, swapGrace: time.Minute})
 	if err != nil {

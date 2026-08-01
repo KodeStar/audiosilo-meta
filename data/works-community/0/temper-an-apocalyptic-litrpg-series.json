@@ -1,0 +1,1582 @@
+{
+  "entries": {
+    "temper-an-apocalyptic-litrpg-series": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful defender returning from an underground rescue, Drew is responsible for guiding a large column of civilians toward safety while threats gather around them. His companions remain below ground after rescuing captives, and the shelter group looks to him for their return.",
+            "id": "drew-michalik",
+            "name": "Drew Michalik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A practical leader who protects a civilian shelter while Drew's rescue party is away. Katie can reshape walls and uses that ability to strengthen defenses against repeated monster attacks. She directs armed civilians and adapts the shelter when burrowing creatures breach its floor.",
+            "id": "katie-sabin",
+            "name": "Katie Sabin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted member of Drew's rescue party and a capable healer. Sarah helps lead the survivors being brought back from underground captivity. Although separated from the shelter overnight, she remains connected to JP through his command-linked sight.",
+            "id": "sarah-rothschild",
+            "name": "Sarah Rothschild",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An invisible scout who reconnoiters the rescue route and helps guard the column's rear. He remains underground with Drew's party after the captive rescue. His ability to move unseen makes him central to judging the hazards between the survivors and safety.",
+            "id": "daryl",
+            "name": "Daryl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order of the Fang scout corporal and firearms specialist. His command-linked sight can briefly show him what selected allies are seeing while he helps defend Katie's shelter. The link also gives the shelter its limited view of Drew's distant rescue operation.",
+            "id": "jp",
+            "name": "JP",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defender connected to JP's command interface. He is among the established members of Drew's group as the separated survivors endure the night. His location with the returning rescue party lets JP follow part of the distant fighting through the command link.",
+            "id": "robbi",
+            "name": "Robbi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Air Force officer who inventories the survivors' Xatherite abilities and helps organize the vulnerable evacuation column. Hoffacker evaluates what each empowered survivor can contribute while the group prepares to move more than two hundred people through dangerous territory.",
+            "id": "major-hoffacker",
+            "name": "Major Hoffacker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A naval officer asserting formal command over the rescued survivors. He urges the column onward despite its size and vulnerability. His emphasis on continued movement places him in the formal chain of command as Drew reunites with Katie at the shelter.",
+            "id": "captain-snyder",
+            "name": "Captain Snyder",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Army private whose Xatherite lets him turn his body to rock. The added mass makes movement difficult and leaves him exhausted. The transformation offers substantial protection, but its physical burden limits how readily he can travel with the column.",
+            "id": "dak",
+            "name": "Dak",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defender traveling with the rescued column. Glenn fights with launched daggers and can stop incoming ranged attacks. Those complementary abilities give him a distinct place among the armed survivors protecting a much larger group of vulnerable civilians.",
+            "id": "glenn",
+            "name": "Glenn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young civilian attached to Drew's team whose power moves earth without direct contact. His ability offers practical value for altering terrain and defenses as the rescued column prepares to cross dangerous ground toward a more secure settlement.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A survivor who sends Drew a warning about Robbi's secret communications and his intended meeting at the bridge. Her message gives Drew and Katie reason to question Robbi's motives before the refugee column reaches the planned crossing.",
+            "id": "kara",
+            "name": "Kara",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Robbi's contact within an organized stadium faction. He accepts an instruction to postpone the group's planned action while Drew assesses conditions at the stadium. His response confirms that Robbi's private communications involve a coordinated political movement.",
+            "id": "gunther",
+            "name": "Gunther",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A healer assigned to Drew's bridge scouting party as it prepares a safe crossing for the survivor column.",
+            "id": "chief-mather",
+            "name": "Chief Mather",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a Nats Park patrol that meets Drew's approaching group. He confirms the stadium can provide shelter, though its resources are limited. He lowers his weapon after hearing what the refugees survived and begins the first cautious contact between the communities.",
+            "id": "sergeant-hargrave",
+            "name": "Sergeant Hargrave",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Arizona senator leading the survivor community at Nats Park. He grants the arriving refugees temporary admission despite the stadium's severe food shortage. Gunn begins negotiating how the newcomers will contribute and introduces the officials responsible for defense, food, and facilities.",
+            "id": "senator-robert-gunn",
+            "name": "Senator Robert Gunn",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The facilities manager at Nats Park. Gonzalez has restored running water and is one of the leaders introduced as the newcomers negotiate entry into the stadium community. His work supports one of the settlement's most important advantages despite its limited food supply.",
+            "id": "gonzalez",
+            "name": "Gonzalez",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly craftworker who reshapes monster bones into weapons, equipment, and storage gear. He examines the fire-croc remains for clues about their explosive bodies and measures Drew, Katie, and Sarah for carrying equipment that can hold unusually large loads.",
+            "id": "pappy",
+            "name": "Pappy",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A remarkably capable close-combat member selected for the stadium expedition. Chomp fights with an animate ball-and-chain and also possesses slowing fire and limited healing. His balance of endurance and striking power earns him a place on the urgent descent beneath Nats Park.",
+            "id": "chomp",
+            "name": "Chomp",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chomp"
+            ],
+            "description": "The seraph previously known to the expedition as Chomp. The Order of the Dragon charged Luke with helping Drew survive and develop, but strict rules limit when he may intervene. He also carries advanced equipment.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Navy chief healer whose embrace-based ability helps stabilize Hargrave after the underground expedition. Bill joins the triage effort when the severely burned scout is brought back from the node chamber and requires immediate treatment.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Muat mother goddess and Felidae prognosticator who contacts Drew as a fellow divinity. She identifies his developing sphere as Retribution and warns that powerful interests and the fae are moving against him, though her forecasts are not certain.",
+            "id": "isis",
+            "name": "Isis",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A giant English bulldog living near the Marine barracks. Chesty consumes hostile lizard creatures outside the building, and the stranded Marines feed it enemies rather than risk a confrontation with a creature they have learned to tolerate.",
+            "id": "chesty",
+            "name": "Chesty",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The senior field leader among the stranded Marines. He reports that nearly 150 survive, many too badly injured to move, and cooperates with Drew's group in organizing healing, equipment, and evacuation teams.",
+            "id": "gunnery-sergeant-daniels",
+            "name": "Gunnery Sergeant Daniels",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Marine who guides Drew's rescuers through the barricaded and trapped access routes of the barracks. Clark serves as their first guide inside the survivors' defensive position as Drew's group begins assessing casualties and evacuation routes.",
+            "id": "corporal-clark",
+            "name": "Corporal Clark",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Marine whose unusual crayon abilities can create sharp weapons and provide a powerful temporary physical enhancement when he consumes one of his creations. The strength of that enhancement makes Drew cautious about encouraging wider use.",
+            "id": "private-bird",
+            "name": "Private Bird",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B088ML5RVN",
+            "type": "community"
+          }
+        ],
+        "work": "temper-an-apocalyptic-litrpg-series"
+      },
+      "recaps": {
+        "ending": "Drew's forces break the coordinated Naga assault and confront the mind-worm conspiracy beneath Nats Park. Dak kills the submerged hive leader, which causes the infected Gonzalez to become its monstrous successor. Drew, Daryl, and Luke kill Gonzalez, and Drew claims the stadium node before collapsing from his wounds. Nats Park becomes a shielded habitat where Katie, Sarah, Daryl, JP, Hoffacker, Gunn, Luke, Dak, and the surviving civilians and Marines can regroup. Drew remains unconscious but stable, sustained by stored vitality. The local worm leadership is gone, though the existence of other infected hosts is uncertain. The supporting nodes are being developed for food, materials, and combat training ahead of an expected world boss. Snyder's condition after being shot is unknown, and Robbi's former faction has not reestablished contact. Drew's emerging connection to Retribution remains unresolved. The final threat is immediate: a fae seed ship descends west of the newly visible habitat.",
+        "in_short": "Drew Michalik brings more than two hundred rescued survivors to Nats Park, where food shortages and a hidden mental influence threaten the community. His team traces the danger to mind worms beneath the stadium, loses Robbi during the first descent, and learns that Luke is a seraph assigned to guide Drew as a developing Red Mage. Drew then claims a network of nearby nodes, prepares Dak to reach the submerged hive leader, and rescues stranded Marines. After Dak kills the hive leader, a coordinated Naga attack exposes Gonzalez as an infected collaborator and successor to the hive. Drew, Daryl, and Luke defeat him, allowing Drew to turn Nats Park into a shielded habitat. Drew ends the battle unconscious but healing, while his allies hold the base and prepare for a future world boss. A fae seed ship arrives immediately afterward.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: A system-driven catastrophe has transformed the world and empowered survivors through Xatherite. Drew Michalik has become a powerful defender and node claimant, supported by fortifier Katie Sabin, healer Sarah Rothschild, invisible scout Daryl, firearms specialist JP, and Robbi. Their group has rescued captives from trolls beneath the DIA, but saving them has created a much larger responsibility. More than two hundred civilians now depend on Drew's party for protection and a route to lasting shelter. The survivors include experienced fighters, newly empowered people, and many civilians unable to defend themselves. Repeated monster attacks have made leadership, scouting, healing, and the careful use of every combat ability essential to their survival. Drew's rescue force remains separated overnight from Katie and the shelter group, with monsters threatening both positions. Reuniting the groups and moving the expanded column to a secure settlement are the immediate priorities.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew's rescue party emerges from the DIA tunnels with a large civilian column after surviving further monster attacks. They reunite with Katie's fortified shelter, but the enlarged group must keep moving toward Nats Park. Evidence suggests that the troll shaman's final sacrifice transported victims off-world rather than killing them outright. A warning from Kara also raises suspicion about Robbi's private communications. During the march, Robbi admits that he belongs to an organized stadium faction seeking a new political order. He asks Drew to lead a breakaway community and take the rescued people elsewhere. Drew refuses to divide the survivors before they have food and shelter, insisting that he must inspect the stadium first. Robbi contacts Gunther and postpones the faction's move. Meanwhile, Drew discovers an underground route and a network of nearby nodes, suggesting both new dangers and possible future resources. His responsibility now extends beyond his original team to everyone they rescued.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivor column reaches the bridge after Drew's team learns that a kraken-like river creature previously destroyed most of JP and Robbi's group. Drew, Katie, Dak, and a healer scout the crossing. They draw out the creature and overwhelm it, then defeat giant rats and a large snake drawn to the area. The battle reinforces Drew's belief that dungeon nodes are a more reliable source of Xatherite than ordinary monsters. It also helps Drew and Katie identify monofatigue as a consequence of overusing mana abilities. Before the main column crosses, an armed patrol arrives from Nats Park. Sergeant Hargrave accepts that Drew's group needs shelter and reveals that the stadium is defended but far less secure and well supplied than JP and Robbi had suggested. Drew can see an unclaimed node beneath the stadium, while Hargrave warns that McNair and the Navy Yard contain major monster threats. The refugees are now close to shelter, but their destination has limited resources and concealed risks.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Senator Robert Gunn admits the refugees to Nats Park temporarily, but the arrival worsens an immediate food crisis. The stadium has water, crops, and defenses, yet food left overnight mysteriously spoils. Drew also suffers a green-mana mental attack from somewhere inside. He and Katie connect the attack, the food decay, and the strangely protected crops to the node beneath the stadium. Gunn gives Drew command of a specialized threat-elimination team, allowing him to retain Katie, Sarah, Robbi, JP, and Daryl while working with Major Hoffacker. Reconnaissance at McNair reveals camouflaged ambushers, mud-and-root creatures, and explosive fire crocs. Drew's reckless solo attack nearly traps him, after which he establishes Sarah as his second-in-command and sets a clear succession order. The group maps five connected nodes that could form a habitat, making the compromised stadium node its strategic priority. They return to Nats Park with monster materials and a plan to investigate rather than attack blindly, while ration inequality heightens tension between fighters and civilians.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pappy equips the team with storage gear while the stadium's ration system grows more severe. Drew and Sarah discover poisonous vines in distorted tunnels below Nats Park. After the garden is destroyed, Gunn authorizes a major underground expedition led by Drew with Sarah, Robbi, Hoffacker, Hargrave, and Chomp. The party destroys the central vine mass, then finds evidence that brain parasites control both the vines and other monsters. Deeper below, a vast infected fire crocodile guards the visible node. It catastrophically burns Hargrave and swallows Robbi before the group kills it. The node still rejects Drew's claim because the actual Guardian remains alive. Chomp then reveals himself as Luke, a seraph assigned to guide Drew. He identifies the parasites as mind worms produced by an immobile hive creature hidden in the underground pools. The expedition retreats so healers can stabilize Hargrave. Robbi is dead, the stadium node remains unavailable, and the group must find a way to kill a submerged enemy while also confronting the possibility that human hosts may already be infected.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Luke explains that Earth has been deliberately subjected to repeated dimensional splitting to produce Red Mages and fleets, regardless of the human cost. Drew rejects that fatalism but commits to securing the local node network. The group cannot safely reach the mind-worm hive leader in its boiling pool, so Katie and Luke contain the area while Drew's team clears other nodes. With Adam widening the entrance, they conquer a flooded fire-croc dungeon. Drew claims it as the Institute and begins converting it into a firearms training site. He next takes the National Defense University node after a coordinated assault on its Guardian. The new rewards strengthen Drew, JP, Daryl, and especially Dak, whose stone form gains greater mobility and an ability that repels liquids. Drew names the third node the Quarry and plans to use it for resource production. Dak receives rare metallurgy knowledge that aligns him with the network's industrial needs, though the upgrade leaves him unconscious. By the end of this stage, Drew controls three nodes and has a plausible method for sending Dak into the boiling pool.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Isis contacts Drew as a fellow divinity, identifies his developing sphere as Retribution, and warns that the fae are mobilizing against him. As Drew and Katie advance their abilities, the group diverts to rescue nearly 150 stranded Marines near the Navy Yard. They fight through Naga territory, meet the giant bulldog Chesty outside the barracks, and organize treatment and evacuation under Gunnery Sergeant Daniels. Drew claims the Marine Barracks node, while Katie fortifies a temporary outpost and the team covers the Marines' withdrawal. Back at Nats Park, Hoffacker integrates the survivors into the defense and continues preparing for undetected mind-worm hosts. Drew's party then crosses the bridge with Marine support and assaults the mud-horror node at the War College. JP's linked volleys destroy its plant Guardian, and Drew claims the node as Buzzard Point while the underground chamber collapses behind them. The final nearby obstacle to a stadium habitat is gone, but the submerged hive leader beneath Nats Park still must be killed.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Buzzard Point begins conversion into a food-production node. Luke warns that a future world boss may appear within roughly one to two hundred days and that even a habitat shield cannot withstand every attack. Dak uses his upgraded stone form to descend into the boiling pool and kill the mind-worm hive leader. At that moment, hundreds of Naga attack Nats Park. Drew's team destroys a three-headed Naga host and finds a mind worm inside it, proving the assault was coordinated. Sarah gives Drew a divine Xatherite that lets him store vitality from slain enemies, creating the reserve that later sustains him. During the defense, Naga breach the stadium and seize the armory. Drew, Luke, Sarah, Dak, and Daryl descend toward the node while Katie, JP, and Hoffacker hold the internal line. Gonzalez ambushes the descent team and reveals that he is an infected collaborator. When Dak kills the original hive leader, Gonzalez becomes its transformed successor. Drew, Daryl, and Luke kill him, after which Drew claims the stadium node and creates a shielded habitat. Drew collapses unconscious but remains stable and healing. The surviving community gathers inside its new refuge as a fae seed ship arrives to the west.",
+            "through": {
+              "chapter": 51
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B088ML5RVN",
+            "type": "community"
+          }
+        ],
+        "work": "temper-an-apocalyptic-litrpg-series"
+      }
+    },
+    "tenacity": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human Ritual Architect and apprentice to Havoc. Joe arrives in the giant world among the displaced refugees and immediately takes a leading role in recovering the Pyramid of Panacea before its connection to their former world closes.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A dwarven master crafter, Joe's mentor, and McPoundy's brother. Havoc supports the refugees' immediate survival work while arguing that the new settlement needs a working forge as soon as possible.",
+            "id": "havoc",
+            "name": "Havoc",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarven leader coordinating the refugees' first response to the giant world's cold, scarce resources, and monster threat. Grandmaster Snow directs the urgent work of turning an exposed camp into a settlement capable of survival.",
+            "id": "grandmaster-snow",
+            "name": "Grandmaster Snow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven grandmaster smith and Havoc's brother. McPoundy presses for the immediate establishment of a forge while the refugee leadership decides which basic needs must receive their limited labor and materials first.",
+            "id": "mcpoundy",
+            "name": "McPoundy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist closely tied to the Pyramid of Panacea. Jake urgently supports recovering the artifact building during the refugees' escape.",
+            "id": "jake",
+            "name": "Jake",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A world boss pulled through the relocation portal while clinging to the Pyramid of Panacea. Transformed into a lava creature in the giant world, the Lava Phoenix attacks the refugees and the damaged building they have just recovered.",
+            "id": "lava-phoenix",
+            "name": "Lava Phoenix",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An absent contact whose history with Joe and Jaxon remains unsettled. Joe remembers both Daniela's betrayal and her role in rescuing them, leaving him uncertain how to understand what she did or what he owes her.",
+            "id": "daniela",
+            "name": "Daniela",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adviser on settlement layout who explains building-slot limits and helps Joe choose where new structures should be placed.",
+            "id": "city-planner",
+            "name": "City planner",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Joe's human ally and an experienced combatant. Jaxon reunites with him in the refugee settlement as its residents prepare defenses, shelter, and supplies for the formal monster waves threatening their new home.",
+            "id": "jaxon",
+            "name": "Jaxon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven engineer and logistics specialist. Bauen commits engineers and earth mages to emergency trenches and rough walls as the exposed settlement prepares for its first scheduled beast waves.",
+            "id": "bauen",
+            "name": "Bauen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven master who sits on the council by a technicality after losing a masters' contest to Joe. The Master of Sarcasm is already hostile to Joe as the refugees begin organizing the government and defenses of their settlement.",
+            "id": "master-of-sarcasm",
+            "name": "Master of Sarcasm",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A smith who accepts responsibility for managing Joe's volatile new smithy. Smitty operates the facility for the settlement's crafters and works with Joe to establish how its users will pay for access.",
+            "id": "smitty",
+            "name": "Smitty",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's contracted life-draining summon. The pseudo-lich is deployed through a ritual orb during a beast wave, attaching itself to an elite attacker and weakening the creature while the defenders try to contain it.",
+            "id": "joes-pseudo-lich",
+            "name": "Joe's pseudo-lich",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dwarven official who reports expected monster-core yields, confirms Joe's ownership of creatures he kills, and arranges a corpse-storage warehouse that grants Joe a share of its materials.",
+            "id": "resource-manager",
+            "name": "Resource manager",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Cleavage"
+            ],
+            "description": "A returning dwarven officer now serving as a council messenger. Major Cleavage exposes the flaw in a building-limit law aimed at Joe and openly questions the council's treatment of him after her experience working alongside humans.",
+            "id": "major-cleavage",
+            "name": "Major Cleavage",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human mage who studies formations and variant architecture. Havoc assigns Socar to Joe's defensive-design team, where his understanding of linked magical layouts offers a way to make settlement-scale rituals work together.",
+            "id": "socar",
+            "name": "Socar",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human bow fighter whose expertise covers planned target orders and intersecting firing lanes. Heartpiercer McShootypants joins Joe's design team and quickly finds a geometric improvement that can reduce the mana cost of his defensive bubbles.",
+            "id": "heartpiercer-mcshootypants",
+            "name": "Heartpiercer McShootypants",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An upgrade-wave boss encased in regenerative ice armor and supported by elite salamanders. The Armored Iceberg Rhinocelus smashes through a long section of the village wall and prepares to charge the defenders behind it.",
+            "id": "armored-iceberg-rhinocelus",
+            "name": "Armored Iceberg Rhinocelus",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An intelligent boss commanding a gathered monster force during the settlement's upgrade trial. The Frozen Cyclops speaks to the defenders, demands that they destroy their own city center, and can delay its army while later waves approach.",
+            "id": "frozen-cyclops",
+            "name": "Frozen Cyclops",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An adviser Joe contacts through Query when the system presents a choice between experience and ritual resources. The Query adviser recommends rejecting both offered restrictions, though the person's identity and authority remain unclear.",
+            "id": "query-adviser",
+            "name": "Query adviser",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CK52KV5S",
+            "type": "community"
+          }
+        ],
+        "work": "tenacity"
+      },
+      "recaps": {
+        "ending": "Novusheim survives all twenty-five waves and becomes a town when Joe uses the strengthened Ritual of Slaughter to kill the Frozen Cyclops. The damaged town hall is repaired and returned to its original site, and the settlement receives a 100-hour period in which monsters cannot approach its walls unless provoked. Grandmaster Snow gives the human population formal representation through Joe, while Major Cleavage holds the Master of Sarcasm pending a still-unresolved judgment. Jaxon, Havoc, Jake, Bauen, Socar, Heartpiercer McShootypants, Smitty, and the principal dwarven leaders survive. Joe secretly keeps the artifact-grade core taken from the Cyclops, and a policy change grants him half the experience and aspects from indirect monster kills. Jake still controls the Pyramid carrying Joe's mythic core, with his debt increasing for as long as he safeguards it. Daniela's allegiance and situation remain uncertain. The refugees have secured a viable base, but political divisions, unfinished infrastructure, and the need to build a city capable of supporting an escape route keep their larger struggle open.",
+        "in_short": "Joe and the refugees arrive in a freezing giant world and race to turn an exposed camp into a lasting settlement. After the first guild hall falls, Joe builds shelter, water systems, businesses, ritual towers, mana batteries, and stronger walls while political suspicion limits his authority. A twenty-five-wave upgrade trial brings ice monsters, devastating bosses, heavy losses, and a factional split. Joe accepts responsibility for those who remain and becomes the settlement's defense coordinator. During the final crisis, the Master of Sarcasm frames and attacks him, but Major Cleavage intervenes and Jaxon helps preserve the town hall from the Frozen Cyclops's charged strike. Joe strengthens the Ritual of Slaughter and uses it to kill the boss, allowing the defenders to complete the trial. Novusheim becomes a town, Joe gains formal standing as the humans' representative and better rewards for indirect kills, and he privately takes the boss's artifact-grade core. The survivors gain a brief defensive respite but remain trapped and must continue building toward an eventual escape.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe studied ritual architecture as Havoc's apprentice and traveled with Jaxon and a large dwarven population displaced by conflict. Their escape carried them away from Alfheim and into a giant world that functions as another prison. Survival there is only an intermediate goal. A lasting exit will require the refugees to maintain a high-tier city, clear the cloud layer above it, and establish a stable connection for a rainbow bridge. Joe's practical bond with the dwarves is complicated by old titles, obligations, and suspicion, while his personal history with Daniela includes both betrayal and rescue. The refugees begin this volume together but without the secure city their next escape requires.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe arrives in the giant world with roughly eighty thousand dwarves and several thousand humans. The extreme cold, unusually long day and night, unstable magic, and nearby monsters make shelter and infrastructure urgent. He leads the recovery of the Pyramid of Panacea, but the relocation also pulls through a Lava Phoenix. The boss attacks the refugees before imploding, and a system error leaves Joe with its mythic core while denying ordinary rewards. Joe repairs the Pyramid, builds an unstable smithy, creates ritual stabilizers, and mass-produces heated shelter tiles. The Pyramid's restoration advances the camp to a hamlet and starts scheduled beast waves. During the first attack, defenders underestimate the penguin-like creatures. One rejects Joe's authority, costing him his Major General Pyrrhic title, and scattered monsters destroy the guild hall. With the upgrade canceled but later waves still coming, Joe identifies the scenario as a tower-defense problem and proposes a layered maze instead of sealed walls.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The refugees adopt Joe's maze defense, and he proves that his heated bubbles can provide shelter and meltwater. Because a guild-hall settlement would remain controlled by one guild, the dwarves require a town hall as the new civic center. Joe builds it with phoenix aspects, but Grandmaster Snow keeps him outside the council's strategic work after his title loss. He develops better ritual stability, improves his alchemy, and installs an artificial sky to restore a day-night rhythm. Joe entrusts the mythic core to Jake by attaching it to the Pyramid of Panacea. The building gains exceptional crafting potential, Jake becomes responsible for safeguarding the core, and the favor he owes Joe grows with time. Joe also begins establishing independent facilities instead of supplying unlimited unpaid labor. After an elite penguin exposes flaws in the defensive corridors, Joe kills it and claims its rare core. The hamlet qualifies as a village, beginning preparations for a much larger twenty-five-wave upgrade trial.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe turns settlement needs into agreements that provide him with continuing material shares. He rapidly builds a corpse warehouse, finances a preservation business, and avoids a council law limiting individual building ownership because the enterprises belong to their operators. Major Cleavage exposes that failure and challenges the council's targeted treatment of him. A proposed mine threatens to add burrowing monsters permanently to future waves, so Joe accepts responsibility for finding a safer solution. Havoc assembles a design team with Joe, Bauen, Socar, and Heartpiercer McShootypants. Together they begin combining ritual towers, formations, engineering, and targeting analysis. They learn how Joe's Ritual of Slaughter transfers excess force between qualifying targets and install automated lightning defenses, supported by a large production run of stabilization cubes. An off-site mine resolves the underground threat. Smitty formally takes ownership of Joe's unstable smithy while granting him five percent of its completed goods. Joe also recognizes monster blood as a potential water supply and designs a process to separate it into usable water and other material.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe confirms that his blood-processing ritual produces clean water and chooses to develop the service independently before later transferring a completed water tower to the council. Daniela contacts him with an anxious report that her employer is angry with her, but the reason remains unknown. Joe's team builds a formation of ritual towers that slows incoming waves and gives him experience for creatures the network damages. He improves the ritual orb controlling his pseudo-lich and continues planning mana batteries for the defenses. Completing the settlement's ordinary building slots begins the twenty-five-wave town upgrade. Despite a council prohibition, Joe installs the central piece of a Ritual of Slaughter on the town hall and activates the remaining pieces during an early attack. Ice salamanders nearly trap him and accelerate the collapse of the raised-stone walls, but the defenders survive. Joe's automated network proves effective against lesser creatures, and processing his share of the corpses supplies more cores and aspects. The defenses work, but they need fire damage, durable construction, and constant maintenance.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The next attack arrives with an Armored Iceberg Rhinocelus and elite salamanders. Its regenerative ice armor and charge destroy a major section of wall. The defenders discover that killing the attached salamanders prevents the armor from returning, and Heartpiercer McShootypants cripples the boss before the Legion finishes it. A lesser monster reaches the civic center, prematurely activating the costly Ritual of Slaughter and consuming the weapon. With the village damaged and the Legion suffering severe losses, Joe accepts that driving the upgrade forward made him responsible for the residents. He offers most of his corpse income and a bubble evacuation plan to those who stay. A master-led faction departs, reducing the population from more than ninety thousand to fewer than forty thousand. The council grants Joe practical authority as Master Coordinator. He names the intended town Novusheim, restores tower batteries, and organizes modular wall construction. Joe begins converting cores into high-capacity monobatteries and leads a growing volunteer effort to replace the weakest defenses with Tier V wall sections.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe completes critical Tier V wall sections while dedicated crews keep the ritual towers supplied with charged monobatteries. By the twentieth wave, coordinated teams have replaced most of the inner wall. The next boss is the Frozen Cyclops, an intelligent commander that demands the destruction of the settlement's city center and holds a massed monster army in reserve while later waves approach. Salamanders fracture the remaining weak outer sections, leaving eleven major gaps even after the Legion destroys them. The system also tries to force Joe to choose between experience and ritual resources. On advice from a Query contact, he rejects both restrictions, leaving the calculation unresolved. Unable to rebuild every breach properly, Joe designs disposable warehouse structures that channel monsters toward small openings and tower fire. He also prepares a more selective Ritual of Slaughter at the town hall, intended to gather strength from marked attackers and focus it on the boss. Grandmaster Snow conditionally agrees to support Joe's future city plan if the settlement survives without catastrophic losses.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe turns the temporary warehouse barriers into a maze and marks creatures passing through them for his enhanced Ritual of Slaughter. More than ten thousand monsters enter the final wave while volunteers replace tower batteries and keep the defenses firing. The Frozen Cyclops resists the tower attacks, immobilizes Joe with its eye, and charges its dragged club with destructive power. Grandmaster Snow orders evacuation rather than risk the population against the coming strike. Joe modifies the evacuation bubbles to send people toward the breakaway settlement, but remains behind to defend the town hall. He discovers that monsters avoid even fragile barriers and repeatedly redirects the attack. A concealed entrance briefly traps the Cyclops, but it breaks free. At the evacuation site, the Master of Sarcasm reveals that he intercepted Joe's messages with Daniela, accuses Joe of treason, provokes an apparent attack, and assaults him. Major Cleavage knocks the master unconscious. Jaxon, riding the Cyclops, forces its head aside long enough for Joe's bubble barrage to delay it. The charged club devastates the area and nearly kills Joe, but he relocates the town hall before the full impact.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe heals his near-fatal injuries and returns to the defense as the Frozen Cyclops advances on the displaced, ruined town hall. The marked attackers feed power into the enhanced Ritual of Slaughter. Its first strike cripples the boss's foot, a reflective phase turns the Cyclops's own eye effect against it, and the final concentrated attack kills it. Residual force destroys many nearby monsters, and Joe rallies thousands of defenders to clear the remainder while protecting and repairing the civic center. Completion of all twenty-five waves raises the settlement to town rank. Major Cleavage recaptures the escaping Master of Sarcasm, and Joe prevents an immediate execution, proposing removal from the council and compulsory service while the case is resolved. Grandmaster Snow returns with the evacuees, acknowledges the masters' failure to intervene earlier, and establishes human representation through Joe. The repaired town receives a 100-hour monster repellent. Joe secretly takes the Cyclops's artifact-grade core, while administrators grant him half the experience and aspects from future indirect kills. Novusheim has survived, but its route out of the giant world still depends on continued city-building.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CK52KV5S",
+            "type": "community"
+          }
+        ],
+        "work": "tenacity"
+      }
+    },
+    "the-amber-spyglass": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Lyra Silvertongue"
+            ],
+            "description": "The girl from a world of daemons who, across two books, has become central to a war spanning the worlds. As this book opens she is a prisoner, kept drugged and asleep in a remote cave by her own mother, Mrs. Coulter, who is hiding her from a Church that wants her dead. Prophecy names Lyra as one who will face a great temptation with the fate of all worlds hanging on her choice. Resourceful, loyal, and bound to her daemon Pantalaimon, she will be reunited with Will and drawn into a journey that leads even into the land of the dead.",
+            "id": "lyra-belacqua",
+            "name": "Lyra Belacqua",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The boy from an Oxford like ours who bears the subtle knife, a blade that can cut windows between worlds and sever anything. Grieving his father and separated from Lyra, he sets out to rescue her, guided at first by two rebel angels. Determined and steady beyond his years, he is prepared to defy angels and armies alike to reach her. The knife makes him a figure of enormous importance in the coming war, and his bond with Lyra grows into the heart of the story.",
+            "id": "will-parry",
+            "name": "Will Parry",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pan"
+            ],
+            "description": "Lyra's daemon and the outward form of her soul, still shifting shape as a child's daemon does. He shares everything Lyra suffers, and the bond between them is tested as never before when their journey demands a terrible separation. Through this book the deep meaning of that bond, and what it costs to be parted, becomes one of the central mysteries, and Pantalaimon's fate is tied to Lyra's growth toward adulthood.",
+            "id": "pantalaimon",
+            "name": "Pantalaimon",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Lyra's mother, a beautiful, brilliant, and dangerous woman who has spent her life serving and manipulating the Church of her world. Now she has stolen her own daughter away and keeps her hidden and asleep in a mountain cave, fiercely resolved that no one else shall have her. Her motives are a tangle of obsession, cunning, and a maternal feeling she barely understands in herself, and neither the Church nor Lord Asriel can be sure whose side she is truly on. Her daemon is a golden monkey.",
+            "id": "mrs-coulter",
+            "name": "Mrs. Coulter",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Lyra's father, a proud and ruthless commander who has raised an army and built a great fortress in another world to make war on the Authority, the ancient power behind the Church. Brilliant and utterly single-minded, he has gathered rebel angels, exiled beings, and warriors from many worlds to his cause of overthrowing the Kingdom of Heaven. He cares more for his vast purpose than for any single person, yet the fate of his daughter is caught up in the war he has begun.",
+            "id": "lord-asriel",
+            "name": "Lord Asriel",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "One of two rebel angels who attach themselves to Will after his father's death, meaning to bring the knife-bearer to Lord Asriel. Angels in this story are beings of Dust, less solid than humans, and proud, sorrowful Balthamos is devoted to his companion Baruch. Though at times disdainful and easily wounded, he becomes a real guardian to Will, and his loyalty is tested by grief and danger as the war closes in.",
+            "id": "balthamos",
+            "name": "Balthamos",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The physicist and former nun from Will's world who studied conscious dark matter. Told by the particles themselves to play the serpent, she leaves her own world through a window and comes to the land of the mulefa, strange wheeled creatures who live in harmony with the Dust their world calls sraf. There she builds an amber spyglass that lets her see Dust directly, and she discovers that it is draining away from all the worlds. Her role in the story's climax proves quietly decisive.",
+            "id": "mary-malone",
+            "name": "Mary Malone",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two Gallivespians, members of a race of proud people no larger than a hand, who ride dragonflies and carry venomous spurs on their heels. Allied with Lord Asriel, they are sent to watch over and, if need be, control Lyra and Will. Fierce, honourable, and quick to take offense at any slight to their dignity, Tialys and Salmakia come to respect and protect the children, accompanying them on their most dangerous journey and sharing its perils.",
+            "id": "gallivespian-spies",
+            "name": "Chevalier Tialys and Lady Salmakia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The armoured bear-king of Svalbard, Lyra's fierce and loyal friend from earlier travels. Wise and honourable in the plain way of his kind, he leads his bears through a world thrown into upheaval by the war and the strange warming of the North. When Will's knife is broken, it is Iorek's unmatched skill at working metal that can mend it, and he lends his strength once more to Lyra's cause even as he warns of the dangers the knife carries.",
+            "id": "iorek-byrnison",
+            "name": "Iorek Byrnison",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A zealous young priest of the Church in Lyra's world, chosen for a secret and terrible mission. Believing Lyra to be a second Eve whose temptation could doom all souls, the Church's Consistorial Court grants him absolution in advance for a murder not yet committed and sends him to hunt Lyra down and kill her before she can fall. Patient and utterly devoted to his purpose, he follows her trail across the worlds.",
+            "id": "father-gomez",
+            "name": "Father Gomez",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A mighty and merciless angel who serves as Regent, ruling the Kingdom of Heaven in place of the ancient, failing Authority. Once a man in the earliest days of the world, he has grown into a being of enormous power and ambition, bent on tightening the Kingdom's grip over every world and crushing Lord Asriel's rebellion. Ruthless and watchful, he becomes the chief enemy in the war's final reckoning.",
+            "id": "metatron",
+            "name": "Metatron",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The first and oldest of the angels, who long ago claimed to be the creator of all things and set himself up as God over the worlds, giving rise to the Kingdom of Heaven and its Church. In truth he made nothing; he was only the earliest being to condense out of Dust. By now impossibly ancient, he has withdrawn from rule, leaving power to his Regent, and is little more than a frail relic of the authority he once wielded.",
+            "id": "the-authority",
+            "name": "The Authority",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-amber-spyglass"
+      },
+      "recaps": {
+        "ending": "The war ends through sacrifice: Lord Asriel and Mrs. Coulter together drag the Regent Metatron into a bottomless abyss, dying to destroy him, while the ancient Authority, freed from his crystal litter by Will and Lyra, simply dissolves into the air. Reunited with the daemons they left at the shore of the dead, Will and Lyra reach the world of the mulefa and Mary Malone. There, as Mary tells of losing her faith and choosing love, the two children fall in love themselves. That love fulfills the prophecy: the Dust that had been draining out of all the worlds stops flowing away and begins to settle again, and their daemons take their final adult shapes, Pantalaimon a pine marten and Will's daemon a cat. The angel Balthamos kills Father Gomez before he can murder Lyra. But they learn a hard truth: every window the knife has cut leaks Dust and spawns Spectres, so all must be closed except the one through which the dead escape. Because a person can only truly live in their own world, Will and Lyra must return to their separate worlds and can never meet again. They part in grief, vowing to sit each year on the same day on a bench in the Botanic Garden of their own Oxford. Lyra, her instinctive gift for reading the alethiometer gone, resolves to grow up, study, and help build the Republic of Heaven where she belongs.",
+        "in_short": "Mrs. Coulter hides the drugged Lyra in a cave to keep her from a Church that wants her killed, believing prophecy names her a second Eve. Will, bearing the subtle knife and helped by rebel angels and tiny Gallivespian spies, has the blade repaired by Iorek Byrnison and rescues her. Together they journey into the land of the dead to free the ghost of Lyra's dead friend Roger; leaving their daemons behind, they release all the ghosts to dissolve into the universe. Mary Malone, among the wheeled mulefa, builds a spyglass that reveals Dust draining from every world. In the great war, Will and Lyra free the ancient Authority, who crumbles away, while Lord Asriel and Mrs. Coulter sacrifice themselves to destroy the Regent Metatron. Reunited with their daemons, the two children fall in love, which halts the loss of Dust and settles their daemons into adult forms; an assassin priest is killed before he can harm Lyra. But because open windows drain Dust and breed Spectres, all must be closed, and Will and Lyra, unable to live in each other's worlds, part forever, promising to remember each other each year.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Across the first two books, Lyra Belacqua, raised at Jordan College in a world where souls take animal form as daemons, was drawn into a war over the conscious substance called Dust. She learned that Lord Asriel and Mrs. Coulter are her father and mother, destroyed a station where children were cut from their daemons, and crossed a bridge Asriel tore between worlds. In another world she met Will Parry, a boy from an Oxford like ours, who became bearer of the subtle knife, a blade that cuts windows between worlds. Together they were pursued by the Church and by powers beyond it. Will's long-lost father, recognized only at the moment of his death, told Will the knife was central to the coming war. At the end of the second book, Lyra was drugged and carried off by Mrs. Coulter, and two rebel angels offered to guide Will to Lord Asriel.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs. Coulter hides the drugged, sleeping Lyra in a remote mountain cave, guarding her from a Church that has decided the girl must die, since prophecy names her a second Eve whose temptation could damn or save all worlds. A local girl, Ama, senses something wrong and tries to help wake her. Will, grieving his father, is joined by two rebel angels, Balthamos and Baruch, who mean to bring him to Lord Asriel, but Will insists on rescuing Lyra first. When his knife is broken, he seeks out the bear-king Iorek Byrnison to repair it. Meanwhile the Church's Consistorial Court, fearing the temptation above all else, grants a priest, Father Gomez, absolution for a murder not yet done and sends him to kill Lyra. In yet another world, the physicist Mary Malone passes through a window and begins to find her way among strange new surroundings.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Iorek's help the subtle knife is mended, and Will, aided by the angels and by two tiny Gallivespian spies, Tialys and Salmakia, reaches the cave and rescues Lyra from her mother. Reunited, the two children fix on a daring, secret purpose: to travel into the world of the dead. Mary Malone, in the world of the mulefa, wheeled creatures who live in balance with the Dust they call sraf, learns their ways and builds an amber spyglass through which Dust becomes visible. Through it she makes a disturbing discovery: Dust is steadily draining out of the worlds, a loss that threatens conscious life everywhere. As Lord Asriel's rebellion gathers strength and the Church hunts Lyra, the children prepare for a journey no living person is meant to make.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To reach the land of the dead, Lyra and Will must do the unthinkable: leave their daemons behind at the shore, an agony that feels like tearing away part of themselves. Accompanied by the loyal Gallivespians, they cross into a grey underworld where the ghosts of everyone who ever died linger under the torment of harpies. There Lyra finds the ghost of her friend Roger, whose death she has never forgiven herself for, and keeps her promise to come for him. In the mulefa world, Mary continues her study of Dust and of the great trees whose life depends on it. Across the worlds, Lord Asriel's forces and the armies of the Kingdom of Heaven move toward open war, and Father Gomez keeps relentlessly to Lyra's trail.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lyra strikes a bargain with the harpies: in exchange for true stories, they will guide the dead. Will cuts a window out of the land of the dead into the living world, and the ghosts stream out to dissolve joyfully into the physical universe, freed at last from their grey imprisonment. Emerging, Will and Lyra are caught up in the vast battle between Lord Asriel's republic and the forces of the Authority. Amid the chaos they come upon a crystal litter holding the Authority himself, the first and oldest angel, now unimaginably frail; when they gently free him, he simply dissolves away into the wind. The Regent Metatron, who rules the Kingdom in the Authority's place, turns the full force of his power against Asriel's rebellion.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mrs. Coulter goes to Metatron pretending to betray Asriel, and together she and Lord Asriel spring their trap: they seize the Regent and drag him, and themselves, over the edge of a bottomless abyss, destroying Metatron at the cost of both their lives. The war for the worlds turns on that sacrifice. Will and Lyra, still parted from their daemons and worn to exhaustion, search for a way back to the world of the living and to their souls, while Father Gomez, still hunting, closes in on Lyra with murder in mind. Mary Malone, in the mulefa world, senses that a turning point is near and prepares, without knowing it, to play the part the Dust has chosen for her.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reunited with their daemons, Will and Lyra come to the mulefa world and to Mary Malone, who tells Lyra the story of how she lost her faith and found love. As Lyra and Will realize they love each other, the drifting Dust stops draining and begins to settle again around them, and their daemons at last take fixed adult forms. The angel Balthamos kills Father Gomez before he can shoot Lyra. But joy turns to grief: they learn that every window cut between worlds leaks Dust and breeds soul-eating Spectres, and so all of them must be closed, save the one that lets the dead escape. Because no one can live long in a world not their own, Will and Lyra must return to their separate worlds and never meet again. Heartbroken, they part, vowing to sit each year on the same day on a bench in the Botanic Garden of their own Oxford. Lyra, who has lost her instinctive gift for reading the alethiometer, resolves to grow up and help build the Republic of Heaven in the world where she belongs.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-amber-spyglass"
+      }
+    },
+    "the-ask-and-the-answer": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator and hero, a boy from the settlement of Prentisstown on a colonized planet where the Noise makes every man's thoughts audible. Loyal and stubborn, he has come to the city that was meant to be a refuge only to fall into the hands of the man he most feared. Separated from Viola, the girl he crossed the wild country with, he is forced into service under a ruler who uses their bond against them both.",
+            "id": "todd-hewitt",
+            "name": "Todd Hewitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The girl who fell from the sky as the survivor of a scout ship, silent in a world of Noise and the advance party for thousands more settlers still to arrive. Resourceful and brave, she is taken from Todd and placed among the city's women and healers. Their forced separation, each held as leverage over the other, shapes the choices she must make.",
+            "id": "viola-eade",
+            "name": "Viola Eade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "President Prentiss"
+            ],
+            "description": "The cold, controlled former leader of Prentisstown, now ruler of the captured city, which he governs with iron discipline. A master of his own Noise and of other men's minds, he wields power through fear, manipulation, and a talent for turning people into instruments of his will. He takes a particular, unsettling interest in Todd.",
+            "id": "mayor-prentiss",
+            "name": "Mayor Prentiss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Mayor's brutish, insecure son, desperate for his father's approval. He is set to work alongside Todd on the regime's grim labors, and the uneasy, resentful partnership between the two young men grows more complicated than either expects.",
+            "id": "davy-prentiss",
+            "name": "Davy Prentiss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A formidable, strong-willed healer who runs the city's house of healing and once held real influence. Fierce, principled, and dangerous in her own right, she becomes a central figure in the resistance rising against the new regime, and a leader whose methods raise hard questions of their own.",
+            "id": "mistress-coyle",
+            "name": "Mistress Coyle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man Viola meets in the city, warm and quick to befriend her, who is drawn like her into the widening conflict. He becomes an ally and companion to Viola as events force ordinary people to take sides.",
+            "id": "lee",
+            "name": "Lee",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "1017"
+            ],
+            "description": "One of the Spackle, the planet's native people, marked by a number as the regime forces them into captivity and labor. Silent and watchful, this particular Spackle crosses paths with Todd during the grim work he is made to do, and a wordless, fraught connection forms between them.",
+            "id": "1017",
+            "name": "The Spackle 1017",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ask-and-the-answer"
+      },
+      "recaps": {
+        "ending": "The struggle between President Prentiss's regime, the Ask, and Mistress Coyle's resistance, the Answer, escalates into open, brutal conflict, with both sides willing to do terrible things and Todd increasingly implicated in the regime's cruelty. In the chaos Mayor Prentiss coldly kills his own son Davy, severing the fragile bond that had formed between Davy and Todd and showing just how far the man will go. The regime's long enslavement and abuse of the native Spackle finally ignites their revolt, and the book closes as an enormous Spackle army advances on the city, promising all-out war. At the same moment the first scout ship of the settler convoy, thousands of colonists still en route, touches down, drawing Viola's people directly into the conflict. Todd and Viola, battered and morally scarred by what they have done to survive and to protect each other, are left facing a new and far larger war on three sides, with the outcome entirely unresolved.",
+        "in_short": "Todd and Viola reach the city of Haven only for it to fall at once to Mayor Prentiss, now calling himself President, who separates the two and holds each as leverage over the other. Todd is set to grim labor branding and corralling the planet's native Spackle alongside the Mayor's cruel son Davy, while Viola recovers among the city's healers and is drawn into a rising resistance, the Answer, led by the fierce Mistress Coyle. As Prentiss's regime, the Ask, tightens its grip, the Answer strikes back with bombings, and the city slides into a spiral of attack and reprisal that compromises everyone caught in it, Todd most of all. Both sides commit terrible acts in the name of their cause. The enslavement of the Spackle finally provokes them to rise, and the book ends as a vast Spackle army sweeps toward the city and the first scout ship of the long-awaited settler convoy arrives, leaving Todd and Viola facing a three-sided war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: On a colonized planet where the Noise makes every man's thoughts audible, Todd Hewitt was the last boy in the isolated, all-male settlement of Prentisstown, raised on the lie that his town was all that survived of the colony. Fleeing before the birthday meant to make him a man, he found Viola, a silent girl who had crashed there as the advance scout of thousands more settlers to come. Together they raced across the wider world toward the city of Haven, pursued by the fanatical preacher Aaron, whom Todd was finally forced to kill, and by the cold Mayor Prentiss and his army. Todd lost his dog Manchee along the way. They reached Haven at last only to find it had already surrendered to Mayor Prentiss, who proclaimed himself President, with Viola gravely wounded and no refuge left. This book opens in the captured city, in the Mayor's power.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-ask-and-the-answer"
+      }
+    },
+    "the-aspects": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A former Night Horror and experienced shadow fighter who travels with Zach through the fallen Empire. With their former conditions reversed, she watches over him, keeps him oriented, and searches for help as his dangerous fixation returns.",
+            "id": "naha",
+            "name": "Naha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Zach"
+            ],
+            "description": "An Earth survivor, Warden, and time-aspect fighter leading refugees with Naha. He takes a young survivor into his care, but a returning mental imbalance turns his drive to understand essence into a danger to himself and those close to him.",
+            "id": "zacharia-gardner",
+            "name": "Zacharia Gardner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young refugee with the Survivor class and no dependable family support. Zach assumes responsibility for him and begins teaching him alongside the other children in the refugee group.",
+            "id": "hero",
+            "name": "Hero",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ryun"
+            ],
+            "description": "The head of Twilight Melody, returning to the physical world after years of recovery in the void. He carries Brightstar and recovers Zenker's body, armor, and stored possessions.",
+            "id": "ryun-nacht",
+            "name": "Ryun Nacht",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ryun's mentally bonded ally and a construct fighter. She has brought the surviving group to Twilight Melody and maintains contact with Ryun as he makes his way back through the ruined Empire.",
+            "id": "selia",
+            "name": "Selia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ryun's awakened forge and bonded companion. It provides a mental workshop where he can practise smithing with known materials, and its capacities grow as their bond deepens.",
+            "id": "brightstar",
+            "name": "Brightstar",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dead drake whose earlier sacrifice weakened Haster and helped make the eventual victory possible. Ryun finds his preserved body in a damaged formation and recovers his armor and stored possessions.",
+            "id": "zenker",
+            "name": "Zenker",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anrosh"
+            ],
+            "description": "Twilight Melody's acting leader and protector while Ryun is absent. She governs a refuge of nearly ten million people through shortages and factional tensions, insisting that powerful guests remain subject to sect authority.",
+            "id": "anrosh-kesh",
+            "name": "Anrosh Kesh",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Twilight Melody spear fighter and member of House Orn. She supports Anrosh's leadership even when enforcing sect law creates strain with her own relatives.",
+            "id": "nayra",
+            "name": "Nayra",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured former sect head who advises Twilight Melody. She mentors Anrosh by withholding intervention when the acting leader can solve a problem herself, while remaining ready to answer threats beyond Anrosh's reach.",
+            "id": "tali",
+            "name": "Tali",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anrosh's daughter, Ryun's path-heir, and Tali's spear student. Although capable of advancing, she remains at early Lord so her mentors can preserve a stronger foundation for her future path.",
+            "id": "kri",
+            "name": "Kri",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dragonheart's Eternal Realm alchemist and sect leader. He diagnoses the danger in Zach's condition and agrees to prepare a potion that can remove the unstable cultivation path, provided Zach and Naha protect his brother during a threatened advancement.",
+            "id": "dragonheart-eternal-alchemist",
+            "name": "Dragonheart's Eternal alchemist",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Seekers of Knowledge scholar who studies the underlying forms and meanings of essence. When the Taken overrun the library at Dal Davor, she triggers its destruction and escapes by teleportation.",
+            "id": "cthul-essence-researcher",
+            "name": "Cthul essence researcher",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A necromancer who operates through undead vessels and possesses knowledge useful against the Taken. He is approached as a covert prospective ally for the coming war.",
+            "id": "lord-of-death",
+            "name": "Lord of Death",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Unchained operative and runecrafter trapped in the ethereal realm by an ancient shade. He accepts a bargain for power and eventual release in return for completing a task in the physical world.",
+            "id": "kael",
+            "name": "Kael",
+            "reveal": {
+              "chapter": 60
+            }
+          },
+          {
+            "description": "An ancient yeti shade who confines Kael in an isolated part of the ethereal realm. The shade trains him in runecraft and offers power, advancement, and eventual release in exchange for an unspecified task.",
+            "id": "kaels-shade-teacher",
+            "name": "Kael's shade teacher",
+            "reveal": {
+              "chapter": 60
+            }
+          },
+          {
+            "description": "The leader hosting a broad gathering of sect heads as cover for a smaller Council of Sects meeting. He seeks allies for action against the Taken and prepares to press the council toward war.",
+            "id": "council-host-sect-head",
+            "name": "Council host sect head",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Warden from Zach and Naha's former tournament team. After the faction loses its citadel and former headquarters, he helps them reconnect with its displaced leadership.",
+            "id": "oakham",
+            "name": "Oakham",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The current leader of the fractured Wardens. After the former commander is captured, she preserves the faction by relocating its master interface and leads its survivors from a new fort.",
+            "id": "warden-commander",
+            "name": "Warden commander",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Taken fighter who wields destructive blue fire and serves among the principal defenders of the enslaved mining city. He confronts Zach when the liberation team draws the fort's strongest combatants outside.",
+            "id": "eric",
+            "name": "Eric",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The human immortal who rules the enemy city. He openly joins its defenders, summons a thunderstorm, and uses battlefield edicts to alter conditions in their favor.",
+            "id": "elder-king",
+            "name": "Elder King",
+            "reveal": {
+              "chapter": 105
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A leading figure among the third-iteration refugees whose difficult history with Tali has not prevented the two from working together.",
+            "id": "caria",
+            "name": "Caria",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Twilight Melody fire fighter who joins the sect's leader and another ally in reinforcing the assault on the enemy city.",
+            "id": "vanessa",
+            "name": "Vanessa",
+            "reveal": {
+              "chapter": 105
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kinetic-force fighter serving with the coalition. He works beside a Black Viper spear fighter against an enemy general that has broken through the allied line.",
+            "id": "riki",
+            "name": "Riki",
+            "reveal": {
+              "chapter": 107
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Twilight Melody's giant gravity specialist. She holds a city wall, opens an escape route for trapped allies, and joins the assault against the enemy command position.",
+            "id": "twilight-melody-gravity-combatant",
+            "name": "Twilight Melody's giant gravity combatant",
+            "reveal": {
+              "chapter": 111
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Exalted Empire's mechanized commander. She arrives over the battlefield with an imperial fleet after the main enemy army has been defeated.",
+            "id": "herald-of-the-machine",
+            "name": "Herald of the Machine",
+            "reveal": {
+              "chapter": 120
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A broker of bargains whose earlier dealings continue to affect Ryun and Zach. Ryun still owes an unspecified favor, leaving the agreement as an open obligation.",
+            "id": "dealmaker",
+            "name": "the Dealmaker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mel"
+            ],
+            "description": "Ryun's former partner, whose death and memory remain central to his grief and instability.",
+            "id": "melody",
+            "name": "Melody",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0CD2NHGJ7",
+            "type": "community"
+          }
+        ],
+        "work": "the-aspects"
+      },
+      "recaps": {
+        "ending": "The coalition wins at Emeros after losing about 40 percent of its force. Ryun and Selia become the Eternal Hunters, Nayra helps them kill the last generals, and the Lord of Death raises the fallen into an army that reverses the ground battle. Twilight Melody's gravity specialist kills the enemy city leader in a black-hole attack, while the Exalted Empire destroys the citadel's warden leader. The Herald of the Machine demands that the exhausted sects withdraw, but Ryun and Nayra demonstrate enough remaining strength to prevent an immediate second war. Anrosh stays at Consequence to govern Twilight Melody. Nayra returns Vanessa to life and escorts the dead, while Selia temporarily enters the afterlife to understand her path and bond with Ryun. Zach and Naha remain allied Wardens after freeing Helsa, though Zach's altered arm, lost weeks, and promised instruction from a dragon soul remain unresolved. Ryun still owes the Dealmaker a favor. The eighth iteration will arrive in seven days, Kael intends to open every dome, and the altered flow of time has drawn the attention of distant powers.",
+        "in_short": "Ryun returns after the Empire's fall, strengthens Twilight Melody, reconciles void and stillness as Oblivion, and prepares the sects for war. Zach removes his destabilizing cultivation path, reverses Dragon's Peak's destruction by establishing the first Way of Time, and joins Naha in freeing Helsa's enslaved population. Kael is remade by an ancient shade and marks Zach's arm. The coalition's attack on Emeros becomes a prepared encirclement, but Ryun and Selia unite as the Eternal Hunters, the Lord of Death raises an undead army, Nayra helps kill the last generals, and a gravity specialist destroys the enemy leader. The Exalted Empire kills the citadel's warden leader but avoids fighting the depleted sects. Selia enters the afterlife temporarily, Vanessa returns to life, and Anrosh remains at Twilight Melody. With the eighth iteration seven days away, Kael orders every dome opened and distant powers notice a change in time.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: The Empire has fallen after the struggle against Haster and the dome threat, leaving survivors scattered among active monsters and Taken. Ryun disappeared into the void after the battle, while Selia and the surviving group reached Twilight Melody. Zach and Naha escaped their prolonged ordeal, but their recovery remains incomplete. Naha is free of her former cultivation and struggling against the remnants of the Night Horror's madness. Zach has lost much of his earlier memory and is developing a dangerous imbalance of his own. Twilight Melody has become a refuge for millions under Anrosh's provisional leadership. Ryun still owes the Dealmaker an unspecified favor, and his grief for Melody continues to shape him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Naha leads Zach and a refugee group through the ruined Empire, caring for him as his analytical obsession becomes dangerous. Unable to find a local cure, she redirects the group toward Dragonheart's alchemists. Ryun heals in the void and returns about three years after the battle. Selia confirms that their allies survived and reached Twilight Melody, though Haster's remaining monsters are moving north. In an abandoned city, Ryun finds the preserved body of Zenker and recovers his equipment and treasury. While travelling home, Ryun follows his sense of an accepted true death to the Oasis of Insight. Its ancient keeper identifies his connection to the end, gives him two perilous legacy fruits, and asks Ryun to kill it. Ryun clears the dungeon, retains the fruits, gathers valuable materials, and advances his forging bond with Brightstar. He nevertheless postpones returning to the sect so he can train and experiment in isolation.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anrosh governs Twilight Melody in Ryun's absence. The refuge can barely support its immense population, its vaults are depleted, and powerful guest factions threaten its independence. She enforces sect law against members of both guest groups and earns public recognition as the acting leader. Tali advises without taking control, while Nayra supports Anrosh even when a family member is punished. Anrosh begins organizing the sect's cultivation archive and shaping a common identity. A border crisis then reveals that people from an absorbed mining sect have disappeared after trespassing beneath a neighboring territory. The ancient neighboring sect has concealed strength, including a hidden city populated by undead, and its Ascended leader refuses to negotiate with anyone but Ryun or Tali. Anrosh accepts that Twilight Melody failed to impose obligations on the group it absorbed. She decides that representing the sect herself is necessary to establish legitimate authority.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun secretly returns and confirms that Anrosh must handle the neighboring sect as his representative. He raises her power and affirms that she is family, while recognizing that his own uncompromising nature makes her political role essential. The dispute is resolved without a wider war, and Anrosh returns with a clearer understanding of the sect she must build. Ryun also undertakes the legacy fruit's mental trial. It forces him to confront his fear, isolation, past choices, and unresolved grief. He recognizes that the massacres he committed on Earth were his own acts rather than something he can assign to madness or fate. The trial clarifies his bond to True Death: Ryun bears the Reaper side, while Selia is connected to the complementary Scythe. He survives the ordeal with a less divided sense of responsibility, but the implications of that shared power remain open.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kri chooses Ryun’s dangerous training route and enters a lethal trial against a Black Viper King while deprived of sight and healing supplies. Near death, she reaches toward Absolute Cold, freezes the battlefield, and survives after Ryun intervenes. Her injuries are restored, and she awakens a greatly expanded sense and a deeper connection to her aspect, though she must continue learning to control both. Ryun then refines his void and stillness techniques before transforming his body around adaptive regeneration. The new form has no ordinary endurance, so attacks affect him directly, but repeated injuries trigger rapid healing and increasing resistance. He removes his class, improves his control over concurrent techniques, and trains to manage the form’s heavy demands on chi and stamina. Ryun and Tali next approach the Midnight Rain sect head, who explains the Council of Sects under a secrecy agreement. Ryun accepts membership for Twilight Melody, preserving the sect’s independence while committing it to shared defense, meetings, and advice. He and Tali also receive invitations to a Dragonheart summit.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zach and Naha continue toward Dragonheart while Zach studies essences with increasingly compulsive focus. He develops new time-related ideas and an evolved movement skill that briefly crosses time and space, but Naha sees that his fixation is also isolating him from help. At Dragon's Peak, the pair are welcomed for their role in defeating a dome leader. The sect's Eternal alchemist agrees to make a potion that can remove Zach's destabilizing cultivation path, but demands a confidential service in return. Zach and Naha must protect the alchemist's brother during a secret advancement that enemies are expected to attack. Zach drinks the completed potion and loses the offending cultivation path. The procedure halts the worsening imbalance but does not immediately repair the madness already accumulated. As the defense begins, Zach and Naha remain responsible for stopping an unknown assassination attempt.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The attack on Dragon's Peak is a feint covering a teleporting infiltration. A reaction device destroys the city and apparently kills Naha, but Zach refuses to accept the outcome. Using powerful elixirs and his understanding of time, he turns the world back and erases the catastrophe. The Framework recognizes him as Sage of Time and creator of the first Way of Time, granting a limited world-reversal power. In the restored timeline, Zach and Naha capture the infiltrators and secure the device. The Framework answers Zach's intervention with Gates of the Forgotten. Three preserved ancient beings attack under contracts tied to freeing their descendants. Naha protects civilians, creates a new shadow power, and helps kill a forest Great Forgotten. Dragonheart's secluded head completes his advancement and kills a fire dragon Great Forgotten. Zach learns that the ancient attackers retain choice beyond ordinary event monsters and bargains with the remaining yeti while the city survives the assault.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dragonheart accepts that Zach saved the city and calls for a summit on the Core's unresolved threats. At Twilight Melody, Anrosh prepares to bring its refugee factions under a single authority. Ryun advances her into a powerful frost-centered form and trains her with Tali, while Selia rejects a relative's attempt to seize the sect through her reputation. At a public gathering, Anrosh orders the guest groups either to join Twilight Melody or leave. Selia's relative challenges her, then tries to trigger hidden formations intended to massacre the sect. Ryun has already neutralized the sabotage. He reveals himself and kills the challenger, securing Anrosh's legitimacy before the assembled factions. Ryun then rebuilds his own fighting style around range, regeneration, and his altered body. The inheritance of Zenker equips both Ryun and Twilight Melody, while Brightstar grows capable of storing and reproducing higher-rarity gear. Ryun and Tali depart to test their new strength before the sect summit.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun and Tali test themselves in a remote territory that Ryun may claim as a future home. The territory scenario traps them against a tier-27 Worldstone worm whose vibrations attack body, perception, and soul. With his core exhausted and permanent death close, Ryun stops treating void and stillness as separate powers. They merge into Oblivion, a conceptual force that erases existence. He kills the worm and emerges with a transformed cultivation path. Elsewhere, Kael is trapped in the ethereal realm by an ancient shade. The shade remakes him into a stronger drake-like form, teaches him runes that consume soul and will, and offers escape in exchange for placing a rune on Zach's right arm. Kael accepts. His bargain ties his freedom and future advancement to a hidden attack on Zach, while the shade seeks a path into the physical realm.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Preparations for a wider conflict draw together covert allies and unsettled personal paths. The Lord of Death, a necromancer who moves through undead vessels, is approached for aid against the Taken. Selia fears that Ryun's rapid transformation will leave her behind. She chooses to consume the dangerous physical legacy fruit and survives a violent remaking that gives her a stronger body and changes her aspect. The ordeal supplies the inspiration she needs for ascension, though she delays advancing until she can understand her new form. Kael experiences centuries during his confinement outside the physical world, though only about a decade passes there. He resumes his campaign against existing rule and tries to help his shade teacher enter the world. A sun-fire pursuer nearly kills him, but Kael uses reality-binding runes to escape. He remains wounded, tracked through his soul, and intent on rejoining his allies.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun and Tali attend the Council of Sects, where reports show the Taken and monsters fortifying, enslaving captives, and preparing around unopened domes. The council commits the sects to war. Tali publicly returns after centuries away and reconnects with her former partner, while postponing a confrontation with an old friend she considers dangerous. The coalition plans simultaneous attacks on the Tournament City, a southern staging city, and Emeros with its captured Warden citadel. Zach and Naha are asked to rally the surviving Wardens. In private, Ryun tells Zach the truth of their shared past: they were once friends, and Ryun killed Zach's wife and child during his violence on Earth. Zach chooses not to recover his missing memories through the Dealmaker and declines immediate vengeance. He defines himself by protecting others, acknowledges Ryun's capacity to help, and leaves with Naha to prepare for war.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zach and Naha find the Wardens reduced, displaced, and uncertain after losing their citadel. Oakham helps reconnect them with the faction, and Zach's commitment to protecting captives persuades the Wardens to join the war. He studies slave collars and decides that freeing their wearers must take priority over the main assault. Ryun turns from combat preparation to forging. With Selia's insight into imposing intent on free essence, he develops a collaborative method for creating a spiritual tool. Together they forge a dangerous three-part talisman for Kri, contributing parts of their own souls. Kri bonds the tool despite its severe demands, advances along the Path of the Empty Dominion, and survives an absolute-cold crucible that strengthens her body and abilities. As Twilight Melody deploys, Nayra accepts battlefield command. Anrosh remains at Consequence to govern and defend the sect, while a returning wolf ally warns that an imprisoned shade has sent an agent into the world.",
+            "through": {
+              "chapter": 93
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The coalition advances on several fronts, but weak resistance suggests the enemy is shaping the campaign. Zach, Naha, Oakham, the Warden commander, and an alchemist infiltrate Helsa, a mining city worked by enslaved people. Naha maps the city through a mirrored copy, impersonates a commander, kills key Taken, and releases incapacitating gas. When hidden defenders emerge, she forms a freedom-centered shadow Ideal, kills the remaining district commanders, and pulls a dome-monster general into the shadow realm. Zach and the alchemist protect the slave blocks while fighting Eric and a Minotaur. Eric's azure fire threatens to consume the city. Zach and Naha combine their linked powers, and Zach manifests an Ideal centered on life and freedom that suppresses and opens the collars. The captives are freed and the city survives, though much of the territory is ruined. Kael's group then attacks the exhausted Zach and succeeds in placing the shade's rune on his right arm before sending him into the ethereal realm.",
+            "through": {
+              "chapter": 102
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A powerful dragon soul helps Zach break free in the ethereal realm and identifies Kael's teacher as a mutilating shade that has escaped confinement. The dragon finds no additional active change in Zach's marked arm, offers future instruction, and returns him to the world after nearly three weeks have passed. Helsa is free but damaged and urgently short of food. Meanwhile, the coalition reaches Emeros and discovers that the entire campaign was a prepared counterencirclement. A vast enemy army traps the besiegers between the city and citadel. Fighting spreads through the coalition lines and city defenses. Vanessa's mother incinerates Vanessa and herself, destroying a soul-killing trap before it can take them permanently and leaving open their return. Kri fights among fractured formations, Tali kills enemy generals, and coalition leaders struggle to prevent their fronts from collapsing under the enemy leader's suppression and battlefield powers.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun and Selia enter the densest monster concentration and combine their complementary presences. Their shared field strengthens them, weakens enemies, and lets them kill generals and vast numbers of monsters while signaling Twilight Melody's power. The first enemy army begins to break, but an equally large hidden force arrives when both fighters are depleted. A fast general repeatedly tears Ryun apart and wounds Selia through her defenses. Their bond intensifies beyond coordination, forming the Presence of the Eternal Hunters. As one combined hunter acting through two bodies, they reinforce Brightstar's armor, destroy the general, and turn toward the remaining enemy commanders. The battle remains desperate, but Twilight Melody now has a power capable of challenging the second army directly.",
+            "through": {
+              "chapter": 115
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Lord of Death reveals his fortified true body and raises fallen warriors and monsters into an undead army, reversing the ground battle. Tali and other coalition fighters continue killing generals in the air. Twilight Melody's giant gravity combatant triggers a black-hole formation that kills the enemy city leader and a fortified archer, though her own survival is not established. Ryun and Selia remain joined as the Eternal Hunters. Nayra reaches them, kills one general, and helps destroy the last, ending the main field battle. The Exalted Empire then arrives in force. The Herald of the Machine kills the citadel's warden leader and leaves the Empire in control of the immediate position. With the monsters defeated and the citadel breached, the military victory shifts into a confrontation over territory, spoils, and whether the exhausted sects will be forced to leave.",
+            "through": {
+              "chapter": 120
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The coalition has lost about 40 percent of its force. Ryun demands recovery time and a share of the citadel's spoils when the Exalted Empire orders the sects out. Nayra calls qualifying dead warriors back from the ethereal realm, including Vanessa, and the display convinces the Herald of the Machine to avoid an immediate second war. The Empire withdraws most of its forces while sect teams enter the citadel. Selia temporarily leaves her bond with Ryun and enters the afterlife through Nayra's power to seek a deeper understanding of herself and their connection. Nayra restores Vanessa to life and escorts the battle dead onward. A world event announces that the eighth iteration will arrive in seven days, and Ryun begins preparing to secure the newcomers. Kael orders his allies to locate and open every dome in a campaign against the world's rulers. Far away, powerful observers notice that an aspect barrier has been broken and that the flow of time has changed.",
+            "through": {
+              "chapter": 123
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0CD2NHGJ7",
+            "type": "community"
+          }
+        ],
+        "work": "the-aspects"
+      }
+    },
+    "the-austere-academy": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think and builds devices to escape danger. After four cruel homes and four escapes from Count Olaf, she leads and protects her younger siblings with weary determination.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The bespectacled middle Baudelaire, twelve years old, an insatiable reader whose knowledge repeatedly saves the family. He remains alert for Count Olaf, having learned to recognize the villain behind any disguise.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The infant Baudelaire, who speaks in short exclamations and bites with four remarkably sharp teeth. Small but capable, she contributes to the family's plans in her own way.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The greedy, murderous actor obsessed with stealing the Baudelaire fortune, marked by a single eyebrow and an eye tattooed on his ankle. A master of disguise who has escaped capture at every turn, he is certain to appear again under a new false name wherever the children are sent.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The coughing banker responsible for the Baudelaire fortune and for placing the orphans in new homes. Kindly but hopelessly credulous, he delivers the children to their next situation and rarely believes their warnings.",
+            "id": "mr-poe",
+            "name": "Mr. Poe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The vain, cruel administrator who runs Prufrock Preparatory School. He fancies himself a musical genius and forces students and staff to attend his dreadful hours-long violin recitals. Petty, self-absorbed, and delighting in arbitrary rules and punishments, he makes the school a miserable place and shows the Baudelaires no kindness.",
+            "id": "vice-principal-nero",
+            "name": "Vice Principal Nero",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A spoiled, nasty student at Prufrock Prep who bullies the Baudelaires and takes pleasure in tormenting them. She toadies up to those in authority and hurls insults at anyone she considers beneath her, making herself a constant petty menace to the orphans.",
+            "id": "carmelita-spats",
+            "name": "Carmelita Spats",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the Quagmire triplets, fellow orphans at Prufrock Prep who befriend the Baudelaires. Duncan hopes to be a journalist and constantly jots notes in a notebook. He and his sister lost their parents and their third triplet, Quigley, in a fire, and they too have a large inheritance, a set of valuable sapphires. Kind and loyal, he becomes a true friend to the Baudelaires.",
+            "id": "duncan-quagmire",
+            "name": "Duncan Quagmire",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duncan's sister, one of the Quagmire triplets and an aspiring poet who records her verses, often rhyming couplets, in a notebook. Orphaned by the same fire that killed her parents and brother, she shares the Baudelaires' grief and quickly becomes a devoted friend and ally to them at the school.",
+            "id": "isadora-quagmire",
+            "name": "Isadora Quagmire",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A new gym teacher who arrives at Prufrock Prep wearing a turban and costly running shoes. Despite the disguise, his shining eyes and single eyebrow lead the Baudelaires to recognize him as Count Olaf, arrived at the school to get his hands on them and their fortune.",
+            "id": "coach-genghis",
+            "name": "Coach Genghis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-austere-academy"
+      },
+      "recaps": {
+        "ending": "The Baudelaires succeed in exposing Coach Genghis as Count Olaf in disguise, defeating his scheme to have them expelled and taken into his care. But Olaf turns the confusion to his advantage: rather than escape alone, he and his troupe seize the Quagmire triplets, Duncan and Isadora, and flee with them, intending to steal the Quagmire sapphires. As their friends are carried off, the Baudelaires are unable to stop it, and Duncan and Isadora manage to shout out a cryptic clue, the letters V.F.D., something they had discovered while researching Olaf. Vice Principal Nero and Mr. Poe prove useless, and Olaf once again escapes justice, now with two captives. The Baudelaires are removed from the school to be placed elsewhere, but for the first time they leave with a purpose beyond mere survival: to rescue the kidnapped Quagmires and to uncover the meaning of the mysterious V.F.D. that has begun to shadow their lives.",
+        "in_short": "The Baudelaires are sent to Prufrock Preparatory School, run by the vain, cruel Vice Principal Nero, who forces them to live in a wretched Orphans Shack. Bullied by the horrible student Carmelita Spats, they find real friends in the Quagmire triplets, Duncan and Isadora, orphans with their own fortune who lost their parents and their brother Quigley in a fire. A new gym teacher, Coach Genghis, arrives in a turban and running shoes, and the Baudelaires recognize him as Count Olaf. Genghis forces them into exhausting nightly running exercises meant to ruin their grades so Nero will expel them into his custody. With the Quagmires' help, the children keep up and plot to unmask him. They expose Coach Genghis as Count Olaf, but in the chaos Olaf and his troupe abduct Duncan and Isadora and escape, and as they are dragged away the Quagmires shout the mysterious letters V.F.D. The Baudelaires are moved on, determined to rescue their friends and learn what V.F.D. means.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Baudelaire orphans, inventor Violet, reader Klaus, and biting baby Sunny, lost their parents and home to a fire and inherited a fortune held in trust. The banker Mr. Poe has moved them from guardian to guardian, and each time the greedy actor Count Olaf, known by his single eyebrow and ankle tattoo, has pursued them in disguise to steal the money: through a fake marriage, then as an assistant who murdered kind Uncle Monty, then as a captain who caused fearful Aunt Josephine's death, and then as a receptionist scheming with a hypnotist at a lumbermill. Every time the children exposed him, and every time he escaped before being caught. Having endured four cruel homes and four brushes with Olaf, the orphans are sent by Mr. Poe to a boarding school, hoping that a crowd of people will finally keep the villain away from them and their inheritance.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr. Poe delivers the Baudelaires to Prufrock Preparatory School, a gloomy institution run by the vain and cruel Vice Principal Nero, who forces everyone to endure his endless, terrible violin recitals and punishes the smallest infractions. Because they have no guardian on the premises, the children are made to live in a squalid Orphans Shack infested with crabs and dripping with fungus. They are immediately tormented by Carmelita Spats, a spoiled and vicious fellow student who bullies them at every turn. Their one comfort is meeting the Quagmire triplets, Duncan and Isadora, two orphans who lost their parents and their brother Quigley to a fire and who possess a fortune of their own in sapphires. Duncan, an aspiring journalist, and Isadora, a poet, understand the Baudelaires' grief and quickly become loyal friends, giving the orphans allies in a hostile place.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A new gym teacher named Coach Genghis arrives at the school wearing a turban and expensive running shoes, and the Baudelaires recognize him at once as Count Olaf in disguise. Genghis introduces compulsory nightly running exercises, forcing the exhausted Baudelaires to run laps for hours in the dark, a scheme designed to wear them down so badly that their schoolwork collapses and Nero expels them, delivering them into Olaf's custody. The children, worn out and falling behind, are helped by the Quagmires, who take notes for them and share their research. Duncan and Isadora also begin investigating Genghis and Olaf, uncovering hints of a secret they have not yet fully explained. The Baudelaires struggle to keep up with their studies while trying to prove to Nero that their new coach is really the villain who has hunted them from home to home.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Worn out by the nightly exercises, the Baudelaires face crucial comprehensive examinations that they must pass to avoid being expelled and handed over to Coach Genghis. With the Quagmires' help, and with baby Sunny put to work as Nero's administrative assistant, the children scheme to survive both the exams and Olaf's plot. Violet and Klaus devise a plan to expose Genghis as Count Olaf and to keep from being thrown out of the school, while the Quagmires continue piecing together what they have learned about Olaf's larger secrets. The pressure builds toward a confrontation, as the villain's plan to weaken and remove the Baudelaires nears its goal and the friends prepare to reveal the truth about the man beneath the turban.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Baudelaires manage to expose Coach Genghis as Count Olaf, foiling his plan to have them expelled into his care. But Olaf turns the chaos to his advantage: instead of fleeing alone, he and his troupe kidnap the Quagmire triplets, Duncan and Isadora, meaning to steal their sapphire fortune, and escape with them before anyone can stop it. As they are dragged away, the Quagmires shout the mysterious letters V.F.D., a clue tied to something they had uncovered about Olaf. Vice Principal Nero and Mr. Poe are of no help, and Olaf once again escapes justice, this time with two captives. The Baudelaires are moved on from the school, but now they leave with a new mission: to rescue their kidnapped friends and to discover the meaning of the mysterious V.F.D. that has entered their lives.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-austere-academy"
+      }
+    },
+    "the-bad-beginning-a-multi-voice-recording": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest of the three Baudelaire children, fourteen years old and a gifted inventor. When she is thinking through a problem she ties her long hair up with a ribbon to keep it out of her eyes, and she can improvise useful devices from whatever is at hand. Practical, brave, and protective of her younger siblings, she becomes the eldest guardian of the family after tragedy strikes.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire child, twelve years old and a voracious reader who remembers nearly everything he reads. He wears glasses and turns to books for the knowledge that repeatedly helps the children out of danger. Thoughtful and stubborn in defense of what is right, he works closely with his older sister to protect the family.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The youngest Baudelaire, an infant who speaks mostly in expressive single-word exclamations her siblings understand. Her defining trait is four unusually large, sharp teeth, and she loves to bite things, a habit that proves surprisingly useful. Though tiny and unable to talk clearly, she is alert and determined to help her brother and sister.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A greedy, cruel actor and distant relative appointed to care for the orphaned Baudelaires. Tall and thin with shabby clothes, filthy hands, a single long eyebrow, and a tattoo of an eye on his ankle, he runs a shabby theater troupe of sinister associates. He has no real interest in the children and cares only about finding a way to seize the enormous fortune their parents left them.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A banker at Mulctuary Money Management who handles the Baudelaire parents' affairs and is placed in charge of arranging the children's care and guarding their fortune until Violet comes of age. He coughs constantly into a handkerchief and means well, but he is slow, officious, and disastrously quick to trust appearances, leaving the children to fend for themselves.",
+            "id": "mr-poe",
+            "name": "Mr. Poe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind high-court judge who lives next door to Count Olaf and takes a warm interest in the Baudelaire children. She owns a large private library and gladly lets them use it. Genuinely fond of them and eager to help, she does not grasp the danger they are in and cannot easily act against the guardian the law has assigned them.",
+            "id": "justice-strauss",
+            "name": "Justice Strauss",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the menacing members of Count Olaf's theater troupe, a large man who has shining metal hooks where his hands should be. He carries out Olaf's threats and helps intimidate and confine the children, serving as one of the villain's most reliable and frightening henchmen.",
+            "id": "hook-handed-man",
+            "name": "The hook-handed man",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bad-beginning-a-multi-voice-recording"
+      },
+      "recaps": {
+        "ending": "Violet, forced into Count Olaf's marriage scheme to save the kidnapped Sunny, outwits him during the live performance of his play by signing the wedding document with her left hand. Because she is right-handed and did not sign in her own hand as the law requires, Justice Strauss declares that the marriage is not legally binding, so Olaf gains no control over the Baudelaire fortune. Enraged, Olaf and his troupe flee before they can be arrested, and he warns the children that he will find them again and get their money one day. Sunny is freed unharmed. Mr. Poe removes the three orphans from Olaf's care, promising to place them with another relative, but Olaf has escaped justice entirely and remains at large, so the children's troubles are far from over as the series begins.",
+        "in_short": "The three Baudelaire children, inventive Violet, bookish Klaus, and biting baby Sunny, lose their parents in a fire that destroys their home. The banker Mr. Poe places them with a distant relative, Count Olaf, a cruel actor who forces them to do chores in his filthy house and cares only about their inheritance. Olaf devises a scheme to seize the fortune by staging a play in which Violet, without realizing it, will be legally married to him before a real judge, their kind neighbor Justice Strauss. To force Violet to cooperate, Olaf kidnaps Sunny and dangles her in a cage from his tower. During the performance Violet signs the marriage document with her left hand rather than her right, and afterward reveals the trick, so Justice Strauss rules the marriage invalid. Olaf's plan collapses and he escapes into the night, vowing to return, and the children are taken away from him to be placed elsewhere.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "While spending a gray day at the beach, the Baudelaire children, fourteen-year-old inventor Violet, twelve-year-old reader Klaus, and their infant sister Sunny, are met by the banker Mr. Poe with terrible news: a fire has destroyed their home and killed their parents. Poe explains that their parents left an enormous fortune, to be kept in trust until Violet comes of age, and that the children will be placed with a relative. He delivers them to Count Olaf, a distant cousin and shabby actor who lives in a grim, dirty house in the city. From the start Olaf is hostile and greedy, giving the children a single filthy bedroom, ordering them to do exhausting chores, and striking Klaus when the children complain. The only bright spot is Justice Strauss, the friendly judge next door, who invites them to use her fine library. The children quickly sense that Olaf has no affection for them and is interested only in the money they will inherit.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life under Count Olaf grows more menacing. He announces that the children will take part in a play he is producing, called The Marvelous Marriage, in which Violet is to perform the role of his bride opposite him. Uneasy, the children research the plan and realize with horror that Olaf intends the on-stage wedding to be a genuine, legally binding marriage: if Justice Strauss, a real judge, presides and Violet signs the document, Olaf could gain control of the Baudelaire fortune through her. The children try to warn the adults around them. Mr. Poe refuses to believe that a respectable guardian would do such a thing, and kind Justice Strauss, who has unknowingly agreed to play the officiating judge, does not grasp what Olaf is really planning. Using Klaus's reading and Violet's cleverness, the children search for a way to stop the scheme, but Olaf's grip on them tightens as the night of the performance approaches.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To make certain Violet cannot refuse, Count Olaf has his henchmen seize baby Sunny and lock her inside a birdcage that is hung high from the tower of his house, out of reach. He warns Violet that if she does not go through with the marriage exactly as planned, Sunny will be dropped. Trapped and desperate to save their sister, Violet and Klaus can see no way out, and the performance proceeds as scheduled. On stage, before an audience and with Justice Strauss presiding as a genuine judge, Olaf directs Violet through the ceremony and has her sign the official marriage document, apparently completing his plan to bind her to him and take control of the family's money.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the ceremony, Olaf triumphantly announces that he is now legally married to Violet and in command of the fortune, but Violet reveals that she signed the document with her left hand even though she is right-handed. Justice Strauss confirms that because Violet did not sign in her own hand as the law requires, the marriage is invalid and Olaf has no claim to the money. Exposed and furious, Olaf and his troupe use the confusion to flee before they can be arrested, and he vows that he will find the children again and take their fortune. Sunny is rescued from the cage unharmed. Mr. Poe takes the three orphans away from Olaf, promising to find them a safer home, but the villain has escaped and remains free, leaving the Baudelaires wary and their misfortunes far from finished.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-bad-beginning-a-multi-voice-recording"
+      }
+    }
+  }
+}

@@ -80,7 +80,7 @@ func coverageCatalog() *model.Catalog {
 
 func serverFor(t *testing.T, cat *model.Catalog) *httptest.Server {
 	t.Helper()
-	dbPath := buildFixtureDB(t, cat, nil)
+	dbPath := buildFixtureDB(t, cat)
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -370,7 +370,7 @@ func TestCoverageSeriesGapsPageAndSearch(t *testing.T) {
 // and the works browser reports available:false with no rows - but series_gaps
 // is still computed.
 func TestCoverageDegradesV1(t *testing.T) {
-	dbPath := buildFixtureDB(t, fixtureCatalog(), nil)
+	dbPath := buildFixtureDB(t, fixtureCatalog())
 	rollbackSchema(t, dbPath, 1,
 		"DROP TABLE characters", "DROP TABLE character_aliases",
 		"DROP TABLE recaps", "DROP TABLE recap_summaries")
@@ -421,7 +421,7 @@ func TestCoverageDegradesV1(t *testing.T) {
 // it is not a missing dimension, and a "has_recap_summary" filter is
 // unavailable - but characters/recaps filters work normally.
 func TestCoverageDegradesV2(t *testing.T) {
-	dbPath := buildFixtureDB(t, fixtureCatalog(), nil)
+	dbPath := buildFixtureDB(t, fixtureCatalog())
 	rollbackSchema(t, dbPath, 2, "DROP TABLE recap_summaries")
 
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})

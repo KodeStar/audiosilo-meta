@@ -1,0 +1,1604 @@
+{
+  "entries": {
+    "the-titan-of-baleros": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A receptionist at the Adventurers' Guild in Liscor and owner of the Heartflame breastplate. Newly wealthy from the armor's use, Selys decides that investment and organization suit her better than adventuring, and she commits money to Krshia's civic campaign.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Silverfang Gnoll shopkeeper seeking structural change in Liscor. Krshia proposes elected council seats, city expansion, a dungeon fee, and stronger civic services, placing Gnoll representation at the center of her campaign.",
+            "id": "krshia",
+            "name": "Krshia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Watch Captain of Liscor, responsible for an underfunded force and wary of the political risks surrounding council reform. Zevara is prepared to support elections if the change brings the Watch substantial new resources.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria Springwalker"
+            ],
+            "description": "The ice mage who leads the re-formed Horns of Hammerad. Ceria wants the under-equipped team to gain artifacts, levels, and experience on its way to Gold-rank, while preserving the trust that holds its unusual members together.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A one-armed Antinium adventurer in the Horns of Hammerad. Only three years old, Ksmvr was trained as a contingency for hive command, but he sees himself as less capable than his teammates and is uncertain of his place among them.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Horns' openly acknowledged necromancer, capable of directing skeletal servants and using several forms of nonlethal magic. Pisces remains composed during a hostile guild confrontation and fights beside Ceria and Yvlon when it turns violent.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yvlon"
+            ],
+            "description": "An armored fighter in the Horns and the sole survivor of her former team. Yvlon carries deep anger and grief over accusations that she deserted her companions, and a public charge against her quickly provokes a guild brawl.",
+            "id": "yvlon-byres",
+            "name": "Yvlon Byres",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Australian Bushrangers and a leader in the United Nations Company. Dally uses contracts, traps, crossbows, and cooperation with local adventurers to protect the company and build a sustainable place for its members.",
+            "id": "dally",
+            "name": "Dally",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Last Light of Baleros"
+            ],
+            "description": "The United Nations Company's physician, whose surgical knowledge draws patients from several species. Geneva's growing clinic is essential to the company, but its success also attracts scrutiny from the power controlling their city.",
+            "id": "geneva",
+            "name": "Geneva",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A distinct presence sharing Geneva's body. It can assume control, speak in Geneva's place, and secretly impersonates her during an interview with the company governing the city.",
+            "id": "genevas-body-sharing-being",
+            "name": "Geneva's body-sharing being",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An engineer and financial planner for the United Nations Company. Paige tries to stretch the group's limited funds while developing practical equipment, including a weapons project whose danger leads her to keep it within a very small circle.",
+            "id": "paige",
+            "name": "Paige",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A South African water runner and courier with the United Nations Company. Luan has tattooed his family's names in gold to preserve them against fading memories, and accepts a lucrative delivery connected to a famous strategist's school.",
+            "id": "luan",
+            "name": "Luan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Titan",
+              "Titan of Baleros"
+            ],
+            "description": "A tiny senior commander in the Forgotten Wing Company who runs its strategist school. Niers Astoragon teaches through controlled but physically punishing field exercises, confronting students with deception, fear, and the cost of poor command.",
+            "id": "niers-astoragon",
+            "name": "Niers Astoragon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An advanced Minotaur strategist student whom Niers Astoragon assigns to command a superior force in a mock battle. His direct cavalry attack meets concealed spear infantry, and Niers isolates and defeats him after using a decoy position.",
+            "id": "advanced-minotaur-student",
+            "name": "Advanced Minotaur student",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Lizardfolk student in Niers Astoragon's personal strategy class. Umina approaches assignments by balancing training value with the needs of nearby communities, and enters the Dakin competition in partnership with Marion.",
+            "id": "umina",
+            "name": "Umina",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Centaur strategist student and Umina's chosen partner for the Dakin examination. Marion contributes speed and mobility to their alliance, although the contest's rules appear to offer its full reward to only one winner.",
+            "id": "marion",
+            "name": "Marion",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Minotaur student whose instincts favor direct leadership from the front. Vanaz is determined to win Niers Astoragon's contest and earn a truthful answer, but his confidence and cultural habits can make his tactics predictable.",
+            "id": "vanaz",
+            "name": "Vanaz",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-born Tyrandrian student with a talent for logistics and a costly education behind him. Will enters the Dakin game carrying anxiety over a concealed, high-risk plan whose failure could disgrace his family.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tulm the Mithril"
+            ],
+            "description": "A Dullahan strategist, former student of Niers Astoragon, and second-in-command of the Iron Vanguard. Tulm enters the Dakin examination as its sole Seeker, bringing an elite force and an intimidating reputation against hundreds of students.",
+            "id": "tulm",
+            "name": "Tulm",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Fleet Hoof"
+            ],
+            "description": "A Centaur strategist and former student of Niers Astoragon. Perorn attends the Dakin game as an observer rather than a competitor, watching her former teacher test the current students against Tulm and the Iron Vanguard.",
+            "id": "perorn",
+            "name": "Perorn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0CFRKVQJ5",
+            "type": "community"
+          }
+        ],
+        "work": "the-titan-of-baleros"
+      },
+      "recaps": {
+        "ending": "Umina is formally recognized as the winner of Niers Astoragon's Dakin game, receiving a prize from his vault and the right to ask him one question. Will also earns a question for the relief force he secretly organized. Marion survives a serious burn and partly reconciles with Umina, while Luan's conduct creates both a possible connection between Geneva and Perorn and a nonlethal threat against his boat. Niers's concealed reason for staging the game remains unresolved. Elsewhere, the Horns stay together but move on under local suspicion, and the United Nations Company gains allies while remaining poor, watched, and internally divided over secret explosives. Ryoka's courier work helps reveal a coordinated campaign against Magnolia Reinhart's circle, which Magnolia answers with economic warfare. In Liscor, Krshia's election and Antinium-backed expansion remain undecided. Olesm supports a rival plan that rejects hive involvement, while Erin's cross-city gathering improves Krshia's position. The event also displays Antinium construction, strengthens the inn's commercial role, and leaves the political vote, the imprisoned Minotaur's condition, and the Free Antinium's future open.",
+        "in_short": "Selys and Krshia begin a campaign for elections and expansion in Liscor, while the Horns of Hammerad overcome hostility and Ksmvr proves his value by defeating a bandit camp. On Baleros, the United Nations Company builds alliances, expands Geneva's clinic, and secretly develops explosives. Niers Astoragon then makes his students' Dakin examination a public contest against Tulm and the Iron Vanguard. Luan breaches the blockade, Will brings a hidden relief army, and Umina wins by tunneling into Niers's goal circle during the final assault. Later events connect Geneva to Niers's academy, place Ryoka amid attacks on Magnolia Reinhart's allies, and return attention to Liscor. There, the Free Antinium back Krshia's development plan while Olesm joins a rival anti-Antinium campaign. Erin uses her inn, magic door, prominent visitors, and an Antinium building demonstration to improve Krshia's prospects, but the election remains unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin established the Wandering Inn outside Liscor and made it a refuge for people whom the city's divisions often kept apart. Her circle came to include Drakes, Gnolls, Antinium, adventurers, and Goblins. The inn's magic door created links beyond Liscor, while Erin took responsibility for the young Gnoll Mrsha. The Horns of Hammerad were destroyed in the dungeon beneath Liscor and later re-formed. The loss left lasting injuries, grief, and disputed reputations. Selys became the owner of the Heartflame breastplate, a valuable relic recovered from the dungeon. The Free Antinium developed individuals and institutions beyond the hive's older designs, even as Liscor and its army continued to fear Antinium power. Far away on Baleros, people transported from Earth organized the United Nations Company around survival, medicine, and shared resources.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Selys receives a fortune from the Heartflame breastplate and discovers that sudden wealth strains several friendships. Guided by her grandmother, she chooses to remain at the Adventurers' Guild and use her money deliberately. Krshia recruits her into a movement for an elected Liscor council, city expansion, stronger funding for the Watch and guild, and Gnoll representation. Zevara offers conditional support, while the coalition still needs wider political backing. The Horns of Hammerad, meanwhile, plan to pursue Gold-rank through work and travel. Their first local contract collapses into a brawl when other adventurers accuse Ceria and Yvlon Byres of abandoning their former teams. Ceria, Yvlon, and Pisces are jailed, but Ksmvr avoids arrest by falsely claiming protected Antinium rank. Trying to prove that he belongs with the Horns, he attacks the bandit camp alone, with remote aid from Pisces's undead. Ksmvr defeats the camp, earns the enlarged bounty, and reaches level 20. The victory reunites the team and demonstrates his worth, but hostility toward the Horns and interest from people seeking Pisces force them to leave the city.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Baleros, Dally's Bushrangers cooperate successfully with local Dullahan adventurers against giant serpents, giving the United Nations Company a useful alliance and income. Geneva's clinic draws growing demand and official scrutiny. A distinct presence sharing her body secretly takes control and impersonates her during an interview with the company governing the city. Luan's tattoos preserve his family's names as memories of Earth become harder to access. Paige and Dally secretly approve a very limited supply of gunpowder bombs for monster contracts, creating a dangerous project hidden from the company's other leaders. Luan also accepts a valuable delivery linked to a strategist's school. That school is run by Niers Astoragon, the Titan of Baleros, who teaches through realistic exercises built around concealment, misdirection, and painful failure. Niers announces a recurring examination in Dakin in which students may use nonlethal traps, alliances, and magic while evading a large hunting force. The winner earns a truthful answer to any question. Umina and Marion agree to compete together, Vanaz wants the prize, and Will conceals a risky plan of his own. The examination is imminent, but the expected former student who will direct the hunt has not been identified.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dakin game becomes a worldwide magical broadcast. Tulm locks down the city with the Iron Vanguard, counters common forms of concealment, and deploys elite fighters around Niers Astoragon's goal circle. Luan arrives without understanding the contest, breaks through a six-ship blockade in his small boat, and delivers his bag to Vanaz. Elsewhere near the harbor, Umina and Marion gather information from a ship's crew rather than immediately attempting to reach the plaza. Across the city, students shift from hiding to coordinated resistance, but Tulm uses screamer dust and Cold Iron Mists to expose them and suppress weaker magic. The balance changes when four transports ram the harbor blockade. They carry Will's sister, the Order of Seasons, storm sailors, and family forces secretly summoned as part of Will's plan. The army accepts Will's field command and begins pushing toward the plaza under nonlethal rules. His logistical preparation turns the examination into a citywide battle. Although the route to Niers remains heavily defended, Will now holds the harbor, the students have organized into fighting groups, and Tulm must contain both the hidden competitors and an advancing relief force.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will directs his relief force through Dakin while Umina, Marion, Vanaz, and Luan move behind the Iron Vanguard's lines. Vanaz defeats a patrol, and Luan helps the group use cheap distractions, paid cooperation, and a staged-casualty ruse to preserve a route toward the plaza. Tulm still contains the wider assault with armored companies and a towering war walker. Students attempt several inventive breaches, but the Iron Vanguard captures or scatters them before they can enter Niers Astoragon's circle. Umina separates from her allies to pursue an independent approach. Vanaz, Marion, and Luan then join the visible final push. A Gnoll student rallies Dakin's residents against the occupiers, while Luan delays the war walker by surrounding it with children whom it refuses to endanger. Vanaz reaches Tulm but cannot overcome the commander's extraordinary strength, and Marion is stopped close to the goal. Their offensive nevertheless supplies the diversion Umina needs. She has arranged a tunnel from a nearby waste pit and emerges inside Niers's roped circle. The direct assault fails to defeat Tulm, but Umina reaches the objective through infiltration while the Iron Vanguard is focused on the battle above.",
+            "through": {
+              "chapter": 11
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0CFRKVQJ5",
+            "type": "community"
+          }
+        ],
+        "work": "the-titan-of-baleros"
+      }
+    },
+    "the-titans-curse": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Perseus Jackson"
+            ],
+            "description": "A fourteen-year-old demigod son of Poseidon. He travels with friends to a boarding school in Maine to bring two powerful young half-bloods safely to camp. Loyal and impulsive, he is haunted by a growing prophecy about the eldest gods' children and by his responsibility for the people he tries to protect.",
+            "id": "percy-jackson",
+            "name": "Percy Jackson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A demigod daughter of Athena and one of Percy's closest friends, brave and strategic. Early in the mission she is seized by a monster and carried away, and much of the quest that follows is driven by the effort to find and rescue her.",
+            "id": "annabeth-chase",
+            "name": "Annabeth Chase",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demigod daughter of Zeus, recently restored to life after years as the tree that guarded the camp. Fierce, proud, and powerful, she wields storm and lightning and struggles with the weight of being a child of one of the three eldest gods as an ancient prophecy looms over her.",
+            "id": "thalia",
+            "name": "Thalia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A satyr and Percy's loyal friend, still searching for the lost wild god Pan. He has tracked down two exceptionally powerful half-bloods at a boarding school and calls his friends to help bring them in before the enemy's servants reach them first.",
+            "id": "grover-underwood",
+            "name": "Grover Underwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, energetic ten-year-old boy, one of two mysterious siblings the heroes come to rescue. Obsessed with a mythology-themed collectible card game, he peppers the demigods with questions about the gods and monsters. He idolizes Percy and extracts a promise that his older sister will be kept safe.",
+            "id": "nico-di-angelo",
+            "name": "Nico di Angelo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Nico's protective older sister and the second of the two half-blood siblings. Quiet and serious, she is drawn to the freedom offered by the Hunters of Artemis and chooses to take their vow of eternal maidenhood and join them, leaving her younger brother behind at camp.",
+            "id": "bianca-di-angelo",
+            "name": "Bianca di Angelo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lieutenant of the Hunters of Artemis, an ancient immortal huntress and expert archer who has followed the goddess for millennia. Cold and distrustful of boys, she carries an old grief and a hidden history. She is chosen to lead the quest to rescue her mistress and reluctantly accepts Percy's company.",
+            "id": "zoe-nightshade",
+            "name": "Zoe Nightshade",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The maiden goddess of the hunt, wild places, and the moon, and the leader of the Hunters, a band of immortal girls sworn to her service. Sensing an ancient and dangerous monster stirring, she leaves the others to track it alone, a decision that puts her in grave peril and sets the quest in motion.",
+            "id": "artemis",
+            "name": "Artemis",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the manticore"
+            ],
+            "description": "The vice principal at the boarding school in Maine, secretly a manticore, a lion-bodied monster with a scorpion tail that launches deadly spikes. A servant of the enemy's shadowy general, he tries to capture the half-bloods and triggers the confrontation that opens the story.",
+            "id": "dr-thorn",
+            "name": "Dr. Thorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The god of the sun, music, and prophecy, and Artemis's twin brother. Cheerful and boastful, fond of composing bad poetry, he gives the young heroes a ride in his sun chariot and offers help within the limits the gods place on themselves, worried for his missing sister.",
+            "id": "apollo",
+            "name": "Apollo",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the General"
+            ],
+            "description": "The Titan of endurance, condemned after the ancient war to hold up the sky for eternity. Freed of that burden by trickery, he serves as the commanding general of the Titan lord's rising forces. Cruel and immensely strong, he directs the enemy's plans and seeks to break the gods by using the very sky he once carried.",
+            "id": "atlas",
+            "name": "Atlas",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A demigod son of Hermes who serves the reviving Titan lord Kronos. He has lured Annabeth into a trap and works alongside the Titan general at a mountain stronghold to raise a fortress and turn the coming war against the gods. Ruthless yet still tormented, he remains a painful figure to Annabeth and Thalia, who once knew him well.",
+            "id": "luke-castellan",
+            "name": "Luke Castellan",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-titans-curse"
+      },
+      "recaps": {
+        "ending": "At the western mountain fortress, the heroes free the goddess Artemis, who had been deceived into shouldering the sky in place of the Titan Atlas. Percy briefly bears that crushing weight himself to free Annabeth, and Artemis retakes it long enough to trap Atlas beneath it once more. Zoe Nightshade, mortally wounded by the dragon guarding the enemy and by her own father Atlas, dies and is placed among the stars as a constellation. The rare monster Artemis had been hunting turns out to be a creature whose sacrifice could grant power to destroy the gods, and it is taken into protection rather than killed. On Olympus the gods debate whether Percy is too dangerous to live and narrowly choose to spare him. Thalia, rather than turn sixteen and become the likely subject of the great prophecy, joins the Hunters of Artemis and becomes ageless, which shifts the prophecy's burden toward Percy. Nico di Angelo, learning that his sister Bianca died on the quest, blames Percy for breaking his promise and runs away; as he does, the dead rise at his command, revealing him as a son of Hades. Luke has survived, and the Titans' war draws closer.",
+        "in_short": "Percy, Annabeth, and Thalia join Grover to bring two powerful half-blood siblings, Nico and Bianca di Angelo, to safety, but the school's vice principal is a manticore. Annabeth is captured, the Hunters of Artemis arrive, and Bianca joins them. Artemis leaves to hunt an ancient monster and is captured. The Oracle sends a quest, led by the Hunter Zoe Nightshade, to rescue the goddess and find Annabeth. Percy follows uninvited. Traveling west they face many dangers; in a desert junkyard, Bianca dies stopping a giant automaton. At a western mountain they find Artemis tricked into holding up the sky and the enemy general revealed as the Titan Atlas, allied with Luke, who holds Annabeth. Percy takes the sky's weight to free Annabeth, Artemis is freed and forces Atlas back under it, and Zoe dies in the battle. On Olympus the gods spare Percy. Thalia joins the Hunters, escaping the looming prophecy, and Nico, learning his sister is dead, flees and is revealed to be a son of Hades.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Percy Jackson, demigod son of Poseidon, learned that the Greek gods are real and trained at Camp Half-Blood alongside his friends Annabeth, a daughter of Athena, and Grover, a satyr. He stopped a war among the gods, then recovered the Golden Fleece to heal the poisoned tree guarding the camp. The Fleece worked so powerfully that it restored Thalia, a daughter of Zeus who had died and been turned into that tree, back to life. Behind these troubles is Percy's old camp friend Luke, who betrayed the gods to serve the reviving Titan lord Kronos. A prophecy hangs over the children of the three eldest gods, Zeus, Poseidon, and Hades.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Percy, Annabeth, and Thalia travel to a boarding school in Maine to help Grover bring in two unusually powerful half-blood siblings, Nico and Bianca di Angelo. The vice principal turns out to be a manticore serving the enemy's general, and in the fight Annabeth is captured and carried off. The Hunters of Artemis appear and drive the monster away, and Bianca chooses to leave her brother and join the Hunters. The goddess Artemis, sensing an ancient and dangerous monster on the move, departs to track it alone. Back at camp, the Oracle delivers a prophecy and a quest is formed to rescue the goddess, who is soon captured, and to find Annabeth, with the Hunter Zoe Nightshade set to lead it.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before the quest departs, Nico makes Percy promise to keep his sister Bianca safe. Forbidden to go, Percy follows the questers west with the help of a pegasus. The travelers are hunted at every turn by monsters and the enemy's forces, defeating the Nemean Lion in Washington and pressing on across the country. The goddess Aphrodite appears to Percy along the way with cryptic interest in his fate. The group learns more about the mysterious monster Artemis pursued and races westward toward where the goddess is being held.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Crossing a desert, the questers enter a junkyard of discarded divine artifacts, where a giant bronze automaton comes to life. Bianca sacrifices herself to shut it down from the inside and is killed, a devastating loss that Percy feels he failed to prevent. Pursued by relentless skeleton warriors that reassemble when destroyed, the survivors cross the Hoover Dam, where animated statues come to their aid. Battered and grieving, they close in on the Titans' rising stronghold in the west.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a mountain fortress the heroes find Artemis tricked into holding up the sky, and the enemy's general revealed as the Titan Atlas, working with Luke, who has captured Annabeth. Percy takes the sky's crushing weight upon himself to free Annabeth, and Artemis retakes the burden just long enough to force Atlas back beneath it. In the battle Zoe Nightshade is mortally wounded, fighting the guardian dragon and her own father, Atlas. She dies of her injuries and is set among the stars as a new constellation.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors are carried to Olympus for the winter council of the gods, where the monster Artemis hunted proves to be a rare creature whose sacrifice could give power to destroy the gods; it is placed under protection instead of killed. The gods debate whether Percy is too dangerous to live and narrowly spare him. Rather than turn sixteen and become the likely subject of the great prophecy, Thalia joins the Hunters of Artemis and becomes ageless, shifting the prophecy's weight toward Percy. Nico, learning that Bianca died on the quest, blames Percy for breaking his promise and flees; as he goes, the dead rise at his call, revealing him as a son of Hades. Luke has survived, and the Titans' war draws nearer.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-titans-curse"
+      }
+    },
+    "the-truth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The estranged younger son of a rigid Ankh-Morpork noble family, who makes a modest living writing a hand-copied newsletter of city happenings for a few wealthy subscribers abroad. Earnest, stubborn, and privately at odds with his aristocratic upbringing, he stumbles into the invention of the printed newspaper and finds himself with a compulsion to report what is actually true, whatever the cost.",
+            "id": "william-de-worde",
+            "name": "William de Worde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A respectable, sharp young woman from a family of engravers who comes to work with William on the fledgling newspaper. Practical and quick to learn, she has a keen instinct for what makes a story and helps turn his venture into a real enterprise.",
+            "id": "sacharissa-cripslock",
+            "name": "Sacharissa Cripslock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a group of dwarf printers newly arrived in the city with a press and a supply of movable type. Blunt and businesslike, he is happy to print whatever pays, and his machine is what makes a daily paper possible.",
+            "id": "gunilla-goodmountain",
+            "name": "Gunilla Goodmountain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire who works as the newspaper's picture-maker, capturing images with a device that uses a burst of light. A signed-up member of a temperance movement, he has forsworn blood, though the bright flashes his work requires are hazardous to his kind.",
+            "id": "otto-chriek",
+            "name": "Otto Chriek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sharper, more calculating half of a pair of hired criminals known as the New Firm, brought into the city to carry out a discreet and illegal job. He does the thinking and manages his volatile partner.",
+            "id": "mr-pin",
+            "name": "Mr. Pin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The large, violent half of the New Firm, prone to sudden rage and to consuming any substance he believes to be a narcotic. Dangerous and unpredictable, he provides the muscle for his partner's schemes.",
+            "id": "mr-tulip",
+            "name": "Mr. Tulip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Patrician"
+            ],
+            "description": "The calm, calculating ruler of Ankh-Morpork. As the paper grows, he becomes the subject of a scandal, accused of a crime the newspaper's reporting will either confirm or unravel.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Vimes"
+            ],
+            "description": "Commander of the City Watch, a hard-edged policeman deeply irritated by the arrival of a newspaper that prints things before he wants them printed. He and William repeatedly cross paths as the investigation into the Patrician's alleged crime unfolds.",
+            "id": "commander-vimes",
+            "name": "Sam Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "William's father, the cold and domineering head of an old aristocratic family, whose rigid views on class and order estranged his son. William avoids him, but the affairs of the city keep drawing the two together.",
+            "id": "lord-de-worde",
+            "name": "Lord de Worde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A zombie lawyer, ancient and coldly correct, who is the city's most eminent legal authority and a fixture in its establishment. His careful hand can be found behind a good deal of Ankh-Morpork's discreet business.",
+            "id": "mr-slant",
+            "name": "Mr. Slant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A notoriously smelly beggar and member of the city's ragged street community, who, with his associates, ends up entangled in the newspaper trade in his own chaotic fashion.",
+            "id": "foul-ole-ron",
+            "name": "Foul Ole Ron",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-truth"
+      },
+      "recaps": {
+        "ending": "William de Worde proves that Lord Vetinari was framed. The apparent crime was staged by a secret committee of aristocrats seeking to replace the Patrician with a puppet, using a hired look-alike and the two criminals of the New Firm to do the dirty work. Following the trail to a key witness, William assembles enough evidence to collapse the conspiracy. The New Firm come to a bad end, the plot's aristocratic backers are exposed and discredited, and Lord Vetinari is cleared and returned to power. William confronts his cold, controlling father, who is behind the scheme, and refuses to protect him, choosing the truth over blood and breaking finally with his family's expectations. The Ankh-Morpork Times, run with Sacharissa and Otto, is established as the city's newspaper, and William settles into the role he has made for himself: an editor determined to print what really happened.",
+        "in_short": "When a band of dwarf printers brings movable type to Ankh-Morpork, William de Worde, who scraped a living writing a newsletter for a few subscribers, accidentally becomes the editor of the city's first newspaper, the Ankh-Morpork Times. With the practical Sacharissa Cripslock and the vampire picture-maker Otto Chriek, he builds a real paper almost overnight, wrestling with rumour, a scandal-mongering rival sheet, and his own compulsion to print the truth. That truth soon collides with a conspiracy: Lord Vetinari is found seemingly guilty of assaulting his clerk and attempting to flee with stolen money, and is removed from power. William realizes the scene was staged by a cabal of nobles, his own father among them, who hired two dangerous criminals, the New Firm, to install a compliant replacement using a look-alike. Following the evidence, and a crucial canine witness, William proves the Patrician was framed. The plotters are undone, the criminals destroyed, and Vetinari is restored, while William, having reported honestly even against his own family, secures the Times as a permanent fixture of the city.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "William de Worde earns a quiet living writing a hand-copied newsletter of Ankh-Morpork happenings for a handful of distant subscribers. When a group of dwarfs arrives in the city with a printing press and movable type, an accident of circumstance turns his little newsletter into something far larger, and he suddenly finds himself running the city's first true newspaper. As word spreads and the presses roll, William begins to grasp both the appetite for news and the trouble that telling the truth can bring.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-truth"
+      }
+    },
+    "the-twelfth-conclave": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returning protector and Black Pyramid Inklord who escapes with Echo to the Death Tower after her father's apparent death. He stays with her through her first shock while assessing serious damage to the Destruction Realm.",
+            "id": "ruwen-starfield",
+            "name": "Ruwen Starfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Death-aspect wielder reeling from her father's apparent death. Ruwen regards her as a younger sister and remains beside her at the Death Tower while grief leaves her volatile and vulnerable.",
+            "id": "echo",
+            "name": "Echo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Echo's father, who detonates two crossing rings so she can escape. Ruwen presumes he died in the blast, though Echo still hopes he survived.",
+            "id": "echos-father",
+            "name": "Echo's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adversary whose survival after the crossing-ring blast remains uncertain when Ruwen Starfield and Echo reach the Death Tower.",
+            "id": "zealot",
+            "name": "the Zealot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A manifestation of the Death Tower that arrives in the cavern where Ruwen Starfield and Echo have taken refuge.",
+            "id": "death-tower-avatar",
+            "name": "the Death Tower avatar",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Ruwen's partner and an Entanglement Priestess whose magic is rooted in the Creation Realm. She enters off-realm fortification with the expectation of facing a Creation trial afterward.",
+            "id": "hamma",
+            "name": "Hamma",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's martial companion and a mystic developing a connection to the natural world. He is sent for Creation Realm fortification alongside Hamma and Lylan.",
+            "id": "sift",
+            "name": "Sift",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blood witch and one of Ruwen's close companions. Her advancement requires carefully controlled exposure to destruction essence before she can proceed to a Creation trial.",
+            "id": "lylan",
+            "name": "Lylan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recovering Bamboo Viper trainee whom Echo calls her Sijun. Echo turns to finding and teaching him after losing her father, giving her a concrete purpose beyond grief.",
+            "id": "ash",
+            "name": "Ash",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ash's grandfather and a Bamboo Viper elder already known to Ruwen. Echo and Ruwen seek him on Earth while looking for Ash and pursuing instruction in chakra practice.",
+            "id": "master-pine",
+            "name": "Master Pine",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ruwen Starfield"
+            ],
+            "description": "Ruwen's destruction-seraph form, connected at this point to the restored human Ruwen Starfield. The form represents his second evolution and can be assumed separately from his human body.",
+            "id": "valdor",
+            "name": "Valdor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A celestial who is protective of Rami and has expertise in dimensional mathematics. He teaches Ruwen Starfield to control phase and curvature so his teleportation creates a less detectable wake.",
+            "id": "xavier",
+            "name": "Xavier",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A close companion whose safety is confirmed while she studies with her father. She remains part of Ruwen's close circle.",
+            "id": "rami",
+            "name": "Rami",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-bodied mental ally who can communicate with Ruwen from within his mental domain. He rejoins Ruwen's inner group on Earth.",
+            "id": "lir",
+            "name": "Lir",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An autonomous ally who resides in Ruwen's inner world and participates in its strategic discussions. Lir returns to Ruwen's mind to confer with him and the rest of the inner group.",
+            "id": "overlord",
+            "name": "Overlord",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A destruction-linked aspect tied to an assassinated former ruler of the Destruction Realm. The aspect resides in Ruwen’s mind, while its pants help mask spiritual signatures on Earth.",
+            "id": "scarecrow-aspect",
+            "name": "the Scarecrow aspect",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Ruwen’s inner group whom Lir returns to Ruwen’s mind to consult alongside Overlord and the group’s other companions.",
+            "id": "sivart",
+            "name": "Sivart",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's mother and owner of the pocket dimension called Creek of Plenty. She shelters Ruwen during his return to Earth, where they reunite after roughly two years apart.",
+            "id": "clarissa-starfield",
+            "name": "Clarissa Starfield",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's father, reunited with him inside Clarissa's pocket dimension after a separation of roughly two years. He and Clarissa listen as Ruwen gives a guarded account of his recent life.",
+            "id": "colin-starfield",
+            "name": "Colin Starfield",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ghostly member of Ruwen's inner group who appears with Overlord and can take material form within Ruwen's mental domain.",
+            "id": "ruwens-ghostly-companion",
+            "name": "Ruwen's ghostly companion",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ash’s father and Isabella’s husband. Master Pine regards him as profoundly abnormal and recalls that he arrived at the farm seeking death.",
+            "id": "cain",
+            "name": "Cain",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Master Pine’s daughter, Cain’s wife, and Ash’s mother. A skilled chakra practitioner, she awakened seven chakras.",
+            "id": "isabella",
+            "name": "Isabella",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A female watcher who scouts the jungle when Ruwen suspects a concealed ambush outside a chakra vault. Lir confirms her identity while she searches for the unseen threat.",
+            "id": "whiskers",
+            "name": "Whiskers",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The last of five Kiardi scouts in Ruwen’s immediate pursuit. This one speaks his language and fights with a magical loom, using unfamiliar musical intervals to bend space.",
+            "id": "loom-bearing-scout",
+            "name": "the loom-bearing scout",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A returning ally who supplied Ruwen with a cursed carrot. Ruwen suspects that the object’s prolonged effect serves a purpose she has not disclosed.",
+            "id": "blapy",
+            "name": "Blapy",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leprechaun ruler leading the defense of the crown vault. He confronts Ruwen among thousands of armed followers as their immense Vault Guardian begins to awaken.",
+            "id": "king-fergus",
+            "name": "King Fergus",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A colossal construct awakening beside the Himalayan crown vault. Its emergence reveals that it holds the previously hidden divine vault.",
+            "id": "kiardi-vault-guardian",
+            "name": "Kiardi Vault Guardian",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ruwen's flying mount, fast enough to help him evade the leprechaun Vault Guardian when ordinary spatial movement is being suppressed around the construct.",
+            "id": "vex",
+            "name": "Vex",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The figure whose sacrifice for Echo remains a source of grief for Ruwen after his chakras awaken.",
+            "id": "lelquinriel",
+            "name": "Lelquinriel",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of twenty-nine Purgatory Grove Guardians. He brings the group into Ruwen Starfield’s mental domain, where they adopt the bamboo-viper steps and take part in the training battle.",
+            "id": "prifus",
+            "name": "Prifus",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A self-powered woman found under attack inside the conclave library. Her magic resonates with Ruwen Starfield’s chakras, and her red bracelet holds soul power associated with the Zealot.",
+            "id": "woman-with-red-bracelet",
+            "name": "the woman with the red bracelet",
+            "reveal": {
+              "chapter": 67
+            }
+          },
+          {
+            "description": "The Red Librarian, who turns her attackers’ powers against them before forming a temporary alliance between the Library of Fragments and the Black Pyramid.",
+            "id": "sarah",
+            "name": "Sarah",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A conscious presence within Sarah's red bracelet. It recognizes Ruwen's steps and urgently seeks information about the old war.",
+            "id": "red-bracelet-presence",
+            "name": "the red bracelet presence",
+            "reveal": {
+              "chapter": 68
+            }
+          },
+          {
+            "description": "Uru's Inklord and a returning ally who enters the conclave chamber with Una and others from Uru's group after a shadow ooze attacks.",
+            "id": "tremine",
+            "name": "Tremine",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Uru's champions, previously saved by Ruwen in the spirit realm. She enters the conclave with Tremine and other returning allies as the party faces a shadow ooze.",
+            "id": "una",
+            "name": "Una",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deceased rival Inklord whose remembered knowledge of the library’s cross-indexes may help solve the conclave. Ruwen Starfield has kept the body in storage since killing him years earlier.",
+            "id": "deceased-rival-inklord",
+            "name": "the deceased rival Inklord",
+            "reveal": {
+              "chapter": 78
+            }
+          },
+          {
+            "description": "Hamma's quagmire companion, a fragmented presence able to appear in many places. Archie warns that Ruwen and Sift may be manifesting conceptual cards through advanced soul power.",
+            "id": "archie",
+            "name": "Archie",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Ink Lord raised by Echo after Hamma’s attempt to restore him fails. He awakens disoriented, and the extent of his preserved memories remains uncertain.",
+            "id": "undead-ink-lord",
+            "name": "the undead Ink Lord",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed agent pursuing Ruwen Starfield alongside Isaac's replacement Ink Lord.",
+            "id": "isaacs-champion",
+            "name": "Isaac's champion",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Isaac's successor as Ink Lord, present in the conclave to pursue revenge against Ruwen Starfield and kill him rather than merely compete for books.",
+            "id": "isaacs-replacement-ink-lord",
+            "name": "Isaac's replacement Ink Lord",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A psychic construct awakened at a catalog-node plaza in the lower stacks. It copies intruders’ techniques and memories and uses rune leeches to extract memories.",
+            "id": "data-curator",
+            "name": "Data Curator",
+            "reveal": {
+              "chapter": 84
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An undead military leader whose legendary portable barracks restores and improves her troops between deployments.",
+            "id": "undead-commander",
+            "name": "the undead commander",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0FYQTRRYS",
+            "type": "community"
+          }
+        ],
+        "work": "the-twelfth-conclave"
+      },
+      "recaps": {
+        "ending": "The Twelfth Conclave ends after Isaac's attack opens the way for a Zealot angel incursion. Una dies after restoring Isaac's champion's suppressed memories, but Ruwen reconstructs her body and damaged spiritual systems and brings her back. In Valdor form he closes the dimensional tears and defeats the remaining angels, while Rami repairs the void damage. Ruwen then permanently severs the champion from Isaac. Una and the freed champion leave for Grave with part of the group. Ruwen allows the surviving Inklords to flee and postpones collecting his alchemy prize. Sarah reveals that her conscious bracelet is a surviving piece of a vessel destroyed by the Zealot, as well as a key connected to the Mind and Body Towers. Ruwen and Sift prepare to follow her portal and investigate. The Zealot remains at large, while Earth's dungeon, Ash and Cain's curse, Sift's Creation Realm authority, Rami's expanding information domain, the Scarecrow aspect, and Ruwen's chakra and blood-node discoveries remain unresolved.",
+        "in_short": "Ruwen returns to Earth, studies chakra practice under Master Pine, and triggers a conflict with leprechauns while collecting eight legendary chakra crystals. He averts a global volcanic disaster, defeats the leprechaun Vault Guardian, awakens all eight chakras, and helps Echo find a new way to teach Ash. The delayed Inklord gathering then pulls Ruwen's party into the deadly Twelfth Conclave inside the Library of Alexandria. Sarah joins them, Rami absorbs most of the library, Echo raises a dead rival as their guide, and Ruwen uses a strange meditation mat to reach the Pool of Transcendence and greatly improve his chakras. At the exit, Isaac's ambush releases Zealot angels. Una dies restoring Isaac's champion's memories, but Ruwen revives her and ends the incursion in Valdor form. He frees the champion from Isaac, then joins Sarah and Sift to investigate her bracelet, lost vessel fragments, and the Mind and Body Towers.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ruwen Starfield became the Black Pyramid's Inklord while carrying responsibilities across the Material, Creation, and Destruction Realms. His close circle includes his partner Hamma, the martial mystic Sift, the blood witch Lylan, the void-trained Rami, and the unconventional Blapy. Lir and Overlord advise him from within his mental domain, while his destruction-linked Scarecrow aspect supplies another form and a persistent mystery. Echo, whom he treats as a younger sister, wields a Death aspect and teaches the Bamboo Viper trainee Ash. Ruwen's growing command of several kinds of magic has made him powerful enough to protect others, but it has also drawn him into conflicts that span realms and systems.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen escapes with Echo to the Death Tower after the apparent death of her father and stays with her through the first dangerous phase of her grief. The towers contain the worst damage to the Destruction Realm, but Ruwen learns that his restored human body remains costly to maintain. Hamma, Sift, and Lylan are sent for Creation Realm-linked fortification while Ruwen takes Echo to Earth. Echo seeks Ash, her Bamboo Viper student, and enters a mysterious pit after learning that he joined an expedition there. Lir judges Earth itself likely to be a planet-sized dungeon. Ruwen remains with Master Pine, Ash's grandfather, to begin chakra instruction while Echo searches below. The dungeon suppresses technology, no expedition has reached its bottom, and Ash may be caught in a threat tied to the planet's newly circulating spirit.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen reunites with his parents, Clarissa and Colin, in their pocket dimension. They explain that Ash bears Uru's mark as Ruwen's fifth and final hand and that several factions are converging on him. Master Pine then recounts the history of Ash's father, Cain, whose presence killed vegetation and whose fatal injuries repeatedly failed to hold. Ash appears to have inherited a faster form of the same curse, deepening the uncertainty around his dungeon expedition. Pine teaches Ruwen the purpose and progression of the chakras. Ruwen discovers that his crown chakra is already active, while the rest are dormant. By examining the system directly and applying earth harmonies, he activates his root chakra, although the release badly wounds him before his regeneration repairs the damage. The attempt also exposes a dangerous imbalance among his chakra, soul, blood, and conceptual powers.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Master Pine continues Ruwen's instruction, presenting chakra growth as a process of emotional honesty, self-acceptance, purposeful communication, insight, and internal alignment. Seeking a perfect root-resonant crystal, Ruwen travels to a Brazilian mine and discovers a concealed Creation Realm-linked vault. He extracts a pristine black tourmaline whose resonance suits the root chakra. The returning flow of spirit is awakening old magical beings, and Ruwen responds by enabling the system for everyone in the universe. That decision exposes hidden quests and factions on a vast scale. Ruwen now possesses the crystal, has disturbed a hidden site, and has publicly changed how the wider universe encounters magic.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen accepts the quest to collect eight legendary chakra crystals and takes a sacral crystal from a second vault. Its emotional pressure activates his sacral chakra and reveals new depth in Harmony, but also exposes Overlord's longing for a fuller existence. A hidden Creation Realm pocket then reacts catastrophically with Ruwen's destruction essence, destroying most of his body before he rebuilds it. The accident leaves him with a long fey bounty and brings leprechaun scouts down on him. Their luck theft, suppression charms, and Creation Realm nature defeat several familiar attacks. Ruwen eventually finds a destructive harmonic that decapitates five scouts, though it remains uncertain whether they are truly defeated. The broader leprechaun threat remains active.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen discovers that each leprechaun scout persists through an emotionally charged treasure anchor. Destroying or severing those anchors banishes the scouts and yields rare Creation Realm cards. A loom-bearing scout teaches him, through combat, to work with unfamiliar microtonal harmonies and spatial effects. Ruwen then raids the solar-plexus vault beneath a volcano, but the conflict triggers an eruption projected to cause worldwide famine and more than one hundred million deaths. With Overlord's design insight, Ruwen distributes harmonic control across thousands of Scarecrow-aspect clones. He builds enormous soul portals through rock, transfers the ash and erupting material to the Moon, and relieves the magma chamber before the disaster becomes global. Earth is spared, but the volcano becomes a vast lava lake and the sought citrine appears lost with the mountain.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen finds the Citrine of Will among the material sent to the Moon and survives its severe attunement trial, activating his solar plexus chakra. He quickly seizes the heart, throat, third-eye, and crown vault formations, but discovers leprechaun magic contaminating his lower chakras. At the final vault, King Fergus and thousands of defenders confront him as a six-mile guardian awakens with the divine crystal. Ruwen shatters Fergus's artificial chakra gems and throws him into the construct, then penetrates the guardian itself. After breaking its root gem, Ruwen converts a mountain into iron spears and destroys the remaining artificial chakras. The resulting explosion destroys his body and forcibly awakens his divine chakra as the divine geode appears to enter his storage. Both his survival and his possession of the divine vault remain uncertain when the guardian falls.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen wakes days later at Master Pine's home. Hamma and Rami have reassembled his dimensionally scattered form and recovered his memories, while Sift, Echo, and Pine also contributed to saving him. His disappearance placed him at the center of a Creation Realm conflict between leprechauns, vampires, and other fey. Hamma and Lylan have advanced to Divine, Echo's necromancy has strengthened, and Blapy shares disturbing dreams of a black tower and an eight-winged figure. Blapy's spiritual display confirms that all eight of Ruwen's chakras are awakened, though still weak and partly suppressed by hostile Creation Realm residue. Pine helps him purge that contamination and teaches him to treat chakra and aura development as a problem of purification and balance. With the conclave near, Ruwen is restored but still developing the control needed to use his awakened chakras safely.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Echo asks Ruwen to help Ash, whose technically precise Bamboo Viper practice has stopped advancing. In Earth's responsive dungeon, Ruwen and Echo discover that Ash's seven awakened chakras have become a crutch that filters every movement. Sift reveals a deeper intuitive awareness than his usual behavior suggests, while Echo recognizes that her own rigid teaching has reinforced Ash's blockage. She changes course, using Blapy's extraordinary motorcycle to restore joy and direct experience to Ash's training. The visit also strengthens the theory that Earth guards a locked Outerverse bridge and that Ruwen's incomplete sword-key needs thirty-two golems. When Ruwen returns to recover battlefield loot, a countdown unexpectedly proves to be the delayed Inklord ceremony. He stores the combatants and treasure in his soul vault, but cannot alter his locked party. Ruwen and his companions are pulled into the event together as an Inklord conclave begins.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Library of Alexandria isolates Ruwen inside a heavily suppressed contest where Inklords must gather bookmarks, solve the Archivist's riddle, and find the hidden exit. His Black Pyramid emblem makes him the most visible target. He aids Sarah, the Red Librarian, whose body-based magic and conscious red bracelet connect her to the Zealot and a world associated with the Mind and Body Towers. They form a temporary alliance, then summon Hamma, Sift, Rami, Echo, and Lylan. The group battles knowledge constructs while Rami absorbs their information. When her growing void-worm nature proves to have severed her old mental bond with Ruwen, he combines several magic systems to build a stable shared mental space. Rami can now transfer and organize the library's knowledge inside his expanding inner world. Although the immediate constructs are defeated, destroyed scouts show that another hostile force is approaching.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tremine and Una join Ruwen's alliance during a fight with an Inkblot. The party then turns to a deceased rival Inklord whose memory of the library may solve the conclave. Hamma cannot resurrect the body because its soul, aura, and chakras are absent, but Echo uses her Death authority and the Grimoire of Mourning to raise it as an aware undead servant. The former rival remembers that Ruwen killed him and agrees to help in exchange for his journal and emblem. Echo appoints him the first Inklord of the Library of Final Passage. He explains that the conclave's rules are structured to push competitors into killing each other, and begins working through the Archivist's riddle. Meanwhile Archie warns that Ruwen and Sift's advanced soul power can manifest conceptual cards, a capacity that may attract dangerous Outerverse attention.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The undead Inklord and Tremine trace the Archivist riddle toward the Central Index, while Ruwen finds a separate alchemical reading that may describe the exit. The party defeats a Data Curator that copies their memories and techniques, with Tremine's chaos damaging it and Rami absorbing its indexed knowledge. Rami then uses Scarecrow-aspect clones as remote anchors to map the library. Una reveals that she wants to recover Isaac's champion, whose memories were suppressed. In the Overlooked Archive, Ruwen obtains a radiant meditation mat and completes its eight-gem activation. The process links chakra energy to his blood, suggesting a route to open blood nodes. The mat enters Ruwen's body, carries him underwater to an unknown place, and returns him to the shed through the intervention of a giant octopus. The destination and the lasting nature of the change remain unclear.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen learns that the meditation mat carried him into the Pool of Transcendence. The visit raised all eight chakras, improved their quality and potential dramatically, and granted new abilities tied to emotion, truth, dimensions, bonds, and magical balance. Rami has absorbed nearly the entire library and is identified as the perception worm, making both her and Ruwen targets for exceptional rewards. With healing and resurrection disabled, Ruwen approaches the surviving Inklords offering each one hundred books in exchange for safe passage. Many begin to accept, but Isaac's replacement Inklord intends betrayal and stands beside Isaac's champion. Hostile spatial interference turns Ruwen's movement into a deadly backlash against enemy mages. Then dimensional tears open around Isaac's force and release disguised servants of the Zealot, collapsing the negotiation into a new battle at the exit.",
+            "through": {
+              "chapter": 98
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The disguised attackers are Zealot angels, and their reinforcements overwhelm the exit island. Ruwen becomes Valdor and learns to channel the seraph body's energy through the Destruction Realm, allowing him to survive the angels' detonations. Una is mortally poisoned while shielding Isaac's champion. Before dying, she restores his suppressed memories of their relationship. Ruwen rejects the failed resurrection systems and directly rebuilds Una's body, soul, aura, and chakras by combining blood, soul, mental, chakra, harmonic, and spirit magic. She revives. Ruwen closes the dimensional tears and defeats the remaining angels, while Rami repairs the void damage in her worm-like form. He permanently severs Isaac's champion from Isaac and lets the surviving Inklords escape. Sarah reveals that her bracelet is a conscious fragment of a Zealot-destroyed vessel and a key to a tower secret. Una and the freed champion depart for Grave. Ruwen postpones his prize, and he and Sift prepare to follow Sarah's portal toward the Mind and Body Towers.",
+            "through": {
+              "chapter": 104
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0FYQTRRYS",
+            "type": "community"
+          }
+        ],
+        "work": "the-twelfth-conclave"
+      }
+    },
+    "the-two-towers": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Strider"
+            ],
+            "description": "Heir of ancient kings and now a leader of the broken Fellowship, who takes command after tragedy and pursues the enemy across the plains of Rohan. Steadfast and enduring, he moves ever closer to accepting the destiny he has long kept hidden.",
+            "id": "aragorn",
+            "name": "Aragorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elf of the northern woods, keen-eyed and swift with a bow, one of the Fellowship who stays at Aragorn's side. His unlikely, deepening friendship with the dwarf Gimli grows as they run and fight together through the wars of Rohan.",
+            "id": "legolas",
+            "name": "Legolas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stout, doughty dwarf of the Fellowship, proud and quick to anger but stout-hearted, who keeps pace with Aragorn and Legolas on the long chase and stands with them through the battles that follow.",
+            "id": "gimli",
+            "name": "Gimli",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gandalf"
+            ],
+            "description": "The wizard, thought lost in the mines of Moria, who returns transformed and robed in white with his power renewed for the struggle ahead. He rejoins Aragorn's company and sets about freeing Rohan from the enemy's grip.",
+            "id": "gandalf-the-white",
+            "name": "Gandalf the White",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fangorn"
+            ],
+            "description": "The oldest of the Ents, the tree-like shepherds of the forest, slow to speak and slower to anger. He takes in two lost hobbits and, once finally roused, gathers his kind to march against the wizard who has been felling his trees.",
+            "id": "treebeard",
+            "name": "Treebeard",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The aging king of Rohan, long weighed down and misled by a treacherous whispering counselor, until Gandalf frees him from his despair. Renewed in spirit, he takes up his sword and rides to defend his people in war.",
+            "id": "theoden",
+            "name": "Théoden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A great wizard, once the head of his order, who has turned to seeking power for himself and breeds an army in his fortress of Isengard. He covets the ring and makes war on Rohan, and his persuasive voice can sway the minds of those who stop to listen.",
+            "id": "saruman",
+            "name": "Saruman",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Bearer of the One Ring, pressing on toward Mordor with Sam after the Fellowship's breaking. The ring grows heavier on him with every mile, and he must decide whether to trust a treacherous guide who claims to know the secret ways into the enemy's land.",
+            "id": "frodo-baggins",
+            "name": "Frodo Baggins",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sam"
+            ],
+            "description": "Frodo's loyal companion, sturdy and stubbornly faithful, who watches over his master's dwindling strength and distrusts every promise of the wretched creature that offers to lead them onward.",
+            "id": "samwise-gamgee",
+            "name": "Samwise Gamgee",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sméagol"
+            ],
+            "description": "The wretched creature who once owned the ring and still hungers for it, captured by Frodo and Sam and bound to serve as their guide. Torn between a cringing wish to please his new master and his consuming craving for the precious, he leads them toward a secret pass.",
+            "id": "gollum",
+            "name": "Gollum",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-two-towers"
+      },
+      "recaps": {
+        "ending": "The Two Towers ends with its two strands left on the edge of crisis. In the west, the immediate threats have been beaten: Saruman is broken and shut in his tower at Isengard, his army destroyed at Helm's Deep, and Rohan is roused and allied with Gandalf. But the far greater power of Sauron has not yet been faced, and after Pippin's rash look into the enemy's seeing-stone drew the Dark Lord's eye, Gandalf has ridden with the hobbit to the threatened city of Minas Tirith, expecting Mordor's assault to fall on Gondor next. Aragorn, Theoden, and the others are left to gather their strength for the war to come. In the east, the situation is dire. Frodo has been stung by the great spider Shelob and carried off, paralysed, into the orc-tower of Cirith Ungol. Sam, who briefly took up the ring believing his master dead, has learned from the orcs' own talk that Frodo lives and is only poisoned, but he is now alone, poorly armed against a garrison, and shut outside the tower gate with the ring still to be destroyed. Both quests hang unresolved: the war for Gondor about to begin, and the ring-bearer a captive deep in enemy land.",
+        "in_short": "With the Fellowship broken, the story follows two paths. Boromir dies defending the hobbits Merry and Pippin, who are captured by orcs; Aragorn, Legolas, and Gimli pursue them into Rohan. The hobbits escape into Fangorn Forest and rouse the tree-giant Ents against the wizard Saruman. The hunters meet Gandalf, returned from death as Gandalf the White, and together they free King Theoden of Rohan from Saruman's influence and win the battle of Helm's Deep, while the Ents destroy Saruman's fortress of Isengard and trap him in his tower. Pippin looks into a captured seeing-stone and is glimpsed by Sauron, and Gandalf carries him off toward Gondor. Meanwhile Frodo and Sam, guided by the treacherous creature Gollum, cross the Dead Marshes toward Mordor. Barred at the Black Gate, they take a secret southern path, are briefly held and then released by Boromir's honorable brother Faramir, and climb toward a hidden pass. There Gollum betrays them to the giant spider Shelob, who poisons Frodo. Sam, thinking his master dead, takes the ring, then learns Frodo is alive but captured by orcs, and the book ends with Frodo imprisoned and Sam outside alone.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The One Ring of the Dark Lord Sauron came into the keeping of the hobbit Frodo Baggins, and a Fellowship of nine set out to carry it into Sauron's land of Mordor and destroy it in the fire where it was forged. Their road was hard. In the mines of Moria the wizard Gandalf fell into a chasm fighting a demon of fire, the Balrog, and was lost. The survivors were sheltered by the elf-lady Galadriel and travelled on by river. At the last the man Boromir, a lord of Gondor, was overcome by longing for the ring and tried to take it from Frodo. Fearing what the ring could do even to good men, Frodo resolved to go on to Mordor alone, and only his servant Sam managed to follow him; the two crossed the river together. The rest of the company was scattered along the shore, Gandalf believed dead, and the quest split in two: two hobbits creeping toward the Enemy's country, and the broken Fellowship left behind as war gathers over Middle-earth.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the river's edge the Fellowship's break turns to disaster. A band of orcs attacks; Boromir, repenting his attempt on the ring, dies fighting to defend the hobbits Merry and Pippin, but the two are seized and carried off, while Frodo and Sam are already gone toward Mordor. Aragorn finds the dying Boromir, and with Legolas and Gimli lays him in a boat sent over the falls, then the three set out on foot to rescue the captured hobbits, running for days across the grasslands of Rohan on the orcs' trail. They meet Eomer, a young marshal of Rohan, who has just destroyed a company of orcs near the eaves of a forest and lends them horses, though his king has forbidden dealings with strangers. Meanwhile Merry and Pippin, dragged along as prisoners, seize a moment of confusion during the Rohirrim's night attack to cut their bonds and slip away into the dark trees of Fangorn Forest.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the ancient forest of Fangorn, Merry and Pippin meet Treebeard, the eldest of the Ents, great tree-herds who look after the woods. Alarmed by news of Saruman's axes and burnings on his borders, Treebeard summons the other Ents to a slow council to decide whether to go to war. On the plains outside, Aragorn, Legolas, and Gimli follow the hobbits' trail into the forest and are astonished to meet an old man robed in white: Gandalf, returned from death. He tells them that he fought the Balrog to its end, passed through death, and has been sent back with greater power for the task still ahead, now Gandalf the White. He turns their thoughts from the lost hobbits, whom he says are safe among the Ents, toward the immediate danger of Saruman and the threatened kingdom of Rohan. Reunited with his old horse Shadowfax, Gandalf leads Aragorn, Legolas, and Gimli out of the forest to ride for the halls of the Rohan king, whom Saruman's malice has left weak and ill-counselled.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gandalf leads the three companions to Edoras, hall of King Theoden of Rohan, whom he finds aged and despairing under the poisonous counsel of the servant Wormtongue, an agent of Saruman. Gandalf breaks the spell over him; Theoden casts out Wormtongue, takes up his sword, and rouses his people to war. As Saruman's great army marches on Rohan, Theoden and his men make their stand at the mountain fortress of Helm's Deep. Through a night of desperate assault the wall is breached, but they hold, and at dawn Gandalf returns with fresh riders and the enemy is broken. Meanwhile the Ents, having decided at last to act, storm Saruman's stronghold of Isengard, smash its works, and flood the valley, trapping the wizard in his tower of Orthanc. Riding to Isengard, Gandalf's company is met at the ruined gates by Merry and Pippin, safe and reunited with their friends.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the wreck of Isengard the hobbits tell their tale, and the company parleys with the imprisoned Saruman. His voice is seductive and nearly wins some of the listeners over, but Gandalf resists him, and when Saruman refuses to repent, Gandalf breaks his staff and casts him out of the order of wizards. Wormtongue, in spite or clumsiness, hurls down a heavy dark globe from the tower, and Pippin retrieves it. That night, unable to master his curiosity, Pippin looks into the globe, a palantir or seeing-stone, and is caught in a vision by Sauron himself, who believes the hobbit is the ring-bearer held captive by Saruman. Shaken but unharmed, Pippin is questioned by Gandalf, who grasps the stone's danger. As a winged enemy scout passes overhead, Gandalf takes Pippin up and rides hard for Minas Tirith in Gondor, to warn the city and to keep the reckless hobbit close.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book turns to Frodo and Sam, lost in the barren, broken hills on the edge of Mordor. Gollum, the ring's former owner, has been trailing them, and they capture him; Frodo spares his life and binds him with a promise to guide them, while Sam remains deeply suspicious. Gollum, torn between his old craving for the ring and a grudging loyalty to Frodo, leads them across the Dead Marshes, a haunted bog where the faces of ancient dead seem to float beneath the water. They come to the Black Gate, the northern entrance to Mordor, and find it shut fast and heavily guarded, impossible to pass; on the way they watch fierce men from the south marching to join Sauron's muster. Gollum tells them of another way in, a secret path far to the south, and, having no better choice, Frodo agrees to trust him and turn aside toward it.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Following Gollum south through the green land of Ithilien, the hobbits are captured by a company of Gondor's rangers led by Faramir, the brother of Boromir. Faramir questions them and learns of Boromir's death and, by a slip of Sam's, of the ring they carry. Unlike his brother, he masters the temptation and swears he would not take the thing even if he found it lying in the road. He shelters them at a hidden refuge behind a waterfall. There Gollum is caught fishing in a forbidden pool below, and Faramir, understanding that Frodo needs the creature as a guide, spares his life at Frodo's plea rather than have his men shoot him. Warning them that the path Gollum means to take is evil and rumored to be guarded by a nameless terror, Faramir nonetheless lets the three go on, giving them supplies and his blessing.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gollum guides the hobbits past the old cross-roads and up toward the high pass of Cirith Ungol, climbing a long series of steep stairs while secretly plotting to betray them. He briefly wavers toward pity, but Sam's mistrustful words harden him. Leading them into a black tunnel through the mountains, Gollum abandons them to Shelob, a monstrous ancient spider that lairs there. Shelob stings Frodo, who falls cold and paralysed; Sam, believing his master dead, fights the spider off with Frodo's sword and the phial of light from Galadriel, driving her back wounded. Torn by grief and duty, Sam takes the ring and the quest upon himself. But orcs come down from the tower above and carry Frodo's body away, and Sam, following invisibly, overhears them say that Frodo is not dead at all but only poisoned and will wake. The book ends with Sam alone and desperate outside the shut gate of the enemy's tower, his master a prisoner within.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-two-towers"
+      }
+    },
+    "the-vampire-lestat": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The vampire who narrates this book, telling his own life story in his own voice after rising from decades of dormancy into the modern age, where he reinvents himself as a flamboyant rock star and sets out to reveal the secret history of his kind. Bold, defiant, sensual, and hungry for life and attention, he recounts his origins as a rebellious young nobleman in eighteenth-century France and his transformation into a vampire. Where the earlier book's narrator was mournful, Lestat is fierce and unrepentant, determined to be seen and to make his own meaning out of immortality.",
+            "id": "lestat",
+            "name": "Lestat de Lioncourt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lestat's mother, a proud, remote noblewoman trapped in a crumbling provincial estate and a disappointing marriage, gravely ill and closer to her restless son than to anyone else. Fiercely intelligent and hungry for a freedom her life has never allowed, she shares a deep, unusual bond with Lestat, and her fate becomes tightly bound to his as his own story turns toward the supernatural.",
+            "id": "gabrielle",
+            "name": "Gabrielle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lestat's closest friend in his human youth, a gifted, temperamental violinist from a merchant family who runs off with him to Paris to seek a life in the theater. Passionate, brilliant, and prone to despair, Nicolas shares Lestat's rebellious hunger for experience, and their intense friendship is one of the central relationships of Lestat's early life.",
+            "id": "nicolas",
+            "name": "Nicolas",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient, gaunt, and monstrous vampire who abducts the young Lestat in Paris and forces the dark gift upon him, transforming him into a vampire. Powerful, secretive, and driven by his own mysterious ends, Magnus sets Lestat on his immortal path before withdrawing from it, leaving his new fledgling suddenly alone with his changed nature and a great inheritance.",
+            "id": "magnus",
+            "name": "Magnus",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient vampire with the deceptive appearance of a youth, who leads an old coven of vampires clinging to rigid, superstitious beliefs about what their kind may and may not do. Centuries old, powerful, and unsettlingly composed, he confronts the newly made Lestat, whose modern defiance and refusal to obey the coven's laws bring the two into direct conflict.",
+            "id": "armand",
+            "name": "Armand",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vampire-lestat"
+      },
+      "recaps": {
+        "ending": "Lestat's account converges on the modern day, where his rock concert in San Francisco becomes a lightning rod: legions of his own kind, furious that he has exposed their existence to the human world, gather to destroy him, while an unseen force begins annihilating vampires around the globe. In the depths of his story, Lestat had learned the oldest secret of all from the ancient vampire Marius, that every vampire descends from a primeval Egyptian king and queen who have sat for millennia like statues, kept safe and hidden, and that Lestat's reckless contact with the queen had stirred her after her endless silence. Now that queen, Akasha, awakens fully, roused by Lestat's music and audacity. As the concert's chaos subsides and the surviving vampires reel from the mysterious destruction sweeping their ranks, Akasha comes to Lestat and lifts him away with her, choosing him for a purpose not yet revealed. The book ends on that abduction, leaving the awakened ancient queen, her intentions unknown, and Lestat in her power, with the fate of every vampire and the wider world suddenly hanging in the balance.",
+        "in_short": "Lestat, awakening in the 1980s after decades underground, becomes a rock star and writes his own life story to tell his side, deliberately breaking the vampires' secret. He recounts his origins as a rebellious young nobleman in eighteenth-century France who flees to Paris with his friend Nicolas, only to be seized and transformed into a vampire by the ancient Magnus, who then destroys himself and leaves Lestat his fortune. Grieving and newly immortal, Lestat gives the dark gift to his dying mother, Gabrielle, and later to Nicolas, and he clashes with an old coven of vampires, led by Armand, who cling to superstitions he rejects. Restless for the origins of his kind, Lestat seeks out the ancient Marius, who reveals the deepest secret of the vampires: the primeval king and queen from whom all vampires descend, kept for thousands of years as living statues. Lestat's contact with the queen stirs something long dormant. In the modern present, his defiant public performance enrages other vampires who want him destroyed, and as the book closes the ancient queen awakens and takes Lestat with her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in this series: in the first book, the vampire Louis told a modern interviewer the sorrowful story of his life. Made a vampire in eighteenth-century Louisiana by the charismatic Lestat, Louis was tormented by his surviving conscience and by the killing his nature demanded. To bind Louis to him, Lestat transformed a small orphaned girl, Claudia, and the three lived as an unnatural family until Claudia, her adult mind trapped forever in a child's body, turned against Lestat and, with Louis, tried to destroy him. Believing Lestat dead, Louis and Claudia fled to Europe and found a coven of vampires in Paris led by the ancient Armand; there the coven punished Claudia for the attack on her maker by destroying her in sunlight. Louis avenged her by burning the coven and drifted on, hollowed out. This second book turns the perspective around, giving Lestat his own voice to tell his origins and his side of the story, reaching back long before Louis and forward into the modern age.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vampire-lestat"
+      }
+    },
+    "the-velveteen-rabbit": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A small stuffed toy rabbit made of soft velveteen, given to a little boy as a Christmas present. At first shy and unsure of his own worth among the flashier, mechanical toys in the nursery, the rabbit longs to understand what he is and whether he can ever be more than an ordinary plaything. Gentle and sincere, he becomes devoted to the boy who owns him and yearns, above all, to become \"Real,\" a mysterious change the older nursery toys speak of.",
+            "id": "velveteen-rabbit",
+            "name": "The Velveteen Rabbit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young child who receives the velveteen rabbit and, after a time, takes the once-overlooked toy to heart, carrying it everywhere and loving it above all his other playthings. His steady, wholehearted love is what gives the rabbit meaning, though the boy is unaware of the deeper effect his affection has. When he falls seriously ill, the events that follow turn on how much the rabbit has come to matter to him.",
+            "id": "the-boy",
+            "name": "The Boy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest and wisest toy in the nursery, a worn, patched horse who has lived there far longer than the others. Patient and kindly, he explains to the velveteen rabbit the secret the nursery toys pass down: that a toy becomes \"Real\" not through how it is made but by being truly and lastingly loved by a child, a slow process that often leaves a toy shabby and worn along the way.",
+            "id": "skin-horse",
+            "name": "The Skin Horse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gentle magical figure who appears near the story's end to care for toys that have been genuinely loved. She embodies the tale's promise that such love is never wasted, and she has the power to grant a well-loved toy a fuller kind of Real than the nursery toys had imagined.",
+            "id": "nursery-magic-fairy",
+            "name": "The Nursery Magic Fairy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-velveteen-rabbit"
+      },
+      "recaps": {
+        "ending": "The Velveteen Rabbit ends with the toy's longing fulfilled. After the boy recovers from scarlet fever, the doctor insists that all the toys from his sickroom be destroyed, and the beloved but shabby velveteen rabbit is bundled into a sack and left in the garden overnight to be burned. Alone and forgotten, remembering all the love he had shared with the boy, the rabbit sheds a single real tear. From that tear springs a flower, out of which comes the Nursery Magic Fairy, who tends toys that have been truly loved. She tells the rabbit that the child's love had already made him Real to the boy, and now she will make him Real to everyone. With a kiss she transforms him into a living rabbit, and he bounds away to live among the wild rabbits in the wood. The following spring, the boy, out playing, notices a rabbit watching him that looks oddly like his old velveteen toy. He never learns the truth, but the rabbit he lost has become fully alive, its worn devotion rewarded with a real life of its own.",
+        "in_short": "A velveteen rabbit, given to a boy at Christmas, feels plain and unimportant beside the fancier nursery toys until the wise old Skin Horse tells him that a toy becomes \"Real\" when a child loves it truly and long enough, however worn it may grow. The boy comes to love the rabbit above everything, carrying it everywhere, and the shabby rabbit is blissfully content. But when the boy nearly dies of scarlet fever, the doctor orders his contaminated toys burned. Discarded in the garden and facing the fire, the rabbit weeps a real tear, from which a flower and the Nursery Magic Fairy appear. Because he has been so deeply loved, the fairy makes him fully Real, a living rabbit who joins the others in the wood. In spring the recovered boy sees a wild rabbit that reminds him of his lost toy, never realizing it is the same one, brought truly to life by the love he gave it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A velveteen rabbit is given to a small boy one Christmas and, after being set aside among grander, mechanical toys, is befriended by the wise old Skin Horse, who explains that a toy can become \"Real\" if a child loves it truly for a long time, even though the process wears the toy out. In time the boy comes to love the velveteen rabbit above all his other playthings, carrying it everywhere and sharing his bed with it, and the rabbit grows shabby but deeply happy, believing himself Real in the boy's eyes. Then the boy falls gravely ill with scarlet fever, and once he recovers, the doctor orders that all the germ-laden playthings from the sickroom, including the beloved rabbit, be burned. Cast out in a sack in the garden and awaiting the bonfire, the lonely, discarded rabbit sheds a real tear. From that tear a flower grows, and the Nursery Magic Fairy appears; because the rabbit has been so truly loved, she makes him Real in full, a living rabbit able to hop and play with the wild rabbits in the wood. Later, the boy glimpses a rabbit in the garden that seems strangely familiar, never knowing it is his own old toy, brought to life by the love he gave it.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-velveteen-rabbit"
+      }
+    },
+    "the-vile-village": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think. After many failed guardians, she and her siblings are still hunted by Count Olaf and still searching for a way to free their kidnapped friends, the Quagmire triplets.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire, twelve, bespectacled, and endlessly well-read, whose research guides the family. He is determined to rescue the Quagmires and to uncover the meaning of the secret V.F.D.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The infant Baudelaire, who speaks in short exclamations and bites with four sharp teeth. Small but brave, she helps her siblings however she can.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The murderous actor who hunts the Baudelaire fortune, marked by his single eyebrow and ankle tattoo. Having kidnapped the Quagmire triplets, he remains free with his accomplice Esme and is sure to appear in a new disguise wherever the children go.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Count Olaf's glamorous girlfriend and accomplice, a former financial advisor obsessed with what is fashionable. Exposed in the children's previous home as a villain rather than a guardian, she now works openly at Olaf's side to seize the Baudelaire fortune.",
+            "id": "esme-squalor",
+            "name": "Esme Squalor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Quagmire triplet and friend of the Baudelaires, an aspiring journalist orphaned like them and heir to a fortune in sapphires. Kidnapped by Count Olaf, he is still being held captive as the children search for him.",
+            "id": "duncan-quagmire",
+            "name": "Duncan Quagmire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duncan's sister and fellow Quagmire triplet, a poet who composes rhyming couplets. Also orphaned and kidnapped by Count Olaf, she remains his captive as the Baudelaires try to find and free her and her brother.",
+            "id": "isadora-quagmire",
+            "name": "Isadora Quagmire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The coughing banker who manages the Baudelaire fortune and their placements. Kindly but useless in a crisis, he arranges the children's unusual new living situation and remains slow to see the danger they face.",
+            "id": "mr-poe",
+            "name": "Mr. Poe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The kindly handyman of the village that takes the children in, with whom they come to live. Gentle and generous in private, he is so painfully shy that he cannot speak or act in front of the town's imposing Council of Elders, which leaves him unable to protect the children openly even when he wants to.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brash, oddly dressed detective who arrives in the village claiming to investigate crimes. His shining eyes and single eyebrow lead the Baudelaires to recognize him at once as Count Olaf in a new disguise, arrived to turn the town against them.",
+            "id": "detective-dupin",
+            "name": "Detective Dupin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A calm stranger who is arrested in the village and accused of being Count Olaf because he bears a tattoo of an eye on his ankle, though the Baudelaires can see he is not Olaf at all. He speaks of a secret organization and seems to know something about the children's larger troubles, hinting at answers just out of reach.",
+            "id": "jacques-snicket",
+            "name": "Jacques Snicket",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vile-village"
+      },
+      "recaps": {
+        "ending": "The Baudelaires decode Isadora Quagmire's couplets, locate the captive triplets hidden inside the village fountain, and free them at last. Duncan and Isadora escape aboard Hector's self-sustaining hot air mobile home, carrying notebooks full of everything they have learned about Count Olaf and the secret V.F.D., though the children cannot go with them and are again separated from their friends. Detective Dupin is exposed as Count Olaf, but the townspeople, roused into an angry mob and convinced the orphans murdered the arrested stranger Jacques Snicket, refuse to listen. Framed for a killing they did not commit and with no guardian to protect them, the Baudelaires are forced to flee the village entirely. For the first time they leave Mr. Poe and the system of guardians behind and become fugitives, hunted not only by Olaf but now by the law, and more determined than ever to unravel the mystery of V.F.D.",
+        "in_short": "Tired of individual guardians, the Baudelaires agree to be raised by an entire village, V.F.D., the Village of Fowl Devotees, which worships crows and is ruled by a strict Council of Elders. They are made to do all the town's chores and live with Hector, a kind but painfully timid handyman. Mysterious rhyming couplets begin appearing, which the children recognize as coded messages from the captive Quagmire triplets, revealing they are hidden nearby. Count Olaf arrives disguised as Detective Dupin, with Esme posing as a police officer. A stranger, Jacques Snicket, is arrested as Count Olaf because of his ankle tattoo, then found murdered, and Dupin frames the Baudelaires for the crime. Decoding the couplets, the children find the Quagmires hidden in the town fountain and free them, and the triplets escape aboard Hector's self-built flying mobile home. Now falsely wanted for murder, the Baudelaires flee the village and become fugitives on their own.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Orphaned by a fire and heirs to a fortune, the Baudelaire children, Violet, Klaus, and Sunny, have been shuffled through many guardians by the banker Mr. Poe, always pursued by the greedy actor Count Olaf, who murders and disguises himself to reach their money and has escaped capture every time. At a boarding school they befriended the Quagmire triplets, Duncan and Isadora, fellow orphans with a fortune in sapphires, only for Olaf to kidnap them. Chasing their friends, the children next lived with the Squalors, where Olaf's accomplice Esme was exposed as a villain and the pair escaped with the Quagmires still captive. Throughout, the mysterious letters V.F.D. have haunted the orphans without explanation. Now, weary of guardians, the Baudelaires decide to try a wholly new kind of home, still hunted by Olaf and Esme, still desperate to rescue the Quagmires, and still hoping to learn what V.F.D. truly means.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Acting on the saying that it takes a village to raise a child, the Baudelaires agree to be raised by an entire town, V.F.D., the Village of Fowl Devotees, and Mr. Poe leaves them there. The town is obsessed with crows, which roost throughout it in enormous numbers, and is governed by a stern Council of Elders that enforces a staggering list of rules. Rather than being cared for, the children are put to work doing chores for the whole village. They are taken in by Hector, the town handyman, who is warm and generous in private but so terrified of the Council of Elders that he cannot speak or act in their presence. Settling into this strange and demanding place, the Baudelaires hope that being spread among many caretakers might finally keep Count Olaf away, while sensing that the mystery of V.F.D. is closer than ever.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mysterious rhyming couplets begin appearing around the village, and the Baudelaires recognize them as the work of Isadora Quagmire, secret messages hinting that she and her brother are being held somewhere nearby. As the children try to decode the verses, Count Olaf arrives disguised as a loud detective calling himself Dupin, accompanied by his accomplice Esme in the guise of a police officer. Then a calm stranger is arrested and accused of being Count Olaf, because he bears the same eye tattoo on his ankle, though the children can plainly see he is not Olaf. The man, Jacques Snicket, speaks of a secret organization and seems to know something about the orphans' deeper troubles. With the real Olaf posing as a detective and an innocent man locked up in his place, the Baudelaires race to interpret the couplets and locate their captive friends.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The arrested stranger, Jacques Snicket, is found murdered in his cell, and Detective Dupin seizes the chance to frame the Baudelaires, publicly accusing the children of the killing and turning the superstitious, rule-bound villagers against them. Threatened with imprisonment or worse for a crime they did not commit, the orphans work frantically to finish decoding Isadora's couplets, which lead them to conclude that the Quagmire triplets are hidden inside the town's fountain. With the whole village roused against them and Olaf, as Dupin, pressing for their punishment, the children prepare a desperate plan to reach the fountain, free their friends, and escape before they can be caught for the murder that Olaf himself arranged.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Baudelaires reach the fountain and free the Quagmire triplets, and Duncan and Isadora escape aboard Hector's self-sustaining hot air mobile home, carrying notebooks filled with everything they have discovered about Count Olaf and the secret V.F.D., though the orphans themselves cannot go with them. Detective Dupin is exposed as Count Olaf, but the villagers, whipped into a mob and convinced the children murdered Jacques Snicket, will not listen. Falsely wanted for the killing and with no guardian left to shelter them, the Baudelaires are forced to flee the village entirely. For the first time they leave Mr. Poe and the whole system of guardians behind and become true fugitives, hunted now by the law as well as by Olaf, and resolved to uncover the meaning of V.F.D. on their own.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-vile-village"
+      }
+    }
+  }
+}

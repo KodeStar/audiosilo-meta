@@ -4,12 +4,10 @@
 // positions). It returns the discovered problems, any advisory warnings, and,
 // best-effort, the loaded Catalog so metabuild can reuse the same load.
 //
-// Load handles both storage layouts, detected per family (pack.DetectLayout):
-// the range-packed layout pkg/pack defines, and - for the migration window
-// only - the file-per-entity layout in legacy.go. A mixed tree is legal, so a
-// family can convert on its own. Whichever walker reads a family, the resulting
-// model.Catalog is the same, and every cross-record rule in rules.go runs on
-// that Catalog without knowing which layout produced it.
+// Load reads ONE storage layout: the range-packed one pkg/pack defines. The
+// file-per-entity tree it replaced is gone (cmd/metamigrate converted it), and a
+// family still in that shape is reported as a problem rather than read - see
+// loadLegacyFamily, which is the whole of what is left of the old layout here.
 //
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency, so its exported surface is a contract.
@@ -17,6 +15,8 @@ package check
 
 import (
 	"fmt"
+	"io/fs"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -26,9 +26,9 @@ import (
 
 // Problem is one validation failure, tied to the file it came from.
 //
-// Path names the smallest thing that can be wrong. In the legacy layout that is
-// a file. In the pack layout a file holds many entities, so Path carries the
-// entry too, in the form model.PackLocation renders:
+// Path names the smallest thing that can be wrong. A pack file holds many
+// entities, so Path carries the entry too, in the form model.PackLocation
+// renders:
 //
 //	works/0/0.json                                    (a pack-wide problem)
 //	works/0/0.json: entry book-one                    (an entry's own problem)
@@ -64,22 +64,17 @@ func (r Result) OK() bool { return len(r.Problems) == 0 }
 type addFunc func(path, format string, args ...any)
 
 // recordWithPath carries a recording alongside its parent-work slug and the
-// path (file, or pack entry) it was read from, so it can be attached to its
-// work and reported against after all works are read.
+// pack entry it was read from, so it can be reported against during the
+// cross-record checks. A works entry is a composite, so the recording is
+// already hung off its work by the time it gets here.
 type recordWithPath struct {
 	rec      *model.Recording
 	workSlug string
 	path     string
-	// attached reports that the walker already hung this recording off its
-	// work. A pack works entry is a composite, so its recordings arrive
-	// attached; a legacy recording is a separate file and is attached by Load
-	// once every work has been read.
-	attached bool
 }
 
 // pathIndex remembers where each entity was loaded from, for later problem
-// reporting during cross-record checks. Both walkers fill it, so the rules in
-// rules.go report identically whichever layout a family is in.
+// reporting during cross-record checks.
 type pathIndex struct {
 	work       map[*model.Work]string
 	rec        map[*model.Recording]string
@@ -137,27 +132,32 @@ func Load(dir string) Result {
 
 	// Partition the tree's JSON files by family. A pack-layout family's files
 	// are walked from its pack listing instead, so they are handed to that
-	// walker only to spot files the listing does not account for. Everything
-	// else - including a file under no family root at all - goes to the legacy
-	// reader, which reports an unrecognized location.
+	// walker only to spot files the listing does not account for. A file under
+	// no family root at all belongs to nothing and is reported here.
 	packFiles := map[pack.Family][]string{}
-	var legacyFiles []string
+	legacyFiles := map[pack.Family][]string{}
 	for _, abs := range files {
 		rel := relSlash(dir, abs)
-		if f, ok := familyOf(rel); ok && layouts[f] == pack.LayoutPack {
+		f, ok := familyOf(rel)
+		if !ok {
+			add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
+			continue
+		}
+		if layouts[f] == pack.LayoutPack {
 			packFiles[f] = append(packFiles[f], rel)
 			continue
 		}
-		legacyFiles = append(legacyFiles, rel)
+		legacyFiles[f] = append(legacyFiles[f], rel)
 	}
 
-	recs := l.loadLegacy(dir, legacyFiles)
+	var recs []recordWithPath
 	for _, def := range pack.Families() {
 		if layouts[def.Family] != pack.LayoutPack {
+			l.loadLegacyFamily(def.Family, legacyFiles[def.Family])
 			continue
 		}
-		// A pack works entry composes its own recordings, so these arrive
-		// already attached to their work and only need reporting paths.
+		// A works entry composes its own recordings, so these arrive already
+		// attached to their work and only need reporting paths.
 		recs = append(recs, l.loadPackFamily(dir, def, packFiles[def.Family])...)
 	}
 
@@ -166,16 +166,6 @@ func Load(dir string) Result {
 	for _, w := range cat.Works {
 		if _, dup := workByID[w.ID]; !dup {
 			workByID[w.ID] = w
-		}
-	}
-	// Attach legacy recordings to their parent works (integrity flags orphans
-	// below). Pack recordings are already attached, so they are skipped here.
-	for _, pr := range recs {
-		if pr.attached {
-			continue
-		}
-		if w := workByID[pr.workSlug]; w != nil {
-			w.Recordings = append(w.Recordings, pr.rec)
 		}
 	}
 
@@ -216,4 +206,68 @@ func familyOf(rel string) (pack.Family, bool) {
 		}
 	}
 	return "", false
+}
+
+// familyRoots lists the family root directories, for the message a file
+// belonging to none of them gets.
+func familyRoots() string {
+	roots := make([]string, 0, 4)
+	for _, d := range pack.Families() {
+		roots = append(roots, d.Family.Root()+"/")
+	}
+	return strings.Join(roots, ", ")
+}
+
+// loadLegacyFamily reports a family that is not in the pack layout. It is all
+// that remains of the file-per-entity reader: the tree was converted once
+// (cmd/metamigrate) and every writer refuses the old layout outright
+// (pack.ErrLegacyLayout), so a family still shaped that way is a problem to
+// report, not a second walker to keep working.
+//
+// It names the file that identified the layout, because the same detection
+// answers "legacy" for a pack file the reader could not recognize - an
+// unreadable or wrongly-shaped first file - and the fix for that is not the
+// migration.
+func (l *loader) loadLegacyFamily(f pack.Family, rels []string) {
+	if len(rels) == 0 {
+		return
+	}
+	l.add(f.Root(), "family is not in the pack layout (%d file(s), the first being %s): "+
+		"convert the tree with `go run ./cmd/metamigrate`. A pack is %s/<bound>.json holding an "+
+		"\"entries\" object; if this family is meant to be one already, that file is what does not read as a pack",
+		len(rels), rels[0], f.Root())
+}
+
+// jsonFiles lists every .json file under dir, sorted. Every one of them has to
+// be accounted for: a file the pack listing does not hold is reported rather
+// than skipped, which is what keeps a stray record from sitting in the tree
+// unvalidated.
+func jsonFiles(dir string) ([]string, error) {
+	var files []string
+	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
+			return nil
+		}
+		if strings.EqualFold(filepath.Ext(path), ".json") {
+			files = append(files, path)
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	sort.Strings(files)
+	return files, nil
+}
+
+// relSlash returns path relative to dir with forward slashes.
+func relSlash(dir, path string) string {
+	rel, err := filepath.Rel(dir, path)
+	if err != nil {
+		rel = path
+	}
+	return filepath.ToSlash(rel)
 }

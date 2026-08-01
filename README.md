@@ -3,9 +3,11 @@
 The community audiobook metadata database behind
 [meta.audiosilo.app](https://meta.audiosilo.app).
 
-**The GitHub repository is the database.** Metadata lives as plain JSON files, one
-per entity, edited by pull request or issue form, validated by Go tooling in CI,
-and compiled into a single SQLite artifact that servers consume.
+**The GitHub repository is the database.** Metadata lives as plain JSON pack
+files - many records to a file, addressed by slug range
+([PACK-SPEC.md](PACK-SPEC.md)) - edited by pull request or issue form, validated
+by Go tooling in CI, and compiled into a single SQLite artifact that servers
+consume.
 
 > **Status: Phase 1 shipped, Phase 2 landed.** Governance, schemas, the
 > validation/build pipeline, the OpenAudible and Libation importers, the
@@ -71,7 +73,7 @@ the shape this project is built around. Full details in
 ## Repository layout
 
 ```
-data/          the database: works/, recordings/, people/, series/ (sharded JSON)
+data/          the database: works/, works-community/, people/, series/ (range-packed JSON, see PACK-SPEC.md)
 schema/        JSON Schemas (one per entity) - authoritative field definitions
 cmd/           Go tooling: metacheck (validate), metafmt (canonicalise), metabuild (SQLite), metaserve (API server)
 internal/      shared Go packages behind the tooling (build, check, serve, ...)
@@ -98,11 +100,14 @@ go run ./cmd/metabuild -o meta.sqlite
 
 - `metacheck` - schema, referential integrity, and uniqueness validation.
 - `metafmt --check` / `--write` - canonical JSON (sorted keys, 2-space indent,
-  trailing newline).
-- `metabuild -o meta.sqlite` - compile the database into a SQLite file.
-  `--added <file>` dates each work from a tab-separated `<ISO8601>\t<work.json
-  path>` list (the release workflow derives it from git history); works absent
-  from it fall back to the newest `sources[].imported_at`.
+  trailing newline) plus pack placement: `--write` moves an entry to the pack its
+  slug belongs in and splits a pack that has outgrown its caps, so nobody has to
+  work placement out by hand.
+- `metabuild -o meta.sqlite` - compile the database into a SQLite file. A work's
+  `added_at` comes from the record; one that carries none falls back to the
+  newest `sources[].imported_at`.
+- `metamigrate` - the one-off conversion of a pre-pack, file-per-record tree into
+  the pack layout (`--out <dir>` to rehearse without touching the source).
 
 ## Running the API server
 

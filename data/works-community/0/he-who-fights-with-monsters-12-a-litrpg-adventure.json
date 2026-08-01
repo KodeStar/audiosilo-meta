@@ -1,0 +1,1620 @@
+{
+  "entries": {
+    "he-who-fights-with-monsters-12-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An absent adventurer whose allies are waiting to reunite with him. His earlier actions left him responsible for transformation zones and the people sheltered within his domains, and his friends remain apart while awaiting his return.",
+            "id": "jason-asano",
+            "name": "Jason Asano",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jason's independent shadow familiar and companion.",
+            "id": "shade",
+            "name": "Shade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's eye familiar and a source of magical advice who supports Jason's unusual magic.",
+            "id": "gordon",
+            "name": "Gordon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's blood familiar and a powerful combat companion.",
+            "id": "colin",
+            "name": "Colin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A magitech engineer, veteran adventurer and trusted member of Jason’s circle. She refuses to help intrude on her friends’ privacy.",
+            "id": "farrah-hurin",
+            "name": "Farrah Hurin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The protective leader of Team Biscuit and Sophie's partner. Humphrey has spent the years of Jason's absence advancing toward gold rank and preserving the team's cohesion, with the group intending to reunite fully once Jason returns.",
+            "id": "humphrey-geller",
+            "name": "Humphrey Geller",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Team Biscuit adventurer and Humphrey’s partner. She has operated separately during the group’s advancement but remains among those waiting for Jason’s return.",
+            "id": "sophie-wexler",
+            "name": "Sophie Wexler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An infiltrator and member of Jason’s returning team. During the years apart, she has taught at the adventurer school run by Rufus Remore’s family.",
+            "id": "belinda-callahan",
+            "name": "Belinda Callahan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Team Biscuit's healer and a dependable member of Jason's wider circle. During the team's separation, he watches over a younger adventurer's varied assignments so that the Adventure Society cannot take advantage of an inexperienced recruit.",
+            "id": "neil-devone",
+            "name": "Neil Devone",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Team Biscuit’s ritual and dimensional-magic specialist with a strong academic focus.",
+            "id": "clive-standish",
+            "name": "Clive Standish",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A storm mage who joined Team Biscuit during Jason's absence.",
+            "id": "zara-noreen",
+            "name": "Zara Noreen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran adventurer and close ally of Jason who has spent years on Earth. He supports the hidden Asano clan refuge while Jason remains away.",
+            "id": "rufus-remore",
+            "name": "Rufus Remore",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth ally of Jason and a powerful member of the Asano clan’s wider circle.",
+            "id": "taika",
+            "name": "Taika",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Healer priest and researcher working with Jason's allies. His long-term project seeks to remove severe magical corruption and develop a treatment for victims forced into vampirism.",
+            "id": "carlos-quilido",
+            "name": "Carlos Quilido",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted healer and mental-health specialist within Jason's circle.",
+            "id": "arabelle-remore",
+            "name": "Arabelle Remore",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adventurer from Jason's former Earth-era community.",
+            "id": "cassandra-mercer",
+            "name": "Cassandra Mercer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophie's mother and a victim of imposed faith magic.",
+            "id": "melody-jane",
+            "name": "Melody Jane",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure sought by Earth officials for information after the appearance of the new System interface.",
+            "id": "boris-ket-lundi",
+            "name": "Boris Ket Lundi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Time's prime avatar, who remains behind to guide Jason after the great astral being departs.",
+            "id": "wraith",
+            "name": "Wraith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a nine-person veteran mercenary team covertly observing the former Asano territory in France. He is weighing whether the Asano clan could offer lasting security to his team and their families.",
+            "id": "gold-rank-mercenary",
+            "name": "Gold-rank mercenary",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Brightheart City, which she maintained through the years without Jason's aura protection.",
+            "id": "council-leader-loren",
+            "name": "Council Leader Loren",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cosmic being who returns the unused value of Jason’s former resurrection agreement, allowing him to create a prime avatar.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of Cassin Amuz, Gibson is the first patient to complete Carlos Quilido’s corruption-removal procedure. He survives the treatment and begins recovering.",
+            "id": "gibson-amuz",
+            "name": "Gibson Amuz",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of a group the Asano clan is considering accepting after its current job is complete.",
+            "id": "nigel",
+            "name": "Nigel",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A highly sought communications and coordination specialist who works through the Adventure Society.",
+            "id": "nick",
+            "name": "Nick",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The god who embodies rulership. He gives Jason a means to hide his transcendent presence and counsels him about the political risks of returning to Earth.",
+            "id": "dominion",
+            "name": "Dominion",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A diamond-ranker who challenges Jason after the Cloudflask passes beyond their control. Their encounter produces a wary arrangement for sharing guidance while avoiding a clash between exceptionally powerful figures.",
+            "id": "cloudweaver",
+            "name": "Cloudweaver",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Adventure Society official chosen to handle the organization's dealings with Jason because he speaks candidly instead of showing excessive respect.",
+            "id": "miguel-ladive",
+            "name": "Miguel Ladive",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the allies who gathers with Jason's wider circle in Outer Rhexion as the group prepares for its journey.",
+            "id": "estella-warnock",
+            "name": "Estella Warnock",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gold-rank mercenary whose team survives and liberates a blood farm before returning to territory under Asano control.",
+            "id": "nigel-thornton",
+            "name": "Nigel Thornton",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A politically experienced member of Jason's extended circle whom he asks to advise on his return to Earth. She presses him to define concrete objectives, gather reliable intelligence and recognize that restraint alone is not a complete diplomatic strategy.",
+            "id": "danielle-geller",
+            "name": "Danielle Geller",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anna"
+            ],
+            "description": "An Earth official facing international pressure over the new System and the renewed activity in former Asano territory. She has an off-books observation team in Europe and must assess reports that Jason, his clan and a liberated blood farm are connected.",
+            "id": "annabeth-tilden",
+            "name": "Annabeth Tilden",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Segarado's gold-rank elven general and local defence commander. She organizes resistance after an unexpectedly large messenger force breaks the city's barrier, continuing to direct the battle even though her comparatively weak army expects to lose.",
+            "id": "millicent-marx",
+            "name": "Millicent Marx",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An astral king whose service has been penetrated by an undercover member of the Unorthodoxy.",
+            "id": "vesta-carmis-zell",
+            "name": "Vesta Carmis Zell",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Greenstone's Adventure Society director, preparing anxiously for Jason's formal return. Their prior conflict makes her fear retaliation, while a standing low-alert order and the city's political reception leave her responsible for managing his disruptive arrival.",
+            "id": "elspeth-arella",
+            "name": "Elspeth Arella",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced silver-rank operator from Earth who covertly manipulates rural protection rackets across low-magic regions. She exploits conflict between workers and aristocratic owners to fund the purchase of gold-rank monster cores.",
+            "id": "earth-refugee-operator",
+            "name": "Earth refugee operator",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior astral king who opposes the unauthorized assault on Jason and confronts the four astral kings responsible for it.",
+            "id": "council-of-kings-member",
+            "name": "Council of Kings member",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A non-combatant from Greenstone who accepts a trial position as bartender and kitchen manager aboard Jason's cloud ship. The job offers travel and experience, but also requires discretion and an understanding that service around powerful adventurers carries unusual risks.",
+            "id": "jamar",
+            "name": "Jamar",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A teenage Leonid with skill in magitech mechanics and a connection to Emmy's household.",
+            "id": "young-leonid-mechanic",
+            "name": "Young Leonid mechanic",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's niece.",
+            "id": "emmy",
+            "name": "Emmy",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rufus Remore's diamond-rank grandfather. He draws Jason into the Burning Violet Guild's internal dispute as a diversion meant to distance Team Biscuit from his approaching confrontation with the Order.",
+            "id": "roland-remore",
+            "name": "Roland Remore",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A diamond-ranker who explains the customary restraints on immortal power. He accepts Jason's System sanction as the large intervention permitted to a new immortal, but says the diamond-rank community will not protect him if he brings overwhelming force into routine mortal conflicts.",
+            "id": "vandrick-maccaro",
+            "name": "Vandrick Maccaro",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth expatriate, Cabal member and troll were-crocodile who joins the return group. Near gold rank, he hopes to gain access to Jason's network and magical knowledge.",
+            "id": "daryl",
+            "name": "Daryl",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth expatriate of Maori heritage who was transported to Palimastus while visiting a portal site and trained there without monster cores.",
+            "id": "koa",
+            "name": "Koa",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zara Noreen",
+              "Zara Narain"
+            ],
+            "description": "The royal identity resumed by the storm mage previously known publicly as Zara Noreen. She remains with Team Biscuit while preparing a gradual political campaign against indentured servitude in the Storm Kingdom, using domestic support rather than outside compulsion.",
+            "id": "princess-zara-rimaros",
+            "name": "Princess Zara Rimaros",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The official directing the fortified Australian dimensional-artifact site. She coordinates the multinational installation's response after sabotage and prepares for the unexpected arrival of Jason's representatives.",
+            "id": "artifact-site-director",
+            "name": "Artifact-site director",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jakar pirate captain sent to Earth under a contract to remove Jason. Cautious about both the mission and his sponsors' incomplete account, he investigates Jason's cosmic connections while weighing the threat of a mutiny within his own gold-rank crew.",
+            "id": "jota-withers",
+            "name": "Jota Withers",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The matriarch of a rival Japanese-origin Asano clan that hosts the pirate crew sent to remove Jason. She opposes Jason's side of the family.",
+            "id": "asano-noriko",
+            "name": "Asano Noriko",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jota Withers's first officer and trusted second-in-command. She warns him that a rival is gathering support for mutiny, helping the captain assess whether their assignment against Jason has become more dangerous than its sponsors admitted.",
+            "id": "natala",
+            "name": "Natala",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A gold-rank Jakar pirate building support to replace Jota Withers as captain. He sees the contract against Jason as an opportunity to exploit any sign of weakness or failure in the existing command structure.",
+            "id": "kriegel",
+            "name": "Kriegel",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Lenora oversees security at Artifact City while its occupants withdraw and its defences are readied before Jason reaches the site.",
+            "id": "lenora",
+            "name": "Lenora",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Leonid refugee and skilled magitech mechanic travelling with Jason's Earth-side representatives. Named for Jason's deceased friend, Gary is treated as his own person and joins Jason to help inspect and operate the newly captured dimension ship.",
+            "id": "gary-sharpton",
+            "name": "Gary Sharpton",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0DWZJNT8G",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-12-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Jason reaches Earth through the newly activated but still unstable bridge, backed by Team Biscuit, returning expatriates, researchers, clergy and a Storm Kingdom delegation. His plan to provoke a manageable pirate incursion damages trust with Annabeth Tilden and confirms that his political organization still lacks firm rules for consultation and authority.\n\nAt Artifact City, Jota Withers and Natala step aside from Kriegel's mutiny. Jason and Team Biscuit defeat the attacking gold-rank pirates, and Jason abandons the original plan to kill them. One pirate dies after apparently trying to purge Jason's afflictions, but the others are imprisoned in Jason's soul realm. Jason claims their dimension ship, brings Gary Sharpton into the effort to examine it and leaves Jota and Natala available for questioning.\n\nJason then departs to see Emmy. The pirate assault is over, but its Earth sponsors and the wider Jakar threat remain open. New Water still shelters Boko's survivors, the messenger conflict and vampire crisis continue, the inter-world bridge needs years to stabilize, and Jason's advisers must turn his immense personal power into a workable relationship with Earth.",
+        "in_short": "After restoring the Cosmic Throne, Jason Asano becomes an immortal astral nexus and creates a prime avatar capable of leaving his domains. He reunites with Team Biscuit, survives an assassination that destroys Boko, shelters its people in New Water and forces a major messenger withdrawal. On the journey toward Earth, he uses the System against slavery and gathers stranded Earth expatriates. A new dimensional bridge carries his allies and a diplomatic expedition home. There, Jason admits that he deliberately enabled a limited Jakar pirate incursion to expose hostile Earth factions and create a common enemy. Team Biscuit defeats the mutinous pirates, and Jason chooses capture over execution. He ends the book holding their crew and dimension ship while the sponsors of the attack remain unidentified, then leaves the aftermath to his allies so he can reunite with his niece Emmy.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jason Asano became separated from his allies after taking control of transformation zones and assuming responsibility for the people sheltered in his domains. His friends continued advancing toward gold rank and dispersed with the intention of reuniting when he returned. The Asano clan remained hidden on Earth, where Rufus Remore supported its survival amid vampire-held territory. Carlos Quilido pursued treatments for severe magical corruption and forced vampirism, while Team Biscuit and its wider circle carried on without Jason. Belinda Callahan taught at the Remore family's adventurer school, and Neil Devone watched over a younger recruit whose broad assignments left him without a permanent team. Jason departed again and remains absent. His allies await his return, but the consequences of his earlier actions have also drawn the attention of many others who want answers from him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason survives restoring the Cosmic Throne, but his true self is now a universe and his mortal body is only an avatar. The restoration imprints him on the throne and creates a System interface for essence-capable people across the cosmos, provoking political upheaval, persecution and violence before he can return home. Wraith explains that he first needs a prime avatar and must rebuild the bridge between worlds.\n\nJason explores his inner universe and visits his grandmother, but his basic avatars cannot leave his territory. He reclaims reality-core power from vampires occupying the former Asano domain in France, destroying their city and arranging help for their blood-farm victims. After reopening the link to Brightheart City, he negotiates limits on his dominion and informs its leader about the sealed messenger world within his realm. Jason still lacks enough power for a prime avatar until Gordon suggests revisiting his former bargain with Death. Because resurrection is no longer possible for him, Death returns the unused reality material. Jason combines it with what he recovered and creates a prime avatar that can finally travel beyond his domains.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason uses his realm's control over pain and death to help Carlos Quilido remove corrupting magic from Gibson Amuz. Gibson survives, but the procedure still depends on Jason's domain and is not yet a general cure. Jason studies the abilities of his prime avatar while Rufus helps the Asano clan receive survivors from vampire blood farms.\n\nAfter years confined to his territories, Jason crosses into Outer Rhexion. He can suppress much of his overwhelming presence, although his speech and physical existence remain difficult to disguise. He reunites with Zara Noreen, who confirms that she has become a full member of Team Biscuit, and learns that Clive's dimensional expertise will be needed for the route to Earth. Dominion gives Jason a means of concealing his transcendent nature but warns that his political position cannot remain ambiguous. Diamond ranker Cloudweaver then confronts him over the altered cloud flask. Their exchange establishes a cautious relationship in which high-rankers may guide Jason in mortal affairs while he offers insight into transcendence. By chapter 15, Team Biscuit and its allies have gathered and agreed to collect Earth expatriates before repairing the inter-world link.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason tests his new combat form in a mirage arena against a gold-rank prince. Although the prince dismembers the projected body, Jason regenerates, drains the prince's magical after-images and wins when the swordmaster yields. The display also alters the arena's projection system, giving Clive another mystery to investigate.\n\nFarrah Hurin then confronts Jason about their bond. His transformation has stalled her advancement and is pushing her toward magical service as his Voice of the Will. Jason admits that part of his own subconscious is trying to impose that outcome. Inside his astral kingdom, he offers to sever the bond or replace it with an immortal arrangement that protects her autonomy and allows her to oppose his influence. Farrah accepts an alternative and survives the resulting advancement surge, although the exact status she chose is not established.\n\nRecognizing the danger his power will pose on Earth, Jason recruits Danielle Geller as a political adviser. She requires clear objectives, intelligence and limits rather than vague intentions. With his cloud vessel upgraded, Jason's expedition leaves Yoresh on an indirect route that allows both preparation and reconnaissance.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition diverts to Segarado when a large messenger force attacks the poorly defended city. Jason's party and the local army destroy the attackers without a Segarado military death. General Millicent Marx remains concerned that the assault had a specific hidden objective, while Jason's identity as the Heretic King alarms the surviving messenger leadership.\n\nElsewhere, an undercover Unorthodoxy voice exposes herself during debate over whether the messengers should avoid or attack Jason. On Earth, Rufus Remore invites Annabeth Tilden to become Jason's senior political adviser and tells her that Jason expects to return within a year. The travelling group continues through the Dragonlands, leaving quickly after Clive enters a restricted magical hall and Zara rejects a prince's coercive attempt to make her his wife.\n\nJason then reaches Greenstone in secret with Belinda Callahan and Estella Warnock. Before the public arrival, he revisits the abandoned waystation where he was tortured as an iron ranker. He acknowledges how the ordeal shaped his identity and recovery, while Greenstone's Adventure Society prepares nervously for the disruptive return of a far more powerful Jason.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason quietly helps Greenstone's surrounding communities before Team Biscuit receives an official welcome. Adventure Society director Elspeth Arella asks him to investigate a rural movement exploiting genuine worker grievances. Belinda and Estella trace its organizer to an experienced Earth refugee, whom Jason considers recruiting after vetting.\n\nAn armored assassin then impales Jason with a weapon that drains his astral kingdom. Jason evacuates most of Boko while Clive, Farrah and Belinda build a containment ritual, but his avatar explodes and devastates the city. A messenger army descends as the System declares the rise of the Hegemon. Jason manifests as a ghost-fire phoenix, destroys the attackers and reaches through their portals to kill the four voices directing the assault. The victory saves most civilians but kills hundreds or more during the evacuation and blast, and Jason is burdened by having deliberately killed roughly ten thousand indoctrinated messengers.\n\nA senior astral king identifies Jason as an originator who combines several kinds of cosmic authority. Jason demands that messenger occupiers leave Palimustus and that their marked forces be freed. A much larger surrendered force subsequently enters his realm, where he also creates a refuge for Boko's displaced population.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Adventure Society grants Jason the broad autonomy normally given to diamond rankers while retaining an expectation that he answer major crises. He names the refuge for Boko's people New Water and removes the former duke from authority there, asking the gods to help establish resident choice and governance without inherited titles. Jason also promises to take greater responsibility for Nick, who is his living creation and regards him as a father.\n\nOn Earth, an international delegation enters the restored Asano territory. Jason explains the transformation zones, the clan's vampire rescues and the danger his eventual return may create. After several days of examination, Annabeth Tilden provisionally accepts his offer to advise him, subject to further verification.\n\nJason's party reaches Vitesse and the Remore Academy. His quiet application to the Burning Violet Guild becomes entangled in a factional dispute over the Remore family's influence. Roland Remore admits that he deliberately drew Jason into the issue to keep Jason and Humphrey away from Roland's coming conflict with the Order. Jason refuses involvement, and Humphrey formally withdraws Team Biscuit from the guild.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason reconnects with Cassandra Mercer, who refuses immediate contact with Neil after he ended their relationship without consulting her. Team Biscuit then takes a Springclaw Gorilla contract to rebuild its tactics now that every member is gold rank and Jason has rejoined the active formation.\n\nIn Syrian, the group gathers stranded Earth expatriates. When noble houses use indenture laws to retain Earthling guards, Jason announces that he will withdraw System access from every jurisdiction maintaining slavery or equivalent servitude. Diamond ranker Vandrick Maccaro treats this as Jason's single major intervention as a new immortal but warns that other immortals will not support further interference in mortal disputes. Belinda abducts the negotiating nobles and places them in Sadi Andali's slave markets, forcing their families into rescue operations and helping secure the Earthlings' release.\n\nThe expedition leaves with dozens of returnees and continues its pickup route. At a mountain city, Storm Spire Drakes attack the skyport. Team Biscuit, Koa, Daryl, Nick and local adventurers coordinate through Jason's System tools, eliminate the silver-rank swarm and preserve the local gold-rank defenders' control of their own battle.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The last Earth returnees gather on a Storm Kingdom island containing infrastructure that can anchor a dimensional bridge. Zara Noreen resumes her royal identity as Princess Zara Rimaros and begins planning a gradual domestic campaign against indenture. Clive activates the bridge, although it will take about a decade to stabilize for routine travel. Jason's cloud ship follows it through the deep astral with the expatriates, Team Biscuit, researchers, clergy and a Storm Kingdom delegation.\n\nOn Earth, Jason offers sane vampires resettlement on a safely eclipsed world and prepares to destroy those beyond recovery. American officials warn him that several governments have invited Jakar pirates to eliminate him. Jason then admits that he used a cosmic favor to permit gold-rank outsiders into Earth, deliberately creating a manageable enemy that might unite local factions and demonstrate that he cannot be controlled. Annabeth Tilden condemns his failure to consult the advisers he recruited, and Jason accepts the need for a formal organization around his power.\n\nAhead of his arrival, Annabeth, Rufus Remore, Taika and a young Leonid specialist enter the fortified Australian standing-stone site and begin direct negotiations with its leadership.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pirate captain Jota Withers discovers that his local sponsors have understated Jason's power and that Kriegel is organizing a mutiny. When Jason reaches Artifact City, Jota and Natala disclose the split and withdraw from the fight, while Kriegel leads twenty-three gold-rank pirates against Jason.\n\nJason initially fights alone, spreading darkness, shadow doubles, draining effects and aura suppression across the pirate force. Once the attackers pin him with a harpoon, Team Biscuit and Farrah enter the battle. Belinda pulls the pirates together, the team exploits Jason's accumulated afflictions and the mutineers collapse. Jason abandons the planned execution, deciding that the public victory has made his point and that he does not want to repeat the person he was when he left Earth.\n\nThe team captures the fleeing dimension ship. One pirate dies after apparently trying to remove Jason's afflictions, but the survivors enter imprisonment in his soul realm. Jason claims the ship from Earth authorities and recruits Gary Sharpton to help examine it. Jota and Natala remain available for questioning, while the attack's Earth sponsors are still unknown. Jason delegates the aftermath and leaves through Shade to reunite with Emmy.",
+            "through": {
+              "chapter": 67
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0DWZJNT8G",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-12-a-litrpg-adventure"
+      }
+    },
+    "he-who-fights-with-monsters-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returning outworlder adventurer who is protecting Sophie and Belinda while helping investigate the disaster that killed Farrah.",
+            "id": "jason-asano",
+            "name": "Jason Asano",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A skilled Celestine fighter seeking a lasting escape from criminal coercion.",
+            "id": "sophie-wexler",
+            "name": "Sophie Wexler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sophie's closest ally and companion in seeking a safer future.",
+            "id": "belinda",
+            "name": "Belinda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An astral-magic specialist in Jason's circle.",
+            "id": "clive-standish",
+            "name": "Clive Standish",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning young adventurer from the Geller family and a member of Jason's circle.",
+            "id": "humphrey-geller",
+            "name": "Humphrey Geller",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's returning mentor and Farrah's grieving friend.",
+            "id": "rufus-remore",
+            "name": "Rufus Remore",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Leonid ally of Jason and Rufus who mourns Farrah.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deceased adventurer whose loss during the failed expedition drives Rufus and Gary to identify the force responsible.",
+            "id": "farrah",
+            "name": "Farrah",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Priestess of Purity known from earlier events whose return carries unresolved distrust.",
+            "id": "anisa",
+            "name": "Anisa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Greenstone's Magic Society director and a hostile institutional rival.",
+            "id": "lucian-lamprey",
+            "name": "Lucian Lamprey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dangerous figure from Sophie's past whose continuing interest threatens her freedom.",
+            "id": "cole-silva",
+            "name": "Cole Silva",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An official who recommends that the Church of Purity examine five expedition survivors with altered auras after captured enemies used concealed devices to prevent their own capture.",
+            "id": "amir-bahadir",
+            "name": "Amir Bahadir",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cassandra's brother, returned from the expedition with an incompatible tracking aura and marked personality changes. He is one of five survivors sought for examination.",
+            "id": "thadwick-mercer",
+            "name": "Thadwick Mercer",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Mercer family figure and Thadwick's mother. She tells Jason that she regrets the end of his relationship with Cassandra, but he rejects her apology.",
+            "id": "thalia-mercer",
+            "name": "Thalia Mercer",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thadwick's sister, a member of the Mercer family, and someone with an established personal connection to Jason.",
+            "id": "cassandra-mercer",
+            "name": "Cassandra Mercer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established Gold-rank patron and owner of the Cloud Palace.",
+            "id": "emir",
+            "name": "Emir",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emir's portal specialist, able to relocate Sophie and Belinda if they choose to leave Greenstone.",
+            "id": "hester",
+            "name": "Hester",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Silver-rank director of Greenstone's Adventure Society branch. Institutional scrutiny forces her to protect Sophie's service agreement despite her earlier opposition.",
+            "id": "elspeth-arella",
+            "name": "Elspeth Arella",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arella's politically connected father and adviser. He orders her to obey procedure during the inquiry while treating Jason as a problem to address later.",
+            "id": "adris-dorgan",
+            "name": "Adris Dorgan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Silver-rank Geller adventurer who returns from the failed expedition and helps coordinate the response to its hidden enemy.",
+            "id": "danielle-geller",
+            "name": "Danielle Geller",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Geller team adventurer returning from the failed expedition. He credits Jason's earlier mirage-chamber training with helping his team endure losses and evacuate survivors.",
+            "id": "rick-geller",
+            "name": "Rick Geller",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Knowledge acolyte who presents Jason with a divine bargain.",
+            "id": "gabrielle-pellin",
+            "name": "Gabrielle Pellin",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Archbishop of Purity who conducts a divine cleansing examination on an altered expedition survivor.",
+            "id": "archbishop-hendren",
+            "name": "Archbishop Hendren",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Geller family fighter who agrees to practice unarmed combat with Sophie.",
+            "id": "phoebe-geller",
+            "name": "Phoebe Geller",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Humphrey's shape-changing familiar, able to take bird form for scouting.",
+            "id": "stash",
+            "name": "Stash",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer Jason plans to invite into his proposed adventuring group.",
+            "id": "neil-davone",
+            "name": "Neil Davone",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Clive's rune tortoise familiar. Onslow can merge with Clive as a runic tattoo, giving Clive access to the powers inscribed on the familiar's shell.",
+            "id": "onslow",
+            "name": "Onslow",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist separated from his usual companions who witnesses the recording of Jason's confrontation with an altered survivor.",
+            "id": "jory-tillman",
+            "name": "Jory Tillman",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of a rival Iron-rank team drawn into Jason's three-way mirage-chamber exercise. She uses plant and poison abilities while directing a coordinated withdrawal.",
+            "id": "beth-cavendish",
+            "name": "Beth Cavendish",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rufus's Gold-rank father, who arrives in Greenstone aboard a ship carrying adventurers recruited for Emir.",
+            "id": "gabriel-remore",
+            "name": "Gabriel Remore",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emir's operational lieutenant, responsible for organizing the Reaper contest and balancing his broader direction with practical coordination.",
+            "id": "constance",
+            "name": "Constance",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shadow-being bound to administer the ruined Order of the Reaper's trials. It once served as the last Grand Master's familiar and explains the choices and dangers facing entrants.",
+            "id": "trial-administrator",
+            "name": "Trial Administrator",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A well-equipped foreign swordsman who recruits the separated Clive for his Builder expertise. He leads their temporary group while accepting that Clive's powers require careful cooperation.",
+            "id": "valdis",
+            "name": "Valdis",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable frontline defender travelling with Neil and Jory in Fallen Echoes. He helps hold their temporary group together when hostile entrants and Vorgia threaten them.",
+            "id": "imran-keen",
+            "name": "Imran Keen",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's leech familiar, used to spread afflictions and support his accelerated healing.",
+            "id": "colin",
+            "name": "Colin",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Celestine princess whom Jason meets after escaping a hostile adventuring party by entering her tent.",
+            "id": "zara",
+            "name": "Zara",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate of Cole Silva who offers to arrange for a Silver-rank adventurer to abduct Jason in exchange for access to selected victims.",
+            "id": "killian-laurent",
+            "name": "Killian Laurent",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Shadow of the Reaper"
+            ],
+            "description": "The former trial administrator, now summoned as Jason's Iron-rank familiar. Shade can operate through several shadow bodies, conceal people, and transfer mana.",
+            "id": "shade",
+            "name": "Shade",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Avatar of Doom summoned as Jason's familiar. Gordon attacks with paired force beams, can dash through enemies, and can hide within Jason's aura.",
+            "id": "gordon",
+            "name": "Gordon",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Belinda's Astral Lantern familiar. Shimmer can expose hidden enemies, launch disruptive-force attacks, negate magical projectiles, and merge into Belinda's eyes.",
+            "id": "shimmer",
+            "name": "Shimmer",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Belinda's Echo Spirit familiar. Gemini can imitate other people, exchange places with copied allies, mirror movement, and alter the aura Belinda projects.",
+            "id": "gemini",
+            "name": "Gemini",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:1774249162",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-2"
+      },
+      "recaps": {
+        "ending": "Jason's six-person team settles into his soulbound Cloudflask houseboat and begins intensive training with its completed abilities and new familiars. Sophie and Belinda have both reached Iron rank, although Sophie's indenture and the threats from Lamprey and Cole remain unresolved. Jason holds the genuine Scythe of the Reaper and a Reaper token, but has not committed to the covert Order and still does not know how to use the World Phoenix token to reach Earth. The Builder crisis overtakes these gains. Dorgan's shipping evidence leads a mixed-rank strike force to a cult island, confirming Church of Purity involvement, constructs, and an extensive portal network. The cult withdraws while keeping Thadwick alive. Rufus recognizes Farrah's killer, exhausts himself using Kingdom of Eclipse against it, and collapses surrounded by enemies. The killer survives badly wounded, and Rufus's immediate fate is unresolved when chapter 76 ends.",
+        "in_short": "Jason secures Sophie's indenture before Lamprey can claim it, helps her become an Iron-rank adventurer, and forms a team with Sophie, Humphrey, Clive, Neil, and eventually Belinda. Their investigation reveals that altered expedition survivors carry starseeds serving the Builder, whose followers steal astral spaces with covert Church of Purity support. During Emir's contest in Fallen Echoes, Jason's allies survive monsters, hostile entrants, and the Order of the Reaper's trials. Jason uncovers the Order's continuing secret network, wins its genuine scythe, and gains new familiar powers. Sophie and Belinda complete their advancement, and the team moves into Jason's Cloudflask houseboat. Dorgan then locates a cult island. A strike force attacks, but the cult escapes through portals with Thadwick still captive. Rufus finds Farrah's killer and wounds it with Kingdom of Eclipse, then collapses exhausted and surrounded as the book ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jason Asano arrived in this world as an outworlder and became an Iron-rank adventurer in Greenstone. Rufus Remore, Gary, and Farrah became his mentors and allies, while Humphrey Geller and Clive Standish joined his growing circle. Jason also became involved in protecting Sophie Wexler and Belinda from the people seeking to control them. The conflict led to unresolved hostility from Magic Society director Lucian Lamprey, Adventure Society director Elspeth Arella, and Cole Silva. An expedition into an astral space ended in disaster. Farrah was killed, many other adventurers died, and the surviving force returned with evidence of an organized enemy using unusual magic and constructs. Rufus and Gary want to identify those responsible, while Jason must decide how best to protect Sophie without replacing one form of coercion with another. He also remains separated from his family on Earth and seeks a possible path between worlds.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Jason offers Sophie and Belinda several ways out of Greenstone's criminal and political pressures. They choose a six-month indenture arrangement that can lead Sophie into the Adventure Society. Jason forces Arella to allow a fair hearing, and the Society claims Sophie's contract before Lamprey can take it. Sophie remains tracked and legally bound to Jason, but she and Belinda are housed safely in Emir's Cloud Palace. As the damaged expedition returns, Jason, Rufus, and Gary put their hunt for Farrah's killers on hold until the recovered evidence can be examined. With advice from Emir, Rufus, and Clive, Sophie adds Wind and Balance to her Swift Essence, creating the Mystic confluence. She reaches Iron rank with initial abilities that provide a ranged wind attack, meditative recovery, and protection against disruptive, dimensional, and astral effects. Jason makes clear that the powers are hers even after the contract ends, and Sophie begins to believe that his aim is lasting independence rather than ownership.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophie expands her movement and protective abilities, then starts practical monster training. Meanwhile, five expedition survivors show mismatched auras, changed personalities, and resistance to examination. They disappear before officials can secure them, and Anisa is revealed to the reader as a Purity priestess secretly coordinating with the hidden operation. Cassandra identifies her brother Thadwick as one of the five and briefly begins a relationship with Jason. The official inquiry demotes Jason to one Adventure Society star, after which Cassandra ends the relationship under Mercer family pressure. Jason refuses an offer from the Goddess of Knowledge to trade his faith for Farrah's killers, despite the temptation. Clive finds evidence that similar astral incidents have occurred elsewhere, while Rufus begins tracing specialized supplies through Greenstone and Hornus. Sophie and Jason acknowledge that their earlier approach to training had become controlling and restart as partners. The altered survivors are recovered in Hornus, leaving Greenstone with a chance to determine what has happened to them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sophie kills her first monsters alone and commits to an adventurer's path. Clive and Belinda upgrade a Geller mirage chamber to reconstruct the expedition evidence, while Rufus recruits Dorgan to investigate smuggling. A Purity cleansing ritual exposes a metal-wire construct threaded through an altered survivor, but destroying it kills the host. A second examination identifies the implant as a starseed, a transcendent device that replaces its host and can become impossible to remove. The remaining four seeded survivors escape custody. Clive's simulation shows that the expedition enemy was trying to sever an astral space from the world, and he identifies the Builder as the great astral being behind the operation. Its followers steal astral spaces to assemble a world in the deep astral, making the Greenstone incident part of a much wider threat. The group agrees to verify and distribute the discovery through trusted institutions while searching for the escaped hosts.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emir reveals a nearby astral space accessible only to Iron-rank adventurers and urges Jason to build a balanced team for the coming contest. Jason recruits Neil Davone, an elven healer whose willingness to challenge his former church matters as much as his support powers. Humphrey becomes the team's central attacker, backed by Neil's shields and recovery, Clive's prepared magic, Sophie's interception, and Jason's disruptive afflictions. Gary and the Magic Society trace enemy constructs to imported clockwork cores associated with the Builder's created world. The group also accepts that Farrah cannot simply be restored after death. Sophie gains a powerful reflex ability. In a three-team mirage exercise, Jason's group manipulates Beth Cavendish's and Rick Geller's teams into fighting before ambushing both sides. The victory demonstrates strong planning and coordination, but the group still needs experience and further advancement before Emir's undisclosed challenge. Outside the team, Dorgan continues following the Builder operation's supply trail.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Emir announces that hundreds of Iron-rank entrants will compete for the legacy of the extinct Order of the Reaper. Before the contest, he and Jason stage a public break so Jason can serve as bait for the Builder cult. A Silver-rank cultist and three Bronze-rankers attack Jason and Sophie, but all four self-destruct before capture. Jason nevertheless obtains an intact starseed. He also recognizes that Landemere Vane, whom he previously killed, was a Builder cultist. Jason, Rufus, Clive, Emir, and Danielle begin to suspect that the Church of Purity helped the cult around the Vane estate. Anisa then uses Lamprey's authority to seize the intact starseed from the Magic Society for supposed destruction. Jason allows it, preserving the group's concealed advantage and giving them a possible way to watch the church. The Purity connection remains unproven, while Dorgan's shipping inquiry and Rufus's trusted investigation continue. The contest is now both a prize expedition and a possible front in the Builder conflict.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The competitors descend beneath Skyscar Lake and enter the City of Fallen Echoes, where the gate scatters Jason's team across separate towers. Jason and Sophie travel together through a city dense with monsters and magical rewards. The trial administrator explains that the ruined astral space belonged to the Order of the Reaper. The Churches of Purity and the Unliving destroyed the Order's presence there and released Vorgia, which transformed trapped initiates into adaptive flesh abominations. Entrants must pass trials of wisdom, capability, courage, intellect, and resolve before reaching the legacy. Jason and Sophie choose the wisdom reward, receiving escape medallions and rare emergency potions rather than immediately taking the dangerous courage test. They begin searching for the rest of their team while keeping those emergency resources in reserve.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason and Sophie find murdered entrants and then reconnect with Neil, Jory, and Imran Keen during an attack involving Vorgia. Their temporary group destroys a newly transformed flesh abomination by forcing it to adapt between speed and durability while Jason's necrotic afflictions accumulate. Elsewhere, Clive joins Valdis and wins a paired set of legendary magical weapons, while Humphrey remains committed to rejoining his own friends. Dorgan uncovers secret shipping, huge bribes, and vanished investigators, and Rufus privately identifies the Church of Purity as the leading suspect. At the city center, Beth Cavendish organizes survivors against an enormous blood-root vine blocking access to the final tower. Jory identifies its vulnerable root network, and the assembled force digs toward it. Jason sends Colin into the roots and applies escalating afflictions, causing the vine to rot across the central district. Its tentacles and spawned creatures begin falling inert, allowing the route toward the center to reopen, although the vine's final state is not yet confirmed.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Survivors regroup around Fallen Echoes' central tower. Jason's whole team is alive, while Jory remains with them after his companions evacuate. The Reaper rewards include unique awakening stones, and Jason and Humphrey accept the lethal courage trial. Humphrey rejects a vision of failing to protect his family. Jason confronts a tyrannical possible version of himself and refuses that path. He solves the intellect trial and then refuses an order to execute ancient prisoners, discovering that independent judgment is the real test of resolve. In Greenstone, Thalia proves the returned Thadwick is a projected double, destroys two compromised guards, and learns that the cult has abducted her son again while preparing an astral attack on Greenstone and the Delta. Jason then deduces that the Order's extinction is a cover for a continuing covert network. He passes its hidden trial, receives the genuine Scythe of the Reaper and a token, and exits with his team. Their shared quest reward evolves all five members' racial gifts.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back with Emir, the team tests its evolved gifts and limits knowledge of Jason's role in triggering them. Jason receives the contest's awakening stones and bonds the Cloud Palace growth reward. Combining a Reaper token with an awakening stone gives him a Shadow of the Reaper familiar ability, while further stones complete his dark and doom sets with a shadow arm and another familiar. Neil and Humphrey also complete important parts of their power sets. Several gods publicly thank Jason for freeing the people trapped in Fallen Echoes. Their concentrated attention injures and refines his aura, granting the title Godless Prophet and leaving a detectable transcendent trace. Sophie completes a flexible set focused on movement, brief invulnerability, redirection, and fighting more effectively under pressure. Belinda begins taking her own essences, gaining storage, conjured tools, teleportation, and curse abilities. Clive also reveals that Lamprey has effectively removed him from ordinary Magic Society work because of his association with Jason.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Belinda absorbs the Charlatan confluence and reaches Iron rank, gaining shapeshifting and aura-masking abilities. At the same time, Cole begins arranging for a Silver-rank adventurer to abduct Jason, with Sophie as another target. Hester takes the team to Jayapura to sell its trial loot and buy rare materials. Jason receives an Immortal Crest, while the group studies professional arena teams and recognizes major gaps in its experience. Hester also warns that another Reaper finalist and every companion who travelled with that person have vanished without possessions or trace. Jason summons Shade, the former trial administrator, as a familiar, adds the combat familiar Gordon beside Colin, and helps Belinda summon Shimmer and Gemini. Returning to Greenstone, Jason bonds Emir's final reward, a soulbound Cloudflask, and configures it as a three-story houseboat. Sophie, Belinda, Clive, Humphrey, and Neil move in with him so the six-person team can train as a single unit.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason's team begins intensive training in the Cloudflask houseboat, integrating new familiars and abilities while planning Mirage Arena contests to test its coordination. Valdis remains in Greenstone to train with Rufus. Dorgan's shipping inquiry identifies a cult island after Mercer pressure forces the enemy to move supplies. A mixed-rank strike force attacks and confirms Church of Purity priests, Builder cultists, constructs, portal devices, and a Gold-rank priest. Arella leads the assault on constructs while Constance leads the lower-rank sweep. Unexpected Silver-rank cultists force Constance's element to retreat, and Rufus intervenes. He recognizes a powerful abomination as Farrah's killer and refuses to withdraw. Rufus builds a large field of sun and moon effects and unleashes Kingdom of Eclipse, killing many enemies and grievously wounding the killer. The abomination survives. Rufus collapses exhausted and surrounded as it approaches him. The cult is escaping through its portal network with Thadwick still alive in its custody, and Rufus's immediate fate remains unresolved.",
+            "through": {
+              "chapter": 76
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:1774249162",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-2"
+      }
+    },
+    "he-who-fights-with-monsters-3": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jason"
+            ],
+            "description": "An outworlder adventurer who leads a six-person team in Greenstone. He protects his companions and hopes to find a route back to his own world.",
+            "id": "jason-asano",
+            "name": "Jason Asano",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A prince whose experienced adventuring team trains against Jason's group.",
+            "id": "valdis",
+            "name": "Valdis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sophie"
+            ],
+            "description": "A swift close-combat adventurer training with Jason's team. Her indenture to Jason remains part of her circumstances at the start of the book.",
+            "id": "sophie-wexler",
+            "name": "Sophie Wexler",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lindy"
+            ],
+            "description": "A shapeshifting support fighter on Jason's team and an intermittent student of Clive.",
+            "id": "belinda",
+            "name": "Belinda",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Humphrey"
+            ],
+            "description": "An experienced frontline member of Jason's team. He combines disciplined combat training with a strong sense of responsibility.",
+            "id": "humphrey-geller",
+            "name": "Humphrey Geller",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Clive"
+            ],
+            "description": "The team's specialist in ritual and astral magic. His expertise supports the group's magical research and field work.",
+            "id": "clive-standish",
+            "name": "Clive Standish",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Neil"
+            ],
+            "description": "The team's healer, defender, and support specialist. His shields and protective abilities keep companions functioning through difficult training and compensate when the group makes tactical mistakes.",
+            "id": "neil-davone",
+            "name": "Neil Davone",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rufus"
+            ],
+            "description": "Jason's mentor and one of the friends who first helped him in this world. He supports the team's training while mourning Farrah and recovering from the Builder Cult's island attack.",
+            "id": "rufus-remore",
+            "name": "Rufus Remore",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leonid weaponsmith and trusted ally of Jason's group. He contributes equipment and practical support while carrying the loss of Farrah.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deceased former teammate whose loss continues to shape Rufus, Gary, and the wider group after the island raid.",
+            "id": "farrah",
+            "name": "Farrah",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jory"
+            ],
+            "description": "An alchemist and healer who is Belinda's partner.",
+            "id": "jory-tillman",
+            "name": "Jory Tillman",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful patron who supports Jason's associates and research into the sealed astral space.",
+            "id": "emir",
+            "name": "Emir",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Greenstone's Adventure Society director.",
+            "id": "elspeth-arella",
+            "name": "Elspeth Arella",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Old City power broker.",
+            "id": "adris-dorgan",
+            "name": "Adris Dorgan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Danielle"
+            ],
+            "description": "A silver-rank adventurer of the Geller family.",
+            "id": "danielle-geller",
+            "name": "Danielle Geller",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cassandra"
+            ],
+            "description": "Jason's former partner and Thadwick's sister.",
+            "id": "cassandra-mercer",
+            "name": "Cassandra Mercer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thalia"
+            ],
+            "description": "Thadwick's mother and a senior member of the Mercer family, still tied to the consequences of her son's involvement with the Builder Cult.",
+            "id": "thalia-mercer",
+            "name": "Thalia Mercer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Thadwick"
+            ],
+            "description": "A compromised member of the Mercer family connected to Builder Cult activity.",
+            "id": "thadwick-mercer",
+            "name": "Thadwick Mercer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Greenstone crime lord who claims control over Sophie and regards Jason's interference as a direct challenge to his authority.",
+            "id": "cole-silva",
+            "name": "Cole Silva",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Magic Society official hostile to Jason and Sophie. His institutional position and knowledge of magical evidence make his opposition especially dangerous.",
+            "id": "lucian-lamprey",
+            "name": "Lucian Lamprey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Anisa"
+            ],
+            "description": "A priestess of Purity.",
+            "id": "anisa-lasalle",
+            "name": "Anisa Lasalle",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Shadow of the Reaper"
+            ],
+            "description": "Jason's shadow familiar and a guide to Reaper knowledge. Multiple bodies support Jason's movement and reconnaissance.",
+            "id": "shade",
+            "name": "Shade",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's force-beam familiar. Gordon supports the team with disruptive ranged attacks.",
+            "id": "gordon",
+            "name": "Gordon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's healing familiar.",
+            "id": "colin",
+            "name": "Colin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Humphrey's small dragon familiar. Stash assists the team through transformation magic.",
+            "id": "stash",
+            "name": "Stash",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gabrielle"
+            ],
+            "description": "A priestess of the Goddess of Knowledge and Humphrey's former lover. She brings Jason a collection on matters beyond the world, personally prepared through her goddess's direction.",
+            "id": "gabrielle-pellin",
+            "name": "Gabrielle Pellin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Valdis's adventuring team who participates in its training matches against Jason's group.",
+            "id": "sigrid-frayn",
+            "name": "Sigrid Frayn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Archbishop of Purity, absent on an unexplained sabbatical while other churches investigate Purity clergy for cooperation with the Builder Cult.",
+            "id": "nicholas-hendren",
+            "name": "Nicholas Hendren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Humphrey's sister and the bronze-rank supervisor assigned to Jason's road-contract team. She is an experienced minion specialist responsible for judging when the iron-rank group must yield to her.",
+            "id": "henrietta-geller",
+            "name": "Henrietta Geller",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The surviving silver-rank leader of the Builder Cult's local force. From the former Vane estate, he oversees a portal operation intended to reclaim the sealed astral space.",
+            "id": "zato",
+            "name": "Zato",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Builder Cult operative responsible for security and portal preparations at the concealed Vane-estate base.",
+            "id": "timos",
+            "name": "Timos",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The distant power behind the cult's effort to build an astral bridge into the sealed space. Its followers' plan threatens Greenstone and the surrounding region.",
+            "id": "the-builder",
+            "name": "the Builder",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Clive's tortoise familiar. Its elemental powers can be repeatedly replenished by Clive.",
+            "id": "onslow",
+            "name": "Onslow",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cole Silva's highly capable abduction specialist, skilled in ritual magic and bone conjuration. He helps arrange Jason's covert capture at a site prepared to defeat ordinary tracking.",
+            "id": "killian-laurent",
+            "name": "Killian Laurent",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A gold-rank priest of the Church of the Healer who specializes in soul trauma and starseed cases. He examines Jason to determine whether the implantation left any Builder influence behind.",
+            "id": "carlos-quilido",
+            "name": "Carlos Quilido",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A researcher investigating Sophie's unknown family background and the assassin-order inheritance taught by Sophie's father.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Blood Cult member who once released Anisa from captivity and has since attached himself to the Builder Cult's operation beneath the Vane estate.",
+            "id": "dougall",
+            "name": "Dougall",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A dangerous creature that escapes from the opened astral space. Its presence is recognized after portal guards are found drained of magic.",
+            "id": "energy-vampire",
+            "name": "Energy vampire",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A diamond-rank servant through whom the Builder can speak. He is also the distant founder of an imperial line whose descendants possess Builder-made guardian golems.",
+            "id": "shako",
+            "name": "Shako",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jason's sister on Earth and a publicly known celebrity chef. A former detective gives her material concerning the suppressed investigation into her brother's disappearance.",
+            "id": "erika-asano",
+            "name": "Erika Asano",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The investigator assigned to the impossible disappearance of a section of Jason's Melbourne apartment building. He loses his position after resisting official pressure to accept a false explanation.",
+            "id": "adam-cosgrove",
+            "name": "Adam Cosgrove",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A recruiter from an organization opposed to keeping the hidden truth from the public. He offers the former detective a demonstration before asking for any commitment.",
+            "id": "dash",
+            "name": "Dash",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The peak diamond-rank First Servant of the Cult of the World Phoenix. She temporarily delegates her duties while undertaking an assignment connected to the Outworlder.",
+            "id": "dawn",
+            "name": "Dawn",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A draconian diamond-ranker and Dawn's intended successor. She temporarily assumes the First Servant's duties while Dawn tests whether she is ready to make independent decisions.",
+            "id": "helsveth",
+            "name": "Helsveth",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:1039400205",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-3"
+      },
+      "recaps": {
+        "ending": "Clive completes the central tower inversion, destroying the World Engineers' deployment route and opening a portal home. Jason holds off the Builder long enough for the plan to succeed, then dies after carrying the Builder's vessel out of the tower. His body dissolves, and the World Phoenix token sends his soul onward under a pact that permits a return but forbids any later resurrection. Jason's friends do not learn that return is possible and mourn him as dead.\n\nThadwick Mercer is gone. A separate energy vampire rises from his abandoned body, takes fragments of his memories, consumes the soul imprisoned with the sealed sword, and escapes. The Adventure Society claims the astral space as a temporary base. Clive and Belinda take Magic Society and Builder-related work, while Sophie, Humphrey, and Neil travel with Emir on a Reaper investigation. Jory expands low-cost alchemical training through the Church of the Healer. On Earth, Jason remains officially dead and the investigation into his disappearance is suppressed. The Builder is formally barred from new vessels, starseeds, and tokens in the affected world, but its broader interworld scheme remains active. Dawn reveals that its magical siphon is delaying the monster surge in preparation for a catastrophic backlash threatening both linked worlds.",
+        "in_short": "Jason Asano's team trains toward bronze rank while the Builder Cult prepares to reclaim a sealed astral space. After surviving Cole Silva's attempt to implant a starseed, Jason helps reopen the space and enters it with Humphrey, Clive, Sophie, Belinda, and Neil. They discover dormant World Engineers and an invasion force led by the Builder through mortal vessels. Clive devises a way to invert the central tower, destroy the deployment system, and reopen the exit. Sophie kills Zato, while Jason tackles the Builder from the tower so Clive can finish the inversion. Jason dies in the fall, but a World Phoenix token carries his soul onward. His friends return, recover the astral space, and mourn him without knowing he may come back. A new energy vampire escapes in Thadwick Mercer's body, and the surviving team separates for Builder and Reaper investigations. The final disclosure links Jason's two worlds and reveals that the Builder is engineering a magical backlash that could endanger both.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jason Asano, an outworlder in Greenstone, became an adventurer and formed a team with Humphrey Geller, Clive Standish, Sophie Wexler, Belinda, and Neil Davone. Rufus Remore, Gary, and Farrah helped guide him, but Farrah was killed during the conflict with the Builder Cult. The cult also compromised Thadwick Mercer and operated through hidden agents and starseeds, while figures such as Cole Silva and Lucian Lamprey remained threats closer to home.\n\nJason's group survived the Reaper Trials in a sealed astral space connected to the Order of the Reaper. The aftermath left dead adventurers, trapped victims, and unresolved cult activity. Jason's unusual powers, his familiars Shade, Gordon, and Colin, and recovered work associated with Landemere Vane all became relevant to the wider struggle. As this volume begins, Greenstone is recovering from the cult's island raid, the Church of Purity faces investigation for cooperation with the cult, and Jason still hopes to find a way back to his original world.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason receives dimensional research supplied through the Goddess of Knowledge. Clive combines it with Landemere Vane's work and concludes that travel between worlds may be a practical research goal. Jason's Adventure Society reassessment does not immediately restore his standing, so he accepts a supervised road contract to prove his discipline and give his team field experience.\n\nBefore leaving, the team finally defeats Valdis's group in a Mirage Chamber match by exploiting its protective response to the prince and combining Clive, Belinda, Neil, and Jason's abilities. Henrietta Geller then joins as the road party's bronze-rank supervisor. A silver-rank manifestation in Greenstone produces water elementals, confirming that dangerous manifestations are increasing even if the full monster surge has not begun.\n\nThe local Builder Cult has not been eliminated. Zato and Timos are secretly constructing an astral bridge from the former Vane estate to the sealed space. They expect reclaiming it to destroy Greenstone and a vast surrounding area, making the hidden operation an immediate regional threat.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Henrietta subjects the team to difficult field exercises designed to replace rigid plans with trust and improvisation. Jason and Belinda develop an effective affliction combination, while Neil, Clive, Humphrey, and Sophie learn to operate in unfamiliar groupings. At the ruined Vane estate, the party fails to detect Zato and Timos's concealed base.\n\nA silver-rank Oasis Tyrant manifests beside a quarry village. Jason stays behind alone to draw it away from the evacuation, losing Shade's bodies and Gordon's vessel before being struck unconscious. Henrietta kills the monster after most villagers escape. Jason survives with a permanent soul scar, receives new protection and suppression resistance, and begins advancing individual abilities to bronze rank.\n\nBack in Greenstone, Cole Silva exploits the disorder in the criminal underworld. He joins Killian Laurent and Lucian Lamprey in a plan to abduct Jason without leaving useful magical evidence. During a gathering at Cloud Palace, Jason's companions receive notice that his powers have been suppressed and their party has been forcibly disbanded. They do not know where he has been taken.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cole Silva and Killian Laurent hold Jason at an abandoned outpost and implant an intact Builder starseed. The seed can only gain his soul if he yields, so it subjects him to escalating pain while Colin fights its physical effects. Jason refuses the Builder and exhausts the ritual's power. Colin purges the dead fragments and becomes dormant, leaving Jason gravely injured but spiritually unconquered.\n\nKillian reveals that he has been using Cole, steals resources, and escapes. Jason forces his aura through the suppression collar, frees himself, and turns the restraints on Cole before Danielle Geller brings his allies to the outpost. Recovery is difficult, and his changed relationship with his soul gives him unusually strong aura and suppression abilities.\n\nCarlos Quilido, a gold-rank healer specializing in starseeds, examines Jason. Public rituals confirm that the Builder scarred but never breached his soul. Lucian is captured while trying to flee Greenstone, while Killian remains at large. Elspeth Arella restores Jason's three-star standing and provides help replacing his familiars. Jason also reveals that his developing shadow portal may offer a route back into the sealed Reaper astral space.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason resummons Shade and Gordon and brings Colin back in a stronger bronze-rank form, though invasive magic still triggers memories of the starseed ordeal. He resumes contracts and training, suppresses violence in Old City by supporting formal authority for Adris Dorgan, and completes a lethal mission against slavers in the Veldt. The ease with which he executes them troubles him.\n\nResearch at Sky-Scar Lake confirms that Jason and Clive can reopen the sealed astral space. Sophie becomes free when her indenture ends and chooses to remain with the team. Jason detects a hidden starseed carrier, giving Greenstone's anti-cult council a way to screen important figures. The Adventure Society authorizes the six-person team to enter alone, expecting cultists, trapped flesh abominations, and no certain way home. Cole and Lucian are sentenced to permanent suppression, while Jory chooses healing and low-cost alchemy over renewed adventuring.\n\nJason's portal finally activates. Jason, Humphrey, Clive, Sophie, Belinda, Neil, and Stash cross together into the Order of the Reaper's altered astral space.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The team arrives on an outer tower and discovers that magical density has risen enough to strengthen monsters and interfere with the return portal. Each of the twelve outer towers contains a dormant diamond-rank construct called a World Engineer. The party does not yet know who built the city or what the constructs are meant to do.\n\nTracking evidence suggests that the missing cultists have reached bronze rank or changed. At the center, the team finds a silver-rank Bloodweaver's nest and evidence that it captured the cult group. Unable to face the monster safely, the adventurers retreat, survive an ambush by its vampiric servants, and begin an intensive cycle of hunting and advancement. Clive and Humphrey reach bronze rank. Clive determines that magic is being forced into the astral space, accelerating its eventual collapse and preventing escape until the cause is stopped.\n\nOutside, Zato's operation has already fixed the astral tunnel on its destination. He invokes a pact requiring Nicholas Hendren, Anisa Lasalle, and their Purity force to enter when it opens. The bridge is expected within months.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party undertakes dangerous battles to reach bronze rank before challenging the Bloodweaver. In an underground prison they defeat waves of constructs and altered creatures, then discover a black-and-red sword sealed with a powerful disembodied soul. Clive's brief contact confirms that the weapon must remain imprisoned. Neil and Jason reach bronze rank, joining Clive and Humphrey, and Jason restores Shade and Gordon in stronger forms.\n\nAt the Vane estate, Zato secretly subjects Thadwick Mercer and Dougall to a Builder process that depends on their willingness. In the astral space, rising magic becomes increasingly urgent. Jason's team enters the Bloodweaver's territory, accepts a mass ambush, and establishes a defensive platform. Jason fights among the vampiric horde while the others combine Clive's rituals, Belinda's control, Neil's protection, Humphrey's summons, Sophie's speed, and their familiars.\n\nAfter a prolonged siege, Neil withdraws the team into a dimensional refuge, restores their mana, and unleashes an attack that breaks the remaining horde. Eight human figures then emerge from the jungle, bringing the suspected cultists into direct view.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The eight missing cultists have become the Bloodweaver's vampire minions and are killed. The Bloodweaver itself has fled. Dougall then reaches silver rank and immediately loses control of his body to the Builder, who orders preparations for the World Engineers and demands Jason alive. The team finds the cult's beacon and learns that the dimensional breach is close to opening. Belinda reaches bronze rank, and the party later kills the relocated Bloodweaver.\n\nThe ring gate activates, bringing the Builder Cult and its Purity allies into the astral space. The Builder raises a fortress through Dougall's deteriorating body. Nicholas Hendren agrees to sacrifice lower-ranked followers so selected Purity personnel can be converted to bronze. Jason scouts through Shade, refuses to rescue the captive Thadwick, and rejects Zato's offer to abandon the space in exchange for passage home.\n\nThe team ambushes an enemy force. Humphrey kills Anisa, Timos escapes under Jason's tracking mark, and Hendren nearly destroys the group. Humphrey survives a fatal blow through Immortality. Sophie wounds Hendren, Belinda steals his cleansing spell, and Jason converts accumulated sin into effects Hendren cannot remove before executing him.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After Hendren and Anisa die, the Builder converts captured Purity clergy into blank-minded, regenerative soldiers. It abandons Dougall's ruined body, takes Thadwick Mercer as its next vessel, and sends the former vessel out as an energy ghoul. Jason's team intercepts and destroys the ghoul before it can reach the soul imprisoned with the sealed sword.\n\nThe Builder uses probing attacks to study the team and raises a central tower where the Reaper trial tower once stood. At an outer tower, Jason steals a technical notebook that appears to explain sabotage. Clive recognizes it as genuine information arranged as a trap. The team pretends to follow the false plan while he investigates the system.\n\nClive discovers that the astral space is an artificial vessel built to deliver its dormant World Engineers to other worlds. The Order of the Reaper had repurposed their power for portals, and the Builder is restoring the original deployment function. Clive devises an inversion that can destroy the World Engineers and release enough power to open a way home. To perform it, the team must carry his calibration device through the Builder-held central tower.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jason and Sophie drive a monster herd into the Builder's fortified camp while Belinda breaches the gate. Humphrey ambushes Zato, and Jason draws the Builder away so the rest of the team can reach the tower. The Builder, occupying Thadwick's body, is immune to Jason's afflictions. Zato reveals a self-repairing metallic form and repeatedly restores himself, leaving the team near defeat.\n\nSophie develops Boundary Breaker, Humphrey evolves a costly sacrificial attack, and Belinda steals Zato's renewal ability. Under Neil's enhancement, Sophie strikes with overwhelming resonating force and destroys Zato. Clive carries his ritual device upward while continuously adjusting the inversion.\n\nJason evades the Builder until a suppression collar traps him and severs the party interface. He briefly forces his way through the suppression, uses a gold spirit coin, and tackles the Builder out of the tower. The delay lets Clive complete the inversion, stopping the World Engineers from entering their world and restoring an exit. Jason dies in the fall. His equipment returns to storage, and the World Phoenix token is consumed.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The surviving team returns through the portal and immediately summons a rescue force. The Builder abandons Thadwick's failing body when Jason's World Phoenix token activates. A new creature rises from that body, consumes the soul that had guarded the sealed sword, and escapes with fragments of Thadwick's memories. The rescue party finds Jason's impaled body, but it dissolves into rainbow smoke. His friends believe him dead.\n\nThe Builder seeks to prevent Jason's return, but the World Phoenix token protects his passage. A settlement among great astral beings bars the Builder from placing new vessels, starseeds, or tokens in the affected world. Jason may return under the agreement, but afterward no power may resurrect him again.\n\nThe escaped energy vampire tells Thalia Mercer that Thadwick is gone and overpowers her. The Adventure Society takes control of the astral space as a temporary exploration base. Gabrielle tells Clive that Jason's soul was safely sent onward, but she withholds the possibility of his return. Clive is recruited for Builder-related work, while Emir directs Sophie and Humphrey toward an investigation involving the Order of the Reaper.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath, Sophie is offered a guardian-like responsibility for Emilia's granddaughter. On Earth, authorities conceal the impossible disappearance of Jason's Melbourne apartment. Erika Asano receives evidence from the former detective who pursued the case, but withdraws for her family's safety. The detective is approached by rival secret organizations, leaving the Earth investigation unresolved.\n\nThe accessible astral space becomes a temporary research and training site while it moves away from the world. Jason's grieving friends prepare to separate: Clive and Belinda take Magic Society work, while Sophie, Humphrey, and Neil travel with Emir. Jory expands his low-cost alchemical methods through the Church of the Healer.\n\nDawn, First Servant of the Cult of the World Phoenix, reveals the larger conflict. Jason's magical world and Earth are patterned counterparts altered by a previous Builder. The current Builder linked them and is siphoning magic into Earth, which explains the halted monster surge. It intends the accumulated magic to rebound in a far greater flood, weaken the dimensional barrier, and threaten both worlds. The World Phoenix regards Jason as its most promising indirect agent against that plan.",
+            "through": {
+              "chapter": 77
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:1039400205",
+            "type": "community"
+          }
+        ],
+        "work": "he-who-fights-with-monsters-3"
+      }
+    }
+  }
+}

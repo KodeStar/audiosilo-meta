@@ -16,7 +16,7 @@ audiobook
   3. transcribe    local, chapter-by-chapter ASR with timestamps
   4. crosscheck    review ASR quality and verify names and places
   5. fact pass     rolling chapter notes in own words
-  6. synthesis     characters.json + recaps.json from the notes only
+  6. synthesis     the characters + recaps members from the notes only
   7. verify        metafmt + metacheck + n-gram + independent audits
 ```
 
@@ -528,16 +528,14 @@ Run the standard mechanical checks from the repository root:
 go run ./cmd/metafmt --write
 go run ./cmd/metacheck
 go run ./cmd/metaextract ngram --source "$WORK/transcripts-text" \
-  data/works/<shard>/<slug>/characters.json \
-  data/works/<shard>/<slug>/recaps.json
+  data/works-community/<dir>/<bound>.json
 ```
 
 If corrections were made, repeat the check against the corrected text:
 
 ```sh
 go run ./cmd/metaextract ngram --source "$WORK/transcripts-corrected" \
-  data/works/<shard>/<slug>/characters.json \
-  data/works/<shard>/<slug>/recaps.json
+  data/works-community/<dir>/<bound>.json
 ```
 
 The n-gram tool builds shingles independently for each `.txt` file, so no match

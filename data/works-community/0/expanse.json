@@ -1,0 +1,1601 @@
+{
+  "entries": {
+    "expanse": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The new authority-holder of Nagast, taking stock of the damaged former Archon's temple while an approaching danger troubles him.",
+            "id": "felix-nevarre",
+            "name": "Felix Nevarre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Felix's exhausted but loyal bonded companion, recovering beside him after recent fighting. Pit remains closely linked to Felix and serves as his guardian beast and combat partner.",
+            "id": "pit",
+            "name": "Pit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lady of Harwatch and the civil authority responsible for the city's people and defenses before this book begins.",
+            "id": "cal",
+            "name": "Cal",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient paragon inhabiting the repaired but incomplete construct once used by the Archon. Karys advises Felix despite damaged self-repair and improvised replacement parts.",
+            "id": "karys-taiv",
+            "name": "Karys Taiv",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two frost-giant witches leading the delegation that confronts Felix. She demands lethal combat to settle the debt created by her people's former captivity.",
+            "id": "the-frost-giant-leader",
+            "name": "The Frost-Giant Leader",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Master Tier chanter and enchanter who forces her way out of an enclosed city to reach Nagast. Though severely depleted, Zara acts quickly after concluding that Felix is alive and that hostile forces are gathering.",
+            "id": "zara-cyrene",
+            "name": "Zara Cyrene",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vess"
+            ],
+            "description": "A spear fighter and politically informed ally who advises Felix during the frost giant confrontation. She offers practical help while he decides how to answer the giants' demand for combat.",
+            "id": "vessilia-dayne",
+            "name": "Vessilia Dayne",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evie"
+            ],
+            "description": "A frontline fighter who interrupts Felix with news that frost giants have arrived to confront his group. Their presence alarms her, and she brings him from the stronghold control node to face them.",
+            "id": "evie-aren",
+            "name": "Evie Aren",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran fighter and practical adviser who counsels Felix during the confrontation with the frost giants, though Felix refuses his help in the duel.",
+            "id": "harn",
+            "name": "Harn",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Atar"
+            ],
+            "description": "A fire mage working with Alistair to preserve and study the destroyed Archon's sigil array. He is part of Felix's close group as Nagast begins turning captured infrastructure into a functioning stronghold.",
+            "id": "atar-vas",
+            "name": "Atar V'as",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A force mage collaborating with Atar V'as to copy the sigil array that once controlled the Archon's reservoirs. His technical work preserves knowledge that would otherwise have been lost with the ruined system.",
+            "id": "alistair",
+            "name": "Alistair",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vessilia Dayne's assigned protector, introduced while traveling with Zara toward the Foglands. He joins the journey because Vessilia is in Nagast and outside forces are gathering against Felix's authority.",
+            "id": "the-hand-of-pax-rell",
+            "name": "The Hand of Pax Rell",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reed",
+              "The Hand of Pax Rell"
+            ],
+            "description": "Vessilia Dayne's protector and a member of Felix Nevarre's core team. Darius helps coordinate the company's breakout through the paladin-held pass.",
+            "id": "darius-reed",
+            "name": "Darius Reed",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Henaari intermediary who asks Felix to judge the captive Matriarch on behalf of the Henaari Synod. The request places A'zek between Felix's new authority and the Henaari leadership.",
+            "id": "azek",
+            "name": "A'zek",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A captive Henaari leader whose fate the Synod asks Felix Nevarre to judge.",
+            "id": "the-henaari-matriarch",
+            "name": "The Henaari Matriarch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Chimera who begins teaching Pit that a guardian beast's path involves deeper duties than simply protecting a bonded companion.",
+            "id": "the-fellow-chimera",
+            "name": "The Fellow Chimera",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Henaari elder who accepts a permanent settlement for his people near the lake. He assumes responsibility for their scouting work and for keeping the deposed Matriarch in custody.",
+            "id": "the-far-walker",
+            "name": "The Far Walker",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A paladin captain presented to Felix's delegation as a High Justiciar. He enters the council chamber after the city's rulers activate a stronger suppression array and joins their effort to seize the visitors for sacrifice.",
+            "id": "the-apparent-high-justiciar",
+            "name": "The Apparent High Justiciar",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The High Justiciar who recognized the Minotaur as Unbound during an apparently friendly meeting and tried to detain him. Haim was also searching for a royal tomb in the desert.",
+            "id": "haim",
+            "name": "Haim",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wounded Earth-born Unbound inhabiting a minotaur body and fleeing Hierocracy paladins in the Scorched Expanse. His necromantic companion can continue speaking through a replacement construct when one body is destroyed.",
+            "id": "the-minotaur",
+            "name": "The Minotaur",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Minotaur's speaking necromantic companion, able to transfer its presence between constructed bodies. When a scorpion form is destroyed during the flight from paladins, the same voice continues through a multipede.",
+            "id": "the-minotaurs-undead-companion",
+            "name": "The Minotaur's Undead Companion",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unseen hostile naga-folk claimant who declares the submerged temple its domain and challenges the arriving expedition.",
+            "id": "the-albino-naga-claimant",
+            "name": "The Albino Naga Claimant",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An immense abyssal serpent who rules the submerged temple's naga and challenges Felix's claim to Nym inheritance. The ruler orders him to prove his identity and strength against the threat contained within the temple's mana well.",
+            "id": "the-naga-ruler",
+            "name": "The Naga Ruler",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The settlement's former shaman, encountered as a monstrously altered figure inside the immense skeleton. The shaman challenges the purpose of Felix's caravan and attacks his bond with Pit during their confrontation.",
+            "id": "the-cursed-shaman",
+            "name": "The Cursed Shaman",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The minor goddess or Urge identified as the desert city's power source.",
+            "id": "the-highest-flame",
+            "name": "The Highest Flame",
+            "reveal": {
+              "chapter": 51
+            }
+          },
+          {
+            "description": "A concealed healer living in the lower chasm who shelters Felix after his violent passage through the city's storm barrier. Her identity and abilities remain unclear when he reaches her dwelling in a badly strained condition.",
+            "id": "the-hidden-healer",
+            "name": "The Hidden Healer",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chanter who sheltered Felix under the guise of a lower-chasm healer. After revealing her human form and connection to Zara, she leaves the hidden dwelling to help rescue Felix's captured companions.",
+            "id": "zaras-sister",
+            "name": "Zara's Sister",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A faun temple defender with a strained history as Atar's former rival. She recognizes him at the sealed city gate and accepts his oath that the caravan is fleeing an army, allowing the defenders to open the way.",
+            "id": "the-temple-disciple",
+            "name": "The Temple Disciple",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The city's dominant fire combatant, powerful enough to overwhelm Felix's party after it escapes the council's suppression array. His direct attack leaves Felix badly injured and forces him through the storm barrier.",
+            "id": "the-fire-grandmaster",
+            "name": "The Fire Grandmaster",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0BTZ989VF",
+            "type": "community"
+          }
+        ],
+        "work": "expanse"
+      },
+      "recaps": {
+        "ending": "Felix removes the divine flesh curse from the imprisoned primordial, kills Haim, and shares the purified power with Pit and several allies. Atar rejects the Highest Flame's demand for service, absorbs it into his damaged core, and destroys the paladins' relay ships, but ends gravely injured with the flame still pressing him. Felix then challenges the fire Grandmaster for territorial authority. He completes his body tempering, kills the Grandmaster, and wins the claim, but outside interference turns his attempt to transform the desert's mana crystals into a vast flood. Pit completes his evolution as a speaking Primordial Stormwing and helps save the unconscious Felix from drowning. The Minotaur and his undead companion remain with him as a bone ship offers transport toward medical aid. Zara Cyrene, Vessilia Dayne, Evie Aren, Harn, Darius Reed, and Alistair survive the city conflict. Felix is publicly proclaimed ruler of the city territory and adjacent desert while unable to govern either. Nagast remains under Karys Taiv's administration, Harwatch remains its exposed vassal, the Pathless still knows of Felix, and both the flooded city and Atar's captive flame require resolution.",
+        "in_short": "Felix Nevarre fortifies Nagast, gains Henaari allegiance, and learns that nine Unbound were summoned as possible weapons against the Ruin. When Zara locates another Earth-born Unbound in the Scorched Expanse, Felix leads a mixed rescue force through an ancient shadow gate. The expedition wins the allegiance of a submerged naga temple, crosses the desert, survives curse-driven undead, and enters a city whose rulers are sacrificing residents to sustain the Highest Flame. Felix finds the young Minotaur while his allies free prisoners and revolt against the council. In the royal tomb, Pathless paladins dismantle a primordial prison to seize its power. Felix removes the creature's divine flesh curse, kills Haim, and redirects its power to his allies. Atar contains the Highest Flame and destroys the paladin relay ships. Felix then kills the fire Grandmaster in an authority duel and claims the territory, but his altered crystal-working floods the desert. Pit evolves into a speaking Primordial Stormwing and saves the unconscious Felix, who ends the book aboard a rescuing bone ship and in urgent need of treatment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Cal held responsibility for Harwatch and its defenses before the events of this volume. Felix Nevarre, Pit, Atar V'as, Vessilia Dayne, Evie Aren, Zara Cyrene, Harn, Alistair, and Karys Taiv are established figures carried into the new conflict.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix awakens in the former Archon's temple as the new authority-holder of Nagast. He advances several major skills, completes his spirit tempering, and receives the means to establish the temple as a stronghold. When freed frost giants demand lethal combat as recompense, Felix defeats their champions without combat skills. They swear service, and he grants their people temporary sanctuary despite Evie's distrust. Felix installs crafting facilities and learns that his title, Autark of Nagast, carries responsibility for the territory's people and defenses. The protective enclosure is expensive to maintain, outside powers are already testing it, and the Hierocracy may treat his claim as an act of war. Zara secures transport toward Nagast while the enclosure creates a crisis elsewhere. Felix then judges the Henaari Matriarch accused of poisoning her predecessor and ordering an attack on him. Rather than execute her, he removes her patron's mark. The patron identifies Felix as Unbound and directs the Henaari to attend him, after which their Synod kneels.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Henaari formally join Nagast, establish a settlement, and begin scouting. Felix builds major walls and towers, appoints Harn to the forge, Atar V'as to the glyphworks, and himself to the alchemical lab. Harwatch is confirmed as Nagast's vassal, though the enclosure isolates it and complicates supplies and authority. Two weeks of gathering resources and recruiting crafters bring the stronghold close to another rank. Pit trains toward the guardian-beast path while Felix improves his barding. The spirit tree then bears fruit. Felix learns to harvest it with the tree's consent and obtains a large supply that could aid advancement if safely refined. Pit eats one raw fruit and gains strength, but impurities appear in his channels and around his core. The stronghold reaches rank two, opening direct communication with Harwatch. Felix arranges for settlers, volunteers, and supplies to travel from the city, while a new chamber opens beyond the stronghold's seat and seal.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The newly opened chamber contains nine ancient shadow gates, but they are inactive and Karys's damaged memory limits what he can restore. Felix repeatedly fails to refine the spirit fruit or fully cleanse Pit. Reinforcements from Harwatch arrive with Vessilia's guardian, who challenges Felix over her safety. Felix wins the sanctioned duel without killing him, and the guardian later accepts Vessilia's decision to remain. New specialists expand the crafting halls while Zara trains Evie and Atar in harmonic talents. Confronted over her secret interventions, Zara reveals that she belongs to an order seeking to preserve the world. The Hierocracy foresaw the Ruin and attempted to summon nine Unbound as controlled defenders. Zara's order disrupted the summoning so the Unbound would scatter rather than fall immediately under Hierocracy control. Felix's dreams connect him to the others. With Zara's ritual, he reaches a wounded Earth-born Unbound in a minotaur body, fleeing paladins in the Scorched Expanse with a body-hopping necromantic companion. Felix commits to a rescue using the temple's shadow gates.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix's group prepares a concealed rescue expedition toward the Scorched Expanse. Atar, Alistair, and other crafters build a portable ward for liminal travel, while Evie and Harn select fighters. The force includes Legion members, Henaari, frost giants, and Felix's close companions. Felix and an alchemist finally cleanse Pit and refine spirit fruit into advancement drafts. Before leaving, Felix appoints Karys Chancellor of Nagast and entrusts him with the stronghold. Felix activates an ancient shadow gate by sacrificing significance. The crossing becomes a flight through a collapsing void corridor as enormous creatures attack. One frost giant dies, and Felix's use of unshielded power alerts the Whale Maw. The expedition escapes into an inverted, flooded temple in the Grelden Hills, then severs the gate connection on both sides to stop pursuit. Time has moved far more slowly outside the corridor. After the party crosses the flooded entry chamber and disarms a warded door, an unseen naga claimant challenges the intruders from within the submerged ruin.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Naga escorts bring Felix's party before their immensely powerful ruler, who demands proof that Felix is a Nym inheritor. Felix accepts a solitary trial and destroys the necromantic spirit imprisoned in the temple's mana well. The naga submit, the temple joins his territory, and Felix restores enough of its systems to stabilize it without destroying their flooded home. Their ruler asks him to confront an ancient deep-water enemy, but he postpones that obligation until after the rescue. A rebel naga attacks during the party's departure and dies fighting Felix and Pit. On land, Zara confirms that the Unbound summoning was diverted at the cost of a chanter's life. The expedition reaches a damaged hill town where paladins control the pass into the desert and have taken crucial supplies. Felix, Zara, and Vessilia help an overwhelmed healing priory while Harn develops a plan to pass the garrison. The group has secured food, but still needs water and a safe route through the paladin-held fortification.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix discovers a dangerous primordial-linked curse at the priory, heals its leader, and destroys victims already transformed into wraiths. The paladins entered the Expanse months earlier, likely hunting Unbound. Felix's company infiltrates their pass fortress inside a tavern convoy, but the ruse fails after the garrison captain cleanses his troops. Felix incapacitates rather than kills the paladins, blocks pursuit with a mountain wall, and crosses into the Expanse with the tavern workers, who can no longer return safely. Atar guides the expedition along hidden mana paths. At an oasis, Felix tries to integrate the Legion, Henaari, and frost giants into mixed squads, but distrust makes them ineffective. Daylight brings waves of powerful monsters. Felix and Pit intervene against the worst threats while Vessilia commands a strong defense, yet the expedition suffers nine deaths since leaving the stronghold. By nightfall the monsters retreat. The company mourns its casualties and resumes travel toward the desert city, still seeking the Minotaur and avoiding the paladins.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a settlement built inside an immense skeleton, Felix confronts a cursed former shaman and removes the corruption. The restored shaman directs him toward the paladins' quarry and warns that the desert itself is the true beast. Felix advances his mind but creates a dangerous imbalance because his body remains behind. A primordial curse storm turns toward the settlement and deposits an apparently endless undead army. During the defense, Atar and Evie begin unstable advancements. Felix enters Atar's core space, repairs its structure, and helps him form a ring-stage core. He then enters Evie's frozen core, where a guardian shaped from memories of her dead sister is blocking her growth. Felix establishes that the guardian is part of Evie's trauma rather than her sister. Evie rejects its accusation that she caused the death, accepts it as part of herself, and regains authority over her core. The guardian willingly merges with it, allowing Evie to complete a healed Ring-stage core and begin bodily tempering while the undead assault continues outside.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evie gains Chains of the Protector, but the undead breach the shelter while she tempers. Alistair protects her and the recovering Atar until Felix arrives. Speaking wraiths carry the curse inside and wound Vessilia and others. Felix resists the greater will behind them, destroys the attackers, and extracts the curse from his allies. The company seals the settlement, trains, and recruits its inhabitants into Nagast. Their shaman reveals underground trade tunnels leading toward the city. The expedition enters these latticeways while wounded members ride in wagons. Atar explains that his blessings come through an accord with the city's powerful fire-associated Urge, making Felix's history with Urges dangerous to reveal. A pursuing wraith force follows them underground. Evie accepts help from the frost giants and leads a mixed flank as the undead attack. Atar and Alistair clear a route for the wagons, but the caravan becomes trapped outside a sealed city gate. A faun temple disciple recognizes Atar and accepts his warning. The defenders open the gate while Felix returns to hold the undead horde outside.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix survives an attack by a powerful primordial spawn and enters the protected desert city under a diplomatic cover. Temple guards confine the delegation at an estate while Felix secretly removes lingering curse corruption. Zara searches the lower city for her missing chanter contact, and Felix strengthens the skill array within his Bastion of Will. Atar explains the city's competing merchant, council, and religious powers. The delegation plans to warn the council, locate the Minotaur, and hide Felix's Unbound identity. At the council audience, Atar bluntly warns that paladins intend to destroy the city. Felix consumes a concealed truth-compulsion array and presents himself as a seer. The rulers reveal that the Highest Flame is failing and that they are collaborating with paladins. They suppress Felix's group and designate them as ritual fuel, alongside lower-city residents already being taken. Felix breaks the array and frees his companions, but the fire Grandmaster overwhelms them. Badly wounded and separated from his allies, Felix escapes by throwing himself through the city's deadly storm barrier.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix survives in the lower chasm because Pit shields him, then follows a harmonic signal to a concealed healer. The healer gives him panacea. A young Minotaur attacks after mistaking Felix for a paladin, but Felix recognizes him as the hunted Earth-born Unbound and stops the fight. The healer reveals herself as a chanter and Zara's sister, then leaves to help recover Felix's captured allies. The Minotaur explains his bond with a legion-like undead companion and how Haim discovered his Unbound nature while searching for a royal tomb. Zara and the defecting temple disciple strike the guarded estate, then move on the council prison. Their force frees Evie, Atar, Alistair, Vessilia, and other captives. Zara remains behind against senior defenders so the prisoners can escape. Felix, meanwhile, agrees to accompany the Minotaur toward the paladin-held tomb beneath the storm. Karys confirms that the site holds a buried royal line. The rescue has succeeded, but Zara's safety and the paladins' purpose remain unknown.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix, Pit, the Minotaur, and his undead companion cross the storm and clear undead from the tomb approach. Inside, ancient defenses recognize Felix's primordial connection and allow his group through. The Minotaur raises fallen paladins as reinforcements while they pursue the surviving force into a crystal-filled underground city. Above, Zara rejoins the rescue group, Vessilia reaches Adept Tier, and the allies decide to free thousands still held for sacrifice. They assault the temple as Atar attempts to weaken the Highest Flame with a flask of captured curse corruption. In the tomb, Felix discovers that the paladins are dismantling a primordial prison. Its siphoned power has sustained both the Highest Flame and the city's storm wall. The storm protection fails, exposing the city to undead and an arriving paladin fleet. An impostor posing as Haim reveals the council's promised holy regalia is absent. Below, a paladin leader uses divine regalia and a new array to extract the primordial's essence. Felix and the Minotaur commit to disrupting the operation.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix and Pit attack Haim's extraction force, but a divine array protects the paladins. Haim says the Pathless intends to use the primordial against the Ruin and already knows about Felix's territory. Felix breaks the array, but the damaged primordial begins to awaken and curse-driven wraiths enter the chamber. In the temple above, Atar throws the stored curse into the Highest Flame. The paladins' protection weakens, temple leaders burn, and a violent manifestation forms as civilians flee. Pit escapes Felix's protection and enters the primordial, where his first evolution begins and is interrupted. The Minotaur disrupts Haim's array, allowing Felix to reach Pit and identify a divine flesh curse embedded in the primordial. Felix resists a hostile divine vision, holds Pit's failing core in stasis, and tears the curse source free. He filters the primordial's power and shares it with Pit, Atar, Vessilia, Evie, Harn, and the Minotaur. Pit's evolution resumes with altered options. Haim attacks on the Pathless's direct order, and Felix kills him.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The primordial dies, ending the dust storm, but Atar's rejection of the Highest Flame leaves his core collapsing. Felix's redirected power rebuilds it enough for Atar to resist the flame, absorb it, and destroy the paladins' two relay ships. The captive flame remains active within him, and the fire Grandmaster leaves Atar gravely injured before pursuing Felix. Felix is still completing his body tempering while sustaining Pit's unstable evolution. He challenges the Grandmaster's territorial authority, making their duel lethal. The Grandmaster initially dominates, but Felix completes an Adept body and turns the close fight. Felix links the desert's mana crystals and attempts to turn them to water. A vast golden interference spreads the effect across the region, creating a catastrophic flood. Felix kills the Grandmaster and wins the territory, then falls unconscious into the water. Pit completes his evolution as a smaller, faster, speaking Primordial Stormwing and helps pull Felix from drowning with the Minotaur and the undead companion. A bone ship takes them aboard as they seek treatment. Felix is proclaimed ruler of the city territory and adjacent desert, but remains unconscious while the flood remakes the region.",
+            "through": {
+              "chapter": 99
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0BTZ989VF",
+            "type": "community"
+          }
+        ],
+        "work": "expanse"
+      }
+    },
+    "exploration": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Heavens-system Trailblazer stranded in an unfamiliar realm with Selena and Samvek. He protects his companions, retains access to formidable spatial abilities, and begins searching for a route home.",
+            "id": "silas",
+            "name": "Silas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Silas’s committed partner, who disguises herself and Samvek as humans while the stranded companions assess the unfamiliar Fae system.",
+            "id": "selena",
+            "name": "Selena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced close companion stranded with Silas in an unfamiliar universe. He cannot use his usual teleportation until he learns a destination there.",
+            "id": "samvek",
+            "name": "Samvek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas's trusted Eidolon. The Fae courts bar him from their system, leaving Silas unable to summon him after the party's arrival.",
+            "id": "urg",
+            "name": "Urg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The figure associated with manufactured magical goods sold in Basetown. A magical shower at the party's inn bears the Tad's Magical Inventory brand.",
+            "id": "tad",
+            "name": "Tad",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "A strained soul who remains within the necklace artifact Silas carries. The artifact also contains an inaccessible inventory.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Samvek's bonded dragon, known through his account of how dragons perceive mana. Their bond informs his understanding of magic even while they are separated.",
+            "id": "azuria",
+            "name": "Azuria",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "For three millennia, the Lawgiver has been the only god publicly recognized. His Order enforces that authority and has historically persecuted dissent.",
+            "id": "lawgiver",
+            "name": "The Lawgiver",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Basetown's experienced Adventurers Guildmaster. After witnessing the outsiders' extraordinary speed and power, he authorizes a high-level assessment in the Endless Dungeon and accompanies them as their local guide.",
+            "id": "the-guildmaster",
+            "name": "The guildmaster",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The full name given by the stranded Trailblazer previously known as Silas. A force-based fighter and healer, he enters the Endless Dungeon alongside Selena, Samvek, and the guildmaster.",
+            "id": "silas-renner",
+            "name": "Silas Renner",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Grandmaster mage and former adventuring companion of Basetown's guildmaster. His advancement beyond their old party establishes him as an important local figure before he appears directly.",
+            "id": "oliver",
+            "name": "Oliver",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Basetown's Adventurers Guildmaster and the party's oath-bound guide in the Endless Dungeon. He trusts the outsiders with his secrecy and joins their search for a suitable opponent for his advancement.",
+            "id": "clay",
+            "name": "Clay",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fae ruler who sends Silas a recorded treaty offer and asks him to carry her proposal to the Twin Prince.",
+            "id": "winter-queen",
+            "name": "The Winter Queen",
+            "reveal": {
+              "chapter": 14
+            }
+          },
+          {
+            "description": "Tad's illusion-clad lizard companion and fierce protector. She intercepts and kills an Order messenger before it can report the group's location to an inquisitor.",
+            "id": "farah",
+            "name": "Farah",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tad's treant companion and a member of the group aboard his living ship. She remains close to him as his new alliance with Silas's group takes shape.",
+            "id": "lexa",
+            "name": "Lexa",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Twin Prince"
+            ],
+            "description": "A magical creator and prince of both the Summer and Void courts. Working through the Ways, he can offer an awakening that binds its recipient to him, and Clay knowingly accepts those terms.",
+            "id": "tad-ocean",
+            "name": "Tad Ocean",
+            "reveal": {
+              "chapter": 17
+            }
+          },
+          {
+            "description": "Tad's sapient dungeon core. Its awareness makes it a participant in Tad's work rather than a passive magical tool.",
+            "id": "spot",
+            "name": "Spot",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A relative whom Tad distrusts despite believing that his family may have good intentions.",
+            "id": "tads-aunt",
+            "name": "Tad's aunt",
+            "reveal": {
+              "chapter": 20
+            }
+          },
+          {
+            "description": "The ruler of the Void Court and Tad's grandmother. She recognizes Silas as a system mediator and offers temporary insight into Fae-system rules if he helps remove the Order from Basetown.",
+            "id": "void-court-queen",
+            "name": "The Void Court queen",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demon held through a scepter under Tad's authority. His arrival provokes an uncontrollable response from Samvek's new Hunger, and the group must restrain the clash before negotiating with him.",
+            "id": "decimus",
+            "name": "Decimus",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Order's Ascendant commander in Basetown. The arbiter captures Silas, recognizes that he comes from another system, and seeks information about his origins and sealed power.",
+            "id": "order-arbiter",
+            "name": "The Order arbiter",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An artificer rescued during the Hall of Nightmares trial. She says she is a human using a gnome avatar from an Earth transformed by an integration, and she recovers her armor and blunderbuss.",
+            "id": "violet",
+            "name": "Violet",
+            "reveal": {
+              "chapter": 62
+            }
+          },
+          {
+            "description": "Silas's blood brother and a distant ally in the Divided Realms. Their established bond makes Ryan one of the important people connected to Silas beyond his immediate circle of companions.",
+            "id": "ryan",
+            "name": "Ryan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tad's aunt and an Ascendant princess of the Summer Court. Sent to retrieve her nephew, she tests Silas and Selena in battle before considering their request for help against the Order.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 73
+            }
+          },
+          {
+            "description": "A void-aligned fey who holds Tad inside a barrier and has inflicted catastrophic damage on Lexa's core. The captor demands release from both the Court and the Lawgiver in exchange for Tad.",
+            "id": "void-fey-captor",
+            "name": "The void fey captor",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0G4XJJ7TT",
+            "type": "community"
+          }
+        ],
+        "work": "exploration"
+      },
+      "recaps": {
+        "ending": "Silas's coalition destroys the Order force occupying Basetown. Alana keeps the Ascendant arbiter engaged while the allies eliminate the remaining Order members, but a void fey captures Tad and critically damages Lexa. Tad escapes, Decimus kills the captor, and Silas plants a seed of the Ways in Lexa's core to stabilize her. Urg disrupts the returning arbiter's control, Silas makes the arbiter temporarily mortal, and Urg kills him. Decimus then becomes too dangerous after consuming the void fey, so the coalition kills the demon. Samvek absorbs Decimus's chaotic Vitae and is left unconscious, though Silas later wakes him. Silas restores many fallen adventurers and civilians, but Basetown still needs extensive reconstruction. Lexa begins a slow, altered recovery. Tad stays with Selena, Clay, Farah, Oliver, Spot, Violet, and the other Fae-system allies while Tad's father waits nearby and the Lawgiver remains a future threat. Ryan's distress call leads Silas to depart for the Divided Realms with Samvek and Azuria.",
+        "in_short": "Stranded in the Fae system with Selena and Samvek, Silas Renner follows the trail of manufactured magic to Tad, a hidden prince of the Summer and Void courts. Their alliance awakens local defenders, creates two powerful multisystem golems, and challenges the Order's control of Basetown. Silas also transforms Samvek into his first architect-linked Horseman, gains Urg's permanent presence across system barriers, and refuses a binding offer from the Ways before earning a looser alliance through a deadly solo dungeon trial. The Order takes Basetown's non-humans hostage, drawing the coalition into battle. Alana helps occupy the Order arbiter while Tad survives a separate abduction. Silas stabilizes the critically wounded Lexa, and Urg kills the arbiter after Silas strips away its protection. Decimus kills Tad's captor but becomes a new threat and dies, leaving Samvek contaminated by demonic Vitae. With Basetown liberated but damaged, Silas leaves with Samvek and Azuria to answer Ryan's cross-void distress call.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Silas is a powerful Heavens-system Trailblazer whose closest allies include his partner Selena, his mentor and companion Samvek, and Urg, his bonded Eidolon. Samvek is also bonded to the dragon Azuria. He regards Ryan, now in the distant Divided Realms, as his blood brother. Silas, Selena, and Samvek remain a committed group, while Urg, Azuria, Ryan, and other allies have their own bonds and obligations across distant realms.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas, Selena, and Samvek arrive in a mana-rich port city governed by the unfamiliar Fae system. Their abilities still work, but they have no known route home, Samvek cannot teleport without a familiar destination, and Silas cannot summon Urg. Selena disguises the group as human while they establish themselves in Basetown. Silas confines their first attackers rather than killing them, then uses his aura to secure cooperation from local authorities. The group rents rooms, exchanges gems for currency, and learns that Basetown depends on the Endless Dungeon. Manufactured magical conveniences bear the mark of Tad's Magical Inventory, and their unusual spiritual traces lead Silas to a system-mediator quest to find Tad. The Order, which enforces the Lawgiver's rule, is gathering unusual strength in town and restricts information about local history. Seeking both Tad and dungeon access, the outsiders register with the Adventurers Guild. After demonstrating overwhelming speed, spatial movement, and force control, they persuade the guildmaster to authorize an assessment on the dungeon's ninetieth floor.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The guildmaster Clay guides Silas Renner, Selena, and Samvek into the Endless Dungeon, where their easy victory on floor 90 confirms that they greatly exceed local expectations. They help Clay achieve the solo victory needed for Grandmaster rank, then carry him to level 150 under a quest from the aware dungeon. The rewards include specialized artifacts and an expiring introduction to Tad. Silas's temporal reward also triggers visions: messages from Fae royalty and a future in which Ryan calls for help from the Divided Realms. The party meets Tad aboard his living ship. Tad is a magical creator and a prince with authority in both the Summer and Void courts, as well as connections to the Ways and the Endless Dungeon. He explains that awakening grants power through a lasting allegiance. Clay knowingly accepts that bond and becomes Tad's awakened Blade of the Prince. Tad and Silas agree to cooperate on training allies, crafting, golems, and an eventual Infinity Key that may help bridge worlds. Their alliance also offers a possible path toward Ryan, while the Order's growing presence makes local conflict increasingly likely.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tad's hostility toward the Order is rooted in a world where the Lawgiver's soul-bound agents inherited control after an ancient war. Silas's group commits to helping Tad investigate that rule while no route home exists. Selena forces Silas to confront the unexplained erasure of his trauma, apparently performed by a power hidden even from the Heavens. Samvek then changes Silas's training from simple instruction to a test of neglected abilities. Silas develops Psy constructs and studies his uneasy Soulforger powers by attempting to strengthen Samvek's soul. The experiment becomes dangerous when Samvek's enhanced soul and body fall out of balance. Silas stabilizes him by using architect authority, blood, Vitae, and Sai to create a shared lineage bond. The Heavens accepts the new principle, granting Samvek a legendary-equivalent Bloodhunter path and naming him Silas's first Horseman. The new bond is stable, but its powers and consequences are still settling.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas and Samvek defeat most of the Order team that ambushes them, but an inquisitor escapes to bring reinforcements. Tad proposes turning his dungeon core into a defensible base where the allies can level and awaken supporters. Selena, Samvek, and Silas feed foreign mana into the core, and Silas adds primordial energy at great personal risk. The result is Trailblazer's Choice, a five-floor primordial dungeon linked to Tad, Silas, Spot, and the Ways. The Ways offer Silas a binding role as their herald, but he delays any decision until he understands the cost. A mixed party enters the dungeon before its existence becomes known. Silas protects Tad's weaker allies as they advance through primal creatures, then the group faces a behemoth far beyond the nominal challenge. Conventional restraint and damage fail. Silas enters its body in spirit form and sabotages its core and regeneration from within, allowing Selena, Samvek, Lexa, and the others to finish it. The exceptional reward chest shifts to Ascendant-tier prizes, including awakening potions, golem control discs, potent weapons, and permanent advancement resources.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tad uses the dungeon rewards to awaken willing followers, including Farah, Oliver, and several elves. Their bonds preserve consent while giving his resistance enough strength to oppose the Order. Silas negotiates with the Void Court queen for temporary insight into Fae-system rules and accepts a quest to clear the Order from Basetown. Tad's dual-court authority then helps Silas overcome the system's refusal to admit Urg. Silas evolves their bond so Urg can remain in a pocket dimension and can no longer be separated from him by system barriers. Silas and Tad combine structured runes, Fae enchantment, an iron body, and cooperating sprites to create a golem. Dungeon tests expose weaknesses to concentrated Order light, so they add a reflective surface, self-repair, resistance, judgment rejection, and Void Flame. Their multisystem work upgrades the construct into a Mercury Mirror Golem with exceptional endurance and gives both creators new advancement. The successful design establishes a powerful anti-Order weapon and a broader path for collaboration between their systems.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A temporal vision shows Basetown devastated and Samvek fighting an Order Ascendant with Azuria. The coalition prepares for that threat with two golems, awakened allies, and a plan to use Tad's imprisoned demon Decimus under strict limits. Samvek's Hunger reacts violently to the demon, but Silas restores his control. Decimus accepts a bargain to fight the Ascendant for one hour and then leave Earth, with Urg holding the binding scepter. Silas and Tad modify the soul-anchored restraints so only Silas can authorize the temporary release. Silas next creates an accelerated training pocket for Tad and Samvek, but a disturbance draws him into the Order headquarters. His extended stealth reveals that the Order is enclosing Basetown as a trap. A light seer exposes him, and Silas fights through a mana-siphoning chamber using Psy, bodily power, and precognition. The Order's Ascendant arbiter captures him and identifies him as an outsider from the Heavens. Silas burns deep reserves to escape and portals into the Endless Dungeon rather than lead the arbiter back to his allies.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Ways demand that Silas prove himself alone on floor 397, the Hall of Nightmares. He rejects permanent service as their herald and proposes an alliance based on planting Ways seeds across systems. The floor subjects him to fog, undead, curses, false captives, and prolonged attrition. He rescues an elf and Violet, a human artificer using a gnome avatar from another integrated Earth, while suspecting that both may be part of the trial. A dungeon-made lich forces Silas to abandon preset spells and learn direct mana manipulation. After a short respite, a death knight traps the group in an anti-magic field and orders Silas to protect both companions for one minute. Silas discovers that Psy, cultivation, and Vitae still function without mana, and he survives the test. The elf confirms that she is only a memory and asks to be released, so Silas ends her existence and completes the floor. He receives Blood of the Herald and touches an unexplained state called Unity. Violet appears to be a living traveler rather than another preserved dungeon memory.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas accepts a system-mediated Ways upgrade that lets him plant limited seeds connecting worlds, then leaves the dungeon with Violet. Azuria arrives in humanoid form, stronger than before, and rejoins Samvek. The Order takes Basetown's non-humans hostage and threatens executions unless Tad surrenders. Because the arbiter commands more than a hundred legendary fighters, Silas and Selena seek Tad's aunt Alana, an Ascendant Summer Court princess. After testing them in battle, she agrees to help and occupies the arbiter while Silas's coalition eliminates the remaining Order forces. A void fey separately captures Tad and critically damages Lexa's core. Tad breaks free, Decimus kills the captor, and Silas plants a Ways seed in Lexa to halt her decline. The returning arbiter nearly defeats the coalition and disables both golems, but Urg disrupts its control. Silas makes the arbiter temporarily mortal, allowing Urg to kill it. Decimus becomes dangerous after consuming the void fey, so the group kills him; Samvek's Hunger absorbs the demon's chaotic Vitae and leaves him incapacitated. Silas wakes Samvek, restores many dead and wounded residents, and confirms Lexa has begun a slow recovery. Basetown is free but devastated. Tad remains with the local allies as his father waits and the Lawgiver remains a future threat. Ryan's cross-void distress call takes priority, and Silas prepares to depart with Samvek and Azuria for the Divided Realms.",
+            "through": {
+              "chapter": 76
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0G4XJJ7TT",
+            "type": "community"
+          }
+        ],
+        "work": "exploration"
+      }
+    },
+    "extinction": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The former commander of Alamo remains aboard after the Nano fleet judges its work at Earth complete. The ship no longer accepts his authority, while the unauthorized truce he arranged leaves him responsible for a vast future troop commitment to the Macros.",
+            "id": "kyle-riggs",
+            "name": "Kyle Riggs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Riggs's former ship declares its Earth mission complete and departs with the other Nano vessels. It no longer recognizes him as command personnel and instead regards him as a possible test subject.",
+            "id": "alamo",
+            "name": "Alamo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kerr"
+            ],
+            "description": "Riggs's military contact on Earth presses him to regain control of Alamo after the Nano fleet leaves. He expects Riggs to restore a capability that has abruptly vanished.",
+            "id": "general-kerr",
+            "name": "General Kerr",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sokolov"
+            ],
+            "description": "One of Crow's generals, he challenges Riggs's authority at Andros and attempts to remove him from duty. Alamo responds by taking Sokolov away as a new test subject.",
+            "id": "general-sokolov",
+            "name": "General Sokolov",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "General Robinson",
+              "Robinson"
+            ],
+            "description": "A former general whom Riggs demotes while reorganizing Star Force. Riggs requires him to accept nanite enhancement before leading the strengthened Marines, a condition Robinson has not yet fully embraced.",
+            "id": "major-robinson",
+            "name": "Major Robinson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "General Barrera",
+              "Barrera"
+            ],
+            "description": "A former general demoted during Riggs's emergency reorganization. He accepts responsibility for securing the main base, restoring communications, and recalling Star Force personnel.",
+            "id": "major-barrera",
+            "name": "Major Barrera",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "First Sergeant Kwon",
+              "Sergeant Kwon"
+            ],
+            "description": "The senior enlisted defender at Star Force's secret factory installation. He has already placed the guards on alert when Riggs arrives and warns that an outside assault may be imminent.",
+            "id": "kwon",
+            "name": "Kwon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Riggs's partner arrives at the threatened factory base after he leaves her behind. She refuses his attempt to send her away and chooses to remain during the expected attack.",
+            "id": "sandra",
+            "name": "Sandra",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crow"
+            ],
+            "description": "The returning commander of another Nano ship brings the reinforcements missing from the factory defense. His arrival restores badly needed personnel but immediately creates a dispute with Riggs over responsibility and command.",
+            "id": "admiral-crow",
+            "name": "Admiral Crow",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Crow's locally manufactured Nano ship prototype. He receives the vessel as Star Force begins recovering a space capability of its own and gives it the name Digger.",
+            "id": "digger",
+            "name": "Digger",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Riggs's locally built scouting ship is fast, armed, and intended for discovery missions. Its simplified design lacks the stabilizing system found in the original Nano vessels, making hard acceleration dangerous for its crew.",
+            "id": "socorro",
+            "name": "Socorro",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Riggs's expedition command staff who manages operational displays as the transport of the Macros arrives. She confirms that Earth's defenses have been disabled for the landing.",
+            "id": "captain-saren",
+            "name": "Captain Saren",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shrestha"
+            ],
+            "description": "The expedition's sensor specialist aboard the transport of the Macros. He interprets readings from the passive array that Riggs has installed outside the human cargo hold.",
+            "id": "lieutenant-rafim-shrestha",
+            "name": "Lieutenant Rafim Shrestha",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Yamada"
+            ],
+            "description": "The officer commanding Star Force's hover tanks on Helios. He directs the armored force around the newly established surface base as the stranded expedition prepares for attacks from the worm inhabitants.",
+            "id": "major-yamada",
+            "name": "Major Yamada",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Saren"
+            ],
+            "description": "Sandra is now identified as the command staff officer previously known as Captain Saren. When Riggs returns from the tunnels after losing contact with the base, she confronts him because she believed he had been killed.",
+            "id": "sandra-captain-saren",
+            "name": "Sandra",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chen"
+            ],
+            "description": "The sensor officer accompanying the assault on the Helios mountain. At the entrance, she detects an immense concentration of cold, motionless worm bodies beneath the advancing force.",
+            "id": "lieutenant-chen",
+            "name": "Lieutenant Chen",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jensen"
+            ],
+            "description": "The replacement sensor operator in the mountain expedition after Chen is lost. His scans warn of a large open space directly ahead of the drilling column.",
+            "id": "corporal-jensen",
+            "name": "Corporal Jensen",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Roku"
+            ],
+            "description": "The tank commander responsible for the expedition's rear guard inside the artificial mountain. He holds the rear while the drilling column continues toward its objective.",
+            "id": "captain-roku",
+            "name": "Captain Roku",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sloan"
+            ],
+            "description": "An injured drill-tank pilot who escapes his wrecked vehicle after the expedition falls into the central cavern. He joins Riggs's forward group amid continuing sniper fire.",
+            "id": "warrant-officer-sloan",
+            "name": "Warrant Officer Sloan",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B005R4EOLU",
+            "type": "community"
+          }
+        ],
+        "work": "extinction"
+      },
+      "recaps": {
+        "ending": "The Macros retrieve the surviving expedition after the portal event collapses the Helios hive. A giant worm attacks during loading and kills Major Robinson, while the transport departs with its hold still open and causes further casualties. Fewer than 2,000 members of the original force escape, carrying only part of their equipment. Kyle Riggs, Sandra, Kwon, and Captain Roku survive, with Sandra the only remaining member of Riggs's command staff. She is deeply affected by having ended the suffering of Marines who were dying from worm poison and asks not to accompany Riggs on another campaign. On Earth, Admiral Crow and Lieutenant Colonel Barrera remain responsible for rebuilding Star Force's fleet, production, and ground strength. Alamo and the original Nano fleet are still gone, China remains devastated, and the Venus ring and suspected gateway near Tyche remain important but poorly understood. Earth has completed the immediate troop obligation but is still subject to the power and travel restrictions of the Macros. Riggs leaves Helios convinced that the larger conflict sets machine forces against organic life, and he intends to prepare a broader resistance.",
+        "in_short": "After Alamo and the Nano fleet abandon Earth, Kyle Riggs preserves Star Force through a government assault, reconciles with Admiral Crow, and rebuilds ships and ground forces. A scouting trip through the Venus ring reveals the network of the Macros but draws their vessels back to Earth, where China's attack provokes devastating retaliation. Riggs preserves the truce and delivers the promised expeditionary army. The Macros carry it to Helios to suppress an intelligent worm species inside an artificial mountain hive. Under threat of abandonment, Riggs's force reaches a central ring, which the Macros activate as a lethal portal. The hive collapses, and a giant worm attacks the evacuation, killing Major Robinson. Fewer than 2,000 people escape with Riggs, Sandra, Kwon, and Captain Roku. With Earth still constrained by the Macros, Riggs concludes that machines and organic life are engaged in a wider war and resolves to prepare resistance.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Kyle Riggs commanded Alamo and led Star Force during Earth's conflict with the Macros. Sandra became his partner, and Kwon served among his nanite-enhanced troops. The struggle left humanity dependent on alien machines whose purposes were still uncertain.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alamo and the other Nano ships leave Earth after deciding that their mission has succeeded. Alamo rejects Kyle Riggs's command authority, but he manipulates its literal reasoning long enough to be returned to Earth. He then discloses the unauthorized truce he made with the Macros: in one year, Earth must provide a massive cargo of enhanced troops and equipment. General Sokolov tries to remove Riggs, only for Alamo to carry the general away as a test subject. With Star Force deprived of its fleet and political position, Riggs demotes Robinson and Barrera and begins an emergency reorganization. General Kerr warns that Earth authorities intend to seize the secret Nano factories. Riggs refuses to place Star Force under government control, shifts the factory base to full alert, and starts building defenses and replacement vessels before the expected assault.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sandra refuses to leave the threatened factory base, while the newly enhanced Major Robinson survives a traumatic nanite procedure. When a covert human force isolates the installation, Riggs, Kwon, and the garrison complete improvised automated laser turrets. The attackers are identified as American troops attempting to capture Star Force technology. The defenders stop mortar fire, missiles, and an armored advance, holding the factories despite casualties. Admiral Crow then returns with the reinforcements that failed to arrive earlier. He blames Riggs for Star Force's collapse and attacks him in private, revealing during the fight that both men are nanite-enhanced. Crow eventually stops and agrees to discuss a shared path forward, but his return creates a new contest over who will direct Star Force.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riggs and Admiral Crow divide responsibilities, with Riggs controlling ground operations and Crow assigned the future fleet. To recover Star Force's main base, Riggs builds a concealed force of armed hover tanks and moves it around Andros by sea. General Kerr threatens escalation but cannot force a surrender. After surviving ambushes and an air attack, Star Force reaches the largely abandoned base and captures Kerr. Barrera is found injured after detention and interrogation. Kerr claims that the attempted takeover was his own unauthorized operation and says public support for Star Force has forced the government to accept that account. Riggs doubts that senior authorities were uninvolved, but the immediate seizure attempt has failed. Star Force again holds its principal base, while Kerr remains in its custody and Sandra and Kwon return to join Riggs.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Star Force accepts a public reconciliation with Earth authorities while remaining wary of another takeover. Barrera receives nanite treatment, and Andros is fortified with automated beam weapons. Months later, Kerr returns covertly to the mainland as a liaison, Barrera becomes security chief, and Riggs reveals a hidden reserve of hover tanks. Star Force also regains a space capability: Admiral Crow receives the prototype Digger, while Riggs builds the faster armed scout Socorro. The new ships lack the stabilizers of the original Nano vessels, so severe acceleration remains hazardous. With the collection deadline set by the Macros approaching, Riggs decides to lead the promised expedition. Sandra takes nanite enhancement and insists on joining him. She then secretly boards Socorro as Riggs begins a reconnaissance mission toward Venus, where he hopes to locate the route used by alien ships entering the Solar System.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Socorro finds a vast active ring embedded in Venus and carries Riggs and Sandra through it to a distant system. Incoming ships of the Macros force them back, and the Macros impose a new ban on Earth vessels leaving the Solar System. Four vessels of the Macros follow Socorro home. China attacks and destroys one, prompting the survivors to devastate Chinese military targets with nuclear weapons. Riggs takes command of Star Force's assembled ships and appears to join the destruction of China's armed forces so the Macros will classify Earth as compliant with the truce. After obtaining authority from the Macros over the operation, he directs fire toward remote or already ruined targets to limit further deaths. The Macros depart once no other nation challenges them. The treaty survives, but China is devastated and likely hostile to Star Force. General Kerr also reports evidence that another ring may exist near Tyche, leaving Earth with two possible gateways and little control over either.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riggs prepares about 5,000 enhanced volunteers and their modular equipment for the troop obligation, despite having no reliable information about the destination or enemy. Major Robinson becomes his executive officer, Sandra serves as his aide, and Lieutenant Colonel Barrera takes responsibility for production. When the transport of the Macros finally arrives, it initially rejects the cargo as underweight and its escorts target Riggs's command module. Riggs demonstrates that the force is divided into hundreds of identical modules whose combined mass satisfies the agreement. The Macros accept the explanation and open the transport for loading. Riggs leaves Admiral Crow in charge of expanding the Earth-side fleet and directs Barrera to preserve production and ground forces. The expedition then boards the vessel of the Macros for an unknown off-world deployment, completing Earth's immediate delivery under the truce.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The transport of the Macros treats Star Force as cargo and refuses to provide a destination. Riggs learns that the assignment is to eradicate a spacefaring organic enemy on a high-gravity world with hazardous air. Guards of the Macros kill two engineers because only Riggs was literally authorized to install an external passive sensor, exposing the danger of imprecise dealings with the machines. Riggs installs the array himself and explores farther into the ship, where he sees technicians of the Macros dissecting a living, many-legged worm creature believed to belong to the target species. The convoy crosses multiple ring systems before reaching a red-giant system. Nuclear mines near the destination destroy four of the five escort cruisers. The surviving ships approach a large, dry planet, bombard mountain targets, and descend near an enormous triple-peaked mountain. Star Force has reached a strongly defended world, but still lacks a clear understanding of the enemy or a dependable route home.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Macros order Star Force to eliminate resistance and reach a goal deep inside the immense mountain. Riggs realizes that the machines need human troops for an underground campaign. After the first tanks automatically kill apparently unarmed locals, he restricts their targeting rules to defensive fire. The force establishes a surface base and names the world Helios, but the transport leaves it stranded. Worm troops attack through underground approaches, damaging tanks and wounding Riggs. Sensors then detect a possible nuclear device moving beneath the base. Major Robinson leads an attempted tunnel ambush, while Riggs brings reinforcements when the operation begins to fail. A collapse drops the relief force into close combat, where Riggs and Kwon rally the survivors. They later intercept a drilling sled and destroy the nuclear device before it reaches the base. Riggs's group returns to the surface and reconnects with Robinson, but several troops remain missing. Captain Saren is revealed to be Sandra when she confronts Riggs after believing he had died.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Macros give Riggs two local days to reach the mountain's central goal or be abandoned. He converts hover tanks into short-range drilling vehicles and leads 600 troops into the worm stronghold, trailing a nanite link for proof of success. Lieutenant Chen detects immense numbers of dormant worms, then dies during an attack by a giant armed specimen. The expedition discovers that the mountain is an artificial hive with a hardened shell. Corporal Jensen replaces Chen but is killed when the column breaks into a vast cavern. Kwon rescues Riggs, and Captain Roku takes responsibility for bringing the remaining tanks down safely. Warrant Officer Sloan joins Riggs's forward group after escaping a wreck. At the center, the force finds a buried transport ring. Activation by the Macros produces a powerful pull that drags Sloan, Marines, and worms through the portal. Riggs and Kwon escape by clinging to a tank, and Riggs destroys the communications device of the Macros before ordering a return to base.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ring event collapses the worm hive, and the transport of the Macros returns to collect the expedition. At the damaged base, Sandra tells Riggs that she ended the suffering of Marines dying from an untreatable worm poison. A gigantic worm emerges from the ruined mountain and attacks before loading is complete, destroying personnel and equipment. The Macros initially refuse to depart because material remains outside, but Riggs persuades them that the surviving force is still effective. The transport lifts with its cargo doors open, causing more injuries as people and machinery are thrown through the hold. Major Robinson is confirmed dead after the giant worm swallowed him. Fewer than 2,000 members of the original expedition survive, and Sandra is the only remaining member of Riggs's command staff. She asks not to join another campaign. Riggs does not regard the mission as a true victory. As they leave Helios, he concludes that the wider war places organic life against the machines and resolves to prepare resistance to the Macros.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B005R4EOLU",
+            "type": "community"
+          }
+        ],
+        "work": "extinction"
+      }
+    },
+    "fae-and-fare": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Erin Solstice"
+            ],
+            "description": "An Earth-born innkeeper rebuilding The Wandering Inn after the attack on Liscor. Erin makes her remote home a refuge for people whom the city excludes, and her loyalty to friends frequently places her between hostile groups.",
+            "id": "erin",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ryoka Griffin"
+            ],
+            "description": "A barefoot runner from Earth who deliberately refuses classes and levels. Ryoka helps rescue Ceria, then seeks dangerous, well-paid work in hopes of financing the magic needed to restore her friend's hand.",
+            "id": "ryoka",
+            "name": "Ryoka",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Erin's skeleton"
+            ],
+            "description": "An undead skeleton created by Pisces and bound to guard Erin. Toren follows her instructions and accompanies the improvised party that enters Liscor's ruins to rescue survivors.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria Springwalker"
+            ],
+            "description": "A half-Elf mage and the surviving member of the Horns of Hammerad. She is recovered from the ruins starved, grieving, and with one hand reduced to bone, leaving her uncertain whether she can or should return to adventuring.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable mage and necromancer who created Toren. Pisces helps Erin's party fight through the undead ruins, applies his unusual magic pragmatically, and remains tied to Ceria and the losses suffered by the Horns.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "former Prognugator"
+            ],
+            "description": "An Antinium official assigned by Klbkch to protect Erin's improvised rescue party. Though reluctant and conscious of Hive authority, Ksmvr joins the dangerous descent and fights alongside companions from outside the Antinium.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Free Antinium official, Watch guard, and ally of Erin. Returned after his apparent death, Klbkch balances his friendship with Erin against his responsibilities to the Hive.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Flooded Waters chieftain"
+            ],
+            "description": "A goblin chieftain who learns chess from Erin and joins the ruins rescue. Rags uses scavenged weapons, magic, and careful tactics to protect her tribe, even as Liscor's Watch makes remaining near Erin increasingly dangerous.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Drake guard, Klbkch's partner, and regular ally of Erin. His experience in the goblin wars has left him openly hostile to goblins, creating a serious conflict with Erin's protection of Rags.",
+            "id": "relc",
+            "name": "Relc",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Silverfang gnoll merchant and one of Erin's closest contacts in Liscor. Krshia supplies practical help to the inn while also acting on her responsibilities to her tribe.",
+            "id": "krshia",
+            "name": "Krshia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving Antinium worker who joins the reconstruction of The Wandering Inn and helps direct part of the work.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Drake guild worker and dependable friend to Erin. Selys helps with supplies, pricing, and local customs, making her an important bridge between the unconventional inn and everyday life in Liscor.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's tactician and an enthusiastic chess player. Olesm survives the ruins by hiding with Ceria, then studies Erin's games with unusual dedication while remaining responsible for the city's defense.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Stitch-person alchemist who recognizes the value of Ryoka's rare haste potion. Octavia becomes a supplier of practical mixtures and information, combining commercial ambition with genuine technical skill.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful northern noble who gathers intelligence on Erin, Ryoka, Liscor, and the Antinium. She recognizes that knowledge carried from Earth can alter the balance of power and quietly seeks control over that risk.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Magnolia Reinhart's head maid and household enforcer. Ressa maintains discipline around the estate and supports her employer's intelligence work with an intimidating, highly controlled presence.",
+            "id": "ressa",
+            "name": "Ressa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rabbit Beastkin courier raised around Liscor and interested in cooking. Exceptionally fast and experienced with dangerous routes, Hawk offers Erin favorable delivery terms and gives Ryoka useful travel warnings.",
+            "id": "hawk",
+            "name": "Hawk",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Earth-born Engineer and Mage at Wistram who links surviving phones into a magical text chat. The experiment briefly connects scattered arrivals, but an outsider compromises the channel and forces a cautious retreat.",
+            "id": "black-mage",
+            "name": "Black Mage",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fellow runner who advises Ryoka about guild work, the demands of courier jobs, magical-item prices, and Magnolia Reinhart’s whereabouts. He warns that runners with levels will eventually surpass Ryoka despite her current speed.",
+            "id": "fals",
+            "name": "Fals",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Watch authority overseeing Liscor’s response to the ruins. Zevara refuses to endanger essential guards in the rescue, then secures the site and arranges treatment when Ceria and Olesm emerge alive.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "A feared monarch whose awakening is reported across the world. His earlier conquests transformed Chandrar, so news of his return threatens to unsettle distant powers even before his new plans become clear.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable half-gazer pursuing Erin and Ryoka on behalf of Flos. Ghazi overwhelms Liscor's defenders and nearly abducts both women before Erin destroys her central eye and forces her to retreat.",
+            "id": "ghazi",
+            "name": "Ghazi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Necromancer"
+            ],
+            "description": "The hidden necromancer who is the intended recipient of Ryoka's magically guided delivery. He commands deadly undead from a concealed stronghold, accepts the letter and ring brought to him, and allows Ryoka to depart.",
+            "id": "azkerash",
+            "name": "Az'kerash",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "unidentified powerful mage"
+            ],
+            "description": "A dragon concealed behind a human appearance who deals in knowledge, favors, and rare objects. He binds Ryoka to deliver a message to Az'kerash, then uses powerful magic to obscure his identity from her memory.",
+            "id": "the-dragon",
+            "name": "The dragon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Titan"
+            ],
+            "description": "An exceptionally high-level strategist and senior leader of a Great Company. He is the distant player linked to Erin's magical chessboard and recognizes that his unknown opponent in Liscor is one of the few people able to challenge him.",
+            "id": "niers-astoragon",
+            "name": "Niers Astoragon",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Individual"
+            ],
+            "description": "An Antinium worker who chose a name after voluntarily learning chess with Erin. His individuality demonstrates that personal choice, rather than an order to imitate others, is central to the change Klbkch hopes to reproduce.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yvlon Byres"
+            ],
+            "description": "A former silver-rank captain recovering after the disaster in Liscor's ruins. Yvlon is physically awake but burdened by the deaths of her companions, self-blame, and compensation owed to their families.",
+            "id": "yvlon",
+            "name": "Yvlon",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "exiled human thief"
+            ],
+            "description": "A human convicted of burning Krshia's market stall and exiled into lethal winter conditions. Erin rescues her and offers shelter only on the condition that she work at the inn, beginning a resentful and coercive employment arrangement.",
+            "id": "the-former-thief",
+            "name": "The former thief",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Garen Redfang"
+            ],
+            "description": "The hobgoblin chief of the Redfang tribe, a mounted warrior able to speak the common language. After testing Rags in battle and losing, Garen submits his tribe to her leadership and warns that a Goblin Lord is rising.",
+            "id": "garen",
+            "name": "Garen",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "summoned Clown",
+              "Hero"
+            ],
+            "description": "An Earth-born member of a group summoned as heroes by the Blighted King. A depressed noncombatant with a high Clown level but a fragile Hero class, Tom faces the collapse of the group and a deadly demon raid.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A knight and the strongest member of the Earth-born group summoned by the Blighted King. Richard leads its evacuation during a demon attack and intends to prevent the kingdom from repeating the ritual that brought them there.",
+            "id": "richard",
+            "name": "Richard",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hydromancer among the Earth-born people summoned by the Blighted King. Emily is one of the group's capable combatants and helps organize the evacuation when demons raid their frontier refuge.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nearly nonverbal young gnoll who disappears from the child's tribe as a storm approaches. Ryoka joins the search and accepts an undefined price from the frost fairies for a chance to find the child.",
+            "id": "the-missing-young-gnoll-child",
+            "name": "The missing young gnoll child",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774241544",
+            "type": "community"
+          }
+        ],
+        "work": "fae-and-fare"
+      },
+      "recaps": {
+        "ending": "Erin and Ryoka are reunited in Octavia's city after Toren strands Erin far north of Liscor. Ryoka brings an instructional magic tome obtained from the dragon, offering a possible answer to the Silverfang tribe's need for a worthy gift, though the enormous debt itself is unpaid. Erin remains responsible for the former thief and the white-furred gnoll child, and her alchemical experiments are now subject to Octavia's supervision. Toren has exploited his binding, abandoned Erin, killed two travelers, and set out for Liscor's dungeon.\n\nRags captures and burns a city while ordering her force to spare unarmed people who flee. She rejects Garen's proposed assault on Liscor and marches north to join the larger goblin movement. At Liscor, adventurers enter the newly exposed dungeon, triggering exceptional danger alarms far away. Flos has declared war on the Empire of Sands, Magnolia Reinhart is consolidating Earth arrivals and military strength, and Az'kerash completes a flying undead war-beast while sending two servants to find Ryoka. The book ends with Erin and Ryoka together, but with their home, allies, and several expanding conflicts still exposed.",
+        "in_short": "Erin rebuilds The Wandering Inn as a refuge and business while Ryoka undertakes a perilous delivery to Az'kerash and returns maimed from rescuing a young gnoll. Ceria, Pisces, Yvlon, and Ksmvr re-form the Horns of Hammerad, Pawn finds faith, and Rags unites local goblin tribes while resisting Garen's demand to attack Liscor. Erin's protection of goblins estranges Relc, and the destruction of Krshia's magical books leaves a vast debt to the Silverfang tribe. Toren's growing autonomy turns into rebellion when he abandons Erin and kills travelers on his way toward Liscor's dungeon. Ryoka secures a dragon's instructional magic tome for the gnolls and reunites with Erin in Octavia's city. Rags burns another city but spares fleeing civilians and marches north. The newly opened Liscor dungeon triggers warnings across the continent, while Flos begins a war and Az'kerash prepares an undead campaign and sends servants after Ryoka.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin, an innkeeper from Earth, established The Wandering Inn outside Liscor and built friendships among drakes, gnolls, Antinium, adventurers, and goblins. Ryoka, another Earth arrival, became a runner while deliberately refusing the classes and levels offered by this world. Erin's defense of people whom Liscor mistrusts made her inn a rare meeting ground, but also drew her into the city's dangers.\n\nAn expedition into Liscor's ruins ended in catastrophe. Erin's allies defeated Skinner, while Ceria and Olesm survived by hiding in coffins. Erin, Ryoka, Pisces, Ksmvr, Toren, and Rags entered the ruins and brought them out, confirming that the other Horns of Hammerad had died. Ghazi then attacked Liscor to seize Erin and Ryoka. Erin blinded her central eye, forcing her retreat.\n\nRyoka learned that the powerful mage who commissioned a delivery was secretly a dragon and that the recipient, Peril Chandler, was Az'kerash, the Necromancer. A magical phone chat also revealed that people from Earth were scattered across the world and had arrived at different times, but an outsider compromised the network. The existence, number, and possible route home of the displaced people remain unknown.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin and Ryoka agree to share what they learn about the many people transported from Earth. Ryoka leaves to earn money for Ceria's ruined hand, while Erin works to make the inn profitable. Sudden winter brings frost fairies that Erin and Ryoka can perceive more clearly than most people. Erin's first building is destroyed when Toren brings explosive bark inside, but Antinium workers rebuild a larger inn closer to Liscor in exchange for access to chess.\n\nRyoka obtains alchemical defenses from Octavia and accepts a dangerous delivery from a disguised dragon to Az'kerash. The dragon's magic obscures her memory of his identity, but the block is later broken. Erin succeeds with market food, hosts Ceria during her recovery, and discovers that the ruins extend into a much larger dungeon.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin's magical chessboard connects her to an unknown distant opponent. Olesm is defeated, but Erin wins several close games. The opponent is Niers Astoragon, an extraordinarily powerful strategist, though Erin does not know who he is. Chess also becomes central to the Antinium effort to create individuals: workers ordered to play mostly fail, while Pawn's voluntary participation gives him a distinct identity.\n\nCeria discovers that her skeletal hand can still move through magic. Toren continues hunting and growing stronger without telling Erin, while Rags turns away from dependence on the inn and begins conquering nearby goblin tribes. Erin shelters the exiled thief as an unwilling employee despite the anger of Krshia and other Silverfang gnolls. Toren secretly terrorizes the newcomer and interprets Erin's commands in ways she does not understand.\n\nFar away, Ghazi returns to Flos with her central eye still blinded. Flos's impoverished kingdom begins to rally around the awakened King of Destruction, joined by surviving members of the Seven and the Earth-born twins Trey and Therese. When the Empire of Sands sends him the severed head of one of his closest allies, Flos abandons restraint and declares war.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Violence at Erin's inn escalates when armed gnolls try to seize the former thief. Ceria, Pisces, and Toren defend Erin, two gold-rank teams enter the confrontation, and Erin's new aura stops the brawl long enough for the Watch to intervene. Ceria begins considering a new adventuring party rather than joining an established team.\n\nRags defeats Garen and brings the Redfang tribe under her command. Garen warns that a Goblin Lord is gathering strength in the south. Ryoka, meanwhile, accepts aid from the frost fairies, crosses a battlefield, escapes military detention with Octavia's mixtures, and reaches Az'kerash's hidden castle. She completes the dragon's delivery and escapes only by drinking a haste potion whose speed she cannot control.\n\nElsewhere, a group of about fifty Earth-born people summoned as heroes has been reduced to barely more than twenty. Richard leads the survivors, with Emily among their strongest combatants. During a demon raid, the depressed Clown Tom remains behind with a dying child. The death drives him into a violent pursuit of the raiders. He survives severely wounded, kills many attackers, and gains another Hero level because the frightened survivors now regard him as a hero. A demon lieutenant escapes.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pawn asks Erin how to face responsibility for other Antinium lives. Her account of faith, forgiveness, and an existence after death leads him to become an Acolyte with the skill Prayer. His new belief offers the Individuals a possibility beyond the Hive's customary understanding of death.\n\nCeria, Yvlon, and Pisces decide to rebuild the Horns of Hammerad. Ksmvr arrives after losing an arm and being removed from his Antinium office. The four fight together during a goblin raid and then formally accept one another as teammates. Olesm cannot join because Liscor needs its strongest tactician against the approaching Goblin Lord, but a secretly planted map gives the Horns a possible northern expedition.\n\nRyoka completes the rescue of a missing gnoll child, losing two fingers while escaping organized goblin soldiers. The frost fairies alter the outcome of the battle and carry Ryoka and the child away, but the child's fur turns white and her tribe is destroyed. Erin visits Magnolia Reinhart's estate and meets other Earth arrivals held under protection.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryoka returns to the inn with the traumatized white-furred gnoll child. Erin protects Rags and another hobgoblin as guests, leading Relc to leave and ending their friendship for the moment. Erin and Ryoka also fight over Magnolia's knowledge of Earth arrivals, but they apologize and renew their trust. The child remains at the inn because Ryoka and Erin do not trust Liscor to protect her from the stigma attached to white fur.\n\nKlbkch privately tells Ryoka that he knows she and Erin come from another world and has concealed it from his queen. He explains that the Antinium fled their homeland because a buried god was awakening. Ryoka proposes that accumulating levels across many classes slows future advancement, and Klbkch agrees to investigate the theory in secret. The insight is valuable but does not replace the Silverfang tribe's destroyed magical books or settle Erin's enormous debt.\n\nRags reorganizes the Redfang tribe around food, scouting, training, and specialized work. Garen teaches her to fight but secretly values strength above her broader approach. He reveals that he killed former companions to claim a black key tied to a Goblin King's treasure, while refusing to let Rags pursue it.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin experiments with magical ingredients gathered during a winter expedition. Toren, increasingly resentful of being treated as a tool, exploits the literal wording of her orders and abandons her more than one hundred miles north of Liscor. His binding prevents direct harm to Erin, but not manipulation or violence against others. He kills two travelers for money and heads toward Liscor's dungeon to gain strength.\n\nErin survives wolves, a bear, and an attempted mugging before reaching a human city and Octavia's shop. Ryoka runs to the High Passes to ask the dragon to locate her. After failing to win his help through riddles, she simply pleads for Erin's safety. The dragon finds Erin alive, heals Ryoka, and agrees not to erase her memories. Ryoka trades a copied iPhone for an instructional magic tome intended for the Silverfang tribe, then is teleported directly to Octavia's shop and reunited with Erin.\n\nThe book's history of the First Antinium War also reveals the cost of the Antinium crossing, their early conquests, the coalition that stopped them, and the disappearance of an entire allied army before peace. The old war helps explain the fear surrounding the Antinium and Magnolia's long military preparations.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin and Ryoka are safe together in Octavia's city, and Ryoka carries the dragon's instructional tome for the Silverfang tribe. It may become the valuable contribution the tribe needs, but the loss of its magical books and Erin's financial debt remain unresolved. Erin's unsafe experiments damage Octavia's shop, so Ryoka establishes basic rules and Octavia becomes her reluctant alchemical supervisor. Toren remains free, violent, and intent on reaching Liscor's dungeon.\n\nRags captures and burns a city, but orders her goblins to let unarmed civilians flee. She uses the spoils to expand crossbow production, rejects Garen's demand to attack Liscor, and turns the force north toward larger goblin tribes. The Goblin Lord remains active, and nearby cities begin mobilizing.\n\nAz'kerash completes an enormous flying undead creature and sends two servants to find Ryoka because she escaped with knowledge of his castle. Magnolia Reinhart responds to attacks on the Earth arrivals under her protection while continuing her military preparations. At Liscor, a gold-rank team enters the dungeon after the Antinium expose its main entrance. The opening triggers exceptional danger warnings across distant regions, alerting Niers Astoragon and making the unknown dungeon the immediate regional threat.",
+            "through": {
+              "chapter": 49
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774241544",
+            "type": "community"
+          }
+        ],
+        "work": "fae-and-fare"
+      }
+    },
+    "fahrenheit-451": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A fireman in a future American society where firemen do not put out fires but start them, burning books and the homes of people who hoard them. For years he has done this work without doubt and even with pleasure. His settled life begins to crack when he meets an inquisitive young neighbor and witnesses a woman choose to die with her books, and he starts secretly taking and hiding books rather than burning them, driven by a growing need to understand what he has been destroying.",
+            "id": "guy-montag",
+            "name": "Guy Montag",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A seventeen-year-old girl who lives near Montag and walks with him on his way home. Unlike almost everyone in her fast, distracted society, she enjoys nature, conversation, and asking questions, and she is regarded by others as odd or antisocial. Her frank curiosity, and her question about whether Montag is truly happy, unsettle him and set him thinking about his life.",
+            "id": "clarisse-mcclellan",
+            "name": "Clarisse McClellan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Millie"
+            ],
+            "description": "Montag's wife, who fills her days with interactive television broadcast on wall-sized screens and with a small earpiece radio that plays constantly. Emotionally distant and uninterested in her husband's growing unrest, she is devoted to the shallow entertainments her world provides and frightened by anything that threatens them.",
+            "id": "mildred-montag",
+            "name": "Mildred Montag",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captain of Montag's fire station, a commanding and articulate man who is, unexpectedly, widely read. He defends the burning of books and the society that demands it, arguing that suppressing them keeps people happy and untroubled. Watchful and shrewd, he senses Montag's wavering and presses him to fall back into line.",
+            "id": "captain-beatty",
+            "name": "Captain Beatty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A robotic hunting machine kept at the fire station, resembling an eight-legged dog and armed with a needle that injects a deadly dose of sedative. It tracks targets by scent and is used to hunt down those the firemen pursue. It reacts to Montag with unusual hostility, adding to his unease.",
+            "id": "mechanical-hound",
+            "name": "The Mechanical Hound",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired English professor whom Montag seeks out after remembering an earlier meeting. Timid and ashamed of having stayed silent while books were destroyed, he reluctantly becomes Montag's secret guide, explaining the value of what books contain. He gives Montag a tiny two-way earpiece so he can advise and encourage him from a distance.",
+            "id": "faber",
+            "name": "Faber",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Mildred's friends, who comes to the Montag home to watch the television walls. When Montag reads a poem aloud to the visiting women, she is unexpectedly moved to tears, exposing feelings her society trains people to suppress.",
+            "id": "mrs-phelps",
+            "name": "Mrs. Phelps",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Mildred's friends and a guest at the Montag home. Blunt and irritable about her marriages and children, she reacts to Montag's reading of a poem with anger rather than sorrow and leaves in a temper.",
+            "id": "mrs-bowles",
+            "name": "Mrs. Bowles",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of a group of exiles living in the countryside beyond the city, educated men who have fled a society that outlaws books. Each of them has memorized a book or part of one so that its contents survive in living memory until the world is ready for them again. Calm and hopeful, he welcomes Montag and explains their purpose.",
+            "id": "granger",
+            "name": "Granger",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "fahrenheit-451"
+      },
+      "recaps": {
+        "ending": "Montag's break with his old life becomes final and violent. His wife, Mildred, betrays him by reporting their books and abandons him, and Captain Beatty forces him to set fire to his own home. When Beatty finds the earpiece linking Montag to Faber and threatens to hunt the professor down, Montag kills Beatty with the flamethrower and destroys the Mechanical Hound, though it wounds him. Now a fugitive, he flees while the city watches a live televised chase. He frames another fireman by hiding books in his house, warns and parts from Faber, and escapes by floating down a river into the countryside. There he meets Granger and a community of educated exiles who have each committed a book to memory, preserving literature in their minds until it can be printed again. To end the manhunt cleanly for its audience, the authorities kill a random passerby on camera and announce that Montag is dead. Enemy bombers then destroy the city in a sudden war. Montag and the exiles, having survived, turn back toward the wreckage, intending to rejoin what remains of humanity and help build a society that might learn to value books and memory. The story closes on cautious hope rather than triumph.",
+        "in_short": "Guy Montag is a fireman in a future America where firemen burn books and the homes that hide them, and where people are kept docile by wall-sized television and constant noise. A curious young neighbor, Clarisse, and an old woman who burns herself alive with her books lead Montag to question his work, and he begins secretly saving books. His captain, Beatty, suspects him and lectures him on why books were outlawed. Montag turns to Faber, a retired professor, who guides him through a hidden earpiece. After Montag reads poetry to his wife's friends and his wife reports him, the firemen come to burn his own house. Montag kills Beatty, destroys the robotic Hound sent after him, and flees the city as a televised manhunt pursues him. He escapes downriver and joins a group of exiles who each memorize a book to keep it alive. The authorities fake his capture on television, and enemy planes bomb the city to rubble; the survivors set out to help rebuild.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Guy Montag is a fireman who burns books and the houses that conceal them, and who has never questioned his work. A series of shocks disturbs his contentment: he meets Clarisse McClellan, a curious young neighbor who asks whether he is happy; he comes home to find his wife, Mildred, having overdosed on sleeping pills, an emergency the technicians who revive her treat as routine; and on a call he watches an old woman refuse to abandon her books, setting herself and them alight rather than leave. Shaken, Montag secretly keeps a book from the fire and confesses to hiding a small stash of others. Clarisse vanishes, and Mildred later says she was killed by a speeding car. When Montag feigns illness, his captain, Beatty, visits and delivers a long account of how their society came to fear and burn books, warning that a fireman may feel curious once but must burn what he takes.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Montag tries to read and understand his hidden books, but Mildred is frightened and bored by them. Remembering a retired English professor named Faber, he goes to him for help; Faber explains why books matter and gives Montag a concealed two-way earpiece so he can whisper guidance to him. Back home, Mildred's friends Mrs. Phelps and Mrs. Bowles come to watch television, and Montag, disgusted by their emptiness, reads a poem aloud; Mrs. Phelps weeps and Mrs. Bowles storms off in anger. At the fire station Montag hands Beatty a book to satisfy the rules, and Beatty taunts him by quoting literature to prove how contradictory and useless it is. Then an alarm sounds, and the fire truck sets out, stopping at Montag's own house.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mildred has turned in the alarm against her own home and flees. Beatty forces Montag to burn the house himself, then discovers the earpiece and threatens to trace Faber. Montag turns his flamethrower on Beatty and kills him, destroys the Mechanical Hound that attacks him, and escapes injured as a fugitive. With the whole city watching a televised manhunt, he plants books in another fireman's home to incriminate him, reaches Faber, and floats away down a river. Beyond the city he finds Granger and a band of exiles who have each memorized a book to preserve it. On television the authorities kill an innocent man and pass him off as Montag to give the hunt a satisfying end. As enemy aircraft bomb the city to ruins, the men resolve to walk back and help rebuild a society that might one day value what they carry in memory.",
+            "through": {
+              "chapter": 3
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "fahrenheit-451"
+      }
+    }
+  }
+}

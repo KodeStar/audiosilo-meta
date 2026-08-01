@@ -1,0 +1,1423 @@
+{
+  "entries": {
+    "scavengers": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Myth"
+            ],
+            "description": "The book's viewpoint character, a reserved crafter-appraiser returning for his second month at Quest Academy after an unlikely tournament victory. His silver eyes let him appraise any object in exact detail, and his rare fused ability, Mythcrafter, lets him build extraordinary gear by drawing on powers he has personally copied. Guarded and self-doubting, he still dreads real combat despite ranking third in his year.",
+            "id": "sal-argento",
+            "name": "Salvatore \"Sal\" Argento",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A decorated combat controller and visiting lecturer from the Hunter Bureau, abrasive and perpetually exhausted after a punishing tower expedition. His \"concept\" ability lets him study a piece of equipment and conjure a temporary glowing duplicate of it. Openly contemptuous of support classes, he arrives pushing for sweeping changes to the Academy's soft, casualty-prone training.",
+            "id": "chatfield",
+            "name": "Chatfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's crafting mentor and the workshop's lead lecturer, known by her hero alias. Her ability turns her gear into a suit of powered mechanical armor. Warm but exacting, she quietly fought in the field during the recent crisis and bristles at supports being dismissed as weak. She guides Sal's projects while trying to shield him from the resentment his talent attracts.",
+            "id": "upgrade",
+            "name": "Upgrade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A low-ranked illusionist and one of Sal's closest friends, sharp-tongued and endlessly inventive. His illusions can form convincing decoys, soundproof bubbles, and full invisibility, making him a natural at reconnaissance and deception. He needles Sal constantly while pushing him to arm himself and stop hiding in the workshop.",
+            "id": "barry-francis",
+            "name": "Barry Francis",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The headmaster of Quest Academy, who goes by a chosen name. His \"system\" ability reads and quantifies people's essence and maintains a vast searchable log of the Academy's activity. A merit-focused mentor with a personal interest in Sal, he resists the visiting lecturer's harshest reforms while conceding the students are underprepared for real combat.",
+            "id": "quest",
+            "name": "Quest",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A credit-floor broker and Sal's fiercest advocate, quietly building toward founding a guild with him one day. Her rare body-manipulation ability lets her force a person's essence gates open far faster than natural growth allows. Scarred by past mistreatment at a predatory guild, she is protective, transactional, and unafraid to push Sal past his limits.",
+            "id": "vanessa",
+            "name": "Vanessa",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A foresight-gifted cadet and Sal's closest confidant, whose eyes turn white when she glimpses possible futures. Candid, quick-witted, and fiercely loyal, she often quietly foresees trouble before it reaches Sal, and is the first person he trusts with what is really going on in his life.",
+            "id": "divinity-khan",
+            "name": "Divinity Khan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A first-year on Sal's tournament squad, an appraiser by specialty with unrealized ambitions in automation and \"essence programming.\" On learning Sal is the secret crafter Myth, he reacts with delight and floods him with ideas, most memorably a tracker built to intercept old pre-essence radio broadcasts from the world beyond the barriers.",
+            "id": "anthony-mcguinn",
+            "name": "Anthony McGuinn",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A third-year Savior with an essence-nullifying ability, decisive and protective toward the first-years. She personally restrains a second-year who attacks students in the canteen, and is quietly significant to Sal for another reason: she is one of the very few people outside his circle who already knows he is the crafter Myth, a secret she has so far chosen to keep.",
+            "id": "anna-sakura",
+            "name": "Anna Sakura",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defense-class cadet and Sal's dorm neighbor, in a casual, undefined relationship with him. As Sal rises in rank and disappears into his work, she grows suspicious and hurt, believing he now favors powerful, high-ranked people over her. Their relationship ends in a bitter confrontation in which she calls his copied ability \"cheating.\"",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A second-year controller secretly working for Bastion, a wealthy faction seeking to seed loyal heroes throughout the Academy. His \"influence\" ability plants small, believable lies that compound into large false beliefs; he used it to manipulate the headmaster himself over many months, steering trust and suspicion to serve his handlers. He is exposed after targeting Sal's friends.",
+            "id": "bastion-controller",
+            "name": "The Bastion Controller",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Reputed to be the world's foremost telepath, a senior guardian and Doom Society member, and Erika Clifton's father. Called in when a manipulator is uncovered, he reads the culprit's mind to expose a coordinated infiltration of the Academy and warns that whole classes of students may be compromised. Formidable, but reluctant to casually invade others' minds.",
+            "id": "nero",
+            "name": "Nero",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A first-year healer, poor and ostracized after an earlier attempt to charge for healing left her branded a \"vampire.\" Her Transference ability drains essence from one target to mend another. Initially prickly toward Sal, she warms quickly into a genuine friend and ally, offering to properly heal him and revealing a sharp, self-taught grasp of essence theory.",
+            "id": "rochelle-de-verdon",
+            "name": "Rochelle de Verdon",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nero's daughter and one of the Academy's highest-ranked cadets, a mind-control specialist whose power lets her compel others and read surface thoughts. Cold, domineering, and used to treating people as tools, she recruits Sal onto her excursion team through a mix of pressure and manipulation, insisting the others simply trust her judgment. Her open hostility toward Sal and Divinity is unexplained.",
+            "id": "erika-clifton",
+            "name": "Erika Clifton",
+            "reveal": {
+              "chapter": 53
+            }
+          },
+          {
+            "description": "A first-year crafting classmate and one of the few who stays friendly to Sal as resentment builds around him. A skilled tailor with a sharp, practical eye, she immediately spots the functional flaws in his armor designs and improves them. Modest to a fault about her own talent, she becomes a genuine collaborator on gear meant to keep overlooked students safe.",
+            "id": "blathnaid-mcclean",
+            "name": "Blathnaid McClean",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An offense-class member of Sal's excursion team, all theatrical, self-deprecating charm on the surface. He plays the fool but is quietly top of every academic subject and unusually experienced in the field. Sal recognizes him on sight as a once-famous child hero, the \"unbeatable super-rookie\" who vanished from public life years earlier, and suspects that Brophy is not his real name.",
+            "id": "brophy",
+            "name": "Brophy",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The defense-class member of Sal's excursion team, a hulking, intimidating figure with a soft-spoken, good-natured manner. Quiet where his teammates are loud, loyal and unassuming, he is one of the steadier members of a fractious team.",
+            "id": "defense-teammate",
+            "name": "Sal's Defense-Class Teammate",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A top-ranked hero of the Hunter Bureau, assigned as the guardian overseeing Sal's team during the reclaimed-zone excursion, and revealed to be Brophy's mother. Poised, exacting, and immensely powerful, she radiates an almost paralyzing aura and runs the excursion as a strict graded trial. She recognizes at a glance that Sal is far more than the simple appraiser he claims to be.",
+            "id": "prestige",
+            "name": "Prestige",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "scavengers"
+      },
+      "recaps": {
+        "ending": "Book 2 ends with the reclaimed-zone excursion complete. Sal's team, led by Erika Clifton, passes with a record of two wins and one loss under their guardian, the top-ranked hero Prestige. Everyone survives, and Sal recovers from the shattered arms and broken ribs he suffered when Erika seized control of his body during the final ambush and used him as a living shield, then admitted without remorse that it was a deliberate lesson meant to push him toward real combat. That confrontation drives the book's true, internal climax: alone in his dorm, Sal concedes part of her criticism is fair, resolves to stop treating his workshop as a hiding place, and commits to actively pursuing opportunities, while explicitly choosing to become the founder of a crafting-focused guild rather than a frontline fighter. His other major open thread is a bargain with the team's offense cadet, secretly a vanished child hero whose volatile ability is muted by a locket: Sal will try to craft a way to free him from it, in exchange for a hunter's essence-growth technique, dungeon access, and rare materials, though the work has not begun. The team has a week of rest before their next trial, the Tower, where Prestige expects them to clear at least five floors. Sal also draws unexplained new recruiting interest from the guild Prestige once led. None of the wider mysteries, from dungeon hearts to the full Bastion infiltration, is resolved; all carry into Book 3.",
+        "in_short": "Sal Argento returns to Quest Academy after his tournament win, pulled in two directions: a talent for building extraordinary gear, and a deep dread of real combat. Backed by the abrasive-turned-supportive lecturer Chatfield, he develops his Mythcrafter crafting, builds an analysis visor and an essence revolver, and is forced by the broker Vanessa to accelerate his own power. After facing demons in a training dungeon, he is drawn into exposing Bastion, a faction secretly recruiting controller students, and helps his headmaster fight back. A new curriculum sends the first-years on a reclaimed-zone excursion, where Sal is placed on a fractious team led by the manipulative mind-controller Erika Clifton and guarded by the top hero Prestige, mother of a hidden former child hero on the team. The team passes the excursion two wins to one, despite Erika twice controlling Sal against his will and badly injuring him. In the finale Sal accepts that he has been avoiding real growth, and commits to becoming a crafting-guild founder rather than a frontline fighter, while agreeing to craft a cure for his teammate's volatile ability ahead of a looming Tower trial.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Silvers: Sal Argento, a guarded young man whose silver eyes let him appraise objects and copy other people's abilities, enrolled at Quest Academy, where heroes are trained to reclaim demon-held land. During skill registration he accidentally fused several of his powers into a unique top-tier crafting ability the Academy calls Mythcrafter, and became the protege of the crafting lecturer Upgrade. Befriending the foresight-gifted Divinity Khan, he was drawn into a secret disaster-prevention circle after glimpsing a vision of the city's destruction, and helped avert a coordinated demon attack on the Academy. Building a fortune through appraisal and crafting, he led a squad of overlooked underdogs to a perfect record in the first-year combat tournament. In the final rankings Divinity took first place overall, Nero's daughter Erika Clifton second, and Sal third. He ended his first month having gained a second copied ability, a mysterious dungeon-heart fragment to investigate, an open and unexplained rivalry with Erika, and a public relationship with his dorm neighbor Hannah, along with a first real sense of belonging.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: after his tournament triumph, Sal returns to the workshop and clashes with Chatfield, an abrasive visiting combat lecturer whose \"concept\" ability copies studied equipment and who is pushing to overhaul the Academy's soft training. Sal begins designing a personal tracker device and learns that his Mythcrafter ability can only build on powers he has personally copied. The headmaster, Quest, gently steers him toward field experience and gifts him an old pistol to reverse-engineer. Meanwhile the credit-floor broker Vanessa reveals her hidden past and her ambition to one day form a guild with Sal, then uses her rare body-manipulation ability to force his essence gates open, a brutally painful process that leaves him drained and banned from using his powers for days while they stabilize. Exhausted and shaken, Sal confides the ordeal to his closest friend, Divinity, just as a full day of new mandatory combat and survival classes begins.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal is thrown into a grueling combined combat-and-field class built around a simulated-battlefield obstacle course, badly outmatched physically while his forced-open essence gates slowly strengthen. In a packed canteen, Barry humiliates a bullying second-year using an illusion decoy, and Sal's friend group settles into a tight unit. A darker thread opens: Barry reveals that Bastion, a wealthy, media-controlling faction, has been quietly recruiting top controller-class students, and Divinity urges him to infiltrate them. Sal turns his crafting toward a business, designing and selling licensed armor-set blueprints under his alias Myth. Chatfield discovers the listings, reverses his hostility entirely, and becomes an enthusiastic backer, drawing Sal into an ambitious plan to mass-produce affordable, evolving armor that could grow with a hero across a whole career. Sal agrees, reassured the scheme will not restrict his own freedom, and Chatfield promises to help source the rare materials Sal needs for his tracker.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Working through the night in a private workshop, Sal builds his tracker from premium materials supplied by Chatfield and a reclusive master crafter, whose custom runes and rare metals are meant to give crafted gear the power to grow over time. Along the way he improvises a unique monocle accessory that calms its wearer and reads people like a lie detector. He completes the tracker, an unremarkable-looking visor with an extraordinary sixteen ability slots, then a matching essence-powered revolver; linking the two forces the visor to jump in grade, briefly leaving Sal collapsing from the strain. Wearing the finished visor, he turns its analysis power on Upgrade and produces a startlingly detailed personal readout, and discovers he can precisely map the \"knots\" that limit a person's ability. The session shifts the mentor relationship into something more mutual and vulnerable. It ends with Upgrade abruptly announcing that she is taking Sal into a dungeon that very day to face and kill his first demon.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Terrified but unable to refuse, Sal is taken by Upgrade and Chatfield to a deliberately weakened training dungeon to confront demons for the first time. Under their coaching he learns to shoot his new revolver and, through waves of ceiling-dwelling \"leecher\" demons, slowly turns paralyzing fear into a workable, if fragile, calm. His visor's live threat-tracking proves invaluable, feeding him distances, weaknesses, and combat data in real time. After his mentors deliberately hang back to let him press on alone, Sal faces a far larger boss-tier demon fused into a wrecked subway carriage. Panicking at first, he steadies himself and defeats it using only his crafted equipment and tactics, without ever relying on his own copied abilities. Left gasping and briefly in tears, he is praised by Chatfield and Upgrade, who reveal they were watching throughout. The excursion marks a genuine turning point: his dread of demons is now managed rather than crippling, though far from cured.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the Academy, Sal spirals into nightmares and exhaustion, and gives his calming monocle to Divinity after admitting it was masking his damage rather than healing it. His casual relationship with Hannah ends in a bitter confrontation in which she calls his copied ability \"cheating.\" Moments later he finds Divinity standing over a beaten second-year controller, and forcibly blocks the attacker's ability to stop him harming her. The fallout exposes a major conspiracy: the controller is a Bastion agent whose \"influence\" power plants small lies that compound into large false beliefs, and he has secretly manipulated the headmaster for months. Nero, the Academy's foremost telepath, interrogates him and uncovers the scale of the infiltration, revealing Bastion has been recruiting and grooming nearly a hundred controller and healer students, with Barry among its targets. Quest convenes his trusted inner circle to plan a covert counter-operation, and Erika Clifton, Nero's hostile daughter, is drawn into the secret.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chatfield's sweeping curriculum overhaul becomes official Academy policy: combat, field, and survival classes merge into one mandatory module, weapons training becomes compulsory, and the first-year final exam is moved up to a five-person team raid on a real tower floor, with teams required to mix cohorts and roles. The announcement rattles the support-class students. Sal, sleepless and struggling, is helped by Divinity and Barry, who teach him to steady himself; Barry trains him in the copied illusion ability using a fast, dream-based practice method, and Sal picks it up with alarming speed. Combining his visor with his copying ability, he stumbles onto a powerful new capability: generating and fine-tuning genuine ability-implant blueprints. As team recruitment begins, and Sal weighs his options as a sought-after but high-pressure support, Rochelle de Verdon, a poor, ostracized healer, unexpectedly sits down at his table, saying they need to talk.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochelle's approach turns out to be orchestrated by Erika Clifton, who is compelling the healer from across the room. Erika, a domineering mind-control specialist and one of the Academy's highest-ranked cadets, recruits Sal onto her excursion team through pressure and manipulation. Sal refuses to serve on \"Erika's team\" rather than a real one, but bonds genuinely with Rochelle, who reintroduces herself warmly and shares essence theory that sharpens his own skills. Between projects, Sal quietly improves his crafting classmate Blathnaid's badly underrated ability and helps prove that cheap, common-material armor can still evolve into something formidable, work that wins them recognition from Chatfield's task force. The stretch of downtime closes as four self-formed teams board the train to a devastated reclaimed zone for the excursion. Sal's team, led by Erika, includes Rochelle as healer, a quiet, imposing defense-class member, and an enigmatic, theatrical offense cadet Sal recognizes as a once-famous child hero hiding his true name.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the reclaimed zone, every first-year team is paired with an outside hero guardian. Sal's team draws Prestige, one of the Hunter Bureau's highest-ranked heroes - and, to the offense cadet's visible horror, his own mother, exposing him as the vanished child hero the group had only half-recognized. Sal learns the deeper truth in confidence: the cadet's original power, fueled by pure self-belief, evolved at his lowest point into a volatile force that channels all of his accumulated trauma, and the locket his mother supplies keeps him docile rather than healed; the cheerful persona is a chosen mask. Prestige sees through Sal's appraiser cover story almost at once but settles for a promise of discretion, and when she floods his crafted visor and revolver with essence to test them, she force-evolves both. The week itself is a graded survival trial: Sal fuses the team's gear and a rock formation into a hardened shelter, the quiet defense cadet raises rune-carved barriers around the camp, and after Sal and the offense cadet share raw combat memories with a dismissive Erika, the team finally drills a proper formation plan. When an engineered storm destroys Erika's solo tent while the shared shelter stands, Prestige dismantles her self-satisfied leadership in front of everyone and assigns her grueling one-on-one remedial training.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The camp settles into a training rhythm: the offense cadet drills Sal relentlessly in shooting fundamentals, the defense cadet grows skilled with his carving tool and quietly seeds the surrounding trees with combat wards, Rochelle grinds through solitary meditation, and Erika returns from Prestige's sessions each night looking hollowed out. Word arrives that professional raiders will begin staging night attacks on student camps, and the test comes when the defense cadet deliberately lets a raiding squad chase him home into the prepared ground. The ensuing ambush is the team's first real battle. Sal tracks the attackers through his visor, calls the detonation of the hidden ward network, fires his revolver in live combat for the first time, and personally flushes out a stealth infiltrator hiding inside the team's own tent in gaseous form, forcing her concession. Every attacker is accounted for with no serious harm done, and the raid is revealed as graded, non-lethal training. In the debrief, Sal is named by far the standout performer for adaptability and coordination, Rochelle is rated above expectations, the offense cadet is marked competent but reckless, and Erika and the defense cadet are judged to have failed their roles. Week one closes with a promise that the same squad will return stronger.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over the excursion's next two weeks the team's fortunes swing sharply. Sal discovers that borrowing teammates' essence as a crafting material carries their abilities' properties into the finished item, and builds a powerful but flawed fortified tower. It backfires in the second week's ambush: its own amplifying effect turns an attacker's disruption grenade into a rout, and Erika is exposed for repeatedly reading her teammates' minds without consent and forcing the offense cadet to stay in the blast. Regrouping, the team wins the third week decisively with an illusion decoy, a hidden trap network, and their own ruined tower rigged to detonate. During that fight, however, Erika again seizes control of Sal without consent, marching him unarmed into a trio of stone golems and leaving him with shattered forearms and broken ribs. Prestige and the ambushers alike condemn her cruelty even as the tactic works. The team passes the excursion two wins to one, and Prestige sets their next trial: clearing a minimum of five tower floors, far beyond the standard requirement.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the excursion over, Sal strikes a personal bargain with the offense cadet, now speaking as his colder true self: Sal will try to craft something that frees him from the locket suppressing his volatile, trauma-fueled ability, in exchange for a top-hunter technique for growing extra essence reserves, dungeon access, and rare materials. Chatfield reveals that Erika had been secretly ordered to protect Sal and broke that order, while admitting he would have made the same harsh call. Erika then tells Sal plainly that hurting him was a deliberate lesson, accusing him of hiding behind ranged crafting to avoid real combat and insisting he is wasting an overpowered ability. Alone afterward, Sal accepts that part of her criticism is fair. He resolves to stop making excuses and to pursue real growth and opportunity, but explicitly chooses a future as the founder of a crafting guild that elevates many heroes rather than a frontline fighter. Viewing his own full stat sheet for the first time, he confirms his standing, new guild recruiting interest, and the room both his abilities still have to grow, then settles in to begin the promised commission. The book ends on that threshold, a week of rest before the untried Tower trial.",
+            "through": {
+              "chapter": 83
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "scavengers"
+      }
+    },
+    "separation-a-fantasy-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "John’s wife and partner in the search for a new home for their preserved world. She is undergoing lightning elementalization and accepts both the danger of void travel and the destructive power contained within John.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "draconic bull"
+            ],
+            "description": "A draconic bull who carries John and Ellie across immense distances in the void. He fights void creatures with his horns and serves as both transport and physical protection for his companions.",
+            "id": "ferdie",
+            "name": "Ferdie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Eternal Flame"
+            ],
+            "description": "A farmer and the focal bearer of the Eternal Flame, traveling through the void with his wife and their draconic bull. His human appearance contains a perpetually renewing body of pure fire, and he carries their preserved world while seeking a stable source of mana on which to anchor it.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A priestess connected to the local shrine system. She arrives with soldiers and an armored winged guardian to investigate the strange blue flame that has replaced the town shrine's former symbol and begun healing selected worshippers.",
+            "id": "issa",
+            "name": "Issa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armored winged warrior who accompanies Issa and a troop of soldiers while they investigate the blue flame above the damaged town shrine.",
+            "id": "winged-warrior",
+            "name": "Winged warrior",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Heavenly Guardian"
+            ],
+            "description": "A winged warrior serving as a Heavenly Guardian beside Issa. Her instincts identify the town's blue flame as powerful enough to destroy her, although she does not yet know that John controls it. She also tells the travelers about the approaching local festival.",
+            "id": "rama",
+            "name": "Rama",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The distant head of the region's religion, based in the Valley of Paradise. She empowered winged guardians to defend settlements against desperate beasts, and travelers can seek an audience by completing a temple pilgrimage.",
+            "id": "celestial",
+            "name": "Celestial",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The grandson of an elderly convert in the desert town. John entrusts him with an Eternal Flame guidebook, an enchanted quill, and a lasting ink supply, then grants him the literacy needed to read and copy the teachings.",
+            "id": "eternal-flame-student",
+            "name": "Eternal Flame student",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy young traveler accompanied by a servant and guards during the Festival of Drifting Stars. Ellie's divination places her in mortal danger within four days if events do not change, so John and Ellie decide to watch over her.",
+            "id": "wealthy-young-woman",
+            "name": "Wealthy young woman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A high-status young traveler whom John and Ellie met during the Festival of Drifting Stars. She moves with servants and guards, while Ellie's divination warns that she is close to a terrible death. A large bandit force soon attacks the inn where she is staying.",
+            "id": "orly",
+            "name": "Orly",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ellie's lightning-bird familiar, revealed during the defense of Orly's town. Sigvald can assume a giant avian form and joins Ferdie and the others in combat, striking down the leader of the mounted bandits attacking the settlement.",
+            "id": "sigvald",
+            "name": "Sigvald",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A third-tier fighter who leads the expedition toward a rumored mage tower in the central desert. He recognizes John and Ellie as Grandmasters and accepts their protection while guiding the party along the mapped route.",
+            "id": "warrior-guide",
+            "name": "Warrior guide",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two elven archers traveling with the warrior guide on the expedition toward the rumored desert mage tower. They recognize John and Ellie as Grandmasters and defer to them when danger threatens the party.",
+            "id": "elven-archers",
+            "name": "Elven archers",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient tier-five storm spirit formed from the desert world’s desire for vengeance. It warns that something in the central mountains is stealing the world’s mana, recognizes Ellie’s unusual nature, and forms a familiar contract with her.",
+            "id": "dust-storm-spirit",
+            "name": "Dust-storm spirit",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ellie’s dust-storm familiar"
+            ],
+            "description": "The name Ellie gives her new familiar after contracting the tier-five storm spirit. Dusty combines wind and earth aspects, giving Ellie authority over weaker spirits that share those aspects.",
+            "id": "dusty",
+            "name": "Dusty",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The water-aligned guardian of a buried, sea-themed mage tower that has lacked a master for centuries. It identifies a world wound in the shrouded mountains as the drain on its ley line, opens the tower to John, and hopes the world and its lost sea can be restored.",
+            "id": "coral-tower-spirit",
+            "name": "Coral Tower spirit",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shadow Tower spirit"
+            ],
+            "description": "The Shadow Tower spirit responsible for managing the preserved valley while John and Ellie travel. She has resolved immediate food and housing pressures and is accommodating the displaced population while John searches for a permanent anchor.",
+            "id": "rabia",
+            "name": "Rabia",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "ruler of the Valley of Paradise"
+            ],
+            "description": "The long-lived ruler of the Valley of Paradise, a world shard embedded in a dying host world. She gathers faith through distant shrines to maintain the boundary between the two worlds and grants John and Ellie access to her research and the failing mana-drain enchantment.",
+            "id": "holy-celestial",
+            "name": "Holy Celestial",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning ally and close-combat fighter with mechanical limbs. She visits John after returning from the preserved valley alongside her partner, the Tower engineer, and reconnects with Candle Scholar Tower as John resumes the search for a safe anchor.",
+            "id": "katrine",
+            "name": "Katrine",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "artificer"
+            ],
+            "description": "An artifact specialist, Katrine’s partner, and a returning member of John’s circle. He uses portable dimensional-gate technology and rejoins Candle Scholar Tower after working in the preserved valley, bringing practical engineering expertise to the group’s research.",
+            "id": "tower-engineer",
+            "name": "Tower engineer",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sixth Order mage who oversees part of Candle Scholar Tower's farmland. Practical and committed to agriculture, he favors ordinary labor when magic is unnecessary and explains the Tower's crop rotation, livestock, processing, and field-control systems to John.",
+            "id": "frederick",
+            "name": "Frederick",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A body-focused Supreme warrior of the Gustav family who previously participated in an attack on John and Ellie. John enters the Gustav shard world to confront him as a public demonstration that Candle Scholar Tower can defend itself against the mage families.",
+            "id": "janus-gustav",
+            "name": "Janus Gustav",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An airship captain hired to carry John's expedition into the Void Labyrinth. His vessel has a micro-gate for rapid dimensional travel, and he accepts the dangerous commission before realizing that John intends to leave ordinary worlds and cross the void directly.",
+            "id": "captain-worrell",
+            "name": "Captain Worrell",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of John and Ellie's valley household who has survived the community's unseen reduction and transport inside the stabilized orb. He reunites with John after the valley becomes part of a much larger world and listens as the journey is explained.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armed visitor who arrives at Candle Scholar Tower with three armored women, two bearing bannered spears and one carrying a ceremonial horn. Claiming divine selection, the champion demands to find the dragon slayer and presents an immediate hostile challenge.",
+            "id": "armored-champion",
+            "name": "Armored champion",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CQQ4G6NQ",
+            "type": "community"
+          }
+        ],
+        "work": "separation-a-fantasy-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "The Void Labyrinth expedition reaches the central ruins, plants the shard stabilizer, and destroys the nest producing the void beasts. The released energy overwhelms John until the Eternal Flame links him to its bearers and Rabia draws away most of the power. Rabia becomes the active spirit of an expanded four-continent world, kills the remaining beasts through her roots, and begins binding other labyrinth worlds for future settlement and exploration. John and Ellie return to the enlarged community, where the Eternal Flame now carries faith directly back to John in a way he does not yet understand. John reduces his own operation to a small dairy and cheese farm. Ben receives permission to become a cabin boy aboard Captain Worrell's repaired airship, traveling with Katrine and the Tower engineer. The desert world's recovery and the Holy Celestial's survival remain unresolved, as does responsibility for the bombing campaign against the Agricultural Tower. The immediate sequel handoff comes at Candle Scholar Tower, where an armored champion and three warrior women arrive demanding the dragon slayer.",
+        "in_short": "John, Ellie, and Ferdie carry their preserved world through the void in search of a stable anchor. They enter a mana-starved desert world, where John's Eternal Flame disrupts a faith system and their investigation uncovers a parasitic shard draining the planet. John and Ellie repair the joined worlds and restore the old mage-tower network, then return to Candle Scholar Tower. John founds an inclusive Agricultural Tower and defeats mage-family coercion, but a permanent home for the preserved valley remains elusive until the Void Labyrinth is found. John, Ellie, Ferdie, Katrine, the Tower engineer, and Captain Worrell fight through its void beasts and activate the stabilizer. Energy released from the destroyed nest nearly extinguishes John, but Rabia absorbs it and transforms the valley and surrounding ruins into a living four-continent world. Her roots begin linking other worlds. John scales his farm back, Ben joins Worrell's crew, and an armored champion arrives at Candle Scholar Tower seeking the dragon slayer.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: John and Ellie became partners in marriage and in the defense of their world. John bears the Eternal Flame and maintains a human shell around a body of immensely destructive pure fire. Ellie is a diviner undergoing lightning elementalization, with Ferdie and Sigvald among their powerful animal companions. Their allies include Katrine, a mechanically augmented fighter, and Rabia, the Shadow Tower spirit who administers their valley. A catastrophe left that community preserved as a stabilized world remnant rather than a secure, independent world. John now carries it while seeking a permanent home with enough stable mana to sustain it. Candle Scholar Tower remains an important center for the group's research and dimensional travel, but the remnant cannot simply be restored there without a suitable anchor.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John, Ellie, and Ferdie cross the void with their preserved world sealed in an orb, searching for stable mana on which to anchor it. After repeated void-beast attacks, they enter an upper world whose atmosphere is so depleted that ordinary external magic and dimensional gates fail. In a desert town, John discovers that a shrine gathers faith. His Eternal Flame converts that power into a blue flame that heals selected worshippers, destroys the shrine's former symbol, and starts awakening new sparks among the townspeople. Priestess Issa and the winged guardian Rama investigate without learning John's role. They describe a Holy Celestial who rules from a hidden valley and warn that the world's expanding desert threatens civilization. During the Festival of Drifting Stars, Ellie foresees the imminent death of a guarded young woman named Orly. The festival's lanterns converge on the mist-covered central mountains, giving John and Ellie another lead. Before they can leave, mounted bandits invade the town, sabotage Orly's escape, and break into her inn. John confronts their leader while Ellie's warning remains active.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John uses the blue shrine flame to eliminate the bandit force, while Sigvald kills its leader. Orly survives and leaves under the protection of a commander serving her father. John and Ellie then join an expedition following a map toward a buried mage tower in the central desert. A sentient sandstorm tells them that something in the mountains is stealing the world's mana. The spirit contracts with Ellie and becomes her familiar, Dusty. Ellie also teaches the expedition's two elven archers a painful internal method for contacting spirits, restoring a practice their people had lost. The group uncovers a sea-themed tower beneath the sand after Ferdie destroys the source of a giant scorpion swarm. Its water-aligned spirit explains that a world wound in the shrouded mountains is draining the tower's ley line and has already consumed the sea. John promises to attempt a repair. After defeating the tower's remaining guardians, he receives its master ring and journal, leaves the weakened spirit enough mana to endure, and travels with Ellie to an elven oasis. The expedition's warrior guide departs carrying a fragment of blue-flame power and instructions to seek the boy John earlier entrusted with Eternal Flame teachings.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ellie teaches representatives of the elven tribes to summon and contract spirits despite their inability to project aura. John helps select and strengthen useful spirits, including one connected to the Eternal Flame that improves potion healing. The elves can now rebuild their lost practice, though secrecy is necessary because renewed elven power may provoke human opposition. John and Ellie enter the central mountains through the Celestial Glory Temple's pilgrimage and discover that the Valley of Paradise is a separate shard embedded in the host world. It is draining the outer world to sustain itself. The Holy Celestial explains that an earlier mage created the failed tether, while her network of collected faith now prevents the two worlds from destroying each other. Working from her records, John and Ellie reject any abrupt solution that would release the stored mana catastrophically. Ellie redirects the drain into the old ley lines, and John replaces the faith boundary with structures of blue flame before binding the shard and host into one system. The restored mana flows through ten ancient mage towers. Their spirits awaken, the world wound closes, and the desert world begins a gradual recovery.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Holy Celestial relinquishes the faith system that prolonged her life. John declines to rule the recovering world and returns with Ellie, Ferdie, Sigvald, and Dusty to Candle Scholar Tower, still carrying the unanchored valley orb. He assigns assistants to search for a stable, unclaimed home but learns that no obvious shard meets the requirements. Candle Scholar Tower also faces pressure from the mage families that supply its resources and recruit its talent. After John's public lecture reveals his standing as both a Supreme mage and the bearer of a Supreme physique, five family representatives demand greater access to the Tower's research. John refuses their claims. The Tower Masters acknowledge that family retaliation could cripple the institution, and John proposes independence backed by a clear display of strength. They invite him to establish the Tower's eighth branch. John agrees on the condition that it focus on farming. With Frederick, he designs the Agricultural Tower as four linked departments for farming, husbandry, alchemy, and forging. Its admissions favor control and practical suitability over exceptional affinity, opening formal magical study to many applicants excluded by the older branches.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Four mage families raise prices or withhold essential goods, including food and fertilizer, to exploit Candle Scholar Tower's dependence. John confirms that the fertilizer cutoff is deliberate, commissions the Explorers Guild to search for an empty resource world, and funds the effort with valuable void-beast scales. At the Agricultural Tower, he recruits the Tower engineer, Katrine, and gnome smiths to mechanize planting, irrigation, harvesting, and processing. Ellie separately demonstrates that her elementalized body can form temporary spell structures, allowing her to use Eighth Order magic. An assassin attacks during her presentation, but she survives and John captures him. The prisoner is a Gustav-sponsored student whose altered mind points toward a larger destabilization effort without proving who controls it. Divination then uncovers timed alchemical bombs placed around the Agricultural Tower. Thirteen are disarmed, while Ellie foresees the final device at the grain-processing plant. John contains its explosion and saves the worker nearby. With the immediate danger ended but responsibility still uncertain, he refuses unsupported collective punishment and begins direct negotiations to replace the Tower's exploitative family agreements with either equal alliances or clean separation.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John offers one mage family a reset based on reciprocal obligations and independence. When its representative demands proof that Candle Scholar Tower can enforce such terms, John enters the Gustav family's shard and challenges its Supreme warriors. He defeats their resistance, captures Janus Gustav alive in blue-flame restraints, and takes him to the Tower for judgment. The public victory forces the other families back to negotiations. The Gustav family submits and surrenders the branch heads responsible for an earlier attack on Ellie, while John recommends Janus's release as both mercy and warning. Cooperative families move toward allied status, and the immediate institutional crisis recedes, although the bombing campaign remains unattributed. At the same time, John's assistants finally identify a possible home for the preserved valley. The Void Labyrinth has a central shard with stable coordinates, abundant mana, and surrounding mobile worlds. Its ruins are occupied by a void-beast nest, so claiming the site will require an expedition capable of clearing creatures that resist ordinary magic.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John prepares to cross the Void Labyrinth with Ellie, Ferdie, Katrine, and the Tower engineer. Captain Worrell carries them aboard a micro-gate-equipped airship, but unreliable coordinates and dwindling power force John to shield the vessel with the Eternal Flame and move it directly through the void. Ellie guides them by divination. After a month, thousands of void beasts defend the central ruins. Katrine's accelerated, mana-severing blades and Ferdie's strength prove effective while John draws away a giant beast and survives being bitten in half. Ellie takes command of the landing and plants the shard stabilizer. John kills the giant creature from within, returns to the ruins, and destroys the nest producing the swarm. The nest releases an immense current of pure mana that nearly extinguishes him and surges through the stabilizer. The Eternal Flame links him to its other bearers, allowing Rabia to absorb most of the power. She spreads roots across the merged land, kills the remaining beasts, and transforms the valley, ruins, and nearby territories into a thriving world with four continents. Now its active spirit, Rabia extends protected roots into the void and begins binding other labyrinth worlds.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John awakens in the successfully anchored and expanded world, then reunites with Ellie, Ben, and the valley community. Rabia explains the new geography and proposes exploration and settlement of the worlds reached by her roots. The transformed Eternal Flame now connects John directly to its bearers and returns faith to him, though the full meaning of that change remains unknown. The new world's residents learn that they may spread across its four continents and, eventually, into other root-linked worlds. With large-scale food production no longer resting on him, John distributes part of his land for independent farms and keeps only a manageable dairy and cheese operation. Captain Worrell's airship is repaired, and Ben receives permission to join its crew as a cabin boy alongside Katrine and the Tower engineer. The preserved world's need for a permanent anchor is resolved, while Rabia's expanding network opens a much larger frontier. The book closes on a new conflict: Ellie sends John to Candle Scholar Tower, where an armored champion and three warrior women have arrived in search of the dragon slayer.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CQQ4G6NQ",
+            "type": "community"
+          }
+        ],
+        "work": "separation-a-fantasy-litrpg-adventure"
+      }
+    },
+    "shades-first-rule-a-fantasy-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A sixteen-year-old who expects to become a Mage and use that path to investigate his missing parents. Their expedition companions accused them of murder and tyrium theft. High Priest Fusil instead forces Ruwen into the Worker class and orders his Ascendancy drowning.",
+            "id": "ruwen-starfield",
+            "name": "Ruwen Starfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Deepwell's protector deity, responsible for the local systems of Ascendancy and revival. Her temple is where Ruwen reports for class selection, and her protection defines the area in which the ascended can return after death.",
+            "id": "uru",
+            "name": "Uru",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fusil"
+            ],
+            "description": "An Order priest who blames Ruwen's family for the expedition disaster that injured his son-in-law. He bypasses the normal Ascendancy choice, assigns Ruwen the Worker class, and has him drowned despite his protest.",
+            "id": "high-priest-fusil",
+            "name": "High Priest Fusil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A local tormentor from Ruwen Starfield's past who has just completed Ascendancy as a Mage.",
+            "id": "slib-strongspell",
+            "name": "Slib Strongspell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A novice Order priestess working in the temple's revival area. She retrieves Ruwen after his Ascendancy and immediately notices that he returned in minutes, far faster than the normal revival interval.",
+            "id": "hamma",
+            "name": "Hamma",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crew Chief Bliz"
+            ],
+            "description": "A high-level Worker Collector and crew chief at the Workers' Lodge. He welcomes Ruwen, recommends the travel-oriented Collector path, and explains the benefits and lethal energy risks of the rare Voidband Ruwen chooses to bind to his soul.",
+            "id": "bliz",
+            "name": "Bliz",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Deepwell's librarian and the closest thing Ruwen has had to a father since his parents disappeared. Tremine educated him, knows his ambitions, and becomes the person the Workers' Lodge directs him to consult about preparing for travel.",
+            "id": "tremine",
+            "name": "Tremine",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Big D"
+            ],
+            "description": "A senior Worker planner who advocates greater equality for the class. He schedules Ruwen for a mandatory wilderness orientation and promises to prioritize his safety after the Voidband makes the young Worker essential to an unusually broad expedition.",
+            "id": "pit-boss-dern",
+            "name": "Pit Boss Dern",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful divine adversary identified by Uru after hostile magic users target Ruwen. Uru warns that Ruwen's concealed class has attracted this enemy's attention and activates chosen helpers to keep him alive.",
+            "id": "naktos",
+            "name": "Naktos",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A formidable woman who finds Ruwen through his public location setting and makes him hide it. She bears Uru's Hand mark, gives him a paired Jaga Wedding Band, and takes charge when a disguised attacker strikes the Fainting Goat.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of the Fainting Goat. An enemy assumes his likeness during the tavern assault; Ruwen and Hamma later discover Bala unconscious but alive.",
+            "id": "bala",
+            "name": "Bala",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "High Mistress of the Black Pyramid",
+              "Keeper of the Silent Blade"
+            ],
+            "description": "The true identity of the fighter Ruwen knew as Kai. Kysandra leads the Black Pyramid and carries the Silent Blade. After protecting Ruwen from Naktos' assassins, she agrees to train him for the dangerous expedition he cannot avoid.",
+            "id": "kysandra",
+            "name": "Kysandra",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Black Pyramid member first identified as the person responsible for tending the dangerous blood moss at Bloodgate. Kysandra sends Ruwen toward him after Ruwen uses his new mark to distinguish safe gates from lethal ones.",
+            "id": "sift",
+            "name": "Sift",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Silent Blade"
+            ],
+            "description": "Kysandra's elder sentient dagger. Sift calls the weapon Io while explaining the old naming customs surrounding himself and the blade. Its intelligence and its place beside the Black Pyramid's High Mistress are already apparent.",
+            "id": "io",
+            "name": "Io",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Black Pyramid helper whose death weighs heavily on Sift as he prepares Ruwen for the dungeon sweep. At this point, she is known through Sift's guilt and the warning her fate provides about the risks of serving as his partner.",
+            "id": "lillen",
+            "name": "Lillen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Black Pyramid quartermaster"
+            ],
+            "description": "The quartermaster who controls novice supplies and token exchanges inside the Black Pyramid. Fluffy withholds equipment that Ruwen's visible level and Worker class should not permit him to use, then negotiates substitute gear without exposing his secret.",
+            "id": "fluffy",
+            "name": "Fluffy",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the Black Pyramid"
+            ],
+            "description": "The sentient entity embodied by the Black Pyramid. Sift calls the dungeon Blapy while teaching Ruwen how its guarded rooms, quests, rewards, and escalating challenges operate during his first descent.",
+            "id": "blapy",
+            "name": "Blapy",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bamboo Viper grandmaster",
+              "stepmaster"
+            ],
+            "description": "Sift's mother and one of the Bamboo Viper clan's grandmasters. She works with Kysandra, recognizes that Ruwen's energy has become intertwined with Sift's, and helps decide whether her son may face the danger beyond Bloodgate.",
+            "id": "sifts-mother",
+            "name": "Sift's mother",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bamboo Viper grandmaster",
+              "stepmaster"
+            ],
+            "description": "Sift's father and one of the Bamboo Viper clan's grandmasters. He works with Kysandra, perceives the unusual connection between Sift's energy and Ruwen's, and shares responsibility for the clan oath and training arrangement offered to Ruwen.",
+            "id": "sifts-father",
+            "name": "Sift's father",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "shades-first-rule-a-fantasy-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Ruwen returns to Deepwell at level five, carrying concealed cultivation power and bound by both the Black Pyramid and Bamboo Viper clan. Kysandra has him appear to be an ordinary level-two Worker, while Blapy gives Sift the false appearance of an ascended fighter. Sift travels under a cover story as Ruwen's cousin and servant, and Hamma is assigned to the coming expedition so she can leave Deepwell with them. Tremine recognizes Sift as the son of people he once knew. Before the three can reach the Workers' Lodge, masked fighters surround them. Ruwen's improved cloak stops bolts aimed at him, but Sift takes three other bolts meant for Ruwen. Hamma signals enforcement and exhausts her mana healing him, yet poison and continuing blood loss leave her convinced he will die before he can be saved. The attackers escape, the expedition remains imminent, Grey Canyon remains Ruwen's lead on his parents, and the ambush proves his enemies can still locate him inside Deepwell.",
+        "in_short": "Sixteen-year-old Ruwen Starfield expects to become a Mage so he can investigate his missing parents, but High Priest Fusil forces him into the Worker class. Uru secretly grants him the flexible Root class, making him a target for Naktos and other divine powers. After Tremine kills him to prevent permanent soul capture, Kysandra takes him to the sentient Black Pyramid for training. Ruwen bonds with Sift, joins the Bamboo Viper clan, survives dungeon levels, and discovers a hidden tattoo that masks both his bond to Uru and an enormous cultivation reserve. He reaches level five and returns to Deepwell disguised as a level-two Worker, with Sift posing as his cousin and servant. As they collect Hamma for the planned expedition toward Ruwen's next lead, masked fighters ambush them. Sift intercepts poisoned bolts meant for Ruwen, and Hamma believes his wounds will kill him despite her healing.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ruwen Starfield enters Uru's temple expecting a Mage Ascendancy that will help him find his missing parents. They stand accused of killing their expedition companions and stealing tyrium, but Ruwen believes they were framed. High Priest Fusil blames their family for injuries to his son-in-law, forces Ruwen into the Worker class, and has him drowned. Ruwen revives impossibly quickly under Hamma's supervision. Uru secretly grants him the Root class and orders him to leave Deepwell within thirty days to begin seeking the truth. Hamma defies an order to suspend his revival badge and helps him escape the temple. At the Workers' Lodge, Bliz guides him toward the Collector path and Ruwen soul-binds a spacious but potentially lethal Voidband. Pit Boss Dern then makes him central to a mandatory wilderness expedition. Testing Root, Ruwen assigns its branch to Mage and learns Fireball, but his first use causes an unexplained second explosion and an apparent death. A gilled attacker later tries to bind and abduct him at Tremine's library. Tremine reveals himself as a powerful void mage and kills Ruwen to keep the attacker from taking him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Uru explains that Naktos is targeting Ruwen because of Root. Ruwen revives with a doubled attribute penalty, and death has reset his chosen Root branch. He discovers that Hamma bears Uru's Hand mark. Another marked protector, Kai, finds him through his public location setting and intervenes when assassins strike. Tremine later explains that he killed Ruwen to prevent Naktos' Embrace, which would have made resurrection impossible. Kai is revealed as Kysandra, High Mistress of the Black Pyramid, while Tremine also reveals his allegiance to Uru. Kysandra directs Ruwen toward the Observer branch and takes him through a portal beyond Uru's revival protection. Ruwen accepts a binding Black Pyramid oath, then uses its mark to navigate Bloodgate. He meets Sift, a young member who wins permission for a future trip outside and is assigned to train him. Leaving Deepwell's protected area completes Uru's first truth quest, and the next points Ruwen toward Grey Canyon, where his parents and the tyrium vanished. Before his first dungeon sweep, Ruwen gains basic training and negotiates practical novice gear from Fluffy.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sift leads Ruwen into the sentient Black Pyramid, which he calls Blapy. Ruwen barely survives a solo fight against rod spiders and learns that his cloak's shield prevented fatal injuries. He adds Worker and Observer skills, including Scrub and temperature detection, while Sift teaches him meditation and combat. Sift can absorb energy that touches him and later spend it, although physical attacks can still harm him. Ruwen discovers that an extreme use of Scrub can dissolve living enemies at significant risk to himself. After the two share their goals, Sift agrees to fight beside him rather than merely supervise. Blapy manifests as a girl and identifies Ruwen as Uru's rare multiclass champion, a status that makes him a target for rival gods. Ruwen reaches level three, learns the Black Pyramid Cipher, and acquires gate information covering many settlements. On the second dungeon level, he and Sift collect dangerous alchemical ingredients and fight several creatures. Sift saves Ruwen from a blind nightmare, and the completed level grants Ruwen experience, tokens, a health ring, a temporary dexterity tattoo, and portal access to level three. The pair now regard themselves as a team.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen meets Sift's parents, grandmasters of the Bamboo Viper clan. They permit Sift to leave with him and Kysandra, but first bind Ruwen with a clan oath and make Sift responsible for his training. When Ruwen demonstrates meditation, the grandmasters realize his active center is drawing him toward cultivation even though his bond to Uru should prevent it. Uncontrolled meditation could consume his mind, so they reluctantly provide standard instruction. His first attempt becomes a six-hour surge that drains light and heat from the surroundings, kills vegetation, starts fires, and produces severe weather. Blapy moves him outside the Pyramid to protect everyone within. She discovers that Ruwen's apparent birthmark is an internal and external tattoo concealing both his cultivation and his connection to Uru. This suggests Uru selected him before birth, and Blapy warns that Uru's previous champions disappeared. Ruwen's center fills at cultivation stage nineteen, making ordinary meditation safe again for the moment. He now possesses a vast hidden reserve whose purpose and risks remain unclear.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen gives Sift's parents only a partial account of the cultivation surge. Its completed quests raise both of his classes to level four and confirm him as a cultivation Initiate at stage nineteen. Sift reveals that Lillen, once his romantic partner, died and revived without her Black Pyramid memories or any memory of him. Ruwen studies alchemy, borrows a mobile laboratory, and discovers a legendary harvesting book he cannot yet open. He also finds a possible way to condense energy near his full center while beginning formal Bamboo Viper training. On Black Pyramid level three, Ruwen and Sift accept a timed mission to destroy exploding-burrower nests. Their final target is defended by a four-armed war party. Ruwen is poisoned and trapped but improvises a fire attack that destroys the hive area, while he and Sift eliminate the remaining enemies. The completed mission raises Ruwen to level five. Blapy equips Sift with clothes and a tattoo that create a false ascended-fighter identity, improves Ruwen's protective cloak, and gives him portal chalk for returning to Bloodgate. With their preparations complete, Ruwen and Sift are ready to leave the dungeon.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kysandra has Ruwen use Fade and Fabricate to conceal his level-five abilities behind the appearance of an ordinary level-two Worker. She expects Naktos' servants and agents of other gods to keep hunting him. Blapy gives Ruwen a ring that can restore Lillen's memories of the Black Pyramid, and Ruwen and Sift return to Deepwell. Their cover story presents Sift as Ruwen's cousin and servant. Hamma has been assigned to the Order contingent of the coming Worker expedition so she can leave Deepwell with them, and Tremine recognizes Sift as the child of former associates. Ruwen and Sift collect Hamma and set out for the Workers' Lodge, but masked fighters intercept them in a residential street. Hamma calls enforcement with a light spell. Ruwen's upgraded cloak blocks bolts aimed at him, while Sift takes three other bolts intended for Ruwen. The attackers withdraw before enforcement arrives. Hamma spends all her mana trying to heal Sift, but the bolts are poisoned and his bleeding continues. She believes he will die before any permanent rescue is possible. The book ends with Sift critically wounded, the expedition still pending, and Ruwen's enemies able to find him despite his disguise.",
+            "through": {
+              "chapter": 37
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B087N89CBJ",
+            "type": "community"
+          }
+        ],
+        "work": "shades-first-rule-a-fantasy-litrpg-adventure"
+      }
+    },
+    "shadow-and-bone": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A slight, pale orphan who grew up alongside her friend Mal at a country estate and now serves as an assistant mapmaker in the First Army of Ravka, a nation split by a swath of magical darkness called the Shadow Fold. Plain, overlooked, and quietly unhappy, she discovers a dormant power in a moment of terror: she can summon light. That gift marks her as the legendary Sun Summoner, the one Grisha believed able to destroy the Fold, and it wrenches her out of her small life and into a world of soldiers, sorcery, and court intrigue she is unprepared for.",
+            "id": "alina-starkov",
+            "name": "Alina Starkov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mal"
+            ],
+            "description": "Alina's oldest friend, an orphan raised with her, now a charming and gifted tracker in the First Army who can find almost anyone or anything. Popular and easygoing where Alina is unnoticed, he is the person she loves most, though he seems unaware of it. When Alina's power surfaces during a crossing of the Shadow Fold, it is Mal she saves, and their bond becomes the thread she clings to as her life is upended.",
+            "id": "malyen-oretsev",
+            "name": "Malyen Oretsev",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The powerful and ageless leader of the Grisha, Ravka's magic-wielders, and commander of the Second Army. He alone commands shadow, a rare and feared ability. Magnetic, controlled, and imposing, he recognizes Alina as the Sun Summoner and takes charge of her, promising that together they can heal the country by destroying the Shadow Fold. Alina is drawn to his attention and confidence, uncertain how much of him she truly understands.",
+            "id": "the-darkling",
+            "name": "The Darkling",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strikingly beautiful young Grisha with the rare gift of a Tailor, able to alter appearance, flesh, and beauty. She serves at the royal court and is assigned to attend Alina at the Little Palace, becoming her first real friend there. Warm and clever, Genya helps Alina navigate the unfamiliar customs and cruelties of Grisha society, though her position at court is more precarious than it appears.",
+            "id": "genya",
+            "name": "Genya",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A harsh, secretive old woman who lives apart at the Little Palace and is tasked with training Alina to control and unlock her power. Brutal in her methods and sparing with kindness, she has known the Grisha world far longer than anyone realizes. Alina resents her lessons until Baghra proves to understand the true nature of Alina's gift, and its dangers, better than anyone else.",
+            "id": "baghra",
+            "name": "Baghra",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful and haughty Grisha Squaller, able to command wind and air, who trains among the elite at the Little Palace. Proud and cutting, she resents the sudden attention lavished on the untrained Alina and treats her with open contempt, becoming an early rival in the competitive world of the Second Army.",
+            "id": "zoya",
+            "name": "Zoya",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A quiet, socially awkward Grisha Fabrikator, one of the makers who work steel and chemistry into remarkable devices. Far more comfortable with his craft than with people, he labors intently at the Little Palace, more interested in what he can build than in the court's politics and rivalries.",
+            "id": "david-kostyk",
+            "name": "David Kostyk",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The king's strange, unsettling spiritual adviser, a priest who moves at the edges of the royal court. Watchful and hard to read, he takes a particular interest in Alina and the religious significance others attach to the Sun Summoner, hinting at loyalties and beliefs that do not align neatly with either the crown or the Grisha.",
+            "id": "the-apparat",
+            "name": "The Apparat",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadow-and-bone"
+      },
+      "recaps": {
+        "ending": "Warned by Baghra, Alina learns the Darkling's real design: he is far older than he appears, he created the Shadow Fold himself with forbidden magic, and he intends to use her light to expand and command it as an instrument of conquest rather than to destroy it. She flees the Little Palace. The Darkling pursues a legendary creature, Morozova's stag, whose antlers can be made into an amplifier that would multiply Alina's power and, in his hands, let him control her. Mal, the finest tracker in the army, finds the stag. When Alina hesitates to kill it, the Darkling seizes them both, slays the stag, and fastens its antler collar around Alina's neck, binding her power to his will. He forces her onto the Shadow Fold and, to prove his mastery, uses her light to kill. Alina realizes the connection the amplifier forges links them in both directions, and she wrests control back, flooding the Fold with blinding light and breaking his hold. She and Mal, injured, escape across the Fold and flee Ravka by sea. The Darkling is not seen to die, and Alina now carries the stag's amplifier, her power exposed to the world and the Darkling still a threat as the story closes.",
+        "in_short": "Alina Starkov, an unremarkable orphan and army mapmaker, discovers she is the Sun Summoner, a Grisha able to conjure light and, in legend, the only one who can destroy the Shadow Fold that divides her country of Ravka. When her power erupts to save her lifelong friend Mal during a Fold crossing, she is taken by the Darkling, leader of the Grisha, to the Little Palace to be trained. There she is dazzled by power, status, and the Darkling's attention, while an old teacher named Baghra pushes her to master her gift. Baghra finally reveals the truth: the Darkling created the Shadow Fold long ago and means to use Alina's light not to heal Ravka but to turn the Fold into a weapon of conquest. Alina flees, and the Darkling hunts a legendary stag whose antlers can be forged into an amplifier to bind and control her. Mal tracks the stag; when the Darkling catches them and forces the amplifier onto Alina, he takes her onto the Fold and kills to demonstrate his control. But the bond runs both ways, and Alina seizes command of her own power, unleashing light and escaping with Mal across the Fold to flee Ravka, with the Darkling left behind but not destroyed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Alina Starkov is a slight, overlooked orphan serving as a mapmaker in Ravka's First Army, a country split in two by the Shadow Fold, a band of unnatural darkness full of winged monsters. Her one anchor is Mal, the friend she grew up with, now a celebrated tracker. When their regiment is ordered to cross the Fold, their skiff is attacked and Mal is about to be killed. In her terror Alina unleashes a blaze of light she never knew she had, driving off the creatures. The Grisha, Ravka's magic-wielders, recognize what this means: she is the Sun Summoner of legend, the one who might destroy the Fold. She is pulled away from Mal and the ordinary army and delivered to the Darkling, the ageless and powerful leader of the Grisha, who declares that she is the key to saving their nation and takes her under his command.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alina is brought to the Little Palace, the glittering home of the Grisha elite, and thrust into a world of luxury, rivalry, and sorcery she barely understands. She befriends the kind Tailor Genya and clashes with the proud Squaller Zoya, while struggling to summon her light at will. The Darkling lavishes attention on her and speaks of the future they could build together, and Alina, long invisible, is flattered and drawn in. She is set to train under Baghra, a severe old woman whose brutal lessons finally teach her to reach her power on her own. Cut off from Mal and unsure whom to trust, Alina begins to sense that the dazzling court hides dangerous currents, and that her new life is not the rescue it first appeared to be.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Baghra reveals the truth that shatters Alina's new world: the Darkling is far older than he seems and created the Shadow Fold himself with forbidden magic, and he means to use Alina's light to turn the Fold into a weapon of conquest rather than destroy it. Warned that she is to be enslaved to his will, Alina flees the Little Palace alone into the winter, hunted. The key to his plan is a legendary creature, Morozova's stag, whose antlers can be forged into an amplifier that would vastly increase Alina's power and let the Darkling command it. As Alina runs for her life and the Darkling's forces close in, the search for the stag becomes the race that will decide whether she can escape his control or be bound to it.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reunited with Mal, who tracks Morozova's stag, Alina finds the creature but hesitates to kill it. The Darkling seizes them both, slays the stag himself, and fastens its antler collar around Alina's neck, binding her power to his will. He takes her onto the Shadow Fold and, to demonstrate his mastery, uses her light to kill, revealing the full horror of his plan to weaponize the darkness. Alina realizes that the connection the amplifier forges runs in both directions, and she wrests control back from him, unleashing blinding light and breaking his hold. She and Mal, wounded, escape across the Fold and flee Ravka by sea. The Darkling is not seen to die, and the truth of his ambition, and of what he created, is now exposed. Alina leaves as a fugitive, carrying the stag's amplifier and the burden of a power the whole country will want to claim.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shadow-and-bone"
+      }
+    },
+    "shadows-seventh-step": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Architect and Bamboo Viper candidate who returns to the trial seven days late after an ordeal in the Infernal Realm. He hides a sealed Apocalypse Hoop, cannot safely synchronize, and is assigned to Rung Four while suffering damage to his spirit pathways.",
+            "id": "ruwen-starfield",
+            "name": "Ruwen Starfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Leader of Rung One and a hostile debtor who objects to Ruwen entering the trial. Ruwen can perceive her hostility, and he disables the mechanism she previously used to send him into the Infernal Realm.",
+            "id": "echo",
+            "name": "Echo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three founders conducting the Bamboo Viper master trial. She can conceal herself and move through Shadow Steps. Dusk helps open the first test, where Ruwen's late arrival gives his assigned rung a shared seven-hour daylight penalty.",
+            "id": "dusk",
+            "name": "Dusk",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three Bamboo Viper founders administering the master trial. Mist helps assign Ruwen to Rung Four after his late arrival, leaving his place in the clan dependent on the weakest group's acceptance and his performance in the tests.",
+            "id": "mist",
+            "name": "Mist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the three Bamboo Viper founders who opens the master trial. Thorn helps establish the conditions under which Ruwen must earn acceptance from Rung Four and complete the tests to retain his place in the clan.",
+            "id": "thorn",
+            "name": "Thorn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Uru's fragment"
+            ],
+            "description": "A divine sliver sheltered within Ruwen's mind. Its presence causes his Unworthy Vessel condition and blocks synchronization, while both it and Overlord are currently absent from his accessible inner world.",
+            "id": "urus-mental-shard",
+            "name": "Uru's mental shard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's student, close companion, and fellow step fighter. He is present at the Bamboo Viper master trial when Ruwen returns from the Infernal Realm.",
+            "id": "sift",
+            "name": "Sift",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent intelligence associated with Ruwen's mental world. It is currently absent from his accessible inner world alongside Uru's fragment.",
+            "id": "overlord",
+            "name": "Overlord",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient dungeon keeper for whom Ruwen preserves living grass and flowers in his dimensional storage. Ruwen accepts a continuing energy cost to keep the specimens alive until Fractal can receive them, showing that the collection has a specific purpose.",
+            "id": "fractal",
+            "name": "Fractal",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's partner and an urgent reason for him to return home. He plans to find her after the trial while facing crime, civil conflict, and other crises in Eiru. His prolonged absence and succession of emergencies make that reunion an increasingly important obligation.",
+            "id": "hamma",
+            "name": "Hamma",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally Ruwen intends to locate as soon as he returns home. She is Hamma's companion, and their situation is part of the growing burden he has postponed while moving from one life-threatening crisis to another. Finding her is one of his urgent homeward responsibilities.",
+            "id": "lylan",
+            "name": "Lylan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted companion Ruwen names among the people he must find after returning home, alongside Hamma and Lylan. Reconnecting with Rami is one of several personal responsibilities competing with the crises in Eiru and his current obligation to the Bamboo Viper candidates.",
+            "id": "rami",
+            "name": "Rami",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sift's parent and a Bamboo Viper Grandmaster who tests selected champions on the tower's third floor. Madda embodies the Viper side of the paired discipline and mirrors each challenger's movements beside Padda while a strict timer limits the attempt.",
+            "id": "madda",
+            "name": "Madda",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sift's parent and a Bamboo Viper Grandmaster who tests selected champions beside Madda on the tower's third floor. Padda represents the Bamboo side of the discipline and mirrors a challenger's movements until the timed gate closes.",
+            "id": "padda",
+            "name": "Padda",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient divine-metal fortune golem with a dimensional pocket, a talent for theft, and an aura of misfortune. It must choose its user and offers Ruwen a reading in return for something he values, despite the serious risk created by its karmatic imbalance.",
+            "id": "tarot",
+            "name": "Tarot",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Shadow Realm warden that can pin and manipulate shadows. It immobilizes Ruwen, questions whether he is hiding a true shadow, and treats him as an uncertain Lightwalker rather than a simple enemy.",
+            "id": "gloomstalker",
+            "name": "Gloomstalker",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sift's immense tortoise companion, found after going missing and returned to his pocket. She can cross extraordinary distances and expand to planetary scale, and Sift is more attached to her than he readily admits.",
+            "id": "elder-star-tortoise",
+            "name": "Elder Star Tortoise",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful cultivator that claims the lava pools on Savage Island as its territory. It joins the creatures converging on Ruwen after his search for crossing stones draws attention in the lava.",
+            "id": "ash-specter",
+            "name": "Ash Specter",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elite infernal cultivator who leads demons through an Infernal Crossing Ring while Ruwen and the Bamboo Viper adepts attempt to destroy it. She asserts the Savage Champion's and Infernal Realm's claim to the portal as reinforcements gather behind her.",
+            "id": "scourge-queen",
+            "name": "Scourge Queen",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A diamond-level infernal cultivator who emerges behind the Scourge Queen as an army begins crossing through the ring under attack. The commander's arrival raises the immediate threat just as Ruwen prepares a final attempt to destroy the portal.",
+            "id": "scourge-commander",
+            "name": "Scourge Commander",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dimensional-storage guardian who supplies urgent treatment after Ruwen contains the crossing-ring explosion. Although furious about the consequences, she provides powerful healing and protective creatures that stabilize his severe injuries after Tarot bargains for her help.",
+            "id": "blapy",
+            "name": "Blapy",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Blapy"
+            ],
+            "description": "The true identity behind Blapy and the adjudicator of Ruwen's storage pact. Her active body is a clone, while her original self remains in the Third Secret preserving its spirit reserves and containing the expanding blast in her vaults.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Champion Fortress's hostile demon champion, a diamond-level cultivator armed with toxic attacks and poison barbs. It confronts Ruwen and Sift on the roof, where Sift challenges it for the champion role.",
+            "id": "scourge-champion",
+            "name": "Scourge Champion",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hostile infernal aspect who appears at Champion Fortress with Plague when the coordinated attack on Ruwen, Sift, and the newly recognized masters begins. Pestilence is part of the five-member force that separates Ruwen and Sift from the exposed group at Victory Lake.",
+            "id": "pestilence",
+            "name": "Pestilence",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hostile infernal aspect who arrives beside Pestilence as three more aspects ride toward the Bamboo Viper masters at Victory Lake. Plague's presence helps Ruwen recognize that the five-part disaster predicted by Tarot has begun.",
+            "id": "plague",
+            "name": "Plague",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of five hostile infernal aspects coordinating an attack on the new Bamboo Viper masters. War rides toward the group at Victory Lake while Ruwen and Sift are separated from them at Champion Fortress, turning the pearl outing into a rescue crisis.",
+            "id": "war",
+            "name": "War",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of five hostile infernal aspects advancing on the newly recognized Bamboo Viper masters during the coordinated assault at Champion Fortress and Victory Lake. Drought rides with War and Poison as Pestilence and Plague confront Ruwen and Sift.",
+            "id": "drought",
+            "name": "Drought",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hostile infernal aspect riding with War and Drought toward the exposed Bamboo Viper masters as the five-part attack begins. Poison is part of the coordinated force that Tarot's earlier warning described and that Ruwen must now race to stop.",
+            "id": "poison",
+            "name": "Poison",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The last living member of Rung Four after War infiltrates the refuge and kills the other masters. She is wounded and held hostage as Ruwen and Sift confront the scale of the attack. Her survival leaves her as the only remaining representative of the close group Ruwen helped train.",
+            "id": "sole-rung-four-survivor",
+            "name": "Sole Rung Four Survivor",
+            "reveal": {
+              "chapter": 84
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Echo"
+            ],
+            "description": "Echo's aspect form and the daughter of the infernal lord commanding the attackers. She arrives after the massacre, stops the other aspects, orders the hostage released, and ends the immediate assault despite her family connection to the enemy.",
+            "id": "death-aspect",
+            "name": "Death Aspect",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0BWFS8XTK",
+            "type": "community"
+          }
+        ],
+        "work": "shadows-seventh-step"
+      },
+      "recaps": {
+        "ending": "Ruwen returns from the Bamboo Viper trials as a rank-ten Grandmaster of Bamboo, Viper, and shadow disciplines, but the final outing leaves twenty-nine new masters dead. Echo, revealed as the Death Aspect, halts the attack and saves Rung Four's sole survivor. That survivor inherits her companions' abilities, receives the hope artifact under a celestial secrecy oath, and remains with the clan to train. Echo also stays behind, while the founders bury the dead. Sift returns the Ink Lord role to Ruwen, declines immediate Grandmaster testing, and accompanies him to Fractal's lair. There, Rami, Hamma, and Lylan reunite with them. Ruwen remains unable to use spirit safely and still carries dormant infernal rings. Miranda is containing the growing, soul-powered explosion that could destroy the Black Pyramid's planet. Ruwen asks his allies to pursue healing, safe synchronization, faster ascension to divinity, and godstone revival capable of protecting those he loves. The external crises involving Eiru and his allies remain deferred.",
+        "in_short": "Ruwen joins the Bamboo Viper master trial late, teaches the endangered members of Rung Four, and guides the class through lethal exercises on Savage Island. He binds himself to Tarot, a prophetic golem whose warning eventually points to an attack by five infernal aspects. Destroying an Infernal Crossing Ring saves the adepts but traps a growing, planet-threatening explosion in Miranda's vaults. Ruwen completes the hidden patterns and the inward seventh step, then bypasses the master oath by defeating all three founders and earns rank-ten Grandmaster status in Bamboo, Viper, and shadow paths. During the final pearl outing, the aspects trap the new masters. Ruwen kills Drought, but War murders twenty-nine masters. Echo reveals herself as the Death Aspect, stops the attack, and saves Rung Four's sole survivor. After securing a hope artifact for that survivor and burying the dead, Ruwen and Sift return to Fractal's lair. Hamma, Lylan, and Rami reunite with them as Ruwen turns toward healing, divinity, safe synchronization, and revival research.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ruwen Starfield is an Architect and leader whose power carries obligations to Eiru and to the people around him. Sift is both his student and a trusted companion in the Bamboo Viper steps. Hamma is Ruwen's partner, while Lylan and Rami are close allies. Rami is a human-form companion who can read Ruwen's memories. Ruwen's inner world includes Overlord, an independent intelligence, and a divine fragment of Uru that complicates his ability to synchronize. Blapy guards dimensional storage and adjudicates its pact, while the sentient dungeon keeper Fractal pursues revival research. Madda and Padda are Bamboo Viper Grandmasters and Sift's parents. Ruwen's responsibilities extend beyond training to allies and family who depend on him. Each of these ties shapes the demands on his attention and power, and their existing trust supports his continuing work. These relationships and unresolved duties remain active as Ruwen and Sift pursue advancement within the Bamboo Viper clan.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen returns from the Infernal Realm seven days late for the Bamboo Viper master trial. His damaged spirit prevents most of his usual powers, Uru's fragment blocks synchronization, and Echo remains hostile after sending him away. The founders place him in Rung Four, the weakest group, but Sift persuades its members to accept the shared time penalty. Ruwen and Sift correct the group's neglected foundations and guide them through the tower while teaching balance and the recurring relationship between endings and beginnings. Ruwen deliberately lets the trainees learn rather than taking the quickest route himself. He diverts Echo's team to the tower roof, allowing Rung Four to find the true token at the original summoning pillar. Before the next stage, Ruwen meets a divine-metal fortune golem that trades valuable readings for payment. Its reversed Fool warns that his chosen course may lead to disaster and that his plans will fail without caution. Ruwen accepts the golem despite its dangerous aura of misfortune and its history of attracting collectors.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen enters a lasting pact with Tarot, the prophetic golem, then travels with the Bamboo Viper cohort to Savage Island. The founders warn that the island is meant to harden candidates through lethal danger and that the Shattered Clan threatens Rung Four's demon-ravaged world. At the river, Ruwen organizes Rungs Two through Four against hostile groups and gets all twenty-four adepts to the bridge. When the bridge sinks among river predators, he creates a refuge and draws danger away from the non-swimmers. Echo initially leaves Rung One trapped at the far exit, but Ruwen challenges her to return, and she saves all six members of her rung. The entire cohort reaches its portal without a death, an unprecedented result. During the rest period, Tarot reads Lylan's obscured future and finds danger, resistance, and a costly passage. Sift wants to leave immediately, but Ruwen convinces him that Lylan and Hamma can endure while they complete the trials quickly. The founders recognize the cohort's cooperation and send everyone into the second island trial.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The second trial surrounds the candidates with a canyon of chests, only one of which contains the required token. Echo rejects cooperation and takes Rung One on a separate search, while Sift organizes the other rungs into a shared effort. Ruwen maps the canyon and lets the adepts reason through the relationship between height, terrain, and balance. Their first theory selects a dangerous imposter chest that injures Sift and another candidate, but the group develops safer countermeasures and uses rolling stone spheres to refine the route. Rung One and the allied rungs arrive at the final two candidates together. Rung One opens another imposter. Ruwen and Sift rescue Echo's followers, while Echo defeats the creature herself after a punishing fight. The other rungs recover the true token. Ruwen heals the trial injuries after the lesson is complete, distributes relic opportunities broadly, and defends that decision as a balanced response to necessary hardship. Every adept survives and receives an orange belt, an upgraded clan mark, and a personal ability before the class proceeds directly to its third trial.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The third group trial places the adepts in a fortified swamp. Ruwen confirms that his injured pathways still bar spirit magic and most Architect powers. While surveying the area, he encounters a diamond-level Gloomstalker that pins his shadow and claims he is hiding a true shadow. Ruwen breaks free, forces the creature to withdraw, and gains no clear answer about the hidden darkness it sensed. Tarot identifies the world as one of the Nine Muses and explains that Ruwen's Ink Lord Emblem permits access to its ancient archive. Back at the fort, Ruwen and Rung Four connect the swamp's mud, trees, water, and snail formations to the balance between soft Viper and hard Bamboo forms. They discover that the snails trace spirals toward a guarded underwater chest. The spiral itself creates a safe path between venomous creatures and bamboo traps. Echo follows it, retrieves the token for Rung One, and emerges safely. The other adepts celebrate her success, completing the intended lesson even though her rung wins the contest.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After receiving yellow belts, the class returns to Savage Island to gather crossing stones. Ruwen finds Sift's missing tortoise companion, and the founders explain that the stones transmit body-and-mind mirrors to the Mount Sorrow test. At the island's lava fields, Ruwen survives attacks by local creatures and overpowers an ash specter, which directs him toward rich deposits beneath the ground. He returns to find the adepts fighting demons around an Infernal Crossing Ring. Rung Four recognizes the same kind of portal used to devastate its homeworld, so the group chooses destruction over collecting it. A Scourge Queen and Commander arrive with further troops before Ruwen can break the structure. His final blow detonates the ring with enough force to kill everyone in the chamber. Ruwen opens his void band across the blast and captures almost all its energy, debris, and sound. The remaining pressure wave tears into the rock. Severely injured and unable to sustain his defenses, Ruwen is thrown through the chamber and loses consciousness, leaving the consequences of the stored explosion unknown.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blapy supplies extraordinary healing after Tarot bargains for Ruwen's survival. Once he wakes, she reveals that the stored explosion is still expanding within her vaults and consuming vast power. The ring used stolen, damaged soul fragments as fuel, making the blast a divine-scale threat that could destroy the Black Pyramid's planet within years. The storage pact prevents an easy transfer, and dissolving it would release the catastrophe immediately. Ruwen leaves the problem unresolved and returns to the magma chamber, where Sift is holding off the Scourge Queen. He gathers four dormant crossing rings, evacuates the adepts by wagon, and escapes as quakes and volcanic activity spread across Savage Island. Echo then warns that destroying one member of a paired ring may also destroy its distant endpoint. Ruwen cannot determine whether another world suffered a matching disaster. The founders remove the class from the unstable island and bring it to the clan's coastal home for the hidden trials. Ruwen now carries the dormant rings, uncertainty about the paired portal, and a growing explosion with no safe known solution.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the masters' village, Ruwen and Sift decide to teach the hidden trial principles openly so the adepts from a demon-threatened world can advance without years of delay. The class receives green belts, then Ruwen finds the breathing pattern among sentient Coral Vipers and teaches its controlled changes in air and timing. Everyone earns blue. He next identifies a force trial hidden among living bamboo and frames it as applying exact pressure while accounting for past, present, and future effects. The class reaches brown belt. A timing course over a deep ravine finally lets Ruwen experience the steps as a living expression rather than a mechanical sequence, and the other adepts acknowledge the change in his movement. Continued instruction brings the whole class to red belt. Although the founders question Ruwen's interference and warn of his imbalance, they allow him to advance. Every candidate then accepts the seventh trial, which is expected to be fatal for those who fail. Ruwen is summoned last into the final tunnel, where the founders' questions and warnings await him.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the seventh trial, Ruwen identifies enlightenment as the most important step. The founders warn that his burdens and hidden darkness make the test unusually dangerous. They also reveal that his forbidden shadow forms and his instruction of Sift violate a restricted oath, with judgment waiting even if he succeeds. Ruwen proceeds to protect Sift from certain loss. The trial traps him in silent darkness, cut off from his mental citadel, until he understands it as a scale between his heavily burdened outer self and his neglected inner self. A small insight lets him contact his mental constructs. Because those constructs lack free will, they cannot reach the self-realization needed to balance him. Ruwen releases all of them from their constraints despite the risk of chaos. Their sudden self-awareness restores the balance and brings Overlord and Uru's shard back to him. Ruwen recognizes his internal shadow as a bridge toward his imprisoned soul. He accepts that inner self without anger, defines the final lesson as a step toward oneself, and follows his shadow inward. The trial's ultimate result is not yet known.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen returns from the seventh trial after three outside days and immediately challenges Dusk rather than accept the master rank that would trigger his Shadow Oath. The founders offer a delayed formal challenge or an immediate match against all three of them. Urgent responsibilities at home lead him to accept the three-on-one contest. During the match, his new inner balance develops into harmony, an ability to sense and correct disruptions in his surroundings. He takes Thorn's, Mist's, and Dusk's innocence gems and wins without surrendering his own. The founders accept his argument that connections and responsibilities can strengthen the inward step instead of merely weighing it down. Rung Four and Sift receive master recognition. The clan then reveals its hidden shadow path, and Ruwen is recognized directly as a rank-ten Grandmaster in Bamboo and Viper forms and as a worthy shadow Grandmaster, avoiding the master oath. With the trials complete, the new masters receive one final assignment to collect soul pearls near Champion Fortress before leaving.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Victory Lake, Sift persuades Ruwen to attempt Champion Fortress while the other masters gather pearls. Their improvised distraction becomes a flaming avalanche, but they enter the demon-held fortress and confront its Scourge Champion. Then Pestilence and Plague arrive, while War, Drought, and Poison ride toward the masters. Ruwen realizes Tarot's warning concerned this five-aspect attack. The aspects demand the crossing rings and block every escape: they remove the portal stone, corrupt the ground against portal chalk, and alter their own return points. Ruwen gives the Ink Lord role and its protective armor to Sift, creates Fallen Heroes, and sends Overlord to coordinate rescue work. Their attacks cannot break the aspects' upgraded shields. Sift survives War's assault, and his tortoise companion intercepts a combined strike, but Drought removes her with a ring. Ruwen concludes that the attackers are trying to force him to use his damaged spirit, though his suspicion that Echo provided information remains unproved. The masters are trapped on desecrated ground as a plague effect spreads and all five aspects remain active.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen shelters the masters, cleanses contaminated air, and works with Overlord to prepare a portal site on desecrated ground. He briefly captures Pestilence and Plague in his void portals, but their protections return them to the Infernal Realm. The aspects' true goal is to bring Ruwen close enough for their rings to banish him. Ruwen and Sift attack the remaining three, and Ruwen breaks Drought's shield and kills the aspect permanently. With the other attackers closing in, he hides the masters in a tunnel while Overlord completes the gate work. War infiltrates the refuge and kills twenty-nine masters, leaving only one injured member of Rung Four as a hostage. The fifth arrival is Echo in her Death Aspect form. She freezes the others, forces them to release the survivor and withdraw, and grieves with the clan. The survivor inherits her seven fallen rung-mates' strength through their linked belts. Ruwen gives her an artifact capable of storing and amplifying hope, then Ruwen, Sift, Echo, and the survivor swear a celestial oath protecting its stewardship. The survivor leads remembrances before Ruwen returns the bodies to the clan.",
+            "through": {
+              "chapter": 87
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The founders bury the dead masters and do not punish Ruwen for the decisions he believes contributed to the attack. Rung Four's sole survivor remains with the clan to train toward Grandmaster status, carrying her companions' inherited strength and the hope artifact under oath. Echo also stays to train a student. Sift declines an immediate Grandmaster test, returns the Ink Lord role to Ruwen, and accompanies him to Fractal's lair. There he declares their debt even and removes Ruwen's lingering uneven condition. Rami reads the memory of the massacre and joins the discussion of Miranda's isolation and the revival project. Ruwen asks Fractal and Rami to heal his swollen spirit pathways, accelerate his transition to divinity, and advance godstone revival into a means of protecting and remaking loved ones. He also directs the temple intelligence to seek safe synchronization that preserves his abilities, Uru's fragment, and the other beings inside him. Hamma and Lylan arrive with Sift, reuniting Ruwen with his closest allies. They postpone the crises outside the lair long enough to recognize that they are together and safe, though Ruwen remains injured and the wider threats are unresolved.",
+            "through": {
+              "chapter": 89
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0BWFS8XTK",
+            "type": "community"
+          }
+        ],
+        "work": "shadows-seventh-step"
+      }
+    }
+  }
+}

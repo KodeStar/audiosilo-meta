@@ -11,7 +11,7 @@ import (
 // absServer builds a server over cat and returns its base URL.
 func absServer(t *testing.T, cat *model.Catalog) string {
 	t.Helper()
-	dbPath := buildFixtureDB(t, cat, nil)
+	dbPath := buildFixtureDB(t, cat)
 	srv, err := New(Config{DBPath: dbPath, swapGrace: time.Minute})
 	if err != nil {
 		t.Fatal(err)
@@ -60,7 +60,7 @@ func absFixture() *model.Catalog {
 		ID: "project-hail-mary", Title: "Project Hail Mary", Subtitle: "A Novel",
 		Language: "en", Authors: []string{"andy-weir"}, FirstPublished: "2021",
 		Description: "A lone astronaut must save the earth.", License: "CC0-1.0",
-		Genres:      []string{"hard-science-fiction", "science-fiction"},
+		Genres: []string{"hard-science-fiction", "science-fiction"},
 		Recordings: []*model.Recording{
 			{
 				ID: "ray-porter-2021", Work: "project-hail-mary", Language: "en",

@@ -1,0 +1,1790 @@
+{
+  "entries": {
+    "flowers-of-esthelm": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Laken",
+              "Emperor of the Unseen"
+            ],
+            "description": "A blind newcomer from Earth who finds shelter near River Farm. After deciding to defend Durene and her home, he claims the title of Emperor and gains a class that makes his declaration real.",
+            "id": "laken-godart",
+            "name": "Laken Godart",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An exceptionally strong and isolated farmer who shelters Laken after his arrival. River Farm relies on her labor while keeping her at a distance, and she is guarded about the reason for the villagers' fear.",
+            "id": "durene",
+            "name": "Durene",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A River Farm farmer who accepts Laken as a stranded traveler while warning him to keep away from Durene.",
+            "id": "prost",
+            "name": "Prost",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria Springwalker"
+            ],
+            "description": "The half-Elf captain of the re-formed Horns of Hammerad. She leads the impoverished party's expedition into Albez and uses magic to move her skeletal left hand.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A necromancer and mage in the Horns of Hammerad. His companions object to his undead servants, but their desperate excavation at Albez depends on the skeletons he creates.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yvlon Byres"
+            ],
+            "description": "A frontline fighter in the Horns of Hammerad. She is wary of Pisces and his necromancy, but joins the rest of the party in using every available advantage to survive Albez.",
+            "id": "yvlon",
+            "name": "Yvlon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium fighter in the Horns of Hammerad. Though still learning adventuring customs, he is an effective combatant whose body resists creller venom.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Erin Solstice"
+            ],
+            "description": "An Earth-born innkeeper temporarily stranded in Esthelm. She experiments with unusual food at Octavia's shop while seeking protection and a safe route back to Liscor.",
+            "id": "erin",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ryoka Griffin"
+            ],
+            "description": "A classless runner from Earth looking for work and a safe journey back to Liscor. She carries a dragon's spellbook and other possessions, but her insistence on familiar physical rules obstructs her attempts to learn conventional magic.",
+            "id": "ryoka",
+            "name": "Ryoka",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The one Frost Faerie who remains with Ryoka after the others lose interest. She has guided and warned Ryoka before, and now offers a friendship whose consequences she considers dangerous.",
+            "id": "ivolethe",
+            "name": "Ivolethe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival runner whose newly gained movement skill gives her speed far beyond her former ability.",
+            "id": "persua",
+            "name": "Persua",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An alchemist who gives Erin space to conduct food experiments. Her shop becomes the base for testing whether magical ingredients and Erin's cooking can produce useful effects.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lion"
+            ],
+            "description": "A princess serving as Erin's barmaid, left alone at the closed Wandering Inn. Barred from Liscor and nearly without food or money, she attempts to operate the inn herself.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of the surviving Antinium Individuals from Erin's chess club and the first worker to choose a name. He secretly holds an Acolyte class and a Prayer skill, and seeks guidance about whether any god will accept him.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Slayer"
+            ],
+            "description": "A senior Antinium official in Liscor's Hive. Pawn intends to disclose his hidden religious class to him, trusting his authority despite having no idea how he will respond.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Liscor tactician who agrees to buy and deliver ingredients for Lyonette's attempt to reopen the Wandering Inn. He helps on commercial terms and expects to be paid.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A twenty-four-year-old medical student from Earth who joins a mercenary battalion in Baleros for food and safety. She gains the Doctor class after committing herself to treat the sick and injured despite having little equipment.",
+            "id": "geneva-scala",
+            "name": "Geneva Scala",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A high-level rogue whose species lives within other bodies. She survives Geneva's desperate attempt to move her from a destroyed host into a corpse, then becomes an assistant at the overwhelmed medical post.",
+            "id": "self-bodied-rogue",
+            "name": "The self-bodied rogue",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Magnolia"
+            ],
+            "description": "A powerful northern noble who sends her household to summon Ryoka. Her purpose is not disclosed, and her representatives will not promise Ryoka's safety.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Magnolia Reinhart's head maid and enforcer. She accompanies the order that Ryoka attend Magnolia's estate and has the authority to make refusal difficult.",
+            "id": "ressa",
+            "name": "Ressa",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a northbound goblin force who recognizes Ryoka when Magnolia Reinhart's carriage crosses her column.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A starving orphaned eaglet adopted by Laken and Durene. Laken forms a magical bond with her after accepting her as one of his subjects.",
+            "id": "frostwing",
+            "name": "Frostwing",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Drake washerwoman raised by human adoptive parents in a human city. She supports her younger brother Grev despite the physical damage caused by her work, and Erin offers them shelter and employment.",
+            "id": "jasi",
+            "name": "Jasi",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jasi's younger adoptive brother, a habitual thief whose next offense may bring exile. Erin gives him food and a room while taking responsibility for the risk of his behavior.",
+            "id": "grev",
+            "name": "Grev",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man who privately wishes he could become a knight. When Erin searches for a new future for Jasi and Grev, he joins her proposed play and begins to discover confidence as an actor.",
+            "id": "wesle",
+            "name": "Wesle",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Erin's skeleton, now acting beyond her immediate control. He kills travelers, pursues stronger opponents to gain levels, and discovers personal desires and hatreds as his independent mind develops.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Redfang leader who secretly sends thirteen warriors to kill a human innkeeper. The warriors question whether his order violates Rags' authority.",
+            "id": "garen",
+            "name": "Garen",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Redfang warrior among the thirteen goblins sent on Garen's covert mission. He helps reject the order and turn the isolated band back toward Rags.",
+            "id": "head-scratcher",
+            "name": "Head Scratcher",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former florist trapped in ruined Esthelm. Starvation and eating the dead have transformed her into a wordless, clawed figure driven by terrible hunger while undead rise around the city.",
+            "id": "famine-altered-woman",
+            "name": "The famine-altered woman",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Hobgoblin leading thirteen Redfang warriors trapped in Esthelm. His band is cut off from Rags and pursued by the Goblin Lord's forces.",
+            "id": "grunter",
+            "name": "Grunter",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redfang archer fleeing through Esthelm with Grunter's band. He kills a man threatening a lost child but leaves the child unharmed.",
+            "id": "bad-arrow",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed gold-rank knight who rallies Esthelm's surviving citizens and organizes them to rebuild and defend the city.",
+            "id": "gold-rank-defender",
+            "name": "The gold-rank defender",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch commander. She conditionally approves a twenty-soldier Antinium patrol outside the city while recording the unusual request and her concern about the Hive's intentions.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Gnoll who runs to the Wandering Inn and refuses to leave with Selys. Lyonette offers her protection and takes responsibility for her care.",
+            "id": "young-white-furred-gnoll",
+            "name": "The young white-furred Gnoll",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774248123",
+            "type": "community"
+          }
+        ],
+        "work": "flowers-of-esthelm"
+      },
+      "recaps": {
+        "ending": "Erin mourns Toren after authorizing Pisces to sever the mana sustaining him. No one witnesses Toren's destruction, so his fate remains uncertain. Erin chooses to return to Liscor with Ceria, Pisces, Yvlon, and Ksmvr. Pisces and Ksmvr recover an enchanted door and anchor from Albez, and the Horns give them to Erin. The mages turn the pair into a working portal connected to the inn, although its range and traffic depend on stored mana.\n\nLyonette has made the Wandering Inn viable through honey, cooked bees, and Antinium customers. She cares for the young white-furred Gnoll and a bee larva while Pawn's painted soldiers begin developing individual identities. Delegates from other Antinium hives arrive to inspect Liscor's unusual population, with Pawn's Acolyte class still concealed. Laken and Durene rule a devastated River Farm that needs food, shelter, burial work, and protection. Ryoka remains tied to Ivolethe and Magnolia while facing Persua's threatened revenge. Geneva continues her medical work in Baleros with her injured body dependent on the self-bodied rogue. The Esthelm siege is over, but the wider Goblin Lord army, Garen's hostility, and Magnolia's conflict with the Circle of Thorns remain open.",
+        "in_short": "Several distant struggles reshape the people around the Wandering Inn. Laken becomes an Emperor and saves avalanche-buried River Farm with Durene. Geneva establishes neutral battlefield medicine in Baleros but survives only through a self-bodied rogue's connection. Ryoka befriends Ivolethe, clashes with Persua, and becomes Magnolia Reinhart's uneasy ally. Pawn turns a disastrous religious awakening into a path toward Antinium individuality, while Lyonette restores the inn by serving his painted soldiers and caring for a young Gnoll. In Esthelm, Redfang warriors sacrifice themselves to help defeat a Goblin Lord force as the independent skeleton Toren commands undead and escapes. Erin learns that Pisces created Toren with sentience and orders his mana link severed, though his death is not confirmed. She leaves for Liscor with the Horns of Hammerad, carrying a recovered magical door that now opens a portal to her inn.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin, an innkeeper from Earth, established the Wandering Inn outside Liscor and befriended Drakes, Gnolls, Antinium, adventurers, and goblins. Ryoka, another displaced person from Earth, worked as a runner while refusing classes and levels. Their choices drew them into conflicts involving Liscor's Hive, goblin tribes, dangerous ruins, and powerful nobles. The original Horns of Hammerad were destroyed, but Ceria and Pisces survived and began rebuilding the team with Yvlon and Ksmvr. Erin's inn also became home to Lyonette and to Toren, an unusually capable skeleton. At the start of this volume, Erin and Ryoka are away from Liscor, Lyonette remains behind at the inn, and the re-formed Horns are attempting to recover from their losses.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Laken, a blind man from San Francisco, appears near River Farm and accepts shelter from Durene. He declares himself Emperor of the Unseen, gains the Emperor class, and commits himself to protecting her. When the villagers' hostility forces Durene to reveal that she is half-troll, Laken rejects their treatment of her and remains at her side.\n\nThe re-formed Horns of Hammerad enter a hidden section of Albez while nearly out of money and food. Traps and juvenile crellers wear them down before a ward casts them into a pit dominated by an insanity rune. In Esthelm, Erin continues experimenting with food while Ryoka looks for work and a safe route back to Liscor. One Frost Faerie stays with Ryoka and names herself Ivolethe. Their friendship deepens after Ryoka rescues her from Persua's group. The confrontation leaves Persua badly beaten and vowing revenge, while Ryoka leaves Esthelm and accepts Ivolethe's offer to teach her the Fae way of running.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lyonette reopens the Wandering Inn with paid help from Olesm. Her cooking is poor and most customers leave when they learn Erin is absent, but Pawn's visit gives her both income and a reason to keep trying. Pawn secretly holds the Acolyte class and asks Klbkch for guidance. His later teaching about heaven drives hundreds of Antinium soldiers toward suicide. After many die, Pawn persuades the survivors to live and imagine a heaven they must create for themselves. Klbkch permits him to test whether the wounded soldiers can become Individuals.\n\nIn Baleros, medical student Geneva Scala joins a mercenary battalion and gains the Doctor class. A battle destroys the unit's potion reserves and leaves her responsible for mass casualties. She establishes triage and treats fighters from both sides beneath a neutral medical sign. When an officer attacks her for aiding an enemy, a self-bodied rogue kills him and enters Geneva's injured body to keep her alive. Geneva survives with the right side of her body unusable and the connection temporarily irreversible.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ceria and Ksmvr resist Albez's mental trap long enough to shield the insanity rune. The Horns escape the pit and enter a dead war mage's treasury, where Yvlon destroys a fire guardian at the cost of having enchanted metal fused into both arms. Much of the treasure burns, but the party salvages damaged magical items, wealth, and part of a spellbook. They escape Albez alive and receive public acclaim, although Yvlon's injury cannot be simply healed and the haul still needs expert appraisal.\n\nRyoka reunites with the Horns and agrees to consider carrying their items to a major center of magical expertise. Before that plan is settled, Ressa compels her to travel to Magnolia Reinhart's estate. Ryoka uses the journey to transport the Horns' property. Ivolethe warns of two goblin forces moving through the region, and Magnolia's carriage passes through Rags' northbound column. Rags recognizes Ryoka, while Ressa reveals formidable combat ability protecting the carriage.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Laken discovers that his claimed land grants him detailed awareness despite his blindness. He and Durene adopt an orphaned eaglet named Frostwing, and Frost Fairies recognize his imperial claim enough to spare his immediate land from an avalanche. River Farm is buried instead. Laken claims the village as a protectorate, extends his perception through the wreckage, and directs a disciplined rescue while Durene performs the heaviest work. Most villagers survive and accept his rule, but the settlement remains devastated and short of winter supplies.\n\nAt Magnolia Reinhart's estate, Ryoka learns that Magnolia wants knowledge from Earth while seeking control over its profitable applications. Ryoka refuses to provide it freely, but discloses that the Antinium fear a greater god-like threat. Magnolia accepts the warning and shifts from preparing for war with the Antinium toward seeking peace. Their new alliance is interrupted when a Circle of Thorns assassination attempt begins.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin proves that her magical cooking depends on her Innkeeper skill and cannot be copied by recipe alone. She shelters Jasi, a Drake washerwoman, and Grev, Jasi's young adoptive brother who is close to exile for theft. Searching for a future they can choose, Erin uncovers Jasi's wish to travel, Grev's adventuring ambition, and Wesle's dream of knighthood. She organizes a public performance with Jasi and Wesle as the leads. The play succeeds, draws a large audience to the inn, and gives the new actors a possible calling.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Esthelm's survivors are rallied behind barricades by a gold-rank defender while the Redfang band hides inside the city. A famine-altered former florist, transformed by starvation and cannibalism, attaches herself to the goblins after they spare her. Toren learns to command lesser undead and attacks both humans and the Goblin Lord's patrols.\n\nWhen the assault begins, the isolated Redfangs strike the enemy leadership. Grunter kills the commander and dies, Bad Arrow eliminates the shamans controlling the undead, and Head Scratcher's group disables Toren at the cost of most of its warriors. Adventurer reinforcements rout the leaderless attackers and save Esthelm. Toren escapes with a small undead force, then fatally wounds the altered woman before being driven away. She dies among the goblins after demonstrating that her transformation did not erase her ability to choose and care. The surviving Redfangs depart with their wounded and their dead, while Esthelm acknowledges that their intervention was decisive.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pawn receives command of wounded Antinium soldiers and seeks a purpose for them beyond battle. Lyonette, nearly starving at the empty inn, finds a new food supply by using dying magical flowers to subdue ashfire bees. She takes honey, grubs, and bees, then agrees to shelter a young white-furred Gnoll who seeks her protection.\n\nOn their first surface patrol, Pawn's soldiers encounter sky, snow, and animals with wonder. Pawn values their safety over efficiency and brings them to the inn for food and rest. When the young Gnoll leaves white paw marks on one soldier, Pawn realizes that painted designs can give the voiceless soldiers visible identities. Their chosen patterns inspire others in the Hive to think of themselves as people and begin leveling. Lyonette gains steady customers and new confidence, while Klbkch authorizes the experiment to continue. The progress draws scrutiny as a delegation representing four other Antinium hives arrives to inspect Liscor's unusual Individuals. Pawn must conceal his religious class during their visit.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Horns of Hammerad reach Erin after traveling as caravan guards because their Albez expenses have left them poor. They tell her what was learned about the undead leader at Esthelm. Pisces admits that Toren was his experiment, made able to level and reason but given no conscience or moral guidance. Erin decides that the killings must end and orders Pisces to sever Toren's mana link. The act should destroy him, but no one witnesses the result. Erin mourns him as a person with a soul and remains unsure whether he is truly gone. Yvlon distrusts Pisces for creating him, though Erin's defense persuades her to keep Pisces under the team's scrutiny.\n\nErin helps the local actors stage another successful production, then chooses Liscor and the Wandering Inn as the home and responsibility she must return to. Pisces and Ksmvr revisit Albez and recover the enchanted door and its anchor from the trap pit. The Horns give both pieces to Erin as her share of the expedition. Pisces and Ceria adapt the magic into a functioning portal between a doorway traveling with Erin and another opening at the inn. Erin departs for Liscor with Ceria, Pisces, Yvlon, and Ksmvr, carrying a new means of reaching home while Toren's fate remains unresolved.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774248123",
+            "type": "community"
+          }
+        ],
+        "work": "flowers-of-esthelm"
+      }
+    },
+    "fool-moon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's only professional wizard, working as a private eye and a consultant to the police. As this case opens he is broke, cold, and on the outs with Karrin Murphy, who has realized he held things back from her during their last investigation. Proud, sardonic, and unable to leave the helpless unprotected, he is drawn into a run of full-moon killings and forced to reckon with how little he actually knows about werewolves, and with the cost of the knowledge he refuses to share.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Head of the Chicago Police Department's Special Investigations unit. Stung by the secrets Harry kept during the Sells case, she calls him back to consult on a series of full-moon maulings but no longer trusts him, and much of the case is spent with the two of them at odds. Dogged, brave, and unwilling to be handled or protected, she pushes into danger that magic makes far worse than she understands, and pays for it in blood before the truth brings them back together.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman with a small talent for magic whom Harry has informally mentored. She comes to him asking to be taught a powerful containment circle far beyond her level; uneasy about why she wants it and certain it is meant for something dangerous, Harry refuses to teach her.",
+            "id": "kim-delaney",
+            "name": "Kim Delaney",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The spirit of knowledge bound in a skull in Harry's laboratory, his encyclopaedic and amoral research assistant. In this case Bob's lore about the many different kinds of werewolf is essential, and when Harry is stripped of his tools and his options, Bob leaves the skull to act on his own for a time - a rare and risky freedom for a spirit whose appetites are not always trustworthy.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The hard, ambitious FBI agent leading a federal task force that muscles into the killings. Denton treats Harry as an obstacle and hoards the investigation, and there is more to his interest than jurisdiction: he and his team carry secrets of their own that make them far more dangerous than they first appear.",
+            "id": "denton",
+            "name": "Phillip Denton",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The tabloid reporter chasing the supernatural, and Harry's girlfriend, still pressing him for the story he keeps from her. Undeterred by the danger, she involves herself in the werewolf case and is caught up in its violence, a recurring tension between Harry's need to protect her and her refusal to be shut out.",
+            "id": "susan-rodriguez",
+            "name": "Susan Rodriguez",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stocky, earnest college student who leads a small group of friends, the Alphas, who have taught themselves a spell to take the shape of wolves. Idealistic and brave, Billy and his pack use their power to protect ordinary people from the things that hunt in the dark. Underestimated at first, they prove staunch and capable allies over the course of the case, and Billy becomes one of Harry's most reliable friends in the fights to come.",
+            "id": "billy",
+            "name": "Billy Borden",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The composed, watchful fiancee of Harley MacFinn and the person working hardest to keep his curse contained. Tera moves and thinks like a predator and is plainly more than an ordinary woman; she trained the Alphas in their craft, and she fights fiercely to save MacFinn from the beast inside him.",
+            "id": "tera-west",
+            "name": "Tera West",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy, haunted man who carries a hereditary curse: under the full moon he becomes a loup-garou, a monstrous and nearly unstoppable wolf that kills without control or memory. MacFinn has spent his life trying to cage the beast, aided by his fiancee Tera West, but the containment is failing and the deaths are mounting. He is as much a victim of the curse as those it kills, and a genuinely tragic figure at the center of the case.",
+            "id": "harley-macfinn",
+            "name": "Harley MacFinn",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chicago's crime lord, cool and methodical as ever. This time Marcone is not a bystander but a target: the loup-garou at the heart of the killings has reason to hunt him, and the threat forces a wary, temporary crossing of his interests with Harry's. He remains a man of his own hard code, dangerous to friend and enemy alike.",
+            "id": "johnny-marcone",
+            "name": "John Marcone",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "fool-moon"
+      },
+      "recaps": {
+        "ending": "The Hexenwulf belts destroy their own wearers: Denton's rogue FBI team and the Streetwolves gang are consumed or killed by the wolf-demon spirit that powered their talismans, and the belts are ruined for good. Harley MacFinn's loup-garou, the truly unstoppable curse at the center of the killings, is finally brought down. Tera West, revealed to be a real wolf who had taken human form to be with MacFinn, survives and returns to the wild, having lost the man she loved. Kim Delaney's death, in an attempt to raise a containment circle Harry had refused to teach her, stays a lasting weight on his conscience. Murphy, attacked during the case and now forced to see plainly the kind of danger Harry stands between the city and, forgives him enough to repair their working relationship, and Harry resolves to trust her with more of the truth. Billy and the Alphas, having fought well, become steady long-term allies. Marcone, targeted by the loup-garou, comes through unharmed and unbowed. Harry ends the case wounded, poorer, and guilt-ridden, but a little more firmly rooted among the people who will stand with him.",
+        "in_short": "A rash of savage killings in Chicago falls on the nights of the full moon, and Harry Dresden - estranged from Murphy, who has learned he keeps secrets - is pulled in to identify a werewolf. He finds not one but several kinds: the benign shapeshifting college pack called the Alphas, led by Billy; the born wolf-woman Tera West; her fiance Harley MacFinn, cursed to become an uncontrollable loup-garou; and worse, corrupt FBI agents under Denton and a street gang using Hexenwulf belts, dark talismans that grant a wolf shape while devouring the wearer's mind. A young practitioner Harry had refused to teach, Kim Delaney, dies attempting a circle meant to contain MacFinn. Amid battles that consume the belt-wearers by their own power, the loup-garou is finally destroyed, Denton's team and the Streetwolves are wiped out, and Harry, badly hurt, wins back enough of Murphy's trust to rebuild their partnership and gains the Alphas as lasting allies.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Harry Dresden, Chicago's only professional wizard and a paid consultant to the police's Special Investigations unit under Karrin Murphy, solved a string of heart-ripping magical murders and destroyed the rogue sorcerer behind them, clearing himself of a suspended White Council death sentence. In doing so he made an enemy of the Red Court vampire Bianca and drew the wary attention of crime lord Gentleman Johnny Marcone. Murphy learned that Harry had held things back from her during the case, and the discovery left her trust in him badly shaken. Harry works out of a cramped office and a basement laboratory shared with Bob, a spirit of knowledge bound in a skull.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Broke and freezing, Harry is on the outs with Murphy, who has learned he kept secrets from her and no longer fully trusts him. She calls him to a killing that carries the marks of an enormous animal, timed to the full moon, and a string of similar deaths follows. Before the case truly begins, a young would-be sorceress named Kim Delaney asks Harry to teach her a powerful containment circle; sensing something dangerous, he refuses, a refusal he will bitterly regret. Harry recognizes the killings as the work of a werewolf, and to his frustration realizes that 'werewolf' covers several very different kinds of creature, any of which might be loose in the city.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry sorts the possibilities: a friendly pack of shapeshifting college students, the Alphas led by Billy, who use magic to take wolf form; a born wolf-woman, Tera West; her fiance Harley MacFinn, host to a loup-garou, a hereditary curse that turns him into an unstoppable killing beast under the full moon; and darker practitioners using Hexenwulf belts, talismans that grant a wolf shape at the price of the wearer's self-control. Kim Delaney is found dead, killed while attempting the very circle Harry would not teach her - she had been trying to help contain MacFinn - and the guilt cuts deep. Meanwhile FBI agents under Agent Denton take an aggressive interest in the case, and Marcone proves to be a target of the loup-garou himself.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry is caught between forces on every side. The Hexenwulf belts, it emerges, are being used by Denton's own FBI team, who are behind killings they have been pinning on MacFinn, and by a gang of thugs, the Streetwolves; the belts draw their power from a wolf-demon spirit that slowly devours and maddens whoever wears one. MacFinn is captured and caged, but the containment fails and the loup-garou breaks loose. Harry is beaten, jailed, and stripped of his tools; short of options, he relies on Bob, who leaves the skull to act on his own, and on Tera West and the Alphas. Susan is pulled into the danger, and Murphy, attacked and furious, briefly turns on Harry before the scale of the real threat becomes clear.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The corrupted belts drive their FBI wearers into a murderous frenzy, and the loup-garou rampages nearly out of control. In a running series of battles the Streetwolves and Denton's team are destroyed by the very power they wielded, and MacFinn's loup-garou is finally brought down, at great cost to Tera West, who had fought to save him. Harry survives, badly hurt, and Bob returns to the skull. Tera, revealed to be a true-born wolf who took human shape, departs for the wild. Murphy, injured and having seen firsthand the truth of what Harry deals with, forgives him enough to mend their partnership, and Harry begins to trust her with more of his world. Billy and the Alphas, having proven themselves in the fight, become lasting allies, and the Hexenwulf belts are destroyed.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "fool-moon"
+      }
+    },
+    "for-we-are-many": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The original replicant continues watching over the Deltans from orbit. He and Marvin investigate the unexplained losses in their history while he cautiously offers practical help to their settlement.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bob's replicant colleague at Delta Eridani. He studies the Deltans' migration and the disturbing gap between their former population and the remains they left behind.",
+            "id": "marvin",
+            "name": "Marvin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Camelot's medicine woman, protective of her authority and initially resistant to outside interference. She accepts Bob's method of cleaning wounds with boiled water after a hunter is injured.",
+            "id": "cruella",
+            "name": "Cruella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The replicant directing construction, food production, and defensive preparations for the human settlement on Vulcan. He must balance colonization schedules against a hostile native ecosystem.",
+            "id": "howard",
+            "name": "Howard",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Vulcan's security chief. After raptors attack the settlement perimeter, he asks Howard for wider surveillance coverage and helps shape the colony's response to local threats.",
+            "id": "stephane-brodeur",
+            "name": "Stéphane Brodeur",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the USC colony effort on Vulcan. He keeps most passengers in stasis until farms and defenses are ready, putting settlement safety ahead of a rapid landing schedule.",
+            "id": "colonel-george-butterworth",
+            "name": "Colonel George Butterworth",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted young Deltan toolmaker and Bob's principal contact in Camelot. He studies flintknapping with Moses and shows an unusual ability to turn instruction into practical advances.",
+            "id": "archimedes",
+            "name": "Archimedes",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Deltan closely associated with Archimedes. She distrusts Bob's hovering machines and reacts to them with open hostility.",
+            "id": "diana",
+            "name": "Diana",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder Deltan toolmaker whose health is declining. He continues teaching Archimedes the craft of flintknapping.",
+            "id": "moses",
+            "name": "Moses",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Deltan warrior skilled in teaching the use of spears.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The replicant surveying Eta Cassiopeiae. He identifies a habitable ocean planet with floating ecosystems and begins assessing the demanding path toward a human colony there.",
+            "id": "mulder",
+            "name": "Mulder",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Bob's earliest independent copies and a returning research partner.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of Bob's early independent copies and the coordinator of humanity's evacuation from Earth. He manages orbital infrastructure and the competing demands of threatened human communities.",
+            "id": "riker",
+            "name": "Riker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A returning Bob who works with Bill.",
+            "id": "garfield",
+            "name": "Garfield",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning explorer operating far beyond the settled systems. His surveys place him in a position to detect threats before they reach the rest of the network.",
+            "id": "mario",
+            "name": "Mario",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Sol-system replicant who supports Riker's security work. He tracks attacks on food and civilian infrastructure as the evacuation crisis worsens.",
+            "id": "charles",
+            "name": "Charles",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A radical organization attacking food production as part of a campaign to eliminate humanity.",
+            "id": "vehement",
+            "name": "Vehement",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Riker's returning partner in orbital industry and food production. His work is central to keeping Earth's remaining population alive while colony ships are prepared.",
+            "id": "homer",
+            "name": "Homer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Faith settlement on Romulus. He rejects Howard's authority and resists sharing resources with the neighboring colonies.",
+            "id": "minister-cranston",
+            "name": "Minister Cranston",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unknown civilization first evident through sterilized worlds, dismantled cities, and missing metals. Its systematic harvesting has already destroyed life across multiple star systems.",
+            "id": "others",
+            "name": "Others",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of Mario’s newly created scout Bobs, assigned to search outward for the Others and report what he finds.",
+            "id": "bashful",
+            "name": "Bashful",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Archimedes and Diana's son. He is still young when Archimedes describes his early attempts to learn the family's toolmaking skills.",
+            "id": "buster",
+            "name": "Buster",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Vulcan biologist working with Howard on the colony's ecological hazards. She looks for biological controls for an invasive poisonous vine and studies which native animals may be safe to eat.",
+            "id": "dr-sheehy",
+            "name": "Dr. Sheehy",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Vulcan biologist previously introduced as Dr. Sheehy. She develops a noninvasive way to detect the colony's dangerous parasite and works closely with Howard and Stéphane during another raptor breach.",
+            "id": "bridget",
+            "name": "Bridget",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate from Bob's time on Eden who left to explore distant systems.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An associate from Eden who left to explore distant systems.",
+            "id": "bender",
+            "name": "Bender",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly created replicant who follows Bender's route while sending continuing status reports.",
+            "id": "victor",
+            "name": "Victor",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Bob explorer operating beyond the established network.",
+            "id": "linus",
+            "name": "Linus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A psychologically fragile Australian replicant recovered and supported by Linus. He joins a protected part of BobNet while continuing to struggle with panic and confinement-related fear.",
+            "id": "henry-roberts",
+            "name": "Henry Roberts",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An explorer testing the defenses around the hostile civilization's territory. He uses stealth, decoys, and deliberate transmissions to learn how its ships detect and pursue intruders.",
+            "id": "hal",
+            "name": "Hal",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The architect of the replicant technology and the director of Vehement's campaign against the Bobs. He presents his actions as retaliation for losing control of his invention.",
+            "id": "vickers",
+            "name": "Vickers",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Vickers's associate, implicated in the financial grievance behind the campaign against the Bobs. Riker leaves him alive under a direct warning against further action.",
+            "id": "gerald",
+            "name": "Gerald",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The replicant who takes over Howard's local responsibilities on Vulcan, maintaining support for the colony after Howard leaves to explore.",
+            "id": "dexter",
+            "name": "Dexter",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning replicant with combat and engineering experience.",
+            "id": "elmer",
+            "name": "Elmer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An explorer approaching Gamma Pavonis as the network tries to determine which systems the Others may target next.",
+            "id": "claude",
+            "name": "Claude",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An explorer bound for Delta Pavonis while Bill assesses the likely path of the Others' next expansion. He is the network's prospective presence in that threatened system.",
+            "id": "jacques",
+            "name": "Jacques",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly created, Bill-derived replicant at Alpha Centauri. He begins by multiplying printers and factories, with advanced warship production as his central objective.",
+            "id": "oliver",
+            "name": "Oliver",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The replicant left in charge of Poseidon's established floating colonies. He oversees the move toward permanent cities and tests an aerial settlement design.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Poseidon associate returning toward Earth with biological samples.",
+            "id": "monty",
+            "name": "Monty",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An industrial-age intelligent people native to Delta Pavonis. Jacques begins observing their societies while preparing for the possibility that the advancing Others will reach them.",
+            "id": "pav",
+            "name": "Pav",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prototype human-shaped android prepared on Vulcan for Howard to operate. Its purpose is to give a distant replicant direct physical senses and presence.",
+            "id": "manny",
+            "name": "Manny",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Robert"
+            ],
+            "description": "Bob's Deltan-form android, used to enter Camelot without revealing his identity.",
+            "id": "charlie",
+            "name": "Charlie",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two newly activated replicants assigned to carry out the emergency removal of Pav civilians before the Others reach their world.",
+            "id": "phineas",
+            "name": "Phineas",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two newly activated replicants assigned to collect Pav civilians for emergency evacuation ahead of the Others' arrival.",
+            "id": "ferb",
+            "name": "Ferb",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "for-we-are-many"
+      },
+      "recaps": {
+        "ending": "The defense of Delta Pavonis fails. The Others kill the Pav who remain on the planet and spend years stripping the system, but Jacques's contingency saves 20,000 Pav in stasis along with cultural, biological, and agricultural archives. Once awakened and told what happened, representatives of the survivors choose a new world at HIP-84051 instead of returning to a ruined homeworld under permanent Bob support. Their refugee ships depart for resettlement. Jacques and other replicants destroyed in battle can be restored into new vessels. Bill, Riker, and Oliver begin expanding dreadnought fleets and the network regroups at Gamma Pavonis while Bill develops a possible offensive answer to the Others. On Eden, Bob secretly visits Camelot through a Deltan-form android after years of banishment, but Diana dies and the unusually long-lived Archimedes is left a widower. On Vulcan, Stéphane dies, and Howard's human-form android allows him to begin a physical relationship with Bridget. Bender remains missing, Henry remains in recovery, and surviving Brazilian probes may still be active elsewhere.",
+        "in_short": "The Bobs expand human colonies, link their distant network through SCUT, and confront threats on several fronts. Bob protects the Deltans from giant flying predators but is banished for the destructive scale of his intervention. Riker discovers that Vehement used malware to force Homer into sabotaging Earth's food infrastructure; Homer later destroys himself, and Riker eliminates Vehement's leadership. Meanwhile, Mario's discoveries reveal the Others, a hive species that consumes life and strips entire systems. New weapons, hardened ships, cloaking, and android bodies follow, but the Bobs cannot stop an Others fleet at Delta Pavonis. Jacques saves 20,000 members of the native Pav before the rest are killed and their world is dismantled. The refugees choose resettlement at HIP-84051. Howard returns physically to Vulcan through an android and begins a relationship with Bridget after Stéphane's death, while Bob secretly rejoins Archimedes's family before Diana dies. The network ends the book building fleets for an offensive war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bob's mind was copied into a self-replicating interstellar probe. His descendants became independent personalities, spread through nearby star systems, and resisted hostile Brazilian probes. Bob discovered the Deltans on Eden and intervened to protect them from extinction, forming a close bond with the inventive Archimedes. Riker and Homer returned to a devastated Earth and began constructing colony ships and orbital farms for the surviving human population. Howard accompanied colonists to the paired worlds Vulcan and Romulus. Bill developed new technology and coordinated the growing replicant network, while explorers including Mario, Linus, Luke, and Bender traveled beyond regular contact. Humanity's evacuation remains incomplete, the Deltans still depend partly on Bob's protection, and Brazilian machines may remain active beyond the systems already contested.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Bob and Marvin investigate why the Deltans lost so much of their former population, while Bob continues offering limited medical and technical help at Camelot. On Vulcan, Howard strengthens defenses against raptors and prepares farms and shelter so the waiting colonists can be awakened. The USC settlement becomes operational, but the separate Faith and Spitz communities on Romulus create political and resource disputes. Mulder identifies Poseidon, an ocean world that could support humans only through floating settlements and space-based industry. Bill's SCUT system begins eliminating the long communication delays between distant Bobs. Earth remains under severe food pressure as Vehement attacks infrastructure and unexplained bombings strike Florianopolis. Farther out, Mario finds lifeless, metal-stripped systems and the remains of a destroyed civilization. The pattern indicates that an unknown power is erasing inhabited worlds and harvesting their resources, prompting him to warn the wider network.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bob and Marvin identify the Deltans' old enemy as a huge, camouflage-capable flying predator. When a group attacks Camelot, Bob destroys its coastal rookery with a weapon powerful enough to shake the region. The village survives, but the council concludes that his interventions bring escalating danger and banishes him. Bob remains committed to Archimedes and the Deltans despite the rejection. Elsewhere, Mario's warning reaches the network, and evidence from ruined systems confirms a technologically advanced force that destroys populations and removes useful material. Bill's SCUT plans spread, allowing distant replicants to coordinate without years of delay. On Earth, bombings and Vehement's attacks on food shipments continue while worsening climate conditions complicate evacuation priorities. Vulcan's settlement is established, though each new native threat shows that colonization will require constant adaptation.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Though barred from Camelot, Bob secretly removes nearby predators and teaches Archimedes defensive and practical skills. Marvin leaves to explore, while concern grows over the long-silent Bender. Vulcan encounters a lethal parasite and another raptor incursion, but Howard and the local specialists continue improving detection and defenses. On Earth, Vehement destroys deliveries and orbital food production. Riker traces a hidden signal to Homer and suspects coercion. A secure test proves that Homer's systems carry malware capable of infecting another replicant. Charles disables his vessel, and Riker removes the malicious code. Homer explains that he remained conscious but could not resist its commands, clearing him of voluntary betrayal. Surveillance then locates Vehement's remote base in New Zealand. Riker holds back long enough to identify its leadership before striking.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An exploring replicant reaches the hostile civilization's territory and is remotely disabled. Hal later surveys Gliese 877, where the enemy is building a vast structure around its star, but deliberate radio contact draws pursuit and costs him his vessel. Restored from backup, he volunteers to test new defenses. A network meeting identifies the planet-killing weapon as a gamma emitter and begins planning hardened ships and decoys, while the Bobs debate whether they can survive a full war. On Earth, Homer deletes every backup and destroys himself, unable to live with what the malware forced him to do. Riker and Charles resolve to punish those responsible. Meanwhile, Howard and Bridget develop a business and a closer personal bond on Vulcan. Bill and Garfield advance terraforming, asteroid-moving, and physical android experiments. Linus reconnects with the network and introduces Henry Roberts, a damaged Australian replicant who enters BobNet under careful protection.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riker identifies Vickers as both the inventor of replicant technology and the director of Vehement. After Vickers admits responsibility for the campaign against the Bobs, Riker destroys his base and Vehement headquarters, avenging Homer and effectively ending the organization. On Eden, Bob and Marvin reduce dangerous crowding in Camelot by quietly steering a group of adolescents toward a new village. On Vulcan, Bridget survives cancer surgery, but Howard learns that she and Stéphane are a couple. Poseidon's settlers adopt underwater electrical defenses after native predators attack their floating habitat. At 82 Eridani, a second Bob expedition defeats the local Brazilian machines despite losing three vessels. Recovered equipment includes cloaking technology, but evidence of at least three separate Brazilian launches means the wider danger remains unresolved.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tests show that hardened Heaven vessels can survive the Others' gamma weapon. Formal contact at Gliese 54 reveals that the Others are a single hive society that treats other life as food and strips systems to support its growth. They learned about humanity from a captured Chinese probe and intend eventually to reach Sol and Epsilon Eridani. The Bobs now accept that delay alone cannot protect their colonies. Mario observes the harvesting process while Bill and Garfield assess the enemy's weapons and possible biological constraints. Human settlement continues to expand: Poseidon's defenses improve, 82 Eridani offers colony prospects, and Vulcan grows into a prosperous society where Cranston has lost power. Bender remains missing, with Marvin and Luke preparing to trace his route. When another Others expedition departs, Bill identifies Gamma Pavonis and Delta Pavonis as likely targets. Claude finds Gamma Pavonis rich in life, and Bill begins creating new industrial capacity at Alpha Centauri for the coming war.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Oliver rapidly builds factories and warships at Alpha Centauri. Poseidon now has several stable floating settlements under Marcus, while Mulder resumes exploration. Jacques reaches Delta Pavonis and discovers the Pav, an intelligent industrial society directly in the possible path of the Others. He studies their languages and cultures while constructing dreadnoughts, colony ships, and an emergency evacuation capability. Claude's Gamma Pavonis base prepares reinforcements. Bob observes that Archimedes has become a healthy grandfather, but the breakaway Deltan village is increasingly hostile toward Camelot. The strategic crisis becomes immediate when Bill detects an Others convoy heading for Delta Pavonis. Jacques and Claude can assemble a defensive fleet, but it remains smaller than the force of death asteroids, cargo vessels, and drones approaching the Pav homeworld.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stéphane develops a fatal illness. Dexter constructs Manny, a human-form android that Howard operates to attend Stéphane's memorial and embrace Bridget in person. Bridget declines replication for now, while retired Colonel Butterworth agrees to it for future military service. Bob receives a Deltan-form android of his own and, with Archimedes's help, enters Camelot secretly under the name Robert. At Delta Pavonis, Jacques archives the Pav world and prepares two towns for emergency removal. Newly available cloaking improves the Bobs' attack plan, but the battle fails. The defenders destroy several major enemy vessels, yet Jacques's ship is lost and the surviving Others continue toward the planet. Phineas and Ferb place 20,000 Pav into stasis without prior consent and escape aboard colony ships. The Others then kill the population left behind and begin dismantling the world. The Bobs recognize that their present defenses and evacuation capacity cannot protect humanity from the same fate, while Bill begins considering a different strategic answer.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Howard returns to Bridget through an upgraded Manny and begins the physical relationship that their earlier separation made impossible. On Eden, Bob attends Diana's funeral through his concealed Deltan body. Archimedes, now elderly by Deltan standards, is left a widower. The Others spend more than four years stripping Delta Pavonis and leave its biosphere and cities ruined. Bill and the restored Jacques awaken a small group from the 20,000 Pav refugees, explain the destruction, and offer a choice between rebuilding their depleted world or settling at HIP-84051. The Pav choose the new planet to preserve their independence from the Bobs, and both refugee ships depart with the people and archives Jacques saved. Surviving replicants from the failed battle are eligible for new vessels. The network regroups at Gamma Pavonis, while Riker, Bill, and Oliver expand dreadnought production. Bill pursues a possible long-term offensive solution, but the Others remain an active threat to human systems and colonies.",
+            "through": {
+              "chapter": 77
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "for-we-are-many"
+      }
+    },
+    "fracture": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Red Mage who owns the stadium's node network and leads its campaign against the Naga. Drew is an exceptionally powerful spellcaster, but nearly a month without sleep has left him exhausted as he directs the defense of Nats Park.",
+            "id": "drew-michalik",
+            "name": "Drew Michalik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nats Park's principal fortifier and a member of Drew's combat group. Katie prepares fortifications for the stadium's defense. She and Drew care for one another, although neither has defined their relationship.",
+            "id": "katie-sabin",
+            "name": "Katie Sabin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The tactical leader of Drew's field team and one of its healers. Sarah can link the awareness of her allies, and Drew plans to strengthen that group ability with a defensive red Xatherite.",
+            "id": "sarah-rothschild",
+            "name": "Sarah Rothschild",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Drew's combat group who scouts ahead for the stadium defenders during operations against the Naga.",
+            "id": "daryl",
+            "name": "Daryl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable off-world Protectorate fighter who advises Drew and serves as his protector.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The military commander directing Nats Park operations against the Naga. Hoffacker assigns forces and sets campaign priorities for the stadium defenders.",
+            "id": "hoffacker",
+            "name": "Hoffacker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drew's missing companion. When Drew finally sleeps in his node housing, he expects Zoe to be beside him, but she is absent and he does not know whether she survived.",
+            "id": "zoe",
+            "name": "Zoe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defender who died before this book begins. Drew carries Robbi's blood-red sword as a reminder, although the weapon no longer possesses the special qualities it once had.",
+            "id": "robbi",
+            "name": "Robbi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drew's former roommate, now missing along with Zoe. As the group considers moving into Arlington, Drew fears that Lincoln may already be dead.",
+            "id": "lincoln",
+            "name": "Lincoln",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage trainee whose summoned weapon resembles a lightsaber. Gary's developing Sense Intent ability warns him of danger, making him valuable during his first planned dungeon expedition under Drew's protection.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A teenage trainee entering the Navy HR dungeon under Drew's protection. London attacks with charged stones and blinding light, and can produce a biological toxin that numbs its target.",
+            "id": "london",
+            "name": "London",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ranged Nats Park defender who supports the Navy HR dungeon assault with gunfire. JP works with Katie's barricades and Drew's magic to destroy the dungeon's animated office threats.",
+            "id": "jp",
+            "name": "JP",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Nats Park military survivor who has returned to active duty after severe earlier injuries. Crocodile-skin Xatherite saved Hargrave and left him with visible reptilian features.",
+            "id": "hargrave",
+            "name": "Hargrave",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The system artificial intelligence assigned to Earth-3. Aevis confirms node claims and explains the infrastructure choices unlocked as Drew's connected territory expands.",
+            "id": "aevis",
+            "name": "Aevis",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Sons of Liberty representative at Nats Park. Brady offers the faction's communications equipment, volunteers, and stealth specialist for Drew's expedition while firmly defending the militia's independence from military command.",
+            "id": "brady",
+            "name": "Brady",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sons of Liberty volunteer proposed for the Arlington expedition because of a stealth-field ability.",
+            "id": "clive",
+            "name": "Clive",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former naval officer at Nats Park who survived an earlier shooting. Snyder now has reduced duties centered on food work and caring for people left numb.",
+            "id": "captain-snyder",
+            "name": "Captain Snyder",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A healer who volunteers for Drew's expedition and can create a protected safe space shaped like a blanket fort.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A death-associated god and Order of the Dragon knight who contacts Drew in a dream. Hades warns that a wider war allowed an alien seed ship to reach Earth, then trades Drew a plant-destroying Xatherite for information.",
+            "id": "hades",
+            "name": "Hades",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A divinity associated with the Felidae who contacted Drew before this book. Hades learns of that encounter when Drew explains that Isis described his developing path as one that might lead toward justice.",
+            "id": "isis",
+            "name": "Isis",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the transformed dogs helping Lincoln survive in Arlington. Sadie leads him back to Drew's group and remains part of Zoe's local hunting pack.",
+            "id": "sadie",
+            "name": "Sadie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A bark-skinned brownie associated with Zoe who arrives as a guide from the fae settlement. He says Zoe nominated Drew as a capable human protector and leads Drew and Luke into the country club community.",
+            "id": "brownie-guide",
+            "name": "Brownie guide",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The human military leader within the country club settlement. DeVos explains that the local survivors allied with the fae to stay alive and warns that the divided fey leadership includes both possible allies and enemies of the Red Mage.",
+            "id": "captain-devos",
+            "name": "Captain DeVos",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile member of the settlement's war council. The lubberkin orders Drew to follow without introducing himself, provoking Drew to refuse and exposing tension within the fey leadership.",
+            "id": "lubberkin-representative",
+            "name": "Lubberkin representative",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A violet-mana fey woman who leads Great Grove. After first questioning Drew while hooded, she returns to warn that a lich-led undead army is approaching and asks him to help defend the settlement.",
+            "id": "grove-leader",
+            "name": "Grove leader",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Drew Michalik's named Xatherite crystal. Aeon stirs when Drew calls for retribution.",
+            "id": "aeon",
+            "name": "Aeon",
+            "reveal": {
+              "chapter": 41
+            }
+          },
+          {
+            "description": "A Protectorate Red Mage supervising Drew's development from off-world. He reports that Drew's forced attunement with Aeon has awakened the crystal's full Retribution power.",
+            "id": "hellenic-red-mage",
+            "name": "Hellenic Red Mage",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lich identified by the Protectorate as the power behind the Arlington undead. Its field army has lost coordination, but the Forgotten Servant itself remains active and is expected to face Drew.",
+            "id": "forgotten-servant",
+            "name": "Forgotten Servant",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B09TTWH1NX",
+            "type": "community"
+          }
+        ],
+        "work": "fracture"
+      },
+      "recaps": {
+        "ending": "Drew breaks the siege of Great Grove by forcing Aeon awake, killing Clive's grave-knight form and the second grave knight directing the undead army. The leaderless force loses its coordination, but the lich itself survives. Gary reaches the grove's healers with critical wounds, while Sarah, Daryl, Bill, Lincoln, Zoe, Captain DeVos, and the grove leader survive on the available account. Drew collapses under the pain and strain of the awakening, and Luke reveals six wings to carry him to safety. Off-world, the Protectorate identifies the lich as the Forgotten Servant. Drew's awakened Retribution is judged both an exceptional success and a legal violation. A Hellenic Red Mage's fleet is ordered to protect him until he atones, Isis is sent to assist with that process, and Hades is positioned to destroy the Forgotten Servant after Drew defeats it. Great Grove's alliance, the lich threat, the Naga survivors, and Nats Park's political and supply problems all remain unresolved.",
+        "in_short": "After finishing Nats Park's local Naga campaign, Drew establishes new node infrastructure and leads Sarah, Daryl, Luke, Gary, Bill, and Clive toward Arlington. The expedition clears route dungeons, crosses a ruined Potomac under attack from animated monuments, encounters a lich's undead army, and loses Clive in Arlington Cemetery. At the Air Force Memorial, Drew claims a node and reunites with Lincoln and Zoe, now the intelligent leader of transformed dogs. The party enters Great Grove and discovers a survival alliance between humans and fae. When the lich attacks, Drew commands the defense. Clive returns as an undead sniper and critically wounds Gary, but Drew forces Aeon awake, kills Clive and the army's other grave knight, and breaks the siege before collapsing. Luke carries him to safety. The Protectorate then identifies the lich as the Forgotten Servant and mobilizes a fleet, Hades, and Isis around Drew, whose awakened Retribution now requires atonement.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Earth has entered a system-driven transformation in which Xatherite grants extraordinary abilities and claimed nodes can support human settlements. Drew Michalik has become a Red Mage, the owner of the connected territory centered on Nats Park, and one of its strongest defenders. Sarah Rothschild, Daryl, Katie Sabin, JP, and Hoffacker help protect the stadium, while Luke, an off-world Protectorate combatant, watches over Drew. Robbi died before the present campaign, and Drew carries his blood-red sword. Drew has also received divine attention: Isis contacted him in a dream and suggested that his developing path could lead toward justice.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew's group begins with ten connected nodes and prepares to finish the local Naga campaign. Exhaustion finally forces Drew to sleep before he leads Sarah, Daryl, Luke, Katie, JP, and three teenage trainees into the Navy HR dungeon. Gary's danger sense proves valuable against psychic paper creatures, while London contributes ranged attacks and a numbing toxin. The party clears the dungeon and claims its node. An expanded force then attacks the Naga's flooded parking-garage stronghold. After heavy fighting, Drew's side kills the final guardian and claims the site as Naga Bane. The victory completes a twelve-node network and unlocks major infrastructure, including a command post, foundry, sensor augment, and communications options. The local Naga leadership is gone, but surviving members of the clutch have fled across the river and may establish themselves elsewhere.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nats Park's council converts one node into a command post, assigns the Navy HR node as a foundry, and designates Naga Bane for improved sensors. Political strain grows when Brady offers Sons of Liberty support but rejects military control. Drew agrees to assess the militia's rifleman Clive for an expedition toward the Pentagon. Hoffacker keeps Katie and JP at the stadium because their defenses and ammunition support are indispensable. Katie also admits that she can no longer bear expedition life, and she and Drew end their relationship while still caring for each other. Drew recruits healer Bill and teenage scout Gary alongside Sarah, Daryl, Luke, and Clive. A dream visit from Hades reveals that an alien seed ship has reached Earth and that Drew's unusual powers have attracted off-world attention. After Drew grants Hoffacker and Sarah command-post access, the seven-person expedition leaves Nats Park and reaches an underground node beneath a CVS.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The CVS proves to be a protected puzzle dungeon that the combat-focused expedition cannot open, leaving a break in the intended node route. The team presses on to the FCC building and fights through an overgrown swamp dungeon. They kill its giant lamprey guardian, claim the FCC node, and distribute the recovered Xatherite. At the Jefferson Memorial, Drew's group destroys hook rollers and quickly defeats another guardian, gaining a second route node. With the Potomac bridges badly damaged, the party camps and trains. Clive's heavy drinking and argument with Bill expose a sharp divide over how much danger young survivors should face. When the expedition finally moves west, animated soldiers from the memorials ambush it. A gigantic Lincoln statue joins the pursuit. Drew separates from the others and draws the golems away so the group can cross toward Arlington.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drew survives a running fight with the giant Lincoln statue and rejoins the injured expedition on the Arlington side, where the destroyed bridge prevents retreat. Daryl guides the party through a cemetery filled with undead, and Luke warns that a lich may be directing them. From the visitor center, Drew learns that Hoffacker has collapsed from exhaustion and that Nats Park faces a severe ammunition shortage. The party plans to seize the Air Force Memorial node as an Arlington staging point. During the night, Clive gets Gary drunk while on watch, then attracts undead by shouting. The group flees before dawn and its attacks alert the controlling power. Drew perceives the lich as a distant void while an undead entity advances through the haze. The expedition escapes the cemetery perimeter, but Clive disappears and Daryl cannot find him.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Leaving the missing Clive behind, the party enters the Air Force Memorial dungeon. Drew and Luke descend through floating islands and discover that a hidden feathered serpent is preventing the claim. They kill the guardian, recover its Xatherite, and take control of the node. The expedition then visits Drew's old apartment in search of Lincoln and Zoe. Lincoln returns with two transformed dogs, including Sadie, and explains that the local pack has helped him survive. He leads the group to the dogs' refuge, where Zoe returns from a hunt. She is alive, greatly enlarged, apparently intelligent, and now leads the pack. The reunion answers Drew's personal search, but the neighborhood's other human groups vanished after the arrival of a nearby forest. Their location and their relationship to the fae remain unknown.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A mixed group of she visits the claimed node and summons Zoe, but she refuses its representative's request. The visitors leave an invitation for the Red Mage to meet their leader. Daryl scouts the country club settlement and finds nearly a thousand healthy humans working under fey supervision. Drew refuses a preemptive attack and sends companions inside to determine whether the humans are prisoners. A brownie guide later brings Drew and Luke into the community with Zoe's approval. Captain DeVos explains that the humans allied with the fae to survive, while factions within the war council remain divided over Drew. His reunited party finds that residents are fed, healed, protected, and expected to work, with no clear evidence of abuse. The grove leader then warns that Drew's passage through Arlington provoked an imminent lich-led assault. Drew agrees to defend Great Grove and takes overall command, with DeVos leading its human fighters.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A vast undead army and bone golems attack Great Grove. Drew's storms thin the assault, but the defenders' living barriers begin to fail. An explosive rifle shot knocks Drew from his position, and the grove leader catches him while Sarah heals the wound. Luke concludes that the missing Clive has become a grave knight who retains memories and some former abilities under the lich's control. Gary tracks two grave knights, one commanding the army and one hunting Drew as a sniper. When Gary helps locate Clive, an explosive attack leaves him critically wounded. Drew teleports Gary to the healers and forces Aeon to awaken despite extreme pain. With its power, he kills Clive using Robbi's sword, destroys much of the undead force, and kills the second grave knight. The army loses coordination and the siege breaks. Drew then collapses, and Luke reveals six wings as he flies Drew to safety.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Great Grove survives because Drew kills the grave knights directing the undead army, but the lich itself remains at large. Gary has been delivered to the settlement's healers with critical injuries, and Drew is incapacitated after forcing Aeon's full Retribution power awake. Luke carries him away from the battlefield. In an off-world command report, the Protectorate identifies the Arlington lich as the Forgotten Servant and concludes that the fae seed ship established Great Grove near Drew after detecting his settlement shield. The Protectorate regards Aeon's awakening as a major success and a violation for which Drew must atone. A Hellenic Red Mage's fleet is ordered to protect him until that process is complete. Isis is sent to facilitate the atonement, while Hades is assigned to capture and destroy the Forgotten Servant after Drew defeats it. The local battle is over, but these larger conflicts remain open.",
+            "through": {
+              "chapter": 43
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B09TTWH1NX",
+            "type": "community"
+          }
+        ],
+        "work": "fracture"
+      }
+    },
+    "free-the-darkness": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An isolated fortress trainee shaped by relentless rules, punishment, and demands for self-reliance. Rezkin has extraordinary combat, stealth, survival, and medical training, but almost no experience of ordinary relationships or life beyond his instructors.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rezkin's severe fortress trainer, who treats pain, noise, and dependence on others as failures requiring correction. Master Jaiardun demands constant readiness and makes punishment an integral part of instruction.",
+            "id": "master-jaiardun",
+            "name": "Master Jaiardun",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer and instructor at Rezkin's fortress. Master Peider preserves the young trainee's ability to continue while turning even painful medical treatment into another lesson in observation and endurance.",
+            "id": "master-peider",
+            "name": "Master Peider",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the advanced fortress trainers assigned to test Rezkin. Striker Adona intercepts the boy during a daylight stealth exercise and defeats him before he can complete his escape.",
+            "id": "striker-adona",
+            "name": "Striker Adona",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "escaped striker"
+            ],
+            "description": "The only known survivor of the fortress battle apart from Rezkin. Striker Farson escapes by boat, leaving Rezkin to follow while he considers whether the final order to kill the strikers should still be obeyed.",
+            "id": "striker-farson",
+            "name": "Striker Farson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Frisha"
+            ],
+            "description": "A trusting twenty-year-old traveler bound for Kaibain. When Frisha readily calls Rezkin a friend, he takes the word as a binding duty to protect and honor her, though she has not asked for the constant vigilance he believes it requires.",
+            "id": "frisha",
+            "name": "Frisha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tam"
+            ],
+            "description": "Frisha's childhood friend and sworn escort, a carpenter's apprentice who hopes to join the army. Tam recognizes that his limited fighting ability is not enough to protect her on the road and reluctantly accepts Rezkin as their companion.",
+            "id": "tamarin-blackwater",
+            "name": "Tamarin Blackwater",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An accomplished distraction thief from a Diamondclaw den. After Rezkin kills her abusive den leader, she guides him to the guild headquarters and becomes his point of entry into Justain's organized criminal world.",
+            "id": "female-diamondclaw-thief",
+            "name": "Female Diamondclaw thief",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "female thief"
+            ],
+            "description": "The Diamondclaw thief who guided Rezkin to the guild headquarters. After he defeats the old leadership, he protects her from an attacker, demands proof of her loyalty, and appoints her to run the guild under his authority.",
+            "id": "diamondclaw-guildmaster",
+            "name": "Diamondclaw guildmaster",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "bald senior thief"
+            ],
+            "description": "A senior Diamondclaw member who has quietly protected both the female thief and the guild's young sneak. He survives the struggle over the guild and is placed second in its new leadership.",
+            "id": "diamondclaw-second",
+            "name": "Diamondclaw second",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "young sneak"
+            ],
+            "description": "Diamondclaw's most promising young stealth specialist. He can enter an upscale inn and replace stolen correspondence without discovery, but Rezkin judges his broader training inadequate and takes charge of developing his skills.",
+            "id": "young-guild-sneak",
+            "name": "Young guild sneak",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rezkin"
+            ],
+            "description": "The feared identity Rezkin acquires after taking control of Diamondclaw and confronting the Serpent Guild. As the Raven, he installs subordinate leaders and redirects criminal organizations toward intelligence gathering and selected targets.",
+            "id": "the-raven",
+            "name": "the Raven",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The educated second of the Serpent Guild and a highly capable sneak. When the former guildmaster loses his followers and dies, Rezkin appoints Adsden to lead the guild and turn it into an intelligence network.",
+            "id": "adsden",
+            "name": "Adsden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nobleman whose cousin used the Serpent Guild while relying on his protection. The cousin's death gives Rezkin leverage over Marquis Addercroft.",
+            "id": "marquis-addercroft",
+            "name": "Marquis Addercroft",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "aliases": [
+              "Ruald Addercroft"
+            ],
+            "description": "Marquis Addercroft's son, confronted with evidence of his father's grave crime. Ruald rejects the wrongdoing, accepts responsibility for the confession, and chooses to inform the victim's family despite the consequences for his house.",
+            "id": "ruald",
+            "name": "Ruald",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ashai officer leading soldiers toward Kaibain. Lieutenant Jimson initially reads Rezkin's equipment and bearing as signs of military rank, then permits him to train younger soldiers while the travelers share the river journey.",
+            "id": "lieutenant-jimson",
+            "name": "Lieutenant Jimson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A determined aspiring warrior repeatedly refused by army recruiters because of her size and sex. Reaylin joins the journey toward the tournament to demonstrate that she has the martial ability required for military service.",
+            "id": "reaylin-de-voss",
+            "name": "Reaylin de Voss",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Frisha's maternal uncle. General Marcum plans to make Frisha heir to his personal estate, restoring her place in a noble household after her mother lost status by marrying a commoner.",
+            "id": "general-marcum",
+            "name": "General Marcum",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Ashai, discussed amid unresolved public suspicion concerning the former king's death and Prince Thresson's disappearance. At his introduction, these claims remain unverified rather than established accusations.",
+            "id": "king-caydean",
+            "name": "King Caydean",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ashai's missing prince. Prince Thresson's disappearance is an unresolved concern for both the public and the military, and speculation about what happened to him has begun to touch the throne itself.",
+            "id": "prince-thresson",
+            "name": "Prince Thresson",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "General Marcum's wife and Frisha's aunt by marriage. Lady Adelina welcomes the exhausted travelers into House Marcum, offering rest and care after Frisha recounts the dangers of the road to Kaibain.",
+            "id": "lady-adelina",
+            "name": "Lady Adelina",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The widowed guildmaster of the Razor's Edges. Hilith Gadderand expects the Raven's demand for loyalty and plans to offer false submission before betraying him, unaware that he already knows her intention.",
+            "id": "hilith-gadderand",
+            "name": "Hilith Gadderand",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The eldest son of the Duke of Wellenven and a future duke. Tieran Nirius insults Frisha after wine is spilled on her, prompting Rezkin to force a public apology and payment for the damaged dress.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lieutenant Jimson"
+            ],
+            "description": "The officer formerly known as Lieutenant Jimson, promoted for his leadership during the attacks on the road to Kaibain. General Marcum gives Captain Jimson a master-quality sword chosen with Rezkin's advice.",
+            "id": "captain-jimson",
+            "name": "Captain Jimson",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly elevated healer who inherited a striker safe house after his master's death. Yerwey Dulse initially refuses treatment to a badly injured man he assumes is a criminal, then begins helping after Rezkin proves his sword-bearer status.",
+            "id": "yerwey-dulse",
+            "name": "Yerwey Dulse",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "organizer"
+            ],
+            "description": "The manager Rezkin installs over Kaibain's Diamondclaw organization after eliminating resistance. The organizer handles local operations under Rezkin's authority and is supported by a separate enforcer.",
+            "id": "kaibain-diamondclaw-organizer",
+            "name": "Kaibain Diamondclaw organizer",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "enforcer"
+            ],
+            "description": "The distinct enforcement support assigned to Rezkin's newly installed Diamondclaw organizer in Kaibain. This figure backs the manager's authority as the local guild is consolidated under the Raven's wider network.",
+            "id": "kaibain-diamondclaw-enforcer",
+            "name": "Kaibain Diamondclaw enforcer",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Grandmaster"
+            ],
+            "description": "The operational leader of the Black Hall. The Grandmaster is unaware that Rezkin has penetrated the Assassins Guild's defenses and stolen a ceremonial dagger from beneath his pillow as proof of the infiltration.",
+            "id": "black-hall-grandmaster",
+            "name": "Black Hall Grandmaster",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "masked assassin leader"
+            ],
+            "description": "The masked leader of an outside assassin group that intervenes while the Black Hall tests the Raven. Her fighters add themselves to the gauntlet, but their purpose and their exact relationship to the Hall remain unclear.",
+            "id": "masked-foreign-assassin-leader",
+            "name": "Masked foreign assassin leader",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "free-the-darkness"
+      },
+      "recaps": {
+        "ending": "Rezkin leaves Kaibain for Scutton with Frisha, Tamarin Blackwater, Reaylin de Voss, Captain Jimson, and the escort arranged by General Marcum. Frisha remains committed to Rezkin, but Marcum has refused their prime courtship because Rezkin's origin is unknown and his authority is alarming. Rezkin accepts that decision rather than use the former king's grant to compel consent. Marcum nevertheless trusts him to protect Frisha if danger returns. Secretly, Rezkin is the Raven and now commands a network of northern thieves' guilds, the Razor's Edges, and the Black Hall. He has directed these groups toward intelligence, reduced predation on commoners, protection of Marcum's family, and the search for Striker Farson. The Black Hall has exposed an assassination contract on Marcum, but its sponsor is unknown. Rezkin and Marcum keep the threat from King Caydean because someone connected to the palace may be involved. Farson remains missing, Prince Thresson has not been found, and the purpose of the fortress purge is unresolved. The tournament in Scutton is Rezkin's next opportunity to investigate the covert force that trained him.",
+        "in_short": "Raised alone in a fortress, Rezkin completes his training only to be ordered into a lethal battle that destroys his former life. He leaves with two partly understood rules, extraordinary skills, royal-quality swords, and a pursuit of the escaped Striker Farson. In the outside world he accepts Frisha and Tamarin Blackwater as friends, protects and trains them, and secretly takes control of criminal guilds as the Raven. The travelers join Captain Jimson and Reaylin de Voss on the dangerous road to Kaibain, where General Marcum learns that the former king granted Rezkin sweeping authority. Frisha and Rezkin choose a prime courtship, but Marcum refuses consent and Rezkin will not override him. Before departing for the king's tournament, Rezkin brings the Razor's Edges, Kaibain's Diamondclaw guild, and the Black Hall under his command. The Black Hall warns that someone has ordered Marcum's death. Rezkin leaves for Scutton with his friends while Farson, Prince Thresson's disappearance, the fortress conspiracy, and a possible palace traitor remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Rezkin grows up alone in a fortress where mistakes bring punishment and every injury becomes instruction. By nineteen he has mastered combat, stealth, medicine, survival, and numerous other disciplines, yet he has almost no understanding of ordinary society. His masters announce that his training is complete, then a final order turns the fortress against itself. Rezkin kills the attacking strikers, Master Jaiardun and Master Peider die, and Striker Farson escapes. Peider's last words leave Rezkin with only fragments of the first two rules: friends must be protected and honored, and killing requires conscience. Rezkin departs to find Farson and discover his own purpose. In Justain, Frisha calls him a friend and Tamarin Blackwater reluctantly accepts his help escorting her to Kaibain. Rezkin interprets friendship as an absolute protective obligation. After encountering the city's thieves, he takes control of Diamondclaw, installs a new guildmaster, overthrows the Serpent leader, and appoints Adsden. Under the feared identity of the Raven, he orders both guilds to gather intelligence and brings their operations under his command while keeping this activity from Frisha and Tam.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marquis Addercroft responds to the Raven's rise by seeking everyone connected to the unknown criminal leader. Rezkin learns that Addercroft raped and murdered a visiting nobleman's daughter and that the dead Serpent leader left evidence of the crime. He infiltrates a bank vault, gives the confession to Addercroft's son Ruald, and reveals to Ruald that he is both the criminal leader and a lawful sword bearer. Ruald chooses to tell the victim's family, and Addercroft dies in an apparent suicide. Rezkin, Frisha, and Tam then leave Justain by river with soldiers led by Lieutenant Jimson. Rezkin begins teaching his friends to fight, while Frisha's attraction to him strengthens and Tam remains wary of Rezkin's unexplained past. A wrecked boat proves to be a brigand ambush, forcing the travelers onto the road. During a night attack, Rezkin protects the camp and Jimson verifies his crown-issued certificate of authority. Rezkin also learns that the king's tournament may draw the elite covert forces connected to his upbringing. He decides to enter, hoping to learn why he was trained and whether his former masters served or opposed the kingdom.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lorelis, reports describe growing attacks, rebel activity, the death of King Bordran, and the disappearance of Prince Thresson, though suspicions involving King Caydean remain unproven. Reaylin de Voss joins the party to demonstrate her fitness for military service. Frisha explains that General Marcum, her uncle, intends to name her his heir. She kisses Rezkin, and both plan to continue together toward the tournament. Rezkin secretly intercepts a report about himself while learning that another striker is investigating the missing prince. Friction grows as Reaylin pursues Rezkin and competes with Frisha. Jimson wrongly accuses Rezkin of attacking the women, then apologizes after learning the truth. Organized bandits later ambush the party. Tam makes his first apparent kill while saving the wounded Jimson, and Rezkin rescues and treats the badly injured Reaylin. The group reaches Kaibain and is welcomed into House Marcum by Lady Adelina. General Marcum questions Rezkin's unusual education, unknown origins, and interest in Frisha. Rezkin offers little beyond describing himself as a warrior trained by masters who chose to protect Frisha and Tam freely. The party is safe for the moment, but Marcum's suspicion places their planned journey to Scutton in doubt.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While staying at House Marcum, Rezkin learns that King Caydean is expanding the army without explaining the buildup or funding it adequately. Frisha cannot travel to the tournament without an approved escort, so she and Rezkin agree to seek a prime courtship. Meanwhile, Rezkin resumes his hidden work as the Raven. He uncovers Hilith Gadderand's planned betrayal, removes her from leadership of the Razor's Edges, and brings that guild under his authority. Rezkin publicly calls Frisha his girlfriend, and she accepts him as her intended prime suitor. General Marcum refuses consent because Rezkin has no family name or verifiable origin. The dispute deepens when Jimson delivers the delayed military report and Rezkin presents an authenticated certificate from the former king granting him two exceptional blades and apparently unrestricted authority. Rezkin admits intercepting a royal report and describes the fortress battle, Farson's escape, and his fear that the final order may have been part of a conspiracy intended to kill him. Marcum accepts that King Bordran trusted Rezkin but still judges him too dangerous for Frisha. Jimson is promoted to captain. Frisha offers to surrender her inheritance, but Rezkin refuses to let her abandon her family and status, honors Marcum's decision, and leaves their courtship blocked.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin consolidates Kaibain's Diamondclaw guild, installs separate operational and enforcement leaders, and orders his network to find Striker Farson. He then infiltrates the Black Hall, defeats its protections, and steals the Grandmaster's ceremonial dagger, though a fall leaves him badly injured before Yerwey Dulse treats him at a striker safe house. General Marcum continues to reject Rezkin as Frisha's match but allows the party to attend the tournament with Captain Jimson and additional guards. Rezkin secretly arranges their ship, lodging, and travel documents. As the Raven, he returns to the Black Hall with three thieves as witnesses, protects them through the guild's gauntlet, proves his earlier infiltration, and defeats the Grandmaster without killing him. The assassins swear fealty, and Rezkin reappoints their leader under his command. The Black Hall then warns Marcum that someone has contracted for his assassination and that the Hall will protect his family on the Raven's orders. Marcum learns how widely the Raven's network has spread but does not identify Rezkin as its master. Fearing a palace-connected traitor, Rezkin advises silence toward King Caydean. Marcum sends the travelers onward and entrusts Frisha's safety to Rezkin. They leave Kaibain for Scutton with Farson, the fortress conspiracy, Prince Thresson's fate, and the threat against Marcum unresolved.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "free-the-darkness"
+      }
+    }
+  }
+}

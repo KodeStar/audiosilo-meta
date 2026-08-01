@@ -7,10 +7,12 @@
 //	    several chapters - plus a manifest.json describing the chapter list and
 //	    the book's OPF metadata. Exits 0 on success, 2 on a usage/IO/parse error.
 //
-//	metaextract ngram --source <dir-or-file> [--n 8] <sidecar.json> [more.json...]
+//	metaextract ngram --source <dir-or-file> [--n 8] <pack.json> [more.json...]
 //	    Check authored characters/recaps sidecars for near-verbatim overlap with
-//	    the source text (the no-verbatim copyright rule in AUTHORING.md). Exits 1
-//	    when any overlap is found, 0 when clean, 2 on a usage/IO error.
+//	    the source text (the no-verbatim copyright rule in AUTHORING.md). The
+//	    paths are works-community pack files - every entry in them is checked,
+//	    and a finding names the work it came from - or a bare sidecar record.
+//	    Exits 1 when any overlap is found, 0 when clean, 2 on a usage/IO error.
 //
 // Logic lives in pkg/extract; this command is transport-only.
 package main
@@ -82,7 +84,7 @@ func runNGram(args []string) int {
 	}
 	sidecars := fs.Args()
 	if len(sidecars) == 0 {
-		fmt.Fprintln(os.Stderr, "metaextract ngram: at least one sidecar JSON path is required")
+		fmt.Fprintln(os.Stderr, "metaextract ngram: at least one works-community pack (or bare sidecar) path is required")
 		return 2
 	}
 
@@ -105,5 +107,5 @@ func runNGram(args []string) int {
 func usage() {
 	fmt.Fprintln(os.Stderr, "usage:")
 	fmt.Fprintln(os.Stderr, "  metaextract split --epub <book.epub> -o <outdir>")
-	fmt.Fprintln(os.Stderr, "  metaextract ngram --source <dir-or-file> [--n 8] <sidecar.json> [more.json...]")
+	fmt.Fprintln(os.Stderr, "  metaextract ngram --source <dir-or-file> [--n 8] <pack.json> [more.json...]")
 }

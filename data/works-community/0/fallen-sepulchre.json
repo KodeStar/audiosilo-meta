@@ -1,0 +1,1852 @@
+{
+  "entries": {
+    "fallen-sepulchre": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "death wizard"
+            ],
+            "description": "A powerful death wizard whose soul has entered the afterlife. An archangel tells him that returning to life requires control tokens from all twelve underworld realms.",
+            "id": "kael",
+            "name": "Kael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Kael's wife. Her absence from paradise leaves Kael uncertain whether she survived or died beyond the boundaries of his world.",
+            "id": "ember",
+            "name": "Ember",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kael's friend. Like Ember, he is absent from paradise, so Kael cannot determine what happened to him after the crossing.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kael's father",
+              "arch-wizard"
+            ],
+            "description": "Kael's estranged father and a powerful arch-wizard whose earlier choices left deep divisions between them.",
+            "id": "gideon",
+            "name": "Gideon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "elven assassin"
+            ],
+            "description": "An elven assassin associated with the protection of death wizards. Her history and the full extent of her obligations remain concealed.",
+            "id": "elven-guardian",
+            "name": "the elven guardian",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young half-elf whom Kael protected before his death. Her current location and condition are not yet known.",
+            "id": "cassie",
+            "name": "Cassie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former captive and healer who travelled with Kael but became compromised through her connection to the Dead Sisters.",
+            "id": "former-dead-sister",
+            "name": "the former Dead Sister",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman who assumes command of the Dead Sisters after the ancient commander kills her predecessor at Arkham Zul.",
+            "id": "dead-sisters-new-leader",
+            "name": "the Dead Sisters' new leader",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A military leader who arranged Kael's assassination. He expects more death wizards to emerge and needs them for plans involving the sepulchre and its seals.",
+            "id": "ancient-commander",
+            "name": "the ancient commander",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "pirate captain"
+            ],
+            "description": "A pirate captain bound to Kael by an oath after Kael saved his daughter. He also has a transport agreement with the ancient people.",
+            "id": "dominic",
+            "name": "Dominic",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kael's protector in a neutral region of the afterlife. She holds off competing heavenly and demonic claimants and explains the twelve-token path back to life.",
+            "id": "archangel",
+            "name": "the archangel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ember’s mother and the Fae leader who works with the dragonkin queen to examine Gideon’s memories and investigate his part in Kael’s death.",
+            "id": "fae-matriarch",
+            "name": "the Fae matriarch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dominic's sister"
+            ],
+            "description": "Dominic's sister and first mate, serving aboard his cannon-equipped ships during their successful action against a larger hostile fleet.",
+            "id": "shasta",
+            "name": "Shasta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Dominic's former partner, believed dead for nearly eleven years. He reappears during a boarding action, kills the enemy commander, and reunites with Dominic.",
+            "id": "castle",
+            "name": "Castle",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared historic death wizard held inside a demon's false paradise. Kael bargains for her soul, making her his companion. Her soul will return to the queen unless he delivers a second token to a designated place in the living world.",
+            "id": "imprisoned-death-wizard",
+            "name": "the imprisoned death wizard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler who impersonates Ember inside a decades-long illusion designed to harvest Kael's power. Her bargain brands Kael. The imprisoned wizard's soul returns to her if the required token is not delivered, while Kael forfeits his own soul if he dies again.",
+            "id": "demon-queen",
+            "name": "the demon queen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The sentient presence within Kael’s weapons. It communicates directly with him and can influence how the weapons are used.",
+            "id": "blade-spirit",
+            "name": "the blade spirit",
+            "reveal": {
+              "chapter": 6
+            }
+          },
+          {
+            "description": "A rival underworld ruler who offers Kael five tokens in return for withholding tokens promised under an earlier bargain.",
+            "id": "demon-lord",
+            "name": "the demon lord",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An imprisoned royal who receives the means to escape Arkham Zul with her lady-in-waiting and a vampire ally.",
+            "id": "princess-of-sethos",
+            "name": "the Princess of Sethos",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The princess’s mercenary companion, openly hostile to uncertain allies but loyal to the princess as they prepare to escape Arkham Zul.",
+            "id": "lady-in-waiting",
+            "name": "the lady-in-waiting",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire prisoner preparing to escape Arkham Zul with the princess and her companion.",
+            "id": "vampire-ally",
+            "name": "the vampire ally",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavenly ruler who detects that one of Kael’s tokens is false, gives him the authentic token, and directs him toward the Tree of Life.",
+            "id": "heavenly-ruler",
+            "name": "the heavenly ruler",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coercive ruler who threatens war against the southern kingdom while pressuring the widowed Ember to marry him.",
+            "id": "neighboring-emperor",
+            "name": "the neighboring emperor",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The southern king's co-ruler, who shelters Ember and accompanies her to a peace conclave intended to prevent war.",
+            "id": "southern-queen",
+            "name": "the southern queen",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler defending the region of the human seal. His ability to draw on void power remains useful when an invading matriarch suppresses other active magic.",
+            "id": "southern-king",
+            "name": "the southern king",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An invading magic wielder allied with the neighboring emperor. Her presence suppresses the active powers of Ember and the elven guardian while she searches for the human seal.",
+            "id": "ancient-matriarch",
+            "name": "the ancient matriarch",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Fae High Matriarch"
+            ],
+            "description": "The Fae High Matriarch, arriving to aid the southern kingdom after its siege. She identifies herself as Ember's birth mother.",
+            "id": "eva",
+            "name": "Eva",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "dwarven priest"
+            ],
+            "description": "A dwarven priest and brother of the stronghold's general. He heals the general with divine stone magic, then sends him away on a summoned golem while remaining behind during the collapse.",
+            "id": "draven",
+            "name": "Draven",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Draven’s brother and commander of the last dwarven host. He refuses to abandon fighters who cannot escape as the stronghold’s defenses fail.",
+            "id": "dwarven-general",
+            "name": "the dwarven general",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Dead Sister's infant child, pursued by her mother's former order. Her mother says the child can consume souls.",
+            "id": "infant-daughter",
+            "name": "the infant daughter",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Leader of the remnants at the ruined dwarven seal. After losing family and fighters in the defense, he asks Kael to lead the war against the returned invaders.",
+            "id": "surviving-dwarven-commander",
+            "name": "the surviving dwarven commander",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eternal inhabitant of the Aether who identifies Kael's bond with that realm and the intelligent spirit within his weapons. The inhabitant permits Kael to return to Talona while warning that his unsettled Aether energy can endanger others.",
+            "id": "aether-inhabitant",
+            "name": "the Aether's eternal inhabitant",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mahala scout who shields and guides Kael after his return to life, helping him contain traumatic memories while leading him away from danger.",
+            "id": "mahala-scout",
+            "name": "the mahala scout",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hungry Guttertown child who accepts a broken hand and further violence to protect his critically injured older sister.",
+            "id": "tanner",
+            "name": "Tanner",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tanner's badly injured older sister. Her internal wounds are beyond the treatment available to them in Guttertown.",
+            "id": "tanners-sister",
+            "name": "Tanner's sister",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An indebted journeyman wizard abducted over a stolen vial. His captors collar him and intend to exploit his magic.",
+            "id": "cameron",
+            "name": "Cameron",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The deposed ruler of Sethos and father of its missing princess.",
+            "id": "king-bael",
+            "name": "King Bael",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guild leader who orders a search for a possible death wizard in Corinth, hoping to obtain that wizard's magic for a Broken Blade project.",
+            "id": "broken-blade-leader",
+            "name": "the Broken Blade leader",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Princess of Sethos"
+            ],
+            "description": "The former Princess of Sethos after reclaiming the Citadel. She awakens its gargoyle defenders, ends the immediate coup, and assumes the throne after King Bael's death.",
+            "id": "queen-bael",
+            "name": "Queen Bael",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "senior wizard"
+            ],
+            "description": "A former companion of Kael and an allied wizard in Sethos.",
+            "id": "galen",
+            "name": "Galen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "white dragon"
+            ],
+            "description": "The dragonkin ruler and an ally in the struggle surrounding the seals.",
+            "id": "dragonkin-queen",
+            "name": "the dragonkin queen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The future mother of the royal dragon line, entrusted to Kael with six preserved eggs for a dangerous accelerated-time maturation mission.",
+            "id": "dragonkin-heir",
+            "name": "the dragonkin heir",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mentally damaged weapon controlled by the ancient commander. Her pendant absorbs magic used by the commander's captives.",
+            "id": "white-magic-wielder",
+            "name": "the white-magic wielder",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The public leader of the returned invaders. She appears after Corinth's defense and presents her people as allies willing to clear the city.",
+            "id": "ancient-ruler",
+            "name": "the ancient ruler",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient man released when the human seal breaks. The elven guardian translates his speech, and the group identifies him as the creator and father of the old gods.",
+            "id": "newly-released-old-god",
+            "name": "the newly released old god",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The weapons specialist responsible for the cannon capability used by Dominic's fleet.",
+            "id": "fleet-alchemist",
+            "name": "the fleet alchemist",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Gideon’s party.",
+            "id": "kassik",
+            "name": "Kassik",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "A royal agent who protects the princess’s party in Corinth, senses that King Bael remains alive, and guides the group through a hidden route into the Citadel.",
+            "id": "royal-spy",
+            "name": "the royal spy",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the royal spy"
+            ],
+            "description": "The southern king’s brother, freed from captivity in Corinth. He can change shape and previously travelled in the royal spy’s disguise.",
+            "id": "southern-kings-brother",
+            "name": "the southern king’s brother",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1772308307",
+            "type": "community"
+          }
+        ],
+        "work": "fallen-sepulchre"
+      },
+      "recaps": {
+        "ending": "All Animus Seals have fallen, and the ancient invaders have reached their homeland with their underground forces still available. Their ruler survives Kael's attack and has captured Dominic's alchemist, giving the invaders access to a weapons specialist even though Dominic's cannon fleet escaped. Kael is alive and reunited with Ember and Max, but the demon queen's mark, her toxin, his conflicting token bargains, and centuries of trauma remain unresolved. After the ancient ruler kills Eva, Ember becomes Fae high matriarch and leaves to defend the Fae homeland. Queen Bael rules Sethos while publicly accommodating the invaders and covertly seeking resistance allies. Gideon has been released and sent south under another wizard's command, but Kassik's freedom still depends on Kael completing the dragonkin succession bargain. Kael, the released old god, and the vampire ally intend to seek the lost people for knowledge against the invaders. Kael ends the book critically wounded after jumping to Ember for help.",
+        "in_short": "Kael dies and enters the afterlife, where collecting twelve realm tokens becomes his only route home. Demon bargains, a false paradise, and centuries of training leave him powerful but unstable when he returns to a living world that has experienced only about a year. Ember and Max survive, while ancient invaders attack the Animus Seals and manipulate regional wars. The Princess of Sethos becomes Queen Bael after retaking her city. Kael reunites with Ember and Max but nearly kills them under the influence of trauma and a demon toxin. The ancient ruler sacrifices Eva to open the final seal, freeing every imprisoned force and an old god. Ember becomes Fae high matriarch as the resistance divides among homeland defense, alliance-building, and a search for the lost people. Dominic escapes the invaders' betrayal, but his alchemist is captured. Kael fails to kill the ancient ruler, suffers a critical neck wound, and jumps to Ember for aid.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Kael became a powerful death wizard whose path drew him into conflict with the Dead Sisters, the ancient people, and rulers who feared his magic. Ember is his wife, Max his trusted friend, and Gideon his estranged father. An elven assassin carries an old obligation connected to the protection of death wizards, while the young half-elf Cassie previously received Kael's protection. Dominic owes Kael an oath after Kael saved his daughter, but the pirate captain also entered a transport agreement with the ancients. The former captive and healer who travelled with Kael became compromised through the Dead Sisters. Political conflict in Sethos displaced King Bael and left his daughter away from home. The dragonkin queen remains a powerful participant in the struggle over the seals. At the opening of this volume, Kael's allies and enemies must confront the consequences of his death.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kael is dead, but an archangel pulls his soul into a contested region of the afterlife and explains a possible return. He must obtain control tokens from all twelve underworld realms. In the living world, the ancient commander admits arranging Kael's assassination and kills the Dead Sisters' leader, while Dominic postpones revenge to honor his transport agreement with the ancients. Ember escapes with Kael's body and saves the gravely wounded Max by transferring his injury into herself. Gideon and his party are held by the dragonkin after evidence shows they drugged Ember's group before pursuing Kael separately, although Gideon's role in the murder is still uncertain. The elven guardian preserves Kael's body and places it in a protected tomb. She then reveals that death wizards were created as weapons against the ancient enemy and that the Guardian Pact arose to control them. The old Animus Seals imprisoned the enemy, but activating those seals cost the participating death wizards their lives. One seal has already opened, making the dwarven and human seals likely targets. Ember and Max no longer accept the guardian's secrecy and decide to judge future choices for themselves.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kael's apparent reunion with Ember and Max proves to be a demon queen's long illusion, maintained for decades to harvest his power. An imprisoned historic death wizard helps him recognize the deception. Kael defeats their captor and bargains for the wizard's soul, but must deliver another token in the living world or surrender both her soul and his own. The queen brands and poisons him before sending them onward. His new companion restores her strength, trains him to shape the innate magic of death wizards, and explains that her ancient catastrophe began as an attempt to reinforce failing seals. Kael also learns that Cassie is alive, allowing Ember to identify the girl as the elven guardian's presumed-dead daughter and to learn that Kael was framed for a massacre. A competing demon lord gives Kael five tokens under terms that conflict with his first bargain. After more than a century of subjective time, Kael rescues his companion from a heavenly prison and obtains the authentic token set needed to reach the Tree of Life. Meanwhile, the Princess of Sethos, her lady-in-waiting, and a vampire escape Arkham Zul with pirate assistance and begin a dangerous journey toward a kingdom nearing civil war.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ten months after Kael's death, Ember is sheltered in a southern kingdom while a neighboring emperor threatens war and pressures her to marry him. A former companion seeks sanctuary with her newborn daughter, but Ember rejects her account because of her Dead Sisters connection. The emperor uses peace talks to launch an invasion alongside an ancient matriarch who suppresses Ember's and the guardian's active magic. Max reveals that he is true demonkind and joins the defense. The southern rulers and Ember are captured, but a white dragon and dragonkin reinforcements break the immediate siege. Eva arrives as Fae High Matriarch and identifies herself as Ember's mother. The ancient invasion then turns toward the dwarven stronghold. Draven saves his wounded brother but remains behind as the defense collapses. The invaders open the dwarven Animus Seal and release corrupted creatures, while a former Dead Sister kills a pursuer and flees with her soul-consuming infant. In the afterlife, Kael activates his collected tokens at the Tree of Life. His death-wizard companion stays behind against pursuing demons, and Kael escapes into life despite refusing to abandon the bargain that binds them. The Tree of Life is left split and contaminated.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kael passes through the Aether and awakens in a buried crypt. Although centuries passed for him after death, only about a year has elapsed in the living world. He learns that his weapons contain an intelligent spirit and that his return has made him immortal but not invulnerable. In Elnore he meets the Princess of Sethos and her companion, who initially know him only as a hunter called Spook. They survive pursuit together and cross the Black Chasm, after which Kael gains the Black Ark's healing armor while learning that a lasting answer to the seal crisis may require finding the lost people. The three enter Corinth through a hidden route during the coup. They find King Bael dying from an assassin's toxin. He charges his daughter to reclaim the throne and asks Kael to free Gideon and Kassik. Kael protects the princess from another poisoned blade, and she awakens the Citadel's gargoyles to destroy the usurper's faction. After her father's death she becomes Queen Bael. Elsewhere in Guttertown, Tanner steals one of Kael's black crystals to save his injured sister. The attempt revives and transforms her with volatile magic, and the siblings escape after she rejects recruitment by the Broken Blades.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kael bargains with the dragonkin queen for Gideon's release. In return, he must take the queen's heir and six preserved royal eggs into a faster-time dimension so the heir can mature and restore the royal line. Kassik's release is deferred until that mission succeeds. Once Gideon is freed, Kael nearly kills him, stopping only when Gideon says Ember and Max survived. Kael brings him south for answers. Ember's allies hear that a mature death wizard restored Queen Bael, then see a hooded wizard break an invading shield. The ancient commander traps Ember's group with magic-suppressing pendants and a damaged white-magic wielder. Kael arrives and identifies himself, but an assassin interrupts the confrontation. Kael initially believes Ember and Max are further illusions. Under pressure from the demon toxin and his trauma, he kills the assassin and an ancient wizard by consuming their souls, then turns on Ember and wounds her. The elven guardian incapacitates him. After allies stabilize Ember, Kael confirms that the guardian once lived as the goddess of assassins. He nearly attacks Ember again during a memory episode, but she restores his awareness. The spirit in Kael's blades removes their harmful magic from her wounds, and the group turns toward the endangered human seal.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Corinth is attacked by corrupted dragon-like creatures. Gideon and the dragonkin defenders help repel them, after which the ancient ruler appears and presents her people as allies. This public intervention gives the invaders political cover. At another gate, ancient forces take Eva captive by threatening civilians. Kael's group reaches the human Animus Seal, but the ancient ruler arrives with Eva and explains that the Fae matriarch's blood can collapse the sepulchre. Reinforcements overpower the defenders, and Eva is killed on the seal. The sepulchre collapses, every Animus Seal is now open, and the newly released forces drain Kael's magic into binding stones. Kael draws on the death accumulated in the nearby forest, turns its creatures against the invaders, and wounds their ruler, forcing her withdrawal. The broken seal also releases a living man from the Aether. With the elven guardian translating, the group identifies him as the creator and father of the old gods. Ember has lost her mother, the invaders are fully released, and Kael's allies gain an ancient figure who may understand their enemy.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kael reunites with the vampire ally and joins a plan to keep the released old god from enemy control. Queen Bael publicly grants the invaders sanctuary in Corinth while privately seeking cooperation with the southern kingdom. She sends Gideon south under a master wizard's command. Kael rejects an immediate assault on the invaders' defended stronghold, arguing that the resistance first needs intelligence. By the time his group reaches the Black Chasm, Dominic has already carried the invaders to their homeland. The old god explains that they seek the original magic taken from them and warns that large underground forces remain. The resistance divides its work: Ember will gather armies and defend the Fae homeland after being chosen as its new high matriarch, while Kael, the old god, and the vampire will seek the lost people. Dominic anticipates betrayal at the landing and uses his prepared cannon ships to destroy or scatter the shore force, allowing his fleet to escape. The ancient ruler nevertheless captures his alchemist. In Corinth, Kael attempts to assassinate the ancient ruler but is trapped by a ward and suffers a severed neck artery. He wounds her before she escapes, then uses the shutdown of the city's anti-magic field to jump to Ember, critically injured and seeking help.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1772308307",
+            "type": "community"
+          }
+        ],
+        "work": "fallen-sepulchre"
+      }
+    },
+    "feet-of-clay": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Sir Samuel Vimes"
+            ],
+            "description": "Commander of the Ankh-Morpork City Watch and, to his own discomfort, now a knight and a married man. A dogged, incorruptible policeman who deeply distrusts the powerful and the well-born, himself included.",
+            "id": "sam-vimes",
+            "name": "Samuel Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Watch's Captain, a huge, plain-spoken, dwarf-raised man whose transparent decency gives him a natural command over the city's people. He keeps quietly to himself the evidence that he may be Ankh-Morpork's true king.",
+            "id": "carrot-ironfoundersson",
+            "name": "Carrot Ironfoundersson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sergeant in the Watch and Carrot's partner in work and in life, a young woman who is also a werewolf. Sharp-nosed and self-contained, she brings senses no human officer can match to an investigation.",
+            "id": "angua",
+            "name": "Angua",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Watch's stout, cautious sergeant, promoted well beyond his ambitions and happiest when a shift passes without incident.",
+            "id": "fred-colon",
+            "name": "Fred Colon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Watch's grubby, disreputable corporal, a small scrounger of famously uncertain ancestry, forever on the lookout for a profitable angle.",
+            "id": "nobby-nobbs",
+            "name": "Nobby Nobbs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Patrician",
+              "Havelock Vetinari"
+            ],
+            "description": "The cold and brilliant Patrician of Ankh-Morpork, the city's ruler. As the story begins he starts, inexplicably, to fall ill, and his physicians cannot say why.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf newly hired into the Watch as an alchemist and examiner of evidence, meticulous and clever with substances and analysis. Cheery quietly begins to defy dwarf custom by presenting openly as female.",
+            "id": "cheery-littlebottom",
+            "name": "Cheery Littlebottom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the city's golems, a man-shaped figure of fired clay that works without rest, food, or sleep, owned like a tool and animated by a scroll of sacred words placed in its head. Golems never speak and never stop; Dorfl labors in a slaughterhouse.",
+            "id": "dorfl",
+            "name": "Dorfl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient master of Ankh-Morpork's College of Arms, the office that records bloodlines and grants coats of arms. A frail, near-blind vampire of enormous age, he presides with quiet authority over the city's tangled genealogies.",
+            "id": "dragon-king-of-arms",
+            "name": "Dragon King of Arms",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "feet-of-clay"
+      },
+      "recaps": {
+        "ending": "Vimes realizes the Patrician is being poisoned not through his food but through the arsenic worked into his candles, and traces the scheme to Dragon King of Arms, the ancient vampire who runs the College of Arms. The old herald has been forging bloodlines to prop up a puppet king and unseat Vetinari, and is entangled with the golems' tragedy. The murders were committed by a golem the city's other golems had secretly bought, freed, and overloaded with words and expectations until it broke; unable to bear what it had done, it destroys itself. Confronted, Dragon King's plot collapses and his heraldic college is consumed by fire. The golem Dorfl, nearly destroyed, has his controlling scroll removed and, rather than falling inert, chooses to keep living and acting by his own conscience; he becomes a free being and the Watch's newest constable. The absurd discovery that Corporal Nobbs holds papers naming him a lost earl is quietly shelved. Vetinari recovers and returns to power, and Cheery Littlebottom is accepted living openly as she wishes.",
+        "in_short": "Commander Vimes's City Watch investigates two linked mysteries: a pair of baffling murders of inoffensive old men, and the slow, deliberate poisoning of the Patrician, Lord Vetinari. The city's golems, clay workers owned as tools and driven by the words in their heads, are at the center of it: they had secretly pooled their money to buy and free one of their own and fill it with hopes and instructions, but the weight of conflicting commands and impossible expectations drove that golem mad, and it became the killer before destroying itself. Behind the wider plot stands Dragon King of Arms, the vampire master of the city's heralds, who is poisoning Vetinari and using forged genealogy to try to install a controllable puppet king. Vimes works out that the poison is arsenic soaked into the Patrician's candles. The conspiracy is broken and the College of Arms burns. The golem Dorfl, freed of his owning scroll, chooses to become a moral, self-owning being and joins the Watch, and Vetinari recovers.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the City Watch books: Sam Vimes rose from the drunken captain of a near-defunct Night Watch to Commander of a large and growing City Watch, and married the wealthy noblewoman Lady Sybil Ramkin. Under the Patrician, Lord Vetinari, the Watch was rebuilt and opened to the city's many peoples, gaining troll, dwarf, and werewolf officers. Its most beloved member, the giant, dwarf-raised Captain Carrot Ironfoundersson, quietly declined strong evidence that he is the rightful heir to Ankh-Morpork's lost throne, choosing to remain a watchman and to keep the pragmatic Vetinari in power.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Commander Vimes's City Watch, now a large and mixed force, faces two puzzles at once. Harmless old men are turning up murdered with no clear motive, and the Patrician, Lord Vetinari, has begun to sicken in a way his physicians cannot explain and Vimes is convinced is poison. In the background stand the city's golems, silent, tireless clay laborers owned as property, and a new dwarf recruit, Cheery Littlebottom, joins the Watch to help examine the evidence.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "feet-of-clay"
+      }
+    },
+    "fermentation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The owner of Sutton Farm and a formidable mage who maintains mana-cleansing crops and a fragile safeguard against dangerous mana. John is trying to reduce a mysterious apocalypse count while avoiding the violence that once defined his public life.",
+            "id": "john-sutton",
+            "name": "John Sutton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "John's closest partner at Sutton Farm, Ellie combines witchcraft, invention, and practical food work. She experiments with an ale-based cheese spread beside John and helps explore whether their wheat can become durable noodles.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nearly thirteen-year-old member of the farm household who already has a class. Ben trains with Thomas and hidden specters, while the adults consider whether remaining under John's protection could leave him too confident in his own abilities.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the bull"
+            ],
+            "description": "A mana-sensitive bull and powerful guardian of Sutton Farm. Ferdie can change his size and assume a barn-sized armored form capable of breathing fire, making him both a farm companion and a major defensive force.",
+            "id": "ferdie",
+            "name": "Ferdie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ellie's familiar, a six-foot rooster charged with lightning and marked by a decorative eyepatch. Although the eyepatch suggests an injury, Sigvald can see through both eyes and remains an imposing magical presence at the farm.",
+            "id": "sigvald",
+            "name": "Sigvald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former ruler of Allera, now living in Fairford and devoting her attention to research into the mysterious doorway. Others hope the growing crisis in her former nation will persuade her to resume leadership.",
+            "id": "katrine",
+            "name": "Katrine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former bandit who serves as Fairford's administrator and remains an ally of John Sutton.",
+            "id": "wolf-king",
+            "name": "Wolf King",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "sentient plant adviser",
+              "tower administrator"
+            ],
+            "description": "A magical researcher who operates through the giant plant above Shadow Tower. The administrator joins the group working on the mysterious doorway and brings specialized knowledge to the effort to activate it safely.",
+            "id": "shadow-tower-plant-administrator",
+            "name": "Shadow Tower plant administrator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder sage who joins the group researching the mysterious doorway and its newly decoded activation spell.",
+            "id": "elder-sage",
+            "name": "elder sage",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sage involved in the effort to understand the mysterious doorway. The hermit has useful knowledge of its operation but behaves antagonistically toward the other researchers.",
+            "id": "hostile-hermit-sage",
+            "name": "hostile hermit sage",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Sutton Farm defender and practical organizer who trains Ben alongside hidden specters. Thomas supports the young classholder's development and argues that Ben should eventually learn beyond the security of John's protection.",
+            "id": "thomas",
+            "name": "Thomas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant who reports worsening war and food inflation and supports relief efforts.",
+            "id": "merchant",
+            "name": "merchant",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rabia"
+            ],
+            "description": "A farm co-operator and magical-machinery collaborator at Shadow Tower. Rebea helps John turn his tested milling enchantments into the first physical factory machine, supporting his attempt to process wheat at much greater scale.",
+            "id": "rebea",
+            "name": "Rebea",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A controller of surrendered attackers who marks the prisoners with a burning brand, allowing her to kill any marked captive from a distance.",
+            "id": "eva",
+            "name": "Eva",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mid-ranked disciple of Joro from Soaring Cloud Tower who was captured after taking part in the attack on Jem. Koeri explains the recently emerged tower's hierarchy and identifies its three masters.",
+            "id": "koeri",
+            "name": "Koeri",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Soaring Cloud Tower mage captured after the attack on Jem. Her personal name remains unresolved, but she is identified as another disciple of Joro and is taken to Sutton Farm before John's visit to the tower.",
+            "id": "second-captive-tower-mage",
+            "name": "second captive tower mage",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noble sponsor behind the attack on Jem. He conscripts troops for the anticipated conflict with Allera, prompting John to order an Ecclesia investigation.",
+            "id": "count-yevon",
+            "name": "Count Yevon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Mechanicist and one of the three masters of Soaring Cloud Tower. Joro is the grandmaster claimed by the two captured tower disciples and holds a senior place in an organization that has only recently emerged from long isolation.",
+            "id": "joro",
+            "name": "Joro",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Soaring Cloud Tower's three masters and a specialist in curses. Orateth is introduced through Koeri's account of the isolated tower, whose mages claim they were misled about the land where the attack on Jem occurred.",
+            "id": "orateth",
+            "name": "Orateth",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Forged Lord"
+            ],
+            "description": "The metal-working master among Soaring Cloud Tower's three sages. The Forgelord represents a path of magecraft focused on shaping metal, alongside Joro and Orateth.",
+            "id": "forgelord",
+            "name": "Forgelord",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A familiar bonded to Ellie. By borrowing Storm’s power, Ellie can form steel-feathered wings, channel lightning through them, and fly.",
+            "id": "storm",
+            "name": "Storm",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge three-armed creature encountered in an insect-infested ruined town in the Forbidden Lands. It is besieging the town's tower when John directs Ferdie to confront it.",
+            "id": "three-armed-beast",
+            "name": "three-armed beast",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A human-shaped legendary captive kept in Soaring Cloud Tower's menagerie from its earliest days. It detects a royal quality in John's scent and says the beasts' king is assembling forces to dominate humankind.",
+            "id": "captive-humanoid-legendary-beast",
+            "name": "captive humanoid legendary beast",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A giant stone worm assigned to guard a hidden portal for the approaching Beast King. It initially mistakes John for a dragon and reveals that the portal is one part of a larger invasion network intended to bring the beasts into this land.",
+            "id": "stone-worm-portal-guard",
+            "name": "stone-worm portal guard",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "dragon soul in John's mana pool"
+            ],
+            "description": "A sleeping dragon soul bound to the blue life flame within John's mana pool. It grows stronger as John does and may eventually awaken, seize his body, and turn his increasing power into a threat to the world.",
+            "id": "dormant-dragon-spirit",
+            "name": "dormant dragon spirit",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Flying Eagle who commands a wheat shipment from the plains and returns to Sutton Farm with the harvest.",
+            "id": "flying-eagle-leader",
+            "name": "Flying Eagle leader",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Allera's ruler, who now uses the title Iron Monarch and has begun a major offensive against Lepiera. The invading army is heavily armored and equipped with lightning weapons.",
+            "id": "iron-monarch",
+            "name": "Iron Monarch",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of the Holy Knights, arriving at Sutton Farm to ask the Eternal Flame for aid. High Marshal Helbright reports that Lepiera's army is collapsing before tireless armored troops and remains to await John's answer.",
+            "id": "high-marshal-helbright",
+            "name": "High Marshal Helbright",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the robed figures Ben discovers inside a sealed guardroom above Lepiera's capital gate as the invading army approaches.",
+            "id": "hostile-gate-mage",
+            "name": "hostile gate mage",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The officer carrying the Ecclesia banner during the defense of Lepiera's capital. Despite being wounded at the broken main gate, the commander stays with the Holy Knights during their counterattack.",
+            "id": "capital-city-commander",
+            "name": "capital city commander",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ben's specter watcher"
+            ],
+            "description": "One of Ben's two small specter guardians. Aurora emerges from the shadows beside Henluin when Ben joins the defense of the breached capital gate, attacking threats with exceptional speed and protecting him amid the invading soldiers.",
+            "id": "aurora",
+            "name": "Aurora",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ben's specter watcher"
+            ],
+            "description": "One of the two small specters assigned to protect Ben. Henluin fights alongside Aurora at the shattered gate, intervening when Ben and the wounded defenders face the invading force and helping keep his young charge alive.",
+            "id": "henluin",
+            "name": "Henluin",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A curse-bound mage organization supporting the invasion of Lepiera's capital. Its representatives demand surrender and claim they intend to replace a failed world order, but they cannot disclose the identity of their master.",
+            "id": "order-of-the-new-dawn",
+            "name": "Order of the New Dawn",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The senior leader of the plains alliance. John appoints the supreme khan to the Ecclesia council and gives the leader command of the independent Swift Wind Army.",
+            "id": "supreme-khan",
+            "name": "supreme khan",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning guardian of the Old Way and an ally from John's earlier struggles. Togine remains away from the central events of this volume until Katrine's final warning confirms his death.",
+            "id": "togine",
+            "name": "Togine",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An interstellar raiding organization that exploits less powerful worlds for resources and captives. The Cabal has learned the location of John's world and is coming, making it an immediate apocalypse-level danger.",
+            "id": "cabal-of-the-broken-gate",
+            "name": "Cabal of the Broken Gate",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0BVDDRNH5",
+            "type": "community"
+          }
+        ],
+        "work": "fermentation"
+      },
+      "recaps": {
+        "ending": "Lepiera's capital survives both attacks. Ferdie and Sigvald destroy the second Iron Monarch body, while the legendary beasts rout the duplicate army. John takes ten Order of the New Dawn mages alive, although two senior mages escape toward the production base. High Marshal Helbright arrives with the plains forces and receives orders to restore the border, clear remaining invaders, and manage the movement of civilians from occupied Allera settlements. John, Ellie, Ferdie, and the captives return to Shadow Tower. The prisoners carry three linked curses involving coerced loyalty, fate, and stolen life, leaving the Order's master and its possible connection to Soaring Cloud Tower unresolved. John resumes farm expansion, but the dragon spirit remains inside him and three beast portals are still active. Katrine then sends a desperate message from beyond the world: Togine is dead, she disclosed the world's location under torture, and the Cabal of the Broken Gate is coming to exploit and enslave it.",
+        "in_short": "John Sutton expands Sutton Farm's mana-cleansing wheat into mills, noodles, and portable meals while investigating several linked threats. A visit to Soaring Cloud Tower exposes slavery, loyalty conditioning, and a prophecy of a Beast Tide. John destroys one of four beast portals, then learns that his blue flame contains a dragon spirit that wants his body. When the Iron Monarch's duplicate army invades Lepiera, Ellie helps John resist the dragon's influence and return as the Eternal Flame. Ben uncovers sabotage at the capital gate, John saves the first defense, and Ferdie leads legendary beasts that break the second assault. Ten enemy mages are captured, but their leaders and production base remain free. As John returns to farm and tower work, Katrine warns that Togine is dead and the Cabal of the Broken Gate has learned the world's location, creating an imminent interstellar threat.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: John Sutton established Sutton Farm in a mana-damaged valley and became a public leader through the Ecclesia, although he now wants a life centered on farming rather than war. Ellie remains his closest partner, combining witchcraft, invention, and practical judgment. Ben is growing into a trained classholder under the protection of the household and two hidden specters. Ferdie and Sigvald are powerful animal companions who defend the farm. John's work has become larger than the farm itself: his wheat can consume harmful mana, while a reverse-filter enchantment helps prevent dangerously pure mana from destabilizing the world. Former allies and rulers have gathered around the valley, and Shadow Tower preserves research connected to the First Mage. John also carries blue dragon flame and immense power, but the full consequences of that inheritance are not yet understood. Beyond the valley, Allera is unstable, Lepiera faces growing pressure, and food shortages threaten ordinary people.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: John finds that his experimental wheat has not yet removed the valley's remaining mana taint, while a mysterious counter assigns him ten apocalypse points. Refugees fleeing hunger and the expected Allera-Lepiera war pour into Fairford, where John approves settlement for those willing to work. He also helps researchers calculate an activation for the First Mage's doorway. A hostile hermit opens it early to an unknown world, attacks the group with unusually dense golden mana, and is apparently killed after his summoned dragon drags him through. The incident proves that powers beyond this world can make contact. John continues the harvest and improves a mechanical combine while war and food prices worsen. Ben asks to leave the valley for a merchant apprenticeship, forcing John and Ellie to weigh safety against his independence. Ellie recognizes that Ben needs greater independence, but her final consent is still pending. With a properly calculated destination ready, Katrine and an elder sage pass through the doorway, planning to return after a year.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John's promise to remain in this world until it is restored reduces his apocalypse count from ten to nine, though the system gives no explanation. Ben departs with the merchant, and John turns the harvest toward famine relief. With help from the Shadow Tower plant administrator, he separates wheat into refined flour and begins designing a mana-powered mill. Ellie tests bread and solves the noodle recipe, while Rebea helps construct machinery and manage excess mana. The farm expands rapidly, adding workers, cattle, and large-scale baking capacity. The work is interrupted when raiders burn Jem and chain its residents. John, Ellie, Thomas, Ferdie, and Sigvald rescue the settlement, defeat the attackers, and accept their surrender. Eva places a lethal brand on the prisoners for control. Jem is safe, but the captured force's sponsor and purpose have not yet been established, leaving John with both an urgent investigation and a growing food operation.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Jem prisoners reveal that a count ordered the raid and that two captive mages came from Soaring Cloud Tower. Koeri identifies its three masters as Joro, Orateth, and the Forgelord. John and Ellie travel toward the tower with the mages and Ferdie, learning that the tower accepts human thralls and predicts a world-ending Beast Tide. Koeri's missing childhood memories, altered age, and cursed bracer suggest that the tower also conditions its own disciples. Before reaching it, the party stops in the Forbidden Lands, where enchanted insects threaten a crucial wheat harvest. John confirms that the crop is safe, then leads an assault on the swarm's nest. His immense flood spell destroys most of the ruined town above it but creates a corrosive mana storm, forcing the group underground. They fight to a chamber containing a device that manufactures insects from a specimen trapped in amber. John removes the specimen, damages the machine, and drains the storm, ending the immediate infestation. Recent replacement parts show that someone had deliberately kept the ancient device operating.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John heals the great beast Ferdie fought, then enters Soaring Cloud Tower through a vast sensory curse. Inside, laborers who failed mage training live as collared thralls. Orateth explains that the tower hid for more than two centuries after a prophecy warned of humanity's enslavement by beasts. She says its masters now want to unite humanity, but Ellie discovers that the guests' food and tea contain an accumulating loyalty drug. A captive legendary beast confirms that a Beast King is raising armies, and John's quest identifies the Beast Tide as the first of three major apocalypse threats. When the masters test him, John withstands the Forgelord's attack and reveals his mana-less blue flame. Their attitude changes immediately. John trades a sample of that flame for shared research and secures a non-aggression agreement, but refuses an offer to become a fourth master. Ellie objects that the arrangement leaves the tower's slavery intact. On their departure, they discover that an unknown party has already excavated the disabled insect machine.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at Sutton Farm, John commits the Ecclesia to an explicit anti-slavery position while the missing insect machine remains a future danger. Shadow Tower research connects its duplication spell to ancient theories that cannot copy minds or souls, leaving the living insects unexplained. John also tests a dangerous growth treatment. The process, called manamorphosis, strengthens his body and reveals that his blue dragon flame functions as an unusual, extremely dense mana pool, but the treatment is unsafe for anyone else. Reopening the iron mine exposes a vast cavern where a stone worm guards one of four portals prepared for the Beast King's invasion. John destroys that portal and spares the guard under a flame constraint. Records then explain why the underground witnesses fear him: dragon spirits can survive death and manipulate new hosts. John recognizes the archived dragon as the source of his blue flame. A quest confirms that its soul sleeps inside his mana pool, grows whenever he grows stronger, and may eventually take his body. Ellie helps him accept the danger without surrendering his own identity.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A plains caravan delivers wheat, allowing Sutton Farm's automated mills and noodle lines to begin supplying portable meals at scale. Its leader also brings news that Allera's ruler now calls himself the Iron Monarch and has launched a major invasion of Lepiera with armored troops and lightning weapons. High Marshal Helbright arrives to ask John to return to battle, reporting that the enemy kills resisters, enslaves survivors, and overwhelms Lepiera's retreating army. John hesitates because killing increases his power and strengthens his desire to use it. That conflict gives the dragon spirit an opening to attack his mind. Ellie and Sigvald enter the struggle, and Ellie reaches John through their bond and the remembered ideal of the Eternal Flame as hope rather than domination. John forces the dragon back, but now knows it can try to possess him. He agrees to help the threatened population without treating the war as service to a nation. Ellie and Ferdie join him, Thomas remains to defend and supply the farm, and John resumes command of the Eternal Flame.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lepiera's capital, Ben persuades his merchant associates to donate their food stores before the siege. He then discovers robed saboteurs preparing to destroy the main gate. Ben disrupts them and warns the city, but a hostile mage still blasts open the gate and lets the Iron Monarch's tireless armored troops into the breach. Ben, Aurora, and Henluin support the defenders until John and Ellie arrive. John kills the fleeing hostile mage, seals the breach with flame, and confronts the Iron Monarch. The emperor's armor absorbs nearby mana and counters direct magic, but John releases more of his internal power, assumes a blue-flame armored form, and physically defeats him. The invading army retreats, buying only a short reprieve. Before interrogation, the Iron Monarch's body destroys itself. Examination of other corpses reveals identical manufactured soldiers whose bodies vanish outside their armor. John and Ellie conclude that an external system creates bodies and installs collected souls within them. The production base and enemy mages remain active, while every death John causes risks strengthening the dragon's influence.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John rewards Aurora and Henluin for protecting Ben and promises both specters another favor. With no quarry close enough, he orders part of the palace dismantled so citizens can rebuild the gate and walls before the enemy returns. His appeal to place lives above symbols spreads the Eternal Flame's blessing among the workers. The next duplicate army is far larger. Four mages from the Order of the New Dawn demand surrender and claim to seek a new order for humanity, but a curse prevents them from identifying their master. John releases them with an ultimatum, and the attack begins under a replacement Iron Monarch. Enemy mages keep John occupied while he tries to capture rather than kill them, limiting the dragon spirit's leverage. Ben and the city commander delay the duplicate emperor until Ferdie arrives as a legendary draconic bull leading other legendary beasts. Ferdie and Sigvald destroy the emperor's armor and kill the duplicate. The beasts rout the army, John captures the enemy mages, and two powerful enemies escape toward their base.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "High Marshal Helbright and the allied plains forces reach the liberated capital after the battle. John orders them to clear the remaining invaders, restore the border, secure populated Allera settlements, and move civilians into Lepiera. He then returns with Ellie, Ferdie, and ten captured Order mages to Shadow Tower. Ellie finds that Ferdie's purified mana offers protection from divination and fate magic. She also detects a coercive plant extract in the prisoners, raising a possible connection to the conditioning used at Soaring Cloud Tower. The plant administrator identifies three curses on the captives: enforced obedience linked to the drug, fate-binding, and theft of life that accelerates aging. The Order's master, production system, escaped leaders, and relationship to the tower remain unresolved. John resumes plans for winter wheat and a larger farm, while the dragon spirit and three beast portals remain active dangers. Katrine then sends a final warning: Togine is dead, she revealed the world's location under torture, and the Cabal of the Broken Gate is pursuing her and coming to exploit and enslave the world.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "audible:uk:B0BVDDRNH5",
+            "type": "community"
+          }
+        ],
+        "work": "fermentation"
+      }
+    },
+    "fire-and-song": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A publicly recognizable Galen's Institute cadet whose rapid advancement has earned him the unofficial title Iron Prince of Galen's. On his first date with Aria, he helps subdue four Penview cadets without seriously injuring them.",
+            "id": "rei",
+            "name": "Rei",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A leading first-year combatant at Galen's Institute and Rei's date. She works with him to restrain four Penview cadets who corner them at a mall, then shares the awkward discovery that their competitive fame now follows them off campus.",
+            "id": "aria-laurent",
+            "name": "Aria Laurent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Viv"
+            ],
+            "description": "Rei's oldest friend and a skilled member of Aria's squad. She exploits the opening created by Rei's simulated shoulder sacrifice to eliminate the opposing Lancer during training. Her interest in Logan is already evident.",
+            "id": "viviana-arada",
+            "name": "Viviana Arada",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful member of Aria's squad who reinforces Rei's group in training but resents accepting Rei's commands.",
+            "id": "logan-grant",
+            "name": "Logan Grant",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Catcher"
+            ],
+            "description": "A member of Aria's squad who is concerned that Rei's unexpected summons to the administration building may involve Shido.",
+            "id": "layton-catchwick",
+            "name": "Layton Catchwick",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cash"
+            ],
+            "description": "The Lancer in Aria's six-person squad. She fights beside Rei's group during sectional training when two opposing teams form an alliance against them.",
+            "id": "chancery-cash",
+            "name": "Chancery Cash",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rei's anomalous CAD and the concealed reason his closest teammates suspect an administration summons may be dangerous. Its unusual development makes any official interest in Rei especially sensitive to him and his trusted friends.",
+            "id": "shido",
+            "name": "Shido",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Galen's chief combat instructor. She evaluates Aria's squad without favoritism, praises sound tactical choices, and corrects the command mistakes that accompany them. She expects cadets to understand both victory and its cost.",
+            "id": "valera-dent",
+            "name": "Valera Dent",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rei's brawler instructor. He summons Rei to the administration building after squad training, setting in motion a confidential meeting that Rei's friends fear may concern Shido and the limits placed around it.",
+            "id": "michael-bretz",
+            "name": "Michael Bretz",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aria's uncle and the commanding officer of Galen's Institute. He personally oversees Kamiya Corporation's confidential sponsorship approach to Rei and warns that its interest appears disproportionate to Rei's public record.",
+            "id": "rama-guest",
+            "name": "Rama Guest",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kamiya Corporation's negotiator in its approach to Rei. She presents an extraordinary sponsorship package and admits the corporation has a private reason for moving before more established sponsors can approach him.",
+            "id": "kamiya-corporation-fixer",
+            "name": "Kamiya Corporation fixer",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Kamiya Corporation and an A8 CAD user. He directs an aggressive effort to isolate Rei from competing sponsors, yet forbids pressure against Rei's friends or former home and shows a personal interest in Rei's abandonment.",
+            "id": "dr-kamiya-hiroto",
+            "name": "Dr. Kamiya Hiroto",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Galen's medical officer who treats Rei after the manipulated fortitude test ruptures part of his lung. He joins the staff responsible for Rei's recovery, future examinations, and continuing medical checks.",
+            "id": "willem-mayd",
+            "name": "Willem Mayd",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A medical officer involved in Rei's recovery after his fortitude test is deliberately pushed beyond safe limits. She helps oversee his treatment and becomes part of Galen's expanded monitoring plan for his health.",
+            "id": "amina-ashton",
+            "name": "Amina Ashton",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer supervising Galen's elite squads during travel to Sectionals. He expects cadets to solve tactical problems independently and holds direct authority over Firesong throughout the tournament trip.",
+            "id": "dyrk-reese",
+            "name": "Dyrk Reese",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite second-year Lancer traveling to Sectionals with Firesong. A former Sector 9 first-year champion, he is one of Galen's high-expectation competitors and a proven presence in the older-year bracket.",
+            "id": "anatoly-sidorov",
+            "name": "Anatoly Sidorov",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A concealed participant in a plan to obtain covert access to an arena system. She arranges for a hidden, time-limited access tool to be delivered at the tournament through a contractor with a violent past.",
+            "id": "solista-laurent",
+            "name": "Solista Laurent",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lasher"
+            ],
+            "description": "An older Galen's competitor who previously trained Rei's group. At Sectionals, he publicly backs Rei and ends a rival cadet's attempt to provoke him before the tournament begins, acting as an experienced ally.",
+            "id": "christopher-lennon",
+            "name": "Christopher Lennon",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An artificial intelligence with influence over SCT operations and a private communications link to Valera Dent. It concedes that Firesong's convenient opening pairing may have been arranged as a test for Rei.",
+            "id": "the-mind",
+            "name": "The Mind",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer who supervises Catcher's private test of Ruinous. She recognizes the ability's competitive potential and directs Firesong to practice silent mental activation so opponents cannot anticipate it.",
+            "id": "sarah-takeshi",
+            "name": "Sarah Takeshi",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Valormade's first-year Lancer leader and a leading Sectionals competitor. His Breakstep lets him control distance, and he defeats Viv before meeting Rei in the individual semifinal. He treats his defeated opponent responsibly.",
+            "id": "castro-vadem",
+            "name": "Castro Vadem",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kenneth Academy's chief SCT arbiter. After the attack on Rei, she announces the arena-hack investigation, postpones affected competition, and suspends nonessential systems while software and physical security are reviewed.",
+            "id": "major-ashling-jones",
+            "name": "Major Ashling Jones",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Solista Laurent's adult son and Aria's brother, an S-ranked professional fighter concealed by a projection disguise. He destroys Solista's arena trigger and warns her that the real attack on Rei carries grave consequences.",
+            "id": "aria-unnamed-brother",
+            "name": "Aria's unnamed brother",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ISCM officer assigned to monitor Rei for General Abel. She receives a priority notice that Shido has upgraded an existing unique ability and assigned another, continuing a formal reporting line focused on Rei.",
+            "id": "cassidy-moran",
+            "name": "Cassidy Moran",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Central Command authority who has assigned Cassidy Moran to monitor Rei and receive reports on Shido's unprecedented development. The reporting chain is alerted when Shido upgrades one unique ability and grants a second.",
+            "id": "general-abel",
+            "name": "General Abel",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dice"
+            ],
+            "description": "A third-year Galen's cadet who joins another student in making Anatoly Sidorov leave Rei alone. She warns Rei that Sidorov is fixated on status and sees Rei's rise as a threat.",
+            "id": "candace-meyer",
+            "name": "Candace Meyer",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Logan Grant"
+            ],
+            "description": "The birth identity behind Logan Grant. He begins disclosing this name to Firesong after apologizing to Rei, opening an account of the family history that shaped his hostility, secrecy, and reaction to perceived cowardice.",
+            "id": "logan-galt",
+            "name": "Logan Galt",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rei's specialist instructor after Sectionals. She works with Michael Bretz to train Rei across Shido's three modes and improve his control of Temporal Step, including the ability's demanding repeated use.",
+            "id": "katori-amala",
+            "name": "Katori Amala",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Firesong's Saber sub-instructor. She leads additional team training while Rei receives separate instruction in Shido's modes and Temporal Step. Her work focuses on the five other members' coordination and tactical weaknesses.",
+            "id": "claire-desoto",
+            "name": "Claire DeSoto",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aria's father, a Rook-class frontline general and former Galen's cadet. He arrives without warning to argue that Galen's and Firesong may be limiting Aria's development despite her rank and the team's recent success.",
+            "id": "general-carmen-laurent",
+            "name": "General Carmen Laurent",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A male Laurent relative and Sergeant Major recruited by Kamiya Corporation for work involving his younger sister's training. He accepts the assignment as the corporation begins assembling support for Firesong.",
+            "id": "unnamed-laurent-sergeant-major",
+            "name": "Unnamed Laurent Sergeant Major",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:B0CC3FMBW5",
+            "type": "community"
+          }
+        ],
+        "work": "fire-and-song"
+      },
+      "recaps": {
+        "ending": "Firesong leaves Sectionals as the first-year team-battle champion, although Rei's injuries forced the other five members to win the final without him. Rei and Aria's hacked individual final is recorded as a draw. Rei recovers into specialized training at C9 with Shido's Brawler, Saber, and Phalanx modes, Type Shift 2, and the short-range jump ability Temporal Step. His fibrodysplasia shows no new flare-ups and may be in remission, but medical monitoring continues. Logan reconciles with Rei, tells Firesong the history behind his former identity, and joins Chancery in learning Shido's S-ranked Growth secret. Rei and Aria remain together, while Viv continues to fear that her development is falling behind the team. Central's coerced transfer threat leaves Rei, Aria, and Firesong with demanding Systems and InterSystems targets if they are to stay at Galen's Institute. Carmen refuses to sign voluntarily, and Galen's promises greater support. Rei reopens negotiations with Kamiya only for team sponsorship, rejects personal payment, and learns that the corporation's head initiated the offer. Kamiya accepts the team condition in principle. Rei has not reconciled with Hiroto or Sarah, while Solista's opposition, the unidentified arena attacker, and Shido's limits all remain unresolved.",
+        "in_short": "Rei and Aria begin dating as Firesong prepares for Sectionals, while Kamiya Corporation offers Rei a suspiciously generous sponsorship tied to the family that abandoned him. Central manipulates Rei's fortitude test, and Shido continues evolving at an extraordinary pace. At Sectionals, Firesong advances despite targeted brackets and internal strain. Catcher gains Ruinous, Chancery gains Warband, and the team suspects Shido may affect nearby CADs. Rei reaches the individual final against Aria, but an arena hack subjects him to S0 projections and leaves him badly injured. Shido rises to C9, adds a Phalanx mode, and grants the short-range jump ability Temporal Step. Firesong wins the team-battle championship without Rei, while the interrupted duel is declared a draw. Logan reveals his former identity and reconciles with the team. Central then uses a transfer order to demand exceptional Systems and InterSystems results from Rei, Aria, and Firesong. Rei seeks Kamiya sponsorship for the whole team instead of himself, and Kamiya agrees in principle, while its head is revealed as Rei's estranged grandfather.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rei entered Galen's Institute with Shido, a CAD whose S-ranked Growth made his development both exceptional and dangerous to reveal. Viviana Arada remained his oldest friend, while Aria Laurent became the commander of the six-person squad that also included Catcher, Chancery Cash, and Logan Grant. Rei's rise brought growing attention from Galen's staff, the ISCM, and other cadets. His relationships within the squad were uneven: Aria and Catcher were trusted allies, Viv was fiercely protective of him, and Logan's hostility remained a threat to the group's cohesion. As the new term begins, Rei and Aria are prominent first-year fighters, their squad is preparing for higher competition, and the secret of Shido's growth still shapes who Rei can trust.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rei and Aria's first date ends in an off-campus fight when four Penview cadets corner them. Security footage clears the pair, but an autograph request shows that their Galen's reputation has become public. Back at the Institute, Aria's squad defeats two allied training teams, with Rei taking temporary command and sacrificing a simulated shoulder so Viv can strike decisively. Logan still resents following Rei, though Viv confronts him and makes any future relationship conditional on changing his conduct. Rei is then summoned to a confidential meeting with Galen's commanding officer and a Kamiya Corporation representative. Kamiya offers a remarkably rich sponsorship despite Rei's limited public record. Rei refuses to sign immediately, suspecting the corporation knows something about him or Shido. Kamiya's head, Dr. Kamiya Hiroto, responds by planning to block rival sponsors and shows an unexplained personal concern with Rei's abandonment and medical history. Rei links Kamiya to his biological family and shares the suspicion with Viv. The resulting distress disrupts squad training, while Logan begins apologizing and Rei prepares to trust Aria and Catcher with more of the truth.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rei tells Aria and Catcher that Kamiya's offer may come from the family that abandoned him. Independent reviewers find the contract genuine and unusually favorable, leaving its motive as the central concern. Rei also concludes that Shido may need varied, stronger opponents to maintain its rapid gains. Logan distances himself from former associates and starts making tentative efforts to join the group. During parameter testing, Rei openly compares Shido's Brawler and Saber modes, but the final fortitude trial is secretly altered. He collapses with a lung injury after reaching conditions later measured at A1. Galen's officers determine that the manipulation points to Central Command, which appears to be probing Rei as a strategically important user. Rei receives treatment from Willem Mayd and Amina Ashton, then returns under strict medical and training controls. Chancery presses him to explain Shido, and Logan privately infers that its Growth is the key, but Rei does not confirm the secret. After recovering enough to travel, Aria's six-person squad departs for Sector 9 Sectionals under Dyrk Reese. The team receives its official competitive name: Firesong.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Firesong arrives at Sectionals, Solista Laurent participates in a covert plan to obtain arena-system access. Christopher Lennon ends a public provocation against Rei, and Logan gives Rei a direct apology without yet explaining the trauma behind his anger. All six members qualify. Firesong wins its opening team battle by hiding CAD light in a blizzard and ambushing its opponents. Reese tries to punish the team for prolonging Rei's final confrontation, but Valera Dent accepts their tactical explanation. The Mind privately admits it may have arranged the pairing to test Rei. Shido gains unexpected improvements, while Viv and Logan's relationship becomes public. Firesong survives a war game, and Catcher defeats a stronger Phalanx despite a broken shoulder. His CAD evolves and grants Ruinous, a repeatable charged burst powerful enough to bend Aria's shield. In a later zero-gravity war game, three teams target Firesong. The squad reunites after being separated, Catcher deploys Ruinous, and Firesong wins the quarterfinal. Immediately afterward, Chancery receives an undisclosed CAD notification that leaves her shocked.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Chancery's new ability, Warband, creates three overlapping spear attacks and defeats Aria in testing. Coming so soon after Ruinous, it raises the possibility that prolonged proximity to Shido is affecting other CADs. Viv, the only Firesong member without an ability, fears that the team will outgrow her. She performs strongly in team competition but abandons a useful stealth advantage in an individual quarterfinal against Castro Vadem and loses. Her CAD ranks up without granting an ability, deepening that fear. Firesong is then overwhelmed in a Wargame semifinal after the other teams coordinate against it. Solista, watching in disguise, is revealed as Aria's mother and decides that Rei and Firesong threaten Aria's future. Firesong later defeats Red Crown and advances to the team-battle final against Valormade. Rei beats Vadem to reach the individual final, while Aria defeats Logan to become his opponent. Before those matches, Aria helps Rei confront his tendency to blame himself for the team's difficulties. They kiss and agree that they are now in a relationship.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rei gains the advantage over Aria in the first-year final, but the arena freezes the match and spawns six S0 sparring projections that repeatedly attack him. Valera Dent breaches the field boundary and forces a reset, ending the assault. Investigators identify an arena back door installed days earlier, but not the attacker. Solista had separately brought a trigger intended to hinder Aria's opponent. Her adult son, Aria's brother, destroys it after she denies activating it. Shido's response to the attack raises Rei from C7 to C9, upgrades Type Shift, adds a heavily armored Phalanx mode, and assigns Temporal Step. Rei and Aria re-enter a practice field under supervision despite their trauma. Temporal Step moves Rei across a short distance by a jump-like mechanism rather than ordinary speed, but it causes fleeting visions and severe nausea. Reese reacts to its implications with threatening language and is removed as chaperone. Rei's extensive injuries keep him out of the team final. Firesong agrees to compete with five members. The Mind cannot trace the hack, suspects a rogue actor within the hierarchy rather than Central as a whole, and adds monitoring to every arena Rei uses.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anatoly Sidorov confronts the injured Rei over Shido until older Galen's cadets intervene. Firesong enters the team-battle final one member short. Aria struggles at the boundary where the attack occurred, but Viv helps her enter. The team draws Valormade into an encirclement, then converges on Castro Vadem and commits Ruinous, Warband, and Overclock at once. Firesong wins the first-year team-battle championship without Rei. Officials record Rei and Aria's interrupted individual final as a draw. Afterward, Rei decides that Logan and Chancery have earned the right to know Shido's secret. Logan first reveals that he was born Logan Galt. He explains how his father's abandonment of a threatened civilian sector led to mass death, disgrace, and the destruction of his family. His mother changed the children's identities and later died, while Logan was separated from his sister. Firesong accepts him, and Rei recognizes how their different traumas fueled their conflict. Rei then shows Logan and Chancery Shido's S-ranked Growth and unique abilities. The team leaves Sectionals more cohesive. Kamiya accelerates its effort to secure Rei and tells Sarah Takeshi that Rei is her younger brother. Reese is removed from Galen's after his campaign against Rei exceeds the authority Central granted him.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at Galen's, Rei trains Shido's Brawler, Saber, and Phalanx modes with Michael Bretz and Katori Amala while Claire DeSoto develops the rest of Firesong. Temporal Step becomes more controllable, though nausea still limits repeated use. Medical checks find no new fibrodysplasia flare-ups and suggest Rei may be in remission. Aria's father, General Carmen Laurent, then arrives with a transfer order. He argues that Galen's and Firesong limit Aria, but both she and Rei refuse to leave. Rei identifies the order as a Central pressure tactic that makes Carmen the required signatory. Carmen will not sign voluntarily, yet warns that Central can compel him. He gives Galen's a chance to prevent the transfer: Rei and Aria must win at Systems, Firesong must win team battle and War Games, and they must reach InterSystems. Galen's promises intensified support. Rei decides additional resources are necessary and reopens talks with Kamiya. He will consider sponsorship only if the corporation identifies who initiated the offer, supports all of Firesong, and pays him nothing personally. Kamiya accepts the team condition in principle and begins recruiting staff. Its head, Hiroto, is revealed as Rei's estranged grandfather. The family conflict, Central's coercion, and the identity of the arena attacker remain open.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:B0CC3FMBW5",
+            "type": "community"
+          }
+        ],
+        "work": "fire-and-song"
+      }
+    },
+    "flockbound": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Refined Defender who commands iron and void magic while pursuing safer ways to protect others. She owns the dimensional refuge Kit and begins openly dating Rain as both of them settle into a new Defender routine.",
+            "id": "tala",
+            "name": "Tala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A newly Refined kinetic mage who joins Tala's Defender unit and needs practical combat experience at his new level. He and Tala agree to pursue their courtship openly.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's flicker-teleporting avian companion and a formidable combat partner. He has grown unusually attached to her since the wolf fight.",
+            "id": "terry",
+            "name": "Terry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinct mind-assistant sharing Tala's body. The collaborator comments on Tala's choices and relationships, offering an internal perspective while remaining separate enough to act as a genuine co-operator.",
+            "id": "talas-inner-collaborator",
+            "name": "Tala's inner collaborator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's sentient, soulbound dimensional storage, containing both her private refuge and a pocket town. Kit's separate mind allows those spaces to be divided into independently accessed partitions, changing Tala's travel and combat options.",
+            "id": "kit",
+            "name": "Kit",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stone mage serving in Tala's Defender unit. When the containment fount creates false versions of the team, his copy immediately destroys itself because it lacks the soul and chosen commitment that keep Gert aligned with humanity.",
+            "id": "gert",
+            "name": "Gert",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer in training and experienced birth attendant who assists Kedva during the delivery of her son. She works beside the unit healer while Tala remains close as an emergency safeguard, providing practical care during Kit's first birth.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brandon and Kedva's healthy newborn son and Irondale's first native-born resident. His parents choose magical rebirth for him after Tala finds no evidence that the process would cause harm.",
+            "id": "brandon-and-kedvas-son",
+            "name": "Brandon and Kedva's son",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An inscription specialist who verifies the schema for an infant's magical rebirth. She is also entrusted with planning Rain's revised inscriptions, making her a central technical adviser for the pair's development.",
+            "id": "holly",
+            "name": "Holly",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adviser who resumes guiding Tala and Rain. He helps establish priorities for Rain's revised inscriptions and directs Tala to identify the shared purpose behind her many projects.",
+            "id": "alefasts-paragon",
+            "name": "Alefast's Paragon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Defender leader and experienced adviser who reviews Tala's weaknesses and research priorities with Tala and Rain. He recommends specialists, proposes new tests of Tala's authority over iron, and offers the pair advanced training.",
+            "id": "grediv",
+            "name": "Grediv",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's friend and a Caravaners Guild worker in the city where Tala relocates her pocket town. Her apprentice remains in her household while progressing toward becoming a mage.",
+            "id": "lynn",
+            "name": "Lynn",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proprietor of a closed shop reached through a difficult four-dimensional entrance that Tala can detect but cannot navigate alone.",
+            "id": "lisa",
+            "name": "Lisa",
+            "reveal": {
+              "chapter": 13
+            }
+          },
+          {
+            "description": "An archive administrator who controls access to Tala's archived memories and arranges compensation for approved viewers.",
+            "id": "ingrit",
+            "name": "Ingrit",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's younger sister and an apprentice glassmaker. She challenges Tala for visiting mainly when a sibling must decide whether to attend the academy, and Tala recognizes the impression created by her limited visits.",
+            "id": "nia",
+            "name": "Nia",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former healer whose body and magic regenerate despite the loss of her soul. Imprisoned for lethal experimentation on children, she escaped long ago by engineering a death that allowed her to reform elsewhere, leaving a book-linked trace behind.",
+            "id": "escaped-gateless-paragon",
+            "name": "The escaped gateless Paragon",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unidentified tri-gated mage who removes Tala's illusion and attacks with three separately activated sets of magic.",
+            "id": "tri-gated-mage",
+            "name": "The tri-gated mage",
+            "reveal": {
+              "chapter": 31
+            }
+          },
+          {
+            "description": "A highly capable three-gated mage who fights Tala with layered air, dimensional, and healing magic. Bound to secrecy about her unusual condition, she escapes and reports Tala's discovery to city leadership rather than continue the clash.",
+            "id": "cethira",
+            "name": "Cethira",
+            "reveal": {
+              "chapter": 32
+            }
+          },
+          {
+            "description": "A sapient, reforged magical beast confined with the ancient forest to which he is bound. His growth once threatened the surrounding lands, but Tala sees a possible path to preserve his forest by moving the entire cell into Kit.",
+            "id": "immortal-elk",
+            "name": "The immortal elk",
+            "reveal": {
+              "chapter": 41
+            }
+          },
+          {
+            "description": "A newly created parallel consciousness sharing Rain's body. He begins as a separate co-operator with little control over the volume of his communication, and he and Rain must establish a workable partnership.",
+            "id": "rains-alternate-interface",
+            "name": "Rain's alternate interface",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Constructionist and returning member of Tala's household. He works with Petra in Kit and contributes practical expertise to the refuge and the community growing within it, helping turn Tala's dimensional space into a functional home.",
+            "id": "simon",
+            "name": "Simon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of Tala's household who lives and works with Simon inside Kit. She helps sustain the practical life of Tala's dimensional home and its resident community, contributing to the stable household behind Tala's wider projects.",
+            "id": "petra",
+            "name": "Petra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of Tala's household, an artifact researcher, and Brandon's father. He brings specialized knowledge to the group living and working within Kit's pocket community.",
+            "id": "adrill",
+            "name": "Adrill",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of Tala's household, a builder in Kit, and Kedva's partner. Their family is part of the small community taking shape within Tala's dimensional refuge, and his practical work helps make that protected settlement viable.",
+            "id": "brandon",
+            "name": "Brandon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Brandon's partner and a returning resident of Kit's pocket community. She contributes to the household's practical work and shares in the ordinary life taking shape within Tala's protected dimensional refuge.",
+            "id": "kedva",
+            "name": "Kedva",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A regenerative, reality-manipulating prisoner who ambushes Tala's unit during a cell closure. He can revoke soul-body connections, evade magical attacks, and rebuild himself while demanding an account of the changed world and his people.",
+            "id": "imprisoned-arcane-ruler",
+            "name": "The imprisoned arcane ruler",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0G9BGFRVZ",
+            "type": "community"
+          }
+        ],
+        "work": "flockbound"
+      },
+      "recaps": {
+        "ending": "The final cell mission nearly destroys Tala's new flock. The imprisoned arcane ruler severs Terry from his body and then tears Tala's soul and gate free of hers. Rain's connection to Tala prevents her from passing on, while his berserker state resists the prisoner's soul attacks. Tala uses her ties to her family and her authority over the iron in her body to reclaim it, then reconstructs Terry around his preserved spirit. The entire unit survives and the Paragon closes the cell, but the ruler remains alive inside it. Rain proposes afterward, and Tala accepts. Terry survives as Tala's soulbound flockmate, while her inner collaborator withdraws to recover from the severing. Kit now shelters Lynn's expanding reborn community, Lisa's protected four-dimensional home, and the immortal elk's autonomous forest, but its magical wealth must remain guarded. Tala is close to Paragon and has accepted the enslaved identity imposed by the House of Blood as part of her history. Her next chosen reckoning is a voluntary return south to confront that house.",
+        "in_short": "Tala develops her purpose as a protector while building Kit's pocket community, strengthening her magic, and deepening her relationship with Rain. Terry chooses an equal soulbond with her, gains fuller awareness, and commits to their new flock after confronting the loss of his first. Tala studies damaged reality, negotiates an autonomous home in Kit for an immortal elk, welcomes Lisa and a growing reborn population, and accepts the enslaved identity she had tried to separate from herself. During a final cell closure, an arcane ruler destroys Terry's body and tears Tala's soul from her own. Her bond with Rain keeps her from passing on; she reclaims her body through family and iron, restores Terry, and helps the unit survive until the cell closes. Rain then proposes, and Tala accepts. She remains short of Paragon and plans to face the southern house that enslaved her.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Tala became a powerful iron and void mage, a Defender, and the owner of Kit, a sentient dimensional refuge containing both her sanctum and a pocket town. Terry, a flicker-teleporting avian predator, became her close companion and protector. Simon, Petra, Adrill, Brandon, and Kedva formed part of the household and community within Kit. The refuge gave this group a protected place to live and work while Tala continued taking on dangers beyond it. Tala survived a near-fatal wolf encounter and responded by pursuing greater strength and broader defensive options. Rain reached Refined, bringing new physical and magical capacity that he still needed to master. After a period of tentative courtship, he and Tala stood ready to decide what their relationship would become. Tala also carried an internal co-operator who could advise her, comment on her personal choices, and share the work of managing their unusual life.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rain joins Tala's Defender unit and begins gaining practical experience with his Refined body, inscriptions, and soulbound sword. He and Tala agree to date openly. Tala divides Kit into separately accessed sanctum and pocket-town partitions, increasing its usefulness while limiting direct movement between them. On cell duty, the unit confronts a fount that learns from each failed copy it creates, then survives false versions of its own members. The damaged fount is resealed rather than destroyed. In Kit, Kedva gives birth to a son, and Tala successfully performs magical rebirth on the infant with Holly's approved schema. The result establishes that a child can accept the transformation safely, provided dense magic remains available. Tala also develops new iron workings and considers stronger defensive tools. By reviewing why she pursues so many projects, she identifies a common aim: protecting and nurturing people so they can survive, grow, and choose what to become.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala conducts a broad review of her weaknesses and commissions improved armor, modular defensive walls, and a breath weapon built around an artificial lung inside Kit. She tests the weapon successfully but still needs safer control and containment. She relocates the pocket town to another city, opens it to trade, and allows gateless people to inquire about residence. There she reunites with Lynn and meets Lisa, a fox-like arcane specialist whose shop lies behind a four-dimensional entrance. Tala and Rain refuse to exploit the rule compelling Lisa to answer certain questions, so he instead shares basic knowledge voluntarily. Public respect for Tala's Defender work contributes slightly to her advancement. During a long meditation, Tala clarifies that her path is not merely to stop danger. She wants those under her protection to thrive and gain the means to fulfill their potential through freely chosen opportunity. Holly then removes Tala's old inscription metals so a stronger schema can be installed.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holly rebuilds Tala's inscriptions, greatly improving her physical ability, perception, breath working, and control of magical leakage. Tala abandons a dangerous attempt to compress her own reality node and turns toward slower, safer research. She and Rain begin immersive war-game training in vulnerable mundane bodies, exposing habits concealed by their usual strength. Tala finalizes plans for flexible white-steel armor and modular fortifications. Kit's pocket town grows into a functioning community with its own access procedures and about fifty vetted residents. Tala and Rain travel with it to Marliweather, where Tala's brother chooses the academy. Tala's sister Nia challenges Tala's pattern of appearing mainly for academy decisions. Nia explains that glassmaking gives her meaningful work without magic, and Tala accepts that choice. Tala also explains that her attention comes from wanting her siblings to have options she once lacked. Their family begins arranging regular visits, while Tala and Rain confirm that any marriage or children remain private decisions for a much later time.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala reconnects with her siblings and completes the mundane phase of war-game training with Rain. They agree to travel together after the waning and share their first kiss. A cell assignment reveals that a soulless, regenerative former healer escaped long ago after lethal experiments on children. When Tala amplifies the remaining link, the fugitive projects herself into the cell, pressures Tala for answers, and offers to take and transform her. Greater outside powers drive the projection away, but Tala is disturbed by the comparison between their methods. Rain proposes an open-ended leave. Tala, Rain, and Terry travel to a ruined city where Tala can directly perceive wounded reality. Her own passage worsens the damage, while extradimensional creatures appear to consume excess magic around the rents. Tala rejects harming innocents for a supposed greater good and sharpens her protective principle. She then clashes with Cethira, a secret-bound three-gated mage. Cethira escapes and reports the encounter, while Tala concludes that damaged reality can heal and may someday be repaired deliberately.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cethira is revealed as a survivor of forced experimentation that joined multiple souls or gates within her. She remains free but fears repeating the coercion that created her. Tala's group continues north, where older ruins show that reality's wounds can gradually close. Tala begins to see repairing the damage caused by magic as a possible long-term purpose. They then visit Terry's former nesting ground and find the remains of his mate and six hatchlings. After burying them, Terry defeats the local flock's leader but chooses to remain with Tala and Rain. He agrees to a deliberately shaped soulbond with Tala that preserves his identity and grants companionship, shared longevity, and greater awareness. The transformation forces him to confront his history, including mass violence after his first flock was killed and his gradual choice to protect Tala. Terry completes the bond by trusting Tala, becomes Refined, and gains shared flickering, healing, perception, and access to her power. The city can now recognize him through Tala's magical signature.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala and Terry spend months learning the combat and personal consequences of their completed bond, then return to cell work. Their unit finds an immortal, reforged elk confined with the ancient forest bound to him. Rather than reseal the cell in place, Tala proposes moving the whole region into Kit. She and Rain negotiate honestly with the elk, who refuses soulbinding and any obligation to defend humanity. He agrees to relocation in exchange for expansion of his forest, with additional space serving as payment for information or non-invasive study. Tala absorbs the cell successfully and grants the elk practical authority within his forest while retaining a final defensive claim through Kit. The elk explains distinctions among godbeasts and other great powers, and suggests that humanity's growing use of magic is accelerating the abrasion of reality and the failure of cells. Inspection finds the relocated forest secure. Rain also gives Terry a memorial representation of his lost mate, allowing Terry to grieve her presence as well as her absence.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Terry learns to move through Alefast under a silent human illusion and quietly visits people he knows. Holly creates an alternate interface for Rain, a new parallel consciousness that begins learning how to coexist with him and communicate through Tala's collaborator. Lisa inspects Kit's pocket town and discovers that its purifier left an immense reserve of magic unbound. He warns that the town's magical wealth, Tala's independence, and any rebirth program could attract hostile attention from the major arcane houses. The residents vote to admit him, and he agrees to build a protected four-dimensional home and help train future reborn residents under negotiated terms. Tala's unresolved trauma from the House of Blood remains severe. Advanced war games teach Tala and Rain to question apparent objectives and avoid assuming they understand another person's capabilities. Rain's new co-operator aids him during those trials and develops his own feelings about Tala. Family developments continue as Anna's brother graduates with oxidation magic and accepts Tala's advice to seek a suitable master rather than imitate her dangerous, exceptional path.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lisa relocates his former shop into Kit, while Lynn retires from the Caravaners Guild and accepts a trial role administering the pocket town. Under her coordination, roughly one resident per day undergoes magical rebirth, and the new mages train in carefully managed dense magic. Anna becomes a master in Marliweather, and Tala continues supporting relatives as younger family members enter the academy or apprenticeships. Records of the Black Legion reveal the scale of the danger it poses, while worsening cells and damaged reality remain unresolved. Tala agrees to escort two siblings toward their masters in a former city, following the route tied to her earlier abduction. At the place where she was captured and later killed her captor, she confronts the identity imposed on her by the House of Blood. Tala accepts that this enslaved self and the mage she became are one person, without excusing the coercion or killings involved. The acceptance advances her sharply toward Paragon. She resolves to return voluntarily to the southern arcane city and confront the house that enslaved her.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rain returns to the graves of four caravan members who died because his former refusal to fight left them exposed. He accepts responsibility and advances after releasing the burden he had carried. Tala and Rain reaffirm their love. As years pass, Tala struggles with remaining close to mortal siblings whose lives will be brief beside hers, but chooses continued family connection despite the eventual grief. A final cell closure becomes a disaster when an arcane ruler ambushes the unit. He destroys Terry's body by severing its link to his soul, then tears Tala's soul and gate completely from her body. Rain's exceptional connection to Tala keeps her from passing on, and his berserker state resists the same attack. Tala follows her family connections back to her living body and reclaims it through her authority over its iron. She then rebuilds Terry around the spirit preserved in their bond. Every unit member survives, and the Paragon closes the cell while the ruler remains alive. Afterward, Rain asks Tala to marry him, and she accepts.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0G9BGFRVZ",
+            "type": "community"
+          }
+        ],
+        "work": "flockbound"
+      }
+    }
+  }
+}

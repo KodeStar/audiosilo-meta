@@ -24,10 +24,10 @@ import (
 	"path"
 	"path/filepath"
 	"sort"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
-	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -45,28 +45,42 @@ type addr struct {
 }
 
 // resolve maps a per-entity address onto its pack address.
+//
+// The address grammar is this package's own. It is the shape the data tree had
+// before the pack migration, kept as the TEST-FIXTURE syntax because a seed
+// literal reads better as "works/th/the-thing/recordings/x.json" than as a
+// family plus two map keys - but nothing reads or writes it as a path, and the
+// tooling's own parsing of that layout is gone.
 func resolve(t testing.TB, address string) addr {
 	t.Helper()
-	loc, ok := model.ParseLocation(address)
-	if !ok {
-		t.Fatalf("testpack: %q is not a recognized entity address", address)
+	parts := strings.Split(path.Clean(address), "/")
+	name := func(s string) string { return strings.TrimSuffix(s, ".json") }
+	switch {
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "work.json":
+		return addr{family: pack.FamilyWorks, slug: parts[2]}
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "characters.json":
+		return addr{family: pack.FamilyWorksCommunity, slug: parts[2], member: "characters"}
+	case len(parts) == 4 && parts[0] == "works" && parts[3] == "recaps.json":
+		return addr{family: pack.FamilyWorksCommunity, slug: parts[2], member: "recaps"}
+	case len(parts) == 5 && parts[0] == "works" && parts[3] == "recordings":
+		return addr{family: pack.FamilyWorks, slug: parts[2], member: "recordings", key: name(parts[4])}
+	case len(parts) == 3 && parts[0] == "people":
+		return addr{family: pack.FamilyPeople, slug: name(parts[2])}
+	case len(parts) == 3 && parts[0] == "series":
+		return addr{family: pack.FamilySeries, slug: name(parts[2])}
 	}
-	switch loc.Kind {
-	case model.KindWork:
-		return addr{family: pack.FamilyWorks, slug: loc.Slug}
-	case model.KindRecording:
-		return addr{family: pack.FamilyWorks, slug: loc.WorkSlug, member: "recordings", key: loc.Slug}
-	case model.KindCharacters:
-		return addr{family: pack.FamilyWorksCommunity, slug: loc.WorkSlug, member: "characters"}
-	case model.KindRecaps:
-		return addr{family: pack.FamilyWorksCommunity, slug: loc.WorkSlug, member: "recaps"}
-	case model.KindPerson:
-		return addr{family: pack.FamilyPeople, slug: loc.Slug}
-	case model.KindSeries:
-		return addr{family: pack.FamilySeries, slug: loc.Slug}
-	}
-	t.Fatalf("testpack: address %q has no pack family", address)
+	t.Fatalf("testpack: %q is not a recognized entity address", address)
 	return addr{}
+}
+
+// shard is the directory a slug used to live under: its first two characters.
+// The layout is retired; the addresses in this package's fixtures still spell
+// it, so it is computed here rather than read from anywhere real.
+func shard(slug string) string {
+	if len(slug) < 2 {
+		return slug
+	}
+	return slug[:2]
 }
 
 // packPath is the data-relative path of a family's first (and, for a seed, only)
@@ -160,7 +174,7 @@ func Seed(t testing.TB, dataDir string, files map[string]string) {
 func SeedLegacyPerson(t testing.TB, dataDir, slug, name string) string {
 	t.Helper()
 	body := `{"id":"` + slug + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}` + "\n"
-	full := filepath.Join(dataDir, "people", model.Shard(slug), slug+".json")
+	full := filepath.Join(dataDir, "people", shard(slug), slug+".json")
 	if err := os.MkdirAll(filepath.Dir(full), 0o755); err != nil {
 		t.Fatalf("testpack: mkdir %s: %v", filepath.Dir(full), err)
 	}
@@ -174,7 +188,7 @@ func SeedLegacyPerson(t testing.TB, dataDir, slug, name string) string {
 // still holds want, and no family root the run would have written was created.
 func AssertUntouched(t testing.TB, dataDir, slug, want string) {
 	t.Helper()
-	full := filepath.Join(dataDir, "people", model.Shard(slug), slug+".json")
+	full := filepath.Join(dataDir, "people", shard(slug), slug+".json")
 	got, err := os.ReadFile(full)
 	if err != nil || string(got) != want {
 		t.Errorf("testpack: the legacy record was touched (err=%v): %s", err, got)
@@ -364,10 +378,10 @@ func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMess
 	t.Helper()
 	// Every address a works or works-community entry yields sits under the
 	// work's directory, so the shard is computed once for all of them.
-	dir := path.Join(f.Root(), model.Shard(slug), slug)
+	dir := path.Join(f.Root(), shard(slug), slug)
 	switch f {
 	case pack.FamilyPeople, pack.FamilySeries:
-		return []string{path.Join(f.Root(), model.Shard(slug), slug+".json")}
+		return []string{path.Join(f.Root(), shard(slug), slug+".json")}
 	case pack.FamilyWorks:
 		out := []string{path.Join(dir, "work.json")}
 		for _, rec := range recordingSlugs(t, slug, entry) {
@@ -384,7 +398,7 @@ func entryAddresses(t testing.TB, f pack.Family, slug string, entry json.RawMess
 			if _, ok := members[name]; ok {
 				// A sidecar's address still names the WORK's directory: the
 				// works-community family is a storage split, not a rename.
-				out = append(out, path.Join("works", model.Shard(slug), slug, name+".json"))
+				out = append(out, path.Join("works", shard(slug), slug, name+".json"))
 			}
 		}
 		return out

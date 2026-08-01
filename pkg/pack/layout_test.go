@@ -64,6 +64,26 @@ func TestDetectLayoutLegacyWorksTree(t *testing.T) {
 	}
 }
 
+// One file that is not a pack must not flip a converted family back to legacy:
+// the readers refuse a legacy family outright, so that would hide every record
+// in it. The stray file is reported as a stray file instead (metacheck names it,
+// metafmt salvages it).
+func TestDetectLayoutStrayFileDoesNotUnpackAFamily(t *testing.T) {
+	dir := t.TempDir()
+	writeFile(t, filepath.Join(dir, "works", "0", "0.json"), `{"entries":{"dune":{"id":"dune"}}}`)
+	// Sorts before the pack (a directory named "0" precedes "0.json"), and is
+	// neither a pack nor valid JSON.
+	writeFile(t, filepath.Join(dir, "works", "0", "0", "stray.json"), `{`)
+
+	l, err := DetectLayout(dir, FamilyWorks)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if l != LayoutPack {
+		t.Errorf("layout = %s, want pack", l)
+	}
+}
+
 func TestLayoutString(t *testing.T) {
 	cases := map[Layout]string{LayoutAbsent: "absent", LayoutPack: "pack", LayoutLegacy: "legacy"}
 	for l, want := range cases {

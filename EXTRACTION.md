@@ -37,7 +37,7 @@ can be traced to the chapter it appears in.
 epub
  └─ 1. split      metaextract split (mechanical: chapter text + manifest)
  └─ 2. fact pass  rolling per-chapter notes, in order (cheap model)
- └─ 3. synthesis  characters.json + recaps.json from the NOTES ONLY (strong model)
+ └─ 3. synthesis  the characters + recaps members from the NOTES ONLY (strong model)
  └─ 4. verify     metafmt + metacheck + metaextract ngram + a spoiler audit
 ```
 
@@ -123,7 +123,7 @@ Rules that make step 3 safe:
 ## Step 3: synthesis
 
 A strong model turns the notes - and ONLY the notes, never the book text -
-into `characters.json` and `recaps.json` per AUTHORING.md. Points that need
+into the work's `characters` and `recaps` members per AUTHORING.md. Points that need
 deciding per book:
 
 - **Cast size**: 12-18 cards suits a typical novel; cover the cast a listener
@@ -149,8 +149,7 @@ Mechanical, from the repo root:
 go run ./cmd/metafmt --write
 go run ./cmd/metacheck
 go run ./cmd/metaextract ngram --source /tmp/book-split \
-  data/works/<shard>/<slug>/characters.json \
-  data/works/<shard>/<slug>/recaps.json
+  data/works-community/<dir>/<bound>.json
 ```
 
 `ngram` fails (exit 1) on any 8-word near-verbatim overlap between an authored
@@ -246,16 +245,19 @@ audiosilo-meta repo.
 
 THE CONTRACT: read AUTHORING.md first and follow it exactly (positions and
 spoiler model, copyright caps, voice). Skim one existing exemplar pair of
-characters.json + recaps.json for shape.
+characters + recaps entry for shape.
 
 YOUR ONLY SOURCE MATERIAL is the fact notes (you do NOT have the book text -
 deliberate: it makes spoiler bounds auditable and verbatim overlap impossible
 by construction). Read all of <dir>/facts/*.md.
 
-Write data/works/<shard>/<slug>/characters.json and recaps.json (the parent
-work must already exist):
+Write the work's characters and recaps into its works-community entry -
+data/works-community/<dir>/<bound>.json, one entry keyed by the work slug with
+a "characters" and a "recaps" member (the parent work must already exist; add
+the entry to the pack whose range covers the slug and let `metafmt --write`
+place it):
 
-characters.json
+the characters member
 - 12-18 cards covering the meaningful cast; skip one-scene walk-ons.
 - reveal.chapter: first meaningful introduction per the facts (exact).
 - role ONLY where it does not spoil: a late-revealed traitor gets the role
@@ -264,7 +266,7 @@ characters.json
   knowledge from any later chapter. Target 200-500 chars (cap 1500).
 - No xref unless verified.
 
-recaps.json
+the recaps member
 - Book 2+ gets a chapter-0 scope-series "previously" recap; a series opener
   gets none.
 - Scale through-points with length and density per AUTHORING.md, normally every
@@ -293,8 +295,9 @@ You are an independent ADVERSARIAL auditor. Another agent authored the
 spoiler-tagged sidecars for "<TITLE>"; find defects, do not approve. Assume
 defects exist until proven otherwise.
 
-Read AUTHORING.md, then audit data/works/<shard>/<slug>/characters.json and
-recaps.json against the ground truth in <dir>/facts/*.md.
+Read AUTHORING.md, then audit the work's characters and recaps members in
+data/works-community/<dir>/<bound>.json against the ground truth in
+<dir>/facts/*.md.
 
 Checks, in priority order:
 1. SPOILER LEAKS: every claim in every description traces to a chapter <=

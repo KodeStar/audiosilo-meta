@@ -12,7 +12,6 @@ import {
   importLibraryIssueUrl,
   newBooksPayload,
   recordDataPath,
-  recordEditUrl,
   correctDataIssueUrl,
   issueChooserUrl,
 } from './github-prefill'
@@ -322,8 +321,13 @@ describe('addWorkIssueFormUrl', () => {
   })
 })
 
+// recordDataPath is a REFERENCE syntax the correction form takes, not a
+// location: records live many to a pack file, so there is no per-record file
+// to link to and no "edit on GitHub" affordance beside it. The intake bot
+// parses this shape (internal/issueform's refPath), which is why it stays
+// exactly as it was.
 describe('recordDataPath', () => {
-  it('derives the work path with the two-char slug shard', () => {
+  it('derives the work reference with the two-char slug shard', () => {
     expect(recordDataPath('work', 'killing-floor-lee-child')).toBe(
       'data/works/ki/killing-floor-lee-child/work.json'
     )
@@ -335,24 +339,6 @@ describe('recordDataPath', () => {
 
   it('derives the series path', () => {
     expect(recordDataPath('series', 'jack-reacher')).toBe('data/series/ja/jack-reacher.json')
-  })
-})
-
-describe('recordEditUrl', () => {
-  it('deep-links the source file on the repo blob base', () => {
-    expect(recordEditUrl('work', 'killing-floor-lee-child')).toBe(
-      'https://github.com/kodestar/audiosilo-meta/blob/main/data/works/ki/killing-floor-lee-child/work.json'
-    )
-    expect(recordEditUrl('person', 'jeff-harding')).toBe(
-      'https://github.com/kodestar/audiosilo-meta/blob/main/data/people/je/jeff-harding.json'
-    )
-  })
-
-  it('percent-encodes each path segment without escaping the slashes', () => {
-    // A pathological id keeps the URL well-formed (real ids match the slug grammar).
-    expect(recordEditUrl('series', 'odd id')).toBe(
-      'https://github.com/kodestar/audiosilo-meta/blob/main/data/series/od/odd%20id.json'
-    )
   })
 })
 

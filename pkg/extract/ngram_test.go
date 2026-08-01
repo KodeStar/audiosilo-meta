@@ -144,6 +144,69 @@ func TestNGramInShortAndEnding(t *testing.T) {
 	}
 }
 
+// The sidecars live in works-community PACK files, so pointing the check at the
+// pack a work sits in is the normal usage: every entry's members are scanned,
+// and a finding names the work it came from.
+func TestNGramCommunityPack(t *testing.T) {
+	dir := t.TempDir()
+	phrase := "he crossed the frozen river before the moon had risen at all"
+	src := writeFile(t, dir, "src.txt", phrase)
+	// The real shape: each entry holds the work's sidecar RECORDS, one per
+	// member, and each record carries its own array.
+	pack := writeFile(t, dir, "0.json", `{"entries":{`+
+		`"other-book":{"characters":{"work":"other-book","characters":[`+
+		`{"id":"y","name":"Y","reveal":{"chapter":1},"description":"Fresh words entirely."}]}},`+
+		`"the-book":{"characters":{"work":"the-book","characters":[`+
+		`{"id":"x","name":"X","reveal":{"chapter":1},"description":`+strconv.Quote(phrase)+`}]},`+
+		`"recaps":{"work":"the-book","recaps":[{"through":{"chapter":1},"text":`+strconv.Quote("Then "+phrase)+`}]}}`+
+		`}}`)
+
+	f, err := NGram(src, []string{pack}, 8)
+	if err != nil {
+		t.Fatal(err)
+	}
+	loci := map[string]bool{}
+	for _, x := range f {
+		loci[x.Locus] = true
+	}
+	for _, want := range []string{"the-book.characters.characters[0].description", "the-book.recaps.recaps[0].text"} {
+		if !loci[want] {
+			t.Errorf("no finding at %q; got %+v", want, f)
+		}
+	}
+	if len(f) != 2 {
+		t.Errorf("findings = %d, want 2 (the clean entry must not be flagged): %+v", len(f), f)
+	}
+}
+
+// A pack holding no sidecar entries at all is the wrong file, not a clean bill
+// of health: silently reporting zero findings would pass the no-verbatim gate
+// for text nobody checked. A pack whose sidecars are simply free of prose IS
+// nothing to check, and must not be reported as the wrong file - the same
+// distinction a bare sidecar record gets.
+func TestNGramPackWithoutSidecarsIsError(t *testing.T) {
+	dir := t.TempDir()
+	src := writeFile(t, dir, "src.txt", "some source text that is long enough to shingle over")
+
+	wrongFile := writeFile(t, dir, "works.json", `{"entries":{"the-book":{"id":"the-book","title":"The Book"}}}`)
+	if _, err := NGram(src, []string{wrongFile}, 8); err == nil {
+		t.Error("NGram succeeded on a pack with no sidecars")
+	}
+
+	// Sidecars that carry no checkable prose: a character with no description
+	// and a recaps member with no entries.
+	empty := writeFile(t, dir, "community.json", `{"entries":{"the-book":{`+
+		`"characters":{"work":"the-book","characters":[{"id":"x","name":"X","reveal":{"chapter":1}}]},`+
+		`"recaps":{"work":"the-book","recaps":[]}}}}`)
+	found, err := NGram(src, []string{empty}, 8)
+	if err != nil {
+		t.Fatalf("a pack whose sidecars hold no prose was rejected as the wrong file: %v", err)
+	}
+	if len(found) != 0 {
+		t.Errorf("findings = %+v, want none", found)
+	}
+}
+
 func TestNGramNeitherKeyIsError(t *testing.T) {
 	dir := t.TempDir()
 	src := writeFile(t, dir, "src.txt", "some source text that is long enough to shingle over")

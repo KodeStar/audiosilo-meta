@@ -1,0 +1,1732 @@
+{
+  "entries": {
+    "shattered-boundaries": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Seth Pendell"
+            ],
+            "description": "A formidable fighter also known as Seth Pendell. After an inner presence takes control during Berserker, he kills a group of attacking elves and is detained under a murderer flag. The presence spares Tanila, but Max is left unsure how much control he truly has.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A dwarf shield fighter and one of Max's closest companions. He serves on the party's front line as a defender.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf elemental mage traveling with Max. Although horrified when Berserker changes him, she recognizes when he regains control and physically places herself between him and the arriving guards.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vela"
+            ],
+            "description": "The guard captain who investigates the slain elves. She detains Max after the system marks him for murder while allowing Tanila to remain unharmed pending an explanation. Her response balances public safety with a willingness to examine what happened.",
+            "id": "captain-vela",
+            "name": "Captain Vela",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max's internal power"
+            ],
+            "description": "A conscious presence within Max that takes command of his body during Berserker. It drives him to kill attacking and fleeing elves, yet prevents him from striking Tanila before surrendering control. Its motives and the limits of its influence are unknown.",
+            "id": "inner-entity",
+            "name": "Inner entity",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dwarf healer, Fowl's partner, and member of Max's party. Reunited with the group after being held in stasis, she confronts Max about the danger his transformation may pose. Her concern is rooted in protecting both the party and the people close to her.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Golden Axe, introduced when an elven guide brings Max's four-person party to an unusually early meeting with him. His willingness to receive them before formal membership signals that the faction sees unusual promise in the established team.",
+            "id": "everett",
+            "name": "Everett",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Golden Axe crafting authority asked to assess the party's rare ogre, skeleton, and mimic materials. She immediately recognizes the collection as exceptionally valuable and joins Everett in treating both the haul and its origin as sensitive faction business.",
+            "id": "alfreda",
+            "name": "Alfreda",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An alchemist associated with a life-saving potion used on Batrire after the party's earlier encounter with a rare scorpion. Tang Mu is identified when Everett discusses the quality of Golden Axe's potions and the aid already given to the group.",
+            "id": "tang-mu",
+            "name": "Tang Mu",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A plate-armored warrior in a five-person adventuring group that joins Max's party during the ogre dungeon break. She helps form the temporary combined defense as the creatures attack outside the threatened city.",
+            "id": "nuala",
+            "name": "Nuala",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An off-tank warrior fighting with the allied five-person group during the ogre dungeon break. He joins Max, Fowl, Tanila, and Batrire in holding against increasingly large packs while the defenders try to stabilize the area outside the city.",
+            "id": "asher",
+            "name": "Asher",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-45 dwarf warrior who assumes field command when several adventuring groups unite against the ogre horde. Her greater experience gives the scattered defenders a common formation as they face numbers and elite enemies beyond their expectations.",
+            "id": "brunhilde",
+            "name": "Brunhilde",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mage who coordinates ranged fighters and spellcasters under Brunhilde's battlefield command. He helps organize the combined defense as the adventurers form a wedge against the advancing ogres, though the position is already beginning to fail.",
+            "id": "dagon",
+            "name": "Dagon",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful older Golden Axe member assigned as the party's trainer and faction liaison after the ogre crisis. He explains that Everett has arranged substantial funding, facilities, and a training shard to help the four companions prepare for harder dungeons.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-50 elf archer whom Everett considers for the party's open fifth position. She already belongs to a tower group, so any approach must be discreet. Everett prefers her over another candidate whose leadership style might conflict with Max's team.",
+            "id": "prospective-elf-archer",
+            "name": "Prospective elf archer",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler presiding over the demon dungeon's coliseum trial. Bound by ancient challenge rules, the demon lord fills the stands with an audience and compels the party to fight a chosen champion. It also strips away Tanila's concealment and recognizes her as a princess.",
+            "id": "demon-lord",
+            "name": "Demon lord",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The demon lord's chosen champion for the coliseum trial. A female demon who wields fire, inflicts curses, and moves through teleportation portals, she nearly kills Tanila with her opening attack and leaves Max critically injured.",
+            "id": "demon-champion",
+            "name": "Demon champion",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The immense gold dragon who rules the dragon dungeon and speaks directly into the party's minds. Already aware that the demon trial involved attempted cheating, the dragon receives the four without immediate violence and invites them to discuss its test.",
+            "id": "gold-dragon",
+            "name": "Gold dragon",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gold-scaled authority of immense power who is consulted about a newly released black skill. The ancient dragonkin refuses to help locate its bearer, returns part of the petitioner's payment, and warns that preparation matters more than continued tracking.",
+            "id": "ancient-dragonkin",
+            "name": "Ancient dragonkin",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A ruler who offers enormous payment for the ancient dragonkin's help in finding the bearer of a black skill. Refused direct aid and warned about a wider approaching conflict, the petitioner turns toward building alliances and increasing personal power.",
+            "id": "young-world-ruling-petitioner",
+            "name": "Young world-ruling petitioner",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A professional killer paid to find Max. The hunter receives a dossier stating that the target carries a black skill, murders the courier who delivered it, and begins the pursuit with the intention of giving Max no warning.",
+            "id": "contract-hunter",
+            "name": "Contract hunter",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The rulers financing the contract to locate and kill Max. Their identities and motives are not established, but the hunter's dossier indicates that their search for the black-skill bearer has already consumed resources on a scale that threatens their kingdom.",
+            "id": "unnamed-queens",
+            "name": "Unnamed queens",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An innkeeper and local supporter already known to Max's party before this book begins.",
+            "id": "alexander",
+            "name": "Alexander",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DJCH4JN4",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-boundaries"
+      },
+      "recaps": {
+        "ending": "Max, Fowl, Tanila, and Batrire finish both one-attempt level-50 trials and enter the tower together. All four carry Defense of the Demon and Defense of the Dragon. They also possess a gold dragon's tooth and scale, with Fowl considering whether his estranged family might craft them. The prospective elf archer is expected to join after losing a member of her former tower party. Max privately agrees not to attack or directly oppose the gold dragon except when either side's life or loved ones are threatened. The pact lets the dragon track him, may eventually let him track it, and must remain secret even from his companions. Beyond the party, an ancient dragonkin predicts that the release of one black skill will lead to three such powers clashing. Tanila's royal identity is known to the hostile demon lord, which has threatened Max. Most immediately, unnamed queens have supplied a hunter with money and a dossier identifying Max Host as a black-skill bearer. The hunter kills the courier and begins a covert pursuit.",
+        "in_short": "After an inner entity seizes Max during an attack, he struggles to control a black skill that grants power while urging violence. Max, Fowl, Tanila, and Batrire join Golden Axe, survive an ogre invasion, and grow into a tightly coordinated level-50 party. Max and Tanila become partners, and she reveals that she is a runaway elven princess with a dangerous red skill. The group delays entering the tower to earn permanent boons from demon and dragon trials. Max yields control to the entity to survive the demon dungeon, gaining demonic abilities, then helps defeat the demon champion. In the dragon trial, the entity wounds an ancient gold dragon. The party receives the dragon's boon, tooth, and scale, while Max secretly accepts a mutual nonaggression pact and tracking mark. The four finally enter the tower, but a wider conflict among three black skills is approaching, the demon lord remains hostile, and a contract hunter begins pursuing Max Host for unnamed queens.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max, also known publicly as Seth Pendell, formed a four-person adventuring party with Fowl, Tanila, and Batrire. Alexander became a trusted innkeeper and local supporter. Fowl is a dwarf shield fighter, Tanila an elf elemental mage, and Batrire a dwarf healer and Fowl's partner. The companions survived rare and dangerous encounters together, including one that left Batrire in stasis and another whose poison required a life-saving potion. Max carries unusual abilities that make him far stronger than his displayed level suggests. The group enters this volume as a close but still developing team, with Max's concealed power and identity posing risks to everyone around him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Berserker allows a presence within Max to seize his body during an elf attack. It kills even fleeing enemies but stops before harming Tanila. Captain Vela detains Max under a murderer flag, then finds evidence supporting the party's account and chooses guarded sequestration rather than execution. Consume grants Max major gains, while the inner presence warns that future bargains will be harsher. Batrire fears what Max might become, but Fowl refuses to abandon him. An unexplained cleansing removes the murderer aura, allowing Vela to release the party. Rumors still connect Seth Pendell to the killings. The four earn Adventurers Guild rank C and discover that they are not ready for every dungeon at that tier. Seeking stronger support, they visit Golden Axe. Faction head Everett treats the established party as a single unit, accepts Tanila's negotiated dues, and has all four sign a blood-bound tablet. Their formal obligations begin at level 40, but they gain access to Golden Axe immediately.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Golden Axe accepts the party's exceptional rare-dungeon materials under strict secrecy. The four then defeat a stone golem boss without accepting the inner presence's demand that Max someday kill a chosen victim. Their high-quality rewards are followed by signs of multiple dungeon breaks, and they volunteer against an elite ogre outbreak threatening the city. Fighting beside temporary allies, Max restrains his visible strength until the defense begins collapsing. Brunhilde commands the combined force while Dagon coordinates ranged support, but an elite dual-sword ogre nearly kills Max. After the creature falls, Max leads the surviving adventurers in a breakout. Dagon leaves to seek other groups, while Max refuses to risk the remaining defenders on the same attempt. The survivors retreat through city streets, using magic and collapsed buildings as barriers. With civilians still escaping and supplies nearly spent, Max orders a final stand near the walls. Faction reinforcements arrive on an adjacent street just as the position is close to being overrun.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Faction forces end the ogre crisis, though roughly a tenth of the deployed adventurers are reported dead. Golden Axe assigns Tom to train and equip Max's party. He quietly recognizes that Max fights far above his displayed level and warns that the others must not become dependent on him. During spider-dungeon training, the group learns to defend its vulnerable back line against ambushes. Max and Tanila acknowledge their feelings and begin a relationship. Tanila then removes a concealing bracelet and reveals that she is a runaway elven princess with golden hair and eyes. She also carries the red skill Flare Aura, which the inner presence describes as descended from its own power. Despite their unease, Max and Tanila stay together. On the spider dungeon's second floor, the party burns a web-filled forest to expose its attackers. A giant spider seizes Fowl, forcing Max to activate his upgraded Berserker. He can now direct the skill briefly, but its rage can continue chaining from one target to another. Tanila helps finish the creature, and the party proceeds into the burned forest with the key it dropped.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party finds the spider dungeon's rare chest, divides powerful spider-themed equipment, and clears the final boss. Everett learns that the group has encountered an extraordinary run of rare dungeon events. He and Tom agree to protect the secret, provide tower crystals and a major skill upgrade, and begin seeking a fifth member. A level-50 elf archer becomes the preferred candidate. Tanila takes the upgrade and gains devastating area magic. During another rare boss floor, the party accepts the risk that repeated anomalies may draw the attention of higher powers. Tanila warns that her elf-supremacist sister and royal father could be deadly threats. The four defeat a giant armored ape through coordinated battlefield control. Its chest grants transformative elixirs: Fowl becomes a stronger defender, Batrire gains a protective barrier, and Tanila gains an elemental familiar. Max gives up his own elixir so Fowl can gain two additional defensive skills. After reaching level 45, the group begins elemental dungeons. They learn that permanent rewards from the one-attempt demon and dragon trials become unavailable once anyone enters the tower, so Max sets a firm sequence: finish the elemental dungeons, reach level 50, earn both boons, and only then enter the tower.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Tom's resistance gear, the party clears the ice and fire dungeons. Fowl reveals that his fiftieth birthday is approaching and that estrangement from his family has made the milestone painful. Max and Alexander organize a celebration attended by more than two hundred dwarves, giving Fowl a broader community to stand with him. The whole party reaches level 50, and Max and Tanila openly declare their love. Everett supports their ambition to defeat the tower while insisting that they develop enough strength to surpass Golden Axe's current limits. Before tower entry, Tom and Everett lend protective rings and curse remedies for the demon dungeon. The party survives burrowing and stealthed attackers by relying on Max's detection, Tanila's area magic, Batrire's healing, and Fowl's defense. A later assault nearly exhausts them, but they escape a confined canyon by building a route over its wall. At the destination portal, a black-armored demon ambushes Max after his companions cross. Cursed, surrounded, and alone, Max gives the inner presence permission to control his body so that it can survive and follow his family.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inner presence removes Max's curse and destroys the demons surrounding him. It wants to keep hunting, but Max regains control by focusing on his need to return to Fowl, Tanila, and Batrire. Consume has taken hundreds of demonic essences and acquired demonic magic and summoning along with major attribute gains. The party is then sealed inside a coliseum ruled by a demon lord. The lord exposes Tanila's concealed royal appearance, but ancient challenge rules prevent it from attacking the group directly. Its chosen champion uses fire, curses, and teleporting portals, nearly killing Tanila and shattering Max's body. Batrire's protective dome and healing keep Max alive until Regeneration restores him. Fowl shields the others, Tanila repeatedly immobilizes the champion, and Max applies debilitating abilities before killing her. Consume adds Demonic Teleportation. The demon lord attempts to present a trapped red reward gem, but a warning lets Max identify the danger. Forced to substitute a safe yellow gem, the lord grants all four companions Defense of the Demon and allows them to leave. It closes the trial by threatening to find Max.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After warning Everett and Tom that the demon trial is unsafe, the party prepares for the dragon dungeon. The prospective elf archer is expected to join them after their attempt, following a death in her former tower group. The gold dragon receives the four peacefully, recognizes an ancient danger within Max, and replaces a lethal trial with three nonlethal attacks against itself. Max's ordinary efforts barely mark it. For the last attempt, he allows the inner entity to take control under a promise to target only the dragon and return his body. The strike draws blood, and the dragon honors its agreement despite being unable to identify the power. Elsewhere, an ancient dragonkin warns a world-ruling petitioner that one released black skill foretells two more and an eventual conflict among all three. The gold dragon awards the party Defense of the Dragon, a tooth, and a scale. In private, Max accepts a secret mutual nonaggression pact that marks him and lets the dragon track him. Max, Fowl, Tanila, and Batrire then enter the tower at level 50 and gain their first trace of tower affinity. At the close, a contract hunter receives payment and a dossier identifying Max Host as a black-skill bearer. The hunter kills the courier and begins pursuing Max on behalf of unnamed queens.",
+            "through": {
+              "chapter": 53
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DJCH4JN4",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-boundaries"
+      }
+    },
+    "shattered-dreams": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An eighteen-year-old sheep-farm worker who expects to become a baker and marry Nancy. His selection instead produces two skills and a black result, after which Guild representatives falsely declare him unskilled and take him into custody.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Max's intended wife and a trained baker. Their families have approved the match on the condition that Max completes a baking apprenticeship after his selection.",
+            "id": "nancy",
+            "name": "Nancy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max's closest friend, present for the selection ceremony and hoping to follow a warrior's path.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max's sister, a town-guard trainee who plans to seek an adventuring career after her own selection the following year.",
+            "id": "stacy",
+            "name": "Stacy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Guild operative whose truth-detection ability indicates that Max's family is not concealing him after his escape.",
+            "id": "trina",
+            "name": "Trina",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The local authority directing the search for Max. He knows the selection produced Baker and an unidentified black skill, and he prepares to widen the hunt beyond the town.",
+            "id": "senior-guild-advisor",
+            "name": "Senior Guild advisor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sheepdog that joins Max against three goblins and prevents one from finishing him, suffering a grave wound during the fight.",
+            "id": "sheepdog",
+            "name": "Sheepdog",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young blacksmith who exchanges a well-balanced spear for Max's salvaged goblin weapons and asks him to bring back more usable metal from future fights.",
+            "id": "young-blacksmith",
+            "name": "Young blacksmith",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The registered adventurer identity adopted by Max after he changes his appearance. Under this name he presents himself as an F-rank spear fighter, giving the fugitive a documented cover for Guild work.",
+            "id": "seth-pendell",
+            "name": "Seth Pendell",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sword-and-shield adventurer who offers Seth a place in a future dungeon group and directs him to find her at an east-side inn.",
+            "id": "elf-party-leader",
+            "name": "Elf party leader",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf Guild attendant who processes Seth's monster trophies and notices that his colored stones may qualify for another assignment.",
+            "id": "greta",
+            "name": "Greta",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified power who orders two rulers to find a boy with a black skill. The being kills their throne-room guards and threatens the rulers with punishment if the search fails.",
+            "id": "powerful-being",
+            "name": "Powerful being",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A warrior who initially challenges Seth's claim to kobold kills. He then accepts Seth's compromise and joins the newly formed group preparing to enter the kobold dungeon.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranged fighter who joins Brutus, an unnamed healer, and Seth in a newly formed group preparing to enter the kobold dungeon.",
+            "id": "archer",
+            "name": "Archer",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-three healer in Seth's first formal dungeon party. He can bless the whole group and restore injuries while the others hold the fighting line.",
+            "id": "miles",
+            "name": "Miles",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local adviser who cautions Seth against bringing companions into battles they are not ready to survive.",
+            "id": "innkeeper",
+            "name": "Innkeeper",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified woman who knows Max's name and tells him that he is marked. She warns that several powers want to kill or exploit him and urges him to become stronger.",
+            "id": "temple-woman",
+            "name": "Temple woman",
+            "reveal": {
+              "chapter": 22
+            }
+          },
+          {
+            "description": "A gear specialist who examines Seth's bonded spear and identifies its attribute bonuses and extra effectiveness against stronger enemies.",
+            "id": "magic-shop-owner",
+            "name": "Magic-shop owner",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The healer in the elf-led party during Seth's goblin-dungeon expedition.",
+            "id": "lucia",
+            "name": "Lucia",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf rogue who isolates Max in the goblin boss room, admits that the party has killed humans, and tries to murder him.",
+            "id": "elf-rogue",
+            "name": "Elf rogue",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The person responsible for a merchant caravan's workers and route.",
+            "id": "caravan-leader",
+            "name": "Caravan leader",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan guard and former adventurer who has become fearful and discouraged.",
+            "id": "former-adventurer",
+            "name": "Former adventurer",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of the bakery across from Max's inn. He invites Max to work in the shop and joins Amy in evaluating three cupcake variations made with Max's Baking skill.",
+            "id": "bakery-owner",
+            "name": "Bakery owner",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The bakery owner's daughter and a working baker. She shares Seth's enthusiasm for the craft and helps evaluate the cupcake variations he prepares in her family's bakery.",
+            "id": "amy",
+            "name": "Amy",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The front-line fighter in an established three-person group that recruits Seth for a level-fifteen lizardman dungeon.",
+            "id": "dwarf-warrior",
+            "name": "Dwarf warrior",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The spellcaster in Seth's new lizardman-dungeon party. Her root magic holds enemies in place so the group's melee fighters can control the first engagement.",
+            "id": "elf-mage",
+            "name": "Elf mage",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The healer in Seth's new party, equipped with several restorative spells and a powerful emergency heal that can be used once per day.",
+            "id": "dwarf-healer",
+            "name": "Dwarf healer",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A highly regarded warrior below level twenty-five who leads the defensive line when the Shade approaches the city.",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Guild-affiliated tracker who follows Caleb in hopes of connecting Seth Pendell to Max. Max captures him after using stealth and a campfire decoy to reverse the ambush.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of two sisters directing another search for Max. She helps decide that the uncertainty surrounding his reported death must be resolved.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of two sisters directing another search for Max. She participates in the decision to hire a tracker and use his personal connections as leads.",
+            "id": "macy",
+            "name": "Macy",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The regional leader of a hostile order, receiving a survivor's report that an operation failed and Seth Pendell may have died during a boss encounter.",
+            "id": "regional-order-head",
+            "name": "Regional order head",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A warrior who leads a four-person adventuring party above level twenty-five. He allows Seth to take selected finishing blows during a higher-level dungeon run and teaches him how to harvest useful monster parts.",
+            "id": "aldrich",
+            "name": "Aldrich",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shield-bearing woman in Aldrich's higher-level party who joins Seth on a dangerous dungeon expedition.",
+            "id": "aldrichs-warrior",
+            "name": "Aldrich's warrior",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified woman who says she spent stored power on Max and that his black skill has surpassed her expectations. She is pursuing a concealed plan with another woman.",
+            "id": "secret-sponsor",
+            "name": "Secret sponsor",
+            "reveal": {
+              "chapter": 62
+            }
+          },
+          {
+            "description": "A red-haired, cloaked collaborator who has carried out the secret sponsor's request. She intends to keep their plan hidden and is alarmed by the return of a black skill after centuries.",
+            "id": "cloaked-associate",
+            "name": "Cloaked associate",
+            "reveal": {
+              "chapter": 62
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D324J4FW",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-dreams"
+      },
+      "recaps": {
+        "ending": "Max remains publicly registered as Seth Pendell and is still level one because Consume prevents ordinary experience gains. His dwarf warrior, elf mage, and dwarf healer companions now know that he is Max, understand the nature of Consume, and regard him as family. They intend to advance together while protecting his cover and helping him resist the skill's pressure toward killing people. Max has added Sonar and Melee Weapon Mastery to his abilities and plans to keep pursuing monsters strong enough to improve his attributes. Caleb knows that Seth is Max, but Max keeps him at a distance to reduce the threat to those at home. Guild-linked hunters and Molly and Macy's faction continue looking for Max and may use his friends and family as leverage. The elf-linked hostile order is incorrectly informed that Seth likely died. The party notices that its members' rare and combined skills are too unusually concentrated to seem accidental. A final private meeting confirms that an unknown sponsor spent saved power on Max's black skill and has a cloaked associate helping conceal a larger plan. Their identities, purpose, and earlier failure remain unresolved.",
+        "in_short": "At his selection, eighteen-year-old Max receives Baker and the forbidden black skill Consume, but the Guild calls him unskilled and takes him away. After escaping, he discovers that Consume blocks ordinary experience while taking health, attributes, and occasional skills from his kills. He becomes the adventurer Seth Pendell, survives dungeon parties, an elven murder attempt, and an undead assault, and struggles against the urge to seek power through human deaths. Guild agents and other factions keep hunting him, while Caleb's recognition of his cover exposes the danger to his family and friends. Max eventually tells his dwarf warrior, elf mage, and dwarf healer companions the truth. They accept him, promise to protect his identity, and help restrain Consume's influence. Still level one, he gains Sonar and Melee Weapon Mastery by fighting stronger monsters. The book ends with his party suspecting that an outside power arranged their meeting, while two secret collaborators confirm that they deliberately supported Max's black skill as part of an unresolved plan.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Max enters the annual selection expecting the Baker skill, an apprenticeship, and marriage to Nancy. Instead, the shard grants him Baker and Consume and turns black. Guild representatives hide the result, publicly label him unskilled, threaten his family, and carry him away. Caleb and Stacy break him out of the transport cart, supply him for flight, and return home so their families will not be implicated. Alone in the forest, Max learns that Consume prevents him from earning normal experience from kills or assignments. In exchange, a death can restore his health, stamina, or mana and may transfer a superior attribute or skill. Goblin fights prove that this healing can save him from grave wounds. After a sheepdog helps him survive another attack, Consume offers him spear training from a slain goblin. Max accepts it, then ends the mortally wounded dog's suffering and unwillingly gains dexterity from the animal. The discovery that Consume takes from allies as readily as enemies unsettles him. He decides to change his appearance, enter another settlement, and build a false identity that will let him earn money and become strong enough to investigate the Guild.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max improves his fighting technique against goblins, gathers saleable trophies, and enters a mill town under the first name Seth. After shaving his head and inventing a missing-document story, he registers with the Guild as F-rank spear warrior Seth Pendell. His cover gives him lodging, equipment, and access to assignments, although Guild representatives remain nearby. Reading the adventurer guide confirms that ordinary fighters gain levels and improve skills through routes Consume has closed to him. Max concludes that he must defeat stronger opponents and take what his ability can provide. An elf sword-and-shield adventurer offers him a possible place in a future dungeon party. During solo work, Max survives a hobgoblin ambush, gains strength and constitution, and acquires Shield. Greta, a dwarf Guild attendant, processes his trophies and notices potentially useful colored stones among his finds. Elsewhere, two rulers are compelled by a powerful visitor to locate a boy with a black skill. The visitor knows that traces of the target have been removed and demonstrates lethal power while threatening the sisters with punishment for failure. Max does not know that the search has expanded, but the forces pursuing the black-skill holder now extend beyond his home town.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Greta arranges two healing potions for Seth in return for completing a kobold assignment. He first hunts alone, then joins Brutus, an archer, and the healer Miles after resolving a dispute over kill rights. Inside the kobold dungeon, Seth serves as the shield-bearing front line while Brutus supports him and Miles supplies blessings and healing. Consume restores Seth during battle and raises his intelligence, forcing him to explain his unusual recovery. He claims to be a runaway noble with access to an exceptional potion, and the group agrees to keep the supposed secret. After upgrading their equipment and learning the boss's escape rules, Brutus, Miles, and the archer reach level four while Seth remains level one. They enter the boss chamber, where Seth holds the kobold boss while the others attack. When it becomes berserk, Brutus is nearly killed and Miles spends his special daily heal to save him. Seth lands the killing blow, gains strength and constitution, and accepts the offered Berserker skill. He then uses one of his real potions to keep Brutus alive, earning the warrior's declaration of a life debt. The group returns safely with weapons, rings, and other rewards from its first boss victory.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Berserker gives Seth a short burst of speed and strength while stripping away judgment and self-preservation. Troubled by the danger Brutus faced, he leaves his first group and resumes hunting alone. At a temple, an unidentified woman calls him Max, says he is marked, and warns that several powers seek to kill or use him. Meanwhile, Trina files an official report that Max died despite uncertain remains, while privately suspecting that he escaped. Seth joins the elf leader's established goblin-dungeon party, including healer Lucia, and gains Ice Magic from an enemy caster. A newly arrived elf rogue then isolates him in the boss room and admits that humans have been killed before. Seth turns the boss against the attacker, activates Berserker, kills both the rogue and the boss, and chooses Stealth from Consume's offer. He escapes unseen, shaken by the pleasure and hunger attached to the human death. The innkeeper identifies the attackers as likely anti-human zealots and protects the story that Seth died. A magic-shop owner examines Seth's new bracers, arranges caravan passage, and helps him preserve the rogue's victim list as evidence. Seth leaves town with proof that his assumed name had been selected as a target before the attempted murder.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seth departs with a merchant caravan. When a broken wheel leaves the camp exposed to eight wolves and a larger ghost wolf, he orders the workers back and fights the pack alone. Berserker and Consume keep him alive through severe injuries, and he stages the use of a potion to conceal how completely he recovers. The caravan leader agrees to keep his role private, while a discouraged former adventurer decides the victory has given him reason to return to that calling. Seth reaches a major trade city, registers his arrival under the Pendell identity, and clears a level-five hobgoblin dungeon with ease. Seeking enemies strong enough to improve him, he buys an enchanted shield and enters a level-ten orc dungeon alone. Early kills yield strength and constitution, but a rare group led by a caster nearly overwhelms him. Seth combines Ice Magic with Berserker to kill the three enemies, taking a deep wound across his back before Consume restores him. The encounter proves that his growing attributes and magical equipment do not make him safe from stronger dungeon threats, even as those same threats remain his only reliable route to further power.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Guild promotes Seth to E-rank after his orc-dungeon success. He replaces damaged equipment, studies monster and skill references, and begins preparing more deliberately. Baking at the shop across from his inn reconnects him with his former plans and introduces Amy, the owner's daughter. He then joins a dwarf warrior, an elf mage, and a dwarf healer for a level-fifteen lizardman dungeon. The group has worked together for months, and Seth adds damage, a second shield, Stealth, and newly acquired sword skill. His rapid recovery and bound equipment prompt questions, so he admits that he bypassed formal beginner training and has concealed parts of his history. The companions accept limited honesty and agree to protect what he reveals. With Seth using Stealth to remove casters, the party reaches encounters that had previously stopped it. They delay the boss long enough to prepare, then face two mages, two giant guards, and a dual-sword commander. Seth holds the commander through a long defensive exchange while the mage spends her remaining power on heavy ice and fire attacks. The party wins, and Seth takes the final blow. Consume upgrades his Swordsmanship, while the dungeon rewards the group with new equipment, including swift boots for Seth.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seth helps Amy rise from level two to level eight through repeated orc-dungeon runs and promises to assist her toward level ten. His companions begin to see that his advancement does not follow ordinary rules, but a Guild alarm interrupts further questions: an undead dungeon has released thousands of attackers south of the city. The party joins the defense against zombies, skeletons, and undead wolves. During the fighting, Seth and the dwarf warrior reach several endangered casters. One is fatally wounded and asks Seth to end his suffering. Consume rewards the mercy killing with attributes and Fire Magic, leaving Seth disturbed by how readily the ability's hunger influenced him. When a Shade approaches, the healer persuades nearby adventurers to hold their ground. The elf mage disguises Seth's secret Fire Enchantment as her own spell, and Hannah leads the warriors while Seth repeatedly strikes the creature. Consume resists its attempts to drain his attributes, and Seth survives its sustained attack until a stronger adventurer kills it. His party deflects Hannah's questions and shares the defense reward as equals. Back at the orc dungeon, Seth adds blunt-weapon training. Then Caleb arrives at the inn and recognizes that Seth Pendell is Max, creating a direct breach in the identity that has kept Max alive.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Caleb tells Max that their town was informed of his death and that his family was devastated. Max admits he received two skills but refuses Caleb's request to join him, fearing the Guild will use old connections to find him. That fear is confirmed when Max captures James, a tracker who followed Caleb. Under interrogation, James says supposedly unskilled people are classified as red, clear, or black and that the council considers each type dangerous. He identifies Max as the rare black type. Max kills James, gains attributes and Dual Wield, and destroys the body. Molly and Macy separately renew their search and plan to exploit Max's friends and family. Another hostile order, however, receives a false report that Seth probably died during the elf party's boss operation; its regional leader drains the surviving reporter's life. In a swamp dungeon, an unexplained internal voice orders Max to consume a slain ogre. When the elf mage reveals her uncommon combined elemental skill and detects his Ice Magic, Max finally tells his current companions the truth. He identifies himself as Max, explains Consume and his permanent level-one status, and asks them to continue calling him Seth. The dwarf warrior, elf mage, and dwarf healer accept him as family, promise to guard the secret, and undertake to keep his pursuit of power from controlling him.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With his core party now informed, Max seeks stronger monsters that can raise his attributes while his companions benefit from the experience he cannot receive. Aldrich allows him to join a level-twenty-five-plus party and take selected finishing blows in exchange for helping protect its vulnerable members. During a difficult lizard encounter, Max saves Aldrich and fights a rare red-scaled creature beside the other warrior. He cripples and kills it, gains more physical power, and accepts Sonar, a constant short-range sense that can expose hidden or invisible threats. Aldrich's group credits Max with preventing their deaths and considers its obligation settled through the training and opportunities it gave him. Back with his own companions, Max fights ogres on the rocky second floor of their dungeon. Acquiring axe handling causes four weapon skills to combine into uncommon Melee Weapon Mastery. The party compares its unusual abilities: the elf's combined elemental magic, the dwarf warrior's rare shield skill, the dwarf healer's rare healing magic, and Max's black skill. They suspect a powerful outside force arranged their meeting, and Max believes he has encountered the woman involved. In the final scene, an unidentified sponsor tells a cloaked associate that she spent saved power on Max and obtained better results than expected. The women agree to keep their continuing plan hidden, leaving its purpose and their identities unresolved.",
+            "through": {
+              "chapter": 62
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D324J4FW",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-dreams"
+      }
+    },
+    "shattered-limits": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Seth"
+            ],
+            "description": "A level-one adventurer whose concealed abilities make him an unusually capable fighter. He leads Fowl, Tanila, and Batrire through dungeon training while testing how far his combat talents can take him.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Max's dwarf shield fighter and one of the three companions training beside him. He helps hold the front line while the party works toward level 25.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf mage in Max's four-person party. She supports the group's dungeon runs and quickly recognizes how exceptional Max's combat ability has become.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarf healer who accompanies Max, Fowl, and Tanila during the party's dungeon training.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max's younger friend in Rumstant and a novice adventurer whom he helps gain dungeon experience. She reaches level nine during one of their separate runs.",
+            "id": "amy",
+            "name": "Amy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarf proprietor of a Rumstant alchemy shop who shows urgent interest in Max's unusual red-scaled paw.",
+            "id": "dwarf-alchemist",
+            "name": "Dwarf alchemist",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Amy's father, who helps her thank Max with a cake after Amy's progress as an adventurer.",
+            "id": "amys-father",
+            "name": "Amy's father",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older dwarf scholar who records Max's observations of a rare red lizard. He agrees to keep Max's identity confidential and lends him a reference book on rare monsters.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max's childhood friend and an adventurer who attended his selection. His connection to Max remains important as Max tries to keep his movements concealed.",
+            "id": "caleb",
+            "name": "Caleb",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Guild-connected investigator already looking into Max's disappearance. Her pursuit makes Max's former connections a continuing risk.",
+            "id": "trina",
+            "name": "Trina",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "A Rumstant innkeeper who supports Max in confidence and agrees to give Caleb a false account of when Max departed.",
+            "id": "rumstant-innkeeper",
+            "name": "Rumstant innkeeper",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Five powerful observers approached by an unidentified petitioner seeking information. The Watchers operate under rules that limit what they can disclose or do.",
+            "id": "watchers",
+            "name": "The Watchers",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed powerful seeker who asks the five Watchers for knowledge they cannot provide within their constraints. The encounter points the petitioner toward repairing former alliances, after which the figure expends power on another search.",
+            "id": "unidentified-petitioner",
+            "name": "Unidentified petitioner",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A missing man whose disappearance leads Trina to suspect Max and send three C-rank adventurers to investigate.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The formidable leader of a bandit group encountered on the road to the capital. She is exceptionally fast and dangerous, and she has avoided a criminal aura by directing others to carry out killings.",
+            "id": "bandit-leader",
+            "name": "Bandit leader",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The captured bandit leader says that her mother calls her Lydia, though Max does not accept the claim at face value. She remains a dangerous prisoner in the party's custody.",
+            "id": "lydia",
+            "name": "Lydia",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Private Felix"
+            ],
+            "description": "A patrol soldier assigned to remain with the caravan and guard the captured Lydia until the group reaches the capital.",
+            "id": "felix",
+            "name": "Felix",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The innkeeper of the Heavenly Pineapple in the capital. He provides Seth's party with a month-long base that includes meals and secure storage.",
+            "id": "alexander",
+            "name": "Alexander",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A discreet intermediary who agrees to distribute Max's surplus dungeon equipment anonymously to new adventurers.",
+            "id": "nicholas",
+            "name": "Nicholas",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unexplained voice Max hears internally after defeating a dungeon boss. It commands him to consume the creature, alarming him because he realizes he did not imagine it.",
+            "id": "unidentified-inner-voice",
+            "name": "Unidentified inner voice",
+            "reveal": {
+              "chapter": 14
+            }
+          },
+          {
+            "description": "A librarian who gives Max access to eight books in exchange for information about rare monsters.",
+            "id": "librarian",
+            "name": "Librarian",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A female faction warrior who offers Max a preliminary evaluation after learning that his mixed-race party intends to stay together. She may be able to sponsor the group for faction membership.",
+            "id": "faction-warrior",
+            "name": "Faction warrior",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older elf healer at the Adventurers' Hall. She uses Stasis to save the critically poisoned Batrire and coordinates the search for specialist treatment.",
+            "id": "merla",
+            "name": "Merla",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Batrire's brother and fighting teacher, whose death in a lethal arena match for prize money shapes her grief and opposition to deadly competition.",
+            "id": "batrires-brother",
+            "name": "Batrire's brother",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A specialist alchemist from across the great ocean. Merla recommends him as the best chance of producing an antidote for Batrire's rare poison.",
+            "id": "tang-mu",
+            "name": "Tang Mu",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max",
+              "Seth"
+            ],
+            "description": "The full identity Max uses to register for the Coliseum while seeking money for Batrire's antidote.",
+            "id": "seth-pendell",
+            "name": "Seth Pendell",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Two human queens who observe the Coliseum fights and openly favor lethal outcomes, applauding contestants who kill their opponents.",
+            "id": "human-queens",
+            "name": "The human queens",
+            "reveal": {
+              "chapter": 49
+            }
+          },
+          {
+            "description": "A highly experienced red-haired elf who fights with two weapons in the Coliseum. She warns Max that stronger competitors remain and expects that the bracket may eventually bring them together.",
+            "id": "red-haired-elven-fighter",
+            "name": "Red-haired elven fighter",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A male elven mage paired against Max after the Coliseum bracket is redrawn. He taunts Max and enters their match expecting an easy victory.",
+            "id": "male-elven-mage",
+            "name": "Male elven mage",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A brutal human Coliseum contender who tortures and kills an opponent after she surrenders. The queens' approval suggests that he enjoys powerful favor within the competition.",
+            "id": "alfred",
+            "name": "Alfred",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Guild negotiator who warns Max that Alfred's noble family could retaliate against his friends if Alfred dies, then seeks an agreement governing the coming fight.",
+            "id": "guild-advisor",
+            "name": "Guild advisor",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Librarian"
+            ],
+            "description": "A human librarian who trades restricted knowledge about unusual skills for Max's observations of rare monsters.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient presence within Consume now identifies itself as the Consumer. It binds Max to secrecy before explaining that its black skill exists in a balance with two rival powers.",
+            "id": "consumer",
+            "name": "The Consumer",
+            "reveal": {
+              "chapter": 56
+            }
+          },
+          {
+            "description": "An elven zealot who breaches the Heavenly Pineapple and attacks Max with a poisoned dagger. Max kills her while defending himself.",
+            "id": "elven-zealot-assassin",
+            "name": "Elven zealot assassin",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dwarf shopkeeper who helps disguise Max by selling him a recognition-hindering brooch and recoloring his armor. He accepts two gold toward the 15-gold price.",
+            "id": "dwarf-magical-shop-owner",
+            "name": "Dwarf magical-shop owner",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative who gives Max an invitation to her faction's property and shows active interest in recruiting his party.",
+            "id": "faction-representative",
+            "name": "Faction representative",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful figure beyond Max's world who seeks an audience after learning that a black skill has been released on one of the worlds tied to his plans.",
+            "id": "black-skill-observer",
+            "name": "Black-skill observer",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0D324V4JQ",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-limits"
+      },
+      "recaps": {
+        "ending": "Fowl's successful bet provides enough money to cover the final payment for Tang Mu's antidote, but Batrire is still in stasis and the cure is only now due. Fowl and Tanila remain loyal, the party has a possible faction sponsor, and its shared future is undecided. Max killed Alfred after Alfred's power failed against Consume. The queens shielded Max from immediate revenge while taking his Coliseum prize money, leaving Alfred's family as a future threat while the Guild still owes Max one unrestricted favor. The Consumer has identified Consume, Devour, and Command as three opposed black skills and has bound Max to secrecy. Zealots have already escalated to assassination, restricted-skill authorities remain hidden, and an off-world power has noticed the black skill's return. At the close, elves surround Max and Tanila while trying to create a justification to kill them. Max permits the newly evolved Consumer to control him only after it promises not to harm Tanila or innocent bystanders. The confrontation is still underway.",
+        "in_short": "Max trains with Fowl, Tanila, and Batrire while hiding the extraordinary growth granted by Consume. A rare dungeon, the loss of his left eye, and violent encounters reveal that the skill has a will of its own and rewards human deaths. After reaching the capital, the party advances to D-rank, pursues faction options, and gains stronger skills. Regeneration restores Max's eye, but Consume develops into an ancient presence called the Consumer. When Batrire is critically poisoned, Max enters the Coliseum to fund her antidote. He kills Alfred, loses his prize money to the queens, and triggers Consume's evolution, though Fowl's winning bet still covers the cure. The Consumer names three balancing black skills and warns that their rivals will hunt Max. Zealots retaliate, outside powers notice the black skill's return, and the book ends with Batrire still in stasis while Max gives the evolved Consumer conditional control during an elf ambush against him and Tanila.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max disappeared from his former life. His childhood friend Caleb had attended his selection, while the Guild-connected Trina took an interest in finding out what happened to him. Those ties mean that people from Max's past may still be used to trace him as he tries to remain hidden.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max is training in Rumstant with Fowl, Tanila, and Batrire while separately helping Amy gain levels. His Melee Weapon Mastery lets him handle several weapon styles with unusual competence, but the party's immediate aim is to bring the other three companions to level 25. Max also establishes confidential relationships with a dwarf alchemist interested in rare monster parts and with Sam, a scholar collecting rare-creature information. The four companions enter a rare version of an ogre dungeon and become trapped when the entrance vanishes. Its two-headed ogres push Fowl beyond his usual defensive limits and force Max to use Berserk, a skill whose single-minded violence frightens him. The group nevertheless accepts that he used it to survive. In the boss fight, Max endures severe burns and injuries while Batrire spends her healing to keep him alive. Consume takes attributes from the three-headed ogre and improves Max's Fire Magic. The victory yields bonded equipment for everyone, including a ring that raises all of Max's attributes. Because the rare boss tokens and gear could draw dangerous attention, the party decides to keep the evidence secret.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party continues into a cat-person dungeon after securing confidential help from the dwarf alchemist. A cat archer shoots Max through his left eye. Batrire removes the arrow and heals the wound, but neither her magic nor Consume can restore his sight. Max chooses to continue training, using Sonar and revised tactics to adapt rather than letting the injury end his adventuring. Fowl, Tanila, and Batrire reach level 25 and begin planning consequential skill choices. When Max tries to leave them for their protection, they reject the idea and declare that the four of them are family. They agree that they will leave Rumstant together after completing the dungeon. In the boss room, pillars favor the creature's speed, so the party holds it near the entrance and repeatedly damages its legs. Max relies on Sonar, ice magic, and Berserker to survive its attacks. Fowl is nearly killed by a final blow but survives through Batrire's healing and a potion. Max then hears a real inner command telling him to consume the defeated creature. Consume takes attributes and offers a converted skill, confirming that the pressure inside him is more than imagination.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max, Fowl, Tanila, and Batrire leave Rumstant in a caravan bound for the capital. During a night stop, murder-marked bandits surround Max. Consume rewards his first human kill with attributes and a new skill offer, while its inner voice urges him to kill everyone. Max activates Berserker and slaughters the attackers in a frenzy, nearly turning on his own friends when they arrive. The party tracks the survivors to their camp and captures Lydia, a dangerous leader who avoided a criminal aura by ordering others to commit violence for her. A patrol assigns Private Felix to guard her. Lydia escapes, kills Felix, and flees, but Max catches her and uses his new Evasion skill to dominate their fight. He deliberately prolongs her suffering before killing her. Consume grants much greater gains from these human deaths than it usually does from monsters. Max admits to Fowl that the power may be turning him into a threat, but Fowl reaffirms that the party is his family. The group reports Lydia and Felix to another patrol and reaches an inn near the capital. Max's fear of the voice, and of how much he enjoyed the killing, remains unresolved.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Using the public name Seth, Max discovers that Sonar can detect a pattern in a casino wheel. He conceals the advantage, wins 200 gold, and is barred from further play. The money gives him a possible route to eye treatment. In the capital, Alexander provides the party with a secure base at the Heavenly Pineapple, and the Adventurers Guild promotes all four companions to D-rank. They learn that staying together will require choosing a faction compatible with their mixed races before level 35. Local healers still cannot repair Max's eye, so the party turns toward dungeons, the tower, and stronger skills. Max gains Haste from a raptor boss and Festering Touch from an undead boss, while Nicholas agrees to distribute his unwanted gear anonymously to new adventurers. In a vampire-rabbit dungeon, Consume resists the boss's draining power and then overrides Max's intention to take its skill. Max collapses after obeying the command to destroy the creature. While unconscious, he encounters an ancient inner double that urges him to kill and feed its hunger. Max tells his companions what happened. They recognize the danger but again refuse to abandon him.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max searches for information about Consume's erratic behavior. In an undead town dungeon, the skill resists Drain Essence and then accepts Death Magic before Max can choose. The new power remains unusable until an unspecified level of corruption, and Max's damaged eye briefly glows green. Tanila, Fowl, and Batrire continue to judge him by his choices rather than by the power inside him. The party then fights a giant skeleton and a mimic disguised as a treasure chest. The mimic breaks Max's leg and nearly overwhelms the group, but coordinated magic and Max's Berserker state bring it down. Consume grants him Conceal Self, which can falsify displayed identity, race, level, attributes, and skills. He also receives a bonded halberd made from weapons fused into the mimic. After defeating a Shade Knight, Max confronts the inner entity again. He refuses its promise of power, threatens to die rather than let it harm his friends, and learns that it is willing to wait for him to yield. The party reaches level 30, and Max pays to upgrade his companions' chosen skills to Rare. They now prioritize advancement toward the tower over farming weaker dungeons.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party enters a harder tier of dungeons, where coordinated specialization matters more than raw force. Dragonkin resist physical attacks, and poison-using scorpions require careful control and cleansing. Max suspects that restricted information and earlier attacks on valuable adventurers point to a hidden group monitoring people with exceptional skills. Tanila recounts violence surrounding one elf's pursuit of ascension, including the killing of her family and many other elves, and Max promises he will not harm her people. A faction warrior then evaluates him in a troll dungeon. He helps exploit the creature's weakness to fire, receives a sponsorship token for his whole party, and gains the option to take Regeneration. Max accepts the skill. Batrire removes his ruined eye so he can test it, and Regeneration grows a functioning green replacement, finally ending his blindness. Tanila then shares restricted elven research suggesting that ascenders may once have returned and that many colored skills exist, including three known black skills. The group now has a possible faction route and two working eyes for Max, but the nature of ascension, restricted knowledge, and the power inside Consume remains uncertain.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After observing the capital's Coliseum, the party sees how lethal matches can arise from money and faction disputes. Batrire's distress leads her to reveal that her brother and fighting teacher died in arena combat while seeking funds to improve his skill. Soon afterward, the party encounters a rare three-tailed scorpion boss. Batrire's grief contributes to her insistence that they fight it. They win, but venom transferred through her healing leaves her critically poisoned. Max carries her to the Adventurers' Hall with only a fraction of her health remaining. Merla saves her by placing her in Stasis and identifies Tang Mu as the specialist most likely to make an antidote quickly. Tang Mu agrees to prepare it from the harvested stinger for 150 gold, with delivery in seven days. Max pays a 100-gold deposit, leaving the party 50 gold short. Alexander contributes what he can, and the companions review the rare equipment recovered from the boss. Consume also offers Max a choice of two skills after taking gains from the scorpion. Batrire remains suspended near death while Max and the others face a strict deadline to fund the balance of her cure.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max chooses Armored Warrior and secretly enters the Coliseum as Seth Pendell to earn Batrire's remaining antidote money. Tanila and Fowl object because death might give Consume greater influence, but Max continues. He repeatedly accepts surrenders despite the inner voice's demands for blood. The competition is arranged to favor Alfred, a cruel contender protected by status and applauded by the human queens. Max kills a zealot mage, then faces a lethal red-haired elf. He defeats her and offers mercy for her equipment, but she attacks during a false surrender and dies. Before the final, a Guild advisor warns that Alfred's noble family could retaliate against Max's friends. Max secures a promise of one unrestricted Guild favor if he spares Alfred where possible. Alfred's Drain Power cannot overcome Consume, and he recognizes that Max holds a related ability. Max ultimately kills him when no safe alternative remains. Consume absorbs power it cannot merge and begins evolving. The queens subject Max to apparent mental pressure, take his more than 2,000 gold in winnings as a public donation to Alfred's family, and promise protection from immediate revenge. Max keeps the equipment he won, but his planned source of antidote money appears lost.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fowl reveals that his bet on Max's overall Coliseum victory produced the 50 gold needed for Batrire's antidote. Batrire remains in Stasis, but the party can pay Tang Mu when the cure is ready. In a dream, Consume's inner manifestation says Alfred had to die because he could expose their related powers. It names itself the Consumer and identifies Devour and Command as the other two black skills, each intended to restrain the others. The Consumer binds Max to secrecy and warns that rival powers have minions who will hunt him. Zealot retaliation is already underway: an assassin breaches the Heavenly Pineapple and tries to kill Max, forcing Alexander to strengthen the inn's protection. Max uses concealment and continues researching restricted skill categories with the librarian Adam. An off-world observer separately learns that a black skill has returned, confirming that the consequences extend beyond Max's world. As Batrire's antidote appointment approaches, Tanila explains that she fled people who tried to dictate her identity after she received her skill. About a dozen elves then surround her and Max, apparently seeking a pretext to kill them. Max orders Tanila to protect herself and grants the evolved Consumer control only after it promises not to harm her or innocent people. The book ends with the ambush unresolved and the Consumer in command.",
+            "through": {
+              "chapter": 59
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0D324V4JQ",
+            "type": "community"
+          }
+        ],
+        "work": "shattered-limits"
+      }
+    },
+    "shogun": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Anjin-san",
+              "the Anjin"
+            ],
+            "description": "John Blackthorne, the English pilot-major of a Dutch trading ship, the Erasmus, which is wrecked on the coast of Japan in 1600 after a disastrous voyage. Able, proud, hot-tempered, and a skilled navigator and seaman, he is the first Englishman most Japanese have ever seen. A Protestant, he is the natural enemy of the Portuguese Catholics already established in Japan, and his knowledge of the wider world quickly makes him a valuable and dangerous pawn. Unable to say his name, the Japanese come to call him Anjin-san, 'Mr Pilot.'",
+            "id": "john-blackthorne",
+            "name": "John Blackthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kasigi Omi"
+            ],
+            "description": "Kasigi Omi, a young, ambitious samurai and nephew of the local lord, beside whose village the Erasmus washes up. Intelligent and coldly capable, he takes charge of the foreign captives and enforces his authority with casual, shocking brutality, giving Blackthorne his first hard lesson in how differently life and death are weighed in Japan.",
+            "id": "omi",
+            "name": "Omi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kasigi Yabu"
+            ],
+            "description": "Kasigi Yabu, the daimyo of Izu and Omi's uncle, a cunning, cruel and ambitious lord who covets the guns, cannon and silver aboard the wrecked ship. Treacherous and self-serving, forever calculating which side in the coming struggle for power will best serve his ambitions, he becomes one of the shifting, unreliable figures around Blackthorne.",
+            "id": "yabu",
+            "name": "Yabu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vasco Rodrigues"
+            ],
+            "description": "Vasco Rodrigues, a Portuguese pilot - profane, generous and superb at his trade - who is ordered to conduct Blackthorne by sea and finds himself liking the Englishman despite their nations' enmity and their rival faiths. A seaman's fellow-feeling repeatedly cuts across the politics that ought to make the two men enemies.",
+            "id": "rodrigues",
+            "name": "Rodrigues",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yoshi Toranaga",
+              "Lord Toranaga"
+            ],
+            "description": "Yoshi Toranaga, the Lord of the Kwanto and the most powerful of the five regents governing Japan in the name of a child heir after the death of the Taiko. Patient, brilliant and endlessly subtle, a master of politics who thinks many moves ahead, he is manoeuvring against his rivals for control of the realm. He recognises at once that the strange Anjin and his knowledge of the world beyond Japan could be a decisive piece in his game.",
+            "id": "toranaga",
+            "name": "Toranaga",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ishido Kazunari"
+            ],
+            "description": "Ishido Kazunari, the general who holds Osaka Castle and guards the young heir, and Toranaga's chief rival among the regents. Risen from common soldier to great lord - rigid, able and implacable - he commands a coalition determined to isolate and destroy Toranaga, making him the central opponent in the struggle for mastery of Japan.",
+            "id": "ishido",
+            "name": "Ishido",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Martin Alvito",
+              "Tsukku-san"
+            ],
+            "description": "Father Martin Alvito, a senior Jesuit and the fluent interpreter trusted by the great Japanese lords, known as Tsukku-san. Devoted to his Church and to its lucrative position in Japan, he sees the heretic Blackthorne as a genuine threat to everything the mission has built, and the two become wary adversaries even as Alvito's skills keep him indispensable at the centre of power.",
+            "id": "alvito",
+            "name": "Father Alvito",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Toda Mariko",
+              "Lady Mariko"
+            ],
+            "description": "Toda Mariko, a noblewoman of high and tragic lineage and a devout Christian convert, assigned by Toranaga to serve as Blackthorne's interpreter. Cultured, courageous and self-possessed, bound by absolute duty yet carrying a shameful family history, she becomes Blackthorne's guide to the Japanese world, his teacher, and in time far more than that. Her intelligence and grace make her one of the story's central figures.",
+            "id": "mariko",
+            "name": "Mariko",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Toda Buntaro"
+            ],
+            "description": "Toda Buntaro, Mariko's husband, a formidable and utterly loyal warrior and archer whose violent temper and brooding jealousy make him a hard and often frightening man. His troubled marriage to Mariko and his simmering hostility toward Blackthorne become a source of danger and tension.",
+            "id": "buntaro",
+            "name": "Buntaro",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Usagi Fujiko"
+            ],
+            "description": "Usagi Fujiko, a young widow of samurai family whom Toranaga assigns to Blackthorne as consort and manager of his household. Proud and at first unwilling, she comes to run his affairs with fierce competence and loyalty, and her devotion to duty gives Blackthorne another window into the code by which the samurai live and die.",
+            "id": "fujiko",
+            "name": "Fujiko",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carlo Dell'Aqua",
+              "the Father-Visitor"
+            ],
+            "description": "Father Carlo Dell'Aqua, the Father-Visitor and head of the Jesuit mission in Asia, a shrewd and worldly churchman balancing faith, Portuguese trade and the delicate politics of the Japanese lords. He guides the Church's response to the threat Blackthorne represents while trying to keep the mission's influence intact.",
+            "id": "dellaqua",
+            "name": "Father Dell'Aqua",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Ochiba"
+            ],
+            "description": "Ochiba, the mother of the child heir and widow of the late Taiko, a proud and formidable noblewoman whose loyalty Ishido's cause depends upon. Her private history and her wary judgement of the rival lords make her a quiet but decisive force in the struggle over Osaka and the fate of the realm.",
+            "id": "ochiba",
+            "name": "Ochiba",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "shogun"
+      },
+      "recaps": {
+        "ending": "Shogun ends with Toranaga's hidden design laid bare. Sent to Osaka by Toranaga, Mariko forces a crisis over the noble hostages Ishido is holding, insisting on her right to leave the castle; when a ninja raid follows, she dies deliberately in an explosion, an act that disgraces Ishido, breaks his hold on the hostages, and frees the great families from his coalition - a decisive blow struck at the cost of her life. Blackthorne is left grieving, and then finds his ship, the Erasmus, burned. Only the reader learns that Toranaga himself ordered it destroyed, so that the Anjin will stay in Japan and remain dependent on him; Toranaga comforts Blackthorne and promises him a new ship. In the final passage, Toranaga's private reflections reveal that Mariko's sacrifice, the burning of the ship, and every apparent setback have all served a single purpose. With Ishido's alliance shattered, he is now free to go to war for supreme power and to make himself Shogun, sole ruler of Japan. He intends to keep Blackthorne close as a prized and useful man - and is privately certain the Englishman will never be permitted to leave. The great battle that will decide the realm still lies ahead, but its outcome is no longer in doubt.",
+        "in_short": "In 1600 the English pilot John Blackthorne is shipwrecked in Japan, the first of his countrymen to reach it, and is drawn into the deadly power struggle that followed the Taiko's death. Brought before the great lord Toranaga, he reveals that the Portuguese Catholics entrenched in Japan are only one rival European power among many, knowledge that makes him both valuable and a target of the Jesuits. Caught between Toranaga and his enemy Ishido, who holds Osaka, Blackthorne throws in his lot with Toranaga, helps him escape Osaka, and is raised to samurai rank, given a fief, and set to training musketeers. He falls in love with his interpreter, the Christian noblewoman Mariko, whose brutal husband Buntaro complicates everything. Toranaga plays a long, deceptive game, even feigning surrender. The climax comes when Mariko goes to Osaka and forces a confrontation over Ishido's hostages, dying in a ninja attack in a way that breaks Ishido's grip. At the close, Blackthorne's ship is secretly burned on Toranaga's order to keep him in Japan, and Toranaga's thoughts reveal he has engineered everything to clear his road to becoming Shogun.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1600 the Erasmus, a Dutch trading ship piloted by the Englishman John Blackthorne, is wrecked on the coast of Japan after a ruinous voyage, its few surviving crew starving and sick. They come ashore in the domain of Izu, where the samurai Omi takes them captive and confines them in a pit. Blackthorne's first days in Japan are a series of violent shocks: casual executions, an alien code of conduct, and a display of authority when one of his men is killed on Omi's order. The local lord, Yabu, seizes the ship's guns, cannon and silver, recognising their worth. Blackthorne begins to grasp that he has washed up in a rigid, dangerous and utterly foreign world in which his life is worth nothing unless he can make himself useful.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blackthorne is taken to the great city of Osaka and brought before Toranaga, the ablest and most powerful of the five regents governing Japan in the name of a child heir since the death of the Taiko. Through the Jesuit interpreter Father Alvito - no friend to a Protestant Englishman - Toranaga questions Blackthorne closely and learns from him a wider truth about the world: that the Portuguese and their Church are only one European power among rivals, and that their presence in Japan serves ambitions of their own. This knowledge is explosive. Caught in the deadly rivalry between Toranaga and his enemy Ishido, who holds Osaka, Blackthorne is imprisoned and threatened, while the Portuguese and the Jesuits, alarmed by what he has revealed, work to have the heretic silenced.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trapped politically in Osaka and in growing danger from Ishido, Toranaga engineers a daring escape from the castle and the city, and Blackthorne plays a part in getting him clear, beginning to earn the great lord's regard. They flee by sea, running past Ishido's forces and a Portuguese warship in a tense chase in which the pilot Rodrigues and the rival factions all manoeuvre for advantage. Blackthorne, still bewildered by Japanese ways but increasingly drawn to them, survives the flight and casts his lot, for want of any better option, with Toranaga, whose protection is now the only thing keeping him alive.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Toranaga's territory, Blackthorne's fortunes rise. Toranaga, seeing his value, grants him the rank of hatamoto and eventually samurai standing, gives him a household and a fief at Anjiro, and sets him to training samurai in Western tactics and the use of muskets and cannon. The noblewoman Mariko, a devout Christian convert of tragic lineage, is assigned as his interpreter and becomes his teacher in language and custom; their closeness deepens into a forbidden love conducted with great care and danger. Blackthorne, now called Anjin-san, adapts to Japanese life, and at one point saves Toranaga's life during a violent earthquake, binding the two men further. Around them, Toranaga's long political game against Ishido and the other regents keeps unfolding.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tension around Blackthorne and the lords sharpens. Mariko's brutal, jealous husband, Buntaro, returns, and his hostility toward Blackthorne and his violent marriage to Mariko become a source of real danger. Toranaga plays a deep and patient game, appearing to yield ground to Ishido's coalition while secretly preparing, his true plan - a strategy his intimates call Crimson Sky - kept hidden even from his own people. Blackthorne endures further hard lessons in the samurai code, including moments where his life and the lives of those around him hang on a single word or gesture, and comes to understand how completely honour and duty govern everything in this world.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Toranaga's position appears to collapse. Isolated by Ishido's alliance and seemingly outmanoeuvred, he stuns his followers by announcing his submission and resigning from the Council of Regents, a move that looks like surrender and despair. Many around him are thrown into confusion and grief, some to the point of contemplating death, unable to see any purpose behind it. Beneath the surface, however, Toranaga is still playing for time and for position, and his apparent defeat is another turn in a game whose real shape he keeps to himself. Blackthorne, bound now to Toranaga's cause and to Mariko, is carried along toward the crisis gathering at Osaka.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Toranaga's direction, Mariko travels to Osaka, where Ishido is holding the noble families of the realm as hostages to keep their lords in line. There she precipitates a crisis by formally insisting on her right to leave the castle with Toranaga's ladies, forcing Ishido either to let her go, which would shatter his control of the hostages, or to stop her by force and expose his dishonour before the assembled lords. The standoff brings Osaka to the brink. In the crisis a band of ninja attacks, and in the violence Mariko is killed, deliberately placing herself in the path of an explosion. Her death is a devastating personal loss to Blackthorne and a decisive political stroke: it disgraces Ishido, breaks his hold over the hostages, and frees the great families to slip out of his grasp.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath, Blackthorne, grieving Mariko, finds his ship, the Erasmus, destroyed by fire - burned, unknown to him, on Toranaga's own secret orders, so that the Anjin will remain in Japan and dependent on his lord. Toranaga consoles him and promises to help him build a new ship, binding him more tightly still. In the novel's closing passage Toranaga's private thoughts reveal the full extent of his design: Mariko's sacrifice, the burning of the ship, and the whole tangle of manoeuvres have all served his overriding aim, to break Ishido's coalition and clear his path to supreme power. He intends to march to war - the reckoning that will make him Shogun, sole military ruler of Japan - and he means to keep Blackthorne, whom he has come to value and even like, close at hand as a useful piece, quietly certain that the Anjin will never be allowed to leave.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "shogun"
+      }
+    },
+    "shutter-island": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Edward Daniels"
+            ],
+            "description": "A U.S. Marshal in 1954 who travels by ferry to Ashecliffe Hospital, a facility for the criminally insane on remote Shutter Island, to investigate the impossible disappearance of a patient. A World War II veteran troubled by memories of combat and of liberating a concentration camp, he is also a grieving widower who lost his wife in a fire and suffers blinding migraines. Determined and suspicious, he comes to the island with private motives as well as his official case, and quickly senses that the doctors are hiding something.",
+            "id": "teddy-daniels",
+            "name": "Teddy Daniels",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Teddy's new partner, a U.S. Marshal assigned to work the case with him. Relaxed and affable where Teddy is intense, he provides easy companionship and a steadying presence as the two investigate the hospital, though he is newly paired with Teddy and something of an unknown quantity.",
+            "id": "chuck-aule",
+            "name": "Chuck Aule",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lead psychiatrist and head of Ashecliffe Hospital, a cultured, self-possessed man who champions humane, progressive treatment of the criminally insane. Courteous but guarded, he cooperates with the marshals only up to a point, withholding records and access in ways that deepen Teddy's suspicion that the institution is concealing its true activities.",
+            "id": "dr-cawley",
+            "name": "Dr. John Cawley",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The patient whose vanishing brings the marshals to the island. Committed after drowning her three children, she has somehow disappeared from a locked, guarded room with no apparent way out, leaving behind only a cryptic note. Her seemingly impossible escape is the mystery Teddy is sent to solve.",
+            "id": "rachel-solando",
+            "name": "Rachel Solando",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Teddy's late wife, who haunts him in dreams and memories throughout his time on the island. He believes she died in an apartment fire, and he blames a man he holds responsible for setting it. His grief for her and his need to make sense of her death shadow everything he does on Shutter Island.",
+            "id": "dolores-chanal",
+            "name": "Dolores Chanal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior psychiatrist at Ashecliffe with a clipped European manner that Teddy finds coldly menacing. His probing, clinical interest in the marshals and his unsettling remarks reinforce Teddy's conviction that sinister experiments are being carried out on the island.",
+            "id": "dr-naehring",
+            "name": "Dr. Naehring",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The hospital's deputy warden, who meets the marshals when they arrive and escorts them through the island's security. Polite but firm about the facility's rules, he is one of the officials managing the marshals' movements and access during their stay.",
+            "id": "mcpherson",
+            "name": "Deputy Warden McPherson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shutter-island"
+      },
+      "recaps": {
+        "ending": "The story's revelation is that the entire investigation has been an elaborate therapeutic staging. Teddy Daniels does not exist as a marshal; he is Andrew Laeddis, a long-term patient at Ashecliffe who was once a U.S. Marshal. His wife, Dolores, suffered from severe mental illness and drowned their three children in a lake; returning to find them dead, Andrew shot and killed her. Unable to live with what happened, he shattered psychologically and constructed the persona of Teddy Daniels, a heroic investigator uncovering a conspiracy, casting the hated arsonist Andrew Laeddis as a separate villain to avoid recognizing himself. Dr. Cawley and Andrew's own doctor, who spent the case impersonating the partner Chuck, devised the immersive role-play in a final effort to lead him back to reality before the hospital resorts to a lobotomy. Confronted with the truth, Andrew appears to accept it, and for a moment is lucid. But in the closing scene he speaks to his doctor once more as Teddy, seemingly having relapsed into the delusion, and asks whether it is better to live as a monster or to die as a good man. He is then led away by the staff, the implication being that he has either genuinely regressed or chosen oblivion, and that a lobotomy awaits him.",
+        "in_short": "In 1954, U.S. Marshal Teddy Daniels and his partner Chuck arrive at Ashecliffe Hospital for the criminally insane on Shutter Island to investigate how a patient vanished from a locked room. As a storm strands them, Teddy grows convinced the doctors are conducting sinister experiments, and he pursues his private obsession: finding Andrew Laeddis, the man he blames for the fire that killed his wife. The investigation is revealed to be an elaborate fiction. Teddy is himself the patient: he is Andrew Laeddis, a former marshal driven mad by tragedy. His wife Dolores, severely mentally ill, drowned their three children, and in his grief Andrew shot and killed her, then invented the Teddy Daniels identity and a web of conspiracy theories to escape the unbearable truth. Dr. Cawley and Andrew's psychiatrist, who has been posing as his partner Chuck, staged the whole role-play as a last attempt to break his delusion and spare him a lobotomy. Andrew briefly accepts reality, but by the end he appears to slip back into his false identity, and is led away to be lobotomized.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1954, U.S. Marshal Teddy Daniels and his newly assigned partner Chuck Aule take a ferry across choppy water to Shutter Island, home to Ashecliffe Hospital, an institution for the criminally insane. They have been sent to investigate the disappearance of a patient, Rachel Solando, a woman committed after drowning her three children, who has somehow vanished from a locked and guarded room, leaving only a strange note behind. The hospital's staff, led by the polished head psychiatrist Dr. Cawley, receive the marshals with wary courtesy but restrict their access to records and personnel. Teddy, a haunted war veteran mourning a wife he lost in a fire, arrives carrying private purposes as well as the official case, and almost at once he begins to suspect that the doctors are hiding the truth about what really goes on at Ashecliffe. A gathering storm threatens to cut the island off from the mainland as the investigation begins.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "shutter-island"
+      }
+    },
+    "siddhartha": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The son of a Brahmin in ancient India, a gifted and admired young man who nonetheless feels a deep restlessness and dissatisfaction with the teachings and rituals he has been raised in. Handsome, thoughtful, and proud, he is loved by all around him yet convinced that the wisdom handed down to him cannot bring the inner peace he seeks. Determined to find truth through his own experience rather than borrowed doctrine, he sets out on a lifelong search that will lead him through asceticism, indulgence, and every extreme of human life.",
+            "id": "siddhartha",
+            "name": "Siddhartha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Siddhartha's closest friend since childhood, who admires and loves him and follows him out of their village to seek enlightenment. Devoted and earnest, Govinda is more inclined than Siddhartha to trust teachers and to seek truth through established doctrine and discipline. His path repeatedly diverges from Siddhartha's, as he places his faith in following a master while his friend insists on finding wisdom alone.",
+            "id": "govinda",
+            "name": "Govinda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected Brahmin who has raised Siddhartha in the learning and rituals of their tradition and hopes his son will become a great scholar and priest. When Siddhartha announces he means to leave and join the wandering ascetics, his father resists, but he finally relents after Siddhartha stands unmoving in silent determination through the night.",
+            "id": "siddharthas-father",
+            "name": "Siddhartha's father",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The revered enlightened teacher, known as the Buddha, whose fame draws seekers from across the land. Serene, luminous, and utterly at peace, he preaches a doctrine of the causes of suffering and the path to its end. Siddhartha recognizes his greatness and the perfection of his calm, yet declines to become his follower, reasoning that enlightenment is a matter of personal experience that cannot be passed on through any teaching, however true. Govinda, by contrast, joins the Buddha's order.",
+            "id": "gotama",
+            "name": "Gotama the Buddha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful and accomplished courtesan in the town Siddhartha reaches after leaving the ascetic life, renowned for her grace and self-possession. She agrees to teach Siddhartha the art of love in exchange for his winning wealth and fine things, and she becomes his guide into the world of the senses and material life. Worldly, clever, and independent, she is drawn to Siddhartha's strange inner stillness even as she leads him deeper into pleasure and desire.",
+            "id": "kamala",
+            "name": "Kamala",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy merchant to whom Kamala directs Siddhartha so he can earn the riches he needs. Anxious, acquisitive, and governed by gain and worry, Kamaswami takes Siddhartha on as an assistant and is baffled by his employee's detachment from success and failure alike. Under him Siddhartha learns trade and grows prosperous, though he treats business almost as a game, a contrast that highlights the merchant's fretful bondage to money.",
+            "id": "kamaswami",
+            "name": "Kamaswami",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A humble ferryman who carries travelers across a great river. Calm, kind, and remarkably attentive, he speaks little but listens deeply and has found a quiet wisdom by living beside the water and learning from it. When Siddhartha first crosses the river he senses something rare in the man, and Vasudeva later becomes his companion and gentle guide, teaching him to hear what the river has to say.",
+            "id": "vasudeva",
+            "name": "Vasudeva",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The child of Siddhartha and Kamala, a boy raised in the comfort and refinement of the town and unaware of his father until circumstance brings them together late in the story. Spoiled, willful, and grieving, he resents the simple, poor life of the ferry and the quiet man who tries to love him, and he longs to return to the world he knew, straining against every attempt to hold him.",
+            "id": "the-son",
+            "name": "Siddhartha's son",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "siddhartha"
+      },
+      "recaps": {
+        "ending": "After a lifetime of seeking, Siddhartha reaches enlightenment not through any teaching but through his own long experience of the world and, above all, through listening to the river with Vasudeva, in whose voice he hears all of existence flowing together as one. Having endured the loss of his son, who fled back to the town, he lets his suffering dissolve into acceptance and love for the whole of life. Vasudeva, his work complete, walks into the forest and leaves Siddhartha as the ferryman and keeper of the crossing. In the final chapter his old friend Govinda, grown old and still restless in his search, comes to the river and does not at first recognize him. Siddhartha tells him that wisdom cannot be conveyed in words and that time is an illusion in which everything already exists at once, and he asks Govinda to kiss his forehead. Doing so, Govinda beholds a flowing vision of countless faces and forms merging into a single unity and a serene, all-embracing love, and he weeps, sensing that his friend has found what they both spent their lives pursuing.",
+        "in_short": "Siddhartha, a Brahmin's son in ancient India, leaves home with his friend Govinda to seek enlightenment, first as a wandering ascetic and then in the presence of the Buddha, whom he admires but refuses to follow, convinced that wisdom cannot be taught. Turning instead to worldly experience, he crosses a river, learns love from the courtesan Kamala, and grows rich in trade, only to sicken of greed and pleasure and, in despair, nearly drown himself in that same river. Renewed, he stays to become a ferryman beside the wise Vasudeva, learning to listen to the river. Kamala, now a pilgrim, dies at the crossing and leaves Siddhartha their young son, whose bitterness and eventual flight teach him the pain of love and attachment. Through the river's voice Siddhartha finally attains the peace and unity he sought, and Vasudeva departs. Years later Govinda, still searching, meets him again, and Siddhartha shares a wordless vision of the oneness of all things.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Siddhartha, the brilliant son of a Brahmin, is admired by everyone yet inwardly restless, certain that the rituals and teachings of his upbringing cannot give him the peace he craves. With his devoted friend Govinda, he leaves home to join the Samanas, wandering ascetics, and for years he practices fasting, self-denial, and the discipline of thinking, waiting, and going without, mastering the mortification of the body and the will. But he concludes that asceticism, too, is only another escape and cannot bring true understanding. Hearing of the enlightened teacher Gotama, the Buddha, the friends go to see him. Govinda is won over and joins the Buddha's order, but Siddhartha, though he recognizes the teacher's perfect serenity and the truth of his doctrine, declines to become a follower. He reasons that enlightenment is a lived experience no teaching can hand over. Parting from Govinda, Siddhartha awakens to a new resolve: to stop fleeing the world and instead learn from it directly, embracing his own senses and self.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siddhartha crosses a great river, ferried by a humble boatman in whom he senses a quiet depth, and enters a town to learn the life of the senses he has always denied. There he meets Kamala, a beautiful and worldly courtesan, who agrees to teach him the art of love if he can bring her wealth and fine things. To win them, Siddhartha takes work with the merchant Kamaswami and proves shrewd at trade, growing rich while treating business almost as a game and keeping, at first, an inner detachment. Over the years, though, the world claims him: he acquires property, gambles recklessly, drinks, and chases pleasure, and the calm he brought from his years of discipline slowly erodes. He comes to feel trapped in the very greed and craving he once scorned, sick at heart and spiritually hollow, until the emptiness of his rich, restless life becomes unbearable.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In despair, Siddhartha abandons his wealth and Kamala and wanders back to the river, so disgusted with himself that he comes to the edge of drowning. At that lowest point the sacred syllable Om rises from within him, and he falls into a deep, healing sleep by the water. He wakes renewed, feeling reborn, and finds that Govinda, now a wandering monk, had watched over him without knowing him. Choosing to stay by the river, Siddhartha becomes the apprentice and companion of Vasudeva, the gentle ferryman, and takes up the simple work of carrying travelers across. Vasudeva teaches him to listen, and from the ever-flowing water Siddhartha begins to learn its lessons, that time is not real and that all things are connected, finding in this quiet life a peace that his years of seeking and indulgence never gave him.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kamala, now a follower of the Buddha, comes on pilgrimage toward the dying teacher, bringing with her a young son, Siddhartha's child, whom he never knew he had. Bitten by a snake near the river, she dies in Siddhartha's care, and he is left to raise the boy. But the child, spoiled by his former life of comfort, is angry and grieving and despises the poor, simple existence of the ferry and the patient father who loves him. Siddhartha's love binds him painfully to the boy, and he suffers the wound of attachment he had never truly known before, until the son finally runs away back to the town. Aching and unable to let go, Siddhartha at last turns to the river once more, and listening to its many voices flow together into a single sound, he releases his grief and attains a profound peace and sense of unity. Recognizing that his own task is finished, Vasudeva takes leave of him and departs into the forest.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Many years later Govinda, grown old and still searching for the peace that has eluded him, comes to the river crossing and does not recognize the ferryman as his boyhood friend. When Siddhartha reveals himself, Govinda asks what wisdom or teaching guides him. Siddhartha explains that true wisdom cannot be put into words or passed from one person to another, that its opposite is always equally true, and that time is an illusion in which every thing and every possibility already exists together in a single eternal moment. He speaks of loving the world as it is rather than judging or fleeing it. Unable fully to grasp this in words, Govinda accepts Siddhartha's invitation to kiss his forehead, and in that instant he sees a vast, flowing vision of countless faces, creatures, and forms merging endlessly into one another within a serene and boundless love. Overcome, Govinda bows before his friend, sensing that Siddhartha has reached the very enlightenment they both spent their lives pursuing.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "siddhartha"
+      }
+    },
+    "side-jobs-stories-from-the-dresden-files": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's only openly practicing professional wizard, who works as a private investigator and as an occasional consultant to the police on cases beyond ordinary explanation. A junior member of the White Council of wizards, he is powerful but perpetually short of money, quick with sardonic humor, and bound by a personal code that pushes him to protect people weaker than himself. He wields fire, force, and a range of prepared magic, and his refusal to abandon anyone in danger repeatedly puts him in the path of far stronger enemies.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Chicago police officer who has led the department's Special Investigations unit, the division saddled with cases no one else will touch. Small, blonde, and formidably tough, she is a disciplined martial artist and a straight-arrow cop who prizes duty and loyalty above comfort. Over years of working with Harry she has become one of his most trusted allies, willing to stand beside him against threats far outside normal police work even at cost to her career.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strikingly handsome member of the White Court, a family of vampires who feed on human emotion, and one of Harry's closest allies. Though his nature drives him to hunger, he struggles to hold on to his conscience and to protect the people he cares about. Charming and privately burdened, he keeps his deepest ties hidden and moves easily between the mortal world and the supernatural one.",
+            "id": "thomas-raith",
+            "name": "Thomas Raith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest daughter of the Carpenter family and Harry's apprentice in the practice of magic. A gifted young woman with a talent for subtle magic of the mind, she is idealistic and headstrong, still learning the discipline and heavy responsibilities that come with wizardry under Harry's demanding, protective guidance.",
+            "id": "molly-carpenter",
+            "name": "Molly Carpenter",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A devout family man and one of the Knights of the Cross, mortals chosen to wield holy swords against the darkest supernatural evils. Calm, humble, and unshakably principled, he fights only when he must and shows mercy where he can. He is a steadfast friend to Harry and the father of a large family, including Molly.",
+            "id": "michael-carpenter",
+            "name": "Michael Carpenter",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit of air and intellect bound into a human skull in Harry's basement laboratory, and his irreplaceable magical reference and research assistant. Vast in knowledge and irreverent in personality, Bob helps Harry decode spells, potions, and supernatural mysteries, offering commentary that is equal parts brilliant and mischievous.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's enormous dog, a Tibetan Temple Dog of unusual size and intelligence whose calm, watchful presence hides genuine supernatural power. Loyal and gentle with those he guards, Mouse is far more than an ordinary pet and has proven a protector in his own right.",
+            "id": "mouse",
+            "name": "Mouse",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "side-jobs-stories-from-the-dresden-files"
+      },
+      "recaps": {
+        "in_short": "This volume gathers short stories and novellas set at many points across the Dresden Files, most previously published elsewhere. They range from an early case predating Harry's fame to lighter interludes and darker turns: a bodyguard job, a monster loose in a sorority, a day when everything goes wrong at once, a hidden supernatural war seen through his ally Thomas, and a confrontation that tests Harry's friend Michael and his family. Each piece stands on its own rather than forming a continuous plot. The collection closes with a longer novelette told from Karrin Murphy's point of view in the immediate aftermath of the events that ended the preceding novel, following how Harry's closest allies cope with his sudden absence and the dangerous vacuum it leaves in Chicago's supernatural underworld.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Harry Dresden makes his living as Chicago's only professional wizard, taking magical cases the police cannot handle through his contact Karrin Murphy and her Special Investigations unit. Across earlier books he survives clashes with dark sorcerers, vampires, faeries, and fallen angels while navigating the strict laws of the White Council of wizards, of which he is a junior member. He gathers a circle of allies, including the vampire Thomas, the Knight of the Cross Michael Carpenter, and eventually an apprentice, Michael's daughter Molly. A long, brutal war between the wizards' Council and the vampiric Red Court shapes much of his life. It comes to a head when Harry learns he has a young daughter and goes to desperate lengths to save her, striking hard bargains and paying steep personal costs to destroy the Red Court entirely. By the close of that struggle his old life in Chicago has been shattered, and his fate is left hanging in violent uncertainty.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "side-jobs-stories-from-the-dresden-files"
+      }
+    }
+  }
+}

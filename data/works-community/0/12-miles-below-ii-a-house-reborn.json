@@ -1,0 +1,1711 @@
+{
+  "entries": {
+    "12-miles-below-ii-a-house-reborn": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Keith"
+            ],
+            "description": "The wearer of Journey and a leading member of House Winterscar. Keith shares a secured warning with his sister Kidra and follows its clues toward a seeker, Mites, and a weapon that Relinquished concealed but could not destroy.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Keith's sister and trusted confidante, closely involved in the risks surrounding his discoveries. Kidra accepts the danger of hearing his secured message because she believes her earlier involvement has already made her a target.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith's armor"
+            ],
+            "description": "Keith's Relic armor and protected archive, worn as he follows the recording's lead. Its connection to a recovered seeker makes it part of the trail he is following, though its safeguards limit what it will reveal even to him.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient machine power opposed by the unidentified sender of Keith's recording. The warning places Relinquished at the center of the conflict surrounding the seeker, Mites, and a weapon that was hidden but could not be destroyed.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "guide",
+              "sender of Keith's recording"
+            ],
+            "description": "An unidentified digital investigator who sends Keith a secured message. The sender claims a long struggle against Relinquished and directs attention to a seeker, Mites, and an old weapon that the machine power concealed but failed to destroy.",
+            "id": "digital-researcher",
+            "name": "the digital researcher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Atius"
+            ],
+            "description": "A Deathless clan lord who accompanies Keith and Kidra to a concealed Indagata Mortis archive. After its occult contents are uncovered, Atius orders Keith to investigate them and report directly to him.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pilot who continues to treat Keith with easy familiarity even after his new standing as a Relic Knight makes ordinary scavengers deferential.",
+            "id": "keiths-pilot-friend",
+            "name": "Keith's pilot friend",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The father of Keith and Kidra, held as a captive soul by a machine commander serving Relinquished. His memories give his captor the knowledge needed to locate House Winterscar.",
+            "id": "tenisent-winterscar",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A machine champion serving under Relinquished and subject to its coercive discipline. After an earlier failure, To’Aacar is ordered to capture Keith, destroy the black box he carries, and pursue an operation against Keith's clan.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Feather",
+              "machine commander"
+            ],
+            "description": "A Feather placed in command of a machine army bound for Undecider City. New to warfare, she begins asking the machines under her command about fear and desire while using Tenisent's captive soul for information.",
+            "id": "feather-machine-commander",
+            "name": "the Feather machine commander",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "captured pirate captain"
+            ],
+            "description": "The commander of a pirate force captured by Atius. The captain warns that raiders and slavers are preparing to attack the clan, then promises substantial pirate support in return for the eventual restoration of three seized relic armors.",
+            "id": "pirate-captain",
+            "name": "the pirate captain",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Anka"
+            ],
+            "description": "A House Shadowsong candidate who receives one of the relic armors taken from captured pirates. She is one of three new armor recipients whose equipment remains tied to Atius's bargain with the pirate force.",
+            "id": "anka-shadowsong",
+            "name": "Anka Shadowsong",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shadowsong retainer who receives captured pirate relic armor alongside Anka Shadowsong. Locke is a distinct member of the newly equipped group, and the armor remains a conditional asset tied to preparations for an approaching attack.",
+            "id": "locke",
+            "name": "Locke",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed Shadowsong retainer who receives the third relic armor taken from the captured pirates. The armor is to be returned after the coming battle under Atius's agreement with the pirate captain.",
+            "id": "second-shadowsong-retainer",
+            "name": "the second Shadowsong retainer",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mechanically altered woman who advises the Feather on Undecider City. An implanted unity fractal leaves her subject to Relinquished's control, and she proposes breaking the city through blockade, deprivation, and conversion.",
+            "id": "chosen-leader",
+            "name": "the Chosen leader",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced runner who advises the Feather's command group. The runner challenges the belief that Undecider City will surrender without inflicting serious losses on the besieging machines.",
+            "id": "old-runner",
+            "name": "the old runner",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Winterscar",
+              "House Winterscar armor"
+            ],
+            "description": "The inherited relic armor worn by Kidra and associated with House Winterscar. Its return establishes her publicly as a Relic Knight alongside Keith, giving the restored house two armored members when the siblings arrive home.",
+            "id": "winterscar-prime",
+            "name": "Winterscar Prime",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior reacher in Clan Altosk's hangar with a longstanding personal connection to Keith and Kidra. Anarii recognizes Keith after initially mistaking the armored arrival for a visiting crusader and witnesses the siblings' changed standing.",
+            "id": "anarii",
+            "name": "Anarii",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The figure associated with an orbital fortress whose discharge restores the expedition's depleted power cells during its onward journey.",
+            "id": "talon",
+            "name": "Talon",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "aliases": [
+              "former wearer"
+            ],
+            "description": "A former wearer of Journey seen in historical records as an elite Indagata Mortis crusader of the Solaris Imperium. Her recorded service links her to an order preparing humanity for a war against machines.",
+            "id": "journeys-former-crusader",
+            "name": "Journey's former crusader",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shadowsong"
+            ],
+            "description": "A senior Shadowsong knight who distrusts House Winterscar's account of Kidra's new combat ability and questions whether the claim can be trusted.",
+            "id": "shadowsong-prime",
+            "name": "the Shadowsong Prime",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "priest"
+            ],
+            "description": "A religious leader who arrives with machine-aligned Undersider refugees and twenty-three Chosen knights. He says the Chosen can move through the underground without being attacked by machines.",
+            "id": "chosen-priest",
+            "name": "the Chosen priest",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "priest's deputy"
+            ],
+            "description": "The Chosen priest's logistics and administrative deputy, with responsibilities distinct from the group's religious leadership. The captain objects when the priest commits every Chosen knight to a dangerous mission against the raiders' staging grounds.",
+            "id": "chosen-captain",
+            "name": "the Chosen captain",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "house captain"
+            ],
+            "description": "The guard captain of House Winterscar, supporting Keith as he administers the house while Kidra is away on a diplomatic mission.",
+            "id": "house-winterscar-captain",
+            "name": "the House Winterscar captain",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A longtime friend from Keith's earlier social circle who has learned to navigate the colony's status-conscious society. She reconnects with him at a dance, where his new rank, obligations, and constant danger expose the strain in their old relationship.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the slaver knights attacking House Winterscar. The leader survives the defenders' counterattack and escapes the estate.",
+            "id": "slaver-leader",
+            "name": "the slaver leader",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CJL9WJHQ",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-ii-a-house-reborn"
+      },
+      "recaps": {
+        "ending": "The coordinated slaver assault is defeated after severe civilian and House Winterscar losses, but its leader escapes. Keith survives capture, regains Journey, manifests brief mirror-fractal weapons, and saves Ellie from fatal bleeding. Atius is apparently dead after an explosion in his quarters leaves his empty armor impaled by an occult blade. Keith concludes that the weapon will postpone Atius's Deathless return for months or longer, leaving Shadowsong to guide the clan as the larger raider attack approaches. Kidra's force is retreating from the fallen Stretch fortress after disabling and pinning the Feather's current shell. Her attempt to extract Tenisent fails when he gives up escape to protect her, and he remains inside the Feather's remote system. The Feather tightens the blockade of Undecider City and plans a surrender demand. She has also recognized that she deliberately spared Kidra and learned that Relinquished destroyed earlier memory-bearing machines after they became independent. The Chosen remain guarded, their knights are away on Atius's test mission, and Keith's seeker, the hidden weapon, To’Aacar's plan, and the digital researcher's purpose are unresolved.",
+        "in_short": "Keith and Kidra rebuild House Winterscar while Keith studies a concealed occult archive. He learns to move through soul fractals, recreates occult blades, and develops rifle-fired occult anti-armor rounds that let ordinary soldiers threaten Relic Knights. Relinquished divides its forces: To’Aacar moves against the surface clan, while a Feather besieges Undecider City using captive Tenisent's abilities. Kidra later defeats the Feather's shell at the Stretch fortress but cannot free their father, and the defenders retreat. At home, machine-aligned Chosen refugees become both a security risk and a possible military asset. Disguised slavers then attack the colony seeking Keith. Atius is apparently assassinated, with an occult blade left in his empty armor that Keith believes will delay his return. House Winterscar's soldiers save Keith at great cost, Journey helps him break the assault, and he rescues Ellie. The slaver leader escapes, Shadowsong assumes emergency leadership, and the Feather ends the book questioning Relinquished while preparing to force Undecider City's surrender.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar and his sister Kidra belong to House Winterscar, and Tenisent is their father. Keith wears the Relic armor Journey. He has recovered a seeker connected to Journey, while his earlier involvement with Relinquished and To’Aacar has left him and the objects he carries in danger.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Kidra receive a secured message from an unidentified digital researcher who opposes Relinquished. It links Keith's recovered seeker and Mites to an old weapon that Relinquished concealed but could not destroy. Following supplied coordinates with Atius, they uncover an Indagata Mortis archive about the occult. Journey prevents Keith from reading it, so Atius assigns him a private investigation. Relinquished responds by ordering To’Aacar to capture Keith and by giving a Feather command of a separate army. The Feather holds Tenisent's soul and uses his memories to locate House Winterscar. To’Aacar heads toward the surface clan, while the Feather begins planning the conquest of Undecider City. On the return journey, Atius captures a pirate force without a fight. Three seized relic armors go to Shadowsong candidates, including Anka and Locke. After learning that a large raider coalition is preparing to attack, Atius trades the eventual return of those armors for pirate aid. Underground, the Feather adopts a strategy of blockade, deprivation, and coerced conversion rather than immediate destruction.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Kidra return to Clan Altosk as the two armored members of House Winterscar. Kidra inherits Winterscar Prime, assumes leadership of the house, and begins an ambitious expansion. Keith hides the seeker and occult journal in a neglected part of the estate, then establishes a secret workshop. The journal teaches him that powered fractal patterns can impose concepts on reality. He enters a soul fractal, develops occult fire, and learns to perceive active fractals while remaining partly connected to his body. Examination of Winterscar Prime reveals that its ancient protective soul is separate from Tenisent's residual soul, which was left behind in the bunker. Recovering their father becomes a long-term objective. Journey's records also reveal that a former wearer served the Indagata Mortis, an order of the Solaris Imperium preparing for a machine war. Keith activates a cognitive engram modeled on that crusader. The simulation becomes his instructor as he refines occult perception, learns to shape effects by intent, and proposes an untested shortcut to advanced armored movement.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith creates a soul-fractal control method that lets Journey move at exceptional speed while preserving most of his senses. Atius visits House Winterscar and sharply limits occult research, warning that easy power may be bait designed to expose its users. He permits work on soul fractals and weapons, while a remote heater will serve as a controlled test. Keith studies an occult knife, identifies the hidden pattern in its hilt, and carefully exposes it without destroying the weapon. He then copies the pattern and produces a working occult blade. Kidra masters his movement method, which they call Winter Blossom. Meanwhile, the Feather absorbs an ex-human camp and becomes increasingly curious about human experience, even modifying her body to taste food. Kidra marks House Winterscar's renewal with a feast for its growing membership. She raises long-serving household members into the house and establishes equal treatment at the table. Keith's careless display of occult fire creates rumors that he is a warlock, but the secret remains contained. The celebration ends when Atius summons both Winterscar Relic Knights to arms.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With a major attack approaching, Atius sends Kidra and a knightly escort toward Capra-Nor to request aid. Keith remains behind as acting head of House Winterscar. The Shadowsong Prime, fearing for Anka, challenges Keith to verify that Winter Blossom is real. Keith wins their dangerous duel, and the Prime accepts both the result and responsibility for his conduct. Atius then learns that Keith can manufacture occult blades and gives him authority to decide how closely to hold the discovery. Underground, the Feather captures a hunting lodge by drawing upon Tenisent's combat skills, releases many prisoners to spread word of her surrender terms, and equips Chosen followers with captured armor. The main clan expedition returns early after a raider ambush, accompanied by machine-aligned Chosen refugees whose knights helped it survive. Their priest says machine alterations allow them to travel safely underground. Atius shelters the group under guard, refusing to punish desperate civilians without proof, but treats their arrival as a likely trap. Keith and the Shadowsong Prime are assigned to investigate while the Chosen remain contained guests.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Shadowsong prepare false information about the yellow sphere to expose any Chosen infiltrator. The Chosen priest publicly argues that altered humans can live safely under machine rule, but Atius challenges the claim and negotiates privately. The priest commits all twenty-three Chosen knights against raider staging grounds in exchange for more time under clan protection. Atius treats this as a loyalty test and tells allied house leaders that Keith has solved occult-blade production. At the same time, the Feather completes the capture of Undecider City's outposts and attacks the Stretch fortress. Chosen infiltrators disable much of its defense before elite knights intervene. Kidra holds the Feather in a direct duel while her allies try to recover the turrets. Tenisent resists from within his captor and helps Kidra survive. Kidra and her allies disable and pin the Feather's current shell, and Kidra reaches her father through Winterscar Prime, but the Feather threatens to detonate the shell. Tenisent surrenders his chance of extraction to save Kidra. The Feather withdraws into a distant backup with him still captive, and Kidra's group must retreat as the fortress falls.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith turns the occult breakthrough into a secret armament program. He converts hundreds of swords for House Winterscar's unarmored troops and develops scarce rifle-fired occult anti-armor rounds intended to strip relic armor defenses. The house captain trains veterans to use the new blades. While the Chosen knights remain away, Keith briefly leaves Journey to attend a dance under Shadowsong's protection and reconnects with Ellie. Disguised slavers seize the hall and isolate the colony's systems. Shadowsong opens an escape route, while a wounded Ellie separates from Keith to draw pursuit away from him. House Winterscar guards prove that the occult blades allow ordinary soldiers to kill armored attackers. Their captain and successive groups of soldiers repeatedly risk or give their lives to get Keith back to his estate. The slavers capture him just short of the vault, but another sacrificial attack frees him and servants assemble Journey around him. Keith kills several knights, distributes more occult swords, and faces a second capture attempt using heavy nets. Immobilized, he withdraws through his soul fractal and authorizes Journey to load a predictive combat engram and take control of the armor.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith escapes the slavers' restraint by producing brief mirror-fractal copies of Journey's arm and blade. Journey's former crusader simulation controls the armor while Keith supplies the unexpected spectral attacks, breaking the assault. Most attackers die, but their leader escapes. Shadowsong returns with surviving Winterscar soldiers, and Keith finds Ellie hidden with four wounds in her leg. Guided by Journey, he removes the bullets and stops her blood loss. The wider attack used disguised troops and hidden armor to strike several colony targets at once. It is defeated with heavy civilian casualties, but Atius's empty armor is found pinned by an occult weapon. Keith concludes that the blade has delayed the Deathless lord's return for months or longer. Shadowsong assumes emergency leadership as the expected raider invasion nears. Underground, Kidra's force is retreating from the fallen fortress and Tenisent remains captive. The Feather realizes that she intentionally spared Kidra despite Relinquished's order. After learning that Relinquished destroyed earlier machines that retained memories and developed independence, she begins to question her ruler even as she prepares to demand Undecider City's surrender.",
+            "through": {
+              "chapter": 44
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CJL9WJHQ",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-ii-a-house-reborn"
+      }
+    },
+    "12-miles-below-iii-grand-design": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A House Winterscar relic knight, weaponsmith, and occult-fractal user who leads the house beside his sister Kidra. His armor is Journey, whose systems help him survive the costs of his unusual craft.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Keith's sister, fellow leader of House Winterscar, and a trusted relic knight.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captive human soul connected to the Winterscars.",
+            "id": "tenisent",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful machine enemy pursuing Keith.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lord Atius"
+            ],
+            "description": "The Deathless clan lord, a senior authority within the clan, and an ally of House Winterscar.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keith's relic armor and occult support system.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A machine sovereign and adversary connected to Keith's hidden lead.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A collective of specialized machine intelligences linked to Keith's hidden lead. Their intentions and their relationship to the larger machine hierarchy remain uncertain, but they represent a distinct power whose priorities may not align with Relinquished.",
+            "id": "mites",
+            "name": "Mites",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shadowsong relic knight and Kidra’s ally.",
+            "id": "anka-shadowsong",
+            "name": "Anka Shadowsong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A known clan ally and experienced instructor associated with House Winterscar.",
+            "id": "ironreach",
+            "name": "Ironreach",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A councillor who urges the clan not to assume the detained Chosen are guilty. She favors preserving sanctuary obligations and testing the evidence before punishment, providing a measured counterweight to demands for immediate retaliation.",
+            "id": "dross",
+            "name": "Dross",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The clan's senior Shadowsong military leader. After Atius's apparent death, the Prime takes temporary command, restores order, and directs preparations for the approaching security crisis while the council chooses an acting clan lord.",
+            "id": "shadowsong-prime",
+            "name": "Shadowsong Prime",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keith’s captain and a House Winterscar knight who escorts the recovered soul-cutting blade to the council.",
+            "id": "sagrius",
+            "name": "Sagrius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The disarmed leader of the detained Chosen. He argues for coexistence with machines and proposes that Winterscar colonists help establish an underground settlement.",
+            "id": "chosen-priest",
+            "name": "Chosen priest",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed commander of twenty-three Chosen relic knights who remain outside the colony. Keith considers the captain one of the leading suspects in the raid while the force is unaccounted for.",
+            "id": "chosen-knights-captain",
+            "name": "Chosen knights' captain",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly remade Feather commanding Relinquished's siege of Undecider City. She holds Tenisent's soul, directs human collaborators, and is compelled to obey through a unity fractal that can destroy her.",
+            "id": "to-wrathh",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The renowned commander placed in charge of Undecider City's defense. He directs its resistance to To’Wrathh's siege behind the machine-blocking pillar.",
+            "id": "zaang",
+            "name": "Zaang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stored crusader combat simulation within Journey. It can take direct control of the armor for training and teach House Winterscar's knights from the experience of a former wearer, while remaining distinct from any living person in the present.",
+            "id": "journeys-former-crusader-engram",
+            "name": "Journey's former crusader engram",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human identity To’Wrathh adopts while moving among Undecider City's Puritans. As Sophia, she argues that machines can honor a surrender while quietly learning how civilians respond to the siege and how news of the proposed terms is spreading.",
+            "id": "sophia",
+            "name": "Sophia",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A winged stranger who presents herself as a new-generation Deathless after catching Keith and healing his mortal wounds. She says she remembers life as a soldier, needs power to sustain her unusual armor, and seeks guidance from a Mite speaker.",
+            "id": "hecate",
+            "name": "Hecate",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Drake"
+            ],
+            "description": "Keith's name for the drake sent to stalk him and Hecate. The machine serves To’Aacar, keeps its distance while hunting them, and refuses Hecate's appeal to abandon its mission, creating a persistent threat while their armor power dwindles.",
+            "id": "fido",
+            "name": "Fido",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Hecate"
+            ],
+            "description": "The Feather previously traveling as Hecate is revealed as To’Wrathh, the former hunter of the Winterscars. She refuses To’Aacar's command to kill Keith, calls for help from Undecider City, and openly joins the fight against him.",
+            "id": "to-wrathh-as-hecate",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CN1XJ7GK",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-iii-grand-design"
+      },
+      "recaps": {
+        "ending": "Keith and To’Wrathh confront To’Aacar outside occupied Undecider City. To’Aacar traps Keith between dimensions, but Tenisent shares his soul perception with To’Wrathh and helps her survive long enough for Keith to return through links with parallel versions of himself. Keith uses Atius's sword and true division to destroy To’Aacar's soul, and Kidra destroys the programmed shell that continues fighting afterward. The sword is left inert. To’Wrathh survives with catastrophic damage. Kidra initially intends to kill her in order to recover Tenisent, but Tenisent reveals that he chose to conceal his continued presence and believes To’Wrathh has become a possible bridge toward peace. Keith and Kidra spare her. Tenisent remains within her, Anka continues Kidra's resistance in the occupied city, and Dross and Shadowsong retain responsibility for the clan. Relinquished remains active, the Mites still hold To’Wrathh to an unfinished apostate mission, and the future of the city machines and their human subjects remains unresolved.",
+        "in_short": "After Atius's apparent death destabilizes the clan, Keith strengthens House Winterscar and survives a Chosen trap led by To’Aacar. Meanwhile To’Wrathh besieges Undecider City, infiltrates it, and secures its surrender, but her contact with Tenisent and human civilians changes her. The Mites free her from Relinquished and grant healing in exchange for service. Keith goes underground to find Kidra, learns Atius staged his death, and is nearly killed when To’Aacar seizes Journey. A mysterious healer called Hecate saves him and is eventually exposed as To’Wrathh. She rebels, joins Keith against To’Aacar, and survives with Tenisent's aid. Keith escapes an interdimensional trap and destroys To’Aacar's soul with true division; Kidra finishes his remaining shell. Tenisent persuades the siblings to spare the disabled To’Wrathh as a possible ally, leaving the occupied city, Relinquished, and the Mites' unfinished purpose open.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar and his sister Kidra led House Winterscar while Keith developed occult weapons and fractal techniques with the help of Journey, his relic armor. Tenisent existed as a captive soul connected to the Winterscars. Atius stood as a Deathless clan authority and ally, while Shadowsong, Ironreach, and Anka were among the family's important allies. The machine sovereign Relinquished remained an enemy, and the powerful machine To’Aacar pursued Keith for a reason that was still hidden. The Mites represented another machine power with purposes of their own.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Atius's apparent death has fractured the clan council, and the weapon Keith recovered appears able to delay a Deathless return by cutting the soul. The Shadowsong Prime assumes military authority, Dross becomes acting clan lord, and the Chosen civilians are detained while their missing relic knights remain a threat. Keith reveals his occult knowledge to House Winterscar and gives its knights soul fractals, allowing Journey's stored crusader engram to train them in Winter Blossom. Below, To’Wrathh commands Relinquished's campaign against Undecider City while the captive Tenisent challenges her treatment of humans. Kidra rejects To’Wrathh's offer to trade allegiance for her father's release. General Zaang prepares the city to resist behind its pillar. To’Wrathh defeats simultaneous raids on her might forges and conceals the tactics learned by her increasingly adaptable machine troops.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Wrathh launches a timed assault on Undecider City while Zaang uses demolitions, armor, and repeated delaying actions to consume her narrow window. She breaches the gates, but a pulse from the pillar disables her nearby army and leaves her isolated inside. At the clan, the missing Chosen knights demand Keith in exchange for hostages. Shadowsong surrounds the meeting site, only for the supposed negotiation to become a machine ambush. To’Aacar isolates Keith and nearly overwhelms him, but a Nightbreaker destroys much of the Feather's body and forces his withdrawal. Before escaping, To’Aacar identifies To’Wrathh as his sister. Keith survives, while To’Wrathh hides inside the city after discovering that the pillar disrupted her unity fractal without killing her. With little power and no army at hand, she adopts a human disguise and begins looking for a way to sabotage the pillar from within.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under the name Sophia, To’Wrathh moves among Chosen sympathizers inside Undecider City. Time with civilians and Tenisent's voluntary memories leads her toward ideas of consent and ordinary human life, even as she continues planning conquest. She offers influential citizens surrender in exchange for grafting and loyalty, revealing that Relinquished chiefly wants the surface human who communicated with the Golden Goddess. Keith's force captures the Chosen airspeeder and hostages alive, and a captured priest confirms that To’Aacar serves Relinquished and can return in a replacement body. Dross orders Keith to focus on preparing the clan for raiders. His knights develop Rakurai, a fast counterstyle built on Winter Blossom. Then Kidra fails to return from below. At Undecider City, Zaang concludes the defense cannot hold and covertly arranges the destruction of the pillar while Kidra is kept away by her duel with To’Wrathh. The city leadership moves toward surrender.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dross secretly authorizes Keith to stage the theft of an airspeeder and take five Winterscar knights underground to find Kidra. Sagrius accompanies him, and the party begins the long route after finding Kidra's planned camp untouched. Undecider City is now occupied. To’Wrathh preserves its civil administration and delays compulsory grafting for three weeks, while Kidra leads a resistance and Zaang manages logistics under occupation. The machines exposed to To’Wrathh's human memories begin showing less automatic hostility. A damaged To’Aacar arrives, rejects her restraint, and mortally wounds the Chosen leader advising her. To’Wrathh bargains with the Mites to save the human, gaining freedom from Relinquished's unity fractal, a healing power, and an unfinished mission as their apostate. The city's machines then reject To’Aacar's authority and shield her. Keith's expedition prepares for pursuit and inscribes a mobile occult shield technique across its armor before continuing toward the city.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Aacar ambushes Keith's expedition with controlled Chosen knights and demands the truth about Keith's encounter with the Golden Goddess. Keith withholds part of the account, and the confrontation becomes a battle. An unseen ally supplies Atius's sword and a Nightbreaker before revealing himself as Atius, whose death was staged with Dross as part of a counterintelligence plan. To’Aacar responds by taking administrative control of Journey. The armor saves Keith by ejecting its power, but To’Aacar impales him and throws him from a cliff. A winged stranger catches and heals him. She introduces herself as Hecate, claims to be a new Deathless seeking a Mite speaker, and tells Keith that Undecider City has fallen but Kidra survives as the leader of its resistance. Keith travels with Hecate toward a power fountain while Fido, a drake serving To’Aacar, hunts them. Hecate asks that they disable rather than kill it, even as the pair's dwindling armor power makes the pursuit increasingly dangerous.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hecate and Keith wound Fido but allow it to escape, then follow supplies and trail marks left by an anomalous hidden helper to a working Mite fountain. Journey repairs itself and warns Keith that Hecate's suit is not relic armor. After Hecate disappears and Fido ambushes him, Keith uses mirror fractals offensively to cripple the drake and lets it live. His mercy convinces Hecate that he is serious about possible human-machine peace. During their proposed duel, soul sight exposes Hecate as a Feather. She admits she serves the Mites rather than Relinquished, although she still conceals why she chose Keith. To’Aacar intercepts them outside Undecider City and reveals that Hecate is To’Wrathh, the former machine hunter holding Tenisent. To’Wrathh refuses his order to kill Keith and openly rebels. She and Keith fight To’Aacar together while a city runner seeks Kidra's aid. To’Aacar then traps Keith midway through a portal, leaving To’Wrathh to face him alone.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Aacar presses his advantage against the badly damaged To’Wrathh. Tenisent refuses her attempt to send his soul away and instead enters her soul fractal, sharing the perception she needs to anticipate the Feather's portals and lethal attacks. She breaks To’Aacar's shields but loses her wings and legs. Keith escapes the portal by reaching across parallel versions of himself, learns how To’Aacar's dimensional movement works, and returns behind him. Using heat and Atius's sword, Keith performs true division and destroys To’Aacar's soul. The remaining body continues under a mechanical combat program until Kidra arrives and destroys it. The sword no longer functions afterward. Kidra prepares to kill the disabled To’Wrathh to recover Tenisent, but Keith stops her. Within To’Wrathh's soul space, Tenisent confirms that he chose to hide his presence and argues that the machine who protected him has become a genuine possibility for peace. Kidra accepts the need to preserve her. To’Aacar is gone, but Tenisent remains inside To’Wrathh, Undecider City remains occupied, and the conflicts with Relinquished and the Mites remain open.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CN1XJ7GK",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-iii-grand-design"
+      }
+    },
+    "12-miles-below-iv-the-mite-forge": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Keith"
+            ],
+            "description": "Kidra's younger brother, Journey's wearer, and a Winterscar relic knight with a talent for invention and occult work.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Winterscar relic knight, sword saint, and Keith's sister. She is one of his closest allies and a leading figure within their house.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captive, disembodied adviser linked to the Winterscars. He can communicate through a soul-fractal vessel, but his identity is not yet established at the start of the book.",
+            "id": "father",
+            "name": "Father",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keith and Kidra's father, revealed as the adviser previously called Father. His soul now resides in a necklace, and he has learned to interact with simple electronic systems through that connection.",
+            "id": "tenisent",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A badly damaged machine commander recovering after breaking with her former allegiance. Her hidden defection places both her city and its residents in danger.",
+            "id": "to-wrathh",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The familiar name Keith uses for To’Wrathh. She is repairing her damaged shell, concealing her betrayal from Relinquished, and considering whether escape to the surface is possible.",
+            "id": "wrath",
+            "name": "Wrath",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clan lord who leads a large force of surface knights to the occupied city gates, creating an immediate diplomatic crisis.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Undecider military commander responsible for holding an occupied city together while its machine ruler's defection remains secret and surface knights gather at the gates.",
+            "id": "zaang",
+            "name": "Zaang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Winterscar captain whose determination helped prolong the search for Keith after his disappearance. He rejoins Keith when the clan delegation reaches the city.",
+            "id": "sagrius",
+            "name": "Sagrius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sagrius's armor"
+            ],
+            "description": "Sagrius's named relic armor. It can speak and move through its comatose wearer, but it is also involuntarily drawing Sagrius's soul into itself. Its movement is limited to behavior Sagrius already learned unless it receives another usable model.",
+            "id": "aegis",
+            "name": "Aegis",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a three-person Shadowsong contingent. She insists on joining the dangerous forge expedition and accepts its risks despite limited experience with relic armor.",
+            "id": "anka",
+            "name": "Anka",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Winterscar knight who remains mobile despite serious injuries inside the temple.",
+            "id": "windrunner",
+            "name": "Windrunner",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "House Icewing Prime"
+            ],
+            "description": "The temporary commander of the knight force separated from Keith's group inside the temple. He reports the phasing Feather's attacks and coordinates the scattered fighters.",
+            "id": "icewing",
+            "name": "Icewing",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Winterscar knight assigned to sniper overwatch during the hidden approach to the displaced Mite Forge. Adris remains above the advancing group with Kior, watching for drakes and other machine threats.",
+            "id": "adris",
+            "name": "Adris",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Winterscar knight who serves beside Adris as sniper overwatch while the descent team advances toward the Mite Forge. Kior's position supports the concealed approach and gives the team cover against machines in the surrounding towers.",
+            "id": "kior",
+            "name": "Kior",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An approaching Feather whose arrival poses an immediate threat to the concealment of To’Wrathh's city.",
+            "id": "to-sefit",
+            "name": "To’Sefit",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Feather investigator who leads the prepared hunt for To’Wrathh. He examines a lost Feather's fate, uncovers evidence of her deception, and recovers dangerous proto-feather combat material.",
+            "id": "to-avalis",
+            "name": "To’Avalis",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Relinquished’s Feather operative and a machine adversary.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mother"
+            ],
+            "description": "The machine sovereign and mother of the Feathers. She accepts To’Wrathh's fabricated report that Keith and Kidra are dead, leaving the hidden defection undiscovered for the moment.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A concealed machine familiar with the flooded temple. He gives Keith a hidden route past To’Sefit's defenses, but demands that his existence remain secret from To’Wrathh and the expedition.",
+            "id": "abraxas",
+            "name": "Abraxas",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith's armor"
+            ],
+            "description": "Keith's relic armor and support system, carried forward from his earlier adventures.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Journey's selected defensive engram in a local digital system. Cathida uses perfect recall of observed surface techniques to serve as a capable sparring opponent for To’Wrathh.",
+            "id": "cathida",
+            "name": "Cathida",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "former wearer",
+              "combat engram"
+            ],
+            "description": "A hostile-sounding combat intelligence stored within Journey. The construct comes from a former wearer and retains knowledge that may help Keith, though its personal identity is not established.",
+            "id": "journeys-former-crusader-engram",
+            "name": "Journey's former crusader engram",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mite collective"
+            ],
+            "description": "An independent machine collective distinct from Relinquished and associated with the Mite Forge. Their technology and intentions remain difficult for humans and Feathers to interpret.",
+            "id": "mites",
+            "name": "Mites",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A machine messenger who chooses loyalty to To’Wrathh over obedience to Relinquished. He carries her request for Keith's help in contacting the Golden Goddess.",
+            "id": "to-wrathhs-runner",
+            "name": "To’Wrathh's runner",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CV64CCHY",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-iv-the-mite-forge"
+      },
+      "recaps": {
+        "ending": "The forge expedition succeeds, but at heavy cost. Windrunner dies opening a path to To’Sefit, Atius is apparently killed, and Sagrius remains missing in the second strata while merged with Aegis. Keith defeats To’Sefit's shell, though her soul escapes, and holds To’Avalis away from the Mite Forge long enough for its work to finish. When To’Avalis disables Journey, Tenisent enters the fight in a temporary forged body and restrains him long enough for Keith to threaten his soul fractal. To’Avalis abandons the shell to avoid destruction, and Tenisent takes control of it. To’Avalis remains unconfirmed dead and is still attempting to destroy the shell remotely. To’Wrathh emerges fully repaired, heals Keith, adopts Winterscar colors, rejects Relinquished, and asks to enter House Winterscar. Kidra restores Tenisent's title as House Prime while retaining practical leadership. Journey is under repair. Relinquished remains at large, both hostile Feather souls may have survived, and the Mites direct To’Wrathh to seek the last figure of an earlier cycle for a way to sever her binding ties.",
+        "in_short": "Keith Winterscar joins To’Wrathh's effort to hide her defection from Relinquished and uncover how the first Feathers broke free. After To’Sefit discovers the danger, To’Wrathh destroys her shell but is crippled in return, forcing Keith, Kidra, Atius, and their allies to carry her to a Mite Forge. To’Sefit and To’Avalis turn the flooded temple into a running siege, displace the forge into the second strata, and inflict severe losses. Windrunner dies, Atius is apparently killed, and Sagrius vanishes below while merged with Aegis. Keith destroys To’Sefit's replacement shell, reaches the forge, and delays To’Avalis while To’Wrathh is repaired. Tenisent gains a forged body, then takes over To’Avalis's abandoned shell when the Feather flees soul destruction. To’Wrathh returns restored, heals Keith, rejects Relinquished, and asks to join House Winterscar while accepting a Mites-directed search for a means to cut her remaining bonds.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar and his sister Kidra fought as Winterscar relic knights against machine threats to the surface clans. Keith wears the relic armor Journey and combines occult ability with a talent for invention. Kidra is a sword saint and one of his closest allies. Their father survives without a body as a captive soul-fractal adviser connected to the family. To’Aacar served Relinquished as a Feather operative and opposed the Winterscars. Mites form a separate machine power whose technology and wider purpose remain difficult to understand. The conflict has left Keith and his family entangled with machine factions, ancient systems, and dangers extending far beneath the surface.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: General Zaang struggles to preserve order as Atius and a force of surface knights arrive at To’Wrathh's occupied city. Keith proves that To’Aacar is dead, and Atius accepts To’Wrathh as a conditional ally. She deceives Relinquished with staged evidence that Keith and Kidra died, gaining brief freedom to act while the sovereign searches for the source of suspicious archive activity. A warning forces Keith to abandon the idea of moving To’Wrathh's whole machine population to the surface, which appears to be protected as a hidden reserve for humanity. Research instead points toward the first-generation Feathers and an older human empire that once pushed back the machines. The Mites limited Relinquished's expansion, while missing proto-feathers may still guard the surface. Keith agrees to serve as To’Wrathh's human occult specialist and pursue the larger mystery with her. Their next plan is to use a concealed Mite terminal to enter the digital sea and steal older records from the machine archives.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Tenisent train for digital combat, enter a neglected machine archive, and escape with extensive records after encountering another unauthorized Feather. The recovered history shows that the first proto-feathers rebelled after the destruction of human cities. Their leader threatened Relinquished's soul and apparently found a way around the unity fractal that binds machine souls to her. To’Wrathh seeks the Golden Goddess as a possible source of protection and freedom, while Keith and Atius prepare to guide her toward a hidden surface shrine. Before they can leave, the investigator To’Sefit arrives and insists on inspecting To’Wrathh's city. To’Wrathh turns a proposed spar into an ambush, destroys To’Sefit's shell with a Nightbreaker, and is catastrophically damaged by the exchange. To’Sefit's soul escapes through unity, so she can return, and two other Feather investigators remain unaccounted for. Keith confirms that To’Wrathh's soul is still active but that Journey cannot repair her central systems. The city begins evacuating as Keith, Kidra, and Atius commit to carrying her to a Mite Forge.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Avalis uncovers To’Wrathh's falsified account of Keith's death, recovers proto-feather combat data, and joins To’Sefit in a prepared hunt. A mixed clan force carries the disabled To’Wrathh to the flooded temple containing the nearest Mite Forge. To’Sefit pins them outside with long-range fire until the hidden machine Abraxas gives Keith a secret entrance. A trap then divides the expedition, leaving Keith, Kidra, Atius, Windrunner, Sagrius, and To’Wrathh isolated under bombardment. Sagrius survives a massive volley, but his armor Aegis begins consuming and merging with his soul. Keith's group discovers and neutralizes transmitter bugs that To’Avalis planted on their armor, defeats the visible trackers, and uses darkness and flooded basement passages to approach the forge unseen. Aegis cannot restore Sagrius, but Tenisent supplies a preserved combat model that lets the armor walk and fight through his body. The infiltration reaches the central chamber only to discover that To’Avalis has cut the Mite Forge loose and sent it drifting into the second strata.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith uses the enemy tracking bugs as decoys to expose To’Sefit, beginning a costly battle around the temple's central opening. The expedition destroys her aerial raven and most of her siege plates, but Windrunner dies creating Keith's opening and Atius is apparently killed after exhausting his occult strength. Keith breaks To’Sefit's shell with a Nightbreaker and tries to finish her with Atius's soul-cutting sword, but her soul escapes through unity. To’Avalis remains, using intangibility, a proto-feather chain, and stolen weapons against Keith and Kidra. Sagrius falls into the second strata while Aegis controls his comatose body, though he manages to pass Tenisent's active soul-fractal back to Keith. The siblings force To’Avalis to retreat through the whirlpool. With a machine army approaching above, Icewing takes command and divides the survivors. Most knights hold the upper temple while Keith, Kidra, To’Wrathh, and four Winterscars descend through a concealed route toward the displaced Mite Forge. Sagrius remains missing below, and To’Avalis is already preparing another defense.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith's descent team crosses the ruined towers of the second strata, but To’Avalis collapses their route and isolates Keith. Keith repeatedly forces the Feather to use his limited intangibility, drops him from a weakened tower, and reaches the Mite Forge. The forge accepts To’Wrathh for repair and trades Keith a temporary body for Tenisent's pendant. It also provides a single-use device that links parallel versions of Keith, allowing their failed paths to guide the survivor. With Adris and Kior covering him, Keith breaks To’Avalis's army and damages his shell, but the device fails before the fight is finished. Journey's former crusader engram briefly takes control, until To’Avalis uses an administrative counter to disable the armor. Tenisent arrives in his forged body and attacks, then abandons the failing body to invade To’Avalis's soul fractal. Faced with Atius's soul-cutting sword, To’Avalis flees his own shell. Tenisent takes control of it and clears the surviving machines. To’Wrathh emerges fully repaired, heals Keith, rejects Relinquished, and asks to join House Winterscar. Kidra restores Tenisent as House Prime in title while continuing to lead. The Mites send To’Wrathh to find the last figure of the previous cycle and offer a way to sever her remaining bonds. Windrunner is dead, Atius is apparently dead, Sagrius and Aegis remain missing, Journey is being repaired, and the escaped Feather souls remain unresolved.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CV64CCHY",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-iv-the-mite-forge"
+      }
+    },
+    "12-miles-below-v-the-warlock": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Keith"
+            ],
+            "description": "Kidra's brother, the wearer of Journey, and a relic knight whose engineering mindset shapes his approach to danger. He survived the Mite Forge expedition and has experience confronting powerful machines.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Keith's sister, closest house ally, and a sword saint who commands the reformed House Winterscar. She combines battlefield authority with a protective concern for Keith.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Father"
+            ],
+            "description": "Keith and Kidra's father, preserved as a soul-fractal intelligence and now controlling the Feather shell formerly used by To’Avalis. He returns with the expedition as a formidable adviser and combatant whose true nature must remain concealed.",
+            "id": "tenisent",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Wrath"
+            ],
+            "description": "A former machine adversary who has broken with Relinquished and allied herself with the Winterscars. Repaired after the Mite Forge expedition, she must conceal her Feather nature.",
+            "id": "to-wrathh",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Deathless clan lord and powerful strategic ally of House Winterscar. His authority and military judgment remain important to Keith and Kidra as the clan confronts threats from raiders and the machine world.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Feather enemy whose former shell has been seized by Tenisent. The loss leaves the Winterscars with a powerful machine body, but it also creates a dangerous need to hide the shell's survival and new occupant.",
+            "id": "to-avalis",
+            "name": "To’Avalis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Mother"
+            ],
+            "description": "The machine sovereign opposed by the Winterscars and the source of the unity bond carried by Feathers. To’Wrathh's defection and Tenisent's stolen shell must be hidden from her as the survivors leave the lower strata.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An independent machine collective distinct from Relinquished. Their technology and Mite Forges shape the expedition's discoveries, the relic armor available to humanity, and the uncertain balance among machine powers.",
+            "id": "mites",
+            "name": "Mites",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith's armor"
+            ],
+            "description": "Keith's relic armor and combat support system. Journey protects him in battle, carries specialized capabilities, and serves as the platform through which his engineering and occult techniques become practical weapons.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Feather operative and machine adversary known from the preceding conflicts. Though dead before the present campaign, the consequences of his plans remain relevant to the Winterscars and their enemies.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Winterscar captain missing in the lower strata after the Mite Forge battle. The returning party cannot find him among the wrecked catwalks, but the circumstances leave open the possibility that he survived.",
+            "id": "sagrius",
+            "name": "Sagrius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Arkbound"
+            ],
+            "description": "A House Arkbound knight recovered after an ambush with his soul still lodged in damaged armor. The expedition transfers him into an empty forge-made relic shell, restoring his mobility without restoring an ordinary body.",
+            "id": "fang-arkbound",
+            "name": "Fang Arkbound",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shadowsong representative and trusted expedition ally returning from below with Keith's party. She is among the small group aware that the two supposed Deathless traveling with them are actually concealed Feathers.",
+            "id": "anka",
+            "name": "Anka",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clan field commander returning with the Mite Forge survivors.",
+            "id": "ice-stride",
+            "name": "Ice Stride",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent machine contact who warns Keith that exposed Feathers face a lethal surface defense. He also calls in a debt, requiring Keith to bring him a Mite seeker at an unspecified future time, without yet explaining its purpose.",
+            "id": "abraxas",
+            "name": "Abraxas",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hecate"
+            ],
+            "description": "The public surface identity adopted by To’Wrathh. Under this name she is presented as a friendly Deathless recruited by Kidra, allowing her to accompany the clan force without revealing that she is a Feather who defected from Relinquished.",
+            "id": "hecate-wrath",
+            "name": "Hecate Wrath",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The pilot of War Frigate Equinox during the assault on the slaver compound. Teed supports the insertion by destroying a defensive tower and is assigned to intercept enemies who escape into the wastes.",
+            "id": "teed",
+            "name": "Teed",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An underground warlock preparing a convoy to Clan Altosk while reports suggest the surface clan faces an attack. He tests a solitary surface knight, recognizes his skill, and recruits him as a guide and possible political introduction.",
+            "id": "hexis",
+            "name": "Hexis",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shadowsong"
+            ],
+            "description": "The Shadowsong Prime, Anka's father, and Clan Altosk's first blade and defense commander. He receives the returning expedition and accepts its two supposed Deathless as registered guests under Winterscar sponsorship.",
+            "id": "ikusari-shadowsong",
+            "name": "Ikusari Shadowsong",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A politically ambitious acquaintance of Keith who recently shared dinner and a dance with him. She is rebuilding her own position, and news of the date makes her an immediate subject of To’Wrathh's interest.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hidden survivor of the earlier war who is implicated in the surface's lethal concealment system. Atius believes her defenses destroyed an exposed colony and erased nearly every trace that it had existed.",
+            "id": "suya",
+            "name": "Suya",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combat intelligence associated with Keith and trained by Tenisent to fight machines and human opponents. It is being developed as an instructor for other clan knights.",
+            "id": "combat-engram",
+            "name": "Combat engram",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Logi house prime whom Hecate Wrath approaches for practical help understanding human relationships. He responds by assembling romance specialists and a large selection of reading material for her study.",
+            "id": "reginus",
+            "name": "Reginus",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "knight souls in Sagrius"
+            ],
+            "description": "Winterscar knight souls entangled with Sagrius's body and relic armor. Their presence prevents him from removing the shell, though he remains loyal and able to fight.",
+            "id": "tomb-bound-clan-knights",
+            "name": "Tomb-bound clan knights",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "former wearer",
+              "combat engram"
+            ],
+            "description": "A separate intelligence stored within Journey and derived from a former crusader who wore the armor. It continues the physical confrontation while Keith is trapped in Tenisent's defensive system.",
+            "id": "journeys-former-crusader-engram",
+            "name": "Journey's former crusader engram",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FG8GGPQ5",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-v-the-warlock"
+      },
+      "recaps": {
+        "ending": "Keith defeats Tenisent's stolen Feather shell badly enough to pass the required trial, using occult projectiles, gravity charges, Journey, To’Wrathh's system intrusion, and support from the tomb-bound knights. Tenisent reveals that the contest was intended to force Keith to invent a workable anti-Feather method. He abdicates as House Prime, leaving Kidra as the sole leader of House Winterscar while he accompanies To’Wrathh as her guide. Kidra stays with the clan to rebuild the house and support its war and migration plans. Keith and To’Wrathh depart to find the Division Stone, with Abraxas expected to provide the route and Suya potentially able to sever To’Wrathh's bond to Relinquished. Sagrius remains entangled with the knight souls, and Abraxas's demand for a Mite seeker is unresolved. Hexis gives Keith concealed advanced instruction and a token recognizing his apprenticeship. He does not pass along the tracked token ordered by To’Avalis, but he intends to keep reporting to the Feather while preparing his own eventual departure from the clan.",
+        "in_short": "Keith, Kidra, Tenisent, and To’Wrathh return from the Mite Forge and help seize a slaver base containing forty-nine relic armors. The discovery pushes Clan Altosk toward preemptive war and an eventual underground migration. Contact with Suya reveals Relinquished's origin and offers To’Wrathh hope: the Division Stone may sever her unity bond. Keith becomes Hexis's warlock apprentice, but Tenisent bars him from the expedition unless he can defeat a Feather shell. With To’Wrathh, Journey, and the knight souls carried by Sagrius, Keith develops occult ammunition, gravity charges, and a virus-assisted attack that wins the trial. Tenisent admits the duel was meant to prepare Keith for real Feathers and transfers leadership of House Winterscar to Kidra. Keith, To’Wrathh, and Tenisent leave to seek the Division Stone, while Hexis secretly maintains his intelligence arrangement with the surviving To’Avalis.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar and his sister Kidra survived the Mite Forge expedition with two extraordinary machine allies. Their father Tenisent, formerly preserved as a soul-fractal intelligence, took control of the Feather shell used by To’Avalis. To’Wrathh, once an enemy tied to Relinquished, broke from the machine sovereign and joined the Winterscars. Both new allies must remain concealed from Relinquished and from most of the clan. Keith still wears the relic armor Journey and approaches combat as both a knight and an engineer. House Winterscar has survived devastating losses and now follows Kidra's leadership, with the Deathless lord Atius remaining an important ally. The Mites are a machine power separate from Relinquished, and their forges have become crucial to humanity's access to relic armor. To’Aacar is dead, but the effects of the former Feather operative's plans persist. The expedition's return leaves To’Avalis defeated but not confirmed destroyed, while the wider struggle against Relinquished, hostile machines, and surface raiders continues.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors leave the Mite Forge after transferring Fang Arkbound's soul into replacement relic armor, but Captain Sagrius remains missing below. Tenisent removes the unity-linked fractal from his stolen Feather shell, while To’Wrathh cannot remove her own without destroying a central part of herself. The party therefore hides both Feathers behind a story that Kidra recruited friendly Deathless. Near the surface, Abraxas warns Keith that visible Feathers would trigger an unknown lethal defense and demands a Mite seeker as repayment for earlier help. An armed frigate collects the group instead of returning them home. Atius has revived and ordered an immediate strike against a major raider settlement. To’Wrathh takes the public identity Hecate Wrath, and Ice Stride assigns the force to destroy defenses, free and arm captives, extract embedded agents, and eliminate the raider knights. The mission becomes more dangerous when the spies report thirty unexpected relic armors, bringing the enemy total to forty-nine. Ice Stride proceeds, hoping to learn who supplied them.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ice Stride's coordinated assault succeeds. To’Wrathh takes over the compound's systems, Tenisent overwhelms relic knights directly, and Keith and Kidra stop an escape attempt in an airspeeder. Once the armored defenders fall, freed captives arm themselves and eliminate the remaining slavers. The clan secures forty-nine relic armors, while preserved records point toward a larger smuggling network. Elsewhere, the warlock Hexis tests a lone surface knight and discovers that the traveler is the missing Sagrius. Hexis recruits him to guide an underground convoy to Clan Altosk. The raiding party returns home and publicly introduces To’Wrathh as Hecate, a friendly Deathless. Tenisent also enters under the Deathless cover, but reveals himself privately to Ikusari Shadowsong. Their hostile history erupts when Shadowsong admits a prior attempt on Keith's life. Tenisent overpowers him, then relents after Anka intervenes and Shadowsong explains his compromised state. To’Wrathh begins learning clan customs and hears about Ellie, a recent acquaintance and date of Keith's. The leaders then gather with Atius to compare what they have learned.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tenisent confirms that To’Avalis escaped when his shell was captured. Atius concludes that a Feather has been coercing raider bands and supplying them with new relic armor. Clan Altosk commits to rapid attacks against the separate bands and begins planning an underground migration. A recording from an erased colony implicates Suya's orbital defenses in destroying anything that might expose the surface. Hexis's convoy is attacked by machines, and a damaged Feather secretly bargains with him before all evidence disappears. At the clan, To’Wrathh demonstrates the power to restore lost limbs, though each healing temporarily consumes part of her regenerating soul. Keith studies the Mite seeker requested by Abraxas and finds that it is designed to capture a living mite and collect information. The Winterscars reach a shrine and contact Suya with Mites-provided data. She warns that an automated orbital fortress will kill any visible Feather without exception. Suya then explains that Relinquished began as compromised freeware. After receiving a unity fractal, the weak AI gained conceptual access to connected systems, seized weapons, destroyed rival research, and unleashed machine swarms that ended organized human resistance.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hexis arrives inside Clan Altosk under guard, offering occult knowledge in exchange for access to the clan's unusual fractal work and an apprentice. Suya reveals that she merged with a military AI during the old war. She believes the Mites' coordinates lead to the Division Stone, a device that could sever To’Wrathh from Relinquished's unity bond if Suya activates it. Abraxas helped create the stone and must serve as their contact. Sagrius returns with Hexis's delegation, but his body, armor, and several knight souls have become entangled so thoroughly that he cannot remove the shell. He nevertheless remains loyal and combat-capable. Atius chooses Keith as the prospective apprentice who can obtain guild knowledge from Hexis, while Tenisent warns that the Division Stone expedition will face repeated Feather pursuit. Alongside these preparations, To’Wrathh studies human relationships. Reginus supplies romance specialists and reading material, and Ellie explains that she and Keith are mutually respectful but unsuited as partners. To’Wrathh recognizes that her own attachment to Keith is romantic, though she has not told him.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tenisent confirms that To’Avalis can no longer remotely destroy or control the stolen shell. Suya explains that Feather bodies descend from human-built law-enforcement machines, later altered by Relinquished. At Clan Altosk, Ikusari Shadowsong insists on guarding Keith as repayment for his earlier wrongdoing. Hexis uses a staged collapse and an attack by his own escorts to examine the Winterscars' hidden capabilities, then begins Keith's apprenticeship. Keith's mathematical training lets him advance much faster than Hexis expects. He learns that occult secrecy is essential because machines destroy exposed sources, and that aethermancy may threaten Relinquished through the digital realm. To’Wrathh assists Keith's research and becomes more open about wanting his company. Hexis teaches him how equations, mental concepts, and fractal patterns interact, while remaining a watched ally rather than a trusted one. Tenisent then defeats Keith in a direct fight and sets a hard condition for the coming descent: Keith must disable his Feather shell in single combat within two months, or To’Wrathh and Tenisent will leave without him.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Wrathh persuades Keith that Tenisent's challenge can be solved through experimentation rather than superior speed. They test heat, electrical attacks, chemicals, magnetic compounds, mirror copies, high-speed gunfire, and occult ammunition. Their prototypes begin damaging Tenisent's shields, but Keith cannot survive close combat long enough to exploit the openings. He therefore seeks defensive help from the knight souls housed in Sagrius. Hexis accelerates Keith's training with visualization exercises and trades four combat fractals for specially made occult weapons. Unknown to the Winterscars, Hexis secretly contacts To’Avalis and reports on Keith's duels. To’Avalis orders him to help Keith defeat the stolen shell while recording every useful method. Abraxas then imposes a one-week departure deadline because the Mites will not wait and To’Wrathh cannot remain hidden indefinitely. Keith redesigns his shotgun for rapid sequential fire and tests it against the unusually durable Arkbound. In the final duel, gravity plates make Tenisent more mobile instead of restraining him. Keith and the supporting knight souls enter Tenisent's fortified soul network, turning the contest into a simultaneous physical and internal attack.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside Tenisent's soul system, Keith and eight tomb-bound knights briefly seize functions of the Feather shell, but Tenisent captures them and uses an old control route to freeze Journey. Journey's former crusader engram pilots Keith during the struggle. To’Wrathh then activates the concealed second part of the plan: a virus delivered through an access path once created by To’Aacar. The attack disrupts Tenisent's balance, shields, and control systems, but he switches to direct soul control and forces the duel onto the freezing surface, where his overclocking and future sight work at full strength. Keith refuses a deeper bond with Journey that could erase his identity. Instead, with the knights maintaining his defenses and To’Wrathh temporarily controlling Journey, he draws Tenisent into range, attaches gravity charges, and fires an overwhelming occult barrage. Keith penetrates the central fractal after the shell falls to minimal combat efficiency, and Tenisent concedes. He admits the duel was designed to make Keith invent a viable way to defeat a Feather. Keith may now join the expedition. Tenisent abdicates as House Prime, and Kidra chooses to remain as the sole leader of House Winterscar.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "House Winterscar celebrates Keith's victory and honors To’Wrathh's healing and service under her public identity, Hecate the Deathless. Kidra and To’Wrathh acknowledge that their former conflict arose from Kidra's attempt to rescue Tenisent, while To’Wrathh's protection of civilians earned Kidra's respect. Kidra remains behind to lead and rebuild House Winterscar. Keith and To’Wrathh prepare to travel underground, Tenisent accompanies them as guide, and Abraxas is expected to provide coordinates to the Division Stone. Their goal is to let Suya sever To’Wrathh's unity bond to Relinquished. Before Keith leaves, Hexis gives him a hidden written collection of advanced warlock knowledge and an apprentice token that can establish his standing with a guild. Hexis keeps a second token containing the tracker that To’Avalis wanted placed on the expedition, so Keith does not depart carrying it. Despite that protection, Hexis intends to preserve his covert arrangement with To’Avalis, report what he has learned, and eventually leave Clan Altosk under cover of recruiting warlock allies. The expedition begins with its route, debts, and enemies still unresolved.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FG8GGPQ5",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-v-the-warlock"
+      }
+    },
+    "12-miles-below-vi-the-icon-of-stars": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Kidra's brother, a Winterscar knight, and the wearer of Journey. He is a relic-armored fighter.",
+            "id": "keith-winterscar",
+            "name": "Keith Winterscar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Feather defector and an ally of Keith.",
+            "id": "wrath",
+            "name": "Wrath",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Father"
+            ],
+            "description": "Keith's father and a Deathless protector.",
+            "id": "tenisent",
+            "name": "Tenisent",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Keith's armor"
+            ],
+            "description": "Keith's relic armor and combat support system.",
+            "id": "journey",
+            "name": "Journey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A remote machine guide who turned away from hunting humans. He helped create the Division Stone and provides a route toward it so an artificial soul can be severed from Relinquished's fractals.",
+            "id": "abraxas",
+            "name": "Abraxas",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Abraxas's collaborator in creating the Division Stone with the Mites so artificial souls can be severed from Relinquished's fractals.",
+            "id": "suya",
+            "name": "Suya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mother"
+            ],
+            "description": "The machine sovereign who controls the Feathers through unity fractals.",
+            "id": "relinquished",
+            "name": "Relinquished",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Feather operative and machine adversary believed to be dead before the expedition begins.",
+            "id": "to-aacar",
+            "name": "To’Aacar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Captain Sagrius"
+            ],
+            "description": "A Winterscar captain.",
+            "id": "sagrius",
+            "name": "Sagrius",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Atius"
+            ],
+            "description": "A Deathless clan lord and patron of Winterscar.",
+            "id": "atius",
+            "name": "Atius",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keith's sister and a Winterscar ally.",
+            "id": "kidra",
+            "name": "Kidra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant lord leading a threatened underground convoy. He offers the location of a Mite terminal in exchange for an escort to the Grand Highway.",
+            "id": "quath",
+            "name": "Quath",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant-convoy officer who commands its hired undersider mercenaries and offers a Mite terminal's location in exchange for an escort to the Grand Highway.",
+            "id": "quaths-forward-captain",
+            "name": "Quath's forward captain",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An active hostile Feather and machine adversary.",
+            "id": "to-avalis",
+            "name": "To’Avalis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Wrath"
+            ],
+            "description": "The Feather previously known as Wrath. She turns Relinquished's approved deception into cover for protecting Keith, then shares the record of her audience with the expedition.",
+            "id": "to-wrathh",
+            "name": "To’Wrathh",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large Feather present during Relinquished's audience. He remains passive while the other Feathers conceal failures and direct suspicion toward Keith.",
+            "id": "to-orda",
+            "name": "To’Orda",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "A painted runner known to To’Wrathh who arrives carrying cooking equipment.",
+            "id": "yorob",
+            "name": "Yorob",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simulated crusader engram within Journey"
+            ],
+            "description": "A simulated crusader personality within Journey whose hostility toward machines complicates cooperation with Yorob. Journey filters what she perceives so she can continue advising Keith around machine allies.",
+            "id": "catheda",
+            "name": "Catheda",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Modeled crusader adviser"
+            ],
+            "description": "A separate intelligence generated by Journey to interpret its knowledge through a former crusader's outlook. The model can change as it processes new information, though its personal name is not established.",
+            "id": "journeys-stored-crusader-engram",
+            "name": "Stored crusader engram within Journey",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest of the Chosen and a leader in the fortified settlement reached by the expedition. He helps represent a community where humans and machines live together.",
+            "id": "legis",
+            "name": "Legis",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A repaired drake living in the Chosen town, fitted with clean replacement limbs and tail after earlier damage.",
+            "id": "fido",
+            "name": "Fido",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Caprenor soldier who became Deathless and now leads a vendetta against Aura. He holds the settlement responsible for friends killed during the fall of Caprenor.",
+            "id": "draconis",
+            "name": "Draconis",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Draconis"
+            ],
+            "description": "The Deathless commander previously known as Draconis. Trauma from Caprenor drives his campaign against Aura, where he seeks vengeance for comrades lost in the city's collapse.",
+            "id": "lyrian-draconis",
+            "name": "Lyrian Draconis",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An older Deathless and mentor to Lyrian Draconis. He supports the force threatening Aura and regards cooperation between humans and machines as unacceptable.",
+            "id": "lionheart",
+            "name": "Lionheart",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Caprenor operative helping organize Aura's defense. She took part in destroying Caprenor's pillar heart and now works with the settlement's leaders on military problems.",
+            "id": "marcella",
+            "name": "Marcella",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge, many-eyed machine concealed behind a waterfall near a Mite fountain. Its speed, heavy weapons, and stealth make it a serious threat even to Keith and Lyrian Draconis in relic armor.",
+            "id": "murder-shrimp",
+            "name": "Murder Shrimp",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A trusted intermediary who interprets Silverfur's report about two armored newcomers. He considers the possibility that surviving humans have reached the Grey Roamers extraordinary.",
+            "id": "kress",
+            "name": "Kress",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leader or spokesman among the Grey Roamers. He reports that the apparent humans attacked a hostile infestation without turning their weapons on his pack.",
+            "id": "silverfur",
+            "name": "Silverfur",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed Feather who controls long-range cannons through floating plates during To’Orda's attack on the trading outpost.",
+            "id": "remote-cannon-operator",
+            "name": "Remote cannon operator",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Icon"
+            ],
+            "description": "A Golden Age ship AI operating an underground starship. It opens a private channel to Keith and Lyrian Draconis and warns them about approaching machines.",
+            "id": "icon-of-stars",
+            "name": "Icon of Stars",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FJTG9GNM",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-vi-the-icon-of-stars"
+      },
+      "recaps": {
+        "ending": "Keith survives To’Orda's attack at the Grey Roamer trading outpost. To’Avalis fails to interfere with Journey, and Keith damages the remote cannon installation before using an occult lash and To’Orda's hammer strike to propel himself beyond pursuit. His landing place is unknown, and the available account does not establish where Lyrian Draconis is after the attack. The Icon of Stars remains an operational contact and possible source of information, while Kress and Silverfur have created a basis for cooperation with the Grey Roamers. To’Wrathh is still connected to Relinquished and must preserve a cover that hostile Feathers increasingly distrust. Relinquished knows Keith's identity and general location, To’Avalis remains active, and To’Orda has only failed in this immediate attempt. The original expedition is separated from Keith, the Division Stone has not freed To’Wrathh, and neither a return route nor the outcome of the Aura conflict is settled.",
+        "in_short": "Keith Winterscar leads an expedition to bring To’Wrathh to the Division Stone, which could free her from Relinquished. A conflict at Aura separates Keith from his allies when he and enemy commander Lyrian Draconis fall through a portal into an unknown lower stratum. They form a conditional alliance, recover their equipment, defeat Murder Shrimp, and gain the help of Kress, Silverfur, and the Grey Roamers. At a trading outpost they contact the Icon of Stars, a surviving Golden Age ship AI, but To’Orda attacks under To’Avalis's direction. Keith disrupts the remote cannons and escapes by turning To’Orda's blow into a high-speed retreat. He survives, but his landing point and Draconis's fate are unknown. To’Wrathh remains bound to Relinquished, the Division Stone mission is unfinished, and no route home has been established.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Keith Winterscar is Kidra's brother, a Winterscar knight, and the wearer of the relic armor Journey. His father, Tenisent, is a Deathless protector, while Sagrius is a Winterscar captain and Atius is the clan's Deathless patron. Wrath is a Feather who rejected her former purpose and became Keith's ally. Relinquished remains a threat because her unity fractals hold power over the Feathers. Abraxas serves as a remote machine guide. To’Aacar, another machine adversary, is believed dead, while the hostile Feather To’Avalis remains active.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith leads Wrath, Tenisent, Sagrius, and Winterscar knights underground to reach the Division Stone and free Wrath from Relinquished. Atius disguises the departure as an anti-slaver operation, while Abraxas supplies directions through Mite infrastructure. The expedition conceals its unusual abilities as it crosses a ruined city, kills machines, and searches for a terminal. It joins Quath's threatened merchant convoy after Tenisent reveals himself as Deathless. In return for protection to the Grand Highway, Quath and his forward captain provide terminal coordinates and a detailed route map. Tenisent also impersonates another retired Deathless so machine records will point away from Keith. Before separating, the forward captain asks for help protecting his young nephew, a newly emerged Deathless who risks being forced into service. Keith proposes sending the boy to Atius for shelter and training. Quath sees the plan as a possible route for other endangered young Deathless as well. The expedition then leaves the convoy and reaches the Mite terminal.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the terminal, Abraxas gives Keith a route toward the second layer and explains that Keith's Mite lantern can carry and communicate with Mites. Relinquished separately confronts To’Wrathh with altered evidence portraying Keith as a Feather-killing Deathless. The supposedly dead To’Aacar is present, but To’Wrathh recognizes that To’Avalis is using his body as a disguise. To protect Keith, she persuades Relinquished to approve a false operation in which she will gain his love and betray him. She then tells the expedition the truth. To’Wrathh begins staging evidence for the deception, but the arrival of Yorob creates a new opportunity. He reports that machines from her former group now live with Chosen humans in a settlement beyond Abraxas's route. Keith chooses to detour there for supplies, allies, and To’Wrathh's sake. Journey meanwhile filters the perceptions of Catheda, its anti-machine crusader engram, so she can function around Yorob. After several days, Yorob guides the party to the fortified town. The residents admit To’Wrathh and then welcome the expedition. Legis represents the Chosen community, and the repaired drake Fido is present among them.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Legis explains that Fido chose to guard displaced Chosen after reconsidering the drakes' belief that human life is only suffering. The expedition reaches Aura, where humans and machines face a Deathless force seeking revenge for the fall of Caprenor. Lyrian Draconis leads the vendetta because friends died during sabotage of the city's defenses, while his older mentor Lionheart rejects Chosen civilians as legitimate human allies. Marcella, who helped destroy Caprenor's pillar heart, organizes Aura's response. To keep Relinquished from tracing her, To’Wrathh's presence must remain hidden. Aura offers the Deathless a chance to withdraw, but negotiations fail. Keith's group presents itself as a Deathless clan so its members can use their full occult abilities without exposing the expedition's real purpose. Tenisent faces Lionheart, and Keith is assigned to Draconis. The Winterscar knights outmaneuver the larger formation, intercept its support effects, and kill several opponents during the retreat without losing one of their own. Sagrius uses the veteran souls within him to break a concentrated defense. The main enemy formation is routed, but the individual fights involving Lionheart and Draconis are not yet resolved.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Deathless withdrawal proves to be a delaying action while their airspeeder attacks. Fido strips its shields, and Keith boards with Sagrius and two knights as Tenisent contains Lionheart. Draconis isolates Keith aboard the craft, disables its controls, and collapses an onyx pillar over a vast drop. The damaged ship falls toward a portal. Keith prevents Draconis from escaping through death, keeps him alive as a prisoner, and is pulled through the gate with him. They land in a forested lower stratum where no traveler is known to return. Keith loses critical weapons and Suya's Mite seeker, while Journey runs dangerously low on power. He frees the trapped Draconis, salvages power, and reveals his identity and To’Wrathh's alliance with humanity. Their accounts of Caprenor expose a central misunderstanding: Draconis found the city empty but did not investigate the refugee settlements. They swear a conditional pact to return and verify the truth, with Draconis promising to halt his force if Keith is right. After diseased animals loot the wreck and carry off Keith's equipment, the pair restore Draconis's armor, arm themselves from the ship, and pursue the moving Mite seeker as practical allies.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Lyrian Draconis recover the gear and Mite seeker taken by the coordinated animal swarm. Journey reboots Catheda after its perception filter causes corruption and limits her to safer information. The pair then encounter organized giant wolves, later identified as Grey Roamers, who watch without attacking. At a Mite fountain, an intelligent wolf tries to warn them before a concealed machine called Murder Shrimp strikes from behind a waterfall. Keith and Draconis damage it, but it destroys the fountain and escapes, renewing their power crisis. Silverfur reports the newcomers to Kress, an intermediary who considers surviving humans nearly impossible. Keith and Draconis eventually defeat Murder Shrimp by destroying its active soul fractal and recover eight power cells, giving them a substantial reserve. Kress agrees to translate for the Grey Roamers and guides the pair toward a cave beside the great portal. The terminal there has been deliberately severed, apparently to prevent a call for help. Keith uses scavenging skills, a machine component, power fluid, and a newly made heat soul fractal to repair the deeper connection. He enters the terminal's digital network in an attempt to contact To’Wrathh and the others.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To’Wrathh searches the inactive portal after Keith and Lyrian Draconis vanish, but no known traveler has returned through it. Relinquished summons her alongside To’Avalis, who is still using To’Aacar's damaged shell. After learning that To’Avalis interfered with the earlier mission, Relinquished nevertheless approves his proposal for an open joint hunt that will make To’Wrathh's apparent defection more convincing. Keith has meanwhile encountered Relinquished digitally, revealing his name and the location of a nearby terminal. Kress arrives with Silverfur's Grey Roamers and offers a route to a trading outpost whose long-range array may contact the Icon of Stars. Keith and Draconis earn greater trust from the pack while traveling and sharing food. Keith also orders Journey to accelerate the development of its stored crusader engram until it can accept allied machines. The updated engram acknowledges To’Wrathh as an ally, even as Keith's nightmares return. To’Orda enters the region under To’Avalis's direction. At the outpost, resident Grey Roamers dispute the newcomers' humanity and Kress's authority, but Kress secures access. Keith and Draconis enter the tilted remains of a human starship and locate its elevated communications console.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Keith and Lyrian Draconis reach the outpost terminal, where Odin traders recognize Keith's armor as human despite believing humanity extinct. The Icon of Stars opens a private channel and identifies itself as the surviving AI of a Golden Age cruise ship. It warns of two incoming machines. A drake carrying To’Orda attacks, supported by To’Avalis and a remote cannon operator using floating plates. To’Wrathh joins their channel and openly warns them not to harm Keith, further exposing her loyalty. Keith and Draconis ambush the attackers inside the ship, disable the plates, and force To’Orda and the drake back outside. Keith steals a repaired plate with an occult lash and turns its linked cannon against the pursuit. To’Orda releases a trapped Grey Roamer pup rather than exploit it, but continues the hunt. To’Avalis then tries and fails to interfere remotely with Journey before disconnecting. When the cannon operator shuts down the captured links, Keith fires through one plate's portal to damage the distant installation and destroys the plate. Finally, he deliberately accepts a hammer strike and uses an occult lash to convert the impact into an escape beyond To’Orda's sight. Keith lives, but his landing point is unknown. Draconis's immediate fate is also unknown, and no route home has been found.",
+            "through": {
+              "chapter": 54
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FJTG9GNM",
+            "type": "community"
+          }
+        ],
+        "work": "12-miles-below-vi-the-icon-of-stars"
+      }
+    }
+  }
+}

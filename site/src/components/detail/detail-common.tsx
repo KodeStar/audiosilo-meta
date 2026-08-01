@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ApiError } from '../../lib/api'
-import {
-  correctDataIssueUrl,
-  recordEditUrl,
-  issueChooserUrl,
-  type RecordKind,
-} from '../../lib/github-prefill'
+import { correctDataIssueUrl, issueChooserUrl, type RecordKind } from '../../lib/github-prefill'
 
 /** Read a query-string parameter on the client (detail pages are static shells
     that carry the entity id in `?id=`). Returns null ONLY before hydration; once
@@ -127,24 +122,25 @@ export function DetailError({ notFound, kind }: { notFound: boolean; kind: strin
   )
 }
 
-/** The community-correction footer shared by every detail page: a deep link to
-    the record's source file on GitHub and a prefilled "report a problem" issue
-    with the record pre-identified. Generalised from the work page so person and
-    series records carry the same affordance. */
+/** The community-correction footer shared by every detail page: a prefilled
+    correction issue with the record pre-identified. Generalised from the work
+    page so person and series records carry the same affordance.
+
+    There is no "edit the file on GitHub" link beside it. Records are stored many
+    to a pack file, so a record has no file of its own to link to, and the
+    correction form is the supported way to fix a single fact - it identifies the
+    record, the intake bot applies it, and the contributor never has to find
+    anything in the tree. */
 export function ImproveRecord({ kind, id }: { kind: RecordKind; id: string }) {
   const link =
     'text-pink-400 underline-offset-2 transition-colors hover:text-pink-300 hover:underline'
   return (
     <p className="mt-16 border-t border-edge pt-6 text-sm text-dim">
       Spotted an error?{' '}
-      <a href={recordEditUrl(kind, id)} target="_blank" rel="noopener" className={link}>
-        Edit this {kind} on GitHub
-      </a>{' '}
-      or{' '}
       <a href={correctDataIssueUrl(kind, id)} target="_blank" rel="noopener" className={link}>
-        report a problem
-      </a>
-      .
+        Report a problem with this {kind}
+      </a>{' '}
+      and the intake bot will open the correction for review.
     </p>
   )
 }

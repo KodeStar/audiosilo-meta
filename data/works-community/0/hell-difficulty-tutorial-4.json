@@ -1,0 +1,1510 @@
+{
+  "entries": {
+    "hell-difficulty-tutorial-4": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Nat",
+              "No Name",
+              "Tent Creep"
+            ],
+            "description": "The book's first-person narrator: a detached, calculating young man with heterochromia (one grey eye, one brown) who has cleared four prior floors of the lethal 'tutorial' on its hardest 'Hell' difficulty. He opens the book alone on the fifth floor, raising and protecting a young disciple while running relentless, physically dangerous experiments on his own mana and body. Fierce about protecting the few people he counts as his own, he holds most others at arm's length behind rigid emotional control and hides his true strength and rarest abilities from strangers.",
+            "id": "nathaniel",
+            "name": "Nathaniel Gwyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Disciple"
+            ],
+            "description": "The young half-demon girl, with small horns and red eyes, assigned to Nathaniel to raise and protect on the fifth floor, and named by him. A starved, guarded survivor of a ruined world when they met, she has grown under his harsh but devoted mentorship into an affectionate, increasingly capable student, still touch-starved and wary of strangers. Her wellbeing is the emotional center of the book's opening arc, and the reason its hardest choices are made.",
+            "id": "vega",
+            "name": "Vega",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fully autonomous duplicate of Nathaniel, created from a recovered arcane-rarity mirror and identical to him in memory, skill, and personality up to the moment of copying, but cut off from the system's shop and quests and bound by an enforced countdown to his own disappearance. Openly self-interested at first, he becomes an uneasy partner as the two explore the fifth floor's fallen sky-fortress and the secrets buried around it.",
+            "id": "clone-nathaniel",
+            "name": "Clone Nathaniel",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "The four former household servants - a butler, a housekeeper, a gardener, and an armorer - who effectively rule the colossal fallen sky-fortress Nathaniel and his disciple enter on the fifth floor. Outwardly courteous hosts at first, they turned on their own former master and now keep the true engine of the fortress's power a closely held secret, cooperating with Nathaniel only under an uneasy negotiated arrangement.",
+            "id": "the-bastion-servants",
+            "name": "The Bastion's Servants",
+            "reveal": {
+              "chapter": 14
+            }
+          },
+          {
+            "aliases": [
+              "Izzy"
+            ],
+            "description": "Sophie's younger sister and Nathaniel's longtime near-constant companion, reunited with him when the scattered survivors regroup on the sixth floor. A fire-based fighter, blunt about violence yet unusually perceptive of others' feelings, she is openly devoted to Nathaniel and quick to draw him out of his isolation. She fights alongside the group throughout the cross-difficulty tournament that dominates the book.",
+            "id": "isabella",
+            "name": "Isabella Martinez",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Isabella's older sister and a powerful manipulator of minds and emotions, long since reconciled with Nathaniel. Reunited with the group on the sixth floor, she is among its most dangerous and versatile members, able to seize and hold an opponent's mind outright, and she partners closely with the telepathic twins and with Nathaniel through the tournament's events.",
+            "id": "sophie",
+            "name": "Sophie",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Set"
+            ],
+            "description": "One of the people Nathaniel has known and trusted longest, and among his closest allies: a calm, quietly persuasive fighter who wields lightning and javelins. Reunited on the sixth floor, she becomes the group's de facto leader for the tournament and the driver of its project to secure everyone's families once the tutorial ends.",
+            "id": "tess",
+            "name": "Tess",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The group's primary healer, who also fights with a devastating disintegration touch few enemies survive. Gentle but relentless, she continues a patient, openly stated romantic interest in Nathaniel that he neither accepts nor refuses, and pushes herself hard to grow strong enough to stand beside him. Reunited on the sixth floor, she is the tournament's strongest hell-difficulty healer.",
+            "id": "lily",
+            "name": "Lily Chen",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable, versatile fighter of the group who works with self-made mana armor and shape-shifting weapons, reunited with the others on the sixth floor. Wry and easygoing off the battlefield, she provides much of the group's levity through the tournament while privately rating Nathaniel the most dangerous fighter she knows.",
+            "id": "maya",
+            "name": "Maya",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young survivor, still in his teens, who fights with gravity and telekinesis sharpened by an implanted 'eye,' and one of Nathaniel's longtime training partners. Reunited on the sixth floor, he has grown markedly more powerful and more openly cocky, a confidence the tournament repeatedly tests.",
+            "id": "kim",
+            "name": "Kim Min-Jae",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Food Food"
+            ],
+            "description": "The group's telepathic corgi, under Nathaniel's sworn protection and steadily more powerful and autonomous. He communicates in single telepathic words, fights with manifested mana tentacles, and shares a signature nose-boop with Nathaniel. Reunited with the group on the sixth floor, he competes in the tournament under a handle of his own.",
+            "id": "biscuit",
+            "name": "Biscuit",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Telepathic twin brothers, near-impossible to tell apart, who relay messages and coordinate the group through their private mental link. Cautious and self-interested but invaluable, they are only partly reunited with Nathaniel: both are held captive by a rival faction on the sixth floor for much of the book, and freeing them is one of his stated goals.",
+            "id": "the-twins",
+            "name": "Aaron and Dennis",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solo, non-group Hell-difficulty player long established as Nathaniel's nearest rival in raw individual power, met in person as the cross-difficulty tournament opens. Cold and formidable, he is the competitor the group most respects and fears, and the one Nathaniel is most determined to measure himself against across the tournament's events.",
+            "id": "savant",
+            "name": "Savant",
+            "reveal": {
+              "chapter": 35
+            }
+          },
+          {
+            "description": "A hard-difficulty fighter with a fearsome command of black mana and a volatile, unpredictable temper, met early in the tournament. She casually maims two harassers to establish that the tournament floor forbids death but not injury, yet builds a wary, genuine mutual respect with Nathaniel over their shared rare craft. She becomes the crowd's overall favorite to win.",
+            "id": "tacita",
+            "name": "Tacita",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Whitewing"
+            ],
+            "description": "A powerful, principled tournament competitor known by the handle Whitewing, who leads a faction pushing for fair, orderly conduct among the survivors. Outwardly upright and widely respected, he objects on principle to the group's more ruthless schemes and stands out as one of the very strongest fighters in the tournament field.",
+            "id": "gareth",
+            "name": "Gareth",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hard-difficulty crafter marked by a striking silver-and-pink prosthetic arm, gifted to her by a champion, which she refuses to sell or trade at any price. A serious, highly skilled maker, she becomes an important counterpart to Nathaniel within the tournament's crafting circles.",
+            "id": "miwa",
+            "name": "Miwa",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed competitor from the easiest difficulty tier, revealed to have murdered every one of the 199 members of his own starting group and, unrestricted, to have climbed further up the tutorial's floors than anyone else known. Unusually powerful for his tier, he is held captive under a suppression collar while the tournament's leaders argue over what should be done with him.",
+            "id": "the-murderer",
+            "name": "The Murderer",
+            "reveal": {
+              "chapter": 58
+            }
+          },
+          {
+            "aliases": [
+              "Wolfie"
+            ],
+            "description": "A building-sized, golden-eyed, foul-mouthed telepathic wolf revealed to be Biscuit's own disciple, descended from an ancient, planet-devouring beast counted among the most powerful absolutes ever to live. It spars Nathaniel to an inconclusive draw and shares rare knowledge of the setting's cosmology before departing with mentorship advice.",
+            "id": "the-black-wolf",
+            "name": "The Black Wolf",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nathaniel's sister, seen on-page for the first time when her fighting avatar is summoned late in the tournament. She is confirmed as the champion of a separate, parallel cohort of Earth's tutorial, and displays an extreme regenerative, self-multiplying combat ability, regrowing from the smallest scrap of herself and splitting into many copies at once. Nathaniel refuses outright to ever fight her, describing her as someone who cared for him and suffered greatly on his behalf.",
+            "id": "victoria",
+            "name": "Victoria",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-4"
+      },
+      "recaps": {
+        "ending": "Book four ends on the sixth floor at the close of the tutorial's first cross-difficulty tournament - the fifth-floor bastion arc having resolved earlier, with the clone's death, the fortress's rescue, and the disciple's safe return home. Nathaniel finishes first overall and first in the crafting rankings, banking two unused reward tokens. Several long threads advance without closing: his painful Earth history with Tess is finally aired but pointedly not repaired, as she refuses his apology; his secret crafter identity is shared with Miwa alone; and his rival Savant, beaten but never truly finished, is revealed as a manufactured being and then vanishes from the grounds. Biscuit's ancient wolf disciple, and the confirmation that Nathaniel's black mana is dangerously rare, open new lore. The book's real hinge is its last chapter: his sister Victoria is confirmed as the champion of a separate, parallel round of Earth's tutorial, and the closing announcement that the next tournament will unite all rounds frames his own struggle as part of something far larger. Tricked into accepting a false disciple-summons reward, Nathaniel is delivered into an ambush back on the fifth floor, sensing the vanished mass murderer, an unidentified tall and thorny woman, and Biscuit's black wolf - and the book stops there. His group is intact and together on the sixth floor, but the telepathic twins remain captive under a rival faction, their rescue now left to Tess and the others in his absence. A separate Earth portent, a Moon-sized spider, is left hanging for the next book.",
+        "in_short": "Alone on the fifth floor, Nathaniel Gwyn raises his young disciple while exploring a fallen sky-fortress and the valley beyond it. Using a rare mirror he creates an independent clone of himself; together they uncover the fortress's captive master and the tragic history of the world-ruining 'Veil,' and the clone ultimately gives his own life to secure the disciple's future and slay the valley's calamity. Nathaniel sees the girl safely home, clears the floor, and reaches the sixth, reuniting with his scattered group for the tutorial's first cross-difficulty tournament. Competing secretly as both an anonymous crafter and the fighter 'No Name,' he wins or forces a forfeit in every scored event, finishing first overall and first in crafting, while his rivalry with the manufactured fighter Savant and his buried Earth history with Tess both go unresolved. In the finale his sister Victoria surfaces as the champion of a parallel round of Earth's tutorial, and Nathaniel, tricked by a false reward, is delivered into an ambush back on the fifth floor as the book ends.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In the first three books, an ordinary young man, Nathaniel Gwyn, is pulled with a crowd of strangers into a lethal fantasy 'tutorial' run like a game of levels, skills and status windows, and locked to its deadliest setting, 'Hell.' Detached and calculating, he survives the monster-choked early floors by building himself into a fragile but devastating mana specialist, losing an arm and watching a friend die. An ancient, near-omnipotent woman, Lissandra, takes him in and trains him, then reveals herself as an artificial 'absolute,' destroys her own world so he can witness the truth, and dies. Reunited with the scattered survivors - among them the young girl Isabella and her mind-bending sister Sophie, who once tampered with his memory - Nathaniel fights on, ending the millennia-old guardians of a decaying city, unlocking a trial difficulty beyond Hell, and reaching a fourth floor ruled by the cat-like Lynthari, where his group builds a city base and his power swells enormously. He turns his strength into guild politics in the city of Virelia, learns the Lynthari are ancient invaders, and watches their matriarch spend her life to destroy a calamity-tier tree. When an ant Colony assaults the city his ally Hadwin is killed; Nathaniel loses a hand, then hunts the Colony's leader off-world and annihilates the hive. The fifth floor then separates every survivor onto a private instance with one task: raise a disciple. Assigned a starved half-demon child, Nathaniel trains her, fights a monstrous 'Veil Guardian' to a standstill, and reaches a colossal fallen sky-fortress with a mana-dense valley beyond, both unexplored.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alone on the fifth floor, Nathaniel continues raising and protecting his young disciple as the two explore the region beyond the fallen sky-fortress they reached at the last book's close. A hidden pre-war bunker yields a rare arcane artifact, a mirror that lets him create a fully independent duplicate of himself - a clone identical in memory and skill but cut off from the system's shop and quests and bound by a countdown to its own disappearance. Openly self-interested, the clone attempts an early betrayal, which Nathaniel rebuffs without retaliating, and the two settle into an uneasy partnership. Entering the colossal sky-fortress, they are received as guests by its ruling former servants - among them a butler, a housekeeper, and a gardener - who trade information over a tense dinner while carefully guarding the source of the fortress's power. Nathaniel uncovers the truth behind their hospitality: the servants have subjugated their own former master, whose still-living, mutilated body is fused to the fortress's central crystal, his beating heart the engine that keeps it aloft. When that secret is threatened with exposure, the courteous welcome collapses into open hostility.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The standoff at the fortress settles into an uneasy negotiated cooperation with its servants, a fourth of whom - an armorer - now steps forward. Tracing the valley's strange mana to its source, Nathaniel and the clone break into a hidden pre-war facility built by this world's Enchanters. Inside they find an intact, undamaged corpse and revive it into a skilled native blacksmith, who wakes to learn that a century has passed and his wife, daughter, and world are gone. He recounts the war behind the planet's ruin: his people's own guild rushed the activation of a world-spanning mana construct, 'the Veil,' out of political fear even as their side was winning, and it devastated everything. He warns Nathaniel to hide his rarest abilities, outfits the group with protective gear, and guides them toward the facility's true core - where he discovers the body of his own father, tied to the sabotage that had cracked it. Overwhelmed by grief, the blacksmith seals the crack with a self-made alloy at the cost of his own life. Meanwhile the mysterious ruler-linked 'intent' that has shadowed Nathaniel since the previous floor makes direct contact for the first time this book, speaking through a corpse and taking a pointed interest in the clone.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the blacksmith dead, Nathaniel executes a backup plan: channeling the pre-war facility's stored mana into the fortress's failing core, at the cost of his own temporary blindness. The colossal sky-fortress takes flight for the first time in a century and is steered to safety. Nathaniel kills the increasingly suspicious armorer pre-emptively, and the remaining servants raise no objection. The clone, having quietly given up on his own survival, devotes his last days to securing the disciple's future: he transplants one of his own eyes into her as a vessel for a piece of himself, bargaining with the ruler-linked intent for help - and is deceived. Holding up his end even after learning the intent lied, the clone dies alone defeating the valley's sleeping calamity, an enormous divine-beast far above his level, spending limbs and memories through a unique sacrifice skill. At the very end an unidentified, far more powerful entity intervenes, forbidding the intent from ever harming the disciple. Nathaniel sees the girl safely home, completes the fifth floor, and steps onto the sixth, where he reunites at last with his scattered group.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the sixth floor, the reunion proves incomplete: the telepathic twins are held captive by a rival faction there, and freeing them becomes one of Nathaniel's stated goals. The tutorial then announces something unprecedented: its first cross-difficulty tournament, gathering survivors from every difficulty tier. The rest of the group enters as a team, with Tess steering their strategy. Nathaniel quietly builds a second, secret identity as an anonymous crafter, selling gear at the top of the tournament's maker rankings while hiding his true strength as a fighter. He meets several of the field's standouts in person: Savant, the solo player long established as his nearest rival; Tacita, a volatile hard-difficulty master of black mana who casually maims two harassers to prove that the tournament floor forbids death but not injury; and Whitewing, a principled, widely respected competitor who leads a faction pushing for orderly conduct. Testing a newly fused skill with his dangerous black mana, Nathaniel nearly triggers an uncontrolled detonation, a reminder of how little margin his experiments leave him. The events are announced, and the group settles in for a long competition spread across the tournament's difficulty-restricted brackets.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tournament's first event, a survival contest inside a shared domain, pits the competitors against one another and the environment at once. Nathaniel fights his way to the front but is edged out at the very end by Savant in an extremely close final clash, taking second place overall while leading on points. The event surfaces painful history on both sides. Savant's origin is revealed: abandoned to goblins on the first floor as a boy, he lost a leg and grafted a goblin's on in its place, the beginning of a body remade far beyond the human. And through Tess's own perspective the group glimpses a piece of Nathaniel's childhood on Earth - that he was known, and shunned, as 'the brother of a murderer.' Several group members, including Sophie and Lily, are eliminated over the course of the event, though under tournament rules death inside it is not permanent. Nathaniel ends narrowly beaten but unbroken, more fixated than ever on measuring himself against Savant.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The second event is a siege: teams defend a fortress against escalating monster waves. Nathaniel wins it outright, almost single-handedly, by destroying two of the assault's worst threats - a colossal serpent that shatters the ground, and a creature that reanimates the fallen as its own army - at severe personal cost. Biscuit plays a decisive part in finishing the serpent. Along the way Nathaniel independently rediscovers a lost skill, restoring a piece of his older toolkit. The victory lifts his standing sharply and hardens the field's respect for the anonymous 'No Name' fighter, even as few connect him to the secret crafter topping the maker rankings. The group's dynamics keep shifting around him: Tess presses her long-term project of building alliances to protect everyone's families once the tutorial ends, while Kim Min-Jae's growing power feeds an arrogance that begins to grate on those around him.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A third event begins, in which competitors send restricted avatars against a gauntlet of challengers. It runs alongside a subplot: a captive mass murderer, an easy-difficulty player who killed every member of his own starting group and climbed further up the floors than anyone else present, is held under a suppression collar while the leaders argue over his fate - Tess wanting him made an example of, Whitewing objecting on principle, nothing settled. Nathaniel meets Miwa, a hard-difficulty crafter with a champion-gifted prosthetic arm she will not sell at any price. The book's most personal thread finally surfaces: Nathaniel and Tess dated on Earth as teenagers, her first relationship, and he broke her heart by using her as an alibi for something he never explained and never apologized for. She withholds the specifics even from the group and presses him to account for himself, which he does not do.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel wins the third event outright, sending a deliberately underestimated avatar to victory behind a disinformation campaign. More of the field's hidden depths come into view. Whitewing's dark past is exposed: he once killed roughly a hundred natives, children among them, over resources on an earlier floor, and has carried the guilt since. Biscuit reveals a disciple of his own - an enormous, foul-mouthed telepathic wolf descended from an ancient planet-devouring beast - who spars Nathaniel to a draw and lays out a piece of the setting's cosmology: that fourteen 'rulers' stand behind its powers, and that Nathaniel's own command of black mana is exceptionally, perhaps dangerously, rare. The captive murderer abruptly vanishes from the tournament entirely, the population counts implying he leapt straight from easy to Hell difficulty, an escalation only a ruler could enable. Nathaniel's disciple is briefly summoned to visit for a single day, warming cautiously to the group and sparring with Tacita. And Nathaniel finally offers Tess an apology, which she refuses to accept, telling him she can feel it is not yet sincere and means to draw the reckoning out.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fourth event is a straight one-on-one dueling bracket, and its final rounds carry an unexplained change: inside the arena, death is briefly permitted. Fighting as 'No Name,' Nathaniel cuts through the field - past Whitewing in a brutal semifinal - to reach Savant in the final. Their fight is enormously destructive, and Nathaniel wins, but Savant abruptly forfeits rather than being finished, denying him a clean end to the rivalry and leaving him furious and unsatisfied. Savant is revealed, in these rounds, to be substantially a manufactured being: his heart, an arm, a leg and an eye all taken from more powerful creatures, tied to disturbing body-modification research. Tacita is nearly killed reaching the semifinal and is saved off-arena by Lily and Nathaniel. And Nathaniel finally lets one person past his guard: after crafting openly in front of Miwa, he confirms to her that he is the anonymous maker atop the crafting rankings, and the two trade knowledge, though she still refuses to part with her arm.",
+            "through": {
+              "chapter": 86
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tournament's fifth and final event, the rewardless 'Chronicle of the Past,' lets competitors challenge the champions of Earth's earlier tutorial 'rounds.' Its great revelation is personal: Nathaniel's estranged sister, Victoria, is confirmed as the champion of a separate, parallel round of Earth's tutorial, and the group learns through Lily's brutal, near-fatal duel against her avatar that Victoria wields an extreme regenerative, self-multiplying power - regrowing from a single scrap of herself and splitting into many copies. Nathaniel refuses outright to fight her. The tournament closes with him first overall and first in the crafting rankings, banking two unused reward tokens, and with the announcement that the next tournament, two years off, will bring every parallel round of Earth's tutorial together at once. Then the ending turns: urged by Tess, Nathaniel accepts what he believes is a further reward - an invitation to become someone's disciple - only for it to prove a deception. He is delivered instead into an ambush back on the fifth floor, sensing three presences waiting: the mass murderer who vanished months earlier, an unidentified tall, thorny woman, and Biscuit's black wolf. Realizing this was never part of his rewards, the book ends there, unresolved. His group remains together on the sixth floor with the captive twins still to free, and a separate portent - a Moon-sized spider now visible from Earth - hangs over what comes next.",
+            "through": {
+              "chapter": 89
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-4"
+      }
+    },
+    "hell-difficulty-tutorial-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Nat",
+              "No Name"
+            ],
+            "description": "The book's first-person narrator: a detached, exacting young man who has survived the lethal 'tutorial' on its hardest 'Hell' setting across its earlier floors. Book five opens with him handed into what proves an ambush by his own former teacher, beginning a punishing regimen meant to force him past the crude, power-hungry habits he has leaned on. Fiercely protective of the few people he claims as his own, he keeps everyone else at arm's length behind rigid self-control and hides his rarest abilities from strangers.",
+            "id": "nathaniel",
+            "name": "Nathaniel Gwyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An ancient, near-omnipotent warrior who trained Nathaniel in an earlier book and reappears here in a younger, physically flawless form, distinct from the aged version he faced before. Rather than killing him as an old bargain intended, she binds him to a two-week trial under five strict survival rules, each enforced by the threat of death, meaning to rebuild his fundamentals from the ground up. She describes herself as a flawed copy of a greater original, and is by turns brutal, exacting, and unexpectedly candid about her own long decline.",
+            "id": "lissandra",
+            "name": "Lissandra",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A historical champion of the fifth floor's ruined world, referenced in the previous book and met in person here for the first time. She rules an enormous underground workshop-city powered largely by her own mana, and once helped bring down those responsible for the catastrophe that wrecked her world. A foreign object lodged in her shattered mana heart is slowly killing her; Lissandra offers a containment method that could buy her years, in exchange for information and a 'lesson' for Nathaniel. Blunt, profane, and unexpectedly warm for a champion.",
+            "id": "niall",
+            "name": "Niall",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Volcanic Hydra"
+            ],
+            "description": "The name Nathaniel gives a wary creature lurking in the molten core of a pyramid-shaped ignition station called Cinder. It proves to be a mutated hydra, the surviving remnant of a giant serpent that once attacked the structure and was killed by its defenses, left circling the buried body of the station's dead founding champion for a century while failing to fully claim his residual power. Nathaniel kills it in a hard-fought, oddly respectful duel and lets its remains sink back into the lava.",
+            "id": "savi",
+            "name": "Savi",
+            "reveal": {
+              "chapter": 19
+            }
+          },
+          {
+            "aliases": [
+              "The Disciple"
+            ],
+            "description": "The young half-demon girl whom Nathaniel raised and named as his disciple on the fifth floor, now returned to her own home world. She appears only briefly here: safe but far away, formally recognized as his first disciple, and newly watched over by a mysterious, powerful projected figure who claims to be guarding her. Her wellbeing remains one of the few things Nathaniel is unconditionally protective of.",
+            "id": "vega",
+            "name": "Vega",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friendly local of Beyond - one of the descendants of earlier tutorial generations who settled there permanently - whom Nathaniel pays for guidance on the realm's guilds, rankings, and predatory recruitment contracts. Practical and good-natured, he becomes Nathaniel's first real source on how Beyond actually works.",
+            "id": "duncan",
+            "name": "Duncan",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior mage of the five-person expedition unit Nathaniel joins on Beyond's first floor, specializing in barriers and wide-area attacks. Quiet and experienced, she directs the newcomers in the field and, unnoticed by most, tags each of them with a hidden marker carrying a location ping and one-use disruption and attention pulses - a covert precaution Nathaniel discovers but quietly leaves unmentioned.",
+            "id": "eugan",
+            "name": "Eugan",
+            "reveal": {
+              "chapter": 32
+            }
+          },
+          {
+            "description": "A small-winged nonhuman on Nathaniel's expedition unit, whose hair and eye color shift with her emotions, though she can fake the effect at will. She fights with a mental stun ability and speaks of having lost squadmates on an earlier floor to a powerful mind-controlling foe. Guarded and quick-witted, she becomes Nathaniel's uneasy partner once their unit is thrown into danger.",
+            "id": "shayna",
+            "name": "Shayna",
+            "reveal": {
+              "chapter": 32
+            }
+          },
+          {
+            "description": "An unarmored close-range fighter on Nathaniel's expedition unit, relying on unusual natural durability and fast regeneration alongside a dagger and mace. Blunt and faintly cruel, he is quick to object to a raw deal but easily talked round, and reads as the muscle of the group.",
+            "id": "roculus",
+            "name": "Roculus",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older nonhuman scout on Nathaniel's expedition unit, with elongated arms and grey skin. Nearly silent, he summons quick scouting creatures from a black substance and keeps to the edges of the group, watchful and hard to read.",
+            "id": "rat",
+            "name": "Rat",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lioren"
+            ],
+            "description": "One of the most feared 'named' lurkers haunting the first floor of Beyond - the reanimated dead who respawn there. A demon of towering height, a pair of short black horns rising from a mane of long white hair, he wields an almost total command of kinetic energy, able to freeze an opponent's own momentum and blood in place. He becomes the relentless presence hunting Nathaniel through the ruined floor.",
+            "id": "whitey",
+            "name": "Whitey",
+            "reveal": {
+              "chapter": 39
+            }
+          },
+          {
+            "description": "Nathaniel's group's primary healer, who also fights with a devastating disintegration touch. She finds him critically wounded on his return from Beyond and heals him, having waited nearby specifically expecting him to come back in a bad state. Warm and steady, she is deep into research on bone-strengthening and blood-triggered healing marks, much of it aimed at eventually reinforcing Nathaniel's body, and holds a patient, openly stated fondness for him.",
+            "id": "lily",
+            "name": "Lily Chen",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Set"
+            ],
+            "description": "The de facto leader of Nathaniel's group, a calm, persuasive fighter who wields lightning and javelins. By the time he rejoins them she has taken over the remnants of a rival faction and become its head, steering a long-term project to secure everyone's families for after the tutorial. She is one of the people Nathaniel has known and trusted longest, and the driver of the group's push toward the distant Central Region.",
+            "id": "tess",
+            "name": "Tess",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The group's telepathic corgi, by now a seasoned veteran of the tutorial in his own right. He speaks mind-to-mind in short, food-fixated phrases and shares a long-standing, openly affectionate rapport with Nathaniel - he is the first to greet him when Nathaniel finally rejoins the group, proudly showing off how much faster his floating has become.",
+            "id": "biscuit",
+            "name": "Biscuit",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two four-armed Thylarin brothers exposed as the passengers behind the sabotage of the desert crossing, captured alongside his sibling after trying to flee. Sons of a deceased champion candidate, the pair are experienced, tightly coordinated fighters who follow the same Pride-driven path Nathaniel does, and it is Dravos who finally explains what the desert really is - a purpose-built prison - and where the crippled vehicle is now heading.",
+            "id": "dravos",
+            "name": "Dravos",
+            "reveal": {
+              "chapter": 55
+            }
+          },
+          {
+            "description": "A composed, black-haired Earth attendee and first-round tournament winner who joins the seven-person alliance Nathaniel assembles for a first-floor Beyond expedition. She travels with a golden retriever, Luna, and acts as the group's peacemaker, defusing friction between its prickliest members.",
+            "id": "leticia",
+            "name": "Leticia",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired Earth attendee from a later tutorial round who joins Nathaniel's Beyond expedition alongside the archer Noelle. Unarmored and outwardly unarmed, he fights at close range and openly disdains the whole champion-and-ruler political layer, preferring a straight fight. He and Noelle are plainly close.",
+            "id": "derick",
+            "name": "Derick",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth attendee from a later tutorial round who joins Nathaniel's Beyond expedition, fighting as an archer with an unusual stringless metal bow. Reserved and evidently well-informed about the first floor's 'named' lurkers, she profiles them for the group. She and the red-haired fighter Derick are clearly a couple.",
+            "id": "noelle",
+            "name": "Noelle",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leticia's golden retriever, and far more than an ordinary animal. Once Leticia's guide dog before the tutorial, she can grow to horse size in a fight, and startles the whole party by speaking aloud in a soft human voice. She is the only member of the group able to reliably track incoming lurkers.",
+            "id": "luna",
+            "name": "Luna",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the more dangerous 'named' lurkers of Beyond's first floor: a grey-skinned, long-limbed humanoid who moves by flickering in and out of view at extreme speed. He fights with a near-transparent, poison-coated mana dagger that resists Nathaniel's usual defenses, ambushing the expedition and wounding several of its members before escaping, badly hurt and missing an arm.",
+            "id": "specter",
+            "name": "Specter",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-5"
+      },
+      "recaps": {
+        "ending": "Book five ends with Nathaniel physically safe, significantly stronger, and mid-training rather than at rest. He has just won a life-and-knowledge wager against the ancient named lurker Whitey - though only by overwhelming his lurker body with a vast stockpile of stored mana, which he freely admits was closer to a resource trick than a clean victory, breaking his own black-mana restriction in the process. His formal rank has risen from D to C, and he is now being taught kinetic-energy technique by a knowledge-construct built from Whitey's own memories, a tense arrangement Whitey frames as breaking him down to rebuild him. Every named member of his group is alive but scattered: Tess leads one party deeper into the Central Region, while Sophie and Izzy have split off westward toward a reclusive city of mind-mages. Two threads are left deliberately open. Unknown to Nathaniel, hidden observers have marked him for capture by an unnamed party the moment he reaches Beyond's second floor. And he has come to suspect that the 'bond' entity of the champion he killed in the Mana Desert did not fully die, and that Sophie may unknowingly be carrying a surviving fragment of it. The book's final beat turns to Earth: after tutorial 'returnees' violently surface in Japan, a formal system broadcast announces that Earth has now begun its own 'awakening' - signaling that the long-background Earth subplot is about to collide with the main story.",
+        "in_short": "Book five opens with Nathaniel Gwyn's cliffhanger ambush revealed as a brutal training trap set by his old teacher Lissandra, now in a younger form. Over a two-week trial she rebuilds his fundamentals; along the way she kills the champion Niall, and Nathaniel is formally recognized as a champion candidate before they part. Reuniting with his group, he helps free the captive twins, then enters 'Beyond' - a realm between the tutorial and the real world - where a betrayed expedition ends with the feared demon lurker Whitey nearly killing him. After a deadly crossing of a lethal 'Mana Desert,' Nathaniel is trapped by an imprisoned six-armed champion, kills him using a single grain of the desert's killing sand, and escapes. Following a long training interlude in which the group's painful backstories surface and part of the group splits off, he returns to Beyond with new allies, hunts down the lurker Specter, and challenges Whitey to a life-and-knowledge duel. He wins - barely, and only through overwhelming stored mana - advancing a full rank and beginning real kinetic-energy training under a construct of Whitey. The book ends with a new capture threat looming, a supposedly dead entity possibly resurfacing, and Earth itself beginning its own system 'awakening.'",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In the first four books, an ordinary young man, Nathaniel Gwyn, is pulled with a crowd of strangers into a lethal fantasy 'tutorial' run like a game of levels and skills, and locked to its deadliest 'Hell' setting. Detached and calculating, he survives the early floors by remaking himself into a fragile but devastating mana specialist, losing limbs and friends along the way. An ancient, near-omnipotent woman, Lissandra, trains him, reveals herself as an artificial copy of a greater being, and destroys her own world before his eyes. Reunited with a close-knit group of fellow survivors - among them the lightning-wielding Tess, the healer Lily, the sisters Isabella and Sophie, and the telepathic corgi Biscuit - he fights through a city of ancient invaders and reaches a fifth floor that isolates each survivor to raise a single disciple. Nathaniel is assigned a starved half-demon girl, Vega, and, using a rare mirror, creates an independent clone of himself who ultimately dies to secure her future. Nathaniel sees her safely home, clears the floor, and reunites with his group on the sixth for the tutorial's first cross-difficulty tournament, winning it outright while his rivalry with the manufactured fighter Savant and his buried history with Tess both go unresolved. His estranged sister Victoria surfaces as the champion of a parallel round of Earth's tutorial. In the finale, tricked by a false reward, Nathaniel is delivered into an ambush back on the fifth floor, sensing three waiting presences as the book ends.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Book five opens by resolving the previous cliffhanger: the presences waiting to ambush Nathaniel include his old teacher Lissandra, now in a younger, physically flawless form. Rather than kill him, she has staged the whole trap as the start of a brutal two-week training regimen. On her order, her candidate disciple executes the captured mass murderer left over from the last book, and Lissandra binds Nathaniel to five survival rules - each backed by the threat of death - forbidding him his usual crutches: no using concentration to suppress his own emotions, and no drawing on his rare black mana, while demanding he reach specific levels and skill milestones. She drives him past exhaustion, pinning him immobile under crushing inscriptions, capping his mana far below normal, and forcing him to fight with his body and raw kinetic energy rather than brute-forcing everything with sheer mana volume. The group travels north to an enormous underground workshop-city ruled by a historical champion, Niall, whose shattered mana heart is slowly killing her. Lissandra strikes a bargain - a method to contain Niall's affliction in exchange for information and 'a lesson' for Nathaniel - and, in a fit of pride, Nathaniel voluntarily raises his own stakes, agreeing to reach five skills at level fifty instead of the original three.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel meets the champion Niall directly - unexpectedly plain-spoken and profane - and endures a lethal pressure-dome she builds at Lissandra's request, holding out for hours past the point it should have killed him. Niall explains the difference between his brute-force approach to mana and the refined, hard-to-disrupt style she and Lissandra use, and points out his key weakness: he cannot protect his mana once it leaves his body. Lissandra hands over her containment method, and Niall, moved to genuine hope for the first time, believes she may soon be able to remove the object killing her. Then Lissandra reveals her true intent: she considers Niall, like herself, a mere fake - a copy of a champion who died long ago - and demands all of Nathaniel's mana in order to kill her cleanly. Nathaniel refuses outright, his first open defiance of her, and declares his personal code aloud; the act triggers a milestone, advancing his Pride subclass from Initiate to Adept. Lissandra takes his mana by force anyway and kills Niall off-page, returning visibly wounded and carrying the champion's heart. The group flees the collapsing workshop and continues north.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The group reaches a second ignition station, a vast heat-drawing pyramid called Cinder, colonized by warring gangs. Lissandra splits off, and Nathaniel explores the pyramid's depths alone, fighting heat-based monsters toward its molten core and shedding his restraints along the way to train at his own pace. At the core he confronts a wary creature he nicknames Savi, revealed as a mutated hydra circling the buried body of the pyramid's dead founding champion; killing it brings Nathaniel to level 250 and a body upgrade. Lissandra returns to fight him one-on-one at the core, a battle he prepares for elaborately but still loses when she connects directly to his heart and turns it against him. Rather than killing him, she formally judges and recognizes him as a champion candidate, completing his trial. They part on genuinely warmer terms, without either ever using 'master' or 'disciple,' and she promises to meet him again in a year at the coming second tournament. Meanwhile, on her home world, Nathaniel's disciple Vega is approached by a mysterious, powerful projected figure who claims to be guarding her against a dangerous ruler.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel returns alone to the sixth floor and combines two passives into a new one that converts kinetic impacts into stored mana. He commits to a self-imposed restriction: no black mana until his core skills reach level sixty. Coordinating with his group, he infiltrates a lawless 'Bone Fortress' under a false identity to stop it reinforcing the rival 'Black Tower' faction, while the others assault the Black Tower itself; the operation succeeds and the long-captive telepathic twins are finally freed. Nathaniel then spends a token to enter 'Beyond' - a dangerous realm sitting between the tutorial and the real world - for his third trial, a solo hunt through an endless high-gravity jungle. After a punishing chase he kills the trial's 'King of the Forest,' completing it and unlocking the ability to buy repeat stays in Beyond and receive a personal handler.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Entering Beyond in earnest, Nathaniel is assigned a handler - a sardonic woman who advises him to hide his rarest abilities - and released onto its harsh surface, where a hostile presence hunts him the instant he uses mana. He reaches an underground settlement and learns how Beyond works: its guilds, rankings, and a friendly local, Duncan, who sells him information. Posing as a straightforward kinetic-energy melee fighter and concealing his true strength, he joins a twenty-person expedition into the 'First Dungeon.' His five-person unit includes a senior barrier mage, Eugan; an emotion-shifting winged scout, Shayna; a cruel close-range fighter, Roculus; and a silent, grey-skinned scout, Rat. Almost the moment the group enters the dungeon's first floor - a poisoned wasteland - it is attacked by intelligent reanimated corpses, and three of Nathaniel's four unit-mates abruptly abandon him and Shayna mid-fight, the first sign the newcomers have been set up as bait.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The scheme becomes clear: the newcomers were seeded as bait for the floor's 'lurkers' - its reanimated dead, drawn to whoever kills them - while the trusted core avoided the fighting. Nathaniel turns the trap around, killing the plant in his unit and allying with the winged scout Shayna to survive. But Shayna twice tries to kill him for his loot and dies in the attempt. As the treacherous expedition leader overpowers Nathaniel directly, the floor's most feared named lurker arrives: Whitey, a white-haired demon with total mastery of kinetic energy, who slaughters the rest of the group barehanded. With his stay-token seconds from expiring, Nathaniel hides, and the system pulls him out just before Whitey's killing blow lands - dropping him back on the sixth floor, critically wounded. There the healer Lily finds him, having waited nearby expecting exactly this, and patches him back together. She reports the group has taken over the rival faction's territory, with Tess now its leader.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reunited with his group - now rebranded the 'Angry Kittens' after seizing the rival faction's base - Nathaniel settles into a training and recovery stretch. He bonds a punishing 'restrictive training emblem' onto his own body, which constantly strains him to force growth, and coaches the group's weaker members, threatening to send the underpowered telepathic twins down to an easier difficulty if they fall behind. He studies the damaged arcane items he recovered in Beyond and lays plans for the group's next move: crossing toward the distant Central Region. They travel to a final outpost, The Last Rest, at the edge of a strange 'Mana Desert' - an expanse of lethal white sand, the ground remains of ancient destroyed cities and champions, where mana cannot regenerate at all. Fending off locals who prey on departing groups, they prepare to cross the desert aboard a battered floating vehicle the outpost has nicknamed 'Death Trap.'",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Aboard Death Trap, the group crosses into the Mana Desert, where mana regeneration stops entirely and the wind-blown white sand grinds any exposed victim to nothing. Nathaniel establishes a fearsome reputation, and the crossing turns deadly as the vehicle's guides begin dying one by one under mysterious, wound-less circumstances. The killings culminate in an open ambush against the group, revealing a conspiracy among some of the guides and the ship's two strongest passengers - four-armed Thylarin brothers, one named Dravos. Nathaniel purges every trace of mana from his own body so the sand cannot kill him, walks out onto it, and drags the fleeing brothers back captive. Under questioning, they reveal the truth: the Mana Desert is one of several 'containment cells' built to imprison a single powerful being, and they have deliberately steered the ship toward the champion trapped in this one. Battered and off course, Death Trap finally crashes at its destination as a massive storm closes in.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors descend to the prisoner at the desert's heart: a calm, six-armed Thylarin champion who has been trapped for a century. He secretly amplifies the whole group's emotions, fraying them against one another, and it emerges that Tess has been quietly meeting him and even helped strand the ship here. Offering guidance in exchange for a favor, the champion springs his real trap: a teleport array that scatters the rest of the group to safety in the Central Region while deliberately stranding Nathaniel and the two captive brothers behind. Nathaniel kills the brothers, then confronts the champion, who admits the whole 'deal' was always a betrayal meant to harvest them all. In a close, desperate fight, Nathaniel releases a single grain of the lethal white sand he has secretly carried inside his own body onto the champion's skin - triggering the prison's own defenses to flood in and kill him - and escapes at the last instant into Beyond. His handler shares rare lore: the tutorial has thirteen floors, each tied to one of thirteen 'rulers.' The fate of the champion's mysterious 'bond' entity is left unconfirmed.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel combines two skills into a new one, Leyline, giving him a durable, far-reaching network of anchors, and escapes the reshaped desert - now roamed by giant sand-whales - to reunite with Lily, the twins, and Biscuit at a border camp. Over a long training and crafting interlude, the group finally shares their childhood histories: Nathaniel reveals for the first time that his father was a violent alcoholic, that his sister killed the man to protect their mother, and that she has been imprisoned ever since, leaving Nathaniel known as 'the brother of a murderer.' He learns the group has fractured - Sophie has taken Izzy and left Tess's main party after a serious falling-out. Nathaniel buys a powerful mind-defense passive, and Lily advances her body-modification and healing-mark research, even preserving one of his severed arms as an emergency reserve. Having crafted weapons from the desert's white sand for money, he sets out for a fresh Beyond expedition to try to push deeper into the First Dungeon.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Beyond, Nathaniel gathers a seven-person party of fellow Earth attendees for a first-floor expedition, among them the composed Leticia and her extraordinary golden retriever Luna, and the couple Derick and Noelle. He agrees to act as the group's decoy, drawing the floor's dangerous named lurkers onto himself. The party is battered through a series of fights - one member, the fast, flickering lurker Specter, badly wounds several of them before escaping. Luna astonishes everyone by speaking aloud in a human voice. Nathaniel hunts Specter down and kills him alone, then deliberately flares his presence to pull a large lurker swarm off the others. Into that swarm drops Whitey, the white-haired demon lurker who nearly killed him before, who freezes and slaughters every lurker present. With his escape token spent, Nathaniel formally challenges Whitey to a champion's wager: his own life and status against all of Whitey's knowledge of kinetic energy. Unseen, several rulers argue over and quietly approve the wager.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel wins the duel - breaking his own black-mana restriction to do it - but only by grinding Whitey's lurker body down with an enormous stockpile of stored mana, a resource advantage he openly admits was closer to trickery than a true victory. He is left badly hurt but alive, unaware that two hidden observers watched the whole fight and now intend to capture him, for an unnamed party, the moment he reaches Beyond's second floor. Back safe, his formal rank rises from D to C, and he begins receiving Whitey's promised knowledge through a mental construct built from the dead lurker's memories - a construct that reveals Whitey died by betrayal centuries ago and starts, harshly, teaching him kinetic-energy technique. Nathaniel also reopens a buried thread, coming to suspect that the imprisoned champion's 'bond' entity did not truly die, and that Sophie may be carrying a surviving fragment of it west toward a hidden city of mind-mages. The book closes on Earth itself: after tutorial 'returnees' surface in Japan, a formal system message announces that Earth has now begun its own 'awakening.' Every named member of Nathaniel's group is alive; he ends the book stronger, mid-training under Whitey, with the group scattered across the Central Region and a far larger conflict clearly coming.",
+            "through": {
+              "chapter": 85
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-5"
+      }
+    },
+    "hell-difficulty-tutorial-6": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Nat"
+            ],
+            "description": "The book's first-person narrator: a detached, exacting young man with mismatched grey and brown eyes who has survived the lethal 'tutorial' on its hardest 'Hell' setting into its later floors. He opens the book leading his tight-knit group through heists and mine expeditions in a central region, running relentless experiments on his own mana and body. Fiercely protective of the few people he counts as his own, he keeps most others at arm's length behind rigid self-control and hides his rarest abilities from strangers.",
+            "id": "nathaniel",
+            "name": "Nathaniel Gwyn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nathaniel's group's primary healer, who also fights with a devastating disintegration touch and an axe she is growing from her own reinforced bone. Warm and steady, she is deep into research on regeneration and body modification, much of it aimed at reinforcing Nathaniel, and holds a patient, openly stated fondness for him.",
+            "id": "lily",
+            "name": "Lily Chen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Telepathic twin brothers, near-impossible to tell apart, who coordinate through a private mental link and a shared skill that lets them jointly hijack locks and abilities. They open the book running a string of stealth heists using mana-masking gear Nathaniel builds for them, under his punishing ongoing training regimen. Cautious and self-interested but invaluable to the group.",
+            "id": "the-twins",
+            "name": "Aaron and Dennis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lioren"
+            ],
+            "description": "A knowledge-construct of a long-dead, white-haired demon lurker who once nearly killed Nathaniel, now a permanent presence inside Nathaniel's own mindscape. He appears in recurring dream-training sessions on an imagined lunar surface, teaching kinetic-energy technique by breaking Nathaniel down and rebuilding him, and spars him relentlessly. Prickly and combative, he is a fixture Nathaniel cannot be rid of.",
+            "id": "whitey",
+            "name": "Whitey",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The group's telepathic corgi and a seasoned veteran of the tutorial in his own right, returning dramatically after roughly two months away to an affectionate reunion with Nathaniel. He communicates in short, food-fixated phrases, floats and fights with manifested mana, and joins the group's mine expedition as a full member.",
+            "id": "biscuit",
+            "name": "Biscuit",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The single strongest fighter of the mine-city Hollowgate: a Thylarin woman with an unusually large, deep-blue mana crown veined in purple, said to join a mine expedition only once every ten years and to spend the rest of the decade recharging that crown. She joins the same mine expedition as Nathaniel's group, a bodyguard at her side.",
+            "id": "the-witch",
+            "name": "The Witch",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "description": "Isabella's older sister and a powerful manipulator of minds, reunited with the group after a long separation. By now she has risen high among the mind mages of a great mind-mage city. Among the group's most dangerous and versatile members, she carries a fragment of a dead champion's bond entity.",
+            "id": "sophie",
+            "name": "Sophie",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Izzy"
+            ],
+            "description": "Sophie's younger sister and one of Nathaniel's longtime near-constant companions, a fire-based fighter blunt about violence yet unusually perceptive of others' feelings. Reunited with the group after months apart, she is openly devoted to Nathaniel and quick to draw him out of his isolation.",
+            "id": "isabella",
+            "name": "Isabella Martinez",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Set"
+            ],
+            "description": "One of the people Nathaniel has known and trusted longest: a calm, quietly persuasive fighter who wields lightning and javelins, and long one of the group's steadiest leaders. Reunited with Nathaniel's half of the group after roughly six months apart, she remains its most combat-disciplined member.",
+            "id": "tess",
+            "name": "Tess",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A versatile fighter of the group who works with self-made mana armor and shape-shifting weapons, reunited with the others after months apart. Wry and easygoing off the battlefield, she supplies much of the group's day-to-day humor while remaining one of its more dangerous members in a fight.",
+            "id": "maya",
+            "name": "Maya",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young survivor who fights with gravity and telekinesis sharpened by an implanted 'eye,' and one of Nathaniel's longtime training partners. Reunited after a long separation, he is confirmed to have developed his own rare, gravitational primordial energy in the interim.",
+            "id": "kim",
+            "name": "Kim Min-Jae",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daughter of the mind-mage city's ruling Archon and leader of one of its three dominant factions, whose circle hosts the garden dinner Nathaniel attends soon after arriving. Poised and politically central, she keeps her exact loyalties ambiguous behind the courtesies of the evening.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 17
+            }
+          },
+          {
+            "description": "A faction leader of the mind-mage city, a power broker who has built his faction around a collection of powerful captives. Nathaniel exposes that Namior has been covertly manipulating Sophie through hidden 'thought anchors' planted in her mind across multiple meetings, intending to make her one of his vassals. Confronted, he is killed by Nathaniel.",
+            "id": "namior",
+            "name": "Namior",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Devourer"
+            ],
+            "description": "A monstrous, giant eye-entity long sealed inside an astral prison, freed when the mind-mage city's great pooled-cognition ritual breaks the prison's spatial locks. It reanimates the ritual's dead into giant flesh golems and rampages through the city. Nathaniel holds it off almost alone in an extreme mana-absorption state, wounding it badly, but no clean kill is confirmed on the page.",
+            "id": "bloodroot-devourer",
+            "name": "The Bloodroot Devourer",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Disciple"
+            ],
+            "description": "The young half-demon girl Nathaniel raised and named as his disciple in an earlier book, seen in this one first through her own interlude chapters: traveling far from him under the direct, demanding tutelage of Lady Lissandra. Her wellbeing remains one of the few things Nathaniel is unconditionally protective of.",
+            "id": "vega",
+            "name": "Vega",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient, near-omnipotent woman who trained Nathaniel in earlier books, describing herself then as a flawed copy of a greater original. She reappears here raising a disciple of her own, recovering from a new heart she built and implanted in herself from an absolute's and a champion's remains, and quietly preparing some means of synchronizing with Nathaniel from afar. Blunt, exacting, and scornful of powers who lean on system-given tools they do not understand.",
+            "id": "lissandra",
+            "name": "Lady Lissandra",
+            "reveal": {
+              "chapter": 32
+            }
+          },
+          {
+            "aliases": [
+              "Carrot Cake"
+            ],
+            "description": "The winner of an earlier tournament round: an immensely strong melee fighter who trains by deliberately damaging his own body, traveling with the healer Lucien. On meeting the group he senses Sophie's manipulation-type ability and moves to attack her outright, declaring that people with such powers must die; the standoff is defused, but his hard personal code leaves the alliance uneasy from the start.",
+            "id": "jean-durand",
+            "name": "Jean Durand",
+            "reveal": {
+              "chapter": 33
+            }
+          },
+          {
+            "description": "A senior Lumoran technician at Champion Feroy's frontier deployment camp, who takes Nathaniel, Sophie, and the twins on as contract assistants in his workshop when the group signs on as non-combatant camp workers. Working under him embeds the group in the camp's daily operation and its war effort.",
+            "id": "leth",
+            "name": "Leth",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the war armor Exoria and of the frontier deployment camp where Nathaniel's group hires on, making him their employer for the campaign against the Absolute-grade threat overrunning the world. On the camp's arrival at the dangerous second front he makes a deliberate, unexplained choice: cutting his own camp off from the planet's protective web, plunging it into an isolated blizzard.",
+            "id": "champion-feroy",
+            "name": "Champion Feroy",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient, dying absolute of a long-lived race, dwelling alone on a shattered moon fragment, who takes Nathaniel on for a five-day companionship quest that trades answers for company. His hereditary 'Parallax Eyes' grant extreme layered perception across great distances. Over their exchange he delivers the book's central lore, then abruptly ends it early for reasons he keeps to himself.",
+            "id": "the-warden",
+            "name": "The Warden of the Parallax Eyes",
+            "reveal": {
+              "chapter": 59
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-6"
+      },
+      "recaps": {
+        "ending": "Book six ends at the opening of its next major arc rather than at rest. Nathaniel has just forced a deceased fifth-floor champion's heart into his own chest by hand during a black-mana focus state, evaporating the valley's lake to survive the heat, creating a permanent second heart - the Sealed Ignition Heart - and gaining a fresh batch of skill levels. He collects a large delayed shard payout and enters the tutorial's second tournament with most of his group. But Tess and Biscuit are missing: Lady Lissandra reveals Tess secretly carries a dormant mimic infection the tournament system itself will not admit, and offers to cure her only if Nathaniel dominates every single event, not merely wins. He agrees, making that his stake into the next book. Every other major player is alive or presumed so; the book's one great loss is Champion Feroy, whose death is heavily implied but never stated outright. Left open: whether the present-day Lissandra is the true historical absolute or an artificial imitation, the nature of the hostile mental 'presence' lodged in Nathaniel's mind, and the unconfirmed fate of the Bloodroot Devourer. On Earth, interspersed reveals expose the Gwyn family's past - Nathaniel's sister Victoria was convicted of murdering their father, and a teenage Nathaniel was investigated as a possible accomplice before being cleared - alongside a hardening global response to tutorial returnees.",
+        "in_short": "Book six opens roughly five months on, with Nathaniel Gwyn and his group finishing a mine expedition beneath the city Hollowgate that ends a chained centuries-old entity and spares its manipulated pawn, then reuniting with the rest of their friends at a great mind-mage city. There Nathaniel kills the manipulator Namior, and a citywide ritual meant to break an astral prison instead frees a giant eye-entity, the Bloodroot Devourer, which he fights to a costly, unconfirmed standstill before the group escapes to a war-torn seventh floor. A four-person trip into the realm 'Beyond' yields a class upgrade to Mana Weaver and a duel won against the strongman Jean Durand; back on the frontier the group hires on with Champion Feroy's war-armor unit to fight a shapeshifting 'mimic' progenitor. Framed by a false detection, Nathaniel flees and spends five days with the ancient Warden of the Parallax Eyes, learning his own core technique came from a historical absolute long dead - throwing the living Lady Lissandra's nature into doubt. Feroy dies covering an escape; the group is cleared of mimic infection and confined to a comfortable Lumoran valley. There Nathaniel implants a dead champion's heart as a second, thermal heart, then enters the tutorial's second tournament to find Tess secretly carries a dormant mimic and has vanished - Lissandra will cure her only if he dominates every event.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Across the first five books, an ordinary young man, Nathaniel Gwyn, is pulled with a crowd of strangers into a lethal fantasy 'tutorial' run like a game of levels and skills, and locked to its deadliest 'Hell' setting. Detached and calculating, he survives the early floors by remaking himself into a fragile but devastating mana specialist, losing limbs and friends along the way. An ancient, near-omnipotent woman, Lissandra - who calls herself an artificial copy of a greater being - trains him, and destroys her own world before his eyes. He gathers a close-knit group of survivors: the lightning-wielding Tess, the healer Lily, the sisters Isabella and Sophie, the gravity-user Kim Min-Jae, the fighter Maya, the telepathic twins Aaron and Dennis, and the telepathic corgi Biscuit. On the fifth floor he raises a young half-demon disciple, Vega, and clears the floor; on the sixth he wins the tutorial's first cross-difficulty tournament, while his estranged sister Victoria surfaces as champion of a parallel Earth cohort. Book five's brutal training and a lethal desert crossing end with Nathaniel defeating the ancient demon lurker Whitey in a life-and-knowledge wager - winning only through overwhelming stored mana - and beginning kinetic-energy training under a mental construct of him. The book closes with Nathaniel newly a capture target, a supposedly dead entity possibly resurfacing, and Earth beginning its own system 'awakening.'",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Roughly five months later, Nathaniel, Lily, the twins, and a returned Biscuit are running heists and a mine expedition beneath Hollowgate, one of the central region's biggest cities. The expedition ends deep underground with the death of a chained, insane, centuries-old entity, and the defeat of Hollowgate's single strongest fighter - a witch who, it emerges, has been secretly manipulated by that entity for decades. The group spares her; in gratitude she spends two days teaching Nathaniel hard-won knowledge of crown and challenge mechanics before the two part on respectful terms. Nightly, inside his own mindscape, Nathaniel continues punishing dream-training under a construct of the dead lurker Whitey, who drills him in kinetic-energy technique. With the mine business settled, the group sets out to reunite with the rest of their friends - Sophie, Izzy, Tess, Maya, and Min-Jae - after a roughly six-month separation, traveling toward a ruined fort outside a great mind-mage city on the sixth floor. Min-Jae is confirmed to have developed his own rare gravitational primordial energy in the interim.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The reunited group enters the great mind-mage city under Sophie's protection: she has risen to a top-five mind mage there and seized leadership of a newly formed fourth faction. The city itself is a colossal inscription array built around 'the Framework,' a once-in-eight-years pooled-cognition construct meant to break the spatial locks of an ancient astral prison. At a garden dinner hosted by the senior faction leader Beatrice, Nathaniel exposes hostile guests, and an unidentified presence warns him that his mindscape 'guest' may be quietly replacing his memories. He debuts a refined new technique, 'mana weaving,' then confronts and kills Namior, the city's third faction leader, after discovering Namior had been covertly steering Sophie through hidden 'thought anchors' planted in her mind. Devastated at having been manipulated without noticing, Sophie withdraws into shamed self-isolation until Tess and Izzy draw her back out. She finally explains 'Blackie,' a fragment of a dead champion's bond entity now bonded to her, and introduces Nathaniel to the concept of a 'Logic Core.'",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel fits his sword, Fracture, with an empty Logic Core, and the citywide Framework ritual succeeds in breaking the astral prison's spatial locks - but doing so frees one of the prison's monstrous captives: a giant eye-entity that bursts through a tear in the sky. As the Framework begins to fail, Nathaniel seizes control of it through his hidden ley lines and uses a fraction of its stolen processing power to finish two arcane weapon-items. The freed eye, the Bloodroot Devourer, reanimates the ritual's dead into giant flesh golems and rampages through the city; Nathaniel holds it off almost single-handedly in an extreme black-crown mana-absorption state, wounding it heavily but landing no confirmed kill, and Lily is nearly killed in the chaotic retreat. Fleeing to a book-filled 'Metal Cathedral,' the group meets a champion who declares Lily a Champion Candidate and implies the spared Hollowgate witch is, or was, an 'absolute.' With a captured interplanetary teleport design, the group completes the sixth floor's main quest and escapes to the seventh floor, a war-torn multi-race outpost world.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the seventh floor, Nathaniel uses a rare skill-combination token to merge two of his skills into a new active skill, Eclipse. A four-person expedition - Nathaniel, Sophie, Lily, and Tess - departs into 'Beyond,' the dangerous realm between the tutorial and the real world, entering an enormous shared first floor of reanimated 'lurkers.' There they reunite with returning tournament allies, among them the strongman Jean Durand and his companion healer Lucien. The expedition reaches Beyond's first safe zone, Lake City, a lakeside outpost that trades in valuable mana-eating 'fish' whose cores sell for enormous sums. The group's lure draws an extremely old, powerful fish, which in turn draws a rival demon expedition attempting a shakedown. Nathaniel provokes them into a fight: their leader is killed instantly by an ally, Nathaniel personally kills a second demon in single combat, and the third withdraws. The ancient fish is landed, yielding shards worth a fortune to be split under an earlier deal.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The stretch between Lake City and Beyond's second safe zone proves far deadlier than expected: relentless waves of skeletal 'Reanimated' monsters push the party to its limits. Mid-fight, Nathaniel reaches level 300, triggering a primary-class upgrade - he retires his long-held Focus Channeler class for the Unique Arcane class Mana Weaver, gaining the skill Empyrean Lance, though the sudden influx of mana nearly gets the group killed before he adapts. They reach the second safe zone. There Nathaniel and Jean Durand privately stay behind to settle their standing rivalry, fighting at full strength. Jean has an unexplained innate trait that resists mana damage and converts absorbed mana into regeneration fuel; Nathaniel wins by outlasting and exhausting that regeneration, leaving Jean unconscious rather than dead, and quietly keeps three of Jean's severed fingers for later study.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back on the seventh floor, the group learns the planet's crisis is a single Absolute-grade shapeshifting 'mimic' that infiltrated it undetected, and formally registers as mercenaries - the Angry Kittens. Chasing a lead, they land a technician contract with Champion Feroy's war-armor unit, Exoria, and embed as camp contractors: Nathaniel, Sophie, and the twins as workshop assistants under the technician Leth, Lily on the healing squad. Nathaniel's Mana Circuit trait evolves into Mana Physique. The camp relocates to a dangerous second front, where Feroy deliberately disconnects it from the planet's protective web, plunging it into an isolated blizzard, and mimic infiltration escalates. When the camp's own detection framework fails to clear Nathaniel himself, its elites instantly turn on him; he kills their Lumoran scout leader, flees using his Wraith Dance technique and ley-line teleports, and escapes into Beyond via a stay token. Offered a formal Beyond Quest instead of further token abuse, he chooses an undisclosed option.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel's choice takes him to the domain of the Warden of the Parallax Eyes, an ancient, dying absolute on a shattered moon fragment, for a five-day companionship quest trading answers for company. Its central revelation lands like a bomb: the mana-cycling technique at the core of Nathaniel's power was created by a historical absolute named Lissandra Hawthorne, who died ages ago fighting the Ruler of Pride - directly contradicting the living, active Lady Lissandra seen elsewhere. The Warden confirms fourteen total Rulers exist and that a hostile mental 'presence,' tied to a past 'challenge,' is lodged in Nathaniel's mind until its original body regenerates on Beyond's first floor. He abruptly ends the exchange early; a private conversation reveals he did so to avoid over-empowering Nathaniel, and raises the possibility that the present-day Lissandra is an artificial 'imitation' of the true historical figure. Off-page, the Exoria camp is destroyed by a coordinated mimic assault. Nathaniel returns to find Leth guarding a feigning-unconscious Champion Feroy, who shares his full life story before dying, heavily implied, in a one-man last stand covering their escape.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathaniel and Leth part ways, Leth carrying out a final duty for the front's leadership. Nathaniel reunites with the rest of the group, and their subclass options are revealed together, drawn from the same virtue-and-sin taxonomy that names the Rulers themselves. The reunion is short-lived: the group is intercepted by a local champion's disciple and escorted into a week-long, mana-suppressing mimic-detection quarantine, during which Nathaniel is forced to surrender his sword and destabilize his signature Black Crown. Reaching out through a new short-lived disciple communication token, Nathaniel confirms a suspicion that has been building: the unsettling red-haired woman who has been privately warning others is the same figure, 'Greed,' whom the Warden secretly met.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The quarantine ends and Nathaniel is cleared of being a mimic, then escorted into an isolated, comfortable Lumoran valley - effectively a 'golden cage' for the group - and sworn to secrecy as a matter of national security while a mimic war rages outside. In his mindscape, Whitey shows him a genuine memory of his own arrival on Beyond's first floor among two dozen demons. Nathaniel reunites with his own disciple, who arrived with Lady Lissandra; both confirm, matching the Warden, that Whitey can never be separated from him. Lissandra reveals she personally brokered a three-month non-interference truce protecting the valley from both the mimic progenitor and the planet's absolute, explains the mimics' history and mechanics in detail, and delivers the heart of a deceased fifth-floor champion - lethal to touch for anyone but Nathaniel - for him to attempt to implant as a second heart. She also admits she has known Greed's identity since a much earlier encounter with him.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An extended, deliberately slower stretch of downtime and preparation fills the valley. Nathaniel's disciple has her champion-candidate status formally upgraded by Lissandra. The group holds a 'beach episode' at an artificially warmed lake, where Nathaniel - who never learned to swim - nearly drowns and is dragged out by Biscuit, and where real interpersonal friction surfaces alongside a weekly mana-free bonding tradition. Meanwhile Nathaniel suffers three escalating, dangerous failures trying to prepare the champion's heart, the last nearly killing him and damaging his existing mana heart; he restarts from scratch and gains an evolved skill in the process. With Sophie's help he finalizes a full technical plan to implant the heart as a separate, purely thermal heart. Tess is confirmed to have taken Chastity as her subclass.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lissandra unleashes a single massive shockwave as an apparent warning amid escalating mimic waves, and a mysterious sealed box delivered earlier is found forced open and empty. That night, Nathaniel undergoes the heart implantation: after repeated failures connecting the organ, he forces it into his chest by hand during a black-mana focus state and evaporates the valley's entire lake to suppress the resulting heat, successfully creating a permanent new construct - the Sealed Ignition Heart. The next day he collects a large delayed shard payout from the earlier fish sale, and the group is summoned to the tutorial's second tournament, a fourteen-day event drawing all difficulties together. On arrival, Tess and Biscuit are missing: Lissandra reveals Tess secretly carries a dormant mimic infection the tournament system itself refuses to admit, and that she noticed it without being told. Interspersed Earth-side scenes expose the Gwyn family's past - Nathaniel's sister Victoria was convicted of murdering their father at nineteen, with a sixteen-year-old Nathaniel investigated as a possible accomplice before being cleared. Lissandra offers to save Tess only if Nathaniel dominates every event of the tournament, not merely wins; he agrees, and the book ends.",
+            "through": {
+              "chapter": 80
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "hell-difficulty-tutorial-6"
+      }
+    },
+    "hells-wardens": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Earth-born innkeeper of the Wandering Inn and an ally of the Horns. Her magical door connects the inn to distant places.",
+            "id": "erin-solstice",
+            "name": "Erin Solstice",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Gnoll under Erin's protection at the Wandering Inn. She is a protected member of the inn's household.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sentient skeleton once animated by Erin and now acting independently from within Liscor's dungeon. He commands other undead while concealing himself behind the identity of a masked warrior, with his broken connection to his creator still unresolved.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Horns' necromancer, known for creating and controlling bone constructs. Wistram is pursuing him over his past and his forbidden craft.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria"
+            ],
+            "description": "The ice mage and captain of the Horns.",
+            "id": "ceria-springwalker",
+            "name": "Ceria Springwalker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Horns fighter whose metal-infused arms remain badly damaged. She continues adventuring with the team despite their condition and the uncertainty surrounding their recovery, refusing to let the injury separate her from the Horns.",
+            "id": "yvlon",
+            "name": "Yvlon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium skirmisher and loyal member of the Horns.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch Captain, responsible for the city's defense and the lawful custody of Calruz.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A one-armed Minotaur prisoner and former commander held under Zevara's authority while his conduct in the dungeon remains unresolved.",
+            "id": "calruz",
+            "name": "Calruz",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Antinium guardsman in Liscor's Watch.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Liscor Watch officer associated with Erin and the Wandering Inn.",
+            "id": "relc",
+            "name": "Relc",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Goblin resident of the Wandering Inn and a protected member of Erin's household.",
+            "id": "numbtongue",
+            "name": "Numbtongue",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ryoka"
+            ],
+            "description": "An Earth-born, classless courier travelling north.",
+            "id": "ryoka-griffin",
+            "name": "Ryoka Griffin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An influential Reinhart noble whose interests extend across Izril.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Foliana's fellow leader in the Forgotten Wing Company. He directs her urgent assignment and teaches students at his academy.",
+            "id": "niers-astoragon",
+            "name": "Niers Astoragon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-born Black Mage confined at Wistram with other arrivals from Earth. Called a guest but forbidden to leave the island, he builds a battery-powered gauntlet that channels lightning while the group's prospects for leaving remain uncertain.",
+            "id": "erin-black-mage",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wistram authority who orders an Archmage to correct the academy's public claim about Pisces and Ceria, confirming that she granted them graduate status despite their expulsion.",
+            "id": "cognita",
+            "name": "Cognita",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trained warhound retrieved by Ryoka from kennels devastated in a Drake attack. Ryoka takes the dog north and intends to place it with adventurers who lost their previous hound in battle, giving the animal a new working home.",
+            "id": "mousy",
+            "name": "Mousy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A regional ruler and close friend of Magnolia Reinhart. Her force destroys an ogre band and its chieftain, though twelve of her soldiers die in the fighting. She leaves a second band beyond her territory to the approaching Order of Seasons.",
+            "id": "lady-pride",
+            "name": "Lady Pride",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous witch who escapes an attempt by the Order of Seasons to kill her. She uses hostages to halt pursuit, and the Order suppresses public knowledge of her because widespread knowledge and fear may increase her power.",
+            "id": "stitch-witch",
+            "name": "Stitch Witch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A knight of the Order of Seasons who joins the armored Goblin Slayer in hunting an ogre band. Her ability marks him as a person of consequence, and she promises support if he continues to act honorably.",
+            "id": "dame-talia",
+            "name": "Dame Talia",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Order of Seasons knight who fights beside Dame Talia and the Goblin Slayer during the campaign against the ogres. He shares the danger of the night attack and the final battle as the knights test their secretive new ally.",
+            "id": "sir-eldene",
+            "name": "Sir Eldene",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Rabbit Eater",
+              "Goblin Slayer"
+            ],
+            "description": "A hobgoblin Champion hidden beneath armor and accepted by the Order of Seasons as a human goblin hunter. He defeats ogres while secretly preserving the Rolling Rocks goblins, then adopts the Solstice name and gains the Knight class.",
+            "id": "sir-solstice",
+            "name": "Sir Solstice",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin ally who helps Sir Solstice supply the Rolling Rocks settlement while it remains hidden. His practical support helps the tribe survive while Sir Solstice maintains a separate identity among the human knights.",
+            "id": "bad-arrow",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A goblin ally who works with Bad Arrow and Sir Solstice to provision the concealed Rolling Rocks settlement. She helps sustain the tribe while its protector continues to conceal both his nature and the goblins' survival.",
+            "id": "snap-jaw",
+            "name": "Snap Jaw",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Wistram mage attempting to repair relations with Erin. He objects to the unannounced pursuit of Pisces, offers valuable spices as an apology, and remains barred from the inn when people harmed by his team are present.",
+            "id": "palt",
+            "name": "Palt",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Wistram team pursuing Pisces. She inspects Liscor's damaged wards while the group tries to improve its standing in the city.",
+            "id": "montressa",
+            "name": "Montressa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful mage whose help depends on sufficient leverage. He distinguishes professional interest from friendship and will not risk conflict with Wistram merely because Erin asks, though he advises her on more practical ways to protect Pisces.",
+            "id": "grimalkin",
+            "name": "Grimalkin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demoted Watch guard on a final chance. He participated in abuse of a Minotaur prisoner but also tried to prevent the worst violence and protect Mrsha. Klbkch still considers him capable and assigns him ordinary patrol work under close scrutiny.",
+            "id": "t-kern",
+            "name": "T'Kern",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A junior Gnoll guardswoman whom Klbkch trains during the investigation of stolen flowers. She begins learning to patrol alongside T'Kern, gaining practical experience while working with a partner whose position in the Watch is precarious.",
+            "id": "jersey",
+            "name": "Jersey",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An undead Chosen serving Oskarosh as a covert agent. Skilled in runes, prepared divination, teleportation work, and stored combat magic, she is ordered to observe Pisces, Wistram, and Erin's inn while preparing a route toward her master's lair.",
+            "id": "ijvani",
+            "name": "Ijvani",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ijvani's undead master. He forgives her earlier failure, renews his command, and directs surveillance around Liscor. His particular interest in Pisces, the Wistram mages, and Erin's inn has not yet been explained.",
+            "id": "oskarosh",
+            "name": "Oskarosh",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Three-color Stalker"
+            ],
+            "description": "A squirrel beastkin rogue, feared assassin, and co-leader of the Forgotten Wing Company. Her ability to pass unnoticed makes her the operative sent to prevent an attack on the Titan's academy before a dangerous magical artifact can be deployed.",
+            "id": "foliana",
+            "name": "Foliana",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A founding Player of Selim and the troupe's lead actor. His performance as Macbeth helps the company win a large audience in Sovex, establishing him as one of the performers central to the company's effort to reach larger cities.",
+            "id": "wesle",
+            "name": "Wesle",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A founding Drake performer with the Players of Selim. Her title performance in Elysial wins an audience in Inverisil and advances her to Lead Actress as the troupe expands.",
+            "id": "players-of-selim-lead-actress",
+            "name": "Players of Selim Lead Actress",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Players of Selim's half-dwarf director. He oversees adaptations, casting, recruitment, finances, and the troupe's pursuit of larger audiences.",
+            "id": "players-of-selim-director",
+            "name": "Players of Selim Director",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A green-haired mage who drives away robbers targeting the Players of Selim and then joins the troupe, offering magic and combat ability.",
+            "id": "players-of-selim-green-haired-mage",
+            "name": "Players of Selim Green-haired Mage",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A defensive mage from Wistram who defies her faction's decision to abandon the hunt for Pisces. Certain that he is guilty of murder, she brings an Oldblood Drake and a Minotaur companion to confront the Horns beside the road project.",
+            "id": "hostile-wistram-aegiscaster",
+            "name": "Wistram Aegiscaster",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Oldblood Drake mage from Wistram who joins the Aegiscaster's unauthorized pursuit of Pisces and faces Ceria in the duel beside the roadworks.",
+            "id": "oldblood-drake-wistram-mage",
+            "name": "Oldblood Drake Wistram Mage",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Minotaur mage from Wistram who joins the Aegiscaster's unauthorized pursuit of Pisces and faces Yvlon in the duel beside the roadworks.",
+            "id": "minotaur-wistram-mage",
+            "name": "Minotaur Wistram Mage",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A resident of the Wandering Inn who is badly injured while escaping the Creller outbreak.",
+            "id": "seaborn",
+            "name": "Seaborn",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A resident of the Wandering Inn who is badly injured while escaping the Creller outbreak.",
+            "id": "moor",
+            "name": "Moor",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Selfid spellcaster who leaves the hostile Wistram group after the Creller siege and begins a trial recruitment with the Halfseekers.",
+            "id": "wistram-selfid-spellcaster",
+            "name": "Wistram Selfid Spellcaster",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "A ruler rebuilding his kingdom while publicly maintaining peace. Refugees, veteran soldiers, and half-giant nomads strengthen his capital, but food and military needs continue to press his realm as he restores its population and vassal network.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DCCZ5MG2",
+            "type": "community"
+          }
+        ],
+        "work": "hells-wardens"
+      },
+      "recaps": {
+        "ending": "Liscor survives the Creller outbreak, and the Horns kill the adult creature before receiving Gold Rank. The team remains together and plans to seek work to the north, although Ceria and Pisces are depleted and Yvlon's reattached arm is weak. Calruz remains imprisoned but accepts dangerous Watch work as a path toward redemption. Erin survives Toren's attack, but the Wandering Inn collapses around her. She reaches level 40 and gains a sanctuary garden. Toren removes his own skull and appears to end his animation, yet an unseen necromancer's servant carries away the remains and a spark persists. Ryoka sends eight displaced people from Earth toward Erin after assassins attack Magnolia Reinhart's estate. Elsewhere, Sir Solstice continues north with his hobgoblin identity concealed, Foliana has prevented the academy bombing, and Flos considers action against the academy holding a missing vassal. Wistram's pursuit has stopped for now, but suspicion of Pisces, the danger in the Bloodfields, Ijvani's surveillance, the Stitch Witch, and the attack on Magnolia's estate remain unresolved.",
+        "in_short": "Wistram's pursuit of Pisces follows the Horns back to Liscor, where the team works on a road around the increasingly dangerous Bloodfields. A faction withdraws from the chase, but a hostile mage forces a duel that is interrupted when an adult Creller and its swarm attack. The Horns and Liscor's defenders suffer severe losses before Pisces and Ceria create a combined construct, Yvlon breaks the creature's armor, and Ksmvr delivers the killing blow. The Horns earn Gold Rank and plan to travel north. In parallel, Sir Solstice protects a goblin tribe while passing as a human knight, Foliana stops an academy bombing, and Ryoka later rescues eight Earth arrivals from an attack on Magnolia Reinhart's estate. Toren reaches the ruined inn, injures Erin, and then apparently ends his own animation. An unseen servant removes his still-sparking skull as the inn collapses. Erin survives, reaches level 40, and gains a sanctuary garden.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin Solstice, an Earth-born innkeeper near Liscor, made the Wandering Inn a refuge for an unusual household and supported the Horns of Hammerad. Her magical door linked the inn to distant locations. The Horns included Ceria, their ice-mage captain; Pisces, a necromancer specializing in bone; Yvlon, a fighter with damaged metal-infused arms; and Ksmvr, an Antinium skirmisher. Wistram was pursuing Pisces, placing both his team and Erin under pressure. Toren, the sentient skeleton Erin once animated, had become an independent commander of undead within Liscor's dungeon. Ryoka Griffin, another person from Earth, travelled as a classless courier. Liscor's Watch Captain Zevara held the one-armed Minotaur Calruz in custody while questions about his conduct in the dungeon remained unsettled. Mrsha lived under Erin's protection, while Klbkch and Relc served in Liscor's Watch.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wistram continues to pursue Pisces, although Cognita forces the academy to acknowledge that both he and Ceria hold graduate status. Elsewhere at Wistram, an Earth-born Black Mage named Erin is among a group treated as guests but forbidden to leave the island. Ryoka retrieves the warhound Mousy, places the dog with the Pithfire Hounds, and obtains a lead to adventurers supported by Magnolia Reinhart.\n\nThe Order of Seasons fails to kill the Stitch Witch. She escapes through hostages, and the Order decides that public fear would only strengthen her. The knights then turn toward ogre raiders. Dame Talia's group joins an armored Goblin Slayer who helps defeat an ogre band, though Sir Eldene dies in the battle. The hunter is secretly the hobgoblin Rabbit Eater. He saves the Rolling Rocks tribe, fabricates evidence of its destruction, and sends it toward refuge. Accepted by the knights as Sir Solstice, he gains the Knight class and continues north with his identity concealed.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin cannot persuade Grimalkin to oppose Wistram without greater leverage. Palt apologizes for his team's conduct but remains conditionally barred from the inn. After a Gnoll steals Erin's valuable golden flowers, Mrsha identifies the thief and Klbkch leads T'Kern and Jersey in recovering them. The case also exposes a possible high-level criminal presence in Liscor.\n\nKlbkch is revealed as both a senior Watch guardsman and the Hive's Revelantor. He uses a dangerous dungeon incursion to train autonomous Antinium commanders, treating hundreds of ordinary Antinium as expendable. Meanwhile, the Horns return publicly with Pisces. Ceria defends him, and Liscor's guildmistress refuses to permit bounty hunting in the city. Shared work against face-eater moths begins to reduce other adventurers' distrust.\n\nZevara continues investigating Calruz rather than accepting Wistram's judgment as final. Toren learns that Erin is alive, abandons his masked identity, and resolves to seek her. The undead agent Ijvani also receives orders from Oskarosh to watch Pisces, Wistram, and the inn while preparing a teleportation route.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Foliana is sent by Niers Astoragon to stop a planned attack on his academy. Using food associated with her target to trace a naga infiltrator, she kills the attacker before a gauntlet containing linked siege spells can be planted. She secures the weapon and leaves a charmed Dullahan servant to be investigated. The claim that Magnolia Reinhart authorized the operation appears false.\n\nThe Players of Selim carry Erin's plays north. Wesle and the troupe's lead actress win audiences in Sovex and Inverisil, and a green-haired mage joins after driving away robbers. Magnolia's servants take notice of the company's success.\n\nAround Liscor, Erin's magical door supports construction of a road skirting the Bloodfields. Erin agrees to negotiate with a Wistram faction for protection while refusing to share weapon designs from Earth. Red pollen then draws two adventurers into a Watcher Tree. The Horns rescue them and escape an insect swarm with Wistram's help, improving the team's reputation. Liscor reroutes the road farther away, but signs suggest that a greater danger has awakened within the Bloodfields.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Although one Wistram faction ends its pursuit, a hostile Aegiscaster defies the decision and challenges the Horns at the roadworks. Pisces insists that he should be judged by his choices rather than his class. He duels the Aegiscaster while Ceria faces an Oldblood Drake and Yvlon fights a Minotaur. Yvlon forces her opponent to yield, and Pisces begins wearing down the Aegiscaster's defenses.\n\nThe duel ends when an adult Creller and thousands of smaller creatures erupt from the Bloodfields. The Horns and other adventurers remain behind to delay them while workers flee toward Erin's door. Crellers pour through the doorway and infest the Wandering Inn. Relc, the Halfseekers, the Watch, and Antinium forces evacuate residents and counterattack, suffering deaths and serious injuries. Zevara arms Calruz and sends him into the building, where he draws the creatures away long enough for defenders to breach the inn. The building is devastated but cleared. The adult Creller remains outside with the Horns, and a relief force led by Zevara and Grimalkin enters the Bloodfields. At the same time, Toren leaves the dungeon and heads for Erin.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Horns and the remaining adventurers hold the Creller swarm while civilians escape. The adult severs Yvlon's right arm, and Ksmvr refuses to abandon her. When the inn door finally opens, many defenders die during the retreat. Pisces briefly carries the Wistram Aegiscaster away but chooses to return to his team. He and Ceria link their magic to rebuild a bone construct inside heavy ice. The combined behemoth pins the adult long enough for Yvlon to break its head armor and Ksmvr to drive her sword into its brain.\n\nThe adult Creller is confirmed dead, and Liscor begins hunting survivors and destroying eggs and remains. Yvlon's arm is reattached but remains weak. The guild promotes the Horns to Gold Rank, and the team directs its bounty to the families of those killed. The hostile Wistram group mourns its Drake member and ends the pursuit of Pisces, though its leader does not forgive him. Calruz remains a prisoner but accepts dangerous Watch labor as a chance at redemption. The recovering Horns plan to seek work north through Erin's door. When Erin enters the ruined inn alone, Toren is waiting inside.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Several distant conflicts remain in motion. A captured High Mage says the Blighted King's proposed ritual would kill one million unborn children and might open a path to another world. Flos receives refugees, veteran troops, and half-giant nomads while rebuilding his kingdom, and considers hiring a force against the mage academy holding a missing vassal. Two Antinium prognosticators from another Hive arrive in Liscor. Ryoka finds eight people from Earth living under Magnolia Reinhart's protection. When assassins attack the estate, she leads them away and sends them toward Erin's inn.\n\nAt the Wandering Inn, Toren confronts Erin over their broken bond and the deaths he caused. He badly injures her but stops short of killing her, then removes his own skull in apparent self-destruction. An unseen servant of a necromancer carries away his remains, and a spark in the skull leaves his survival unresolved. The inn collapses around Erin, but she lives. Grieving and recognizing too late that Toren had sought her care, she reaches level 40 as an innkeeper and gains a sanctuary garden and a new memory-linked ability. The Horns remain Gold-rank and intend to travel north, while Liscor continues recovering from the Creller disaster.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0DCCZ5MG2",
+            "type": "community"
+          }
+        ],
+        "work": "hells-wardens"
+      }
+    },
+    "heretics-of-dune": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Once more revived as a ghola grown by the Bene Tleilax, this incarnation of the ancient Atreides swordmaster is being raised and trained on a hidden world by the Bene Gesserit sisterhood. They guard him closely as an asset of enormous but uncertain value, a boy carrying the potential of a legendary warrior whose many past lives lie locked within him.",
+            "id": "duncan-idaho",
+            "name": "Duncan Idaho",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Odrade"
+            ],
+            "description": "A Reverend Mother of the Bene Gesserit and one of the sisterhood's most capable and unusually independent leaders, descended from the old Atreides line. Shrewd, willful, and willing to bend the order's rigid ways when survival demands it, she plays a central role in the sisterhood's dangerous maneuvering.",
+            "id": "darwi-odrade",
+            "name": "Darwi Odrade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A celebrated retired military commander, or Bashar, of the Bene Gesserit, renowned across the empire for tactical genius and unshakable loyalty. An old man carrying Atreides blood, he is called out of retirement to protect and train the sisterhood's precious Duncan Idaho ghola.",
+            "id": "miles-teg",
+            "name": "Miles Teg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Mother Superior who leads the Bene Gesserit, directing the whole order's perilous strategy against rising threats. Cool, calculating, and far-seeing, she is willing to spend lives, her own sisters' included, to secure the sisterhood's survival.",
+            "id": "taraza",
+            "name": "Taraza",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young girl on the desert planet now called Rakis who discovers that she can command the giant sandworms, walking unharmed among them. The ability makes her sacred to the planet's worm-worshipping priesthood and intensely coveted by every power that wants control of the spice.",
+            "id": "sheeana",
+            "name": "Sheeana",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bene Gesserit adept trained in the subtle arts of sexual and emotional imprinting, sent by the sisterhood to bind the Duncan Idaho ghola to their cause. Skilled and disciplined, she is charged with a delicate mission whose stakes she only partly understands.",
+            "id": "lucilla",
+            "name": "Lucilla",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Master of the Bene Tleilax, the secretive people who grow gholas and other living things in their axlotl tanks. Cunning and devout in his people's hidden faith, he pursues religious and political aims of his own while dealing warily with the Bene Gesserit.",
+            "id": "waff",
+            "name": "Waff",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A violent matriarchal order returning from the far reaches of the Scattering, where great numbers of humanity fled after the God Emperor's fall. They conquer world after world through overwhelming force and a coercive sexual mastery that enslaves men, and they threaten to sweep over the whole of the old empire.",
+            "id": "the-honored-matres",
+            "name": "The Honored Matres",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "heretics-of-dune"
+      },
+      "recaps": {
+        "ending": "The book ends with catastrophe and a narrow escape. The Honored Matres, a savage matriarchy returning from the Scattering, prove far more powerful and ruthless than the Bene Gesserit anticipated. After the sisterhood's schemes on the desert planet Rakis come to a head, the Honored Matres attack the planet and destroy it utterly, obliterating the sacred sandworms and the worm-god religion built around them. The aged Bashar Miles Teg, transformed by torture into something faster and more perceptive than an ordinary man, uses his new abilities to organize the defense and buy time, and he gives his life in the fighting so that the others can get away. The young sandworm-commander Sheeana escapes by riding the last worm out of the doomed desert. The Duncan Idaho ghola, having regained the memories of all his former lives, flees together with Murbella, an Honored Matre whose attempt to sexually enslave him instead left the two of them mutually bonded. The Reverend Mother Darwi Odrade emerges as a decisive leader for the sisterhood. Carrying a captured sandworm and the sandtrout that can seed new spice deserts, the Bene Gesserit retreat to their concealed world of Chapterhouse, intending to grow their own worms and preserve the spice cycle. They are left facing open, desperate war against an enemy that outmatches them, with survival, not victory, as the immediate hope.",
+        "in_short": "Fifteen centuries after the God Emperor's fall, the Bene Gesserit sisterhood steers galactic affairs while a menace gathers. On the desert planet Rakis, a young girl named Sheeana is discovered who can command the giant sandworms, making her both holy and coveted. Meanwhile the Bene Gesserit protect their latest ghola of Duncan Idaho, grown for them by the Tleilaxu, and recall the aged master strategist Miles Teg to guard and train him. The great threat is the Honored Matres, a brutal matriarchy fleeing back from the far Scattering, who conquer worlds through overwhelming violence and a coercive sexual bonding that enslaves men. As the sisterhood maneuvers to understand and survive them, Teg is captured and tortured, an ordeal that awakens in him startling superhuman speed and perception. The Duncan ghola recovers the memories of all his past lives, and a confrontation with an Honored Matre named Murbella bonds the two of them to each other rather than enslaving him. The Honored Matres, enraged and unstoppable, attack Rakis and annihilate it, wiping out the sandworms. In the destruction, Teg sacrifices himself to cover the escape of his companions. Sheeana rides the last surviving worm to safety, and the Bene Gesserit flee with a captured worm and its sandtrout, carrying the means to grow new spice-bearing worms on their hidden homeworld, Chapterhouse, as they brace for open war with the Honored Matres.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Dune series: the desert planet Arrakis, sole source of the spice that grants long life and makes space travel possible, shaped the fate of humanity for thousands of years. The noble Paul Atreides became the Fremen messiah Muad'Dib, seized the imperial throne, and unleashed a holy war before dying in the desert. His pre-born son, Leto II, saw that mankind would eventually destroy itself and set out to prevent it by taking the Golden Path. He fused his body with sandworm creatures and ruled as an immortal, worm-bodied God Emperor for some three and a half thousand years, holding humanity in a stifling, changeless peace. When he arranged his own death, he did so knowing the pent-up pressure of his tyranny would burst outward: after his fall, vast numbers of people fled into the unknown reaches of space in what became known as the Scattering. His death also destroyed most of the sandworms and threw the old empire into famine and collapse. Now, about fifteen centuries later, power is held by the Bene Gesserit, the ancient sisterhood of subtle, superhumanly disciplined women who breed bloodlines and manipulate politics from the shadows. The spice trade has revived, the worms have returned to the desert planet, now called Rakis, and the Bene Gesserit maintain their schemes with the help of the Bene Tleilax, who can grow living copies of the dead. But something dangerous is coming back out of the Scattering.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "heretics-of-dune"
+      }
+    }
+  }
+}

@@ -1,0 +1,1729 @@
+{
+  "entries": {
+    "rains-of-liscor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The proprietor of the Wandering Inn, where she shelters non-hostile goblins despite the anger this brings from Liscor. She treats the five Redfang warriors as guests rather than prisoners and refuses to abandon them when public grief turns against goblins.",
+            "id": "erin-solstice",
+            "name": "Erin Solstice",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Erin's partner in running the inn and Mrsha's mother figure. She keeps the household functioning while grief, hostile customers, portal fees, and the approaching flood season place the inn under pressure.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, mute Gnoll living at the inn under Erin and Lyonette's care. Zel Shivertail's death leaves her grief-stricken and unwilling to eat until the inn's community begins to recover.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran Liscor guardsman and retired army sergeant. Although mourning Zel, he separates Erin's Redfang guests from the Goblin Lord's forces and promises not to attack them.",
+            "id": "ralk",
+            "name": "Ralk",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch Captain, responsible for keeping order amid mourning, anti-goblin anger, and outside pressure over Erin's magical door. She works through legal and political channels to protect the city.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Walllord Ilvriss"
+            ],
+            "description": "A Wall Lord of Salazsar grieving Zel Shivertail and determined to avenge him. His rank gives Erin's group protection during a portal dispute, though it cannot prevent every consequence.",
+            "id": "ilvriss",
+            "name": "Ilvriss",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Tidebreaker"
+            ],
+            "description": "A celebrated Drake general and hero of both Antinium Wars whose death at the Goblin Lord's hands casts Liscor and Drake society into mourning. He was Selys's uncle.",
+            "id": "zel-shivertail",
+            "name": "Zel Shivertail",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zel Shivertail's grieving niece and a citizen of Liscor. She helps Erin understand local conditions and remains closely connected to the Adventurers' Guild.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Horns of Hammerad's necromancer and one of Erin's allies. His command of undead makes him controversial, but also gives the defenders of Liscor capabilities few others possess.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-rank adventurer and member of the Horns of Hammerad.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-rank adventurer and member of the Horns of Hammerad.",
+            "id": "yvlon",
+            "name": "Yvlon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A three-armed Antinium adventurer who was cast out from his Hive and joined the Horns of Hammerad.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gold-rank adventurer and a Self who works with the Halfseekers. Her current borrowed body is damaged, but she remains active with her team and supports Erin during the portal confrontation.",
+            "id": "jelaqua",
+            "name": "Jelaqua",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium worker who leads the painted soldiers. The markings of his unit distinguish its members, and he treats them as people with identities rather than interchangeable troops.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Watch officer and strategist involved in Liscor's defense. He coordinates with the city's other leaders as the dungeon and the seasonal flooding place new demands on the city.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium military representative who works alongside Liscor's Watch despite long-standing distrust between their factions. He can authorize Antinium forces and delegates urgent work within the Hive.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The field leader among the five Redfang Hobgoblins sheltered by Erin. He speaks for the group when she offers them rooms, employment, and the freedom to leave.",
+            "id": "head-scratcher",
+            "name": "Head Scratcher",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redfang Hobgoblin archer living under Erin's protection. He becomes one of the inn's paid guards as the five warriors begin pursuing a place in Liscor beyond mere concealment.",
+            "id": "bad-arrow",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the five Redfang Hobgoblins given sanctuary at the Wandering Inn. He joins the others as a visible security guard and prospective adventurer.",
+            "id": "rabbit-eater",
+            "name": "Rabbit Eater",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet member of the five Redfang Hobgoblins sheltered at the inn. He works with the group as paid security while their attempt to enter Liscor's adventuring system remains unsettled.",
+            "id": "numb-tongue",
+            "name": "Numb Tongue",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sword-carrying member of the five Redfang Hobgoblins protected by Erin. He joins the group's work as inn security and its application to become a Bronze-rank adventuring team.",
+            "id": "short-hilt",
+            "name": "Short Hilt",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The prominent lead actor of the Players of Selim. He accepts regular performances at the Wandering Inn as its new theater becomes a permanent venue.",
+            "id": "wesle",
+            "name": "Wesle",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Goblin Lord"
+            ],
+            "description": "The commander blamed for Zel Shivertail's death. His recovering army continues deeper into human territory, making him the focus of growing military and political retaliation.",
+            "id": "rhys",
+            "name": "Rhys",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The blind Emperor of the Unseen Empire, centered on River Farm. His domain awareness and administrative skills let him direct settlement growth and local defenses across the territory he has claimed.",
+            "id": "laken-godart",
+            "name": "Laken Godart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Laken's half-troll paladin, partner, and exceptionally strong defender. She stands beside him as River Farm expands and its growing political importance attracts outside attention.",
+            "id": "durene",
+            "name": "Durene",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful northern noble who organizes resistance to the Goblin Lord and takes an interest in Laken's emerging empire. Her influence reaches armies, cities, and the political future of River Farm.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "A restored king rebuilding his realm after a long withdrawal. He seeks replacement arms, consolidates his followers, and remains a figure whose return can alter conflicts far beyond his kingdom.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A leveling skeleton confined beneath Liscor because the dungeon's mana sustains him. Two personas share his body, with a mask bringing forward a sword-dancing presentation that strangers may mistake for a living adventurer.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Flooded Waters chieftain, leading a mixed goblin tribe through hostile territory. She governs independent of larger goblin powers and imposes rules on the different groups gathered under her command.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rags's trusted second-in-command and the former chieftain of the Goldstone Tribe. His experience and standing among the tribe's factions make him a central fighter and adviser.",
+            "id": "pyrite",
+            "name": "Pyrite",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archer at the Wandering Inn who kills winged predators drawn toward Mrsha.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A painted Antinium soldier who rapidly recognizes Fourth Company's armed approach as an assault and helps organize the wall defense before Liscor's leaders can intervene.",
+            "id": "yellow-splatters",
+            "name": "Yellow Splatters",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A painted Antinium soldier who coordinates with Yellow Splatters when Fourth Company approaches the walls. Their quick response shows that Pawn's soldiers can assess threats independently.",
+            "id": "purple-smile",
+            "name": "Purple Smile",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Wing Commander of Liscor's returning Fourth Company. Seeing Antinium on the walls, she assumes the city has fallen and launches an assault before Zevara and Olesm stop the confrontation.",
+            "id": "embrya-grastung",
+            "name": "Embrya Grastung",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B09XYL9MQJ",
+            "type": "community"
+          }
+        ],
+        "work": "rains-of-liscor"
+      },
+      "recaps": {
+        "ending": "Liscor survives the moth breach, honors the painted Antinium who defended it, and avoids a clash when Fourth Company mistakes those defenders for occupiers. Erin's damaged inn is now a theater, trading point, and refuge. The five Redfangs survive their unauthorized dungeon expedition, recover three artifacts, and receive approval in principle to register as Bronze-rank adventurers under Selys's responsibility. The gold-rank dungeon remains active with moths, organized hunters, traps, and a head-collecting creature. Selys inherits Zel's lethal Heartflame Breastplate, activates its wearer-safe fire, refuses to surrender it to a city, and plans to lease it for dungeon work while an unknown patron continues seeking it. Laken leaves his noble gathering recognized as a possible ally, though its poisoner is unknown. Flos announces his return and his enemies. Rags defeats a human force to save another goblin tribe, while Rhys and the wider campaigns against goblins remain unresolved.",
+        "in_short": "After Zel Shivertail's death, Erin keeps five Redfang Hobgoblins at the Wandering Inn despite public anger and turns the inn into a theater and commercial refuge. A dungeon expedition triggers a face-eater moth assault, but Liscor survives through the combined efforts of its Watch, adventurers, Antinium, and Erin's allies. The painted Antinium earn public honor, while the returned army remains distrustful. The Redfangs later enter the dungeon, escape with three artifacts, and gain recognition as prospective adventurers. Selys inherits Zel's Heartflame Breastplate, survives an abduction attempt, activates the armor, and chooses to keep and lease it rather than yield it to a state. Elsewhere, Laken passes Magnolia Reinhart's dangerous political test, Flos publicly resumes his challenge to world powers, and Rags leads Flooded Waters to rescue another goblin tribe. The dungeon, Rhys, the campaign against goblins, and the struggle over Zel's armor all remain active threats.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin established the Wandering Inn outside Liscor and made it a meeting place for people who would rarely trust one another. Her household includes Lyonette and the orphaned Gnoll Mrsha, while her allies span adventurers, Drakes, Gnolls, Antinium, and goblins. The Horns of Hammerad explore the dangerous dungeon beneath Liscor, and the city's uneasy coexistence with the nearby Antinium Hive remains politically fragile. Erin has also protected five Redfang Hobgoblins, placing her at odds with widespread fear of their kind. Elsewhere in Izril, Laken Godart has founded the Unseen Empire around River Farm, Magnolia Reinhart maneuvers among northern powers, and Rags leads the independent Flooded Waters Tribe. Flos, the King of Destruction, has returned to rule in Chandrar. The recent struggle against the Goblin Lord ended with the death of the Drake general Zel Shivertail, leaving Liscor and much of Drake society in grief and sharpening the threat of a broader war against goblins.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Toren survives secretly inside Liscor's dungeon, sustained by its mana and divided between two presentations that share one skeletal body. While guiding a silver-rank party under a living disguise, Toren destroys a cluster of unknown eggs. The disturbed creatures press toward the surface. Aboveground, Mrsha conceals her own rapid development. She learns simple plant magic, befriends wild creatures, and helps an alliance of animals defeat insectoid predators near the inn. She returns with one of their eggs, alerting the adults to a nearby danger, and secretly consolidates her classes into Druid. Erin continues reshaping the Wandering Inn into a public institution. Its magical expansion provides a large theater, its goblin guards have paid work, and an application seeks to register the five Redfangs as Bronze-rank adventurers. These changes offer the inn new income and legitimacy, but Liscor's hostility toward goblins and the dangers emerging from the dungeon remain unresolved.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Liscor's dungeon erupts with face-eater moths, including enormous mother moths, and both the city and the Wandering Inn come under attack. Erin refuses to evacuate. The Horns, Halfseekers, Silver Swords, Redfangs, Watch, civilians, and Antinium fight across the inn, streets, walls, and Hive. Erin forces Pallas to witness the emergency through her magical door, though its soldiers arrive only after long debate. When more giant moths emerge and defeat appears imminent, Pisces organizes a large weather spell using the inn's mana and allied casters. Torrential rain grounds the swarm and drives the survivors back toward the dungeon. Pallas troops kill several retreating giants, while two escape below. The city survives, but the inn and Hive are damaged, casualties require attention, and the dungeon is formally designated gold-rank. In Chandrar, Flos seeks new weapons, aids a blacksmith threatened with enslavement, and publicly announces his return, a conditional promise of peace, and his chosen enemies.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Laken Godart develops River Farm into the administrative center of the Unseen Empire while the Goblin Lord's army advances nearby. Magnolia Reinhart then imposes a gathering of nobles intended to test whether Laken can govern as an emperor. He abandons an expensive attempt to imitate aristocratic custom and instead holds an outdoor feast shared by nobles and villagers, placing Durene openly beside him. The Fair Folk attend, bringing both prestige and danger. Several guests are injured after being lured from safety, and a poisoned cup is discovered, but Laken prevents unsupported accusations from escalating into further violence. Magnolia's representatives conclude that he has passed the test and may be an ally, though the poisoner remains unknown. Back in Liscor, recovery from the moth assault includes honoring dead painted soldiers, preventing larvae from spreading, and repairing the inn. Olesm reaches level 30 as a Strategist. A returning company of Liscor's army then approaches the flooded city without knowing how heavily Antinium contributed to its survival.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fourth Company sees painted Antinium on Liscor's walls and mistakes the defenders for an occupying force. Yellow Splatters and Purple Smile prepare to resist the company's light-bridge assault, but Zevara and Olesm stop both sides before fighting begins. Wing Commander Embrya Grastung accepts Zevara's authority within the city after learning that the Antinium helped repel the moths. A public parade then honors the true defenders. Citizens applaud Pawn's soldiers as recognizable individuals, while Fourth Company's attempt to present itself as Liscor's new protection receives a cool response. Ralk reveals that Embrya is his daughter. She asks him to return to military service, but he chooses his life in the Watch. She also warns Erin's Redfang guests that Drake cities are expanding bounties and campaigns against goblin tribes in Zel's name. The city has avoided another war with the Antinium, but the army's prejudice remains, and the goblins' refuge at the inn is now threatened by an organized regional hunt.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin's theatrical version of Liscor's defense makes the inn's new stage a success, but it also exposes the guilt of the silver-rank party that entered the dungeon before the siege. The party admits that it destroyed a chamber of moth eggs and concealed its role in provoking the attack. It also reports organized furred hunters, a trapped treasure chamber, and other signs that missing adventurers may have been deliberately hunted. The five Redfangs secretly descend to claim the chamber's artifacts. They evade ambushers, traps, and cave goblins, then encounter a huge headless collector that paralyzes them and uses severed heads. After the chamber's defenses injure the creature, the goblins take three artifacts and flee. Bad Arrow is poisoned and nearly drowns, but Head Scratcher refuses to abandon him. Erin joins the rescue at the flooded entrance, and all five return alive. Their success gives Erin grounds to call them adventurers, although the escaped collector and the organized dungeon hunters remain active threats.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Redfang survivors give Liscor a fuller account of the dungeon, including a paralyzing guardian whose humanlike face resembles a missing adventurer. Erin seeks official recognition for the five, but the Guild requires someone to guarantee their conduct. Meanwhile, Magnolia Reinhart returns Zel Shivertail's preserved body to Liscor. His will leaves Selys his equipment, including the long-lost Heartflame Breastplate. The artifact kills the healer who removed it, forcing Liscor to cremate Zel while holding a public military funeral. Selys inherits the armor but does not join the public oath of vengeance. She also supervises Pisces's controlled undead sewer workers, and their practical cooperation develops into trust. Research shows the breastplate belongs to a larger set and may create a flame ward. In Pallas, hired captors abduct Selys and try to force a transfer. Pisces follows and frees her. The kidnappers are arrested, but their patron remains unidentified. Selys and Pisces test possible commands without activating the armor, and she authorizes him to continue the research while she remains under guard.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B09XYL9MQJ",
+            "type": "community"
+          }
+        ],
+        "work": "rains-of-liscor"
+      }
+    },
+    "raze": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Sergeant Nelson",
+              "Joey"
+            ],
+            "description": "A prominent Wanderers leader whose healing, ritual work, and service during the recent war make him central to the guild's survival and growth.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ruler Joe restored to life during the war. He publicly rewards Joe for saving him and advances Joe along the path toward nobility.",
+            "id": "king-henry",
+            "name": "King Henry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The monarch who questions how Joe managed to restore King Henry to life.",
+            "id": "queen",
+            "name": "Queen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grand Zoo ringleader"
+            ],
+            "description": "An operator within the Grand Zoo who unexpectedly improves Joe's standing with the organization. His reason for doing so is not yet clear.",
+            "id": "zoo-robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Wanderers commander overseeing postwar reconstruction. He orders inquiries into abuses of authority while coordinating fortification and cooperation across the damaged settlement.",
+            "id": "aten",
+            "name": "Aten",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's divine patron, placed under review after the extraordinary effort used to resurrect King Henry. The patron's immense energy debt becomes Joe's responsibility.",
+            "id": "joes-deity",
+            "name": "Joe's deity",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Wanderers vice-guild leader and a retired lieutenant colonel. He approaches Joe with the immediate practical problem of housing people who can no longer leave the world.",
+            "id": "mike",
+            "name": "Mike",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wanderers combatant returning from the Wolfman front with paired living weapons in place of ordinary hands. He travels with Jess and reunites with Joe's group.",
+            "id": "jaxon",
+            "name": "Jaxon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jaxon's traveling companion, seeking work in strategy and logistics. She joins the party's next expedition as a prospective collaborator who has not yet been fully tested.",
+            "id": "jess",
+            "name": "Jess",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wanderers combatant who returns from the Wolfman front after helping prevent violence against Wolfman civilians.",
+            "id": "alexis",
+            "name": "Alexis",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A musician and combatant with the Wanderers who returns alongside Alexis and Poppy after their work on the Wolfman front.",
+            "id": "bard",
+            "name": "Bard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wanderers duelist who returns from the Wolfman front with Bard and Alexis, rejoining Joe's active party.",
+            "id": "poppy",
+            "name": "Poppy",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A masked agent of an organization that controls trade in rare creatures. He attempts to execute Joe over an earlier sale, then demands the capture of a coffee elemental instead.",
+            "id": "masked-jester-assassin",
+            "name": "Masked jester assassin",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of a newly formed farming guild whose poisoned caravan Joe rescues. She agrees to try Joe's faith and introduce it to her guild.",
+            "id": "farming-guild-captain",
+            "name": "Farming-guild captain",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The elderly shaman who leads a concealed Wolfman refuge and is an established ally of Jaxon. She offers access to the refuge's growth houses if Joe's party clears a nearby temple.",
+            "id": "wolfman-elder",
+            "name": "Wolfman elder",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the human cult occupying a forest cathedral. The building's compulsive influence and magical amplification strengthen his command over its followers.",
+            "id": "cult-hierophant",
+            "name": "Cult hierophant",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An enchanter in training who works with Joe while he develops a core-powered mana battery.",
+            "id": "tara",
+            "name": "Tara",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former warrior-mage with programming knowledge who helps Joe reason through the structure of a difficult ritual.",
+            "id": "former-warrior-mage",
+            "name": "Former warrior-mage",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Joe's first Ritualist coven members, introduced as a would-be villain whose abilities have the unintended effect of helping people.",
+            "id": "kirby",
+            "name": "Kirby",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the initial members of Joe's Ritualist coven, joining the group's work on rechargeable mana storage.",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Robert the ranger"
+            ],
+            "description": "A ranger in Joe's first Ritualist coven. His damaged necromancer class allows him to summon a single skeleton.",
+            "id": "ranger-robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A thief who joins Joe's first Ritualist coven while seeking a future change to an alchemist class.",
+            "id": "thief-coven-member",
+            "name": "Thief coven member",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fragment of the Burning Mind released from the captured cathedral's altar. Its attacks can cause permanent, data-destroying death.",
+            "id": "game-over",
+            "name": "Game Over",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Wanderers head herbalist and a druid entrusted with operating the newly completed greenhouse and establishing its first crops.",
+            "id": "finn",
+            "name": "Finn",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A royal healer whom Joe previously saved. He warns that the Wanderers' copied wall exposes the guild to a treason charge and imminent seizure by the Royal Guard.",
+            "id": "prince",
+            "name": "Prince",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The queen who orders Joe to investigate the Grand Zoo in exchange for resolving the accusation surrounding the Wanderers' copied defensive wall.",
+            "id": "queen-marie",
+            "name": "Queen Marie",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemical supplier who provides Joe with rare, hazardous ritual reagents while facing pressure on his own supply network.",
+            "id": "jake",
+            "name": "Jake",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:1977374573",
+            "type": "community"
+          }
+        ],
+        "work": "raze"
+      },
+      "recaps": {
+        "ending": "The Wanderers finish with a rare greenhouse producing food under Finn's care, and their fortified settlement has become a recognized town. Joe remains in line for future guild leadership. The copied-wall conspiracy ends with the responsible Architects Guild leaders arrested, while Joe accepts a future commission to build a royal arena. He controls the captured forest cathedral and has Game Over contained beneath Pathfinder's Hall, where the creature's drained power supports his deity, but neither that threat nor the divine debt is resolved. Joe destroys the Grand Zoo's underground transport, trapping its arena, black market, and associated assassins. The crown clears him, but the Zoo now treats him as a blood-feud enemy. Aten, Mike, Jaxon, Jess, Joe's returning party, and his Ritualist coven remain active. Tara's secret reporting, the maintenance of Game Over's prison, further forest captures, the Zoo conflict, and the greenhouse's long-term risks remain open.",
+        "in_short": "After people lose the ability to log out, Joe helps the Wanderers turn a damaged settlement into a sustainable town. His search for a durable food source leads through a hidden Wolfman refuge to a cult-held cathedral, which he captures for his indebted deity. The victory releases Game Over, a permanently lethal Burning Mind fragment that Joe contains and drains rather than destroys. He develops mana batteries, forms a Ritualist coven, and builds a rare greenhouse that begins producing food. The Architects Guild frames the Wanderers over a copied defensive wall, but its leaders expose their own attack and are arrested. Queen Marie then sends Joe against the Grand Zoo. Joe sabotages its underground Bloodsport Arena and destroys its transport system, trapping the black market below. The crown clears him, while the Zoo declares a blood feud. The town and greenhouse survive, but Game Over, Joe's divine debt, Tara's covert reporting, and the Zoo remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe became a prominent leader among the Wanderers through his ritual construction, healing, and service during the recent war. His allies rely on him both as a combatant and as a builder capable of creating vital infrastructure. His wartime actions included saving King Henry, and the consequences of that rescue remain important as the Wanderers begin rebuilding.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "King Henry honors Joe for his wartime service, but the queen questions how Joe managed the king's resurrection. At his patron's altar, Joe learns that the resurrection placed the deity under review and created a debt of thirteen million units of divine energy. Joe keeps his allegiance and accepts responsibility for repayment, although he loses the divine increase to his mana pool. At the same time, everyone discovers that logging out is no longer possible. The Wanderers must therefore rebuild their ruined settlement as a permanent home. Joe and Mike use exacting, mana-heavy rituals to create barracks, and Joe later learns to make and reuse magical building plans. Jaxon returns with living hand-weapons and introduces Jess, who quickly proves useful in administration and logistics. After Joe's party clears a salt dungeon, the guild gains a productive mine. Aten then tasks the group with establishing lasting food production for ten thousand people. Joe and Jess settle on a greenhouse project, but the Architects Guild will neither sell its proprietary plans nor provide materials quickly. Joe begins developing his own blueprint methods and identifies a former elven region as the best lead.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While traveling toward the greenhouse lead, Joe's party destroys plague-bearing lions before they can infect a refugee camp, then defeats a giant scorpion. Joe's attempt to advance his mana control leaves his mana dispersed through his body, but also makes one defense faster to cast. A masked assassin corners the party over Joe's earlier rare-creature dealings, and Joe avoids execution by accepting an obligation to capture a coffee elemental. He later heals a poisoned farming caravan and converts its shrine, gaining followers for his indebted patron. The group enters a forest far above its level in search of food-production knowledge. Its first attempt ends when a massive treant kills Joe. After respawning, he develops a spell and ritual designed to attack rooted plants. On the return expedition, a Rose Beast kills Alexis, whom Joe immediately resurrects. A Wolfman warrior recognizes Jaxon and guides the party to a concealed refugee settlement. Its elder offers access to the forest's advanced growth houses on one condition: Joe's party must clear a nearby human cult while preserving the refuge's secrecy.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Wolfman refuge reveals a vast greenhouse that is larger inside than outside. Its blueprint will be Joe's reward if his underleveled party defeats the cult occupying a nearby cathedral. Observation shows that the cathedral's humming compels people and strengthens its hierophant, so Joe plans to capture the building for his own deity and strip away those advantages. Because the conversion requires far more mana than his party can provide, Joe revises a dangerous enchantment into a rechargeable mana battery. He also accepts a long-term construction agreement with the Wanderers and forms a small Ritualist coven from volunteers willing to help power building rituals. The coven successfully tests a permanent battery system in the cleared salt mine. Returning to the forest with batteries and a diversion plan, Joe's group draws the cult's defenders outside and enters the cathedral. Joe completes the conversion while his allies hold off returning cultists. The captured site transfers divine energy to his patron, but the hierophant reveals that its altar has been binding a fragment of the Burning Mind. The restraint dissolves, releasing Game Over, a creature whose victims can suffer permanent death.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Game Over overwhelms the cathedral's divine protectors and rapidly recovers from Joe's attacks. The captured hierophant is consumed, completing the cult's defeat, but Joe can only pull the creature underground and design a prison around it. He later installs a stronger containment ritual beneath Pathfinder's Hall, draining energy from Game Over into his deity while leaving the creature alive and dangerous. The Wolfman elder awards the promised greenhouse plan, and Joe replaces its damaged copy by scanning the original. Its rare design demands costly materials and careful substitutions. Tara helps find a workable frame and recognizes the wider value of Joe's batteries, while secretly passing information about him to an unknown party. Elsewhere, Aten and Mike ask Joe to copy a defensive-wall blueprint supplied by an apparent informant. The source is actually participating in an Architects Guild sting intended to produce a treason charge. Joe continues gathering greenhouse components, including enchanted glass and a rare core, and settles his obligation to the rare-creature organization, receiving a coffee elemental. He also witnesses the Grand Zoo's illicit underground Bloodsport Arena and its concealed transport system.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe, Aten, and the coven complete the rare ever-growth greenhouse. It can produce large amounts of food and herbs, but neglect could turn it into a dungeon and its growth will eventually drain the surrounding land. A ballista attack kills Aten during the ritual, and Joe resurrects him. Expecting further attacks, the Wanderers rapidly erect the copied defensive wall and reach the status of a recognized town. Finn takes charge of the greenhouse and begins establishing crops. A prince then warns that the wall's protected design exposes the guild to a treason accusation. Joe dismantles it before the Royal Guard arrives, even after an inhaled agent incapacitates the rest of the guild. The Architects Guild leaders accompanying the guard reveal knowledge that ties them to the attack and false charge, leading to their arrest. Queen Marie orders Joe to investigate the Grand Zoo's black market and assassins in exchange for resolving the remaining accusation. Joe prepares an escape ritual and special reagents for the mission. A separate water ritual unexpectedly uncovers Jaxon alive in a swamp, after which Joe heals him and returns him to the guild.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Grand Zoo, Joe secretly establishes ritual links to the Bloodsport Arena despite tighter surveillance and the confiscation of his storage ring. Robert, the arena's ringleader, recognizes that Joe's purchases could support powerful ritual work and places him under close observation. Joe consumes a legendary intelligence injection, then uses its debilitating effects as cover while maintaining a magical connection to the arena. He triggers his scanning ability and a concealing fog, locates the underground transport enchantment through magical synesthesia, and briefly takes control of the route between the Zoo and the city's main square. Rather than preserve that access, he destroys the enchantment with acid, trapping the arena, black market, nobles, and assassins underground. The crown confirms that he found and destroyed the unique building, clearing his record and counting the act toward his path to nobility, though he failed the separate objective of securing independent two-way access. King Henry and Queen Marie demand accountability from nobles linked to the black market, and the queen voids coercive work obligations. Joe agrees to build a legitimate arena if the crown supplies the materials. The Grand Zoo now regards him as a blood-feud enemy.",
+            "through": {
+              "chapter": 50
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:1977374573",
+            "type": "community"
+          }
+        ],
+        "work": "raze"
+      }
+    },
+    "reaper-man": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Bill Door"
+            ],
+            "description": "The anthropomorphic personification of death, forced into retirement by the Auditors of Reality when they decide that, having acquired a personality, he has become an individual, which the rules forbid. Given a life-timer counting down his own remaining days, he is made mortal and must, for the first time, face an ending of his own. He later takes the name Bill Door and looks for a way to fill the time he has been given.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Renata Flitworth"
+            ],
+            "description": "Renata Flitworth, an elderly, sharp-tongued spinster who farms alone in a country district and takes on a mysterious tall stranger, Bill Door, as a hired hand. Long ago she lost the man she was to marry, and she carries that grief privately. She comes to value her strange, courteous worker without knowing what he really is.",
+            "id": "miss-flitworth",
+            "name": "Miss Flitworth",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The oldest wizard at Unseen University, ancient and nearly worn out, who has been looking forward to a comfortable death and reincarnation. When his time comes, however, there is no Death to collect him, so he does not move on; instead he rises again as a walking dead man, more vigorous and clear-headed than he has been in years, and must work out how to exist as one of the undead.",
+            "id": "windle-poons",
+            "name": "Windle Poons",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Archchancellor of Unseen University, a large, loud, forthright wizard with a fondness for the outdoors and little patience for subtlety. He leads the University's baffled response as the strange effects of surplus life-force spread through the city.",
+            "id": "mustrum-ridcully",
+            "name": "Mustrum Ridcully",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A zombie and tireless campaigner for the rights of the undead, who runs a support group, the Fresh Start Club, for the city's newly risen dead. He welcomes Windle Poons and rallies his fellow undead when the crisis begins to threaten them.",
+            "id": "reg-shoe",
+            "name": "Reg Shoe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Faceless powers who oversee the orderly running of the universe and detest life for its messiness and unpredictability. Regarding the personification of death's newfound individuality as a fault to be corrected, they strip him of his office and set in motion a replacement.",
+            "id": "the-auditors",
+            "name": "The Auditors of Reality",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The replacement created to take over the collecting of human souls after the old Death is retired. Unlike his predecessor it feels no sympathy for the living, and it comes crowned, embodying death as a cold ruler rather than a servant, a harvester without mercy.",
+            "id": "new-death",
+            "name": "The New Death",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bogeyman who becomes attached to Windle Poons and the Fresh Start Club, far more comfortable behind a door than out in the open. Anxious and unusual among the undead, he lends his peculiar talents to the group's efforts.",
+            "id": "schleppel",
+            "name": "Schleppel",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "reaper-man"
+      },
+      "recaps": {
+        "ending": "Reaper Man ends with the personification of death restored to his office, but changed. In Ankh-Morpork, Windle Poons and the undead of Reg Shoe's Fresh Start Club destroy the parasitic creature that had grown out of the world's surplus life-force in the shape of a devouring shopping mall, releasing the pent-up vitality. In the countryside, the old Death, living as the farmhand Bill Door, confronts the cold, crowned New Death that the Auditors had created to replace him, and defeats it with his scythe, reclaiming his role. Before that, Miss Flitworth's own life has run out; Death uses the last of his borrowed time on her behalf and then takes her gently, giving her a final gift by letting her attend, as her young self, the harvest dance she never had with the man she lost long ago. He also returns to collect Windle Poons at last, allowing the exhausted old wizard the death and rest he had been denied. Reinstated as the one Death of the Disc, he carries back into his endless duty a compassion for the living that his brush with mortality gave him.",
+        "in_short": "When the Auditors of Reality decide that the personification of death has grown a personality, they retire him and give him a life-timer of his own, making him mortal. Taking the name Bill Door, he hires on as a farmhand to the elderly Miss Flitworth and learns what it is to live toward an ending. With no one collecting souls, life-force builds up in the world: the ancient wizard Windle Poons dies but rises again as one of the undead, joining Reg Shoe's Fresh Start Club, while the surplus vitality in Ankh-Morpork coalesces into a predatory creature shaped like a shopping mall that preys on the living. Windle and the undead destroy it. In the country, a merciless New Death is created to replace the old one; when Miss Flitworth's time comes, Bill Door confronts and defeats the New Death, reclaims his office, and takes Miss Flitworth gently, granting her a final night at the dance she missed in youth. Restored to duty and changed by the experience, Death resumes his work with a new measure of compassion, and Windle Poons is finally allowed to rest.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Auditors of Reality, who prize order and resent the untidiness of living things, decide that the personification of death has developed too much of a personality and retire him from his office, handing him a life-timer that counts down his own remaining days. Made mortal, he takes the name Bill Door and hires himself out as a farmhand to Miss Flitworth, an elderly countrywoman working her land alone, and begins learning what it is to live with an ending in sight. Meanwhile, with no one to collect the souls of the dying, life-force starts to build up in the world with nowhere to go, and its effects begin to appear.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The surplus of unclaimed life-force produces strange results in Ankh-Morpork. Windle Poons, the oldest and frailest wizard at Unseen University, dies on schedule but, with no Death to gather him, fails to move on and instead rises as an unusually lively dead man. Bewildered by his new state, he finds his way to the Fresh Start Club, a support group for the undead run by the zombie campaigner Reg Shoe, and meets the city's other risen dead. The wizards, under Archchancellor Ridcully, struggle to understand the mounting disturbances, while in the countryside Bill Door works the harvest alongside Miss Flitworth and grows quietly attached to her and to the rhythms of a mortal life.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The excess vitality in the city gathers into something with a purpose of its own. Small mysterious objects appear and hatch into wire baskets that multiply and swarm, the seeds of a vast parasitic creature that takes the shape of a sprawling shopping mall, drawing people in to feed on their life-force. Windle Poons and the members of the Fresh Start Club recognize the threat and set out to fight it. In the country, Bill Door's own time continues to run down, and a new, pitiless replacement for the old Death begins to take shape, a crowned figure that regards the living without any of his predecessor's reluctant compassion.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two threads come to a head. In the city, Windle Poons and the undead of the Fresh Start Club destroy the predatory mall-creature and disperse the pent-up life-force. In the country, the old Death, now Bill Door, faces the New Death that was made to replace him. When Miss Flitworth's own life-timer runs out, and after spending his borrowed time to save her, he confronts and defeats the crowned New Death with his scythe and reclaims his office, now tempered by what he has learned. He grants Miss Flitworth a last gift, taking her gently and letting her go to the harvest dance she never had as a young woman, and he collects Windle Poons at last, letting the weary wizard finally move on. Restored to his duty, Death returns to it carrying a measure of mercy he did not have before.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "reaper-man"
+      }
+    },
+    "rebecca": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The unnamed narrator of the novel, a shy, inexperienced young woman of modest means. When the story opens she is working as a paid companion to a wealthy older woman on the French Riviera. Self-conscious, easily intimidated, and prone to anxious imaginings, she falls quickly in love with a reserved older widower and marries him, only to feel painfully out of place as the mistress of his grand estate. Her insecurity and her sense of being measured against her husband's late first wife shape the whole story, which she tells looking back from a later, quieter life.",
+            "id": "the-narrator",
+            "name": "The second Mrs. de Winter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Maximilian de Winter"
+            ],
+            "description": "A wealthy, reserved English gentleman, owner of the celebrated estate Manderley, and a widower when the narrator meets him abroad. Some years older than she, he is courteous but moody, given to sudden silences and dark turns of temper. He proposes to her abruptly and brings her home as his second wife. Behind his composed manner lies a deep unease connected to the death of his first wife, and his changeable moods keep the narrator uncertain of his feelings.",
+            "id": "maxim-de-winter",
+            "name": "Maxim de Winter",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vulgar, snobbish American woman staying at a Monte Carlo hotel, who employs the narrator as her companion at the start of the story. Nosy, name-dropping, and self-important, she pursues acquaintance with anyone of standing. Her plan to leave for New York forces the narrator's hasty decision to marry, after which she passes out of the story.",
+            "id": "mrs-van-hopper",
+            "name": "Mrs. Van Hopper",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The cold, formidable housekeeper of Manderley, who had served and adored the first Mrs. de Winter and preserves her rooms and memory like a shrine. Gaunt, quiet, and unsettling, she treats the new bride with barely veiled contempt and works to make her feel an inadequate intruder. Utterly devoted to her dead former mistress, she dominates the household and looms over the narrator as a constant, menacing presence.",
+            "id": "mrs-danvers",
+            "name": "Mrs. Danvers",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Maxim de Winter's first wife, dead about a year before the narrator arrives, drowned in a boating accident off the coast near Manderley. Though she never appears, her presence saturates the house: she was, by reputation, beautiful, brilliant, charming, and admired by everyone, an accomplished hostess who ran Manderley with effortless flair. Her taste survives in every room and her monogram on every object, and the narrator, feeling she can never match her, becomes obsessed with the shadow of the woman she has replaced.",
+            "id": "rebecca",
+            "name": "Rebecca de Winter",
+            "reveal": {
+              "chapter": 7
+            }
+          },
+          {
+            "description": "The elderly butler at Manderley, a dignified, long-serving member of the household staff. Correct and discreet, he has been at the estate for many years and treats the new mistress kindly within the bounds of formality, a steadying contrast to the hostile housekeeper.",
+            "id": "frith",
+            "name": "Frith",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Maxim's blunt, good-natured older sister, who visits Manderley with her husband. Frank and unpretentious, she means well and offers the narrator plain, sometimes tactless advice. Her open, county manner and evident fondness for her brother make her one of the few relaxed presences in the household.",
+            "id": "beatrice",
+            "name": "Beatrice",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A simple-minded local man who wanders the beach and coves below Manderley. Frightened and evasive, he speaks in half-hints about the sea and the past, and the narrator senses he knows more about the estate's history than he can plainly say.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The agent who manages the Manderley estate and Maxim's loyal, steady friend. Reserved and conscientious, he is kind to the anxious narrator and careful in what he says about the past. His discretion and evident concern for Maxim mark him as a dependable ally amid the household's tensions.",
+            "id": "frank-crawley",
+            "name": "Frank Crawley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A smooth, disreputable man who turns up at Manderley when Maxim is away, having a familiar, secretive connection to the first Mrs. de Winter as her cousin. Charming in a cheap, insinuating way and clearly unwelcome to those who know him, he asks the narrator to keep his visit quiet, hinting at a past intimacy with the dead woman.",
+            "id": "jack-favell",
+            "name": "Jack Favell",
+            "reveal": {
+              "chapter": 15
+            }
+          },
+          {
+            "description": "The local magistrate and chief constable, a fair, level-headed county gentleman drawn into the reopened questions surrounding the first Mrs. de Winter's death. Reasonable and observant, he oversees the official proceedings and weighs the competing claims and accusations that arise as the truth is pursued.",
+            "id": "colonel-julyan",
+            "name": "Colonel Julyan",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rebecca"
+      },
+      "recaps": {
+        "ending": "Maxim escapes prosecution. The discovery that Rebecca had been secretly told she was dying of cancer supplies a motive for suicide, and the inquest's verdict, together with the magistrate Colonel Julyan's tacit acceptance, closes the case despite Jack Favell's accusation of murder. Maxim and the narrator, now bound together by the shared secret that he killed Rebecca, feel their marriage strengthened rather than broken by the ordeal. But their relief is undercut on the drive back to Manderley overnight, when they see the sky glowing red and realize the great house is ablaze. It is strongly implied that Mrs. Danvers, having learned the outcome and unwilling to let the second wife possess Manderley, set the fire before vanishing. Manderley, the estate that dominated the whole novel and the narrator's imagination, is destroyed. This explains the book's opening: the couple now live quietly and rootlessly abroad, exiled from the burned house and shadowed by the past, but together. The narrator's dream of returning to Manderley, with which the story began, is revealed as longing for a home that no longer exists.",
+        "in_short": "A shy young woman working as a paid companion in Monte Carlo meets Maxim de Winter, a wealthy widower, and after a brief courtship marries him and moves to his famous English estate, Manderley. There she feels overshadowed by the memory of his glamorous first wife, Rebecca, who drowned, and is tormented by the cold housekeeper, Mrs. Danvers, who worshipped Rebecca. After Mrs. Danvers humiliates her at a costume ball and nearly drives her to suicide, a shipwreck in the bay leads divers to Rebecca's sunken sailboat with a body still inside. Maxim confesses that he hated Rebecca, whose public charm hid cruelty and infidelity, and that he shot her and sank the boat with her body. Through an inquest and blackmail from Rebecca's cousin and lover, Jack Favell, they discover Rebecca had terminal cancer, which is taken as a motive for suicide and clears Maxim. Relieved, the couple drive home overnight to find Manderley in flames.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The narrator opens by recalling, from a later, wandering life abroad, a dream of returning to the lost estate of Manderley, hinting that something has ended in ruin. She then goes back to the beginning of her story. Years earlier, a shy and poor young woman, she was working as a paid companion to the vulgar, snobbish Mrs. Van Hopper at a hotel in Monte Carlo. There she met Maxim de Winter, a reserved, wealthy Englishman and a recent widower, owner of the celebrated house Manderley. Despite the gap in their ages and stations, he sought her company on quiet drives and outings, and she fell deeply in love, awed by him and painfully aware of her own inexperience. Their acquaintance grew as her time as a companion neared its end.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When Mrs. Van Hopper announces they are leaving for New York, Maxim abruptly proposes marriage, and the narrator accepts. They marry quietly and spend a honeymoon abroad before traveling to his English estate. Arriving at Manderley, the narrator is overwhelmed by its grandeur and by her new role as its mistress. She is met by the household staff, including the courteous old butler and, most unsettlingly, the cold, gaunt housekeeper, Mrs. Danvers, whose barely hidden hostility frightens her at once. Everywhere she feels the lingering presence of Maxim's admired first wife, Rebecca, who drowned in a boating accident about a year before, and she begins to sense how large a shadow the dead woman still casts over the house and its people.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrator struggles to find her footing at Manderley, feeling clumsy and inadequate beside the memory of the accomplished Rebecca, whose taste survives in every room and whose initials mark her belongings. Mrs. Danvers, devoted to her dead former mistress, keeps Rebecca's rooms preserved and works to make the new wife feel an unworthy intruder. The narrator meets Maxim's blunt sister, Beatrice, and the kind estate agent, Frank Crawley, who is careful and evasive whenever Rebecca is mentioned. Wandering to the beach, she encounters a frightened simple man, Ben, and a shut-up cottage tied to the past. Maxim's sudden dark moods and his reluctance to speak of his first wife leave the narrator convinced he still mourns Rebecca and secretly regrets his second marriage.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During Maxim's absence, Rebecca's smooth, disreputable cousin, Jack Favell, visits secretly and asks the narrator to keep his call quiet, hinting at his closeness to the dead woman. Preparing for a grand costume ball, the narrator is coaxed by Mrs. Danvers into wearing a gown copied from a family portrait, not realizing Rebecca had worn the same costume; when she appears, Maxim is horrified and furious, and the evening is ruined. Humiliated and despairing, the narrator is confronted by Mrs. Danvers, who taunts her mercilessly and nearly persuades her to throw herself from a window. At the crucial moment, rockets and commotion break in: a ship has run aground in the fog off the bay, drawing everyone to the shore and interrupting the housekeeper's cruelty.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The wreck in the bay brings a diver, who discovers Rebecca's sunken sailboat on the seabed with a body still inside the cabin, though Maxim had long before identified another drowned corpse as his wife. Faced with this, Maxim finally confesses the truth to the narrator. He tells her that he never loved Rebecca, that their marriage was a public performance masking her cruelty, mockery, and affairs, and that on the night she died he shot her and sank her boat with her body aboard. Rather than recoiling in horror, the narrator is flooded with relief and love, realizing Maxim never longed for Rebecca at all. The secret binds the couple closer, even as they face the danger that the discovery of the boat and body now poses.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An inquest is opened into the newly found body, and the condition of the scuttled boat raises doubt that the death was an accident, pointing toward deliberate sinking. Maxim is dangerously exposed. Jack Favell, who had been Rebecca's lover, seizes the chance to blackmail Maxim and then openly accuses him of murder before the magistrate, Colonel Julyan, producing a note Rebecca sent him on her last day that suggests she had no intention of taking her own life. The threat of a murder charge hangs over Maxim, and the investigation turns to tracing exactly what Rebecca did and whom she saw in her final hours, in search of the truth behind that message and her death.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Following the clue in Rebecca's note, Maxim, the narrator, Favell, and Colonel Julyan trace her last visit to a London doctor, who reveals that Rebecca had been secretly diagnosed with terminal cancer. This supplies an apparent motive for suicide and undercuts the murder accusation, and the case against Maxim collapses; Favell's blackmail fails. Relieved but uneasy, Maxim and the narrator drive through the night back toward Manderley. As they near home, they see the horizon lit with an unnatural glow and realize the great house is on fire. Manderley burns to the ground, the destruction implied to be the work of the vengeful Mrs. Danvers, who has vanished. The couple lose their home but keep their freedom and each other, explaining the exiled, restless life the narrator described at the very start.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "rebecca"
+      }
+    },
+    "rebirth-of-the-density-god": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Tier 3 Challenger forced into a new arena at maximum growth. Cut off from ordinary supplies and the density needed for his usual methods, he must adapt quickly to survive the trials and resume his urgent search for his cousin Niya.",
+            "id": "jiran",
+            "name": "Jiran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Samris"
+            ],
+            "description": "Jiran's noble mentor and a cursed Unique ascender. He is not present in the arena, but the ring that could summon him is destroyed during Jiran's entry, cutting off a possible route to aid while leaving Samris's situation unresolved.",
+            "id": "feylon-samris",
+            "name": "Feylon Samris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jiran's Tier 5 cousin, a healer-in-training and capable fire combatant. When shadow entities overrun her trainee settlement, she helps protect the escaping recruits and flees with the survivors through an underground route.",
+            "id": "niya",
+            "name": "Niya",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "During the assault on Niya's training settlement, Dommel guides recruits toward safety. He recognizes the hostile shadows as Markhiss's power and escapes underground with Niya.",
+            "id": "dommel",
+            "name": "Dommel",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An absent but suspected source of the shadow ability used in the lethal attack on Niya's settlement. His connection to the assault makes him an immediate threat, although his location, purpose, and precise involvement are not yet established.",
+            "id": "markhiss",
+            "name": "Markhiss",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A speaker for the musical, tree-like Timberlings in the Valley of Melodies. After Jiran heals her critically wounded birther and another injured member of her people, Luara resolves to proclaim him the great spirit they have awaited.",
+            "id": "luara-luaterappa",
+            "name": "Luara Luaterappa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Jiran's partner and a representative of her displaced people. By the time Jiran returns to the People's Cavern, she has departed with Olive and Cameron to meet an Imperial representative, leaving him uncertain about the mission's outcome.",
+            "id": "mayalyn",
+            "name": "Mayalyn",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Mayalyn's traveling party, accompanying her and Cameron on a mission to meet an Imperial representative. She is away from the People's Cavern when Jiran returns, and the reason for the meeting has not yet been explained.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion traveling with Olive and Mayalyn on a mission to meet an Imperial representative. He is away from the People's Cavern when Jiran returns, and the purpose and outcome of the meeting remain unexplained.",
+            "id": "cameron",
+            "name": "Cameron",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An entity linked to Jiran's revelation ability and to Madra. Though she does not appear beside him, her eye-shaped marker guides his interface map toward Niya, providing crucial direction while her nature and limits remain uncertain.",
+            "id": "daughter",
+            "name": "Daughter",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure with whom Niya spent several seasons during her separation from Jiran. The conditions of that period prevented her from safely discussing family or friends, and she has not yet disclosed the full history of their connection.",
+            "id": "silence",
+            "name": "Silence",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "aliases": [
+              "Duchess Ravenna"
+            ],
+            "description": "A powerful Tier 7 duchess who investigates the plundered mountain temple. After finding evidence that its secret has been breached, she follows the intruder's ice-mana signature, needing a capture to protect her already damaged political standing.",
+            "id": "ravenna",
+            "name": "Ravenna",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Tier 7 ruler of besieged Mortan. With the city's wards failing for reasons he cannot identify, he offers Mayalyn conditional protection and formal recognition for her people if Olive helps diagnose the defensive formations.",
+            "id": "duke-reinhardt",
+            "name": "Duke Reinhardt",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jiran"
+            ],
+            "description": "The cover identity Cameron gives Jiran inside Mortan because the nobility already knows Jiran's real name from an earlier search. The disguise lets him meet the city's leaders as the unknown fighter who destroyed the Graymin rooks.",
+            "id": "mortimer-of-malton",
+            "name": "Mortimer of Malton",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Shara of Lordstone"
+            ],
+            "description": "Niya's absent friend in Lordstone and someone she urgently wants Jiran to help. Jiran's revelation confirms that Shara is alive and presently stable, but cannot determine how much time she has left, making her condition a serious unresolved obligation.",
+            "id": "shara",
+            "name": "Shara",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-ranking member of the Graymin collective sent south to pursue and assimilate the impossible new entity detected after Jiran begins his evolution. His pursuit remains an unresolved threat.",
+            "id": "unnamed-graymin-king",
+            "name": "Unnamed Graymin king",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A man whose strength is not explained learns that a baby has been born and sets out to examine the child. The destruction left across his former hunting area demonstrates his power.",
+            "id": "unidentified-powerful-man",
+            "name": "Unidentified powerful man",
+            "reveal": {
+              "chapter": 30
+            }
+          },
+          {
+            "aliases": [
+              "Olive"
+            ],
+            "description": "The primary name of the Imperial princess previously known as Olive. By this point she has regained her lost arm through ascension and completed Jiran's aura-oneness training alongside his other companions.",
+            "id": "oliviala-lecruex",
+            "name": "Oliviala LeCruex",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sapient Remalon of immeasurable power that arrives during the battle with two Tier 7 Graymin. It immobilizes the battlefield and focuses on Jiran, taking control of a crisis whose purpose and intended outcome are still unknown.",
+            "id": "unnamed-remalon-tester",
+            "name": "Unnamed Remalon tester",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An extraordinarily powerful visitor who intercepts Jiran and Mayalyn at a floating mountain. Although she appears elderly, Jiran recognizes her rank as an Empress before the encounter proceeds further.",
+            "id": "unnamed-empress",
+            "name": "Unnamed Empress",
+            "reveal": {
+              "chapter": 41
+            }
+          },
+          {
+            "aliases": [
+              "Jiran",
+              "Mortimer"
+            ],
+            "description": "The informal title Mortan's soldiers give Jiran while publicly celebrating his part in saving the city. It joins his Mortimer cover identity as a name used by the defenders, reflecting his visible firepower and support for their brigades.",
+            "id": "fireling",
+            "name": "Fireling",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Unnamed Empress"
+            ],
+            "description": "The western Imperial ruler who questions Jiran about the Remalon's intervention at Mortan. Her elderly appearance conceals her true body and mana, and she permits him to continue through her territory while arranging observation.",
+            "id": "western-empress",
+            "name": "Western Empress",
+            "reveal": {
+              "chapter": 42
+            }
+          },
+          {
+            "description": "Olive's father and Cameron's uncle, an Imperial ruler whose void aspect can erase nearby trees when his control slips. He confronts them over their dangerous actions and demands information about the Remalon incident and the man known as Mortimer.",
+            "id": "emperor-dominus",
+            "name": "Emperor Dominus",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Instructor Lenton"
+            ],
+            "description": "Jiran's mentor and Shara's grandfather. Shara identifies the family connection while Jiran examines the technique behind her illness, but Lenton remains offstage and unaware of the investigation after Jiran blocks immediate contact.",
+            "id": "lenton",
+            "name": "Lenton",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavily armed Remalon leader with overwhelming mana. A sudden change in her people's status triggers a continent-wide alarm, and she connects the anomaly to an infant's return before ordering the implicated individual captured alive.",
+            "id": "unnamed-remalon-leader",
+            "name": "Unnamed Remalon leader",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Empress's daughter who regards Jiran as her prospective betrothed and is pursuing him. Olive tells her that he has already left the Empire, leaving the pursuit unresolved.",
+            "id": "unnamed-princess",
+            "name": "Unnamed princess",
+            "reveal": {
+              "chapter": 49
+            }
+          },
+          {
+            "description": "The dying sentient world connected to Jiran's champion status. Before this book begins, she placed stored mana within the damaged part of his soul, and her power and restrictions continue to shape what he can do.",
+            "id": "madra",
+            "name": "Madra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DDM12G5K",
+            "type": "community"
+          }
+        ],
+        "work": "rebirth-of-the-density-god"
+      },
+      "recaps": {
+        "ending": "Mortan survives: the corrupters contaminating its wards are dead, the wards recover, and the immediate Graymin horde disappears after the Remalon's intervention. Ravenna is dead, Duke Reinhardt remains in charge, and the broader Graymin war continues. Jiran is a Tier 4 Remalon strengthened by six portions of Tier 7 Challenger density, but he has only days to kill another Tier 7 opponent. His predatory mana instincts, the Remalon Syndicate's interest, Madra's condition, Daughter's nature, the Enders warning, and Markhiss's plans all remain unresolved. Shara lives without the soul leak, though she has lost her divination and retains earlier physical damage. Her cure frees Niya from her oath. Olive and Cameron obey an Imperial summons and head to the capital, intending to rejoin their friends later. Mayalyn's community chooses to stay in the Empire under its new alliance. Jiran, Mayalyn, and Niya use the teleportation network to seek Tier 7 beings and possible help for Lenton and Samris. At their forest destination, hundreds kneel and claim prophecy makes Jiran both their savior and enslaver.",
+        "in_short": "Jiran survives a second Challenger arena, ascends to Tier 4, reunites with Niya, and learns that ancient records predict the return of the civilization-ending Enders. At Mortan, he joins Mayalyn, Olive, Cameron, Niya, and Duke Reinhardt against a vast Graymin siege, exposes the corrupters poisoning the city's wards, and evolves into a Remalon to escape exhausted willpower. His new power brings a compulsion to claim mana. An immensely powerful Remalon later tests him with forced battles, kills Ravenna, and leaves him Tier 7 density that starts another short Challenger deadline. After Jiran cures Shara's soul leakage by removing her divination, Niya is released from her servitude oath. Olive and Cameron return to the capital, while Jiran, Mayalyn, and Niya leave the Empire to seek a Tier 7 target and pursue cures for their mentors. They arrive among forest people who proclaim Jiran a promised great spirit destined to save and enslave them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jiran became a Challenger and a champion connected to Madra, a dying sentient world. Madra placed her stored mana within the damaged part of his soul, giving him unusual power while binding him to restrictions he does not fully understand. He formed close ties with his cousin Niya, his partner Mayalyn, and the companions Olive and Cameron. Mayalyn's people were displaced after Jiran restarted an ancient machine for Madra, destroying their island and forcing the survivors into exile. Jiran then underwent an ascension that removed him from their lives for roughly a year of outside time. At the opening of this volume he is still separated from Niya and intent on reaching her. His mentors Lenton and Feylon Samris remain affected by unresolved inherited curses, and Jiran continues to seek a way to help them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran is pulled into a second Challenger arena at maximum Tier 3 growth. With normal density-based methods restricted, he fights through waves of corrupted Shamblers, defeats a sapient Restless Devourer, scores 99 out of 100, and is forcibly ascended to Tier 4. His rewards include new abilities, a charged Sanctuary, and expanded teleportation access. In the Valley of Melodies, he heals two Timberlings and inadvertently inspires Luara Luaterappa to proclaim him their awaited great spirit. He then follows Daughter's guidance toward Niya. Niya's settlement has been attacked by murderous shadow entities associated with Markhiss. Jiran finds her critically wounded in a mountain temple, stabilizes her, kills one attacker, and drains Markhiss of much of his mana. Markhiss claims he protected Niya after escorting her to a blue crystal key. The key opens a hidden passage containing records from multiple lost civilizations. These inscriptions warn that the Enders repeatedly destroy civilization every two thousand years. Jiran and Niya leave together, while the unstable Markhiss remains behind and apart from them.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran and Niya begin rebuilding their strained relationship while sharing what happened during their separation. Ravenna, a Tier 7 duchess, finds the breached temple and starts tracking Jiran's ice-mana signature. Meanwhile, Mayalyn, Olive, and Cameron encounter an evacuation caused by the Graymin. Their route leads to Mortan, which is surrounded by millions of enemies. Mayalyn exposes her nonhuman features while saving civilians, and the three reach the city through a blood-authorized passage. Inside, Olive bargains with Duke Reinhardt: she will help assess the failing wards if he protects Mayalyn and recognizes her people. Outside the walls, Jiran discovers that Graymin mana pools can replenish him through mana transfer. He teaches Niya a related method she names mana siphon. Together they infiltrate the horde, destroy its dangerous long-range rooks, and use the enemy as a continuing mana supply. Their attacks eliminate thousands of Graymin and restore hope to Mortan's defenders. An invisible boundary admits Jiran but keeps the Graymin away from the wall, allowing him and Niya to enter the city after the 43rd Brigade formally welcomes them.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Using the cover name Mortimer of Malton, Jiran reunites with Mayalyn at Duke Reinhardt's manor. He supports her public challenge to the nobles who treat her people as dangerous outsiders. Mayalyn defeats the Duke's abusive grandson, then combines her enhancing ability with Jiran's mana to clear a vast section of the Graymin horde. Reinhardt apologizes, and her people gain leverage as potential military allies. Niya also asks Jiran to help her ailing friend Shara, but Mortan's failing wards remain the immediate priority. Jiran, Niya, and Olive trace the damage to violet contamination moving through the framework around the formations. Outside the city they find Tier 6 Graymin corrupters poisoning that framework remotely, guarded by stronger fighters. Olive loses an arm during the battle, but Jiran destroys all four corrupters. The contamination immediately clears, proving they caused the ward failure. With a forced species evolution approaching, Jiran calls Daughter. She explains that ascensions and acquired abilities consume finite willpower, that Jiran has exhausted his own reserve, and that his status as a Madra champion provides an intended path through the dangerous choice now before him.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran selects Remalon as his species evolution, rejecting alternatives he considers worse. He and Niya regenerate Olive's arm, and Olive and Mayalyn begin their own Tier 5 ascensions. Jiran's body is remade into a body-wide mana pool with triple capacity, direct mana sight, and Mana Omnis. He can command, create, and reclaim mana and elements without his former channels, but the new instincts tell him that all visible mana should belong to him. Ravenna fails to recognize his changed signature. After he intimidates her into withdrawing, Duke Reinhardt promises support and discretion. Jiran later bargains with Ravenna, trading instruction in channeling for an end to her pursuit and a demonstration of teleportation. He then tells his companions the truth about his evolution, Challenger density, and the danger of disclosing restricted knowledge. The group begins two days of intensive training. Jiran teaches Niya, Olive, and Cameron deeper aura integration, helps Mayalyn develop Charging with lightning and metal, and creates strong graphene-laced armor for the party. Equipped with the new suits, they enter the Graymin horde for live training while Jiran tests the expanded reach of his Remalon abilities.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party practices aura oneness in battle. Cameron, Niya, and Olive each learn to align movement instinctively with aura, while Mayalyn's charged claws make her increasingly formidable. Jiran's experiments reveal enormous destructive power and a broader ability to drain mana through connections at range. Elsewhere, Markhiss massacres a church facility while claiming to remove Jiran's enemies. The party then supports Mortan's soldiers as they fight safely near the restored wards. When two Tier 7 Graymin Slayers arrive, Jiran supplies Ravenna and Reinhardt with mana and joins the battle. Both rulers are gravely injured, but Jiran revives Ravenna and obstructs the Graymin teleportation. An immeasurably powerful Remalon then seizes the battlefield, takes Ravenna hostage, and forces Jiran through escalating waves of Graymin. It kills Ravenna despite his success. Jiran survives his final gravitic attack and receives six portions of Tier 7 Challenger density plus an implied summons to the Remalon people. After absorbing the rewards, he faces a new deadline of under five days to kill another Tier 7. Mortan's horde is gone. The party refuses to let Jiran leave alone and commits to traveling together to help Shara before seeking a suitable opponent.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the party leaves Mortan, its soldiers celebrate Jiran as Fireling. He tells his companions about the Enders warning and a possible escape through the teleportation network. A western Empress intercepts him, questions him about the Remalon, and allows him to continue under planned observation. Emperor Dominus separately confronts Olive and Cameron, but Olive protects Jiran's secrets from her father. The group reaches Lordstone and finds Shara suffering from a process that repeatedly empties her mana and produces damaging dark energy. Jiran learns that her evolved divination, Divomancy, is permanently active above her soul tap. Without enough mana to summon its mediating entity, the technique leaks soul material into her body. He blocks the mana flow, reaches her soul space through aura, and finally extracts the technique as a crystal. Its compulsion nearly makes him consume it, but Mayalyn intervenes. Shara's mana stabilizes and the continuing poisoning ends, although her earlier bodily injuries remain and her divination is gone. Fulfilling this obligation releases Niya from a servitude oath imposed by her former tutor. Imperial orders then separate the party: Olive and Cameron must return to the capital, while Jiran, Mayalyn, and Niya prepare to leave the Empire.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jiran returns Shara's means of contacting Lenton but asks her to delay for one day because he believes he is close to solving the curse affecting their family. Olive and Cameron depart for the Imperial capital, expecting to rejoin their friends later. Jiran, Mayalyn, and Niya visit Mayalyn's community before using the teleportation platform. Jiran and Niya trade transmuted metal tools and fittings for food and materials, while Mayalyn begins teaching her mother mana methods. Her mother supports a formal union between Mayalyn and Jiran. The community decides collectively to remain in the Empire under its new alliance rather than rely on Jiran to restore it to its former homeland. Jiran preserves enough mana to operate the portal, then takes Mayalyn and Niya to a forest destination in search of Tier 7 beings. He remains under a short Challenger deadline, and the wider Graymin war, Imperial scrutiny, Markhiss, Madra, and the Remalon interest in him are unresolved. On arrival, hundreds of forest people kneel. They identify Jiran as their long-awaited great spirit and say their prophecy promises that he will both save and enslave them.",
+            "through": {
+              "chapter": 49
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DDM12G5K",
+            "type": "community"
+          }
+        ],
+        "work": "rebirth-of-the-density-god"
+      }
+    },
+    "reborn-as-a-demonic-tree": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A man from Earth who died and awoke two years earlier as a demonic spirit tree, rooted in a mountaintop courtyard. He is fully sentient but cannot move, speak, or be perceived, and experiences the world through an internal monologue, sleeping through long stretches he cannot control. He survives on blood offerings, dissolving corpses through an innate Devour ability, and grows stronger through a private status-and-reward system that grants him new skills whenever he 'signs in.' Slow-growing and wholly dependent on his visitors, for now he can only watch, wait, and scheme.",
+            "id": "ashlock",
+            "name": "Ashlock",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young blonde cultivator in a black cloak who appears in the courtyard where Ashlock is rooted. She cuts down two sword-wielding men with bursts of purple light and a short blink-like step, then drags their bodies to the tree's roots as an offering before leaving. Clearly powerful despite her youth, though what she wants with the strange tree is not yet clear.",
+            "id": "stella-crestfallen",
+            "name": "Stella Crestfallen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small white squirrel-like creature that slips through a failed summoning rift and lands on Ashlock's branch. It offers a mutual, non-controlling pact rather than submitting to a summon, and is welcomed by both Ashlock and Stella, who names it Maple. Unusually intelligent, it teleports short distances with no visible effort and carries no detectable life energy of its own, a mystery even to those closest to it.",
+            "id": "maple",
+            "name": "Maple",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The last daughter of House Ravenborne, made her family's heir only after her elder brother was killed by Stella Crestfallen at a sect tournament. A Soulfire cultivator who wields blue soulfire and a blade, she is first seen infiltrating Red Vine Peak in search of a missing kinsman. Her father, the Ravenborne Grand Elder, orders her to assassinate Stella within five years or be sent to certain death, leaving her torn between obedience and flight.",
+            "id": "diana-ravenborne",
+            "name": "Diana Ravenborne",
+            "reveal": {
+              "chapter": 16
+            }
+          },
+          {
+            "description": "The head of House Ravenborne and Diana's father, an aged and formidable cultivator whose sheer presence marks him as Star Core tier. Ruthless and openly contemptuous of his family's younger generation, he blames Diana for a botched mission and orders her to kill Stella Crestfallen within five years or face a suicidal beast tide. Forbidden by the sect Patriarch from moving against Stella himself, he works through his daughter instead.",
+            "id": "ravenborne-grand-elder",
+            "name": "The Ravenborne Grand Elder",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior figure of House Winterwrath, an albino man with scarlet eyes who descends on the region riding a thousand-meter ice golem amid a catastrophic snowstorm. Allied with House Evergreen, he arrives to make war on House Ravenborne and its holdings.",
+            "id": "winterwrath-grand-elder",
+            "name": "The Winterwrath Grand Elder",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A large green-flame cultivator of House Evergreen, over two meters tall and casually brutal toward the mortals around him. He corners Diana in a town below Ravenborne Peak, boasting that his house has newly allied with House Winterwrath through his sister's marriage. His arrival coincides with a coordinated assault on Ravenborne territory.",
+            "id": "wayne-evergreen",
+            "name": "Wayne Evergreen",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The burly, bearded leader of House Evergreen, a powerful vine-and-earth cultivator tied to House Winterwrath by his daughter's marriage into that family. He personally orchestrates the assault on Ravenborne Peak, overrunning it with green-fire vines.",
+            "id": "evergreen-grand-elder",
+            "name": "The Evergreen Grand Elder",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A square-faced green-flame cultivator of House Evergreen who has long, secretly hated his cousin Wayne and the family's main bloodline. Sadistic and ambitious, he murders Wayne moments after Wayne captures Diana, then abandons her to chase a rarer prize: the disembodied soul of the fallen Ravenborne Grand Elder, which he believes he can absorb for a surge of power.",
+            "id": "tristan-evergreen",
+            "name": "Tristan Evergreen",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Blood Lotus Patriarch"
+            ],
+            "description": "The supreme authority of the Blood Lotus sect, an unseen power whose word shields Stella Crestfallen from those who would kill her. That protection proves self-serving: he intends one day to use Stella herself as a living 'pill furnace,' sacrificing her body and soul core to brew a pill.",
+            "id": "the-patriarch",
+            "name": "The Patriarch",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A white-flame Winterwrath cultivator who forces his way onto Red Vine Peak while Stella is away, sent on behalf of a cultivator named Eleanor who has stalled at a bottleneck and wants Stella captured and rendered into a living 'pill furnace.' His companion balks at the scheme and flees, leaving Mike to press on alone; finding Diana hiding in the courtyard, he tries to seize her as a shield.",
+            "id": "mike",
+            "name": "Mike",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ash Spider"
+            ],
+            "description": "A car-sized grey spider with eight blood-red eyes, pulled from a dimensional rift as one of Ashlock's summons and named by him. Bound to Ashlock through a mental tether, Larry ranges the mountain as a scout and hunter. He is a living creature rather than a disposable resource: if he is killed, he is gone for good.",
+            "id": "larry",
+            "name": "Larry",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A starving mortal child from a village near Red Vine Peak, found hiding from a monster by Stella. He begs to learn cultivation so he can protect his father and younger sisters, though his spirit root is so weak he has almost no chance of ever advancing. Stella half-promises to teach him if he can one day climb the mountain to reach her.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A floor-colored, energy-less slime dwelling in an abandoned cavern deep in the mine beneath Red Vine Peak, feared even by the cave rats. It can absorb an attacker's power and shift its own element to match. Ashlock seizes control of it through his roots and keeps it as a durable, endlessly reusable tool, naming it Bob.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly, cane-carrying man in a plain but finely made white robe who appears at Red Vine Peak with no detectable cultivation and no named family or sect, asking only to be called 'Senior Lee.' Grandfatherly and generous, he wields spatial techniques effortlessly, without gestures, and claims long experience aiding spatial cultivators. Both Maple and Larry shrink from him on sight, hinting he is far more dangerous than he looks.",
+            "id": "senior-lee",
+            "name": "Senior Lee",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivator of House Evergreen, once hailed as a prodigy but stalled at peak Soulfire for roughly a decade and bitterly resentful of her cousin Tristan's sudden rise. Earlier she schemed to have Stella captured and rendered into a 'pill furnace' to force her own breakthrough. Caught up in the assault on Red Vine Peak, she survives where others fall and carries warnings back to her superiors.",
+            "id": "eleanor-evergreen",
+            "name": "Eleanor Evergreen",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Redclaw Grand Elder"
+            ],
+            "description": "An aged, Star Core-tier cultivator who leads a delegation of red-haired, scarlet-robed Redclaw cultivators to Red Vine Peak to investigate rumors of a great battle there. Faced with the peak's guardian beast and the hidden power behind it, he chooses caution over a fight and asks to meet the 'ancestor' who commands it all.",
+            "id": "grand-elder-redclaw",
+            "name": "Grand Elder Redclaw",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A balding Redclaw branch elder near the end of his cultivation life, charged with overseeing the family's young prodigies. Gruff and openly skeptical of binding his kin to an unproven 'immortal,' he nonetheless respects his Grand Elder and becomes the first to kneel and swear the Ashfallen loyalty oath.",
+            "id": "elder-mo",
+            "name": "Elder Mo",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young red-haired woman of the Redclaw family who serves as the Grand Elder's attendant and messenger. Diligent and increasingly awed by the vast, unseen power now looming over her family's new home.",
+            "id": "amber-redclaw",
+            "name": "Amber Redclaw",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vast storm that gathers over the region around Darklight City and Red Vine Peak, its clouds darkening without warning. Seen through Ashlock's Eye of the Tree God, it carries visible eyes that mark it as no ordinary weather. A Redclaw elder who spots it from the wall raises the alarm and orders everyone underground, warning that Darklight City and perhaps the whole Blood Lotus sect could be doomed. Conventional defenses seem to offer no way to turn it aside.",
+            "id": "dao-storm",
+            "name": "Dao Storm",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ordinary infant grass snake living in the grass of Ashlock's courtyard, claimed almost by accident as his weakest system summon for a trivial cost. Ashlock takes to calling it Little Kai and keeps it as a harmless pet rather than a fighting beast.",
+            "id": "little-kai",
+            "name": "Little Kai",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A massive, bald rogue cultivator with earth affinity, owner of the hidden Golden Springs Pavilion reached through a concealed tunnel behind a Darklight City noodle shop. Once the chief supplier of servants to House Ravenborne and an old acquaintance of Diana's, he now brokers oath-bound rogue cultivators as recruits for the fledgling Ashfallen sect.",
+            "id": "mr-choi",
+            "name": "Mr. Choi",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large, golden-haired rogue cultivator built for mining and construction, recruited through Mr. Choi as the Ashfallen sect's first hired outside builder. Blunt and unimpressed by the ruined mountain when he arrives, his attitude changes the instant Ashlock reveals himself.",
+            "id": "douglas",
+            "name": "Douglas",
+            "reveal": {
+              "chapter": 90
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "reborn-as-a-demonic-tree"
+      },
+      "recaps": {
+        "ending": "Ashlock survives, but only barely and utterly changed. The Dao Storm tears his tree body apart before dissolving into 'Black Rain,' bark fragments that instantly sprout thousands of demonic trees across Red Vine Peak and Darklight City. Reduced to a dying ember, Ashlock is revived when Stella pours her own cultivation energy into his core. Offered a choice by his rebooted system, he permanently merges his human ego into his tree body rather than be reborn as a separate human, losing his discrete star core (his whole trunk now holds his power) and accepting that his human traits will slowly erode. A youthful Senior Lee appears in a vision to explain the wider cosmology and then departs, seemingly for good. Ashlock wakes linked to the new forest, which fuels a week-long regrowth. Stella (now ninth-stage Soulfire) and Diana (eighth-stage) are safe at his side and run the sect's affairs; the oath-bound Redclaw family administers Darklight City; Larry and Maple are drained but presumed alive. Diana delivers Douglas, the sect's first hired builder. Open threads: the Dao Storm's true origin and why it hunted Ashlock; the Celestial Empire's World Tree, now blocked from ascending and a future danger; the eight remaining divine fragments; the looming beast tide; the real Patriarch's eventual reaction; and whether Ashlock's humanity will fade.",
+        "in_short": "A man from Earth is reborn as a sentient, immobile demonic tree named Ashlock, rooted at a mountain peak and fed corpses by a fierce young cultivator, Stella Crestfallen. Growing through a private reward system, he survives assassins, a rival house's war, and a lightning tribulation, gathering companions: the squirrel Maple, the spider Larry, and eventually Diana Ravenborne, a homeless enemy heir turned ally. He forms a soul core, is revealed to possibly be a nascent 'World Tree,' and founds the Ashfallen sect. A mysterious elder, Senior Lee, gives him a divine fragment that rockets him to the Star Core realm and demi-divine status. After repelling a massive siege and subjugating the Redclaw family, Ashlock faces a sentient Dao Storm that destroys his body. He survives by permanently merging his human mind with the tree, learns the Nine Realms cosmology from Senior Lee, and, regrowing amid a new forest, resolves to surpass the Patriarch, endure the coming beast tide, and one day face the empire's World Tree.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "A man from Earth wakes to find he has been reborn as a demonic spirit tree, rooted in a mountaintop courtyard and unable to move, speak, or be seen. He is fully aware, feeds on corpses through an innate Devour ability, and grows stronger by 'signing in' to a private status system that hands him new skills. A blonde young cultivator, later named Stella Crestfallen, defends the peak and feeds him the bodies of those she kills; in return he gifts her a pair of cursed fear-inducing earrings. She then wins a tournament to keep her home, killing a House Ravenborne scion in the match. Ashlock quietly saves her from poisoners and an assassination raid ordered by House Ravenborne, making his first direct kills. A powerful sect Grand Elder, an old friend of Stella's dead father, inspects the peak, discovers Ashlock is intelligent, and chooses to keep it secret. He also delivers hard news: House Ravenborne wants the peak as compensation, and the sect Patriarch has named Stella heir on the condition she pass a Grand Elder examination within five years or forfeit everything. Stella resolves to train harder, and Ashlock decides to stop sleeping his life away.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A violent storm nearly kills Ashlock: lightning shatters his branches and sets him burning from within, and Stella climbs into the storm to shield him, even taking strikes herself. He heals slowly inside an elaborate energy-channeling formation she builds, emerging months later far larger and stronger, having gained fire and lightning resistances. Attempting a costly high-grade summon, Ashlock instead draws a small white squirrel through a closing rift; it forms a mutual pact with him and Stella, who names it Maple. Intelligent and able to teleport with no visible power, Maple can relay Ashlock's simple yes-or-no wishes to Stella, giving them their first crude bridge. Now about fifteen, Stella has built her cultivation around a 'Tao of Lightning' and deliberately avoids the corrupting shortcuts other demonic cultivators use. With three years left before her examination, she departs for roughly a year of training elsewhere, taking Maple and leaving Ashlock alone at the peak, one stage short of forming his own soul core.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Stella away, two House Ravenborne intruders search the peak for a missing kinsman's corpse. Ashlock manipulates the pair into turning on each other, and the survivor is revealed as Diana Ravenborne, forced into being her family's heir after Stella killed her brother. Diana's father, the Ravenborne Grand Elder, orders her to assassinate Stella within five years or die. Before she can act, a three-house war erupts: Houses Evergreen and Winterwrath jointly attack House Ravenborne over territory and its spirit-stone mines, devastating the nearby town of Darklight City. Cornered and defeated, the Ravenborne Grand Elder, secretly far stronger than he appeared, unleashes a suicidal 'supernova' that obliterates his own peak and much of the city; the blast knocks Ashlock unconscious. Amid the chaos, Tristan Evergreen murders his cousin Wayne and slips away to hunt the Grand Elder's disembodied soul. Homeless and hunted, Diana flees to the now-empty Red Vine Peak to hide, unaware the ominous tree there is anything more than it seems.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ashlock warily tolerates Diana as she recovers and quietly investigates him. When an intruder named Mike arrives hunting Stella for a horrific 'pill furnace' scheme, Ashlock and Diana kill him together, and Ashlock absorbs his soul core to finally form his own, an amethyst core of the rare Spatial element, ascending into the Soulfire realm and surviving a brutal lightning tribulation that leaves him a full-grown tree. Stella returns, mistakes Diana for an assassin, and fights her, but the two reconcile once Diana explains her family is destroyed and she bears Stella no ill will. Stella at last confirms Ashlock's sentience directly, establishing a flame-flicker yes-or-no signal, and privately admits she misjudged Diana. Diana gives up her risky beast-core cultivation at Stella's urging, and the two become allied training partners preparing for the Grand Elder examination, with Diana barred from further contact with Ashlock.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ashlock summons a car-sized spider he names Larry, bonded to him by a mental tether. Seeing his rift-opening, corpse-controlling, and communicating powers, Diana theorizes that Ashlock may be a nascent 'World Tree,' a legendary being whose birth would herald the end of the current era and mark him for death by both merchants and the Celestial Empire. Committing to protect him, Stella and Diana train intensely. Larry becomes a feared night hunter of cultivators, and Ashlock secretly breeds poisoned fruit that seeds demonic-tree offspring around the mountain. Straining to communicate, Ashlock finally spells out his first written message, 'I am Ashlock,' using a puppeted corpse and blood, in a script so ancient that Stella and Diana cannot read it. Determined to learn it herself, Stella sets off with Diana to find a teacher, while Larry begins a mysterious evolution.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Darklight City, Stella learns the true stakes behind her upbringing: the Patriarch protects her only because he intends one day to use her as a living 'pill furnace.' At the Academy library she studies the ancient script well enough to grasp Ashlock's message. She and Diana also learn that a massive beast tide is coming within a few years, that the Blood Lotus sect already plans to abandon its depleted territory and relocate, and that the houses expect to fight over the best new land, with most mortals left to die. Larry's ongoing rampage has made him a local legend, the 'Ashen Devourer,' blamed for slaughtering cultivators near the villages. Before heading home, the pair trade with traveling merchants for new clothing and a spatial technique, and Stella turns aside a merchant's attempt to seize her cursed earrings.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at Red Vine Peak, Ashlock reestablishes written contact and reveals his goal: to found a sect. Stella and Diana join him, and he names it Ashfallen. Diana explains how beast tides work, driven by energy flowing along ley lines and pooling at 'spiritual springs' that deplete and force beasts to migrate straight through settled land. Weighing whether to fight, flee, or shelter, Ashlock reveals he has already hollowed a long root-tunnel down to an abandoned mine he can use as a refuge. He also undergoes a painful mutation that opens a 'Demonic Eye' in his trunk, an eye that lays bare a person's soul core and floods anyone it targets with terror, even seasoned cultivators. Diana makes the first trip down the tunnel as her opening task for the sect, reaching the mine and glimpsing what looks like an inhabited town deeper within. The founding trio begins turning the neglected peak and its mine into the seed of a real sect.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ashlock extends deeper into the mine, naming the captured slime Bob, and learns to cast spatial techniques by piloting corpses to supply the hands he lacks. Then a mysterious elder called Senior Lee arrives, radiating no power yet wielding effortless spatial magic. He diagnoses that Stella damaged her own spirit root by cultivating too fast, gives her medicine to slow the decay, and, uniquely, speaks with Ashlock telepathically, treating him as an equal. Lee gifts Ashlock a rare 'Divine Fragment' that violently rockets his cultivation toward the Star Core realm and triggers a colossal tribulation. When Stella is struck down protecting him, Lee revives her with a divine pill, then flees the heavens' wrath for having done so. As the tribulation blazes, hundreds of Evergreen and Winterwrath cultivators, led by Tristan (now Star Core), storm Red Vine Peak, believing Stella is the one ascending.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege is fought off in waves, with Larry, Diana's mist, Stella's blade, and Ashlock's Devour vines cutting down attacker after attacker. Tristan latches onto Ashlock's forming star core to drain it, but Stella and Ashlock's manifested Demonic Eye bring him down, and he is killed and consumed. Ashlock completes his Star Core ascension, then merges with the Divine Fragment to become a 'Demonic Demi-Divine Tree,' now able to open spatial portals directly through his own body and pick off enemies at range. Diana suffers a violent relapse of her long-buried 'heart demons.' Larry cocoons and re-emerges as the 'Ashen King,' a far more powerful being. Meanwhile, an unseen entity massacres the leaders of both invading houses at their new palace, leaving Eleanor Evergreen to flee with a garbled, terrified warning.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The transformed Larry, now able to speak, wipes out the remaining Winterwrath and Evergreen forces overnight. Ashlock pushes into Star Core stage two and gains a puzzling 'Mystic Realm' skill of unclear purpose. Diana purges her heart-demon corruption by channeling it into Bob during endless sparring, finally breaking her years-long bottleneck. When the red-haired Redclaw family comes to investigate the destruction, Stella and Larry cow them with overwhelming force and a fabricated legend of a hidden 'immortal ancestor,' binding them by oath into the Ashfallen sect. Ashlock masters telekinesis, at last writing to Stella and Diana without needing a corpse. Then he activates the untested Mystic Realm, and everyone but him vanishes into a strange white fog.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mystic Realm scatters Stella, Diana, Larry, and Maple into separate, time-dilated pocket worlds, each rich with a different kind of energy; after a week of local time, all return safely and much stronger. Ashlock learns the ability has a long cooldown and can drive versatile growth across his followers. The Redclaw family moves fully into the White Stone Palace and begins openly administering Darklight City on Ashfallen's behalf, swearing binding loyalty oaths and organizing a public alchemy tournament to recruit an outside alchemist. Both Stella and Diana break through to new Soulfire stages, nearing the Star Core realm, and begin quietly managing the sect's city business in disguise, while Ashlock keeps his true nature and full strength hidden even from his new subordinates.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ashlock gains a sinister new mutation, 'Blood Sap,' whose black fluid can slowly turn anyone who drinks it into a tree. Then a sentient Dao Storm, a titan-like vortex of water, wind, and lightning, descends on the region and advances straight for Ashlock. He portals the Redclaw family and nearby villagers into the mine for shelter, then fights the storm alongside Larry and the Redclaw Grand Elder, but nothing they do can stop it; it shatters his barriers and burns through his bark. As Ashlock's power fails, Maple abruptly reappears and cleaves the storm's humanoid core cleanly in two before collapsing, spent. It is not enough. The storm knits itself back together, engulfs the mountain, and tears Ashlock's tree body apart, his cursed black sap spraying into the vortex as he is destroyed.",
+            "through": {
+              "chapter": 87
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dao Storm dissipates, raining 'Black Rain,' bark fragments that instantly sprout thousands of demonic trees across Red Vine Peak and Darklight City. Ashlock is reduced to a charred stump, his consciousness nearly gone. Stella saves him by pouring her own cultivation energy into his dying core. His rebooted system offers a choice: free his human ego to be reborn separately, or fully merge it into the tree. Ashlock chooses to merge permanently, insisting he is a tree now; the merge costs him his discrete star core, whose power now suffuses his whole trunk, and comes with a warning that his human traits will erode over time. In a vision, a youthful Senior Lee reveals the wider cosmology: the collapsing Nine Realms, nine scattered divine fragments, and an existing Monarch-realm World Tree seated at the center of the Celestial Empire, now permanently blocked from ascending because Ashlock holds the fragment meant for it, making it a distant future threat that could seek to consume him. Lee bids farewell, saying his own time is ending. Ashlock wakes linked to the new forest, which fuels his regrowth over about a week. Diana arrives with Douglas, the sect's first hired builder, and Ashlock resolves to grow strong enough to surpass the Patriarch, survive the coming beast tide, and one day confront the empire's World Tree, while cherishing the found family at his side.",
+            "through": {
+              "chapter": 90
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "reborn-as-a-demonic-tree"
+      }
+    }
+  }
+}

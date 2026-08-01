@@ -1,6 +1,7 @@
 package format
 
 import (
+	"errors"
 	"fmt"
 	"io/fs"
 	"os"
@@ -44,14 +45,6 @@ func snapshot(t *testing.T, dir string) map[string]string {
 	})
 	if err != nil {
 		t.Fatal(err)
-	}
-	return out
-}
-
-func paths(m map[string]string) []string {
-	out := make([]string, 0, len(m))
-	for k := range m {
-		out = append(out, k)
 	}
 	return out
 }
@@ -331,69 +324,31 @@ func TestCheckReportsDueSplits(t *testing.T) {
 	}
 }
 
-// The live tree until the migration PR: formatting only, exactly as before.
-func TestLegacyTreeIsFormattedOnly(t *testing.T) {
+// metafmt is a writer, so a tree that is not in the pack layout is REFUSED
+// before it rewrites anything. Formatting it would leave thousands of tidy files
+// that no reader will load, which reads as a maintained tree and is not one.
+func TestLegacyTreeIsRefused(t *testing.T) {
 	dir := t.TempDir()
 	work := filepath.Join(dir, "works", "du", "dune", "work.json")
-	person := filepath.Join(dir, "people", "fr", "frank-herbert.json")
-	series := filepath.Join(dir, "series", "du", "dune.json")
-	writeFile(t, work, `{"title":"Dune","id":"dune"}`)
-	writeFile(t, person, `{"name":"Frank Herbert","id":"frank-herbert"}`)
-	writeFile(t, series, `{"name":"Dune","id":"dune"}`)
+	const body = `{"title":"Dune","id":"dune"}`
+	writeFile(t, work, body)
 
-	check := mustCheck(t, dir)
-	if len(check.NonCanonical) != 3 {
-		t.Errorf("non-canonical = %v, want all three legacy files", check.NonCanonical)
+	for name, run := range map[string]func(string) (Report, error){"check": Check, "write": Write} {
+		_, err := run(dir)
+		if !errors.Is(err, pack.ErrLegacyLayout) {
+			t.Errorf("%s error = %v, want it to wrap pack.ErrLegacyLayout", name, err)
+		}
+		if err != nil && !strings.Contains(err.Error(), "cmd/metamigrate") {
+			t.Errorf("%s error does not name the fix: %v", name, err)
+		}
 	}
-	if !check.Pending.Empty() {
-		t.Errorf("legacy tree reported structural work: %+v", check.Pending)
-	}
-
-	rep := mustWrite(t, dir)
-	if len(rep.Formatted) != 3 {
-		t.Errorf("formatted = %v, want all three legacy files", rep.Formatted)
-	}
-	if len(rep.Wrote) != 0 || len(rep.Deleted) != 0 || !rep.Pending.Empty() {
-		t.Errorf("legacy tree was restructured: %+v", rep)
-	}
-	got := paths(snapshot(t, dir))
-	want := []string{"people/fr/frank-herbert.json", "series/du/dune.json", "works/du/dune/work.json"}
-	if !sameSet(got, want) {
-		t.Errorf("legacy files moved: %v, want %v", got, want)
-	}
-	assertClean(t, dir)
-	assertCanonical(t, dir)
-}
-
-// During the dual-layout window a family may be packed while another is still
-// legacy: the packed one heals, the legacy one is only formatted.
-func TestMixedTreeHealsOnlyThePackedFamily(t *testing.T) {
-	dir := t.TempDir()
-	writeFile(t, filepath.Join(dir, "works", "0", "0.json"), packOf(keyed("aa", 4), keyed("zz", 4)))
-	writeFile(t, filepath.Join(dir, "works", "mm", "mm.json"), packOf(keyed("mm", 4)))
-	legacy := filepath.Join(dir, "people", "fr", "frank-herbert.json")
-	writeFile(t, legacy, `{"name":"Frank Herbert","id":"frank-herbert"}`)
-
-	rep := mustWrite(t, dir)
-	if len(rep.Pending.Misplaced) != 1 || rep.Pending.Misplaced[0].To.Path() != "works/mm/mm.json" {
-		t.Fatalf("misplaced = %+v, want zz moved into works/mm/mm.json", rep.Pending.Misplaced)
-	}
-	if got := readPack(t, dir, "works/mm/mm.json").Slugs(); len(got) != 2 {
-		t.Errorf("works/mm/mm.json = %v, want mm and zz", got)
-	}
-	files := paths(snapshot(t, dir))
-	want := []string{"people/fr/frank-herbert.json", "works/0/0.json", "works/mm/mm.json"}
-	if !sameSet(files, want) {
-		t.Errorf("files = %v, want %v", files, want)
-	}
-	raw, err := os.ReadFile(legacy)
+	raw, err := os.ReadFile(work)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if ok, cerr := canonical.IsCanonical(raw); cerr != nil || !ok {
-		t.Errorf("legacy person file was not formatted: %s", raw)
+	if string(raw) != body {
+		t.Errorf("a refused run rewrote the file: %s", raw)
 	}
-	assertClean(t, dir)
 }
 
 // A file the tooling cannot read is named and left exactly as it is - both the
@@ -517,22 +472,6 @@ func hasPrefix(lines []string, prefix string) bool {
 		}
 	}
 	return false
-}
-
-func sameSet(got, want []string) bool {
-	if len(got) != len(want) {
-		return false
-	}
-	seen := map[string]bool{}
-	for _, g := range got {
-		seen[g] = true
-	}
-	for _, w := range want {
-		if !seen[w] {
-			return false
-		}
-	}
-	return true
 }
 
 // treeDiff describes the first difference between two snapshots, or "" when

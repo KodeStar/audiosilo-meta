@@ -71,14 +71,14 @@ func (c *composer) correctData(s sections) {
 		c.fail(StatusInvalid, "the CC0 public-domain dedication checkbox is not ticked")
 		return
 	}
-	loc, ok := resolveRecordRef(s.get(fCorrectRecord))
+	ref, ok := resolveRecordRef(s.get(fCorrectRecord))
 	if !ok {
 		c.fail(StatusNeedsHuman, "could not resolve %q to a record in data/ - a maintainer will locate it", s.get(fCorrectRecord))
 		return
 	}
-	addr, ok := entryAddress(loc)
+	addr, ok := entryAddress(ref)
 	if !ok {
-		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", loc.Kind)
+		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
 		return
 	}
 
@@ -90,14 +90,14 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 
-	kinds, ok := correctableFields[loc.Kind]
+	kinds, ok := correctableFields[ref.kind]
 	if !ok {
-		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", loc.Kind)
+		c.fail(StatusNeedsHuman, "corrections to a %s record are not auto-applied - a maintainer will handle it", ref.kind)
 		return
 	}
 	kind, ok := kinds[fieldName]
 	if !ok {
-		c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, loc.Kind)
+		c.fail(StatusNeedsHuman, "field %q on a %s cannot be auto-corrected (only simple scalar fields are) - a maintainer will apply it", fieldName, ref.kind)
 		return
 	}
 
@@ -155,16 +155,16 @@ func (a entryAddr) label(c *composer) string {
 
 // entryAddress maps a parsed record reference onto its pack address. ok is false
 // for a kind no correction may touch.
-func entryAddress(loc model.Location) (entryAddr, bool) {
-	switch loc.Kind {
+func entryAddress(ref recordRef) (entryAddr, bool) {
+	switch ref.kind {
 	case model.KindWork:
-		return entryAddr{family: pack.FamilyWorks, slug: loc.Slug}, true
+		return entryAddr{family: pack.FamilyWorks, slug: ref.slug}, true
 	case model.KindRecording:
-		return entryAddr{family: pack.FamilyWorks, slug: loc.WorkSlug, recSlug: loc.Slug}, true
+		return entryAddr{family: pack.FamilyWorks, slug: ref.workSlug, recSlug: ref.slug}, true
 	case model.KindPerson:
-		return entryAddr{family: pack.FamilyPeople, slug: loc.Slug}, true
+		return entryAddr{family: pack.FamilyPeople, slug: ref.slug}, true
 	case model.KindSeries:
-		return entryAddr{family: pack.FamilySeries, slug: loc.Slug}, true
+		return entryAddr{family: pack.FamilySeries, slug: ref.slug}, true
 	default:
 		// The CC BY-SA sidecars: community prose, never a scalar correction.
 		return entryAddr{}, false

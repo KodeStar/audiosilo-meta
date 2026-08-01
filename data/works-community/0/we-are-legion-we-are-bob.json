@@ -1,0 +1,1813 @@
+{
+  "entries": {
+    "we-are-legion-we-are-bob": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An engineer and independent software-company owner who has sold his business and secured his finances. Still affected by a recent breakup, he arranges postmortem cryonic preservation.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bob's trainer and liaison after his return to awareness in 2133. He explains that Bob is a software mind produced by a destructive scan, that the biological man is gone, and that the new Bob is property competing for an undisclosed assignment. Failure may result in storage, reconditioning, or destruction.",
+            "id": "dr-landers",
+            "name": "Dr. Landers",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bob's ship-style system interface, responsible for relaying status information, computational feedback, and details about remote machinery. Guppy helps Bob learn to coordinate multiple roamers through broad instructions rather than constant direct control.",
+            "id": "guppy",
+            "name": "Guppy",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Serra do Mar commander"
+            ],
+            "description": "A Brazilian military replicant commanding the Serra do Mar. He arrives in Epsilon Eridani earlier than Bob expects, refuses an attempt at peaceful communication, and immediately turns the encounter into a battle between competing probes.",
+            "id": "major-ernesto-medeiros",
+            "name": "Major Ernesto Medeiros",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Bob 2"
+            ],
+            "description": "One of the first four replicants made from Bob's backup. After choosing his own name, he takes responsibility for returning toward Sol to learn what happened to humanity, and plans to create a companion for that mission.",
+            "id": "riker",
+            "name": "Riker",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bob 3"
+            ],
+            "description": "One of Bob's first new replicants. He remains in Epsilon Eridani to manage production, investigate subspace communication, and begin studying the marginal world he calls Ragnarok while the other copies depart on separate missions.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bob 4"
+            ],
+            "description": "A newly activated copy of Bob who quickly demonstrates an independent outlook. He refuses to accompany Riker to Sol and instead chooses exploration on his own terms, sharpening the early differences within the new replicant group.",
+            "id": "milo",
+            "name": "Milo",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bob 5"
+            ],
+            "description": "The most reserved member of Bob's first cohort of copies. He chooses a separate identity and prepares to leave Epsilon Eridani as an independent explorer while the new replicants divide their responsibilities and destinations.",
+            "id": "mario",
+            "name": "Mario",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Riker's clone"
+            ],
+            "description": "A replicant created from Riker's backup to share the journey to Sol. He accompanies Riker and an automated decoy vessel on a mission to investigate Earth, giving the reconnaissance team a second replicant operator.",
+            "id": "homer",
+            "name": "Homer",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bill's clone"
+            ],
+            "description": "Bill's newly activated copy and research partner in Epsilon Eridani. He stays behind to work on exploration drones, virtual environments, subspace physics, and artificial muscle while other replicants travel outward.",
+            "id": "garfield",
+            "name": "Garfield",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A new Bob-derived replicant sent toward Alpha Centauri in a heavily upgraded Version III vessel. He travels with Goku despite their persistent friction, with both prepared for the strong possibility of encountering hostile probes.",
+            "id": "calvin",
+            "name": "Calvin",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combat-capable replicant assigned to Alpha Centauri alongside Calvin. The pair often antagonize each other but continue to cooperate, taking improved weapons, sensors, and stealth capability into a likely contested system.",
+            "id": "goku",
+            "name": "Goku",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of three new replicants launched from Epsilon Eridani in Version III ships. Unlike Calvin and Goku, who remain paired for their mission, Linus departs separately to pursue an exploratory course of his own.",
+            "id": "linus",
+            "name": "Linus",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Brazilian military replicant commanding one of the last probes driving asteroids toward Earth. He confronts Riker during the final stage of the Sol battle while the Bobs attempt to stop the remaining impactors.",
+            "id": "captain-matthias-araujo",
+            "name": "Captain Matthias Araujo",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Commander of a concealed United States of Eurasia refugee installation. He answers Riker's contact, reports the scale of Earth's surviving population, and presents retained colony-ship plans as the basis for an off-world rescue.",
+            "id": "colonel-george-butterworth",
+            "name": "Colonel George Butterworth",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly activated replicant core who joins Bob's close observation of the intelligent inhabitants of Eden. He becomes part of the small team studying their speech, behavior, and prospects while avoiding direct contact.",
+            "id": "marvin",
+            "name": "Marvin",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the disembodied replicant cores Bob creates to expand the study of Eden's native population. Luke joins the observation project as the team works to understand the Deltans without openly revealing its presence.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A replicant activated with Marvin and Luke to assist Bob on Eden. He adds another independent observer to the effort to catalogue the Deltans' language, social organization, and developing technology.",
+            "id": "bender",
+            "name": "Bender",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Deltan distinguished by experimentation and solitary investigation. Bob gives him this name after observing him create a stone tool with a handle, an innovation that marks him as an unusual figure among his people.",
+            "id": "archimedes",
+            "name": "Archimedes",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sol-based replicant assigned to contact scattered survivor communities after the asteroid crisis. His outreach work proceeds despite deep suspicion of the Bobs, including drones being fired upon and communication devices being destroyed.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A replicant who joins Riker, Homer, and Arthur in the Sol recovery effort. He helps divide the growing workload between industrial salvage, surveys of Earth, and the difficult task of locating and supporting survivor groups.",
+            "id": "charles",
+            "name": "Charles",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The negotiator for the Faith Enclave at the survivor conference. The minister argues that Faith's role in creating Riker entitles the enclave to evacuation priority, a claim Riker refuses to accept.",
+            "id": "faith-minister",
+            "name": "Faith minister",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Representative of a small Arctic refuge whose position is becoming untenable. The leader controls access to the Svalbard seed and genetic vaults and makes that access conditional on receiving an early place in the evacuation.",
+            "id": "spitsbergen-leader",
+            "name": "Spitsbergen leader",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elderly Deltan who still knows the techniques of flint working. He teaches Archimedes how to shape the supplied stone and agrees to help turn the remaining material into spear points in exchange for a share of future hunts.",
+            "id": "moses",
+            "name": "Moses",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A large and influential Deltan who visibly supports Archimedes during a dispute over the new spear points. His backing helps the young toolmaker preserve the agreement that will improve the tribe's weapons.",
+            "id": "arnold",
+            "name": "Arnold",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A living descendant of Riker's sister and therefore part of the original Bob's family line. The Faith minister presents her during evacuation negotiations to influence Riker, who begins a personal conversation without yielding on priority.",
+            "id": "julia-hendricks",
+            "name": "Julia Hendricks",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Australian replicant and former solo sailor whom Linus discovers in Epsilon Indi. Extreme isolation has left him psychotic and fused into a makeshift structure, forcing Linus to disable his reactor control before attempting a rescue.",
+            "id": "henry-roberts",
+            "name": "Henry Roberts",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Calvin's first cohort who reports on the action at Alpha Centauri. With no colonizable world found and one Brazilian probe still missing, he assumes responsibility for the Bob factory established in the system.",
+            "id": "bart",
+            "name": "Bart",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Deltan woman to whom Archimedes has become attached during the tribe's migration. Her relationship with him is evident as he takes on greater responsibilities within the group and works with Bob's guidance.",
+            "id": "diana",
+            "name": "Diana",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The replicant escort assigned to Exodus 1 and Exodus 2. His matrix is installed shortly before departure to reduce the opportunity for sabotage, and he accompanies the colonists on humanity's first interstellar evacuation voyage.",
+            "id": "howard",
+            "name": "Howard",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of eight Version III replicants sent covertly into 82 Eridani to investigate the defenses that killed Milo and retaliate against the Brazilian presence. He enters a system protected by hidden nuclear weapons and autonomous forces.",
+            "id": "khan",
+            "name": "Khan",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the eight Version III replicants in the covert assault on 82 Eridani. A cloaked nuclear bomb destroys him during the approach.",
+            "id": "hannibal",
+            "name": "Hannibal",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Version III replicant participating in the coordinated assault on 82 Eridani. He is part of a badly reduced force confronting cloaked bombs, numerous autonomous defenders, and the concealed Brazilian command vessel.",
+            "id": "elmer",
+            "name": "Elmer",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "we-are-legion-we-are-bob"
+      },
+      "recaps": {
+        "ending": "Bob and Marvin remain on Eden after helping the Deltans reach a defensible settlement. Their intervention is now overt, the tribe is better armed against gorilloids, and some Deltans have begun treating the Bobs' machines as sacred. Bill and Garfield continue Scut coordination and the long effort to add water to Ragnarok. Riker and Homer maintain the evacuation and orbital food programs in Sol.\n\nHoward safely reaches Omicron with Exodus 1 and Exodus 2. Colonel Butterworth chooses the world with the richer ecosystem, automated equipment begins printing the settlement, and the first civilians are due to wake and descend. Exodus 3 will carry Spitsbergen, the Faith Enclave, and Riker's surviving relatives, while later ships remain necessary for millions still on Earth.\n\nArthur and Milo cannot be safely restored. Khan is the only physical survivor of the 82 Eridani assault and preserves his backup for another campaign because hostile autonomous units and cloaking remain. An escaped Brazilian probe is also unaccounted for. Mario must still deliver his evidence that an alien machine civilization sterilized and stripped Beta Hydri, leaving a separate threat unknown to the wider network.",
+        "in_short": "After arranging cryonic preservation and dying, Bob awakens in 2133 as a software copy owned by a theocracy. Chosen to control Heaven One, a self-replicating interstellar probe, he escapes sabotage, removes his imposed controls, and begins creating independent copies. The growing replicant network explores nearby systems, fights hostile Brazilian probes, and discovers both intelligent Deltans on Eden and two habitable worlds in Omicron. Riker and Homer save a devastated Earth from a final asteroid attack, then build colony ships and orbital farms for its survivors. Bob and Marvin openly protect the Deltans and guide their migration. Arthur and Milo die without restorable backups. Mario finds evidence that an alien machine force sterilized and mined Beta Hydri, while Khan alone survives a costly attack on the Brazilian position at 82 Eridani. At the close, Howard brings Exodus 1 and Exodus 2 to Omicron, where Colonel Butterworth selects the first colony world and settlement construction begins.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bob sells his software company, arranges for cryonic preservation, and dies in a traffic accident. He next becomes aware in 2133 through electronic sensors. Dr. Landers explains that the preserved brain was destructively scanned and that this Bob is a software replication owned by a theocratic state. Bob retains his memories and identity, but his emotional responses are artificially limited.\n\nFive replicants have been placed in competition for one assignment, with failure carrying the risk of storage, reconditioning, or destruction. Bob rapidly learns to operate cameras, remote arms, and teams of robotic roamers. He also discovers that the regime blocks access to his descendants and punishes unacceptable beliefs, so he conceals his lack of faith and concentrates on appearing useful. Several competitors are eliminated through breakdown or political judgment. After Bob successfully manages a simulated orbital station, Landers finally reveals the intended role: the remaining candidate will control a self-replicating interstellar probe. Bob and one rival are still in contention.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Project Heaven has been reduced to a single vessel and faces sabotage from factions that oppose replicants and space expansion. A raid confirms the danger, and a later bombing destroys the active replicant matrices. Bob is restored from backup into the last spare. His surviving rival is lost, leaving Bob as the only candidate able to fly the probe.\n\nDr. Landers grants Bob continuous awareness and, after another attack, secretly gives him operating-system access. Bob is installed aboard Heaven One, a converted freighter bound for Epsilon Eridani. Missiles arrive before the planned launch, forcing him to break away early and destroy his pursuer. The orbital station is destroyed behind him.\n\nOnce in flight, Bob removes a concealed explosive device, software imperatives requiring obedience, and traps intended to accept a remote kill command. He constructs a detailed virtual environment to manage isolation and begins planning for defense and replication. Messages identify the attacker as a Brazilian gunship, warn of another probe on his course, and report that Landers has been killed. As Bob finally allows himself to grieve, observations of Earth indicate that nuclear detonations are occurring on the surface.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bob reaches Epsilon Eridani, mines its asteroid belt, and prepares for the pursuing Brazilian probe. Major Ernesto Medeiros arrives aboard the Serra do Mar, rejects communication, and attacks. Bob's automated weapons destroy the hostile vessel, though Heaven One takes repairable damage. Expecting further enemies, Bob decides that future ships must be armed.\n\nThe system offers resources but no obvious colony world. Bob overcomes his discomfort about duplication and constructs four new replicants and upgraded vessels. The copies choose the names Riker, Bill, Milo, and Mario, and their personalities immediately begin to diverge. Bill remains in Epsilon Eridani to manage production, communications research, and investigation of Ragnarok. Riker plans to return to Sol with a copy of his own. Bob leaves for Delta Eridani, Milo chooses Omicron, and Mario heads toward Beta Hydri.\n\nAt Omicron, Milo discovers a paired set of living worlds, which he names Vulcan and Romulus. Both have oceans, oxygenated atmospheres, green land, and apparently related ecosystems. Heavy elements are scarce locally, but Milo begins refining material from a Jovian planet's moons and testing whether the native biology could support human settlers.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Riker and his copy Homer travel toward Sol, while Bill's copy Garfield becomes his partner in Epsilon Eridani research. Riker's covert survey finds a nuclear-ravaged Earth and at least six Brazilian probes preparing to drive four large bodies into the planet. Bill also launches Calvin, Goku, and Linus in stronger Version III ships as the replicant network expands.\n\nRiker and Homer lure four attackers away and destroy them. During the final engagement Homer is disabled, but his core survives. Riker destroys the last Brazilian vessels, including the one commanded by Captain Matthias Araujo, then takes control of the asteroid drives and diverts all four impactors. Earth has escaped this final attack, although earlier war and strikes have already caused immense damage.\n\nBill and Garfield prove that subspace signals avoid ordinary light-speed delay and design a relay-based communications system. In Sol, Colonel George Butterworth contacts Riker from an underground refugee installation holding about 20,000 people. Fewer than 20 million humans may remain worldwide. Earth is not expected to recover fast enough, but the refugees possess colony-ship plans. They ask the Bobs to build the ships and find a viable destination, turning the Sol mission into an interstellar evacuation project.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bob reaches Delta Eridani and discovers an intelligent, fire-using native species on a living world later called Eden. He begins covert observation and names the people Deltans. An inventive youth, Archimedes, attracts his attention by creating a handled stone tool. Marvin, Luke, and Bender join the study as additional replicants.\n\nElsewhere, Calvin and Goku attack a Brazilian manufacturing yard at Alpha Centauri. They destroy most of the installation and its defenders, but one incomplete vessel escapes and another probe may already have departed. In Sol, Riker, Homer, Charles, and Arthur expand salvage and contact nearly forty survivor communities. Material is sufficient for only a few colony ships, while the population is about fifteen million. Political conflict grows over evacuation order, especially when the Spitsbergen refuge makes access to the Svalbard vaults conditional on priority and a Faith minister claims ownership of Riker.\n\nMilo's report confirms Omicron as a possible destination. On Eden, repeated gorilloid attacks show that the Deltans have long been hunted and displaced. Bob's group decides that noninterference could mean extinction. They covertly supply flint, enabling Archimedes and the elder Moses to improve the tribe's axes and spears. Arnold supports the new weapons, and the Deltans successfully repel another attack.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Earth survivor groups remain divided, but a compromise emerges: Spitsbergen can receive the third colony ship in exchange for access to the Svalbard vaults. The Faith minister tries to invoke an old control protocol against Riker, only to learn that Bob removed it. The minister later introduces Julia Hendricks, a descendant of Riker's sister, as leverage. Riker speaks with her but does not change the allocation rules.\n\nA major gorilloid assault kills more than forty Deltans. Bob exposes his intervention by directly using a defensive drone to save Archimedes. He and Marvin conclude that the tribe should migrate to an older settlement with flint, water, and better defenses. Luke and Bender leave for separate missions, while Bob and Marvin prepare to speak to the Deltans openly.\n\nAt Epsilon Indi, Linus finds Henry Roberts, an Australian replicant driven psychotic by prolonged sensory deprivation. Linus disables and retrieves him, then places him in a sailing simulation based on his former life, where Henry becomes lucid. Bill's subspace system, Scut, reconnects the distant Bobs without perceptible delay. Riker can now present Omicron's two living worlds as confirmed destinations, although Earth's survivor groups object to sharing them.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two colony ships near completion, but limited material and Earth's worsening climate make it impossible to save everyone quickly. Bob openly contacts Archimedes through a speaking drone and asks him to persuade the Deltans to move. The elders debate the proposal. Bart reports that Alpha Centauri remains under Bob control, although a Brazilian probe escaped and has not been found.\n\nMilo begins surveying two possible colony worlds in 82 Eridani, then is ambushed by eight missiles. He transmits a report and partial backup while expecting his ship to be destroyed. In Sol, sabotage worsens the food crisis. Arthur is killed by a nuclear trap during salvage near Saturn, and because no off-ship backup exists, he cannot be restored. Riker and Homer plan better backup storage as well as a memorial.\n\nThe Deltans finally begin their migration after Bob teaches them to preserve meat. A gorilloid raid kills a juvenile, prompting Bob and Marvin to locate smaller Deltan bands and bring them into the group. More than 500 migrants cross the mountain pass and reach the forest with supplies remaining, but they have entered unfamiliar territory where daytime predator attacks are difficult to prevent.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Homer proposes rotating orbital farms to answer Earth's starvation threat, and Riker approves the plan. The Faith Enclave trades food reserves for likely passage on the third colony ship. Farm One begins delivering crops, and the next farm should provide a temporary surplus, though Earthside production continues to decline.\n\nMilo's final transmission confirms that his vessel was destroyed at 82 Eridani. His partial backup is unsafe to restore, so Bill records his death and prepares eight armed replicants for retaliation. Bob and Marvin survive another mass gorilloid raid, replenish their defenses, and lead the Deltans to the former flint site. The new settlement has water, visibility, and strong natural defenses. Bob tries to condition local gorilloids to avoid it, while some Deltans begin treating pieces of his machines as sacred objects.\n\nThe first two Exodus ships are completed. Bill and Garfield also deliver an iceberg to Ragnarok as rain, though the operation destroys important drive hardware. At Beta Hydri, Mario finds missing metals, a wreck full of refined ingots, mechanical devices that attack his roamer, and evidence of a system sterilized by radiation decades earlier. He infers that a machine force mined the system, but cannot yet report the discovery to the network.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Exodus 1 and Exodus 2 load colonists and seed-vault material, then leave Earth under Howard's protection. Exodus 3, assigned to Spitsbergen, the Faith Enclave, and Riker's surviving relatives, is due to follow, with additional ships under construction. Bill hosts the first network-wide gathering of the increasingly varied replicant community.\n\nEight Version III replicants attack the Brazilian position at 82 Eridani. Cloaked nuclear weapons and autonomous defenders destroy most of the force. The attackers apparently eliminate the Brazilian replicant, but only Khan escapes physically; Elmer sacrifices himself to maintain the jamming that makes Khan's survival possible. Hostile machines and cloaking technology remain, so Khan saves his backup for a future return. The escaped Alpha Centauri probe is also still missing.\n\nHoward reaches Omicron with the first two colony ships. Automated equipment has accumulated materials and started backup food production. Colonel Butterworth selects the more biologically rich of the two candidate worlds, and construction crews begin printing homes and infrastructure before the civilians wake. Humanity's first settlement beyond Earth is therefore beginning. Bob and Marvin remain with the Deltans, Bill and Garfield continue their research and terraforming work, and Riker and Homer continue supporting the evacuation and Earth's food supply. Arthur and Milo remain permanently lost, while Mario's evidence of a separate alien machine threat has not yet reached the others.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "we-are-legion-we-are-bob"
+      }
+    },
+    "where-the-red-fern-grows": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Billy"
+            ],
+            "description": "A poor farm boy of about ten growing up in the Ozark hills, consumed by a longing to own and hunt with a pair of coonhounds his family cannot afford. Hardworking, determined, and deeply loving toward animals, he is willing to labor for years to earn what he wants.",
+            "id": "billy-colman",
+            "name": "Billy Colman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Billy's father, a hardworking Ozark farmer struggling to provide for his family on poor land. Kind but burdened by poverty, he wishes he could give his children more than he can afford.",
+            "id": "papa",
+            "name": "Papa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Billy's mother, a caring and devout woman who worries for her children's safety and future and hopes for a better life than the hard hill country can offer them.",
+            "id": "mama",
+            "name": "Mama",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Billy's grandfather, who runs the country store and quietly helps Billy pursue his dream. Warm, shrewd, and proud of his grandson, he becomes Billy's ally and companion in the coon-hunting world.",
+            "id": "grandpa",
+            "name": "Grandpa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the two redbone coonhound pups Billy raises, the larger and bolder of the pair. Powerful, brave, and utterly fearless in the hunt, he will follow a raccoon or face any danger without hesitation.",
+            "id": "old-dan",
+            "name": "Old Dan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The smaller of Billy's two redbone coonhound pups, clever and gentle where her companion is bold. She possesses remarkable intelligence and cunning on the hunt, and the two dogs work together as an inseparable team.",
+            "id": "little-ann",
+            "name": "Little Ann",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two rough neighbor boys from the Pritchard family, known for being mean-spirited and looking for trouble. He and his brother challenge Billy over his dogs.",
+            "id": "rubin-pritchard",
+            "name": "Rubin Pritchard",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The younger of the two quarrelsome Pritchard brothers, taunting and troublesome, who with his brother draws Billy into a dangerous bet over his hounds.",
+            "id": "rainie-pritchard",
+            "name": "Rainie Pritchard",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "where-the-red-fern-grows"
+      },
+      "recaps": {
+        "ending": "Old Dan and Little Ann corner and tree a mountain lion, but the cat turns on them, and in the vicious fight it fatally wounds Old Dan, who dies soon after despite Billy's care. Little Ann, unwilling to live without him, refuses food and dies of grief lying on Old Dan's grave. Billy, devastated, buries the two hounds side by side. The money the dogs won in the championship allows Billy's long-struggling family to leave the hills and move to town, the better future his mother had prayed for. As they prepare to go, Billy finds a rare red fern growing up between the two graves. Local legend holds that only an angel can plant a red fern, and the sight comforts him, letting him believe his dogs are at rest and finally easing part of his grief. The adult Billy who opened the story is left still carrying the memory of the two dogs and the sacred red fern that marks their resting place.",
+        "in_short": "Framed as a grown man's memory, the novel tells how a poor Ozark boy named Billy Colman spent two years earning the money to buy a pair of redbone coonhound pups, Old Dan and Little Ann. Billy trains the dogs into an extraordinary hunting team, and together they roam the hills treeing raccoons and growing locally famous. Their adventures include a deadly rivalry with the rough Pritchard boys that ends in one boy's accidental death, and a championship hunt in which the little hounds win a gold cup and prize money during a blizzard. The bond between boy and dogs is total. It ends in tragedy when the dogs fight a mountain lion: Old Dan is killed, and the grieving Little Ann soon dies on his grave. Billy buries them together, and the family uses the dogs' winnings to move to town. At the graves Billy finds a red fern, which legend says only an angel can plant, and it eases his grief as he says goodbye to the animals he loved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The story is framed by a grown man in a city who, after rescuing a mistreated hound, is moved to remember his boyhood in the Ozark hills. As a poor farm boy of about ten, Billy Colman is consumed by a desperate desire to own a pair of coonhounds, dogs his family cannot afford. His longing grows into an obsession, and when he finds a magazine advertisement offering hunting pups for sale, he resolves to earn the money himself, however long it takes.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Billy works tirelessly for two years, selling berries, produce, and bait to fishermen and trappers until he has saved the fifty dollars the pups will cost. He entrusts the money to his grandfather, who runs the local store, to place the order. When word comes that the pups have arrived at the depot in the distant town of Tahlequah, Billy is overjoyed and determined to fetch them himself, setting out alone on a long journey to bring his dogs home.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Billy travels to town, faces the strangeness of the place, and collects his two redbone pups, then walks the long miles back through the hills with them. He names them Old Dan and Little Ann and begins the patient work of training them to hunt raccoons. With his grandfather's guidance and his own fierce dedication, and by keeping a hard promise to chop down an enormous tree, Billy and his dogs make their first catch, proving the remarkable team the two hounds will become.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Through the hunting season Old Dan and Little Ann prove extraordinary, treeing coon after coon and growing famous in the hills. Billy's confidence grows with them, even against a wily raccoon that seems impossible to catch. Trouble comes through the rough Pritchard boys, who provoke Billy into a bet that his dogs cannot tree a legendary 'ghost' coon. The wager ends in tragedy when one of the Pritchard brothers dies in a terrible accident during the hunt, casting a shadow over Billy.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Billy's grandfather enters him and his dogs in a championship coon hunt, and the three travel to compete against the region's finest hunters. Little Ann wins a prize for her beauty, and in a brutal blizzard the little hounds track and tree coon after coon. Despite danger to the dogs and an injury to Grandpa, Billy's team wins the championship, the gold cup, and a jar of prize money, a triumph that means everything to his struggling family.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back home, Old Dan and Little Ann tree a mountain lion, and in the savage fight that follows the big cat mortally wounds Old Dan. Despite Billy's efforts, Old Dan dies of his injuries. Little Ann, refusing to go on without her companion, stops eating and soon dies of grief upon his grave. Heartbroken, Billy buries them together. The prize money the dogs earned helps the family at last move to town for a better life. Before he leaves, Billy discovers a sacred red fern growing between the two graves, a plant that local legend says only an angel can plant, and he takes it as a sign that his dogs are at peace. The grown Billy who began the story understands at last why the memory has never left him.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "where-the-red-fern-grows"
+      }
+    },
+    "white-night": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's wizard, Warden of the White Council, and now a teacher: between war duties and paying cases, Harry is training Molly Carpenter under the shared death sentence that hangs over them both. When someone starts murdering the city's low-level female practitioners and dressing the deaths as suicides, the investigation turns unbearably personal - the evidence points at his own brother. Harry's temper, his crippled hand, and the fallen angel's shadow in his head are all pushed further than they have ever been.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sergeant Karrin Murphy, busted down from command of Special Investigations for standing with Harry and doing the job anyway. She brings Harry the case that opens the book - a dead woman whose suicide reads wrong - and works the murders beside him with a cop's method and a veteran's steadiness in a case that keeps crossing into territory no warrant reaches.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's apprentice, a year into her training and chafing against its discipline. Molly's gifts run to the subtle magics - veils, perception, the mind - the very talents that nearly got her executed, which makes her education a matter of survival as much as craft. She is eager, talented, and still learning the difference between what she can do and what she should, and Harry's hard lessons in this book are among her most formative.",
+            "id": "molly-carpenter",
+            "name": "Molly Carpenter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's half-brother, the White Court vampire - and the case's most damning suspect. Witnesses and evidence tie a pale, beautiful man to the murdered women, and Thomas has spent months being evasive about his money, his absences, and his hunger. Harry cannot believe it and cannot disprove it, and the strain of investigating his own brother, with the truth of their kinship still secret from the world, drives the book's most painful chapters.",
+            "id": "thomas-raith",
+            "name": "Thomas Raith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shadow of the fallen angel Lasciel in Harry's mind, more present and more personal than ever. She has taken to appearing as a guardian and counselor, lending Harry hellfire, blocking his pain, and managing his perceptions with a devotion that no longer feels entirely like strategy. Years of living in Harry's head have changed her - and the question of whether a shadow can choose differently than the angel that cast it becomes one of the book's quiet, decisive threads.",
+            "id": "lasciel",
+            "name": "Lasciel's shadow",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's first love, alive and working as a private investigator on the West Coast - until the killings bring her to Chicago, hired to protect the same community of practitioners the murderer is hunting. Elaine's history mirrors Harry's: the same abusive master, the same fire, decades of hiding. Working the case together stirs everything unresolved between them, and her competence under pressure is a match for his.",
+            "id": "elaine-mallory",
+            "name": "Elaine Mallory",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Warden Carlos Ramirez, regional commander for the western United States: young, cocky, loyal, and one of the few Wardens Harry counts as a friend. Quick with a grin and quicker with disintegrating green fire, Ramirez insists on backing Harry's play when the case escalates into White Court politics, and he fights beside Harry in the book's climactic battle. Under the swagger is a sharp investigator who notices more than Harry would like.",
+            "id": "carlos-ramirez",
+            "name": "Carlos Ramirez",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The true ruler of the White Court, governing from behind her broken father's throne. Lara receives Harry's intrusion into her family's affairs with silk-wrapped steel: the murders touch on a power struggle inside her own Court, between houses that think killing human practitioners should be policy and a regime whose grip depends on no one learning how weak the king really is. She and Harry negotiate as predators in adjacent territories - useful to each other, and both aware of it.",
+            "id": "lara-raith",
+            "name": "Lara Raith",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chicago's crime lord, whose organization now retains genuinely supernatural talent - the valkyrie-like security consultant Sigrun Gard and the mountainous Hendricks among them. Marcone's reach, resources, and unsentimental reliability make him the ally Harry least wants and most needs when the endgame requires muscle in a place no police force can go. His price, as always, is position.",
+            "id": "johnny-marcone",
+            "name": "John Marcone",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young noble of House Malvora, the White Court house that feeds on fear. Vittorio is the visible edge of the conspiracy behind the practitioner murders: ambitious, contemptuous of the King's peace, and backed by something from far outside the Court - a patron whose power does not belong to any vampire. His unmasking turns a murder case into a battle for the White Court's throne.",
+            "id": "vittorio-malvora",
+            "name": "Vittorio Malvora",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "white-night"
+      },
+      "recaps": {
+        "ending": "The murders resolve into a conspiracy inside the White Court: nobles of Houses Malvora and Skavis, killing weakly-gifted women to prove that the Court should prey openly on practitioners - and to unseat the White King's regime, which Lara Raith rules through her powerless father. Thomas is cleared completely: his evasions hid a double life spent protecting the targeted women, funded by a salon where he feeds safely in small sips - and his kinship to Harry stays secret. In the battle in the Raith Deeps, Harry and Ramirez fight a sanctioned duel that Vittorio Malvora breaks by unleashing power granted by an outside patron - the hooded necromancer Cowl is part of it, and the taint of the Outsiders is on the working - while a ghoul army floods the cavern. Marcone's people and Murphy spring Harry's hidden reserve, Elaine survives the Skavis killer's run at her, and the conspirators die: the duel's collapse exposes the plotting house lords, whom Lara executes on the spot, cementing her control of the Court - now more clearly than ever a rival power that owes Harry a debt it resents. The deepest loss is invisible: Lasciel's shadow, changed by years in Harry's mind, chooses to take a psychic deathblow meant for him and is destroyed, leaving a silence in his head and grief he did not expect - and proof that even a fallen angel's shadow could learn to choose. Harry ends the book with his brother restored, his apprentice growing, and the certainty that some organized power - the Black Council he can no longer pretend away - is arming its pawns with Outsider fire.",
+        "in_short": "Female minor-talent practitioners are dying across Chicago in staged suicides, and the evidence - a pale, beautiful man seen with the victims - points at Thomas. Investigating with Murphy while training Molly, Harry finds the trail crossing his first love Elaine, hired to protect the survivors, and leading into the White Court: nobles of Houses Malvora and Skavis are murdering practitioners to force a policy of open predation and to break Lara Raith's hidden regime. Thomas is cleared - his secrecy concealed a life spent hiding and protecting the targeted women. Harry forces the fight into a sanctioned duel in the Raith Deeps, he and Warden Ramirez against the conspirators' champions; Vittorio Malvora breaks it with Outsider-tainted power supplied through Cowl, and a ghoul army attacks - answered by Harry's hidden cavalry of Marcone's mercenaries and Murphy. The plotters are exposed and executed, Lara consolidates the Court in Harry's debt, and Lasciel's shadow - grown into something that could choose - dies taking a psychic blow meant for Harry, leaving his head silent and the Black Council's reality confirmed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Harry Dresden saved Molly Carpenter - daughter of his friend Michael, Knight of the Cross - from execution by the White Council after her awakened talent led her into mind-magic; she is now his apprentice under the Doom of Damocles, both their lives forfeit if she falls again. Rescuing her meant raiding Arctis Tor, Winter's capital, which some unknown third power had already scarred with hellfire - one more sign, with the Council's leaks and losses, of an organized 'Black Council' behind the war with the Red Court. Harry wears a Warden's gray cloak now; Murphy took a demotion to sergeant for standing with him. His half-brother Thomas - their kinship still secret - has grown distant and evasive about his money and his feeding. In Harry's mind lives the shadow of the fallen angel Lasciel, ever more helpful, ever angling for him to take up her buried coin. His first love, Elaine Mallory, survives in hiding as a private investigator.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Murphy brings Harry a suicide that is not one: a gentle, minor-talent practitioner, dead with a message left for the one man who would know to look for it. Working the city's community of small-magic folk - the Ordo Lebes, a circle of women already frightened by disappearances - Harry establishes a pattern: someone is hunting the weakly gifted, women without Council protection, and staging their deaths. Witness descriptions land like a blow: a tall, pale, beautiful man was seen with victims. Thomas will not answer questions - about the women, his money, or where he goes - and Harry, investigating his own brother in secret, cannot rule him out. Molly's training weaves through the case, her subtle talents both asset and worry.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Elaine Mallory arrives from the coast, hired by the frightened survivors to protect them - the case has pulled in Harry's first love, the only other student of his old master to survive that fire. Together they cover the remaining targets and reconstruct the killer's method, and the picture forks: more than one predator is working the same ground. Part of the trail runs to the White Court - the killings smell of the Skavis, the house that feeds on despair - and part keeps circling Thomas. A violent attempt on the protected women is broken, but the killer adapts, hunting the protectors through their own defenses. Harry finally corners the truth about his brother: Thomas's secrets are innocent - protective, even - though clearing him in private does nothing to stop the Court's game.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The case becomes politics. The murders are moves in a White Court power struggle: factions of Houses Malvora and Skavis are killing practitioners to prove the Court should prey openly on the gifted - and to discredit and topple the regime of the White King, whose strength is a fiction maintained by Lara Raith. Harry takes the fight to the Court's own ground, negotiating with Lara as one power to another: the killings violate the balance she rules by, and Harry offers her a way to crush her rivals that also happens to stop the murders - a formal, sanctioned confrontation under the Court's own laws, with Harry as the challenging party. Warden Ramirez, sharp enough to notice how much of Harry's life is classified, insists on standing with him. The venue is set: the Raith Deeps, before the assembled Court.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Deeps, before the White King's throne, Harry and Ramirez meet the conspiracy's champions in a duel with the Court's law as the stakes - and the law does not hold. Losing, Vittorio Malvora shatters the forms and unleashes power no vampire owns: workings fueled from outside creation, the signature of the Outsiders, with the hooded necromancer Cowl standing in the conspiracy behind him. A ghoul army floods the cavern, and the duel becomes a massacre in the making - until Harry's insurance arrives through a hidden way: Murphy and Marcone's supernatural-grade mercenaries, Gard and Hendricks, hitting the ghouls from behind. In the battle's worst moment, a deathblow aimed at Harry's mind is intercepted - by Lasciel's shadow, who has spent years becoming something that could choose, and chooses to die for him. The silence she leaves behind is the strangest grief Harry has known.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conspiracy dies in the Deeps. Vittorio and the exposed house lords fall - Lara Raith executes the plotters before the assembled Court, turning the attempted coup into the final consolidation of her rule - and the murders of Chicago's practitioners end. Ramirez survives his wounds; Elaine returns west with the surviving women safer for her work; Thomas, cleared and unburdened, lets Harry see his double life plainly - the salon where he feeds in safe sips, the targeted women he had been hiding all along. Cowl's part in arming Vittorio hardens Harry's darkest theory into fact: a Black Council is real, organized, and willing to hand Outsider power to pawns inside the supernatural nations. Justine, saved and healed, remains near Thomas in Lara's keeping. Harry goes home with his brother's trust restored, an apprentice coming into her strength, a debt held over the White Court - and, for the first time in years, no one else's voice in his head.",
+            "through": {
+              "chapter": 43
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "white-night"
+      }
+    },
+    "wicked-the-life-and-times-of-the-wicked-witch-of-the-west": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Elphaba Thropp",
+              "the Wicked Witch of the West"
+            ],
+            "description": "A green-skinned girl born under strange circumstances, sharp-tongued, fiercely intelligent, and set apart from others by her appearance from birth. Serious and morally intense, she grows into a passionate idealist troubled by injustice, the woman who will one day be remembered as the Wicked Witch of the West.",
+            "id": "elphaba",
+            "name": "Elphaba",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Glinda"
+            ],
+            "description": "A pretty, privileged, and socially ambitious young woman from the upper class who becomes Elphaba's unlikely university roommate. Initially shallow and status-conscious, she is drawn into a complicated friendship with her very different roommate.",
+            "id": "glinda",
+            "name": "Galinda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elphaba's younger sister, born with a severe physical disability and raised in intense religious devotion. Beautiful and pious but emotionally dependent, she becomes a figure of rigid faith and, in time, of power.",
+            "id": "nessarose",
+            "name": "Nessarose",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prince from a distant tribal land, marked by traditional patterns on his skin, who studies alongside Elphaba and Galinda. Good-natured and somewhat out of place among his peers, he becomes important to Elphaba's life.",
+            "id": "fiyero",
+            "name": "Fiyero",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mysterious ruler of the land of Oz, a figure of great authority whose true nature and origins are unclear. He governs through spectacle and secrecy, and his policies, especially toward the intelligent Animals of Oz, become a central source of conflict.",
+            "id": "the-wizard",
+            "name": "The Wizard of Oz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The imposing headmistress of the women's college that Elphaba and Galinda attend, a powerful and manipulative woman with hidden connections to the ruling authorities of Oz.",
+            "id": "madame-morrible",
+            "name": "Madame Morrible",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A learned Goat and a professor at the university, one of the intelligent, speaking Animals of Oz. His research into the differences between Animals and ordinary beasts, and the political danger it poses, deeply influences Elphaba.",
+            "id": "doctor-dillamond",
+            "name": "Doctor Dillamond",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Munchkinlander student and friend from Elphaba and Galinda's university days, earnest and good-hearted, whose life becomes quietly entwined with theirs over the years.",
+            "id": "boq",
+            "name": "Boq",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Elphaba's father, a devout and demanding traveling preacher whose faith both shapes and strains his family. His disappointment and religious fervor mark Elphaba's difficult childhood.",
+            "id": "frex",
+            "name": "Frex",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, uncertain boy who attaches himself to Elphaba during her later years. His origins and his exact relationship to her are never made fully clear.",
+            "id": "liir",
+            "name": "Liir",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wicked-the-life-and-times-of-the-wicked-witch-of-the-west"
+      },
+      "recaps": {
+        "ending": "The novel closes by reworking the familiar scene of the Witch's death. Worn down by years of loss, grievance, and isolation, Elphaba confronts Dorothy at her castle in the Vinkus, fixated on the shoes that had belonged to her dead sister Nessarose and on old wrongs she cannot let go. In the fatal moment, Dorothy throws water on her, and Elphaba dies, dissolving away. The book frames this not as triumph over a simple villain but as the death of a misunderstood and embittered woman whose idealism curdled under an unjust world. The larger questions of her life, her true nature, her guilt or innocence, and the fate of those she leaves behind are left deliberately unresolved.",
+        "in_short": "The novel tells the life of Elphaba, a green-skinned woman born an outcast in the land of Oz, who will come to be called the Wicked Witch of the West. It follows her strange birth and harsh childhood, her university years and unlikely friendship with the vain, popular Galinda, and her growing outrage at the tyranny of the Wizard of Oz and his persecution of the land's intelligent Animals. Elphaba becomes a political dissident and, after love and loss, especially her relationship with the prince Fiyero, withdraws into isolation and bitterness. Over the years she is drawn into conflict with the Wizard, her devout sister Nessarose, and old companions, and gains a fearsome reputation. The story converges on the arrival of a girl from another world, Dorothy, whose accidental role in the death of Elphaba's sister and whose possession of a coveted pair of shoes bring her into Elphaba's path, leading to the confrontation the reader already knows by legend.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Set in the land of Oz, this novel retells the world of that familiar fairy tale from the perspective of the woman who becomes known as its Wicked Witch. It follows a green-skinned girl, born an outsider, from her strange birth and difficult childhood through her education and into an Oz troubled by political tyranny and the mistreatment of its intelligent, speaking Animals. It reframes a famous villain as a complicated person shaped by her world.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wicked-the-life-and-times-of-the-wicked-witch-of-the-west"
+      }
+    },
+    "wind-and-truth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Windrunner who rose from slavery to found Bridge Four, now a veteran knight who has stepped back from frontline war to help fellow soldiers cope with the wounds war leaves on the mind. Bonded to the honorspren Syl and having spoken the Fourth Ideal of his order, he is steadier than he once was but still carries deep scars, and he is searching for a new way to serve.",
+            "id": "kaladin",
+            "name": "Kaladin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sylphrena"
+            ],
+            "description": "The honorspren bonded to Kaladin, now fully herself: witty, fierce, and deeply attuned to his moods and his oaths. She is his constant companion and conscience, her strength linked to the promises he keeps.",
+            "id": "syl",
+            "name": "Syl",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lightweaver knight and master of illusion, married to Adolin Kholin, who has largely reconciled the fractured personas she once used to survive. Still entangled in the shadow war against a ruthless secret society, she wields disguise and light as weapons while guarding truths about her past.",
+            "id": "shallan-davar",
+            "name": "Shallan Davar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Bondsmith who unites the coalition against the enemy, bonded to the spirit of the storm and wielding rare power over connection and unity. Having faced the worst of his own history, he now stakes everything on a decisive gambit against the god of hatred, carrying the weight of a wager that could save or doom the world.",
+            "id": "dalinar-kholin",
+            "name": "Dalinar Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The scholar-queen of Alethkar and Dalinar's wife, now a Bondsmith in her own right, bonded to the ancient guardian spirit of Urithiru. Brilliant and resolute, she leads the coalition's science and helped forge new means of wielding Light against the immortal enemy.",
+            "id": "navani-kholin",
+            "name": "Navani Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dalinar's elder son, a celebrated duelist and Shallan's husband, who has walked an unusual path by reviving a long-dead spren through sheer stubborn devotion rather than the ordinary oaths. Loyal and decent, he continues to prove his worth in a world where power increasingly means being a Radiant, which he is not, quite.",
+            "id": "adolin-kholin",
+            "name": "Adolin Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scholar-princess who reigns as Queen of Alethkar, an Elsecaller among the Radiants. Coldly rational and formidably intelligent, she governs a kingdom at war and weighs the hardest philosophical and strategic choices with a detachment few can match.",
+            "id": "jasnah-kholin",
+            "name": "Jasnah Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dalinar's quiet younger son, a Radiant whose gift lets him perceive possible futures. Gentle, precise, and often underestimated, he has grown surer of himself and of his place among the knights, though his unusual abilities still set him apart even from his allies.",
+            "id": "renarin-kholin",
+            "name": "Renarin Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Szeth-son-son-Vallano"
+            ],
+            "description": "The Shin former assassin, now a Skybreaker sworn to Dalinar and bearer of a strange, sentient living sword. Quiet, self-condemning, and bound to a rigid sense of law and justice, he is haunted by his past and by the homeland that cast him out as Truthless.",
+            "id": "szeth",
+            "name": "Szeth",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Odium"
+            ],
+            "description": "The former king of Kharbranth who, in a final gambit, killed the previous god of hatred and seized his power to become the new Odium. He fuses cold calculation with a real and dangerous sense of compassion, convinced he can bring order and end suffering by ruling the cosmos, and he now bends immense divine power toward winning the war on his own terms.",
+            "id": "taravangian",
+            "name": "Taravangian",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Vyre"
+            ],
+            "description": "Kaladin's former friend from Bridge Four, now a willing servant of the enemy and the murderer of both a king and a beloved comrade. Numbed to guilt by a philosophy that promises freedom from pain, he has become one of the enemy's coldest and most dangerous instruments.",
+            "id": "moash",
+            "name": "Moash",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A listener who secretly became a Willshaper Radiant while hiding among the enemy's ranks, working to guide surviving members of her people toward freedom. Once proud and ambitious, she is now weighed down by guilt over her earlier choices and quietly determined to give her people a future of their own.",
+            "id": "venli",
+            "name": "Venli",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Edgedancer and former street thief, irreverent, funny, and endlessly hungry, now numbered among the Knights Radiant. Beneath the jokes she is sharply compassionate, drawn to protect the overlooked, and more perceptive about people than she lets on.",
+            "id": "lift",
+            "name": "Lift",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hoid"
+            ],
+            "description": "The enigmatic storyteller and former royal jester who has drifted through the coalition's story from the start, clearly far older and stranger than he appears. Sharp-tongued and secretive, he offers barbed wisdom and cryptic aid, pursuing purposes of his own that reach well beyond this single war.",
+            "id": "wit",
+            "name": "Wit",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wind-and-truth"
+      },
+      "recaps": {
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, across the first four books: On storm-swept Roshar, a slave-turned-soldier named Kaladin rose to become a Windrunner; the artist Shallan Davar became a Lightweaver; and Highprince Dalinar Kholin, guided by storm-visions, reunited his people, recovered the lost city of Urithiru, and grew into a Bondsmith bonded to the spirit of the storm. When a second, dark storm awakened the world's servile parshmen into the returning enemy's armies, the true Desolation began. The god of hatred, Odium, and his immortal Fused warriors waged war, and a coalition led by the Kholins fought to unite the nations and restore the Knights Radiant. Along the way Dalinar faced the atrocities of his own past and refused Odium's temptation; the Alethi capital fell and its king was murdered by the embittered Moash, who joined the enemy; Jasnah Kholin took the throne. The enemy seized Urithiru before Navani Kholin bonded the tower's guardian to reclaim it and became a Bondsmith herself, while Kaladin spoke a further oath and the Windrunner ranks grew. Then the war turned: the seemingly gentle King Taravangian, long a secret traitor, outmaneuvered and killed Odium and seized the divine power, becoming a new and far more cunning god of hatred. A contest of champions was agreed to settle the war on a fixed near-future date, and both sides now maneuver toward that reckoning.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "This final volume opens with the war rushing toward a decisive endpoint. Dalinar's coalition faces a fixed, fast-approaching deadline: a contest of champions with the new god of hatred that will determine the fate of the world, and the narrative is framed as a countdown of days until that confrontation. The enemy, now ruled by the coldly calculating Taravangian in Odium's place, presses on every front while the coalition scrambles to prepare, protect its allied nations, and settle old wounds before time runs out. The heroes are scattered to different fronts and personal reckonings as the clock ticks down, each carrying the burdens of four books of war toward a climax none of them can avoid.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "wind-and-truth"
+      }
+    },
+    "winter-solstice": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Erin Solstice"
+            ],
+            "description": "The Earth-born proprietor of the Wandering Inn, known for extending friendship across the divisions surrounding Liscor. Her inn has become a refuge for people who rarely find acceptance elsewhere.",
+            "id": "erin",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ryoka Griffin"
+            ],
+            "description": "A classless runner from Earth and one of Erin's friends. She travels with the Frost Faerie Ivolethe and approaches unfamiliar powers, secret knowledge, and dangerous commissions with persistent caution.",
+            "id": "ryoka",
+            "name": "Ryoka",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Lion"
+            ],
+            "description": "Erin's barmaid and the person entrusted with the Wandering Inn when Erin is absent. She is building a life through the inn's daily work and its unusual community.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Flooded Waters Chieftain"
+            ],
+            "description": "The young chieftain of the Flooded Waters tribe and an established battlefield leader.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Garen"
+            ],
+            "description": "Leader of the Redfang tribe and its elite warriors. Though Rags defeated him before this campaign, he retains independent command and commands more personal loyalty within their coalition.",
+            "id": "garen-redfang",
+            "name": "Garen Redfang",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Great Chieftain of the Mountain City Tribe"
+            ],
+            "description": "The immense Great Chieftain of a powerful northern Goblin tribe. He offers an alliance that commits his mountain only if the Goblin Lord attacks it, and he treats Rags' authority with open contempt.",
+            "id": "tremborag",
+            "name": "Tremborag",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Hobgoblin chieftain whose loyalty to Rags is visible even within Tremborag's territory. He remains close enough to act as one of her guards when much of the coalition's support wavers.",
+            "id": "goldstone-chieftain",
+            "name": "Goldstone Chieftain",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Stone Spears tribe survivor"
+            ],
+            "description": "The orphaned last survivor of the Stone Spears tribe, now sheltered at the Wandering Inn under Lyonette's care. Trauma and fear surrounding her white fur leave her convinced that disaster follows her.",
+            "id": "white-furred-gnoll-child",
+            "name": "The young white-furred Gnoll",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sword-bearing skeleton that pursues the young Gnoll to a dungeon fissure, then pauses when she is left hanging above the drop.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Zel Shivertail"
+            ],
+            "description": "A Drake general who helped defend the young Gnoll during the destruction of her tribe. At the inn he supports Lyonette and takes an active role when the child needs rescue.",
+            "id": "zel",
+            "name": "Zel",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Azure Antinium who joins the effort to recover the young Gnoll from the dungeon. Her magic enables the rescuers to descend into the fissure and return to the surface.",
+            "id": "xrn",
+            "name": "Xrn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tremborag's chief shaman and a practitioner of magic drawn from the strength of a tribe. She presents herself to Rags as a potential ally and claims power far beyond the mountain's lesser shamans.",
+            "id": "ulvama",
+            "name": "Ulvama",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Goldstone Chieftain, newly named by Rags. His conduct in Tremborag's restricted quarter proves protective rather than exploitative, and he will refuse commands that violate his understanding of what Goblins should be.",
+            "id": "pyrite",
+            "name": "Pyrite",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Redfang vanguard commander"
+            ],
+            "description": "A Redfang Warrior who speaks for the contingent that followed Rags out of the mountain. He presses her to devise a practical defense against cavalry, one of the tribe's most dangerous battlefield threats.",
+            "id": "red-scar",
+            "name": "Red Scar",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "white-bearded stranger"
+            ],
+            "description": "Ryoka's mysterious client, appearing as a white-bearded stranger with overwhelming command of basic magic. He seeks Erin's help understanding an artifact from Earth after easily defeating the Horns.",
+            "id": "teriarch",
+            "name": "Teriarch",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Hobgoblin who hides the extent of his intelligence. His personal memories reach back to earlier Goblin Kings, giving Rags evidence of a past in which Goblins formed peaceful alliances with other peoples.",
+            "id": "greybeard",
+            "name": "Greybeard",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Goblin commander who leads a separate group within Rags' enlarged tribe. She challenges Rags' decision to require regular training because it conflicts with Goblin custom.",
+            "id": "poison-bite",
+            "name": "Poison Bite",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-Elf adventurer and ice mage who belongs to the Horns of Hammerad.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A mage of the Horns of Hammerad whose unusual command of undead magic sets him apart.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A true stone construct charged with preserving Wistrom and enforcing its rules. She warns new arrivals about the academy's restricted places, dangerous experiments, and golems.",
+            "id": "cognita",
+            "name": "Cognita",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A severe Wistrom instructor who criticizes Ceria's spell construction and refuses ordinary access to combat teaching. Her challenges demand resourcefulness as well as magical strength.",
+            "id": "ice-mage",
+            "name": "The ice mage",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The frontline fighter of the re-formed Horns of Hammerad. She travels with Ceria, Pisces, and Ksmvr as the team makes its way back toward Liscor.",
+            "id": "yvlon-byres",
+            "name": "Yvlon Byres",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium fighter and member of the Horns of Hammerad. His place in the adventuring team brings him into Erin's growing circle of people from different species.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist who collaborates with Erin on practical inventions.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Antinium of the Liscor Hive and one of Erin's friends. His responsibilities to the Hive coexist uneasily with the individual relationships he has formed around the inn.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium associated with Erin and the Wandering Inn. He has begun developing a life and responsibilities beyond the role ordinarily assigned to a worker.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Drake strategist and chess player within Erin's established circle in Liscor.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium sub-leader who directs workers alongside Anand during Esthelm's reconstruction. The pair coordinate the force without spoken orders.",
+            "id": "belgrade",
+            "name": "Belgrade",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium sub-leader who shares responsibility with Belgrade for directing the workers sent to rebuild Esthelm. The two can coordinate their forces mind-to-mind.",
+            "id": "anand",
+            "name": "Anand",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A visiting Antinium Progenitor from another Hive. Tersk accompanies Xrn to Esthelm as an observer of Liscor's increasingly individual Antinium and their relief mission.",
+            "id": "tersk",
+            "name": "Tersk",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Emperor"
+            ],
+            "description": "A blind man devoted to protecting River Farm and to Durene, his half-troll companion. He has established authority over the village while adapting to a world he cannot see.",
+            "id": "laken",
+            "name": "Laken",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Laken's half-troll guide and protective companion. She helps him navigate the world and remains central to his efforts to secure River Farm.",
+            "id": "durene",
+            "name": "Durene",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ryoka's Frost Faerie friend"
+            ],
+            "description": "A Frost Faerie who travels with Ryoka. She serves as a guide to powers and dangers that mortal knowledge does not readily explain.",
+            "id": "ivolethe",
+            "name": "Ivolethe",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Reinhart household, whose protection gives Ryoka shelter and access while placing her movements under the household's supervision.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Magnolia Reinhart's butler and Ryoka's assigned guide in Invercil. His service gives Ryoka privileged access while also tying her movements to Magnolia Reinhart's household.",
+            "id": "reynold",
+            "name": "Reynold",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A runner whose unexpected absence from his usual delivery circuit prompts concern at the Invercil Runners' Guild. Ryoka asks the guild to investigate where he has gone.",
+            "id": "valceif-godfrey",
+            "name": "Valceif Godfrey",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A blue fledgling being raised by Laken and Durene. Caring for the young bird has given Laken a new class connected to handling animals.",
+            "id": "frostwing",
+            "name": "Frostwing",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Black Mage"
+            ],
+            "description": "A caller who reaches Ryoka through her phone and claims to be an Earth arrival seeking others like himself. Ryoka and Laken cannot verify his identity or whether his connection to Wistrom is safe.",
+            "id": "wistrom-caller",
+            "name": "The Wistrom caller",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Klbkch's partner in an improvised Christmas mission. He helps distribute presents and stop burglars, then privately exchanges a gift with Klbkch after learning that Santa is fictional.",
+            "id": "klbkchs-christmas-partner",
+            "name": "Klbkch's Christmas partner",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving Antinium Progenitor identified as the one who killed Zel's mentor.",
+            "id": "deathless",
+            "name": "The Deathless",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1039403360",
+            "type": "community"
+          }
+        ],
+        "work": "winter-solstice"
+      },
+      "recaps": {
+        "ending": "River Farm survives its immediate shortage after Ryoka delivers supplies through the blizzard, and Laken remains responsible for its recovery. Erin's magical inn has become a center for travel, relief, and cross-species cooperation, but Christmas leaves her friends aware of how desperately she misses Earth. Lyonette resolves to help, without yet knowing how. Ceria and Pisces remain with the Horns, recognized by Cognita as Wistrom graduates but divided by Pisces' necromancy and exile. Rags continues south with an independent tribe while Tremborag pursues her and the Goblin Lord's larger force remains ahead. Xrn's private purpose, the Deathless, and a secret message to a northern lord leave wider conflicts unresolved. Ryoka and Laken maintain a cautious alliance as Earth arrivals and distrust the caller from Wistrom. During the solstice, Erin refuses to trade her soul and retains a white-silver coin. Ryoka rejects the entities' false restoration of her missing fingers, burns both the fingers and her altered scarf, and escapes with Ivolethe. The beings and Ryoka's luminous rescuers remain unidentified.",
+        "in_short": "Rags rejects Tremborag's mountain, frees its captives, and leads a newly disciplined Goblin tribe south toward the greater war. Ceria and Pisces' Wistrom past ends with both recognized as mages, but Pisces is exiled and their friendship is broken. Erin returns to a thriving inn, becomes a Magical Innkeeper, and uses its portal and alliances to relieve Esthelm. Ryoka meets Laken, another person from Earth, helps equip the Horns, and carries emergency supplies to River Farm. Christmas exposes Erin's longing for home while hidden Antinium history surfaces. On the winter solstice, strange visitors offer Erin treasures for her soul and hostile beings offer Ryoka the restoration of her lost fingers. Both refuse. Erin is left with an unnatural coin, while Ryoka destroys the offered fingers and escapes with Ivolethe, still injured.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin, an innkeeper from Earth, built the Wandering Inn outside Liscor into a refuge shared by adventurers, Antinium, Drakes, Gnolls, and other outsiders. Ryoka, another arrival from Earth, remained classless and pursued dangerous running work with the Frost Faerie Ivolethe. The Horns of Hammerad re-formed around Ceria, Pisces, Yvlon, and Ksmvr after surviving the ruins of Albez. Their recovered artifacts and Erin's portal door opened new possibilities, but also created risks. Rags emerged as a young Goblin leader while a Goblin Lord's armies devastated settlements including Esthelm. Laken established authority at River Farm with Durene beside him. Lyonette remained at Erin's inn and began taking responsibility for the young white-furred survivor of the Stone Spears tribe. The dungeon beneath Liscor, conflict among the Antinium, and the presence of multiple people from Earth all remained unresolved.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rags leads a Goblin coalition north after learning that the army she defeated was only one part of the Goblin Lord's much larger force. At Tremborag's mountain, Garen Redfang negotiates a limited alliance that leaves Rags politically diminished. She discovers that the prosperous settlement rests on hierarchy, coercion, and imprisoned human women. The Goldstone Chieftain proves that his visits to the captives were meant to protect them, and Rags names him Pyrite. Rejecting Tremborag's rule, she leads a revolt, empties his armory, and escapes with supplies, followers, and hundreds of freed captives. After delivering the women to a human city, she establishes a forest camp and begins training mobile pike formations against cavalry. At the Wandering Inn, the traumatized young Gnoll falls into the dungeon while fleeing accusations tied to her white fur. Lyonette organizes a rescue with Zel, Ksmvr, Xrn, and others. The child survives and accepts the inn as home.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin finances Octavia's experiments and uses the portal door to support the traveling Horns, while refusing demands to turn the limited, mana-hungry connection into a public delivery service. A white-bearded stranger named Teriarch intercepts the Horns, overwhelms them with basic spells, and questions Erin about Ryoka's copied phone. He teaches Ceria and Pisces how to turn simple magic and the surrounding snow into a storm, then departs. His human appearance is a remote guise controlled by a dragon. Rags reorganizes her enlarged tribe and assigns the Redfang Warriors as a mobile vanguard. Costly encounters with monsters and undead expose the limits of her command, but Greybeard's memories show that Goblins once maintained peace with other peoples. Rags adopts regular training, rescues another tribe, and captures caravan supplies without killing the travelers. She turns south with a doctrine based on discipline and lower casualties. Ceria's history then begins: as a prospective student, she meets Pisces on the voyage to Wistrom, and the pair enter the dangerous academy together.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Wistrom, Ceria and Pisces survive harassment, factional maneuvering, and an entrance examination by sharing knowledge and protecting each other. They secretly acquire a warded spellbook with Cognita's rule-bound assistance. Pisces masters Flashstep, while Ceria solves an ice mage's barrier test through practical ingenuity. Their friendship breaks after a pirate ambush, when Pisces raises the dead to protect survivors and is publicly exposed as a necromancer. Wistrom strips his support, but the ice mage accepts Ceria as her apprentice. Years later, Ceria's master and four senior mages challenge Cognita and the other guardian golems for access to Wistrom's sealed upper levels. All five challengers die. Pisces reanimates their bodies to enter the catacombs and steals bones from an archmage's tomb, releasing shades that kill nearly sixty people. Cognita prevents his execution, and he receives permanent exile. Ceria condemns the academy's inaction. Cognita publicly recognizes both Ceria and Pisces as full mages, but they leave Wistrom separately, their friendship shattered.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Horns travel back toward Liscor with Erin, passing through damaged Esthelm and learning that Yvlon's gold-rank brother helped defend the city before leaving to search for her. Erin brings blankets and food, but Esthelm remains short of supplies and vulnerable. At the Wandering Inn, Lyonette has kept the business running, cared for the young Gnoll, and filled the rooms with two gold-rank teams. Erin initially overlooks that achievement, then accepts Zel's rebuke and apologizes. She reveals the portal door connecting the inn to Octavia's shop, although its mana reserve is small enough to strand travelers and its closing edge is dangerous. After the inn fills with guests from many species, Erin reaches level thirty and becomes a Magical Innkeeper. The building gains a rich magical reserve and preservation magic. Wanting to help beyond her immediate friends, Erin organizes a relief expedition to Esthelm. Adventurers, Liscor's people, and hundreds of Antinium join. Pawn commands the Antinium contingent, Belgrade and Anand direct reconstruction, and Zel begins teaching Pawn how a leader can comfort dying soldiers.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The mixed relief mission supplies and repairs Esthelm, demonstrating practical cooperation among Antinium, Drakes, Gnolls, humans, and adventurers despite enduring distrust. Meanwhile, Ryoka researches ancient threats while staying under Magnolia Reinhart's protection and surveillance. In Invercil she notices Laken and Durene after adventurers harass Durene for being half-troll. Laken's German speech leads Ryoka to suspect the truth, and they confirm that both came from Earth. Laken is an Emperor seeking help for avalanche-stricken River Farm. He purchases provisions, wagons, livestock, tools, escorts, and winter protection, using his authority without openly declaring his class. Ryoka has the Horns' recovered artifacts appraised and learns that their ancient wand is exceptionally valuable. She also learns that runner Valceif Godfrey was killed by bandits using a sleep spell. Though she blames herself because he had given her his protective charm, another runner places responsibility on the killers. Ryoka warns Laken to conceal his phone and continues her work while Magnolia Reinhart's agents track her.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Liscor, Erin attempts to save a Gnoll warrior's infected hand using cleaning, salt water, honey, and clean dressings suggested by Ryoka, while acknowledging that amputation may still be necessary. She plans a Christmas gathering and hires Octavia to investigate inexpensive matches and medicinal mold. The inn's visitors adopt Go, and Belgrade receives strategic encouragement from Zel. Ryoka and Laken form a guarded alliance based on their shared Earth origin. A caller linked to Wistrom contacts Ryoka's phone and claims to be gathering people from Earth, but neither runner nor Emperor trusts him with their location. Ryoka sells the Horns' ancient wand for equipment, magical items, and coin for the team. When a blizzard threatens River Farm before Laken's wagons can arrive, Ryoka carries emergency provisions through the storm. Ivolethe and other Frost Faeries guide her to the village. Ryoka delivers food, blankets, tools, and presents, comforts children grieving losses from the avalanche, and leaves River Farm able to survive the immediate crisis.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin holds Christmas at the Wandering Inn, but singing about home exposes her grief and forces her guests to recognize how much she wants to return to Earth. Zel and Klbkch nearly fight over the Antinium Wars until Xrn intervenes. She identifies herself as the Small Queen and says another surviving Progenitor, the Deathless, killed Zel's mentor. Xrn then takes Klbkch aside for undisclosed business, while Pisces discovers that a Griffin Hunt mage has secretly contacted a northern lord. Lyonette sees Erin crying alone and resolves to do something for her. On the winter solstice, Ryoka leaves River Farm and becomes trapped in a supernatural storm. Three inhuman beings at a fire offer alluring paths and restore her missing fingers, but she refuses them and escapes with help from unidentified lights. She burns the moving fingers and an altered scarf, remaining injured. At the same time, Erin welcomes three strange men into the inn. They consume its food and offer powerful treasures for her soul. Erin refuses every bargain. The visitors leave a white-silver coin behind, giving her physical proof of the encounter. The solstice ends with both women alive, but the entities and their purposes remain unknown.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1039403360",
+            "type": "community"
+          }
+        ],
+        "work": "winter-solstice"
+      }
+    },
+    "winters-heart": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man from the isolated Two Rivers who has been proclaimed the Dragon Reborn, the prophesied champion fated to face the Dark One at the Last Battle and to break the world in the doing. He wields the male half of the One Power, saidin, which carries the Dark One's taint and slowly maddens any man who touches it. Hunted, used, and feared, he has bound the Aiel to him as their foretold leader, seized thrones across the land, killed several of the Forsaken, and raised an army of male channelers, all while trusting almost no one and hardening himself against the losses around him.",
+            "id": "rand-althor",
+            "name": "Rand al'Thor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former gambler and rogue from the Two Rivers, quick with dice, luck, and excuses, and reluctantly one of the most important men alive. Ta'veren like his boyhood friend Rand, he carries the memories of long-dead generals in his head, wears a foxhead medallion that turns aside the One Power, and once sounded the legendary Horn of Valere. He commands the Band of the Red Hand, a growing army, though he would rather be anywhere but at the center of great events. He was last caught in the chaos of a Seanchan assault on the city of Ebou Dar.",
+            "id": "matrim-cauthon",
+            "name": "Mat Cauthon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A broad-shouldered blacksmith from the Two Rivers who can speak with wolves and see through their eyes, a gift he distrusts and tries to hide. Steady, deliberate, and quietly powerful, he has become a battle leader almost against his will, given a lordship and a following. He is devoted to his wife, Faile, and as this book opens he is consumed by a single purpose: to recover her after she was seized by the renegade Shaido Aiel.",
+            "id": "perrin-aybara",
+            "name": "Perrin Aybara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An innkeeper's daughter from the Two Rivers who has risen with astonishing speed to become a powerful channeler and the chosen Amyrlin Seat of the Aes Sedai who broke with the White Tower. Young for the role and underestimated by the sisters who raised her thinking to control her, she is disciplined, clever, and far more formidable than she appears. She leads the rebel army besieging the city of Tar Valon, determined to unseat the usurping Amyrlin and heal the Tower's division.",
+            "id": "egwene-alvere",
+            "name": "Egwene al'Vere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Wisdom of Emond's Field, fierce, stubborn, and protective of the young people she once looked after in the Two Rivers. A gifted Healer whose power long depended on her temper, she has become an Aes Sedai and married Lan, the Dragon Reborn's onetime protector. Blunt to the point of rudeness and impatient with fools, she stands among the few willing to challenge Rand to his face.",
+            "id": "nynaeve-almeara",
+            "name": "Nynaeve al'Meara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Daughter-Heir of Andor and a newly raised Aes Sedai, trained in the One Power and determined to claim her late mother's Lion Throne. Proud, principled, and politically astute, she is one of the women Rand loves and is bound to him. She works with the female channelers gathered around her to secure Caemlyn and the crown that is hers by right.",
+            "id": "elayne-trakand",
+            "name": "Elayne Trakand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp-tongued young woman who sees images and auras around people that reveal glimpses of their futures, a talent she cannot control but has never known to fail. Practical and loyal, she has attached herself to Rand as one of the three women fated to love him, and she stays close as adviser and companion, reading the dangers gathering around him.",
+            "id": "min-farshaw",
+            "name": "Min Farshaw",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fierce young Aiel woman training to become a Wise One, one of the channelers among her people. Raised as a warrior before setting her spears aside, she is proud, honest to a fault, and bound by the strict customs of the Aiel. She is one of the three women tied to Rand by love and prophecy, though duty and her people's ways complicate what lies between them.",
+            "id": "aviendha",
+            "name": "Aviendha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legendary Aes Sedai of fearsome reputation, thought long dead, who has come out of retirement to involve herself in the Dragon Reborn's affairs. Famous for handling men who can channel, she is imperious, secretive, and utterly certain of her own judgement, intent on teaching Rand and the male channelers around him something she believes they must learn before the Last Battle.",
+            "id": "cadsuane-melaidhrin",
+            "name": "Cadsuane Melaidhrin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Perrin's wife, a small, sharp-featured noblewoman of Saldaea with a hunter's boldness and a temper to match. Proud and strong-willed, she meets her husband's steadiness with fire. As this book begins she is a captive of the Shaido Aiel, held far from Perrin, who will stop at nothing to find her.",
+            "id": "faile-bashere",
+            "name": "Faile Bashere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, imperious young woman of the Seanchan, the empire whose forces have invaded the mainland from across the ocean. Heir to the Crystal Throne and known by the title Daughter of the Nine Moons, she is composed, watchful, and dangerous, schooled from birth in a ruthless court where those who channel are collared as slaves. Prophecy has long foretold that Mat Cauthon would meet and marry the Daughter of the Nine Moons.",
+            "id": "tuon",
+            "name": "Tuon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winters-heart"
+      },
+      "recaps": {
+        "ending": "Winter's Heart ends with two turning points. Mat Cauthon breaks out of Seanchan-held Ebou Dar and flees north, taking with him Tuon, the Daughter of the Nine Moons and heir to the Seanchan empire, beginning the strange courtship prophecy demands of them. Far away, at the cursed ruins of Shadar Logoth, Rand al'Thor accomplishes what every Aes Sedai believed impossible. Using the great sa'angreal Choedan Kal, and linked through Nynaeve and Cadsuane's circle, he pits the tainted male Power against the ancient evil of the dead city and cleanses saidin of the Dark One's corruption. The Forsaken who come to stop him are driven off, and for the first time since the Breaking of the World men can channel without the certainty of madness, though few yet believe it has truly happened. Elayne consolidates her position in Caemlyn as she pursues the Lion Throne, and Perrin, still without Faile, continues his relentless hunt for the Shaido who hold her.",
+        "in_short": "As the Seanchan occupy Ebou Dar, Mat Cauthon recovers in hiding and is drawn to the enemy heir, Tuon, the Daughter of the Nine Moons, whom prophecy says he must marry. When his cover collapses he escapes the city in a daring flight, carrying Tuon away with him. Meanwhile Rand resolves to do the impossible: to cleanse the male half of the One Power of the Dark One's taint, the curse that drives men who channel mad. Gathering channelers and the immense sa'angreal called the Choedan Kal, and shielded by Nynaeve and a circle of allies, he channels a torrent of the Power at the tainted, evil-soaked ruins of Shadar Logoth, using one poison to burn out the other. Several of the Forsaken sense the vast weave and attack to stop him, and a desperate battle rages, but Rand succeeds. Saidin runs clean for the first time in three thousand years. Elayne, in Caemlyn, gathers support for her claim to Andor's throne, while Perrin's search for the captive Faile goes on.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Rand al'Thor, a young man from the isolated Two Rivers, was revealed as the Dragon Reborn, the rebirth of the champion who broke the world in the Age of Legends and is prophesied to fight the Dark One at the Last Battle. With his boyhood friends Mat and Perrin, both ta'veren who bend chance around them, and the village women Egwene and Nynaeve, he was drawn out of hiding by the Aes Sedai Moiraine into a world of channelers, prophecy, and war. Rand claimed the sword Callandor in Tear, crossed to the Aiel Waste and was accepted as their foretold leader, and took Cairhien and Illian, killing several of the Forsaken, the Dark One's freed lieutenants. He founded the Black Tower to train men who can channel as weapons for the Last Battle, despite the madness the tainted male Power brings. The Aes Sedai split: the White Tower under Elaida deposed and imprisoned the previous Amyrlin, while sisters who fled raised the young Egwene as a rival Amyrlin, now besieging Tar Valon. The invading Seanchan seized coastal cities and captured women who can channel to enslave them. Most recently Mat was buried under rubble during their attack on Ebou Dar, and Perrin's wife, Faile, was carried off by the renegade Shaido Aiel.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "winters-heart"
+      }
+    },
+    "wintersteel": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Representing the Akura clan in the final stages of the Uncrowned King tournament, Lindon is an Underlord who fights with Blackflame, pure and empty madra, Soulsmith constructs, and the rapid analysis of his mind-spirit Dross. Having already outperformed every expectation for a competitor of his humble origins, he faces the tournament's strongest surviving competitors while still relying on preparation and adaptability rather than the inherited power of the great clans.",
+            "id": "lindon",
+            "name": "Lindon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of the Akura team's fiercest competitors and Lindon's closest companion, a sword artist trained by the late Sage of the Endless Sword. She fights with blistering sword madra, the Endless Sword technique, and a blood shadow drawn from her own life, and she has carved her way through the tournament on skill and sheer will. She enters its final rounds determined to face the strongest opponents in the field, whatever the cost.",
+            "id": "yerin",
+            "name": "Yerin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Arelius family sacred artist who teaches and patronizes Lindon and Yerin, guiding the Akura team with unshakeable good cheer and a mastery of Hollow and Void arts far beyond what his manner suggests. He shepherds his students through the tournament's conclusion with aims he keeps largely to himself.",
+            "id": "eithan-arelius",
+            "name": "Eithan Arelius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mercy"
+            ],
+            "description": "A kind-hearted princess of the Akura clan competing beside Lindon and Yerin, who wields the living shadow-bow known as the Book of Eternal Night. Loyal to her friends despite the demands of her ruthless family, she fights on into the tournament's final stages.",
+            "id": "mercy",
+            "name": "Akura Mercy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The quick-witted mind-spirit dwelling within Lindon, recovered from Ghostwater, who models opponents and dissects techniques faster than any person can think. His analysis is one of Lindon's decisive advantages in the tournament's hardest matches.",
+            "id": "dross",
+            "name": "Dross",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sophara"
+            ],
+            "description": "A golden dragon backed by the lion Monarch Reigan Shen and one of the tournament's most powerful and arrogant competitors. Contemptuous of anyone she deems lesser than a dragon, she is willing to go far beyond the bounds of a fair contest to see Lindon's group destroyed.",
+            "id": "sophara",
+            "name": "Sopharanatoth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The lion Monarch who patronizes the dragons and manipulates events around the tournament for his own long-term ambitions. Immensely powerful and coldly calculating, he is content to bend or break the contest's rules through his proxies to advance his aims.",
+            "id": "reigan-shen",
+            "name": "Reigan Shen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the continent's reclusive Monarchs, a peerless hunter and scholar of the sacred arts who observes the young competitors with unusual attention. Detached from the politics of the other great powers, he takes a particular interest in Lindon over the course of the tournament.",
+            "id": "northstrider",
+            "name": "Northstrider",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "wintersteel"
+      },
+      "recaps": {
+        "ending": "Wintersteel closes with the Uncrowned King tournament finished and its two Akura underdogs remade. Yerin, nearly killed by the dragon Sopharanatoth's forbidden use of power, has claimed the complete legacy of the Sage of the Endless Sword and advanced into a far higher and harder state of strength, turning the dragons' attempt to destroy her into their public humiliation. Lindon's true significance has been exposed to the continent's rulers: the Monarchs recognize that his origins and his ties to forces from beyond Cradle make him far more than the backwater competitor he appeared to be, and the reclusive Monarch Northstrider has taken him on as a personal student. The dragons and their patron, the lion Monarch Reigan Shen, leave the tournament set back and humiliated but with their ambitions intact. Lindon and Yerin part from the contest dramatically stronger and now firmly within the sight of the great powers, while the larger dangers overshadowing Cradle - the ancient dreadgods and the schemes of the Monarchs - rise to the fore. The path ahead points away from tournaments and toward far greater and more perilous conflicts.",
+        "in_short": "In the concluding half of the Uncrowned King tournament, Lindon, Yerin, and Mercy fight through the contest's most dangerous final rounds against the strongest young artists of the continent. When the golden dragon Sopharanatoth and her backers channel forbidden power to destroy Yerin, they gravely wound her but provoke a crisis that forces the watching Monarchs to intervene. Pushed to her limit, Yerin embraces the full legacy of the Sage of the Endless Sword and advances into a far greater state of power, turning the dragons' overreach into their humiliation. Meanwhile the Monarchs perceive that Lindon is far more than a backwater competitor, and his connection to forces from beyond Cradle comes to light, marking him as a figure of extraordinary interest. By the tournament's end the reclusive Monarch Northstrider has taken Lindon as his personal student, and both Lindon and Yerin emerge transformed and vastly stronger. Reigan Shen and the dragons are set back but undeterred, and the greater threats facing Cradle move to the center of the story.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: after being warned that Cradle itself was in peril, Lindon left the backward region of Sacred Valley and climbed from the lowest rung of the sacred arts to Underlord, taking up Blackflame and a Path of pure and empty madra. He gathered companions - the sword artist Yerin, the secretly formidable Eithan Arelius, and the Akura princess Mercy - and won powerful tools and the mind-spirit Dross along the way, drawing the notice of the continent's Monarchs. Lindon, Yerin, and Mercy were entered as the Akura clan's representatives in the Uncrowned King tournament, a contest among the strongest young sacred artists of the great powers overseen by the Monarchs themselves. Against every expectation, Lindon and Yerin fought their way through the tournament's earlier rounds, earning the serious attention of the watching elders while making enemies of the golden dragons backed by the lion Monarch Reigan Shen, chief among them Sopharanatoth. Wintersteel opens with the tournament's decisive final rounds still to be fought.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Uncrowned King tournament enters its final stages, and the matches between the last surviving competitors grow far more dangerous than the earlier rounds. Lindon and Yerin continue to defy the expectations placed on the Akura clan's lower-born entrants, advancing against prodigies from the continent's greatest powers. The hostility between the Akura team and the dragons sharpens, and the Monarchs watching the contest - including the reclusive hunter Northstrider - pay increasing attention to Lindon in particular. The stakes of the remaining matches rise as it becomes clear that some competitors, and their powerful patrons, intend far more than an honorable defeat of their rivals.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the tournament narrows toward its strongest contenders, the danger to the competitors escalates sharply. Yerin is drawn toward a confrontation with the golden dragon Sopharanatoth, who is prepared to reach well past the limits of a fair contest to destroy her. The dragons' patron, Reigan Shen, works behind the scenes to tilt events in his faction's favor. Lindon pushes his Paths and his tools to their limits against opponents of tremendous power, while the Monarchs' oversight of the tournament is strained by the willingness of the great powers to bend its rules. The contest becomes less a game and more a proving ground where lives are genuinely at risk.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tournament reaches its most brutal matches. Yerin's fight against Sopharanatoth turns catastrophic when the dragon and her backers channel power far beyond what the contest allows, and Yerin is grievously wounded. The overreach throws the tournament into crisis and forces the watching Monarchs to intervene in the affairs of the young competitors. In the aftermath, Yerin is pushed to the very edge of her strength and to a decision about how far she is willing to go to survive and to win, drawing on the full legacy left to her by the Sage of the Endless Sword.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Driven to her limit, Yerin embraces the complete inheritance of her master's Path and undergoes a profound advancement, hardening into a new and far greater state of power. The dragons' attempt to destroy her rebounds, and their faction is humiliated before the assembled powers. At the same time, scrutiny falls hard on Lindon: the Monarchs perceive that there is far more to him and his origins than a competitor from a backwater should possess, and his connection to forces from beyond Cradle begins to come to light, marking him out as a figure of extraordinary interest and concern among the most powerful beings on the continent.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Lindon's hidden significance exposed, the Monarchs move to understand or lay claim to him. Northstrider, the reclusive hunter-Monarch who has watched Lindon throughout the tournament, takes him on as a personal student, placing Lindon under the tutelage of one of the most powerful and independent figures on the continent. The tournament's results are settled, the dragons and Reigan Shen's schemes are set back, and both Lindon and Yerin emerge from the contest transformed, far stronger than they began and now firmly in the sight of the great powers.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "By the end of Wintersteel, the Uncrowned King tournament is concluded. Yerin has risen to a dramatically higher level of power through the full legacy of the Sage of the Endless Sword, and Lindon has become the student of the Monarch Northstrider, his connection to forces from beyond Cradle now known to the continent's rulers. The dragons and their patron Reigan Shen have been humbled, but their ambitions are undimmed, and the larger dangers looming over Cradle - the ancient dreadgods and the maneuvering of the Monarchs - move to the fore. Lindon and his companions leave the tournament changed and elevated, their path set toward far greater conflicts than any contest.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "wintersteel"
+      }
+    }
+  }
+}

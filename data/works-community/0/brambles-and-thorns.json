@@ -1,0 +1,1601 @@
+{
+  "entries": {
+    "brambles-and-thorns": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A violet-eyed Al'rashian adventurer with unusual trial knowledge, soulbound equipment, a damaged spirit, and an uncertain past.",
+            "id": "trent-embra",
+            "name": "Trent Embra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Carrie"
+            ],
+            "description": "A former academy fighter seeking freedom from Jace's coercive charter.",
+            "id": "carrie-moss",
+            "name": "Carrie Moss",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-elf mage apprentice.",
+            "id": "felicia",
+            "name": "Felicia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "dog companion"
+            ],
+            "description": "Trent's young prospective bond. The creature is intelligent, fiercely protective, and capable of brief speech.",
+            "id": "the-bonded-creature",
+            "name": "the bonded creature",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "assassin-mage"
+            ],
+            "description": "A silver-haired rogue travelling under a concealed identity. She uses shadow magic and practical field skills.",
+            "id": "the-silver-haired-rogue",
+            "name": "the silver-haired rogue",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lewis"
+            ],
+            "description": "The duke of Al'drossford.",
+            "id": "duke-lewis-aldross",
+            "name": "Lewis Al'dross",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cullen"
+            ],
+            "description": "An Al'drossford guard sergeant who trained Trent.",
+            "id": "sergeant-cullen",
+            "name": "Sergeant Cullen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Iron Wolves captain who established a vulnerable community around a dungeon. A far larger Red Tiger force arrives and encircles it.",
+            "id": "owen",
+            "name": "Owen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Red Tiger"
+            ],
+            "description": "Leader of the Red Tiger Company, recognizable by his winged golden lion. He commands the large force that closes around Owen's settlement.",
+            "id": "isaac-devlin",
+            "name": "Isaac Devlin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Iron Wolves' enchanter, a member of Owen's company during the Red Tiger Company's encirclement.",
+            "id": "the-iron-wolves-enchanter",
+            "name": "the Iron Wolves' enchanter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Iron Wolves team leader who survives the assault on the company's settlement. She escapes with other survivors and directs her anger toward the Red Tiger Company.",
+            "id": "sasha",
+            "name": "Sasha",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Iron Wolves team leader who escapes alongside Sasha after the destruction of their settlement. He is part of the surviving company scattered by the disaster.",
+            "id": "gar",
+            "name": "Gar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A goddess associated with a book whose mention provokes Felicia's immediate hostility toward Trent.",
+            "id": "althea",
+            "name": "Althea",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Keeper of the traveller trial created within Trent's Storage and formerly part of a knowledge compendium. She offers training, skill instruction, and class guidance in exchange for beast cores.",
+            "id": "rhea",
+            "name": "Rhea",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elder spirit housed in Trent's gloves. It protects Trent, treats him as a brother, and demands to remain with him during future trial challenges.",
+            "id": "the-glove-spirit",
+            "name": "the glove spirit",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dusk Tower master's exceptionally powerful ancient bonded wolf. Duty-bound to assist a newly appearing violet-eyed Al'rashian, it leaves Al'drossford to seek Trent near Belrise.",
+            "id": "the-dusk-tower-masters-wolf",
+            "name": "the Dusk Tower master's wolf",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally of Lewis Al'dross in preparing Al'drossford against royal pressure. His bonded ancient wolf leaves the city to seek Trent near Belrise.",
+            "id": "the-dusk-tower-master",
+            "name": "the Dusk Tower master",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dusk Tower master's long-lost wife, once believed dead. She has been living near Trent and observing him by the Reckoning Stone.",
+            "id": "the-dusk-tower-masters-wife",
+            "name": "the Dusk Tower master's wife",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Embra dragoon captain with the Spirit Summoner and Dominating Tyrant classes. He travels toward Wallander with a king's message for Clan Embra and chooses to help a wounded sunstrider despite an approaching Grimtosh pack.",
+            "id": "orion-embra",
+            "name": "Orion Embra",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Orion's loyal travelling companion, an experienced knife fighter whose wind magic is poorly suited to the Grimtosh threatening their route. She refuses to abandon him when he tries to send her ahead with his message.",
+            "id": "the-windblade-companion",
+            "name": "the Windblade companion",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wounded sunstrider released by a collapsed trial into unfamiliar terrain. Orion approaches it as a creature worth saving rather than an animal to be subdued.",
+            "id": "the-sunstrider",
+            "name": "the sunstrider",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess who witnesses Trent's truth-binding ceremony concerning Felicia's inherited history. She declines to answer the central question about Felicia's family, but grants Felicia strength, leaves Trent seeds, and claims a future favor.",
+            "id": "terra",
+            "name": "Terra",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carrie's former charter leader, who demands payment when Carrie tries to leave his control and proposes a nonlethal guild duel to settle the dispute.",
+            "id": "jace",
+            "name": "Jace",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A durable Stormbringer guard recruit who has been blamed for other recruits' failures. She enters the Storm Guard and tries to turn her lightning magic, axe work, and restless ambition into disciplined progress.",
+            "id": "tersa",
+            "name": "Tersa",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "assassin-mage"
+            ],
+            "description": "The name used by the silver-haired assassin-mage travelling with Trent's party. Raven is a level-ten assassin who uses shadow magic and is pressing for greater influence over the group.",
+            "id": "raven",
+            "name": "Raven",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the glove spirit"
+            ],
+            "description": "The elder hunt spirit attached to Trent. It can possess empty trial servants, intervenes in Rhea's training design, and has previously served as a guardian.",
+            "id": "the-elder-hunt-spirit",
+            "name": "the elder hunt spirit",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kirstin"
+            ],
+            "description": "A young noble of House Al'dross selected as the Storm Guard's prospective deputy. The unit plans to support an effort against the dungeon's final guardian while preparing to advance beyond the upper floors.",
+            "id": "kirstin-aldross",
+            "name": "Kirstin Al'dross",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile figure in jester-like clothing who enters Rhea's sanctuary through an open window and insists that she has started a contest.",
+            "id": "the-jester-clad-intruder",
+            "name": "the jester-clad intruder",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "jester-clad intruder"
+            ],
+            "description": "The keeper of Mortimer's Miraculous Maze. After entering Rhea's sanctuary, he claims a conqueror's rights and is forced to acknowledge that his intrusion began their contest.",
+            "id": "the-maze-keeper",
+            "name": "the maze keeper",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A roaming guardian in Belrise's altered dungeon. It can break mage shields, inflict a disabling fear-like effect, and is deterred by sustained fire.",
+            "id": "the-devouring-fiend",
+            "name": "the devouring fiend",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hidden Belrise healer known to academy students by a nickname and reputed to provide treatment beyond the ability of the temple clerics. The healer's precise identity is still unknown.",
+            "id": "the-dirty-boy-healer",
+            "name": "the dirty-boy healer",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "dirty-boy healer"
+            ],
+            "description": "A wood nymph living secretly in Belrise who uses earth and plant magic to heal a wounded student. She has known Carrie since childhood and begins following his party west through connected roots.",
+            "id": "the-wood-nymph-healer",
+            "name": "the wood nymph healer",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B09VWQFYD8",
+            "type": "community"
+          }
+        ],
+        "work": "brambles-and-thorns"
+      },
+      "recaps": {
+        "ending": "Brambles and Thorns escapes Mortimer's Miraculous Maze, but the company emerges in immediate danger. Carrie has a broken arm, the bonded creature and silver-haired rogue are injured, and Felicia is seriously ill. Trent defeats the shape-changing game-board guardian with acids collected earlier, gathers the supplies most likely to help Felicia, and forces open the exit instead of remaining for a golden chest. He is now accepted as the company's captain, while Carrie remains both a warrior and the holder of an unusual living slime summon. Rhea has gained the elder hunt spirit as an equal guardian, though her contest with the maze keeper is unfinished. Orion continues toward Wallander with the Windblade companion and his bonded sunstrider, while the wood nymph healer follows Trent's party west. Trent's past and damaged spirit, Felicia's family history, Terra's favor, the kingdom's restriction on classes, and the consequences of Owen's destroyed dungeon all remain unresolved.",
+        "in_short": "After Owen destroys a contested dungeon and releases its creatures into the Wilds, Trent Embra prepares a westward company with Carrie, Felicia, his bonded creature, and a silver-haired rogue. His private traveller trial gives him rapid training through Rhea, while evidence of royal interference with class choices makes departure more urgent. Elsewhere, Orion Embra bonds with a sunstrider and resumes his journey toward Wallander. Carrie defeats Jace, the group formally becomes Brambles and Thorns, and Trent grows into its accepted captain. The company enters Mortimer's Miraculous Maze, where Carrie gains a second class and a living slime summon. They escape only after Trent destroys the final guardian and abandons a golden chest to secure possible treatment for Felicia. The company ends the book outside the maze but badly injured, with a wood nymph healer following its trail west.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Trent Embra was known as a violet-eyed Al'rashian adventurer with an uncertain past, a damaged spirit, unusual knowledge of trials, and soulbound equipment. Carrie Moss was an academy fighter, while Felicia was a half-elf mage apprentice. An intelligent young creature was Trent's prospective bond. Lewis Al'dross was the duke of Al'drossford.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Owen refuses Isaac Devlin's demand for the Iron Wolves' settlement and dungeon. After the Red Tiger Company breaches the enchanted defenses with an alchemical attack, Owen uses a dungeon buster rather than allow the prize to be taken. He dies in the destruction, a spatial breach opens, and released trial beasts spread into the Wilds. Sasha, Gar, and other Iron Wolves escape, while Isaac survives after losing many of his core followers.\n\nTrent prepares to leave Belrise with Carrie, Felicia, and his bonded creature. A strange seed-like object activates the deeper purpose of his Storage, allowing him to combine a trial fragment, trial heart, and knowledge compendium into a personal traveller trial. Its keeper, Rhea, trains him at greatly accelerated subjective speed and warns him about the uncontrolled Heart of the Inferno within him. Trent gains spear skills and begins learning command through constructed battle exercises. Meanwhile, Lewis Al'dross continues resisting royal influence, and ancient figures interested in Al'rashian bonds examine Trent's prospective bond with his intelligent young companion.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rhea explains that the familiar set of basic classes is only a fraction of what should exist. She suspects a king's will is restricting choices throughout the kingdom and urges Trent to take his companions west before the situation worsens. Trent nevertheless keeps his final slot open for the dangerous Shadowhunter path. He trains Carrie in practical combat and tests whether both Carrie and Felicia are ready for wild trials.\n\nFelicia's inherited account of her family and Tenredi contains serious contradictions. Trent invokes Terra in a life-staked truth ceremony. The ceremony disproves important parts of the story but does not establish who killed Felicia's family. Terra strengthens Felicia, gives Trent seeds, and leaves him owing an unspecified favor.\n\nElsewhere, Orion Embra and his Windblade companion find a wounded sunstrider amid the spreading consequences of collapsed trials. Orion is carrying a lost king's message toward Clan Embra in Wallander. With a Grimtosh pack approaching, he refuses to abandon the creature, and his companion stays to help him face the attack.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Orion forms a genuine bond with the sunstrider, saves the Windblade companion from the Grimtosh, and regains his former high-level Swordmaster and Dragoon capabilities. The three continue toward Wallander with the king's message.\n\nIn Belrise, the silver-haired royal rogue discovers that Lewis Al'dross is openly spreading class guides and expanding access to guild systems. She concludes that his policies defy kingdom controls and seeks a team of her own. Her attempt to approach Trent's group is complicated by accidental intoxication and Carrie's dispute with Jace. Carrie accepts a guild duel rather than pay Jace to leave his charter. He wins, but Jace breaks the truce by attacking with a real sword. Trent stops him, and Jace forfeits his equipment and effective claim over Carrie.\n\nTersa enters the Storm Guard, where her lightning abilities, durability, and separate Thief class make her a prospective trap specialist. Trent, Felicia, the bonded creature, and the silver-haired rogue sign a company charter. Carrie overcomes his fear of charters, joins them, and proposes the name Brambles and Thorns. With Trent as captain and Felicia managing their funds, the newly equipped company commits to travelling west.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trent absorbs several crafting skills too quickly and must integrate the resulting knowledge while Brambles and Thorns begins its journey. His efforts to train the others reveal both his combat advantage and his uncertainty about leadership. During an archery trial, he concludes that his best approach combines preparation, movement, traps, and protection of his companions rather than a rigid class role.\n\nThe elder hunt spirit interferes with Rhea's constructed lesson, spends Trent's stored resources, and forces him through an unguided challenge. Trent learns Sleight of Hand and gains a better understanding of the uncertainty ordinary adventurers face. The episode exposes a serious problem of permission and control within his private trial. Back on the road, Trent and his bonded creature gain new movement skills, while Trent's reaction to the rogue's summoned stallion deepens his fear of ever being bound as someone else's disposable summon.\n\nFelicia openly supports Trent as captain despite his flaws and challenges the silver-haired rogue's continuing effort to take command. The full party then enters a wandering cottage trial. Its entrance disappears, and the first room teaches them that they are inside a shifting puzzle dungeon where hidden objects, reversed clues, locks, and careless experimentation can determine their route.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party learns that Mortimer's Miraculous Maze offers several solutions to each room, different rewards for speed and route, and possible exits after every sixth room. They cross a vast ravine by decoding a wall map, activating temporary structures with fire, and combining the rogue's silk with their own ropes. Trent also recovers a valuable enchantment schematic. The maze rewards the group individually before sending them into a grid of color-changing slimes, where fire exposes both a path and a hidden transition.\n\nWhile the company continues through the maze, its keeper enters Rhea's sanctuary and claims the rights of a conqueror. Rhea answers by forming an equal, blood-sealed agreement with the elder hunt spirit. The spirit becomes her guardian, establishes that the maze keeper initiated a contest by intruding, and prevents him from controlling what Rhea learns about her new status. The maze keeper expects that his loss will eventually require him to surrender spoils. Rhea gains protection and a path toward understanding her independent existence, but she still cannot access her status or freely warn Trent about the maze's lethal possibilities.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The maze sends the party through a dangerous slide and into a trapped room where Carrie becomes encased in hardening material. Trent frees him by combining earth manipulation with Wither in a hazardous form of old magic that may endanger his Shadowhunter title. The bonded creature reveals hidden pillar numbers, and the group defeats the room's stone constructs. In the following safe zone, Carrie attempts to learn what appears to be a slime spell. It is actually a concealed contract that gives him a second, summoner class without removing his warrior class, apparently breaking part of the kingdom's inherited restriction. His summon is a living slime rather than a conventional mark.\n\nIn Belrise, a disguised wood nymph healer learns that Carrie has gone west with Trent and begins tracking their party through plant roots. After two days of recovery, Brambles and Thorns continues through the maze. A false meadow puzzle floods the group into another chamber, and their escape leaves Carrie with a broken arm, Felicia seriously ill, and both the bonded creature and rogue injured. Trent defeats a shape-changing game-board guardian with recovered acids, collects items that may treat Felicia, and forces open the exit. He deliberately leaves a golden chest behind. The company escapes the maze under Trent's accepted leadership, but its injuries and Felicia's condition remain urgent as the healer follows from behind.",
+            "through": {
+              "chapter": 52
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B09VWQFYD8",
+            "type": "community"
+          }
+        ],
+        "work": "brambles-and-thorns"
+      }
+    },
+    "brave-new-world": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Alpha-Plus specialist who works in psychology and sleep-teaching, and who feels out of place among his caste. Shorter and slighter than a typical Alpha, he is self-conscious about his body and resentful of the confident, conventional people around him. He dislikes the casual promiscuity and constant distraction that his society treats as normal, preferring solitude and unsettling conversation, and he is drawn to Lenina Crowne. His discontent is more personal grievance than principled rebellion, and his outsider status leaves him bitter and hungry for the recognition he feels he is denied.",
+            "id": "bernard-marx",
+            "name": "Bernard Marx",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Beta who works in the Central London Hatchery, where she gives immunizations to bottled embryos. Attractive and popular, she follows her conditioning contentedly, enjoying the drug soma, casual relationships, and the approved pleasures of the World State. Her friend Fanny gently scolds her for spending too long with one partner, since exclusivity is discouraged. Curious and good-natured rather than reflective, she agrees to travel with Bernard Marx to the Savage Reservation, though she finds his moods and his taste for privacy strange.",
+            "id": "lenina-crowne",
+            "name": "Lenina Crowne",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the ten World Controllers, the resident Controller for Western Europe. Appearing before students, he speaks candidly about the vanished past that the World State has abolished: families, mothers and fathers, lasting love, religion, and history, all of which he presents as sources of instability and suffering. Unusually, he knows the forbidden old world in detail, including books ordinary citizens are never allowed to read. He defends the present order as the price of universal contentment and stability.",
+            "id": "mustapha-mond",
+            "name": "Mustapha Mond",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Director of Hatcheries and Conditioning",
+              "D.H.C."
+            ],
+            "description": "The Director of the Central London Hatchery and Conditioning Centre, a senior official who leads new students on a tour of the facility. He explains with pride how human beings are mass-produced in bottles, sorted into castes, and shaped from infancy through conditioning and sleep-teaching to accept their assigned places. Confident and orthodox, he embodies the authority of the World State and its faith in stability and control.",
+            "id": "the-director",
+            "name": "The Director",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A brisk, competent worker at the Central London Hatchery who helps explain its processes to visiting students. He is one of Lenina Crowne's companions and speaks about relationships and pleasure in the offhand, interchangeable way his society encourages. He represents the well-adjusted, unquestioning citizen who accepts the World State's values without strain.",
+            "id": "henry-foster",
+            "name": "Henry Foster",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Alpha-Plus lecturer at the College of Emotional Engineering, where he writes slogans, rhymes, and propaganda for the World State. Exceptionally gifted in mind and body, he is admired and successful, yet he feels a restless sense of unused power and a vague dissatisfaction with the shallow work he does. A friend of Bernard Marx, he shares Bernard's feeling of being different, though his discontent springs from a longing to create something real rather than from personal grievance.",
+            "id": "helmholtz-watson",
+            "name": "Helmholtz Watson",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young worker at the Hatchery and a friend of Lenina Crowne, with whom she shares a surname by coincidence. Conventional and well-conditioned, she advises Lenina to behave as their society expects, taking many partners rather than favoring one. She serves as a voice of ordinary World State opinion.",
+            "id": "fanny-crowne",
+            "name": "Fanny Crowne",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "The Savage"
+            ],
+            "description": "A young man living at the Savage Reservation in New Mexico, the son of Linda, a woman from the World State who was stranded there years earlier. Raised outside civilization but taught to read by his mother, he has shaped himself on an old volume of Shakespeare and on the Reservation's harsh traditions, belonging fully to neither world. Pale-skinned among the Reservation people, he has been excluded and mistreated, and he meets the visitors from London with intense curiosity and emotion.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A woman originally from the World State, born a Beta, who came to the Savage Reservation on a visit long ago, was lost, and could not return. There she discovered she was pregnant, something shameful and unthinkable in her world, and gave birth to a son, John. Years of life on the Reservation have aged her and left her an outcast, scorned by the local people for her strange civilized habits and her many relationships. She clings to memories of the comforts and conditioning of the world she lost.",
+            "id": "linda",
+            "name": "Linda",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "brave-new-world"
+      },
+      "recaps": {
+        "ending": "The confrontation with Mustapha Mond lays bare the bargain the World State has made: it has abolished war, poverty, disease, and grief, but only by giving up individuality, deep feeling, real art, science pursued for its own sake, and religion. Mond, who secretly knows the forbidden past, has chosen guaranteed stability and comfort over freedom and truth. Bernard Marx and Helmholtz Watson are sentenced to exile on remote islands where nonconformists are sent; Bernard pleads and panics, while Helmholtz accepts the sentence gladly, seeing it as a chance to live and write more honestly. John, refused permission to join them, withdraws to a lonely abandoned lighthouse, where he tries to live simply and to punish his own desires through hard labor and self-flagellation. His attempt at solitude fails: reporters and crowds discover him and treat him as an entertainment. When Lenina appears among the onlookers, John is overwhelmed by longing, guilt, and the hysteria of the mob, and the scene collapses into violence and a soma-fueled orgy in which he takes part. Waking the next day to full awareness of what he has done, and unable to reconcile his ideals with the world he cannot escape, John hangs himself. The novel ends with his death, leaving the World State untouched and its order intact.",
+        "in_short": "In a future World State, humans are mass-produced in hatcheries, sorted into castes, and conditioned from infancy to love their roles and to numb any discomfort with the drug soma. Bernard Marx, an Alpha who feels out of place, takes Lenina Crowne to a Savage Reservation, where they meet John, the son of a World State woman stranded there years before. John's father proves to be Bernard's own superior, the Director, and Bernard brings John and his mother back to London, where John becomes a celebrity and Bernard briefly enjoys fame. But John is disgusted by the shallow, controlled society, is rejected in love by Lenina after he recoils from her, and is devastated when his mother dies. He tries and fails to incite a revolt, and is brought before the World Controller Mustapha Mond, who defends stability over truth and beauty. Bernard and his friend Helmholtz are exiled to islands. John retreats to live alone but is hounded by crowds, and, consumed by shame after a night of frenzy, he hangs himself.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The story opens in the World State, a future society where human beings are no longer born but manufactured in bottles at hatcheries and sorted before birth into castes, from intelligent Alphas down to menial Epsilons. On a tour of the Central London Hatchery, the Director explains how conditioning and sleep-teaching train every citizen from infancy to love their assigned role and to accept a life of constant pleasure, consumption, and the drug soma. Stability is prized above all, and the old world of families, lasting love, religion, and history has been deliberately erased; one of the World Controllers, Mustapha Mond, describes that vanished past to the students as a time of needless suffering. Against this contented order, Bernard Marx, an Alpha who feels physically and temperamentally out of place, nurses a private discontent. He is drawn to Lenina Crowne, a cheerful young Beta, and dislikes the shallow, interchangeable relationships his society encourages, though his unhappiness is rooted more in personal resentment than in any clear principle.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bernard's sense of being an outsider deepens. He resents the casual attitudes of those around him and grows closer to his friend Helmholtz Watson, a gifted writer who feels a similar, vaguer dissatisfaction. Lenina agrees to accompany Bernard on a holiday to the Savage Reservation in New Mexico, and Bernard obtains the Director's permission for the trip. In an unguarded moment the Director recalls his own visit to the Reservation many years earlier, when a young woman he had brought with him vanished and was never recovered; embarrassed at having confided in a subordinate, he turns cold and warns Bernard that his unorthodox behavior may see him exiled to Iceland. Bernard leaves both proud of his defiance and anxious about the threat hanging over him.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Reservation, Lenina is repelled by the dirt, age, and disease that the World State has abolished, and both visitors are disturbed by the rituals they witness. They meet a young man named John, who is unlike the Reservation people, and learn that his mother, Linda, came from their own world long ago, was stranded, and bore him there, an event unthinkable in the World State. John has grown up an outcast, teaching himself from Shakespeare and longing for the distant civilization his mother describes. Bernard, seeing an opportunity, obtains official permission and arranges to bring John and Linda back to London. John is fascinated by Lenina; finding her asleep after taking soma, he is overcome but leaves her untouched, holding to the romantic ideals he has drawn from his reading.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in London, the Director prepares to make a public example of Bernard, but Bernard turns the tables by revealing Linda and John, whose existence exposes the Director as John's father. Humiliated by a fact his society treats as obscene, the Director resigns in disgrace. John becomes a celebrated curiosity, and Bernard, as his keeper and guide, briefly enjoys fame and importance he never had before. Linda withdraws into a permanent soma stupor. John is shown the wonders and routines of the World State and is increasingly revolted by its emptiness, while forming a genuine friendship with Helmholtz, who recognizes something real in him. When Bernard stages a grand party to display John to important guests, John refuses to appear; Bernard is humiliated and his short-lived status collapses.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John's disillusionment turns to crisis. Lenina, strongly attracted to him, offers herself directly, but John, who loves her as an ideal, is horrified by her frankness and drives her away in a rage. Soon afterward his mother, Linda, dies in a hospital, drifting away in a soma haze, and John is stricken with grief and anger at a world that meets death with indifference. In his distress he tries to rouse a crowd of lower-caste workers by throwing their ration of soma away, urging them to reject the drug and claim their freedom. The attempt sparks a disturbance rather than a rebellion; Helmholtz rushes in to help him while Bernard hesitates, and the police arrive and subdue the crowd with soma vapor and force.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John, Helmholtz, and Bernard are brought before Mustapha Mond, who speaks with them openly about why the World State has traded away art, science, religion, and freedom in exchange for stability and comfort. John argues for the right to poetry, to God, to danger, and even to unhappiness, while Mond explains the cost of the order he upholds. Bernard and Helmholtz are sentenced to exile on distant islands, a fate Helmholtz welcomes. John withdraws to an abandoned lighthouse in the countryside, hoping to live alone in hardship and self-punishment to purge himself. But sightseers and reporters track him down and turn him into a spectacle. Caught up in a frenzy of desire, guilt, and the crowd's excitement when Lenina appears, he loses control amid the mob. The next morning, overwhelmed by shame and despair, John takes his own life.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "brave-new-world"
+      }
+    },
+    "breaking-dawn": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Bella Cullen"
+            ],
+            "description": "Bella Swan, about to marry Edward Cullen and become a vampire at last. Still selfless and stubborn, she moves from her wedding into a honeymoon and then into an unexpected crisis that will test her more than anything before. Her love for Edward and her fierce protectiveness drive the choices she makes throughout.",
+            "id": "bella-swan",
+            "name": "Bella Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The vampire Bella is about to marry. Devoted and protective, he has agreed to change Bella into a vampire after their wedding, though he still fears for her humanity and safety. His love for Bella governs the desperate choices he comes to face.",
+            "id": "edward-cullen",
+            "name": "Edward Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bella's werewolf best friend, still in love with her and grieving her choice to marry a vampire. Bitter at the start, he is drawn back into Bella's life by the crisis that follows the wedding, and his loyalties are pulled between his pack, his tribe's laws, and his feelings for Bella.",
+            "id": "jacob-black",
+            "name": "Jacob Black",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bella's father, the Forks police chief, who gives his daughter away at her wedding. Kind and undemonstrative, he is unaware of the supernatural world his daughter is entering and of the dangers that follow.",
+            "id": "charlie-swan",
+            "name": "Charlie Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The beautiful Cullen sister who long resented Bella's choice to give up her humanity. When Bella's life is endangered, Rosalie unexpectedly becomes her staunchest protector within the family, driven by her own deep, unfulfilled longing for a child.",
+            "id": "rosalie-hale",
+            "name": "Rosalie Hale",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The future-seeing Cullen sister and Bella's close friend, who organizes Bella's wedding with characteristic zeal. Her ability to foresee events shapes the family's plans, though it has notable blind spots that become important later.",
+            "id": "alice-cullen",
+            "name": "Alice Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cullens' physician father, whose medical skill and calm leadership become vital as the family faces first a perilous pregnancy and then a graver threat. Compassionate and principled, he anchors the family through danger.",
+            "id": "carlisle-cullen",
+            "name": "Carlisle Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nessie"
+            ],
+            "description": "The daughter born to Bella and Edward, a half-human, half-vampire child. Warm-skinned and swiftly growing, she is intelligent far beyond her age from birth and able to share her thoughts by touch. Her existence is unprecedented, and it will draw the attention of the wider vampire world.",
+            "id": "renesmee-cullen",
+            "name": "Renesmee Cullen",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The stern leader of the main Quileute wolf pack. When the pack judges the Cullens to have broken the treaty and become a danger to people, Sam resolves to destroy them, setting his wolves against the family and forcing a painful split among the Quileute.",
+            "id": "sam-uley",
+            "name": "Sam Uley",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, good-hearted wolf who refuses to attack the Cullens and joins Jacob when the pack divides. Loyal and optimistic, he becomes a steadfast ally to the Cullen family and a close companion to Edward.",
+            "id": "seth-clearwater",
+            "name": "Seth Clearwater",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Denali coven, allied to the Cullens, who is grieving the loss of a relative destroyed with the wolves' help. Catching a distant glimpse of the Cullens' child, she mistakes her for a forbidden, illegally created immortal child and carries word to the Volturi, unwittingly setting the final crisis in motion.",
+            "id": "irina",
+            "name": "Irina",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leading elder of the Volturi, the ancient coven that rules vampire kind and punishes those who break its laws. Courteous, learned, and able to read every thought a person has had with a touch, he covets the Cullens' gifted members and seizes on a report against them as a pretext to move against the family.",
+            "id": "aro",
+            "name": "Aro",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A half-human, half-vampire man, more than a century old, brought forward at the climax as living proof that such a child grows into a stable adult and poses no danger. His example undercuts the case against the Cullens' daughter.",
+            "id": "nahuel",
+            "name": "Nahuel",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "breaking-dawn"
+      },
+      "recaps": {
+        "ending": "The Volturi confront the Cullens and their gathered allies on a snowfield, meaning to destroy Renesmee as an outlawed immortal child and to punish the family. Bella's newly discovered gift, a mental shield she can spread over others, blocks the Volturi's powers and denies them the advantage they counted on. Alice, who had disappeared to search for evidence, returns at the decisive moment with Nahuel, a grown half-human, half-vampire man whose long, stable life proves that Renesmee is not dangerous and will mature normally. Stripped of any justification and unable to prevail against the shielded, heavily supported Cullens, the Volturi choose to leave rather than fight, and no battle takes place. The immediate danger ends: Renesmee is safe, the visiting vampires and the wolves depart, and the old hostility between the Cullens and the wolf pack is healed, cemented by Jacob's bond with Renesmee. Bella is fully at home in her vampire life, mated to Edward, mother to their daughter, and reconciled with her father, who stays part of her life without knowing everything. In the final moment, Bella lowers her shield to let Edward read her thoughts for the first time, sharing the whole of her love, and the family faces an open, peaceful future.",
+        "in_short": "Bella marries Edward and, on their honeymoon, becomes unexpectedly pregnant with a half-vampire child that grows dangerously fast and threatens her life. Only Rosalie supports her refusal to end it. Seen partly through Jacob's eyes, the crisis splits the wolves: Sam's pack means to destroy the Cullens, so Jacob breaks away with Seth and Leah to protect Bella. The violent birth nearly kills Bella, and Edward transforms her into a vampire to save her; their daughter, Renesmee, is born, and Jacob imprints on her. Bella adjusts remarkably well to vampire life, and the family knows peace until Irina mistakes Renesmee for a forbidden immortal child and reports her to the Volturi. The Volturi gather to destroy the child; the Cullens summon witnesses from around the world, and Bella discovers she can shield others with her mind. At the confrontation, Alice returns with Nahuel, proof that such a child is harmless, and the Volturi withdraw, leaving the family safe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bella Swan fell in love with the vampire Edward Cullen and, over three books, resolved to become a vampire so they could be together forever. Along the way several vampire enemies were destroyed, including the tracker James and his vengeful mate Victoria and her newborn army. Bella also grew to love her werewolf best friend, Jacob Black, one of the Quileute shape-shifters sworn to protect people from vampires, but she chose a life with Edward. The Volturi, the ancient rulers of the vampire world, decreed that Bella must be turned into a vampire. Edward agreed to change her, but only after she agreed to marry him, and the couple prepared for their wedding as Jacob, heartbroken, fled.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bella and Edward marry, and Jacob briefly reappears before storming off in anguish. On their honeymoon on a secluded island, the couple finally consummate their marriage, and Edward is horrified to find he has bruised Bella despite his care. Soon afterward Bella realizes she is pregnant, though a union between a vampire and a human was thought impossible. The baby grows at an alarming, unnatural speed, visibly harming her. Edward, terrified the pregnancy will kill her, wants it ended, but Bella refuses, determined to protect the child, and insists on returning home to carry it to term whatever the cost.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dangerous pregnancy consumes Bella from within as the half-vampire child grows too fast for her human body, and only Rosalie stands firmly with her against the family's fears. Much of this is seen through Jacob's eyes. His pack, led by Sam, decides the unnatural pregnancy and the Cullens themselves are a threat that must be destroyed, and Jacob breaks away, forming his own small pack with Seth and Leah to defend Bella. The birth is violent and nearly fatal: the child, a daughter Bella names Renesmee, is delivered as Bella dies, and Edward injects his venom into her heart to transform her into a vampire and save her. At the newborn's side, Jacob, expecting to hate her, instead imprints on the infant Renesmee, binding himself to her protection for life.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bella awakens as a vampire and, to everyone's surprise, adjusts with rare control and strength, even resisting human blood on her first hunt. She is overjoyed by her daughter, Renesmee, who grows and learns at an astonishing rate and communicates by touching people to share her thoughts. Jacob's imprinting means he is now constantly near the child, easing the old feud. The family lives in a period of contented peace. To keep her father in her life, Bella arranges for Charlie to understand that she has changed in ways he must not question, giving him a partial, careful glimpse of the truth while Jacob helps bridge the gap. Bella also begins to sense that she has a special ability of her own.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The peace shatters when Irina, a grieving vampire allied to the Cullens, glimpses Renesmee from a distance and mistakes her for an immortal child, a human turned as a small child, a creation the Volturi outlawed long ago as uncontrollable. Irina reports this to the Volturi, who assemble their full guard to come and destroy the child and the Cullens. Learning they have only weeks, the Cullens summon vampire friends from around the world to serve as witnesses that Renesmee is not what Irina believes, but a living half-human child who grows normally. Bella discovers her power is a mental shield able to protect others from the Volturi's mind-based gifts, and she trains hard to extend it. Alice and Jasper abruptly vanish, leaving a cryptic clue, and the family prepares to stand against overwhelming force.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Volturi arrive in force on a snowy field, intent on destroying Renesmee and the Cullens, but are met by the Cullens' assembled witnesses and the allied wolves. Bella's shield protects her family from the Volturi's powers, neutralizing their greatest advantage. As tension teeters toward battle, Alice returns with Nahuel, a fully grown half-human, half-vampire man who proves that such children mature safely and threaten no one. With their pretext gone and unable to win against the shielded, well-defended Cullens, the Volturi withdraw without a fight. The threat lifts, the gathered vampires and wolves disperse, and the Cullens are left in peace. In the closing, Bella uses her shield in reverse to let Edward finally see into her mind and share the depth of her love, and the family looks ahead to a lasting future together.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "breaking-dawn"
+      }
+    },
+    "brief-cases": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's professional wizard, a wizard-for-hire and White Council member who protects ordinary people from supernatural threats. By this point in the series he has taken on the mantle of the Winter Knight, mortal champion of the Winter Court of Faerie, binding him to its ruthless queen even as he clings to his own conscience and to his friends and family. Powerful, sardonic, and reckless in defense of those he loves.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former Chicago police officer who once led the Special Investigations unit and remains one of Harry's most trusted allies. Tough, disciplined, and fiercely loyal, she continues to stand on the front line of Chicago's supernatural conflicts as a fighter and organizer even without a badge.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's former apprentice, the eldest Carpenter daughter, who has since taken on the mantle of the Winter Lady, a powerful role within the Winter Court of Faerie. Once an idealistic student of magic, she now carries cold, dangerous power and the burdens of faerie politics while trying to hold on to her humanity.",
+            "id": "molly-carpenter",
+            "name": "Molly Carpenter",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A White Court vampire who feeds on human emotion, and Harry's half-brother and steadfast friend. He fights to keep his conscience against his predatory nature, and quietly guards the people he loves while concealing the extent of his loyalties.",
+            "id": "thomas-raith",
+            "name": "Thomas Raith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's enormous, uncannily intelligent dog, a Tibetan Temple Dog whose calm presence hides real supernatural power. Deeply loyal and gentle with those he guards, he serves as a protector to the household, including Harry's daughter.",
+            "id": "mouse",
+            "name": "Mouse",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's young daughter, whom he fought desperately to save and now works to protect and to know. A brave, good-hearted child growing up on the edges of a dangerous world, watched over by the household's guardians.",
+            "id": "maggie-dresden",
+            "name": "Maggie Dresden",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The most powerful crime lord in Chicago, a coldly disciplined boss who controls much of the city's organized crime. Ruthless and intelligent, he keeps his own rigid codes, protects children absolutely, and has carved out a place for himself among the city's supernatural powers.",
+            "id": "johnny-marcone",
+            "name": "John Marcone",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "description": "A Chicago medical examiner and unlikely ally of Harry's, a clever, geeky, good-hearted man who helps with the forensic and technical side of supernatural cases. Brave despite having no innate magic, he has repeatedly proven his worth in Harry's world.",
+            "id": "waldo-butters",
+            "name": "Waldo Butters",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "brief-cases"
+      },
+      "recaps": {
+        "in_short": "This volume collects short stories and novellas from across the Dresden Files, most previously published elsewhere. They span the timeline widely and shift among several points of view: cases seen through Harry, an interlude told by the Chicago crime lord who rules much of the city, a client's early adventures alongside a set of Bigfoot cases, and stories following Harry's apprentice Molly during a period of his absence. Each piece stands alone rather than advancing a single continuous plot. The collection ends with a longer original novella told in turn by Harry, his daughter, and their guardian dog during an outing that turns dangerous, offering a rare, intimate look at Harry's life as a father and the constant, quiet vigilance that protecting his child requires.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Harry Dresden, Chicago's professional wizard, has survived years of escalating supernatural conflict alongside allies such as Karrin Murphy, the Knight Michael Carpenter, his apprentice Molly, and his half-brother Thomas. After a devastating war with the vampiric Red Court, and the desperate lengths he went to in order to save his newly discovered daughter, Harry accepted the mantle of the Winter Knight, becoming the mortal champion of the Winter Court of Faerie and its formidable queen. He returned from the brink of death changed and more dangerous, took up residence in a strange island stronghold, and continued to defend Chicago from threats both mortal and supernatural. Molly, once his student, has taken on a powerful faerie mantle of her own. By this point Harry has repaid old debts, faced fallen angels and rival powers, and reassembled a fragile life around his daughter and his surviving friends, even as his obligations to Winter hang over everything he does.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "brief-cases"
+      }
+    },
+    "brisingr": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young Dragon Rider bonded to the dragon Saphira, now trained by the elves and hardened by war. Committed to the Varden's fight against the Empire, he is also bound by a personal vow to rescue his cousin Roran's captured betrothed and to reckon with painful claims about his own family, all while carrying the hopes of the rebellion.",
+            "id": "eragon",
+            "name": "Eragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Eragon's blue dragon and lifelong partner, powerful, proud, and sharp of mind. She flies and fights beside him, shares every thought and feeling, and holds firm views of her own, one of the last free dragons and central to any hope of breaking the king's grip on the land.",
+            "id": "saphira",
+            "name": "Saphira",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eragon's cousin, who led his whole village to safety and joined the Varden. Tough, clever, and driven, he has become a respected fighter among the rebels, but his overriding purpose is to free Katrina, the woman he loves, from the Empire's servants.",
+            "id": "roran",
+            "name": "Roran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roran's betrothed, taken captive by the king's servants and held in a dark stronghold. Her rescue is the urgent errand that opens the book and the anchor of Roran's every choice.",
+            "id": "katrina",
+            "name": "Katrina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young, iron-willed leader of the Varden, holding together a coalition of humans, dwarves, and elves through politics, courage, and force of character. She commands Eragon's loyalty and must make hard, sometimes ruthless decisions to keep the rebellion alive and its allies united.",
+            "id": "nasuada",
+            "name": "Nasuada",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elf envoy and warrior who works closely with the Varden. Reserved and highly capable in magic and combat, she accompanies Eragon on dangerous errands and remains a steady, guarded presence at the heart of the elves' involvement in the war.",
+            "id": "arya",
+            "name": "Arya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eragon's estranged counterpart, a Rider forced into the king's service and bound by oaths in the ancient language, riding the red dragon Thorn. Bitter and dangerous, he claims a shared parentage with Eragon and serves the Empire against his will, a captive weapon Eragon dreads meeting again in battle.",
+            "id": "murtagh",
+            "name": "Murtagh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Eragon's dwarf friend of the ruling clan, loyal and forthright. With the dwarves' throne empty, he is drawn into the dangerous politics of his people, whose choices will matter greatly to the Varden's cause.",
+            "id": "orik",
+            "name": "Orik",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder elf Rider living in seclusion who trained Eragon, a survivor of the destroyed order. Learned and grave, he continues to guide Eragon in the disciplines of a Rider while carrying his own long burdens from the fall of the Riders.",
+            "id": "oromis",
+            "name": "Oromis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The great gold dragon bonded to Eragon's elven teacher, ancient and mighty, who helps school Saphira in the deep ways of dragons. Like his Rider, he is one of the last of the old order to survive the king's purge.",
+            "id": "glaedr",
+            "name": "Glaedr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The tyrant king of the Empire, a renegade Rider of vast and growing power who rules through fear and controls his enslaved servants with unbreakable oaths. Unseen but ever-present, his strength and cruelty define the danger the Varden face.",
+            "id": "galbatorix",
+            "name": "Galbatorix",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "brisingr"
+      },
+      "recaps": {
+        "ending": "By the close, Eragon has settled several of the questions that had haunted him. He rescues Katrina and kills the Ra'zac, letting Roran and Katrina marry, and he learns from Oromis that his true father was Brom, not the traitor Morzan, freeing him from Murtagh's poisonous claim of brotherhood by blood. With the elf smith Rhunon guiding his hands, he forges and wields a Rider's blade he names Brisingr. The dwarves elect Orik as their new king, securing their place in the alliance, and Nasuada survives a punishing trial that binds her wavering allies to the Varden. But the cost is heavy: in a battle near Gil'ead, Murtagh and Thorn, wielding power lent by Galbatorix, kill Eragon's teacher Oromis and the dragon Glaedr, robbing Eragon of his mentors. Glaedr's heart-of-hearts, which holds his consciousness, is saved and entrusted to Eragon and Saphira. The Varden press deeper into the Empire, the king's strength looms larger than ever, and Eragon knows the final reckoning with Galbatorix and Murtagh is drawing near.",
+        "in_short": "Eragon and Roran, with Saphira's help, storm the dark spire of Helgrind and free Roran's betrothed Katrina, and Eragon destroys the last of the king's inhuman servants, the Ra'zac. Returning to the elves, Eragon learns from his teacher Oromis a truth that overturns Murtagh's earlier claim: his father was not the traitor Morzan but Brom, the former Rider who raised and trained him. With the aid of the elven smith Rhunon, Eragon forges a Rider's sword of his own and names it Brisingr. Among the dwarves, after their king's death, his friend Orik is chosen to take the throne, keeping the dwarves in the war. Nasuada endures a brutal ordeal to hold the loyalty of her allies. In a battle near the city of Gil'ead, Murtagh and the king's power strike down Oromis and Glaedr, though the old dragon's preserved heart-of-hearts passes into Eragon and Saphira's keeping, and the war moves toward its final stage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Earlier in the cycle, farm boy Eragon became a Dragon Rider when a blue stone hatched into the dragon Saphira. After the king's servants killed his uncle, he fled with the storyteller Brom, secretly a former Rider, learning swordplay and magic until Brom died. Eragon delivered the captive elf Arya to the Varden, the rebels opposing King Galbatorix, and destroyed the Shade Durza in battle. He then trained with the hidden elf Rider Oromis and his dragon Glaedr, and elven magic healed and transformed him. His cousin Roran led their village to join the Varden after the Empire seized Katrina, the woman Roran loves. Nasuada took command of the rebellion. At the Battle of the Burning Plains, Eragon faced a new enemy Rider on a red dragon and found it was Murtagh, alive and forced into the king's service, who claimed they were brothers, both sons of the traitor Morzan, and took Eragon's sword.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "This third book opens with Eragon shaken by Murtagh's claim of brotherhood and by the loss of his sword. His first and most personal task is at hand: with Roran and Saphira, he means to break into the grim fortress of Helgrind to rescue Katrina from the king's servants. The wider war continues to press on the Varden and their allies, and Eragon still owes his teachers a return to the elves to finish learning what a Rider must know, even as the Empire's strength grows and the coming battles promise to be harder than any yet fought.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "brisingr"
+      }
+    },
+    "broken-homes": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Folly's apprentice wizard and a detective constable, now a couple of years into his training and comfortable enough in the job to run his own lines of inquiry. His fascination with architecture and how London actually works - usually a distraction - becomes central when a scatter of odd deaths starts pointing at a south London tower block. The hunt for the Faceless Man, the trained black magician the Folly has been tracking since the jazz vampire affair, shapes everything he does.",
+            "id": "peter-grant",
+            "name": "Peter Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Once the most promising officer of her intake, her face destroyed by the possession at the end of the Covent Garden affair, she is now the Folly's second apprentice, training in magic alongside Peter and wearing a mask in public. Practical, sharp, and harder-edged than she was, she is in many ways a better copper than Peter, and their partnership - equal parts friendship and rivalry - anchors the Folly's casework.",
+            "id": "lesley-may",
+            "name": "Lesley May",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Master of the Folly and the last officially sanctioned English wizard, fully recovered and training two apprentices for the first time in decades. Behind his old-world courtesy he is preparing his small institution for a fight: the Faceless Man is no longer a rumour but a strategic opponent, and Nightingale's wartime-honed judgement about when to negotiate and when to strike keeps the apprentices alive.",
+            "id": "thomas-nightingale",
+            "name": "Thomas Nightingale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Folly's silent housekeeper, inhumanly quick and sharp-toothed, whose cooking has been growing more experimental. She remains the constant of the household: watchful, loyal, and never explained.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Faceless Man"
+            ],
+            "description": "The trained, ruthless black magician the Folly has been hunting since he surfaced during the jazz vampire case: a student of Geoffrey Wheatcroft's illegal Oxford teaching who went far beyond his master, his identity hidden behind a blurring glamour. He has money, organization, and projects whose purposes the Folly can only guess at - and evidence in this case keeps suggesting his hand at work behind seemingly unrelated deaths.",
+            "id": "faceless-man",
+            "name": "The Faceless Man",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A German-born modernist architect, long dead, whose work becomes the case's central puzzle. Stromberg designed the Skygarden Estate in south London - a brutalist tower and its surrounding blocks - and the investigation gradually reveals that he knew about magic and built that knowledge into his architecture, leaving behind a structure that is more than housing.",
+            "id": "erik-stromberg",
+            "name": "Erik Stromberg",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The spirit of a modest river of south-west London and a daughter of Mother Thames, returning to the city after her long stay upstream as a hostage of Father Thames's court under the truce Peter helped broker. Her reunion with Peter picks up the unfinished pull between them from the night they met, complicated as ever by the politics of the river families.",
+            "id": "beverley-brook",
+            "name": "Beverley Brook",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman living around the Skygarden Estate who is plainly not an ordinary resident: a nymph, bound up with the estate's trees and green spaces, unguarded and strange in conversation. Through her Peter starts to see the estate the way its designer might have - as a living system rather than a failed building.",
+            "id": "sky",
+            "name": "Sky",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Russian practitioner of formidable skill and unsettling calm, trained in the Soviet tradition of battle magic - one of the Night Witches of the Second World War, sustained well beyond a natural lifespan. She has been working in London under an unassuming cover, and her allegiance in the Skygarden affair places her directly across the board from the Folly.",
+            "id": "varvara-sidorovna",
+            "name": "Varvara Sidorovna",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "broken-homes"
+      },
+      "recaps": {
+        "ending": "Broken Homes ends on the series' hardest gut-punch. The Skygarden case resolves: Erik Stromberg built the tower as a magical machine, quietly accumulating power over decades, and the Faceless Man engineered the estate's decant and demolition in order to harvest that stored charge for himself. On demolition night the tower comes down, and in the chaos the truth comes out - Lesley May, the Folly's second apprentice and Peter's closest friend, has been working for the Faceless Man. She tasers Peter and escapes with the enemy, her betrayal apparently bought with the one thing the Folly could not give her: the promise of repairing her destroyed face. Varvara Sidorovna, the Soviet-trained battle magician who fought on the Faceless Man's side of the affair, ends the book in the Folly's hands after facing Nightingale - proof of how far outclassed almost everyone is when the old soldiers fight. The Faceless Man himself remains at large, better resourced and more dangerous than the Folly had credited, and now with an apprentice-grade insider's knowledge of their people and methods. On the personal side, Beverley Brook is back in London, she and Peter finally acting on the pull between them. Peter ends the book physically intact and personally wrecked: the hunt for the Faceless Man is now also the hunt for Lesley, and the Folly must reckon with how long she was turned and how much she gave away.",
+        "in_short": "A fatal car crash with a corpse in the vehicle, a town-planning official who steps in front of a train, and a rare-book thief burned from the inside all prove to share a thread: the Skygarden Estate, a brutalist south London tower designed by Erik Stromberg, an architect who knew about magic. Peter Grant and Lesley May move onto the estate undercover and discover that Stromberg built the tower as a slow magical accumulator - and that the Faceless Man, the trained black magician the Folly has hunted for two books, intends to harvest its stored power by having the tower demolished. Along the way Peter meets Sky, a nymph bound to the estate's trees, crosses Varvara Sidorovna, a Soviet-trained Night Witch working for the enemy, and welcomes Beverley Brook back from her upstream exile, their relationship finally beginning. On demolition night the tower falls and the case detonates personally: Lesley May has been the Faceless Man's agent, her loyalty bought with the promise of a repaired face. She tasers Peter and vanishes with him. Varvara is captured after facing Nightingale; the Faceless Man escapes; and the Folly is left betrayed from within.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Peter Grant, a young Met constable, became apprentice to Thomas Nightingale, the last sanctioned wizard in England, after the ghost-driven Covent Garden killings - a case that ended with Nightingale shot and Peter's friend Lesley May possessed, the spirit's departure leaving her face in ruins. Peter brokered a truce between the rival deities of the Thames, sealed by an exchange of hostages that sent Beverley Brook, the river spirit he had grown close to, upstream to Father Thames's court. The jazz vampire case then revealed a live threat: the Faceless Man, a trained, ruthless black magician schooled through Geoffrey Wheatcroft's illegal Oxford teaching and the Little Crocodiles dining club - he fought Peter and escaped, and hunting him became the Folly's long game. It also cost Peter the woman he loved: Simone and her sisters, revenants of the 1941 Cafe de Paris bombing who had unknowingly fed on jazz musicians for decades, were laid to rest. Since then the Folly has grown: Lesley, mask and all, was accepted as Nightingale's second apprentice and now trains beside Peter, and a murder beneath the Underground drew the Folly into London's wider demi-monde, including the Quiet People, a hidden community living under the city. The Faceless Man remains at large.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book opens as a scatter of cases that refuse to look connected. A car crash on a rain-soaked road turns out to have a corpse in the vehicle that did not die in the accident, and the driver's associations are strange enough to interest the Folly. A mild, apparently contented town-planning official steps in front of a train for no reason anyone can find. A rare-book thief dies horribly - burned from the inside - after handling stolen goods that include a German grimoire, the working notebook of someone trained in the Newtonian tradition. Peter and Lesley, now working as a practiced team under Nightingale, chase the threads through the ordinary machinery of London policing: inquests, case files, planning records, stolen-property markets. The only common note is a faint, persistent suggestion of the Faceless Man's involvement - his organization, his interests, his willingness to spend lives on housekeeping - without any visible motive connecting a murdered stranger, a dead planner, and an old book. Folly life continues around the casework: training, Molly's increasingly adventurous cooking, and the constant background labour of rebuilding an institution that spent half a century running down.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The threads knot around a place. The stolen grimoire proves to have belonged to Erik Stromberg, a German-born modernist architect who emigrated to Britain and whose papers show he knew about magic - and the dead planner's decisions connect to the same file: Stromberg's most ambitious surviving work, the Skygarden Estate in south London, a brutalist tower long slated for demolition. Every strand the Folly pulls - the crash victim's associations, the book's provenance, the planning history easing the estate toward the wrecking ball - runs through Skygarden or the property interests circling it. The working theory hardens: Stromberg built something into that tower, the Faceless Man knows it, and the demolition is not urban renewal but somebody's endgame. Since the Folly cannot watch a whole estate from outside, Peter and Lesley go in: they move into the tower undercover as new residents, posing as ordinary Londoners, to learn what the building actually is and who else is paying attention to it. Living inside the case, they start mapping the estate's odd corners - and its odd residents - from the inside.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Undercover life on the estate settles into a rhythm of surveillance and small discoveries. The tower reveals itself slowly: design choices that make no sense as housing - the layout, the materials, the way the structure concentrates and channels its own strange atmosphere - start to look deliberate, the work of an architect designing for magic rather than people. Among the residents Peter gets to know Sky, a guileless young nymph bound up with the estate's trees and green spaces, living evidence that Skygarden is more ecosystem than failed building. The season also brings the river world back into Peter's life: at the spring gathering where the two courts of the Thames meet in their slowly warming truce, Beverley Brook returns from her upstream exile, and she and Peter pick up what the hostage exchange interrupted - this time with intent. Around the edges, the property-management interests running the estate's decant look less like bureaucracy and more like cover, and the demolition date keeps creeping closer while the Folly still cannot say what, exactly, the Faceless Man expects to gain when the tower comes down.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The picture completes, and it is worse than expected. Stromberg's tower is a machine: an accumulator, patiently gathering and storing magical potential over the decades of lives lived inside it. The demolition is the harvest - collapse the structure at the right moment, in the right way, and everything the building has banked can be captured by whoever is prepared for it. The Faceless Man is prepared: the emptying of the estate, the planning decisions, the deaths that opened the book were all groundwork. The opposition also acquires a face - Varvara Sidorovna, a Soviet-trained battle magician of the wartime Night Witches, decades old and lethally capable, is working the same ground for the other side, and encounters with her make plain the Folly is up against professionals. As the final residents are cleared and the charges are set, Peter and Lesley's undercover posting turns into a countdown: the Folly must decide whether to stop the demolition, spring the trap, or fight for control of the harvest itself, knowing the Faceless Man has out-planned them at every prior step and that whatever happens on demolition night will happen fast.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Demolition night brings the tower down and the case apart. The Faceless Man's harvest goes ahead: the Skygarden tower is destroyed, and in the confusion of evacuation, sabotage, and open magical combat, the Folly fails to take him. Varvara Sidorovna ends up facing Nightingale himself - a mismatch even for a Night Witch - and finishes the affair in the Folly's custody. But the night's real detonation is personal. Lesley May, the Folly's second apprentice, Peter's partner and closest friend, reveals that she has been working for the Faceless Man: she tasers Peter and leaves with the enemy. The plainest reading of her price is the one thing the Folly could never promise her - the restoration of the face the possession destroyed. The betrayal reframes everything behind it: how long she was turned, what she passed on, which of the Folly's setbacks were engineered with inside knowledge. The Faceless Man escapes the night richer, better informed, and with a trained apprentice at his side; the Folly ends it with a prisoner, a demolished crime scene, and a wound that will drive the series forward. Peter is left with Beverley, a recovering institution, and the knowledge that the hunt for the Faceless Man is now also the hunt for Lesley.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "broken-homes"
+      }
+    },
+    "carls-doomsday-scenario": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Now a rising star of the crawl, Carl enters the third floor having chosen the Primal race, which leaves him looking human, and the Compensated Anarchist class, which leans into his gift for improvised explosives. Still shoeless and pantsless by the game's design, he fights with his fists, his feet, and increasingly elaborate bombs, and his instinct to protect other crawlers and even non-player characters keeps dragging him into quests he never wanted.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Donut"
+            ],
+            "description": "Carl's talking Persian cat and party leader. Following advice from the talk-show host Odette, she keeps her Cat race and takes the Former Child Actor class, a choice that comes with a manager: Mordecai, now magically bound to appear in any safe room she enters. Vain, theatrical, and fiercely attached to Carl and her pet dinosaur Mongo, she grows into a genuinely dangerous spellcaster on this floor while remaining convinced the whole dungeon is beneath her.",
+            "id": "princess-donut",
+            "name": "Princess Donut",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The pair's guide, now formally bound to Donut as her class-granted manager, summoned into every safe room the party enters whether he likes it or not. He greets the arrangement by drinking heavily, but his encyclopedic knowledge of the dungeon's floors, monsters, and unwritten rules makes him indispensable, and beneath the bitterness he plainly cares what happens to them.",
+            "id": "mordecai",
+            "name": "Mordecai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donut's devoted pet dinosaur, brought down from the second floor. Young, loud, and violent in his mistress's defense, he serves as the party's mount and shock troop, and Donut's willingness to risk her own life for him becomes a point of friction between her and Carl.",
+            "id": "mongo",
+            "name": "Mongo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tsarina Signet"
+            ],
+            "description": "An Elite non-player character of the third floor: a tattooed, half-naiad, half-elf tsarina of overwhelming supernatural charisma whose moving tattoos crawl across her skin. She binds Carl into her quest against the corrupted remains of a traveling circus, and her scripted tragedy raises uncomfortable questions about how real the dungeon's people are.",
+            "id": "signet",
+            "name": "Signet",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grimaldi the Pestiferous Vine"
+            ],
+            "description": "The ringmaster of a once-traveling circus, now a parasitic vine creature presiding over a corrupted troupe of undead performers. He is the monstrous heart of the quest Signet forces on Carl, and confronting him requires walking into the big top itself rather than burning it down.",
+            "id": "grimaldi",
+            "name": "Ringmaster Grimaldi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The severe gatekeeper who controls all access to Featherfall, the magistrate of the settlement where Carl and Donut base themselves. The party's investigation into the death of the goblin GumGum runs straight into her obstruction, and getting past her desk becomes a quest problem in its own right.",
+            "id": "miss-quill",
+            "name": "Miss Quill",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Katia Grim"
+            ],
+            "description": "A crawler and friend of the Amazon crawler Hekla, struggling with her chosen Doppelganger race: reshaping her body is slow and painful, and she reverts to her true form when she sleeps. Quietly observant and underestimated by everyone including herself, she joins Carl and Donut's party and begins learning to treat her difficult race as a weapon.",
+            "id": "katia",
+            "name": "Katia",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Daniel Bautista"
+            ],
+            "description": "A crawler whose family was wiped out on this floor, encountered as he hunts the things responsible. A swashbuckler by class, capable and level-headed, he thanks Carl and Donut for avenging his family and becomes a recurring ally in the floors ahead.",
+            "id": "bautista",
+            "name": "Bautista",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "carls-doomsday-scenario"
+      },
+      "recaps": {
+        "ending": "The book closes with the party escaping the third floor moments ahead of an apocalypse of Miss Quill's making. Her murder plot exposed, Quill is dead by Carl's dynamite, but the ritual she powered with her husband's stolen soul energy, The Final War, detonates anyway in a chain of magical shockwaves that disable and then violently overload enchanted items across the region, destroying Donut's crown and killing crawlers outright. Carl contains the catastrophe by sealing the leaking soul gem inside its glass case, gaining the book's namesake achievement, a Doomsday Scenario, and Katia detonates a weapons depot as the party, Carl once again without pants, reaches the stairwell. An epilogue reveals the aftermath: the depot blast smothered the final and worst shockwave, saving thousands of NPCs and crawlers, and the resulting rewards were so extreme that Borant spent its one season veto to cancel most of them. Carl and Donut are now on the crawl's leaderboard. Odette warns them about the war god Grull, about Hekla's designs on recruiting Donut, and about the bounty their fame has put on their heads. Katia remains with the party, Mordecai remains their manager, and the fourth floor waits below.",
+        "in_short": "On the third floor, the Over City, Carl becomes a Primal Compensated Anarchist and Donut a Former Child Actor, gaining Mordecai as her bound manager. A quest chain forces Carl into the orbit of Signet, an irresistible Elite NPC, and her tragic feud with Ringmaster Grimaldi, a parasitic vine ruling a corrupted circus; Carl ends it not with a bomb but by poisoning himself to bargain telepathically with the creature, freeing Signet. In a settlement further on, the murder of a goblin acquaintance pulls the party into a mystery implicating Miss Quill, the magistrate's gatekeeper, who is secretly draining her imprisoned husband, a soul-leech capacitor, to cast a ritual called The Final War. The party gains Katia, a doppelganger crawler escaping the Amazon leader Hekla's shadow. Killing Quill triggers the ritual anyway: escalating magical shockwaves wreck the region, destroy Donut's crown, and kill crawlers, but Carl seals the soul gem, earning a Doomsday Scenario achievement, and Katia's depot explosion smothers the final blast. The party escapes to the stairwell famous, hunted, and carrying a bounty, with Odette warning of the god Grull and Hekla's interest in Donut.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: the alien Borant Corporation collapsed every building on Earth and turned the planet into an eighteen-floor dungeon broadcast to the galaxy as entertainment. Carl, caught outside in his boxer shorts, entered with his ex-girlfriend's Persian show cat, Princess Donut, who gained human intelligence from an early reward and became the talking, spell-slinging leader of their two-crawler party. Guided by the gruff tutorial manager Mordecai, they survived the first floor's goblins and bosses, allied with the elderly survivors of the Meadow Lark care facility and their caregiver Imani, and became breakout stars of the broadcast. On the second floor Carl destroyed a rampaging Rage Elemental with a bomb-rigged vehicle in front of the whole universe, the pair charmed the galaxy on Odette's talk show, Carl earned the hatred of the Skull Empire's Prince Maestro by rescuing trapped crawlers on a rival program, and Donut tamed Mongo, a young dinosaur, as her pet. They descended to the third floor facing the crawl's next great milestone: every surviving crawler must choose a new race and class.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The training floors are over and the game begins in earnest with race and class selection. Donut, following Odette's advice, stays a Cat and takes the Former Child Actor class, which binds Mordecai to her as manager: he will now be summoned into any safe room the party enters, an indenture he greets by getting blind drunk. Carl chooses the mysterious Primal race, which leaves him looking human, and the Compensated Anarchist class, doubling down on his talent for explosives. The party enters the third floor, the Over City: a vast, open, ruined landscape dotted with NPC settlements, shops, and quests, overshadowed by a floor-wide storyline about the monster Scolopendra and its volcano. Heading for a larger settlement, they pick up their first quest and get an early taste of the floor's scripted theatrics, while Mordecai, when sober, explains how NPCs, Elites, and the deeper floors actually work.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Investigating a wiped-out crawler party, Carl and Donut scout Grimaldi's Traveling Circus, a corrupted troupe of undead performers, and run straight into Tsarina Signet, an Elite NPC of overwhelming charisma whose living tattoos and supernatural allure nearly enslave Carl on the spot. Signet's quest cannot be refused: she compels the pair into her war against the circus. Carl survives a brutal fight against her mold lions, is forced to give a mercy killing to a parasite-riddled bear called Heather as Signet's price, and advances on the big top alongside her summoned elementals. Inside the tent, Carl comes face to face with Ringmaster Grimaldi, now a parasitic vine creature, and enacts Mordecai's plan: he poisons his own blood and feeds it to the vine rather than trying to out-fight it.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rather than simply destroy Grimaldi, Carl reads a Wisp Armor spellbook to shield his mind, deliberately infects himself with the circus parasite, and bargains with the ringmaster telepathically, convincing him to release Signet from her banishment so the scripted family tragedy can end on different terms; along the way he commits to a future appearance on a program called Vengeance of the Daughter on the sixth floor. He returns to find Donut and Mongo have survived a night attack, Donut's hidden resurrection-like Cockroach ability having triggered. The party reaches a medium settlement, hits an absurd damage milestone that earns them their first fan boxes, and visits the Desperado Club for the first time, where Mordecai reconnects with old contacts and the pair learn how the club's underworld works.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shopping in the club's Silk Road market arms Carl with hobgoblin explosives. The party finds the goblin GumGum murdered in an alley, and the trail of clues, dead city elves, and undead Krasue points toward the settlement's magistrate, Featherfall, and the magistrate's severe gatekeeper, Miss Quill, who refuses all access. Carl provokes her with theatrical evidence-dumping while the pair work the mystery. A television appearance goes catastrophically political: Carl publicly needles the Skull Empire, and the resulting off-world retaliation and counter-retaliation between empires leaves bystanders and royals dead, escalating his feud with the Maestro's family to something with real interstellar consequences. On the ground, a street brawl involving city guards, a pregnant dwarf, and a friendly NPC ends in fire and reprisals, hardening Carl's anger at how the dungeon grinds up its own people.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Katia Grim, a doppelganger crawler and friend of the Amazon leader Hekla, joins the party, struggling with a race that makes her remold her own body like clay; Carl gives her a shard of mirror he has carried since the first floor. The party bombs Miss Quill's offices, and with Quill dead Carl becomes magistrate by default, uncovering Featherfall's remains and, beneath the building, the truth: Quill's imprisoned undead husband Remex is a soul-leech capacitor, and Quill has been draining the town's souls through him to cast a ritual called The Final War. Killing her does not stop it. As Remex convulses, Carl earns a Doomsday Scenario, and escalating magical shockwaves sweep the region, first suppressing and then violently overloading enchanted gear, destroying Donut's crown and killing crawlers. Carl seals the soul gem in its glass case to contain the catastrophe, Katia detonates a weapons depot, and the party escapes down the stairwell as the floor tears itself apart behind them.",
+            "through": {
+              "chapter": 25
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "carls-doomsday-scenario"
+      }
+    },
+    "carpe-jugulum": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Esme Weatherwax",
+              "Esmerelda Weatherwax"
+            ],
+            "description": "The senior witch of Lancre, proud, formidable, and in this story deeply unsettled by doubts about her own worth and beliefs. When an invitation to a royal celebration seems to pass her by, she takes it as a slight and withdraws, just as the kingdom faces a threat that may need her more than any other.",
+            "id": "granny-weatherwax",
+            "name": "Granny Weatherwax",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Gytha Ogg"
+            ],
+            "description": "The warm, earthy, practical witch of Lancre, the steady heart of the coven. Shrewder than she lets on, she works to hold the witches together and keep an eye on Granny when the older witch's mood turns dark and dangerous.",
+            "id": "nanny-ogg",
+            "name": "Nanny Ogg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perdita",
+              "Perdita X"
+            ],
+            "description": "The large young Lancre witch with a magnificent voice, now settled into the coven. She carries a distinct second self named Perdita inside her head, a sharper, thinner personality who argues with her and notices things she misses. That double-mindedness makes her harder than most to influence or control.",
+            "id": "agnes-nitt",
+            "name": "Agnes Nitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Queen of Lancre and, as the story opens, newly a mother. Softer and more sentimental than the other witches, she has been living the life of a queen, but the danger to her infant daughter draws her back toward the craft she set aside.",
+            "id": "magrat-garlick",
+            "name": "Magrat Garlick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Verence"
+            ],
+            "description": "The conscientious, modernizing King of Lancre and Magrat's husband. Keen to be tolerant, progressive, and up to date, he invites a family of self-styled enlightened vampires to his daughter's naming ceremony, a well-meant gesture that opens the door to disaster.",
+            "id": "verence",
+            "name": "King Verence II",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of a modern, self-improving family of vampires who have trained themselves out of the old weaknesses, learning to tolerate sunlight, garlic, and holy symbols. Suave, patient, and coldly reasonable, he regards himself as a progressive gentleman and intends to make Lancre and its people quietly his own.",
+            "id": "count-magpyr",
+            "name": "Count Magpyr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Count's charming, arrogant son, confident in the family's new-found strengths. He takes a particular and predatory interest in Agnes, treating his intended conquest of both her and the kingdom as a matter of course.",
+            "id": "vlad-magpyr",
+            "name": "Vlad Magpyr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Count's fashionable, sardonic daughter, sulky and cruel, chafing under her father's modernizing rules and nostalgic for the old, bloodier ways of vampire life.",
+            "id": "lacrimosa-magpyr",
+            "name": "Lacrimosa Magpyr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Oats"
+            ],
+            "description": "A young priest of the god Om who travels to Lancre and finds himself caught up in the crisis. Earnest but tormented by doubt, forever arguing with himself over what he truly believes, he is uncertain of his faith at exactly the moment he is called on to act.",
+            "id": "mightily-oats",
+            "name": "Mightily Oats",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Magpyrs' long-suffering servant, a traditionalist who takes pride in the proper old-fashioned business of serving vampires, complete with creaking doors and gloomy castles. He disapproves of his masters' fashionable, modernized habits and their contempt for the old rules.",
+            "id": "igor",
+            "name": "Igor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "carpe-jugulum"
+      },
+      "recaps": {
+        "ending": "The modernized Magpyr vampires seize Lancre by mesmerism, confident that having trained away the old weaknesses makes them unstoppable. Their conditioning, though, becomes their weakness. Granny Weatherwax, bitten and seemingly beaten, uses the blood-bond that vampires forge with their victims to reverse the flow of influence: her sheer strength of will pours back into them, burdening them with her own tastes, cravings, and iron personality until they can barely function as vampires at all. While Granny works from within, Nanny Ogg, Agnes and her second self Perdita, the returned Magrat, and the young priest Mightily Oats hold the line. Oats, who has spent the story paralyzed by doubt, finds a hard, genuine faith when it is needed and turns it against the enemy. The old, traditional Count Magpyr, the courtly vampire whose place the modern family had usurped, is restored to a harmless coexistence with Lancre. The Magpyrs are destroyed and the kingdom freed. King Verence's baby daughter is named Esmerelda, in honour of Granny Weatherwax, and Granny, who began the story crippled by doubt about her own worth and beliefs, comes through it with her sense of herself and her purpose restored.",
+        "in_short": "King Verence of Lancre, wishing to be modern and tolerant, invites a family of enlightened vampires, the Magpyrs, to the naming ceremony of his infant daughter. These vampires have trained themselves out of the traditional weaknesses, tolerating sunlight, garlic, and holy symbols, and they use the invitation to mesmerize the kingdom and take control. Granny Weatherwax, who feels her invitation was overlooked and is wrestling with doubts about her own worth, withdraws at first, leaving Nanny Ogg, Agnes Nitt, the returning Magrat, and a doubt-ridden young priest named Mightily Oats to resist. Agnes's divided mind gives her some protection against the vampires' influence, and Granny, once bitten, turns the connection to her advantage: her overwhelming will flows back down the blood-bond, saddling the Magpyrs with her own nature and cravings and stripping away their edge. Their much-vaunted self-training proves their undoing. With help from the coven, from Oats, who rediscovers his faith, and from the old traditional vampire the family had supplanted, the Magpyrs are destroyed. Lancre is freed, the royal baby is named in Granny's honour, and Granny recovers her sense of purpose.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in earlier books: the mountain kingdom of Lancre is guarded by a coven of witches led by the powerful and proud Granny Weatherwax and the warm, earthy Nanny Ogg. Over earlier adventures they saved Lancre's throne, traveled abroad where Granny defeated her own sister, and drove back the elves, after which the youngest of their old coven, Magrat Garlick, married King Verence II, the former royal Fool, and became queen. To fill the empty place in the coven, Granny and Nanny drew in Agnes Nitt, a young Lancre woman with a remarkable voice and, unusually, a second personality named Perdita sharing her head. Now Magrat and Verence have an infant daughter, and the kingdom has settled into a fragile peace. Granny remains its fiercest protector, but she is also its most troubled, prone to dark moods and, in this story, to gnawing doubts about whether her long life of hard choices has made her good or wicked.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "King Verence of Lancre, anxious to be a modern and open-minded ruler, sends out invitations to the naming ceremony of his baby daughter, and among the guests he welcomes a family of vampires, the Magpyrs, who present themselves as civilized and enlightened. These vampires boast of having trained themselves out of the traditional weaknesses, so that sunlight, garlic, and holy symbols no longer trouble them. Granny Weatherwax's invitation appears to go astray, and, already burdened by doubts about her own worth, she takes the slight badly and holds herself apart. That leaves Nanny Ogg, Agnes Nitt, and the others to sense what the king in his tolerance cannot: that the polished, reasonable Magpyrs have not come to Lancre as guests at all, but as conquerors, and that the door has just been opened to let them in.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "carpe-jugulum"
+      }
+    },
+    "catch-22": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A US Army Air Forces bombardier stationed on a Mediterranean island during the Second World War, consumed by the conviction that everyone, enemy and ally alike, is trying to kill him. Desperate to survive and to stop flying combat missions, he fakes illnesses to stay in the hospital and schemes for any way out, only to run up against the impossible regulation known as Catch-22.",
+            "id": "yossarian",
+            "name": "Yossarian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The squadron's mess officer, a relentless entrepreneur who parlays his post into a sprawling black-market trading syndicate that he claims benefits everyone. Amoral and single-mindedly devoted to profit, he wheels and deals across the whole theater of war with cheerful disregard for its purpose.",
+            "id": "milo-minderbinder",
+            "name": "Milo Minderbinder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The insecure, ambitious group commander desperate to be made a general and to see his name in the newspapers. To impress his superiors, he repeatedly raises the number of missions his men must fly, trapping airmen like Yossarian who are counting the days until they can go home.",
+            "id": "colonel-cathcart",
+            "name": "Colonel Cathcart",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The squadron's timid, well-meaning Anabaptist chaplain, lonely and unsure of his place amid the officers. Kindly and easily intimidated, he is troubled by the cruelty and absurdity around him and drawn to Yossarian's plight.",
+            "id": "chaplain-tappman",
+            "name": "Chaplain Tappman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The self-pitying flight surgeon who bemoans his own bad luck at being sent to war. He is the one who first explains the logic of Catch-22 to Yossarian, showing why a man cannot be grounded for insanity if he is sane enough to ask to be grounded.",
+            "id": "doc-daneeka",
+            "name": "Doc Daneeka",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young, wealthy, earnest airman in Yossarian's outfit, decent and idealistic. He is hopelessly in love with a prostitute in Rome who is largely indifferent to him, and he dreams of a normal life after the war.",
+            "id": "nately",
+            "name": "Nately",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Yossarian's odd, tinkering tentmate, a small, grinning pilot who is forever repairing things and whose planes keep ditching in the sea. Cheerful and inscrutable, he seems always to be up to something no one else quite understands.",
+            "id": "orr",
+            "name": "Orr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hapless officer saddled with an absurd name and promoted to squadron commander by a clerical accident. Painfully awkward and desperate to avoid everyone, he will only see people in his office when he is known to be out of it.",
+            "id": "major-major",
+            "name": "Major Major Major Major",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A jittery, wild-eyed airman tormented by screaming nightmares whenever he is not scheduled to fly a mission. Frantic and unstable, he obsessively tries to photograph women and embodies the fraying nerves of men pushed past their limits.",
+            "id": "hungry-joe",
+            "name": "Hungry Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Colonel Cathcart's shrewd, cynical deputy, who does much of the real thinking behind the group's schemes. Sardonic and calculating, he manipulates his ambitious superior while looking after his own position.",
+            "id": "colonel-korn",
+            "name": "Colonel Korn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "catch-22"
+      },
+      "recaps": {
+        "ending": "Worn down by mounting deaths and the ever-rising mission count, and haunted above all by the memory of watching the young gunner Snowden die in his arms, Yossarian finally refuses to fly any more missions and walks around in protest. His commanders, Colonel Cathcart and Colonel Korn, embarrassed by his defiance, offer him a deal: they will send him home as a hero if he agrees to like them and to publicly endorse them, a bargain that would betray the other men still forced to fly. Yossarian nearly accepts, then rejects the corrupt offer. His decision is sealed when he learns that his odd tentmate Orr, whose repeated crash-landings turn out to have been deliberate practice, has made it safely to neutral Sweden. Seeing that escape is possible after all, Yossarian deserts, slipping away to strike out for Sweden himself and refusing any longer to be a pawn in a system that treats men's lives as expendable. His flight is an act of self-preservation and moral refusal, choosing his own survival and conscience over an insane war and the ambitions of the men running it.",
+        "in_short": "During the Second World War, bombardier Yossarian is stationed with an American bomber group on a Mediterranean island, certain that everyone is trying to kill him and desperate to be grounded before he is killed. He is thwarted by Catch-22, the maddening rule that a man must be crazy to keep flying missions but that anyone who asks to be excused thereby proves he is sane and must keep flying. His scheming commander, Colonel Cathcart, keeps raising the number of missions required, so the finish line is never reached. Around Yossarian swirls a cast of absurd figures, including the profiteering mess officer Milo Minderbinder, whose black-market syndicate consumes the war effort, and the meek chaplain. As friends die one after another and the horror of a gunner's death aboard his plane finally overwhelms him, Yossarian resolves to stop cooperating. Offered a corrupt bargain to go home in exchange for praising his superiors, he refuses, and, learning that the vanished Orr has escaped to neutral Sweden, he deserts to try to follow him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The novel is set during the Second World War on the small Mediterranean island of Pianosa, where an American bombing group flies missions over Italy. Its central figure is Yossarian, a bombardier gripped by the certainty that everyone, the enemy above and his own commanders below, is out to kill him, and obsessed with staying alive. He takes refuge in the base hospital by faking ailments, anything to avoid flying more combat missions. His great obstacle is Catch-22, the circular regulation holding that a flier must be insane to be excused from missions, yet any man who requests to be excused proves by his concern for his own safety that he is sane, and so must keep flying. Around Yossarian moves a large cast of officers and airmen rendered by turns comic and horrifying, and his commander keeps raising the number of missions required, ensuring the ordeal never ends. Told out of order and in a darkly absurd key, the story circles the madness and cruelty of the war.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "catch-22"
+      }
+    }
+  }
+}

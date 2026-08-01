@@ -1,0 +1,1917 @@
+{
+  "entries": {
+    "conservation": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Candle Scholar Tower Master and bearer of the Eternal Flame who killed a dragon before this book begins.",
+            "id": "john",
+            "name": "John",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "John's partner and a diviner.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guardian and administrator of the stabilized valley, merged with its world spirit.",
+            "id": "rabia",
+            "name": "Rabia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ferdy",
+              "Ferdi",
+              "John's bull companion"
+            ],
+            "description": "John's powerful beast companion, known to travel with John and Ellie.",
+            "id": "ferdie",
+            "name": "Ferdie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced captain and explorer allied with John before this book begins.",
+            "id": "captain-worrell",
+            "name": "Captain Worrell",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied fighter known to John before this book begins.",
+            "id": "katrine",
+            "name": "Katrine",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An artificer allied with John and engaged to Katrine.",
+            "id": "tower-engineer",
+            "name": "Tower Engineer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young explorer protected by two elfin specters.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnamed champion sent by the Resplendent Empire to demand John submit to its dragon ruler. When John refuses, the warrior challenges him to single combat.",
+            "id": "resplendent-empire-chosen-warrior",
+            "name": "Resplendent Empire Chosen Warrior",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Candle Scholar Tower Master who explains how a dragon slayer's marked soul exposes nearby allies to retaliation. Eowyn supports John's refusal to submit and speaks for the other Tower Masters during the dispute.",
+            "id": "eowyn",
+            "name": "Eowyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A friendly Supreme Mage whom the Tower Masters intend to recruit from a subordinate family to co-lead Candle Scholar Tower's Millennium team with John.",
+            "id": "candle-scholar-tower-co-leader",
+            "name": "Candle Scholar Tower Co-leader",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Oris 75"
+            ],
+            "description": "A self-aware palace puppet assigned to guide Candle Scholar Tower inside the sealed Millennium Shard. He rejects the designation Oris 75 and asks to be called Kevin.",
+            "id": "kevin",
+            "name": "Kevin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf Supreme Mage and one of the Equinox Circle's two leaders. He meets John at the Millennium Shard as the rival teams assess one another before the competition rules and assignments are announced.",
+            "id": "equinox-circle-leader",
+            "name": "Equinox Circle Leader",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The brother of the empire's defeated chosen warrior and leader of its contest team. He confronts John at the Millennium banquet and is compelled to carry Candle Scholar Tower's submission proposal to the dragon ruler.",
+            "id": "resplendent-empire-team-leader",
+            "name": "Resplendent Empire Team Leader",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A pirate captain who commands the Wisp with a giant first mate. Beckett meets John at a Three Rivers waterfront stall.",
+            "id": "captain-beckett",
+            "name": "Captain Beckett",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain Beckett's unusually strong giant first mate. Grom previously survived the loss of a ship to a leviathan.",
+            "id": "grom",
+            "name": "Grom",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Innkeeper"
+            ],
+            "description": "A former captain who runs a Three Rivers inn with his three daughters. Captain Cairn gives John room and board in exchange for kitchen work, general labor, and help controlling the unruly sailors expected on shore leave.",
+            "id": "captain-cairn",
+            "name": "Captain Cairn",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The civilian identity John adopts while investigating Three Rivers. As Sutton, he takes work at Captain Cairn's inn, conceals his abilities, and gains a useful position for hearing local news while appearing to be an ordinary laborer.",
+            "id": "sutton",
+            "name": "Sutton",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A local deity honored at a Three Rivers temple. Her priest says that he can convey her oracles to visitors.",
+            "id": "sea-goddess",
+            "name": "Sea Goddess",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pair of servants of the medicine god traveling to investigate a curse-stricken village. They allow John, using his Sutton identity, to accompany them.",
+            "id": "medical-priests",
+            "name": "Medical Priests",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Candle Scholar Tower Supreme Mage who helps plan distribution of the Eternal Flame as a defense against the expected devil invasion.",
+            "id": "candle-scholar-tower-campaign-mage",
+            "name": "Candle Scholar Tower Campaign Mage",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A statue-borne deity who proposes admitting John to the established pantheon if John discloses how faith is developed. Rebuffed, the Merchant God tries to place him under divine constraint.",
+            "id": "merchant-god",
+            "name": "Merchant God",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A local deity who remains after other gods withdraw from their confrontation with John. He directs a descending divine sword at the city and its civilians.",
+            "id": "war-god",
+            "name": "War God",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Supreme Mage leading an enemy-family contest team allied with the Black Blood Cult and devils. He can coordinate several spells and copies of himself, then escapes John by opening an Abyssal portal and leaving a greater devil behind.",
+            "id": "elven-supreme-mage",
+            "name": "Elven Supreme Mage",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Medicine God"
+            ],
+            "description": "A dying local deity who spent his own power to secure a cure for the Blackblood curse. He understands the price imposed by the world spirit's system of exchange and asks John to inherit his authority.",
+            "id": "god-of-medicine",
+            "name": "God of Medicine",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Candle Scholar Tower Supreme Mage and powerful battle caster. Her fire and chain magic disrupt the enemy portal operation and create an opening for the defenders.",
+            "id": "candle-scholar-tower-woman-mage",
+            "name": "Candle Scholar Tower Woman Mage",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragonkin guard who helps the enemy elven mage attempt to open an Abyssal portal during the siege of the temple city.",
+            "id": "dragonkin-portal-guard",
+            "name": "Dragonkin Portal Guard",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "God of Swamps"
+            ],
+            "description": "An isolated swamp deity whose remaining territory is being consumed by the poison-and-decay goddess. Bortel distrusts the established pantheons but promises to join John if John helps him defeat her.",
+            "id": "bortel",
+            "name": "Bortel",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goddess attacking Bortel and consuming what remains of his swamp territory.",
+            "id": "poison-and-decay-goddess",
+            "name": "Poison-and-decay Goddess",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A local deity who presides over a blood-soaked cave complex and its arena.",
+            "id": "goddess-of-murder",
+            "name": "Goddess of Murder",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hidden keeper of a scholarly community who values the preservation of knowledge above immediate intervention. He postpones an alliance with John but promises support after the devils are defeated.",
+            "id": "god-of-scholars",
+            "name": "God of Scholars",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shadow-form deity who stole the Air Goddess's ability to hear secrets. John and his allies use an apparent Eternal Flame source gem to lure him into revealing himself.",
+            "id": "god-of-thieves",
+            "name": "God of Thieves",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A local deity to whom the God of Thieves carries the apparent source gem used as bait by John and his allies.",
+            "id": "god-of-greed",
+            "name": "God of Greed",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wind-form deity whose ability to hear secrets was stolen by the god of thieves. She can manifest as a bird or as moving air and offers to join John's pantheon if he helps her recover that missing authority.",
+            "id": "air-goddess",
+            "name": "Air Goddess",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shy, noncombatant deity whose tree and world connection are exploited in an ambush against John. She is visibly frightened by the hostile gods gathered around her and is used as bait by the elven Supreme Mage.",
+            "id": "forest-goddess",
+            "name": "Forest Goddess",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tower of Ash mage who receives John's report about the enemy alliance and explains why corrupted mana makes direct Abyssal rifts especially dangerous.",
+            "id": "ash-tower-mage",
+            "name": "Ash Tower Mage",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile deity trapped with John in a cage that suppresses divine power. John kills her and purifies her divinity into abundance power.",
+            "id": "famine-goddess",
+            "name": "Famine Goddess",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hostile deity trapped with John and other gods in a suppressive cage. John kills him and begins absorbing his divinity.",
+            "id": "hunter-god",
+            "name": "Hunter God",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The governing spirit of Nehru, which confronts John after he absorbs several local gods and asserts authority over local divinities.",
+            "id": "nehru-world-spirit",
+            "name": "Nehru World Spirit",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archdevil directing the army that invades the realm. The widespread corruption is attributed to this commander.",
+            "id": "archdevil-commander",
+            "name": "Archdevil Commander",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A true dragon summoned through a completed Abyssal portal during the assault on Three Rivers. Kalmaric intends to torture John rather than show him mercy.",
+            "id": "kalmaric",
+            "name": "Kalmaric",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The half-dragon mage is the dragonkin guard who earlier assisted the enemy elven mage. He helps that mage complete the Abyssal portal ritual at Three Rivers.",
+            "id": "half-dragon-mage",
+            "name": "Half-dragon Mage",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CV4NK6ST",
+            "type": "community"
+          }
+        ],
+        "work": "conservation"
+      },
+      "recaps": {
+        "ending": "John closes the completed Abyssal portal by forcing the summoned dragon Kalmaric back through it and following her into the Abyss. He destroys his own body in a blast amid the dragon and converging devils, then returns through the valley altar as the Eternal Flame rebuilds him. Kalmaric's survival is unknown. While he is gone, Ellie takes the sea goddess's authority and ends the leviathan attacks, and John's bull companion kills the archdevil commander. The world spirit recognizes Ellie as Lady of Storms and Goddess of the Sea, while the bull becomes a god-beast; both join the Eternal Pantheon. During the following year, John and Ellie spread the Eternal Flame across the preserved contest world, and the God of Scholars fulfills his promise to join them. The contest party eventually returns to the Millennium Palace, where it learns that the Radiant Empire and allied ancient mage families have declared war. Rabia continues administering the faith-linked system and the valley's rebirth process, whose long-term limits remain unsettled.",
+        "in_short": "John enters the Millennium Meeting while marked as a dragon slayer and leads Candle Scholar Tower into a contest to save a sealed, dying world. There he discovers that the Black Blood Cult is preparing a devil invasion and that ordinary mana cannot stop its corruption. He turns the Eternal Flame into a widespread faith whose shrines cure the curse and defend communities, placing him in conflict with local gods and rival contestants. The dying God of Medicine accepts an Eternal Flame bond, creating the Eternal Pantheon and revealing that faithful dead can return through the valley. John gathers further divine allies, survives a trap built by the enemy elven mage, and races to defend Three Rivers. He seals a completed Abyssal portal by taking Kalmaric into the Abyss, destroys his body, and is reborn at the valley altar. Ellie gains authority over sea, rivers, and storms, halts the leviathans, and joins the pantheon with John's bull companion. The world survives, but the returning contestants learn that the Radiant Empire and ancient mage families have declared war.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: John became a Tower Master of Candle Scholar Tower and the bearer of the Eternal Flame after killing a dragon. Ellie remains his partner and a diviner, while Rabia has merged with the valley's world spirit and stabilized their home. Rabia protects the valley, manages its mana, and extends roots through the void toward nearby worlds. John's established allies include Katrine, a Tower engineer, Captain Worrell, the young explorer Ben, and Ferdie, his powerful bull companion.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: A chosen warrior of the Resplendent Empire demands John's submission to a dragon ruler. John defeats him, rejects the empire's claim, and agrees to lead Candle Scholar Tower at the Millennium Meeting, where a hostile empire team is also expected. The dragon mark on John's soul means retaliation may reach anyone close to him. At home, John and Rabia develop a self-repairing void ship protected by the Eternal Flame. Captain Worrell, Katrine, the Tower engineer, and Ben depart on its first short expedition. Rabia also reveals that the old system was encoded in people summoned from Earth and can be restored for Eternal Flame believers under her administration. John authorizes a limited rollout and begins a formal study of faith. Ellie supports that decision while warning of a divined threat involving a creature without mana. At the Millennium venue, the team receives Kevin, a self-aware guide puppet, and meets the Equinox Circle's dwarf leader. The Resplendent Empire delegation then arrives and fixes its attention on John.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: John counters the Resplendent Empire's intimidation and presents Candle Scholar Tower's Millennium gift, a living void beast contained in a pocket world. The year-long contest sends ten-person teams into a sealed world where they must identify and solve its hidden catastrophe. Candle Scholar Tower chooses a western coastal entry and establishes a concealed base near Three Rivers. The team builds local recruitment and merchant fronts, while John investigates alone under a civilian cover. He works at Captain Cairn's inn and meets Captain Beckett and Grom, sailors with direct experience of leviathans. After killing a flesh-eating, brimstone-scented creature, John begins connecting local violence to a deeper corruption. He also studies the local gods. The sea goddess answers offerings through a priest and enforces bargains, but the temple carries little true faith. John concludes that these gods hold portions of the world's authority through transactional exchange rather than devotion. The actual world-ending threat remains unidentified, and John stays in Three Rivers to pursue both the monster and the divine system.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Traveling with two medical priests, John discovers that the Black Blood Cult manufactures a contagious curse that turns victims into violent monsters. Ordinary mana feeds the corruption, but faith-infused Eternal Flame destroys it. Candle Scholar Tower concludes that devils are preparing to invade and agrees to spread the Eternal Flame as a practical defense available to ordinary people. John spends much of the following year establishing shrines, leaving sparks, and learning that freely chosen selflessness can kindle the flame without his direct design. A permanent temple heals visitors and later destroys a bandit assault while sparing civilians. Its success draws the established gods, whose demand for submission John rejects. Their conflicting powers leave them unable to defeat him, though the war god nearly destroys the city before John and an allied Supreme Mage stop the attack. As the faith expands, rival contest teams begin aiding the cult. John infiltrates a cult gathering and hears a dragonkin representative propose an alliance among cultists, rival competitors, and gods to capture or destroy the Eternal Flame.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: John exposes an enemy-family elven Supreme Mage working with the cult. The elf escapes through an Abyssal portal, but John closes it and destroys the greater devil left behind. Meanwhile, Captain Beckett and Grom have transformed their former pirate crew into the Blue Flame Navy, spreading Eternal Flame lanterns and defending merchants. This provokes the sea goddess, who threatens Three Rivers and the surrounding shipping. John then answers a siege at the temple city, where cultists, devils, and hostile off-world mages are trying to stop production of the Blackblood cure. Eternal Flame priests turn the battle, and Candle Scholar Tower reinforcements disrupt another portal ritual. The dying God of Medicine reveals that he sacrificed his own power to obtain the cure and that local divine authority is constrained by equivalent exchange with the world spirit. Rather than absorb him, John offers an Eternal Flame bond. The god survives and joins him, unlocking the Eternal Pantheon. Rabia then reports that thousands of faithful people killed in battle have reappeared alive at the valley shrine. Their rebirth is real, but its limits remain unknown.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: John recruits Bortel by helping the swamp god defeat the deity consuming his territory. Bortel regains poison and decay authority and joins the Eternal Pantheon. John next kills the goddess of murder, purifies her divinity into a death domain, and frees her captives. He learns that faithful people can be reconstructed in the valley after death, although repeated rapid deaths damage the soul. With sea trade around Three Rivers collapsing, John seeks more divine allies before the devils' final offensive. The God of Scholars promises to join after victory but will not risk his hidden community yet. The Air Goddess conditionally accepts John's aid, traps the god who stole her secrets-hearing authority, and joins the pantheon once it is restored. John also defeats the God of Greed and refines his power into abundance. When John approaches the shy Forest Goddess, the elven Supreme Mage springs a larger trap. World-linked seeds and divine authority seal John together with hostile gods in a cage that suppresses every captive, while the elf departs to open Abyssal portals across the continent.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Inside the suppressive cage, John relies on his physical and magical mastery to kill hostile gods as the remaining captives turn on one another. His uncontrolled mana eventually burns through the cage's restrictions and absorbs several domains. The world spirit intervenes, objecting that John is consuming its gods. John gains release by promising not to absorb any more and by showing that continued confinement could allow outside forces to destroy the realm. He heals the damaged forest, and the Forest Goddess voluntarily joins his pantheon. Three Rivers is already under a coordinated assault by devils and leviathans, while enemy mages prepare a permanent Abyssal portal. John summons Ellie and his bull companion from the valley. Ellie confronts the sea goddess, and the bull intercepts the archdevil commander. The elven Supreme Mage nevertheless completes the portal and sacrifices allies to summon Kalmaric, a true dragon. John tackles the partly manifested dragon back into the Abyss, allowing the world spirit to seal the invasion route behind them. The contest world is protected from the portal, but John is stranded among the dragon and converging archdevils.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "John turns the converging archdevils against Kalmaric, then destroys his own body in a massive blast amid the dragon and devil forces. The Eternal Flame restores his awareness and rebuilds him at the valley altar, revealing the valley as a divine kingdom that can manifest wherever he is. Kalmaric's fate after the explosion is not established. John returns to Three Rivers to find that Ellie has absorbed the sea goddess's authority. She orders the leviathans away from ships, ending the immediate maritime threat. John's bull companion kills the archdevil commander, and the remaining devils are hunted down. The world spirit formally recognizes Ellie as Lady of Storms and Goddess of the Sea, with authority over water, rivers, and storms. She joins the Eternal Pantheon, as does the bull companion in the form of a god-beast. Over the next year, John and Ellie spread the Eternal Flame across the preserved realm, and the God of Scholars fulfills his earlier promise to join. When the contest portals reopen, the party returns to the Millennium Palace and learns that the Radiant Empire and allied ancient mage families have declared war.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CV4NK6ST",
+            "type": "community"
+          }
+        ],
+        "work": "conservation"
+      }
+    },
+    "contention": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Earth's senior Forerunner and System Mediator returns from the Wild Hunt with several close allies. He reaches the alien vessel where his mother remains in stasis while beginning to organize the planet's defense and his own next stage of growth.",
+            "id": "silas-renner",
+            "name": "Silas Renner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Forerunner, genetic scientist, and trusted ally who returns from the Wild Hunt beside Silas. She agrees to help with his immediate priorities, including checking on Vex and the Lepun, as their mutual attraction becomes explicit.",
+            "id": "asta",
+            "name": "Asta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas's inducted sister and an established defender of Earth.",
+            "id": "cease",
+            "name": "Cease",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cease"
+            ],
+            "description": "Silas's sister, previously known as Cease, returns from the Wild Hunt as an active defender with fire magic.",
+            "id": "cecilia-renner",
+            "name": "Cecilia Renner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Urg"
+            ],
+            "description": "Silas's Eidolon and bonded companion. Erg and its bond with Silas are ready to evolve.",
+            "id": "erg",
+            "name": "Erg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted Forerunner ally known for turning designs into mass-produced equipment.",
+            "id": "jiang",
+            "name": "Jiang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas's experienced off-world mentor and a member of Rayden.",
+            "id": "samvek",
+            "name": "Samvek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas and Cecilia's mother, released from alien stasis after the vessel protecting her begins to degrade under rising mana. Shocked by the transformed world, she agrees to undergo induction with help from her children.",
+            "id": "nancy-renner",
+            "name": "Nancy Renner",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thumper of Veil"
+            ],
+            "description": "The leader of the Lepun alliance with Silas and an established participant in Earth's defense.",
+            "id": "vex",
+            "name": "Vex",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior military leader already working with Silas on Earth's defense. He serves as a link between the Forerunners and national authorities as the planet approaches induction and its hidden crises become harder to contain.",
+            "id": "general-krulak",
+            "name": "General Krulak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The president of the United States, found under armed guard during an attempted seizure of power.",
+            "id": "president-wilson",
+            "name": "President Wilson",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inducted national official who participates in an attempted seizure of power while the president and General Krulak are held at gunpoint.",
+            "id": "vice-president",
+            "name": "the Vice President",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An inducted senator who survives the Oval Office coup investigation by denying that he joined the plot. Silas spares him but remains suspicious, then takes him with the president and General Krulak to begin practical System training.",
+            "id": "senator-corbin",
+            "name": "Senator Corbin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An incomplete soul attached to a primal echo of decay in the slime dungeon. Silas separates the fragment from the darkness and later finds blood marked with this test designation, but the person's original identity remains unknown.",
+            "id": "test-subject-earth-z4271",
+            "name": "test subject Earth Z4271",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "test subject Earth Z4271",
+              "blue-wing slime boss"
+            ],
+            "description": "A former human whose soul was divided through System experimentation and distributed through the dungeon. Silas prompts the blue-wing boss to remember the name Yuto, then reunites the fragments with materials recovered from the other wings.",
+            "id": "yuto",
+            "name": "Yuto",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Ethiopian doctor and independently inducted defender who aids refugees near her village. Earth's Forerunners consider her for their vacant place because she is already using her abilities to protect and heal people.",
+            "id": "ada",
+            "name": "Ada",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of four companions missing with Samvek after their party pursues a murderer seeking Earth's portal. Divination suggests the System itself has taken the group.",
+            "id": "talia",
+            "name": "Talia",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of four companions missing with Samvek after their party pursues a murderer linked to Earth's portal. Silas begins investigating the group's fate during his off-world visit.",
+            "id": "dory",
+            "name": "Dory",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of four companions who disappears with Samvek while their party pursues a murderer seeking Earth's portal.",
+            "id": "crag",
+            "name": "Crag",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of four companions who disappears with Samvek while their party pursues a murderer seeking Earth's portal.",
+            "id": "nevin",
+            "name": "Nevin",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Lepun civilian leader helping manage his people's migration toward Shawnee National Forest. He handles practical settlement concerns with his wife while Vex and Earth officials negotiate the larger alliance.",
+            "id": "lord-clive",
+            "name": "Lord Clive",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Vex's elite guards, assigned to join Silas's traveling party as the Lepun representative.",
+            "id": "lepun-guard",
+            "name": "the Lepun guard",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-native slime selected to join Silas's team for the Singapore contention.",
+            "id": "scratch",
+            "name": "Scratch",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly epic Archdevil of the seventh hell who commands the Singapore portal for a hellish duke. She invokes a sanctioned duel with Silas whose outcome will decide the contention and compel the losing force to leave the realm.",
+            "id": "clementine",
+            "name": "Clementine",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The concealed leader of the Army of the Righteous. When Silas and his allies dismantle the organization's camps across several countries, an anti-tracking defense keeps General Ishak beyond their reach.",
+            "id": "general-ishak",
+            "name": "General Ishak",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An attacking Forerunner who leads religious extremists against the allied base and confronts Silas during the assault.",
+            "id": "rival-forerunner",
+            "name": "the rival Forerunner",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An off-world teammate who asks Silas to help a people suffering from a spreading corruption of life mana. The emergency cannot be addressed immediately, leaving the teammate dependent on Silas's portal and future intervention.",
+            "id": "the-off-world-teammate",
+            "name": "the off-world teammate",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DLJ8Z6VG",
+            "type": "community"
+          }
+        ],
+        "work": "contention"
+      },
+      "recaps": {
+        "ending": "Silas completes his epic class core, then spends a legendary favor and primal energy to establish a 500-mile zone where monsters and dungeons cannot spawn during probation. Earth is inducted as Terra, humanity enters the System at level one, and global geography and species begin changing under the new mana. The heavens recognize Silas as System Mediator and Terra's ruler, although anyone who defeats him may take that position. Asta and Silas have resolved a breach of trust and committed to an exclusive relationship. Cecilia, Jiang, Ada, Samvek, Vex, General Krulak, Nancy, and the allied refugee communities remain part of Terra's defense. The Singapore contention is won and Yuto is free, while the Busan crystals have gone inactive but remain unexplained. Hell incursions, foreign-System interference, pending faction requests, and the practical survival of the planet remain open. Rayden is also expected to send 1,500 rare fighters under Samvek after induction.",
+        "in_short": "With Earth's induction approaching, Silas Renner brings his mother into the System, helps Cecilia become a Forerunner, builds defenses with alien and Lepun allies, and reunites with Samvek's missing party after their return to Earth. He suppresses a coup, reveals the coming transformation to the public, restores the System experiment Yuto, and takes increasingly direct control of global preparations. After rescuing 192 corrupted off-world survivors, Silas becomes Architect of the System and creates scalable shelters, workshops, and training infrastructure. He defeats a rival Forerunner, wins Singapore's contention by killing the Archdevil Clementine, frees Yuto, and appoints Ada as Earth's fifth Forerunner. He then stops foreign-System mana-nukes, although one blast creates an unexplained crystal incursion under Busan. Silas evolves into a Primal Human Ascension Candidate, forms an epic core, and creates a vast protected zone. Earth becomes Terra and begins a 100-year probation, with Silas recognized as its challengeable ruler.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Silas Renner became Earth's senior Forerunner and System Mediator while the planet moved toward a dangerous induction. Asta, Cease, Jiang, and General Krulak emerged as trusted partners in its defense, while Samvek served as Silas's off-world mentor. Vex led the Lepun into an alliance with Silas and Earth. Silas's mother remained protected in alien stasis as rising mana threatened the technology keeping her safe. The Wild Hunt ended with Silas and several allies returning to the United States, where political resistance, refugee settlement, and the need for large-scale preparation still awaited them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas returns from the Wild Hunt with Asta, Cecilia, and Jiang, beginning a relationship with Asta while taking stock of Earth's immediate needs. He releases his mother, Nancy, from alien stasis and persuades her to undergo induction. Nancy makes her first kills, forms an uncommon core, and reaches level 75. Cecilia accepts a subordinate relationship to Silas for Forerunner matters and inherits the vacant Earth position, although the dead Forerunner's legacy is damaged and partly locked behind quests. Meanwhile, an incoming fleet of more than 5,000 alien refugees seeks a place on Earth. Silas proposes settling them near the Lepun and begins combining their technology with System-compatible production. After mutated monsters attack the alien ship, their blood upgrades bio-steel. Silas reproduces the effect, then accidentally creates epic Vitae Steel by adding his own spiritual energy. The System warns that Vitae lies outside its authority, but the material is especially useful against devils. Silas and the alien scientists also complete a scouting drone that Jiang can reproduce, giving Earth a path toward broader reconnaissance.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas travels off-world seeking Samvek's advice and learns that Samvek, Talia, Dory, Crag, and Nevin have vanished. A message from a Veiled Infinity priest suggests that an ascendant System servant took them for insertion into Earth and reveals that multiple rival systems exist. While waiting for answers, Silas enters a changing gauntlet, uses Spirit Walk to bypass much of it, and claims the top score. A greater devil then breaches the dungeon and offers him power from Hell. Silas refuses, kills the intruder, and receives a mandatory investigation into how Hell reaches System-controlled worlds. Back on Earth, Cecilia returns from a grim inheritance mission just as a vice-presidential coup places President Wilson and General Krulak at gunpoint. Silas kills the hostage-takers and the leaders who admit treason, but spares the senator whose involvement remains uncertain. He takes the survivors to a dungeon so President Wilson can be inducted.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Samvek, Talia, Dory, Crag, and Nevin return through a spatial portal at the White House. Samvek explains that an ascendant being sent them to Earth while they were pursuing a devil seeking access to the planet. He has formed an epic core, and the group is ready to help with Earth's defense. Silas takes them and the national delegation toward the Lepun settlement, where intense mana has disabled vehicles near a National Guard perimeter. President Wilson insists on participating in the talks and undergoes induction first. When a guardsman fires on a Lepun warrior, Vex's forces disable the soldiers without killing them. Vex releases the injured guardsmen, and Silas heals them. Vex makes clear that the Lepun alliance is with Silas and Earth rather than one nation. She and President Wilson negotiate a proposed settlement that recognizes the Lepun as Earth citizens and gives them territory where they can prepare without human harassment. President Wilson forms an uncommon core and gains abilities suited to administration and public leadership, leaving him to seek political acceptance of the agreement.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas brings President Wilson and other leaders into negotiations with Vex. The Lepun defeat a National Guard confrontation without killing anyone, then secure recognition as Earth citizens and begin moving toward Shawnee National Forest. Silas swears a binding ten-year obligation to answer feasible Hell incursions in exchange for a larger party limit. He leads Samvek, the political trainees, and allied fighters through a rare slime dungeon. The group discovers radiant energy can destroy one slime type, while other wings require melee tactics and careful targeting. At the dungeon's center, Silas frees an incomplete soul from a primal decay echo. The fragments and recovered materials lead to test subject Earth Z4271, a former human transformed into the blue-wing slime boss. Silas restores the soul and helps the being remember the name Yuto. Yuto emerges as a human-slime hybrid and agrees to train under Samvek, close three Hell portals, and earn independence after induction. With only 32 days left, Silas accepts the need for public leadership. President Wilson introduces a national broadcast in which Silas and General Krulak reveal the coming induction, monsters, magic, and Earth's nonhuman allies.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the public revelation, Silas resists an attempted federal interrogation and delegates more political work to President Wilson and General Krulak. At the Lepun settlement, Asta has adapted their sacred root to Earth, giving them a protected high-mana home. The System recognizes the Lepun as native citizens, and Silas develops terrakinesis as a source of pure materials. He and Asta establish both a romantic partnership and a joint crafting program. Together they create an epic Training Workshop, while Silas evolves his occupation into Metacrafter. Their public healing demonstration helps present the Lepun and alien refugees as partners rather than threats. A fleet of 132 alien ships then arrives, and the System classifies its people and technology as belonging to Earth. Thousands need housing as mana disables their equipment. At the same time, Jiang disappears inside a gray dome over Singapore, and the Army of the Righteous expands across the Middle East. Silas, Cecilia, and Samvek's group destroy many of the army's camps, but General Ishak remains hidden. Silas then converts an alien ship into a mana-supported residential complex, creating a model for refugee infrastructure and receiving a choice among major Earth-linked crafting evolutions.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas, Asta, and Cecilia travel to Proximus to address a spreading corruption of life mana. The planet is beyond cleansing in the time available, and its 192 surviving people are deformed, starving, and close to death. A mysterious divine presence gives Silas a temporary power that can permanently alter one of his abilities. He uses it on Save for Winter, allowing willing living beings to enter timeless storage and emerge healed of corruption, disease, wounds, and harmful conditions. All 192 survivors accept storage for later resettlement on Earth. On returning, Silas chooses the unique legendary occupation Architect of the System, gaining the ability to design mana-infused blueprints and direct System resources into Earth's construction. He creates a home-to-bunker conversion and demonstrates it through President Wilson, but recognizes that population-scale survival requires designs others can reproduce. During a political meeting, armed extremists attack the allied base. Silas kills the rival Forerunner leading them, resurrects recoverable casualties, and learns he must select Earth's final Forerunner. In the aftermath, he compels political leaders to adopt a shared survival agenda, taking open authority over coordinated preparations.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas creates scalable blueprints for fortified housing, workshops, and a legendary combat-training circle, then crafts soulbound System Mediator armor. The Singapore dome erupts with insectoid monsters, and the heavens offer him a contention against Hell for control of a thousand-mile region. Silas enters with Asta, Yuto, Scratch, and Lepun fighters, while other allies contain the spread outside. The ruined city is filled with devils, human-insect bodies, and tortured soul fragments. Jiang is alive within the dome, and Asta uses rapidly grown combat creatures to support the advance. When Silas absorbs hell mana and devil Vitae, Hell offers him powerful classes that would end his System path and concede the contention. He rejects them, strengthening his mediator status and resistance to hostile mana. At the portal, Clementine, an Archdevil of the seventh hell, invokes a sanctioned duel. Silas uses his temporal title to prepare, creates a secondary space-mana core, and returns with stronger anti-devil abilities. A protective ring negates Clementine's killing blow, allowing Silas to kill her with the Vitae Blade. The victory closes Hell's claim, secures the haven, reveals the portal-seeding method, and grants Yuto and Scratch their freedom.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Singapore dome disappears after the victory. Asta and Jiang had already brought down its main structure, while allied forces contained the remaining monsters. More than 30 million people are inducted through the captured threat, and international production of shelters, drones, vehicles, communications, and equipment accelerates. Rayden promises 1,500 rare fighters after induction. Earth's Forerunners identify Ada, an independently inducted Ethiopian doctor and refugee defender, as the leading candidate for the fifth position. After Asta purifies a dangerous rhinoceros near Ada's village, Silas grants Ada the inheritance and the System recognizes her as Earth's final Forerunner. A new crisis begins when North Korea launches three mana-infused nuclear missiles protected by foreign-System energy. Silas disrupts their fields and sends two beyond the Moon, but must redirect the third beneath Busan. The blast nearly kills him and creates crystal spires, collapsing ground, a fear effect, and an incursion linked to an unfamiliar system. Silas then destroys hostile nuclear infrastructure and kills leaders who refuse to stand down. He returns to Busan with Ada and Vex to support relief efforts and suppress monsters, with two days remaining before induction and the crystal threat still active.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The 192 rescued off-world survivors emerge cured and settle with the Lepun, with their teammate guiding their adjustment. Silas distributes resources among the Forerunners and drinks an Elixir of Life that strengthens the bond between his body and spirit. In Kimbora, a priest elevates Silas's standing within the Sect of the Veiled Infinity and confirms his role as System Mediator. Silas then evolves into a Primal Human Ascension Candidate. The change strengthens his spiritual nature and creates a heritable bloodline that may attract outside attention. His Eidolon also reaches epic tier. Back on Earth, Samvek reports that the Busan crystals have become inactive, although their origin remains unexplained. Silas combines Archon, Life Seer, Apex Predator, and Stat Paragon into an epic core and reaches level 140. Just before the countdown ends, he uses a legendary favor and primal power to establish a 500-mile zone where monsters and dungeons cannot spawn during probation. Silas and Asta resolve a breach of trust and commit to an exclusive relationship. Earth is inducted as Terra, humanity enters the System at level one, and the planet begins transforming. A 100-year probation starts with 102 authorized incursions, three merchant contracts, and 96 pending faction requests. The heavens recognize Silas as Terra's ruler, subject to challenge by anyone able to defeat him.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DLJ8Z6VG",
+            "type": "community"
+          }
+        ],
+        "work": "contention"
+      }
+    },
+    "control": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Earth's Heaven's Anointed Forerunner and System Mediator. The System places responsibility for Earth's survival, advancement, portals, and off-world agreements under his authority.",
+            "id": "silas-renner",
+            "name": "Silas Renner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Silas's trusted Forerunner ally and evolution specialist.",
+            "id": "asta",
+            "name": "Asta",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas's off-world mentor and a Rayden clansman.",
+            "id": "samvek",
+            "name": "Samvek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted Earth Forerunner ally and major defender.",
+            "id": "jiang",
+            "name": "Jiang",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A combatant selected for Silas's team responding to the Dubai incursion.",
+            "id": "cease",
+            "name": "Cease",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cease"
+            ],
+            "description": "Silas's mother and the fire-talented Forerunner previously known as Cease. She is allied with Rayden and the Adventurers Guild and receives a ritual meant to repair weaknesses caused by rapid advancement.",
+            "id": "cecilia-renner",
+            "name": "Cecilia Renner",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A military ally whom Asta consults for candidates capable of helping administer Silas's new authority.",
+            "id": "general-krulak",
+            "name": "General Krulak",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thumper"
+            ],
+            "description": "The Lepun leader allied with Silas. Her people supply liaisons and defenders as Earth organizes against its new threats.",
+            "id": "vex",
+            "name": "Vex",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Epic-tier Lepun liaison and protector assigned to Silas's team for the response to the Dubai incursion.",
+            "id": "scratch",
+            "name": "Scratch",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frontline fighter who accompanies Silas to Dubai. He regards Silas's household as family, and Silas accepts him as an adopted brother.",
+            "id": "crag",
+            "name": "Crag",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scout selected to accompany Silas on the mission to the Dubai incursion.",
+            "id": "dory",
+            "name": "Dory",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of two planners given substantial purchasing authority to prepare a coordinated supply proposal for Earth's governments.",
+            "id": "talia",
+            "name": "Talia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Silas's delegated purchasing planners, responsible with Talia for developing a cross-government acquisition plan.",
+            "id": "nevin",
+            "name": "Nevin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Silas's Eidolon, summoned as crucial reinforcement for the Dubai mission.",
+            "id": "urg",
+            "name": "Urg",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dubai civilian defender who repeatedly risks himself to draw monsters away from fleeing people. He questions Silas's authority but is willing to cooperate after seeing him protect civilians.",
+            "id": "omar-hassan",
+            "name": "Omar Hassan",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior officer commanding the Dubai invasion force. This commander promises protected passage for Silas's party and begins official talks with him.",
+            "id": "dubai-invading-commander",
+            "name": "the Dubai invading commander",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival off-world Forerunner directing the organized Sydney incursion through wind and water mana.",
+            "id": "opposing-forerunner",
+            "name": "the opposing Forerunner",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A political ally who warns Silas that coalition members object to the Dubai truce while Earth's defenders are stretched across several continents.",
+            "id": "president-wilson",
+            "name": "President Wilson",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senator participating in the home team's political deliberations as worldwide monster attacks strain the alliance.",
+            "id": "senator-corbin",
+            "name": "Senator Corbin",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sydney's former commissioner. Silas places this official in charge of the city and nearby territory as a system-recognized subordinate ruler.",
+            "id": "former-sydney-commissioner",
+            "name": "the former Sydney commissioner",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragon reported to have attacked near Stonehenge with enough power to overwhelm Samvek.",
+            "id": "red-dragon",
+            "name": "the red dragon",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Representative Simmons"
+            ],
+            "description": "A political conspirator who helps time the abduction of Silas's mother as leverage against him, working with an off-world trader and a hostile envoy.",
+            "id": "connie-simmons",
+            "name": "Connie Simmons",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An off-world corporate representative who takes part in the operation using Silas's mother as leverage against him.",
+            "id": "corporate-representative",
+            "name": "the corporate representative",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Silas's sister. She stands with him during the Alliance confrontation and executes the envoy from Mexico.",
+            "id": "silas-sister",
+            "name": "Silas's sister",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rare human cultivator and advocate for the Divided Realms. His competing system makes his capabilities difficult for the heavens system to assess.",
+            "id": "dutch",
+            "name": "Dutch",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cammy"
+            ],
+            "description": "A human-born, dragon-bonded demigoddess who arrives to stop the wounded red dragon's execution. She says the dragon acted without authorization and offers accountability and compensation.",
+            "id": "camille-westfork",
+            "name": "Camille Westfork",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chosen for life to speak for Rigel's displaced population, she can perceive her constituents' needs and fears. She handles talks with Silas while military authority remains with their commander.",
+            "id": "refugee-imprinter",
+            "name": "the refugee Imprinter",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Rigel refugee military commander who becomes Silas's direct contact during the Night's Fall emergency.",
+            "id": "general-yakima",
+            "name": "General Yakima",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Rigel fire mage assigned to escort Silas. Silas channels mana into the mage's attack, advancing the spell enough to destroy otherwise resilient infiltrators.",
+            "id": "rigel-fire-mage",
+            "name": "the Rigel fire mage",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The retreating Night's Fall horde produces a self-aware humanoid entity concentrated near legendary strength.",
+            "id": "nights-fall-entity",
+            "name": "the Night's Fall entity",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A peak-rare Rayden mage, fighter, and administrator responsible for organizing the clan's newly arrived expedition and its Earth compound.",
+            "id": "rayden-expedition-administrator",
+            "name": "the Rayden expedition administrator",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant corporation's provisional sales manager for Earth. The manager represents the company while delivering its promised goods.",
+            "id": "merchant-manager",
+            "name": "the merchant manager",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak-rare Lepun warrior selected by Vex to replace Scratch on Silas's active field team.",
+            "id": "leon",
+            "name": "Leon",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A peak-rare Lepun shaman chosen by Vex as one of Silas's new field escorts.",
+            "id": "lepun-shaman",
+            "name": "the Lepun shaman",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Rayden fighter who joins Silas's party for the planned response to the giant-snake crisis in Manhattan.",
+            "id": "rayden-warrior",
+            "name": "the Rayden warrior",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The seventy-third son of a peak family's lord. He receives Silas aboard the family's dimensional platform under a promise of safe passage.",
+            "id": "peak-family-lesser-prince",
+            "name": "the peak-family lesser prince",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "the prince's sister"
+            ],
+            "description": "A pending princess and army captain from the peak family. Suppressed to rare tier for the meeting, she challenges Silas to a spar as a test of his worth.",
+            "id": "peak-family-pending-princess",
+            "name": "the peak-family pending princess",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DV1R9X48",
+            "type": "community"
+          }
+        ],
+        "work": "control"
+      },
+      "recaps": {
+        "ending": "Silas returns from Rigel after destroying the immediate Night's Fall elite, but most of that world remains corrupted. He carries a contained primordial fragment and an incomplete Trailblazer aspect that he has allowed the heavens to seal so he can remain compatible with Earth. Rigel's refugees retain Dubai for one year while treaty talks continue, and General Yakima provisionally offers fighters for Earth's defense. Silas distributes classes and supplies worldwide and creates one thousand Vanguard, but Earth's death toll continues to rise. Asta leaves for the Southern California incursion after giving Silas an unused draconic mutagen. Cecilia heads toward the unresolved Mexico operation, another companion manages the Hell crisis in Busan, and Manhattan's giant-snake nests still need help. Silas diverts from Manhattan when a peak family arrives over Nepal in a dimensional platform. Leon, a Lepun shaman, and a Rayden warrior accompany him aboard, but guards separate them under safe passage. The book closes when the family's pending princess challenges Silas to a sparring test and he accepts.",
+        "in_short": "The System makes Silas Renner Earth's responsible ruler just as organized incursions begin. He negotiates temporary refuge for Rigel's migrants in Dubai, defeats a hostile Forerunner's attack on Sydney, resurrects tens of thousands, and helps the city survive twenty escalating waves. After conspirators abduct his mother, he rescues her and imposes system-backed martial law. A dragon attack at Stonehenge reveals competition between systems, but Camille Westfork removes the dragon and leaves the rift open. Silas then visits Rigel, discovers that Night's Fall is primordial corruption, destroys its army and legendary elite, and accepts a sealed Trailblazer aspect. Back on Earth, he secures vast off-world supplies, distributes classes globally, and creates the Vanguard. With crises still active in Mexico, Busan, Southern California, and Manhattan, a peak family arrives over Nepal seeking Silas's ascension potential. He enters its platform and accepts a pending princess's sparring challenge.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Silas Renner is an Earth Forerunner with unusual System authority. Asta is his trusted Forerunner partner and evolution specialist, Samvek is his off-world mentor from Rayden, and Jiang is a fellow Earth Forerunner and major defender. Earth has entered the multiverse's system order alongside Lepun allies and other displaced peoples. The planet begins this volume under severe pressure to survive, advance, manage portals, and deal with stronger off-world powers.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The System installs Silas as Earth's Heaven's Anointed Forerunner, giving him broad authority and responsibility for planetary survival. Earth is politically divided, off-world groups are approaching, and the first incursion portal opens at an unknown location. Samvek persuades Silas that he needs staff and delegation more than constant personal intervention. With access to allied satellite data, Silas locates the portal in Dubai and enters with a small team. The incubation zone restricts many abilities to rare tier. Dory discovers an organized invasion force supported by predator-beasts and enslaved stone elementals that are clearing the city for settlement. Silas's team protects civilians around a mosque, and Silas recruits Omar Hassan, a local defender who questions his authority but accepts responsibility for organizing civilian resistance. The team fortifies nearby homes before moving toward the invaders' army.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas approaches the Dubai army under fire and secures an oath of safe conduct for negotiations. The invaders explain that millions of their people need refuge from Night's Fall, which is destroying Rigel. Silas demands an end to killing, withdrawal near the portal, reparations, and later local approval for any settlement. Their commander accepts a system-enforced temporary truce. Silas helps evacuate Dubai, then races to Sydney when coordinated monsters attack under a rival Forerunner. He kills the incursion commander, but the hostile Forerunner escapes and leaves Sydney bound to twenty increasingly difficult waves. Silas and Urg destroy the first wave through combined cold and sonic attacks. Between waves, Silas begins reviving casualties, develops more efficient spell combinations, and performs a mass resurrection of 49,874 people at extreme personal cost. He collapses after Samvek, Scratch, and another ally arrive to hold the defensive line.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas wakes as Sydney's final waves approach. He uses a huge mana body to destroy the eighteenth wave, then Lepun reinforcements join the exhausted defenders for the last two. Jiang disperses a hostile mist and Urg counters a sonic assault, allowing the combined force to save the city. Sydney receives bastion status and stronger defenses, and the event's rewards are distributed among those who fought. Cease is revealed as Cecilia Renner, Silas's mother. Silas appoints a local ruler before leaving for an international meeting in Washington. There, political opposition becomes a conspiracy: Representative Connie Simmons, an off-world trader, and hostile envoys have arranged the abduction of Silas's mother. Silas returns to his destroyed home, kills one mercenary team, and follows the kidnappers. An enemy mage casts him into an interworld void, but a traveler connected to another system returns him to Earth. Silas defeats the remaining mercenaries and confirms that his mother is safe.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas reunites with his mother and strengthens the refuge protecting her. He then places Earth under explicit martial law, makes President Wilson, Senator Corbin, and General Krulak joint leaders of the United States, and establishes system-backed consequences for treason. Connie Simmons refuses his challenge, loses her advancement, and is bound to protected lifelong public service. Silas discovers that the South Korean envoy was possessed by a greater devil, confirming a Hell-linked crisis around Busan. He forces the corporation tied to his mother's abduction to promise billions of class resources, then kills its responsible representative. Multiple emergencies divide the Forerunners. Near Stonehenge, a dragon from a competing system attacks a town and is wounded by Silas's group. Camille Westfork, a powerful dragon-bonded demigoddess, intervenes, removes the dragon, promises compensation and a guard beyond the rift, and opens the possibility that rival systems can negotiate. The Stonehenge passage remains open, while Silas agrees only to hear a future Divided Realms proposal.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "President Wilson secures a one-year ceasefire that temporarily gives Dubai to Rigel's refugees. Silas formalizes the arrangement, refusing to treat desperation as absolution for deaths and leaving permanent settlement to later agreement with the local government. He accepts safe passage to inspect Rigel with Urg. The world is technologically advanced but starved of mana, largely overrun by Night's Fall, and struggling to evacuate. Silas discovers invisible infiltrators whose converted bodies and equipment regenerate unless completely destroyed. He helps a Rigel fire mage develop enough power to burn them away, then repeatedly uses restoration magic to resurrect and apparently cleanse a contaminated soldier. At the front, Silas and Urg attack an immense corrupted horde. Silas deliberately allows himself to die so Halo of Rebirth can evolve. During revival he sees uncertain, fragmented futures in which Earth survives terrible wars and another in which grief turns him into a multiversal threat. He revives, resumes the battle, and learns that a fragment of a primordial concept has lodged within him under System containment.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After prolonged fighting, Silas and Urg reduce Night's Fall's horde to scattered remnants. Millions of withdrawing creatures condense into a self-aware legendary elite. It displaces Urg and attempts to paralyze and corrupt Silas. Rather than accept deeper System binding, Silas takes an incomplete Trailblazer aspect. The temporary legendary power lets him destroy the elite, purge a narrow strip of Rigel, and make thirteen Rigel natives, including General Yakima, his Pioneers. To remain compatible with probationary Earth, he permits the heavens to seal most of the aspect. Yakima proposes an alliance, pauses further migration, and offers fighters while formal authority considers the treaty. Silas returns to news that more than 600 million people have died. Mexico, Busan, and Southern California remain in crisis. Samvek acknowledges that Silas now exceeds him in raw physical power, although not technique, and warns him against using the new Self-Propagation ability without safeguards. Rayden forces arrive, and Silas gains greater System design authority as off-world supplies begin reaching Earth.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A merchant corporation delivers billions of class shards, healing potions, rare equipment packages, and a planetary distribution device. Silas accepts a contract that brings stores and rare-tier defenders to allied nations. Inside the device, his awareness expands across Earth. He distributes basic classes and resources worldwide, strengthens one thousand selected defenders, and creates the native-only Vanguard, whose advantages also make its members priority targets. The device fails under the effort, and Urg pulls Silas free before he loses consciousness. Silas wakes to a death toll nearing 800 million. Asta departs for the Southern California incursion after leaving a dangerous draconic mutagen in his care. Silas takes Leon, a Lepun shaman, and a Rayden warrior toward Manhattan's giant-snake nests, but a peak family's dimensional platform arrives over Nepal. The family seeks his ascension-candidate trait and treats silence as hostility. Silas enters under safe passage, is separated from his escorts, and meets a lesser prince and his pending-princess sister. The book ends when she challenges Silas to a sparring test and he accepts.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0DV1R9X48",
+            "type": "community"
+          }
+        ],
+        "work": "control"
+      }
+    },
+    "countdown": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An enhanced human Forerunner racing to Paris for a meeting with Earth's other active representatives. He has a portal on his family property and seeks help from covert alien observers when ordinary travel cannot get him there in time.",
+            "id": "silas-renner",
+            "name": "Silas Renner",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Uncle Dan"
+            ],
+            "description": "Silas's deceased uncle and predecessor as a Forerunner. His legacy placed Silas on the Forerunner path.",
+            "id": "daniel-becker",
+            "name": "Daniel Becker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silas's sister and one of the family members he intends to protect as Earth's deadline approaches.",
+            "id": "cecilia",
+            "name": "Cecilia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran Earth Forerunner who attends the Paris meeting about the planet's score and Emil Larsson's suspicious imprisonment. She agrees to help prepare an attempt to reach him.",
+            "id": "annika",
+            "name": "Annika",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran Earth Forerunner at the Paris meeting. She stresses that Earth needs every active Forerunner completing missions and recognizes Silas's unusually strong first week.",
+            "id": "nuri",
+            "name": "Nuri",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the veteran Earth Forerunners at the Paris meeting. He shares the others' interest in Earth's score amid clear distrust within the group.",
+            "id": "jiang",
+            "name": "Jiang",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth Forerunner imprisoned after an attack. His ability to escape makes his continued confinement suspicious, prompting the others to ask Silas to investigate.",
+            "id": "emil-larsson",
+            "name": "Emil Larsson",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "An established Galen teammate who joins Silas's Darji containment mission. She fights at close range and helps handle the first undead test set by his prospective mentor.",
+            "id": "dory",
+            "name": "Dory",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established Galen teammate who joins the Darji mission. He serves on the front line against the undead while Silas's prospective mentor evaluates the group.",
+            "id": "crag",
+            "name": "Crag",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established Galen teammate and spellcaster who answers Silas's call for the Darji mission. His magic helps the group defeat the undead sent to test them.",
+            "id": "nevin",
+            "name": "Nevin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavily armed Numari affiliated with House Raiden who appears during the Darji containment mission. He releases three undead drones to test Silas's team while presenting himself only as a prospective mentor.",
+            "id": "unnamed-prospective-mentor",
+            "name": "Unnamed prospective mentor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-125 rare Numari affiliated with House Raiden who evaluates Silas and his team during a Darji containment mission. He offers Silas outer-family membership, clan protection, relocation options, and direct mentorship.",
+            "id": "samvek-raiden",
+            "name": "Samvek Raiden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unusual plant-like Eidolon accompanying Silas during the Darji containment mission.",
+            "id": "silas-eidolon",
+            "name": "Silas's Eidolon",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent undead caster guarding an outer graveyard plot with two linked armored drones. It detects Silas Renner's identification magic and attacks with black fire that threatens the soul.",
+            "id": "darji-smolder",
+            "name": "Darji Smolder",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A four-armed devilkin sentinel guarding an illuminated oasis behind an energy screen. It recognizes Silas Renner as the killer of the takers and attacks him.",
+            "id": "devilkin-cedar",
+            "name": "Devilkin cedar",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An incorporeal female Darji released from a sarcophagus after Silas chooses the wrong item in a trapped crypt. The recording calls her the unnamed necromancer's beloved.",
+            "id": "unnamed-darji-banshee",
+            "name": "Unnamed Darji banshee",
+            "reveal": {
+              "chapter": 23
+            }
+          },
+          {
+            "description": "An unnamed Darji necromancer whose recorded voice presents a book and dagger as a test of whether Silas will follow his path. The choice activates a trap involving the banshee he calls his beloved.",
+            "id": "unnamed-darji-necromancer",
+            "name": "Unnamed Darji necromancer",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The former Darji necromancer, now revealed as the dungeon's rare lich. He inhabits a hell-infused undead elemental construct and confronts Silas's party in the core plot.",
+            "id": "darji-dungeon-lich",
+            "name": "Darji dungeon lich",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Lord Raiden"
+            ],
+            "description": "The legendary leader of the Raiden clan and Samvek's father. He arrives with an elite party to resolve the priority quest created by the hell incursion and confirms Silas's standing as an inner disciple.",
+            "id": "lord-samuel-raiden",
+            "name": "Lord Samuel Raiden",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The same symbiotic companion previously known only as Silas's Eidolon. Erg can take a dark, spiked combat form and withdraw into Silas's shadow.",
+            "id": "erg",
+            "name": "Erg",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The military leader of a displaced people living in a failing desert refuge. After Silas swears secrecy and nonaggression, Dejek admits him to the settlement's hidden water source and farms.",
+            "id": "dejek",
+            "name": "Dejek",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dejek's son, committed to become the fifth member of Silas's team in exchange for assistance given to his displaced people.",
+            "id": "dejin",
+            "name": "Dejin",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of three hostile elven Forerunners hunting Silas on Proximus. She attacks from range while her companions pressure him on the ground.",
+            "id": "unnamed-elven-archer",
+            "name": "Unnamed elven archer",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of three hostile elven Forerunners pursuing Silas on Proximus as part of a revenge mission. This attacker supports the ambush with magic.",
+            "id": "unnamed-elven-mage",
+            "name": "Unnamed elven mage",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An uncommon elven Forerunner who engages Silas with a sword during the Proximus ambush. He is one of three pursuers assigned to a revenge mission against Silas.",
+            "id": "unnamed-elven-swordsman",
+            "name": "Unnamed elven swordsman",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The sole known Barjek Forerunner, a rare level-125 scythe wielder who arrives through the elves' signal portal. He challenges Silas to a System duel and presents an overwhelming threat.",
+            "id": "morvarg-silon-of-barjek",
+            "name": "Morvarg Silon of Barjek",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An epic-tier vice regional leader of the Adventurers Guild. She intervenes when competing corporate delegations crowd Silas in Unwich and has the authority to separate them.",
+            "id": "selmak",
+            "name": "Selmak",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of the covert alien observers studying Earth. He arranges rapid transport for Silas while his people's presence and intentions remain largely concealed.",
+            "id": "alien-liaison",
+            "name": "Alien liaison",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0CSZWJQN8",
+            "type": "community"
+          }
+        ],
+        "work": "countdown"
+      },
+      "recaps": {
+        "ending": "Emil refuses to leave Oslo unless Silas helps his experimental animals. His underground laboratory traps Silas in legendary mana, forcibly alters him, and rises through a neighborhood when he activates its exit. Protocol Zeta then releases a destructive mana pulse, clones the animals, and causes an irreversible breach. Earth loses three million world points and its induction advances by 242 days, exposing nearby life to forced induction or mutation. Silas rescues civilians and remains in the Oslo disaster zone while the public receives a false account involving terrorism and a possible nuclear event. Emil's location and purpose remain unresolved. Silas is separated from Dory, Crag, Nevin, Dejin, and Samvek, while Erg's evolution has disabled their bond. Morvarg remains confined only until the Wild Hunt. Annika, Nuri, and Jiang remain uncertain allies after Daniel Becker's warning. The displaced people still need a permanent home, and the alien liaison's asylum remains conditional. Every Forerunner must enter the Wild Hunt alone in 6 days, 16 hours, and 47 minutes.",
+        "in_short": "Silas Renner joins House Raiden under Samvek, then spends months training with Dory, Crag, and Nevin inside an overloaded Darji dungeon. He frees a banshee's soul, uncovers a hell incursion, forms an uncommon core, and permanently defeats the lich behind the dungeon, gaining the Darji lineage. Back on Earth, he grants conditional refuge to alien observers and learns to combine mana with biosteel. On Proximus he temporarily restores a displaced people's refuge, recruits Dejin, kills three hostile elven Forerunners, and loses access to Erg when the Eidolon traps Morvarg in another plane. Daniel Becker's journal deepens Silas's distrust of Earth's Forerunners. After provoking corporate competition on Galen, Silas goes to Oslo for Emil Larsson. Emil refuses rescue, and his automated laboratory triggers Protocol Zeta. The resulting breach costs Earth three million world points and advances induction by 242 days. Silas survives in Oslo but must enter the solo Wild Hunt in less than seven days.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Silas Renner inherited the Forerunner path from his deceased uncle, Daniel Becker. A portal on his family property gives him access to System missions beyond Earth, where he developed enhanced abilities and formed a team with Dory, Crag, and Nevin. Crag is the group's frontline fighter, Dory specializes in close combat, and Nevin supplies magic. Silas also has a symbiotic Eidolon and a strong connection to life mana. His victories brought him points toward protecting Earth, but they also left him responsible for family members who do not understand the danger. His sister Cecilia and their mother remain outside the System. Earth faces a countdown to induction, and its active Forerunners must earn enough world points to improve the planet's prospects. Silas begins this volume with urgent business on Earth, limited trust in the other Forerunners, and growing concern about how to protect ordinary people when induction arrives.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas uses a covert alien ship to reach Paris, where he meets Annika, Nuri, and Jiang. They agree that Earth needs all its Forerunners completing missions and discuss Emil Larsson, who remains imprisoned despite apparently being capable of escape. Silas accepts the job of finding out why Emil stays there. Back home, he secures his portal and reviews missions while Earth's deadline stands at 387 days. A House Raiden offer leads him to a Darji graveyard with Dory, Crag, and Nevin. Their prospective mentor, Samvek Raiden, tests the party against undead drones and explains that advancement depends on trained skills and abilities as well as levels. House Raiden offers protection, resources, relocation possibilities for Silas's family, and personal instruction. Silas remains wary of the clan's interest in Earth, but Samvek promises that membership is voluntary. Silas accepts outer-family status through a blood ceremony. Samvek then begins direct training, forcing him to fight without relying on his usual control magic.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Samvek drives the party through weeks of combat, weapon practice, mana meditation, and ability training inside the overloaded Darji dungeon. Silas strengthens his life-mana imprint, rejects an undeath attunement, and learns to use more of his neglected toolkit. The party clears the outer graveyard plots until it meets an intelligent Darji Smolder linked to two armored guardians. The Smolder's black fire passes through Silas's defenses and injures his soul. The group lures the guardians into a prepared pit, burns them, and then attacks the exposed Smolder. Crag breaks its legs, Nevin suppresses it with frost and lightning, and Dory delivers the killing strike after Silas damages its crown with a shaped force shield. The rewards give Dory a Death Drinker shard, Nevin a damaged command crown, and Silas the rare Killing Touch spell. Samvek says Silas's soul should recover if he avoids another exposure, but criticizes the party for placing its healer in danger. With three enemies still growing stronger, he orders another month of training.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas develops Rapid Flight, several uncommon spells, and lightning attunement through a Raiden clan crystal. The party destroys the last outer-plot monsters, while Dory gains the components needed for an uncommon core. Because the dungeon's remaining enemies are scaling too quickly, Samvek accelerates the advance into the inner plots and separates Silas from the others. In a trapped crypt, Silas and his Eidolon defeat twelve reavers. Silas upgrades his force-construction ability and solves a pedestal puzzle that offers a book or dagger. He chooses the book, but the recorded voice of a Darji necromancer declares the choice wrong. A female Darji banshee emerges from the sarcophagus, identified by the recording as the necromancer's beloved. Silas has no clear way to defeat the incorporeal threat, and the chamber remains sealed. The encounter turns the dungeon from a straightforward clearing mission into evidence of deliberate necromantic experiments and a personal history behind them.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas enters Spirit Walk to fight the banshee, then discovers her remnants invading his mana channels. From the necromancer's journal he concludes that she was the man's wife. Instead of destroying her, he combines life and lightning mana to free her soul, receiving the Spirit Singer inheritance. A hidden laboratory beneath the sarcophagus reveals experiments in undead, elemental energy, and soul manipulation. Silas burns the most harmful spell manuals, keeps a golem-making ability, and uses his Junkman Artificer occupation to craft an identification visor. After further training, he enters a labyrinth occupied by devilkin created through a hell incursion. Hundreds of attackers destroy his Eidolon's body, but Silas survives, reaches level 50, and continues alone because the plot blocks dimensional summoning. At an oasis he fights a powerful four-armed devilkin cedar. Samvek secretly supplies a lightning crystal that lets Silas finish the creature. After the victory, Samvek formally accepts Silas as an inner disciple of the Raiden clan.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hell incursion triggers a priority quest and reunites Silas with his team. Dory, Crag, and Nevin have formed uncommon cores, and Silas builds his own from four compatible class shards. Lord Samuel Raiden arrives with an elite party, recognizes Silas's clan standing, and has a legendary priest remove a harmful mana seed left by the cedar. The apparent oasis then enchants the team into complacency until Nevin notices the influence and Silas breaks it with spirit singing. In the core plot they confront the former Darji necromancer, now a rare lich controlling a hell-infused construct. The team collapses a temple on it, but the lich survives through a phylactery. Silas escapes the rubble by temporarily adopting a malleable nonhuman form. At the dungeon core, he uses a secret life-attuned crystal to overcome the phylactery's undeath pressure and destroys the lich permanently. The Darji become extinct, while Silas chooses their lineage instead of undeath. He negotiates the dungeon's closure for world points and permanent benefits for the party, then returns to Earth.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After roughly five months away, Silas returns to his mother and Cecilia and reassesses the human cost of Earth's countdown. His uncommon status gives him access to the world leaderboard and reveals Emil Larsson's base outside Oslo. A publicly visible alien craft then draws Silas aboard. Its crew has been studying physics-defying irregularities and abducted him for testing despite the objections of the alien liaison who helped him earlier. Silas resists, incapacitates two officials, and forces negotiations. When the liaison infers that Silas is unable to explain the System, the System punishes Silas for approaching forbidden disclosure. The liaison requests asylum for his crew rather than obey a demand to obtain a human test subject. Silas allows them to settle conditionally on his family land and receives access to a workstation and biosteel. Through repeated experiments, he learns to combine mana with the living material and creates a rare defensive gauntlet. He then chooses a mission on Proximus to recruit a fifth teammate.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Proximus, three elven Forerunners ambush Silas as part of a revenge mission. He escapes into the desert and finds a hidden refuge whose water and farms are failing. Silas uses most of his life-attuned crystal to restore the settlement temporarily, and its military leader Dejek pledges his son Dejin as Silas's fifth teammate. Silas and Dejin then kill the three pursuers, but the archer's rebirth item sends a signal before she falls. Morvarg Silon of Barjek, a rare level-125 Forerunner, arrives through the resulting portal and overwhelms Silas, Dejin, and Erg. Erg restrains Morvarg and drags him into its home plane while beginning an evolution, leaving Silas unable to reach his companion. The System confirms that Morvarg is confined only until the Wild Hunt. A newly unlocked section of Daniel Becker's journal warns Silas that Emil is unstable, Jiang is dangerous, and neither Annika nor Nuri should be relied upon. The warning sharpens Silas's distrust just as Annika presses him to act on Emil.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Annika enters Silas's property undetected, inspects parts of his status, and again urges him to see Emil. Silas withholds what happened to Morvarg and delays the meeting. He instead takes Dejin to Unwich on Galen, where corporations and Clan Raiden are competing for influence. Silas reunites with Dory, Crag, Nevin, and Samvek and introduces Dejin as the fifth party member. Corporate representatives compete to sponsor Silas until Selmak, an epic Adventurers Guild leader, intervenes. She awards the group credits, guild points, and epic shards, extending probationary membership to Dejin so he can share the reward. Samvek explains that Silas can use the Guild benefit and the corporations' interest in post-induction Earth as bargaining power. Rather than accept an immediate offer, Silas plans a bidding contest. He and Dory steal valuables from one corporate warehouse and plant them with rivals, deliberately provoking conflict. Silas then turns back toward the unresolved problem of Emil in Oslo.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silas secretly enters Oslo Prison and reaches Emil Larsson in its psychiatric ward. Emil recognizes his connection to Daniel Becker but refuses rescue, saying Silas must first help his experimental animals. After attackers breach the prison, Emil grants Silas limited access to his underground laboratory. Legendary mana there poisons and strengthens Silas while preventing him from recalling home. He finds mutated animals and takes two containers of epic mana-infused water, but cannot determine Emil's larger purpose. An automated device then forcibly alters Silas after he injures himself trying to escape. When he activates the exit, the laboratory rises through an Oslo neighborhood, destroying homes and killing residents. Protocol Zeta releases a mile-wide mana pulse, destroys nonliving structures, clones the animals, and forces nearby life toward induction or mutation. The System declares an irreversible breach, removes three million world points from Earth, and advances planetary induction by 242 days. Silas rescues civilians and creates the Mask of Obscurity. With Emil's fate unresolved and Erg unavailable, Silas learns that every Forerunner must enter the Wild Hunt alone in 6 days, 16 hours, and 47 minutes.",
+            "through": {
+              "chapter": 60
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0CSZWJQN8",
+            "type": "community"
+          }
+        ],
+        "work": "countdown"
+      }
+    },
+    "crime-and-punishment": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Rodya",
+              "Rodion Romanovich"
+            ],
+            "description": "A destitute former law student in St. Petersburg, living in a cramped attic room he can barely pay for. Proud, intelligent, and withdrawn, he has abandoned his studies and drifts through the city in a feverish, isolated state. He is preoccupied with a theory that a small number of extraordinary people are entitled to overstep ordinary moral limits for a greater purpose, and he broods on whether he might be such a person. Poverty, shame at his family's sacrifices for him, and his own detached intellect drive him toward a terrible act against a local pawnbroker.",
+            "id": "rodion-raskolnikov",
+            "name": "Rodion Raskolnikov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sofya Semyonovna",
+              "Sonechka"
+            ],
+            "description": "The gentle, self-effacing daughter of the drunkard Marmeladov. To keep her starving family fed, she has been forced into prostitution, a degradation she bears with quiet suffering and deep religious faith. Meek in manner but unshakable in her belief in God and forgiveness, she becomes a figure of compassion and moral steadiness in Raskolnikov's life.",
+            "id": "sonya-marmeladova",
+            "name": "Sonya Marmeladova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruined former civil servant whom Raskolnikov meets in a tavern. A hopeless alcoholic, he has drunk away his post and his family's livelihood, and speaks with maudlin eloquence about his own worthlessness and his daughter Sonya's sacrifice. He is married to the consumptive, proud Katerina Ivanovna and lives in squalid poverty.",
+            "id": "marmeladov",
+            "name": "Semyon Marmeladov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Marmeladov's wife, a proud, high-strung woman of genteel background reduced to misery. Suffering from consumption and burdened with young children and a drunken husband, she clings desperately to memories of a better past and to her sense of dignity, veering between fierce tenderness and hysterical despair.",
+            "id": "katerina-ivanovna",
+            "name": "Katerina Ivanovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dunya",
+              "Dounia"
+            ],
+            "description": "Raskolnikov's younger sister, strong-willed, intelligent, and morally upright. Devoted to her brother, she is prepared to sacrifice her own happiness for his sake, including a loveless engagement to the self-satisfied Luzhin. She carries herself with composure and courage, and has left behind a troubling episode as a governess in the Svidrigailov household.",
+            "id": "dunya-raskolnikova",
+            "name": "Avdotya Raskolnikova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raskolnikov's aging mother, tender and anxious, who has scraped together what little she has to support her son's education and future. She adores Rodion and travels to St. Petersburg with Dunya, worrying over both her children and clinging to hope for their happiness.",
+            "id": "pulcheria-alexandrovna",
+            "name": "Pulcheria Raskolnikova",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poor but energetic and warm-hearted student, and Raskolnikov's loyal friend. Cheerful, talkative, and practical where Raskolnikov is brooding and idle, he takes it upon himself to help Raskolnikov and later his mother and sister, offering steady friendship and common sense.",
+            "id": "razumikhin",
+            "name": "Dmitri Razumikhin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shrewd, affable examining magistrate charged with investigating the pawnbroker's murder. Genial and roundabout in conversation, he masks a keen, probing intelligence, and takes a particular psychological interest in the case and in Raskolnikov himself, favoring subtle mental pressure over open accusation.",
+            "id": "porfiry-petrovich",
+            "name": "Porfiry Petrovich",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prosperous, pompous, and self-important lawyer engaged to Dunya. Vain and calculating, he wishes to marry a poor but respectable young woman who will feel indebted to him, and he expects gratitude and deference. His condescension quickly brings him into conflict with Raskolnikov.",
+            "id": "luzhin",
+            "name": "Pyotr Luzhin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cynical, sensual landowner in whose household Dunya once served as governess, and where his unwanted attentions caused scandal. Idle, wealthy, and morally unrestrained, he follows Dunya to St. Petersburg. Coolly self-aware and given to disturbing candor, he moves through the story as an ambiguous figure of appetite and boredom.",
+            "id": "svidrigailov",
+            "name": "Arkady Svidrigailov",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An old, miserly pawnbroker to whom Raskolnikov and many other poor people bring their few valuables. Suspicious, hard, and grasping, she mistreats her meek half-sister Lizaveta. Raskolnikov regards her as a worthless, predatory creature, and she becomes the target of his theory-driven plan.",
+            "id": "alyona-ivanovna",
+            "name": "Alyona Ivanovna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment"
+      },
+      "recaps": {
+        "ending": "Raskolnikov's theory collapses under the weight of his own conscience. Tormented by guilt and worn down by Porfiry's patient psychological pressure, and moved by Sonya's insistence that he confess and accept suffering, he publicly admits to the murders and is sentenced to eight years of hard labor in Siberia. Sonya follows him there and settles nearby, visiting faithfully. Several other threads close darkly: Marmeladov dies after being run over by a carriage, and Katerina Ivanovna soon dies of consumption in a fit of despair; Luzhin is exposed and rejected after trying to disgrace Sonya; and Svidrigailov, having failed to win Dunya and after a few final acts of unexpected generosity, shoots himself. Dunya marries the loyal Razumikhin. In the epilogue, Raskolnikov at first remains proud and unrepentant in the prison camp, but through Sonya's steadfast love he finally breaks down, weeps, and begins a gradual moral and spiritual regeneration, the novel closing on the promise of his slow return to life.",
+        "in_short": "In St. Petersburg, the poverty-stricken former student Raskolnikov, convinced by his own theory that extraordinary people may transgress moral law, murders a grasping old pawnbroker and, in a panic, also kills her gentle half-sister Lizaveta. He gets away with the crime but is immediately crushed by guilt, dread, and feverish illness. As he evades and is subtly hunted by the magistrate Porfiry Petrovich, he is drawn to Sonya Marmeladova, a meek, deeply religious young woman forced into prostitution to support her family. Around him his mother and sister Dunya arrive in the city, Dunya escaping the loveless designs of Luzhin and the disturbing pursuit of the cynical Svidrigailov. Unable to bear his isolation, Raskolnikov confesses first to Sonya, then, urged by her toward repentance, gives himself up to the authorities. He is sentenced to penal servitude in Siberia, where Sonya follows him, and where his hardened heart slowly opens toward love and the possibility of spiritual renewal.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the heat of a St. Petersburg summer, Rodion Raskolnikov, a proud and impoverished former student living in a squalid attic room, drifts through the city in a feverish, half-starved daze. He has withdrawn from his studies and from other people, and broods obsessively on a theory that a rare few extraordinary individuals are permitted to overstep ordinary morality for a higher end. Behind on his rent and ashamed of the sacrifices his mother and sister make for him, he fixes on the idea of murdering Alyona Ivanovna, a miserly old pawnbroker he regards as a worthless, predatory creature, imagining that her money could do great good and that such a killing would prove his own exceptional nature. Around this premise the novel gathers the desperate poor of the city, including the ruined drunkard Marmeladov and his self-sacrificing daughter Sonya, as Raskolnikov moves toward committing the crime that will consume the rest of the story.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crime-and-punishment"
+      }
+    },
+    "crooked-kingdom": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Dirtyhands"
+            ],
+            "description": "The ruthless young mastermind of the Barrel underworld in Ketterdam, lieutenant of the Dregs, known as Dirtyhands for the schemes no one else will carry out. He walks with a cane, keeps his hands gloved, and plans crimes with cold precision. Cheated of an enormous fortune by the merchant Van Eck at the end of the Ice Court job, and with his spy Inej taken hostage, he begins this book bent on rescue, retribution, and reclaiming what he is owed.",
+            "id": "kaz-brekker",
+            "name": "Kaz Brekker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Wraith"
+            ],
+            "description": "A Suli acrobat and spy called the Wraith for her uncanny ability to climb unseen and strike in silence, one of Kaz's crew. Taken from her family and forced into servitude before Kaz freed her into the Dregs, she is devout, watchful, and skilled with knives. Captured by the merchant Van Eck in his betrayal of the crew, she becomes the hostage the others must recover.",
+            "id": "inej-ghafa",
+            "name": "Inej Ghafa",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quick-witted Zemeni sharpshooter and member of Kaz's crew, deadly with his pistols and helplessly drawn to gambling and risk. Charming and impulsive, he carries private worries about debt and about a talent he has long tried to ignore, and he throws himself into the fight to save Inej and settle scores with Van Eck.",
+            "id": "jesper-fahey",
+            "name": "Jesper Fahey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bold, warm-hearted Grisha Heartrender from Ravka, able to work on a living body from within. In the escape from the Ice Court she took the drug jurda parem to save the crew, and she suffers its grip in the aftermath. Devoted to her friends and bound up with the Fjerdan Matthias, she remains a fierce and vital part of Kaz's crew.",
+            "id": "nina-zenik",
+            "name": "Nina Zenik",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Fjerdan raised as a druskelle witch-hunter, hardened against Grisha yet turned from that path by his fraught bond with Nina and by his own conscience. Having thrown in with Kaz's crew, he is torn between the beliefs of his homeland and the loyalties he has found, and he hopes to see his country change its cruelty toward the Grisha.",
+            "id": "matthias-helvar",
+            "name": "Matthias Helvar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gentle, cultured runaway son of the merchant Jan Van Eck, gifted with chemistry and explosives despite his mild manner. Estranged from and wronged by his father, and hiding a private difficulty with reading, he serves the crew as its demolitions expert and has a personal stake in the reckoning with the man who cast him out.",
+            "id": "wylan-van-eck",
+            "name": "Wylan Van Eck",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Shu teenager whose late father invented jurda parem, the drug that can turn Grisha into enslaved weapons. Extracted from the Ice Court by Kaz's crew, he is the prize every power wants, and his safety and the secret he carries remain at the center of the danger closing around them.",
+            "id": "kuwei-yul-bo",
+            "name": "Kuwei Yul-Bo",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy, respected, and pious Kerch merchant who hired Kaz's crew for the Ice Court heist and then betrayed them, refusing payment and seizing Inej as a hostage. Powerful within the Merchant Council and skilled at cloaking cruelty in respectability, he is the crew's chief adversary and Wylan's estranged father.",
+            "id": "jan-van-eck",
+            "name": "Jan Van Eck",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The most powerful crime boss in the Barrel, master of gambling houses and gangs and a longstanding, personal enemy of Kaz Brekker. Brash and brutal, he controls much of Ketterdam's underworld, and the deep hatred between him and Kaz runs to old wounds that go far beyond ordinary rivalry.",
+            "id": "pekka-rollins",
+            "name": "Pekka Rollins",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jesper's father, a plain-spoken, hardworking farmer from Novyi Zem who comes to Ketterdam out of concern for his son. Honest and warm where the city is corrupt, he loves Jesper deeply and worries over the trouble the young man has fallen into, becoming an unexpected presence in the dangerous world of the Barrel.",
+            "id": "colm-fahey",
+            "name": "Colm Fahey",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crooked-kingdom"
+      },
+      "recaps": {
+        "ending": "Kaz and his crew rescue Inej from Van Eck and then dismantle the merchant completely. Through a series of cons, Kaz exposes Van Eck's crimes, engineers his financial ruin and arrest, and forces him to reinstate his cast-off son Wylan as his legitimate heir, so Wylan inherits the Van Eck fortune. Kaz also destroys his oldest enemy, the crime boss Pekka Rollins, who years earlier swindled and doomed Kaz's brother Jordie and set Kaz on the path to becoming Dirtyhands; Kaz strips Pekka of his wealth and power and breaks him, though he spares Pekka's young son. The triumph is shadowed by loss: Matthias is shot and killed while shielding others, dying in Nina's arms, and Nina, her Grisha power permanently altered by parem, takes his body home to Fjerda to carry on his dream of ending its persecution of the Grisha. Kuwei is spirited safely out of Ketterdam into protective hands to continue his father's work. Jesper reconciles with his father Colm and accepts his own Grisha gift, and he and Wylan are together. Kaz arranges for Inej to have a ship of her own to hunt slavers on the seas and helps reunite her with her family, and the two, still guarded, reach a tentative closeness. Kaz emerges from it all as a rising force in the Barrel.",
+        "in_short": "Betrayed and cheated by the merchant Jan Van Eck, who holds Inej hostage, Kaz Brekker and his crew go to war against him in the crooked city of Ketterdam. Through a chain of elaborate cons they rescue Inej and set out to ruin Van Eck utterly, while contending with rival gangs, the drug jurda parem, and Kaz's oldest enemy, the crime boss Pekka Rollins, who years ago destroyed Kaz's brother and made him what he is. Kaz outmaneuvers both men: he engineers Van Eck's public disgrace, financial collapse, and arrest, forcing Wylan to be restored as heir to the Van Eck fortune, and he breaks Pekka Rollins by taking everything from him. The victory carries a terrible cost. Matthias is killed near the end, dying in Nina's arms, and she carries his body home to Fjerda to pursue the change he dreamed of. Kuwei is smuggled to safety, Jesper reconciles with his father and embraces who he is, Wylan and Jesper are together, and Kaz gives Inej the means to sail as a hunter of slavers, the two parting with a fragile, deepening bond and Kaz rising as a power in the Barrel.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Six of Crows: in the criminal port city of Ketterdam, the young schemer Kaz Brekker was offered a vast fortune by the merchant Jan Van Eck to break into the Ice Court, the impregnable fortress of Fjerda, and free Kuwei Yul-Bo, whose late father invented jurda parem, a drug that turns Grisha into enslaved, unstoppable weapons. Kaz assembled a crew of six: his spy Inej, the sharpshooter Jesper, the Grisha Nina, the Fjerdan witch-hunter Matthias, and Van Eck's runaway son Wylan. Against enormous odds and through constant improvisation, sacrifice, and shifting loyalties, including Nina taking parem to save the others, they broke into and out of the Ice Court and got Kuwei out of Fjerda alive. But when they returned to Ketterdam to collect their pay, Van Eck betrayed them: he refused the money, sprang a trap, and seized Inej as a hostage. The crew was left with nothing but their survival and one another, and Kaz swore to recover Inej, claim what they were owed, and make Van Eck pay.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the wake of Van Eck's betrayal, Kaz and his crew are scattered, short of money, and hunted, with Inej held prisoner by the merchant and rival powers circling. Van Eck wants Kuwei and the fortune the boy represents, and he expects to force an exchange on his own terms. Kaz refuses to play the losing hand he has been dealt and begins spinning a counter-scheme aimed at freeing Inej and turning the tables on Van Eck entirely. The crew must operate in the open city where enemies old and new, including powerful gangs and the ever-present threat of jurda parem, make every move dangerous. Regrouping, gathering resources, and setting the first pieces of Kaz's plan in motion, they commit to the fight to get Inej back and bring the merchant who wronged them down.",
+            "through": {
+              "chapter": 8
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "crooked-kingdom"
+      }
+    }
+  }
+}

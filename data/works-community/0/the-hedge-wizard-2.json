@@ -1,0 +1,764 @@
+{
+  "entries": {
+    "the-hedge-wizard-2": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Humphrey",
+              "Humphrey Woodrow"
+            ],
+            "description": "A hedge wizard on the road with Bud and Celaine, two weeks out of Bledsbury and bound for Fishers Lake. Orphaned young and raised by his late master Sethril Woodrow, he carries an inherited staff and the soul-bound Book of Infinite Pages. Since binding a dying wolf-dragon's power he holds far more essence than he can steer, a much fiercer fire affinity, an unhealed injury to his soul that by his own society's reckoning makes him a warlock, and her egg, bonded to him for life.",
+            "id": "hump",
+            "name": "Hump",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Robert Blackthorne",
+              "Lord Robert Blackthorne"
+            ],
+            "description": "A large, earnest and rather naive young knight sworn to Kelisia, Goddess of Winter, a second-circle Chosen who fights with her cold blue frostfire. Beneath the plain name he travels under he is a nobleman, who left home to escape an arranged marriage and to grieve his mother. Having chosen to stay at Hump's side rather than part ways after Bledsbury, he is open-hearted, quick to put himself between danger and other people, and steady when Hump's magic slips.",
+            "id": "bud",
+            "name": "Bud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huntress a little older than Hump, reddish-haired and deadly with a bow, who trained under Vamir and stayed with Hump and Bud after Bledsbury rather than return to her own people. As a child she underwent her people's dragon's-blood transformation, which gives her unusual strength and dark-adapted eyes. She drills Hump daily in egg-bonding, the dragon-keeper skill he cannot yet manage, and carries an unidentified dagger taken from Prince Kassius.",
+            "id": "celaine",
+            "name": "Celaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wizard and an old associate of Hump's late master, known to the party at first only by reputation. Hump, Bud and Celaine are traveling to the lakeside town of Fishers Lake specifically to find her, hoping she will agree to take Hump on and train him properly. Wary of how an established wizard might react to the injury he carries to his soul, the three agree among themselves to keep his condition hidden from her.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hump's late master: a wizard and bronze-ranked adventurer who took in the orphaned Hump and trained him for years. He died of a fever from a goblin-poisoned wound, and Hump buried him at the edge of Brookwood Forest. He left behind his staff, his medallion, and the soul-bound Book of Infinite Pages, which took Hump as its next keeper. His teaching and his old connections still shape the road Hump travels.",
+            "id": "sethril-woodrow",
+            "name": "Sethril Woodrow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Celaine's teacher: a secretive, formidably skilled ranger who carries the same dragon's blood she does, in a more advanced form. He parted from the group and rode home alone, agreeing to delay reporting Hump's bond to the dragon egg and so buy him roughly a year before he must face his people's dragon-keeper trials. That borrowed time is the clock the party is running against.",
+            "id": "vamir",
+            "name": "Vamir",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince Kassius"
+            ],
+            "description": "A duke's son and the king's nephew: outwardly a generous, charismatic royal, secretly a warlock and necromancer who preached that the gods are only ascended mortals hiding the path to power. Hump burned him down to a barely living husk at Bledsbury, but a masked shadow entity tore open reality and carried his body away. He was officially declared dead a hero, no remains were ever found, and neither his fate nor the secret order he served has been explained.",
+            "id": "kassius",
+            "name": "Kassius Malar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An arrogant young lord and a Chosen of Kelisia, in pale grey battle robes with silver embroidery and a blue-flame sigil, who channels his magic through a wand. Hump first meets him in Sheercliff outside the Alchemist Association, bullying a herbalist's apprentice into an illegal sale, and repays him by helpfully selling him a doctored mixture whose paranoia-inducing ingredient he neglects to mention.",
+            "id": "randall",
+            "name": "Randall",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Justine",
+              "Lady Daston"
+            ],
+            "description": "A noble of Sheercliff's upper city and an old friend of Bud's late mother Rochelle, who asks Bud to call her by her first name. A sixth-circle Chosen whose extended lifespan leaves her looking no older than thirty, she agrees to carry Bud's letter to his father and send a smoothing word of her own, though she will not lie for him. She warns that rumors already link Bud to Kassius's death, and that guild-restructuring pressure and rising monster activity are unsettling the kingdom.",
+            "id": "countess-daston",
+            "name": "Countess Daston",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly high priest of Hestia at Fishers Lake: fervently devout, openly contemptuous of wizardry, and certain that the town's troubles are the work of the witch out at the lighthouse. He objects loudly to the mayor calling in outside adventurers, and softens only on learning Bud is both a Blackthorne and a Chosen of Kelisia, since purging spirits falls within Kelisia's domain. He storms out warning that accepting the party's help will bring disaster.",
+            "id": "albry",
+            "name": "Priest Albry",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "aliases": [
+              "Mayor Arnold Pilton",
+              "Arnold"
+            ],
+            "description": "The mayor of Fishers Lake: broad, tired-looking and badly rattled by a crisis he cannot explain. He went over his own high priest's objections to ask the Adventurer's Guild for help, and briefs the party on months of ghost sightings and a count of missing people that has quietly risen to three, the latest a nine-year-old boy taken from his cattle the night before.",
+            "id": "arnold-pilton",
+            "name": "Arnold Pilton",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Winfrey Pesh"
+            ],
+            "description": "Captain of the guard at Fishers Lake, carrying an enchanted family heirloom blade. Level-headed and quietly sympathetic to the wizard his high priest calls a witch, he sides with the mayor over Albry on accepting the party's help. He points out that the two in-town disappearances and the earlier sightings fell on new-moon nights, and that the next new moon is only days off.",
+            "id": "winfrey-pesh",
+            "name": "Winfrey Pesh",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Fredricks"
+            ],
+            "description": "A sergeant of the Fishers Lake town guard, competent and courteous, who meets the party at the edge of town and apologizes for having to check their Guild credentials: a previous group had passed themselves off as adventurers, stayed without paying, and vanished overnight.",
+            "id": "fredricks",
+            "name": "Fredricks",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older priestess of Hestia's temple at Fishers Lake who breaks with her own high priest in public, refusing to march a dangerously essence-drained colleague home untreated simply because the treatment on offer comes from a wizard. Most of the clergy back her over Albry. She takes charge of them in his absence and means to report his conduct to the wider church, believing the town may soon need a new high priest.",
+            "id": "elowen",
+            "name": "Priestess Elowen",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vivienne's apprentice: a young man in his late teens with short reddish hair and plain woodsman's dress, carrying a hatchet and knife, who works nature magic rather than a wizard's ordinary essence craft. Set to tend the wounded after the attack on the lighthouse, he heals with a skill Hump recognizes as blessed rather than practiced, marking him as Chosen. Why a Chosen would apprentice himself to a wizard, he will not say.",
+            "id": "dylan",
+            "name": "Dylan",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sardonic rogue in Lord Randall's adventuring party, quick with a needling remark and visibly less invested in his leader's grievances than the rest of the group. His place in the party appears precarious: he is anxious about being dismissed by a father figure connected to it, and when asked to step in against Randall he declines, whatever his private reservations.",
+            "id": "skander",
+            "name": "Skander",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A knight of House Orston and a shield-bearer of Byzantius, the war god, riding with Lord Randall's party. Formal and procedural where Randall is hot-tempered, she backs his duel challenge on principle rather than out of loyalty to his grudge, holding that a challenge issued before a respected Pantheon priest stands regardless of any doubt over that priest's own standing.",
+            "id": "madeleine-orston",
+            "name": "Madeleine Orston",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fisherman from the hamlet of Lakewood who rows to Fishers Lake with news of a massacre: an elderly couple dead in their home, a neighbor missing, and no explanation for either. He guides the party back across the lake and searches the silent village alongside them, calling for people who do not answer.",
+            "id": "kastin-wright",
+            "name": "Kastin Wright",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Hump's captor: a towering figure of molded clay and stone with a glowing heartstone set in its chest, which names itself a gorger. It was once a nature spirit of the remnant realm, remade by that realm's destruction, and it survives only by feasting on souls and life essence. Shatter its body and it reforms around the stone. Over centuries spent inside the minds of the people it consumed it learned human speech and lore, and it wants to know where the wizard has hidden something taken from it.",
+            "id": "the-gorger",
+            "name": "The gorger",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A soul-drained woman who tends the gorger's prisoners, moving through its tunnels with an adventurer's medallion still around her neck and almost nothing left behind her eyes. Her body is unhurt; her mind has been hollowed out. She brings Hump the glowing essence chips that keep him alive, and when he places her as the missing member of the adventuring party that vanished months earlier and says her name aloud, something in her flickers.",
+            "id": "lucile",
+            "name": "Lucile",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Helen Astida"
+            ],
+            "description": "A silver-ranked adventurer who arrives at Fishers Lake from Sheercliff two days after the attack, leading a party of reinforcements, and makes even Vivienne wait an hour before granting an audience. Pragmatic and defensively minded, she takes formal command of the town's defense, is openly skeptical of Vivienne's judgment, and refuses to mount any rescue: as far as she is concerned the people taken through the gateway are already dead.",
+            "id": "helen-astida",
+            "name": "Helen Astida",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-2"
+      },
+      "recaps": {
+        "ending": "The gorger is destroyed for good, unmade inside Hump's own soul-void after Lucile dies shielding him. Her body is left in the collapsing temple, and five of the roughly twenty rescued townsfolk die during the escape, leaving fifteen. Hump proved he can surrender completely to the dragon's power and still reclaim himself, but he ends the book physically battered and carrying untreated trauma: insomnia, nightmares, a startle response. He has only just agreed to let Vivienne test his soul, and has paused bonding with the dragon egg as a precaution. Vivienne survives with frostbite and a condition termed essence overuse, and faces a Wizard Society tribunal for insubordination that she has bought a week's delay on; she is unbothered by it, and has recommitted to mentoring Hump personally, revealing that she warned Sethril about his own soul damage some twenty years ago and could never fix it. Bud, close to a third circle, wants the party to take safer work and to recruit Dylan. Celaine has already reached her third circle. Randall and Helen Astida will pass the party's warning about the remnant realm's rifts to Countess Daston and other factions, and Fredricks is Fishers Lake's new captain of the guard. The three plan to ride for Sheercliff. Then, late at night, after Celaine wakes Hump from a nightmare and leaves, what appears to be Lucile is sitting on the other bed in a plain white dress, speaking to him as though nothing had happened. The book ends there. Whether she is a hallucination, a haunting, or something else is not answered on the page, and neither is what Hump means when he says she had been possessed as Albry was.",
+        "in_short": "Hump, Bud and Celaine reach the lakeside town of Fishers Lake hunting for the wizard Vivienne, and find it plagued by swarms of soul-draining spirits, a hostile high priest, and people going missing. Vivienne agrees to train them in exchange for help, and the investigation uncovers a gateway into the remnant realm, a dead world, hidden beneath the lake in a sunken temple she has secretly hunted for years. The creature behind it, a soul-eating gorger, takes Hump captive and holds him a month. He escapes, restores a fellow captive's shattered soul, and rejoins his party as they trade a stolen artifact for the prisoners, a bargain that only makes the gorger stronger. In the flooded temple Vivienne deliberately corrupts her own soul to fight it, Lucile dies shielding Hump, and Hump chooses to unleash the dragon's power completely, destroys the creature inside his own soul-void, and then proves he can pull himself back from it. The party comes home battered; Vivienne faces a tribunal and recommits to teaching Hump. The book closes with what appears to be the dead Lucile sitting in Hump's room, unexplained.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Hump, a penniless self-taught hedge wizard, buried his master Sethril Woodrow and inherited his staff, his medallion and a soul-bound spellbook, the Book of Infinite Pages, then rode for the newly opened dungeon at Bledsbury to make a living. On the road he fell in with Bud, an earnest young knight sworn to the Goddess of Winter, and joined a delving party with the secretive, formidably skilled Vamir and his companion Celaine, who carries her people's dragon's blood. Rescuing villagers taken by the dungeon's kobolds drew them into the orbit of Prince Kassius, an outwardly generous royal who turned out to be a warlock and necromancer preaching that the gods are merely ascended mortals hiding the path to power. In the dungeon's true core chamber Kassius unleashed a dying dragon bound there as its guardian. To save his friends, Hump bound and absorbed her power and burned Kassius down to a barely living husk, only for a masked shadow entity to tear open reality and carry the prince away. No remains were ever found, and officially he died a hero. Hump came out of it a second-rank wizard carrying the dragon's borrowed power, a far fiercer fire affinity, an unhealed injury to his soul that by his own society's definition makes him a warlock, and her egg, soul-bonded to him until death. Because that bond will drag him before deadly trials among Vamir's people, Bud and Celaine chose to stay with him while Vamir rode home alone to buy them time. Bud was revealed to be a nobleman, Lord Robert Blackthorne. Newly guild-registered, the three set out for Fishers Lake to find a wizard named Vivienne, an old friend of Hump's master, who might agree to train him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two weeks out of Bledsbury the trio are working paid quests on the road to Fishers Lake, clearing a pair of forest trolls for a poor farming village. Hump's essence now flows far too easily for him to steer, and his fire in particular is a liability in a fight. That night Celaine insists the three of them stop keeping secrets: she explains her people's goddess-sanctioned dragon's-blood transformation to Bud, who already knew, and Hump finally spells out his own soul-merger with the wolf dragon and what it makes him. Bud takes it without flinching. They agree to hide his condition from outsiders, Vivienne included, in case it costs them her training, their guild standing, or Hump's life, and to revisit that only if he starts slipping. In Sheercliff, a great city split between a cramped lower town and a noble plateau, they separate for a day. Hump buys a copper bracelet that steadies his casting, prank-doses a bullying young lord named Randall to spare a coerced apprentice, and discovers his spellbook is now copying powerful formations on its own, simply from his sustained attention. The guild has no address for Vivienne, only that she went quiet about six months ago, around the time Fishers Lake began reporting ghosts and missing women; the party takes that quest. Bud calls on Countess Daston, who warns that rumors about Kassius's death are circulating uncomfortably close to the truth and that monster activity is climbing kingdom-wide. Hump secretly wakes Kassius's dagger and nearly dies to it. Identified as Bloodshadow, a stealth artifact with a hungry will of its own, it goes to Celaine to master. They ride for Fishers Lake at dawn.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fishers Lake is a town on edge: months of ghost sightings, three people now missing, and a high priest, Albry, who blames the witch at the lighthouse. That witch is Vivienne, sealed behind wards the town cannot break. On the party's first night an unprecedented swarm of dark spirits pours over the lake. Albry leads his clergy out to pray at them and they are cut down and drained; the party fights uphill to shield them until Vivienne appears in a burst of golden light and routs the swarm single-handed. Her first question is about Sethril; told he died two months ago, her face closes. Inside the lighthouse Hump brews Soulbrew for the wounded and notices that her apprentice Dylan heals with a god's blessing rather than a practitioner's craft, though Dylan will not explain why a Chosen studies under a wizard. A priestess, Elowen, defies Albry publicly to accept Vivienne's help. Alone with Hump, Vivienne accuses him of murdering his master for the spellbook, leans magical pressure on him until he nearly breaks, then apologizes: she had to be certain. He shows her the dragon egg, but not his soul. Days later Albry is pulled half-drowned from the lake claiming Hestia appeared to him in person and chose him, with orders to kill Vivienne. Nothing in his aura reads as cursed, but he seizes mid-argument, one eye blue and one silver, and demands to know what is in Hump's bag. Vivienne agrees to train all three in exchange for help with the lake, and tests them: Hump's raw power is exceptional for his age, his control and theory poor. The guild's records list her surname as Loresse; she introduces herself as Sharone.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training splits three ways: soul strength, blessing versatility, technique. Vivienne beats Bud and Celaine together in about two minutes using only a wand and tier-two spells, then names their faults. Bud's blessings are formally read as Frostfire Knight and Heart of Frostfire. Celaine's brilliance shows something Vivienne has never seen: a third circle already forming on its own, because Owalyn's Chosen earn their next blessing by hunting rather than receiving it. Hump is set on an earth track toward a fire-and-earth specialization, and Dylan, who beats him soundly with druidic shapeshifting and vines, starts teaching him to fight with his staff. Then Vivienne opens up about Sethril. They were classmates. The spellbook grew with him, and the night he reached the fourth rank and manifested his soul, something happened: he was attacked, he killed the rank-six wizard who did it, he took soul damage he spent years quietly repairing, and he left the academy that night and never came back or explained. He hid the damage for fear of being branded a warlock. Hump, who has been telling himself goblins killed his master, starts pulling at the thread, and his training turns from fear to anger. At the temple the party finds Albry hosting a noble adventuring party summoned to deal with the town's witch problem, led by the young lord Randall, the same man Hump dosed in Sheercliff, publicly humiliated for it, and now demanding satisfaction. A duel is set for the following week. Albry admits his own soul was damaged in the spirit attack and that he can no longer withdraw his brilliance to prove any blessing at all. And when Hump at last manages a true bond with the dragon egg, Vivienne's face darkens: she has felt something else that changed in his soul that day, and she wants to know what.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hump tells her. Vivienne hears the whole Bledsbury story, says his soul carries a scar from colliding with the dragon's, notes that warlocks are normally handed to the church, and agrees to keep teaching him anyway, so long as the change does no harm and he shows no malice. Then word comes that Lakewood has been attacked. The party finds the hamlet silent: seventeen dead of thirty-two, torn apart, the blood on a dead hunter's spear not human. They track the killers to a cave, smoke them out, and fight large, hairless, spine-maned beasts that heal instantly by devouring their own wounded. Mid-fight Celaine's third circle completes with no god's pillar to grant it, which badly unsettles Bud, whose faith holds that such power is given rather than found, and she comes out of it with a new blessing, Predator's Intent. Inside the cave they find guild medallions belonging to the party of five adventurers who vanished weeks earlier, a blood-drawn summoning formation ringing a cluster of violet crystals, and an essence Hump has never felt: ordinary blue shot through with something purple. Nine of Lakewood survive, among them a small girl found hiding in a cellar. Hump quietly keeps one crystal back rather than hand it to Vivienne. They return to find the politics have turned: Randall's party has found something out on one of the lake's islands, guided by a vision Albry claims came from Hestia, and Albry has retaken the temple and jailed Elowen for heresy. Catching a spy watching Vivienne's lighthouse, they run him down and unmask Skander, Randall's rogue.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Skander gives up little and is released. At the temple Vivienne demands Albry prove his Chosen status; he refuses, and his essence surges past anything a first-circle Chosen should hold. Randall attacks her, and the standoff ends only when Skander drops from the rafters and knocks the priest out cold, but not before Albry rises with black, star-flecked eyes and Hump sees in them exactly the essence from the Lakewood cave. Madeleine breaks ranks to free Elowen. The artifact Albry has been displaying, Hestia's Star, proves to be a storage stone so efficient it registers no signature at all. Convinced Vivienne is lying about the crystals, Hump channels his hidden one and is nearly consumed by it. Then the temple's buried library gives them the shape of the thing: not a summoning but a gateway, an uncontrolled hole between realms that anything at all can pour through. Elowen names the far side the remnant realm, a dead world, and names its natives: shades, whose kiss drains life, and the flesh prowlers that butchered Lakewood. Cornered, Vivienne finally tells Hump the truth. Fishers Lake is the grave of an ancient temple that the goddess Hestia sank during the War of the Firmament. She has spent four years hunting it, because she believes it holds a way past the seventh rank, a ceiling no living wizard has broken and one she suspects the gods imposed deliberately. She has been baiting spirits toward her own lighthouse on purpose. She asks Hump to keep all this from Bud, and he agrees. Hump casts Fire Ray and is confirmed a rank-two wizard, and Randall's party agrees to help trap and track a shade.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The test goes wrong. Hump binds a harmless summoned spirit cleanly, but the instant it is released a rift tears open and something huge and tendrilled drags it through and tries to follow; Vivienne blasts the creature back and the rift collapses. Then the horizon darkens. The monthly attack has come early and hundreds of shades are rising. Vivienne pulls rank as a fifth-rank wizard, organizes the defense, and lights her beacon to draw the swarm onto herself alone. A second gateway erupts inside the town. The party fights through fourteen flesh prowlers to the ruined guardhouse and finds twenty townspeople piled unconscious but alive, Captain Winfrey Pesh dead on the bars of a broken cell, and Albry kneeling at the gateway's heart with his soul being drawn out of his chest to hold it open. He is not the one behind this. He is the fuel. Hump breaks the formation from outside with earth magic, and a twelve-foot thing of pale clay and stone forces itself halfway through the gap, jams the gateway open with its own body, and puts a spike through Skander's stomach. Twenty more prowlers pour out. The party runs, taking who they can, and Bud has to accept they cannot take everyone. The prowlers do not eat the fallen townsfolk; they drag them back toward the rift. Then the creature turns its attention on Hump, breaks his defenses with a single assault on his soul, and he goes down with a bite to the leg as his last sensation. He is carried through the gateway.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party fears Hump dead until Celaine tries to bond with his dragon egg herself and it refuses her: an active bond blocks any other, so he is alive. He wakes stripped of everything, injured, sealed in a stone box with no door, buried alive. His captor introduces itself as a gorger, once a nature spirit of the remnant realm, remade when that realm died, kept alive only by devouring souls. Shades, it says, were nature spirits too, twisted by the same catastrophe. It wants back what the wizard took from it. When Hump blasts its heartstone the body simply reforms around it. To demonstrate, it produces another captive whose soul has been eaten out entirely, leaving a babbling husk. Then it starts working on Hump's soul, and is genuinely startled to find he can resist; something warm rises in him each time and holds. A soul-drained woman brings him essence chips. Recalling the roster of the five adventurers who vanished, he calls her Lucile, and she flickers. He begins burying the spare chips in the dirt of his cell. The gorger lets slip that it means to use human bodies as clay to build itself a better form, and that the veil between worlds is failing on its own, so it needs no help. Above, reinforcements reach Fishers Lake from Sheercliff under Lady Helen Astida, who takes command, calls the captives lost, and refuses any rescue; Fredricks takes over the guard in Winfrey's place. Vivienne submits to her without protest, then privately reveals it was a maneuver to free her own hands. Bud tells her plainly that if she is not fully committed to getting Hump and the townsfolk back, he will expose her temple to the church. In the remnant realm the gorger arrives eager: the time of the feast is nearly here.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hump breaks out. Drawing on thirteen hoarded chips at once he masters white flame for the first time and melts his chain, then takes hold of Lucile and forces his way into her shattered soul, first with warmth and shared memory, then with the worst things he has witnessed, to show her that pain can be survived. She comes back screaming, lucid, and remembering nothing. Searching the tunnels together they find Priest Albry in a side cell, emaciated and drained, fingernails broken from trying to dig his way out, dead of thirst. They find the gorger's treasury, looted from victims over centuries, and Hump's own staff and spellbook, which repairs itself at his touch and unlocks a new power: tier-one formations cast straight from the page. A staff lights in Lucile's hand. She is a caster, and was the Chosen leader of the party that vanished. Outside lies a red, dead country under a grey sky, dozens of tears hanging in the air, and at the valley's heart a ruined marble temple with the gorger's army massed before a great gateway. Lucile remembers the townsfolk are held in a cellar beneath those ruins. Meanwhile Bud steals Hestia's Star from Vivienne's lab, meaning to trade it for the captives; Skander catches the group slipping away and covers for them. Vivienne, who knew all along, agrees the star is what the creature wants, warns it could buy the thing a permanent gateway, and proposes rigging it as a bomb instead. They track a marked shade down through the lake in a bubble of air and find her sunken temple at last, its door carved with three eyes. The seal shuts behind them. Ahead is the gateway, and the gorger agrees to talk.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gorger parades its prisoners, Hump and Lucile hidden among them, and swears Hump is held elsewhere. Vivienne holds out for every captive and gets it, in two stages: half cross first, then a courier carries the star back. Hump volunteers, reunites with his party for a moment on the far side, learns the star has been rigged to detonate the instant foreign essence touches it, and carries it through himself. The gorger absorbs it whole and the trap goes off. It does not die. It tears apart ten of its own flesh prowlers and builds a new, far larger body around Hestia's Star as its core. Hump hurls the old heartstone through the closing gap, dives after it, and seals the gateway for good with earth magic, but the reborn gorger forces through first, with prowlers and shades behind it. Now it is loose in the flooded temple with the party and twenty rescued townsfolk, healing every wound by eating its own, and it turns its creatures on the civilians to split the party's attention. Vivienne burns half the shades away with a burst of light, duels the creature through illusions, water and stone, and is opened across the stomach. So she inhales something violet from a glass vial and forces her soul into a manifestation no wizard is supposed to achieve, and then, deliberately, corrupts it. The smile she turns on the creature reminds Hump of Kassius.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fueled by that corruption, Vivienne drags every drop of standing water in the chamber into four cyclones and drowns the gorger beneath them. It survives. She is left aged and close to death, a fifth-rank wizard spending power far past her rank, and Hump finds himself thinking of Kassius again. Beneath its ruined armor the creature's true form finally shows: a shade glowing bronze and gold rather than black, with Hestia's Star beating in its chest as its heartstone. The party goes for the star. Celaine drives a silver arrow through a gap in its armor and stabs the stone with Bloodshadow; Dylan wraps it in vines and pries the gap wider with his staff; Bud lands a frostfire cut and takes a blow that caves in his chestplate; Hump burns the exposed star with Fire Ray and is knocked down with cracked ribs. When the creature moves to finish him, Lucile steps in front of it. It calls her its pet and offers to spare her if she stands aside. She refuses, and it drives elongated claws through her stomach. Watching her die, Hump decides he would rather become a warlock than let anyone else be killed. Lucile dies. Bud, badly wounded, cauterizes his own chest with frostfire and pulls the creature off Hump. Vivienne strips away the last of its stone armor, leaving only a small struggling spirit, and it fastens on Bud and begins draining his soul, until Hump rises with fully black eyes, punches through it, seizes Hestia's Star bare-handed, and drags the fight into his own soul-void. Inside, the thing's soul turns out not to be one soul at all, but a crumpled composite of every creature it has ever eaten.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the void Hump impales the gorger's composite soul on needles of essence, using the memory of Lucile's death as fuel, and begins to enjoy it, drifting close to being consumed by his own power rather than by the creature. His friends' voices reach him from outside, Dylan channels healing essence into him, and his head clears enough to give an order: Bud freezes the star from within with frostfire while Hump holds the creature's essence in place, and Celaine's arrow shatters it. Rather than let the fragments reform, Hump lets the dragon out completely and shreds every last piece. As it dies he catches flashes of what it had been: an ancient people driven underground long ago by an overwhelming power the book never names, left to starve until they survived by devouring their own kind and any other soul they could reach. Then his own unleashed essence turns on him. Instead of fighting it with raw will he calms himself and reasons through it, treating it as a river to be redirected rather than a battle to be won, and takes it back, confirming to himself plainly that even in total surrender his warlock side never took him over. He wakes held up by Bud and Celaine with Dylan healing him, and is told he hurt no one; Bud had restrained him. Lucile's body cannot be recovered and is left behind. Hump tells the others she had been possessed, as Albry had been. Of the roughly twenty rescued townsfolk, fifteen survive the temple's collapse. Hump seals the doors with an ancient locking formation his spellbook names the Three-Eyed Seal, written in a script older than the kingdom's own, the first complete example of exactly what Vivienne has spent four years hunting. She floats them up to the surface and a small island as dawn breaks.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randall comes for them personally with eight boats, drawn by their signal fire; Skander survived his own run-in with the creature. A cleric and the town physician patch them up, Vivienne worst of all: frostbite on two fingers and a body-wide cold from what is termed essence overuse, weeks from recovery. Fishers Lake welcomes them back and the mayor offers them a permanent home. Elowen buries the dead, Winfrey Pesh among them, and Fredricks is promoted to captain in his place. Hump tells his friends everything about his month in captivity for the first time; Bud blames himself for it all and is absolved. Vivienne admits her insubordination to Helen Astida and buys a one-week delay on the report, and the Wizard Society tribunal that will follow, by trading the party's intelligence about the remnant realm's sky full of rifts, which they agree must reach Countess Daston and other factions. She says privately she is not worried, since she does not depend on the Society, and means to spend that week in the ruins before other researchers arrive. She asks to test Hump's soul, reveals that she warned Sethril about soul damage some twenty years ago and could never fix it, gives Hump a spellbook of her own invented spells, and tells him she should have recognized him as Sethril's true apprentice sooner. The three agree to head for Sheercliff and take safer work for a while, and Bud wants Dylan recruited. Hump keeps the egg close but pauses bonding for a week or two, wary of his own soul. He is sleeping badly and reliving the void. Late one night Celaine wakes him from a nightmare and, satisfied he is safe, leaves. After she goes, what appears to be Lucile is sitting on the other bed in a plain white dress, speaking to him as though nothing had happened. The book ends there. Whether she is a hallucination, a haunting, or something else is not answered.",
+            "through": {
+              "chapter": 68
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-2"
+      }
+    },
+    "the-hedge-wizard-3-a-gamelit-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Prince Kassius"
+            ],
+            "description": "The prince who patronised the expedition into the Bledsbury dungeon, outwardly generous and secretly a warlock and a necromancer, who preached that the gods are only ascended mortals hoarding the path to power for themselves. In the dungeon's core he freed the dying wolf-dragon bound there as its guardian, and Hump burned him down to a barely living husk to stop him, at which point a masked shadow tore the world open and carried him away. His death was never confirmed. Officially he died a hero, and whether he is alive is not known.",
+            "id": "kassius-malar",
+            "name": "Kassius Malar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A woman who died at Fishers Lake, at the close of the previous book. Once since then, and only once, she has appeared to Hump after her death. He has no account of what she was.",
+            "id": "lucile",
+            "name": "Lucile",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "aliases": [
+              "Humphrey",
+              "Humphrey Woodrow"
+            ],
+            "description": "A hedge wizard riding into Sheercliff three months after the Fishers Lake crisis, into a city swollen with refugees. He carries his late master's staff, the soul-bound Book of Infinite Pages, a bonded wolf-dragon's egg, a permanently scarred hand, and an injury to his soul that by his own society's definition makes him a warlock. He arrives to find the Wizard Society hunting an unnamed apprentice it believes murdered its own master, and begins to doubt the goblin ambush he has always blamed for that death.",
+            "id": "hump",
+            "name": "Hump",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Robert Blackthorne",
+              "Lord Robert Blackthorne"
+            ],
+            "description": "A young knight sworn to Kelisia, Goddess of Winter, who fights with her cold blue frostfire and travels under a plain name rather than his own: he is a nobleman, heir to House Blackthorne, who left home without explanation. Earnest and quick to put himself between danger and other people, he has stayed at Hump's side since Bledsbury and is one of the few who knows what happened to his friend's soul.",
+            "id": "bud",
+            "name": "Bud",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A non-human archer who trained under Vamir and chose Hump's party over returning to her own people. Her childhood dragon's-blood transformation left her unusually strong and dark-adapted, and she carries a bow and a dagger taken from Prince Kassius. Her people are dragon keepers, so the wolf-dragon egg Hump is bonded to is her concern as much as his.",
+            "id": "celaine",
+            "name": "Celaine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vivienne's apprentice and a druid, a Chosen of Krioc who heals with a god's blessing rather than a practitioner's craft and fights with a staff, growing vines, and borrowed animal aspects. He has travelled and fought with the party since Fishers Lake, and on reaching Sheercliff he is finally registered with the Adventurers' Guild as their official fourth member.",
+            "id": "dylan",
+            "name": "Dylan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vivi"
+            ],
+            "description": "A rank-five wizard and Hump's teacher, an old academy classmate of his late master. She comes to Sheercliff to await a Wizard Society summons over her own conduct at Fishers Lake, an investigation opened once Lady Helen Astida submitted her report to the Guild. She goes on training Hump personally, down to an earth-affinity variant of her own water missile spell.",
+            "id": "vivienne",
+            "name": "Vivienne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hump's late master, the wizard who raised him from childhood and left him a staff, a medallion, and the soul-bound Book of Infinite Pages. He has been dead since the opening of Book 1, killed, as Hump believes, by a poisoned arrow days after a goblin ambush. He and Vivienne, the wizard now teaching Hump, were students together long before either of them met his apprentice.",
+            "id": "sethril-woodrow",
+            "name": "Sethril Woodrow",
+            "reveal": {
+              "chapter": 0
+            }
+          },
+          {
+            "aliases": [
+              "Justine"
+            ],
+            "description": "The Countess of Sheercliff and the most powerful noble in a city filling with refugees who are fleeing rising monster activity across Alveron. The party knows her through Bud's family, and when the Society's accusation over his master's death surfaces on their arrival, Hump turns to her patronage to hold it off long enough to survive the investigation.",
+            "id": "countess-daston",
+            "name": "Countess Daston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Inquisitor of the Wizard Society, assigned to investigate the death of the wizard Sethril Woodrow and to find the apprentice the Society's council believes killed him. The council has no name on record yet. He and Vivienne have a history of not getting along, and he has not yet reached Sheercliff when the party arrives.",
+            "id": "abraxus",
+            "name": "Abraxus",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A young Sheercliff lord Hump first crossed in the city itself, where he sold him doctored enhancer ingredients to spare a herbalist's apprentice Randall was leaning on. Randall caught up with him later at Fishers Lake and formally challenged him to a duel over it, and by the end of that crisis was bringing boats out himself to fetch the party in. His letter is what draws them from Fishers Lake back up to Sheercliff.",
+            "id": "randall",
+            "name": "Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Countess Daston's daughter, named at the close of the party's first audience at the Daston estate when her mother assigns her to show them around Sheercliff Academy. The party has just been enrolled there as nominal students, a cover arranged to put Hump beyond the Wizard Society's easy reach.",
+            "id": "marcela",
+            "name": "Marcela",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scholarly Chosen of Loften and Sheercliff Academy's master artificer, generous and openly curious about magical artifacts. He notices the Springleaf sigil on Hump's cloak, identifies it as the work of an old and apparently defunct group, and offers to repair the garment's worn enchantment channels. A lens confirms for him that Hump is a wizard.",
+            "id": "sir-isaac",
+            "name": "Sir Isaac",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-rank adventurer not yet thirty, wealthy and carrying a fine enchanted spear, named as the leader of the Academy's expedition team against the three dungeons that have opened around Sheercliff. The party is directed to him once the Guild announces its response. Hump finds his polished manner unsettling and cannot read the power he senses underneath it.",
+            "id": "sir-ricard",
+            "name": "Ricard",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sixth-circle Chosen of Lady Light who runs Sheercliff's temple district, remembered for destroying the Blackwood dungeon. The party first sees him storming out of a meeting at the Daston estate in a fury: the Countess has traded the Wizard Society access to a murdered priestess's ritual scene in return for their cooperation, and he resents the bargain.",
+            "id": "sir-roderick",
+            "name": "Sir Roderick",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A researcher and a former student of Sir Isaac, working inside Countess Daston's circle on whether a weakening veil between realms connects the Fishers Lake gateway, the new Sheercliff dungeons, and the rise in warlocks. He is also chasing a way to identify warlocks without the old ritual test. The Countess hands him the black stone the party took from the bandit camp for his lab to study.",
+            "id": "graham",
+            "name": "Graham",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Inquisitor of the Wizard Society, in Sheercliff alongside Abraxus. She turns out to be the \"E.\" whose letter warned Vivienne that the Society's council blames Sethril's apprentice for his death: she, Vivienne, and Sethril were students together at Elenvine Academy. She approaches Vivienne warmly as an old friend, offers condolences, and confirms the Society still has no name on record for that apprentice.",
+            "id": "eliana",
+            "name": "Eliana",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A noble and Bud's fiancee, until now only an unnamed arrangement he had fled from. She comes to Sheercliff to represent her own family in the city's defense, and is ambushed into meeting him anyway by his cousin. She fights with a rapier and buckler and says plainly what she thinks of being managed.",
+            "id": "emilia",
+            "name": "Emilia",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bud's older cousin, in Sheercliff with a company of fellow knights to represent House Blackthorne. He brings Bud's fiancee to lunch without warning either of them, and carries word that Bud's father is furious at his leaving and expects the marriage to go ahead.",
+            "id": "arthur",
+            "name": "Arthur",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ricard's second-in-command at the Academy's expedition office, a fourth-circle Chosen of a god of travel and language. She confirms that the party's bandit contract was regraded upward once warlocks turned up in it, and tells them to expect an outer-region patrol near one of the dungeons next.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priestess of Lady Light who treated Hump after Bledsbury and is now posted in Sheercliff working with the refugees. The party runs into her leaving a restaurant and she greets Hump warmly. Her interest in him is plain enough that Celaine and Bud tease him about it for the rest of the walk home.",
+            "id": "luna",
+            "name": "Luna",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randall's father, head of House Ferrand and leader of the faction set against Countess Daston. He appears in person at the city's council meeting, brushes off a Merchants' Guild complaint about the temple guard's treatment of a minority religious community, and publicly accuses the Countess of hypocrisy for keeping the party's recovered black stone from the council. She turns the charge back on him, to the room's amusement.",
+            "id": "lord-ferrand",
+            "name": "Lord Ferrand",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shield-bearer of Marcela's own party, introduced when she presents her party by name and role to Hump's. He makes a dismissive remark about being partnered with a wizard, and apologises once Hump sets out his record: a dungeon core captured, and creatures from another realm fought at Fishers Lake.",
+            "id": "matthias",
+            "name": "Matthias",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bronze-rank adventurer and a fourth-circle Chosen whose soul is already manifested and who fights with visible lightning. He leads the party that arrives to break the siege of Tailsend, recognises Marcela as a Daston noble on sight, and brings word that the assault on the Stonebark dungeon core has failed, with no news of whether Ricard survived it.",
+            "id": "jacob",
+            "name": "Jacob",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Chosen knight of Ordana who leads one of the Academy's iron-rank parties on the Stonebark Forest expedition, assigned to one of the three villages it must shield. He resents taking orders from Marcela and argues openly that the patrol is there to kill monsters rather than feed villagers. A member of his own party steps in to smooth over one of his outbursts.",
+            "id": "corvin",
+            "name": "Corvin",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bronze-rank spearman, one of three adventurers pulled out of a razor-claw ambush in the forest less than a mile from Tailsend, by a rescue party drawn from four groups on Marcela's authority. He collapses from exhaustion once the fight is over, introduces himself, and recognizes Marcela's name, asking whether she is Count Daston's daughter.",
+            "id": "tanek",
+            "name": "Tanek",
+            "reveal": {
+              "chapter": 41
+            }
+          },
+          {
+            "description": "A noble of House Daston, named for the first time when a rescued adventurer asks Marcela whether she is his daughter and she confirms it. He is Marcela's father, a different person from her mother, Countess Daston. He has not appeared in person.",
+            "id": "count-daston",
+            "name": "Count Daston",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A general given command of the investigation into the captured Blackstone Warlocks, appointed by a duke who is Countess Daston's cousin specifically to hold the inquiry neutral between the city's factions. Under his authority the questioning escalates to direct soul attacks on the prisoners, which break them no more than anything tried before.",
+            "id": "general-bennet",
+            "name": "General Bennet",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lord. When Countess Daston moves to intervene over Vivienne's arrest, she sends word to him, among others, asking him to meet her at the House of Stone. He does not appear in person, and nothing more about him is established at this point.",
+            "id": "starick",
+            "name": "Starick",
+            "reveal": {
+              "chapter": 53
+            }
+          },
+          {
+            "description": "A warlock of extraordinary personal power, who walks onto the stage of the Sheercliff Opera House after the city's forces find hundreds of corpses drained grey inside it. He parries a strike from Sir Roderick that should have levelled buildings, without giving ground. He tells them he let himself be found: he is a distraction, one small piece among larger ones, and his part is now finished. Then he springs the trap and withdraws as a tree of damnation erupts through the auditorium floor.",
+            "id": "anthony",
+            "name": "Anthony",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-3-a-gamelit-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "The siege is broken and the city holds, at heavy cost. Sir Ricard, Arthur, and Luna's chaperone are dead; two of Marcela's party are dead; Abraxus is dead, killed in the aftermath after killing two of Corvin's companions while under Eliana's control. Countess Daston survives but will never walk again. Anthony escaped through a blood portal, vowing to return, hunted now by the three-eyed order that departed warning of a coming great war. Eliana is imprisoned, tests as not technically a warlock, still blames Hump publicly, and says nothing to Sheercliff's authorities about her own order, which wants Hump's spellbook. Lord Ferrand is a fugitive under a kingdom-wide bounty; his son Randall is cleared. A border stronghold has fallen in an attack coordinated with the assault on Sheercliff, and King Henry is recalling every Chosen, so Bud, Dylan, and Emilia ride for House Blackthorne to await deployment toward the Fallen Lands. Vivienne stays in Sheercliff, entering the Countess's service to watch Eliana. Hump, a rank-four wizard with a manifested soul, a manor of his own in the upper city and a new gold-rank staff, leaves rather than take the Dastons' offer of permanent service: his master's posthumous letter warns that the Book of Infinite Pages grows more visible to its hunters as he grows. He and Celaine ride north for the Dragon Keeper trials with his newly hatched dragon. On the last night, the spellbook answers him, and shows him a vast essence core hidden in its spine, and a silver owl on its cover. He has no idea what he is carrying.",
+        "in_short": "Hump comes to Sheercliff under the shadow of a Wizard Society bounty on the apprentice it believes murdered his master, and finds a city ringed by expanding dungeons and hollowed out from within by the Blackstone Warlocks. Countess Daston hides him behind an Academy enrolment; a patrol into Stonebark Forest costs lives, exposes warlock saboteurs, and leaves Hump drawing on dungeon essence he cannot safely touch. Back in the city he cracks the warlocks' black stones open, clearing Vivienne of a murder she was framed for, and the hunt that follows uncovers trees that hold human souls. Then the warlocks spring their real plan: a citywide ritual to sacrifice every soul in Sheercliff and pull a fallen god's first servant into the world. Hump burns its anchor down with an original spell, White Flame, and the warlock behind it flees. Ambushed, dosed with warlock powder, and moments from being executed as a warlock himself, Hump instead masters every foreign essence in his soul and manifests it. The siege ends. Sheercliff calls him the White Flame, and he leaves anyway.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Hump buried his master, the wizard Sethril Woodrow, inherited his staff, his medallion, and a soul-bound spellbook called the Book of Infinite Pages, and went looking for paying work at the newly opened dungeon beneath Bledsbury. He fell in with Bud, an earnest knight sworn to the Goddess of Winter who turned out to be a runaway nobleman, and with Celaine, an archer carrying her people's dragon's blood, and her mentor Vamir. The expedition's generous royal patron, Prince Kassius, proved to be a warlock and a necromancer who preached that the gods are only ascended mortals hoarding the path to power. In the dungeon's core he freed a dying wolf-dragon bound there as its guardian, and to save his friends Hump bound and absorbed her power and burned Kassius down to a husk, at which point a masked shadow tore the world open and carried the prince away. His death was never confirmed; officially he died a hero. Hump came out of it with the dragon's borrowed strength, a far fiercer fire affinity, her egg bonded to him for life, and an unhealed soul injury that his own society defines as warlock's work. Hunting a teacher, the party found the wizard Vivienne at Fishers Lake, and under the lake a gateway into a dead world and the soul-eating gorger behind it, which held Hump captive for a month. He escaped, and the creature was finally unmade inside his own soul-void, but a woman named Lucile died shielding him, and afterwards appeared in his room as though nothing had happened. Vivienne, facing a Wizard Society tribunal, recommitted to teaching him. With her apprentice Dylan, the party rode for Sheercliff.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three months after Fishers Lake the party reaches Sheercliff, a city choked with refugees fleeing rising monster activity across Alveron. The gate guards quietly warn of people being killed in the streets and left with burnt-out eye sockets, and of orders to keep it quiet. Dylan is finally registered with the Guild as the party's official fourth member. At the Guild's mail office a letter signed only \"E.\", from an old classmate of Vivienne's and Sethril's, warns that the Wizard Society's council believes Sethril was murdered by his own apprentice, that a bounty is out, and that the council has no name on record. An Inquisitor named Abraxus has been given the case. Since almost nobody knew his master had died at all, Hump begins to doubt the goblin ambush he has always blamed for it. At the Daston estate the Countess will not defy the Society openly, but she enrols the whole party as nominal students of Sheercliff Academy as cover and sets her daughter Marcela to show them around. Three dungeons have opened in the region, the nearest of them under forty miles from the city, and valuable mines beside each have Sheercliff's factions squabbling instead of responding. The Guild announces six expedition teams; the party's is led by a silver-rank adventurer, Ricard, who hands them road quests. Sir Isaac of the Academy repairs Hump's cloak and gives him an artifact battle robe outright in exchange for a look at the dragon egg. The last quest is a bandit hunt near Milton, and the party cannot agree whether desperate men deserve killing.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Escorting a trader's caravan, the party is ambushed by bandits led by a man who travels in bolts of lightning, and turns back to hunt them rather than leave their prisoners to die. The camp is hidden behind a magical veil, which is strange for starving men, and so is their good steel. Hump collapses the veil and finds captives, tortured men, and children inside. The leader takes a child hostage; the woman beside him transforms into something fanged and feral, and Hump names her for what she is: a warlock. Dylan kills her. The leader is beaten down and surrenders, and when Bud hesitates over the killing blow he puts a hidden knife into Hump's chest, stopped by his new robes. Celaine drops him with an arrow and calls Bud a hypocrite to his face; Bud privately resolves to change. The camp's stores turn out to be supplies stolen from the region's own dungeon defences. In the warlock's chest Hump finds a purple potion and a black stone artifact ringed with runes his spellbook cannot read, styled like Prince Kassius's ritual formation. Dylan receives his fifth blessing from Krioc. Hump, whose nightmares have not stopped, is privately frightened by how little he felt burning men alive. He masters a spell of his own, Rock Missiles, on the road back. At Sheercliff's gates security has tightened hard: that morning a young priestess was found dead inside the city, eyes blackened, blood drained, at the heart of a ritual circle.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Countess Daston recognizes the party's black stone: the Wizard Society mentioned another like it, and she has bought their cooperation by trading them access to the murdered priestess's ritual scene, a bargain Sir Roderick of the temple district resents bitterly. She hands the stone to Graham, a researcher chasing whether a weakening veil between realms links Fishers Lake, the new dungeons, and the warlocks, and asks the party to keep both the stone and her own investigation quiet. At the murder house the formation echoes the thirteen-part binding Kassius once used; Abraxus traces multiple casters, all rank five or higher; the priestess was not sacrificed but fed upon. Outside, the Inquisitor with Abraxus turns out to be Eliana, the \"E.\" of the letter, who tells Vivienne the Society still has no name for Sethril's apprentice, because he never registered one. Bud's cousin Arthur arrives representing House Blackthorne and ambushes him with the fiancee he fled, Emilia, who is in Sheercliff on her own family's business and says so. The party also runs into Luna, a priestess who treated Hump after Bledsbury. Days later they are boxed into an alley by six attackers demanding \"the Blackstone\", an artifact the party no longer even has. Their leader, an air wizard, escapes wounded; his enforcer doses himself with a powder, transforms, and nearly strangles Celaine before Bud kills him without hesitating. Kelisia's pillar descends in the aftermath: Bud has his third blessing at last.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bud's blessing settles as Armor of Ice, plating that bursts into retaliatory frostfire when struck. The one captured attacker talks freely: the gang are warlocks tied to the city's killings, their leader answers to superiors he did not consult, and he moved on the party only because he spotted them at the gates. How he tracked a stone they were not carrying, nobody can explain. Vivienne vouches for Eliana and brings her in on the account, while quietly keeping Hump's connection to Sethril from her. Natalie assigns the party a patrol at the Stonebark Forest dungeon, the least advanced of the three: bronze-rankers under Ricard will push for the core while iron-rank parties shield the villages, with Marcela commanding the patrols. On her advice the party recruits a fifth member, Emilia, who agrees partly to take the pressure off a marriage neither family will drop. Her brother, a duelist, beats Bud on points in a formal honour duel but comes away respecting him. At a mandatory council meeting Lord Ferrand, Randall's father and Countess Daston's chief rival, accuses her of hypocrisy for hiding the party's black stone; she embarrasses him for it. Abraxus tells the room that the priestess's death implies powerful warlock allies inside the upper city, perhaps at the council table itself, and looks at the Countess as he says it. He has no evidence yet. The party rides out at dawn.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stonebark Forest is petrified grey, and its creatures have grown stone-crushing teeth to live in it. The party takes the village of Tailsend; the other party leaders under Marcela are Corvin, a knight of Ordana who resents her command and says the villagers are not his problem, and Eve, a quiet Chosen of Rathlar. Tailsend has been cut off from its food since the dungeon corrupted the forest, so the party escorts villagers out to harvest the trees they eat, guarded by a huntsman, Harlow, and the tame stonetusk he rides. A hammertooth swarm hits them. Celaine abandons her bow for her dagger, Bloodshadow, and nearly loses herself to the bloodlust still in the blade before Hump forces it out of her hand. Marcela brings word that the assault on the dungeon core has begun, which means worse is coming. That night Hump dreams of the core itself, and Lucile's apparition urges him to reach out and take it. He refuses; she blocks his way; and then she becomes the gorger, chains him, and forces its power into his soul, until his bonded dragon appears and he burns his way out with white flame. He wakes to find it was not only a dream: his channels are damaged and real dungeon essence lingers in the room. He drew on the core in his sleep. His spellbook has unlocked a tier-four soul spell, White Flame, under a note saying it is forged only through despair.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hump tells Emilia the rest of the gorger story and asks the party to watch him for warning signs. Then ogres, which do not belong in Stonebark at all, raid a farm near a neighbouring village and kill a farmer, and Hump argues they must be hunted before they entrench. Marcela agrees. Len, a Chosen in her party, has taken an open dislike to Hump and needles him throughout. Fifteen Chosen track thirteen ogres to a stream and ambush them, but the beasts draw on dungeon essence and armour their skin with it, the same red power Hump felt in his dream. Bud kills the chieftain, Dylan the shaman, and the fight is won. Then the ground splits. The dungeon expands its domain around them in about a minute, tearing up trees and opening fissures, and animate roots drag an ogre corpse underground. Two of Eve's party go down; Matthias, Marcela's shield-bearer, is pulled partway into a fissure. They almost have him out when roots take his legs and drag him back into the red mist, and his screams stop. Hump says flatly that he cannot be saved and pushes a frozen Marcela into ordering the retreat. Len shoves Hump to the ground and blames him for the death. Hump answers that everyone chose this, and that three villages still depend on them. It is the first companion any of them has lost.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The group fights its way back to Tailsend, where Corvin has gathered every villager from the other two settlements. Then the forest attacks: corrupted animals stampede the barricades, and behind them come animate trees driven by a dryad, a nature spirit bleeding dungeon essence from its eyes. A strike team breaks through to it, and when a shockwave from deep in the forest empowers everything corrupted and Lucile's apparition surfaces in the mist urging Hump to just take the power in front of him, he refuses and burns the dryad down with White Flame instead. The horde keeps coming until bronze-rankers under Jacob, a Chosen who wields lightning, arrive to break the siege. Sixteen villagers are dead. Jacob brings worse news: the assault on the dungeon core failed, something went wrong, and nobody knows whether Ricard lived. The next morning the group rides out again to rescue three bronze-rankers cornered by razor claws, cats that should not exist this far south. They save all three. Their spearman, Tanek, thanks them, then recognizes Marcela's name and asks whether she is Count Daston's daughter, which she confirms. Stonebark keeps producing creatures that do not belong to it, and the dungeon is plainly far stronger than anyone assumed.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Word comes to evacuate all three villages to Sheercliff. Hump goes to find Marcela and instead finds Tanek's spear through her stomach and the village innkeeper dead on the floor for trying to stop it. Tanek says her name is reason enough, calls himself a warlock to Hump's face, and offers him a way out that Hump refuses. Cornered and outclassed, Hump deliberately pulls on the ambient dungeon essence to hold him off, which is no longer an accident but a pattern. Marcela blocks a killing blow meant for Hump despite her wound; Jacob arrives and pins Tanek alive; the healer Fila saves Marcela's life on the floor. Hump collapses from blood loss and essence overuse, and the gorger comes for him while he is under. This time he looks properly at his own soul and finds two foreign growths on it: the dragon bond, and a smaller, uglier fragment the gorger left behind, which has been suppressing his control every time he touches dungeon essence and speaking to him in Lucile's voice. He pushes it back himself and expels the essence, waking days later in the evacuation convoy. Marcela, recovering, tells the party in confidence that the dungeon's growth was sabotage: Blackstone Warlock infiltrators struck at Ricard, and with him incapacitated, one of them forced something into the core to trigger the expansion. Two of the infiltrators are now held alive, on the Countess's orders.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Outside Sheercliff the refugee camps have become multi-storey stone housing, raised by earth-wielders on the Countess's orders. Vivienne's tribunal has been postponed indefinitely by the Countess; Graham has built an artifact that identifies warlocks without the old ritual, and the Temple Guard are using it, but every warlock taken carries a black stone that yields nothing, even under Eliana's mind magic. Two more dungeons have expanded, one killing half its expedition, and the region now has earthquakes twice a day. The party is promoted to Bronze One and paid well for it. Arthur, grieving a fellow knight, disowns Bud for staying with them. Countess Daston takes Hump to tea alone and explains why he keeps being singled out: she is a sixth-circle Chosen of Imira with a blessing of limited foresight, she senses pivotal moments coming and the people who matter to them, and she felt one around him. She gives him an artifact ring and a century-old family spelltree that ends in a tier-six lava spell, and asks him what he thinks she is seeing. He tells her the truth about Kassius: that he struck him down, and that a long-limbed shadow stepped through a tear in the world and took him. She goes pale and names the thing a Riftwalker. Emilia formally joins, hears every secret the party has, and stays. They debate running, and choose to stay in Sheercliff and meet whatever is coming among allies.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Both captured warlocks are found dead of an oral soul poison, and Vivienne, who had just left them, is arrested for treason. The evidence is timing, and the motive belongs to General Bennet, a duke's appointee under pressure to produce results. Countess Daston gets her safety and nothing more. So Hump does the reckless thing: he tells Marcela everything about his soul, and she believes him, and she has Graham bring a black stone to the Daston training grounds under a false pretext. Graham's artifact confirms three essence signatures in Hump where anyone else has one. The stone's central rune is a destination, not a lock, and when Hump feeds it directed intent it drags him into total darkness where something with glowing white eyes looks back at him, until Celaine kicks the stone out of his hand. Graham gets his reading: a full essence signature, the breakthrough Vivienne could never reach. An earthquake hits at that moment, tying the stones to the tremors. Countess Daston breaches into the room in full armour, listens to Marcela's cover story, and chooses to accept it. At the council she uses the breakthrough to end Vivienne's tribunal, and Abraxus retaliates by publicly accusing Hump of murdering his master and being a warlock: the body he examined years ago had its throat slit, not an arrow wound. The Countess orders Hump tested on the spot. Marcela takes the artifact and fakes the reading with her own essence, and he walks out clean.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Vivienne is free, and she and Abraxus strike a truce: he shares what he knows of Sethril's death in exchange for word of the black stone research. His account is that the body was found two days after burial, throat cut, equipment stripped, which is why it took so long to identify. Hump's arrow story and Abraxus's knife wound cannot both be true, so someone with rare skill disguised the wounds well enough to fool an Inquisitor, and the goblin ambush may have been arranged from the start by someone who wanted the spellbook. Which means Hump, whose name is now publicly attached to Sethril, may be next. Vivienne does not entirely rule out Abraxus himself. Marcela offers the Daston intelligence network and recruits the party into her squad for the coming operation. Vivienne resumes Hump's soul training: his White Flame casting already reaches past a rank-three wizard, but casting from soul strength leaves the soul exposed, so she teaches him to defend it, and he holds against her pressure by the end of the week. He takes Luna out, chaperoned, and is shadowed at a distance by his own party for safety; it goes well enough that she kisses his cheek and picks a second date. Then an Academy summons arrives, unusually secretive, and the party guesses correctly: the citywide detection artifact works, and the warlock hunt starts now.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fifty adventurers sweep the city for more than ten warlock sites. Hump's squad finds theirs under the Hogshead Brewery, with two dead adventurers on the cellar stairs. He is cut off and duels a warlock wizard who manifests a soul pressure that feels unearned and thin next to Vivienne's, and finds he can shrug it off; he takes the man alive. Celaine's fifth blessing arrives mid-battle in full view of strangers, publicly marking her as Chosen of a goddess outside the Pantheon, and Sir Ricard chooses to congratulate her and ask nothing. Then they find the tree: glowing, softly beautiful, its bark patterned with screaming human faces, and a total blank to essence-sensing, which is how the warlocks stayed hidden. Ricard forbids destroying it in case that kills what is inside, and asks Hump to look. Through a ritual spell Hump is hit with a flood of death and despair and countless voices, and confirms the souls are real. A second tree turns up in the Countess's own raid across the city. By nightfall eight bases are destroyed and twenty-two warlocks taken, four trees found, and Vivienne names them the Trees of Damnation. The prisoners will not break, because they are not criminals: they believe the gods are oppressors and mean to take back power meant for humanity, which is what Kassius preached. Warlocks have been found among the nobility. Another base is located that same night.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt takes a noble's manor, and the man transforms into something boar-like when the detection artifact comes out. Then a silver-ranker's whole squad is killed and every bronze-ranker is summoned to the Opera House, where they find hundreds of corpses drained grey, Lady Helen Astida's among them. A warlock named Anthony walks onto the stage, turns aside a blow from Sir Roderick that should have levelled a street, and tells them he let himself be found: he is a distraction, and his part is finished. The doors seal, a Tree of Damnation erupts through the floor, and the dead stand up. Roderick fights in a manifested giant's armour of golden light while Sir Ricard batters the barrier down; Hump works out that the tree behaves like an artificial dungeon core and must be killed at its base. Underneath, they find the trunk, the core, and the missing High Priest of Osidium fused into the roots from the chest down. Natalie touches his mind and recoils, because he is screaming, and Roderick kills him himself. He says the Shrine of Osidium is likely the true target and that only three people know what it holds. Outside, the whole city is burning, and a great tree of damnation stands over the Shrine of Osidium. Kelisia's power envelops Bud in the street: he has broken into his third circle. Marcela refuses to hide, and leads them for the Daston vault and the war artifacts inside it.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Marcela's blood opens an ancient stair through the cliff to the estate. From the vault she takes a phoenix feather, an heirloom said to lend one user a gold-ranker's strength once, and asks Hump alone to choose who wields it against the central tree. He takes it himself. On the way they free a hundred people trapped under a barrier at the Academy, Bud and Marcela tear that tree's core out, and the freed crowd learns they were lured there by an order in Lord Ferrand's name. He never came. At the Shrine of Osidium, Countess Daston conjures a moon that eclipses the sun. It is not enough. Anthony cuts Sir Ricard across the throat, overwhelms her inside her own eclipse, and runs her through, throwing her aside so her blood sprays the sealed shrine doors, which is exactly what Lord Ferrand needs: he presses his marked hand to them and they fall to sand. Roderick takes a sword thrust meant for her in his own shoulder, Vivienne drives Anthony back with a wall of water, and Natalie pulls the wounded countess out through a portal. Her containment barrier collapses, spilling monsters across the upper city. Anthony walks into the shrine. Hump's group slips into the House of Stone by a back door and meets Abraxus carrying an unconscious Eliana. He staggers mid-sentence, and attacks. He is stronger than Vivienne. Corvin's party stays behind to hold him. The others reach the central tree just as a bronze beam tears out of the shrine, and a whole section of the White Cliff, the Shrine with it, drops into a widening chasm that splits Sheercliff in two.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anthony stands over the ruin holding what he took from the shrine. Three figures batter at a barrier sealing the city from outside. Abandoning the beam, Anthony begins a summoning that draws through every Tree of Damnation in Sheercliff, and Hump sees what it is for: the sacrifice is every soul in the city, and the shape in the widening rift is the same thing that took Kassius, far larger now. Abraxus breaks through and Patrick is dead behind him. To survive, Hump stops resisting the dungeon essence and takes it, beats Abraxus down, and has Dylan bind him rather than kill a man he believes is being controlled. His spellbook opens itself to an old note dated year 424, signed Nithrand, describing a city that fell when a god's shrine was desecrated, called the breaking of a first seal. Hump merges his essence, the dungeon's, and the phoenix's into one stream and unleashes White Flame, burning the tree, its core, and the ritual with it; his master's staff is destroyed. The barrier shatters and three strangers marked with a three-eyed sigil drop into the city. Their wizard, Starick, knows Anthony by name. Anthony kills one of his own to open a blood portal and escapes. Eliana, meanwhile, has Hump's spellbook. She claims her master tried to recruit Sethril and Sethril killed him; she doses Hump with warlock powder; he loses himself entirely and beats her bloody, dragging out that her order calls itself the rightful heir to his book. Bud stops him with an armoured strike. Starick gives him a choice: master what is inside him now, or die as one more warlock. Under his guidance Hump absorbs the phoenix, the dungeon essence, the gorger's fragment, and finally the dragon, which does not resist, and manifests his soul.",
+            "through": {
+              "chapter": 89
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Starick names the thing beyond the rift: Baelkor, first servant of a fallen god, the same entity that took Kassius. He names Anthony a rogue from his own order, confirms the stolen seal is the second of a series to fall, refuses all accountability, and vanishes warning of a coming great war. The city is swept and the warlocks are driven out. Abraxus, still enthralled, killed two of Corvin's party before being killed himself in the aftermath. Sir Ricard is dead, and Arthur, and Luna's chaperone, and two of Marcela's party. Countess Daston lives but will never walk. Eliana is arrested, tests as not technically a warlock, keeps accusing Hump, and never mentions her order to anyone. Vivienne, who failed to see her, stays in Sheercliff in the Countess's service to watch her. Hump collapses from record essence overuse and is walking within a day, because his manifestation unlocked a technique that heals it, and his spellbook yields a letter: Sethril foresaw his own death and warns that the book is alive and grows more visible to its hunters as its wielder grows. The city calls Hump the White Flame. Count Daston comes home, offers the party permanent service, and reveals a border stronghold has fallen in a coordinated attack; King Henry is recalling every Chosen. So the party splits: Bud, Dylan, and Emilia for House Blackthorne and the Fallen Lands, Hump and Celaine north for the Dragon Keeper trials at Drakalyn. The Countess gives Hump a manor, the family library, and a gold-rank staff; he takes them and leaves anyway, afraid the order that wants his book will come for it. The egg hatches into a black-and-gold dragon he names for the night storm. Alone on the balcony he speaks to his spellbook, and it answers: a vast essence core hidden in its spine, a silver owl on its cover, a presence he judges to rival a god's. Then it is gone, and he has no idea what he carries.",
+            "through": {
+              "chapter": 95
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard-3-a-gamelit-litrpg-adventure"
+      }
+    }
+  }
+}

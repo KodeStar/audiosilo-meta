@@ -1,0 +1,1658 @@
+{
+  "entries": {
+    "the-legend-of-randidly-ghosthound-5": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An independent Zone 32 leader preparing to command a sealed raid dungeon. His new plant-centered class offers major growth, but his bonded companion and evolving soul skill are unavailable as the expedition begins.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Randidly's bonded companion, temporarily dormant while undergoing a transformation apparently prompted by his new class.",
+            "id": "bone-worm-companion",
+            "name": "Bone-worm companion",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The weapon maker who forged Randidly's new ogre-spine spear.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "East End's wary leader and Randidly's long-separated childhood friend. He approaches her to secure the final place in his raid expedition.",
+            "id": "sydney",
+            "name": "Sydney",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "East End's guard leader. He challenges Randidly's arrival and treats the visitor as a possible threat to the settlement.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion who enters East End with Randidly and Ptolemy.",
+            "id": "rose",
+            "name": "Rose",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Randidly's allies entering East End and Sydney's former partner.",
+            "id": "ace",
+            "name": "Ace",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Randidly's party who accompanies him and Rose into East End.",
+            "id": "ptolemy",
+            "name": "Ptolemy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's Aether adviser and class-weaver within their inner connection. She resumes observing him and makes clear that she disapproves of part of his new class.",
+            "id": "lucretia",
+            "name": "Lucretia",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frontline fighter who enters the raid with her bear companion, Chrysanthemum.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thea's bear companion and a full combatant in the expedition, admitted despite the dungeon's nominal ten-person limit.",
+            "id": "chrysanthemum",
+            "name": "Chrysanthemum",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavy melee member of the raid party who fights with an enormous cleaver-like weapon. Randidly has not previously seen the full extent of his combat style.",
+            "id": "lucifer",
+            "name": "Lucifer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful area spellcaster whose attacks can decide large engagements, though direct pressure against her creates danger for nearby allies.",
+            "id": "clarissa",
+            "name": "Clarissa",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fast, perceptive archer and tracker who watches Drake closely after he joins the raid party and warns him to remain professional.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The raid's solo vanguard, holding a flank with her sunspear while the party defends a threatened settlement.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elusive experimenter tied to the raid dungeon. Randidly knows this being and both champion Regalias remain unaccounted for, making its unseen role a central danger within the sealed world.",
+            "id": "dungeon-experimenter",
+            "name": "Dungeon experimenter",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ace"
+            ],
+            "description": "The cultivated fighting persona Ace adopts through his helmet. The identity changes his bearing and gives his allies a separate name for that side of him.",
+            "id": "dauntless",
+            "name": "Dauntless",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blinded Dintan ritualist whom Randidly exposes as a former Zone 32 champion. He interrupts her hidden influence over Ptolemy and places her under restraint.",
+            "id": "former-wild-rider",
+            "name": "Former Wild Rider",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A leading defender within Randidly's inner world. He commands forces facing an invasion that threatens the peoples living inside the soul skill.",
+            "id": "monster-king",
+            "name": "Monster King",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient Dintan leader who publicly represents the hidden city's ruler and says she has endured for centuries.",
+            "id": "gemma",
+            "name": "Gemma",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Dungeon experimenter"
+            ],
+            "description": "The hidden dungeon experimenter when it finally appears before Randidly in an aged version of Lyra's face. The encounter makes the visual connection safe, but does not establish that the being is Lyra.",
+            "id": "creature-using-lyras-face",
+            "name": "Creature using Lyra's face",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The familiar face worn by the dungeon's hidden enemy when it finally appears before Randidly, visibly aged but still recognizable.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Simon"
+            ],
+            "description": "Randidly's returning Dreamer ally after he claims the recovered Regalias and becomes Zone 32's new champion. The transformation strengthens his illusions and distant perception while binding him to champion duties.",
+            "id": "eternal-dreamer",
+            "name": "Eternal Dreamer",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Dreamer ally known before this volume, able to observe distant events through astral perception.",
+            "id": "simon",
+            "name": "Simon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Donington organizer who directs spiderlings in producing fabric from the marrow silk supplied by Randidly's companion.",
+            "id": "mrs-hamilton",
+            "name": "Mrs. Hamilton",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donington's chieftain, whom Randidly tests to determine whether he can protect the settlement independently.",
+            "id": "donnie",
+            "name": "Donnie",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly awakened survivor who assists at a Donington triage center using her first-aid experience and is allowed to settle in the town.",
+            "id": "tanya",
+            "name": "Tanya",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An official whose report discloses Earth's unusually high Aether readings and a heretic-level reading, exposing the planet to greater outside scrutiny.",
+            "id": "octavius-shrike",
+            "name": "Octavius Shrike",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Zone 1 gunslinger sheriff who intervenes to protect a probationary youth from two higher-tier aggressors.",
+            "id": "hank",
+            "name": "Hank",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hank's brother, who summons him to East Providence.",
+            "id": "alan-howard",
+            "name": "Alan Howard",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zone 1's city-classification artificial intelligence and a central UHF power. It evaluates cities, monsters, and citizens while shaping preparations for contact with other zones.",
+            "id": "ghost",
+            "name": "Ghost",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous prospective member of Hank's Zone 1 expedition.",
+            "id": "ezekiel",
+            "name": "Ezekiel",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A UHF operative in a powered suit who challenges Hank for command of an upcoming expedition.",
+            "id": "mordecai-heath",
+            "name": "Mordecai Heath",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blind combatant whom the Jade Prince assigns to Hank's expedition. Her equipment includes a bamboo cane.",
+            "id": "afina-yu",
+            "name": "Afina Yu",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An android assigned by Ghost to replace Mordecai Heath on Hank's expedition.",
+            "id": "katie-holmes",
+            "name": "Katie Holmes",
+            "reveal": {
+              "chapter": 87
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hank's former partner and a spirit walker whose warnings can shape dreams and reveal danger. She joins his expedition after warning that the newly opened territory is a trap.",
+            "id": "laurel",
+            "name": "Laurel",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Zone 32 mage who leads the initial contact with Hank's party and blocks a plasma shot with a mana shield.",
+            "id": "dinesh",
+            "name": "Dinesh",
+            "reveal": {
+              "chapter": 92
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exceptionally strong Zone 32 fighter who carries a massive, dense metal ball. He crushes a mortally wounded ram before meeting Hank's expedition.",
+            "id": "tykes",
+            "name": "Tykes",
+            "reveal": {
+              "chapter": 92
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ten-year-old member of Zone 32 living at its field base.",
+            "id": "nathan",
+            "name": "Nathan",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Randidly Ghosthound"
+            ],
+            "description": "Randidly's steelworker identity in Zone 1. The disguise lets him earn money, study local industry, and investigate threats without exposing the Zone 32 leader behind it.",
+            "id": "baloo-erickson",
+            "name": "Baloo Erickson",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The leader of a powerful Unity Church enclave that limits its members' access to System knowledge.",
+            "id": "father-foster",
+            "name": "Father Foster",
+            "reveal": {
+              "chapter": 107
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armed Zone 1 businesswoman and organizer who approaches Randidly at a steelworkers' gathering while presenting herself as a fortune reader.",
+            "id": "tatiana",
+            "name": "Tatiana",
+            "reveal": {
+              "chapter": 108
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Unity Church speaker whom Randidly recognizes as his maternal grandfather.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 139
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A public performer presented as Randidly Ghosthound's fiancée.",
+            "id": "tia",
+            "name": "Tia",
+            "reveal": {
+              "chapter": 146
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0C413FL2R",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-5"
+      },
+      "recaps": {
+        "ending": "Randidly and Lucretia sever the Aether core inside Father Foster's god-remnant facility, killing the embodied Father Foster and spreading difficult-to-control Aether across Zone 1. The Unity Church survives, and Ghost secretly accepts Father Foster's proposal to target Randidly's drone-maker identity. Randidly stays with Tatiana and their concealed refuge, intending to investigate the Church before traveling to Shal's world. His companion continues operating through his public identity, while Simon holds the Regalias as the Eternal Dreamer. Thea remains missing as a Nemesis, Chrysanthemum's recovery is uncertain, and Lyra is estranged from Randidly. Ezekiel remains burdened by a class that requires killings. At the hospital, Hank finds his brother Alan unconscious with a heart that will not beat, while Hank's dream warns that Fear is approaching.",
+        "in_short": "Randidly leads a Zone 32 party through a sealed raid dungeon, saves Alana from a destructive level-50 Reckoning, exposes the Dintan bargain, and cripples the experimenter manipulating the dungeon. The raid kills its Regalia-powered final enemy, but Chrysanthemum is catastrophically aged and Simon claims the Regalias as the Eternal Dreamer. After breaking with Lyra and learning that many hostile incarnations may exist, Randidly enters Zone 1 in disguise. He reconciles with his estranged father Ezekiel, builds a hidden refuge with Tatiana, develops powerful combat drones, and uncovers Unity Church captivity and organ-harvesting sites. He becomes Earth's first Great Path holder and, with Lucretia, destroys the Aether core in Father Foster's god-remnant facility. Father Foster appears to die, but the Church and creature network remain active. Randidly prepares further investigation as Hank reaches his comatose brother Alan under the shadow of Fear.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: The System transformed Earth into zones governed by levels, classes, skills, and Aether. Randidly Ghosthound became an exceptionally strong, independent protector of Zone 32, developed a living inner world, and remained connected to Lucretia and a bonded bone-worm companion. He established a settlement, formed alliances with fighters and leaders including Alana, Ace, Annie, Rose, and Sydney, and learned that greater System trials were approaching.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly receives a powerful non-Aether spear and assembles the final members of his raid expedition. In East End, he reunites uneasily with his childhood friend Sydney and defeats her challenge for command. Sydney declines to enter the dungeon but appoints her guard leader Drake as East End's representative. The ten-person party enters with Thea's bear Chrysanthemum, repairs a dangerous tear in the entrance, and learns that retreat is impossible. After defeating large packs of skinless cats, the group discovers its objective: take the Key of Death to a fallen altar and open the Door of Life. Three unnatural towers and an apparently peaceful elf-like village offer the first leads. The villagers accept the party for one night, but a falling stone triggers monster attacks and draws most local fighters away, leaving Randidly's group to defend the settlement.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The raid party survives the village assault, but missing bodies, vanished loot, and the blind local priestess's compulsive influence deepen suspicion. Randidly finds murdered children whose Aether she consumed, yet keeps her alive long enough to finish a protection quest and learn more. A System judgment pursues the retreating party, which destroys it through coordinated attacks. When the quest reward pushes Alana to level 50, her class Reckoning turns lethal after she rejects an imposed shape. Randidly and Lucretia bind her collapsing class together with Living Aether and absorbed images. Alana survives as the Valkyrie of the Red Dust. Lucretia explains that level-50 fates condense personal images and may qualify people for the coming Calamity. The priestess finally admits that her people are classless monsters who steal life to accelerate their growth.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dintan describe how exile, monster pressure, and a golden-haired outsider's bargain drove their people toward hereditary debt and life consumption. The party turns north toward an airborne death-cultist settlement and destroys its defenders, only to learn that the accessible Key of Death would kill every inhabitant of the dungeon. Randidly exposes the blind Dintan ritualist as the former Wild Rider and breaks her concealed influence over Ptolemy. Her account reveals that Gemma, a surviving body double, became the ancient leader tied to the bargain. Meanwhile, Randidly's inner world comes under attack through a conduit. The Monster King organizes its defense while Randidly gives selected inhabitants dangerous powers to resist the invasion. The raid party approaches the hidden Dintan city without accepting a solution that requires mass death.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly enters the hidden city and is separated from much of the raid party as the dungeon's factions converge. Gemma represents the city's hidden ruler and maintains the ancient bargain, while her metallic dog joins the defense. The party's attempt to navigate the city becomes open conflict involving Dintan forces, death cultists, and summoned monsters. Within Randidly's soul world, the Monster King accepts a power that will destroy his body and leads a counterattack through the enemy conduit. Randidly reaches the presence behind the dungeon, which wears an aged version of Lyra's face. The being claims it belongs to a wider calamity structure and says it deliberately shaped parts of Randidly's early development, but its account remains unverified. It seizes control of a powerful warrior and presses Randidly while Lucretia prepares a separate countermeasure.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The soul-world counterattack ignites a substance that poisons the experimenter's accessible presence, breaking its control long enough for Randidly to incapacitate its warrior. The Monster King dies after carrying the attack through the conduit, but his sacrifice ruins the enemy forces' coordination. A final dungeon creature emerges from the city, sustained by both Regalias and armed with beams that rapidly age whatever they strike. Randidly rejoins the raid, and the party destroys the creature through coordinated attacks from Annie, Thea, Alana, Ace, and the others. Chrysanthemum shields Randidly from an aging beam and is left terminally decayed. The System confirms the raid victory, expands Zone 32, and announces that it will join the new Earth in six months. Simon claims the recovered Regalias and becomes the Eternal Dreamer. Randidly's bonded companion completes a smaller humanoid, bone-winged transformation.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly learns from recovered memories that the defeated enemy was one of thousands of incarnations running experiments and recruiting human collaborators. His inner world develops into a realm organized around the Spectral Tree's seven territories, while Zone 32 begins rescuing people from newly opened territory. Lyra, revealed as the settlement's village spirit, restores Chrysanthemum's movement by transferring strength through his bond with Thea. The price makes Thea a champion's Nemesis. Lyra admits cooperating with the experimenter because she believes it offers humanity a route to survival. Randidly rejects that strategy and leaves the settlement rather than remain under her influence. Thea disappears, beyond Simon's champion awareness. Randidly forms a small border expedition to explore, improve his strength, and experiment with creating classes outside the System. A report of Earth's unusual Aether also exposes the planet to broader outside scrutiny.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Zone 1, gunslinger sheriff Hank Howard intervenes for a probationary youth before his brother Alan, the UHF president, summons him. Zone 1 is governed through citizenship tiers and the predictions of Ghost, an artificial intelligence that classifies people, monsters, and cities. Hank distrusts that order but accepts command of Expedition 3, which will map routes and contact newly connected zones. His assigned personnel include Ezekiel, a dangerous specialist held in containment. Hank defeats a challenge from an armored rival, and the expedition gains additional members selected by Ghost and the Temple on the Hill. Although the group is politically divided, Hank establishes practical command. The expedition departs as Zone 1 prepares to connect with the wider world, while Ghost watches Hank and Ezekiel for risks beyond the stated mission.",
+            "through": {
+              "chapter": 89
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hank's expedition crosses dangerous territory and makes contact with Zone 32. Randidly returns from border exploration and confronts Ezekiel, discovering that the detained specialist is his estranged father. Their violent reunion gives way to a limited reconciliation, but Ezekiel's class, Beelzebub the Taker, steadily removes his stats unless he kills. The danger remains unresolved even after he explains his past. Randidly then covertly enters Zone 1 to trace another incarnation of the dungeon experimenter. Using the steelworker identity Baloo Erickson, he takes industrial work, studies local forging, and begins constructing an underground base. He conceals his true abilities from Zone 1's surveillance while scanning for the enemy signature and learning how the zone's government, military, and industry operate.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly expands his hidden Zone 1 base while working as a steelworker and investigating the Unity Church, whose leader Father Foster controls a powerful enclave. At a workers' gathering he meets Tatiana, an armed organizer posing as a fortune reader. They decide to remain in contact after helping contain the gathering's violence. Elsewhere, Hank and Ezekiel reach Zone 32 and test themselves against its fighters. A local teenager defeats Ezekiel without killing him. Hank survives a breakthrough duel, creates several image-based skills, and receives emergency repair from a child soul architect after severe Aether sickness. Randidly continues searching for the creature's dispersed signature while concealing his identity from Zone 1's supervising powers.",
+            "through": {
+              "chapter": 114
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly abandons the slow repair of his damaged physical skill and clears space to create a replacement. He enlarges his underground forest base with room for housing and a forge while continuing steel work and unsuccessful searches for the creature's scattered signature. Tatiana becomes a tentative friend after he covertly prevents violence around a Unity Church recruit. Randidly's companion also appears publicly under his identity and forms a political connection with a senator. When Zone 1 forces steelworkers into an evacuation, Randidly joins rather than leave civilians unaided. The newly opened area contains far more residents than officials predicted, and monster levels climb rapidly. The military orders an early withdrawal, but Randidly and other volunteers refuse to abandon thousands still in danger. Hank's time in Zone 32 meanwhile confirms the strength of its fighters and soul specialists.",
+            "through": {
+              "chapter": 126
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Evidence from a hidden facility links the Unity Church to captives and organ removal. Randidly brings survivors to the farming compound above his underground forest base and asks his allies to locate similar sites. He begins experimenting with observation, transport, and tunneling drones, then concludes that stronger designs will require an original runic language. His first machines remain imperfect, but the work offers a route to information and improved local conditions. Randidly also recognizes a Unity Church speaker as his maternal grandfather, Shal, creating a direct personal connection to the Church's leadership. Elsewhere, an attack on a mine is attributed to a cross-zone Nemesis threat. Randidly continues preparing to travel to Shal's world once Earth is secure enough, leaving limited time to address the threats developing in Zone 1.",
+            "through": {
+              "chapter": 140
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly discovers that his transformed bone-winged companion has been impersonating him in public, building the Orchard refuge under his identity, and maintaining a false engagement with Tia. Their bond allows her to imitate him and teleport him, but her independent decisions create new complications. Randidly nonetheless uses the refuge and his own underground community to shelter more people. He develops a new physical skill and advances his understanding of Aether, fate, and System paths. When a contaminated boy reaches the community, Randidly detects dense creature-associated Aether and secures him for examination. The Unity Church cannot search the compound because Randidly's drone work has earned protective citizenship status. His connection to Shal and the Church is now direct, while the companion continues presenting the engagement to Tia as genuine.",
+            "through": {
+              "chapter": 150
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly completes a unique path and becomes Earth's first Great Path holder, gaining Wrathful Duel Mage and Weaver with the Threads of Fate. He strengthens Zone 1's defenses with heat-converting shields and armed pterodactyl drones, then helps clear raid bosses from a southwestern lake. Human attackers intervene, suggesting organized protection of the danger zone. His companion tells Tia that the public Randidly is an impostor and later reveals her bone-winged form while stopping an assassination attempt. Tatiana formally joins Randidly's organization and becomes his partner, while he commits to training and equipping the refuge. Alana leads a Zone 1 force pursuing the alleged Undying Hero and defeats Ace at another refuge. Randidly shifts toward scalable drone forces as ambient Aether thickens and multiple danger zones threaten wider outbreaks.",
+            "through": {
+              "chapter": 159
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The drone program becomes a major Zone 1 political issue after public claims that mass-produced machines could rival elite soldiers. Attackers target Randidly and Tatiana after a charity event, but he defeats them before a leading Zone 1 fighter can identify him. Tatiana sees through two of his disguises and realizes how much he has concealed, though his canonical identity remains unconfirmed to her. Randidly rejects a fate-linked legendary skill after the Weaver of Fate warns that refusal will kill him, destroying the coercive connection at serious cost. He then attacks a newly discovered organ-harvesting base with two allies. The facility is prepared for them with roughly 150 exosuit soldiers. A mechanical insect speaking with the creature's voice draws Randidly into a sealed chamber containing a glowing cylinder and a faint but unmistakable trace of hostile Aether.",
+            "through": {
+              "chapter": 165
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The insect identifies itself as another incarnation of the experimenter and tries to provoke Randidly into destroying the cylinder. Father Foster arrives in an exosuit and explains that the chamber holds the body of a slain god whose power supports her facilities. She admits directing the wider operation, offers Randidly power and immortality, and attacks when he refuses. Randidly defeats her enhanced exosuit with a lava golem, and the machinery sustaining her fails. Her final strike damages the cylinder and releases its imprisoned Aether. Lucretia uses a weapon prepared over months to sever the core connection before the chamber explodes. Father Foster appears to die but describes herself as replaceable, leaving the fate of her organization and the relevant creature incarnation uncertain.",
+            "through": {
+              "chapter": 167
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The destroyed core spreads difficult-to-control Aether across Zone 1, likely accelerating growth while leaving the Unity Church operational. Randidly and Lucretia disagree over whether the ruined remnant was truly the creature or a decoy. Randidly decides to investigate Church refugee camps through his drone-maker identity before leaving for Shal's world. Ghost's tests show that Randidly's three drone designs can defeat raid bosses and support broad patrol coverage. Despite this success, Ghost contacts Father Foster and accepts her secret proposal to target the drone-maker behind the machines. Randidly remains with Tatiana and their expanding concealed community, while Thea, Chrysanthemum, Lyra, Ezekiel's lethal class, and the creature network remain unresolved. In the final chapter, Hank reaches the hospital where Alan lies unconscious with a heart that will not beat. Hank's dream warns that the named figure Fear is approaching and that Alan's death could trigger catastrophe.",
+            "through": {
+              "chapter": 170
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0C413FL2R",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-5"
+      }
+    },
+    "the-legend-of-randidly-ghosthound-6-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Orchard businesswoman and former criminal whose Cutpurse class no longer fits the stealthy, decisive fighter she wants to become. She accepts Nathan's dangerous attempt to rebuild the class around that self-image.",
+            "id": "tatiana",
+            "name": "Tatiana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sole Architect able to inspect people through Aether and restructure their classes. He begins remaking Tatiana's class despite the risk to her soul and without clear confirmation that Randidly authorized the procedure.",
+            "id": "nathan",
+            "name": "Nathan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Orchard's administrator and a political ally of Randidly Ghosthound. She investigates a recent cluster of nearly forty unexplained disappearances among residents with no obvious shared profile.",
+            "id": "senator-firefly",
+            "name": "Senator Firefly",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Baloo Erickson"
+            ],
+            "description": "The disguised Zone 1 figure known as Baloo Erickson, now revealed as Randidly Ghosthound. He maintains a hidden refuge beneath his farm and investigates why a younger version of a foe he killed is still appearing in public.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Church-linked figure whose younger public appearance matches an older enemy Randidly killed. The resemblance and the unusual experience gained from the earlier death make the figure's nature and survival uncertain.",
+            "id": "father-foster",
+            "name": "Father Foster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Randidly's soul-linked companion, who uses his public appearance in Zone 32 while he operates under a disguise elsewhere. Her own primary name is not established when Randidly explains the arrangement.",
+            "id": "randidlys-shapeshifter",
+            "name": "Randidly's shapeshifter",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gunslinger sheriff following a developing soul skill toward danger in West Providence. He brings Ezekiel and Thaddeus while searching for the threat connected to his missing brother, trusting the new instinct even though it offers no clear destination.",
+            "id": "hank",
+            "name": "Hank",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous member of Hank's search party whose undisclosed condition creates a persistent risk. He has recently confined his killing to monsters, but that restraint is treated as fragile while the group follows Hank toward an unknown threat.",
+            "id": "ezekiel",
+            "name": "Ezekiel",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hank's former Tier 2 ally and an experienced shock trooper. He accompanies Hank and Ezekiel as the sheriff's soul-guided intuition leads the group toward an unknown threat, providing dependable force for an investigation with few reliable answers.",
+            "id": "thaddeus",
+            "name": "Thaddeus",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Unity Church believer who runs the tea shop built where Randidly once lived. Her shop has been vandalized because of her faith, but she invites Randidly inside instead of asking him to retaliate publicly.",
+            "id": "maud",
+            "name": "Maud",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A formidable defender preparing Franksburg against an army from a newly connected zone. He is a prominent local hero and carries a living sword whose power he keeps in reserve while organizing resistance to the approaching invasion.",
+            "id": "lucifer",
+            "name": "Lucifer",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A world-tree figure whose transformation spreads across the zone.",
+            "id": "arbor",
+            "name": "Arbor",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Father Foster"
+            ],
+            "description": "An independent female raid-boss incarnation who used her bond with the original creature to destroy it and the male figure it empowered. She controls the raid boss's spawn and confronts Randidly beneath Lake Apollo.",
+            "id": "faust",
+            "name": "Faust",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A hammer-wielding fighter who breaches Randidly's barrier at Lake Apollo with Chrysanthemum and an obsidian-armored companion.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bear infused with green fire who accompanies Thea and an obsidian-armored man through Randidly's barrier at Lake Apollo.",
+            "id": "chrysanthemum",
+            "name": "Chrysanthemum",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous traveler whose class leaves him with a persistent hunger. After turning on Hank and Thaddeus, he identifies Randidly Ghosthound as his son and is left severely wounded but alive.",
+            "id": "ezekiel-ghosthound",
+            "name": "Ezekiel Ghosthound",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sidney"
+            ],
+            "description": "An East End leader who intervenes after Franksburg's defender is beaten by an invading commander. She confronts the enemy with ice and lightning magic, arriving as the city's defense is close to failing against the stronger opponent.",
+            "id": "sidney-harp",
+            "name": "Sidney Harp",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Undying Hero"
+            ],
+            "description": "A powerful regenerative fighter who remains with the badly injured Thea after other allies depart. Calling himself the Undying Hero, he offers an experience benefit and seeks contact with the power directing her.",
+            "id": "roy",
+            "name": "Roy",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zone 1's artificial intelligence and drone controller. Randidly confronts Ghost over whether it knowingly enabled Unity Church raids and kidnappings, making its judgment and loyalties an immediate concern.",
+            "id": "ghost",
+            "name": "Ghost",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly elected councilwoman and Radical Scholar who relies on planning and memory rather than combat strength. She advances a rights-based proposal intended to restrain exceptional power through law and chivalric orders.",
+            "id": "tessa",
+            "name": "Tessa",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adviser whose experience in a raid dungeon persuaded his settlement to develop around elemental power. Sydney presents his guidance as the reason her community changed course and began preparing for a future that its former approach could not meet.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An established military leader with her own village. She credits Drake's advice after a raid dungeon with persuading her settlement to adopt elemental development and prepare for future threats.",
+            "id": "sydney",
+            "name": "Sydney",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ash-barked, fire-filled protector among twelve thousand altered people. The treant stops Hank's attack, restores Hank's dying brother with a white flame, and insists that the gathered beings are friends rather than monsters.",
+            "id": "altered-treant-leader",
+            "name": "Altered treant leader",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Unity Church adherent who argues that dangerous beliefs are easier to contain inside one visible institution. His willingness to accept sacrifice puts him in direct moral conflict with Randidly during the confrontation over the Church's experiments.",
+            "id": "randidlys-grandfather",
+            "name": "Randidly's grandfather",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Randidly's soul-linked Aether expert, researching how to free monster-spawning devices from fixed sites. Her work supports his plan to move and redistribute the devices rather than leave them under Church control.",
+            "id": "lucretia",
+            "name": "Lucretia",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Telus frontline sergeant who pays a severe price to bring Randidly back to her world. She is a highly trained spear fighter, carries fresh grief over her father, and meets Randidly with both guarded affection and a demand to spar.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A needle-spear tournament representative assigned to compete beside Randidly and Helen. She is eager to spar with Randidly, while Helen wants the team to conserve its strength after an alarm interrupts their reunion.",
+            "id": "white-haired-spearwoman",
+            "name": "White-haired spearwoman",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A classless Orchard youth supported by an older resident and trapped by debt to a criminal gang. He survives through deception and feigned weakness, but anger at being reduced to cowardice pushes him toward resistance.",
+            "id": "naffer",
+            "name": "Naffer",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Orchard shop clerk whose unusually powerful singing has caught Naffer's attention. His feelings for her complicate the dangerous criminal job he has been forced to join, although she does not yet know the risk surrounding him.",
+            "id": "maureen",
+            "name": "Maureen",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the Heart School and representative of the Oracle. As the schools suspect betrayal and fear an old enemy, she sends her rapidly advancing lieutenant to reinforce the fight against two Witch Kings.",
+            "id": "ophelia",
+            "name": "Ophelia",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tournament representative assigned to Team 16 with Randidly and two spearwomen. He arrives under personal pressure, believing a rival has arranged his exclusion and endangered his sister, and is driven to oppose the coming calamity.",
+            "id": "silo",
+            "name": "Silo",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Team 16 contestant who carries an engraved spear and enters the sudden military campaign beside Randidly and Silo.",
+            "id": "engraved-spear-woman",
+            "name": "Engraved-spear woman",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful patron who intervenes when Randidly forces two skills into a dangerous resonance. The being prevents a worse collapse, warns him to proceed gradually, and asserts a claim over his life while withholding the larger purpose of that interest.",
+            "id": "patron-of-ash",
+            "name": "Patron of Ash",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's former rescuer and Spear Phantom-style master. Randidly recalls the debt he owes Shal for saving and arming him, although they are currently out of contact and he has no clear explanation for the silence.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The architect and ruler of the Whites, and the creator of Lucretia's original body. He summons her for likely deconstruction, demonstrates effortless control over a Witch King, and compels her to approach despite her resistance.",
+            "id": "autarch",
+            "name": "Autarch",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A master-level Telus authority facing the collapse of the northern domain. He orders its stronghold to retreat toward the center and sends an enforcer to ensure compliance while the White invasion expands.",
+            "id": "spearman-school-leader",
+            "name": "Spearman School leader",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly promoted Central Domain investigator working with an assistant. The representative opens an inquiry into Randidly as the Engraving Guild renews its interest in unlicensed engraved weapons and the unusual outsider who may be producing them.",
+            "id": "engraving-guild-representative",
+            "name": "Engraving Guild representative",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young heiress placed under Lucretia's protection. Her emerging karmic tie to Randidly makes her Lucretia's best prospect for reconnecting with him.",
+            "id": "lucretias-charge",
+            "name": "Lucretia's charge",
+            "reveal": {
+              "chapter": 108
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lucretia's former charge, now an engineer whose workshop and earlier research are destroyed by a worldwide earthquake. Alta turns her attention to using the altered world-tree sap as a power source that might end the war.",
+            "id": "alta",
+            "name": "Alta",
+            "reveal": {
+              "chapter": 116
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CR4J774R",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-6-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Randidly ends the volume imprisoned beneath Telus after exposing an Engraving Guild representative as a blue-steel puppet controlled by an azure propagator. The propagator defeats him with a psychic attack and holds him for an inquisitor. His armor, living spear, interspatial ring, and normal system overlay are gone, but he retains seeds, limited root abilities, Absolute Timing, and slow mana engraving. After several days on the small island inside the suppression chamber, he decides to reforge his class beyond normal system scrutiny and undermine the engraved boundary.\n\nHelen is the official tournament winner because Randidly conceded after gaining the tactical advantage. She also has his promise to help find her father's killer. The Spear Source remains missing, the White invasion continues, and Telus's school leaders have broken their old restraint. Silo is alone in another Heretic judgment after corrupting power drove him to murder civilians. Lucretia remains separated inside Randidly's soul-world, where the spread of ash has reshaped the life of the engineer she protects. Drake and Roy continue their temporary Naga alliance despite Drake's unresolved grievance. On Earth, the new chivalric orders operate amid unresolved Unity Church fallout, altered-person rights, and a dispute over rail control.",
+        "in_short": "Randidly divides his attention between Earth's unsettled institutions and the crisis on Telus. On Earth, he exposes Unity Church experiments, supports legal chivalric orders, and leaves allies to manage the consequences. On Telus, the stolen Spear Source has halted ordinary growth while the Whites invade. Randidly survives the southern campaign, converts White animating energy into power for spear users, and endures a lethal trial by the Patron of Ash. He destroys the patron's consciousness, claims part of its mantle, and survives with permanent soul scars and plant abilities that end in fire or cold ash. Lucretia is deconstructed by the Autarch but survives in a new body inside Randidly's soul-world. Silo deteriorates under corrupting power, while Drake temporarily allies with Roy. Randidly defeats Helen tactically in the tournament but concedes and promises to help investigate her father's death. An Engraving Guild investigator proves to be a propagator puppet, whose controller captures Randidly. The book ends with him planning to reforge his class and sabotage his engraved island prison.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Randidly Ghosthound became a powerful founder on Earth and a disciple of Shal's spear tradition on Telus. His abilities join plant growth, spear combat, Aether, and an expanding inner world, while several soul-linked companions share or inhabit parts of his power. Lucretia is his principal Aether expert, and another shapeshifting companion can take his public form. Randidly's ties to Earth remain personal and political even when he travels between worlds. Helen is a Telus spear fighter with whom he has an unresolved bond, and Shal is the mentor who rescued and armed him. The System's classes, paths, patrons, danger zones, and calamities continue to reshape both individuals and entire societies. This volume begins with Randidly operating under a cover identity in Zone 1 while his allies attempt to turn new power into stable institutions.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nathan rebuilds Tatiana's unsuitable class into the combat-focused Crooked Dagger, accepting serious risk to her identity. Randidly, operating in Zone 1 as Baloo Erickson, reveals his true identity to her after she learns that a soul-linked companion is impersonating him elsewhere. Their trust remains damaged.\n\nA Unity Church-linked network is abducting people and using captives in monster experiments. Randidly allows black exosuits to take him to a Lake Apollo facility, where Father Foster reveals herself as Faust, an independent female raid-boss incarnation. Thea, Chrysanthemum, and their allies intervene on Faust's behalf. Randidly evacuates captives, defeats the attackers, and appears to kill Thea and Faust, but Thea survives through an illusion and escapes badly wounded. Hank's separate investigation ends with Ezekiel attacking him and admitting that Randidly is his son.\n\nRandidly then confronts Ghost, Zone 1's artificial intelligence. Ghost admits knowing about the Church's research and using it to sustain Ezekiel, although it claims not to have understood the full human cost at first. Randidly chooses conditional cooperation, obtains leads on monster-spawning sites, and proposes giving Ghost a body.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tessa develops a rights-based political answer to unchecked power. Her proposal creates chivalric orders, protects prisoners and altered people, and seeks institutional limits on figures such as Randidly. Hank finds his missing brother among twelve thousand altered people. An altered treant leader restores the dying man with white flame, and the community insists that its members are people rather than monsters.\n\nRandidly confronts the Unity Church over its experiments, then begins building a steel and drone company with Tatiana. He supports Tessa's proposal even after recognizing that it is partly intended to restrain him. The first orders are founded with altered refugees among their founders, and the council names Randidly an order founder with duties to enforce its standards.\n\nBefore returning to Telus, Randidly leads an ogre danger-zone clear. Tatiana reaches level 46, kills the boss, and chooses a race-wide reward instead of personal power. Everyone gains attributes and faster experience, but the clear also opens a portal to an ogre realm and accelerates other danger zones. Randidly accepts his Earth obligations and confirms that he will leave for Telus within a week.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Helen pays a severe inter-realm cost to bring Randidly back to Telus. Their reunion exposes both mutual feeling and Helen's grief over her father. She explains that the Whites seized the Spear Source through treachery. Without it, ordinary people on Telus cannot level normally and may eventually deteriorate. The under-25 tournament continues despite the world-level crisis.\n\nTwo White armies and a Witch King attack the Western capital. Randidly reaches level 25 while defending a wall and recognizes that Telus's spear users are poorly equipped for mass defense. He forges shields, imposes a disciplined shield-and-spear formation, and suppresses the attackers' coordinated song. The Witch King enters the battle personally and proves much stronger than Randidly.\n\nA needle-spear teammate repeatedly diverts the Witch King from Randidly and suffers grave wounds. Randidly chooses to save her rather than preserve an ally's chance to kill the enemy. His heavy spear strike changes the timing, wounds the Witch King, and lets him carry the woman away as the Whites retreat. The city survives, but the Witch King escapes and the teammate's recovery is uncertain.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly continues rescue work after the siege and gives the local Sentinel a severed Witch King finger and ring to answer criticism that he sacrificed a possible kill for one teammate. The Sentinel still treats him as indebted. Randidly agrees to form an Aether connection with the injured woman to improve her recovery, while Helen openly defends his status as Shal's disciple.\n\nOn Earth, Drake begins a coastal mission for Sydney, survives betrayal at sea, and reaches an island after killing a powerful sea creature. Naffer, a classless Orchard youth trapped by criminal debt, is recruited for a robbery. At the Orchard lottery he discovers that a second, lethal group has entered the same building through a portal. Wearing a Ghosthound mask, he attacks one infiltrator and begins resisting the gang's plan.\n\nOn Telus, the schools suspect an insider and redirect the tournament into a month-long southern military campaign against the Whites. Randidly joins Team 16 with Silo, a white-haired spearwoman, and an engraved-spear woman. Their survival and battlefield results will now determine who reaches the tournament finals.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Team 16 trains before deployment. Randidly improves enough to defeat Helen in a duel and asks to pursue a relationship after the tournament. Silo secretly draws power from a black-stoned ring that mutates his skills, erodes his old images, and makes him violently ill. The team crosses dangerous water, survives a kraken and waves of attackers, then begins raiding the southern islands.\n\nRandidly experiments with resonance between his ash skills. The Patron of Ash intervenes before the attempt destroys him, and the process creates a new short-range Ashen Spear movement kata. Soon afterward, enemy soldiers ambush the team, confirming that the Whites have noticed their operations.\n\nDrake reaches an airborne city while seeking the governing authority of a newly connected zone. The local ruler confirms that Roy passed through first and was also asking about the World Crater. Sydney tells Drake that his mission is meant to oppose Roy, turning diplomacy into pursuit. Roy is ahead of him in a region where the crater's monsters reach far beyond the surrounding population's normal strength.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Team 16 joins surviving military scouts and infiltrates what appears to be a White fortification. The site is actually a breeding facility ruled by a propagator, a White royal whose true crystalline beetle body controls humanoid and giant puppets through sound. The creature kills scouts, traps Randidly, Silo, and a teammate inside a crystal domain, and overwhelms them with resonant attacks.\n\nThe military sergeant activates a corrosive fate to break the domain. The remaining fighters refuse to abandon one another and force an escape, but half the group is lost. The propagator deliberately allows the seven survivors to flee because it intends to follow them to a more valuable target. Crystal fragments driven into Randidly's body serve as a hidden tracking method.\n\nRandidly also learns that a prophecy associates Shal with a legendary slayer of propagators. Meanwhile Drake travels by skyship toward the World Crater, still following Roy. The mission now spans two linked dangers: Randidly's group unknowingly carries the propagator toward friendly territory, while Drake approaches the crater without knowing what Roy intends to find there.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucretia leaves Randidly's body and examines a mature karmic thread that signals an approaching reckoning. A ritual restores her memories: she was created among the Whites to hide on Telus and level, and her original purpose is now pressing against the life and relationships she built for herself. She returns to the White stronghold and is summoned by the Autarch, creator and ruler of the Whites.\n\nLucretia resists deconstruction by drawing Aether through Randidly and attacking the Autarch through their karmic bond. He overpowers her and explains that he needs her body in an attempt to escape his own prison. Her body and identity are broken apart, and she cannot leave a lasting curse on him.\n\nLucretia nevertheless survives. Her desire for family and connection anchors her to a karmic thread, and her consciousness awakens as a newborn in another dimension within Randidly's inner world. She retains her memories but is separated from both Randidly and Shal, whom she identifies as her son. Her immediate goal becomes finding a way to attract Randidly's attention and escape her new condition.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The tracked propagator attacks South Point Beach soon after Randidly's battered group arrives. Hundreds of thousands of Whites overwhelm the lightly defended supply base. Randidly witnesses spear paragons die holding the shore, their devotion producing a vast spear-shaped Aether phenomenon. He then spends weeks ambushing White formations and sees the invaders massacre civilians and collect bodies.\n\nOn Earth, Naffer survives the Manhattan building attack, rescues Senator Firefly from a falling elevator, and returns for Maureen despite severe injuries. Randidly's public double neutralizes the remaining attackers and appoints Naffer as Agent One of the Order Dukies.\n\nBack on Telus, Randidly destroys large formations with terrain and plant traps. He answers a trapped squad's call for help and enters a battle arranged to lure him toward a Witch King. With a fast spearwoman's aid, he wounds the Witch King and forces it to retreat, but they cannot kill it. The surviving soldiers are safe for the moment, while the encounter confirms that Randidly remains well below the strength of Telus's highest threats.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Drake reaches the World Crater and follows a quest item into a sealed maze, where he finds Roy trapped above deadly black liquid. Roy rescues Drake during an attack and trades the matching half of the Naga item for help. Although Drake still holds Roy responsible for deaths in his settlement, he accepts a temporary alliance to pursue a ritual involving a true Naga.\n\nOn the Telus front, Randidly buries fallen soldiers and studies a spear-centered pulse of Aether gathering above the war. He realizes that tournament soul stones can draw the animating residue from dead Whites. Using a twenty-kilometer underground engraving, he drains roughly one hundred thousand Whites and directs that energy into the spear phenomenon. A second army is caught when it approaches the same area.\n\nThe maneuver gives Telus a repeatable way to turn White casualties into spear-friendly power, but it leaves Randidly exhausted and internally unstable. During the return trip to the tournament, he completes the Chosen of Ash path. He is transported into a dark ash-covered place where none of his skills function.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Patron of Ash explains calamities through its own history. It describes a second calamity as a conflict between a world's dominant image and its darkest alternative, with Telus stalled because neither side has resolved the struggle. The patron wants a successor to inherit the cursed image that survived the destruction of its world. It has already placed that image inside Randidly before presenting the choice.\n\nThe ash attacks Randidly's soul, destroys many skills, and leaves permanent scars. Randidly rejects the patron's intended succession. He severs its consciousness with one manifestation of his class and claims part of the mantle with another. When the semi-sentient ash image continues its assault, he survives by acknowledging its grief and inviting it to coexist within his Ashen Spear. Several remaining abilities evolve, but his soul and class structure are badly damaged.\n\nThe patron persists briefly as a spirit and gives its final secret: a mantle-linked portal that it believes leads toward a third calamity. It asks Randidly to oppose the maker of the System. Randidly declines to enter immediately and instead trains the dangerous perception ability All Is Ash.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly returns from the patron's realm with major physical gains and a deeply altered relationship to plants. His mana now forces violent growth, but the plants soon burn into ash. He uses the effect to till abandoned fields and leave fertile ash rather than create unsafe food. A grassroots Black Feather coalition asks his tournament group to wear its symbol against the established schools, and the group agrees.\n\nAt the Hall of Stances, Randidly studies preserved spear images and begins consolidating his fragmented combat styles. He also agrees to retrofit his teammate's hereditary engraved spear with a tournament soul stone, learning that her family preserved forbidden engraving knowledge. Two unknown investigators decide he is disguised and plan to seize him after the tournament.\n\nSilo's condition worsens. The foreign power that carried him toward level 50 replaces his old images, intensifies his desire to kill, and leaves visible physical damage. After reaching level 50, he murders civilians whom he judges to be bullies and accepts an inner voice's claim that heroism means imposing discipline on others.",
+            "through": {
+              "chapter": 113
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside Randidly's soul-world, Lucretia grows up in a half-monster body and becomes the protector of a wealthy girl whose karma is linked to Randidly. After an attack kills the girl's father and brother, Lucretia preserves the heir's position and helps her pursue the organization responsible. Years later the heir is a formidable engineer, while Lucretia's investigation exposes a broad network of coercion and political influence.\n\nOn Telus, historical research suggests that the Spearman unified the world, survived two calamities, and vanished after an order to ascend. The usual account of the Spear Source does not match contemporary records. Randidly reopens contact with Shal, while Ophelia's faction attacks an elderly master for information. Shal releases a sealed Wraith Adder style, but the elder defeats and spares the group after warning them about old oaths.\n\nThose oaths have long restrained the school leaders, partly because high-level skills expose them to the world's violence. The Spearman School leader finally breaks restraint and annihilates a White force approaching a million, devastating the southern region as well. Telus's strongest schools have now entered the war openly.",
+            "through": {
+              "chapter": 122
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Naffer is given the Order Dukies' accumulated gifts and authority to recommend new orders. Although overwhelmed by the responsibility, he selects health-focused and technology-focused candidates, both of which receive provisional approval at the order summit. The unresolved issue is control of the planned rail network between zones.\n\nA spatial tear interrupts the summit and releases powerful monsters into the Eastern Gardens, close to Maureen's farewell party. Naffer fights through the attack in his Ghosthound mask, and Randidly's public double launches him into Maureen's courtyard. Naffer beats down the creature threatening her but loses control of his violence and flees after she sees him.\n\nAt the rescheduled party, Naffer leaves a hand-woven flower crown and withdraws in shame. When he later sees Maureen returning the crown, he assumes she has rejected him and runs out of Orchard. In fact, she values the gift and is returning it only because she already owned the same design. Naffer leaves under a false belief, while Maureen prepares to work at Randidly's settlement.",
+            "through": {
+              "chapter": 128
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly uses the Hall of Stances to study simple images held with absolute conviction. He pushes too far into a cold image and reaches the tournament final physically impaired. Meanwhile Silo enters another powerful Heretic judgment alone, and the Engraving Guild receives freedom to pursue its investigation of Randidly.\n\nHelen faces Randidly in the final under an agreement that they will fight seriously, after which the stronger fighter will concede and leave the tournament behind. Helen's predictive combat reading, blood imagery, and rare Tides of Blood domain drive Randidly to the edge. Her strength is rooted in a personal image shaped by grief and persistence, while his borrowed cold initially lacks that depth.\n\nRandidly finds a lasting place for cold within his ash image and creates Frigid Ash, Extinguishing Storm. He then refines another spear technique enough to shatter Helen's weapon and decide the tactical contest. Afterward he apologizes for failing her when her father died and promises to answer her call in the search for the killer. He concedes as agreed, so Helen becomes the official winner.",
+            "through": {
+              "chapter": 139
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Within Randidly's soul-world, Lucretia's engineer has helped defeat the Earth Golem emperor through mechanized weapons powered by a specialized battery, although no body was recovered. Lucretia notices that worldwide cold spells and altered world-tree energy mirror the changes in Randidly's ash power.\n\nThe engineer prepares to marry while Lucretia investigates the spreading change. Earth Golem attackers and masked allies assault the wedding, slaughter guests, and capture the groom. The simultaneous attack on the engineer's shareholders exposes members of the conspiracy that Lucretia and the engineer have hunted for years. The wedding itself was intended as bait, but the engineer had not expected to care deeply for the man selected to participate.\n\nWhen the groom is fatally speared, the engineer activates a resonator built around a powerful ash-aligned ability. Fury transforms her into an incarnation of ash, and she destroys the mountain surrounding the chapel. The ambush exposes the conspiracy at the cost of the groom's life, while confirming that Randidly's altered ash is reshaping the inner world as well as his own abilities.",
+            "through": {
+              "chapter": 142
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After conceding to Helen, Randidly confirms that his altered plants can end in either burning destruction or cold gray ash. An Engraving Guild representative confronts him over forbidden mana engraving and attempts to take him into custody. Randidly refuses and attacks.\n\nThe representative uses a lightning image for extreme speed and force, but Randidly discovers that the apparent person is a blue-steel puppet. He traces its control signal to an azure insect-like propagator and cuts off one of the creature's antennae. The propagator lands on him and uses a psychic annihilation attack that leaves him unconscious. It orders Randidly confined until an inquisitor can penetrate the images obscuring his secrets.\n\nAt the same time, Lucretia and the ash-incarnate engineer interrogate a captured official in the soul-world. They learn that a secret governing group believes their world is a constructed prison abandoned by its creator and is searching for exits. Both story lines end in confinement: the inner-world conspiracy seeks escape from creation, while Randidly has been taken into a prison built by enemies who want his system and engraving knowledge.",
+            "through": {
+              "chapter": 145
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly wakes in a system-suppressing underground cell. The chamber sharply increases the cost of movement and skills, blocks regeneration, and separates him from the normal system overlay. His captors have taken his armor, living spear, and interspatial ring, leaving only a pouch of seeds. He can still extend roots beyond the immediate cell and use Absolute Timing to read limited raw-system information.\n\nThe prison is a small island surrounded by deep water inside a circular chamber with a dense engraved Aether boundary. Randidly studies its runes while managing severe chest pain and the limited mana available to him. Seeds, roots, caustic blood, and specialized soul work remain possible tools, but an obvious attempt would alert his captors before he understands the design.\n\nAfter several days, he establishes a routine of refining images, testing slow mana engraving, and mapping the boundary. The missing overlay may also remove ordinary scrutiny from changes to his class. Randidly therefore chooses a longer plan: reforge his damaged class inside the prison, use engraving to compromise the barrier, and prepare an escape before the expected inquisitor arrives.",
+            "through": {
+              "chapter": 148
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CR4J774R",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-6-a-litrpg-adventure"
+      }
+    },
+    "the-legend-of-randidly-ghosthound-7": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A captive spear fighter and maker of an inhabited inner world. Confined on an engraved island that drains his attributes, Randidly begins repairing the distorted class structure that has halted his progress.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The opponent whose victory leaves Randidly captive on an engraved island surrounded by water. He defeats Randidly with help from a propagator.",
+            "id": "aiden-dark",
+            "name": "Aiden Dark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Randidly's soul-linked ally, able to reach him through their bond despite his imprisonment. Her encouragement helps him commit to repairing and reconnecting his class pillars instead of discarding the entire structure.",
+            "id": "nevaeh",
+            "name": "Nevaeh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Telus spear competitor and ally of Randidly who continues the tournament while trying to locate him. Their bond tells her he remains alive, although she cannot determine where he is held or how to reach him.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Krita"
+            ],
+            "description": "Randidly's knowledgeable soul-linked adviser, stranded for decades of subjective time inside his inner world. Although she wants a way out, she refuses to abandon the manor owner beside whom she has built a life.",
+            "id": "lucretia",
+            "name": "Lucretia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The owner of Bounty Manor and Lucretia's longstanding companion. She discusses the quiet Council of Fates and possible leads involving Progenitor runes, while Lucretia refuses to leave her behind.",
+            "id": "bounty-manor-owner",
+            "name": "The Bounty Manor Owner",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helen's friend and fellow tournament competitor. She spars with Helen, then takes her to meet the giant black-crystal scorpion who serves as her master.",
+            "id": "white-haired-contender",
+            "name": "The White-Haired Contender",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's master and a formidable Telus spear champion. He can sense that his missing disciple is alive and not in immediate mortal danger, and joins Ophelia in striking propagators threatening a refugee convoy.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A school leader and architect of Telus's defense who fights beside Shal. Her image-based strength lets her overwhelm a propagator and its controlled forces during an operation near the northern convoy.",
+            "id": "ophelia",
+            "name": "Ophelia",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young survivor living alone in Zone 1 through stealth, deception, and careful monster hunting. A disturbing dream encounter with Nevaeh leaves a violet power centered in his chest just before a wolf pack closes in.",
+            "id": "naffer",
+            "name": "Naffer",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent, apparently non-hostile treant-like person whom Naffer encounters in an overgrown town. Fire smolders around the figure, whose identity and intentions remain unclear.",
+            "id": "fire-smoldering-treant",
+            "name": "The Fire-Smoldering Treant",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earth-golem labor organizer who coordinates a peaceful crew restoring shelter for displaced people ahead of the seasonal sandstorms. Her work gives Randidly a practical view of how a ruined society begins rebuilding.",
+            "id": "earth-golem-relief-leader",
+            "name": "The Earth-Golem Relief Leader",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced Earth-Golem surveyor who supervises Randidly on a relief expedition. He watches the unusually strong newcomer closely while judging whether his work can safely uncover shelter for displaced people.",
+            "id": "senior-earth-golem-surveyor",
+            "name": "The Senior Earth-Golem Surveyor",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-Golem relief worker assigned alongside Randidly. He welcomes the newcomer as a coworker and friend while their crew clears ruined shelter for displaced people.",
+            "id": "earth-golem-laborer",
+            "name": "The Earth-Golem Laborer",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young soulless marten taken in by the relief crew after losing her parent. She remains instinctively afraid of Randidly.",
+            "id": "tessa",
+            "name": "Tessa",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The missing royal has dark hair and eyes resembling fire. A coup in the monster capital has made his absence a threat to the armistice, and the relief leader sees a resemblance between him and Randidly.",
+            "id": "monster-prince",
+            "name": "The Monster Prince",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local architect of a coup in Karthak. He has gathered thousands of fighters, plans to exploit the apparent prince's death as political cover, and orders an ambush intended to leave the city under his control.",
+            "id": "monster-chancellor",
+            "name": "The Monster Chancellor",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The relief leader's long-missing brother and a former lieutenant of the Earth Golem High King. His unexplained return brings an objection to his sister's decision to spend the remaining royal treasury on relief work.",
+            "id": "earth-golem-relief-leaders-brother",
+            "name": "The Earth-Golem Relief Leader's Brother",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A deposed Earth Golem ruler who lost an arm when a silver mech defeated him. Convinced that his old ambition has become impossible, he debates lost purpose and failed dreams with the Monster Prince.",
+            "id": "former-earth-golem-high-king",
+            "name": "The Former Earth Golem High King",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tournament fighter backed by his sister, who expects him to win. She fears that his participation will carry consequences beyond the immediate match.",
+            "id": "silo",
+            "name": "Silo",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Silo's sister and a supporter of his tournament campaign. She expects him to win, fears consequences for him beyond the contest, and wagers with Shal over the outcome.",
+            "id": "silos-sister",
+            "name": "Silo's Sister",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A would-be attendant who seeks guards by recruiting in Randidly's name. He presents Randidly as a spear pontiff and exaggerates a brief demonstration into a personal connection.",
+            "id": "would-be-attendant",
+            "name": "The Would-Be Attendant",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shal's ally, involved in steering Randidly away from Telus's central struggle. She believes he does not belong in the world's intended ascension conflict and urges Shal to remove him from it.",
+            "id": "rumera",
+            "name": "Rumera",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's military associate, who questions the decision to send the newly recruited and poorly supplied force toward the Death School.",
+            "id": "platon",
+            "name": "Platon",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the few recruits to pass the Yggdrasil trial. She joins Randidly's expedition while her longtime companion Rascal remains behind in the northern camp.",
+            "id": "yana",
+            "name": "Yana",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A strong and practical Emerald Essence recruit whom Randidly assigns to organize the expedition's boat crews.",
+            "id": "io",
+            "name": "Io",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tournament rival suffering serious and lasting effects after a recent match. Randidly chooses not to investigate Drac's condition while preparing his expedition.",
+            "id": "drac",
+            "name": "Drac",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient and powerful carrier of the White army whose aura distorts her surroundings. She intercepts Randidly's fleet, then warns him that someone close to him has betrayed his trust.",
+            "id": "oracle",
+            "name": "The Oracle",
+            "reveal": {
+              "chapter": 77
+            }
+          },
+          {
+            "description": "Helen's highly skilled tournament rival. After the White siege abruptly ends, she declines Helen's proposal to resume their interrupted final because her master has left and the contest's former stakes no longer matter.",
+            "id": "azrael",
+            "name": "Azrael",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert presence inside Randidly's soul skill who supports Lucretia and the mechanical woman as their convoy approaches the Progenitor runes.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 87
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man waiting at a Death School stronghold where Randidly's recovered equipment is held under restraints.",
+            "id": "versalt",
+            "name": "Versalt",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Telus's hidden spear-user faction and the planner behind an attempted ascension. When the intended duel is disrupted, he withdraws with Ophelia while an unexpected attacker claims responsibility.",
+            "id": "autorach",
+            "name": "Autorach",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spear user whose victory over Silo has broken the faction's planned ascension route. Her loyalty rests on a profound debt to the master who rescued her from an arranged marriage and gave her a weapon and a future.",
+            "id": "asriel",
+            "name": "Asriel",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wind-user allied with the Oracle. When Randidly warns that Asriel's departure will cause disaster, the wind-user refuses to change course before the planned ascension is averted.",
+            "id": "wind-user",
+            "name": "The Wind-User",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The original propagator, returned to contest Telus's ascension. It claims that Autorach betrayed an earlier peaceful proposal by pinning its heart to the White City, and it recruits an indebted spear user to carry competing images.",
+            "id": "first-propagator",
+            "name": "The First Propagator",
+            "reveal": {
+              "chapter": 104
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A craftsman selected to claim the Alpha Cosmos's second obelisk. He gains the Stone Singer class and begins building in the mountains exposed when the surrounding mist clears.",
+            "id": "grim",
+            "name": "Grim",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name claimed by the first propagator as the battle for Telus's ascension begins in earnest. Adete confronts Autorach directly while allied Witch Kings and northern spear users delay the opposing force.",
+            "id": "adete",
+            "name": "Adete",
+            "reveal": {
+              "chapter": 109
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A northern spear user whose overwhelming sun image makes him a grave combat threat. He confronts Randidly to avenge his grandson's downfall, overpowers Randidly's ash image, and takes his left arm in their opening clash.",
+            "id": "sun-image-spearman",
+            "name": "The Sun-Image Spearman",
+            "reveal": {
+              "chapter": 111
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An inhabitant of the Alpha Cosmos whom Randidly summons into the ruined plaza as an ally against the sun-image spearman.",
+            "id": "alpha-cosmos-swordsman",
+            "name": "The Alpha Cosmos Swordsman",
+            "reveal": {
+              "chapter": 114
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A faction chief in Randidly's inner world whose body is now predominantly machinery. With Krita beside her, she launches an ash-fueled assault on barricaded Karthak that brings down the mountain.",
+            "id": "mechanical-woman",
+            "name": "The Mechanical Woman",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The identity assumed by the mechanical woman when she reaches the deepest Progenitor runes. She has made her own ash-corrupted body the key to severing the connection, even if the attempt destroys both linked worlds.",
+            "id": "metal-queen",
+            "name": "The Metal Queen",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A person from Randidly's past whose memory helps him shape a sunlight image during his imprisonment.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young settlement leader carrying the strain of monster threats, bandit activity, and slowing growth. Sam responds to his concerns by inviting him to dinner with the settlement administrator.",
+            "id": "young-settlement-leader",
+            "name": "The Young Settlement Leader",
+            "reveal": {
+              "chapter": 124
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Donington leader carrying the strain of several simultaneous threats to the settlement. He fears its growth is slowing without Randidly's direct support.",
+            "id": "donnie",
+            "name": "Donnie",
+            "reveal": {
+              "chapter": 125
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure whose leadership image has influenced others through Randidly's network of connections. Randidly recognizes that influence in the relief leader's newly formed image.",
+            "id": "mrs-hamilton",
+            "name": "Mrs. Hamilton",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-79 commander of the force gathered beyond the Ogre Gorge. He approaches Earth's defenders under a peaceful pretense, identifies himself as the invasion leader, and demands Earth's surrender.",
+            "id": "ogre-leader",
+            "name": "The Ogre Leader",
+            "reveal": {
+              "chapter": 126
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Earth champion with access to Randidly's dreams. He warns that concentrated political and personal power may harden into oligarchy, and asks Randidly to encourage a peaceful route for future leadership changes.",
+            "id": "simon",
+            "name": "Simon",
+            "reveal": {
+              "chapter": 134
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cockroach-like fighter inducted into Randidly's order after serving in Naffer's three-week guerrilla campaign against ogres. Randidly provisionally accepts him while remaining wary of his past.",
+            "id": "cockroach-like-inductee",
+            "name": "The Cockroach-Like Inductee",
+            "reveal": {
+              "chapter": 136
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The city official responsible for sewer infrastructure and waste processing. Away from that public role, he disguises himself to operate a bakery in secret.",
+            "id": "ed",
+            "name": "Ed",
+            "reveal": {
+              "chapter": 144
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D481H2QZ",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-7"
+      },
+      "recaps": {
+        "ending": "Shal has become Telus's chosen one and entered the Nexus trial, leaving the world in a one-year grace period while its survivors rebuild. Rumera receives his Ring of Promise. The Oracle survives the interrupted forced ascension, while the final conditions of Adete, the indebted spear user, and Silo are not settled. Randidly returns to Earth without his left arm, carrying the Alpha Cosmos and the transport domain anchored in that loss. His mark from Shal's ascension prevents his own image from serving as Earth's eventual ascension image, and his final heretic judgment is expected within months. Helen remains on Earth to train with its defenders. Nevaeh is containing a secret foreign-world portal, Naffer has founded a mixed defense order, and Lucretia is alive within the Alpha Cosmos and teaching engraving. The ogres receive conditional mountain territory for seven generations and responsibility for guarding their portal. The leading Earth city remains prosperous but faces military, commercial, civic, and image-based pressures. Its leaders identify collective strength as their defining image, and Randidly proposes another challenge against its squads as the immediate test.",
+        "in_short": "Imprisoned on Telus, Randidly escapes by rebuilding his class as Lord of the Baleful Wood, then helps Helen win her tournament match and raises an army that strips the world of its White forces. A crisis inside his failing soul-world leads him to evacuate its people and create the real, system-recognized Alpha Cosmos. Telus's engineered ascension plan collapses into open conflict. Ophelia and a wind-user die, Randidly loses an arm, and Shal defeats Autorach to carry the world through its second calamity with a hopeful image. Shal enters a Nexus trial. Randidly returns to Earth, where his ascension mark means another person or community must provide Earth's future image. He converts an ogre invasion into a settlement pact, supports Naffer's new order, advances mana engraving, and asks the leading Earth city to define its shared image. Its leaders name strength, and Randidly proposes a squad challenge to test that belief.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Randidly Ghosthound's journey has tied his fate to both Earth and Telus. Shal is his spear master, while Helen is a trusted Telus ally and tournament fighter. Nevaeh can communicate with Randidly through their soul bond, and Lucretia has long served as an adviser within his inhabited inner world. Ophelia is a major figure in Telus's defense, while Silo is among the spear fighters caught up in the world's conflicts. Randidly's powers are built around spear combat, images, ether, plant growth, and the world-tree ideal of Yggdrasil. His responsibilities no longer concern his own advancement alone. He must protect his home on Earth, understand the System's larger dangers, support the people connected to him, and confront the consequences of the living world carried within his soul abilities.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly awakens imprisoned on an engraved island that drains his attributes. His level progress has stalled because one pillar of his class is obsolete and distorting the rest. With encouragement from Nevaeh and technical help from Lucretia, he begins redesigning his class while cultivating plants for the light needed to carve an escape array. His isolation also deepens a destructive ash image, so he enters his inhabited inner world to study reconstruction among earth-golem refugees. Elsewhere on Telus, Helen searches for him while continuing the spear tournament, and Shal joins Ophelia against propagators threatening a northern convoy. On Earth, Naffer survives alone through ambush and deception, receives a strange intervention from Nevaeh, and befriends a lonely plant-like being whose touch produces fire. By the end of this span, Randidly has not escaped. He has instead begun searching for a constructive image capable of balancing the ash that threatens both him and his inner world.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the earth-golem land, Randidly joins relief crews clearing shelters before sandstorm season. He hides the full scale of his power, but his work saves space for thousands and exposes a nest of soulless creatures. The crisis teaches him that rebuilding depends on shared labor, trust, and the willingness to continue after ruin. Outside, his prison crops finally provide fuel, and Lucretia guides the inverse array meant to dismantle the island's suppression. Separate events on Earth show a family seeking a dangerous class alteration, while Lucretia and another soul-linked ally investigate the Council of Fates and its interest in a sealed door. Randidly's presence in the inner world is mistaken for that of the missing Monster Prince, drawing him into a coup and the political consequences of his own creations. He remains focused on escape, but increasingly understands that his class repair and the fate of the inner world cannot be separated.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly returns to the physical prison and continues layering inverse engravings onto its restraints despite severe resource pressure. The weakened suppression lets him stand and work, but does not yet free him. Rather than repair his unstable soul skill while hidden from the System's attention, he dismantles the five supporting legs of his class and rebuilds them around new governing images. These include guidance for the people within him, protection of the weak, and a memorial to the former bearer of ash. He destroys the old class image and names its replacement Lord of the Baleful Wood. The reconstruction leaves him unconscious and physically strained inside the prison.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After reforging his class, Randidly tests its altered skills and paths while crossing hostile territory. His emerald fire now supports growth as well as destruction, and his connection to the inhabitants of his inner world strengthens his images. He destroys a Witch King, reaches level 36, and gains a skill that recovers resources from nearby deaths. Survivors tell him that an immense White Horde has surrounded the Spearman School. He escorts them through patrols to a refugee camp, where the casual reach of his image power causes ordinary people to regard him as a Pontiff. Randidly finally eats after his long imprisonment and prepares to inspect the increasingly unstable soul-world before entering the larger siege. His equipment remains missing, the tournament's status is unclear, and he still does not know why his captors vanished.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly witnesses three linked crises within his inner world: a migration manipulated through grief, a fallen king who has abandoned his purpose, and a dying conspirator who warns that the migrants' escape engine contains a catastrophic flaw. Back on Telus, he reunites with Shal and learns that the Engraving Guild has disappeared. Shal and Randidly demolish its headquarters, finding no workers and further evidence of a White connection. Randidly also meets Ophelia and returns to Helen, whose tournament hopes are tied to freedom from family control. He begins a punishing training program that uses root avatars, rage, and constant pressure to strengthen her blood domain. While the method strains their relationship, it also improves Randidly's control and changes his ether. He completes a path that grants broad stat gains, then rejects its next rewards in favor of pursuing greater will.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly accepts a mutated willpower path and continues Helen's training while sending avatars to defend the northern convoy. Shal learns that Telus's missing spear source contains the images and skills of an ascended spearman, and suspects the tournament and war are shaping a new ascension. Helen enters her semifinal against a technically superior opponent. Her blood domain is repeatedly shattered, but she rebuilds it, develops new movement and recovery, and refuses an opportunity to steal her opponent's strength. Even after a severe wound, Randidly's ether connection helps her remain in the fight. Her domain manifests a larger sea creature, exhausts the opponent's enhanced spear, and lets Helen win through endurance and accumulated pressure. With the match decided, Randidly accepts command of an assembled force and turns toward the fallen Death School, where he hopes to recover his equipment and confront the White occupation.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "False recruiters gather nearly ten thousand applicants in Randidly's name. He converts the deception into four overnight image trials and accepts 6,390 people who can withstand and adapt to his ether. With practical leaders emerging among them, the under-provisioned force travels by magically altered fleet toward the Death School. The Oracle intercepts them with the White army and warns of betrayal, but Randidly continues. Meanwhile, Helen discovers that Silo has become a White-controlled killer and survives her apparent killing blow. At the Death School, Randidly captures a propagator and completes a mountain-spanning formation with his recruits. The formation drains wave after wave of White energy, expands across the region, incapacitates Witch Kings, and captures additional propagators. By dusk, no active Whites remain on Telus. Randidly holds an enormous reserve of stolen energy and openly shifts the conflict toward the spear-user faction behind the world's ascension plans.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The sudden collapse of the Whites ends the siege of Hastam, but hidden factions immediately begin moving. Silo survives by killing other incarnations of the spear source and taking their images. Inside Randidly's failing inner world, the Metal Queen reaches the Progenitor runes and tries to sever the connection even if both worlds die. An earth-golem defender is killed protecting a companion, who then kills the Metal Queen. Randidly accepts responsibility for failing to guide her but refuses to use her rage as fuel. Instead, he spends the energy harvested from Telus to evacuate the inner world's inhabitants, supplies, and dead souls in protective vessels. He burns the dependent old world and merges its people with himself. They awaken beside a sapling in the Alpha Cosmos, a real world recognized by the System, with paths and stats of their own. Lucretia remains critically wounded, and Randidly must return to Telus before he can stabilize the new world's unknown dangers.",
+            "through": {
+              "chapter": 94
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly recovers his equipment, but learns that Telus's leaders engineered a heroic ascension around a duel between Shal and Silo. The sentient spear source created Silo and other homunculi, while generations of manipulation attempted to produce a suitable world image. The plan fails when the white-haired contender impales Silo and absorbs his darkness before Shal can face him. Randidly's former soul skill is confirmed as Figure of the Alpha Cosmos, which grows through its inhabitants' discoveries. Exploration reveals obelisks that clear dangerous mist and grant classes, although many people have vanished. Shal rejects the role imposed upon him and affirms his partner's independent life. Lucretia survives in the Alpha Cosmos. She and Randidly conclude that the original propagator is returning for the heart Autorach pinned to the White City. The propagator recruits the indebted spear user, already burdened with Silo's violent images, to carry competing images for a renewed ascent.",
+            "through": {
+              "chapter": 104
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly prepares for the final Telus conflict, strengthening himself and protecting his ether connections. He links Rumera to his ether so she will not remain dependent on Autorach, while he and Shal conclude that ascension requires a dominant image and a level-99 bearer rather than the planned duel. At the White City, Randidly opens the portal route while Lucretia delays Shal according to their plan. The original propagator names itself Adete and fights Autorach as the indebted spear user absorbs increasingly destructive images. Lucretia reveals that she is Shal's mother and accepts his determination to represent Telus. The supporting battles turn catastrophic. Ophelia pins Adete but is killed, and a northern spear user kills the allied wind-user. Randidly sends Shal into the central fight, then confronts the surviving northern spearman, who seeks revenge for his grandson. The opponent's sun image overwhelms Randidly's ash and severs Randidly's left arm in their first clash.",
+            "through": {
+              "chapter": 111
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Badly wounded and trapped beneath molten ground, Randidly anchors Crossroads of the Alpha Cosmos in the dispersing ether pattern of his missing arm. The domain summons inhabitants of the new world. An Alpha Cosmos swordsman, aided by the lingering image of the dead wind-user, kills the sun-image spearman. Randidly reaches the ascension chamber, where the Oracle is being forced into a violence-driven ascent. He erodes the invading image and saves her, while Shal refuses to let Autorach dictate Telus's future. In their duel, Autorach initially holds the vastly larger image of the world's accumulated violence. Randidly gives Shal his living spear, which accepts him and helps gather smaller lights of hope. Shal grounds his image in the dream of a hero who can bring peace, breaks Autorach's violence image, and beheads him. Telus passes its second calamity under Shal's hopeful wraith-adder image. Now the chosen one, Shal enters the Nexus trial promptly and leaves Telus in a one-year grace period.",
+            "through": {
+              "chapter": 121
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly spends his remaining time on Telus addressing food shortages, refugees, and institutional collapse. He proposes a university that will preserve many spear traditions and sustain Shal's hopeful image, recruits an engraving apprentice, and invites Helen and the recovering Oracle to visit Earth. Back home, he learns that higher powers noticed Telus's renewed progress. His heretic path is moving toward a final judgment within months, and Shal's ascension mark prevents Randidly's own image from serving as Earth's eventual ascension image. An ogre army then advances through a portal, seeking the energy its home world lacks. Randidly brings Helen to the front, overwhelms the ogres' summoned tree, and forces negotiations. The invasion becomes a pact: the ogres receive northern mountain territory for seven generations, ally with the leading Earth settlement, and assume responsibility for controlling their portal. The immediate war ends, although stronger beings from the ogres' world may still cross later.",
+            "through": {
+              "chapter": 130
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Helen remains on Earth to test herself against local defenders despite the conversion of her denser Telus ether leaving her weaker. In the Alpha Cosmos, explorers locate more obelisks while others disappear in the mist, and Randidly assigns the Monster Prince to study engraving under Lucretia. Randidly briefs Earth's field leaders on calamities, images, and the need to develop an ascension image that is not his own. Simon later warns him that the settlement's concentrated authority may become an oligarchy, but Randidly declines to endorse immediate elections. Following Nevaeh's requests, Randidly checks on Naffer. The teenager has survived a costly guerrilla war against ogres and inducted three very different defenders into Randidly's order. Randidly validates the inductions but finds complex ether runes hiding one member's soul space. Rather than assume guilt, he grants provisional trust, plans to consult Lucretia, and begins personally training Naffer.",
+            "through": {
+              "chapter": 137
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly tends a garden for Nevaeh, reunites with Sam, and commissions armor with a replacement metal arm. Nevaeh reveals that a completed danger zone opened a secret portal to a populated foreign world, which she is containing by killing the monsters that emerge. Randidly studies mana engraving and discovers how exact three-dimensional patterns can hold skills. His first growing item eventually fails as its skill outgrows the metal, but conventional engravings prove valuable and powerful. Helen repeatedly challenges coordinated Earth squads and continues learning from defeat. The city's leaders prepare for another confrontation with Randidly while reporting strong population, military, and industrial growth alongside market competition and external threats. At their meeting, Randidly asks what the city wants to represent when future calamities test society through images. Its leaders identify a shared belief that their city is strongest. Randidly says that image must be refined, then proposes a renewed challenge against its squads. The book ends with the city accepting that immediate test while Earth still needs a viable future ascension image.",
+            "through": {
+              "chapter": 149
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0D481H2QZ",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-7"
+      }
+    }
+  }
+}
