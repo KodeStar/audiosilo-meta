@@ -65,8 +65,12 @@ func (p *planner) planRecordings(books []sourceBook) {
 // scold the operator for rows they never asked to import.
 func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	// Dedup first, exactly as the create mode does: an already-present ASIN is a
-	// skip, not a warning.
+	// skip, not a warning - and, on a user-library run, the moment the trust-tier
+	// attestation happens (attest.go). This mode is a libex one today, so
+	// attestExisting is a no-op here; it is wired for the same reason the mode is
+	// source-agnostic everywhere else.
 	if p.dedupeByASIN(asin) {
+		p.attestExisting(b, asin)
 		return
 	}
 

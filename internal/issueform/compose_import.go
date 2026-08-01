@@ -64,7 +64,13 @@ func (c *composer) importLibrary(s sections) {
 		c.fail(StatusInvalid, "import failed: %v", err)
 		return
 	}
-	newCount := sum.NewWorks + sum.NewRecordings + sum.NewPeople + sum.NewSeries + sum.MergedASINs
+	// Attestations count as an outcome: a library export whose every book is
+	// already catalogued still CHANGES the tree when those records were libex
+	// mirror seeds, because the submitter's data replaced theirs (LICENSING.md's
+	// trust tiers). Without them such a run would be reported as a duplicate and
+	// the pull request never opened, silently discarding the takeover.
+	newCount := sum.NewWorks + sum.NewRecordings + sum.NewPeople + sum.NewSeries + sum.MergedASINs +
+		sum.AttestedWorks + sum.AttestedRecordings
 	if newCount == 0 {
 		if sum.Skipped > 0 {
 			// Genuinely nothing new: every book deduped against the catalog.
@@ -91,6 +97,18 @@ func (c *composer) importLibrary(s sections) {
 		sum.NewWorks, sum.NewRecordings, sum.NewPeople, sum.NewSeries, sum.Skipped)
 	if sum.MergedASINs > 0 {
 		c.note("merged %d re-release ASIN(s) into existing recordings", sum.MergedASINs)
+	}
+	if sum.AttestedWorks+sum.AttestedRecordings > 0 {
+		c.note("attested %d work(s) and %d recording(s) that were previously seeded from the libex mirror - your library's values replaced the mirror's",
+			sum.AttestedWorks, sum.AttestedRecordings)
+	}
+	// "Flag for review", not a rejection: the conflicting rows were each refused
+	// individually (the recorded value stands) and everything else applied, so
+	// the pull request is still the right outcome - a maintainer adjudicates the
+	// disagreements from this note during the review the bot never bypasses.
+	if sum.Conflicts > 0 {
+		c.note("%d row(s) disagreed with a value already recorded and were not applied - the recorded value stands; see the warnings below and adjudicate before merging",
+			sum.Conflicts)
 	}
 	for _, w := range sum.Warnings {
 		c.note("import warning: %s", w)

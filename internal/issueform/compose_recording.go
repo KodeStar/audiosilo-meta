@@ -51,12 +51,15 @@ func (c *composer) addRecording(s sections) {
 		return
 	}
 
-	// A recording with the same narrator set already present is a duplicate.
+	// A recording with the same narrator set already present is a duplicate -
+	// unless it is still a bulk-mirror seed, in which case this submission is the
+	// first person to attest that narration and a maintainer applies it over the
+	// seed (see dedupIdentifiers).
 	want := importer.ToSet(narratorSlugs)
 	for _, r := range work.Recordings {
 		if importer.SameSet(importer.ToSet(r.Narrators), want) {
-			c.fail(StatusDuplicate, "a recording with these narrators already exists at %s",
-				c.recLocation(recRef{Work: workSlug, Rec: r.ID}))
+			ref := recRef{Work: workSlug, Rec: r.ID}
+			c.failDuplicate(ref, "a recording with these narrators already exists at %s", c.recLocation(ref))
 			return
 		}
 	}

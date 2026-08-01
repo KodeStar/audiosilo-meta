@@ -115,7 +115,56 @@ copyright status of the individual rows. The import posture is therefore
 
 Wholesale mirroring of a third-party catalogue remains out of bounds. Every
 imported record is stamped with a typed `sources[]` entry naming its origin, so
-the retraction promise below covers an entire source at once.
+the retraction promise below covers an entire source at once - and so a record's
+origin can be ranked, which is what the next section is about.
+
+## Trust tiers and the user-overwrite rule
+
+A bulk import is a starting point, not an answer. A record seeded from a
+third-party mirror states real facts, but **nobody has attested it** - no person
+has said "this is my book and these are its details". The project's aim is that
+real users become the provenance over time, so the import rules rank sources and
+let an attestation win.
+
+The ordering, over the `sources[]` entry `type`:
+
+| Tier | Source types | What it may do |
+|---|---|---|
+| **User library** | `user` (issue forms and hand edits), `openaudible-import`, `libation-import`, `audiosilo-books-import` (metascan folder scans, the site's `/import`) | May overwrite a bulk-mirror-only record |
+| Reference | `audible-lookup`, `openlibrary`, `wikidata`, `inventaire`, `community`, anything unclassified | No overwrite authority; its presence also means a record is not mirror-only |
+| **Bulk mirror** | `libex-import` | Overwritable by the tier above |
+
+The rule, applied at **record** granularity (not per field):
+
+1. A record is **bulk-mirror-only** ("libex-only") when it has at least one
+   source and *every* one of them is bulk-mirror tier.
+2. When a user-library import matches such a record by ASIN, the facts the
+   export **states** replace the recorded ones, and the run's source entry is
+   appended. Facts the export does not state keep the mirror's values - silence
+   is not an assertion. The record is now user-attested.
+3. After that first attestation the ordinary rules resume, unchanged: the
+   recorded value wins, a run fills only what is absent, and a row that
+   contradicts the record is refused whole. Where two users disagree the **first
+   writer's value stands** and the disagreement is flagged for a maintainer to
+   adjudicate - never resolved by letting the later writer win.
+4. The safety guards hold in every tier: a runtime more than 10% apart, or a
+   genuinely different release date, means the row describes a different
+   production and is not applied at all. Identity is never rewritten by an
+   import - a work's title and authors, a recording's narrators, and the
+   ASIN/ISBN identifier sets are corrections (the "Correct data" form), not
+   imports. `added_at` is a creation stamp, never a fact from an export.
+
+The intake bot applies the same rule from the other side: a form submission that
+duplicates a bulk-mirror-only record is routed to a maintainer rather than
+closed as a duplicate, because the submitter's data should replace the seed and
+the bot can only compose new records.
+
+**A known gap, accepted deliberately.** Provenance is per record, so "remove
+everything the mirror gave us" cleanly deletes bulk-mirror-only records, but on
+a *mixed* record we cannot tell which individual fields the mirror seeded.
+Closing that would mean recording the filled field names in the source entry (or
+per-field provenance); it is not done today, and the retraction promise below is
+therefore whole-record for mixed records.
 
 ## Provenance and retraction
 
