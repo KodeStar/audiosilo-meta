@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"database/sql"
 	"math"
 	"sort"
 	"strings"
@@ -139,40 +140,43 @@ func boolSQL(evaluable bool, expr string) string {
 	return "0"
 }
 
-// coverageWorks lists works for the coverage browser: filtered by expressive-
-// layer status, optionally narrowed by a title/author substring query, ordered
-// by title then id, and paginated. It runs a COUNT plus one page query rather
-// than materializing the whole catalogue, so it scales to any library size.
+// coverageWhere builds the WHERE clause (and its bound args) shared by the
+// coverage browser's COUNT and page queries: the filter's presence predicate,
+// plus the optional text narrowing. available is false when the filter's
+// dimension is not evaluable at this artifact's schema_version, in which case
+// the caller answers "no rows, available:false" without querying at all.
 //
-// Availability degrades with the artifact schema_version: a "has X" filter for
-// a dimension whose table is absent (recap_summary before v3; everything before
-// v2) returns Available=false with no rows, and the missing filter needs the
-// characters/recaps tables (v2+).
-func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset int) (*coverageWorksResult, error) {
-	res := &coverageWorksResult{Works: []coverageWork{}, Limit: limit, Offset: offset}
+// The text narrowing goes through the FTS index rather than the LIKE '%...%'
+// scan it replaced: an unindexed substring match meant a full works scan (plus a
+// correlated author scan per row) on every keystroke of the contribute page's
+// search box. search_fts already indexes a work's title and its people/series
+// names (internal/build), and w.id is the works primary key, so SQLite drives
+// the plan from the FTS hit set instead. The trade is match semantics -
+// token-prefix, exactly what /api/v1/search does, rather than mid-word
+// substring - which makes the two search surfaces behave the same way.
+func (s *snapshot) coverageWhere(filter coverageFilter, q string) (where string, args []any, available bool) {
 	evalSidecars := s.schemaVersion >= sidecarSchemaVersion
 	evalSummary := s.schemaVersion >= summarySchemaVersion
 
-	var where string
 	switch filter {
 	case filterHasCharacters:
 		if !evalSidecars {
-			return res, nil
+			return "", nil, false
 		}
 		where = hasCharsExpr
 	case filterHasRecaps:
 		if !evalSidecars {
-			return res, nil
+			return "", nil, false
 		}
 		where = hasRecapsExpr
 	case filterHasRecapSummary:
 		if !evalSummary {
-			return res, nil
+			return "", nil, false
 		}
 		where = hasSummaryExpr
 	default: // filterMissing
 		if !evalSidecars {
-			return res, nil
+			return "", nil, false
 		}
 		parts := []string{"NOT " + hasCharsExpr, "NOT " + hasRecapsExpr}
 		if evalSummary {
@@ -180,16 +184,38 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 		}
 		where = "(" + strings.Join(parts, " OR ") + ")"
 	}
-	res.Available = true
 
-	var args []any
 	if q != "" {
-		like := "%" + escapeLike(q) + "%"
-		where += ` AND (w.title LIKE ? ESCAPE '\' OR EXISTS(` +
-			`SELECT 1 FROM work_authors wa JOIN people p ON p.id=wa.person_id ` +
-			`WHERE wa.work_id=w.id AND p.name LIKE ? ESCAPE '\'))`
-		args = append(args, like, like)
+		where += ` AND w.id IN (SELECT id FROM search_fts WHERE search_fts MATCH ? AND kind='work')`
+		args = append(args, ftsQuery(q))
 	}
+	return where, args, true
+}
+
+// coverageWorks lists works for the coverage browser: filtered by expressive-
+// layer status, optionally narrowed by a full-text query, ordered by title then
+// id, and paginated. It runs a COUNT plus one page query rather than
+// materializing the whole catalogue, so it scales to any library size.
+//
+// The query goes through the same FTS index as /search, whose work rows carry
+// title plus the names of authors, narrators and series - so q matches all four,
+// by whole word or word prefix. That is wider and shallower than the LIKE
+// '%...%' scan it replaced (which matched mid-word but read every row): the
+// unindexed scan is what could not survive the seed.
+//
+// Availability degrades with the artifact schema_version: a "has X" filter for
+// a dimension whose table is absent (recap_summary before v3; everything before
+// v2) returns Available=false with no rows, and the missing filter needs the
+// characters/recaps tables (v2+).
+func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset int) (*coverageWorksResult, error) {
+	res := &coverageWorksResult{Works: []coverageWork{}, Limit: limit, Offset: offset}
+	evalSummary := s.schemaVersion >= summarySchemaVersion
+
+	where, args, available := s.coverageWhere(filter, q)
+	if !available {
+		return res, nil
+	}
+	res.Available = true
 
 	total, err := s.scalarInt(`SELECT COUNT(*) FROM works w WHERE `+where, args...)
 	if err != nil {
@@ -210,36 +236,61 @@ func (s *snapshot) coverageWorks(filter coverageFilter, q string, limit, offset 
 	if err != nil {
 		return nil, err
 	}
+	page, err := scanCoveragePage(rows, evalSummary)
+	if err != nil {
+		return nil, err
+	}
+
+	// Authors and series for the whole page in a fixed number of queries rather
+	// than two per row.
+	ids := make([]string, len(page))
+	for i := range page {
+		ids[i] = page[i].ID
+	}
+	authors, err := s.authorsByWork(ids)
+	if err != nil {
+		return nil, err
+	}
+	series, err := s.firstSeriesByWork(ids)
+	if err != nil {
+		return nil, err
+	}
+	for i := range page {
+		page[i].Authors = authors[page[i].ID]
+		if page[i].Authors == nil {
+			page[i].Authors = []personRef{}
+		}
+		page[i].Series = series[page[i].ID]
+	}
+	res.Works = page
+	return res, nil
+}
+
+// scanCoveragePage reads the (id, title, has-flags) page rows into coverageWork
+// values with their Missing lists filled, and closes rows. Authors and series
+// are attached by the caller in one batch.
+func scanCoveragePage(rows *sql.Rows, evalSummary bool) ([]coverageWork, error) {
 	defer func() { _ = rows.Close() }()
+	out := []coverageWork{}
 	for rows.Next() {
-		var id, title string
+		var cw coverageWork
 		var hasChars, hasRecaps, hasSummary int
-		if err := rows.Scan(&id, &title, &hasChars, &hasRecaps, &hasSummary); err != nil {
+		if err := rows.Scan(&cw.ID, &cw.Title, &hasChars, &hasRecaps, &hasSummary); err != nil {
 			return nil, err
 		}
-		miss := []string{}
+		cw.Missing = []string{}
 		if hasChars == 0 {
-			miss = append(miss, "characters")
+			cw.Missing = append(cw.Missing, "characters")
 		}
 		if hasRecaps == 0 {
-			miss = append(miss, "recaps")
+			cw.Missing = append(cw.Missing, "recaps")
 		}
 		if evalSummary && hasSummary == 0 {
-			miss = append(miss, "recap_summary")
+			cw.Missing = append(cw.Missing, "recap_summary")
 		}
-		authors, err := s.authorsOf(id)
-		if err != nil {
-			return nil, err
-		}
-		series, err := s.firstSeriesOf(id)
-		if err != nil {
-			return nil, err
-		}
-		res.Works = append(res.Works, coverageWork{
-			ID: id, Title: title, Authors: authors, Series: series, Missing: miss,
-		})
+		out = append(out, cw)
 	}
-	return res, rows.Err()
+	return out, rows.Err()
 }
 
 // seriesGapsResult is the /api/v1/coverage/series-gaps payload: one page of
@@ -256,7 +307,7 @@ type seriesGapsResult struct {
 // cheap to compute (one bulk query over positions); only the response is bounded
 // by the page, so the payload stays small for any catalogue size.
 func (s *snapshot) seriesGapsPage(q string, limit, offset int) (*seriesGapsResult, error) {
-	all, err := s.seriesGaps()
+	all, err := s.cachedSeriesGaps()
 	if err != nil {
 		return nil, err
 	}
@@ -279,6 +330,27 @@ func (s *snapshot) seriesGapsPage(q string, limit, offset int) (*seriesGapsResul
 		res.Gaps = filtered[offset:min(offset+limit, len(filtered))]
 	}
 	return res, nil
+}
+
+// cachedSeriesGaps computes the gap set at most once per snapshot. A snapshot is
+// immutable (a new artifact is a new snapshot, swapped in whole), so the answer
+// cannot go stale, and every /coverage/series-gaps request after the first is
+// served from memory instead of re-reading every series position in the
+// catalogue. A failed computation is not cached, so a transient error retries.
+// The returned slice is shared: treat it as read-only (seriesGapsPage copies the
+// entries it filters).
+func (s *snapshot) cachedSeriesGaps() ([]seriesGap, error) {
+	s.gapsMu.Lock()
+	defer s.gapsMu.Unlock()
+	if s.gapsDone {
+		return s.gaps, nil
+	}
+	gaps, err := s.seriesGaps()
+	if err != nil {
+		return nil, err
+	}
+	s.gaps, s.gapsDone = gaps, true
+	return gaps, nil
 }
 
 // seriesGaps reports, per series, the integer positions missing strictly between

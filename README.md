@@ -77,7 +77,7 @@ data/          the database: works/, works-community/, people/, series/ (range-p
 schema/        JSON Schemas (one per entity) - authoritative field definitions
 cmd/           Go tooling: metacheck (validate), metafmt (canonicalise), metabuild (SQLite), metaserve (API server)
 internal/      shared Go packages behind the tooling (build, check, serve, ...)
-Dockerfile     container image: API server + baked data + static site
+Dockerfile     container image: API server + static site (no baked data)
 .github/       issue forms + CI workflows (check, release, image)
 CONTRIBUTING.md  GOVERNANCE.md  LICENSING.md
 ```
@@ -131,12 +131,23 @@ Key endpoints (all under `/api/v1`): `stats`, `search?q=&limit=`,
 `people/{id}`, `series/{id}`, `lookup?asin=|isbn=`, `coverage`,
 `coverage/works`, `coverage/series-gaps`, plus `/healthz`.
 
+`people/{id}` and `series/{id}` take an optional `?limit=&offset=` window and
+report the unpaged totals (`authored_total`/`narrated_total`, `works_total`).
+They differ in default: a person's credit lists are paged (100 per page, 500
+max) because they are unbounded - a corporate credit such as "Full Cast"
+narrates thousands of works - while a series returns every member work unless a
+window is asked for, because the player's series rail is composed from the full
+list.
+
 The coverage endpoints back the site's contribute page. `coverage` returns the
 top-line band only - how many works carry characters/recaps/whole-book recap
 summaries - so it stays tiny at any catalogue size. `coverage/works?filter=&q=
 &limit=&offset=` is the paginated, searchable browser: `filter` is `missing`
 (missing any dimension) or `has_characters`/`has_recaps`/`has_recap_summary`; `q`
-matches title/author; the response carries a per-filter `available` flag that is
+matches a work's title, authors, narrators and series through the same full-text
+index as `search` (whole words and word prefixes, not mid-word substrings); the
+response carries a per-filter
+`available` flag that is
 false when the dimension is not evaluable at the artifact's schema version.
 `coverage/series-gaps?q=&limit=&offset=` is the paginated, name-searchable list
 of series with interior position gaps.
@@ -144,12 +155,23 @@ of series with interior position gaps.
 Flags: `--db` (local artifact), `--site <dir>` (serve a static site at `/`),
 `--poll` (fetch and hot-swap the latest published data release from GitHub),
 `--repo` (default `KodeStar/audiosilo-meta`), `--interval` (default `1h`),
-`--cache` (download dir). With `--poll` and no `--db`, the server fetches the
-newest data release (the newest release carrying `meta.sqlite.gz` - code/image
-`v*` releases are skipped) on boot; with both, the baked artifact serves
-immediately and the poller runs a refresh at startup (not just once per
-`--interval`), so a recreated container catches up to the newest release within
-seconds instead of serving build-time data for a full interval. Set
+`--cache` (download dir). With `--poll` and no `--db` - what the container image
+runs - the server fetches the newest data release (the newest release carrying
+`meta.sqlite.gz`; code/image `v*` releases are skipped) on boot, streaming it to
+the cache directory and verifying the published checksum before it counts. If
+that first fetch fails the process does not exit. It first falls back to the
+newest artifact already in the cache directory - what the previous container was
+serving - and serves that, logged as stale, until a release loads. Only with
+nothing cached does it come up empty (static site served, `/healthz` and every
+API route 503 with a clear message, and a `Retry-After` reporting the wait
+actually in force). Either way it retries after 30s and then backs off, doubling
+up to `--interval`, so an unreachable GitHub is a logged outage rather than a
+container crash loop. A restart while GitHub is reachable does not re-download
+what the cache already holds either: the cached artifact for the newest release
+is verified against that release's published checksum and adopted as is. With
+`--db` as well, the local artifact serves immediately
+and the poller still runs a refresh at startup (not just once per `--interval`).
+Superseded artifacts are pruned from the cache after each hot-swap. Set
 `GITHUB_TOKEN` to raise the API rate limit.
 
 For immediate production refreshes, set `METASERVE_WEBHOOK_SECRET` to a random
@@ -175,9 +197,12 @@ poller will still discover the release.
 
 ### Docker
 
-The image bundles the server, a baked copy of the current data, and the static
-site (built from `site/`). It serves the baked artifact immediately, accepts
-signed release refreshes when configured, and polls as a fallback.
+The image bundles the server and the static site (built from `site/`) - and no
+data. On boot it downloads the newest published data release into the cache
+volume, then accepts signed release refreshes when configured and polls as a
+fallback. Keeping the catalogue out of the image means a site or server change
+neither rebuilds nor ships the database, and the image size is independent of
+how large the catalogue grows.
 
 ```sh
 docker build -t audiosilo-meta .
@@ -189,7 +214,8 @@ loopback-only port (a TLS reverse proxy such as nginx/Ploi fronts it), a named
 volume for the release-download cache, an optional signed release webhook, and
 hourly fallback polling. The image entrypoint carries all required flags;
 `command:` appends extras (for example `command: ["--interval", "15m"]`).
-Health check endpoint: `/healthz`.
+Health check endpoint: `/healthz` - a readiness check, so it answers 503
+`{"status":"starting"}` until the first artifact has loaded.
 
 The `image` workflow builds and pushes `ghcr.io/kodestar/audiosilo-meta` on a
 `v*` tag.

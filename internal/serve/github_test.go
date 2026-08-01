@@ -36,19 +36,37 @@ func sumFile(name string, data []byte) []byte {
 	return []byte(hexDigest(data) + "  " + name + "\n")
 }
 
-func TestVerifyChecksum(t *testing.T) {
+// TestInstallVerified covers the checksum gate every streamed asset now goes
+// through: matching bytes install, tampered bytes do not (and leave nothing
+// behind), and an unusable checksum file is an error rather than a panic.
+func TestInstallVerified(t *testing.T) {
 	data := []byte("the compressed artifact bytes")
 	good := sumFile("meta.sqlite.gz", data)
-	if err := verifyChecksum(data, good); err != nil {
-		t.Errorf("good checksum rejected: %v", err)
+	want, err := expectedDigest(good)
+	if err != nil {
+		t.Fatalf("expectedDigest: %v", err)
 	}
 
-	// A corrupted download must be rejected.
-	if err := verifyChecksum([]byte("tampered"), good); err == nil {
+	dir := t.TempDir()
+	dst := filepath.Join(dir, "asset.bin")
+	if _, err := installVerified(bytes.NewReader(data), dst, want); err != nil {
+		t.Errorf("good checksum rejected: %v", err)
+	}
+	if got, _ := os.ReadFile(dst); !bytes.Equal(got, data) {
+		t.Errorf("installed bytes differ from the source")
+	}
+
+	// A corrupted download must be rejected and must not replace the file.
+	tampered := filepath.Join(dir, "tampered.bin")
+	if _, err := installVerified(bytes.NewReader([]byte("tampered")), tampered, want); err == nil {
 		t.Errorf("corrupted download accepted")
 	}
+	if _, err := os.Stat(tampered); !os.IsNotExist(err) {
+		t.Errorf("destination created despite a checksum mismatch")
+	}
+
 	// An empty checksum file is an error, not a panic.
-	if err := verifyChecksum(data, []byte("")); err == nil {
+	if _, err := expectedDigest([]byte("")); err == nil {
 		t.Errorf("empty checksum file accepted")
 	}
 }
@@ -67,10 +85,27 @@ func gzOf(t *testing.T, b []byte) []byte {
 	return buf.Bytes()
 }
 
-func TestGunzipTo(t *testing.T) {
+// writeFile writes data to a fresh file under dir and returns its path.
+func writeFile(t *testing.T, dir, name string, data []byte) string {
+	t.Helper()
+	path := filepath.Join(dir, name)
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	return path
+}
+
+// TestGunzipStreamTo covers the one-pass download path: the COMPRESSED bytes are
+// what the published checksum covers, so the digest is taken over the gz while
+// the artifact is decompressed straight to disk. A gz whose digest does not match
+// must leave nothing behind, even though the decompression itself succeeded.
+func TestGunzipStreamTo(t *testing.T) {
 	payload := []byte("hello sqlite")
-	dst := filepath.Join(t.TempDir(), "nested", "out.bin")
-	if err := gunzipTo(gzOf(t, payload), dst); err != nil {
+	gz := gzOf(t, payload)
+	dir := t.TempDir()
+
+	dst := filepath.Join(dir, "nested", "out.bin")
+	if err := gunzipStreamTo(bytes.NewReader(gz), dst, hexDigest(gz)); err != nil {
 		t.Fatal(err)
 	}
 	got, err := os.ReadFile(dst)
@@ -79,6 +114,39 @@ func TestGunzipTo(t *testing.T) {
 	}
 	if !bytes.Equal(got, payload) {
 		t.Errorf("gunzip = %q, want %q", got, payload)
+	}
+
+	// A valid gz carrying the wrong bytes: decompression succeeds, the digest
+	// gate does not, and no file is installed.
+	bad := filepath.Join(dir, "bad.bin")
+	err = gunzipStreamTo(bytes.NewReader(gzOf(t, []byte("tampered"))), bad, hexDigest(gz))
+	if err == nil {
+		t.Errorf("gz with a mismatched digest accepted")
+	}
+	if _, err := os.Stat(bad); !os.IsNotExist(err) {
+		t.Errorf("destination created despite a digest mismatch")
+	}
+}
+
+// TestNextBootBackoff pins the boot-retry schedule: start at bootRetry, double
+// per consecutive failure, never exceed the steady-state interval, and start
+// over once an artifact loads (prev 0).
+func TestNextBootBackoff(t *testing.T) {
+	const base, limit = 30 * time.Second, 8 * time.Minute
+	want := []time.Duration{30 * time.Second, time.Minute, 2 * time.Minute, 4 * time.Minute, 8 * time.Minute, 8 * time.Minute}
+	got := time.Duration(0)
+	for i, w := range want {
+		got = nextBootBackoff(got, base, limit)
+		if got != w {
+			t.Fatalf("attempt %d: backoff = %s, want %s", i+1, got, w)
+		}
+	}
+	// A success resets to the base, and a base above the limit is clamped.
+	if got := nextBootBackoff(0, base, limit); got != base {
+		t.Errorf("after reset = %s, want %s", got, base)
+	}
+	if got := nextBootBackoff(0, time.Hour, limit); got != limit {
+		t.Errorf("base over the limit = %s, want %s", got, limit)
 	}
 }
 
@@ -701,6 +769,162 @@ func TestWorkflowMatchesGoConstants(t *testing.T) {
 // build-time data for one full interval. The server here is seeded from v1, the
 // fake publishes a newer R2 release, and Interval defaults to an hour - so ONLY
 // the startup refresh can adopt R2 within the test's seconds-long deadline.
+// cacheFiles lists the cache directory, for the prune assertions.
+func cacheFiles(t *testing.T, dir string) []string {
+	t.Helper()
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var names []string
+	for _, e := range entries {
+		names = append(names, e.Name())
+	}
+	sort.Strings(names)
+	return names
+}
+
+// TestRefreshPrunesCache covers the cache-volume leak: every adopted release
+// used to leave its predecessor's full artifact on disk forever. After the swap
+// grace elapses only the live artifact may remain - and the streamed download's
+// transient .gz must be gone as soon as the refresh that created it finished.
+func TestRefreshPrunesCache(t *testing.T) {
+	v1Path, v1, _, v2 := buildV1V2(t)
+	cache := t.TempDir()
+	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	srv, err := New(Config{DBPath: v1Path, Repo: "owner/name", CacheDir: cache, swapGrace: 10 * time.Millisecond})
+	if err != nil {
+		t.Fatal(err)
+	}
+	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("R1 refresh: %v", err)
+	}
+	r1File := filepath.Base(srv.dbCachePath(tagR1))
+	// The gz the artifact was streamed through is removed by the refresh itself.
+	if got := cacheFiles(t, cache); len(got) != 1 || got[0] != r1File {
+		t.Errorf("cache after R1 = %v, want just [%s]", got, r1File)
+	}
+
+	fake.setRelease(tagR2, makeAssets(t, v2, "", nil))
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("R2 refresh: %v", err)
+	}
+	r2File := filepath.Base(srv.dbCachePath(tagR2))
+
+	// The prune runs on the swap-grace timer, so wait for it rather than
+	// assuming it has already fired.
+	deadline := time.Now().Add(10 * time.Second)
+	for {
+		got := cacheFiles(t, cache)
+		if len(got) == 1 && got[0] == r2File {
+			break
+		}
+		if time.Now().After(deadline) {
+			t.Fatalf("cache = %v, want just the live artifact [%s]", got, r2File)
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	// The superseded artifact is gone but the live one still opens.
+	if got := srv.current().stats.Works; got != 5 {
+		t.Errorf("works = %d, want 5 after the prune", got)
+	}
+}
+
+// TestPatchSkippedOverBaseCap pins the memory guard on the patch path: the base
+// artifact has to be held in memory as a raw zstd dictionary, so past the cap
+// the refresh must decline the patch and fall back to the (fully streamed) gz
+// download rather than allocate it.
+func TestPatchSkippedOverBaseCap(t *testing.T) {
+	v1Path, v1, _, v2 := buildV1V2(t)
+	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	srv, err := New(Config{
+		DBPath: v1Path, Repo: "owner/name", CacheDir: t.TempDir(),
+		swapGrace: time.Minute, maxPatchBase: 1, // every artifact is over a 1-byte cap
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("R1 refresh: %v", err)
+	}
+
+	// R2 ships a usable delta from R1; the cap must make us ignore it.
+	fake.setRelease(tagR2, makeAssets(t, v2, tagR1, v1))
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("R2 refresh: %v", err)
+	}
+	if srv.loaded != tagR2 {
+		t.Errorf("loaded = %q, want %q (full download fallback)", srv.loaded, tagR2)
+	}
+	if got := fake.hitCount(patchAssetName(tagR1)); got != 0 {
+		t.Errorf("patch fetched %d times, want 0 (over the base cap)", got)
+	}
+	if got := fake.hitCount(dataAssetName); got != 1 {
+		t.Errorf("gz fetched %d times, want 1", got)
+	}
+	if got := srv.current().stats.Works; got != 5 {
+		t.Errorf("works = %d, want 5 (v2 adopted via full download)", got)
+	}
+}
+
+// TestBootWithoutDataServesDegraded is the D3 failure mode: the production image
+// ships no baked artifact, so a boot that cannot reach GitHub must come up
+// degraded (site served, API 503, /healthz "starting") instead of failing to
+// construct - which in a container would be a crash loop. It recovers as soon as
+// a release becomes reachable.
+func TestBootWithoutDataServesDegraded(t *testing.T) {
+	down := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		http.Error(w, "GitHub is having a day", http.StatusInternalServerError)
+	}))
+	t.Cleanup(down.Close)
+
+	srv, err := New(Config{
+		Poll: true, Repo: "owner/name", CacheDir: t.TempDir(), Site: writeSiteFixture(t),
+		apiBase: down.URL, swapGrace: time.Minute, bootRetry: time.Hour, // no background retry in this test
+	})
+	if err != nil {
+		t.Fatalf("New must not fail when the first fetch fails: %v", err)
+	}
+	if srv.current() != nil {
+		t.Fatal("expected no snapshot after a failed boot fetch")
+	}
+	ts := httptest.NewServer(srv.Handler())
+	t.Cleanup(ts.Close)
+
+	code, body := getJSON(t, ts.URL, "/healthz")
+	if code != http.StatusServiceUnavailable {
+		t.Errorf("healthz status = %d, want 503", code)
+	}
+	if body["status"] != "starting" {
+		t.Errorf("healthz body = %v, want status starting", body)
+	}
+	code, body = getJSON(t, ts.URL, "/api/v1/stats")
+	if code != http.StatusServiceUnavailable {
+		t.Errorf("stats status = %d, want 503", code)
+	}
+	if body["error"] == nil {
+		t.Errorf("503 body = %v, want an error message", body)
+	}
+	// The site is catalogue-independent and must still be served.
+	if code, page := getBody(t, ts.URL+"/"); code != 200 || !strings.Contains(page, "LANDING") {
+		t.Errorf("site while degraded = %d %q, want the landing page", code, page)
+	}
+
+	// Once a release is reachable, the same process becomes healthy.
+	_, v1, _, _ := buildV1V2(t)
+	fake := newFakeGitHub(t, tagR1, makeAssets(t, v1, "", nil))
+	srv.gh = newGHClient("owner/name", "", fake.srv.URL)
+	if err := srv.refresh(context.Background()); err != nil {
+		t.Fatalf("recovery refresh: %v", err)
+	}
+	if code, body := getJSON(t, ts.URL, "/healthz"); code != 200 || body["status"] != "ok" {
+		t.Errorf("healthz after recovery = %d %v, want 200 ok", code, body)
+	}
+}
+
 func TestPollLoopRefreshesAtStartup(t *testing.T) {
 	v1Path, _, _, v2 := buildV1V2(t)
 	fake := newFakeGitHub(t, tagR2, makeAssets(t, v2, "", nil))
@@ -740,15 +964,17 @@ func TestPollLoopRefreshesAtStartup(t *testing.T) {
 	}
 }
 
-func TestApplyPatch(t *testing.T) {
+func TestApplyPatchFile(t *testing.T) {
 	v1Path, v1, _, v2 := buildV1V2(t)
 	patch := makePatch(t, v1, v2)
 
 	t.Run("happy", func(t *testing.T) {
-		dst := filepath.Join(t.TempDir(), "out", "meta.sqlite")
-		n, err := applyPatch(patch, v1Path, dst, hexDigest(v2))
+		dir := t.TempDir()
+		patchPath := writeFile(t, dir, "patch.zst", patch)
+		dst := filepath.Join(dir, "out", "meta.sqlite")
+		n, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2))
 		if err != nil {
-			t.Fatalf("applyPatch: %v", err)
+			t.Fatalf("applyPatchFile: %v", err)
 		}
 		if n != int64(len(v2)) {
 			t.Errorf("reported %d bytes written, want %d", n, len(v2))
@@ -760,8 +986,9 @@ func TestApplyPatch(t *testing.T) {
 
 	t.Run("hash mismatch", func(t *testing.T) {
 		dir := t.TempDir()
+		patchPath := writeFile(t, dir, "patch.zst", patch)
 		dst := filepath.Join(dir, "meta.sqlite")
-		if _, err := applyPatch(patch, v1Path, dst, "deadbeef"); err == nil {
+		if _, err := applyPatchFile(patchPath, v1Path, dst, "deadbeef"); err == nil {
 			t.Fatal("expected a hash mismatch error")
 		}
 		if _, err := os.Stat(dst); !os.IsNotExist(err) {
@@ -799,15 +1026,15 @@ func TestApplyPatchCLIInterop(t *testing.T) {
 	if out, err := cmd.CombinedOutput(); err != nil {
 		t.Fatalf("zstd --patch-from: %v\n%s", err, out)
 	}
-	patch, err := os.ReadFile(patchPath)
+	info, err := os.Stat(patchPath)
 	if err != nil {
 		t.Fatal(err)
 	}
-	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", len(patch), len(v2))
+	t.Logf("CLI patch size = %d bytes (v2 artifact = %d bytes)", info.Size(), len(v2))
 
 	dst := filepath.Join(dir, "out.sqlite")
-	if _, err := applyPatch(patch, v1Path, dst, hexDigest(v2)); err != nil {
-		t.Fatalf("applyPatch on CLI frame: %v", err)
+	if _, err := applyPatchFile(patchPath, v1Path, dst, hexDigest(v2)); err != nil {
+		t.Fatalf("applyPatchFile on CLI frame: %v", err)
 	}
 	if got := readDB(t, dst); !bytes.Equal(got, v2) {
 		t.Errorf("CLI-frame patched result differs from v2")

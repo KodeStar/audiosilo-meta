@@ -133,6 +133,14 @@ function send(res, status, body) {
   res.end(JSON.stringify(body))
 }
 
+/** Mirrors the API's ?limit= handling: absent or invalid falls back to def, and
+    anything larger than max is clamped. def 0 means "no window". */
+function clampParam(raw, def, max) {
+  const n = Number(raw)
+  if (!raw || !Number.isFinite(n) || n <= 0) return def
+  return Math.min(n, max)
+}
+
 function cardOf(workId) {
   const w = db.works[workId]
   if (!w) return null
@@ -253,12 +261,36 @@ const server = createServer((req, res) => {
   if ((m = p.match(/^\/api\/v1\/people\/([^/]+)$/))) {
     const person = db.people[m[1]]
     if (!person) return send(res, 404, { error: 'not found' })
-    return send(res, 200, person)
+    // The real API windows both credit lists (default 100, max 500) and reports
+    // the unpaged totals; mirror that so the page renders the same shape here.
+    const limit = clampParam(url.searchParams.get('limit'), 100, 500)
+    const offset = Math.max(0, Number(url.searchParams.get('offset')) || 0)
+    const authored = person.authored ?? []
+    const narrated = person.narrated ?? []
+    return send(res, 200, {
+      ...person,
+      authored: authored.slice(offset, offset + limit),
+      narrated: narrated.slice(offset, offset + limit),
+      authored_total: authored.length,
+      narrated_total: narrated.length,
+      limit,
+      offset,
+    })
   }
   if ((m = p.match(/^\/api\/v1\/series\/([^/]+)$/))) {
     const s = db.series[m[1]]
     if (!s) return send(res, 404, { error: 'not found' })
-    return send(res, 200, s)
+    // A series returns every work unless a window is asked for (limit 0 = all).
+    const limit = clampParam(url.searchParams.get('limit'), 0, 500)
+    const offset = Math.max(0, Number(url.searchParams.get('offset')) || 0)
+    const works = s.works ?? []
+    return send(res, 200, {
+      ...s,
+      works: works.slice(offset, limit > 0 ? offset + limit : undefined),
+      works_total: works.length,
+      limit,
+      offset,
+    })
   }
   if (p === '/api/v1/lookup') {
     const asin = url.searchParams.get('asin')

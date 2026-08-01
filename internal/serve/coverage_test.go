@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"net/http/httptest"
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 
@@ -76,6 +77,18 @@ func coverageCatalog() *model.Catalog {
 		Characters: []*model.Characters{chars("alpha-covered"), chars("beta-partial")},
 		Recaps:     []*model.Recaps{alphaRecaps},
 	}
+}
+
+// snapshotFor opens a fixture catalogue as a snapshot, for tests that need the
+// query layer directly rather than through HTTP.
+func snapshotFor(t *testing.T, cat *model.Catalog) *snapshot {
+	t.Helper()
+	snap, err := openSnapshot(buildFixtureDB(t, cat), "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(snap.close)
+	return snap
 }
 
 func serverFor(t *testing.T, cat *model.Catalog) *httptest.Server {
@@ -234,7 +247,7 @@ func TestCoverageWorksPagination(t *testing.T) {
 func TestCoverageWorksSearch(t *testing.T) {
 	ts := serverFor(t, coverageCatalog())
 
-	// Title substring, case-insensitive.
+	// Title token, case-insensitive (the query runs through the FTS index).
 	_, body := getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=MULTI")
 	if got := workIDs(body); !reflect.DeepEqual(got, []string{"multi"}) {
 		t.Errorf("q=MULTI = %v, want [multi]", got)
@@ -243,16 +256,35 @@ func TestCoverageWorksSearch(t *testing.T) {
 		t.Errorf("q=MULTI total = %v, want 1", got)
 	}
 
-	// Author substring matches every work by that author.
+	// An author name matches every work by that author (the FTS row carries the
+	// work's people, not just its title).
 	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=Author")
 	if got, _ := body["total"].(float64); got != 4 {
 		t.Errorf("q=Author total = %v, want 4", got)
 	}
 
-	// A LIKE metacharacter is matched literally, not as a wildcard.
+	// Punctuation is not an operator: a query of nothing but a metacharacter
+	// matches nothing rather than everything (or erroring the MATCH).
 	_, body = getJSON(t, ts.URL, "/api/v1/coverage/works?filter=missing&q=%25")
 	if got, _ := body["total"].(float64); got != 0 {
-		t.Errorf("q=%%%% total = %v, want 0 (literal match)", got)
+		t.Errorf("q=%%%% total = %v, want 0", got)
+	}
+}
+
+// TestCoverageSearchIsIndexed proves the ?q= narrowing is index-driven: the
+// works table must be probed by primary key from the FTS hit set, never scanned
+// row by row (what the LIKE '%...%' predicate it replaced forced on every
+// request).
+func TestCoverageSearchIsIndexed(t *testing.T) {
+	snap := snapshotFor(t, coverageCatalog())
+	where, args, ok := snap.coverageWhere(filterMissing, "multi")
+	if !ok {
+		t.Fatal("coverage filter unexpectedly unavailable")
+	}
+	plan := queryPlan(t, snap, `SELECT COUNT(*) FROM works w WHERE `+where, args...)
+	assertNoFullScan(t, plan)
+	if joined := strings.Join(plan, " | "); !strings.Contains(joined, "search_fts") {
+		t.Errorf("plan does not use the FTS index: %s", joined)
 	}
 }
 
