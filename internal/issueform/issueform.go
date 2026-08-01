@@ -244,8 +244,11 @@ func process(opts Options) Result {
 }
 
 // loadExisting seeds the dedup maps from the committed data tree.
+//
+// It loads THROUGH the store, so the catalogue read and the submission's own
+// entry reads share one walk and one parse of each pack.
 func (c *composer) loadExisting() {
-	cat := check.Load(c.dataDir).Catalog
+	cat := check.LoadStore(c.store).Catalog
 	if cat == nil {
 		return
 	}

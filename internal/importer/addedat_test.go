@@ -2,6 +2,8 @@ package importer
 
 import (
 	"errors"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -157,5 +159,32 @@ func TestCreateNeverOverwritesAnUndecodableEntry(t *testing.T) {
 	readEntity(t, dataDir, workAddress, &work)
 	if work.Authors != "some-author" {
 		t.Errorf("the undecodable work was rewritten: authors = %v", work.Authors)
+	}
+}
+
+// The layout refusal gets a clause naming who refused it; an I/O failure must
+// not. Opening the store now READS the tree, so it can fail for reasons that
+// have nothing to do with the layout - and telling an operator whose data root
+// is a stray file that "metaimport writes the pack layout only" would be a false
+// explanation of it. (The failure also lands BEFORE anything is written, where a
+// per-file writer used to write first and fail validation afterwards.)
+func TestImportIOFailureIsNotReportedAsALayoutRefusal(t *testing.T) {
+	root := filepath.Join(t.TempDir(), "data")
+	if err := os.WriteFile(root, []byte("not a tree"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	books := `[{"asin":"B0NOTREE01","title_short":"No Tree","author":"Some Author","narrated_by":"A Reader","language":"english","region":"US","seconds":600}]`
+	_, err := Run(writeBooks(t, books), Options{DataDir: root, ImportDate: testImportDate})
+	if err == nil {
+		t.Fatal("an import against a data root that is a regular file must fail")
+	}
+	if errors.Is(err, pack.ErrLegacyLayout) {
+		t.Errorf("an I/O failure was reported as a legacy-layout refusal: %v", err)
+	}
+	if strings.Contains(err.Error(), "pack layout only") {
+		t.Errorf("error = %v, want no layout clause on an I/O failure", err)
+	}
+	if !strings.Contains(err.Error(), "not a directory") {
+		t.Errorf("error = %v, want it to say what actually went wrong", err)
 	}
 }

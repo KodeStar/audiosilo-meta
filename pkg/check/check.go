@@ -9,14 +9,19 @@
 // family still in that shape is reported as a problem rather than read - see
 // loadLegacyFamily, which is the whole of what is left of the old layout here.
 //
+// It walks the tree ONCE: the pack listing, the layout detection and the file
+// accounting all come out of that one walk (pack.Listing). A caller that is also
+// WRITING calls LoadStore instead and hands over its pack.Store, so the walk is
+// shared too. What is never shared is residency: a pack is released as soon as
+// it has been validated, so validating a tree costs one pack at a time however
+// it was entered.
+//
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency, so its exported surface is a contract.
 package check
 
 import (
 	"fmt"
-	"io/fs"
-	"path/filepath"
 	"sort"
 	"strings"
 
@@ -97,6 +102,13 @@ func newPathIndex() *pathIndex {
 
 // loader is one walk's accumulating state, shared by both layout walkers.
 type loader struct {
+	dir string
+	// rdr is a writer's parse cache (a pack.Store's, via LoadStore), READ but
+	// never filled: a pack the store has already parsed is taken from it, and a
+	// pack this load reads itself is released once validated rather than left
+	// there, so validating a tree never grows a writer's residency. It is nil for
+	// a plain Load, which shares with nobody.
+	rdr     *pack.Reader
 	cat     *model.Catalog
 	idx     *pathIndex
 	schemas schemaSet
@@ -105,7 +117,58 @@ type loader struct {
 }
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
+//
+// Nothing is kept: a pack is parsed, validated and released as the walk moves
+// past it, so the load's peak memory is one pack plus the Catalog it is
+// building. A caller that is also WRITING calls LoadStore, which shares the
+// writer's walk - and the same release-as-you-go applies there.
 func Load(dir string) Result {
+	lst, err := pack.List(dir)
+	if err != nil {
+		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
+	}
+	return load(lst, nil)
+}
+
+// LoadStore validates the tree store s was opened on, over the store's own walk
+// of it and its already-parsed packs.
+//
+// It is Load without the second walk. A writer validates the catalogue before it
+// plans (that is where its identity maps come from) and then writes into the
+// same tree, which used to mean walking it twice; here both halves of the run
+// share the walk the store took at Open, and a pack the store has already parsed
+// is validated from that parse rather than read again.
+//
+// AS-OF-OPEN, deliberately. This validates the tree the store's reads and writes
+// are planned against, which is the tree as it was when the store was opened,
+// not as it is at the moment of the call:
+//
+//   - the file SET is the store's Open-time walk, so a file created or deleted
+//     since then is not part of what is validated;
+//   - a pack the store has already read is validated from those bytes, so if
+//     something replaced that file since, the replacement is not what is
+//     checked.
+//
+// That is the right contract for its purpose - a writer must validate what it is
+// planning against - but it is not "the tree is valid right now". Nothing else
+// may be writing to the tree while a store is open, which is what makes the two
+// the same in practice; a caller that needs an independent, as-of-now answer
+// calls Load. Once a Flush has made the store's walk stale, LoadStore takes a
+// fresh one and re-reads everything, so post-write validation IS a full
+// independent load.
+func LoadStore(s *pack.Store) Result {
+	lst := s.Listing()
+	if lst == nil {
+		return Load(s.Dir())
+	}
+	return load(lst, s.Reader())
+}
+
+// load validates a walked tree. rdr is a writer's parse cache to read packs
+// from, or nil. Either way each pack this load reads itself is released as soon
+// as it has been validated.
+func load(lst *pack.Listing, rdr *pack.Reader) Result {
+	dir := lst.Dir()
 	var probs, warns []Problem
 	add := func(path, format string, args ...any) {
 		probs = append(probs, Problem{Path: path, Msg: fmt.Sprintf(format, args...)})
@@ -119,46 +182,30 @@ func Load(dir string) Result {
 		return Result{Problems: []Problem{{Path: "schema", Msg: err.Error()}}}
 	}
 
-	files, err := jsonFiles(dir)
-	if err != nil {
-		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
-	}
-	layouts, err := pack.Detect(dir)
+	layouts, err := lst.Layouts()
 	if err != nil {
 		return Result{Problems: []Problem{{Path: dir, Msg: err.Error()}}}
 	}
 
-	l := &loader{cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas, add: add, warn: warn}
+	l := &loader{dir: dir, rdr: rdr, cat: &model.Catalog{}, idx: newPathIndex(), schemas: schemas, add: add, warn: warn}
 
-	// Partition the tree's JSON files by family. A pack-layout family's files
-	// are walked from its pack listing instead, so they are handed to that
-	// walker only to spot files the listing does not account for. A file under
-	// no family root at all belongs to nothing and is reported here.
-	packFiles := map[pack.Family][]string{}
-	legacyFiles := map[pack.Family][]string{}
-	for _, abs := range files {
-		rel := relSlash(dir, abs)
-		f, ok := familyOf(rel)
-		if !ok {
-			add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
-			continue
-		}
-		if layouts[f] == pack.LayoutPack {
-			packFiles[f] = append(packFiles[f], rel)
-			continue
-		}
-		legacyFiles[f] = append(legacyFiles[f], rel)
+	// A file under no family root at all belongs to nothing.
+	for _, rel := range lst.Stray() {
+		add(rel, "unrecognized location (not under any of the %s roots)", familyRoots())
 	}
 
 	var recs []recordWithPath
 	for _, def := range pack.Families() {
+		// A pack-layout family is read from its pack listing; the walk's own
+		// file list is handed over too, to spot the files that listing does not
+		// account for.
 		if layouts[def.Family] != pack.LayoutPack {
-			l.loadLegacyFamily(def.Family, legacyFiles[def.Family])
+			l.loadLegacyFamily(def.Family, lst.Files(def.Family))
 			continue
 		}
 		// A works entry composes its own recordings, so these arrive already
 		// attached to their work and only need reporting paths.
-		recs = append(recs, l.loadPackFamily(dir, def, packFiles[def.Family])...)
+		recs = append(recs, l.loadPackFamily(def, lst.Tree(def.Family), lst.Files(def.Family))...)
 	}
 
 	cat, idx := l.cat, l.idx
@@ -193,21 +240,6 @@ func sortProblems(ps []Problem) {
 	})
 }
 
-// familyOf maps a data-relative path onto the pack family whose root it sits
-// under. ok is false for a path under no family root.
-func familyOf(rel string) (pack.Family, bool) {
-	root, _, ok := strings.Cut(rel, "/")
-	if !ok {
-		return "", false
-	}
-	for _, d := range pack.Families() {
-		if d.Family.Root() == root {
-			return d.Family, true
-		}
-	}
-	return "", false
-}
-
 // familyRoots lists the family root directories, for the message a file
 // belonging to none of them gets.
 func familyRoots() string {
@@ -236,38 +268,4 @@ func (l *loader) loadLegacyFamily(f pack.Family, rels []string) {
 		"convert the tree with `go run ./cmd/metamigrate`. A pack is %s/<bound>.json holding an "+
 		"\"entries\" object; if this family is meant to be one already, that file is what does not read as a pack",
 		len(rels), rels[0], f.Root())
-}
-
-// jsonFiles lists every .json file under dir, sorted. Every one of them has to
-// be accounted for: a file the pack listing does not hold is reported rather
-// than skipped, which is what keeps a stray record from sitting in the tree
-// unvalidated.
-func jsonFiles(dir string) ([]string, error) {
-	var files []string
-	err := filepath.WalkDir(dir, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		if d.IsDir() {
-			return nil
-		}
-		if strings.EqualFold(filepath.Ext(path), ".json") {
-			files = append(files, path)
-		}
-		return nil
-	})
-	if err != nil {
-		return nil, err
-	}
-	sort.Strings(files)
-	return files, nil
-}
-
-// relSlash returns path relative to dir with forward slashes.
-func relSlash(dir, path string) string {
-	rel, err := filepath.Rel(dir, path)
-	if err != nil {
-		rel = path
-	}
-	return filepath.ToSlash(rel)
 }

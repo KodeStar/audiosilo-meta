@@ -50,6 +50,14 @@ type surveyed struct {
 // survey classifies every JSON file under family f's root.
 func (s *Store) survey(def FamilyDef) (*familySurvey, error) {
 	root := def.Family.Root()
+	// A FRESH scan of the family root, never the walk the store was opened on.
+	// A survey is a statement about the files that are there NOW: it decides what
+	// is salvaged, relocated and deleted, and the store's walk is a snapshot that
+	// anything - another process, a partly-applied Flush - may have moved on
+	// from. Reading a stale one would make a file that appeared since invisible
+	// (silently left behind, or overwritten by a plan that did not know about
+	// it), and one deleted since would be surveyed as an empty pack. The parse
+	// cache is still shared, so a pack the store has read is not read again.
 	rels, err := jsonFilesUnder(s.dir, root)
 	if err != nil {
 		return nil, err

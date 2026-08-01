@@ -596,3 +596,36 @@ func TestRealDataTree(t *testing.T) {
 		t.Fatalf("real data/ tree has validation problems:\n%s", joinProblems(res.Problems))
 	}
 }
+
+// A data root, or a family root, that is a regular FILE is a broken tree and
+// metacheck has to say so. The walk that lists the tree yields nothing for a
+// regular file, so without a separate statement of "this must be a directory"
+// the check came back clean on a data/people that somebody had replaced.
+func TestLoadRefusesANonDirectoryRoot(t *testing.T) {
+	t.Run("data root", func(t *testing.T) {
+		root := filepath.Join(t.TempDir(), "data")
+		if err := os.WriteFile(root, []byte("not a tree"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		if res := Load(root); res.OK() {
+			t.Fatal("a data root that is a regular file loaded clean")
+		}
+	})
+	t.Run("family root", func(t *testing.T) {
+		dir := t.TempDir()
+		writeTree(t, dir, packValid())
+		if err := os.RemoveAll(filepath.Join(dir, "people")); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(dir, "people"), []byte("not a family"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		res := Load(dir)
+		if res.OK() {
+			t.Fatal("a family root that is a regular file loaded clean")
+		}
+		if !hasProblem(res.Problems, "not a directory") {
+			t.Errorf("problems do not say what is wrong:\n%s", joinProblems(res.Problems))
+		}
+	})
+}

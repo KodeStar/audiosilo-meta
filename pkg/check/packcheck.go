@@ -50,19 +50,15 @@ func rangeStr(lo, hi string) string {
 }
 
 // loadPackFamily reads one pack-layout family: it checks the family's bound and
-// directory invariants, then every pack's placement, caps, and entries. rels is
-// the family's JSON files as the tree walk found them, used only to spot files
-// the pack listing does not account for.
+// directory invariants, then every pack's placement, caps, and entries. tree is
+// the family's pack listing and rels is its JSON files, both as the ONE tree
+// walk found them; rels is used only to spot files the pack listing does not
+// account for.
 //
 // The recordings it returns are already attached to their works (a works entry
 // is a composite), so Load only needs their reporting paths.
-func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) []recordWithPath {
+func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []string) []recordWithPath {
 	root := def.Family.Root()
-	tree, err := pack.ReadTree(dir, def.Family)
-	if err != nil {
-		l.add(root, "read: %v", err)
-		return nil
-	}
 
 	listed := map[string]bool{}
 	for _, ref := range tree.Packs() {
@@ -79,14 +75,8 @@ func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) [
 	var recs []recordWithPath
 	for i, ref := range tree.Packs() {
 		p := ref.Path()
-		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(p)))
-		if err != nil {
-			l.add(p, "read: %v", err)
-			continue
-		}
-		file, err := pack.Parse(raw)
-		if err != nil {
-			l.add(p, "invalid pack: %s", collapse(err.Error()))
+		file, ok := l.readPack(p)
+		if !ok {
 			continue
 		}
 		if file.Len() == 0 {
@@ -99,6 +89,13 @@ func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) [
 			continue
 		}
 		l.checkPackCaps(def, p, file.Len(), total)
+		// Sizes memoizes a canonical render of the whole pack, and validation
+		// never renders it again. Release it before anything else can outlive
+		// this iteration holding it: for a pack a writer's store is keeping
+		// resident that memo is a second, larger copy of the tree, and even here
+		// it is dead weight for the rest of the entry loop. per stays readable -
+		// it is this scope's own reference to the map.
+		file.ReleaseMemo()
 
 		lo, hi, _ := tree.Range(i)
 		for _, slug := range file.Slugs() {
@@ -117,6 +114,43 @@ func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) [
 		}
 	}
 	return recs
+}
+
+// readPack returns the parsed pack at the data-relative path p, reporting a
+// read or parse failure against the file itself. ok is false when there is
+// nothing to validate.
+//
+// It ASKS the loader's shared parse cache when there is one, but never fills
+// it: a pack a writer's store has already parsed is taken from there, and one
+// this load has to read itself is released as soon as it has been validated.
+// Handing every pack to the cache instead would keep the whole tree resident for
+// the rest of the writer's run - hundreds of megabytes on the seed tree - to
+// save re-reading the handful of packs a run actually writes to. Declining to
+// share is always safe: the store reads that pack itself, which is what it did
+// before there was a cache at all.
+//
+// The reading is done here rather than through Reader.Read because a missing
+// file is a PROBLEM to this package (a listed pack that has gone away) where the
+// store reads it as an empty pack to write into - which is also why Cached
+// refuses to answer with one of those stand-ins - and because the two failures
+// are reported differently.
+func (l *loader) readPack(p string) (*pack.File, bool) {
+	if l.rdr != nil {
+		if file, ok := l.rdr.Cached(p); ok {
+			return file, true
+		}
+	}
+	raw, err := os.ReadFile(filepath.Join(l.dir, filepath.FromSlash(p)))
+	if err != nil {
+		l.add(p, "read: %v", err)
+		return nil, false
+	}
+	file, err := pack.Parse(raw)
+	if err != nil {
+		l.add(p, "invalid pack: %s", collapse(err.Error()))
+		return nil, false
+	}
+	return file, true
 }
 
 // checkPackCaps enforces the hard caps a pack may not exceed. The size cap is

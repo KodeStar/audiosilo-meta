@@ -102,6 +102,18 @@ func (f *File) Remove(slug string) {
 // invalidate drops the memoized render. Every mutator calls it.
 func (f *File) invalidate() { f.rendered, f.sizes = nil, nil }
 
+// ReleaseMemo drops the memoized render without changing what the pack holds,
+// for a caller that has finished with the sizes but is holding the pack itself
+// open. The memo is a pure function of the entries, so releasing it only costs
+// the next reader a re-render.
+//
+// It exists because the memo is expensive and, on the paths that keep a pack
+// resident, unread afterwards: a validating pass asks every pack for its Sizes
+// (the cap check) and then never renders it again, which used to leave a second
+// copy of the whole tree - larger than the entries themselves - alive for as
+// long as the pack was. See check.readPack, its only caller in this repo.
+func (f *File) ReleaseMemo() { f.rendered, f.sizes = nil, nil }
+
 // Clone returns a deep copy.
 func (f *File) Clone() *File {
 	out := NewFile()
