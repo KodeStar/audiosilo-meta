@@ -7,10 +7,12 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/canonical"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -526,34 +528,32 @@ func TestCanonicalRenderingOfCreditsAndKind(t *testing.T) {
 	// Order preserved: the entries are still in the order the record stated
 	// them, decoded rather than pattern-matched so the assertion is about the
 	// DATA and not about how deep in a pack file it happens to sit.
-	var packed struct {
-		Entries map[string]struct {
-			Credits []struct {
-				Person string `json:"person"`
-				Role   string `json:"role"`
-			} `json:"credits"`
-		} `json:"entries"`
+	entry, ok := readPack(t, dir, "works/0/0.json").Get("a-book")
+	if !ok {
+		t.Fatal(`work "a-book" is missing from works/0/0.json after formatting`)
 	}
-	if err := json.Unmarshal([]byte(snapshot(t, dir)["works/0/0.json"]), &packed); err != nil {
-		t.Fatalf("decode formatted works pack: %v", err)
+	var work struct {
+		Credits []model.Credit `json:"credits"`
 	}
-	got := packed.Entries["a-book"].Credits
-	if len(got) != 2 ||
-		got[0].Person != "full-cast" || got[0].Role != "translator" ||
-		got[1].Person != "ada-author" || got[1].Role != "editor" {
-		t.Errorf("credits array was reordered or lost by formatting: %+v", got)
+	if err := json.Unmarshal(entry, &work); err != nil {
+		t.Fatalf("decode formatted work entry: %v", err)
 	}
-	if people := snapshot(t, dir)["people/0.json"]; !strings.Contains(people, `"kind": "group"`) {
+	want := []model.Credit{
+		{Person: "full-cast", Role: model.RoleTranslator},
+		{Person: "ada-author", Role: model.RoleEditor},
+	}
+	if !reflect.DeepEqual(work.Credits, want) {
+		t.Errorf("credits array was reordered or lost by formatting: %+v, want %+v", work.Credits, want)
+	}
+
+	before := snapshot(t, dir)
+	if people := before["people/0.json"]; !strings.Contains(people, `"kind": "group"`) {
 		t.Errorf("person kind did not survive formatting:\n%s", people)
 	}
 
 	// A second pass changes nothing at all.
-	before := snapshot(t, dir)
 	mustWrite(t, dir)
-	after := snapshot(t, dir)
-	for path, want := range before {
-		if after[path] != want {
-			t.Errorf("second --write changed %s:\n%s\n---\n%s", path, want, after[path])
-		}
+	if diff := treeDiff(before, snapshot(t, dir)); diff != "" {
+		t.Errorf("a second --write changed the tree: %s", diff)
 	}
 }

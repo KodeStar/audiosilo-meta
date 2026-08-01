@@ -3,7 +3,7 @@ package importer
 import (
 	"fmt"
 	"regexp"
-	"sort"
+	"slices"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -403,14 +403,8 @@ func sortedUniqueRoles(roles []string) []string {
 	if len(roles) == 0 {
 		return nil
 	}
-	sort.Strings(roles)
-	out := roles[:1]
-	for _, r := range roles[1:] {
-		if r != out[len(out)-1] {
-			out = append(out, r)
-		}
-	}
-	return out
+	slices.Sort(roles)
+	return slices.Compact(roles)
 }
 
 // stripPrefixCredit drops one leading phrase from prefixCredits when a non-empty
@@ -469,9 +463,10 @@ func stripRoleQualifier(name string) (string, []string) {
 	role := norm.NFC.String(strings.ToLower(strings.Join(strings.Fields(name[m[2]:m[3]]), " ")))
 	roles, listed := roleQualifiers[role]
 	if !listed {
-		if roles, listed = roleQualifiers[trimCredentialTitles(role)]; !listed {
-			return name, nil
-		}
+		roles, listed = roleQualifiers[trimCredentialTitles(role)]
+	}
+	if !listed {
+		return name, nil
 	}
 	cleaned := strings.TrimSpace(name[:m[0]])
 	if cleaned == "" {

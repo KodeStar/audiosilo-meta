@@ -1,8 +1,6 @@
 package importer
 
 import (
-	"encoding/json"
-	"os"
 	"reflect"
 	"strings"
 	"testing"
@@ -176,27 +174,7 @@ func TestTrimCredentialTitles(t *testing.T) {
 // value schema/common.schema.json's credit_role enum allows, or the seed would
 // write records that fail metacheck.
 func TestRoleQualifiersMapIntoSchemaEnum(t *testing.T) {
-	raw, err := os.ReadFile("../../schema/common.schema.json")
-	if err != nil {
-		t.Fatalf("read common.schema.json: %v", err)
-	}
-	var doc struct {
-		Defs struct {
-			CreditRole struct {
-				Enum []string `json:"enum"`
-			} `json:"credit_role"`
-		} `json:"$defs"`
-	}
-	if err := json.Unmarshal(raw, &doc); err != nil {
-		t.Fatalf("parse common.schema.json: %v", err)
-	}
-	allowed := make(map[string]bool, len(doc.Defs.CreditRole.Enum))
-	for _, r := range doc.Defs.CreditRole.Enum {
-		allowed[r] = true
-	}
-	if len(allowed) == 0 {
-		t.Fatal("no credit_role enum found in the schema")
-	}
+	allowed := schemaDefEnum(t, "credit_role")
 	for qualifier, roles := range roleQualifiers {
 		for _, role := range roles {
 			if !allowed[role] {
@@ -310,10 +288,7 @@ func TestLibexEnrichFillsCreditsOnlyWhenAbsent(t *testing.T) {
 	t.Run("fills an absent credits member", func(t *testing.T) {
 		dataDir := t.TempDir()
 		seedTree(t, dataDir, enrichSeed(""))
-		sum, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
-		if err != nil {
-			t.Fatalf("enrich run: %v", err)
-		}
+		sum := runEnrich(t, dataDir, row, false)
 		if sum.Credits != 1 {
 			t.Fatalf("Summary.Credits = %d, want 1", sum.Credits)
 		}
@@ -332,10 +307,7 @@ func TestLibexEnrichFillsCreditsOnlyWhenAbsent(t *testing.T) {
 		// A second identical run must be a no-op: the credits are no longer
 		// absent, so there is nothing to fill.
 		before := string(rawEntity(t, dataDir, "works/en/enrich-me/work.json"))
-		sum2, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
-		if err != nil {
-			t.Fatalf("second enrich run: %v", err)
-		}
+		sum2 := runEnrich(t, dataDir, row, false)
 		if sum2.Credits != 0 {
 			t.Errorf("second run wrote %d credits, want 0", sum2.Credits)
 		}
@@ -347,10 +319,7 @@ func TestLibexEnrichFillsCreditsOnlyWhenAbsent(t *testing.T) {
 	t.Run("never overwrites an existing credits member", func(t *testing.T) {
 		dataDir := t.TempDir()
 		seedTree(t, dataDir, enrichSeed(`"credits":[{"person":"original-author","role":"editor"}],`))
-		sum, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
-		if err != nil {
-			t.Fatalf("enrich run: %v", err)
-		}
+		sum := runEnrich(t, dataDir, row, false)
 		if sum.Credits != 0 {
 			t.Errorf("Summary.Credits = %d, want 0 (the work already had credits)", sum.Credits)
 		}
@@ -379,10 +348,7 @@ func TestEnrichSkipsCreditsForUnknownPeople(t *testing.T) {
 	}]`
 	dataDir := t.TempDir()
 	seedTree(t, dataDir, enrichSeed(""))
-	sum, err := RunLibex(writeBooks(t, row), Options{DataDir: dataDir, ImportDate: testImportDate, Mode: ModeEnrich})
-	if err != nil {
-		t.Fatalf("enrich run: %v", err)
-	}
+	sum := runEnrich(t, dataDir, row, false)
 	if sum.Credits != 0 {
 		t.Errorf("Summary.Credits = %d, want 0 (the credited person is not in the catalogue)", sum.Credits)
 	}

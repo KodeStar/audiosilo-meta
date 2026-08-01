@@ -217,7 +217,8 @@ type sourceBook struct {
 	isbns      []string     // well-formed ISBNs the source stated (validated at parse)
 	// authors / narrators are the source's STRUCTURED credit lists, set when it
 	// provides one name per element. They are used verbatim (each still passed
-	// through CleanCreditName) instead of splitting raw's comma-joined
+	// through CreditWithRoles, which cleans the name and keeps the roles its
+	// trailing qualifier stated) instead of splitting raw's comma-joined
 	// string, so a name that contains a comma ("Alexandre Dumas, pere") stays
 	// one person. Empty means the source only has the joined string.
 	authors   []string
@@ -551,8 +552,10 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	// genres could never be stored would only add noise to the unmapped report.
 	// The contributor credits ride along on the same terms and for the same
 	// reason: they are a work-creation fact here, and filling them onto a work
-	// that already exists is the enrichment pass's job (applyToWork).
-	facts := workFacts{genres: b.genres, credits: p.workCredits(authorCredits)}
+	// that already exists is the enrichment pass's job (applyToWork). They travel
+	// raw for the same reason too - resolving them is wasted work on every row
+	// that merges.
+	facts := workFacts{genres: b.genres, credits: authorCredits}
 	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, facts, warn)
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
@@ -797,13 +800,14 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 }
 
 // workFacts are the facts a row contributes ONLY to a work it creates: the raw
-// genre claims (mapped onto the project vocabulary at the point of storage) and
-// the role-qualified contributor credits. They travel as one value so the
-// full-title retry below carries them through unchanged, and so adding a
-// creation-only fact is one field rather than one more parameter on every hop.
+// genre claims and the row's source credits. Both travel RAW and are resolved at
+// the point of storage (mapGenres, workCredits), so a row that merges into an
+// existing work pays for neither. They travel as one value so the full-title
+// retry below carries them through unchanged, and so adding a creation-only fact
+// is one field rather than one more parameter on every hop.
 type workFacts struct {
 	genres  []genreClaim
-	credits []model.Credit
+	credits []credit
 }
 
 // getOrCreateWork returns the work identified by (title-slug, author set),
@@ -838,15 +842,16 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// catalogue load, so a work the loader could not decode looks free
 			// here, and a plain upsert would replace its whole composite entry -
 			// every recording included.
+			credits := p.workCredits(facts.credits)
 			p.putNewEntry(pack.FamilyWorks, slug, outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
-				Credits: facts.credits,
+				Credits: credits,
 				Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
 				AddedAt: p.importDate,
 				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
-			p.summary.Credits += len(facts.credits)
+			p.summary.Credits += len(credits)
 			return ws
 		}
 		if SameSet(ws.authors, want) {
