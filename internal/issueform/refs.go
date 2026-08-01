@@ -10,9 +10,11 @@ import (
 	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
-// slugify wraps the importer's canonical slugifier so form composition and bulk
-// import derive identical slugs from the same text.
-func slugify(s string) string { return importer.Slugify(s) }
+// slugify wraps the project's canonical slugifier so form composition and bulk
+// import derive identical slugs from the same text. It goes straight to
+// pkg/model, where the rule lives, rather than through the importer's
+// same-named delegate.
+func slugify(s string) string { return model.Slugify(s) }
 
 // normalizeSequence wraps the importer's series-position validator.
 func normalizeSequence(raw string) (string, bool) { return importer.NormalizeSequence(raw) }

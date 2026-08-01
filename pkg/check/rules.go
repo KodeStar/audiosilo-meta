@@ -302,13 +302,6 @@ func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
 // normISBN lowercases the check digit so 10-char ISBNs compare case-insensitively.
 func normISBN(s string) string { return strings.ToUpper(s) }
 
-// unslugPersonID is the id personSlug (internal/importer) mints for a name that
-// slugs away to nothing - a credit written entirely in a script Slugify folds.
-// That record is the ONE person whose id is legitimately not its name's slug,
-// so checkPersonSlug names it rather than reporting the shared catch-all as a
-// defect forever.
-const unslugPersonID = "person"
-
 // checkPersonSlug enforces that a person's id IS the slug of their name.
 //
 // "Person slug is the identity" is the importer's central dedup rule: two
@@ -323,12 +316,14 @@ const unslugPersonID = "person"
 // It is a cheap, exact rule, and it is what makes any future change to Slugify
 // self-reporting: the day the folding rules move, every record the change
 // strands fails here instead of silently forking on the next import.
+//
+// The id is derived through model.PersonSlug - the SAME call the importer mints
+// it with - so the rule can never drift from the minting it polices. That also
+// covers the one record whose id is legitimately not its name's slug: the
+// shared catch-all a fully-folding name falls back to.
 func checkPersonSlug(cat *model.Catalog, idx *pathIndex, add addFunc) {
 	for _, p := range cat.People {
-		want := model.Slugify(p.Name)
-		if want == "" {
-			want = unslugPersonID
-		}
+		want, _ := model.PersonSlug(p.Name)
 		if p.ID != want {
 			add(idx.person[p], "person id %q does not match its name %q (want %q); the slug of the name IS the identity", p.ID, p.Name, want)
 		}

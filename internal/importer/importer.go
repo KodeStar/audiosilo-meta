@@ -140,12 +140,13 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
-	// attested is the studio-concatenation rule's evidence universe for this run
-	// (studiotail.go): the catalogue's person slugs as loaded, plus a census of
-	// every credit name the batch carries. It is a SNAPSHOT taken before any row
-	// is planned - see creditAttestation - so what a name cleans to cannot depend
-	// on the order the rows arrive in.
-	attested attestFunc
+	// creditCensus is the studio-concatenation rule's evidence universe for this
+	// run (studiotail.go): the catalogue's person slugs as loaded, plus a census
+	// of every credit name the batch carries. It is a SNAPSHOT taken before any
+	// row is planned - see creditCensusOf - so what a name cleans to cannot
+	// depend on the order the rows arrive in. Unrelated to the trust-tier sense
+	// of "attested" (attest.go), which is why it does not use that word.
+	creditCensus creditSeenFunc
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -330,7 +331,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
-	p.attested = p.creditAttestation(books)
+	p.creditCensus = p.creditCensusOf(books)
 
 	switch opts.Mode {
 	case ModeEnrich:
@@ -665,7 +666,7 @@ func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (
 // vocabulary refuses anyway. Recording-level credits stay unmodeled until
 // there is evidence worth modeling.
 func (p *planner) rowAuthorCredits(b sourceBook) []credit {
-	return sourceCredits(b.authors, b.str("author"), p.attested)
+	return sourceCredits(b.authors, b.str("author"), p.creditCensus)
 }
 
 // rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
@@ -676,7 +677,76 @@ func (p *planner) rowAuthorNames(b sourceBook) []string {
 }
 
 func (p *planner) rowNarratorNames(b sourceBook) []string {
-	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.attested))
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.creditCensus))
+}
+
+// rowRawCreditNames is every credit name a row states, author and narrator, in
+// the SOURCE's own spelling (sourceNames owns the typed-vs-joined choice, so
+// this reads exactly the names the import itself will read).
+func rowRawCreditNames(b sourceBook) []string {
+	return append(sourceNames(b.authors, b.str("author")),
+		sourceNames(b.narrators, b.str("narrated_by"))...)
+}
+
+// creditCensusOf builds this run's credit census: the set of slugs a name must
+// land on to count as "independently a credit somewhere", which is the evidence
+// the studio-concatenation rule's third tier consults (studiotail.go).
+//
+// The report that specified that rule measured the question against the whole
+// 1.13M-book libex dump, which the importer does not have and must never carry a
+// copy of (LICENSING.md's import posture: a bounded source, never a mirror). The
+// two things it DOES have are exactly the two the report names as the practical
+// substitute, and both are evidence of the same kind - a name somebody actually
+// credited:
+//
+//	the catalogue  every person record already committed, as loaded (14.9k after
+//	               seed wave 1). This is where "Alex Hyde-White" and "Punch
+//	               Audio" both come from: the studio has a record of its own,
+//	               which is precisely what makes the concatenation visible.
+//	the batch      a census of every credit name in the rows being imported,
+//	               author and narrator alike, in the source's own spelling AND
+//	               in its self-evidencing cleaned form (tiers 1-2, which need no
+//	               census). The cleaned form is what lets one row's "<narrator>
+//	               for HotGhost Productions" attest the narrator for a second row
+//	               that spells the same credit bare.
+//
+// It is deliberately a SNAPSHOT, taken after loadExisting and before the first
+// row is planned, rather than a live read of p.people: consulting a set that
+// grows as records are created would make a name's cleaning depend on the order
+// the rows happen to arrive in, and two runs over the same export could disagree.
+// This is the same batch-pre-pass shape resolveWorkTitles uses, for the same
+// reason.
+//
+// The universe being SMALLER than the dump only ever costs a missed cleanup
+// (the name imports as the source spelled it, which is what happens today and is
+// a maintainer PR away from fixed). It cannot cost a wrong one: every tier that
+// consults it requires MORE evidence than the tiers that do not.
+func (p *planner) creditCensusOf(books []sourceBook) creditSeenFunc {
+	// Most rows repeat an author and a narrator the catalogue or an earlier row
+	// already carries, so the batch contributes far fewer new keys than it has
+	// credits; a per-row hint over-allocates by ~90MB on a 1M-row dump.
+	universe := make(map[string]bool, len(p.people)+len(books)/2)
+	for slug := range p.people {
+		universe[slug] = true
+	}
+	record := func(name string) {
+		if slug := Slugify(name); slug != "" {
+			universe[slug] = true
+		}
+	}
+	for _, b := range books {
+		for _, name := range rowRawCreditNames(b) {
+			record(name)
+			// The name as the two self-evidencing tiers would clean it. Passing
+			// nil is what keeps this bootstrap honest: the census is built from
+			// rules that never consult the census. The overwhelming majority of
+			// names clean to themselves, and re-slugging those is pure waste.
+			if cleaned, _ := creditWithRoles(name, nil); cleaned != name {
+				record(cleaned)
+			}
+		}
+	}
+	return func(name string) bool { return universe[Slugify(name)] }
 }
 
 // seriesRef is a book's claim to a position in a named series. name is always
@@ -707,15 +777,36 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 //
 // Either way each entry keeps the roles its qualifier stated, so the two shapes
 // a source can hand credits over in produce the same facts.
-func sourceCredits(typed []string, joined string, attested attestFunc) []credit {
-	if len(typed) == 0 {
-		return splitCredits(joined, attested)
+func sourceCredits(typed []string, joined string, seen creditSeenFunc) []credit {
+	names := sourceNames(typed, joined)
+	if len(names) == 0 {
+		return nil
 	}
-	out := make([]credit, 0, len(typed))
+	out := make([]credit, 0, len(names))
+	for _, name := range names {
+		cleaned, roles := creditWithRoles(name, seen)
+		out = append(out, credit{name: cleaned, roles: roles})
+	}
+	return out
+}
+
+// sourceNames is the raw name list a source states for one credit side, in the
+// SOURCE's own spelling: the structured list when the source parsed one, else
+// its comma-joined string split on commas. Either way the names are trimmed and
+// empties dropped.
+//
+// It is the ONE place that typed-vs-joined choice is made. Both the credit
+// pipeline (sourceCredits) and the batch census (creditCensusOf) read a row
+// through it, so the census can never be built from a different set of names
+// than the import itself reads.
+func sourceNames(typed []string, joined string) []string {
+	if len(typed) == 0 {
+		return splitRawNames(joined)
+	}
+	out := make([]string, 0, len(typed))
 	for _, name := range typed {
 		if n := strings.TrimSpace(name); n != "" {
-			cleaned, roles := CreditWithRolesAttested(n, attested)
-			out = append(out, credit{name: cleaned, roles: roles})
+			out = append(out, n)
 		}
 	}
 	return out
@@ -826,17 +917,16 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 }
 
 // personSlug derives a credit name's person identity, substituting the shared
-// "person" fallback when the name slugs away to nothing (a name in a script that
+// catch-all record when the name slugs away to nothing (a name in a script that
 // folds entirely). fellBack reports that substitution so a caller that CREATES
 // the record can warn about it, while a caller that only MATCHES (slugCredits)
 // stays silent. Both go through here so a name resolves to one identity
 // everywhere.
-func personSlug(name string) (slug string, fellBack bool) {
-	if slug = Slugify(name); slug == "" {
-		return "person", true
-	}
-	return slug, false
-}
+//
+// The rule itself is model.PersonSlug: pkg/check verifies committed ids against
+// it (checkPersonSlug) and cannot import this package, so the minting and the
+// checking share one definition rather than two that can drift.
+func personSlug(name string) (slug string, fellBack bool) { return model.PersonSlug(name) }
 
 // seriesClaim is a book's claim to a position in an already-known series.
 type seriesClaim struct {

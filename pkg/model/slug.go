@@ -1,7 +1,6 @@
 package model
 
 import (
-	"regexp"
 	"strings"
 
 	"golang.org/x/text/unicode/norm"
@@ -17,10 +16,7 @@ import (
 // internal/importer.Slugify stays as the name every existing caller knows,
 // delegating here.
 
-var (
-	apostrophes = strings.NewReplacer("'", "", "’", "", "ʼ", "", "`", "")
-	multiHyphen = regexp.MustCompile(`-+`)
-)
+var apostrophes = strings.NewReplacer("'", "", "’", "", "ʼ", "", "`", "")
 
 // Slugify turns arbitrary text into a slug matching the dataset's slug rules:
 // lowercase, ASCII-folded diacritics, apostrophes stripped, every other
@@ -38,25 +34,63 @@ func Slugify(s string) string {
 	decomposed := norm.NFD.String(s)
 	var b strings.Builder
 	b.Grow(len(decomposed))
+	// A separator is written lazily: pending records that a run of
+	// non-alphanumeric runes was seen, and the hyphen is only emitted once the
+	// NEXT kept rune arrives. That collapses runs and drops a leading or
+	// trailing hyphen in the single pass, so no separate collapse-and-trim
+	// pass is needed. Every kept rune is ASCII by construction.
+	pending := false
 	for _, r := range decomposed {
+		var keep byte
 		switch {
 		case r >= 'A' && r <= 'Z':
-			b.WriteRune(r + ('a' - 'A'))
+			keep = byte(r) + ('a' - 'A')
 		case (r >= 'a' && r <= 'z') || (r >= '0' && r <= '9'):
-			b.WriteRune(r)
+			keep = byte(r)
 		case IsCombiningMark(r):
-			// drop
+			continue // a dropped diacritic is not a separator
 		default:
+			pending = true
+			continue
+		}
+		if pending && b.Len() > 0 {
 			b.WriteByte('-')
 		}
+		pending = false
+		b.WriteByte(keep)
 	}
 
-	slug := multiHyphen.ReplaceAllString(b.String(), "-")
-	slug = strings.Trim(slug, "-")
+	slug := b.String()
 	if len(slug) > MaxSlugLen {
+		// The cut can land just after a hyphen, which is the one way a trailing
+		// separator can survive the loop.
 		slug = strings.Trim(slug[:MaxSlugLen], "-")
 	}
 	return slug
+}
+
+// UnslugPersonID is the shared catch-all person id PersonSlug substitutes for a
+// name that slugs away to nothing. It is one record standing in for every such
+// credit, which is a known, visible conflation rather than a defect - see
+// PersonSlug.
+const UnslugPersonID = "person"
+
+// PersonSlug derives a credit name's person identity, substituting the shared
+// UnslugPersonID fallback when the name slugs away to nothing (a name written
+// entirely in a script Slugify folds - Korean, Cyrillic, CJK). fellBack reports
+// that substitution so a caller that CREATES the record can warn about it,
+// while a caller that only MATCHES stays silent.
+//
+// It lives here, beside Slugify, because the importer mints person ids with it
+// and pkg/check verifies them against it (checkPersonSlug) - two packages that
+// cannot import each other. A second copy would be a contract with two
+// definitions, which is exactly how a record ends up at an address nothing will
+// probe again.
+func PersonSlug(name string) (slug string, fellBack bool) {
+	if slug = Slugify(name); slug == "" {
+		return UnslugPersonID, true
+	}
+	return slug, false
 }
 
 // IsCombiningMark reports whether r is a Unicode combining diacritical mark

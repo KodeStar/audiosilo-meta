@@ -371,8 +371,8 @@ const maxCleanPasses = 8
 //     Duran" and "Mitz Mitz Vah" are left alone.
 //  4. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
 //     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
-//     four, and two of its three tiers need an ATTESTATION universe this entry
-//     point has no access to - see studiotail.go and CreditWithRolesAttested.
+//     four, and one of its three tiers needs a CENSUS of credit names this entry
+//     point has no access to - see studiotail.go and creditWithRoles.
 //
 // The person stays in the credit list under the cleaned name. The stripped role
 // is no longer discarded - CreditWithRoles returns it, and the importer records
@@ -397,22 +397,23 @@ func CleanCreditName(name string) string {
 // did?"), answered in ONE pass so the name and the roles can never come from
 // different cleanings.
 func CreditWithRoles(name string) (cleaned string, roles []string) {
-	return CreditWithRolesAttested(name, nil)
+	return creditWithRoles(name, nil)
 }
 
-// CreditWithRolesAttested is CreditWithRoles with the studio-concatenation
-// rule's ATTESTATION universe supplied: the question "is this half of the string
-// independently a credit?", which decides tier 3 (studiotail.go). A nil
-// attestFunc attests nothing, so the two tiers that carry their own evidence
-// still apply and the third never fires - which is exactly what a caller with no
-// catalogue in hand (pkg/scan reading tags, a single typed issue-form name)
-// should get.
-func CreditWithRolesAttested(name string, attested attestFunc) (cleaned string, roles []string) {
+// creditWithRoles is CreditWithRoles with the studio-concatenation rule's
+// CENSUS supplied: the question "is this half of the string independently a
+// credit somewhere?", which decides tier 3 (studiotail.go). A nil
+// creditSeenFunc has seen nothing, so the two tiers that carry their own
+// evidence still apply and the third never fires - which is exactly what a
+// caller with no catalogue in hand (pkg/scan reading tags, a single typed
+// issue-form name) should get, and it is what CreditWithRoles, the public door,
+// passes.
+func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []string) {
 	cleaned = name
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
-		next := stripStudioConcat(collapseDoubledName(stripped), attested)
+		next := stripStudioConcat(collapseDoubledName(stripped), seen)
 		if next == cleaned {
 			break
 		}
@@ -545,21 +546,6 @@ type credit struct {
 	roles []string
 }
 
-// splitCredits splits a comma-joined list of names ("A, B, C"), trimming each,
-// cleaning the credit and keeping the roles it stated, and dropping empties. It
-// returns nil when nothing usable remains. attested is the studio-concatenation
-// rule's evidence universe and may be nil (see CreditWithRolesAttested).
-func splitCredits(joined string, attested attestFunc) []credit {
-	var out []credit
-	for _, part := range strings.Split(joined, ",") {
-		if name := strings.TrimSpace(part); name != "" {
-			cleaned, roles := CreditWithRolesAttested(name, attested)
-			out = append(out, credit{name: cleaned, roles: roles})
-		}
-	}
-	return out
-}
-
 // splitRawNames splits a comma-joined list of names into the source's OWN
 // spellings - trimmed and de-emptied, but not cleaned. It is what a parser
 // reaches for when it is filling sourceBook.authors/narrators from a bare
@@ -595,21 +581,30 @@ func creditNamesOf(credits []credit) []string {
 // cleaning the credit (CleanCreditName), and dropping empties. It returns nil
 // when nothing usable remains.
 //
-// It is the name-only view of splitCredits, kept as the shared public helper
+// It is the name-only view of sourceCredits, kept as the shared public helper
 // (pkg/scan reads tags through it) because a consumer outside the importer has
-// no work record to hang a role on - and, for the same reason, no attestation
-// universe, so it cleans with the two self-evidencing studio-tail tiers only.
+// no work record to hang a role on - and, for the same reason, no credit
+// census, so it cleans with the two self-evidencing studio-tail tiers only.
 func SplitNames(joined string) []string {
-	return creditNamesOf(splitCredits(joined, nil))
+	return creditNamesOf(sourceCredits(nil, joined, nil))
 }
+
+// trailingParenRE captures the content of a trailing parenthetical or bracket.
+// It has two consumers, which is why it lives here beside the shared credit
+// helpers rather than with either: the title parser reads an edition marker with
+// it ("... (Unabridged)", recordings.go) and the credit rules read a trailing
+// marker with it (the AI-narration check in libex.go, the studio-tail separator
+// in studiotail.go).
+var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
 
 var yearPrefixRE = regexp.MustCompile(`^\d{4}`)
 
 // Slugify turns arbitrary text into a slug matching the dataset's slug rules.
 // The implementation is model.Slugify - the leaf copy pkg/check can reach too
 // (checkPersonSlug verifies a person's id against their name, and pkg/check
-// cannot import this package without a cycle). This is the name every existing
-// caller inside and outside the module knows it by.
+// cannot import this package without a cycle). This is the name the importer's
+// own callers, and the sibling audiosilo-sidecars module through pkg/scan, know
+// it by; new code outside this package should call model.Slugify directly.
 func Slugify(s string) string { return model.Slugify(s) }
 
 // BoundedSlugTail joins a base slug and a disambiguating tail (an author credit,

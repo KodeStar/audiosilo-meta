@@ -59,8 +59,11 @@ type nameToken struct {
 // markedKey is the identity key of a name: every token tagged I: or W:, joined.
 // Two names may merge only if their marked keys are equal, which is what stops
 // an initials group from meeting a same-spelled short word.
-func markedKey(name string) string {
-	tokens := parseNameTokens(name)
+func markedKey(name string) string { return markedKeyOf(parseNameTokens(name)) }
+
+// markedKeyOf is markedKey over an already-parsed name, for a caller that needs
+// the tokens for something else too and should not parse twice.
+func markedKeyOf(tokens []nameToken) string {
 	parts := make([]string, 0, len(tokens))
 	for _, t := range tokens {
 		tag := "W:"
@@ -146,6 +149,12 @@ func isDottedCluster(raw string) bool {
 // foldToLetters reduces a token to its lowercase letters and digits, dropping
 // the punctuation a spelling hangs on them. It is the comparison form the key is
 // built from, so "A.B." and "AB" fold alike.
+//
+// Unlike every neighbouring fold (Slugify, foldCredit) it deliberately does NOT
+// decompose diacritics: "Á." and "A." therefore key apart and do not merge. That
+// is a MISSED merge, not a wrong one - the two records stay separate for a
+// maintainer to join - and it is the safe direction for a rule whose only job is
+// to decide that two spellings are one person.
 func foldToLetters(raw string) string {
 	var b strings.Builder
 	for _, r := range strings.ToLower(raw) {
@@ -178,14 +187,25 @@ func isAllUpper(s string) bool {
 // fragments, so a variant can only ever be a slug the importer itself could
 // mint.
 func initialsVariantSlugs(name string) []string {
-	tokens := parseNameTokens(name)
-	groups := 0
+	return initialsVariantSlugsOf(name, parseNameTokens(name))
+}
+
+// probeableGroups counts a parsed name's initials groups and reports whether the
+// probe applies at all: a name with none has no other spelling, and one with
+// more than maxProbeGroups is the pathological case the cap exists for.
+func probeableGroups(tokens []nameToken) (groups int, ok bool) {
 	for _, t := range tokens {
 		if t.initials {
 			groups++
 		}
 	}
-	if groups == 0 || groups > maxProbeGroups {
+	return groups, groups > 0 && groups <= maxProbeGroups
+}
+
+// initialsVariantSlugsOf is initialsVariantSlugs over an already-parsed name.
+func initialsVariantSlugsOf(name string, tokens []nameToken) []string {
+	groups, ok := probeableGroups(tokens)
+	if !ok {
 		return nil
 	}
 
@@ -239,8 +259,15 @@ func spacedInitials(letters string) string {
 // person. The comparison is the marked key rather than the slug precisely
 // because the slug is what conflated them.
 func (p *planner) findInitialsVariant(name string) (slug string, found bool) {
-	key := markedKey(name)
-	for _, candidate := range initialsVariantSlugs(name) {
+	// The name is parsed ONCE and the probe declines before building anything
+	// when there is no initials group to respell - which is the overwhelming
+	// majority of credits, and this runs for every person the import creates.
+	tokens := parseNameTokens(name)
+	if _, ok := probeableGroups(tokens); !ok {
+		return "", false
+	}
+	key := markedKeyOf(tokens)
+	for _, candidate := range initialsVariantSlugsOf(name, tokens) {
 		stored, known := p.people[candidate]
 		if !known || markedKey(stored) != key {
 			continue

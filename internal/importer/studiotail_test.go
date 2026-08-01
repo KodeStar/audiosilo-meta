@@ -5,9 +5,9 @@ import (
 	"testing"
 )
 
-// attesting builds the attestFunc shape the planner produces (a slug set), from
+// seenAs builds the creditSeenFunc shape the planner produces (a slug set), from
 // the names a test wants to count as independently credited.
-func attesting(names ...string) attestFunc {
+func seenAs(names ...string) creditSeenFunc {
 	set := make(map[string]bool, len(names))
 	for _, n := range names {
 		set[Slugify(n)] = true
@@ -24,7 +24,7 @@ func TestStudioTailVocabulary(t *testing.T) {
 		if got := foldCredit(word); got != word {
 			t.Errorf("studioTail key %q is not canonical (foldCredit gives %q); it can never match", word, got)
 		}
-		if strings.Fields(word) != nil && len(strings.Fields(word)) != 1 {
+		if len(strings.Fields(word)) != 1 {
 			t.Errorf("studioTail key %q is not a single token", word)
 		}
 	}
@@ -57,16 +57,16 @@ func TestStudioTailVocabulary(t *testing.T) {
 // per separator shape, each with the attestation its tier requires.
 func TestStripStudioConcatTiers(t *testing.T) {
 	cases := []struct {
-		name     string
-		credit   string
-		attested attestFunc
-		want     string
+		name   string
+		credit string
+		seen   creditSeenFunc
+		want   string
 	}{
 		// Tier 1: a closed multi-word role label needs no attestation, and the
 		// person half may be a single token.
 		{"tier1 role label", "Aery Talento de Voz", nil, "Aery"},
 		{"tier1 english label", "Marnye Young Voice Talent", nil, "Marnye Young"},
-		{"tier1 walks down to an attested prefix", "Ken Clark Smooth Voice Over", attesting("Ken Clark"), "Ken Clark"},
+		{"tier1 walks down to an attested prefix", "Ken Clark Smooth Voice Over", seenAs("Ken Clark"), "Ken Clark"},
 		{"tier1 keeps the whole prefix when nothing is attested", "Ken Clark Smooth Voice Over", nil, "Ken Clark Smooth"},
 
 		// Tier 2: the "for" connector, no attestation.
@@ -75,25 +75,25 @@ func TestStripStudioConcatTiers(t *testing.T) {
 		{"tier2 refuses a one-token person", "Made for Success Publishing", nil, "Made for Success Publishing"},
 
 		// Tier 3: attested splits.
-		{"tier3 of", "Robert Wrenlock of Island Audio", attesting("Robert Wrenlock"), "Robert Wrenlock"},
-		{"tier3 paren", "Stefan Rudnicki (Skyboat Media)", attesting("Stefan Rudnicki"), "Stefan Rudnicki"},
-		{"tier3 bracket", "Duncan White [Scifi Publishing]", attesting("Duncan White"), "Duncan White"},
-		{"tier3 dash", "Alex Hyde-White - Punch Audio", attesting("Alex Hyde-White"), "Alex Hyde-White"},
-		{"tier3 slash", "Eileen Rizzo/Eye Hear Voices", attesting("Eileen Rizzo"), "Eileen Rizzo"},
-		{"tier3 pipe", "Eileen Rizzo|Eye Hear Voices", attesting("Eileen Rizzo"), "Eileen Rizzo"},
-		{"tier3 bare, both halves attested", "Alex Hyde-White Punch Audio", attesting("Alex Hyde-White", "Punch Audio"), "Alex Hyde-White"},
-		{"tier3 bare, longest attested person half wins", "Kelley Hazen Storyteller Productions", attesting("Kelley Hazen", "Storyteller Productions"), "Kelley Hazen"},
+		{"tier3 of", "Robert Wrenlock of Island Audio", seenAs("Robert Wrenlock"), "Robert Wrenlock"},
+		{"tier3 paren", "Stefan Rudnicki (Skyboat Media)", seenAs("Stefan Rudnicki"), "Stefan Rudnicki"},
+		{"tier3 bracket", "Duncan White [Scifi Publishing]", seenAs("Duncan White"), "Duncan White"},
+		{"tier3 dash", "Alex Hyde-White - Punch Audio", seenAs("Alex Hyde-White"), "Alex Hyde-White"},
+		{"tier3 slash", "Eileen Rizzo/Eye Hear Voices", seenAs("Eileen Rizzo"), "Eileen Rizzo"},
+		{"tier3 pipe", "Eileen Rizzo|Eye Hear Voices", seenAs("Eileen Rizzo"), "Eileen Rizzo"},
+		{"tier3 bare, both halves attested", "Alex Hyde-White Punch Audio", seenAs("Alex Hyde-White", "Punch Audio"), "Alex Hyde-White"},
+		{"tier3 bare, longest attested person half wins", "Kelley Hazen Storyteller Productions", seenAs("Kelley Hazen", "Storyteller Productions"), "Kelley Hazen"},
 
 		// Refusals inside tier 3.
 		{"tier3 of refuses an unattested person", "Robert Wrenlock of Island Audio", nil, "Robert Wrenlock of Island Audio"},
-		{"tier3 bare refuses an unattested tail", "Alex Hyde-White Punch Audio", attesting("Alex Hyde-White"), "Alex Hyde-White Punch Audio"},
-		{"tier3 bare refuses an unattested person", "Alex Hyde-White Punch Audio", attesting("Punch Audio"), "Alex Hyde-White Punch Audio"},
-		{"tier3 bare refuses a legal suffix", "Elle McNicoll Ltd", attesting("Elle McNicoll", "Ltd"), "Elle McNicoll Ltd"},
-		{"a tail that is not a studio word is not a tail", "Jasper Thorne Island Cottage", attesting("Jasper Thorne", "Island Cottage"), "Jasper Thorne Island Cottage"},
+		{"tier3 bare refuses an unattested tail", "Alex Hyde-White Punch Audio", seenAs("Alex Hyde-White"), "Alex Hyde-White Punch Audio"},
+		{"tier3 bare refuses an unattested person", "Alex Hyde-White Punch Audio", seenAs("Punch Audio"), "Alex Hyde-White Punch Audio"},
+		{"tier3 bare refuses a legal suffix", "Elle McNicoll Ltd", seenAs("Elle McNicoll", "Ltd"), "Elle McNicoll Ltd"},
+		{"a tail that is not a studio word is not a tail", "Jasper Thorne Island Cottage", seenAs("Jasper Thorne", "Island Cottage"), "Jasper Thorne Island Cottage"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := stripStudioConcat(tc.credit, tc.attested); got != tc.want {
+			if got := stripStudioConcat(tc.credit, tc.seen); got != tc.want {
 				t.Errorf("stripStudioConcat(%q) = %q, want %q", tc.credit, got, tc.want)
 			}
 		})
@@ -141,7 +141,7 @@ func TestStudioTailFalsePositives(t *testing.T) {
 	}
 	for _, name := range intact {
 		t.Run(name, func(t *testing.T) {
-			if got := stripStudioConcat(name, everyFragmentAttested(name)); got != name {
+			if got := stripStudioConcat(name, everyFragmentSeen(name)); got != name {
 				t.Errorf("stripStudioConcat(%q) = %q, want it untouched", name, got)
 			}
 		})
@@ -167,16 +167,16 @@ func TestStudioTailCorporateOfNamesNeedAttestation(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			// The realistic universe: the catalogue holds people, not the
 			// fragments of a corporate name.
-			if got := stripStudioConcat(name, attesting("Alex Hyde-White", "Punch Audio")); got != name {
+			if got := stripStudioConcat(name, seenAs("Alex Hyde-White", "Punch Audio")); got != name {
 				t.Errorf("stripStudioConcat(%q) = %q, want it untouched", name, got)
 			}
 		})
 	}
 }
 
-// everyFragmentAttested attests every contiguous fragment of a name - the
-// worst case a real attestation universe could ever present.
-func everyFragmentAttested(name string) attestFunc {
+// everyFragmentSeen counts every contiguous fragment of a name as a credit -
+// the worst case a real census could ever present.
+func everyFragmentSeen(name string) creditSeenFunc {
 	tokens := strings.Fields(name)
 	var fragments []string
 	for i := range tokens {
@@ -184,7 +184,7 @@ func everyFragmentAttested(name string) attestFunc {
 			fragments = append(fragments, strings.Join(tokens[i:j], " "))
 		}
 	}
-	return attesting(fragments...)
+	return seenAs(fragments...)
 }
 
 // TestStudioTailAttestationGate pins that the SAME string is decided by the
@@ -194,7 +194,7 @@ func TestStudioTailAttestationGate(t *testing.T) {
 	if got := stripStudioConcat(name, nil); got != name {
 		t.Errorf("with nothing attested: got %q, want the name untouched", got)
 	}
-	if got, want := stripStudioConcat(name, attesting("Zachary Webber", "Punch Audio")), "Zachary Webber"; got != want {
+	if got, want := stripStudioConcat(name, seenAs("Zachary Webber", "Punch Audio")), "Zachary Webber"; got != want {
 		t.Errorf("with both halves attested: got %q, want %q", got, want)
 	}
 }
@@ -202,7 +202,7 @@ func TestStudioTailAttestationGate(t *testing.T) {
 // TestStudioTailFlaggedSpecimens covers the three specimens the credit-quality
 // report singled out, including the one it deliberately leaves alone.
 func TestStudioTailFlaggedSpecimens(t *testing.T) {
-	if got, want := stripStudioConcat("Alex Hyde-White Punch Audio", attesting("Alex Hyde-White", "Punch Audio")), "Alex Hyde-White"; got != want {
+	if got, want := stripStudioConcat("Alex Hyde-White Punch Audio", seenAs("Alex Hyde-White", "Punch Audio")), "Alex Hyde-White"; got != want {
 		t.Errorf("bare specimen = %q, want %q", got, want)
 	}
 	if got, want := stripStudioConcat("Aery Talento de Voz", nil), "Aery"; got != want {
@@ -214,7 +214,7 @@ func TestStudioTailFlaggedSpecimens(t *testing.T) {
 	// hand-remediation item - pinned here so a future widening of the rule has
 	// to change this line deliberately.
 	const watkins = "A.J Watkins of Books.Audio"
-	if got := stripStudioConcat(watkins, everyFragmentAttested(watkins)); got != watkins {
+	if got := stripStudioConcat(watkins, everyFragmentSeen(watkins)); got != watkins {
 		t.Errorf("A.J Watkins specimen = %q, want it imported as-is", got)
 	}
 }
@@ -224,7 +224,7 @@ func TestStudioTailFlaggedSpecimens(t *testing.T) {
 // and the public entry point (no attestation universe) still gets the two
 // self-evidencing tiers.
 func TestCreditWithRolesAppliesTheStudioTail(t *testing.T) {
-	got, roles := CreditWithRolesAttested("Ann Russek for HotGhost Productions - translator", nil)
+	got, roles := creditWithRoles("Ann Russek for HotGhost Productions - translator", nil)
 	if want := "Ann Russek"; got != want {
 		t.Errorf("cleaned = %q, want %q", got, want)
 	}

@@ -1,15 +1,17 @@
 package importer
 
 import (
+	"slices"
 	"testing"
 )
 
-// TestMarkedKeyGroupsInitialsSpellings pins the three spellings of one initials
-// group onto one key, and - the load-bearing half - keeps a mixed-case short
-// word off it. Every "must not" pair below is a real pair of DIFFERENT people in
-// the dump that the naive slug-level collapse merged.
-func TestMarkedKeyGroupsInitialsSpellings(t *testing.T) {
-	same := [][2]string{
+// The report's validation corpus, shared by the key-level test and the
+// probe-level test below so the two can never disagree about which pairs are
+// which. Every samePair is one person spelling their initials two ways; every
+// differentPair is a real pair of DIFFERENT people in the dump that the naive
+// slug-level collapse merged.
+var (
+	initialsSamePairs = [][2]string{
 		{"A.B. Kovacs", "AB Kovacs"},
 		{"A. B. Kovacs", "AB Kovacs"},
 		{"A B Kovacs", "A.B. Kovacs"},
@@ -22,13 +24,8 @@ func TestMarkedKeyGroupsInitialsSpellings(t *testing.T) {
 		{"J C H Rigby", "JCH Rigby"},
 		{"Lawrence W. Gold M.D.", "Lawrence W. Gold MD"},
 	}
-	for _, pair := range same {
-		if a, b := markedKey(pair[0]), markedKey(pair[1]); a != b {
-			t.Errorf("markedKey(%q) = %q, markedKey(%q) = %q; want the same key", pair[0], a, pair[1], b)
-		}
-	}
 
-	differ := [][2]string{
+	initialsDifferentPairs = [][2]string{
 		{"E. M. Brown", "Em Brown"},
 		{"E. D. Baker", "Ed Baker"},
 		{"E. D. Martin", "Ed Martin"},
@@ -38,10 +35,25 @@ func TestMarkedKeyGroupsInitialsSpellings(t *testing.T) {
 		{"A. B. Jackson", "Ab Jackson"},
 		{"X E Sands", "Xe Sands"},
 		{"M. R. James", "Mr James"},
-		// An entirely-uppercase name carries no case evidence, so nothing in it
-		// is read as an initials cluster.
-		{"AB KOVACS", "A.B. Kovacs"},
 	}
+)
+
+// TestMarkedKeyGroupsInitialsSpellings pins the three spellings of one initials
+// group onto one key, and - the load-bearing half - keeps a mixed-case short
+// word off it.
+func TestMarkedKeyGroupsInitialsSpellings(t *testing.T) {
+	for _, pair := range initialsSamePairs {
+		if a, b := markedKey(pair[0]), markedKey(pair[1]); a != b {
+			t.Errorf("markedKey(%q) = %q, markedKey(%q) = %q; want the same key", pair[0], a, pair[1], b)
+		}
+	}
+
+	differ := append(slices.Clone(initialsDifferentPairs),
+		// An entirely-uppercase name carries no case evidence, so nothing in it
+		// is read as an initials cluster. This one is key-level only: the probe
+		// test drives a planner, where the two spellings ALSO stay apart, but
+		// the reason is worth pinning where the key is computed.
+		[2]string{"AB KOVACS", "A.B. Kovacs"})
 	for _, pair := range differ {
 		if a, b := markedKey(pair[0]), markedKey(pair[1]); a == b {
 			t.Errorf("markedKey(%q) == markedKey(%q) == %q; a short mixed-case word is not an initials group", pair[0], pair[1], a)
@@ -63,16 +75,8 @@ func TestInitialsVariantSlugs(t *testing.T) {
 		{"Ramon de Ocampo", nil},
 	}
 	for _, tc := range cases {
-		got := initialsVariantSlugs(tc.name)
-		if len(got) != len(tc.want) {
+		if got := initialsVariantSlugs(tc.name); !slices.Equal(got, tc.want) {
 			t.Errorf("initialsVariantSlugs(%q) = %v, want %v", tc.name, got, tc.want)
-			continue
-		}
-		for i := range got {
-			if got[i] != tc.want[i] {
-				t.Errorf("initialsVariantSlugs(%q) = %v, want %v", tc.name, got, tc.want)
-				break
-			}
 		}
 	}
 }
@@ -82,10 +86,12 @@ func TestInitialsVariantSlugs(t *testing.T) {
 // directions (the probe is symmetric), and must never do so across the
 // initials/short-word boundary.
 func TestInitialsProbeMergesSpellings(t *testing.T) {
-	// The twenty cases the report's validation names: ten pairs that are one
-	// person and must merge onto whichever spelling is already recorded, and
-	// nine adversarial pairs that are two people and must not.
-	merge := [][2]string{
+	// The report's validation set: ten pairs that are one person and must merge
+	// onto whichever spelling is already recorded, and the nine adversarial
+	// pairs that are two people and must not. Both are driven through the same
+	// loop, in both orders, so "merges" and "stays apart" are the SAME assertion
+	// with the expectation flipped.
+	mergePairs := [][2]string{
 		{"AB Kovacs", "A.B. Kovacs"},
 		{"AJ Newman", "A J Newman"},
 		{"AK Alliss", "A.K. Alliss"},
@@ -97,48 +103,38 @@ func TestInitialsProbeMergesSpellings(t *testing.T) {
 		{"LE Barbant", "L. E. Barbant"},
 		{"Deepak Chopra MD", "Deepak Chopra M.D."},
 	}
-	for _, pair := range merge {
-		for _, order := range [][2]string{{pair[0], pair[1]}, {pair[1], pair[0]}} {
-			first, second := order[0], order[1]
-			t.Run(first+" then "+second, func(t *testing.T) {
-				p := probePlanner(t)
-				kept := p.getOrCreatePerson(first, func(string, ...any) {})
-				got := p.getOrCreatePerson(second, func(string, ...any) {})
-				if got != kept {
-					t.Errorf("%q resolved to %q, want the record %q already minted (%q)", second, got, first, kept)
-				}
-				if p.summary.NewPeople != 1 {
-					t.Errorf("NewPeople = %d, want 1 - the second spelling minted a duplicate", p.summary.NewPeople)
-				}
-			})
-		}
-	}
 
-	apart := [][2]string{
-		{"E. M. Brown", "Em Brown"},
-		{"E. D. Baker", "Ed Baker"},
-		{"E. D. Martin", "Ed Martin"},
-		{"A.L. Brooks", "Al Brooks"},
-		{"A.L. Smith", "Al Smith"},
-		{"A.L. Gordon", "Al Gordon"},
-		{"A. B. Jackson", "Ab Jackson"},
-		{"X E Sands", "Xe Sands"},
-		{"M. R. James", "Mr James"},
-	}
-	for _, pair := range apart {
-		for _, order := range [][2]string{{pair[0], pair[1]}, {pair[1], pair[0]}} {
-			first, second := order[0], order[1]
-			t.Run(first+" vs "+second, func(t *testing.T) {
-				p := probePlanner(t)
-				kept := p.getOrCreatePerson(first, func(string, ...any) {})
-				got := p.getOrCreatePerson(second, func(string, ...any) {})
-				if got == kept {
-					t.Errorf("%q merged into %q; a short mixed-case given name is not an initials group", second, first)
-				}
-				if p.summary.NewPeople != 2 {
-					t.Errorf("NewPeople = %d, want 2 - these are different people", p.summary.NewPeople)
-				}
-			})
+	for _, group := range []struct {
+		pairs     [][2]string
+		wantMerge bool
+	}{
+		{mergePairs, true},
+		{initialsDifferentPairs, false},
+	} {
+		for _, pair := range group.pairs {
+			for _, order := range [][2]string{{pair[0], pair[1]}, {pair[1], pair[0]}} {
+				first, second := order[0], order[1]
+				t.Run(first+" then "+second, func(t *testing.T) {
+					p := probePlanner(t)
+					kept := p.getOrCreatePerson(first, func(string, ...any) {})
+					got := p.getOrCreatePerson(second, func(string, ...any) {})
+
+					if merged := got == kept; merged != group.wantMerge {
+						if group.wantMerge {
+							t.Errorf("%q resolved to %q, want the record %q already minted (%q)", second, got, first, kept)
+						} else {
+							t.Errorf("%q merged into %q; a short mixed-case given name is not an initials group", second, first)
+						}
+					}
+					wantPeople := 2
+					if group.wantMerge {
+						wantPeople = 1
+					}
+					if p.summary.NewPeople != wantPeople {
+						t.Errorf("NewPeople = %d, want %d", p.summary.NewPeople, wantPeople)
+					}
+				})
+			}
 		}
 	}
 }

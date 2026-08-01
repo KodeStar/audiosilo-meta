@@ -300,10 +300,6 @@ var productionQualifiers = map[string]bool{
 	"full cast edition": true,
 }
 
-// trailingParenRE captures the content of a title's trailing parenthetical (or
-// bracketed) qualifier, with its surrounding whitespace.
-var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
-
 // qualifierPunct folds the punctuation a qualifier is spelled with into the
 // spaces normQualifier then collapses. The en dash is listed because retailer
 // titles really do print one; it is DATA being folded here, not prose, so it

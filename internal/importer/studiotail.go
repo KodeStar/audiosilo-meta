@@ -3,6 +3,7 @@ package importer
 import (
 	"regexp"
 	"strings"
+	"sync"
 )
 
 // studiotail.go is the fourth step of CreditWithRoles' bounded fixpoint: it
@@ -132,6 +133,22 @@ var roleLabelTails = []string{
 	"voice overs",    // the plural spelling of the same phrase
 }
 
+// roleLabel is one tier-1 vocabulary entry with its token count precomputed.
+// The vocabulary is constant, so re-splitting it on every credit name is pure
+// waste; it is derived FROM roleLabelTails so the two cannot drift.
+type roleLabel struct {
+	folded string // the label in foldCredit form, exactly as roleLabelTails spells it
+	tokens int    // how many tokens it occupies at the end of a name
+}
+
+var roleLabelsParsed = func() []roleLabel {
+	out := make([]roleLabel, 0, len(roleLabelTails))
+	for _, label := range roleLabelTails {
+		out = append(out, roleLabel{folded: label, tokens: len(strings.Fields(label))})
+	}
+	return out
+}()
+
 // tier2Connector is the one connector whose evidence stands on its own: 79 dump
 // names, ~97% of them a narrator credited to a production house (66 are
 // "<narrator> for {HotGhost,Hot Ghost,HG} Production(s)" spelling variants), and
@@ -161,53 +178,72 @@ var dashSepRE = regexp.MustCompile(`\s+-{1,2}\s+|\s*[–—]\s*`)
 // whitespace is required: neither character appears inside a name.
 var slashPipeRE = regexp.MustCompile(`\s*[/|]\s*`)
 
+// Each separator regex is prefiltered on the characters it cannot match
+// without. These are NECESSARY conditions, so a prefilter can never change a
+// result - and the overwhelming majority of credit names contain none of them,
+// which is what makes the three regexes free on the common path.
+const (
+	dashSepChars   = "-–—"
+	slashPipeChars = "/|"
+	// trailingParenRE anchors on a CLOSING bracket at the end of the string.
+	closeBracketChars = ")]"
+)
+
 // minPersonTokens is the floor on a person half. One token is not enough
 // evidence to cut a name on: "Ken" is itself an attested mononym credit, so a
 // one-token floor turns "Ken Clark Smooth Voiceovers" into "Ken". Tier 1 is
 // exempt because its tail is a closed vocabulary rather than an attestation.
 const minPersonTokens = 2
 
-// attestFunc reports whether a name is independently attested as a credit -
-// somewhere in the catalogue, or elsewhere in the batch being imported. A nil
-// attestFunc attests nothing, which leaves tiers 1 and 2 (the two that need no
-// attestation) and disables tier 3 entirely. See planner.creditAttestation.
-type attestFunc func(name string) bool
+// creditSeenFunc reports whether a name has been SEEN as a credit in its own
+// right - somewhere in the catalogue, or elsewhere in the batch being imported.
+// A nil creditSeenFunc has seen nothing, which leaves tiers 1 and 2 (the two
+// that carry their own evidence) and disables tier 3 entirely. See
+// planner.creditCensusOf.
+//
+// It is deliberately NOT called "attested": the importer's trust-tier
+// vocabulary (attest.go, LICENSING.md) already owns that word for a different
+// question - whether a record's facts came from a user rather than a bulk
+// mirror. This one is only "has anyone else been credited under this name".
+type creditSeenFunc func(name string) bool
 
-// attests is the nil-safe call.
-func (a attestFunc) attests(name string) bool { return a != nil && a(name) }
+// seen is the nil-safe call.
+func (f creditSeenFunc) seen(name string) bool { return f != nil && f(name) }
 
 // stripStudioConcat removes a concatenated studio/production credit from name,
 // returning the name unchanged when no tier's evidence bar is met. It only ever
 // shortens the name, which is what lets CreditWithRoles' fixpoint converge.
-func stripStudioConcat(name string, attested attestFunc) string {
-	for _, tier := range []func(string, attestFunc) (string, bool){
-		tier1RoleLabel,
-		tier2ForConnector,
-		tier3AttestedSplit,
-	} {
-		if cleaned, ok := tier(name, attested); ok {
-			return cleaned
-		}
+//
+// The name is tokenized ONCE here and the tokens handed down: all three tiers
+// work over the same split, and this runs per credit per row.
+func stripStudioConcat(name string, seen creditSeenFunc) string {
+	tokens := strings.Fields(name)
+	if cleaned, ok := tier1RoleLabel(tokens, seen); ok {
+		return cleaned
+	}
+	if cleaned, ok := tier2ForConnector(tokens); ok {
+		return cleaned
+	}
+	if cleaned, ok := tier3SeenSplit(name, tokens, seen); ok {
+		return cleaned
 	}
 	return name
 }
 
 // tier1RoleLabel strips a closed multi-word role-label tail. The remaining
-// prefix is then walked DOWN to the longest independently attested form (floored
+// prefix is then walked DOWN to the longest independently seen form (floored
 // at minPersonTokens) so a brand adjective the label dragged along goes with it
-// ("Ken Clark Smooth Voiceovers"); with nothing attested the whole prefix is
+// ("Ken Clark Smooth Voiceovers"); with nothing seen the whole prefix is
 // kept, minus any trailing connector or possessive.
-func tier1RoleLabel(name string, attested attestFunc) (string, bool) {
-	tokens := strings.Fields(name)
-	for _, label := range roleLabelTails {
-		n := len(strings.Fields(label))
-		if len(tokens) <= n {
+func tier1RoleLabel(tokens []string, seen creditSeenFunc) (string, bool) {
+	for _, label := range roleLabelsParsed {
+		if len(tokens) <= label.tokens {
 			continue
 		}
-		if foldCredit(strings.Join(tokens[len(tokens)-n:], " ")) != label {
+		if foldCredit(strings.Join(tokens[len(tokens)-label.tokens:], " ")) != label.folded {
 			continue
 		}
-		person := trimPersonTail(walkDownAttested(tokens[:len(tokens)-n], attested))
+		person := trimPersonTail(walkDownSeen(tokens[:len(tokens)-label.tokens], seen))
 		// The 2-token floor does not apply (the tail is closed-vocabulary
 		// evidence, so "Aery Talento de Voz" -> "Aery" is sound), but the
 		// remaining guards do.
@@ -220,64 +256,83 @@ func tier1RoleLabel(name string, attested attestFunc) (string, bool) {
 }
 
 // tier2ForConnector strips "<person, 2+ tokens> for <tail ending in a studio
-// word>" with no attestation required.
-func tier2ForConnector(name string, _ attestFunc) (string, bool) {
-	person, tail, ok := splitAtConnector(strings.Fields(name), func(t string) bool { return t == tier2Connector })
+// word>". It consults no census at all - the "for" connector between a name and
+// a production house is its own evidence - which is why it takes none.
+func tier2ForConnector(tokens []string) (string, bool) {
+	person, tail, ok := splitAtConnector(tokens, func(t string) bool { return t == tier2Connector })
 	if !ok || !tailIsStudio(tail, studioTail) || !personHalfOK(person, minPersonTokens) {
 		return "", false
 	}
 	return strings.Join(person, " "), true
 }
 
-// tier3AttestedSplit is the attested tier: the person half must be a credit in
+// tier3SeenSplit is the census-backed tier: the person half must be a credit in
 // its own right before the string is cut, and for the BARE form (the only shape
-// with no boundary marker at all) the removed tail must be attested too.
+// with no boundary marker at all) the removed tail must have been seen too.
 //
 // The explicit-separator forms are tried before the bare scan, so a string that
 // carries a boundary marker is always cut AT it.
-func tier3AttestedSplit(name string, attested attestFunc) (string, bool) {
+func tier3SeenSplit(name string, tokens []string, seen creditSeenFunc) (string, bool) {
+	// With no census, every branch below fails its seen() guard. That is the
+	// majority caller (the libex parse layer, the census bootstrap itself,
+	// SplitNames, pkg/scan), so it is worth not running the separator regexes
+	// and the bare scan to reach a foregone "no".
+	if seen == nil {
+		return "", false
+	}
+
+	// accept applies the guards the separator and connector forms share. The
+	// person half is looked up in the census under the text the split produced,
+	// but returned in its whitespace-normalized form.
+	accept := func(person, tail []string, lookupText string) (string, bool) {
+		if !tailIsStudio(tail, studioTail) || !personHalfOK(person, minPersonTokens) || !seen.seen(lookupText) {
+			return "", false
+		}
+		return strings.Join(person, " "), true
+	}
+
+	sawSeparator := false
 	for _, split := range []func(string) (person, tail string, ok bool){
-		splitTrailingParen, splitAtRegexp(dashSepRE), splitAtRegexp(slashPipeRE),
+		splitTrailingParen, splitAtRegexp(dashSepRE, dashSepChars), splitAtRegexp(slashPipeRE, slashPipeChars),
 	} {
 		personText, tailText, ok := split(name)
 		if !ok {
 			continue
 		}
-		person, tail := strings.Fields(personText), strings.Fields(tailText)
-		if tailIsStudio(tail, studioTail) && personHalfOK(person, minPersonTokens) && attested.attests(personText) {
-			return strings.Join(person, " "), true
+		sawSeparator = true
+		if cleaned, ok := accept(strings.Fields(personText), strings.Fields(tailText), personText); ok {
+			return cleaned, true
 		}
 	}
 
-	tokens := strings.Fields(name)
 	if person, tail, ok := splitAtConnector(tokens, func(t string) bool { return tier3Connectors[t] }); ok {
-		personText := strings.Join(person, " ")
-		if tailIsStudio(tail, studioTail) && personHalfOK(person, minPersonTokens) && attested.attests(personText) {
-			return personText, true
+		if cleaned, ok := accept(person, tail, strings.Join(person, " ")); ok {
+			return cleaned, true
 		}
 	}
 
 	// The bare concatenation. The tail's final token is the whole name's final
 	// token, so the vocabulary test is made once; the split point is then the
-	// LONGEST person half whose two sides are both attested, so a cut keeps as
+	// LONGEST person half whose two sides have both been seen, so a cut keeps as
 	// much of the name as the evidence supports.
-	if !isBareShape(name, tokens) || !tailIsStudio(tokens, bareStudioTail()) {
+	if !isBareShape(tokens, sawSeparator) || !tailIsStudio(tokens, bareStudioTail()) {
 		return "", false
 	}
 	for i := len(tokens) - 1; i >= minPersonTokens; i-- {
 		person, tail := tokens[:i], tokens[i:]
 		personText, tailText := strings.Join(person, " "), strings.Join(tail, " ")
-		if personHalfOK(person, minPersonTokens) && attested.attests(personText) && attested.attests(tailText) {
+		if personHalfOK(person, minPersonTokens) && seen.seen(personText) && seen.seen(tailText) {
 			return personText, true
 		}
 	}
 	return "", false
 }
 
-// bareStudioTail is studioTail without the corporate legal suffixes. Built per
-// call from the two vocabularies rather than stored, so the exclusion can never
-// drift out of step with the list it excludes from.
-func bareStudioTail() map[string]bool {
+// bareStudioTail is studioTail without the corporate legal suffixes. It is
+// DERIVED from the two vocabularies rather than spelled out, so the exclusion
+// can never drift out of step with the list it excludes from - and computed
+// once rather than per credit name.
+var bareStudioTail = sync.OnceValue(func() map[string]bool {
 	out := make(map[string]bool, len(studioTail))
 	for word := range studioTail {
 		if !corporateLegalSuffix[word] {
@@ -285,7 +340,7 @@ func bareStudioTail() map[string]bool {
 		}
 	}
 	return out
-}
+})
 
 // splitAtConnector splits tokens at the FIRST connector match that leaves a
 // non-empty half on each side.
@@ -300,6 +355,9 @@ func splitAtConnector(tokens []string, isConnector func(string) bool) (person, t
 
 // splitTrailingParen splits "<person> (<tail>)" / "<person> [<tail>]".
 func splitTrailingParen(name string) (person, tail string, ok bool) {
+	if !strings.ContainsAny(name, closeBracketChars) {
+		return "", "", false
+	}
 	m := trailingParenRE.FindStringSubmatchIndex(name)
 	if m == nil {
 		return "", "", false
@@ -308,9 +366,13 @@ func splitTrailingParen(name string) (person, tail string, ok bool) {
 }
 
 // splitAtRegexp splits at the LAST match of sep, so a name carrying an earlier
-// one keeps it and only the trailing tail is considered.
-func splitAtRegexp(sep *regexp.Regexp) func(string) (string, string, bool) {
+// one keeps it and only the trailing tail is considered. trigger is the set of
+// characters sep cannot match without (see dashSepChars).
+func splitAtRegexp(sep *regexp.Regexp, trigger string) func(string) (string, string, bool) {
 	return func(name string) (person, tail string, ok bool) {
+		if !strings.ContainsAny(name, trigger) {
+			return "", "", false
+		}
 		all := sep.FindAllStringIndex(name, -1)
 		if len(all) == 0 {
 			return "", "", false
@@ -320,123 +382,53 @@ func splitAtRegexp(sep *regexp.Regexp) func(string) (string, string, bool) {
 	}
 }
 
-// walkDownAttested returns the longest strictly-shorter prefix of tokens that is
-// independently attested, floored at minPersonTokens, and the whole slice when
-// none is.
-func walkDownAttested(tokens []string, attested attestFunc) []string {
+// walkDownSeen returns the longest strictly-shorter prefix of tokens that has
+// independently been seen as a credit, floored at minPersonTokens, and the
+// whole slice when none has.
+func walkDownSeen(tokens []string, seen creditSeenFunc) []string {
 	for k := len(tokens) - 1; k >= minPersonTokens; k-- {
-		if attested.attests(strings.Join(tokens[:k], " ")) {
+		if seen.seen(strings.Join(tokens[:k], " ")) {
 			return tokens[:k]
 		}
 	}
 	return tokens
 }
 
+// isBoundaryToken reports whether a FOLDED token marks a boundary rather than
+// naming a person: either tier's connector, or the head of a co-credit. It is
+// the single spelling of that question - a person half may not END on one
+// (personHalfOK), trimPersonTail drops it, and its presence ANYWHERE in a string
+// means the string is not the bare shape (isBareShape).
+func isBoundaryToken(folded string) bool {
+	return personTailStop[folded] || tier3Connectors[folded] || folded == tier2Connector
+}
+
 // trimPersonTail drops the trailing tokens a person's name never ends on: a
 // connector, a conjunction, or a standalone possessive (see personTailStop).
 func trimPersonTail(tokens []string) []string {
-	for len(tokens) > 0 {
-		last := foldCredit(tokens[len(tokens)-1])
-		if !personTailStop[last] && !tier3Connectors[last] && last != tier2Connector {
-			break
-		}
+	for len(tokens) > 0 && isBoundaryToken(foldCredit(tokens[len(tokens)-1])) {
 		tokens = tokens[:len(tokens)-1]
 	}
 	return tokens
 }
 
 // personHalfOK applies the guards every tier shares to a candidate person half:
-// a minimum token count, and a final token that is neither a studio word (which
-// would mean the cut landed inside the entity's own name) nor a connector or
-// conjunction (which would mean it landed one token too late).
+// a minimum token count (minTokens is always at least 1, so this also rejects an
+// empty half), and a final token that is neither a studio word (which would mean
+// the cut landed inside the entity's own name) nor a boundary token (which would
+// mean it landed one token too late).
 func personHalfOK(tokens []string, minTokens int) bool {
-	if len(tokens) < minTokens || len(tokens) == 0 {
+	if len(tokens) < minTokens {
 		return false
 	}
 	last := foldCredit(tokens[len(tokens)-1])
-	return !studioTail[last] && !personTailStop[last] && !tier3Connectors[last] && last != tier2Connector
+	return !studioTail[last] && !isBoundaryToken(last)
 }
 
 // tailIsStudio reports whether the tail's FINAL token is in vocab - the whole
 // test for "is this half an entity rather than a person".
 func tailIsStudio(tail []string, vocab map[string]bool) bool {
 	return len(tail) > 0 && vocab[foldCredit(tail[len(tail)-1])]
-}
-
-// creditAttestation builds this run's attestation universe: the set of slugs a
-// name must land on to count as "independently a credit somewhere".
-//
-// The report that specified this rule measured attestation against the whole
-// 1.13M-book libex dump, which the importer does not have and must never carry a
-// copy of (LICENSING.md's import posture: a bounded source, never a mirror). The
-// two things it DOES have are exactly the two the report names as the practical
-// substitute, and both are evidence of the same kind - a name somebody actually
-// credited:
-//
-//	the catalogue  every person record already committed, as loaded (14.9k after
-//	               seed wave 1). This is where "Alex Hyde-White" and "Punch
-//	               Audio" both come from: the studio has a record of its own,
-//	               which is precisely what makes the concatenation visible.
-//	the batch      a census of every credit name in the rows being imported,
-//	               author and narrator alike, in the source's own spelling AND
-//	               in its self-evidencing cleaned form (tiers 1-2, which need no
-//	               attestation). The cleaned form is what lets one row's
-//	               "<narrator> for HotGhost Productions" attest the narrator for
-//	               a second row that spells the same credit bare.
-//
-// It is deliberately a SNAPSHOT, taken after loadExisting and before the first
-// row is planned, rather than a live read of p.people: consulting a set that
-// grows as records are created would make a name's cleaning depend on the order
-// the rows happen to arrive in, and two runs over the same export could disagree.
-// This is the same batch-pre-pass shape resolveWorkTitles uses, for the same
-// reason.
-//
-// The universe being SMALLER than the dump only ever costs a missed cleanup
-// (the name imports as the source spelled it, which is what happens today and is
-// a maintainer PR away from fixed). It cannot cost a wrong one: every tier that
-// consults it requires MORE evidence than the tiers that do not.
-func (p *planner) creditAttestation(books []sourceBook) attestFunc {
-	universe := make(map[string]bool, len(p.people)+len(books)*2)
-	for slug := range p.people {
-		universe[slug] = true
-	}
-	record := func(name string) {
-		if slug := Slugify(name); slug != "" {
-			universe[slug] = true
-		}
-	}
-	for _, b := range books {
-		for _, name := range rowRawCreditNames(b) {
-			record(name)
-			// The name as the two self-evidencing tiers would clean it. Passing
-			// nil is what keeps this bootstrap honest: the census is built from
-			// rules that never consult the census.
-			cleaned, _ := CreditWithRolesAttested(name, nil)
-			record(cleaned)
-		}
-	}
-	return func(name string) bool { return universe[Slugify(name)] }
-}
-
-// rowRawCreditNames is every credit name a row states, author and narrator, in
-// the SOURCE's own spelling - the structured list when the source parsed one,
-// else its comma-joined string, which is the same choice sourceCredits makes.
-func rowRawCreditNames(b sourceBook) []string {
-	var out []string
-	for _, list := range []struct {
-		typed  []string
-		joined string
-	}{
-		{b.authors, b.str("author")},
-		{b.narrators, b.str("narrated_by")},
-	} {
-		if len(list.typed) > 0 {
-			out = append(out, list.typed...)
-			continue
-		}
-		out = append(out, splitRawNames(list.joined)...)
-	}
-	return out
 }
 
 // isBareShape reports whether the name really is the bare shape - a run of name
@@ -446,13 +438,17 @@ func rowRawCreditNames(b sourceBook) []string {
 // tier declined it (the person half would be the single token "Way"), and
 // letting the bare scan cut it at "Way of Life | Press" would resurrect exactly
 // the false positive the connector tier exists to prevent.
-func isBareShape(name string, tokens []string) bool {
-	if dashSepRE.MatchString(name) || slashPipeRE.MatchString(name) || trailingParenRE.MatchString(name) {
+//
+// sawSeparator is the caller's record of whether any of the three separator
+// splitters matched. tier3SeenSplit has just run all three by the time it gets
+// here (it only returns early on an ACCEPTED cut), so re-running the regexes to
+// ask the same question would be pure duplicate work.
+func isBareShape(tokens []string, sawSeparator bool) bool {
+	if sawSeparator {
 		return false
 	}
 	for _, t := range tokens {
-		folded := foldCredit(t)
-		if tier3Connectors[folded] || folded == tier2Connector || personTailStop[folded] {
+		if isBoundaryToken(foldCredit(t)) {
 			return false
 		}
 	}

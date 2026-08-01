@@ -28,12 +28,28 @@ import (
 )
 
 // The fixture records are minimal but schema-valid, so check.Load's verdict is
-// about structure rather than about missing fields. A person's name is the
-// rendering of their slug because the id has to BE the name's slug
-// (checkPersonSlug) - the one fixture that deliberately breaks that is the
-// stale duplicate below, which every case drops before metacheck sees it.
-func personRec(slug, name string) string {
+// about structure rather than about missing fields.
+
+// personRec is a person whose name is DERIVED from their slug, because the id
+// has to BE the slug of the name (pkg/check's checkPersonSlug). Deriving it
+// means a fixture can never be renamed into a rule violation by hand.
+func personRec(slug string) string { return personNamed(slug, displayName(slug)) }
+
+// personNamed is personRec with the name spelled out, for the one fixture that
+// deliberately breaks the id == Slugify(name) rule: the stale duplicate copy,
+// which every case that uses it drops before metacheck sees the tree.
+func personNamed(slug, name string) string {
 	return `{"id":"` + slug + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
+}
+
+// displayName renders a slug back into the name it came from ("p-aa" -> "P Aa").
+// Mirrors the same helper in pkg/pack's converge fixtures.
+func displayName(slug string) string {
+	words := strings.Split(slug, "-")
+	for i, w := range words {
+		words[i] = strings.ToUpper(w[:1]) + w[1:]
+	}
+	return strings.Join(words, " ")
 }
 
 func workRec(slug string) string {
@@ -58,7 +74,7 @@ func packWith(entries map[string]string) string {
 // people is the base every fixture carries: the author the works reference, so
 // nothing fails integrity for a reason that is not the point of the case.
 func peopleBase() map[string]string {
-	return map[string]string{"p-aa": personRec("p-aa", "P Aa")}
+	return map[string]string{"p-aa": personRec("p-aa")}
 }
 
 // entrySet lists every entry in the tree as "<family>/<slug>", so a heal can be
@@ -150,8 +166,8 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "stray subdirectory in a flat family",
 			files: map[string]string{
 				"people/0.json":        packWith(peopleBase()),
-				"people/p-mm.json":     packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}),
-				"people/sub/p-zz.json": packWith(map[string]string{"p-zz": personRec("p-zz", "P Zz")}),
+				"people/p-mm.json":     packWith(map[string]string{"p-mm": personRec("p-mm")}),
+				"people/sub/p-zz.json": packWith(map[string]string{"p-zz": personRec("p-zz")}),
 				"works/0/0.json":       packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: "people/sub/p-zz.json is not a pack",
@@ -162,7 +178,7 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "invalid slug as a pack name",
 			files: map[string]string{
 				"people/0.json":        packWith(peopleBase()),
-				"people/Bad_Name.json": packWith(map[string]string{"p-zz": personRec("p-zz", "P Zz")}),
+				"people/Bad_Name.json": packWith(map[string]string{"p-zz": personRec("p-zz")}),
 				"works/0/0.json":       packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: "people/Bad_Name.json is not a pack",
@@ -185,10 +201,10 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 			name: "duplicate entry across two packs",
 			files: map[string]string{
 				"people/0.json": packWith(map[string]string{
-					"p-aa": personRec("p-aa", "P Aa"),
-					"p-mm": personRec("p-mm", "P Mm Stale Copy"),
+					"p-aa": personRec("p-aa"),
+					"p-mm": personNamed("p-mm", "P Mm Stale Copy"),
 				}),
-				"people/p-mm.json": packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}),
+				"people/p-mm.json": packWith(map[string]string{"p-mm": personRec("p-mm")}),
 				"works/0/0.json":   packWith(map[string]string{"a-one": workRec("a-one")}),
 			},
 			wantLine: `entry "p-mm" is in both`,
@@ -254,11 +270,11 @@ func TestHealsTheReviewReproductions(t *testing.T) {
 func TestConflictKeepsTheCorrectlyPlacedCopy(t *testing.T) {
 	dir := t.TempDir()
 	writeFile(t, filepath.Join(dir, "people", "0.json"), packWith(map[string]string{
-		"p-aa": personRec("p-aa", "P Aa"),
-		"p-mm": personRec("p-mm", "P Mm Stale Copy"),
+		"p-aa": personRec("p-aa"),
+		"p-mm": personNamed("p-mm", "P Mm Stale Copy"),
 	}))
 	writeFile(t, filepath.Join(dir, "people", "p-mm.json"),
-		packWith(map[string]string{"p-mm": personRec("p-mm", "P Mm")}))
+		packWith(map[string]string{"p-mm": personRec("p-mm")}))
 
 	rep := mustCheck(t, dir)
 	if len(rep.Pending.Conflicts) != 1 {
