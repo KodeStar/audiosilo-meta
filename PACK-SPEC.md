@@ -199,7 +199,9 @@ not its entries' add-dates). Replace it:
 ## Blast radius (what the migration touches)
 
 - `pkg/model`: `Location` becomes (pack path, slug[, rec-slug]); `Shard()`
-  retired; `ParseLocation` reworked; `MaxSlugLen` unchanged.
+  retired; `ParseLocation` reworked (landed as: deleted, not reworked - the
+  callers that still read a per-record path parse it themselves, as a reference
+  syntax); `MaxSlugLen` unchanged.
 - `pkg/check`: tree walker iterates packs; `checkStructure` replaced by the
   placement/caps/bounds rules; all rule logic on the parsed catalogue unchanged.
 - New `pkg/pack` (or inside pkg/canonical): bound math, lookup, split,

@@ -147,13 +147,13 @@ same kind - that is the fastest way to get the fields right.
 ### When two pull requests touch the same pack
 
 Because records share files, a pull request that sits open while another one
-merges can conflict in a pack file. Nothing is really in dispute - each side
-added its own entries - so the resolution is mechanical:
+merges can conflict in a pack file. Usually nothing is really in dispute - each
+side added its own records - so the resolution is mechanical:
 
 ```sh
 git fetch origin
 git rebase origin/main
-# for each conflicted pack file, keep BOTH sides' entries:
+# for each conflicted pack file, merge the two sides' records:
 scripts/pack-union-merge.sh data/works/0/0.json
 go run ./cmd/metafmt --write     # re-render and re-place the merged entries
 go run ./cmd/metacheck
@@ -161,10 +161,19 @@ git add data && git rebase --continue
 git push --force-with-lease
 ```
 
+The script is a **three-way** merge: it reads the merge base, so a record one
+side deliberately deleted stays deleted instead of being handed back by the side
+that still has it. Records added on either side are kept, and two pull requests
+adding different narrations to the same book merge inside that book's
+`recordings` map.
+
+It refuses (exit 5) the cases that are real disagreements: the same record - or
+the same recording - edited on both sides, and one side deleting what the other
+edited. Those need a person to decide which fact is right.
+
 The intake bot runs exactly this recipe on its own pull requests after every
-merge to main, so a bot PR is normally already rebased for you. The one case the
-script refuses is the one that is a real conflict: the **same entry key** edited
-on both sides. That needs a person to decide which fact is right.
+merge to main, so a bot PR is normally already rebased for you; when the script
+refuses, the bot leaves the PR alone and comments instead.
 
 ## Importing a library export
 

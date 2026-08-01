@@ -10,7 +10,7 @@ submission you agree to the terms below.
 |---|---|---|
 | Code (tooling, schemas, CI, future server) | **AGPL-3.0-only** | See [`LICENSE`](LICENSE). Matches audiosilo-server. |
 | Data - factual core | **CC0-1.0** (public domain dedication) | The works, recordings, people, and series. Every such record carries `license: "CC0-1.0"`. |
-| Data - derived layer | **CC BY-SA 3.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in separately-tagged records (the per-work `characters.json` / `recaps.json` sidecars). |
+| Data - derived layer | **CC BY-SA 3.0** | Community-authored characters and recaps, and any Fandom / LibraryThing CK derived content. Kept in a separate pack family, `data/works-community/` (each entry a work's `characters` and `recaps` members), so the boundary is directory-structural as well as schema-enforced. |
 | Publisher blurbs, cover art | **Not accepted** | Referenced, never copied. Covers are URLs only; descriptions must be community-written. |
 
 ## Why two data licences
@@ -25,8 +25,10 @@ The **CC BY-SA 3.0** layer covers *derived, expressive* content -
 community-authored character descriptions and recaps, and anything sourced from
 Fandom wikis or LibraryThing Common Knowledge (both CC BY-SA 3.0 at source).
 Share-alike is desirable there: it keeps derivative works open. This layer lives
-in separately-tagged records - the per-work `characters.json` and `recaps.json`
-sidecars - so the CC0 core is never contaminated by share-alike obligations. The
+in a separate pack family, `data/works-community/`, where each entry holds one
+work's `characters` and `recaps` members - so the CC0 core is never contaminated
+by share-alike obligations, and the separation is visible in the directory tree
+as well as in the records. The
 boundary is **enforced structurally by the schema**, not by convention: a core
 record (work/recording/person/series) can only carry `CC0-1.0`, and a sidecar can
 only carry `CC-BY-SA-3.0` - the `license` enum differs between them, and

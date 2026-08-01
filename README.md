@@ -3,9 +3,11 @@
 The community audiobook metadata database behind
 [meta.audiosilo.app](https://meta.audiosilo.app).
 
-**The GitHub repository is the database.** Metadata lives as plain JSON files, one
-per entity, edited by pull request or issue form, validated by Go tooling in CI,
-and compiled into a single SQLite artifact that servers consume.
+**The GitHub repository is the database.** Metadata lives as plain JSON pack
+files - many records to a file, addressed by slug range
+([PACK-SPEC.md](PACK-SPEC.md)) - edited by pull request or issue form, validated
+by Go tooling in CI, and compiled into a single SQLite artifact that servers
+consume.
 
 > **Status: Phase 1 shipped, Phase 2 landed.** Governance, schemas, the
 > validation/build pipeline, the OpenAudible and Libation importers, the

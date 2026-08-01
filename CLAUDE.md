@@ -10,9 +10,9 @@ this project) before working here.
 
 An **open, community-editable audiobook metadata database** - the data behind
 meta.audiosilo.app (deployment pending). The GitHub repository IS the database:
-one JSON file per entity, contributed via pull requests and issue forms,
-validated by Go tooling in CI, and compiled into a SQLite artifact published as
-a GitHub Release. The Go API server (`metaserve`) serves that artifact plus the
+JSON pack files holding many records each ([PACK-SPEC.md](PACK-SPEC.md)),
+contributed via pull requests and issue forms, validated by Go tooling in CI,
+and compiled into a SQLite artifact published as a GitHub Release. The Go API server (`metaserve`) serves that artifact plus the
 static site in `site/` (Astro, the audiosilo.app design system); the AudioSilo player
 integration (Phase 1.5) is the priority consumer and shipped **before** the
 Audiobookshelf-provider facade (`GET /abs/search`), which has since landed on top
@@ -94,8 +94,10 @@ bound. Bounds change only on split. **Placement self-heals**: `metafmt --write`
 relocates a misplaced entry, resolves duplicate slugs, performs due splits and
 rebinds, and re-renders canonically - so nobody computes placement by hand, and a
 contributor's approximately-right edit is corrected mechanically. Two PRs editing
-one pack conflict; the resolution is union-the-entries + re-render
-(`scripts/pack-union-merge.sh`, and the bot does it for its own PRs). The
+one pack conflict; the resolution is a THREE-WAY merge of the entries (base
+included, so a deliberate deletion is not handed back) plus a re-render -
+`scripts/pack-union-merge.sh`, driven through real rebases by
+`scripts/packmerge_test.go`, and run by the intake bot on its own PRs. The
 pre-migration layout was one file per record
 (`data/works/<shard>/<slug>/work.json` and friends); `cmd/metamigrate` converted
 it, `pkg/check` and every writer now refuse it loudly.
@@ -193,7 +195,7 @@ cmd/metascan        thin CLI: scan a local audiobook folder -> import JSON (flag
 cmd/metaimport      thin CLI: ingest an external library export into data/ (openaudible, libation, libex)
 cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machine-readable verdict (flag wiring only)
 cmd/metamigrate     thin CLI: the ONE-OFF conversion of a pre-pack file-per-record tree into the pack layout, with the added_at git-history backfill (--out rehearses out of place; logic in internal/migrate)
-pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render). The file-path addressing the old layout needed (Shard, ParseLocation) is gone; the two places that still read a per-record path as a REFERENCE syntax (issueform's correction form, internal/testpack's fixtures) each parse their own (leaf; also reached through pkg/check's exported Catalog)
+pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render). The file-path addressing the old layout needed (Shard, ParseLocation) is gone. THREE places still parse the retired per-record path shape, each its own copy and each for a different reason: internal/issueform (a correction form's `record` field is a reference a submitter types), internal/testpack (fixture addresses read better than family + two map keys), and internal/migrate (the only one that reads it as a STORAGE location, because it is the only thing that still reads the old tree). (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
 pkg/check           PUBLIC pack-layout load (packcheck.go walks each family's pack listing; a family that is not in the pack layout is ONE loud problem naming metamigrate, and every JSON file the listing does not account for is an unrecognized location - never silence) + schema validation (wrapper schemas load-bearing; $ref reasons preserved via detailed output) + the pack storage invariants (placement, caps + single-entry exemption, bound validity, key/id agreement) + integrity/uniqueness/chapter/series/sidecar-uniqueness rules; Result carries Problems (fail) and Warnings (advisory, e.g. a single entry over the 256KB target); schema-valid entries that fail Go decoding are reported, never silently dropped
 pkg/pack            PUBLIC pack-file storage: family/cap definitions, bound math + binary-search lookup, pack parse/serialize (canonical via pkg/canonical, raw entries, duplicate keys rejected), median split + directory split, and the read-through Store (queued-write-first reads; Flush performs due splits, directory splits and bound normalization, and errors rather than ever writing two plans to one path). survey.go classifies every JSON file under a family root BEFORE bound math sees it, so a misfiled/misnamed/empty/too-deep file is relocatable content (Salvage), never an authoritative bound; Pending covers every structural invariant metacheck enforces (Salvage/Unreadable/Misplaced/Conflicts/Rebinds/Packs/Dirs) and Heal + Flush converges to a metacheck-green, entry-preserving tree in one pass (duplicate slugs: the correctly-placed copy wins, reported as a Conflict). The Store is layout-aware PER FAMILY (absent is writable; a family in the retired file-per-record layout fails with ErrLegacyLayout, which is the loud refusal every writer inherits - DetectLayout says pack as soon as ANY file under the root reads as one, so a stray file cannot flip a converted family back). The one shared implementation every reader and writer builds on (see PACK-SPEC.md)
@@ -204,14 +206,14 @@ internal/importer   OpenAudible books.json + Libation export + libex rows -> wor
 internal/issueform  issue-form parse + compose (add-work/recording/correction/characters/recaps/import) -> dedup -> pack entries through the pack.Store (both community sidecars share ONE works-community entry, so placing recaps preserves an existing characters member; family gating is per template; a legacy tree is needs-human, not the contributor's fault), the ok/duplicate/needs-human/invalid verdict the intake workflow branches on; Result.Files names the pack files flush rewrote
 internal/format     metafmt's business logic: canonical formatting (pkg/canonical) sequenced with the self-healing placement pass (pack.Pending -> Heal -> Flush); a tree holding a non-pack family is refused before the first write (tidying files no reader will load would make a stale checkout look maintained); Report embeds pack.Pending so every category surfaces in --check/--write; unreadable files are reported and left for a human while the rest still heals; formatting runs FIRST because Flush judges an untouched pack by its on-disk size
 internal/testpack   test support (imported only by _test.go files): seeds and reads a pack-layout tree addressed by the old per-record path syntax (a fixture syntax it parses itself), resolved onto family + entry key; shared by the importer, issueform and metaimport suites
-internal/migrate    metamigrate's business logic: its OWN parsing of the retired file-per-record layout (nothing else knows that shape), the added_at git walk with release.yml's exact semantics extended to recordings, entry composition from RAW record bytes (only added_at spliced in), and greedy planning to ~50% of the caps. Renders every pack before deleting anything, deterministic; the fixture-scale artifact equivalence proof lives in its tests
+internal/migrate    metamigrate's business logic: its OWN parsing of the retired file-per-record layout as a storage location (issueform and testpack parse the same shape as a reference/fixture syntax - see pkg/model), the added_at git walk with release.yml's exact semantics extended to recordings, entry composition from RAW record bytes (only added_at spliced in), and greedy planning to ~50% of the caps (sized by pkg/pack's own renderer, never by re-spelled arithmetic). Renders every pack before deleting anything, and refuses what it cannot do safely: a shallow clone (which would date every record at the tip commit), an uncommitted in-place tree (git is the only recovery from an interrupted run), a tree holding no works, a non-JSON file, an already-converted family. Deterministic; the fixture-scale artifact equivalence proof lives in its tests
 internal/build      SQLite builder (deterministic, FTS5 search_fts, asin/isbn indexes; added_at from the record, else the newest sources[].imported_at compared chronologically)
 internal/serve      the API server: snapshot loader, JSON handlers, FTS search, the ABS provider endpoint, GitHub-release poller/hot-swap
 schema/             JSON Schemas (the contract), embedded via schema.go; the four pack-*.schema.json wrappers are load-bearing (pkg/check validates every entry and entry key through its family's wrapper fragments)
 data/               the database, in the PACK-SPEC.md range-packed layout: works/ (composites), works-community/ (the CC BY-SA sidecars), people/, series/
 Dockerfile          image: site build + metaserve + baked data
-scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README), and pack-union-merge.sh, the mechanical resolution for a pack-file conflict (union the entries, then metafmt --write)
-.github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows. intake.yml also rebases the bot's own open PRs on every push to main (union + metafmt + metacheck, or a comment for a human); release.yml is a SHALLOW checkout now that added_at lives in the data
+scripts/            operator scripts: the libex dump-to-rows SQL flow (+ README), and pack-union-merge.sh - the mechanical resolution for a pack-file conflict (a three-way merge of the entries, then metafmt --write), with packmerge_test.go driving it through real rebases including every case it must REFUSE
+.github/            issue forms (machine-parseable ids, data:* routing labels); check + release + image + intake + ai-verify workflows. intake.yml also rebases the bot's own open PRs on every push to main that touches data/ (three-way merge + metafmt + metacheck, per-PR failures contained to a comment); permissions are per-job and the rebase sweep has its own concurrency group; release.yml is a SHALLOW checkout now that added_at lives in the data
 ```
 
 **The API server (`internal/serve`)** opens the SQLite artifact read-only and
@@ -410,7 +412,7 @@ export type), surfacing the importer warnings.
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json). Remaining
-  follow-ups tracked in the plan: re-shard (the 2-char shard's `th/` skew),
+  follow-ups tracked in the plan:
   surfacing genres in the player (three-repo seam), and a **streaming row
   iterator for the libex parse layer** - it currently slurps the whole file
   (~6GB of live heap for the 1.06M-row dump) before planning discards what does
@@ -421,8 +423,8 @@ export type), surfacing the importer warnings.
 - **Phase 2**: characters and recaps (spoiler-tagged, position-keyed), the CC
   BY-SA layer, under the copyright rules in META-FEASIBILITY.md §7. The
   **schema + metacheck rules, the `metabuild`/`metaserve` wiring, and four
-  fully-worked exemplar series have landed** (per-work `characters.json`/
-  `recaps.json` sidecars, `$defs/position`, the `$defs/license_content`
+  fully-worked exemplar series have landed** (per-work characters/recaps
+  members of the works-community family, `$defs/position`, the `$defs/license_content`
   share-alike enum, artifact schema_version 2 - plus the optional whole-book
   `in_short`/`ending` recap summaries in the `recap_summaries` table at
   schema_version 3, served as `recap_summary` - `GET /works/{id}` inline

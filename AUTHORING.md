@@ -223,7 +223,7 @@ style:
 - [ ] The work, its recording(s), author, and narrator already exist and validate.
 - [ ] `work` equals the entry key both members sit under.
 - [ ] `license` is `"CC-BY-SA-3.0"`; `sources` present.
-- [ ] Every character has an `id` (unique in file), `name`, and `reveal`.
+- [ ] Every character has an `id` (unique within this work's characters member), `name`, and `reveal`.
 - [ ] Descriptions/texts are your own words, within the caps, and accurate
       (character ≤ 1500, recap `text` ≤ 3000, `in_short` ≤ 1500, `ending` ≤ 2000).
 - [ ] The final chaptered recap states the **actual ending**, not a tease; `ending`
