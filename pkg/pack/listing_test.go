@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -182,4 +183,47 @@ func TestListMissingRoot(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(missing, "people", "0.json")); err != nil {
 		t.Fatalf("first write into a missing root: %v", err)
 	}
+}
+
+// A data root, or a family root, that is a FILE is a broken tree, not an empty
+// one. A walk alone cannot say so - handed a regular file it yields that file
+// and stops, which reads as "no packs here" - so List states it separately and
+// every reader inherits the refusal.
+func TestListRefusesANonDirectoryRoot(t *testing.T) {
+	t.Run("data root", func(t *testing.T) {
+		root := filepath.Join(t.TempDir(), "data")
+		if err := os.WriteFile(root, []byte("not a tree"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := List(root); err == nil {
+			t.Fatal("List read a regular file as an empty data tree")
+		} else if !strings.Contains(err.Error(), "not a directory") {
+			t.Errorf("err = %v, want it to say the root is not a directory", err)
+		}
+		if _, err := Open(root); err == nil {
+			t.Error("Open read a regular file as an empty data tree")
+		}
+	})
+	t.Run("family root", func(t *testing.T) {
+		dir := t.TempDir()
+		writeFiles(t, dir, map[string]string{"works/0/0.json": packOf1("book-one")})
+		if err := os.WriteFile(filepath.Join(dir, "people"), []byte("not a family"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := List(dir); err == nil {
+			t.Fatal("List read a regular file as an absent people family")
+		} else if !strings.Contains(err.Error(), "not a directory") {
+			t.Errorf("err = %v, want it to say the family root is not a directory", err)
+		}
+		if _, err := Open(dir); err == nil {
+			t.Error("Open read a regular file as an absent people family")
+		}
+		// And the per-family scan the writers use says the same thing.
+		if _, err := jsonFilesUnder(dir, "people"); err == nil {
+			t.Error("the family scan read a regular file as an absent family")
+		}
+		if _, err := ReadTree(dir, FamilyPeople); err == nil {
+			t.Error("ReadTree read a regular file as an empty family")
+		}
+	})
 }

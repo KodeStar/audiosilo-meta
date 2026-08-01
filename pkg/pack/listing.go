@@ -1,6 +1,7 @@
 package pack
 
 import (
+	"errors"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -40,6 +41,13 @@ type Listing struct {
 // List walks dataDir once and partitions every JSON file it holds by family
 // root. Paths come back data-relative, slash-separated and sorted.
 //
+// The data root and every family root that exists must BE a directory. A walk
+// alone cannot enforce that: handed a regular file, WalkDir yields that one file
+// and stops, which reads as "the tree holds no packs" - a data root that is a
+// file, or a data/people that is, would come back clean instead of refused. So
+// each is stated separately, and a non-directory is an error rather than an
+// absence.
+//
 // The extension match is case-insensitive, deliberately. A listing is what a
 // caller ACCOUNTS for, and a "0.JSON" that pkg/pack will not read as a pack (see
 // isJSONFile, which is case-sensitive on purpose) still has to be reported by
@@ -47,6 +55,15 @@ type Listing struct {
 // unrecognized location. The stricter test is applied where a file is read AS a
 // pack, so a file can be listed and still be no pack.
 func List(dataDir string) (*Listing, error) {
+	if err := mustBeDir(dataDir); err != nil {
+		return nil, err
+	}
+	for _, d := range Families() {
+		root := filepath.Join(dataDir, filepath.FromSlash(d.Family.Root()))
+		if err := mustBeDir(root); err != nil && !os.IsNotExist(err) {
+			return nil, err
+		}
+	}
 	l := &Listing{dir: dataDir, files: map[Family][]string{}}
 	err := filepath.WalkDir(dataDir, func(p string, d fs.DirEntry, err error) error {
 		if err != nil {
@@ -70,6 +87,25 @@ func List(dataDir string) (*Listing, error) {
 	}
 	sort.Strings(l.stray)
 	return l, nil
+}
+
+// errNotDirectory is what a path that exists but is not a directory fails with,
+// wherever a directory is what has to be there.
+var errNotDirectory = errors.New("not a directory")
+
+// mustBeDir reports whether path is a directory, as an error. A path that is not
+// there fails with an os.IsNotExist error, which a caller that tolerates an
+// absent root can test for; a path that is there and is not a directory is
+// errNotDirectory and nothing may read it as an absence.
+func mustBeDir(path string) error {
+	fi, err := os.Stat(path)
+	if err != nil {
+		return err
+	}
+	if !fi.IsDir() {
+		return &fs.PathError{Op: "read", Path: path, Err: errNotDirectory}
+	}
+	return nil
 }
 
 // emptyListing is the listing of a data root that does not exist yet.

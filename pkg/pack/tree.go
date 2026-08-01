@@ -160,10 +160,18 @@ func packBound(name string) (string, bool) {
 }
 
 // jsonFilesUnder returns every *.json file under root, data-relative and
-// slash-separated, sorted. A missing root yields nothing.
+// slash-separated, sorted. A missing root yields nothing; a root that exists and
+// is not a directory is an error, since a walk of one yields nothing and would
+// be indistinguishable from an empty family.
 func jsonFilesUnder(dataDir, root string) ([]string, error) {
 	var out []string
 	base := filepath.Join(dataDir, root)
+	if err := mustBeDir(base); err != nil {
+		if os.IsNotExist(err) {
+			return nil, nil
+		}
+		return nil, err
+	}
 	err := filepath.WalkDir(base, func(p string, d fs.DirEntry, err error) error {
 		if err != nil {
 			if os.IsNotExist(err) && p == base {

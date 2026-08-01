@@ -1,8 +1,12 @@
 package check
 
 import (
+	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
@@ -101,10 +105,13 @@ func TestLoadStoreMatchesLoad(t *testing.T) {
 	}
 }
 
-// A pack the validation read must not be read again by the store. Deleting the
-// file after the load is what proves it: a second read would fail, so the entry
-// still being there can only have come from the shared parse.
-func TestLoadStoreLeavesItsParseForTheStore(t *testing.T) {
+// A pack the validation read is NOT left with the store. Keeping it would save
+// the store a re-read of the few packs a run writes to and cost it the whole
+// tree resident for the rest of the run; declining is what keeps a validating
+// writer's memory where it was before the walk was shared. Deleting the file
+// after the load is what proves it: the store now finds nothing there, exactly
+// as it would have without a shared reader at all.
+func TestLoadStoreKeepsNoPackTheStoreDidNotRead(t *testing.T) {
 	dir := t.TempDir()
 	writeTree(t, dir, packValid())
 	s, err := pack.Open(dir)
@@ -117,13 +124,94 @@ func TestLoadStoreLeavesItsParseForTheStore(t *testing.T) {
 	if err := os.Remove(filepath.Join(dir, "people", "0.json")); err != nil {
 		t.Fatal(err)
 	}
-	entry, ok, err := s.Get(pack.FamilyPeople, "author-one")
-	if err != nil {
-		t.Fatal(err)
+	if _, ok, err := s.Get(pack.FamilyPeople, "author-one"); err != nil || ok {
+		t.Fatalf("the load left its parse in the store's reader (ok=%v err=%v)", ok, err)
 	}
-	if !ok || len(entry) == 0 {
-		t.Fatal("the store re-read a pack the load had already parsed")
+}
+
+// The retention regression, measured. Whatever the shared walk saves, it may not
+// cost residency: validating through a store must hold no more live memory than
+// validating by path, which held one pack at a time. Holding every parse (and
+// the canonical render memo the cap check leaves on each) made this several
+// times Load's on a real tree.
+func TestLoadStoreRetainsNoMoreThanLoad(t *testing.T) {
+	dir := t.TempDir()
+	writeTree(t, dir, bulkyTree(48, 120_000))
+
+	// Warm up: the first load compiles the schemas, and that cost is nobody's
+	// retention but it would land on whichever measurement came first.
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("fixture tree is not valid:\n%s", joinProblems(res.Problems))
 	}
+
+	byPath := heldHeap(func() any { return Load(dir) })
+	viaStore := heldHeap(func() any {
+		s, err := pack.Open(dir)
+		if err != nil {
+			t.Fatal(err)
+		}
+		return [2]any{s, LoadStore(s)}
+	})
+	// Both retain the Catalog they built, which is the bulk of a legitimate
+	// load. The margin is for that shared baseline moving a little between the
+	// two runs, not for a second copy of the tree - which was 3x, not 1.5x.
+	if limit := byPath * 3 / 2; viaStore > limit {
+		t.Errorf("LoadStore holds %.1fMB live, Load holds %.1fMB: the shared reader is retaining the tree",
+			float64(viaStore)/1e6, float64(byPath)/1e6)
+	} else {
+		t.Logf("live after load: byPath=%.1fMB viaStore=%.1fMB", float64(byPath)/1e6, float64(viaStore)/1e6)
+	}
+}
+
+// heldHeap runs f and reports how much live heap whatever it returned is
+// holding: the heap after it, minus the heap before, with the value kept alive
+// across the measurement so nothing it owns can be collected first.
+func heldHeap(f func() any) uint64 {
+	before := liveHeap()
+	v := f()
+	after := liveHeap()
+	runtime.KeepAlive(v)
+	if after < before {
+		return 0
+	}
+	return after - before
+}
+
+// liveHeap is the live heap after collection - what is still reachable, not what
+// has been allocated.
+func liveHeap() uint64 {
+	runtime.GC()
+	runtime.GC()
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	return m.HeapAlloc
+}
+
+// bulkyTree returns a valid people family of n packs of roughly size bytes
+// each, which is what makes a per-pack retention difference measurable.
+func bulkyTree(n, size int) map[string]string {
+	const perEntry = 600
+	files := map[string]string{}
+	slug := 0
+	for p := range n {
+		entries := map[string]string{}
+		first := ""
+		for range size / perEntry {
+			id := fmt.Sprintf("person-%06d", slug)
+			slug++
+			if first == "" {
+				first = id
+			}
+			entries[id] = `{"id":"` + id + `","license":"CC0-1.0","name":"` +
+				strings.Repeat("Na", perEntry/2-120) + `","sources":[{"type":"user"}]}`
+		}
+		name := first
+		if p == 0 {
+			name = "0"
+		}
+		files["people/"+name+".json"] = packOf(entries)
+	}
+	return files
 }
 
 // And the other direction: a pack the store read first is not read again by the
@@ -175,5 +263,103 @@ func TestLoadStoreAfterFlushSeesTheWrites(t *testing.T) {
 	}
 	if d := catalogDigest(t, res.Catalog); d != catalogDigest(t, Load(dir).Catalog) {
 		t.Error("post-flush LoadStore disagrees with a fresh Load")
+	}
+}
+
+// A queued write is not on disk, and LoadStore validates DISK. A create and an
+// overwrite of an existing entry, both with garbage, must change nothing about
+// what the validation says or what lands in the Catalog.
+func TestLoadStoreIgnoresQueuedWrites(t *testing.T) {
+	dir := t.TempDir()
+	writeTree(t, dir, packValid())
+	want := Load(dir)
+
+	s, err := pack.Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := s.Upsert(pack.FamilyPeople, "zz-new", json.RawMessage(`{"id":"WRONG"}`)); err != nil {
+		t.Fatal(err)
+	}
+	if err := s.Upsert(pack.FamilyPeople, "author-one", json.RawMessage(`{"id":"nope","license":"MIT"}`)); err != nil {
+		t.Fatal(err)
+	}
+	got := LoadStore(s)
+	if a, b := joinProblems(want.Problems), joinProblems(got.Problems); a != b {
+		t.Errorf("a queued write changed what LoadStore validated\nLoad:\n%s\nLoadStore:\n%s", a, b)
+	}
+	if catalogDigest(t, want.Catalog) != catalogDigest(t, got.Catalog) {
+		t.Error("a queued write reached the catalog")
+	}
+}
+
+// The store reads a MISSING file as an empty pack - the stand-in a first write
+// into a new family is composed into. That must never be handed to the
+// validation as a parse: a listed pack that is not there is a read failure to
+// report, and reporting "pack holds no entries" instead named the wrong problem
+// on a file that does not exist.
+func TestLoadStoreTellsAMissingPackFromAnEmptyOne(t *testing.T) {
+	dir := t.TempDir()
+	writeTree(t, dir, packValid())
+	s, err := pack.Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Remove(filepath.Join(dir, "people", "0.json")); err != nil {
+		t.Fatal(err)
+	}
+	// The store touches the now-missing pack, caching the empty stand-in for it.
+	if _, _, err := s.Get(pack.FamilyPeople, "author-one"); err != nil {
+		t.Fatal(err)
+	}
+	// The walk still lists the pack (the file set is as-of-Open, by design), so
+	// the load has to try to read it - and what it must say is that it could not.
+	probs := joinProblems(LoadStore(s).Problems)
+	if strings.Contains(probs, "holds no entries") {
+		t.Errorf("a missing pack was reported as an empty one:\n%s", probs)
+	}
+	if !strings.Contains(probs, "people/0.json: read:") {
+		t.Errorf("the missing pack was not reported as unreadable:\n%s", probs)
+	}
+}
+
+// LoadStore is AS-OF-OPEN, and this is the case that pins it: a pack the store
+// has already read is validated from those bytes, so a file replaced on disk
+// since is not what gets checked. That is the contract a writer needs - it must
+// validate what it is planning against - and it is documented on LoadStore
+// precisely because it is not "the tree is valid right now". A caller that wants
+// an independent, as-of-now answer calls Load, and this asserts Load still gives
+// one.
+func TestLoadStoreValidatesTheTreeTheStoreOpened(t *testing.T) {
+	dir := t.TempDir()
+	writeTree(t, dir, packValid())
+	s, err := pack.Open(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, _, err := s.Get(pack.FamilyPeople, "author-one"); err != nil {
+		t.Fatal(err)
+	}
+	// Something replaces the pack with a schema-invalid one.
+	bad := `{"entries": {"author-one": {"id": "author-one", "license": "MIT"}}}`
+	if err := os.WriteFile(filepath.Join(dir, "people", "0.json"), []byte(bad), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if res := LoadStore(s); !res.OK() {
+		t.Errorf("LoadStore did not validate the tree the store opened:\n%s", joinProblems(res.Problems))
+	}
+	if res := Load(dir); res.OK() {
+		t.Error("Load certified a tree that is invalid on disk")
+	}
+	// And once the store has flushed, its walk is stale and LoadStore reads the
+	// tree afresh - so a writer's post-write validation is never as-of-Open.
+	if _, err := s.Flush(); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(dir, "people", "0.json"), []byte(bad), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if res := LoadStore(s); res.OK() {
+		t.Error("post-flush LoadStore still answered from the stale walk")
 	}
 }

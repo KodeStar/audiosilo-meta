@@ -11,8 +11,10 @@
 //
 // It walks the tree ONCE: the pack listing, the layout detection and the file
 // accounting all come out of that one walk (pack.Listing). A caller that is also
-// WRITING calls LoadStore instead and hands over its pack.Store, so the two
-// share the walk and the parse as well.
+// WRITING calls LoadStore instead and hands over its pack.Store, so the walk is
+// shared too. What is never shared is residency: a pack is released as soon as
+// it has been validated, so validating a tree costs one pack at a time however
+// it was entered.
 //
 // This package is PUBLIC API: it is consumed by the sibling audiosilo-sidecars
 // tool as an ordinary module dependency, so its exported surface is a contract.
@@ -101,10 +103,11 @@ func newPathIndex() *pathIndex {
 // loader is one walk's accumulating state, shared by both layout walkers.
 type loader struct {
 	dir string
-	// rdr is the parse cache this load SHARES with a writer (a pack.Store, via
-	// LoadStore): a pack the store has already parsed is not parsed again, and
-	// one this load parses is left there for the store. It is nil for a plain
-	// Load, which shares with nobody and keeps no pack it has finished with.
+	// rdr is a writer's parse cache (a pack.Store's, via LoadStore), READ but
+	// never filled: a pack the store has already parsed is taken from it, and a
+	// pack this load reads itself is released once validated rather than left
+	// there, so validating a tree never grows a writer's residency. It is nil for
+	// a plain Load, which shares with nobody.
 	rdr     *pack.Reader
 	cat     *model.Catalog
 	idx     *pathIndex
@@ -115,10 +118,10 @@ type loader struct {
 
 // Load walks dir, validates it, and returns the result. dir is the data root.
 //
-// Nothing else is reading the tree, so nothing is kept: a pack is parsed,
-// validated and released as the walk moves past it, and the load's peak memory
-// is one pack plus the Catalog it is building. A caller that is also WRITING
-// wants its parses kept and shared - that is LoadStore.
+// Nothing is kept: a pack is parsed, validated and released as the walk moves
+// past it, so the load's peak memory is one pack plus the Catalog it is
+// building. A caller that is also WRITING calls LoadStore, which shares the
+// writer's walk - and the same release-as-you-go applies there.
 func Load(dir string) Result {
 	lst, err := pack.List(dir)
 	if err != nil {
@@ -127,20 +130,32 @@ func Load(dir string) Result {
 	return load(lst, nil)
 }
 
-// LoadStore validates the tree store s was opened on, sharing the store's walk
-// and its parsed packs.
+// LoadStore validates the tree store s was opened on, over the store's own walk
+// of it and its already-parsed packs.
 //
-// It is Load with one difference: nothing is read or parsed twice. A writer
-// validates the catalogue before it plans (that is where its identity maps come
-// from) and then reads the same packs back through the store to compose its
-// entries, which used to mean every pack the run touched was read and parsed
-// once for each. Here the two share one Reader, so whichever side reaches a pack
-// first is the only side that parses it.
+// It is Load without the second walk. A writer validates the catalogue before it
+// plans (that is where its identity maps come from) and then writes into the
+// same tree, which used to mean walking it twice; here both halves of the run
+// share the walk the store took at Open, and a pack the store has already parsed
+// is validated from that parse rather than read again.
 //
-// The tree it validates is the one the store saw at Open, which is exactly the
-// tree the store's reads and writes are planned against. Once a Flush has made
-// that walk stale, LoadStore takes a fresh one and re-reads everything - so
-// post-write validation is a full, independent load, as it must be.
+// AS-OF-OPEN, deliberately. This validates the tree the store's reads and writes
+// are planned against, which is the tree as it was when the store was opened,
+// not as it is at the moment of the call:
+//
+//   - the file SET is the store's Open-time walk, so a file created or deleted
+//     since then is not part of what is validated;
+//   - a pack the store has already read is validated from those bytes, so if
+//     something replaced that file since, the replacement is not what is
+//     checked.
+//
+// That is the right contract for its purpose - a writer must validate what it is
+// planning against - but it is not "the tree is valid right now". Nothing else
+// may be writing to the tree while a store is open, which is what makes the two
+// the same in practice; a caller that needs an independent, as-of-now answer
+// calls Load. Once a Flush has made the store's walk stale, LoadStore takes a
+// fresh one and re-reads everything, so post-write validation IS a full
+// independent load.
 func LoadStore(s *pack.Store) Result {
 	lst := s.Listing()
 	if lst == nil {
@@ -149,8 +164,8 @@ func LoadStore(s *pack.Store) Result {
 	return load(lst, s.Reader())
 }
 
-// load validates a walked tree. rdr is the parse cache the load shares with a
-// writer, or nil when it shares with nobody and each pack is released as soon
+// load validates a walked tree. rdr is a writer's parse cache to read packs
+// from, or nil. Either way each pack this load reads itself is released as soon
 // as it has been validated.
 func load(lst *pack.Listing, rdr *pack.Reader) Result {
 	dir := lst.Dir()
@@ -254,4 +269,3 @@ func (l *loader) loadLegacyFamily(f pack.Family, rels []string) {
 		"\"entries\" object; if this family is meant to be one already, that file is what does not read as a pack",
 		len(rels), rels[0], f.Root())
 }
-

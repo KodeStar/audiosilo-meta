@@ -1,7 +1,9 @@
 package pack
 
 import (
+	"bytes"
 	"encoding/json"
+	"maps"
 	"strings"
 	"testing"
 
@@ -169,5 +171,51 @@ func TestSizesSumToTheFile(t *testing.T) {
 	}
 	if total != len(samplePack) {
 		t.Errorf("Sizes total = %d, want %d", total, len(samplePack))
+	}
+}
+
+// The memo is a pure function of the entries, so releasing it may change nothing
+// but the memory: the same bytes and the same sizes come back afterwards. That
+// is what lets a pass that has finished with the sizes hand back the copy of the
+// pack the render left behind - on a whole tree, more memory than the entries
+// themselves (see check.readPack).
+func TestReleaseMemoKeepsTheAnswersAndDropsTheCopy(t *testing.T) {
+	f := NewFile()
+	for _, slug := range []string{"ann-doe", "bob-roe", "cal-loe"} {
+		f.Set(slug, []byte(`{"id":"`+slug+`","name":"`+strings.Repeat("x", 4096)+`"}`))
+	}
+	wantBytes, err := f.Bytes()
+	if err != nil {
+		t.Fatal(err)
+	}
+	wantTotal, wantPer, err := f.Sizes()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if f.rendered == nil || f.sizes == nil {
+		t.Fatal("Sizes left no memo, so there is nothing to release")
+	}
+
+	f.ReleaseMemo()
+	if f.rendered != nil || f.sizes != nil {
+		t.Error("ReleaseMemo kept the memo")
+	}
+
+	gotBytes, err := f.Bytes()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(gotBytes, wantBytes) {
+		t.Error("the pack renders differently after ReleaseMemo")
+	}
+	gotTotal, gotPer, err := f.Sizes()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if gotTotal != wantTotal || !maps.Equal(gotPer, wantPer) {
+		t.Errorf("sizes after ReleaseMemo = %d %v, want %d %v", gotTotal, gotPer, wantTotal, wantPer)
+	}
+	if f.Len() != 3 {
+		t.Errorf("entries = %d, want 3: ReleaseMemo changed what the pack holds", f.Len())
 	}
 }

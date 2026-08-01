@@ -138,12 +138,20 @@ func (s *Store) Dir() string { return s.dir }
 func (s *Store) Layout(f Family) Layout { return s.layouts[f] }
 
 // Reader returns the store's parse cache, so a caller reading the same tree can
-// share it: a pack either side reads is parsed once (see check.LoadStore).
+// answer from a pack the store has already parsed instead of parsing it again
+// (see check.LoadStore). What it holds is what the store has read, as of when it
+// read it - a borrower validating the tree must not fill it with packs the store
+// never asked for, or the whole tree stays resident for the rest of the run.
 func (s *Store) Reader() *Reader { return s.reader }
 
 // Listing returns the walk the store was opened on, or nil once a Flush has
-// made it stale. A caller that needs a listing either way takes a fresh one when
+// made it stale (including a flush that failed part-way, which has still written
+// something). A caller that needs a listing either way takes a fresh one when
 // this returns nil.
+//
+// It is the tree as of Open. Anything deciding what to write - survey, and
+// therefore healing and relocation - re-scans instead, because those act on the
+// files that are there now.
 func (s *Store) Listing() *Listing { return s.listing }
 
 // Tree returns family f's current pack listing. A legacy family has none.
@@ -295,20 +303,12 @@ func (s *Store) load(ref PackRef) (*File, error) {
 // pack location at all.
 func (s *Store) loadPath(rel string) (*File, error) { return s.reader.Read(rel) }
 
-// packFiles returns family f's JSON files, from the walk the store was opened
-// on. Nothing reaches disk before Flush, so that walk still describes the tree
-// for as long as the store holds it; once a Flush has dropped it, the tree has
-// changed and a fresh scan of the family root is the right answer.
-func (s *Store) packFiles(f Family) ([]string, error) {
-	if s.listing != nil {
-		return s.listing.packFiles(f), nil
-	}
-	return jsonFilesUnder(s.dir, f.Root())
-}
-
-// cached returns the pack the store's reader holds for rel, or nil.
+// cached returns the pack the store's reader holds for rel, or nil. It peeks
+// rather than asking Cached, because a pack this store is CREATING is held as
+// the empty stand-in for a file that is not there yet, with the queued entries
+// already composed into it - which is precisely the file a flush has to render.
 func (s *Store) cached(rel string) *File {
-	f, _ := s.reader.Cached(rel)
+	f, _ := s.reader.peek(rel)
 	return f
 }
 
@@ -358,6 +358,14 @@ type packGroup struct {
 // re-read: an entry count only grows through this store, and that path loads
 // the pack.
 func (s *Store) Flush() (Written, error) {
+	// Whatever happens from here, the Open-time walk and the parsed packs no
+	// longer describe the tree - and that includes a flush that FAILS part-way,
+	// which has already committed the families it got through. A defer, so no
+	// early return can leave the store certifying bytes it has overwritten.
+	defer func() {
+		s.reader.Drop()
+		s.listing = nil
+	}()
 	var w Written
 	for _, d := range Families() {
 		if s.layouts[d.Family] == LayoutLegacy {
@@ -376,8 +384,6 @@ func (s *Store) Flush() (Written, error) {
 	s.pulls = map[Family]map[string]map[string]bool{}
 	s.remove = map[Family]map[string]bool{}
 	s.touch = map[Family]map[string]PackRef{}
-	s.reader.Drop()
-	s.listing = nil
 	s.refs = map[string]PackRef{}
 	return w, nil
 }

@@ -493,3 +493,47 @@ func treeDiff(before, after map[string]string) string {
 	}
 	return ""
 }
+
+// metafmt reads the same tree metacheck does, so it inherits the same refusal: a
+// data root or family root that is a regular file is a broken tree, and both
+// --check and --write have to fail on it. Reporting "nothing to do" and exiting
+// 0 would tell a contributor whose data/people is a stray file that the tree is
+// fine.
+func TestNonDirectoryRootIsRefused(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		build func(t *testing.T) string
+	}{
+		{
+			name: "data root",
+			build: func(t *testing.T) string {
+				root := filepath.Join(t.TempDir(), "data")
+				writeFile(t, root, "not a tree")
+				return root
+			},
+		},
+		{
+			name: "family root",
+			build: func(t *testing.T) string {
+				dir := t.TempDir()
+				writeFile(t, filepath.Join(dir, "works", "0", "0.json"), `{"entries":{"book-one":{"id":"book-one"}}}`)
+				writeFile(t, filepath.Join(dir, "people"), "not a family")
+				return dir
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			for name, run := range map[string]func(string) (Report, error){"check": Check, "write": Write} {
+				dir := tc.build(t)
+				_, err := run(dir)
+				if err == nil {
+					t.Errorf("%s reported no error on a root that is a regular file", name)
+					continue
+				}
+				if !strings.Contains(err.Error(), "not a directory") {
+					t.Errorf("%s error = %v, want it to say the root is not a directory", name, err)
+				}
+			}
+		})
+	}
+}
