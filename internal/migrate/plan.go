@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/kodestar/audiosilo-meta/pkg/canonical"
 	"github.com/kodestar/audiosilo-meta/pkg/pack"
 )
 
@@ -20,57 +19,54 @@ import (
 // Planning is a pure function of the sorted entries and the family's caps, so
 // the same input tree always produces the same pack tree.
 
-// entry is one composed pack entry, with the exact number of bytes it
-// contributes to a rendered pack.
+// entry is one composed pack entry, with the number of bytes it contributes to
+// a rendered pack (filled in by measure).
 type entry struct {
 	slug string
 	raw  json.RawMessage
 	size int
 }
 
-// packOverhead is what a non-empty pack costs beyond its entries: the wrapper
-// prefix, the newline after it, and the closing suffix. renderedSize is
-// deliberately arithmetic rather than a trial render - the planner sizes a pack
-// once per candidate entry, and re-rendering the pack each time would be
-// quadratic in its bytes. TestPlannedSizesMatchPackRender pins the arithmetic
-// against pkg/pack's real renderer.
-const packOverhead = len("{\n  \"entries\": {") + len("\n") + len("  }\n}\n")
-
-// entrySize is an entry's contribution to its pack's canonical bytes: the
-// indent, the quoted key, ": ", the value rendered at entry indentation, a
-// separating comma, and the newline. The last entry in a pack carries no comma,
-// which renderedSize subtracts once.
-func entrySize(slug string, raw json.RawMessage) (int, error) {
-	key, err := canonical.Encode(slug, "")
-	if err != nil {
-		return 0, err
-	}
-	val, err := canonical.FormatIndent(raw, "    ")
-	if err != nil {
-		return 0, err
-	}
-	return len("    ") + len(key) + len(": ") + len(val) + len(",") + len("\n"), nil
-}
-
-// newEntry composes one entry and measures it.
+// newEntry composes one entry. Its size is measured later, for the whole family
+// at once.
 func newEntry(slug string, raw json.RawMessage) (entry, error) {
-	size, err := entrySize(slug, raw)
-	if err != nil {
-		return entry{}, fmt.Errorf("entry %q: %w", slug, err)
+	if len(raw) == 0 {
+		return entry{}, fmt.Errorf("entry %q is empty", slug)
 	}
-	return entry{slug: slug, raw: raw, size: size}, nil
+	return entry{slug: slug, raw: raw}, nil
 }
 
-// renderedSize is the canonical byte length of a pack holding these entries.
-func renderedSize(entries []entry) int {
+// measure fills in each entry's byte contribution and returns the pack wrapper's
+// own overhead, by rendering the whole family through pkg/pack ONCE.
+//
+// The sizes are the real renderer's rather than arithmetic that reproduces its
+// layout. A second spelling of "what a pack file looks like" would be a second
+// thing to keep in step with pkg/canonical, and drift there fails silently:
+// packs filled to the wrong size are still perfectly valid packs. File.Sizes
+// reports exactly what each entry costs in the file it rendered, memoized, so
+// one pass over the family answers every question the planner has.
+//
+// The one inexactness is the separating comma: the last entry of each PLANNED
+// pack will not carry one, while all but the last of the family did. That is one
+// byte per pack, against a fill target that is advisory by design.
+func measure(entries []entry) (overhead int, err error) {
 	if len(entries) == 0 {
-		return len("{\n  \"entries\": {}\n}\n")
+		return 0, nil
 	}
-	total := packOverhead
+	f := pack.NewFile()
 	for _, e := range entries {
-		total += e.size
+		f.Set(e.slug, e.raw)
 	}
-	return total - len(",") // the last entry carries no separator
+	total, per, err := f.Sizes()
+	if err != nil {
+		return 0, err
+	}
+	sum := 0
+	for i := range entries {
+		entries[i].size = per[entries[i].slug]
+		sum += entries[i].size
+	}
+	return total - sum, nil
 }
 
 // plannedPack is one pack file: where it goes, what it is called, and what it
@@ -90,14 +86,21 @@ func (p plannedPack) ref(f pack.Family) pack.PackRef {
 // so every pack has room for organic inserts before the first split is due.
 const fillDivisor = 2
 
-// planFamily assigns entries, in slug order, to packs and directories.
+// planFamily assigns entries, in slug order, to packs and directories. overhead
+// is the pack wrapper's own byte cost, from measure.
 //
 // A pack is closed when the next entry would take it past half the size target
 // or half the entry cap, whichever binds first - never on the first entry, so an
 // entry larger than the whole budget gets a pack of its own rather than an
 // empty one before it (PACK-SPEC.md's single-entry exemption is what keeps that
 // legal). Directories fill to the per-directory pack cap in order.
-func planFamily(def pack.FamilyDef, entries []entry) []plannedPack {
+//
+// The directory chunking here is the migration's own, and simpler than
+// pkg/pack's planDirs (which preserves existing directory boundaries and splits
+// an over-cap directory at its median byte position): a conversion has no
+// existing boundaries to preserve, and filling in order is what makes the result
+// a pure function of the slug sequence. Deliberate duplication, not an oversight.
+func planFamily(def pack.FamilyDef, entries []entry, overhead int) []plannedPack {
 	if len(entries) == 0 {
 		return nil
 	}
@@ -109,13 +112,13 @@ func planFamily(def pack.FamilyDef, entries []entry) []plannedPack {
 
 	var packs []plannedPack
 	var cur []entry
-	size := packOverhead
+	size := overhead
 	flush := func() {
 		if len(cur) == 0 {
 			return
 		}
 		packs = append(packs, plannedPack{bound: cur[0].slug, entries: cur})
-		cur, size = nil, packOverhead
+		cur, size = nil, overhead
 	}
 	for _, e := range entries {
 		if len(cur) > 0 && (size+e.size > sizeBudget || len(cur)+1 > entryBudget) {
