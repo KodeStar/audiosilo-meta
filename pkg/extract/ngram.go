@@ -164,10 +164,16 @@ func sidecarKinds() []string {
 }
 
 // collectExprs reads a sidecar and returns its expressive strings, driven by
-// expressiveFields (a characters file contributes every
-// characters[].description; a recaps file every recaps[].text plus in_short and
-// ending when present). It parses generically (map[string]any) so schema growth
-// does not break the tool. A file with no known discriminating key is an error.
+// expressiveFields (characters contribute every characters[].description; recaps
+// every recaps[].text plus in_short and ending when present). It parses
+// generically (map[string]any) so schema growth does not break the tool.
+//
+// It accepts either shape the community layer takes: a works-community PACK
+// file, where each entry holds a work's sidecars keyed by work slug, or a bare
+// sidecar record. The pack form is what the tree actually holds, so pointing the
+// check at the pack a work lives in is the normal usage; the bare form keeps a
+// record extracted for review checkable on its own. Anything that is neither is
+// an error, never a silent zero findings.
 func collectExprs(path string) ([]expr, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -178,22 +184,34 @@ func collectExprs(path string) ([]expr, error) {
 		return nil, fmt.Errorf("%s: %w", path, err)
 	}
 
-	for _, kind := range sidecarKinds() {
-		if _, ok := m[kind]; !ok {
-			continue
+	if entries, ok := m["entries"].(map[string]any); ok {
+		slugs := make([]string, 0, len(entries))
+		for slug := range entries {
+			slugs = append(slugs, slug)
 		}
-		fields := expressiveFields[kind]
+		slices.Sort(slugs)
 		var out []expr
-		for i, el := range asSlice(m[kind]) {
-			if s := stringField(el, fields.itemField); s != "" {
-				out = append(out, expr{fmt.Sprintf("%s[%d].%s", kind, i, fields.itemField), s})
+		for _, slug := range slugs {
+			entry, ok := entries[slug].(map[string]any)
+			if !ok {
+				continue
+			}
+			// A works-community entry nests each sidecar under its own member.
+			for _, kind := range sidecarKinds() {
+				member, ok := entry[kind].(map[string]any)
+				if !ok {
+					continue
+				}
+				out = append(out, collectRecord(member, slug+"."+kind+".")...)
 			}
 		}
-		for _, tl := range fields.topLevel {
-			if s, ok := m[tl].(string); ok && s != "" {
-				out = append(out, expr{tl, s})
-			}
+		if len(out) == 0 {
+			return nil, fmt.Errorf("%s: a pack file holding no characters or recaps entries", path)
 		}
+		return out, nil
+	}
+
+	if out := collectRecord(m, ""); len(out) > 0 || hasSidecarKey(m) {
 		return out, nil
 	}
 	kinds := sidecarKinds()
@@ -203,6 +221,40 @@ func collectExprs(path string) ([]expr, error) {
 	}
 	return nil, fmt.Errorf("%s: not a %s sidecar (no %s key)",
 		path, strings.Join(kinds, " or "), strings.Join(quoted, " or "))
+}
+
+// hasSidecarKey reports whether m is a sidecar record at all, so one that is
+// simply empty of prose reads as "nothing to check" rather than "wrong file".
+func hasSidecarKey(m map[string]any) bool {
+	for _, kind := range sidecarKinds() {
+		if _, ok := m[kind]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+// collectRecord returns one sidecar record's expressive strings, each locus
+// prefixed by prefix (empty for a bare record, "<slug>.<kind>." inside a pack).
+func collectRecord(m map[string]any, prefix string) []expr {
+	var out []expr
+	for _, kind := range sidecarKinds() {
+		if _, ok := m[kind]; !ok {
+			continue
+		}
+		fields := expressiveFields[kind]
+		for i, el := range asSlice(m[kind]) {
+			if s := stringField(el, fields.itemField); s != "" {
+				out = append(out, expr{fmt.Sprintf("%s%s[%d].%s", prefix, kind, i, fields.itemField), s})
+			}
+		}
+		for _, tl := range fields.topLevel {
+			if s, ok := m[tl].(string); ok && s != "" {
+				out = append(out, expr{prefix + tl, s})
+			}
+		}
+	}
+	return out
 }
 
 func asSlice(v any) []any {
