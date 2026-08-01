@@ -14,6 +14,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
@@ -21,8 +22,19 @@ import (
 )
 
 func person(slug string) string {
-	return `{"id":"` + slug + `","name":"Name ` + slug +
+	return `{"id":"` + slug + `","name":"` + displayName(slug) +
 		`","license":"CC0-1.0","sources":[{"type":"user"}]}`
+}
+
+// displayName renders a slug back into the name it came from. A person's id has
+// to BE the slug of their name (pkg/check's checkPersonSlug), so a fixture
+// person cannot carry an arbitrary label.
+func displayName(slug string) string {
+	words := strings.Split(slug, "-")
+	for i, w := range words {
+		words[i] = strings.ToUpper(w[:1]) + w[1:]
+	}
+	return strings.Join(words, " ")
 }
 
 func work(slug string) string {
@@ -311,7 +323,7 @@ func TestHealConverges(t *testing.T) {
 		"duplicate entry in a misfiled copy": func(t *testing.T, dir string) {
 			// p-aa is correctly in people/0.json; a stale copy sits elsewhere.
 			write(t, dir, "people/p-zz.json", packFile(map[string]string{
-				"p-aa": `{"id":"p-aa","name":"Stale","license":"CC0-1.0","sources":[{"type":"user"}]}`,
+				"p-aa": `{"id":"p-aa","name":"P Aa","license":"CC0-1.0","sources":[{"type":"user"}]}`,
 				"p-zz": person("p-zz"),
 			}))
 		},

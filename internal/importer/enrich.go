@@ -385,7 +385,7 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 	// holds - enrichment creates nothing, so a role qualifier naming a person we
 	// do not have states a credit we cannot reference (metacheck's credit
 	// integrity rule) and is dropped rather than written dangling.
-	credits := p.workCredits(rowAuthorCredits(b))
+	credits := p.workCredits(p.rowAuthorCredits(b))
 	if len(b.genres) == 0 && len(credits) == 0 && !p.userTier {
 		return
 	}

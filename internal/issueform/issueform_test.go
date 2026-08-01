@@ -538,6 +538,46 @@ func TestCorrectDataPersonKindInvalid(t *testing.T) {
 	}
 }
 
+// TestCorrectDataPersonNameKeepingTheSlug is the passing fixture for a person
+// name correction: restoring the diacritics a source dropped still slugs to the
+// record's own id, so it is a single-field edit like any other and applies in
+// place.
+func TestCorrectDataPersonNameKeepingTheSlug(t *testing.T) {
+	dir := seedTree(t)
+	body := correctBody("data/people/jo/john-smith.json", "name", "Jöhn Smith", "the narrator's own site", true)
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+	if res.Status != StatusOK {
+		t.Fatalf("status = %q, messages = %v", res.Status, res.Messages)
+	}
+	if person := readFile(t, dir, "people/jo/john-smith.json"); !strings.Contains(person, `"name": "Jöhn Smith"`) {
+		t.Errorf("name not corrected:\n%s", person)
+	}
+	if res := check.Load(dir); !res.OK() {
+		t.Fatalf("tree failed validation after the correction:\n%v", res.Problems)
+	}
+}
+
+// TestCorrectDataPersonNameChangingTheSlug is its violating fixture. A person's
+// id IS the slug of their name, so a name change that slugs differently is a
+// RENAME: the record has to move and every work crediting it has to be
+// rewritten. Left to fall through it wrote the record, failed the metacheck rule
+// and reported that rule's message as "invalid" - telling a submitter their
+// correction was malformed when it is simply beyond automation.
+func TestCorrectDataPersonNameChangingTheSlug(t *testing.T) {
+	dir := seedTree(t)
+	body := correctBody("data/people/jo/john-smith.json", "name", "Jonathan Smith", "the narrator's own site", true)
+	res := Process(Options{DataDir: dir, Template: "correct-data", Body: body})
+	if res.Status != StatusNeedsHuman {
+		t.Fatalf("status = %q, want needs-human; messages = %v", res.Status, res.Messages)
+	}
+	if joined := strings.Join(res.Messages, "\n"); !strings.Contains(joined, "a maintainer will do it") {
+		t.Errorf("message does not say a maintainer owns the rename: %v", res.Messages)
+	}
+	if person := readFile(t, dir, "people/jo/john-smith.json"); strings.Contains(person, "Jonathan") {
+		t.Errorf("the rename reached the record:\n%s", person)
+	}
+}
+
 func TestCorrectDataRecordNotFound(t *testing.T) {
 	dir := seedTree(t)
 	body := correctBody("data/works/zz/ghost/work.json", "title", "New Title", "web", true)

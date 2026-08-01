@@ -84,7 +84,7 @@ func (p *planner) addRecordingToExistingWork(b sourceBook, asin string) {
 	}
 
 	warn := p.bookWarn(b)
-	lang, narratorNames, ok := admitRecordingFacts(b, warn)
+	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		return
 	}
@@ -132,7 +132,7 @@ func (p *planner) resolveExistingWork(b sourceBook) *workState {
 			continue
 		}
 		if want == nil {
-			authorSlugs := slugCredits(rowAuthorNames(b))
+			authorSlugs := p.slugCredits(p.rowAuthorNames(b))
 			if len(authorSlugs) == 0 {
 				return nil // no author: nothing to identify a work by
 			}
@@ -168,14 +168,16 @@ func (p *planner) reportUnmatchedWorks() {
 
 // slugCredits maps a credit list to person slugs WITHOUT creating any person
 // record, deduplicating by slug in first-seen order. It is getOrCreatePerson's
-// read-only twin: both derive the identity through personSlug, so a name
-// compares against a catalogued work's author list exactly as it would be
-// written if the work were being created.
-func slugCredits(names []string) []string {
+// read-only twin: both derive the identity through personSlug and both resolve
+// an initials merge through personSlugTarget, so a name compares against a
+// catalogued work's author list exactly as it would be written if the work were
+// being created.
+func (p *planner) slugCredits(names []string) []string {
 	out := make([]string, 0, len(names))
 	seen := make(map[string]bool, len(names))
 	for _, name := range names {
 		slug, _ := personSlug(name)
+		slug = p.personSlugTarget(slug)
 		if seen[slug] {
 			continue
 		}
@@ -299,10 +301,6 @@ func stripVolumeMarker(title string) string {
 var productionQualifiers = map[string]bool{
 	"full cast edition": true,
 }
-
-// trailingParenRE captures the content of a title's trailing parenthetical (or
-// bracketed) qualifier, with its surrounding whitespace.
-var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
 
 // qualifierPunct folds the punctuation a qualifier is spelled with into the
 // spaces normQualifier then collapses. The en dash is listed because retailer

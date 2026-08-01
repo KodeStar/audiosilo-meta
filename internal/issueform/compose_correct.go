@@ -137,6 +137,9 @@ func (c *composer) correctData(s sections) {
 			return
 		}
 	}
+	if !c.renameableInPlace(addr, ref.kind, fieldName, value) {
+		return
+	}
 	record[fieldName] = value
 
 	// Record the correction's provenance so the source can be audited later.
@@ -148,6 +151,29 @@ func (c *composer) correctData(s sections) {
 		return
 	}
 	c.note("applied %s = %v on %s", fieldName, value, addr.label(c))
+}
+
+// renameableInPlace reports whether a correction can be applied where the record
+// already sits, and fails the submission with the reason when it cannot.
+//
+// A PERSON's id IS the slug of their name (pkg/check's checkPersonSlug), so a
+// name correction that slugs differently is not an edit to one field - it is a
+// rename, which moves the record to a new address and has to rewrite every work
+// that credits it. Nothing here can do that, and the intake bot must not tell a
+// submitter their correction was invalid when it is simply beyond automation:
+// left to fall through, the write lands and the metacheck rule reports its own
+// message under the contributor-fault verdict.
+func (c *composer) renameableInPlace(addr entryAddr, kind model.Kind, field string, value any) bool {
+	if kind != model.KindPerson || field != "name" {
+		return true
+	}
+	name, _ := value.(string)
+	want, _ := model.PersonSlug(name)
+	if want == addr.slug {
+		return true
+	}
+	c.fail(StatusNeedsHuman, "renaming %s to %q changes its id to %q - a person's id IS the slug of their name, so the record has to move and every work crediting it has to be rewritten; a maintainer will do it", addr.label(c), name, want)
+	return false
 }
 
 // entryAddr is an entity's address in the pack layout: the family and entry key

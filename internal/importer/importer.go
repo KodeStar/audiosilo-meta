@@ -110,9 +110,11 @@ type seriesState struct {
 // planner accumulates the writes and warnings for a run.
 type planner struct {
 	dataDir string
-	// people is the set of known person slugs. The slug IS the normalized
-	// identity: two names that slug the same are the same person.
-	people map[string]bool
+	// people maps every known person slug to the NAME its record carries. The
+	// slug is the normalized identity (two names that slug the same are the same
+	// person); the name is what the initials probe re-checks a candidate against
+	// before it merges two spellings - see getOrCreatePerson and initials.go.
+	people map[string]string
 	works  map[string]*workState
 	series map[string]*seriesState
 	asins  map[string]bool
@@ -138,6 +140,26 @@ type planner struct {
 	// per-record half is whether the record the row matched is still
 	// bulk-mirror-only. See attest.go and LICENSING.md's trust tiers.
 	userTier bool
+	// creditCensus is the studio-concatenation rule's evidence universe for this
+	// run (studiotail.go): the catalogue's person slugs as loaded, plus a census
+	// of every credit name the batch carries. It is a SNAPSHOT taken before any
+	// row is planned - see creditCensusOf - so what a name cleans to cannot
+	// depend on the order the rows arrive in. Unrelated to the trust-tier sense
+	// of "attested" (attest.go), which is why it does not use that word.
+	creditCensus creditSeenFunc
+	// initialsSurvivors is the initials rule's decision for this run
+	// (initials.go): for every person slug whose initials group is written more
+	// than one way across the catalogue and the batch, the record that group
+	// resolves to. Like creditCensus it is a SNAPSHOT taken before planning, and
+	// for the same reason - a merge decided against a map that grows during the
+	// run depends on row order, so two runs over the same rows in a different
+	// order (or one export split into chunks) would mint different ids.
+	//
+	// It is consulted BOTH where a person is created (getOrCreatePerson) and
+	// where a credit list resolves one (personSlugTarget): the variant slug is
+	// never written into p.people, so a credit minted under it has to be
+	// redirected here or it would name a record that does not exist.
+	initialsSurvivors initialsSurvivors
 	// genres is the source-genre-string -> vocabulary mapping table (one
 	// embedded table, looked up once per run rather than once per book).
 	genres genreTable
@@ -305,7 +327,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p := &planner{
 		dataDir:        opts.DataDir,
-		people:         map[string]bool{},
+		people:         map[string]string{},
 		works:          map[string]*workState{},
 		series:         map[string]*seriesState{},
 		asins:          map[string]bool{},
@@ -322,6 +344,8 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		p.asinLoc = map[string]RecRef{}
 	}
 	p.loadExisting()
+	p.creditCensus = p.creditCensusOf(books)
+	p.initialsSurvivors = p.decideInitialsOf(books)
 
 	switch opts.Mode {
 	case ModeEnrich:
@@ -413,7 +437,7 @@ func (p *planner) loadExisting() {
 		return
 	}
 	for _, person := range cat.People {
-		p.people[person.ID] = true
+		p.people[person.ID] = person.Name
 	}
 	for _, w := range cat.Works {
 		ws := &workState{slug: w.ID, authors: ToSet(w.Authors), recs: map[string]*recInfo{}}
@@ -536,11 +560,11 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 		return
 	}
 
-	lang, narratorNames, ok := admitRecordingFacts(b, warn)
+	lang, narratorNames, ok := p.admitRecordingFacts(b, warn)
 	if !ok {
 		return
 	}
-	authorCredits := rowAuthorCredits(b)
+	authorCredits := p.rowAuthorCredits(b)
 	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
@@ -628,13 +652,13 @@ func (p *planner) dedupeByASIN(asin string) bool {
 // only in WHEN they call it: the create path validates before it resolves a
 // work, while recordings-only resolves the work FIRST, so a row for a book the
 // catalogue does not hold is never warned about at all.
-func admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames []string, ok bool) {
+func (p *planner) admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, narratorNames []string, ok bool) {
 	lang, ok = mapLanguage(b.str("language"))
 	if !ok {
 		warn("unknown language %q; skipped", b.str("language"))
 		return "", nil, false
 	}
-	narratorNames = rowNarratorNames(b)
+	narratorNames = p.rowNarratorNames(b)
 	if len(narratorNames) == 0 {
 		warn("no narrator; a recording requires narrators; skipped")
 		return "", nil, false
@@ -655,17 +679,112 @@ func admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, 
 // same scraping junk - production-company names and bio fragments - that the
 // vocabulary refuses anyway. Recording-level credits stay unmodeled until
 // there is evidence worth modeling.
-func rowAuthorCredits(b sourceBook) []credit {
-	return sourceCredits(b.authors, b.str("author"))
+func (p *planner) rowAuthorCredits(b sourceBook) []credit {
+	return sourceCredits(b.authors, b.str("author"), p.creditCensus)
 }
 
 // rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
 // the source's structured list when it has one and from its comma-joined string
 // otherwise (sourceCredits owns that choice).
-func rowAuthorNames(b sourceBook) []string { return creditNamesOf(rowAuthorCredits(b)) }
+func (p *planner) rowAuthorNames(b sourceBook) []string {
+	return creditNamesOf(p.rowAuthorCredits(b))
+}
 
-func rowNarratorNames(b sourceBook) []string {
-	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by")))
+func (p *planner) rowNarratorNames(b sourceBook) []string {
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by"), p.creditCensus))
+}
+
+// rowRawCreditNames is every credit name a row states, author and narrator, in
+// the SOURCE's own spelling (sourceNames owns the typed-vs-joined choice, so
+// this reads exactly the names the import itself will read).
+func rowRawCreditNames(b sourceBook) []string {
+	return append(sourceNames(b.authors, b.str("author")),
+		sourceNames(b.narrators, b.str("narrated_by"))...)
+}
+
+// creditCensusOf builds this run's credit census: the set of slugs a name must
+// land on to count as "independently a credit somewhere", which is the evidence
+// the studio-concatenation rule's third tier consults (studiotail.go).
+//
+// The report that specified that rule measured the question against the whole
+// 1.13M-book libex dump, which the importer does not have and must never carry a
+// copy of (LICENSING.md's import posture: a bounded source, never a mirror). The
+// two things it DOES have are exactly the two the report names as the practical
+// substitute, and both are evidence of the same kind - a name somebody actually
+// credited:
+//
+//	the catalogue  every person record already committed, as loaded (14.9k after
+//	               seed wave 1). This is where "Alex Hyde-White" and "Punch
+//	               Audio" both come from: the studio has a record of its own,
+//	               which is precisely what makes the concatenation visible.
+//	the batch      a census of every credit name in the rows being imported,
+//	               author and narrator alike, in the source's own spelling AND
+//	               in its self-evidencing cleaned form (tiers 1-2, which need no
+//	               census). The cleaned form is what lets one row's "<narrator>
+//	               for HotGhost Productions" attest the narrator for a second row
+//	               that spells the same credit bare.
+//
+// It is deliberately a SNAPSHOT, taken after loadExisting and before the first
+// row is planned, rather than a live read of p.people: consulting a set that
+// grows as records are created would make a name's cleaning depend on the order
+// the rows happen to arrive in, and two runs over the same export could disagree.
+// This is the same batch-pre-pass shape resolveWorkTitles uses, for the same
+// reason.
+//
+// The universe being SMALLER than the dump only ever costs a missed cleanup
+// (the name imports as the source spelled it, which is what happens today and is
+// a maintainer PR away from fixed). It cannot cost a wrong one: every tier that
+// consults it requires MORE evidence than the tiers that do not.
+func (p *planner) creditCensusOf(books []sourceBook) creditSeenFunc {
+	// Most rows repeat an author and a narrator the catalogue or an earlier row
+	// already carries, so the batch contributes far fewer new keys than it has
+	// credits; a per-row hint over-allocates by ~90MB on a 1M-row dump.
+	universe := make(map[string]bool, len(p.people)+len(books)/2)
+	for slug := range p.people {
+		universe[slug] = true
+	}
+	record := func(name string) {
+		if slug := Slugify(name); slug != "" {
+			universe[slug] = true
+		}
+	}
+	for _, b := range books {
+		for _, name := range rowRawCreditNames(b) {
+			record(name)
+			// The name as the two self-evidencing tiers would clean it. Passing
+			// nil is what keeps this bootstrap honest: the census is built from
+			// rules that never consult the census. The overwhelming majority of
+			// names clean to themselves, and re-slugging those is pure waste.
+			if cleaned, _ := creditWithRoles(name, nil); cleaned != name {
+				record(cleaned)
+			}
+		}
+	}
+	return func(name string) bool { return universe[Slugify(name)] }
+}
+
+// decideInitialsOf is the initials rule's batch pre-pass (initials.go): which
+// spelling each initials group resolves to, decided over the catalogue as loaded
+// plus every credit name the batch carries, before a single row is planned.
+//
+// It runs AFTER creditCensusOf and cleans each name through the finished census,
+// because the name getOrCreatePerson will be handed is the CLEANED one - a row
+// spelling a narrator "<name> for HotGhost Productions" contributes that
+// narrator's spelling, not the concatenation's. That is also why this cannot be
+// folded into the census loop: the census has to be complete before a name can
+// be cleaned through it.
+func (p *planner) decideInitialsOf(books []sourceBook) initialsSurvivors {
+	c := newInitialsCensus()
+	for slug, name := range p.people {
+		c.addCatalogue(slug, name)
+	}
+	for _, b := range books {
+		for _, name := range rowRawCreditNames(b) {
+			cleaned, _ := creditWithRoles(name, p.creditCensus)
+			c.addBatch(cleaned)
+		}
+	}
+	return c.decide()
 }
 
 // seriesRef is a book's claim to a position in a named series. name is always
@@ -696,15 +815,36 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 //
 // Either way each entry keeps the roles its qualifier stated, so the two shapes
 // a source can hand credits over in produce the same facts.
-func sourceCredits(typed []string, joined string) []credit {
-	if len(typed) == 0 {
-		return splitCredits(joined)
+func sourceCredits(typed []string, joined string, seen creditSeenFunc) []credit {
+	names := sourceNames(typed, joined)
+	if len(names) == 0 {
+		return nil
 	}
-	out := make([]credit, 0, len(typed))
+	out := make([]credit, 0, len(names))
+	for _, name := range names {
+		cleaned, roles := creditWithRoles(name, seen)
+		out = append(out, credit{name: cleaned, roles: roles})
+	}
+	return out
+}
+
+// sourceNames is the raw name list a source states for one credit side, in the
+// SOURCE's own spelling: the structured list when the source parsed one, else
+// its comma-joined string split on commas. Either way the names are trimmed and
+// empties dropped.
+//
+// It is the ONE place that typed-vs-joined choice is made. Both the credit
+// pipeline (sourceCredits) and the batch census (creditCensusOf) read a row
+// through it, so the census can never be built from a different set of names
+// than the import itself reads.
+func sourceNames(typed []string, joined string) []string {
+	if len(typed) == 0 {
+		return splitRawNames(joined)
+	}
+	out := make([]string, 0, len(typed))
 	for _, name := range typed {
 		if n := strings.TrimSpace(name); n != "" {
-			cleaned, roles := CreditWithRoles(n)
-			out = append(out, credit{name: cleaned, roles: roles})
+			out = append(out, n)
 		}
 	}
 	return out
@@ -746,7 +886,12 @@ func (p *planner) workCredits(credits []credit) []model.Credit {
 			p.noteUnnamedCredit(c.name)
 			continue
 		}
-		if !p.people[slug] {
+		// The person may have been created under another spelling of their
+		// initials, which is a record this credit must NAME rather than miss:
+		// resolving "A.B. Kovacs" straight through personSlug lands on a slug
+		// nothing created, and the role credit was silently dropped.
+		slug = p.personSlugTarget(slug)
+		if _, known := p.people[slug]; !known {
 			continue
 		}
 		for _, role := range c.roles {
@@ -786,15 +931,40 @@ func (p *planner) creditSlugs(names []string, warn func(string, ...any)) []strin
 // and "Ramón De Ocampo"/"Ramon de Ocampo" all slug the same, so they are the
 // same person - the first record (existing catalog first, then batch order)
 // wins and keeps its name; spelling variants never fork a numbered duplicate.
+//
+// The one identity Slugify cannot see is an initials group respelled across the
+// separator boundary ("A.B. Kovacs" -> a-b-kovacs, "AB Kovacs" -> ab-kovacs).
+// The run's pre-pass has already decided which spelling each such group resolves
+// to (initials.go), and it is consulted only when the minted slug is about to
+// become a NEW record: an id already in the catalogue or already created this
+// run is returned untouched, so nothing on disk ever moves and nothing needs
+// migrating.
+//
+// When the decision names a spelling that does not exist yet, the record is
+// created under THAT spelling rather than the one this row happens to use.
+// Otherwise the surviving name would be whichever row arrived first, which is
+// the order dependence the pre-pass exists to remove.
 func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) string {
 	slug, fellBack := personSlug(name)
 	if fellBack {
 		warn("name %q produced an empty slug; using %q", name, slug)
 	}
-	if p.people[slug] {
+	if _, known := p.people[slug]; known {
 		return slug
 	}
-	p.people[slug] = true
+	if survivor, merges := p.initialsMerge(name); merges {
+		if _, known := p.people[survivor.slug]; known {
+			return survivor.slug
+		}
+		return p.createPerson(survivor.slug, survivor.name)
+	}
+	return p.createPerson(slug, name)
+}
+
+// createPerson emits a new person record. The caller has already established
+// that slug is free.
+func (p *planner) createPerson(slug, name string) string {
+	p.people[slug] = name
 	p.putNewEntry(pack.FamilyPeople, slug, OutPerson{
 		ID: slug, Name: name, License: licenseCC0, Sources: []OutSource{p.curSource},
 	})
@@ -802,18 +972,38 @@ func (p *planner) getOrCreatePerson(name string, warn func(string, ...any)) stri
 	return slug
 }
 
+// personSlugTarget resolves a minted person slug onto the record that actually
+// holds that person. It is the read-only half of the initials merge: the variant
+// slug is deliberately never written into p.people (an id nothing created is a
+// dangling reference), so every path that RESOLVES a credit rather than creating
+// one has to ask here or it would drop the credit - the merged record is real,
+// but it sits at the other spelling's address.
+//
+// A slug that names an existing record is always returned as-is. That is the
+// guard that keeps the decision from redirecting credits away from a record the
+// catalogue already holds: a pre-existing pair of spellings stays a pair, each
+// serving its own credits, until a maintainer merges them.
+func (p *planner) personSlugTarget(slug string) string {
+	if _, known := p.people[slug]; known {
+		return slug
+	}
+	if survivor, decided := p.initialsSurvivors[slug]; decided {
+		return survivor.slug
+	}
+	return slug
+}
+
 // personSlug derives a credit name's person identity, substituting the shared
-// "person" fallback when the name slugs away to nothing (a name in a script that
+// catch-all record when the name slugs away to nothing (a name in a script that
 // folds entirely). fellBack reports that substitution so a caller that CREATES
 // the record can warn about it, while a caller that only MATCHES (slugCredits)
 // stays silent. Both go through here so a name resolves to one identity
 // everywhere.
-func personSlug(name string) (slug string, fellBack bool) {
-	if slug = Slugify(name); slug == "" {
-		return "person", true
-	}
-	return slug, false
-}
+//
+// The rule itself is model.PersonSlug: pkg/check verifies committed ids against
+// it (checkPersonSlug) and cannot import this package, so the minting and the
+// checking share one definition rather than two that can drift.
+func personSlug(name string) (slug string, fellBack bool) { return model.PersonSlug(name) }
 
 // seriesClaim is a book's claim to a position in an already-known series.
 type seriesClaim struct {

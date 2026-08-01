@@ -356,7 +356,7 @@ const minDoubledHalfWords = 2
 const maxCleanPasses = 8
 
 // CleanCreditName normalizes one credit name from an external source. It applies
-// three evidence-driven rules, repeatedly until the name stops changing (the dump
+// four evidence-driven rules, repeatedly until the name stops changing (the dump
 // really does carry doubled qualifiers like "Dan Veksler - Translator -
 // translator"):
 //
@@ -369,6 +369,10 @@ const maxCleanPasses = 8
 //  3. An exactly-doubled name is collapsed to one half ("Full Cast Full Cast" ->
 //     "Full Cast"). Only exact halves of at least two words each, so "Duran
 //     Duran" and "Mitz Mitz Vah" are left alone.
+//  4. A concatenated studio/production credit is removed ("Alex Hyde-White Punch
+//     Audio" -> "Alex Hyde-White"). Its evidence bar is the strictest of the
+//     four, and one of its three tiers needs a CENSUS of credit names this entry
+//     point has no access to - see studiotail.go and creditWithRoles.
 //
 // The person stays in the credit list under the cleaned name. The stripped role
 // is no longer discarded - CreditWithRoles returns it, and the importer records
@@ -393,16 +397,29 @@ func CleanCreditName(name string) string {
 // did?"), answered in ONE pass so the name and the roles can never come from
 // different cleanings.
 func CreditWithRoles(name string) (cleaned string, roles []string) {
+	return creditWithRoles(name, nil)
+}
+
+// creditWithRoles is CreditWithRoles with the studio-concatenation rule's
+// CENSUS supplied: the question "is this half of the string independently a
+// credit somewhere?", which decides tier 3 (studiotail.go). A nil
+// creditSeenFunc has seen nothing, so the two tiers that carry their own
+// evidence still apply and the third never fires - which is exactly what a
+// caller with no catalogue in hand (pkg/scan reading tags, a single typed
+// issue-form name) should get, and it is what CreditWithRoles, the public door,
+// passes.
+func creditWithRoles(name string, seen creditSeenFunc) (cleaned string, roles []string) {
 	cleaned = name
 	var stated []string
 	for i := 0; i < maxCleanPasses; i++ {
 		stripped, passRoles := stripRoleQualifier(stripPrefixCredit(cleaned))
-		next := collapseDoubledName(stripped)
+		next, tailRoles := stripStudioConcat(collapseDoubledName(stripped), seen)
 		if next == cleaned {
 			break
 		}
 		cleaned = next
 		stated = append(stated, passRoles...)
+		stated = append(stated, tailRoles...)
 	}
 	return cleaned, sortedUniqueRoles(stated)
 }
@@ -505,6 +522,38 @@ func stripRoleQualifier(name string) (string, []string) {
 	return cleaned, roles
 }
 
+// maxRoleQualifierWords is the longest roleQualifiers key, in words, derived
+// from the vocabulary rather than spelled out so the two cannot drift.
+var maxRoleQualifierWords = func() int {
+	most := 0
+	for role := range roleQualifiers {
+		if n := len(strings.Fields(role)); n > most {
+			most = n
+		}
+	}
+	return most
+}()
+
+// leadingRoleQualifier reports the schema roles the LEADING words of a removed
+// tail state, longest match first ("editor and translator" before "editor").
+//
+// It is the counterpart to stripRoleQualifier, for the one shape that reaches
+// the credit rules from the wrong end: a source that appends a role AND a studio
+// behind one separator ("Jane Doe - translator Punch Audio") hands the qualifier
+// to the studio-tail rule as part of the tail, where stripRoleQualifier can no
+// longer see it. Only a listed role ever matches, so the worst case is silence -
+// and it states roles about a tail that has already been REMOVED from the name,
+// never about the name itself.
+func leadingRoleQualifier(tail []string) []string {
+	for n := min(maxRoleQualifierWords, len(tail)); n >= 1; n-- {
+		role := norm.NFC.String(strings.ToLower(strings.Join(tail[:n], " ")))
+		if roles, listed := roleQualifiers[role]; listed {
+			return roles
+		}
+	}
+	return nil
+}
+
 // collapseDoubledName collapses a name whose words split into two identical
 // halves ("Full Cast Full Cast" -> "Full Cast"). See minDoubledHalfWords for why
 // a one-word half never collapses.
@@ -528,20 +577,6 @@ func collapseDoubledName(name string) string {
 type credit struct {
 	name  string
 	roles []string
-}
-
-// splitCredits splits a comma-joined list of names ("A, B, C"), trimming each,
-// cleaning the credit and keeping the roles it stated, and dropping empties. It
-// returns nil when nothing usable remains.
-func splitCredits(joined string) []credit {
-	var out []credit
-	for _, part := range strings.Split(joined, ",") {
-		if name := strings.TrimSpace(part); name != "" {
-			cleaned, roles := CreditWithRoles(name)
-			out = append(out, credit{name: cleaned, roles: roles})
-		}
-	}
-	return out
 }
 
 // splitRawNames splits a comma-joined list of names into the source's OWN
@@ -579,55 +614,31 @@ func creditNamesOf(credits []credit) []string {
 // cleaning the credit (CleanCreditName), and dropping empties. It returns nil
 // when nothing usable remains.
 //
-// It is the name-only view of splitCredits, kept as the shared public helper
+// It is the name-only view of sourceCredits, kept as the shared public helper
 // (pkg/scan reads tags through it) because a consumer outside the importer has
-// no work record to hang a role on.
+// no work record to hang a role on - and, for the same reason, no credit
+// census, so it cleans with the two self-evidencing studio-tail tiers only.
 func SplitNames(joined string) []string {
-	return creditNamesOf(splitCredits(joined))
+	return creditNamesOf(sourceCredits(nil, joined, nil))
 }
 
-var (
-	apostrophes  = strings.NewReplacer("'", "", "’", "", "ʼ", "", "`", "")
-	multiHyphen  = regexp.MustCompile(`-+`)
-	yearPrefixRE = regexp.MustCompile(`^\d{4}`)
-)
+// trailingParenRE captures the content of a trailing parenthetical or bracket.
+// It has two consumers, which is why it lives here beside the shared credit
+// helpers rather than with either: the title parser reads an edition marker with
+// it ("... (Unabridged)", recordings.go) and the credit rules read a trailing
+// marker with it (the AI-narration check in libex.go, the studio-tail separator
+// in studiotail.go).
+var trailingParenRE = regexp.MustCompile(`\s*[([]([^()\[\]]*)[)\]]\s*$`)
 
-// Slugify turns arbitrary text into a slug matching the dataset's slug rules:
-// lowercase, ASCII-folded diacritics, apostrophes stripped, every other
-// non-alphanumeric run collapsed to a single hyphen, trimmed, capped at
-// MaxSlugLen. It returns "" when nothing slug-worthy survives (for example a
-// title in a non-Latin script that folds away entirely); callers substitute a
-// fallback token.
-func Slugify(s string) string {
-	// Strip apostrophes first so "Philosopher's" -> "philosophers", not
-	// "philosopher-s".
-	s = apostrophes.Replace(s)
+var yearPrefixRE = regexp.MustCompile(`^\d{4}`)
 
-	// Decompose accented letters, then drop the combining marks so "café" folds
-	// to "cafe" and "Motörhead" to "motorhead".
-	decomposed := norm.NFD.String(s)
-	var b strings.Builder
-	b.Grow(len(decomposed))
-	for _, r := range decomposed {
-		switch {
-		case r >= 'A' && r <= 'Z':
-			b.WriteRune(r + ('a' - 'A'))
-		case (r >= 'a' && r <= 'z') || (r >= '0' && r <= '9'):
-			b.WriteRune(r)
-		case isCombiningMark(r):
-			// drop
-		default:
-			b.WriteByte('-')
-		}
-	}
-
-	slug := multiHyphen.ReplaceAllString(b.String(), "-")
-	slug = strings.Trim(slug, "-")
-	if len(slug) > model.MaxSlugLen {
-		slug = strings.Trim(slug[:model.MaxSlugLen], "-")
-	}
-	return slug
-}
+// Slugify turns arbitrary text into a slug matching the dataset's slug rules.
+// The implementation is model.Slugify - the leaf copy pkg/check can reach too
+// (checkPersonSlug verifies a person's id against their name, and pkg/check
+// cannot import this package without a cycle). This is the name the importer's
+// own callers, and the sibling audiosilo-sidecars module through pkg/scan, know
+// it by; new code outside this package should call model.Slugify directly.
+func Slugify(s string) string { return model.Slugify(s) }
 
 // BoundedSlugTail joins a base slug and a disambiguating tail (an author credit,
 // a release year, a numeric collision suffix) into a slug of at most
@@ -704,16 +715,6 @@ func NumberedSlugAt(base string, i int) string {
 		return base
 	}
 	return BoundedSlugTail(base, fmt.Sprintf("-%d", i+1))
-}
-
-// isCombiningMark reports whether r is a Unicode combining diacritical mark
-// (the ranges NFD decomposition produces for accented Latin letters).
-func isCombiningMark(r rune) bool {
-	return (r >= 0x0300 && r <= 0x036f) || // combining diacritical marks
-		(r >= 0x1ab0 && r <= 0x1aff) ||
-		(r >= 0x1dc0 && r <= 0x1dff) ||
-		(r >= 0x20d0 && r <= 0x20ff) ||
-		(r >= 0xfe20 && r <= 0xfe2f)
 }
 
 // YearOf returns the four-digit year prefix of a date string, or "" when the

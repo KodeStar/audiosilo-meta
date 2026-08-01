@@ -120,38 +120,13 @@ func TestSplitNames(t *testing.T) {
 	}
 }
 
-func TestSlugify(t *testing.T) {
-	cases := []struct {
-		in   string
-		want string
-	}{
-		{"Harry Potter and the Philosopher's Stone", "harry-potter-and-the-philosophers-stone"},
-		{"Café Society", "cafe-society"},
-		{"Motörhead: Overkill", "motorhead-overkill"},
-		{"  Spaced   Out  ", "spaced-out"},
-		{"J.R.R. Tolkien", "j-r-r-tolkien"},
-		{"It's a Test — Really", "its-a-test-really"},
-		{"ALL CAPS", "all-caps"},
-		{"日本語", ""}, // non-Latin folds away; caller supplies a fallback
-	}
-	for _, c := range cases {
-		if got := Slugify(c.in); got != c.want {
-			t.Errorf("Slugify(%q) = %q, want %q", c.in, got, c.want)
-		}
-	}
-}
-
-func TestSlugifyMaxLen(t *testing.T) {
-	long := ""
-	for i := 0; i < 60; i++ {
-		long += "ab "
-	}
-	got := Slugify(long)
-	if len(got) > 100 {
-		t.Errorf("Slugify long slug len = %d, want <= 100", len(got))
-	}
-	if got[len(got)-1] == '-' {
-		t.Errorf("Slugify trimmed slug ends with a hyphen: %q", got)
+// TestSlugifyDelegates is a smoke test only: the rule itself lives in
+// pkg/model (slug_test.go covers it), and this pins that the importer's
+// same-named door still reaches it.
+func TestSlugifyDelegates(t *testing.T) {
+	const in = "Harry Potter and the Philosopher's Stone"
+	if got, want := Slugify(in), model.Slugify(in); got != want {
+		t.Errorf("Slugify(%q) = %q, want model.Slugify's %q", in, got, want)
 	}
 }
 

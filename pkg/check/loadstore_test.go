@@ -191,19 +191,27 @@ func liveHeap() uint64 {
 // each, which is what makes a per-pack retention difference measurable.
 func bulkyTree(n, size int) map[string]string {
 	const perEntry = 600
+	// entryOverhead is everything in one entry's JSON that is not the padding:
+	// the id, the fixed fields, and the name's "Person NNNNNN" stem. The padding
+	// is sized to bring the whole entry to perEntry bytes.
+	const entryOverhead = 133
 	files := map[string]string{}
 	slug := 0
 	for p := range n {
 		entries := map[string]string{}
 		first := ""
 		for range size / perEntry {
-			id := fmt.Sprintf("person-%06d", slug)
+			num := fmt.Sprintf("%06d", slug)
 			slug++
+			id := "person-" + num
 			if first == "" {
 				first = id
 			}
-			entries[id] = `{"id":"` + id + `","license":"CC0-1.0","name":"` +
-				strings.Repeat("Na", perEntry/2-120) + `","sources":[{"type":"user"}]}`
+			// The name has to slug back to the id (checkPersonSlug), so the
+			// padding that gives the entry its size is punctuation: Slugify
+			// collapses it to one trailing hyphen and trims that away.
+			name := "Person " + num + strings.Repeat("!", perEntry-entryOverhead)
+			entries[id] = `{"id":"` + id + `","license":"CC0-1.0","name":"` + name + `","sources":[{"type":"user"}]}`
 		}
 		name := first
 		if p == 0 {

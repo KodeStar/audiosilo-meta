@@ -339,6 +339,22 @@ func TestPersonKindValid(t *testing.T) {
 	}
 }
 
+// TestPersonSlugMatchesName is checkPersonSlug's passing fixture, over the two
+// shapes that are easy to get wrong: a name whose punctuation Slugify FOLDS
+// (the apostrophe rule that stranded madeleine-l-engle, whose correctly-slugged
+// twin is the one here), and the catch-all record the importer mints for a name
+// that slugs away to nothing, whose id is legitimately not its name's slug.
+func TestPersonSlugMatchesName(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/ma/madeleine-lengle.json"] = `{"id":"madeleine-lengle","license":"CC0-1.0","name":"Madeleine L'Engle","sources":[{"type":"user"}]}`
+	files["people/pe/person.json"] = `{"id":"person","license":"CC0-1.0","name":"김영하","sources":[{"type":"user"}]}`
+	writeEntities(t, dir, files)
+	if res := Load(dir); !res.OK() {
+		t.Fatalf("a person whose id IS the slug of their name reported problems: %v", res.Problems)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -407,6 +423,17 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/recordings/rec-two.json"] = `{"abridged":false,"id":"rec-two","isbn":["9780000000001"],"language":"en","license":"CC0-1.0","narrators":["narrator-one"],"sources":[{"type":"user"}],"work":"book-one"}`
 			},
 			want: "duplicate ISBN 9780000000001",
+		},
+		{
+			// The Class C defect: a record minted under an older slug rule sits
+			// at an address nothing will probe again, so the next import of that
+			// person forks a second record.
+			name: "person id is not the slug of its name",
+			mutate: func(f map[string]string) {
+				f["people/au/author-one.json"] = strings.Replace(
+					f["people/au/author-one.json"], `"name":"Author One"`, `"name":"Madeleine L'Engle"`, 1)
+			},
+			want: `person id "author-one" does not match its name "Madeleine L'Engle" (want "madeleine-lengle")`,
 		},
 		{
 			name: "duplicate person wikidata",

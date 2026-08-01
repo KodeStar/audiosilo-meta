@@ -13,6 +13,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 	"golang.org/x/text/unicode/norm"
 )
 
@@ -647,7 +648,7 @@ func firstUnnamedCredit(authors, narrators []string) (name string, unnamed bool)
 // refused for it (an absent author is addBook's rule to enforce, for every
 // source).
 func creditIdentifies(name string) bool {
-	for _, c := range sourceCredits([]string{name}, "") {
+	for _, c := range sourceCredits([]string{name}, "", nil) {
 		if _, fellBack := personSlug(c.name); fellBack {
 			return false
 		}
@@ -683,7 +684,7 @@ func creditIdentifies(name string) bool {
 // dump is filtered before it ever reaches this parser).
 
 // aiNarratorNames are credits that are WHOLLY an AI-voice label, in every
-// localization the dump carries. Matched as a whole name (normAINarrator form),
+// localization the dump carries. Matched as a whole name (foldCredit form),
 // never as a substring. Counts are credits in the 1.13M-row dump.
 var aiNarratorNames = map[string]bool{
 	"virtual voice":    true, // 143,559 - English, and the overwhelming majority
@@ -747,7 +748,7 @@ func firstAINarrator(names []string) (name string, isAI bool) {
 
 // isAINarratorName applies the three measured shapes to one credit name.
 func isAINarratorName(name string) bool {
-	canon := normAINarrator(name)
+	canon := foldCredit(name)
 	if canon == "" {
 		return false
 	}
@@ -758,7 +759,7 @@ func isAINarratorName(name string) bool {
 		return true
 	}
 	if m := trailingParenRE.FindStringSubmatchIndex(name); m != nil {
-		return aiNarratorMarkers[normAINarrator(name[m[2]:m[3]])]
+		return aiNarratorMarkers[foldCredit(name[m[2]:m[3]])]
 	}
 	return false
 }
@@ -776,21 +777,22 @@ func continuesWord(s string) bool {
 	return unicode.IsLetter(r) || unicode.IsDigit(r)
 }
 
-// normAINarrator is the canonical comparison form for a credit name or a
-// trailing marker: lowercased, diacritics folded away, and collapsed to single
+// foldCredit is the canonical comparison form for a credit STRING - a name, a
+// trailing marker, or a vocabulary key: lowercased, diacritics folded away, and collapsed to single
 // spaces. Folding the diacritics is what lets one entry cover every spelling of
 // "Voz sintética" / "Réplica de voz autorizada" a source may emit - precomposed
 // (NFC), decomposed (NFD, which a Mac-side exporter really does produce), or
 // typed without the accent - the same problem stripRoleQualifier solves for its
 // role list. Note the SQL half of this rule (scripts/libex-export-rows.sql)
 // compares the literal accented spellings instead, which is why the Go rule is
-// the backstop rather than a duplicate.
-func normAINarrator(s string) string {
+// the backstop rather than a duplicate. It is shared with the studio-tail rule
+// (studiotail.go), which compares its own vocabulary in exactly this form.
+func foldCredit(s string) string {
 	decomposed := norm.NFD.String(strings.ToLower(strings.TrimSpace(s)))
 	var b strings.Builder
 	b.Grow(len(decomposed))
 	for _, r := range decomposed {
-		if isCombiningMark(r) {
+		if model.IsCombiningMark(r) {
 			continue
 		}
 		b.WriteRune(r)
