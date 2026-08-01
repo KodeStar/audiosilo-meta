@@ -193,22 +193,20 @@ func Write(dataDir string) (Report, error) {
 	err = withPackedFamilies(dataDir, func(s *pack.Store, families []pack.Family) error {
 		healed := false
 		for _, f := range families {
-			// One Pending per family, for the report. A family that is already
-			// well-formed is then left entirely alone: no heal, and no flush at
-			// all if that holds for every family, which is what makes a clean
-			// tree cost one pass over it and nothing more.
-			p, perr := s.Pending(f)
-			if perr != nil {
-				return perr
-			}
-			mergePending(&rep.Pending, p)
-			if p.Empty() {
-				continue
-			}
-			if _, herr := s.Heal(f); herr != nil {
+			// ONE survey per family: what is outstanding (the report) and the
+			// queueing of its fixes come out of the same pass, rather than
+			// classifying every file in the family twice for the same answer.
+			// A family that is already well-formed queues nothing, so a tree
+			// where that holds throughout is never flushed at all - which is
+			// what makes a clean tree cost one pass over it and nothing more.
+			p, herr := s.HealPending(f)
+			if herr != nil {
 				return herr
 			}
-			healed = true
+			mergePending(&rep.Pending, p)
+			if !p.Empty() {
+				healed = true
+			}
 		}
 		if !healed {
 			return nil

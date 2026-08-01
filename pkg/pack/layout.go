@@ -50,10 +50,18 @@ func DetectLayout(dataDir string, f Family) (Layout, error) {
 	if err != nil {
 		return LayoutAbsent, err
 	}
-	if len(files) == 0 {
+	return detectLayoutIn(dataDir, files)
+}
+
+// detectLayoutIn decides a family's layout from its files, however they were
+// listed - a walk of the family root, or a whole-tree Listing. rels must already
+// be narrowed to the JSON files pkg/pack reads (see Listing.packFiles), so the
+// two routes see the same set and cannot disagree.
+func detectLayoutIn(dataDir string, rels []string) (Layout, error) {
+	if len(rels) == 0 {
 		return LayoutAbsent, nil
 	}
-	for _, rel := range files {
+	for _, rel := range rels {
 		raw, err := os.ReadFile(filepath.Join(dataDir, filepath.FromSlash(rel)))
 		if err != nil {
 			if os.IsNotExist(err) {

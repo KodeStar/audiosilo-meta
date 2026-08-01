@@ -50,19 +50,15 @@ func rangeStr(lo, hi string) string {
 }
 
 // loadPackFamily reads one pack-layout family: it checks the family's bound and
-// directory invariants, then every pack's placement, caps, and entries. rels is
-// the family's JSON files as the tree walk found them, used only to spot files
-// the pack listing does not account for.
+// directory invariants, then every pack's placement, caps, and entries. tree is
+// the family's pack listing and rels is its JSON files, both as the ONE tree
+// walk found them; rels is used only to spot files the pack listing does not
+// account for.
 //
 // The recordings it returns are already attached to their works (a works entry
 // is a composite), so Load only needs their reporting paths.
-func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) []recordWithPath {
+func (l *loader) loadPackFamily(def pack.FamilyDef, tree *pack.Tree, rels []string) []recordWithPath {
 	root := def.Family.Root()
-	tree, err := pack.ReadTree(dir, def.Family)
-	if err != nil {
-		l.add(root, "read: %v", err)
-		return nil
-	}
 
 	listed := map[string]bool{}
 	for _, ref := range tree.Packs() {
@@ -79,14 +75,8 @@ func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) [
 	var recs []recordWithPath
 	for i, ref := range tree.Packs() {
 		p := ref.Path()
-		raw, err := os.ReadFile(filepath.Join(dir, filepath.FromSlash(p)))
-		if err != nil {
-			l.add(p, "read: %v", err)
-			continue
-		}
-		file, err := pack.Parse(raw)
-		if err != nil {
-			l.add(p, "invalid pack: %s", collapse(err.Error()))
+		file, ok := l.readPack(p)
+		if !ok {
 			continue
 		}
 		if file.Len() == 0 {
@@ -117,6 +107,34 @@ func (l *loader) loadPackFamily(dir string, def pack.FamilyDef, rels []string) [
 		}
 	}
 	return recs
+}
+
+// readPack returns the parsed pack at the data-relative path p, reporting a
+// read or parse failure against the file itself. ok is false when there is
+// nothing to validate.
+//
+// It goes through the loader's shared parse cache: a pack a writer's store has
+// already read is taken from there, and one this load reads is left there for
+// the store. The reading is still done here rather than through Reader.Read
+// because a missing file is a PROBLEM to this package (a listed pack that has
+// gone away) where the store reads it as an empty pack to write into, and
+// because the two failures are reported differently.
+func (l *loader) readPack(p string) (*pack.File, bool) {
+	if file, ok := l.rdr.Cached(p); ok {
+		return file, true
+	}
+	raw, err := os.ReadFile(filepath.Join(l.dir, filepath.FromSlash(p)))
+	if err != nil {
+		l.add(p, "read: %v", err)
+		return nil, false
+	}
+	file, err := pack.Parse(raw)
+	if err != nil {
+		l.add(p, "invalid pack: %s", collapse(err.Error()))
+		return nil, false
+	}
+	l.rdr.Hold(p, file)
+	return file, true
 }
 
 // checkPackCaps enforces the hard caps a pack may not exceed. The size cap is
