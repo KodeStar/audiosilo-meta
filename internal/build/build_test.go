@@ -20,7 +20,12 @@ func fixtureCatalog() *model.Catalog {
 	phm := &model.Work{
 		ID: "project-hail-mary", Title: "Project Hail Mary", Language: "en",
 		Authors: []string{"andy-weir"}, License: "CC0-1.0",
-		Genres:  []string{"hard-science-fiction", "science-fiction"},
+		Genres: []string{"hard-science-fiction", "science-fiction"},
+		// Contributor credits are in the DATA but not (yet) in the artifact.
+		// They ride on the shared fixture deliberately: every build assertion in
+		// this file then runs against a catalog carrying them, so a builder that
+		// choked on the field would fail the whole suite rather than one test.
+		Credits: []model.Credit{{Person: "andy-weir", Role: model.RoleTranslator}},
 		AddedAt: "2026-07-10T00:00:00Z",
 		Recordings: []*model.Recording{{
 			ID: "ray-porter-2021", Work: "project-hail-mary", Abridged: false, Language: "en",
@@ -533,5 +538,34 @@ func TestBuildNarratorOrder(t *testing.T) {
 	}
 	if len(got) != 2 || got[0] != "michael-kramer" || got[1] != "kate-reading" {
 		t.Errorf("narrator order = %v, want [michael-kramer kate-reading]", got)
+	}
+}
+
+// TestBuildIgnoresWorkCredits pins the artifact's side of the additive
+// contributor-credits change: the builder reads a catalog carrying credits
+// without error, and writes NOTHING for them - no table, and no schema_version
+// bump (TestBuildMeta pins the version at 4). Surfacing credits in the artifact
+// and the API is a later, separate change; until then a consumer sees exactly
+// what it saw before, which is what makes the schema addition safe to ship
+// ahead of its readers.
+func TestBuildIgnoresWorkCredits(t *testing.T) {
+	db := buildFixture(t)
+
+	// The work built normally despite carrying credits.
+	var title string
+	if err := db.QueryRow(`SELECT title FROM works WHERE id=?`, "project-hail-mary").Scan(&title); err != nil {
+		t.Fatalf("work with credits did not build: %v", err)
+	}
+	if title != "Project Hail Mary" {
+		t.Errorf("title = %q", title)
+	}
+
+	// No credits table was invented along the way.
+	var n int
+	if err := db.QueryRow(`SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name LIKE '%credit%'`).Scan(&n); err != nil {
+		t.Fatal(err)
+	}
+	if n != 0 {
+		t.Errorf("the builder created %d credit table(s); the artifact is unchanged this round", n)
 	}
 }

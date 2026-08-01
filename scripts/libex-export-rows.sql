@@ -49,7 +49,12 @@ SELECT json_build_object(
   'series', COALESCE((SELECT json_agg(json_build_object('name', s.title, 'position', bs.position))
       FROM book_series bs JOIN series s ON s.asin = bs.series_asin
       WHERE bs.book_asin = b.asin), '[]'::json),
-  'chapters', (SELECT t.chapters FROM tracks t WHERE t.asin = b.asin LIMIT 1)
+  -- tracks.chapters is an OBJECT wrapping the list ({"chapters": [...]}), so the
+  -- list is unwrapped here. The importer's chapter reader type-asserts an ARRAY
+  -- and returns nil for anything else (rawBook.chapters), so exporting the
+  -- wrapper drops every chapter SILENTLY - no warning, no failed row, just books
+  -- that arrive with no chapters at all.
+  'chapters', (SELECT t.chapters->'chapters' FROM tracks t WHERE t.asin = b.asin LIMIT 1)
 )
 FROM books b
 WHERE b.is_vvab IS NOT TRUE

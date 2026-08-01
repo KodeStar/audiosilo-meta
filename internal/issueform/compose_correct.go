@@ -28,7 +28,17 @@ const (
 	kindDateYear
 	kindDateFlex
 	kindHTTPSURL
+	kindPersonKind
 )
+
+// personKinds is the schema's person.kind enum, taken from pkg/model's
+// constants rather than re-spelled here so the form can never drift from the
+// values the schema accepts.
+var personKinds = map[string]bool{
+	model.KindEntityPerson:    true,
+	model.KindEntityGroup:     true,
+	model.KindEntityPublisher: true,
+}
 
 // correctableFields is the allowlist of single, scalar fields a correction may
 // touch per entity kind. Anything not listed (arrays, xref objects, sources,
@@ -46,6 +56,7 @@ var correctableFields = map[model.Kind]map[string]fieldKind{
 	},
 	model.KindPerson: {
 		"name": kindString, "sort_name": kindString, "description": kindString,
+		"kind": kindPersonKind,
 	},
 	model.KindSeries: {
 		"name": kindString,
@@ -222,6 +233,16 @@ func coerceFieldValue(kind fieldKind, raw string) (any, bool) {
 	case kindHTTPSURL:
 		if strings.HasPrefix(raw, "https://") {
 			return raw, true
+		}
+		return nil, false
+	case kindPersonKind:
+		// The enum values are lowercase, and a submitter typing "Publisher"
+		// means the same thing, so the input is lowercased before the lookup.
+		// Anything still outside the enum is rejected here rather than written
+		// as a schema-invalid record.
+		k := strings.ToLower(raw)
+		if personKinds[k] {
+			return k, true
 		}
 		return nil, false
 	}

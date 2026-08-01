@@ -21,6 +21,15 @@ func checkIntegrity(cat *model.Catalog, workByID map[string]*model.Work, recs []
 				add(rel, "author %q does not exist as a person", a)
 			}
 		}
+		// A credit names a person exactly as an author or a narrator does, so it
+		// is the same integrity rule - and it is load-bearing for the importer's
+		// enrichment pass, which may only credit people the catalogue already
+		// holds (enrichment never creates a record).
+		for _, c := range w.Credits {
+			if !people[c.Person] {
+				add(rel, "credit %q (%s) does not exist as a person", c.Person, c.Role)
+			}
+		}
 	}
 
 	for _, pr := range recs {
@@ -250,6 +259,42 @@ func checkGenresSorted(cat *model.Catalog, idx *pathIndex, add addFunc) {
 			if w.Genres[i] < w.Genres[i-1] {
 				add(rel, "genres must be sorted: %q comes after %q", w.Genres[i], w.Genres[i-1])
 			}
+		}
+	}
+}
+
+// checkCreditPairs enforces that a work never credits one person twice in the
+// SAME role. A person legitimately appears several times with DIFFERENT roles
+// (a source really does credit one person as "editor and translator", which the
+// importer emits as two entries), so the uniqueness is on the PAIR, not on the
+// person.
+//
+// The schema's uniqueItems already rejects an exactly-repeated object, which is
+// the same defect - but it reports it as "items at index 1 and 3 are equal",
+// naming neither the person nor the role. This rule exists so the message a
+// contributor reads names both.
+//
+// Each offending (person, role) pair is reported ONCE per work, however many
+// times it repeats: the fix for five copies is the same single edit as for two,
+// so repeating an identical line per extra occurrence only buries the other
+// problems in the report.
+func checkCreditPairs(cat *model.Catalog, idx *pathIndex, add addFunc) {
+	for _, w := range cat.Works {
+		if len(w.Credits) < 2 {
+			continue
+		}
+		rel := idx.work[w]
+		seen := make(map[model.Credit]bool, len(w.Credits))
+		reported := make(map[model.Credit]bool)
+		for _, c := range w.Credits {
+			if seen[c] {
+				if !reported[c] {
+					reported[c] = true
+					add(rel, "credit %q is listed twice as %q; one person holds a role once", c.Person, c.Role)
+				}
+				continue
+			}
+			seen[c] = true
 		}
 	}
 }

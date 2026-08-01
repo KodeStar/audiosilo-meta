@@ -175,7 +175,7 @@ func audiosiloBookToBook(e rawBook) sourceBook {
 }
 
 // joinNames renders the projection's authors/narrators string array as the
-// comma-joined string addBook's SplitNames consumes. A non-array value falls back
+// comma-joined string addBook's sourceCredits consumes. A non-array value falls back
 // to its string form. The site already split and role-stripped these names, so
 // joining then re-splitting round-trips them.
 func joinNames(v any) string {

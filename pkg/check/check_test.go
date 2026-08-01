@@ -271,6 +271,74 @@ func TestCreditListsDistinctSlugs(t *testing.T) {
 	}
 }
 
+// TestWorkCreditsValid is the passing fixture for the optional contributor
+// credits: a work crediting existing people validates, ONE person may hold two
+// different roles (the combined "editor and translator" qualifier the importer
+// splits into two entries), and the values reach the catalog.
+func TestWorkCreditsValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/au/author-two.json"] = `{"id":"author-two","license":"CC0-1.0","name":"Author Two","sources":[{"type":"user"}]}`
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[{"person":"author-two","role":"editor"},{"person":"author-two","role":"translator"}],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("a work with valid credits should validate, got: %v", res.Problems)
+	}
+	got := res.Catalog.Works[0].Credits
+	if len(got) != 2 || got[0].Person != "author-two" || got[0].Role != "editor" || got[1].Role != "translator" {
+		t.Errorf("credits did not load: %+v", got)
+	}
+}
+
+// TestCreditPairReportedOnce pins that a repeated (person, role) credit is
+// reported ONCE per work however many copies it has: the fix is one edit either
+// way, so five copies must not push four identical lines into a report a
+// contributor has to read.
+func TestCreditPairReportedOnce(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	dupe := strings.Repeat(`{"person":"author-one","role":"editor"},`, 5)
+	files["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[` + strings.TrimSuffix(dupe, ",") +
+		`],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if res.OK() {
+		t.Fatal("a work crediting one person five times in one role must fail")
+	}
+	n := 0
+	for _, p := range res.Problems {
+		if strings.Contains(p.Msg, `credit "author-one" is listed twice as "editor"`) {
+			n++
+		}
+	}
+	if n != 1 {
+		t.Errorf("checkCreditPairs reported the same pair %d times, want 1; problems: %v", n, res.Problems)
+	}
+}
+
+// TestPersonKindValid is the passing fixture for the optional person kind: the
+// field is accepted, absence stays the norm, and the value reaches the catalog.
+func TestPersonKindValid(t *testing.T) {
+	dir := t.TempDir()
+	files := baseValid()
+	files["people/au/author-one.json"] = `{"id":"author-one","kind":"publisher","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+	writeEntities(t, dir, files)
+	res := Load(dir)
+	if !res.OK() {
+		t.Fatalf("a person with a kind should validate, got: %v", res.Problems)
+	}
+	var kinds []string
+	for _, p := range res.Catalog.People {
+		kinds = append(kinds, p.ID+"="+p.Kind)
+	}
+	sort.Strings(kinds)
+	// narrator-one carries no kind, which reads as an individual person.
+	if len(kinds) != 2 || kinds[0] != "author-one=publisher" || kinds[1] != "narrator-one=" {
+		t.Errorf("person kinds did not load: %v", kinds)
+	}
+}
+
 func TestLoadRuleViolations(t *testing.T) {
 	cases := []struct {
 		name   string
@@ -389,6 +457,48 @@ func TestLoadRuleViolations(t *testing.T) {
 				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"genres":["science-fiction","fantasy"],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
 			},
 			want: `genres must be sorted: "fantasy" comes after "science-fiction"`,
+		},
+		{
+			name: "credit names a person who does not exist",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[{"person":"ghost-editor","role":"editor"}],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: `credit "ghost-editor" (editor) does not exist as a person`,
+		},
+		{
+			name: "one person credited twice in the same role",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[{"person":"author-one","role":"editor"},{"person":"author-one","role":"editor"}],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: `credit "author-one" is listed twice as "editor"`,
+		},
+		{
+			name: "unknown credit role value",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[{"person":"author-one","role":"narrator"}],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/credits/0/role",
+		},
+		{
+			name: "credit with an extra property",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[{"note":"why","person":"author-one","role":"editor"}],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/credits/0",
+		},
+		{
+			name: "empty credits list",
+			mutate: func(f map[string]string) {
+				f["works/bo/book-one/work.json"] = `{"authors":["author-one"],"credits":[],"id":"book-one","language":"en","license":"CC0-1.0","sources":[{"type":"user"}],"title":"Book One"}`
+			},
+			want: "/credits",
+		},
+		{
+			name: "unknown person kind value",
+			mutate: func(f map[string]string) {
+				f["people/au/author-one.json"] = `{"id":"author-one","kind":"corporation","license":"CC0-1.0","name":"Author One","sources":[{"type":"user"}]}`
+			},
+			want: "/kind",
 		},
 		{
 			name: "schema violation: missing required title",

@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -151,6 +152,23 @@ type planner struct {
 	// printed - the COUNT comes from Summary.SkippedNoWork. Empty in every other
 	// mode.
 	noWorkExamples []string
+	// unnamedCredits counts the role-qualified credits workCredits refused
+	// because the person's name does not resolve to an identity of their own,
+	// and unnamedCreditNames keeps a few distinct spellings for the aggregate
+	// warning (capped at maxWarnExamples as it fills). Aggregated because the
+	// cause is one property of Slugify, not of any individual row: the seed wave
+	// hit it 38 times and 38 identical per-row lines would say no more than one
+	// counted line does.
+	unnamedCredits     int
+	unnamedCreditNames []string
+	// runCredits is the set of contributor credits THIS RUN has written onto
+	// each work it created or filled, keyed by work slug. Its PRESENCE is the
+	// permission: a work the run itself put credits on (or created) accretes the
+	// pairs later rows of the same run state, while a work whose credits came
+	// from disk keeps the documented cross-run rule (fill only what is absent).
+	// Without it a second row naming a new (person, role) pair on a work the run
+	// already touched would be dropped silently.
+	runCredits map[string]map[model.Credit]bool
 	// sourceType / importDate are the run-wide halves of every provenance stamp
 	// (the per-row half is the book's ASIN); setSource composes the three.
 	sourceType string
@@ -217,7 +235,8 @@ type sourceBook struct {
 	isbns      []string     // well-formed ISBNs the source stated (validated at parse)
 	// authors / narrators are the source's STRUCTURED credit lists, set when it
 	// provides one name per element. They are used verbatim (each still passed
-	// through CleanCreditName) instead of splitting raw's comma-joined
+	// through CreditWithRoles, which cleans the name and keeps the roles its
+	// trailing qualifier stated) instead of splitting raw's comma-joined
 	// string, so a name that contains a comma ("Alexandre Dumas, pere") stays
 	// one person. Empty means the source only has the joined string.
 	authors   []string
@@ -294,6 +313,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 		store:          store,
 		genres:         audibleGenreTable().withRunMemo(),
 		unmappedGenres: map[string]bool{},
+		runCredits:     map[string]map[model.Credit]bool{},
 		sourceType:     sourceType,
 		importDate:     opts.ImportDate,
 		userTier:       model.TierOfSource(sourceType) == model.TierUserLibrary,
@@ -316,6 +336,7 @@ func runBooks(books []sourceBook, sourceType string, opts Options) (Summary, err
 	}
 	p.finalizeSeries()
 	p.reportUnmappedGenres()
+	p.reportUnnamedCredits()
 	if p.fatal != nil {
 		return p.summary, p.fatal
 	}
@@ -519,8 +540,8 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	if !ok {
 		return
 	}
-	authorNames := rowAuthorNames(b)
-	if len(authorNames) == 0 {
+	authorCredits := rowAuthorCredits(b)
+	if len(authorCredits) == 0 {
 		warn("no author; a work requires an author; skipped")
 		return
 	}
@@ -530,7 +551,7 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 		return
 	}
 
-	authorSlugs := p.creditSlugs(authorNames, warn)
+	authorSlugs := p.creditSlugs(creditNamesOf(authorCredits), warn)
 	narratorSlugs := p.creditSlugs(narratorNames, warn)
 
 	// The book's series claims (one for OpenAudible, possibly several for
@@ -553,7 +574,13 @@ func (p *planner) addBook(b sourceBook, asin, workTitle string) {
 	// inside getOrCreateWork, and ONLY when it creates the work - a work already
 	// in the catalogue is not modified by a normal import, so mapping a row whose
 	// genres could never be stored would only add noise to the unmapped report.
-	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, b.genres, warn)
+	// The contributor credits ride along on the same terms and for the same
+	// reason: they are a work-creation fact here, and filling them onto a work
+	// that already exists is the enrichment pass's job (applyToWork). They travel
+	// raw for the same reason too - resolving them is wasted work on every row
+	// that merges.
+	facts := workFacts{genres: b.genres, credits: authorCredits}
+	ws := p.getOrCreateWork(workTitle, b.str("title"), authorSlugs, lang, claim, facts, warn)
 	recorded := p.addRecording(ws, b, asin, lang, narratorSlugs, warn)
 
 	// Single owner of the global ASIN registry: whether addRecording created a
@@ -615,12 +642,31 @@ func admitRecordingFacts(b sourceBook, warn func(string, ...any)) (lang string, 
 	return lang, narratorNames, true
 }
 
+// rowAuthorCredits is a row's cleaned AUTHOR-side credit list, each entry
+// carrying the roles its trailing qualifier stated. It is the author side only:
+// a narrator-side qualifier is stripped exactly as before and states nothing.
+//
+// That asymmetry is deliberate, not an omission. A qualifier on a narrator
+// credit sits on a RECORDING, and work.credits is a fact about the WORK, so
+// promoting it would assert a work-level credit from edition-level evidence
+// (the same book's other narration need not carry it). It is also negligible:
+// measured over the full libex dump, 4.8% of author credits carry a trailing
+// qualifier against 0.027% of narrator credits, and most of that 0.027% is the
+// same scraping junk - production-company names and bio fragments - that the
+// vocabulary refuses anyway. Recording-level credits stay unmodeled until
+// there is evidence worth modeling.
+func rowAuthorCredits(b sourceBook) []credit {
+	return sourceCredits(b.authors, b.str("author"))
+}
+
 // rowAuthorNames / rowNarratorNames are a row's cleaned credit lists, read from
 // the source's structured list when it has one and from its comma-joined string
-// otherwise (creditNames owns that choice).
-func rowAuthorNames(b sourceBook) []string { return creditNames(b.authors, b.str("author")) }
+// otherwise (sourceCredits owns that choice).
+func rowAuthorNames(b sourceBook) []string { return creditNamesOf(rowAuthorCredits(b)) }
 
-func rowNarratorNames(b sourceBook) []string { return creditNames(b.narrators, b.str("narrated_by")) }
+func rowNarratorNames(b sourceBook) []string {
+	return creditNamesOf(sourceCredits(b.narrators, b.str("narrated_by")))
+}
 
 // seriesRef is a book's claim to a position in a named series. name is always
 // non-empty (the sourceBook invariant). seqOK reports whether seq passed
@@ -642,21 +688,77 @@ func makeSeriesRef(name, rawSeq string) seriesRef {
 	return seriesRef{name: name, seq: pos, seqOK: ok, rawSeq: rawSeq}
 }
 
-// creditNames resolves one credit list (authors or narrators). A source that
+// sourceCredits resolves one credit list (authors or narrators). A source that
 // parsed structured credits passes them in typed, and they are used verbatim
 // (trimmed, credit-cleaned, empties dropped) - splitting them on commas
 // would tear "Alexandre Dumas, pere" into two people. A source that only has the
 // retailer's comma-joined string passes it as joined and it is split.
-func creditNames(typed []string, joined string) []string {
+//
+// Either way each entry keeps the roles its qualifier stated, so the two shapes
+// a source can hand credits over in produce the same facts.
+func sourceCredits(typed []string, joined string) []credit {
 	if len(typed) == 0 {
-		return SplitNames(joined)
+		return splitCredits(joined)
 	}
-	out := make([]string, 0, len(typed))
+	out := make([]credit, 0, len(typed))
 	for _, name := range typed {
 		if n := strings.TrimSpace(name); n != "" {
-			out = append(out, CleanCreditName(n))
+			cleaned, roles := CreditWithRoles(n)
+			out = append(out, credit{name: cleaned, roles: roles})
 		}
 	}
+	return out
+}
+
+// workCredits turns a row's author-side credits into the work's credits list:
+// one (person, role) entry per stated role, in sorted, deduplicated order.
+//
+// It filters to people the planner KNOWS - already on disk or created earlier
+// this run - which is what makes the emitted list satisfy metacheck's
+// credit-integrity rule by construction. On the create path every author has
+// just been created, so nothing is dropped; on the enrichment path, which
+// creates nothing, an unknown person is silently skipped rather than written as
+// a dangling reference.
+//
+// A name that slugs away to nothing is dropped too, and that one is a FACTS
+// rule rather than a referential one. personSlug substitutes the shared
+// catch-all "person" record for a name written entirely in a script Slugify
+// folds (Korean, Cyrillic, CJK); on the authors list that fallback is a known,
+// visible conflation, but a credit is an explicit claim about who did what, so
+// writing {person: "person", role: "translator"} would assert that one shared
+// record translated every such book - metacheck-green and false. An
+// unidentifiable person cannot be credited. The drop is reported in aggregate
+// (reportUnnamedCredits) rather than silently, because the fix is upstream in
+// Slugify, not in the row.
+//
+// The person keeps their ordinary membership in authors: a credit ADDS the role
+// the source stated, it never replaces the credit list the identity model is
+// built on.
+func (p *planner) workCredits(credits []credit) []model.Credit {
+	var out []model.Credit
+	seen := map[model.Credit]bool{}
+	for _, c := range credits {
+		if len(c.roles) == 0 {
+			continue
+		}
+		slug, fellBack := personSlug(c.name)
+		if fellBack {
+			p.noteUnnamedCredit(c.name)
+			continue
+		}
+		if !p.people[slug] {
+			continue
+		}
+		for _, role := range c.roles {
+			entry := model.Credit{Person: slug, Role: role}
+			if seen[entry] {
+				continue
+			}
+			seen[entry] = true
+			out = append(out, entry)
+		}
+	}
+	sortCredits(out)
 	return out
 }
 
@@ -731,16 +833,27 @@ func (c *seriesClaim) compatible(ws *workState) bool {
 	return !in || existing == c.pos
 }
 
+// workFacts are the facts a row contributes ONLY to a work it creates: the raw
+// genre claims and the row's source credits. Both travel RAW and are resolved at
+// the point of storage (mapGenres, workCredits), so a row that merges into an
+// existing work pays for neither. They travel as one value so the full-title
+// retry below carries them through unchanged, and so adding a creation-only fact
+// is one field rather than one more parameter on every hop.
+type workFacts struct {
+	genres  []genreClaim
+	credits []credit
+}
+
 // getOrCreateWork returns the work identified by (title-slug, author set),
 // creating it when new. A same-author work that the book's series claim rules
 // out (same series, different position) is not a merge target: the slug is
 // re-derived from the full title, with the candidate chain (author suffix,
 // then numeric) only as the last-resort collision fallback. A collision with a
 // different author set appends the first author's slug, then numeric suffixes,
-// and warns. genreClaims are the book's raw genre claims; they are mapped onto
-// the project vocabulary only on the branch that creates a work (the only place
-// they can be stored), and ride through the full-title retry unchanged.
-func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, genreClaims []genreClaim, warn func(string, ...any)) *workState {
+// and warns. facts are the creation-only facts (genres, credits); they are
+// stored only on the branch that creates a work, which is the only place they
+// can be stored, and ride through the full-title retry unchanged.
+func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string, lang string, claim *seriesClaim, facts workFacts, warn func(string, ...any)) *workState {
 	base := Slugify(title)
 	if base == "" {
 		base = "untitled"
@@ -763,17 +876,27 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// catalogue load, so a work the loader could not decode looks free
 			// here, and a plain upsert would replace its whole composite entry -
 			// every recording included.
+			credits := p.workCredits(facts.credits)
 			p.putNewEntry(pack.FamilyWorks, slug, outWork{
 				ID: slug, Title: title, Authors: authorSlugs, Language: lang,
-				Genres:  p.genres.mapGenres(genreClaims, p.unmappedGenres),
+				Credits: credits,
+				Genres:  p.genres.mapGenres(facts.genres, p.unmappedGenres),
 				AddedAt: p.importDate,
 				License: licenseCC0, Sources: []OutSource{p.curSource},
 			})
 			p.summary.NewWorks++
+			p.summary.Credits += len(credits)
+			p.recordRunCredits(slug, credits)
 			return ws
 		}
 		if SameSet(ws.authors, want) {
 			if claim.compatible(ws) {
+				// A later row of this run, merging into a work the run created:
+				// its credits are not a second source's account of an existing
+				// work, they are more of the same import, so the pairs the entry
+				// does not carry yet are merged in (a no-op for a work loaded
+				// from disk, which is never in runCredits).
+				p.mergeCreatedWorkCredits(ws.slug, facts.credits)
 				// A merge onto a SHORTENED candidate is the one case where the slug
 				// no longer carries the whole title: two different long titles by
 				// one author agreeing up to the cut land here as a single work. The
@@ -790,7 +913,7 @@ func (p *planner) getOrCreateWork(title, fullTitle string, authorSlugs []string,
 			// the last resort when that is unusable. Titles are already cleaned of
 			// trailing edition markers at the batch boundary.
 			if full := Slugify(fullTitle); fullTitle != title && full != "" && full != base {
-				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, genreClaims, warn)
+				return p.getOrCreateWork(fullTitle, "", authorSlugs, lang, claim, facts, warn)
 			}
 		}
 	}
@@ -977,6 +1100,135 @@ func (p *planner) reportUnmappedGenres() {
 	sort.Strings(names)
 	p.summary.Warnings = append(p.summary.Warnings,
 		fmt.Sprintf("unmapped genre strings: %s", strings.Join(names, ", ")))
+}
+
+// noteUnnamedCredit records one credit workCredits refused because the name has
+// no identity of its own (see the fell-back branch there). Distinct spellings
+// only, capped, so the aggregate line names examples without listing a run's
+// worth of them; the COUNT is what says how much was dropped.
+func (p *planner) noteUnnamedCredit(name string) {
+	p.unnamedCredits++
+	if len(p.unnamedCreditNames) >= maxWarnExamples || slices.Contains(p.unnamedCreditNames, name) {
+		return
+	}
+	p.unnamedCreditNames = append(p.unnamedCreditNames, name)
+}
+
+// reportUnnamedCredits appends one run-level warning for the credits dropped
+// because their person could not be identified. It is deliberately a warning
+// and not a silent drop: the names are real contributors the catalogue is
+// failing to represent, and the line is the standing evidence for fixing
+// Slugify's handling of non-Latin scripts (which would also un-conflate the
+// authors those same names already produce).
+func (p *planner) reportUnnamedCredits() {
+	if p.unnamedCredits == 0 {
+		return
+	}
+	p.summary.Warnings = append(p.summary.Warnings, withExamples(
+		fmt.Sprintf("%d role-qualified credits dropped: the credited name does not resolve to an identifiable person",
+			p.unnamedCredits),
+		p.unnamedCreditNames))
+}
+
+// recordRunCredits remembers what this run wrote onto a work, and is what a
+// later row of the same run merges into (see runCredits). Called on the branch
+// that CREATES a work - with an empty list when the row stated no role, because
+// the permission to accrete comes from the run having created the work, not
+// from the first row happening to carry a credit.
+func (p *planner) recordRunCredits(workSlug string, credits []model.Credit) {
+	set := make(map[model.Credit]bool, len(credits))
+	for _, c := range credits {
+		set[c] = true
+	}
+	p.runCredits[workSlug] = set
+}
+
+// addRunCredits merges the (person, role) pairs a later row of the SAME run
+// states onto a work this run already wrote, and reports how many were new.
+//
+// It exists because the two planning paths both resolve several rows onto one
+// work - the create path merges every same-author row into it, and an
+// enrichment run matches every ASIN of one book to it - and the first row was
+// the only one whose credits were kept: every later row met a non-empty list
+// and the fill-absent rule dropped it. Within a run that rule is the wrong one.
+// It says an EXISTING description of a work is not to be spliced together from
+// two sources, and a work this run is itself writing has no such description to
+// protect.
+//
+// Cross-run semantics are untouched: p.runCredits starts empty every run, so a
+// work whose credits are on disk is never merged into, and a re-run of an
+// identical import writes nothing.
+//
+// The merged list is built from the TRACKED set rather than from the record's
+// decoded credits. They are the same list - the run wrote it, and every branch
+// that writes updates the set in the same breath - and building it from what
+// the run knows keeps the merge from depending on re-decoding a raw JSON array
+// it just serialized. added is 0, and merged nil, when the row states nothing
+// the work does not already carry, so the caller writes nothing.
+func (p *planner) addRunCredits(workSlug string, stated []model.Credit) (merged []model.Credit, added int) {
+	have, touched := p.runCredits[workSlug]
+	if !touched {
+		return nil, 0
+	}
+	for _, c := range stated {
+		if have[c] {
+			continue
+		}
+		have[c] = true
+		added++
+	}
+	if added == 0 {
+		return nil, 0
+	}
+	merged = make([]model.Credit, 0, len(have))
+	for c := range have {
+		merged = append(merged, c)
+	}
+	sortCredits(merged)
+	return merged, added
+}
+
+// mergeCreatedWorkCredits is the create path's half of the in-run merge: a row
+// that resolved onto a work THIS RUN created contributes the (person, role)
+// pairs the work does not carry yet.
+//
+// It is a no-op - and costs no store read - for a work loaded from disk, for a
+// row that states no role, and for a row whose every pair is already there,
+// which is the overwhelming majority of rows. A row that does add one stamps
+// its provenance on the work, because the work now records a fact that came
+// from it. (A store read that fails is fatal to the whole run, so the tracked
+// set having moved ahead of the record is never observable.)
+func (p *planner) mergeCreatedWorkCredits(workSlug string, stated []credit) {
+	if _, touched := p.runCredits[workSlug]; !touched {
+		return
+	}
+	merged, added := p.addRunCredits(workSlug, p.workCredits(stated))
+	if added == 0 {
+		return
+	}
+	raw := p.workEntryRaw(workSlug)
+	if raw == nil {
+		return
+	}
+	raw["credits"] = merged
+	p.summary.Credits += added
+	p.stampSource(raw)
+	p.putWorkEntry(workSlug, raw)
+}
+
+// sortCredits orders credits by (person, role), which is the ONE byte-form a
+// given set of credits ever has in an imported record. The list is not
+// source-ordered like authors: an author list's order is the source's statement
+// about billing, while a credit list is a set of independent (person, role)
+// facts, so a total order is what keeps two runs that state the same facts in a
+// different sequence from producing two different files.
+func sortCredits(credits []model.Credit) {
+	sort.Slice(credits, func(i, j int) bool {
+		if credits[i].Person != credits[j].Person {
+			return credits[i].Person < credits[j].Person
+		}
+		return credits[i].Role < credits[j].Role
+	})
 }
 
 // abridgedConflict reports whether two recording abridged tri-states are

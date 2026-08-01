@@ -27,6 +27,10 @@
         "$ref": "common.schema.json#/$defs/slug"
       }
     },
+    "credits": {
+      "description": "Contributors credited in a role that is not authorship: translator, editor, illustrator and the rest of the controlled vocabulary. Optional and purely additive - authors stays the identity list, and a person credited here is NOT removed from it when a source names them as both. Omitted unless a source STATED the role; never inferred.",
+      "$ref": "common.schema.json#/$defs/credit_list"
+    },
     "language": {
       "$ref": "common.schema.json#/$defs/language"
     },

@@ -111,8 +111,22 @@ it, `pkg/check` and every writer now refuse it loudly.
   controlled vocabulary enum `common.schema.json#/$defs/genre` - a flat,
   retailer-neutral list the project owns; sorted ascending, enforced by
   `checkGenresSorted`; never a retailer's taxonomy verbatim, see LICENSING.md
-  "Genres")) PLUS its recordings, nested as `"recordings": {"<rec-slug>": {...}}`.
+  "Genres"), optional `credits` (role-qualified contributors as
+  `{person, role}` pairs, role from the controlled enum
+  `common.schema.json#/$defs/credit_role`: adaptation, afterword, contributor,
+  editor, foreword, illustrator, introduction, preface, translator. Additive and
+  purely parallel to `authors`, which stays the identity list - a person credited
+  here is not removed from it. One person MAY hold several roles (a source really
+  does say "editor and translator") but never the same role twice:
+  `checkCreditPairs`. Emitted only when a source STATED the role. ORDER is
+  deliberately NOT checked - a credit list is a set of independent facts, not a
+  billing order like `authors` - but the importer emits it sorted by
+  (person, role) so one set of credits has exactly one byte-form)) PLUS its
+  recordings, nested as `"recordings": {"<rec-slug>": {...}}`.
   One book is one entry, so a recording edit is a read-modify-write of its work.
+  Contributor roles are a WORK-level fact: a qualifier on a narrator credit is
+  edition-level evidence and is stripped without stating anything (measured at
+  0.027% of narrator credits, nearly all of it scraping junk).
 - **recording** - a member of its work entry's recordings map: a specific
   narration/production, with narrators, abridged (**optional**: absence =
   unknown, so importers omit it rather than guess), runtime_min, release_date,
@@ -121,7 +135,15 @@ it, `pkg/check` and every writer now refuse it loudly.
   ASINs). It keeps its own `id`, `work` backref, `license` and `sources`, so its
   bytes are the same as when it was a file of its own.
 - **person** - an entry in the people family, shared by author and narrator roles
-  (a person can be both).
+  (a person can be both). Optional `kind` (`person`/`group`/`publisher`) marks
+  the records that are not an individual - a full cast, a corporate credit of
+  record (Audible Studios, Marvel Press). ABSENCE MEANS person: nothing infers
+  the field, so an unset kind is "an individual, or unclassified", never a
+  guess. Nothing WRITES it automatically; the contributor path is the
+  correct-data issue form, whose allowlist takes `kind` and validates it against
+  the enum (`internal/issueform`), so classifying a record never needs a raw
+  pack-file PR. Classifying the existing corporate records is deliberately left
+  to a later, human pass.
 - **series** - an entry in the series family: name + ordered works with **string**
   positions ("1", "2.5") including omnibus ranges ("1-3.5"); no two works may
   share a position.
@@ -200,7 +222,7 @@ cmd/metaissue       thin CLI: an issue-form body -> canonical records + a machin
 cmd/metamigrate     thin CLI: the ONE-OFF conversion of a pre-pack file-per-record tree into the pack layout, with the added_at git-history backfill (--out rehearses out of place; logic in internal/migrate)
 pkg/model           PUBLIC entity structs, slug rules, and addressing: PackLocation (pack path + entry key [+ recording key], what pack-layout problem reports render). The file-path addressing the old layout needed (Shard, ParseLocation) is gone. THREE places still parse the retired per-record path shape, each its own copy and each for a different reason: internal/issueform (a correction form's `record` field is a reference a submitter types), internal/testpack (fixture addresses read better than family + two map keys), and internal/migrate (the only one that reads it as a STORAGE location, because it is the only thing that still reads the old tree). Also the SOURCE TRUST TIERS (trust.go): the one table ranking sources[] types and the one bulk-mirror-only test the overwrite policy is written in terms of. (leaf; also reached through pkg/check's exported Catalog)
 pkg/canonical       PUBLIC canonical JSON (sorted keys, 2-space, trailing LF)
-pkg/check           PUBLIC pack-layout load (packcheck.go walks each family's pack listing; a family that is not in the pack layout is ONE loud problem naming metamigrate, and every JSON file the listing does not account for is an unrecognized location - never silence) + schema validation (wrapper schemas load-bearing; $ref reasons preserved via detailed output) + the pack storage invariants (placement, caps + single-entry exemption, bound validity, key/id agreement) + integrity/uniqueness/chapter/series/sidecar-uniqueness rules; Result carries Problems (fail) and Warnings (advisory, e.g. a single entry over the 256KB target); schema-valid entries that fail Go decoding are reported, never silently dropped. ONE walk per load (pack.Listing supplies the file accounting, the layouts and every family's tree; a data root or family root that is not a directory is an error, never an empty family), and `LoadStore(*pack.Store)` is the writers' door in: it validates the tree the store was opened on over the store's own walk, so a validating writer walks the tree once instead of twice. It is AS-OF-OPEN by construction (documented on LoadStore) and it never grows the writer's memory: a pack it reads is released as soon as it has been validated, and the canonical render memo the cap check leaves is released with it - the store re-reads the handful of packs it writes to, which is what it always did. After a Flush the store's walk is stale, so LoadStore takes a fresh one - post-write validation stays a full independent load
+pkg/check           PUBLIC pack-layout load (packcheck.go walks each family's pack listing; a family that is not in the pack layout is ONE loud problem naming metamigrate, and every JSON file the listing does not account for is an unrecognized location - never silence) + schema validation (wrapper schemas load-bearing; $ref reasons preserved via detailed output) + the pack storage invariants (placement, caps + single-entry exemption, bound validity, key/id agreement) + integrity/uniqueness/chapter/series/credit-pair/sidecar-uniqueness rules; Result carries Problems (fail) and Warnings (advisory, e.g. a single entry over the 256KB target); schema-valid entries that fail Go decoding are reported, never silently dropped. ONE walk per load (pack.Listing supplies the file accounting, the layouts and every family's tree; a data root or family root that is not a directory is an error, never an empty family), and `LoadStore(*pack.Store)` is the writers' door in: it validates the tree the store was opened on over the store's own walk, so a validating writer walks the tree once instead of twice. It is AS-OF-OPEN by construction (documented on LoadStore) and it never grows the writer's memory: a pack it reads is released as soon as it has been validated, and the canonical render memo the cap check leaves is released with it - the store re-reads the handful of packs it writes to, which is what it always did. After a Flush the store's walk is stale, so LoadStore takes a fresh one - post-write validation stays a full independent load
 pkg/pack            PUBLIC pack-file storage: family/cap definitions, bound math + binary-search lookup, pack parse/serialize (canonical via pkg/canonical, raw entries, duplicate keys rejected), median split + directory split, and the read-through Store (queued-write-first reads; Flush performs due splits, directory splits and bound normalization, and errors rather than ever writing two plans to one path). survey.go classifies every JSON file under a family root BEFORE bound math sees it, so a misfiled/misnamed/empty/too-deep file is relocatable content (Salvage), never an authoritative bound; Pending covers every structural invariant metacheck enforces (Salvage/Unreadable/Misplaced/Conflicts/Rebinds/Packs/Dirs) and Heal + Flush converges to a metacheck-green, entry-preserving tree in one pass (duplicate slugs: the correctly-placed copy wins, reported as a Conflict). The Store is layout-aware PER FAMILY (absent is writable; a family in the retired file-per-record layout fails with ErrLegacyLayout, which is the loud refusal every writer inherits - DetectLayout says pack as soon as ANY file under the root reads as one, so a stray file cannot flip a converted family back). Reading a tree costs ONE walk per run: Listing is that walk (file-to-family partition, per-family layout, per-family tree - Detect/ReadTree without re-walking) and Reader is the writer's parse cache, so a pack the store reads and rewrites is parsed once; a Store keeps both and exposes them (Store.Listing/Store.Reader), and gives both up at Flush - including a flush that FAILED part-way, which has still written something. The listing is as-of-Open and is a reading optimization only: survey re-scans the family root, because what gets relocated, rewritten or deleted has to be decided from the files that are there now. A borrower validating the tree (check.LoadStore) reads the cache but never fills it - retaining every pack for the rest of a run costs hundreds of megabytes to save a handful of re-reads. Store.HealPending is Heal plus the Pending it computed, so metafmt surveys a family once instead of twice. The one shared implementation every reader and writer builds on (see PACK-SPEC.md)
 pkg/extract         PUBLIC epub split (container/OPF/spine/toc -> plain text) + the word-shingle overlap check
 pkg/scan            PUBLIC local folder scanner: embedded tags + path/filename heuristics + ffprobe -> the "audiosilo-folder-scan" import doc (per-field provenance, omit-never-guess, tag-evidence collection split)
@@ -333,7 +355,23 @@ role list measured from the libex dump, with a separator tolerant of missing
 spaces/repeated hyphens and NFC-normalized case-insensitive role matching;
 leading `Created by `/`Creato da ` prefix credits dropped; exactly-doubled
 names collapsed to one half, two-plus words per half so "Duran Duran" stays) -
-the person stays in the credit list; credit lists dedupe by slug and the
+the person stays in the credit list; a stripped qualifier is no longer
+DISCARDED: `CreditWithRoles` returns the schema roles it stated (the
+`roleQualifiers` table is both the strip vocabulary and the qualifier -> role
+map; a nil value means "strip, state nothing", which is every qualifier with no
+home in the enum), and `planner.workCredits` records them as the work's
+`credits`, sorted by (person, role) and restricted to people the planner knows,
+so the emitted list satisfies metacheck's credit-integrity rule by
+construction - and NEVER naming the shared catch-all `person` record: a name
+that slugs away to nothing (Korean/Cyrillic/CJK) is a known conflation on the
+authors list but would be a false claim as a role credit, so those are dropped
+and reported in aggregate. Credits fill-absent ACROSS runs (a recorded list is
+somebody's account of the work and is never spliced into) and accrete WITHIN one
+(`addRunCredits`: a work the run itself created or filled takes the pairs later
+rows state, so a second region's row is not silently dropped). A trailing
+credential/generational fragment that had to be trimmed for the role to match is
+re-appended to the NAME ("X - editor Jr." is X Jr., an editor), never discarded.
+Credit lists dedupe by slug and the
 schema's `uniqueItems` rejects doubled credits; a **work** is (title slug
 + author set), but series volumes that share a `title_short` (or a book mapping
 onto an existing work at a different position in the same series) derive their
@@ -497,16 +535,51 @@ note rather than a closed duplicate.
   libex's own `is_vvab` flag cannot do this job: 145,558 dump books credit an AI
   voice and the flag is `false` on 145,550 of them, so
   `scripts/libex-export-rows.sql` filters on the credit too and the two lists
-  are kept in step by cross-referenced comments); and the
+  are kept in step by cross-referenced comments); its sibling the
+  **unidentifiable-credit exclusion** (a row whose author or narrator list holds
+  a name that slugs away to nothing - Korean, Cyrillic, CJK, Greek, Arabic - is
+  refused whole at the same parse layer, `firstUnnamedCredit` in `libex.go`,
+  judged on the CLEANED name the import would store; because `personSlug`
+  otherwise substitutes the shared catch-all `person` record, which on a bulk
+  seed would make ONE record the credited author or narrator of thousands of
+  unrelated books - 2,075 of the 142,550 selected seed rows, 417 distinct names.
+  An absent book is a gap; an invented shared author is a falsehood, and the
+  refusal reverses cheaply once `Slugify` transliterates. Deliberately
+  libex-only: the user-library importers keep the conflation, where it is visible
+  to the user whose book it is, and `workCredits`' catch-all guard still protects
+  those paths. No SQL twin - the rule is Unicode folding, not a name list);
+  both refusals are applied through the one `refuseLibexCredits`, which
+  `libex-select` calls too, so a row the import will refuse is never selected
+  into a tranche and never claims a series slot ahead of an importable sibling;
+  and the
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json); and the
   **trust tiers / user-overwrite rule** (`pkg/model/trust.go` +
   `internal/importer/attest.go`), landed BEFORE the seed so the takeover
   machinery exists the moment users start submitting against mirror-seeded
-  records - see the importer section above and LICENSING.md. Remaining
+  records - see the importer section above and LICENSING.md; and
+  **contributor-role modeling** (work `credits` + the `credit_role` enum +
+  person `kind`), also landed BEFORE the seed and for the same reason: the
+  qualifiers ride in on the libex credit names, `CleanCreditName` used to strip
+  and DISCARD them, and re-deriving roles for 142k works after the fact means
+  re-processing the whole dump. The importer now maps a stripped qualifier onto
+  the enum (all measured language variants; combined strings like "editor and
+  translator" emit two entries; an unmapped qualifier still just strips) on the
+  create path and, fill-absent, on `--enrich`. A USER-tier attestation writes
+  credits too: a personal export states no genres but does state a role
+  whenever a credit name carries a qualifier, so `applyToWork`'s attest scope is
+  live behaviour under the tier rule (mirror-only work takes it, attested work
+  keeps what it has), not the inert guard the first draft described.
+  `Summary.Credits` reports what a wave captured, and a run-level warning
+  reports the role-qualified credits dropped for naming nobody identifiable. The artifact and the API deliberately do NOT surface credits
+  yet - no schema_version bump - so the data accrues ahead of its readers.
+  Remaining
   follow-ups tracked in the plan:
-  surfacing genres in the player (three-repo seam), and a **streaming row
+  surfacing genres in the player (three-repo seam), surfacing **credits** in the
+  artifact/API/site (a later, separate change), classifying the existing
+  corporate person records with `kind` (a human pass, deliberately not inferred),
+  and a **streaming row
   iterator for the libex parse layer** - it currently slurps the whole file
   (~6GB of live heap for the 1.06M-row dump) before planning discards what does
   not apply, which `--recordings-only` feels most: an alternate narration is by
@@ -548,14 +621,7 @@ note rather than a closed duplicate.
   seam - Stage 2). The near-verbatim check landed as `metaextract ngram`
   (run locally against the source text, which never enters the repo - a
   CI-side check is impossible by design), and the extraction pipeline landed
-  as Phase 3 (below). Also: **contributor role modeling** -
-  translator/introduction/editor credits are currently plain people on the work
-  (the importer strips the role qualifier from the name); a future schema field
-  should carry the role. Related: **corporate credits** (Marvel Press, Lucasfilm
-  Press, Audible Studios, Full Cast) are modeled as person records when they are
-  the author/narrator of record - an established pattern from the earliest
-  imports; if roles ever get modeled, an entity-kind field belongs in the same
-  design.
+  as Phase 3 (below).
 - **Phase 3 (pipeline landed)**: the source -> characters/recaps extraction
   pipeline: `cmd/metaextract` (epub split + n-gram check) plus the documented
   agent process in **[EXTRACTION.md](EXTRACTION.md)** (AUTHORING.md's sibling:

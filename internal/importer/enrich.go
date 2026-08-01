@@ -352,18 +352,28 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 }
 
 // applyToWork applies a row's stated facts to the work the matched recording
-// belongs to - today only genres, mapped from the source's own strings onto this
+// belongs to: its genres, mapped from the source's own strings onto this
 // project's vocabulary (LICENSING.md forbids storing a retailer's taxonomy
-// verbatim). Genres are a SET, never an accreting union: in the ordinary posture
-// they are written only when the work has none, and in the overwrite posture the
-// row's mapped set replaces the recorded one wholesale, so the result stays
-// crisp and rerun-deterministic either way. A row whose genres map to nothing
-// never clears a recorded set - silence is not an assertion.
+// verbatim), and its contributor credits, read from the role qualifiers on the
+// row's author names. Genres are a SET, never an accreting union: in the
+// ordinary posture they are written only when the work has none, and in the
+// overwrite posture the row's mapped set replaces the recorded one wholesale,
+// so the result stays crisp and rerun-deterministic either way. A row whose
+// genres map to nothing never clears a recorded set - silence is not an
+// assertion. Credits follow the same fill-absent rule ACROSS runs, and accrete
+// within one (see addRunCredits at the write below).
+//
+// Which fields a source can actually reach here differs by tier, and neither is
+// inert: a libex row states genres and credits both, while a user-library
+// export states no genres but does state a credit whenever one of its credit
+// names carries a role qualifier. So a user-tier attestation really does write
+// work.credits.
 //
 // A user-library run attests a bulk-mirror-only work even when it changes no
 // field: the source entry is the attestation. That is also why the early return
-// for a genre-less row is conditional on the run's tier - a libex enrichment run
-// still pays no read at all for a row with no genres.
+// for a row with nothing to say is conditional on the run's tier - a libex
+// enrichment run still pays no read at all for a row with neither genres nor
+// credits.
 //
 // Deliberately never touched: title and authors (identity - a change is a
 // correction, not an import), first_published and xref (facts a retailer row
@@ -371,7 +381,12 @@ func (p *planner) enrichISBNs(raw map[string]any, isbns []string, warn func(stri
 // Audible subtitle is marketing or series copy, not the edition's own subtitle -
 // see libexToBook), and added_at (a creation stamp).
 func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
-	if len(b.genres) == 0 && !p.userTier {
+	// The credits the row STATES, restricted to people the catalogue already
+	// holds - enrichment creates nothing, so a role qualifier naming a person we
+	// do not have states a credit we cannot reference (metacheck's credit
+	// integrity rule) and is dropped rather than written dangling.
+	credits := p.workCredits(rowAuthorCredits(b))
+	if len(b.genres) == 0 && len(credits) == 0 && !p.userTier {
 		return
 	}
 	raw := p.workEntryRaw(workSlug)
@@ -379,13 +394,17 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 		return
 	}
 	overwrite := p.overwrites(raw)
-	// Defense in depth, and deliberately kept: only the enrichment scope may write
-	// to a work this run cannot overwrite, because an attestation's "a skip stays
-	// a skip" promise covers the work as well as the recording. It writes nothing
-	// TODAY whatever it does - no user-library export states genres, so b.genres is
-	// empty on every attest-scope call and the changed/overwrite return below
-	// catches it - so this guard is the rule surviving a source that later does
-	// state them, not live behaviour.
+	// Defense in depth, and load-bearing: only the enrichment scope may write to
+	// a work this run cannot overwrite, because an attestation's "a skip stays a
+	// skip" promise covers the work as well as the recording.
+	//
+	// This guard IS live behaviour, on the credits field. A user-library export
+	// states no genres, but it does state a credit whenever a credit name
+	// carries a role qualifier ("Rosa Vidal - Translator" in an OpenAudible
+	// row), so an attest-scope call really can arrive with something to write.
+	// The tier model then decides: on a bulk-mirror-only work the attestation
+	// records it, and on a work someone has already attested this returns
+	// without writing - first writer wins, which is the whole point of the rule.
 	if scope != scopeFill && !overwrite {
 		return
 	}
@@ -396,6 +415,32 @@ func (p *planner) applyToWork(b sourceBook, workSlug string, scope applyScope) {
 		// genres could never be recorded adds nothing to the unmapped-genre report.
 		if mapped := p.genres.mapGenres(b.genres, p.unmappedGenres); len(mapped) > 0 {
 			raw["genres"] = mapped
+			changed = true
+		}
+	}
+	// Credits fill on the same terms as genres: the whole list is written only
+	// when the work carries none. It is deliberately not merged entry by entry
+	// ACROSS runs - a work that already lists credits has been described by
+	// someone, and splicing a second source's roles into that list would
+	// silently mix two accounts of who did what with no way to tell them apart
+	// afterwards.
+	//
+	// Within ONE run the opposite holds, and addRunCredits is the exception: a
+	// list this run itself wrote is not somebody else's account, so a second row
+	// of the same run - the other ASIN of the same book, typically a second
+	// region - adds the pairs it states rather than being dropped for meeting a
+	// non-empty field. The run-touched case is tested FIRST so the run can never
+	// overwrite its own earlier rows on an attestation.
+	existingCredits, _ := raw["credits"].([]any)
+	if len(credits) > 0 {
+		if merged, added := p.addRunCredits(workSlug, credits); added > 0 {
+			raw["credits"] = merged
+			p.summary.Credits += added
+			changed = true
+		} else if _, touched := p.runCredits[workSlug]; !touched && (len(existingCredits) == 0 || overwrite) {
+			raw["credits"] = credits
+			p.summary.Credits += len(credits)
+			p.recordRunCredits(workSlug, credits)
 			changed = true
 		}
 	}

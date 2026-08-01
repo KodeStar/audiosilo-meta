@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"slices"
+	"strconv"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -88,6 +90,7 @@ const (
 	warnNoASIN libexWarnClass = iota
 	warnUnknownRegion
 	warnAINarrator
+	warnUnnamedCredit
 	warnCoverNotHTTPS
 	warnMalformedISBN
 )
@@ -103,6 +106,8 @@ func (c libexWarnClass) aggregateForm(n int) string {
 		return fmt.Sprintf("%d rows skipped: region is not a known marketplace", n)
 	case warnAINarrator:
 		return fmt.Sprintf("%d rows skipped: narrated by an AI voice", n)
+	case warnUnnamedCredit:
+		return fmt.Sprintf("%d rows skipped: a credited name does not identify a person", n)
 	case warnCoverNotHTTPS:
 		return fmt.Sprintf("%d cover URLs were not https; dropped", n)
 	case warnMalformedISBN:
@@ -184,7 +189,11 @@ func (lp libexParse) warningLines(aggregate bool) []string {
 			order = append(order, w.class)
 		}
 		counts[w.class]++
-		if w.label != "" && len(examples[w.class]) < maxWarnExamples {
+		// Distinct labels only: one row can warn twice in a class (two malformed
+		// ISBNs), and a class labelled by CREDIT rather than by row repeats a
+		// spelling across rows by nature. Five copies of one example is no example
+		// at all.
+		if w.label != "" && len(examples[w.class]) < maxWarnExamples && !slices.Contains(examples[w.class], w.label) {
 			examples[w.class] = append(examples[w.class], w.label)
 		}
 	}
@@ -227,18 +236,19 @@ func parseLibex(data []byte) (libexParse, error) {
 			lp.add(warnUnknownRegion, asin, "%s: region %q is not a known marketplace; row skipped (an ASIN must be marketplace-scoped)", asin, rawRegion)
 			continue
 		}
-		// AI narrations do not enter the catalogue at all (see aiNarratorNames).
-		// Refusing them HERE rather than in a planner is what makes the rule hold
-		// for every libex mode - create, enrich and recordings-only alike - and
-		// keeps them out of the run's ASIN accounting entirely. The credit list is
-		// read once and handed to libexToBook, which would otherwise re-read it.
-		narrators := libexNames(e["narrators"])
-		if name, isAI := firstAINarrator(narrators); isAI {
+		// The credit-side refusals: a synthetic narrator, and a credit naming
+		// nobody this catalogue can identify (see refuseLibexCredits). Refusing
+		// them HERE rather than in a planner is what makes both rules hold for
+		// every libex mode - create, enrich and recordings-only alike - and keeps
+		// them out of the run's ASIN accounting entirely. The credit lists are read
+		// once and handed to libexToBook, which would otherwise re-read them.
+		authors, narrators := libexNames(e["authors"]), libexNames(e["narrators"])
+		if r, refused := refuseLibexCredits(authors, narrators); refused {
 			lp.skipped++
-			lp.add(warnAINarrator, asin, "%s: narrator %q is an AI voice; row skipped", asin, name)
+			lp.add(r.class, r.label(asin), "%s: %s; row skipped", asin, r.detail)
 			continue
 		}
-		lp.books = append(lp.books, libexToBook(e, asin, region, narrators, &lp))
+		lp.books = append(lp.books, libexToBook(e, asin, region, authors, narrators, &lp))
 	}
 	return lp, nil
 }
@@ -290,13 +300,14 @@ func decodeLibexEntries(data []byte) ([]rawBook, error) {
 // libexToBook normalizes one libex row into a sourceBook, translating field
 // names and shapes to the OpenAudible keys addBook understands and reading only
 // the factual fields (description / summary / rating / copyright are never
-// touched). asin, region and narrators are already resolved by parseLibex (the
-// credit list because the AI-narration refusal has to read it first). The credits,
+// touched). asin, region, authors and narrators are already resolved by
+// parseLibex (the credit lists because the credit-side refusals have to read
+// them first). The credits,
 // runtime, abridged flag, series claims, genre claims, ISBNs and chapters are
 // parse-time facts carried as typed fields on the sourceBook, never smuggled
 // through raw in another source's key shape. Its warnings go to the parse
 // collector class-tagged, so a large enrichment run can report them in aggregate.
-func libexToBook(e rawBook, asin, region string, narrators []string, lp *libexParse) sourceBook {
+func libexToBook(e rawBook, asin, region string, authors, narrators []string, lp *libexParse) sourceBook {
 	raw := rawBook{}
 	sb := sourceBook{raw: raw}
 	raw["asin"] = asin
@@ -318,7 +329,7 @@ func libexToBook(e rawBook, asin, region string, narrators []string, lp *libexPa
 		raw["title"] = title
 	}
 
-	sb.authors = libexNames(e["authors"])
+	sb.authors = authors
 	sb.narrators = narrators
 	if lang := e.str("language"); lang != "" {
 		raw["language"] = lang // a word ("english"); mapLanguage resolves it
@@ -358,10 +369,18 @@ func libexToBook(e rawBook, asin, region string, narrators []string, lp *libexPa
 // that itself contains a comma ("Alexandre Dumas, pere") would be re-split into
 // two people. A plain string array is accepted too, and a bare string falls back
 // to the comma-split every source shares.
+//
+// Names come back in the source's own spelling on BOTH shapes: the array path
+// never cleaned them, and the bare-string path must not either (splitRawNames,
+// not SplitNames). Cleaning here would strip a trailing role qualifier before
+// sourceCredits could read it, so a hand-made row using the joined form would
+// lose every contributor role while the array form kept it - the same file,
+// two different sets of facts. No row in the received dump uses the bare form,
+// so this is a latent difference being closed, not one observed in the seed.
 func libexNames(v any) []string {
 	arr, ok := v.([]any)
 	if !ok {
-		return SplitNames(coerceStr(v))
+		return splitRawNames(coerceStr(v))
 	}
 	seen := map[string]bool{}
 	out := make([]string, 0, len(arr))
@@ -504,6 +523,136 @@ func libexISBNs(v any, asin string, warn func(string, ...any)) []string {
 		out = append(out, isbn)
 	}
 	return out
+}
+
+// ---------------------------------------------------------------------------
+// The credit-side row refusals
+//
+// Two rules refuse a libex row outright on the strength of who it credits: the
+// AI-narration exclusion and the unidentifiable-name exclusion below. Both live
+// at the PARSE layer so they hold for every libex mode - create, --enrich,
+// --recordings-only - and both are applied through refuseLibexCredits, which the
+// bounded-subset selector (selectLibexRow) calls too. A row the importer will
+// refuse must never be selected into a tranche as if it were importable: it
+// would inflate the selection report and, worse, claim a series position slot a
+// genuinely importable sibling row could have completed.
+
+// creditRefusal is one credit-side refusal, in the two vocabularies its two
+// consumers need: the parse layer's warning class (plus the clause its per-row
+// line prints) and the selector's exclusion reason. They travel on one value so
+// a third credit rule is named for both consumers or for neither.
+type creditRefusal struct {
+	class  libexWarnClass
+	reason string // the selector's exclusion reason (see reasonOrder)
+	name   string // the credit that earned the refusal
+	detail string // the middle clause of the parse layer's per-row line
+}
+
+// label is what an aggregated warning names as an example of this refusal. For
+// the AI rule it is the row (its ASIN): the vocabulary is settled, and the row is
+// what an operator goes and looks at. For the unidentifiable-name rule the NAME
+// is the evidence - the fix is upstream in Slugify, not in any one row - so the
+// line carries both, the same reason reportUnnamedCredits names its examples.
+func (r creditRefusal) label(asin string) string {
+	if r.class == warnUnnamedCredit {
+		return asin + " " + strconv.Quote(r.name)
+	}
+	return asin
+}
+
+// refuseLibexCredits applies the credit-side row refusals in order and reports
+// the first one the row earns.
+func refuseLibexCredits(authors, narrators []string) (creditRefusal, bool) {
+	if name, isAI := firstAINarrator(narrators); isAI {
+		return creditRefusal{
+			class:  warnAINarrator,
+			reason: reasonAINarrator,
+			name:   name,
+			detail: fmt.Sprintf("narrator %q is an AI voice", name),
+		}, true
+	}
+	if name, unnamed := firstUnnamedCredit(authors, narrators); unnamed {
+		return creditRefusal{
+			class:  warnUnnamedCredit,
+			reason: reasonUnnamedCredit,
+			name:   name,
+			detail: fmt.Sprintf("credit %q does not identify a person", name),
+		}, true
+	}
+	return creditRefusal{}, false
+}
+
+// ---------------------------------------------------------------------------
+// Unidentifiable-credit exclusion
+//
+// A person's identity in this catalogue is their SLUG, and Slugify keeps only
+// ASCII letters and digits (accented Latin folds onto its base letter). A name
+// written entirely in a script that has no such folding - Korean, Cyrillic,
+// Chinese, Japanese, Greek, Arabic - therefore slugs away to nothing, and
+// personSlug substitutes the shared catch-all "person" record for it.
+//
+// On a bulk libex seed that catch-all is not a gap, it is a falsehood at scale:
+// the first wave's dry run produced 6,633 empty-slug warnings, which would have
+// made ONE person record the credited author or narrator of thousands of
+// unrelated books. Measured over the 142,550-row seed selection, 2,075 rows
+// (1.5%) carry at least one such credit, across 417 distinct names - mostly
+// Japanese and Arabic authors, several of them prolific (328 rows credit one
+// Arabic author alone). Refusing the row is the honest outcome - the book is simply
+// absent, which is true, rather than present with an invented shared author,
+// which is not - and it is cheap to reverse: when Slugify learns to transliterate
+// (or the model grows a non-slug identity), the refused rows can be re-imported
+// from the same dump.
+//
+// The refusal is WHOLE-ROW and covers BOTH credit lists. A row is one book: its
+// author list and its narrator list are equally load-bearing facts, and importing
+// a book while silently dropping one of its narrators would record a production
+// that never existed.
+//
+// DELIBERATELY LIBEX-ONLY. The other importers (openaudible.go, libation.go,
+// audiosilobooks.go) read a USER's own library, where the catch-all conflation
+// keeps today's behaviour: a user who owns a Korean audiobook wants it in their
+// catalogue, the conflation is visible to them, and refusing their book to keep a
+// shared database tidy would be the wrong trade. What to do for user libraries is
+// a separate open decision; this rule takes no position on it.
+//
+// There is no SQL twin of this rule in scripts/libex-export-rows.sql, unlike the
+// AI-narration vocabulary. Slugify's behaviour is Unicode folding in Go, not a
+// name list, and re-spelling it in SQL would be a second implementation that
+// could disagree with the first. The export SQL stays the AI rule's belt and
+// braces only.
+
+// firstUnnamedCredit reports whether ANY credit in the row's author or narrator
+// list fails to resolve to a person identity of its own, naming the first one it
+// finds (for the warning, in the source's own spelling).
+func firstUnnamedCredit(authors, narrators []string) (name string, unnamed bool) {
+	for _, list := range [][]string{authors, narrators} {
+		for _, n := range list {
+			if !creditIdentifies(n) {
+				return n, true
+			}
+		}
+	}
+	return "", false
+}
+
+// creditIdentifies reports whether one source credit name resolves to a person
+// of its own. The name goes through sourceCredits and personSlug - the exact
+// pair the import itself uses - rather than straight to Slugify, so the judgment
+// is made on the CLEANED name that would become the record: "Created by 田中"
+// slugs to a non-empty "created-by" raw, and to nothing at all once the prefix
+// credit is stripped, which is the form that matters.
+//
+// A name that is only whitespace identifies nobody but conflates nobody either:
+// sourceCredits drops it outright, so no record is created and the row is not
+// refused for it (an absent author is addBook's rule to enforce, for every
+// source).
+func creditIdentifies(name string) bool {
+	for _, c := range sourceCredits([]string{name}, "") {
+		if _, fellBack := personSlug(c.name); fellBack {
+			return false
+		}
+	}
+	return true
 }
 
 // ---------------------------------------------------------------------------

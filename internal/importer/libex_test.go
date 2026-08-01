@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/kodestar/audiosilo-meta/pkg/check"
+	"github.com/kodestar/audiosilo-meta/pkg/model"
 )
 
 // runLibex runs the libex importer against a fresh empty data dir.
@@ -65,11 +66,12 @@ func TestLibexImportBasic(t *testing.T) {
 	}
 
 	var work struct {
-		Title    string   `json:"title"`
-		Subtitle string   `json:"subtitle"`
-		Authors  []string `json:"authors"`
-		Language string   `json:"language"`
-		Genres   []string `json:"genres"`
+		Title    string         `json:"title"`
+		Subtitle string         `json:"subtitle"`
+		Authors  []string       `json:"authors"`
+		Credits  []model.Credit `json:"credits"`
+		Language string         `json:"language"`
+		Genres   []string       `json:"genres"`
 		Sources  []struct {
 			Type       string `json:"type"`
 			Ref        string `json:"ref"`
@@ -105,6 +107,15 @@ func TestLibexImportBasic(t *testing.T) {
 	readEntity(t, dataDir, "people/da/dan-veksler.json", &translator)
 	if translator.ID != "dan-veksler" || translator.Name != "Dan Veksler" {
 		t.Errorf("translator person = %+v, want dan-veksler / %q", translator, "Dan Veksler")
+	}
+	// The stripped qualifier is no longer discarded: it is recorded as the work's
+	// contributor credit, while the person keeps their place in authors above.
+	wantCredits := []model.Credit{{Person: "dan-veksler", Role: model.RoleTranslator}}
+	if !reflect.DeepEqual(work.Credits, wantCredits) {
+		t.Errorf("credits = %+v, want %+v", work.Credits, wantCredits)
+	}
+	if sum.Credits != 1 {
+		t.Errorf("Summary.Credits = %d, want 1", sum.Credits)
 	}
 	// Mapped onto the project vocabulary and SORTED ("Epic Fantasy" came first in
 	// the export, action-adventure sorts before it); the unmapped string is gone.
@@ -634,7 +645,7 @@ func TestLibexChapters(t *testing.T) {
 	}
 	var lp libexParse
 	warn := func(string, ...any) { t.Error("no warning expected") }
-	sb := libexToBook(e, "B0LIBEX050", "us", nil, &lp)
+	sb := libexToBook(e, "B0LIBEX050", "us", nil, nil, &lp)
 	if len(lp.warnings) != 0 {
 		t.Errorf("no parse warning expected: %+v", lp.warnings)
 	}

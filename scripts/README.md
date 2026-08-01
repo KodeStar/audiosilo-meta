@@ -17,6 +17,13 @@ and series containers are out), and it orders by `sku_group` so the per-region
 editions of one title come out adjacent - the importer folds those into one
 recording through its same-narrator ASIN merge.
 
+Authors, narrators, genres and series come from their join tables as JSON
+arrays. Chapters come from `tracks`, whose `chapters` column is an **object
+wrapping the list** (`{"chapters": [...]}`) - the query unwraps it with
+`->'chapters'`, because the importer type-asserts an array and silently reads
+"no chapters" from anything else. `books.isbn` is deliberately not exported: it
+is sometimes the print edition's ISBN, and `recording.isbn` is a hard dedup key.
+
 ### AI narrations are excluded twice
 
 A synthetic voice is not a person, so an AI-narrated production has no place in
@@ -39,6 +46,28 @@ the same rows at parse time for every `metaimport libex` mode - so a dump
 exported without this filter, or one an older copy of this script produced, is
 still safe. **The two lists must be kept in step**; each file's comment says so.
 The refusals are reported as one aggregated warning line per run.
+
+### Unidentifiable credits are excluded too
+
+The second credit-side refusal, and the only other one: a row is refused whole
+when **any** of its author or narrator credits names someone this catalogue
+cannot identify. A person's identity here is their slug, and `Slugify` keeps only
+ASCII letters and digits (accented Latin folds onto its base letter), so a name
+written entirely in Korean, Cyrillic, Chinese, Japanese, Greek or Arabic slugs
+away to nothing and falls back to the shared catch-all `person` record. On a bulk
+seed that fallback would make one record the credited author or narrator of
+thousands of unrelated books - a falsehood, where an absent book is merely a gap.
+Measured over the 142,550-row seed selection: 2,075 rows (1.5%), 417 distinct
+names. It reverses cheaply - when `Slugify` learns to transliterate, the refused
+rows re-import from the same dump.
+
+This one has **no SQL twin**: the rule is Unicode folding in Go, not a name list,
+and re-spelling it in SQL would be a second implementation free to disagree with
+the first. It is also deliberately **libex-only** - the OpenAudible, Libation and
+`audiosilo-books` importers read a *user's own* library, where the conflation is
+visible to that user and refusing their book to keep a shared database tidy would
+be the wrong trade. Like the AI refusals, these are reported as one aggregated
+warning line per run (naming both the rows and the offending credits).
 
 ## The import posture (read this first)
 
@@ -92,7 +121,10 @@ go run ./cmd/metaimport libex-select full.ndjson --data data -o subset.ndjson [-
 
 This writes no records. It keeps only rows that genuinely complete a series
 already in the catalogue: the ASIN must not already be recorded, the language
-and marketplace must both map, and the row must claim a usable series position
+and marketplace must both map, the credits must pass both credit-side refusals
+above (a row the import will refuse must not be selected - it would promise a
+completion the tranche cannot deliver, and would claim the series slot ahead of
+an importable sibling), and the row must claim a usable series position
 that nothing else already holds (a position the catalogue fills, or that an
 earlier row of the same run claimed, would import as a work stranded outside its
 series). Those rows are re-emitted verbatim as NDJSON. Then read the report:

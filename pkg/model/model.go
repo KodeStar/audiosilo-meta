@@ -34,15 +34,56 @@ type PersonXref struct {
 	Audible     string `json:"audible,omitempty"`
 }
 
+// Person entity kinds. The zero value (an absent kind) means an individual
+// person; the named kinds exist to mark the records that are not one. See
+// schema/person.schema.json - nothing infers these, so an empty Kind is
+// "unclassified or an individual", never a guess.
+const (
+	KindEntityPerson    = "person"
+	KindEntityGroup     = "group"
+	KindEntityPublisher = "publisher"
+)
+
 // Person is an author and/or narrator.
 type Person struct {
-	ID          string      `json:"id"`
-	Name        string      `json:"name"`
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	// Kind is the entity kind (see the KindEntity* constants). Empty means
+	// the record was never classified, which reads as an individual person.
+	Kind        string      `json:"kind,omitempty"`
 	SortName    string      `json:"sort_name,omitempty"`
 	Description string      `json:"description,omitempty"`
 	Xref        *PersonXref `json:"xref,omitempty"`
 	License     string      `json:"license"`
 	Sources     []Source    `json:"sources"`
+}
+
+// Contributor roles: the controlled vocabulary of
+// schema/common.schema.json #/$defs/credit_role. Authorship and narration are
+// deliberately absent - a Credit never restates what Work.Authors and
+// Recording.Narrators already model.
+//
+// TestCreditRolesCoverSchemaEnum pins these against the embedded schema, so a
+// role added to the enum without a constant here (or the reverse) fails a test
+// rather than drifting.
+const (
+	RoleAdaptation   = "adaptation"
+	RoleAfterword    = "afterword"
+	RoleContributor  = "contributor"
+	RoleEditor       = "editor"
+	RoleForeword     = "foreword"
+	RoleIllustrator  = "illustrator"
+	RoleIntroduction = "introduction"
+	RolePreface      = "preface"
+	RoleTranslator   = "translator"
+)
+
+// Credit is one role-qualified contributor credit on a work: a person slug and
+// the role a source stated for them. A person may hold several credits on one
+// work (different roles), but never the same role twice - see pkg/check.
+type Credit struct {
+	Person string `json:"person"`
+	Role   string `json:"role"`
 }
 
 // WorkXref holds cross-references to external databases for a work.
@@ -59,6 +100,7 @@ type Work struct {
 	Title          string    `json:"title"`
 	Subtitle       string    `json:"subtitle,omitempty"`
 	Authors        []string  `json:"authors"`
+	Credits        []Credit  `json:"credits,omitempty"`
 	Language       string    `json:"language"`
 	FirstPublished string    `json:"first_published,omitempty"`
 	Description    string    `json:"description,omitempty"`
