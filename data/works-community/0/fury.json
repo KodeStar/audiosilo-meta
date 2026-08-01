@@ -1,0 +1,1592 @@
+{
+  "entries": {
+    "fury": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Pit’s bonded partner and an unusual defender of Harwatch. He awakens beneath the ruined cathedral with more power than his body can safely contain and struggles to stabilize it.",
+            "id": "felix-nevarre",
+            "name": "Felix Nevarre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Felix’s bonded companion, found alive and recovering beneath Harwatch’s ruined cathedral. Their connection makes Pit an important source of support while Felix struggles to control the power accumulated during the preceding battle.",
+            "id": "pit",
+            "name": "Pit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anna"
+            ],
+            "description": "A chanter who changes her appearance and adopts the identity Zara Cyrene before seeking the scattered Unbound in Harwatch. She has a close, family-like bond with Morvim and pursues a Guild position as part of her search.",
+            "id": "zara-cyrene",
+            "name": "Zara Cyrene",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vess"
+            ],
+            "description": "One of Felix’s displaced allies. Zara confirms that Vessilia escaped the failed domain and reached the warehouse camp with the other survivors. Her safety is one of Felix’s first concerns after he returns to the city.",
+            "id": "vessilia-dayne",
+            "name": "Vessilia Dayne",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A chain fighter and one of Felix’s close allies. She survives the domain collapse and reaches the warehouse camp with the other refugees. Her presence confirms that Felix’s companions escaped the cathedral disaster.",
+            "id": "evie-aren",
+            "name": "Evie Aren",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The practical leader of the warehouse refugee camp. Cal organizes its barricades, patrols, and volunteer training while Harwatch is overrun by revenants. Her improvised forces give displaced residents a measure of protection.",
+            "id": "cal",
+            "name": "Cal",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer working at Cal’s warehouse camp. She treats injured patrol members as the refugee settlement struggles with mounting casualties and scarce resources. Her care supports the volunteers protecting the barricades.",
+            "id": "portia",
+            "name": "Portia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Inquisitor DuFont"
+            ],
+            "description": "Harwatch’s former Elder of Acquisitions, now using the title of Inquisitor. She consolidates control over the surviving local order in the Sunrise Quarter and treats the citywide disaster as an opportunity to command people and resources.",
+            "id": "eliza-dufont",
+            "name": "Eliza DuFont",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Inquisitor who presses DuFont to resume executions for heresy.",
+            "id": "huthorn",
+            "name": "Huthorn",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A power linked to Felix through the blood gate in an ancient temple. She says she has guided his advancement choices and warns that his growing influence will attract dangerous enemies. She directs him toward temples of lost gods but cautions him against trusting them.",
+            "id": "vellus",
+            "name": "Vellus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran survivor and field leader trusted with Felix’s account of the Maw, the Unbound, and the threat approaching Harwatch. He joins the camp leadership in preparing its defense and assessing the expected attack.",
+            "id": "harn",
+            "name": "Harn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Felix’s combat trainer. Rory uses an adaptive gauntlet to test movement, control, and spell accuracy while Felix’s unstable core makes even familiar actions unreliable. His exercises expose how much control Felix still lacks.",
+            "id": "rory",
+            "name": "Rory",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient construct confined within gilded armor and bound by a curse. It sends three creations toward Harwatch, seeking agents, a lost key, and a way past the city’s old wall. Its siphon arrays are already drawing mana from the surrounding land.",
+            "id": "the-archon",
+            "name": "The Archon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "the Hand"
+            ],
+            "description": "The Duke of Pax Rell’s Hand and Vessilia’s assigned protector. An Adept-tier combatant, he attempts to control her training and movements on her father’s authority. Vessilia openly rejects his effort to forbid Zara’s instruction.",
+            "id": "darius-reed",
+            "name": "Darius Reed",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fire mage and ally of Felix who lies unconscious in the camp healer’s ward. He is among the patients most severely affected by corruption carried out of the failed domain, and Portia has neither enough supplies nor a cure.",
+            "id": "atar-vas",
+            "name": "Atar V'as",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Felix’s allies. He is unconscious in the healer’s ward and suffers from an especially heavy concentration of domain-related corruption. His condition is among the camp healers’ most serious cases.",
+            "id": "alistair",
+            "name": "Alistair",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The warehouse camp’s heavily armored guard captain. He coordinates volunteer patrols and directs work on the settlement’s inadequate fortifications. Felix reports to him when offering practical help with the camp’s defenses.",
+            "id": "bodhi",
+            "name": "Bodhi",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thangle"
+            ],
+            "description": "A gnome illusionist and independent magical-shop proprietor recruited for the mine rescue. His Adept-tier concealment magic allows a group to pass through an area without drawing observers’ attention.",
+            "id": "thaddeus-thangle",
+            "name": "Thaddeus Thangle",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former bronze-rank Guild alchemist who reaches the rescued mine with six apprentices. She brings valuable expertise to the refugee effort, though she is openly critical of the group’s combat methods.",
+            "id": "aenea-tillil",
+            "name": "Aenea Tillil",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aenea’s husband and a bronze-rank sigilder nearing silver rank in his specialty. He adapts the mine’s wards against further attacks and joins the camp’s defensive work. His expertise helps secure the newly recovered source of ore.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The primordial presence previously connected to Felix. The revenants killed beneath the cathedral leave ruby remnants that he recognizes as echoes of the Maw, tying the city’s new threat to that lingering power.",
+            "id": "the-maw",
+            "name": "The Maw",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A goblin merchant who escapes the Inquisition roundup at the Drum Tank Inn in a wagon with other refugees. Their flight ends in a crash while red-cloak acolytes pursue them.",
+            "id": "knuckle",
+            "name": "Knuckle",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Sworn operative who uses a face-changing mask to enter the warehouse camp as a rescued washerwoman. She secretly gathers tactical information for her employer and carries a personal vendetta against Zara.",
+            "id": "ilya",
+            "name": "Ilya",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Alistair's iron-ranked cousin and an augmentation mage among the Guild force at the pump station. Holding Felix responsible for Harwatch's disaster, she stirs the other guilders into opposing him.",
+            "id": "lillian",
+            "name": "Lillian",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Guild Elder who coerces a party into investigating a pump house. The Elder uses a dangerous tracking device to follow an unknown trail into a deep route beneath Harwatch.",
+            "id": "guild-elder",
+            "name": "Guild Elder",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A severely corrupted religious leader rescued near the warehouse camp. She identifies the revenant nest beneath the primary pump station, but an unresolved anomaly leaves her account under suspicion.",
+            "id": "chorister-of-siva",
+            "name": "Chorister of Siva",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chorister of Siva"
+            ],
+            "description": "The transformed identity of the Chorister of Siva. She summons revenants and ghouls, injures Pit, and uses the companion bond to harm Felix. Felix strips away her primordial power and restores her human form.",
+            "id": "deceit-of-misfortune",
+            "name": "Deceit of Misfortune",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An injured Elder of the Protectors Guild found with the hidden underground group. She explains that the group kept the Scale of the Ravager King because it repelled lesser monsters.",
+            "id": "olivia-regis",
+            "name": "Olivia Regis",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cal"
+            ],
+            "description": "The full identity of Cal, revealed publicly by Eliza DuFont during the battle for Harwatch. Kaleska leads one branch of the assault and is an eligible challenger for the city’s territorial authority, even as DuFont traps the allies inside her defenses.",
+            "id": "kaleska-bosco",
+            "name": "Kaleska Bosco",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Archid deployed inside DuFont’s trap alongside another construct and a large Reforged force. Felix calls it Mud before the blood moon magnifies the attackers.",
+            "id": "mud",
+            "name": "Mud",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The second Archid waiting with the Reforged inside DuFont’s enclosure. Felix calls the construct Skeleton before the blood moon greatly increases the enemy force’s size and power.",
+            "id": "skeleton",
+            "name": "Skeleton",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A colossal Archonic Construct advancing on Harwatch’s shield wall. It breaks free from a restraining array by absorbing its heat and continues toward the city’s defenders. Its immense metal body carries the Archon’s attack into the final battle.",
+            "id": "apollyon",
+            "name": "Apollyon",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elderly chanter with a close, family-like bond to Zara. He joins her discussion of sabotaging the Unbound summoning so those called by it will be scattered.",
+            "id": "morvim",
+            "name": "Morvim",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A returning survivor of the Foglands who leads one of Cal's volunteer patrols through Harwatch.",
+            "id": "yan",
+            "name": "Yan",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Inquisitor aligned with Huthorn who demands the immediate return of executions for heresy.",
+            "id": "rutger",
+            "name": "Rutger",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Chorister of Yarrow transformed into a powerful primordial spawn.",
+            "id": "pride-of-blight",
+            "name": "Pride of Blight",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An immobile primordial spawn at the heart of the nest. Its eggs produce fully grown revenants, and its strength comes from the thousands of creatures surrounding it.",
+            "id": "larval-broodmother",
+            "name": "Larval Broodmother",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0BCH5GVFW",
+            "type": "community"
+          }
+        ],
+        "work": "fury"
+      },
+      "recaps": {
+        "ending": "Felix defeats Eliza DuFont in a formal challenge and kills her, but the authority would restrict him because he is both Unbound and primordial. His Tyrant of Choice title releases him from the required oath, so he refuses the office. It passes to Cal, whose full identity is Kaleska Bosco. She accepts and uses Harwatch’s authority to weaken the remaining monsters and restrain the largest construct. Felix then breaks the Archon’s link to Apollyon, revealing the construct’s underlying frost giant, and lets the frightened survivor escape into the Foglands.\n\nFour days later, Cal is still learning to govern a devastated city. Portia and Aenea Tillil direct treatment, survivors are being recovered, and a makeshift force guards the breached wall. Felix, Pit, Zara, Vessilia, Evie, Harn, Atar, and their principal allies survive. Darius Reed is injured while protecting Vessilia. The remaining Inquisition forces flee and will carry word of Felix and Harwatch outward. Zara returns Felix’s hooked bronze blade, which is revealed as the Nemean key. A new objective sends him back to the Nemean temple, while the Archon remains active in the Foglands and a nearer darkness is still unresolved.",
+        "in_short": "After the failed domain battle, Felix Nevarre returns to a Harwatch overrun by mana-warped revenants. He stabilizes his own dangerous advancement, aids Cal’s refugee camp, rescues miners from the Inquisition, and trains under Zara while primordial corruption threatens his judgment. A territorial contest draws every faction into the revenant nest, where Felix destroys the Ravager King’s scales but Eliza DuFont gains control of the city. DuFont abandons Harwatch’s outer defenses as the Archon’s constructs and Foglands monsters invade. Felix resists Vellus’s attempt to bind him, transforms into a Lesser Primordial of the Unseen Tide, and rejoins the defense. He kills DuFont in a formal challenge but refuses the authority, allowing Cal, now revealed as Kaleska Bosco, to accept it. Cal helps repel the assault, while Felix severs the Archon’s control over Apollyon and frees the frost giant within. Harwatch survives in ruins. Felix recovers the Nemean key and is directed toward a Nemean temple as the Archon remains active nearby.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Felix Nevarre and Pit became bound companions while Felix developed an unusual connection to primordial power. Felix is one of the Unbound and has survived contact with the Maw, whose influence altered both his abilities and his relationship with the System. He also formed a link with Vellus through an ancient blood gate. In Harwatch, Felix and his allies were drawn into a failed domain and fought the Ravager King. The collapse scattered survivors and released dangerous creatures into the city. Felix and Pit endured the final battle. Vessilia Dayne, Evie Aren, Atar V'as, Harn, Cal, Rory, and other allies were left amid the disaster, while the status of the wider city remained uncertain.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix awakens with Pit beneath Harwatch’s ruined cathedral after the Ravager King’s defeat. Revenants released by the failed domain are multiplying throughout the city, and Felix uses Ravenous Tithe to consume their corrupted essence while trying to relieve the dangerous pressure in his own core. Zara Cyrene finds him and confirms that Vessilia, Evie, and the other survivors reached Cal’s warehouse camp.\n\nAt the camp, Felix becomes a public symbol of protection, though many know him only as the blue-eyed fiend. He undergoes painful Journeyman tempering, gains new body and spirit formations, and learns that Vellus has been guiding his choices through their link. Pit grows into a much larger winged form. Meanwhile, Eliza DuFont takes practical control of the remaining Inquisition in the Sunrise Quarter. She manipulates the crisis to strengthen her position, while rival Inquisitors press for executions. The Guild pursues its own interests by studying captive revenants and confirms that the creatures can continue growing stronger. Harwatch is now divided among competing powers as its monster crisis accelerates.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Archon, an ancient construct unable to cross its own gate, sends three creations toward Harwatch and seeks a lost key. Felix tells Zara, Cal, and Harn about his Unbound status, his altered race, and the Maw. They conclude that the Archon intends to exploit the revenant disaster as part of an outside assault. Felix struggles to control his newly tempered abilities, while Vessilia and Evie turn their attention to helping the refugee camp.\n\nFelix strengthens the camp wall, then discovers that Atar and Alistair are among the people suffering severe primordial corruption. Ravenous Tithe removes much of their affliction but cannot provide a complete cure. Pit awakens as a massive Tenku and is publicly recognized as Felix’s companion. When the Inquisition seizes a mine needed for iron, Cal sends Felix, Vessilia, Evie, Pit, and Thaddeus Thangle to rescue the trapped workers and Rory. Under Thangle’s concealment, they clear the first courtyard. A memory taken from a slain initiate reveals more Inquisition troops, imprisoned miners fitted with mana-draining collars, and a larger fight still ahead.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix’s team attacks the Inquisition force around the mine. He kills an initiate who threatens chained workers, but his growing rage nearly overwhelms him until Pit and Thangle calm him. An older Inquisition fighter later outmatches and wounds Felix, then escapes after freeing captured acolytes. The allies evacuate the miners and remove their core-suppressing collars. Rory survives, though injured. Aenea Tillil and her alchemical apprentices join the refugees, as does Hector, whose sigildry helps secure the mine and improve the camp’s wards.\n\nBack at the warehouse, Felix recognizes that raw attributes cannot replace technique and that the Maw-related corruption may be altering his emotions. Zara begins oath-bound instruction in chant magic for Felix, Evie, and Vessilia, but Felix’s anger repeatedly disrupts his control. Rory retrains his damaged weapon skills. Zara then discovers that Felix’s core has reached an unusually advanced ring stage. Felix hunts revenants for essence and combines his repaired combat skills into Wild Threnody, an epic mana-imbuing discipline. The evolution succeeds, but it ends with another violent episode and a gap in Felix’s memory, confirming that his instability now endangers allies as well as enemies.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix determines that Aenea’s tonic did not cause his aggression. A territory-wide quest then offers Harwatch’s authority to whoever destroys the revenant nest, turning the emergency into a race among the camp, Guild, and Inquisition. Felix promises the refugees protection and helps plan a search despite estimates that thousands of revenants may occupy the nest.\n\nInside his Bastion of Will, Felix finds crimson corruption threaded through his mental defenses. He and Pit repair the structure, and Felix severs many links between his skills and the primordial echoes stored near his core, reducing but not eliminating the influence. He then tests a plan to attract revenants so newly trained volunteers can gain strength. During the hunt, a mana-warped ghoul attacks near a wagon carrying civilians who escaped an Inquisition roundup. Felix, Vessilia, Atar, and Thangle defeat it, while Pit shields the survivors from pursuing acolytes. Ravenous Tithe yields a large new concentration of primordial essence from the ghoul. The rescued civilians confirm that the Inquisition has been removing people from the Drum Tank Inn, but the reason for the captures remains unknown.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix learns basic alchemy from Aenea and helps Hector develop modular wall wards powered by recharged monster cores. Even with regular hunts and production work, the camp loses fighters as ghouls become more common. Ilya, a face-changing Sworn operative, infiltrates the settlement and covertly gathers tactical intelligence for her employer. Zara separately enters the Inquisition camp under her Anna identity and confirms the use of chained mine labor.\n\nA corrupted Chorister of Siva reaches the warehouse and identifies the revenant nest beneath the primary pump station. She says Ravager King scales transformed members of her group, though Felix still detects an unexplained anomaly after cleansing her. Cal launches an expedition. Evie remains behind but pursues an intruder who defeats her and escapes, leaving Evie separated from the main force. At the pump-station square, Felix’s advance party encounters a Guild expedition seeking the same authority reward. Lillian turns the guilders against Felix, and their silver-ranked commander refuses cooperation. Fighting begins before either group can enter the nest. A revenant horde and a powerful ghoul then pour from the pump station, forcing both sides to confront the monsters as Felix’s force pushes toward the entrance.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix seals the pump-station entrance behind the expedition and follows the Chorister through Nymian waterworks. Evie, meanwhile, infiltrates an Inquisition column and learns that hundreds of soldiers are approaching the nest through the sewers. The expedition discovers injured Choristers and Guild elders gathered around a Scale of the Ravager King. Two Choristers transform into powerful primordial spawn. Felix uses Unite the Lost to restore the Chorister of Siva, but Pride of Blight escapes after a severe fight. Felix consumes the Scale, causing the nearby horde to retreat while worsening the accumulation inside his core.\n\nCal forms an elite party to continue toward the nest, accepting Elder Olivia Regis and another Guild elder as restricted allies. They discover an immense chamber containing thousands of spawn and an immobile Larval Broodmother beneath a giant enchanted crystal. Felix plans to collapse the crystal onto the Broodmother. The Inquisition attacks from another entrance, with Evie still disguised among its troops. She steals a supply wagon and disrupts their formation while Felix climbs above the chamber to place sigil grenades in the crystal’s support. Before he can finish, an unknown green bolt strikes his first grenade and triggers an early explosion.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix survives the premature blast and resumes his demolition attempt while Zara blocks Eliza DuFont from reaching the Broodmother. Evie drives the stolen supply wagon through the Inquisition line, and Cal’s group turns its volatile contents into a weapon. Felix finally tears the crystal loose, but Pride of Blight redirects its fall toward his allies. He diverts it, kills the corrupted Chorister after Unite the Lost fails, and begins consuming the remaining Ravager King scales. Their destruction drains linked spawn across the nest.\n\nThree constructs sent by the Archon activate a concealed profane array. It extracts hidden energy from Felix, strengthens the constructs, destroys the Broodmother, and disables Harwatch’s city wall. Felix races DuFont and Ilya for the final Scale while a Guild elder attempts to control the array. Felix absorbs the Scale and survives the resulting collapse, but the territorial authority initially goes to DuFont. Buried beneath the ruins and separated from Pit, Felix encounters Vellus within his core. She shows him a likely future in which DuFont destroys his people and offers power in exchange for making Felix her chosen Ascendant. He agrees only to save his friends, but Vellus imposes the stronger binding by force. Felix has three days to challenge DuFont for control of Harwatch.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix resists Vellus with Pit’s help, forms a second core ring, and breaks her direct hold. He survives simultaneous Journeyman tempering of mind and body, gains protection against unwanted oaths, and escapes the collapsed nest. After absorbing both primordial and divine essence nodes, he becomes a Lesser Primordial of the Unseen Tide with transformed cores and a stronger perception of hidden connections.\n\nDuFont returns from the nest grievously wounded but uses Harwatch’s authority to execute Huthorn, fortify only the Sunrise Quarter, and strip protection from the rest of the city. Foglands monsters and the Archon’s Reforged attack through the failed defenses. Felix and Pit reach the warehouse camp during a devastating assault and defeat an Archid commander. By taking its memory, Felix sees that the Archon has been making constructs and Reforged from imprisoned frost giants and is preparing for the blood moon. The Archon detects Felix within the stolen memory and attacks him there, but Felix escapes through his bonds. Pit rallies wounded civilians, and the reunited defenders turn the immediate battle. The camp survives, though the citywide invasion and DuFont’s authority remain unresolved.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With fewer than half the camp’s defenders alive, Felix repairs the wall and helps evacuate survivors. Zara returns with reinforcements. The allies decide they must challenge DuFont before the Archon’s forces kill her and make the authority unattainable. Felix, Vessilia, Evie, Cal, Harn, and Atar breach the Sunrise Quarter, using a pursuing monster horde to break its gate. DuFont seals them inside with two Archids and hundreds of Reforged, all empowered by the blood moon.\n\nFelix kills the earth-wielding Archid called Mud. Cal, Evie, and Harn capture DuFont, while Vessilia, Atar, Alistair, Rory, and the other defenders hold the second Archid and its controlled horde. Felix kills that construct as well, but it releases Berserk Blood through the monsters. Cal formally challenges DuFont, who answers with Song of Fury and incapacitates her. A level 73 Archonic Construct then breaches the outer defenses. Ilya isolates Evie, but Evie poisons and defeats her. As Felix continues fighting DuFont, he senses an extensive web of bonds across Harwatch. Unite the Lost carries power through those connections, Thangle’s prepared array restrains the giant construct, and Felix’s former Rain of Vellus evolves into a transcendent new ability.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix’s evolved Adamant Discord lets him move along the hidden connections he perceives, though every use strains his aspects. He no longer senses Rain of Vellus or his former affiliation with Vellus. Evie restores the injured Cal, while Felix, Evie, and Harn continue wearing down DuFont. Felix formally challenges DuFont for Harwatch’s authority and kills her. He accepts the office only long enough to learn that the System would restrict him because he is Unbound and primordial. His protection against forced oaths allows him to refuse it, and the authority passes to Cal.\n\nCal accepts under her full identity, Kaleska Bosco, and uses the city’s power to weaken the remaining monsters and pin Apollyon, the colossal construct attacking the defenders. The Archon speaks through Apollyon, but Felix and Harwatch reject its control. Felix severs the connection and restores the construct to the frightened frost giant from which it was made, then permits the giant to flee. Four days later, Harwatch is damaged but stable enough for treatment, searches, and monster clearance. Cal directs the recovery while survivors guard the breached wall. The Inquisition remnants flee. Zara returns Felix’s hooked bronze blade, revealing it as the Nemean key. Felix must now seek the Nemean temple as the Archon remains active in the Foglands.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0BCH5GVFW",
+            "type": "community"
+          }
+        ],
+        "work": "fury"
+      }
+    },
+    "fused": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Fusing Archon, caravan mage, and protector who studies the consumption of magical harvests. She relies on Kit for dimensional storage and tests gravity-driven tungsten projectiles whose destructive force can exceed her safeguards.",
+            "id": "tala",
+            "name": "Tala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tala's bonded dimensional storage item. A projectile experiment damages its interior equipment and doorway and drains its reserves, but it remains functional after Tala replenishes it.",
+            "id": "kit",
+            "name": "Kit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archivist who examines isolated Culinary Guild records and finds that fear and secrecy kept them apart from the guild's broader knowledge. She takes responsibility for raising the problem with local leadership.",
+            "id": "ingrid",
+            "name": "Ingrid",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's friend, housemate, and fellow Caravan Guild mage. She helps Tala establish a permanent doorway site for Kit, listens when Tala discusses her family history, and encourages her to confront the unresolved separation.",
+            "id": "lynn",
+            "name": "Lynn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's intelligent creature companion, whose appetite is comparable to Tala's unusually high food needs.",
+            "id": "terry",
+            "name": "Terry",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage working at the teleportation tower who helped Tala after her arrival from the academy. Nearing retirement without advancing, she expects eventually to undergo an involuntary transformation into a fount.",
+            "id": "teleportation-tower-mage",
+            "name": "Teleportation-tower mage",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Bandfast city lord's reforged wife and an Archon able to intervene through the city's defenses. She helps when Tala's iron body paint causes those defenses to mistake Tala for an intruder.",
+            "id": "jenna",
+            "name": "Jenna",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's distinct mental aspect and archive-linked collaborator. Alat reconstructs suppressed memories that expose an apparent attack upon Tala's mind and helps her organize what the recovered experience means.",
+            "id": "alat",
+            "name": "Alat",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mind-altering arcane"
+            ],
+            "description": "A hostile conceptual being seen in Tala's recovered memories. It manipulates attention and belief, attempts to penetrate or erase Tala's mind, and destroys her short-term memories before withdrawing.",
+            "id": "blood-eyed-arcane",
+            "name": "Blood-eyed arcane",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A newly graduated information-processing mageling and one of Tala's former academy acquaintances. Lynn meets her in Bandfast and considers taking her on as a mageling and housemate.",
+            "id": "kannis",
+            "name": "Kannis",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An exacting inscriber who reviews Kannis's proposed inscriptions, corrects serious weaknesses, and records the improvements. She also agrees to monitor Tala's continuing magical compression while Tala remains in Bandfast.",
+            "id": "holly",
+            "name": "Holly",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite mundane combatant whose magic is devoted to exceptional reactions. He repeatedly defeats Tala and other mages at close range, then recommends mounted coordination and weapon practice for Tala and Terry.",
+            "id": "guard-captain",
+            "name": "Guard captain",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow caravan mage whose working relationship with Tala is becoming less formal. Tala grants him access to the memories she recovered so he can understand the danger facing her.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A magical adviser whom Tala authorizes to review her recovered memories.",
+            "id": "mistress-odara",
+            "name": "Mistress Odara",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Magnetic mage hunter"
+            ],
+            "description": "An Archon hunter with precise control over iron dust. He accepts Tala's public invitation to join a northern ending-berry expedition that is also intended to draw out the being that altered her memories.",
+            "id": "mage-hunter",
+            "name": "Mage hunter",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan leader and iron-magic specialist traveling with Tala toward Marliweather. She has learned to direct magic through the empty spaces within iron, an approach that advances her work without yet producing an Iron Archon Star.",
+            "id": "caravan-overseer",
+            "name": "Caravan overseer",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's eleven-year-old younger brother and a pre-magic candidate with unusually high gate throughput. He remembers her only faintly, fears she may disappear again, and brings her toward the family home after accepting her reassurance.",
+            "id": "nalac",
+            "name": "Nalac",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bound material-guide healer based at the Carwheel family alchemy shop. Formerly a wildlands healer, he recognizes Tala as the missing eldest sibling and sees that she is an exceptionally advanced human Archon nearing fusion.",
+            "id": "leighis",
+            "name": "Leighis",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Licensed alchemist",
+              "Registered alchemist"
+            ],
+            "description": "Tala's eldest sister, a registered alchemist and central worker in the family's expanded alchemy business. She meets Tala at the shop during the difficult first reunion with the family.",
+            "id": "talas-eldest-sister",
+            "name": "Tala's eldest sister",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Marliweather Constructionist Guild paragon with fire, force, and magical-power orientations. He recognizes Tala as the Blood Archon and advises her to let her newly Fused state settle fully before she attempts refining.",
+            "id": "master-hoffest",
+            "name": "Master Hoffest",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:us:B0CPR4D6FV",
+            "type": "community"
+          }
+        ],
+        "work": "fused"
+      },
+      "recaps": {
+        "ending": "Tala returns to Bandfast as a Fused Archon, but she is still settling and chooses to postpone refining for one to two years. Holly discovers that the consumption scripts created excessive physical impurities, then revises Tala's scripts until the burden begins to decline. The eventual refining process will be especially painful. Tala remains estranged from her parents while cautiously rebuilding ties with all fourteen siblings. She schedules repeated Caravan Guild journeys to Marliweather, continues paying her debt, and leaves Nalac to decide whether he still wants magic. Her eldest sister begins a conditional six-month iron-paint contract with the Constructionist Guild. Alat remains Tala's collaborator and gains remote Archive reading access, though it still cannot write publicly or send messages. Terry remains unbonded, develops a knife-based combat method, and begins mounted-combat training with Tala. Rain continues his own difficult advancement work and plans to travel with Tala through winter. The blood-eyed arcane's identity, motives, location, and continuing threat remain unknown.",
+        "in_short": "Tala develops iron body paint that accelerates her bodily enhancement, recovers memories proving that a blood-eyed arcane attacked her mind, and turns ending-berry seeds into a controlled anti-magic breath. After surviving a battle in which a griffin escapes and her mage-hunter companion kills another magical beast, she travels to Marliweather to confront the family who sent her away under their debt. Tala rejects renewed ties with her parents but apologizes to her fourteen siblings, begins rebuilding those relationships, and helps her eldest sister secure a trial contract for the paint. Emotional resolution with her siblings lets Tala and Alat complete fusion together. Back in Bandfast, Tala learns that her scripts have created impurities that make early refining unsafe, so she adopts a one-to-two-year timetable. She plans regular family visits and caravan work while the hostile arcane remains unidentified and at large.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Tala entered this volume as an Archon, a Caravan Guild mage, and a protector whose unconventional inscriptions continually reshaped her capabilities. Terry was already her intelligent creature companion, and Kit served as her bonded dimensional storage. Lynn was an established friend and fellow Caravan Guild mage, Holly handled inscriptions, and Ingrid worked as an archivist. Tala's existing magical abilities, professional ties, and close companions formed the foundation for her next stage.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Tala reports concerns about suppressed Culinary Guild research, then nearly destroys Kit's doorway and badly injures herself while testing a gravity-driven tungsten projectile. Her regeneration consumes enormous reserves. Lynn helps her establish Kit's doorway in their shared home and apply iron body paint that reflects escaped magical power back through Tala, accelerating her enhancements at the cost of a much greater appetite. Because the paint conceals Tala's magical signature, Bandfast's defenses restrain her until Jenna intervenes. A through spike then supplies a recognizable signature and the illusion of ordinary skin. Alat reconstructs memories that Tala had lost. They show a blood-eyed arcane manipulating her attention and belief, attacking her mind, and destroying recent memories before retreating. Tala gives Jenna the recovered evidence for Bandfast's authorities, but the attacker's identity and purpose remain unknown. Lynn also agrees to take Kannis, Tala's former academy acquaintance, as her mageling and housemate. Tala accepts the arrangement, while she and Alat establish safer notice and consent rules for changes to Tala's perception.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Tala's iron paint strengthens the pressure behind her inscriptions but hides her magical signature, so Jenna arranges a through spike that presents both an identifying signature and a normal appearance. Alat recovers memories proving that a blood-eyed arcane interfered with Tala's mind, and Bandfast's leadership receives the evidence. Lynn formally takes Kannis as a Caravan Guild mageling, and Holly improves Kannis's inscription plan. Training reveals Terry's exceptional teleportation and combat power, while the guard captain gives Tala and Terry a new direction in mounted and weapon coordination. Tala then uses an ending-berry harvesting trip as bait for the unknown arcane, accompanied by a mage hunter who controls iron dust. No attacker appears. Instead, their magical activity draws a griffin and an amorphous magical beast. Tala and Terry repeatedly cripple the rapidly healing griffin with a gravity-bound tungsten sphere, but it wounds Tala and escapes with the sphere still lodged near its spine. The mage hunter destroys the second beast, completing the hardest combat requirement for his advancement. Tala survives with heavy injuries and depleted defenses, and the hunter parts from her on good terms.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: After recovering from the northern battle, Tala reports to Holly and receives the next stage of her bodily modification scripts. She and Alat propose using an activated ending-berry seed as a breath weapon. Under Holly's supervision and with a healer present, Tala proves that her internal protections can contain the seed's dissolution effect and direct it outward. Further tests let her shape the destructive exhalation without injuring herself. Alat also takes a larger role in managing Tala's movement toward fusion, shortening the expected timetable. Tala then leaves Bandfast with a caravan bound for Marliweather. During the journey, the caravan overseer explains how she guides magic through spaces within iron, while Rain discusses his slower fusion progress and supports Tala through her anxiety about the coming family encounter. Tests against the overseer's defenses show that Tala's ending-seed breath destabilizes ordinary barriers, though a compartmentalized barrier that continuously rebuilds itself can resist the attack. The caravan reaches Marliweather safely. Tala arrives still unsure whether she hates her parents, whether she wants reconciliation, or how she will face a family whose debt decision shaped her childhood.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Tala returns to Marliweather but initially avoids her family. In a childhood park she meets Nalac, the younger brother who barely remembers her, protects him from older boys, and follows him home. The first confrontation overwhelms her. Her father offers the family's savings toward her debt, but Tala makes clear that being sent to the academy without a direct conversation destroyed their relationship. She refuses renewed contact with her parents, apologizes to her siblings for abandoning them, and asks to rebuild those relationships separately. All fourteen siblings meet with her. They forgive her conditionally, making clear that trust will require sustained effort. Nalac admits that finding Tala helped motivate his interest in magic, leaving him uncertain whether he still wants that path. Tala does not decide for him. She also offers her eldest sister an iron-paint business opportunity with the local Constructionist Guild. As Tala reaches a calmer view of her past and chooses a future with her siblings, she and Alat recognize their gate and soul as shared and complete fusion together. Master Hoffest warns the newly Fused Tala to settle before refining and agrees to meet the family alchemist about the paint.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala completes the book as a Fused Archon. In Marliweather she keeps her parents at a distance but continues repairing her relationships with all fourteen siblings, including a safe magical play session with Terry and the younger children. Her eldest sister purchases the iron-paint formula and secures a six-month Constructionist Guild trial for ten gallons each month. Tala then builds regular Caravan Guild travel between Bandfast and Marliweather into her winter plans, giving the family reconciliation a practical way to continue while she keeps paying her debt. Rain improves his magical capacity and density through difficult meditation and joins Tala's winter travel, though his intended advancement remains incomplete. Alat gains remote read access to the Archive but still cannot send messages or write outside the private shared space. Terry remains unbonded, develops a combat method using repeated movement between thrown knives, and begins mounted coordination with Tala. Holly discovers that Tala's consumption scripts produced unusually high physical impurities. After revisions, the impurity burden begins to decline, but it will complicate refining. Tala therefore rejects an early attempt and chooses a one-to-two-year period for settling. The blood-eyed arcane remains unidentified, its motives and location unresolved.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:us:B0CPR4D6FV",
+            "type": "community"
+          }
+        ],
+        "work": "fused"
+      }
+    },
+    "fusing": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Archon moving toward fusion who develops her soul, gravity magic, and combat equipment under Jevin's guidance. After recognizing the reach of his authority over Makinaven, she agrees to keep that discovery confidential.",
+            "id": "tala",
+            "name": "Tala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tala's Archon adviser, who encourages powerful mages to contribute to humanity. His aura and magical signature appear to extend throughout Makinaven. He agrees to prepare anchor-linked darts for Tala and tells her to keep her inference about his influence private.",
+            "id": "jevin",
+            "name": "Jevin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's recurring sparring partner and a skilled combatant. His progress toward fusion depends on restructuring an existing soul bond so it does not lead to confusion.",
+            "id": "grediv",
+            "name": "Grediv",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's soul-bound weapon and a central part of her combat style. Its unusually deep bond with her gives it considerable magical force during training, although a more skilled sparring partner can still overcome that advantage.",
+            "id": "flow",
+            "name": "Flow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inscribed student whose mage training is incomplete. He has a partial keystone, highly developed illusion magic, and an Archon guardian sworn to his deceased parents who serves as his instructor and chaperone.",
+            "id": "reeve",
+            "name": "Reeve",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tala's powerful creature companion and mount. He accompanies her when she leaves Makinaven with the Caravan Guild, stays near her during the journey, and is capable of moving through dimensional space.",
+            "id": "terry",
+            "name": "Terry",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Harvester Guild Archon traveling west who temporarily joins the caravan. He specializes in controlling kinetic energy through a soul-bound cord woven with muscle fibers.",
+            "id": "harvester-guild-archon",
+            "name": "Harvester Guild Archon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The caravan's lead defensive mage and an experienced protector. He kills a chitin-armored predator threatening the caravan, then assigns the valuable remains to the guards who assisted him.",
+            "id": "senior-caravan-mage-protector",
+            "name": "Senior caravan mage protector",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan mage specializing in dimensional magic. She advises Tala to separate the interwoven currents in a combined blood Archon Star by redirecting their circulation instead of trying to take direct control.",
+            "id": "caravan-dimensional-mage",
+            "name": "Caravan dimensional mage",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A non-mage Culinary Guild member who works aboard the caravan's chuckwagon. The cook gives Tala a token that lets her notice the wagon's concealed guide inscriptions and grants her limited knowledge of the Guild's hidden practices.",
+            "id": "culinary-guild-cook",
+            "name": "Culinary Guild cook",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful independent researcher whose managed forest provides the caravan temporary shelter. She studies fungi and magical materials, and immediately notices an unusual partial synchronization between Tala and the senior caravan mage.",
+            "id": "fungus-archon",
+            "name": "Fungus Archon",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan guard standing watch during a dangerous forest passage. He responds promptly to Tala's warning by waking the camp as an approaching Leshkin force turns a night encounter into an emergency retreat.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A fellow Archon and capable combat mage who takes part in the caravan's emergency breakout and recovers Leshkin equipment.",
+            "id": "combat-mage",
+            "name": "Combat mage",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's friend and trade contact in Bandfast. Hurt by Tala's unannounced absence, she accepts an apology and renews their friendship. She then identifies several trade opportunities and agrees to arrange the sale of Tala's thundercattle horns.",
+            "id": "lynn",
+            "name": "Lynn",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's soul-bound dimensional storage. She uses it to carry inert specimens collected from crystallized wildlife encountered while returning to the caravan.",
+            "id": "kit",
+            "name": "Kit",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An air-specialist Archon nearing fusion and the senior caravan mage's great-granddaughter. She uses paired inscribed bar maces and joins Tala's developing program of martial practice with the Bandfast guards.",
+            "id": "aproa",
+            "name": "Aproa",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Guardsman Adam"
+            ],
+            "description": "A skilled Bandfast guard and valued training opponent. He is introduced as a prospective opponent for Aproa when Tala brings the air-specialist Archon to the guard yard for broader martial practice.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's inscriber and adviser on safeguards against mental interference. She detects a weak lingering influence and evidence of two erased short-term memories, then proposes protected mind maps linked to an archive bond.",
+            "id": "holly",
+            "name": "Holly",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Constructionist Guild master who helps Tala plan a complex soul bond combining garments with Leshkin armor. The master organizes eight material channels so the finished garment can retain useful properties and change shape.",
+            "id": "constructionist-master",
+            "name": "Constructionist master",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Jean"
+            ],
+            "description": "A local mage hunter equipped with an iron tube and separately paired, gold-inscribed components. She is introduced among the Archons training with Tala and has specialized tools for confronting mages.",
+            "id": "jean",
+            "name": "Jean",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local mage hunter specializing in magnetic control. He brings iron dust into combat, can use magic despite the metal's normal interference, and prepares to disable opponents with varied magical specialties.",
+            "id": "magnetic-field-mage-hunter",
+            "name": "Magnetic-field mage hunter",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An air manipulator in the Bandfast training group who uses the atmosphere as both a weapon and a defense. He demonstrates an indirect approach to magical combat by defeating a lightning mage through removal of the surrounding oxygen.",
+            "id": "stan",
+            "name": "Stan",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An archivist who can query the archive under Tala's permissions and modify the access granted to her. She helps establish what Tala may research about arcanist harvests and their temporary effects on ordinary biological processes.",
+            "id": "ingrid",
+            "name": "Ingrid",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Constructionist Guild specialist trusted with a valuable and unusual alteration. He integrates a revered siphon fascia into Kit, performing the complex merge while Tala supplies the power needed to complete the process.",
+            "id": "constructionist-archon",
+            "name": "Constructionist Archon",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A material guide at the Constructionist Guild. When Tala is charged an excessive fee for occupying a merge room, he reduces the bill to the ordinary reservation rate and directs her toward a guild project overseer.",
+            "id": "simon",
+            "name": "Simon",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Constructionist Guild project overseer who sees commercial potential in Tala's comb. He agrees to explore producing a version that mundane users can operate and begins negotiating a partnership with her.",
+            "id": "constructionist-guild-archon",
+            "name": "Constructionist Guild Archon",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:us:B0CL54C2Z8",
+            "type": "community"
+          }
+        ],
+        "work": "fusing"
+      },
+      "recaps": {
+        "ending": "Tala remains in Bandfast, alive and substantially stronger after the caravan's escape from the Leshkin, but only about one quarter of the way to becoming Fused. The disguised siphon is dead and its victims have been recovered. Holly's archive-linked safeguards remain active, while A Lot has begun restoring Tala's painful family memories. The source of the earlier memory alteration and the concept arcane's interest are unresolved. Terry stays with Tala and remains unbonded. Lynn is a trusted friend and collaborator, and the combat mage remains her friend after accepting that she does not want a relationship. Kit has become an expanding, responsive inner domain with increasing autonomy and siphon-like abilities. Tala must continue fusion training, investigate the Leshkin focus and mental interference, manage Kit's development, and prepare for future travel. She also holds a prospective income share from the Constructionist Guild's planned mundane version of her comb.",
+        "in_short": "While training under Jevin in Makinaven, Tala strengthens her fusion, develops mobile blood-star defenses, and learns more about her soul. On the return caravan to Bandfast, a Leshkin force repeatedly targets her. She draws it away from the wagons and escapes with Terry and a relief force, leaving the caravan alive but the cause of the pursuit unresolved. Back in Bandfast, Holly confirms that Tala has suffered memory erasure and creates an archive-linked mental safeguard. That system exposes a tavern as a siphon, which Lynn helps reveal before the city Archons destroy it. Tala's internal archive aspect, A Lot, then begins recovering painful family memories. A revered siphon fascia transforms Kit into an expanding, adaptive storage domain with emerging autonomy. Tala ends in Bandfast about one quarter Fused, with Terry and her friends beside her, new equipment and business prospects, and unresolved threats involving her memories, the concept arcane, the Leshkin, and Kit's growth.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Tala is an Archon who uses gravity magic and is working toward fusion. Flow is her soul-bound weapon, Kit is her dimensional storage, and Terry is her powerful creature companion. Holly serves as her inscriber. Tala has worked with the Caravan Guild and Constructionist Guild, traveled through Makinaven and Bandfast, and encountered the Leshkin. She begins this volume continuing her magical development and her work as a caravan protector.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala trains in Makinaven under Jevin while continuing the process of fusion. She realizes that Jevin's magical presence underlies the city, and he explains that his Archon Star was made from its city-tree. The bond grants him sweeping authority but has permanently tied him to the place. He asks Tala to keep the matter quiet. Jevin also helps her test anchor-linked darts, confirms that her soul is unusually strong, and identifies an unexplained free soul-tendril. Tala creates a second blood Archon Star and learns to orbit her stars and mirror useful traits into them. The resulting defense can absorb magical attacks, though it is exhausting and initially injures her when she applies the method directly to her body. Before leaving, Tala and her sparring partner discuss personal agency and the burden of protecting others. She thanks Jevin with gifts, then departs Makinaven with the Caravan Guild. A traveling hunter reports that a recent disruption has drawn Leshkin through the nearby woods, and Tala suspects her earlier actions contributed to it.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the road toward Bandfast, Tala learns to maintain orbiting blood Archon Stars and separate two blood streams that had merged into one star. The second initially appears inverted and cannot recombine with the first. During a supply stop, a fungus Archon examines Tala and the senior caravan mage, finding that their bodies and souls are partly synchronized without either losing individual identity. After contracted, non-invasive measurements, the researcher determines that Tala's unusual star is inside-out rather than truly inverted. A true inverted star could close a mage's gate, but Tala's star has not formed such a bond. The researcher helps her place blood stars into tungsten tools that can serve as mobile defenses without creating new soul bonds. Tala also learns that the Culinary Guild uses conceptual guides to keep outsiders from noticing restricted activity. She leaves the protected forest settlement with a tungsten rod and sphere, but controlling them remains difficult and the origin of the inside-out star is still uncertain.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A large Leshkin force attacks the caravan and repeatedly bypasses other defenders to reach Tala. She refuses to abandon five fallen guards and holds the attackers back until the wounded can be recovered. As the caravan's shield fails, Tala directs a break-out, spends nearly all her prepared gravity workings, and deliberately draws the pursuit away from the wagons. Terry carries her through the forest, and Tala improvises a hybrid spell to destroy a juggernaut, burning away inscription-bearing flesh in the process. The combat mage arrives with mounted guards and helps Tala escape onto the plains. Carl, injured while saving another guard, survives, and the caravan suffers no deaths. On the return route, Tala and the combat mage discover crystallized wildlife and expose a buried site, which they leave for the Archon Council. The caravan leaders conclude that the Leshkin were seeking Tala, though no one knows why. The senior mage begins teaching her the strategic duties of lead protection. After a thundercattle hunt, the caravan reaches Bandfast, where Tala reconciles with Lynn and arranges to sell the horns.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Bandfast, Tala begins joint training with local guards, the combat mage, and Aproa, an air-specialist Archon. Holly then confirms that Tala carries a weak outside influence and has had two short-term memories erased. A concept arcane has taken an interest in her, so Holly designs stronger mental safeguards around a permanent archive connection. Tala also commissions a soul-bound garment made from clothing and Leshkin armor. It can change form and defend her automatically, although mirroring its full sensory field overwhelms her. After training with mage hunters, Tala learns that a siphon is concealed somewhere in the city. She completes the archive bond and gains an internal, conversational interface that begins searching her mind for lost memories. The interface detects active manipulation from a tavern and identifies the building as the siphon. Tala resists and attacks as it drains the occupants. Lynn uses a one-use conceptual working to expose the creature, allowing city Archons to recover the victims and destroy it. Tala and Lynn survive, and the immediate siphon threat ends.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala's archive-linked system recovers its first repressed memory, revealing a childhood in which she once felt safe and loved. She names this mental aspect A Lot and continues combat training, learning from Stan that disrupting an opponent's working can be more efficient than contesting control directly. The combat mage asks Tala on a date. She says she is not ready for either a casual or serious relationship, and they agree to remain friends. Tala also researches biological enhancements from arcanist harvests and brings Lynn and the combat mage into confidence about the Culinary Guild issue. As compensation for the destroyed siphon, Tala chooses a revered alteration fascia instead of money. A Constructionist Archon merges it into Kit despite offering to buy it from her. The integration immediately lets Kit create a convincing doorway into its dimensional space. The long-term effects of Kit's new development are not yet known.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kit reorganizes its interior into an adaptive home with responsive rooms, controlled sound, illusions, and a retractable entrance. Its growing capacity also increases the power it draws from Tala. A Lot continues recovering memories of Tala's family, leaving her emotionally shaken, while Lynn helps her accept that the pain must be faced. Holly determines that Tala's headaches and extreme hunger come from A Lot's mental work and caffeine withdrawal rather than a new attack. Tala tests iron body paint that contains her power more effectively than salve and may accelerate fusion, though it also limits the reach of her aura. She estimates that she is about one quarter Fused. Tala then makes a production agreement with a Constructionist Guild Archon: he will fund a mundane version of her comb, and she will receive a share of income after expenses. Kit ends the book aware that the siphon fascia has made it both a consumer and creator. It can shape its interior, create illusions, alter material within itself, and perceive slightly beyond its exterior. Kit also recognizes Terry as a vastly stronger, death-associated being whose power it cannot consume. Tala remains safely in Bandfast, but Kit's autonomy, the memory intrusion, and the Leshkin interest remain unresolved.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:us:B0CL54C2Z8",
+            "type": "community"
+          }
+        ],
+        "work": "fusing"
+      }
+    },
+    "garden-of-sanctuary": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Erin"
+            ],
+            "description": "The Earth-born owner of the Wandering Inn. She is returning after time away while the inn reopens, burdened by her treatment of Toren and uncertain how to control a new fire shaped by memory.",
+            "id": "erin-solstice",
+            "name": "Erin Solstice",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Gnoll who belongs to Erin's household and is watched over by the adults of the inn.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Erin's former undead worker, whom she now believes was a person. She accepts that she failed him without overlooking the people he killed or his attack on her.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Liscor Watch officer who helps restore the rebuilt inn's magical door and has an informal protective bond with Mrsha.",
+            "id": "relc",
+            "name": "Relc",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's strategist and a Watch officer who helps reinstall the Wandering Inn's magical door as the building reopens.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch Captain. She organizes warnings and surveillance when a vast frost-wyvern flight passes the city.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A runner from Selim who reaches Liscor with a delivery for Erin and finds the damaged Wandering Inn reopening.",
+            "id": "fals",
+            "name": "Fals",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Zel Shivertail's niece and a prospective buyer in Liscor's expanding district. She challenges hostility toward the human workers arriving for the construction effort.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Tyrant of Flames"
+            ],
+            "description": "An ancient dragon who claims the High Passes as his territory. He drives out a large frost-wyvern clutch with magic and stored weapons.",
+            "id": "terriarch",
+            "name": "Terriarch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Pallas's foremost alchemist and an indispensable named adventurer who is frequently detained. He investigates Erin's sorrow and happiness flames and helps her regain some emotional balance.",
+            "id": "salis",
+            "name": "Salis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A disgraced master craftsman in Pallas. Under the influence of Erin's grief-fire, he forges a cold-enhanced bardiche and acknowledges an unexplained failure shared by other dwarven smiths.",
+            "id": "dwarven-master-smith",
+            "name": "Dwarven master smith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful Drake mage whose severe training joins physical conditioning with magical study. He adopts Erin's exercise ideas and prepares a Gnoll apprentice to demonstrate spellcasting.",
+            "id": "grimalkin",
+            "name": "Grimalkin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "The ruler of Rhyme, rebuilding both his kingdom and army. While watching the crisis in Pallas, he uses the broadcast to demand the return of Ameris.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Flos's steward and left hand, responsible for carrying out the king's political and military direction.",
+            "id": "orthenon",
+            "name": "Orthenon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-Gazer and one of Flos's Seven. She identifies the creatures attacking Pallas as exceptionally dangerous frost wyverns.",
+            "id": "ghazi",
+            "name": "Ghazi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Free Antinium archer and resident of the inn. After helping against the wyverns, he falsely presents himself as a Prognogator and creates the danger of a new Antinium war.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Antinium and Liscor Watch officer. He regards Bird's unauthorized claim as a grave threat to Antinium survival and responds with severe discipline.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redfang hobgoblin who lives at the Wandering Inn. He befriends Bird after recognizing their shared exclusion from ordinary cities.",
+            "id": "numbtongue",
+            "name": "Numbtongue",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior member of the inn household who helps Erin care for Mrsha and establish boundaries for Bird.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Walllord of Salazar who sees Bird's feat as evidence that the Walled Cities have dangerously underestimated ordinary Antinium workers.",
+            "id": "ilvriss",
+            "name": "Ilvriss",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Free Hive. She defends Bird as an autonomous experimental Antinium rather than a Prognogator when the other Queens demand answers.",
+            "id": "free-queen",
+            "name": "Free Queen",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leader within an illusionist faction allied with Erin. He negotiates controlled access to her magical-door network and limited material from Earth.",
+            "id": "palt",
+            "name": "Palt",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred Gnoll criminal who approaches Mrsha while Relc and Klbkch are already watching her. The Watch suspects her of serious violence but lacks evidence for an arrest.",
+            "id": "bearclaw",
+            "name": "Bearclaw",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A farmer and former pirate who initially mistakes Numbtongue for an attacker. After learning who he is, the farmer shelters him and takes him toward the family farm.",
+            "id": "garia-stronghearts-father",
+            "name": "Garia Strongheart's father",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official handling Selim's dispute over Erin's magical-door endpoint. Safety concerns and local commercial complaints lead him to seek tighter control over the connection.",
+            "id": "selims-mayor",
+            "name": "Selim's mayor",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A small cave goblin and former resident of Erin's inn, now separated from it among the displaced goblins at River Farm. She attempts to reconnect with Erin through a crude magical door.",
+            "id": "pebblesnatch",
+            "name": "Pebblesnatch",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Mountain City hobgoblin shaman who uses inherited memory, body-paint magic, and strict work and food rules to organize the displaced goblins.",
+            "id": "ulvama",
+            "name": "Ulvama",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The blind Emperor of River Farm, which is growing into a town. He grants the goblins their own territory but cannot sense what occurs inside it.",
+            "id": "laken-godart",
+            "name": "Laken Godart",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Emperor of Sands"
+            ],
+            "description": "The ruler of the Empire of Sands, using detachable heads as distinct governing personas. The balanced Empress persona favors indirect expansion and opposition to Flos over an immediate war.",
+            "id": "empress-of-sands",
+            "name": "Empress of Sands",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Flos's armored vanguard and an illusionist, accompanying his army during its imposing arrival at a neighboring kingdom.",
+            "id": "mars",
+            "name": "Mars",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-born Sand Mage traveling to a Shield Kingdom conference with Ghazi and the Quaross. He has developing utility magic and remains under their protection.",
+            "id": "trey-atwood",
+            "name": "Trey Atwood",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The child-bodied ruler of a Shield Kingdom. Each incarnation inherits memories of earlier Quarosses, including the old agreements binding the Shield Kingdoms.",
+            "id": "quaross-of-germina",
+            "name": "Quaross of Germina",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the Carven City and its representative at the gathering of Shield Kingdoms. He receives the visiting delegation and leads it into the city.",
+            "id": "octelios-ruler",
+            "name": "Octelios ruler",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted follower of Flos who is being prepared as a bodyguard. Orthenon trains her to fight without depending on a powerful weapon.",
+            "id": "therese",
+            "name": "Therese",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The senior Antinium ruler who holds the Free Queen responsible for Bird’s dangerous claim. She threatens consequences while accepting that the Hives must address negotiations involving Liscor.",
+            "id": "grand-queen",
+            "name": "Grand Queen",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0DRLJZX5G",
+            "type": "community"
+          }
+        ],
+        "work": "garden-of-sanctuary"
+      },
+      "recaps": {
+        "ending": "By the close, Erin is home in the rebuilt Wandering Inn and the Garden of Sanctuary is a functioning refuge, memorial, and flexible route through the building. Bird's bluff has not caused war, but it has made both the inn and the Free Hive objects of wider scrutiny. Selim's magical-door endpoint remains under negotiation, and Bearclaw has abducted Watch officers while pursuing bounties on Mrsha and Erin. At River Farm, Pebblesnatch and Ulvama have given the displaced goblins food production, defenses, and plans for a permanent settlement, though they remain watched and distrust Laken Godart. Trey, Ghazi, and the Quaross escape Octelios with evidence that outsiders were transformed, leaving the city openly hostile. Flos's army continues to grow but lacks equipment and specialists. In the later narrative, Flos accepts Gnolls and lizardfolk as subjects, grants the Gnolls land, protects the surviving Saltstone children, and declares war after their tribe's massacre. Another neighboring king also mobilizes against the offending realm.",
+        "in_short": "Erin returns to a rebuilt Wandering Inn after her uncontrolled memory-fire exposes grief in Pallas. When frost wyverns breach the city, forces from Liscor help repel them, but Bird's false claim to be an Antinium Prognogator nearly starts a war. The resulting attention reaches both the Walled Cities and the Antinium Queens. Erin later unlocks the Garden of Sanctuary, a trust-gated refuge and memorial within her inn, as Bearclaw begins hunting Mrsha and Erin. At River Farm, Pebblesnatch and Ulvama turn a confined goblin camp into the beginnings of a fortified community. Abroad, Trey learns that Octelios transforms outsiders into labor beasts, and Ghazi kills its ruler during their escape. Flos grows his army and receives migrants from Izril. After the numbered story ends, he grants the arriving Gnolls land, finds the Saltstone tribe massacred, rescues its surviving children, and declares war on the kingdom responsible.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin Solstice built the Wandering Inn near Liscor and made it a home for a varied household that includes Mrsha, Bird, Numbtongue, and Lyonette. Her magical door connected the inn to distant cities and made it increasingly important to trade, travel, and politics. The inn was destroyed during the recent Creller crisis and is now being rebuilt. Erin is also carrying the consequences of her relationship with Toren, the undead worker she failed to recognize as a person before his killings and attack on her. Beyond Liscor, displaced goblins remain divided and vulnerable after the death of Garen Redfang, while Flos, the King of Destruction, has returned to power and is rebuilding Rhyme. Ilvriss continues to pursue concerns linked to a necromancer, and the Free Antinium remain politically isolated from the other Hives and feared by the Walled Cities.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin returns from a solitary break while the Wandering Inn reopens in a newly defensible form. She is troubled by her responsibility toward Toren and discovers that Like Fire, Memory can produce cold blue grief-fire and a warmer flame associated with happiness. In Pallas, the grief-fire spreads through a master smith's forge and forces a crowd to confront painful memories, leading to Erin's temporary arrest. Salis helps her test the fire and recover some balance. Meanwhile, frost wyverns driven from the High Passes breach Pallas despite its walls and siege defenses. Liscor sends fighters and Watch officers through Erin's magical door, and Pallas eventually drives off the surviving wyverns, including their lord. Bird's appearance in the aftermath creates a different crisis. Surrounded by forces that regard Antinium as enemies, he falsely claims to be a Prognogator and implies that killing him would mean war. Erin publicly protects him, exposing her ties to the Antinium while rulers and cities watch.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pallas contains the political crisis by sending Bird and the Liscor delegation home and reporting that the Antinium left without incident. Klbkch treats Bird's bluff as an existential danger to his people, while Erin and Lyonette forbid Bird from returning to Pallas and impose household punishment. Numbtongue quietly befriends him. The battle leaves Pallas with heavy casualties and the wyvern lord still alive. Across the Walled Cities, Bird's skill raises fears that ordinary Antinium workers can develop dangerous specializations. Ilvriss secures support for a secret elite force, publicly justified as protection against the Antinium while also serving his private investigation. The Grand Queen reprimands the Free Queen, but the other Hives' interest in the Free Antinium's apparent advances creates possible diplomatic leverage. Back at the inn, Erin cannot initially activate her new Garden of Sanctuary. She also receives a paired go board, contacts its unknown owner, and begins a friendly long-distance game.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At River Farm, Laken Godart has granted the displaced goblins separate land but keeps them contained and watched. Ulvama organizes the camp, while Pebblesnatch's cooking wins recognition and provides a stable food system. After Pebblesnatch protects an injured young witch from human children, a larger confrontation is contained without open battle. The goblins begin building defenses and planning mining, trade, and permanent settlement, though their attempted magical-door link to Erin remains unusable. At the inn, Erin reaches a limited agreement with Palt's faction over access to her door network. Pallas officials increase their scrutiny, and a strategist recognizes Lyonette's hidden royal background but keeps it confidential. Mrsha then vanishes through an unexplained door and discovers the Garden of Sanctuary. The Garden contains living landscapes and memorial statues of people Erin has lost. Its entrances respond to Erin's trust, resist outside force, and allow Erin to choose exits through the inn. Elsewhere, the Empress of Sands chooses indirect measures against Flos, who intimidates a neighboring army but proceeds to parley rather than break his peace.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Numbtongue becomes caught in Selim's attempt to seize control of its magical-door endpoint, but Garia Strongheart's father shelters him after an initial misunderstanding. Selim's mayor reopens negotiations when the Players of Selim may relocate to Liscor, leaving regulated access possible. A more immediate danger develops in Liscor: Bearclaw abducts and tortures two Watch guards, conceals her trail, and declares her intention to collect bounties involving Mrsha and Erin. In the Shield Kingdoms, Trey Atwood travels with Ghazi and the Quaross of Germina to Octelios. Despite warnings not to consume anything there, the greater danger is hidden in the city's labor beasts. Trey discovers that one was formerly a person, and the Octelios ruler admits that outsider children were also transformed. Trey attacks him, and Ghazi kills the ruler while clearing an escape route. Trey, Ghazi, and the Quaross flee with recovered evidence as Octelios declares war. Trey gains stronger sand magic and vows revenge against the city.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Flos continues marching a force of roughly sixty thousand while observing his peace oath. A neighboring king refuses passage and access to prized magical horses, but a republic permits Flos's army to destroy a manticore threat. The campaign raises the levels of ordinary soldiers without requiring a formal war. Flos's court draws recruits and specialists, including elite contract troops and the half-Giant Nomads of the Sky, but he still lacks enough magical weapons and specialized units. Mars defeats a challenger without a weapon and restores the rule that petitioners may reach Flos by defeating one of his vassals. Therese continues training under Orthenon as a prospective bodyguard. Flos tests the unusual strength granted by his king class while a smith plans a suitably heavy blade for him. The numbered story ends as a large, exhausted group of Gnolls and lizardfolk from Izril reaches his camp. Their representatives are ready to ask Flos for protection and a permanent place within his realm.",
+            "through": {
+              "chapter": 19
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0DRLJZX5G",
+            "type": "community"
+          }
+        ],
+        "work": "garden-of-sanctuary"
+      }
+    },
+    "gathering-blue": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young orphaned girl in a harsh, primitive village rebuilt after a long-ago collapse of civilization. She was born with a twisted, deformed leg, and in her village the weak and imperfect are normally left to die as infants, but she was spared. Now her mother has died and she is alone and vulnerable. Kira has a remarkable gift for weaving and threadwork; her fingers seem to move almost of their own accord, producing patterns of startling beauty. Thoughtful, resilient, and observant, she must find a place for herself in a community that has little use or mercy for someone who cannot do heavy labor.",
+            "id": "kira",
+            "name": "Kira",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Matty"
+            ],
+            "description": "A scrappy, dirty, cheerful young boy from the Fen, the poorest and roughest quarter of the village, who speaks in rough dialect and roams freely with his dog. He attaches himself to Kira as a loyal friend and helper, running errands and keeping her company. Quick, curious, and fearless, he knows the village and the surrounding country better than most and is willing to go where others will not.",
+            "id": "matty",
+            "name": "Matt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hard, aggressive village woman marked by a long scar across her face. After the death of Kira's mother, she leads the other women in demanding Kira's small plot of land and arguing that a girl with a useless leg should be cast out or killed rather than fed. Fierce and quick to violence, she embodies the village's ruthless attitude toward the weak.",
+            "id": "vandara",
+            "name": "Vandara",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of the Council of Guardians, the powerful men who govern the village. When Kira is brought to trial after her mother's death, he speaks in her defense and arranges for her to be spared and given valuable work restoring an important ceremonial robe. Calm, authoritative, and seemingly kind, he arranges for her to live in comfort within the Council's great building, and Kira comes to trust him as her protector.",
+            "id": "jamison",
+            "name": "Jamison",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, gifted orphan boy of about Kira's age who lives and works within the Council Edifice. Like Kira, he lost his parents young and was taken in because of a rare talent, in his case an extraordinary skill at woodcarving. He works patiently on an ornately carved staff, and he and Kira become friends and confidants as they compare their strangely similar situations.",
+            "id": "thomas-the-carver",
+            "name": "Thomas the Carver",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old woman who lives alone at the edge of the village and knows the ancient craft of making colored dyes from plants. She becomes Kira's teacher, patiently showing her how to gather and prepare the materials for every hue. She is knowledgeable, blunt, and unafraid, and she says surprising things about the world beyond the village that unsettle the fears Kira was raised with.",
+            "id": "annabella",
+            "name": "Annabella",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A very small girl with a beautiful voice, kept in a room within the Council Edifice. Like Kira with her weaving and Thomas with his carving, little Jo has been taken from her family because of a rare gift and is being raised and trained for the guardians' purposes. She is lonely and frightened, and cries for her lost home.",
+            "id": "jo",
+            "name": "Jo",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The man who performs the long ceremonial Ruin Song at the village's great yearly Gathering, wearing the elaborate robe that Kira has been repairing. The song recounts the whole history of the world's fall and rebuilding. When Kira finally sees him closely, she notices troubling signs about the true conditions of his life in the guardians' service.",
+            "id": "the-singer",
+            "name": "The Singer",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gentle blind man from a distant, far kinder village where the injured and different are cared for rather than cast out. He turns out to be Kira's father, long believed by her to have been killed by beasts before her birth. In truth he was attacked, blinded, and left for dead, and survived to make a new life. He offers Kira the chance of a safer, gentler home.",
+            "id": "christopher",
+            "name": "Kira's Father",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gathering-blue"
+      },
+      "recaps": {
+        "ending": "Matt returns from his secret journey bringing Kira the one color she still lacks, blue, and also brings back a gentle blind man from a distant, gentler village. The man is Kira's father, whom she had believed killed by beasts before her birth; in truth he was attacked, blinded, and left for dead by the guardian Jamison. Kira now understands that the village's fear of beasts in the forest is a lie the guardians use to keep people obedient, and that the blank, unfinished spaces of the great robe are meant to depict the future, which the guardians intend her to picture as they wish. Her father invites her to leave with him for his peaceful community, where her friend and even the blinded and imperfect are valued. Kira chooses instead to remain. She resolves to keep her place beside Thomas and Jo, and to use her gift, and the blue Matt has brought her, to fill in the robe's empty future with color and hope rather than surrender it to the guardians' control. The book closes on her quiet, deliberate decision to stay and shape what comes next.",
+        "in_short": "In a harsh future village that survived a long-ago collapse of civilization, an orphaned girl named Kira, born with a twisted leg in a place that discards the weak, is spared after her mother dies because of her extraordinary gift for weaving. The Council of Guardians, through the seemingly kind Jamison, gives her the task of restoring and eventually completing the ceremonial robe that pictures the whole history of the world. Living in the guardians' great building, she meets Thomas, an orphaned carver, and little Jo, a captive singer, all gifted children taken for the guardians' use. Learning to make dyes from the old woman Annabella, Kira discovers there are no beasts in the forest to fear, that the guardians rule through lies, and that they mean to use the children's arts to control the future. Her friend Matt journeys out and returns with the color blue and with a blind man who proves to be Kira's father, alive after the guardian Jamison tried to kill him. Offered escape, Kira chooses to stay and use her gift to weave a more hopeful future of her own design.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In a cruel, primitive village rebuilt long after the fall of the old world, a girl named Kira has just lost her mother. Kira was born with a badly twisted leg, and in her village imperfect infants are normally left to die, but she was allowed to live. Now orphaned and unable to do heavy work, she is dangerously vulnerable. When she returns from keeping the required vigil over her mother's body, she finds her home destroyed and a group of village women, led by the scarred and hostile Vandara, demanding her land and arguing that a crippled girl should be cast out or killed. Kira is taken before the Council of Guardians, the powerful men who rule the village, to decide her fate.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the trial the guardian Jamison speaks in Kira's defense and reveals that the Council has a use for her rare gift with thread and needle. She is spared and given an important task: to repair, and one day complete, the great ceremonial robe worn by the Singer, which pictures the entire history of the world's ruin and rebuilding. Kira is moved into the guardians' huge building and given comforts she has never known. There she meets Thomas, a quiet orphaned boy of about her own age who was taken in for his gift at woodcarving and is patiently working on a carved staff. Their situations are strikingly alike, and the two become friends as Kira settles into her new, sheltered, and closely watched life.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kira and Thomas realize they are not alone: they hear a small child weeping and discover Jo, a little girl with a beautiful voice who has been taken from her family to be trained as the next Singer. All three are gifted children kept and controlled by the guardians. Kira begins learning the craft of dyeing from Annabella, an old woman living at the village edge who teaches her to draw every color from plants. Annabella can make every hue except blue, which she lacks, and she quietly tells Kira something that overturns everything she has been taught: there are no beasts in the forest to fear. The warning plants the first real doubt in Kira's mind about the truth of her world and the intentions of the men who now shelter her.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Annabella dies suddenly, soon after insisting to Kira that nothing dangerous lives in the forest. Her death deepens Kira's suspicion that the guardians are lying and are keeping their gifted children to picture, and so control, the world's story and its future for their own ends. Kira's loyal young friend Matt, a boy from the poorest quarter of the village, sees how much the blank spaces of the robe trouble her and how she longs for the missing color. He sets off on a secret journey of his own, promising he will find and bring back to her the thing she needs most: the color blue.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matt returns with blue dye and with a gentle blind man from a far kinder distant village. The man proves to be Kira's own father, long believed killed by beasts, who was in truth attacked, blinded, and left for dead by the guardian Jamison. Kira now sees the whole design: the fear of forest beasts is a lie used to keep the village obedient, and the robe's unfinished sections are the future the guardians mean her to shape as they choose. Her father offers to take her away to his peaceful community. Kira refuses. She decides to stay beside Thomas and Jo and to use her gift, and the blue Matt has brought, to fill the empty future with hope and beauty of her own making rather than let the guardians dictate what is to come.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "gathering-blue"
+      }
+    }
+  }
+}

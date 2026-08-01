@@ -1,0 +1,1343 @@
+{
+  "entries": {
+    "mage-tank-4": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Fortune's Folly's dimensional mage and a co-arbiter of Closetland. An outside influence is affecting his judgment, so he accepts Etja's authority over the party's dealings while the group considers a Littan expedition.",
+            "id": "arlo-xordrel",
+            "name": "Arlo Xor'Drel",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Arlo's soul-linked Delve co-operator and partner in developing Closetland. Unlike most of Fortune's Folly, he appears unaffected by the influence altering the party's decisions and relays Etja's approvals to the others.",
+            "id": "grotto",
+            "name": "Grotto",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fortune's Folly's frontline swordsman. His unusual conduct is among the early signs that an outside force is changing the party's priorities and judgment, leaving him subject to Etja's authority during outside dealings.",
+            "id": "varrin",
+            "name": "Varrin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A divine fighter and healer in Fortune's Folly. She is affected by the same hidden influence as most of the party, but continues with the group under Etja's safeguards while they cautiously pursue diplomacy and advancement.",
+            "id": "xim",
+            "name": "Xim",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A construct-bodied mage whose mental defenses resist much of the party's unknown influence. The group gives her final authority over outside dealings while its members cannot trust their own decisions.",
+            "id": "etja",
+            "name": "Etja",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fortune's Folly's alchemist, archer, and scout. The same hidden influence affecting most of the party has altered her judgment while the group considers joining a future Littan expedition.",
+            "id": "nuralie",
+            "name": "Nuralie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A transactional, avatar-linked power who supplies Closetland with thousands of useful essences and warns that most of Fortune's Folly is under an influence whose explanation the affected members cannot retain.",
+            "id": "avarice",
+            "name": "Avarice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Imperial officer who rewards Fortune's Folly after an infiltrator is exposed. He helps propose a future joint expedition pairing the party with a five-person Littan team and serves as a principal contact for the arrangement.",
+            "id": "littan-major",
+            "name": "Littan major",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spectral vault guardian formed from several souls in a mechanical shell. Bound to serve the hostile Delve Core, the guardian rejects combat, prefers crafting, and accepts Arlo's plan to compromise the binding rituals and carry it to freedom.",
+            "id": "spectral-vault-guardian",
+            "name": "Spectral vault guardian",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Leader of the undead army"
+            ],
+            "description": "A masked Grade 51 commander who emerges when the party damages a containment weave. He is far more powerful than the undead officers already encountered, and the remaining army submits to him immediately.",
+            "id": "elder-lich-general",
+            "name": "Elder Lich general",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "aliases": [
+              "Former Delve Core 9963",
+              "Core of Throne of Hubris"
+            ],
+            "description": "The defeated Core of a hostile ancient military Delve. After the undead army departs and the Delve is cleared, Arlo takes the Core into his custody. It accepts the name Throne and enters the party's care.",
+            "id": "throne",
+            "name": "Throne",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The higher power associated with Heavenly Gates, a proposed evolution that would make Arlo's portals and teleports deific while changing the Delves available to him. The party delays its decision while weighing that connection.",
+            "id": "dread-star",
+            "name": "Dread Star",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Retained soul fragment"
+            ],
+            "description": "The power behind a fragment retained within Etja. The party begins investigating the fragment while mapping otherwise hidden anomalies in the affected members' souls.",
+            "id": "hysteria",
+            "name": "Hysteria",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Former princess"
+            ],
+            "description": "A former enemy held as a prisoner and compelled to maintain a monster. Once a princess, she questions whether a blood-rune resurrection left her as a copy rather than the same person who died, and believes her former associates are gone.",
+            "id": "captive-beastmaster",
+            "name": "Captive beastmaster",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hostile divine influence already connected to Etja's history. Nuralie's earlier work on a soul poison aimed at Orexis provides a starting point for removing a different hostile influence from the party.",
+            "id": "orexis",
+            "name": "Orexis",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Elder Lich who commands the undead Corps of Volunteers on the moon. An asylum-seeking collaborator of Avarice, the lich observes her experiments on the imprisoned Hysteria.",
+            "id": "lunar-elder-lich",
+            "name": "Lunar Elder Lich",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A System Core operating from the moon alongside Avarice and the Corps of Volunteers.",
+            "id": "system-core-2",
+            "name": "System Core 2",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable figure controlling access to a mountain complex. The gatekeeper accepts Avarice's token for the party's admission and requires each entrant to undertake a separate test.",
+            "id": "mountain-gatekeeper",
+            "name": "Mountain gatekeeper",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful young ruler encountered during Arlo's dimensional trial. She tries to expel him with spatial force, but his resistance prevents the non-consensual movement. An older ruler calls her a hatchling and says Arlo has earned her audience.",
+            "id": "dimensional-hatchling",
+            "name": "Dimensional hatchling",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older ruler connected to the hatchling whom Arlo encounters during his dimensional trial. She takes control of the test and returns Arlo to it by moving the rulers' chamber away from him.",
+            "id": "dimensional-ruler",
+            "name": "Dimensional ruler",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Grade 25 elemental remembrance who presides over Varrin's Physical Dungeon trial. A master crafter and dangerous swordfighter, he begins a demanding sword duel with Varrin amid the dungeon's fire.",
+            "id": "caldera-ruler",
+            "name": "Caldera ruler",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A massive, damaged creature, likely undead, that the System identifies only as a Great Unknown. Undead hunters bring it living victims, whose souls it extracts and consumes to restore itself.",
+            "id": "great-unknown",
+            "name": "Great Unknown",
+            "reveal": {
+              "chapter": 36
+            }
+          },
+          {
+            "description": "The silver dragon revealed when the dimensional ruler's daughter transforms during her duel with Arlo. Her durability and teleportation continue in dragon form, prompting the older ruler to end the contest.",
+            "id": "dragon-princess",
+            "name": "Dragon princess",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colossal crystalline woman who administers Xim's divine knowledge test. She recognizes Xim as the first seeker in nearly three thousand years to pursue all seven revelations, recounts earlier failed attempts to become a divine vessel, and grants the vision that reveals the six-monolith catastrophe.",
+            "id": "crystalline-test-administrator",
+            "name": "Crystalline test administrator",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A colossal dragon and one of five rulers judging Fortune's Folly's account of Hysteria. Scarlet joins the rulers in demanding evidence after the party reports the avatar's death.",
+            "id": "scarlet-ruler",
+            "name": "Scarlet ruler",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the five dragon rulers who meet Fortune's Folly. Gold ends their magical confrontation by imposing Conciliation, temporarily preventing those affected from harming one another while the rulers assess the party's claims.",
+            "id": "gold-ruler",
+            "name": "Gold ruler",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the five dragon rulers who receive Fortune's Folly for an audience about Hysteria and the continuing avatar threat. Cerulean joins Scarlet, Violet, Gold, and Silver in examining the party's evidence.",
+            "id": "cerulean-ruler",
+            "name": "Cerulean ruler",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the five dragon rulers evaluating Fortune's Folly's account of Hysteria and the party's proposed information-sharing relationship. Violet joins the rulers' forceful demand for evidence about the claimed death.",
+            "id": "violet-ruler",
+            "name": "Violet ruler",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the five dragon rulers who receive Fortune's Folly. Silver helps assess the party's claims concerning avatars and Hysteria during an audience shaped by competing magical pressure.",
+            "id": "silver-ruler",
+            "name": "Silver ruler",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An avatar-linked power from Arlo's earlier dealings. The dragon rulers identify Fortune, along with Avarice, as an essential participant in an earlier multinational effort to build a prison for avatars with System cooperation.",
+            "id": "fortune",
+            "name": "Fortune",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The level-16 officer leading the five-person Littan party assigned to travel with Fortune's Folly under the major's command. Her companion team will share the coming forest expedition while the visitors operate as foreign consultants.",
+            "id": "littan-captain",
+            "name": "Littan captain",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An observant investigator and dimensional combat caster on the Littan companion team. He joins the expedition flight as the two parties begin assessing their new partners.",
+            "id": "littan-dimensional-mage",
+            "name": "Littan dimensional mage",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hammer fighter"
+            ],
+            "description": "A hammer-using frontline fighter on the Littan companion team. He joins the expedition flight with the team's captain, dimensional mage, and identical-twin combatants.",
+            "id": "littan-frontline-fighter",
+            "name": "Littan frontline fighter",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The more readily perceived member of the identical-twin combatants on the Littan companion team. Her sister's concealment effect makes the contrast apparent when the teams meet.",
+            "id": "littan-martial-twin",
+            "name": "Littan martial twin",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the identical Littan twins, concealed by an effect that makes observers overlook her until Etja addresses her. Nuralie's magic keeps her perceptible to Fortune's Folly, allowing the new allies to account for her presence.",
+            "id": "littan-stealth-focused-twin",
+            "name": "Littan stealth-focused twin",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Forest alpha"
+            ],
+            "description": "A huge quadrupedal mana monster directing the assault on a Littan border city. Birds that land in its living canopy emerge stronger, and five elite avian hybrids guard it while the city's automated defenses struggle against the swarm.",
+            "id": "hierophant",
+            "name": "Hierophant",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0GWFHX2LG",
+            "type": "community"
+          }
+        ],
+        "work": "mage-tank-4"
+      },
+      "recaps": {
+        "ending": "Fortune's Folly and the Littan expedition destroy the Hierophant, but only after its fallen body releases the staff that is its true surviving form. A battlefield soul rite gives Arlo an immense but temporary reserve of blessed power. With the Littan major and captain obtaining consent, Arlo and Etja teleport the entire threatened city into Closetland before the staff's next catastrophic beam lands. Arlo and the major then destroy the staff. The major players survive, but the displaced city has collapsed structures, injured residents, and immediate relief needs. Arlo cannot return it with his ordinary resources. Closetland remains on friendly terms with the dragon rulers and hosts their ambassadorial project, while Littan cooperation has deepened through the expedition and the Empire's acceptance of Grotto's identity. The stronger corrupting beast in the forest center remains at large. The six monoliths, the system orphan they feed, the recurring avatar cycle, Etja's growing internal emptiness, and the final consequences of Hysteria's apparent death also remain unresolved.",
+        "in_short": "An outside influence has distorted Fortune's Folly's priorities. The party traces it to Hysteria, uses Etja's retained fragment to empower Arlo's Soul Sight, removes the alterations with Varrin's soul-cutting and Nuralie's poison, and destroys the fragment. Avarice then apparently kills the imprisoned Hysteria. After individual ruler trials, the party meets ancient dragon rulers who explain that avatar disasters recur and that six monoliths are feeding a system orphan. Closetland gains friendly relations and a dragon ambassador. Fortune's Folly joins a Littan forest expedition, where an unknown force drives mana monsters against a border city. The attackers are controlled by the Hierophant, whose body conceals a surviving staff entity. A soul rite gives Arlo enough temporary blessed power for him and Etja to move the whole city into Closetland. Arlo and the Littan major destroy the staff, leaving the city alive but damaged, displaced, and in urgent need of aid.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Arlo Xor'Drel travels with Varrin, Xim, Etja, and Nuralie as Fortune's Folly. Grotto is Arlo's soul-linked Delve partner, and together they oversee the developing refuge of Closetland. The party has already become entangled with avatars and other higher powers, including Avarice, Fortune, and the hostile Orexis. Those conflicts have left them wary of divine bargains, spiritual coercion, and the System's larger purposes. Their unusual advancement and access to a Pocket Delve also make them important to neighboring powers. Arlo's dimensional abilities give the group exceptional mobility. Varrin supplies frontline force, Xim combines divine combat with healing, Etja controls and reshapes magic, and Nuralie joins alchemy and archery with reconnaissance. Grotto supports both the group and Closetland through his Delve abilities. Fortune's Folly begins this volume with a capable, closely linked team, a growing territory to protect, and unresolved avatar threats that make further advancement and outside alliances increasingly important.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Avarice supplies essences for Closetland and warns that most of Fortune's Folly is under an outside influence that changes decisions while preventing the affected members from retaining an explanation. Grotto is unaffected, and Etja resists enough of the effect to receive veto power over the party's dealings. The group cautiously accepts the prospect of a joint Littan dungeon expedition, then travels north to advance. In a buried expansion Delve, the party faces ancient undead legions, steals prismatite and weapons from an armory, and frees a spectral guardian from its bindings. The Delve Core retaliates by sending them into a killbox filled with undead forces and soul-collecting machinery. Fortune's Folly destroys the first commander and damages the collectors, but the resulting containment failure reveals a masked Grade 51 elder lich. The depleted party now faces an opponent far beyond the Delve's earlier commanders, while the hidden influence on its own members remains unresolved.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Elder Lich general withdraws after explaining that his army pursues avatars rather than territory and that it condemns involuntary control. Fortune's Folly defeats the hostile Delve Core, takes it into custody as Throne, and considers Heavenly Gates, a Dread Star evolution that would make Arlo's travel magic deific. The party's concern about its compromised reasoning grows. Arlo and Etja map abnormal threads within their companions' souls and use Varrin's unaffected ancestral clone as a baseline. Their working theory is that the influence changes emotional importance rather than memories. Nuralie adapts earlier anti-Orexis work into a focused soul poison, while Etja's retained Hysteria fragment offers the power needed to reveal the corruption. The party prepares toxin-bearing spiritual scalpels and a ritual intended to keep divine energy from killing Arlo. He accepts Heavenly Gates, confirms that its travel effects operate through his soul, and commits to being the first subject of the dangerous procedure.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fortune's Folly conducts its soul operation inside the Pocket Delve. Xim creates a shared ritual space, Etja contains Hysteria's fragment, Arlo uses its essence to sharpen Soul Sight, Varrin cuts out the altered portions, and Nuralie's poison destroys them. When the fragment tries to restore the corruption through a concealed channel, the party forces it into the open and destroys its identity. The members separate to recover, with Arlo suffering the deepest soul damage. Elsewhere, Avarice tests the imprisoned Hysteria after the avatar's wound changes. Her soul-draining golem reduces Hysteria's manifested soul to nothing, and the System later credits Fortune's Folly with contributing to the death. Arlo's recovery confirms that Hysteria's influence has left his soul, although its earlier goals remain only partly understood. The party receives rare rewards and postpones further travel long enough to investigate whether its captive beastmaster still carries the same manipulation.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arlo examines the captive beastmaster with her consent and finds that Hysteria exploited existing trauma, strengthening anger and misplaced trust without creating the original wounds. He maps and then removes the remaining influence at her request. Accepting that her earlier actions were conditioned, he offers a path toward freedom, citizenship, or work in Closetland after recovery. The party also studies captured ancient rifles and armor, deciding against creating intelligent weapons without meaningful freedom while preparing practical equipment upgrades. Etja receives prismatite-infused armor and develops a party-wide use of Haste. Fortune's Folly then resumes its northern journey and reaches a mountain protected by an extraordinarily powerful gatekeeper. Avarice's token grants entry, but each member must face an individual test. The entrance separates the party, and Arlo finds himself trapped in a shifting Dimensional Dungeon beyond the reach of normal party links.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The separated party members undertake ruler trials. Arlo bypasses spatial traps with deific teleportation and draws the attention of a younger dimensional ruler and an older ruler. Etja turns a predatory mass of pure mana against itself by opening the internal emptiness within her, though that emptiness is becoming harder to contain. Varrin duels a far stronger elemental remembrance, wins the physical trial, receives equipment for controlling his rage, and improves his understanding of physical magic. Nuralie enters a spiritually divided forest where undead hunters feed living prey to a vast soul-devouring creature. She builds a soulless stealth construct, attacks through it with holy soul-poisoned arrows, and escapes the target's destructive counterattack. The poison kills both the creature and most of its defenders, although the construct is lost. Etja has reversed the immediate mana threat, Varrin has won his trial, Nuralie has eliminated her target, and Arlo continues down an extremely long corridor.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arlo trains until his dimensional skill reaches a new threshold, then duels the ruler's daughter under rules that allow equipment and ordinary abilities but forbid higher-power intervention. He uses Closetland portals, redirected attacks, and a ring of dimensional beams to overcome her defenses. She transforms into a silver dragon, revealing the nature she had concealed, but the older ruler declares her defeated and ends the contest. The party reunites after its separate trials, except for Xim. Her test is administered by a crystalline divine figure who identifies her as a seeker pursuing all seven organ-based revelations toward becoming her deity's vessel. Xim accepts an overwhelming grant of divine knowledge and survives. In the resulting vision she sees six monoliths receiving power through a tear in the heavens, with two already active. She concludes that the coming catastrophe is unnatural and that she is obligated to oppose it.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fortune's Folly receives an audience with five dragon rulers and presents its evidence concerning Hysteria. The Scarlet ruler recounts repeated avatar wars, failed prisons, and earlier catastrophes that destroyed advanced civilizations. The dragons once worked with Avarice and Fortune to build an avatar cage, but even that effort failed to end the cycle. Silver's attempt to flee the planet also failed, leading the rulers to believe the System prevented escape. Violet warns privately that killing current avatars cannot solve a threat the System can recreate. Gold explains that the six monoliths nourish the first and greatest system orphan, with two active and another activation near. The rulers do not promise military support, but Silver appoints the dragon princess as ambassador to Closetland. Formal friendly relations follow, including an embassy plan and controlled access through Arlo's checkpoint. After months of training and administration, Closetland has recognition and new growth plans, but no binding alliance.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Heavenly Gates changes Arlo's Delve assignments into missions to repair or shut down dangerous malfunctions. Fortune's Folly completes three such interventions, reaches level 16, and prepares for the delayed Littan expedition. Arlo strengthens his armor, regeneration, and healing, while the party questions the Dread Star about its motives. Its answers suggest that it needed a free-willed mortal channel after serious violations, but the party's theory that avatars are remnants cast off by flawed Ascension remains an interpretation rather than settled truth. At the Littan fortress, the major reports that the conflict with Eshendur has formally ended through shared institutions and improved trade. Fortune's Folly will serve as foreign consultants outside the Imperial command chain but still subject to Imperial law. The party meets the level-16 Littan captain who leads the accompanying five-person team and prepares to depart for the vast, only partly mapped forest dungeon.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Imperial analysts consider it plausible, but unconfirmed, that one of the six monoliths lies within the forest. Fortune's Folly proceeds with its assigned exploration mission rather than treating the journey as a monolith search. During the flight, the party meets the Littan captain's dimensional mage, frontline defender, and identical twins with complementary martial and stealth abilities. The Littan mage studies Arlo's Pocket Delve and deduces that Grotto is the surviving Core of the destroyed creation Delve. Arlo confirms the relationship, and the Littan officers accept the disclosure without conflict. An enormous swarm of nearly invisible silica swifts then attacks the transport. After the Littan team breaks much of the flock, unexplained pressure pulses drive both birds and the hammerhead toward a border city. The transport falls when the animal breaks free, but Varrin replaces it in flight and carries the cabin onward. Communication with the city fails, so both parties prepare for a high-speed emergency approach.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition finds a Littan border city overwhelmed by avian mana monsters and missing its strongest defenders. The swarm is being empowered by a huge Hierophant whose living canopy upgrades birds. Fortune's Folly agrees to attack the alpha while the Littan team handles its elite guards, and the dragon princess supplies fifty juvenile red dragons to defend the airspace. The combined force turns its aircraft into a trapped, poisoned projectile and strikes the creature at extreme speed, but the opening blow removes only a small portion of its health. The Hierophant reaches Grade 34, heals through stolen humanoid heads, spreads a toxic aura, and bombards Arlo and the city with mystical attacks. The party and dragons gradually prevent replacement heads from reaching it. A coordinated anti-magic opening lets Arlo and Etja blast the body into the forest and destroy it. The apparent victory fails when the staff detaches from the corpse, survives, and reveals itself as the true active entity preparing a larger attack.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The surviving staff offers to spare the city only if its people are surrendered as food and a nest. It also claims that a stronger corrupting beast drove it from the forest center. The defenders reject the demand. The Littan major, captain, frontline fighter, dimensional mage, and Xim conduct a soul-linked rite using the battlefield dead, granting Arlo an immense temporary reserve of blessed power. When the staff fires catastrophic beams, the frontline fighter partly deflects one, but the city cannot survive a continuing exchange. The major and captain secure mass consent, allowing Arlo and Etja to expand Shortcut and Siphon across the entire settlement. They teleport the city and its inhabitants into Closetland before the next beam arrives. Arlo and the major then attack the staff directly, interrupt its final cleansing attempt, and destroy it. The Hierophant is dead, but the displaced city has structural damage and injured residents, and Arlo lacks the extraordinary power needed to return it. Relief and restoration begin under the continuing threats of the forest beast, the monoliths, and the wider avatar cycle.",
+            "through": {
+              "chapter": 74
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0GWFHX2LG",
+            "type": "community"
+          }
+        ],
+        "work": "mage-tank-4"
+      }
+    },
+    "mageling": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A newly graduated immaterial guide who reaches Bandfast with her keystone intact but her supporting inscriptions lost. Her precise gravity workings are expressed through her hands, and heavy academy and family debts leave her urgently seeking paid work.",
+            "id": "tala",
+            "name": "Tala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A material creator at Bandfast's teleportation tower. Phoen helps confirm that Tala's keystone still functions, then explains how its survival complicates her choice between accepting mageling pay and seeking employment at a mage's rate.",
+            "id": "phoen",
+            "name": "Phoen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified humanoid arcane that holds Tala's attention through an apparent conceptual allure and then causes her to doubt the encounter. Tala's keystone confirms that the manipulation occurred, but the figure's identity and purpose remain unknown.",
+            "id": "humanoid-arcane",
+            "name": "Humanoid arcane",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A senior former checker who recruits for the Caravaner's Guild. Lyn detects Tala's intact keystone, negotiates her long-term caravan contract, and begins arranging the practical support needed for her first assignment.",
+            "id": "lyn",
+            "name": "Lyn",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A master inscriber who finds that Tala's sophisticated existing design is poorly matched to her body and needs. Holly proposes an expensive, staged replacement intended to make Tala's passive inscriptions more durable and effective.",
+            "id": "holly",
+            "name": "Holly",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bandfast-raised caravan guard assigned to Tala's coming journey. Though initially cautious around her because she is a mage, Ashin serves as her local guide and helps her obtain the basic equipment needed for the trip.",
+            "id": "ashin",
+            "name": "Ashin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wainwright arbiter, Archon, and expert in dimensional cargo workings. Himmal tests Tala's capacity, teaches her to empower spell forms through a clear mental model, and offers to sponsor her for Archon status when she is ready.",
+            "id": "himmal",
+            "name": "Himmal",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A material creator specializing in kinetic energy who meets Tala in the Guild mage lounge. Her strange appearance under Mage Sight unsettles him, but his curiosity leads him to share a meal and introduce her to other caravan mages.",
+            "id": "cran",
+            "name": "Cran",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Master Trent"
+            ],
+            "description": "A material guide specializing in ice and lightning who will help defend the Alefast caravan. Trent is Renix's master, and his first examination of Tala under Mage Sight leaves him alarmed by her unusual magical defenses.",
+            "id": "trent",
+            "name": "Trent",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trent's mageling, a material creator who works with ice and lightning. Renix is traveling as one of the Alefast caravan's defensive mages and reacts with fascination when allowed to examine Tala through Mage Sight.",
+            "id": "renix",
+            "name": "Renix",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Atrexia"
+            ],
+            "description": "An earthworking material guide assigned to defend the Alefast caravan. Atrexia can manipulate rock, soil, and related substances, and she immediately investigates Tala's unusual presence under Mage Sight.",
+            "id": "atrexia",
+            "name": "Atrexia",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The driver of the lead dimensional cargo wagon. Den is uneasy about Tala choosing to walk beside the caravan, but he accommodates her by storing her pack, explaining her options, and allowing her to use the wagon's roof seat.",
+            "id": "den",
+            "name": "Den",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Sergeant Divner"
+            ],
+            "description": "The guard commander responsible for the Alefast caravan. Divner oversees the armed force protecting the wagons, confirms that Tala's dimensional cargo slots are ready, and gives the order to depart Bandfast.",
+            "id": "divner",
+            "name": "Divner",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A caravan guard who takes part in protecting the convoy in the wilds. After an Arcanous bird is killed, Adam gives Tala permission to claim the unassigned remains for her experiments and possible future use.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The caravan's head chef and a keeper of its hidden Arcanous-meat practice. Brand attacks Tala when she discovers the secret, then explains that selected workers have eaten such meat for decades in hopes of gaining strength and improved healing.",
+            "id": "brand",
+            "name": "Brand",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent magical predator capable of precise teleportation. It ambushes Tala beside the caravan, breaks both bones in her left forearm, and escapes both her continuing gravity restraint and Renix's attempted lightning strike.",
+            "id": "dimensional-terror-bird",
+            "name": "Dimensional terror bird",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A caravan passenger who commissions Tala to obtain one thunderbolt horn for a spouse's treatment and promises five gold ounces in payment.",
+            "id": "thunderbolt-horn-passenger",
+            "name": "Thunderbolt-horn passenger",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A massive creature hunted for a commissioned horn. Tala finds one alone and attacks it with a partly exposed ending-tree stick, damaging its skull. The wounded creature answers with an immense lightning strike.",
+            "id": "thunderbolt",
+            "name": "Thunderbolt",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful regional creature whose horns provide protection and whose antlers produce lightning. It confronts the caravan before the mountain pass, joining battle with the defensive mages and seriously injuring Renix.",
+            "id": "midnight-fox",
+            "name": "Midnight Fox",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Alefast merchant connected to the Order of the Harvest through Brand. Artia deals in magical objects and offers Tala equipment and dimensional storage in exchange for useful harvests from Arcanous Beasts.",
+            "id": "artia",
+            "name": "Artia",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of Alefast's local Archon Council. Grediv examines Tala's blood-made drops, confirms that they are weak Archon Stars, and recognizes both her unusual magical defenses and her ability to perceive within her own body.",
+            "id": "grediv",
+            "name": "Grediv",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "mageling"
+      },
+      "recaps": {
+        "ending": "Tala reaches Alefast with the outward caravan, completes delivery of the dimensional cargo slots, and receives her pay. Trent, Atrexia, and the recovering Renix lodge at the Wandering Magician, where Tala also takes a room. Adam plans to continue her combat training on the return journey, while Brand's Order of the Harvest remains a secret alliance. The passenger has received one thunderbolt horn, but the spouse's treatment has no recorded outcome. Artia trades Tala an adaptive dimensional pouch and an artifact knife for preserved harvests, and Tala plans to consult Artia's husband about storage theory. Grediv confirms that Tala's merged blood drop contains genuine Archon Stars, but they are far too weak for evaluation. He offers introductory material, warns her away from time magic, and advises secrecy until she can create a star about forty times stronger. Tala remains bound to the Guild, owes Holly eight gold ounces, and still needs deeper and left-hand inscription work. She begins testing the pouch as it forms a usable interior and asks for power. The intelligent terror bird remains alive and nearby, with its purpose unresolved.",
+        "in_short": "Newly graduated and heavily indebted, Tala reaches Bandfast with most of her inscriptions lost. She joins the Caravaner's Guild, receives a powerful staged redesign from Holly, and becomes cargo mage for a caravan to Alefast. In the wilds she joins Brand's covert Order of the Harvest, gathers dangerous magical materials, survives attacks, and attracts the attention of an intelligent teleporting terror bird. Her experiments produce weak blood Archon Stars, while Adam begins teaching her combat. Tala kills a thunderbolt and saves the caravan from a Midnight Fox, though Renix is badly hurt. In Alefast she completes her cargo assignment, trades preserved harvests to Artia for an artifact pouch and knife, and meets Grediv. He confirms her path toward becoming an Archon but warns that her star must become about forty times stronger before evaluation. Tala ends the book studying her adaptive pouch while the terror bird remains nearby.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Tala arrives in Bandfast by teleportation with her keystone intact but her supporting inscriptions erased. Burdened by academy and inherited family debt, she seeks work through the Caravaner's Guild. Recruiter Lyn discovers that Tala already qualifies as a mage and signs her to a five-year or thirty-trip contract as a specialist in dimensional cargo wagons. Lyn also introduces her to Holly, a master inscriber who finds serious flaws in Tala's old design. Tala agrees to a costly staged reconstruction, paying part immediately and promising the remainder after two jobs. Ashin, a guard on her first planned caravan, helps her buy supplies and prepare iron salve, which she uses to shield herself from direct magic. Holly discovers that Tala has exceptionally high power density but accumulates power slowly. A complete redesign would endanger her, so Holly installs a new continuous passive system while postponing the deeper work and Tala's left hand. When the inscriptions activate, Tala wakes with overwhelming sensory and physical enhancement and repeatedly injures herself while relearning basic movement. With Holly and Lyn's help she regains enough control to walk, but four days have passed and her first departure is close.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Holly activates Tala's unusually detailed Mage Sight, which can focus through walls and detect distant magic. Tala then renews her iron coating, leaving most of her magical presence hidden while her eyes remain conspicuous to other mages. At the Wainwright yard she proves able to power increasingly large dimensional cargo slots. The hardest test drains her into unconsciousness, but Himmal teaches her to replace brute force with a precise mental model, greatly improving her efficiency. He also reveals himself as an Archon and offers future sponsorship. In the Guild lounge Tala meets Cran, then the defensive mages Trent and Renix, all of whom react strongly to her strange appearance under Mage Sight. Before leaving Bandfast, five robbers corner her. Tala restrains all of them with altered gravity, sends one for the guards, and earns a reward without killing anyone. She uses the money to secure lodging with Lyn. At dawn she joins an eight-wagon caravan bound for Alefast. Den takes charge of her pack, Divner commands the guards, and earthworking mage Atrexia joins Trent, Renix, and Tala in the caravan's magical contingent. Tala confirms that her unfinished left hand still cannot power the cargo workings, then the convoy departs.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The caravan leaves Bandfast's defenses and enters the wilds, where abundant magic and dangerous creatures force constant vigilance. Tala discovers that her new mind gives her near-perfect recall, and Renix lends her inscription theory. Atrexia drives off a charging thundercattle bull, while guards kill a giant Arcanous bird that dives at Tala. She claims its talons and bones and seals them with iron salve. That night Tala learns that head chef Brand has secretly served the bird's meat. He attempts to silence her, but her defensive inscriptions stop his knife. Brand then explains that selected caravan workers have eaten Arcanous meat for decades despite a prohibition imposed by mages. Tala agrees to investigate the practice and later watches its magic move through Trent and Atrexia without immediate harm. A carnivorous plant attacks Tala at dawn, but her defenses hold until she destroys its core with a borrowed sword. Brand formally admits her to the Order of the Harvest, providing its notebook and identifying token. After further encounters with magical wildlife, Tala collects a branch and berries from an ending tree whose touch dissolves living matter. Trent warns that the sample is an easily concealed killing tool. Tala says she wants to study its opposition to her defenses and accepts his and Renix's informal guidance before attempting anything major.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brand explains that an intact ending berry can grant temporary resistance to ordinary physical harm, while damage to its seed may kill the consumer. Tala carefully processes two seeds and later eats a berry after an intelligent terror bird teleports beside her, breaks her arm, and escapes her gravity restraint. Atrexia heals the injury. The bird returns peacefully on another night and accepts jerky, leaving its motives uncertain. Meanwhile, Tala refines her cargo-working technique and begins experimenting with power carried in her own blood. The drops merge into a stable spinning sphere linked to her perception. Trent recognizes it as an apparent Archon Star, and Atrexia confirms the resemblance, though it contains at least fifty times less power than expected. Tala can create and combine these weak stars quickly, but doing so leaves her exhausted and ravenous. A passenger offers five gold ounces for a thunderbolt horn needed for a spouse's treatment. Tala finds a thunderbolt and attacks it with her ending-tree branch. The wounded beast unleashes lightning that strips away much of her salve and burns her, yet her defenses regenerate the damage. Its own attack destroys its exposed brain. The caravan harvests the carcass, Tala secures both horns, and the terror bird feeds at the site without attacking anyone.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala delivers one thunderbolt horn to the passenger and accepts payment, offering the second if the planned healing construct requires it. Brand promises her a share of the preserved meat and an introduction to an Alefast dimensional-storage seller. Renix confides that he wants independence but feels unready to leave Trent's service, and Tala urges him to define the habits and sacrifices his desired future requires. The terror bird appears in a smaller form, accepts food, doubles in size through dimensional magic, and vanishes, proving that ordinary restraint cannot hold it. Tala asks Adam for combat instruction. He begins with balance, breathing, posture, observation, and independent judgment rather than weapons. Her concurrent experiments produce another weak Archon Star and reveal magic moving with the air in her lungs. As the caravan approaches a dangerous mountain pass, a Midnight Fox attacks. Its lightning injures Renix, but Tala tears away its antlers with escalating gravity, causing the stored lightning to destroy its body. Permanent death is uncertain. Renix survives with numerous broken bones and a concussion. Trent reassures Tala that her intervention saved the caravan and defines her best combat role as a protected single-target striker. The convoy clears the pass and nears the waning city of Alefast, while signs show that the terror bird is still following.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alefast's gate mages inspect the caravan because a magical entity reportedly impersonated an entire caravan. Tala's iron-based defenses cause a dispute, but the gate commander admits the wagons. Tala completes her cargo assignment, receives payment, and sends messages to Holly and the Wainwrights through Lyn. Trent directs her to the Wandering Magician, where he, Atrexia, and the recovering Renix are staying. Brand introduces Tala to Artia, an Order-connected dealer in magical items. Tala trades preserved parts from Arcanous Beasts and her spare thunderbolt horn for an artifact knife and a dimensional belt pouch that appears to offer an additional spatial defense. At the inn, Grediv, head of the local Archon Council, examines Tala's blood creations. Two drops merge before him, and he confirms that they contain genuine but very weak Archon Stars. Grediv warns that Tala is operating far beyond her limited training. He offers introductory study material, forbids her from investigating time magic before becoming an Archon, and explains that a star is a point through which the soul learns to influence external magic. He advises Tala to delay evaluation until she can make one about forty times stronger. Tala settles into the inn, restores her iron salve, and enters the artifact pouch. It forms a usable interior around her needs and appears to request magical power. She remains indebted, incompletely inscribed, and followed by the unresolved terror bird, but now has a concrete path toward Archon status.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "mageling"
+      }
+    },
+    "making-money": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A reformed confidence trickster who has become the respectable, successful Postmaster of Ankh-Morpork, and who is quietly bored to distraction by honest routine. Restless and hungry for the old thrill of risk, he is manoeuvred by Lord Vetinari toward a new and larger challenge: the ailing Royal Bank of Ankh-Morpork and its Mint. His talent for confidence, in every sense, is exactly what the job demands.",
+            "id": "moist-von-lipwig",
+            "name": "Moist von Lipwig",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Patrician"
+            ],
+            "description": "The calm, calculating ruler of Ankh-Morpork, who has decided that the city's money and its antiquated bank need reform. He steers Moist toward the bank with his usual quiet inevitability, confident that a former swindler is the right person to modernize the nation's finances.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Miss Dearheart"
+            ],
+            "description": "Moist's sharp, chain-smoking fiancee, who runs a trust devoted to freeing golems. Blunt and formidable, she leaves early in the story on an expedition far from the city to recover golems rumoured to lie buried in an ancient land.",
+            "id": "adora-belle-dearheart",
+            "name": "Adora Belle Dearheart",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mrs. Lavish"
+            ],
+            "description": "The elderly, shrewd, and frail chairwoman of the Royal Bank, and the widow who married into the powerful Lavish banking family. Distrustful of her grasping relatives and fond of her small dog, she takes a calculating interest in Moist and in the bank's future.",
+            "id": "topsy-lavish",
+            "name": "Topsy Lavish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mavolio Bent"
+            ],
+            "description": "The bank's rigidly precise chief cashier, a humourless man who has never in his life made an accounting error and who reveres gold as the only true basis of money. Devoted utterly to correctness and to the ledger, he regards Moist's ideas about paper money as something close to blasphemy.",
+            "id": "mr-bent",
+            "name": "Mr. Bent",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ambitious and cold member of the Lavish family who believes the bank is rightfully his and resents any outsider given control of it. Calculating and vain, he schemes to remove Moist and seize the bank for himself, nursing a private, growing fixation with power and with Lord Vetinari in particular.",
+            "id": "cosmo-lavish",
+            "name": "Cosmo Lavish",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Cosmo's sister, a loud, self-regarding member of the Lavish family who considers herself a fashionable and formidable figure and joins in the family's effort to force Moist out of the bank.",
+            "id": "pucci-lavish",
+            "name": "Pucci Lavish",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Topsy Lavish's small, elderly, much-indulged dog, dressed and pampered and disliked by the rest of the family. Through the terms of his mistress's arrangements, this unlikely animal becomes central to the question of who really controls the Royal Bank.",
+            "id": "mr-fusspot",
+            "name": "Mr. Fusspot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nervous, obsessive member of the Lavish household who has built an elaborate machine of glass tubes and flowing water in the bank's cellar, a working model that he believes mirrors the flow of money through the city's economy.",
+            "id": "hubert",
+            "name": "Hubert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A meek, gifted engraver and forger whom Moist takes under his wing to design the new banknotes. Timid and easily led, he has extraordinary skill with pen and plate that Moist means to turn to legitimate use.",
+            "id": "owlswick-jenkins",
+            "name": "Owlswick Jenkins",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A disreputable old rogue posing as a travelling priest, with ill-fitting false teeth and a long memory. He recognizes Moist from their shared criminal past and sets out to blackmail him by threatening to expose who the respectable new banker used to be.",
+            "id": "cribbins",
+            "name": "Cribbins",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A large golem who works at the Post Office and has begun, through exposure to the people around her, to develop a distinct personality and a devotion to Moist. She follows him into the affairs of the bank.",
+            "id": "gladys",
+            "name": "Gladys",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "making-money"
+      },
+      "recaps": {
+        "ending": "Moist establishes paper money in Ankh-Morpork and, when the existence of the bank's gold reserves is thrown into doubt, resolves the crisis with the discovery Adora Belle brings home: thousands of ancient golden golems, an immense buried treasure whose value can quietly stand behind the new currency. Cosmo Lavish, whose obsession with becoming Lord Vetinari drove him to wear the Patrician's style and a too-tight ring until it poisoned his hand, collapses into delusion and is finished as a threat, his bid for the bank destroyed by his own vanity. Mr. Bent, the chief cashier, confronts and comes to terms with a hidden past he had buried under rigid correctness, and returns to steady the bank in its hour of need. The blackmailer Cribbins is disposed of, and Moist's secret history stays buried. Moist is confirmed as head of the Royal Bank and Master of the Mint, paper money is a success, and Lord Vetinari, satisfied, has already begun eyeing the city's tax office as Moist's next assignment.",
+        "in_short": "Now the respectable and thoroughly bored Postmaster of Ankh-Morpork, the reformed con man Moist von Lipwig is steered by Lord Vetinari toward the city's failing Royal Bank. When the elderly chairwoman Topsy Lavish dies, she leaves control of the bank, by way of ownership of her small dog Mr. Fusspot, in Moist's keeping, setting him against the grasping Lavish family and above all the cold, scheming Cosmo. Moist takes over the bank and Mint and pushes a radical idea: paper money, banknotes backed by trust rather than by hoarded gold, over the horror of the rigid chief cashier Mr. Bent. He recruits a timid forger to design the notes, dodges a blackmailer from his criminal past, and weathers a crisis when the bank's gold reserves are called into question. His fiancee Adora Belle returns from a distant expedition with a colossal discovery: an army of ancient golden golems. Cosmo, meanwhile, unravels into madness through his obsession with imitating Vetinari. In the end paper money is established, the golden golems secretly underwrite it, Cosmo is destroyed by his own fixation, and Moist is confirmed as the man in charge of the city's money.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the earlier book: Moist von Lipwig was a career confidence trickster who operated under false names until he was caught and hanged. Lord Vetinari, ruler of Ankh-Morpork, faked the execution and offered him a choice, revive the city's dead Post Office or die for real. Moist took the job, invented the postage stamp, cleared decades of undelivered mail, and defeated the corrupt magnate who had been running the continent's signalling network into the ground. Along the way he fell for the sharp, chain-smoking Adora Belle Dearheart, who runs a trust that frees golems, and the two became engaged. Having discovered that honest work could be as thrilling as any swindle, Moist stayed on as a respectable public official. As this book opens, he is the successful Postmaster, and quietly dying of boredom.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Restless with respectable success, Moist is pushed by Lord Vetinari toward the city's ailing Royal Bank, a stuffy institution run by the powerful and unpleasant Lavish family and its rigid chief cashier, Mr. Bent, who worships gold and the ledger. The bank's frail elderly chairwoman, Topsy Lavish, takes a shrewd interest in Moist and distrusts her own grasping relatives, chief among them the cold, ambitious Cosmo. Through the terms Topsy sets around her pampered little dog, Mr. Fusspot, Moist finds himself entangled with the bank and set at odds with the Lavishes, who want him gone. His fiancee Adora Belle has left the city on an expedition to recover golems said to lie buried in a distant, ancient land.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moist takes real hold of the bank and its Mint and begins to reinvent the city's money. Against Mr. Bent's outrage, he pushes a radical idea: paper banknotes, money backed by confidence rather than by a locked vault of gold. He recruits a timid, brilliant forger to design the notes and uses his showman's flair to sell the public on the concept, to great excitement and considerable establishment alarm. Cosmo Lavish schemes relentlessly to have him removed and the bank seized for the family. Worse, a rogue from Moist's criminal past resurfaces, a blackmailer posing as a priest, who recognizes the respectable new banker and threatens to reveal exactly who he used to be.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Paper money takes off, but success breeds danger. A crisis builds over whether the bank's gold reserves are truly there, threatening a run that could collapse the whole enterprise and Moist with it. Cosmo's campaign against Moist grows stranger and more sinister as his private obsession with power, and with imitating Lord Vetinari himself, tightens its grip on him. The blackmailer presses harder, and Mr. Bent, the man who has never made a mistake, is pushed toward a breaking point as everything he believes about money and about himself is called into question. Moist, juggling all of it with his usual improvisation, needs something extraordinary to make the numbers real before the city loses its nerve.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The crisis resolves in Moist's favour. Adora Belle returns from her expedition with a staggering find: thousands of ancient golden golems, a treasure whose sheer value can quietly stand behind the new paper currency and answer every doubt about the bank's wealth. Cosmo Lavish, having pursued his fantasy of becoming Lord Vetinari to the point of wearing a ring so tight it poisons his hand, finally collapses into full delusion, his plot ruined and himself destroyed by his own vanity. Mr. Bent confronts the past he had hidden beneath his rigid perfection, comes to terms with it, and returns to steady the bank. The blackmailer is disposed of and Moist's history stays buried. Paper money is established, Moist is confirmed as head of the bank and Master of the Mint, and a satisfied Vetinari is already contemplating handing him the city's tax office next.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "making-money"
+      }
+    },
+    "mark-of-the-fool": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Alex"
+            ],
+            "description": "An orphaned young man who supports his younger sister, Selina, while teaching himself magic. On his eighteenth birthday, he gains the means to pursue his acceptance at Generasi and hopes to build a new life there with her.",
+            "id": "alex-roth",
+            "name": "Alex Roth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Alex Roth's younger sister and the person at the center of his plans for the future. She is preparing to leave Ulrich with him so that he can attend Generasi.",
+            "id": "selina",
+            "name": "Selina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Theresa"
+            ],
+            "description": "Alex's longtime friend and a daughter of the family sheltering the Roth siblings. She is part of the Lu household when Alex finds it barred and its residents making urgent, unexplained preparations.",
+            "id": "theresa-lu",
+            "name": "Theresa Lu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Theresa's three-headed Cerberus companion.",
+            "id": "brutus",
+            "name": "Brutus",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Recurring Enemy",
+              "recurring enemy entity"
+            ],
+            "description": "The returning power behind hostile dungeons and the monsters they produce. Its reappearance brings forth five marked heroes and drives the people of Tameland to flee or prepare for war.",
+            "id": "ravener",
+            "name": "Ravener",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A red-haired marked hero who reaches Alex's camp after the travelers defeat a silent, armored spider creature. He bears the scales mark associated with the Chosen.",
+            "id": "the-chosen",
+            "name": "The Chosen",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Chosen"
+            ],
+            "description": "After using divine magic to heal Brutus, this marked hero gives his name. He warns the group that silent spider creatures are emerging from an active dungeon in the cave nearby.",
+            "id": "cedric",
+            "name": "Cedric",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mummified figure found in the portal-filled depths of the cave sanctum. Its lantern-marked blue magic creates a refuge that the dungeon's spiders avoid.",
+            "id": "the-traveler",
+            "name": "The Traveler",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "unnamed hunter"
+            ],
+            "description": "One of five specialized assassin-creatures sent to find and kill the unknown person who took control of a dungeon core. Unlike ordinary dungeon monsters, the hunters can travel independently across great distances.",
+            "id": "raveners-hunter",
+            "name": "Ravener's Hunter",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Captain Fan-Dor"
+            ],
+            "description": "The Selicar captain of the Red Siren, which carries Alex's party from Port Mausar toward Generasi. He welcomes Selina aboard without charging her fare.",
+            "id": "fan-dor",
+            "name": "Fan-Dor",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gaunt passenger aboard the Red Siren who eats with unusual intensity and watches Alex and Theresa as the ship departs for Generasi.",
+            "id": "thin-passenger",
+            "name": "Thin Passenger",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A passenger aboard the Red Siren whose attack on Alex reveals its nature. The creature feeds on mana and uses magic to disable the ship's night watch.",
+            "id": "mana-vampire",
+            "name": "Mana Vampire",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The blue-skinned, horned registrar at the University of Generasi. He handles Alex's registration, housing, Theresa's auditor status, and Selina's enrollment in the junior school.",
+            "id": "hobb",
+            "name": "Hobb",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A university student who publicly ends her relationship with Derek after accusing him of copying their potion work and repeatedly betraying her trust.",
+            "id": "isolde",
+            "name": "Isolde",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Derek"
+            ],
+            "description": "Isolde's former partner. She publicly accuses him of infidelity, cheating at gambling, and copying her academic work before ending their relationship.",
+            "id": "derek-warren",
+            "name": "Derek Warren",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A goat-like professor who notices Alex considering COMB 1000 in the university library. He identifies himself as the course's teacher, giving Alex an early encounter with the person responsible for its survival-focused instruction.",
+            "id": "comb-1000-instructor",
+            "name": "The COMB 1000 Instructor",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Chancellor Baelin"
+            ],
+            "description": "The University of Generasi's chancellor and the goat-like professor Alex met in the library. His COMB 1000 course teaches survival through judgment, preparation, and any resource that works.",
+            "id": "baelin",
+            "name": "Baelin",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jules"
+            ],
+            "description": "A potions professor who enforces academic discipline and laboratory safety. She tells Alex that first-years must establish their fundamentals before receiving access to advanced analysis equipment or personal projects.",
+            "id": "professor-jules",
+            "name": "Professor Jules",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alex's neighboring student and a fellow COMB 1000 enrollee. He travels with his eagle familiar, Najyah, and agrees to train with Alex before the course begins.",
+            "id": "khalik",
+            "name": "Khalik",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Khalik's large eagle familiar. Her mischievous nature is immediately apparent when she pretends to be dead in order to frighten Khalik and Alex.",
+            "id": "najyah",
+            "name": "Najyah",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Professor Kabbot-Xin"
+            ],
+            "description": "The elderly professor of Life Force Enhancement 1 and a practitioner of Tarim-Lung cultivation. He tests Theresa's affinity and begins opening her life-force channels under controlled conditions.",
+            "id": "kabbot-xin",
+            "name": "Kabbot-Xin",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A minotaur first-year assigned to the same COMB 1000 field-test group as Alex, Khalik, and Isolde. He carries a mace and uses body-strengthening magic and an illusory duplicate.",
+            "id": "thundar",
+            "name": "Thundar",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A flight-capable COMB 1000 candidate who reaches the escarpment during the Barrens test. Baelin criticizes him and another flying student for undermining their group and abandoning a teammate to danger.",
+            "id": "minervus",
+            "name": "Minervus",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Carey"
+            ],
+            "description": "A student from Tameland who asks Professor Jules about Generasi's research into the recurring dungeon threat. Her interest overlaps with Alex's private investigation.",
+            "id": "carey-london",
+            "name": "Carey London",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Val'Rok"
+            ],
+            "description": "Alex's mana-manipulation professor. He assigns glyph-box exercises and teaches precise control useful for maintained spells, magical items, potions, and golems.",
+            "id": "professor-val-rok",
+            "name": "Professor Val'Rok",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A COMB 1000 participant who joins the class exercise at the wild mana vents. Grimlock, an enormous shark-like beastfolk fighter, accompanies Nua-Oge as part of the expanded training group.",
+            "id": "nua-oge",
+            "name": "Nua-Oge",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Nua-Oge's enormous shark-like beastfolk companion, who joins the expanded COMB 1000 training group at the wild mana vents.",
+            "id": "grimlock",
+            "name": "Grimlock",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A participant who arrives at the wild mana vent exercise with Minervus and his five coordinated attendants.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Shale"
+            ],
+            "description": "The owner of a golem workshop. Val'Rok offers to provide Alex a reference to the workshop if Alex successfully challenges his mana-manipulation course.",
+            "id": "toraka-shale",
+            "name": "Toraka Shale",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ram"
+            ],
+            "description": "A force-magic professor with a right arm formed from black magical force. He teaches students that force spells can be countered or broken and must be practiced with that vulnerability in mind.",
+            "id": "professor-ram",
+            "name": "Professor Ram",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Khalik",
+              "Prince Khalik",
+              "Raptor of Tekizash",
+              "Lord of the Sapphire Sea"
+            ],
+            "description": "The full identity of Alex's friend Khalik, revealed privately as Tekizash's second prince. Alex promises to keep the royal connection confidential.",
+            "id": "khalik-bermeder",
+            "name": "Khalik Bermeder",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0B6JQCDLL",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool"
+      },
+      "recaps": {
+        "ending": "Alex remains at the University of Generasi with Selina, Theresa, and Brutus. His identity as the Fool and his contact with the dungeon core remain hidden from priests and almost everyone at the university. He keeps core sand and the Traveler's book as clues, while his work with Professor Jules and his application to a golem workshop offer ways to investigate further. He can now cast Forceball, Force Disc, and Wizard's Hand, and meditation helps him manage the mark's disruption. Theresa is progressing in life-force cultivation, supports Alex's training, and shares a growing but still undeclared romantic bond with him. Selina's strong fire affinity opens a path into magic but leaves her confronting trauma tied to her parents' deaths. Khalik, Isolde, and Thundar remain allies, and Alex alone among the group knows Khalik is a prince. Minervus remains a rival for the workshop position, while Carey's effort to expand Uldar worship could bring priests closer to Alex. Beyond the city wards, a core hunter has located Generasi and plans to return with its siblings and controlled beasts to create an opening for a stealth attack.",
+        "in_short": "On his eighteenth birthday, aspiring wizard Alex Roth receives the Fool's mark, which obstructs combat, divinity, and spellcraft while accelerating other kinds of learning. He flees Tameland with his sister Selina, his friend Theresa Lu, and her Cerberus, Brutus. They cross an active portal dungeon, where Alex briefly controls a weakened core before the Traveler's magic destroys it. At Generasi, Alex conceals his identity and turns the mark's interference into a demanding program of magical, physical, and mental training. He builds friendships with Khalik, Isolde, and Thundar, studies under Baelin and several professors, and pursues golemcraft as a path toward understanding the core. Theresa advances in life-force cultivation and teaches him meditation. Selina proves to have exceptional fire affinity, which triggers her trauma over their parents' deaths. As Alex competes for a golem-workshop post, a core hunter traces its quarry to Generasi and withdraws to gather allies for an attack.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On his eighteenth birthday, Alex Roth inherits his family's money and prepares to leave Ulrich with his younger sister, Selina, so he can study magic at Generasi. The return of an ancient recurring enemy changes those plans. Five marked heroes are called to oppose its dungeons, and Alex discovers that he bears the Fool's mark. The mark floods him with memories of failure when he attempts combat, divinity, or spellcraft, but helps him learn other skills rapidly. Alex proves that magic is difficult rather than impossible for him, then decides to escape before Uldar's priests can force him into hero duty.\n\nTheresa Lu discovers his secret and joins him with her three-headed Cerberus, Brutus. The four leave Ulrich and survive an attack by a silent spider creature from a nearby dungeon. Cedric, the Chosen, heals Brutus and explains that a holy detection ring blocks marked people from leaving by sea. Alex therefore chooses the dangerous Cave of the Traveler as an alternate route. After promising not to abandon Selina, he tells her about the mark. Theresa prepares a scent-masking mixture, and the entire group enters the active portal dungeon together.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the Cave of the Traveler, Alex's party finds an ancient temple overrun by dungeon spiders. Alex maps trapped floor tiles and redirects the temple's tracking fire against the swarm. The group discovers unstable portal crossroads, retrieves powerful fire gems, and reaches a vast sanctum where stable portals surround the Traveler's mummified body. A hive queen carrying the dungeon core attacks before they can use the portal to the Rhinian Empire.\n\nAlex overloads a fire gem, and Theresa throws it through a portal to a lava field. The resulting eruption cripples the queen, which Theresa finishes. Alex then links himself to the weakened core and learns to control it long enough to create a step beside their escape portal. The Traveler's blue magic destroys the exposed core. Alex takes some core sand and an iron-bound book, convinced that known history hides the Fool's ability to influence cores. The group reaches Port Mausar by way of the Rhinian Empire. Later, Cedric's party finds the ruined dungeon and mistakenly credits the Traveler with destroying the core. The recurring enemy responds by dispatching five specialized hunters to kill the unknown core usurper.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex, Theresa, Selina, and Brutus book passage to Generasi aboard the Red Siren. Its captain, Fan-Dor, offers Alex lessons in the crew's Spear and Oar Dance. Alex discovers that the mark permits the dance's movement when he practices with a mop, giving him a possible method of evasion that avoids direct combat. Tests with Theresa's weapons further suggest that the mark interferes most strongly with deliberate attacks and objects meant solely for fighting.\n\nA suspicious passenger magically puts the night watch to sleep and reveals itself as a mana vampire. Alone on deck, Alex uses Forceball as an obstacle, the mop dance to retreat, and spilled water to make the creature fall. When it leaps at him, he braces the mop and lets its own momentum cause the injury. Fan-Dor and his first mate arrive and kill it. Alex shares the bounty with them, strengthening their friendship and increasing his funds. The Red Siren reaches Generasi, but priests of Uldar are collecting donations at the gate. Alex guides his companions away before anyone can inspect his concealed mark.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex's household reaches the University of Generasi, where registrar Hobb arranges Alex's enrollment, an apartment, Theresa's status as an auditor, and a junior-school place for Selina. Their savings can support them for about two years, so Alex begins looking for income as well as answers about the dungeon core. The library's useful material is restricted by spell tier, and advanced potion-analysis equipment is unavailable to an unproven first-year.\n\nAlex chooses courses in magic lore, potions, mana manipulation, force spells, and combat survival. Baelin, the university chancellor, teaches COMB 1000 and encourages practical adaptation. Alex systematically studies the mark's spellcasting failures, improves Forceball, and learns that controlled practice can turn some failed patterns into useful changes. He befriends his neighbor Khalik and Khalik's eagle familiar, Najyah. Isolde exposes Derek's academic cheating, while Professor Jules makes him repeat introductory potions. Alex and Khalik train together before COMB 1000, and Alex experiments with moving and manipulating terrain through Forceball. After dozens of failed attempts, he finally learns a second spell, Force Disc, just before Baelin's course begins.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Theresa begins life-force cultivation under Kabbot-Xin, passes the affinity test, and starts the difficult work of opening her channels. Meanwhile, Baelin sends COMB 1000 candidates into the Barrens in groups of four. Alex is assigned to Khalik, the lightning caster Isolde, and the minotaur Thundar. They combine scouting, protective magic, physical strength, and Alex's indirect use of Forceball to cross monster territory under a strict time limit.\n\nThe group survives two attacks by furred humanoid creatures, then encounters a Bonedrinker near the final escarpment. Isolde's lightning knocks the armored predator down but does not finish it. The team and another student target its vulnerable eyes and mouth while Alex distracts it. His Forceball enters its wounded mouth and sends it falling to the pursuing monsters below. Twelve of twenty candidates pass. Baelin praises Alex's team for balancing its abilities and admits the survivors to the course. He also tells Alex that his ban on priests reflects his belief that gods exploit mortals and that cultivation offers another path to divinity. Alex's friends and household celebrate both the field-test success and Theresa's progress.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex begins formal potion and mana-manipulation classes while guarding his secrets. Carey London, a student from Tameland and a devotee of Uldar, asks about research into the recurring dungeons. Professor Jules explains that living cores disintegrate when taken too far from Tameland, leaving the mystery unsolved. Carey's effort to organize worship and bring priests closer to campus makes her useful as a possible research contact but dangerous to Alex.\n\nAt a city workshop, Alex senses that a raw golem core carries mana faintly similar to the dungeon core. An upcoming assistant vacancy offers both income and access, so he resolves to acquire the required skills. The mark lets him advance through mana-manipulation exercises at exceptional speed and maintain Force Disc while working on a glyph box. Theresa's cultivation improves her health and stamina, and she realizes meditation may teach Alex to acknowledge the mark's intrusive memories without following them. Her lessons make his casting smoother and strengthen his awareness. Alex also accepts that his feelings for Theresa are romantic. Professor Jules verifies that his unusual ability is genuine and suggests that continued excellence could earn him access to a personal project.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Baelin assigns COMB 1000 to capture ten vent drinkers alive in terrain that disrupts spellcasters. Nua-Oge proposes using companions with little mana to drive the creatures into a broad net. Minervus rejects cooperation and leaves with his attendants, while Rain joins the main group. Theresa, Grimlock, and other physical fighters act as chasers, and Alex maintains two Force Discs as nonlethal traps. The cooperating group captures ten creatures before a larger predator arrives. Minervus manages only one, and Baelin removes him from the course after revealing that his five attendants are flesh golems whose connection failed near the vents.\n\nAlex continues excelling in mana manipulation and safely completes his first potion lab. When another student drinks an unfinished quicksilver mixture, Alex's command of the emergency procedures helps Professor Jules stabilize the victim. Val'Rok offers Alex a chance to challenge the mana course for credit and earn a workshop reference. Jules will not waive the full potions course, but she recruits Alex as a temporary assistant on a graduate project and may also recommend him. Professor Ram begins teaching Alex that force magic is powerful but never invulnerable.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex joins Professor Jules's graduate laboratory team as a support assistant. The group summons a shape-changing otherworldly servitor, contains it, and bargains for part of its chaos essence in exchange for food and release. Jules warns that the extracted substance is dangerously unstable, but explains that a carefully diluted dose can let a golem evolve. The later stages of the project also overlap with golem-core construction, making the work directly relevant to Alex's goals.\n\nThe encounter leaves Alex badly shaken. When he seeks ordinary help from Hobb, the registrar reveals that he is a devil bound to university service by an old contract and forbidden to make new deals with mortals. Khalik helps Alex understand that supernatural fear can alter the mind and encourages him to prepare through knowledge rather than remain overwhelmed. Khalik then entrusts Alex with a secret of his own: he is Khalik Bermeder, the second prince of Tekizash. Alex promises confidentiality but does not disclose the Fool's mark in return. He resumes his physical, magical, alchemical, and dance training with renewed determination.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After months of disciplined exercise, diet, and meditation, Alex is stronger and more enduring. Val'Rok teaches him an advanced mana-regeneration method, and Alex combines it with meditation until he can nearly double his daily magical work. A golem workshop opens applications for three paid assistant positions. Minervus applies and claims his family background makes him the better candidate, but Alex remains committed because the job would provide income, experience with golem cores, and a route toward building a golem of his own.\n\nAlex and Selina become collaborators in sculpting, with each improving through the other's strengths. He also gives permission for her junior school to test her magical potential. After sustained analysis of many failures, Alex finally casts Wizard's Hand and begins looking for ways to simplify its circuit. At Selina's test, summoned sprites identify her as possessing exceptionally strong fire affinity. The flames immediately revive the trauma connected to the fire that killed the Roth parents. Selina screams in terror, leaving her promising magical future inseparable from grief and fear that have not yet been resolved.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alex, Selina, Theresa, and Brutus remain established at Generasi. Alex has transformed the Fool's mark from a simple disability into the center of a broad training method, learning Forceball, Force Disc, Wizard's Hand, advanced mana control, and meditation while keeping his identity secret. His work with Professor Jules and his application for the golem-workshop position may help him investigate the destroyed core and the hidden history of the Fool. Theresa continues life-force cultivation and remains his closest partner, while Selina must now reconcile her powerful fire affinity with the trauma of their parents' deaths. Khalik, Isolde, and Thundar remain allies, and Khalik's royal identity is known only to Alex among their circle.\n\nOutside Generasi, one of the core hunters follows its magical tracking signal across sea and land. It learns to mimic sounds and voices, reaches the warded city, and determines that a direct infiltration would be too dangerous. It withdraws to find its siblings and recruit or dominate local beasts. Its plan is to return with enough forces to distract Generasi's defenders and create an opening for a concealed attack on its quarry.",
+            "through": {
+              "chapter": 75
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0B6JQCDLL",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-fool"
+      }
+    }
+  }
+}

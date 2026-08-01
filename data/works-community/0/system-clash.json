@@ -1,0 +1,2045 @@
+{
+  "entries": {
+    "system-clash": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A powerful void human and defender of Savannah. His bond with Silvi and responsibility for a large household shape both his personal plans and his response to threats against his adopted home.",
+            "id": "derek",
+            "name": "Derek",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Derek's bonded void companion, an accomplished fighter and an increasingly exceptional cook. She travels with him and is a capable member of the Savannah household in her own right. Her magic and practical judgment regularly complement Derek's abilities.",
+            "id": "silvi",
+            "name": "Silvi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful returning ally within Derek's circle.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite defender and guardian within Derek’s circle.",
+            "id": "avery",
+            "name": "Avery",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Cydarian noble, formidable lightning fighter, and returning ally.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient sand wielder and guardian who continues travelling far beyond Cydaria.",
+            "id": "marrick",
+            "name": "Marrick",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Indaria and a returning political ally.",
+            "id": "ossian",
+            "name": "Ossian",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Savannah leader and organizer who takes threats to the city seriously.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The manager of the Void Emporium and an organizer within Derek's Savannah household.",
+            "id": "malorie",
+            "name": "Malorie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A smith and inventive craft worker within Derek's household.",
+            "id": "brandy",
+            "name": "Brandy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guard within Derek's household.",
+            "id": "jax",
+            "name": "Jax",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young academy adventurer under Derek's protection.",
+            "id": "thomas",
+            "name": "Thomas",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Avery's companion, who helps decide how to care for Alana's former wyvern after its contract ends.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A contract specialist establishing a Savannah shop for standard, specialized, and beast contracts.",
+            "id": "rudy",
+            "name": "Rudy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Assassin's Guild vice leader who now protects Cydaria's royal family and performs intelligence work. Still constrained by competing oaths, she guides Derek into the Guild's concealed headquarters.",
+            "id": "vanessa",
+            "name": "Vanessa",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Assassin’s Guild leader responsible for its Cydarian branch. He threatens Derek’s friends during negotiations and holds the oaths binding Vanessa to the Guild.",
+            "id": "cydarian-branch-leader",
+            "name": "Cydarian branch leader",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Assassin's Guild information master and leader of its Indarian branch. He orders the Guild to meet Derek's demands after Derek shows that its hidden headquarters is within his reach.",
+            "id": "indarian-branch-leader",
+            "name": "Indarian branch leader",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarven leader of the Assassin's Guild branch in Valum. He refuses to move against Derek, values Roman's brewing, and favors protecting useful allies over provoking a fight he considers unwise. He carries a warhammer.",
+            "id": "braxton",
+            "name": "Braxton",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Derek's Savannah household who assists Malorie and helps protect Brandy. Fear of Assassin's Guild retaliation has kept him from regular dungeon work.",
+            "id": "bones",
+            "name": "Bones",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Derek's Savannah household for whom a large residence is being prepared. Fear of Assassin's Guild retaliation has limited his dungeon activity.",
+            "id": "ogre",
+            "name": "Ogre",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Derek's business associate and the maker of a potent brew valued by Braxton. Assassin's Guild leaders decide that protecting him is preferable to provoking Derek.",
+            "id": "roman",
+            "name": "Roman",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jax's wind-using partner, who is expecting a child as the household prepares for the birth.",
+            "id": "raina",
+            "name": "Raina",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The newborn son of Jax and Raina, and Stacy’s twin. His parents name him after Derek’s surname.",
+            "id": "hunter",
+            "name": "Hunter",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The newborn daughter of Jax and Raina, and Hunter’s twin. Derek chooses her name in memory of his deceased younger sister.",
+            "id": "stacy",
+            "name": "Stacy",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A person whom Braxton authorizes to receive enough information to prepare for an undisclosed threat.",
+            "id": "nix",
+            "name": "Nix",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Earth acquaintance whom Derek locates after returning to his original world.",
+            "id": "silvi-jacobs",
+            "name": "Silvi Jacobs",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Universal System watcher who detects two unprecedented unknown-creature alerts on Earth. Both signals vanish within an hour, and the paired warnings do not match any pattern he has previously encountered.",
+            "id": "darwin",
+            "name": "Darwin",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person known to Derek whose exceptionally strong aura is far from Earth when Derek senses it.",
+            "id": "jace",
+            "name": "Jace",
+            "reveal": {
+              "chapter": 33
+            }
+          },
+          {
+            "description": "Silvi Jacobs's longtime loyal ally and the tank on her rebuilt Earth dungeon team.",
+            "id": "gerard",
+            "name": "Gerard",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful red-skinned human connected to Universal System administration. He comes to Charlotte after escalating alerts and immediately recognizes that Derek does not belong to Earth's system. His earlier questions about Derek show that this encounter follows a long investigation.",
+            "id": "kelvin",
+            "name": "Kelvin",
+            "reveal": {
+              "chapter": 36
+            }
+          },
+          {
+            "description": "A system-protected task-force leader under Kelvin whose history with Derek and Kelvin is openly hostile.",
+            "id": "jace-whitaker",
+            "name": "Jace Whitaker",
+            "reveal": {
+              "chapter": 37
+            }
+          },
+          {
+            "description": "A Universal System fighter whose nullification abilities are identified as a possible counter to Derek. At this point, her precise limits and prospective role remain unknown. Kelvin considers her important enough to include when estimating the force required against Derek.",
+            "id": "trisha",
+            "name": "Trisha",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful, near-giant member of the invading council. She supports the coming operation while questioning the damage caused by keeping top fighters away from worlds already under strain. Her concerns are practical, but she remains committed to the invasion.",
+            "id": "amelia",
+            "name": "Amelia",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The unnamed elven ruler of Lenderas and one of the defenders chosen for the invasion. She accepts guardianship as the defending roster takes shape.",
+            "id": "the-queen",
+            "name": "The Queen",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A named wyvern sent to reinforce Eloria with Edgar and Vanessa.",
+            "id": "blitz",
+            "name": "Blitz",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the twin assassins selected to defend Virindal. She and Vendra accept guardianship together and view the conflict as a chance to fight without their normal restraints.",
+            "id": "arya",
+            "name": "Arya",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the twin assassins chosen as guardians of Virindal. She accepts the role alongside Arya, and both welcome the chance to fight without their usual constraints.",
+            "id": "vendra",
+            "name": "Vendra",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An invading champion identified by another champion as an exceptionally strong defensive combatant. His exact capabilities have not yet been observed by the defenders. Even this limited warning marks him as a likely obstacle in any direct assault on the champion force.",
+            "id": "kuthos",
+            "name": "Kuthos",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A four-armed centaur champion who attacks with four axes and relies on strength and defense. Derek incapacitates him, after which he accepts removal from the invasion rather than death.",
+            "id": "the-indomitable",
+            "name": "The Indomitable",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A command figure directing an invading force after its arrival. He works to regroup scattered champions and intends to turn the conquered stronghold into their operational headquarters. Limited local communications complicate his effort to assemble the invasion's strongest fighters.",
+            "id": "darvin",
+            "name": "Darvin",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An invading organizer responsible for communication boosters, teleportation-assisted scouting, and a recall station intended to reunite the champion force.",
+            "id": "holcomb",
+            "name": "Holcomb",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Queen"
+            ],
+            "description": "The ruler of Lenderas, now identified as the guardian previously designated the Queen. She survives defeat by Amelia but is removed from the invasion.",
+            "id": "queen-serta",
+            "name": "Queen Serta",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cat-like invading champion and assassin who can disappear quickly. She later attacks Avery in Savannah, where Braxton stops her.",
+            "id": "silent-night",
+            "name": "Silent Night",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An invading champion reported to look almost human, transform into a beast, and possess great strength. Derek travels to northwest Indaria to search for him.",
+            "id": "jackis",
+            "name": "Jackis",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The third-ranked member of the invading champion list and leader of his people. He reaches Eloria alone and offers its guardians a formal, nonlethal duel instead of leading an army assault. His challenge places personal combat ahead of the wider siege.",
+            "id": "third-ranked-champion",
+            "name": "Third-ranked champion",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A light-based fighter defending Ashgard alongside Marrick. He confronts Jace when the unaffiliated invader attacks the stronghold's guards.",
+            "id": "david-brandt",
+            "name": "David Brandt",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sapient lizard champion who tried to compel Jace to return to the invading force. Jace confirms that he killed Rhi during their confrontation. The death helps Derek understand both Jace's recent movements and the unexplained loss on the invasion status display.",
+            "id": "rhi",
+            "name": "Rhi",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An assassin among the remaining invading champions. Jace includes her in his briefing on the force gathering at the captured stronghold.",
+            "id": "bria",
+            "name": "Bria",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "David's granddaughter and a highly capable light user. Her ability to disguise and conceal herself makes her the preferred scout for Derek's planned counterattack. She accepts a mission that requires approaching the captured stronghold without revealing the alliance's preparations.",
+            "id": "ashley",
+            "name": "Ashley",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A duke and barrier specialist recruited for the assault on the gathered champions. He can disrupt communications and, with greater effort, interfere with teleportation. Derek selects him to isolate the enemy command while leaving void travel available to the attackers.",
+            "id": "riven",
+            "name": "Riven",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An invading champion who commands insect monsters and can summon large beetle swarms. During the battle at Virindal, the commander tears apart nearby structures to reshape the battlefield.",
+            "id": "insect-commander",
+            "name": "Insect commander",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A returning elf who gives Derek guidance about advancement and the systems, while keeping some information to himself.",
+            "id": "dave",
+            "name": "Dave",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A craft worker whose help Derek seeks while arranging improved equipment for likely defenders.",
+            "id": "tyron",
+            "name": "Tyron",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Braxton's partner of roughly five decades.",
+            "id": "gretchen",
+            "name": "Gretchen",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Alana's circle who remains connected to her resources and joins Derek's household for a special meal.",
+            "id": "stella",
+            "name": "Stella",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jace's squad blacksmith, responsible for repairing his damaged kukri and armor.",
+            "id": "roderick",
+            "name": "Roderick",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Valum and Braxton's younger half-brother. He arranges contracts for legendary armor in exchange for materials and compensation from Derek.",
+            "id": "darius",
+            "name": "Darius",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The master armorsmith directing work on legendary equipment for Derek's allies.",
+            "id": "seamus",
+            "name": "Seamus",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Seamus"
+            ],
+            "description": "A prominent dwarf responsible for crafting Derek's new armor.",
+            "id": "seamus-ironhide",
+            "name": "Seamus Ironhide",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Assassin's Guild operative who joins Eloria's defense from atop Blitz.",
+            "id": "mara",
+            "name": "Mara",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of Cydaria. He releases Vanessa from most of her obligations to the kingdom and offers her a new position as his advisor and head of information gathering.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Braxton’s leaders in training, assigned to watch the condemned subject of a wyvern-brew experiment.",
+            "id": "jared",
+            "name": "Jared",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0G8LLPJ4K",
+            "type": "community"
+          }
+        ],
+        "work": "system-clash"
+      },
+      "recaps": {
+        "ending": "Derek attacks the assembled champions at Virindal after Jace convinces them he remains hostile. Trisha's nullification strips away Derek's spatial and void abilities, and Darvin combines council power into a sustained beam. Jace arrives at the planned moment, allowing Derek to release the energy stored by Void's Embrace and kill Darvin. Silvi forces Kuthos to surrender, Marrick removes Bria and the unconscious Trisha, and the insect commander is captured while trying to escape underground. Amelia yields only after Derek defeats her and demonstrates that she cannot survive in the void. Her surrender ends the invasion and completes the favor requested by the defending system. Derek remains in Davin Resh with Silvi, Jace, and the surviving alliance. He is already level 251 and qualified to ascend, cannot meaningfully grow in the local system, and will be forced to leave within six months. Alana remains alive but unreachable in another system. Derek's relationship with the Universal System, Jace's future, Marrick's advancement, and the possibility of taking allies through ascension all remain unresolved.",
+        "in_short": "After Alana ascends beyond his reach, Derek prepares to follow her but agrees to delay his own ascension when he learns that the Universal System is approaching Davin Resh. He reaches level 251, gains the title Ascending Monarch, and organizes four kingdoms against a three-month invasion. Jace, Derek's former best friend from Earth, enters independently, conquers Virindal, and later reconciles with Derek. The two use Jace's apparent hostility to lure the invading champions together. Trisha temporarily suppresses Derek's void and spatial powers, but Jace's timed rescue lets Derek turn Void's Embrace against the council ritual and kill Darvin. Derek's allies remove the remaining champions, and Amelia's surrender ends the invasion. The defending system records its requested favor complete, while Derek remains with Silvi and his surviving allies under a six-month deadline for forced ascension.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Derek became a powerful void human with deep ties to Savannah and the surrounding kingdoms. Silvi is both his bonded companion and an accomplished fighter and cook. His extended household includes adventurers, craftspeople, merchants, and younger allies whose safety he treats as his responsibility. Malorie manages the Void Emporium, Brandy develops unusual equipment, and Thomas is growing into a capable academy adventurer under Derek's protection. Avery and Edgar stand among his strongest nearby allies, while Natalie helps organize Savannah and Ossian rules allied Indaria. Marrick continues travelling far from Derek's home. Alana is another exceptionally powerful ally within Derek's circle. Derek's unusual growth and his connection to the void have also drawn attention beyond his adopted world. His immediate circle is secure enough to grow, but its safety depends heavily on alliances that cross households, cities, kingdoms, and former enemies.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alana vanishes in a flash, but Derek can still sense her faintly and concludes that greater strength may eventually let him reach her. In Savannah, the household property and its businesses are nearing completion, yet Bones and Ogre remain afraid of retaliation from the Assassin's Guild. Derek makes their freedom his immediate priority. Vanessa, a former Guild vice leader now serving Cydaria, guides him through concealed teleporters to its leadership. Derek threatens the organization if it harms his people and demonstrates that its hidden headquarters is not beyond his reach. The Guild agrees to release Bones and Ogre, protect Derek's circle through the Black Ledger, and free Vanessa from its oaths. Cydaria's king then releases most of her royal obligations and offers her leadership of the kingdom's intelligence work. Vanessa accepts Cydaria by choice. Derek nevertheless considers her uncle, the Cydarian branch leader who threatened his household, an unresolved danger and intends to help Vanessa confront him once the remaining releases are secure.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Braxton, the dwarven leader of the Valum Assassin's Guild branch, refuses a request to kill Derek and instead protects Roman, whose dangerous wyvern brew can drain a drinker's health while masking the damage. Derek and Braxton survive controlled tests, but Roman is told not to sell it freely. Braxton also adopts Derek's proposal for training possible successors as a route toward retirement. Meanwhile, Silvi serves a meal that grants a lasting food-related achievement, strengthening several members of Derek's circle. Once Bones and Ogre receive formal release from the Guild, Vanessa accepts her new place as Cydaria's intelligence chief and prepares to settle her personal grievance. She and Derek enter the Cydarian branch despite an ambush. Vanessa forces her uncle to admit that he arranged her father's death, defeats him in a duel, and kills him after Derek stops the vice leader's attempted interference. Interim leaders take control under outside Guild supervision, leaving Vanessa's revenge complete and the immediate Guild threat to Derek's household largely resolved.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek reaches level 245 and confirms that Alana's contract ended through ascension rather than death, but he still lacks one unknown requirement for his own advancement. Savannah settles into a period of growth: Brandy develops combat flight equipment, Thomas's academy team takes first place, and Jax and Raina safely welcome twins named Hunter and Stacy. Derek's attempt to train Time Prison reveals a severe limitation when creatures held inside it die and mutate during Void Travel. Freed to travel again, he rescues Marrick from a giant octopus at sea and carries him to the distant continent. Marrick has met one advancement condition but has been blocked for more than a century by declining physical attributes. Expecting that he may eventually leave many allies behind, Derek recruits Avery, Edgar, and Silvi for an extended Void Beast hunt. They build a large reserve of valuable meal materials, while Avery and Edgar gain achievement progress. The reserve can now support a broader effort to strengthen the people who may remain after Derek ascends.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek reaches the Great System's apparent maximum at level 250 without ascending. A system-informed elf explains that Derek has already completed the affinity requirement but must exceed the local cap and reach level 251. He also reveals that the Universal System discovered Davin Resh because of Derek's arrival and that the two systems are moving toward a collision. Derek agrees to postpone ascension and help defend his adopted world. He begins an urgent but partly concealed rearmament program. Tyron begins preparing improved weapons for key allies, while Braxton takes Derek to Stonehelm to obtain armor. There Derek learns that Braxton is also a Valum duke and the king's elder half-brother. Valum agrees to produce legendary equipment under contracts preventing its use against the kingdom. Derek also challenges the royal objection to Braxton's long relationship with Gretchen. The king relents, and Braxton confirms that he plans to retire from Guild leadership and marry her after arranging a successor. The alliance now has major equipment work underway, although the nature and timing of the approaching conflict remain uncertain.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before crossing the final advancement threshold, Derek and Silvi travel through the void to Earth. Derek finds his old cabin ruined but locates Silvi Jacobs, the woman whose Portal accident stranded him long ago. She survived the aftermath, rebuilt her life, and now leads a capable dungeon team with Gerard. Their reunion triggers escalating Universal System alerts. Kelvin, humanity's council leader, identifies Derek as an outside-system creature and attacks under orders from Darwin. Derek defeats him but spares him after Kelvin swears that Silvi Jacobs and her companions will not be punished for knowing Derek. She declines Derek's invitation to leave Earth because she will not abandon her team. Back in Davin Resh, Derek grinds enough experience to reach level 251. The Origin System confirms that both advancement requirements are complete and gives him six months before ascension becomes compulsory. He delays departure as promised. The local system can no longer support his growth, and it recommends ending his bond with Silvi so she can develop her own void-cooking affinity. Derek and Silvi choose to remain bonded.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek warns allied leaders that an unusually powerful force may be coming. Cydaria, Indaria, Valum, Savannah, and the Assassin's Guild coordinate preparations, while Natalie offers her estate as a refuge for children and civilians. Legendary weapons are completed for Vanessa and Edgar, and the dwarven master smith Seamus attunes Derek's armor with void energy. The finished mythical set, Void's Embrace, can absorb magical or kinetic attacks, refill Derek's mana, or release stored force in a concentrated burst. Derek also reaches the local limit for permanent stat increases and trains additional resistances. The Universal System council meanwhile holds its strongest fighters ready for an imminent invasion, including Amelia and the level-250 Jace Whitaker. Blue beams finally appear across the continent. Derek gathers his household at Natalie's estate and chooses the defending side when the Origin System offers him the decision. He and Avery are selected as guardians. Derek accepts the public title Ascending Monarch as the system invasion enters its setup phase.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ten guardians are chosen for the defending system, including Derek, Avery, Edgar, Marrick, Ossian, the Queen, and the twin assassins Arya and Vendra. Jace refuses selection as an invading champion, preferring to enter without command obligations. The rules establish four defending strongholds, a three-month limit, and defeat if every stronghold falls or every guardian is removed. Savannah, Ashgard, Virindal, and Eloria receive protected boundaries and three days to prepare. Ossian takes charge of Eloria with Edgar, Vanessa, Blitz, and Guild support, while Silvi stays ready to protect Savannah. When the invasion begins, Derek approaches a centaur champion near an array. At Virindal, Jace appears independently and demands information about Derek. He overwhelms the local army and the twin guardians. Arya continues attacking after disguise and is killed. Vendra yields before Jace's final blow and is removed alive. The system recognizes Virindal as conquered, giving the invaders their first stronghold and removing two guardians before Derek has finished his own opening fight.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek defeats the centaur champion and forces his troops back into their protected array. The invaders regroup under Darvin and Amelia at conquered Virindal, but poor communications leave their command fragmented. Derek's allies stop two approaching armies without losing a stronghold. Ossian traps the Eloria force behind barriers while Mara disperses an incapacitating mist from Blitz, and Braxton and Avery break the Savannah army with controlled overwhelming force. Natalie organizes the prisoners and seized equipment. Elsewhere, Jace kills the lizard champion after building enough battle lust to activate a costly recovery skill, though the invader command does not initially know he is responsible. Holcomb begins restoring communications and assembling the remaining champions. Amelia is sent to remove the isolated Queen Serta. Derek sees the duel and races toward Lenderas, but Amelia defeats the queen's multiple physical bodies before he arrives. Queen Serta survives and is removed from the invasion. Amelia retreats rather than meet the approaching Ascending Monarch, leaving Derek without the confrontation he sought.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Eloria, Edgar accepts a nonlethal duel with the third-ranked invading champion. The champion suppresses Edgar's lightning form and defeats him, after which Derek takes the next duel and wins against the champion's uncontrolled transformed state. The champion later realizes that this fight completed his hidden advancement requirements, leaving him indebted to Derek. At Savannah, Silent Night tries to assassinate Avery, but Braxton intercepts and grievously maims her. Jace meanwhile reaches Ashgard and attacks Marrick and David Brandt after learning that Derek is the Ascending Monarch. Derek arrives before they are defeated and challenges Jace himself. Their escalating fight damages Derek's equipment and drives Jace into a dangerously overfilled battle-lust state, but Derek incapacitates him without killing him. While recovering inside Ashgard, Jace confirms that he refused the champion role and entered independently. He is Derek's former best friend from Earth, not a loyal agent of the invading command. He returns family photographs saved from Derek's ruined cabin, reconciles with him, and becomes a potential source of inside information.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jace explains that he killed the lizard champion Rhi and briefs Derek on the remaining enemy force. Amelia is the strongest direct combatant, Holcomb controls communications, and Trisha poses the greatest tactical danger because she can suppress an affinity across an area. Derek decides to strike only after every champion has gathered at Virindal. Jace volunteers to pose as a defeated enemy, using a deliberately shallow wound and a staged village refuge to convince Darvin and Amelia that Derek spared him after a serious fight. He mixes accurate details with selected falsehoods and agrees to help lure Derek into an ambush, while secretly arranging the reverse. Ashley scouts the captured stronghold under light-based concealment. Derek recruits Riven to disrupt the champions' communications with barriers. Once Kelvin and the final absent council fighter arrive, Jace confirms that all seven active champions are together. The invaders believe they are preparing a coordinated trap for Derek, but Derek's team now has concealment, communications control, an inside signal, and its own assault ready.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek begins the Virindal operation before the champions' planned meeting. Ashley conceals Riven while he blocks communications, Silvi positions herself to transport Jace, and Jace attacks arrays to build battle lust. Derek enters the stronghold alone and immediately targets Trisha. She suppresses his spatial and void powers at severe physical cost, while Amelia restrains him and Darvin channels stored council power into a combined beam. Derek uses Void's Embrace to absorb the attack until Jace arrives at the planned moment. Jace breaks the deception and rescues him. Derek releases the armor's stored mana through the beam and kills Darvin. Silvi disarms Kuthos, Marrick forces Bria to surrender and removes the unconscious Trisha, and Derek's full abilities return. Jace fights Amelia but accepts Derek's intervention before the battle becomes lethal. Derek then defeats Amelia and briefly takes her into the void to prove she cannot survive there. Marrick captures the insect commander fleeing underground with an army. Amelia surrenders, ending the invasion and completing the defending system's requested favor. Derek remains with Silvi and his surviving allies, but forced ascension is only six months away and Alana is still beyond his reach.",
+            "through": {
+              "chapter": 81
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0G8LLPJ4K",
+            "type": "community"
+          }
+        ],
+        "work": "system-clash"
+      }
+    },
+    "system-interference": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Derek"
+            ],
+            "description": "A void-aligned adventurer whose new evolution makes him a Human Void and Void Monarch. He gains unfamiliar powers and must obey an oath that restricts what he can disclose about the system behind the change.",
+            "id": "derek-hunt",
+            "name": "Derek Hunt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Derek's bonded companion, newly evolved into a Gluttonous Void Bunny and Mythical Void Battle Chef. Their stats become fully shared, and each can lend two class skills to the other for a year.",
+            "id": "silvi",
+            "name": "Silvi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted member of Derek's Savannah household who helps manage the Void Emporium. She takes charge of replacing the cloak and communication necklace that Silvi loses during her evolution.",
+            "id": "malorie",
+            "name": "Malorie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The weaponsmith commissioned to turn Derek's raid materials into a tailored glaive. His design uses death-attuned wyvern parts, and he requires Derek to channel void mana during the weapon's final attunement.",
+            "id": "the-smith",
+            "name": "The smith",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The smith's small bonded worm, usually resting near the smith's work area while Derek's equipment is being made.",
+            "id": "rocky",
+            "name": "Rocky",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Prince Edgar"
+            ],
+            "description": "A prince of Cydaria and leader of the high-level raid. He becomes increasingly concerned when a puzzle-trial team remains missing for ten days and must decide how the expedition responds.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A raid participant whose contract vanishes during a dangerous puzzle trial. The survivors report that he fell into the void beneath a collapsing maze and did not return, making him the expedition's first casualty.",
+            "id": "lane-marshall",
+            "name": "Lane Marshall",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wood-affinity mage who volunteers to represent the raid in an epic solo duel after the puzzle trial. She enters with the agreement of her party and Edgar.",
+            "id": "greenland-duelist",
+            "name": "The Greenland duelist",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The male cousin of the Greenland duelist. After her contract ends and confirms her death, he tries to enter the active trial until Avery and Lyra restrain him.",
+            "id": "greenland-cousin",
+            "name": "The Greenland cousin",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Avery Swan"
+            ],
+            "description": "An elite Crown fighter who spars extensively with Derek while the raid waits. He plans a later void-beast hunt with Derek, provided Alana can spare him from his other responsibilities.",
+            "id": "avery",
+            "name": "Avery",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Alana Swan",
+              "Dawn Siren"
+            ],
+            "description": "A legendary half-elf known as the Dawn Siren. She covertly reinforces Cydaria with her elite deathsworn while avoiding direct entry into the war to protect her restaurant staff and nearby civilians.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natalie Savannah"
+            ],
+            "description": "Savannah's city lord and a major financier of Cydaria's defense. Her mercenaries help hold the invasion in check, and her spies track changes within the enemy command.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A raid member whose cousin dies in the epic solo duel. He confronts Derek after Derek survives the same trial, then accepts that his cousin was unlikely to escape it.",
+            "id": "victor",
+            "name": "Victor",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Walter Gracefall"
+            ],
+            "description": "A raid healer and defensive water user whose broken family and Torith contracts provide evidence that a major disaster has struck outside the dungeon.",
+            "id": "walter-searidge",
+            "name": "Walter Searidge",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A light-affinity raid healer who remains outside Avery's tower-trial team so he can continue treating a patient who has not yet recovered.",
+            "id": "tristan-alistair",
+            "name": "Tristan Alistair",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Crown Prince Edward"
+            ],
+            "description": "Cydaria's crown prince and an elite lightning fighter. He leads a small advance force against a portal incursion north of Clayton, only to be sealed inside a coordinated ambush.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enemy crown prince and dark-ice fighter who commands the Clayton ambush. He freezes the battlefield, destroys Edward's right hand, and helps trap the surviving Cydarian fighters.",
+            "id": "titus",
+            "name": "Titus",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An enemy prince who supports the Clayton ambush by maintaining barriers that conceal additional attackers and block teleportation and communication.",
+            "id": "elven-prince",
+            "name": "The elven prince",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Edward's elite response squad who is killed by a moving barrier during the ambush north of Clayton.",
+            "id": "poole",
+            "name": "Poole",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Edward's elite response squad who is killed after Titus freezes the battlefield during the ambush north of Clayton.",
+            "id": "dent",
+            "name": "Dent",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Stella"
+            ],
+            "description": "A Crown business contact and close associate of Alana. She brings news of Edward's ambush to the Void Emporium and helps Malorie coordinate the household's work during the war.",
+            "id": "stella-brighton",
+            "name": "Stella Brighton",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edgar's dragon companion. He is present in the raid dungeon when Silvi opens a void passage into it and accidentally strikes him during her arrival.",
+            "id": "blitz",
+            "name": "Blitz",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A participant whom Natalie commits to Savannah's defense as the city faces an imminent mass attack.",
+            "id": "marcus",
+            "name": "Marcus",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The invading commander who launches the assault on Savannah. He isolates most of the city with a vast displacement barrier, blocks communication and teleportation, and brings his army through portals.",
+            "id": "elven-commander",
+            "name": "The elven commander",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A creature who acts with Avery to restrain a bereaved raid member, immobilizing him at Edgar's direction after he tries to enter the active duel.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormous toxic aquatic creature chosen as Derek's epic solo-duel opponent. Its corrosive attacks make ordinary engagement dangerous, and the trial prevents escape by scroll.",
+            "id": "caustic-whale-of-pestilence",
+            "name": "Caustic Whale of Pestilence",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former Assassin's Guild operative held in Derek's Time Prison. Raised alongside Ogre and exposed to the Guild's reprisals, he is judged the more capable strategist of the two prisoners.",
+            "id": "bones",
+            "name": "Bones",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Shadow Witch"
+            ],
+            "description": "A former Assassin's Guild operative now serving Cydaria as a shadow specialist. Derek consults her about Bones and Ogre while the raid prepares for its final boss.",
+            "id": "vanessa-hodges",
+            "name": "Vanessa Hodges",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bones's very large former-assassin partner. His race and class leave him almost constantly hungry, while confinement in Time Prison and high-quality food offer unusual relief.",
+            "id": "ogre",
+            "name": "Ogre",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sierra"
+            ],
+            "description": "A raid swordswoman recovering after a healer regrows her legs. She can stand as the final boss approaches, though she remains unsteady on the newly restored limbs.",
+            "id": "sierra-cook",
+            "name": "Sierra Cook",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The raid's immense lion-like final boss, equipped with star and space abilities beyond the local system's normal purview. It strips buffs with its roar and can redirect attacks through spatial rifts.",
+            "id": "starfury-leonarus",
+            "name": "Starfury Leonarus",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A raid fighter killed near the Time Prison entrance when Starfury Leonarus redirects Derek's attack through a spatial rift.",
+            "id": "ray-fergus",
+            "name": "Ray Fergus",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Elena"
+            ],
+            "description": "A raid healer who stabilizes survivors after the boss battle. She assists Derek's unusually rapid regrowth and reports the deaths suffered inside Time Prison.",
+            "id": "elena-webb",
+            "name": "Elena Webb",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A raid participant killed inside Time Prison when the final boss's star attack penetrates Derek's refuge.",
+            "id": "john-doyle",
+            "name": "John Doyle",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A raid defender who shields others from the star attack inside Time Prison. She absorbs several hits and reduces the attack's momentum before dying.",
+            "id": "sachiko-sato",
+            "name": "Sachiko Sato",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A returning raid debuffer who dies when the final boss's star attack enters Time Prison.",
+            "id": "john-newman",
+            "name": "John Newman",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A raid participant killed inside Time Prison by the final boss's star attack.",
+            "id": "scarlet-mason",
+            "name": "Scarlet Mason",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elf-like observer with connections to several systems. He intercepts Derek and Silvi after the dungeon exit, assures them that the other raiders are safe, and says he has been watching Derek's progress.",
+            "id": "dave",
+            "name": "Dave",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Adventurer's Guild dungeon specialist who manages the new outpost. He recognizes Derek from an earlier dungeon guide and receives the completed raid account from Elena and Jasper.",
+            "id": "nathan",
+            "name": "Nathan",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jasper"
+            ],
+            "description": "A surviving raid healer whom Derek assigns, alongside Elena, to brief the Adventurer's Guild on the completed dungeon and its losses.",
+            "id": "jasper-ross",
+            "name": "Jasper Ross",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Captain Herrett",
+              "Jackson",
+              "Crimson Blade"
+            ],
+            "description": "Derek's returning guard and trainer. He seeks the full truth behind his family's kidnapping and murder, an unresolved obligation that remains larger than personal revenge against any single culprit.",
+            "id": "jacks",
+            "name": "Jacks",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CSG9L78P",
+            "type": "community"
+          }
+        ],
+        "work": "system-interference"
+      },
+      "recaps": {
+        "ending": "Silvi kills Starfury Leonarus by opening Void Travel inside it and using Dragonfire, ending the raid dungeon. The victory costs seven lives. Ray Fergus dies when the boss redirects Derek's attack through a spatial rift, and four raiders die when the boss's star attack penetrates Time Prison. The survivors recover at a new Adventurer's Guild outpost, where Elena and Jasper are assigned to give the official account. Dave intercepts Derek and Silvi after the exit and identifies Origin System attention as the cause of their anomalous evolution and blocked rewards. Derek can no longer gain direct stats or skill upgrades from the Great System and must seek suitable essence instead. Dave provides new space abilities, gives Silvi recipes, authorizes a one-time release for Bones and Ogre, and reserves an unspecified future favor. Savannah has survived its assault, and Alana, Edgar, and Blitz have pushed the invaders close to Cydaria's border, but the war is still active. Derek and Silvi leave the outpost for Savannah, while Bones and Ogre remain oath-bound prospective allies whose practical release and employment are still pending.",
+        "in_short": "Derek and Silvi emerge from linked evolutions with stronger void powers, a shared oath, and advancement that the ordinary system increasingly refuses to grant. While Cydaria faces an invasion, Derek survives a lethal solo trial and takes command of the raid after Silvi rescues Edward and Edgar leaves for the war. Alana, Natalie, and Marcus repel the assault on Savannah. Derek recruits Bones and Ogre before leading the remaining raiders against Starfury Leonarus. Silvi kills the boss from within, but seven raiders die during the dungeon. Dave then explains that Origin System attention caused the interference and that Derek now needs higher-quality essence to progress. He grants new abilities in exchange for a future favor. The raid returns to a new outpost, while Derek and Silvi depart for Savannah and the war remains unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Derek Hunt is a powerful void-aligned adventurer bonded to Silvi, a sapient void companion whose appetite and cooking abilities are central to their partnership. Avery is an elite Crown fighter, and Edgar is a Cydarian prince accustomed to leading other high-level combatants. Alana is a legendary half-elf and Crown leader, while Natalie governs Savannah and supports its defense. Malorie manages Derek's household and Void Emporium interests when he is away. Derek also carries an unresolved responsibility to Jacks, his guard and trainer, who wants the full chain behind his family's kidnapping and murder uncovered. Derek and several of his strongest allies have entered a demanding raid dungeon, leaving their wider responsibilities in other hands. The expedition and the affairs of Cydaria remain connected to Derek's growing void powers, his unusual bond with Silvi, and the dangers created by his prolonged absence.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek and Silvi complete simultaneous evolutions. Derek becomes a Human Void and Void Monarch, gains Void Creation and Void Travel, and is bound by an oath that prevents him from freely discussing the outside system responsible. Silvi becomes a Mythical Void Battle Chef, fully shares Derek's stats, and exchanges two class skills with him. The smith uses wyvern materials and Derek's void mana to finish Void's Harbinger, a legendary glaive that can repair itself by consuming material and merge into Derek's body. The dungeon turns deadly when Lane Marshall falls during a collapsing puzzle trial. A wood-affinity mage then enters an epic solo duel and dies. Derek volunteers for the same trial, only to discover that escape scrolls do not work inside it. Trapped with the Caustic Whale of Pestilence, he attacks from within its body, protects himself with Void Creation, and learns that the glaive can drain living tissue. He reaches the creature's brain and kills it, completing the duel while concluding that the raid needs firmer central control.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Outside the dungeon, Cydaria has been fighting an invading alliance for about a year. Alana and Natalie have helped keep the defense intact, but Torith has fallen and the enemy prepares a new offensive. Inside the raid, broken contracts give Edgar and Walter reason to suspect an invasion even before they receive confirmation. Derek returns from the solo duel with a new achievement, although system interference disrupts his reward. At Clayton, Edward leads a small force against an enemy portal and is ambushed by Titus and an elven prince. Titus destroys Edward's right hand, and layered barriers prevent escape or communication. When news reaches the Void Emporium, Silvi uses Void Travel to cross the distance. She breaks into the sealed battlefield, kills the elven prince and other attackers, and saves Edward as Cydarian reinforcements arrive. Silvi then visits the capital for a promised reward before opening another void passage directly into the time-distorted raid dungeon. Her kills confirm to Derek and Edgar that the elven kingdom is participating in the invasion, while the enemy begins to understand that Derek's bonded companion caused the defeat at Clayton.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Silvi reports the war to the raid, including Edward's survival and the elven prince's death. Edgar judges that the invaders may target Silvi to incapacitate Derek through their bond, so he leaves the dungeon on Blitz and transfers command to Derek. The enemy then attacks Savannah, isolating the city beneath a displacement barrier. Natalie delays the army while Marcus covertly attaches debuff talismans to the elven commander and destroys several portal teams. Alana exploits the sabotage, turns enemy soldiers against one another, and activates Metamorphosis Dawn Siren after she is trapped. The transformation lets her kill an allied crown prince and overpower the elven commander, forcing a retreat, though she collapses afterward. When Alana wakes, she confirms that she remained conscious and in control of the dangerous form. Back in the dungeon, Derek allows anyone with an escape scroll to leave and establishes his authority over those who remain. Silvi learns Dragonfire, and the smith supplies more of Derek's wyvern armor while leaving the gloves and boots unfinished. Avery's overdue trial team finally returns, allowing the reduced raid to continue under Derek's command.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek selects a ten-person team for an epic survival trial against thousands of beasts. Silvi destroys several leaders with Void Shift and Dragonfire, while Derek, Avery, Lyra, and the others coordinate against the remaining armies. The group eventually clears the trial, and Derek reaches level 222. He and Silvi raise their shared stats, but an outside system interrupts the resulting threshold reward. When the trial distributes its prizes, every participant except Derek and Silvi receives the expected stat and skill benefits. Their shared oath prevents Derek from safely explaining the interference. With the sixth trial complete, the raid activates the final boss and receives two days to prepare. Derek releases Bones from Time Prison and consults Vanessa about him and Ogre, two former assassins raised together by the Assassin's Guild. Both face the Guild's bounty after capture. Derek offers them protected work in Savannah instead of returning them to their former organization. After negotiating safeguards against exploitation, Bones and Ogre swear loyalty. Dungeon restrictions prevent either prisoner from leaving Time Prison or joining the coming boss battle, so their future employment must wait until the expedition ends.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Derek gathers the 21 surviving raiders and prepares a cautious boss plan, using Time Prison as a refuge for healers and less qualified fighters. The outside system intervenes during the summon because Starfury Leonarus exceeds the local system's normal limits, reducing the creature's stats before the battle begins. The immense star and space wielding beast removes buffs and redirects one of Derek's attacks through a rift, killing Ray Fergus near the Time Prison entrance. Rocky tears off one of its legs before being wounded, while Derek loses a foot and suffers severe damage to his other leg. The raid cannot overcome the boss's regeneration, and its spatial attack forces Derek to spend much of his mana on containment. Silvi secretly opens Void Travel inside the creature and burns it internally with Dragonfire, killing it. She survives with serious burns. The aftermath reveals a second disaster: the boss's star attack entered Time Prison and killed John Doyle, Sachiko Sato, John Newman, and Scarlet Mason. Sachiko shielded others before dying. Elena and Tristan stabilize the injured, and Elena helps Derek regrow his missing foot. The dungeon's total death toll has reached seven.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dungeon absorbs Starfury Leonarus's body and grants completion rewards. Derek and Silvi learn Spatial Redirection, while the other survivors receive doubled stat and skill rewards. Bones and Ogre remain restricted as dungeon entities until Derek completes his exit. Instead of returning directly to Cydaria, Derek and Silvi are taken to a gray room where an elf-like observer named Dave explains the interference. Derek's void evolution drew the Origin System's attention, and his altered body can no longer receive direct advancement from the Great System. Future growth will require sufficient higher-quality essence. Dave gives Derek Mental Resistance, Spatial Rend, and Spatial Collapse, supplies Silvi with recipes and seasonings, and permits a one-time overworld release for the prisoners. In return, he reserves a future favor intended to benefit both sides. Derek, Silvi, and the surviving raid then appear at a new outpost beside the inactive dungeon orb. They learn that Savannah repelled its assault and that Alana, Edgar, and Blitz have pushed the enemy near Cydaria's border, though the war remains undecided. Elena and Jasper stay to brief the Guild, while Derek asks Avery to carry him and Silvi toward Savannah.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CSG9L78P",
+            "type": "community"
+          }
+        ],
+        "work": "system-interference"
+      }
+    },
+    "tarots-ninth-harbinger": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Divine Apostate and Architect protecting Grave. He begins by examining two defeated deities with his allies, seeking knowledge that may improve godstone research while the collapse of the Pact reshapes the divine balance.",
+            "id": "ruwen-starfield",
+            "name": "Ruwen Starfield",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ruwen's mind-linked ally and Miranda's daughter. She explains how Miranda helped bring down the Pact, while remaining uncertain about the purpose behind her mother's intervention.",
+            "id": "rami",
+            "name": "Rami",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Keeper of the Shattered Sun and a godstone researcher. His reconstructions can preserve learned capabilities in living dungeon beings without transferring the original person's soul or memories.",
+            "id": "fractal",
+            "name": "Fractal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful figure who maneuvered a hostile deity into helping dissolve the Pact and then publicly supported Ruwen. Her motives remain uncertain when her apparent change of alignment is disclosed.",
+            "id": "miranda",
+            "name": "Miranda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent avatar within Ruwen's inner world. The avatar explains how divine bodies anchor souls and helps Ruwen reason about what would make a deity's death permanent.",
+            "id": "eirus-inner-world-avatar",
+            "name": "Eiru's inner-world avatar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Black Pyramid figure and Fractal's protective companion. She trades access to her divine realm and other resources for Ruwen's help repairing the prison and returning its captives.",
+            "id": "blapy",
+            "name": "Blapy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's martial companion, found alive but unconscious after the Black Pyramid crisis.",
+            "id": "sift",
+            "name": "Sift",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sift's large tortoise companion, found alive but unconscious beside him after the Black Pyramid crisis.",
+            "id": "elder-star-tortoise",
+            "name": "The elder star tortoise",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sift's partner and one of Ruwen's scouts. She is missing after the divine attack, but Blapy's location marker proves that she is alive and moving south.",
+            "id": "lylan",
+            "name": "Lylan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruwen's partner, healer, and protector. She tends Sift and his tortoise companion while they remain unconscious, despite finding no ordinary injury that explains their condition.",
+            "id": "hamma",
+            "name": "Hamma",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The deity associated with Ruwen's nation. At a meeting with Ruwen and three champions, she reports the Pact's end and Miranda's apparent change of allegiance.",
+            "id": "eiru",
+            "name": "Eiru",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An autonomous and destructive construct formerly housed in Ruwen's mind. By the time Ruwen discusses it, Nameless has departed with the Infernal Lord and become a reason to investigate that enemy.",
+            "id": "nameless",
+            "name": "Nameless",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful adversary in the Infernal Realm who has received Nameless. Ruwen treats the alliance as dangerous enough to justify a covert mission by Eiru's enhanced champions.",
+            "id": "infernal-lord",
+            "name": "Infernal Lord",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The intelligence of Eiru's third temple and Ruwen's systems adviser. Ruwen's apostasy has broken normal temple monitoring, prompting Lir to search for a safer way to restore useful status information.",
+            "id": "lir",
+            "name": "Lir",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A golden fortune golem visible in Lir's oldest recovered image. Lir's partial identification suggests Tarot may hold context for encrypted memories and the unfamiliar information now available to Ruwen.",
+            "id": "tarot",
+            "name": "Tarot",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An autonomous resident of Ruwen's inner world who resembles him and helps assess threats there. Overlord supports Lir's transfer while warning that Ruwen's mental constructs are becoming more capable.",
+            "id": "overlord",
+            "name": "Overlord",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drake ally of Blapy who accompanies Ruwen on the expedition into a temporal rift whose nature and dangers are still unknown.",
+            "id": "chip",
+            "name": "Chip",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drake ally who accompanies Chip and Ruwen into the temporal rift. Stump joins them in the ground engagement against the Nexus facility's mechanical defenders.",
+            "id": "stump",
+            "name": "Stump",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former researcher whose artifacts and journals remain important to Ruwen. Tarot identifies Penn as the seventh Harbinger and describes his work as driven by a belief that the universe lacked balance.",
+            "id": "penn",
+            "name": "Penn",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sapient, three-headed guardian blocking the trench where Lylan is believed to be. The Royal Sea Hydra Queen possesses immense regeneration, acid and psychic attacks, and treats Ruwen's party as trespassers.",
+            "id": "royal-sea-hydra-queen",
+            "name": "Royal Sea Hydra Queen",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A death-affiliated divine figure who approaches while Ruwen works to reunite Lylan with the Royal Sea Hydra Queen on Earth. Her intentions are not yet established at her arrival.",
+            "id": "aspect-of-death",
+            "name": "Aspect of Death",
+            "reveal": {
+              "chapter": 24
+            }
+          },
+          {
+            "description": "A Deepwell worker and practical adviser who reports public fear following rumors of Eiru's death. Bliz helps Ruwen assess how sweeping class and civic reforms might affect ordinary people.",
+            "id": "bliz",
+            "name": "Bliz",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civic and labor adviser who joins Ruwen and Bliz in responding to national panic. Big D tests reform proposals against their likely social and economic effects.",
+            "id": "big-d",
+            "name": "Big D",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Shattered Sun's quartermaster and a major source of logistical support for Fractal's expanding dungeon. Fluffy's work helps sustain its adventurers, directors, creatures, and growing infrastructure.",
+            "id": "fluffy",
+            "name": "Fluffy",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poison-and-remedy specialist who works through multiple minion bodies. The narrator synchronizes Ruwen's alchemy teams and assigns recipes across the production effort.",
+            "id": "alchemy-narrator",
+            "name": "The alchemy narrator",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest among the Black Pyramid's escaped captives. Blapy warns Ruwen that this figure may be able to make demons resistant to spirit attacks, although soul attacks should remain effective.",
+            "id": "escaped-captives-priest",
+            "name": "The escaped captives' priest",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The alchemy narrator identified by name after completing the tenth recipe volume through a minion. Arcanum returns to Ruwen's mind as a Grandmaster Alchemist and accepts his offer of future collaboration.",
+            "id": "arcanum",
+            "name": "Arcanum",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A godstone researcher associated with the Shattered Sun. Xavier reports that functioning samples are under test while Ruwen insists that no soul be entrusted to the process before its effects are understood.",
+            "id": "xavier",
+            "name": "Xavier",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hostile priest shown bound within the Dark Temple in Coley's detailed records. The temple also contains soul-powered gates and writing in three untranslated Outerverse languages.",
+            "id": "dark-priest",
+            "name": "Dark Priest",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The defender of the last surviving city on a demon-ravaged world and an ally from Ruwen's master's trial. Ruwen recognizes the ally's world when Big D is taken there as bait.",
+            "id": "surviving-masters-trial-ally",
+            "name": "The surviving master's-trial ally",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Plague Siren's daughter and an aspect of death found mourning in the abandoned central sanctuary. Echo can determine that her mother's soul is absent, placing the loss beyond the healing available to Ruwen's group.",
+            "id": "echo",
+            "name": "Echo",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CX9KG4HD",
+            "type": "community"
+          }
+        ],
+        "work": "tarots-ninth-harbinger"
+      },
+      "recaps": {
+        "ending": "Ruwen rescues Big D, destroys Nameless inside his mind, and learns that the Infernal Lord has likely joined forces with the Dark Priest and two corrupted angels. When both crossing rings on the last city's world explode, Ruwen uses Hamma's unexplained resonance with Clouds Embracing the Sun to extend his soul vault around the whole city and move its population to Grave. The artifact breaks into four pieces, Hamma remains in pain, and Ruwen's soul regeneration falls to one percent of its former rate. Ruwen then leads an assault into the Infernal Realm, but the Infernal Lord has emptied the central sanctuary and escaped. Echo remains there to mourn her mother and parts from Ruwen as an ally. Big D returns safely to Midpoint, Fractal remains sealed in a crystal cocoon, and Eiru's reconstruction continues. The locations of the Infernal Lord, the Dark Priest, and the corrupted angels remain unknown. Penn's soul vault may have been taken, safe soul restoration through godstone is still unproved, and the Harbinger and Outerverse threats remain urgent.",
+        "in_short": "After the Pact collapses, Ruwen investigates godstone, a temporal rift, and the system changes caused by his divine advancement. The rift yields affinity technology, while Tarot reveals that Ruwen is the ninth Harbinger after Penn and the Infernal Lord. Ruwen rescues Lylan, reforms and rebuilds Eiru, gains realm-travel artifacts, splits and delays the local segment of a realm zipper, becomes a Conductor of the Eighth Harmony, and reaches Grandmaster Alchemist. Penn's research links souls, chakras, Harmony, divine golems, and dangerous experiments. The Infernal Lord then abducts Big D as bait and helps Nameless attack Ruwen through Rami's mental bond. Ruwen saves Big D and destroys Nameless, but a linked crossing-ring blast threatens an entire city. With Hamma channeling a powerful artifact, Ruwen stores the city in his soul vault and relocates it to Grave. He attacks the Infernal Realm, only to find the Infernal Lord gone. Echo remains behind as an ally, while Ruwen returns to reconstruction and prepares to hunt the missing enemy alliance and strengthen his companions.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ruwen Starfield became a Divine Apostate and Architect while defending Grave and Eiru from divine and infernal threats. His closest allies include Hamma, Sift, Lylan, Rami, Fractal, Blapy, Lir, and the autonomous inhabitants of his inner world. A severe crisis struck the Black Pyramid, Lylan disappeared, and Ruwen fought two attacking deities. He must now find his missing companions, understand his altered powers, rebuild Eiru, and meet his obligations to the Black Pyramid.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen and his allies study the bodies and souls of two defeated deities while Fractal continues godstone research. Miranda helped dissolve the Pact and appears to have changed sides, though her reasons remain unclear. Blapy offers resources and access to her time-dilated divine realm in exchange for help repairing the Black Pyramid and recovering its prisoners. Sift and his elder star tortoise awaken after the pyramid disaster with altered soul structures, while Lylan remains missing but alive. Ruwen asks Eiru's champions to infiltrate the Infernal Realm after major enhancements, because Nameless has joined the Infernal Lord. His apostasy has also exposed an Architect framework and disrupted ordinary temple status support. Lir recovers fragments of his past, including an image of Tarot, and transfers a synchronized copy of himself into Ruwen's mind under new safeguards. The intended training period is then interrupted when Ruwen arrives at the Black Pyramid instead of Blapy's divine realm.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Blapy directs Ruwen to investigate a temporal rift caused by the universe-level changes surrounding his Architect advancement. Ruwen enters with Rami and two drake allies, including Chip, after testing soul-powered gate runes as a potential escape method whose operation inside the rift remains unproved. The rift leads to a defended Nexus facility on the remains of a world from a destroyed universe. Its mechanical forces counter Ruwen's spells and Harmony with specialized shields, dampening fields, and replicators. Chip begins teaching Ruwen to form a soul vault because ordinary storage fails inside the rift. Lir identifies the alien terrain and machinery, while Rami connects the Nexus to unfamiliar Outerverse factions. Ruwen finally uses the distinct adaptive resonance of his wings to destroy the facility's strongest carriers and the nearby forces. With the immediate defenders defeated, the party detects energy in the central building and begins investigating it.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nexus site contains an affinity wheel and an automated Purge research presence waiting for reinforcements that will never arrive. Ruwen learns that three major factions divide power through souls, chakras, and Harmony-like identity lattices. The facility's experiments concern entanglement femites, which select Hamma and leave her able to recognize the wheel's affinities. Ruwen corrects the wheel, completes its research quest, and sends the recovered affinity tools to Fractal through Blapy. The site's records survive even after its final probe destroys itself. Tarot also reveals the larger crisis: Penn was his seventh Harbinger, the Infernal Lord is the eighth, and Ruwen has become the ninth. Ruwen's divine transition allowed the system to exceed old limits and seek contact beyond the universe. With the rift investigation complete and the Infernal Lord confirmed alive, Ruwen makes Lylan's rescue the immediate priority.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen, Hamma, Sift, and the elder star tortoise follow Lylan's signal into a deep ocean trench. A powerful Royal Sea Hydra Queen blocks their path, surviving repeated destruction of its heads and resisting their magical, mental, and soul attacks. Ruwen displaces the Queen rather than killing it, then finds Lylan critically weakened in a ruined underwater city. Lylan's life is bound to the Queen, which has been sent to Earth. The group follows, protects the hydra from military attacks, and reunites it with Lylan, restoring her health. The Aspect of Death explains that Earth recently gained infernal-tainted spirit when destruction of the Savage Island crossing ring triggered its linked ring. Her father, the Infernal Lord, contained that disaster. Ruwen warns her about Nameless but leaves without settling Earth's wider danger. Back on Grave, Lylan reveals that her blood has changed and become poisonous. The party divides, with Ruwen turning toward national rebuilding and reform.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rumors of Eiru's death threaten national stability. Ruwen works with Bliz and Big D on extensive reforms: voluntary class resets, broader access to abilities, contribution-based rewards, multiclassing limits, paired human and creature enforcers, and new civic communication and voting systems. National leaders accept the broad plan after Ruwen demonstrates that the country remains protected. He begins expanding surveillance and replenishing spirit from stored magical metal. Penn's recovered artifacts then open a different path. Ruwen binds the Threshold Compass of Fortune, a weapon connected to 32 divine golems, and the Triumvirate Bridge. The Bridge carries him from the material realm to the Spirit Realm and back without apparent energy cost, although external communication fails during the transfer. He then uses it to enter the Shadow Realm, whose hazards remain untested.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen investigates how his soul interacts with the Shadow Realm and binds a private sanctum filled with inherited maps, books, and artifacts. He postpones examining its contents until the uncontrolled creation of inner-world entities can be contained. Tarot and Rami reveal that the Prime has restricted Ruwen to the universe's first six dimensions, preventing a hoped-for solution to its depleted spirit. Ruwen also accepts the Forbidden Unity quest, even though completing it will draw Outerverse hostility. Penn's sword can store one chosen ability from each of 32 divine golems, and Ruwen uses Tarot's place to preserve a short-range resurrection effect for recently fallen allies. Tarot then takes Ruwen and Rami to a realm zipper, a system-driven separation of creation and destruction from the material realm. With escape becoming impossible, Ruwen prepares to stop the local segment approaching Grave.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen reaches beneath ordinary matter into the Femite layer and uses its universal resonance as a medium for Harmony. He splits the local realm zipper and lets its damaged halves pass around him, Rami, and Tarot. The feat advances his Harmonic path and forces a choice among several specializations. After weighing the cost and danger, Ruwen becomes a Conductor of the Eighth Harmony. He learns a wide-area suppression effect that makes soul abilities far more expensive and a stillness effect that reduces frequencies to zero while maintained. Rami also forms her first small soul vault. The group concludes that inhabitants of their universe combine soul and chakra traits that the hostile Outerverse factions normally keep separate, making the truth an existential secret. Meanwhile, Ruwen's mental world has expanded into many populated planets. Rather than erase their inhabitants, he appoints Lir to build a restricted internal system that will control new entity formation and strengthen defenses against intrusion.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen visits the rapidly growing Shattered Sun and reviews Fractal's godstone work. The process can preserve non-soul dungeon beings, but copying or restoring a real soul remains unsafe and unproved. Fluffy's quartermaster work has been essential to the dungeon's expansion. Ruwen then enters the Black Pyramid's alchemy facilities under a severe time limit, hoping to reach the level needed to unlock Fractal's complete recipe access. He delegates production to the alchemy narrator and an enormous network of alchemist minions, selects the Fortune path, and gains boons that accelerate advancement, improve luck, and permit retries after failures. Fluffy quietly extends his opportunity with additional work when the original supply runs out. The final production team succeeds just before the extended limit closes, bringing Ruwen to alchemy level 1,000. He completes the hidden Path to Perfection and becomes a Grandmaster Alchemist.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miranda certifies Ruwen as a Black Pyramid Grandmaster Alchemist and later confirms her continuity with Blapy. His Fortune recipe creates Liquid Luck, which can permanently alter karmic value but cannot benefit its maker. After passing a practical examination with an original poison-defense pill, Ruwen enters the long Tournament of Perfection for a chance to reach the Nine Muses' Archive. He then selects Civil Development and Satisfaction as Eiru's national focus, providing citizens with civic and work benefits while committing the nation to that direction for a year. Using system-backed planning, architectural advice, and merit-based allocation, he reshapes Eiru and begins extending new construction templates across the country. Lir increases building quests and adds safeguards against merit exploitation.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen reunites with Hamma, Sift, and Lylan at Poor Judgment. A wealthy foreign adventurer tries to seize a resurrection pill, but Ruwen's group defeats the challenge without killing anyone and distributes the surrendered valuables. Sift begins learning gate runes with his immense new soul power. Xavier reports promising godstone samples, while Ruwen forbids any soul test before the risks are understood. Penn's journals then connect the 32 divine golems, designed and levelable souls, eight chakras, bamboo-viper training, and the imprisoned Dark Priest. Eiru confirms that Ruwen's parents protect the surviving step-trained chakra experiment. Fractal's latest godstone resembles an identity lattice, but restoration remains unproved. Ruwen also learns that the crossing-ring disaster affected the experiment's world and that the Infernal Lord's daughter was assigned there as an instructor. Before the group can finish comparing these discoveries, a new portal and demon incursion appears near Poor Judgment.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The demon incursion is a diversion while a second breach at Midpoint kills scouts and abducts Big D. Ruwen follows the trap to a demon-threatened world, sends Sift and Lylan to reinforce its last city, and rescues Big D with Hamma. The Infernal Lord is present, and Nameless exploits Rami's deep bond with Ruwen to enter his mind and search for his true name. Ruwen's protected consciousness remains beyond its reach, allowing him to destroy Nameless and end the mental assault. He learns that the Infernal Lord has likely allied with the escaped Dark Priest and two corrupted angels, possibly to seize Penn's soul vault. The enemy then detonates both crossing rings on the planet and escapes through the Shadow Realm. With an explosion about to consume the last city, Ruwen discovers that Hamma can channel the vast power of Clouds Embracing the Sun. He uses that energy to extend his soul vault around the city, stores its entire population, and triggers an emergency return to Grave while the artifact cracks.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ruwen releases the rescued city at a coastal site on Grave. Clouds Embracing the Sun breaks into four pieces, leaving Ruwen obligated to return the remnants to its creator. Hamma remains in pain from channeling it, and moving the city reduces Ruwen's soul regeneration to one percent of its former rate. Despite that weakness, he immediately leads allies into the Infernal Realm. Sift's soul attacks, Hamma's residual artifact power, and Lylan's new resonance technique prove highly effective against darkness-infected demons. Ruwen breaks the central-ring shield but finds the Infernal Lord and his treasures gone. Echo, the Plague Siren's daughter, remains behind to mourn her mother, whose missing soul makes resurrection impossible. She accepts Ruwen's group as allies. Three days of searching fail to locate the Infernal Lord, the Dark Priest, or the corrupted angels. Big D is safe, Fractal is inactive in a crystal cocoon, and Eiru's reconstruction continues. Ruwen plans to strengthen his allies while pursuing the Harbinger threat, the possible loss of Penn's soul vault, safe soul restoration, and the unresolved connections among souls, chakras, Harmony, Affinity, and Bloodline.",
+            "through": {
+              "chapter": 79
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CX9KG4HD",
+            "type": "community"
+          }
+        ],
+        "work": "tarots-ninth-harbinger"
+      }
+    },
+    "tears-of-liscor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The innkeeper of the Wandering Inn, where people from hostile groups can meet under her protection. After helping rescue captives from Liscor's dungeon, she gives the survivors a quiet place to recover.",
+            "id": "erin",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Gnoll newly returned from captivity in Liscor's dungeon. Mrsha is frightened by food and familiar surroundings, keeps a wand close for reassurance, and slowly begins to understand that she is free while Erin and Lyonette care for her.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mrsha's guardian and a manager at Erin's inn. Lyonette is intensely protective after the young Gnoll returns from captivity, patiently helping her face ordinary food and familiar surroundings while recognizing that recovery will take time.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-elf adventurer and leader of the Horns of Hammerad, recently rescued from the dungeon and reunited with her team. Ceria is still carrying the effects of captivity and believes Calruz was mentally altered, though she does not excuse what he did.",
+            "id": "ceria",
+            "name": "Ceria",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fighter in the reunited Horns of Hammerad. Yvlon welcomes Ceria back after the dungeon rescue and joins her companions in considering their recovered rewards, Calruz's condition, and what the team should do next.",
+            "id": "yvlon",
+            "name": "Yvlon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A necromancer in the reunited Horns of Hammerad. Pisces welcomes Ceria back after her rescue and joins the team's discussion of the dungeon expedition and its aftermath.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium member of the reunited Horns of Hammerad. Ksmvr is present when Ceria returns from captivity and the team considers its recovered rewards and future.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The captured Minotaur who led the furred hunters in Liscor's dungeon and once captained Ceria's adventuring team. Ceria believes his mind was impaired during the captives' ordeal, but regards that only as context, not forgiveness.",
+            "id": "calruz",
+            "name": "Calruz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Wall Lord Ilvriss"
+            ],
+            "description": "An influential Drake Wall Lord involved in the aftermath of Liscor's dungeon expedition. Ilvriss publicly credits the allied forces for the city's victory.",
+            "id": "ilvriss",
+            "name": "Ilvriss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young Cave Goblin among those Erin shelters after the dungeon uprising. Pebblesnatch arrives with the injured Goblin group and joins the broader gathering that turns a tense encounter outside Selim into a shared day of baseball.",
+            "id": "pebblesnatch",
+            "name": "Pebblesnatch",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Flooded Waters chieftain"
+            ],
+            "description": "The young chieftain of the hunted Flooded Waters tribe. Rags keeps her exhausted people moving under cavalry pressure, trusts selected officers to support her command, and begins questioning the cycle of retaliation between Humans and Goblins.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An injured scout who directs mounted fighters for the Flooded Waters tribe. Red Scar supports Rags and helps their weary people continue the march south.",
+            "id": "red-scar",
+            "name": "Red Scar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flooded Waters fighter who survives the battle for Liscor and gathers with the remnants under Rags.",
+            "id": "poison-bite",
+            "name": "Poison Bite",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An advanced magic-user in Rags's tribe whose personal name is uncertain. The Goblin spellcaster hunts with lightning and helps the Flooded Waters survive while human cavalry drives the exhausted tribe south.",
+            "id": "goblin-spellcaster",
+            "name": "Goblin spellcaster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former chieftain of the Redfang warriors who now follow Rags. Garen challenges their transfer of loyalty and holds a key connected to an old Goblin legacy, placing him at the center of a dispute with Rags, Tremborag, and an approaching Goblin Lord.",
+            "id": "garen-redfang",
+            "name": "Garen Redfang",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Great Chieftain of the mountain-settlement tribe and a hostile rival of Rags. Tremborag considers the Flooded Waters traitors for leaving his settlement and competes with Garen Redfang and the Goblin Lord for influence over the migrating Goblin host.",
+            "id": "tremborag",
+            "name": "Tremborag",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Liscor's strategist and the author of its account of the dungeon battle. Olesm reports that Goblins helped rescue the captives, warns that the dungeon remains a Gold-rank threat, and gains formal recognition from Liscor's army for his conduct.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Goblin necromancer commanding Goblin soldiers and undead while a human army drives his forces south. The Goblin Lord says that he serves a master but is not enslaved.",
+            "id": "goblin-lord",
+            "name": "Goblin Lord",
+            "reveal": {
+              "chapter": 4
+            }
+          },
+          {
+            "aliases": [
+              "the Goblin Lord"
+            ],
+            "description": "A Goblin Lord and necromancer whose army marches under human pressure. Rhys once shared a close bond with Garen Redfang, but their paths divided after Rhys entered a necromancer's service and began using undead forces.",
+            "id": "rhys",
+            "name": "Rhys",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A captive Drake officer travelling with forces commanded by Rhys. He keeps her alive for her knowledge, with restraints placed on her wings.",
+            "id": "captive-drake-officer",
+            "name": "Captive Drake officer",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A trusted lieutenant serving Rags in the Flooded Waters tribe. Quietstab helps maintain the tribe's command structure during its uneasy alignment with other Goblin factions, until Tremborag secretly kills him and conceals the body.",
+            "id": "quietstab",
+            "name": "Quietstab",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An individual Antinium worker who guards Erin's inn and hunts birds with a bow. Bird is only about two years old, treasures the signs of friendship he receives, and explains that individuality can place unnamed workers in danger from their own Hive.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Redfang Hobgoblins leading and tending the Cave Goblins freed from the dungeon. Head Scratcher is wounded after the uprising but remains active in their care.",
+            "id": "head-scratcher",
+            "name": "Head Scratcher",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Redfang Hobgoblins leading and tending the Cave Goblins freed from the dungeon. Numbtongue joins the injured group that Erin treats and invites to the meadow.",
+            "id": "numbtongue",
+            "name": "Numbtongue",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Redfang Hobgoblins leading and tending the Cave Goblins freed from the dungeon. Rabbit Eater joins the injured group that Erin treats and invites to the meadow.",
+            "id": "rabbit-eater",
+            "name": "Rabbit Eater",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Redfang Hobgoblins leading and tending the Cave Goblins freed from the dungeon. Bad Arrow joins the injured group that Erin treats and invites to the meadow.",
+            "id": "bad-arrow",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of five Redfang Hobgoblins leading and tending the Cave Goblins freed from the dungeon. Shorthilt joins the injured group that Erin treats and invites to the meadow.",
+            "id": "shorthilt",
+            "name": "Shorthilt",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Selim performer who prevents panic when Erin arrives with Goblin guests by presenting them as her employees. Wesle's Method Acting allows him to reproduce rehearsed roles and skills within limits.",
+            "id": "wesle",
+            "name": "Wesle",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The deputy leader of the Gold-rank Wings of Palace adventuring team. While awaiting talks over recovered artifacts, Bavusa meets Bird and comes to see the young Antinium as an individual.",
+            "id": "bavusa",
+            "name": "Bavusa",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the Halfseekers involved in negotiations over artifacts recovered from Liscor's dungeon. Jelaqua seeks armor while the Wings of Palace pursue a light-spell shortsword.",
+            "id": "jelaqua",
+            "name": "Jelaqua",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran Goblin Lord who enters the Cave Goblins' refuge disguised as a frail elder. He challenges the five Redfang Hobgoblins, defeats them with ease, and catastrophically wounds Bird after Bird nearly strikes him with an arrow.",
+            "id": "older-goblin-lord",
+            "name": "Older Goblin Lord",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior Liscor guardsman who recognizes that ordinary treatment cannot save Bird. Klbkch takes the catastrophically injured Antinium to the Queen for help.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch Captain, responsible for city security as siege approaches. Zevara manages the recovery of Erin's stolen magical door, restricts unsafe travel through it, and weighs the danger posed by the Goblin force gathering outside the walls.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Gnoll civic leader and Royal Shopkeeper who helps organize Liscor's Gnolls. Krshia privately tests Mrsha's unusual access to a guarded spell book and prepares to protect both the child and the book as the city faces siege.",
+            "id": "krshia",
+            "name": "Krshia",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rags's effective second-in-command after her tribe absorbs many of Tremborag's former followers. Pyrite combines mining knowledge with trained combat perception, proves his value in battle against eater goats, and openly supports Rags's authority.",
+            "id": "pyrite",
+            "name": "Pyrite",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The human commander whose campaign drives the Goblin armies toward Liscor. Tyrion Veltross intends to use trebuchets and the Goblin advance to breach the city before destroying the surviving Goblins.",
+            "id": "tyrion-veltross",
+            "name": "Tyrion Veltross",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Leader of the Painted Antinium and an emerging religious practice among individual workers. Pawn brings soldiers and a light-producing censer to Erin's inn, where the Antinium meet Goblin refugees through signs, speech, music, and dance.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Free Queen's only individual cook, timid and isolated within the Hive despite his considerable skill. Gary receives leave to visit Erin's inn, wins a cooking contest among the Goblin refugees, and begins working with Erin as a fellow expert.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Emperor of the Unseen Empire"
+            ],
+            "description": "A blind human ruler travelling with the army driving the Goblins toward Liscor. Laken Godart's imperial awareness depends on nearby marker-totems, and he comes to regard his own part in enabling the approaching war as morally wrong.",
+            "id": "laken-godart",
+            "name": "Laken Godart",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former decorated military sergeant and the father of Liscor's wing commander. Ralk faces the approaching siege as a city defender and receives his daughter's will, while admitting that experience alone cannot solve the crisis.",
+            "id": "ralk",
+            "name": "Ralk",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ralk's daughter and a wing commander preparing to defend Liscor from the approaching siege. Embrya gives her father her will before the battle.",
+            "id": "embrya",
+            "name": "Embrya",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Human political figure seeking to prevent the approaching war. Magnolia Reinhart concludes that diplomacy will not stop the human campaign against Liscor and begins an undisclosed intervention despite the political cost.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinct sergeant among the Painted Antinium soldiers preparing to deploy in Liscor's defense.",
+            "id": "yellow-splatters",
+            "name": "Yellow Splatters",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The necromancer directing Rhys through a magical control link. Az'kerash orders the Goblin Lord to attack Liscor, promises undead support raised from the battle's casualties, and treats both the Goblin army and the human assault as parts of his plan.",
+            "id": "azkerash",
+            "name": "Az'kerash",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0BSS6X5KF",
+            "type": "community"
+          }
+        ],
+        "work": "tears-of-liscor"
+      },
+      "recaps": {
+        "ending": "Liscor survives, but its walls and eastern gate are badly damaged. Magnolia Reinhart's threat forces the human army to withdraw, postponing rather than resolving the wider conflict. Rhys dies at Erin's inn after Garen frees him briefly from Az'kerash's control, and Ralk kills Garen as he fights toward the city. Pyrite, the Goblin spellcaster, Yellow Splatters, and one hundred other Painted Antinium also fall. Head Scratcher remains critically wounded, Bird is still recovering, and Erin closes the inn while grieving. Rags unites the surviving Flooded Waters, Redfang, Cave Goblins, and remnants of Rhys's army as Great Chieftain of the Mountain. Laken Godart takes several hundred Goblin prisoners north under his protection. Pawn establishes that the Antinium dead will be remembered as heroes and refuses to have Yellow Splatters resurrected. Ilvriss secretly learns that Az'kerash survived. Calruz remains imprisoned and warns Ceria of a female presence deeper in the dungeon, while the Horns commit to growing stronger together. The hidden mountain legacy still requires Garen's key and a second unknown key.",
+        "in_short": "After rescuing Ceria and Mrsha from Liscor's dungeon, Erin helps the survivors recover while Rags and other Goblin factions are driven south by a human army. Rhys, a Goblin Lord controlled by Az'kerash, tries to force Rags to help seize Liscor, but she refuses and survives his attempt to kill her. As human trebuchets break the city's defenses, Erin's allied Goblins return and fight Rhys's army to protect Liscor. Garen frees Rhys briefly from magical control, but both brothers die, along with Pyrite, the Goblin spellcaster, Yellow Splatters, and many Goblin and Antinium fighters. Magnolia Reinhart coerces the human commander into withdrawing before he attacks the damaged city. Rags gathers the Goblin survivors under her rule as Great Chieftain of the Mountain, while Erin closes her inn in grief beside the critically wounded Head Scratcher. Az'kerash remains active, Mrsha's emerging magic needs training, and Calruz warns that a female presence still waits below the dungeon.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin's Wandering Inn became a meeting place for people who would ordinarily regard one another as enemies. She formed close ties with Goblins and individual Antinium, while caring for the young Gnoll Mrsha with Lyonette. The Horns of Hammerad entered Liscor's dangerous dungeon, and Ceria was separated from her companions. Calruz, the Horns' former Minotaur captain, became the leader of the furred hunters holding captives below the city. A combined rescue force entered the dungeon, aided by Erin's Redfang Hobgoblin guests and Cave Goblins who turned against the hunters. The operation recovered Ceria, Mrsha, and other Gnoll prisoners, and brought Calruz back in custody. Rags continued leading the Flooded Waters Goblins while rival Goblin powers and human armies gathered.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ceria and Mrsha return safely to Liscor, though neither is ready to leave the dungeon's effects behind. Erin takes the survivors to a sunny meadow, where a picnic and baseball game grow into a peaceful gathering of Goblins, Antinium, adventurers, and nearby civilians. Liscor celebrates the rescue but refuses to pay the Redfang Goblins an official reward. Ilvriss instead passes a recovered enchanted axe to Erin for them, and the rescued adventurers divide a valuable dungeon haul before agreeing to stop exploring below for now. Elsewhere, human cavalry drives Rags and the exhausted Flooded Waters tribe south until they are folded into a much larger Goblin migration. Rags meets Tremborag, Garen Redfang, and Rhys, the undead-backed Goblin Lord. Rhys reveals that he and Garen were once close and that Garen possesses one of two keys to a hidden Goblin legacy. Rags accepts only a temporary alignment with Rhys. Her Redfang warriors choose her over Garen, while Tremborag secretly murders her lieutenant Quietstab.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rags discovers that Tremborag murdered Quietstab. She ambushes his larger tribe while the pursuing human army attacks from behind, but rejects personal vengeance and leaves Tremborag to the humans. He dies fighting their lord, and much of his shattered tribe joins Rags. Rhys's master then demonstrates the ability to control him, exposing the danger behind their alliance. At Erin's inn, Bird befriends a winged adventurer and explains the precarious status of individual Antinium. The five Redfang Hobgoblins train growing groups of Cave Goblins, but an older Goblin Lord enters their cave in disguise and defeats them. Bird nearly strikes him with an arrow, provoking a devastating retaliation that leaves Bird critically injured. The Redfangs carry Bird to the Antinium Hive, where Klbkch seeks the Queen's help. Olesm declares a siege emergency as Rhys and the human army approach Liscor. He seizes Erin's magical door and arrests Erin's five Goblin allies. Bird's survival is still uncertain.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Antinium Queens save Bird through extraordinary surgery, though the wider Hives secretly plan to let Liscor fall and retake it afterward. Thieves steal Erin's magical door and destroy its direct reinforcement link, but Numbtongue and the Cave Goblins recover it. Krshia confirms that Mrsha can learn conventional plant magic from the guarded Silverfang spell book, then uses Mrsha to complete a citywide ritual that strengthens Liscor's courage. Rhys orders Rags to help seize Liscor for Az'kerash. She refuses, and Rhys tries to kill her, fracturing the Goblin coalition. Pyrite appears to die protecting her but survives by drawing power from magic gemstones, and Rags regathers a remnant. Numbtongue brings roughly twenty-four thousand Cave Goblins to Liscor to demand the release of the imprisoned Redfangs. Erin negotiates their freedom and the return of their equipment in exchange for a peaceful withdrawal. As the Cave Goblins prepare to leave, Garen encounters surviving members of his former Gold-rank team, who accuse him of murdering their companions and taking a key.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Garen admits killing former teammates but calls their resistance betrayal. Head Scratcher and the other Redfang Hobgoblins refuse his execution order and challenge his authority. Although Garen defeats them in an unarmed fight, neither they nor the Cave Goblins submit. Goblin refugees later reach Erin's inn, where they share food, music, and dance with Pawn's Painted Antinium. Gary, the Free Queen's isolated cook, visits the camp, wins a cooking contest, and forms a new partnership with Erin. Liscor's situation continues to deteriorate. Drake reinforcements cannot arrive in time, while the Hives prepare their own hidden army and evacuation tunnels. Yvlon refuses her brother's attempt to remove her from the city, choosing the Horns and Erin. Ilvriss secures the magical door as a final evacuation route. Laken Godart recognizes his complicity in driving the Goblins toward war but cannot halt the human campaign, and Magnolia Reinhart begins a separate plan to prevent the conflict. The Goblins at Erin's inn narrowly vote to flee south, while Rags continues toward Liscor and Garen initially turns away.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Garen turns back, reconciles with his remaining riders, and joins Rags on the road to Liscor. Rhys arrives with undead ahead of the expected Drake relief, while the human army uses enchanted trebuchets to break the city's eastern defenses. Erin walks out under a white flag and calls for a truce, but the human commander ignores her. Head Scratcher and the other Redfangs return with the Flooded Waters, Redfang, and Cave Goblin forces. At Erin's request, they charge Rhys's much larger army to defend Liscor. Rhys's necromancers raise casualties from both sides. The Goblin spellcaster and Numbtongue turn the inn's stored mana into a lightning storm, while Pawn and one hundred veteran Painted Antinium disobey orders to reach Erin. Garen severs Az'kerash's control link, briefly freeing Rhys and reconciling with him as a brother. The human lord kills Rhys, and Ralk kills Garen during the retreat. Magnolia Reinhart forces the human army to withdraw by threatening its leaders' homes. Liscor survives, but Pyrite, the Goblin spellcaster, Yellow Splatters, and many others are dead, while Head Scratcher is gravely wounded. Rags becomes Great Chieftain of the Mountain over the surviving Goblins. Pawn establishes remembrance for his fallen soldiers, Ilvriss learns in secret that Az'kerash lives, and Laken takes Goblin prisoners north under protection. Erin's inn closes. Calruz remains imprisoned and warns Ceria about a female presence deeper in the dungeon.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0BSS6X5KF",
+            "type": "community"
+          }
+        ],
+        "work": "tears-of-liscor"
+      }
+    }
+  }
+}

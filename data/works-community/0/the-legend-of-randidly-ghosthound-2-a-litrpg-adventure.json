@@ -1,0 +1,1406 @@
+{
+  "entries": {
+    "the-legend-of-randidly-ghosthound-2-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A classless survivor, protector of Donnyton, and disciple of Shal. His unusual plant, magic, and spear abilities make him one of the settlement's principal defenders.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Randidly's Spear Phantom mentor, whose demanding instruction links strength to responsibility. He has left Earth, but Randidly still owes him aid.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Donnyton mage and trusted associate of Randidly. She contributes to the settlement's defense and government.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donnyton's village spirit and a central part of the settlement's established System functions.",
+            "id": "nul",
+            "name": "Nul",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Donnyton's chieftain and a frontline defender responsible for the settlement and its residents.",
+            "id": "donny",
+            "name": "Donny",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Donnyton administrator who helps manage the settlement's policy and practical affairs.",
+            "id": "daniel",
+            "name": "Daniel",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Killer-class squad leader who directs one of Donnyton's specialized combat teams.",
+            "id": "decklan",
+            "name": "Decklan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavy Donnyton fighter and pet handler who is partnered with Annie.",
+            "id": "dozer",
+            "name": "Dozer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archer, senior Donnyton defender, and Dozer's partner.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Donnyton smith who supports the settlement through his craft.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A healer and member of Donnyton's leadership.",
+            "id": "regina",
+            "name": "Regina",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A classless fighter and field operator connected to Donnyton.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred artist among the Frankfurd refugees.",
+            "id": "raina",
+            "name": "Raina",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Randidly's blood-feeding soul plant and an ally of Donnyton.",
+            "id": "thorn",
+            "name": "Thorn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's support-oriented soul plant and part of the plant-based power he carries from his earlier survival.",
+            "id": "arbor",
+            "name": "Arbor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ambitious member of Decklan's Killer squad.",
+            "id": "ivan",
+            "name": "Ivan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Randidly's two missing friends from before the System and an unresolved search objective.",
+            "id": "ace",
+            "name": "Ace",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Randidly's two missing friends from before the System. Randidly learns that Sydney and Ace are alive to the north, but the lurking tribulation prevents him from safely rejoining them.",
+            "id": "sydney",
+            "name": "Sydney",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's former girlfriend, now remaining in Frankfurd rather than relocating to Donnyton. She confronts him over their separation and an alleged betrayal involving one of his missing friends, a charge he denies.",
+            "id": "tessa",
+            "name": "Tessa",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hostile shapeshifting entity that first approaches Lyra in Randidly Ghosthound's form and pressures her to act as its guide.",
+            "id": "shapeshifting-tribulation",
+            "name": "Shapeshifting tribulation",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A yeti-like judgment sent to punish Randidly for his Heretic status. It confronts him with smaller frost creatures under its command.",
+            "id": "frostbite-judgment",
+            "name": "Frostbite judgment",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The neighboring settlement's former king, now incapacitated and held as a bound prisoner in the leadership residence.",
+            "id": "deposed-king",
+            "name": "Deposed king",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former member of the survivor group who voluntarily supports the neighboring settlement's new faction and is not being held as the deposed king's captive.",
+            "id": "elaine",
+            "name": "Elaine",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local faction leader who took power after the king was injured. The leader can replicate items and retains police support by providing ammunition.",
+            "id": "local-coup-leader",
+            "name": "Local coup leader",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The revealed identity of the shapeshifting enemy that imitates Lyra and confronts Randidly during his battle with the Frostbite judgment.",
+            "id": "tribulation-of-many-faces",
+            "name": "Tribulation of Many Faces",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The local powerholder who oversees the Sanctuary's protected, hierarchical community. The leader defends the deposed king's silencing and acknowledges holding the former police chief against his will.",
+            "id": "sanctuary-leader",
+            "name": "Sanctuary leader",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sam"
+            ],
+            "description": "The pre-System film sound grip known to Lyra is revealed to be Donnyton's smith Sam. He rescued Lyra and several others when the System arrived and later joined Randidly's early survivor group.",
+            "id": "sam-hoss",
+            "name": "Sam Hoss",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outwardly friendly leader of a ragged survivor group encountered by the Frankfurd convoy. He asks for help reaching supposedly wounded companions, and Randidly accompanies him because the group's story and interest in the convoy's equipment seem suspicious.",
+            "id": "desmond",
+            "name": "Desmond",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed Donnyton fighter who removes a defeated raid boss's soul and turns its beetle body into a controlled, undead-like asset.",
+            "id": "donnyton-ghost-wielder",
+            "name": "Donnyton ghost wielder",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A self-styled hero known only through Desmond's unverified account. Desmond claims Roy is north of the Badlands with Ace and Randidly's other missing friend, but nothing at this point independently confirms Roy's identity, conduct, or companions.",
+            "id": "roy",
+            "name": "Roy",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A strategist and representative of Donnyton's non-classed residents. After a costly assault, she questions whether classless leaders can responsibly continue without classes.",
+            "id": "mrs-hamilton",
+            "name": "Mrs. Hamilton",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed classless combatant who fights with an iron ball. During Donnyton's raid-force trial, he completes a path and acquires stamina-related willpower abilities.",
+            "id": "iron-ball-fighter",
+            "name": "Iron-ball fighter",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A rabbit-like representative from another world who reaches Donnyton seeking its leaders and a goodwill exchange.",
+            "id": "rabbit-like-envoy",
+            "name": "Rabbit-like envoy",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hunted royal cub that Dozer encounters during a prescribed pet mission. Rather than follow the expected route, he abandons the mission's instructions to rescue it, opening the possibility that the survivor may become his companion.",
+            "id": "riverdrop-puma",
+            "name": "Riverdrop Puma",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Frankfurd agent sent to assess Donnyton's strength. His danger-sensing ability helps him survive the journey, but he mistakes the settlement's burning-leaf tree for a threat.",
+            "id": "frankfurd-investigator",
+            "name": "Frankfurd investigator",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A turtle elder who shares authority in the sister village and helps decide whether its leaders will cooperate with Donnyton.",
+            "id": "turtle-elder",
+            "name": "Turtle elder",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sanctuary elder who regards the Tribulation's clone as her son and uses a barrier skill to protect it when Randidly confronts them.",
+            "id": "sanctuary-elder",
+            "name": "Sanctuary elder",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local boat owner who explains Katal's tassel ranks and dangers, then evaluates Randidly's spear ability.",
+            "id": "local-boat-owner",
+            "name": "Local boat owner",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A struggling Katal armor merchant who accepts Randidly's engraved bracers and becomes his business partner.",
+            "id": "local-armor-merchant",
+            "name": "Local armor merchant",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Thundercrash disciple who wields two spears and controls a sparsely occupied qualifying platform. Randidly challenges him for a place in the Northern Regional Tournament.",
+            "id": "dual-spear-fighter",
+            "name": "Dual-spear fighter",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-haired spear fighter who enters Randidly's qualifying platform and prevents surrounding contestants from interfering with his duel. She presents herself as another contender who intends to face the winner rather than accept an easy place.",
+            "id": "red-haired-spear-fighter",
+            "name": "Red-haired spear fighter",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boastful Heavy Iron disciple who enters Randidly's qualifying stage without grasping the strength of its three leading contestants. Their pressure and Randidly's pollen incapacitate him before he can establish himself in the main contest.",
+            "id": "heavy-iron-disciple",
+            "name": "Heavy Iron disciple",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced spear fighter who joins Shal in training Randidly. His practical instruction emphasizes balance, repetition, and muscle-memory exercises alongside the Spear Phantom style's inherited images.",
+            "id": "veteran-instructor",
+            "name": "Veteran instructor",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable Badlands fighter who offers service as Randidly's spear attendant in exchange for a place in the prison breakout. He joins the group as it moves toward the guarded portal under the protection of shadow engravings.",
+            "id": "blindfolded-spear-attendant",
+            "name": "Blindfolded spear attendant",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tomcat's leading spear fighter, who confronts the escaping prisoners. He accepts Shal's promise to return in six months and answer a life-debt for the guards killed.",
+            "id": "tomcat-first-spear",
+            "name": "Tomcat first spear",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crashing Wave style artisan and business contact of the local engraver. The artisan receives Randidly's engraved armor and proposes telling him about the origins of Shal's style.",
+            "id": "crashing-wave-artisan",
+            "name": "Crashing Wave artisan",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A determined Central Region spear user and father of two sons, including Shal. After the mother of his children is murdered, he flees north with both boys.",
+            "id": "spear-phantom-founder",
+            "name": "Spear Phantom founder",
+            "reveal": {
+              "chapter": 89
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name of Randidly's male spear attendant, revealed when the boat owner addresses him during training. Formerly a Heavy Iron disciple, he continues challenging stronger companions while developing the defensive image behind Bulwark of Iron.",
+            "id": "tommy",
+            "name": "Tommy",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Thunderhammer style artisan retained by the Merchant Association. He leads seven spear users in boarding the boat to retaliate for a displaced merchant's lost goods and faces Randidly while Shal is unavailable.",
+            "id": "thunderhammer-artisan",
+            "name": "Thunderhammer artisan",
+            "reveal": {
+              "chapter": 94
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Donnyton girl held in the Sanctuary with the missing rabbit ambassador. Her disappearance leads Alana to trace both captives toward the rival settlement.",
+            "id": "kidnapped-donnyton-girl",
+            "name": "Kidnapped Donnyton girl",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The red-haired qualifier who asks to serve Randidly for a year after earning a place in the Northern Regional Tournament. Randidly accepts her offer alongside that of another former contestant.",
+            "id": "woman-spear-attendant",
+            "name": "Woman spear attendant",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Heavy Iron disciple who asks to serve Randidly for a year after the qualifier. Randidly accepts him as an attendant alongside the red-haired contestant.",
+            "id": "male-spear-attendant",
+            "name": "Male spear attendant",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The veteran spear fighter who joins the outside team traveling to Tomcat to help free Shal and Randidly. He believes he can delay the settlement's defenders while the prisoners escape.",
+            "id": "old-master",
+            "name": "Old master",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B09NB1FKW6",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-2-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Donnyton survives the Tribulation of Many Faces, but Nul is killed during the final attack. Lyra replaces him as the village spirit and conceals her changed condition from Randidly. Donnyton retains its commanders, sister-village alliance, crafting base, and new communications, while its ether supply now depends on Lyra. A northbound search party is pursuing Desmond's unverified lead about Ace, Randidly's other missing friend, and Roy. On Telus, Randidly and Shal escape the time-dilated prison with the veteran instructor and surviving attendants. Shal must return in six months to answer a life-debt for those killed during the breakout, and ether starvation may interfere with his unresolved revenge. Randidly remains classless and is recovering aboard the boat on the way to Dearden. He has qualified for the Northern Regional Tournament, but it has not begun. His engraving business is preparing a public sale, while his debt to the displaced style, sealed Carnage reward, internal ether spring, and dangerously unstable soul skill remain open. Tommy continues training, the woman attendant develops a rare four-move skill set, and the blindfolded attendant is ill from ether poisoning.",
+        "in_short": "Randidly strengthens Donnyton while refusing a class, survives a Heretic judgment, and helps prepare the settlement to stand without him. Lyra destroys the Tribulation of Many Faces after it attacks Donnyton, but Nul dies and she secretly becomes the replacement village spirit. Answering Shal's summons on Telus, Randidly survives a lethal qualifier, develops personal spear and root skills, builds an engraving business, and reveals a dangerous internal ether source. He and Shal enter a time-dilated prison to gain years of training, then escape with several allies after Randidly deliberately triggers another judgment. Shal accepts a six-month life-debt for the escape deaths and rebukes Randidly for an unnecessary killing. While traveling toward the Northern Regional Tournament, Randidly kills a Thunderhammer artisan in self-defense, continues questioning his use of lethal force, and discovers that emerald crystal has overtaken his unstable soul-skill landscape. The book ends before the tournament, with a public engraving sale planned in two days.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: The System transformed Earth into a world of levels, classes, monsters, and village powers. Randidly Ghosthound survived while remaining classless, developed unusual plant, magic, and spear abilities, and became one of Donnyton's principal protectors. The settlement grew around a mixed group of fighters, crafters, leaders, and the village spirit Nul. Donny, Daniel, Lyra, Decklan, Dozer, Annie, Sam, Regina, and other residents took on distinct parts of its defense and government, reducing but not ending its reliance on Randidly. Shal trained Randidly in the Spear Phantom tradition, leaving Randidly with both a demanding standard for strength and an obligation to aid his mentor. Two of Randidly's friends from before the System, including Ace, remained missing, and finding them was still an unresolved personal goal. Donnyton's survival was precarious as larger threats gathered around the new settlements. Randidly's exceptional growth had also failed to answer whether he could use his power without becoming a danger to the people he intended to protect.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly organizes the relocation of Frankfurd residents to Donnyton, but a confrontation with his former girlfriend Tessa ends with him nearly killing her and nearby guards through Agony. Horrified by his loss of control, he strengthens Frankfurd's defenses and turns toward creating a spear style of his own. He continues refusing the classes offered or encouraged by the System. Meanwhile, a shapeshifting tribulation approaches Lyra in Randidly's form and accompanies her into the neighboring settlement. Lyra discovers that its former king has been deposed, mutilated, and kept alive while a sanctuary faction controls the town. Randidly's advancing soul skill triggers a Frostbite judgment while he has no mana. After an extended duel leaves him badly injured, a false Lyra joins the battlefield. Randidly recognizes the deception, exposing the Tribulation of Many Faces. He ends the chapter committed to fighting both the judgment and the tribulation at once.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly creates the Seven Kata of the Ashen Spear and uses its first move to kill the Frostbite judgment. The Tribulation of Many Faces escapes, then threatens Donnyton while Randidly forcibly combines his ash blessing with Spear of Rot into Cycle of Rot and Ash. During his absence, the tribulation sends raid bosses against Donnyton. Decklan's squad survives with Thorn's help, although Ivan dies after overextending, and the settlement's combined defenders defeat the major beetle boss. The assault costs Donnyton 190 classed and non-classed casualties and prompts plans for major restructuring. On the road, Desmond diverts Randidly with a false rescue request that proves to be a robbery and hostage trap. Randidly kills Desmond when he continues threatening a child. Before dying, Desmond claims that Ace and Randidly's other missing friend are alive north of the Badlands with a self-styled hero named Roy, but the report is unverified. Randidly then receives Shal's request to come to Telus within about a month.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly distributes directional blessings to strengthen Donnyton before he may leave. Sam gains a Dawn Smith route, Mrs. Hamilton receives a specialist option suited to planning and control, and Annie gains an advanced archery route. Randidly then challenges Donnyton's squads and its fifty-person raid force, exposing weaknesses in their support protection and coordination. The classers ultimately force him to concede, proving that organized numbers can resist him. He and Lyra repair their working relationship and begin a notification-free training program designed by Mrs. Hamilton. Frankfurd refugees arrive under Alana's leadership, and Raina begins drawing Donnyton. A rabbit-like ambassador from a sister village arrives but struggles to reach the leadership. A Frankfurd investigator separately follows the refugees to assess Donnyton, panics near the village tree, and carries away both the ambassador and an injured child. During his own training, Randidly reaches the hot-cold force that has influenced his growth and learns that it is ether.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sam teaches Randidly mana engraving while Mrs. Hamilton and Lyra continue his disciplined training. When a Donnyton girl and the sister village's ambassador disappear, Alana traces them to the sanctuary. Randidly, Lyra, Alana, and rabbit warriors mount a rescue. The apparent kidnapper proves to be a clone of the Tribulation of Many Faces. Randidly kills it and Lyra saves the captives from the collapsing building, but the enemy's true core remains hidden. The rescue opens negotiations with the sister village. Decklan, Annie, and other Donnyton fighters help it survive a raid-boss siege, establishing an alliance and regular trade. Dozer also rescues a royal Riverdrop Puma that becomes his combat companion. Donnyton grows, gains communications, and faces a new tier-three boss. Randidly finally leaves Earth to answer Shal, deliberately making his absence bait for the tribulation. Lyra follows the enemy to Donnyton and destroys its core, but its dying attack kills Nul and cuts the village off from ether. Lyra begins trying to replace him. On Telus, Shal tells Randidly he must place in the top eight of the Northern Regional Tournament within two months or the Spear Phantom style will become Forsaken.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly remains classless and spends accumulated path points on physical development and stronger root control. On Earth, Lyra successfully becomes Donnyton's new village spirit and asks the leadership to hide the transformation from him. She learns that villages have finite ether capacity, that conquest can steal it permanently, and that overuse can make a settlement barren. On Telus, Shal takes Randidly to the last available tournament qualifier, a two-hour platform melee with only three survivors permitted per stage. Randidly's runic skill set allows him to choose a rare emerald tassel, which attracts dangerous attention. He develops scouting root creatures, improves his engraving, and arranges to sell accessible engraved armor through a local merchant, using Ghosthound as the maker's name. When the qualifier begins, two contestants ambush him. Randidly kills one and cripples the other. The violence unsettles him, but he decides that surviving Telus's lethal spear culture is necessary to repay Shal and preserve their style.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly reaches a platform controlled by a powerful dual-spear fighter, while a red-haired spearwoman keeps other contestants from interfering. His spear technique cannot match the rival's complete skill set, so he abandons his restriction against magic and returns to the platform after healing. The red-haired fighter then reveals a poisoned whip-spear and a consuming energy tied to the Devourer's line. Randidly fights paralysis, uses a root avatar to survive, and destroys his own spear and equipment while countering her. A Heavy Iron contestant enters but collapses under the pressure and Randidly's pollen. As the duel continues, Randidly traps the dual-spear rival with roots and answers the woman's consuming technique with a huge summoned insect swarm. Some insects escape and injure spectators before he regains control. When time expires, Randidly and both rivals are still counted on the platform. All three survive the qualifier and advance to the Northern Regional Tournament.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After qualifying, Randidly identifies himself to the female rival as Ghosthound. He chooses the dangerous Unknown Path, but an unseen presence manipulates his internal ether and creates the Lonesome Spear path instead. Two former qualifier contestants become his attendants: the woman who managed the platform and the disgraced Heavy Iron disciple. The woman takes charge of his growing armor business while Shal focuses on correcting Randidly's weak spear foundation. Randidly eventually tells Shal that he believes defeating a tribulation gave him an internal ether spring. Shal considers the claim dangerously valuable and orders him never to reveal it. Inside a time-accelerated inheritance formation, Randidly builds an image of a slow and inevitable spear thrust powered by his own ether. The training releases a surge through the boat, helping the male attendant create Bulwark of Iron and drawing outside attention. Shal now knows that Randidly's ether can be detected and that powerful styles might kill to possess it.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly turns his refined thrust into The Inevitable Phantom Arrives and gains Weeping Cloud, while an unexplained ether pellet remains near his soul skill. His engraving becomes more effective and more threatening to the local guild monopoly. Shal decides that ordinary training will not prepare Randidly in time, so they travel toward a village with a time-dilated prison. Their plan is to earn long sentences, train inside, and escape after recovering Shal's spear. A displaced all-women style trades Randidly engraving theory and a Shadow Rune in exchange for a future promise of help. To secure arrest, Shal orders Randidly to kill a caravan guard. Randidly does so deliberately, then is captured with Shal. Prison authorities recognize Shal and separate the pair, forcing Randidly to devise the rescue himself. Shal also reveals that he killed other prisoners who could have overheard their plan, leaving Randidly increasingly disturbed by both his own choices and his mentor's methods.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the ether-isolating prison, Randidly uses torture and battle intent as controlled training while hiding a storage ring. After nearly two subjective months, he reaches the Badlands combat zone, where repeated defeats gradually teach him to survive against stronger spear users. Shadow Rune bracers let him infiltrate the guarded prison and find Shal, but the private cell's protections defeat his first rescue attempt. Randidly then coordinates root creatures to retrieve the key, frees Shal, and escapes with him into the Badlands rather than through the exit portal. Shal resumes punishing spear training, later joined by a veteran instructor who emphasizes balance and efficient combat. Over roughly two subjective years, Randidly improves his fundamentals, studies selected Spear Phantom diary pages, and advances the Path of Carnage. Its mountain trial grants a death-related skill, but a golden chain seals the reward immediately. Concerned that prison life is distorting his disciple, Shal decides they must leave, and Randidly proposes a distraction for the escape.",
+            "through": {
+              "chapter": 76
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly plans to trigger his approaching Heretic judgment as cover for the breakout. Outside the prison, his woman attendant, male attendant, and the veteran instructor travel to Tomcat to help. Inside, Shal recruits strong prisoners, and a blindfolded fighter joins Randidly as another attendant. The group attacks the prison and climbs toward the portal while Shal confronts the adept warden. On the roof, Randidly completes The Golden Roots of Yggdrasil and deliberately summons a second Frostbite judgment. He kills a guard, fights the returning Yeti, and collapses part of the tower while buying time for the others. The group escapes through the portal, then faces Tomcat's first spear. Shal and the newly awakened veteran instructor force him back, but Shal must promise to return in six months and answer a life-debt for the guards killed. Once clear, Shal breaks Randidly's collarbone as punishment for a killing he considers unnecessary, making their conflict over Randidly's growing readiness to kill explicit.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Shal continues the punishment until Randidly accepts that his killings are his own choices. The woman spear attendant helps him recover and argues that one wrongful act does not erase the people he has helped. Randidly resolves to treat life with respect while accepting responsibility for future decisions. His soul skill then destabilizes as emerald crystal accelerates its internal cycle, reinforcing his suspicion that an outside power is directing his development. The group returns to Katal and prepares to travel to Dearden for the tournament. Randidly resumes his engraving business and sells hundreds of pieces while concealing his Shadow Rune. A Crashing Wave artisan recounts the uncertain history of the Spear Phantom founder. The account identifies Shal as the founder's younger son and links his father and elder brother to a suspected heretic. Shal later killed that figure, but conflicting evidence leaves the deaths of his family and the truth of the old confrontation unresolved.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly studies the Spear Phantom diary and strengthens The Inevitable Phantom Arrives, but each use of ether risks worsening his unstable soul skill. Shal suffers ether starvation while the attendants train under the boat owner's supervision. The male attendant is finally identified as Tommy. Before the group reaches Dearden, a Merchant Association force boards the boat. Randidly's attendants divide the attackers while he faces a Thunderhammer artisan alone. The woman attendant evolves her style into the rare River's Four Bends and wins her fight. The artisan burns his life through a Forsaken hunger technique and tries to consume Randidly's class, but the attack fails because Randidly has none. Randidly kills him and again questions whether the death was justified. The boat owner warns that this is the level of opposition expected at the regional tournament. Randidly then discovers emerald crystal has consumed the living landscape within his soul-skill visualization. At the actual ending, he is recovering aboard the boat with Shal and the surviving attendants. The blindfolded attendant is ill from ether poisoning, a public sale of Randidly's engravings is planned in two days, and the Northern Regional Tournament has not yet begun.",
+            "through": {
+              "chapter": 98
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B09NB1FKW6",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-2-a-litrpg-adventure"
+      }
+    },
+    "the-legend-of-randidly-ghosthound-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A classless spear fighter and Shal's disciple. He begins this volume bound for Dearden, where he must place highly in the regional tournament to protect the standing of the Spear Phantom style.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Randidly's mentor and a senior practitioner of the Spear Phantom tradition. Ether sickness limits him while his pupil enters the Dearden tournament to protect the style's standing.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Her cool-white blessed connection accepts more Aether from Randidly than the other linked survivors and returns a correspondingly strong flow.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "His warm-gold blessed connection carries Aether in both directions, helping Randidly recover his awareness and strength.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's former conditioning mentor. Her reserved, indigo blessed connection carries Aether in both directions during his recovery.",
+            "id": "mrs-hamilton",
+            "name": "Mrs. Hamilton",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Her hot-red blessed connection expands first and carries a strong flow of Aether, reflecting her conviction that Randidly's blessing is uniquely powerful.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A plant linked to Randidly by a reciprocal Aether connection that strengthens the power available within his inner source.",
+            "id": "arbor",
+            "name": "Arbor",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A plant linked to Randidly by a reciprocal Aether connection that strengthens the power available within his inner source.",
+            "id": "thorn",
+            "name": "Thorn",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable member of Randidly's traveling party who plans to visit her family before returning for the tournament. She and Randidly share an attraction neither has resolved.",
+            "id": "female-spear-attendant",
+            "name": "Female spear attendant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spear attendant traveling with Randidly to Dearden. He is still recovering from gray symptoms caused by ether sickness after an earlier attack.",
+            "id": "male-spear-attendant",
+            "name": "Male spear attendant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The party's guide to Dearden, familiar with the route and traveling with a private reason for returning to the city.",
+            "id": "merchant-spear-attendant",
+            "name": "Merchant spear attendant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vice leader in Hart School territory whom Shal urgently seeks. He believes she is connected to the damage done to his family, making her central to his departure from Randidly.",
+            "id": "lucretia",
+            "name": "Lucretia",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A blunt, orange-marked qualifier in Randidly's preliminary group who objects to the unequal treatment imposed on entrants without major-style backing.",
+            "id": "orange-marked-qualifier",
+            "name": "Orange-marked qualifier",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The powerful female-presenting entity responsible for the golden locks inside Randidly's soul space. It claims to have guided his development and identifies his classless, independent Aether crossroads as the reason for its interest.",
+            "id": "golden-lock-entity",
+            "name": "Golden lock entity",
+            "reveal": {
+              "chapter": 17
+            }
+          },
+          {
+            "description": "A white-haired Artisan-level spear fighter and one of the strongest entrants in the regional tournament. She meets Randidly after his opening victory and presents an immediate measure of the gap between him and the favorites.",
+            "id": "white-haired-contender",
+            "name": "White-haired contender",
+            "reveal": {
+              "chapter": 31
+            }
+          },
+          {
+            "description": "A red-haired tournament finalist whose devouring energy strips strength from combat images. She concedes a qualifier rematch against Randidly while apparently keeping a stronger option in reserve.",
+            "id": "red-haired-finalist",
+            "name": "Red-haired finalist",
+            "reveal": {
+              "chapter": 38
+            }
+          },
+          {
+            "description": "The red-haired finalist, now identified by her connection to the Devourer. She repeatedly seeks Shal and turns to Randidly when she needs to make an urgent disclosure.",
+            "id": "devourers-disciple",
+            "name": "Devourer's disciple",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A heavily built tournament favorite feared by other competitors and widely expected to win. He unexpectedly concedes to Randidly before their scheduled qualifier bout.",
+            "id": "tournament-favorite",
+            "name": "Tournament favorite",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of the Engraving Guild who masks the extent of his strength. He demands that Randidly identify the source of his engraved equipment.",
+            "id": "engraving-guild-representative",
+            "name": "Engraving Guild representative",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elite spear fighter with Crystal Memory, which helps her analyze techniques she witnesses. She recruits Randidly for severe training because she wants him to force the tournament favorite to expose his concealed strength.",
+            "id": "northern-region-spearwoman",
+            "name": "Northern Region spearwoman",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The heavily favored spear fighter who dominates a top-sixteen match with experienced Artisan skill. He is expected to meet Randidly in the semifinal.",
+            "id": "radiant-dawn-contender",
+            "name": "Radiant Dawn contender",
+            "reveal": {
+              "chapter": 56
+            }
+          },
+          {
+            "description": "A senior Steel Feather figure who serves as a tournament commentator. His assessment identifies the leading Radiant Dawn contender as an experienced Artisan with a fully developed combat image.",
+            "id": "steel-feather-vice-leader",
+            "name": "Steel Feather vice leader",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An envoy from the Central Domain who rebukes Dearden's absent styles and destroys the main hunger swarm mass with an overwhelming fiery spear attack.",
+            "id": "central-domain-representative",
+            "name": "Central Domain representative",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, limping veteran stationed on Dearden's western wall. She explains how hunger swarms drain the surroundings, transform weakened defenders, and expose lower-status spear users to the greatest danger.",
+            "id": "veteran-wall-defender",
+            "name": "Veteran wall defender",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The power that transports Randidly into an ash world after he completes his second Ash path. It begins a dangerous trial that requires him to cross a heated arena toward a crimson-black sphere.",
+            "id": "patron-of-ash",
+            "name": "Patron of Ash",
+            "reveal": {
+              "chapter": 62
+            }
+          },
+          {
+            "description": "The Steel Feather style's finalist and Randidly's next tournament opponent.",
+            "id": "steel-feather-finalist",
+            "name": "Steel Feather finalist",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An older instructor who knew the founder of the Spear Phantom tradition and witnessed Phantom's Embrace in battle. He warns Randidly that the improvised version used in the tournament could have destroyed his spine.",
+            "id": "retired-veteran-spearman",
+            "name": "Retired veteran spearman",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shade of the Spear Phantom founder who repeatedly defeats Shal within his dream-conflict while Shal resists using the inherited style.",
+            "id": "spear-phantom-founders-shade",
+            "name": "Spear Phantom founder's shade",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of the Central Region Endless Heat Style. After a failed expedition and the death of his nephew, he travels personally toward Dearden in pursuit of Shal and the secret surrounding the Spear Phantom bloodline.",
+            "id": "endless-heat-master",
+            "name": "Endless Heat master",
+            "reveal": {
+              "chapter": 86
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A tournament fighter representing the Breaking Dawn Style stands as Randidly's coming opponent. He is also the Northern Region spearwoman's prospective arranged-marriage counterpart.",
+            "id": "breaking-dawn-contender",
+            "name": "Breaking Dawn contender",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient former Earth Golem ruler released from Randidly's soul world when Lucretia opens it in desperation. He emerges carrying a hammer and scepter to oppose the Endless Heat master.",
+            "id": "earth-golem-warrior",
+            "name": "Earth Golem warrior",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful ancestor of the Breaking Dawn contender who appears through an independent projection after the semifinal and tries to seize the incapacitated Randidly.",
+            "id": "breaking-dawn-projection",
+            "name": "Breaking Dawn projection",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B09WTP8KQR",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-3"
+      },
+      "recaps": {
+        "ending": "Randidly wins the semifinal by draining the Breaking Dawn contender's borrowed ether, dismantling his sun image, and exploiting the injuries accumulated during their fight. The effort destroys his ability to continue. A hostile projection tries to seize him, but the Steel Feather leader escapes with him at the cost of an arm. The retired veteran then teleports Randidly away, and a returning ally transfers him to his own world to recover and grow stronger.\n\nAt Shal's inn, Lucretia's possession attack has already killed the male spear attendant through the merchant's controlled body. The merchant survives, grieving, and admits that he killed the attendant while possessed. The female attendant leaves to investigate a relative's disappearance that she suspects is connected to the Endless Heat threat. Shal wakes and confirms that Lucretia is his birth mother. After the summoned Earth Golem badly injures the Endless Heat master and departs, Shal and the wounded Steel Feather leader remain together to confront him. Lucretia has entered Randidly's soul world with a captive soul and other resources, so the ivory spear's restraint does not settle her fate. The tournament final, Shal's confrontation, and Dearden's political crisis remain unresolved.",
+        "in_short": "Randidly travels to Dearden to preserve Shal's Spear Phantom tradition by placing in a hostile regional tournament. He survives coercion inside his own soul, rebuilds his inner world, develops new spear techniques, and reaches the semifinal despite political interference. Lucretia captures Shal, bargains for Randidly's Aether, and attacks his companions through possession. A hunger swarm exposes Dearden's willingness to sacrifice lesser defenders, while Randidly's attendants fight beside him and build their own futures. Randidly defeats the Breaking Dawn contender after collapsing his sun image, but the victory leaves him unconscious and severely injured. The male attendant is killed by the possessed merchant. Shal wakes and learns Lucretia is his birth mother, then joins the wounded Steel Feather leader against the Endless Heat master. Randidly is evacuated to his own world to recover, while Lucretia remains insecurely contained inside his soul world and the conflicts in Dearden continue.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Randidly Ghosthound entered the wider System as a classless fighter and became Shal's spear disciple. His development left him with unusual Aether ties to Annie, Sam, Mrs. Hamilton, Alana, Arbor, and Thorn on Earth. Those human and plant connections remain part of the living network attached to his inner power. Shal carries the Spear Phantom inheritance while suffering from ether sickness and pursuing old injuries connected to his family. Randidly's progress has not resolved the larger danger surrounding the System or the uncertainty around people missing from his earlier life.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly travels with three attendants to Dearden, where he must reach the regional tournament's top eight for Shal. He studies engraving, trains the Spear Phantom image, and discovers that a living emerald wisp has emerged from his sealed soul skill. The wisp soon divides, while golden locks prevent him from examining the source. Shal remains away, following a lead on Lucretia and trying to recover from ether sickness.\n\nThe tournament preliminaries begin with a shared-weight endurance trial designed to turn qualifier entrants against one another. Randidly conserves his deeper abilities and chooses to outlast the field. Officials exploit a desperate competitor with spearman's breath, then kill him when he begins becoming Forsaken. As the trial continues after its first death, four emerald wisps now move within Randidly's inner space.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly wins the full twenty-four-hour endurance challenge after an ice construct kills his last rival. Completing his path brings him face to face with the hidden entity that placed the golden locks. It claims to have cultivated him because his classlessness and altered Aether created an independent crossroads, then demands control of that inner source in exchange for a refuge beyond the System. Randidly refuses.\n\nThe entity seals his senses and tortures him, destroying the emerald wisps that try to help. Their sacrifice guides him back to reciprocal connections with Annie, Sam, Mrs. Hamilton, Alana, Arbor, and Thorn. Using the life and meaning flowing through those bonds, he breaks free long enough to dismantle a prepared weapon seed. He rebuilds his soul skill as a clockwork inner world with distinct regions and peoples, completing its assimilation as the entity breaches his defenses.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly's rebuilt soul skill becomes Four Shaded Clockwork World, although he fears its surviving weapon core may still serve the hidden entity. He gains Aether Connection, a consensual link that could ease the isolation of his inner source but would make him valuable to anyone seeking energy. Shal warns him that styles might imprison a person with such a gift.\n\nThe second preliminary requires every entrant to learn and rapidly improve Flexibility. Because the skill spirit rejects classless Randidly, he falsely claims to know an equivalent and creates one himself by studying the movement of beings inside his soul world. His new personal skill carries him through the deadline and helps him defeat a preliminary rival. Seventy-six survivors join one hundred selected style disciples in the regional tournament field.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The regional tournament uses a triple-elimination structure that favors established styles and denies preliminary entrants time to recover. Randidly defeats a Blooming Flower disciple, then suffers two severe losses against elite opponents before surviving his fourth match. Shal raises the required result from top eight to top four and gives Randidly access to his father's spear diary. From its incomplete components, Randidly creates Spear Phantom's Embrace, a rare technique joining movement, feints, image, and mental pressure.\n\nRandidly uses the new technique to remain in the field, then defeats the red-haired rival whose devouring energy weakens combat images. His companions turn their food stall into a large tournament business while his female attendant grows rapidly through training. When the heavily favored contender concedes without fighting him, Randidly advances into the final thirty-two.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly's attendants become entangled in family and style pressure, while the Northern Region spearwoman offers Randidly brutal training for her own political purpose. Shal refuses an Aether connection from Randidly, fears echoes of Lucretia's influence, and leaves Dearden. Lucretia captures him without Randidly's knowledge. Randidly responds to the apparent abandonment by committing to repeated training defeats and improving his regeneration.\n\nThe Engraving Guild begins threatening Randidly over the source of his unauthorized equipment. In the tournament proper, the red-haired finalist demonstrates image-erasing energy, and Randidly faces a muscular favorite he previously lost to. By combining roots, fire, mobility, disease, and spearwork without allowing a stable exchange, Randidly forces the favorite to concede. He reaches the top sixteen and disrupts the result Dearden's major styles expected.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dearden's major styles warn Randidly not to advance beyond the top eight, while the defeated muscular favorite reports hearing an offer of stolen power. The Devourer's disciple privately gives Randidly a disputed account of Shal's family: Lucretia grants three dangerous gifts, and a transferable devouring rune helped cause an old disaster. She also admits that her orders require her to stop the Spear Phantom style from reaching the top eight.\n\nIn their match, the disciple reveals near-Artisan skill with a whip-spear and devouring energy that erodes images, abilities, and flesh. Randidly confines her movement with roots, exploits her weakness to heat, and inflicts a devastating spear strike. She chooses self-immolation rather than continued bondage. Randidly wins the needed top-eight result, but Lucretia captures the disciple's soul and keeps the unresponsive Shal in her custody.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A gray spark from the defeated disciple's remains triggers a Forsaken outbreak and summons a hunger swarm to Dearden. Randidly joins low-status defenders on the western wall and learns that major styles routinely shelter while expendable spear users die. He and his female attendant hold the wall with fire, roots, spearwork, and transferred ether. A Central Domain representative destroys the main swarm mass, but only after defenders are killed or transformed and fighting spreads through the city.\n\nWhile recovering from severe leg wounds, Randidly completes another Ash path and is taken into the Patron of Ash's trial. Its heat and visions probe his unresolved guilt, family history, and missing friends. He risks approaching the central sphere instead of merely enduring. Black material remakes his skeleton, and he returns as an anointed of Ash with Ashes to Ashes and the pain-projecting Anguish.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly trains his new Ash abilities while learning more about the marriage politics binding the strongest northern styles. Lucretia visits him and confirms that she holds Shal, seeking access to Randidly's unusually pure Aether. He considers a limited trade but refuses an open-ended bond. Shal remains trapped in a dreamlike struggle against a shade connected to the Spear Phantom founder.\n\nIn the top-eight match, the Steel Feather finalist's speed and force-wave techniques badly damage Randidly and crack his obsidian spear. He extends Phantom's Embrace to borrow her momentum, then creates an ash-and-volcano technique capable of meeting her strongest attack. The new spear image briefly reaches Artisan quality. Randidly survives her final committed strike, redirects its force, and wins when she collapses. He advances after demonstrating his first Artisan-level spear technique.",
+            "through": {
+              "chapter": 78
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly bargains Aether to Lucretia for Shal's release and the cancellation of her claims over him. Shal returns physically but remains unconscious, caught between conflicting battle intents. The payment leaves Lucretia faintly connected to Randidly. Before he can settle the consequences, three Central Region Artisans ambush him because the Spear Phantom style reached the top eight.\n\nRandidly is outmatched, and one attacker shatters the obsidian shell of his spear. Its engraved bone core survives as a usable weapon. Randidly forces Lucretia to share the effects of Anguish and Torment through their tether, then uses an inspired fire attack to scatter his attackers. The Northern Region spearwoman who trained him arrives, identifies the ambushers as foreign agents, and prevents them from finishing him.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Northern Region spearwoman kills one ambusher, while two escape and Dearden's authorities offer no explanation. The Endless Heat master begins traveling personally toward the city, claiming that Shal is tied to a bloodline secret. Shal continues fighting the founder's shade in his dream and develops a hybrid style instead of simply accepting the inheritance.\n\nRandidly discovers that the bone spear absorbs Aether and stores emotions and meaning associated with the Spear Phantom founder. He reproduces two of its outer engravings on daggers, creating dangerous tools that exchange life and meaning at severe cost. The inherited memories suggest a bargain with Lucretia and a family disaster, but their reliability remains uncertain. Randidly uses the spear to enter Shal's dreamspace, tells his mentor that he is needed, and leaves the engraved daggers for him.",
+            "through": {
+              "chapter": 90
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly prepares for his semifinal against the Breaking Dawn contender, whose political marriage campaign also threatens Randidly's life. The female attendant struggles with Randidly's expected departure, while the male attendant plans a separate future at the border. Shal remains asleep.\n\nDuring the semifinal preparations, Lucretia attacks Shal's inn through possessed bodies. The merchant attendant is controlled by a red-eyed soul and turned against the male attendant. The male attendant's defensive iron image develops into armor as he fights through severe wounds, but Lucretia's forces break his defense. The possessing soul takes direct control of the merchant's final strike and decapitates him. The merchant remains alive and traumatized after the killing while the attack continues around Shal.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lucretia draws heavily on her tether to Randidly while an Endless Heat master attacks Shal's inn. She opens Randidly's soul world and releases an ancient Earth Golem warrior to defend Shal. In the arena, Randidly fights the Breaking Dawn contender, drains ether through the bone spear, survives a killing thrust with Ashes to Ashes, and collapses the opponent's dominant sun image by extracting its meaning.\n\nRandidly then opens his soul world to Lucretia, draws her meaning inside, and pins it with the spear. Left unarmed, he breaks the contender's weapon and knocks him unconscious, winning the semifinal despite crippling injuries. A hostile projection arrives to seize him, but the Steel Feather leader carries him away. At the inn, Shal wakes. Lucretia confirms that she is his birth mother and enters Randidly's soul world voluntarily with a captive soul and other resources, leaving her true containment uncertain.",
+            "through": {
+              "chapter": 103
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Steel Feather leader protects civilians while escaping the hostile projection with unconscious Randidly, losing an arm in the pursuit. Randidly creates one last opening with his new sun-stilling image and gives his rescuer a small amount of pure Aether. The retired veteran receives Randidly and uses a teleportation scroll to remove him from Dearden. A returning ally then transfers him to his own world, where he is to recover and develop before coming back.\n\nShal wakes fully and learns that Lucretia is his birth mother. After the Earth Golem badly injures the Endless Heat master and departs, Shal and the Steel Feather leader stand together against the master. The female attendant finds the male attendant's body. The grieving merchant admits that he killed him while possessed. She leaves to investigate a relative's disappearance that she suspects may involve the Endless Heat threat. Randidly is alive but unconscious, Lucretia remains insecurely confined within his soul world, and the tournament final and battles in Dearden remain unresolved.",
+            "through": {
+              "chapter": 105
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B09WTP8KQR",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-3"
+      }
+    },
+    "the-legend-of-randidly-ghosthound-4-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A classless survivor left beside a stream after an ambush shatters his skills and strips away much of his equipment. Though alive, he cannot safely depend on the abilities that once made him formidable.",
+            "id": "randidly-ghosthound",
+            "name": "Randidly Ghosthound",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A fourteen-year-old survivor whose early strengths favor magic. Thrown into danger when Earth changes, he responds with improvised courage.",
+            "id": "simon-bliss",
+            "name": "Simon Bliss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Randidly's Spear Phantom mentor from earlier in the series. His training and the path connected to his fighting tradition continue to shape Randidly's development.",
+            "id": "shal",
+            "name": "Shal",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning settlement strategist who balances long-term planning with a determination to keep any one leader's authority in check.",
+            "id": "mrs-hamilton",
+            "name": "Mrs. Hamilton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning Earth-side ally who is personally connected to Randidly through one of his blessings.",
+            "id": "annie",
+            "name": "Annie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning ally and Dawnsmith.",
+            "id": "sam",
+            "name": "Sam",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tree linked to Randidly through an unusual living connection established earlier in the series.",
+            "id": "arbor",
+            "name": "Arbor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Zone 32's two opposed champions. She offers Soul Bond to those who pledge to her and is regarded as comparatively fair by nearby villages.",
+            "id": "wild-rider",
+            "name": "Wild Rider",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The champion opposed to the Wild Rider, commanding skeletons, zombies, and crypt spiders from the Badlands. His pledges are offered Ancient Stamina.",
+            "id": "skeleton-knight",
+            "name": "Skeleton Knight",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The name used by the critically injured stranger Simon nurses back to consciousness. He carries exceptional potions and can condense Simon's strongest healing liquid, suggesting resources and knowledge far beyond the local norm.",
+            "id": "david",
+            "name": "David",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A missing friend whose face is being used by the being that attacked Randidly. Her actual condition and location are unknown when Randidly begins recovering.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile being that appears in Lyra's form and has attacked Randidly. Its nature, location, and capabilities remain unclear as he begins recovering.",
+            "id": "creature-using-lyras-identity",
+            "name": "Creature using Lyra's identity",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Wild Rider pledge bonded to Chrysanthemum, an intelligent giant black bear. She meets Simon and David on the road and escorts them toward Star Crossing.",
+            "id": "bear-riding-pledge",
+            "name": "Bear-riding Wild Rider pledge",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young guard brought forward to oppose David during the skeleton assault on Star Crossing.",
+            "id": "vandal",
+            "name": "Vandal",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The human leader of a Skeleton Knight-aligned escort. His assessment of David's speed and strength quickly tells him that the stranger is far beyond an ordinary local fighter.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Skeleton mage"
+            ],
+            "description": "A skeletal mage who retains personhood while serving among the Skeleton Knight's forces. He attacks David with dark magic and layered curses during the fight around the reanimator.",
+            "id": "copernicus",
+            "name": "Copernicus",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A sealed presence inside Randidly's soul skill. He recognizes her but is not yet prepared to risk direct contact with her.",
+            "id": "lucretia",
+            "name": "Lucretia",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "The calculating leader of a large eastern village allied with the Skeleton Knight. After hearing of David's strength, she orders a renewed mission to seize him and Simon.",
+            "id": "sydney",
+            "name": "Sydney",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A being already present within Randidly's Aether that bears the destructive backlash ravaging him. Randidly must seek its help to survive.",
+            "id": "bone-worm-companion",
+            "name": "Bone-worm companion",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A twelve-year-old participant in the Wild Rider's animal ceremony. Her sensitivity to animals and her fear-based predictive ability make her unusually alert to danger within the crowded enclosure.",
+            "id": "gemma",
+            "name": "Gemma",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The administrator controlling entry to a fortified northern refuge. She can identify other people's skills and evaluates newcomers with close attention to the danger they may pose.",
+            "id": "rose-calloway",
+            "name": "Rose Calloway",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rose Calloway's mute, highly capable bodyguard at the fortified refuge.",
+            "id": "brute",
+            "name": "Brute",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ace"
+            ],
+            "description": "The public identity of Ace, Randidly's oldest friend and the refuge's leading champion. His power and authority have made the settlement a place governed through demanding tests of strength.",
+            "id": "dauntless",
+            "name": "Dauntless",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former companion of Ace whose dispute with him over Roy's endangered settlement leaves their relationship badly damaged.",
+            "id": "sidney",
+            "name": "Sidney",
+            "reveal": {
+              "chapter": 51
+            }
+          },
+          {
+            "description": "One of the four people connected to Randidly by his blessings. After returning to his settlement, he turns toward her as he assesses the allies available for the approaching crisis.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local leader of the Weavers that emerged near Arbor. She explains that her spiders crossed from Randidly's soul world, lost contact with their greater matriarch, and cannot return.",
+            "id": "weaver-matriarch",
+            "name": "Weaver matriarch",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A practical source of support who advises Annie about her unsettled emotions after childbirth.",
+            "id": "regina",
+            "name": "Regina",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Annie's newborn daughter. A weaker branch of Randidly's blessing connection reaches her through her mother.",
+            "id": "delilah",
+            "name": "Delilah",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A performer whose emotions visibly affect her aura. Randidly seeks her candid assessment of the settlement, treating her perspective as a useful measure of its civic health.",
+            "id": "raina",
+            "name": "Raina",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raina's manager, an emotionally sensitive man who is romantically attached to her. Randidly's presence is unusually difficult for him to read.",
+            "id": "stan",
+            "name": "Stan",
+            "reveal": {
+              "chapter": 81
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distant connection whose persistent refusal to surrender reaches Randidly while he is defining the purpose of his new class.",
+            "id": "helen",
+            "name": "Helen",
+            "reveal": {
+              "chapter": 109
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0BSRHD3T7",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-4-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Randidly completes Planting of the Forest of Enmity and is no longer barred from the sealed raid dungeon for being classless. The class grants powerful plant, healing, summoning, and destructive abilities, but also restricts his future skill capacity and carries five outside influences. He accepts those additions only after moderating the creature's hatred with mercy. The System permits the heresy while warning that subverting its will has consequences.\n\nZone 32 is still losing ambient Aether, and the dungeon must be cleared by a single ten-person party. Rose Calloway takes responsibility for analysis and tactics, while Alana and Dauntless are among the assembled fighters. The group remains one member short, forcing Randidly to approach East End because Sidney and Dauntless parted badly. Sydney's separate connection to Randidly remains unresolved. Simon stays with his reunited mother. Mrs. Hamilton continues guiding the settlement's political and military growth. Stan remains incapacitated by what his new soul skill revealed. Lyra has been found and appears at Randidly's class formation, but her connection to the creature remains unresolved. Both Regalias remain inside the dungeon. Randidly's bone-worm partner stops responding after the class transition, and a small unexplained bird begins forming on his shoulder.",
+        "in_short": "After an ambush leaves Randidly Ghosthound's skills shattered, Simon Bliss shelters him under the alias David. Randidly recovers, bonds with a bodiless companion that later inhabits a bone worm, and becomes entangled in Zone 32's war between the Wild Rider and Skeleton Knight. He kills the Skeleton Knight, but the Aether-made creature wearing Lyra's face uses the final raid boss to create a sealed dungeon that will drain the zone. Randidly frees the real Lyra from an Aether construct, absorbs its collapse, and returns to strengthen his settlement through training, civic reforms, industry, and public assessments. His attempt to give Stan a custom soul skill exposes serious psychological danger. To enter the dungeon, Randidly creates Planting of the Forest of Enmity, a heretical class shaped by five outside influences. He ends the book with an almost complete ten-person raid party and one East End recruit still needed. Lyra has been found but remains connected to the unresolved creature, both Regalias are inside the dungeon, and Randidly's bonded companion is silent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Randidly Ghosthound survived Earth's transformation under the System without accepting a class. He developed extraordinary physical and magical abilities, built relationships with the growing human settlements, and trained in spear combat under Shal, an off-world mentor. His choices also created unusual spiritual and Aether connections, including blessings shared with several allies, a living bond with Arbor, and a soul world containing the dangerous Lucretia.\n\nRandidly's strength made him a central figure on New Earth, but it also attracted enemies operating through the System's deeper structures. His friendships with Ace, Sydney, Mrs. Hamilton, Annie, Sam, and other survivors remain important even when distance, secrecy, or conflicting priorities divide them. As this volume begins, Randidly is classless, separated from many allies, and facing an adversary capable of attacking the structures behind his skills.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly escapes an ambush but collapses beside a stream with shattered skill structures and missing equipment. Forty days earlier, fourteen-year-old Simon Bliss survived New Earth's opening, discovered the Golden Lily Spring, and became a healer and medicine supplier. He finds Randidly unconscious and spends weeks treating him. Randidly wakes under the name David, concealing his identity while he assesses the zone and the being using Lyra's face.\n\nSimon and David travel to Star Crossing, where Simon chooses the Dreamer class and gains Astral Projection. A Skeleton Knight assault then forces them into the defense. Although activating damaged abilities is agonizing, David destroys much of the undead army and kills its reanimator. Simon's astral scouting becomes essential to their coordination. The eastern leader Sydney responds by planning another attempt to seize them, while Star Crossing's board remains suspicious of David's motives. Randidly gradually frees several skills from the fragments lodged through them, but learns that repeated overuse could create a resonance that destroys every affected structure and kills him.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The bear-riding pledge leads Simon and David in search of the Wild Rider, but the mission changes when they discover a tier-three raid boss whose illusion-producing spawn are already multiplying. Randidly races ahead and attacks. The creatures hide their true bodies behind convincing false forms, so Simon guides him from astral range toward the concealed cores. Even with that help, Randidly's damaged skills begin resonating under the strain.\n\nThe Wild Rider explains that ordinary healing cannot stop the collapse. A being already embedded in Randidly's Aether is absorbing the backlash, but it can save him only if he accepts a permanent bond between their lives. Randidly agrees and loses consciousness as the bond begins stabilizing him. The bear-riding pledge reaches the raid boss, follows Simon's astral direction to its true location, and lands the killing blow. The boss dies and Randidly survives, but he remains severely injured while the consequences of the new bond are still unknown.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly wakes with cracked but stabilizing skills. His permanent bond grants new Aether abilities and lets his bodiless partner help remove the remaining fragments. The Wild Rider offers a companion ceremony that could provide the partner with a physical host, so Randidly and Simon join nearly thirty pledges caring for a crowded population of animals and monsters. Randidly cultivates special food for them, while Gemma, a young participant with a danger-sensing ability, helps him distribute it.\n\nRandidly finishes clearing his skills and completes a path tied to the Spear Phantom tradition. Its trial reveals that the phantom mentor is Shal's father and that Randidly carries the man's heart. Randidly survives the battlefield test. At the ceremony's final selection, animals choose which participants to follow. Simon attracts several and discovers exceptional spiritual power in an ox. Gemma draws a large group, while a metallic dog returns to her. Randidly still must decide which creature, if any, can safely become the body of his bonded partner.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Randidly rejects several potential hosts before a bone-worm raid boss offers its body in exchange for protection of its species. He destroys the System structures surrounding its soul and transfers his bodiless companion into the creature, creating a powerful but potentially dangerous reciprocal bond. The newly embodied companion then reveals that David is Randidly Ghosthound. Simon and the Wild Rider's camp react to the deception with hurt and suspicion.\n\nAfter training the companion and experimenting with Aether-based engraving, Randidly travels with Simon, the Wild Rider, and others to a fortified northern refuge. Rose Calloway controls entry through strength tests, but Randidly defeats her bodyguard Brute within seconds. Inside, he learns Shal's world is undergoing a System transition and reunites with Ace, his longtime best friend. Ace is also Dauntless, founder and champion of the refuge. Rose recognizes Randidly as the Ghosthound and cancels an assassination plan prepared against him. Randidly now considers confronting the Skeleton Knight, while the unresolved subject of Sydney continues to strain his renewed friendship with Ace.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Wild Rider admits that she left Gemma with her regalia as part of her own plan, and skeleton forces capture Gemma and her metallic dog. Randidly no longer trusts the champion, but an earlier debt prevents a final break. He defeats Dauntless in a duel without killing his old friend, bargains with Lucretia for help against the creature, and pursues the captives into the Skeleton Knight's territory.\n\nRandidly frees Gemma and recovers the regalia, but the creature appears in Lyra's form with the wounded dog. The Skeleton Knight challenges Randidly to single combat. After a prolonged spear duel, Randidly destroys the champion, throwing its army into disorder. The creature then seizes Gemma's headdress and holds the Wild Rider and the last tier-three raid boss in Aether chains. When Randidly refuses its offer of the Wild Rider's role and attacks, the creature uses the boss as a shield. The boss's death creates a sealed raid dungeon. A party of ten must clear it within thirty days or Zone 32 will lose its ambient energy and remain cut off.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The raid dungeon admits only one party and rejects Randidly because he has no class. The creature, the two Regalias, and several others are believed to be inside. Randidly, Lucretia, and his bone-worm companion determine that a class is an Aether structure surrounding the soul and consider using the Stone of Genesis to create one outside the System's normal process. Simon confirms that the sealed zone ends at a sharp void, then reconciles with Randidly over the David deception. He remains in Star Crossing after reuniting with his mother.\n\nRandidly returns toward his former settlement and enters the immense Aether apparatus suspended above it. There he finds the real Lyra alive inside a convincing artificial castle. System restrictions prevent her from speaking freely, but she reveals that the creature fears the System and that the apparatus can be absorbed after it is damaged. System pressure shatters the construct. Randidly uses Inspiration and Aether manipulation to prevent the fragments from striking the town, absorbing a large amount of hostile, System-like Aether. Lyra disappears during the collapse and cannot be found afterward.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at his settlement, Randidly finds Arbor greatly enlarged and surrounded by an unintended faith. Weavers from his soul world crossed through Arbor, became stranded, and now produce cloth under Mrs. Hamilton's direction. Randidly begins intensive training with Alana and learns that his blessing connection to Annie has extended in weaker form to her newborn daughter, Delilah. Mrs. Hamilton confirms that the real Lyra has been recovered but will not speak, and demonstrates that Tulumurite burns through Randidly's higher-quality Aether rather than strengthening it.\n\nThe settlement is growing into a regional industrial center, but currency, land ownership, social division, and relations with neighboring communities remain unsettled. Randidly accepts a more visible leadership role. He trains fighters, studies engraving with Sam, asks Raina for a candid civic assessment, and plans public competitions with rewards for combat, production, System knowledge, and tactics. He also continues studying how classes are built, refusing to treat residents as disposable test subjects. A public performance opens a larger celebration, after which the council is ready to announce institutional reforms and expanded military preparation.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The council introduces local currency, land and construction rules, larger squads, and a recurring four-part public assessment. Randidly offers major prizes, including a Stone of Genesis and a promise to change the tactics winner's fate. Hundreds enter. Alana wins the combat tournament, while the production contest rewards both effective craftsmanship and a forging process its creator shares freely. During the knowledge event, Randidly improves several consolidated Yggdrasil abilities and becomes Earth's first holder of a legendary skill.\n\nStan advances through the tactics tournament as Randidly, Lucretia, and the bone-worm companion study class structures. They conclude that a class orders and supports an Aether-based soul body, while excessive breadth can make future growth collapse. Stan wins by concealing a decisive force and manipulating his opponent's formation. Meanwhile, the knowledge winner uses the Stone of Genesis. Its apparatus consumes so much Aether that Randidly must release his reserves, briefly replenishing the starved area beyond the cathedral. The process successfully creates an ancient sight ability, proving that complex skill formation is possible but can demand an immense amount of energy.",
+            "through": {
+              "chapter": 97
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Stone recipient uses the only Stone of Fate to transform a combat skill rather than upgrade her class, so Randidly loses his chance to observe class formation directly. He and his partners nevertheless refine their model: a class provides structural order to the Aether body, while a soul skill focuses it through a defining image.\n\nAs the tactics winner, Stan asks for a soul skill reflecting his nature as a catalyst for the people around him. Randidly shapes that idea into a mirrored instrument above a cage holding a mutable shadow and installs it in Stan. The structure causes no detectable lasting physical damage, but Stan collapses under severe fear. A healer concludes that the terror is a reaction to what the new soul skill revealed about Stan himself. Randidly leaves the skill intact while Stan rests and accepts responsibility for the result. The experiment demonstrates that creating a functioning soul structure can still inflict grave psychological harm even when the recipient's body and Aether appear intact.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the dungeon deadline approaching, Randidly assembles the strongest available fighters and begins creating a class with Lucretia and his bone-worm partner. Their cautious layered design cannot contain the living seed image at its center. Randidly lets the weave collapse into the anchor, fills it with his own accumulated images and Aether, and enters the System's class-creation process. He rejects an initial formulation and chooses Planting of the Forest of Enmity, defining it around growth, support for survivors, and opposition to the System's control.\n\nMrs. Hamilton, Lucretia, a residual spirit, Randidly's patron, and the creature each add compatible influences. Randidly accepts the resulting class only after tempering its hatred with mercy. It grants new plant control, healing, summoning, aura, and destructive skills while limiting his future non-class skill capacity. The System permits the heresy but warns of consequences. Randidly wakes in a crater and returns to the settlement. His bonded companion no longer answers, and a small bird begins forming on his shoulder. Rose Calloway, Alana, Dauntless, and other fighters gather for the dungeon, but the ten-person party remains one member short. Randidly must approach Sidney's militarizing East End to recruit the final participant.",
+            "through": {
+              "chapter": 115
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0BSRHD3T7",
+            "type": "community"
+          }
+        ],
+        "work": "the-legend-of-randidly-ghosthound-4-a-litrpg-adventure"
+      }
+    }
+  }
+}

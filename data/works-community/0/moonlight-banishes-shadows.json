@@ -1,0 +1,1700 @@
+{
+  "entries": {
+    "moonlight-banishes-shadows": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A violet-eyed Al'rashian Survivalist whose bond to Kirstin has been severed. Lost memories leave him uncertain of his heritage and of a missing inner companion.",
+            "id": "trent-embra",
+            "name": "Trent Embra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A thief marked for Sallor's lethal champion contest. Martin approaches Trent as a helpful guide near Belrise, but intends to rob and injure him before gaining entry to the Moonlit Forest at his side.",
+            "id": "martin-vane",
+            "name": "Martin Vane",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The young noble who formerly held Trent's summons bond. Its severing leaves Trent outside her service.",
+            "id": "kirstin",
+            "name": "Kirstin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Al'drossford guard recruit who formerly travelled and trained with Trent.",
+            "id": "tersa-embra",
+            "name": "Tersa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cullen"
+            ],
+            "description": "An Al'drossford guard sergeant who formerly trained and travelled with Trent.",
+            "id": "sergeant-cullen",
+            "name": "Sergeant Cullen",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Taylor"
+            ],
+            "description": "A grand-master instructor serving Lewis and a formidable duelling-wand user. Taylor answers Tersa's poor control with exercises in patience and dexterity, then recognizes that Trent's unexplained absence requires investigation.",
+            "id": "master-taylor",
+            "name": "Master Taylor",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kinslayer"
+            ],
+            "description": "Orion is the adopted Al'rashian brother of Trent and Tersa and is also called Kinslayer. A Spirit Summoner, he travels toward Wallander on a rumor that Clan Embra may be working nearby.",
+            "id": "orion-embra",
+            "name": "Orion Embra",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A local adventurer whose former companions were killed by outlaws. She follows Orion from Sweet Meadows and becomes his provisional companion on the road to Wallander despite his initial refusal.",
+            "id": "orions-travelling-companion",
+            "name": "Orion's travelling companion",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The local ruler whose authority in Al'drossford overrides the ambitions of visiting lesser nobles. Lewis checks Seth's provocations and must balance the search for Trent against the political pressure created by royal guests.",
+            "id": "duke-lewis",
+            "name": "Lewis",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lewis's wife and the king's sister. Her return to Al'drossford with royal nobles and collared immortal soldiers creates political pressure that limits Lewis's ability to search openly for Trent.",
+            "id": "duchess-vanessa",
+            "name": "Duchess Vanessa",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger royal son travelling with a military column from Belrise. Seth proposes taking Trent's soulbound equipment by force, but his aunt prevents the attack.",
+            "id": "seth",
+            "name": "Seth",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young noblewoman travelling from Belrise with her aunt and brother. She takes an interest in Trent's soulbound mask when their military column encounters him.",
+            "id": "young-alverin-noblewoman",
+            "name": "the young Alverin noblewoman",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shadowy being that claims Trent as its brother and says they once hunted together. It recognizes the absence of Trent's deeper companion, enters his soulbound gloves, and says it will sleep there until he grows stronger.",
+            "id": "shadow-creature",
+            "name": "the shadow creature",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Seth's confidant and a skilled infiltrator who can pass as a servant. Although attached to Seth's scheme against Lewis, Avery quietly gathers information and pursues advancement on his own account.",
+            "id": "avery",
+            "name": "Avery",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Al'rashian master from the Dusk Tower who comes to Al'drossford looking for Trent. The master believes Trent's violet eyes attract wandering trials and uses a tracking bond to assist Cullen and Taylor's search.",
+            "id": "dusk-tower-master",
+            "name": "the Dusk Tower master",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-one puppy that helps Trent against a were-rat. After Trent heals it, the unusually durable and persistent dog follows him through the Moonlit Forest.",
+            "id": "bonded-creature",
+            "name": "the bonded creature",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A six-legged feathered beast who makes a reciprocal hunting agreement with Trent. Their werewolf hunt earns her wings and talons, after which she directs Trent to Martin's hiding place and departs through a portal.",
+            "id": "ream",
+            "name": "the ream",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly wolfkin who administers the Moonlit Forest trial's rules and perfect-clear rewards. The keeper persuades Trent to retain the bonded dog, entrusts him with a corrupting trace of divinity, and warns that trials and other seekers will be drawn to him.",
+            "id": "moonlit-forest-trial-keeper",
+            "name": "the Moonlit Forest trial keeper",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An academy warrior whose party needs help finding traps. Financially strained by low-paying work, Carrie offers to guide Trent around Belrise and introduce him to the dungeon group.",
+            "id": "carrie-moss",
+            "name": "Carrie Moss",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aspiring weaponsmith in Belrise who needs quality wood and mined materials for his experiments. He and Trent consider a supply arrangement involving materials, skill stones, and spell resources.",
+            "id": "arden",
+            "name": "Arden",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of Carrie's academy party. Jace controls Carrie's money and development through a charter whose harsh conditions are not disclosed to prospective members, while requiring any new recruit to accept his authority.",
+            "id": "jace",
+            "name": "Jace",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An academy Mage Apprentice who offers healing, support magic, mapping, and storage during Trent's delve. Felicia wants access to valuable fourth-floor materials, but accepts Trent's rule that party drops are divided equally.",
+            "id": "felicia",
+            "name": "Felicia",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "small white spider"
+            ],
+            "description": "A small white spider who keeps Belrise's minor permanent trial. The keeper secretly reshapes obstacles and rewards around Trent, accepting a breach of normal rules in the belief that accelerated growth will justify the danger.",
+            "id": "belrise-trial-keeper",
+            "name": "the Belrise trial keeper",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young shadow mage-assassin who arrives in Belrise with her identity concealed. She hopes to assemble an ambitious adventuring party and accepts a fast temporary delve with two apparent company recruits.",
+            "id": "young-shadow-mage-assassin",
+            "name": "the young shadow mage-assassin",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A company recruiter who presents himself as a shield warrior and offers the newly arrived assassin an equal-share temporary delve. His true capabilities and reasons for entering the changed Belrise trial remain concealed at their meeting.",
+            "id": "company-recruiter",
+            "name": "the company recruiter",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The recruiter's marksman partner in the temporary Belrise group. He appears to provide ranged support for a rapid attempt at the changed trial, while his precise allegiance and intentions have not yet been tested.",
+            "id": "marksman-partner",
+            "name": "the marksman partner",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silver-haired rogue travelling under an alias while without her guards. Pursued through the Belrise trial, she offers Trent a disputed gray sphere in return for his protection.",
+            "id": "silver-haired-rogue",
+            "name": "the silver-haired rogue",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Red Tiger Company recruiter who pursues the silver-haired rogue and the gray sphere she carries. He withdraws when Trent uses the Belrise safe-zone rules to prevent an immediate attack.",
+            "id": "red-tiger-recruiter",
+            "name": "the Red Tiger recruiter",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Red Tiger Company archer accompanying the recruiter in pursuit of the silver-haired rogue's gray sphere. He leaves the trial with the recruiter after Trent invokes safe-zone protection.",
+            "id": "red-tiger-archer",
+            "name": "the Red Tiger archer",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trial authority separate from Belrise's incapacitated keeper. The spirit appears while the unstable trial is restructuring.",
+            "id": "trial-spirit",
+            "name": "the trial spirit",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spectral former Duskwraith who knew Trent before his current identity but refuses to reveal who he was. The guide explains the history of the Duskwraiths and Shadowhunters and gives Trent the soulbound swords Blood and Ash.",
+            "id": "spectral-duskwraith-guide",
+            "name": "the spectral Duskwraith guide",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A would-be replacement keeper who has not gained full control of Belrise's unstable trial. He confronts Trent in the fifth-floor guardian chamber behind an antlered guardian and six armored knights.",
+            "id": "temporary-would-be-keeper",
+            "name": "the temporary would-be keeper",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The guard assigned to Belrise's minor permanent trial. Gaffney admits Trent's party after a trapfinding demonstration, then finds standing orders to assist Trent and report his movements.",
+            "id": "sergeant-gaffney",
+            "name": "Sergeant Gaffney",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arashia's last ruler during its collapse. King Derakferdor directs the Dross away from a doomed defense so their people can endure and establish a new home.",
+            "id": "king-derakferdor",
+            "name": "King Derakferdor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1039400450",
+            "type": "community"
+          }
+        ],
+        "work": "moonlight-banishes-shadows"
+      },
+      "recaps": {
+        "ending": "Trent leaves the restored Belrise trial as a stronger Shadowhunter, carrying Blood and Ash, the technique Moonlight Banishes Shadows, and a gray sphere wanted by the Red Tiger Company. Cullen ends the company's immediate attack, drives off its surviving recruiter, confirms that Trent's crystal key leads to a western warrior's trial, and gives him a lieutenant emblem from Lewis. Trent commits to the dangerous western territories. Carrie is free of Jace's charter, and Felicia remains with the group, but neither has yet agreed to travel west. The bonded creature wants them both to join and distrusts the silver-haired rogue, who arrives at Trent's camp without becoming a party member. Jace's expected retaliation, the Red Tiger grievance, Seth and Avery's political schemes, Orion's search for Clan Embra, Trent's sealed divine trace, and the truth of Trent's lost past and missing companion remain unresolved.",
+        "in_short": "After his bond to Kirstin is severed, Trent Embra enters the Moonlit Forest with the treacherous Martin Vane, survives its werecreatures, accepts a young bonded dog as his companion, kills Martin, and earns the Shadowhunter title while secretly carrying away a divine trace. Near Belrise he forms an unchartered party with Carrie Moss and Felicia. Their delve is manipulated by the trial keeper, forcing Trent through a corrupt fifth floor and a personal trial where he creates Moonlight Banishes Shadows and receives the soulbound swords Blood and Ash. Trent clears the altered trial and reunites with his companions. Carrie escapes Jace's coercive charter, while a disguised silver-haired rogue brings the party a gray sphere pursued by the Red Tiger Company. Trent keeps it, kills the company's archer in an ambush, and is rescued from the recruiter by Cullen. Cullen brings him authority from Lewis and confirms his next path lies west, which Trent chooses despite the open threats around him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Trent Embra entered this world with missing memories and an uncertain Al'rashian identity. His violet eyes distinguish him from the gold- and silver-eyed Al'rashians he has encountered, while his rapid advancement and unusual status remain unexplained. His summons bond to Kirstin has now been severed, leaving him apart from her, Tersa, and Sergeant Cullen. Trent also lacks a deeper companion tied to his forgotten birthright.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Trent leaves Al'drossford for a wilderness quest and meets Martin Vane near Belrise. Martin poses as a guide while planning to rob him, and both are transported into the Moonlit Forest. After Martin attacks and abandons him, Trent studies the trial's moon-cursed beasts, develops liquid-silver weapons, and takes in a persistent young dog. The pair gain skills and survive escalating fights, but the trial's hunters' truce and Trent's inaccessible instincts point toward a past he cannot remember. Elsewhere, Tersa begins strict remedial training under Master Taylor. Cullen, Taylor, and the Dusk Tower master discover Trent is missing just as royal visitors restrict the response from Lewis. Seth's attempt to gain Al'drossford is checked by Lewis's authority, while Avery begins pursuing leverage for himself. Orion Embra travels toward Wallander on a rumor that Clan Embra may be working nearby. In the forest, Martin moves behind the exhausted and wounded Trent with hostile intent.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trent survives Martin's ambush, heals, and is compelled to hunt the trucebreaker before the Moonlit Forest will release him. His dog is nearly killed during the growing campaign against werewolves, but Trent gives it a true name, which heals and awakens it. With help from a feathered beast seeking its own transformation, Trent finds Martin near the final guardian. Martin retreats into the greater dire bear's den, where Trent poisons and kills the guardian despite a broken arm, then kills Martin when the thief attacks him again. The perfect clear brings powerful armor, the Shadowhunter title, and a warning that trials are drawn to Trent. The keeper also entrusts him with a corrupting trace of divinity, which Trent seals in storage and plans to hide. He leaves the trial with the bonded creature as a continuing companion. Meanwhile, Orion learns that failed trials have released beasts around Wallander and that political violence is spreading through the region he must cross.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Near Belrise, Trent's awakened companion begins speaking in fragments and senses an old wound or absence in Trent's soul. Trent discovers that a crystal sword-key directs him west, then meets Carrie Moss, an academy warrior seeking a trap finder. The guild confirms Martin's death and rewards Trent for a completed world quest. Carrie is trapped in Jace's company charter, which controls his training and requires three gold to leave, but he initially conceals the full problem. After training together and attending a local festival, Carrie sees both Trent's combat ability and the significance rural Al'rashians place on his violet eyes. Trent learns the spear skill and brings Carrie into his party. Felicia, an academy Mage Apprentice who wants rare crafting materials, joins on equal shares as healer and mapper. The group enters Belrise's permanent trial and finds its familiar beginner layout transformed. Despite Carrie's and Felicia's concern, Trent leads them into the altered first floor.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The changed Belrise trial gives unusually generous and personalized rewards while pushing Trent's party through traps beyond the expected beginner challenge. Trent trains the bonded creature against beetles, equips Carrie, and insists Felicia develop offensive magic. Carrie gains agility and starts recovering confidence as a warrior, while Felicia reveals her half-elf identity and commits to learning decisive fire spells. The party clears the first guardian and survives a combined ant trap, a flood, and an underground lake. Trent nearly dies retrieving a submerged cache, but returns with equipment and skills divided among all four members. Felicia masters fire attacks, Carrie receives a mana-linked flail and its skill, and the bonded creature gains night sight. Their growing cooperation makes the delve more than a temporary arrangement. The trial's rewards still appear tailored to individual desires, leaving Trent convinced that an unseen authority is encouraging his progress and trying to influence who remains beside him.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felicia exposes the illegal restrictions in Carrie's charter, and both companions choose to continue beside Trent. The party defeats increasingly abnormal guardians until a sealed fourth-floor door separates Trent from the others. A small white spider reveals itself as the keeper and admits reshaping the trial to accelerate Trent's growth. Its tailored fifth-floor choice proves corrupting, incapacitates the keeper, and traps Trent with a lethal cursed foe. Killing it begins Trent's personal Shadowhunter trial. Trent is made to study and fight moon-cursed creatures while refining a sword form of his own. He selects paired short swords for the final test, defeats a werewolf guardian without access to his usual supplies, and names the new anti-cursed technique Moonlight Banishes Shadows.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Trent's personal trial carries him to a memorial valley, where a spectral guide from his forgotten life gives him the soulbound paired swords Blood and Ash. Back in Belrise's unstable trial, a separate spirit announces that the keeper is incapacitated. The spirit then explains that the unfinished changes could turn the site into a lethal dark trial, and Trent agrees to complete the fifth floor. He defeats groups of devouring fiends and the forces supporting a would-be replacement keeper. The trial confirms the clear and adds the new floor permanently. The spirit promises that the original keeper will recover and that the floor will be rebalanced. Trent rejoins his three companions - Carrie, Felicia, and the bonded creature, and the party stays inside during a temporary period of increased rewards.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The silver-haired rogue enters the reopened trial with two supposed allies, but they betray her after finding a gray sphere. She escapes to Trent's party and trades the disputed object for protection. Trent uses the safe-zone rules to drive off the Red Tiger recruiter and his archer, then keeps the sphere despite the continuing danger. During the same confrontation, Carrie invokes the three-gold exit clause and leaves Jace's coercive charter. Sergeant Gaffney prevents the dispute from becoming a fight in town. Jace is expected to retaliate, although Carrie asks Trent to spare the former party if a challenge comes. At the end of chapter 51, Carrie is free, Trent holds the sphere, and the conflicts with Jace and the Red Tiger Company remain unresolved.",
+            "through": {
+              "chapter": 51
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1039400450",
+            "type": "community"
+          }
+        ],
+        "work": "moonlight-banishes-shadows"
+      }
+    },
+    "morning-star": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Reaper"
+            ],
+            "description": "A Red remade into a Gold, the hidden champion of the rebellion known as the Rising. Once celebrated among the ruling caste as a great commander, he has fallen into the hands of his enemies and endured long imprisonment and torment for his secret. Grief-worn and hardened but unbroken in purpose, he still carries the memory of his executed wife Eo and the dream of freeing his people from the color-coded tyranny of the Society.",
+            "id": "darrow",
+            "name": "Darrow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Mustang"
+            ],
+            "description": "The brilliant, principled daughter of the late ArchGovernor of Mars and sister of the treacherous Jackal. A formidable leader and tactician, she is bound to Darrow by love and by hard history, and she dreams of a reformed order rather than mere revenge. Her intelligence, legitimacy among the Golds, and moral seriousness make her one of the most important figures on any side of the coming war.",
+            "id": "mustang",
+            "name": "Virginia au Augustus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Goblin"
+            ],
+            "description": "Darrow's fiercest and most loyal friend and the leader of the Howlers. Small, savage, and unshakably devoted, he has kept the flame of the rebellion alive through its darkest turns. Beneath the ferocity lie deep grief and a loyalty that will follow Darrow into any danger.",
+            "id": "sevro",
+            "name": "Sevro",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A towering Obsidian warrior freed by Darrow from a life of servitude and superstition imposed on his people by the Golds. Immensely strong and bound by a fierce personal code, he has sworn himself to Darrow and to the cause of liberation. His loyalty and his prowess in battle make him a pillar of the Rising.",
+            "id": "ragnar",
+            "name": "Ragnar Volarus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bold, blunt Gold warrior of an infamous family who has thrown in her lot with Darrow's cause. Fierce, loyal, and unfiltered, she fights with reckless courage and speaks her mind without apology. She has paid dearly for her allegiance and remains one of Darrow's staunchest companions.",
+            "id": "victra-au-julii",
+            "name": "Victra au Julii",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former friend turned enemy who has never forgiven Darrow for killing his brother. A renowned and honorable swordsman of the once-great Bellona family, he serves the powers that rule the Society and remains one of Darrow's most dangerous personal adversaries, even as his own loyalties are tested by the cruelties around him.",
+            "id": "cassius-au-bellona",
+            "name": "Cassius au Bellona",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Jackal"
+            ],
+            "description": "The cold, brilliant, and merciless son of the late ArchGovernor of Mars and brother of Virginia. Having seized power through patricide and treachery, he is a patient torturer and schemer who trusts no one and stops at nothing. He stands as one of the chief villains arrayed against the Rising.",
+            "id": "adrius-the-jackal",
+            "name": "Adrius au Augustus",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Sovereign, absolute ruler of the entire Society, governing from Luna with cold cunning. She has spent a long reign balancing the great Gold houses against one another and crushing dissent. She is the ultimate power the Rising must overthrow, and she will spend any life to preserve her order.",
+            "id": "octavia-au-lune",
+            "name": "Octavia au Lune",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The gentle poet who was once among Darrow's dearest friends and who turned against him upon discovering his deceptions. Now a capable commander serving the ruling powers, he carries the wound of betrayal and stands on the opposite side of the war, his old affection soured into resolve.",
+            "id": "roque",
+            "name": "Roque au Fabii",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A veteran Red leader of the Sons of Ares who first recruited Darrow. Steady and shrewd, he speaks for the lowColors within the rebellion and presses their interests, sometimes wary of Darrow's methods and of leaving too much power in Gold hands. He is a voice for the ordinary people the Rising claims to serve.",
+            "id": "dancer",
+            "name": "Dancer",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "morning-star"
+      },
+      "recaps": {
+        "ending": "The Rising triumphs. After brutal campaigns and heavy sacrifice, Darrow and his allies bring down the Sovereign, Octavia au Lune, ending her long reign over the Society. The war costs Darrow dearly, taking loyal companions along the way, and his estranged friend Roque, who had sided against him, meets his end after the final battle. The treacherous Jackal, Adrius au Augustus, is defeated and captured, and his sister Virginia executes him herself, closing the wound their family opened. With the old order shattered, Virginia au Augustus assumes leadership of a new government, a Solar Republic meant to give every Color a voice and to end the caste tyranny the Golds imposed. Darrow, no longer hidden, stands beside her as they begin the fragile work of building the freer world Eo had dreamed of, and they look toward a future for their young son. Cassius au Bellona, his loyalties changed by all he has seen, departs to safeguard a child of the fallen ruling line. The revolution has won, but the peace that follows will have to be fought for anew.",
+        "in_short": "Captured and broken by long imprisonment at the hands of the Jackal, Darrow is rescued by Sevro and his allies and sets out to turn a scattered rebellion into a force that can topple the Society. He rebuilds his coalition of Reds, Obsidians, lowColors, and sympathetic Golds, gambling on daring raids and hard-won alliances while grieving the friends the war has cost him. Betrayal, sacrifice, and vast battles carry the Rising from near-collapse to a final assault on the seat of Gold power. In the end the Sovereign, Octavia au Lune, is overthrown, and the treacherous Jackal is captured and executed by his own sister, Virginia. The old order gives way to a new one: Virginia takes the lead of a reformed government founded on the promise of freedom and representation, with Darrow at her side. Their victory is bought with terrible loss, and hard questions about the future remain, but the color-coded tyranny is broken and the dream Eo died for has taken root.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Darrow, a Red of the mines beneath Mars, learned that his people were slaves kept in ignorance by the ruling Golds after his wife Eo was executed for defiance. The rebel Sons of Ares saved his life and surgically remade him into a Gold, then sent him to infiltrate the Institute, a brutal academy, where he rose to lead his House and gathered loyal allies, including Sevro and the brilliant Mustang, later revealed as Virginia au Augustus, daughter of the ArchGovernor of Mars. He won the contest but earned the hatred of Cassius au Bellona and exposed a monstrous rival as Virginia's brother, Adrius, the Jackal. Taken into the ArchGovernor's service, Darrow spent the next years climbing through the Society's deadly politics as a hidden agent of the rebellion, forging new alliances and freeing an Obsidian warrior, Ragnar, to his cause. His schemes built to a bold bid for power, but it was betrayed: his friend Roque turned on him, the Jackal murdered his own father to seize control, the rebel leader Ares was unmasked as Darrow's mentor Fitchner and killed, and Darrow himself was captured, leaving the Rising in disarray as this book opens.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "morning-star"
+      }
+    },
+    "mort": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Mortimer, called Mort, a gangling, well-meaning farm boy who thinks too much to be much use at farm work. At a hiring fair his father offers him for apprenticeship, and he is taken on by Death himself to learn the family trade of collecting the souls of the dying. Awkward and kind-hearted, he is fascinated by his master's shadowy realm and slow to grasp how the duty must be done without feeling.",
+            "id": "mort",
+            "name": "Mort",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The anthropomorphic personification of death, a tall robed skeleton with a scythe and a horse, who speaks in a voice that arrives inside the head. Ancient and dutiful, he has lately grown curious about the living he collects, and he takes on Mort partly to lighten his workload and partly to free himself to explore what it is to be alive.",
+            "id": "death",
+            "name": "Death",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Death's elderly manservant, a dry, cynical old man who keeps house in the domain, cooks, and grumbles about the way things are done. He has served in Death's realm for a very long time and knows its workings better than anyone but the master himself.",
+            "id": "albert",
+            "name": "Albert",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Death's adopted daughter, who appears to be a girl of about sixteen but has lived in the ageless domain far longer than that. Lonely and prone to melodrama after years with only Death and Albert for company, she is at first cool and resentful toward the new apprentice.",
+            "id": "ysabell",
+            "name": "Ysabell",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Princess Keli, sole heir to the small kingdom of Sto Lat, a sharp and imperious young woman. Fate has marked her for assassination, and it is her soul that Mort is sent to collect.",
+            "id": "keli",
+            "name": "Keli",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young jobbing wizard in Sto Lat who scrapes a living from charms and fortune-telling. Because he can still perceive Princess Keli when the rest of the world has begun to forget she exists, he becomes her reluctant ally and adviser.",
+            "id": "cutwell",
+            "name": "Igneous Cutwell",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Death's horse, a solid, living white stallion. Having tried mounts of bone and of fire and found them unsatisfactory, Death long ago settled on a real horse; Binky carries him, and later Mort, on the nightly rounds and between the world and the domain.",
+            "id": "binky",
+            "name": "Binky",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The abbot of a remote order of listening monks, a man who is continually reincarnated and remembers each of his past lives. Because he always knows he will be born again, he greets Death as an old acquaintance whenever the two meet.",
+            "id": "the-abbot",
+            "name": "The Abbot",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "mort"
+      },
+      "recaps": {
+        "ending": "Mort ends with the tangle of altered reality resolved by Death rather than by his apprentice. Mort challenges Death and they fight; Death wins but spares Mort's life. Instead of allowing history's correction to claim Princess Keli, Death sets things right himself, absorbing the cost of Mort's interference. He then releases Mort from the apprenticeship, but sends him off well: Death gives Mort and Ysabell, his adopted daughter, leave to marry and a generous send-off. Keli, secure once more on the throne of Sto Lat, rewards Mort by making him Duke of Sto Helit, and keeps the wizard Cutwell as her royal recognizer, one of the few who never lost sight of her. Mort and Ysabell depart to begin married life as duke and duchess. Death, changed by his brief taste of living, of food, drink, and feeling, returns to his domain and resumes the unending duty of collecting souls, once again alone but no longer quite unmoved by the mortals he gathers.",
+        "in_short": "Mort, a gawky farm boy, is apprenticed to Death and learns to collect the souls of the dying, living in Death's timeless domain with the servant Albert and Death's adopted daughter, Ysabell. When Death steps back to experience ordinary human life, he leaves the Duty to Mort, who is sent to gather the soul of Princess Keli of Sto Lat, marked for assassination. Smitten, Mort kills the assassin and saves her, but reality insists she should be dead and starts erasing her, sealing her kingdom inside a shrinking dome of altered history. With the wizard Cutwell and with Ysabell, Mort struggles to keep Keli alive and set history right, even as the work slowly turns him into something like Death himself. In the end Mort must fight Death to resolve it. Death spares him and repairs reality by his own hand, then dismisses him kindly: Mort marries Ysabell and is made Duke of Sto Helit, Keli keeps her throne, and Death returns to his solitary work.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "At a hiring fair, the awkward, over-thoughtful farm boy Mort is taken on as an apprentice by Death, the robed skeleton who gathers the souls of the dying. Death brings him to his strange domain, a black house set in an ageless landscape with a garden of bone-white flowers, kept by the dry old servant Albert and shared with Death's adopted daughter, Ysabell. Mort learns the work: riding out on Death's horse, Binky, to be present at deaths and see souls safely on. Death, increasingly curious about living things, begins handing more of the duty to his apprentice so that he can go and explore what it is to be alive.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Left to perform the Duty alone while Death samples ordinary life, Mort is sent to collect the soul of Princess Keli of Sto Lat, who is fated to be murdered. Unable to stand by, he kills the assassin and saves her instead. This is a grave mistake: history knows Keli should be dead, and reality begins trying to correct itself, closing over her as people forget she exists. Mort seeks out the young wizard Cutwell, one of the few who can still perceive the princess, to help keep her alive while a shrinking dome of altered reality creeps in around her kingdom. Meanwhile Death throws himself into human pursuits, taking odd jobs and drinking, trying to feel what mortals feel.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The consequences of Mort's choice deepen. The pocket of true reality around Keli keeps contracting, and it becomes clear the wrong will not simply heal on its own. At the same time Mort himself is changing: performing Death's work is making him colder and more like his master, his eyes taking on a faint glow and his voice sometimes carrying Death's weight. Mort, Ysabell, and Cutwell search for a way to set history right without letting Keli die, while Death, having tasted mortality, proves oddly reluctant to resume his post. Thrown together by the crisis, Mort and Ysabell grow closer.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The reckoning arrives. To restore reality, Mort must confront Death directly, and the two duel with scythes. Death overcomes his apprentice but chooses to spare him, and rather than let the correction claim Keli's life he takes the burden onto himself and puts history right by his own means, dismissing Mort from his service in the process. The parting is generous: Death gives Mort and Ysabell his blessing to marry, and Keli, secure again on her throne, makes Mort a duke, granting him the dukedom of Sto Helit, while keeping Cutwell on as her royal recognizer. Mort and Ysabell leave to begin their life together, and Death, briefly touched by what he learned of living, returns alone to his endless duty.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "mort"
+      }
+    },
+    "my-sister-s-keeper": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A thirteen-year-old girl who was conceived through genetic selection specifically to be a compatible donor for her critically ill older sister. For her whole life she has undergone procedures to give blood, marrow, and cells to keep her sister alive. As the story opens she takes an extraordinary step, hiring a lawyer to sue her parents for the legal right to make decisions about her own body and to refuse a further donation. Thoughtful and conflicted, she loves her sister deeply yet is desperate to be seen as a person in her own right rather than a supply of spare parts.",
+            "id": "anna-fitzgerald",
+            "name": "Anna Fitzgerald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Anna's older sister, who was diagnosed with a rare and aggressive leukemia as a small child and has been fighting it, on and off, ever since. Her illness has shaped every part of the family's life, and repeated relapses have kept her dependent on donations from Anna. Despite years of treatment and hospital stays, she tries to live as normal a teenage life as her disease allows.",
+            "id": "kate-fitzgerald",
+            "name": "Kate Fitzgerald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anna and Kate's mother, a former attorney who gave up her career to devote herself entirely to keeping Kate alive. Fierce and single-minded in her fight against her daughter's cancer, she has organized the whole family around Kate's survival. When Anna files suit, Sara is stunned and chooses to defend the family in court herself, unable to accept a challenge to the choices she has made.",
+            "id": "sara-fitzgerald",
+            "name": "Sara Fitzgerald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Anna and Kate's father, a fire captain who finds calm in the certainties of his work and in the night sky he studies as an amateur astronomer. Gentler and more torn than his wife, he loves all his children and struggles to reconcile the family's need with Anna's plea to be heard.",
+            "id": "brian-fitzgerald",
+            "name": "Brian Fitzgerald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest of the Fitzgerald children, a troubled and rebellious teenager who has largely fallen through the cracks of a household consumed by his sister's illness. Angry and self-destructive, he acts out and drifts, feeling useless in a family where he can do nothing to help.",
+            "id": "jesse-fitzgerald",
+            "name": "Jesse Fitzgerald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A slick, successful young lawyer whom Anna approaches to take her case. Sardonic and guarded, he deflects every question about the service dog that accompanies him everywhere with a different flippant excuse. He takes on Anna's unusual suit, and there is clearly some history between him and the guardian appointed to the case.",
+            "id": "campbell-alexander",
+            "name": "Campbell Alexander",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guardian ad litem appointed by the court to represent Anna's best interests independently of either parent or lawyer. Thoughtful and independent, she must get to know Anna and the family and form her own judgment about what the girl truly wants. She shares a complicated past with Anna's lawyer, Campbell.",
+            "id": "julia-romano",
+            "name": "Julia Romano",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "my-sister-s-keeper"
+      },
+      "recaps": {
+        "ending": "The novel's ending overturns everything the lawsuit seemed to be about. During the trial it emerges that Anna did not bring the suit purely for herself: her dying sister Kate, worn down by a lifetime of cancer and treatment, had begged Anna to refuse the kidney donation so that Kate would finally be allowed to die. Anna agreed and took the legal fight on her sister's behalf, unable to say so openly. The judge rules in Anna's favor, granting her medical emancipation and assigning her lawyer, Campbell Alexander, power of attorney over her medical decisions until she is older. The victory is immediately undone by tragedy: on the way from the courthouse, Campbell's car is struck by a truck, and Anna suffers a fatal brain injury. With Anna brain-dead, her family and Campbell make the decision to donate her organs, and her kidney goes to Kate. The bitter irony is complete. Kate, who wanted to die and whose survival the whole family had fought for, lives and recovers, her leukemia going into lasting remission, while Anna, the healthy sister created to save her, is the one who dies. Kate narrates the aftermath, carrying the guilt and grief of surviving because of her sister's death, and the family is left permanently marked by the loss.",
+        "in_short": "Thirteen-year-old Anna Fitzgerald was conceived as a genetic match to save her older sister Kate, who has aggressive leukemia, and has spent her life donating blood, marrow, and cells. When Kate's kidneys fail and Anna is expected to give up one of hers, Anna hires a lawyer, Campbell Alexander, and sues her parents for medical emancipation, the right to control her own body. The lawsuit tears at the family, especially her mother Sara, who fights the case herself to keep Kate alive. As the trial unfolds through the family's shifting perspectives, the reason behind Anna's suit is revealed: Kate, exhausted by years of illness, secretly asked Anna to stop donating so that she could be allowed to die. The court grants Anna the right to decide for herself, and her lawyer is given medical power over her. Almost immediately, Anna is catastrophically injured in a car accident and left brain-dead. As her final act, her kidney is donated to Kate. Kate survives and, against all expectation, her cancer goes into remission, while Anna, the sister who kept her alive, is the one who dies.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The Fitzgerald family lives under the long shadow of a child's cancer. Their daughter Kate was diagnosed with a rare and aggressive leukemia as a toddler, and to give her a matched donor, her parents used genetic selection to conceive her younger sister, Anna. For all thirteen years of her life, Anna has been a source of blood, marrow, and cells to keep Kate alive, her own body treated as a medical resource. Now, faced with the demand that she donate a kidney, Anna makes a startling decision: she hires a lawyer and sues her parents for the legal right to make her own medical choices. Her petition throws the family into crisis, especially her mother, Sara, a former attorney wholly devoted to saving Kate, who resolves to fight the case herself. The story is told from many points of view within and around the family as the lawsuit forces them all to confront what they have asked of Anna and what it has cost each of them.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "my-sister-s-keeper"
+      }
+    },
+    "mystic-river": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Boston man in his thirties who runs a neighborhood corner store, having gone straight after a criminal youth and a prison term. As a boy he was one of three friends from the same working-class street. Devoted to his family, he is a controlled but formidable man with a hard past, and the doting father of a lively teenage daughter from his first marriage.",
+            "id": "jimmy-marcus",
+            "name": "Jimmy Marcus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A Massachusetts State Police homicide detective, another of the three boyhood friends, who came from a slightly steadier family than the others and left the old neighborhood behind. Reserved and self-contained, he is professionally competent but personally adrift, separated from his wife. His work brings him back into contact with the streets and people of his childhood.",
+            "id": "sean-devine",
+            "name": "Sean Devine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The third of the childhood friends, who as a boy was lured into a car by men posing as police and held and abused for days before escaping. He never fully recovered from the ordeal, and grew into a quiet, haunted man with a wife and son, still living in the old neighborhood and carrying the damage of what was done to him.",
+            "id": "dave-boyle",
+            "name": "Dave Boyle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Jimmy's nineteen-year-old daughter from his first marriage, a warm, spirited young woman on the verge of adulthood. Beloved by her father and close to her family, she has private plans for her future. Her murder early in the story is the tragedy that draws the three former friends back together.",
+            "id": "katie-marcus",
+            "name": "Katie Marcus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jimmy's second wife and Katie's stepmother, a strong, fiercely loyal woman from a tough local family. Steady and protective of her husband and children, she is a source of resolve for Jimmy as the family is torn apart by grief.",
+            "id": "annabeth-marcus",
+            "name": "Annabeth Marcus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dave's wife and a cousin of Annabeth's, a caring woman devoted to her husband and son. Sensitive to Dave's moods and old wounds, she becomes frightened and uncertain as strange events unsettle her household in the aftermath of the neighborhood's tragedy.",
+            "id": "celeste-boyle",
+            "name": "Celeste Boyle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gentle young man from the neighborhood who is secretly in love with Katie. Quietly planning a future with her away from Boston, he adores her and dreams of a life together, and he is left devastated and bewildered when she is killed.",
+            "id": "brendan-harris",
+            "name": "Brendan Harris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran state police sergeant who leads the homicide investigation into Katie's murder and partners with Sean on the case. Shrewd and experienced, he drives the practical work of tracking down suspects and evidence.",
+            "id": "whitey-powers",
+            "name": "Whitey Powers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mystic-river"
+      },
+      "recaps": {
+        "ending": "The investigation into Katie's murder is resolved when Sean and his partner establish that she was killed by two local teenage boys, one of them the younger brother of Brendan Harris, the young man Katie had secretly planned to run away with. The boys had been playing a dangerous prank with an old handgun; it went off, and they chased and beat Katie to death, their resentment of Brendan's plans feeding the violence. The gun traced back to Brendan's long-vanished father, whom Jimmy had secretly murdered years earlier for informing on him, an old sin that circles back into the present. Meanwhile Dave, wrongly suspected, is doomed by circumstance: he had come home covered in blood the night of Katie's death, but from killing a child molester he found preying on a boy, not from harming Katie. His wife Celeste's fears reach Jimmy, who, certain Dave is guilty, lures him to the riverbank with his brothers-in-law, coerces a false confession, kills him, and sinks his body in the Mystic River. Only afterward does Sean tell Jimmy that the real killers have been arrested. Jimmy is left knowing he murdered his innocent, damaged childhood friend, the same friend who as a boy was taken in the car while he was not. The book closes on the three men's ruined bond: Sean tentatively reconciling with his estranged wife, Jimmy shielded and justified by the loyal Annabeth, and Dave gone, his death an unpunished secret carried by the survivors.",
+        "in_short": "As boys on a Boston street, Jimmy, Sean, and Dave were friends until Dave was abducted and abused by men posing as police, an event that scarred him for life and split the three apart. Decades later they are pulled back together when Jimmy's nineteen-year-old daughter Katie is murdered, and Sean, now a state homicide detective, catches the case. Suspicion falls on Dave, who came home bloodied and shaken the night Katie died and whose frightened wife, Celeste, begins to believe he is the killer. But the truth is that Dave did not kill Katie: the blood was from his killing a child molester he stumbled on that same night, his own buried trauma erupting into violence. Katie was actually killed by two neighborhood teenagers, one of them the younger brother of her secret boyfriend, during a reckless confrontation with a gun that spiraled out of control. Before the real killers are caught, Jimmy, convinced Dave is guilty, murders him and dumps his body in the Mystic River, only to learn moments later that he has killed an innocent man.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The story opens with three boys, Jimmy, Sean, and Dave, growing up on the same working-class Boston street. One day a car pulls up and two men posing as police officers take Dave away; he is held and abused for days before he manages to escape, an ordeal that leaves him permanently damaged and quietly fractures the friendship among the three. Years later they have grown into very different men: Jimmy is an ex-convict who has gone straight and runs a corner store, Sean is a state police homicide detective who left the old neighborhood, and Dave is a haunted family man still living with his childhood wounds. Their lives are violently pulled back together when Jimmy's nineteen-year-old daughter, Katie, is found murdered, and Sean is assigned to the case. The killing reopens old bonds and old suspicions among the three former friends and their families, setting in motion an investigation that will reach back into the neighborhood's buried history.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mystic-river"
+      }
+    },
+    "new-dreams": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An unusually capable tower climber whose party is advancing far faster than expected. When a mortally wounded dwarf asks for mercy after the faction workshop explodes, Max's inner voice urges him to grant the request and claim the crafting power that may follow.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A dwarf who belongs to Max's tower party.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf who belongs to Max's tower party.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf who belongs to Max's tower party.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Golden Axe's unnamed dwarf crafter, mortally wounded when an explosion destroys the faction workshop. He asks Max to end his suffering, and his death prompts an offer of crafting abilities to Max.",
+            "id": "dying-dwarf-crafter",
+            "name": "Dying dwarf crafter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior Golden Axe leader who protects the party's abnormal tower progress. He must also manage the aftermath of an explosion that destroys the faction's crafting area and mortally wounds a close friend.",
+            "id": "everett",
+            "name": "Everett",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Golden Axe member who helps Everett protect the party's secret progress and handle the fatal workshop disaster. He is unable to grant their dying friend's final request himself.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max's inner voice"
+            ],
+            "description": "An autonomous presence tied to Max's power. It urges him to take advantage of the dying dwarf's requested mercy killing, presenting the death as a chance to acquire valuable crafting abilities.",
+            "id": "inner-entity",
+            "name": "Inner entity",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A level-54 elf ranger recruited as the fifth member of Max's party. She is an experienced damage dealer with limited control abilities, and she swears to protect the group's secrets after Tanila secures her loyalty.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The innkeeper who supported the party before its move into Golden Axe housing. The group says goodbye and gives him spare adventuring equipment before beginning the next stage of its tower climb.",
+            "id": "alexander",
+            "name": "Alexander",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Max"
+            ],
+            "description": "The name Alexander uses for Max when the party leaves the inn for Golden Axe housing. It is the public identity under which Max continues his tower ascent.",
+            "id": "seth-pendell",
+            "name": "Seth Pendell",
+            "reveal": {
+              "chapter": 8
+            }
+          },
+          {
+            "aliases": [
+              "Max"
+            ],
+            "description": "The identity Max assumes with a necklace that changes his appearance and voice. Under this disguise he rents forge space, conceals his connection to the tower party, and begins developing his weaponsmithing ability.",
+            "id": "joshua",
+            "name": "Joshua",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "description": "A dwarf weaponsmith who rents forge space to Joshua. He allows the unfamiliar smith to work privately in his shop.",
+            "id": "zach",
+            "name": "Zach",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A red-haired teenager who hopes to become a weaponsmith. He assists Joshua at the forge while the disguised crafter practices his new skill.",
+            "id": "brian",
+            "name": "Brian",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The unidentified figure who pays for a poisoned bottle to be delivered to Max during dinner. The attempt nearly kills him, and responsibility remains unknown.",
+            "id": "unidentified-poisoner",
+            "name": "Unidentified poisoner",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A high-level Golden Axe warrior trusted by Tom. She tests Max in a sparring match and is decisively defeated.",
+            "id": "grace",
+            "name": "Grace",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed demon summoned by Max during the werewolf battle. It accepts a bargain to defeat his enemies and protect his allies, kills the boss and its horde, then leaves after promising secrecy and an answer to a future summons.",
+            "id": "summoned-demon",
+            "name": "Summoned demon",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The scaled caretaker of a rare tower chamber. He explains its rules, administers a single temporary boon for the party, and expels the group once Fowl receives the reward.",
+            "id": "scaled-host",
+            "name": "Scaled host",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Vela"
+            ],
+            "description": "A guard captain who takes custody of an elf captured after an attack on Max. She has the prisoner's secured storage opened and accepts the information Tanila obtains during interrogation.",
+            "id": "captain-vela",
+            "name": "Captain Vela",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed daughter of elven royalty who is hostile toward humans and dwarves. Information taken from a captured attacker indicates that she appears to direct the continuing campaign against Max.",
+            "id": "elven-royal-daughter",
+            "name": "Elven royal daughter",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A high-level Golden Axe tower climber whose judgment Everett trusts. Her experience makes her a demanding measure of practical fighting technique.",
+            "id": "dexic",
+            "name": "Dexic",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The apparent boss of the fifteenth floor, waiting beyond a field of petrified victims in a ruined coliseum. Its gaze and venom can turn living creatures to stone, forcing the trapped party to prepare a fight without looking at it directly.",
+            "id": "gorgon",
+            "name": "Gorgon",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Golden Axe warrior who remained petrified in the Gorgon's coliseum for decades. The party identifies him from faction records and restores him with one of the cure potions found after the battle.",
+            "id": "restored-dwarf-golden-axe-member",
+            "name": "Restored dwarf Golden Axe member",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A human woman from Golden Axe who spent about eighty years petrified among the Gorgon's victims. The party identifies and restores her with another cure potion.",
+            "id": "restored-human-golden-axe-member",
+            "name": "Restored human Golden Axe member",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Max",
+              "Seth Pendell",
+              "Joshua"
+            ],
+            "description": "Max's underlying identity, disclosed to Everett after the faction leader binds himself to secrecy. He identifies himself as an eighteen-year-old level-one human, reveals exceptional attributes and defenses, and shares most of his concealed history while retaining one private agreement.",
+            "id": "max-host",
+            "name": "Max Host",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DMQPD5B7",
+            "type": "community"
+          }
+        ],
+        "work": "new-dreams"
+      },
+      "recaps": {
+        "ending": "Max, Fowl, Tanila, Batrire, and Cordelia remain together after defeating the Gorgon and reaching tower level 14. They recover new equipment and use petrification cures to restore two Golden Axe members missing for decades. Two cure potions remain when the rescued members return to the faction. Tom circulates a false story about a mirror to disguise how the boss was beaten, but the victory and the party's speed have already attracted public attention. Everett responds by demanding a more truthful relationship. He binds himself to secrecy, learns that Max also operates as Seth Pendell and Joshua, sees evidence of Max's dragon connection, and receives most of Max's history and statistics. He then commits Golden Axe's support to the tower ascent. Max still withholds his private dragon agreement. The party must also protect Tanila's royal identity, Fowl's exceptional hammer, its five artifact components, Max's crafting role and inner entity, and the dragon tooth. The elven campaign against Max, the unknown poisoner, the artifact mystery, and the tower climb remain unresolved.",
+        "in_short": "Max leads Fowl, Tanila, Batrire, and new ranger Cordelia through a rapid tower ascent while hiding abilities and rewards that could make them targets. He secretly becomes the legendary weaponsmith Joshua, survives assassination attempts, and uses his inner entity's powers to overcome bosses and protect the group. The party wins exceptional equipment, bonded artifact components, and a temporary tower boon, while Golden Axe provides training, materials, and political cover. Tanila reveals her elven royal nature to Max, and he tells her how his inner entity has changed. After reaching tower level 14, the group kills a Gorgon, gains petrification cures, and restores two long-missing Golden Axe members. Public attention forces a reckoning with Everett, who binds himself to secrecy. Max then reveals his identity and most of his history, but keeps his private dragon agreement concealed. Everett promises to protect the secret and support the unfinished climb.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Fowl, Tanila, and Batrire were Max's established companions, and Alexander was their innkeeper ally.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Golden Axe learns that Max's party is progressing through the tower at an abnormal rate, with yellow gems appearing far more often than expected. Everett orders secrecy, but an explosion at the faction workshop interrupts the climb and leaves a dwarf crafter dying. At the dwarf's request, Max ends his suffering, then accepts legendary weaponsmithing and rare armor-crafting abilities offered by Consume. Cordelia, a level-54 elf ranger, joins as the party's fifth member after Tanila reveals enough of her hidden royal nature to secure the newcomer's silence. Cordelia helps Max, Fowl, Tanila, and Batrire hunt two rare lizard-man enemies on the first floor. The second battle nearly kills Fowl when freezing magic overwhelms him, but Batrire keeps him alive and Max discovers a way through the caster's defense. Both rare enemies fall. The group gains unusually advanced equipment, including a bonded ring for every member that increases statistics by ten percent. Cordelia chooses loyalty to Tanila and the party, and the five complete the first floor while agreeing to hide the scale of their growth and rewards.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After reporting only part of their success, the five climbers receive Golden Axe housing and permission to push ahead. Everett and Tom support the plan but warn that rapid advancement will attract dangerous attention. On the second floor, a garden of hostile plants, Max combines sonar, mass pulls, and area attacks with Tanila's magic while Fowl holds enemies and Batrire covers emergencies. The approach produces many gems, but an enormous plant blocks the exit. Its seeds, roots, and vines injure Max and trap Fowl, and a barrier prevents retreat. Max survives with Batrire's healing, severs the creature's stem, and finishes dismantling it. The reward gives Fowl a defensive ring, while Consume grants Max more strength and constitution. The party clears the floor in a single day and pauses to recover. Tanila warns Max that his overwhelming contribution risks leaving the others behind, so he agrees to make more room for the group's skills. They also consider a long-term strategy of surrendering tower levels for permanent bonuses, then reclearing early floors with superior equipment.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "During the party's rest, Max buys a disguise necklace and becomes Joshua, secretly practicing his new weaponsmithing skill in Zach's forge. He creates exceptional bonded hammers for teenage assistant Brian and for Zach, binding both to secrecy. An unseen pursuer then tracks Max through the city, and a poisoned bottle nearly kills him during dinner with Tanila. His inner entity takes control long enough to save him and warns that powerful enemies have found him. Max returns to training, defeats Golden Axe warrior Grace, and leads the party onto a werewolf-filled third floor. At the central enclosure, a giant werewolf's intimidation disables Fowl and Cordelia while a larger horde approaches. Max summons a demon with his own blood. His inner power compels the demon to accept a bargain to kill the enemies and protect Max's allies. Together they defeat the boss and the surrounding horde. Max releases the demon after it promises secrecy and future aid. The victory leaves him with an unexplained key and an enduring, uncertain connection to the summoned creature.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The key opens a rare tower chamber whose scaled host grants one temporary boon. The party chooses Fowl, who receives a bonded golden breastplate with enormous defensive bonuses that will last until he can enter the tenth floor. With Fowl newly strengthened, the group completes the third floor and advances into an undead graveyard. Disease clouds and fire-producing skeletons complicate the fighting, but Batrire supplies cures and Fowl's armor lets him hold the front. The party defeats a large red skeleton boss and reaches the exit. Back at Golden Axe, Max learns that the workshop disaster left the faction short of elite crafters. He offers to introduce an independent craftsperson who wants materials, privacy, and freedom from ordinary membership obligations. Disguised as Joshua, Max works in the faction forge for about twelve hours and produces a legendary ice dagger. Everett and Tom accept Joshua as an anonymous legendary weaponsmith and agree to give him access to ranked materials, never realizing that their new contractor and Seth are the same person.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party undertakes its first tower boss route on a desert floor. After learning to destroy the moving cores of sand golems, the group enters an arena dominated by an enormous sandworm. Tanila devises a plan to trap its mouth around Batrire's barrier, allowing Max to attack from inside. Acid nearly destroys his body, but potions, improvised dilution, Batrire's strongest healing, and Demonic Teleportation keep him alive. The wounded worm dies from its own acid. Cordelia receives Elemental Shot and Poison Arrow from the rewards and is formally assured that she belongs to the party as an equal. Soon afterward, attackers fire on Max in the city. His upgraded sonar lets him block the bolt, pursue the ambushers, and capture one elf while another escapes. Captain Vela takes the prisoner into custody. Tanila drains his mind for information, then directs Max to kill him. She learns that further attacks are planned and that an elven royal daughter hostile to humans and dwarves appears to be directing the wider campaign. The immediate attacker is dead, but the larger threat remains beyond local authority.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As Joshua, Max crafts more legendary weapons for Golden Axe but still cannot find materials suitable for his dragon tooth. His inner entity unexpectedly helps with a difficult elemental infusion. The party resumes climbing through a minotaur settlement and uses walls, ranged attacks, and terrain to break a tunnel rush and drive more than a hundred attackers into a deep shaft. At the bottom they enter a sealed boss chamber containing an armored, one-horned minotaur. The creature's flaming club and ground attacks overwhelm ordinary defenses, and it charges Tanila after resisting Fowl's taunt. Max teleports into the strike and is gravely injured, while Fowl uses a one-charge ring from Tom to draw the boss away. Once recovered, Max combines demonic movement, Magical Strike, and Rampage to sever the creature's damaged leg, allowing the group to finish it. Consume grants him further physical power and a rare mental defense. Max claims the boss's bonded flaming club, and the chest yields a gem capable of carrying the entire party, including fallen members, out of the tower. The group survives and reaches level 55 with a new emergency escape option.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max and Tanila compare their growing strength, though Tanila privately conceals that her bracelet can reveal royal power and double her attributes. The party clears a dangerous forest and a desert-pyramid floor, then Tom halts its rush toward the next boss and imposes focused training. He brings in Dexic, a senior Golden Axe climber, to test Max. Dexic's disciplined technique exposes weaknesses in Max's melee fundamentals. During the spar, her sword unexpectedly fails to injure him, and Max reveals that he can store the weapon after touching it. Dexic breaks his ribs and arm before Tom stops the match. In Everett's office, further tests confirm that ordinary blades slide harmlessly off Max's body. Everett dismisses Dexic to limit the secret, though she demands answers later. Max then tells Everett and Tom that Seth and Joshua are one person. He explains that a dragon encounter placed binding promises on him and shows them a dragon tooth that only he can craft. The two Golden Axe leaders now know his crafting identity and dragon-related secret, but not the wider truth behind his abilities.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Everett permits Max to continue limited work as Joshua and promises Golden Axe support beyond the fiftieth floor, while warning that the next level is exceptionally lethal. The party enters an ice castle, learns to defeat blue giants with fire, precision shots, and controlled terrain, then is sealed into deep snow with a much larger boss. Its fear effect disables Fowl and Cordelia, its ice storm threatens the three ranged companions, and it repeatedly restores itself from the surrounding snow. Max resists the fear, interrupts the storm by breaking the creature's armor, and climbs onto it using his mobility and defenses. He destroys its head faster than it can regenerate, burning his flaming club down in the process. The reward chest supplies powerful bonded equipment for all five climbers. Each member also receives a black box that bonds permanently to its owner. Max's inner entity identifies these as artifact components and says every person needs four before their purpose can be explained. It also warns that anyone who learns of them may hunt the group. The party completes this set of tower floors and returns to Golden Axe carrying a new secret shared by all five members.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Golden Axe celebrates the party's return, although Dexic continues watching Max for answers. Everett establishes a crafting quota that exchanges faction materials for Max's work, and Max creates a legendary healing staff for Batrire. The party farms early floors to tower level 10, then spends seven days trapped in a dark maze where light attracts flying creatures that bombard the camp. After escaping, it receives short-duration escape rings and enters another dark floor filled with giant bats. Max carries all four companions through the final stretch before the lights fail, and the group emerges with enough experience to bring Cordelia to level 60. On floor 12, a misplaced torch activates an invulnerable stone guardian inside a runic arena. Physical attacks accomplish nothing, so Max rapidly tests rune sequences while Cordelia records each attempt and Batrire struggles to keep Fowl alive. The correct sequence destroys the guardian and opens the barrier. Max gives its earth core to Golden Axe. Afterward, Tanila and Max discuss their unequal lifespans, and she signals that a concealed royal matter is ready to be revealed.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tanila removes her suppressing bracelet and shows Max her elven royal form. She explains that it doubles her attributes and exerts increasing compulsive authority over other elves, creating grave danger if her parents learn of their relationship. Max responds by explaining that his inner entity has become a more cooperative guide in crafting and magic. He then makes Fowl a secretly exceptional vampiric hammer. The party clears two mechanism-based floors and reaches tower level 14, but its speed prompts Golden Axe to reduce visible support. On the fifteenth floor, the climbers discover a coliseum filled with petrified victims and identify the boss as a Gorgon. Max leads by sonar while everyone avoids its gaze. The creature fights with blades, acid, regeneration, and petrifying venom. Tanila and Cordelia attack when it turns away, and Max and Tanila burn the snakes on its head before trapping it between walls. Max kills the Gorgon, but its poison begins turning him to stone. Consume grants poison immunity in time to purge the venom, and Max survives the battle exhausted but alive.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Gorgon's chest contains equipment for every party member and petrification cures. Using Golden Axe records, the group identifies a dwarf warrior among the statues and restores him after decades of imprisonment. It then finds and revives a human woman who had been petrified for about eighty years. Both long-missing members return to the faction, and two cure potions remain. News of the Gorgon victory becomes public, so Tom spreads a false account claiming the party used a mirror against it. The cover story cannot stop growing scrutiny of the group's speed. Everett confronts Max and insists that continued Golden Axe membership requires a more truthful relationship. He binds himself with magic that can punish disclosure lethally, and Max responds by sharing most of his history, statistics, concealed power, and dragon evidence. Max identifies himself as Max Host, the same person known as Seth Pendell and the weaponsmith Joshua, but withholds his private agreement with the dragon. Everett accepts the remaining boundary, promises secrecy, and commits his support to the party's unfinished tower ascent.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DMQPD5B7",
+            "type": "community"
+          }
+        ],
+        "work": "new-dreams"
+      }
+    },
+    "new-freedoms": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Seth Pendell"
+            ],
+            "description": "The leader of a five-person tower party, also called Seth Pendell by his companions. He combines close combat with defensive stone magic while directing the group through the revived floor-19 boss.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A principal ranged caster in Max's party and his partner. She helps control dangerous enemies while the group survives the unusual floor-19 boss encounter, contributing magic from behind the frontline defenders.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The party's dwarf shield warrior and frontline defender. He holds dangerous enemies away from the group's ranged fighters and healer during the floor-19 battle, relying on his shield and durability to protect his companions.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The dwarf healer and defensive support in Max's five-person party. Her restorative and protective abilities help keep the group alive through the floor-19 boss, its revival, and the destructive blast that follows.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf archer and precise ranged fighter in Max's party. She identifies vulnerable growths on the floor-19 boss and lands an important attack on the purple cube that keeps rebuilding it, helping the group halt its revival.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of Golden Axe and a sponsor of Max's party. He coordinates faction resources, tracks rewards offered for restored Gorgon victims, and seeks board support for Tanila's future advancement as the climbers prepare for higher floors.",
+            "id": "everett",
+            "name": "Everett",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Golden Axe's materials manager, responsible for overseeing the faction's crafting supplies.",
+            "id": "alfreda",
+            "name": "Alfreda",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified dragonkin who knows Max's name and petitions system gatekeepers on his behalf. The visitor spends power to improve his chances of receiving valuable future items, but gives no clear motive.",
+            "id": "dragonkin-visitor",
+            "name": "Dragonkin visitor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Golden Axe trainer and operational leader. He mobilizes faction teams during a manticore dungeon break and emphasizes that closing the dungeon is the priority.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Inner skill"
+            ],
+            "description": "A dangerous autonomous presence bound to Max and associated with his unusual powers.",
+            "id": "inner-entity",
+            "name": "Inner entity",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Golden Axe fighter who remains behind to protect wounded climbers after an elven ambush in the tower. Her fate is initially uncertain as the survivors reach the exit without her and report that hostile elves still hold the field.",
+            "id": "dexic",
+            "name": "Dexic",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tanila's father, an exceptionally dangerous figure who can painfully compel even his resistant children to obey. His unexplained power appears to be a red skill, leaving Max's inner entity uncertain that it could protect him against the threat.",
+            "id": "tanilas-father",
+            "name": "Tanila's father",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Tanila's father and the elven king. Tanila identifies herself as his third daughter while confronting the Mind Reaver, placing the offstage ruler at the center of her concealed royal history and the painful memories raised by the encounter.",
+            "id": "king-cervantes",
+            "name": "King Cervantes",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elven ruler whose attendance turns Max and Dexic's Coliseum duel into a major public event. She controls the selection of their opponents, draws a large crowd to the arena, and represents the faction challenging Golden Axe.",
+            "id": "elven-queen",
+            "name": "Elven queen",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Queen Macy"
+            ],
+            "description": "A queen who formally witnesses the expanded Coliseum challenge arranged by Max. She helps confirm the terms under which the original team match will be followed by two solo fights, all conducted without healer-provided recovery for Max.",
+            "id": "macy",
+            "name": "Macy",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Queen Molly"
+            ],
+            "description": "A queen who formally witnesses and confirms Max's expanded Coliseum challenge. Her authority makes the wagers and unusual sequence of three matches an official public confrontation between Golden Axe and Enlightened Souls.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unidentified assassin observing the Coliseum while searching for a way to kill Max. The hunter cannot measure his strength, knows he has survived poison, and delays the next attempt while looking for a weakness.",
+            "id": "hunter",
+            "name": "Hunter",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The ruler and champion of an underwater city. He doubts that Max's group truly consists of tower climbers and requires Max to prove the claim in an unarmed arena duel where skills remain permitted, taking the role of champion himself.",
+            "id": "merfolk-king",
+            "name": "Merfolk king",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Max",
+              "Seth Pendell"
+            ],
+            "description": "Max's real identity, disclosed to Cordelia after his survival in the merfolk duel forces an explanation. He tells her that his concealed black skill can sometimes take abilities from those he kills, bringing the entire party into his confidence.",
+            "id": "max-host",
+            "name": "Max Host",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "protagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DNKVRM7Y",
+            "type": "community"
+          }
+        ],
+        "work": "new-freedoms"
+      },
+      "recaps": {
+        "ending": "Max, Tanila, Fowl, Batrire, and Cordelia return to Golden Axe after killing the floor-39 kraken. They have cleared the path to floor 40, and the whole party now knows that Max is Seth Pendell, that his real name is Max Host, and that his black skill Consume can take abilities and attributes. Golden Axe is wealthier and better protected, while Everett and Tom continue supporting its growth without knowing Max's central secret. Tanila remains magically bonded to Max and threatened by her royal family. The inner entity's origins and increasing strength are unresolved, as is its suspicion that higher powers have altered the party's tower floors. Molly's agreement has checked direct attacks from Enlightened Souls, but the wider political danger remains. The apparent assassination campaign also continues after Max survives a targeted red-portal trap. As the party prepares for floor 40, an unknown attacker transports Max away from Golden Axe and confines him alone in a dark stone room. His captor, location, and immediate fate are unknown.",
+        "in_short": "Max leads Tanila, Fowl, Batrire, and Cordelia from floor 19 through floor 39 while Golden Axe grows around their victories. Their route includes increasingly strange mechanical floors, an elite ifrit, the Mind Reaver, underwater trials, sea raiders, and a kraken. Tanila reveals that she is King Cervantes's daughter, defeats the Mind Reaver with her dangerous red skill, and becomes magically bonded to Max. Max and Dexic win a public Coliseum challenge that forces a temporary settlement with Enlightened Souls, but an assassin remains at large. Max's inner entity grows stronger and suspects that higher powers are interfering with the tower. Cordelia finally learns that Max is Seth Pendell, that his real name is Max Host, and that Consume lets him take abilities and attributes. After surviving a targeted red-portal trap and defeating the kraken, Max returns to Golden Axe ready for floor 40. An unknown attacker then abducts him into a sealed stone room.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max, known to his companions as Seth Pendell, leads a tower-climbing party with Tanila, Fowl, Batrire, and Cordelia. Tanila is his partner, Fowl serves as the shield-bearing frontline fighter, Batrire is the healer, and Cordelia attacks from range. The group is supported by Golden Axe under Everett's leadership and trained by Tom. Max conceals unusual powers connected to a dangerous autonomous presence within him. The party has already restored two people who had been petrified by a Gorgon. As this volume begins, the group is advancing through the tower and carrying secrets that could attract powerful enemies.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max's party survives an unusual floor-19 boss that revives through a purple cube, then claims powerful bonded equipment. An unidentified dragonkin has secretly spent power to improve Max's future item chances, while Max repeatedly senses an unseen observer near the tower. A manticore dungeon break interrupts the climb. Max directs new Golden Axe teams to protect civilians while his own party closes the dungeon, though two adventurers die. A practice match with Tom shows that Max can already contend with an established climber. On floor 20, fire-spitting insects and beam-firing dragonflies lead to a queen-bee swarm too dangerous to fight, so Max carries everyone to safety. He then negotiates a conditional alliance with the inner entity: it will help during crises, and he will permit limited opportunities that do not harm those he protects. The entity denies making the tower harder and warns that Max's continued growth will draw dangerous attention.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party enters a metal city populated by armed goblins, dwarves, and self-repairing machines. Max's hidden Consume ability takes Alchemy, ranged weapon expertise, engineering, and power-core knowledge from defeated enemies. Everett agrees that the new crafting abilities must remain secret. The party then clears volcanic floors while preparing for a Coliseum dispute caused by an elven ambush on Golden Axe climbers. Dexic survives the ambush after staying behind to protect the others, and Max volunteers to fight beside her. Inside the tower, an elven delegation tries to force him out of the contest and brings stealthed assassins. Max kills one attacker. Tanila then exposes concealed royal authority by compelling the remaining elves, who reveal that members of her family are involved. The party nevertheless chooses an elite floor-25 portal and faces a fire-immune ifrit. Max permits his inner entity to take control during the final assault, and it kills the boss with power and precision beyond what Max normally displays.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ifrit's chest gives the party exceptional equipment and more rare materials. Max crosses natural strength and constitution milestones and secretly gains a survival skill that can prevent a killing blow. Fowl and Batrire reaffirm their intention to marry in the dwarven capital. Golden Axe celebrates the party's rapid completion of twenty-five floors, and Dexic accepts Max as her Coliseum partner. The next tower levels contain coordinated ogres and trolls that bypass the frontline, use terrain, and attack in organized groups. Golden Axe grows as the party's reports and materials become valuable. An ant floor ends with a distressed queen whose hive mind has malfunctioned for unknown reasons. Max later creates his first charged power core, but his inner entity warns that the approaching boss is exceptionally dangerous. On that floor, a Mind Reaver takes control of Fowl, Batrire, and Cordelia. Max restrains them while Tanila crosses the creature's barrier alone after activating her own long-suppressed Mind Reaver power.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tanila absorbs the Mind Reaver's attacks and identifies herself as the third daughter of King Cervantes. The encounter forces her through memories of her father's coercion and a possible future ruled by hunger for power, but she rejects that path and kills the boss. The reward gives Fowl, Batrire, and Cordelia protection against mind control. Max and Tanila join matching necklaces that combine their bonuses, cannot be separated, and will break if either dies. Max then uses his concealed engineering and magical crafting knowledge to forge a powered sword for Dexic. At the Coliseum, he expands the original team duel into three matches: he and Dexic will face a pair, after which Max will fight two more opponents alone without outside healing. Queens Macy and Molly confirm the terms. Max's aim is to make attacks on Golden Axe costly and to expose the elven queen to political consequences if her champions lose.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An unidentified hunter watches the Coliseum and postpones an attempt on Max after failing to assess his strength. In the arena, Dexic kills one elven champion while Max kills the other, then defeats both solo opponents. During one fight he allows the inner entity to take control, producing a deliberately public warning to those threatening Tanila or Golden Axe. Macy and Molly later try to compel Max and discover that his hidden power resists them. Molly accepts his peace proposal: Golden Axe returns some spoils and bodies, while Enlightened Souls must stop targeting the faction or face repeated challenges. The party resumes climbing through mechanized goblin, ant, golem, and animal floors. Golden Axe gains wealth, recruits, protected housing, and plans for a secure crafting complex. The increasingly anomalous tower route troubles Max and Tom. In a dream, the entity is identified as the red-eyed double that appears to Max. It suspects that powerful beings noticed the unprecedented weapon Max crafted and may be influencing the floors, though it has no proof and believes any interference is limited.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party crosses a long mechanized forest and then a trap maze before confronting a huge flesh-and-metal boss armed with electricity, incendiary launchers, harpoons, and self-repair systems. They blind it, exploit its repair openings, and survive its final explosion behind layered defenses. The five-person reward chest grants remarkable bonded equipment and large power crystals. Max receives boots that raise every attribute and can periodically reset all his cooldowns, along with black ore suitable for a future dragon-tooth project. He also creates a legendary bow that generates its own magical arrows. The group then begins a water-themed run of floors, fighting across shifting sandbars and training with Tom for underwater combat. On a submerged floor, armed merfolk escort the party to their fortified city. Their king doubts that they are genuine tower climbers and challenges Max to an unarmed duel in an underwater arena, revealing that the ruler is also the city's champion.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The merfolk king repeatedly increases his power and lands what should be a fatal strike, but Max's hidden survival skill saves him. Max forces the king to yield, then gives his former opponent a healing potion. The king accepts the party, offers to guide it onward, and rewards Max with bonded clothing that permits normal movement, breathing, and combat underwater. Max's survival makes further secrecy impossible within the group. He tells Cordelia that he has a black skill capable of taking abilities from those he kills. Tanila also explains that he is Seth Pendell and that his real name is Max Host. Cordelia accepts the explanation and joins the rest of the party in guarding the secret. Everett meanwhile warns that tower enemies grow sharply stronger at each tenth-floor band. The five climbers then enter another sea floor on a self-sailing ship, united by knowledge that remains concealed from Golden Axe's wider membership.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party repels hundreds of sea raiders, assaults their fortress with the ship's cannons, and triggers a hybrid sea boss by destroying a flag. Fowl's reflected-damage aura delivers the killing blow while Batrire keeps the group alive through the barrage. After receiving upgraded equipment, the party returns to training and helps Golden Axe recruits develop their combat technique. Two undead dungeon breaks then occur at once. Everett sends Dexic with the other four party members while Max handles a separate break alone. Max enters an unexplained red portal and defeats a vampire, a lich, and a shadow-moving third opponent before escaping. His inner entity concludes that the encounter was a targeted trap arranged through another world traveler and warns that the hostile force remains active. Max nevertheless clears the second break as well and is publicly honored with a statue at the city gate, increasing the contrast between his celebrated position and the hidden campaign against him.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On floor 39, the party reaches an island arena where a rapidly regenerating kraken guards a puzzle of paired orbs and pedestals. Completing parts of the mechanism summons armed ships. Tanila develops a plan that combines those ships, explosive barrels, cannon fire, magic, and sustained burning to stop the creature from healing. Max uses the merfolk king's gift to move across the water, and the whole party coordinates the final attack that kills the kraken. The reward includes permanent-stat potions. Max gives his potion to Fowl and tells Cordelia that Consume also grants attributes, completing her limited understanding of his secret. The group returns to Golden Axe after clearing floor 39 and prepares to begin floor 40. Before that ascent starts, an unknown attacker abruptly transports Max away from the faction into a dark, sealed stone room. The party remains behind, and Max's location, captor, and immediate fate are unresolved.",
+            "through": {
+              "chapter": 57
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DNKVRM7Y",
+            "type": "community"
+          }
+        ],
+        "work": "new-freedoms"
+      }
+    },
+    "new-moon": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Now living in Forks and deeply in love with the vampire Edward Cullen, Bella turns eighteen as the book opens. She is troubled by growing older while Edward stays forever young, and she continues to wish to be made a vampire so she can be with him permanently. Introspective and stubbornly loyal, she is happiest among the Cullens and dreads any future in which she is separated from Edward.",
+            "id": "bella-swan",
+            "name": "Bella Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The vampire Bella loves, one of the animal-feeding Cullens. Protective to the point of control, he is deeply reluctant to let Bella risk her humanity or her safety, and refuses to change her into a vampire. His fear of the danger his world poses to her governs his choices as the book begins.",
+            "id": "edward-cullen",
+            "name": "Edward Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bella's father and the police chief of Forks. Reserved and well-meaning, he worries about his daughter's intense attachment to Edward and, later, about the depression that overtakes her. He is relieved when she seems to find comfort in an old family friendship.",
+            "id": "charlie-swan",
+            "name": "Charlie Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Quileute teenager from La Push whom Bella has known since childhood. Warm, cheerful, and openhearted, he becomes Bella's closest friend after a period of loss, spending hours with her rebuilding a pair of old motorcycles. His easy company gradually pulls her out of despair, and his feelings for her deepen beyond friendship.",
+            "id": "jacob-black",
+            "name": "Jacob Black",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cullen family's compassionate physician father, who stitches Bella's arm after an accident at her birthday party. Calm and humane, he embodies the family's effort to live without harming humans.",
+            "id": "carlisle-cullen",
+            "name": "Carlisle Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bella's closest friend among the Cullens, a small, energetic vampire who can see glimpses of the future in visions shaped by people's decisions. She hosts Bella's birthday party at the start of the book. Her foresight later proves pivotal, though it has notable blind spots.",
+            "id": "alice-cullen",
+            "name": "Alice Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Cullens and Alice's partner, still the family member who struggles most with the temptation of human blood. At Bella's birthday party a small accident with a paper cut overwhelms his control, triggering the crisis that follows.",
+            "id": "jasper-hale",
+            "name": "Jasper Hale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A tall, older youth from the La Push reservation who leads a close-knit group of local boys. He finds Bella when she is lost and unresponsive in the woods and carries her safely home. Authoritative and watchful, he and his followers are regarded warily on the reservation, and he holds some hidden role among the Quileute.",
+            "id": "sam-uley",
+            "name": "Sam Uley",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the nomad vampires from before, dark and courteous in manner, who had once left James's coven. He finds Bella alone in a meadow and reveals that he has been in contact with Victoria, who wants Bella dead. Tempted by Bella's scent and no longer restrained by the Cullens' presence, he moves to kill her himself.",
+            "id": "laurent",
+            "name": "Laurent",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The red-haired vampire whose mate, James, was destroyed by the Cullens. She returns to the area seeking revenge, intending to kill Bella. Elusive and cunning, she is hunted through the forests by the local wolves but repeatedly slips away.",
+            "id": "victoria",
+            "name": "Victoria",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the three ancient leaders of the Volturi, the powerful, tradition-bound coven that enforces vampire law from the Italian city of Volterra. Delighted by talent and unfailingly courteous, he can read every thought a person has ever had with a touch. He takes a particular interest in Bella and the Cullens.",
+            "id": "aro",
+            "name": "Aro",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jacob's father, a Quileute elder and old friend of Charlie's, who uses a wheelchair. Guarded around the Cullens, he is quietly aware of the tribe's secrets and watches developments at La Push closely.",
+            "id": "billy-black",
+            "name": "Billy Black",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "new-moon"
+      },
+      "recaps": {
+        "ending": "Bella saves Edward from the Volturi in Volterra, and the couple reunites, their love reaffirmed after months of grief and misunderstanding. The Volturi decree that Bella cannot stay human indefinitely: she must be transformed into a vampire or killed, and they intend to check that it is done. Back in Forks, Edward confesses that leaving was an attempt to protect her that nearly destroyed them both. The Cullen family votes and largely supports changing Bella, and Edward agrees to do it himself, but only if she will marry him first, hoping to give her the human experiences he thinks she is sacrificing. Two dangers remain open as the book closes. Victoria is still hunting Bella and has not been caught. And the ancient treaty between the Cullens and the Quileute wolves forbids any Cullen from biting a human, so Edward's promise to change Bella threatens to break the truce and set the vampires and werewolves, including a heartbroken Jacob, against each other.",
+        "in_short": "After a birthday accident convinces Edward that his vampire world endangers Bella, he leaves Forks with his family, plunging Bella into a deep depression. She slowly recovers through a close friendship with Jacob Black and discovers that reckless danger lets her hear Edward's voice. She learns that Jacob and his friends are werewolves who protect the tribe from vampires, and that they are hunting Victoria, who wants Bella dead in revenge for her mate James. When Bella cliff-dives and nearly drowns, Alice's visions lead Edward to believe Bella has died, and he travels to Italy to provoke the vampire rulers, the Volturi, into killing him. Bella and Alice race to save him. Reunited, they are spared by the Volturi on the condition that Bella eventually become a vampire. Edward admits he never stopped loving her; the Cullens agree she may be changed, deepening the rift with Jacob.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bella Swan moved to the rainy town of Forks and fell in love with Edward Cullen, discovering that he and his adoptive family are vampires who feed on animals rather than people. Edward loved her in return despite the danger her scent posed to him. A nomadic tracker vampire, James, hunted Bella for sport and bit her before the Cullens destroyed him; Edward drew the venom out to keep her human. Bella emerged devoted to Edward and eager to become a vampire herself so they could be together forever, though Edward refused to change her. James's red-haired mate, Victoria, escaped, her thirst for revenge unresolved. Bella had also renewed a childhood friendship with Jacob Black of the nearby Quileute reservation.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Bella's eighteenth birthday party, hosted by the Cullens, a small paper cut sends Jasper lunging at her blood, and Bella is hurt in the scramble to hold him back. Shaken by how close his family came to killing her, Edward concludes that his world is too dangerous for her. Days later he takes Bella into the woods and tells her he no longer wants her, then leaves with his entire family, disappearing from Forks. Bella, believing she has lost him and the future she wanted, is left devastated and alone.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bella sinks into a deep, months-long depression after Edward's departure, going through the motions of life while feeling hollow. She is briefly lost in the forest before a reservation youth, Sam Uley, carries her home. In time she reconnects with Jacob Black, and their growing friendship slowly revives her. Together they restore two old motorcycles, and Bella discovers that reckless, dangerous acts make her hear Edward's voice in her mind, a sensation she comes to crave. She deliberately courts danger to keep hearing him, while leaning on Jacob's steady warmth.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jacob abruptly grows distant and falls under Sam Uley's influence, leaving Bella hurt and confused. Alone in the forest, she is confronted by Laurent, a vampire who reveals that Victoria is hunting her for revenge and who then tries to kill her himself. A pack of enormous wolves drives him off. Bella soon learns the truth: Jacob and Sam's group are shape-shifters, werewolves whose ancient purpose is to protect the tribe from vampires, and they are now hunting Victoria as she stalks the area. Jacob and Bella's bond deepens even as the danger around her sharpens.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Craving Edward's remembered voice, Bella leaps from a high cliff into the sea and nearly drowns before Jacob rescues her. Alice Cullen, who can see the future, glimpses Bella jumping and, believing her dead, returns to Forks. Through a tragic misunderstanding, Edward comes to believe Bella has died, and, unable to bear existing without her, resolves to end his own life by provoking the Volturi, the ancient vampire rulers, into destroying him. Alice and Bella race to Italy to stop him before he steps into sunlight before a crowd and forces the Volturi's hand.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bella reaches Edward in Volterra just in time to stop him from stepping into the sunlight, and the two are reunited, each having believed the other lost. The Volturi leaders, especially Aro, spare them but rule that Bella, a human who knows too much about vampires, must eventually be turned into one of them or destroyed. Edward and his family return to Forks, and Edward confesses that he never stopped loving Bella and left only to protect her. The Cullens vote, and most agree that Bella should be allowed to become a vampire, which Edward reluctantly accepts on the condition that she marry him first. But peace is fragile: Victoria is still at large, and the treaty between the Cullens and the werewolves forbids the Cullens from changing a human, straining Bella's bond with Jacob.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "new-moon"
+      }
+    }
+  }
+}

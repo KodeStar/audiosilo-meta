@@ -1,0 +1,1747 @@
+{
+  "entries": {
+    "trials-of-cydaria": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A void-affinity fighter and head of a Savannah household who can open the time-altered Time Prison. He has brought Gerald and his allies into custody and is increasingly willing to show trusted Crown figures how his unusual ability works.",
+            "id": "derek-hunt",
+            "name": "Derek Hunt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Derek's telepathic companion and a member of his Savannah household. She is already established as a close ally before this volume begins.",
+            "id": "silvi",
+            "name": "Silvi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince Edgar"
+            ],
+            "description": "A prince of Cydaria and a formidable lightning fighter. He helps Derek contain the aftermath of the palace attack and is trusted with dangerous Crown responsibilities.",
+            "id": "edgar",
+            "name": "Edgar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Crown fighter who holds several attackers at bay during the palace assault and helps Derek and Edgar contain the threat.",
+            "id": "avery",
+            "name": "Avery",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crown leader whose voice can compel obedience. She secures Gerald's possessions after his capture and helps prevent the prisoners from contacting outside allies.",
+            "id": "alana",
+            "name": "Alana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Natalie Savannah"
+            ],
+            "description": "Savannah's city lord, an appraiser, and a perceptive interrogator. She shows Derek her rune-secured prison and explains her preference for secure, dignified confinement during investigations.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Gerald"
+            ],
+            "description": "A Torith noble held after an attack on Edward and the palace guards. King Edwin identifies him as a trafficker, while Natalie and Alana begin the difficult work of uncovering his plans and connections.",
+            "id": "gerald-torith",
+            "name": "Gerald Torith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Shadow Witch"
+            ],
+            "description": "A dangerous operative captured with Gerald's group and known as the Shadow Witch. She can resist Alana's compelling voice, though not as completely as Derek can.",
+            "id": "vanessa-hodges",
+            "name": "Vanessa Hodges",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A captive held alongside Gerald Torith whose questioning has produced little useful intelligence.",
+            "id": "cliff-arden",
+            "name": "Cliff Arden",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Derek's returning guard and trainer, with a personal grievance against Torith. Gerald's confinement gives him hope that his son is safer and that the kidnapping and murder connected to his family may finally be explained.",
+            "id": "jacks",
+            "name": "Jacks",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Brandi"
+            ],
+            "description": "A versatile crafter in Derek's household. Improved meditation greatly increases her output as she works with mana cores and materials supplied through Derek and Roman.",
+            "id": "brandi-fields",
+            "name": "Brandi Fields",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The household manager who handles supplies and shop operations. She provides the practical business oversight that lets the other members focus on crafting, training, and field work.",
+            "id": "malorie",
+            "name": "Malorie",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A contract specialist and business associate already working with Derek's household before this volume. He supports Malorie in Savannah's commercial dealings.",
+            "id": "rudy",
+            "name": "Rudy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wind user who trains and gains levels alongside Jacks. Her recent class change has strengthened her confidence in the field.",
+            "id": "rayna-west",
+            "name": "Rayna West",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thomas"
+            ],
+            "description": "A young spear trainee in Derek's household. He is progressing quickly under instruction and preparing to enroll at the Academy.",
+            "id": "thomas-stewart",
+            "name": "Thomas Stewart",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spear fighter who trains Thomas as he prepares to enroll at the Academy.",
+            "id": "shae",
+            "name": "Shae",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Savannah Adventurers Guild guildmaster and a spear fighter. She joins Vanessa's party for the dungeon's first trial.",
+            "id": "shea-holmes",
+            "name": "Shea Holmes",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist developing permanent-stat products from void-beast materials. He supplies Derek and Brandi while continuing experiments that could expand the household's commercial reach.",
+            "id": "roman",
+            "name": "Roman",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lower-ranked Crown member and Derek's friend whose family lives under the disgraced Gracefall name. He attends the auction with his son Jensen and niece Claire.",
+            "id": "walter-gracefall",
+            "name": "Walter Gracefall",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Walter's son accompanies his father and Claire to the Crown auction. His Academy studies are almost complete, after which he hopes to serve in the royal army.",
+            "id": "jensen",
+            "name": "Jensen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Walter's niece, who attends the Crown auction with Walter and Jensen.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jensen"
+            ],
+            "description": "Following King Edwin's restoration of House Searidge, Walter's son bears its recovered surname. Near the end of his Academy studies, he plans military service.",
+            "id": "jensen-searidge",
+            "name": "Jensen Searidge",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Walter Gracefall after King Edwin restores his family's Searidge name and dissolves the inherited soul contract that suppressed him. The decision ends decades of punishment imposed on his line.",
+            "id": "walter-searidge",
+            "name": "Walter Searidge",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cydaria's foremost combat smith, known by his professional title. He offers Derek an interim halberd and agrees to forge a custom glaive after his raid commitment permits it.",
+            "id": "walking-forge",
+            "name": "Walking Forge",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Walking Forge"
+            ],
+            "description": "The combat smith known as the Walking Forge. He gives Derek his own halberd for temporary use and plans to forge a custom glaive after his current obligations permit it.",
+            "id": "tyron-blacksteel",
+            "name": "Tyron Blacksteel",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crown business contact and established adventurer.",
+            "id": "stella-brighton",
+            "name": "Stella Brighton",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cydaria's king. He condemns Gerald's attack and trafficking, then entrusts Natalie and Alana with the prisoners and the investigation.",
+            "id": "king-edwin",
+            "name": "King Edwin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Crown Prince Edward"
+            ],
+            "description": "Cydaria's crown prince and army commander. He survives the palace attack and reports how Avery, Derek, and Edgar defeated Gerald's force.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A light-affinity healer in Edgar's raid. He supports the proposed allocation of lower-level members to the expedition's first trial.",
+            "id": "tristan-alistair",
+            "name": "Tristan Alistair",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mage in Edgar's raid.",
+            "id": "felix-ayala",
+            "name": "Felix Ayala",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-250 healer assigned to Vanessa's ten-person trial party. She serves as its principal healer as the group enters a ten-day beast-tide survival challenge.",
+            "id": "elena-webb",
+            "name": "Elena Webb",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-245 support fighter assigned to Vanessa's ten-person party for the dungeon's first trial.",
+            "id": "kieran-dawson",
+            "name": "Kieran Dawson",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The armored tank in Vanessa's ten-person party for the dungeon's first trial.",
+            "id": "sachiko-sato",
+            "name": "Sachiko Sato",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An archer in Vanessa's first-trial formation. She helps defend the group against increasingly large beast waves over the ten-day challenge.",
+            "id": "louise-bonilla",
+            "name": "Louise Bonilla",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A support fighter who applies debuffs in Vanessa's first-trial party. He joins the defensive formation facing a prolonged series of beast waves.",
+            "id": "john-newman",
+            "name": "John Newman",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Osian"
+            ],
+            "description": "A foreign king who learns that Cydaria's elite raid force is inside a time-dilated dungeon. He prepares a joint invasion and assigns his brother to command the field campaign.",
+            "id": "king-osian",
+            "name": "King Osian",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King Osian's brother, a duke appointed to command the planned invasion of Cydaria. Osian trusts him with the battlefield forces while the kingdom's strongest fighters are absent.",
+            "id": "riven",
+            "name": "Riven",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Duke Elris",
+              "Riven"
+            ],
+            "description": "King Osian's brother and the invading battlefield commander. He offers Alana protection for her people if she remains outside the war.",
+            "id": "riven-elris",
+            "name": "Riven Elris",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Derek's co-operator on a portable shower product. He becomes a party to the Savannah business agreement formed through The Void Emporium while Derek is away in the raid.",
+            "id": "jeffrey-tate",
+            "name": "Jeffrey Tate",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A level-250 raid healer who accompanies Derek, Edgar, Avery, and Tyron during a sparring excursion while the first trial remains active.",
+            "id": "jasper-ross",
+            "name": "Jasper Ross",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jacks's son and an Academy graduate with prior dungeon leadership experience. He leads the temporary group assembled to test Brandi's elemental mana-core weapons.",
+            "id": "jake-herrett",
+            "name": "Jake Herrett",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dual-blade swordswoman in Vanessa's first-trial party. The ten-day beast tide leaves her with catastrophic leg injuries, but Tristan expects his healing to prevent permanent loss.",
+            "id": "sierra-cook",
+            "name": "Sierra Cook",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A raid support mage selected for the five-person legendary trial. Her buffs strengthen the combatants as three enormous wyverns open their attack.",
+            "id": "tara-perez",
+            "name": "Tara Perez",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A subdued psychic amphitheer whom Avery contracts and names. Her attempted mental control fails against his practiced resistance, and their new bond immediately begins changing her.",
+            "id": "lyra",
+            "name": "Lyra",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adult fire wyvern that Edgar incapacitates after a prolonged battle. Facing death, the creature accepts his second contract attempt and receives the name Blitz as their bond begins.",
+            "id": "blitz",
+            "name": "Blitz",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A moss-covered dragonkin worm subdued and contracted by Tyron. Their immediate bond transforms the creature, which Tyron names Rocky.",
+            "id": "rocky",
+            "name": "Rocky",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CJRZPX92",
+            "type": "community"
+          }
+        ],
+        "work": "trials-of-cydaria"
+      },
+      "recaps": {
+        "ending": "Gerald Torith is executed after his records expose the domestic conspiracy, although his supposed foreign connection is never established. King Edwin intends to abdicate when Edgar returns, with Edward succeeding him and Edgar taking command of the armies. That transition has not happened when Indria and Asteris invade Cydaria through forbidden portals. Alana begins evacuations, while Osian's brother Riven commands the attackers. Inside the raid dungeon, the expedition has cleared an uncommon survival trial and a legendary dragonkin trial, but more sequential trials remain under the 168-day limit. Avery and Edgar leave the legendary trial with Lyra and Blitz, Jasper contracts a darkness drake, and Tyron bonds Rocky while arranging to forge Derek a void-attuned glaive. Savannah's household continues its business and crafting work through The Void Emporium. At level 200, Derek chooses a Void path beyond his local system's supported limits and becomes the mythical Void Monarch. He refuses to sever his bond with Silvi, causing both of them to enter linked evolutions whose duration and outcome remain unknown.",
+        "in_short": "After Gerald Torith's capture, Derek helps stabilize his Savannah household, profits from the Crown auction, and accepts Edgar's invitation to a level-250 raid. Gerald's information exposes a domestic conspiracy, and King Edwin executes him, but Indria and Asteris invade Cydaria while much of its elite force is trapped in the dungeon. The raid uses Derek's Time Prison as a secure, accelerated base, survives an uncommon beast-tide trial, and clears a legendary dragonkin battle. Avery bonds Lyra, Edgar bonds Blitz, and Tyron prepares to forge Derek a weapon from wyvern materials. Meanwhile, Brandi advances mana-core weapons and Malorie, Rudy, Roman, and Natalie establish The Void Emporium's new business. At level 200, Derek rejects safer class paths and chooses Void, becoming the mythical Void Monarch. His transformation also pulls Silvi into an evolution in Savannah, leaving both companions' condition unresolved as the invasion and remaining dungeon trials continue.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Derek Hunt established a household in Savannah with Silvi and allies including Brandi Fields, Malorie, Jacks, Rayna West, and Rudy. His rare void affinity and Time Prison made him an unusually powerful adventurer with growing ties to Cydaria's Crown. Gerald Torith had become a direct danger to Derek's circle and to the royal family. The conflict culminated in an attack at the palace, where Derek, Edgar, and Avery overcame Gerald's group and secured the surviving attackers. Jacks also carried an unresolved grievance against Torith connected to the kidnapping and murder surrounding his family.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Derek transfers Gerald and three allies from Time Prison into Natalie's secure custody. Natalie and Alana begin tracing Gerald's secrets, while Jacks accepts Gerald's imprisonment as the best chance to protect his son and learn the truth about his family. Derek then turns to the Crown auction, where void-beast meals and Roman's permanent-stat potions command extraordinary prices. King Edwin restores Walter's family from the disgraced Gracefall name to Searidge and removes the soul contract that had suppressed Walter for decades. The auction ends with Edwin buying a powerful vitality elixir and Natalie purchasing the most valuable meals. Derek also accepts the Walking Forge's offer of a temporary halberd and a custom glaive to be made when the smith's other commitments allow.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Edgar invites Derek into a level-250 raid, hoping Time Prison can serve as a secure camp with altered time. Derek distributes royal skill scrolls and permanent-stat resources among his household, releases its members from their obligations to him, and accepts the expedition with their support. Silvi chooses to remain in Savannah and protect the others. Alana and Natalie separately promise oversight during Derek's absence. Roman creates a potion that permanently raises mental attributes, and Malorie is assigned to negotiate its distribution. Derek reaches the capital with raid supplies, where Edgar adds Walter as a healer and reveals that Vanessa, formerly connected to Gerald's operation, is now constrained by a strict kingdom oath and contract. The full group of twenty-five reaches the unstable dungeon and prepares to enter.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: The dungeon gives the expedition 168 days to clear seven sequential trials. Vanessa leads ten members into the first, an uncommon ten-day beast-tide challenge, while Derek converts Time Prison into a comfortable shared base for those waiting outside. The smith begins designing Derek's custom glaive. Elsewhere, King Osian and his brother Riven plan to invade Cydaria with a second country while its elite fighters are absent. In Savannah, Natalie obtains exclusive rights to Roman's mental-stat potion through The Void Emporium, with Malorie and Rudy completing the agreement. Derek spars with Edgar and confirms that his defenses can withstand the prince's lightning. To reduce the subjective wait for the inactive raiders, most of the group enters Time Prison under altered time while Derek and the smith remain outside. Brandi, meanwhile, produces a working water-core sword prototype.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Brandi's improved water- and wind-core weapons reduce the mana cost of matching elemental skills, and Thomas leaves for the capital Academy with equipment and guidance from Jake and Jensen. Gerald's records expose most of Cydaria's domestic conspirators, but his claim of an Indrian connection remains unsupported. King Edwin executes Gerald for murder, trafficking, and treason, plans for Edward to succeed him, and intends Edgar to lead the armies. At the same time, Indria and Asteris begin an invasion through forbidden portals, prompting Alana to organize evacuations. In the dungeon, Vanessa's entire trial party survives the ten-day beast tide despite severe injuries that Tristan begins repairing. The next trial is legendary. Edgar, Derek, Avery, Jasper, and Tara enter a ruined city and face three enormous wyverns. Derek and Edgar kill the wind champion, then Derek and Avery defeat the death-attuned wyvern, though Derek's halberd breaks during the fight.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Avery contracts the psychic amphitheer Lyra, and Edgar forces the surviving fire wyvern to accept a contract before naming him Blitz. Their bonds transform both creatures into legendary companions, while Avery also rises to a legendary class. The trial continues with another dragonkin wave. Lyra uses mental control to help Derek capture several possible companions inside Time Prison, and Jasper contracts a darkness drake. After the group kills the remaining wyverns, the combat phase ends. Each participant receives a dragon-related skill: Avery gains independent winged flight, Edgar gains defensive dragon scales, Tara gains Dragon Skin, and Jasper gains stronger regeneration. The party returns to the expedition with its new companions. Tyron agrees to turn the death-wyvern materials into a void-attuned glaive and armor for Derek, with Derek's direct help required during the forging.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Tyron contracts and bonds a dragonkin worm named Rocky, whose evolution makes him a legendary companion. Derek reaches level 200 and prepares for his final class change by improving his void abilities and specializing in polearms and bare-fist combat. The system offers powerful time and space classes, but its Void option lies beyond its own supported limits. Derek chooses Void and receives help from another system, which recognizes his Void affinity as legendary. He becomes the mythical Void Monarch and begins an evolution driven by Void energy. When advised to cut his bond with Silvi, Derek refuses. The preserved bond draws Silvi into a simultaneous evolution while she is in Savannah. The book ends with both transformations unfinished. The raid still has sequential trials ahead under its 168-day deadline, and Cydaria remains under active invasion while Edgar and many of the kingdom's strongest fighters are inside the dungeon.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CJRZPX92",
+            "type": "community"
+          }
+        ],
+        "work": "trials-of-cydaria"
+      }
+    },
+    "turn-coat": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's only professional wizard, a Warden of the White Council and a consultant to the police on cases that defy explanation. Tall, wisecracking, and chronically broke, Harry has spent years making powerful enemies and a smaller circle of fierce friends. The Council's long war with the vampire Red Court still grinds on, and Harry is watched with suspicion by those who remember he was once tried for using forbidden magic. When the Warden who has hounded him for years turns up wounded at his door begging for help, Harry is forced to choose between an old grudge and his conscience.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Warden Morgan"
+            ],
+            "description": "Donald Morgan, a senior Warden of the White Council and, for most of Harry's adult life, his implacable watchdog, certain Harry would one day fall to black magic. Now the tables have turned: Morgan stands accused of murdering a member of the Senior Council and has fled with a death sentence on his head. Gravely wounded and out of options, he comes to the one person the Council would never expect to shelter him, and asks Harry to prove him innocent.",
+            "id": "morgan",
+            "name": "Donald Morgan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's dog, an enormous grey Tibetan Temple Dog who is far more than he appears. Intelligent, gentle with those he guards, and formidable against the supernatural, Mouse is a steadfast protector whose presence has saved lives more than once.",
+            "id": "mouse",
+            "name": "Mouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Chicago police officer who for years ran the department's Special Investigations unit, handling the cases no one else would touch. Small, blond, and relentless, Murphy is one of Harry's oldest and most trusted allies, a mortal who fights monsters with courage and a good aim rather than magic. Her standing on the force has suffered for her association with Harry, but her loyalty has not.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain of the Wardens and Harry's superior, a centuries-old wizard whose consciousness was long ago transferred into a younger body. Anastasia Luccio trains the Council's new Wardens and has grown romantically close to Harry. She once served alongside Morgan and knows him well, which makes his alleged crime all the harder for her to accept. As the investigation unfolds, troubling questions gather around her own recent conduct.",
+            "id": "anastasia-luccio",
+            "name": "Anastasia Luccio",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's young apprentice, daughter of the retired Knight of the Cross Michael Carpenter. A gifted sensitive whose talents run to the mind and to veils and illusions, Molly is still learning the discipline the Council demands, having herself once skirted its Laws. Loyal and brave, she throws herself into helping Harry shelter Morgan, but her empathic gift leaves her dangerously exposed when violence and death come close.",
+            "id": "molly-carpenter",
+            "name": "Molly Carpenter",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The White Council's chief administrator, a mild, fussy functionary who handles the endless paperwork, correspondence, and records that keep the Council running. Easy to overlook and always somewhere at the edge of official business, he seems the least remarkable man in any room full of wizards.",
+            "id": "peabody",
+            "name": "Peabody",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's half-brother, a member of the White Court of vampires who feeds on the life energy of lovers. Handsome and outwardly frivolous, Thomas keeps his kinship with Harry a closely guarded secret and lives a carefully mundane life. When Harry needs somewhere truly safe to hide a fugitive, Thomas is one of the few he can trust, and helping his brother draws him into the reach of something far more dangerous than the Council.",
+            "id": "thomas-raith",
+            "name": "Thomas Raith",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "naagloshii"
+            ],
+            "description": "An ancient and monstrous being out of Native American nightmare, a naagloshii or skinwalker of terrible power that has taken service as a hunter and killer. It can wear other shapes, shrug off wounds that would end almost anything, and radiates a corrupting dread that sickens those near it. Hired to run down a target, it is patient, cruel, and very nearly unstoppable, and it takes a personal interest in making Harry suffer.",
+            "id": "the-skinwalker",
+            "name": "The Skinwalker",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Injun Joe"
+            ],
+            "description": "A member of the White Council's ruling Senior Council, an ancient Native American wizard and one of the world's great healers. Quiet and unassuming, Listens-to-Wind carries centuries of knowledge and a deep, weathered strength. He recognizes the nature of the creature stalking Harry's investigation and stands among the few beings capable of facing it.",
+            "id": "listens-to-wind",
+            "name": "Listens-to-Wind",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "turn-coat"
+      },
+      "recaps": {
+        "ending": "Morgan, dying of his wounds after the battle on the island, publicly confesses to LaFortier's murder - a crime he did not commit - so that the White Council can present a closed case to its enemies and so that Luccio, whose hands were used for the killing while her mind was Peabody's puppet, is never blamed. He dies with his name blackened and only a handful of people knowing he was innocent, and Harry, who spent the whole book trying to clear him, has to let the lie stand for the Council's sake. Peabody, the real traitor, is dead, but the evidence he leaves behind proves the Black Council is real and has been quietly editing the minds of young Wardens for years, and there is no way to know how deep the rot goes. Cristos, whom Harry suspects of being either a traitor or a dupe, is elevated to the Senior Council. Luccio learns her feelings for Harry were among the things Peabody nudged, and the relationship ends. Thomas survives his captivity, but what the skinwalker did to him - starving him and forcing him to feed savagely to survive - has stripped away his hard-won restraint; he pulls away from Harry, colder and more openly a predator than before. Harry keeps two secrets of his own: his sanctum bond with Demonreach, whose true nature he has barely begun to glimpse, and the knowledge that the Council's greatest threat is already inside its walls.",
+        "in_short": "Donald Morgan, the Warden who spent years hoping to catch Harry Dresden breaking the Laws of Magic, turns up half-dead at Harry's door - a fugitive accused of murdering Senior Council member Aleron LaFortier. Convinced the real killer is a traitor inside the White Council, Harry hides Morgan and investigates, dodging a bounty-fueled manhunt, a mercenary summoner named Binder, White Court schemers, and a skinwalker - a monstrous naagloshii that captures Thomas and tortures him. To control the endgame Harry performs a ritual on the island of Demonreach, binding himself to its genius loci as its sanctum, and lures every faction there: the trade for Thomas, the Wardens, the White Court, and the traitor. The traitor proves to be Peabody, the Council's mild-seeming secretary, who has been subtly mind-controlling young Wardens with alchemical inks and who used Luccio as his instrument to kill LaFortier. The skinwalker is driven off by Listens-to-Wind, Peabody dies fleeing, and Morgan - mortally wounded shielding others - falsely confesses to the murder as he dies, protecting Luccio and the Council's unity. Harry's relationship with Luccio ends, Thomas emerges from captivity changed and distant, and the Black Council is no longer a theory.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the series: Harry Dresden is Chicago's only professional wizard, a private investigator who consults for the police and, these days, a Warden of the White Council - the wizards' governing body that once nearly executed him. As a boy he killed his corrupt master, Justin DuMorne, in self-defense, and Warden Donald Morgan spent years afterward watching him, certain Harry would turn warlock. The Council has been at war with the Red Court of vampires ever since Harry burned down a Red noble's house rescuing his then-girlfriend Susan Rodriguez; Susan, half-turned by the vampires, left him to fight them abroad. Along the way Harry has gathered allies: Karrin Murphy of Chicago PD's Special Investigations; his apprentice Molly Carpenter, herself once nearly executed for mind magic and now under his supervision; Waldo Butters, a polka-loving medical examiner; Bob, a spirit of intellect in a skull; the huge temple dog Mouse; and Thomas Raith of the White Court of vampires - secretly Harry's half-brother. Anastasia Luccio, captain of the Wardens and trapped in a young body since a necromancer's body-swap, has become Harry's girlfriend. Harry has also crossed the Denarians and their leader Nicodemus, served the winter faerie Queen Mab to pay down debts, and seen his friend Michael Carpenter, a Knight of the Cross, crippled into retirement. Beneath it all runs a growing suspicion that a hidden faction - the Black Council - is working traitorously inside the supernatural world's institutions, including the White Council itself.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Donald Morgan - the Warden who spent years trying to catch Harry breaking the Laws of Magic - appears at Harry's apartment door gravely wounded and asks for help. Morgan stands accused of murdering Senior Council member Aleron LaFortier: he was found standing over the body with the murder weapon, was arrested, and escaped custody. He swears he is innocent, and Harry believes him for a simple reason - Morgan is a fanatic about the Laws, not a traitor - and because framing the Council's most famously loyal Warden is exactly what a hidden enemy would do. Hiding the Council's most wanted fugitive, Harry brings in Waldo Butters to treat Morgan's wounds, with Molly assisting, and starts working the problem quietly. Word from Edinburgh, the Council's headquarters, makes the stakes plain: the Wardens are mobilized, a very large reward has been offered, and the Council is boiling with fear and politics, since LaFortier's death looks to its enemies like weakness and to its members like proof of a traitor within. Harry knows that if Morgan is found in his care, both of them will be executed, and that the only way out is to find the real killer himself.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry's problems multiply. A naagloshii - a skinwalker, an ancient shapeshifting horror out of Navajo legend - attacks in pursuit of Morgan, radiating a corrupting dread and shrugging off nearly everything thrown at it; Harry barely manages to escape it, and it becomes clear something has hired the creature to collect the fugitive. Harry also discovers he is being tailed by a mortal private investigator, Vince Graver, meaning someone with money wants eyes on him. Then Binder, a cheerfully mercenary summoner who calls up squads of grey-suited creatures from the Nevernever, comes after Morgan too, and Harry and Murphy have to fight through his hirelings. Murphy, now read in on the situation, helps hide and move Morgan despite the enormous professional risk. The trail of who is paying for all this attention points toward the White Court of vampires, where Lara Raith rules from behind her father's throne and her cousin Madeline schemes on her own account. Between attacks, Harry pushes on the question underneath everything: LaFortier was killed inside the most secure facility the Council has, which means whoever did it - or whoever aimed Morgan at the blame - had inside access. The traitor is real, and close.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The skinwalker strikes again and takes Thomas. It had come for Morgan; it settles for a hostage it can trade, and Harry - who cannot tell most of his allies why the White Court vampire matters so much to him - is left carrying the knowledge that his brother is in the hands of a creature that enjoys cruelty. Harry deals directly with Lara Raith, negotiating for White Court help and learning that Madeline Raith has been freelancing in the affair, paying for mercenaries and surveillance. In Edinburgh, Harry works the inside angle: LaFortier's killing required access and preparation no outsider could manage, and the behavior of some of the younger Wardens - and of people close to the investigation - is subtly off. Luccio, who has grown closer to Harry than ever, coordinates from within the manhunt even as suspicion inside the Council curdles toward anyone associated with him. Harry becomes convinced the frame around Morgan is the point: the traitor does not just need LaFortier dead, but needs the Council tearing itself apart over the trial and execution of its most loyal soldier. To beat an enemy inside the walls, Harry decides he needs ground of his own choosing.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry chooses his ground: Demonreach, the uncharted island in Lake Michigan he first set foot on a year before. With Bob's help he researches and performs a sanctum invocation, a ritual that bonds him to the island's genius loci - a vast, hostile awareness that accepts him as its warden. The bond gives him intellectus of the island: while standing on it, he simply knows where everything on it is. It costs him too - the island's attention is a heavy, alien thing - but it turns Demonreach into the one battlefield where no one can hide from him, ambush him, or sneak anything past him. With the ground secured, Harry sets the trap. He arranges to trade Morgan to the skinwalker in exchange for Thomas on the island, and makes sure the location leaks to every interested party: the White Court, the mercenaries, and - through channels the traitor is known to read - the Council itself, so the Wardens will arrive to find the real players assembled. Morgan, still dying by inches from his wounds, consents to being used as bait; clearing his name has become a secondary goal next to dragging the traitor into the open. Everything now depends on the enemy believing Harry is desperate rather than deliberate.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Every faction converges on Demonreach, and the trap springs. The skinwalker arrives with Thomas - starved, brutalized, and barely recognizable as the person Harry knows - and the exchange collapses into open battle as the Wardens descend on the island. In the chaos the traitor is finally forced into the light: Samuel Peabody, the Council's fussy, forgettable secretary, who for years has been lacing his official inks with alchemical compounds that let him nudge and steer the minds of the wizards whose paperwork passes through his hands. The younger Wardens, seeded with his suggestions, turn on each other and on their commanders, and it becomes clear how LaFortier really died: Peabody used a mind-controlled Anastasia Luccio as his weapon, then arranged for Morgan to be found with the body. Against the skinwalker, the Senior Council member Listens-to-Wind steps forward and meets it shape for shape in a duel of transformations that finally sends the mauled creature fleeing. Morgan, past saving but refusing to stay down, spends what strength he has left protecting others as the fight rages. Peabody runs for the Nevernever with his secrets, and Harry - the only person on the island who can know exactly where everyone is - goes after him.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Peabody does not escape: fleeing into the Nevernever with the evidence of his treason, he is brought down and killed, and what he leaves behind proves the conspiracy was never one man - he was an agent of the Black Council, and his inks have been quietly editing the minds of a generation of young Wardens. Morgan, mortally wounded, makes the book's defining choice: he confesses to LaFortier's murder as he dies. The lie protects Luccio, whose controlled hands did the killing, and hands the Council a closed case instead of a public admission that its members' minds can be rewritten - stability bought with his own name. Harry, who set out to clear him, has to accept that Morgan's last act of loyalty is to be remembered as a traitor. The costs settle in everywhere. Luccio learns that among the things Peabody adjusted in her head was her affection for Harry, and their relationship ends. Thomas survives, but the skinwalker's torments forced him to embrace the predator in himself, and he walks away from Harry cold and changed. Cristos, whom Harry cannot prove is anything worse than ambitious, rises to the Senior Council. Harry keeps his bond with Demonreach to himself, pays his debts, and is left with the war's real shape: the enemy is inside the walls, patient, and still unnamed.",
+            "through": {
+              "chapter": 49
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "turn-coat"
+      }
+    },
+    "twelve-months": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Chicago's wizard and Winter Knight is recovering from the Battle of Chicago while grieving Karrin Murphy. He shelters displaced families in his castle, protects Demon Reach, and faces Mab's order to court Lara Raith.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Harry's deceased partner, whose recent death shapes his grief and fragile recovery. Her absence weighs on his choices as he tries to care for his daughter, his household, and post-battle Chicago.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's former apprentice and the Winter Lady. She can perceive his troubled dreams, recognizes the danger in his grief, and warns him that Lara must not use supernatural influence during their first public date.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry’s daughter and his strongest reason to resist despair. His concern for her safety governs his limits with Winter and his determination to remain alive.",
+            "id": "maggie",
+            "name": "Maggie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A werewolf ally who manages the daily operation of Harry's castle and its refugee community. He coordinates residents, security, and practical arrangements while Harry recovers.",
+            "id": "will-borden",
+            "name": "Will Borden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's intended political spouse under Mab's alliance plan. Their first required public date is approaching, and Winter has forbidden her from using supernatural influence during the meeting.",
+            "id": "lara-raith",
+            "name": "Lara Raith",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lara Raith's half brother, held in Demon Reach stasis while physically healing from the attack on Etri.",
+            "id": "thomas",
+            "name": "Thomas",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The predatory drive within Thomas, which is stirring and attacking him during his confinement. If he is released before it is controlled, its need to feed could make him kill one or more people.",
+            "id": "thomass-hunger",
+            "name": "Thomas's Hunger",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thomas's pregnant partner, missing somewhere in Europe while possessed by an enemy. Harry and Lara are searching for her, but their tracking efforts provide only a weak lead.",
+            "id": "justine",
+            "name": "Justine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Winter authority who has ordered Harry to marry Lara Raith and begin the arrangement with monitored public dates.",
+            "id": "mab",
+            "name": "Mab",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Etri"
+            ],
+            "description": "Etri leads the Svartals. Mab assigns Harry to mend their relationship after Thomas's attack.",
+            "id": "king-etri",
+            "name": "King Etri",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Valkyrie sent by Lara with a long-term contract to protect Harry, his home, and its residents. Her personal name is not established, but her credentials are confirmed and she immediately joins the castle's security.",
+            "id": "valkyrie-bodyguard",
+            "name": "Valkyrie bodyguard",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry's skull-bound spirit assistant, now integrated with the castle's magical systems. He serves as its resident intelligence and helps Harry understand and operate the building's defenses.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The personification of Demon Reach, recovering after the island's imprisonment of Ethniu.",
+            "id": "alfred",
+            "name": "Alfred",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young ectomancy student whose magic has expanded across several elements since the Battle of Chicago. Mort brings him to Harry because his growing power could become uncontrollable without broader instruction.",
+            "id": "fitz",
+            "name": "Fitz",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mort"
+            ],
+            "description": "An ectomancer and Fitz's first magical mentor. He asks Harry to train the young man's wider abilities, which extend beyond the shade-work Mort can safely teach.",
+            "id": "mort-lindquist",
+            "name": "Mort Lindquist",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Carlos",
+              "Ramirez"
+            ],
+            "description": "A White Council Warden and estranged former ally of Harry. During a tense inspection visit, he and Harry preserve a narrow basis for cooperation and agree to pursue their friends who were taken by the Black Court.",
+            "id": "carlos-ramirez",
+            "name": "Carlos Ramirez",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A White Council Warden who distrusts Harry and attempts an unannounced inspection under warlock protocol. Her hostility is influenced by the harm caused when her twin sister became a warlock.",
+            "id": "ileana",
+            "name": "Ileana",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A retired Knight and trusted moral guide who is caring for Maggie while Harry struggles with grief. He confronts Harry's worsening condition and presses him to reconnect with his daughter and accept family support.",
+            "id": "michael-carpenter",
+            "name": "Michael Carpenter",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "LeChase"
+            ],
+            "description": "A leading ghoul figure whom Harry seeks out over the large number of disappearances in Chicago.",
+            "id": "carter-lechase",
+            "name": "Carter LeChase",
+            "reveal": {
+              "chapter": 11
+            }
+          },
+          {
+            "aliases": [
+              "Daniel"
+            ],
+            "description": "Michael Carpenter's eldest son and one of the volunteers organized to resist supernatural threats in Chicago. He arrives with the Brotherhood of St. Brigid when Harry is overwhelmed by a coordinated ghoul ambush.",
+            "id": "daniel-carpenter",
+            "name": "Daniel Carpenter",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A priest who accompanies the Brotherhood of St. Brigid when it intervenes against the ghouls attacking Harry. He joins the volunteers and other religious leaders in protecting Chicago residents from supernatural threats.",
+            "id": "father-forthill",
+            "name": "Father Forthill",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rabbi who joins the Brotherhood of St. Brigid during its intervention against the ghoul ambush. His shofar helps drive the attackers away.",
+            "id": "brotherhood-rabbi",
+            "name": "Brotherhood rabbi",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A White Court security specialist who manages guest safety and the event's protections at Lara Raith's Halloween party.",
+            "id": "freydis-gard",
+            "name": "Freydis Gard",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Maggie's companion who will accompany her to a secure boarding school.",
+            "id": "mouse",
+            "name": "Mouse",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lara Raith's Halloween gathering receives an unanticipated guest when Dracul is announced.",
+            "id": "dracul",
+            "name": "Dracul",
+            "reveal": {
+              "chapter": 16
+            }
+          },
+          {
+            "description": "The proprietor of Bach Ordered Books and an influential minor practitioner. She seeks protection after attacks on Chicago's magical community, but is prepared to organize retaliation if Harry's safer plan fails.",
+            "id": "artemis-bach",
+            "name": "Artemis Bach",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "McCoy",
+              "Blackstaff"
+            ],
+            "description": "Harry's grandfather and the White Council's Blackstaff. He visits the castle to acknowledge that fear and hatred of the White Court drove his earlier attack on Harry, and he seeks a limited family reconciliation.",
+            "id": "ebenezer-mccoy",
+            "name": "Ebenezer McCoy",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lara Raith's father and the former power behind the White Court. Although Lara now controls the court, he remains dangerous and uses guest right to confront Harry with warnings about Lara's Hunger and an unspecified threat.",
+            "id": "lord-raith",
+            "name": "Lord Raith",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A militant member of the Brotherhood of St. Brigid. After a nearly lethal curse strikes Daniel Carpenter, fear leads Carl to accuse Harry and break from the Brotherhood's leadership with several supporters.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient gargoyle guardian who enters the castle after Harry inadvertently invites him inside. He leads six other gargoyles and offers their allegiance because they judge Harry a worthy protector and sense greater turmoil ahead.",
+            "id": "basil",
+            "name": "Basil",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the living gargoyles serving as a defender of Harry's castle.",
+            "id": "cinnamon",
+            "name": "Cinnamon",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harry’s werewolf ally, whose strength and healing have increased since the Battle of Chicago. He trains Harry in close combat as Harry works to rebuild his defensive skills.",
+            "id": "bear",
+            "name": "Bear",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former police detective who accidentally shot Karrin Murphy during the Battle of Chicago. Harry tried to kill him afterward but was stopped, and Rudolph has since fled or vanished.",
+            "id": "rudolph",
+            "name": "Rudolph",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Major General Toot Toot Minimus"
+            ],
+            "description": "The Little Folk commander responsible for guarding Harry's castle. He follows Harry's orders during Basil's unexpected arrival and can quickly summon other trusted defenders.",
+            "id": "toot-toot",
+            "name": "Toot Toot",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning ally who accepts Harry's apology for the violence and harm that followed Karrin Murphy's death. He is still using a cane while recovering from serious injuries.",
+            "id": "butters",
+            "name": "Butters",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A memory-based spiritual imprint of Karrin Murphy rather than Karrin Murphy herself. It urges Harry to grieve with living people instead of summoning it each night.",
+            "id": "murphys-shade",
+            "name": "Murphy's shade",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unborn son of Thomas and Justine, revealed when Mab brings his pregnant mother to Demon Reach during Thomas's rescue. His life becomes part of the effort to persuade Thomas to survive.",
+            "id": "thomas-and-justines-son",
+            "name": "Thomas and Justine's son",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Winter's crone queen and Mab's mother. She arrives during the dangerous ritual on Demon Reach and orders the island's spirit not to obstruct the Winter Queens while their promises are being fulfilled.",
+            "id": "mother-winter",
+            "name": "Mother Winter",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Summer counterpart to Mother Winter. She can intervene directly in mortal affairs only with mortal permission, and Harry authorizes her aid when Justine goes into labor on Demon Reach.",
+            "id": "mother-summer",
+            "name": "Mother Summer",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile Black Court leader whose faction warns Harry to expect an imminent attack on his castle.",
+            "id": "mavra",
+            "name": "Mavra",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A female Black Court elder who commands part of the force assaulting Harry's castle. Harry informally calls her Cleo as she directs the attackers testing the building's defenses.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A parent housed in Harry Dresden's castle who elects to help when an attack is imminent. Harry gives him a lookout post by the stairs leading to the roof.",
+            "id": "castle-resident-father",
+            "name": "Castle resident father",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A castle resident and father whom Harry previously rescued from Fomorian huntsmen. He accepts a limited defensive post to protect his family.",
+            "id": "mateus",
+            "name": "Mateus",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rabbi whose shofar blast helps drive back ghouls during the defense of Harry's castle.",
+            "id": "rabbi-aronson",
+            "name": "Rabbi Aronson",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0FC2Q4M6N",
+            "type": "community"
+          }
+        ],
+        "work": "twelve-months"
+      },
+      "recaps": {
+        "ending": "Harry restores Thomas by separating his Hunger, sustaining both halves, and persuading the Hunger to preserve its host. Mab captures Justine and intends to remove the possessing spirit, although the treatment and its memories must be hidden from her. Mother Summer delivers Thomas and Justine's son, whom Mab places with Etri's family to settle the Svartal blood debt. The child is protected, but separated from his parents. The castle then survives a coordinated assault by Malvora, ghouls, Renfields, and the Black Court. Carlos destroys Cleo, Mavra escapes, and no defender dies. Months later, the repaired castle passes inspection. Harry and Lara remain engaged and begin controlled energy transfers while quietly resisting Mab's leverage. Harry lives with Maggie, continues training Fitz, and reconnects with Thomas. He releases Murphy's shade and manages the battle's anniversary without withdrawing from the living. Dracul and Mavra remain the central strategic threat, and Harry's allies establish an intelligence network to track them.",
+        "in_short": "During the year after the Battle of Chicago, Harry Dresden struggles with Karrin Murphy's death while sheltering survivors, raising Maggie, training Fitz, and obeying Mab's command to court Lara Raith. His efforts to protect Chicago draw him into conflicts with ghouls, anti-supernatural activists, the White Council, and retaliating practitioners. Harry and Lara learn that he can separate and magically feed a White Court Hunger, but Mab manipulates this into leverage over Lara. Harry spends Mab's promised boon on Thomas, Justine, their child, and the Svartal debt. The rescue saves Thomas and recovers Justine, but their newborn son goes to Etri's family as settlement. A Black Court coalition then assaults Harry's castle. The defenders defeat the attackers, Carlos Ramirez destroys Cleo, and Mavra escapes. By the following anniversary, Harry is rebuilding his life with Maggie and Fitz, has renewed contact with Thomas, and remains engaged to Lara while preparing for the continuing threat from Dracul and Mavra.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: The Battle of Chicago ended with Ethniu defeated and imprisoned beneath Demon Reach, while Harry retained responsibility for the Eye of Balor. Karrin Murphy was killed during the battle, leaving Harry in acute grief. Thomas had attacked the Svartal ruler Etri after an enemy possessing Justine used her and her unborn child to coerce him. Harry removed Thomas from Svartal custody and placed him in Demon Reach stasis, where his starving Hunger remained a danger. Justine disappeared while still possessed. Harry's ties to the White Council had broken, leaving him expelled under a suspended death warrant, while the Black Court still held Wild Bill Myers and Yoshimo and Chandler's fate remained unknown. Mab, Harry's sovereign as Winter Knight, arranged a political marriage between Harry and Lara Raith, Thomas's sister and the leader of the White Court. Chicago survived the supernatural assault but entered a prolonged civic and humanitarian crisis.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three weeks after the battle, Harry is barely sleeping and is using rigid exercise and routine to contain his grief. His castle has become a refuge for displaced families under Will Borden's daily management. Mab requires Harry to begin public courtship of Lara Raith and to repair the breach with Etri. Lara provides beds, medicine, and protection for the castle, and she joins Harry in searching for the possessed and missing Justine. On Demon Reach, Thomas confirms that he is alive but that releasing him would let his starving Hunger feed uncontrollably. He also confirms that threats against Justine and their child forced his attack on Etri. Harry refuses Lara's willingness to sacrifice victims to save Thomas. Etri grants Harry one year to prove the coercion or surrender Thomas for punishment, warning that refusal will make Harry an enemy. Meanwhile, Mort Lindquist brings Fitz to Harry for training because the young man's expanding magical abilities have become unsafe without instruction.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry begins training Fitz but remains emotionally and magically unstable. With ordinary law enforcement depleted, he takes responsibility for a wave of ghoul disappearances and orders the ghouls out of Chicago. A stakeout becomes a coordinated ambush when Harry's combat magic fails, and the Brotherhood of St. Brigid rescues him. Michael Carpenter, Molly, and Harry's Valkyrie bodyguard each confront his self-neglect and urge him to reconnect with Maggie. At Lara's Halloween party, Dracul identifies both himself and Harry as Starborn, invites a White Council challenge, and warns of a larger conflict. Carter LeChase provokes Harry into aggression, forcing Lara to defend her guest peace. Harry later admits that his recklessness reflects a wish to punish himself through death. As attacks on magical residents spread, Artemis Bach seeks organized retaliation. Harry instead commits the Knights of the Bean to protect the community, hoping to prevent fear and anger from turning into black magic.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The White Council warns that reports of black magic in Chicago may bring a formal response. A severe pain curse strikes a Brotherhood member and may leave lasting harm, opening an investigation into retaliatory magic. Harry passes Dracul's challenge to Carlos but admits he is not ready to pursue it. Mab makes clear that Harry must consummate the political marriage with Lara and settle Etri's claim before spring. Lara reports that her team following Justine has vanished and that rival White Court factions are moving against her. She agrees to teach Harry about Hungers if he works to save Thomas and find an honorable settlement with Etri. Harry reconciles cautiously with his grandfather, Ebenezer McCoy, and moves Maggie into the castle. He refuses Winter's immediate offer of vengeance against Rudolph. Lara then reveals that each Hunger is an Outsider fragment bound to its host. Harry's Starborn nature may let him affect one, so Lara agrees to become the test subject for an experiment intended to help Thomas.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry's first ritual temporarily separates Lara from her Hunger and leaves the entity pacified by magical energy. His relationship with Fitz deepens as they share their experiences of loss. When pain curses strike more Brotherhood members, Harry traces the ritual to Bach Ordered Books and stops Artemis Bach's group before another attack. The practitioners admit they were retaliating against men who assaulted magical residents, but Daniel Carpenter was mistakenly targeted. Daniel then defeats Carl's breakaway Brotherhood faction and orders an end to its attacks, halting the immediate cycle of violence. Harry develops a larger ritual for Thomas, but feeding the starving Hunger may seriously harm its host, while severing it could fundamentally change him. Thomas chooses the riskier rescue that preserves his Hunger so he can still help Justine and their child. Harry also learns that the shade he summons carries Murphy's memories but is not Murphy herself. As he begins choosing recovery over self-punishment, Basil and six ancient gargoyles offer to defend his castle against the turmoil they sense approaching.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry apologizes to the friends who stopped him from killing Rudolph and accepts that their intervention preserved his life with Maggie. A stronger test proves Harry can feed Lara's Hunger through magic, though the connection nearly drains him. Mab then reveals that she engineered Lara's repeated feeding on Harry's power, making the Hunger crave him and giving Winter leverage over the White Court. Harry and Lara respond by forming an ethical alliance based on honesty rather than submission. Molly blocks an unauthorized Warden raid on Bach Ordered Books, while Harry assumes responsibility for preventing further black magic. He says goodbye to Murphy's shade and ends their repeated contact. Fitz develops rapidly, and Harry names Carlos as the young wizard's emergency Council contact. On the spring equinox, Harry spends Mab's promised boon. He requires her aid in restoring Thomas, recovering Justine, protecting their child, and settling the Svartal debt. Outside the castle, an anti-occult protest and a peaceful counter-protest move toward confrontation as federal inspectors threaten eviction.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Demon Reach, Harry, Lara, Mab, and the island's spirit begin the greater-circle rescue. Harry separates Thomas from his Hunger, but Thomas immediately begins dying and the entity nearly consumes Harry. Because destroying it would also fatally damage Thomas, Harry feeds both of them and persuades the Hunger that preserving its host serves its own survival. Lara revives Thomas, who chooses to live for Justine and their child. Mab has already captured the pregnant Justine. She plans to remove the possessing spirit through severe treatment and conceal the ordeal from Justine afterward. With Harry's permission, Mother Summer delivers the baby. Mab then places Thomas's son under the protection of Etri's family as the life owed for Thomas's attack, settling the Svartal claim but separating the child from his parents. Two weeks later, Thomas has recovered physically but asks Harry for distance after learning the price of the rescue. A Black Court warning then arrives, and Harry prepares the castle for an imminent assault.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Harry discovers that Malvora fear-eaters have manipulated the protest while ghouls, Renfields, and Black Court elders use the crowd as cover. He drives the mortals away with a magically created storm, then draws the attackers into the castle's prepared defenses. Bear is wounded protecting Harry, while Fitz survives his first battle and helps hold the roof. Lara and reinforcements including Daniel Carpenter, Forthill, Butters, and Carlos Ramirez join the defense. Carlos breaks the control over the Renfields and destroys the Black Court elder Cleo. Mavra escapes, but the remaining breach force is crushed inside the castle and the other attackers retreat. No defender dies, and the damaged gargoyle Cinnamon can be repaired. The defenders conclude that Dracul may have sacrificed expendable allies to improve Mavra's position, so they divide intelligence work among Winter, the White Court, the Council, the Church, the Paranet, and the Little Folk. In the following months the castle is repaired and passes inspection. Harry and Lara remain engaged and begin controlled energy transfers. Harry continues raising Maggie and training Fitz, handles Murphy's anniversary without isolating himself, and reconnects with Thomas.",
+            "through": {
+              "chapter": 55
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0FC2Q4M6N",
+            "type": "community"
+          }
+        ],
+        "work": "twelve-months"
+      }
+    },
+    "twilight": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A seventeen-year-old who leaves sunny Phoenix to live with her father, the police chief of the small, rainy town of Forks, Washington, so that her mother can travel with a new husband. Bookish, observant, and often self-conscious about her clumsiness, she expects to be miserable in a place she dislikes. At her new high school she is unsettled by a strikingly beautiful classmate who seems to react to her with inexplicable hostility. Practical and stubborn, she is drawn to unravel the mystery of him despite her own unease, and finds herself falling for someone she senses is dangerous.",
+            "id": "bella-swan",
+            "name": "Bella Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of the adopted Cullen children, a pale, extraordinarily beautiful student who keeps apart from the rest of the school with his equally striking siblings. On Bella's first day he appears to regard her with sudden, unexplained revulsion, then vanishes for days before returning with puzzling politeness. He is by turns cold and protective, unusually strong and fast, and seems to know things he should not. His shifting behaviour and the sense that he is hiding something dangerous both frighten and fascinate Bella.",
+            "id": "edward-cullen",
+            "name": "Edward Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Bella's father, the quiet police chief of Forks, who has lived alone since Bella's mother left years earlier and took Bella with her. Awkward and undemonstrative, he shows his affection through practical gestures, such as buying his daughter an old truck to welcome her home. He gives Bella space and rarely pries, trusting her more than he perhaps should, and remains largely unaware of the dangers gathering around her.",
+            "id": "charlie-swan",
+            "name": "Charlie Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger teenager from the Quileute reservation at La Push, the son of Billy Black, an old friend of Bella's father. Cheerful, easygoing, and quick to talk, he meets Bella on the beach and, half teasing, recounts his tribe's old legends, including tales of cold ones and of ancestors said to descend from wolves. His stories, offered as mere folklore, give Bella the clue that sets her guessing at what the Cullens really are.",
+            "id": "jacob-black",
+            "name": "Jacob Black",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cullen family's father, a young-looking, remarkably composed doctor at the Forks hospital who treats Bella after a near-fatal accident. Gentle, courteous, and unnervingly self-controlled for a physician surrounded by blood, he is admired throughout the town yet keeps his household apart. He presides over the unusual family of adopted teenagers as a calm and deeply humane figure.",
+            "id": "carlisle-cullen",
+            "name": "Carlisle Cullen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The smallest of the Cullen siblings, a quick, graceful young woman with short dark hair and an immediate, disarming warmth. When Bella is finally welcomed into the Cullen home, Alice greets her with open friendliness that sets her apart from the others' caution. She moves and speaks as though she already knows what is about to happen, and takes to Bella at once.",
+            "id": "alice-cullen",
+            "name": "Alice Cullen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Cullens and Alice's partner, a lean, quiet young man who holds himself apart and seems to find Bella's presence more of a strain than the others do. There is a calming, almost tangible effect his mood can have on those around him, and he carries himself with a wary, watchful reserve.",
+            "id": "jasper-hale",
+            "name": "Jasper Hale",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The largest and most powerfully built of the Cullen siblings, paired with Rosalie. Big, dark-haired, and boisterous, he greets Bella with easy good humour once she is brought into the family home, treating the strange situation as more amusing than alarming. He is openly fond of physical contests and games.",
+            "id": "emmett-cullen",
+            "name": "Emmett Cullen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strikingly beautiful blonde among the Cullen siblings, paired with Emmett. She is markedly cold toward Bella, resenting the risk and attention that a human outsider brings into the family. Her hostility is plain even when the others make Bella welcome, and she keeps her distance.",
+            "id": "rosalie-hale",
+            "name": "Rosalie Hale",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Cullen family's mother, a gentle, heart-faced woman who welcomes Bella into her home with genuine warmth. Nurturing and soft-spoken, she is devoted to her adopted children and to Carlisle, and accepts Bella readily despite the danger the girl's presence represents.",
+            "id": "esme-cullen",
+            "name": "Esme Cullen",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vampire who arrives near Forks with two companions, all three living as nomads who hunt humans, unlike the Cullens. Lean and unremarkable in appearance, he proves to be a relentless tracker who treats the pursuit of prey as a game. When he catches Bella's scent among the Cullens, he fixes on hunting her for the challenge and sport of it, and will not be deterred.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A vampire with vivid red hair who travels with James as his mate. Wild and wary, she moves with a feline alertness. She sides with James in his hunt for Bella and helps him pursue her.",
+            "id": "victoria",
+            "name": "Victoria",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The most civilized-seeming of the three nomad vampires, dark-skinned and courteous in manner. He acts as the group's spokesman when they encounter the Cullens and, uneasy about the conflict James is provoking, leaves the other two rather than take part in the hunt, warning the Cullens of how dangerous James is.",
+            "id": "laurent",
+            "name": "Laurent",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "twilight"
+      },
+      "recaps": {
+        "ending": "James is destroyed by the Cullens at a ballet studio in Phoenix, but not before he bites Bella. Edward, in agony over the risk of killing her, sucks the vampire venom from her bloodstream so that she stays human, stopping himself before he drains her. Her injuries are explained to her father and the town as a fall down a flight of stairs. She recovers, and her relationship with Edward is stronger and openly acknowledged within his family, though Rosalie stays cool. Edward secretly takes Bella to the school prom, where she had hoped he would agree to transform her; instead he makes clear he intends to keep her human for as long as possible, unwilling to take her mortal life. Bella remains set on becoming like him one day. The wider threat is not closed: Victoria, James's mate, has escaped, and her desire for revenge over her lost partner is left hanging over the couple as the book ends.",
+        "in_short": "Bella Swan moves to the rainy town of Forks to live with her father and becomes fascinated by Edward Cullen, a beautiful, aloof classmate who behaves strangely toward her. After he saves her from a speeding van with impossible speed and strength, she pieces together, with the help of Quileute legends, that he is a vampire. Edward confesses that he loves her and that her scent is dangerously tempting, and Bella, unafraid, falls for him despite the risk; his family lives by feeding on animals rather than people. Their happiness is shattered when a nomadic tracker vampire, James, decides to hunt Bella for sport. He lures her into a trap and bites her, but the Cullens destroy him, and Edward draws the venom from her before she can transform. Bella recovers and, still human, asks Edward to make her a vampire, which he refuses. James's mate, Victoria, escapes.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Bella Swan moves from Phoenix to the small, perpetually rainy town of Forks to live with her father, the police chief, so that her mother can travel with a new husband. Expecting to be unhappy, she settles into a new high school where she draws more attention than she wants. She is immediately struck by the Cullens, a group of strikingly beautiful, aloof adopted siblings, and above all by Edward Cullen, who sits beside her in biology and reacts to her with a hostility she cannot explain. After days of absence he returns, alternating between cold distance and unexpected courtesy. Bella is baffled and stung by his behaviour and increasingly unable to stop thinking about him, even as he seems determined to keep her at arm's length.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward's strangeness turns to something impossible when he stops a skidding van from crushing Bella, crossing the parking lot faster than he should and halting the vehicle with his bare hand, then refusing to explain how. Shaken, Bella begins watching him closely. On a trip to the La Push beach, a Quileute boy named Jacob Black shares tribal legends about cold ones, and Bella, piecing the hints together, comes to suspect that Edward is a vampire. She researches in secret and grows more certain. Meanwhile Edward continues to swing between warmth and warning. When Bella is cornered by a group of men one night in Port Angeles, Edward appears out of nowhere and rescues her, and the two are drawn undeniably closer.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over a tense conversation Edward admits what he is: a vampire, one of a family that has chosen to feed only on animals rather than people. He confesses that Bella's scent is almost unbearably tempting to him, that he has fought the urge to kill her, and that he has fallen in love with her regardless. Bella, unafraid, returns his feelings, and the two acknowledge how dangerous their bond is. Edward reveals more of his nature and his family's history, showing her how sunlight makes his skin glitter and describing the strength and speed that set his kind apart. Despite the risk, they commit to each other, and Bella accepts fully what he is.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward brings Bella to meet his family, most of whom accept her, though Rosalie resents the danger she represents. Invited to watch the Cullens play baseball during a thunderstorm, Bella witnesses their power firsthand. The game is interrupted by three passing vampires who hunt humans. One of them, a tracker named James, catches Bella's scent and instantly fixes on hunting her for sport. The Cullens scatter to protect her, sending Bella into hiding with some of the family while others try to lead James astray. Their careful life is thrown into a desperate effort to keep Bella alive against a predator who treats the chase as a game he intends to win.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "James lures Bella away by making her believe he has captured her mother, tricking her into meeting him alone at a ballet studio in Phoenix. There he attacks her, breaking her leg and biting her hand before Edward and the other Cullens arrive. They destroy James, but his venom has entered Bella's bloodstream; to stop her from turning into a vampire, Edward forces himself to suck the venom out, then stops before it is too late. Bella recovers in a hospital, her injuries explained away as a fall. Back in Forks, Edward secretly takes her to the school prom, and Bella, still human, presses him to change her into a vampire so they can be together forever, a request he refuses. Victoria, James's mate, slips away, her grief left unresolved.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "twilight"
+      }
+    },
+    "ultimate-level-1-divine-conflict": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human god who leads the seven founders and shares an unusually close combat partnership with Bob. As his daughter approaches the end of the Tower, he prepares to risk another arena battle to secure the divine points his allies need.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elven god, founder, and Max's wife. She faces the approaching departure of their daughter while the founders prepare for dangers expected after their protected era ends.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven god and one of the founders preparing for the threats beyond the alliance's protection period. He is Batrire's husband and part of the close circle gathered before Max and Tanila's daughter leaves.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven god, founder, and Fowl's wife. She belongs to the divine alliance supporting Max's family as the group approaches a long separation and prepares for future conflict.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demon god bound to Max and counted among the founders. He helps arrange the farewell for Max and Tanila's daughter, though the coming centuries of separation weigh heavily on him.",
+            "id": "bound-demon-companion",
+            "name": "Bound demon companion",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Consume"
+            ],
+            "description": "A sentient black skill who advises Max and fights through him. Bob helps assess the unusual range of the daughter's abilities and is wary of the public arena challenge Max intends to undertake.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A vorpal-rabbit System adviser attached to the founders. The helper cautions Max against another arena fight and assists with the plans surrounding the daughter's departure.",
+            "id": "rabbit-shaped-system-helper",
+            "name": "Rabbit-shaped System helper",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max and Tanila's half-elf daughter, a God Child nearing the Tower's final floors. Her broad range of abilities includes Ultimate Form and Thorn Aura, while success will separate her from the founders for centuries.",
+            "id": "max-and-tanilas-daughter",
+            "name": "Max and Tanila's daughter",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A frost Jotun world-eater that Max selects as his arena opponent.",
+            "id": "frost-jotun-world-eater",
+            "name": "Frost Jotun world-eater",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An arena attendant who offers Max a more dangerous match against an unidentified opponent before he reaches tier five. The attendant controls access to the opponent's historic fight recording, which Max requests before making a decision.",
+            "id": "arena-attendant",
+            "name": "Arena attendant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An elven god and founder who examines Max's extraordinary gains after his arena victory. Her reaction helps establish how far the reward exceeds an ordinary divine advancement.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red dragon in Max and Tanila's daughter's coordinated five-member Tower party, alongside a warrior, a mage, and a dwarven healer.",
+            "id": "red-dragon-companion",
+            "name": "Red dragon companion",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A metallic Tower guide who becomes a twenty-foot copy of Max and Tanila's daughter for the final trial. Shiny reproduces the daughter's body, equipment, and abilities as the party's last opponent.",
+            "id": "shiny",
+            "name": "Shiny",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elder leader of a centaur pack on a world suffering drought, sickness, and population loss. The elder recognizes Max's divine claim as Max returns to investigate the failing world.",
+            "id": "centaur-elder",
+            "name": "Centaur elder",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A younger centaur whose mate died during the long decline of his world. He openly condemns Max's absence and challenges the elder's leadership while demanding responsibility for the suffering around him.",
+            "id": "younger-centaur-warrior",
+            "name": "Younger centaur warrior",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A large, regenerating creature of darkness guarding the centaur world's control panel. It consumes elemental magic and drains life from the surrounding land, resisting Max's conventional wind and sword attacks.",
+            "id": "darkness-entity",
+            "name": "Darkness entity",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dragon god bonded to Max and ranked among the alliance's strongest combatants. Rakonath is one of the companions Max considers while judging the danger posed by the creature corrupting the centaur world.",
+            "id": "rakonath",
+            "name": "Rakonath",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful local god on a perpetually dark world claimed by Max. When Bob's death magic forces a confrontation, the resident god chooses negotiation and permits Max to reach the world's control panel.",
+            "id": "resident-god-of-the-dark-world",
+            "name": "Resident god of the dark world",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A demon ruler summoned because of an outstanding System debt to Max. Though frightened by the subject, the demon king accepts a demand to explain the wider divine game under rules requiring truthful disclosure.",
+            "id": "demon-king",
+            "name": "Demon king",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of a multiworld portal collective who offers Max several levels of membership. The helper knows unexpected details about Max's daughter, making otherwise favorable trade terms a source of suspicion.",
+            "id": "portal-network-helper",
+            "name": "Portal-network helper",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An analyst who studies arena records and Collective patterns for Max's group. The investigator finds earlier cases in which peaceful gods challenged much stronger opponents and died with unusual betting around the fights.",
+            "id": "collective-investigator",
+            "name": "Collective investigator",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tier-three god from a peaceful Collective world who unexpectedly challenges Max. The challenger's modest arena history and the betting pattern around the match make the decision appear deeply abnormal.",
+            "id": "shepherd-god-challenger",
+            "name": "Shepherd god challenger",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gnome figure in the Collective whom Max privately questions about a coerced arena challenge. The contact recognizes how threats against loved ones could force a god to accept death and cautions Max against aggressively pursuing ancient powers.",
+            "id": "gnome-collective-contact",
+            "name": "Gnome Collective contact",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gelatinous arena official who enters Max's wards through arena privileges. The arena master acknowledges that outside interests have compromised the arena and proposes a wager pairing Max with Unbroken at odds of twenty to one.",
+            "id": "arena-master",
+            "name": "Arena master",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient captive offered as Max's arena opponent at twenty-to-one odds. Unbroken has killed every challenger for sixty thousand years, regenerates and adapts to attacks, and grows by consuming defeated gods.",
+            "id": "unbroken",
+            "name": "Unbroken",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An arena official who confirms the tier-four restriction and the stakes of Max's coming fight with Unbroken. The representative stresses the captive's intelligence, undefeated record, and vast experience fighting gods.",
+            "id": "arena-representative",
+            "name": "Arena representative",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0H12WK2F2",
+            "type": "community"
+          }
+        ],
+        "work": "ultimate-level-1-divine-conflict"
+      },
+      "recaps": {
+        "ending": "Max's victory over Unbroken is upheld because the contract restricted Max from advancing before the fight but did not prevent Bob, a separate System consciousness, from initiating the advancement after combat began. The arena pays fifty billion divine points. Max advances again to tier six, while Tanila, Fowl, Batrire, Cordelia, Rakonath, and the bound demon companion each reach tier five. Bob develops alongside Max and remains closely integrated with him. About 1.8 billion divine points remain for defenses, expansion, and reserves. The alliance has only around eleven months before its protection ends, with three approaches still requiring fortification. Its deeper problems remain unresolved: the portal collective brings surveillance and obligations, the hostile syndicate has gone quiet, an ancient power continues to coerce arena sacrifices, and the larger contest involving Bob and the other black skills is still obscure. Max and Tanila's daughter remains away with her Tower party on the three-hundred-year onward journey.",
+        "in_short": "As the founders prepare for the end of their protection, Max kills a frost Jotun, sees his daughter complete the Tower, repairs a centaur world infected by an infant world eater, and deepens the alliance's training and civic institutions. A portal collective improves divine-point income but exposes the founders to surveillance. Max then uncovers a pattern of peaceful gods coerced into fatal arena challenges and accepts a vastly dangerous wager against Unbroken, an adaptive captive that has consumed seventeen gods. Fowl finds a loophole allowing Bob to advance Max during the fight. After surviving long enough to activate Consume's domain, Max kills and absorbs Unbroken. The arena upholds the result and pays fifty billion divine points. Max reaches tier six, his six fellow founders reach tier five, and the strengthened alliance begins fortifying for the expiration of its protection in roughly eleven months.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max and his companions became gods responsible for allied peoples and multiple worlds. Max shares his life and battles with Bob, the sentient black skill called Consume, while Rakonath is bonded to him as a dragon ally. Max and Tanila have a half-elf daughter whose progress through the Tower has carried her close to its completion. The founders' divine status brings resources and authority, but also makes them participants in a much larger contest among gods. Their worlds remain protected for a limited period, giving the group time to strengthen their people and themselves before outside powers can attack directly.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max risks another public arena battle to gain the divine points his alliance needs, defeating a frost Jotun world-eater after Bob takes control during the worst of the fight. Consume grants major statistics and abilities, but Max refuses a power that would transform him into a solitary consumer of worlds. At home, Max and Tanila's daughter leads her five-member party through the Tower's final trial. The Tower creates a giant duplicate of her, but the party's equipment and coordination overcome it. The daughter delivers the killing blow and barely survives the reflected damage. Her team then crosses the portal into the next stage of its journey, beginning an enforced separation from the founders that will last three hundred years.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With his daughter gone, Max turns toward the alliance's readiness. He builds a protected underground chamber where gods can train against one another without permanent death. Tanila defeats the bound demon companion in its first match through careful battlefield preparation, and Fowl later defeats Cordelia after revealing that decades of poison-resistance training neutralized her main tactic. A decline in divine-point income draws Max to a neglected centaur world suffering drought, sickness, and deaths. A younger warrior condemns his absence and challenges the local elder. Max investigates instead of punishing the criticism, finding a vast life-draining blight around the world's control panel. He destroys its guardian with Wildfire and learns it was an infant world eater, probably planted deliberately. After activating restorative blessings, Max gives the younger warrior a communication ring and directs him to share leadership with the elder while the world recovers.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The alliance cannot identify who planted the infant world eater, but the incident forces the founders to improve communication and governance across their worlds. Bob defeats Rakonath in training through tactics rather than raw force, while Batrire develops Sensory Control after enduring dangerous fire exercises and reconnecting with her purpose as a protector. On a perpetually dark world, hostile inhabitants and a vampire god block Max from the control panel until Bob uses corruptive death magic. A stronger resident god then negotiates access and agrees to maintain the world's contribution. The encounter confirms that world ownership can bring conflict with resident gods and their allies. The founders respond by planning expansion, exploration, dragon relocation, and stronger institutions. Tanila continues difficult rune research, while Max urges patience and makes time for their marriage. He also offers Bob control of his body for ordinary experience rather than only emergencies.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bob accepts Max's offer and spends time in the capital through Max's body, helping a struggling food seller and recovering a fragment of erased memory. Fowl and Batrire establish a dwarf-led Tower academy as a lasting civic legacy. Meanwhile, a suspicious arena match ends with a water-based god killing a fire-based opponent in a carefully prepared act of revenge. The founders conclude that the arena may be shaping contests rather than serving as a neutral venue. Max uses a demon king's outstanding debt to demand an explanation of the wider divine game. The demon king describes many simultaneous contests with shifting rules, transferable assets, and victories that can be appropriated. He also says the three black skills appear on every active board, but refuses further disclosure without a pact. The debt ends with the founders convinced they need alliances, practice, and a concealed central objective, even though they still do not understand the true game.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the midpoint of their protection period, the founders accept that ordinary income is unlikely to carry them all to tier five. They weigh costly skill and equipment improvements while pursuing specialized preparation. Rakonath deals with missing young dragons and internal opposition to cooperation with other peoples. Max and Tanila's daughter, now beyond the Tower, governs alongside her multiracial team and remains in contact with her mother. Batrire develops magical perception, defensive healing, and faster recovery from curses. Fowl subjects himself to dragonfire, venom, and petrification to build resistances, planning to add a safeguard against one fatal blow. Cordelia retrains her bow for close combat, Tanila creates sequential layered runes and plans a defensive network, and the bound demon companion learns to accept the strength shared through his bond. Rakonath begins organizing dragons into a coordinated defensive flight. Each founder is addressing a different weakness before stronger gods can reach them.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Because current divine-point growth leaves little room for failure, Max investigates a portal collective connecting dozens of worlds. Its representative offers graded arrangements ranging from trade access to full mutual defense, but unexpectedly knows about Max and Tanila's daughter. The founders choose the least binding trade partnership, intending to gain commerce while limiting disclosure and watching the network in return. The new portal raises income and opens regular traffic, yet its activation feels invasive and routes through an unidentified central Nexus. Six months later, the founders discover that the collective supports a market selling intelligence on gods. Their own profiles compile arena broadcasts, portal scans, observations, abilities, relationships, and proposed methods of isolating them. Max buys the files anonymously and learns that much of his visible arsenal is exposed, although outsiders still misunderstand Bob and underestimate important limits. The portal has solved part of the income problem while creating a systematic surveillance threat.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A peaceful tier-three shepherd god issues an anomalous challenge to Max. Investigation reveals that an ancient, overwhelming presence ordered the shepherd to enter the arena, refuse surrender, and die or see the shepherd's world destroyed. Max agrees to make the death quick and protect the world afterward. He wins the staged contest, inherits the threatened world, and discovers a large wager placed almost immediately on a short fight. The collective investigator traces similar cases, while Bob enters protected arena records and confirms seventeen connected bets from one hidden source across centuries. A vast system-adjacent presence notices the intrusion and allows Bob to retreat. Forty years pass without open retaliation, but the alliance remains far short of tier five. An arena master then offers Max a twenty-to-one wager against Unbroken, an adaptive captive undefeated against divine challengers for sixty millennia. The terms require Max to remain at tier four until combat begins.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Archives show that Unbroken has killed and absorbed seventeen tier-four challengers, learning from every attack and growing stronger after each victory. To improve income and preparation, the founders accept associate membership in the portal collective despite its greater expectations and surveillance. Merchants and organizations then approach their territories with detailed knowledge and offers carrying escalating obligations. The bound demon companion rejects a syndicate arrangement, Fowl manages trade conflict in his city, Cordelia begins counter-intelligence work, and Rakonath negotiates tightly limited trade in naturally shed dragon scales. The founders conclude that someone may be studying and positioning the entire alliance around the arena offer. Max decides that refusing will not remove the wider threat and commits to the fight after prolonged training. Bob develops True Mirror into a physical copy of Max that can fight independently, though its destruction harms Bob. The alliance mobilizes its peoples and builds tactics around Max and Bob operating as two bodies.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After decades of simulations and training, Max and Bob can sustain their two-body tactics for hours, but even their best plans leave a substantial risk of death. With one year of protection remaining, Max formally accepts the twenty-to-one wager and commits 2.5 billion divine points. The fight is scheduled only thirty days before the protective period ends. During the founders' final gathering, Fowl identifies a loophole in the contract: Max must enter at tier four, but the wording may allow Bob, who has a distinct System identity, to initiate Max's advancement once combat begins. The group keeps the plan secret because the arena might close the gap or void the wager. The rabbit-shaped helper confirms that the interpretation has a technical basis but cannot predict adjudication. Max enters the arena prepared to create a two-second opening for Bob, knowing that a successful advancement might unlock a domain while a failed ruling could cost both his life and the alliance's accumulated resources.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The System accepts Bob as the initiator of Max's advancement, making Max tier five after the fight begins. The new Consume domain needs twenty-four hours to charge, forcing Max and Bob to survive against an opponent that rapidly adapts to their weapons, magic, movement, and shared patterns. Unbroken repeatedly destroys Bob's physical clone, weakening Bob each time, while Max's mana and regeneration steadily fail. A concealed god-killing artifact wounds Unbroken but cannot overcome its adaptation. Max eventually fights without the clone, uses his remaining abilities and a mana potion to delay, and survives a lethal head strike only because Negate Death Blow activates. At the end of the twenty-four-hour countdown, Consume's domain freezes Unbroken's killing blow. Inside the domain, Unbroken is suppressed, Max's accumulated powers are amplified, and Bob is restored. Max and Bob destroy Unbroken's core, reject its offer of stolen knowledge, and absorb its essence, memories, abilities, and statistics.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The arena challenges the result, but the official who wrote the restriction confirms that it barred Max's own pre-fight advancement and deliberately left Bob's action permissible. The fifty-billion-divine-point payout therefore stands. The official also admits that the loophole was meant to give Unbroken a genuine challenge and warns that Max's victory serves other interests while attracting old enemies. Max reunites with Tanila, Fowl, Batrire, Cordelia, Rakonath, Bob, the bound demon companion, and the rabbit-shaped helper. He spends 17.5 billion divine points to become a tier-six intermediate god. Over the next week, the other six founders advance to tier five. Roughly 1.8 billion divine points remain for defenses, expansion, and reserves. The hostile syndicate has fallen silent, but Cordelia treats that as preparation rather than retreat. With about eleven months of protection left and three assault approaches still to fortify, the strengthened alliance turns immediately toward the expected attack.",
+            "through": {
+              "chapter": 63
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-23",
+            "ref": "audible:uk:B0H12WK2F2",
+            "type": "community"
+          }
+        ],
+        "work": "ultimate-level-1-divine-conflict"
+      }
+    }
+  }
+}

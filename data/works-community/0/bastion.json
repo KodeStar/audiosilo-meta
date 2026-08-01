@@ -1,0 +1,1507 @@
+{
+  "entries": {
+    "bastion": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An amnesiac man who wakes in a numbered copper tomb with only his name and an impression of death. Decisive under pressure, he risks himself to help three strangers and takes the lead when the group approaches its first unknown passage.",
+            "id": "scorio",
+            "name": "Scorio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of the people who awaken without memories among the copper tombs. He joins Scorio and Lianshi, helps pull Asha from her tomb, and becomes part of the four-person group trying to understand their apparent deaths and unfamiliar surroundings.",
+            "id": "leonis",
+            "name": "Leonis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An amnesiac woman who wakes near Scorio and Leonis and joins their search for a way forward. She knows only her name and the sensation of having died, but quickly works with the others as they assess the tomb chamber and its strange exit.",
+            "id": "lianshi",
+            "name": "Lianshi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fourth member of Scorio's first group, rescued as she slips back into her copper tomb. She is the first to describe the troubling sense that an inner faculty should be present but cannot be reached.",
+            "id": "asha",
+            "name": "Asha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Chancellor of Bastion's Academy and Autocrater of House Hydra. He presides over the newly reborn cohort's orientation, explains the gauntlet and the Great Souls' purpose, and orders Scorio seized when the Archspire places him on the Red List.",
+            "id": "praximar",
+            "name": "Praximar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leading finisher in the rebirth gauntlet and an exceptional returning Great Soul. The Archspire identifies her as an Imperator with 163 rebirths, marking her immediately as the cohort's most accomplished entrant.",
+            "id": "jova-spike",
+            "name": "Jova Spike",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran Great Soul recognized among the few entrants who reached the gauntlet's fifth chamber. The Archspire identifies her as a former Charnel Duke with 189 rebirths, establishing her as one of the cohort's leading competitors.",
+            "id": "ravenna-accardi",
+            "name": "Ravenna Accardi",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Red List prisoner surviving in the caverns below the Final Door. She has endured the underground region for about a year and belongs to a small band preparing an escape attempt when Scorio encounters them.",
+            "id": "hestia",
+            "name": "Hestia",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Red List exile who has survived in the Warrens for three years and insists that her condemnation was false. Repeated carvings of her own name suggest earlier incarnations may also have been imprisoned there.",
+            "id": "nissa",
+            "name": "Nissa",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the hidden Warrens refuge who helps bring Scorio to safety. He explains how the refuge survives periodic fiend incursions and supports the group's plan to raise the brass door and seek a route out.",
+            "id": "havert",
+            "name": "Havert",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The self-named planner and herbalist of the Warrens refuge. Volatile but capable, he treats Scorio's fever and organizes a pulley-based attempt to open the brass door, while closely guarding what he knows about his missing friend Rattart.",
+            "id": "salamander",
+            "name": "Salamander",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Salamander's missing explorer friend, known through the refuge's account of his deliberate journey into the Warrens. Unlike the unpowered prisoners, he had ignited his heart and carried unusual tools suited to dangerous exploration.",
+            "id": "rattart",
+            "name": "Rattart",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A musician and Feiyan's partner who encounters the newly escaped Scorio in Bastion's ruins. Socially confident and practical, she negotiates food, clothing, information, and useful contacts in exchange for his glowing sunfire.",
+            "id": "helena",
+            "name": "Helena",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Helena's musician partner and a former House Basilisk worker. Critical of Bastion's Great Soul hierarchy, she advises Scorio to hide his ignorance and precarious status while offering an introduction that could give him a foothold.",
+            "id": "feiyan",
+            "name": "Feiyan",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a criminal crew associated with House Basilisk. She tests Scorio's limits before hiring him, valuing practical ruthlessness while rejecting needless cruelty, and makes clear that her crew can expose him if he breaks their arrangement.",
+            "id": "dola",
+            "name": "Dola",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared ruin-dweller who confronts Scorio and takes his sapphire mana and two treasures. She is an Emberling with a monstrous form, great mobility, claws, and a bladed tail, and she knows far more than he does about ignition.",
+            "id": "nightmare-lady",
+            "name": "the Nightmare Lady",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The woman previously known to Scorio as the Nightmare Lady. After he earns a limited teaching agreement, she gives him her name and begins showing him how to connect his will to his igneous heart and draw ambient mana into it.",
+            "id": "naomi",
+            "name": "Naomi",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Jova Spike's roommates and regular training partners at the Academy. Her association with the disciplined, formidable Jova makes her part of the cohort circle Scorio must assess carefully while following the clue from his old locker.",
+            "id": "juniper",
+            "name": "Juniper",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Jova Spike's roommates and close cohort companions. She trains alongside Jova and Juniper, placing her within the guarded Academy circle surrounding the only clue Scorio has recovered about his former life.",
+            "id": "zala",
+            "name": "Zala",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A huge, speaking creature saturated with coal mana near the abandoned Academy. After nearly carrying Leonis away, it accepts Scorio's offer of release and withdraws rather than continuing a costly fight.",
+            "id": "giant-toad",
+            "name": "the giant toad",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Imperator who arrives in Bastion inside a vast shadow cloud and seizes the broken Archspire. Overwhelmingly powerful and able to reshape the old Academy, she seeks to force open the portal she believed had already awakened.",
+            "id": "imogen",
+            "name": "Imogen",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Charnel Duchess who coordinates Bastion's immediate defense against Imogen. Knowing the Imperator cannot be defeated directly, she supports a strategy of mobile, rotating attacks intended to delay the assault.",
+            "id": "white-queen",
+            "name": "the White Queen",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dread Blaze among Bastion's defenders whose ability rapidly develops tactical plans. She proposes rotating strike teams that can harry and delay Imogen without relying on an unrealistic direct victory.",
+            "id": "desiree",
+            "name": "Desiree",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An exceptionally powerful Great Soul who appears to have been Imogen's partner and arrives to oppose her attempt to open the portal. He refuses cooperation because the act would kill Bastion's population and summons more than a hundred spear-bearing reflections.",
+            "id": "golden-imperator",
+            "name": "the golden Imperator",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Emberling ranked among the cohort's strongest students. Leonis warns Scorio to avoid him, marking the House Kraken-backed fighter as a dangerous Academy rival before they have any direct confrontation.",
+            "id": "kuragin",
+            "name": "Kuragin",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A House Camara recruiter able to assess the condition and capacity of Scorio's igneous heart. He finds severe but potentially treatable damage alongside unusual depth and reactivity, and helps evaluate Scorio for conditional sponsorship.",
+            "id": "gelegos",
+            "name": "Gelegos",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hostile patron at the Flame who accuses Great Souls of exploiting Bastion's residents. He threatens Leonis and the venue before Feiyan expels him, giving personal form to the city's growing anger after Imogen's attack.",
+            "id": "makiros",
+            "name": "Makiros",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Emberling tournament competitor whose powerful leaps shatter the arena floor and carve destructive paths through stone. His escalating attacks make him a severe test of Jova Spike's ability to endure punishment.",
+            "id": "masamash",
+            "name": "Masamash",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The giant toad from the old Academy bridge, now introducing himself as an Imperial Ghost Toad. He regards Scorio as a favored friend and offers to guide him through a concealed underground route into the sealed complex.",
+            "id": "nox",
+            "name": "Nox",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scorio's brother and a captured rebellion leader, known through Kuragin's trial account. That vision alleges Scorio betrayed him after an earlier rescue, but the branching nature of trials leaves the historical truth unsettled.",
+            "id": "eberro",
+            "name": "Eberro",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B09RRZTX67",
+            "type": "community"
+          }
+        ],
+        "work": "bastion"
+      },
+      "recaps": {
+        "ending": "Scorio passes his second trial during the final gauntlet, becomes a Tomb Spark, and advances slightly farther than Jova Spike. The Academy declares him the winner, but he refuses further training and every House offer. Jova honors their wager, rejects Praximar's attempt to give her the victory, and shares a journal entry written by Scorio's incarnation 233 years earlier. The message warns against the Houses, Imperators, and herdsmen, says the cycle can be broken only by attaining a named ultimate role, and insists that Scorio will need allies. Jova agrees to help investigate. Naomi, Leonis, Lianshi, Juniper, and Zala also join Scorio, creating a seven-person fellowship. Helena and Feiyan have contacted Manticore to assist their escape, and the group plans to meet at the Western Gates before heading toward the Rascor Plains. Praximar remains hostile, Scorio's heart is still fractured, Imogen remains at large, and Bastion is politically unstable amid organized resistance to Great Soul rule.",
+        "in_short": "Scorio awakens without memories, survives a lethal rebirth gauntlet, and is condemned by Bastion's Academy for crimes from forgotten lives. After escaping the Warrens, he trains under Naomi, reunites with Leonis and Lianshi, and forces his way back into the Academy. His dangerous pursuit of advancement fractures his heart, while Imogen's attack exposes Bastion's weakness and deepens public unrest. Scorio rejects Praximar's blackmail and House Camara's support, then uses Nox's imperial gel and Naomi's mana to become an Emberling. He enters the final gauntlet with Naomi, Leonis, and Lianshi, reaches Tomb Spark after they fall, and narrowly surpasses Jova Spike to win. Scorio and Jova reject the Academy and Houses. A journal from Scorio's former self warns them not to trust the institutions governing the cycle. They join Naomi, Leonis, Lianshi, Juniper, and Zala in planning to leave Bastion for the Rascor Plains and investigate the truth.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Scorio awakens without memories in a copper tomb and joins Leonis, Lianshi, and Asha. Their path leads through a lethal sequence of chambers. Asha, Leonis, and Lianshi die one by one, and Scorio reaches a fourth chamber before falling to his own death. All four then awaken restored in a basilica. Praximar, Chancellor of Bastion's Academy, explains that they are repeatedly reborn Great Souls and that the gauntlet measures each new cohort. The Archspire identifies leading entrants including Jova Spike and Ravenna Accardi, then names Scorio as the Scourer, a former Blood Baron who has been absent for 233 years and is proscribed on the Red List. Academy authorities seize him despite his amnesia. Praximar drains power from Scorio's igneous heart and has him cast through the Final Door into the dangerous caverns below Bastion. Wounded and unable to use his heart reliably, Scorio survives an attack and encounters Hestia and another Red List prisoner. They belong to a small underground refuge whose occupants are preparing an escape attempt.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Warrens refuge recruits Scorio for an attempt to raise the brass door that confines them. Its residents include Hestia, Nissa, Havert, and Salamander. The mechanism fails, and a powerful fiend forces the door open. Nissa incapacitates Havert to preserve the escape, the fiend kills him, and Hestia is dragged back as Scorio flees. Separated from the others, Scorio finds Rattart's body and inherits magical chalk, a locking steel rod, and an expanding bridge. He uses them to climb out into Bastion. Musicians Helena and Feiyan trade him food, clothing, information, and an introduction to the criminal leader Dola. Scorio joins a theft from House Camara, escapes with two vials of sapphire mana, and refuses to return them, making Dola an enemy. In the ruins, a powerful Emberling called the Nightmare Lady takes the vials and two treasures. Scorio bargains for instruction by promising to defeat her within three nights. He traps her between barriers made with Rattart's chalk, and she accepts that the ambush earns him one week of teaching.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Nightmare Lady reveals her name as Naomi and teaches Scorio to draw ambient mana into his igneous heart. She explains that ignition requires both saturation and the pressure of frustrated ambition. Scorio refuses House service and will not endanger Leonis or Lianshi to gain Academy resources. After harsh combat training, he explains that he seeks the power to define his own worth and resist institutions that discard people. Naomi admits she was born in Bastion, advanced without conventional Academy support, and left after passing her first trial. She begins training him in earnest. Scorio gathers black star flowers and consumes a dangerously concentrated tincture while saturated with coal mana. He survives and ignites his heart, becoming a Cinder, though rapidly spending his reserves leaves him debilitated. Seeking allies and a route toward the Rascor Plains, he returns to Feiyan and Helena's venue, the Flame. Feiyan tells him when Academy students visit the graveyard market. There Scorio reunites with Leonis and Lianshi, who had believed him dead. They remain loyal, agree to investigate access to his former-life locker, and establish regular meetings while Scorio continues living outside the Academy as a fugitive.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio starts cultivating black star flowers as an independent mana supply. Leonis and Lianshi obtain maps and a copied key, then smuggle him into the Academy disguised as a courier. They reveal that Leonis was formerly a Pyre Lord and Lianshi a Charnel Duke. Scorio reaches his old locker but finds it empty except for Jova Spike's name carved into the back. The friends infer that his former self may have intended Jova to hold a message, yet approaching her could expose him. Naomi resumes training Scorio and teaches him to store mana and read its flow in combat. His hidden crop begins to grow. Scorio, Leonis, and Lianshi then explore the deeper ruins. They fight a giant speaking toad near the abandoned old Academy, release it under an agreement, and enter the complex. Inside they find a broken Archspire, intact rebirth biers, and evidence that the place was looted long ago. Scorio activates one of the biers despite the unknown danger and enters an older gauntlet alone, opening a new but hazardous route for training and investigation.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The old gauntlet kills Scorio repeatedly and leaves lingering pain after revival. Leonis and Lianshi join his runs, and Naomi later escorts him through higher chambers, but his drive becomes dangerously self-destructive. She limits his schedule after he collapses and warns that unmanaged strain can damage both heart and mind. Scorio nevertheless develops a potent supply of coal mana from his flower crop. During a group visit to the old Academy, Imperator Imogen arrives inside a vast shadow cloud, seizes the broken Archspire, and attempts to force open Bastion's portal. Praximar and the city's defenders cannot contain her, and her fog takes control of nearly everyone nearby. Scorio escapes into the gauntlet, returns, and persuades Imogen to spare him. She recognizes him as a companion from forgotten lives. A golden Imperator, her former partner, arrives to prevent her from opening the portal and killing Bastion's inhabitants. When Imogen begins to overpower him, Scorio distracts her long enough for the golden Imperator to gain preeminence. Imogen retreats, leaving parts of Bastion devastated. The golden Imperator restores Scorio's heart only to its already damaged condition and directs the White Queen to secure his readmission to the Academy.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Praximar reluctantly readmits Scorio, and Naomi joins Scorio, Leonis, and Lianshi as an Academy suite group. Bastion remains damaged and angry after Imogen's assault. Academy assessments show Scorio can ignite iron mana, but his overuse of coal mana and extreme training have badly fractured his heart. It loses about a third of the mana he draws, and further strain could destroy it. Healing resources and sponsorship become urgent, so Scorio obtains special entry into the tournament despite still being a Cinder. He wins his qualifying bout with an overwhelming iron-mana strike, then survives another round by returning to coal mana, which leaves him dangerously uncontrolled. Gelegos and a House Camara delegation assess his unusual potential and offer conditional sponsorship with extensive treatment and oversight. Scorio accepts the prospect of healing without abandoning his planned final-gauntlet team. He then asks Jova Spike to investigate why her name was left in his former locker. She refuses because she trusts the Red List judgment against him. They seal a wager: if Scorio surpasses her in the final gauntlet, she must investigate his past; if he loses, he must leave the Academy.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Flame, Scorio's celebration of his prospective sponsorship exposes growing civilian hostility toward Great Souls. He drunkenly attacks Naomi's distrust of the arrangement, and she leaves. Praximar then reveals knowledge of Scorio's theft from House Camara and demands a binding promise that Scorio lose his next tournament bout, stop early in the final gauntlet, and leave the Academy. Scorio refuses to surrender his choices, even though Naomi ends their partnership and his House support seems certain to vanish. He voluntarily confesses the theft to Gelegos. The recruiter respects his candor but must withdraw House Camara's offer, ending Praximar's immediate leverage and leaving Scorio without a conventional path to healing. Scorio returns to hunting in the ruins and finds the old Academy sealed. The giant toad introduces himself as Nox, an Imperial Ghost Toad, and shows him a hidden route underground. Scorio, Leonis, and Lianshi resume secret gauntlet runs through that passage. During one run, Lianshi reaches her first trial and becomes an Emberling. Her new ability grants brief glass-like invulnerability, improving the team's prospects while Scorio and Leonis remain Cinders.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio loses his tournament bout to an Emberling and turns to Nox's mana-condensation method as his remaining chance to advance. With help from Gelegos, Leonis, and Lianshi, he trades a treatise on Nox's favorite game for instruction. The plan requires hundreds of black star plants, dangerously concentrated tincture, and Nox's stabilizing imperial gel. Lianshi initially withdraws over Scorio's willingness to risk death, while Leonis objects but stays to help. Leonis reaches Emberling during their secret gauntlet training and manifests a massive rune-marked club. Jova reveals that she has already become a Tomb Spark. Scorio's new crop is then destroyed by mana-hunting creatures, apparently ending his plan, but Naomi returns to defend the group and offers the sapphire mana she took from him. In Nox's gel, Scorio combines that mana with his remaining coal syrup and is drawn into his first trial. He relives a past attempt to rescue his brother from execution and sees Kuragin serving the opposing king. Scorio completes the trial and becomes an Emberling with black scales, heated claws, greater reach, and stronger dark vision, though his fractured heart still leaks mana.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Newly advanced, Scorio defeats Naomi in a lethal practice spar, and both revive afterward. Their wager requires her to join his final-gauntlet team, which now consists of four Emberlings: Scorio, Naomi, Leonis, and Lianshi. Praximar allows Naomi to return only after Scorio accepts another high-stakes condition governing their departure if they fail to outperform Jova. On the eve of the run, Scorio seeks answers from Kuragin about the trial vision involving his brother. Kuragin demands an unsanctioned duel in exchange for his account. Scorio wins but breaks his arm and gives up outside healing before the gauntlet. Kuragin then names Scorio's brother as Eberro and claims his own trial showed Scorio betraying the captured rebel after once rescuing him. Naomi explains that later trials can branch from earlier choices, so the allegation is not settled history. Lianshi also reconciles with Juniper, whose fate had appeared in her own trial. With Scorio's arm still damaged and his heart slow to fill, the Academy's second gauntlet begins. The four activate their crystals together, relying on their extensive secret practice and team average to challenge Jova's group.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio's team clears the early gauntlet through coordinated use of Leonis's club, Lianshi's invulnerability, Naomi's speed, and Scorio's transformed claws. Injuries accumulate as the rooms grow harder. A hidden golden assassin kills Naomi in the tenth chamber. Lianshi dies in a web-and-funnel trap, and Leonis sacrifices himself to break through a swarm and save Scorio. Alone and unable to stand, Scorio stops defining himself only in opposition to Praximar and accepts responsibility for deeds associated with his prior lives. He passes his second trial, reliving the moment his former self took command of a rebellion after breaking with Eberro's plan to seek clemency. Scorio becomes a Tomb Spark, gains a protective shroud and an oppressive aura, and continues through the gauntlet with his injuries healed by advancement. A replay shows Jova dying in the eighteenth chamber's rotating-platform trial. Scorio reaches one segment farther before he also dies. After everyone revives, the Archspire declares that both reached the same chamber but Scorio progressed farther. He wins the gauntlet, refuses every House and further Academy training, and leaves the ceremony with Jova after she likewise rejects Praximar's attempt to claim her as the winner.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jova honors her wager and shares a journal entry from Scorio's incarnation 233 years earlier. The message warns him not to trust the Houses, Imperators, or herdsmen. It says the cycle can be broken only by attaining a named ultimate role, and it emphasizes that Scorio cannot succeed alone. Scorio explains that he used Nox's mana-condensation pool to become an Emberling and advanced to Tomb Spark within the final gauntlet. His fractured heart makes the former self's demand especially difficult, but Jova agrees to help investigate the warning and the system behind their rebirths. Naomi, Leonis, Lianshi, Juniper, and Zala also commit to leaving with them, forming a seven-person fellowship. Helena and Feiyan have contacted Manticore as a possible means of escape from Bastion. The group plans to meet at the Western Gates and travel toward the Rascor Plains before Praximar can retaliate. They leave the Academy and Houses behind, while Imogen's threat, Bastion's unrest, Scorio's unstable heart, Eberro's fate, and the true purpose of the cycle remain unresolved.",
+            "through": {
+              "chapter": 80
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B09RRZTX67",
+            "type": "community"
+          }
+        ],
+        "work": "bastion"
+      }
+    },
+    "battle-ground": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Winter Knight, warden of Demonreach, and Chicago's wizard - on the night that phrase stops being a job description and becomes a battle station. With a Titan marching on his city and every power of the Accords forced to choose between flight and war, Harry fights the longest night of his life for the town and the people he loves, spending every alliance, weapon, and debt he has ever accumulated.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Last Titan"
+            ],
+            "description": "The last of the Titans, bearer of the Eye of Balor, come to destroy Chicago as a demonstration to humanity and to the powers she despises. Ethniu is a being from the world's oldest stratum of nightmare - stronger than gods grown soft under the Accords, armored in bronze and hatred, and carrying a weapon that can level city blocks with a glance. Nothing assembled against her is confident it can even slow her down.",
+            "id": "ethniu",
+            "name": "Ethniu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "King of the Fomor, lord of the drowned courts that have spent a decade raiding humanity's shores and stealing its talented children. Corb brings his kingdom's armies out of Lake Michigan behind Ethniu's banner - kraken, giants, huntsmen, and warrior-priests - to break Chicago and inherit the ruins. Ancient, cruel, and long-humiliated, he has waited ages for this tide.",
+            "id": "king-corb",
+            "name": "King Corb",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Formerly of Chicago PD - the bravest person Harry knows, half-rebuilt after Nicodemus shattered her knee and arm, and together with Harry at last. Ordered by every sensible standard to sit this one out, Murphy straps her weapons over her braces and takes the field anyway, because Chicago is her city and standing between it and monsters has never required anyone's permission.",
+            "id": "karrin-murphy",
+            "name": "Karrin Murphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Queen of Air and Darkness, commanding Winter's legions in open war for the first time in mortal memory. Mab on a battlefield is the answer to a question Harry never wanted asked: what all that cruelty and discipline were for. She spends soldiers, cities, and her Knight's heart with the same cold arithmetic, and the defense of Chicago runs on her will.",
+            "id": "mab",
+            "name": "Mab",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ruler-in-fact of the White Court, fighting for Chicago at the head of her house's soldiers. Lara is deadly in the field and indispensable in the command tent, and the night's events keep binding her fortunes more tightly to Harry's - a process Mab watches with unmistakable intent. What Winter's queen plans for the two of them outlasts the battle.",
+            "id": "lara-raith",
+            "name": "Lara Raith",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gangster who made himself Baron of Chicago under the Accords - the city's other monster, mobilizing his troops, his fortress, and his Valkyrie-run organization in its defense. Marcone has spent years preparing for a night exactly like this one with a thoroughness no one fully appreciated, and before it ends he shows the battlefield capabilities nobody knew he had.",
+            "id": "johnny-marcone",
+            "name": "John Marcone",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Medical examiner turned Knight of the Cross, bearer of the reborn Fidelacchius - a blade of pure light in the hands of the least imposing warrior on the field. Butters fights his war the way he does everything: methodically, fearfully, and without ever once quitting. The Sword of Faith has rarely had a truer wielder, and this night tests every inch of that truth.",
+            "id": "waldo-butters",
+            "name": "Waldo Butters",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Knight of the Cross, bearer of Esperacchius, arriving where the despair is thickest with a Kalashnikov, a holy sword, and unshakable good cheer. Sanya has crossed half the world to stand with Chicago's defenders, and the night's horrors meet in him something they cannot dent: a man who has already been offered every excuse to despair and declined them all.",
+            "id": "sanya",
+            "name": "Sanya",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Blackstaff"
+            ],
+            "description": "Senior Council member, the Council's living weapon, and Harry's grandfather - taking the field for Chicago even as the wounds of the peace talks stay raw between him and Harry. Ebenezar at war is one of the most dangerous forces on the continent; Ebenezar as family remains a harder, sadder problem, with the truth about Thomas still standing between them like a drawn blade.",
+            "id": "ebenezar-mccoy",
+            "name": "Ebenezar McCoy",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Chicago police detective of long, undistinguished acquaintance with Harry's cases - a vain, frightened careerist who has spent years refusing to see what the city's night contains. On this of all nights, Rudolph is out in the war zone with a badge, a gun, and a panic he cannot control, insisting on procedure while the sky burns. Frightened men with guns are dangerous in ways monsters are not.",
+            "id": "rudolph",
+            "name": "Rudolph",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "battle-ground"
+      },
+      "recaps": {
+        "ending": "Chicago stands, at a terrible price. Ethniu is not killed - she is bound: battered by the combined assault of Mab, the Erlking, Vadderung, River Shoulders, Lara, Marcone, and Harry's friends, the Titan is dragged down at the lakeshore and imprisoned in Demonreach's crystal cells by the island's power, with Harry as her jailer. The Fomor host is shattered and the city saved, but tens of thousands are dead, the skyline is broken, and the mortal world can no longer entirely pretend: the masquerade is cracked, with officialdom papering over what millions glimpsed. Karrin Murphy is dead - killed not by the enemy but by Rudolph's panicked, negligent gunshot - and only Butters, invoking who Murphy was, stopped Harry from murdering Rudolph on the spot; Harry is later given reason to believe her spirit has gone on to a warrior's reward. John Marcone stands revealed as host of the fallen angel Thorned Namshiel, a Denarian with a baron's army and a decade of preparation. The White Council formally expels Harry, leaving him Winter's creature in the world's eyes. The Thomas affair finally shows its roots: visiting the pregnant Justine, Harry realizes she has long been possessed by Nemesis - the adversary coerced Thomas into the Etri assassination - and the infected Justine escapes, carrying Thomas's child. And Mab, sealing Winter's new alliance, decrees that Harry will marry Lara Raith. Grieving, expelled, engaged against his will, and jailer to a Titan, Harry buries Murphy as the book ends.",
+        "in_short": "Ethniu, the Last Titan, and King Corb's Fomor armies rise out of Lake Michigan to destroy Chicago in a single night. The Eye of Balor blacks out the city, and an alliance of everything Harry has ever befriended or bargained with - Winter's legions under Mab, Marcone's einherjar and Valkyries, the White Court, svartalves, Wardens, the Knights Sanya and Butters, River Shoulders' Forest People, and Chicago's own defenders - fights block by block against giants, kraken, and warrior-priests. Karrin Murphy, fighting despite her injuries, is killed by a panicked gunshot from Detective Rudolph; Butters barely stops Harry from murdering him. The allies bleed the Titan, Marcone is revealed as the host of the fallen angel Thorned Namshiel, and at the lakeshore the assembled powers batter Ethniu until Harry can bind her into Demonreach's prison. Chicago survives, half-broken, with the supernatural half-exposed to the world. In the aftermath the White Council expels Harry; he learns Justine has long been possessed by Nemesis - the true hand behind Thomas's crime - and she escapes; and Mab decrees Harry's engagement to Lara Raith. The book ends at Murphy's funeral.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the series: Harry Dresden - Chicago's wizard, the Winter Knight, warden of the prison-island Demonreach - has just watched a peace conference become a declaration of war. The Fomor, the sea-kingdom that spent a decade raiding humanity, proposed talks with the Accords nations in Chicago, hosted by the svartalves; there, Harry's half-brother Thomas Raith inexplicably tried to assassinate the svartalf king Etri and was captured, his motive unspoken. Harry and Lara Raith - to whom Mab has bound Harry for two favors - broke Thomas out, fighting past Ebenezar McCoy, Harry's grandfather, who hates the White Court and does not know Thomas is his grandson too. Harry sealed the dying Thomas in Demonreach's stasis, beyond both death and rescue, while Justine, pregnant with Thomas's child, waits. At the summit's close the Fomor unveiled Ethniu, the Last Titan, bearing the Eye of Balor: she declared she will destroy Chicago tonight as a lesson to humanity. Around Harry stand the survivors of his long war: Murphy, half-healed and armed anyway, finally his; the Knights Sanya and Butters, the latter bearing the reborn sword of light; Molly, secretly the Winter Lady; Marcone, the city's criminal Baron; and a White Council already moving to expel Harry. The battle for Chicago begins at once - this book picks up the same night Peace Talks ends.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war for Chicago opens. Harry races to position ahead of the assault, and the first blow lands on the city itself: Ethniu unleashes the Eye of Balor to smash Chicago's power grid, dropping millions of people into a blacked-out night in which no phone works, no help is coming, and the things climbing out of Lake Michigan cannot be explained away. King Corb's Fomor host comes ashore in waves - warrior-priests and servitor legions, huntsmen, giants, and worse behind them - while the defenders execute the only plan there was time to make: hold the lines, bleed the advance, and keep the enemy from the heart of the city and its people. The alliance that answers is everything Harry's long, strange career has ever touched: Winter Sidhe under Mab's command, Marcone's fortress and his einherjar - the resurrected soldiers of Valhalla - with Valkyries running his command net, the White Court under Lara, svartalf war-machines, the Paranet's minor talents shepherding civilians, and Harry's own people: Murphy at his side with her weapons braced over her injuries, Butters with the Sword of Faith, the werewolves, and the little folk. The first engagements make the scale plain - this is not a monster problem, it is a war - and somewhere behind the advancing lines, the Titan herself has not yet even joined the fight.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The battle becomes block-by-block war through a darkened city. The defenders' lines bend and re-form: Winter's legions and the einherjar meet the Fomor's giants and kraken-spawn head-on, svartalf ordnance and Marcone's preparations exact their price, and Harry burns through power and tricks alike as a one-man fire brigade wherever the front cracks. Sanya arrives from across the world - a Knight of the Cross with a holy saber and a rifle, laughing at odds - and fights beside Butters, the two swords blazing in the dark. River Shoulders and the Forest People, whose entry into the Accords Harry once sponsored, wade into the enemy like walking hills, repaying the debt with interest. Ebenezar McCoy takes the field for the city with the full, terrifying weight of the Blackstaff, the rift between him and Harry set aside without being healed. The Wardens under Carlos Ramirez fight and bleed; friends are wounded, and not everyone holding a line comes back from it. Through it all the enemy's design tightens: Ethniu is walking toward the city's heart at her own pace, the Eye leveling whatever resists her, and every defender who can count understands that the allied host - dying bravely by inches - has no answer yet for the Titan herself.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The middle of the night grinds toward its crisis. The defenders trade space for time and lives for space: strongpoints fall and are retaken, the wounded stream toward Marcone's fortress - the one place built to endure a siege like this - and the allied commanders commit their reserves knowing there is nothing behind them. Ethniu's advance turns the lakefront into rubble, and engagements against her merely prove the arithmetic: no single power on the field can stand against the Eye and the bronze-armored immortal carrying it; whatever answer exists will have to be everyone, together, timed perfectly, and even then it will be a coin toss. Harry fights his own battle within the battle - Winter's mantle howling for slaughter, exhaustion stripping his judgment, Demonreach's power close but bound to the island and its terrible custody - while the people he loves keep stepping into harm's way faster than he can cover them. Murphy fights the whole way through it, half-rebuilt and wholly unwilling to be anywhere else, and she and Harry hold on to each other in the pauses. Amid the chaos the city's mortal machinery blunders into the war zone too - police, guardsmen, and terrified officials, some brave, some worse than useless - and among them, waving a badge and a gun he has no business holding, is Detective Rudolph.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The night takes its cruelest toll. In the chaos behind the lines, Karrin Murphy is killed - not by the Titan, not by the Fomor, but by Rudolph: panicked, incompetent, and armed, his negligent shot ends the life of the bravest defender Chicago had. Harry arrives to a grief that slides instantly toward murder, Winter's mantle and his own broken heart in perfect agreement, and what stops him is Waldo Butters - the Knight of Faith putting himself and the memory of who Karrin Murphy was between Harry and a killing she would never have wanted done in her name. Rudolph flees into the ruins of the night. There is no time to mourn: Mab herself compels her Knight back into function, because the city is still dying and the endgame has arrived. The allied powers commit to the only plan with any mathematics behind it - mass every heavyweight the alliance has and break the Titan by main force before dawn. As the great powers converge on the lakefront for the final phase, the alliance's hidden capabilities start coming off the books, and one of them rewrites Chicago's map of power: John Marcone, the mortal gangster who bought his way into the Accords, reveals gifts no mortal has - the Baron of Chicago has been carrying a Denarian coin, and the fallen angel Thorned Namshiel fights on the city's side tonight.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lakefront becomes the anvil. Everything the alliance has left converges on Ethniu at the water's edge: Mab in her full wrath, the Erlking and the huntsmen of the Wild Hunt, one-eyed Vadderung trading blows like the god he used to be full-time, River Shoulders swinging with the strength of hills, Lara and her Court, Marcone burning with Namshiel's sorcery, the Knights and the Wardens and the einherjar - and Harry Dresden, holding the piece nobody else can: the island. Wave by wave, at staggering cost, the assembled powers strip the Titan of her guards, her momentum, and finally her invincibility, wearing down even the Eye's annihilating fire. Beaten to one knee but unkillable by anything present, Ethniu meets the answer Harry has carried all night: not death but custody. Reaching across the water to Demonreach, Harry brings the prison's power to bear and binds the Last Titan into the island's crystal cells - the Warden's authority used at last for exactly what Merlin built it to do, and a horror out of the dawn of the world goes into the dark below Lake Michigan. With their Titan gone the Fomor break; the survivors of the host are hunted back into the water, and somewhere in the rout King Corb's invasion dies as a going concern. Dawn comes up on a saved, shattered city - and on the accounting.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The accounting is long. Chicago's dead number in the tens of thousands, its skyline is broken, and the mortal world cannot entirely unsee what happened: officialdom constructs its explanations while millions of witnesses quietly know better - the old masquerade is cracked for good, and the supernatural nations must live in the world that follows. The White Council makes its choice about Harry Dresden: expulsion. The wizard who bound a Titan is cast out of the institution he bled for since he was sixteen, too frightening and too much Winter's to keep, leaving him - in the world's eyes - Mab's creature and nothing else. The Thomas affair finally yields its poisoned root: visiting Justine to speak of Thomas and the coming baby, Harry understands, mid-conversation and far too late, that Justine has been possessed by Nemesis - the Outsiders' contagion has been wearing the person Thomas loves, and it was the adversary that coerced Thomas into the attempt on Etri, the lever being the woman and child he could not risk. The infected Justine escapes Harry's reach, carrying Thomas's unborn child with her. Mab, closing the ledger on Winter's new alignments, announces her decree: to seal the alliance with the White Court, her Knight will marry Lara Raith - a betrothal neither party requested, effective a year hence. And at the end, the city and the story stop to bury Karrin Murphy - with Harry given reason, by powers kinder than the night was, to believe that her spirit has gone on to a warrior's reward. Grieving, expelled, betrothed, and jailer to a Titan, Harry Dresden remains what he has always been: Chicago's wizard.",
+            "through": {
+              "chapter": 36
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "battle-ground"
+      }
+    },
+    "before-they-are-hanged": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Bloody-Nine",
+              "Ninefingers"
+            ],
+            "description": "The Northman warrior now travels west with Bayaz's company, far from his own country, one uneasy member of a fractious band bound for the edge of the World. Away from the constant fighting of his old life he tries again to be a better man, and finds a wary tenderness with the equally guarded Ferro. But the thing that lives in him when the killing starts - the Bloody-Nine, the reason the North both reveres and fears his name - is never as far below the surface as he wishes, and the hard road they travel offers plenty of chances for it to wake.",
+            "id": "logen-ninefingers",
+            "name": "Logen Ninefingers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Superior Glokta"
+            ],
+            "description": "The crippled Inquisitor is sent far from Adua to the besieged Union city of Dagoska, clinging to the southern edge of the Gurkish Empire, to discover what became of his vanished predecessor and to hold the city against an overwhelming army. Racked with pain and short of everything but enemies, Glokta plays the city's merchants, mercenaries, and native townsfolk against one another, forever aware that the debts he is running up may be called in by patrons more frightening than the Gurkish. His mordant wit and his refusal to simply lie down remain his only real weapons.",
+            "id": "sand-dan-glokta",
+            "name": "Sand dan Glokta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The vain young officer, so pleased with himself at home, is dragged along on Bayaz's grueling journey through a ruined and war-torn land, stripped of the comforts and admiration he took for granted. Cold, hungry, frightened, and often useless, Jezal is forced for the first time to measure himself against real hardship and against companions who care nothing for his rank. Slowly, and painfully, the shallow young man begins to change, and he finds himself drawn to the fierce and unwelcoming Ferro.",
+            "id": "jezal-dan-luthar",
+            "name": "Jezal dan Luthar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Still burning for revenge on the Gurkish who enslaved her, Ferro travels west with Bayaz, told that the weapon they seek may be the tool of the vengeance she craves. Suspicious of every kindness and braced always for betrayal, she is unsettled to find the Northman Logen refusing to give up on her, and more unsettled by the strangeness Bayaz keeps hinting at in her own blood. She does not trust the wizard's purposes, but his road runs toward her enemies, so she follows it.",
+            "id": "ferro-maljinn",
+            "name": "Ferro Maljinn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The First of the Magi"
+            ],
+            "description": "The First of the Magi leads his company across the desolate Old Empire toward the ruined city at the edge of the World, hunting an ancient thing he calls the Seed - a relic of a war among his own kind ages past, which he means to turn against the Gurkish prophet Khalul. Impatient and secretive, Bayaz doles out his history and his reasons a fragment at a time, and the flashes of raw power he shows when pressed make plain that the legends about the Magi are not entirely stories. What he actually intends, and what it will cost the people following him, he keeps to himself.",
+            "id": "bayaz",
+            "name": "Bayaz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel West"
+            ],
+            "description": "Promoted and posted to the North, West serves on the staff of Crown Prince Ladisla's army in the war against King Bethod - a campaign hamstrung by the vanity and incompetence of its royal commander. A capable, conscientious man watching fools throw away lives, West struggles to keep his temper in check as disaster looms, and when the army meets catastrophe he is thrown together with a band of hard Northern scouts and must find his own steel to survive the wilderness.",
+            "id": "collem-west",
+            "name": "Collem West",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Having given up the search for Logen, the Dogman and the survivors of his old crew - Threetrees, Tul Duru, Grim, and Black Dow - throw in with the Union's northern army, offering their skills as scouts against Bethod, whom they hate as much as any Union man does. Wry and watchful as ever, the Dogman finds himself increasingly relied upon as the campaign unravels, and forms an unlikely bond with the Union officer West when the two are cast together in the wreckage.",
+            "id": "the-dogman",
+            "name": "The Dogman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A famous and infamous soldier of fortune, Nicomo Cosca commands a mercenary company hired into the defence of Dagoska. Flamboyant, unreliable, and usually drunk, he treats war as a business and loyalty as a matter of the current price, which makes him both useful and profoundly dangerous to Glokta, who must decide how far a man like this can be trusted when the coin runs short and the walls are breached. Beneath the theatrics is a shrewd and surprisingly resilient operator.",
+            "id": "nicomo-cosca",
+            "name": "Nicomo Cosca",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Prince Ladisla"
+            ],
+            "description": "The Crown Prince of the Union, heir to the throne and nominal commander of the army sent north against Bethod. Ladisla is a preening, foppish young man with grand notions of martial glory and no capacity whatsoever to lead, surrounded by flatterers and contemptuous of the professional soldiers, like West, who actually understand the war. His hunger for a heroic victory, untempered by any sense, steers the northern campaign toward calamity.",
+            "id": "prince-ladisla",
+            "name": "Crown Prince Ladisla",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "before-they-are-hanged"
+      },
+      "recaps": {
+        "ending": "Before They Are Hanged ends with all three campaigns in ruins. Bayaz's company reaches the island at the edge of the World only to find the Seed beyond their reach; the quest that justified everything fails outright, and the magus's ruthless, ancient nature is now plain to those who travelled with him. Jezal returns disfigured and humbled, bound uneasily to Ferro. In the South, Dagoska falls to the Gurkish and Glokta escapes with his life, carrying the knowledge that the banking house Valint and Balk owns the Union's debts - and, through blackmail, owns him. In the North, Prince Ladisla's army has been destroyed; Collem West has survived only by joining the Dogman's crew, but at the cost of beating the prince to death after Ladisla tried to rape the woman Cathil, a killing he must now conceal. Rudd Threetrees is dead and the Dogman leads what remains of the old crew. Every party turns back toward Adua: the quest empty-handed, a city lost, a royal army wiped out, and a prince secretly murdered. The Union is weaker, its enemies bolder, and Bayaz's true purpose - and the price of it - still hidden as the final book opens.",
+        "in_short": "The three roads opened at the end of the first book run to bitter ends. Bayaz leads Logen, Jezal, Ferro and the rest west across the ruined Old Empire to the edge of the World in search of the Seed, enduring pursuit and starvation; Jezal is humbled and scarred and grows closer to Ferro, but the quest fails and the weapon is never recovered, while the darker truth of the magus becomes harder to deny. In the South, Glokta struggles to hold Dagoska against the Gurkish with threats, bribes and Cosca's mercenaries, uncovers treachery within, and learns that a hidden banking house, Valint and Balk, secretly controls the Union and now controls him; Dagoska falls and he barely escapes. In the North, Prince Ladisla's army is annihilated, and West, cast into the wilderness with the Dogman's crew, beats the cowardly prince to death after Ladisla attacks a woman under their protection. Threetrees is killed and the Dogman becomes chief. Battered and empty-handed, all of them turn back toward Adua and a Union sliding toward collapse.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Blade Itself: Bayaz, First of the Magi - an old wizard most people believed to be a myth - forced his way onto the Union's ruling Closed Council and gathered an unlikely company. The Northman Logen Ninefingers, the crippled and bitter Inquisitor Glokta, the vain young Contest champion Jezal dan Luthar, and the vengeful escaped Gurkish slave Ferro Maljinn were each drawn, willing or not, into his orbit, along with the apprentice Malacus Quai and the Navigator Brother Longfoot. Bayaz revealed his purpose: a journey west, past the edge of the known World, to recover the Seed - an ancient weapon out of the Old Time that he insists is the only thing that can stop the Gurkish Empire and its Prophet, Khalul. As the Union braced for war with King Bethod in the North and the threat of the Gurkish in the South, the company set out. Arch Lector Sult sent Glokta south to take command of the isolated fortress-city of Dagoska, whose previous Superior had vanished. Major Collem West marched north with the Union army under the vain, foolish Crown Prince Ladisla, entrusting his sister Ardee to Glokta before he left. Three roads opened - a quest, a siege, and a war - with Bayaz alone knowing where each truly led.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The three roads run apart across the map. Bayaz's company grinds westward into the Old Empire, once the heart of civilization and now a lawless waste of feuding warlords and ruined cities, and the travellers learn quickly that the magus's road offers neither comfort nor safety and that he will explain almost nothing. Logen and Ferro circle each other warily; Jezal, soft and self-pitying, is worn down by hardship he has never known. In the far South, Glokta reaches Dagoska to find the city rotting from within: his predecessor gone without trace, the Gurkish army massing beyond the walls, the ruling merchants led by Magister Eider pursuing their own ends, and the native townsfolk kept as second-class subjects behind the walls. He sets about shoring up the crumbling defences by any ruthless means available. In the North, West serves in Crown Prince Ladisla's army as it advances against Bethod, and watches royal vanity, jealousy and sheer incompetence steer a large force toward disaster against a canny and patient enemy who knows the ground far better than they do.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Each strand tightens toward crisis. In Dagoska, Glokta holds the city together with threats, bribery and the unreliable mercenary company of Nicomo Cosca, all the while hunting the traitor feeding the Gurkish from inside the walls; his search leads toward Magister Eider and the merchants, and he begins to sense a hidden power - a banking house - moving behind the Union's affairs. Out in the Old Empire, Bayaz's party endures pursuit, starvation and the magus's maddening secrecy as it presses toward the coast; Jezal, stripped of his vanity by suffering, slowly becomes a better man and grows closer to Ferro. In the North, Prince Ladisla's army marches straight into catastrophe: it is ambushed and shattered at a river crossing, and West is flung into the wilderness with a handful of survivors, thrown together with the Dogman and the last of Logen's old crew - Threetrees, Tul Duru, Black Dow and Grim - and with a hard-bitten woman, Cathil, rescued from a labour camp. What began as three orderly campaigns has collapsed into three desperate fights simply to stay alive.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Every strand reaches a bitter turn. Bayaz's company at last crosses the Old Empire - passing through the dead city of Aulcus, where they are attacked and Jezal's face is smashed and scarred - and reaches the island at the very edge of the World where the Seed should lie. There the quest fails: the ancient weapon is beyond their grasp, the whole terrible journey seemingly for nothing, and the glimpses of what Bayaz truly is, and what he did in ages past, grow impossible to ignore. Dagoska falls to the Gurkish; Glokta escapes the city's ruin having confirmed that a shadowy banking house, Valint and Balk, secretly holds the Union - and now holds him. In the North, the scattered survivors of Ladisla's army fight their way back through the wilderness; Rudd Threetrees, the old crew's leader, is killed, and the Dogman takes his place. Crown Prince Ladisla, cowardly and cruel to the end, attempts to force himself on Cathil, and West, in a fury, beats him to death - a desperate, irreversible act that will shadow everything after. Bloodied and changed, all three parties turn at last back toward Adua: the quest empty-handed, the South lost, the North in ruins. Nothing Bayaz promised has come to pass, and the Union is weaker and more exposed than when the book began.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "before-they-are-hanged"
+      }
+    },
+    "beware-of-chicken-2-a-xianxia-cultivation-novel": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A defeated bandit leader from the earlier conflict involving Fa Ram. His ambush killed people under Cai Xiulan's command, leaving her burdened by their deaths and by the public account of his defeat.",
+            "id": "sun-ken",
+            "name": "Sun Ken",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Jin Jue"
+            ],
+            "description": "The farmer and head of Fa Ram, newly married to Meiling. Jin is enlarging the farm, sharing its work among a growing household, and teaching Cai Xiulan while continuing to value useful labor over status.",
+            "id": "jin",
+            "name": "Jin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Meimei"
+            ],
+            "description": "Jin's wife, a healer and farmer who shares responsibility for Fa Ram's home, fields, and expanding household. Three weeks into their marriage, she works beside Jin and helps direct the farm's daily routines.",
+            "id": "meiling",
+            "name": "Meiling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivator of the Verdant Blade Sect who has come to Fa Ram to learn Jin's farming methods. She eagerly takes on work in the western field under his direction.",
+            "id": "cai-xiulan",
+            "name": "Cai Xiulan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jin's friend from Hong Yaowu and a dependable hand at Fa Ram. He helps expand the farm and uses chi to reinforce the rice-paddy walls.",
+            "id": "gou-ren",
+            "name": "Gou Ren",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jin's ox and plowing partner. Although cultivation has made Jin capable of doing more of the physical work himself, he continues to give Babe a valued place in the farm's labor.",
+            "id": "babe",
+            "name": "Babe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A chi-conducting plow made from a former demonic blade. Jin names it Sunny while using it with Babe to prepare a root-vegetable field.",
+            "id": "sunny",
+            "name": "Sunny",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Big D"
+            ],
+            "description": "Jin's first disciple and Fa Ram's senior guardian. An awakened rooster entering his second year of awareness, Bi De protects the farm, carries Ri Zu, and treats Jin's instructions as solemn duties.",
+            "id": "bi-de",
+            "name": "Bi De",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Meiling's small medicine student and a disciple of Fa Ram. Ri Zu rides on Bi De's back and already has substantial knowledge of herbs, poisons, and the importance of dosage.",
+            "id": "ri-zu",
+            "name": "Ri Zu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An awakened cat of Fa Ram and a swift fighter who uses chi-enhanced claws. Her challenge to Cai Xiulan begins in hostility, but their contests soon establish them as training partners.",
+            "id": "tigu",
+            "name": "Tigu",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boar disciple of Fa Ram and Pi Pa's partner. He helps the household watch over its pregnant cattle and takes part in the farm's shared work and protection.",
+            "id": "chun-ke",
+            "name": "Chun Ke",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sow disciple of Fa Ram and Chun Ke's partner. She helps guard the farm's livestock and is part of the coordinated animal household supporting Jin's growing farm.",
+            "id": "pi-pa",
+            "name": "Pi Pa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fa Ram's carp disciple. He joins Bi De, Ri Zu, Chun Ke, and Pi Pa when Jin asks the household to search for a queen bee, treating the request as a direct duty.",
+            "id": "wa-shi",
+            "name": "Wa Shi",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured solitary queen bee found by Bi De and Ri Zu. They bring her safely to Fa Ram, where Jin places her in a large hive.",
+            "id": "injured-queen-bee",
+            "name": "Injured queen bee",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A damaged land spirit linked to Jin's chi and the ground of Fa Ram. Cai Xiulan perceives a childlike figure marked by golden cracks, but her forceful approach is rejected before she can understand it.",
+            "id": "fa-ram-earth-spirit",
+            "name": "Fa Ram earth spirit",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man of Hong Yaowu experimenting with ways to capture lasting images. His first attempts fail without the costly recording crystal he believes the technique requires.",
+            "id": "yun-ren",
+            "name": "Yun Ren",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Meiling's younger brother, a child of Hong Yaowu who misses her and is reluctant to continue his medical-history studies. He encounters Yun Ren while the young man is attempting to capture a lasting image.",
+            "id": "meilings-younger-brother",
+            "name": "Meiling's younger brother",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Meiling's father and an elder of Hong Yaowu. He receives Meiling, Jin, Cai Xiulan, and Gou Ren warmly when they arrive in the village after the spring planting.",
+            "id": "hong-xian",
+            "name": "Hong Xian",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A giant black turtle tending a garden in the hidden watery realm reached by Wa Shi. The turtle identifies him as a young dragon and offers to teach him water manipulation.",
+            "id": "unnamed-black-turtle",
+            "name": "Unnamed black turtle",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior disciple of the Cloudy Sword Sect assigned to trace Jin Jue and deliver correspondence. Courteous and discreet, he follows the former disciple's path toward the Azure Hills before being recalled.",
+            "id": "lu-ri",
+            "name": "Lu Ri",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Meiling's close friend in Verdant Hill. Meiling asks to stay in town and support her while she awaits childbirth.",
+            "id": "meihua",
+            "name": "Meihua",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Verdant Hill’s lord magistrate. He authorizes Jin’s proposed road to Hong Yaowu and asks that Bi De address dangerous animals troubling the area.",
+            "id": "lord-magistrate-of-verdant-hill",
+            "name": "Lord magistrate of Verdant Hill",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The magistrate's wife in Verdant Hill. She helps Meiling identify the source of the town's contaminated water and offers practical instruction in negotiation and elite society after Meiling treats her long-standing pain and tremors.",
+            "id": "lady-of-verdant-hill",
+            "name": "Lady of Verdant Hill",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Meihua's husband and the father of her newborn son. He receives confirmation that both mother and child are healthy and begins considering the boy's eventual formal name.",
+            "id": "ting-feng",
+            "name": "Ting Feng",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young defender of Eighth Correct Place who faces the red-eyed wolf leading the siege of his village. He wounds the creature before Bi De arrives, then asks the rooster to teach him.",
+            "id": "zheng-fei",
+            "name": "Zheng Fei",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unnatural red-eyed wolf leading the pack that besieges Eighth Correct Place. It kills villagers and breaches the settlement before Bi De beheads it.",
+            "id": "terror",
+            "name": "Terror",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An awakened queen who survived the destruction of her former swarm and reached Fa Ram near the loss of reason. Jin's care restores her awareness, and ordinary hives accept her authority as she begins rebuilding under the farm's protection.",
+            "id": "bee-queen",
+            "name": "Bee queen",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white rabbit tending the graves of a village destroyed by Sun Ken. She appears as an awakened guardian and confronts Bi De when he enters the ruined settlement.",
+            "id": "white-rabbit",
+            "name": "White rabbit",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An awakened white rabbit who tends the graves of a village destroyed by Sun Ken. She is Miantiao's devoted disciple and has been trained as a fighter for the purpose of killing a demon.",
+            "id": "yin",
+            "name": "Yin",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yin's snake master, a scarred survivor living amid the remains of a ruined village. He is missing an eye, badly disabled, and claims that he and Yin mean to rebuild the settlement.",
+            "id": "miantiao",
+            "name": "Miantiao",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sentient identity of the plow used at Fa Ram. With its third wielder, it learns to cut soil while turning aside most roots, bringing its urge to cut under greater control.",
+            "id": "sonny",
+            "name": "Sonny",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Zang Li"
+            ],
+            "description": "A body-stealing infiltrator who killed Zang Li and now occupies the young master's body. His tournament victory restores his standing in the Shrouded Mountain Sect, allowing him to continue his predation behind a respected identity.",
+            "id": "lu-ban",
+            "name": "Lu Ban",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A giant white fox who guards a hidden tomb, its residence, and the spirit sword Summer's Sky. The guardian spares Yun Ren because he respected the grave and agrees to teach him a way to preserve images.",
+            "id": "white-fox-guardian",
+            "name": "White fox guardian",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name Bi De chooses after returning from his long investigation. He declines Jin's family name and instead identifies himself with Fa Ram, the home whose mysteries and safety continue to guide his work.",
+            "id": "fa-bi-de",
+            "name": "Fa Bi De",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0BRBRM1W6",
+            "type": "community"
+          }
+        ],
+        "work": "beware-of-chicken-2-a-xianxia-cultivation-novel"
+      },
+      "recaps": {
+        "ending": "Fa Ram begins its expanded harvest with Jin and the pregnant Meiling remaining at its center. Bi De has returned with Yin, Miantiao, and a damaged crystal that preserves fragments of an ancient land-empowering formation and its catastrophe. Jin supports a careful investigation, Cai Xiulan plans to seek relevant material in her sect library, and Miantiao accepts useful work and treatment at Fa Ram, although his spinal injuries remain. Tigu is healthy in human form but has found no way to become a cat again. Wa Shi can shift into a dragonlike form, and the rest of the household has gained new infrastructure, responsibilities, and family ties. Cai Xiulan, now in the Profound Realm, departs for the Dueling Peaks tournament with Tigu, Gou Ren, Ri Zu, and Yun Ren. Lu Ri's network has traced Jin Jue to Verdant Hill without confirming Jin's identity, while Lu Ban commands Fangtip Fortress from Zang Li's stolen body and retains a hidden cultivation scroll. The ancient wound in the Azure Hills and the attention gathering around Jin therefore remain unresolved.",
+        "in_short": "Newly married, Jin and Meiling expand Fa Ram while Cai Xiulan struggles with guilt from the battle against Sun Ken. The household's care helps her recover and reach the Profound Realm. Bi De leaves to study scattered shrines, gains Yin and Miantiao as companions, and discovers that the Azure Hills contain a broken five-element formation. Wa Shi returns from hidden training able to take a dragonlike form, while Tigu survives a tribulation and becomes human. Meiling learns she is pregnant, heals a contamination crisis in Verdant Hill, and returns home. Lu Ri's search for Jin Jue reaches the region without exposing Jin, while Lu Ban remains concealed in Zang Li's stolen body. Bi De brings an ancient damaged crystal back to Fa Ram, and Jin agrees to help investigate it. At harvest, Cai Xiulan leads Tigu, Gou Ren, Ri Zu, and Yun Ren away toward the Dueling Peaks tournament, leaving Jin and Meiling with the growing household.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jin Jue left the Cloudy Sword Sect after an inner disciple nearly killed him and became the farmer Jin in the Azure Hills. At Fa Ram he built a home centered on cultivation through land, food, and useful work. Meiling became his closest partner, and friends from Hong Yaowu joined a household that also includes awakened animals. Big D, also called Bi De, serves as Jin's first disciple and senior guardian. Tigu, Ri Zu, Chun Ke, Pi Pa, and Wa Shi have their own abilities and places within the farm. The household also bears scars from Chow Ji's corruption, including Bi De's lasting injuries and Ri Zu's knowledge of the methods used against them. Jin's refuge is therefore peaceful but not isolated from the consequences of earlier violence or his abandoned sect identity.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin and Meiling settle into married life while expanding Fa Ram's fields, livestock, and beehives. Cai Xiulan works beside Gou Ren and the animal disciples, searching for the cultivation lesson behind Jin's farming. Her rivalry with Tigu becomes a productive training partnership, and she senses a damaged earth spirit connected to the farm, although her forceful approach drives it away. Beneath her progress, nightmares from the battle against Sun Ken return. Cai Xiulan blames herself for the people who died under her leadership and struggles with the praise attached to the false public account of her victory. Jin and Meiling recognize her distress without pressing her. When she finally breaks down, Meiling stays with her through the night and helps her speak about the dead rather than carrying them alone. Meanwhile, Jin and Meiling deliver two healthy calves, complete the main spring planting, and organize the household's work. With the rice transplanted and the farm entering a quieter period, Jin, Meiling, Cai Xiulan, and Gou Ren leave for Hong Yaowu.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin's group is welcomed into Hong Yaowu while Pi Pa manages Fa Ram and Ri Zu oversees the calves. Cai Xiulan begins participating in village life and grows closer to Meiling's family. At a spiritually potent clearing, the damaged earth spirit corrects the rigid movement of her sword form, steering her toward a more natural dance. Back at Fa Ram, Tigu's contempt for Ri Zu's medicine leads Ri Zu to demonstrate that she can paralyze Tigu with controlled medicinal chi. Chun Ke persuades Tigu that both disciples have been trying to force respect and friendship. A cautious exchange of instruction and tea begins a truce between them. Cai Xiulan then tells Jin how the celebrated version of Sun Ken's defeat erases the dead and intensifies her guilt. Jin affirms her compassion and asks to be treated as a friend as well as a teacher. In her next nightmare, Cai Xiulan breaks the repeated sequence of defeat, uses the unfamiliar dance in her sword work, and overcomes the embodiment of her self-blame. She accepts that mourning those she led is not a weakness.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wa Shi vanishes into a sealed watery realm, where an ancient black turtle identifies him as a young dragon and begins teaching him control of water. Elsewhere, Lu Ri traces Jin Jue's departure from the Cloudy Sword Sect. Sect leaders discover that Jin was nearly killed amid systematic abuse of outer disciples, punish the responsible inner disciple, and order Lu Ri to continue a discreet search toward the Azure Hills. At Fa Ram, Meiling takes charge of accounts while Jin cultivates unusual plants. Bi De becomes convinced that the scattered solstice sites must be studied directly, and Jin supports his wish to travel. In Verdant Hill, Jin arranges a trial sale of maple syrup, researches regional plants and animals, and gains approval for a road linking the town to Hong Yaowu. The magistrate also asks Bi De to address dangerous animals during his journey. Meiling stays behind to support Meihua through childbirth. After mapping visible formation points and obtaining a broader regional map, Bi De leaves the Shrine of Fire alone. His expedition now combines service to threatened settlements with a search for the purpose of the ancient sites.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Meiling identifies contaminated well water as the cause of illness in Verdant Hill and works with its magistrate and lady to contain the threat. Her medicinal chi clears the contamination, and she also heals the lady's long-standing injury. At Fa Ram, Wa Shi returns from the hidden realm able to shift between carp and dragonlike forms. A flight with him carries Cai Xiulan into the Profound Realm. Meihua safely gives birth to a son, and soon afterward Meiling tells Jin that she is pregnant. Bi De's travels lead him to Eighth Correct Place, where he kills the unnatural wolf called the Terror, aids the damaged village, and gives its defender Zheng Fei basic martial training. Farther on, he finds a village destroyed by Sun Ken and meets Yin, an awakened rabbit, and her crippled snake master Miantiao. Miantiao admits that he trained Yin as a weapon for revenge and planned to abandon her while seeking death. Bi De refuses to kill him and insists that atonement requires living differently. Yin secures Miantiao's promise to live, and both join Bi De's investigation of the regional shrines and dances.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tigu asks Fa Ram's earth spirit for a human form so she can communicate and live among the household without the barriers of her cat body. Warned that the change may kill her, she accepts a lightning tribulation and survives as a human woman. Jin and Meiling affirm that she remains family, and Ri Zu finds her new body healthy rather than corrupted. Tigu cannot return to cat form, but repeated tests reveal no injury and suggest that her own wishes may anchor the transformation. Beyond Fa Ram, Lu Ban wins standing within the Shrouded Mountain Sect while occupying the body of the murdered Zang Li. He is posted north to Fangtip Fortress and intends to exploit the freedom it offers. Jin's own bond with his crops deepens, and Babe reveals that he has long been an awakened ox who freely chooses plowing as his work. During Bi De's expedition, repeated shrine layouts, altered elemental sites, and a vision in the Ash Forest reveal an immense five-element pattern across the Azure Hills. The ancient formation is damaged, its center is empty, and its original purpose remains unknown.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lu Ri organizes the Plum Blossom's Shadow to search for Jin Jue and sends an agent to Verdant Hill. The magistrate blocks the covert inquiry and warns Jin without exposing his identity. Jin considers drawing future investigators away from Fa Ram. At home, he and Gou Ren complete a water-powered mill, while Tigu asks to accompany Cai Xiulan to the Dueling Peaks tournament. Jin tests her judgment through road work and difficult errands in Verdant Hill. She controls her temper and passes. Yun Ren's northern travels lead him through an illusion into a hidden tomb guarded by a giant white fox. Because he respects the grave and seeks a way to preserve images, the guardian teaches him an illusion technique and later recognizes him as a relative through his mother's bloodline. A nearby Shrouded Mountain force fails to find the refuge, while Lu Ban secretly takes a scroll called The Blade of Fire at Fangtip Fortress. Yun Ren leaves with new skill and an invitation for the guardian to meet his family. Jin and Meiling decide to remain home because of her pregnancy. Cai Xiulan, Tigu, Gou Ren, and Ri Zu form the expected tournament party, and Fa Ram adopts a shared emblem as several disciples consider family names.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Lu Ri reaches Fangtip Fortress and forces its Shrouded Mountain young master to confirm Jin's earlier presence in Verdant Hill. At the same time, Bi De, Yin, and Miantiao enter the last marked formation site. After a difficult descent through hostile caves, they find murals of an ancient human-and-beast society and recover a damaged crystal containing fragmented memories. The images show leaders empowering the land, followed by war, corruption, and catastrophe, but do not explain the cause. Bi De returns to Fa Ram with his companions and the crystal. Meiling removes a corruptive remnant from Miantiao, though she cannot repair his old spinal damage, and Jin offers him glassmaking work. Jin agrees to support a patient investigation of the formation, while Cai Xiulan offers to search her sect's library. Bi De chooses the name Fa Bi De to bind himself to his home. As the enlarged household begins harvesting, Cai Xiulan reflects on her recovery and her new place in the Profound Realm. Jin and Meiling remain at Fa Ram, expecting their child. Cai Xiulan accepts responsibility for Tigu, Gou Ren, and Ri Zu, then departs with them and Yun Ren toward the Dueling Peaks tournament.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0BRBRM1W6",
+            "type": "community"
+          }
+        ],
+        "work": "beware-of-chicken-2-a-xianxia-cultivation-novel"
+      }
+    },
+    "beware-of-chicken-3-a-xianxia-cultivation-novel": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jin Jue"
+            ],
+            "description": "The farmer at the center of Fa Ram, known elsewhere as Jin Jue. Married to Meiling, he prepares to take an exceptional rice harvest to Pale Moon Lake City while seeking expert help for a damaged crystal.",
+            "id": "jin",
+            "name": "Jin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Meimei"
+            ],
+            "description": "Jin's wife and a healer who remains at Fa Ram while he travels. She oversees the household, continues medical research for the Hong archives, and helps plan the farm's next practical projects.",
+            "id": "meiling",
+            "name": "Meiling",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jin's cat disciple, traveling with Cai Xiulan and the Fa Ram party toward the Dueling Peaks tournament.",
+            "id": "tigu",
+            "name": "Tigu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Verdant Blade cultivator traveling with members of Jin's household toward the Dueling Peaks tournament.",
+            "id": "cai-xiulan",
+            "name": "Cai Xiulan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit beast and Fa Ram disciple traveling with Tigu and the tournament party through Pale Moon Lake City.",
+            "id": "ri-zu",
+            "name": "Ri Zu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Jin's household who accompanies Cai Xiulan and the Fa Ram party toward the Dueling Peaks tournament.",
+            "id": "gou-ren",
+            "name": "Gou Ren",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An image-crystal maker traveling with the Fa Ram group. In Pale Moon Lake City, he collaborates with a crystal-carver friend on improvements to recording crystals.",
+            "id": "yun-ren",
+            "name": "Yun Ren",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yun Ren's friend and collaborator in Pale Moon Lake City. She develops recording crystals with focusing lenses, appraises the group's damaged crystal, and offers to seek a senior expert's examination.",
+            "id": "crystal-carver",
+            "name": "Crystal carver",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior disciple of the Cloudy Sword Sect who is searching for Jin Jue. Lu Ri has verified a lead in Verdant Hill, but conflicting reports leave him uncertain about where his quarry has gone.",
+            "id": "lu-ri",
+            "name": "Lu Ri",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Big D"
+            ],
+            "description": "Jin's first disciple and a rooster guardian of Fa Ram. Bi De travels with Jin to Pale Moon Lake City, where he hopes to recover the information held in a badly damaged crystal and understand its importance.",
+            "id": "bi-de",
+            "name": "Bi De",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An awakened rabbit and disciple of Fa Ram who travels with Jin to Pale Moon Lake City.",
+            "id": "yin",
+            "name": "Yin",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An awakened snake and disciple of Jin who accompanies him and the damaged crystal to Pale Moon Lake City.",
+            "id": "miantiao",
+            "name": "Miantiao",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Verdant Blade Sectmaster and Cai Xiulan's father. He helps decide that the sect will respect and welcome Jin's household.",
+            "id": "cai-xiulans-father",
+            "name": "Cai Xiulan's father",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A leading young woman from the Misty Lake Sect who meets Gou Ren in the tournament town and regards Cai Xiulan as her rival.",
+            "id": "misty-lake-young-mistress",
+            "name": "Misty Lake Sect young mistress",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Misty Lake Sect young mistress previously encountered by Gou Ren. She proposes exchanging training pointers with him after the tournament and renews her challenge to Cai Xiulan.",
+            "id": "liu-xianghua",
+            "name": "Liu Xianghua",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shrouded Mountain Sect operative sent to scout talent at the Dueling Peaks. Lu Ban arrives with powerful defenses, several subordinates, ambitious plans for the gathering, and a hostile history connected to Jin Jue.",
+            "id": "lu-ban",
+            "name": "Lu Ban",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young master of the Hermetic Iron Sect. He confronts Tigu after her bout with his junior, then recognizes that she used the match to teach rather than humiliate her opponent.",
+            "id": "hermetic-iron-young-master",
+            "name": "Hermetic Iron young master",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent Dueling Peaks competitor with an unpolished fighting style and a trained palm technique. Loud Boy advances by defeating his companion Rags after a hard, closely contested bout.",
+            "id": "loud-boy",
+            "name": "Loud Boy",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent tournament fighter and Loud Boy's companion. Rags competes directly against him at the Dueling Peaks, bringing determination and familiarity to a bout between close associates.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A company representative who arranges Jin's purchases and researches available medical texts and anatomical diagrams. She also handles caravan planning and considers the requirements of a southern search for rare fruit.",
+            "id": "azure-jade-logistics-representative",
+            "name": "Azure Jade Trading Company logistics representative",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "golden child"
+            ],
+            "description": "The damaged land spirit bound to Fa Ram, appearing in Meiling's dreams as a frightened golden child. Its dragon veins are broken, its memories are scattered, and it struggles to help Jin return safely.",
+            "id": "fa-ram-earth-spirit",
+            "name": "Fa Ram earth spirit",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A boar of Fa Ram who helps manage the forest with Pi Pa and Wa Shi, producing a substantial harvest of mushrooms and medicinal fungi.",
+            "id": "chun-ke",
+            "name": "Chun Ke",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Fa Ram's household who tends the forest alongside Chun Ke and Wa Shi. Their work yields plentiful mushrooms and medicinal fungi.",
+            "id": "pi-pa",
+            "name": "Pi Pa",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Fa Ram's household who can take dragon form. He helps Chun Ke and Pi Pa manage the forest and cultivate mushrooms and medicinal fungi.",
+            "id": "wa-shi",
+            "name": "Wa Shi",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jin Jue's adoptive grandfather, who raised him despite their lack of blood relationship. A delayed letter confirms that Gramps is alive, away on an undisclosed duty, and has left Jin a gift that will open at a later cultivation stage.",
+            "id": "gramps",
+            "name": "Gramps",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The other conscious remnant within Jin's shared existence, rather than a separate traveling companion. Joe and Jin Jue confront their intertwined continuity and decide together what life and family they will protect.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liu Xianghua's younger brother, who uses crutches because of a damaged leg and cannot cultivate. He befriends Gou Ren and Yun Ren at the Dueling Peaks.",
+            "id": "liu-bowu",
+            "name": "Liu Bowu",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The artisan and leader of a secluded monkey settlement at Crystal Hill. He speaks through a throat crystal and agrees to transfer an ancient recording in exchange for knowledge about his clan's former master.",
+            "id": "crystal-hill-monkey-clan-leader",
+            "name": "Crystal Hill monkey clan leader",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A conscious blade that helps Yun Ren fight a Shrouded Mountain pursuer. Summer's Sky takes in lightning, sends it back, and chooses him as the eighth person to wield it.",
+            "id": "summers-sky",
+            "name": "Summer's Sky",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mortal worker at the Dueling Peaks whose unusual affinity with the old maintenance system lets him activate its controls and open sealed routes that the elders cannot.",
+            "id": "dueling-peaks-maintenance-worker",
+            "name": "Dueling Peaks maintenance worker",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bi De's disciple and a local village defender. Wearing a rooster mask and carrying a spear, Zheng Fei patrols beside the small dog Shaggy Two and stops thieves who threaten his neighbors' sheep.",
+            "id": "zheng-fei",
+            "name": "Zheng Fei",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0C8ZPJTSY",
+            "type": "community"
+          }
+        ],
+        "work": "beware-of-chicken-3-a-xianxia-cultivation-novel"
+      },
+      "recaps": {
+        "ending": "The Shrouded Mountain assault is settled through reparations, rebuilding, and withdrawal rather than further retaliation. Lu Ban is confirmed dead, though an unidentified infiltrator preserves a trace of his grudge for possible future harm. Cai Xiulan's internal injury is healed, but her cultivation remains reduced and she chooses to rebuild on gentler terms. Tigu accepts both her human and tiger forms, and her bonds with Ri Zu, Loud Boy, Rags, and the Hermetic Iron young master widen Fa Ram's circle. Loud Boy and Rags leave to seek restoration of his cultivation, while Liu Bowu travels to Fa Ram for treatment. Jin refuses a return to the Cloudy Sword Sect but retains Gramps' letter, gift, and favor. He and Meiling await their child and accept that Fa Ram is now known to powerful outsiders. The ancient recording, the earth spirit's damaged past, the politically sensitive Dueling Peaks archive, and a possible southern trading expedition remain open. Liu Xianghua formally asks Gou Ren's parents for permission to court him.",
+        "in_short": "Jin takes Fa Ram's extraordinary harvest to market while Tigu, Cai Xiulan, and their companions attend the Dueling Peaks tournament. The journey uncovers Jin's commercial importance, a message from Gramps, and an ancient crystal record linked to broken formations. Cai Xiulan wins the tournament over Tigu, but Lu Ban and the Shrouded Mountain Sect abduct Tigu and attack her allies. The Azure Hills cultivators unite in resistance, Jin defeats Lu Ban, and he prevents a wider war by demanding compensation and reconstruction. Cai Xiulan survives severe cultivation damage and receives further healing from Fa Ram's earth spirit. The household returns home intact but newly exposed to provincial politics. Jin refuses to rejoin the Cloudy Sword Sect, Tigu forms new friendships, and Liu Xianghua begins openly courting Gou Ren. Lu Ban is dead, yet an unknown woman retains a residue of his grudge, while the ancient formation, the Dueling Peaks archive, and Fa Ram's broader responsibilities remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Jin established Fa Ram as a home shared with Meiling and a growing household of awakened animals and human companions. He is also known as Jin Jue, a name tied to an earlier life in cultivation. Meiling developed her work as a healer, while Jin's disciples learned to cultivate, protect one another, and take on responsibilities of their own. Cai Xiulan survived grave wounds and demonic chi after the conflict with Sun Ken because Jin and Meiling treated her. That recovery deepened her connection to their household. Jin also came into conflict with a powerful Shrouded Mountain figure while protecting Meihua, leaving a dangerous grievance unresolved. By the start of this volume, Fa Ram is prosperous and closely bonded, but its unusual people, products, and strength are becoming harder to keep beyond the notice of sects and merchants.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin's unusually early rice harvest is too valuable for the market in Verdant Hill, so he plans to sell it in Pale Moon Lake City and seek help for a deteriorating crystal. Meiling remains at Fa Ram to continue her medical work. Cai Xiulan, Tigu, Ri Zu, Gou Ren, and Yun Ren reach the city on their way to the Dueling Peaks. A crystal carver cannot restore the damaged object but offers access to a more senior expert. At the tournament town, Cai Xiulan secures her sect's welcome for Jin's household, while Tigu registers as the group's only competitor. Gou Ren meets Liu Xianghua, the Misty Lake young mistress who considers Cai Xiulan a rival. Jin sets out with Bi De, Yin, and Miantiao, carrying three hundred bags of rice and seeking both supplies and information about people looking for him. Meanwhile Lu Ri follows signs of Jin Jue, and Lu Ban arrives to scout tournament talent for the Shrouded Mountain Sect.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dueling Peaks tournament opens with Cai Xiulan publicly confirmed in the Profound Realm and Tigu measured as a powerful Initiate. Both advance through the preliminary round, and Tigu earns respect by using a one-sided match to teach her opponent. She and Ri Zu then explore the Hill of Torment, where Tigu kills a dangerous five-venom spider. Jin reaches Pale Moon Lake City and learns that repairing the ancient crystal could take decades. A possible transfer into another high-quality crystal instead sends him toward an elderly holder near the tournament. His harvest proves equally consequential: the Azure Jade Trading Company identifies the rice as gold-grade, agrees to buy his large supply, and purchases Fa Ram's maple syrup at a premium. Jin preserves his original merchant relationship and uses the new agreement to seek medical learning for Meiling, whose pregnancy he confirms.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin acquires industrial materials, medical references, and plans for equipment through the Azure Jade Trading Company. He also considers a difficult southern search for cacao and coffee. At Fa Ram, Meiling manages the farm while a damaged earth spirit appears in her dreams, revealing broken dragon veins and painful missing memories. Cloudy Sword agents trace Jin's altered city identity to Jin Jue and request a meeting. Though afraid of his former sect, Jin accepts support from Bi De, Yin, and Miantiao rather than facing Lu Ri alone. Lu Ri approaches with courtesy and delivers a sealed letter from Gramps. The message confirms that Jin's adoptive grandfather is alive but away on an undisclosed duty, and that he has left a gift which will open when Jin reaches a later stage. Lu Ri also conveys the Cloudy Sword Sect's apology, an offer of reinstatement, reparations, and protection. Jin must now decide whether any return to the sect has a place in the life he built at Fa Ram.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A recollection shows how the orphaned Jin Jue was rescued and trained by Gramps before being sent to the Cloudy Sword Sect. In the present, Joe and Jin Jue reconcile as the two conscious remnants within Jin's shared existence. They choose Fa Ram and its people over a return to sect life. Jin refuses reinstatement, receives Gramps' sword and sealed scroll, and accepts the sect's sincere amends on his own terms. At the tournament, Tigu survives Liu Xianghua's steam-powered furnace and wins their hard contest. Their respect grows, while Xianghua's showing improves the standing of her mechanically gifted younger brother, Liu Bowu. Tigu later defeats the Hermetic Iron young master, and Cai Xiulan defeats the Grand Ravine finalist, setting a final between the two women. A broad celebration brings rival sect disciples together. Cai Xiulan senses an incomplete five-part harmony in their shared dance, strengthening her hope that relationships across sect boundaries can serve more than competition.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin's group reaches the hidden monkey settlement at Crystal Hill. The clan leader agrees to transfer the damaged recording into a preserved crystal in exchange for knowledge of the clan's former master. Matching spiral designs connect the settlement to Bi De's wider formation inquiry. The group chooses a fast, irreversible procedure powered largely by Jin. At the Dueling Peaks, Cai Xiulan and Tigu prepare for their final while Ri Zu begins treatment that lets Liu Bowu take steps without a crutch. Lu Ban studies Tigu's recorded fights and connects her master to Jin, turning his attention toward the household. The crystal ritual becomes unstable after detecting something alive within the recording and pulls Jin, his disciples, and the monkeys into its memories. Bi De links their separate memory prisons while Yin, Miantiao, and the monkey leader fight corrupt shades. They rescue the full group and encounter the remnant of an ancient guardian. Everyone returns alive, and the transfer succeeds, but Jin is severely depleted and the catastrophe preserved in the crystal remains unexplained.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cai Xiulan defeats Tigu in the tournament final, and the two openly affirm their bond afterward. The celebration ends when a Shrouded Mountain visitor seeks to recruit Cai Xiulan and probes for Jin and Tigu. His followers then abduct Tigu, gravely wound Rags, and destroy Loud Boy's cultivation. Cai Xiulan and Ri Zu begin a desperate rescue, while attacks spread to Gou Ren and Yun Ren. Ri Zu frees Tigu by helping her use the cat form she had feared, and Azure Hills competitors from rival sects unite against the attackers. Yun Ren becomes the eighth wielder of the sentient sword Summer's Sky, and Bi De arrives in time to protect a badly burned Cai Xiulan. Jin enters the fighting, rescues Yun Ren, and confronts the sect force. He accepts a temporary de-escalation to prevent immediate war, then faces Lu Ban, the hostile figure behind the assault. Jin overwhelms Lu Ban's defenses with one earth-empowered strike, ending the attack, although Lu Ban's survival and the political consequences are still uncertain.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ri Zu stabilizes the wounded, but Cai Xiulan's fire injury threatens her ability to cultivate. Evidence from Lu Ban's remains convinces the Shrouded Mountain contingent that its supposed young master was corrupted or replaced. Jin requires medicine, resources, and cooperation while allowing an investigation. Elsewhere, a mortal maintenance worker awakens an ancient Dueling Peaks system and leads the local elders into a hidden archive before a damaged defense mechanism traps them. The elders eventually disable the barrier and secure the archive as politically neutral ground. In town, Jin turns the aftermath toward restitution. Fighters from every faction rebuild homes and streets, while he compensates a blacksmith for his own collateral damage. Tigu confirms she can still take tiger form and begins to reconsider revenge after speaking with Bi De. Cai Xiulan survives with greatly reduced cultivation, accepts Jin as sworn family, and resolves to rebuild on a kinder path. Jin then negotiates a settlement requiring reconstruction and compensation for the mortal dead while protecting those who came to Tigu's aid.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Shrouded Mountain Sect discovers that its original disciple had been dead for about a year and that an ancient body-eater occupied his body. The sect accepts Jin's limited terms, sends substantial reparations, agrees not to enter the Azure Hills without his permission, and withdraws its surviving disciples. Jin distributes resources to the town and the injured, directing future emergencies through the Azure Jade Trading Company. Fa Ram's golden earth spirit reveals that its links helped the household endure the assault. Its healing dance repairs Cai Xiulan's internal damage, though her cultivation remains diminished and the spirit is distressed by recovered memories of ancient exploitation. Jin leaves provincial authority with a simple instruction to protect people and chooses to return home. Tigu exchanges gifts with the Hermetic Iron young master and invites him to visit. She also becomes sworn siblings with Loud Boy and Rags. The two independent fighters leave to seek restoration of Loud Boy's cultivation, aided by the breakthrough pills Cai Xiulan won at the tournament. Jin's party departs with Liu Bowu and a monkey.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jin's party returns to Fa Ram. Meiling has developed a promising method that uses Wa Shi's lightning to strengthen spiritual-herb preparations, and she believes Liu Bowu's damaged knee can be treated. Jin struggles with delayed distress after the violence and unwanted political authority, but work, family, and shared plans help him recover his balance. He accepts that Fa Ram cannot return to anonymity and decides to seek governance advice, study Gramps' scroll, and let the household face future duties together. The disciples likewise recognize that Jin's strength alone cannot protect a home now known to outside powers. A visit to Bi De's disciple reveals Zheng Fei defending his village with a rooster mask, spear, dog, and warning talisman. In the closing developments, Liu Xianghua formally asks Gou Ren's parents for permission to court him. Lu Ban is confirmed dead, but an unidentified woman infiltrates Shrouded Mountain storage and takes a small residue of his grudge for possible revenge. Lu Ri's mission report reaches the Cloudy Sword elders, leaving Jin's refusal to return in place without creating a new conflict.",
+            "through": {
+              "chapter": 69
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0C8ZPJTSY",
+            "type": "community"
+          }
+        ],
+        "work": "beware-of-chicken-3-a-xianxia-cultivation-novel"
+      }
+    }
+  }
+}

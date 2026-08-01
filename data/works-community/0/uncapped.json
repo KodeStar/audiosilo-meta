@@ -1,0 +1,1589 @@
+{
+  "entries": {
+    "uncapped": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Tower of Ritualists member whose artificial mana channels restore his spellcasting at a severe cost. After becoming an Emperor of Mana, Joe must repair damaged abilities while limiting himself to seven further skill gains or tier advances.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Grandmaster Pete"
+            ],
+            "description": "A Grandmaster ritualist who helps conduct Joe's artificial-channel procedure. Pete is preparing to consume a mythic core and attempt his own ascension while Joe recovers from the painful restoration.",
+            "id": "pete",
+            "name": "Pete",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's assistant at the Tower of Ritualists. Jenny inadvertently leaves the ascension room unsecured, allowing interested outsiders to converge on the room after Pete's advancement.",
+            "id": "jenny",
+            "name": "Jenny",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The source of a pending karmic remapping reward that Joe hopes can help repair his damaged skills without threatening the narrow safety margin of his artificial channels.",
+            "id": "queen-cleocatra",
+            "name": "Queen CleoCatra",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's Sage elementalist mentor, who meets him at a concealed entrance beneath a memorial on Vanaheim. Mir knows what lies beyond the entrance but initially withholds the facility's purpose.",
+            "id": "mir",
+            "name": "Mir",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gnome who leads the hidden Inverted Tower and says he founded the shared Scholar and Occultist profession line. Nathaniel offers Joe membership only if he accepts an obligation to protect Vanaheim from its sleeping world boss.",
+            "id": "nathaniel",
+            "name": "Nathaniel",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vanaheim's sleeping world boss, whose continued dormancy depends on the world's cheese-processing system. If awakened, Jormungandr would destroy and convert living worlds, making its containment the Inverted Tower's central responsibility.",
+            "id": "jormungandr",
+            "name": "Jormungandr",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Tower of Ritualists' chef, quartermaster, and seller of ritual diagrams. Cookie trades materials for cheese and helps Joe assemble the components needed for a more flexible combat style after the ambush.",
+            "id": "cookie",
+            "name": "Cookie",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An enormous, near-transparent guardian of the Ambiguous Cascade. The crystalline whale manipulates the waterfall for concealment, movement, and powerful attacks when Joe diverts its water.",
+            "id": "crystalline-whale",
+            "name": "crystalline whale",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elderly, excommunicated scholar who lives and works at the Grand Pathfinder's Hall. Boris wants genuine readmission to the Society of Scholars, not merely a technical device that nullifies his ban.",
+            "id": "boris",
+            "name": "Boris",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's deity and the intended recipient of a shrine at the heart of the Ambiguous Cascade. Claiming the site for Tatum will secure Joe's third place of power for an ongoing objective.",
+            "id": "tatum",
+            "name": "Tatum",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven high priestess who serves Tatum in Novusheim. She heals and stabilizes Joe after he reaches the temple with a severe wound.",
+            "id": "high-priestess-of-tatum",
+            "name": "high priestess of Tatum",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf who has advanced to Grandmaster of Sarcasm. Stu uses a valuable alloy offering to arrange a thorough cleanup in Novusheim, discharging the remaining karmic debt created by Joe's earlier departure.",
+            "id": "grandmaster-stu",
+            "name": "Grandmaster Stu",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A sect co-operator who helps present Joe with a large coffee-production facility on Jotunheim. Nixie has helped establish the operation, but the new facility still needs a dependable supply of beans.",
+            "id": "nixie",
+            "name": "Nixie",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's summoned coffee ally, which reacts with alarm when it sees the newly completed coffee-production facility.",
+            "id": "joes-coffee-elemental",
+            "name": "Joe's coffee elemental",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Grandmaster Fari"
+            ],
+            "description": "The Grandmaster leading an expedition to the Jotun's respawn site. Fari's group intends to secure its Mythic Core, an objective Joe expects will intensify the political conflict on Vanaheim.",
+            "id": "fari",
+            "name": "Fari",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A corrupted vitalist and Skill Sage who introduces herself during the strike force's advance through the Inverted Tower tunnels. Her abilities concern both life and death, placing her among the allied sages confronting the breach.",
+            "id": "sage-nokomis",
+            "name": "Sage Nokomis",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A secluded class sage and skull collector who halts the fighting inside the Inverted Tower. Durax claims no interest in the factional dispute itself and says his present goal only temporarily aligns with that of an unnamed woman.",
+            "id": "durax",
+            "name": "Durax",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An old Society of Scholars contact who has been trying to reach Joe covertly through Boris.",
+            "id": "sir-liz",
+            "name": "Sir Liz",
+            "reveal": {
+              "chapter": 37
+            }
+          },
+          {
+            "aliases": [
+              "Beth",
+              "Sir Liz"
+            ],
+            "description": "The seller Joe knew as Beth, now identified as Liz. She says her shop identity concealed her role in Vanaheim's crisis and that she used long-standing karmic links to influence its residents.",
+            "id": "liz",
+            "name": "Liz",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Joe's friend, returning to Vanaheim after the Council restores bifrost travel. Jackson arrives from Muspelheim and explains that the earlier shutdown left him stranded there.",
+            "id": "jackson",
+            "name": "Jackson",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0H3Q88R83",
+            "type": "community"
+          }
+        ],
+        "work": "uncapped"
+      },
+      "recaps": {
+        "ending": "Joe destroys the protected lever before Jormungandr can awaken, but Liz retaliates by permanently killing Nathaniel. Durax takes Nathaniel's head and departs. Joe then completes the Emperor of Mana Ascendant Foundation, advances to Grandmaster, and loses his level cap. Liz kills him with true damage, yet he respawns at the Tower of Ritualists with his mythic karmic shroud collar destroyed. Mir survives and brings Nathaniel's unread letter. Jenny remains preserved as a cheese sculpture, with her ability to return unresolved. The Council votes to restore bifrost travel, makes Vanaheim the principal hub for Asgard, and accepts a ceasefire between the former factions. Jackson returns from Muspelheim. Liz's status, Durax's larger purpose, Fari's expedition, Boris's reinstatement, the coffee elementals' conflict, and Joe's new vulnerability remain open.",
+        "in_short": "Joe rebuilds his damaged magic after an artificial-channel ritual leaves him only seven safe advancement steps. He joins the Inverted Tower, develops new combat rituals, claims the Ambiguous Cascade, binds a deific ritual orb to his karmic luck, and advances by teaching other ritualists. A factional war on Vanaheim proves to be cover for an assault on the sleeping Jormungandr. Liz has manipulated both sides and joins Durax in forcing Joe toward a lever that would awaken the world boss and redirect the bifrost to hell. Joe destroys the lever with true damage, saving Vanaheim, but Liz permanently kills Nathaniel and then kills Joe. Joe respawns after completing an uncapped Grandmaster foundation. Mir survives, Jenny remains trapped as a cheese sculpture, and the Council restores bifrost travel to Asgard. The factions accept a ceasefire, Jackson returns from Muspelheim, and Nathaniel's final letter remains unread.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Joe's earlier history included Vanaheim, Jotunheim, and the city of Novusheim, with the bifrost providing travel between worlds. Fari, Queen CleoCatra, Grandmaster Snow, and Blood Rites were also established parts of that history.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe awakens after an artificial-channel ritual restores his access to mana but leaves him in severe pain. The repair can withstand only seven new skills or tier advances, while his new tribulation pressures him to accept opportunities. He becomes an Emperor of Mana and begins reconnecting damaged abilities by manually reconstructing their mana paths. Pete uses a mythic core to become Sage Pete, remains politically neutral, and gives the Tower of Ritualists greater protection. Joe's profession leads him to the hidden Inverted Tower, where Nathaniel explains that Vanaheim's cheese economy keeps Jormungandr asleep. Joe becomes a Codex Keeper and swears to help protect that system. Soon afterward, mind-controlled masters attack him. With Mir observing and an allied archer assisting, Joe restores enough of Omnivolt and Planar Shift to survive. The controller remains unidentified, leaving Joe with improved mobility but many damaged high-rank spells and an unknown enemy.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the Tower of Ritualists, Joe pays Sage Pete to investigate the controlled attackers and gains access to Nathaniel's private library refuge. He purchases ritual diagrams from Cookie and develops three complementary combat clusters built around forced movement, heat and friction, and escalating blood loss. Inscription Momentum lets him produce prepared rituals at extraordinary speed, but a week of work leaves him dangerously depleted. Joe travels to Midgard, advances four of his five Ritualist core skills to master rank, and gains a method for embedding rituals in living targets. His excessive characteristics now overwhelm his inhibitor gear. In the Forest of Chlorophyll Chaos, he discovers the Ambiguous Cascade and the requirements for a stronger master-rank stabilizer. The cascade is guarded by a huge crystalline whale that uses water as armor, transport, and weaponry. Joe's first attack tests his new clusters but cannot overcome the guardian, so he withdraws to prepare a more effective counter.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe gathers aspects, recruits his coven to prepare pseudo-master rituals, and returns to the Ambiguous Cascade. He drains the crystal whale's supporting water, identifies a vulnerable notch in its fluke, and shatters it with repeated ritual impacts. After recovering its artifact-ranked core and body as aspects, he reaches the cascade's center and claims a shrine for Tatum, securing his third place of power. His inhibitor then fails completely, making ordinary movement hazardous on Midgard. A hostile Vanaheim expedition accuses him of supporting its rivals and seeking a world-boss core. A master martial artist inflicts a nearly fatal conceptual wound, forcing Joe to flee through the bifrost. He accepts a body art that improves control as his health falls and barely reaches Tatum's temple in Novusheim. The high priestess heals him, but the hostile expedition remains active and Joe still lacks a safe way to suppress his physical power.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Jotunheim, Tatum directs Joe to bind his deity-granted growth weapon and seek a cat. Queen CleoCatra offers several karmic rewards, and Joe chooses to replace his ruined Neutrality Aura. The remapping produces Aurora of Soothing Destruction, an aura that cleans and converts matter, supports allies, and harms combatants. Cleo also binds Joe's Deific Ritual Orb to his karmic luck, creating a future route to true damage. Joe reaches 499 in every characteristic but delays the threshold. Nixie helps unveil a large coffee facility that has no reliable beans. Joe's coffee elemental returns from a planar conflict in which coffee and tea are losing ground to kombucha. He shelters five weakened coffee elementals through permanent summoning arrangements at the facility, then begins a free-coffee campaign intended to build demand and strengthen them. The business has suppliers and workers, but its broader rollout and the elementals' planar war remain unresolved.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe secures a Novusheim license for the coffee venture, then helps close the teleportation network behind Fari's expedition as it pursues the respawned Jotun's Mythic Core. Expecting the core to ignite conflict, he returns to an armed and divided Vanaheim. Sage Pete directs him away from sage-level fighting and toward Grandmaster advancement through teaching. Nathaniel clarifies the Codex Keepers' duty to restrict dangerous knowledge, while Mir gives Joe a map of the Inverted Tower. Joe then teaches Inscription Momentum under stringent oaths and a large master-rank ritual. The lesson spreads the skill, transfers additional knowledge unexpectedly, and earns Joe valuable advancement. An alchemical ritualist uses one of Joe's lore books to become a grandmaster, and Joe spends further time advising other candidates. He ends this phase with stronger teaching, inscription, stamina conversion, and Ritual Circles skills, plus promises of future mastery credit, but the approaching political crisis has not passed.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Boris warns that the Society of Scholars has branded Nathaniel an apostate and joined a plan to destroy him and his work. Sage Pete confirms that the public factional struggle is cover for an assault on the Inverted Tower and Jormungandr. A planet-wide strike hits the Tower of Ritualists, forcing Pete to activate its single-use sage defense and remain behind. Joe guides an allied strike force through a surviving hidden entrance, with Jenny insisting on joining. Inside, machismo-coated penguins attack, traditionalist sages block the route, and Joe discovers that many enemies are controlled through forced karmic bonds. Durax, a skull-collecting class sage, stops the battle and tests Joe against two artifact-ranked penguins. Joe kills one with an internal ritual, but machismo transforms Jenny into an apparently inanimate cheese sculpture. Joe preserves her, unable to determine whether she can respawn. Durax then reveals that his true target is a uniquely rare gnome's skull.",
+            "through": {
+              "chapter": 41
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Durax and a shadow-binding ally seize the Inverted Tower, hold Mir and Nathaniel captive, and demand that Joe operate a protected lever that only a Codex Keeper can use. Joe first overloads a binding enchantment to die and escape, but the coercion continues. Liz reveals herself as the hidden manipulator behind Vanaheim's conflict. She has cultivated karmic links to influential residents so she can wake Jormungandr, redirect the bifrost to hell, and rejoin exiles of her kind. When Joe resists, she threatens Nathaniel's permanent death. Joe draws power from the Eclipsing Aurora Chalice and learns Absolute Conversion, allowing him to create true damage. Instead of completing the lever's operation, he channels that damage through his karmic ritual orb and destroys the mechanism and its safeguards. Jormungandr remains asleep and the immediate catastrophe is prevented. Liz retaliates by permanently killing Nathaniel, after which Durax takes Nathaniel's head and leaves.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Liz attacking him, Joe spends his mastery merits and completes the Emperor of Mana Ascendant Foundation. Ritual Circles reaches Grandmaster rank, his accumulated damage and bindings are purged, and his class level is no longer capped. Liz kills him with a true-damage strike, but Joe respawns at the Tower of Ritualists. His mythic karmic shroud collar is destroyed, while his new foundation leaves him physically restored and publicly recognized as Grandmaster Joe. Mir also survives because permanently killing him could release the elemental storm contained within him. He brings Joe an unread letter from Nathaniel. At the Council of Sages, Joe explains that an outside force manipulated both factions. The Council votes 104 to 98 to end bifrost suppression, establish Vanaheim as the principal route to Asgard, and restore links with Midgard and Muspelheim. Traditionalists and ascensionists accept a ceasefire and begin repairs. Jackson returns from Muspelheim, while Jenny's condition, Liz's status, Durax's purpose, and Nathaniel's final message remain unresolved.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0H3Q88R83",
+            "type": "community"
+          }
+        ],
+        "work": "uncapped"
+      }
+    },
+    "uncrowned": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Underlord sacred artist from the remote, backward region of Sacred Valley, competing in the Uncrowned King tournament under the banner of the Akura clan. He fights with destructive Blackflame madra and refined pure madra, supplements his power with Soulsmith-made constructs and tools, and works from an unconventional Path built around emptiness and hunger rather than a single great clan's inheritance. Dismissed by rivals from the established powers as a backwater nobody, he relies on preparation, adaptability, and the rapid analysis of a spirit-companion in his mind to overcome opponents with far grander lineages.",
+            "id": "lindon",
+            "name": "Lindon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lindon's closest companion and one of the Akura team's fiercest competitors, a sword artist trained as the disciple of the late Sage of the Endless Sword. She fights with blistering sword madra, the Endless Sword technique that fills the air with cutting force, and a blood shadow drawn from her own life. Blunt, combative, and fearless, she treats the tournament as a proving ground and throws herself at the strongest opponents she can find.",
+            "id": "yerin",
+            "name": "Yerin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The patron and teacher of Lindon and Yerin, an eccentric and endlessly cheerful sacred artist of the Arelius family who guides the Akura team. A master of Hollow and Void arts that let him perceive and unravel at a distance, he is far more capable than his easy manner suggests, and he steers his students through the tournament toward ends he rarely explains.",
+            "id": "eithan-arelius",
+            "name": "Eithan Arelius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mercy"
+            ],
+            "description": "A good-natured princess of the powerful Akura clan and a friend who competes alongside Lindon and Yerin. She wields the Book of Eternal Night, a living weapon of shadow madra that takes the form of a bow, and draws on the clan's Path of shadow. Gentler than her family's ruthless reputation, she balances loyalty to the Akura with genuine friendship for her lower-born teammates.",
+            "id": "mercy",
+            "name": "Akura Mercy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A talkative spirit that lives within Lindon's mind, recovered from the ruined pocket world of Ghostwater. Dross thinks and calculates far faster than any person, letting him model opponents, pick apart techniques, and feed Lindon options in the middle of a fight. Curious, dramatic, and fond of attention, he has become one of Lindon's greatest advantages.",
+            "id": "dross",
+            "name": "Dross",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sophara"
+            ],
+            "description": "A golden dragon competing under the patronage of the lion Monarch Reigan Shen. Immensely powerful and openly contemptuous of any sacred artist she considers beneath dragons, she treats the tournament as a stage to prove dragon supremacy and marks Lindon and his companions as targets.",
+            "id": "sophara",
+            "name": "Sopharanatoth",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A competitor from the Sha family of the Ninecloud Court whose power vastly outstrips her apparent youth, having reached a height of advancement almost unheard of for someone her age. Quiet and detached, she is regarded as one of the tournament's clear favorites.",
+            "id": "sha-miara",
+            "name": "Sha Miara",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "aliases": [
+              "Charity"
+            ],
+            "description": "A Herald of the Akura clan who oversees and advises the clan's young competitors during the tournament. Coolly strategic and bound to the will of the Akura Monarch, she manages the team's interests and watches over Lindon and Yerin's unexpected performance.",
+            "id": "akura-charity",
+            "name": "Akura Charity",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "uncrowned"
+      },
+      "recaps": {
+        "ending": "Uncrowned ends mid-tournament, deliberately unresolved. The Uncrowned King contest has passed through its earlier rounds, and Lindon and Yerin have both survived far deeper into the competition than anyone expected of the Akura clan's lower-born entrants, earning the serious attention of the elders and Monarchs watching. Lindon has repeatedly won through ingenuity and unconventional tools rather than the raw inherited power of his rivals, cementing his place among the strongest of his generation. The rivalry between the Akura team and the dragons backed by Reigan Shen has curdled into open hostility, and it is clear that some competitors intend lethal harm rather than a simple contest. The strongest young artists of the continent remain to face one another in the tournament's decisive later stages, which are set to unfold in the next volume, Wintersteel. Lindon, Yerin, Mercy, and Eithan stand poised on the edge of those final rounds, their standing transformed but the outcome and the coming reckoning with the dragons still ahead.",
+        "in_short": "Lindon, Yerin, and their friend Akura Mercy compete in the Uncrowned King tournament, a contest staged by the Ninecloud Court and overseen by the Monarchs to find the strongest young sacred artists of the continent. Entered as representatives of the powerful Akura clan and watched over by the Herald Akura Charity, they are dismissed by rivals from far grander lineages, including golden dragons backed by the lion Monarch Reigan Shen and prodigies such as Sha Miara. Lindon competes through preparation, Soulsmith constructs, and the rapid analysis of his mind-spirit Dross rather than raw inherited power, steadily overturning expectations, while Yerin advances on ferocity and sword skill. The dragon Sopharanatoth and her allies mark Lindon's group as enemies, and the matches grow more dangerous as the field narrows. The book carries the tournament through its earlier rounds without deciding it: Lindon and Yerin have proven they belong among the best of their generation, the hostility of the dragons has hardened into real threat, and the decisive final rounds are left for the next book.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously in the Cradle series: Lindon left the isolated, stunted region of Sacred Valley after a being from beyond the world warned him that Cradle itself was in danger and that he had to grow strong. Traveling outward, he shed the label of Unsouled, took up the destructive Blackflame Path alongside a Path of pure and empty madra, and gathered companions: the sword artist Yerin, disciple of the late Sage of the Endless Sword; the flamboyant, secretly formidable Eithan Arelius, who became his teacher; and Akura Mercy, a princess of the mighty Akura clan. Along the way he claimed powerful tools, climbed from the bottom of the sacred arts to Underlord, gained the mind-spirit Dross from the ruined pocket world of Ghostwater, and drew the attention of the continent's Monarchs. Now Lindon, Yerin, and Mercy have been entered as the Akura clan's representatives in the Uncrowned King tournament, a contest among the strongest young sacred artists of the great powers.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Uncrowned King tournament gathers the most promising young sacred artists from the continent's great factions at the Ninecloud Court, overseen by the Monarchs themselves, to determine the strongest of their generation. Lindon, Yerin, and Mercy arrive as the Akura clan's entrants, watched over by the Herald Akura Charity, and quickly find themselves outmatched on paper by rivals from far grander lineages, including golden dragons backed by the lion Monarch Reigan Shen and prodigies such as Sha Miara of the Ninecloud Court. As the opening rounds begin, Lindon leans on preparation, Soulsmith constructs, and Dross's rapid analysis to compete against opponents who dismiss him as a backwater nobody, while Yerin throws herself at the strongest fighters she can reach. The dragon Sopharanatoth marks Lindon's group as targets, and the contempt of the established powers sets the tournament's rivalries.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the rounds continue, Lindon steadily upends expectations, winning matches through ingenuity, adaptability, and unconventional tools rather than raw inherited power, and forcing the watching elders and Monarchs to take him seriously. Yerin's ferocity and sword skill carry her against formidable opponents. The tournament pits the young artists in individual and team contests, and the tensions between factions - especially the dragons and their allies against the Akura team - sharpen with every round. Eithan continues to guide his students with hidden purpose, and it grows clear that the great powers regard the tournament as far more than sport.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Deeper into the competition, the field narrows to its strongest contenders and the matches grow more dangerous. Lindon and Yerin both continue to advance further than anyone expected of the Akura team's lower-born members, and their success draws increasing scrutiny from the Monarchs overseeing the event. The rivalry with Sopharanatoth and the dragons intensifies, and it becomes plain that some competitors intend to do far worse than simply defeat their opponents. Lindon pushes the limits of his Paths and his tools, while facing generation-defining prodigies forces him and his companions to reckon with how far they still have to climb.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "By the close of the book, the Uncrowned King tournament has advanced through its earlier rounds but is not yet decided, with the strongest young artists of the continent - Lindon and Yerin among the survivors - still to meet in its decisive later stages. Lindon has proven, against the expectations of every great power, that he belongs among the best of his generation, and Yerin has fought her way forward on raw skill and will. The hostility of the dragons and their Monarch patron has hardened into open threat, and the danger of the remaining matches has escalated well past ordinary competition. The tournament's climax, and the reckoning building between the Akura team and their rivals, is left poised to unfold in the next volume.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "uncrowned"
+      }
+    },
+    "underlord": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Wei Shi Lindon"
+            ],
+            "description": "Returned from his ordeal far stronger, and now carrying the mind-spirit Dross, Lindon sets his sights on reaching the Underlord stage, a major threshold that separates true powers from ordinary sacred artists. Driven as ever to close the gap between himself and the great figures around him, he combines his unusual arts, his companions, and his relentless study to push toward a breakthrough that once would have seemed impossible for a former Unsouled. He remains pragmatic, ambitious, and willing to take hard roads to grow.",
+            "id": "lindon",
+            "name": "Lindon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Lindon's sword-artist companion, herself grown considerably stronger and pressing toward the same heights he aims for. Fierce and direct as always, she pursues advancement alongside him, the two continuing to rise together as the powers taking notice of them grow ever greater.",
+            "id": "yerin",
+            "name": "Yerin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The eccentric, immensely powerful head of the Arelius family, and the patron who has guided Lindon and Yerin from the start. Far stronger than his playful manner suggests, he continues to steer his charges toward power while pursuing designs of his own.",
+            "id": "eithan-arelius",
+            "name": "Eithan Arelius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The talkative mind-spirit bound to Lindon during his ordeal in the ancient realm, now a constant companion residing in his spirit. Dross greatly sharpens Lindon's perception, memory, and analysis of techniques, and his curious, humorous presence makes him one of Lindon's most valuable assets as he strives for a major breakthrough.",
+            "id": "dross",
+            "name": "Dross",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The great black tortoise bound to Lindon through the Blackflame arts, steadier and more himself since their shared trials. A powerful ally, he supports Lindon as the stakes rise and far greater powers turn their attention toward him.",
+            "id": "orthos",
+            "name": "Orthos",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sylvan Riverseed"
+            ],
+            "description": "The Sylvan Riverseed Lindon calls Little Blue, a small elemental spirit of pure madra grown more capable since her early days with him. Gentle and childlike, she refines and purifies madra, quietly aiding Lindon's cultivation as he pushes toward the Underlord threshold.",
+            "id": "little-blue",
+            "name": "Little Blue",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The patriarch of the Jai clan, a powerful and vengeful figure who moves against Eithan and the Arelius family as part of a long-running feud. Proud and ruthless, he represents the established powers threatened by the Arelius family's rise and by Eithan in particular. His schemes bring open conflict to Serpent's Grave and force a confrontation with Eithan's true strength.",
+            "id": "jai-daishou",
+            "name": "Jai Daishou",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A cheerful, good-natured young sacred artist of the powerful Akura clan, one of the great families ruled by a Monarch. Friendly and unpretentious despite her exalted background, she befriends Lindon and his companions, and through her their world begins to connect to powers far greater than any they have dealt with before. She wields distinctive arts of shadow and a living weapon, and represents the wider stage that Lindon's growing strength is drawing him toward.",
+            "id": "mercy",
+            "name": "Akura Mercy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "underlord"
+      },
+      "recaps": {
+        "ending": "Underlord ends with Lindon reaching the Underlord stage at last, a threshold once unthinkable for a former Unsouled and one that establishes him as a genuine rising power. The long feud with Jai Daishou and the Jai clan is brought to a head and settled through Eithan's decisive intervention, which finally exposes how formidable Lindon's eccentric patron truly is, along with hints of a far larger past. The companions have grown notably stronger together, with Yerin, Orthos, Dross, and Little Blue all at Lindon's side. Most consequentially, the events of the book and their rising strength have drawn the direct attention of the powerful Akura clan and its Monarch, chiefly through Lindon's new friend Akura Mercy, opening a path toward a stage of great clans and Monarchs far above the Blackflame Empire. The book closes with Lindon an Underlord, his circle poised to step onto that wider stage, and both his ambitions and his dangers scaling up to match his new standing.",
+        "in_short": "Reunited and far stronger after Ghostwater, Lindon sets out to reach the Underlord stage, the threshold that separates true powers from ordinary sacred artists. As he trains for the difficult, personal advancement, aided by the mind-spirit Dross and his unusual arts, old enmities resurface: the Jai clan patriarch Jai Daishou moves against Eithan and the Arelius family in a long-running feud. At the same time, the companions come into contact with the Akura clan, one of the great Monarch-ruled families, chiefly through the cheerful Akura Mercy, opening a path to powers far beyond anything they have known. The Jai conflict forces Eithan to reveal his true, formidable strength and hidden past, and amid the crisis Lindon completes his advancement to Underlord. The book ends with Lindon newly counted among real powers, the Jai feud resolved, and the Akura clan's attention drawing the companions toward a much larger stage.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Lindon rose from a scorned Unsouled in the doomed land of Sacred Valley, set on his path by the powerful Suriel, and traveled the wider world with the sword artist Yerin under the patronage of the eccentric, formidable Eithan Arelius. He learned soulsmithing and the forbidden Path of Black Flame, bonded with the ancient tortoise Orthos, and defeated his rival Jai Long. When the dreadgod called the Bleeding Phoenix attacked the Blackflame Empire, Lindon and Yerin served with the Skysworn to endure it; the Phoenix was driven off but left the region devastated, and Yerin lost her bound blood-madra inheritance. Swept alone into the ancient, collapsing realm of Ghostwater, Lindon grew enormously, gained the mind-spirit Dross, and escaped far stronger than before. Now reunited and rapidly rising, Lindon and his companions set their sights on the Underlord stage, even as far greater powers begin to take notice of them.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back among his companions and far stronger for his ordeal, Lindon commits himself to reaching the Underlord stage, a demanding threshold that marks the boundary between ordinary sacred artists and genuine powers. He trains and prepares for the difficult advancement, drawing on his unusual dual arts, Dross's sharpened mind, and everything he has gathered. At the same time, old enmities resurface as the Jai clan, led by the patriarch Jai Daishou, moves against Eithan and the Arelius family in a long-simmering feud. The rising tension threatens Serpent's Grave and the family that has sheltered Lindon, and it begins to force Eithan's carefully hidden strength into the open, entangling Lindon's personal pursuit of advancement with a larger conflict among established powers.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The world Lindon moves in widens dramatically as he and his companions come into contact with the Akura clan, one of the great families ruled by a Monarch, chiefly through the cheerful young Akura Mercy, who befriends them. The connection hints at powers far beyond anything they have dealt with and at a much larger stage opening ahead. Meanwhile the feud with Jai Daishou and the Jai clan deepens, bringing the threat of open violence to the Arelius family and pressing Eithan toward a direct confrontation. Lindon continues his difficult preparations for the Underlord advancement, aware that the threshold demands not just raw power but a personal breakthrough. The stakes climb on every front as personal ambition, an old blood feud, and the attention of far greater powers converge.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conflict with the Jai clan comes to a head as Jai Daishou's schemes force an open confrontation, and Eithan is drawn into revealing more of his true power and hidden past than he ever has before, proving himself a far greater figure than his foolish manner suggested. Amid the danger to the Arelius family, Lindon reaches the crux of his own struggle to advance, undertaking the difficult and personal trial that the Underlord threshold requires. The two threads reinforce each other, with the crisis pushing Lindon and his companions to spend everything they have. The attention of the Akura clan and the exposure of Eithan's real stature make clear that the companions are being pulled onto a stage of Monarchs and great powers, far above the regional conflicts that once defined their struggles.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "By the book's close, Lindon achieves his goal and advances to the Underlord stage, a milestone almost unthinkable for the former Unsouled and one that firmly establishes him as a rising power. The feud with Jai Daishou and the Jai clan is brought to a head and resolved through Eithan's decisive intervention, which lays bare just how formidable Lindon's patron truly is. Most significantly, the companions' growth and the events surrounding them have drawn the direct attention of the Akura clan and its Monarch, opening a path toward a far larger arena than the Blackflame Empire. Reunited, greatly strengthened, and newly counted among real powers, Lindon and his companions stand at the threshold of that wider stage. The book ends with Lindon an Underlord at last, his circle bound for the world of great clans and Monarchs, and the scale of his ambitions and his dangers rising to match his new strength.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "underlord"
+      }
+    },
+    "unintended-cultivator-volume-2": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An independent wandering cultivator and disciple of Feng Ming. When two Stormy Ocean Sect cultivators interrupt a moment of insight and try to force a duel, Sen exposes their plan, overwhelms them with killing intent, and spares them.",
+            "id": "sen",
+            "name": "Sen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Feng",
+              "Master Feng"
+            ],
+            "description": "Sen's formidable master and a distant source of guidance and protection. Feng Ming trained Sen before the present journey and remains part of the mountain family whose teaching shapes Sen's decisions as an unaffiliated cultivator.",
+            "id": "feng-ming",
+            "name": "Feng Ming",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kho",
+              "Uncle Kho"
+            ],
+            "description": "Sen's spear teacher and one of the senior cultivators in his mountain family. Kho Jaw-Long belongs to the trusted circle that prepared Sen for the dangers of wandering beyond Orchard's Reach, and his instruction remains central to Sen's ability to defend himself.",
+            "id": "kho-jaw-long",
+            "name": "Kho Jaw-Long",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Auntie Caihong"
+            ],
+            "description": "A trusted elder and healer in Sen's mountain family. Caihong is part of the small circle of powerful cultivators who raised and trained him before he began traveling on his own, giving him a dependable source of care and counsel beyond the wider cultivation world.",
+            "id": "caihong",
+            "name": "Caihong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Lu",
+              "Sen's grandmother"
+            ],
+            "description": "Sen's guardian and the owner of Heavenly Wares. Grandmother Lu is both family and a commercial anchor for Sen, connecting his wandering life to the home and support network he left behind. Her business gives him a practical link to that established life.",
+            "id": "grandmother-lu",
+            "name": "Grandmother Lu",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ghost Panther allied with Sen and part of his established circle before this journey. Falling Leaf is a spirit-beast companion whose bond with him reaches beyond the ordinary hostility between humans and spirit beasts.",
+            "id": "falling-leaf",
+            "name": "Falling Leaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Stormy Ocean Sect cultivator who interrupts Sen at the ocean and attempts to compel him into a duel. She comes to recognize that the apparent wanderer may be far more dangerous than expected, and Sen incapacitates her without taking her life.",
+            "id": "stormy-ocean-sect-challenger",
+            "name": "Stormy Ocean Sect challenger",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The second Stormy Ocean Sect cultivator concealed near the proposed duel. Her purpose is to intervene lethally if her companion loses, but Sen detects her, subdues both women with killing intent, and allows them to leave alive.",
+            "id": "hidden-stormy-ocean-sect-cultivator",
+            "name": "Hidden Stormy Ocean Sect cultivator",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A foundation-formation enforcer who approaches Sen at the Sunset Inn under the guise of conversation. He persists after Sen dismisses him, prompting Sen to prepare to leave rather than discuss terms.",
+            "id": "pursuing-stormy-ocean-sect-cultivator",
+            "name": "Pursuing Stormy Ocean Sect cultivator",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A negligent young merchant abandoned beside a broken wagon by his uncle. He has no camping gear and has neglected the ox, leaving him poorly equipped to survive alone. Sen decides to repair the wheel and help him reach safety.",
+            "id": "abandoned-wagon-driver",
+            "name": "Abandoned wagon driver",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young woman at Luo Farm, whose neglected fields still hold useful medicinal plants. She confronts Sen for harvesting from her family's land, and he offers payment for what he took.",
+            "id": "luo-farm-daughter",
+            "name": "Luo Farm daughter",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The seriously ill mother at Luo Farm. Her household cannot afford medical care, so Sen offers to examine her and provide what help he can with his limited alchemical training.",
+            "id": "luo-farm-mother",
+            "name": "Luo Farm mother",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a Soaring Skies group transporting captured criminals. She offers to arrange Sen's bounty payment in Emperor's Bay, respects his refusal to identify himself, and does not try to force him into the sect.",
+            "id": "soaring-skies-female-leader",
+            "name": "Soaring Skies female leader",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ascended Ghost Panther with a partly human form who speaks for the spirit beasts surrounding Sen in an apparently empty town. Boulder's Shadow says a greater force compelled the ambush and promises Sen freedom if he can cross the wall.",
+            "id": "boulders-shadow",
+            "name": "Boulder's Shadow",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A core-formation cultivator assigned by Feng Ming's organization to observe Sen without revealing herself. She reconstructs his route, questions the Soaring Skies group at the ruined town, and spreads the Judgment's Gale reputation as a form of covert protection.",
+            "id": "fengs-core-formation-watcher",
+            "name": "Feng's core-formation watcher",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The familiar name Sen gives while staying at the Silver Crane. He reveals to an attendant that the establishment's specially welcomed guest and the wandering cultivator Sen are the same person, sharing a family name while still withholding the wider history of his training.",
+            "id": "lu-sen",
+            "name": "Lu Sen",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A qi-condensation cultivator employed at the Silver Crane. Sen offers limited guidance during a medicinal bath while explaining that he does not understand his unusual cultivation-concealment method well enough to teach it.",
+            "id": "silver-crane-companion",
+            "name": "Silver Crane companion",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Soaring Skies disciple sent with a force against the Silver Crane. Sen spares her from the first assault so she can deliver his warning that further attacks on the establishment and its residents will receive no mercy.",
+            "id": "soaring-skies-spearwoman",
+            "name": "Soaring Skies spearwoman",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A core-formation Soaring Skies attacker whose cultivation carries signs of prohibited corruption. After Sen calls attention to it, the elder tries to kill the sect spearwoman who witnessed the accusation, forcing Sen into a severe fight.",
+            "id": "corrupt-soaring-skies-elder",
+            "name": "Corrupt Soaring Skies elder",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The public identity attached to Sen when Feng's agent names him before Soaring Skies. The title connects the victorious defender of the Silver Crane to Feng Ming, known as Fate's Razor, and turns Sen's private training ties into open knowledge.",
+            "id": "judgments-gale",
+            "name": "Judgment's Gale",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A peak core-formation elder who arrives after the Silver Crane fighting to investigate Sen's captive. The elder verifies the corruption, listens to the surviving spearwoman, recognizes the debt created by Sen's discovery, and negotiates a truce protecting the establishment.",
+            "id": "soaring-skies-investigating-elder",
+            "name": "Soaring Skies investigating elder",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Feng Ming"
+            ],
+            "description": "The epithet associated with Feng Ming in warnings exchanged by the Stormy Ocean Sect. Its elders fear that Sen may be connected to him and treat that possibility as a reason to seek peace.",
+            "id": "fates-razor",
+            "name": "Fate's Razor",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-2"
+      },
+      "recaps": {
+        "ending": "After finding a notebook that identifies a wider network of demonic cultivators, Sen gives the original evidence and tainted materials to the investigating Soaring Skies elder. Feng's watcher sends a copy to Feng Ming and remains close because retaliation is expected. Sen settles his investments, sets aside personal effects for return, and leaves Emperor's Bay by ship under a commoner disguise. His Silver Crane companion chooses to accompany him after receiving manuals, weapons, and a storage ring, while the watcher organizes decoys and directs the escape. Their vessel is traveling generally toward the southern coast, but they have no fixed destination and may leave at an intermediate port. Back with Feng Ming, Falling Leaf learns of the danger and ignites her core to assume a human-passing form, apparently sacrificing her former panther existence so she can seek Sen. Her recovery and reunion with him remain unresolved. The demonic network, the source of the spirit-beast compulsion, Sen's desert vision, and the wagon driver's debt all remain open.",
+        "in_short": "After conflict with the Stormy Ocean Sect drives him from Tide's Rest, Sen searches for a purpose as a wandering cultivator. He rescues a stranded merchant, heals a dying woman at Luo Farm, and secures her household before resuming his journey. A spirit-beast ambush nearly kills him, and his growing reputation follows him to Emperor's Bay. There he befriends a Silver Crane cultivator, advances to late foundation formation, and defends the establishment from repeated Soaring Skies attacks. He exposes and captures a corrupt elder, forcing a truce and becoming publicly known as Feng Ming's disciple, Judgment's Gale. Evidence in the captive's possessions reveals a demonic-cultivator network. Sen entrusts the evidence to Soaring Skies, settles his affairs, and escapes by sea with his Silver Crane companion and Feng's watcher. Falling Leaf then risks an irreversible human transformation to pursue him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Sen was raised and trained near Orchard's Reach by an unusual mountain family of powerful cultivators. Feng Ming became his master, Kho Jaw-Long taught him the spear, Caihong served as a trusted elder and healer, and Grandmother Lu provided both family ties and the commercial support of Heavenly Wares. Falling Leaf, a Ghost Panther, also became his companion. Their instruction gave Sen broad cultivation skills, practical alchemy, and experience with several forms of qi. It also left him with a small but dependable circle of people capable of understanding the dangers surrounding his path. Sen nevertheless chose to enter the wider world as an independent wandering cultivator rather than remain sheltered by their power. He begins this volume away from his teachers and guardians, carrying their training and values while testing his own judgment. Although he can draw on formidable techniques and practical knowledge, he has not yet decided what purpose should guide his cultivation or what place he should claim in the world beyond his former home.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen's attempt to find insight at the ocean is ruined when two Stormy Ocean Sect cultivators try to force him into a duel. He exposes their plan, overwhelms both women with killing intent, and spares them. After returning to Tide's Rest, another sect cultivator follows him from an inn and attacks through a populated street. Sen answers with a new lightning and killing-intent sword technique, Heaven's Rebuke, killing the pursuer before fleeing south under concealment. On the road he finds a young merchant abandoned with a broken wagon. Sen repairs it, makes the driver confront his neglect of both work and ox, and protects them from bandits. He refuses to kill opponents who no longer pose a threat. Once the driver is safely reunited with his family, Sen declares that the young man owes him a future debt. An unexplained inner pull then draws Sen west toward neglected farmland rather than onward along his planned route.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The inner pull leads Sen to Luo Farm, where a young woman is caring for her gravely ill mother without money for treatment. Sen stays to help despite his limited confidence as an alchemist. He controls the mother's pain, manages a dangerous fever, and discovers that a bone splinter lodged in her leg has sustained the infection. Removing it allows her recovery. As villagers begin seeking his medical help, Sen uses their payments and barter to supply livestock, seed, repairs, food, and labor to the farm. He also protects the daughter from predatory men, though she later persuades him to spare the father of an assailant who attacks in revenge. The experience teaches Sen that a long-lived wanderer cannot safely settle into a mortal household, but can still form limited bonds and return to help. He expands the home, strengthens the farm's prospects, gives the women farewell gifts, and leaves as a brother-like ally. Meanwhile, Stormy Ocean Sect investigators conclude that their own disciples caused the earlier conflict and begin seeking Sen to offer peace rather than revenge.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Traveling toward Emperor's Bay, Sen helps a Soaring Skies group capture wanted criminals but refuses to enter the sect or reveal his identity. Repeated chance meetings lead to limited cooperation, followed by another separation. Sen then enters a silent walled town and discovers that its emptiness conceals a spirit-beast trap. Boulder's Shadow, an ascended Ghost Panther, says a greater power compelled the attack and promises Sen freedom if he crosses the wall. Wounded and nearly drained of qi, Sen escapes with an uncontrolled Heaven's Rebuke that destroys part of the town and kills many beasts. Boulder's Shadow honors the bargain and retreats after learning that Feng Ming and Kho trained him. When the Soaring Skies travelers catch up, one fighter tries to steal Sen's kills. Sen defeats him and, applying the sect's own penalty for theft, severs his arm while preserving his life. Troubled by both that punishment and the destructive reach of his technique, Sen adopts a more deliberate approach: avoid needless conflict, de-escalate where possible, but remain capable of protection and healing as he continues toward Emperor's Bay.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Feng Ming has secretly assigned a core-formation watcher to track Sen, assist only when necessary, and build a protective reputation around the name Judgment's Gale. Unaware of this, Sen reaches Emperor's Bay and receives special hospitality at the Silver Crane, where Feng is patriarch. He befriends a qi-condensation cultivator employed there, identifies himself to her as Lu Sen, and helps her advance. At the ocean, Sen finally regains the insight that was interrupted near Tide's Rest and reaches late foundation formation. Their return is blocked by Soaring Skies members who demand his compliance and insult his companion. Sen injures one and prepares the Silver Crane for retaliation, closing it, evacuating those able to leave, and raising a barrier. A first attacking group threatens the people inside. Sen kills five attackers but spares a spearwoman to deliver a warning. The establishment remains fortified, and Sen expects the sect to answer the defeat with a stronger force.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Soaring Skies sends more cultivators against the Silver Crane. Sen kills the attackers, while the previously spared spearwoman refuses to fight because she owes him her life. A core-formation elder then arrives bearing signs of prohibited cultivation. When Sen exposes the corruption, the elder tries to murder the spearwoman as a witness. Sen defeats and captures him despite severe injuries. A senior investigator verifies the corruption and grants protection to the Silver Crane, ending the siege. Feng's watcher publicly identifies Sen as Feng Ming's disciple and as Judgment's Gale, turning his hidden connections into a deterrent but also attracting political attention. Sen accepts the watcher and the indirect safety that Feng's reputation provides. He begins using recovered wealth to invest in alchemy shops. Stormy Ocean's elder finally meets him to settle their dispute. Sen asks for reform in the sect's treatment of wandering cultivators and cultivation manuals for his Silver Crane companion rather than punishment or riches. The elder accepts those terms, closing the grievance.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen completes selected meetings with Emperor's Bay factions while refusing recruitment and avoiding mortal politics. He gives his Silver Crane companion the manuals secured for her and negotiates guarded settlements with Soaring Skies. While sorting storage rings taken during the siege, he discovers corrupted materials and a notebook naming members of a wider demonic-cultivator network. Feng's watcher confirms the danger and sends copied information to Feng Ming. Sen hands the original notebook and tainted resources to the investigating Soaring Skies elder, who warns that the network will hunt him. Because his companion could be used against him even if she remains behind, Sen tells her the truth and lets her choose. She elects to flee with him. After arranging his investments and other affairs, Sen joins her and Feng's watcher in a layered deception involving false bookings, blue-robed decoys, and commoner disguises. The three board an inconspicuous private ship and leave Emperor's Bay, with the watcher now providing close protection rather than distant observation.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At sea, Sen cares for his seasick Silver Crane companion while she studies her new manuals. He adapts his cultivation to the ship and discovers abundant earth qi far beneath the water, while his companion displays an easy affinity for water qi. Feng's watcher directs their evasion and explains that the vessel is traveling generally toward the southern coast, although they may disembark at any intermediate port. Their destination remains unsettled, pursuit is still possible, and a storm is approaching. Elsewhere, Feng Ming tells Falling Leaf that Sen exposed a demonic-cultivator network and is now likely to be hunted. Falling Leaf had previously avoided taking a human form because the change could permanently cost her panther body and senses. Determined to reach Sen among humans, she ignites her core and forces the transformation anyway. She achieves a human-passing form and collapses after insisting that Feng take her to Sen. The story ends with Sen's group still at sea, the demonic network active, and Falling Leaf's recovery and reunion attempt unresolved.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-2"
+      }
+    },
+    "unintended-cultivator-volume-3": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Feng Ming's independent disciple travels by sea with an assigned watcher and a younger cultivator. When a qi-shaped storm threatens their ship, Sen shields the entire vessel at grave cost to himself.",
+            "id": "sen",
+            "name": "Sen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Feng"
+            ],
+            "description": "This formidable nascent-soul cultivator is Sen's master. Although absent from Sen's immediate traveling party, Feng Ming's influence and protective network shape the dangers surrounding his disciple.",
+            "id": "feng-ming",
+            "name": "Feng Ming",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kho"
+            ],
+            "description": "One of Sen's powerful teachers, Kho Jaw-Long trained him in spear combat and stands among the nascent-soul cultivators whose protection makes threatening Sen a dangerous proposition.",
+            "id": "kho-jaw-long",
+            "name": "Kho Jaw-Long",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sen's alchemy teacher is a powerful nascent-soul cultivator and part of the mountain family that supports him. Her expertise underlies much of his practical knowledge of medicines and elixirs.",
+            "id": "caihong",
+            "name": "Caihong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ghost Panther closely attached to Sen, Falling Leaf is a spirit-beast companion whose loyalty places her among the people he values most.",
+            "id": "falling-leaf",
+            "name": "Falling Leaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert core-formation protector assigned by Feng, she accompanies Sen and a younger cultivator during their flight by sea. Her relationship with Sen is tense, but she takes her duty to protect him seriously.",
+            "id": "fengs-core-formation-watcher",
+            "name": "Feng's core-formation watcher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "This younger qi-condensation cultivator travels under Sen's protection while the group escapes pursuit. She and Feng's watcher are openly hostile toward each other, leaving Sen to manage friction within the party.",
+            "id": "sens-younger-qi-condensation-companion",
+            "name": "Sen's younger qi-condensation companion",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient, horse-sized divine turtle approaches Sen while he prepares a healing elixir on a beach. The seemingly benevolent spirit beast supplies rare ingredients and guides him toward an opportunity in body cultivation.",
+            "id": "ancient-divine-turtle",
+            "name": "Ancient divine turtle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Judgment's Gale is an epithet associated with Sen, used by his younger companion while teasing him during a brief hidden rest on their overland flight.",
+            "id": "judgments-gale",
+            "name": "Judgment's Gale",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A demonic core-formation cultivator leads the force attacking Sen's concealed camp. He confirms that the assault was directed specifically at Sen.",
+            "id": "demonic-ambush-leader",
+            "name": "Demonic ambush leader",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An overwhelmingly powerful elderly cultivator blocks Sen's group from retreating and forces all three travelers toward the Temple of Eternity's Edge. He defeats their resistance with ease and warns that few who enter ever leave.",
+            "id": "elderly-temple-captor",
+            "name": "Elderly temple captor",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The temple's elderly leader imprisoned Sen and his companions while trying to recruit them. He releases Sen and restores his possessions after learning which powerful cultivators stand behind him.",
+            "id": "temple-of-eternitys-edge-leader",
+            "name": "Temple of Eternity's Edge leader",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of Feng Ming's local network in Lin Wen's Redoubt maintains the covert contact point where Sen and his watcher try to report their survival.",
+            "id": "lin-wens-redoubt-network-contact",
+            "name": "Lin Wen's Redoubt network contact",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A local merchant in Lin Wen's Redoubt arranges an ambush for Sen and his watcher after their arrival is disclosed.",
+            "id": "lin-wens-redoubt-merchant",
+            "name": "Lin Wen's Redoubt merchant",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The estranged brother of Sen's fire-qi companion belongs to the fire cultivators fighting in Inferno's Vale. His presence in the conflict motivates her request that Sen enter the valley and help locate him.",
+            "id": "fire-qi-companions-brother",
+            "name": "Fire-qi companion's brother",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A disciplined core-formation swordswoman fighting on the water side of the Inferno's Vale conflict, she formally challenges Sen as he tries to reach the fire compound. Sen defeats her in a demanding duel, then gives her medicine for her wounds.",
+            "id": "water-side-swordswoman",
+            "name": "Water-side swordswoman",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A white-haired healer is impressed by Sen's treatment of the battlefield wounded and seeks to study alchemy with him.",
+            "id": "white-haired-healer",
+            "name": "White-haired healer",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young water-sect disciple with severe steam burns becomes Sen's patient after the battle. She has survived without infection, and he prepares an elixir and salve intended to reduce years of scar recovery to months without risking her cultivation.",
+            "id": "water-sect-burn-patient",
+            "name": "Water-sect burn patient",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the Order of the Celestial Flame summons Sen after observing him teach the Order's young sword students. She recognizes him as Judgment's Gale and requests a private audience.",
+            "id": "order-of-the-celestial-flame-matriarch",
+            "name": "Order of the Celestial Flame matriarch",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Order matriarch's white-haired daughter is the healer who sought Sen's instruction after the battlefield. Her connection to the Order places her earlier interest in his alchemy within the fire leader's household.",
+            "id": "order-matriarchs-daughter",
+            "name": "Order matriarch's daughter",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Falling Leaf reacts strongly when Sen reports meeting someone known as Boulder's Shadow, showing unexplained prior knowledge of that identity.",
+            "id": "boulders-shadow",
+            "name": "Boulder's Shadow",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A reluctant cultivator sent by the Order matriarch joins Sen in exchange for Sen receiving an exceptionally powerful spear. Sen accepts him only after making clear that he must contribute to the dangerous journey ahead.",
+            "id": "new-travelling-companion",
+            "name": "New travelling companion",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A careful prince of the Zhang family has built wealth and influence with help from a household diviner. After learning that Judgment's Gale will enter his region, he considers whether to seek a cautious alliance.",
+            "id": "zhang-family-prince",
+            "name": "Zhang-family prince",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient cultivator who advises a Zhang-family prince, this diviner has repeatedly aided his patron with limited predictions. He foresees Judgment's Gale as a fate-changing opportunity that could also bring ruin.",
+            "id": "nobles-household-diviner",
+            "name": "Noble's household diviner",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-3"
+      },
+      "recaps": {
+        "ending": "Sen leaves the Order of the Celestial Flame for the capital, where he hopes to find the manual needed to continue the five-fold body transformation without dying. Falling Leaf accompanies him in her apparently permanent human form, along with Feng's watcher and a reluctant cultivator assigned by the Order matriarch. Sen still employs the watcher because she is a familiar risk, but their friendship remains broken after her manipulation in Inferno's Vale. Feng Ming, Kho Jaw-Long, and Caihong remain part of his support network, while Caihong accepts responsibility for rescuing the younger companion from the Temple of Eternity's Edge. Sen's heavenly-shadow core and altered Heaven's Rebuke remain dangerous mysteries. The Ghost Panther question is also unresolved, with Falling Leaf hoping to find Boulder's Shadow or others of her kind. Before Sen arrives, a household diviner warns a Zhang-family prince that Judgment's Gale could transform his fortunes or destroy them, prompting the prince to consider an alliance.",
+        "in_short": "Fleeing demonic cultivators, Sen survives a qi-shaped storm, undergoes the five-fold body transformation, and is forced into core formation with a strange heavenly-shadow core. His party is captured at the Temple of Eternity's Edge, where he devises a new cultivation method and escapes with Feng's watcher, while his younger companion remains behind. At Inferno's Vale, Sen ends a sect war through heavenly oaths and treats wounded cultivators from both sides, but learns that his watcher manipulated him into the conflict to reach her brother. Feng Ming, Kho Jaw-Long, Caihong, and a permanently human-shaped Falling Leaf reunite with him. Needing a manual before his body cultivation advances again, Sen departs for the capital with Falling Leaf, the distrusted watcher, and a new reluctant companion. A diviner has already warned a Zhang-family prince that Judgment's Gale is coming.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Sen became the independent disciple of Feng Ming and also trained under Kho Jaw-Long and Caihong. These three nascent-soul cultivators form a powerful mountain family around him, teaching him cultivation, spear combat, and alchemy. Falling Leaf, a Ghost Panther, became one of his closest companions. Sen's actions also brought him into conflict with demonic cultivators, leaving him and his companions under continuing threat as this volume begins.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: While fleeing by ship, Sen detects foreign qi driving a destructive storm toward the vessel. He protects the entire ship inside a hardened shell of water, but the effort severely injures him. During his recovery, he discovers an unexplained ribbon of qi circling his dantian. On a nearby beach, an ancient divine turtle adds rare ingredients to Sen's healing elixir. The resulting transformation rebuilds his body and completes a five-fold body transformation. The advancement immediately draws heavenly lightning. Sen survives his first tribulation by combining earth defenses, his spear, and liquid qi, though he is left burned and exhausted. The turtle asks him to return after reaching core formation, while the exact stage and consequences of his new body cultivation remain unclear.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sen recovers from his body transformation and begins training his younger qi-condensation companion in combat. The party leaves the repaired ship at Tide's Rest and travels overland under concealment. When Feng's watcher returns to the city to report and does not come back by sunset, Sen follows her instructions and flees with his student. He slows their pace for her, hides their trail, and builds concealed camps while refusing an unsupported rescue attempt. A powerful spiritual sense later sweeps the region without penetrating Sen's defenses. During a brief hidden rest, Sen examines his own anger, impulsiveness, and dependence on others. He resolves to exercise greater discipline and accepts that killing may sometimes be necessary to protect himself or another person. His younger companion also confirms that Judgment's Gale is an epithet associated with him.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Feng's watcher survives the city ambush, kills the cultivators pursuing her, and tracks Sen's route while eliminating additional searchers. She rejoins Sen and his younger companion outside Heaven's Virtue, and the three agree to share information relevant to their safety. A pull on Sen's soul leads them west, even as the strange ribbon in his dantian makes him postpone core formation. Their concealed camp is then attacked by demonic cultivators sent specifically for Sen. Formations and killing intent let Sen turn the ambush, and the watcher invokes his ties to Feng Ming, Kho Jaw-Long, and Caihong. When Sen releases Heaven's Rebuke, the anomalous qi alters the technique, destroys the enemy leader's core, and kills him. Sen realizes that such a power would make him a target for core cultivators everywhere, so both companions swear binding heavenly oaths to keep it secret.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Elsewhere, Falling Leaf learns to live in a human body so she can seek Sen, while Feng Ming and Kho Jaw-Long attack demonic cultivators connected to Sen's intelligence. Sen's group abandons the road for the wilds after deciding that repeated ambushes are the greater danger. Sen has enough liquid qi to attempt core formation but wants to delay it until the party can prepare. A massive influx of heavenly qi makes that impossible. He shares a safe portion with his companions and tries to contain the rest, but the energy forces his breakthrough. Heavenly qi and shadow qi merge into a liquid gray substance that hardens his new core. Sen names this energy heavenly shadow. He emerges as a core-formation cultivator, but his dantian is nearly empty and his former cultivation method can no longer replenish it effectively.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sen wakes after several days of core formation to find his companions trapped in a battle involving spirit beasts and demonic cultivators. With help from protective spirit oxen, the party defeats the immediate enemies and withdraws. Sen begins testing new cultivation manuals because his old method no longer suits his core. Continued travel brings attacks, infection, and the attention of a nascent soul-level dragon, though Sen suspects an unseen influence may also be discouraging some spirit beasts. A persistent inner pull leads the group to a buried road and southward into the deep wilds. When they finally decide the destination is too dangerous and try to turn back, an elderly cultivator appears. He overwhelms all three travelers and forces them to the Temple of Eternity's Edge, warning that nearly everyone who enters remains there.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: The leader of the Temple of Eternity's Edge defeats Sen's resistance, confiscates the party's belongings, and imprisons each traveler separately. Sen refuses recruitment and uses his long isolation to experiment with multiple parallel qi flows. In a deep inner trance, he develops a four-path system that can sustain his core and produce core-level qi without overwhelming his mind. After waking, Sen invokes Feng Ming, Kho Jaw-Long, and Caihong, and heavenly thunder helps force the return of his possessions. He secures the release of Feng's watcher, but their younger companion has adopted temple robes and refuses to leave. Sen believes the leader's gray energy has influenced her, although her fear and resentment are real. He destroys nine statues controlling the temple formation and escapes with the watcher, warning the leader that he will return if the harmful influence remains.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sen and Feng's watcher evade pursuit while she recovers from drugged temple food and sustained recruitment pressure. They agree to return against the temple leader once they are strong enough. The watcher chooses to remain with Sen even when he offers to request a replacement, and the pair enter Lin Wen's Redoubt to report their survival through Feng Ming's network. Their local contact betrays their arrival to a merchant and is killed. The merchant then traps them with crossbowmen inside a flawed qi-suppression formation, intending to sell Sen to a merchant prince from the capital. Sen collapses the formation, and the pair defeat the ambush. They spare the merchant after concluding that an unknown party sabotaged her plan in hopes of killing everyone involved. Sen and the watcher continue toward Inferno's Vale, now treating it as a place to train rather than merely hide.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: At Inferno's Vale, Sen and his watcher find fire and water cultivators fighting a major battle. She reveals that her estranged brother is among the fire cultivators, and Sen agrees to help locate him. After intervening for a trapped fire patrol, Sen regrets choosing a side without understanding the feud, but continues toward the fire compound. A water-side swordswoman challenges him to a formal duel. Sen defeats her and treats her wounds, then publicly accepts the identity Judgment's Gale. He raises a storm of fire, shadow, and lightning and threatens to end the battle himself. Both commanders surrender their weapons. Sen orders the armies to collect their wounded and withdraw, then compels the commanders to swear heavenly oaths preventing renewed attacks between their sects. The organized conflict ends under his temporary authority.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sen remains neutral while supervising the battlefield cleanup with the water-side swordswoman. He produces healing elixirs for both forces and spends days treating their most severe casualties. His success makes his alchemical skill widely known, and healers begin competing to study under him. After the water cultivators recover enough to leave, their swordswoman invites him to visit and they acknowledge mutual interest without making a commitment. Sen then confronts Feng's watcher. She admits that she concealed her brother's presence and deliberately relied on Sen's character and abilities to draw him into the battle. She believes the outcome justified the choice for everyone except Sen. He accepts responsibility for choosing to fight but tells her that the manipulation destroyed his trust. Their working arrangement continues, while their friendship remains broken.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: The Order of the Celestial Flame's matriarch summons Sen after seeing him teach young sword students. She explains that an outsider could end the generational feud without causing the internal fracture that direct intervention might have produced. Although the commanders' oaths do not formally bind the sect leaders, renewed war is now unlikely. In exchange for Sen's help, the matriarch identifies possible holders of the five-fold body-transformation manual and promises him a weapon. Her white-haired daughter seeks alchemy instruction, but Sen refuses because he judges her unwilling to learn. Kho Jaw-Long then arrives, followed by Feng Ming, Caihong, and a young woman who embraces Sen and identifies herself as Falling Leaf. Sen takes the reunion outside the compound and builds a concealed stone house so Falling Leaf's human-passing form can remain secret while the group exchanges accounts.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sen demonstrates Heaven's Rebuke and explains how an autonomous qi ribbon once changed it into a core-destroying attack. Feng Ming, Kho Jaw-Long, and Caihong cannot explain the phenomenon and regard further testing as dangerous. They also confirm that the five-fold body transformation is exceptionally rare and frequently fatal. Falling Leaf explains that her human transformation was undertaken to reach and protect Sen and is apparently irreversible. She chooses to travel with him and hopes eventually to find Boulder's Shadow or other surviving Ghost Panthers. Sen makes obtaining the body-cultivation manual his immediate priority and chooses the capital as the next destination. Caihong accepts responsibility for the younger companion still at the temple. Sen retains Feng's watcher as a known risk despite their broken trust. The Order matriarch gives Sen a powerful spear on condition that he accept a reluctant cultivator as another companion. Sen departs with Falling Leaf, the watcher, and the new traveler.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen has left for the capital to seek the manual required for the next stage of his five-fold body cultivation. Falling Leaf travels beside him in a human form she does not believe she can reverse. Feng's watcher remains in the party because Sen considers her more manageable than an unknown replacement, although he no longer trusts her. The Order matriarch's reluctant appointee completes the traveling group, bound to the arrangement by the spear Sen accepted. Behind them, Feng Ming, Kho Jaw-Long, and Caihong remain available as powerful allies, and Caihong has taken responsibility for the younger companion still inside the Temple of Eternity's Edge. Sen's heavenly-shadow core and altered Heaven's Rebuke remain unexplained. In the capital's political sphere, an ancient household diviner tells a Zhang-family prince that Judgment's Gale will enter his region and could redirect his fate. The prince decides to consult his wife before choosing whether to seek an alliance with Sen.",
+            "through": {
+              "chapter": 61
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-3"
+      }
+    },
+    "unintended-cultivator-volume-eight": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Judgment's Gale"
+            ],
+            "description": "A formidable core-formation cultivator travelling toward the capital while hostile cultivators pursue him. He protects his companions with overwhelming force and regards the journey as a return to the dangerous world he had briefly escaped.",
+            "id": "sen",
+            "name": "Sen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sen's young adopted daughter and the intended beneficiary of the academy he founded. She is part of the close household he wants to protect, and Caihong, Kho, and Falling Leaf care for her while he travels.",
+            "id": "liu-ai",
+            "name": "Liu Ai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful spider spirit beast travelling with Sen. The companion protects the party and can independently trap and drain attacking beasts, while even Sen considers its strength overwhelming beside their travelling companion.",
+            "id": "spider-companion",
+            "name": "Spider companion",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name of Sen's spider companion, revealed as the battle outside the capital intensifies. Glimmer of Night uses a selective draining web against the ambushers while leaving Sen and his allies untouched.",
+            "id": "glimmer-of-night",
+            "name": "Glimmer of Night",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cultivator accompanying Sen toward the capital. She understands that both Sen and his spider companion far exceed her strength, but remains with them while pursuit makes the journey increasingly dangerous.",
+            "id": "travelling-companion",
+            "name": "Travelling companion",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name of Sen's travelling companion, learned as reports about his academy reach the party. She is important to Sen's household and has accompanied him despite the repeated attacks on the road to the capital.",
+            "id": "shen-mingxia",
+            "name": "Shen Mingxia",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former sect cultivator who surrendered to Sen after offering his own life to protect his juniors. Sen accepts that choice as evidence against immediate betrayal and permits Long Jia Wei to travel under conditional protection.",
+            "id": "long-jia-wei",
+            "name": "Long Jia Wei",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler whose relationship with Sen may suffer if hostile cultivators delay Sen's journey to the capital.",
+            "id": "the-king",
+            "name": "The king",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high-level ally who learns that Sen has returned publicly and acquired a noble house. She remains personally interested in him and is concerned about the political consequences of his new position.",
+            "id": "lo-meifeng",
+            "name": "Lo Meifeng",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sect matriarch who arrives at the royal gathering and openly treats Sen as her lover. Her presence confirms their intimacy before the assembled court and places two exceptionally powerful cultivators at the center of attention.",
+            "id": "lai-dongmei",
+            "name": "Lai Dongmei",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A foreign ambassador whose royal status becomes clear at the capital gathering. She was sent abroad after resisting politically useful marriages and studies Sen as an unusual and potentially important cultivator.",
+            "id": "foreign-princess-and-ambassador",
+            "name": "Foreign princess and ambassador",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "House of Lu's acting matriarch"
+            ],
+            "description": "The woman who raised Sen and whom he regards as his grandmother. She arrives at his newly fortified manor to assume practical responsibility for the noble house he has acquired and to give it experienced family leadership.",
+            "id": "sens-grandmother",
+            "name": "Sen's grandmother",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Personally sworn former-house servant"
+            ],
+            "description": "A former servant of the defeated noble house who chooses to swear personal loyalty and service directly to Sen. Her oath distinguishes her from staff who bind themselves only to his new house.",
+            "id": "capital-steward",
+            "name": "Capital steward",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A trusted mortal attendant of the king who comes to House of Lu to ask when Sen's reprisals will end. Although she understands that he once intended to help her, she fears him because his qi altered her panic without her consent.",
+            "id": "royal-attendant",
+            "name": "Royal attendant",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bombing-plot intermediary"
+            ],
+            "description": "A cultivator identified as an intermediary in the plot to bomb Sen's manor. She is linked to arranging the attack before the people who supplied the explosive and breached the defenses are fully identified.",
+            "id": "attack-intermediary",
+            "name": "Attack intermediary",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An exceptionally skilled cultivator recruited on short notice to teach weapons at Sen's academy. He can strike several airborne targets with a bow and retrieve his arrows using wind qi, but his heavy reliance on alcohol makes his reliability uncertain.",
+            "id": "core-formation-archer",
+            "name": "Core-formation archer",
+            "reveal": {
+              "chapter": 65
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning mentor who reaches Deep Wilds Academy while Sen is away. Feng Ming studies its unexpected weapons training for mortal men and women, notices rudimentary cultivation-like practices among the students, and waits to learn Sen's purpose.",
+            "id": "feng-ming",
+            "name": "Feng Ming",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Feng"
+            ],
+            "description": "A powerful cultivator allied with Sen and part of his extended household. He is known before this volume as one of Sen's teachers and remains a trusted elder connected to Liu Ai and the academy.",
+            "id": "feng",
+            "name": "Feng",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted elder and alchemical expert in Sen's household. She helps protect Liu Ai while Sen is away and remains part of the close family circle to which he hopes to return.",
+            "id": "caihong",
+            "name": "Caihong",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted elder in Sen's household and one of his teachers. Kho helps protect Liu Ai during Sen's journey, and Sen continues to draw on techniques learned from him when facing powerful cultivators.",
+            "id": "kho",
+            "name": "Kho",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A spirit beast who belongs to Sen's close household and helps protect Liu Ai. Falling Leaf is among the family members Sen longs to keep safe, while the obstruction affecting her Ghost Panther form remains unresolved.",
+            "id": "falling-leaf",
+            "name": "Falling Leaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient nine-tailed fox tied to Sen's household by an outstanding debt. Laughing River's ascension, his campaign involving other foxes, and his knowledge of Falling Leaf's blocked spirit-beast form remain unresolved at the start of this volume.",
+            "id": "laughing-river",
+            "name": "Laughing River",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning acquaintance of Sen who is known for protecting people in danger. Sen encounters him defending a distressed young woman from cultivators and recognizes him as someone who keeps his word.",
+            "id": "righteous-cultivator",
+            "name": "Righteous cultivator",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the noble house that Sen links to the assassination attempt against him. Sen confronts the leader publicly in the royal throne room and announces that he has business with the house.",
+            "id": "assassination-linked-house-leader",
+            "name": "Assassination-linked house leader",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A foreign ambassador who threatens Shen Mingxia during the royal gathering. Sen detects the coercion and intervenes against him in view of the assembled court.",
+            "id": "threatening-foreign-ambassador",
+            "name": "Threatening foreign ambassador",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The patriarch of a rival noble house whose involvement in the bombing of Sen's manor is confirmed by intelligence gathered in the capital. Sen selects him as the next target of a limited reprisal.",
+            "id": "rival-patriarch",
+            "name": "Rival patriarch",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0FZLSW6H6",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-eight"
+      },
+      "recaps": {
+        "ending": "Sen leaves House of Lu in the capital under his grandmother's management, with Lo Meifeng directing intelligence and security work and the capital steward handling administration. The direct bombing perpetrators are dead, but the escaped demonic cultivators, the formation breach, and the fate of the captured intermediary remain unresolved. The king continues investigating the sabotage of the palace walls. Sen takes Long Jia Wei, displaced children, educators, and weapons instructors north, while the royal attendant is also expected to pursue cultivation under his guidance. He leaves the caravan shortly before it reaches Deep Wilds Academy and reunites with Liu Ai, Caihong, Kho, Falling Leaf, and Feng. Glimmer of Night stays with the caravan for its last leg. Sen still conceals the manor's resource lair, rare manuals, and his superior explosive formula. The incoming children require separate housing and supervision, and House of Lu's political future remains unsettled. Feng provides the immediate handoff by reporting that he has discovered the cause of the spirit-beast disturbance, but the explanation has not yet been given.",
+        "in_short": "Sen fights through repeated attacks on the road to the capital, kills a nascent-soul leader, and arrives publicly as Judgment's Gale. To secure Liu Ai's future, he destroys the noble house behind the assassination attempt and converts its assets into House of Lu. He fortifies its manor, discovers a hidden cultivator lair, recruits Lo Meifeng and his grandmother to run the new organization, supports the king, and refuses a foreign princess's request to help seize her father's throne. A mortal explosive then bypasses the manor defenses and kills staff. Sen traces the delivery to a rival house and demonic cultivators, exacts public vengeance, and keeps a stronger explosive formula secret, but some culprits escape. He relocates the defeated house's children and recruits staff for his academy before returning north. Sen reunites with Liu Ai and his household while the caravan remains close behind. Feng then reveals that he has found the cause of the unresolved spirit-beast crisis.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Sen founded Deep Wilds Academy and built a household around Liu Ai, the young girl he adopted as his daughter. Caihong and Kho are trusted elders who help protect her, while Falling Leaf is a spirit-beast companion with an obstructed Ghost Panther form. Feng is one of Sen's powerful teachers and remains tied to this extended family. Sen also carries an unresolved connection to Laughing River, an ancient nine-tailed fox who owes him a debt. The academy and household offer Sen a quieter purpose, but his growing cultivation strength and his reputation as Judgment's Gale keep drawing him back into wider conflicts. His concern for Liu Ai's future now shapes his choices, especially because his advancement may eventually separate him from mortal life. Questions surrounding spirit beasts remain unsettled, including Falling Leaf's blocked transformation and Laughing River's own affairs. At the opening of this volume, Sen must leave the relative safety of home and travel toward the capital while Caihong, Kho, and Falling Leaf remain with Liu Ai.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen travels toward the capital with an unnamed cultivator companion and a powerful spider spirit beast, avoiding roads because cultivators are searching for him. He aids vulnerable travellers but kills bandits and anyone who threatens those under his protection. Several pursuit groups attack. Sen destroys their leaders with lightning and sword work, while the spider independently hunts another group with qi webs. Long Jia Wei, a former sect cultivator who surrendered to protect his juniors, is allowed to accompany the party under conditional protection. In a town, Sen reunites with a righteous cultivator whose years of practical service have earned him a heroic reputation. The traveller reports that outsiders call Sen's academy a sect, including the Blue Demon sect, despite Sen's insistence that it is an academy. Sen briefly considers abandoning his obligations and returning to Liu Ai and the rest of his household. Instead, he accepts that an earlier promise and the need to secure teachers for the academy require him to continue. He releases the righteous cultivator from every debt and oath previously owed to him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The righteous cultivator chooses to continue with Sen even after being freed, because the old command to live without regret had become his life's purpose. Near the capital, the party discovers a large prepared ambush led by a nascent-soul cultivator. Sen orders the spider companion to protect Shen Mingxia, Long Jia Wei, and the mortal ally while he confronts the leader. He kills much of the hidden force with killing intent and qi attacks, then fights the leader directly despite the gap between their cultivation stages. Both combatants are badly hurt. When the leader threatens Sen's companions, academy, town, and daughter, Sen releases an overwhelming power that freezes the remaining enemies in fear. Glimmer of Night, the spider companion's revealed name, drains the immobilized attackers with a selective web. Sen prevents the leader from escaping, cripples him with Heaven's Rebuke, and executes him using lightning infused with divine qi. He then destroys the remaining force and extinguishes the resulting fires. The organized assassination attempt ends with Sen injured and depleted, but unmistakably victorious over an opponent who should have outclassed him.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the battle, Sen treats his party's injuries and completes the journey without another attack. Shen Mingxia acknowledges that witnessing him kill a nascent-soul cultivator has permanently changed their friendship. Royal guards meet the group at the capital and publicly escort Judgment's Gale through the city, ensuring that nobles, sects, and foreign visitors all know he has arrived. The king provides a guarded inn, while Sen sends Long Jia Wei to gather intelligence and goes to the palace. In the throne room, Sen openly confronts the leader of the noble house linked to the assassination. He privately tells the king that he intends to destroy that house. The king wants Sen to remain in the capital as an unpredictable deterrent against dangerous foreign cultivators. Sen agrees only after turning the bargain toward Liu Ai's long-term security. He proposes replacing the condemned house with a hereditary house under his own control, built to support his adopted daughter even after he can no longer remain beside her. The king accepts. Sen will eliminate the assassination plotters but spare children and ordinary staff, while the defeated house's titles, property, and operations pass to his new house.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen attacks the implicated noble manor after its leader admits that the assassination was part of a plan to weaken the king and seize the throne. He defeats the guards, spares the children, and has the royal decree read to the assembled household. The old house is dissolved and its property becomes Sen's new House of Lu. Long Jia Wei executes identified conspirators, while Sen kills the former leader and any adults whose required heavenly vows fail. Surviving adults lose their wealth and status but may seek employment if they have useful skills. A young servant swears herself directly to Sen and becomes a trusted administrative retainer. Sen retains willing staff, provides for the families of dead guards, and begins taking responsibility for the displaced children. He then rebuilds the manor walls and creates interlocking formations inspired partly by Glimmer of Night's webs. The result is a formidable defense that attracts a public audience. During a search of hidden spaces, Sen and Long Jia Wei discover an intact underground cultivator lair filled with manuals, formations, alchemical supplies, rare plants, and wealth. Sen regards discovery of the cache as a grave security risk and binds Long Jia Wei to secrecy with a heaven-accepted vow.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "House of Lu's fortified manor changes how nobles and sects judge Sen. Lo Meifeng confronts him for excluding her from his plans, then joins him as the strategic adviser needed to build security, intelligence, and control over distant holdings. Sen explains that the house exists to protect Liu Ai after his eventual ascension and considers developing Deep Wilds Academy into a true sect for the same purpose. He can already advance to nascent soul but delays because he wants more time with his daughter. At a royal gathering, Sen attends with Shen Mingxia, meets a foreign ambassador, and decisively subdues another ambassador who threatens his companion. Lai Dongmei arrives, publicly treats Sen as her lover, and identifies the first ambassador as a princess. Sen's power and his friendship with the king become obvious to the court. Lai Dongmei later warns that a cultivator-led noble house may encourage other cultivators to seize mortal political power. Sen accepts a duty to oppose such abuses. Returning to his manor, he retrieves Glimmer of Night and welcomes the woman who raised him. His grandmother arrives to take practical control of House of Lu and give its growing operations experienced leadership.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen installs his grandmother as House of Lu's manager while remaining its public head. The house has extensive wealth from his investments, but its expanding estates and planned sect require administration, hired cultivators, mortal guards, and an intelligence network. His grandmother recognizes Lo Meifeng as the household's spy and Long Jia Wei as its killer, while accepting Glimmer of Night as a trustworthy member of the family structure. The manor's strength creates a political problem because observers read its defenses as a possible challenge to the throne. Sen and the king answer by having Sen rebuild the royal palace walls, making his loyalty visible. During the work, Sen discovers that long sections of the old walls were deliberately hollowed and their formations damaged. He replaces them with higher, thicker walls, reinforcement and qi-gathering formations, and metal spikes carrying traces of divine qi. The new defenses make interference dangerous and conspicuous. Sen estimates that the sabotage occurred within the previous decade, but cannot identify who performed it or why. The king commits to a discreet investigation, leaving the weakened-wall plot unresolved even though the immediate structural danger has been repaired.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The foreign princess seeks a private alliance with Sen and asks him to leave the capital with her. At a secluded spirit-ox herd, she admits that she wants to overthrow her father and rule in his place. Sen refuses because her program would expand freedom for cultivators while preserving mortal subjugation. He forces her to confront the fear her ruling class creates, then rejects slaughter as a solution and sends her away without his help. Rumors about their excursion create diplomatic and romantic complications that Lo Meifeng and Sen's grandmother must manage. At Deep Wilds Academy, Feng Ming arrives, meets Liu Ai, and observes that the school trains mortal men and women in weapons while some students are developing rudimentary cultivation-like practices. In the capital, Sen accepts that hired sects are necessary to secure House of Lu's distant property and begins reconsidering some of his blanket hostility toward sects. Before he can return north, an explosion tears through the manor courtyard. It carries no detectable qi and bypasses every formation, killing and maiming mortal staff. Sen organizes rescue and treatment, attempts to restore lost limbs and eyes, and orders Lo Meifeng to find everyone responsible for the attack.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The manor survivors explain that the bomb arrived as a food delivery using a stolen access talisman. Long Jia Wei identifies the explosive as a mixture made through mortal alchemy, revealing both a defense flaw and a weapon that produces no qi warning. The severely wounded staff swear personal allegiance to Sen after his emergency healing, deepening his sense of responsibility for them. Lo Meifeng's investigation captures the talisman thief, and a noble matriarch supplies intelligence linking a rival patriarch to the attack. Sen limits his response to the responsible people instead of destroying another entire house. He overcomes the rival manor's guards, poison, and crossbow trap, then forces the patriarch to confess that his house delivered the explosive while others supplied the bomb and the method for bypassing the formations. A captured foundation-formation intermediary links the wider plot to earlier attacks. Meanwhile, the king sends a trusted royal attendant to ask when Sen's reprisals will end. She explains that she fears Sen because he once altered her panic without consent. Sen apologizes and swears a heavenly oath that he cannot impose complex emotions. As restitution, she asks him to make her a cultivator and accepts a dangerous, experimental process that requires leaving royal service and travelling north with him.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen studies the bombing mixture and develops a far stronger non-qi explosive. He decides that spreading the formula would endanger mortals and destabilize warfare, so he hides the superior version even from his teachers while retaining it as an emergency weapon. He uses lesser explosives in a deliberately public campaign against the captured bombers. With his grandmother present to demonstrate House unity, Sen executes the man who lit the fuse and allows the manor community to kill other direct participants. He then stages a second execution outside the manor for witnesses from the palace, sects, and noble houses, turning the reprisals into a deterrent. The captured intermediary says surviving demonic cultivators used her after she pursued someone who had previously betrayed her. Those targets have escaped, and she cannot identify the demonic cultivator. Sen leaves her survival and possible employment to Lo Meifeng. With the direct campaign complete, he prepares to leave the capital. The defeated house's children will travel north, lose their noble privileges, and receive civilian education rather than military training. Sen's grandmother arranges their transport and supplies while Sen plans new instructors, formation work, and funding for the academy.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Before departure, Sen collects custom formation flags and fulfills a promise by preparing tailored advancement elixirs for their makers. He auctions natural treasures to fund House of Lu, hires basic educators, and recruits weapons instructors for Deep Wilds Academy. Among them is a highly skilled core-formation archer whose long life, accumulated grief, and dependence on alcohol make him an uncertain choice. The archer begins the journey sober and treats teaching as a possible new purpose. Sen also accepts a woman recommended through Lo Meifeng only after binding vows make her compliance enforceable. The displaced noble children receive one final evening with their parents before being placed in the caravan. Sen departs with the children, educators, guards, weapons staff, Long Jia Wei, Shen Mingxia, and Glimmer of Night. Lo Meifeng, Sen's grandmother, and the capital steward remain behind with delegated authority over House of Lu. The house survives as a wealthy and fortified political force, but the escaped demonic attackers and the unknown source of the manor-defense breach remain unresolved. Sen's departure ends his immediate capital campaign and shifts responsibility toward the academy's expansion in the north.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sen accelerates the caravan with qi and imposes strict work rules on the displaced children. He plans to house them separately and permanently deny them cultivation and weapons training because he considers them a future danger to Liu Ai. Long Jia Wei supports the policy and helps enforce it when an older boy organizes resistance. Some children remain openly resentful, though one young girl begins trusting Sen after he patiently helps her approach the caravan's oxen. The core-formation archer stays sober and proves useful by detecting an ambush. Sen kills the waiting bandits and hides the aftermath from the children. Near Deep Wilds Academy, Long Jia Wei persuades Sen to leave the caravan in the hands of its other defenders. Glimmer of Night stays with the wagons for the final leg and claims one as his own. Sen carries selected treasures and keeps the hidden lair's manual and resources secret from the unfamiliar travellers. He reaches home first and reunites with Liu Ai, Caihong, Kho, Falling Leaf, and Feng. The caravan and its new staff are still approaching, so housing and integration remain unfinished. Feng then tells Sen that he has identified the cause of the spirit-beast disturbance, but does not yet explain it.",
+            "through": {
+              "chapter": 70
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0FZLSW6H6",
+            "type": "community"
+          }
+        ],
+        "work": "unintended-cultivator-volume-eight"
+      }
+    }
+  }
+}

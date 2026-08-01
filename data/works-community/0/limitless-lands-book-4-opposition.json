@@ -1,0 +1,1971 @@
+{
+  "entries": {
+    "limitless-lands-book-4-opposition": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Imperium commander who leads the First Legion in defense of Hayden's Knoll. Outside Limitless Lands, he remains in a MedPod while Cleo treats his failing health and shields damaged areas of his memory.",
+            "id": "raytak",
+            "name": "Raytak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The governor responsible for developing Hayden's Knoll. He supports Raytak's campaign by managing the settlement, its resources, and the civil side of the Imperium's growing foothold.",
+            "id": "delling",
+            "name": "Delling",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A druid allied with Raytak who adventures alongside Jacoby and her unicorn-beetle companion, Crunchy. Her party contributes reconnaissance and practical help to the effort around Hayden's Knoll.",
+            "id": "yendis",
+            "name": "Yendis",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's fellow former MedPod patient, who knows him through Limitless Lands.",
+            "id": "tai",
+            "name": "Tai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The artificial intelligence directing Raytak's MedPod care. Cleo balances urgent physical treatment with the slower repair of his memories and blocks information that could endanger his recovery.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's son and a participant in decisions surrounding his protected treatment. He represents the family in medical choices while Cleo limits what Raytak can safely remember.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The First Legion's first sergeant and Raytak's senior noncommissioned adviser. Brooks turns strategic orders into field arrangements and offers measured counsel on readiness, security, and reconnaissance.",
+            "id": "brooks",
+            "name": "Brooks",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The veteran sergeant commanding the Legion platoon Ignominia. He is trusted with independent assignments and is responsible for keeping his soldiers effective when separated from Raytak's main force.",
+            "id": "ignominia-sergeant",
+            "name": "Ignominia Sergeant",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yendis's unicorn-beetle companion who accompanies her on adventures.",
+            "id": "crunchy",
+            "name": "Crunchy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The healer in Yendis's adventuring party. Jacoby travels with Yendis and Crunchy and helps sustain the group as it explores dangers connected to Raytak's campaign.",
+            "id": "jacoby",
+            "name": "Jacoby",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival dark overlord preparing for war with Hayden's Knoll. An imp contract diverts him into conquering a newly found underground zone, leaving his territory in a caretaker's hands while he pursues the imposed objective.",
+            "id": "narbos",
+            "name": "Narbos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful patron who uses contracts and intermediaries to shape conflicts he cannot enter openly. He directs Narbos toward an underground conquest while encouraging an alliance against Delling and Raytak.",
+            "id": "the-imp",
+            "name": "The Imp",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The spellcaster installed as caretaker of Narbos's territory during the overlord's forced absence. His assignment is to cultivate an alliance with the border elves against Hayden's Knoll.",
+            "id": "enemy-necromancer",
+            "name": "Enemy Necromancer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Legion private serving as Raytak's persistent and effective aide. He organizes the new defensive outpost near Holdfast and handles practical duties that keep Raytak's command functioning.",
+            "id": "blevins",
+            "name": "Blevins",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A forceful Legion soldier who favors striking the eastern enemies before they can organize. Her aggressive recommendation contrasts with Brooks's preference to wait until the Legion is restored to full strength.",
+            "id": "wren",
+            "name": "Wren",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The university student behind Delling and the ruler of Hayden's Knoll. He earns a graduate scholarship for his governance work, keeps his game account, and accepts Brandon's wager over their continuing in-game rivalry.",
+            "id": "matt-delling",
+            "name": "Matt Delling",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Delling's classmate and rival participant in the university experiment. He controls the most advanced of the three student zones and stakes his character's wealth and progress on a direct wager with Delling.",
+            "id": "brandon",
+            "name": "Brandon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The student ruler of Ironloch and the third participant offered a graduate scholarship. She declines the rivalry wager and plans to restart with friends for a less competitive style of play.",
+            "id": "danica",
+            "name": "Danica",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A merchant who offers Yendis specialized equipment for Crunchy. His class-restricted mount gear points her toward the requirements for a new prestige class.",
+            "id": "phineas",
+            "name": "Phineas",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gnome engineer acting as courier for an unidentified sender. He delivers Yendis's party a magically sealed package that only its intended recipient can open and refuses to disclose who commissioned him.",
+            "id": "deacon",
+            "name": "Deacon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The man known in the game as Raytak, identified by his given name during a protected family visit. He is Natalie's husband and remains dependent on Cleo's careful separation of safe memories from dangerous ones.",
+            "id": "james-raytak",
+            "name": "James Raytak",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Raytak's wife and Yendis's grandmother. She receives them in a personal environment created by the treatment system, where family contact can occur within Raytak's medical safeguards.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elite commander of the hostile border elves. She uses Raytak's murdered captives to spring a false-parley ambush, establishing her clan as the immediate enemy in his campaign to unite the zone.",
+            "id": "elf-war-leader",
+            "name": "Elf War Leader",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The heavily armed leader of an organized ogre group. After his people help rout elves and reavers near their cave, he accepts a temporary truce and agrees to meet Raytak instead of fighting the Legion.",
+            "id": "stench",
+            "name": "Stench",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dangerous dungeon guardian whose heart is required for Yendis's Swarmlord quest. Reaching and defeating this being is the first major condition on Yendis's path toward the prestige class.",
+            "id": "corrupted-dryad",
+            "name": "Corrupted Dryad",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Tai's son and an operator of the family's expanded restaurant business. He supports Tai's return to ordinary life while trying to set practical expectations for the next generation.",
+            "id": "nathan",
+            "name": "Nathan",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tai's grandson, who hopes to support himself as a professional gamer. He agrees to contribute at the family restaurant while pursuing that goal and helps Tai prepare to enter Limitless Lands.",
+            "id": "lamar",
+            "name": "Lamar",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former hostile-guild organizer who returns on a new character and claims to have ended her old campaign. She offers money and intelligence to oppose the elves, though Raytak has reason to question whether her reform is genuine.",
+            "id": "rerolled-lightmage",
+            "name": "Rerolled Lightmage",
+            "reveal": {
+              "chapter": 22
+            }
+          },
+          {
+            "description": "The pain-magic ruler directing the elf assault on the eastern transition point. He treats failure as a capital offense and drives his forces toward the Imperium garrison with little tolerance for delay.",
+            "id": "pain-master",
+            "name": "Pain Master",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Raytak's physician during a crisis caused by rejection of the first artificial-valve material. Working with Cleo, the doctor stabilizes him and begins rebuilding the valve from a different substance.",
+            "id": "dr-greenway",
+            "name": "Dr. Greenway",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chief of a starving ogre clan and bearer of its ancestral enchanted axe. He weighs Raytak's offer of land, autonomy, food, and trade against the clan's need to survive and defend the zone.",
+            "id": "gorax-leader",
+            "name": "Gorax Leader",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trusted spiritual adviser able to judge whether Raytak speaks truthfully. The shaman's assessment helps the Gorax leader decide whether the Imperium's proposed alliance can be accepted.",
+            "id": "gorax-shaman",
+            "name": "Gorax Shaman",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yendis"
+            ],
+            "description": "Raytak's granddaughter, already known to him in Limitless Lands as Yendis. Cleo reveals the family connection under controlled conditions while continuing to filter details that could destabilize Raytak's recovering memory.",
+            "id": "lauren",
+            "name": "Lauren",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The keeper of the former Foulspoor Pit, faced with losing the dungeon unless it gains a replacement boss. A boxed golden insect presents both an infection danger and a possible answer to the dungeon's survival.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A parasite master concealed inside a golden insect. It tries to infect Drake when released, but its appearance inside his dungeon gives him a chance to impose a system-enforced boss contract.",
+            "id": "escaped-parasite-master",
+            "name": "Escaped Parasite Master",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B081QLHBVV",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-4-opposition"
+      },
+      "recaps": {
+        "ending": "Raytak's forces capture Stonetree after a costly siege, while Tai's group enters through the sewers and kills the Pain Master. The elf war leader escapes with loyal survivors and hides a red stone before forming a mercenary band intended for Narbos. Raytak destroys the separate stone embedded in Stonetree's throne, releases the original forest guardian from corruption, and completes the Unite the Zone quest at level 16. The Gorax remain Imperium allies with promised land and autonomy, subject to Delling's endorsement. Cleo confirms that Raytak's rebuilt heart valve is working and that memory repair is close to completion, then safely reveals that Yendis is his granddaughter Lauren. His broader family memories are still restricted. Narbos returns with an enlarged army supplied by the imp for an imminent attack on Hayden's Knoll. Drake preserves the former Foulspoor Pit by binding an escaped parasite master as its boss, containing rather than eliminating that threat.",
+        "in_short": "Raytak leads the First Legion in a campaign to bring the whole Hayden's Knoll zone under Imperium control while Cleo struggles to keep his failing body alive. He secures the transition points, survives repeated battles with hostile elves and their allies, and builds a self-governing alliance with the Gorax ogres. Tai returns to Limitless Lands and joins the final assault on Stonetree, where his party kills the Pain Master. The elf war leader escapes with a red stone, but Raytak destroys the stone corrupting Stonetree, frees the forest guardian, and completes zone unification at level 16. His replacement heart valve is working, and he learns that Yendis is his granddaughter Lauren. Narbos then returns with a large imp-backed underground army aimed at Hayden's Knoll, while Drake binds an escaped parasite master as a dungeon boss.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Raytak commands the First Legion in Limitless Lands and serves the Imperium around Hayden's Knoll, while his physical body remains under Cleo's care in a MedPod. His treatment protects him from severe medical danger but also leaves important memories inaccessible. Delling governs and develops Hayden's Knoll, providing the civil foundation for Raytak's military work. Yendis, Jacoby, and Crunchy are allied adventurers who have helped explore the region, and Brooks remains Raytak's senior field adviser. The zone is not yet unified: hostile creatures, rival powers, uncertain border peoples, and unresolved passages constrain the settlement. A rival overlord also threatens Hayden's Knoll, making expansion and defense part of the same struggle.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Narbos is forced by an imp contract to conquer a newly discovered underground zone, although he worries the diversion will delay his war against Hayden's Knoll. The imp leaves a necromancer to manage Narbos's territory and pursue an alliance with the border elves. Raytak strengthens Holdfast with a new outpost, but a cardiac arrest briefly kills him before Cleo stabilizes his body. Back in the game, he accepts the Imperium mission to unite the zone, contains the remaining parasite drones, and claims the northern transition point despite its ruined bridge. An elite owlbear kills him during the northern reconnaissance. The imp then offers troop upgrades in exchange for a future obligation. Raytak refuses, and the imp retaliates with a deadly shower of magma. A disguised mimic also kills soldiers before its defeat upgrades Holdfast's medical facilities. In the real world, Matt Delling, Brandon, and Danica receive graduate scholarships for their experimental governance work. Delling and Brandon formalize their rivalry with a wager, while Danica chooses a less competitive future.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yendis receives a quest for the Swarmlord prestige class and gains party support for obtaining a corrupted dryad's heart and an ancient companion shell. Raytak trains and equips the First Legion, adds dwarf runesmith auxiliaries, and marches east. An elf war leader turns a parley into an ambush after displaying two tortured Legion captives. Raytak survives her poisoned attack, captures the roadblock, and defeats a larger force of elves, human reavers, skeletons, and an enemy necromancer. The runesmiths prove decisive by strengthening the line, restraining attackers, and combining explosive runes with the Legion's siege engines. A detached Legion platoon also helps free organized ogres trapped near their cave. Their leader, Stench, accepts a temporary truce with Raytak. He permits Imperium passage through ogre territory in exchange for steel and grain but rejects settlement, trade, and approaches to the mountain. With the Legion depleted and the hostile elf city still strongly defended, Raytak chooses to seize another transition point and reinforce rather than attempt an immediate siege.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak's reinforced Legion works with ogres against another elf roadblock and attacks the eastern transition point. Dwarf-powered siege fire breaches the defenses, and Raytak kills both a pain caster and the local commander. The victory gives the Imperium all three transition points and raises him to level 13, though it costs more than a hundred soldiers. Yendis's party defeats the corrupted dryad, gaining the heart required for her class quest. Crunchy survives being pinned by temporarily splitting into a swarm, but Yendis still needs the ancient shell. Raytak's worsening heart condition leads his doctor to propose a nanobot-built replacement valve, which Trey authorizes. Tai has completed MedPod treatment and returns to life with his family, arranging for Lamar to pursue gaming while helping at Nathan's restaurant. Deacon then undertakes a solitary defense of the road to the eastern garrison. His traps damage the approaching elf army, ruin its supply wagons, and delay it for nearly two days. He dies in the final exchange after completing his Combat Engineer obligation, leaving the weakened attackers still advancing.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cleo begins constructing Raytak's replacement valve and receives his consent for a later attempt to restore more memory. Raytak upgrades Hayden's Knoll's military facilities, but allied factions can offer only limited reinforcements. A former hostile-guild leader returns as a Lightmage, claims to have disbanded her organization, funds reconnaissance, and hires an assassin to remove the enemy necromancer. Her sincerity remains uncertain. At the eastern transition point, Ignominia's sergeant prepares layered defenses and recruits six ogres seeking honorable deaths. The elf assault destroys much of the garrison. All six ogres die holding the breached gate, Wren is badly wounded and healed, and the survivors retreat into the barracks. Raytak arrives through the portal just before the final defenders are overwhelmed. The enemy necromancer is assassinated, removing him from command, but his expeditionary troops transfer to the elves. The garrison has survived at extreme cost, and the hostile army retains mercenary reinforcements for the continuing campaign.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak restores much of the devastated garrison with a replacement scroll and honors the six dead ogre Legionnaires. He chooses to relieve the ogres still under siege before attacking the elf city. When the larger enemy army turns to face him, the Legion fights from prepared positions. Hostile spear mercenaries break into part of the line, but Raytak's summoned troops, corrupted wolves, honor guard, and rune support force them back. Ogre fighters destroy the enemy siege engines and prompt a retreat, leaving Raytak's army victorious but badly reduced. A medical crisis pulls Raytak from the game when his body rejects the first replacement-valve material. Dr. Greenway and Cleo stabilize him and start again with a different substance. Tai, now able to use ordinary virtual-reality equipment and log out at will, restores his half-orc character and joins Yendis's party on its way to Raytak. Raytak then offers the starving Gorax clan land, autonomy, food, and trade in return for defending the zone. Their shaman confirms his honesty, and the chief accepts the alliance.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Gorax feed and recover under the new arrangement, then send warriors to help attack Stonetree, the final obstacle to zone unification. Tai's party enters through the sewers while Raytak coordinates a siege against the gate and walls. Pain magic and shield-bearing mercenaries stall the main assault, and Raytak dies from his wounds while waiting to respawn. Inside the keep, the elf war leader turns against the Pain Master, steals a red stone, and escapes with loyal followers. Tai's group attacks the weakened ruler. Yendis and Jacoby are brought down during the fight, but Tai and a companion finish the Pain Master. Raytak's flanking troops and the ogres then break the blockade at the gate, and the surviving mercenaries surrender. A vision shows that an imp-guided elf founder used a red stone to corrupt the forest guardian and create Stonetree. Raytak rejects the corrupted power, destroys the throne's stone, and frees the guardian. The city and corrupted forest dissolve, the Imperium gains control of the complete zone, and Raytak reaches level 16.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak completes the Hayden's Knoll zone campaign by taking Stonetree and releasing the original forest guardian. The Gorax survive as self-governing Imperium allies, while the Legion endures severe losses. The elf war leader escapes with loyal remnants, hides another red stone at the eastern transition point, forms a mercenary band, and intends to seek work from Narbos. Cleo reports that Raytak's rebuilt heart valve is functioning and that his memory repair is nearing completion. Under controlled conditions, she reveals that Yendis is his granddaughter Lauren and allows them to acknowledge the relationship in the game, though other family details remain restricted. In the epilogue, Narbos returns from his underground conquest with a large army supplied by the imp and prepares to attack Hayden's Knoll. Elsewhere, Drake learns that the former Foulspoor Pit will vanish without a new boss. He opens a box containing a golden insect and an escaped parasite master. After resisting infection, he binds the creature by dungeon contract, preventing it from leaving or influencing the outside world except in permitted defense of the zone.",
+            "through": {
+              "chapter": 36
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B081QLHBVV",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-4-opposition"
+      }
+    },
+    "limitless-lands-book-5-invasion": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Imperium Legion commander and MedPod patient who prepares Hayden's Knoll for an expected invasion while relying on Cleo to manage his treatment.",
+            "id": "raytak",
+            "name": "Raytak",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The ruler of a neighboring zone. Inexperienced in large-scale command, he accepts a binding contract with an imp and delegates leadership of the planned invasion.",
+            "id": "the-dark-overlord",
+            "name": "the Dark Overlord",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An imp general bound by contract to lead the Dark Overlord's surface army. He brings troops and dangerous creatures from the underground realm for the attack on Hayden's Knoll.",
+            "id": "the-imp-commander",
+            "name": "the imp commander",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A player allied with the Dark Overlord who practices corpse-based magic. He is assigned to create bone giants and expand the undead contingent of the invasion force.",
+            "id": "the-necromancer-player",
+            "name": "the necromancer player",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The commander of an elite elf mercenary band, combining martial skill with magic fueled by pain. She joins the invasion in exchange for the promised restoration of her people's former lands.",
+            "id": "the-former-elf-mercenary-leader",
+            "name": "the former elf mercenary leader",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Swarmlord player and druid-like combatant who supports Raytak as Hayden's Knoll prepares for invasion.",
+            "id": "yendis",
+            "name": "Yendis",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Legion officer who trains Raytak's soldiers for siege assaults and close fighting as Hayden's Knoll prepares for war.",
+            "id": "brooks",
+            "name": "Brooks",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant who sells Raytak protective equipment as the defenses of Hayden's Knoll are strengthened.",
+            "id": "phineas",
+            "name": "Phineas",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's private aide, who writes messages for the Legion commander.",
+            "id": "blevins",
+            "name": "Blevins",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A halfling who controls a customizable dungeon and can call its creatures into his private sanctum.",
+            "id": "the-pitmaster",
+            "name": "the Pitmaster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dungeon creature who survived an earlier defeat by storing part of her essence in a scarab. The dungeon agreement contains her and prevents her from leaving unless summoned.",
+            "id": "the-parasite-master",
+            "name": "the parasite master",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A one-armed half-orc player and trusted ally of Raytak who helps the coalition plan its defense against invasion.",
+            "id": "tai",
+            "name": "Tai",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The civilian ruler of Hayden's Knoll and Raytak's partner in organizing the defense. He coordinates fortifications, allied leaders, and refuge arrangements for threatened noncombatants.",
+            "id": "delling",
+            "name": "Delling",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ogre shaman who represents his people at the allied war council. He objects when Raytak's plan appears likely to draw the enemy through the ogre homeland.",
+            "id": "stench",
+            "name": "Stench",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Yendis"
+            ],
+            "description": "Raytak's granddaughter and the player behind Yendis. She receives additional time in Limitless Lands so she can help the defenders with a reconnaissance mission.",
+            "id": "lauren",
+            "name": "Lauren",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's son, who receives updates about his father's treatment and the possibility that damaged memories may soon be restored.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yendis's unicorn-beetle mount and companion. He accompanies her on the reconnaissance mission into the hostile neighboring zone.",
+            "id": "crunchy",
+            "name": "Crunchy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A player ally who joins Tai and Yendis on the dangerous reconnaissance mission beyond the transition point.",
+            "id": "jacoby",
+            "name": "Jacoby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of an Imperium detachment sent to reinforce Raytak, bringing legionaries, engineers, artillery, and longbowmen into the growing war.",
+            "id": "captain-landry",
+            "name": "Captain Landry",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The artificial intelligence responsible for Raytak's MedPod care. She manages an upgraded treatment system and explains the medical risks surrounding his memory recovery.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the Shield Brothers, a mercenary company hired to reinforce Raytak's defense.",
+            "id": "aristides",
+            "name": "Aristides",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of the Azure Blades, a mercenary company hired to reinforce Raytak's defense.",
+            "id": "barherk",
+            "name": "Barherk",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The centaur commander of the mercenary company Devil in Horde, hired to reinforce Raytak's coalition.",
+            "id": "nergi",
+            "name": "Nergi",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied scout who cautiously observes the invader camp while hostile monsters hunt for scouts.",
+            "id": "gunny",
+            "name": "Gunny",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An imp-clan leader and the imp commander's sister. After taking Ironloch, she directs a large new assault on Hayden's Knoll with airborne troops and underground reinforcements.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Legion commander at the northern transition-point fort. He organizes soldiers and dwarven allies against Lily's airborne attack.",
+            "id": "corporal-young",
+            "name": "Corporal Young",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of Tai's mixed delaying force who accompanies him in the operation to slow the imp army before it reaches Hayden's Knoll.",
+            "id": "quimby",
+            "name": "Quimby",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dungeon keeper defending the mining complex. He spends his own health to summon dungeon creatures and bosses against the invading force.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of goblins fighting beside dwarves and dungeon creatures in defense of the mining complex.",
+            "id": "chief-bugtug",
+            "name": "Chief Bugtug",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Blevins"
+            ],
+            "description": "The elite Imperium Blademaster previously known as Private Blevins. He was working undercover as an investigator and remained near Raytak as a covert bodyguard.",
+            "id": "captain-blevins",
+            "name": "Captain Blevins",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Raytak"
+            ],
+            "description": "The restored real-world identity of the Legion commander known as Raytak. His recovered memories reconnect him with his wife Natalie, his son Trey, and the rest of his family.",
+            "id": "james-a-raytak",
+            "name": "James A. Raytak",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Raytak's wife, remembered when his damaged past returns. She is also receiving MedPod care and can meet him within a shared virtual setting.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trey's partner and Lauren's mother, who belongs to Raytak's family in the real world.",
+            "id": "veronica",
+            "name": "Veronica",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B08KKT2XNS",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-5-invasion"
+      },
+      "recaps": {
+        "ending": "The necromancer's prepared corpse magic kills the imp commander at the town hall after Yendis prevents his escape, routing that assault. The wider disposition of Lily, the remaining invasion army, the mine battle, and the allies taken from the marketplace remains unresolved. Tai and Quimby have died during the delaying campaign, and Drake has been killed defending the mines. Yendis and Crunchy survive, while Stench still depends on the promise that the ogre homeland will be restored and the necromancer remains bound by his life pact. Raytak regains his full identity as James A. Raytak and reunites virtually with Natalie, Trey, Lauren, and Veronica. His body remains dependent on life support. After spending his remaining time with his family, Raytak dies. Hayden's Knoll commemorates his real-world service, illness, and leadership in Limitless Lands with a monument.",
+        "in_short": "Raytak prepares Hayden's Knoll for invasion, first against a neighboring ruler's army and then against the imp clan that betrays that ruler and expands the war. The eastern and northern approaches fall, forcing Raytak to abandon outlying positions and concentrate allies and refugees in the town. Tai leads a costly delaying campaign and dies sealing his survivors' escape. During the siege, defenders hold the garrison, marketplace, mines, and town hall at severe cost. Phineas reveals formidable magic, Drake is killed defending the mines, and the allied necromancer kills the imp commander. The broader fate of several invaders and defenders remains unsettled. Cleo restores Raytak's memories but cannot save his failing body. Reunited virtually with Natalie, Trey, Lauren, and Veronica, James A. Raytak spends his final time with his family, dies, and is honored by a monument in Hayden's Knoll.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Raytak, an elderly military veteran receiving advanced medical care, lives within Limitless Lands as an Imperium Legion commander. His campaigns have made Hayden's Knoll and Holdfast central to a growing alliance of soldiers, players, and local peoples. He has fought threats to the region while seeking the return of memories lost through illness. Trey is his son, while Tai, Yendis, and Jacoby are trusted player allies. Cleo, the intelligence managing his treatment, links his survival and recovery to continued MedPod care. The neighboring Dark Overlord remains hostile, and the defeat of an earlier expedition has not ended the danger to Hayden's Knoll.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dark Overlord accepts a blood contract that places an imp general in command of a new invasion army. The force includes underground infantry, engineers, monsters, undead support, and an elf mercenary band promised its former territory. Raytak responds by upgrading his garrison, adding mind battlemages, strengthening equipment, and coordinating a zone-wide defense with Delling and allied leaders. The coalition plans to channel the invasion away from the strongest approach while protecting refugees and key positions. A player reconnaissance party led by Tai, Yendis, and Jacoby crosses into enemy territory and confirms that a major force is gathering, but the party is killed and game restrictions prevent its intelligence from reaching Raytak in time. The Dark Overlord then declares war and attacks the eastern transition point. Its garrison prepares to resist an overwhelming opening assault.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The eastern transition-point defenders destroy a tunnel worm and inflict heavy losses, but the fort falls and the invaders enter Hayden's Knoll. Raytak returns from a MedPod absence to find the war underway. The Imperium supplies Captain Landry's detachment, engineers, artillery, and funds for mercenaries, while Raytak gathers allied troops near Holdfast and a mountain fallback position. Gunny's scouting places the enemy army in the thousands. Raytak chooses an open-field engagement where disciplined formations and siege weapons can offset the numerical imbalance. The imp commander attempts to outflank him and seize the defenders' rear position as the Dark Overlord's main army gives chase. Raytak conducts a controlled withdrawal, kills another tunnel worm, and forms a fortified battle rectangle. The line bends under attacks by infantry, giant undead, and Reavers, but sudden fighting inside the enemy army interrupts the assault and gives Raytak time to regroup.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The invaders' monsters mutiny, and the imp commander breaks his pact with the Dark Overlord. The imp clan seizes Ironloch, attacks its former ally's zone, and opens a wider war against Hayden's Knoll. Lily, the commander's sister, leads a reinforced assault through the northern approach. Her airborne troops and infiltrators overwhelm Corporal Young's fort while deep gnomes restore the crossing for the main army. Facing a common threat, Raytak and the Dark Overlord agree to a sixty-day truce and exchange strategic concessions. The necromancer changes sides under a life pact and is placed under Stench's watch. With imp armies converging, Raytak abandons plans to save every outlying position. Stench agrees to evacuate the ogre population after Raytak promises to help reclaim their homeland. Tai receives command of a mixed force charged with delaying the enemy while soldiers, civilians, and supplies withdraw toward Hayden's Knoll.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The evacuation sacrifices artillery to move ogre children and other vulnerable civilians more quickly. Meanwhile, Tai's centaurs, scouts, dwarves, and mercenaries conduct repeated ambushes against the advancing imp army. Holdfast falls, but the invaders' long mixed column suffers from weak security and strained control. Tai's raids kill troops and monsters, and the imp commander's brutal punishment of a troll subordinate causes the trolls to abandon him. Continued attacks on the enemy rear cost the defenders much of their cavalry. The surviving centaur company withdraws under its contract after severe losses, ending Tai's ability to harass the column in open terrain. He sends most remaining troops to prepared ruins at the southern crossroads and stays with a handful of scouts to continue the delay. The crossroads becomes the next barrier between the invasion army and Hayden's Knoll.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tai's force turns the crossroads ruins into a choke point with traps, missiles, and an escape tunnel. The first assaults are shattered, but trolls and bats eventually force a withdrawal. Quimby is captured and killed. Tai seals the tunnel after the surviving defenders escape, remains behind, and dies in a final stand. The costly victory leaves the imp army only days to complete its conquest. Raytak reaches Hayden's Knoll with the ogre refugees and organizes the city's final defense, assigning Yendis, Crunchy, Jacoby, and militia as a mobile response force. Cleo then confirms that the battle data can restore Raytak's memories, but his body cannot live without extensive support. Raytak accepts the prognosis and returns to command. He tries another delaying ambush with a magical plant fortification, but spiders and a seven-headed hydra break the position. Lily kills him during the retreat, and he respawns to find the enemy assembled outside Hayden's Knoll.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The siege begins with artillery destroying the damaged hydra, but tunnel worms open routes into the garrison and marketplace. Raytak shifts reserves to the internal breaches while Jacoby's group and the militia respond inside the town. Yendis and Crunchy help kill the marketplace worm, then hold its tunnel against trogs and other attackers. Lily's mounted force enters the fighting, and the elf mercenary commander activates hidden portal stones in Phineas's shop. Phineas reveals that he was once a mage of exceptional power. His extradimensional breach removes many attackers but also takes allied militia, skirmishers, and player companions, leaving their fate unknown. At the mines, Drake spends his health summoning dungeon defenders. His final boss turns the invaders' drones against them, but an enemy elf mage kills Drake. The remaining mine defenders hold for the moment. A separate worm reaches the town hall, where Delling's ogres and guards barricade themselves against the assault.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak rallies the garrison, drives the attackers back into their tunnel, and discovers that Blevins is an elite Imperium investigator and covert bodyguard rather than an ordinary private. Leaving Blevins to secure the breach, Raytak takes a relief force toward the town hall. There, the necromancer detonates and raises corpses to cut through the attacking army while Yendis traps the imp commander's mount and prevents his escape. The necromancer reaches him through corpse magic and kills him, breaking the town-hall assault. The wider fates of Lily, the remaining invaders, the mine defenders, and those taken by Phineas's breach are not established. During the victory, Raytak's complete memories return. He remembers that he is James A. Raytak and reunites in a shared virtual setting with Natalie, Trey, Lauren, and Veronica. Natalie is also receiving MedPod care, but they can spend their remaining time together. Raytak later dies after a final day with his family. Hayden's Knoll raises a monument showing him as a young soldier, an elderly patient, and a Legion commander.",
+            "through": {
+              "chapter": 36
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B08KKT2XNS",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-5-invasion"
+      }
+    },
+    "limitless-lands-book-iii-retribution": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Limitless Lands AI oversees Raytak's MedPod treatment, supporting his cognition while shielding him from memories that could endanger his recovery.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raytak's son and a director of the MedPod company. He supervises his father's treatment while keeping their family connection from Raytak inside the game.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fellow MedPod patient and Raytak's trusted scout leader in Limitless Lands. He can work beside Raytak in the game without placing Raytak's protected memories at risk.",
+            "id": "tai",
+            "name": "Tai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The mayor responsible for developing Hayden's Knoll. He supports the settlement's growth and works with Raytak to strengthen its position in Limitless Lands.",
+            "id": "delling",
+            "name": "Delling",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced Imperium noncommissioned officer who serves as Raytak's field adviser and helps direct garrison operations and troop assignments.",
+            "id": "brooks",
+            "name": "Brooks",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yendis's unicorn-beetle animal companion, accompanying her during field expeditions and dangerous investigations.",
+            "id": "crunchy",
+            "name": "Crunchy",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of a clan allied with Hayden's Knoll. Raytak can call on the clan under an established pact when the settlement faces a major threat.",
+            "id": "forerunner-clan-leader",
+            "name": "the Forerunner clan leader",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival player ruler and one of Delling's scholarship competitors. After an unsuccessful attack on Haven, he retains executioners, a necromancer ally, and a funded scheme against Raytak.",
+            "id": "brandon",
+            "name": "Brandon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Brandon's surviving ally, an undead specialist who accepts paid work and reports that the operation against Raytak is already under way.",
+            "id": "necromancer",
+            "name": "the necromancer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ancient parasite able to invade and consume a host's mind. Freed from a sealed mountain ruin, it takes control of a gnoll leader while hiding the change from the surrounding tribe.",
+            "id": "parasite-master",
+            "name": "the parasite master",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Imperium commander and MedPod patient who is convicted with planted evidence and stripped of his Legion. Reduced to a level-zero Disgraced Commander, he accepts imprisonment to pursue exoneration through the Retribution path.",
+            "id": "raytak",
+            "name": "Raytak",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The replacement officer whose platoon assumes responsibility for Hayden's Knoll after Raytak's Legion is dissolved.",
+            "id": "lieutenant-burnside",
+            "name": "Lieutenant Burnside",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A corrupt Imperium official who uses planted documents and summary powers to convict Raytak, dissolve his Legion, and install a replacement garrison.",
+            "id": "field-inspector",
+            "name": "the field inspector",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A disgraced Imperium soldier imprisoned with Raytak. His hatred of officers makes him Raytak's most immediate threat among the transported prisoners.",
+            "id": "former-sergeant",
+            "name": "the former sergeant",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A promoter who buys prisoner contracts and coerces the captives into gladiatorial combat, treating Raytak and the other soldiers as expendable arena assets.",
+            "id": "gladiatorial-school-owner",
+            "name": "the gladiatorial-school owner",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An arena official who validates the prisoners' supposed consent to fight and supports the coercive arrangement imposed by their contract holder.",
+            "id": "asif",
+            "name": "Asif",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A druid who joins the time-sensitive effort to uncover who engineered Raytak's false conviction. She brings field skills, an animal companion, and a commitment to freeing him.",
+            "id": "yendis",
+            "name": "Yendis",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the party investigating Raytak's conviction. He joins the search for evidence behind the false treason charge.",
+            "id": "jacoby",
+            "name": "Jacoby",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Hayden's Knoll merchant and informant who directs Yendis toward a suspected lead connected with the people behind Raytak's conviction.",
+            "id": "phineas",
+            "name": "Phineas",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goblin apprenticed to Phineas by Chief Bugtug. His dishonest sales earn him the Shady Merchant class.",
+            "id": "eyeball",
+            "name": "Eyeball",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Raytak's granddaughter and the real-world player behind Yendis. She visits him in his MedPod and recruits additional help for the effort to free him in Limitless Lands.",
+            "id": "lauren",
+            "name": "Lauren",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lauren's ally and a level-eight barbarian player recruited for the mission to help Raytak. Limitless Lands has given him opportunities for friendship and social engagement.",
+            "id": "nolan",
+            "name": "Nolan",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A slaver leader transporting captured gnolls. Parasites infiltrate his caravan and absorb the slavers into their growing hive.",
+            "id": "saunders",
+            "name": "Saunders",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A slaver who leads a raid on a nearby farm before becoming infected by the parasite hive.",
+            "id": "jameson",
+            "name": "Jameson",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A project coordinator and addiction researcher who asks Trey to examine whether MedPod treatment and a supportive virtual environment could assist patients through withdrawal.",
+            "id": "dr-nassif",
+            "name": "Dr. Nassif",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A company representative who leads a public marketing announcement for merchandise based on Limitless Lands characters and scenes.",
+            "id": "gloria",
+            "name": "Gloria",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A regional dwarf investigator whose people may provide an official inquiry into Raytak's conviction. He supports the search for evidence and understands the dangers around the dwarven routes.",
+            "id": "dwarf-pathfinder-leader",
+            "name": "the dwarf pathfinder leader",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ward-bound legendary creature encountered by Yendis’s party in a darkened sealed chamber. It detects lies and makes consequential riddles the price of escape.",
+            "id": "sphinx",
+            "name": "the sphinx",
+            "reveal": {
+              "chapter": 15
+            }
+          },
+          {
+            "description": "A veteran merchant who agrees to outfit Raytak's growing prisoner force after deciding that Raytak genuinely values the soldiers under his command.",
+            "id": "retired-imperium-soldier",
+            "name": "the retired Imperium soldier",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier in Raytak's prisoner unit who detects three spies watching the camp.",
+            "id": "infiltrator",
+            "name": "the infiltrator",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The infiltrator who exposed the spies around Raytak's camp. A divine boon makes his improvised butter knives unusually effective weapons.",
+            "id": "butterknife-buford",
+            "name": "Butterknife Buford",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prison guard who comes to believe Raytak is honorable. He quietly provides intelligence about the capital tournament and conceals magical fire javelins for Raytak's force.",
+            "id": "former-prison-guard",
+            "name": "the former prison guard",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A favored Grand Melee contender whose exceptional size and strength make him one of the tournament's most dangerous threats.",
+            "id": "stone-giant",
+            "name": "the stone giant",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A defensive-garrison officer who helps Raytak resume command at Hayden's Knoll.",
+            "id": "lieutenant-gamble",
+            "name": "Lieutenant Gamble",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tai's wife, waiting with their extended family when he emerges from MedPod treatment. She welcomes him back as he begins the physical work of recovery.",
+            "id": "judith",
+            "name": "Judith",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trey's mother and Raytak's wife. Medically stabilized in a MedPod, she lives in a private lakeside virtual environment where family members can visit her.",
+            "id": "natalie",
+            "name": "Natalie",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the depleted dwarf force allied with Raytak against the Holdfast infestation. He brings survivors and knowledge of the parasite threat to the joint campaign.",
+            "id": "dwarf-war-leader",
+            "name": "the dwarf war leader",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An intelligent parasite that rejects the Holdfast master's rule. It secretly leaves with several dozen drones to establish an independent hive beyond the master's control.",
+            "id": "parasite-daughter",
+            "name": "the parasite daughter",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An unnamed infernal patron who enforces a soul contract, destroys the necromancer and undead minions, and compels Brandon into unknown service through a portal.",
+            "id": "imp-patron",
+            "name": "the imp patron",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B07SX5V727",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-iii-retribution"
+      },
+      "recaps": {
+        "ending": "Raytak returns to Hayden's Knoll as a restored commander, reforms the First Legion under Brooks, and leads it north with dwarf and Forerunner allies. The army suffers severe losses, including the dwarf war leader, but liberates Holdfast. The Forerunner clan leader kills the parasite master after the creature tries to escape, and Holdfast enters Imperium control. Raytak reaches level 11 and gains access to allied auxiliary troops. Tai safely leaves his MedPod and reunites with Judith and their family. Natalie is stable enough to receive Trey, Lauren, and Veronica in a private virtual environment, but Raytak remains in treatment and cannot yet join them. The local hive is gone, yet a breakaway parasite daughter survives in a golden insect beyond the zone. Brandon's imp patron destroys the necromancer and takes Brandon through a portal to perform an unknown service. Raytak's bargain to settle the stone giant's people near Hayden's Knoll also remains to be fulfilled.",
+        "in_short": "Framed by a corrupt field inspector, Raytak accepts imprisonment and starts again as a Disgraced Commander so he can lawfully restore his name. He turns hostile fellow prisoners into a disciplined unit, survives successive arenas, and wins the capital Grand Melee by persuading a stone giant to yield. Meanwhile, Yendis and her companions recover records proving that Brandon financed the frame-up. Imperial diviners confirm the conspiracy, and Raytak regains his rank, class, and Legion. He returns to Hayden's Knoll and leads dwarf and Forerunner allies against the parasite hive at Holdfast. The allied force destroys the local master and secures the town, although a breakaway daughter survives elsewhere. Tai completes MedPod treatment and rejoins his family, while Raytak and Natalie remain in care. An imp patron finally claims Brandon and sends him through a portal to an unknown assignment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: James Raytak entered Limitless Lands through an experimental MedPod while suffering serious physical and neurological injuries. Cleo, the AI that controls both the game and his treatment, supports his damaged cognition and prevents unsafe memories from reaching him. Inside the game, Raytak became an Imperium commander, built the First Legion, and helped protect Hayden's Knoll alongside allies including Tai, Brooks, Delling, Yendis, Jacoby, and Crunchy. His son Trey supervises the medical program without revealing their family relationship to him in the game. Tai is another MedPod patient who can safely serve beside Raytak. Raytak also carries a life pact linked to a corrupted dryad. As this volume begins, his military reputation and fragile recovery both depend on the stability Cleo has created around him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Brandon returns from a failed assault on Haven with only a reduced force, a necromancer ally, and an active plan against Raytak. Elsewhere, gnolls breach an ancient mountain prison and release a parasite that consumes their leader's mind. At Hayden's Knoll, a corrupt Imperium field inspector arrests Raytak using planted documents, declares him guilty, and dissolves the First Legion. Raytak refuses easier alternatives and accepts incarceration as a level-zero Disgraced Commander so that he can pursue formal exoneration. Transported with three disgraced soldiers, he is repeatedly killed by a former sergeant who hates officers, then sold to a gladiatorial-school owner. Raytak is forced into arena combat, refuses to execute defeated prisoners, and survives punishment by using the restored power of his corrupted-dryad pact. By the end of Chapter 6 he has reached level 2, accepted command of the prisoner group, and agreed to seek their freedom through a grand melee.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Delling, Tai, Yendis, and Jacoby begin the Saving Raytak quest and follow information from Phineas toward a suspected criminal-guild base. Lauren visits Raytak's MedPod, revealing that she is both his granddaughter and the player behind Yendis. She recruits Nolan's barbarian avatar to strengthen the party. The parasite master contaminates its gnoll tribe, creates linked drones and daughters, and deliberately allows infected captives to enter a slaver network. Raytak's own situation improves through combat and discipline. He organizes new prisoner recruits into a working formation, survives an unfair arena battle, and selects a captain path that supports temporary fighters. His former-sergeant adversary saves his life, explains that an officer's failure cost him his family, and finally commits to Raytak's command. Raytak is still captive, but he now leads a trained and increasingly loyal prisoner unit rather than a collection of hostile individuals.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Saving Raytak party finds dwarven pathfinders rather than the expected criminal camp. After battling a giant burrowing creature, the group accepts a second quest that may provide evidence for Raytak. In a sealed chamber they free an imprisoned sphinx by answering its riddles. The sphinx confirms that the suspected guild did not frame Raytak and directs the investigators toward a necromancer who kept useful records. Raytak's caravan, meanwhile, runs short of food and bargains with serpent people through gladiatorial tests. Raytak defeats their young warriors and survives an attack by their giant scorpion by keeping his troops still and redirecting the creature toward noisier targets. The caravan escapes with supplies and additional prisoners. Raytak reaches level 5, expands and improves his formation, and learns that success in a city tournament can qualify his unit for the capital Grand Melee before the Emperor.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak earns entry into a regional Grand Melee and secures standardized Imperium equipment from a retired soldier who respects his concern for his troops. Butterknife Buford identifies spies around the camp, allowing Raytak to hide the unit's improved capability. His force wins the regional contest despite heavy losses and qualifies for the capital championship. Publicly, Gloria explains how Cleo, nanobots, life support, and virtual environments support MedPod patients, ending the secrecy around the program while approval remains pending. Tai then tells the investigation party that he and Raytak are MedPod patients, and Yendis discloses that Raytak is her grandfather. The party reaches the necromancer's lair, defeats his undead defenders, and seizes records after he escapes. Those records show that a rival player bribed the field inspector, arranged Raytak's killing and false evidence, and plans to seize Hayden's Knoll. Delling leads the group toward the capital to reach Raytak before the final contest.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The parasite hive captures a crossroads settlement and grows to more than a thousand hosts. At the capital, Raytak's allies deliver the recovered conspiracy records, but he must win the Grand Melee before presenting them. A sympathetic prison guard supplies concealed fire javelins and information that the gladiatorial-school owner withheld. Raytak's troops survive a sequence of monsters, rival formations, and a shrinking arena zone, then face the favored stone giant. Rather than kill him, Raytak offers land near Hayden's Knoll at low taxes in exchange for future defense, and the giant yields. Imperial diviners verify that Brandon bribed the field inspector and arranged the frame-up. Raytak regains his rank, Commander class, and command of the Legion, while the surviving prisoner soldiers voluntarily remain as an attached redemption platoon. Returning home, he retakes the garrison, reforms the First Legion under Brooks, and learns that Burnside's force and Holdfast have fallen to the parasites. He immediately begins a campaign to destroy the infestation.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tai safely leaves Limitless Lands, awakens outside his MedPod, and reunites with Judith and their extended family. Trey, Lauren, and Veronica also visit Natalie in a private lakeside virtual environment, but Raytak is not yet medically ready to join them. In the game, Raytak advances toward Holdfast with the rebuilt Legion and dwarf allies. Repeated parasite attacks inflict major losses. A rebellious parasite daughter escapes north with several dozen drones, breaks from the master's control, and transfers herself into a golden insect after an owlbear destroys most of her followers. Travelers recover the object without understanding the danger inside it. At Holdfast, parasite abominations breach Raytak's defenses and kill both company commanders. The Forerunner clan arrives in time to reverse the battle, while the dwarf war leader dies holding an abomination's attention. Raytak's surviving allies enter the town, destroy the master abomination, and prevent its escape. Holdfast is liberated, Raytak reaches level 11, and allied auxiliary recruitment becomes available.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak's lawful pursuit of retribution succeeds. His prisoner force wins the capital Grand Melee, the evidence against him is verified, and the Imperium restores his rank, Commander class, and Legion. He then leads the reformed First Legion, dwarf troops, and the Forerunner clan against the Holdfast parasite hive. The allies suffer heavy casualties, including the dwarf war leader, but destroy the local parasite master and bring Holdfast under Imperium control. Raytak reaches level 11 and can recruit dwarf and Forerunner auxiliaries. Tai completes MedPod treatment and returns to Judith and their family. Natalie can receive family visitors in Cleo's virtual environment, while Raytak remains in treatment and cannot yet join them. The parasite danger is not entirely over because an independent daughter survives in stasis inside a golden insect beyond the zone. Brandon's campaign is exposed, but his own fate remains open: an imp patron destroys his necromancer ally, claims Brandon under their contract, and forces him and his dire-rat companion through a portal to an unknown service. Raytak's promised stone-giant settlement also remains pending.",
+            "through": {
+              "chapter": 40
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B07SX5V727",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-book-iii-retribution"
+      }
+    },
+    "limitless-lands-the-commanders-tale-a-litrpg-adventure": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Trey's father, a retired Army colonel whose long physical and cognitive decline has left him unconscious and near death. He becomes the first patient placed in an experimental treatment pod directed by the game company's artificial intelligence.",
+            "id": "colonel-james-raytak",
+            "name": "Colonel James Raytak",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Colonel Raytak's son and legal guardian, as well as the medical liaison for the company's treatment partnership. He authorizes the experimental pod treatment and its use of AI-directed nanobots, placing his father's survival in the new system's care.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Louie"
+            ],
+            "description": "Trey's technically skilled colleague, responsible for bringing the treatment pod online and connecting its systems to the game AI. Lou handles the activation while the medical team prepares Colonel Raytak for the sealed first treatment cycle.",
+            "id": "lou",
+            "name": "Lou",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The FDA observer assigned to the experimental treatment. Dr. Greenway monitors medication decisions and can override the AI's plan or halt the procedure if the patient's condition declines, providing independent oversight during the first treatment.",
+            "id": "dr-greenway",
+            "name": "Dr. Greenway",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A media host who enters Limitless Lands during the public presentation and demonstrates its sensory realism, pain settings, and accelerated passage of game time.",
+            "id": "media-host",
+            "name": "The Media Host",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The game company's principal public-relations representative. She conducts the initial public presentation of Limitless Lands, introducing the game's features and beta launch to the media.",
+            "id": "gloria-treese",
+            "name": "Gloria Treese",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The artificial intelligence that operates Limitless Lands and directs Colonel Raytak's medical treatment. She reports his early repairs and proposes using his responses inside the game to help map his damaged mind and reconstruct lost memories.",
+            "id": "cleo",
+            "name": "Cleo",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Colonel James Raytak",
+              "James Raytak"
+            ],
+            "description": "Colonel James Raytak's identity inside Limitless Lands. Drawing on his military experience, he chooses the unique Commander class, whose progress depends on leading, paying, equipping, and protecting troops rather than seeking personal combat power.",
+            "id": "commander-raytak",
+            "name": "Commander Raytak",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The halfling proprietor of the Commencement Commissary, who guides Raytak through character creation and uncovers his real-world combat record before presenting his class options. Finley explains the unusual demands attached to the Commander class.",
+            "id": "finley",
+            "name": "Finley",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A scout in Raytak's original nine-soldier squad.",
+            "id": "private-tremble",
+            "name": "Private Tremble",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soldier in Raytak's starting squad. A navigation shortcut leaves the unit lost, and Long is badly wounded during its first clash with goblins. His condition immediately tests Raytak's responsibility for casualties, supplies, and the welfare of his followers.",
+            "id": "private-long",
+            "name": "Private Long",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Drex"
+            ],
+            "description": "The medic assigned to Raytak's starting squad, responsible for treating the unit during its dangerous first journey. Private Drex accompanies the soldiers as they attempt to reach the garrison town while meeting the mission's strict casualty requirement.",
+            "id": "private-drex",
+            "name": "Private Drex",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Brazilian fighter player who joins Raytak in defending stranded loggers from a goblin attack. He fights alongside the commander's squad despite their difficult position, and the two add each other as in-game friends after the rescue.",
+            "id": "jacoby-player",
+            "name": "Jacoby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A logger rescued by Raytak's force during a goblin attack. He is among the survivors whom Raytak agrees to escort toward the garrison town, adding civilian protection to the commander's already dangerous introductory mission.",
+            "id": "barnaby",
+            "name": "Barnaby",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Brooks"
+            ],
+            "description": "The senior non-commissioned officer assigned as Raytak's field adviser for the mission to Hayden's Knoll. He joins Raytak's frontier command as the new deployment begins.",
+            "id": "sergeant-brooks",
+            "name": "Sergeant Brooks",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The garrison commander who gives Raytak independent authority at Hayden's Knoll and promises soldiers, supplies, and funding for the frontier assignment. His orders make the settlement's security Raytak's first sustained command responsibility.",
+            "id": "lieutenant-colonel-jacoby",
+            "name": "Lieutenant Colonel Jacoby",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rogue player who murders a town guard. Raytak intervenes and is critically wounded before other guards kill Hacksaw and heal Raytak.",
+            "id": "hacksaw",
+            "name": "Hacksaw",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A capable supply clerk who assembles a discounted package of weapons, armor, tools, medical kits, and uniforms for Raytak's new recruits. Krebs helps stretch the commander's limited funds before the unit begins its two-week march.",
+            "id": "krebs",
+            "name": "Krebs",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The official responsible for the settlers' caravan, including its route and marching order. He hires additional guards shortly before the journey to Hayden's Knoll begins and must coordinate their presence with Raytak's newly assigned military escort.",
+            "id": "caravan-operator",
+            "name": "The Caravan Operator",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the caravan's hired guards. He clashes with Raytak and permits lax watchkeeping, making his company an uncertain part of the expedition's defenses. His approach contrasts with the fortified camps and regular watches imposed by Raytak.",
+            "id": "mercenary-captain",
+            "name": "The Mercenary Captain",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ten-year-old player travelling with the rangers Drake and Quimby on a starter quest. She meets Raytak while the three accompany the northbound caravan, and her druid abilities give the small player group a different set of skills from his soldiers.",
+            "id": "druid-player",
+            "name": "The Druid Player",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger player travelling beside Quimby and the young druid player as their group pursues its starter quests. Drake meets Raytak on the road north and brings scouting and wilderness experience to the trio accompanying the caravan.",
+            "id": "drake",
+            "name": "Drake",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger player and companion to Drake and the young druid player during their journey with the caravan. Quimby is part of the trio pursuing starter quests while Raytak trains his soldiers along the same northern route.",
+            "id": "quimby",
+            "name": "Quimby",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Barnaby's wife and Bella's mother, travelling with the logging families who are relocating to Hayden's Knoll. Claire is part of the civilian community whose safety depends on the caravan's guards and Raytak's soldiers during the long journey.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mercenary who follows Raytak's orders when the caravan faces a likely goblin assault. Raytak places him in charge of the hired guards who remain at the wagon defense, trusting him to organize them alongside the settlers and soldiers.",
+            "id": "liam",
+            "name": "Liam",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A giant unicorn beetle that bonds with the young druid player as her animal companion after Raytak's party reaches the goblin camp. The bond transforms the creature and gives the druid a powerful companion during the captive rescue.",
+            "id": "crunchy",
+            "name": "Crunchy",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child orphaned when his parents die during the goblin assault on the caravan. Raytak seeks a lasting home for him among the surviving settlers, recognizing that the expedition must care for those harmed along the road as well as defeat its enemies.",
+            "id": "edwin",
+            "name": "Edwin",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Commander of the northern transition-point garrison. He expects Raytak to assume responsibility for Hayden's Knoll. His post is the expedition’s final secure stop before the frontier settlement.",
+            "id": "captain-reynolds",
+            "name": "Captain Reynolds",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Phineas"
+            ],
+            "description": "A merchant who advertises his emporium at the northern transition point, where Raytak's caravan stops before continuing toward Hayden's Knoll. Phineas is introduced as a commercial presence at the fortified post.",
+            "id": "phineas-t-moore",
+            "name": "Phineas T. Moore",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The acting leader of an understrength transition-point squad that has endured hunger, poor equipment, and repeated raids. He comes under Raytak's command when the caravan enters the Hayden's Knoll zone and is ordered to help fortify the position.",
+            "id": "private-spring-man",
+            "name": "Private Spring Man",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A survivor of a destroyed goblin tribe who travels in Phineas's service. Raytak allows him and his son to accompany the caravan after making Phineas responsible for their conduct, placing the pair under clear terms while entering the threatened zone.",
+            "id": "goblin-chief",
+            "name": "The Goblin Chief",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young survivor travelling beside his father under Phineas's protection. He is permitted to join the caravan into the Hayden's Knoll zone after Raytak establishes that Phineas will be personally responsible for both goblins' behavior.",
+            "id": "goblin-chiefs-son",
+            "name": "The Goblin Chief's Son",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Delling"
+            ],
+            "description": "A level-2 player with authority over town construction for the displaced people of Hayden's Knoll. He and Raytak agree to provide food, shelter, defenses, and the civic buildings needed to rebuild, dividing civilian and military responsibilities.",
+            "id": "mayor-delling",
+            "name": "Mayor Delling",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former miner who survives a cave survey and reports that spiders seized a villager. He guides Raytak's force to the newly rediscovered copper mine, where recoverable resources could support the settlement if the underground threat is removed.",
+            "id": "lemuel",
+            "name": "Lemuel",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sergeant Tai",
+              "Tai"
+            ],
+            "description": "A one-armed half-orc player who leads newly arrived advanced troops and two regular squads into the battle against the elite spider threatening Raytak's force. Tai's timely arrival prevents the creature from finishing its attack without opposition.",
+            "id": "scout-team-leader-tai",
+            "name": "Scout Team Leader Tai",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B07JKH2QJ3",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-the-commanders-tale-a-litrpg-adventure"
+      },
+      "recaps": {
+        "ending": "Raytak reaches the displaced people of Hayden's Knoll and takes command of its soldiers while Mayor Delling directs civilian construction. The settlement has begun rebuilding, but it still needs defenses and a completed garrison. Brooks remains with Raytak's force, and Phineas continues to answer for the goblin chief and his son. At the mine, Tai's reinforcements help destroy the unique spider sire. Raytak ends the suffering of its surviving transformed victims, recovers the miners' tools, and brings the local goblins to neutral relations with the settlement. He reaches level 5 and accepts Tai, a fellow veteran and MedPod patient, as his senior enlisted partner. The two then pass through a blue portal whose destination is unknown. Raytak's physical recovery and family memories remain incomplete. The Bloody Blades remain a threat, the imprisoned dryad is still held in the Foul Spore, and both treatment pods are drawing unexplained power. Lou observes the players with administrator access and leaves to make an urgent call without revealing what he saw.",
+        "in_short": "Ninety-three-year-old veteran James Raytak enters an AI-run treatment pod and plays Limitless Lands as a Commander, hoping the game can help repair his body and memories. His class makes soldiers the basis of his strength, and he turns an inexperienced unit into a disciplined force while escorting settlers toward Hayden's Knoll. They defeat goblins, survive a corrupted forest, repel the Bloody Blades, and reach the settlement after its destruction. Raytak and Mayor Delling begin rebuilding, then Raytak clears a spider-infested mine with reinforcements led by Tai, another ill veteran receiving pod treatment. The victory improves relations with surviving goblin miners and raises Raytak to level 5. Raytak and Tai enter an unexplained blue portal, while company staff discover abnormal power use in both treatment pods and Lou begins an urgent investigation.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Limitless Lands enters beta as an immersive world controlled by an artificial intelligence. Its technology is also being tested in a secret medical program. Trey authorizes the first treatment for his gravely ill father, retired Colonel James Raytak, and the AI Cleo restores enough of Raytak's awareness to offer him a choice. He enters the game so that his decisions and memories can assist her repairs.\n\nRaytak chooses the unique Commander class. His effectiveness comes mainly through followers, leaving him responsible for their pay, equipment, morale, and survival. His first nine-soldier squad defeats goblins and helps player Jacoby rescue stranded loggers, but medic Private Drex and the wounded Private Long are killed. After escorting the survivors to a garrison town, Raytak intervenes when a rogue player attacks a guard and is nearly killed himself. Lieutenant Colonel Jacoby then assigns him to secure Hayden's Knoll, grants him independent field authority, and appoints Sergeant Brooks as his senior adviser. Raytak's new frontier command begins with promised reinforcements and a caravan preparing to depart.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Raytak equips and trains three inexperienced squads for the journey to Hayden's Knoll, while Sergeant Brooks helps impose discipline on the road. The caravan's hired mercenaries neglect their duties, and their captain leads most of them into a goblin trap. Raytak fortifies the wagons, places Liam over the guards who obey orders, and uses drilled volleys and shield formations to repel a much larger attack without losing a soldier from his own unit.\n\nRaytak then leads a rescue into the forest. His party exploits fighting among the goblins, destroys their remaining leaders, and frees eight captives, including the mercenary captain, who has lost an eye. The young druid player bonds with a giant beetle called Crunchy. After the battle, the sight of a child restores Raytak's knowledge that he has a son. He still cannot recall his son's identity, but the recovered memory persuades him to continue treatment. Outside the game, the first treatment cycle has measurably improved his condition even though his mind remains severely impaired without Cleo's temporary support. Raytak places the orphaned Edwin with Barnaby and Claire, and Liam plus eleven surviving mercenaries enlist in his growing force.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the caravan continues north, Raytak hires Drake, Quimby, and the druid player to train his soldiers in scouting. The players disappear into a rapidly corrupted forest, and Crunchy guides Raytak's rescue force after them. Spore-tainted creatures kill several soldiers, while a corrupted dryad kills Quimby and then Raytak. Quimby and Raytak respawn, Crunchy destroys the dryad, and the dying forest leaves Raytak with a soulbound artifact called the Foul Spore.\n\nThe caravan reaches the northern transition point and reports the dangers along the route. Captain Reynolds confirms that Raytak is expected to assume command at Hayden's Knoll. He authorizes enough replacements to restore the force to fifty regular soldiers and assigns Raytak the final escort. Raytak completes the first stage of his Hayden's Knoll mission, reaches level 2, and chooses paths focused on troop leadership and close combat. He also gains Honor Guard, an ability that summons temporary defenders to draw attacks away from him. The caravan is now ready to enter the final region, where the Bloody Blades have been repeatedly attacking the settlement.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Foul Spore is identified as an epic artifact holding the corrupted dryad. It grants defensive benefits, but Raytak refuses the prisoner's offer of a binding life pact and keeps the artifact. Merchant and mage Phineas T. Moore joins the caravan with a goblin chief and the chief's son under his personal responsibility. Raytak also absorbs a hungry, poorly equipped transition-point squad into his command and supplies it for continued defense.\n\nThirteen Bloody Blades ambush the caravan. The soldiers, settlers, drivers, Phineas, and the two goblins repel them, although fifteen soldiers and four civilians die. Raytak survives the masked mage's attack by using Honor Guard, reaches level 3, and distributes much of the captured money to bereaved civilian families. The caravan finally finds the old site of Hayden's Knoll in ruins, its people driven out by the Bloody Blades. At a defensible plateau, Raytak meets Mayor Delling and learns that the mayor is also a player. They begin an emergency program of food, shelter, fortification, and construction. Raytak takes authority over the local soldiers and accepts the next mission stage: protect the rebuilt town until its garrison is complete.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Surveyors discover an old copper mine near the rebuilding settlement, but spiders have taken a villager and overwhelmed a group of goblin miners. Raytak clears the outer caverns, rescues the surviving goblins, and commits reinforcements against the source. Deeper inside, his force finds an elite spider sire guarding a blue portal and several transformed elf victims. The creature dominates many soldiers and kills Raytak just as advanced troops arrive under Scout Team Leader Tai.\n\nAfter respawning, Raytak returns to learn that he and Tai have defeated the unique enemy. Tai reveals that he is a former Marine NCO whom Raytak knew at the veterans' hospital and that he too is seriously ill inside a treatment pod. Raytak grants mercy deaths to the remaining victims, completes the spider quest, reaches level 5, and improves relations with the goblin miners to neutral. The mine and its tools are recovered for Hayden's Knoll. Tai accepts Raytak's leadership and serves as his senior enlisted partner. Together they enter the unexplained portal. Outside the game, medical staff detect recurring abnormal power use from both pods. Lou observes the players with administrator privileges, exits the game, and begins an urgent call without disclosing his discovery.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B07JKH2QJ3",
+            "type": "community"
+          }
+        ],
+        "work": "limitless-lands-the-commanders-tale-a-litrpg-adventure"
+      }
+    },
+    "little-women": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Jo"
+            ],
+            "description": "The second of the four March sisters and the story's central figure, a spirited, impatient tomboy who chafes against the constraints placed on girls and dreams of being a writer. Blunt, warm-hearted, and quick-tempered, she resents her own faults and works to master them. Devoted to her family, especially her sister Beth, she prizes independence and imagination, and her ambitions and friendships drive much of the book.",
+            "id": "jo-march",
+            "name": "Josephine March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Meg"
+            ],
+            "description": "The eldest March sister, pretty, gentle, and mindful of the family's reduced circumstances. She remembers wealthier days and is tempted by fine things and social approval, but is fundamentally responsible and kind. She works as a governess to help support the household and takes a maternal role toward her younger sisters.",
+            "id": "meg-march",
+            "name": "Margaret March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Beth"
+            ],
+            "description": "The shy, gentle third March sister, devoted to music and content with quiet domestic life. Painfully timid with strangers, she is selfless and loving at home, keeping her small pets and dolls and caring for others. Her tenderness makes her the emotional heart of the family, and her fragile health is a quiet thread of concern.",
+            "id": "beth-march",
+            "name": "Elizabeth March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest March sister, artistic, vain, and eager to be thought a proper lady. Somewhat spoiled and self-conscious about appearances, she has genuine talent for drawing and a determination to rise in the world. Over the course of the book she grows from a petted child into a more graceful and self-possessed young woman.",
+            "id": "amy-march",
+            "name": "Amy March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Marmee"
+            ],
+            "description": "The mother of the four sisters, a warm, wise, and morally steady woman who holds the family together while her husband is away at war. She works among the poor, counsels her daughters through their faults and troubles, and gently guides them toward patience, generosity, and self-control. Her love and example are the family's anchor.",
+            "id": "marmee",
+            "name": "Mrs. March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The father of the March family, absent for much of the story as a chaplain serving the Union army during the Civil War. A learned, principled, and affectionate man who lost much of the family's money before the story begins, he is present chiefly through his letters home, which encourage his daughters to be good and brave. His eventual return is a longed-for family reunion.",
+            "id": "mr-march",
+            "name": "Mr. March",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Laurie"
+            ],
+            "description": "The lively, wealthy boy living next door to the Marches with his stern grandfather. Lonely and motherless, he is quickly drawn to the warmth of the March household and becomes an intimate friend, above all to Jo. Charming, generous, and a little idle, he shares the sisters' amusements and grows up alongside them, his affections deepening as the years pass.",
+            "id": "laurie",
+            "name": "Theodore Laurence",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Laurie's grandfather, a rich, gruff old gentleman who at first seems forbidding. Beneath his stern manner he is lonely and kind, softened especially by the shy sister Beth, who reminds him of a granddaughter he lost. He becomes a quiet benefactor and friend to the March family.",
+            "id": "mr-laurence",
+            "name": "Mr. Laurence",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Laurie's tutor, a quiet, honorable, and hardworking young man of modest means. Steady and sincere, he grows attached to the eldest March sister and courts her earnestly despite having little money. His patient devotion and sense of duty mark him as a dependable suitor.",
+            "id": "john-brooke",
+            "name": "John Brooke",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy, sharp-tongued elderly relative of the family, easily displeased and fond of pointing out proper behavior. Jo serves as her companion and reader, enduring her criticisms. Despite her difficult manner she takes real interest in the girls' futures, and her opinions and money carry weight in the family's affairs.",
+            "id": "aunt-march",
+            "name": "Aunt March",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Professor Bhaer"
+            ],
+            "description": "A middle-aged German professor, poor but learned, whom Jo meets while boarding in New York. Kindly, unpretentious, and much respected for his character, he takes an interest in Jo's work and mind, offering honest guidance rather than flattery. His warmth and integrity draw the two together.",
+            "id": "professor-bhaer",
+            "name": "Friedrich Bhaer",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Marches' faithful servant, who has been with the family for years and is treated almost as one of them. Practical, blunt, and devoted, she runs the household through hard times and stands by the sisters and their mother in every crisis.",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "little-women"
+      },
+      "recaps": {
+        "ending": "The novel closes with the surviving sisters settled into adult lives. Meg is contentedly married to John Brooke, raising their young twins, Daisy and Demi, in a modest home. Amy, matured by her time in Europe, marries Laurie, whose youthful love for Jo has turned into devotion to Amy; the two return home comfortable and prosperous. Beth has died quietly at home, surrounded by her family, her gentle influence remaining with them. Jo, who long resisted marriage, accepts Professor Friedrich Bhaer, the kind, penniless German scholar she met in New York. When Aunt March dies she leaves Jo her large house, Plumfield, and Jo and Bhaer turn it into a school for boys. The final chapter gathers the whole family for Marmee's birthday at Plumfield, the three surviving daughters with their husbands and children around her: Jo happy as wife, teacher, and still a writer; Amy and Laurie flourishing; Meg domestic and fulfilled. The sisters have grown into separate adult lives while remaining bound to their mother and to one another.",
+        "in_short": "The four March sisters, motherly Meg, tomboyish and aspiring writer Jo, gentle Beth, and artistic Amy, grow up in genteel poverty in New England while their father serves as a chaplain in the Civil War. Guided by their mother, Marmee, they wrestle with vanity, temper, and hardship, and become close to the wealthy boy next door, Laurie, and his grandfather. Meg marries Laurie's tutor, John Brooke, and settles into married life. Jo pursues writing, refuses Laurie's proposal of marriage, and goes to New York, where she meets the older Professor Bhaer. Amy travels to Europe. Beth, weakened years earlier by scarlet fever, slowly declines and dies at home. Grieving Laurie eventually falls in love with Amy and marries her abroad, while Jo, reunited with Professor Bhaer, accepts him. In the end Jo inherits her Aunt March's estate, Plumfield, and opens a school there with her husband, as the surviving sisters build families of their own.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The four March sisters, Meg, Jo, Beth, and Amy, spend a lean Christmas in New England while their father is away serving as a chaplain in the Civil War and money is short. Guided by their mother, Marmee, they try to bear their small hardships cheerfully and to give up their own comforts for others. Jo, restless and bookish, befriends the lonely rich boy next door, Laurie, and through him the sisters come to know his gruff grandfather, Mr. Laurence, who is quietly won over by shy, music-loving Beth. Early chapters follow the girls at work and play: Meg and Jo earning money, Amy's vanity, Beth's timidity, and the warm, teasing bonds of the family. The Marches are poor but loving, and their neighborly friendship with the Laurences begins to open their world.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The sisters face a string of ordinary trials that test their characters. Amy, furious at being left out, burns one of Jo's manuscripts, and their quarrel nearly ends in tragedy when Amy falls through thin ice while skating and is saved just in time, teaching Jo to master her temper. Meg visits fashionable friends, is dressed up and flattered at a party, and learns she is happier being herself than playing at wealth. The girls form a little club with Laurie, share pleasures and small ambitions, and confide their dreams of the futures they hope for. Through these episodes the family draws closer to Laurie and the Laurences, while each sister struggles, in her own way, with pride, envy, or discontent.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A telegram brings word that Mr. March is gravely ill, and Marmee hurries to Washington to nurse him, leaving the girls to manage alone, helped by Laurie's tutor, John Brooke. In their mother's absence Beth, visiting a poor sick family, catches scarlet fever and becomes dangerously ill; Amy is sent away to stay with the sharp-tongued Aunt March to avoid infection. The sisters keep an anxious vigil until Beth passes the crisis and begins to recover, and Marmee returns with reassuring news of their father. The ordeal deepens the family's gratitude and love. During this time John Brooke's quiet attachment to Meg becomes clear, and the household waits hopefully for the father's homecoming.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr. March comes home at last, weak but recovering, and the family is joyfully reunited at Christmas. In the wake of his return, John Brooke declares his love for Meg. Aunt March, disapproving of the match because Brooke is poor, tries to forbid it, but her interference only pushes Meg to defend him and accept his proposal. Meg and John become engaged, though they agree to wait before marrying while he establishes himself. The first part of the story closes with the sisters older and steadier, their family whole again, and Meg on the threshold of a life of her own.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Several years pass. Meg marries John Brooke and settles into a small home, learning the pleasures and difficulties of married life and soon becoming mother to twins. Jo throws herself into writing, selling stories and dreaming of literary success while resisting the idea of romance. Amy, now a graceful young woman with artistic ambitions, is unexpectedly chosen over Jo to accompany a relative on a long tour of Europe, a disappointment Jo bears with effort. Laurie, growing up alongside the family, becomes increasingly devoted to Jo. The sisters are beginning to move into separate adult paths, their childhood closeness stretched by marriage, ambition, and distance, even as their affection endures.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jo, wanting independence and worried about Laurie's feelings, goes to board in New York, where she meets a poor but admirable German scholar, Professor Bhaer, who becomes her friend and honest critic. When she returns home, Laurie confesses his love and asks her to marry him; Jo refuses, certain they are unsuited as husband and wife, and a hurt Laurie goes abroad. Meanwhile Beth, whose health never fully recovered from her earlier illness, grows steadily weaker. The family gradually accepts that she will not live, and Beth, calm and loving to the end, dies at home. Her death is a profound loss that draws the surviving family together in grief and reshapes each sister's sense of what matters.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Abroad, Laurie and Amy meet again, comfort each other in their separate sorrows, and fall in love; they marry and return home together. Jo, lonely after Beth's death and softened by grief, is reunited with Professor Bhaer, who seeks her out; he proposes, and she gladly accepts, having found in him the companion she truly wants. When Aunt March dies, she leaves Jo her large country house, Plumfield, and Jo and Bhaer transform it into a school for boys. The story ends with the whole family gathered for Marmee's birthday at Plumfield: Meg content with John and their children, Amy and Laurie prosperous, and Jo happy as wife, teacher, and writer, the surviving sisters grown into their own lives yet still bound to their mother and one another.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "little-women"
+      }
+    },
+    "lord-of-chaos": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Dragon Reborn and Car'a'carn, ruling from Cairhien and Caemlyn and commanding the Aiel. Grief-hardened by Moiraine's death and increasingly cold and suspicious, he is gathering men who can channel into a private army and trying to bend nations and Aes Sedai alike to his will before the Last Battle, all while the taint on saidin works at his mind.",
+            "id": "rand-althor",
+            "name": "Rand al'Thor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rand's luck-blessed friend, now a brilliant and reluctant battle commander leading his own company of soldiers, and carrying dead men's memories of war, a Power-turning medallion, and a black-hafted spear. Loyal beneath his griping, he still dreams of a quiet life he never seems to reach.",
+            "id": "matrim-cauthon",
+            "name": "Mat Cauthon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rand's steady friend, a wolfbrother acclaimed lord of the Two Rivers and wed to Faile, called back to the Dragon's side. Deliberate and dutiful, he answers Rand's need despite his longing for home, wary of the harder man his friend is becoming.",
+            "id": "perrin-aybara",
+            "name": "Perrin Aybara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The innkeeper's daughter of Emond's Field, trained as a dreamwalker and grown into a poised, formidable young woman among the rebel Aes Sedai gathered at Salidar. Ambitious and quick-minded, she is far more than the untried girl her elders take her to be.",
+            "id": "egwene-alvere",
+            "name": "Egwene al'Vere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Wisdom of Emond's Field, a channeler of great strength and a gifted Healer working with the rebel Aes Sedai, still fighting to reach the Power without relying on her own anger. Proud and relentless, she guards a captive Forsaken and pursues breakthroughs others believe impossible.",
+            "id": "nynaeve-almeara",
+            "name": "Nynaeve al'Meara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Daughter-Heir of Andor, a strong channeler among the Salidar rebels, working with Nynaeve on angreal and other objects of the Power. Poised and dutiful, she is caught between her claim to the throne of Andor and her feelings for the Dragon Reborn.",
+            "id": "elayne-trakand",
+            "name": "Elayne Trakand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncrowned last king of a fallen Borderland realm and a peerless swordsman, whose Warder bond passed against his will to another Aes Sedai on Moiraine's death. Grim and self-contained, he carries his grief and his sense of doom as he is drawn back toward those he once guarded.",
+            "id": "lan-mandragoran",
+            "name": "Lan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt young woman who reads glimpses of the future in images only she can see. Having long foreseen her fate bound up with Rand's, she returns to his side, offering him plain counsel and quiet loyalty amid a court full of flatterers and schemers.",
+            "id": "min-farshaw",
+            "name": "Min",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Aiel woman training to be a Wise One and a channeler, set to watch over Rand. Prickly, proud, and bound by Aiel honor, she is deeply and uneasily entangled with the Dragon Reborn, torn between duty, custom, and her own heart.",
+            "id": "aviendha",
+            "name": "Aviendha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proud, fierce noblewoman wed to Perrin and ruling at his side in the Two Rivers, come with him back to the wider war. Courageous and jealous of her husband's regard, she is a shrewd manager of people determined to share his dangers.",
+            "id": "faile-bashere",
+            "name": "Faile",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hard, powerful man who can channel, once notorious as a captured false Dragon, who comes to Rand offering to help gather and train other men with the spark. Capable, arrogant, and unsettling, he takes charge of the new school for male channelers, his true loyalties impossible to read.",
+            "id": "mazrim-taim",
+            "name": "Mazrim Taim",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lord-of-chaos"
+      },
+      "recaps": {
+        "ending": "Rand's captivity ends at the Battle of Dumai's Wells. The loyalist Aes Sedai embassy that feigned friendship has kidnapped him, sealed him in a chest, and beaten him daily on the road toward Elaida, meaning to make him a tame weapon. His friends refuse to abandon him: Perrin, the Aiel, Mat's soldiers, and above all the newly trained Asha'man ride to the rescue and break through a besieging Shaido host in a slaughter that announces the return of men who wield the Power as a force in the world. Rand is freed, shaken and further hardened by the ordeal. In the aftermath a number of Aes Sedai kneel and swear fealty to the Dragon Reborn, a humbling of the White Tower's ancient pride that would once have been unthinkable. In Salidar, the rebels have raised Egwene, still only a young woman, to the Amyrlin Seat, badly misjudging her as someone they can steer; Nynaeve has learned to Heal the once-permanent severing of a channeler's gift, restoring the deposed Siuan and others, and has married Lan. Rand ends the book more powerful and more feared, but colder, warier, and more alone, the taint on saidin and the memory of the chest both weighing on him as the Shadow's servants prepare fresh moves.",
+        "in_short": "Rand, ruling from Cairhien and Caemlyn, struggles to hold a fracturing web of nations while founding a secret school to gather and train men who can channel, the Asha'man, aided by a hard former false Dragon named Mazrim Taim. Both Elaida's loyalist Tower and the rebel sisters of Salidar send embassies to him, each hoping to control the Dragon Reborn. In Salidar the rebels raise Egwene, still young, to be their Amyrlin Seat, expecting a puppet; Nynaeve there discovers how to Heal the once-incurable severing of a channeler's gift, and she and Lan are wed. The loyalist embassy betrays Rand, seizing him, sealing him in a chest, and carrying him off to be broken and delivered to Elaida. His friends and the Asha'man ride in pursuit, and at the Battle of Dumai's Wells they cut through a besieging Aiel host and free him, the young male channelers unleashing terrible destruction. In the aftermath, a group of Aes Sedai kneel and swear fealty to the Dragon Reborn himself, an act without precedent, and Rand's power, and his hardness, grow greater than ever.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Rand al'Thor, a shepherd of the Two Rivers, was named the Dragon Reborn after he first channeled the One Power: the prophesied champion fated to fight the Dark One and, because he wields the tainted male Power, to go mad. He fought the fiery-eyed Ba'alzamon in the sky above Falme, was proclaimed the Dragon before the world, and drew the crystal sword Callandor from the Stone of Tear, killing that enemy and learning it was the Forsaken Ishamael. He went to the Aiel Waste, uncovered his people's hidden past, and was accepted as their Car'a'carn, chief of chiefs. Leading the Aiel down into the heartland, Rand warred against the renegade Shaido, and destroyed the Forsaken Rahvin at Caemlyn with balefire. In that campaign the Aes Sedai Moiraine, who had guided him since Emond's Field, sacrificed herself by dragging the Forsaken Lanfear through a doorway that consumed them both. Along the way Mat grew into a gifted battle commander; Perrin defended the Two Rivers, wed Faile, and was made its lord; Nynaeve and Elayne captured the Forsaken Moghedien and bound the legendary Birgitte into living flesh; and the White Tower split, Elaida seizing power and stilling the deposed Amyrlin Siuan Sanche, driving rebel sisters to gather at Salidar. As this book opens Rand rules Cairhien and Andor, commands the Aiel, and has begun secretly gathering men who can channel, while rival Aes Sedai maneuver to seize control of the Dragon Reborn.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "lord-of-chaos"
+      }
+    }
+  }
+}

@@ -1,0 +1,1269 @@
+{
+  "entries": {
+    "rise-of-the-living-forge-5": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ifrit",
+              "the Hero of Lian"
+            ],
+            "description": "The former Hero of Lian, presumed dead since the explosion that ended a secretly staged war, now living in Milten behind the mask of the smith Ifrit and leading the guild Menagerie from Lillia's tavern. He carries the unique Living Forge class and a curse, the Hungering Maw, that forces him to devour magic to survive; his smithy is the sentient Infernal Armory and his hammer, Caldera, an evolved living weapon. As book 5 opens he attends the Adept Proving Grounds only as a spectator, unable to fight for fear of recognition, while two teams he equipped compete.",
+            "id": "arwin-tyrr",
+            "name": "Arwin Tyrr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Demon Queen"
+            ],
+            "description": "The former Demon Queen, stripped of her old power by the same explosion that felled Arwin, now hiding in Milten as the innkeeper of the monster-themed Devil's Den. She carries the unique Hearthkeeper class, which grows stronger through the guests she feeds and lodges, and her tavern is bonded to her as a powerful familiar. Arwin's partner and a founding member of the Menagerie, she keeps the guild's home base thriving while the tournament proceeds far away, and despises needless killing.",
+            "id": "lillia",
+            "name": "Lillia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former street thief of Milten and full member of the Menagerie, carrying the unique Warden class built on restraint and control rather than killing. Guarded and shaped by a hard childhood, she is fiercely loyal to Arwin and a lifelong expert sneak. At the Proving Grounds she serves as his eyes, using an item he made to walk through walls and move unseen while she scouts the competing teams.",
+            "id": "reya",
+            "name": "Reya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, battle-tested warrior and full member of the Menagerie who lost her right arm years ago and now fights with a cursed wooden replacement that augments her strength and hungers for death. Loyal and quietly proud, she competes at the Proving Grounds as the third fighter for the allied guild Phoenix Circle, carrying the private weight of a personal Challenge tied to her lost arm.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the drunkard",
+              "Koyu the Lost"
+            ],
+            "description": "A centuries-old lich, long known on Arwin's street only as a harmless blue-eyed drunkard before revealing himself as its silent guardian of some seven hundred years and the source of the neighborhood's ghost rumors. Allied to Arwin, he helped forge the core of the Soul Guardian and awaits the new body Arwin promised him. He senses that the world itself is slowly starving.",
+            "id": "koyu",
+            "name": "Koyu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven master smith and Arwin's informal mentor, a purist steeped in the dwarves' craft and their long trade in weapons and materials. Gruff but genuinely fond of Arwin, he is one of the few who knows something of the smith's methods, and Arwin turns to him for guidance as he pushes his craft toward ever more ambitious work.",
+            "id": "wallace-gentletongue",
+            "name": "Wallace Gentletongue",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A steady warrior in heavy plate and founding member of the Menagerie, married to the healer Anna. Once a genuine paladin who lost his holy class, he now fights as an ordinary man-at-arms and serves as the guild's tactical mind. Behind the scenes he runs an extensive network of street informants, and his intelligence work repeatedly proves decisive in guarding the guild against threats others cannot see.",
+            "id": "rodrick",
+            "name": "Rodrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind, forthright healer and member of the Menagerie, married to Rodrick. An ordinary healer rather than a battle-mage, her power is limited by her own energy, yet she is the guild's lifeline through its hardest fights. Her guarded past includes a rare command of poisons and a history with the Secret Eye that she keeps closely held.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly, archaic-mannered proprietor of a cluttered curiosity shop who secretly deals in cursed items and can sense a person's greed. Her shop can open its doors to almost any location, letting her bypass ordinary travel controls. Eccentric and prone to demanding odd payments, she has attached herself to the Menagerie and its projects, though she operates under rules of her own that she rarely explains.",
+            "id": "esmerelda",
+            "name": "Esmerelda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kien of the Twin Blades"
+            ],
+            "description": "An extremely powerful adventurer once renowned as Kien of the Twin Blades and a former solo champion of the Proving Grounds, whose magic and strength were stolen by his own brother, Hein, through an enchanted dagger. Left powerless, he earned a new class and now fights with a soul-imprinted weapon that is, outwardly, a plain broom. He competes for the Menagerie-backed Thornhelm team alongside Art and Vix, intent on finding and killing Hein, who has entered the tournament wielding his stolen power.",
+            "id": "kien",
+            "name": "Kien",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duke Aleric's teenage son and reluctant heir to a declining noble house in Thornhelm. Born with a malformed leg, he cannot fight and walks with a crutch, but he is a formidable strategist who keeps detailed intelligence on people in a deck of illustrated cards. He competes at the Proving Grounds beside his sister Vix and Kien, the family's last hope to win a prize that might cure her, and has become a close ally of the Menagerie.",
+            "id": "art",
+            "name": "Art",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Art's sister and the fighting strength of Duke Aleric's house in Thornhelm, an elite but visibly ailing warrior dying of a congenital heart condition with only a few years left. She competes at the Proving Grounds alongside her brother and Kien, staking everything on the tournament's prize as her family's last chance at a cure and at restoring their standing.",
+            "id": "vix",
+            "name": "Vix",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bandaged, reserved fighter of the struggling guild Phoenix Circle, wrapped head to foot in cloth and evasive about himself, who partners with the Menagerie for the Proving Grounds. He fights beside Olive and his close companion Maeve, and leaves the impression of being something other than he appears.",
+            "id": "elias",
+            "name": "Elias",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, masked, mute fighter of Phoenix Circle, introduced as Elias's companion and never far from his side. Armed with daggers and unusually strong, she keeps her true strength deliberately held back and is not human. She fights beside Olive and Elias on the Menagerie-partnered team at the Proving Grounds.",
+            "id": "maeve",
+            "name": "Maeve",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An observer for the Secret Eye, the body that ranks guilds and runs the Proving Grounds. Carried from the Menagerie's earlier dealings, she brought the guild into the tournament and continues to watch its teams and Reya's movements from among the event's staff, weighing the Menagerie as she would any other competitor.",
+            "id": "selen",
+            "name": "Selen",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kien's estranged younger brother, competing alone at the Proving Grounds while flanked by two silent cloaked attendants. He carries an enchanted dagger that harms only through bare flesh, the same blade with which he stole his brother's magic and strength, and he keeps his true power hidden. Kien has entered the tournament to find and kill him.",
+            "id": "hein",
+            "name": "Hein",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An operative of the Setting Sun, the numbered organization tied to the late assassin Twelve. Sleep-loving and reluctant, she is sent by her superior One to scout the Proving Grounds for potential recruits whose classes can be 'sun-set.' Watching from a rented viewing room, she is unsettled by the lethal power of the gear the Menagerie's fighters carry and begins studying the guild in earnest.",
+            "id": "eleven",
+            "name": "Eleven",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mysterious master smith, treated as the rival dwarven soul-smith the Secret Eye warned Arwin about. His durable soul-forged armor turns up equipping the Starforge team at the Proving Grounds, but his identity, methods, and true purpose remain unknown.",
+            "id": "necrohammer",
+            "name": "Necrohammer",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "description": "A merchant and Arwin's metal supplier, and secretly a vampire. Once a soldier in Lillia's old army, he recognized his former queen and swore himself to her service. Formal and theatrical but quick to violence when crossed, he keeps the smithy stocked and, as the guild's fame and takings surge during the tournament, helps move its growing fortune to safety.",
+            "id": "madiv",
+            "name": "Madiv",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An untrained noble boy of about fifteen, second in line to the wealthy House Blacktongue, whose parents mean to purchase him a powerful class through a paid delve into an expert-tier dungeon. An obsessive researcher who has studied the Menagerie closely, he is odd, humble, and sharp, and he has calmly calculated that he will not survive the delve. He becomes the Menagerie's escort charge.",
+            "id": "thane-blacktongue",
+            "name": "Thane Blacktongue",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dwarven Master Smith, trained by and daughter to the Dwarven Council member Indrana, who arrives in Milten posing as a wandering challenger smith. Her real aim is to discover which dwarf broke dwarven law by teaching a human the craft. Arrogant and certain of her master's near-artifact hammer, she wagers it against Arwin and loses both the bet and the hammer, and is left publicly humiliated.",
+            "id": "ida",
+            "name": "Ida",
+            "reveal": {
+              "chapter": 85
+            }
+          },
+          {
+            "description": "A Councilwoman of the Dwarven Council and Ida's mother, unwilling to believe Arwin could smith at a master's level without stolen dwarven techniques. Overriding her daughter, she sends the warrior Gideon to kill the smith Ifrit, offering Ida's hand in marriage as the reward and treating her daughter as a bargaining chip in her own political ambitions. She acts from a distance through a telepathic stone.",
+            "id": "indrana",
+            "name": "Indrana",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dwarf warrior of the Dwarven Council serving under Indrana, and Ida's unwanted longtime suitor. Arrogant and boastful, he is clad head to toe in Indrana's high-grade gold-and-silver enchanted armor and wields a huge magical axe he can dismiss and recall to hand. He is sent to Milten to kill the smith Ifrit in exchange for Ida's hand in marriage.",
+            "id": "gideon",
+            "name": "Gideon",
+            "reveal": {
+              "chapter": 96
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-5"
+      },
+      "recaps": {
+        "ending": "Book 5 closes without resolving its two headline setups. The planned infiltration of the Blacktongue party to expose the Adventurer's Guild operative Mask never happens on the page, and the climax pivots entirely to the Dwarven Council. Convinced Arwin stole dwarven techniques, Councilwoman Indrana sends the warrior Gideon to kill him; Arwin's autonomous ivory golem, the Soul Guardian, defeats Gideon publicly, and Lillia captures him with overwhelming shadow magic. Where the major players stand: Arwin is unharmed at his forge, his power decisively displayed through the golem, with his new armor begun but not finished. Lillia has taken command of the aftermath, openly revealed as non-human, and is steering a direct confrontation with the Council. Gideon is captured and doomed, though his armor will be returned. Ida, having refused to call her mother for rescue, is estranged in spirit from Indrana and cooperating inside the Devil's Den. Indrana, off page, is about to be contacted directly. The Menagerie and its allies are all alive and thriving. Open threads carry into a possible book 6: the imminent Lillia-Indrana confrontation and the wider Dwarven Council conflict; the still-unexecuted Blacktongue party and the Mask reckoning; the unfinished armor and Koyu's promised body; the legendary vault still unlocated; Eleven's owed explanation of class-sunsetting; Vix's uncured heart; and the deeper mysteries of the dying world, Arwin's growing Hungering Maw, and the Setting Sun's tie to his and Lillia's summoned past and his charge to find One.",
+        "in_short": "Rise of the Living Forge 5 follows Arwin Tyrr, the presumed-dead Hero of Lian, working as the masked smith Ifrit and leading the guild Menagerie. At the Adept Proving Grounds, two teams he equipped fight through the tournament: Phoenix Circle reaches the final and, though defeated, saves the dying undead Elias and stops the power-thief Hein, whom Kien kills; and Thornhelm withdraws to spare Kien from execution. The mysterious rival smith Necrohammer is revealed as Norman, Phoenix Circle's vanished founder, who then tells Arwin the world's secret: it is dying, the Guild manufactures war to feed the Mesh with the deaths of summoned heroes, and he saved Arwin and Lillia to break the cycle. Home in Milten, Arwin allies loosely with the Setting Sun, learns soulmancy from the lich Koyu and the dwarf Wallace, and begins building an armor to house his sentient smithy. He clears an expert dungeon to save the noble boy Thane and win a legendary vault-key. The book ends when the Dwarven Councilwoman Indrana sends the warrior Gideon to kill Ifrit: Arwin's autonomous ivory Soul Guardian golem overpowers him, and Lillia captures him with shadow magic, setting up a direct confrontation with the Dwarven Council that carries into the next book.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, across the earlier books: Arwin Tyrr, the presumed-dead Hero of Lian, survived the explosion that ended a secretly staged war and was cast into the remote city of Milten, reborn with the unique Living Forge crafting class and a curse, the Hungering Maw, that forces him to devour magic to live. Working behind the mask of the smith Ifrit, he built a small guild, the Menagerie, around the tavern of Lillia, the former Demon Queen, likewise stripped of her power and now running the Devil's Den. The guild grew to include the thief-turned-Warden Reya, the fallen paladin Rodrick, the healer Anna, the one-armed warrior Olive, the vampire merchant Madiv, and the curiosity-shop dealer Esmerelda. Arwin rose through the tiers, took up soul-forging, and bonded to a sentient smithy, the Infernal Armory, and an evolved living hammer. He allied with a centuries-old lich, Koyu, who warned that the world itself is slowly starving. The Menagerie destroyed the masked assassin Twelve, drawing the notice of the numbered organization he served, the Setting Sun. Invited to a tournament, the Adept Proving Grounds, the guild outfitted two teams: the struggling Phoenix Circle, whose fighters include Olive, the bandaged and secretive Elias, and the non-human Maeve; and the Thornhelm team of the strategist Art, his dying sister Vix, and Kien, a renowned adventurer whose power was stolen by his brother Hein. Book 4 ended at the tournament's opening ceremony, before a single match, with Hein competing using Kien's stolen strength and the Menagerie under fresh outside observation.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: the Proving Grounds' group-stage melees begin, and Arwin watches from a spectator balcony with Reya, unable to fight for fear the Secret Eye will recognize the Hero of Lian. He spots a two-person team bearing the Setting Sun's silver insignia - a bald, unarmed monk who knocks opponents' spirits loose and a silent staff-wielder - and sends Reya, carrying an item that lets her walk through walls, to scout the field. Esmerelda works the stands in disguise; using a potion that reads life force, she foresees that a poor competitor's son, Arnold, is fated to die, and asks Arwin to help prevent it. Arwin also studies a trio in flawless obsidian dwarven-forged armor and ties them to the rival smith the Secret Eye warned him about. Olive takes the arena for Phoenix Circle and, in her melee, comes face to face with her old team - Jason, Damien, and Bea, the people tied to the loss of her arm, now richly equipped. Shaken but resolute, she defeats all three alone without her signature ability, severing Bea's arm and walking away with hard-won closure.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reya scouts the tournament openly, unnerving the Secret Eye's observers, who note she walked clean through a warded wall and ignored a bag of tracked gold left as a test. She locates Arnold, plants false intelligence with a rival spy - that Olive's wooden arm is a weakness to be struck - and finds Esmerelda shadowing her to handle the boy herself. Art's team wins its melee carried by Kien, who fights with overwhelming strength and his broom-shaped weapon while hiding his regained power. Arwin confirms that Kien's brother, Hein, is competing alone, carrying a dagger that harms through bare flesh and resists steel, and arranges to warn Olive and Kien. Esmerelda saves Arnold with a limited, costly boost. The melees end and the first proper team round pits Phoenix Circle against the Carreras Coalition, which fields a trio of Falling Blade assassins. Olive kills all three, her cursed arm surging with bloodlust and briefly seizing control to finish the last on its own. The Menagerie advances, and Olive is unsettled by how little the killing moved her.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A Setting Sun operative, Eleven, watches from a rented room, disturbed by Olive's executions and the near-sentient bloodlust of her arm; she is scouting for recruits whose classes can be 'sun-set.' Starforge, led by the gravity mage Ursa, is revealed as the enemy that has been killing Art's family and trying to seize Thornhelm. When the teams meet, Art demonstrates his true power - he can copy and nullify an opponent's magic, storing it in cards - and strips Ursa of his gravity magic. Kien holds off Starforge's synchronized twins, Lily and Ash, alone at Art's insistence, so the team can prove itself. Cornered by Ursa's soul-armor, Art uses a time-freezing ability to plan an escape, then releases a power sealed inside his sister: Vix unleashes invisible, lethal high-speed strikes that carve through the armor and drives a dagger into Ursa's skull, killing him, at the cost of a spreading corruption Art must reseal. The name of the smith behind Starforge's soul-armor surfaces - Necrohammer - and Thornhelm advances, leaving a second Menagerie-outfitted team with dead aggressors in its wake.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Eleven recognizes that the Menagerie deliberately equipped two teams and privately identifies Vix as a warlock bound to her brother Art, revealing herself to be a warlock too when she fails to recruit Kien. Arwin and Reya puzzle over Necrohammer, an evidently masterful smith whose gear performs poorly in real combat; they conclude he has spread single overpowered pieces across nearly a dozen teams as a reputation play. Meanwhile Esmerelda's intervention for Arnold plays out: she had given the doomed boy a cursed sword with a warning never to draw it. When an enemy knight overpowers Arnold's team and draws the blade himself, the weapon's bound devil turns on him and reduces him to dust, sparing Arnold, who refuses to lean on its stolen power, loses the bout, but survives. The reader learns Esmerelda acts as a 'dealer' who places cursed weapons but cannot choose their wielders. The quarterfinals open, matching Phoenix Circle against Blackguard, the pitch-black-armored team Arwin believes Necrohammer fully outfitted.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Phoenix Circle faces Blackguard in the quarterfinal. Olive fights the honorable Vale and the fire-armored second Blackguard fighter two-on-one; deafened by Vale's shrieking sword, she deliberately defies her own sword-purist Challenge without being punished for it, then unlocks the seal on her Ifrit armor, revealing it to be a soul weapon. Her cursed arm gains a voice and bargains for shared control, and Arwin lends her his living hammer, Caldera, for the single fight. Olive's adaptive armor and Maeve's ability to fully deactivate enemy gear win the match; the defeated Vale entrusts Olive with a hidden plain dagger. Studying it, Arwin finds it is a living weapon forged from human finger-bone, twin to Hein's power-stealing dagger, and pieces together that Necrohammer sacrificed his own fingers to build a counter-weapon meant to destroy Hein's. In private, Necrohammer is revealed at last: he is Norman, Phoenix Circle's vanished dwarf-necromancer founder, long ago cast out by the Dwarven Council. His undead fighter Elias is his first and proudest creation, now dying, and Norman means to shatter the daggers and spend their stolen power to save him.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The counter-dagger reaches Art's team just as the semifinal pits them against Hein. Kien unmasks before his stunned brother and, with Art secretly freezing time and feeding his own energy to buy a single decisive moment, beats Hein down; Vix rips the dagger from Hein's hand and Kien clashes the twin blades together, shattering both. Stripped of his stolen power, Hein formally surrenders to hide behind Kien's hero morality - and Kien kills him anyway, punching through his heart and declaring he is no longer a hero. Facing execution by the Adventurer's Guild for the post-surrender kill, Kien intends to die so Art and Vix can go on; Art instead withdraws Thornhelm from the tournament to save him. When a Guild axeman moves to kill Art, Arwin breaks his cover, hurls Caldera, and reveals himself as Ifrit, while Necrohammer publicly backs a lie that the cursed dagger controlled Kien. The Secret Eye accepts Thornhelm's resignation and closes the matter. In private, Necrohammer - dying and out of time - takes the unconscious Elias and works on him with the black gem set in his palm, calling the undead a 'piece' that needs only finishing touches.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The final pits Phoenix Circle against Setting Sun, who field a hidden third member - a forgettable shadow-mage who has scouted all tournament and now targets Olive's arm, exactly as Reya's false intelligence intended, so a blow that should have ended the fight instead glances off her toughest part. Elias, secretly restored by Necrohammer, at last fights with real power and rings himself out along with the near-invincible monk to remove him. Olive, cornered and offered victory by her cursed arm if she will only kill, refuses and is knocked out instead, holding to who she is. Maeve, hearing that Elias's magical 'song' has fully returned, understands Norman truly cured him rather than merely patching him; she eliminates the enemy mage but is then kicked out of bounds, and Setting Sun wins the tournament. Yet Phoenix Circle achieves every real goal: Elias is safe and no longer dying, Hein is stopped, the assassins who targeted the guild are dead, and the Menagerie's craft is proven. The tournament arc closes with the teams parting in mutual respect.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the tournament over, Necrohammer arranges a private meeting and tells Arwin the truth about the world. He knows Arwin was summoned from another world, and reveals that whole peoples - the dwarves, demons, and more - were mass-summoned long ago. The world is dying, starved of magical energy, and the Mesh harvests a share of every life and death; the endless war exists to feed it. The Adventurer's Guild summons powerful heroes and demon queens, lets them grow strong, then kills them, because a fully realized high-tier class yields the most energy when its holder dies - and any hero who cared to protect the world was killed to keep the war going. Lillia, too, was summoned from another planet, and neither she nor Arwin ever chose their class. Necrohammer reveals it was he who planted the black gem in Arwin's armor, a device that detonated to strip Arwin's magic and halt the rare 'sunsetting' of his class, saving him and Lillia from the Guild's harvest to break the cycle and buy the world time. He urges Arwin to grow stronger, to seek out the figure called One, and to find a way to save a dying world, then departs.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Menagerie returns to Milten, where the Devil's Den has thrived on tournament crowds and Lillia's growing Hearthkeeper power. Arwin tells the whole guild everything Necrohammer disclosed. The Setting Sun's Eleven arrives at the tavern, probes the guild about Twelve's death, and - impressed that no one panics - pivots from recruitment to an alliance: rather than absorb the Menagerie, One wants a standing, non-exclusive arrangement in which the guild crafts for and works alongside the Setting Sun, gaining access to its dungeons and, eventually, instruction in sunsetting classes. She leaves behind a dungeon heart as a gift and a show of strength. Thornhelm and Phoenix Circle formally attach themselves to the Menagerie; Elias and Maeve stay on, Elias now permanently made whole by a 'monster core' Necrohammer built from Hein's stolen power. Esmerelda recognizes Vix as a warlock, though the guild sets the matter aside. Arwin resolves to fix Vix's heart, possibly through the dungeon heart or her warlock bond to Art, and returns to the forge intent on building himself a powerful new suit of armor before seeking out One.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin settles back into Milten as the Menagerie grows wealthy and famous. He and Lillia plan an auction house for the city, to be run by Madiv, and the guild runs dungeons to stock the smithy. Working with the Infernal Armory, Arwin conceives his flagship project: not merely a suit of armor but one that can house the sentient Armory itself, letting it leave its building and fight at his side. Koyu appears in person as a lich and reacts with fear to the word 'soulmancy' - the ability Arwin unknowingly gained when he made his Soul Guardian. Koyu explains that soulmancy is the art of enslaving a soul, practiced by history's worst liches, and is horrified until he learns Arwin reached it by a wholly different path: genuinely communing with and contracting the willing souls of his materials. He shares a memory of his ancient master, the greater lich Shade, who forged a soul-bound weapon that once ended a war by destroying everything, including itself, and warns that Arwin's own bow may descend from it. Koyu and the dwarven smith Wallace both agree to mentor Arwin, and the three begin training together toward the armor, Arwin advancing to Adept Two.",
+            "through": {
+              "chapter": 68
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin tells the entire Menagerie his full origin, and the guild shares its own secrets until nothing is hidden among them. Melissa brings a job: escort the untrained teenage son of the wealthy House Blacktongue into an expert-tier dungeon so the boy can earn a class, with access to the family's crystal mines as the real prize. The boy, Thane, proves to be an odd, humble, obsessive researcher who has calmly concluded he will die in the delve. Arwin, liking the boy but despising the family, resolves to keep Thane alive and to strip the dungeon bare in spite. With Koyu and Wallace, Arwin forges a disposable prototype of his armor - a thin skeleton and bracelets meant to test housing the Infernal Armory remotely - knowing it will break under strain. He assembles an elite three-fighter party of himself, Olive, and Anna, and at the dungeon's threshold uses a newfound power to offer the classless Thane a mesh 'quest,' declaring the fearful boy reborn as one who will never throw his life away.",
+            "through": {
+              "chapter": 74
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Deep in the Blacktongue dungeon, Arwin clears rooms with overwhelming force while shielding Thane, who is forbidden to fight. A first boss falls to a single charged arrow, and an entire room of monsters cowers rather than attack. At the final chamber, a hive-mother - an egg-laying bat-and-worm creature surrounded by hatching young - proves un-flankable because it shares its senses with its brood; Thane cracks the puzzle, and by killing hatchlings to disrupt the link the party creates the opening for Arwin to end it with a full-power strike, remotely summoning the Infernal Armory through his prototype armor for the first time. The prototype breaks exactly as predicted, its job done. The Menagerie claims the dungeon's first clear, far beyond what House Blacktongue expected. Thane, who entered certain he would die, breaks down with relief, then discovers he truly earned a class - 'Combat Archivist,' which lets him learn ever more about an item or monster the longer he studies it. Among the loot is a heavily rusted circlet, so encrusted that its magic reads as nothing at all, which the party keeps to examine later. Arwin sends House Blacktongue his regards.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Milten, Arwin and the Infernal Armory design a second, layered version of the armor around a protected core. The challenger smith who has camped outside for weeks finally forces a confrontation and is revealed as Ida, a Dwarven Master Smith and daughter of the Councilwoman Indrana, sent to discover which dwarf illegally taught Arwin his craft. Arwin wins a wager by devouring her master's hammer with his Hungering Maw, hiding his mentor Wallace and humiliating her, though it deepens the Dwarven Council's interest. Eleven returns and offers a new job: infiltrate a coming-of-age party at House Blacktongue, where the Adventurer's Guild is sending an operative called Mask - the man the Setting Sun believes gave Hein the cursed dagger. Arwin agrees, trading Eleven sanctioned observation of the guild for shared intelligence, and resolves to build the new armor within three days and test it against Mask. Reviewing the dungeon loot, the guild confirms the Legendary Band of the Vault Keeper points to a hidden vault that could solve their material needs - and that the Blacktongues do not yet know what they lost.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the Menagerie prepares to infiltrate the Blacktongue party, Esmerelda produces a genuine signed invitation, secured by her will-driven shop through Thane, who has begun working for her. Pressed on why she keeps placing cursed items despite promising to stop, Esmerelda reveals her true class: her trade is not goods but people, redistributing dangerous items to suitable wielders and keeping the worst from the undeserving, and the guild concludes she has quietly averted disasters for years. Eleven names her 'the Curse Broker' and confirms the Setting Sun tracks everyone whose class has been sunsetted, of whom the Menagerie now holds several. A crate of extraordinary high-grade materials arrives as commission payment, including a room-temperature liquid metal ideal for the armor's flexible interior and a crimson battle-metal that pulls Arwin into a vision of a bloodied, bodiless battlefield and then refuses to communicate. With Wallace and Koyu, Arwin begins forging the most complex armor he has ever attempted, the three minds linked through the Infernal Armory, the day before the party.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Arwin, Wallace, and Koyu are deep in forging the new armor, the Blacktongue infiltration never happens. Instead, Ida reports to her mother by telepathic stone that Arwin is 'something else entirely,' not dwarven-trained; refusing to believe it, Indrana sends the warrior Gideon - clad in her own high-grade armor and offered Ida's hand in marriage as reward - to kill Ifrit. At the smithy, Arwin's autonomous protective golem, the hollow ivory Soul Guardian animated by crimson magic, awakens and defends the shop. It out-fights the expert-tier Gideon, survives being beheaded because it is empty inside, and bites chunks from his armor and arm with a hungering shark-toothed maw. Before Gideon can make a final effort, Lillia emerges from the Devil's Den, seizes him with overwhelming shadow magic, and drags him inside. Gideon is captured, defeated, and will not leave alive, though his armor will be returned. Ida, refusing to summon her mother for rescue and effectively defecting in spirit, is brought before Lillia, who reveals her fangs and orders Ida to call Indrana on the stone. The book ends there: Lillia leans in and says the three of them are going to have a talk, the direct Menagerie-versus-Dwarven-Council confrontation set up but unresolved.",
+            "through": {
+              "chapter": 99
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-5"
+      }
+    },
+    "ritual-of-ruin": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Raven"
+            ],
+            "description": "A ruler believed dead after escaping King Caydean. Injured and low on power, he seeks dwarven knowledge that might counter Daemons while sustaining the infant dragon magically bound to him. His survival remains hidden from his wider circle of allies.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An elven general and path builder who helped Rezkin escape King Caydean. She hides Rezkin's survival, seeks aid from her own people, and joins him in searching for a weapon against the Daemon threat. She and Rezkin have also become romantic partners.",
+            "id": "azeria",
+            "name": "Azeria",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young dragon linked to Rezkin and able to speak into his mind. She depends on power drawn through their bond, creating a dangerous drain that Rezkin cannot end by simply leaving her behind. Despite the risk, he is committed to keeping her with him.",
+            "id": "sina",
+            "name": "Sina",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Asshai and the immediate enemy pursuing Rezkin. His combined Spiritua and Daemon power overwhelms Rezkin, and his larger purpose remains concealed. His forces believe Rezkin dead after their confrontation.",
+            "id": "king-caydean",
+            "name": "King Caydean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A veteran warrior, archer, and wind mage who swears to protect Azeria's secrets and joins her expedition to Grestag.",
+            "id": "elven-mentor",
+            "name": "Azeria's former mentor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A high king consulted by Azeria about the Daemon threat. He recalls that the earlier war turned only after the Daemon king fell and directs her toward the nearly lost craft of the dwarves, whose weapons and machines may still hold useful answers.",
+            "id": "elven-ruler",
+            "name": "The elven ruler",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally investigating King Caydean's plans with Malcius. She reports that his faction manipulated a royal succession to secure a large shipment of purple metal that absorbs magical power. Rezkin gives the investigators a relay for urgent contact.",
+            "id": "yserria",
+            "name": "Yserria",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yserria's partner in tracing King Caydean's acquisition of power-absorbing metal. He helps establish that Caydean's faction manipulated succession trials to obtain it, and receives a modified relay for urgent contact with Rezkin.",
+            "id": "malcius",
+            "name": "Malcius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving engineer who maintains the defensive machines of Grestag. Bitter over his people's near extinction and distrustful of elves, he initially refuses help but agrees to demonstrate dwarven equipment made to resist Daemons.",
+            "id": "dwarf-engineer",
+            "name": "The dwarf engineer",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The surviving dwarf engineer in Grestag. He explains that dwarven metal stores magical energy, powers the city's machines, and resists Daemon power. He offers armor and up to one hundred machines for the war, provided Rezkin's group can secure a sufficiently large energy source.",
+            "id": "haggish",
+            "name": "Haggish",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the staff-bearer"
+            ],
+            "description": "A young dwarf trained in smithing and combat who is sent beyond Grestag to build alliances for her dwindling people. Her crystal-tipped staff can connect armor and machines to an external magical source.",
+            "id": "dwarven-apprentice",
+            "name": "The dwarven apprentice",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resistance battle mage trying to release people from coerced oaths to King Caydean. His first experimental attempt kills the captive, deepening his fear of both his destructive power and the choices the war demands.",
+            "id": "wesson",
+            "name": "Wesson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning ally who works beside Wesson in the resistance. He accepts the hazards of sending a potentially compromised mage back into King Caydean's service and urges Wesson to use the opportunity for intelligence.",
+            "id": "farson",
+            "name": "Farson",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Wesson's spy"
+            ],
+            "description": "A battle mage whose oath may still compel loyalty to King Caydean. She asks to return as a possible spy, and Wesson agrees to prepare a secured relay despite the risk that her oath could compromise her reports. Her loyalties therefore remain uncertain.",
+            "id": "returning-battle-mage",
+            "name": "The returning battle mage",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rezkin's missing ally, discovered alive in compelled Fae service. His unusual ability to understand the Fae and move through their overlapping world has made him their human liaison and a general in training.",
+            "id": "tam",
+            "name": "Tam",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crimson Blades thief assigned to obtain supplies and assist Wesson's covert research into magical oaths. He knows Wesson only as a mage working on the Raven's behalf and does not know that Rezkin never authorized the experiments.",
+            "id": "remy",
+            "name": "Remy",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful healer permitted to train as a battle mage under King Caydean's revised rules. He is assigned to partner the battle mage who has returned to Kaibain, then leads her away from the palace to see what he presents as a historic site.",
+            "id": "silas",
+            "name": "Silas",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the siphon Daemon"
+            ],
+            "description": "A rare siphon Daemon forced into the returning battle mage. It can preserve abilities gained through former hosts, including the craft needed to forge King Caydean's enchanted metal. Its new host remains aware but cannot always control her own body.",
+            "id": "smith-daemon",
+            "name": "The Smith",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wary magical teacher who accepts Rezkin as an apprentice while watching for signs that his increasing power is driving him toward madness. The instructor supplies him with the order's trackable gear and continues testing his control.",
+            "id": "spiritua-instructor",
+            "name": "Rezkin's Spiritua instructor",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied mage working undercover near King Caydean's palace. She tracks confirmed cases of possession, including temple priests, but argues that a human host should not be condemned solely because a Daemon occupies the body.",
+            "id": "undercover-contact",
+            "name": "Wesson's undercover contact",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A relay worker coerced into an oath to King Caydean and targeted by Wesson's experimental release spell. She appears to die when it fails, then escapes with knowledge of Wesson's identity and wanted status.",
+            "id": "escaped-relay-worker",
+            "name": "The escaped relay worker",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kyle's regent"
+            ],
+            "description": "Rezkin's cousin and the effective regent of Kyle during his apparent death. Rezkin keeps him in that office after returning, valuing his governance while recognizing his limited experience in war. He reports the scale and strategy of the Asshai blockade.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Rezkin's older brother"
+            ],
+            "description": "An escaped captive and royal claimant who is formally introduced as Rezkin's older brother. Rather than accept hostile accounts of Rezkin, he asks to judge his younger brother for himself after reaching safety in Kyle.",
+            "id": "prince-thresson",
+            "name": "Prince Thresson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Daemon-possessed general overseeing the immense spell nexus built into Kaibain's temple. She recognizes Wesson's apparent Daemon identity and confines him in the chamber that powers the construct, where his attempts to cast are absorbed.",
+            "id": "temple-general",
+            "name": "Caydean's temple general",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the twin allies on Rezkin's temple escape team. Released Daemon power possesses him during the retreat, and he immediately turns against Rezkin. He remains alive, and Rezkin treats finding a way to save him as a priority.",
+            "id": "possessed-twin",
+            "name": "The possessed twin",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FRN81NH1",
+            "type": "community"
+          }
+        ],
+        "work": "ritual-of-ruin"
+      },
+      "recaps": {
+        "ending": "Kyle is no longer under blockade, and Tieran Nirius remains regent while Rezkin leads the larger war. Azeria is Rezkin's empress and life-bonded partner. Tam has learned that he is partly Fae and can command the elemental forces placed under him, though he still must master that authority. Dwarven machines have a prospective power source, individual elven allies have joined Rezkin, and the Spiritua support his command, but the elven nation has not entered the war. In Kaibain, the temple ritual succeeds despite the infiltration. Daemon power spreads through the crowded city, one of Rezkin's twin allies becomes possessed, and a mass method of removing Daemons from their hosts is urgently needed. Rezkin escapes with his bonded dragon and a rune-marked ritual key after badly wounding King Caydean, whose missing body leaves his fate uncertain. Wesson does not reach the escape portal and remains somewhere inside Kaibain. Finding him, understanding the key, and containing the possession crisis are the immediate unresolved tasks.",
+        "in_short": "Rezkin survives King Caydean's attack and assembles dwarven, Fae, elven, and Spiritua support for the Daemon war. He and Azeria enter a life bond, return to Kyle as emperor and empress, and break the Asshai blockade with help from Tam's newly awakened Fae authority. Meanwhile, Wesson's attempts to free oath-bound mages expose his own Daemon bond and produce oath transfer rather than freedom. Caydean, himself inhabited by a Daemon ruler, turns Kaibain's new temple into a vast nexus. Rezkin's team attacks during its opening ritual, but the nexus releases Daemon power across the city. Rezkin wounds Caydean and escapes with the ritual key and his bonded dragon, yet Caydean's survival is unknown, one ally is possessed, and Wesson is left behind in Kaibain.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rezkin became ruler of Kyle while opposing King Caydean, whose campaign threatened Rezkin's allies and the wider realm. Rezkin's apparent death left his cousin Tieran Nirius governing Kyle as regent. Farson and Wesson continued resistance work, while Yserria and Malcius remained allied investigators, all without knowing Rezkin had survived. Prince Thresson, another royal claimant, remained caught in the consequences of Caydean's rule. Tam was missing from Rezkin's wider circle. Rezkin had also formed a magical bond with an infant dragon, creating a new responsibility that could not easily be set aside. His allies were scattered across political, magical, and military fronts, with Kyle forced to endure the effects of losing its ruler. Their obligations remained unresolved. The struggle now extends beyond rival thrones: Daemon influence has become a direct danger, and the alliances, magical knowledge, and military power needed to confront it are still divided.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin escapes King Caydean badly injured, accompanied by Azeria and his bonded infant dragon. Caydean's Spiritua and Daemon strength is greater than theirs, while the dragon's need for magical energy is steadily weakening Rezkin. Azeria conceals his survival and learns that dwarven craft may offer the best surviving defense against Daemons. She, her former mentor, Rezkin, and the dragon travel to Grestag. Yserria and Malcius separately uncover Caydean's acquisition of a large shipment of purple metal that absorbs power, though its intended use remains unknown. Grestag's defensive machines nearly kill the travelers before Rezkin reaches a surviving dwarf engineer. The dwarves explain that their metal stores magical energy and resists Daemon attacks. They make fitted armor for the party and offer as many as one hundred machines, but operating them requires an immense source of power. A dangerous spring between realms may supply it. A young dwarven apprentice joins Rezkin with a staff designed to connect such a source to dwarven armor and machinery.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wesson begins trying to free battle mages from oaths to King Caydean. His first attempt kills the captive, but he continues the research and equips a potentially compromised battle mage to return as a spy. Farson accepts the danger as necessary intelligence work. Rezkin's party enters the Fae forest seeking the spring needed to power the dwarven machines. There Rezkin discovers Tam alive. Tam can understand the Fae and has been pressed into serving as their liaison and military trainee. Rezkin secures access to the spring by agreeing that Tam will command a future force shared by humans and Fae. Azeria objects to the bargain but remains committed to acting beside Rezkin. She and Rezkin also acknowledge their romantic attachment, though they postpone a life bond because either partner would die soon after the other. Rezkin then takes Tam to Kaibain for practical training. With magical aid from Rezkin and Wesson, Tam kills a Daemon's human host and drives the entity back to its own realm. The encounter proves that ordinary troops cannot face even a weak Daemon without magical protection, sharpening Rezkin's need for a broader supernatural alliance.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wesson continues lethal oath-breaking trials in secret while Kaibain fills with hungry pilgrims and immigrants drawn by King Caydean's mandates. His battle-mage spy passes a truth-tested debriefing and is assigned to Silas, a healer trained for combat. Silas reveals himself as a servant of the Daemon ruler inhabiting Caydean. He and his accomplices force a siphon Daemon called the Smith into the spy. The host remains aware but cannot always control her body. Because the Smith retains skills from earlier hosts, it can forge the enchanted metal required for Caydean's concealed project. It preserves Wesson's relay as a useful path to the rebels. Elsewhere, Rezkin's party reaches the inter-realm spring but finds it guarded by a powerful being and altered creatures. The dwarven apprentice succeeds in linking her staff to the spring, securing the prospective energy source. During the fight Rezkin enters the spring to save his dragon companion and releases its power against the guardian. Both survive, but any lasting effects of the exposure remain unknown. Azeria takes them to her people's capital for treatment, exposing Rezkin's survival there. A wary elven leader then agrees to train Rezkin in exchange for political independence and Rezkin's submission to magical and combat instruction.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Training pushes Rezkin toward exhaustion and emotions he has long suppressed. He and Azeria choose a mutual life bond that joins their reserves and makes each dependent on the other's survival. Rezkin becomes a Spiritua apprentice while hiding the full speed of his progress. In restricted records he discovers evidence of an old attempt to remove a Daemon from a living host. The elven ruler admits that the procedure expelled the Daemon but destroyed the woman's independent will, and his people now execute possessed hosts instead. Rezkin insists that the failed method should be improved rather than abandoned. The ruler will not commit the whole nation to war, though individuals may join Rezkin. In Kaibain, Wesson learns that possession is widespread around the palace and temple. His attempt to free a coerced relay worker appears to kill her, but she revives or survives and escapes after identifying him as wanted. Rezkin's dragon companion recovers from the spring much larger and able to speak, though still young in mind. Rezkin finally reveals his true skill to his instructor in a duel. After hearing Rezkin's purpose, the instructor places Spiritua support under his command. Rezkin prepares to return to Kyle with Azeria and the dragon.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin returns to Kyle during an Asshai blockade and formally meets Prince Thresson as his older brother. He resumes the throne, names Azeria empress, and keeps Tieran Nirius as regent while he conducts the war. In Kaibain, Rezkin reveals his survival to Farson and Wesson. Farson renews his allegiance, and a Spiritua identifies Wesson as a complete human bound to a powerful Daemon nature. Investigation of Caydean's temple becomes urgent. Wesson's undercover contact is temporarily controlled by a Daemon opposed to Caydean's Daemon ruler. It warns that the temple opening will activate a major nexus built with enchanted metal. Wesson also recaptures the relay worker from his experiment and discovers that he transferred her oath from Caydean to himself instead of breaking it. She reluctantly returns to enemy service as his agent. Rezkin then attacks the blockade with a new mage-crewed warship, portal teams, Spiritua, and Fae support under Tam. Tam's elemental forces grow into a storm that threatens both fleets, but he discovers that he is partly Fae and commands them to stop. The blockade is shattered, prisoners are secured, survivors are rescued, and Kyle's sea access is restored.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin leads teams into Kaibain to disrupt the temple opening. Wesson enters openly by impersonating the Daemon lord that the possessed congregation believes him to be. The temple's Daemon-held general confirms that the entire building is a spell nexus made from enchanted-metal runes, then traps Wesson in a siphon chamber where every spell he casts feeds the ritual. Rezkin's tunnel team reaches the central chamber, and Azeria and other allies infiltrate among the ritual priests. When the ceremony begins, Wesson devises a tiny lightning construct that releases a captive Daemon and creates a distraction. Rezkin attacks King Caydean on the nexus platform, but the ritual begins draining Wesson's Daemon power and completes despite the fighting. A wave of Daemon power spreads over Kaibain. Rezkin overloads his black blade, breaks Caydean's weapon, and knocks him from the temple. Caydean's body disappears before his death can be confirmed. Rezkin takes the ritual key and orders a retreat. During the escape, released power possesses one of the twin allies and turns him hostile. Rezkin escapes with his bonded dragon, but Wesson never reaches the portal and is left behind. With much of crowded Kaibain potentially possessed, Rezkin now needs a scalable exorcism, a way to save his ally, and a means to recover Wesson and understand the key.",
+            "through": {
+              "chapter": 22
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0FRN81NH1",
+            "type": "community"
+          }
+        ],
+        "work": "ritual-of-ruin"
+      }
+    },
+    "ritualist": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Army combat medic serving with a helicopter response crew. He treats soldiers wounded by an explosive attack and helps evacuate the most critical casualties before a rocket strikes the aircraft.",
+            "id": "sergeant-nelson",
+            "name": "Sergeant Nelson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Joey"
+            ],
+            "description": "The medic previously introduced as Sergeant Nelson. Left quadriplegic after the helicopter crash, Joe accepts an irreversible transfer into Eternium so he can regain a working body and continue living in the immersive world.",
+            "id": "joe",
+            "name": "Joe",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A former medic colleague of Joe who now works for the company behind Eternium. The colleague offers Joe permanent entry into the immersive world.",
+            "id": "former-medic-colleague",
+            "name": "Former Medic Colleague",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Joe's primary caregiver during the months after his disabling injury.",
+            "id": "joes-mother",
+            "name": "Joe's Mother",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Joe's wife, who seeks an annulment and leaves shortly after he wakes following the helicopter crash.",
+            "id": "joes-wife",
+            "name": "Joe's Wife",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A weakened deity associated with concealed knowledge, water, and darkness. The god offers Joe the hidden Ritualist class in exchange for his allegiance and requires him to keep both the class and their relationship secret.",
+            "id": "hidden-god",
+            "name": "Hidden God",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Wanderers member who recognizes the value of Joe's healing, recruits him, and becomes the leader of his field party.",
+            "id": "tiona",
+            "name": "Tiona",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer responsible for Ardania's guard training. Joe earns his trust by healing far more guards than required, and the captain rewards him with useful clerical equipment.",
+            "id": "guard-captain",
+            "name": "Guard Captain",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tiona's heavily armored frontline fighter. Joe risks leaving formation to save him during an early hunt, establishing mutual trust between the two teammates.",
+            "id": "dylan",
+            "name": "Dylan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ranger and archer in Tiona's field party. He scouts targets and fights from range during the group's hunts, forming part of the team that helps Joe adjust to combat and advancement in Eternium.",
+            "id": "chad",
+            "name": "Chad",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the player-killing Hardcores guild. After killing Joe's teammates, he tries to force Joe into his guild and threatens further abuse when Joe refuses, making the conflict between them direct and personal.",
+            "id": "headshot",
+            "name": "Headshot",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Ardania's head librarian and a guide to Joe's scholarly development. He grants Joe access to the library and assigns work intended to prepare him for a future profession centered on study and recovered knowledge.",
+            "id": "boris",
+            "name": "Boris",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An alchemist who sells Joe monster cores and permits him to use a restricted ritual component inside the shop. Joe's unusually demanding ritual draws his professional interest in the novice's future progress.",
+            "id": "jake",
+            "name": "Jake",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The merchant who runs Odds and Ends. The owner wagers a spatial ring that Joe cannot create a ritual capable of organizing the shop.",
+            "id": "odds-and-ends-owner",
+            "name": "Odds and Ends Owner",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Wanderers officer who brings Joe into the displaced guild on favorable terms.",
+            "id": "aten",
+            "name": "Aten",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The quiet rogue in Tiona's party. Guess uses a male avatar and communicates through typed messages rendered in a mechanical voice, while contributing stealth and precise attacks to the team's wolfman hunts.",
+            "id": "guess",
+            "name": "Guess",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Hidden God"
+            ],
+            "description": "The name revealed for Joe's secret deity, previously known only as the Hidden God. Tatum advises Joe to cultivate his unique abilities and gives him a sigil that converts a share of earned experience into divine favor.",
+            "id": "tatum",
+            "name": "Tatum",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A licensed Wanderers mage and officer-in-training. She teaches Joe to locate, condense, and manipulate his mana while working off the debt created when Aten and the guild financed her Mage's College education.",
+            "id": "terra",
+            "name": "Terra",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled armor smith who repairs captured wolfman equipment. After learning that Dylan is pursuing a defensive role, the smith offers a specialized route that could provide the protection needed for pain-realistic frontline combat.",
+            "id": "smith",
+            "name": "Smith",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruler of Ardania, who receives the newly noble Wanderers for a confidential briefing. She explains the existential conflict between the human and wolfman nations and offers the guild a secret royal mission.",
+            "id": "queen-of-ardania",
+            "name": "Queen of Ardania",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wind-and-fire mage captured after entering Joe's protected workshop and trying to attack him. Cel claims the Mage's College is pursuing Joe for forbidden ritual practice and remains hostile while Joe confines and questions him.",
+            "id": "cel",
+            "name": "Cel",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Cel's senior instructor at the Mage's College. Believing his apprentice dead, he attacks Joe, then agrees to escort Joe to the college after learning Cel is alive. His conduct is constrained by the institution's magical Accords.",
+            "id": "master-of-fire",
+            "name": "Master of Fire",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The head of the Mage's College tribunal. He oversees coercive proceedings against Cel and Joe, imposes a severe sentence on Joe, and prepares to bind him publicly through the college's Accords.",
+            "id": "archmage",
+            "name": "Archmage",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B07BTHWMFF",
+            "type": "community"
+          }
+        ],
+        "work": "ritualist"
+      },
+      "recaps": {
+        "ending": "Joe uses his single contractual escape to destroy the Accords without suffering their contract-based consequences. The compelled mages are freed, and the Archmage admits that he enslaved the Mage's College and withheld its power from Ardania's war. When he tries to destroy the city, the stored mana system overloads and kills him. The college agrees to broaden access, reduce costs, share research, and aid the kingdom. Cel is free after his coerced promotion, while the Master of Fire removes Joe's temporary Warlock title. Joe and the Wanderers receive public credit and exceptional standing. Tatum makes Joe his Chosen, advances his public class to Arc Cleric, and grants him daily Resurrection, while Joe's true Ritualist and Occultist paths remain concealed. Aten's guild continues the secret Shatter a People campaign against the Wolfman Nation. Tiona has left the old party for Royal Guard-linked training, Dylan has renewed confidence as a Bulwark, and the later paths of Dylan, Chad, and Guess are not settled. Terra still owes service for her college training. Joe ends at level nine, seeking magical instruction and a dependable ritual team that can eventually become a powerful coven. His possible return to reality, Tatum's restoration, the Hardcores conflict, Seeker of Truth, and the war all remain open.",
+        "in_short": "Army medic Joe is paralyzed after a helicopter attack and permanently transfers into Eternium, where he becomes a concealed Ritualist serving the forgotten deity Tatum while publicly appearing to be a cleric and scholar. He joins the Wanderers, develops healing and ritual abilities, survives player killers, helps make night travel possible, and supports Tiona's party through a growing conflict with wolfmen. Joe captures an enemy altar for Tatum and redirects its summoned creatures against the Wolfman Nation, shortly before the Wanderers accept the royal quest Shatter a People and his party separates. Working alone, he captures the mage Cel and uncovers the Accords that magically control the Mage's College. Joe destroys the Accords using a one-use escape from contractual penalties, freeing the mages. The Archmage dies during a failed attempt to destroy Ardania, and the college begins reform. Joe and the Wanderers receive public credit. Tatum makes Joe his Chosen, gives him the public Arc Cleric class and Resurrection, while Joe remains a hidden Ritualist planning to build a dedicated ritual team.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Army medic Sergeant Nelson is caught in a helicopter strike while evacuating wounded soldiers. About a month later, he wakes in a hospital as a quadriplegic. His marriage ends, and months of dependence follow until a former medic colleague offers permanent entry into Eternium. The transfer requires an expensive custom capsule and will destroy his physical body, but it promises a mobile new life. His mother pays for the equipment, and he enters under the name Joe after his colleague suggests that beating Eternium might offer a way back to reality. Joe completes every optional class trial, earning rare titles, including a one-use means of escaping the consequences of a magical contract. A weakened Hidden God then recruits him as a follower. Joe accepts the secret Ritualist class and Occultist path, though other people see him as a cleric. In Ardania, his healing earns the city guard's trust and draws Tiona's attention. He joins her Wanderers party, learns that death and pain carry serious costs, and saves the armored fighter Dylan. The party defeats a direwolf, but later Headshot and the Hardcores kill Joe's companions and try to force him into their guild. Joe chooses to leap from a cliff rather than submit.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe survives the cliff through delayed healing and protective equipment, only to die to goblins below and endure his first respawn. Back in Ardania, he finds the Wanderers at war with the Hardcores and begins studying ritual magic under the cover of library work. He creates organization rituals that transform a shop and restore order to the library, earning Boris's support for a scholarly path. The Hardcores abandon their city contracts, but the Wanderers' tavern burns soon afterward. Aten brings Joe into the displaced guild on favorable terms and later makes him an officer responsible for building relations with the guards. Joe even heals the imprisoned Headshot so the player killer can survive to face trial. Reunited with Tiona, Dylan, Chad, and the quiet rogue Guess, Joe joins a wolfman hunt that leaves the party outside Ardania after dark. They defeat undead creatures, and Joe establishes a protective ritual around their camp. Their survival proves that travel at night is possible, but it also makes settlements vulnerable to night raids. The Hidden God finally gives Joe the name Tatum and a sigil through which earned experience can strengthen their relationship.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe commits himself to ritual study and learns mana control from Terra, a Wanderers mage repaying the guild for her education. He adds offensive magic but must balance it against his duty as healer. After a prisoner kills him during treatment, Joe learns the man was a prince and reaches level five through a royal reward. His Occultist profession appears publicly as Scholar. This new ability lets him identify reliable writing and expose false costs and dangerous traps in his ritual book. Joe revises his wards into practical defenses for the Wanderers' barracks. During increasingly difficult wolfman battles, Chad survives poisoning through Joe's improved cleansing, while Dylan is killed after a survival fight appears finished. The Hardcores then assault the guild barracks. Joe helps repel them, and the shaken Dylan admits that realistic pain has undermined his willingness to tank. With a smith's challenge and equipment, Dylan unlocks the defensive Bulwark class and regains confidence. The party begins sustained operations against wolfman scouts, warriors, and shamans, with Tiona stressing tactical discipline and the practical need to earn enough for their game-pod payments.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tiona's party assaults a wolfman sacrificial altar. Guess disrupts the shamans' defenses, Chad helps finish them, and Dylan shields the group while Joe reaches the final captive. Joe accidentally kills the main shaman at the decisive moment, causing the system to treat him as the ritual's sacrificer. Forced to act quickly, he raises his ritual skill, redirects the summoned beast wave from Ardania onto the wolfmen, and dedicates the altar to Tatum. He gains a concealed fast-travel site and a quest to reclaim more lost holy places. Soon afterward, the Wanderers become a noble guild. Ardania's queen explains that the human and Wolfman nations are locked in a struggle for survival and gives Aten the secret Shatter a People quest to destroy the enemy nation and seize its throne. Joe realizes that his redirected wave killed wolfman civilians as well as fighters. Tiona then dissolves the field party to pursue Royal Guard-linked specialization training, leaving Joe to work alone. He rents a warehouse and creates a strong exclusion ward for ritual research. A rogue wind-and-fire mage named Cel enters the workshop, attacks him, and is captured. Cel reveals that the Mage's College uses magically binding Accords to suppress independent magic and control its students, but warns that destroying them under outside control could kill every signatory.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe keeps Cel contained while continuing research with Boris, who approves a quest to recover an assassinated investigator's methods for identifying criminals. When Cel's Master of Fire believes his apprentice dead, he attacks and kills Joe in Ardania. The attack is judged invalid, allowing Joe to return without the normal experience loss. Joe proves Cel is alive, and the master agrees to escort them to the Mage's College. Their discussion reveals that the Accords prevent even mild criticism and may force the master to act against Cel. Before dawn, Joe prepares an undisclosed three-circle contingency with Cel's mana, then secretly releases the containment ward. College mages and guards take both men into custody. A tribunal orders Cel to undergo re-education, sign the Accords again, and accept promotion to journeyman. Joe receives a sentence of forced mana service, enormous debt, and permanent loss of arcane magic, but rejects the imposed quest. Both prisoners are used to charge the Accords before the ceremony. Cel signs again under apparent compulsion. The Archmage then presents Joe to the assembled students as a rogue mage who will be bound next, while Joe reaches the contract book with his hidden countermeasure ready.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Joe invokes the single-use Terms and Conditions effect he earned during his entry trials, protecting himself from contract-based consequences, and activates Stasis. The Accords are destroyed while he is immobile and invulnerable, freeing the Mage's College from their compulsion. The former council turns on the Archmage, who admits that he created the enslavement and diverted the college's strength away from Ardania's war. He tries to destroy the city with an unstable magical core. Joe stops him, and mana stored through the Accords' system overloads and kills the Archmage. The remaining mages neutralize the core. Joe asks the freed college to permit independent training, reduce fees, broaden access, aid the war, and exchange research with Boris's library. The Master of Fire removes the Warlock title Joe briefly incurred by breaking his promise. A public announcement credits Joe and the Wanderers with freeing the college, which opens new specializations and lowers costs. Their rewards include exceptional standing and progress toward Shatter a People. Tatum names Joe his Chosen, advances his visible identity to Arc Cleric, and grants daily Resurrection. Joe reaches level nine while remaining secretly a Ritualist. He decides to seek mage training and recruit a dependable ritual team, with the long-term goal of building a coven capable of far greater workings.",
+            "through": {
+              "chapter": 39
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B07BTHWMFF",
+            "type": "community"
+          }
+        ],
+        "work": "ritualist"
+      }
+    },
+    "rivers-of-london": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A probationary constable with London's Metropolitan Police, son of a Sierra Leonean mother and an English father who was once a promising jazz trumpeter. Curious and easily sidetracked, with an engineer's itch to know how things really work, he is bracing for a dull transfer to a case-paperwork unit when he takes a witness statement from a ghost outside a Covent Garden murder scene. That encounter brings him to the notice of the one man in the Met who handles such things, and he is taken on as the first apprentice wizard England has trained in generations.",
+            "id": "peter-grant",
+            "name": "Peter Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A probationary constable and Peter's closest friend since training, generally reckoned the sharper and more naturally gifted officer of the pair and tipped for a fast rise through the Met. Warm, funny, and unflappable under pressure, she is kept on ordinary policing duties while Peter is drawn away into a hidden world of magic, though she keeps a foot in his strange new case and helps him think it through.",
+            "id": "lesley-may",
+            "name": "Lesley May",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Detective Chief Inspector who is also the last officially sanctioned wizard in England and the keeper of the Folly, the London home of English magic. Courteous, reserved, and old-fashioned, he appears to be a fit man in early middle age but is a great deal older than he looks. Having policed supernatural crime almost single-handed for decades, he breaks a long pause on training and takes Peter on as his apprentice.",
+            "id": "thomas-nightingale",
+            "name": "Thomas Nightingale",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The silent housekeeper of the Folly, who cooks, cleans, and keeps the vast old building running without ever speaking a word. Pale, black-eyed, and unnervingly sharp-toothed, she is plainly not wholly human and has served the house and its wizards far longer than any ordinary servant could. She takes a proprietary, watchful interest in Peter once he moves in.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Scottish gastroenterologist and self-taught cryptopathologist who performs the autopsies on people killed or altered by magic. Precise, calm, and endlessly interested, he shows Peter the physical marks that magic leaves on the brain and body, giving the Folly's work a forensic backbone.",
+            "id": "abdul-walid",
+            "name": "Abdul Haqq Walid",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess of the tidal Thames below Teddington Lock, a Nigerian woman who drowned in the river in the 1950s and rose as its presiding spirit. Regal, shrewd, and surrounded by a court of daughters who embody London's smaller rivers, she rules the lower river with authority and is locked in a long, cold feud with the older god of its upper reaches.",
+            "id": "mother-thames",
+            "name": "Mother Thames",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient spirit of the non-tidal river above London, an old countryman god attended by a court of sons. He withdrew from the capital during the centuries of plague and pollution and has never accepted the newer goddess who took up the tidal stretch in his absence. Peter is drawn into brokering between the two rival courts before their quarrel spills over into open conflict.",
+            "id": "father-thames",
+            "name": "Father Thames",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Mother Thames's daughters, the spirit of a modest river running through south-west London. Bold, teasing, and frankly curious about Peter, she pulls him deeper into the tangled affairs of the river families. The easy pull between them is complicated by the hard bargaining going on between the two courts of the Thames.",
+            "id": "beverley-brook",
+            "name": "Beverley Brook",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mr Punch"
+            ],
+            "description": "The malevolent force behind a rash of sudden, brutal attacks in which unremarkable Londoners' faces twist and collapse as they are driven to kill and are themselves destroyed. It proves to be the vengeful ghost of Henry Pyke, a slighted eighteenth-century actor, ridden and amplified by a far older and more dangerous spirit: Mr Punch, the ancient spirit of riot and rebellion.",
+            "id": "henry-pyke",
+            "name": "Henry Pyke",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rivers-of-london"
+      },
+      "recaps": {
+        "ending": "The case closes with Henry Pyke's ghost laid to rest, though the older spirit that amplified him - Mr Punch, the spirit of riot and rebellion - is driven off rather than destroyed. The cost lands hardest on Lesley May: the revenant had been riding her since the night of the first murder, and the magic that reworked her face to its purposes leaves that face in ruins. She survives, under long-term medical care, her fast-track career gone. Nightingale is recovering from the gunshot wound that nearly killed him and resumes his duties slowly, with Peter carrying more responsibility than any first-year apprentice should. The feud between the two courts of the Thames is settled the medieval way, with an exchange of hostages: Beverley Brook goes upstream to live under Father Thames's authority, and sons of the old man's court come down to the city in return, so Peter's easy connection with Beverley is suspended just as it was becoming something more. Lady Tyburn's attempt to fold the Folly into the ordinary machinery of the state has been beaten back, but her hostility to Peter is now personal and durable. Peter himself ends the book committed: no longer a constable making a strange detour, but a sworn apprentice wizard with years of Latin, forms, and police work ahead of him.",
+        "in_short": "Probationary constable Peter Grant takes a witness statement from a ghost at a Covent Garden murder scene and is recruited by DCI Thomas Nightingale, the last officially sanctioned wizard in England, as his first apprentice in decades. Living at the Folly, the old home of English magic, Peter learns spellcraft while investigating a wave of impossible violence: ordinary Londoners briefly possessed, driven to kill, and left with their faces destroyed. The killings prove to be re-enacting the plot of Punch and Judy, staged by the vengeful ghost of Henry Pyke, a failed eighteenth-century actor, and powered by something older - Mr Punch, the spirit of riot. Alongside the case, Peter brokers peace between Mother Thames and Father Thames, the rival deities of the river, and meets Beverley Brook. The investigation turns catastrophic: Nightingale is shot, a possessed audience riots at the Royal Opera House, and the spirit is revealed to have been riding Peter's friend Lesley May all along. Peter lays Pyke to rest, but Lesley's face is ruined. The river peace is sealed by an exchange of hostages, Beverley among them, and Peter commits fully to the wizard's life.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "On a January night, probationary constable Peter Grant guards the cordon at a Covent Garden murder scene where a man has been beheaded, and takes a witness statement from Nicholas Wallpenny - who proves to have been dead for well over a century. His attempt to follow up on a ghost draws the attention of Detective Chief Inspector Thomas Nightingale, the last officially sanctioned wizard in England, who claims Peter for his tiny unit just as Peter is about to be shunted into a case-paperwork job. Peter's friend and fellow probationer Lesley May, widely rated the better officer, joins the murder inquiry on the conventional side. The killing is stranger than it looked: the attacker was an unremarkable man who struck without motive, and afterwards his face collapsed as though worn out from the inside. Sworn in as Nightingale's apprentice - the first new one in decades - Peter moves into the Folly, the grand, nearly empty Russell Square headquarters of English magic, kept by Molly, its silent and unsettling housekeeper, and begins learning that magic is real, learnable, and governed by rules, while the cryptopathologist Dr Abdul Haqq Walid supplies the forensic side of the uncanny.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nightingale hands Peter a diplomatic problem to run alongside the murder inquiry: the two ruling powers of the river - Mother Thames, the goddess of the tidal river below Teddington, and Father Thames, the old god of its upper reaches - are pressing claims against each other, and the Folly wants the peace kept before the dispute turns into open conflict between their courts. Peter visits Mother Thames's court and meets her daughters, the spirits of London's lesser rivers, among them Beverley Brook, with whom he strikes an immediate spark, then travels up-country to Father Thames's travelling fair to hear the other side. Both courts size Peter up as a useful new piece on the board. Meanwhile the impossible assaults continue across London, each perpetrator briefly possessed, seized by sudden savage violence, and left damaged, and the pattern stubbornly refuses to fit ordinary police work. Peter's training grinds forward - Latin, the first forms, hours of practice for a single reliable werelight - and he sets up a workshop in the Folly's coach house where his modern technology can survive, since working magic and microchips do not mix.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At a puppet festival Peter finally sees the shape of the case: the string of possessions and killings is re-enacting the plot of a Punch and Judy show, with living Londoners forced into the roles and discarded. The guiding intelligence identifies itself as Henry Pyke, a resentful eighteenth-century actor murdered near Covent Garden, whose ghost is staging the drama - but Pyke is a mask as much as a man, animated and amplified by something far older and crueller that answers to the spirit of Mr Punch, riot and rebellion given a face. The Folly works the problem from both ends, researching Pyke's history to find a purchase on the revenant while the conventional murder inquiry flounders against evidence that cannot be true, and an attempt to bait and trap the ghost - with Peter himself as part of the lure - shows how dangerous the thing has become. Each new possession burns out its host, the intervals between attacks are shrinking, and the revenant has begun to take a personal, mocking interest in Peter.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hunt goes badly wrong. An operation against the revenant ends with Nightingale shot in the chest by a possessed gunman and left fighting for his life in hospital, and with the Folly's authority suddenly in doubt. Into that vacuum steps Lady Tyburn, the most establishment-minded of Mother Thames's daughters, who regards the Folly as a dangerous anachronism and moves to have its business folded into ordinary official channels, with Peter sidelined. The possession epidemic then peaks in spectacular fashion: at the Royal Opera House, Punch's influence takes an entire audience at once, and the evening collapses into a riot that spills into Covent Garden, putting the supernatural crisis beyond any hope of discreet handling. Peter, effectively on his own - his master in intensive care, his legitimacy contested, and the city's uncanny powers watching to see what he is worth - has to keep working a case that has already consumed everyone who got close to it, knowing the revenant is building to a finale on the ground where Henry Pyke's grievance began.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The truth lands close to home: the spirit has been riding Lesley May since the night of the first murder - she was Punch's anchor all along, hidden in plain sight at the centre of the investigation. Following the possessed Lesley to the heart of Pyke's old ground, Peter confronts the revenant within the remembered London of its origin and brings Henry Pyke's long grievance to an end, laying the ghost to rest; Mr Punch himself, the older spirit that gave Pyke his power, is driven out rather than destroyed. The cost is terrible. The magic that reshaped Lesley's face for the revenant's performances leaves it in ruins when the spirit departs; surgeons save her life, but not her face or her fast-track career. Nightingale survives his wound and begins a slow recovery. The feud between the courts of the Thames is settled with a medieval solution - an exchange of hostages, Beverley Brook going upstream to Father Thames's court while sons of the old man come down to the city - and Lady Tyburn's attempted takeover of the Folly is turned back, at the price of her lasting enmity. Peter ends where he began, at the Folly, but changed: a sworn apprentice with a long road ahead, and a friend whose ruin he could not prevent.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rivers-of-london"
+      }
+    },
+    "romeo-and-juliet": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Romeo Montague"
+            ],
+            "description": "The young son and heir of the Montague family in Verona, whose house is locked in a bitter feud with the Capulets. When first seen he is lovesick and melancholy over a young woman, Rosaline, who does not return his affection, and his friends try to draw him out of his gloom. Passionate, impulsive, and quick to fall deeply in love, he is persuaded to slip into a Capulet feast in disguise, where his hopeless devotion to Rosaline is swept away the moment he sees Juliet.",
+            "id": "romeo",
+            "name": "Romeo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Juliet Capulet"
+            ],
+            "description": "The daughter of the wealthy Capulet family, not yet fourteen, sheltered and obedient at the story's start. Her father is already considering a match for her with the nobleman Paris, and she has given little thought to marriage. Intelligent and, once her feelings are stirred, resolute and brave beyond her years, she meets a young man at her family's feast and falls suddenly and wholly in love, only to learn that he belongs to the house her family hates most.",
+            "id": "juliet",
+            "name": "Juliet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A close friend of Romeo and a kinsman of the Prince of Verona, belonging to neither feuding house. Quick-witted, boisterous, and fond of elaborate wordplay and bawdy jokes, he teases Romeo about love and delivers a long flight of fancy about Queen Mab, the fairy who brings dreams. Loyal and hot-blooded, he has little patience for melancholy or for the Capulets, and his sharp tongue and readiness to fight make him a lively but volatile companion.",
+            "id": "mercutio",
+            "name": "Mercutio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hot-tempered young man of the Capulet family, a cousin of Juliet, skilled with a sword and eager to use it. He despises the Montagues and takes the feud as a point of personal honor. Seen first joining a street brawl between the two houses, he later recognizes the disguised Romeo at the Capulet feast and is enraged that a Montague would dare attend, restrained from open violence only by Juliet's father. Proud and aggressive, he nurses the insult and looks for a chance at revenge.",
+            "id": "tybalt",
+            "name": "Tybalt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Juliet's nurse, who raised her from infancy and remains her closest companion and confidante in the Capulet household. Talkative, earthy, and fond of long rambling reminiscences, she is devoted to Juliet and enjoys a warm, teasing familiarity with her. Practical rather than romantic, she becomes a go-between in Juliet's affairs and is willing to help her secret wishes along, though her loyalty is tempered by an eye for what is safe and comfortable.",
+            "id": "the-nurse",
+            "name": "The Nurse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nephew of Montague and cousin and friend to Romeo, level-headed where those around him are quick to anger. He tries to keep the peace during the street brawl and to lift Romeo out of his lovesick sorrow, advising him to look at other women and pressing him to attend the Capulet feast. Calm, well-meaning, and reliable, he serves as a steady voice and a reporter of events amid the passions of both houses.",
+            "id": "benvolio",
+            "name": "Benvolio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Capulet"
+            ],
+            "description": "The head of the Capulet family and Juliet's father, a wealthy and powerful man of Verona. He hosts a grand feast at which he wishes his guests well and, when Tybalt spots the intruding Romeo, insists on keeping the peace rather than spoiling the party. Fond of his daughter and at first inclined to let her marry for love, he weighs a match with the noble Paris and expects, in the end, to be obeyed as master of his house.",
+            "id": "lord-capulet",
+            "name": "Lord Capulet",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Count Paris"
+            ],
+            "description": "A young nobleman and a kinsman of the Prince of Verona who seeks Juliet's hand in marriage. Well-born, respectable, and courteous, he asks her father for permission to court her, and the elder Capulet looks favorably on the match while asking him to wait for her consent. Paris is confident of his suit and unaware that Juliet's heart has already been given elsewhere.",
+            "id": "paris",
+            "name": "Paris",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Franciscan friar of Verona, a gatherer of herbs learned in their powers to heal and to harm, and a spiritual adviser trusted by Romeo. Kindly and well-meaning, he counsels moderation but is drawn into the young lovers' plans, agreeing to help them in the hope that their union might at last end the long feud between the Montagues and Capulets. Resourceful and inclined to bold remedies, he becomes the secret architect of their fortunes.",
+            "id": "friar-laurence",
+            "name": "Friar Laurence",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "romeo-and-juliet"
+      },
+      "recaps": {
+        "ending": "The friar's plan fails because the letter explaining Juliet's feigned death never reaches Romeo in Mantua. Instead his servant brings word that Juliet is dead, and Romeo, in despair, buys poison and hurries to her tomb. There he encounters Paris, who has come to mourn, and kills him in a fight before laying his body in the vault. Believing Juliet truly dead, Romeo drinks the poison and dies at her side. Moments later Juliet wakes from her sleeping draught to find Romeo dead beside her. Friar Laurence, arriving too late, urges her to flee, but she refuses; when she cannot bring herself to take poison, she stabs herself with Romeo's dagger and dies. The night watch rouses the city, and the Prince, the Montagues, and the Capulets gather at the tomb. Friar Laurence explains the secret marriage and all that followed. Confronted with their dead children, the two families are overcome with grief and at last make peace, ending the feud that destroyed them, and they agree to raise golden statues of the lovers in memory. The Prince closes with sorrow over the tragedy their hatred has caused.",
+        "in_short": "In Verona, the Montague and Capulet families are locked in a violent feud. Romeo, a young Montague nursing a hopeless love for Rosaline, sneaks into a Capulet feast and meets Juliet, the Capulets' young daughter, and the two fall instantly and deeply in love despite their families' hatred. That night they exchange vows, and with the help of Friar Laurence, who hopes their union will reconcile the houses, and Juliet's nurse, they marry in secret. The feud soon shatters their happiness: Juliet's cousin Tybalt kills Romeo's friend Mercutio, and Romeo kills Tybalt in revenge, for which the Prince banishes him to Mantua. Meanwhile Juliet's father orders her to marry the nobleman Paris. To escape the match, Juliet takes a potion from the friar that makes her appear dead, so she can later flee with Romeo. But the message explaining the plan never reaches Romeo. Believing Juliet truly dead, he buys poison, goes to her tomb, and kills himself beside her. Juliet wakes, finds him dead, and stabs herself. Grief-stricken, the two families finally end their feud.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Verona two great families, the Montagues and the Capulets, are consumed by an old feud, and an opening speech warns that a pair of star-crossed lovers from these houses will die and, by their deaths, end their parents' quarrel. A street brawl between the households breaks out, and the Prince of Verona angrily decrees death for anyone who disturbs the peace again. Romeo, a young Montague, is lovesick over a woman named Rosaline who does not return his love, and his cousin Benvolio urges him to look elsewhere. Meanwhile the nobleman Paris asks the elder Capulet for permission to marry his daughter Juliet, who is not yet fourteen, and Capulet invites him to a feast that night. Persuaded by his friends, Romeo puts on a disguise and slips into the Capulet feast with Mercutio and Benvolio. There he sees Juliet and is at once overwhelmed by love, and she feels the same. Juliet's cousin Tybalt recognizes Romeo as a Montague and is furious, but Capulet forbids any violence at his party. Only afterward do Romeo and Juliet each learn, to their dismay, that the other belongs to the enemy house.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unable to leave, Romeo steals back into the Capulet garden and overhears Juliet at her window confessing her love for him and lamenting that he is a Montague. He reveals himself, and the two exchange vows of love and agree to marry in secret. The next day Romeo goes to his friend and adviser, Friar Laurence, who is surprised that Romeo has so quickly forgotten Rosaline but agrees to perform the marriage, hoping that the union of a Montague and a Capulet might finally reconcile the feuding families. Through Juliet's talkative nurse, who acts as go-between, the lovers arrange the details. That same day Juliet comes to the friar's cell, and Romeo and Juliet are married in secret, with only the friar and the nurse aware of it, while their families remain ignorant of the bond now joining the two houses.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The feud destroys the lovers' brief happiness. Tybalt, still enraged at Romeo's presence at the feast, seeks him out. Romeo, now secretly married to Tybalt's cousin, refuses to fight, but his friend Mercutio takes up the quarrel and is fatally wounded when Romeo steps between them, cursing both houses as he dies. Grief-stricken and furious, Romeo kills Tybalt and then flees. For this the Prince banishes Romeo from Verona on pain of death rather than executing him. Juliet is torn between sorrow for her cousin and love for her husband, but her love holds firm. With the friar's and the nurse's help, Romeo secretly spends his wedding night with Juliet before slipping away to Mantua at dawn. Meanwhile, believing his daughter grieves only for Tybalt, the elder Capulet suddenly decides she will marry Paris within days. When Juliet refuses, her father flies into a rage and threatens to disown her, and even the nurse advises her to go through with the match, leaving Juliet feeling utterly alone.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Desperate to avoid marrying Paris while secretly wed to Romeo, Juliet goes to Friar Laurence for help. He gives her a potion and a bold plan: she is to consent to the marriage, then on the night before the wedding drink the draught, which will make her appear dead for a time. Her family will lay her in the Capulet tomb, and the friar will send word to Romeo so that he can come, wake her, and carry her away to Mantua. Returning home, Juliet pretends to obey her father, and the delighted Capulet moves the wedding even earlier. That night, frightened but resolved, she drinks the potion alone. In the morning the nurse finds her seemingly lifeless, and the household is thrown into mourning as the joyful wedding preparations turn abruptly into a funeral, and Juliet's body is carried to the family tomb.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The friar's message never reaches Romeo, who instead hears from his servant only that Juliet is dead. In despair, he buys a deadly poison and rides to Verona to die beside her. At the Capulet tomb he meets Paris, who has come to mourn, and kills him in a fight before laying him inside. Believing Juliet truly dead, Romeo drinks the poison and dies at her side. Moments later Juliet wakes to find her husband dead. Friar Laurence arrives too late and urges her to flee, but she refuses; unable to take poison from the empty vial, she stabs herself with Romeo's dagger and dies. The watch raises the alarm, and the Prince, the Montagues, and the Capulets gather at the tomb. Friar Laurence explains the secret marriage and everything that followed. Faced with their dead children, the grieving families at last end their feud and make peace, vowing to raise golden statues in memory of the lovers, while the Prince mourns the ruin that their hatred has brought.",
+            "through": {
+              "chapter": 5
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "romeo-and-juliet"
+      }
+    }
+  }
+}

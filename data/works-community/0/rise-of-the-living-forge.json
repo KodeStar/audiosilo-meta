@@ -1,0 +1,1088 @@
+{
+  "entries": {
+    "rise-of-the-living-forge": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Hero of Lian"
+            ],
+            "description": "The former Hero of Lian, summoned from Earth as a child to fight a fifteen-year war against the demon horde. He strikes down the Demon Queen, only for a black gemstone hidden in his own armor to detonate; the kingdom is told he died of his wounds. Instead he survives, cast into the remote city of Milten and reborn with a unique crafting class, the Living Forge, and a curse called the Hungering Maw that forces him to consume magical items to live. Presumed dead and certain he was betrayed, he means to rebuild his strength in secret.",
+            "id": "arwin-tyrr",
+            "name": "Arwin Tyrr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A tall, awkward woman who runs a decrepit tavern on the same abandoned, supposedly haunted street where Arwin settles in Milten. Her skin has a faint purple cast and a scar runs down one eye. Painfully shy and anxious about her cooking, hopeless with prices, she seems desperate to turn her failing tavern into a real business. An inexplicable unease hangs about the place, an air of something unspoken beneath her nervous, ordinary manner.",
+            "id": "lillia",
+            "name": "Lillia",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp young street thief in Milten's slums, blonde with a scarred face, quick and resourceful but no match for a real fighter. Hunted by old enemies and skilled at slipping through the city unseen, she gathers information as easily as she lifts purses. After Arwin steps in against the gang harassing her, she falls in with him as an informal partner.",
+            "id": "reya",
+            "name": "Reya",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A good-natured warrior in heavy plate, brown-haired and easygoing, who travels the roads near Milten alongside the healer Anna. Describing himself as new to adventuring, he carries himself with quiet competence, and after crossing paths with Arwin in the forest he and Anna welcome the stranger into their small party.",
+            "id": "rodrick",
+            "name": "Rodrick",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind, forthright healer in white robes who travels the roads near Milten with the warrior Rodrick. Her healing is limited by her own energy and cannot mend every wound. Grateful and open-hearted after Arwin helps them, she is the first to suggest he join their party.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cheerful street teenager and nimble lockpicker, the son of a late blacksmith, who once used Arwin's abandoned smithy as a hideout. Displaced by the Thieves' Guild's expansion, he is hired by the masked smith Ifrit as a paid assistant to haul materials and help with repairs. Handy with tools and eager to learn, he becomes a fixture of the household around the tavern.",
+            "id": "zeke",
+            "name": "Zeke",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A middle-aged warrior with black hair and a well-worn sword who buys a pair of Arwin's scale greaves at an adventurers' inn as a novelty. She carries herself like a seasoned fighter and takes a keen, persistent interest in the reclusive smith who made them, angling for a way to meet him.",
+            "id": "tix",
+            "name": "Tix",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "The imposing, dark-bearded leader of an ambitious, up-and-coming adventuring guild, clad in heavy black spiked armor and carrying a greatsword that hums with barely hidden power. His guild needs a crafter of its own, and he is hunting the reclusive smith known as Ifrit, willing even to pay the Thieves' Guild for the man's location. He hints at an unexplained side project still a month or two from completion.",
+            "id": "jessen",
+            "name": "Jessen",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The second-in-command of the Iron Hounds, chosen by their leader Jessen. Bald, sweating, and deeply paranoid, he is a poor tactician but a dangerously strong mage. When the reclusive smith refuses to serve his guild, Erik gives the order to destroy the man and everything he has made, no matter who is caught in the doing of it.",
+            "id": "erik",
+            "name": "Erik",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An Iron Hounds mage who wields explosive fire. He is named as the one who threw the magical blaze that destroyed the smith's workshop and killed the assistant working there, marking him as one of the Iron Hounds behind the attack that killed the smith's young helper.",
+            "id": "yul",
+            "name": "Yul",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of the local Thieves' Guild, a journeyman-tier operator with a salt-and-pepper goatee, greedy and calculating and quick to violence. He hunts the thief Reya over a stolen dungeon key, but backs down when Arwin confronts him, ceding the key, the girl, and the haunted street in exchange for being left alone.",
+            "id": "briggs",
+            "name": "Briggs",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A capable, calculating enforcer of the Thieves' Guild with a personal grudge against the thief Reya. He confronts Arwin and Reya at the smithy over a stolen key, then withdraws rather than fight the imposing stranger, promising to return with greater numbers.",
+            "id": "jin",
+            "name": "Jin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A gruff but honest blacksmith who sells his wares at Milten's market. He deals Arwin metal rods and scrap at a markup while bluntly advising him to buy elsewhere in future, and becomes a familiar fixture of the city's trade.",
+            "id": "taylor",
+            "name": "Taylor",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A cheerful early companion of Arwin's from his years at war, recalled only in memory. Warm and good-humored, he was among the first of Arwin's friends to die in the long fight against the horde, a loss that still weighs on Arwin.",
+            "id": "blake",
+            "name": "Blake",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge"
+      },
+      "recaps": {
+        "ending": "Book 1 ends inside a remote dungeon outside Milten, just after Arwin's guild defeats its boss. The five members - Arwin, Lillia, Reya, Rodrick, and Anna - have finally shared their true identities and stand united and sworn to secrecy. Arwin remains publicly dead, still a low-tier crafter rebuilding from nothing, but now carries a dead, Epic-quality crafting material and the knowledge that the world's real hierarchy of power runs far above anything he and Lillia were ever shown, even at the height of their old strength. He and Lillia are quietly in love, though neither has spoken it. The revenge arc is all but closed: three of the four Iron Hounds who killed Zeke are dead, and only their leader Jessen survives, far stronger than he pretends, held off by a fragile truce - with a dagger still secretly bound to Arwin left in his hands. Several threads carry into the next book: the mesh's new Challenge, which warns that Arwin's class-hunger will kill him unless he masters it; the still-unexplained forces that staged the war and hid the true scale of power; the Forest Worm near Milten, which the reader knows is secretly controlled by the Iron Hounds though the guild does not; the smithy, cleared and awaiting rebuilding; and Rodrick's still-undisclosed deeper past, his former order and why he fell. Arwin resolves to grow quietly stronger and investigate rather than confront his enemies head-on.",
+        "in_short": "Arwin Tyrr, the Hero of Lian, kills the Demon Queen to end a staged fifteen-year war, only to survive a hidden bomb in his own armor and be reborn in the remote city of Milten with a unique crafting class, the Living Forge, and a curse that forces him to devour magical items to live. Building a hidden life as the masked smith Ifrit, he gathers a small guild - the thief Reya, the warrior Rodrick, the healer Anna, and Lillia, the depowered Demon Queen who runs a nearby tavern and slowly becomes his ally and love. Together they discover the war was engineered and that both champions were meant to die. When a rival guild, the Iron Hounds, firebombs his smithy and kills his young assistant Zeke, Arwin hunts down three of the four responsible, deferring only their dangerously strong leader, Jessen, under a truce. Clearing a remote dungeon, the guild reveals their true identities to one another, and Arwin claims a dead, Epic-quality crafting heart. He learns the world's true scale of power dwarfs anything he was shown, and the mesh warns him that his class's hunger will kill him unless he learns to control it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Arwin Tyrr, the Hero of Lian, strikes down the Demon Queen to end a fifteen-year war, only for a black gemstone hidden in his own armor to explode. The kingdom is told he died of his wounds and moves on, naming a new hero and reporting that a new Demon Queen already leads the horde's remnants. Arwin survives, thrown to the distant, half-abandoned city of Milten and reborn with a unique crafting class, the Living Forge, along with a curse called the Hungering Maw that forces him to eat magical items to stay alive. Concluding that the Adventurers' Guild which summoned him from Earth as a child engineered his death, he takes over a derelict smithy on a street locals call haunted and begins quietly rebuilding his strength. He falls in with Reya, a resourceful young street thief hunted by the local Thieves' Guild over a stolen key to a nearby dungeon, and defends her against the enforcers who come looking. He also meets Lillia, the shy, purple-skinned woman running a failing tavern on the same street. When the two finally speak plainly, Arwin realizes the truth: Lillia is the Demon Queen he supposedly killed, alive and hidden in Milten like him. Both are officially dead, and each recognizes the other.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin and Lillia settle into an uneasy silent truce, each declining to openly admit recognizing the other so both can keep their new, quieter lives. Arwin learns that the explosion left Lillia depowered as well, stripped of her old strength; she despises killing and wants nothing more than to run a peaceful tavern. He also discovers the reach of his new class: he can forge unique, magical items. When the Thieves' Guild moves against Reya in force over the stolen dungeon key, Arwin and Lillia join her in a one-time alliance. Rather than fight outright, they exploit the city's terror of demons - Lillia can still summon a lesser imp - to bluff and intimidate the guild's leader, Briggs. Cornered, Briggs backs down entirely, ceding the dungeon key, calling off the hunt for Reya, and surrendering the haunted street in exchange for being left in peace. With the immediate threat gone, Arwin, Reya, and Lillia are left as wary neighbors and allies, each guarding secrets, and Arwin begins thinking about building something more lasting in Milten.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the Thieves' Guild subdued, Arwin turns to rebuilding both his craft and his life. He improves his workshop, forges gear for Reya and small comforts for Lillia's tavern, and confirms the hard limits of his curse: the Hungering Maw can consume only magical items, never ordinary metal, and its demands never stop. He settles on a new goal - to found a guild of his own. On a foray into the forest valley outside Milten, Arwin crosses paths with two traveling adventurers: Rodrick, an easygoing warrior in heavy plate, and Anna, the healer who travels with him. The meeting plants the idea that these two might become part of whatever Arwin builds. The party also hears unsettling rumors of a Unique monster, a great worm, said to roam the valley and stir up the forest's beasts. Lillia, meanwhile, edges toward leaning into a monster theme for her tavern, hiding what she truly is in plain sight, while she and Arwin grow steadily more at ease as neighbors and quiet allies.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin's crafting deepens: he forges unique, multi-trait plate armor, advances a tier, and learns that his curse grows harsher over time, demanding ever-stronger magical items to satisfy it. The rumored valley monster proves real - a Forest Worm of journeyman strength that surfaces and turns aggressive. Arwin, Reya, Rodrick, and Anna fight it off together, wounding it badly enough to drive it back underground. The shared danger binds the group. Reya, long unable to gain a class, finally earns one when she stops fighting to kill and starts fighting to control: she becomes a Warden, a unique, unrecognized class built on restraint and willpower. Trusting Rodrick and Anna - who have their own reasons to avoid the Adventurers' Guild - Arwin reveals that he is the reclusive master smith whose work has been circulating, and that his crafting class is something unique. The two agree to join him, and Arwin's guild takes shape as a real, if unofficial, group of four, based around Lillia's tavern and his smithy. The worm's unnatural behavior remains an open worry.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As Arwin and Lillia compare what they remember, a darker picture emerges: the entire war between kingdom and horde was staged. Both of them were manipulated champions, each fighting for their own side's survival while unseen handlers kept them alive only as long as they were useful. Neither slaughtered the innocents they were told the other had killed; rogue elements on both sides committed the atrocities, and each champion was shown the other's supposed crimes to feed a hatred that kept the war burning. Crucially, neither Arwin nor Lillia was ever meant to survive the explosion that ended it - they were expendable pieces, discarded once the war had served its purpose. Arwin learns that Lillia's army was run by an organization mirroring his own Adventurers' Guild, and that the guild's leader inspected his armor shortly before the fatal battle. Lillia shares that the same event which reforged Arwin gave her a new class of her own. United by the discovery that they were both betrayed by the powers they served, Lillia fully joins Arwin's guild, and the group's purpose widens from mere survival to uncovering who orchestrated the war, and why.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Now a committed team, the guild turns to the journeyman dungeon whose key Reya carries. Their runs test everyone: Arwin forges and repairs gear, Reya develops her Warden powers - gaining Imprison, which weakens the monsters she targets, and an early permanent title that slowly heals her - while Rodrick and Anna grow into their roles. Arwin also learns the nature of Lillia's new class: it strengthens her as paying guests eat and lodge at her tavern, but punishes her when the place sits empty, with penalties that turn lethal if no paying guest stays overnight for too long. The guild's lodging with her holds the danger at bay for now, and pushes her to draw real customers to the neglected street. Meanwhile the Forest Worm threat sharpens: the party comes to believe it is breeding, and that a destructive brood could descend on Milten within a couple of months. Arwin presses to grow stronger before then, banking hard-won achievements toward future gear and skills, and the group commits to going deeper into the dungeon for the materials and power they will need.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin's craft reaches a new height when he forges Verdant Blaze, a masterwork hammer that is both a superb tool and a weapon, and earns a permanent title that lets him sense and 'speak' with the magical materials he works. To sell his goods openly without exposing his true identity to the Adventurers' Guild, he adopts a public smith persona: a masked craftsman called Ifrit, complete with a maker's mark. His first market debut as Ifrit is a striking commercial success, drawing crowds and coin. That visibility brings danger. An ambitious, up-and-coming adventuring guild, led by a large, dark-bearded man named Jessen, is hunting for a crafter of its own - and has set its sights on the mysterious smith Ifrit, willing even to pay the Thieves' Guild for his location. Jessen also hints at an unexplained side project that will need materials in a month or two. Unaware how quickly this new threat is closing in, Arwin keeps building his business and his strength, while the guild continues preparing for the looming worm brood.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin takes on a young assistant, Zeke - a street teenager and skilled lockpicker, son of a late smith - to help run the growing Ifrit business. He soon learns who is hunting him: the guild pursuing Ifrit is the Iron Hounds, and Tix, a warrior who had earlier bought his work, is one of their members. She tries to recruit Ifrit as the Iron Hounds' exclusive smith so he cannot arm their rivals; when Arwin refuses, she leaves him with a threat. Around the same time Arwin uncovers a harsh truth the Adventurers' Guild hid from him: adventuring guilds routinely war with one another over dungeons and resources, and the notion of guilds existing to protect people is a myth. Pushing deeper into the journeyman dungeon, the party overcomes a bone gargoyle boss that shrugs off ordinary blows but can be broken by magic, aided by Rodrick's empowered strikes; from its chamber they recover a charged bone dagger. Rodrick and Anna learn that Arwin forges unique, wielder-bound weapons of great value, and swear to keep his secret, as the standoff with the Iron Hounds quietly builds toward open conflict.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The conflict with the Iron Hounds turns deadly. Their paranoid second-in-command, Erik, orders the reclusive smith and all his stock destroyed without a trace. Unknown to Arwin's party, the Iron Hounds are hiding a far larger secret: under Jessen's direction they secretly control the Forest Worm menacing the valley, part of a scheme still weeks from completion. Arwin, meanwhile, forges a powerful new chestplate and keeps arming his people. Then the Iron Hounds strike: they firebomb Arwin's smithy with unnatural magical fire meant to kill him - but Arwin is away, and young Zeke is working there alone at night. Zeke is killed in the blaze. The loss devastates the guild, and the smithy is left in ashes, closing the chapter on the shock of the boy's death.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With Arwin publicly mourned - his official hero's funeral is even called off - he and Lillia turn their grief into a plan: fake his death, arm themselves in secret, and pick off only the Iron Hounds truly responsible for Zeke before the looming worm brood arrives. Trusting her at last, Arwin tells Reya his real history - that he was the Hero of Lian, betrayed by a bomb hidden in his own armor and remade by the mesh with a new class - and she accepts it and joins the effort, keeping it from the others. Working from a makeshift forge in the ruins near his burned smithy, Arwin pours himself into vengeance gear, reforging Zeke's unfinished horned helmet into a fearsome new piece and discovering that the items he makes carry the memories and feelings of everyone who shaped them. He sharpens his equipment-binding skill and prepares to arm Lillia to fight beside him, while Rodrick sets out to locate Tix, the first of the guilty. The guild closes ranks around a careful, deliberate hunt, and Arwin and Lillia grow quietly closer as they ready themselves to strike.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With their preparations complete, Arwin and Lillia begin the hunt in earnest, striking down the guilty Iron Hounds one at a time. From Tix, Arwin forces the names of the four members behind the attack before killing her. He then kills Yul, the mage who actually threw the fire that destroyed the smithy, and corners Erik, who gave the order, slaying him with a cursed dagger handed over during a truce so as not to break his own sworn word. Only the guild's leader, Jessen, remains. When Jessen finally appears in person, he proves far stronger than his stated rank, blocking Arwin's hammer with ease. Rather than die fighting a foe he cannot yet beat, Arwin agrees to a mutual truce, 'until we next meet,' leaving in Jessen's hands a dagger that stays secretly bound to his own power. With three of the four avenged, Arwin resolves to keep growing stronger instead of chasing Jessen, keeps the guild in Milten, and begins rebuilding his ruined smithy on its original lot. He and Lillia have grown steadily closer through it all.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Settling back into Milten, Arwin admits to himself that he is falling for Lillia, even as he keeps the feeling in check. The guild presses deeper into the dungeon for materials and coin, and when the Thieves' Guild sells Arwin's location to the Iron Hounds and its enforcer Jin ambushes the party, Arwin kills him and two others. Reya grows stronger, advancing a tier and gaining a skill that shatters magic binding herself or her allies. In the dungeon's depths the guild faces its hardest fight yet, against a massive crystalline boss; Rodrick is nearly killed and only Anna's healing saves him, while the party earns hard-won rewards and access to the dungeon's hoard. In the aftermath, the whole guild finally lays its secrets bare. Rodrick admits he is a fallen paladin who lost his holy power; Anna reveals she is simply an ordinary healer, which let her slip away from the Adventurers' Guild unnoticed; and Arwin and Lillia disclose that they were the Hero of Lian and the Demon Queen, both once among the most powerful people alive before the explosion cost them their classes and cast them into Milten. They share their belief that the Adventurers' Guild and the horde's masters keep the war running for their own ends. The group accepts every revelation and swears to guard one another's secrets.",
+            "through": {
+              "chapter": 94
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the dungeon's final chambers, the guild uncovers the origin of the magic-absorbing crystals Arwin has been forging into his gear: they are dead fragments of a magical parasite that once transformed an adventurer into the crystalline monster the party just destroyed. Arwin claims the parasite's heart, an item the mesh rates as Epic quality - powerful, but dead and permanently suppressed, a rare crafting material rather than a live threat. A far larger truth follows. The mesh reveals that its true ladder of power runs far higher than anything the war ever showed them: the height Arwin and Lillia once commanded sits well below the real peak. A single unremarkable creature in this remote dungeon could have destroyed their old armies, yet left no legend anywhere - proof that the deception hiding the real scale of power is world-wide, and that whoever staged the war wields strength beyond anything they were allowed to see. As Arwin lifts the parasite's heart and notes how its hunger mirrors his own, the mesh answers with a formal Challenge: his class's hunger is greater than his body can bear, and unless he learns to control it, it will consume and kill him. Shaken, not even understanding what a Challenge is, Arwin is left with an existential threat growing inside him. The book closes there - the guild united and their true selves known to one another, three of Zeke's four killers avenged with Jessen deferred under an uneasy truce, and Arwin holding a powerful new material and a warning that his own class may destroy him.",
+            "through": {
+              "chapter": 97
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge"
+      }
+    },
+    "rise-of-the-living-forge-2": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ifrit",
+              "the Hero of Lian"
+            ],
+            "description": "The former Hero of Lian, publicly believed dead since the blast that ended a secretly staged war, reborn in the remote city of Milten with the unique Living Forge crafting class and a curse, the Hungering Maw, that forces him to devour magical items to live. He works in secret as a masked smith called Ifrit and leads a small, still-unnamed guild built around Lillia's tavern. As the book opens he carries a dead, Epic-quality crystal and a fresh mesh warning that his class's hunger will kill him unless he learns to control it.",
+            "id": "arwin-tyrr",
+            "name": "Arwin Tyrr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Demon Queen"
+            ],
+            "description": "The former Demon Queen, stripped of her old power by the same explosion that felled Arwin and now hiding in Milten as the shy innkeeper of a monster-themed tavern. Her purple skin and hidden tail keep her largely confined indoors. She carries the unique Hearthkeeper class, which strengthens her through guests fed and lodged at her hearth, and she despises killing. A member of Arwin's guild, she is slowly and wordlessly falling for him.",
+            "id": "lillia",
+            "name": "Lillia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A resourceful former street thief of Milten, now a full member of Arwin's guild. She carries the unique Warden class, built on restraint and control rather than killing, and gathers information as readily as she once lifted purses. Quick, guarded, and shaped by a hard childhood on the streets, she is fiercely loyal to the odd household she has fallen in with.",
+            "id": "reya",
+            "name": "Reya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An easygoing warrior in heavy plate and a founding member of Arwin's guild, usually at the side of the healer Anna. Genial and dependable in a fight, he is secretly a fallen Paladin of Light who lost his holy power and now fights as an ordinary man-at-arms. He keeps the deeper reasons for his fall to himself, sharing little of his past even with those closest to him.",
+            "id": "rodrick",
+            "name": "Rodrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind, forthright healer who travels with the warrior Rodrick and belongs to Arwin's guild. An ordinary healer rather than a battle-mage, she once slipped quietly away from the Adventurers' Guild, which never took much notice of her. Her healing is limited by her own energy and cannot mend every wound, but she is the group's lifeline through its most dangerous fights.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, red-haired warrior missing her right forearm who approaches Arwin's market stall for a piece of Ifrit armor. Skilled and battle-tested despite the injury, she carries herself like a seasoned adventurer. Short of coin, she strikes a deal to pay Arwin over time, becoming his customer and, informally, his debtor.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, balding mason from Milten's crafts quarter and the only builder willing to work the so-called haunted street. He takes on the rebuild of Arwin's ruined smithy for two hundred gold in staged payments. Matter-of-fact and quick, he even repeats the street's grim rumors back to Arwin, unaware he is describing Arwin's own handiwork.",
+            "id": "ridley",
+            "name": "Ridley",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A hawk-featured Merchants' Guild representative with a heavy unibrow and an ill-fitting suit who calls on Arwin about his market trading. He explains Milten's trade rules and licence fees plainly and without menace, and expects both the tavern and Arwin's future smithy to register once they are operating. Businesslike and oddly reasonable for a city official, he becomes a recurring administrative contact.",
+            "id": "jake",
+            "name": "Jake",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gruff, honest Milten blacksmith and Arwin's usual source of crafting metal, carried over from earlier days. He sells Arwin bars of steel and a rare bar of pale, tough metal at a markup, bluntly advising the inexperienced smith to seek out a proper mentor and learn real technique. A familiar, no-nonsense fixture of the city's trade.",
+            "id": "taylor",
+            "name": "Taylor",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The leader of the Iron Hounds, the rival guild Arwin has been feuding with, and the last man still standing from the group behind an earlier killing. Far stronger than his stated rank, he is held off only by a fragile truce. Since three of his members vanished, he has grown markedly more paranoid and volatile, and has set watchers on Arwin's old smithy and the haunted street.",
+            "id": "jessen",
+            "name": "Jessen",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A brunette adventurer from a small, newly formed guild that takes ordinary journeyman dungeon work. She buys a set of Ifrit armor at market and arranges to have an ill-fitting piece resized at Arwin's smithy. Friendly and grateful for the fit, she offers to connect him with a merchant contact who might solve his standing need for a steady metal supplier.",
+            "id": "vivian",
+            "name": "Vivian",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A short, androgynous, teenage-looking merchant with slicked black hair, posh speech, and an evasive manner, sent by the adventurer Vivian to discuss supplying metal to Arwin's smithy. He arrives with unexplained blood on his collar, which he waves off as a scuffle. Mid-conversation his gaze falls on Lillia, and he drops to his knees in open reverence, addressing her as his queen and revealing that he knows her as the former Demon Queen.",
+            "id": "madiv",
+            "name": "Madiv",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young man of about twenty with a scarred cheek and slicked-back blond hair, wearing leather that conceals hidden blades and the badge of a rival adventuring party. He approaches Arwin at the Adventurers' Guild hall under a friendly pretense to pass along a coded warning. He grew up on the streets in the same crew as Reya and betrayed them years earlier during a robbery, getting several of them killed.",
+            "id": "charles",
+            "name": "Charles",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly, pockmarked, cane-leaning proprietor of a cluttered curiosity shop tucked into a Milten back alley, stocked with monster parts, oddities, and rare magical components. She speaks in an archaic, formal way and sells Arwin a plain feather for a single coin. When he casually catches a falling pot before it can strike her, she reacts with shock far beyond ordinary gratitude, for reasons she does not explain.",
+            "id": "esmerelda",
+            "name": "Esmerelda",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-2"
+      },
+      "recaps": {
+        "ending": "The book ends quietly rather than in combat. Arwin has reached Journeyman tier and forged his first Epic-quality item, the Bleak Wind Chestplate, for the healer Anna, remade from the armor of the man he killed; he ends the book unconscious from magical exhaustion but safe, watched over by Lillia, holding a banked skill upgrade and an unused black badge suspected to be the key to a nearby dungeon. His guild, Menagerie, is now officially registered, with the tavern as its guild house and a co-leader seat left empty. Arwin and Lillia are openly a couple, her Demon Queen identity known to Olive and now to the merchant Madiv, who is sworn to her service and supplying the smithy. Reya carries a newly awakened weapon and a Challenge of her own, unspoken feelings for Olive, and a raw past dragged back up by her old betrayer Charles. Olive is a full member still owed two secrets: the group's history with the Adventurers' Guild and Madiv's true nature. Jessen and the Iron Hounds are gone, but new complications open: Menagerie has been blacklisted by a thief and information network over its dealings with Madiv; the shopkeeper Esmerelda's strange reaction to Arwin is unexplained; the long-promised dungeon delve never happens; and the haunted-street land purchase waits on money and paperwork. Above all, Arwin's newly stated goal, to tear the corruption out of the Adventurers' Guild's leadership, sets the course for what comes next.",
+        "in_short": "Rise of the Living Forge 2 follows Arwin Tyrr, the presumed-dead former Hero of Lian, as he rebuilds his life in Milten as the masked smith Ifrit while racing a mesh Challenge that warns his class's hunger will kill him unless he masters it. He forges the dead Epic crystal he carries into a living bow, recruits the one-armed warrior Olive, and delves a spider-filled dungeon to grow stronger before a worm brood strikes. The brood proves to be the work of the Iron Hounds' leader, Jessen, who is breeding and controlling the monsters and culling his own guild for power. In a night ambush the group breaks his hold and Arwin kills him, freeing the horde. Naming their guild Menagerie, Arwin and Lillia finally become a couple and Olive joins for good. As the shop and tavern flourish, a merchant named Madiv recognizes Lillia as the former Demon Queen, and dealings with him get Menagerie blacklisted by a thief network. Reforging Jessen's armor into an Epic chestplate for the healer Anna, Arwin reaches Journeyman tier and collapses from exhaustion, caught by an unseen presence and found safe by Lillia. His closing thought finally names his true goal: to root out the corruption in the Adventurers' Guild's leadership.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Arwin Tyrr was the Hero of Lian, summoned from Earth as a child to fight a fifteen-year war and made to strike down the Demon Queen. A hidden gem in his own armor detonated at his moment of victory; the kingdom mourned him as dead, but he survived, cast into the remote city of Milten and reborn with a unique crafting class, the Living Forge, and a curse, the Hungering Maw, that forces him to consume magical items to live. Concluding the war was staged and both champions meant to die, he built a hidden life as the masked smith Ifrit and gathered a small guild: the street thief Reya, the warrior Rodrick, the healer Anna, and Lillia, the former Demon Queen now running a failing tavern, who became his ally and quiet love. When the rival Iron Hounds killed his young assistant Zeke, Arwin hunted down those responsible, killing three and deferring their dangerously strong leader, Jessen, under a truce. Clearing a remote dungeon, the guild revealed their true selves to one another, and Arwin claimed a dead, Epic-quality crystal, the Heart of the Devouring Prism. He also learned that the world's real scale of power dwarfs anything he was shown, and the mesh warned him with a formal Challenge: his class's hunger will kill him unless he masters it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Milten after the dungeon, Arwin sets out to rebuild his burned smithy and his strength while a mesh Challenge warns that his class's hunger could kill him. Working as the masked smith Ifrit, he sells plain, non-magical armor at market with Reya's help and takes on a commission from Olive, a scarred, one-armed warrior who pays part now and promises the rest. He hires a blunt local mason, Ridley, to rebuild the smithy, and the strange drunkard of the haunted street returns the salvaged sword of his late assistant. Deciding the dead Epic crystal he carries is too dangerous to eat or ignore, Arwin resolves to forge it into a weapon so he can study it safely. He contends with the crystal's own will in a vision of endless hunger, forcing it to yield, then works it into a great bow. The finished weapon is Unique and Awoken, growing stronger with each kill and drawing on its wielder's own magic, but it is unstrung, unusable, and has only provisionally accepted him. Through it all, his nightly dinners with Lillia grow steadily warmer, though neither will name what is happening between them.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the bow forged, Arwin turns to money and preparation. A Merchants' Guild representative, Jake, calls at the tavern and lays out Milten's trade rules and licence fees, expecting both the tavern and the coming smithy to register once they operate. Rodrick and Reya scout the forest and report signs of two worms, likely a breeding pair, giving the group a rough timeline before a wormling brood could threaten Milten. Olive returns, having survived a hard dungeon run, and repays her debt in full with extra coin. Learning that Arwin's whole group can fight, she proposes a joint delve into the journeyman-tier dungeon she frequents, splitting the gold evenly, and the party agrees to build everyone's strength before the worms come. Arwin keeps selling armor and paying down the smithy's construction, which runs ahead of schedule. Meanwhile he and Lillia draw closer over their meals together, still leaving their feelings unspoken, and the tavern inches toward opening once it finally has a name.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party travels to a larger, journeyman-tier dungeon run by another guild and delves in together, Olive fighting alongside a group for the first time. They clear room after room of spiders, then a disguised centipede-like monster that nearly kills Arwin before they cooperatively tear its head off, earning a shared achievement and individual skill upgrades. Reya reveals a new ability: binding the essence of a slain monster to summon a temporary spectral copy of it. The odd tension Reya has shown toward Olive turns out to be a clumsy crush rather than any hidden threat, and Arwin quietly encourages her to speak to Olive directly. Pressing deeper toward a gated boss room, the group kills an ambushing predator, only for a much larger spider broodmother, swarming with young, to erupt from beneath it as the room's dormant spiders wake. With roughly six days left before they must move against the worm brood, the party is thrown straight into its hardest fight yet.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party brings down the broodmother in a desperate rush, Arwin devouring his own damaged greaves for speed and hurling Olive to land the killing blow, and everyone earns fresh advancement. Exploring a reshaped passage, they find murdered adventurers and are ambushed by two survivors who had turned on their own group for its gear; the party kills them. Beyond lies a workshop-like chamber with rivers of lava, where a hidden skill lets Arwin handle molten rock once his hand is wreathed in his own flame. Solving the room's puzzle opens a chest holding a fire-forged sword, along with rare volcanic ingredients and a sealed vial of portable magma. Rather than sell Olive the sword she plainly wants, Arwin tests her character by offering it in exchange for two months of dungeon-running as an equal, unpaid guild member, and she accepts, effectively joining the group. They seal the room, keep its key, and turn back toward the surface, their delve a success and their party one member larger.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Milten, the group prepares for the coming worm brood. Arwin has the harvested spider silk woven into a string for his bow and buys a bar of a rare, tough pale metal from the smith Taylor to reinforce his gear. Forging his own new greaves lifts him a tier and opens a class specialization, which he devotes to the Hungering Maw itself, hoping to master the curse driving his Challenge; he also gains a title that lets him smell the nature of an item's magic. His crafting grows more dangerous, too: an upgraded ability now lets any item he forges awaken an emergent trait, usually a harmful one, and the most potent materials fight his control as visions. Overcoming one such vision, he forges Rodrick a set of Awoken, water-themed greaves that bond permanently to him. He strings his crystal bow at last, though it still refuses to fully accept him and cannot be drawn without magical strength. With his equipment and skills advancing, Arwin races to finish arming the group before their planned strike at the end of the week.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the strike nears, Arwin completes Rodrick's water-themed armor set and pushes his craft further, discovering that setting aside the mesh's guidance and forging by pure intent yields far better work; this completes a milestone of his hunger Challenge, which the mesh then makes harder. He forges specialized bracelets and a test arrow for his bow. Lillia privately admits to herself that she loves him, and both silently resolve to say nothing until after the worms. The tavern is finally named the Devil's Den, leaning into the haunted street's reputation. On that street, an unseen, intangible figure kills an Iron Hounds scout, and it emerges that the guild's leader, Jessen, has grown volatile and paranoid, watching Arwin's old smithy. An unnatural cold grips Milten like an omen. Scouts spot the worms behaving strangely, as if tended rather than wild, and the party mobilizes early. Slipping through the night forest, they find the truth: Jessen himself stands between two grown worms, controlling an entire bred horde of wyrmlings, and is running a brutal culling of his own guild, feeding the weak and unwilling to the monsters to strengthen the survivors and himself. Realizing his control depends on concentration, the party readies a plan around Arwin's untested bow.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party springs its ambush. Olive walks openly through the enemy camp under Lillia's shadow-cover and cuts down Iron Hounds while imps and shadow-tendrils sow panic. Arwin's great arrow strikes Jessen and breaks his hold on the horde, and Arwin drops into the fight, raising his hammer at his enemy with a single word: four, counting the guilty. Jessen proves far stronger than his rank, unbothered by his own men's deaths, and reveals that he meant all along to have his worms kill every survivor so he could absorb the harvested power himself. He looses both grown worms; one, already dying from within of an unknown cause, collapses before it can kill Reya and Olive. Arwin, burning through his crafted bracelets for combat effects, is beaten down but refuses to yield. When Jessen finally closes in, Arwin traps and shatters his sword, reclaims a cursed dagger long secretly bound to his own power, and, with his last strength, clings to Jessen, turns himself superheated, and forces a vial of magma down his throat. Jessen dies as the molten rock consumes him from within. One grown worm still remains, loose and freed from his control, charging toward the rest of the party.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The lone surviving worm flees the field after Reya, drawn to the first worm's corpse, digs out her own long-lost dagger from inside it; the blade, which had been killing the beast from within, awakens as a weapon bound to her that grows stronger with each kill, and the mesh sets her a Challenge of her own. Arwin gains a title for his endurance, loots Jessen's body, and the exhausted party harvests wyrmling scales and turns for home. On the walk back they finally name their guild: Menagerie. Unseen, a stranger watches them go. Back at the tavern, Arwin and Lillia, freed of the reason they had kept delaying, confess their feelings at the same moment and become a couple. Arwin invites Olive to join Menagerie for good and reveals to her that he is the smith Ifrit behind all their gear, though he and Lillia agree to keep her true nature hidden a while longer. His rebuilt smithy is finished at last. When talk turns to the mesh's Challenges, Olive's reaction shows she knows them firsthand, and she reluctantly begins to tell her story, having once accepted a mesh Challenge years earlier that she blames for the ruin of her old life.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the Iron Hounds broken, Menagerie rebuilds openly. Olive finishes telling her past: the Challenge she took years earlier crippled her in a dungeon fight, cost the life of a comrade, and saw her old group abandon her. Reya, increasingly drawn to her, quietly seeks advice about it. Arwin at last forges a purpose-built arrow for his bow, binding it into a matched set, and turns out stacks of armor to sell. Reya names his rebuilt shop the Infernal Armory, matching the guild's devilish branding, and his market days begin drawing real crowds and real coin. A secretive organization that scouts and ranks guilds announces a new dungeon near Milten, found using maps recovered from Jessen's old office; a key to its lower levels is missing, and Arwin privately suspects it is the unmarked black badge he took from Jessen's body. He registers his storefront with the Merchants' Guild through his contact Jake and asks about buying the whole haunted street. New customers arrive, among them the adventurer Vivian, who offers to connect Arwin with a merchant who can supply his metal. That night the merchant comes: a small, oddly mannered figure named Madiv with blood on his collar. Mid-conversation his eyes fall on Lillia, and without warning he drops to his knees, hails her as his queen, and reveals that he knows her as the former Demon Queen, shattering the secrecy the household has carefully kept.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Madiv turns out to be a former soldier of Lillia's old army, wrongly banished and forced to rebuild his life as a merchant; recognizing his devotion, Lillia spares him, swears him to secrecy, and orders him to supply Arwin's smithy, and Arwin privately works out that Madiv is a vampire. Their metal deal set, Arwin pursues buying the haunted street, which requires Menagerie to become an officially registered guild. That forces a visit to the Adventurers' Guild, an organization the group has every reason to avoid. There a man named Charles, who once betrayed Reya's childhood street crew, delivers a coded warning: dealing with Madiv has gotten Menagerie blacklisted by a thief and information network. Arwin registers the guild anyway, refusing to abandon Madiv. Seeking a feather for a commission, he meets Esmerelda, an old shopkeeper who reacts with startling shock when he saves her from a small mishap. Finally, Arwin reforges Jessen's reclaimed armor into a chestplate for Anna. Pouring in his own magic to the point of collapse, he completes the Bleak Wind Chestplate, his first Epic-quality work, which lifts him to Journeyman tier. As he gives out, an unseen presence steadies him and lowers him gently, and Lillia finds him soon after, exhausted but unhurt. His last clear thought states his true aim for the first time: his growing strength is a step toward tearing the corruption out of the Adventurers' Guild's leadership. The book closes there, that reckoning still ahead.",
+            "through": {
+              "chapter": 71
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-2"
+      }
+    },
+    "rise-of-the-living-forge-3": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ifrit",
+              "the Hero of Lian"
+            ],
+            "description": "The former Hero of Lian, believed dead since the explosion that ended a secretly staged war, now living quietly in the remote city of Milten. He carries the unique Living Forge crafting class and a curse, the Hungering Maw, that forces him to devour magical items to survive. Behind a mask he works as the smith Ifrit and leads the small guild Menagerie from Lillia's tavern, with her as his partner. As the book opens he is rebuilding his craft and strength, set on one day rooting out the corruption in the Adventurer's Guild's leadership.",
+            "id": "arwin-tyrr",
+            "name": "Arwin Tyrr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Demon Queen"
+            ],
+            "description": "The former Demon Queen, stripped of her old power by the explosion that also felled Arwin, now hiding in Milten as the innkeeper of a monster-themed tavern, the Devil's Den. She carries the unique Hearthkeeper class, which draws strength from the guests she feeds and lodges, and she despises needless killing. Her purple skin and concealed tail keep her mostly indoors. A founding member of the Menagerie and Arwin's partner, she is slowly building the tavern into something far larger than an inn.",
+            "id": "lillia",
+            "name": "Lillia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former street thief of Milten and a full member of the Menagerie. She carries the unique Warden class, built on restraint and control rather than killing, and gathers information as readily as she once lifted purses. Guarded and shaped by a hard childhood on the streets, she has grown fiercely loyal to the odd household she now calls a guild.",
+            "id": "reya",
+            "name": "Reya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An easygoing warrior in heavy plate and a founding member of the Menagerie, often at the healer Anna's side. Genial and dependable in a fight, he is secretly a fallen paladin who lost his holy power and now fights as an ordinary man-at-arms. He guards the deeper reasons for his fall closely, sharing little of his past even with those closest to him.",
+            "id": "rodrick",
+            "name": "Rodrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind, forthright healer who travels with the warrior Rodrick and belongs to the Menagerie. An ordinary healer rather than a battle-mage, her power is limited by her own energy and cannot mend every wound, yet she is the group's lifeline through its hardest fights. She keeps her own past largely to herself.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, red-haired warrior missing her right forearm, battle-tested despite the injury, and a full member of the Menagerie. She joined after Arwin outfitted her and proved her worth, and carries the private weight of a mesh Challenge that upended an earlier life. Loyal and quietly proud, she is still owed parts of the guild's hidden history.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant and Arwin's metal supplier, and secretly a vampire. Once a soldier in Lillia's old army, he recognized her as his former queen and swore himself to her service. Formal and theatrical in manner but quick to violence when crossed, he keeps the smithy stocked and treats Lillia's word as law.",
+            "id": "madiv",
+            "name": "Madiv",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Secret Eye's on-site representative at the newly opened Milten dungeon, controlling who is permitted to enter. Composed and hard to read, she recognizes Arwin on sight and defers to no guild's authority but her own organization's. She screens adventuring teams to keep the unstable dungeon from being pushed into a catastrophic break.",
+            "id": "selen",
+            "name": "Selen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An enormously tall and powerfully built adventurer, among the Infernal Armory's first major customers. She buys a set of Arwin's scale armor that must be custom-fitted to her unusual frame, takes the tavern's monster theme in good humor, and returns as a regular patron.",
+            "id": "wanda",
+            "name": "Wanda",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The guildmaster of the Ardent Guild, a powerful thief-and-information network that has been feuding with the Menagerie. Controlled and image-conscious, he punishes his subordinates' failures but avoids open moves that would cost his guild public standing. He sees Arwin's rising group as an obstacle to his ambitions and weighs whether to absorb it or quietly remove it.",
+            "id": "tironal",
+            "name": "Tironal",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Ardent Guild's chief spymaster and Charles's superior, responsible for the intelligence network behind the guild's moves against the Menagerie. His information badly underestimated Arwin's group, leaving him exposed to his own guildmaster's anger. Calculating and defensive, he scrambles to recover his standing as his schemes unravel.",
+            "id": "vorfen",
+            "name": "Vorfen",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The elderly, archaic-mannered proprietor of a cluttered curiosity shop in a Milten back alley, stocked with monster parts, oddities, and rare components. She carries a rare gift for sensing a person's greed, which leaves her deeply unsettled by Arwin, who seems to want nothing at all. Convinced he is something more than an ordinary smith, she attaches herself to the guild as a would-be supplier.",
+            "id": "esmerelda",
+            "name": "Esmerelda",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young, sword-trained noblewoman of the Montibeau family, a minor noble and merchant house tied to Milten. Hunted through the city by hired assassins after her father's recent death, which she suspects a rival family arranged, she is gravely wounded by a poisoned blade and rescued near death by a mysterious white-haired stranger, then taken in by Arwin's guild. Once recovered, she strikes a deal with Arwin: he will outfit her with custom protective equipment in exchange for her family's future goodwill and partnership.",
+            "id": "melissa-montibeau",
+            "name": "Melissa Montibeau",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unkempt, white-haired man who has long lived on the guild's street, usually taken for a harmless drunk. When assassins corner a fleeing noblewoman, he moves with startling, inhuman speed and strength to kill her attacker, his glazed eyes turning cold and clear. He refuses to give his name or explain himself, and keeps a wary distance from the Menagerie even as he helps them.",
+            "id": "the-drunkard",
+            "name": "The drunkard",
+            "reveal": {
+              "chapter": 37
+            }
+          },
+          {
+            "description": "A professional assassin, skilled and pragmatic, who works alongside her partner Riker for a costly guild of hired killers. Handed a baffling contract to attack the same target for a few minutes on three consecutive nights and then withdraw, she grows uneasy on realizing the mark somehow knew they were coming.",
+            "id": "lena",
+            "name": "Lena",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A professional assassin and Lena's partner, working the same puzzling three-night contract at her side. Capable but increasingly frustrated as their skilled, heavily armored target shrugs off every attack without once striking back.",
+            "id": "riker",
+            "name": "Riker",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Wallace"
+            ],
+            "description": "A dwarven master smith of formidable power, clad in obsidian, magma-veined armor and wielding a fire-channeling hammer. When Arwin's transformed smithy opens a portal into his lava-lit workshop, Wallace steps through demanding answers, then is startled to find a self-taught human using dwarven fire-craft. Gruff and bound by a strict smith's code, he sets out to judge whether Arwin is fit to be trained.",
+            "id": "wallace-gentletongue",
+            "name": "Wallace Gentletongue",
+            "reveal": {
+              "chapter": 56
+            }
+          },
+          {
+            "description": "A masked, gray-clad figure of immense and unsettling power who arrives at the Devil's Den seeking a 'dungeon heart,' an artifact of enormous magical signature that he says he once gave away and now means to reclaim. He offers to destroy a rival guild as payment for its return and sets a four-day deadline before departing in a curl of black smoke. His true allegiance and full strength are unknown.",
+            "id": "twelve",
+            "name": "Twelve",
+            "reveal": {
+              "chapter": 91
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-3"
+      },
+      "recaps": {
+        "ending": "Arwin ends the book alive and well, advanced to Journeyman tier and settled into his chosen path, Cursed Dwarven Smithing, having forged his first two cursed items: a shield built from a monstrous worm's scale and a kitchen knife for Lillia. The choice, once a gamble, is proven workable. He and Lillia remain openly together, and their transformed, sentient smithy is bonded to them both. No member of the Menagerie dies or is captured; every named guild member ends the book intact and in their established role. The guild is materially stronger than at the start: newly and barely ranked by the Secret Eye, informally backed by the restored Montibeau family, running an expanding tavern base, and holding two working cursed items plus an unofficial tie to the cursed-item dealer Esmerelda, whose true membership Arwin leaves undecided. Rodrick and Anna's dark pasts are known and accepted; the dwarven smith Wallace is a secret-keeping ally. The central threat is unresolved: Twelve, a masked figure far stronger than the Menagerie, has demanded the dungeon heart hidden inside Arwin's smithy within four days, and that deadline has not passed. Rodrick's intelligence has tied Twelve to a guild called the Setting Sun, a name Arwin and Lillia recognize from their own unexplained, more powerful past before an event they call the explosion, the first time either confirms they were once far stronger than they are now. The book closes as a representative of the Dawnseeker Guild arrives unannounced at the tavern and offers Arwin unexplained mutual help, leaving the Menagerie poised between two converging unknowns as book 4 opens.",
+        "in_short": "Rise of the Living Forge 3 follows Arwin Tyrr, the presumed-dead Hero of Lian, as he grows his craft and his guild, the Menagerie, in Milten while working behind a mask as the smith Ifrit. Using a looted key, the guild clears an unstable ranked dungeon, keeps its still-beating monster heart, and earns a public reputation and a place on the kingdom's guild rankings, drawing the rival Ardent Guild's attention and a flood of business. When a hunted noblewoman, Melissa Montibeau, takes refuge with them, Arwin forges her concealed armor and helps fight off the assassins pursuing her. Joined into a living device, the monster heart consumes and transforms his smithy into a sentient forge, which opens a portal to a dwarven master, Wallace Gentletongue. Wallace trains Arwin, uncovers his and Lillia's true identities, and keeps them secret; Arwin reaches Journeyman tier and chooses the risky Cursed Dwarven Smithing, forging his first cursed shield and knife. Rodrick and Anna are revealed as Melissa's secret protectors and confess their dark pasts, and are accepted. The book ends unresolved: a masked, immensely powerful figure named Twelve demands the dungeon heart within four days, tied to a guild called the Setting Sun that Arwin and Lillia recognize from their own hidden, more powerful past, and a Dawnseeker Guild representative arrives offering unexplained help.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Arwin Tyrr was the Hero of Lian, summoned from Earth as a child to fight a fifteen-year war and made to strike down the Demon Queen. A gem hidden in his own armor detonated at his moment of victory; the kingdom mourned him as dead, but he survived, cast into the remote city of Milten and reborn with a unique crafting class, the Living Forge, and a curse, the Hungering Maw, that forces him to consume magical items to live. Concluding the war had been staged and both champions meant to die, he built a hidden life as the masked smith Ifrit and gathered a small guild: the street thief Reya, the warrior Rodrick, the healer Anna, and Lillia, the former Demon Queen, also stripped of her power by the blast and now running a tavern, who became his ally and partner. When the rival Iron Hounds threatened Milten, Arwin killed their leader, Jessen, and looted a key from his body. He recruited the one-armed warrior Olive, forged living weapons and his first Epic-quality armor, and reached Journeyman tier. The guild, named Menagerie, registered around Lillia's tavern, the Devil's Den. A vampire merchant, Madiv, recognized Lillia as his former queen and became the guild's metal supplier, though dealing with him drew the hostility of the Ardent Guild's information network. By the end, Arwin had named his true aim: to root out the corruption in the Adventurer's Guild's leadership.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After finishing an Epic chestplate for Anna, Arwin advances a tier and gains a magic-sensing skill, then leads the guild into a newly opened, unstable Milten dungeon using the badge-key he looted from Jessen. A Secret Eye representative, Selen, controls entry; Arwin humiliates a hostile Ardent Guild officer in a duel to gain admission. Inside, the dungeon sits dangerously close to a catastrophic 'break,' so the group commits to clearing it, fighting hobgoblins and monsters several tiers above their own. Reya lands a major kill, and Arwin's crystal bow reveals powerful new abilities and earns him a title. Along the way they rescue two adventurers and a struggling Ardent Guild team, learning the rival guild is delving the same dungeon. The party reaches a tower at the dungeon's heart, believed to hold whatever Jessen's key unlocks, and Arwin promises Olive he will finally explain what he really is once they are out.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the tower the group finds Jessen's hidden workshop and a monster stitched together from its remains; they destroy it, and Arwin keeps its still-beating heart as crafting material. Their clear officially ranks the dungeon and averts the break, and the Menagerie is publicly celebrated as first-clearers on an obelisk outside, ending their low profile. Back in Milten, Madiv delivers rare metal, and it emerges that his own past violence against an Ardent Guild warrior is what first drew that guild's hostility. Honoring his promise, Arwin tells Olive the whole truth: that he is the Hero of Lian and Lillia the former Demon Queen, both survivors of the staged war and the Adventurer's Guild's betrayal. Shaken but won over, Olive chooses to stay and keep the secret. Meanwhile Reya coaches the blunt, threatening Madiv to behave like an actual salesman ahead of the shop's grand opening.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Infernal Armory and Devil's Den open to overwhelming demand; Arwin forges armor through the night while Reya and Madiv sell it all, and a huge adventurer named Wanda becomes a repeat customer. Lillia shuts down a near-brawl with a startling show of force, then reveals a second, troubling Hearthkeeper power: anyone who eats or lodges at her tavern can be compelled to obey her, a power Arwin's mind-immunity makes him a safeguard against. The Merchants' Guild contact, Jake, warns that rival interests are trying to buy the guild's street out from under them; he had quietly placed a protective hold on the land at real personal risk, and Arwin's sales windfall should cover the cost. Lillia also gains a cooking specialization that infuses her food with temporary buffs. The guild settles into a busy, profitable rhythm.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin custom-fits armor for Wanda and works down his commission backlog, shifting toward fewer, higher-value pieces, and forges his first Epic-quality item from scratch, a pair of clawed gauntlets. A cutaway shows the Ardent Guild's leadership, guildmaster Tironal and spymaster Vorfen, stewing over their failed schemes against the Menagerie, including the blocked attempt to buy its street; Rodrick, it turns out, has been infiltrating their headquarters in disguise. When Arwin checks on the guild's registration at the Adventurer's Guild, it is rejected as over-qualified: Selen reveals the Secret Eye has instead placed the Menagerie on its kingdom-wide guild rankings, at the very bottom, rank 499. She warns him that a public ranking will draw dangerous rival attention going forward.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin reconnects with Esmerelda, an old curiosity-shop keeper whose gift for sensing greed leaves her convinced he is something inhuman; she attaches herself to the guild as a would-be supplier and, after fainting at the sight of Lillia and Madiv, quietly resolves to play along. Jake delivers the finalized deed to the guild's street. Arwin and Lillia begin a joint project to build a device powered by the monster heart from Jessen's dungeon, forging its first component together and earning a shared crafting achievement. Elsewhere in Milten, a sword-trained young noblewoman, Melissa Montibeau, is chased through the alleys by an assassin and saved at the last moment by the mysterious white-haired drunkard from the guild's street, only to collapse from a fast-acting poison.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The drunkard carries the poisoned Melissa to the Devil's Den, where Anna and a magically buffed meal pull her through. Melissa explains her noble family was targeted after her father's death, and Arwin agrees to forge her concealed protective armor in exchange for future goodwill. A squad of professional assassins tracks her to the street; the guild, aided by the drunkard and Madiv, kills all eight, and Lillia protects Melissa inside the tavern. Expecting a stronger follow-up, Arwin delegates material-gathering to the guild rather than doing everything himself, and secretly hires two assassins, Lena and Riker, to attack him over three nights so he can field-test the new armor under real combat conditions, revealing the arrangement only when the test is done.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over six exhausting days the whole guild helps Arwin complete Melissa's five-piece armor, fully stat-concealed and able to self-destruct on his command; he and Lillia collapse from the effort. Arwin confirms he has climbed to Apprentice 8. Restored and equipped, Melissa departs alone to reclaim her family's holdings. In a cutaway, a masked, gray-haired enforcer of enormous power appears unbidden in Tironal's private chambers and conscripts the Ardent Guild's spy network to hunt Milten for an item tied to a missing 'trainee' of his, revealed to have been the late Jessen, an object said to magnify the desires of whatever it bonds to.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin and Lillia finish the heart-powered device, three Epic components joined into a set, but on assembly it bonds to them both and consumes the entire smithy, taking the building itself as its living body. Sharing a rare quiet night, Arwin tells Lillia about a cheerful comrade from his Hero days who hated killing and secretly saved wounded soldiers on both sides of the war before dying to save others; Lillia recognizes him from a revered demon-side legend. Rodrick reports the Ardent Guild's information network is badly compromised and its wider ambitions faltering. When the group finally opens the transformed smithy, they find it alive and intelligent: it has devoured Arwin's stockpiles, and it conjures a black-fire door and drops a key at his feet, deliberately directing him toward a specific old dungeon workshop.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin opens the smithy's black-fire door, and a powerful dwarven master smith, Wallace Gentletongue, steps through from his lava-lit workshop demanding answers. Startled to find a self-taught human using dwarven fire-craft, and horrified to learn Arwin built his living smithy around a 'dungeon heart,' Wallace resolves to judge whether Arwin is fit to be trained or must be destroyed. He takes Arwin as a temporary apprentice, teaching the fundamentals of working lava and harmonizing with a material's 'song.' Arwin masters the universal first half of dwarven smithing by his own unorthodox method, eating the lava, then accepts a piece of mithril to forge an item that will reveal his true character. Accepting it triggers a rare, high-stakes mesh Challenge that Wallace warns he cannot leave alive without completing, and Arwin learns such Challenges can be stolen, recasting Olive's own lost one in a new light.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin completes the mithril Challenge by forging with the sentient smithy itself as his partner, producing a small cursed band that reveals both deep compassion and an ocean of war-guilt in his soul. Reading it, Wallace deduces that Arwin is the vanished Hero of Lian and Lillia the former Demon Queen, then confesses his own secret: he has long, quietly traded with demons, having learned they are not the monsters he once believed. He passes Arwin's exam and agrees to keep his identity hidden. The mesh advances Arwin to Journeyman tier and offers a specialization; he chooses the risky path of Cursed Dwarven Smithing, along with a matching title, and gains a new skill. The arc closes as the guild, who had secretly staged an ambush in case Wallace turned violent, instead welcomes him to dinner.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Melissa returns to reclaim her family's estate and is ambushed by hired assassins and the man behind her father's death; she kills that man herself, while a hidden ally thins the assassins until the contract against her is formally and permanently voided. That ally is revealed to be Rodrick in disguise, aided by Anna throwing poisoned daggers from the shadows, and the two, it emerges, are married. Back home they confess their full pasts to the guild: Anna was a Secret Eye Inquisitor forced to make poisons from childhood, and Rodrick a genuine paladin who infiltrated the organization, lost his holy class, and freed her. The Menagerie accepts them without conditions. Rodrick also reveals the citywide network of beggars and street children he has quietly been running as his own information service.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Committing fully to cursed smithing, Arwin forges his first true cursed item, a shield built from the scale of a monstrous worm he once fought, won through a grueling forging vision that becomes a contest of will between him and the creature. The finished shield reflects a blocked blow back with amplified force, or turns on its wielder if no block lands. Meanwhile the Ardent Guild, crippled and desperate, is pressed by a masked figure hunting a 'dungeon heart.' That figure, Twelve, immensely powerful and impossible to read, comes to the Devil's Den and meets Rodrick, revealing he seeks the very heart fused into Arwin's smithy. He offers to destroy the Ardent Guild as payment for its return, sets a four-day deadline, and vanishes into black smoke.",
+            "through": {
+              "chapter": 91
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin forges a second cursed item, a kitchen knife for Lillia, confirming Cursed Dwarven Smithing as a genuine, workable path. Esmerelda reveals that she too secretly deals in cursed items, has moved her shop building beside the smithy, and unilaterally declares herself a member of the Menagerie, a claim Arwin neither accepts nor rejects. Rodrick's intelligence ties Twelve to a guild called the Setting Sun, a name that visibly alarms Arwin and Lillia: they recognize it as connected to their own unexplained, more powerful past before an event they call the explosion, the first time either confirms they were once far stronger than they are now. With Twelve's four-day ultimatum for the dungeon heart still unanswered, the guild resolves only to gather more information and keep growing stronger. The book ends as a representative of the Dawnseeker Guild arrives unannounced at the tavern door and tells Arwin the two of them may be able to help each other.",
+            "through": {
+              "chapter": 95
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-3"
+      }
+    },
+    "rise-of-the-living-forge-4": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ifrit",
+              "the Hero of Lian"
+            ],
+            "description": "The former Hero of Lian, believed dead since the explosion that ended a secretly staged war, now living in the remote city of Milten behind the mask of the smith Ifrit. He carries the unique Living Forge crafting class, the risky Cursed Dwarven Smithing path, and a curse, the Hungering Maw, that forces him to devour magical items to survive. He leads the small guild Menagerie from the tavern of his partner Lillia, and his smithy has become a sentient forge, the Infernal Armory, bonded to him. As the book opens, a masked and far stronger figure named Twelve is demanding a dungeon heart, and Arwin must find a way to protect his guild.",
+            "id": "arwin-tyrr",
+            "name": "Arwin Tyrr",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Demon Queen"
+            ],
+            "description": "The former Demon Queen, stripped of her old power by the explosion that also felled Arwin, now hiding in Milten as the innkeeper of a monster-themed tavern, the Devil's Den. She carries the unique Hearthkeeper class, which draws strength from the guests she feeds and lodges, and she despises needless killing. A founding member of the Menagerie and Arwin's partner, she has built the tavern into the guild's home base.",
+            "id": "lillia",
+            "name": "Lillia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A steady warrior in heavy plate and a founding member of the Menagerie, married to the healer Anna. Once a genuine paladin who lost his holy class, he now fights as an ordinary man-at-arms and serves as the guild's tactical leader on dungeon runs. Behind the scenes he runs an extensive network of street informants across Milten, and his intelligence work repeatedly proves decisive. Calm and calculating, he guards the guild against threats others cannot even see.",
+            "id": "rodrick",
+            "name": "Rodrick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A kind, forthright healer and a member of the Menagerie, married to Rodrick. An ordinary healer rather than a battle-mage, her power is limited by her own energy, yet she is the guild's lifeline through its hardest fights. Her past holds dark, closely kept knowledge, including a rare command of poisons, which she is willing to use in the guild's defense.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former street thief of Milten and a full member of the Menagerie. She carries the unique Warden class, built on restraint and control rather than killing, and gathers information as readily as she once lifted purses. Guarded and shaped by a hard childhood on the streets, she is fiercely loyal to the guild and carries a sentient dagger she has promised to wield exclusively.",
+            "id": "reya",
+            "name": "Reya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A scarred, red-haired warrior missing her right forearm, battle-tested despite the injury, and a full member of the Menagerie. Loyal and quietly proud, she carries the private weight of a personal Challenge tied to the loss of her arm and an earlier failure to warn her old team, a mistake she is determined never to repeat.",
+            "id": "olive",
+            "name": "Olive",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A merchant and Arwin's metal supplier, and secretly a vampire. Once a soldier in Lillia's old army, he recognized her as his former queen and swore himself to her service. Formal and theatrical but quick to violence when crossed, he keeps the smithy stocked and treats Lillia's word as law.",
+            "id": "madiv",
+            "name": "Madiv",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly, archaic-mannered proprietor of a cluttered curiosity shop, gifted with a rare ability to sense a person's greed. She secretly deals in cursed items of her own and has moved her shop beside Arwin's smithy, unilaterally declaring herself a member of the Menagerie. Eccentric and prone to demanding odd payments, she attaches herself to the guild's projects.",
+            "id": "esmerelda",
+            "name": "Esmerelda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of the Dawnseekers, a merchant guild competing with the Ardent Guild for a foothold in Milten. Composed and quietly driven by an undisclosed grudge against the Ardent Guild, he approaches Arwin and Lillia with a scheme to covertly steal a dungeon heart and use it to ruin his rivals. In exchange he asks the Menagerie to craft him a magical item that can permanently alter a person's appearance.",
+            "id": "raen",
+            "name": "Raen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, sandy-haired Adept-tier warrior sent by the Dawnseekers as the Menagerie's guide for its covert dungeon mission. Professional and loyal to his guild, he carries the key to the dungeon and presents himself as an experienced escort.",
+            "id": "yonas",
+            "name": "Yonas",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A masked, immensely powerful figure affiliated with a guild called the Setting Sun, and the threat left hanging over the Menagerie at the start of the book. He is pressing every major information network in Milten to recover a dungeon heart for him, working against an unexplained deadline, and has offered to destroy the Ardent Guild in exchange. Far stronger than anyone in the Menagerie, his true nature and full intentions are unknown.",
+            "id": "twelve",
+            "name": "Twelve",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A representative of the information guild known as the Secret Eye, carried over from the previous book, where she worked quietly as one of its observers. After the Menagerie's staged public victory, she is sent to invite the guild to the Secret Eye's tournament, the Adept Proving Grounds, where the Menagerie would take part not as fighters but as a crafting guild outfitting a combat team. She pairs the Menagerie with the struggling guild Phoenix Circle and slips away before an answer is given.",
+            "id": "selen",
+            "name": "Selen",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A representative of the struggling guild Phoenix Circle, sent to partner with the Menagerie for the Secret Eye's tournament. He arrives entirely wrapped in bandages and bulky clothing, his voice muffled, accompanied by his companion Maeve. Reserved and evasive about himself and his guild's true circumstances, he gives Lillia the immediate impression that he is not what he appears to be.",
+            "id": "elias",
+            "name": "Elias",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second representative Elias brings from the struggling guild Phoenix Circle, introduced as his sister. A tall, masked woman who cannot speak, she is armed with daggers and unusually strong, though she keeps her strength deliberately held back. She stays close at Elias's side to guard and support him. Greeting the pair, Lillia privately senses that Maeve is not human.",
+            "id": "maeve",
+            "name": "Maeve",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Raen's wife, brought hooded and cloaked to Arwin's smithy so she can be fitted with the appearance-altering item Raen commissioned. She is revealed to be an orc, who would be killed if seen openly in a human city, and wants only to be able to move safely at Raen's side.",
+            "id": "monica",
+            "name": "Monica",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Duke Aleric's teenage son and reluctant heir to a declining noble house in Thornhelm. Born with a malformed leg, he cannot fight and walks with a crutch, but he is a formidable strategist who keeps detailed intelligence on people in a deck of illustrated cards. He resents being kept as heir over his more capable sister and blames himself for rivals testing his family's weakness.",
+            "id": "art",
+            "name": "Art",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Art's sister and the fighting strength of Duke Aleric's house in Thornhelm, an elite but visibly ailing warrior. She is dying of a wasting affliction with only a few years left, and has accepted the Secret Eye's invitation to the Adept Proving Grounds as her family's last chance, both for her own cure and for restoring their standing. The invitation strangely requires her non-combatant brother Art to compete alongside her.",
+            "id": "vix",
+            "name": "Vix",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The estranged, resentful younger brother of the celebrated adventurer Kien. Isolated in a mountain cabin and consumed by envy of his brother's fame, he has become the target of a hooded manipulator he calls Mask, who insists Kien's success has always come at Hein's expense. Mask supplies him a special dagger and a tournament invitation in his own name, urging him to kill his brother rather than try to surpass him.",
+            "id": "hein",
+            "name": "Hein",
+            "reveal": {
+              "chapter": 39
+            }
+          },
+          {
+            "aliases": [
+              "Kien of the Twin Blades"
+            ],
+            "description": "An extremely powerful independent adventurer known as a Twin Blade, a previous solo champion of the Adept Proving Grounds and reckoned the most talented adept since the Hero of Lian. He is the celebrated older brother of the embittered Hein, whose resentment of him has made him the target of a hidden manipulator's schemes.",
+            "id": "kien",
+            "name": "Kien",
+            "reveal": {
+              "chapter": 39
+            }
+          },
+          {
+            "aliases": [
+              "the drunkard",
+              "Koyu the Lost"
+            ],
+            "description": "The blue-eyed stranger long known on Arwin's street only as a harmless drunkard, revealed as a centuries-old lich who calls himself Koyu the Lost. Having died in a war some seven hundred years ago, he has quietly guarded the street ever since, the true source of the neighborhood's ghost rumors and the unseen presence that helped Arwin forge his Soul Guardian's core. He warns that the world itself is slowly starving and agrees to help Arwin in exchange for a body of his own.",
+            "id": "koyu",
+            "name": "Koyu",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-4"
+      },
+      "recaps": {
+        "ending": "Book 4 closes at the exact opening of the Adept Proving Grounds, before any match is fought. Twelve is dead, killed by Anna's sympathetic poison, which has drawn the attention of the numbered organization he served: the Menagerie has been observed by a young operative who judged Arwin formidable but not hostile, and separately a figure who slipped past all detection questioned Arwin directly before leaving. Arwin ends the book at the height of his power to date: advanced to Adept tier with a soul-focused specialization, wielding a hammer that has evolved into a dramatically stronger sentient weapon, and having created a Soul Guardian that Koyu, a centuries-old lich now allied to him, calls a new form of life outside the mesh's rules. He attends the tournament only as a spectator, seated with Reya. Two teams carry the Menagerie's stake into the arena: Phoenix Circle's Olive, Elias, and Maeve, and the trio of Art, Vix, and Kien, funded by the Montibeau family and the Dawnseekers. Kien, stripped of his old magic, has earned a new class and an unusual soul-imprinted weapon, and means to find and kill his brother Hein, who is competing with Kien's stolen power. None of these confrontations occurs on the page. The tournament outcome, the Hein-Kien reckoning, Vix's hoped-for cure, the rival dwarven smith, the watching organization's next move, and the deeper mystery of the Setting Sun and Arwin and Lillia's own buried past all remain open as book 5 begins.",
+        "in_short": "Rise of the Living Forge 4 follows Arwin Tyrr, the presumed-dead Hero of Lian, working as the masked smith Ifrit and leading the guild Menagerie from Lillia's tavern in Milten. To remove the threat of Twelve, a masked assassin tied to the Setting Sun, the guild clears a dungeon for its heart, then springs a trap: they disguise Twelve as a monster, wear his clone down, and use Anna's sympathetic poison to kill the real Twelve and all his bodies at once. Impressed, the Secret Eye invites the Menagerie into a tournament, the Adept Proving Grounds, paired with the struggling guild Phoenix Circle. As Arwin equips the teams and advances to Adept tier through soul-forging, new allies gather: Duke Aleric's children Art and Vix, and Kien, a renowned adventurer whose magic was stolen by his own brother Hein, now a tournament entrant. Arwin's hammer evolves into a powerful sentient weapon, and the organization Twelve served begins watching the guild. The book ends at the tournament's opening ceremony, with the first teams called into the arena and no match yet fought, every major thread carried into book 5.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, across the earlier books: Arwin Tyrr, the presumed-dead Hero of Lian, survived the explosion that ended a secretly staged war and was cast into the remote city of Milten, reborn with the unique Living Forge crafting class and a curse, the Hungering Maw, that forces him to devour magical items. Working behind a mask as the smith Ifrit, he built a small guild, the Menagerie, around the tavern of Lillia, the former Demon Queen, who was likewise stripped of her power and now runs the Devil's Den. By the end of book 3 the guild included the thief-turned-Warden Reya, the fallen paladin Rodrick, the healer Anna, the one-armed warrior Olive, the vampire merchant Madiv, and the curiosity-shop dealer Esmerelda. Arwin had reached Journeyman tier, chosen the risky Cursed Dwarven Smithing path, and forged his first cursed items; his smithy had become the sentient Infernal Armory after consuming a monster's dungeon heart. Book 3 ended on two converging threats. A masked, immensely powerful figure named Twelve, tied to a guild called the Setting Sun, demanded that dungeon heart within four days, a name Arwin and Lillia recognized from their own hidden, more powerful past before the explosion. And a representative of the Dawnseekers guild arrived unannounced, offering unexplained mutual help.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dawnseekers' representative, Raen, proposes a scheme: the Menagerie will covertly clear an uncleared dungeon using a stolen key and retrieve its dungeon heart, which the Dawnseekers will sell to Twelve to ruin the rival Ardent Guild, while Raen collects a personal commission for a magical item that can permanently alter a person's appearance. Arwin and Lillia agree. Guided by a young Dawnseekers warrior, Yonas, a six-person team clears the dungeon and defeats its boss, a corrupted tree, keeping the beating heart. Learning that Twelve is somehow tied to the late Jessen, whose arson once killed Arwin's young worker Zeke, the group refuses to hand the heart to anyone connected to him. Yonas covertly sides with them, agreeing to let the Menagerie keep the heart as a loan on one condition: they must deal with Twelve themselves within three days, since the Dawnseekers cannot risk opposing him openly. Twelve is assessed as an assassin at the bottom of the Expert tier, two tiers above Arwin and Lillia. Back home, Madiv and Esmerelda kill a man attempting to burn down the Devil's Den, finding an Ardent Guild badge on him. With a three-day countdown set, Arwin begins planning the gear and strategy needed to survive Twelve.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Menagerie spends its three days preparing. Arwin forges Olive a cursed replacement right arm from the defeated tree's wood, the Ashen Armament, winning a forging vision against the tree's lingering will; Olive, who lost her original arm years earlier, bonds with it. Rodrick's investigation delivers the key breakthrough: Twelve's name reflects an ability to project eleven advanced clones plus his true body, and the figure threatening Milten is only a clone, following preset commands and unable to be reinforced. Anna reveals she can brew a rare sympathetic poison that, applied to a dying clone, will kill the real Twelve through the magical link, at the cost of a year of her own life. Arwin repurposes Raen's commission into a two-piece cursed item that can permanently disguise its wearer as a monster, and he and Lillia install a second dungeon heart into the Devil's Den, bonding the tavern to Lillia as a powerful familiar that amplifies her demon-queen abilities within its walls. The plan is set: wear the clone down inside the empowered tavern, apply Anna's poison as it nears death, and disguise the body as an escaped monster for a public alibi. All preparations complete the night before the confrontation.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "When Twelve arrives to collect the heart, the Menagerie springs its trap: Lillia poisons the heart he handles, and a running battle fills the tavern, with Reya's restraints, Lillia's animated furniture, and the empowered Devil's Den slowing him. Arwin secretly clips the disguise item onto Twelve, permanently reshaping him into a monstrous demon before a crowd gathered for the tavern's reopening. In the street, the guild wears the disguised clone down; Olive's cursed arm drags him from his shadows, and Anna's poison finishes him. The kill propagates through the sympathetic link, destroying the real Twelve and all his bodies at once. Lillia frames the fight as an escaped monster the tavern was responsible for, apologizing with free food and turning public alarm into celebration, while the Infernal Armory consumes the evidence; Arwin gains an achievement letting him later claim the belongings of all twelve bodies. Impressed by the staged victory, the Secret Eye, through its observer Selen, invites the Menagerie to a tournament, the Adept Proving Grounds, not as fighters but as a crafting guild to be paired with a combat guild. Selen names the partner guild, Phoenix Circle, and says its representatives will arrive that night. The greatest threat is gone, and a new arc opens.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Phoenix Circle's two representatives arrive: Elias, entirely wrapped in bandages and heavy clothing, and Maeve, a tall, masked, mute woman armed with daggers. Lillia privately warns Arwin that neither is human. Under questioning, Elias admits Phoenix Circle has fallen to last place in the rankings, lost its guild leader Norman about a year ago, and is down to just the two of them. Pressed by Lillia, Elias confirms he is undead, animated by necromancy his missing leader placed on him; he seeks a rare plant said to extend an undead creature's remaining time. The Menagerie does not care that he is undead or that Maeve is not human, and Arwin agrees to partner with Phoenix Circle for the tournament. Because tournament teams field three fighters and the Menagerie is a non-combat crafting guild, the Menagerie offers Olive as Phoenix Circle's third combatant, though she asks for time to decide. That night, her personal Challenge, tied to the loss of her original arm, abruptly reactivates, its terms not yet clear. The alliance is formed with the tournament still weeks away.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While the Menagerie prepares, Raen returns to collect his commission and reveals its true purpose: the disguise item is for his wife, Monica, an orc who would be killed if seen openly in the city. Arwin instead crafts her a removable bracelet that lets her pass as human at will. In the distant city of Thornhelm, a new storyline opens around Duke Aleric's declining noble house. His son Art, a non-combatant with a malformed leg who gathers intelligence on illustrated cards, blames himself for rivals testing the family, believing he is seen as a weak heir. Art's sister Vix, the family's fighting strength, is dying of a wasting affliction with only a few years left, and has accepted the Secret Eye's invitation to the same Proving Grounds tournament as the family's last hope, both for a cure and for restoring their standing. The invitation carries one baffling condition: Art himself must be one of the three team members. A rival guild, Starforge, is confirmed responsible for wiping out most of the family's scout team. The Aleric family needs a third fighter and a strong showing to survive.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A parallel subplot opens far from Milten. Hein, the embittered younger brother of the celebrated adventurer Kien, a Twin Blade and former solo tournament champion, has been manipulated for weeks by a hooded figure he calls Mask, who insists Kien's success has always come at Hein's expense. Mask supplies a special dagger and a tournament invitation in Hein's own name, urging him to kill his brother. Hein lures Kien into a cave and stabs him in the back; the blade punches through Kien's enchanted armor, and Hein feels an enormous surge of power flood into him. Mask's silent associates treat the killing as routine and move to dispose of the body, and a composed, unnamed man later receives the bloodied dagger and frames the killing as an experiment in extracting magical energy. But Kien is not dead: stripped of all his magic yet retaining pure combat instinct, he kills the disposal agent sent to finish him and is left alive, powerless, and grieving in the remote cave. Meanwhile Arwin completes an Epic chestpiece and gains a skill, Soul Guardian, whose required vessel he does not yet know how to build.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin completes the five-piece Ivory Executioner armor set, which unexpectedly assembles itself into a golden guardian figure, the very vessel his Soul Guardian skill needs, though it still lacks a core. He claims the belongings of all twelve of Twelve's bodies, discovering black-metal blades that absorb magical energy, a promising lead for that core. Elsewhere, Kien, still without magic, cuts through a band of bandits who cross him and continues toward Milten, single-mindedly searching for a healer. In Milten, Anna publicly destroys a rot infection by consuming the corrupted flesh with a purifying title, drawing crowds seeking cures. Olive trains hard with Elias and Maeve, whose combined technique is shown to rely on Maeve's true incorporeal, singing form and Elias's undead body, a combination too exposing to use in public. Art travels to Milten himself, ostensibly to ask Arwin about replacing his leg, but Rodrick secretly lifts one of Art's intelligence cards and confirms the danger: Art has deduced Arwin's true identity as the Hero of Lian.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rodrick reveals he has planted people around Duke Aleric's mansion and, more startlingly, that he personally hired the real assassins now threatening the Duke's life, purely as leverage he alone controls. He offers Vix, Art's sister, a trade: her family's safety in exchange for Art and Vix permanently burying what they have learned about Arwin's identity. Vix agrees, and Rodrick calls the assassins off. Committed to growing stronger for the tournament, Arwin studies the anti-magic black-metal swords taken from Twelve. Unable to unlock their secret by ordinary means, he eats one with his cursed Hungering Maw, which advances a hidden challenge governing the curse and triggers an unusual vision. Inside it he finds a weakened remnant of Twelve's soul bound into the blade. Arwin fights and questions it, learning the anti-magic property is a soul-imbued awakened-weapon effect created by an unnamed smith of great skill, not a trait of the metal itself. He has the remnant devoured, completing another milestone as his curse's hunger flares anew.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pursuing the awakened-weapon idea, Arwin works out how to imprint a person's soul into an item using a strand of hair as a sympathetic anchor, forging Reya a uniquely powerful bracer of a new Soul Forged category and finally understanding why so many of his creations turn out cursed: the harmony of a work's component songs determines whether it takes a detrimental trait. Applying the method, he pours forty continuous hours, aided by Lillia and the Infernal Armory, into forging a core for the golden Soul Guardian, feeling an unseen presence steady him whenever he nears collapse. Installing the core overwhelms him, and he wakes in a white void facing a personification of the mesh itself. The mesh explains the feat generated far more power than any normal item, enough to vault him past two skill milestones toward the Adept tier, and offers an unprecedented tailored reward. Arwin asks not to shield his allies himself but to let them protect themselves, accepting the risk that comes with real strength. The mesh advances him to Adept One, merges his skipped rewards, partly sates his curse, and grants a new title, Quest Giver, letting him assign difficult tasks that reward those who complete them.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin's class evolves into a soul-focused specialization offering dangerous Forbidden abilities; he chooses a soul-tempering passive and survives a trial that submerges his soul in burning lava, emerging able to manifest soul-lava from his own body. New skills let him bind equipment to summon at will, sense magical materials, and fuse himself and the Infernal Armory into a Soul Guardian to fight through it. Returning to the sealed smithy, he is confronted by the blue-eyed stranger long known on his street only as a harmless drunkard, who has entered without a door. The stranger names himself Koyu the Lost and reveals he is a centuries-old lich who has quietly guarded the street for roughly seven hundred years, the true source of local ghost rumors, and the unseen presence that helped forge the core. Koyu warns that the mesh has a hidden agenda and that the world itself is slowly starving, in terms echoing Arwin's own curse, and agrees to help in exchange for a body of his own. Through Koyu, Arwin realizes his Soul Guardian is effectively a new form of life outside the mesh's rules. In Milten, Art independently confirms Rodrick's assassination story and, with Vix, begins to suspect the Hero simply wants to escape the kingdom's war.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The injured Kien reaches the Devil's Den, unreadable to the mesh, and reveals his brother stole his magic with an enchanted dagger and that the Adventurer's Guild then tried to have him killed, a pattern Arwin recognizes from what was done to him and Lillia. Rather than a mere weapon, Arwin uses his untested Quest Giver title to send Kien to defeat a monster alone and earn a new class. Art and Vix return, and Art burns his evidence of Arwin's identity, revealing the tournament's grand prize, an answered question from the Secret Eye, is his family's last hope of curing Vix's inherited heart condition. Kien joins Art and Vix as their third teammate, aligned by a shared enemy: Hein is competing in the tournament with Kien's stolen power. The Menagerie reveals its deepest secrets to these new allies, that its tavern staff are real non-humans, that Lillia is the former Demon Queen, and Arwin the Hero, and all pledge secrecy and support. Selen sets the sequestered tournament to open three days out, privately warning Arwin that a rival dwarven master smith is also competing and confirming that Hein has entered using Kien's stolen power.",
+            "through": {
+              "chapter": 82
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arwin's hammer, once Verdant Inferno, fully evolves into a dramatically more powerful, wholly sentient weapon with its own name, roughly doubling his magical reserves. Far away, the numbered organization Twelve belonged to confirms his death by a rare soul poison and takes notice of the Menagerie: a young operative secretly observes Ifrit, witnessing Arwin's power and judging him dangerous but not hostile, and a figure who slips past all detection later questions him directly at the tavern. Kien completes Arwin's quest bare-handed, gaining a new class and receiving a soul-imprinted weapon that is, outwardly, a plain broom; the Montibeau family and the Dawnseekers jointly fund and equip Art and Vix's team. The whole group travels to the Proving Grounds, where Reya cons the Secret Eye into a spectator balcony so she and Arwin can watch. The book ends at the tournament's opening ceremony: the announcer notes the previous champion, whom Arwin privately knows to be Kien, has gone missing, explains the chaotic ten-team group-stage format, and calls the first teams into the arena. No match is shown. Twelve is dead; Arwin's hammer has become a powerful sentient weapon; Kien has a new class and his quest fulfilled; Art and Vix's team is funded and equipped. The Hein-Kien confrontation and the entire tournament outcome carry unresolved into book 5.",
+            "through": {
+              "chapter": 91
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "rise-of-the-living-forge-4"
+      }
+    }
+  }
+}

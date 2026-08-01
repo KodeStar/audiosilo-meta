@@ -1,0 +1,1316 @@
+{
+  "entries": {
+    "the-golden-compass": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A wild, quick-witted girl of about eleven, raised among the Scholars of Jordan College in an Oxford belonging to a world parallel to ours, where every person's soul walks beside them as an animal companion called a daemon. Left in the college's care as a small child and believing herself an orphan, she runs half-feral over the rooftops and through the streets with the town and college children, expert at lying and scheming. She is fiercely loyal to her friends and hungry for the wider world, especially the frozen North and the mystery of the child-stealers people call the Gobblers. When she is quietly entrusted with a rare truth-telling instrument and swept into the plans of powerful adults, her courage and cunning prove far more important than anyone had expected.",
+            "id": "lyra-belacqua",
+            "name": "Lyra Belacqua",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pan"
+            ],
+            "description": "Lyra's daemon, the outward form of her soul and her constant companion, able to change shape at will because Lyra is still a child. He most often takes small forms such as a moth, an ermine, or a wildcat, matching or challenging Lyra's moods, and neither can travel more than a short distance from the other without both feeling pain. Pantalaimon is usually the cautious, conscience-like voice to Lyra's recklessness, warning her of danger and comforting her in fear. The bond between a person and their daemon is treated as sacred, which makes the fate of the stolen children all the more disturbing.",
+            "id": "pantalaimon",
+            "name": "Pantalaimon",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A tall, powerful, and forbidding man whom Lyra knows as her uncle, an explorer and scholar of fierce ambition who commands the respect and fear of the Scholars of Jordan College. He returns from the North with images of a mysterious substance called Dust and of a strange city glimpsed in the sky, and demands funds for an expedition to investigate them. Secretive and ruthless, he is willing to defy the powerful Church that governs their world in pursuit of forbidden knowledge. He shows Lyra little obvious warmth, yet his discoveries and purposes shape almost everything that happens to her.",
+            "id": "lord-asriel",
+            "name": "Lord Asriel",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "A beautiful, elegant young woman who arrives at Jordan College and quickly captivates Lyra, offering to take her to London and give her the glamorous life and education she has never had. She moves easily among the powerful, seems to know a great deal about the North and about Dust, and treats Lyra with flattering attention. Her own daemon is a golden monkey, sleek and unsettlingly silent. To Lyra she first appears the sophisticated mentor she has always wanted, a window into the exciting adult world beyond the college walls.",
+            "id": "mrs-coulter",
+            "name": "Mrs. Coulter",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "A kitchen boy at Jordan College and Lyra's closest friend and frequent partner in mischief. An ordinary, good-natured child of a servant family, he shares her games and adventures around Oxford. When he is taken by the child-stealers known as the Gobblers, his disappearance becomes Lyra's driving reason to journey north, and she swears to find and rescue him. His fate is bound up with the larger mystery of what is being done to the missing children.",
+            "id": "roger-parslow",
+            "name": "Roger Parslow",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The aging head of Jordan College, responsible for Lyra's upbringing and torn between conflicting loyalties. In the opening chapters Lyra secretly watches him attempt to poison Lord Asriel, an act he seems to undertake with dread rather than malice, hinting at pressures and prophecies he will not explain. Before Lyra leaves the college he privately gives her a rare and precious instrument and warns her to keep it hidden, above all from Mrs. Coulter. His motives stay largely concealed, but he clearly believes Lyra has a part to play in events far larger than herself.",
+            "id": "the-master",
+            "name": "The Master of Jordan College",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Faa"
+            ],
+            "description": "The imposing lord of the western gyptians, the boat-dwelling people who travel the fens and waterways of Lyra's world. A grave, powerful leader, he calls the gyptians together when their own children are stolen by the Gobblers, and organizes an expedition north to rescue them. He takes Lyra under the gyptians' protection, reveals hard truths about her real parentage, and leads the rescue party with authority and resolve.",
+            "id": "john-faa",
+            "name": "John Faa",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An old, wise, and ailing gyptian counselor who advises John Faa. Once a vigorous man, he now carries deep knowledge of the North, of witches, and of the truth-telling instrument Lyra carries, and he patiently helps her begin to understand it. He has a long history with the witch-queen Serafina Pekkala. Gentle and shrewd, he becomes one of Lyra's most trusted protectors among the gyptians.",
+            "id": "farder-coram",
+            "name": "Farder Coram",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A giant armoured bear, one of the panserbjorne of the North, intelligent, proud, and immensely strong. When Lyra meets him he is living in disgrace and near-servitude in a northern town, his prized armour taken from him and his spirit dulled by drink. Bears of his kind forge their own armour, which serves them almost as a daemon does and is central to their honour. Lyra helps him recover his armour, winning his fierce loyalty, and he becomes her formidable guardian and friend on the journey north.",
+            "id": "iorek-byrnison",
+            "name": "Iorek Byrnison",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lean, easygoing aeronaut from the country of Texas in Lyra's world, who travels the skies in a hot-air balloon and hires out his services for money. An old comrade of Iorek Byrnison, he is drawn into the gyptians' expedition and lends his balloon and his marksmanship to the cause. Beneath his casual, wisecracking manner he is brave and dependable, and he becomes a steadfast ally to Lyra. His daemon is an Arctic hare named Hester.",
+            "id": "lee-scoresby",
+            "name": "Lee Scoresby",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of a clan of witches of the North, beings who live for centuries, fly on branches of cloud-pine, and can survive far apart from their daemons. Long ago she was loved by Farder Coram, and she keeps a bond of friendship with the gyptians. She and her witches watch over Lyra, whom prophecy marks as important, and intervene at crucial moments to aid the rescue of the children and Lyra's onward journey.",
+            "id": "serafina-pekkala",
+            "name": "Serafina Pekkala",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The king of the armoured bears at Svalbard, who rules the bears' fortress with cunning rather than the plain strength of his kind. Unlike other panserbjorne, he craves the trappings of human society and longs above all to possess a daemon of his own, a weakness that makes him vain and open to flattery. He is a rival and enemy of Iorek Byrnison. When Lyra is brought captive before him, she turns his vanity and ambition against him.",
+            "id": "iofur-raknison",
+            "name": "Iofur Raknison",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-compass"
+      },
+      "recaps": {
+        "ending": "The story ends on the mountaintop where Lord Asriel has built an experiment to breach the boundary between worlds. Lyra arrives believing she is bringing him the alethiometer he needs, only to learn that what he wants is a child, not the instrument. He seizes her friend Roger and severs him from his daemon; the vast energy of that killing tears a bridge across the sky into another universe, and Roger dies. Mrs. Coulter, who has followed, is offered the chance to go with Asriel but chooses to stay behind. Asriel crosses into the new world alone. Lyra, grieving Roger and sickened by what her parents are, reasons that if the Church calls Dust a mark of sin, then Dust may in truth be something good and worth understanding. Rather than turn back, she and Pantalaimon walk up into the sky after the bridge, out of their own world entirely, resolved to find the source of Dust before Asriel does. Iorek Byrnison now rules the armoured bears of Svalbard, the gyptians and her surviving friends are left behind, and the wider war over Dust and free will is only beginning.",
+        "in_short": "Lyra Belacqua, an orphan raised at Jordan College in a world where souls take the form of animal daemons, is secretly given a truth-telling alethiometer and swept into a struggle over a mysterious substance called Dust. After the charming Mrs. Coulter is exposed as a leader of the child-stealing Gobblers, Lyra flees and joins the gyptians journeying north to rescue captured children, among them her friend Roger. She gains an armoured bear, Iorek Byrnison, an aeronaut, Lee Scoresby, and the aid of witches. At the northern station of Bolvangar she uncovers the horror of intercision, the cutting of children from their daemons, narrowly escapes it herself, and destroys the station. Reaching the bears' kingdom, she outwits their king so Iorek can claim the throne, then finds her father, Lord Asriel. Learning that Asriel and Coulter are her parents, and convinced the Church is wrong about Dust, she watches Asriel sacrifice Roger to open a bridge between worlds, then crosses that bridge into a new world to seek the truth herself.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Lyra Belacqua is an orphaned girl raised among the Scholars of Jordan College in Oxford, in a world where each person's soul walks beside them as an animal daemon. Hidden in a forbidden room, she watches the Master of the college try to poison her formidable uncle, Lord Asriel, then listens as Asriel presents images of a mysterious substance called Dust and of a city seen in the sky, and wins backing for an expedition to the far North. Meanwhile children across the country are being stolen by shadowy figures nicknamed the Gobblers. Before Asriel departs, and before Lyra herself is sent away with a visitor, the Master secretly gives her a rare golden instrument, an alethiometer that answers any question truthfully to one who can read it, and warns her to keep it hidden. Lyra, curious and headstrong, has little idea how much will come to depend on her, on her loyal shape-shifting daemon Pantalaimon, and on the device now in her keeping.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A glamorous, captivating woman, Mrs. Coulter, takes Lyra from the college to live with her in London, dazzling her with attention and the promise of adventure. But Lyra soon discovers that Mrs. Coulter is bound up with the very people stealing children, and she flees into the city. She is rescued by the gyptians, a boat-dwelling people who are also losing children to the Gobblers. Their leaders, John Faa and the wise old Farder Coram, take her in and reveal the truth of her parentage: Lord Asriel is her father and Mrs. Coulter her mother. Lyra's dearest friend, the kitchen boy Roger, has been seized by the Gobblers, and she resolves to save him. She joins the gyptian expedition sailing north to find the stolen children, and with Farder Coram's help she begins to learn how to read the alethiometer.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Traveling north with the gyptians, Lyra gathers powerful allies. She frees a disgraced armoured bear, Iorek Byrnison, by helping him recover his stolen armour, and he becomes her fierce protector; she also gains the aeronaut Lee Scoresby and the distant watchfulness of the witches. The alethiometer guides and warns her again and again. Along the way she learns more about Dust and about the terrible thing being done to the captured children at a remote northern station called Bolvangar, run by the child-stealers under the authority of the Church. After a stretch of danger and separation from her friends, Lyra is finally brought to Bolvangar itself, taken in among the very people she came to stop, and begins to uncover the horror at the station's heart.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Bolvangar, Lyra discovers that the station exists to perform intercision, cutting children away from their daemons in a monstrous experiment tied to the study of Dust. She herself is nearly severed on the silver guillotine and is saved at the last moment, learning that Mrs. Coulter is the station's guiding force. Lyra rallies the captive children, and with the timely arrival of the gyptian rescuers and the witch-queen Serafina Pekkala's clan, she destroys Bolvangar and frees the prisoners, including her friend Roger. Escaping the ruin, she is carried onward by Lee Scoresby's balloon and by the witches toward the far North, where Lord Asriel is held, as the true scale of the conflict over Dust comes into view.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Separated from her friends and falling from the sky, Lyra comes to the bears' kingdom of Svalbard, where she is taken captive. She outwits the vain bear-king Iofur Raknison, tricking him into single combat with Iorek Byrnison; Iorek kills Iofur, becomes king, and carries Lyra on to find Lord Asriel. But Asriel is not glad to see his daughter; he is dismayed only because she has brought a child with her. Lyra realizes too late what he intends. Using the vast energy released by cutting a child from its daemon, Asriel severs Lyra's friend Roger from his own daemon, killing him, to tear open a bridge between worlds in the sky. Mrs. Coulter arrives but refuses to follow Asriel. Believing the Church is wrong about Dust and determined to understand it herself, Lyra steps through the shimmering bridge with Pantalaimon, out of her world and into another.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-compass"
+      }
+    },
+    "the-golden-enclaves": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Galadriel Higgins",
+              "Galadriel"
+            ],
+            "description": "Graduated at last and back in her mother's Welsh commune, El is grieving Orion, whom she was forced to leave behind in the Scholomance. She barely has time to mourn before crises erupting across the wider wizarding world start pulling her out into it. Older, sadder, and finally reckoning with the true scale of her own power, she sets out to learn the truth about the enclaves, the flood of monsters, and what really became of the boy she loves.",
+            "id": "el",
+            "name": "El",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "New York's monster-killing hero, who stayed behind at graduation to hold back the maw-mouth Patience so his classmates could escape, and was sealed inside the school. To El and everyone who knew him he is presumed lost. His strange, bottomless appetite for maleficaria, never fully explained during their school years, haunts El as she refuses to accept that he is simply gone.",
+            "id": "orion",
+            "name": "Orion Lake",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "El's loyal friend and artificer, among the first to seek her out after graduation and to stand beside her as the wider world's troubles mount. Practical, warm, and unshakeably steady, she remains one of the few fixed points in El's upended life.",
+            "id": "aadhya",
+            "name": "Aadhya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "El's friend and fellow graduate, the musician whose calm and whose family connections become important as El is drawn out into the world. Having turned firmly away from dark magic, she offers El both practical help and grounding perspective as they confront what graduation left unfinished.",
+            "id": "liu",
+            "name": "Liu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The brilliant, brusque German enclaver from El's class, now maneuvering through the dangerous politics of the adult wizarding world. Relentlessly practical and unsentimental, she becomes an essential ally as El tries to understand the crisis spreading among the enclaves, turning El's raw power into workable strategy.",
+            "id": "liesel",
+            "name": "Liesel",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The powerful head of the New York enclave and Orion's mother. Poised, formidable, and hard to read, she receives El with a composure that El finds deeply unsettling. As El digs into what happened to Orion and into how the great enclaves are truly built, Ophelia comes into focus as a figure standing near the center of it all.",
+            "id": "ophelia",
+            "name": "Ophelia Lake",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "El's mother, the beloved healer of the Welsh commune, whose gentleness and lifelong refusal of dark magic remain El's moral compass. Her cryptic warning about Orion still hangs over El, and her care and insight steady her daughter as the hidden truth about the enclaves begins to surface.",
+            "id": "gwen",
+            "name": "Gwen Higgins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-enclaves"
+      },
+      "recaps": {
+        "ending": "The trilogy ends with the wizard world's deepest secret exposed and its central cruelty broken. El confronts Ophelia Lake and the truth that every enclave is anchored on a maw-mouth made by sacrifice, and that Ophelia deliberately shaped Orion into a creature bound to that same magic, which is the real source of his hunger to consume mals. Rejecting the claim that such horror is the necessary price of safety, El returns to the ruined Scholomance and refuses to let Orion be lost or put down; she saves him, at real cost to herself, though he is left changed by what he had become. Crucially, El demonstrates that maw-mouths can be unmade, freeing the trapped souls inside them, and that the construction spell she has carried since school can raise an enclave without any sacrifice at all, so the prophecy that she would bring destruction to the enclaves resolves not as slaughter but as the end of the lie they were built on. Her friends, Aadhya, Liu, Liesel, and the rest, survive, and the vulnerable people she always fought to protect gain a future the old order denied them. The open threads are the human ones: a magical society that must now reckon with what it has always hidden and decide whether to change, and El and Orion themselves, alive and together but marked by everything they endured, facing an uncertain, freer life beyond the school.",
+        "in_short": "Grieving Orion and hiding in her mother's Welsh commune, El Higgins is pulled back into the world as enclaves everywhere are struck by sudden, inexplicable disasters that threaten to unmake magical society. Chasing the pattern behind the collapses, and drawing on her school allies Aadhya, Liu, and Liesel, she travels to New York and confronts Orion's mother, Ophelia Lake, where she uncovers the secret at the heart of the wizard world: every golden enclave is anchored on a maw-mouth created through sacrifice, so their splendor has always rested on hidden murder. She also learns that Orion's unnatural hunger comes from what Ophelia made him to be. Refusing to give him up, El returns to the ruined Scholomance, saves Orion at great cost, and rejects the atrocity the enclaves are built on. She proves that maw-mouths can be unmade and that enclaves can be built without them, using the spell she has carried all along. The trilogy ends with the secret exposed, a better future made possible, and El and Orion alive but changed, together on the far side of it all.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Across A Deadly Education and The Last Graduate, El Higgins fought through her last two years at the Scholomance, a lethal, teacherless school for young wizards adrift in the void, where monsters called maleficaria hunt the students and graduation means battling out through a hall full of them. Born with an affinity for spells of mass destruction, El refused the dark magic that would make them easy and, as a poor, unaffiliated girl, had no enclave to shield her. She built her first real alliance, chiefly with the artificer Aadhya and the musician Liu, learned how the wealthy enclaves hoard safety at everyone else's expense, and came into possession of a spell said to build an enclave without its usual hidden cost. She also fell, reluctantly, into love with Orion Lake, New York's celebrated monster-slayer, despite her mother's unexplained warning to keep away from him. In her senior year she conceived and led an unprecedented effort to bring the whole senior class safely through graduation. The plan worked, but at the last moment El was pulled out through the gates while Orion stayed behind to hold off the ancient maw-mouth Patience, and the doors sealed with him trapped inside. El returned home to the Welsh commune alive, graduated, and heartbroken, determined to find a way back to him.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in her mother's Welsh commune and grieving Orion, El finds she cannot simply disappear into ordinary life. Wizards begin seeking her out, because enclaves around the world are being struck by sudden, inexplicable disasters, their strongholds cracking and collapsing in ways that should be impossible. Drawn out of hiding and into the politics of London's enclave and its people, including old school contacts, El starts to grasp that the catastrophe reaches far beyond one lost boy: the foundations of magical society itself are failing, and no one understands why. She is forced to use the very power she has always feared and suppressed, defending against attacks that ordinary defenses cannot stop, and she begins to suspect that her destructive affinity may be exactly what this crisis demands of her. Grief for Orion still drives her, but it becomes tangled with a mounting dread that whatever is unmaking the enclaves is connected to the things she has been learning, and refusing to look at, all along.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the scale of the crisis sharpens, El travels between wizard communities chasing the pattern behind the enclave collapses, reunited along the way with allies from school, including the coldly capable Liesel, and drawing again on Aadhya and Liu. Each disaster she reaches deepens the sense that the destruction is not random but is striking at something the enclaves share, some hidden common foundation. El's reputation, and the prophecy long attached to her that she would bring ruin to the enclaves, make many wizards fear that she is the cause, which complicates every alliance she needs. Still grieving Orion and unable to let go of the hope of reaching him, she pushes toward New York, the most powerful enclave of all and the home of the Lake family, sensing that the answers she dreads and the truth about the boy she loves are waiting there. The closer she gets, the clearer it becomes that the wizard world's wealth and safety rest on something no one will name aloud.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The trail of the collapses hardens El's worst suspicions. The disasters share a signature, striking at something the enclaves hold in common and will not discuss, and the people she presses grow evasive whenever the question turns to how an enclave is actually founded. The old prophecy that she would bring death and destruction to all the enclaves of the world makes many wizards treat her as the likeliest cause, complicating every alliance she needs, even as Liesel's relentless organizing and the steady support of Aadhya and Liu keep her moving. Grief for Orion runs through all of it: she keeps turning over why his hunger for destroying mals never matched anyone else's, and what her mother's unexplained warning about him was really for. Every thread points toward New York, the most powerful enclave in the world and the seat of the Lake family, where Orion's formidable mother, Ophelia, presides. El sets her course there braced for a reckoning, increasingly certain that the enclaves' gilded safety rests on something buried and terrible, though she cannot yet name what it is.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the shape of the secret coming into view, El chases it across a wizard world in open crisis, moving between enclaves that are failing or bracing to fail. She confirms that every enclave shares the same buried foundation, a horror deliberately hidden from the wizards who live safely on top of it, and that the wave of collapses is tearing that foundation open. The knowledge reframes everything she believed about wealth, safety, and who pays for both. It also sharpens her fear for Orion: what he may have faced, or become, sealed in the school with the maw-mouth Patience. Torn between her duty to the wider catastrophe and her refusal to abandon Orion, El gathers her allies and her resolve, suspecting that saving him and reckoning with whatever the enclaves are hiding may turn out to be the same terrible problem, and that her own feared affinity may be the only thing capable of resolving either.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The trail ends in New York, where El comes face to face with Ophelia Lake, Orion's mother and one of the most powerful wizards alive. There the monstrous secret at the heart of the enclaves finally comes out: every golden enclave is anchored on a maw-mouth, a horror created through deliberate sacrifice, so the wizard world's most cherished safety has always rested on hidden murder. The revelation reframes everything - the enclaves' wealth, the worsening maleficaria crisis bound up with those foundations being disturbed, and the prophecy that has hung over El her whole life. It also delivers the truth she has dreaded most: Orion's unnatural hunger for devouring mals was never simple heroism but the result of what Ophelia made him to be, tied to the same dark magic that underpins the enclaves - the meaning, at last, of her mother's warning. El refuses both despair and Ophelia's logic that such atrocity is the necessary price of safety. With Liesel, Aadhya, Liu, and every alliance she has, she turns toward the hardest questions left: whether a civilization rotten at its base can or should be saved, whether the spell she has carried since school can truly raise enclaves without the buried horror, and what, if anything, of Orion can still be reached inside the sealed Scholomance.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "El returns to the ruined Scholomance to face what has become of Orion, refusing to give him up even after learning the full, horrifying truth: that the enclaves are anchored on maw-mouths made by sacrifice, and that Ophelia Lake deliberately made her own son into something bound to that same dark magic, which is the true source of his hunger. Confronting Ophelia and the logic on which magical civilization has always rested, El rejects the argument that such atrocity is a necessary price. She reaches Orion, who has been changed and nearly consumed by what he is, and rather than accept that he must be lost or destroyed she chooses to save him and pays a heavy cost to do it. In the end the enclaves' secret is dragged into the light, and El proves that maw-mouths can be unmade and that enclaves can be built without them, using the construction spell she has carried since her school days, so that the wizard world need not go on founding its safety on murder. The friends she fought beside, Aadhya, Liu, Liesel, and the others, survive, and the vulnerable people she has always insisted on protecting have a chance they never had before. The trilogy closes with the buried horror exposed, a path to a different future opened, and El and Orion left alive but altered, facing a fragile, hard-won life together on the far side of everything they have learned.",
+            "through": {
+              "chapter": 17
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-golden-enclaves"
+      }
+    },
+    "the-great-gatsby": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a young man from a comfortable Midwestern family who has come east to New York to learn the bond business. He rents a modest house in the wealthy Long Island community of West Egg, next door to a lavish mansion. Reserved and inclined to withhold judgment, he is the cousin of Daisy Buchanan and is drawn into the circle of the rich people around her, observing their world as both participant and outsider.",
+            "id": "nick-carraway",
+            "name": "Nick Carraway",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Nick's cousin, a beautiful and charming young woman from a wealthy family, married to Tom Buchanan and living in fashionable East Egg. She has a famously lovely, musical voice and an air of sophistication and gaiety, though beneath it runs a thread of boredom and cynicism about her comfortable life.",
+            "id": "daisy-buchanan",
+            "name": "Daisy Buchanan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Daisy's husband, an enormously wealthy man from an established family and a powerfully built former college football player. Arrogant, domineering, and casually contemptuous of those he considers beneath him, he is restless and given to grand opinions. Though married, he keeps a mistress in the city, a fact that is an open secret.",
+            "id": "tom-buchanan",
+            "name": "Tom Buchanan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A friend of Daisy's, a cool, self-possessed young woman and a well-known professional golfer. Poised and faintly bored, she carries herself with a detached, worldly air. Nick meets her at the Buchanans' and gradually becomes involved with her.",
+            "id": "jordan-baker",
+            "name": "Jordan Baker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The wife of a garage owner in the bleak industrial stretch between Long Island and New York, and the mistress Tom keeps in the city. Vital, sensuous, and full of restless energy, she is desperate to escape her drab surroundings and to share in the glamour and wealth she associates with Tom.",
+            "id": "myrtle-wilson",
+            "name": "Myrtle Wilson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The worn, colorless owner of a garage and gas station in the ash-strewn valley between the city and the eggs, married to Myrtle. Exhausted and faded, he scrapes a living from car repairs and hopes to buy a car from Tom to resell for a profit. At this point he has no idea of his wife's affair.",
+            "id": "george-wilson",
+            "name": "George Wilson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The immensely wealthy and mysterious young man who owns the mansion next to Nick's and throws extravagant parties every weekend that draw hundreds of guests, most of whom he does not know. Rumors swirl about how he made his fortune and who he really is. Courteous, formal, and strangely watchful, he is rarely seen among his own guests, and there is an air of hope and longing about him that sets him apart from the careless crowd he entertains.",
+            "id": "jay-gatsby",
+            "name": "Jay Gatsby",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A gambler and business associate of Gatsby's whom Nick meets at lunch in the city. Shrewd and sentimental by turns, he is reputed to be the man who fixed the 1919 World Series. His connection to Gatsby hints at the shadier side of how Gatsby's money may have been made.",
+            "id": "meyer-wolfsheim",
+            "name": "Meyer Wolfsheim",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wealthy, hard-drinking former prospector and yachtsman, now dead, who years earlier took the young Gatsby aboard his yacht and made him his assistant and companion. Cody introduced the ambitious boy to the world of the rich and helped shape his dreams, though Gatsby ultimately received nothing of his fortune.",
+            "id": "dan-cody",
+            "name": "Dan Cody",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-gatsby"
+      },
+      "recaps": {
+        "ending": "Gatsby's dream of reclaiming Daisy destroys him. After Daisy, driving his car, kills Myrtle Wilson and lets Gatsby shoulder the blame, she retreats back to Tom, and the two of them quietly reconcile and leave. Myrtle's husband George, told by Tom whose car struck her and believing the driver was also Myrtle's lover, shoots Gatsby to death in his swimming pool and then takes his own life. The lavish life Gatsby built proves empty at the last: the hundreds who flocked to his parties vanish, and only Nick, Gatsby's father Henry Gatz, and a handful of others attend the funeral. Nick, repelled by the heedlessness of Tom and Daisy, who smash up lives and hide behind their money, ends his romance with Jordan Baker and severs ties with Tom. He concludes that the wealthy leave others to bear the consequences of their carelessness. Choosing to abandon the corrupt glamour of the East, Nick returns to the Midwest, and closes by reflecting on Gatsby's tragic faith in a green light and a future forever out of reach.",
+        "in_short": "Nick Carraway moves to Long Island and befriends his fabulously rich, mysterious neighbor Jay Gatsby, who hosts dazzling parties. Nick learns that Gatsby built his entire fortune and his mansion to win back Nick's cousin Daisy, whom he loved before the war and who married the wealthy, arrogant Tom Buchanan while Gatsby was poor and overseas. Nick arranges their reunion, and Gatsby and Daisy begin an affair. At a tense confrontation in a city hotel, Tom exposes Gatsby's shady wealth and forces Daisy to admit she still loves Tom too. Driving home in Gatsby's car, Daisy accidentally strikes and kills Tom's mistress, Myrtle Wilson, and Gatsby chooses to shield Daisy by taking the blame. Myrtle's husband George, believing the driver was her secret lover, murders Gatsby in his pool and then kills himself. Almost no one attends Gatsby's funeral. Tom and Daisy withdraw into their wealth, and a disillusioned Nick, sickened by the carelessness of the rich, leaves the East to return home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Nick Carraway, a young Midwesterner, moves east to learn the bond business and rents a small house in West Egg on Long Island, next to the enormous mansion of a man named Gatsby, who throws spectacular parties. Nick visits his cousin Daisy and her rich, arrogant husband Tom Buchanan across the bay in East Egg, where he meets the golfer Jordan Baker and learns that Tom keeps a mistress in the city. Tom later takes Nick to meet her: Myrtle Wilson, the restless wife of a rundown garage owner in the grim valley of ashes between the city and the coast. At a drunken party in a New York apartment, Tom strikes Myrtle and breaks her nose when she taunts him about Daisy. Nick finally attends one of Gatsby's lavish parties, where wild rumors circulate about the host, and there he meets Gatsby himself, a courteous, oddly formal young man surrounded by luxury he seems curiously detached from.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Gatsby cultivates Nick's friendship, driving him into the city, telling him an extravagant and dubious account of his past, and introducing him to the gambler Meyer Wolfsheim. Through Jordan, Nick learns the truth behind Gatsby's grand life: years earlier, before the war, Gatsby and Daisy had been in love, but he was poor and went overseas, and she married the wealthy Tom instead. Everything Gatsby has built, including the mansion directly across the water from Daisy's home, has been aimed at winning her back. He asks Nick to arrange a meeting. Nick invites Daisy to tea, and Gatsby, nervous almost to the point of collapse, is reunited with her. The awkwardness soon melts into joy, and Gatsby proudly shows the two of them through his mansion, overwhelmed to have Daisy there at last.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nick learns Gatsby's real origins: he was born James Gatz to poor farmers and reinvented himself after a wealthy yachtsman, Dan Cody, took him in and showed him the world of the rich. Gatsby and Daisy carry on their affair, and Gatsby presses her to declare that she never loved Tom. On a sweltering day the group drives into the city, and in a hotel suite the tension breaks open: Tom, who has grown suspicious, confronts Gatsby, exposes the questionable sources of his wealth, and forces Daisy to admit she once loved him too. Shaken, Daisy drives back toward Long Island in Gatsby's car with Gatsby beside her, and on the way the car strikes and kills Myrtle Wilson, who has run out into the road. They do not stop. Gatsby resolves to take the blame himself to protect Daisy.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "George Wilson, wild with grief over Myrtle's death and wrongly convinced that her killer was also her secret lover, sets out to find the driver of the car. He traces it to Gatsby, shoots him dead in his swimming pool, and then kills himself. Gatsby's death exposes how hollow his glittering world was: of the crowds who enjoyed his parties, almost no one comes to his funeral, and even his business associates keep away. Only Nick, Gatsby's elderly father, and a few others attend. Sickened by the carelessness of the wealthy, Nick breaks off his relationship with Jordan, coldly parts from Tom, and comes to understand that Tom and Daisy simply retreat into their money and leave others to clean up the wreckage. Disillusioned with the East, Nick decides to return to the Midwest, reflecting on Gatsby's doomed hope and the impossible dream he chased.",
+            "through": {
+              "chapter": 9
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-gatsby"
+      }
+    },
+    "the-great-hunt": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man of the Two Rivers who, at the close of the previous book, channeled the One Power for the first time and was named by Moiraine as the Dragon Reborn, the reincarnation of the ancient champion prophesied to face the Dark One. Reluctant and frightened of the madness said to claim men who wield the Power, he wants only to be left alone as an ordinary shepherd and struggles to accept what he has become.",
+            "id": "rand-althor",
+            "name": "Rand al'Thor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rand's reckless, quick-tongued friend from Emond's Field, still bound to the tainted dagger he took from the cursed city of Shadar Logoth, which has left him sickly, suspicious, and slowly poisoned in body and mind. Ready with a joke and a wager even so, he badly needs the Aes Sedai's help to be freed of the blade's hold on him.",
+            "id": "matrim-cauthon",
+            "name": "Mat Cauthon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rand's steady, broad-shouldered friend, once a blacksmith's apprentice, who has discovered an uncanny bond with wolves that he fears and tries to keep hidden. Thoughtful and slow to act, he wrestles with what the wolves are making of him and holds the secret close.",
+            "id": "perrin-aybara",
+            "name": "Perrin Aybara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The innkeeper's daughter of Emond's Field, revealed to be able to channel the One Power and now bound for the White Tower in Tar Valon to train as an Aes Sedai. Strong-willed and eager to master her new gift, she remains close to Rand even as their paths begin to diverge.",
+            "id": "egwene-alvere",
+            "name": "Egwene al'Vere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Wisdom of Emond's Field, a fiercely proud young woman who has learned she can channel with unusual strength and goes to the White Tower for training despite her deep distrust of Aes Sedai. Stubborn and protective, she resents being made a novice after ruling as a village Wisdom.",
+            "id": "nynaeve-almeara",
+            "name": "Nynaeve al'Meara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Aes Sedai who found the young people of Emond's Field and identified Rand as the Dragon Reborn. Calm, secretive, and single-minded in her purpose of guiding and guarding the Dragon, she keeps most of her knowledge to herself as she steers events toward the ends she believes prophecy requires.",
+            "id": "moiraine-damodred",
+            "name": "Moiraine",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Moiraine's Warder, a grim and deadly swordsman and the uncrowned last king of a Borderland realm swallowed by the Blight. Bonded to protect Moiraine, he is a stern teacher and constant guardian to those in her charge.",
+            "id": "lan-mandragoran",
+            "name": "Lan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, sharp-eyed young woman who sees glimpses of the future as images around people. Having met Rand and his friends before, she knows some of what her visions foretell about them and is drawn back into their dangerous affairs.",
+            "id": "min-farshaw",
+            "name": "Min",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young Ogier who left his forest home out of curiosity and joined Rand's company. Gentle, enormous, and endlessly bookish, he is eager to see the world and to set these events down in writing, if forever alarmed by the dangers they bring.",
+            "id": "loial",
+            "name": "Loial",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The former peddler of the Two Rivers, revealed as a Darkfriend and something worse: a man warped by long service to the Shadow and by contact with the ancient evil of Shadar Logoth, now obsessively fixed on Rand. Cunning and malignant, he is far from the harmless trader he once seemed.",
+            "id": "padan-fain",
+            "name": "Padan Fain",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Daughter-Heir of Andor, heir to the throne in Caemlyn, a poised and quick-witted young noblewoman able to channel and bound for the White Tower to be trained. Confident and strong-willed, she met Rand briefly during his time in her mother's capital.",
+            "id": "elayne-trakand",
+            "name": "Elayne Trakand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A plump, mild, seemingly absent-minded Aes Sedai of the Brown Ajah, the order devoted to knowledge and lost history, who attaches herself to the affairs of the young Two Rivers folk. More interested in old lore than in politics on the surface, she proves considerably shrewder than she appears.",
+            "id": "verin-mathwin",
+            "name": "Verin Mathwin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The fiery-eyed figure who haunts Rand's dreams and claims to be the Dark One or his chief servant. Seemingly beaten at the Eye of the World, he is far from destroyed and continues to hunt and torment Rand across both the waking world and the world of dreams.",
+            "id": "baalzamon",
+            "name": "Ba'alzamon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-hunt"
+      },
+      "recaps": {
+        "ending": "The hunt for the Horn of Valere ends at Falme. Rand recovers the Horn and the tainted dagger, but the town is held by the Seanchan, who have captured Egwene and leashed her as a damane. Her friends free her, and in the chaos of battle Mat winds the Horn, calling back the Heroes of the Ages, among them the legendary conqueror Artur Hawkwing, who rally to Rand as one bound to the Horn. In the sky above Falme, Rand duels the fiery-eyed Ba'alzamon before a vast crowd, the great sign of the Dragon blazing overhead, and appears to strike him down, though such an enemy is not so easily ended. Witnessed by so many, Rand can no longer hide what he is: he is hailed openly as the Dragon Reborn, and word of it races across the world. The Seanchan invaders are driven back to their ships for now, but they have not surrendered their claim on these lands, and their leashed channelers remain a horror. Padan Fain slips away with his malice intact. Rand has begun, however unwillingly, to shoulder his role, and the friends of Emond's Field are scattered toward separate destinies - the women to the White Tower, Rand to the weight of a prophecy the whole world now knows he carries.",
+        "in_short": "The Horn of Valere and Mat's tainted dagger are stolen from the fortress of Fal Dara by the Darkfriend Padan Fain, and Rand joins a party to hunt them across the land, aided by an Ogier and a man who can smell violence, and troubled by a beautiful stranger who is not what she seems. Egwene, Nynaeve, Elayne, and Min travel toward the White Tower, but every road bends toward the far western town of Falme, seized by the Seanchan, invaders from across the ocean who collar women who can channel as slave weapons called damane. Egwene is captured and leashed, then freed by her friends. At the climax Mat sounds the Horn of Valere, summoning the legendary Heroes of the Ages back to battle, and Rand fights the fiery-eyed Ba'alzamon in the sky above Falme, watched by thousands as the sign of the Dragon burns in the heavens. The Seanchan are thrown back, and Rand is at last openly proclaimed the Dragon Reborn.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "In the first book, Trollocs attacked the remote village of Emond's Field, hunting three young men - Rand al'Thor, Mat Cauthon, and Perrin Aybara. The Aes Sedai Moiraine and her Warder Lan led them to safety, joined by Egwene, the young Wisdom Nynaeve, and the gleeman Thom Merrilin. Pursued by the Shadow, the company sheltered in the cursed city of Shadar Logoth, where Mat took a tainted dagger, and were scattered. Through separate ordeals - Perrin bonding with wolves, Mat sickening from the dagger, all of them hunted - they reunited in Caemlyn and crossed the deadly Ways to the Borderland nation of Shienar. Learning that the Dark One's forces sought the Eye of the World, they rode into the poisoned Blight, where two of the freed Forsaken ambushed them. In the crisis Rand seized the One Power for the first time, destroyed the Forsaken, shattered a Trolloc army at Tarwin's Gap, and battled the fiery-eyed Ba'alzamon. Moiraine proclaimed him the Dragon Reborn: a man able to channel, prophesied to fight the Dark One, and therefore fated to be driven mad by the Power's taint. Recovered at the Eye were the Horn of Valere, which can summon dead heroes to battle, and the banner of the Dragon. Egwene and Nynaeve, revealed as channelers, were bound for training. As this book opens, the friends have gathered again at the fortress of Fal Dara in Shienar, and Rand is desperate to flee a destiny he still refuses to believe is his.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-great-hunt"
+      }
+    },
+    "the-grim-grotto": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think. Reunited with her siblings and still hunted, she uses her ingenuity aboard a submarine as the children pursue the secrets of V.F.D.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire, twelve, bespectacled, and endlessly well-read, whose research repeatedly saves the family. He continues to chase the mysteries of V.F.D. and a coveted object called the sugar bowl.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The youngest Baudelaire, a small child who now speaks more clearly and has become a skilled little cook. Brave and quick-witted, she plays a growing part in the family's escapes.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The murderous actor who hunts the Baudelaire fortune, marked by his single eyebrow and ankle tattoo. Now commanding his own submarine with his accomplice Esme, he chases the children and the sugar bowl beneath the waves.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Count Olaf's fashionable girlfriend and accomplice, vain and cruel, who continues to aid his schemes against the children and their fortune.",
+            "id": "esme-squalor",
+            "name": "Esme Squalor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A menacing member of Count Olaf's troupe with metal hooks in place of hands, a longtime henchman who carries out the villain's orders and helps pursue the children.",
+            "id": "hook-handed-man",
+            "name": "The hook-handed man",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The gruff, blustering commander of the submarine Queequeg, who lives by a personal philosophy that one must never hesitate, punctuating his speech with hearty exclamations. Loyal to V.F.D. and on a mission of his own, he takes the Baudelaires aboard and enlists them in the search for the sugar bowl.",
+            "id": "captain-widdershins",
+            "name": "Captain Widdershins",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Captain Widdershins's stepdaughter, a bright young mycologist fascinated by mushrooms and fungi, who serves aboard the submarine Queequeg. Kind and clever, she befriends the Baudelaires, growing especially close to Klaus, and her knowledge of fungi proves vital to the crew.",
+            "id": "fiona",
+            "name": "Fiona",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cookie"
+            ],
+            "description": "The relentlessly optimistic man the children first knew as a worker at the lumbermill, now serving as the cook aboard the submarine Queequeg, where he is nicknamed Cookie. Cheerful as ever, he is glad to see the Baudelaires again and keeps finding the bright side of every hardship.",
+            "id": "phil",
+            "name": "Phil",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the secret organization V.F.D. and the sister of Jacques Snicket, the man murdered in the village. She meets the Baudelaires as an ally, is expecting a child, and warns them of a crucial gathering to come, urging them toward the last safe place.",
+            "id": "kit-snicket",
+            "name": "Kit Snicket",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-grim-grotto"
+      },
+      "recaps": {
+        "ending": "The Baudelaires save Sunny from the deadly Medusoid Mycelium by diluting the fungus with wasabi, narrowly escaping the poison's grip. Captured by Count Olaf's submarine, they meet Fiona's long-lost brother, who turns out to be one of Olaf's henchmen, and Fiona, torn between her new friends and her only family, ultimately helps the children escape but chooses to leave with her brother and join the villains, taking a sample of the dangerous fungus with her. Reaching Briny Beach, where their story began, the children encounter Mr. Poe once more and are met by Kit Snicket, a member of V.F.D. and sister of the murdered Jacques, who is expecting a child. She warns them of a decisive gathering to come and urges them toward the last safe place, the Hotel Denouement, where the two factions of the secret organization will converge. Having lost yet another friend to Olaf's side, the Baudelaires set out for the hotel, drawing close to the heart of the conflict that has shaped their lives.",
+        "in_short": "Drifting down the Stricken Stream, the Baudelaires are taken aboard the submarine Queequeg, commanded by the blustering Captain Widdershins and crewed by his stepdaughter Fiona, a young mycologist, and Phil, the optimistic cook from the lumbermill. Their mission is to recover the sugar bowl, an object vital to V.F.D., hidden in an underwater cave. Diving into the Gorgonian Grotto, they encounter the deadly Medusoid Mycelium, a poisonous fungus, and Captain Widdershins vanishes. Sunny is poisoned and will die within an hour unless cured; the children discover that horseradish dilutes the fungus and use wasabi to save her. Count Olaf's submarine then captures the crew, and Fiona is reunited with her long-lost brother, who is one of Olaf's henchmen. Fiona helps the Baudelaires escape but chooses to leave with her brother and the villains. At Briny Beach the children meet the V.F.D. ally Kit Snicket, who sends them onward to the last safe place, the Hotel Denouement.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Baudelaire orphans, Violet, Klaus, and Sunny, lost their parents to a fire and have been hunted ever since by the greedy actor Count Olaf, who pursues their fortune in endless disguises. Over many homes and escapes they befriended the Quagmire triplets, uncovered a secret organization called V.F.D. to which their parents belonged, and were framed by Olaf for murder, becoming fugitives. In the frozen Mortmain Mountains they reunited as a family, met the third Quagmire triplet Quigley, and learned that V.F.D. is split between noble and villainous factions warring over a mysterious object called the sugar bowl, and that both sides are converging on a distant gathering. Now, having drifted downriver after being parted from Quigley, the three siblings continue their search for the truth about V.F.D., the sugar bowl, and whether any of their allies, or a parent, might still be found.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Floating down the Stricken Stream, the Baudelaires are rescued and taken aboard the submarine Queequeg, commanded by the fierce, blustering Captain Widdershins, who lives by the rule that one must never hesitate. His crew includes his stepdaughter Fiona, a bright young expert on mushrooms and fungi, and, to the children's delight, Phil, the optimistic worker they once knew at the lumbermill, now serving as the submarine's cook. The crew is on an urgent mission for V.F.D.: to recover the sugar bowl, an object of great importance to the secret organization, believed to be hidden in an underwater cave. The Baudelaires join the search, glad to be among allies at last, as the submarine sets course through dark waters toward the grotto where the sugar bowl may lie, and toward the dangers waiting there.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The submarine reaches the Gorgonian Grotto, and a diving expedition into the underwater cave brings the children into contact with the Medusoid Mycelium, a deadly poisonous fungus that grows and recedes in cycles. During the mission Captain Widdershins mysteriously disappears, leaving the young crew to fend for themselves. Disaster strikes when Sunny is exposed to the fungus and poisoned; its spores take hold in her, and she will die within an hour unless an antidote can be found. With time running out, Violet, Klaus, and Fiona search desperately for a cure, poring over Fiona's mycological knowledge and the resources aboard the submarine, racing to save the youngest Baudelaire before the deadly fungus claims her life.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children discover that the deadly fungus can be diluted by horseradish, and, finding wasabi aboard the submarine, they administer it to Sunny and save her life just in time. Their relief is short-lived: Count Olaf's own submarine hunts down and captures the Queequeg's young crew. Aboard, Fiona is reunited with her long-lost brother, only to learn that he is one of Count Olaf's henchmen, which forces her into an agonizing choice between the Baudelaires, who have become her friends, and the only family she has left. As Olaf gloats over his captives and presses his search for the sugar bowl and the deadly fungus, the Baudelaires must find a way to escape the villain's submarine, uncertain whether Fiona will help them or turn against them.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Fiona helps the Baudelaires escape Count Olaf, but she chooses to remain with her newfound brother and join the villains, taking a sample of the deadly Medusoid Mycelium with her, a painful betrayal for the children who had trusted her. Reaching Briny Beach, where their misfortunes first began, the orphans meet Mr. Poe again and are met by Kit Snicket, a member of V.F.D. and the sister of the murdered Jacques Snicket, who is expecting a child. She warns them of a decisive gathering to come and urges them onward to the last safe place, the Hotel Denouement, where the two factions of the secret organization will converge. Having lost yet another friend to Olaf's side, the Baudelaires set out for the hotel, drawing ever closer to the center of the conflict that has consumed their lives.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-grim-grotto"
+      }
+    },
+    "the-handmaids-tale": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a woman held as a Handmaid in the Republic of Gilead, a harsh theocracy that has overthrown the United States government. Because a catastrophic drop in fertility has made healthy births rare, women who can still bear children are stripped of their names, property, and freedom and assigned to powerful households to produce babies. Her name marks her only as the property of a Commander called Fred. She remembers an earlier life with a husband and a young daughter, and she narrates in guarded, watchful fragments, holding onto memory and small acts of defiance as a way to remain herself.",
+            "id": "offred",
+            "name": "Offred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "One of the Aunts who run the center where women are trained to become Handmaids. She enforces the regime's doctrine with a mixture of piety, sentimentality, and cruelty, teaching the women to accept their new role as a sacred duty and to blame themselves and the old world for their circumstances. Offred recalls her sayings and lessons throughout her ordeal.",
+            "id": "aunt-lydia",
+            "name": "Aunt Lydia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The wife of the Commander to whom Offred is assigned. Once a public figure who sang on television and campaigned for traditional domestic roles for women, she now finds herself confined to precisely the powerless, home-bound life she once preached. Bitter and resentful, she treats Offred coldly, unable to forgive her presence or the ritual that requires it, and yet she is bound to it by her own longing for a child.",
+            "id": "serena-joy",
+            "name": "Serena Joy",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Fred"
+            ],
+            "description": "A high-ranking official in Gilead and the head of the household Offred serves; her designation marks her as belonging to him. Outwardly the embodiment of the regime's authority, he presides over the monthly ceremony meant to father a child on Offred. In private he proves more complicated and lonely than his position suggests, and he begins to seek out Offred in ways the rules of Gilead forbid.",
+            "id": "the-commander",
+            "name": "The Commander",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Commander's chauffeur, a low-status man who lives above the garage. His true loyalties are unclear, and Offred suspects he may be an Eye, one of Gilead's secret informers. He watches Offred with an interest that is hard to read, and a quiet, dangerous connection begins to form between them.",
+            "id": "nick",
+            "name": "Nick",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Another Handmaid who becomes Offred's assigned shopping partner. The two must walk together on their daily errands, and Gilead requires them to speak only in approved pious formulas. At first Ofglen seems a model of devout caution, but there is more to her than her careful public manner reveals.",
+            "id": "ofglen",
+            "name": "Ofglen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Offred's close friend from the time before Gilead, outspoken, irreverent, and fiercely independent. Sent to the same training center, she refuses to be broken by it and becomes for Offred a symbol of resistance and of the freedom the regime has taken away.",
+            "id": "moira",
+            "name": "Moira",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ofwarren"
+            ],
+            "description": "A fellow Handmaid, more thoroughly shaped by the training center than most. Fragile and desperate to please, she is held up by the Aunts as an example after being pressured to accept guilt for her own past. Under the strain of her role she is prone to breaking down.",
+            "id": "janine",
+            "name": "Janine",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Offred's husband from before the founding of Gilead. As the regime seized power and began stripping women of their rights, the couple tried to flee across the border with their daughter. The attempt failed, the family was separated, and Offred does not know whether Luke is alive, imprisoned, or dead.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-handmaids-tale"
+      },
+      "recaps": {
+        "ending": "The novel ends without resolving Offred's fate. Serena Joy has discovered that Offred and the Commander broke Gilead's rules together, and Offred braces for punishment. Ofglen, her link to the resistance, is already dead by her own hand to avoid interrogation. Then a black van of the secret police arrives at the house. Nick, the man Offred has come to love and who may have fathered a child with her, tells her to go quietly, insisting the men are members of the Mayday resistance in disguise rather than the Eyes. With no way to know whether he is telling the truth, Offred steps into the van and into darkness or freedom, and her account breaks off there. A closing section set generations later, at a scholarly conference, reveals that Gilead eventually fell and that Offred's story survives only as a set of recorded tapes pieced together by historians, who speculate about the Commander's identity but cannot determine what became of Offred herself.",
+        "in_short": "In the near-future theocracy of Gilead, which has overthrown the United States amid a fertility crisis, a woman called Offred is forced to serve as a Handmaid, a childbearing servant assigned to a Commander and his wife, Serena Joy. Stripped of her name, her family, and her freedom, she endures the ritualized monthly attempts to conceive while remembering her lost husband and daughter and her rebellious friend Moira. The Commander begins secretly meeting her for forbidden intimacies, Serena Joy arranges for her to sleep with the chauffeur Nick in hopes of a child, and Offred learns of an underground resistance through her shopping partner Ofglen. Her attachment to Nick becomes real, but the regime's violence tightens around her. In the end a van comes to take her away, and Nick claims it belongs to the resistance; whether she is being saved or arrested is never revealed.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Offred narrates her tightly controlled life as a Handmaid in the Republic of Gilead, a religious dictatorship that has replaced the United States. Assigned to the household of a Commander and his wife, she is allowed out only to shop, always paired with another Handmaid and always watched. She describes the rigid roles the regime has imposed on women, the ever-present Guardians and Eyes, and the fear that governs every word and gesture. In fragments she recalls her earlier life and the training center where the Aunts, above all Aunt Lydia, conditioned the women to accept their new purpose. Gilead's central justification comes clear: with fertility collapsing, Handmaids exist only to bear children for the ruling class, and Offred clings inwardly to her own sense of self.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The workings of Gilead come into fuller view. Offred describes the Ceremony, the joyless monthly ritual in which the Commander attempts to conceive a child with her while his wife, Serena Joy, is present. Through memories of the training center she recalls her defiant friend Moira and the fragile Janine, whom the Aunts pressured into a public confession of guilt. A communal birth shows how the regime turns childbearing into spectacle. Offred also finds a message scratched into her room by the Handmaid who lived there before her, a small mystery that gives her a private sense of connection. The oppressive routine grinds on, but beneath it Offred begins to notice cracks, and small openings for thought and feeling the regime is meant to have erased.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Offred's confined world starts to open in forbidden directions. The Commander secretly summons her to his study at night, where they do ordinary, prohibited things such as playing word games and looking at old magazines, and where he grants her small favors and conversation. These meetings give Offred a strange and risky kind of leverage. Meanwhile Serena Joy, doubting the Commander's ability to father a child and desperate for one, quietly proposes that Offred try to conceive with Nick, the household's chauffeur, offering news of Offred's lost daughter as an incentive. Offred also learns that her shopping partner, Ofglen, is connected to an underground network opposed to the regime, opening the possibility of resistance and drawing Offred deeper into secrets that could save or destroy her.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Commander secretly takes Offred to Jezebel's, a hidden club where officials break their own rules, and there she is stunned to find Moira, who recounts how she escaped the training center only to be recaptured and forced into that life. Following Serena Joy's arrangement, Offred begins going to Nick, and what starts as duty becomes a genuine, reckless attachment that makes her want to survive. Then Gilead's brutality closes in: a public execution ritual takes place, Ofglen vanishes, and Offred learns she took her own life to avoid being seized for her resistance ties. Serena Joy discovers evidence of Offred's private outings with the Commander and turns on her. At last a black van of the Eyes arrives for Offred. Nick tells her to trust the men, claiming they are the resistance, and she is led away, unable to know whether she is being rescued or arrested. Her ultimate fate is left unknown, and the account she leaves behind is her only certainty.",
+            "through": {
+              "chapter": 46
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-handmaids-tale"
+      }
+    },
+    "the-hanging-tree": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Detective constable and apprentice wizard at the Folly, now an experienced hand at cases where London's police work meets its magic. He is in an established relationship with the river goddess Beverley Brook, and carries the twin weights of the last few years: the hunt for the Faceless Man, and the betrayal of his friend and fellow apprentice Lesley May, who left with the enemy. This case begins with an obligation - a favour owed to Lady Tyburn coming due.",
+            "id": "peter-grant",
+            "name": "Peter Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Master of the Folly, the last officially sanctioned English wizard, and one of the most dangerous practitioners alive - a fact usually hidden behind impeccable tailoring and courtesy. With the Faceless Man's organization growing bolder, Nightingale is increasingly willing to show what a fully trained wartime wizard can actually do.",
+            "id": "thomas-nightingale",
+            "name": "Thomas Nightingale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Goddess of a south-west London river, daughter of Mother Thames, and Peter's partner in an increasingly settled relationship - one that quietly entangles the Folly with the river courts' politics. Confident, funny, and entirely at ease with who she is, she keeps Peter connected to a magical London that predates and outranks his official one.",
+            "id": "beverley-brook",
+            "name": "Beverley Brook",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Ty"
+            ],
+            "description": "The most formidable of Mother Thames's daughters: goddess of the buried river Tyburn, Oxford-educated, superbly connected across government and the City, and a long-standing sceptic of the Folly and of Peter in particular. When a death at an exclusive Knightsbridge address threatens to touch her teenage daughter Olivia, she calls in the favour Peter owes her - and expects results that keep her family out of it.",
+            "id": "tyburn",
+            "name": "Lady Tyburn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A detective constable and one of the small circle of Met officers read in on the uncanny, who has become Peter's regular partner on cases the rest of the force prefers not to understand. Calm, dry, and quietly ambitious, a hijab-wearing Muslim officer with excellent instincts, she handles the weird with a notable lack of fuss.",
+            "id": "sahra-guleed",
+            "name": "Sahra Guleed",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dapper, fox-like fixture of the demi-monde - sharp-dressed, self-interested, and reliably untrustworthy - who surfaces claiming access to an item of enormous value to every magical faction in London: a lost manuscript attributed to Isaac Newton. Dealing with Reynard means accepting that he is always selling something, including the people he deals with.",
+            "id": "reynard-fossman",
+            "name": "Reynard Fossman",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly but vigorous practitioner of healing magic who learned her art entirely outside the Folly's male, Newtonian tradition and regards that institution with well-earned suspicion. Her interest in the case's central artifact is personal and principled at once, and she is a reminder that the Folly's official monopoly on British magic was always a polite fiction.",
+            "id": "helena-linden-limmer",
+            "name": "Lady Helena Linden-Limmer",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lady Helena's daughter and student: athletic, capable, and trained in her mother's tradition of magic rather than the Folly's. She approaches Peter's world with curiosity and a certain competitive edge, and proves willing to operate in the thick of events rather than from the sidelines.",
+            "id": "caroline-linden-limmer",
+            "name": "Caroline Linden-Limmer",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Peter's former friend and fellow apprentice, who betrayed the Folly at Skygarden and vanished with the Faceless Man - the plainest reading of her price being the repair of the face she lost to possession. Still a superb police officer under whatever loyalty she now holds, she remains active in London on her new master's business, and any operation touching his interests risks meeting her.",
+            "id": "lesley-may",
+            "name": "Lesley May",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Faceless Man"
+            ],
+            "description": "London's hidden black magician: trained out of Geoffrey Wheatcroft's illegal Oxford teaching, wealthy, organized, and ruthless, his identity still concealed behind a blurring glamour after years of Folly pursuit. The Skygarden harvest and the recruitment of Lesley May were his work. He remains the Folly's principal quarry, and the gap between hunting him and being able to name him is the series' central open wound.",
+            "id": "faceless-man",
+            "name": "The Faceless Man",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hanging-tree"
+      },
+      "recaps": {
+        "ending": "The Hanging Tree ends with the series' central mystery broken open: the Faceless Man has a name. He is Martin Chorley - wealthy, respectable, deeply embedded in the establishment, and the father of Christina Chorley, the girl whose death at One Hyde Park started the case. The identification comes too late to take him: the endgame erupts into open magical battle in and around the One Hyde Park development, wrecking some of the most expensive real estate in Britain, and Chorley escapes the net, as does Lesley May, who remains in his service. What changes is the nature of the hunt - the Folly is no longer chasing a glamour and a nickname but a named man with a history, associates, finances, and a traceable life, and the pursuit of Martin Chorley becomes the Folly's declared war. Along the way the Folly's world has widened: Lady Helena and Caroline Linden-Limmer demonstrate that capable magical traditions survived outside the Newtonian mainstream, and relations with them end wary but workable. Peter discharges his debt to Lady Tyburn with her daughter Olivia kept clear of prosecution and scandal, though family relations among the Thames girls are left strained. Nightingale's overwhelming display in the final battle underlines why Chorley has always avoided facing him directly. Peter ends the book intact, still with Beverley, and finally able to put a face to the enemy.",
+        "in_short": "A teenage girl dies of an apparent overdose at a party in One Hyde Park, Knightsbridge's most expensive address, and Lady Tyburn calls in Peter Grant's debt: her daughter Olivia was at the party, and Ty wants her kept out of it. The dead girl is Christina Chorley, and the case swells from privileged teenagers dabbling in drugs into the Folly's main war. Around the investigation circles a lost manuscript said to be Isaac Newton's suppressed third Principia, peddled by the fox-like demi-monde fixer Reynard Fossman and coveted by every magical faction in London, including Lady Helena Linden-Limmer, a healer trained outside the Folly's tradition, and her daughter Caroline. Lesley May resurfaces on her new master's business, and the threads converge on the Faceless Man himself: the death, the manuscript, and the party's aftermath all touch his interests because Christina was his daughter. The book climaxes in a devastating magical battle at One Hyde Park, at the end of which the Folly finally has a name - Martin Chorley - though the man himself, and Lesley with him, escapes to fight the next book.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Met constable Peter Grant became apprentice to Thomas Nightingale, England's last sanctioned wizard, through the Covent Garden possession case - which ended with his friend Lesley May's face destroyed by the spirit that had ridden her. The jazz vampire affair then revealed the Faceless Man, a trained black magician schooled through illegal Oxford teaching, and hunting him became the Folly's long game. Lesley, accepted as the Folly's second apprentice, trained beside Peter until the Skygarden affair, in which the Faceless Man harvested the magic stored in a purpose-built tower block by having it demolished - and Lesley revealed she had turned: she tasered Peter and left with the enemy, her price apparently the repair of her ruined face. The Folly captured Varvara Sidorovna, a Soviet-trained battle magician, but the Faceless Man and Lesley remain at large. Peter has since worked a rural case in Herefordshire, recovering two abducted children from the edge of Faerie at the cost of a brief captivity there himself, and came home to something good: he and Beverley Brook, river goddess of south-west London, are now a couple. The truce Peter once brokered between the two courts of the Thames holds. His old antagonist Lady Tyburn holds his marker - a favour owed - and has not forgotten it.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A phone call yanks Peter into the world of serious money: a teenage girl is dead of an apparent drug overdose after a party in a flat at One Hyde Park, the most expensive residential address in London - and Lady Tyburn's daughter Olivia was among the partygoers. Ty calls in the favour Peter owes her, and what she wants is simple and compromising: keep Olivia out of it. The dead girl is Christina Chorley, and the case is not as simple as teenagers and pills - there are traces of magical practice around the party that make it Folly business, and Olivia's own account of the night does not hold together, as though she too is protecting someone. Peter works the case alongside DC Sahra Guleed, juggling a murder team that wants tidy answers, a goddess who expects service, and a crime scene where the residents' lawyers arrive before the forensics do. The dead girl's circle of privileged, discreetly wild friends comes into focus - private schools, absent parents, and at least one connection to the practice of magic that nobody should have had access to. Peter is left balancing his oath as a constable against his debt to Tyburn, aware that both will come due.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The case grows a second, glittering thread: a lost manuscript attributed to Isaac Newton - a suppressed third volume of the Principia, said to contain his serious work on the practice of magic - is being shopped around London's demi-monde by Reynard Fossman, a sharp-dressed, fox-like fixer who is always selling something. The book is the kind of artifact every magical faction in the city would pay or kill for, and the Folly's efforts to control its sale pull new players onto the board: Lady Helena Linden-Limmer, an elderly and formidable healer trained entirely outside the Folly's male Newtonian tradition, and her capable daughter Caroline, whose interest in the manuscript is bound up with their tradition's own history. Dealing with them forces Peter to reckon with how much British magic survived outside the official monopoly. The manuscript intrigue and the Christina Chorley investigation begin to twine: the same hidden interests are touching both, violence follows the book wherever it surfaces, and an attempted controlled handover goes loudly wrong. Worst of all, Lesley May resurfaces in the middle of it - active in London, working her new master's business, and as effective as she ever was.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two cases collapse into one, and the one case is the Folly's war. The interests circling both the manuscript and the aftermath of Christina Chorley's death resolve into a single hidden hand: the Faceless Man's organization is running the board, cleaning up loose ends around the dead girl, manoeuvring for the Newton manuscript, and deploying Lesley May wherever finesse is required. Evidence mounts that Christina's family connects directly to the Faceless Man's own circle - that the girl whose overdose opened the book was not a bystander to his world but inside it - which would explain both the magical traces around the party and the ferocity of the cover-up. Encounters turn from investigation to combat: Peter, Guleed, and Nightingale are increasingly fighting the enemy's operatives rather than merely tracing them, with Reynard as bait, hostage, and liability by turns, and the Linden-Limmers as wild cards whose goals only partly align with the Folly's. Lady Ty's protection of Olivia keeps compromising the official inquiry from above. Everything converges back where it started - the towers of One Hyde Park - for a reckoning the Faceless Man has prepared for and the Folly has not.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The endgame is a battle. At One Hyde Park the Folly's operation against the Faceless Man's people erupts into open magical warfare - the most destructive the series has shown - tearing through the development's flats and atrium, with Peter, Guleed, and Caroline Linden-Limmer in the thick of it and Nightingale finally unleashed, demonstrating exactly why the enemy has spent years refusing to face him. Out of the wreckage comes the series' long-withheld answer: the Faceless Man is identified. He is Martin Chorley - rich, respectable, establishment to the bone, and the father of Christina Chorley, the girl whose death opened the book. Her connection to his world was blood. But the identification is the battle's only clean victory: Chorley slips the net and escapes, and Lesley May escapes with him, still bound to his service. The favour to Lady Tyburn is discharged - Olivia stays clear of prosecution, at a family cost the Thames court will be digesting for a while - and the Folly's relationship with the Linden-Limmers settles into wary mutual respect. The book closes with the hunt transformed: no longer a pursuit of a glamour and a nickname, but of a named man whose history, money, and associates can now be dug into - the work that will drive the next volume.",
+            "through": {
+              "chapter": 18
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hanging-tree"
+      }
+    },
+    "the-hedge-wizard": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Humphrey",
+              "Wizard Hump"
+            ],
+            "description": "A self-taught hedge wizard of around sixteen, orphaned young and raised by a traveling wizard whose sudden death leaves him alone for the first time. He inherits his late master's staff, medallion, and a soul-bound spellbook, the Book of Infinite Pages, becoming the eighth wizard bound to it. Pragmatic, guarded, and usually broke, he pays an essence cost for every spell rather than wielding a god's blessing, and sets out for the newly opened dungeon at Bledsbury to make his own way as a hedge wizard.",
+            "id": "hump",
+            "name": "Hump",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hump's late master: a wizard and bronze-ranked adventurer who took in the orphaned Hump and trained him for years. He dies before the story opens, of a fever from a goblin-poisoned wound, and is buried by Hump at the edge of Brookwood Forest. He leaves Hump his staff, his medallion, and the soul-bound Book of Infinite Pages, which binds itself to Hump as its new keeper. His teaching and old connections continue to shape Hump's path after his death.",
+            "id": "sethril-woodrow",
+            "name": "Sethril Woodrow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Bud of Blackthorne"
+            ],
+            "description": "A large, earnest, and rather naive young knight sworn to Kelisia, the Goddess of Winter, whom Hump meets sharing a campfire on the road. Traveling alone for the first time, he carries a family heirloom sword and dented, rust-spotted armor, and insists that valor rather than fine gear makes a knight. Bound, like Hump, for the newly opened dungeon at Bledsbury, he is open-hearted and quick to defend others, and he soon becomes Hump's steadfast companion.",
+            "id": "bud",
+            "name": "Bud",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Goddess of Winter, also called the Frostfire Witch. She is the patron deity of the knight Bud, who is sworn to her service. Her Chosen are marked by a silver-flame medallion and wield her cold blue frostfire, a flame with cleansing and chilling properties. Revered but rarely seen directly, she is one of the gods of this world whose favor sets the Chosen apart from ordinary practitioners like Hump.",
+            "id": "kelisia",
+            "name": "Kelisia",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The level-headed leader of a band of former border soldiers turned mercenaries, the self-styled Company of Brothers. He first crosses Hump and Bud's path by defusing a tavern confrontation, then travels with the same convoy toward the Bledsbury dungeon. Steady and fair-minded, he commands his people's respect and offers Hump and Bud his ongoing goodwill and backup should they ever need it.",
+            "id": "gerard",
+            "name": "Gerard",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sharp-featured, well-dressed swordsman with a noble bearing who arrives to join the dungeon convoy alongside his companion Celaine. Generous with coin and unusually skilled with both blade and bow, he moves like a seasoned tracker and scout, yet stays evasive whenever anyone probes how he came by such ability and knowledge. He draws Hump and Bud into his and Celaine's delving party, and seems to take a particular, unexplained interest in Hump.",
+            "id": "vamir",
+            "name": "Vamir",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman a little older than Hump, with reddish hair and quick, capable hands for a bow, a dagger, and spotting traps. She travels as Vamir's companion and student, and joins the party bound for the Bledsbury dungeon. Sharp-tongued and impatient with Vamir's philosophizing, she proves a decisive fighter and a gifted scout, and an easy, teasing rapport soon grows between her and Hump.",
+            "id": "celaine",
+            "name": "Celaine",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, watchful fighter traveling with two companions in a small band of northerners who join the dungeon-bound convoy. A woman archer with distinctive yellow, cat-like eyes, she quietly warns Hump to be careful of Vamir, telling him something about the man does not sit right with her.",
+            "id": "sanya",
+            "name": "Sanya",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Lord Oswald Wickes",
+              "Overseer Oswald"
+            ],
+            "description": "The Overseer of the Bledsbury dungeon expedition, who commands the encampment at its entrance. A scarred, shaven-headed career soldier, he is neither noble-born nor Chosen, having risen to Silver rank and his command through skill and results alone, which earns him wide respect and some resentment. Level-headed under pressure, he convenes the leaders of the competing parties to coordinate a response once the true scale of the kobold raid becomes clear.",
+            "id": "oswald",
+            "name": "Oswald Wickes",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A goddess of light, served by an order of priestesses present at the dungeon encampment. Her followers wield communal healing and blessing magic, tending the wounded and the traumatized, and are marked by a wings-and-scepter sigil. Widely revered, she is one of the Pantheon's deities, her power shown chiefly through the works of her Chosen priestesses rather than any direct appearance.",
+            "id": "lady-light",
+            "name": "Lady Light",
+            "reveal": {
+              "chapter": 12
+            }
+          },
+          {
+            "aliases": [
+              "Prince Kassius"
+            ],
+            "description": "A son of Duke Malar and nephew to the king, who arrives at the dungeon encampment saying he means to aid the rescue and to claim the dungeon's core as a prize for the crown. Charismatic and strikingly generous, he funds a bounty from his own purse and openly champions non-Chosen strugglers, going so far as to offer the unranked Hump a place as his personal wizard. He already knows Bud from a recent visit to Bud's family estate, and wears ornate, enchanted plate armor.",
+            "id": "kassius",
+            "name": "Kassius Malar",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lantheer of the Silver Spears"
+            ],
+            "description": "A Chosen fire sorcerer and a leading figure of the Silver Spears mercenary company. Lithe and sunken-eyed, he carries a heavy staff marked with the orange runes of a fire affinity. Blunt and pragmatic to the point of callousness, he insists his paid mercenaries will not risk death without real reward, and he is locked in a long-running rivalry with the rival White Peaks faction.",
+            "id": "lantheer",
+            "name": "Lantheer",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Joslin of the White Peaks"
+            ],
+            "description": "A tall, heavily armored shield-bearer of the White Peaks faction, her shield marked with three snow-capped mountains. Part cleric and part front-line fighter, she argues hardest among the party leaders for mounting a rescue rather than abandoning the captives, and needles the Silver Spears over an old grievance between their factions.",
+            "id": "joslin",
+            "name": "Joslin",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A silent, fully armored warrior who serves in Prince Kassius's retinue, wielding a massive greatsword and bearing the sigil of Rathlar, the god of death, on his chestplate. His face is never seen and his origin is unknown even to Bud, who never saw him at Kassius's side before now. The rest of Kassius's own party keeps a visible, nervous distance from him.",
+            "id": "the-black-paladin",
+            "name": "The Black Paladin",
+            "reveal": {
+              "chapter": 16
+            }
+          },
+          {
+            "description": "A massive, dark-scaled winged dragon found bound within the true chamber of the Bledsbury dungeon's core. Its body is unmistakably undead, its ribs exposed and a sickly green light burning in its torn chest, and it strains fiercely against its restraints. Celaine reacts to it with startling, protective urgency the moment she sees it, calling it 'her' before she can explain why.",
+            "id": "the-wolf-dragon",
+            "name": "The Wolf-Dragon",
+            "reveal": {
+              "chapter": 34
+            }
+          },
+          {
+            "description": "A masked, humanoid entity woven from shifting dark lines, with pure white eyes and a presence that radiates overwhelming dread. It appears at the climax of the dungeon battle, stepping through a tear it opens in reality to retrieve a gravely wounded figure from the field, then departs the same way without a word. Its nature, its allegiance, and its purpose are left entirely unknown.",
+            "id": "the-shadow-figure",
+            "name": "The Shadow Figure",
+            "reveal": {
+              "chapter": 43
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard"
+      },
+      "recaps": {
+        "ending": "The dungeon battle ends with Prince Kassius, exposed as a warlock and necromancer, burned to a charred, barely-living husk by Hump wielding the absorbed power of the dungeon's dragon. Before he can be finished, a masked, shadow-woven entity tears open reality, carries his body away, and vanishes; because no remains are found and no one else saw the figure, Kassius's survival, the entity's identity, and the secret order he served all remain unresolved. Officially, the prince is remembered as a hero who died fighting the dragon, a cover story the Overseer enforces before quietly escalating a warning up the chain of command. Hump emerges a second-rank wizard permanently changed: he carries a large, only partly controlled reserve of the dragon's power and a dramatically stronger fire affinity, an unhealed injury to his soul that no priestess can mend, and the dragon's egg, soul-bonded to him until his death. Because that bond would force him into likely-fatal trials among Vamir's people, Celaine and Bud both choose to stay with him rather than part ways, and Vamir departs alone, buying them time by delaying his report home. Bud is revealed to be a nobleman, Lord Robert Blackthorne, and Celaine registers with an adventurers' guild for the first time, stepping out on her own. Newly independent and guild-registered, the three set out from Bledsbury for Fishers Lake to seek a wizard named Vivienne to train Hump, while Kassius's fate, the shadow entity, and Hump's own uncertain nature hang over the road ahead.",
+        "in_short": "Hump, a penniless self-taught hedge wizard, inherits a soul-bound spellbook from his dying master and travels to the newly opened dungeon at Bledsbury, falling in with the earnest knight Bud and the secretive, dangerously skilled Vamir and his companion Celaine. Delving to rescue villagers taken by the dungeon's kobolds, the party is drawn into the schemes of Prince Kassius, an outwardly generous royal who is secretly a warlock and necromancer bent on stealing the power of the gods. In the dungeon's true core chamber they find a dying dragon's soul bound as its guardian, and Kassius unleashes it. To save his friends, Hump binds and absorbs the dragon's power and, aided by a relief party, burns Kassius down to a barely-living husk, only for a masked shadow entity to spirit the prince's body away through a tear in reality. Hump survives as a second-rank wizard now carrying the dragon's power, an unhealed soul injury, and her soul-bonded egg. With Kassius's crimes hidden behind a hero's cover story, Bud, revealed to be a nobleman, and Celaine choose to stay with Hump, and the trio sets out to find a wizard who can train him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Hump, a self-taught hedge wizard of about sixteen, buries his late master at the forest's edge and inherits his staff, medallion, and a soul-bound spellbook, then rides for the newly opened dungeon at Bledsbury to find work. On the road he falls in with Bud, a warm-hearted young knight sworn to the Goddess of Winter, and the two reach Bledsbury together, short of coin and unable to get the town's Adventurers Guild to recognize Hump's inherited medallion. Joining a dungeon-bound convoy, they meet the mercenary leader Gerard, a small band of northerners, and a secretive, highly skilled swordsman named Vamir traveling with his sharp young companion Celaine. The journey turns grim when the group is attacked by reanimated corpses raised with unusually strong death magic, and they pass a stretch of forest inexplicably burned to ash. At the fortified encampment outside the dungeon, Hump and Bud accept Vamir's offer to join his four-person party, despite Hump's unease about him. Delving into unmapped tunnels, the party finds evidence that the dungeon's kobolds have been capturing and butchering people, and closes in on cages of living human prisoners held deep underground.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The party fights free and rescues the caged villagers, Hump shattering a tunnel wall with a dangerously overcharged spell to cover their escape. Back at the surface, the survivors reveal the true scale of the disaster: a nearby village has been raided and hundreds of its people taken or killed. The dungeon's Overseer, a respected common-born commander named Oswald, convenes the leaders of the competing parties. Prince Kassius, a duke's son and the king's nephew, arrives claiming he wants to help; generous and charismatic, he funds a bounty from his own purse and offers the unranked Hump a place as his personal wizard, and he proves to already know Bud from a visit to Bud's family estate. Vamir's plan, a diversion at the front paired with rescue parties slipping through the rear tunnels, is adopted. Before the assault, Vamir and Celaine privately admit they are Chosen of a hunt goddess worshipped outside the official Pantheon, a secret that could see them tried for heresy. As the attack begins, Hump notes the silent, death-marked black paladin among Kassius's retinue, and his own party heads alone down the deepest tunnel, more than an hour from any help.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pushing deeper, the party crosses a rare underground grove of poisonous, essence-fed plant life and fights a pair of powerful scaled brutes. In the aftermath, the Goddess of Winter manifests directly to Bud, raising him to a higher circle of her Chosen and granting him a stronger frostfire blessing. Tracking the kobolds to their den, the group frees another chamber of captives, though Hump comes frighteningly close to losing control of his magic to rage, and coldly kills a kobold that had surrendered. He reflects grimly on warlocks: practitioners whose lost self-control corrupts and damages their very souls. Vamir, meanwhile, keeps displaying knowledge and skill far beyond an ordinary traveler's while deflecting every question about their source. With around forty-eight villagers now rescued, Bud confides that he truly left home not just to escape an arranged marriage but out of grief at his mother's death, the source of the bent silver medallion he wears. When Prince Kassius's own party fails to return from the dungeon and the Overseer calls a general retreat, Hump, Bud, Celaine, and Vamir choose to go back down, against the mercenaries' caution, to search for the missing prince.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The four track the prince to an underground kobold settlement, where Kassius and his people are pinned inside a barred shrine. With a daring bluff, the tiny rescue party stages a diversion loud and bright enough to convince the kobolds they face a much larger force, breaking the siege and freeing Kassius. The grateful prince praises them lavishly and renews his interest in Hump. Searching the shrine, Hump and Bud find a blood-stained sacrificial altar and, in a pit behind it, the dungeon's own core, a prize many guilds would kill to control. Kassius reveals that he too can sense essence like a wizard, and admits he had deliberately withheld the core's existence to test them. Tempted, the party quietly weighs keeping the core's location secret so they can claim it themselves later. Then the day turns dark: across the settlement, Hump sees Kassius's own retinue cutting down fleeing villagers rather than protecting them, and moments later the four kobold sentries the party had killed earlier rise again, glowing with dark light, reanimated as undead.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A far larger horror follows: a mass raise-undead spell reanimates every kobold and villager killed anywhere in the settlement, and the survivors are nearly overwhelmed. Hump downs a full vial of a dangerous, essence-flooding potion and channels an enormous blast that clears much of the horde, while Bud's holy frostfire and Vamir's blades cut down the rest. As kobold reinforcements rain arrows from above, Kassius orders Hump's group to escort the freed villagers to safety while he, his black paladin, and his rogue hold the rear, and the party still reads the prince as a selfless hero. The retreat becomes a running fight against pursuing salamanders and a fresh, better-led kobold wave. In a blood-stained chamber, Hump and Celaine are cut off from Bud and Vamir and, with no other escape, throw themselves down a deep disposal pit. Landing in total darkness, Hump looks up to find the only light is Celaine's eyes, now glowing green with vertical, inhuman pupils.",
+            "through": {
+              "chapter": 31
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sheltering in the dark, Celaine finally tells Hump part of her secret: as a child, everyone in her village underwent a costly and normally lethal course of dragon's-blood treatments, the source of her dark-adapted, glowing eyes, though she is not fey. Hump's spellbook yields powerful new workings as he recovers. Following distant sounds of battle, the pair stumble into the dungeon's true core chamber and find a massive undead dragon bound there, fiercely defending its nest, with Prince Kassius and his black paladin subduing it. When the dragon breaks loose, Hump and Celaine watch Kassius shrug off a dagger driven into his own skull, and realize the awful truth: he is the necromancer behind the mass reanimation and the murders they witnessed. The freed dragon rampages but never strays from guarding its nest and a single large egg, until the core itself seals the dragon and egg away inside a crystal shell to keep them from Kassius. Now exposed as witnesses to his true nature, Hump and Celaine become his targets, and Kassius orders his black paladin to seize Celaine.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Cornered, Kassius drops his mask: he is a warlock who has absorbed a heartstone before, and he preaches a creed that the gods are only ascended mortals hiding the path to power, a path his secret order means to seize. He reveals that his black paladin was once a true paladin of the light, broken and enslaved by Kassius's own death magic. Ordered to prove his loyalty by killing Celaine, Hump instead blinds the paladin and frees her, and Vamir emerges to drive an exploding arrow into Kassius, only for the prince to rise again, healed by a heartstone fused to his heart. A relief party of thirteen arrives, led by an elder priestess of Lady Light and including Bud, Joslin, and Lantheer, and a desperate pitched battle follows. Celaine blinds Kassius's remaining eye and Bud wounds him, nearly dying to a thrust that his late mother's medallion turns aside. Cornered, Kassius shatters the crystal seal to unleash the dragon, whose fire kills the priestess and turns the battle. Reaching the dragon's nest, Hump takes her egg and uses a rune-binding to drain her failing power into himself, sharing a vision that reveals she was hunted and fatally wounded years earlier by a young Kassius, the true cause of the burned forest. Mastering the borrowed power, Hump channels the dragon's full essence into a blast of fire that burns Kassius down to a charred, barely-living husk, while Bud, Celaine, and Joslin finally destroy the black paladin. Then a masked, shadow-woven entity with white eyes tears open reality, silently drags Kassius's ruined body through the rift, and is gone.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the aftermath, the rescued dragon egg is found to have soul-bonded to Hump, a bond only his death could break. He recovers at the encampment's field hospital, where a priestess heals his burns but cannot mend or even name an injury done to his very soul; nearly half the relief party died in the core chamber. Hump's spellbook has produced three new workings, one of which formally raises him to second-rank wizard, and his essence and fire affinity have grown dramatically, lingering imprints of the dragon's absorbed power that leave him privately afraid he has become something like a warlock himself. The Overseer sets an official story that Prince Kassius died a hero fighting the dragon, burying his crimes; but no remains of Kassius are ever found, his heart was still beating when the shadow figure took him, and no one else even saw that figure, so his fate stays an open mystery, along with the warlock order Oswald quietly promises to report up the chain. Because his bond to the egg would force him into likely-fatal trials among Vamir's people, Celaine and Bud both choose to stay at Hump's side, while Vamir departs alone, agreeing to delay reporting home and buy them roughly a year. At the Bledsbury guild hall, Hump is finally registered under his master's name, and Bud registers too, revealing himself to be a nobleman, Lord Robert Blackthorne. The three set out together toward Fishers Lake, hoping to find a wizard named Vivienne, an old friend of Hump's master, to continue his training.",
+            "through": {
+              "chapter": 47
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-hedge-wizard"
+      }
+    }
+  }
+}

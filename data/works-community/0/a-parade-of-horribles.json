@@ -1,0 +1,1846 @@
+{
+  "entries": {
+    "a-parade-of-horribles": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A veteran crawler who reaches the tenth floor beside Donut and faces seven elimination heats with a changing roster of drivers.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Princess Donut"
+            ],
+            "description": "Carl's co-leader and racing partner. On reaching the tenth floor, she selects the Assassin of Sekhmet class, chooses a mechanical vehicle for the team, and appoints its mechanic.",
+            "id": "donut",
+            "name": "Donut",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The gremlin mechanic Donut appoints to maintain the team’s mechanical race vehicle.",
+            "id": "hetty",
+            "name": "Hetty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The floor announcer who briefs Carl and Donut on the upheaval beyond the racing floor, including Scolopendra's awakening and the plight of former crawler allies trapped as mercenaries.",
+            "id": "zev",
+            "name": "Zev",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An awakened entity whose activity is already spreading disorder across several dungeon levels when Carl and Donut arrive on the tenth floor.",
+            "id": "scolopendra",
+            "name": "Scolopendra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Donut's creature companion and mount. He rides with Carl and Donut in the food truck during the first heat through the caves.",
+            "id": "mongo",
+            "name": "Mongo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful independent crawler who warns the racing teams that excessive eliminations may force crawlers to compete directly against one another in later heats.",
+            "id": "prepotente",
+            "name": "Prepotente",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the surviving bugbear racers on Team Free Love. Yasha is an awakened dungeon resident whose damaged minivan Carl and Donut choose to tow to the first finish.",
+            "id": "yasha",
+            "name": "Yasha",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Carl's regenerating pet, traveling with the party during the racing heats. Rend helps, somewhat inadvertently, while Carl constructs a towing platform for another team.",
+            "id": "rend",
+            "name": "Rend",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The party's experienced adviser. His current shadow-mimic form copies a Moon Reaper poorly, causing unstable and unreliable prophecy-like declarations around unfamiliar species.",
+            "id": "mordecai",
+            "name": "Mordecai",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A practical ally and adviser who obtains removable caps for Donut's newly transformed claws, allowing Donut to conceal their glow and avoid accidental damage.",
+            "id": "rosetta",
+            "name": "Rosetta",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally traveling with Carl's group who searches an unexpected heap of ruined possessions for useful cosmetics while the others decide how to sort the clutter.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-mantar confined in a containment suit and associated with Don Quixote. A quest asks Carl and Donut to reunite the pair, locate another missing half, and find a Fleshmancer.",
+            "id": "don-quixotes-partner",
+            "name": "Don Quixote's Partner",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied combatant searching for his missing half-mantar partner. Carl and Donut receive a quest centered on reuniting them and finding both a second half and a Fleshmancer.",
+            "id": "don-quixote",
+            "name": "Don Quixote",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-95 Lady Mantar Dominator who worships Enyo and uses domination magic.",
+            "id": "genesis",
+            "name": "Genesis",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Prepotente’s racing partner aboard Sweetie, their large pariso mount.",
+            "id": "juergen",
+            "name": "Juergen",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler racing alongside Imani. She has been assigned an unusually devoted tourist because no other tourist appeared for her during the floor.",
+            "id": "ellie",
+            "name": "Ellie",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler and healer who shares a racing team and armored vehicle with Ellie as the prospect of crawler-against-crawler heats grows.",
+            "id": "imani",
+            "name": "Imani",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied racer paired with Lucia Marr in a tuk-tuk. He reports that her shifting personalities remain unstable even though she is scheduled to drive.",
+            "id": "florin",
+            "name": "Florin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Florin's teammate, whose identity and manner continue to change among distinct personalities. She has declined an undisclosed offer and is still expected to take a turn driving.",
+            "id": "lucia-marr",
+            "name": "Lucia Marr",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler racing with Brittany and Bautista in a neon lowrider whose limited ground clearance may become a serious obstacle on later courses.",
+            "id": "louis",
+            "name": "Louis",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler and member of Louis and Brittany's three-person lowrider team, one of several crawler groups preparing for increasingly dangerous replacement matchups.",
+            "id": "bautista",
+            "name": "Bautista",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler sharing a lowrider with Louis and Bautista. Their vehicle's low clearance is a notable weakness as the teams compare equipment before later heats.",
+            "id": "brittany",
+            "name": "Brittany",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable allied crawler whose destruction of most opponents in an earlier heat has caused replacement teams, including other crawlers, to enter the races.",
+            "id": "li-na",
+            "name": "Li Na",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied crawler competing in a slow semi-truck with two teammates whose specialized classes do little to solve the vehicle's lack of speed.",
+            "id": "chris",
+            "name": "Chris",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A soother tourist assigned to Ellie after being the only tourist to appear for her. He also operates her fan club.",
+            "id": "linus",
+            "name": "Linus",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The anxious crocodilian chosen to drive Carl and Donut’s team during the second heat.",
+            "id": "bucket-boy",
+            "name": "Bucket Boy",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dwight the Unicorn"
+            ],
+            "description": "A hostile unicorn racer whose team operates a vine-like vehicle with a concealed cannon. Its opening shot destroys another team's vehicle before Carl's planned attack can begin.",
+            "id": "dwight",
+            "name": "Dwight",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ordinary pig racing with two Tigrans and protected by Tyrannus. Her enchantment compels certain NPCs to love her, while harming her would bring divine punishment upon the attacker.",
+            "id": "penelope",
+            "name": "Penelope",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tauron rhythm-rider serving as a mercenary for Penelope's team. He previously worked with the half-mantar connected to Don Quixote's reunion quest.",
+            "id": "pontiff",
+            "name": "Pontiff",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hammerhead shark with spider legs who is present with Carl's team while the group weighs a secret proposal from the surviving War Mages.",
+            "id": "jamal",
+            "name": "Jamal",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adviser and recruiter working with Rosetta. The pair search the vendor area for a suitable mercenary before the next racing heat.",
+            "id": "tipid",
+            "name": "Tipid",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Grolke toad in the three-person mercenary unit hired by Carl and Donut’s team for the next race.",
+            "id": "olga",
+            "name": "Olga",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Brazilian crawler on Team Flamengo, paired with a strength-focused teammate and mounted on a durable Slaughternew. His worship of a deity may exclude him from a possible escape route.",
+            "id": "osvaldo",
+            "name": "Osvaldo",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human Fleshmancer hired by Ellie and Imani and brought into Carl's guild. His skill may allow the group to reunite the two separated halves of Don Quixote's partner.",
+            "id": "grigori",
+            "name": "Grigori",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Li Na's devoted teammate, who seeks a way to halt her poisoned and increasingly detached violence without killing her or sacrificing himself.",
+            "id": "zhang",
+            "name": "Zhang",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The divided person whose free half leads the Stage Performance Guild while the other half remains captive with the Lady Dominators. The two halves must be reunited to escape their shared danger.",
+            "id": "corcunda",
+            "name": "Corcunda",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The outside soldier who posed as his brother Linus after Linus died. The dungeon AI identifies him by his real name.",
+            "id": "minus",
+            "name": "Minus",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:us:B0FXY6DVJS",
+            "type": "community"
+          }
+        ],
+        "work": "a-parade-of-horribles"
+      },
+      "recaps": {
+        "ending": "Carl's plan leaves Scolopendra alive but reduced to a level-1 crawler in his party. Her survival is essential because killing or abandoning her would trigger the rest of the Nine-Tier attacks. Nineteen established crawlers remain, with Penelope joining them as a new crawler. Hetty, Corcunda, Don Quixote, Dwight, and Osvaldo are among the dead. Tipid and Jamal survive after losing their legs, while Florin is carried to the stairwell badly injured. Samantha departs with the thunder deity, and the later fates of Louis, Chris, Brittany, and Pontiff remain unknown after they use the casino route. Carl has renounced his divine patron, bears the chaos goddess's unresolved mark, and discovers an unidentified tracking tag in his leg. With floor-collapse timers suspended until the Ascendancy has a winner, he unites the survivors and plans to stall that contest on floor 12 long enough to create a wider evacuation.",
+        "in_short": "Carl and Donut lead their allies through seven lethal racing heats while seeking exits for crawlers and awakened dungeon residents. Li Na proves that volunteers can reach the Pineapple Cabaret, and others enter an uncertain casino portal. Only a small group reaches the eleventh-floor parade, where the AI explains the primal origins of itself, the dungeon’s inhabitants, and the Nine-Tier threat. In the arena, Carl refuses to kill Scolopendra because her death would unleash the remaining attacks. Donut instead transforms her into a level-1 crawler. The victory costs many lives, leaves Tipid and Jamal without their legs, and separates Samantha, Louis, Chris, Brittany, and Pontiff from the group. Carl reunites the survivors, adds Scolopendra to the party, and heads toward floor 12, planning to prolong the Ascendancy contest so the dungeon’s remaining population has time to escape.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Carl and Donut survived the dungeon as close partners, with Mordecai serving as their experienced guide. Mongo remained Donut's mount and combat companion, while Rend traveled as Carl's regenerating pet. Their established circle included healer and organizer Imani, allied racers Ellie, Florin, Louis, Bautista, Brittany, and Lucia Marr, and practical advisers Rosetta and Samantha. Prepotente was a powerful independent crawler who sometimes cooperated with them. Don Quixote continued to carry a dangerous sapient sock weapon, while Li Na remained a formidable allied crawler. Scolopendra was already known as a major dungeon threat.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl and Donut reach the tenth floor and learn they must survive seven racing heats with a different driver each time. Donut selects the Assassin of Sekhmet class, chooses a mechanical vehicle, and appoints Hetty as mechanic. Their assigned chassis is a food truck, with Carl driving the opening route through caves inhabited by dangerous manatees. When another team's minivan crashes, Carl and Donut choose preservation over position. Donut kills the immediate threat, and the rescued bugbears explain that they are awakened dungeon residents racing for a chance at freedom. Carl constructs a towing platform and pulls their vehicle to the finish. His team places seventh and the bugbears place eighth, preventing an additional elimination that might have forced crawler teams into direct competition later.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Preparing for the second heat, the team adds spider legs to the truck and expands its combat options. Mordecai's alarming new appearance proves to be an unstable shadow-mimic copy rather than a true Moon Reaper form. Donut gains celestial claws powerful enough to cut ordinary material, then receives caps that let her handle them safely. Rival teams gather in Hungry Eyes, where Carl learns that Don Quixote's missing partner is a half-mantar and that a reunion quest may lead to the other half and a Fleshmancer. The racers compare vehicles while learning that Li Na's earlier eliminations have already brought crawler replacement teams into play. Prepotente considers using a biscuit that would create a permanently compelled companion from one of his goats. Donut persuades him that the change would remove meaningful consent and expose a vulnerable new crawler, and he agrees not to use it.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The second heat begins in violent rain and hail. Dwight's hidden cannon destroys one team before Carl's planned opening move, and the survivors encounter a giant macropus gatekeeper that heals by consuming living creatures. Carl enters its caustic pouch in a juvenile skin and destroys it from within, but rival teams pass while his group recovers, leaving them last. Don Quixote later reaches the garage holding his partner, completing the first stage of the reunion quest despite being kept apart. The next stage reveals that the partner was split into two half-mantars who share an earlier history but developed different personalities. Both halves and a Fleshmancer are needed to restore the original person. The task is urgent because Don Quixote is deteriorating, apparently through dependence on the sapient sock weapon that has been sustaining him.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl publicly exposes the spread of loose gods and unstable AI zones into the Plenty tunnel system. The broadcast panics its audience, and the AI kills a Caprid liaison when he attempts to attack Carl. Heat three then starts with Carl trapped in a macropus costume and an impaired hired driver at the wheel. Donut's new defensive magic helps the truck survive waves of sugar hermits, but both ghoul mercenaries die and the driver collapses. Carl and Donut take the controls together and win, destroying the truck in the process. They hire a new three-person mercenary unit for the jungle heat, including a fire fairy linked to Carl's divine patron. Before that race, an unsponsored chaos goddess arrives. She offers protection, points Carl toward the War Mages and a hidden refuge, and leaves him with a five-sided mark whose outcome is unpredictable.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl's allies force the War Mage leader to explain his proposal. He describes a concealed seventeenth-floor refuge intended for dungeon residents, but says it is infested and may reject worshippers of gods. Carl refuses to trust the scheme without proof. In the next heat, several racing groups share a jungle course under acid rain. The fire-fairy mercenary suffers a severe panic episode and is sedated. A cannibal chief drains Olga's soul, and killing him imposes a mandatory quest to defeat a second chief before the team can finish. The group reaches the exposed pit stop, where its remaining mercenaries leave the garage to seek treatment. Team One Fine Pig runs them down, killing Olga, the fire fairy, and their badger companion. Carl's team is left without a living driver and must find another way to complete the race.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl retaliates against Team One Fine Pig by setting traps designed to kill its two Tigran racers without harming Penelope. The plan succeeds. Track reassignment moves Carl's team to a water-park route, where Donut temporarily resurrects dead racers to drive. Carl and Donut freeze a river, defeat the required northern chief, and finish first after the remaining Team Sparkles racer dies near the line. Lucia Marr then shifts into identities connected to the daughters of a crawler who asked Carl to save them, while another new goddess appears to threaten the children. The group prepares for an industrial race and investigates that connection. Using the key won in the race, Carl enters Team One Fine Pig's former garage and finds Penelope alive. The magically protected pig willingly leaves with Carl's group.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl's group recruits Grigori, a Fleshmancer who may be able to restore Don Quixote's divided partner. At the same time, Li Na's poisoning and violence worsen. Carl rejects a proposal to sacrifice her and instead prepares a CleanerBot transfer to the Pineapple Cabaret, both to save her and to test the War Mages' claimed exit. The group gains access to the hidden performance guild after Carl and Donut complete a song during a bar fight. There they find the free half of Don Quixote's partner, but the other half is taken toward the next race. Don Quixote's sapient sock disappears, leaving him under a rapidly worsening curse. Li Na voluntarily enters a pet carrier that is stored inside a CleanerBot and sold through a shop connection to the Cabaret. She leaves the active playing field, but her immediate survival remains unconfirmed.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl begins the factory heat with Donut, Grigori, Don Quixote, and the free half-mantar, pursuing the vehicle carrying the captive half. Donut extracts the prisoner after the rival car crashes, and Grigori performs the reunion while Carl drives across inverted factory tracks. The halves merge successfully as Corcunda, but a deity immediately marks the restored person for death and enters the race. Corcunda and Don Quixote leave the truck to confront the pursuing threat. Their final charge removes the deity from the course but kills them both. Carl's team reaches the finish with seconds left. Afterward, a single flower appears on the status cactus linked to Li Na, confirming that she reached the Pineapple Cabaret and judged the route safe for others. The final two heats will now run as a linked apartment-building race without normal safe-room access between them.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl proposes moving eligible volunteers through the Cabaret while encouraging many others to accept deals, reducing the number forced into crawler-against-crawler races. Li Na's success leads 227 crawlers to make the transfer. Ellie also exposes her assigned tourist as the real tourist's brother, an outside infiltrator who had targeted Imani and Louis. Heat six sends teams through seven floors of predictive apartment simulations. The scenarios imitate people from the crawlers' lives, and an error releases invulnerable scarabs. Carl kills the two awakened bugbears of Team Free Love with a hidden explosive to protect his own team's position. He then enters a toxic simulation to retrieve Prepotente, who is overwhelmed by a vision of his mother living without him. Carl persuades him to return. Carl's team finishes second and advances to the final heat.",
+            "through": {
+              "chapter": 77
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Most remaining crawlers take Outreach Guild deals, leaving forced matchups among allies. Scolopendra's first attack temporarily transforms Carl into a dog. At the final start, Donut kills Dwight while Carl blasts a vertical route to the roof. Brittany kills Osvaldo after he abandons his mount, and several allied teams refuse to finish, choosing instead to pursue a casino portal. Chris and Brittany enter first. The croupier then reveals himself as a shadow mimic serving an unknown faction, but the crawlers defeat the ambush and recover the portal mechanism. Louis follows through, while Pontiff's earlier disappearance suggests his own test also succeeded. Their destinations remain uncertain. Carl's team returns to the race, rescues two animals, and reaches the eleventh floor. Only 23 crawlers arrive there, where they are divided into themed processions and given 90 minutes to build parade floats before an arena battle.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The survivors construct flower-covered parade vehicles and march along a yellow-brick route lined by masked memory-avatars of dead primals. After the original host is incapacitated, the dungeon AI commandeers Grigori's dungeon-born body to explain the buried history. It identifies macro AIs as remnants of primal intelligence and describes a civilization that attempted to merge itself into a protected collective. Dissenters resisted, while the collective created a doomsday weapon and became the sleeping eulogist. The AI presents the Apothecary as a surviving Resistance figure altered by the catastrophe, and the dungeon's engines as a failed biological safeguard later exploited by other peoples. Instead of following the intended script, Carl's procession turns its display into a declaration that the surviving crawlers will seek vengeance against the system and those who profit from it.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Carl enters the arena, declares open revolt, and chooses Scolopendra as the confrontation. The AI reveals that killing or abandoning her will trigger all remaining Nine-Tier attacks and prevent a normal exit, so Carl rejects the intended boss kill. He instead draws several deities into conflict using Penelope as apparent leverage. Donut restrains Carl's patron long enough for the thunder deity to kill him, while Penelope survives a redirected divine strike. The chaos goddess intervenes as Scolopendra prepares another attack. Carl and Donut combine an enriched biscuit with an explosive delivery, but Donut has supplied the wrong version. Scolopendra shrinks into a level-1 crawler rather than dying or becoming a pet. The AI accepts this as a qualified victory. Hetty and many others are dead, Tipid and Jamal have lost their legs, Florin is badly injured, and Samantha leaves with the thunder deity. Carl gathers the survivors into one party, keeps Scolopendra alive, and heads toward floor 12 intending to delay the Ascendancy until a broader evacuation is possible.",
+            "through": {
+              "chapter": 98
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:us:B0FXY6DVJS",
+            "type": "community"
+          }
+        ],
+        "work": "a-parade-of-horribles"
+      }
+    },
+    "a-sacrifice-of-light": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A gifted university student and Thaddeus Lacer's new apprentice. Sebastien begins the term shaken by a recent aberrant disaster, unable to discuss key events, threatened by blood-based tracking, and burdened by dangerous obligations.",
+            "id": "sebastien-siverling",
+            "name": "Sebastien Siverling",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Professor Lacer"
+            ],
+            "description": "A powerful university Grandmaster who has selected Sebastien as his apprentice. He is investigating the Raven Queen and the recent magical disaster while taking a close interest in Sebastien's unusual talent.",
+            "id": "thaddeus-lacer",
+            "name": "Thaddeus Lacer",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sebastien's friend, whose death and transformation during the recent aberrant crisis weigh heavily on those who survived.",
+            "id": "newton-moore",
+            "name": "Newton Moore",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A university-linked intermediary caught between dangerous employers and the people investigating the recent disaster. Magical restrictions prevent her from explaining what she knows, making her both a possible threat and another coerced participant.",
+            "id": "tanya-canelo",
+            "name": "Tanya Canelo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Crown investigator working with Thaddeus Lacer on the Raven Queen case. He helps identify possible university interference with Tanya Canelo’s testimony and confirms that the stolen book is important enough to keep the Crown involved.",
+            "id": "titus-westbay",
+            "name": "Titus Westbay",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sebastien's loyal friend and covert collaborator. He helps her leave the infirmary, remains committed after Newton's death, and offers practical support even though Sebastien cannot share the full truth with him.",
+            "id": "damien-westbay",
+            "name": "Damien Westbay",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Siobhan's imprisoned father, questioned for information about her family and childhood. His account connects her family history to a destroyed village, severe magical trauma, and an unresolved marriage obligation involving a valuable ring.",
+            "id": "ennis-nott",
+            "name": "Ennis Nott",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sebastien's protector and employer, who provides refuge at his manor while managing the Verdant Stag's expansion. He keeps the Raven Queen's whereabouts secret and tries to limit Sebastien's exposure to the university conspiracy.",
+            "id": "oliver-dryden",
+            "name": "Oliver Dryden",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Raven Queen"
+            ],
+            "description": "Sebastien's other form and the woman known publicly as the Raven Queen. Changing bodies lets her work around a vow imposed on Sebastien, but the divided presentation also deepens the danger posed by investigators seeking her.",
+            "id": "siobhan",
+            "name": "Siobhan",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A returning classmate and friend who helps Sebastien after Newton's death. He joins the effort to support Newton's family.",
+            "id": "alec",
+            "name": "Alec",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Anastasia"
+            ],
+            "description": "Sebastien's classmate and the designated heir of a powerful family. Male relatives are trying to displace her and have threatened her younger sister, leading Anna to seek a lasting way to break their influence.",
+            "id": "anna",
+            "name": "Anna",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Nat"
+            ],
+            "description": "Anna's younger sister and a pressure point in the struggle over their family's succession. Anna gives her an emergency alert artifact after hostile relatives begin using her as leverage.",
+            "id": "natalia",
+            "name": "Natalia",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of Anna's uncles and a leading branch-family rival to her inheritance. He supports the effort to replace Anna as heir.",
+            "id": "malcolm",
+            "name": "Malcolm",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Malcolm's brother and another participant in the branch family's attempt to displace Anna.",
+            "id": "randolph",
+            "name": "Randolph",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Oliver's close enforcer and protector. Huntley places Oliver's survival above public intervention and accompanies him while the Verdant Stag confronts increasing pressure from corrupt coppers.",
+            "id": "huntley",
+            "name": "Huntley",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young photographer whose camera records a copper assaulting a protected vendor. The developed image provides evidence of the attack.",
+            "id": "percival-irving",
+            "name": "Percival Irving",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior Verdant Stag operator who manages money, contracts, and practical resources. She oversees agreements connected to Sebastien's debt and helps formalize the terms under which Sebastien works with Oliver.",
+            "id": "katerine",
+            "name": "Katerine",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A civilian identity used by Siobhan when dealing with the Verdant Stag away from the Raven Queen's public image. The cover gives her room to obtain supplies and conduct business without openly invoking that feared title.",
+            "id": "sylvia-nakai",
+            "name": "Sylvia Nakai",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent and highly skilled thaumaturge whom Sebastien considers consulting about hostile divination and an experimental sleep spell. Her expertise and protected facilities are valuable, but her normal fees are beyond Sebastien's means.",
+            "id": "liza",
+            "name": "Liza",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A university representative who questions Sebastien about the Raven Queen.",
+            "id": "grandmaster-kiernan",
+            "name": "Grandmaster Kiernan",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A nobleman whose rejection of Oliver Dryden's textile subcommission blocks the Verdant Stag's planned factories and jobs.",
+            "id": "lord-girvan",
+            "name": "Lord Girvan",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A remote negotiating identity used by Sebastien and Siobhan when dealing with Grandmaster Kiernan's faction. Speaking through a magical messenger lets her bargain over the stolen book while keeping her body away from the meeting.",
+            "id": "chauvin",
+            "name": "Chauvin",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A clandestine university-linked faction associated with Grandmaster Kiernan. After a failed attempt to locate the Raven Queen during negotiations, the group continues pursuing the stolen book and prepares to intervene against Oliver's prisoners.",
+            "id": "architects-of-kronos",
+            "name": "Architects of Kronos",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Verdant Stag healer trusted by Oliver, who requests Sylvia Nakai's assistance during dangerous work on Morrow prisoners. He stops the procedure when one captive begins convulsing and helps stabilize her.",
+            "id": "healer-knitsen",
+            "name": "Healer Knitsen",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Oliver Dryden's intelligent Erythrian horse, accompanying him as he leads the prisoner convoy before it comes under attack.",
+            "id": "elmira",
+            "name": "Elmira",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Verdant Stag enforcer who joins Siobhan in an extremely dangerous attempt to stop the air thaumaturge overwhelming Oliver's convoy. He accepts her experimental moving concealment and advances on the enemy.",
+            "id": "gerard",
+            "name": "Gerard",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0C544LFGX",
+            "type": "community"
+          }
+        ],
+        "work": "a-sacrifice-of-light"
+      },
+      "recaps": {
+        "ending": "Malcolm is defeated, arrested, and publicly discredited after Anna, Damien, and Sebastien expose his financial crimes and staged dealings with the Raven Queen. The textile subcommission goes forward, leaving Sebastien with gold, shareholder papers, and a four-percent stake that can free her from dangerous side work. Oliver and the Verdant Stag survive the Architects of Kronos assault, but Knave Knoll, valuable property, and many defenders are lost. The real stolen book remains secure, and Katerine confirms that both copies of Siobhan's bloodprint vow have been destroyed. Tanya survives after helping Siobhan escape capture, though her loyalties and knowledge remain uncertain. Liza can oppose renewed blood scrying only at great cost, and the sleep-proxy spell remains viable but potentially lethal and ethically compromised. Newton remains dead, while the Red Guard's alteration of his family's memories destroys Sebastien's remaining trust in official institutions. Siobhan leaves Oliver without confronting him, resolved to verify whether he exploited her stolen-book predicament as cover for another secret. Thaddeus Lacer possesses the original ring connected to her father and asks Oliver to arrange a meeting with the Raven Queen.",
+        "in_short": "Sebastien begins the term grieving Newton Moore and hiding that she is also Siobhan, the wanted Raven Queen. She deepens her study of light magic, works with Liza on a dangerous sleep-proxy spell, and joins Anna and Damien in a scheme that exposes Malcolm's corruption and secures Oliver Dryden's textile agreement. The Architects of Kronos attack the Verdant Stag and Knave Knoll to recover Siobhan's stolen book. Siobhan helps defeat the assault, though the prison is destroyed and her equipment is lost. Malcolm is arrested, Anna's position improves, and Sebastien gains a four-percent business share and financial independence. Yet renewed blood scrying, Red Guard manipulation of Newton's family, and the lethal costs of the sleep project remain unresolved. The book ends with Siobhan withholding trust from Oliver and deciding to investigate whether he used her crisis to conceal another secret, while Thaddeus Lacer holds the original ring tied to her father and seeks a meeting with the Raven Queen.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Siobhan entered Gilbratha carrying a stolen magical book and became wanted by the authorities. A transformation allowed her to attend the university as the male student Sebastien Siverling, where Thaddeus Lacer selected her as his apprentice. Outside the university, she became entangled with Oliver Dryden and the Verdant Stag, accumulating debt while building a formidable public reputation as the Raven Queen. Her effort to learn who was pursuing the stolen book drew in classmates Damien Westbay and Newton Moore, while Tanya Canelo served as a constrained link to the university faction behind the search. The conflict culminated in a rogue-magic disaster on Rafton Street. Newton died and became an aberrant, leaving Sebastien traumatized and magically prevented from explaining key events. The authorities retained blood that could be used to track her, the university still wanted the book, and the Verdant Stag remained both a source of protection and an obligation.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Red Guard removes the two captured aberrants from Gilbratha while investigators debate whether the Raven Queen is an exceptional criminal or something more dangerous. Thaddeus Lacer studies the contradictions surrounding her identity and questions Siobhan's imprisoned father. The family history he hears suggests a possible inherited resistance to the mental dangers of blood-based casting, but it does not establish what the Raven Queen is. Sebastien wakes in the university infirmary exhausted and unable to discuss the disaster freely. She tells Damien that Newton Moore is dead, and Damien refuses to abandon their supposed secret organization. At Dryden Manor, Sebastien recovers enough to reaffirm her decision to pursue thaumaturgy despite the risk. Oliver reports that the Verdant Stag has taken over much of the Morrows' territory and warns of increased scrutiny. Sebastien then changes into Siobhan, confirming that both bodies belong to the same person and using that distinction to work around the vow imposed on Sebastien.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien returns to university as rumors turn her into a heroic survivor. Her friends support her, but Newton's death, Tanya's magical silence, and official interest in the Raven Queen remain constant pressures. Anna reveals that male relatives are trying to displace her as family heir and have threatened her younger sister Natalia. Sebastien also learns that a major exhibition will determine many of the contribution points she needs, prompting plans for a light-based display. Meanwhile, Oliver consolidates the Verdant Stag's control over former Morrow holdings and begins using legal claims, blackmail, and public evidence against abusive coppers. Photographer Percival Irving supplies him with an image of police violence and a distant picture of the Raven Queen, then accepts a role in Oliver's planned press operation. Siobhan obtains a stimulant to fight her dangerous exhaustion and discovers that a sealed fragment of Newton's aberrant form has remained caught in her clothing. She keeps it hidden. By the end of this span, Sebastien has ranked her main threats and makes neutralizing the authorities' blood sample a priority.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Siobhan hires Liza to help develop a sleep-proxy spell and gains access to protected casting facilities, anti-divination expertise, and new defensive equipment. Thaddeus tests Sebastien's supposed Raven Queen blessing but fails to discover her identity. He says he wants knowledge rather than a reward and asks Sebastien to convey an offer of contact to the Raven Queen. Sebastien also recognizes that her harsh judgment of Anna was unfair and begins repairing their friendship. Tanya approaches Oliver on behalf of university employers who want the stolen book and access to the Raven Queen. Oliver conceals Siobhan's location while considering a controlled meeting, but his legal textile project is blocked by Anna's family. Anna then offers a solution: if Sebastien helps remove her hostile uncles from the succession, Anna can secure the needed subcommission. Sebastien agrees to help plan the operation with Anna and Damien. She separately negotiates strong compensation from Oliver, including gold and a share of the future textile profits, giving the dangerous family scheme the potential to buy her independence.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anna, Damien, and Sebastien design a vault operation intended to uncover real wrongdoing by Anna's uncles and later discredit them. The vault may also contain a ring tied to a coercive marriage agreement involving Siobhan's family. Outside the scheme, Siobhan's intervention in a street robbery expands the Raven Queen's reputation despite her rejection of worship and sacrifice. She warns an underground thaumaturge gathering that university agents may be hunting its members and acquires spells useful for bypassing locks and ciphers. Siobhan and Liza then begin live trials of the sleep-proxy spell. They use blood magic and vitality transfers to bind pairs of mice so that one remains awake while another bears the need for sleep. The initial subjects survive and behave as intended, but the result is only an early test. During the family operation, Sebastien and Damien enter Malcolm's office, move his warded vault within range of its key, and photograph records showing false accounts, embezzlement, and tax evasion. Sebastien replaces the stored ring with a forgery and takes the apparent original before the pair escapes undetected.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the vault infiltration, Anna keeps Natalia away from Malcolm's household for the night. The group delays its next move while gathering corroboration, and Anna remains barred from seeing her sister except through their secretly linked journals. Sebastien's light magic advances rapidly, while her use of stimulant tincture produces increasing fatigue and headaches. Acting remotely as Chauvin, she negotiates with Grandmaster Kiernan's university faction over the stolen book. They give her a valuable censer as tribute, but a concealed attempt to locate her destroys the magical messenger and ends the meeting. Sebastien retains both the book and the tribute, and Oliver concludes that the faction acted in bad faith. The official account of Newton's death then portrays him as a corrupt practitioner and Sebastien as an innocent hero. Thaddeus explains how that story protects the university and Crown families by isolating the disaster from ordinary thaumaturgy. Sebastien realizes that public explanations of aberrance may be deliberately shaped, further weakening her trust in official narratives.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ring taken from Malcolm's vault proves to contain a deliberately flawed false diamond rather than the expected solarium, leaving the genuine gem and the substitution unresolved. Tanya, frightened by her employers and the Raven Queen's reputation, asks to become Sebastien's discreet ally, but Sebastien gives no answer. Oliver learns that Kiernan's faction calls itself the Architects of Kronos and appears to be recruiting powerful help. He feeds Kiernan false dates for moving the captured Morrows while arranging an earlier transfer. Anna's operation stages a fraudulent meeting in which her uncles appear to bargain with the Raven Queen and then betray her. The investigators detect weaknesses in the performance, but Sebastien anonymously points Thaddeus toward the uncles' suspicious behavior. At the same time, Thaddeus begins teaching Sebastien techniques that move a spell's effect beyond its central array. Her first method remains tethered and vulnerable, yet it reveals remarkable potential. Oliver then orders Sebastien to assist the secret Morrow transfer under her Sylvia Nakai identity. At Knave Knoll, Healer Knitsen and Sebastien stabilize a prisoner during dangerous cursework just before an alarm announces an attack.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Masked attackers ambush Oliver's prisoner convoy with military weapons, disabling filters, a powerful shield, and air magic. Siobhan uses long-range refraction to conceal Gerard as he reaches and kills the enemy air thaumaturge. Oliver survives a devastating blast, but his horse is killed, the convoy is broken, and a second enemy force arrives by canal. Coppers close on the battle while simultaneous attacks strike Verdant Stag properties, convincing Oliver that the Architects of Kronos designed the prisoner assault as a diversion. An elderly thaumaturge then uses a vast war array to consume Knave Knoll with mind-altering parasites and transformed stone. Siobhan discovers that fire destroys the parasites and helps the trapped survivors organize an escape. Tanya intervenes when the attackers try to seize Siobhan's satchel. Siobhan abandons the bag and remotely triggers its disintegration mine, killing the elderly caster and nearby attackers at the cost of all her carried equipment. At the damaged Verdant Stag, Oliver confirms that the enemy stole decoys, gold, and the traceable censer, but failed to find the hidden vault containing the real book and Siobhan's bloodprint vow.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anna completes Operation Defenestration by confronting Malcolm with evidence of his false accounts, embezzlement, tax evasion, and staged dealings with the Raven Queen. She has already sent copies to her father and the coppers, turning the confrontation into a public exposure rather than continued blackmail. Malcolm retreats to destroy records and attacks when Sebastien breaches his warded office. Sebastien defeats and disarms him while Damien shields Anna and she rescues partly burned evidence. The trio plants additional material supporting the succession case, restrains Malcolm, and gives investigators its prepared account. Anna makes clear that she engineered his fall and will act again if the consequences are insufficient. Her father accepts the evidence, recognizes Anna's political resolve, and treats Sebastien and Damien as her allies. Malcolm is arrested and immediately loses his ability to challenge Anna's position, though Randolph's legal outcome is not established.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sebastien receives a battle-wand license from Thaddeus, abandons her addictive stimulant, and confronts the worsening results of the sleep-proxy research. The spell can keep one subject awake, but it prevents that subject from sleeping and severely harms the sleeper over time. An intelligent test subject dies, yet renewed blood scrying and a nightmare-driven collapse convince Sebastien to continue despite the moral cost. Liza offers an expensive countermeasure that cannot guarantee every blood sample will be destroyed. Sebastien then visits Newton's family and discovers that the Red Guard altered their memories to support the false claim that forbidden magic caused his death. Thaddeus accepts such manipulation as public control, badly damaging Sebastien's trust in him and the institution. Oliver secures the textile agreement, giving Sebastien a four-percent share and financial independence, while Katerine confirms that both copies of her bloodprint vow are destroyed. Siobhan nevertheless suspects Oliver used her stolen-book crisis to conceal another valuable secret. She leaves without confrontation and resolves to investigate independently. Finally, Thaddeus reveals to Oliver that he holds the original ring connected to Siobhan's father and offers it as tribute for a meeting with the Raven Queen.",
+            "through": {
+              "chapter": 56
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0C544LFGX",
+            "type": "community"
+          }
+        ],
+        "work": "a-sacrifice-of-light"
+      }
+    },
+    "a-storm-of-swords": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "the Imp",
+              "Halfman"
+            ],
+            "description": "The dwarf son of Lord Tywin Lannister, scarred and sidelined after the great battle for the capital, in which he nearly died defending the city only to see his father seize the credit and the office of Hand. Clever and bitter, resented by his family and mistrusted by the court, he must go on serving the Lannister cause while receiving little thanks and less love.",
+            "id": "tyrion-lannister",
+            "name": "Tyrion Lannister",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "the Kingslayer",
+              "Ser Jaime"
+            ],
+            "description": "The captured knight of the Kingsguard and twin to Queen Cersei, long held prisoner by the Starks since the war began. Famed for his beauty and skill at arms and infamous for having killed the king he was sworn to protect, he is dispatched south under guard in a bid to trade him for the Stark girls held in the capital.",
+            "id": "jaime-lannister",
+            "name": "Jaime Lannister",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Catelyn Tully"
+            ],
+            "description": "Widow of Eddard Stark and mother to the King in the North. Weighed down by grief and by fears for her scattered children, she counsels her son Robb and works to keep his fragile alliance from coming apart, even as her choices strain her bond with him.",
+            "id": "catelyn-stark",
+            "name": "Catelyn Stark",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Young Wolf",
+              "King in the North"
+            ],
+            "description": "The young King in the North, still unbeaten on the battlefield but increasingly beset by political troubles, wavering bannermen, and the difficulty of holding a war-torn kingdom together far from home.",
+            "id": "robb-stark",
+            "name": "Robb Stark",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder Stark daughter, still a captive in the capital and a pawn in the schemes of those around her. Having learned how deadly the court can be, she trusts no one and longs only to escape to safety.",
+            "id": "sansa-stark",
+            "name": "Sansa Stark",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The younger Stark daughter, alone and adrift in the war-ravaged countryside, hardened by everything she has survived. Fierce and self-reliant, she trusts to her own wits as she tries to find her way back to any family that remains.",
+            "id": "arya-stark",
+            "name": "Arya Stark",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eddard Stark's bastard son and a brother of the Night's Watch, currently living among the wildlings north of the Wall, where he has won a place by concealing his true loyalties. He is caught between the oath he swore and the people he now travels with as the free folk march south.",
+            "id": "jon-snow",
+            "name": "Jon Snow",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dany",
+              "the Mother of Dragons"
+            ],
+            "description": "The exiled Targaryen princess, mother to three young and growing dragons, journeying through the eastern lands in search of the soldiers and ships she needs to sail home and claim the Iron Throne. She is learning to rule and to fight as she goes.",
+            "id": "daenerys-targaryen",
+            "name": "Daenerys Targaryen",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "King Robert's stern, rigid brother, who still claims the Iron Throne by right despite his crushing defeat at the capital. Withdrawn to his island seat and short of men, he remains under the sway of the red priestess Melisandre and her promises of destiny.",
+            "id": "stannis-baratheon",
+            "name": "Stannis Baratheon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sam",
+              "Sam the Slayer"
+            ],
+            "description": "A soft, bookish, fearful young man of the Night's Watch and one of Jon Snow's closest friends. Disowned by a harsh father for lacking a warrior's temper, he is clumsy and easily frightened, yet loyal and quietly braver than he believes himself to be.",
+            "id": "samwell-tarly",
+            "name": "Samwell Tarly",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Maid of Tarth"
+            ],
+            "description": "A tall, powerfully built, and famously plain noblewoman who has taken up sword and armor despite the scorn heaped on a woman who wants to be a warrior. Earnest, honest, and stubbornly devoted to her vows, she is charged with escorting the captive Jaime Lannister safely south.",
+            "id": "brienne-of-tarth",
+            "name": "Brienne of Tarth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Red Viper",
+              "the Red Viper of Dorne"
+            ],
+            "description": "A prince of Dorne and brother to its ruling prince, famed and feared across the realm as the Red Viper for his brilliance in a fight and his fondness for poisoned blades. Charming, hot-tempered, and clever, he carries a deep and bitter grievance against House Lannister over the deaths of his sister and her children years before.",
+            "id": "oberyn-martell",
+            "name": "Oberyn Martell",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-storm-of-swords"
+      },
+      "recaps": {
+        "ending": "House Stark's cause is broken by the Red Wedding, where Robb and Catelyn Stark are murdered under guest-right by the Freys and Boltons. Jaime Lannister, maimed and humbled, is back in King's Landing and increasingly estranged from his sister Cersei. Joffrey lies dead of poison at his own wedding, and his younger brother Tommen is crowned in his place; Tyrion, wrongly convicted of the murder, escapes into exile across the sea after killing his father Tywin, who is found slain on the privy. Sansa Stark hides in the Vale as the ward of Petyr Baelish, who has murdered his way to control there. Arya Stark, having wandered the ruined Riverlands with the outlaw known as the Hound, leaves him behind and takes ship for the free city of Braavos to begin a new life. Jon Snow, now Lord Commander of the Night's Watch, holds the Wall with Stannis Baratheon encamped nearby, the wildling threat blunted but the deeper danger to the north unresolved. Bran Stark reaches a hidden teacher beyond the Wall to learn the ways of greensight. In the far east, Daenerys rules the freed city of Meereen, refusing to march on until she has learned to govern. In a final, grim turn, the murdered Catelyn is drawn back from death by outlaws as a vengeful revenant.",
+        "in_short": "The war reaches its bloodiest turns. Jaime Lannister, escorted south by Brienne of Tarth, loses his sword hand to captors and is changed by the ordeal. Robb Stark, having broken a marriage pact, seeks to mend his alliance with the powerful House Frey, but at a wedding meant to seal the peace he, his mother Catelyn, and his army are massacred in the treacherous slaughter that becomes known as the Red Wedding. In the capital, King Joffrey is poisoned and dies at his own wedding feast; Tyrion is blamed, condemned in a rigged trial, and, after his lover betrays him, kills both her and his father Tywin before fleeing the kingdom. Sansa Stark is spirited away by the schemer Petyr Baelish and hidden in the Vale under a false name. At the Wall, Jon Snow returns to the Night's Watch and helps repel a massive wildling assault; Stannis Baratheon sails to the Wall's relief, and Jon is chosen Lord Commander. Bran travels beyond the Wall in search of a green-seeing power, while Daenerys conquers the slaver cities of the east and settles as queen in Meereen to learn the hard work of ruling.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: In A Game of Thrones, Eddard Stark went south as Hand of the King, uncovered that Queen Cersei's children were fathered by her twin Jaime, and was executed for it on the order of Cersei's son, the boy king Joffrey. His son Robb was proclaimed King in the North; the realm broke into war as Robert's brothers Stannis and Renly also claimed the throne. Across the sea, the exiled Daenerys Targaryen rose from a funeral pyre with three newborn dragons. In A Clash of Kings, Tyrion Lannister governed the capital as acting Hand while Stannis, driven by the priestess Melisandre, killed his brother Renly by sorcery and besieged King's Landing. At the Battle of the Blackwater, Tyrion's defenses and the last-moment arrival of Tywin Lannister and the Tyrells shattered Stannis's assault, though Tyrion was cast aside afterward. In the North, Theon Greyjoy betrayed the Starks and took Winterfell, which then fell and burned, while the Stark boys Bran and Rickon escaped into hiding. Jon Snow went among the wildlings, Arya fled the ruined castle of Harrenhal, and Daenerys sought soldiers and ships in the east.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-storm-of-swords"
+      }
+    },
+    "a-thousand-splendid-suns": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An illegitimate girl growing up in a small mud hut outside Herat, Afghanistan, with her bitter, ailing mother. Called a harami, a child born out of wedlock, she is kept hidden from her wealthy father's real family in town, though she idolizes him during his weekly visits. Sheltered, uneducated, and longing for a place in his world, Mariam is on the verge of the reckless wish that will upend her life.",
+            "id": "mariam",
+            "name": "Mariam",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Mariam's mother, a proud, resentful, and unwell woman who lives in isolation after being cast out for bearing an illegitimate child. Sharp-tongued and fearful of abandonment, she warns Mariam again and again that the world offers a woman like her nothing but endurance.",
+            "id": "nana",
+            "name": "Nana",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mariam's father, a rich and charming businessman in Herat with a cinema, several wives, and many legitimate children. He visits Mariam once a week with gifts and stories, indulging her affection while keeping her carefully apart from his respectable household.",
+            "id": "jalil",
+            "name": "Jalil",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gentle old village Quran tutor who teaches Mariam to read and recite, and who offers her patient kindness and counsel. He is one of the few tender presences in her early life.",
+            "id": "mullah-faizullah",
+            "name": "Mullah Faizullah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gruff, heavyset shoemaker from Kabul, decades older than the young Mariam. Traditional and possessive, he expects a wife to be quiet, veiled, and obedient. He can show flashes of consideration at first, but a hard, controlling temper lies close beneath the surface.",
+            "id": "rasheed",
+            "name": "Rasheed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A bright, spirited girl of a younger generation growing up on the same Kabul street, the daughter of an educated, loving father. Encouraged to value learning and to expect more from life than the women before her, she comes of age as war begins to tear the city apart.",
+            "id": "laila",
+            "name": "Laila",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Laila's devoted childhood friend and neighbor, a good-humored boy who lost a leg to a landmine as a child. Fiercely protective of Laila, he becomes her closest companion as the fighting closes in on Kabul.",
+            "id": "tariq",
+            "name": "Tariq",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Laila's father, a mild, bookish former schoolteacher who believes deeply in education, especially for his daughter. Gentle and thoughtful, he tries to shield his family and to keep hope alive as Kabul slides into chaos.",
+            "id": "babi",
+            "name": "Hakim (Babi)",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Laila's mother, worn down and withdrawn, consumed by pride in and grief over her two sons who have gone off to fight. She is often distant from Laila, lost in worry for the young men at war.",
+            "id": "fariba",
+            "name": "Fariba (Mammy)",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Laila's first child, a gentle, watchful little girl born amid hardship. She becomes deeply attached to the household's older woman and a focus of the tenderness the two wives come to share.",
+            "id": "aziza",
+            "name": "Aziza",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Laila's young son, doted on and favored by his father in a way his sister is not. A small boy in a frightening time, he is caught up in the tensions of the household without understanding them.",
+            "id": "zalmai",
+            "name": "Zalmai",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-splendid-suns"
+      },
+      "recaps": {
+        "ending": "Mariam's life ends in sacrifice, and Laila's opens into hope. When Tariq reappears, alive after years of Rasheed's lie that he had died, Rasheed flies into a murderous rage and begins beating Laila to death. To save her, Mariam strikes and kills Rasheed with a shovel. Knowing that both women cannot escape, Mariam insists on taking sole blame; she surrenders to the Taliban authorities and is publicly executed, choosing her end freely and finding a kind of peace in having, at last, loved and been needed. Laila flees with Tariq and the children to Pakistan, where they live quietly until the Taliban regime collapses. Drawn home, Laila returns to Kabul and, on the way, visits Herat, where she learns of Mariam's childhood and receives a letter and a small inheritance her father had left for the daughter he failed. Laila and Tariq settle into the recovering city, and Laila takes up work helping to rebuild an orphanage and teach children. Pregnant again, she resolves that if the baby is a girl she will name her Mariam, keeping alive the woman who gave everything for her.",
+        "in_short": "In Afghanistan, an illegitimate girl named Mariam is married off at fifteen to Rasheed, a much older Kabul shoemaker, after her mother's suicide and her father's rejection. When she cannot give him a living child, Rasheed turns cruel. Years later, Laila, a bright girl on the same street, is orphaned by a rocket in the civil war and, believing her childhood love Tariq dead, is taken in and married by Rasheed as a second wife. The two women, at first rivals, become like mother and daughter as they endure Rasheed's abuse and the harsh rule of the Taliban. Laila raises a daughter secretly fathered by Tariq and a son by Rasheed. When Tariq returns alive and Rasheed nearly beats Laila to death in his fury, Mariam kills him with a shovel to save her. Mariam gives herself up so that Laila can escape, and is executed by the Taliban. Laila reunites with Tariq, and after the Taliban fall she returns to a rebuilding Kabul carrying Mariam's memory forward.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Mariam is an illegitimate girl, a harami, raised in a small hut outside Herat by her embittered mother, Nana, and visited weekly by her wealthy father, Jalil, whom she adores. On her fifteenth birthday she defies Nana and goes into town to find Jalil, who refuses to see her; when she returns, she finds that Nana has hanged herself, believing she had been abandoned. Taken briefly into Jalil's household, Mariam is quickly and shamefully married off to Rasheed, a coarse shoemaker from Kabul many years her senior, and sent far from home. Rasheed treats her passably at first and hopes for a son, but when Mariam suffers a series of miscarriages his disappointment curdles into coldness and cruelty, and she settles into a lonely, fearful marriage in a strange city.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The story turns to Laila, a clever, well-loved girl growing up years later on the same Kabul street. Her father, a gentle former teacher, prizes her education, while her mother is lost in grief and pride over two sons away at war. Laila's dearest companion is Tariq, a warm-hearted neighbor boy who lost a leg to a landmine and who grows ever closer to her. Around them, the withdrawal of the Soviets gives way to vicious fighting among rival factions, and Kabul, once relatively safe, becomes a battleground of shifting front lines and falling rockets. Ordinary life grows perilous, families begin to flee, and the two children come of age amid checkpoints, shelling, and mounting fear, their bond deepening as the world around them falls apart.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the danger worsens, Tariq's family decides to leave Kabul. Before he goes, Laila and Tariq, believing they may never see each other again, share a moment of intimacy, and he begs her to come with him or to wait for him. Laila stays, unable to abandon her parents just as they at last agree to flee the city themselves. Then catastrophe strikes: a rocket destroys Laila's home, killing both her parents and leaving her gravely injured. Orphaned, alone, and soon aware that she is carrying Tariq's child, Laila is taken in and nursed by the aging Rasheed and his worn-down wife, Mariam. A stranger arrives with word that Tariq has died on the road, a report that closes off Laila's last hope of escape and leaves her utterly without protection.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Grieving and pregnant with no one to turn to, Laila accepts Rasheed's proposal and becomes his second wife, passing off the coming child as his. Mariam bitterly resents the newcomer at first, but when Laila bears a daughter, Aziza, the two women slowly draw together, forming a fierce, sustaining bond against Rasheed's tyranny. He grows more brutal and controlling toward them both. The women attempt to flee Kabul together with the child, but they are caught, returned, and savagely punished. Meanwhile the Taliban seize power and impose crushing restrictions, confining women to their homes, banning their work and schooling, and enforcing their rule with public cruelty. Trapped by both husband and regime, Mariam and Laila endure together in deepening poverty and fear.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under the Taliban, life becomes a struggle for survival. Hunger forces Rasheed to place Aziza in an orphanage, and Laila risks beatings on the streets to visit her. Laila bears a son, Zalmai, whom Rasheed favors. Then Tariq, long thought dead, reappears at the door, and Laila learns that Rasheed had paid a man to lie about his death years earlier. When Rasheed discovers the truth, he attacks Laila in a killing rage, beating and choking her. To save Laila's life, Mariam takes up a shovel and strikes Rasheed dead. Understanding that they cannot both flee, Mariam sends Laila away with Tariq and the children and gives herself up to the Taliban, taking full responsibility for the killing. She is condemned and publicly executed, meeting her death with a hard-won calm, having finally been a mother and a friend to someone who needed her.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Laila, Tariq, and the children escape to Pakistan, where they live in exile and safety until the fall of the Taliban. Drawn back to her ruined homeland, Laila returns to Kabul, stopping first in Herat to see where Mariam came from. There she learns the story of Mariam's childhood and is given a letter and a small legacy that Mariam's father had left in remorse for the daughter he had wronged. Back in Kabul, Laila and Tariq help rebuild the city, and Laila takes up teaching and work at the orphanage that once held Aziza. Pregnant again and looking toward a fragile new future for Afghanistan, she decides that if her child is a girl, she will name her Mariam, so that the woman who sacrificed everything to save them will not be forgotten.",
+            "through": {
+              "chapter": 51
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-thousand-splendid-suns"
+      }
+    },
+    "a-wrinkle-in-time": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An awkward, stubborn teenage girl who feels like a misfit at school and is unhappy with herself. She is fiercely loyal to her family and deeply troubled by the long, unexplained absence of her scientist father. Impatient and quick to anger, she doubts her own worth, though she is sharp at mathematics and braver than she believes. Her faults, she will learn, can also be strengths.",
+            "id": "meg-murry",
+            "name": "Meg Murry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Meg's youngest brother, a five-year-old of startling intelligence who speaks like an adult and seems able to sense the thoughts and feelings of those close to him. Outsiders think him slow because he chooses not to talk much among strangers. Unusually calm and knowing, he is the one who first makes contact with the strange visitors who set the family's journey in motion.",
+            "id": "charles-wallace",
+            "name": "Charles Wallace Murry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A tall, popular older boy from Meg's school who comes from a large, neglectful family in which he feels unseen. Drawn by an instinct he cannot explain to the spot where Meg and Charles Wallace are, he meets them and feels at once that he has found people he truly belongs with. Friendly and warm, he joins their quest and grows close to Meg.",
+            "id": "calvin-okeefe",
+            "name": "Calvin O'Keefe",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The first of three strange old women to appear, arriving at the Murry house during a storm dressed in odd layers of scavenged clothes. She is peculiar and a little comic, but her offhand mention of the tesseract deeply unsettles Meg's mother. She is far more than the eccentric tramp she first seems and becomes one of the children's otherworldly guides.",
+            "id": "mrs-whatsit",
+            "name": "Mrs Whatsit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second of the three mysterious women, who wears large spectacles and finds it hard to put her own thoughts into words, so she speaks almost entirely in quotations from great writers of many languages. She is one of the celestial guides who help the children on their journey.",
+            "id": "mrs-who",
+            "name": "Mrs Who",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third and eldest of the three women, who has difficulty holding a solid shape and usually appears as a shimmer or a voice rather than a body. She speaks slowly, drawing out her words, and is the leader of the three guides who direct the children's mission across space.",
+            "id": "mrs-which",
+            "name": "Mrs Which",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Meg and Charles Wallace's father, a government scientist who disappeared long before the story begins while working on a secret experiment in space travel by folding space and time. He is found held prisoner in a transparent column on a distant, controlled planet, unable to free himself. Loving and clever, he is nonetheless not the all-powerful rescuer his children had imagined.",
+            "id": "mr-murry",
+            "name": "Mr. Murry",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure who sits in the central building on the rigidly ordered planet of Camazotz, where everyone moves in identical, controlled rhythm. He does not speak aloud but reaches into the minds of the children, urging them soothingly to give up their own wills and surrender to the power that runs the planet. He is a mouthpiece for a greater controlling force.",
+            "id": "man-with-red-eyes",
+            "name": "The Man with the Red Eyes",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The controlling power of Camazotz, revealed to be a giant disembodied brain that pulses with a hypnotic rhythm. It forces every mind on the planet into perfect, mindless conformity, promising freedom from pain and choice while stealing all individuality. Its beat can seize and absorb anyone who lets down their guard.",
+            "id": "it",
+            "name": "IT",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A gentle, sightless creature covered in soft fur, with tentacles instead of hands, who lives on a peaceful planet and tends to Meg when she is hurt and cold. Motherly and endlessly kind, she nurses Meg back to health and comforts her, communicating through touch and feeling rather than sight.",
+            "id": "aunt-beast",
+            "name": "Aunt Beast",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-wrinkle-in-time"
+      },
+      "recaps": {
+        "ending": "After Meg is hurt escaping Camazotz, gentle furred creatures on the planet Ixchel nurse her back to health, and one she calls Aunt Beast comforts her. The three Mrs Ws appear and explain that Meg alone must go back for Charles Wallace, because she has a bond with him that no one else shares, and they can give her nothing but their love and one final clue: she possesses something IT does not have. Returning to Camazotz, Meg faces IT and her brother, who is still controlled by the brain's rhythm. She realizes the thing IT cannot feel is love, and by pouring out her fierce love for Charles Wallace she breaks IT's hold on him. He comes back to himself, and the two are caught up and tessered home. They land in the vegetable garden behind their house, reunited with their father, their mother, the twins, and Calvin. The three Mrs Ws appear one last time to say goodbye before hurrying off on further work of their own.",
+        "in_short": "Meg Murry, an unhappy misfit, grieves her scientist father, who vanished during a secret experiment. Her gifted little brother Charles Wallace introduces her to three strange beings, Mrs Whatsit, Mrs Who, and Mrs Which, who, with their new friend Calvin O'Keefe, whisk the children across space by folding it, a tesseract. They learn that a growing darkness threatens the universe and that Mr. Murry is held on Camazotz, a planet enslaved to mindless conformity. There they confront the controlling brain called IT; Charles Wallace lets his mind be taken. The children free their father, but escaping, they must leave Charles Wallace behind, and Meg is injured passing through the dark. Nursed back to health on another world by gentle creatures, Meg realizes she alone can save her brother. She returns to Camazotz and defeats IT with the one power it lacks, love, freeing Charles Wallace so the family can return home.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Meg Murry is an unhappy, awkward girl who feels she does not fit in and worries constantly about her scientist father, who disappeared long ago and has not been heard from since. On a wild, stormy night she comes downstairs to find her strange, brilliant little brother Charles Wallace, who seems to know her thoughts, entertaining an odd old woman named Mrs Whatsit, who has taken shelter nearby. Mrs Whatsit unsettles Meg's mother by mentioning something called a tesseract before leaving. The next day Charles Wallace takes Meg to meet Mrs Whatsit's equally peculiar companions, Mrs Who, who speaks mostly in quotations, and, on the way, they meet Calvin O'Keefe, an older schoolboy who feels an immediate, unexplainable sense of belonging with them and joins them.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The three strange women, joined by the shimmering Mrs Which, reveal that they are not human at all but powerful beings who have come to help. They transport Meg, Charles Wallace, and Calvin across vast distances by tessering, folding space and time so that great gaps can be crossed in an instant, and they explain that the children's father is being held on a faraway planet. They show the children a great dark shadow spreading across the universe, an evil called the Black Thing that swallows worlds, and warn that Earth is partly under its threat. Their journey pauses at other worlds, where the children meet a being called the Happy Medium and see through her crystal ball just how serious the danger is.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Mrs Ws bring the children to Camazotz, the planet where Mr. Murry is imprisoned, a place fallen entirely under the Black Thing's power. Everything there moves in eerie, identical rhythm, every house and person the same, all individuality crushed. The three guides can go no further and send the children on alone with a few gifts and warnings. In the central control building the children confront the Man with the Red Eyes, who tries to lull them into surrendering their wills to the planet's power. Charles Wallace, sure he can outwit it, deliberately opens his mind to learn more and is taken over, his personality replaced by a cold, controlled voice. Under his guidance the others find Mr. Murry sealed inside a transparent column and manage to free him.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The possessed Charles Wallace leads Meg, Calvin, and their newly freed father to the source of the planet's control: IT, a giant disembodied brain whose steady, hypnotic pulse forces every mind into obedience. The rhythm nearly overwhelms them all, and Meg feels herself being drawn in. Unable to save Charles Wallace and fearing they will all be lost, Mr. Murry seizes Meg and Calvin and tessers them away, escaping IT but being forced to leave Charles Wallace behind, still under its power. Passing through the Black Thing during the escape, Meg is badly hurt, left cold and stiff and briefly unable to move or think clearly. They come down on a nearby planet, safe for the moment but grieved and incomplete.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the gray planet Ixchel, gentle sightless creatures with soft fur and tentacles take the injured Meg in, and one she calls Aunt Beast nurses her tenderly back to health. When Meg has recovered, the three Mrs Ws appear and tell her a hard truth: she alone can go back to Camazotz to rescue Charles Wallace, because of the special closeness between them, and they can send her with nothing but their love and the knowledge that she has one thing IT does not. Returning to face IT and her controlled brother, Meg realizes that the missing thing is love. By fixing all her love on Charles Wallace and refusing to let go, she breaks IT's grip on him; he returns to himself, and they are tessered safely home to the family garden, reunited with their parents and Calvin as the Mrs Ws say a final farewell.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "a-wrinkle-in-time"
+      }
+    },
+    "abyss": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Earth-born Unbound and the Autark of Nagast. Felix enters the book as a powerful territorial ruler whose choices bind him to the safety of his people and companions. His conflict with the Hierocracy makes leadership as important as personal strength.",
+            "id": "felix-nevarre",
+            "name": "Felix Nevarre",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Felix's loyal bonded companion and guardian beast. Pit fights beside Felix and shares a connection that reaches beyond ordinary companionship. He is an independent combatant whose devotion centers on protecting Felix through every danger.",
+            "id": "pit",
+            "name": "Pit",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Vess"
+            ],
+            "description": "A dragoon-trained spear fighter, noble heir of Pax Rell, and established ally of Felix. She brings discipline, mobility, and knowledge of draconic combat to his company. Her inherited duties remain important even while she travels far from home.",
+            "id": "vessilia-dayne",
+            "name": "Vessilia Dayne",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zara"
+            ],
+            "description": "A chanter, diplomat, and organizer allied with Felix. Zara understands harmonic magic and often provides strategic guidance where authority, ritual, and politics meet. She balances her institutional ties with a working trust in Felix and his company.",
+            "id": "zara-cyrene",
+            "name": "Zara Cyrene",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Evie"
+            ],
+            "description": "A frontline fighter and trainer among Felix's allies. Evie combines ice magic with chain-based techniques and is trusted to lead dangerous field assignments. Her direct manner and group-fighting experience make her a reliable operational commander.",
+            "id": "evie-aren",
+            "name": "Evie Aren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran fighter, practical adviser, and forge master in Felix's service. Harn is a steady battlefield commander as well as an accomplished smith. He approaches both advancement and warfare through disciplined work and tested experience.",
+            "id": "harn",
+            "name": "Harn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Atar"
+            ],
+            "description": "Felix's fire-mage ally and a specialist in sigildry.",
+            "id": "atar-vas",
+            "name": "Atar V'as",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unexplained white-crimson flame apparition that addresses Atar V'as while remaining imperceptible to everyone else.",
+            "id": "white-crimson-flame",
+            "name": "The white-crimson flame",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "A force mage and inscriptionist who collaborates with Atar and is allied with Felix.",
+            "id": "alistair",
+            "name": "Alistair",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Karys"
+            ],
+            "description": "An ancient, damaged construct who advises Felix and helps administer Nagast. Karys has extensive knowledge, though gaps in his memory and condition limit what he can recover.",
+            "id": "karys-taiv",
+            "name": "Karys Taiv",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lady of Harwatch and an established civil and military leader. She is responsible for the city's security as danger gathers around Felix's territory. Cal's position requires her to hold together local defense, government, and public resolve.",
+            "id": "cal",
+            "name": "Cal",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reed"
+            ],
+            "description": "An expedition commander, Felix ally, and Vessilia Dayne's former guardian. Darius contributes military experience and remains concerned with Vess's safety and duties. His advice reflects both command judgment and a longstanding obligation to her.",
+            "id": "darius-reed",
+            "name": "Darius Reed",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the Hierocracy. The Hierophant directs the hunt for less established Unbound, sends High Guard to test Nagast's barrier, and assigns a masked Unbound to a northern mission.",
+            "id": "hierophant",
+            "name": "The Hierophant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young Earth-born Unbound who survives the tomb battle with serious injuries and has an undead companion.",
+            "id": "beef",
+            "name": "Beef",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Beef's surviving undead companion.",
+            "id": "beefs-undead-companion",
+            "name": "Beef's undead companion",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Isla"
+            ],
+            "description": "A healer directing care for thousands of injured city residents. Her chanting accelerates their recovery after the battle.",
+            "id": "isla",
+            "name": "Isla",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The shaman of the people restored when the sea returned. He speaks for a community released from an ancient curse and explains its connection to the lost territory. His standing makes him Felix's preferred candidate to govern the city in its own people's interests.",
+            "id": "itten-shaman",
+            "name": "The Itten shaman",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unknown attacker who hurls a poisoned blade during Felix's offer to appoint the Itten shaman as chancellor.",
+            "id": "assassin",
+            "name": "The assassin",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The head of a merchant estate raided after an oath trace leads Felix's forces there. A captured paladin implicates him in sponsoring the assassination plot against the new chancellor, and he is taken before Felix for judgment.",
+            "id": "merchant-lord",
+            "name": "The merchant lord",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful surviving Matron of elemental fire captured with suspected conspirators. She claims that paladins compelled her cooperation and invokes a recognized right to plead before Felix. Ordinary restraints suppress her active power without making her harmless.",
+            "id": "fire-matron",
+            "name": "The fire Matron",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A heavily armored Earth-born Unbound glimpsed through a divine connection. She travels with an elderly Pathless priest and uses overwhelming spiritual pressure while forcing entry into a dwarven settlement.",
+            "id": "armored-unbound",
+            "name": "The armored Unbound",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "The armored Unbound previously seen with a Pathless priest. She is operating under Hierocracy control and reaches another Earth-born Unbound during Felix and Zara's locating ritual. Her ability to sense Felix through the ritual makes the distant encounter dangerous.",
+            "id": "imara",
+            "name": "Imara",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An orc patrol knight serving the flooded settlement of Bogfeld. Tanda encounters Felix under his Silas Vale disguise and brings him aboard a patrol boat for protection. She continues field duty despite the settlement's losses and constant monster pressure.",
+            "id": "knight-tanda",
+            "name": "Knight Tanda",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unnamed half-elf mage who accompanies Knight Tanda on patrol through flooded Bogfeld as a member of the Gallant society.",
+            "id": "gallant-mage",
+            "name": "The Gallant mage",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Knight Commander Etriska Lavin"
+            ],
+            "description": "The Knight Commander responsible for Bogfeld Redoubt. Local survivors credit her and the Menders with preserving lives after the flood and continuing monster attacks. She directs the remaining patrols and defenses from the settlement's fortified refuge.",
+            "id": "etriska-lavin",
+            "name": "Etriska Lavin",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gnome healer who leads the Menders.",
+            "id": "prioress-of-the-blessed-fen",
+            "name": "The Prioress of the Blessed Fen",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Harn's partner, whose former tavern and much of her Low Side neighborhood have been submerged by flooding. Her family left with the caravan, and she and Harn intend to return to Nagast together.",
+            "id": "palin",
+            "name": "Palin",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a naga group cooperating with Felix. Garrox warns that the Fathom is creating more underwater dens than his people can contain, prompting Felix to renew his promise of aid.",
+            "id": "garrox",
+            "name": "Garrox",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared threat associated with the Fathom Depth Worm that attacks the fleet beyond flooded Caliph Pass. At this stage, its exact nature and location remain unknown.",
+            "id": "the-fathom",
+            "name": "The Fathom",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The naga ruler overseeing refugees in the submerged Hestus temple. He explains that repeated naga expeditions have failed against the growing Fathom threat. His people rely on the temple as attacks overwhelm their former defenses.",
+            "id": "deep-king",
+            "name": "The Deep King",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A robed person from antiquity who unexpectedly perceives Felix during his review of an array's stored scene, then motions for him to ascend.",
+            "id": "ancient-observer",
+            "name": "The ancient observer",
+            "reveal": {
+              "chapter": 73
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The incorporeal ancient observer bound to the restored spirit tree. He is the same robed figure who noticed Felix in the array's stored scene.",
+            "id": "spirit-tree-chanter",
+            "name": "The spirit tree's ancient observer",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The High Guard commander leading a Hierocracy force to the edge of Nagast's fog barrier. He declares that the Hierocracy intends to reclaim Felix's territory and expects the barrier to fall by midnight.",
+            "id": "high-guard-leader",
+            "name": "The High Guard leader",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Beef's nascent spirit, separated from his body and mind by his Unbound nature. She takes a female face and asks Felix to destroy her if that is necessary to protect Beef's damaged core, but he refuses.",
+            "id": "beefs-nascent-spirit",
+            "name": "Beef's nascent spirit",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient force that confronts Beef within his core and identifies itself as a child of a Cardinal Beast. It claims that its former purpose was to break down and erode what it touched.",
+            "id": "primordial-of-withering-dust",
+            "name": "The primordial of withering dust",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The immense ooze-covered dragon revealed as the power called the Fathom. It awakens before Felix's captive party at the center of Chasma, and its pressure and presence distort perception.",
+            "id": "dusk-dragon",
+            "name": "The Dusk Dragon",
+            "reveal": {
+              "chapter": 91
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A faceless shadowy presence that attacks the Dusk Dragon in its memories and suppresses the dragon's will.",
+            "id": "dusk-dragon-possessor",
+            "name": "The Dusk Dragon's possessor",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The presence possessing the Dusk Dragon, now identified as a sliver of the night goddess. It reasserts control after the dragon briefly resists Vessilia Dayne's aid.",
+            "id": "night-goddess-sliver",
+            "name": "The night goddess's sliver",
+            "reveal": {
+              "chapter": 95
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A High Guard warrior who confronts Felix alongside a mace wielder and a mage. He carries a cursed blade that severs both of Pit’s wings.",
+            "id": "high-guard-swordmaster",
+            "name": "The High Guard swordmaster",
+            "reveal": {
+              "chapter": 107
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A mace-wielding member of four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+            "id": "high-guard-mace-wielder",
+            "name": "The High Guard mace wielder",
+            "reveal": {
+              "chapter": 101
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A spear-wielding member of four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+            "id": "high-guard-spear-wielder",
+            "name": "The High Guard spear wielder",
+            "reveal": {
+              "chapter": 101
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A book-using strategist among four elite Hierocracy officers who observe the battle for Harwatch from a mana ship and direct a cannon toward the city's gates.",
+            "id": "high-guard-mage",
+            "name": "The High Guard mage",
+            "reveal": {
+              "chapter": 101
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0C1CTSRPP",
+            "type": "community"
+          }
+        ],
+        "work": "abyss"
+      },
+      "recaps": {
+        "ending": "Felix returns from the breach as Harwatch's defenses are near collapse. The freed Dusk Dragon spends most of his remaining power opening the battlefield, then survives through a voluntary Draconic Bond with Vessilia Dayne and becomes a small golden wyrmling. Atar V'as and Alistair destroy two Hierocracy mana ships, and Zara Cyrene's shield prevents the first cannon strike from breaking the city. A High Guard swordmaster severs Pit's wings and damages his spirit, but Pit remains linked with Felix and takes a decisive role in completing Felix's nine-pillar formation. Felix then kills all four High Guard and wins the territorial challenge. Most surviving invaders are captured or routed. Pit remains converged with Felix while both recover from spirit wounds, and Vess and the wyrmling survive under healer care. Harwatch still has casualties, prisoners, incomplete defenses, and an expected Hierocracy response. Felix directs his allies to strengthen the city's shield with the Merc Enclosure ritual and concludes that the scattered Unbound must coordinate for the conflict ahead.",
+        "in_short": "After claiming the Leviathan Depths, Felix Nevarre installs an Itten chancellor and departs as threats converge on Nagast and Harwatch. A fragment of divine regalia reveals that the Hierocracy controls another Unbound, Imara. Felix divides his expedition, sending Zara Cyrene to reinforce Harwatch while he aids the naga against the Fathom. Beneath the flooded hills, he discovers a failing ancient seal and learns that the Fathom is a Dusk Dragon possessed by a sliver of a night goddess. Felix and Vessilia Dayne free the dragon, destroy the sliver's hold over the Deep King, and return to Harwatch with new allies. During the siege, Vess bonds the dragon into a golden wyrmling, while a cursed High Guard blade severs Pit's wings. Pit helps Felix complete all nine core pillars, and Felix kills the four linked High Guard in a forced territorial challenge. Harwatch survives, but Felix and several companions are badly injured and the Hierocracy's retaliation remains imminent.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Felix Nevarre, an Earth-born Unbound, became Autark of Nagast and gathered a diverse company of allies. Pit is his bonded guardian companion. Vessilia Dayne is a dragoon-trained spear fighter, Zara Cyrene a chanter and diplomat, Evie Aren a chain-and-ice combatant, Harn a veteran forge master, Atar V'as a fire mage, and Alistair a force mage and inscriptionist. Karys Taiv advises Felix while helping administer Nagast, and Cal leads Harwatch. Felix's growing power and territorial authority have placed him in direct conflict with the Hierocracy. The struggle also involves other Earth-born Unbound, divine powers, and ancient primordials. As this volume begins, Felix's people hold Nagast, but the Hierocracy remains hostile and the consequences of his latest territorial battle have not yet settled.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix awakens after defeating the territorial lord and surviving a primordial baptism. He now rules both the transformed Leviathan Depths and its flooded city, while his body bears permanent primordial changes. Pit has evolved into a smaller Primordial Stormwing tenku and can speak aloud. Vessilia Dayne, Beef, and Beef's undead companion survived, though several allies have been altered by the battle. The restored sea ends an ancient people's racial quest, and they offer Felix authority regalia tied to the territory. The city itself is badly damaged, crowded with injured civilians, and still contains hidden paladins. Felix rejects taking rewards away from the restored people and resists ruling the city personally. Instead, he places a storage beacon in the ruined temple and brings healing supplies from Nagast. Atar V'as returns visibly transformed after entering the Highest Flame, while Nagast prepares for a likely Hierocracy assault.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix defeats a swarm of mana-warped Fathom Hatchlings attacking the city and captures a paladin mana ship, but finds evidence of a far larger creature beneath the walls. Karys Taiv warns that the draconic threat may extend toward Nagast. The shaman of the restored sea people explains how his ancestors accepted a curse to contain a primordial after being deceived by a Leviathan urge. His people join Felix's territory, and Felix offers the shaman the chancellorship. A Sworn assassin interrupts the offer, escapes through a disposable body, and kills guards during the pursuit. Felix proceeds with a public installation under heavy protection. The shaman accepts the ancient crown and the position willingly, but paladins and Sworn attack the ceremony with poisoned arrows. Felix uses his territorial storm authority to destroy the attackers' firing position while his guard shields the new chancellor. The appointment stands, but the coordinated assault proves that the new government remains contested.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix captures the surviving Sworn assassin and confirms that fearful nobles helped sponsor the attack. Breaking the assassin's lethal oath evolves Felix's bond magic into Skein of Fate, but the captive dies. Felix's forces trace the oath to a merchant estate, arrest the conspirators, and bring a powerful fire Matron before him. Felix kills the merchant lord and attacking paladins, then binds the Matron and the household to serve the Itten chancellor and the territory. His fleet leaves the stabilized city carrying recruits, civilians, and families. During the voyage, Vess reveals that Felix's strengthened link has transformed her core and dragoon skills into unfamiliar draconic forms. Those powers end a sea-monster attack but leave her disturbed. Beef then reveals a fragment of the Pathless's divine regalia that has secretly compelled and silenced him. Felix removes it and follows its connection north, glimpsing a heavily armored Unbound traveling with an elderly Pathless priest.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zara seals the divine regalia fragment after determining that it attracted Fathom spawn and exploited Beef's hollow spirit. Felix then helps Atar rebuild a devastated core, studies Evie's primordial-influenced skill evolutions, and learns from Harn's successful Adept advancement. Pit's evolution has given him a true core space shaped like the Foglands and centered on a Nemean-star core. Felix begins reorganizing his own core around his Hunger while the company trains at sea. Beef chooses necromancy as his intended path but refuses to reveal his core space. Atar conceals a hostile flame presence that urges him toward violence, while Vess fears that her altered core has ended her recognized dragoon progression. Felix and Zara repeat their ritual to find the remaining Earth-born Unbound. They glimpse several distant targets and learn that the armored woman is Imara, an Unbound working under Hierocracy control. Imara reaches an earth-moving gnome during the vision and senses Felix's observation strongly enough to break the ritual.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fleet reaches flooded land beyond Caliph Pass and survives a Fathom Depth Worm attack. Felix's soldiers clear its den, rescue captives, and recover the den core. He then enters devastated Bogfeld under the alias Silas Vale, with Pit disguised as a direhound pup. Knight Tanda brings them to the settlement's redoubt, whose defenders are exhausted by nightly monster attacks. Felix learns that the flood destroyed the pass fort and displaced dangerous creatures throughout the region. He detects an unexplained ward beneath the redoubt while its leaders mistake his approaching ships for a possible enemy force. Before negotiations begin, a Fathom-corrupted slaughter nettle assaults the settlement. Pit abandons his disguise, and Felix emerges to join the defense. Harn, Beef, Alistair, and the Fiend's Claw arrive from the fleet, and together they kill the monster. Felix then reveals that Silas Vale is Felix Nevarre, Autark of Nagast and the Leviathan Depths.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Hierocracy High Guard prepare to breach Nagast's outer defense, Felix helps Bogfeld survive repeated attacks. Zara and local mages drive away the floodwater, and Felix raises much of the town above the new waterline and builds stronger walls. Evidence shows that the Fathom spreads dissonant blue ooze to force monster evolution and control a growing horde. Felix establishes an exchange of healing and herbal knowledge with the Menders, while Garrox reports that the naga can no longer contain the expanding underwater dens. News then arrives that thousands of Hierocracy troops have entered Felix's territory. Felix leaves Bogfeld fortified and takes his fleet through the submerged Hestus temple, where the Deep King asks him to confront the Fathom. Felix restores a damaged Shadowgate and changes his plan: Zara will lead the main force toward Nagast, while Felix stays to aid the naga. Vess remains because the enemy is draconic, and Isla is assigned as the smaller party's healer.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zara leads the soldiers and civilians through the Shadowgate while Felix remains with Pit, Vess, Beef, Beef's undead companion, Isla, and naga escorts. The Deep King identifies the Fathom's center as Kazma and says a dragon controls the warped spawn. Felix's party equips itself from the naga's recovered goods and begins a stealthy underwater descent. Beef uses a remote undead worker and Felix's mana to help build ships in Nagast from across the gate, completing the work at great strain. The underwater team bypasses one den but is later forced into combat, exposing its presence. In the Mountains That Howl, immense currents churn above chasms filled with the same corrupting ooze. A pursuing horde and two depthworms nearly trap the party. Felix strips the ooze from many attackers, breaking their coordination, but the consumed material connects him directly to the Fathom's mind. He survives the hostile contact and severs it, leaving the enemy aware of him and an unknown challenge notification waiting unanswered.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zara's force reaches Nagast and continues toward Harwatch, where a Hierocracy invasion is approaching. Beef unlocks Affinity and Resonance after his remote construction feat. Vess considers Isla's proposed temper recomposition to reverse her dragon-altered skills, while Felix distrusts the risks and incomplete explanation. Felix forms a powerful but volatile skill array, and Pit begins learning to read. In Kazma, the underwater party abandons pure stealth and ambushes Fathom patrols to gain strength. Felix completes the Proving and earns an Adept Magus title, while Pit advances several abilities. Their progress ends at a carved metal door in a submerged spire. The door recognizes Felix's authority over Nagast and the Leviathan Depths, pulls the party inside, drains the chamber, and provides breathable air. Felix confirms that the structure is not a Nym temple. A second authority prompt opens a green-marked inner route, revealing a huge illuminated corridor before impenetrable fog rises and blocks all perception.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The fog is an invasive illusion built from Felix's memories. He consumes its array and recovers a memory of ancient researchers who constructed the tower to study and contain a watched threat. Deeper inside, the party finds a corrupted spirit tree and learns that its many bodies form a vast seal around a separate divine-or-greater creature in a central breach. Felix restores the tree, awakening its incorporeal chanter companion, who guides the group into damaged root tunnels toward the Fathom. The seal remains barely intact. During the advance, a tendril of ooze strikes Beef and traps him inside his own core space. Felix and Pit enter after him. They discover that Beef's familiar bedroom-like core conceals a void chamber where he is immobilized on a throne. The regalia's echo is containing part of the invasion but also freezing him in place. His core is missing its proper spirit component, and an unknown woman appears bound to a mirrored throne amid the remnants of that lost spirit.",
+            "through": {
+              "chapter": 81
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The bound woman is revealed as Beef's separate nascent spirit, shaped in the image of his mother but not actually her. As Felix holds Beef's damaged core together, Beef finally confronts the primordial inheritance he has suppressed. Outside, the root tunnel collapses during a battle with an ooze behemoth. Felix escapes the core in time to protect the party from the flood, but powerful lindworms seize them and kill several naga hostages. Felix kills one captor and demands to be taken to its leader, deliberately using surrender to reach the Fathom. Meanwhile at Harwatch, Evie and Atar help defeat the fungal assault just as the Hierocracy's army arrives. The underwater captives are carried into Chasma while Felix and Beef remain occupied with their inner struggles. At the center, an enormous ooze-coated dragon awakens. Isla pierces part of its concealment and exposes its race: the power commanding the Fathom horde is a Dusk Dragon.",
+            "through": {
+              "chapter": 91
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Dusk Dragon is a moon-touched vessel controlled by a divine sliver. Vess enters its memories and learns that its will has been suppressed, then chooses to help free it despite the history between dragoons and dragons. Beef completes enough of his reconstructed core to strike through the possessing force. Vess strengthens the dragon's resistance, and Felix strips away the external ooze and divine shadow. The displaced sliver reforms inside Felix's core, forcing him to restore the ancient seal and reproduce its structure within himself. Felix's Hunger consumes the entity after he combines harmony and dissonance against it. The sliver's contingency then opens a route for a possessed naga army led by the Deep King. Beef restrains attackers with his new chitinous manifestation while the freed dragon explains that the king carried another dormant fragment. Felix burns the control away from the Deep King and his followers, then captures and consumes the remaining fragment. The immediate assault ends with both dragon and naga freed.",
+            "through": {
+              "chapter": 99
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix refuses the freed Dusk Dragon's request for death, and Vess maintains that neither their new connection nor her aid gives her authority over his choice. The group discovers that irregular time in the breach has allowed the battle at Harwatch to advance far beyond their expectation. With help from hidden fragments and the dragon, Felix escapes and races toward the city. Harwatch's defenders are being driven back by Hierocracy initiates, paladins, inquisitors, and four elite High Guard. A small rearguard holds outside the walls while enemy mana ships prepare to fire on the gates. Zara's newly completed crystalline shield absorbs the first cannon blast but is almost entirely depleted. She releases hundreds of volunteer defenders from its siphon rather than let the array drain them into collapse. Elite attackers overwhelm field commanders and prepare a mass spear strike. Before it lands, Felix arrives through a shadowed passage riding the freed Dusk Dragon and leading naga and serpent allies.",
+            "through": {
+              "chapter": 102
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Felix's arrival reverses Harwatch's collapse. The freed Dusk Dragon spends his remaining strength clearing enemy troops, then falls near death. Vess chooses to preserve him through a voluntary Draconic Bond, and he returns as a small golden wyrmling. Atar and Alistair destroy two mana ships with an improvised fire-and-force weapon. The High Guard press Felix while incomplete pillars form inside his core. Their swordmaster severs Pit's wings with a cursed blade, causing severe physical and spirit damage. Pit enters Felix's core, steadies the process, and helps complete all nine pillars. When the swordmaster threatens Harwatch with a firestorm and challenges Felix's authority, Felix absorbs the attack, finishes his advancement, and kills all four High Guard. Surviving Hierocracy troops are captured or driven into the forest. Pit remains converged with Felix during recovery, while Vess and the wyrmling survive under healer care. Harwatch begins reinforcing its defenses for the expected retaliation, and Felix resolves to coordinate with the other Unbound.",
+            "through": {
+              "chapter": 111
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0C1CTSRPP",
+            "type": "community"
+          }
+        ],
+        "work": "abyss"
+      }
+    }
+  }
+}

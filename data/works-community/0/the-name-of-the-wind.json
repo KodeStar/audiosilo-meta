@@ -1,0 +1,1489 @@
+{
+  "entries": {
+    "the-name-of-the-wind": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The innkeeper's only student and assistant, a handsome, charming, and mischievous young man devoted to his quiet master. He is soon revealed to be no ordinary person but one of the fair folk of the Fae, keeping human seeming while worrying over the melancholy that grips the man he serves.",
+            "id": "bast",
+            "name": "Bast",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Devan Lochees"
+            ],
+            "description": "A traveling scribe and collector of stories who has sought out the hidden innkeeper, recognizing in him a legendary figure the world believes dead or vanished. Educated and persistent, he persuades the man to set down the true account of his life.",
+            "id": "chronicler",
+            "name": "Chronicler",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kote",
+              "Kvothe the Bloodless"
+            ],
+            "description": "The red-haired keeper of a rural inn, living in obscurity under the name Kote, who is in truth the famous and half-mythologized Kvothe, a man once renowned as a musician, magician, and hero. Brilliant, proud, and deeply haunted, he agrees to tell the honest story of his life over the course of three days, beginning with his childhood.",
+            "id": "kvothe",
+            "name": "Kvothe",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ben"
+            ],
+            "description": "A learned arcanist who joins Kvothe's family's traveling troupe of performers, carrying his wagon of chemicals and curiosities. Kind, clever, and quietly powerful, he becomes young Kvothe's first true teacher, introducing him to the disciplined magic called sympathy and glimpsing the boy's extraordinary gifts.",
+            "id": "abenthy",
+            "name": "Abenthy",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A group of seven near-mythical figures out of old children's tales and ghost stories, long dismissed as superstition, blamed across the ages for terrible and unexplained calamities. Their coming is marked by eerie signs, such as flames guttering blue, and they descend without warning to slaughter Kvothe's entire troupe, apparently over an old song about them.",
+            "id": "the-chandrian",
+            "name": "The Chandrian",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A beautiful, quick-witted, and elusive young woman with no fixed home whom Kvothe first meets while traveling. Independent and guarded, forever slipping away and reappearing under different names and circumstances, she captivates Kvothe even as she keeps the truth of her life carefully hidden.",
+            "id": "denna",
+            "name": "Denna",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ambrose Jakis"
+            ],
+            "description": "A wealthy, arrogant, and vindictive senior student at the University, heir to a powerful baron. Accustomed to getting his way through money and rank, he takes an immediate dislike to the poor, sharp-tongued Kvothe, and their mutual loathing grows into a bitter and escalating feud.",
+            "id": "ambrose",
+            "name": "Ambrose",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Wil",
+              "Sim"
+            ],
+            "description": "Two fellow students at the University who become Kvothe's closest and most loyal friends. Wilem is a solid, dry-humored young man from a distant land, and Simmon a good-natured, open-hearted one; together they help Kvothe survive the University's rivalries, poverty, and dangers.",
+            "id": "wil-and-sim",
+            "name": "Wilem and Simmon",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Kilvin"
+            ],
+            "description": "The broad, bearded master who runs the University's workshop, the Fishery, where students craft magical devices through the art of artificing. Gruff but fair and genuinely kind, he prizes careful, safe work and gives the industrious Kvothe a place to earn money and prove himself.",
+            "id": "kilvin",
+            "name": "Kilvin",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Elodin"
+            ],
+            "description": "An eccentric, unpredictable master of the University, reputedly a genius and once its youngest teacher, now given to riddles, strange behavior, and cryptic pronouncements. He is a master of the rare and half-legendary art of naming, the deep power of calling things by their true names, though he teaches it in maddeningly indirect ways.",
+            "id": "elodin",
+            "name": "Elodin",
+            "reveal": {
+              "chapter": 48
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, fragile, and skittish young woman who lives hidden in the tunnels and rooftops beneath and around the University, having apparently fled some earlier trauma. Gentle and childlike, speaking in her own poetic logic, she slowly comes to trust Kvothe, who visits her with small gifts and music.",
+            "id": "auri",
+            "name": "Auri",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A clever, fearless young moneylender who was herself once expelled from the University and now runs a private lending business out of a room above a shop. Charming and dangerous in equal measure, and a skilled arcanist in her own right, she lends Kvothe money on steep and risky terms.",
+            "id": "devi",
+            "name": "Devi",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-name-of-the-wind"
+      },
+      "recaps": {
+        "ending": "The novel ends at the close of the first of Kvothe's three days of storytelling. He has carried his account from his childhood among the Edema Ruh, through the Chandrian's murder of his family and his brutal years in Tarbean, to his arrival and early struggles at the University. By day's end he is established there as a brilliant, poor, and troublesome student: banned from the Archives after his rival Ambrose provoked him, in debt to the moneylender Devi, still chasing the vanishing Denna, and quietly hunting any real knowledge of the Chandrian and the legendary order called the Amyr. His trip to Trebon yielded only fragments and a fleeting sight of his enemies before they escaped. None of the deeper mysteries are resolved. In the present-day frame, the tale pauses, and the red-haired man returns to his role as the quiet innkeeper Kote, while his Fae companion Bast worries over him and mounting signs suggest the peaceful countryside and the wider world are far from safe. The book is deliberately a first act: an unfinished story that sets up far more than it answers, with two further days of telling still to come.",
+        "in_short": "The Name of the Wind is told as a frame story: the famous, now-hidden Kvothe, living as a country innkeeper, recounts the true tale of his life to a scribe over three days, and this book covers the first day. He tells of his happy childhood among a family troupe of traveling performers and his first lessons in magic from the arcanist Abenthy, then of the day the mythical Chandrian slaughtered his entire troupe over an old song. Orphaned, he endures years as a destitute street child in the city of Tarbean before the dream of the University, a great school of magic, drives him onward. Admitted young and penniless, he studies sympathy and artificing, is banned from the Archives after clashing with the wealthy student Ambrose, scrapes for money through the moneylender Devi, makes loyal friends, and falls for the elusive Denna. A journey to Trebon lets him investigate a massacre, glimpse the Chandrian, and gather fragmentary hints about them and the shadowy Amyr. Each night the frame returns to the present, where danger stirs in the wider world, and the first day closes with his story still unfinished.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In a quiet country town, the keeper of the Waystone Inn lives a subdued life under the name Kote, aided by his devoted young assistant Bast. Strange, spiderlike creatures and unsettling news hint that the wider world is troubled. When a traveling scribe called Chronicler seeks the innkeeper out, it becomes clear that this ordinary-seeming man is in fact the famous, half-legendary Kvothe, believed lost. Persuaded to tell the true story of his life over three days, Kvothe begins at the beginning. He describes his early childhood among the Edema Ruh, a close-knit family troupe of traveling performers, and the wonder of growing up on the road. His life changes when a wandering arcanist named Abenthy joins the troupe and, recognizing the boy's remarkable mind, begins teaching him the disciplined magic called sympathy along with the first hints that there is a deeper, older power in naming the true names of things.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Abenthy eventually parts ways with the troupe, leaving young Kvothe hungry for more knowledge and dreaming of the University. Not long after, while Kvothe is briefly away from the camp gathering supplies, a band of near-mythical figures known as the Chandrian descends on his family's troupe and murders everyone, apparently because his father had been researching and composing a song about them. Kvothe returns to find the massacre and briefly encounters the Chandrian themselves before they depart. Orphaned, shattered, and half-mad with grief, he survives alone in the forest for a long time before making his way to the great port city of Tarbean, where he sinks into the life of a destitute street child.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kvothe spends years as a starving beggar and thief in the slums of Tarbean, hardened and nearly broken by poverty and cruelty. A chance rekindling of an old story reminds him of the University, the famed school of magic and learning, and he resolves to go there to study and to seek knowledge of the Chandrian. On the road he first meets Denna, a beautiful, sharp, and elusive young woman who will drift in and out of his life. Arriving at the University young and penniless, Kvothe so impresses the masters at his admission that they not only accept him but pay him to attend, and he throws himself into the strange, demanding world of the school.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the University, Kvothe studies sympathy, artificing, and other arts, working in the artificer Kilvin's workshop to earn the money he desperately needs and seeking out the strange master Elodin in hopes of learning the deeper magic of naming. He becomes obsessed with entering the restricted Archives to hunt for lore about the Chandrian, but is banned after a clash with the rich, spiteful student Ambrose, beginning a bitter feud. He makes loyal friends in Wilem and Simmon, discovers the hidden, fragile girl Auri living beneath the school, borrows money on hard terms from the moneylender Devi, and continues to pursue the ever-vanishing Denna, all while balancing on the edge of ruin.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Following rumors, Kvothe travels to the town of Trebon and investigates a mysterious massacre at a wedding, where he reunites with Denna. Together they piece together fragmentary evidence pointing to the Chandrian, whose signs match old stories. Kvothe survives a harrowing encounter with a great and dangerous beast and, in the aftermath, briefly glimpses the Chandrian themselves at the scene before they slip away once more. He also gathers scattered hints about the Amyr, a shadowy order that may be connected to his enemies, deepening the mystery rather than solving it.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at the University, Kvothe's feud with Ambrose sharpens and his studies and money troubles continue as he keeps searching for real knowledge of the Chandrian and the Amyr. The first day of his storytelling reaches its end with his greater tale still far from finished and its central mysteries unresolved: who the Chandrian truly are, what they want, and how the gifted student became the near-forgotten legend of the present. In the frame, the account pauses, and the red-haired man sets the past aside to return to his quiet role as the innkeeper Kote, while Bast watches over him with concern and unsettling signs suggest the peaceful countryside, and the world beyond it, are anything but safe.",
+            "through": {
+              "chapter": 92
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-name-of-the-wind"
+      }
+    },
+    "the-odyssey": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Ulysses"
+            ],
+            "description": "The king of Ithaca and a hero of the Trojan War, famed above all for his cleverness, cunning, and gift for deception. Ten years after the war he has still not reached home, kept from it by shipwreck, monsters, and the anger of a god. Enduring and resourceful, he longs for his wife, son, and homeland, and works his way back through every obstacle by wit as much as by strength.",
+            "id": "odysseus",
+            "name": "Odysseus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Odysseus's wife and the queen of Ithaca, faithful through her husband's long absence. Her hall is crowded with suitors who press her to remarry and consume the household's wealth, and she holds them off with patience and cunning of her own, matching her missing husband in shrewdness while she waits and hopes for his return.",
+            "id": "penelope",
+            "name": "Penelope",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The son of Odysseus and Penelope, grown from a boy into a young man during his father's twenty-year absence. Frustrated and powerless before the suitors overrunning his home, he is roused by the goddess Athena to assert himself and to sail abroad in search of news of his father.",
+            "id": "telemachus",
+            "name": "Telemachus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The goddess of wisdom and war and Odysseus's steadfast divine protector. Admiring his cleverness, she pleads his case among the gods and intervenes repeatedly on his behalf and his son's, frequently taking on mortal disguises to guide, advise, and shield them.",
+            "id": "athena",
+            "name": "Athena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The god of the sea, who bears a deep grudge against Odysseus and works to keep him from ever reaching home. His anger drives much of the hero's suffering at sea, raising storms and wrecking his craft, and it is rooted in a wrong done to him during Odysseus's wanderings.",
+            "id": "poseidon",
+            "name": "Poseidon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The most arrogant and aggressive of the suitors courting Penelope while feasting at Odysseus's expense. A ringleader among them, he treats the household as his own, mocks Telemachus, and takes the lead in plotting against the young man's life.",
+            "id": "antinous",
+            "name": "Antinous",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A nymph who has kept Odysseus on her remote island for years, in love with him and offering him immortality if he will stay. He remains a reluctant guest, weeping for home, until the gods send word ordering her to release him and help him depart.",
+            "id": "calypso",
+            "name": "Calypso",
+            "reveal": {
+              "chapter": 5
+            }
+          },
+          {
+            "description": "The young princess of the Phaeacians, who comes upon the shipwrecked, exhausted Odysseus washed up on the shore. Poised and kind, she gives him clothing and food and directs him to the palace of her parents, where he can seek help for his journey home.",
+            "id": "nausicaa",
+            "name": "Nausicaa",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Cyclops"
+            ],
+            "description": "A gigantic one-eyed Cyclops and a son of Poseidon, who traps Odysseus and his men in his cave and devours several of them. Odysseus escapes by blinding him with a sharpened stake and hiding his crew among the giant's sheep, a trick that saves them but earns Poseidon's lasting wrath.",
+            "id": "polyphemus",
+            "name": "Polyphemus",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful enchantress living on an island, who transforms part of Odysseus's crew into swine. Protected by a herb and overcoming her, Odysseus wins her friendship, and she becomes his host and counselor for a year, later advising him on the dangers still ahead and on how to seek guidance from the dead.",
+            "id": "circe",
+            "name": "Circe",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "Odysseus's loyal swineherd, who has remained faithful to his absent master for all the years of his absence. When Odysseus returns to Ithaca disguised as a ragged beggar, Eumaeus shelters and feeds the stranger with generosity, not knowing that he is the king himself.",
+            "id": "eumaeus",
+            "name": "Eumaeus",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-odyssey"
+      },
+      "recaps": {
+        "ending": "Home at last but still disguised as a beggar, Odysseus watches Penelope announce a contest: she will marry whichever suitor can string Odysseus's great bow and shoot an arrow through a line of axe-heads. None of them can even bend it. Odysseus takes the bow, strings it easily, and makes the shot, then reveals himself. With his son Telemachus, two faithful herdsmen, and Athena's aid, he bars the hall and kills every suitor, and the disloyal servants are punished. He and Penelope are reunited after she tests him with the secret that their marriage bed was built around a living tree rooted in the ground, a thing only the true Odysseus could know. He goes to the countryside to reveal himself to his grieving old father, Laertes. When the families of the slain suitors gather for revenge and fighting breaks out, Athena and Zeus intervene to stop it and bind both sides to peace, leaving Odysseus secure once more as king of Ithaca.",
+        "in_short": "Ten years after the Trojan War, Odysseus still has not returned to Ithaca, where suitors besiege his faithful wife, Penelope, and squander his household. With Athena's help his son, Telemachus, sets out to seek news of him. Odysseus himself, held by the nymph Calypso, is at last freed by the gods, shipwrecked by Poseidon, and taken in by the Phaeacians, to whom he recounts his wanderings: the Cyclops he blinded, the enchantress Circe, the land of the dead, the Sirens, and the loss of all his men after they ate the sun god's forbidden cattle. The Phaeacians carry him home, where Athena disguises him as a beggar. Aided by his loyal swineherd and reunited with Telemachus, he enters his own hall unrecognized, wins Penelope's contest of the bow, and kills the suitors. He proves himself to Penelope, reunites with his aged father, and, with Athena imposing peace, is restored as king.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ten years after the fall of Troy, Odysseus, king of Ithaca, has still not come home, held far away while the gods debate his fate. In Ithaca a crowd of suitors feasts in his hall and presses his wife, Penelope, to remarry, wasting the household, and she holds them off with delays. The goddess Athena, taking a mortal's shape, rouses Odysseus's son, Telemachus, to stand up like a man and seek word of his father. He sails to Pylos and Sparta, where the old warriors Nestor and Menelaus receive him warmly and tell him that Odysseus is alive but stranded far off. Meanwhile the suitors plot to ambush Telemachus on his way home.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gods send Hermes to command the nymph Calypso to release Odysseus, who has spent years on her island longing for home. He builds a raft and sets out, only for Poseidon to shatter it in a storm. Half-drowned, he washes ashore in the land of the Phaeacians, where the young princess Nausicaa finds him and guides him to the palace of her father, King Alcinous. Welcomed as an honored guest, Odysseus is moved to tears when a court singer performs a song about the Trojan War, and his hosts ask the weeping stranger to name himself and tell his story.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Odysseus recounts his wanderings since Troy. His fleet raided the Cicones, drifted to the land of the Lotus-Eaters, and was trapped by the Cyclops Polyphemus, whom he blinded to escape, earning Poseidon's lasting anger. He was given a bag of winds by Aeolus, only for his crew to open it and blow them off course; he lost most of his ships to the giant Laestrygonians; and he stayed a year with the enchantress Circe. On her counsel he journeyed to the land of the dead, where the prophet Tiresias foretold his path home. He then passed the Sirens and the monsters Scylla and Charybdis, but his starving men killed the forbidden cattle of the sun god, and for that all of them were drowned, leaving Odysseus alone to reach Calypso.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "His tale finished, the Phaeacians load Odysseus with gifts and carry him home to Ithaca by ship while he sleeps. Athena meets him, warns him about the suitors, and disguises him as an old beggar so he can enter unrecognized. He goes first to the hut of his loyal swineherd, Eumaeus, who shelters the stranger kindly without knowing him. Telemachus, returning safely from Sparta and evading the suitors' ambush, comes to the same hut, and Athena lets father and son recognize each other at last. Together they begin to plan how to overcome the suitors crowding the hall.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Still in disguise, Odysseus goes to his own hall and endures insults and blows from the suitors and from disloyal servants, quietly testing who has stayed faithful. His aged dog recognizes him and dies; his old nurse knows him by a scar while washing his feet, and he swears her to silence. Penelope, not knowing the beggar is her husband, is drawn to him and confides her grief, then resolves on a test: she will bring out Odysseus's great bow and offer herself to whichever suitor can string it and shoot an arrow through a row of axes. Odysseus and Telemachus prepare in secret.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The contest begins, and none of the suitors can even bend Odysseus's bow. The disguised king takes it, strings it, and shoots cleanly through the axes; then he and Telemachus, with two loyal servants and Athena's help, bar the doors and kill the suitors and punish the treacherous servants. He reveals himself to Penelope, who confirms his identity by testing him with the secret of their marriage bed. Reunited at last, Odysseus goes to the countryside to make himself known to his aged father, Laertes. When the dead suitors' kin rise to take revenge, Athena intervenes and imposes peace, restoring Odysseus to his home and his rule.",
+            "through": {
+              "chapter": 24
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-odyssey"
+      }
+    },
+    "the-outsiders": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, the youngest of three orphaned brothers and, at fourteen, the most bookish and thoughtful member of a working-class gang of greasers. He loves reading, movies, and watching sunsets, and he does well in school, which sets him apart from the tougher boys around him. Sensitive and observant, he is caught between the fierce loyalty he feels toward his gang and his sense that the bitter divide between the poor greasers and the wealthy Socs is not the whole story. Since their parents died in a car crash, he has been raised by his oldest brother, and he chafes under that authority even as he depends on it.",
+            "id": "ponyboy-curtis",
+            "name": "Ponyboy Curtis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Darry"
+            ],
+            "description": "The oldest of the three Curtis brothers, a strong, hardworking young man of twenty who gave up his own prospects to become the guardian of his younger brothers after their parents died. Serious and strict, he works long hours at physical jobs to keep the family together and out of state care. His toughness and constant correction of Ponyboy read as coldness to his youngest brother, though it springs from the weight of responsibility and worry he carries.",
+            "id": "darry-curtis",
+            "name": "Darrel Curtis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Soda"
+            ],
+            "description": "The middle Curtis brother, sixteen, handsome, cheerful, and easygoing, a dropout who works at a gas station. Warm and full of life, he is the peacemaker of the family and Ponyboy's closest confidant among his brothers, endlessly affectionate and quick to smooth over the friction between Ponyboy and Darry.",
+            "id": "sodapop-curtis",
+            "name": "Sodapop Curtis",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ponyboy's best friend and the youngest and most vulnerable member of the gang, sixteen and small for his age. Neglected and abused at home, he has been badly shaken since a brutal beating by a group of Socs, and he is nervous and easily frightened. The gang is his real family, and they are fiercely protective of him. Quiet and gentle, he idolizes the tougher boys and depends on Ponyboy's companionship.",
+            "id": "johnny-cade",
+            "name": "Johnny Cade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Dally"
+            ],
+            "description": "The toughest and most hardened member of the greaser gang, a boy shaped by a rough childhood on the streets of a big city, with a criminal record and a cold, reckless streak. He is cynical, quick-tempered, and fond of trouble, yet he has a soft spot for Johnny, whom he tries in his own harsh way to protect. His street smarts and willingness to break the law make him the one the others turn to in a crisis.",
+            "id": "dallas-winston",
+            "name": "Dallas Winston",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gang's joker, an eighteen-year-old greaser known for his wisecracks, his love of fights and shoplifting, and his devotion to his switchblade. Older than most of the group and content to keep repeating his last year of school, he lightens the mood with constant humor while remaining loyal and ready to back the others up when it counts.",
+            "id": "two-bit-mathews",
+            "name": "Two-Bit Mathews",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sodapop's best friend and coworker at the gas station, seventeen, tough and cocky, with a talent for anything mechanical. He is a full member of the gang and, while friendly with the others, tends to regard Ponyboy as a tagalong kid.",
+            "id": "steve-randle",
+            "name": "Steve Randle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Sherri Valance"
+            ],
+            "description": "A well-off Soc girl, a red-haired cheerleader whom Ponyboy meets at a drive-in movie. Poised and thoughtful, she is willing to talk honestly with a greaser and to see past the labels that divide their two worlds. She tells Ponyboy that the troubles of the rich Socs are real too, and that things are hard on both sides, becoming an unexpected point of connection across the class line.",
+            "id": "cherry-valance",
+            "name": "Cherry Valance",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy Soc, Cherry's boyfriend, who drives a distinctive blue Mustang and wears heavy rings on his fingers. Arrogant and aggressive, especially when drinking, he is one of the Socs responsible for the earlier beating that traumatized Johnny, and he treats the greasers with open contempt and menace.",
+            "id": "bob-sheldon",
+            "name": "Bob Sheldon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Soc and Bob's close friend, who runs with the same crowd and is dating Cherry's friend. Initially just another of the privileged west-side boys hostile to the greasers, he begins to question the endless cycle of fighting between the groups and grows weary of the rivalry and its cost.",
+            "id": "randy-adderson",
+            "name": "Randy Adderson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-outsiders"
+      },
+      "recaps": {
+        "ending": "The greasers win the rumble against the Socs, but the victory is hollow. Johnny, horribly burned and paralyzed from rescuing the trapped children, dies in the hospital that night, his last words urging Ponyboy to stay gold and hold on to the goodness in himself. Dally, who loved Johnny more than anyone, breaks down at the loss, robs a grocery store, and, when the police corner him, raises an unloaded gun so they will shoot him, dying under a streetlight. Ponyboy, already injured and feverish from the rumble, collapses and spends days sick and in denial, at one point insisting that he, not Johnny, killed the Soc. At a court hearing, the judge rules the death self-defense, clears Ponyboy, and allows the three brothers to stay together. Grief-stricken and slipping in school, Ponyboy is failing English until he finds a letter Johnny left tucked in a copy of the novel they read while hiding, telling him there is still good in the world and asking him to pass that on. Understanding at last what stay gold meant, Ponyboy decides to write about everything that happened so that other boys like Johnny might be understood, and the story he begins is the book the reader has just finished.",
+        "in_short": "Ponyboy Curtis, a fourteen-year-old orphan raised by his two older brothers, belongs to a gang of poor greasers locked in conflict with the wealthy Socs. After Ponyboy and his fragile friend Johnny are attacked one night, Johnny kills a Soc to stop them from drowning Ponyboy, and the two boys go into hiding at an abandoned church with help from the tough Dally. When the church catches fire with children trapped inside, Johnny and Ponyboy save them and are hailed as heroes, but Johnny is gravely injured. A planned rumble between greasers and Socs ends in a greaser victory, yet that same night Johnny dies, telling Ponyboy to stay gold. Devastated, Dally robs a store and provokes the police into shooting him dead. Ponyboy, sick and in shock, is cleared of blame for the Soc's death at a hearing. Struggling with grief and failing school, he finds a farewell letter Johnny left him and resolves to tell their story, which becomes the book itself.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Fourteen-year-old Ponyboy Curtis lives with his two older brothers, hardworking Darry and gentle Sodapop, who have raised him since their parents died. They belong to the greasers, poor kids from the east side, who are constantly at odds with the Socs, the rich teenagers from the west side. After Ponyboy is jumped by a carful of Socs and rescued by his gang, he and his friends spend an evening at a drive-in, where he and the quiet, badly abused Johnny Cade meet two Soc girls, Cherry and Marcia. Ponyboy is surprised to find he can talk openly with Cherry, who tells him that life is hard on the wealthy side too. When the girls' boyfriends, including Cherry's boyfriend Bob, turn up looking for trouble, the girls leave to avoid a fight. Ponyboy gets home very late, and a worried, angry Darry slaps him. Hurt and upset, Ponyboy runs out into the night with Johnny.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In a park in the middle of the night, Ponyboy and Johnny are ambushed by Bob and a group of drunken Socs. The Socs begin to drown Ponyboy in a fountain, and in a panic to save his friend's life, Johnny stabs and kills Bob. Terrified, the two boys turn to Dally, the gang's hardened tough, who gives them money and a gun and sends them to hide in an abandoned church in the countryside. There they cut and dye their hair as a disguise, pass the days reading and reciting poetry, and grow closer. When Dally comes to check on them and takes them out for food, they decide to return and turn themselves in. But arriving back at the church, they find it on fire with a group of local children trapped inside. Johnny and Ponyboy rush in to pull the children to safety, an act of courage that leaves them badly hurt, especially Johnny.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The boys are taken to the hospital and celebrated in the newspapers as heroes for saving the children, but the cost is severe: Johnny is critically injured, burned and with a broken back, and Dally is hurt as well. Tension between the greasers and Socs comes to a head with a planned rumble, a large arranged fight, even as Randy, one of the Socs, admits to Ponyboy that he is sick of the endless violence. That night the greasers win the rumble. Afterward Dally rushes an exhausted Ponyboy to the hospital to see Johnny, but Johnny is dying. With his last breath he tells Ponyboy to stay gold, urging him to hold on to what is good, and then he dies. The loss shatters Dally, who loved Johnny above all, and he runs from the room in a rage and despair.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Unhinged by Johnny's death, Dally robs a grocery store and calls the gang, then lets the police corner him and raises an unloaded gun so that they shoot him down under a streetlight, choosing his own end. Ponyboy, already injured and feverish from the rumble, collapses and falls seriously ill, spending days drifting in and out of awareness. As he slowly recovers at home, he cannot accept that Johnny is truly gone, at one point insisting that he himself was the one who killed Bob rather than admit his friend is dead. Randy visits and tries to talk to him, and the shadow of an approaching court hearing over Bob's death hangs over the family, threatening to break the three brothers apart.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the hearing, the judge rules that Bob's death was self-defense, clears Ponyboy of any wrongdoing, and lets the three Curtis brothers remain together. But Ponyboy is still crushed by grief, his grades are collapsing, and he is close to failing English. Strain and misunderstanding boil over at home until an outburst from Sodapop, begging his brothers to stop fighting each other, makes Ponyboy realize how much Darry's harshness comes from love and fear. Going through a copy of the novel he and Johnny read in hiding, Ponyboy discovers a letter Johnny left for him, telling him there is still good in the world and asking him to share that with others, and explaining at last what staying gold meant. Understanding it now, and wanting boys like Johnny to be understood rather than dismissed, Ponyboy decides to write down everything that happened. The account he begins is the very story the reader has finished.",
+            "through": {
+              "chapter": 12
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-outsiders"
+      }
+    },
+    "the-pagan-lord": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Uhtred of Bebbanburg, a Northumbrian-born warlord in his fifties who was raised by Danes and remains a pagan in a Christian age. Master of the sword Serpent-Breath, he has spent his life fighting for the house of Alfred against the Danes while longing to reclaim Bebbanburg, the great sea fortress his uncle stole from him in boyhood. Blunt, proud, and scornful of priests, he owes an uneasy service to Mercia and Wessex.",
+            "id": "uhtred",
+            "name": "Uhtred of Bebbanburg",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Irish exile and Uhtred's closest friend and second-in-command, a swift and deadly swordsman who has stood at his shoulder through years of war. Loyal, dry-humoured, and utterly reliable in a shield wall, he leads Uhtred's household warriors.",
+            "id": "finan",
+            "name": "Finan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alfred's eldest daughter and the estranged wife of Aethelred of Mercia. Strong-willed and devout, she commands the true loyalty of Mercia's warriors and is Uhtred's ally and lover, sharing his resolve to hold the Danes back from the Saxon lands.",
+            "id": "aethelflaed",
+            "name": "Aethelflaed",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Lord of Mercia and Aethelflaed's estranged husband, a proud and resentful ruler who hates Uhtred and covets a crown of his own. His feud with his wife and his hunger for a great victory over the Danes drive much of the year's trouble.",
+            "id": "aethelred",
+            "name": "Aethelred",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Alfred's son and King of Wessex, cautious and mindful of his late father's legacy. He guards the fragile peace between Wessex, Mercia, and the Danes, and is wary of both his sister Aethelflaed's independence and Uhtred's unruly ways.",
+            "id": "edward",
+            "name": "Edward",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Uhtred's second son, Osbert, whom his father renames Uhtred after disowning the elder son for becoming a Christian priest. A capable young warrior eager to prove himself, he rides north with his father and earns his place in the shield wall.",
+            "id": "uhtred-the-younger",
+            "name": "Uhtred (the younger)",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Cnut Longsword"
+            ],
+            "description": "Cnut Ranulfson, called Longsword, one of the most feared Danish warlords in Britain and wielder of the sword Ice-Spite. Cunning and swift, he is provoked toward war when his wife and children are seized by a man he is led to believe is Uhtred.",
+            "id": "cnut",
+            "name": "Cnut Ranulfson",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A treacherous Danish chieftain who has schemed against Uhtred for decades, forever changing sides to serve himself. Diminished but still dangerous, he attaches himself to the greater Danish lords and works his familiar mischief.",
+            "id": "haesten",
+            "name": "Haesten",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-pagan-lord"
+      },
+      "recaps": {
+        "ending": "The battle of Teotanheale ends in a crushing Saxon victory: the great Danish army that invaded Mercia is destroyed, and with it the immediate threat to the midlands. Uhtred personally kills the warlord Cnut Ranulfson, but in his death throes Cnut wounds Uhtred deeply with his sword Ice-Spite, an injury that will not easily heal. Aethelflaed's and Edward's cause is strengthened, and Uhtred's outlawry counts for less after so great a service. His son has proven himself a warrior in the shield wall. Yet Uhtred's lifelong ambition remains unmet: Bebbanburg still stands in his cousin's hands, his assault on it having failed. He carries away from the field a decisive victory, a proven heir, and a festering wound that will shadow his fortunes in the days to come.",
+        "in_short": "Landless and excommunicated after a violent clash with the Church, Uhtred of Bebbanburg is stripped of his Mercian estate and breaks with his son who has become a priest. With little left to lose, he leads his few warriors north to seize Bebbanburg from his cousin, but the fortress proves too strong and his assault fails. Meanwhile the Danish warlord Cnut Ranulfson, tricked into believing Uhtred stole his wife and children, raises a great army and invades Mercia. Uhtred returns to the Saxon cause and helps the Mercians and West Saxons trap the Danes at the battle of Teotanheale, where the Danish host is annihilated. Uhtred kills Cnut, but the dying warlord wounds him gravely with his sword Ice-Spite. The Saxons win a decisive victory, yet Bebbanburg is still not his, and Uhtred is left badly injured.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Earlier in the series: Uhtred of Bebbanburg, a Northumbrian noble raised by Danes and loyal to no god but Thor, was cheated of his ancestral sea fortress of Bebbanburg by his uncle and spent his life as the sword-arm of Alfred's Wessex against the Danes. Though a pagan who despises priests, he won victory after victory for the Christian Saxons, and after Alfred's death served his son, King Edward, and his daughter, Aethelflaed, the true power in Mercia and Uhtred's lover. As this book opens the Saxons hold an uneasy peace with the Danish lords of the north, and Uhtred still dreams of retaking Bebbanburg from his own kin.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Uhtred's fortunes collapse. After a violent quarrel with the Church he is excommunicated and stripped of his Mercian estate at Fagranforda, left landless with only his household warriors. He also breaks bitterly with his eldest son, who has become a Christian priest, disowning him and giving the name Uhtred instead to his younger son, a fighting man. With nothing to hold him in the south and Aethelred and the bishops set against him, Uhtred gathers his small band and turns north with a reckless purpose: to seize Bebbanburg, the fortress held now by his cousin, and reclaim the birthright taken from him as a boy.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Uhtred marches north and reaches Bebbanburg, but the great fortress is too strong; his surprise attack fails and he is forced to withdraw, his dream unfulfilled and his men few. While he is away from the Saxon lands, a graver crisis stirs. The Danish warlord Cnut Ranulfson finds his wife and children stolen and is led to believe that Uhtred is the abductor. Enraged, Cnut and his allies begin to muster for war, meaning to fall on Mercia while they think its lords divided and its greatest warrior discredited and gone.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Caught up in the plot around Cnut's stolen family, Uhtred works to untangle who truly took them and to turn the coming war to the Saxons' advantage. The Danish lords gather a great army and invade Mercia, expecting little resistance. Uhtred, though outlawed by the Church and short of men, throws himself back into the defence of the Saxon cause, racing to warn and rally the Mercian and West Saxon forces before Cnut's host can ravage the heart of the kingdom. His son fights at his side as the two armies move toward a reckoning.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The armies meet at Teotanheale, where the combined Mercian and West Saxon forces trap and destroy the great Danish army. In the slaughter Uhtred kills Cnut Ranulfson, but Cnut, dying, drives his sword Ice-Spite into Uhtred and leaves him with a terrible wound. The Danish threat to the midlands is broken and the Saxon victory is total, but Bebbanburg remains in his cousin's hands, still unreclaimed. Uhtred survives the battle gravely injured, the festering wound from Ice-Spite carrying forward as the shadow over what comes next.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-pagan-lord"
+      }
+    },
+    "the-pale-horseman": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The young Northumbrian warrior, Saxon by birth and Danish by upbringing, still bound to the service of King Alfred of Wessex. Having killed the Danish warlord Ubba, he expects reward and instead finds the credit stolen and his loyalty doubted. Restless, proud, and happier raiding at sea than kneeling in Alfred's pious court, he chafes against his marriage and his oath even as the survival of the last English kingdom comes to rest, in part, on his sword.",
+            "id": "uhtred",
+            "name": "Uhtred",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "King of Wessex, the last English realm holding against the Danes: devout, sickly, and coldly intelligent. He mistrusts Uhtred's Danish sympathies and his rough manners, yet needs his fighting skill. When a surprise Danish assault shatters his kingdom and drives him into hiding, Alfred's stubbornness and faith - not his strength of arm - become the thin thread from which Wessex's survival hangs.",
+            "id": "alfred",
+            "name": "Alfred",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hard, blunt West Saxon warrior and one of the few men Uhtred genuinely likes. The two share command of a ship and a taste for plunder, raiding the coast together under the cover of pretending to be Danes. Loyal, foul-mouthed, and fearless, Leofric is the sort of steady companion Uhtred trusts at his shoulder in a shield wall.",
+            "id": "leofric",
+            "name": "Leofric",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young British woman from Cornwall, said to be a shadow queen with the gift of prophecy, whom Uhtred carries off during a raid. Dark, strange, and reputed to see what is hidden, she becomes his lover and, to his half-pagan mind, a source of luck and foresight amid disaster. Her presence deepens the strain on his marriage even as Wessex falls into ruin around them.",
+            "id": "iseult",
+            "name": "Iseult",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Uhtred's Saxon wife, pious and long-suffering, tied to him by a marriage neither truly wanted and by a debt owed to the Church. Her devout faith and her grief set her ever further apart from a husband who prefers the sea, the old gods, and other company, and the war that engulfs Wessex leaves her fearful for their household and their child.",
+            "id": "mildrith",
+            "name": "Mildrith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Danish king and one of the chief war-leaders set on conquering Wessex. Cautious, superstitious, and given to wearing a bone in his hair in mourning, he is less a berserk fighter than a patient schemer. He breaks a sworn peace with a midwinter surprise attack meant to end the English kingdom at a stroke.",
+            "id": "guthrum",
+            "name": "Guthrum",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Svein of the White Horse"
+            ],
+            "description": "A Danish chieftain who rides beneath the sign of a white horse and leads his own war-band by sea. Bold and treacherous, he falls in with Uhtred during a season of raiding along the British coast, an alliance of convenience between two men who each intend to use the other. He is among the Danes gathering to fall on a weakened Wessex.",
+            "id": "svein",
+            "name": "Svein",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A giant of a West Saxon warrior, immensely strong and at first Uhtred's enemy, forced into a duel with him before events throw them onto the same side. Slow of speech but formidable in a fight and fiercely loyal to Alfred, Steapa becomes, over the campaign, one of Uhtred's staunchest companions in the shield wall.",
+            "id": "steapa",
+            "name": "Steapa",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The squint-eyed, kindly priest of Uhtred's Northumbrian childhood, now a trusted cleric at Alfred's court. Devout and loyal to the king, he keeps a stubborn faith in Uhtred despite the younger man's pagan leanings, and he shares in the desperate flight and recovery of a kingdom on the edge of destruction.",
+            "id": "beocca",
+            "name": "Father Beocca",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-pale-horseman"
+      },
+      "recaps": {
+        "ending": "The book ends with the Battle of Ethandun in 878. Alfred's army, gathered from the shires after his months as a fugitive in the Athelney marshes, meets Guthrum's Danes on the downs and breaks them; Uhtred fights in the front of the shield wall and plays a decisive part in the victory. The cost is heavy and personal: Leofric, Uhtred's closest friend among the Saxons, is killed in the fighting, and Iseult, the Cornish shadow queen who had become Uhtred's lover, also dies at Ethandun. Wessex is saved - the last English kingdom stands, and Guthrum's bid to extinguish it has failed - and Alfred's authority is restored greater than before. Uhtred ends the book proven beyond doubt as one of Alfred's most valuable warriors, but grieving, still bound by oath to a pious king he does not love, still married to Mildrith in name while she withdraws toward the Church, and still no closer to Bebbanburg, the stolen fortress in the north that remains his life's true aim.",
+        "in_short": "Fresh from killing Ubba at Cynuit, Uhtred finds the credit stolen by Odda the Younger and his standing at Alfred's court poisoned. Bored and in debt, he turns half-pirate, raiding the British coast with his friend Leofric and carrying off Iseult, a Cornish shadow queen said to see the future, who becomes his lover. Accusations of raiding fall on him at court, and he survives a judicial fight against the giant Steapa only because news arrives that changes everything: at midwinter Guthrum has broken the peace and overrun Wessex in a surprise attack from Cippanhamm. Alfred becomes a fugitive in the marshes of Athelney with a handful of followers, Uhtred among them. Through a hard winter Uhtred fights, scouts, and helps the king rally the shires, and in spring Alfred's mustered army meets Guthrum at Ethandun and wins the battle that saves Wessex - at the cost of Leofric and Iseult, both killed. The last English kingdom survives, and Uhtred, its half-Danish champion, remains bound to a king he serves but does not love.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Last Kingdom: the Northumbrian boy Uhtred, heir to the fortress of Bebbanburg, was captured as a child by the Danish earl Ragnar the Fearless and raised as a Dane alongside the English girl Brida. His uncle Aelfric usurped Bebbanburg. When the banished shipmaster Kjartan burned Ragnar's hall and killed the earl, Uhtred drifted south to Wessex, the last English kingdom holding out against the Danes, and entered the reluctant service of its pious, clever king, Alfred. He married the Saxon Mildrith, gaining land and a Church debt with her. When the Danish leader Guthrum broke a truce and killed his Saxon hostages, Uhtred was saved by his Danish foster brother, Ragnar the Younger. At the Battle of Cynuit, Uhtred fought his first shield wall and killed the feared warlord Ubba Lothbrokson in single combat - but Odda the Younger claimed the credit, leaving Uhtred unrewarded, resentful, and still torn between the Saxons of his birth and the Danes of his upbringing.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Uhtred comes to Alfred's court expecting honour for killing Ubba at Cynuit and finds Odda the Younger already celebrated as the victor. Slighted, in debt through Mildrith's inheritance, and bored by the piety of Wessex, he takes to the sea with the blunt West Saxon warrior Leofric, one of the few men he counts a friend. Pretending to be Danish raiders, the two cruise the coasts of Cornwall and the Severn sea, plundering where they can. The raiding entangles Uhtred with the Danish chieftain Svein of the White Horse, an alliance of convenience between men who trust each other not at all, and from one raid Uhtred carries off Iseult, a young British shadow queen reputed to have the gift of prophecy, who becomes his lover. He returns to Wessex richer, but with deeds behind him that will not stay hidden.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Word of the raiding follows Uhtred home. Accused at court of attacking Christians under a false flag, he faces ruin, and the matter comes to a judicial fight against Steapa, a giant of a warrior devoted to Alfred, a duel Uhtred cannot realistically win. He is saved by catastrophe: in the depths of winter, Guthrum breaks the sworn peace and falls on Wessex in a surprise assault out of Cippanhamm. The kingdom collapses almost overnight - towns fall, the great men scatter or submit, and Alfred, the last English king, becomes a fugitive. Uhtred escapes the chaos with Iseult, and the fight with Steapa is abandoned as every man's survival is thrown into question. Wessex, the last kingdom, has effectively fallen; what remains is whether its king can live long enough to win it back.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Alfred takes refuge in the sodden marshes of Athelney with his family and a handful of followers, and Uhtred, almost by accident, becomes one of the fugitive king's chief protectors. Through a miserable winter the small band survives raids and treachery while Alfred, sick and stubborn, refuses to flee abroad and instead plans the recovery of his kingdom, sending word for the fyrds of the loyal shires to muster in the spring. Uhtred fights, scouts, and carries messages, drawing on his Danish upbringing to read the enemy, and Iseult's healing and foresight earn her a strange place in the Christian king's camp. Old enemies shift: Steapa, once Uhtred's would-be executioner, becomes a comrade. Slowly, from a swamp, Alfred assembles the threads of an army while Guthrum's Danes hold the towns of Wessex and believe the war already won.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the spring of 878 Alfred rides out of the marshes to the muster at Ecgbryht's Stone, where the men of the loyal shires gather to him, and leads them against Guthrum's army at Ethandun. The battle is a long, grinding clash of shield walls on the downs, and Uhtred fights in the front rank, playing a pivotal part in breaking the Danish line. Wessex is saved: Guthrum's host is beaten and the last English kingdom stands. But the victory takes Uhtred's closest companions - Leofric is killed in the fighting, and Iseult too dies at Ethandun. The book closes with Alfred restored and stronger than before, and Uhtred proven as one of the great warriors of Wessex, grieving his dead, estranged from Mildrith as she turns toward the Church, and still sworn to a king he respects but cannot love, with Bebbanburg unclaimed in the far north.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "the-pale-horseman"
+      }
+    },
+    "the-path-of-daggers": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Dragon Reborn, crowned King of Illian, ruling many lands and commanding the Aiel and the Asha'man, but bearing two wounds that will not heal and hearing an intruding voice as the taint gnaws at his mind. Cold, driven, and dangerously mistrustful, he turns to throw back the Seanchan invasion sweeping up out of the south.",
+            "id": "rand-althor",
+            "name": "Rand al'Thor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Rand's steady friend, a wolfbrother and lord of the Two Rivers, sent by the Dragon to bring a fanatical self-styled Prophet to heel. Deliberate and loyal, he travels with Faile and a mixed following, uneasy in the role of commander and worried for those under his care.",
+            "id": "perrin-aybara",
+            "name": "Perrin Aybara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The proud, fierce noblewoman wed to Perrin, managing his followers and household as he carries out the Dragon's errand. Courageous and sharp, she guards her husband's interests and honor with a will as strong as his is patient.",
+            "id": "faile-bashere",
+            "name": "Faile",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The innkeeper's daughter of Emond's Field, raised Amyrlin Seat of the rebel Aes Sedai, steadily mastering the older sisters who thought to rule through her. Iron-willed and subtle, she means to force an open reckoning with the usurper Elaida and to reunite a broken Tower on her own terms.",
+            "id": "egwene-alvere",
+            "name": "Egwene al'Vere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Wisdom of Emond's Field, a channeler of great strength and a gifted Healer, wed to Lan and freed at last of her old dependence on anger to reach the Power. Proud and relentless, she works beside Elayne and Aviendha as their errands turn toward Caemlyn.",
+            "id": "nynaeve-almeara",
+            "name": "Nynaeve al'Meara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Daughter-Heir of Andor, a strong channeler returning to Caemlyn to press her claim to the Lion Throne that is hers by blood. Poised and determined, she prepares for the hard political struggle to win a crown amid rival houses and a fractured realm.",
+            "id": "elayne-trakand",
+            "name": "Elayne Trakand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Aiel woman training to be a Wise One and a channeler, proud, blunt, and bound by strict honor, and first-sister by adoption to Elayne. She travels with Elayne and Nynaeve, uneasy in wetlander lands and fiercely loyal to those she has taken as family.",
+            "id": "aviendha",
+            "name": "Aviendha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt young woman who foresees the future in images only she can see, now constantly at Rand's side and dear to him, one of the very few he still wholly trusts. Practical and warm, she watches the Dragon Reborn slide toward hardness and tries to hold him human.",
+            "id": "min-farshaw",
+            "name": "Min",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncrowned last king of a fallen Borderland realm and a matchless swordsman, Warder and husband to Nynaeve. Grim and steadfast, he guards her through every danger, his old fatalism softened a little by an unlooked-for marriage.",
+            "id": "lan-mandragoran",
+            "name": "Lan",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A legendary, imperious Aes Sedai of great age and greater reputation, who has attached herself to Rand and his Asha'man. Blunt and uncompromising, she means to teach the Dragon Reborn to face what is coming without losing his humanity, entirely on her own severe terms.",
+            "id": "cadsuane-melaidhrin",
+            "name": "Cadsuane",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ambitious, ruthless leader of the renegade Shaido Aiel, who reject the Dragon Reborn's authority. Grasping and cunning, she drives her people to seize power, plunder, and captives wherever they roam, hungry for standing among the Aiel and beyond.",
+            "id": "sevanna",
+            "name": "Sevanna",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-path-of-daggers"
+      },
+      "recaps": {
+        "ending": "The book ends with victories that feel like defeats. The Bowl of the Winds has mended the ruined weather, but every triumph curdles. Rand hurls back the Seanchan advance, yet only by using the flawed sword Callandor without the circle of channelers needed to control it; the battle turns into a haze of slaughter in which he nearly kills his own soldiers, and he comes away sickened and more afraid than ever of what he is becoming, the intruding voice in his head and the two unhealing wounds always with him. Egwene has consolidated real power over the rebel Aes Sedai, forcing her Hall to declare open war on Elaida and setting her army in motion toward Tar Valon. Elayne has reached Caemlyn to begin her long struggle for the Lion Throne of Andor. But Perrin's mission collapses into catastrophe: the renegade Shaido Aiel raid his camp and carry off his wife, Faile, along with others, beginning a captivity that will consume him. And at his manor near Cairhien, a handful of Rand's own Asha'man, secretly turned against him, attack the Dragon Reborn with the Power; Rand survives the ambush, but the traitors escape, and he can no longer trust even the men he made. The Seanchan remain a rising threat, the Shadow's servants are everywhere, and Rand's grip on both his empire and his own mind is slipping.",
+        "in_short": "With the Bowl of the Winds worked, the seasons begin to right themselves, and the scattered friends press their separate campaigns. Elayne, Nynaeve, and Aviendha make for Caemlyn, where Elayne begins the hard fight to claim the throne of Andor that is hers by blood. Egwene, the rebel Amyrlin, out-maneuvers the older sisters of her Hall, forces them to declare open war on the usurper Elaida, and starts moving her army toward the White Tower by the recovered art of Traveling. Rand turns to throw back the Seanchan, who have taken Ebou Dar and are driving inland, and in the battle he wields the flawed crystal sword Callandor without a circle to control it; the fight becomes a chaotic, costly victory that nearly makes him slaughter his own men and leaves him deeply shaken. Perrin, sent to bring a fanatical self-styled Prophet of the Dragon to heel, suffers a devastating blow when his wife Faile is seized by the renegade Shaido Aiel. And at the book's close, a group of Rand's own Asha'man turn on him, attacking the Dragon Reborn with the Power in a treacherous ambush he barely survives.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Rand al'Thor, a shepherd of the Two Rivers, was named the Dragon Reborn after he first channeled the One Power: the champion prophesied to fight the Dark One and, because he wields the tainted male Power, fated to go mad. Over the books that followed he was proclaimed the Dragon before the world at Falme, drew the crystal sword Callandor from the Stone of Tear, was accepted by the Aiel as their Car'a'carn, and came to rule Cairhien, Tear, Andor, and finally Illian, where he was crowned king. He destroyed several of the Forsaken - Rahvin at Caemlyn and Sammael in the ruins of Shadar Logoth - and gathered men who can channel into a private army, the Asha'man. The Aes Sedai Moiraine, who first set him on his path, sacrificed herself to remove a Forsaken; Rand survived a kidnapping by treacherous sisters, freed at the Battle of Dumai's Wells, after which some Aes Sedai swore fealty to him. Mat became a gifted battle commander before being caught in the Seanchan assault on Ebou Dar; Perrin wed Faile and was made lord of the Two Rivers; Nynaeve married Lan and learned to Heal the once-incurable severing of the gift; Elayne prepared to claim Andor's throne; and Egwene was raised Amyrlin of the rebel Aes Sedai, proving far shrewder than her elders. The Bowl of the Winds was used to break the Dark One's unnatural, killing heat. As this book opens the Seanchan press inland, Rand carries two wounds that will not heal, and the taint on saidin drives him steadily toward the edge of madness.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-path-of-daggers"
+      }
+    },
+    "the-penultimate-peril": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think. Still hunted and now working undercover for V.F.D., she leads her siblings through a vast hotel where allies and enemies are gathering.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire, twelve, bespectacled, and endlessly well-read, whose knowledge guides the family. He tries to sort volunteer from villain among the many familiar faces converging on the hotel.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The youngest Baudelaire, a small child who now speaks clearly and is a capable cook and helper. Brave and observant, she takes an equal part in the family's undercover work.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The murderous actor who has hunted the Baudelaire fortune through the whole series, marked by his single eyebrow and ankle tattoo. He arrives at the hotel with his own schemes as the two factions of V.F.D. gather.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Count Olaf's fashionable girlfriend and accomplice, vain and cruel, who continues to serve the villains' side as the factions assemble at the hotel.",
+            "id": "esme-squalor",
+            "name": "Esme Squalor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A member of V.F.D. and sister of the murdered Jacques Snicket, an ally of the Baudelaires who is expecting a child. She brings the children to the hotel and asks them to work undercover, observing the arriving guests to help tell the organization's friends from its enemies.",
+            "id": "kit-snicket",
+            "name": "Kit Snicket",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the identical Denouement brothers who manage the Hotel Denouement, run like an enormous library. Frank is said to be a loyal V.F.D. volunteer while his twin is a villain, but the two look and sound exactly alike, so the Baudelaires can never be certain which brother they are speaking to or whether he can be trusted.",
+            "id": "frank-denouement",
+            "name": "Frank Denouement",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "One of the identical Denouement brothers who manage the Hotel Denouement. Ernest is said to be a villain while his twin is a loyal volunteer, but because the brothers are indistinguishable, the children cannot tell Ernest from Frank and never know which of them they are dealing with at any moment.",
+            "id": "ernest-denouement",
+            "name": "Ernest Denouement",
+            "reveal": {
+              "chapter": 2
+            }
+          },
+          {
+            "description": "The kind judge who lived next door to Count Olaf when the children were first orphaned and tried to help them then. She reappears at the hotel as one of the three judges of the High Court, arrived to preside over a great trial meant to bring the guilty in the secret conflict to justice.",
+            "id": "justice-strauss",
+            "name": "Justice Strauss",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A secret third Denouement brother, unknown to almost everyone, who has devoted his life to compiling a vast hidden catalog of V.F.D.'s records, secrets, and evidence. Quiet and dedicated, he is a devoted member of the organization and close to Kit Snicket, and he holds knowledge that both factions would give anything to possess.",
+            "id": "dewey-denouement",
+            "name": "Dewey Denouement",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-penultimate-peril"
+      },
+      "recaps": {
+        "ending": "The gathering at the Hotel Denouement ends in catastrophe. During a nighttime confrontation by the hotel pond, a harpoon gun held by Count Olaf discharges as the children struggle for it, fatally striking the secret librarian Dewey Denouement, who dies in the water, a death the Baudelaires helped bring about and cannot forgive themselves for. The great trial meant to sort the guilty from the innocent falls apart when it emerges that villains, including the man with a beard and the woman with hair, sit among the High Court judges, and the proceedings, with everyone blindfolded, become a farce that condemns the children. To escape and to signal any remaining allies, the Baudelaires join in setting the hotel on fire, and the last safe place burns to the ground. In the chaos they flee, and with no better option they leave by boat together with Count Olaf, an uneasy and desperate alliance, sailing out to sea while Kit Snicket departs separately, all of them carried toward an unknown shore and the final chapter of the story.",
+        "in_short": "Kit Snicket brings the Baudelaires to the Hotel Denouement, the last safe place, where V.F.D.'s two factions will gather, and asks them to work undercover, observing guests to tell allies from enemies. The hotel, run like a giant library, is managed by identical twins Frank and Ernest Denouement, one a volunteer and one a villain, whom the children cannot tell apart. As familiar faces from the children's past arrive on both sides, the orphans meet a secret third brother, Dewey Denouement, who has compiled a hidden catalog of V.F.D.'s evidence. In a confrontation by the hotel pond, a harpoon gun in Count Olaf's hands goes off during a struggle, and Dewey is killed, a death the horrified children helped cause. A trial before the High Court collapses when villains are revealed among the judges. To escape, the Baudelaires help set the hotel ablaze and flee by boat, leaving with Count Olaf himself in a desperate alliance, sailing out to sea.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Baudelaire orphans, Violet, Klaus, and Sunny, lost their parents to a fire and have been hunted ever since by the greedy actor Count Olaf and his accomplice Esme. Over many homes and escapes they befriended the Quagmire triplets, uncovered a secret organization called V.F.D. to which their parents belonged, and were framed by Olaf for murder, becoming fugitives. They learned that V.F.D. is split between noble and villainous factions warring over the truth and over a mysterious object called the sugar bowl, and that both sides were converging on a last safe place. Guided at last by an ally, Kit Snicket, sister of the murdered Jacques and soon to become a mother, the children have made their way toward the Hotel Denouement, where the two factions of the secret organization will finally gather and where the long conflict that consumed their parents seems poised to reach its climax.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kit Snicket brings the Baudelaires to the Hotel Denouement, the last safe place, where V.F.D.'s two factions will soon gather, and asks the children to work undercover as observers, watching the arriving guests to help determine who is a loyal volunteer and who is a villain before the great meeting. The enormous hotel is organized like a library and managed by the Denouement brothers, identical twins Frank and Ernest, one said to be a volunteer and the other a villain. Because the brothers look and sound exactly alike, the children can never be sure which one they are speaking to or whether he means them well, making every conversation a gamble. Taking up their disguised roles, the Baudelaires begin moving through the vast hotel, trying to make sense of a place where allies and enemies are impossible to tell apart and danger could wear any face.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Working through the library-like hotel, the Baudelaires watch a flood of familiar faces from their past arrive and check in, both volunteers and villains, as the two factions of V.F.D. converge for the gathering. Old teachers, guardians, enemies, and acquaintances all reappear, and the children struggle to sort friend from foe while constantly confused about which Denouement brother, the volunteer Frank or the villain Ernest, they are dealing with at any moment. They learn that a trial is to be held to bring the guilty in the long conflict to justice, and that the powerful, sinister villains they encountered in the mountains are among those gathering. As tension mounts throughout the hotel and both sides maneuver, the Baudelaires try to carry out their undercover task without being unmasked, aware that a reckoning between the factions is fast approaching.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gathering assembles, and the hotel fills with the leaders and members of both factions of V.F.D., including the frightening villains the children feared in the mountains. The Baudelaires continue their dangerous undercover work, moving through the hotel and trying to determine who can be trusted as the two sides maneuver toward a confrontation. Amid the mounting tension it becomes clear that a trial before the High Court is imminent, meant to judge the guilty in the long secret conflict, but that both noble and villainous forces are jockeying to control it. Caught between the factions and still uncertain of nearly everyone's true loyalties, the children sense that the fragile peace of the last safe place cannot hold, and that the assembly is about to erupt into the crisis toward which the whole series has been building.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gathering ends in disaster. The children meet Dewey Denouement, a secret third brother who has spent his life compiling a hidden catalog of V.F.D.'s records and evidence, but in a nighttime confrontation by the hotel pond a harpoon gun held by Count Olaf discharges during a struggle and kills Dewey, a death the horrified Baudelaires helped cause. The great trial collapses when it is revealed that villains, including the man with a beard and the woman with hair, sit among the blindfolded High Court judges, and the proceedings condemn the children. To escape and to signal any surviving allies, the Baudelaires help set the Hotel Denouement ablaze, and the last safe place burns. Fleeing the fire with no better option, the children leave by boat together with Count Olaf himself in a desperate alliance, sailing out to sea as Kit Snicket departs separately, all carried toward the story's final chapter.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-penultimate-peril"
+      }
+    },
+    "the-picture-of-dorian-gray": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A strikingly handsome young man of wealth and leisure in London, the subject of a portrait his friend the painter Basil Hallward considers his finest work. At first innocent and unformed, Dorian becomes fascinated by the artist's circle and especially by the clever, cynical talk of Lord Henry Wotton, who convinces him that youth and beauty are the only things worth having and that both fade cruelly with time. Confronted with his own painted image at the height of his looks, Dorian is seized by envy of the picture and by dread of growing old and ugly while the portrait stays young.",
+            "id": "dorian-gray",
+            "name": "Dorian Gray",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Harry"
+            ],
+            "description": "An aristocratic friend of Basil Hallward, witty, idle, and delighting in paradox. He treats conversation as a performance and enjoys shocking others with elegant cynicism, preaching a philosophy of pleasure, self-development, and the pursuit of new sensations while dismissing conventional morality and duty. Struck by Dorian Gray's beauty and impressionable nature, he sets out to influence the young man, offering him a view of life in which giving in to temptation is wisdom and resisting it is weakness. He observes the effect of his own ideas on Dorian with the detached curiosity of a spectator.",
+            "id": "lord-henry-wotton",
+            "name": "Lord Henry Wotton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gifted, earnest painter who has become devoted to Dorian Gray, in whom he finds an ideal of beauty that has renewed his art. He has poured so much of his own feeling into the portrait of Dorian that he is reluctant to exhibit it, fearing it exposes too much of himself. Sincere, generous, and troubled by his friend Lord Henry's careless cynicism, Basil worries about the influence Henry may have on the young man he admires, and he hopes Dorian will keep the goodness that his beauty seems to promise.",
+            "id": "basil-hallward",
+            "name": "Basil Hallward",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young, poor, and gifted actress who performs Shakespeare's heroines at a shabby London theatre, where Dorian Gray discovers her and falls in love. Sheltered and romantic, she lives for the stage and for the roles she plays, and she comes to call Dorian her Prince Charming without knowing his real name. Her talent and freshness enchant Dorian, and she believes his love has shown her a truer life than the make-believe of the theatre.",
+            "id": "sibyl-vane",
+            "name": "Sibyl Vane",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sibyl Vane's younger brother, a rough, sullen sailor about to leave for Australia. Fiercely protective of his sister and suspicious of the wealthy admirer courting her, he presses her to reveal the man's identity and swears that he will hunt the gentleman down and kill him if he ever brings her to harm. Blunt and awkward where Sibyl is dreamy, he loves her deeply and leaves for his voyage burdened by a sense of foreboding.",
+            "id": "james-vane",
+            "name": "James Vane",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The worn, faded mother of Sibyl and James Vane, once an actress herself and now performing at the same shabby theatre while burdened by debt to its manager. Given to melodramatic gestures and vague, theatrical sentiment, she is more concerned with the advantages her daughter's rich suitor might bring than with the young man's true intentions.",
+            "id": "mrs-vane",
+            "name": "Mrs. Vane",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A chemist and man of science who was once a close friend of Dorian Gray, sharing an interest in music, before a coldness grew between them. Serious and reserved, he has withdrawn from Dorian and wants nothing more to do with him. When Dorian summons him and asks him to use his scientific skill for a grim task, Campbell refuses in horror, until Dorian applies a private threat that leaves him no choice.",
+            "id": "alan-campbell",
+            "name": "Alan Campbell",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-picture-of-dorian-gray"
+      },
+      "recaps": {
+        "ending": "Weary of his ruined life and wanting to escape the evidence of it, Dorian resolves to destroy the portrait that has recorded every one of his sins, believing that killing it will free him from conscience and the past. He takes up the same knife with which he murdered Basil Hallward and stabs the canvas. His servants hear a terrible cry and, forcing the locked door, find the portrait hanging untouched and restored to the radiant youth and beauty it had when Basil first painted it. On the floor lies a withered, wrinkled, hideous dead man in evening dress, a knife in his heart. Only by the rings on his fingers do they recognize him as Dorian Gray. His bargain has come due: the magic that spared his body its punishment collapses at the moment he tries to erase the record of his soul, and the disfigurement the picture had carried for years passes back to the man himself in death.",
+        "in_short": "In fashionable London, the painter Basil Hallward finishes a portrait of the beautiful young Dorian Gray, whom his cynical friend Lord Henry Wotton teaches to prize youth and pleasure above all else. Terrified of aging, Dorian wishes that the portrait would grow old in his place. The wish is granted: Dorian stays young and lovely while the painted image records every sin and cruelty. He drives a young actress, Sibyl Vane, to suicide, sinks into years of secret vice, and hides the changing portrait in a locked room. When Basil sees the corrupted painting, Dorian murders him and forces a former friend to destroy the body. Hunted for a time by Sibyl's vengeful brother, who dies by accident, Dorian at last tires of his own corruption. Hoping to be free of his conscience, he attacks the portrait with the knife that killed Basil. He is found dead, aged and disfigured, while the picture is restored to its youthful beauty.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In the London studio of the painter Basil Hallward, his friend Lord Henry Wotton admires a nearly finished portrait of a beautiful young man, Dorian Gray. Basil, who has become devoted to Dorian and finds new inspiration in him, is reluctant to exhibit the picture because it reveals too much of his own feeling. Against Basil's wishes, Lord Henry meets Dorian and quickly captivates him with witty, cynical talk, arguing that youth and beauty are the only treasures worth having and that both fade quickly and cruelly. Shaken by this new idea and by the sight of his own perfect image, Dorian is overcome by envy of the portrait and cries out a wish that he could stay young forever while the picture aged in his place, even offering his soul for it. Falling more and more under Lord Henry's spell, Dorian begins to change. Before long he tells Lord Henry that he has fallen in love with Sibyl Vane, a poor young actress he has watched perform Shakespeare at a run-down theatre, praising her as a genius and calling her the woman he means to marry.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sibyl Vane, glowing with happiness, tells her worn mother and her rough sailor brother James about the wealthy gentleman she calls Prince Charming. James, about to leave for Australia, distrusts the stranger and swears he will kill him if he ever wrongs his sister. Dorian announces his engagement to Basil and Lord Henry and brings them to see Sibyl act. That night, however, she performs badly, for her real love has made the pretended passion of the stage feel hollow to her. Humiliated before his friends, Dorian turns on her with contempt and rejects her. Returning home, he notices a faint change in his portrait, a touch of cruelty about the mouth, and realizes with a shock that his wish may have come true. He resolves to go back and make amends, but the next day Lord Henry brings word that Sibyl has taken her own life by poison. Lord Henry persuades Dorian to see the tragedy as a strange and beautiful experience rather than a horror, and Dorian chooses to feel wonder instead of guilt.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Basil comes to comfort Dorian and is disturbed by how little grief he shows. Fearing what the portrait now reveals, Dorian has it moved and locked away in the old schoolroom upstairs, hidden even from himself under a covering. Lord Henry sends him a strange yellow French novel about a life devoted to sensation, and Dorian is deeply influenced by it. Years pass. Outwardly Dorian keeps his flawless youth and beauty and moves through fashionable society, collecting jewels, perfumes, embroideries, and other rare and beautiful things, while dark rumors spread about his private life and the ruin of people connected to him. All the while the hidden portrait ages and grows more monstrous, absorbing the marks of every sin, and Dorian visits it in secret to measure the corruption of his soul against the perfection of his face. On the eve of his thirty-eighth birthday, walking home on a foggy night, Dorian encounters Basil Hallward, who is leaving for Paris and wants to speak with him seriously before he goes.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Basil confronts Dorian about the terrible rumors surrounding him and pleads with him to deny them and to pray. In answer Dorian takes him upstairs and shows him the hidden portrait, now a hideous record of his soul. Horrified, Basil begs him to repent, and in a surge of hatred Dorian seizes a knife and stabs him to death. To dispose of the body, Dorian blackmails Alan Campbell, a former friend and skilled chemist, forcing him with a private threat to destroy the corpse with chemicals. Outwardly composed, Dorian attends a dinner party, but he is tormented by fear and craving and slips away to a squalid opium den. There Sibyl Vane's brother James, who has never stopped seeking revenge, overhears Dorian being called Prince Charming and follows him with a pistol. Dorian saves himself by pointing to his youthful face, arguing that he is far too young to be the man who wronged Sibyl many years before, and the confused James lets him go, only to learn afterward that he has been deceived.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Haunted by the knowledge that James Vane is hunting him, Dorian is terrified when he glimpses the man's face at a window of his country house. During a shooting party in the grounds, one of the hunters accidentally kills a beater, and the dead man proves to be James Vane, freeing Dorian from that threat. Newly frightened by his own conscience, Dorian tries to reform, and boasts to Lord Henry that he has spared an innocent village girl he might have ruined. He also learns that Alan Campbell has killed himself. Hoping that a single good deed has begun to redeem him, Dorian looks at the portrait for any sign of improvement, but finds it only worse, now marked by hypocrisy. Enraged and desperate to be rid of the evidence of his life and the burden of his conscience, he attacks the painting with the knife that killed Basil. His servants hear a cry and break in to find the portrait restored to its original youthful beauty, and on the floor a withered, hideous old man, dead with a knife in his heart, whom they recognize as Dorian Gray only by his rings.",
+            "through": {
+              "chapter": 20
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "the-picture-of-dorian-gray"
+      }
+    },
+    "the-pillars-of-the-earth": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A skilled but poor master mason whose lifelong dream is to build a great cathedral. Steady, patient, and devoted to his craft, he travels the country with his family seeking work, driven by an almost spiritual ambition to raise a magnificent church.",
+            "id": "tom-builder",
+            "name": "Tom Builder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Prior Philip"
+            ],
+            "description": "The devout and capable prior of the monastery at Kingsbridge, a man of genuine faith and shrewd practical sense. Committed to justice and to the good of his community, he becomes the driving force behind the effort to build a cathedral.",
+            "id": "prior-philip",
+            "name": "Philip",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The proud and intelligent daughter of a nobleman, raised to privilege but thrown into hardship when misfortune strikes her family. Determined and resourceful, she refuses to be broken by her losses and sets out to rebuild her fortunes and reclaim what was taken from her.",
+            "id": "aliena",
+            "name": "Aliena",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A gifted, imaginative young man raised in the forest, with an unusual mind and a natural genius for stonework and design. Curious and passionate, he becomes deeply devoted both to the art of building and to Aliena.",
+            "id": "jack-jackson",
+            "name": "Jack",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A fiercely independent woman who lives apart from ordinary society, wise in the ways of the forest and unafraid to defy the powerful. Mother to a remarkable son, she carries old grievances against certain churchmen.",
+            "id": "ellen",
+            "name": "Ellen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cruel and ambitious son of a minor noble family, grasping for land, status, and power. Violent and vengeful, he becomes a persistent threat to the people of Kingsbridge and to Aliena's family in particular.",
+            "id": "william-hamleigh",
+            "name": "William Hamleigh",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An ambitious and cunning church official who pursues power within the Church with cold determination. Ruthless and politically gifted, he repeatedly opposes Prior Philip whenever the prior's aims conflict with his own advancement.",
+            "id": "waleran-bigod",
+            "name": "Waleran Bigod",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Tom Builder's son, a large and capable but resentful young man who follows his father's trade without his father's vision or Jack's brilliance. His jealousy and bitterness make him a recurring source of conflict.",
+            "id": "alfred",
+            "name": "Alfred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Aliena's younger brother, whom she vows to support in reclaiming their family's lost standing. He grows into a fighting man whose fortunes become bound up with the wars of the age.",
+            "id": "richard",
+            "name": "Richard",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pillars-of-the-earth"
+      },
+      "recaps": {
+        "ending": "The cathedral at Kingsbridge is finally completed, a triumph for Prior Philip and the fulfillment of Tom Builder's dream, carried to fruition by Jack. Aliena and Jack are united and their family restored, while Aliena's brother Richard regains the standing their family had lost. The novel's villains meet their downfall: William Hamleigh's crimes catch up with him and he is brought to justice and executed, and Waleran Bigod's schemes collapse into disgrace. The closing events are tied to the historical murder of Archbishop Thomas Becket and to King Henry II's public penance for that killing, which becomes the occasion on which the conspirators against Kingsbridge are finally exposed and punished. The story ends with the community and its cathedral secure and its long-suffering good characters at last rewarded.",
+        "in_short": "Spanning several decades in twelfth-century England, the novel follows the building of a cathedral in the town of Kingsbridge and the lives bound up in it. Tom Builder, a mason who longs to construct a great church, finds his chance when the ambitious prior Philip sets out to build one. Around them move Aliena, a noblewoman cast into poverty who rebuilds her life through the wool trade, and Jack, a gifted boy of Tom's household who becomes a master builder and Aliena's love. Against them stand the brutal noble William Hamleigh and the scheming cleric Waleran Bigod, who repeatedly attack Kingsbridge and thwart its people out of greed and vengeance. Over many years of ambition, betrayal, war, and perseverance, the cathedral slowly rises. The struggle plays out against the real historical conflict between crown and Church, culminating in the murder of Archbishop Thomas Becket, an event in which the story's villains are entangled and through which justice at last catches up with them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Set in twelfth-century England during a period of civil war and lawlessness, the story centers on the town of Kingsbridge and the ambition to build a great cathedral there. It follows a master builder who dreams of raising such a church, the monks and townspeople whose lives depend on it, and the powerful nobles and churchmen who variously aid and obstruct the work. Against a backdrop of political turmoil, the fates of several families become entangled around the cathedral and the land around it.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-pillars-of-the-earth"
+      }
+    },
+    "the-poisonwood-bible": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A rigid, zealous Baptist minister from Georgia who moves his wife and four daughters to a remote village in the Belgian Congo in 1959 to convert its people. Domineering and self-righteous, he refuses to bend his beliefs or methods to the world around him, ruling his family by fear and scripture.",
+            "id": "nathan-price",
+            "name": "Nathan Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Nathan's wife and the mother of the four girls, worn down by years of submission to her husband. One of the story's narrators, she speaks from a later vantage, looking back with sorrow and guilt on what the family's mission cost them all.",
+            "id": "orleanna-price",
+            "name": "Orleanna Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest Price daughter, about fifteen, blond, vain, and desperately homesick for American comforts. Self-absorbed and often oblivious, she narrates in a stream of misused words and complaints about the hardships of Congo life.",
+            "id": "rachel-price",
+            "name": "Rachel Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the younger twins, earnest, athletic, and intelligent. At the outset she idolizes her father and yearns for his approval, throwing herself into the mission and into learning about the country around her.",
+            "id": "leah-price",
+            "name": "Leah Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leah's twin, who has a one-sided physical impairment and chooses not to speak. Brilliant and sardonic, she observes everything with a cool, ironic eye and delights in wordplay, reading and thinking in palindromes, and narrates in her own distinctive voice.",
+            "id": "adah-price",
+            "name": "Adah Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The youngest Price daughter, a bold, curious, and outspoken little girl who adapts to the village more readily than her older sisters and quickly makes friends among the local children.",
+            "id": "ruth-may-price",
+            "name": "Ruth May Price",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The young schoolteacher of the village, who speaks several languages and often serves as interpreter between Nathan and the villagers. Thoughtful and principled, he becomes an important link between the Price family and the community and the wider currents of Congolese politics.",
+            "id": "anatole",
+            "name": "Anatole",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The chief of the village where the Prices settle. Shrewd and protective of his people's customs, he regards the foreign preacher's mission warily and defends the traditional order against Nathan's intrusions.",
+            "id": "tata-ndu",
+            "name": "Tata Ndu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A shifty mercenary bush pilot who delivers supplies and mail to the isolated mission. Greedy and untrustworthy, he trades in rumor and profit and hints at murky dealings beyond the family's knowledge.",
+            "id": "eeben-axelroot",
+            "name": "Eeben Axelroot",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-poisonwood-bible"
+      },
+      "recaps": {
+        "ending": "The Price family is destroyed by its mission. After Nathan's rigid refusal to adapt brings hardship and estrangement, and as the newly independent Congo collapses into violence and foreign intrigue, the youngest daughter, Ruth May, is killed by a venomous snake. Her death shatters whatever hold Nathan still had over the family. Orleanna at last walks out of the marriage, leaving Kilanga with her three remaining daughters. Nathan, unable to admit any fault, remains in the Congo and eventually dies there years later, having lost his family and his mind. The surviving women scatter into separate lives and are followed across the following decades: Rachel drifts through marriages and ends up running a hotel in Africa, shallow and unchanged; Leah marries the schoolteacher Anatole and commits herself to life in Africa and to the cause of its people; Adah returns to the United States, is helped medically, and becomes a scientist. Each carries her own burden of grief and guilt over Ruth May and over the family's role in a country wounded by colonialism, seeking, in her own way, some measure of understanding and atonement.",
+        "in_short": "In 1959, the zealous Baptist preacher Nathan Price brings his wife, Orleanna, and their four daughters, Rachel, the twins Leah and Adah, and little Ruth May, from Georgia to the remote village of Kilanga in the Belgian Congo, determined to convert its people. The family is unprepared for the climate, the hunger, the language, and the culture, and Nathan's stubborn arrogance alienates the villagers. As the Congo wins independence and plunges into political turmoil and violence, the mission unravels. Tragedy strikes the family when the youngest daughter, Ruth May, dies from a snakebite, a loss that finally breaks Orleanna's submission to her husband. She flees with her surviving daughters, and Nathan, unrepentant, stays behind and descends into ruin. Told across decades in the alternating voices of the mother and the daughters, the novel follows the women's very different paths through Africa and America as they carry the guilt, grief, and consequences of what their family did in the Congo.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1959, an uncompromising Baptist missionary named Nathan Price uproots his family from Georgia and brings them to Kilanga, a small village in the Belgian Congo, to spend a year converting its people. With him are his weary wife, Orleanna, and their four daughters: the vain, homesick eldest, Rachel; the earnest, father-worshipping Leah; her silent, sharp-minded twin, Adah; and the bold youngest child, Ruth May. The family arrives hopelessly ill-prepared for the heat, the food, the illnesses, and the customs of the place, and Nathan's stubborn refusal to understand or respect the villagers quickly sets him at odds with the community and its chief. Narrated in turn by the mother and each of the four daughters, the story opens with the Prices struggling to survive in a world utterly unlike the one they left, as forces far larger than their mission begin to gather around them.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-poisonwood-bible"
+      }
+    }
+  }
+}

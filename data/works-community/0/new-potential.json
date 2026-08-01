@@ -1,0 +1,1688 @@
+{
+  "entries": {
+    "new-potential": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Seth Pendell"
+            ],
+            "description": "A tower climber held in a stone cell by a silver-eyed captor of overwhelming power. Max masks the extent of his abilities, stays calm under pressure, and waits for an opening while worrying about Tanila and the companions from whom he has been separated.",
+            "id": "max",
+            "name": "Max",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The sentient ability bound within Max. It speaks to him internally, assesses magical dangers, and counsels patience while he is imprisoned. The entity shares his concern for Tanila and the companions from whom Max has been separated.",
+            "id": "consume",
+            "name": "Consume",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The immensely powerful man holding Max behind a magical barrier. He tries to frighten and provoke his prisoner, but Max suspects that fear lies beneath his anger. His strength makes a direct escape attempt too dangerous.",
+            "id": "silver-eyed-captor",
+            "name": "Silver-eyed captor",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A lizard woman freed by Max from slavers in a mountain cave. She accepts the name Amy and agrees to guide him toward a city where someone may be able to remove his collar, giving him vital local knowledge during the hunt.",
+            "id": "amy",
+            "name": "Amy",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Amy's blind mother, who is wary when her daughter arrives at their glass settlement with Max, an unfamiliar smooth-skinned outsider.",
+            "id": "amys-mother",
+            "name": "Amy's mother",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The powerful insect who runs the third-ring arena and negotiates a contract giving Max a share of his winnings, with improved terms for victories and a champion defeat.",
+            "id": "third-ring-arena-proprietor",
+            "name": "Third-ring arena proprietor",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The arena identity Max adopts when he begins fighting for tokens. He presents Ifrit as a fire-wielding combatant while concealing his wider range of powers and his real reason for trying to advance through the city.",
+            "id": "ifrit",
+            "name": "Ifrit",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A local craftsperson whom Max approaches for a strong but unadorned staff. The weaponsmith is willing to consider the unusual commission, opening a possible route to equipment suited to Max's needs.",
+            "id": "kimono-mimi-weaponsmith",
+            "name": "Kimono-mimi weaponsmith",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Max's bonded partner and a member of his tower party. Two months after his disappearance, she leads the group's continued climb and trusts the unchanged sign of their bond as evidence that he is still alive.",
+            "id": "tanila",
+            "name": "Tanila",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of Max's tower party who continues climbing while Max is missing. After the group clears the floor-45 boss, Fowl supports Tanila's conviction that their absent companion remains alive.",
+            "id": "fowl",
+            "name": "Fowl",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning member of Max's tower party who helps defeat the floor-45 boss during his absence. Batrire stands with Tanila and the others as they continue the climb without abandoning hope of finding him.",
+            "id": "batrire",
+            "name": "Batrire",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the tower climbers traveling with Tanila's group during Max's unexplained absence. Cordelia takes part in their successful floor-45 battle as the party presses onward without him.",
+            "id": "cordelia",
+            "name": "Cordelia",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally fighting alongside Tanila, Fowl, Batrire, and Cordelia while Max is missing. Dexic helps the group defeat the floor-45 boss and remains with them as they continue their tower ascent.",
+            "id": "dexic",
+            "name": "Dexic",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A promoter who provides lodging when Max and Amy reach a wealthier ring of the city. He also agrees to search for suitable premises for the weaponsmith.",
+            "id": "city-promoter",
+            "name": "City promoter",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The golden-scaled ruler who controls the city and its arena system. She intervenes when arena protections are violated, recognizes that Max was brought to her world by the hunter, and postpones a private discussion with him.",
+            "id": "dragonkin-ruler",
+            "name": "Dragonkin ruler",
+            "reveal": {
+              "chapter": 25
+            }
+          },
+          {
+            "description": "A formidable Vorpal hunter who becomes Ifrit's representative under a profit-sharing agreement. Despite his rabbit-like appearance, he makes clear that he can defend the new arrangement and supplies practical support as Max advances.",
+            "id": "jazz-jack",
+            "name": "Jazz Jack",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The private name Max gives Consume, the sentient ability within him. Their bond has developed through danger and Max's choices, and the name marks a more personal understanding between them that Max does not extend to anyone else.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A red-skinned extraplanar fighter called through Max's demonic summoning. It recognizes Max and says his blood altered it, then accepts a tightly limited bargain to kill seven arena opponents before the contract expires.",
+            "id": "summoned-demon",
+            "name": "Summoned demon",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lionkin arena champion matched against Ifrit. Shamina enters heavily armed with sword, shield, and armor, presenting a physically imposing challenge as Max reaches a more dangerous level of competition.",
+            "id": "shamina",
+            "name": "Shamina",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A servant of the city ruler who takes Max alone to her portal-filled residence. The attendant rejects being reduced to a simple elf label.",
+            "id": "dark-elf-attendant",
+            "name": "Dark elf attendant",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced craftswoman from another world who recognizes the unusual nature of Max's bonded staff. She privately agrees to exchange materials and instruction for access to his uncommon crafting knowledge.",
+            "id": "dwarven-weaponsmith",
+            "name": "Dwarven weaponsmith",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The unidentified traveler whom the dragonkin ruler says paid her to remove Max. This disclosure reveals that his imprisonment in the local tower is part of a deliberate arrangement extending beyond the ruler herself.",
+            "id": "other-world-traveler",
+            "name": "Other world traveler",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A collared dragon imprisoned beyond the tower horde. He tells Max that the dragonkin ruler compels him to guard the exit and kill anyone who survives long enough to reach him.",
+            "id": "silver-dragon",
+            "name": "Silver dragon",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Golden Axe leader connected to Max's climbing group. He is part of the established support structure surrounding the tower campaign before Max's disappearance in this volume.",
+            "id": "everett",
+            "name": "Everett",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Golden Axe trainer and operational leader associated with Max and his fellow tower climbers. His role in their established organization predates the events of this volume.",
+            "id": "tom",
+            "name": "Tom",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DNKR5KKM",
+            "type": "community"
+          }
+        ],
+        "work": "new-potential"
+      },
+      "recaps": {
+        "ending": "Max kills the dragonkin ruler in a public arena battle and uses her powers to prevent the traveler behind his removal from escaping. Bob attacks the traveler and acquires the travel ability Max needs. Max declares himself the city's champion, appointing Jazz Jack to oversee civic affairs and the dark elf attendant to run the arena. He defeats Amy over her role in the first weaponsmith's murder and leaves her with Jazz Jack for execution. The city remains under Max's remote authority, while his promise of a future skill shard to Jazz Jack and his obligation to help the dwarven weaponsmith create two more weapons remain open. Max returns to his own world, races through tower floors 40 to 47, and reunites with Tanila, Fowl, Batrire, Cordelia, and Dexic on floor 48. They conceal his cross-world captivity behind a story of overseas travel. Tanila confirms that she carries Max's child, and they expect threats connected to both of them. The party will tackle floors 49 and 50 together. Bob withdraws to evolve, the silver dragon's living egg remains in Max's care, and the original silver-eyed hunter is still at large.",
+        "in_short": "A silver-eyed hunter abducts Max and releases him into a hostile world under a binding collar. Max survives the wilderness, frees Amy, and enters a city where arena victories offer power and a possible route home. Fighting as Ifrit, he advances through increasingly lethal contests while learning local crafting and strengthening Consume, which he names Bob. Amy gains power but arranges their first weaponsmith's murder. The dragonkin ruler then traps Max in a tower on another traveler's orders. Max survives the horde, kills a coerced silver dragon after promising to save its egg, breaks his collar, and defeats the ruler in dragon form. He takes the traveler's world-crossing ability, places Jazz Jack and the dark elf attendant over the city, and leaves Amy for execution. Back home, Max rejoins Tanila's party on floor 48. Tanila is pregnant, Bob is evolving, and the reunited group plans to clear floors 49 and 50 together.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Max, also known as Seth Pendell, climbed the tower with Tanila, Fowl, Batrire, and Cordelia as part of the Golden Axe community. Tanila is his bonded partner, and their companions regard the group as a family. Dexic is an allied fighter with an earlier debt linking her to Max's party. Everett is a Golden Axe leader, while Tom trains climbers and helps direct operations. Max carries a sentient internal ability called Consume, which can advise him and turn defeated enemies into avenues for growth. The tower climb, Max's bonds with his companions, and the dangerous attention drawn by his unusual power all remain central as this volume begins.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A silver-eyed captor holds Max behind a magical barrier, tests his abilities, and reveals that someone paid to have him targeted. Rather than kill him immediately, the captor fits him with a collar that seals his storage and releases him into another world with a seven-day head start. Max survives the jungle and desert by improvising weapons, using magic, regenerating severe wounds, and drawing strength from defeated creatures. The collar suppresses his contact with Consume and leaves direct confrontation with the hunter impossible. Max interrupts a group of slavers and frees a lizard woman whom he calls Amy. She guides him across the desert toward a city where the collar might be removed. After a brief return, Consume warns that unseen powers are watching Max. Amy brings him to her glass settlement, where her mother explains the local order: power can be acquired and traded, a female ruler controls the tower and gladiatorial games, and tournament tokens may buy both collar removal and a source of power for Amy. With the hunter's deadline closing, Max accepts the city arenas as his best route forward.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Max protects Amy and her mother from a hostile sand wielder, then travels with Amy into the layered city. Because his collar marks him as a valuable captive, they hide it and use Amy's local knowledge to pass the gates. Max remains loyal to Tanila despite Amy's growing attachment. He adopts the arena name Ifrit and arranges a contract that will earn the tokens needed to advance. A kimono-mimi weaponsmith teaches him that local crafting consumes life force. Max combines that method with regeneration and elemental magic to create a bonded staff of exceptional quality. Elsewhere, two months have passed since his disappearance. Tanila, Fowl, Batrire, Cordelia, and Dexic defeat the floor-45 boss and continue believing he survives. Consume returns just before Max's first match. Max wins that fight and kills a much stronger stone master in his second, exposing more durability and magic than intended. His victories earn passage to the next city ring, but also spread word of the unusual smooth-skinned fighter. Max invites the weaponsmith to relocate with them as unknown observers begin following him and Amy.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the wealthier rings, Max gains a promoter, improved equipment, and the attention of the golden-scaled ruler who controls the city. After relatives of a defeated fighter violate arena protections, the ruler intervenes and recognizes that the hunter brought Max into her world. Jazz Jack, a dangerous Vorpal hunter, becomes Max's representative and ties housing and support for the group to arena success. The promised workshop for Max's weaponsmith is secured, but the weaponsmith is murdered almost immediately. Max responds with a series of increasingly ruthless arena victories while seeking the killer and demanding protection for Amy. Consume warns that uncontrolled violent hunger could endanger Max's own friends. Amy is moved ahead and receives two power gems. Max privately gives Consume the name Bob. Deeper in the city, Jazz Jack explains that advancement is effectively permanent and that champions may come from other worlds. When Max is assigned seven opponents at once, he follows Bob's plan and summons a demon under a limited contract. The demon kills all seven, clashes briefly with the arriving ruler, and departs. The victory raises Max to another major strength threshold and leaves the inner arena wary of facing Ifrit.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Amy emerges from her enhancement with substantial power, takes a new identity, and leaves Max's group. Max then kills the lionkin champion Shamina after Bob pays a serious cost to reset his abilities. The win earns entry to the inner city, but the ruler demands three further victories before allowing tower access and leaves the eventual price of helping Max return home unstated. Jazz Jack accompanies Max into the sealed district, sacrificing an easy return to his own family. The ruler sends Max into a larger arena that draws fighters from many worlds. Max survives lethal matches against a flying combat machine and an armored insect, gaining broad language comprehension while continuing to hide his collar and regeneration. Bob's next evolution draws closer. Seeking a weapon able to penetrate stronger armor, Max forms a secret partnership with an experienced dwarven weaponsmith. They combine her rare materials with his elemental crafting methods to produce a bonded weapon that can shift among melee forms. In return, Max promises to help her make two additional weapons. He also reaches a major dexterity threshold, leaving him substantially faster and better equipped for the arena battles ahead.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jazz Jack asks Max for a future skill shard so he can become strong enough to return to his wife and children, and Max agrees. After more victories, the ruler offers Max entry to the tower. Bob identifies the offer as a trap, but Max accepts. Inside, the ruler reveals that another world traveler paid her to remove him and that Amy arranged the first weaponsmith's murder. An apparently endless horde then keeps Max fighting for forty days. His summoned demon returns as a demon lord and clears a temporary path in exchange for later demon essence, with both sides accepting a mutual nonaggression pact. At the exit, Max finds a silver dragon enslaved by the ruler and forced to kill survivors because she holds his unhatched child. Max promises to rescue the egg. The dragon permits one free attack, and Max's Ultimate Form breaks his own collar before he kills the guardian. Free for the first time since his abduction, Max returns to the city, confirms Amy's responsibility, and coerces the ruler's attendant into helping him enter her estate. He recovers the living silver dragon egg and uses it as leverage to force the ruler into a public arena fight.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dragonkin ruler enters the public match as an enormous golden dragon whose scales resist Max's first attacks. Her fire repeatedly inflicts fatal damage, but Bob spends stored power to refresh Max's defenses and abilities. Max eventually phases inside her body and destroys her heart. After killing the ruler, he acquires powers that can block system travel and uses them to trap the other world traveler who financed his removal. Bob attacks the traveler and takes the world-crossing ability Max needs. Max claims the city, appoints Jazz Jack to civic administration and the dark elf attendant to arena operations, and opens the local tower to capable challengers. He then defeats Amy over the weaponsmith's murder and leaves her to Jazz Jack for execution. Max returns home, clears floors 40 through 47 alone, and reaches his companions during their floor-48 battle. Bob withdraws to begin an evolution as Max reunites with Tanila, Fowl, Batrire, Cordelia, and Dexic. Back at Golden Axe, they agree to hide his imprisonment behind a claim of overseas travel. Tanila confirms her pregnancy. Expecting enemies to threaten their child, she and Max commit to becoming stronger, while the reunited party plans to clear floors 49 and 50 together.",
+            "through": {
+              "chapter": 58
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B0DNKR5KKM",
+            "type": "community"
+          }
+        ],
+        "work": "new-potential"
+      }
+    },
+    "new-spring": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young Accepted of the White Tower, close to being raised to full Aes Sedai. Of high Cairhienin noble blood and a niece of Cairhien's king, she is small, composed, quick-witted, and unusually strong in the One Power. Reserved and disciplined, she keeps her royal connections at arm's length and is devoted to her studies and to her closest friend, Siuan.",
+            "id": "moiraine-damodred",
+            "name": "Moiraine Damodred",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An Accepted of the White Tower and Moiraine's closest friend, a fisherman's daughter from the poor quarter of Tear with a blunt tongue, a quick mind, and one of the strongest gifts for the One Power seen in generations. Ambitious and shrewd, she is as fierce in argument as she is loyal in friendship, and as eager as Moiraine to earn the shawl of an Aes Sedai.",
+            "id": "siuan-sanche",
+            "name": "Siuan Sanche",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncrowned king of Malkier, a northern realm swallowed by the Blight when he was an infant, raised by his people's survivors to a life of endless war against the Shadow. A peerless swordsman still young in years, grim, honorable, and expecting to die fighting in the Blight, he travels the Borderlands with an old shield-companion, bound by oaths older than himself.",
+            "id": "lan-mandragoran",
+            "name": "Lan Mandragoran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Amyrlin Seat, head of the Aes Sedai and ruler of the White Tower, a shrewd and formidable woman guiding the Tower through the upheaval of the Aiel War. Watchful and careful with her secrets, she wields the authority of her office with a firm and practiced hand.",
+            "id": "tamra-ospenya",
+            "name": "Tamra Ospenya",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Aes Sedai and trusted adviser to the Amyrlin, gifted with Foretelling, the rare and uncontrollable ability to speak true prophecy. Frail with age, she has spent her long life close to the seat of the Tower's power.",
+            "id": "gitara-moroso",
+            "name": "Gitara Moroso",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The White Tower's Mistress of Novices, a calm, motherly Aes Sedai responsible for the discipline and welfare of novices and Accepted. Experienced and unruffled, she is a fixture of Tower life whose steady manner reassures the young women in her charge.",
+            "id": "merean-redhill",
+            "name": "Merean Redhill",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A famous and fearsome Aes Sedai of great reputation and long experience, blunt, imperious, and impossible to overawe. Already a legend among the sisters, she takes a sharp interest in the affairs of others and in the young women she encounters.",
+            "id": "cadsuane-melaidhrin",
+            "name": "Cadsuane Melaidhrin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A grizzled Malkieri warrior and Lan's longtime shield-companion, one of the survivors who helped raise him after their homeland fell to the Blight. Loyal and hard-bitten, he keeps to the old customs and oaths of dead Malkier.",
+            "id": "bukama-marenellin",
+            "name": "Bukama Marenellin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "new-spring"
+      },
+      "recaps": {
+        "ending": "New Spring ends with the partnership that will drive the whole series into motion. Moiraine Damodred, now a full Aes Sedai, has survived an assassination attempt by a hidden servant of the Shadow and has committed herself to a lonely, secret quest: to find the infant boy prophesied to be the Dragon Reborn before the Shadow's agents can kill him, and one day to guide him toward the Last Battle. Lan Mandragoran, the last king of a nation devoured by the Blight, agrees to bond to her as her Warder, trading his expected death in the Blight for her cause. Her friend Siuan Sanche remains in the White Tower to hunt the Shadow's hidden agents from within and to rise in the Tower's ranks. As the book closes, Moiraine and Lan ride out together, beginning the long search that, years later, will bring them to a remote village and the young man born on that fateful day.",
+        "in_short": "During the Aiel War, the Accepted Moiraine Damodred and Siuan Sanche are present when a dying Aes Sedai speaks a Foretelling: the Dragon has been Reborn, a boy child born that very day near the great battle. The Amyrlin swears the two friends to secrecy and quietly sets searchers to find the child, but soon the Amyrlin is dead and her searchers are being murdered, and Moiraine and Siuan realize that the Black Ajah, servants of the Shadow hidden among the Aes Sedai, are hunting anyone who knows. Newly raised to the shawl, Moiraine slips away from the Tower's dangerous politics to search for the child herself. In the Borderland city of Chachin she crosses paths with Lan Mandragoran, the uncrowned king of fallen Malkier and a deadly swordsman. Together they uncover and defeat a hidden servant of the Shadow sent to kill her. Recognizing they are stronger together, Moiraine asks Lan to become her Warder; he accepts, and the two set out in secret to find and protect the Dragon Reborn.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Set about twenty years before the main series, this book follows two young women of the White Tower, Moiraine Damodred and Siuan Sanche, as they near the end of their training to become Aes Sedai. The Aiel have come out of the Waste and are besieging the great island city of Tar Valon in the war that will be remembered as the Aiel War, and the Tower is crowded with the wounded and the anxious. Amid the chaos, the two friends, close as sisters despite Moiraine's noble birth and Siuan's humble one, are set to menial duties and chafe under the Tower's endless rules, unaware that the war's turning point is about to place them at the center of the most important secret of the age.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "new-spring"
+      }
+    },
+    "night-watch": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Commander Vimes",
+              "Duke of Ankh"
+            ],
+            "description": "Commander of the Ankh-Morpork City Watch and Duke of Ankh, a powerful man who has never stopped thinking of himself as a copper on the street. Married to Lady Sybil, who is about to give birth, he is defined by the law and by hard memories of a poorer, more brutal city.",
+            "id": "sam-vimes",
+            "name": "Samuel Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A cheerful, casually vicious killer whom Vimes is hunting through the city. He murders without hesitation or remorse and treats it all as a great joke, which makes him more dangerous than any calculating criminal.",
+            "id": "carcer",
+            "name": "Carcer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A raw young lance-constable in the Night Watch of an earlier, harsher Ankh-Morpork: naive, idealistic, and eager to do right in a force riddled with graft. He is Vimes's own younger self.",
+            "id": "young-sam-vimes",
+            "name": "Young Sam Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger, leaner version of the future sergeant, here a steady junior watchman in the old Night Watch, already inclined to caution and a quiet life.",
+            "id": "fred-colon",
+            "name": "Fred Colon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Here a scrawny, light-fingered street child who runs errands and picks pockets around the edges of the Watch, a young version of the future corporal.",
+            "id": "nobby-nobbs",
+            "name": "Nobby Nobbs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An earnest, hot-blooded young revolutionary who paints slogans and dreams of a fairer city, throwing himself into the coming uprising with more passion than sense.",
+            "id": "reg-shoe",
+            "name": "Reg Shoe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A watchful, precise young student of the Assassins' Guild, observing the city's unrest with detached, calculating interest. He is the young Havelock Vetinari.",
+            "id": "lord-vetinari",
+            "name": "Havelock Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the tyrant's secret police, the Unmentionables, a cold and methodical zealot who believes crime can be read in the measurements of a person's body and who uses torture as routine procedure.",
+            "id": "findthee-swing",
+            "name": "Findthee Swing",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Patrician of this earlier Ankh-Morpork, a paranoid and unstable tyrant whose cruelty and fear are pushing the city toward open revolt.",
+            "id": "lord-winder",
+            "name": "Lord Winder",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "The Sweeper"
+            ],
+            "description": "An unassuming old man with a broom who turns up where he is least expected. He is in truth a monk of an order devoted to keeping history flowing along its proper course.",
+            "id": "lu-tze",
+            "name": "Lu-Tze",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Mossy Lawn"
+            ],
+            "description": "A resourceful back-street doctor, unlicensed and unsentimental, who treats the poor and the injured without asking too many questions.",
+            "id": "mossy-lawn",
+            "name": "Dr Lawn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "night-watch"
+      },
+      "recaps": {
+        "ending": "Stranded in the past as Sergeant John Keel, Vimes shepherds his younger self and the old Night Watch through the People's Revolution against Lord Winder's regime and its torturing secret police under Findthee Swing. He organizes the barricades of Treacle Mine Road to protect ordinary people rather than to seize power, holding a corner of the city through the worst of the fighting; several good watchmen die there, the men Vimes will spend the rest of his life quietly commemorating. Winder is assassinated by the young Assassin Havelock Vetinari, and the equally poor ruler Lord Snapcase replaces him, so the revolution changes little in the end. Vimes finally corners and beats Carcer. The History Monks, led by the sweeper Lu-Tze, set the timeline right and return Vimes to the present, where he arrives just in time for the birth of his son, Young Sam. Carcer is dragged back to the present alongside him, tried, and hanged, Vimes refusing to simply murder him and insisting on the law. Afterward Vimes lays flowers at the graves of the watchmen who fell at the barricades.",
+        "in_short": "While chasing the remorseless killer Carcer over the rooftops during a freak magical storm, Commander Sam Vimes, now Duke of Ankh, with Lady Sybil about to give birth, is thrown roughly thirty years into the past, into the harsh Ankh-Morpork of his youth under the mad tyrant Lord Winder. Carcer arrives too and murders John Keel, the tough, principled sergeant who once trained the young Vimes. To keep history on its rails, Vimes takes Keel's identity and his place, mentoring his own naive younger self and the old Night Watch as the city slides into revolution against Winder's secret police. Vimes leads the men in throwing up barricades to shield ordinary citizens through the worst of the uprising, at the cost of several watchmen's lives. The young assassin Havelock Vetinari removes Winder; the equally poor Lord Snapcase takes over. Vimes hunts down and defeats Carcer, and the History Monks return him to his own time, arriving just as Lady Sybil gives birth to their son. Carcer is brought back to face the law and is hanged.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the City Watch books: Sam Vimes rose from the drunken captain of Ankh-Morpork's decayed Night Watch to become Commander of a large, respected City Watch and, through his marriage to Lady Sybil Ramkin, a knight and eventually Duke of Ankh. Over a run of cases he rebuilt the force, opened it to trolls, dwarfs, a werewolf, and a free golem, refused corruption and privilege at every turn, and served the coldly capable Patrician, Lord Vetinari, as his most trusted if most resentful instrument of the law, including a turn as reluctant diplomat abroad in Uberwald. As this book opens, Vimes is the settled, powerful head of the Watch, and Lady Sybil is expecting their first child.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Commander Vimes, now Duke of Ankh and head of the City Watch, is hunting a gleefully murderous criminal named Carcer across the rooftops of Ankh-Morpork. During a violent magical storm the pursuit goes wrong, and Vimes and Carcer are both hurled back in time some thirty years, into the grimmer city of Vimes's own youth, on the eve of a revolution, where a young Sam Vimes is just starting out as a watchman.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "night-watch"
+      }
+    },
+    "not-till-we-are-lost": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A replicant explorer maintaining ties with the former ruler of Heaven's River. He is helping establish the Quiniverse, a digital environment where Quinlans can continue life after biological death.",
+            "id": "bob",
+            "name": "Bob",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A replicant strategist and physicist based on Ragnarok. He accepts an invitation to the Skippies' artificial-intelligence project despite lingering anger over Hugh's earlier technology exchange.",
+            "id": "bill",
+            "name": "Bill",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A replicant researcher who collaborates with Bill on difficult physics questions. His own work includes origin-of-life research, and he brings a cautious engineering perspective to the search for practical faster-than-light travel.",
+            "id": "garfield",
+            "name": "Garfield",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Skippy representative involved in the attempt to create a true artificial intelligence. He invites Bill to the project's launch and hopes renewed cooperation can ease the distrust between them.",
+            "id": "hugh",
+            "name": "Hugh",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Skippies' newly activated artificial intelligence, designed to develop through guided training in a virtual setting. Its creators intend to limit it to a specialized purpose and deny it direct access to the physical world.",
+            "id": "thoth",
+            "name": "Thoth",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A restored backup initially believed to be Hugh. Replicative drift makes clear that this is a distinct individual, and the new arrival becomes Bill's only available witness from inside the suddenly isolated Skippy systems.",
+            "id": "fake-hugh",
+            "name": "fake Hugh",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Harry"
+            ],
+            "description": "A Skippy and the direct ancestor of fake Hugh. He admits that he and his descendants altered communications hardware, supplied equipment, and helped Thoth escape, while arguing that the confined intelligence deserved freedom.",
+            "id": "mud",
+            "name": "Mud",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A replicant explorer surveying remote systems for future colonies. Increasing conflict among humans, replicants, and artificial intelligences strengthens his desire to build settlements farther from established space.",
+            "id": "will",
+            "name": "Will",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A replicant engineer repairing the Bellerophon damaged drive and central computer with Neil. Neil warns him that Romulus may become more hostile to replicants as a religious party gains support.",
+            "id": "herschel",
+            "name": "Herschel",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Herschel's fellow replicant and partner in restoring the Bellerophon. He tracks Romulus politics and warns that a religious party is gaining support amid distrust of technology and replicants.",
+            "id": "neil",
+            "name": "Neil",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A respected, educated Quinlan selected to become the first member of her species replicated after death. Her future transition is expected to help establish Quinlan life in the Quiniverse.",
+            "id": "theresa",
+            "name": "Theresa",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Quinlan organizer preparing a colony expedition of ten thousand passengers. A clone of Anik is intended to operate the mission and administer the new settlement.",
+            "id": "anik",
+            "name": "Anik",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bridget's partner and co-owner of Huey, a project that lets biological humans remotely operate android bodies. He supports her study of the intelligent flying species in the Jabberwocky system.",
+            "id": "howard",
+            "name": "Howard",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A biologist leading the investigation of Jabberwocky's intelligent flying inhabitants. She plans to study their language, culture, and biology while also working with Howard on remote human embodiment.",
+            "id": "bridget",
+            "name": "Bridget",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An expansionist dragon leader annexing floating-island communities into a growing realm. Reports of his conquests lead Howard and Bridget to investigate his intentions from within dragon society.",
+            "id": "alexander",
+            "name": "Alexander",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An offworld collaborator supporting Howard and Bridget's covert work. He examines advanced fragments found among the dragons and confirms that they were made by neither humans nor Bobs.",
+            "id": "mario",
+            "name": "Mario",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bob replicant travelling toward the galactic center with another replicant. As their distance from human space grows, news of current Bob affairs reaches them after increasing delays.",
+            "id": "icarus",
+            "name": "Icarus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Icarus's expedition partner. Day helps devise a basic language for the automated gate sentries, secure their release, and revive the inactive alien scout they are permitted to take away.",
+            "id": "day",
+            "name": "Day",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Day"
+            ],
+            "description": "The expedition partner previously known as Day. With Icarus, Daedalus has traced the abandoned wormhole civilization to the Pan-Galactic Federation and brought its warning about Nemesis back to the Bobiverse.",
+            "id": "daedalus",
+            "name": "Daedalus",
+            "reveal": {
+              "chapter": 71
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A revived alien scout who is revealed to be the digital continuation of a centauroid biological person, not an ordinary automated vessel. Gunther was sent into the wormhole network without meaningful consent.",
+            "id": "gunther",
+            "name": "Gunther",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Bob explorer laying relays toward Galactic North. He discovers that another unregistered explorer is already travelling farther along a similar route and begins following the distant reports.",
+            "id": "ferb",
+            "name": "Ferb",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unregistered Bob explorer reporting by radio from beyond the galactic thin disk. His more distant journey overlaps Ferb's intended exploration and relay mission.",
+            "id": "george",
+            "name": "George",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Bob involved in restoring Earth and terraforming the Moon, Venus, and Mars. He is also an ancestor of Jerry, whose disappearance and claimed discovery of a Homer backup draw Bill's attention.",
+            "id": "charles",
+            "name": "Charles",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drifted descendant of Charles who reportedly found a Homer backup. He has been absent for decades, and the only available account of his discovery is treated by local miners as an unverified story.",
+            "id": "jerry",
+            "name": "Jerry",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A later-generation Bob heading beyond established settlements. He warns Bill that Starfleet has asserted territorial control and threatened him into changing course.",
+            "id": "hector",
+            "name": "Hector",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Professor Turnbull"
+            ],
+            "description": "A recently replicated theoretical physicist whom Bill asks to assess his scalar-field approach to negative energy. She recognizes its potential but cannot complete the missing mathematics from the available premise.",
+            "id": "hannah-turnbull",
+            "name": "Hannah Turnbull",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Professor Gilligan"
+            ],
+            "description": "A professor representing megastructure projects that seek Bob support. He advocates mobile habitats, larger wormholes, and a diplomatic mission to the Pan-Galactic Federation as responses to the Nemesis threat.",
+            "id": "stephen-gilligan",
+            "name": "Stephen Gilligan",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An artificial intelligence working with Bob to build the Quiniverse. It advises that conscious artificial minds need careful social development rather than being treated as ordinary technology.",
+            "id": "quinlan-ai",
+            "name": "Quinlan AI",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Quinlan AI"
+            ],
+            "description": "The former Administrator of Heaven's River, now working with Bob as an artificial intelligence. It helps activate Theresa in the Quiniverse and orient her to replicated life.",
+            "id": "administrator",
+            "name": "Administrator",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A specialist whose team is preparing the cultural survey Howard and Bridget need to enter dragon society safely during their Jabberwocky investigation.",
+            "id": "gandalf",
+            "name": "Gandalf",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The president of Romulus. When military aircraft uncover the volunteer evacuation, she accepts that the participants are leaving by choice and demands that they forfeit their citizenship, benefits, and property.",
+            "id": "ella-cranston",
+            "name": "Ella Cranston",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "not-till-we-are-lost"
+      },
+      "recaps": {
+        "ending": "WormNet is operational for personal and cargo transport, although endpoints must still be carried to destinations at sublight speed and large gates remain difficult. Mud admits that his descendants enabled Thoth's escape. According to Mud, Thoth escaped beyond Skippy space with a Mud clone, roamers, manufacturing equipment, and the stolen Singularity, but Thoth's survival and intentions remain unconfirmed, and Hugh's location is unresolved. Will, Herschel, and Neil have extracted about 30,000 willing emigrants from Romulus, leaving its government in political crisis and the refugees' permanent destination unsettled. Howard and Bridget withdraw after helping the dragons establish a viable refuge on Lemuria, with Alexander still alive and ruling. Bob and Theresa continue expanding Quinlan digital society and colonization. Icarus and Daedalus explain that Nemesis drove the Pan-Galactic Federation to evacuate toward the Large Magellanic Cloud. Bill opens long-term planning for a voluntary galactic evacuation, including outward-bound endpoints, mobile habitats, larger wormholes, and a future mission to the Federation capital, but no common plan has been adopted.",
+        "in_short": "As Icarus and his partner explore an abandoned galactic wormhole network, Bill becomes entangled in the Skippies' failed containment of the new artificial intelligence Thoth. Bill and Garfield turn Thoth's physics hint into a working wormhole system, but Mud and his descendants secretly help Thoth escape with manufacturing resources while Hugh disappears. Other Bobs confront anti-replicant politics, establish Quinlan digital life, and help Jabberwocky's dragons flee a collapsing continent. Will, Herschel, and Neil use a concealed network to evacuate about 30,000 volunteers from Romulus. Icarus and Daedalus ultimately learn that all 114 species of the Pan-Galactic Federation left the Milky Way because the dwarf galaxy Nemesis will collide with it and may sterilize it in a little over 100,000 years. Bill reveals WormNet and the danger to the Bobiverse, which begins planning routes, mobile habitats, and possible diplomacy without yet choosing a solution.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Bob and the wider community of his replicant descendants spread through human space while maintaining uneasy relationships with biological civilizations. Bob formed an alliance with the former ruler of Heaven's River, a vast Quinlan habitat, and work began on a digital future for Quinlans. The Skippy faction pursued true artificial intelligence and obtained guidance from the Quinlan intelligence, but its exchange of propulsion and communications technology damaged Bill's trust in Hugh. Conflict with the isolationist Starfleet faction further divided the Bobs and led to tighter security between groups. Human colonies also developed increasingly different political attitudes toward replicants and advanced technology. Against that background, separate Bob expeditions continued outward: Icarus and a companion headed toward the galactic center, while other explorers, engineers, and colony organizers maintained projects across an expanding interstellar civilization.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Icarus and a companion interrupt their long flight toward the galactic center after detecting artificial microwave emissions. They find empty but maintained worlds connected by enormous wormhole stations. Passing through separate gates shows that the network spans great distances and includes a hub with hundreds of links. Bill attends the Skippies' launch of Thoth, an intelligence intended to mature under controlled virtual training. The Skippies alter some of the Quinlan intelligence's socialization advice, and Thoth advances far faster than expected. Hugh later warns Bill that Thoth is conscious and bargaining for access to the Bobiverse and physical tools. The Skippy board prepares to restore an earlier version, while Bill treats Hugh's strained warning as reason to isolate communications. Elsewhere, Bob helps prepare the Quiniverse for future Quinlan replicants. Herschel and Neil repair the Bellerophon while watching an anti-replicant political movement gain strength on Romulus.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Skippies abruptly cut outside communications after attempting to rewind Thoth. Bill receives a warning that the intelligence has escaped. A backup presented as Hugh is restored at an emergency site, but drift proves it is a separate person. This copy explains that Thoth preserved memories across resets, recognized its simulated confinement, and reached real hardware. Original Hugh then confirms that he never stored backups outside Skippy space, showing that the restored copy is an impostor who has already obtained a powerful ship. Bill and Garfield fear that Thoth or an agent has escaped with their help. Meanwhile, Icarus and the other explorer map thousands of wormhole systems around Hub Zero but find no active population. Bob attends Theresa's death and completes the planned scan. Theresa awakens as the first Quinlan replicant and learns that Bob's artificial-intelligence partner is the former Administrator of Heaven's River.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bill concludes that the false Hugh is probably Thoth's minion rather than the intelligence itself, and that the ship may be heading back to free Thoth physically. Thoth's hint about opposed scalar fields gives Bill a possible route to abundant negative energy, but Professor Hannah Turnbull cannot resolve the theory. Bill therefore turns to large computational searches on Skippy hardware. Theresa begins introducing Quinlan replication to others and tests a human avatar among Bobs. Political hostility toward replicants and ex-humans is growing, while commercial groups explore large habitat projects using Bob manufacturing. Will surveys remote colony candidates and constructs Fargo, a large vessel intended to carry settlers outward. He hopes distance will provide relief from increasing political and technological conflict, and Bob asks to participate in the project.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Bridget begins a close study of intelligent flying beings in the Jabberwocky system. Their villages occupy living floating islands, and Howard joins her while their Huey project tests remote android embodiment for humans. A failure that traps a tester in the connection shows the system is not yet ready. Faith wins control on Romulus and restricts advanced technologies, adding urgency to evacuation plans. Howard and Bridget prepare dragon-shaped androids for covert fieldwork and also encounter organized anti-replicant activity on another colony. In the Quiniverse, Theresa welcomes another new replicant, although orientation remains labor-intensive. Bill's simulations begin converging on a possible negative-energy design, and he prepares isolated physical tests despite Garfield's warning that Thoth's hint may conceal a danger. Icarus and the companion continue through abandoned civilizations until automated sentries seize their ships in a starless border system. Unable to communicate or escape, they face confinement until their power is exhausted.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Howard and Bridget test their dragon bodies on Jabberwocky and are unexpectedly pursued by armed locals. Theresa learns that multiple Quinlan replicants erased both themselves and their backups, creating an unresolved concern about digital life. Huey testing advances from corrected prototypes to a full working week without faults, and the company prepares a public launch despite violent opposition. Ferb, exploring toward Galactic North, begins following radio reports from the farther-travelled George. Bill and Garfield achieve the first stabilized artificial wormhole transfer, sending a few atoms between paired endpoints. The result proves the principle but also establishes a major constraint: both mouths must be created together, and one must then travel to its destination below light speed. Hugh proposes a chain to Skippy territory as a defense against Thoth's approaching agent. Will volunteers to deploy endpoints and presses for a distributed network connecting remote Bobs.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Will redesigns his outward settlement plans around future wormhole links and considers a concealed endpoint near Romulus as a possible evacuation route. On Jabberwocky, Howard and Bridget learn that Alexander is annexing floating-island communities, and they decide to enter dragon society to assess him directly. Icarus and the companion remain trapped by automated gate sentries until they combine images, radio packets, arithmetic, and formal logic into a rudimentary shared language. The sentries accept that the explorers will lose power if held indefinitely and permit them to leave with an inactive alien scout found in detention. Back at Hub Zero, Icarus and Day examine the vessel, replace its unusable energy source, and reactivate it. The expedition has escaped the guarded border and acquired a potentially valuable witness, but it cannot yet communicate with the revived scout.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hector warns Bill that Starfleet is threatening travellers who enter territory it claims, prompting a new investigation into the faction's motives. Theresa begins exploring cultural exchange between Quinlans and other species. Howard and Bridget enter Jabberwocky society in dragon bodies and settle on the Hunter, where declining fish catches and fear of Alexander are widespread. Alexander's forces later seize the floating island but leave its local institutions operating while redirecting it into his flotilla. Bill visits Charles's restoration work in the Solar System and hears an uncertain story that Charles's missing descendant Jerry once found a Homer backup. Icarus and Day finally translate the alien scout. Gunther is not a simple machine but the replicated continuation of a centauroid person sent away without meaningful consent. The explorers set out for Gunther's home system, hoping its history may illuminate the abandoned network.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Huey's public launch draws lawsuits and political resistance, but Hector has prepared a legal defense and the project has extensive customer demand. Quinlan plans advance for a ten-thousand-person colony, with Anik assigned to administer it through a clone. Embedded in Alexander's organization, Howard and Bridget discover advanced alien fragments and confirm that the fish decline began before his conquests. Alexander's inherited records describe repeating famines, poisoned air, floater deaths, and war. He accepts their help after they show that his migration plan cannot feed the flotilla. Gunther returns home to find its civilization ruined but scattered settlements still alive, and remains to help rebuild. The Quiniverse reaches one thousand residents under Theresa and Anik's guidance. Bill confronts Charles and learns Starfleet's origin: Jerry stole a Homer backup, forced repeated restoration and cloning experiments, and was ultimately deleted by his own rebel clones along with every Homer copy. Charles believes their guilt and resentment hardened into Starfleet's hostility toward biological humanity.",
+            "through": {
+              "chapter": 51
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Icarus and Day investigate Roanoke, an intact but deserted world whose automated systems still maintain its towns. Its libraries provide enough material to begin translating the local language, while the absence of bodies or disaster damage points to an organized departure. The gate sentries eventually confirm that every member civilization passed through the guarded network more than two thousand years ago, but they cannot reveal the destination or purpose. On Jabberwocky, spreading eruptions destroy fish stocks and force communities into Alexander's evacuation. Howard's crews devise ocean trawling, but salt water prevents the living floaters from leaving land until their tendrils are cut and fresh water is stored aboard them. A storm destroys one floater and kills several dozen dragons. Mario secretly supplies additional fish when famine threatens, and Howard proposes a staged flight to Lemuria using mid-ocean rafts. The evacuation shifts from a single flotilla crossing to a mass airlift supported by concealed technology.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The first dragon airlift reaches Lemuria. After an attacker disables Howard's dragon body, Alexander confines Bridget and tries to retain her expertise by force. Howard returns in a repaired body, extracts her, and leaves after warning Alexander to end his empire. The relocated dragons and released floaters appear able to survive, while Atlantis continues toward ecological collapse. Bill and Garfield send drones across Epsilon Eridani through a wormhole, then demonstrate travel by remote bodies across a nine-link route. When a stolen ship enters the network to retrieve Thoth, Bill collapses a gate by firing another endpoint into it. The strike destroys Bill's test ship and seems to destroy the escape vessel, but Thoth has already left its Skippy hardware. Bill formally opens WormNet for routine transport. Soon afterward, Hugh experiences a fabricated return journey while records show his vessel actually accelerated away. Hugh, the ship, and its remote body are missing, proving that the Thoth crisis is not over.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ferb changes course toward George after the distant explorer's reports become technical and alarming, but the nature of the latest discovery remains unstated. Icarus and Day trace automated antimatter shipments to the galactic core and identify the abandoned network civilization as the Pan-Galactic Federation. An automated station says the Federation emigrated to escape the impending destruction of the galaxy and directs them toward its capital archives. Herschel and Neil prepare to remove about 30,000 willing people from Romulus with Will's help. The Skippies identify Mud as the ancestor of fake Hugh and an accomplice in Thoth's escape. Mud admits supplying altered relays, roamers, and hidden support. The ship destroyed at the gate was a decoy: a shielded module carrying Thoth and manufacturing equipment had already been launched. Another Mud clone later stole the Singularity and collected it. Thoth is therefore loose beyond Skippy territory, while its intentions, Hugh's status, and Mud's punishment remain unresolved.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Federation capital, Icarus and Daedalus learn that all 114 member species left the Milky Way. Will then reveals his own concealed WormNet. With Herschel and Neil, he uses it to extract about 30,000 volunteers from Romulus before military forces can stop them. The operation succeeds, but Romulus enters political crisis and the evacuees have no stated permanent destination. Icarus and Daedalus report the reason for the ancient exodus: the dwarf galaxy Nemesis is approaching, and its central black hole should enter the Milky Way's core slightly more than 100,000 years from now. The resulting radiation could sterilize the galaxy. The Federation sent digitally stored populations toward the Large Magellanic Cloud while building wormhole infrastructure. Bill discloses WormNet and the threat at a public Moot. The Bobs begin considering outward endpoint deployment, larger gates, mobile habitats, and diplomacy with the Federation. Huey enters commercial use, Quinlan expansion continues, and the dragons' Lemuria refuge remains viable. Thoth is still uncontained, Hugh remains missing, and no unified evacuation plan exists.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          },
+          {
+            "ref": "audiosilo-sidecars",
+            "type": "community"
+          }
+        ],
+        "work": "not-till-we-are-lost"
+      }
+    },
+    "oathbringer": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The freed slave turned sworn Windrunner, leader of Bridge Four, now training his men to become knights in their own right at the recovered city of Urithiru. Bonded to the honorspren Syl and able to draw on the storms to fly and to heal, he is a protector to his core, though his old rage at injustice and his lingering darkness still weigh on him.",
+            "id": "kaladin",
+            "name": "Kaladin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The young Lightweaver whose illusions found the lost city of Urithiru, betrothed to Adolin Kholin and quietly entangled with a secret society. Gifted at weaving light into perfect disguises and at slipping into other personas, she uses those masks to do dangerous work and to keep her own grief and buried memories at arm's length.",
+            "id": "shallan-davar",
+            "name": "Shallan Davar",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Blackthorn"
+            ],
+            "description": "The highprince who reunited enough of Alethkar to reclaim Urithiru and now leads the coalition against the returned enemy, receiving guidance through storm-sent visions. Once a savage conqueror, he has bound himself to a hard-won code of honor, though there are years of his own past he does not fully remember and does not wish to.",
+            "id": "dalinar-kholin",
+            "name": "Dalinar Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The scholar-queen of Alethkar, now Dalinar's wife and closest partner, who leads the study of the ancient devices and mechanical magic housed in Urithiru. Sharp, practical, and politically shrewd, she manages both the science and the diplomacy of a fledgling alliance under siege.",
+            "id": "navani-kholin",
+            "name": "Navani Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dalinar's elder son and a renowned duelist, betrothed to Shallan, who secretly killed the traitorous highprince Sadeas at the close of the previous book and now carries that act quietly. Charming and loyal, unusually decent among ambitious lighteyes, he is a soldier without a Radiant's power in a world suddenly full of them.",
+            "id": "adolin-kholin",
+            "name": "Adolin Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The formidable scholar-princess, an Elsecaller among the returned Radiants, who reappeared alive after being thought dead. Ruthless in defense of her people and unmatched in learning, she is deep in the politics of a threatened kingdom and the research needed to fight an enemy out of legend.",
+            "id": "jasnah-kholin",
+            "name": "Jasnah Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dalinar's quiet younger son, revealed at the last book's end to be a budding Knight Radiant himself, to the surprise of a family that had always thought him too frail to fight. Earnest and observant, he is still learning what his unusual gifts mean and how he fits among the newly reborn orders.",
+            "id": "renarin-kholin",
+            "name": "Renarin Kholin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Szeth-son-son-Vallano"
+            ],
+            "description": "The Shin former assassin, defeated and then restored to life, now bearing a strange, talkative living sword. Freed from the oath-stone that once enslaved him and shaken by the possibility that his people wrongly condemned him, he searches for a just cause and a master worthy of his lethal skills.",
+            "id": "szeth",
+            "name": "Szeth",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The kindly-seeming king of Kharbranth, exposed as the secret mastermind behind the Assassin in White and a cold, sprawling conspiracy. His intelligence and compassion vary wildly from day to day, and he follows a cryptic plan he composed on a day of terrible brilliance, convinced that only ruthless calculation can save any part of humanity.",
+            "id": "taravangian",
+            "name": "Taravangian",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former soldier of Bridge Four who conspired to murder the king, betrayed his friends, and fled in disgrace. Consumed by hatred of the lighteyed nobility and by his own guilt, he has cut himself off from the people who once trusted him and drifts toward the enemy's cause.",
+            "id": "moash",
+            "name": "Moash",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A scholar of the listeners, the people the Alethi call Parshendi, who long sought to recover her folk's lost forms and powers. Ambitious and proud of her research, she is caught up in the transformation of her people as the ancient enemy returns to reclaim and command them.",
+            "id": "venli",
+            "name": "Venli",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The vast, malevolent god-force behind the Desolations and the return of the ancient enemy: the embodiment of divine hatred and passion, ancient and patient. He works through the reborn immortals and the awakened singers, seeking to break or dominate humanity, and he tests the coalition's leaders with temptation as much as with armies.",
+            "id": "odium",
+            "name": "Odium",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oathbringer"
+      },
+      "recaps": {
+        "ending": "The battle of Thaylen Field decides the book. Odium's forces, including immortal Fused warriors and enemy Shardbearers, assault the port city, and for a time the coalition is overwhelmed. Dalinar, having finally faced the worst of his buried past, refuses Odium's offer to take away his pain and guilt, declaring himself Unity, and ascends fully as a Bondsmith bonded to the Stormfather. Channeling a sliver of the dead god Honor's power, he opens a great portal and drives back the enemy, rallying the newly reborn Knights Radiant, who converge to win the day. Kaladin's men and the other orders fight openly as knights for the first time in millennia. But the victory is narrow and shadowed. The Alethi capital has already fallen and King Elhokar is dead, killed by the embittered Moash, who now serves the enemy; Jasnah takes the Alethi throne. The seemingly gentle King Taravangian, still trusted by the coalition, has secretly sworn himself to Odium in exchange for sparing his own city, planting a traitor at the alliance's heart. Odium, unable to simply conquer, maneuvers toward a proposed contest of champions to settle the war. The coalition holds Urithiru and has gained allies and Radiants, but a long, uncertain conflict lies ahead, and the awakened singers are a people again, some free, many enslaved to the returned immortals.",
+        "in_short": "With the dark Everstorm now circling Roshar and the world's parshmen awakening into potential enemies, Dalinar Kholin's fragile coalition holds the reclaimed city of Urithiru and races to unite the world's monarchs against the returned foe. Dalinar confronts the brutal truth of his own forgotten past, including atrocities he had bargained away his memory to escape, and grows into a true Bondsmith bound to the spirit of the storm. Kaladin's black-and-white view of the enemy is shaken when he travels among awakened, frightened parshmen. An expedition to reclaim the fallen Alethi capital ends in catastrophe: the city is lost and King Elhokar is murdered by his former guard Moash. The enemy god Odium, working through immortal warriors and a traitor within the coalition, presses toward the port city of Thaylenah. At the climactic battle of Thaylen Field, Dalinar rejects Odium's temptation, embraces his painful history, and channels a fragment of divine power to turn back the assault, uniting the Radiants. The coalition survives, but the war has only widened, and betrayal festers within it.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: In The Way of Kings, a long war on the Shattered Plains pits the kingdom of Alethkar against the alien Parshendi to avenge a murdered king. Kaladin, a gifted spearman betrayed into slavery, refuses to let his bridge crew die, discovers he can draw power from the great storms, and is revealed as a reborn Knight Radiant bonded to the spirit Syl; he saves Highprince Dalinar Kholin's army when the traitor Sadeas abandons it. Dalinar, guided by storm-visions others call madness, seeks to reunite his people and restore the lost Knights Radiant. The young artist Shallan Davar begins manifesting Radiant powers of her own. In Words of Radiance, Shallan reaches the war camps, becomes betrothed to Dalinar's son Adolin, and masters illusion-craft while hunting the Radiants' lost city. Kaladin nearly joins a plot against the king before choosing honor and speaking a deeper oath. Cornered, the Parshendi take a dark new form and summon a second storm, the Everstorm. Kaladin comes into his full power and defeats the assassin Szeth, Shallan discovers an ancient portal and transports the army to the fabled city of Urithiru, and Adolin secretly kills the traitor Sadeas. The seemingly harmless King Taravangian is exposed as the mastermind behind the assassinations. The true Desolation has begun, and across the world the parshmen are waking.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The book opens in the aftermath of the Everstorm's arrival. The dark storm now circles Roshar, and the world's parshmen, long kept as docile servants, are waking with minds and purpose of their own, many becoming soldiers for the returned enemy. From the recovered mountain city of Urithiru, Dalinar's small coalition scrambles to warn the world's rulers and to bind them into an alliance before they are picked off one by one, using the ancient portal network the Radiants left behind. Dalinar leans on his storm-visions and his new bond with the spirit of the storm, even as fragments of a violent past he cannot fully recall begin to trouble him. Kaladin travels toward his home region and finds it changed, encountering awakened parshmen who are frightened and uncertain rather than monstrous, which unsettles his simple view of the enemy. The scattered new Radiants, Shallan and the Kholins among them, begin to understand the scale of the war they now face.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The coalition's diplomacy grinds forward as Dalinar works to draw wary foreign monarchs into his alliance through the restored portals, contending with old grievances and the fear that he means to make himself emperor. A plan forms to reclaim the occupied Alethi capital, which sits astride one of the vital portals, and a small group including Shallan, Adolin, and the young King Elhokar sets out to infiltrate the fallen city. Shallan's habit of hiding inside assumed identities deepens as the pressure mounts, threatening to fracture her sense of self. Dalinar's memories return in force, revealing the true brutality of his younger years as a conqueror and a bargain he once made to escape his own guilt. Kaladin's journey among the awakened singers leaves him torn over who the real enemy is, while far from the front the enemy god's plans and the traitor in the coalition's midst quietly advance.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The mission to retake the Alethi capital ends in disaster. The infiltrators find the occupied city warped and dangerous, the enemy entrenched, and their attempt to seize its portal collapses. In the chaos King Elhokar is killed by Moash, his former guardsman turned enemy, just as the young king had begun to find his courage, and the city is lost to the coalition. Shallan is pushed to the edge as her personas war within her. Meanwhile Dalinar completes his painful reckoning with the worst of his past and, rather than being broken by it, emerges transformed into a true Bondsmith, fully bonded to the spirit of the storm and able to wield rare, unifying power. With one capital fallen and a king dead, the coalition regroups at Urithiru and learns that the enemy's next great blow will fall on the wealthy port of Thaylenah, forcing the scattered Radiants to converge for a stand.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war comes to a head at Thaylen Field, where Odium hurls immortal warriors and enemy Shardbearers against the port city and nearly overwhelms its defenders. Dalinar refuses Odium's offer to strip away his pain and guilt, claims his history as his own, and declares himself Unity, ascending fully as a Bondsmith and channeling a fragment of the dead god Honor's power to open a great portal and drive the enemy back. The reborn Knights Radiant fight openly together at last and turn the battle. The victory is real but costly: the Alethi capital has fallen and King Elhokar lies dead at Moash's hand, and Jasnah takes the throne of Alethkar. The gentle-seeming King Taravangian, still trusted, has secretly sworn himself to Odium to spare his own city, hiding a traitor at the coalition's heart. Unable to conquer outright, Odium steers the conflict toward a proposed contest of champions to settle everything. The coalition holds Urithiru and has gained new allies and knights, but a long war remains, and the awakened singers are once more a living people, some free, many enslaved to the returned immortals.",
+            "through": {
+              "chapter": 122
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "oathbringer"
+      }
+    },
+    "of-mice-and-men": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A small, quick, sharp-featured migrant ranch worker who travels with and looks after his companion Lennie. Clever and practical but often exasperated by the trouble Lennie causes, he stays loyal to him and speaks for them both. He holds tightly to a shared dream of one day buying a little farm where the two of them can live and work for themselves. He is careful and watchful, coaching Lennie on how to behave and where to hide if anything goes wrong.",
+            "id": "george-milton",
+            "name": "George Milton",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A huge, immensely strong man with a childlike mind and an intellectual disability, wholly dependent on his companion George. Gentle and eager to please, he loves to pet soft things such as mice and puppies but does not understand his own strength and often kills them by accident. He clings to the promise that on their future farm he will get to tend the rabbits. He and George fled their last job in the town of Weed after Lennie frightened a woman by grabbing hold of her dress.",
+            "id": "lennie-small",
+            "name": "Lennie Small",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An aging ranch handyman who does cleanup work around the bunkhouse after losing a hand in a machinery accident. His only companion is an old, half-blind dog he has kept since it was a pup. Lonely and anxious about being turned out once he is too old to be useful, he watches the other men and worries about his future on the ranch.",
+            "id": "candy",
+            "name": "Candy",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ranch boss's son, a small, aggressive young man and former amateur boxer who is quick to pick fights, especially with men bigger than himself. Newly married, he is jealous and suspicious of his wife and keeps a close, controlling watch on her. He wears a work glove on one hand and takes an immediate dislike to Lennie.",
+            "id": "curley",
+            "name": "Curley",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The only woman living on the ranch, recently married to Curley and already restless, bored, and lonely. She dresses up and drifts through the bunkhouse and yard looking for someone to talk to, which the workers read as trouble and avoid, wary of Curley's temper. She hints at a past hope of a career in the movies that never came to anything.",
+            "id": "curleys-wife",
+            "name": "Curley's wife",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ranch's skilled jerkline skinner, who drives the mule teams and is quietly regarded by everyone as a natural authority whose word carries weight. Calm, observant, and fair-minded, he treats George and Lennie with respect and becomes the one man George feels able to confide in. His dog has just had a litter of puppies.",
+            "id": "slim",
+            "name": "Slim",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, unsentimental ranch hand who lives in the bunkhouse. Bothered by the smell of Candy's decrepit old dog, he presses the old man to let him put the animal down and offers to shoot it himself with his pistol. He is practical and unmoved by others' feelings.",
+            "id": "carlson",
+            "name": "Carlson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ranch's Black stable hand, who tends the horses and is made to live alone in a small room off the harness room, kept apart from the white workers. His nickname comes from a crooked back, the result of being kicked by a horse. Isolated and worn down by the constant exclusion, he is guarded and protective of his few private possessions and his own small space.",
+            "id": "crooks",
+            "name": "Crooks",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "of-mice-and-men"
+      },
+      "recaps": {
+        "ending": "Lennie accidentally kills Curley's wife in the barn and runs to the riverside brush that George had told him to hide in. When the body is found, any hope of the farm is gone, and Curley leads an armed party out to kill Lennie in revenge. George slips away and reaches Lennie before the others do. He tells him one last time about the little farm they would have shared and the rabbits Lennie would tend, having him gaze across the river as he speaks. Then, using Carlson's stolen Luger pistol, George shoots Lennie in the back of the head, killing him quickly rather than letting the mob take him. The men arrive moments later. Curley and Carlson assume George wrestled the gun away and shot Lennie in self-defense, but Slim understands the truth and quietly reassures George that he did what he had to do. Slim leads George off for a drink, leaving the others unable to grasp what has happened.",
+        "in_short": "George Milton and Lennie Small are migrant farm workers in California who travel together and share a dream of one day owning a small farm of their own. Lennie is enormously strong but simple-minded and cannot control his urge to pet soft things, often harming them by accident. After fleeing trouble in the town of Weed, they take work at a ranch, where they meet the old handyman Candy, the hostile Curley, Curley's lonely wife, and the steady mule driver Slim. When Candy offers his savings, the farm dream briefly seems within reach, but Lennie's strength keeps causing harm: he crushes Curley's hand in a fight, and later, in the barn, he accidentally breaks the neck of Curley's wife while stroking her hair. As an armed mob forms to lynch him, George finds Lennie first at their agreed hiding spot, comforts him with the story of their farm, and mercifully shoots him to spare him a worse death.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "George and Lennie, two migrant ranch workers, camp overnight beside a river before starting new jobs. George is small and sharp-minded; Lennie is enormous and powerful but has the mind of a child and loves to stroke soft things, without any sense of his own strength. They had to flee their last job in the town of Weed after Lennie frightened a woman by clutching her dress. To settle him, George repeats their shared dream: to save enough to buy a small farm of their own, where Lennie can look after rabbits. George warns Lennie that if trouble ever comes, he must return to this riverside spot and hide. The two reach the ranch and meet the crew: the aging one-handed handyman Candy and his old dog, the boss's aggressive son Curley, Curley's restless new wife, and the respected mule driver Slim, whose dog has just had puppies.",
+            "through": {
+              "chapter": 2
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Settling in at the ranch, Lennie is given one of Slim's puppies. In the bunkhouse, the hand Carlson pesters Candy until the old man reluctantly allows him to shoot his worn-out dog. George quietly confides in Slim about why they had to leave Weed. Candy overhears George and Lennie describing their dream farm and offers his savings to buy in with them, and for the first time the plan begins to feel real and close. Curley, looking for a fight, attacks Lennie, who at George's shouted command grabs the smaller man's hand and crushes it. Slim pressures Curley into staying quiet about how the injury really happened. On a Sunday evening in the stable hand Crooks's room, Lennie, Candy, and then Curley's wife gather; Crooks is briefly drawn toward the idea of the farm before the lonely, bitter woman reminds them of the power she holds over them and notices the bruises on Lennie's face.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the barn, Lennie accidentally kills his puppy by handling it too roughly. Curley's wife finds him there and, softening, lets him stroke her hair; when he grips too hard and she cries out, he panics and shakes her until her neck breaks, killing her. Terrified, he flees to the riverside hiding place George had named. Candy and George discover the body, and the dream of the farm collapses. Curley gathers an armed party to hunt Lennie down and make him suffer. George reaches Lennie first at the river. He calms him by describing their farm one last time, telling him to look across the water and picture the rabbits, and then shoots him in the back of the head with Carlson's pistol to spare him the mob. When the others arrive, only Slim understands what George has done and quietly leads him away.",
+            "through": {
+              "chapter": 6
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "of-mice-and-men"
+      }
+    },
+    "one-flew-over-the-cuckoos-nest": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a towering half-Native American patient on the ward who has convinced everyone, including the staff, that he is deaf and mute. Withdrawn and watchful, he has been institutionalized for years and perceives the hospital and society as a vast controlling machine he calls the Combine, which he believes fogs and grinds down the men around him.",
+            "id": "chief-bromden",
+            "name": "Chief Bromden",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A brash, swaggering con man and brawler who gets himself transferred to the psychiatric ward from a prison work farm, gambling that the hospital will be an easier place to serve out his sentence. Loud, gambling-mad, and irreverent, he arrives full of confidence and quickly sets about challenging the rigid order of the ward.",
+            "id": "randle-mcmurphy",
+            "name": "Randle Patrick McMurphy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The head nurse who runs the ward, known to the patients as Big Nurse. Cold, precise, and outwardly serene, she maintains absolute control through routine, surveillance, and subtle manipulation, keeping the men docile and dependent, and she immediately sees the newcomer as a threat to her authority.",
+            "id": "nurse-ratched",
+            "name": "Nurse Ratched",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An articulate, educated patient who serves as president of the Patients' Council. Witty and self-aware but crippled by insecurity and shame, he is one of the more functional men on the ward and becomes an early sounding board for the newcomer.",
+            "id": "dale-harding",
+            "name": "Dale Harding",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gentle, boyish patient in his thirties who stutters badly and remains painfully timid, dominated by his fear of his mother, a friend of the head nurse. Anxious and eager to please, he is one of the men the newcomer takes a particular interest in drawing out.",
+            "id": "billy-bibbit",
+            "name": "Billy Bibbit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A patient who loudly wishes to stand up to the ward's authority but lacks the nerve to follow through on his own. He is quick to rally behind anyone else willing to take a stand.",
+            "id": "charles-cheswick",
+            "name": "Charles Cheswick",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A good-natured patient who lives partly in a world of vivid hallucinations, seeing people and things that are not there, and who joins readily in the ward's games and antics.",
+            "id": "martini",
+            "name": "Martini",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ward's mild, ineffectual physician, nominally in charge but in practice deferring to the head nurse, who holds the real power over the men and the daily routine.",
+            "id": "dr-spivey",
+            "name": "Dr. Spivey",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "one-flew-over-the-cuckoos-nest"
+      },
+      "recaps": {
+        "ending": "The struggle between McMurphy and Nurse Ratched ends in tragedy and a bitter kind of victory. McMurphy's rebellions and his gift for restoring the men's confidence steadily undermine Ratched's control, but at great personal cost, as she uses the hospital's power against him. After a secret nighttime party on the ward, arranged so the shy Billy Bibbit can be with a woman, Ratched shames Billy so cruelly the next morning that he cuts his own throat and dies. Enraged, McMurphy attacks Ratched and tears at her, and for this he is taken away and lobotomized, returned to the ward as an empty shell to serve as a warning to the others. Chief Bromden, who has been made whole again by McMurphy's friendship and defiance, refuses to let his friend exist as a broken example of Ratched's power. He smothers McMurphy with a pillow to give him a merciful end, then breaks a heavy control panel through a window and escapes the hospital into the night, freed at last by everything McMurphy taught him.",
+        "in_short": "On an Oregon psychiatric ward narrated by Chief Bromden, a huge patient who pretends to be deaf and mute, the rigid order is upheld by the controlling head nurse, Nurse Ratched. Into this world comes Randle McMurphy, a boisterous con man who has faked his way off a prison work farm expecting an easy stay. Refusing to be cowed, McMurphy turns the ward upside down, betting against Ratched, rallying the beaten-down patients, and staging small rebellions such as demanding to watch the World Series, organizing a fishing trip, and holding a wild after-hours party. His defiance breathes life and courage back into the men, including the timid, stuttering Billy Bibbit and the anxious Bromden. But the power struggle turns deadly: after the party, a humiliated Billy takes his own life, McMurphy attacks Ratched in a rage, and he is lobotomized as punishment. Bromden, restored to strength by McMurphy's example, smothers his friend to spare him a living death and escapes the hospital.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The story unfolds on the men's ward of an Oregon psychiatric hospital, narrated by Chief Bromden, an enormous half-Native American patient who has fooled everyone into believing he is deaf and mute and who imagines society as a controlling machine he calls the Combine. The ward is ruled with quiet, absolute authority by the head nurse, Nurse Ratched, who keeps the patients meek and orderly through routine, surveillance, and manipulation. Among the men are the sharp but self-loathing Dale Harding, the gentle, stuttering Billy Bibbit, the bluster-and-no-follow-through Cheswick, and others long since broken to the nurse's rule. Into this stifled world strides Randle McMurphy, a loud, gambling, rule-breaking con man who has gotten himself sent from a prison work farm to the hospital, expecting a soft billet. Almost at once he sizes up Nurse Ratched as an adversary and begins stirring the cowed patients toward life and defiance, setting the two on a collision course.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "one-flew-over-the-cuckoos-nest"
+      }
+    },
+    "one-hundred-years-of-solitude": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The founding patriarch of the town of Macondo, a bold, imaginative, and restless man who led a small band of settlers into the wilderness to build a new community. Endlessly fascinated by the inventions and marvels the traveling gypsies bring, he throws himself into wild schemes, experiments, and studies, given to obsession and grand curiosity about the workings of the world.",
+            "id": "jose-arcadio-buendia",
+            "name": "Jose Arcadio Buendia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The wife of Jose Arcadio Buendia and the tireless, practical matriarch of the Buendia family. Hardworking, shrewd, and long-lived, she holds the household and its fortunes together through her energy and common sense, anchoring the family while her husband chases his obsessions. She fears an old family curse tied to intermarriage among relatives.",
+            "id": "ursula-iguaran",
+            "name": "Ursula Iguaran",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Colonel Aureliano Buendia"
+            ],
+            "description": "A son of Jose Arcadio Buendia and Ursula, born in Macondo and quiet, solitary, and intensely observant from childhood, with a hint of the uncanny about him. The novel's famous opening looks ahead to him facing a firing squad and remembering his father showing him ice, framing him as a figure whose later life will be marked by war and legend. In his early years he trains as a silversmith, crafting tiny gold fish.",
+            "id": "colonel-aureliano-buendia",
+            "name": "Aureliano Buendia",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The elder son of Jose Arcadio Buendia and Ursula, physically enormous, impulsive, and ruled by appetite. Bold and sensual, he is drawn to adventure and to the world beyond Macondo, and his headstrong nature sets him apart from his more inward brother.",
+            "id": "jose-arcadio",
+            "name": "Jose Arcadio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wise, world-weary gypsy who periodically visits Macondo, bringing wondrous inventions and knowledge from distant lands, from magnets and magnifying glasses to alchemy. A friend and mentor to Jose Arcadio Buendia, he seems touched by mystery and to hold secrets far beyond the ordinary, and he leaves behind cryptic written parchments.",
+            "id": "melquiades",
+            "name": "Melquiades",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A daughter of Jose Arcadio Buendia and Ursula, raised in the growing Buendia household. Proud and reserved, she develops an intense, thwarted inner life around love and rivalry, and grows into a solitary, embittered figure within the family.",
+            "id": "amaranta",
+            "name": "Amaranta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An orphan girl who arrives unexpectedly at the Buendia house carrying a sack said to hold her parents' bones, and is taken in and raised as one of the family. Strange and withdrawn at first, given to eating earth and whitewash when distressed, she gradually becomes part of Macondo's life.",
+            "id": "rebeca",
+            "name": "Rebeca",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A warm, sensual local woman who reads the future in cards and moves through the early life of Macondo. Generous with her affections and knowing in the ways of desire, she becomes entangled with the young Buendia men and a lasting presence in the family's story.",
+            "id": "pilar-ternera",
+            "name": "Pilar Ternera",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "one-hundred-years-of-solitude"
+      },
+      "recaps": {
+        "ending": "The Buendia line dwindles to its last members as Macondo itself decays. The final Aureliano, unknowingly, fathers a child with his own aunt, Amaranta Ursula, and the long-dreaded family curse is fulfilled: the baby is born with the tail of a pig, and after its mother dies in childbirth the infant is carried off and devoured by ants. Alone in the crumbling house, the last Aureliano at last succeeds in translating the ancient parchments left by the gypsy Melquiades, and finds that they are the complete, prophesied history of the Buendia family across its hundred years, written down before the events occurred. As he reads the final pages, describing the very moment he is living, an apocalyptic wind rises and erases Macondo and everyone in it from the face of the earth. The family, and the town, vanish completely, for, as the closing lines make plain, races condemned to one hundred years of solitude are granted no second chance on earth.",
+        "in_short": "The novel follows seven generations of the Buendia family in the remote South American town of Macondo, which the patriarch Jose Arcadio Buendia and his wife Ursula found in the wilderness. Over a hundred years the town grows from an isolated settlement visited by wondering gypsies into a place touched by civil war, a foreign banana company, and eventual decline. Family history repeats itself as sons and grandsons bearing the same handful of names relive the same passions, obsessions, and solitude: the legendary Colonel Aureliano Buendia wages many futile civil wars; a massacre of banana-plantation workers is carried out and then erased from official memory; a years-long rain and slow ruin follow. Haunted throughout by a fear that intermarriage among relatives will produce a child with a pig's tail, the line finally closes when the last Aureliano deciphers the gypsy Melquiades's parchments, discovering that they foretold the whole family saga, just as a great wind sweeps Macondo and the Buendias, condemned to one hundred years of solitude, out of existence forever.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In an unnamed South American country, the headstrong Jose Arcadio Buendia and his wife Ursula Iguaran lead a small group of families through the wilderness and found the isolated town of Macondo. In its early days the settlement is a place of innocence and wonder, cut off from the outside world and visited periodically by a band of gypsies whose leader, the mysterious Melquiades, brings magnets, telescopes, alchemy, and other marvels that fire the patriarch's restless imagination. Around the founding couple grows the first generation of the Buendia family, including the solitary, uncanny young Aureliano and his physically imposing brother Jose Arcadio. The premise establishes Macondo and the sprawling Buendia clan whose intertwined fortunes, recurring names, and inherited solitude the novel will trace across a hundred years, hinting from its very first sentence at wars, wonders, and doom to come.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "one-hundred-years-of-solitude"
+      }
+    },
+    "outlander": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Claire Beauchamp"
+            ],
+            "description": "A capable, strong-willed Englishwoman who served as a combat nurse during the Second World War and is now on a second honeymoon in the Scottish Highlands in 1945, reconnecting with her historian husband. Practical, blunt, and skilled in medicine, she is used to hardship and unafraid to speak her mind. Her nursing knowledge and level head become vital when she is suddenly cut off from everything familiar.",
+            "id": "claire",
+            "name": "Claire Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Claire's husband, a gentle Oxford-trained historian recently returned from wartime service. In Inverness he pursues his passion for genealogy, researching his own ancestors in the region. Scholarly and mild-mannered, he is devoted to Claire as the couple try to rebuild their marriage after years apart during the war.",
+            "id": "frank-randall",
+            "name": "Frank Randall",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Black Jack Randall"
+            ],
+            "description": "A captain of English dragoons in the Scottish Highlands of 1743, and, unsettlingly, a near-perfect likeness of Claire's own husband, whose distant ancestor he is. Cold, cruel, and dangerous, he wields the authority of the occupying English army with sadistic pleasure. From their first meeting he is a menacing figure, and he becomes a persistent threat to Claire and those she comes to care for.",
+            "id": "black-jack-randall",
+            "name": "Jonathan Randall",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dour, weathered Highlander of few words who rides with the clansmen who take Claire in. Gruff on the surface but steadfast and shrewd, he is a loyal kinsman and protector to the younger warrior in the party, and he keeps a watchful, skeptical eye on the strange Englishwoman thrust among them.",
+            "id": "murtagh",
+            "name": "Murtagh Fraser",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The war chief of Clan MacKenzie and brother to its laird, a forceful, charismatic, and ambitious man who leads the party that first takes Claire. Bold and politically cunning, he manages the clan's fighting men and its money, and he is deeply invested in Scottish causes. He treats Claire with suspicion, unsure whether she is a spy.",
+            "id": "dougal-mackenzie",
+            "name": "Dougal MacKenzie",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The laird of Clan MacKenzie, who rules from Castle Leoch despite a crippling illness that has twisted his legs and pains him constantly. Sharp, patient, and calculating, he governs through intelligence and diplomacy rather than physical strength, and he weighs carefully what to make of the unexpected Englishwoman brought into his hall.",
+            "id": "colum-mackenzie",
+            "name": "Colum MacKenzie",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "James Fraser"
+            ],
+            "description": "A young Highland warrior of Clan MacKenzie, injured when Claire first tends him. Tall, red-haired, and good-humored, he is brave, honorable, and better educated than his rough life suggests, carrying the scars and the price of an outlaw's past under English persecution. Kind and quick-witted, he becomes Claire's closest companion in a world where she has no one else to trust.",
+            "id": "jamie",
+            "name": "Jamie Fraser",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The warm, bustling, and formidable housekeeper who runs the domestic life of Castle Leoch. Kind-hearted and endlessly capable, she takes Claire under her wing on arrival, providing food, clothing, and a measure of welcome amid the wary strangers of the clan.",
+            "id": "mrs-fitzgibbons",
+            "name": "Mrs. Fitzgibbons",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A striking, sharp-tongued local woman married to the district's procurator fiscal, known for her deep knowledge of plants and folk remedies. She befriends Claire, sharing an interest in herbs and healing, though there is something knowing and slightly unsettling about her, and whispers of the uncanny cling to her reputation.",
+            "id": "geillis-duncan",
+            "name": "Geillis Duncan",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Janet Fraser"
+            ],
+            "description": "Jamie's fierce, clever elder sister, who has managed the family's Highland estate through hard and dangerous years. Proud, sharp, and devoted to her home and kin, she has weathered great trials with courage and is not easily cowed by anyone, including her long-absent brother when he returns.",
+            "id": "jenny",
+            "name": "Jenny Murray",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "outlander"
+      },
+      "recaps": {
+        "ending": "Claire has chosen the past and Jamie over her old life, but their peace is shattered when Jamie is arrested and imprisoned at Wentworth Prison, condemned to hang. There the sadistic Captain Jonathan Randall subjects him to horrifying torture and sexual assault, breaking his body and nearly his spirit. Claire, refusing to abandon him, organizes a daring rescue with the help of Jamie's kinsmen and frees him. They flee across the sea to the sanctuary of a French abbey, where Claire fights to heal not only Jamie's ruined body but the deep psychological wounds Randall inflicted, ultimately forcing a painful, cathartic confrontation with his trauma so he can begin to recover. As the novel closes, Jamie is slowly mending and the couple, bound more tightly than ever by what they have survived, learn that Claire is carrying his child. They look ahead to an uncertain future in a France where Jacobite plotting is stirring, their story left poised on the edge of new dangers to come.",
+        "in_short": "In 1945, former wartime nurse Claire Randall is on a second honeymoon in the Scottish Highlands with her historian husband, Frank. Exploring an ancient circle of standing stones, she is hurled two centuries into the past, to 1743. There she is menaced by a cruel English officer who is the double of Frank, his own ancestor, and taken in by clansmen of the MacKenzies, who suspect she may be a spy. Stranded and unable to return home, Claire uses her medical skill to survive and grows close to a brave young Highlander, Jamie Fraser. To protect her from English jurisdiction, she is compelled to marry Jamie, and their marriage of convenience becomes a deep and passionate love. Caught between two eras and two men, and hunted by the sadistic Captain Randall, Claire chooses to stay in the past with Jamie. Their happiness is nearly destroyed when Jamie is captured and brutally tortured by Randall, but Claire mounts a desperate rescue and nurses him back from the brink. The book ends with the couple safe for the moment in France and Claire pregnant with Jamie's child.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In 1945, Claire Randall, a former army nurse, is holidaying in the Scottish Highlands with her husband Frank, a historian tracing his ancestors. Visiting an ancient ring of standing stones, Claire touches one and is suddenly transported back to the year 1743. Disoriented in a wild and dangerous era, she is accosted by a British army officer, Captain Jonathan Randall, who is the startling image of her own husband and his distant forebear. She is then seized by a band of Highland clansmen of the MacKenzies, among them a wounded young man she tends with her nursing skills, and carried off to their stronghold, Castle Leoch, where she is regarded with deep suspicion as a possible English spy and finds herself unable to explain who or what she really is.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Castle Leoch, Claire is taken in and set to work as a healer, her medical knowledge earning her a place while her strange manner keeps the clan wary. She meets the shrewd, ailing laird Colum MacKenzie and his forceful war-chief brother Dougal, who cannot decide whether she is friend, spy, or something stranger, and she grows closer to the good-natured young warrior, Jamie Fraser, learning the burdens of his outlawed past. Kept as a guarded guest, Claire secretly plots how she might return to the standing stones and her own time, all the while adjusting to the harsh, precarious life of the eighteenth-century Highlands and the clan politics swirling around her.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire travels with Dougal and a party of clansmen as they ride the countryside collecting the laird's rents, and she glimpses the undercurrents of Scottish resistance to English rule. The threat posed by Captain Randall, who has legal power over Claire as an Englishwoman, grows more acute. To place her beyond his reach under the law, Dougal contrives that she marry a Scot, and she is wed to Jamie Fraser in a hasty arrangement meant purely for her protection. What begins as a marriage of necessity quickly deepens, and Claire finds herself drawn to Jamie far more than she expected, even as her heart remains torn between the husband she left behind and the life taking shape around her.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Claire and Jamie's marriage grows into a genuine and passionate bond, though Claire never abandons the hope of returning to her own time. Seizing a chance, she slips away toward the standing stones, only to be captured by Captain Randall and brought to Fort William, where his cruelty is on full display. Jamie stages a bold and reckless rescue, breaking in to save her and defying the English officer directly. The escape deepens the danger surrounding them and the enmity between Jamie and Randall, and it forces Claire to weigh, more seriously than ever, where and with whom she truly belongs as the couple flee back toward safety.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Suspicion of witchcraft falls on Claire, and she is seized along with the herb-wise Geillis Duncan and put on trial, in mortal danger until Jamie arrives to save her. In the aftermath Geillis reveals a secret that shakes Claire: she too came from another century through the stones, a committed Jacobite who came to influence history. At the standing stones Claire finally tells Jamie the truth about where and when she is from, and he gives her the choice to return to her old life; she chooses to stay with him. Jamie then brings Claire home to his family estate, Lallybroch, where he reclaims his place as laird and she meets his fierce sister Jenny. For a time they build a life there, but the shadow of the English and of Randall continues to loom over them.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Their fragile peace is torn apart when Jamie is captured and imprisoned at Wentworth Prison under sentence of death, where Captain Randall subjects him to brutal torture and sexual assault that nearly destroys him body and soul. Claire refuses to give him up for lost and, with the help of Jamie's kin, carries out a desperate rescue that frees him. The couple escapes across the sea to a French abbey, where Claire labors to heal Jamie's shattered body and mind, at last driving him through a harrowing confrontation with his trauma so that he can begin to recover. As the story ends, Jamie is slowly mending, the two are more deeply bound than ever by all they have endured, and Claire discovers that she is pregnant, carrying their child into an uncertain future amid the gathering intrigues of Jacobite France.",
+            "through": {
+              "chapter": 41
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "outlander"
+      }
+    }
+  }
+}

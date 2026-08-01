@@ -1,0 +1,1805 @@
+{
+  "entries": {
+    "azarinth-healer-book-one": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young kickboxer from Earth who wakes alone in an unfamiliar forest. She has only her pajamas and no explanation for her arrival. After seeing a drake, she receives the visible skill Identify.",
+            "id": "ilea",
+            "name": "Ilea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Ilea"
+            ],
+            "description": "The status display confirms Ilea's full name and shows her quantified attributes, health, stamina, mana, and Identify skill while she searches for safety in the unfamiliar world.",
+            "id": "ilea-spears",
+            "name": "Ilea Spears",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A senior Riverwatch guard who recruits Ilea to heal casualties after an ambush. He pays her fairly, helps her obtain clothing and shelter, and becomes her first dependable contact among the people of Elos.",
+            "id": "dale",
+            "name": "Dale",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young attendant at the Riverwatch library who provides Ilea with a practical introduction to Elos. She explains local geography, classes, advancement, currency, dungeons, and the dangers surrounding the independent cities.",
+            "id": "maria",
+            "name": "Maria",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Corinth healer whom Ilea rescues from kidnappers and saves from a grave wound. Alice studies enchantment in Dawntree, agrees to protect Ilea's secrets, and offers her rescuer hospitality while they travel to Riverwatch.",
+            "id": "alice-forkspear",
+            "name": "Alice Forkspear",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Riverwatch smith who assesses Ilea's charred drake scales and advises her on building light armor around them. His interest in her unusual close-range fighting style makes him an important equipment contact.",
+            "id": "earl",
+            "name": "Earl",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-60 bard competing in Riverwatch's tournament. He combines rock armor, earth spikes, heavy melee force, and a weaponized lute to defeat a teleporting opponent, showing that his music and enhancement magic are both practical combat tools.",
+            "id": "aaron",
+            "name": "Aaron",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A traveling enchantress and beast tamer in the Riverwatch tournament. She directs birds carrying enchanted explosives and relies on prepared magical defenses, demonstrating a coordinated style built around her animal companions.",
+            "id": "eleonora",
+            "name": "Eleonora",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ellie"
+            ],
+            "description": "The traveling enchantress Eleonora also introduces herself as Ellie while the survivors organize their temporary party inside Calys Dungeon.",
+            "id": "eleonora-ellie",
+            "name": "Eleonora",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pyromancer from the Riverwatch College of Magic who shapes molten glass into attacks and platforms. When elves strike the tournament, he joins Ilea and other survivors fleeing through the arena tunnels.",
+            "id": "oliver",
+            "name": "Oliver",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Riverwatch guard who leads lower-level survivors away from the elven attack on the arena. He guides the retreat toward an abandoned mine, keeps the frightened group moving, and faces immediate danger when a powerful elf pursues them underground.",
+            "id": "glenn",
+            "name": "Glenn",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "One of the fighters escaping Riverwatch through the arena tunnels while a powerful elf pursues the survivors underground.",
+            "id": "geronimo",
+            "name": "Geronimo",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The barkeeper in the Vultures' Brotherhood's underground refuge, encountered while Ilea's unexpected arrival is being assessed.",
+            "id": "walter",
+            "name": "Walter",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The guard captain of a caravan preparing to travel west from Riverwatch toward Salia.",
+            "id": "arvin",
+            "name": "Arvin",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet, armored axe fighter serving as a caravan guard. Roland and Ilea become lovers during the journey toward Salia.",
+            "id": "roland",
+            "name": "Roland",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage, Roland’s first wife, and a member of his household in Salia. She welcomes Ilea when Roland offers her a place to stay after the caravan reaches the city.",
+            "id": "samantha",
+            "name": "Samantha",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roland’s husband, a warrior, and the cook in their Salia household. He welcomes Ilea into the family home after the caravan survivors reach the city.",
+            "id": "george",
+            "name": "George",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roland’s second wife and a member of his household in Salia. She meets Ilea during a family meal after the caravan survivors arrive in the city.",
+            "id": "sophie",
+            "name": "Sophie",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful ice mage traveling with the Salia caravan. When a large Nazark force attacks, Mia freezes its leading ranks before a basilisk's cry paralyzes the caravan.",
+            "id": "mia",
+            "name": "Mia",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child in Roland's Salia household and Samantha's daughter. Lily knows the city well and acts as Ilea's guide. She secretly cares for seven stray dogs in the sewers, bringing Ilea into her private project when two of the animals need healing.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice Forkspear's manservant, who objects when Alice sends Ilea into the Taleen ruin under a false justification. His protest shows concern for the danger Ilea faces and unease with Alice's treatment of her rescuer.",
+            "id": "jamie",
+            "name": "Jamie",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A formidable wind mage whose startled attack nearly kills Ilea in the Taleen city. Felicia immediately apologizes and approaches with two companions, turning a dangerous first encounter into a cautious meeting.",
+            "id": "felicia-redleaf",
+            "name": "Felicia Redleaf",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An armed companion traveling with Felicia Redleaf and a dark-armored warrior in the Taleen ruin. Aliana approaches Ilea after Felicia's mistaken attack and helps establish a wary pause rather than another fight.",
+            "id": "aliana",
+            "name": "Aliana",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cautious warrior in dark armor traveling with Felicia Redleaf and Aliana in the Taleen ruin. He evaluates Ilea's movement and healing while warning that she could be an assassin.",
+            "id": "dark-armored-warrior",
+            "name": "Dark-armored warrior",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Felicia Redleaf's brother and the cautious leader of her party. Edwin is an exceptionally fast warrior who tests Ilea in a spar, points out counters to her abilities, and weighs whether her healing is useful enough to justify an alliance.",
+            "id": "edwin-redleaf",
+            "name": "Edwin Redleaf",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dawntree historian and College of Magic teacher who joins the Forkspear-funded Taleen expedition. Jeremy combines the Ground Caller and Heavy Paladin classes, serving as a durable frontline fighter with limited healing.",
+            "id": "jeremy",
+            "name": "Jeremy",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The swordmaster leading a large Forkspear-funded expedition into the Taleen ruin. Jasper helps direct its teams and scouts as they follow a route lined with recently destroyed guardians.",
+            "id": "jasper",
+            "name": "Jasper",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the leaders of the Forkspear expedition into the Taleen ruin. Agor helps decide whether the expedition should follow a route lined with recently destroyed guardians.",
+            "id": "agor",
+            "name": "Agor",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Agor"
+            ],
+            "description": "The expedition leader previously known as Agor confirms his full name after fighting beside Ilea. He wields a massive sword and uses red fire to propel explosive attacks.",
+            "id": "lorcan-agor",
+            "name": "Lorcan Agor",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Sword Dancer in the Forkspear-funded expedition. Rin fights with curved swords and is among the adventurers establishing a base in the Taleen Great Hall as the expedition follows a route cleared by an unknown predecessor.",
+            "id": "rin",
+            "name": "Rin",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jasper"
+            ],
+            "description": "The expedition's swordmaster leader survives the battle with the Taleen Praetorians. Ilea restores his missing arm when the survivors gather at the rendezvous.",
+            "id": "jasper-horim",
+            "name": "Jasper Horim",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "sentient dagger"
+            ],
+            "description": "A speaking relic discovered beside an elf skeleton behind a wall in the Taleen ruin. The dagger knows the common language, reacts to Ilea with open hostility, and burns her when she touches it. Its presence turns a valuable hidden cache into a more uncertain discovery.",
+            "id": "dagger-of-akelion",
+            "name": "Dagger of Akelion",
+            "reveal": {
+              "chapter": 57
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0BLZNZ47B",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-one"
+      },
+      "recaps": {
+        "ending": "Ilea leaves besieged Dawntree to check on people farther south and finds Salia destroyed. She reunites with Roland and Lily, helps stabilize the survivors, and fights beside a shadow-clad mercenary squad to kill the three elves pursuing her. Roland and Lily depart east with the refugees. Ilea reaches level 200 in both classes and evolves from Azarinth Healer into Azarinth First Hunter, gaining stronger healing, defenses, senses, and tracking. Dale and Earl remain alive in Riverwatch, while Walter and the Vultures' Brotherhood remain friendly contacts. Jasper Horim, Lorcan Agor, Jeremy, and Rin survived the Taleen expedition, but the Praetorians still control the throne room. Alice Forkspear's betrayal and her family's search for Ilea remain unresolved, as do the poisons used during the expedition, the Taleen artifacts, and Ilea's arrival from Earth. Edwin Redleaf, Felicia Redleaf, and Aliana remain beyond a Taleen gate. Ilea accepts the Dagger of Akelion as a willing companion and travels east, reaching the mercenary order's fortress city to seek training, allies, and information about the Redleaf party.",
+        "in_short": "Ilea Spears wakes in the wilderness of Elos, survives an ancient Azarinth awakening, and becomes a formidable fighter-healer. After reaching Riverwatch, she rescues Alice Forkspear, survives an elven assault, escapes through Calys Dungeon, and develops fire and ash powers alongside her healing class. A caravan disaster takes her to Salia before Alice sends her into a Taleen ruin on a fabricated mission. Ilea explores the ruin with Edwin Redleaf, Felicia Redleaf, and Aliana, then alone and under the alias Lilith with a Forkspear expedition. Taleen Praetorians devastate that expedition, though Ilea rescues several survivors. She returns to find Dawntree besieged and Salia destroyed, reunites with Roland and Lily, and helps mercenaries kill three pursuing elves. After evolving into an Azarinth First Hunter, she confirms Dale and Earl survived in Riverwatch, renews her friendship with Walter, and befriends the Dagger of Akelion. She ends the book entering the eastern mercenary order's fortress city in search of training and the missing Redleaf party.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ilea Spears falls asleep on Earth and wakes alone in a forest beneath two suns. A drake and a pack of wolves drive her into a ruined temple, where magical displacement traps her inside an Azarinth Chamber of Awakening. With no ordinary food or exit, she consumes dangerous blue moon grass, learns to control mana, and accepts the Azarinth Healer class. Months of training give her destructive strikes, powerful self-healing, enhanced physical abilities, and Blink. She eventually escapes the chamber, defeats one of its guardian constructs, and leaves with basic supplies and a stealth-oriented cloak.\n\nTraveling south, Ilea finds rogue adventurers attacking travelers. A Riverwatch guard squad asks her to serve as a healer during its ambush. She hides most of her combat abilities, freezes when confronted with human killing, but saves four wounded guards after the fighting. Dale, the guard who recruited her, pays her and brings her to Riverwatch. Ilea reaches the city with temporary shelter, salvaged equipment, and the guarded public identity of a traveling healer.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea learns the basic rules and geography of Elos from Maria at the Riverwatch library, then chooses an independent life based at the ruined temple. Over three months she hunts drakes, develops her skills through dangerous solo combat, and defeats a level-79 black-scaled drake. When four kidnappers confront her, she kills them and saves their captive, Alice Forkspear, using blue moon grass and Reconstruction. Alice is a Corinth healer and Dawntree noble who conceals Ilea's secrets and provides her with a base during Riverwatch's festival.\n\nIlea joins the Adventurers Guild, consults the smith Earl about armor, and watches the city's tournament. The celebration ends when powerful elves bombard the arena and attack its defenders. Ilea escapes underground with Aaron, Eleonora, Oliver, Geronimo, Glenn, and other survivors. A white-haired elf pursues them into the mines, breaks through their defensive line, and kills several escapees. The group struggles to open a barricade while Glenn remains in immediate danger as the elf reaches him.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea, Aaron, Eleonora, Oliver, and Geronimo form a temporary party inside Calys Dungeon. They fight stalker hounds, search for another exit, and begin teaching Ilea fire magic. When they emerge, an elite mercenary unit reports that the elves have withdrawn. Riverwatch survives but is heavily damaged, and Ilea loses the possessions stored at Forkspear Mansion. Earl completes her Bracers of Ash, and Ilea volunteers as a healer before returning to the dungeon alone.\n\nThrough study and repeated practice, Ilea gains Fire Mage as a second class and evolves it into Fire Enhancer. She defeats an Alpha Stalkerhound and discovers a passage into the underground refuge of the Vultures' Brotherhood. The necromancers initially keep her under guard while deciding whether she can leave. A summoning then releases a level-180 Mind Weaver that attacks minds, blinds victims, and paralyzes defenders. Ilea develops Mental Resistance, exploits its weakness to physical attacks, and kills it despite the level difference. She heals the summoner and stabilizes an injured necromancer. Walter, the Brotherhood's barkeeper and elder, grants her equal standing and recognizes her as a friend.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Walter points Ilea toward the Foundation of Glass as a possible source of Azarinth knowledge. She returns to Riverwatch, retrieves materials from the temple, commissions drake armor from Earl, and improves her fighting through training with Dale. Alice then summons her to Dawntree. Ilea joins a caravan led by Arvin and begins a relationship with the guard Roland during the journey.\n\nNazarks attack the caravan twice, and a basilisk destroys its defenses while the travelers are paralyzed. Ilea survives catastrophic wounds, rescues trapped people, and helps Arvin and the ice mage Mia delay the basilisk until the survivors can escape. Only 45 of the original 150 travelers remain, but they continue to Salia. Ilea stays with Roland's household, befriends the child Lily, and then travels alone to Dawntree.\n\nAlice asks Ilea to enter a newly discovered Taleen ruin, claiming that a cure inside might save her sister from a sleeping plague. She says previous expeditions never returned and that her family will send no one else. Ilea agrees to map the ruin and recover unusual devices or possible remedies, then prepares to enter the caves beneath the city.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Ilea enters the Taleen ruin, Alice privately admits to Jamie that the plague story is false and that the expedition is an unpaid scouting mission. Inside, Ilea maps an abandoned subterranean city, destroys powerful guardians, and meets Felicia Redleaf, Aliana, and Edwin Redleaf. Edwin argues that Alice used Ilea as a disposable explorer. Ilea joins his party in exchange for training and information, serving as healer and trap-clearer while the trio conceals its true objective.\n\nThe alliance pushes through guardians, traps, and a level-302 centurion. Ilea reaches level 100 as an Azarinth Healer and gains chained Blink. After clearing a vast turret route, she evolves Fire Enhancer into Ash Wielder and hides the change from her companions. The group continues through lethal machinery and kills a deep-water creature, while Ilea develops further resistances under Felicia and Aliana's training.\n\nEdwin eventually finds an operating Taleen gate leading toward the trio's concealed objective. He, Felicia, and Aliana decide Ilea is not strong enough to accompany them and pass through without her. Felicia reveals that she noticed Ilea's new class and invites her to seek them when she is stronger. Left alone, Ilea begins clearing the gate's guardians.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea destroys the gate chamber's guardians but cannot defeat its centurion. Returning to Dawntree, she meets a new Forkspear expedition at the ruin entrance and uses the alias Lilith. Alice later admits that there was no plague and that she knowingly sent multiple parties into the ruin. Ilea ends their friendship, withholds her discoveries, but leaves Alice's attendant instructions that could help Alice obtain a battle-healer class.\n\nBack in the ruin, Ilea bypasses six centurions and loots a trapped treasury. She acquires a storage necklace, substantial gold, Taleen equipment, an unreadable book, and an unexplained Tungsten Key. She then learns sustained flight through Ashen Wings and defeats a level-305 centurion alone, proving that Reconstruction can regrow destroyed limbs and organs.\n\nThe Forkspear expedition follows Ilea's cleared route and mistakes her armored form for a monster. She stops the attack, joins under the name Lilith, and works with its leaders. Lorcan Agor fights beside her and privately recognizes her as Ilea Spears without exposing her. Soon afterward, someone poisons her soup twice. Ilea survives and saves the cook who samples it, but the person responsible remains unidentified.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea and Lorcan Agor help the expedition clear the Taleen prison area and defeat centurions alongside Jasper Horim and Jeremy. Behind a wall, Ilea and Agor find an elf skeleton with rare armor and the hostile speaking Dagger of Akelion, and they conceal their discoveries from the Forkspears. Ilea also broadens her resistances by training against the expedition's mages.\n\nThe final sealed route leads to two Taleen Praetorians whose shields negate most magic and skill effects. The machines massacre the expedition, killing many adventurers and badly injuring Agor. Ilea carries him out but is struck by a cursed scythe. Her wound resists healing, drains mana, and affects her mind as awakened machines hunt the scattered survivors. She endures long enough to find Jeremy, Rin, and others, equips them from her hidden stores, and helps fight through another centurion.\n\nTwenty-two survivors finally reach the rendezvous. Ilea restores Jasper's missing arm, and the group holds a farewell for the dead before returning to Dawntree. They find the city sealed behind magical barriers during a renewed elven assault. Concluding that Elos is now her home and that her strength carries obligations, Ilea leaves through the barrier and flies south to check on Salia and Riverwatch.",
+            "through": {
+              "chapter": 62
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Three elves pursue Ilea from Dawntree as she travels south. She escapes their first attack and reaches Salia, only to find the city devastated. Most of Roland's household is dead, while Roland and Lily are missing. An ice-wielding elf attacks, and Ilea joins a shadow-clad mercenary squad in killing it. She then discovers Roland, Lily, and about forty survivors in a sewer refuge and regenerates Roland's missing arm.\n\nIlea helps the refugees recover supplies and prepare to travel east. A fire-wielding elf returns for her, but she and the mercenaries kill it. The victory takes both of her classes to level 200, allowing her to evolve from Azarinth Healer into Azarinth First Hunter. The evolution strengthens her healing, defenses, senses, and physical abilities. After she finds more survivors hidden in Salia's library, the final lightning-wielding elf attacks. Ilea and the mercenary squad kill it, ending the immediate pursuit.\n\nRoland and Lily leave east with the other refugees under a newly chosen leader. The mercenaries depart after offering Ilea a path to their order. Ilea flies to Riverwatch and learns that Dale survived the limited attacks there.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Riverwatch, Ilea visits Earl, sells Taleen weapons, and obtains a sheath for the Dagger of Akelion. When three robbers attack the smithy and one takes a child hostage, Ilea kills all three and saves Earl and the child. She accepts that the decision was necessary and resolves to trust her own judgment.\n\nIlea then flies to the Vultures' Brotherhood. During the journey, the dagger describes uncertain memories of many owners and a long period of isolation. Ilea rejects ownership as the basis of their relationship, and the two agree to travel together by consent. Walter receives her as a friend, accepts elven corpses for study, and explains that the eastern mercenary order offers training, lodging, information, work, and a team to independent members who can pay its fee. The Brotherhood also connects Edwin Redleaf to a noble house in that region.\n\nThe elven offensive, the Taleen Praetorians, Alice Forkspear's hostility, Ilea's unexplained arrival, and the Redleaf party's objective all remain unresolved. Ilea travels east with the Dagger of Akelion and enters the mercenary order's mountain fortress city, intending to seek training and information about Edwin Redleaf, Felicia Redleaf, and Aliana.",
+            "through": {
+              "chapter": 73
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0BLZNZ47B",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-one"
+      }
+    },
+    "azarinth-healer-book-six": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An investigator and ally of Ilea who died before the events of this volume. Her unresolved death remains a personal debt carried into the book, with the identity and circumstances of her killer still unknown at the outset.",
+            "id": "eve",
+            "name": "Eve",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ilea",
+              "Lilith"
+            ],
+            "description": "An exceptionally powerful three-class mage, battle healer, and founder of the Medic Sentinels. Publicly known as Lilith, she has placed Endless Meadow near Hallowfort and continues pursuing dangerous creatures, Taleen technology, and leads to her missing companion.",
+            "id": "ilea-spears",
+            "name": "Ilea Spears",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A telepathic four-mark tree newly settled in a cavern near Hallowfort. Its healing, earth, wood, and space magic make it a formidable protector, and it is willing to help Ilea investigate ancient evidence and the difficult problem of Taleen gates.",
+            "id": "endless-meadow",
+            "name": "Endless Meadow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hallowfort’s guard commander and a member of its council. He challenges Ilea soon after Endless Meadow settles nearby, then acknowledges her superior strength after she defeats and disarms him.",
+            "id": "doravin",
+            "name": "Doravin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ravenhall's administrator and one of Ilea's trusted confidantes. She supports carefully managed cooperation with Endless Meadow while anticipating resistance within the city to closer ties with elves and Hallowfort.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Headmaster of the Medic Sentinels and an experienced ally of Ilea. He oversees advanced training with Aki and prepares the corps' first level-200 team for a hunter examination and eventual outside assignments.",
+            "id": "trian",
+            "name": "Trian",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the enchanted dagger Aki"
+            ],
+            "description": "A sentient enchanted dagger controlling a level-300 Taleen Centurion body and serving as a combat instructor for the Medic Sentinels.",
+            "id": "aki",
+            "name": "Aki",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A first-generation Medic Sentinel with an ashen ranger class and self-healing, preparing with two teammates for the corps' first hunter examination.",
+            "id": "vienna",
+            "name": "Vienna",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A human intermediary who maintains contact with a group of exiled hunters. He agrees to notify Ilea before his next scheduled meeting with them.",
+            "id": "walter",
+            "name": "Walter",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A masked member of Ravenhall's council selected for the delegation to Hallowfort. He is cautious about Endless Meadow and elven politics, while showing an unexplained familiarity with elves.",
+            "id": "masked-ravenhall-council-member",
+            "name": "Masked Ravenhall council member",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ravenhall council member and librarian selected for the authorized visit to Hallowfort. He hopes to evaluate Endless Meadow and pursue an exchange of library knowledge.",
+            "id": "dagon",
+            "name": "Dagon",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Ravenhall enchanter selected for the delegation to Hallowfort. She researches Taleen teleportation technology alongside Christopher as Ravenhall considers cooperation with Endless Meadow.",
+            "id": "iana",
+            "name": "Iana",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Ravenhall enchanter and Iana's research partner, selected for the Hallowfort delegation as Ravenhall considers studying Taleen teleportation technology with Endless Meadow.",
+            "id": "christopher",
+            "name": "Christopher",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of exiled elven hunters who oppose Taleen attacks. Ravenhall will not formally support his group, leaving Ilea's contact with him an individual commitment shaped by the dangers of both the machines and elven politics.",
+            "id": "isalthar",
+            "name": "Isalthar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ancient four-mark source of the rot beneath a Kroll Mountains settlement. Awakening her creates an immediate danger to the community above the dungeon.",
+            "id": "queen-of-rot",
+            "name": "Queen of Rot",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young inn worker who asks Lilith for the chance to leave her mountain town and train as a battle healer with Ravenhall's Medic Sentinel Corps.",
+            "id": "willa",
+            "name": "Willa",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Leader of the Golden Lily and a politically powerful visitor to Ravenhall. She offers Ilea membership in the organization and seeks an explanation for Ilea's sharp increase in strength after Erendar, which Ilea does not fully provide.",
+            "id": "helena",
+            "name": "Helena",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A light mage with sensitivity to mind magic who joins one of the Shadow teams assigned to contain the danger from newly uncovered ruins beneath Ravenhall.",
+            "id": "josie",
+            "name": "Josie",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A member of the second Shadow team assigned to the operation in newly uncovered ruins beneath Ravenhall.",
+            "id": "finley",
+            "name": "Finley",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An exiled elf, ice mage, trader, and guide who maintains contacts in the human world. He explains the hunters' long conflict with Taleen machines and agrees to lead Ilea toward their forces near the Navali Forest.",
+            "id": "ben",
+            "name": "Ben",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dragonling hunter among Isalthar's exiled elves. When Ilea reunites with the group at a deactivated Taleen gate, he seeks another spar with her.",
+            "id": "dragonling-elf",
+            "name": "Dragonling elf",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two younger members of Isalthar's hunters who falsely report a machine attack and lead the group through a gate into the Sky Domain ruler's ambush.",
+            "id": "betraying-young-hunters",
+            "name": "Betraying young hunters",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The four-mark ruler of the Sky Domain, encountered after two hunters lead Isalthar's group into an ambush. His light and space magic can overpower Isalthar, and his forces drive the surviving hunters back into the Taleen facility.",
+            "id": "sky-domain-ruler",
+            "name": "Sky Domain ruler",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A high-level Medic Sentinel with a berserker class and powerful self-regeneration. His failure to report after accepting a shredder-clearing contract prompts Trian to send Ilea in search of him.",
+            "id": "missing-medic-sentinel",
+            "name": "Missing Medic Sentinel",
+            "reveal": {
+              "chapter": 39
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Imperial rogue and scout assigned to guide Lilith and an elven hunter to a fort after several adventuring teams vanish. Cautious and mindful of his duty, he remains with them as an official witness despite the uncertain danger.",
+            "id": "paulson",
+            "name": "Paulson",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Imperial ally who meets Ilea before the capital's celebration. She discusses resistance to the Medic Sentinels and is working to stabilize House Redleaf after damage caused by its former leadership.",
+            "id": "felicia",
+            "name": "Felicia",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A man who approaches Ilea at the capital's celebration through an apparent copy. The copy invokes an outstanding arrangement from his prior dealings with her.",
+            "id": "michael",
+            "name": "Michael",
+            "reveal": {
+              "chapter": 50
+            }
+          },
+          {
+            "description": "A missing traveler whose emergency activation appears in the recovered Taleen gate records. Her entry in the network creates a separate northern lead, but the available destination data does not establish her present condition.",
+            "id": "zoe",
+            "name": "Zoe",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Ilea's long-missing companion and a survivor of the Shadow's Hand. Found alive at a keep in the far north, he left warnings and directions along the Taleen route in the hope that another traveler might eventually reach him.",
+            "id": "kyrian",
+            "name": "Kyrian",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wood-magic healer among Isalthar's hunters and the sole volunteer from that group to join Ilea's renewed expedition to the northern isles.",
+            "id": "wood-mage-healer-elf",
+            "name": "Wood-mage healer elf",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0GJFN4C4Q",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-six"
+      },
+      "recaps": {
+        "ending": "Ilea closes the volume as Arcane Eternal level 503, Ashen Titan level 500, and Fae and Valkyrie level 465. She establishes a transfer anchor on the Crawon Isles, leaves a modified gate key with the dragonling elf, and returns to her seaside home to seek Endless Meadow's help training her new abilities and space magic. Kyrian has returned from two years of isolation, reunited with Claire and Trian, and begun rebuilding a life in Ravenhall, though he continues hunting on the isles. Iana, Christopher, and Endless Meadow possess an intrusion key, a partial map of the Taleen network, and a key locator, but the buried capital remains beyond their strength and still demands three keys or key wardens. Zoe's trail, the other keys, the gate-like ruins, and the ocean Leviathan remain unresolved. Ilea also postpones any action against Michael after learning that he killed Eve following Eve's attack on Prim. Isalthar's hunters remain opposed to the Taleen machines and the elven domains, while Ravenhall's Medic Sentinels continue expanding.",
+        "in_short": "Ilea strengthens Ravenhall's Medic Sentinels, joins Isalthar's exiled hunters, and helps uncover the buried Taleen capital, where a hostile guardian demands three keys or key wardens before granting deeper access. Iana, Christopher, and Endless Meadow later breach part of the gate network, allowing Ilea to find Kyrian alive after two years in the far north. He returns to Ravenhall and begins readjusting with Claire and Trian. Ilea also ends a rot crisis, frees captives from a Baralian fort, learns that Michael killed Eve after Eve killed Prim, and survives new four-mark threats in the ocean and on the northern isles. Victories over a sealed Terror and the Scorching Worm carry her through two level-500 evolutions, first from Azarinth Sentinel to Arcane Eternal and then from Kin of Ash to Ashen Titan. She leaves Kyrian and the dragonling elf hunting on the Crawon Isles and returns home to train with Endless Meadow, while the Taleen keys, Zoe's trail, the capital, and several ancient gate mysteries remain open.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ilea Spears, also publicly known as Lilith, became a powerful battle healer with three classes and founded the Medic Sentinels in Ravenhall. Her allies include the administrator Claire, headmaster Trian, the sentient dagger Aki, and the enchanters Iana and Christopher. Her contact with ancient powers and Taleen machinery left her carrying an unusual tungsten key and searching for answers about the machine civilization and its gates. Endless Meadow, a telepathic four-mark tree with healing and space magic, became an important ally. Kyrian, Ilea's former companion from the Shadow's Hand, remained missing after an emergency transfer. The deaths and conflicts surrounding Eve, the Golden Lily, Erendar, and Baralia also left unresolved political and personal debts. As the new volume begins, Ilea is strong enough to confront threats beyond most human forces, Ravenhall is building lasting institutions around the Sentinels, and the search for Kyrian is increasingly tied to understanding Taleen teleportation technology.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea settles Endless Meadow near Hallowfort, where the four-mark tree agrees to protect the settlement and investigate surviving evidence connected to the Ascended. She reconnects with elven hunters clearing a Taleen facility, but Ravenhall's council declines to support them officially. In Ravenhall, Trian and Aki oversee the first Medic Sentinel hunter examination. Vienna's three-person team survives Ilea's hidden role as the final threat, correctly choosing retreat over a hopeless objective, and becomes the corps' first team cleared for outside assignments. Ilea then asks Ravenhall to consider Endless Meadow as an ally in the gate project. The council approves a controlled delegation made up of Ilea, Iana, Christopher, and other representatives. At Hallowfort, the enchanters establish a workshop with Endless Meadow and begin studying prototype platforms and translated material. Ravenhall and Hallowfort reach preliminary terms for shared control of any resulting technology, trade, and non-conflict. Iana and Christopher remain behind to continue the research, while Ilea prepares to meet Isalthar's exiled hunters without official Ravenhall backing.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Seeking stronger opponents, Ilea enters an ancient city beneath the Kroll Mountains and awakens the Queen of Rot. The four-mark entity spreads corruption toward the settlement above and repeatedly overwhelms Ilea with blood, bone, and tracking magic. Ilea learns how to disrupt its most dangerous spell, raises her resistance to rot, and eventually wins a prolonged battle of attrition. The threat fades, and a young inn worker named Willa asks to follow Lilith's example. Ilea brings her to Ravenhall, where she enters the Medic Sentinel Corps. Helena then offers Ilea membership in the Golden Lily and questions her recent increase in power, but Ilea gives no decision. A separate danger appears beneath Ravenhall when smugglers disturb trapped ruins. Ilea leads two Shadow teams through teleporting monsters, lethal mechanisms, and a chamber of ancient constructs. Beyond the cleared defenses lies a cavern filled with inactive rune-covered archways. Ravenhall seals the unidentified passageway network instead of activating it, leaving its origin and destinations unknown.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Medic Sentinels move toward public operation as more trainees qualify for missions, allowing Ilea to leave Ravenhall and pursue the elven hunter alliance. Ben guides her through the Navali Forest and explains that young exiles have fought intensifying Taleen attacks for generations while rejecting the domains' treatment of their own youths. Ilea reunites with Isalthar and the dragonling elf at a deactivated gate. Isalthar confirms that the Taleen network is being actively manipulated and agrees to investigate a northern production site. During the journey, Ilea trains with the dragonling elf and learns that Isalthar's aim extends beyond destroying machines to changing elven society. The combined hunters reach the active gate, recruit the local team, and cross into a vast underground production complex. Isalthar divides the party into scouting groups while Ilea attacks a huge active production hall defended by large numbers of Taleen war machines. The hunters commit to dismantling the operation despite its scale and the unanswered question of who now controls it.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the production facility, Ilea and the dragonling elf face an Executioner Praetorian whose adaptive attacks penetrate her defenses and briefly kill her before her healing restores her. They survive through close cooperation and Isalthar's intervention against the machine's rupturing core. Further exploration reveals dangerous mind magic and experimental machine variants. A half-built construct addresses Ilea as a Key Warden, connecting her tungsten key to Taleen authority, though its exact purpose remains unknown. The expedition's position then collapses when two young hunters betray the group. They use a gate to lead Isalthar and his allies into an ambush by the four-mark ruler of the Sky Domain and an armored warrior. The attackers overpower Ilea, the dragonling elf, and Isalthar. Ilea manages to extract her allies back into the Taleen dungeon and prevents Isalthar's capture, after which the survivors withdraw through the facility network. The failed ambush leaves the hunters exposed to the domains and convinces Ilea that stronger space magic and greater personal power are necessary before another such confrontation.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea returns to Endless Meadow, where Iana and Christopher test experimental teleportation platforms and examine the tungsten key. The devices remain fatal to ordinary travelers, but Ilea can survive them, and the key may influence the destination of an unconnected gate. After resistance training, she rejoins the hunters for a long campaign through the southern Taleen facility. She and the dragonling elf eventually defeat another Executioner, and the group activates a surviving gate while Ilea carries the key. It strands them inside an immense machine city beneath Karth, later identified as the hidden Taleen capital. Stolen records confirm that twelve keys once served important trusts. A disembodied guardian recognizes Ilea as a Key Warden but refuses meaningful access without three keys or three key wardens. It treats her elven allies as enemies and mobilizes the entire city. The hunters cannot withstand the resulting army. Protected by the others during a long casting, Ilea completes a group displacement and evacuates everyone. They survive with valuable knowledge, but the capital and its central golden sphere remain inaccessible without more keys and far greater force.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back in Ravenhall, Ilea reports the capital and introduces the dragonling elf to Claire, Trian, and Aki. Claire warns that cooperation with the hunters could draw retaliation, while Ilea argues that humanity needs allies against powers it cannot face alone. The war in Baralia has officially ended, though rebuilding and resistance continue. Endless Meadow and the enchanters begin considering a locator for the other Taleen keys. Ilea's growing harmony with her class magic improves her ash control, and she continues training against stronger creatures. Trian then asks her to find a missing Medic Sentinel. Ilea and the dragonling elf track him into a poison-filled mine, where he is sheltering fifteen war refugees after a battle damaged the old protections. Ilea evacuates the group, arranges local assistance, and advises the Sentinel to control his rage before future evolutions. The refugees learn that Baralia has fallen and receive support through the Empire's integration effort. Ilea and her companion remain behind to finish the mine, while Aki's possible transfer into a stronger Taleen body is deferred until it can be tested safely.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea and the dragonling elf clear the mine, then take contracts in former Baralia. At a fortified slaving operation, they find starving captives, blood-magic experiments, and surviving soldiers of the old regime. The Imperial scout Paulson is maimed during the fighting, but Ilea restores his arm, kills the leading threats, frees the prisoners, and transfers the fort and its evidence to Imperial custody. She and her companion also destroy vengeful spirits and cursed remnants left by the war. In the capital, Felicia helps Ilea manage the political attention surrounding Lilith and the Medic Sentinels. Michael approaches through an expendable copy and reveals that he killed Eve after finding Prim dead from Eve's attack. Ilea releases the copy and postpones retaliation. Soon afterward, Iana and Christopher complete an intrusion key, a partial Taleen-network mapping method, and a locator for related keys. At an old island gate, the system displays emergency activations linked to Ilea, Zoe, and Kyrian. The recovered destinations narrow Kyrian's possible location to two remote northern sites, giving Ilea her first practical route to search for him.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Using the compromised network, Ilea's group reaches a northern facility bearing signs that Zoe passed through, but defers that trail to prioritize Kyrian. At the second destination, recent warnings and route markers lead Ilea and the dragonling elf to a keep on storm-ravaged isles. Kyrian is alive after roughly two years alone. He survived Arthur's emergency transfer, gained a third class, developed regeneration, teleportation, metal manipulation, and curse magic, and learned to hunt the region's powerful creatures. He also rescued several soul-magic birds. After fighting northern blue tails with Ilea and the elf, Kyrian agrees to return to Ravenhall. Ilea marks him, brings him and the birds back to Elos, and reunites him with Claire and Trian. His heightened senses and long isolation make crowds and ordinary life difficult, so Trian offers quiet housing, sparring, and a gradual role around the Medic Sentinels. Meanwhile, Iana and Christopher continue copying the Taleen network map. The group now has a strategic foothold in the gates, but still cannot challenge the capital or account for Zoe.",
+            "through": {
+              "chapter": 58
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea turns to the ocean, deliberately confronting her fear of deep water while hunting northern blue tails. She kills increasingly dangerous specimens, including a four-mark mature blue tail, but an immense Flesh-stricken Leviathan appears after the victory. It does not attack, yet its awareness drives her from the depths and leaves the deep ocean as a new unresolved danger. Kyrian continues settling into Ravenhall, reunites with people from his former life, and considers helping the Sentinels with survival training. Ilea's core allies agree not to move against Michael immediately, despite what he did to Eve, because of his power, political connections, and earlier assistance. Ilea then returns to the northern isles with Kyrian, the dragonling elf, and a wood-mage healer. In an old trapped keep they find Taleen remains, hostile former inhabitants, and a chained four-mark Terror. The group's combined curses, white fire, roots, healing, and close combat defeat it. The victory raises Azarinth Sentinel to level 500. Ilea chooses Arcane Eternal, gaining agelessness, vastly greater mana, stronger healing and regeneration, and major improvements to her strikes, transfer magic, perception, and control of a battlefield.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea tests Arcane Eternal while the group moves deeper into the volcanic isles. Her upgraded marks permit brief long-distance messages, Transfer improves her movement, and Arcane Dominion lets her harm or reconstruct targets within its reach. After battling powerful stone creatures, she faces a level-1238 Scorching Worm alone in a lava cavern. Its sun-like heat spell renders her unconscious, but her resistance advances enough for her to survive. A horned tunneling serpent attacks the worm, and Ilea joins it, destroys the worm's heart, and shares the kill without fighting her temporary ally. The victory brings Kin of Ash to level 500. She evolves it into Ashen Titan, gaining a denser body, stronger ash armor, immunity to hostile stunning, heat storage, delayed explosive attacks, remote ash control, and weight-linked resilience. After testing ash copies and guided weapons, Ilea leaves a modified gate key with the dragonling elf and establishes a transfer anchor on the Crawon Isles. Kyrian and the elf remain there to hunt. Ilea returns to her seaside home, planning to seek Endless Meadow's training in space magic while the Taleen capital, remaining keys, Zoe's trail, ancient gates, Michael, and the wider elven conflict remain unresolved.",
+            "through": {
+              "chapter": 72
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0GJFN4C4Q",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-six"
+      }
+    },
+    "azarinth-healer-book-three": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An Azarinth battle-healer traveling with Kyrian and Weavy. She treats the telepathic demon as an ally and is taking him and his new apprentice toward allies who may offer them a safer home.",
+            "id": "ilea",
+            "name": "Ilea",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ilea's metal-and-curse mage companion, traveling with her as she takes Weavy and his new apprentice toward a possible refuge.",
+            "id": "kyrian",
+            "name": "Kyrian",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mind Weaver"
+            ],
+            "description": "A telepathic demon allied with Ilea. He wants a safer home away from frightened settlements and accepts an orphaned boy with an affinity for mind magic as his apprentice, helping the child control his emerging abilities.",
+            "id": "weavy",
+            "name": "Weavy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An orphaned village boy with an early affinity for mind magic. After learning that Weavy is a demon, he knowingly chooses to become Weavy's apprentice and receives help controlling his abilities.",
+            "id": "weavys-apprentice",
+            "name": "Weavy's apprentice",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ilea’s sentient dagger companion.",
+            "id": "aki",
+            "name": "Aki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Ilea's tactician and a team member who has taken a government position.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Virilyan noble, lightning mage, and established member of Ilea's team.",
+            "id": "trian",
+            "name": "Trian",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A covert killer and investigator on Ilea's team whose location is unknown after the demon crisis.",
+            "id": "eve",
+            "name": "Eve",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage traveling with Edwin Redleaf while hunters from his house pursue them after an attack on a Redleaf training ground.",
+            "id": "maria",
+            "name": "Maria",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Redleaf warrior traveling with Maria while hunters from his own house pursue them.",
+            "id": "edwin-redleaf",
+            "name": "Edwin Redleaf",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor hidden beneath Trian's attacked estate. She is trained with a curved sword and commands the household's domesticated spider.",
+            "id": "trians-younger-sister",
+            "name": "Trian's younger sister",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young member of Trian's household who survives in the concealed rooms beneath the estate and has basic mage abilities.",
+            "id": "trians-adopted-ward",
+            "name": "Trian's adopted ward",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An adult survivor found badly injured by a resistant curse beneath Trian's estate. His body can store and extend a blade-like bone weapon.",
+            "id": "trians-household-protector",
+            "name": "Trian's household protector",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A domesticated, scythe-legged spider guarding the survivors hidden beneath Trian's estate. It withdraws when Trian's younger sister commands it.",
+            "id": "trians-household-spider",
+            "name": "Trian's household spider",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Edwin's sister, who reunites with Ilea near the Redleaf group's refuge. She recognizes Ilea from an earlier Taleen dungeon encounter and helps connect the two groups without continuing their initial fight.",
+            "id": "felicia-redleaf",
+            "name": "Felicia Redleaf",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A water mage traveling with Edwin Redleaf, Maria, and Felicia when their group first encounters Ilea's team.",
+            "id": "aliana",
+            "name": "Aliana",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wealthy and politically connected Redleaf member targeted by Edwin's alliance with Ilea's group. He is pursuing research intended to recreate Taleen teleportation gates, while Edwin initially withholds his personal reason for wanting him dead.",
+            "id": "arthur-redleaf",
+            "name": "Arthur Redleaf",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Birmingham member identified by the allied investigators as one of five people strongly implicated in the attack on Trian's household.",
+            "id": "ronin-birmingham",
+            "name": "Ronin Birmingham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Birmingham member identified by the allied investigators as one of five people strongly implicated in the attack on Trian's household.",
+            "id": "bale-birmingham",
+            "name": "Bale Birmingham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Birmingham member identified by the allied investigators as one of five people strongly implicated in the attack on Trian's household.",
+            "id": "graham-birmingham",
+            "name": "Graham Birmingham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Birmingham member identified by the allied investigators as one of five people strongly implicated in the attack on Trian's household.",
+            "id": "petra-birmingham",
+            "name": "Petra Birmingham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A House Birmingham member identified by the allied investigators as one of five people strongly implicated in the attack on Trian's household.",
+            "id": "wallace-birmingham",
+            "name": "Wallace Birmingham",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A young Birmingham barrier mage encountered with Wallace during the raid on the family estate.",
+            "id": "anya",
+            "name": "Anya",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young Birmingham healer and Anya's sister, encountered with Wallace during the raid on the family estate.",
+            "id": "hera",
+            "name": "Hera",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified white-haired wind mage wearing a mask. She kills several attackers during Virilya's evacuation, allowing soldiers and civilians to continue toward safety.",
+            "id": "masked-wind-mage",
+            "name": "Masked wind mage",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trian's trusted contact in Virilya's Central District. She accepts his evidence against House Birmingham and undertakes to present it.",
+            "id": "josephine-anderson",
+            "name": "Josephine Anderson",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A raven-commanding mercenary who fights with arm-mounted blades and is guarding Arthur Redleaf’s castle.",
+            "id": "maurice",
+            "name": "Maurice",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A baker wearing heat-based armored equipment and serving among the mercenaries guarding Arthur Redleaf’s castle.",
+            "id": "poppy",
+            "name": "Poppy",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blind, white-armored mercenary swordfighter guarding Arthur Redleaf's castle. Her level is beyond Ilea's ability to identify, and she is intent on protecting the Taleen network.",
+            "id": "blind-mercenary",
+            "name": "Blind mercenary",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Arthur Redleaf's necromancer hunter, able to transform into a powerful blood-monster. Maria kills him during the battle on the Isle of Gareth.",
+            "id": "kyle",
+            "name": "Kyle",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Arthur Redleaf's ice-and-silver mage hunter. Ilea, Felicia, and Maurice pursue and kill her during the battle on the Isle of Gareth.",
+            "id": "tiana",
+            "name": "Tiana",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A surviving enchanter from Arthur Redleaf's staff who explains the available Taleen gate evidence. He accepts recruitment to Ravenhall to research teleportation and help find Kyrian.",
+            "id": "arthur-redleafs-enchanter",
+            "name": "Arthur Redleaf's enchanter",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Trian's surviving younger sister, reunited with him in a protected Ravenhall residence.",
+            "id": "aurelia",
+            "name": "Aurelia",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A surviving member of Trian's household who reunites with him in a protected Ravenhall residence.",
+            "id": "samuel",
+            "name": "Samuel",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A surviving member of Trian's household who reunites with him in a protected Ravenhall residence.",
+            "id": "orthon",
+            "name": "Orthon",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An apparent realm traveler whom Ilea regards as coming from the same place of origin as herself.",
+            "id": "cless",
+            "name": "Cless",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A solitary hooded elf encountered reading in the cathedral of an abandoned subterranean city.",
+            "id": "hooded-elf",
+            "name": "Hooded elf",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The hooded elf from the subterranean cathedral, now identified as a historian. He offers Ilea information in exchange for books, relics, and other materials recovered from the nearby dungeon.",
+            "id": "elven-historian",
+            "name": "Elven historian",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf pilot who operates a metal war machine, guides Ilea through concealed tunnels to Hallowfort, and offers to introduce her to a smith.",
+            "id": "dwarf-pilot",
+            "name": "Dwarf pilot",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Awakened, mist-bodied smith whose constant curse drains life from nearby visitors. He recognizes the ancient metal in Ilea’s recovered equipment and agrees to forge replacement armor from it while she heals through the curse.",
+            "id": "awakened-smith",
+            "name": "Awakened smith",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarven scavenger and machine specialist who explores dangerous northern ruins in an upgraded war machine. He also works on locks and protective enchantments.",
+            "id": "dwarven-scavenger",
+            "name": "Dwarven scavenger",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A cursed, mist-bodied Awakened smith who agrees to forge replacement armor for Ilea from ancient metal.",
+            "id": "goliath",
+            "name": "Goliath",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Tremor guard captain whose translated service record preserves a view of the kingdom before its fall. His account describes royal affairs, changing dungeons, Soul Rippers, war, and the crisis that left Tremor as the last surviving city.",
+            "id": "guard-captain-reyker",
+            "name": "Guard Captain Reyker",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tremor's ancient mist-mage queen, found alive and confined within machinery beneath the palace after an apparently immense span of time.",
+            "id": "ancient-queen-of-tremor",
+            "name": "Ancient queen of Tremor",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A living captive bound into machinery beneath Tremor's palace, where his body supplies mana to the surrounding system.",
+            "id": "captive-man-in-tremors-machinery",
+            "name": "Captive man in Tremor's machinery",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tremor's ancient king, a necromancer and the imprisoned queen's betrothed. His health and mana power the machinery and undead beneath the palace.",
+            "id": "necromancer-king-of-tremor",
+            "name": "Necromancer-king of Tremor",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fox-like Awakened alchemist who owns the Hunter's Den in Hallowfort. She buys Blue Reaper remains and values their unusual organs, giving Ilea a reliable local buyer.",
+            "id": "fox-alchemist",
+            "name": "Fox alchemist",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unconscious but unharmed cat-like healer whom Ilea rescues from a swarm in the Descent.",
+            "id": "feline-healer",
+            "name": "Feline healer",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf who operates a large armored war machine as part of a treasure-hunting group in the Descent.",
+            "id": "baron",
+            "name": "Baron",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A human ranger and expedition survivor who guides a treasure-hunting party through the Descent toward the Red Church complex.",
+            "id": "austin",
+            "name": "Austin",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed lizard warrior accompanying the rival treasure hunters who arrive in the Red Church experimentation area.",
+            "id": "lizard-warrior",
+            "name": "Lizard warrior",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An insect-headed mage who leads the original owners of the treasure map used by Austin's party.",
+            "id": "insect-headed-mage-leader",
+            "name": "Insect-headed mage-leader",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small winged Fae found in a hidden cage within the Red Church's former experimentation complex. It protects itself with a magical barrier, and Ilea destroys the lock that has kept it imprisoned.",
+            "id": "rescued-fae",
+            "name": "Rescued Fae",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Three elven hunters found being overwhelmed by Taleen Centurions. Ilea intervenes and draws the machines away while her dwarf companion moves the hunters out of immediate danger.",
+            "id": "young-elven-hunters",
+            "name": "Young elven hunters",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful death spirit that occupied the mansion of the ancient necromancer king's friend after killing him. Ilea destroys the spirit during the search for the king's treasury key.",
+            "id": "undying-lord",
+            "name": "Undying Lord",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An elder of Ilea's organization who withdrew from its broader affairs to study the North's ecological collapse and attempt restoration. He cannot explain Adam Strand's motive for causing the demon crisis.",
+            "id": "organization-elder",
+            "name": "Organization elder",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The person an elder of Ilea’s organization identifies as responsible for the demon crisis. His reason for causing it remains unknown.",
+            "id": "adam-strand",
+            "name": "Adam Strand",
+            "reveal": {
+              "chapter": 83
+            }
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0CPQ4Y33K",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-three"
+      },
+      "recaps": {
+        "ending": "Ilea ends the book above level 300 as an Azarinth Sentinel and Kin of Ash. She has freed Tremor's ancient necromancer-king, recovered the key to his treasury, helped repel attacks on two Awakened settlements, and joined her northern allies in destroying two level-600 Taleen Praetorians. The queen remains bound while Hallowfort allies work on her enchantments. The elven mentor and three young hunters survive, with the mentor now accepting hunter status, and the dwarven companion remains with Ilea. In Ravenhall, Claire continues supporting the search for Kyrian, Trian stays with his surviving household, Aki pursues answers about its nature, and Weavy and his apprentice have refuge. Ilea holds a Taleen Gate Key that may provide a route to Kyrian, who remains missing after Arthur Redleaf's unstable gate scattered the assault party. She plans to finish exploring Tremor's vaults before returning south, possibly with the necromancer-king. Eve's killer, the Golden Lily, Adam Strand's motive, the queen's release, the Taleen control mystery, and the widening northern war all remain unresolved.",
+        "in_short": "After helping Trian punish the Birmingham members responsible for his household's massacre, Ilea joins an assault on Arthur Redleaf and loses Kyrian when Arthur's unstable Taleen gate scatters the group. She leaves Ravenhall for the North to gain enough strength to search for him. There she establishes allies in Hallowfort, explores Tremor and the Descent, frees an imprisoned Fae, discovers an active Taleen factory, and learns that Tremor's ancient royal couple remain bound to the city's undead machinery. Ilea reaches level 300, evolving into an Azarinth Sentinel and Kin of Ash, then defeats the Kingsguards and frees the necromancer-king. With northern allies, she repels coordinated attacks on Awakened settlements and destroys two Taleen Praetorians. A hidden Great Hall chamber yields a Taleen Gate Key, giving her the first practical lead toward Kyrian. She intends to finish Tremor's vaults and return south while the queen, the Golden Lily, the Taleen mystery, and the northern war remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ilea is an Azarinth battle-healer, explorer, and member of the Shadow's Hand. Her close companions include Kyrian, a metal-and-curse mage; Trian, a Virilyan noble and lightning mage; Claire, the team's tactician; Eve, a covert killer and investigator; and Aki, a sentient dagger. Ilea also treats the telepathic demon Weavy, known as the Mind Weaver, as an ally. A demon crisis has devastated western settlements, displaced survivors and monsters, interrupted the team's work, and left Eve missing. Ravenhall is rebuilding after the upheaval, with Claire taking a role in its administration.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea, Kyrian, and Weavy reach the Vulture's Brotherhood refuge after Weavy accepts an orphaned boy with mind-magic talent as his apprentice. The Brotherhood agrees to shelter them despite lingering fear of demons. Ilea and Kyrian then aid Riverwatch's overstretched guards before returning toward Ravenhall. There, Claire is helping direct reconstruction and begins a business venture with Ilea. A sealed warning from Eve reports that Trian's household has been attacked and connects the discovery to the Golden Lily. Ilea and Kyrian find Trian alive at his ruined estate, then uncover three hidden survivors: his younger sister, an adopted ward, and their badly cursed protector. Claire secretly receives them in Ravenhall and arranges protection. Because the attackers used tailored counters, the team suspects a powerful noble house, but has no confirmed culprit. Claire persuades Trian to pursue proof before retaliation and prepares safe inns, cover identities, contacts, and routes for a covert inquiry. Ilea, Kyrian, Trian, and Aki are ready to enter Virilya, find Eve, and identify those responsible.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Operating covertly in Virilya, Ilea's group secures armor and helps six detained craftworkers escape the capital. Their search leads to Eve's concealed room, where they find her murdered after she killed a dangerous target and hid documents. Her papers concern corrupt nobles, the Golden Lily, and Edwin Redleaf, whose group is also attacking noble interests. Ilea saves Edwin from a blood-magic infection, and the two groups form an alliance: Edwin's allies will help Trian identify his targets, while Ilea's team will help them pursue Arthur Redleaf. Their evidence strongly implicates House Birmingham in the massacre. During a wider siege of the capital, Ilea, Kyrian, Trian, Maria, and Edwin raid the Birmingham estate. Bale, Ronin, Petra, and Graham die, but Ilea and Kyrian stop Trian from killing Wallace and two young girls. Wallace is spared and leaves with Anya and Hera. Ilea then turns from the reprisal to rescuing civilians amid bombardment, demons, and enemy assassins. Eve's killer, the Golden Lily's purpose, and any wider sponsor remain unknown.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After helping evacuate Virilya and delivering the Birmingham evidence to a trusted official, the allied group turns against Arthur Redleaf on the Isle of Gareth. Arthur activates an unstable Taleen gate during the battle, scattering Ilea, Kyrian, and one of his warriors. Ilea escapes a distant Taleen dungeon and returns, but Kyrian does not. Felicia and Aliana kill Arthur, and the survivors defeat his remaining hunters. Arthur's records show that the device sends travelers unpredictably between Taleen gates, leaving no immediate way to trace Kyrian. Ilea recruits Arthur's enchanter and willing vegetation mages for Ravenhall, where Claire agrees to support gate research and treats Kyrian as missing rather than dead. Felicia remains to manage the Redleaf estate, while Edwin, Maria, and the others separate from Ilea's path. Trian stays in Ravenhall with his surviving sister, adopted ward, and protector. Aki also remains to investigate its own nature with an enchantress. Believing she needs far greater strength before attempting a rescue, Ilea leaves Ravenhall alone for the far North.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea crosses the northern mountains through lethal arcane storms and predator-filled ravines. In an ancient subterranean city, she meets a solitary elf who offers knowledge in exchange for books and relics recovered from the nearby Tremor dungeon. Tremor contains an abandoned human city guarded by undead Knights of the Rose and far stronger Kingsguards. Ilea defeats individual knights but learns that the palace guards can cut through her armor, ash, and body. Seeking equipment and local support, she follows a dwarf pilot through concealed tunnels to Hallowfort, a hidden underground settlement, where he offers to introduce her to a smith.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Weeks of hunting Tremor's undead raise Ilea's levels and improve her ability to bypass their defenses. She recruits a dwarven scavenger and lock specialist to investigate the palace. He detects a common magical source linking the guarded doors and undead, then quietly breaks into the central vault with her. Inside, they find ancient machinery drawing power from a living man and holding a living woman. The woman is Tremor's long-imprisoned queen; the man is her betrothed, the kingdom's necromancer-king. Guard Captain Reyker's translated record and the queen's account describe a kingdom ruined by war, changing dungeons, and Soul Rippers. Ilea heals the king awake. He confirms that Tremor has become a dungeon and that its power has displaced his control of the undead, leaving him unable to depart while the guards remain. He offers resources, knowledge, and possible travel help if Ilea and the dwarf free the royal pair. Judging the Kingsguards too strong for her, he advises Ilea to seek varied dangerous opponents and reach level 300 before confronting them or entering more dangerous Taleen sites in search of Kyrian.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea makes Hallowfort her base while pursuing the level-300 goal. In the upper Descent she hunts Blue Reapers, high-level creatures using lightning and mind magic, and gains levels and resistances through repeated near-fatal fights. A fox-like Awakened alchemist becomes her buyer, and Ilea tests the alchemist's experimental potions. She then moves into the Descent's layered ruins, learning that its deeper sections include trapped insect tunnels, flooded passages, and a dangerous ruined city. In the second layer, Ilea tests poisoned traps and the burst-healing potential of Hunter Recovery, kills the mud goblin responsible for traps, and holds off a swarm of giant roaches. She rescues an unconscious cat-like healer and a dwarf warrior in heavy mechanical armor, but remains lost in the tunnels.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The rival treasure hunters attack after their leader uses mind magic against Ilea's companions. Ilea defeats them without killing them, then parts from the surviving explorers after a long nonlethal duel with their lizard warrior. Alone in the Red Church complex, she trains against Old-Blooded venom and finds a caged Fae hidden behind a trapped wall. She frees the ancient arcane spirit and uncovers records showing that the Red Church used Fae essence and pure blood in lethal experiments. The Fae briefly follows Ilea back to Hallowfort, where Goliath recognizes it as a revered spirit of old, then departs freely. Ilea turns next to her fear of Taleen machines. She recruits the elven historian and a dwarf guide for a dungeon expedition, though the elf refuses to enter. Inside, Ilea encounters a Taleen Centurion and begins fighting it alone while the dwarf stays back.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea destroys the Centurions threatening three young elven hunters, heals them, and defeats them when they claim the dungeon. The older elven historian takes responsibility for training the inexperienced group. Deeper inside, Ilea and her dwarf companion discover an immense active Taleen factory producing Centurions and other war machines. Ilea spends weeks thinning its defenders while the machines adapt their tactics. A supervised test shows that the young hunters still cannot defeat a Centurion safely, and the historian restricts them to the adjacent Taleen city. The hunters explain that elves entering such creation sites are branded cursed, while their people remain at war with Taleen machines. In Hallowfort, reports of hostile northern forces prompt defensive preparations. The fox alchemist, also a council member, agrees to inspect the imprisoned queen's enchantments but refuses to face the Kingsguards. Goliath proposes using one of his personal teleportation obelisks so he can enter and inspect the factory once Ilea places it there. By the end of this period Ilea is nearing level 300, the queen has gained a potential source of technical help, and the active factory remains an unresolved regional threat.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Once Centurions stop providing useful growth, Ilea returns to Tremor's Dark Zone and begins hunting far stronger Undead Rose Knights. The fights repeatedly maim and even decapitate her, but her healing lets her recover and eventually wear down opponents above level 500. Avoiding the still more dangerous Soul Rippers, she reaches level 300 in both classes. Ilea evolves Azarinth First Hunter into Azarinth Sentinel, gaining stronger healing, physical enhancement, and destructive abilities. She then evolves Inheritor of Eternal Ash into Kin of Ash, deepening her control of ash, defense, and close combat. Tests show that her shaped ash can pierce stone, her new armor can withstand attacks that previously threatened her, and her healing can rapidly restore devastating injuries. She challenges the palace Kingsguards, using the evolved skills to survive their varied magic and eliminate guards who had once been untouchable. The last enhanced defenders remain the final barrier between the captive necromancer-king and freedom.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea defeats the remaining Kingsguards, restoring the ancient necromancer-king's agency and ending the palace system's hold over Tremor. The king's treasury remains sealed because its key was left with an old friend, so Ilea, the king, and the dwarven companion travel to a northern Awakened settlement. There, Ilea treats varied wounded residents and helps the king investigate his friend's mansion. A level-540 Undying Lord admits it killed the friend long ago; Ilea destroys the death spirit, allowing the king to recover the remains and the small golden treasury key. An elder of Ilea's organization then confirms that Adam Strand caused the earlier demon crisis, though the motive is unknown. The elder is studying the North's ecological collapse and attempting a slow restoration. The king's memory that the world once had three suns may bear on that mystery, but remains unverified. With the treasury key recovered and her new power tested, Ilea is ready to resume her Taleen investigations.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A coordinated reptilian army attacks the underground Awakened settlement after rejecting negotiation. Ilea and the necromancer-king join its defense, protecting civilians and routing the invading force. Recovered plans reveal simultaneous assaults on other Awakened strongholds, including Hallowfort. Ilea, the king, and the dwarven companion immediately travel there and find the settlement devastated, with survivors barricaded in the Abyss. Ilea heals the wounded before joining the battle below. Alongside the fox alchemist, the king, and the dwarf, she defeats an elite strike team that appears to have targeted the fox and her fire-related power. Hallowfort survives, but the attackers' faction and bases remain unknown, and the regional war is widening. The fox promises Ilea future support, plans stronger defenses, and intends to aid the wider Awakened war effort financially. After treating the remaining wounded and recovering enemy equipment, Ilea's group prepares to return to Tremor, with Ilea now above level 300 in both evolved classes.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back at Tremor, Ilea receives a request from the elven mentor: the three young hunters have entered a Taleen Great Hall and failed to return. She finds them trapped in battle with two level-600 Praetorians. The mentor enters despite the curse imposed on elves who enter such sites, and the necromancer-king and dwarven companion arrive to help. Working together, the group cripples both machines and survives their final arcane blast. The hunters clear the remaining lesser constructs, and the mentor accepts hunter status after acknowledging his own excessive restrictions. Behind the throne, the group discovers a diary describing lost control over Taleen guardians and a mysterious tungsten key. A further concealed room contains a Taleen Gate Key. Ilea survives its traps and claims the artifact for study in Ravenhall, where it may finally provide a way to trace Kyrian through the teleportation network. She plans to finish the current Great Hall and Tremor vault exploration before returning south. The necromancer-king offers to accompany her, while Kyrian's fate, Eve's killer, the Golden Lily, the queen's confinement, and the northern war remain open.",
+            "through": {
+              "chapter": 93
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0CPQ4Y33K",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-three"
+      }
+    },
+    "azarinth-healer-book-two": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A close-combat Azarinth healer who pays to enter the Shadow's Hand without accepting a debt contract.",
+            "id": "ilea-spears",
+            "name": "Ilea Spears",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ilea's sentient enchanted dagger and adviser. Aki helps her practice rapid equipment changes and checks her Shadow's Hand contract for obvious traps.",
+            "id": "aki",
+            "name": "Aki",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced Shadow's Hand member who warns Ilea to be cautious about people approaching her in Viscera and to depend on the team she will eventually join.",
+            "id": "liam",
+            "name": "Liam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A quiet Team 34 mage above level 200 who controls metal. Kyrian is socially uncomfortable and initially gives little away, but his precise metal magic makes him a dangerous prospective teammate.",
+            "id": "kyrian",
+            "name": "Kyrian",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A level-215 lightning and vampirist mage from Virilya who claims Team 34's attack role. His noble confidence immediately creates friction within the new team.",
+            "id": "trian",
+            "name": "Trian",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Team 34's illusionist and singer. Eve can make an illusory presence appear before she arrives in person, and her guarded manner leaves her new teammates uncertain about the full reach of her abilities.",
+            "id": "eve",
+            "name": "Eve",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Team 34's rune mage, providing barriers and explosives. Claire also sets an early rule against using Ilea's healing for injuries a teammate can recover from without help.",
+            "id": "claire",
+            "name": "Claire",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Riverwatch librarian whose knowledge helped Ilea understand Elos. Maria has been held in a rune-lined, mana-draining prison until Edwin, Felicia, and Aliana break her free.",
+            "id": "maria",
+            "name": "Maria",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Redleaf warrior and Ilea's former conditional ally in matters involving Taleen ruins. Edwin helps free Maria from a hidden prison and leaves with her while the group's conflict with his family escalates.",
+            "id": "edwin-redleaf",
+            "name": "Edwin Redleaf",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Edwin's sister, an elite wind mage and former conditional ally of Ilea. Felicia takes part in freeing Maria from a rune-lined cell and remains with the Redleaf group as it moves on.",
+            "id": "felicia-redleaf",
+            "name": "Felicia Redleaf",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite water mage allied with Edwin and Felicia. Aliana supports Maria immediately after the prison rescue, providing food and water as the weakened librarian recovers.",
+            "id": "aliana",
+            "name": "Aliana",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Shadow's Hand head librarian and an information broker. Dagon values Taleen artifacts, sells limited knowledge, and offers time-bounded confidentiality concerning the questions and objects brought to him.",
+            "id": "dagon",
+            "name": "Dagon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redleaf figure who held Maria in a hidden prison. After Edwin, Felicia, and Aliana free her, Arthur requests rapid assistance while hunters pursue the group.",
+            "id": "arthur-redleaf",
+            "name": "Arthur Redleaf",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Shadow's Hand elder who privately recruits Dagon for a rapid coup against the guild's leader and supporters. He is preparing rune work and monster-summoning resources for the tournament gathering.",
+            "id": "unnamed-shadows-hand-elder",
+            "name": "Unnamed Shadow's Hand Elder",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The leader of a veteran Shadow's Hand squad returning from the west. Sulivhaan is a gravity mage who believes the recent elven attacks on human settlements show an unusual degree of coordination.",
+            "id": "sulivhaan",
+            "name": "Sulivhaan",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A survivor of Salia and Lily's father. Roland trains his surviving daughter to fight monsters because he considers combat skill necessary for their safety after the refugees reach a western Kral Kingdom city.",
+            "id": "roland",
+            "name": "Roland",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Roland's surviving daughter and a refugee from Salia. During her father's training, Lily kills a wounded horned lion with the black dagger Ilea gave her.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cover name Ilea uses during the offshore expedition. By this point, Ilea has told Eve that she came to Elos from a world without magic.",
+            "id": "lilith",
+            "name": "Lilith",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young displaced mage found alone in a ruin. Cless says she comes from London and is searching for her father, whom she describes as a doctor.",
+            "id": "cless",
+            "name": "Cless",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful unidentified mage with golden eyes who controls the barriers and cutting magic inside an offshore ruin. He ends a confrontation, removes selected research, entrusts Cless to the Shadow's Hand party, and teleports away.",
+            "id": "unidentified-golden-eyed-mage",
+            "name": "Unidentified Golden-Eyed Mage",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A female Shadow's Hand elder who directs the first response when concealed rune circles activate during the tournament. She orders the circles destroyed and fights the emerging demons with black-burning axes.",
+            "id": "unnamed-female-shadows-hand-elder",
+            "name": "Unnamed Female Shadow's Hand Elder",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sapient Mind Weaver encountered in the Great Salt. The demon communicates telepathically, directs lesser demons, and bargains with Ilea and Trian for information while the stranded pair search for a route home.",
+            "id": "mind-weaver",
+            "name": "Mind Weaver",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name Ilea gives the Mind Weaver allied with her and Trian. Weavy shares knowledge of ancient runes and joins their investigation of a vast steel facility, although trust within the alliance remains cautious.",
+            "id": "weavy",
+            "name": "Weavy",
+            "reveal": {
+              "chapter": 41
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Shadow's Hand elder who engineered the demon rifts and used an ancient facility in the Great Salt. Adam Strand claims the invasion was a test meant to strengthen the Hand, then refuses to explain his larger purpose.",
+            "id": "adam-strand",
+            "name": "Adam Strand",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Dawntree noble whom Ilea rescued before this book. Alice's earlier flight and her family's hostility remain relevant when Dawntree hunters seek Ilea in the belief that Alice may be traveling with her.",
+            "id": "alice-forkspear",
+            "name": "Alice Forkspear",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0C2QQNGWT",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-two"
+      },
+      "recaps": {
+        "ending": "The Shadow's Hand clears Ravenhall after Ilea kills Bane of the Deep and the defenders break the demons' Mind Weaver command, but the powerful winged demon escapes. Dagon and Sulivhaan negotiate cooperation with the Empire, giving the Hand a larger role in the city's reconstruction. Claire joins the new administration and takes responsibility for Cless. Trian plans to check on his family after learning that demon attacks have spread, while the Golden Lily remains tied to that family. Eve kills a poison druid during her separate investigation but leaves the fight critically wounded and without healing supplies, so her immediate safety is unresolved. Weavy proves his allegiance but is still feared by humans. Ilea leaves for Riverwatch with Kyrian and Weavy. Adam Strand remains missing, the one-way demon-spawn lake still requires containment, the winged demon remains at large, and the mysteries surrounding Aki, Taleen technology, Cless's father, and travel between Earth and Elos remain open.",
+        "in_short": "Ilea joins the Shadow's Hand and helps turn Team 34 into a capable unit alongside Claire, Eve, Kyrian, and Trian. Their missions lead to Cless, a child apparently displaced from Earth, before a Hand elder's rune plot unleashes demons across Ravenhall. Ilea and Trian are stranded in the Great Salt, ally with a Mind Weaver whom Ilea names Weavy, and use an ancient facility to return after Ilea rejects a possible route to Earth in favor of Elos. They find Ravenhall fallen and reunite surviving Hand forces under Dagon and Sulivhaan. Ilea, her allies, and Weavy break the demons' command structure and retake the city, though a winged demon escapes. Claire enters Ravenhall's new Hand-Imperial administration and cares for Cless. Trian turns toward his family, Eve is critically wounded after killing a poison druid linked to her investigation, and Ilea departs toward Riverwatch with Kyrian and Weavy while Adam Strand and the wider demon crisis remain unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Ilea arrived in Elos from a nonmagical world and became an Azarinth battle-healer. Her fighting style combines close combat, exceptional resilience, and healing, allowing her to survive threats that would overwhelm most adventurers. Her travels brought her into contact with Taleen ruins and with Aki, a sentient dagger whose origin remains unclear. She formed conditional alliances with Edwin Redleaf, Felicia Redleaf, and Aliana, and gained knowledge from Maria, a Riverwatch librarian. Ilea also rescued Alice Forkspear, leaving unresolved hostility connected to the Dawntree noble's family. Refugees including Roland and his daughter Lily survived the destruction of Salia and moved west. By the start of this volume, Ilea has concealed her origin from most people, accumulated rare Taleen-linked equipment, and reached the strength needed to seek more structured work and training in Ravenhall.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea pays to enter the Shadow's Hand as an initiate, choosing an arrangement that leaves her free to refuse work and depart. In the guild settlement beneath Ravenhall, Aki detects an unexplained presence in her apartment, while Ilea encounters signs of hidden violence and mind magic. Her evaluation demonstrates unusual durability, rapid healing, teleportation, and strong close-range attacks, earning her a place as Team 34's tank-healer. The new team consists of Kyrian, a reserved metal-and-curse mage; Trian, a noble lightning mage with draining abilities; Eve, a secretive illusionist and singer; and Claire, a rune mage who begins imposing tactical discipline. Their early sparring reveals both their power and their lack of trust. Ilea defeats Kyrian and Trian, while Claire counters Eve's mental attack with prepared runes. The bouts also begin building Ilea's resistance to lightning, curses, and draining magic. The Hand sets a three-month training program intended to turn the five specialists into a functioning field team.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Team 34's training exposes persistent tension but also begins drawing Ilea, Eve, and Kyrian together outside formal sessions. Claire assumes the role of tactician, Kyrian's debt and guarded past remain unexplained, and Trian gradually agrees to cooperate despite clashes over his noble status. Ilea studies monsters, healing, archery, and close combat while learning how to detect indirect signs of Eve's concealment. Elsewhere, Edwin, Felicia, and Aliana free Maria from a hidden, mana-draining prison, prompting hunters connected to the Redleaf family to pursue them. Ilea trades damaged Taleen armor to Dagon, the Hand's librarian, in exchange for confidentiality and information about teleportation, other realms, and the Redleaf conflict. The records offer claims of realm travelers but no explanation for Ilea's arrival. Team 34 then prepares for an extended exercise in the Hand's artificial underground training environment, with all five members finally assembled for group work.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After months of difficult drills, Team 34 begins its first field mission at a silver mine where several adventuring parties vanished. Death spirits overwhelm Claire, Kyrian, and Trian with mental attacks, but Eve protects the group while Ilea heals their minds. Their combined abilities reveal and destroy the spirits. During the battle Ilea reaches level 200 in her ash class and evolves it into Inheritor of Eternal Ash, greatly strengthening her body and ash control. Deeper in the mine, the team defeats a level-262 Lost Wanderer while protecting one another from further spirits. Ilea heals a wounded six-winged fae and lets it leave. The group determines that exposed soul shard ore drew the deadly creatures, recovers the missing victims, and returns control of the mine to its settlement. Their success earns full payment and confirms that the five initiates can now operate as a genuine team.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Now full Shadow's Hand members, Team 34 completes a series of assignments. They uncover a village blood-magic operation, rescue a traumatized child, kill the ritualist, and expose local conspirators who traded victims for payment from unknown nobles. They then destroy a harpy colony and join an offshore expedition, where Ilea survives a severe poison trap and the group helps kill a level-334 Stone Guardian. Ilea uses the cover name Lilith and tells Eve that she came from a world without magic. Beyond the guardian, a golden barrier controlled by an unidentified mage severs Ilea's legs before she regenerates them. The mage ends the confrontation and asks the Hand to take charge of Cless, a young girl found in the ruin. Cless says she is from London and is searching for her doctor father, making her another apparent arrival from Earth. Claire assumes responsibility for her while concealing that connection. The team explores farther, but a collapse buries the deeper dungeon entrance.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea establishes a concealed home near Ravenhall and grows closer to Kyrian. He reveals that he survived street life and exploited child labor, admits his limited literacy, and accepts Ilea's help learning to read. Ilea entrusts him with her Earth origin, though their brief intimacy leaves him hurt and confused when she does not want a committed relationship. Meanwhile, a covert Hand operative finishes a network of runes intended to undermine the guild. The plot erupts during the Hand tournament as demons pour into the training area and reach Viscera. Ilea fights through the incursion and reunites with Trian, but they cannot reach the rest of Team 34 before a vast portal opens. A colossal creature emerges, and the defending elder engages it. Ilea and Trian are swept through the rift into a dark ocean realm with no visible route back, while the fates of Claire, Eve, Kyrian, Cless, and Ravenhall remain unknown to them.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stranded in the Great Salt, Ilea tells Trian about Earth and introduces him to Aki. The pair bargain with a sapient Mind Weaver that wants to escape its violent realm. Their wary alliance leads them to an ancient steel facility operated through unfamiliar runes and lightning. Ilea names the demon Weavy. Inside, they confront the Shadow's Hand elder responsible for the rifts, who claims the invasion was meant to test and strengthen the guild. He summons monsters, uses the facility's controls, and disappears, leaving the three allies amid competing demon forces. After surviving, they discover that the central device can display and target distant places. One view appears to offer Ilea a route to Earth, but she chooses the life and people she has in Elos. She focuses the device on her hidden home and has Trian activate it. Elsewhere, Kyrian keeps Cless alive near demon-held Ravenhall and finds the city still burning under Mind Weaver control.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ilea, Trian, and Weavy return to her mountain home, where Kyrian and Cless have taken refuge. Ilea identifies the saboteur as Adam Strand and learns that Ravenhall has fallen while Claire and Eve are missing. Weavy joins the survivors as a provisional ally and helps Sulivhaan's squad clear demon groups around the city. The combined force retakes Morhill, attracting the attention of Imperial scouts. Eve, alive in Virilya, continues a separate covert investigation and survives a battle that yields new leads. Ilea travels to Virilya and finds Dagon organizing the surviving Shadow's Hand. After hearing Ilea's account of Adam, Dagon summons the guild to Ravenhall, and more than a hundred members answer. Dagon and Sulivhaan prepare the counterattack while scouts identify many Mind Weavers controlling the occupation. Ilea, Trian, Kyrian, and Weavy enter the sewer route beneath Ravenhall with Weavy's controlled demons, beginning the effort to break the city's defenses from within.",
+            "through": {
+              "chapter": 53
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Shadow's Hand attacks Ravenhall while Ilea and other infiltrators hunt the Mind Weavers directing its defenders. Each leader they kill destabilizes more demons, but a powerful winged demon nearly overwhelms Ilea and escapes south. A fresh rift releases two enormous creatures. One dies when the rift closes through it, while the other, Bane of the Deep, devastates the battlefield with sound. Ilea enters the creature, destroys its organs, and secures the level-823 kill. With the command structure broken, the Hand contains the remaining horde. Weavy proves his allegiance by destroying his own controlled spawn rather than leave them as a danger. Ilea reunites with Trian and Kyrian at a newly formed lake that sends demon spawn into the Hand's training area and will require permanent guards. After days of fighting through streets and underground passages, the Hand clears Ravenhall. The surviving defenders begin disposing of the dead and repairing the walls.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dagon and Sulivhaan secure Imperial cooperation in Ravenhall's reconstruction and a stronger governing role for the Shadow's Hand. Ilea finds Claire and her unresponsive mother pursued by Dawntree hunters seeking information about Alice. Ilea identifies herself as Lilith and kills the hunters after learning they drove Claire from safety and attacked during her escape. Claire remains with the Hand, is hired into Ravenhall's new administration, and takes Cless as her assistant and ward. Trian gives Claire his drawings of the Great Salt runes, then prepares to check on his family as reports confirm demon attacks far beyond Ravenhall. Eve's investigation links the Golden Lily to Trian's family. She kills a poison druid in Virilya but leaves the battle critically wounded, bleeding, and without healing supplies, making her immediate survival uncertain. Weavy remains distrusted despite his service. Ilea departs toward Riverwatch with Kyrian and Weavy, while Adam Strand, the escaped winged demon, the spawn lake, the Golden Lily, and the mysteries of Earth travel remain unresolved.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:us:B0C2QQNGWT",
+            "type": "community"
+          }
+        ],
+        "work": "azarinth-healer-book-two"
+      }
+    },
+    "backup": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator of this novella, a member of the White Court of vampires, who feed on human emotion. Handsome, sardonic, and privately haunted by his predatory nature, he has spent years secretly watching over and protecting the wizard Harry Dresden, his half-brother, often without Harry's knowledge. He walks a hard line between the monstrous demands of his blood and his fierce loyalty to the people he loves.",
+            "id": "thomas-raith",
+            "name": "Thomas Raith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Chicago's professional wizard and a private investigator who handles supernatural cases. Powerful, stubborn, and quick to charge into danger to help others, he is the person Thomas is determined to protect in this story, largely from behind the scenes and without Harry realizing the full extent of the threat around him.",
+            "id": "harry-dresden",
+            "name": "Harry Dresden",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Thomas's sister and the true guiding power behind the White Court of vampires, coldly intelligent and dangerously seductive. She manages the family's interests with ruthless political skill, and her aims and Thomas's do not always align.",
+            "id": "lara-raith",
+            "name": "Lara Raith",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "backup"
+      },
+      "recaps": {
+        "ending": "Thomas succeeds in protecting Harry from the danger closing around him without ever revealing the existence of the Oblivion War. Harry survives the night largely unaware of how close the threat came or of the hidden conflict his brother is bound to. The secret of the war is preserved, Thomas's loyalties remain concealed, and the quiet, one-sided vigilance he keeps over his brother continues as it did before.",
+        "in_short": "Told from the point of view of Thomas Raith, this novella follows him as he works to protect his half-brother, the wizard Harry Dresden, from a danger Harry cannot be allowed to learn about. Thomas is secretly part of the Oblivion War, an ancient, hidden effort to erase the names of certain old and terrible beings from human memory so they can never again be called into the world. Harry has stumbled unknowingly into the edges of this war, drawing the attention of a faction that wants to exploit what he has touched. Because the rules of the war forbid revealing it to outsiders, Thomas must guard Harry without telling him what is truly at stake, maneuvering alone against supernatural enemies. Through a night of danger he manages to shield his brother and blunt the threat, keeping both the secret and Harry intact.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "The Dresden Files follow Harry Dresden, Chicago's professional wizard. Among his closest ties is Thomas Raith, a member of the White Court of vampires, who feed on human emotion. Thomas has spent years secretly helping Harry from the shadows and shielding him from dangers Harry never learns of, hiding both his hunger and the true depth of their bond as half-brothers. The White Court is a family of predators governed through cold politics, and Thomas is caught between his monstrous nature and his loyalty to the brother he has chosen to protect.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "backup"
+      }
+    }
+  }
+}

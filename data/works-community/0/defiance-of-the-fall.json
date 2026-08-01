@@ -1,0 +1,1665 @@
+{
+  "entries": {
+    "defiance-of-the-fall": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human separated from his companions when Earth enters the multiverse. Zac survives a personalized System lottery against a herald and loses consciousness after the improbable victory.",
+            "id": "zac",
+            "name": "Zac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A temporary System guide assigned to Zac's newly activated outpost. She identifies him as a rare defier and explains tutorial placement, cosmic energy, and his unusual position outside normal cultivation.",
+            "id": "stargazer-outpost-administrator",
+            "name": "Stargazer outpost administrator",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Clan Azh'Rezak commander presented by his scouts as the privileged general directing the island invasion. His forces include organized demon soldiers and beast hordes, making him the central figure behind the incursion Zac must overcome.",
+            "id": "ogras",
+            "name": "Ogras",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A well-supplied main-branch heir of Clan Azh'Rezak. Ogras suspects that Rydel was assigned to watch or eliminate him, making the clan's internal rivalry another danger within the invasion.",
+            "id": "rydel",
+            "name": "Rydel",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A missing member of Zac's tutorial group. Zac believes Hannah may have died or may have returned somewhere other than his camp, but he has no confirmation of her fate.",
+            "id": "hannah",
+            "name": "Hannah",
+            "reveal": {
+              "chapter": 44
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A lava-veined monkey found meditating beneath an anomalous scarlet tree in a secluded valley. Zac regards the figure as the likely stone-monkey herald.",
+            "id": "monkey-king",
+            "name": "Monkey King",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Monkey King"
+            ],
+            "description": "The Monkey King identified by Eye of Discernment as a level-58 herald. Cindermane wields heat and stone and calls buried stone-monkey forces when Zac threatens the scarlet tree.",
+            "id": "cindermane",
+            "name": "Cindermane",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A large, intelligent, four-eyed imp in robes who commands other imps and operates a guarded cauldron. Zac identifies it as the probable fourth herald.",
+            "id": "imp-herald",
+            "name": "Imp herald",
+            "reveal": {
+              "chapter": 52
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A surviving demon civilian whose costly language skill allows communication across races. She had pursued a merchant-oriented path and explains why some failed invaders remained on Earth rather than return to Clan Azh'Rezak.",
+            "id": "demon-scribe",
+            "name": "Demon scribe",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A creator golem and foreman of Zac's newly acquired shipyard. Karunthel oversees its permitted work, explains that it is intended for naval exploration, and helps arrange a disguise that presents the extraordinary facility as an ordinary human dock.",
+            "id": "karunthel",
+            "name": "Karunthel",
+            "reveal": {
+              "chapter": 74
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader trying to preserve the Thayer Consortium's last licensed branch. Facing the organization's imminent loss, the chairman seeks to establish its headquarters in Zac's settlement despite limited supplies and bargaining power.",
+            "id": "thayer-consortium-chairman",
+            "name": "Thayer Consortium chairman",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's tutor in the System, cultivation, and the wider multiverse.",
+            "id": "alan",
+            "name": "Alan",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of four powerful associates revealed as Ogras's hidden retainers rather than ordinary Clan Azh'Rezak troops. Ilvir follows a Strongman path and pursues contrasting insights into Heaviness and Lightness.",
+            "id": "ilvir",
+            "name": "Ilvir",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Ogras's four concealed retainers, Janos is a support mage whose illusions can hide people and influence a battlefield. His specialized assistance gives Port Atwood's defenders options beyond direct force.",
+            "id": "janos",
+            "name": "Janos",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Ogras's four hidden retainers and a shadow-using assassin. Namis is introduced among the experienced demon fighters secretly loyal to Ogras and available for the approaching defense of Port Atwood.",
+            "id": "namis",
+            "name": "Namis",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A poison specialist and one of Ogras's concealed retainers. Alea is a dangerous fighter who shows a personal interest in Zac, which he regards cautiously.",
+            "id": "alea",
+            "name": "Alea",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Kenzie"
+            ],
+            "description": "Zac's younger sister, now living in Kingsbury with Lila. Mackenzie recognizes the ladder name Super Brother Man as a signal from her brother and learns that he survived, though neither sibling knows where the other is.",
+            "id": "mackenzie",
+            "name": "Mackenzie",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mackenzie's companion and a survivor of the tutorial. Lila lives with her in coercively ruled Kingsbury and accompanies her on an investigation of an expanding undead threat, partly as a way to escape local danger.",
+            "id": "lila",
+            "name": "Lila",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Marshall clan member with a rare class suited to the wilderness. Thea is among Earth's leading ladder rankers and considers taking another quest to improve her position against the people above her.",
+            "id": "thea-marshall",
+            "name": "Thea Marshall",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Thwonkin' Billy"
+            ],
+            "description": "A separate ladder-ranked local leader defending Billyville from rat-like monsters emerging through an incursion. Billy's public ranking reflects an independent center of resistance elsewhere on the transformed Earth.",
+            "id": "billy",
+            "name": "Billy",
+            "reveal": {
+              "chapter": 88
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A castaway from Chicago who was vacationing in Vietnam when the Integration displaced her group. Megan is among twelve low-level survivors who reach Port Atwood after fleeing an island overrun by enlarged rats.",
+            "id": "megan",
+            "name": "Megan",
+            "reveal": {
+              "chapter": 97
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The castellan of Winterleaf Village and leader of the party that receives Zac. Selas represents a weak fawn-like settlement seeking outside help and warns that the nearest human community is controlled by a violent warlord.",
+            "id": "selas",
+            "name": "Selas",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The cultivator ruler of Fort Roger, where armed men, vehicles, and fuel are kept under his control. He is implicated in the torture and execution of a couple who tried to remove their daughter from the settlement.",
+            "id": "roger",
+            "name": "Roger",
+            "reveal": {
+              "chapter": 101
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A teenage survivor of Fort Roger whose parents were executed on Roger's orders. Too young to enter the System, Emily is determined to gain power and chooses to travel with Zac after he recovers her parents' bodies for burial.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Emily's older sister, a cultivator who vanished from the family home during the Integration. Her location remains unknown when Emily joins Zac.",
+            "id": "joanna",
+            "name": "Joanna",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Emily's older brother, a cultivator who vanished from the family home during the Integration. His location remains unknown when Emily joins Zac.",
+            "id": "oscar",
+            "name": "Oscar",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The spokesman for older fishing-village arrivals at Port Atwood. Sap Trang offers his group's maritime experience, willingness to cultivate, and productive labor in exchange for resources and a place in the new settlement.",
+            "id": "sap-trang",
+            "name": "Sap Trang",
+            "reveal": {
+              "chapter": 104
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demon fire specialist whose spreading flames are especially effective against the Ein Hive Beasts during Port Atwood’s second horde.",
+            "id": "demon-pyromancer",
+            "name": "Demon pyromancer",
+            "reveal": {
+              "chapter": 107
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A demon earth mage selected for the six-person force entering the Hive Queen. The scout uses tremor perception to detect threats within the living structure.",
+            "id": "earth-mage-scout",
+            "name": "Earth-mage scout",
+            "reveal": {
+              "chapter": 108
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Earth-mage scout"
+            ],
+            "description": "The earth mage who accompanied the strike force into the Hive Queen. Herod is found dead after the hive seals a tunnel and crushes him near the group’s exit.",
+            "id": "herod",
+            "name": "Herod",
+            "reveal": {
+              "chapter": 111
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B094JYYGTL",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall"
+      },
+      "recaps": {
+        "ending": "Port Atwood survives the Hive Queen's assault after Zac, Ogras, Alea, and Janos destroy its protected core from within. Alea and Janos escape injured but alive, while Sap Trang and his fishing group remain part of the settlement's growing human population. Ogras buys the remaining Fruit of Ascension and enters seclusion to absorb it. The concealed creator shipyard, crystal wealth, demon defenders, and coastal scouting program give Port Atwood a stronger foundation, but Zac's three-month lord defense is still unfinished. Emily trains under Alan while awaiting the age when she can enter the System, and her siblings remain missing. Mackenzie knows Zac survived but remains in Kingsbury, and Zac has found neither her nor his father. Fort Roger remains under Roger's rule after Zac warns but spares him. Zac recovers the invasion's reserve resources, keeps a treasure-hunt token, and leaves through his private teleportation array for New Washington. The altered scarlet tree, later horde phases, Ogras's loyalties, the family search, and an unidentified observer at Zac's departure remain unresolved.",
+        "in_short": "The Integration strands Zac on a reshaped island, where a freak System lottery gives him the strength and obligations of a defier. He builds an outpost, takes the rare Hatchet Man class, develops three early Dao seeds, and wages a solitary campaign against a demon incursion. After killing the heralds and surviving a battle for two Fruits of Ascension, he evolves to Human E and forms a guarded alliance with Ogras and the stranded demons. Their settlement becomes Port Atwood, gains a hidden creator shipyard and merchant headquarters, and survives a vast wolf horde. Zac then opens a private teleportation route, helps Winterleaf Village, confronts the abusive ruler Roger, and brings Emily home with him. Port Atwood's second horde is a Hive Queen tunneling toward its Nexus vein. Zac and his allies destroy the queen's core from inside the hive. With Ogras secluded and the settlement recovering, Zac leaves for New Washington to seek information about his missing family while his lord defense remains incomplete.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Earth is forcibly integrated into a larger multiverse, its geography rearranged and its wildlife strengthened. Zac survives when a herald appears at his location and a personalized lottery eliminates the invader instead of him. He awakens alone under two suns, badly injured after fighting a demonic beast, while his girlfriend and the other campers are missing. The former road now ends at an ocean, leaving him isolated on what appears to be an island. A red pillar marks an incursion elsewhere on the landmass.\n\nZac learns that the lottery cost him the normal tutorial but left him at level 16 with unusual titles and bonuses. He activates an outpost around the camper. A temporary stargazer administrator explains that most eligible people went to tutorial towns, while Zac is a rare defier who cannot naturally cultivate but has gained exceptional advantages. She warns him that the outpost must grow into a town and that the incursion must be stopped. Zac therefore cannot simply leave to search for his father and younger sister. He begins purchasing basic arrays, concealing the camp, and preparing to become strong enough to survive the island.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac turns the concealed camper outpost into a training base. A gathering array lets him receive cosmic energy despite his inability to absorb it naturally, while a gravity array helps raise his physical foundation. He assigns his unused attributes toward a durable close-combat build and hunts the demonic beasts roaming the island. His enhanced vitality saves him from repeated wounds, though new enemies prove increasingly dangerous. A winged imp nearly kills him with black fire before a desperate thrown hatchet ends the fight.\n\nAfter weeks of hunting, Zac reaches level 23 and buys Eye of Discernment, allowing him to identify local demon types. His quests require him to kill four heralds and the incursion general within three months, then close or conquer the incursion and defend the resulting settlement. He attacks a level-45 western herald using a concealed stake trap. The trap succeeds, but Zac escapes with a broken arm, severe lacerations, and other injuries while responding beasts pursue him. Two heralds are now dead, including the one eliminated during the opening lottery, but Zac remains alone and still knows little about the organized force behind them.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Humanoid demon scouts reveal that the invasion belongs to Clan Azh'Rezak and that Ogras leads it. Zac ambushes a scouting party and tries to question a captive, but the prisoner self-destructs even after death. The victory brings Zac to level 25 and unlocks his class choices. He selects the rare Hatchet Man class, gaining strong physical growth and quests for Axe Mastery, Chop, and Forester's Constitution.\n\nThe invaders intensify their search. Zac defeats another well-equipped demon party and claims useful armor, weapons, crystals, and a storage pouch. By rebuilding his improvised energy circulation around his class fractal, he gains better control and can activate some of the captured equipment. Inside the demon camp, Ogras is shown concealing his actual cultivation behind the image of a privileged failure. He suspects that Rydel, a heavily supported main-branch heir, may be watching or targeting him. Zac scouts the fortified settlement and estimates that thousands of demons occupy the island. A direct assault is impossible, so he focuses on completing his class skills and finding the remaining heralds before the incursion stabilizes.",
+            "through": {
+              "chapter": 38
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Completing Axe Mastery gives Zac a vision centered on an overwhelming axe strike. His attempt to understand its weight produces an early Dao Seed of Heaviness and makes him the world's third Child of Dao. Axe Mastery also supplies guided combat movements, while completing Chop adds a close-range energy edge to his weapon. A demon war party discovers the hidden camp, and Zac is badly wounded while preventing it from raising an alarm.\n\nZac then moves into the western mountains to find the stone-monkey herald. The peaks surround a concealed valley with unusually dense cosmic energy, a blue lake, and a scarlet tree that appears to drain the nearby land. Beneath that tree he finds the Monkey King, Cindermane. The level-58 herald controls heat and stone and can summon buried monkey reinforcements. Zac cuts a deep wound across Cindermane's chest but cannot finish the fight. He retreats through a monkey horde, seals himself inside a cavern system, and later confirms from his quest count that Cindermane survived. Deeper underground, Zac finds unfamiliar plants as the energy density rises. A lone imp in the tunnels leads him to suspect that another herald may be somewhere below.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac follows the cavern imps to a guarded cauldron operation run by a large robed imp. He attacks, survives its black fire and barrier, and forces Chop beyond its former limit so the cutting edge can travel away from his axe. The projected strike kills the imp, and the quest confirms it was another herald. Zac escapes with the cauldron but collapses from burns, exhaustion, and apparent poison exposure. Cindermane and the incursion general are the last required targets.\n\nAfter recovering, Zac discovers that his Strength has reached a racial cap. He stops cultivating while searching for a way to evolve and raids the demons' Nexus Crystal mine. A large theft gives him thousands of raw crystals, but hidden tracking stones allow the miners to ambush him. He survives coordinated attacks and self-destructions at severe cost. A System vision then announces that two Fruits of Ascension will soon ripen on Cindermane's scarlet tree. Believing the fruit may solve his blocked evolution, Zac commits to entering the coming struggle even though Cindermane and the demon leadership are likely to converge there.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rydel invokes clan rules to take command of the army and marches on the Tree of Ascension, apparently confining Ogras to the demon settlement. Zac infiltrates the resulting battle between demons and stone monkeys. Near the tree, Rydel fights Cindermane while Zac waits for the protective shield around the fruit to fall. He disrupts both competitors at the decisive moment and seizes both Fruits of Ascension.\n\nDuring the escape, Zac kills Cindermane and combines Chop with the Dao of Heaviness to injure Rydel. Rydel nearly kills him in return, but a disguised Ogras strikes his cousin from behind. Ogras then revives from apparent death, speaks to Zac in English, and helps create a poisonous cloud with the captured imp cauldron. Zac escapes through the azure lake and consumes one fruit while poisoned, triggering a violent transformation. He awakens as Human E with a higher Strength limit. The System marks all four heralds and the general dead, and the red incursion pillar vanishes. The larger lord quest remains active, however, requiring Zac to hold the outpost against other alignments for the remainder of a three-month term.",
+            "through": {
+              "chapter": 66
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A demon scribe explains that Ogras was the expedition leader, while Rydel was the white-haired battlefield commander Zac had taken for the general. Ogras secretly advanced to level 73, killed Rydel, and used a death-feigning pill to satisfy Zac's quest. The failed invaders who remained behind are stranded and cannot own a System town. Ogras therefore proposes a guarded alliance: demon labor, expertise, and defense in exchange for sanctuary. Zac agrees while keeping Ogras's killing of Rydel secret.\n\nOgras identifies the unfinished lord objective as a recurring monster-horde defense. Zac also learns that repeated use of the azure water has damaged his energy pathways, limiting his ability to recover cosmic energy. His incursion reward includes valuable equipment, crystals, and a creator shipyard capable of producing increasingly advanced vessels. Because that facility would attract hostile powers, its golem workers disguise it as an ordinary dock. Zac names the growing settlement Port Atwood, acquires a desperate Thayer Consortium headquarters to support trade, and works with demon specialists on walls, districts, and a future academy. The new allies have roughly forty days to turn the former camp into a defensible town.",
+            "through": {
+              "chapter": 77
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Port Atwood funds its defenses by refining crystals from the mountain and selling them through the Thayer Consortium. Alan tutors Zac in cultivation, class advancement, and the accepted history of the System. Zac completes Forester's Constitution, gains an early Seed of Trees, and unlocks the Loamwalker movement skill, though his damaged pathways still constrain him. Ogras reveals four hidden retainers: Ilvir, Janos, Namis, and Alea. Together with roughly two hundred demon defenders, they man Port Atwood's new walls when the first horde begins.\n\nThe opening waves are wolves, and the defenders initially use the walls to control the fighting and gain contribution rewards. Zac and Ogras compete for credit while conserving scarce defensive resources. Zac adopts the ladder name Super Brother Man as a private signal to Mackenzie. Elsewhere, she recognizes the childhood name while living with Lila in coercively ruled Kingsbury, proving to her that Zac is alive. Other viewpoints reveal independent rankers including Thea Marshall and Billy, while a government task force tries to identify or locate powerful cultivators. Zac and Mackenzie still have no way to find one another.",
+            "through": {
+              "chapter": 88
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The wolf horde continues for three weeks and escalates through spectral, stone, psychic, metallic, and mixed waves. Port Atwood's wall is repeatedly breached, and its E-grade defense array consumes an unsustainable amount of crystals. Zac develops his axe energy skill into a multi-blade attack, but the defenders are exhausted and suffer casualties. A one-use lightning array destroys the enormous next-to-last wave at the cost of further damage to the town's defenses.\n\nThe final enemy is an E-grade fiend wolf whose Dao of Sharpness tears through both the ruined wall and the remaining shield. Zac fights it directly with help from Ogras and Alea. Alea's poison wounds the monster, but it leaves her critically injured. Zac grasps the quality behind its attacks, manifests the same sharpness through his axe, and kills it, gaining an early Seed of Sharpness. The first horde stage is complete. During the interval, Zac reaches level 50, buys a spirit-tool axe intended to grow with him, and uses costly medicine and E-grade crystals to repair his pathways. As the settlement recovers, twelve human castaways arrive by boat.",
+            "through": {
+              "chapter": 96
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The castaways fled an island overrun by enlarged rats and know little about the System. Zac allows them to remain under restrictions because Port Atwood’s demon population and resources must stay hidden. He then buys a private teleportation array and travels to Winterleaf Village, a weak settlement of fawn-like people integrated alongside humanity. The System’s solo Monster Hunt quest awards him an automatic map for killing a mutated mink, while the village’s castellan, Selas, gives him a token for a future worldwide treasure hunt.\n\nSeeking information about his family, Zac travels onward to Fort Roger. The settlement’s cultivator ruler controls its vehicles, fuel, and armed men. Zac learns that Roger ordered the torture and execution of Emily’s parents when they tried to remove her from town. He kills three men sent to seize the teenager, publicly warns Roger against further abuse, and retrieves the bodies for burial. Zac nevertheless leaves Roger alive because the town has no replacement capable of protecting its civilians. Emily, too young to enter the System but determined to become strong, chooses to accompany Zac to Port Atwood. Her cultivator siblings, Joanna and Oscar, remain missing.",
+            "through": {
+              "chapter": 102
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Winterleaf Village closes its teleportation connection after Zac and Emily return, blocking his intended route toward Fairfield. At Port Atwood, the human arrivals have split into an uncooperative group and older fishing villagers willing to work. Their spokesman, Sap Trang, proposes cultivation, hunting, and maritime service in return for resources and a home. Zac invests in the cooperative group and sends Emily to Alan for preparation, while forbidding the teacher's former harsh methods. Emily has elemental aptitude but insists on continuing axe practice.\n\nThe second horde appears as a huge living hive rather than a direct assault. Its insect forces cover a queen that is tunneling toward Port Atwood's Nexus vein. After several days of farming the attackers, Zac insists on ending the threat before the vein is reached. Information from the town indicates that the queen can be stopped only by destroying its internal core. Zac, Ogras, Alea, Janos, an earth-mage scout, and a pyromancer enter the spatially expanded hive. Traps separate Zac from the others, but he survives an acid chamber and reunites with most of the force. The pyromancer dies, and four royal guards protect the core. The group's opening ambush fails because the guards' life force shields it.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The core suppresses Zac and Alea's Dao use while the strike force battles the royal guards. Ogras is badly wounded, Janos exhausts his energy, and another member of the group dies. Zac and Ogras destroy three specialized guards, then coordinate a short finishing window against the final armored defender. Ogras kills it with a concentrated shadow attack. With the core exposed, Zac invokes Nature's Punishment, a giant wooden hand that crushes the crystal and injures his own arm.\n\nThe queen dies, its remaining insects become inert, and the hidden interior begins collapsing. Zac carries the unconscious Alea and Janos while he and Ogras escape. Outside, Port Atwood's defenders have survived, including Sap Trang. The second lord-quest phase is complete, and Zac reaches level 54. Emily deduces that the demons were invaders, so Zac confirms that they reached an agreement after the incursion failed. Ogras buys the remaining Fruit of Ascension and enters seclusion to absorb it. Zac organizes coastal reconnaissance with human sailors and demon teams, while Sap Trang reaches level 25. Port Atwood has survived another stage, but the full three-month defense remains unfinished.",
+            "through": {
+              "chapter": 113
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sap Trang selects the uncommon Wave Whisperer class and prepares to help Port Atwood explore the surrounding waters. Emily continues mage preparation and daily axe practice, but Zac refuses to take her through the teleportation network before she can use defensive treasures. He plans to obtain cultivation manuals for her and for the settlement's future academy.\n\nBefore leaving, Zac and Alea return to the mountain battlefield. The scarlet tree has absorbed the old poison cloud and turned purple, leaving its future and any later fruit uncertain. Zac recovers Rydel's storage pouches, including the invasion's reserve of weapons, pills, food, crystals, and siege equipment. He distributes useful supplies to Port Atwood's defenders and keeps the remainder for future rewards and security. Ogras remains alive in seclusion with the Fruit of Ascension. Alea and Janos survived the hive battle, while Sap Trang's group is integrated into the settlement and its scouting plans. Zac's family is still missing, Roger remains in control of Fort Roger under warning, and later horde phases remain ahead. Zac activates his private teleportation array and departs for New Washington to seek broader information. An unidentified observer watches him leave and withdraws into the shadows.",
+            "through": {
+              "chapter": 115
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-22",
+            "ref": "audible:uk:B094JYYGTL",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall"
+      }
+    },
+    "defiance-of-the-fall-11": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Zachary Atwood"
+            ],
+            "description": "Founder of the Atwood Empire and a dual human-Draugr cultivator. Stranded in the Void Star with Ogras and Vi, Zac seeks a way out.",
+            "id": "zac",
+            "name": "Zac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Zac’s demon companion, believed lost after vanishing into a spatial vortex.",
+            "id": "ogras",
+            "name": "Ogras",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's spiritual plant companion.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The consciousness associated with Zac's coffin-like spirit tool.",
+            "id": "alea",
+            "name": "Alea",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Voidgate researcher and spatial guide traveling with Zac and Ogras. She seeks rescue from the compromised realm.",
+            "id": "vi",
+            "name": "Vi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's Titan-blooded ally from Earth. He rules a local kingdom with the support of its realm spirit.",
+            "id": "billy",
+            "name": "Billy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lipless, heart-cursed commander of an invading Kantanu force.",
+            "id": "kantanu-commander",
+            "name": "Kantanu commander",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Zac's sister, who is alive but held through their mother Leandra's connection to the Six Profundity Empire.",
+            "id": "kenzie",
+            "name": "Kenzie",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac and Kenzie's mother. She took Kenzie into the orbit of the Six Profundity Empire.",
+            "id": "leandra",
+            "name": "Leandra",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sentient spirit of the dimensional-seed realm. Corruption has made her dangerously ill, and saving her may require remaking most of her domain.",
+            "id": "jemmy",
+            "name": "Jemmy",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Billy's statue-like mentor, who proposes remaking Jemmy's realm to save her. In return, the mentor requires Billy to open a portal, seek its true body, and stay away from Ultum.",
+            "id": "statue-like-mentor",
+            "name": "Statue-like mentor",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Voidgate spatial cultivator and Vi's niece. She helps organize the defense of Jemmy's realm and the difficult plan to evacuate its residents.",
+            "id": "layara",
+            "name": "Layara",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Albright Empire fighter aiding the defenders of Jemmy’s realm.",
+            "id": "pretty",
+            "name": "Pretty",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable fire cultivator pursuing Zac. Her arrival disrupts the siege.",
+            "id": "iz-tayn",
+            "name": "Iz Tayn",
+            "reveal": {
+              "chapter": 15
+            }
+          },
+          {
+            "description": "Iz Tayn's independent fire golem and battlefield companion. Its power dominates the local fighting as it moves to rejoin her.",
+            "id": "kvalk",
+            "name": "Kvalk",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gigantic runic guardian emerging from the corrupted lake. A fragment of the Lost Plane gateway is embedded as its ninth eye, shielding it and feeding its strength.",
+            "id": "qriz-ul-king",
+            "name": "Qriz’Ul King",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Vigil-linked leader who separates Zac from his companions and explains the altered Left Imperial Palace contest and its coming war condition.",
+            "id": "void-priestess",
+            "name": "Void Priestess",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac’s disciple and an axe-array cultivator.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac’s Draugr ally and contact within the Undead Empire.",
+            "id": "catheya",
+            "name": "Catheya",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac’s spectral butler and an educator in Elysium.",
+            "id": "triv",
+            "name": "Triv",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Atwood commander and spear specialist.",
+            "id": "joanna",
+            "name": "Joanna",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Atwood leader and revenant commander.",
+            "id": "velary",
+            "name": "Velary",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An undead ally of Zac.",
+            "id": "ruger",
+            "name": "Ruger",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A key Atwood Empire administrator who suppresses insurrections and wrote the Atwood Codex. She expects undead integration to create further unrest.",
+            "id": "julia-lombard",
+            "name": "Julia Lombard",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Leader of the Zhix and a cautious possible recruit for Zac's inheritance search. He weighs opportunities for his people against the political consequences of closer cooperation.",
+            "id": "rubot",
+            "name": "Rubot",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jix breeder and discovery-oriented cultivator. Zac invites him to the Million Gates expedition because his outlook and abilities may prove useful around ancient inheritances.",
+            "id": "ibtep",
+            "name": "Ibtep",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Zac's covert political adviser. He recommends stopping organized opposition to undead integration before it can spread, while maintaining a different public posture.",
+            "id": "henry-marshall",
+            "name": "Henry Marshall",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure whose unresolved bond with the Ayn Hive Queen prompts Velary to ask Zac to monitor her.",
+            "id": "lily",
+            "name": "Lily",
+            "reveal": {
+              "chapter": 54
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captive sword cultivator used in the Blessed Kin's experiments. She resists a corruptive elixir and refuses an order to kill children despite the consequences.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An early-monarch unorthodox alchemist who holds Thea as an experimental subject and studies her response to a corruptive elixir.",
+            "id": "hallowed-mother",
+            "name": "Hallowed Mother",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful traveling Buddhist cultivator who intervenes against the Hallowed Mother. He frees Thea and seeks to recruit her as a guide for a journey beyond Earth.",
+            "id": "three-virtues",
+            "name": "Three Virtues",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A moon-spanning moss network awakened into consciousness by Integration. Unable to manage the growing life and death attunements around it, the entity demands that Zac provide a solution.",
+            "id": "emerald-eye-moss-consciousness",
+            "name": "Emerald Eye moss consciousness",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fugitive technocrat navigator pursued by pirates after an Ultum opportunity draws attention to him. Ogras's force rescues him, then compels him to guide a raid.",
+            "id": "jowl",
+            "name": "Jowl",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Atwood archer defending the entrance to an ancient array tower during Ogras's expedition. He supports the battle from range while searchers work inside.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carl's wife and a member of Ogras's expedition. She guards the entrance to an ancient tower while her husband provides ranged support against attacking pirates.",
+            "id": "lissa",
+            "name": "Lissa",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Undead Empire correspondent whose final-chapter message offers Zac supplies while cautioning him against taking appearances at face value.",
+            "id": "laz-temzul",
+            "name": "Laz Temzul",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Zac's established public undead identity, now openly confirmed to the Undead Empire delegation. The identity lets him operate politically among undead powers while concealing the full nature of his dual existence.",
+            "id": "arcaz-black",
+            "name": "Arcaz Black",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inventor who awakens carrying the Realm Keeper orb, the Seal of the Mercurial Court. The inheritance names him a realm singer of Ultum, and he hopes to restore his lost wife.",
+            "id": "mercurial-court-realm-singer",
+            "name": "Mercurial Court realm singer",
+            "reveal": {
+              "chapter": 65
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CLYMGRZM",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-11"
+      },
+      "recaps": {
+        "ending": "Zac finishes his immediate cultivation preparations with three Dao branches at middle mastery and a quantum-core design tailored to his alternating human and Draugr states. He postpones forming that core until the Perennial Vastness. His Ultum cycle stands at eight of nine, with the last bearer unidentified. Ogras returns from Million Gates stronger but with Shadewar emitting more dangerous curse energy. Emily is home with two Radiant Court seal pieces and a frontline command, Joanna has an Indomitable Court lead, Velary has repaired her blocked soul bloodline, Carl holds a Radiant Court fragment, and Jowl is bound to Zac as a follower and navigator. Catheya's safety remains uncertain amid Undead Empire factional maneuvering. Kenzie is still held through Leandra's connection to the Six Profundity Empire, and the Kantanu invasion remains delayed rather than stopped. Zac, Ogras, Joanna, Velary, and Emily assemble for departure. Zac and Ogras activate their tokens and enter the Perennial Vastness.",
+        "in_short": "Reunited in a corrupted Void Star realm, Zac and Ogras help Billy, Jemmy, Vi, Layara, and Iz Tayn defeat the Kantanu operation and close a Lost Plane gateway. Jemmy survives by converting much of her realm into portable subspace, but Zac returns to Earth with severe foundation damage. During his recovery he prepares the Atwood Empire for war, integrates living and undead populations, secures a wary alliance with the Undead Empire, and learns that his Eos bloodline is both valuable and politically dangerous. Ogras leads a costly Million Gates expedition while Zac develops a quantum-core blueprint suited to his human and Draugr states. Emily, Jowl, and other seal holders bring Zac's Ultum cycle to eight of nine. After completing both hidden Gates of Rebirth trials, Zac gains two more middle-mastery Dao branches. The book ends with the Kantanu war, Kenzie's captivity, Catheya's safety, and the final Ultum member unresolved as Zac and Ogras enter the Perennial Vastness.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Zac established the Atwood Empire on an integrated Earth and advanced along an unusual path divided between living and Draugr forms. His allies include his missing demon companion Ogras, his disciple Emily, the Atwood commanders Joanna and Velary, his spectral attendant Triv, and Catheya, a Draugr connected to the Undead Empire. Zac is entangled with ancient inheritances linked to Ultum and the Left Imperial Palace, while his family remains divided and powerful outside forces shape the frontier. Ogras vanished into a spatial vortex, leaving his fate uncertain. Zac's cultivation, the security of Earth, and the search for answers about the older powers behind the system remain connected to conflicts far beyond his home world.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac finds Ogras alive inside an isolated dimensional-seed realm within the Void Star. Ogras has survived there for years, gained new shadow abilities, and taken control of dangerous Lost Plane specters through Shadewar. He also reports that Billy is alive and allied with the realm's spirit. Zac reveals that Kenzie is alive but held through Leandra's connection to the Six Profundity Empire, and Ogras promises to help recover her. Their reunion also shows that both men hold different Ultum-linked inheritance quests. With Voidgate researcher Vi, they ambush a Kantanu force searching the realm. Zac kills its heart-cursed commander, but the surrounding energy grows sickly. They learn that Jemmy, the sentient realm spirit, has absorbed corruption and may die with everyone inside if her core collapses. Meanwhile Billy's refuge is under siege by thousands of invaders. Zac reaches peak E-grade before Jemmy opens a narrow spatial breach through the enemy army, allowing Zac, Ogras, and Vi to enter the surrounded stronghold.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside Billy's fort, the defenders devise a plan to convert most of Jemmy's realm into a portable subspace. The transformation cannot safely begin until a Lost Plane breach at the ruined goblin capital is closed. Layara, a powerful Voidgate cultivator, organizes the escape plan while Pretty and the remaining fighters buy time against the Kantanu siege. Zac and Ogras agree to strike the corruption source. Iz Tayn arrives while pursuing Zac, revealing herself as another Flame Bearer. Her independent golem Kvalk tears through the battlefield, and she ultimately postpones her confrontation with Zac to join the larger mission. Iz Tayn explains that her family has reinforced an unremovable tracking mark on Zac and that outside powers are already watching the inheritance struggle. Elsewhere, Emily survives a collapsing Radiant Court trial. She completes a seasonal axe array, receives a quest to become a Lightbringer of Ultum, and chooses to remain with her expedition rather than return home. Zac, Ogras, and Iz Tayn recover together before advancing on the corrupted ruins.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac, Ogras, and Iz Tayn infiltrate the ruined capital and find the Lost Plane gateway beneath a lake of corruptive water. Zac discovers that his Voidheart can refine some of the taint into insight, but his attempt to destroy the gateway draws out the Qriz’Ul King, a vast runic guardian with the gateway fragment embedded in its ninth eye. Iz Tayn commits to the battle, helping Ogras close the breach while Zac holds the guardian away from the lake. Unable to break its defenses normally, Zac combines creation and oblivion into a chaos attack. The blast destroys the guardian and devastates the area, but shatters Zac's pathways, damages his foundation and soul cultivation, and costs him years of life. The group escapes as Jemmy's realm is converted. A Vigil leader then explains that the final Left Imperial Palace seal piece will be awarded through contribution in a war due in about four years, with young contenders from powerful factions expected to participate. Jemmy's residents are rescued, Vi returns safely to Voidgate, Billy leaves to honor his pact with Southern Mountain, and Zac and Ogras return to Earth.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Back on Earth, Zac begins the long repair of his ruined foundation and warns the Atwood Empire that a major war is four years away. A third Left Imperial Palace fragment is located in the Ensolus ruins, but Zac delays claiming it until he can safely withstand another epiphany. He commits immense resources to conscription, fleet building, and a force of millions, while Ogras takes command of the coming Million Gates expedition. Exploring Ensolus with Joanna, Velary, and Ruger triggers Zac's larger Ultum task: assemble a cycle of nine seal bearers before the deadline. The displayed count does not match the bearers he knows, leaving the cycle's membership unclear. Zac also creates the paired Gates of Rebirth, dangerous life and death trials that grant titles and Dao insight. He advances his Branch of the War Axe to middle mastery. The Atwood shipyard completes Starflash, a fast expedition destroyer bound to Ogras. Its first voyage proves the empire now has a practical cosmic warship, though its advanced systems demand specialized crews and heavy resources.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A survey of Emerald Eye brings Zac and Ogras into contact with a moon-spanning moss consciousness awakened by Integration. Earth's increasing life and death attunements destabilize it. Zac promises a future solution, but the organism imposes a five-year deadline by planting a mental-energy crystal in his soul aperture. The crystal threatens him while also accelerating his soul cultivation. Zac develops new methods to draw duality insight from stored Lost Plane water and begins Void Vajra Sublimation, a life-attuned body-tempering path that gives him greater control over a hidden bloodline node. When Catheya returns with an Undead Empire delegation, Zac attends through a remote body and detects concealed monarchs. The negotiations reveal that his Draugr bloodline is Eos, a lost branch with major political value. The Empire offers resources, a Perennial Vastness token, and support in exchange for cooperation over the Left Imperial Palace. Zac accepts a guarded, non-binding alliance. His public undead identity, Arcaz Black, is confirmed to the delegation, while rival undead factions and an unknown Abyssal Lake site make his new status dangerous.",
+            "through": {
+              "chapter": 50
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac publicly announces the approaching Kantanu war and formalizes the integration of Elysium's revenants, the Mavai, and the Ra'un into the Atwood Empire. He defines attacks on undead citizens as terrorism and suppresses the first organized revolt through forces led by Ogras. Rubot cautiously accepts the new order, while Ibtep is invited to join the Million Gates expedition and Henry Marshall advises Zac on covert political control. Ogras departs with a mixed expeditionary force. Elsewhere, the captive sword cultivator Thea resists the Hallowed Mother's corruptive elixir and refuses to kill children. Three Virtues intervenes, frees her, and recruits her as a guide for an off-world pilgrimage, though the elixir's effects remain. Iz Tayn returns to help Zac evaluate his cultivation. She warns that his intended life and death constitutions cannot simply merge into one conventional core. More urgently, her fire wisp discovers a hidden death-conversion curse in the bloodline essence supplied by the Undead Empire. She removes it, leaving Zac with a usable but time-limited tonic and strong evidence that his allies attempted to eliminate his living half.",
+            "through": {
+              "chapter": 57
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac tests his improved human constitution in a full spar with Iz Tayn. He manages to cut her, but her combined transformations disrupt his technique and leave him unconscious. Before departing, she learns of his nine-bearer Ultum requirement and promises life-attuned resources to balance the Undead Empire's death-aligned support. Zac consumes the cleansed Eos essence, then sacrifices a depleted death treasure to force open two hidden nodes. One permits dangerous physical overdrive, while the other resists curses and tracking effects. He conceals the upgrade from the Undead Empire and begins drawing concrete core blueprints, though life and death still refuse to harmonize. Ogras's Million Gates force enters an unstable realm shard in search of opportunities. At the same time, an outside palace candidate sends adjudicators toward Zekia, and Emily is revealed alive but stranded in a damaged escape pod after a spatial storm destroyed her advance vessel. The expedition advances toward dangerous ruins while Emily faces isolation without a known rescue route.",
+            "through": {
+              "chapter": 64
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Separate struggles across Million Gates bring more Ultum bearers into view. A realm singer awakens with the Seal of the Mercurial Court. Emily survives months alone, expands her escape pod, develops a mobile flying-axe array, captures an infiltrator vessel, and eventually returns to Earth. She holds two Radiant Court seal pieces and accepts a frontline command while preparing for hegemony. Ogras's expedition suffers seven deaths but gains allies and inheritance progress. It rescues Jowl, a failing technocrat navigator and Far Sea Court bearer, from pirates and forces him to guide a raid. Catheya escapes an Imperial commander she believes may kill her for her seal, leaving her safety unresolved. The returned Mercurial bearer raises Zac's Ultum cycle to eight of nine. After thousands of failed designs, Zac learns that conventional fusion of pure life and death is impossible for him. He instead designs a quantum core with alternating human and Draugr states, each stabilized through the void of the opposite aspect. He postpones forming it until the Perennial Vastness. Joanna returns without a seal, but Zac gives her an Indomitable Court marker and points her toward the battlefield.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac enters the Gates of Rebirth seeking their deepest reward. He clears the six public layers of the Gate of Life, then reaches a hidden seventh trial whose inverted death patterns suit his Draugr side. At its center he rejects an imposed life-death fusion and advances the Branch of the Kalpataru to middle mastery. The trial transfers him to the Gate of Death and removes most memories of his first passage, but his soul cultivation preserves enough for him to recover them. Completing the second hidden trial advances the Branch of the Pale Seal to middle mastery. Zac emerges with both secret gates cleared, the Gates of Rebirth title, and more than 100,000 total attributes. Carl returns with a Radiant Court fragment, and Zac contracts Jowl as an Ultum follower and Endless Storm navigator. Velary repairs her soul-bloodline blockage, while Ogras gains progress from the Umbra heritage. A warning from Laz Temzul deepens concern about Undead Empire politics and Catheya's safety. The Kantanu remain delayed, not defeated. Zac, Ogras, Joanna, Velary, and Emily prepare to leave, and Zac and Ogras activate their tokens to enter the Perennial Vastness.",
+            "through": {
+              "chapter": 77
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CLYMGRZM",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-11"
+      }
+    },
+    "defiance-of-the-fall-12": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A human-Draugr cultivator entering the Perennial Vastness to pursue a difficult cosmic-core plan. He must gather enough mana to make the design viable while finding Ogras and Catheya.",
+            "id": "zac",
+            "name": "Zac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Zac"
+            ],
+            "description": "The identity Zac uses in his dealings with the Undead Empire. Its agreement with him is complicated by rival factions, Catheya's manipulated departure, and agents sent into the Perennial Vastness to find either of them.",
+            "id": "arcaz-umbrizi",
+            "name": "Arcaz Umbrizi",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Zac's demon companion and a shadow cultivator. He is a trusted but covert ally whose abilities and judgment complement Zac's direct approach.",
+            "id": "ogras",
+            "name": "Ogras",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Draugr cultivator close to Zac, with strengths in ice, formations, and death-attuned environments.",
+            "id": "catheya",
+            "name": "Catheya",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly created Perennial Vastness guide linked to Zac through a wristband. She was assigned because his affinities do not fit ordinary categories, and her own continued existence depends on how well he performs.",
+            "id": "null",
+            "name": "Null",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Perennial Vastness's oldest disciples and a cultivator nearing supremacy. He intervenes during Zac's orientation and recognizes that Zac's void understanding carries a connection to the Left Imperial Palace.",
+            "id": "engo",
+            "name": "Engo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Radiant Temple numerologist who has waited for Zac in the Perennial Vastness. He knows Zac's human and Draugr identities are connected and seeks an exchange concerning the Left Imperial Palace.",
+            "id": "radiant-temple-numerologist",
+            "name": "Radiant Temple Numerologist",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A First Imperial Heaven princess who uses covert watchers and a coalition to locate Left Imperial Palace seal bearers. After an observer identifies Zac as a Flame Bearer, she orders an investigation and plans to seize the connected fate.",
+            "id": "imperial-princess",
+            "name": "Imperial Princess",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A barbarian cultivator who meets Zac after the Quarry expedition and asks to join him on a future war-zone venture. He accepts that they will compete for any treasure they find.",
+            "id": "kruta",
+            "name": "Kruta",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A feared senior cultivator from the Empyrean Throne who arrives aboard the Thousand Flame Galley to take custody of Kruta after his return home.",
+            "id": "empyrean-throne-disciple",
+            "name": "Empyrean Throne Disciple",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An orc supremacy associated with the Thousand Flame vessel. She accepts Kruta as her sole disciple and sets two years of training before deciding whether he can continue toward the junior event.",
+            "id": "tain-supremacy",
+            "name": "Tain Supremacy",
+            "reveal": {
+              "chapter": 76
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion of Zac's who is regaining her former strength by consuming energy. The process appears to reduce her already limited lifespan.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Imperial leader commanding Deathsworn soldiers and mages through a powerful war array. She traps Zac and Kruta in the Stand of Saeward, declaring that the Left Imperial Palace fate belongs to her Empire rather than to Zac.",
+            "id": "valsa-planur",
+            "name": "Valsa Planur",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The warlord associated with the Stand of Saeward. Escalating activity there prompts Kruta to recruit Zac for an expedition.",
+            "id": "saeward",
+            "name": "Saeward",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Zac's second tool spirit. She briefly seals a mage's fate and interrupts his escape, but the effort damages her soul and leaves her facing years of recovery.",
+            "id": "alea",
+            "name": "Alea",
+            "reveal": {
+              "chapter": 53
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The avatar of the Perennial Vastness. He appears when Valsa Planur's father attacks the realm after her death, intervening to defend the Vastness's neutrality and prevent the extraction of useful trial memories.",
+            "id": "sendor",
+            "name": "Sendor",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small, sign-speaking toad with ancient power who appears as the Calamity Mountain collapses. She and a female companion intervene against the awakened dream beast and help the newborn mountain spirit escape.",
+            "id": "esmeralda",
+            "name": "Esmeralda",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Esmeralda's interpreter and the sponsor of a proposed palace partnership. She approaches Zac with an arrangement that would allow the exceptional thief to accompany him into the Left Imperial Palace.",
+            "id": "lova",
+            "name": "Lova",
+            "reveal": {
+              "chapter": 62
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful fire cultivator and an important external contact of Zac's. The rare drops she previously gave him remain valuable safeguards during the dangerous breakthroughs he intends to attempt.",
+            "id": "iz-tayn",
+            "name": "Iz Tayn",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A guide associated with a Buddhist Sangha who shares a strong karmic link with Zac. Her place in the Sangha and the unresolved obligation surrounding Three Virtues keep that connection important.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful Buddhist cultivator and the master of Thea's abbot. His earlier role as a benefactor leaves an unresolved obligation connected to Thea and the Sangha.",
+            "id": "three-virtues",
+            "name": "Three Virtues",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Zac's absent mother and a protector tied to the concealment surrounding him.",
+            "id": "leandra",
+            "name": "Leandra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ally Zac has not yet recovered. She does not accompany the Perennial Vastness expedition, and the need to rescue her remains one of his major obligations beyond his immediate breakthrough.",
+            "id": "kenzie",
+            "name": "Kenzie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's disciple and a bearer of a Radiant Court seal. She is absent while pursuing her own court path, but her place among the scattered seal bearers keeps her connected to Zac's future Ultum plans.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A concealed consciousness within a moss crystal in Zac's soul aperture. It emerges as a threat when his improvised life-and-death soul breakthrough damages the prison holding Creation and Oblivion remnants.",
+            "id": "mossy",
+            "name": "Mossy",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Valsa Planur's supremacy father. Sensing his daughter's death, he attacks the Perennial Vastness and tries to recover her memories, threatening to expose the identity and fate of the opponent who killed her.",
+            "id": "vastermal-planur",
+            "name": "Vastermal Planur",
+            "reveal": {
+              "chapter": 59
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0CVBK1NBT",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-12"
+      },
+      "recaps": {
+        "ending": "Zac finishes the volume as a newly ascended hegemon. His middle-quality but highly unique quantum life-death core is integrated with the Duplicity Core. For his two Arcane classes, he selects Evolutionary Precursor and Inexorable Apostle. Ogras remains his ally and a future palace participant. Catheya is alive, committed to Zac, and continuing her own cultivation while Undead Empire politics remain unresolved. Kruta holds the Indomitable Court seal and is training as the sole disciple of a Tain supremacy. Esmeralda has gone to Zekia under her contract to accompany Zac into the Left Imperial Palace, while Thea's cooperation with the Sangha remains conditional. Zac has completed his nine-bearer Ultum cycle, but the palace contest itself has not begun. The Hollow Court objective may offer leverage for Catheya's freedom, Sendor's warning about the Terminus remains unexplained, and Zac still intends to confront the wider war and rescue Kenzie.",
+        "in_short": "Zac and Ogras enter the Perennial Vastness, where they reunite with Catheya and gather mana for Zac's unprecedented life-death cosmic core. He survives a dual soul breakthrough, claims the Calamity Core, uncovers a First People inheritance, and gains Cosmic Forge and the Void Engine. Kruta joins him in the Stand of Saeward, where they ruin Saeward's sacrificial ritual and Zac kills Imperial princess Valsa Planur. Sendor protects Zac's identity, and Kruta claims the ninth seal in Zac's Ultum cycle. Esmeralda contracts to join the palace venture, while Catheya and Zac commit to a shared future. Zac finally combines the Calamity Core, Warstone, and Void Engine into a quantum life-death core, survives tribulation with help from Leandra's hidden array, and ascends to hegemony as an Evolutionary Precursor and Inexorable Apostle. The Left Imperial Palace, the wider war, the Hollow Court, and Kenzie's rescue remain ahead.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Zac, also known to the Undead Empire as Arcaz Umbrizi, is a human-Draugr cultivator building a path that joins life, death, conflict, and the void. He has gathered allies and obligations across several factions while protecting Earth and preparing for a wider multiversal war. Ogras remains his demon companion and covert adviser. Catheya is a Draugr cultivator close to him, but her relationship with the Undead Empire is politically fraught. Zac's wider circle includes his disciple Emily, the fire cultivator Iz Tayn, and Thea, whose karmic link to him involves a Buddhist Sangha and Three Virtues. His mother Leandra remains absent but has left concealment measures around him, while Kenzie still needs to be rescued. Zac also carries Ultum seals tied to the Left Imperial Palace, an approaching contest whose bearers and rival factions are scattered across the multiverse. He plans to seek the resources and controlled environment of the Perennial Vastness to form a cosmic core strong enough for the dangers ahead.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac and Ogras use separate tokens to enter the time-dilated Perennial Vastness, where Zac is assigned a newly created guide named Null. The realm rewards visitors with mana, which strengthens both their protection and the environment used for cosmic-core formation. Zac receives the maximum starting allotment for his unusual blueprint, then claims a hazardous summit manor on Mount Illumination despite its identity-eroding Buddhist influence. He reaches Vastness City and rushes to help Catheya against the Grand Firmament Coalition, only to learn that she had staged her apparent weakness to draw profitable attacks. His illegal intervention costs substantial mana but also establishes a deterrent. Ogras reveals that he has already arrived, reuniting the three companions. Catheya explains that her flight from the Undead Empire was likely caused by manipulation rather than a genuine decision to betray it. With rival Undead Empire factions and the coalition both posing risks, the trio turns toward missions, formal duels, and dangerous zones as faster ways to accumulate mana.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac exploits the apparent flaws in his life-death blueprint to win formal duels and blueprint bounties until an anonymous announcement exposes the tactic. A Radiant Temple threadwinder then reveals that he knows Zac and Arcaz Umbrizi are the same person. The threadwinder is also an Ultum seal bearer who expects to die in the Left Imperial Palace, and he bargains for limited help from Zac in exchange for tools that can identify unusual opportunities. Zac, Ogras, and Catheya take their first joint mission in Sinner's Lament, an orange zone filled with corruption, resentment wraiths, and recurring lightning purges. Catheya develops a compass from local crystals to locate sinner mounds, while Ogras uses Shadewar and captured spirits to manage the surrounding threats. At the first mound, lightning reveals a mass of tainted corpses around a core and suppression stake. Zac destroys the core, and the group defeats the corpse construct that follows. They now have a repeatable method for finding and clearing further mounds, though the zone remains costly and dangerous.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The trio destroys twenty-two sinner mounds and completes the mission profitably. Zac then attempts the third layer of Void Vajra Sublimation in the Keys of Ascension. The hidden heart trial destroys his body, but he preserves his identity, purifies the scattered remains, and rebuilds himself with a stronger life-attuned constitution and Dao heart. Back on Mount Illumination, he discovers that a ghost monastery may conceal a providence treasure, but its Samsara pressure is still too strong to cross safely. An Imperial observer later identifies Zac as a Flame Bearer and reports him to a princess pursuing Left Imperial Palace fate. Unaware of the full investigation, Zac enters the Calamity to attempt his next soul breakthrough. After surviving its violent life-death storms, he reaches a drifting mountain and constructs a concealed chamber where both energies are balanced. Rather than follow a single-attunement route, he commits to forming separate evolutionary and inexorable soul structures as the basis of a unified life-death soul.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac's altered soul breakthrough releases Creation and Oblivion remnants inside his aperture. He maneuvers them into destroying Mossy, the hostile consciousness hidden in his moss crystal, then forms two damaged but powerful soul cores through repeated collisions of life, death, and conflict. The Calamity Mountain's spirit trades its energy for remnant power and leaves Zac a twinned crystal before abandoning its failing body. Esmeralda, a small toad with ancient abilities, helps drive away the awakened dream beast as Zac escapes. The crystal is the Calamity Core, a pure life-death foundation suited to Zac's future cosmic core, but taking it creates a public event that rewards anyone who steals it. Zac survives repeated ambushes, consumes a rare flower to repair his soul, and defeats most of a specialized Earth-attuned squad, though its leader escapes. Near the exit, Beastkin block his path, but two Eternal Clan vampire leaders force them back. Zac still holds the Calamity Core as he joins the vampires toward the teleporter, uncertain what they want from him.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The vampires help Zac ambush members of the Grand Firmament Coalition, and he returns safely from the Calamity with the Calamity Core. Catheya remains in the city as bait before entering seclusion, while Zac and Ogras travel to the Quarry. Zac discovers that its fate kernels conceal a second structure based on the void. He absorbs seventeen hidden keys, enduring severe suppression until they form a First People constellation and open an inheritance in a separate dimension. Ogras and Catheya each receive a personalized empty fate kernel, but only Zac can safely enter the inheritance itself. There he experiences years of compressed crafting instruction and receives Cosmic Forge, a void-based refinement method. He also claims a crystal that converts presented Dao into corresponding void aspects, naming it the Void Engine and making it part of his revised cosmic-core plan. After leaving, Zac earns more mana through another duel scheme and auctions the final empty kernel. A barbarian cultivator named Kruta then asks to accompany him into a future war zone, and Zac agrees.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac and Catheya begin a committed romantic relationship while each continues separate cultivation. Zac advances Cosmic Forge across dangerous Dao environments, then learns from Kruta that unusual activity is building in the Stand of Saeward. Before entering, Zac reaches the ghost monastery on Mount Illumination and resists its attempts to dissolve his identity. He escapes with a strand of Lucky Beads that sharpens his sense of the hostile fate gathering around him. He also creates Primal Edict, a persistent life-and-conflict skill, and earns new titles that strengthen him for the expected ambush. Zac asks Catheya and Ogras to investigate from safety while he travels with Kruta in disguise. Kruta believes Saeward's unexplained disappearance concealed a trove near the old command center. Inside the Stand, battlefield memories and puppet armies react to conflict, and violence rapidly worsens the entire zone. Zac's danger sense confirms that his unknown pursuers are already present, but he and Kruta continue toward the castle at the center of the war.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Valsa Planur, an Imperial princess, traps Zac and Kruta with a force of Deathsworn soldiers and mages. Her edict seals Zac's class transformation, but Primal Edict lets him destroy her support force. Kruta draws the Stand's puppets into the battle at the cost of a leg, and the pair escape through a lethal metallic river into Saeward's castle. There they discover that Saeward engineered the recurring war as a sacrificial cultivation loop, gathering conflict and memories for a transfer into a superior puppet. Zac and Kruta sabotage the ritual, and heavenly tribulation destroys the puppet's apparent soul. Valsa follows them into the castle and critically wounds Kruta. Zac combines Oblivion and conflict in an annihilating attack that kills her, though the technique damages his Dao mold. Valsa's father, Vastermal Planur, attacks the Perennial Vastness and tries to recover her memories. Sendor, the realm's avatar, intervenes and manipulates time so Vastermal retains nothing useful about Zac or the trial.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sendor heals Zac and Kruta and explains that Saeward's original soul remains trapped in a recurring failure scenario, while the original victims have been freed. He awards both cultivators Warstone shards suited to conflict-based core formation. Sendor also recognizes Zac's aura as connected to the Void Emperor, but the System blocks further explanation and warns Zac about the Terminus. An unclaimed Indomitable Court seal remains on the battlefield, and Zac offers it to Kruta. Kruta accepts, completing Zac's cycle of nine Ultum seal bearers. Back in Vastness City, Esmeralda returns with Lova, who explains that the toad is an ancient thief trapped in repeated reincarnations. Esmeralda contracts to accompany Zac into the Left Imperial Palace in return for passage and help pursuing her own objective. She begins opening Valsa's ring, while Catheya leads an operation against the remaining Deathsworn and their surveillance network. Once the immediate Imperial threat is removed, Zac turns fully toward solving the fusion of his Calamity Core, Warstone, and Void Engine.",
+            "through": {
+              "chapter": 65
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kruta leaves the Perennial Vastness, but an Empyrean Throne disciple takes him after learning of his connection to an Ultum seal. Meanwhile, Zac helps Ogras capture a shifting dreamgeist for his Spirit Lock Physique. Thea discovers that her Sangha has been using her karmic link with Zac to locate Ultum seals and agrees to continue only if it swears not to target Zac's people and obtains a seal for her. Zac and Catheya hunt together, and Catheya awakens environmental harmonization before choosing a Dao domain as her next major step. The two explicitly commit to a long future despite political obligations and long separations. Zac completes his Omni-Tool, advances Cosmic Forge, and receives Valsa's opened wealth from Esmeralda before she leaves for Zekia. Ogras takes Worldly Cognizance from the cache and incorporates the dreamgeist, while Catheya receives formation resources. Near the Vastness's practical mana limit, Zac leaves Catheya and enters the Calamity's upper layer to claim the remaining Creation and Oblivion remnants and begin core formation.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac installs a Hollow Core inside the autonomous Duplicity Core, then seizes another Oblivion splinter and Creation shard from the Calamity's paired suns. He forces the six remnants into conflict, briefly creating Chaos, and uses that harmony to establish balanced life and death inside the Hollow Core. The System subdues the remaining calamity and returns him to Mount Illumination. Elsewhere, Kruta survives an apparent years-long death trial that is revealed as a shorter, perception-distorting test. A Tain supremacy accepts him as her sole disciple and gives him two years of training before deciding whether he can continue toward the coming junior event. Zac enters sealed core formation with over 130,000 mana. The Perennial Vastness refines his Warstone and Calamity Core while his Voidheart processes the Void Engine. The void component arrives hours late, after the temporary harmony begins to fail, but Zac divides it across the life and death structures. He completes a stable nucleus with seven minor imperfections, proving that his quantum life-death design can exist.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac builds successive life, death, and conflict layers around the nucleus, using void energy to keep the opposing structures balanced. Months of eruptions damage the Hollow Core and its internal wiring, but costly healing resources let him finish a functioning Trinity-path cosmic core. Its toll of hegemony manifests opposing hosts of axe bearers and executioners, drawing an exceptionally severe tribulation. Zac refuses sacrificial methods that would transfer the harm to others. His new Dao domain absorbs the first bolt, while the second ravages his body and core before Voidheart and the Duplicity Core consume the remaining lightning. A hidden array left by Leandra conceals his precise location from the final attack. The Duplicity Core then reorganizes itself around the new cosmic core and waits for class selection. Zac chooses the Arcane pair Evolutionary Precursor and Inexorable Apostle, fully committing to his established life-death path. The core integrates with his body, confirming his ascent to hegemony. He now turns toward Ultum, the Left Imperial Palace, the wider war, and rescuing Kenzie.",
+            "through": {
+              "chapter": 82
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0CVBK1NBT",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-12"
+      }
+    },
+    "defiance-of-the-fall-13": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Zachary Atwood",
+              "Zac Piker"
+            ],
+            "description": "The Atwood Empire's ruler enters hegemony by completing a core built around life, death, conflict, and the void. The breakthrough succeeds, but a violent failure in its final stage leaves his human and Draugr aspects in separate bodies.",
+            "id": "zac",
+            "name": "Zac",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The public Draugr identity Zac assigns to the second body created by his breakthrough.",
+            "id": "arcaz-umbrizi",
+            "name": "Arcaz Umbrizi",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Zac's adopted daughter, a soul cultivator who directs Atwood war intelligence and coordinates the empire's response to the Kan'Tanu conflict. She is also pursuing an Ultum campaign of her own.",
+            "id": "vilari",
+            "name": "Vilari",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's disciple and an established commander in the Atwood Empire.",
+            "id": "emily",
+            "name": "Emily",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Atwood strike leader and seal seeker who commands Valkyries on hazardous frontline missions.",
+            "id": "joanna",
+            "name": "Joanna",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's demon companion and a shadow cultivator pursuing his own path toward hegemony.",
+            "id": "ogras",
+            "name": "Ogras",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac and Kenzie's K.R. Elu mother, operating as a hidden protector with extensive knowledge of technocrat threats.",
+            "id": "leandra",
+            "name": "Leandra",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's sister, endangered by the System's continuing interest in her. Jeeves and Leandra are rewriting her body, core, soul, and elemental Dao branches, but the procedure is only a temporary defense.",
+            "id": "kenzie",
+            "name": "Kenzie",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jeeves directs the delicate reshaping of Kenzie's physical and spiritual cultivation to make her less conspicuous to the System.",
+            "id": "jeeves",
+            "name": "Jeeves",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The realm spirit governing the Perennial Vastness. Sendor blocks Engo from taking the unconscious Zac.",
+            "id": "sendor",
+            "name": "Sendor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient scholar and follower of Sendor who wants to study Zac's extraordinary breakthrough. He uses a powerful array and a false territory to attempt a seizure while Zac is unconscious.",
+            "id": "engo",
+            "name": "Engo",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful observer connected to Esmeralda's interests. Lova watches Zac's breakthrough from concealment but refuses to assist Engo when he tries to capture Zac.",
+            "id": "lova",
+            "name": "Lova",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Draugr representative who contacts Zac about access to an Abyssal Pond intended to awaken the ancestral bloodline he claims.",
+            "id": "tavza",
+            "name": "Tavza",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of the Kavriel reception who protects Calrin from the province's hostile environment.",
+            "id": "laz-temzul",
+            "name": "Laz Temzul",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A White Sky Phalanx war child and Isrok reaver who greets Arcaz as a potential rival and tests him with killing intent.",
+            "id": "kator-white-sky",
+            "name": "Kator White Sky",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's Sky Gnome merchant, brought into Kavriel to study its markets and establish trade between the Atwood Empire and the Undead Empire.",
+            "id": "calrin",
+            "name": "Calrin",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Spirit of Love's Bond"
+            ],
+            "description": "The spirit within Zac's death-and-conflict tool, Love's Bond. Alea can attempt a supplied D-grade breakthrough once Zac provides the required materials.",
+            "id": "alea",
+            "name": "Alea",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Verun's Bite"
+            ],
+            "description": "The spirit of Verun's Bite, Zac's life-and-conflict counterpart to Alea's death-attuned tool. His planned evolution is paired with hers so the two weapons can maintain their complementary balance.",
+            "id": "verun",
+            "name": "Verun",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Jix anointed and hive integrator entrusted with resources and responsibility for dispersing the Jix through Atwood formations. His role links the hive's future to the empire's military reorganization.",
+            "id": "rubot",
+            "name": "Rubot",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second Jix hegemon and a Grub Knight whose merit mission calls for mounted grubs. The breeds currently available to the hive are not suited to the combat role the mission demands.",
+            "id": "ibtep",
+            "name": "Ibtep",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Atwood Navy's leader, occupied with containing aquatic beast kings near the archipelago. He declines war registration and considers transferring Bao's link to a water-affined descendant.",
+            "id": "sap-trang",
+            "name": "Sap Trang",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Draugr monarch who explains the risks of the Abyssal Pond's bloodline awakening. Laws helps oversee a tightly controlled ritual whose effects may exceed the local array's intended limits.",
+            "id": "laws",
+            "name": "Laws",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A high monarch and leader of Kavriel who observes Arcaz's Abyssal Pond awakening. His presence reflects the political and spiritual importance attached to the returning bloodline.",
+            "id": "tessar-kavriel",
+            "name": "Tessar Kavriel",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An ancestral presence contacted beyond the artificial pond in the true abyssal lake. The contact triggers a temporal disturbance and leaves its outcome unresolved.",
+            "id": "draugr-progenitor",
+            "name": "Draugr progenitor",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Atwood seal bearer and long-range combatant serving among Zac's elite forces. His extreme-range attacks are suited to removing enemy leaders and hardened targets from a support position.",
+            "id": "carl",
+            "name": "Carl",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A pirate-raider and natural Hollow Court seal bearer found captive in a remolded dungeon. Zac frees her from that prison but confines her on Earth while deciding whether she can be trusted.",
+            "id": "stormstar",
+            "name": "Stormstar",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Atwood research navigator whose technocrat components keep him outside ordinary battlefield units. Contact with Zac's Court Cycle Token produces a Far Sea Court rune, marking a connection the token accepts.",
+            "id": "technocrat-navigator",
+            "name": "Technocrat navigator",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Zathia seal bearer and former healer-alchemist presented to Zac after the duel. He appears as an undead captive, and Zac immediately recognizes that his body no longer carries life.",
+            "id": "captive-alchemist",
+            "name": "Captive alchemist",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful shadow-path assassin who intercepts Ogras, claims a debt to the Lord of the Perennial Vastness, seals away Ogras's Shadewar flag, and takes charge of his compulsory year of Red Hand Society training.",
+            "id": "mysterious-assassin",
+            "name": "Mysterious assassin",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The commander of an allied defense against a Kan'Tanu fleet. Lord Everfast counters a monarch's mental pressure and triggers a dimensional convergence that brings a hidden fleet and asteroid strike into the battle.",
+            "id": "lord-everfast",
+            "name": "Lord Everfast",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An adolescent heaven-render vine approaching D-grade. Harrow's rapid growth and aggressive instincts make him increasingly dangerous unless Zac can establish a stable bond before the breakthrough.",
+            "id": "harrow",
+            "name": "Harrow",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Zac's aging spirit-plant companion. Vivi has reached peak E-grade, but her declining life force and inability to match stronger wartime opponents leave her future uncertain.",
+            "id": "vivi",
+            "name": "Vivi",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Emperor's Spear"
+            ],
+            "description": "An ancient spearwoman manifested in the last stage of Joanna's trial. Known as the Emperor's Spear, she sets survival against her attacks as the test rather than requiring Joanna to win.",
+            "id": "indra-eiler",
+            "name": "Indra Eiler",
+            "reveal": {
+              "chapter": 63
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Allbright captain assigned to guide Zac's forces through the red-zone deployment. He presents himself as an experienced frontline officer familiar with the Alliance's routes and procedures.",
+            "id": "tussar",
+            "name": "Tussar",
+            "reveal": {
+              "chapter": 64
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dravorak Alliance commander placed over the force seeking the damaged Limitless Empire fortress. Dawson controls operational intelligence and coordinates movement through the unstable battlefield.",
+            "id": "general-dawson",
+            "name": "General Dawson",
+            "reveal": {
+              "chapter": 69
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Mavai frontline leader fighting beside Zac at the fortress hotspot. The chieftain destroys the hexmaster's last surviving clone, making the newly ownerless Starfall Court seal safe for him to claim.",
+            "id": "mavai-chieftain",
+            "name": "Mavai chieftain",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The corrupting resident of the ancient bell that compelled soldiers to offer their own hearts. The entity appears especially interested in Vilari and receives her when she enters the bell alone.",
+            "id": "bell-entity",
+            "name": "Bell entity",
+            "reveal": {
+              "chapter": 77
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The hidden architect of a year-long operation directed against Zac. After assessing the failed plan and the bell's unexpected interference, the prince orders a compromised operative eliminated.",
+            "id": "unnamed-imperial-prince",
+            "name": "Unnamed imperial prince",
+            "reveal": {
+              "chapter": 78
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0D42L3J98",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-13"
+      },
+      "recaps": {
+        "ending": "Zac breaks the death-sworn isolation array with an unstable fractal, but the escape divides his group. Emily deliberately takes a separate spatial fracture and remains missing. Vilari stays behind, kills three Hallowed Flesh hegemons, places the Acheron Company under its commander, and enters the ancient bell. She bargains with its corrupting resident for strength in return for confronting its enemies and helping it pursue something in the Anima Courts. Tussar dies before completing his attempt to steal the Starfall Court seal, which the Mavai chieftain successfully claims. Zac and the wounded chieftain survive the spatial storm, kill two pursuers, and emerge beside the damaged Limitless Empire fortress. Zac is badly injured and missing a foot, while the fortress remains active and dangerous. General Dawson recognizes that outside powers have shaped the operation and sends a direct warning to Archduke Everfast. An unnamed imperial prince adjusts the failed plot, intending to isolate the flame-bearer and reach Ultum's courtyards himself. Kenzie's Sanctuary route, Ogras's compulsory training, Zac's incomplete seal cycle, the Void Mountain, the Undead Empire's internal struggle, Vilari's bargain, and Emily's fate all remain unresolved.",
+        "in_short": "Zac's rise to hegemony splits his human and Draugr aspects into two bodies sharing one identity, core, and memories. He turns the accident into the public Zac and Arcaz partnership, strengthens the Atwood Empire's war organization, and gains an extraordinary Draugr awakening through the Abyssal Pond. His forces conquer Kan'Tanu worlds before the widening war compels them into a catastrophic red-zone offensive and a contest for a damaged Limitless Empire fortress. Along the way, Zac acquires a genuine-bond Court Cycle Token, encounters the Void Mountain and a warning about the Terminus, while Ogras, Joanna, Harrow, and Vilari advance along separate paths. The fortress expedition is compromised by infiltrators, an ancient bell, Tussar's attempted seal theft, and a death-sworn ambush. Zac escapes into a spatial storm with the Mavai chieftain, who claims the Starfall Court seal, but Emily is separated and missing. Vilari enters the bell under a dangerous bargain. Badly wounded, Zac reaches the still-armed fortress as General Dawson exposes outside involvement and a hidden imperial prince revises his plan.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Zac rules the Atwood Empire while pursuing a path that combines life, death, conflict, and the void. His human and Draugr natures, unusual bloodlines, specialty cores, and connections to Ultum have drawn attention from powers far beyond his home. His sister Kenzie remains endangered by the System, with Leandra and Jeeves attempting to alter her cultivation. Vilari serves as Zac's adopted daughter and war-intelligence leader, Emily as his disciple and commander, Joanna as a Valkyrie strike leader and seal seeker, and Carl as a long-range Atwood combatant. Ogras pursues a shadow path and his own breakthrough, while Vivi remains Zac's spirit-plant companion. The Kan'Tanu war threatens Zekia, and the Atwood Empire has become part of that wider struggle. Zac begins this volume in the Perennial Vastness, attempting the hegemony breakthrough that will determine whether his divided cultivation can become a stable cosmic core.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac survives his hegemony breakthrough, but the Quantum Gate destabilizes and forces his human and Draugr aspects into two real bodies. They are not separate people: one mind, soul, core, and memory operate through both. Each body carries one class, while the shared link grants both the benefits of the whole cultivation system. Sendor protects the unconscious Zac from Engo, tests the impossible connection, and confirms that distance does not end it, although strong Dao isolation can sever it and weaken both halves. Sendor also provides defensive marks and information about Zac's K.R. Elu ancestry, including links to the Technocrat Codex and true twin existence. Leandra offers a Sanctuary contingency that might protect Kenzie, but it requires Zac to recover a key and meet a centuries-long deadline. Zac returns to Earth with the bodies arriving separately and begins adapting to divided perception. He prepares Arcaz Umbrizi as the public explanation for his Draugr half. Meanwhile, Alea approaches a tool-spirit breakthrough, and Vilari reports that the Kan'Tanu war has already produced enemy beachheads and heavy losses across Zekia.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac enters the war under his own name and receives an S-grade evaluation, the Fated Flame Bearer designation, and a campaign tied to conquering worlds and securing a seal bearer. When living Kan'Tanu siege weapons breach the Eighth Army's defenses, a young soldier dies despite Zac's attempt to save him. Zac draws the enemy's attention onto himself, destroys the living bombs and several hegemons, then orders an immediate counterattack. The army conquers the hostile world, but the victory reinforces the human cost of his rule. Zac learns how war designations, individual merit, and faction merit shape authority and rewards. The empire cannot afford every strategic option, so higher-grade campaigns and creator-made cosmic vessels become central to its plans. Vilari confirms that Emily has become the empire's first native hegemon and is leading an independent campaign. Zac registers his second body as Arcaz Umbrizi, producing separate System records for the two identities. Their adjacent positions on the sector ladder attract attention from the Dravorak dynasty and Tavza's Draugr delegation. Zac prepares to visit Kavriel Province and its promised Abyssal Pond.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Arcaz enters Kavriel with Calrin to open trade and negotiate with the Undead Empire. Tavza receives him as an important Draugr claimant, while Kator White Sky tests him and proposes a duel for a captive Zathia seal bearer. Zac explains the supposed split between Zac and Arcaz, admits that both bodies hold Left Imperial Palace quests, and preserves his loyalty to the Atwood Empire. The undead delegates accept that his bloodline is genuine but remain wary of its political consequences. They offer help with siege resources and methods against Buddhist interference, although System restrictions limit direct aid. Zac demonstrates both identities acting independently, upgrades death-attuned skills, and secures trade access. Alea survives her D-grade trial and remains inside an evolution cocoon, while Zac plans Verun's evolution and seeks the rare life-attuned materials and merit it requires. After negotiations, Zac publicly presents Zac and Arcaz as twin-like co-rulers created by the breakthrough. The Atwood Empire then reorganizes its armies for aggressive campaigns, integrating Draugr, humans, Jix, Mavai, and specialized units into larger companies. The shift promises greater merit and growth but accepts much higher casualties.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac addresses several problems within the expanding empire. Rubot takes responsibility for integrating the Jix into Atwood formations without recreating an imposed faith hierarchy, Ibtep's Grub Knight mission remains unsuited to the available breeds, and Sap Trang stays outside war registration while containing aquatic beast kings. Zac then enters the Abyssal Pond under the supervision of Kavriel's monarchs. The artificial pond connects him to the true abyssal lake, where the Draugr progenitor offers guidance rather than control. The encounter produces an unprecedented awakening linked to his ancestral bloodline and leaves a sealed Dao impartation. The resulting surge destabilizes the pond, forcing the surrounding Draugr and monarchs to contain the disaster. Zac returns with a stronger Draugr body and a deeper connection to death, but the imbalance between his two halves worsens. Tavza cannot establish the full cost or purpose of the progenitor's intervention. Zac leaves Kavriel with limited Undead Empire cooperation and greater political importance, while the Abyssal Shores, White Sky interests, and other factions reassess what his returning bloodline means for the Left Imperial Palace.",
+            "through": {
+              "chapter": 32
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Atwood Empire completes its wartime reorganization and fields the Calamity Company in a sequence of increasingly difficult campaigns. Zac initially conceals most of his strength so the new formations can gain experience. Joanna's Valkyries target command personnel, Carl destroys elite enemies from extreme range, and the company's expensive arrays and war machines overwhelm the first neutral battlefront. The victory proves the organization works, but its equipment costs and personnel losses cannot be sustained indefinitely. Abyssal water then activates one of Zac's hidden nodes, which refines the energy and indirectly advances his Draugr bloodline. Ordinary death-attuned materials can reproduce the effect only weakly. After three more victories, the company reaches Kerkos VI, an inhabited Kan'Tanu world with prepared defenses, superior numbers, cursed terrain, and D-grade war machines. The System gives the attackers only a short protection period. Zac senses the world lord hidden among the defenders and decides to prevent his escape, setting up the campaign's decisive confrontation.",
+            "through": {
+              "chapter": 40
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On Kerkos VI, the Calamity Company breaches the prepared Kan'Tanu army while Zac cuts through its formations to the world lord. The ruler's magnetic domain, elite guard, heart curse, and escape treasure all fail. Zac drags him back from a dimensional vortex and kills him, making the planet temporarily neutral. The company secures surviving array towers, mining sites, the capital, and further campaign opportunities. Elsewhere, White Sky leaders conclude that Zac's Abyssal Pond awakening and Palace fate make him a dangerous political fulcrum amid the Undead Empire's internal conflict. An outside prince also begins moving battlefronts to increase his own connection to the Palace. Zac continues conquests as Arcaz, with Joanna and Carl leading specialized strikes. A captive pirate named Stormstar is recovered from a remolded dungeon, satisfying the seal-bearer part of Zac's first Flame Bearer campaign. A final satellite-world conquest completes the quest and rewards Zac with a blank Court Cycle Token. His next campaign demands vastly more merit and a middle D-grade end node, beyond the company's present strength.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Stormstar attacks Zac from confinement and proves unable to activate the Court Cycle Token despite holding a Hollow Court seal. By contrast, Zac's technocrat navigator immediately produces a Far Sea Court rune. Zac concludes that the token requires genuine personal connections, not a collection of seal bearers, and begins adding compatible allies while three outer-court positions remain inaccessible. He also supports the navigator's scanner-analysis work and possible restoration of an organic body. Zac then faces Kator White Sky in a technique-restricted duel. Kator's miracle bones support a sophisticated system of time, gravity, and combat impetus that steadily controls the fight. Zac answers with Void Zone and briefly unites his Dao, heart, and void, but the attempt opens a vision of an inverted mountain and eight ancient wills warning about the Terminus. A Buddhist authority detects the event and sends investigators. Zac returns with a persistent Void Mountain imprint, scores one hit through its resonance, then forfeits before Kator escalates further. Afterward, the Zathia alchemist is delivered as a memory-retaining revenant. Damaged by forced Kan'Tanu advancement, he stays with Zac and begins a three-year recovery rather than return to his family.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ogras completes a high-quality Shadow Mirage Core, becomes a Shadewar Sovereign, and confirms that the spirits bound through his physique can communicate with him. Before he returns, a powerful assassin claiming a debt to the Lord of the Perennial Vastness takes him into a year of Red Hand Society training and seals away his flag. The Kan'Tanu invasion meanwhile becomes a monarch-level red-zone conflict. The System ends the Atwood Empire's voluntary participation and orders six battlefronts consolidated into two frontline companies. Zac refuses to protect his strongest troops by sacrificing weaker forces. Vilari prepares her hegemony breakthrough with two Anima Court seals, while Joanna enters a lethal seal trial. Zac deepens his study of the Void Mountain and permanently bonds with Harrow through Adaptive Symbiosis, allowing the vine and Zac to exchange vigor and Dao. Vivi enters Zac's world ring with the young plant. Joanna survives the final manifestation of Indra Eiler, the Emperor's Spear, and receives an indomitable martial impartation. The Atwood forces are ready to enter the main war with several companions transformed or committed to separate paths.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zac, Vilari, and the fused Atwood army enter the red zone under Allbright captain Tussar. Unknown to them, Alliance positions have been compromised by replacement operatives. The army joins the assault on Wolf Teeth Camp, fighting through enormous Kan'Tanu forces and a world-blighting formation. Allied losses exceed fifty million before the reinforcement route is severed. The Acheron Company alone loses more than eighty thousand soldiers, with many more wounded. The captured transference array is redirected into a spatial storm, but the offensive's real objective is finally disclosed: a damaged Limitless Empire war fortress moving within an unstable man-made realm. Its barriers exclude stronger entrants, making the Atwood hegemons useful despite the extreme danger. Central Command divides the company and orders Zac's First Division into the recovery force. General Dawson takes command at the destination. Zac cannot refuse without exposing his faction to charges of desertion or treason, so the division accepts the fortress mission while the rest of the company remains on cleanup duty.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dawson explains that the fortress can be reached only through brief openings in an unstable barrier and that its automated defenses attack every entrant. The Alliance offers immense merit for reaching a passage, but the assembled force appears to lack the strongest protected factions. On the way to a predicted hotspot, an ancient damaged bell traps the mobile base. Its influence bypasses ordinary defenses and compels soldiers to tear out their hearts. Vilari slows the mass compulsion, while Dawson uses a celestial defense and an earth-traversal array to escape. At least a tenth of the force dies. Vilari believes the bell sought her specifically and reports that it implanted a technique called Embers of Seven Sensations. The technique resembles her master's inheritance but appears corrupted. She refuses to examine it until its danger is understood. Despite the casualties, Dawson continues toward the hotspot as a continent-wide spatial storm approaches. The expedition meets an elite Kan'Tanu formation using a heart-curse centipede and flesh goliaths from the Chapter of Hallowed Flesh, beginning the battle for access to the fortress.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The hotspot battle collapses into spatial faults, mass casualties, flesh goliaths, and elite Kan'Tanu attacks. Zac creates a refuge with Apex Jungle, but a reincarnator hexmaster infiltrates it while a saber master joins the assault. Zac reveals Void Energy, Emily kills the saber master with a technocrat device, and the Mavai chieftain destroys the hexmaster's last clone. The chieftain claims the resulting Starfall Court seal after Zac stops Tussar from stealing it. Tussar reveals a soul-fueled sacrificial rebirth meant to bypass the seal's age restriction, but six disguised death-sworn infiltrators kill him, sever Zac's foot, wound Emily, and isolate the group. Zac activates a defective fractal to break their barrier. The spatial storm floods in, and Zac escapes with the chieftain while Emily takes another fracture and goes missing. Vilari kills three Hallowed Flesh hegemons, entrusts the Acheron Company to its commander, and enters the bell. She bargains with its resident entity for strength under conditional terms. Dawson alerts Archduke Everfast to outside involvement. An unnamed imperial prince revises the failed plot. Zac and the wounded chieftain survive the storm and reach the damaged, still-armed fortress.",
+            "through": {
+              "chapter": 78
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0D42L3J98",
+            "type": "community"
+          }
+        ],
+        "work": "defiance-of-the-fall-13"
+      }
+    }
+  }
+}

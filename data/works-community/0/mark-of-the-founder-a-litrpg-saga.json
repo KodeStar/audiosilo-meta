@@ -1,0 +1,1221 @@
+{
+  "entries": {
+    "mark-of-the-founder-a-litrpg-saga": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A Seattle man displaced into an unfamiliar wilderness, Hal bears a glowing mark placed through an assassin's ritual. The mark terrifies local people, while visible prompts and attributes suggest that this world follows rules resembling a game.",
+            "id": "hal",
+            "name": "Hal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A skilled young archer who finds Hal after villagers drive him into the forest. She gives him water, examines his hidden mark, and leads him away from pursuit. Her magic and fieldcraft make her his first capable protector in the unfamiliar world.",
+            "id": "huntress",
+            "name": "Huntress",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A horned prison attendant assigned to preserve the stories of people condemned to die. She tells the wounded Hal that his execution will occur at dawn. Her position inside the dungeon places her between official duty and the fate of a marked outsider.",
+            "id": "keeper",
+            "name": "Keeper",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A political dissident imprisoned for opposing the exclusion of people raised outside the sanctum. Hal frees him while beginning the prison break.",
+            "id": "political-prisoner",
+            "name": "Political prisoner",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The banned songwriter whom Hal freed from prison. After the ranger rescue, he remains with Hal's party.",
+            "id": "songwriter",
+            "name": "Songwriter",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An allied rescuer who had been searching for Hal. She urges him to consider providing a protected place for people drawn to his cause, although he still hopes to return home.",
+            "id": "ashira",
+            "name": "Ashira",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the ranger force that rescues Hal from a patrol outside the sanctum. She and her rangers escort his group away through the forest.",
+            "id": "ranger-leader",
+            "name": "Ranger leader",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captive coblin healer who saves Hal after he awakens in a goblin prison. He asks Hal to free his clan and destroy the cave where coblins and other prisoners are being held, beginning an alliance grounded in rescue and mutual protection.",
+            "id": "coblin-healer",
+            "name": "Coblin healer",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A coblin whose life Hal saves inside the goblin prison. The rescued captive attaches to him and becomes an eager helper as he prepares to free the remaining clan members.",
+            "id": "coblin-helper",
+            "name": "Coblin helper",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A captive coblin with exceptional stealth who temporarily joins Hal's cave party. He can disappear into shadows, helps eliminate guards, and protects Hal during the attempt to reach the remaining prisoners after the alarm is raised.",
+            "id": "coblin-thief",
+            "name": "Coblin thief",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The final coblin captive Hal frees while rescuing the healer's clan. This prisoner is an explosives-minded tinkerer.",
+            "id": "coblin-explosives-maker",
+            "name": "Coblin explosives-maker",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A wary but pragmatic city watch captain who investigates Hal's report of rescued people outside the sanctuary town. He keeps the rangers guarded while inspecting the situation with Hal.",
+            "id": "city-watch-captain",
+            "name": "City watch captain",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A horned tavernkeeper encountered while Hal seeks lodging for the coblins. He recognizes one of Hal's freed companions as a member of his own people and reacts cautiously to Hal's arrival.",
+            "id": "horned-tavernkeeper",
+            "name": "Horned tavernkeeper",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced elf adventurer who explains that the nearby city is under Founder rule and that its authorities keep the Adventurers Guild weak.",
+            "id": "elf-adventurer",
+            "name": "Elf adventurer",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The gnome proprietor of a concealed secondhand equipment shop. The elf adventurer introduces Hal's new party to him, and he offers them favorable treatment through her.",
+            "id": "gnome-merchant",
+            "name": "Gnome merchant",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The sanctum's apparent ruler. His regime treats marked outsiders, including Hal, as threats.",
+            "id": "ruling-founder",
+            "name": "Ruling Founder",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An agent dispatched by the ruling Founder after Hal uses Founder magic to breach the sealed district. The archmage is entrusted with directing the search westward and represents the established ruler's immediate response to the appearance of a rival mark.",
+            "id": "archmage",
+            "name": "Archmage",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A high-level elven combatant in Hal's contract party. The party display shows that the dragoon and the other experienced companions greatly exceed Hal's level as they begin exploring the sealed district.",
+            "id": "dragoon",
+            "name": "Dragoon",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A female psychopomp encountered while Hal is close to death. She cannot compel his unusually resistant soul to pass on and warns that refusing death carries its own danger. When Hal returns to his body, she is unintentionally pulled toward life with him.",
+            "id": "reaper",
+            "name": "Reaper",
+            "reveal": {
+              "chapter": 37
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small chest-like creature cornered by an aberration in the underground complex. Hal finds it while separated from most of his party and prepares to confront the creature threatening it.",
+            "id": "mimic-companion",
+            "name": "Mimic companion",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dead, armored alternate version of Hal found beside the infected roots beneath the sealed district. The number 37 marks his body, and his soul remains voluntarily bound to his Founder mark for a purpose the Reaper cannot yet explain.",
+            "id": "hal-37",
+            "name": "Hal 37",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of a concealed dwarf trading clan whose people surround Hal's party as it emerges from mountain tunnels. After inspecting Hal's genuine Founder mark, he ends the confrontation and offers the exhausted travelers shelter in the clan's camp.",
+            "id": "dwarven-clan-leader",
+            "name": "Dwarven clan leader",
+            "reveal": {
+              "chapter": 92
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The matron of the Adventurers Guild, who defends the guild's jurisdiction from the ruling Founder's agents. She ends their coercive magic, expels them, confirms the contract rewards, protects the party's names, and assigns guards to the district.",
+            "id": "adventurers-guild-matron",
+            "name": "Adventurers Guild matron",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman leading six desperate, unarmed followers who trail Hal and the dwarf leader. Three blue crystals in her forehead identify her as an oracle, but her abilities, motives, and reason for seeking Hal remain to be explained.",
+            "id": "oracle",
+            "name": "Oracle",
+            "reveal": {
+              "chapter": 102
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:1774247291",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-founder-a-litrpg-saga"
+      },
+      "recaps": {
+        "ending": "Hal leaves the mountain city before dawn with Ashira, the ranger leader, the elf adventurer, the dragoon, the now-mortal Reaper, the mimic companion, the dwarven clan leader, nearly six dozen dwarves, an oracle and her followers, and other recruits. Their ten-wagon caravan carries tools, arms, materials, and supplies toward the Shiverglades, where Hal hopes to find a mana seed and establish a sanctum. The gnome merchant and four coblins are discovered beneath a wagon as stowaways, and Hal allows them to stay. The tiefling songwriter remains behind to help more than 220 coblins and some refugees rebuild the Coffin District under the city watch's protection. The ruling Founder and archmage remain active threats, and Hal continues to hide his connection to the ruler. His internal Beast is controlled but still conscious. A photograph linking Hal 37, Ashira, the fallen tavernkeeper, and the guild matron leaves the old rebel circle unexplained. No pursuit appears during the caravan's first hours.",
+        "in_short": "Hal is displaced from Seattle into a world governed by levels, magic, and hostile Founders. Marked as a potential Founder, he escapes execution, frees Ashira and other prisoners, rescues a coblin clan, and accepts responsibility for people excluded by the ruling order. To win them a home, his party enters the sealed Coffin District. Hal nearly dies and returns bonded to a mana seed, becomes a Beastborn, befriends a mimic, and survives an internal Beast taking control. Beneath the district, he learns that the ruling Founder is an alternate version of himself and meets Hal 37, a dead predecessor whose soul seals a body-stealing entity. Hal releases 37, destroys the entity with the Beast's aid, restores the mana tree, and makes the Reaper permanently mortal. The completed contract gives Hal the district, where the coblins settle safely. He then allies with a dwarf clan and departs in a well-equipped caravan toward the Shiverglades to obtain another mana seed and found a refuge, while the ruling Founder continues hunting him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Hal awakens in an unfamiliar wilderness after witnessing an assassin kill a young man and use the body in a ritual that leaves a glowing mark on Hal's arm. His phone cannot connect to anything, local people cannot understand him, and villagers react to the mark with terror. A young huntress finds him, protects him from a search party, and helps him survive a monster attack that grants his first level. After a strange mushroom lets him understand the local language, she explains that the ruling Founder hunts marked outsiders. Soldiers soon capture Hal and condemn him to death.\n\nIn prison, a horned keeper explains that Hal's mark may identify him as a potential Founder capable of creating a sanctum. Hal uses newly discovered magic to destroy the keeper's enslaving collar, nearly killing himself in the effort. He then refuses a poison offered as an escape from execution, kills a guard during the attempted transfer, and begins freeing prisoners. A political prisoner follows him through a hidden tunnel. Rangers kill the patrol waiting outside, and Hal reunites with Ashira and the ranger leader. By chapter 10, Hal is a wanted fugitive, his follower is revealed as a tiefling songwriter, and the rebels ask him to consider becoming the Founder they have prepared to support.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ranger network escorts Hal toward a refuge and explains that a mana seed could let him create a protected sanctum. Hal remains uncertain whether to accept that responsibility or seek a way home. A night attack separates him from the group, and a goblin defeats him. He awakens in a slave cave beside a coblin healer who saved his life and asks him to free the captive clan.\n\nHal breaks loose, rescues a young coblin pack-bearer, and reunites with the ranger leader inside the cave. Rather than escape immediately, he commits to releasing the remaining prisoners. A stealthy coblin thief joins the effort, while an explosives-maker becomes the final required rescue. Once an alarm mobilizes the goblins, Hal coordinates the captives' retreat and uses dangerous new Beast Magic in the fighting. His Bomb Toss contributes to an armory blast that also kills some coblins, showing the cost of poorly controlled power. The explosives-maker places charges beneath the prison structure while Hal and the ranger hold the rear. The collapse destroys the goblin force and seals the main exit, and the ranger uses a powerful arrow to open a path to daylight. Hal reaches Novice level 10, but the survivors still need food, treatment, and a safe destination.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the cave's destruction, Hal organizes food and supplies for nearly 250 survivors, including many children. The coblins formally choose to follow him according to their own ethical code, take captured equipment, and help protect the vulnerable refugees. Hal appoints leaders and guides the large group toward a merchant-run sanctuary town. Along the way, they find a murdered resistance runner and a destroyed supply cache, evidence that the ruling order is suppressing opposition. The scattered rangers reunite with the refugees, while Hal's goal shifts toward building a refuge where peaceful peoples can live together.\n\nThe sanctuary town admits the rescued children but refuses lodging to the coblins. Hal accepts a quest to secure them a lawful home and will not abandon them outside the walls. A horned tavernkeeper reveals that a sealed upper district may offer a solution: the Adventurers Guild grants ownership to anyone who completes the long-failed Coffin Contract by reopening and clearing it. The same tavernkeeper shows Hal an old rebel room and gives him a codex responsive to his mark. With the rebels' safe house burned and their supplies lost, Hal, the ranger leader, and their freed companion join the guild and take the contract as their route to both shelter and funding.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "An experienced elf adventurer joins Hal's contract party and introduces a gnome merchant who equips him for mobile spell combat. The horned tavernkeeper becomes the fifth member at the sealed district entrance. Hal recognizes the barrier's markings through his codex, learns a Founder sigil called Rend, and destroys the barrier. The act exposes his nature to the elf adventurer and alerts the ruling Founder, who sends an archmage and elite pursuers westward.\n\nInside the Coffin District, the party finds charcoal-like corpses from an apparent massacre and enters a region filled with shadow crawlers. Hal alone hears their accusing voices. Hundreds of the creatures trap the group inside a shop protected by a blood-painted symbol, forcing them into underground tunnels. There the party faces security constructs and a Shoggoth spore elite. Hal's disabling magic helps the others fight, but a lethal effect overwhelms Ashira's healing. To save him, the party uses the mana seed intended for the future sanctum. Near death, Hal encounters a Reaper who cannot compel his resistant soul onward. He returns to his body, accidentally pulling her with him, and chooses to merge with the seed's soul rather than consume it. The renewed power lets him restrain the elite, but his place between life and death remains unstable.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Empowered by the soul merged with his own, Hal develops a stronger chain spell and combines his ultimate with the dragoon's attack to kill the Shoggoth spore elite. The collapsing chamber scatters the party. During the fall, Hal completes the requirements for a rare class and chooses Beastborn, gaining the ability to combine monster essences into physical adaptations.\n\nHal uses shadow limbs to save Ashira and guide them through root-filled caverns beneath the district. He learns to share resources and benefits through their bond, while the ranger leader, dragoon, and horned tavernkeeper search separately through the ruins. Hal rescues a small chest-like mimic from an aberration and discovers that empathy can provide essence without killing. By feeding and protecting the creature, he forms a voluntary family bond with it. Hal and Ashira reunite, establish a defensible route, and enter a sealed area opened by his Founder mark. Within are ruined growth chambers and an indoor forest that appears tied to artificial life. Wartlings surround Hal, but a new Founder sigil lets him override their distant controller and command them. He now has a plant-creature escort, while the complex's purpose, the corrupted mana tree, and the missing companions remain unresolved.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal uses the dominated wartlings to scout the artificial forest and help Ashira gather ingredients. Their control costs experience, so he tests their senses and abilities while treating them as protected creatures rather than expendable tools. Ashira teaches him alchemy, and a powerful tree ant becomes another temporary servant after Hal uses Dominate. The pair turn the controlled monsters against nearby threats and collect the materials needed for healing potions.\n\nThe Reaper appears again and explains that Hal's return from death stranded her in the living world. When he asks for her name, a golden tether forms between them. It can make one of them corporeal while the other becomes ethereal, and it prevents her from moving far away. She saves Hal from an ambush with her scythe, and Ashira can see and recognize her, although their earlier connection is not explained. Hal completes his alchemy training and returns toward the underground complex with Ashira, the Reaper, the mimic, and the wartlings. Beyond a rune-marked maze, party communication finally reaches the badly injured ranger leader. The ranger, dragoon, and tavernkeeper have survived a stone golem, but the ranger needs extensive treatment. After recovering enough to move, the separated groups continue seeking a route to one another.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ranger leader, dragoon, and horned tavernkeeper encounter a mature Shoggoth. The tavernkeeper stays behind to delay it and apparently dies, allowing the other two to escape through collapsing tunnels. They survive an underground fall but are critically injured. Hal and Ashira move toward them through the sealed complex, losing wartlings to shadow doubles along the way.\n\nWhen shadow creatures close on the injured pair, the dragoon reveals vine magic to hold them back. Hal forces a breach through the wall separating the groups, but accumulated Beastborn strain lets the Beast inside him seize his body. It destroys the shadow attackers, then turns toward his companions. Hal retains only limited control through his wartlings and his tether to the Reaper. Ashira, the ranger, the dragoon, the Reaper, the mimic, and the surviving wartlings fight to restrain him as the Beast's form and corrupting power intensify. Hal asks them to kill him before the transformation becomes permanent. A concealed effect in the ranger's arrow creates the opening he needs to regain Assimilation. Hal threatens to drain his own life rather than remain captive, forcing the Beast to submit. He returns to himself at critically low health, with the Beast now a conscious but controlled presence.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After stabilizing, Hal explains Beastborn strain to the reunited party and gains a daily method to clear it before the Beast can take over. The companions accept the mimic as his ally and mourn the tavernkeeper. Hal also vows to find a permanent body for the tethered Reaper. The group returns to imprisoned shadow beings, who claim the ruling Founder used their kind to crush an uprising and that restoring the mana tree will send them home.\n\nThe beings prove they know private information about Hal and reveal that the underground records use a cipher derived from his own childhood. They also identify Hal and the ruling Founder as alternate versions of the same person. Hal keeps this connection secret from his living companions. In exchange for release, the shadow sages provide knowledge of a lost western city where another mana seed may exist. Ashira breaks their wards, and the party continues toward a vault linked to the corrupted tree. A primordial flame totem cleanses corruption in Hal despite the Beast's resistance, granting him a blessing that breaks the crystals blocking the route. At the vault door, time stops for his companions. Hal and the Reaper enter alone and find an Earth-like study, infected roots, an ancient gate, and the corpse of a numbered alternate Hal whose soul remains bound to his Founder mark.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The dead alternate, Hal 37, explains that he once led the mountain city and later rebelled against the ruling Founder. The ruler had weakened the district, unleashed shadow creatures, and finally released a body-stealing entity that destroyed minds as it moved between hosts. Hal 37 abandoned the rebellion to contain that greater threat, sealing it at the mana-tree roots and binding his soul to sustain the prison. He asks Hal to decide whether to maintain the failing seal or confront what lies inside.\n\nHal chooses to release him and accepts his equipment. Hal 37 passes on, and the entity attacks. It possesses the Reaper, using her body and powers against Hal. Rather than kill her, Hal offers himself as a stronger host. Inside his mind, Hal and his internal Beast unite against the intruder and destroy its controlling consciousness. Hal then uses his daily strain-clearing ability to prevent the Beast from taking advantage of the aftermath. The Reaper is nearly dead, but the restored mana tree revives her and permanently gives her a mortal body. Hal unlocks the Oathforger class through his fulfilled commitments. His bond with the seed heals the tree, seals the eldritch gate, and destroys hostile monsters throughout the mountain while sparing creatures it judges harmless.",
+            "through": {
+              "chapter": 89
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal guides the newly mortal Reaper through hunger, emotion, clothing, and system prompts, while receiving new powers from the defeated entity and rewards for freeing Hal 37. After rejoining the party, he conceals Hal 37's true identity and his connection to the ruling Founder. The group exits the mountain through hidden tunnels, where a concealed dwarf smuggling clan surrounds them. Its leader recognizes Hal's genuine mark and offers shelter.\n\nThe dwarves cannot trade freely in the city, so Hal proposes that they help build a new sanctum. The clan leader accepts in principle, provided the plan can support the clan economically. Hal demonstrates a mana shield, identifies the Shiverglades as the intended region, and agrees to direct trade without the city's bribes and intermediaries. The elf adventurer commits to creating a covert migration route for marginalized settlers. Back inside the mountain city, Hal uses a shifting disguise to submit the completed Coffin Contract. The ruling Founder's archmage detains Hal's group and attempts magical coercion, but the Adventurers Guild matron expels the agent. The guild confirms the party's payment, advancement, anonymity protections, and Hal's ownership of the former Coffin District, while reserving the dead tavernkeeper's share for any heirs.",
+            "through": {
+              "chapter": 98
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Coffin Contract makes Hal an Apprentice-ranked adventurer and grants him the Coffin District, substantial payment, and protected guild lodging. In disguise, he meets the city watch captain, who confirms that the rescued coblins may legally settle in the district. Hal is still subject to standing arrest orders, so his remaining city work must stay discreet.\n\nThe elf adventurer and Reaper attempt to recruit the gnome merchant, but the Reaper knocks him unconscious after he refuses. Meanwhile, an oracle and six followers trail Hal and the dwarven clan leader. Rangers capture them without violence. The oracle claims mana-related abilities and asks Hal for protection; he provisionally accepts the group but remains suspicious of their timely appearance. At the ranger camp, three coblin fighters also win places in the expedition. Hal then leads more than 220 coblins into the mountain city, appoints their own representatives, and gives them the Coffin District. The city's barrier admits them safely. The tiefling songwriter remains behind to help the coblins and city watch oversee the refuge, while Hal plans to return for anyone who later wants to move to his sanctum. He has now chosen refuge-building over a return to Earth or the pursuit of power alone.",
+            "through": {
+              "chapter": 104
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the dwarf camp, Hal discovers that the elf adventurer and Reaper abducted the gnome merchant. The merchant offers to join after closing his shop, but Hal refuses to accept a decision made under fear and promises to return him home. He reprimands the Reaper and explains that expedient coercion would make him resemble the ruler he opposes. She apologizes, and Hal accepts while requiring better judgment in the future.\n\nHal pools funds and loot with his companions to buy the dwarf clan's arms, armor, tools, and settlement stock. The dwarven clan leader also procures a much larger list of supplies through the black market and prepares ten house-like wagons with draft birds. During a final city visit, Hal protects the fallen tavernkeeper's reputation, checks the rapidly rebuilding Coffin District, and secretly takes an animated photograph linking Hal 37, the tavernkeeper, Ashira, and the guild matron. Its meaning remains unknown.\n\nBefore dawn, nearly six dozen dwarves and Hal's companions leave in a ten-wagon caravan toward the planned sanctum. A lonely young traveler becomes Hal's friend during the journey. After the city is behind them, Hal discovers the gnome merchant and four coblins hidden beneath a wagon floor. The Reaper enabled their stowaway plan. Hal allows all five to stay, and no pursuit appears during the caravan's opening hours.",
+            "through": {
+              "chapter": 109
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:1774247291",
+            "type": "community"
+          }
+        ],
+        "work": "mark-of-the-founder-a-litrpg-saga"
+      }
+    },
+    "maskerade": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Esme Weatherwax",
+              "Esmerelda Weatherwax"
+            ],
+            "description": "The senior witch of Lancre, restless and out of sorts now that the coven has shrunk to two. Convinced that a proper coven needs three, and worried what she might become with too little to occupy her, she fixes on a promising young woman who has left the mountains for the city, and finds a reason to follow her there.",
+            "id": "granny-weatherwax",
+            "name": "Granny Weatherwax",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Gytha Ogg"
+            ],
+            "description": "The cheerful, worldly Lancre witch, who has written a scandalously bawdy cookery book and wants the money owed to her by its Ankh-Morpork publisher. That errand gives her and Granny a convenient excuse to travel to the city, where they can also look in on the young woman they hope to draw back to witchcraft.",
+            "id": "nanny-ogg",
+            "name": "Nanny Ogg",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Perdita",
+              "Perdita X"
+            ],
+            "description": "A large, sensible, good-natured young woman from Lancre with an extraordinary singing voice and uncanny control over it. Tired of being the reliable, likeable girl everyone takes for granted, she has left home for Ankh-Morpork and joined the Opera House, calling herself by the more dramatic name Perdita in the hope of becoming someone new.",
+            "id": "agnes-nitt",
+            "name": "Agnes Nitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A pretty, fashionable, and thoroughly self-absorbed young soprano at the Opera House. Confident and much admired for her looks, she is given leading roles despite a singing talent that falls far short of her ambitions.",
+            "id": "christine",
+            "name": "Christine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An awkward, shabby young odd-job man who does the menial work around the Opera House and is treated as simple by most of the staff. Devoted to his mother and to the building itself, he shuffles about half-noticed in the wings.",
+            "id": "walter-plinge",
+            "name": "Walter Plinge",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Opera House's sharp-tongued director of music, a practical and cynical man with open contempt for the superstition, melodrama, and general hysteria of theatre folk. He prides himself on being the one sensible person in a building full of nonsense.",
+            "id": "salzella",
+            "name": "Salzella",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, money-minded Ankh-Morpork cheese merchant who has bought the Opera House as an investment, with little idea of the peculiar traditions, temperamental performers, and lurking dangers that come with it.",
+            "id": "seldom-bucket",
+            "name": "Seldom Bucket",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "maskerade"
+      },
+      "recaps": {
+        "ending": "As the deaths at the Opera House mount and are blamed on the masked Ghost, Granny Weatherwax pieces the mystery together and shows that the killer and the Ghost are two different people. The real murderer is Salzella, the cynical director of music, who has been using the building's Ghost legend as a mask for killings carried out for his own profit. The figure genuinely haunting the Opera House is Walter Plinge, the shabby odd-job man everyone dismissed as simple, who is in truth a gifted musician hiding behind the mask. In the confrontation Salzella is exposed and brought down, and Walter is cleared of the crimes laid at the Ghost's door. Recognized at last for his talent, Walter ends up running the Opera House. Agnes, who has spent the story as the powerful voice hidden behind the pretty but talentless Christine, learns that Granny and Nanny did not come to the city only for a cookery book: they came for her, to draw her back toward witchcraft and a place in their coven. Granny admits to having quietly steered events all along. Agnes stays in the city for now, still unwilling to be simply the sensible girl with the good voice, but the pull toward Lancre and the craft has been set, and the door to the coven is left standing open.",
+        "in_short": "With Magrat now a queen and out of the coven, Granny Weatherwax and Nanny Ogg decide they need a third witch, and settle on Agnes Nitt, a Lancre girl with a remarkable voice who has run off to Ankh-Morpork and joined the Opera House under the name Perdita. Nanny's bawdy cookery book gives them an excuse to travel to the city and collect her royalties. At the Opera House, Agnes is used as the hidden singing voice behind Christine, a pretty soprano with no real talent, while a masked figure known as the Opera Ghost is blamed for a series of deaths. Granny and Nanny investigate, and Granny works out that the killings are not the Ghost's doing at all. The true culprit is the music director, Salzella, who has been exploiting the Ghost legend to cover murder for his own ends. The genuine masked figure is Walter Plinge, the overlooked odd-job man, secretly a musical prodigy. Salzella is unmasked and brought down, Walter is cleared and takes charge of the Opera House, and Agnes realizes the witches came partly for her, leaving her future with the coven open.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in earlier books: the small mountain kingdom of Lancre was watched over by a coven of three witches, the formidable Granny Weatherwax, the earthy Nanny Ogg, and the youngest, Magrat Garlick. Together they defended Lancre's throne and its people, once saving the kingdom from a usurper, once traveling abroad where Granny bested her own sister, and once driving back the elves who tried to break into the world. Over that last adventure Magrat married King Verence and became Queen of Lancre, which has taken her out of the coven and left Granny and Nanny as only two. Granny holds firmly to the belief that a proper coven needs three witches, and she is uneasy, and a little dangerous, with too little to do and no one to balance her. That is the gap the pair set out to fill when they hear of a talented young Lancre woman who has left the mountains for the big city, and go looking for her.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Lancre, Granny Weatherwax and Nanny Ogg are down to a coven of two, since Magrat became queen, and Granny is convinced they need a third. Their thoughts turn to Agnes Nitt, a sensible young local woman with a wonderful singing voice, who has recently left home for Ankh-Morpork to make a new life, taking the grander name Perdita. Meanwhile Nanny has written a scandalous cookery book and is owed royalties by a city publisher, which gives the two witches a perfect excuse to travel to Ankh-Morpork and see what Agnes is up to. Agnes, for her part, has joined the great Opera House, a place full of temperamental singers, strange traditions, and mounting dread, for a masked figure known as the Opera Ghost is said to stalk its corridors, and people connected to the building have begun to die.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "maskerade"
+      }
+    },
+    "matilda": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An extraordinarily intelligent and gifted little girl, still very young, who teaches herself to read and devours grown-up literature from the local library while her family ignores or belittles her. Sensitive, precocious, and quietly brave, she lives with parents who treat her as a nuisance and value only television and money. Left to her own devices, she develops a rich inner life and a sharp sense of justice, and when the adults around her behave cruelly or dishonestly, she begins to find clever, private ways to answer their meanness.",
+            "id": "matilda-wormwood",
+            "name": "Matilda Wormwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist",
+            "xref": {
+              "wikidata": "Q6787521"
+            }
+          },
+          {
+            "aliases": [
+              "Harry Wormwood"
+            ],
+            "description": "Matilda's father, a dishonest secondhand car dealer who cheats his customers by disguising worn-out vehicles and boasts about his swindles at home. Loud, vain, and contemptuous of books and learning, he dismisses his daughter as stupid and troublesome and cannot imagine why anyone would want to read. Bullying and small-minded, he mocks Matilda's cleverness and provokes the pranks with which she quietly gets her own back.",
+            "id": "mr-wormwood",
+            "name": "Mr. Wormwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Matilda's mother, a woman far more interested in bingo, television, and her own appearance than in her children. Vain and idle, she agrees with her husband that Matilda's love of books is pointless and that looks matter more than brains. Neglectful and self-absorbed, she leaves her remarkable daughter to raise herself and shows her little affection or interest.",
+            "id": "mrs-wormwood",
+            "name": "Mrs. Wormwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Matilda's older brother, an unremarkable boy whom their parents plainly favor and groom to inherit their father's dishonest car business. Content to go along with his father's schemes and to enjoy the family's approval, he takes no notice of his little sister and is treated as the normal, valued child, in pointed contrast to her.",
+            "id": "michael-wormwood",
+            "name": "Michael Wormwood",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Jennifer Honey"
+            ],
+            "description": "Matilda's kind-hearted first schoolteacher, a shy, softly spoken young woman who quickly recognizes that her tiny pupil is a prodigy far ahead of her years. Warm and encouraging where the child's parents are dismissive, Miss Honey takes a special interest in Matilda and tries to see that her gifts are nurtured. She is poor and lives a strangely frugal life, and beneath her mildness lie a quiet courage and a painful past she keeps hidden.",
+            "id": "miss-honey",
+            "name": "Miss Honey",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting",
+            "xref": {
+              "wikidata": "Q90230706"
+            }
+          },
+          {
+            "aliases": [
+              "Agatha Trunchbull",
+              "The Trunchbull"
+            ],
+            "description": "The terrifying headmistress of Matilda's school, Crunchem Hall, a huge, muscular former athlete who despises small children and rules by fear. Brutal and tyrannical, she invents monstrous punishments and delights in bullying pupils and staff alike, insisting that a school runs best when its children are thoroughly frightened. Loud, violent, and utterly without warmth, she is the fearsome adult authority against whom Matilda and Miss Honey must eventually contend.",
+            "id": "miss-trunchbull",
+            "name": "Miss Trunchbull",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist",
+            "xref": {
+              "wikidata": "Q28195072"
+            }
+          },
+          {
+            "description": "A small, lively, mischievous girl who becomes Matilda's best friend during her first days at school. Bold and fond of practical jokes, Lavender is quick to stand up to the fearsome headmistress in her own small way and shares Matilda's appetite for turning the tables on cruel adults. She proves a loyal companion in the children's quiet resistance to Miss Trunchbull.",
+            "id": "lavender",
+            "name": "Lavender",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A stout schoolboy at Crunchem Hall who is publicly punished by Miss Trunchbull for stealing a slice of her cake, forced to eat an enormous chocolate cake in front of the whole school as a humiliation meant to break him. His stubborn refusal to be beaten by the ordeal makes him, briefly, a hero to the watching pupils and a small emblem of defiance against the headmistress's cruelty.",
+            "id": "bruce-bogtrotter",
+            "name": "Bruce Bogtrotter",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "matilda"
+      },
+      "recaps": {
+        "ending": "Matilda ends with the triumph of the gentle over the cruel. Having mastered her secret power of moving things with her mind, Matilda uses it to rescue her beloved teacher, Miss Honey, from the tyranny of the headmistress, Miss Trunchbull, who is also Miss Honey's aunt and the thief of her father's house and inheritance. In front of the class, Matilda makes a piece of chalk write on the blackboard as if guided by the ghost of Miss Honey's dead father, demanding that Trunchbull return what she stole and leave forever. Convinced she is being haunted, Trunchbull faints and then abandons the school for good, and no one hears from her again. Freed at last, Miss Honey reclaims her family home and money and becomes headmistress, while the school turns into a happy place. Meanwhile Matilda's father's crooked car business finally catches up with him, and the Wormwoods must flee to Spain in a hurry. Matilda begs to be allowed to remain with Miss Honey, and her indifferent parents agree without a fuss. The two are left to make a loving home together, and Matilda, now properly challenged in her schoolwork, finds her strange power quietly slips away, no longer needed.",
+        "in_short": "Matilda Wormwood is a brilliant little girl, reading adult books and doing advanced sums, but her crude, dishonest father and vain mother ignore and belittle her, so she quietly punishes their cruelty with clever pranks. At school she meets a kind teacher, Miss Honey, who recognizes her genius, and a monstrous headmistress, Miss Trunchbull, who terrorizes the children. When Trunchbull wrongly blames her, Matilda discovers she can move objects with her mind. Miss Honey confides that Trunchbull is the aunt who raised her cruelly, seized her late father's house and money, and may have caused his death. Determined to help her friend, Matilda uses her secret power to make chalk write on the blackboard as though from the ghost of Miss Honey's father, ordering Trunchbull to give everything back and leave. The terrified headmistress flees for good; Miss Honey regains her home and inheritance. When Matilda's father must suddenly flee the country over his crimes, Matilda is allowed to stay behind and live happily with Miss Honey.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Matilda Wormwood is a tiny girl of remarkable intelligence, able to read and do arithmetic far beyond her years, but her crude, dishonest father, a crooked used-car dealer, and her vain, television-obsessed mother regard her as a nuisance and value only her older brother. Ignored at home, Matilda walks to the library on her own and works her way through grown-up novels, building a secret life of the mind. Hurt and angered by her parents' meanness and dishonesty, she begins to devise clever, harmless pranks to punish their bad behavior: she doctors her father's hair tonic, uses a hidden parrot to convince the family the house is haunted, and superglues his hat to his head. These small acts of justice give the neglected, gifted child a way to assert herself against the grown-ups who dismiss and mistreat her, establishing her as brave and resourceful well before she reaches school.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matilda finally starts school and lands in the class of Miss Honey, a gentle young teacher who is astonished to discover just how brilliant her tiny pupil is, reading and calculating like an adult. Miss Honey tries to have Matilda moved up to a more challenging class, but she must contend with the school's monstrous headmistress, Miss Trunchbull, an enormous, terrifying woman who loathes children and rules Crunchem Hall through cruelty and fear. Trunchbull invents grotesque punishments and terrorizes pupils and staff alike, and she flatly refuses to believe in Matilda's gifts. Miss Honey, kind but timid and oddly impoverished, takes a special interest in the child and even visits her careless parents to praise her, only to be rudely rebuffed. Matilda, meanwhile, begins to find her feet among her new classmates and comes face to face with the headmistress's brutality, sharpening her sense that the cruel and dishonest adults around her deserve to be resisted.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Life at Crunchem Hall under Miss Trunchbull grows steadily more frightening. The children witness her savage punishments, including forcing a boy, Bruce Bogtrotter, to eat a gigantic chocolate cake before the whole school, and they live in dread of the Chokey, a cramped cupboard lined with spikes. Lavender plays a daring trick by slipping a newt into the headmistress's water jug during a class inspection. When Trunchbull unleashes her fury and wrongly blames Matilda, the child, gripped by a surge of concentrated anger, discovers that she can move objects with the power of her mind alone: staring hard at the jug, she tips it over onto the headmistress. Astonished and thrilled by this strange new ability, Matilda realizes she possesses a secret power, and she resolves to practice and understand it. Her extraordinary intellect has found an equally extraordinary companion in this hidden gift, giving her a possible means to confront a bully far too powerful to face head-on.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matilda confides her secret power to Miss Honey and demonstrates it, tipping over a glass of water by will alone. Drawn closer together, the teacher invites Matilda to her tiny, almost bare cottage, where Matilda is shocked by how poor Miss Honey is. Miss Honey then shares her painful history: orphaned as a child, she was raised by a harsh, domineering aunt who bullied her and took control of the house and money her father had left her. That aunt, she reveals, is none other than Miss Trunchbull, and Miss Honey suspects the woman may even have been responsible for her father's supposedly accidental death, having seized his home and inheritance and kept Miss Honey poor and cowed ever since. Understanding now why the gentle teacher lives in fear and want, and burning with a sense of injustice, Matilda determines to use her secret power to help the person who has been kindest to her.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matilda secretly practices her power until she can control it, then puts a bold plan into action in front of the whole class. Using her mind, she lifts a piece of chalk and makes it write on the blackboard by itself, pretending to be the ghost of Miss Honey's dead father, Magnus, and commanding Miss Trunchbull to give back the house and money she stole and to leave. Terrified by what she believes is a vengeful spirit, the headmistress collapses and then flees, never to return. With Trunchbull gone, Miss Honey recovers her family home and inheritance and returns to a happy life, and the school becomes a far kinder place. Around the same time, Matilda's father's shady car dealings catch up with him, and the family must suddenly flee the country to Spain. In the joyful final turn, Matilda asks to stay behind with Miss Honey, her parents carelessly agree, and the two, teacher and gifted child, are left to live happily together at last. Matilda's mind-moving power fades once she is placed in a more challenging class, but she no longer needs it.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "matilda"
+      }
+    },
+    "memoirs-of-a-geisha": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Chiyo",
+              "Chiyo Sakamoto"
+            ],
+            "description": "A poor fisherman's daughter from the seaside village of Yoroido, born Chiyo Sakamoto and marked by unusual gray-blue eyes. When her mother is dying, she and her older sister are sold and sent away; Chiyo is taken to an okiya, a geisha house, in the Gion district of Kyoto. Frightened and homesick, she is set to work as a maid while the household decides whether she is worth training. She narrates her own life story looking back from later years.",
+            "id": "sayuri",
+            "name": "Sayuri",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The beautiful and celebrated geisha of the okiya that takes Chiyo in, and the source of the household's income. Vain, spiteful, and quick to sense a threat, she torments Chiyo from the start, determined that no rival geisha will ever be raised under the same roof.",
+            "id": "hatsumomo",
+            "name": "Hatsumomo",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The shrewd, money-minded woman who runs the okiya and keeps its accounts. She weighs every girl and every kimono as an investment, and Chiyo's debts to the house are recorded and owed to her.",
+            "id": "mother-nitta",
+            "name": "Mother",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A plain, aging former geisha who manages the daily running of the okiya. Gruff but fairer than the others, she oversees the maids and gives Chiyo blunt, practical guidance on surviving in the house.",
+            "id": "auntie",
+            "name": "Auntie",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The mean-tempered old woman of the okiya, who does little but complain and demand attention. She adds to the small cruelties of Chiyo's first days in the house.",
+            "id": "granny",
+            "name": "Granny",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Another young girl living in the okiya, plump-faced and eager to please, being trained under Hatsumomo. Timid and anxious, she becomes Chiyo's closest companion among the household's newcomers, though the rivalries of Gion will test their friendship.",
+            "id": "pumpkin",
+            "name": "Pumpkin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Chiyo's older sister, plainer and less clever, sold away at the same time but sent to a far lower house in a poorer quarter. The two girls are separated at the outset and long to find each other again.",
+            "id": "satsu",
+            "name": "Satsu",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Ken Iwamura"
+            ],
+            "description": "A kindly, prosperous businessman who notices the young Chiyo weeping alone by a canal and offers her a small, unexpected gesture of comfort. His momentary gentleness gives her a reason to hope, and she resolves to make herself into a geisha so that she might one day belong to his world.",
+            "id": "the-chairman",
+            "name": "The Chairman",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Gion's most admired and successful geisha, elegant and self-possessed. For reasons of her own, she offers to take Chiyo on as her younger sister and pupil, guiding her training and debut, and becoming Hatsumomo's rival in the process.",
+            "id": "mameha",
+            "name": "Mameha",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blunt, formidable executive of a large electric company, his face and arm scarred from war injuries. Impatient with pretense and unusually honest, he takes a genuine liking to Sayuri and becomes one of her most loyal and important patrons.",
+            "id": "nobu",
+            "name": "Nobu Toshikazu",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A reserved, precise physician who moves in Gion's circles and is known for his fixation on the coming-of-age ceremonies of young apprentice geisha. Mameha steers him toward Sayuri as her career takes shape.",
+            "id": "dr-crab",
+            "name": "Dr. Crab",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "memoirs-of-a-geisha"
+      },
+      "recaps": {
+        "ending": "Sayuri's long devotion to the Chairman is at last rewarded, though not as she plans. To avoid becoming the mistress of Nobu, who loves her, she arranges to be discovered in a compromising situation with a coarse official so that Nobu will lose interest. The scheme goes wrong when it is the Chairman, not Nobu, who is brought to witness it, brought there by the jealous Pumpkin in an act of betrayal. Yet the truth comes out: the Chairman confesses that he recognized Sayuri long ago as the weeping girl he once comforted, and that it was he who quietly sent Mameha to raise her, watching over her career from a distance for years while leaving her to Nobu out of loyalty to his friend. With Nobu's claim now ended, the Chairman becomes Sayuri's patron and the love of her life. In her later years she leaves Japan and settles in New York, where she opens a small teahouse and lives comfortably, looking back on the vanished world of Gion that made her and telling her whole story to be set down.",
+        "in_short": "A poor fisherman's daughter, Chiyo, is sold as a child and taken to a geisha house in the Gion district of Kyoto, where the jealous star geisha Hatsumomo torments her. Demoted to a servant after a failed escape, Chiyo is shown a small kindness by a businessman known as the Chairman and resolves to become a geisha to reach his world. A rival of Hatsumomo, the renowned geisha Mameha, adopts Chiyo as her pupil and renames her Sayuri. Sayuri rises to prominence, her virginity ceremony bringing a record price, and she gains the loyalty of the Chairman's scarred partner, Nobu, while secretly loving the Chairman himself. The Second World War scatters Gion, and Sayuri survives the years in the countryside. After the war she schemes to escape becoming Nobu's mistress so that she can be with the man she has always wanted. The Chairman finally reveals that he has known and quietly guided her all along, and he becomes her patron. She later settles in New York, telling her story from there.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Chiyo Sakamoto is a young girl from the poor fishing village of Yoroido, remarkable for her striking gray-blue eyes. When her mother is dying and her family cannot keep them, she and her older sister Satsu are sold to a man who takes them to Kyoto. There they are separated: Chiyo is placed in an okiya, a geisha house, in the Gion pleasure district, while Satsu is sent to a much lower establishment. In the okiya, Chiyo is put to work as a maid under the household's shrewd Mother, its plain and practical Auntie, and its sour old Granny. She befriends another young girl, Pumpkin, but falls at once under the cruelty of Hatsumomo, the beautiful, jealous geisha whose earnings support the house and who is determined to keep any future rival from rising beside her.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Miserable and desperate to find her sister, Chiyo attempts to run away, but the escape fails; Satsu flees on alone, and the two are lost to each other. Punished and burdened with debt, Chiyo is reduced to a servant with little hope of ever becoming a geisha. At her lowest, she is noticed weeping beside a canal by a gentle, prosperous man known as the Chairman, who offers her a small kindness that she never forgets. His warmth gives her a purpose: to become a geisha and enter the world where he moves. Her fortunes turn when Mameha, one of Gion's most celebrated geisha and a rival of Hatsumomo, offers to take Chiyo on as her little sister and pupil, beginning her long, exacting training in the arts of a geisha.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Under Mameha's guidance, Chiyo is trained and formally reborn as the apprentice geisha Sayuri, making her debut in Gion. Mameha maneuvers her toward prominent patrons while Hatsumomo works spitefully to ruin her at every turn, using her own pupil Pumpkin as a weapon in the rivalry. Sayuri's beauty and her unusual eyes draw attention, and when she comes of age her coming-of-age ceremony is bid up to a record sum, guided by Mameha's careful management of admirers such as the exacting Dr. Crab. Sayuri establishes herself as a rising geisha, all the while nursing her secret love for the Chairman and beginning to attract the steady, honest attention of his blunt and scarred business partner, Nobu.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sayuri grows into one of Gion's sought-after geisha. Her rivalry with Hatsumomo finally ends when the older geisha's temper and self-destruction bring about her downfall and departure from the okiya, and Sayuri's standing in the house is secured. Nobu remains her most devoted patron and protector, generous and demanding of her loyalty, though it is still the Chairman whom she loves. Then the wider world intrudes: the Second World War descends on Japan, and the pleasure districts, with their silks and banquets, can no longer go on. Gion is closed down, its geisha dispersed, and Sayuri must leave the only life she has built and find refuge and plain work far from Kyoto as the country is swept into hardship.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sayuri survives the war years in the countryside, sheltered and set to humble labor while Gion stands shuttered. When the war ends and life slowly resumes, she is brought back to help revive her old world. Nobu's company, tied to the Chairman's, is struggling, and Nobu seeks the favor and investment of an important, unrefined official whom Sayuri is asked to entertain and win over. Nobu's devotion has by now hardened into an expectation that Sayuri will become his mistress, a fate she dreads because her heart still belongs to the Chairman. Trapped between gratitude to Nobu and her own longing, Sayuri begins to plot a way to free herself from Nobu's claim without appearing to betray him.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "To make Nobu abandon his hopes, Sayuri arranges to be discovered in a compromising moment with the coarse official, calculating that Nobu's disgust will end his interest in her. The plan miscarries when Pumpkin, nursing old resentment, brings the Chairman to witness the scene instead of Nobu, seemingly ruining everything. Yet the truth finally emerges. The Chairman reveals that he had recognized Sayuri years earlier as the child he once comforted by the canal, and that it was he who secretly arranged for Mameha to take her in and raise her, holding back his own feelings out of loyalty to his friend Nobu. With Nobu's claim now released, the Chairman becomes Sayuri's patron and the great love of her life. In later years she leaves Japan for New York, where she opens a teahouse and lives out her days, recounting the whole of her story.",
+            "through": {
+              "chapter": 35
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "memoirs-of-a-geisha"
+      }
+    },
+    "men-at-arms": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Captain of the City Watch, hard-bitten and grudgingly staying sober, on the verge of retiring from the force to marry the noblewoman Lady Sybil Ramkin. A natural policeman who distrusts wealth and power even as he prepares to join them.",
+            "id": "sam-vimes",
+            "name": "Samuel Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Watch's most popular member, a huge, good-natured young man raised by dwarfs who still treats every citizen as a neighbor and every law as sacred. His plain sincerity gives him a strange authority over people.",
+            "id": "carrot-ironfoundersson",
+            "name": "Carrot Ironfoundersson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Watch's stout, cautious sergeant, a comfortable creature of habit who prefers a quiet patrol and a quiet life.",
+            "id": "fred-colon",
+            "name": "Fred Colon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Watch's grubby, disreputable corporal, a small scrounger of uncertain ancestry whose instincts run to theft and self-preservation.",
+            "id": "nobby-nobbs",
+            "name": "Nobby Nobbs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Patrician",
+              "Havelock Vetinari"
+            ],
+            "description": "The cold, brilliant Patrician of Ankh-Morpork, who rules by balancing every faction against the others. He has no love for the Watch but understands exactly how useful, and how dangerous, it could become.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lady Sybil"
+            ],
+            "description": "Vimes's fiancee, a large-hearted, immensely wealthy noblewoman who breeds swamp dragons and is steadily drawing the reluctant captain into a comfortable, respectable life.",
+            "id": "sybil-ramkin",
+            "name": "Lady Sybil Ramkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the Watch's new recruits, taken on as the force is broadened to reflect the city's many peoples. A capable, watchful young woman who keeps the details of her background firmly to herself.",
+            "id": "angua",
+            "name": "Angua",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A troll newly recruited to the Watch, previously employed as a nightclub bouncer. Enormously strong and slow-witted in the warmth, he thinks far more clearly when the air turns cold.",
+            "id": "detritus",
+            "name": "Detritus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dwarf recruited to the Watch alongside the troll Detritus, at first wary of his people's traditional enemy. Steady and practical, he brings a dwarf's eye for stone and detail to the work.",
+            "id": "cuddy",
+            "name": "Cuddy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A young, impoverished member of the Assassins' Guild, obsessed with bloodlines and the vanished monarchy of Ankh-Morpork. Convinced the city has been diminished by the loss of its kings, he sets a dangerous plan in motion.",
+            "id": "edward-death",
+            "name": "Edward d'Eath",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The head of the Assassins' Guild, master of an institution that teaches killing as a refined profession. Formidable and self-controlled, he takes a close interest when a unique item goes missing from the Guild's museum.",
+            "id": "dr-cruces",
+            "name": "Dr Cruces",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A unique weapon held in the Assassins' Guild museum, the only one of its kind on the Disc, a device that kills at a distance with terrible ease. It seems to exert a will and a whispering influence over anyone who carries it.",
+            "id": "the-gonne",
+            "name": "The Gonne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "men-at-arms"
+      },
+      "recaps": {
+        "ending": "The gonne passes from hand to hand, corrupting each holder, until it reaches Dr Cruces, the head of the Assassins' Guild, who is behind the killings. Carrot confronts and kills him, driving a sword clean through him, and the deadly weapon is destroyed so it can whisper to no one else. The investigation also confirms, with heraldic and physical proof, that Carrot is almost certainly the true heir to Ankh-Morpork's throne, and Carrot, wanting nothing to do with kingship, quietly sets the evidence aside and remains an ordinary officer, content to keep the pragmatic Vetinari in power. The cost is real: the dwarf recruit Cuddy is killed during the case. Angua's secret, that she is a werewolf, comes out, and she and Carrot grow close. Vimes marries Lady Sybil; instead of the quiet retirement he expected, Vetinari makes him Commander of the newly enlarged City Watch, now permanently staffed by trolls, dwarfs, a werewolf, and others, marking the Watch's transformation into a genuine force.",
+        "in_short": "As Captain Vimes prepares to retire and marry Lady Sybil, the Ankh-Morpork City Watch is being expanded to include its first troll, dwarf, and a guarded young woman recruit named Angua. A one-of-a-kind weapon, the gonne, which can kill at a distance and whispers to whoever holds it, is stolen from the Assassins' Guild, and a string of killings follows. Edward d'Eath, an assassin obsessed with restoring the monarchy, believes Carrot is the rightful heir and means to use the gonne and the murders to force a king back onto the throne. The Watch investigates against the wishes of the Guilds and the Patrician. The weapon corrupts a series of hands until the Guild's own head, Dr Cruces, is wielding it. Carrot uncovers the truth, kills Cruces, and the gonne is destroyed. Presented with real proof of his royal descent, Carrot deliberately refuses the crown and stays a watchman. Vimes marries Sybil and, rather than retiring, is made Commander of a much larger Watch by Vetinari.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in Guards! Guards!: Ankh-Morpork's Night Watch had dwindled to a handful of hopeless men led by the drunken, cynical Captain Sam Vimes, alongside Sergeant Colon and Corporal Nobbs. The earnest, dwarf-raised recruit Carrot Ironfoundersson joined their ranks, and together they helped foil a secret brotherhood's plot to seize the city by summoning a dragon. In the aftermath the Watch regained a little respect, Vimes began courting the wealthy dragon-breeding noblewoman Lady Sybil Ramkin, and the Patrician, Lord Vetinari, remained the cold and calculating master of the city. A quiet suggestion was left unresolved: that Carrot may be of Ankh-Morpork's lost royal line.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Captain Vimes is only days from retiring to marry Lady Sybil, while the City Watch is being enlarged and opened up, awkwardly taking on its first troll, its first dwarf, and other recruits from the city's varied peoples, including a watchful young woman named Angua. As the changeover begins, a unique and dangerous object is stolen from the Assassins' Guild museum, and a young assassin obsessed with the city's lost kings quietly pursues a scheme of his own.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "men-at-arms"
+      }
+    },
+    "messenger": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The boy once known as Matt, now a few years older, living in a welcoming community simply called Village, which has long taken in outcasts and the damaged from harsher places. Energetic and good-hearted, he runs messages for the community and is one of the few people able to travel safely through the surrounding Forest. He longs to be given a true, grown-up name for his role, and he carries a secret he does not yet fully understand about himself.",
+            "id": "matty",
+            "name": "Matty",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Kira's father",
+              "the blind man"
+            ],
+            "description": "A wise, gentle blind man who took Matty in and raised him in Village, and who is respected there for his insight and kindness. He is the father of Kira, a girl Matty knew in his old village, and he asks Matty to make a journey to bring her to him. Though he cannot see, he is one of the community's most clear-sighted and trusted members.",
+            "id": "christopher",
+            "name": "Seer",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Jonas"
+            ],
+            "description": "The young man who leads Village, marked by unusually pale eyes and by a rare gift for seeing beyond the ordinary. He arrived years earlier as a boy fleeing a rigidly controlled community, and he guides Village with wisdom and compassion. He is troubled as he watches something begin to change and darken among his people.",
+            "id": "jonas",
+            "name": "Leader",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young woman from a harsh distant village, born with a twisted leg and gifted with an extraordinary talent for weaving. She is the daughter of the blind man who raised Matty, and she once chose to stay behind in her own community to try to shape a better future there. Matty remembers her fondly from his childhood.",
+            "id": "kira",
+            "name": "Kira",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The respected schoolteacher of Village, a scholarly widower who has long been kind and generous to Matty and to the community's children. He is one of the older residents who remember when Village first opened its arms to strangers, and he becomes caught up in the unsettling changes spreading through the community.",
+            "id": "mentor",
+            "name": "Mentor",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strange, smooth figure who presides over a mysterious gathering called Trade Mart, where villagers can bargain for the things they secretly want. His trades come at a hidden and troubling cost, and his growing influence coincides with a hardening of hearts in a community that was once open and welcoming.",
+            "id": "trademaster",
+            "name": "Trademaster",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "messenger"
+      },
+      "recaps": {
+        "ending": "As Village grows cruel, corrupted by the bargains people make at Trade Mart, its people vote to seal the border against all newcomers, and the surrounding Forest turns malevolent, thickening and killing those who try to pass. Leader sends Matty on one last journey to fetch Kira before the closing. On the way back, the Forest attacks them savagely. Matty, who has recently discovered he can heal with his hands, realizes the only way to save Kira, and everyone who might still come to Village, is to heal the Forest and the poisoned land itself. He gives everything he has, pouring out his own life force into the ground. The healing succeeds: the Forest is cleansed, the corruption lifts, and the community's hardened hearts begin to soften. But the effort costs Matty his life, and he dies with Kira and Leader beside him. In recognition of his final act, he is given the true name he had always wanted, Healer. Village reopens, mourning the boy whose sacrifice restored it.",
+        "in_short": "In the welcoming community called Village, which has long taken in outcasts, a boy named Matty carries messages and travels safely through the surrounding Forest. He was raised by a wise blind man, Seer, the father of his old friend Kira, and the community is guided by Leader, a young man with pale eyes and the gift of seeing beyond. But Village is changing: through a mysterious Trade Mart run by the sinister Trademaster, people bargain away their better selves for shallow wants, growing selfish and cruel, until they vote to wall out all newcomers. As their hearts darken, the once-gentle Forest turns deadly and begins to attack travelers. Leader sends Matty to bring Kira to Village before the border closes. Returning through the now-lethal Forest with Kira, Matty discovers he has a rare gift for healing. When the poisoned Forest threatens to kill them, Matty pours out his life to heal the Forest itself, dying in the effort. His sacrifice cleanses the land and breaks the community's cruelty, and he is honored at last with a true name.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Earlier in the series: In a rigidly controlled community that had abolished memory, pain, color, and choice, a boy named Jonas was chosen to hold the society's suppressed memories. Learning the truth about his world, he fled with a baby to save its life and came at last to a gentler place. In a separate, harsh village, an orphaned girl named Kira, born with a twisted leg and gifted at weaving, uncovered the lies of her own community's rulers, was reunited with the blind father she had thought dead, and chose to stay and work for change; her scrappy young friend Matt was the boy who had helped her. Now Jonas leads a welcoming community called Village, the blind man lives there and has raised Matt, and Matt has grown into the messenger of this story.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Matty lives in Village, a community founded to welcome outcasts and the wounded from crueler places, and works as its messenger, one of the few able to pass safely through the surrounding Forest. He was raised by Seer, the wise blind man who is Kira's father, and the community is led by Leader, a young man with pale eyes and a gift for seeing beyond the ordinary. Matty hopes to earn a true grown-up name for his work. But something is beginning to change in Village and in the Forest around it, and the openness that has always defined the community is starting to falter.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "messenger"
+      }
+    },
+    "midnight-sun": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator of this retelling, a vampire who has spent decades posing as a high-school student in the small, rainy town of Forks with his adopted family, the Cullens. More than a century old but forever seventeen in appearance, he is telepathic, able to hear the thoughts of everyone around him, and he and his family abstain from human blood, hunting only animals. When a new human girl, Bella Swan, arrives at school, he is thrown into crisis: hers is the one mind he cannot read, and her scent is more powerfully, dangerously tempting to him than any he has known. Cultured, guarded, and tormented by what he is, he struggles between the pull to destroy her and an unwilling fascination.",
+            "id": "edward-cullen",
+            "name": "Edward Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A seventeen-year-old who has just moved from Phoenix to live with her father in Forks. Seen through Edward's eyes, she is quiet, observant, and unexpectedly hard to predict: her thoughts are silent to him, which unnerves and intrigues him, and her blood calls to him with unbearable force. Modest and often self-conscious, she seems drawn to Edward despite his coldness, unafraid in a way that both frustrates and captivates him.",
+            "id": "bella-swan",
+            "name": "Bella Swan",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The compassionate physician who leads the Cullen family and long ago turned Edward and several of the others. Centuries old and remarkably self-controlled, he works at the Forks hospital surrounded by human blood and holds firmly to a life of restraint and mercy. He is a calm, fatherly figure whose conscience shapes the whole family's way of living.",
+            "id": "carlisle-cullen",
+            "name": "Carlisle Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Carlisle's wife and the warm, nurturing mother of the Cullen household. Gentle and loving, she is devoted to her adopted children and quietly hopes for Edward's happiness, having watched him remain apart and alone for decades.",
+            "id": "esme-cullen",
+            "name": "Esme Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Edward's adopted sisters, a small, quick, cheerful vampire who can see glimpses of the future, though what she sees can change as people's choices change. Fond of Edward and unusually open-minded, she foresees possibilities involving Bella that startle and unsettle him.",
+            "id": "alice-cullen",
+            "name": "Alice Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Alice's mate and a member of the Cullen family, a lean, watchful vampire who can sense and influence the emotions of those around him. Newer than the others to their diet of animal blood, he finds the restraint the hardest to keep, and the presence of a tempting human strains him most.",
+            "id": "jasper-hale",
+            "name": "Jasper Hale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The biggest and most powerfully built of the Cullen siblings, Rosalie's mate, boisterous and good-humored. He treats life lightly and is fond of physical strength and contests, and he regards Edward's sudden turmoil over a human girl with easygoing amusement.",
+            "id": "emmett-cullen",
+            "name": "Emmett Cullen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The strikingly beautiful blonde among the Cullen siblings, Emmett's mate. Proud and resentful of the risk a human outsider poses to the family's secret and safety, she strongly objects to Edward's growing interest in Bella and makes her hostility plain.",
+            "id": "rosalie-hale",
+            "name": "Rosalie Hale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bella's father and the police chief of Forks, a quiet, undemonstrative man who has lived alone for years and is glad, if awkward, to have his daughter back. He is largely unaware of the danger gathering around her, and his ordinary human concern for Bella becomes another thing Edward must work around.",
+            "id": "charlie-swan",
+            "name": "Charlie Swan",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A younger teenager from the Quileute reservation at La Push, son of an old friend of Bella's father. Cheerful and talkative, he is connected to the tribe's old legends about the Cullens' kind, folklore that carries a warning the Cullens take seriously because of a long-standing pact between the two peoples.",
+            "id": "jacob-black",
+            "name": "Jacob Black",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A nomadic vampire who arrives near Forks with two companions, all three of whom hunt humans. Lean and unremarkable to look at, he is a gifted and relentless tracker who treats pursuit as a game. When he senses the Cullens guarding a human, he becomes fixed on hunting Bella for the sheer challenge of it.",
+            "id": "james",
+            "name": "James",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A vivid red-haired vampire who travels with James as his mate. Wary and feline in her movements, she stands with him and helps him when he sets out to hunt Bella.",
+            "id": "victoria",
+            "name": "Victoria",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The most civil-seeming of the three nomad vampires, dark-skinned and courteous, who speaks for the group when they meet the Cullens. Uneasy about the conflict James is starting, he chooses to part from his companions rather than take part in the hunt.",
+            "id": "laurent",
+            "name": "Laurent",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "midnight-sun"
+      },
+      "recaps": {
+        "ending": "Edward reaches Bella in a Phoenix ballet studio after James has bitten her, and the Cullens destroy the tracker. Bella's greatest peril then becomes the vampire venom spreading in her blood: rather than let her change, Edward forces himself to draw the venom out through the bite, mastering the very thirst that first tempted him and stopping himself before he drains her. She survives, badly injured but still human, and wakes in a hospital where Edward has arranged a cover story for her worried father. The two return to Forks and to their life at school, and Edward takes her to the prom, deflecting for now her wish to become a vampire and stay with him forever. James is dead, but his mate, the red-haired Victoria, has slipped away, and Edward knows the reprieve is uneasy. The book closes with Edward and Bella together, deeply in love, still shadowed by the constant threat that his nature, and the vampire world, pose to a fragile human girl.",
+        "in_short": "Midnight Sun retells the events of Twilight from Edward Cullen's point of view. Edward is a telepathic vampire hiding among humans in Forks with his family, who feed only on animals. When Bella Swan arrives at school, he is stunned that he cannot hear her thoughts and nearly undone by how strongly her blood tempts him. He fights to stay away from her, then to protect her, as the two fall in love against his every instinct and the danger he poses. After he saves her from a speeding van and later from an attacker, he tells her what he is; she accepts it. He brings her to meet his family, but a passing trio of human-hunting nomads arrives during a family baseball game, and one of them, a tracker named James, fixes on hunting Bella for sport. The Cullens flee with her, but James lures her away and bites her. Edward destroys James and, in an agony of self-control, sucks the venom from her wound to keep her human, saving her life without turning her. Bella recovers, and they return to their fragile life together in Forks, the danger of what Edward is still hanging over them.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Edward Cullen, a telepathic vampire posing as a teenager in Forks with his adopted family, is thrown off balance when a new student, Bella Swan, arrives: he cannot hear her thoughts, and her scent tempts him more than any human's ever has. In a biology class he is nearly overwhelmed by the urge to kill her and barely holds himself back, then leaves town for several days to regain control. Returning, he resolves to keep his distance, but when a van skids across the icy school parking lot toward Bella, he moves with impossible speed to shield her, stopping the vehicle with his hand. Bella notices what should have been impossible and begins to suspect he is not ordinary. Fascinated against his will and unable to stay away, Edward finds himself drawn ever closer to the one person whose mind is silent to him.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward and Bella circle each other warily, each intensely curious about the other. When Bella wanders into danger from a group of men in nearby Port Angeles, Edward, tracking her through the minds around her, arrives in time to rescue her, and afterward admits that he can read thoughts, though not hers. Their fascination deepens into love even as Edward warns her how dangerous he is. He finally confirms to her what he and his family are, showing her the truth of himself, and is amazed that she is not repelled but accepts him. His family reacts with unease: some fear the risk a knowing human poses to their secret, and Rosalie in particular objects, while Alice's visions suggest that Bella's future may be bound tightly to theirs. Edward, long solitary among his own kind, lets himself hope.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Edward brings Bella home to meet the Cullens, and most of the family welcomes her. During a thunderstorm the family gathers to play baseball, their strength and speed unleashed, but the game is interrupted by three passing vampires, nomads who hunt humans: James, Victoria, and Laurent. James, a tracker who treats hunting as a game, catches Bella's scent among the Cullens and instantly makes her his quarry. Laurent, uneasy, leaves the others rather than join the chase, but James will not be turned aside. To protect Bella, the Cullens scatter and set decoys: Edward and some of the family try to draw James away while Alice and Jasper take Bella into hiding in her old home city of Phoenix. The hunt tightens, and Edward is desperate to keep the danger he brought into her life from destroying her.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "James outwits the Cullens' protection by tricking Bella into believing he has captured her mother, luring her to a ballet studio in Phoenix, where he attacks and bites her. Edward and his family arrive and destroy James, but the venom already in Bella's blood threatens to turn her into a vampire. In an act of extreme self-mastery, Edward draws the venom out through the wound, forcing himself to stop before he drains her, and saves her life while keeping her human. Bella recovers in a hospital, her injuries explained away to her father with a cover story, and she and Edward return to Forks. He takes her to the school prom, gently resisting, for now, her desire to be changed so she can stay with him forever. James is gone, but his mate Victoria has escaped, leaving a lingering threat. The book ends with Edward and Bella together and in love, still shadowed by the dangers of what he is.",
+            "through": {
+              "chapter": 28
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "midnight-sun"
+      }
+    }
+  }
+}

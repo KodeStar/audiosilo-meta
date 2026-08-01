@@ -1,0 +1,1771 @@
+{
+  "entries": {
+    "the-wandering-inn": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Erin Solstice"
+            ],
+            "description": "An injured young woman from Michigan who reaches an abandoned inn after being stranded in an unfamiliar world. Alone and short of food, she takes shelter there and soon receives the Innkeeper class.",
+            "id": "erin",
+            "name": "Erin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A drake City Watch guard and Spearmaster who visits Erin's isolated inn with his partner. Blunt and formidable, he becomes one of her first local contacts.",
+            "id": "relc",
+            "name": "Relc",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Free Antinium guardsman partnered with Relc. He is observant, restrained, and prepared to help Erin understand dangers that she cannot yet recognize.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A seemingly skeletal stranger who forces his way into the inn and demands food. His appearance and intentions make him an immediate threat to Erin.",
+            "id": "skeletal-looking-intruder",
+            "name": "Skeletal-looking intruder",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A drake receptionist at Liscor's Adventurers' Guild. She gives Erin practical guidance when the unfamiliar city and its customs leave the new innkeeper out of her depth.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drake tactician and enthusiastic chess player. Confident in his formal skills, he discovers that Erin's experience with the game far exceeds his own.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A drake guardsman associated with Relc and Klbkch. He shows concern for Erin and helps investigate the merchant who cheated her.",
+            "id": "ralk",
+            "name": "Ralk",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gnoll shopkeeper who offers Erin fair prices after her difficult first experience in Liscor's market. Her practical help and straightforward manner make her a welcome friend and supplier.",
+            "id": "krshia",
+            "name": "Krshia",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ryoka Griffin"
+            ],
+            "description": "A displaced young woman from Earth who earns money as a barefoot runner. Fast, guarded, and determined to remain classless, she takes dangerous delivery work while concealing where she came from.",
+            "id": "ryoka",
+            "name": "Ryoka",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A powerful noblewoman who hires runners for valuable deliveries. Her perceptive abilities and interest in Ryoka make evasion difficult for the secretive runner.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sociable city runner who warns Ryoka about a lethal request and proposes that they work together. Her friendliness persists despite Ryoka's preference for running alone.",
+            "id": "garia",
+            "name": "Garia",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An influential senior runner who expects others to respect the profession's informal rules. He uses his standing among local runners to pressure Ryoka over desirable requests.",
+            "id": "fals",
+            "name": "Fals",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hungry human mage trained at Wistram whose studies include necromancy. After a hostile beginning with Erin, he becomes a recurring customer with an unpaid obligation to the inn.",
+            "id": "pisces",
+            "name": "Pisces",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of a decaying empire who had withdrawn from conquest. After two displaced twins describe their technologically advanced world, he resumes command, mobilizes his vassals, and forces the twins into his service.",
+            "id": "king-of-destruction",
+            "name": "King of Destruction",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Liscor's Antinium Hive. She permits Klbkch to bring workers to Erin's inn as a limited experiment while warning him about opposition to contact with other species.",
+            "id": "antinium-queen",
+            "name": "Antinium Queen",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Minotaur captain of the Horns of Hammerad. He is bound by honor to repay Ryoka after her dangerous potion delivery allows his adventuring company to survive a battle.",
+            "id": "calruz",
+            "name": "Calruz",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival city runner who contests Ryoka's access to profitable work. She responds to losing a desirable delivery with threats of retaliation.",
+            "id": "persua",
+            "name": "Persua",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The young female leader of a small goblin group that accepts food and chess lessons at Erin's inn. She is watchful, quick to learn, and willing to cooperate when her people are threatened.",
+            "id": "rags",
+            "name": "Rags",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Antinium worker who begins to see himself as an individual while grieving Klbkch. He chooses a name and turns to chess as he tries to understand a life beyond assigned labor.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 31
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria"
+            ],
+            "description": "A half-Elf mage in the Horns of Hammerad. She helps Ryoka seek treatment for a shattered leg and offers candid warnings about the price attached to powerful aid.",
+            "id": "ceria-springwalker",
+            "name": "Ceria Springwalker",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vice-captain of the Horns of Hammerad and one of the adventurers indebted to Ryoka. Jelaqua shares responsibility for the company's members and its obligations.",
+            "id": "jelaqua",
+            "name": "Jelaqua",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ghazi the Omniscient"
+            ],
+            "description": "A renowned part-gazer adventurer who encounters Erin after a shield-spider hunt. Known as a Pathseeker, she is a veteran fighter whose presence draws immediate attention in Liscor.",
+            "id": "ghazi",
+            "name": "Ghazi",
+            "reveal": {
+              "chapter": 35
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An animated skeleton supplied by Pisces as payment toward his inn debt. Bound to obey Erin, it becomes a tireless cleaner, servant, and improvised guard despite its limited understanding.",
+            "id": "unnamed-skeleton-warrior",
+            "name": "Unnamed skeleton warrior",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An ancient gold-scaled dragon who can appear as an elderly, pointed-eared man. When Ryoka reaches his hidden cave injured and poisoned, he recognizes her condition and magically stops her bleeding.",
+            "id": "unnamed-dragon",
+            "name": "Unnamed dragon",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage associated with the Horns of Hammerad. His Repair spell restores Ryoka's damaged phone even though the device is not magical.",
+            "id": "sostrom",
+            "name": "Sostrom",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The name Erin gives to the skeleton serving at her inn. Its persistence, growing combat ability, and attempts to be useful suggest more development than she expected from an undead servant.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 47
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The armored captain of the Silver Spears and a member of the Byres noble family. Distantly related to Magnolia Reinhart, she joins the companies preparing to explore Liscor's newly uncovered ruins.",
+            "id": "yvlon-byres",
+            "name": "Yvlon Byres",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An archer captain leading the Flawless Flight. He considers joining the first organized raid into Liscor's ruins if the participating mages judge the risk acceptable.",
+            "id": "cervial",
+            "name": "Cervial",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A mage captain involved in discussions about the ruins expedition. He initially declines to enter because the confined passages and unknown dangers make the venture unusually hazardous.",
+            "id": "lir",
+            "name": "Lir",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An adventurer leader whose company joins the coalition preparing to investigate the ruins near Liscor.",
+            "id": "gerald",
+            "name": "Gerald",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Liscor's temporary Antinium Prognugator, deliberately made to resemble the dead Klbkch. He treats Pawn's claim to individuality as a possible aberration and asserts the Hive's authority over him.",
+            "id": "ksmvr",
+            "name": "Ksmvr",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former chess-playing Antinium worker who chooses an individual name during Liscor's undead crisis. He leads other newly named workers in forming a defensive line around Erin's inn.",
+            "id": "knight",
+            "name": "Knight",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Bird joins the workers defending the inn.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Gary joins the workers defending the inn.",
+            "id": "gary",
+            "name": "Gary",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Belgrade joins the workers defending the inn.",
+            "id": "belgrade",
+            "name": "Belgrade",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the chess-club workers who claims an individual name when the undead threaten Erin. Anand joins the workers defending the inn.",
+            "id": "anand",
+            "name": "Anand",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An undead guardian released from the crypt below Liscor's ruins. It wears layers of harvested skin, can strip victims by touch, and projects supernatural terror that prevents opponents from fighting effectively.",
+            "id": "skinner",
+            "name": "Skinner",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Liscor's Watch Captain. When Skinner's undead force enters the city, she organizes guards and civilians to resist the assault.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:1774240327",
+            "type": "community"
+          }
+        ],
+        "work": "the-wandering-inn"
+      },
+      "recaps": {
+        "ending": "Skinner escapes the ruins after destroying the silver-rank expedition and leads an undead assault on Liscor. Thirty-two newly individual Antinium workers defend Erin and The Wandering Inn. Knight and most of the others die, but Pisces sends covert undead aid, Toren helps expose Skinner's true body, and the Antinium Queen completes Klbkch's costly rebirth. Klbkch returns in a new body, Rags commits her goblins to the fight, and Rags kills Skinner. Liscor and the inn remain standing but badly damaged. Erin is alive at Innkeeper level 18, grieving the workers; Bird, Gary, Belgrade, and Anand are their only survivors. Klbkch replaces Ksmvr as Prognugator, while resurrection is too costly to restore the fallen workers. Toren has become more independent and secretly retains a red magical gemstone from Skinner. Yvlon Byres survives the ruins scarred and unresponsive. Ryoka returns, learns of the Horns' losses, finds Yvlon alive, and approaches Erin's inn before turning away. Her compelled Bloodfields delivery, conflict with Magnolia and Persua, estrangement from Erin, and route home remain unresolved, as does Erin's distant hope of reaching Wistram.",
+        "in_short": "Erin, a young woman displaced from Earth, claims an abandoned inn outside Liscor and gradually turns it into a refuge for drakes, gnolls, Antinium, goblins, adventurers, and an undead servant. Her chess games encourage individual thought among Antinium workers and deepen her alliance with the goblin Rags. Elsewhere, the classless runner Ryoka survives dangerous deliveries, draws Magnolia Reinhart's attention, and becomes indebted to the Horns of Hammerad. A silver-rank expedition into nearby ruins releases Skinner, an undead horror that devastates the adventurers and attacks Liscor. Erin's newly individual chess-club workers defend her at terrible cost. Pisces, Toren, the Watch, the Antinium, reborn Klbkch, and Rags's goblins turn the battle, with Rags killing Skinner. Liscor survives damaged. Erin reaches Innkeeper level 18 and mourns the workers, while only Bird, Gary, Belgrade, and Anand survive their defense. Yvlon survives the expedition in severe trauma, and Ryoka returns to the inn but leaves without seeing Erin.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Erin, a twenty-year-old from Michigan, is injured and stranded in an unfamiliar world after an unexplained transition. She takes refuge in a deserted inn, where she learns that classes, levels, and skills are real. Cleaning and cooking gradually make the building habitable, but food and water bring their own dangers: goblins pursue her, a rock crab guards an orchard, and a predatory fish poisons her wounded hand. Erin nevertheless defends the inn from a goblin incursion and begins treating it as a home.\n\nAfter she turns the sign to open, two armed visitors arrive. Relc, a drake Spearmaster, and Klbkch, an Antinium guardsman, investigate her cooking fire. They explain that the surrounding settlement was abandoned after a plague and confirm that Erin may remain. Klbkch recognizes the poison in her hand and cures it with a healing potion. Erin feeds both guards, tells them about her impossible arrival, and gains her first paying guests and tentative local allies. By the end of their visit, she is an Innkeeper at level five with Basic Cleaning, Basic Cooking, and Basic Crafting.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin's next visitor is a hungry human mage who first uses a frightening illusion to force his way inside. He has studied at Wistram and admits knowledge of necromancy. Relc and Klbkch regard him as dangerous, but Erin refuses to allow him to be killed in her inn, and he remains free. A wider glimpse of the world reveals that Erin is not the only person transported from Earth, though she does not yet know this.\n\nWith her pantry nearly empty, Erin walks to Liscor. Selys, a receptionist at the Adventurers' Guild, gives her directions, but Erin encounters widespread hostility toward humans and is badly overcharged for provisions. At the guard barracks, she overhears Relc disparaging humans and leaves hurt. Goblins attack her on the road home until Relc intervenes. He carries her supplies, apologizes, and confirms the merchant cheated her. Erin returns to the inn with food but little money, a damaged trust in Relc, and an ongoing danger along the route to Liscor. She reaches Innkeeper level six.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Relc tries to apologize by killing three goblins near the inn, but the deaths provoke their chieftain. Erin is stabbed and badly burned while killing him in self-defense. Klbkch saves her with a healing potion and becomes a trusted confidant, while Erin insists that the remaining goblins be left alone. Still traumatized, she later feeds four starving goblins rather than attacking them. This peaceful meal begins a new relationship with the local survivors.\n\nErin uses the chieftain bounty to challenge the dishonest merchant. She defeats his nephew Olesm, Liscor's tactician, at chess and recovers her money. Krshia, a gnoll shopkeeper, becomes a fair supplier and friend. Erin names her business The Wandering Inn and posts a rule against killing goblins.\n\nA second displaced human, Ryoka, has built a separate life as a barefoot runner. She completes dangerous deliveries around Celum, including work for the noblewoman Magnolia Reinhart. Ryoka hides her origin and avoids classes and levels, but her speed and independence draw both profitable work and resentment. Garia offers companionship, while the influential Fals pressures Ryoka to leave Magnolia's requests to other runners.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin traps acid flies and turns them into a distinctive food, especially popular with Klbkch and other Antinium. News of newly uncovered ruins near Liscor draws adventurers to the area. At the inn, Erin teaches chess to Olesm, goblins, and twelve Antinium workers. Rags, leader of the small goblin group, proves an able player, while the workers reproduce the game with alarming speed. One worker rejects the Hive and murders seven others before Klbkch kills him, but the remaining workers still seek instruction.\n\nA hostile goblin band later attacks the inn. Rags's group fights beside Erin and Klbkch, while an Antinium worker dies protecting them. Klbkch is mortally wounded and dies despite Erin's attempt to carry him to safety. Liscor turns against Erin, but Krshia and Selys support her. At the inn, she persuades a grieving worker to recognize himself as an individual. He chooses the name Pawn. Pawn can still draw on the thoughts of many workers during chess, yet he has begun forming a self apart from the collective. After Erin plays through her grief with him, she reaches Innkeeper level 11 and gains Immortal Moment.\n\nIn a distant, failing empire, two unnamed twins tell the King of Destruction that they came from a technologically advanced world. He accepts their account and concludes that other outsiders may also have arrived. Renewed by this discovery, he ends his withdrawal from power, retakes his throne, and orders his vassals to drive out occupying forces and assemble their warriors. He also compels the twins to serve as his attendants and future bodyguards.",
+            "through": {
+              "chapter": 34
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryoka's conflict with other runners culminates in Persua's group arranging for a cart to shatter her leg. The Horns of Hammerad, indebted to Ryoka for a delivery that saved them, help her find another cure after Magnolia offers powerful healing in exchange for unrestricted answers about her origin. Ceria and Pisces reset and heal the leg, restoring Ryoka's ability to run. Ryoka later accepts an open request into the deadly High Passes. Several supposed healing potions are actually mana potions, worsening her injuries as she flees goblins, giant wolves, carnivorous goats, and gargoyles. She reaches a dragon's hidden cave and collapses, alive but poisoned.\n\nNear Liscor, Erin destroys a shield-spider nest and meets the renowned part-gazer adventurer Ghazi. The spider bounty brings Erin money, but an unknown thief remains active in the city and later burglarizes the inn. Erin's unusual community continues to grow around chess, goblin guests, and Antinium workers. The ruins attract more human adventurers and increase tension with Liscor's nonhuman population, while the Antinium Queen sends a replacement official to manage the Hive's interests.",
+            "through": {
+              "chapter": 43
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Pisces pays part of his inn debt by giving Erin an animated skeleton to serve as guard and cleaner. The skeleton protects the inn, works without tiring, and begins developing beyond Erin's expectations. She eventually names it Toren. Despite hostility from visiting human adventurers, The Wandering Inn openly shelters goblins, Antinium, and undead.\n\nThe dragon heals Ryoka, pays her for reaching him, and binds her to deliver a sealed scroll and ring to a necromancer in the Bloodfields. Back in Celum, Ryoka rejects the Runner's Guild's apology, clashes again with Persua, and evades Magnolia's surveillance. She learns a basic light spell with Ceria's help, while Rags surprises Pisces by showing an aptitude for conventional magic.\n\nErin tells Krshia that she came from another world populated by billions of humans. Krshia agrees to keep the secret among gnolls and identifies Wistram as Erin's best possible route to finding magic that could send her home. The journey and an archmage's help would be difficult and expensive, but Erin finally has a direction. Krshia quietly begins seeking other displaced people while arranging protection for her.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Five silver-rank adventuring companies assemble to explore Liscor's ruins, with the Horns of Hammerad using Erin's inn as a base. Before the expedition, Ksmvr, the Antinium official who resembles Klbkch, seizes Pawn for interrogation. Pawn returns permanently maimed but officially judged an individual rather than an aberration. Ksmvr then attempts to capture Erin and reclaim Pawn, but Relc, Ghazi, and concealed gnolls make the confrontation too costly. Pawn ultimately chooses to return to the Hive, where the Queen is occupied with a ritual called Anastasis.\n\nRyoka's anger ruptures her friendship with Ceria after a series of fights with Yvlon, Calruz, and the gathered adventurers. She leaves alone as the companies prepare for the ruins. At the inn, Toren increasingly acts on his own judgment and places Erin's safety above Pisces's commands. Erin reaches Innkeeper level 15. The expedition completes its preparations with more than forty fighters, supplies, magical support, and Olesm joining as tactician. Although Erin has gained Power Strike through training, she remains at the inn while the five companies prepare to enter the underground complex.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The five companies enter a vast burial complex beneath the ruins. An undead ambush kills several adventurers, but Olesm's Rapid Retreat opens an escape route and his Attack Formation helps the survivors destroy four Crypt Lords. Deeper inside, the expedition finds a warning about Skinner. The creature emerges wearing the harvested skin of its victims and projects terror that prevents effective resistance. The expedition collapses: several captains and members of the Horns are killed, Calruz loses an arm and is overwhelmed, and Skinner leads the undead toward the surface.\n\nSkinner's force enters Liscor through the north gate. Zevara rallies the Watch and civilians, Pisces fights to prove the horde is not his creation, and Ksmvr provides only limited Antinium support while the Queen continues Anastasis. At The Wandering Inn, some chess-playing workers reject an attacker from their own ranks and openly claim individual identities. Knight leads the newly named Antinium in a protective perimeter around Erin as the undead close in. Liscor is under siege, the ruins expedition is destroyed, and Erin's inn becomes the workers' chosen position for a final defense.",
+            "through": {
+              "chapter": 60
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:1774240327",
+            "type": "community"
+          }
+        ],
+        "work": "the-wandering-inn"
+      }
+    },
+    "the-way-of-kings": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A young man from the rural region of Alethkar, the son of a small-town surgeon, who trained as a spearman and quickly proved a gifted natural leader in his country's endless war. When the story opens he has been condemned to slavery and marked with a slave's brand, stripped of the men he once tried to protect. Bitter and grieving, he is sold into a bridge crew on the Shattered Plains, where he is expected to die. His defining trait is a stubborn refusal to let those in his care be lost, even when despair tells him it is hopeless.",
+            "id": "kaladin",
+            "name": "Kaladin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sylphrena"
+            ],
+            "description": "A small spirit of the wind who takes the shape of a young woman only a hand tall, visible at first to almost no one. She attaches herself to Kaladin out of curiosity, playful and childlike, forgetful of her own nature. Over time she grows more aware, more coherent, and more insistent, drawn to honesty and courage and repelled by treachery.",
+            "id": "syl",
+            "name": "Syl",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sheltered young noblewoman from a remote and impoverished house, an accomplished artist with a near-perfect visual memory and a quick, bookish wit she usually hides. She travels to the great learning city of Kharbranth to become the ward of the famed scholar Jasnah Kholin. Behind her studious ambition lies a secret plan to steal a valuable device in order to save her failing family.",
+            "id": "shallan-davar",
+            "name": "Shallan Davar",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The formidable scholar-princess of Alethkar, daughter of the murdered King Gavilar and sister to the current king. Coldly brilliant and famously heretical, she rejects the established religion openly and pursues dangerous historical research. She owns a Soulcaster, a device able to transform matter, and takes Shallan as her ward while pursuing a hidden scholarly purpose of her own.",
+            "id": "jasnah-kholin",
+            "name": "Jasnah Kholin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Blackthorn"
+            ],
+            "description": "A highprince of Alethkar and its most feared war leader, brother to the assassinated King Gavilar and uncle to the young king who now rules. Once a savage battlefield commander called the Blackthorn, he has grown older and more restrained, troubled by visions that come to him during the great storms and by an old book of ideals he has begun to live by. His fellow warlords whisper that grief and age have unbalanced him.",
+            "id": "dalinar-kholin",
+            "name": "Dalinar Kholin",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Dalinar's elder son, a celebrated and vain young duelist who wields one of the rare Shardblades. Charming, hot-tempered, and devoted to his father, he privately fears that Dalinar's visions and unfashionable honor are ruining the family's standing, even as he defends him fiercely against those who would exploit it.",
+            "id": "adolin-kholin",
+            "name": "Adolin Kholin",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Dalinar's quiet, bookish younger son, kept from the battlefield by a blood weakness that brings on fits. Awkward in company and easy to underestimate, he is thoughtful and earnest, longing to be useful to a warrior family that treats him as fragile.",
+            "id": "renarin-kholin",
+            "name": "Renarin Kholin",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The young king of Alethkar, son of the slain King Gavilar, who inherited a crown and a war he struggles to command. Insecure and quick to suspect conspiracies against his life, he leans heavily on his uncle Dalinar while resenting the shadow the older man casts.",
+            "id": "elhokar-kholin",
+            "name": "Elhokar Kholin",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A powerful and cunning highprince, a childhood companion of Dalinar and outwardly the king's loyal ally. He runs his bridge crews with deliberate brutality, spending slaves' lives freely to win plateau battles. Shrewd and ambitious, he treats the war as a game of position and profit.",
+            "id": "torol-sadeas",
+            "name": "Torol Sadeas",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Szeth-son-son-Vallano",
+              "The Assassin in White"
+            ],
+            "description": "A soft-spoken assassin from the distant land of Shinovar, condemned by his own people as Truthless and forced to obey without question whoever holds the small stone that binds his oath. He wields a Shardblade and strange powers over gravity and pressure, killing with terrible ease on the orders of masters he despises, tormented by every death he is made to cause.",
+            "id": "szeth",
+            "name": "Szeth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The late king of Alethkar, Dalinar's elder brother, who united the warring Alethi princedoms by conquest. He was assassinated on the very night his people signed a treaty with the strange Parshendi, an act that plunged both nations into the long war fought on the Shattered Plains.",
+            "id": "gavilar-kholin",
+            "name": "Gavilar Kholin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Hoid"
+            ],
+            "description": "The king's Wit, a sharp-tongued jester and storyteller whose mockery is licensed by his office. Mysterious and clearly more than he appears, he turns up where he is least expected, trading barbed insults for a strange kind of counsel and telling stories that seem to carry hidden meaning.",
+            "id": "wit",
+            "name": "Wit",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The elderly king of the city-state of Kharbranth, widely loved as a gentle, slow-witted, and generous ruler who builds hospitals and shelters the sick. He seems the least threatening of monarchs, kindly and easily led, more interested in charity than in the wars of the eastern princes.",
+            "id": "taravangian",
+            "name": "Taravangian",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An older, gruff bridgeman with a soldier's bearing and a past he keeps to himself. Cynical at first, he becomes one of the earliest and most loyal converts to Kaladin's effort to keep Bridge Four alive, and seems to know more about old legends than he lets on.",
+            "id": "teft",
+            "name": "Teft",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A capable, hard-edged bridgeman nursing a deep resentment of the lighteyed nobility who rule Alethi society. He becomes one of Kaladin's close companions in Bridge Four, quick in a fight and fiercely loyal to the crew, though his anger runs deep.",
+            "id": "moash",
+            "name": "Moash",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-way-of-kings"
+      },
+      "recaps": {
+        "ending": "The long war reaches a turning point. Dalinar and Highprince Sadeas launch a joint assault on the Parshendi, but Sadeas abandons Dalinar's army mid-battle, exposing himself as a traitor and leaving the Kholin forces to be annihilated. Kaladin, who has secretly learned to wield the light of the storms, leads Bridge Four back into the trap and rescues Dalinar and his men against impossible odds. Freed from slavery and revealed as one of the vanished Knights Radiant returned, Kaladin binds himself and his crew to guard the Kholins, with the wind-spirit Syl now clearly more than she seemed. Dalinar trades his irreplaceable Shardblade to buy Bridge Four's freedom, gaining fiercely loyal soldiers but making a lasting enemy of the humiliated Sadeas. Far to the west, Shallan arrives at the Plains and confesses to Jasnah that she too has begun to manifest a Radiant's powers, tying their scholarly hunt to the reawakening magic. The book closes with the certainty that the ancient Desolations are not myth: a great enemy stirs, the storms carry warnings, and the assassin Szeth is redirected toward a deadlier purpose. The heroes now know the true war is only beginning.",
+        "in_short": "On the storm-battered world of Roshar, a war grinds on across the Shattered Plains, where the kingdom of Alethkar hunts the alien Parshendi to avenge the murder of King Gavilar. Kaladin, a gifted young spearman betrayed into slavery, is thrown into a bridge crew meant to die, but he refuses to let his men perish and slowly forges the broken Bridge Four into a family, discovering he can draw power from the great storms. The scholar Jasnah Kholin takes a young noblewoman, Shallan Davar, as her ward, unaware Shallan means to rob her; both women uncover hints of an ancient, returning enemy. Highprince Dalinar Kholin, plagued by storm-visions others call madness, struggles to hold his squabbling peers to a code of honor. When his rival Sadeas betrays him on the battlefield, Kaladin and Bridge Four save Dalinar's doomed army, and Kaladin is revealed as a reborn Knight Radiant. Old powers are waking, and a catastrophe long prophesied draws near.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "The story opens on Roshar, a world scoured by immense recurring storms. The kingdom of Alethkar wages a long war on the Shattered Plains, a vast broken landscape, hunting the alien Parshendi people to avenge the assassination of King Gavilar years earlier. Kaladin, once a hopeful young spearman and a surgeon's son, has been betrayed, branded a slave, and sold into a bridge crew in Highprince Sadeas's army. Bridge crews haul heavy wooden bridges into enemy fire and die by the dozen; numb with grief and loss, Kaladin expects to die among them. Elsewhere, the young provincial noblewoman Shallan Davar reaches the learning city of Kharbranth and maneuvers her way into becoming ward to the brilliant, notoriously heretical scholar Jasnah Kholin, secretly intending to steal Jasnah's matter-transforming Soulcaster to save her impoverished house. And in the war camps, Highprince Dalinar Kholin, brother of the murdered king, is troubled by vivid visions that seize him during the great storms, visions his peers fear are a sign of failing sanity.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rather than surrender to despair, Kaladin takes it upon himself to keep the men of Bridge Four alive. He earns coin to buy them medicine, drills them in secret, and slowly restores their broken spirits, noticing too that his own injuries heal unnaturally fast. A strange little wind-spirit that calls itself Syl grows steadily more aware at his side. In Kharbranth, Shallan settles into study under Jasnah, genuinely dazzled by real scholarship even as she works toward her theft, and the two women's sharp minds begin to strike sparks; Shallan starts to sense that Jasnah's research points toward an ancient, half-forgotten danger. In the war camps, Dalinar leans on his storm-visions and an old book of ideals to try to hold his fractious fellow highprinces to a standard of honor. His unfashionable restraint strains his alliance with the calculating Highprince Sadeas and unsettles his sons, Adolin and Renarin, who fear their father's mind is slipping.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kaladin forges Bridge Four into something like a family and a genuine fighting unit, teaching the men to raise their bridge as a shield to survive the deadly plateau runs and daring, at last, to imagine escaping the war entirely. Syl becomes ever more real and insistent, drawn to his courage. Shallan's bond with Jasnah deepens into true mentorship, which complicates her scheme even as she grasps that her mistress is investigating a returning ancient threat and the lost Knights Radiant. Dalinar wrestles with whether to abdicate his position, distrusting his own visions, while Sadeas's grip on the anxious young King Elhokar tightens. Old secrets press closer on every side: the meaning of the storm-visions, the true nature of Shallan's talents, and the reason the Parshendi fight the way they do. The rival highprinces edge toward a plan for one great, decisive battle on the Plains.",
+            "through": {
+              "chapter": 52
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war reaches its crisis. Dalinar and Sadeas agree to a joint assault on the Parshendi, but at the height of the fighting Sadeas withdraws his army and abandons Dalinar's forces to be destroyed, revealing himself as a traitor bent on removing his rival. Kaladin, who has secretly learned to draw the light of the storms into himself, leads Bridge Four back into the slaughter and saves Dalinar and his men against hopeless odds. Freed from slavery and revealed as one of the long-vanished Knights Radiant reborn, Kaladin binds himself and his crew to protect the Kholins. Grieving but grateful, Dalinar trades away his priceless Shardblade to purchase Bridge Four's freedom and takes the men into his service, gaining loyal soldiers and a bitter enemy in the disgraced Sadeas. Far away, Shallan reaches the Shattered Plains and admits to Jasnah that she too has begun to manifest a Radiant's forbidden powers. The great storms carry warnings that the mythical Desolations are returning, and the assassin Szeth is turned toward a new and more dangerous target.",
+            "through": {
+              "chapter": 75
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-way-of-kings"
+      }
+    },
+    "the-wee-free-men": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A clever, level-headed nine-year-old girl who lives on her family's sheep farm on the chalk downland known as the Chalk. Practical far beyond her years and gifted with a stubborn common sense, she begins to notice that strange creatures and forces are intruding on her quiet world, and finds she has a talent for seeing things as they really are.",
+            "id": "tiffany-aching",
+            "name": "Tiffany Aching",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Tiffany's very young brother, a sticky, demanding toddler who wants sweets more or less constantly. Small and helpless, he is the sibling Tiffany is grudgingly responsible for looking after.",
+            "id": "wentworth",
+            "name": "Wentworth",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tiffany's late grandmother, a taciturn shepherd who watched over the sheep and the downland with quiet, unquestioned authority. Long dead by the time the story begins, she lives on in Tiffany's memory as the wise, silent guardian of the Chalk, revered almost as its protecting spirit, and a model for the woman Tiffany hopes to become.",
+            "id": "granny-aching",
+            "name": "Granny Aching",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A witch who travels the countryside in disguise, quietly seeking out children with the talent for magic. Bookish and brisk, with a hat that folds flat to stay hidden, she recognizes Tiffany's promise and warns her that the barriers between the ordinary world and Fairyland are wearing dangerously thin.",
+            "id": "miss-tick",
+            "name": "Miss Tick",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Big Man, or leader, of the Nac Mac Feegle, the Wee Free Men: tiny blue-skinned, red-haired warriors barely six inches tall, tattooed, hard-drinking, and permanently ready for a fight or a theft. Fearless and loyal, he leads his clan to Tiffany's side when she needs fierce allies.",
+            "id": "rob-anybody",
+            "name": "Rob Anybody",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A gonnagle, the bard of the Nac Mac Feegle, more dignified and thoughtful than his rowdy kinsmen. He wields poetry and music as weapons, able to make an enemy's ears ache or worse with the sheer force of his verse.",
+            "id": "william-the-gonnagle",
+            "name": "William the Gonnagle",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A grumbling talking toad who lives among the Nac Mac Feegle and serves as their source of book-learning and legal advice. Sharper of tongue than the Feegle and full of odd knowledge, he becomes a reluctant guide and adviser to Tiffany.",
+            "id": "the-toad",
+            "name": "The Toad",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The cold, beautiful ruler of Fairyland, a being without pity who crosses into the human world to take children and other things she desires. She rules a shifting dream-country of illusions and stolen wishes, and she is the power behind the intrusions troubling the Chalk.",
+            "id": "the-queen",
+            "name": "The Queen",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The local Baron's son, a dull and rather spoiled boy who was carried off into Fairyland some time before the story begins. Tiffany encounters him lost among its dreams, half-forgotten and slow to rouse himself, another of the Queen's captives.",
+            "id": "roland",
+            "name": "Roland",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wee-free-men"
+      },
+      "recaps": {
+        "ending": "Tiffany reaches the heart of Fairyland and faces its Queen, a being who rules through beautiful, hollow dreams and the theft of what others love. Refusing to be lost in the Queen's illusions, Tiffany uses what she calls First Sight and Second Thoughts, the ability to see what is really there and to watch her own thinking, together with the strength she draws from the Chalk and from the memory of Granny Aching, to break the Queen's power. She rescues her brother Wentworth and the Baron's son Roland, and drives the Queen back out of the human world, sealing the way behind her. The children are returned safely to the Chalk. In the aftermath, senior witches who have been watching, among them the renowned Granny Weatherwax, quietly acknowledge what Tiffany has done and the promise she shows. Tiffany is recognized as a witch in the making and as the Chalk's own guardian in the tradition of her grandmother, and arrangements are set in motion for her proper training. She returns to ordinary farm life changed, aware now of who she is and what she is capable of.",
+        "in_short": "Tiffany Aching, a practical nine-year-old shepherd's granddaughter on the chalk downs called the Chalk, discovers she has a talent for witchcraft just as strange creatures from Fairyland begin intruding on her world. When her little brother Wentworth is stolen away by the Queen of Fairyland, Tiffany sets out to rescue him, armed with common sense, a frying pan, and the fierce help of the Nac Mac Feegle, the tiny blue Wee Free Men who guard the downland. Drawing courage and strength from the memory of her formidable grandmother, Granny Aching, she crosses into Fairyland, a cold country of shifting dreams and illusions. There she finds not only Wentworth but Roland, the Baron's son, lost before her. Tiffany learns to use clear sight and self-awareness to see through the Queen's glamours and turn the fairy magic against itself. She confronts the Queen directly, defeats her through wit, will, and her deep bond with her home ground, and drives her out of the world. Returning with both children safe, Tiffany is quietly recognized by the wider community of witches and set on the path to being trained.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Tiffany Aching is a clever, practical nine-year-old who lives on her family's sheep farm on the Chalk, a stretch of chalk downland where her late grandmother, Granny Aching, was once the respected shepherd and, in her quiet way, its guardian. Tiffany takes after her, watchful and sensible, and she begins to notice that things are wrong: a monster rises out of the river, and other creatures that belong to old stories start appearing where they should not. She meets Miss Tick, a witch traveling in disguise who tests her and recognizes her talent. Miss Tick warns her that the wall between the ordinary world and Fairyland is wearing thin, that something is pressing through, and that the Chalk has no witch of its own to protect it, no one but Tiffany herself.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tiffany finds unexpected allies in the Nac Mac Feegle, the Wee Free Men: tiny, blue-skinned, red-haired warriors, fearless, thieving, and endlessly ready for a fight, who guard the downland and come to see her as their hag, a witch to be protected. Then the intrusions turn personal. The Queen of Fairyland steals Tiffany's small brother Wentworth away into her realm, and Tiffany, though she is often exasperated by him, refuses to abandon him. Determined to get him back, she resolves to go into Fairyland after him. Along the way she reflects more and more on Granny Aching, understanding better the kind of woman her grandmother was and the inheritance of duty and stubborn care that she has passed down, an inheritance Tiffany is now taking up.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Guided by the Feegle and by a grumbling talking toad who serves as their adviser, and armed with a frying pan and hard common sense, Tiffany crosses into Fairyland. It is a cold, shifting dream-country where nothing is quite solid and the Queen's illusions try to trap the unwary in comfortable, false wishes. Tiffany presses on through its dangers and deceptions, keeping her wits about her where others would be lured into sleep. She searches for Wentworth and, in the process, discovers Roland, the Baron's son, who was carried off into Fairyland long before and left half-lost among its dreams. Tiffany begins to gather the captives to her, refusing the Queen's traps and steadily working her way toward the center of the Queen's power.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tiffany learns to fight Fairyland on its own ground. Using her clear sight and her habit of watching her own thoughts, she sees through the Queen's glamours and dreams, recognizing the illusions for what they are and refusing to be caught by them. She turns the fairy magic's own tricks back on it, using the Queen's dreams against her rather than being consumed by them. Drawing strength from her memories of the Chalk and of Granny Aching, and backed by the ferocious loyalty of the Feegle, she grows steadily more sure of her own power and more dangerous to the Queen, closing in on the confrontation that will decide whether she and the stolen children ever leave Fairyland at all.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tiffany confronts the Queen of Fairyland directly. Standing on the strength of who she is and where she comes from, and refusing every illusion the Queen offers, she overcomes her through wit, will, and her deep-rooted bond with her home ground. She frees her brother Wentworth and the Baron's son Roland, and drives the Queen back out of the human world, closing the way behind her. The children are brought safely home to the Chalk. In the aftermath, senior witches who have been quietly watching, among them the famous Granny Weatherwax, acknowledge what Tiffany has accomplished and the guardian she is becoming, following in Granny Aching's footsteps. Recognized now as a witch in the making and as the protector of the Chalk, Tiffany is set on the road to proper training, returning to ordinary life aware at last of her own strength.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wee-free-men"
+      }
+    },
+    "the-weirkey-chronicles-omnibus": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returned traveler from Earth whose young body no longer holds the soulcrafter power he once possessed. He knows the Nine Worlds from an earlier life, conceals that history from those around him, and intends to rebuild with a more defensive soul home while pursuing an old betrayal.",
+            "id": "theo",
+            "name": "Theo",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A displaced soulcrafter overwhelmed by Tatian sunlight and repeated unwanted contact. Her frightened attack shows the danger of the cultural and sensory gulf separating the newly arrived refugees from their hosts.",
+            "id": "ichili-woman",
+            "name": "Ichili woman",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ichili woman stranded on Tatian after an interworld disruption. She accepts a light-blocking blindfold and Theo's help, then agrees to seek soulcrafter training while waiting for a relative who may be able to retrieve her.",
+            "id": "fiyu",
+            "name": "Fiyu",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The name Theo gives Fiyu and the Tatian hosts while concealing his past. Under this identity he proposes a training arrangement for the stranded travelers and begins forming a practical alliance with Fiyu.",
+            "id": "jake",
+            "name": "Jake",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A stranded stone-bodied scholar who shapes part of himself into a plate, allowing Theo to make Fiyu a protective blindfold. He has never left his own world before the disruption deposits him on Tatian.",
+            "id": "arbai-mundine",
+            "name": "Arbai Mundine",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A threatening returnee from Earth who claims to have reached the Dominion tier before dying to a powerful demon. He warns Theo that repeated returns attract abnormal danger, advises distrust of other Earth travelers, and takes an evident interest in the risks surrounding them.",
+            "id": "magnafor",
+            "name": "Magnafor",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Arbai Mundine scholar traveling with the displaced group. A capable stone shaper, he agrees to make Theo a light spear carrying force and piercing properties even though Theo has not yet regained soulcrafter power.",
+            "id": "navim",
+            "name": "Navim",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tatian farm guard nearing ascension who fought during the village defense. He directs the stranded travelers toward Mufuru, where they can exchange public service for training and compete for valuable materials.",
+            "id": "famage",
+            "name": "Famage",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Famage's uncle and the head of Mufuru Landguard Village. He oversees the training program for displaced soulcrafters and its guarded stores, while his concealed soul home suggests power well beyond the rank he displays.",
+            "id": "nanjuma",
+            "name": "Nanjuma",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tatian training-family leader who fights with a forked, stone-set staff. She chooses Fiyu, Theo, and Kuber for her group and aims to win the school's rewards so she can advance her own soul home.",
+            "id": "nauda",
+            "name": "Nauda",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Tatian student selected for Nauda's training family. His soul home has an unusually broad foundation, making him a potentially useful addition to a group preparing for instruction and competition.",
+            "id": "kuber",
+            "name": "Kuber",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A powerful stone-bodied scholar at Navim's school who possesses a weirkey. He secures treatment for his critically damaged student and offers the stranded companions passage back to Tatian in return for future accounts of worlds beyond the Nine.",
+            "id": "navims-elder-master",
+            "name": "Navim's elder master",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An authority-tier landguard who questions Nanjuma after the destruction at Mufuru. Claiming that arrivals from beyond the Nine attract demons, the investigator represents a wider effort to identify and control displaced outsiders.",
+            "id": "landguard-investigator",
+            "name": "Landguard investigator",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The independent ruler of Nlukoko, a commercial city outside ordinary landguard control. Nauda warns that he is stronger than a ruler and that antagonizing him would be exceptionally dangerous.",
+            "id": "lord-of-nlukoko",
+            "name": "Lord of Nlukoko",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small blue, white-haired, adult-seeming humanoid whom Theo rescues during the Nlukoko demon breach. She speaks in an unusual manner, attaches herself to Theo, and follows the travelers through the gate despite their uncertainty about her nature.",
+            "id": "senka",
+            "name": "Senka",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Dusan cover identity Theo presents to a local family leader after intervening in a court dispute. The name supports his attempt to navigate family politics without exposing his true history.",
+            "id": "bartolo-ein-of-fythe",
+            "name": "Bartolo Ein of Fythe",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A noble hunter who leads an advanced sleigh team during the great rainhorn hunt. He offers to double the group's reward if they take at least half as many rainhorns as his team, with a duel against Theo as the penalty for failure.",
+            "id": "dusan-rival",
+            "name": "Dusan rival",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An archcrafter serving the Dusan family force that pursues Theo's group across the northern wasteland. He carries a pike and joins the attempt to corner the travelers while a ruler-tier sublime beast threatens both sides.",
+            "id": "pike-wielding-archcrafter",
+            "name": "Pike-wielding archcrafter",
+            "reveal": {
+              "chapter": 55
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An erratic authority who abruptly replaces his house's recruitment trial with a test of endurance under overwhelming pressure. He strikes Nauda down after she outlasts nearly every applicant, then dismisses all candidates.",
+            "id": "red-bannered-house-authority",
+            "name": "Red-bannered house authority",
+            "reveal": {
+              "chapter": 66
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The administrator who evaluates the travelers during House Blacksilver's soul-home trial and becomes their working contact after recruitment. The official offers merit-based contracts and explains the costly route to the house's available chasm invitations.",
+            "id": "house-blacksilver-official",
+            "name": "House Blacksilver official",
+            "reveal": {
+              "chapter": 67
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elderly Dusan ruler who arrives with an Anguadan group and approaches Theo after another member disappears from view.",
+            "id": "elderly-dusan-ruler",
+            "name": "Elderly Dusan ruler",
+            "reveal": {
+              "chapter": 69
+            }
+          },
+          {
+            "description": "An elderly ruler leading the family that has followed Theo to Norro Yorthin. He treats Theo's knowledge of a historical Dusan family as dangerous, attacks when Theo cannot satisfy him, and presses a vendetta that results in a delayed formal duel.",
+            "id": "dusan-family-head",
+            "name": "Dusan family head",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An authority with a personal interest in breaking Nauda's resolve. Before Theo's duel, he humiliates and threatens her, then stakes a chasm invitation on an insulting wager that Theo will lose.",
+            "id": "house-crimson-authority",
+            "name": "House Crimson authority",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior House Crimson authority who responds to the younger authority's treatment of Nauda by giving Nauda and Fiyu a potent sublime spice as an apology.",
+            "id": "older-house-crimson-authority",
+            "name": "Older House Crimson authority",
+            "reveal": {
+              "chapter": 98
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elder who speaks for the expelled Dusan household after its champion loses. He explains that inquiry into a family destroyed about a century earlier has repeatedly led to death, demons, and renewed destruction.",
+            "id": "dusan-family-elder",
+            "name": "Dusan family elder",
+            "reveal": {
+              "chapter": 99
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CLYMDMTJ",
+            "type": "community"
+          }
+        ],
+        "work": "the-weirkey-chronicles-omnibus"
+      },
+      "recaps": {
+        "ending": "Theo wins the sealed, authority-judged duel while still an archcrafter. After suffering deep sword wounds, he draws his rival into dismissing a series of partial singularities, then recalls them into a true singularity that consumes the rival's sword. Theo ends the technique instead of destroying the rival's soul home, and House Blacksilver is declared the victor. The rival's Dusan household must leave Norro Yorthin. Its elder warns that attempts to investigate a family destroyed roughly a century earlier have repeatedly brought death, demons, and further destruction, leaving Theo concerned that his own research has revived that threat.\n\nNauda receives the chasm invitation staked by the House Crimson authority, joining the invitations already secured by Fiyu and Theo. Theo survives but requires healing, and his ruler-threatening singularity is now widely known. Fiyu is an archcrafter, has sent her location to her relative through an Ichil relay, and remains with the group. Nauda is also an archcrafter but is not ready to force her ruler ascension. Senka continues traveling with them, her origin and unusual body still unexplained. The three companions now have the invitations needed to enter the Chasm of Lamentations together.",
+        "in_short": "Theo returns from Earth to the Nine Worlds after forty years, young again but stripped of his former soulcrafter strength. Stranded on Tatian with Fiyu and Navim, he enters a training program, befriends Nauda, abandons an incompatible light design, and rebuilds his soul home around gravity. Magnafor's assault on the Mufuru vault drives Theo, Nauda, and Fiyu into flight. They cross Tatian and Dusan with the mysterious Senka, survive court feuds and a deadly pursuit, and reach Norro Yorthin, where they join House Blacksilver. A Dusan family binds Theo to a duel over his knowledge of a destroyed historical family. While the companions earn materials and chasm invitations, Theo develops a movable singularity, Fiyu contacts her relative and ascends to archcrafter, and Nauda strengthens her binding and nullification skills. Theo defeats the rival ruler without destroying his soul home. The Dusan household is expelled, the trio holds three invitations to the Chasm of Lamentations, and a warning about the destroyed family leaves a larger danger unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Theo returns from Earth to Tatian after forty years, restored to a young body but without the soulcrafter power of his former life. An interworld disruption has scattered refugees across Tatian, including an Ichili soulcrafter overwhelmed by the world's bright light and unfamiliar contact customs. Theo calms her, gives the name Jake, and learns that she is Fiyu. A stone-bodied Arbai Mundine later identified as Navim helps him fashion a protective blindfold for her. Theo proposes that the displaced travelers receive training in return for service while they await routes home.\n\nDuring the journey toward that training, Theo gathers basic sublime materials and plans a defensive soul home. He also meets Magnafor, another returnee from Earth, who claims repeated returns attract abnormal demon danger and warns Theo against trusting him. When demons assault the caravan and a Tatian village, Fiyu attacks from range and Navim protects the refugees. Theo fights with Navim's spear despite lacking soulcrafter power. He activates its inscription against a forming second-stage demon, destroys the threat, and awakens once more as a first-tier soulcrafter.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Healers repair Theo's wounds, and he begins absorbing materials into a still-undeveloped soul home. Fiyu continues relying on him for help with Tatian light and asks him to build the protective chamber he promised. Famage directs the stranded travelers to Mufuru, where service against rising demon attacks will earn training and where competitions offer better materials. Magnafor, now also a first-tier soulcrafter, warns that keeping close may worsen the danger.\n\nAt Mufuru Landguard Village, Famage's uncle Nanjuma oversees the reopened school. His concealed strength and the guarded vault attract Theo's attention, while Magnafor shows a more troubling interest in the restricted area. Theo builds a door that lets him observe the outer world while soulcrafting, then forms a crude solar-stone chamber and begins a vestibule for managing kante. His intended foundation remains incompatible with the flame fruit he has collected. When instructors divide the students into small families, the staff-wielding Nauda chooses Fiyu, accepts Theo after Fiyu advocates for him, and also selects Kuber. The new family is ready to begin formal instruction and public service.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nauda links her students so they can inspect one another's soul homes. She is preparing for archcrafter status, Fiyu has a tightly specialized design, and Theo's advanced door makes his incomplete structure stand out. The group responds to a demon attack under Nanjuma's command, where Nauda demonstrates powerful binding skills and Fiyu applies more controlled light attacks. Afterward, Theo discovers that part of Mufuru's barrier has been covertly altered and privately suspects Magnafor.\n\nTraining and material challenges deepen the companions' cooperation. Theo helps Fiyu build a dark-glass sensory chamber that regulates painful light and sound, while Fiyu and Nauda begin defining a friendship across very different touch and privacy customs. Theo continues preparing the sunlight-based blueprint inherited from his earlier life. When he ignites its planned core, the construction explodes and leaves the central chamber fused beneath black residue. He isolates himself while searching for a repair, but Nauda confronts his decline and Navim offers a philosophy of adaptation rather than rigid blueprints. Nanjuma concludes that the old design suited the hopeful person Theo once was, not the man he has become. Theo abandons it and commits to rebuilding around his present purpose.",
+            "through": {
+              "chapter": 17
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Theo reorganizes his soul home around gravity. A rotating mass core gives him his first working technique, though its range, cost, and ability to manage multiple effects remain limited. In Mufuru's family tournament, Nauda and Fiyu carry the early matches while Theo initially loses. A suspected poisoning leaves most of Nauda's family ill before its second contest, yet the reduced team continues. Nauda exposes a hidden trap technique, Fiyu reveals a lethal dark cutting attack, and Theo uses gravity to defeat several opponents. Their undermanned family still wins.\n\nTheo chooses to remain with Nauda and Fiyu instead of transferring to advanced classes. He reveals that Jake is a travel name, tells them he is Theo, and admits that he previously lived in the Nine and was apparently killed. The three become confidants over his suspicion that Magnafor intends to rob the landguard vault. During the next tournament match, a student powers an inherited archcrafter armament through a dangerously specialized soul home. Its attack shatters Navim's stone body and cracks his vital core. Theo stabilizes Navim's scattered pieces while Nanjuma prepares an urgent journey toward Arbai treatment, but the emergency may also give Magnafor the opening he wants.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nanjuma carries Theo, Nauda, Fiyu, Magnafor, and the injured Navim through a gate toward Navim's school. An unseen ruler-level attacker brings down their vessel, and Magnafor runs back to the gate while mercenaries interfere. Theo reaches him, but Magnafor resists his gravity with manifested armor and destroys the Tatian side of the gate. The companions cross the desert on foot and deliver Navim to his school, where a healer confirms he will live. Navim's elder master returns them to Mufuru in exchange for future accounts of worlds beyond the Nine.\n\nThey find demons surrounding Mufuru while Magnafor and hired allies work at the vault barrier. Theo's group defeats the mercenaries and disarms a traitorous student, but the barrier closes before they can follow Magnafor. A spatial vortex then erases the vault-tree and everything within it. Magnafor is presumed lost, though his death is not directly confirmed, and Nanjuma survives the wider demon battle with serious injuries. An authority-tier landguard arrives to investigate outsiders said to attract demons. Believing the inquiry threatens them, Theo, Nauda, and Fiyu leave Mufuru in secret and begin traveling north together.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After months of separate travel and disguises, Theo reunites with Nauda and Fiyu outside Nlukoko. The city is independent of ordinary landguard authority but controlled by a dangerous foreign lord. Its archive contains old accounts of a powerful traveler associated with artifacts like those once given to Theo and Magnafor, yet the records do not explain why travelers from Earth received them. The group hopes to research further, acquire transportation, and find a northern route that may eventually lead Fiyu toward Ichil.\n\nA demon breach erupts before they can establish themselves. Nauda and Fiyu fight through the market while Theo helps stop a second-stage demon formed through sacrifice. During the attack he rescues Senka, a small blue humanoid whose species and manner of speech are unfamiliar. The Lord of Nlukoko appears as a four-winged, fire-using authority, confirming the danger of remaining in his domain. Theo, Nauda, and Fiyu use the confusion to evade the checkpoint and cross the gate into Dusan. Senka follows them through, while her origin and the reason she was pursued remain unknown.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Nauda's observation of Senka reveals a dense sphere of mixed material where an ordinary soul home should be. The group concludes only that she may come from outside the Nine and is not evidently a demon. Fiyu takes responsibility for her care as the travelers seek resources in Dusan. Theo develops an anti-mass component, while Fiyu completes a stealth field able to hide the party's bodies, sound, and indirect traces.\n\nIn a court-controlled city, Theo learns that more than a century has passed since his earlier Dusan life. His old allies and caches are effectively beyond reach. Local family customs soon trap the group in a dispute: Fiyu misreads ritual threats in a duel, Theo intervenes with gravity, and Nauda wins a formal contest only for an archcrafter to break her arm and pay the permitted blood price. Using the cover identity Bartolo Ein of Fythe, Theo accepts an invitation to the great rainhorn hunt. The group decides to prepare for four months and use the hunt to finance transport. Rather than spend their limited funds on healing, Nauda attempts the archcrafter barrier twice in succession and successfully ascends.",
+            "through": {
+              "chapter": 45
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The companions earn money, improve their soul homes, and kill a dangerous second-stage demon for a village. Nauda's new archcrafter strength proves decisive, while Theo continues making his gravity design more modular. In the great rainhorn hunt they combine gravity, binding, stealth, and Fiyu's blade to secure valuable kills. They sell enough to afford transport, but a noble rival turns an earlier wager into open conflict. Theo develops a torsion bolt, yet the rival withstands it and defeats him in close combat. Fiyu steals the noble's fast sleigh and carries the group away before Theo takes the controls.\n\nThey strip identifying marks and tracking components from the stolen vehicle, disguise themselves, and return through Nlukoko. In a restricted archive, Nauda finds evidence that the landguards' campaign against dangerous outsiders receives outside money and intelligence. Theo suspects a connection to the enemy from his prior life, but cannot confirm it. Senka, who has secretly traveled with the pursuing family, warns that the rival has reached Nlukoko and is seeking the city's lord. The group immediately flees north in the repainted sleigh with its earnings converted to portable craft gems.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Two sleighs pursue Theo's group across the northern wasteland. A ruler-tier rock-like beast interrupts the first confrontation, mauls members of the pursuing force, and drives the travelers into a cavern. A pike-wielding archcrafter follows them inside. Nauda briefly strips away his defenses, Theo wounds him with gravitational torsion, and Fiyu uses darkness and stealth to kill the remaining attackers. A dying signal draws the beast back, leaving the group trapped behind it.\n\nWith no other exit, Theo constructs a temporary focusing structure and breaks through to archcrafter. His strengthened gravity pins the beast long enough for the group to lift boulders and accelerate them downward, killing it. They harvest its valuable hide, eyes, claws, and heart before resuming their journey. At the northern gate, Nauda shows the others the world-circling cliff that divides Tatian's habitable upper half from a devastated lower region filled with lava and enormous beasts. The revelation implies that Nauda came from below. With their pursuers defeated and their sleigh intact, the group turns back toward the gate rather than attempting the deadly descent.",
+            "through": {
+              "chapter": 59
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The travelers enter Norro Yorthin by helping the city guard contain demon incursions, earning citizenship plates and legal status. Fiyu investigates the local gate to Ichil but learns it opens into the Greater Dark, months from the nearest relay and far from her home. She decides to seek permission for a later message rather than leave immediately. Theo discovers that the Chasm of Lamentations will open in a little over a year and that its rare invitations can be bought or earned. He proposes acquiring three so the companions can enter together.\n\nBecause Norro Yorthin's houses control work, trade, permits, and advancement, the group agrees that membership offers a shared route to materials, Ichil access, and the chasm. A trial at a red-bannered house ends when one of its authorities subjects applicants to overwhelming pressure and forcibly strikes Nauda down. They instead approach House Blacksilver, whose test examines how candidates manage a controlled spiritual contaminant. Fiyu rejects it cleanly, Nauda redirects it, and Theo improvises a disposable barrier. The house offers merit-based contracts, and the trio negotiates the fees before formally joining. Two of its five chasm invitations are available, but each costs more than a thousand merits.",
+            "through": {
+              "chapter": 67
+            }
+          },
+          {
+            "scope": "book",
+            "text": "House Blacksilver gives Theo, Nauda, and Fiyu steady work, but their ordinary merit income cannot comfortably pay for both advancement and chasm invitations. Theo builds most of a second floor while Senka continues returning with valuables of unclear origin. During a guarded negotiation, a Dusan party from the region of the rainhorn hunt approaches Theo. Its elderly ruler declares that Theo's knowledge of a historical Dusan family is dangerous, attacks him, and invokes a personal vendetta. A neutral house imposes a six-month delay before Theo must duel the family's archcrafter champion. Neither side may attack or flee in the meantime.\n\nHouse Blacksilver protects the duel's formal terms but offers no special support. Nauda and Fiyu commit to helping Theo prepare. Since the rival is expected to reach ruler tier, Theo rejects a rushed ascension and seeks a decisive technical advantage. He completes eight second-floor chambers and connects four first-floor components intended to combine gravity, torsion, mass, and anti-mass into a small singularity capable of consuming kante. His current structure cannot contain or move it safely, so he joins a House Blacksilver delegation crossing an active war zone in search of stronger materials.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The House Blacksilver delegation survives battlefield fire and completes a guarded exchange with an underwater community. Theo gains a pressure-resistant gemstone and later turns the house's poisonous mining waste into a valuable adhesive by arranging an offworld plant filter. As compensation, he takes a spinning stone for his torsion chamber, Nauda acquires an authority-forged trident to remake into a staff, and Fiyu receives material for glasswork. Tests of Senka meanwhile suggest that her body has no ordinary organs.\n\nTheo trains in a rock-filled quarry, builds a speed chamber, and acquires an expensive dry-supernova material with help from money Senka brings him. The strengthened heart chamber lets him relocate the singularity within his second floor. His Dusan opponent, now a ruler, later attacks him at the quarry and demonstrates superior speed, durability, and resources. Nauda prevents a finishing blow while Fiyu wins the quarry prize through her improved perception. With less than three months remaining before the duel, Fiyu secures a dangerous House Blacksilver assignment that will carry the group into Ichil far enough for her to contact her relative. The three depart almost immediately.",
+            "through": {
+              "chapter": 83
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The group enters Ichil's Greater Dark to retrieve medical cargo and reach a biolumen relay. Nauda suffers badly in the prolonged darkness, while Fiyu guides the sleigh and shelters the party under stealth. They rescue a stranded cavesteader family, survive predators attracted by exposed light, and deliver the family to an underground community. At the relay, Fiyu receives an old message showing that her relative once believed her lost and sends her present location in Norro Yorthin. Theo trades all his available currency for a material able to link separated points in space. On the return journey, an unseen creature wounds Fiyu with a venomous spine, but she survives after urgent treatment.\n\nBack in the city, Theo installs the space-linking material for eventual singularity movement. He gives up his merits for a dense mass material after learning that a remaining chasm invitation has become more expensive. Fiyu then reveals that she has already bought one invitation and intends the trio to go together. Still unwilling to ascend without her relative's guidance, she purchases soul-silver bracers and enters a first-tier tournament. Her stealth, perception, light attacks, and dark blade overwhelm the field. She wins a sword, additional merits, and greater standing within House Blacksilver.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Theo completes his eight-chamber design and manifests a singularity that tears through matter and absorbs incoming kante. It is costly, difficult to move, and not a complete defense, but his space-linking chamber can relocate it. He wins a quarry contest for the second chasm invitation, only for mercenaries using his rival's defensive methods to ambush the companions. Theo kills one attacker with the singularity, Nauda stops him when bystanders are endangered, and Fiyu forces an ascent to archcrafter before defeating the survivors. The attack exposes Theo's decisive technique. House Blacksilver helps him rearrange and reinforce his soul home, while Nauda, Fiyu, and Senka contribute materials or money to his final preparations.\n\nAt the sealed duel, a House Crimson authority stakes a third chasm invitation on Theo's defeat, and Nauda accepts. The ruler-tier rival wounds Theo deeply with a remote sword. Theo stays airborne, releases several partial singularities, then recalls them into one true singularity that consumes the sword and forces retreat. He dismisses it instead of destroying the rival's soul home. House Blacksilver wins, the Dusan household is expelled, and its elder warns that research into a family destroyed a century ago repeatedly brought demons and further destruction. Nauda receives the wagered invitation, giving the three companions the invitations they need for the Chasm of Lamentations.",
+            "through": {
+              "chapter": 99
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0CLYMDMTJ",
+            "type": "community"
+          }
+        ],
+        "work": "the-weirkey-chronicles-omnibus"
+      }
+    },
+    "the-wide-window": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The eldest Baudelaire, a fourteen-year-old inventor who ties back her hair to think and improvises devices to get her family out of danger. Having survived Count Olaf twice and lost two guardians, she remains the steady, protective leader of her younger siblings as they are moved to yet another home.",
+            "id": "violet-baudelaire",
+            "name": "Violet Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The middle Baudelaire, a twelve-year-old with glasses who reads voraciously and recalls what he learns. His knowledge has repeatedly saved the children, and he stays alert for Count Olaf, whom he no longer trusts any disguise to hide.",
+            "id": "klaus-baudelaire",
+            "name": "Klaus Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The baby of the family, who speaks in short exclamations her siblings understand and whose four sharp teeth can bite through almost anything. Small but determined, she helps her brother and sister however she can amid the family's ongoing misfortunes.",
+            "id": "sunny-baudelaire",
+            "name": "Sunny Baudelaire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The greedy, murderous actor determined to steal the Baudelaire fortune, recognizable by his single eyebrow and the eye tattooed on his ankle. A relentless master of disguise, he has already murdered to reach the children's money and escaped capture twice, and the orphans expect him to appear again in some new false identity.",
+            "id": "count-olaf",
+            "name": "Count Olaf",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The coughing banker who oversees the Baudelaire fortune and keeps relocating the orphans to new guardians. Kind in intention but hopelessly credulous, he rarely believes the children's warnings until it is too late.",
+            "id": "mr-poe",
+            "name": "Mr. Poe",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The children's new guardian, the widow of a relative, who lives in a rickety house perched on stilts high above Lake Lachrymose. Obsessed with correct grammar, she is also gripped by countless fears, dreading such harmless things as the stove, doorknobs, and the telephone. Timid and easily frightened, she keeps her home cold and cheerless because she is afraid of the radiator, and her nervousness leaves the children feeling far from safe.",
+            "id": "aunt-josephine",
+            "name": "Aunt Josephine",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A sinister sailor the family meets near Lake Lachrymose, distinguished by an eye patch and a wooden peg leg, who runs a sailboat rental business. Smooth-talking and eager to ingratiate himself, he showers attention on the fearful Aunt Josephine while treating the children with veiled menace.",
+            "id": "captain-sham",
+            "name": "Captain Sham",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wide-window"
+      },
+      "recaps": {
+        "ending": "Aunt Josephine, who had gone into hiding to fake her own death, is discovered by the children in Curdled Cave, but her fearfulness dooms her: crossing Lake Lachrymose during Hurricane Herman, the boat is swarmed by the deadly Lachrymose Leeches, and Captain Sham forces the terrified Josephine overboard, where she is killed. Back on shore the Baudelaires expose Captain Sham as Count Olaf by revealing the eye tattoo hidden beneath his fake peg leg, but before Mr. Poe and the others can seize him, Olaf escapes once more. The children have lost another guardian, and their fortune remains the prize Olaf is determined to claim. Mr. Poe takes the orphans back into his care to place them somewhere new, while Count Olaf, exposed but uncaught, slips away to plan his next disguise and his next attempt on the Baudelaires and their money.",
+        "in_short": "The Baudelaires are sent to live with fearful, grammar-obsessed Aunt Josephine, whose house teeters on stilts over Lake Lachrymose. In town they meet Captain Sham, a peg-legged sailor they recognize as Count Olaf in disguise, who charms the timid Josephine. Soon Josephine seems to throw herself out her great window into the lake, leaving a note naming Captain Sham as the children's new guardian. Noticing that the note is full of grammatical errors unthinkable for Josephine, the children decode them as a secret message and realize she is alive and hiding in Curdled Cave. During Hurricane Herman they sail across the leech-infested lake and find her, but on the way back the Lachrymose Leeches attack, and Captain Sham forces Josephine into the water to be devoured. On shore the children expose Sham as Olaf by revealing his ankle tattoo, but he escapes yet again. Aunt Josephine is dead, and the orphans are returned to Mr. Poe.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "After a fire killed their parents, the Baudelaire orphans, inventor Violet, reader Klaus, and biting baby Sunny, inherited a fortune held in trust and were placed by the banker Mr. Poe with the cruel actor Count Olaf. Olaf tried to steal the money by forcing Violet into a fake marriage, then escaped when she foiled him. The children were next sent to their kind Uncle Monty, a herpetologist, but Olaf followed in disguise as an assistant named Stephano, murdered Monty, and nearly abducted them before the children exposed him; again he escaped, marked always by his single eyebrow and the eye tattooed on his ankle. Having lost two guardians and survived Olaf twice, the orphans are placed by Mr. Poe with yet another relative, fearing that Olaf will appear once more in some new false identity to pursue them and their inheritance.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Mr. Poe delivers the Baudelaires to Aunt Josephine, a nervous widow whose house sits on stilts high over Lake Lachrymose. Josephine is fanatical about correct grammar and terrified of an endless list of ordinary things, from the stove to doorknobs, so her home is cold and comfortless. On a trip into town for groceries the children meet Captain Sham, a sailor with an eye patch and a wooden peg leg who rents out sailboats. Despite his eagerness to befriend Josephine, the children recognize him as Count Olaf in disguise and are alarmed to see him worming his way into their fearful guardian's good graces. They try to warn Josephine and Mr. Poe, but the adults dismiss their suspicions, and the orphans realize that danger has once again followed them to their new home over the water.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Captain Sham continues to charm the anxious Aunt Josephine while the children's warnings go unheeded. Then disaster strikes: Josephine's great window is found shattered, and she appears to have thrown herself out into the lake below, leaving behind a note that makes Captain Sham the children's new guardian. The Baudelaires are grief-stricken but immediately suspicious, because the note is riddled with grammatical mistakes that the grammar-obsessed Josephine would never have made. Studying it closely, they conclude that the errors are deliberate, a hidden message left for them, and that their aunt may not be dead at all. As Captain Sham prepares to take custody of them, the children race to decode the note before they can be handed over to the man they know to be Count Olaf.",
+            "through": {
+              "chapter": 8
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children decipher the intentional errors in the note and discover that Aunt Josephine has faked her death and is hiding in Curdled Cave across Lake Lachrymose. With Hurricane Herman bearing down, they take a sailboat out onto the storm-tossed water, braving wind, waves, and the dreaded Lachrymose Leeches that live in the lake, and reach the cave. There they find Josephine alive but paralyzed by her fears, reluctant to leave her hiding place or to face Captain Sham. The Baudelaires persuade her to come with them, hoping to return safely and expose Sham as Count Olaf, but the crossing back across the churning lake will be far more dangerous than the journey out.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the return voyage the Lachrymose Leeches, drawn by the fact that Josephine has recently eaten, swarm and attack the boat. Captain Sham appears in his own vessel, and rather than rescue Josephine he forces her into the water, where the leeches devour her. Back on shore, Sham tries to claim the children and their fortune, but the Baudelaires expose him as Count Olaf by revealing the eye tattoo hidden beneath his false peg leg. Confronted at last, Olaf escapes yet again before Mr. Poe can have him arrested, vanishing to plan his next scheme. Aunt Josephine, undone by her own fearfulness, is dead, and the orphans, having lost a third guardian, are returned to Mr. Poe's care to be placed somewhere new while Count Olaf remains free.",
+            "through": {
+              "chapter": 13
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "the-wide-window"
+      }
+    },
+    "the-wind-runner": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Windrunner"
+            ],
+            "description": "A classless city runner known locally as the Windrunner. An independent wind gathers around her and assists her movement as she takes dangerous work near Raismelt.",
+            "id": "ryoka-griffin",
+            "name": "Ryoka Griffin",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A sickly information broker in Raismelt who secretly examines letters carried by runners. She keeps her true nature hidden at the inn where she lives.",
+            "id": "young-vampire",
+            "name": "Young vampire",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A badly injured member of the Pithfire Hounds. Ryoka carries him to safety during an emergency delivery after bringing the trapped adventurers the potions they need, and his survival helps establish her as a dependable runner.",
+            "id": "lamont",
+            "name": "Lamont",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Erin"
+            ],
+            "description": "The innkeeper of the Wandering Inn, a refuge for guests of many species. Her unusual inn, its magical door, and the household gathered around it remain central to her life near Liscor.",
+            "id": "erin-solstice",
+            "name": "Erin Solstice",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Erin's capable inn manager and Mrsha's guardian. She helps sustain the Wandering Inn as a home and shares responsibility for the young Gnoll.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A young mute Gnoll in the care of Erin and Lyonette. Recovering from earlier trauma, she is part of the close household formed around the Wandering Inn.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A member of Erin's chosen family who has a permanent home at the Wandering Inn.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A wounded Redfang Goblin bard and resident of the Wandering Inn.",
+            "id": "numbtongue",
+            "name": "Numbtongue",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fallen Goblin who took part in the defense of Liscor.",
+            "id": "pyrite",
+            "name": "Pyrite",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Stitch Person alchemist based in Selim whose cloth body can be taken apart and repaired. Her business connection to the inn's magical door brings her to check on Erin while the inn is closed by grief.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Wall Lord Ilvriss"
+            ],
+            "description": "A Drake Wall Lord and established ally in Liscor.",
+            "id": "ilvriss",
+            "name": "Ilvriss",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ceria"
+            ],
+            "description": "The half-elf leader of the Horns of Hammerad. She has unresolved business with the team's imprisoned former captain and the dungeon beneath Liscor.",
+            "id": "ceria-springwalker",
+            "name": "Ceria Springwalker",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Springwalker's former captain"
+            ],
+            "description": "The imprisoned former captain of Ceria's team. Disabled and awaiting judgment, he remains connected to the dungeon disaster and to the companions whose deaths and unfinished work continue to weigh on the Horns.",
+            "id": "calruz",
+            "name": "Calruz",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's strategist.",
+            "id": "olesm",
+            "name": "Olesm",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The necromancer formerly behind the Goblin Lord and a concealed danger to the Drake cities.",
+            "id": "azkerash",
+            "name": "Az'kerash",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Ken"
+            ],
+            "description": "A Japanese arrival from Earth and negotiator for the United Nations Company. His language skill and local contacts help hold together a precarious refuge made up of other Earth arrivals, former mercenaries, and local allies.",
+            "id": "kenjiro-murata",
+            "name": "Kenjiro Murata",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Australian captain of the Bush Rangers, a silver-rank team using camouflage, traps, crossbows, and poisoned bolts. He seeks safer paid work for the United Nations Company while he and his teammates carry the effects of earlier battles.",
+            "id": "dally",
+            "name": "Dally",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Swedish member of the Bush Rangers who specializes in camouflage. She joined the team after surviving apart from its original members.",
+            "id": "siri",
+            "name": "Siri",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Australian aspiring writer who proposed supporting the United Nations Company by selling her romance fiction. She disappeared without a known resolution, leaving Dally with her unfinished work.",
+            "id": "caroline",
+            "name": "Caroline",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Dullahan adventurer who commands the silver-rank Rustless Guard. A dispute over an assignment ends when Dally offers her an honorable apology and a drink.",
+            "id": "eldemar",
+            "name": "Eldemar",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Last Light of Boleros"
+            ],
+            "description": "An Italian physician whose medicine is indispensable to the United Nations Company. Known locally as the Last Light of Boleros, she wants her work to support the group, though her value and limited protection make battlefield service especially dangerous.",
+            "id": "geneva-scala",
+            "name": "Geneva Scala",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The United Nations Company's treasurer and an inventive designer. She manages the group's dwindling shared funds, improves the Bush Rangers' crossbows, and looks for practical ways to preserve equipment brought from Earth.",
+            "id": "paige",
+            "name": "Paige",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A South African Olympic rowing hopeful who has turned his abilities toward courier work. He plans to earn income for the United Nations Company by carrying messages over water in a canoe.",
+            "id": "luan",
+            "name": "Luan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Italian arrival from Earth found malnourished after hiding from violent attackers. Her diabetes becomes an immediate danger because she has no insulin, leaving the rescuers to stabilize her until Geneva returns.",
+            "id": "diana",
+            "name": "Diana",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A traumatized New Zealand arrival from Earth rescued with three Italian survivors. He gives the Bush Rangers their first account of other Earth humans attacking the group with two young centaurs.",
+            "id": "blake",
+            "name": "Blake",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A distinct being sharing Geneva's living body. Able to control parts of that body with precision, the self-ed assists her medical work directly while remaining a separate presence with medical uncertainties of its own.",
+            "id": "self-ed",
+            "name": "Self-ed",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Geneva's nurse and surgical assistant. She supports the doctor's medical research and helps during emergency treatment, including a difficult operation to save a centaur mother and her child.",
+            "id": "aiko",
+            "name": "Aiko",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Minotaur planner who covertly hires Luan for a time-sensitive future delivery connected to the Titan's recurring game.",
+            "id": "vanaz",
+            "name": "Vanaz",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Titan"
+            ],
+            "description": "The Titan and head of the Forgotten Wing Company. Presented with unfamiliar nonmagical devices and reports about the United Nations Company, he privately concludes that people from another world are probably involved and begins an encrypted inquiry.",
+            "id": "niers-astoragon",
+            "name": "Niers Astoragon",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A bee bonded to Lyonette and protective of her and Mrsha. It serves as a messenger and uses sustained flame-powered flight to outlast an attacking swarm's queen and claim territory.",
+            "id": "lyonettes-ashfire-bee",
+            "name": "Lyonette's ashfire bee",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Liscor's Watch captain. She accepts Lyonette's plan to repay damage from earlier crimes and keeps the confiscated artifacts until the agreed fine is paid.",
+            "id": "zevara",
+            "name": "Zevara",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Gnoll bartender who owns Tails and Scales with his wife, Lassica. He comforts Erin and helps organize opposition to a concealed visitor fee.",
+            "id": "rufelt",
+            "name": "Rufelt",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Drake chef who owns Tails and Scales with her husband, Rufelt. She comforts Erin and helps organize opposition to a concealed visitor fee.",
+            "id": "lassica",
+            "name": "Lassica",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A skilled and expensive Drake scribe in Liscor. Olesm hires her to reproduce his strategy and chess publication, making her craft part of the effort to preserve and distribute the city's hard-won lessons.",
+            "id": "ressa",
+            "name": "Ressa",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "The King of Destruction and ruler of Rhyme. He enters Germina's succession as its foreign witness, offers its reborn ruler protected self-rule within his realm, and then takes Helios after its queen abdicates.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Flos's steward and left hand, responsible for turning conquest into administration. He prepares control arrangements for Germina and Helios and receives a desert clan whose young blacksmith has sworn to forge Flos an exceptional weapon.",
+            "id": "orthenon",
+            "name": "Orthenon",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-born teenage mage chosen as Flos's companion. Training under Rhyme's formidable vassals, he learns to cast Farsight without a staff while becoming involved with the arrival of a desert clan and its demanding oath.",
+            "id": "trey",
+            "name": "Trey",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An independent ruler formerly associated with Flos. At a neutral gathering of southern powers, she refuses to join opposition to him and commits her country to honoring his peace declaration and the return of those who claim his allegiance.",
+            "id": "empress-of-beasts",
+            "name": "Empress of Beasts",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The martial champion of a neutral sanctuary. The champion enforces its rules, refuses political killing, and ends a violent clash among visiting rulers without taking a life.",
+            "id": "neutral-sanctuary-champion",
+            "name": "Neutral sanctuary champion",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Drake secretary who manages a neutral sanctuary. She secretly uses her document-copying ability to preserve the Emperor of Sands' proposal.",
+            "id": "neutral-sanctuary-secretary",
+            "name": "Neutral sanctuary secretary",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former mercenary captain allied with the United Nations Company. He urges the group to seek paid contracts, while recognizing that Geneva is too valuable and too poorly protected to serve safely as a battlefield doctor.",
+            "id": "qualet",
+            "name": "Qualet",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A child incarnation who inherits Germina's cuirass office and memories while remaining a distinct person. As Germina's ruler, she accepts Flos's protection and an alliance that preserves her territory's self-rule within Rhyme.",
+            "id": "reborn-cuirass-of-germina",
+            "name": "Reborn cuirass of Germina",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The only remaining smith in her desert clan able to work its rare metal. She arrives in Rhyme under an oath to forge Flos an exceptional weapon and bears responsibility for preserving the craft taught by her father.",
+            "id": "desert-clan-blacksmith",
+            "name": "Desert-clan blacksmith",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Lizardfolk sorcerer allied with the United Nations Company. After losing a foot in battle, she received a peg leg made by Geneva.",
+            "id": "kexa",
+            "name": "Kexa",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A half-Gazer who puts Trey through demanding magical training. Under her instruction, he learns to cast Farsight without a staff.",
+            "id": "ghazi",
+            "name": "Ghazi",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The twin of Trey, from whom she has grown distant after a disagreement. They resume warmer contact and agree to speak privately as they begin repairing their relationship.",
+            "id": "therese",
+            "name": "Therese",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:us:B0C82TS539",
+            "type": "community"
+          }
+        ],
+        "work": "the-wind-runner"
+      },
+      "recaps": {
+        "ending": "The numbered story ends with Flos's peace declaration reshaping southern politics. Some rulers accept the demand to release his former subjects rather than risk war, while the Empress of Beasts refuses to join resistance against him. Her position leaves her isolated, and nine nations declare war on her country after a tense summit. The Emperor of Sands' copied proposal remains unexplained.\n\nElsewhere, Ryoka remains free and trusted by the concealed vampire family, whose illness and search for Rose, Imani, and Joseph remain unresolved. Lyonette runs the reopened Wandering Inn, Mrsha studies signs and magic, and Numbtongue holds Pyrite's memories, valuable mana stones, and unstable magicore. Ilvriss quietly investigates Az'kerash. The United Nations Company has new allies and medical prospects but still faces financial pressure, hostile Earth arrivals, fading memories, and Niers's attention. In the material following the numbered chapters, the long-range door proves too costly for regular travel, several visiting teams depart, and Ceria's Horns stay behind with the goal of reaching gold rank. The dungeon and Calruz's fate remain open.",
+        "in_short": "Ryoka earns the name Windrunner through dangerous deliveries, befriends a hidden family of living vampires, and agrees to protect their secret while they search for missing Earth arrivals. In Liscor, Erin reopens her inn after the Goblins' deaths, recognizes Numbtongue as family, and leaves Lyonette to manage their growing home. Numbtongue inherits Pyrite's memories and hazardous mining knowledge. The United Nations Company rescues stranded Earth arrivals and wins allies through adventuring and Geneva's medicine, but remains poor, traumatized, and threatened by hostile Earth humans, fading memories, and Niers's secret inquiry. Ilvriss confirms that Az'kerash lives and begins a covert investigation. Flos adds Germina and Helios to Rhyme, expands weapons production, and demands safe passage for anyone claiming his allegiance. Nine nations then declare war on the Empress of Beasts. Afterward, visiting adventuring teams leave Erin's inn, while Ceria's Horns remain and resolve to pursue gold rank.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin Solstice established the Wandering Inn near Liscor as a refuge whose guests cross ordinary boundaries of species and allegiance. Lyonette helps run the inn and care for Mrsha, a young mute Gnoll, while Redfang Goblins including Numbtongue became part of its community. The struggle around Liscor ended with Goblins dying in the city's defense, leaving Erin and the survivors in grief. Ceria Springwalker leads the rebuilt Horns of Hammerad, but the team's former captain Calruz remains imprisoned after the dungeon disaster. Wall Lord Ilvriss has become an ally in Liscor, while the necromancer Az'kerash remains a concealed threat. Elsewhere, Earth arrivals have been scattered across the world. Ryoka Griffin works as a classless runner, and a mixed group of other arrivals and local allies has begun forming the United Nations Company.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryoka's northern work earns her the name Windrunner. She rescues the trapped Pithfire Hounds, then discovers that a Raismelt broker belongs to a hidden family of living vampires. The family cannot compel her silence, but she promises it freely after learning that they survive on animal blood and suffer a worsening inherited illness or curse. Ryoka and the young vampire become friends, and Ryoka asks her to search for Rose, Imani, and Joseph.\n\nAt the Wandering Inn, Erin's grief initially shuts out Liscor. Numbtongue openly challenges the city's treatment of the Goblins who defended it, buries Pyrite, and begins receiving the dead Goblin's memories. Erin names Lyonette, Mrsha, Numbtongue, and Bird as family, reopens the inn, and prepares to travel while Lyonette takes charge. Numbtongue gains public recognition as an adventurer and chooses the inn as his home.\n\nThe United Nations Company is nearly out of money. Dally's Bush Rangers become its main adventuring income, rescue four starving Earth arrivals, and learn that other Earth humans attacked them. Geneva returns to treat the newcomers. When giant serpents escape a dungeon, Dally delays them and Ken mobilizes local forces. Geneva then saves a centaur mother and child through emergency surgery. These successes win goodwill and an alliance with the indebted Rustless Guard, but the company remains financially fragile.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The United Nations Company searches for a sustainable future. Geneva considers a clinic and develops uncertain antibacterial treatment, while Paige confirms she can make gunpowder and the group secretly plans nonmagical grenades. Aiko and Luan recognize that Earthworlders are losing memories of their families. Luan tattoos his wife and son's names on his arm, continues earning money as a water courier, and accepts a covert delivery connected to the Titan's recurring game. Niers Astoragon examines Earth devices, concludes that another world's people are present, and opens a private investigation.\n\nLyonette expands her control of the Wandering Inn, negotiates restitution for her old crimes, teaches Mrsha more signs, and strengthens her bond with an ashfire bee. Erin visits another walled city through the magical door, where she finds a concealed visitor fee and a law that would kill Numbtongue if he entered. Sympathetic tradespeople begin challenging the fee. Numbtongue uses Pyrite's inherited mining knowledge to find mana stone and magicore, but his music transforms the material into an unstable electrical hazard.\n\nCeria visits Calruz in prison. He accepts responsibility for his actions and continues mapping the dungeon while expecting execution.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Flos enters Germina's succession ritual as the required foreign witness and protects its newly reborn child ruler. She accepts self-rule within Rhyme, and they agree to stop creating new child assassins. Flos then takes Helios after its queen abdicates, offering her son a chance to earn the kingdom's restoration through service. These settlements enlarge Rhyme but leave both territories unstable.\n\nA desert clan reaches Rhyme under Orthenon's protection. Its young blacksmith proves her rare purification craft by forging a superior individual blade. Flos preserves the resident master smith's position because his work can equip an army, while commissioning the clan for exceptional weapons. He adopts a growth edict despite the pressure it will place on resources, judges that a coalition is his chief danger, and sends a continent-wide peace ultimatum. He promises not to attack states that leave him and his subjects alone, but demands safe release and passage for anyone who claims allegiance to him.\n\nThe ultimatum forces rulers to choose between losing experienced subjects and provoking Flos. At a neutral southern sanctuary, the Empress of Beasts refuses to join an anti-Flos alignment and agrees to honor his demand. The sanctuary's champion ends a violent confrontation without killing anyone. Its secretary secretly copies a proposal from the Emperor of Sands, but the contents remain unknown. The next day, nine southern nations declare war on the Empress of Beasts' country, opening a new conflict as Flos's expanding realm continues to prepare for wider war.",
+            "through": {
+              "chapter": 16
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:us:B0C82TS539",
+            "type": "community"
+          }
+        ],
+        "work": "the-wind-runner"
+      }
+    }
+  }
+}

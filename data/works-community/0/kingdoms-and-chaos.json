@@ -1,0 +1,1515 @@
+{
+  "entries": {
+    "kingdoms-and-chaos": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The claimant ruler of Kyle and Asshai. He enters Gendishen disguised as a mercenary, hoping to gain recognition for Kyle while keeping his dangerous companions and his estranged former trainer under close watch.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A member of Kyle's refugee leadership and an important figure in Rezkin's plans for the displaced community.",
+            "id": "frisha",
+            "name": "Frisha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rezkin's estranged former trainer, traveling with the Gendishen expedition because Rezkin prefers to keep him under observation. Farson questions Rezkin's motives for ruling and challenges the conflict between his training and his reliance on companions.",
+            "id": "farson",
+            "name": "Farson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage who knowingly enters a kingdom where magic is forbidden and suspected practitioners are executed. He travels with Rezkin while using an amulet intended to make his power harder for Gendishen's authorities to detect.",
+            "id": "wesson",
+            "name": "Wesson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A capable swordswoman in Rezkin's landing party. Her knowledge of Lareshi helps the group maintain its mercenary disguise in Gendishen, where a discreet diplomatic mission quickly becomes exposed to wider dangers.",
+            "id": "yserria",
+            "name": "Yserria",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A disciplined soldier accompanying Rezkin's disguised expedition into Gendishen. He is part of the small force balancing a covert political objective against the kingdom's hostility to magic and growing attacks along the route.",
+            "id": "sergeant-millins",
+            "name": "Sergeant Millins",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Rezkin's striker and a trusted adviser on security. He is already part of the close circle protecting Rezkin and the displaced people gathered around Kyle as the struggle with Asshai continues and the refuge seeks firmer defenses.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The hostile king of Asshai and Rezkin's political rival. His rule remains the central threat behind the displacement of Rezkin's people, the danger facing their refuge, and the unresolved contest over Asshai.",
+            "id": "king-caydean",
+            "name": "King Caydean",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A missing prince of Asshai whose unknown whereabouts remain an unresolved part of the royal succession struggle and leave a major branch of the ruling family unaccounted for.",
+            "id": "prince-thresson",
+            "name": "Prince Thresson",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rezkin's kinsman and a senior leader at Kyle. He rejects the prospect of becoming king, though the Eastern Mountains warriors still regard him as a possible successor or champion and expect him to train accordingly.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A companion in Rezkin's party whose hostility toward Yserria is openly apparent by the time the group reaches the Gendishen court. Their antagonism complicates an already precarious diplomatic mission.",
+            "id": "malcius",
+            "name": "Malcius",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler who refuses to recognize Kyle unless Rezkin recovers Gendishen's missing royal sword, a weapon he considers essential to prophecy and his dynasty's legitimacy.",
+            "id": "king-of-gendishen",
+            "name": "King of Gendishen",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tam"
+            ],
+            "description": "Rezkin's apprentice, left working undercover in Uthrell while the main party pursues Gendishen's sword demand. The dangerous method used to accelerate his learning is causing persistent headaches and increasingly frequent nosebleeds.",
+            "id": "tamarin-blackwater",
+            "name": "Tamarin Blackwater",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An officer in Kyle's growing army. He helps receive and escort newly arrived Asshaian refugees as the young kingdom expands its defenses, absorbs more displaced people, and organizes military protection for the settlement.",
+            "id": "lieutenant-drascon",
+            "name": "Lieutenant Drascon",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A highly dangerous intruder who first presents himself as a Cennarian fisherman. After testing Kyle's defenses through poison and armed attacks, he claims to be the former Res and offers information that challenges Rezkin's understanding of his own identity.",
+            "id": "connovan",
+            "name": "Connovan",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veiled woman who arrives in Kyle with Connovan and is presented as his companion.",
+            "id": "veiled-companion",
+            "name": "Connovan's veiled companion",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The veiled woman who arrives with Connovan and is confirmed by a blood-based spell to be Rezkin's biological mother. She says she had been told he was stillborn, making her return both personally significant and politically uncertain.",
+            "id": "queen-mother",
+            "name": "Queen Mother",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior assassin who secretly boards Rezkin's ship and smuggles Frisha aboard. To avoid execution, he swears a life-binding oath that makes him her permanent protector and ties his own survival to hers.",
+            "id": "frishas-protector",
+            "name": "Frisha's protector",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A queen's daughter who wants to enter an assassin sect, gain its skills, and eventually contend for her mother's throne. The sect demands her delivery, with the queen's approval, as its price for information about the sought sword.",
+            "id": "queen-daughter-sought-by-assassins",
+            "name": "Queen's daughter sought by assassins",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Lundraresh, who refuses to recognize Rezkin's royal claims and announces her intention to claim him. Rezkin needs her cooperation to continue the sword quest and judges that escape would endanger his companions and mission.",
+            "id": "queen-of-lundraresh",
+            "name": "Queen of Lundraresh",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The eldest daughter of Lundraresh's queen, marginalized within her mother's house despite her political importance. Rezkin stops a guard's assault on her and promises to serve as her champion if she is challenged.",
+            "id": "eldest-princess-of-lundraresh",
+            "name": "Eldest princess of Lundraresh",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Ferelli king's nephew and a rival heir. The king makes recognition and the Sword of Eyrie conditional on Rezkin killing him and taking Ferell's throne.",
+            "id": "ferelli-kings-nephew",
+            "name": "Ferelli king's nephew",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The reigning ruler of Ferell and Rezkin's maternal grandfather. He sometimes appears confused, but deliberately offers recognition and the Sword of Eyrie only if Rezkin kills a rival heir and takes Ferell's throne.",
+            "id": "king-of-ferell",
+            "name": "King of Ferell",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A prisoner chained beside Tam in a slave ship's hold. He does not share Tam's belief that escape or rescue remains possible.",
+            "id": "tams-fellow-captive",
+            "name": "Tam's fellow captive",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tam's fellow captive and escape companion on the Isle of Sand. Chained to Tam during their flight from slavers, he suffers serious wounds from attacking creatures and must depend on Tam while they remain lost in hostile territory.",
+            "id": "uthe",
+            "name": "Uthe",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A master reader who knows Wesson from earlier in his life. She confirms that Rezkin is not a mage, cannot explain the cold quality readers perceive around him, and warns the King of Gendishen against coercing Wesson.",
+            "id": "gendishen-master-reader",
+            "name": "Gendishen master reader",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:1772307505",
+            "type": "community"
+          }
+        ],
+        "work": "kingdoms-and-chaos"
+      },
+      "recaps": {
+        "ending": "Rezkin finishes the sword quest as ruler of Ferell and Pharrell, with the Sword of Eyrie in his possession and access to Lundraresh's military through marriage. When the ruler who promised Kyle refuses to honor the bargain and attacks, Rezkin fills the sword with fire elementals and publicly claims Kyle, but control of the kingdom is not yet secure. Tieran is left to direct the continuing war.\n\nThe larger conflict now concerns open paths between realms. An unknown host has admitted demons, King Caydean is involved without being confirmed as the source, and other creatures may also cross. Rezkin must protect the refugees from the original voyage until Kyle is secured and provide the Fae with an army, or serve them for life.\n\nFrisha and Tieran have Rezkin's approval to court and marry. Yserria controls two echelons, while she and Malcius are trapped in an unintended magical marriage. Connovan remains confined by Kylerum's guardians, while Wesson carries a dead reader's pendant and unfinished warning. Tam and the injured Uthe are enslaved at an Isle of Sand quarry, and Tam's untreated mental injury may be fatal. Rezkin makes the rescue his immediate objective, but an unknown attacker incapacitates him with a rune-marked dart before he can depart.",
+        "in_short": "Rezkin seeks international recognition for Kyle and is sent after the Sword of Eyrie. The mission exposes hidden truths about his birth, ends his betrothal to Frisha, and draws him into a political marriage that provides Lundraresh's forces. In Ferell, his grandfather transfers the crown to him after Rezkin defeats a demonic coup and recovers the sword. Rezkin also acquires Pharrell, while Yserria wins two Lundraresh echelons and becomes unintentionally bound in marriage to Malcius. Tam is abducted and ultimately enslaved at an Isle of Sand quarry with the wounded Uthe. The sword bargain for Kyle ends in betrayal, so Rezkin sets the blade aflame with elementals and publicly claims the kingdom. He learns that an unknown inviter has opened paths for demons and that failure to raise an army for the Fae will bind him to their service. After approving Frisha and Tieran's intended marriage, he turns toward Tam's rescue but is struck unconscious by a rune-engraved dart.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rezkin emerged from a life of secret training and became the rival claimant to Asshai, opposing King Caydean while gathering displaced people and loyal companions around him. He established Kyle as a refuge and began acting as its ruler, though the new kingdom still needed recognition and security. His closest circle included Frisha, his intended partner; Tieran Nirius, his kinsman; Kai, his striker and security adviser; and Wesson, a mage who remained personally loyal without swearing fealty.\n\nThe conflict left Asshai's royal family divided. King Caydean held the throne, Prince Thresson remained missing, and Rezkin's own place in the succession was bound to secrets surrounding his childhood and training. Rezkin also maintained covert identities and networks that many of his companions did not fully understand. As this volume begins, the immediate task is to turn Kyle from a refuge into a recognized kingdom while the struggle for Asshai continues.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin enters Gendishen disguised as a mercenary to seek recognition for Kyle. The journey reveals a kingdom that executes suspected mages and is also suffering attacks by dangerous creatures. When Wesson uses magic to save Sergeant Millins, Rezkin's group clashes with a Gendishen patrol and becomes a fugitive force. At the capital, Rezkin adopts the Dark Tidings persona and forces an audience. The king refuses recognition unless Rezkin retrieves the missing Sword of Eyrie, a royal blade tied to prophecy.\n\nBack in Kyle, Yserria is knighted and the settlement expands its training and defenses. Rezkin also faces attacks inside and beyond the citadel. He captures the intruder, Connovan, who claims to be the former Res, a hidden royal safeguard empowered to act against a dangerous king. Connovan says Rezkin was taken at birth, trained as his successor, and never given a personal name. A blood-based spell confirms that Connovan's veiled companion, the Queen Mother, is Rezkin's biological mother. This makes King Caydean and the missing Prince Thresson his brothers. Rezkin allows both newcomers to remain under guard, but treats Connovan's unproved allegations and the deeper purpose of his training with caution.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Frisha secretly joins Rezkin's voyage and learns that he is also the Raven, with ties to an assassin order. The assassin who smuggled her aboard avoids execution by binding his life to hers as her permanent protector. The revelations destroy what remains of her trust, and she and Rezkin end their betrothal after he admits he cannot offer romantic love.\n\nAn assassin sect knows where the Sword of Eyrie can be found but demands the daughter of a foreign queen in exchange. Rezkin travels to the matriarchal kingdom and enters its court while Tam is captured elsewhere. Yserria is restored to her maternal house, and Rezkin protects the queen's eldest daughter from an assault. The queen then offers a political marriage: she will release the daughter sought by the assassins and give Rezkin access to her army and navy, while retaining domestic control. Rezkin accepts and is publicly claimed as husband and king, though the marriage still has local requirements and possible magical consequences. A defeated rival champion defects to Rezkin's service. The queen's eldest daughter then claims Wesson as her consort despite his refusal, adding another unresolved obligation to the alliance.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin delivers the queen's daughter to the masked operatives and learns that the Sword of Eyrie is held by the king of Ferell. His party sails there, but a sea creature under demonic influence attacks. Wesson destroys an enemy ship with uncontrolled destructive magic, and Malcius and Yserria are swept overboard. They survive, only to become trapped in a Lundraresh challenge after a local ruler claims Malcius and Yserria contests the claim.\n\nTam remains missing from Kyle after dangerous accelerated learning damaged his mind. He is eventually shown captive aboard a slave ship, suffering worsening headaches and nosebleeds. Tieran calls on Connovan to find him. Rezkin, meanwhile, reaches Ferell and learns that its king is his maternal grandfather. The king first demands that Rezkin kill a rival heir, then publicly abdicates and names Rezkin his successor. The rival attempts a coup using combat magic and a demonic ritual, but Rezkin kills him before the ritual is completed. The former king then completes a hereditary transfer that gives Rezkin exclusive control of the stronghold's enchantments and its inherited knowledge. Rezkin appoints a regent to govern, descends to an enchanted lake beneath the castle, and finally receives the Sword of Eyrie from a merwoman.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Yserria wins a battlefield challenge and claims two Lundraresh echelons under House Pallas. The ritual later reveals an unintended consequence: she and Malcius are magically married and barred from other unions. Tam and Uthe escape slavers during a creature attack, but foreign soldiers recapture them and send them to an isolated quarry on the Isle of Sand. Tam's untreated mental injury continues to worsen. Rezkin gains another crown when Pharrell's former king abdicates, and an assassin order accepts him as its prophesied leader.\n\nThe ancient Fae explain that someone using demon-linked power opened paths between realms. Demons require an invitation, the inviter remains unknown, and Rezkin must provide the Fae with an army. The ruler who promised Kyle takes the Sword of Eyrie but breaks the bargain and orders Rezkin's party killed. Rezkin summons fire elementals into the blade, leaves it burning in the throne, and publicly claims Kyle. During the fight, Wesson's magic kills attacking purifiers, and a demon-possessed purifier fatally wounds a master reader before being destroyed.\n\nRezkin reveals that failure in his Fae bargain would bind him to lifelong service. Frisha and Tieran announce their intention to marry, and Rezkin approves before leaving Tieran in charge of the war. He decides to rescue Tam from the quarry, but an unknown attacker strikes him with a rune-engraved dart. Rezkin loses consciousness before the rescue can begin.",
+            "through": {
+              "chapter": 21
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:1772307505",
+            "type": "community"
+          }
+        ],
+        "work": "kingdoms-and-chaos"
+      }
+    },
+    "knife-of-dreams": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Dragon Reborn, fated to face the Dark One at the Last Battle. Having cleansed the male One Power of its ancient taint, he now seeks to force the nations and the invading Seanchan into a peace before the end, and to bring the scattered channelers under his banner. Years of war, betrayal, and the burden of prophecy have made him hard, secretive, and increasingly ruthless, trusting fewer and fewer of those around him.",
+            "id": "rand-althor",
+            "name": "Rand al'Thor",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A ta'veren gambler and reluctant commander from the Two Rivers, lucky beyond reason, carrying the battle-memories of dead generals and a medallion that turns aside the One Power. Still on the run in the north with his own soldiers, he keeps close company with Tuon, the Seanchan heir he carried from Ebou Dar, as their wary, prophecy-bound courtship goes on and enemies hunt them both.",
+            "id": "matrim-cauthon",
+            "name": "Mat Cauthon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A blacksmith, wolfbrother, and reluctant lord from the Two Rivers, able to speak with wolves. Grimly focused on freeing his captive wife, Faile, he has allied his forces with the Seanchan against the Shaido Aiel who hold her, and stands ready to storm their stronghold whatever the cost.",
+            "id": "perrin-aybara",
+            "name": "Perrin Aybara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The rebels' young Amyrlin Seat, now a prisoner inside the White Tower she meant to conquer, treated as a runaway novice and punished for it. Disciplined and unbroken, she has begun a quiet campaign from within, refusing to yield her authority and steadily turning the Tower's own sisters against the usurper Elaida.",
+            "id": "egwene-alvere",
+            "name": "Egwene al'Vere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Wisdom of Emond's Field, an Aes Sedai and gifted Healer, wife to Lan. Fierce and stubborn, she remains among the handful who will challenge Rand directly, and she is determined to see her husband's long-delayed cause honored even as the Last Battle draws near.",
+            "id": "nynaeve-almeara",
+            "name": "Nynaeve al'Meara",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Daughter-Heir of Andor and an Aes Sedai, one of the women bound to Rand, fighting to claim the Lion Throne in Caemlyn against rival houses and hidden enemies. Proud and clever, she presses her contest for the crown amid the intrigues and dangers of a realm on the edge of civil war.",
+            "id": "elayne-trakand",
+            "name": "Elayne Trakand",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The uncrowned king of Malkier, a northern land long swallowed by the Blight, and one of the deadliest swordsmen alive. Once the Aes Sedai Moiraine's Warder and now bonded to his wife, Nynaeve, he is grim, honorable, and reconciled to dying in battle against the Shadow when his time comes.",
+            "id": "lan-mandragoran",
+            "name": "Lan Mandragoran",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A practical young woman who reads glimpses of the future in the auras she alone sees around people. One of the three women fated to love Rand, she stays at his side as adviser and confidante, uneasy at the darkness she watches settling over him.",
+            "id": "min-farshaw",
+            "name": "Min Farshaw",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Daughter of the Nine Moons and heir to the Seanchan Crystal Throne, small, composed, and formidable, carried from Ebou Dar by Mat Cauthon. Watchful and proud, she travels with him still, testing him against the customs of her people even as prophecy and their own guarded feelings draw them together.",
+            "id": "tuon",
+            "name": "Tuon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Half-brother to Elayne and Gawyn, a young man of rigid, uncompromising honor and an exceptional swordsman, who has taken up with the Children of the Light. He always chooses what he believes is right, whatever the cost to himself or others, a trait that makes him both admirable and hard to live beside.",
+            "id": "galad-damodred",
+            "name": "Galad Damodred",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Perrin's wife, a bold Saldaean noblewoman with a fierce temper, held captive among the Shaido Aiel. Resourceful and unbroken, she survives and maneuvers within the Shaido camp as her husband's forces close in to free her.",
+            "id": "faile-bashere",
+            "name": "Faile Bashere",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "knife-of-dreams"
+      },
+      "recaps": {
+        "ending": "Knife of Dreams brings several long arcs to a head and drives the story toward its climax. Perrin frees Faile at Malden and comes into his own as a commander. Mat and Tuon are wed by Seanchan law, though she departs at once to take up her imperial role, leaving their futures entangled and opposed. Elayne wins the throne of Andor. Egwene remains a captive but is winning her hidden war inside the Tower. The gravest developments belong to Rand: his attempt to negotiate peace with the Seanchan is ambushed by the Forsaken Semirhage, and his left hand is burned away in the fighting, a wound prophecy had foretold. Worse still, his allies find that a seal on the Dark One's prison has grown brittle and begun to break. Time is running out, and Tarmon Gai'don, the Last Battle, looms over everything.",
+        "in_short": "The long threads begin to pay off. Perrin Aybara, allied with the Seanchan, storms the Shaido stronghold at Malden, poisons their channelers' water with forkroot, and at last frees his wife, Faile, along with the other captives. Mat Cauthon, still traveling with Tuon, is finally accepted by her: she speaks the words that make them husband and wife by Seanchan custom, then leaves to rejoin her own people, becoming both his wife and a rival. Elayne, imprisoned in Caemlyn by servants of the Shadow, is rescued and secures the Lion Throne to become Queen of Andor. Egwene, a prisoner in the White Tower, endures daily punishment while quietly turning sister after sister against the usurper Elaida. Rand arranges a meeting to make peace with the Seanchan, but it is a trap sprung by the Forsaken Semirhage, and in the violence Rand's left hand is destroyed. As the book ends, the heroes discover that the ancient seals on the Dark One's prison are crumbling, and the Last Battle can no longer be far off.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Rand al'Thor of the Two Rivers was revealed as the Dragon Reborn, the champion prophesied to fight the Dark One at the Last Battle and to break the world again. Drawn out of hiding by the Aes Sedai Moiraine with his ta'veren friends Mat and Perrin, he claimed the sword Callandor, was accepted by the Aiel as their foretold leader, conquered Cairhien and Illian, killed several of the Forsaken, and founded the Black Tower to train men who can channel. The Aes Sedai split between the White Tower under Elaida and rebels who raised the young Egwene as a rival Amyrlin. The invading Seanchan seized coastal cities and enslaved women who can channel. More recently, Rand achieved the impossible, cleansing the male One Power of the Dark One's taint so men may channel without going mad. Mat escaped Seanchan-held Ebou Dar carrying off Tuon, the Daughter of the Nine Moons prophesied to marry him, and courts her on the run. Perrin, hunting the Shaido Aiel who captured his wife, Faile, allied with the Seanchan against them. Elayne fights for Andor's throne in Caemlyn. And Egwene, having besieged Tar Valon and choked its harbors with cuendillar, was captured and taken prisoner inside the White Tower, where she now works secretly to bring down Elaida from within.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "knife-of-dreams"
+      }
+    },
+    "knight-of-shadows": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The presumed-dead emperor whose sealed tomb at Garton Knoll is found open and empty. Blood, damaged demon-vessel markings, and a raven emblem leave his fate uncertain and make his disappearance a renewed danger to his allies.",
+            "id": "rezkin",
+            "name": "Rezkin",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A powerful battle mage who joins the expedition to inspect Rezkin's tomb. Although a spirit authority believes he was joined to a demon before birth, Wesson remains controlled and compassionate, even sparing an enemy from his former academy.",
+            "id": "wesson",
+            "name": "Wesson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rezkin's cousin and successor, an apprentice life mage, and Frisha's suitor. He is helping manage the political and personal consequences of Rezkin's presumed death while Frisha's unexplained change troubles those around her.",
+            "id": "tieran-nirius",
+            "name": "Tieran Nirius",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tieran Nirius's partner, whose behavior has become distant and markedly unlike her former self. The change began before news of Rezkin's death, and Wesson's examinations have not identified a cause.",
+            "id": "frisha",
+            "name": "Frisha",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Asshai, whose relief programs, employment campaign, and compulsory new religion have restored much of his public support. His agents hunt opponents, and his regime is connected to the danger surrounding Garton Knoll.",
+            "id": "king-caydean",
+            "name": "King Caydean",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A loyal operative who brings Wesson to Garton Knoll and helps guide the search into Rezkin's sealed tomb. He also protects sensitive knowledge about Rezkin from disclosure within the expedition.",
+            "id": "kai",
+            "name": "Kai",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior protector in Rezkin's circle who knows a closely guarded connection between Rezkin and the Raven. At Garton Knoll, he prevents Wesson from sharing that information with the rest of the search party.",
+            "id": "farson",
+            "name": "Farson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An apprentice healer and trained warrior traveling with the Garton Knoll party. After Wesson defeats a former academy acquaintance among King Caydean's attackers, Reaylin de Voss treats the wounded prisoner.",
+            "id": "reaylin-de-voss",
+            "name": "Reaylin de Voss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A six-month-old dragon bonded to Rezkin through the power he fed her while she was still incubating. She is small enough to conceal, can glide and produce smoke, and is only beginning to develop dependable flight and fire.",
+            "id": "rezkins-dragon-companion",
+            "name": "Rezkin's dragon companion",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earth mage imprisoned with Frisha under runes that suppress his power. By secretly altering those runes, he and Frisha open their cell and escape together, after which he commits himself to helping her reach Kyle safely.",
+            "id": "prince-thresson",
+            "name": "Prince Thresson",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ruler who leaves for Lon Laresh after repeated attempts on its queen's life. She supports Rezkin's imperial cause and travels with Malcius, whose shared runic mark is treated in other countries as evidence of a marital bond.",
+            "id": "yserria",
+            "name": "Yserria",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Yserria's protector under a standing order from Rezkin. He insists that only Rezkin can release him from that duty, while the runes he shares with Yserria cause foreign authorities to regard them as consorts.",
+            "id": "malcius",
+            "name": "Malcius",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The acting ruler of a kingdom facing rival claims and unrest after Rezkin's apparent death. He keeps the realm aligned with Rezkin's empire, halts a court dispute in favor of an investigation, and remains alert to assassination and secession.",
+            "id": "the-regent",
+            "name": "The regent",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A newly installed commander at Fort Krellis who is loyal to King Caydean. Rezkin infiltrates the fort, kills him, leaves the raven emblem, and finds correspondence showing enforcement of the compulsory new religion.",
+            "id": "general-bergman",
+            "name": "General Bergman",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A senior battle mage serving King Caydean who oversees lethal experiments on imprisoned mages. He wields destructive dark power, directs attempts to trap extracted souls in enchanted vessels, and struggles to restrain the demon within him.",
+            "id": "demon-battle-mage",
+            "name": "The demon battle mage",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A general serving King Caydean who takes part in lethal experiments on imprisoned mages. He is ordered to capture Yserria alive and seize her crystal, with battle mages and a portal placed at his disposal.",
+            "id": "general-trivian",
+            "name": "General Trivian",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A wolf-shifter whose bond with Rezkin no longer feels severed after his reported death. She believes that continuing connection may mean he is still alive.",
+            "id": "spirit-general",
+            "name": "The spirit general",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A general serving King Caydean who collaborates in lethal experiments on imprisoned mages. She provides enchanted vessels for the attempts to capture extracted souls and supplies intelligence to the operation.",
+            "id": "general-ulessa",
+            "name": "General Ulessa",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A Cenerian trader who transports the spirit general's horse through a guarded checkpoint after her difficult gorge crossing. He persuades her to continue toward Serret in his company.",
+            "id": "cenerian-merchant",
+            "name": "The Cenerian merchant",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The regent previously seen holding his unstable kingdom within Rezkin's empire. Farson reports that Regent Collodon is preparing the Ferelli navy while political and military pressures continue.",
+            "id": "regent-collodon",
+            "name": "Regent Collodon",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Cenerian master stonemason who rescues Frisha and Prince Thresson from bandits. He tends the prince's serious injury, gives both fugitives a place to stay in Serret, and considers relocating to Kyle.",
+            "id": "cenerian-stonemason",
+            "name": "The Cenerian stonemason",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A constructed double made in Frisha's likeness to spy for King Caydean. It attends a mage meeting, obtains details of Kyle's defenses and naval plans, and is caught transmitting the intelligence to contacts in Channeria.",
+            "id": "frishas-golem-double",
+            "name": "Frisha's golem double",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A powerful spirit authority charged with overseeing Rezkin's safety. Both Rezkin and the spirit general fear his intervention, making his judgment a central constraint on what they can reveal and how independently they can act.",
+            "id": "spirit-leader",
+            "name": "The spirit leader",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage recruited into the Kybane resistance investigation. The spirit general links his power with Wesson's and a former royal battle mage's, creating the combined range of magic needed to breach the restricted library wards.",
+            "id": "connovan",
+            "name": "Connovan",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A former royal battle mage who joins Wesson's resistance in Kybane, holding that her oath belongs to the rightful king rather than King Caydean. Her magic is combined with Wesson's and Connovan's to bypass the restricted library wards.",
+            "id": "former-royal-battle-mage",
+            "name": "The former royal battle mage",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The queen of Lon Laresh's principal consort and the realm's most powerful battle mage. He supports her proposed use of forged correspondence as political pressure mounts around Yserria.",
+            "id": "queens-principal-consort",
+            "name": "The queen's principal consort",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of Lon Laresh who summons Yserria to court and demands her support for forged evidence that Rezkin lives. She also orders Yserria to surrender territory and threatens to seize both of Yserria's echelons if she refuses.",
+            "id": "queen-of-lon-laresh",
+            "name": "The queen of Lon Laresh",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Tam"
+            ],
+            "description": "A missing Gendishen soldier whom Rezkin sets out to find. He vanished from a secured room months earlier, leaving behind a wall altered by Fae-like magic and a beacon stone whose paired signal offers the first practical trail.",
+            "id": "tamarin-blackwater",
+            "name": "Tamarin Blackwater",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival claimant to the Lon Laresh throne and an intermediary for King Caydean's effort against Yserria. She has poisoned another contender, employed assassins, and enters the final trial expecting outside help to secure the crown.",
+            "id": "griselda",
+            "name": "Griselda",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Griselda's battle-mage champion in the final succession trial. Their plan assigns him to keep Yserria's more powerful champion occupied while Griselda attacks Yserria directly in the arena.",
+            "id": "martis",
+            "name": "Martis",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A contender in the Lon Laresh succession trials who collapses after drinking poison during the economics trial and later dies. Griselda is identified as the person responsible for poisoning her.",
+            "id": "thea",
+            "name": "Thea",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0DGQVFYV2",
+            "type": "community"
+          }
+        ],
+        "work": "knight-of-shadows"
+      },
+      "recaps": {
+        "ending": "Yserria survives the succession trials and becomes Queen of Lon Laresh, with Malcius as her acknowledged consort. The enemy battle mage falls into a lava pit and does not return, and Rezkin kills the other five demons attacking the city, though soldiers and civilians suffer severe losses. Rezkin keeps his survival hidden from the wider world. Yserria agrees to investigate King Caydean's purpose in arranging the former queen's death, while Tieran Nirius continues talks with northern Asshaian leaders and Wesson's Kybane resistance pursues the weapon and soul-vessel programs. Frisha and Prince Thresson are safe in Kyle, but Kyle's defenses were compromised by the golem and Frisha's relationship with Tieran still needs repair. Tam remains compelled to serve as the Fae army's general. Rezkin intends to pursue King Caydean's plans and secure Tam's freedom. After revealing both his survival and his Raven identity to the spirit general, Rezkin gains her as a companion and promises to tell her his full history. The spirit leader remains unaware and may try to kill Rezkin if he learns the truth.",
+        "in_short": "Six months after Rezkin's reported death, his allies find his tomb empty while he secretly operates as the Raven against King Caydean. Frisha and Prince Thresson escape captivity and expose the golem that had been spying in her place. Wesson frees experimental prisoners and uncovers a program intended to bind souls into vessels. Rezkin prevents the assassination of northern leaders, finds Tam compelled to command a Fae army, and covertly supports Yserria's claim to Lon Laresh. Yserria survives poison, lethal succession trials, and an enemy battle mage to become queen, while Rezkin destroys five other demons attacking the city. He remains publicly dead, leaving Yserria to investigate King Caydean's purpose and Wesson to continue the resistance. Tam is still bound to the Fae. Rezkin departs to pursue both problems with his dragon and the spirit general, who now knows that Rezkin lives, knows he was the Raven, and chooses to protect him despite the spirit leader's threatened judgment.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Rezkin became an emperor whose alliances and followers opposed King Caydean's rule in Asshai. Tieran Nirius, Rezkin's cousin and successor, helped carry the political burden of that struggle, while Kai, Farson, Wesson, and other loyalists served the imperial cause. Frisha was Tieran's partner, and Prince Thresson had fallen into King Caydean's custody. Yserria held authority in Lon Laresh, with Malcius bound by Rezkin's order to protect her. Rezkin also formed unusual connections beyond ordinary politics: a young dragon was bonded to him, a spirit general shared a powerful link with him, and a spirit leader claimed authority over his safety. The conflict with King Caydean involved demons as well as rival crowns and armies. By the opening of this volume, Rezkin has been reported dead for months. His presumed loss leaves his empire exposed, his allies divided over what comes next, and King Caydean free to strengthen his position while those closest to Rezkin struggle to determine what truly happened.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Six months after Rezkin's burial, Kai brings Wesson to Garton Knoll to verify the death. King Caydean's agents attack the search party, but Wesson defeats them and spares a former academy acquaintance. The tomb remains sealed from outside, yet Rezkin's body is gone. An opened sarcophagus bears a raven emblem, while old blood and damaged demon-vessel markings deepen the uncertainty. Rezkin is secretly alive and working as the Raven. Keeping his death unresolved reduces pressure on his allies and lets him investigate King Caydean covertly. Inside the royal palace, he learns of a city-destroying weapon, agents placed among allied kingdoms, and a planned operation in Lon Laresh. Elsewhere, the real Frisha escapes a rune-suppressed prison with Prince Thresson, proving that the changed woman beside Tieran Nirius cannot be her. Yserria and Malcius depart to help Lon Laresh's threatened queen. Rezkin travels east under a disguise with his young dragon, while the spirit pathmaker who believes him dead follows the Raven's trail. Her search reaches Asshai's capital, where a guildmaster redirects her east with a delivery and the possibility of contacting the Raven.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wesson infiltrates Kybane's communications system and gives Kyle covert access to relay traffic. He discovers that mages who refuse King Caydean's oath are treated as traitors, and that a demon-bound battle mage is killing prisoners in failed attempts to place their souls into enchanted objects. Rezkin crosses into neighboring territory, where his dragon unexpectedly creates a portal from his memories. He eliminates a spy cell and learns that an absent general and three former dukes face assassination at an upcoming meeting. The spirit general continues pursuing the Raven, arranges a meeting in Serret, and attacks him when he appears, never realizing that the disguised Raven is Rezkin. He escapes without surrendering the secret. Meanwhile, Tieran Nirius receives the Raven's warning that an influential woman is spying in Kyle. He, Kai, and an ally catch the false Frisha transmitting military intelligence and expose her as King Caydean's golem. The real Frisha and Prince Thresson arrive soon afterward and establish the truth of their imprisonment and escape. Their rescuer also reports that King Caydean is building a weapon capable of destroying a city in Kybane, prompting Tieran to organize a response.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wesson enters the demon battle mage's estate, finds captive mages and records of lethal experiments, and frees six prisoners by copying the estate's demonic signature. His escape is discovered, and poison leaves him helpless during a second attack. Rezkin rescues him from a burning inn and finally confirms that he lives. He explains that an unknown person restored him by joining him to a demon, which he then killed, and that another death would be final. Wesson objects to the political damage caused by the deception but agrees to keep the secret and continue investigating Kybane. Rezkin then infiltrates a conference of a northern general and three rival dukes. He blocks poison and explosives intended to kill them, pressures the divided leaders toward cooperation, and provides a relay connection to Kyle. The dukes and their general begin alliance discussions with Tieran Nirius. In Kybane, Wesson, Farson, Connovan, the spirit general, and other mages form a resistance group. They breach a restricted library and learn that King Caydean's faction is attempting to move a mage's soul into a vessel while retaining control of the living body. The rare crystals connected to Rezkin's allies may be suitable vessels.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The spirit general warns Kai about the soul-vessel danger but conceals her growing belief that Rezkin lives. The spirit leader says that a secretly surviving but unstable Rezkin might have to be killed, confirming why she cannot safely share what she knows. Rezkin turns to the disappearance of Tamarin Blackwater, known as Tam. A strangely altered wall and a paired beacon stone point toward Fae-like magic, and Wesson helps activate the stone's directional pull. At the same time, Yserria faces poison within her household, a stabbing by someone in her own party, and surveillance by a demon-bound battle mage seeking both her and a lifestone. The queen of Lon Laresh also tries to force Yserria to support false evidence that Rezkin lives and surrender part of her territory. Following Tam's beacon, Rezkin fights strange attackers and manifests a powerful but poorly understood form of magic. His dragon is injured, and he heals her through their bond. Rezkin finally reaches a Fae settlement and finds Tam alive, mentally changed, and able to understand the Fae. They have made him general and liaison of their army under a bargain they attribute to Rezkin. The bargain prevents Rezkin from simply taking Tam away.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the queen of Lon Laresh is assassinated, Rezkin reveals his survival to Yserria and Malcius but requires their silence. To keep the realm within his empire without exposing himself, he asks Yserria to claim both the throne and the late queen's battle-mage consort as her champion. A rival invokes an ancient succession rite, forcing the claimants through lethal public trials before the nobles choose a ruler. Rezkin obtains the questions for the first trial and helps Yserria and Malcius prepare. Their cage repeatedly descends toward magical fire when answers are rejected, but Malcius's defense of the imperial alliance wins support and saves them. Rival claimants continue arranging assassinations. The next trial converts poor trade decisions into poisoned drinks for the claimant, champion, and household volunteers. Yserria's scribe dies after taking one dose. Malcius refuses Yserria's attempt to send him away for his safety, admits that he has long loved her, and learns that she returns his feelings. A failed trade negotiation then leaves Yserria's group facing three more poisoned drinks, while Rezkin's covert efforts have not secured them from the trial or their political enemies.",
+            "through": {
+              "chapter": 24
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rezkin kills assassins pursuing Yserria but misses part of the economics trial. Poison incapacitates Malcius and kills a servant, while another contender, Thea, also collapses and dies. Rezkin secretly supplies a remedy that saves Malcius. Disguised inside Griselda's household, he learns that Griselda poisoned Thea, hired the killers, and expects Martis to occupy Yserria's champion during the final trial. King Caydean originated the contract against Yserria through Griselda. As the final arena contest begins, five demons attack the city and Rezkin leaves to defend civilians. Yserria kills Martis, but Griselda burns her badly. The suspected enemy battle mage then kills Griselda, defeats Yserria's champion, and attacks the palace defenders in demon form. Yserria pretends to surrender and pulls him toward a lava pit. Malcius catches her, while the demon falls and does not return. As the sole surviving claimant, Yserria becomes queen and sends every available guard and mage to protect the city. Rezkin discovers that his black blade and white-light power can destroy demons. With portal assistance from his dragon, he kills all five attackers, ending the assault after extensive civilian and military losses.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After destroying the demons in Lon Laresh, Rezkin uses a portal to reach a healer and survives his wounds. He meets Queen Yserria and Malcius privately, confirms that the enemy battle mage is gone, and refuses to end the public fiction of his death. He believes that King Caydean will place less pressure on the empire while its emperor appears dead. Yserria agrees to investigate the larger purpose behind King Caydean's arrangement of the former queen's assassination. Malcius apologizes for blaming Rezkin for his brother's death, and the two reconcile. Rezkin plans to return to hostile territory, continue tracing King Caydean's weapon and soul-vessel operations, and find a way to release Tam from forced service as the Fae army's general. He then returns to the restored ancient city and seeks the spirit general. Rezkin tells her directly that he survived and that he was the disguised Raven she had pursued. She warns that the spirit leader may kill him if told, but chooses to accompany and protect Rezkin even if that loyalty creates a future conflict. Rezkin accepts her companionship and promises to disclose his full history to her.",
+            "through": {
+              "chapter": 29
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-20",
+            "ref": "audible:uk:B0DGQVFYV2",
+            "type": "community"
+          }
+        ],
+        "work": "knight-of-shadows"
+      }
+    },
+    "last-argument-of-kings": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "The Bloody-Nine",
+              "Ninefingers"
+            ],
+            "description": "Returned from the failed journey to the edge of the World, Logen turns back toward the one place he never wanted to see again: the North, and the war against King Bethod, the man he once served and now means to see thrown down. Older, wearier, and no more able than before to keep the Bloody-Nine chained when blood is spilled, he takes up again with the Dogman and his old crew. He wants, as ever, to be a better man and to leave the killing behind - but the North knows exactly what he is, and the fighting is far from finished.",
+            "id": "logen-ninefingers",
+            "name": "Logen Ninefingers",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Superior Glokta"
+            ],
+            "description": "Back in Adua and still in the grip of pain and his hidden masters, Glokta is handed the most dangerous work of his life as the Union's crisis deepens. With the old King failing, war pressing from every side, and the succession wide open, the crippled Inquisitor must manoeuvre among the great powers of the realm - the Arch Lector, the Closed Council, and shadowy financiers who own more of the Union than anyone admits. Every move risks his life, and his savage humour is by now nearly the last thing holding him upright.",
+            "id": "sand-dan-glokta",
+            "name": "Sand dan Glokta",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Home from the hardships of the road a changed man, Jezal returns to Adua humbler and more thoughtful than the preening boy who left, pained by his separation from Ferro and by unfinished feeling for Ardee West. He wants little more than a quiet, decent life - but the Union is sliding into crisis, and men more powerful than he understands have their own uses for the young officer who once believed the world revolved around him.",
+            "id": "jezal-dan-luthar",
+            "name": "Jezal dan Luthar",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The quest that was meant to arm her vengeance having failed, Ferro returns east still hungry for revenge on the Gurkish, and still marked by the strange power in her blood that Bayaz has never fully explained. As the Gurkish Empire moves openly against the Union, her private war and the great one converge, and she must decide how far she will let the wizard use her hatred as a tool - and what she is willing to become to feed it.",
+            "id": "ferro-maljinn",
+            "name": "Ferro Maljinn",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The First of the Magi"
+            ],
+            "description": "The First of the Magi returns to Adua with his grand design unfulfilled and the Union facing ruin, and sets about securing it - and himself - by other means. Patient, ruthless, and centuries deep in his schemes, Bayaz reveals steadily more of his true power and his true ends, and of the long, bitter feud with the Gurkish prophet Khalul that drives him. Those who travelled with him have learned to fear what he is willing to spend, and to sacrifice, to get his way; in the crisis now breaking over the Union, that willingness will be tested to its limit.",
+            "id": "bayaz",
+            "name": "Bayaz",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Marshal West"
+            ],
+            "description": "Hardened by catastrophe in the North and haunted by what survival there cost him, West returns south with a heavy reputation and a new, uneasy standing. As the Union fights for its life on two fronts, the common-born officer is pushed into positions of real command and real consequence, carrying burdens that would break most men, and struggling still with the temper and the guilt he can never quite set down.",
+            "id": "collem-west",
+            "name": "Collem West",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Still in Adua, still too sharp and too fond of a drink for polite society's comfort, Ardee waits out the Union's mounting crisis with her characteristic bleak wit. Her tangled feelings for Jezal remain unfinished, and her brother's long absence at the wars has left her more alone and more exposed than she lets on. As the powerful men of the city play their games, she finds she cannot keep as far from their orbit as she would like.",
+            "id": "ardee-west",
+            "name": "Ardee West",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Arch Lector"
+            ],
+            "description": "The cold head of the Inquisition remains one of the most powerful and dangerous men in the Union, and with the realm in crisis both his ambitions and his fears sharpen. Sult drives Glokta at his enemies without mercy and manoeuvres to bend the coming succession to his will, certain that only his hand can hold the state together. But there are powers moving in Adua - the old wizard Bayaz among them - that even the Arch Lector may not be able to master.",
+            "id": "arch-lector-sult",
+            "name": "Arch Lector Sult",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "One of the hard survivors of Logen's old crew, Black Dow is a scarred, black-hearted Northman with a gift for cruelty and a nose for which way the wind is blowing. Brave, treacherous, and entirely without scruple, he fights alongside Logen and the Dogman in the war against Bethod, useful and dangerous in equal measure - the kind of man who follows a chief only so long as it suits him, and who watches his leaders with an eye always to the main chance.",
+            "id": "black-dow",
+            "name": "Black Dow",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "last-argument-of-kings"
+      },
+      "recaps": {
+        "ending": "Last Argument of Kings ends with Bayaz victorious and almost everyone who trusted him used up. He has made Jezal dan Luthar High King by revealing his royal blood, but Jezal, wed to the loveless Princess Terez, finds his crown hollow and himself a figurehead for the magus. The Gurkish invasion has been broken - Bayaz destroyed it by unleashing the ancient power at last - but at the price of much of Adua and countless lives. Arch Lector Sult has fallen, and the banking house Valint and Balk, Bayaz's instrument, has installed Glokta as the new Arch Lector: powerful at last, but wholly owned, and married to Ardee West, who is pregnant with Jezal's child. In the North, King Bethod is defeated and dead, but Logen Ninefingers is betrayed and cast out by his own men, chief among them Black Dow, and his fate is deliberately left unresolved - the Dogman inherits the remnants of the crew. Collem West, having won the northern war and been made Lord Marshal, dies of a wasting sickness. Ferro, refused the vengeance she craves, departs alone to hunt the Gurkish on her own terms. Bayaz leaves Adua with his power intact and his long contest with Khalul unresolved, and the trilogy closes with the Union governed by the men he installed: a figurehead king and an Arch Lector, both answering to him and to the bank.",
+        "in_short": "In the final book the survivors return to a Union in crisis, and Bayaz's long design comes to fruition. The old King dies, and Bayaz settles the disputed succession by revealing Jezal dan Luthar to be a royal bastard and having him elected High King - a puppet who soon discovers his crown is powerless and that the magus rules through him. When the Gurkish invade and storm Adua, Bayaz unleashes the ancient power he had chased across two books, breaking the enemy but devastating the city and killing thousands. In the North, Logen and the Dogman's crew help end the war against King Bethod, who is defeated and killed, but Logen's savagery turns his own men against him and he is cast out, his fate left uncertain. Arch Lector Sult is destroyed and the banking house Valint and Balk raises Glokta to Arch Lector in his place, married to Ardee, who carries Jezal's child. Collem West wins in the North and then dies of a wasting illness; Ferro leaves alone, still bent on vengeance. Bayaz stands the true victor, and the world is left much as the powerful always meant it to be.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in The Blade Itself and Before They Are Hanged: Bayaz, First of the Magi, gathered an unlikely company - the Northman Logen Ninefingers, the crippled Inquisitor Glokta, the once-vain officer Jezal dan Luthar, and the vengeful escaped slave Ferro Maljinn - and led some of them on a long, brutal journey to the edge of the World in search of the Seed, an ancient weapon meant to turn back the Gurkish Empire and its Prophet, Khalul. The quest failed, the weapon was never recovered, and the true, ruthless nature of the magus grew harder and harder to ignore. In the South, Glokta fought and lost to hold the doomed fortress-city of Dagoska, and came away knowing that a hidden banking house, Valint and Balk, secretly controls the Union and now controls him. In the North, Crown Prince Ladisla's army was annihilated, and Major West, thrown among the Dogman and the last of Logen's old crew, beat the cowardly prince to death after Ladisla assaulted a woman under their protection - a killing he must keep secret. Threetrees was killed and the Dogman took his place. Now, with the Gurkish massing in the South, the war against King Bethod still unfinished in the North, and the old King failing, the scattered survivors return to a Union sliding toward crisis - and Bayaz begins, at last, to move in earnest.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The company is home, and the Union is coming apart at the seams. In the North, Logen rejoins the Dogman and the old crew to carry the war against Bethod at last toward its reckoning, though the murderous Bloody-Nine is never far beneath his skin. In Adua, the old King Guslav is dying and the succession is unresolved, with the great lords - Brock, Isher and others - manoeuvring for the throne through the Open Council. Glokta is set to dangerous work amid the scheming of Arch Lector Sult on one side and the hidden bankers Valint and Balk on the other, each demanding his loyalty and each able to destroy him. Jezal, changed and chastened by his travels and disfigured by them, wants only a quiet life and the woman he loves, Ardee West, and will be allowed neither. Ferro's private hunger for vengeance against the Gurkish draws nearer the open war now gathering in the South. And Bayaz, having failed openly at his quest, begins quietly moving his own pieces into place, steering events toward an end only he can see.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The crises break into the open. The Gurkish launch their invasion, and the war that had loomed for two books arrives in force as their army and fleet close on Adua itself; the Prophet Khalul's uncanny servants, the flesh-eating Eaters, move among them. The question of who will wear the Union's crown becomes a battlefield of its own, and Glokta is thrown into the middle of it, manoeuvring among factions far richer and more dangerous than he, at constant risk of his life, doing the bidding of Sult and the bank by turns. Jezal is drawn back toward the centre of events against his wishes as Bayaz's designs begin to show their shape. In the North, the campaign against Bethod drives toward its bloody climax, with Logen forced again and again to become the Bloody-Nine to survive, and Bethod's uncanny champion, the Feared, waiting for him. Across every front it grows clearer that Bayaz is willing to sacrifice a great deal - and a great many people - to get what he wants.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Everything comes due. Bayaz settles the fight for the throne by revealing Jezal to be a secret royal bastard and engineering his election as High King of the Union; Jezal, crowned and married to the cold Princess Terez of Talins, quickly learns that his power is a fiction and that Bayaz rules through him. When the Gurkish storm Adua, Bayaz finally unleashes the ancient power he had sought all along, and a devastating force tears through the city - destroying the Gurkish assault and their Eaters but levelling whole districts and killing thousands of the people he claims to protect. The invasion is broken; the cost falls on Adua. In the North, the war against Bethod reaches its end: Bethod is defeated and killed and his champion, the Feared, is destroyed, but Logen's reckoning with what he is turns his own men against him, and Black Dow and the others cast out the Bloody-Nine; the book's last image of Logen leaves his fate uncertain. Sult is brought down, and the bank Valint and Balk raises Glokta to Arch Lector in his place - master of the Inquisition and wholly the bank's creature - and marries him to Ardee, who is carrying Jezal's child. Collem West, made Lord Marshal, wins in the North but dies of a wasting sickness. Ferro, denied her revenge, leaves alone to pursue the Gurkish on her own terms. Bayaz stands triumphant, the true victor, having preserved his own power and left the world much as the powerful always intended it.",
+            "through": {
+              "chapter": 30
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "last-argument-of-kings"
+      }
+    },
+    "lastrock": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An independent Flame Vault traveling with Naomi through the Iron Weald. His gold-tempered body and unusual mana practice let him endure punishment and replenish power in ways that surprise even his guide. He seeks Nox while refusing to place himself under a faction's control.",
+            "id": "scorio",
+            "name": "Scorio",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Scorio's Flame Vault companion, whose Nightmare Lady form fights with shadow and a bladed tail. She is determined to learn his unusual mana practice.",
+            "id": "naomi",
+            "name": "Naomi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An experienced Pyre Lady guiding Scorio and Naomi through the Iron Weald. She trains them in controlled mana use and protects the group with a six-armed ebon Eidolon.",
+            "id": "pyre-lady-guide",
+            "name": "the Pyre Lady guide",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The ruler of the Fury Spires, where he controls the reduced population of resident fiends. His expedition offers Scorio and Naomi provisional protection when they arrive injured.",
+            "id": "iron-tyrant",
+            "name": "the Iron Tyrant",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Charnel Duke associated with a major force in the war against the Blood Ox. He previously tried to recruit Scorio and Naomi for the campaign.",
+            "id": "plassus",
+            "name": "Plassus",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A true fiend holding Last Rock and defeating the forces sent against him. His sanctum prevents a simple intervention by the highest-ranked Great Souls, while continued defeat threatens Bastion and the northern layers.",
+            "id": "blood-ox",
+            "name": "the Blood Ox",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A former close companion whom Scorio finds alive at the Fury Spires. He treats their reunion cautiously rather than assuming their old friendship remains intact.",
+            "id": "lianshi",
+            "name": "Lianshi",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of Scorio's friends from an earlier life, reborn without the memories they shared. At the Fury Spires, Leonis grants Scorio and Naomi a measure of trust.",
+            "id": "leonis",
+            "name": "Leonis",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An organizer of affairs in the Fiery Shoals who is preparing to leave aboard the Celestial Coffer. Her position makes her an important contact as rival powers gather around the war for Last Rock.",
+            "id": "moira",
+            "name": "Moira",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Xandera"
+            ],
+            "description": "The surviving Blazeborn queen of the Fury Spires. She serves the Iron Tyrant because her diminished people cannot resist him alone, accepting subordination as the price of their continued survival.",
+            "id": "queen-xandera",
+            "name": "Queen Xandera",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pyre Lord in the Iron Tyrant's service. One of his powers combines willing allies' strength into a single attack, while another constantly makes people feel more favorably toward him, whether he wants the effect or not.",
+            "id": "amity",
+            "name": "Amity",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Scorio's fiend ally and the teacher whose mana practice helped shape Scorio's unusual abilities. Scorio begins searching for Nox so Naomi can learn the same technique.",
+            "id": "nox",
+            "name": "Nox",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Flame Vault assigned to observe Scorio and Naomi for the Iron Tyrant. His permanent power causes people to overlook him unless they focus, leaving him isolated but effective as a spy. He offers covert access to Queen Xandera and hopes for safer companionship.",
+            "id": "alain",
+            "name": "Alain",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Moira's well-informed student and ally. She warns Scorio that his unexplained arrival and public reputation will be interpreted as evidence of a hidden allegiance, even while he tries to remain independent.",
+            "id": "ravenna",
+            "name": "Ravenna",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Dread Blaze central to the attempt to reclaim Last Rock from the Blood Ox. She is expected to invoke old fiendish oaths and turn much of his army away from him.",
+            "id": "jova",
+            "name": "Jova",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lianshi's new romantic interest. Their developing relationship contributes to Lianshi's separation from Leonis and marks Lianshi's decision to judge her present life on its own terms.",
+            "id": "juniper",
+            "name": "Juniper",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Shadow Petal"
+            ],
+            "description": "A Company 16 Dread Blaze assassin also known as the Shadow Petal. She slips from notice when nobody is thinking about her, can cross visible space instantly, and carries separate blades for cutting bodies and mana.",
+            "id": "himiko",
+            "name": "Himiko",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two allied fighters of the highest rank expected at the site of the Blood Ox's attack. Their intervention can restore Great Souls who appear to have died, making their arrival decisive for the devastated army.",
+            "id": "two-imperators",
+            "name": "the two Imperators",
+            "reveal": {
+              "chapter": 46
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The officer commanding the Iron Vanguard occupation of the Fury Spires. He leads oath-bound subordinates and becomes the primary target when Scorio, Naomi, Alain, and Xandera infiltrate the hive.",
+            "id": "iron-vanguard-blood-baron",
+            "name": "the Iron Vanguard blood baron",
+            "reveal": {
+              "chapter": 51
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A younger self of Queen Xandera who receives permission to leave the Fury Spires with Scorio. She joins his journey toward Last Rock as a Blazeborn companion.",
+            "id": "xandera-sextus",
+            "name": "Xandera Sextus",
+            "reveal": {
+              "chapter": 60
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A puzzle-solving Dread Blaze ally whom Moira recruits to examine the coded records recovered from the fallen Iron Vanguard leader. The codebreaker may be able to decipher the records.",
+            "id": "dread-blaze-codebreaker",
+            "name": "the Dread Blaze codebreaker",
+            "reveal": {
+              "chapter": 61
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CZPLQD4Y",
+            "type": "community"
+          }
+        ],
+        "work": "lastrock"
+      },
+      "recaps": {
+        "ending": "Scorio and Xandera retake the Fury Spires and destroy much of the Blood Ox's attacking force, but the Blood Ox personally retaliates, killing many defenders and badly injuring Xandera. The two Imperators pursue him into his sanctum and kill him at severe cost to themselves. Queen Xandera survives, retains control of the hive, and has created twenty daughter-queens to establish new colonies. Amity is freed from his oath, Plassus is apparently dead, and Alain is dead. Naomi kills Alain accidentally after executing another prisoner, then flees into the Iron Weald while unstable. Her location remains unknown and she faces a murder charge. Scorio, now a Pyre Lord, travels with Lianshi and Xandera Sextus to Last Rock. Moira governs there, Jova has left a journal in its hidden library, and Leonis's destination is not established. A codebreaker uncovers the Red Knight hierarchy before being murdered, and most records are burned. The surviving book, The Empty Palm, identifies the Shepherds of Goodwill and links them to the Artificers and a separate rebirth system. Scorio ends with a practical method for tracking the moving Fortress of Symmetry across the Silver Unfathom and Lustrous Maria.",
+        "in_short": "Scorio and Naomi follow Nox's signal to the Fury Spires, where the Iron Tyrant rules the Blazeborn and rival powers assemble against the Blood Ox. Scorio advances to Dread Blaze, survives a duel with Plassus through Queen Xandera's aid, and carries her egg after the Iron Tyrant kills her. The Last Rock campaign is betrayed and devastated, but the egg absorbs an attack meant to erase Scorio and hatches a stronger Xandera. They retake the Fury Spires, kill its occupying blood baron, and Scorio becomes a Pyre Lord. Xandera raises twenty daughter-queens, and the Imperators kill the Blood Ox after his assault. Victory collapses into grief when Naomi accidentally kills Alain and flees. At Last Rock, a codebreaker is murdered and vital records are burned, but a hidden library identifies the Shepherds of Goodwill and gives Scorio, Lianshi, and Xandera Sextus a route toward the moving Fortress of Symmetry.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Scorio and Naomi became close companions while resisting attempts by powerful factions to control them. Scorio survived two years in the Crucible and emerged with a gold-tempered body and an exceptional way to draw and burn mana, developed with help from his fiend ally Nox. Leonis and Lianshi were once among Scorio's closest companions, but rebirth and lost memories left those relationships uncertain. Praximar's accusations and Scorio's reputation continued to shape how other Great Souls treated him. Scorio and Naomi entered the Iron Weald as independent Flame Vaults, seeking advancement, answers about hidden powers, and a way to reconnect with Nox without surrendering their freedom.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio and Naomi begin by training in the Iron Weald under a Pyre Lady guide. Scorio can draw and burn mana at once, but Naomi cannot yet reproduce the technique. When Scorio senses what may be Nox's coal-mana signal, they abandon the safer route to a House Kraken outpost and enter a worldworm tunnel alone. A chasm scorpion disables Naomi's heart and leaves her blind, forcing Scorio to carry and defend her. A ferric drake drives them into an ancient underground complex, where Naomi gradually regains ignition and a magma being removes their pursuer. They escape near the Fury Spires and accept provisional protection from an Iron Tyrant expedition. They also hear that the Blood Ox, a true fiend protected by a sanctum, holds Last Rock and is winning a war whose failure could expose Bastion and the northern layers. Injured and still tracking Nox, Scorio and Naomi enter the Fury Spires for shelter.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Inside the Fury Spires, Scorio and Naomi receive lodging and gold mana while avoiding any pledge to the Iron Tyrant. Scorio reunites with Lianshi and Leonis, but learns that the reborn pair lack the memories of the friends he once knew. They still offer conditional trust and explain that rival forces are gathering for the failing war against the Blood Ox. The Iron Tyrant presents his conquest as necessary order and introduces Queen Xandera, the surviving Blazeborn queen, who says submission preserves her people. Scorio and Naomi refuse his invitation to align with him. They defeat three Flame Vaults in a formal testament, raising their standing and winning limited oath-bound favors. Scorio then detects Nox beneath the hive, but guarded magma channels block the route. Alain, an overlooked Flame Vault forced to spy for the Iron Tyrant, admits his assignment and offers a covert meeting with Xandera. He hopes Scorio and Naomi can provide friendship and a path away from the Fury Spires. Meanwhile, Moira invites them to meet her and Ravenna as the political pressure around them increases.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moira and Ravenna explain that reinforcements are arriving to oppose both the Blood Ox and the Iron Tyrant's political demands. They want Scorio to help shift Plassus and his army toward their war plan, but Scorio delays choosing a faction. Naomi forces him to face the danger surrounding his reputation, then kisses him and retreats from the consequences. With Alain's help, Scorio meets Xandera privately. She describes how the Iron Tyrant exploited Blazeborn dynastic conflict, and grants Scorio passage beneath the hive. Scorio and Naomi find Nox in a lava cavern, where he agrees to help Naomi learn the mana practice that accelerated Scorio's growth. Scorio refuses any plan that would massacre the Great Souls above, even while suspecting Xandera has prepared hidden strength among the magma Titans. Experimenting with direct ambient mana, Scorio finds a faster path to advancement and forces his heart into its next trial. In a memory of a former life, he chooses personal vengeance over cautious command. The decision completes the trial, and Scorio emerges as a Dread Blaze.",
+            "through": {
+              "chapter": 19
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio tests his Dread Blaze powers, including a costly living-fire form and a black-fire breath. Moira's coalition asks him to influence Plassus, whose repeated defeats have made him fatalistic. Instead, Scorio challenges the Charnel Duke to a lethal duel after rejecting both Plassus's plan for a sacrificial war and the Iron Tyrant's offer of protection in exchange for lifelong service. Xandera secretly floods the duel caldera with mana after Naomi intervenes, allowing Scorio to wound Plassus and force a draw. The Iron Tyrant kills Xandera for helping him, but her fading consciousness entrusts Scorio with a queen egg that may preserve her. Nox warns that the mana used to awaken it will shape the reborn queen. Naomi survives a dangerous immersion in Nox's gel and gains direct knowledge of the mana-splitting practice. Plassus, moved by Scorio's persistence, abandons defeatism and agrees to cooperate with the relief force, on condition that Scorio serve in his army until Jova's operation is complete. The coalition leaves the Fury Spires without the Iron Tyrant's troops or gold. Naomi wants Scorio to abandon the war with her, but ultimately remains despite their disagreement.",
+            "through": {
+              "chapter": 29
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio and Naomi join Company 16 under Plassus's command as the coalition moves toward Last Rock. The plan is for Jova to restore old fiendish oaths and strip the Blood Ox of much of his army, while arriving Imperators confront him directly. Scorio learns that reaching Pyre Lord requires unifying his manifested powers around one identity. Company 16 drills at temporal obelisks, where Scorio tests himself against elite Dread Blazes including Himiko, the Shadow Petal. He then accepts command of three lower-ranked fighters and prioritizes their survival during a successful harvest against hundreds of fiends. Naomi continues working toward Dread Blaze while confiding her fear of betrayal, isolation, and the Nightmare Lady's influence. Moira prepares to coordinate the scattered companies through her mental network, but Scorio refuses the connection. Alain reports doubts within senior command and discreet recruitment by the Iron Tyrant. Diviners still predict a strong chance of killing the Blood Ox, though they cannot measure the army's losses. With the Imperators three days away, roughly a thousand Great Souls prepare for the surprise assault.",
+            "through": {
+              "chapter": 37
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Last Rock operation is compromised. Plassus's wing is surrounded before reaching its target, and Company 16 suffers catastrophic losses while retreating through the Bone Plains. Last Rock itself is found empty, and the Blood Ox's elite appear to be moving toward the Fury Spires. Plassus leads the survivors across the wall to pursue them. More companions die in the passages and in clashes with gold-ranked fiends, while Scorio, Naomi, Himiko, Alain, and a dwindling group continue toward the main battle. The Blood Ox finally arrives and seizes control of the surrounding mana. He drains the assembled Great Souls and subjects Scorio to an exceptional attack intended to remove him permanently from rebirth. Scorio wakes among the apparently dead because Xandera's egg absorbed the attack, becoming infused with its power. Plassus says the approaching Imperators can revive the fallen, but warns that they would seize or destroy the egg. He gives Scorio access to a hidden cache and reports that records connected to the herdsmen were suppressed. Scorio leaves Naomi and the others at the revival site and escapes alone with Xandera's egg.",
+            "through": {
+              "chapter": 46
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Weakened but alive, Scorio crosses the Tellurian Band and hatches Xandera's egg while defending it from a colossal fiend. The reborn queen rapidly matures and carries Scorio through lava toward the Fury Spires. Naomi, revived by the Imperators, reunites with Scorio and they acknowledge their romantic bond. She has also advanced to Dread Blaze. Alain joins them, and the four infer that the Iron Tyrant may have cooperated with the Blood Ox, though they cannot prove it. Beneath the Fury Spires, Xandera gathers enhanced Titans and reasserts authority over the hive. They infiltrate the occupied royal level and attack the Iron Vanguard blood baron and his oath-bound officers. During the battle, Scorio discovers the identity joining his powers and enters his Pyre Lord trial. Its final memory shows his former self becoming a dragon, destroying the society he meant to free, and accepting an archmagus's offer to travel into the future to fight demons. Scorio returns as a Pyre Lord in a vast dragon form. He and Xandera overcome the blood baron, and Xandera executes him before helping Scorio survive the ferula's energy.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the blood baron's death, Scorio and Naomi commit to remaining partners. Xandera locates the Iron Vanguard's hidden gold cache, including coded records marked with a device that may connect the dead leader to Scorio's wider investigation. She uses the gold to awaken twenty daughter-queens and rejects a single-lineage Blazeborn empire in favor of new colonies. The Blood Ox's army attacks before the Imperators must leave. Xandera, her queens, the Titans, Scorio, and the surviving oath-bound troops destroy much of it, but the Blood Ox retaliates personally, killing many defenders and badly injuring Xandera. During the aftermath, Naomi executes a captive against Scorio's wishes and accidentally kills Alain when he intervenes. Her instability intensifies and she flees into the Iron Weald. The Imperators pursue the Blood Ox into his sanctum and kill him, nearly dying themselves. Amity is released from the dead blood baron's oath and confirms that the leader belonged to the hidden organization. Scorio mourns Alain and waits unsuccessfully for Naomi. He then leaves for Last Rock with records to decode, accompanied by Lianshi and the younger Blazeborn Xandera Sextus.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Scorio, Lianshi, and Xandera Sextus reach damaged Last Rock, where Moira now governs. Moira and Ravenna agree that the dead Iron Vanguard leader's contact with the Blood Ox implies other hidden collaborators. A Dread Blaze codebreaker uncovers covert trade and a hierarchy of red titles, identifying the dead leader as the Red Knight. The records point toward the Fortress of Symmetry and possibly another Arch Spire. Before the work can continue, the codebreaker is murdered and most of the records are burned. Himiko is nearby and escapes Scorio, but her responsibility is not established. Xandera Sextus opens Last Rock's concealed library, preserving the investigation's best remaining lead. There Lianshi finds The Empty Palm, which identifies the Shepherds of Goodwill as a secret group linked to the Artificers and to the goal of closing the Pit. Its members may leave the ordinary rebirth cycle. The book explains that the Fortress of Symmetry moves across the Silver Unfathom and Lustrous Maria and can be tracked with a compass rose. Scorio connects this route to his rose-quartz box. He ends the book alive as a Pyre Lord, investigating the fortress with Lianshi and Xandera Sextus while Naomi remains missing.",
+            "through": {
+              "chapter": 64
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0CZPLQD4Y",
+            "type": "community"
+          }
+        ],
+        "work": "lastrock"
+      }
+    },
+    "legacies": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Myth",
+              "Mythcrafter"
+            ],
+            "description": "The book's viewpoint character, home at his family's Silver Sanctuary auction house for the between-semester break after being named Quest Academy's top-ranked Savior. His silver eyes appraise any object in exact detail, and his fused Mythcrafter ability builds extraordinary gear from powers he has copied with Skill Master. Still set on founding a support-crafting guild rather than fighting, he means to win his parents' backing in person.",
+            "id": "sal-argento",
+            "name": "Salvatore \"Sal\" Argento",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Sal's father and co-owner of the Argento Auction House, a genial, theatrical salesman whose appraisal-type ability reads objects in fine detail. He welcomes Sal home for the break, coaches him in auction showmanship, and has secretly built him a private workshop beneath the auction house, while gently steering his son's ambitions.",
+            "id": "petro-argento",
+            "name": "Petro Argento",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's mother and the auction house's co-owner, a meticulous restorer who repairs damaged gear by hand rather than with quick fixes. Sharp, protective, and quietly formidable, she manages much of the family business and worries about the pressures Sal's growing talents are drawing toward him.",
+            "id": "sophia-argento",
+            "name": "Sophia Argento",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A rival appraiser tied to the Delvers Guild and a defaulting client of the Argento Auction House, whose abandoned gear Sal reworks and sells against him. An invisibility-type ability lets him lurk and eavesdrop, and he is caught spying on the auction from a walkway above the floor. He swings between threatening Sal and pitching him a place in his guild, with a history of legal harassment against the family business.",
+            "id": "shade",
+            "name": "Shade",
+            "reveal": {
+              "chapter": 3
+            }
+          },
+          {
+            "description": "A crafting classmate and steady friend of Sal's, a gifted tailor with a construct ability. When the wider crafting community wrongly pegs her as Quest Academy's secret master crafter, the rumor conveniently shields Sal's true identity. Warm and modest about her own talent, she bonds easily with other crafters and is quick to spot the flaws in a design.",
+            "id": "blathnaid-mcclean",
+            "name": "Blathnaid McClean",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A foresight-gifted friend and Sal's closest confidant, whose eyes turn white when she reads possible futures. Her half-joking prophecy that Sal is fated to marry a crafter he cannot place drives much of his break. Candid and fiercely loyal, she tries to steer him away from his worst possible futures while deliberately refusing to spoil the good ones.",
+            "id": "divinity-khan",
+            "name": "Divinity Khan",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Argento family's longtime friend and exotic-materials supplier, and Fabi's father, first seen on-page at his Silver Sanctuary materials shop. Warm and shrewd, he sources rare crafting stock, strikes an ongoing supply deal with Sal, and is cautiously hopeful about his daughter's chances with an experimental skill implant, unaware Sal designed the ability behind it.",
+            "id": "maurice",
+            "name": "Maurice",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A courteous, ambitious Silver Sanctuary restaurateur and property owner whose elegant, half-finished venue is one of the sites the family tours for Sal's future guild base. He offers a discounted sale in exchange for a stake in whatever Sal is building, wanting to be part of something larger than his underused restaurant.",
+            "id": "michel",
+            "name": "Michel",
+            "reveal": {
+              "chapter": 18
+            }
+          },
+          {
+            "aliases": [
+              "Fabby"
+            ],
+            "description": "A top-ranked third-year support student at Quest Academy whose recorded essence-programming tutorials quietly guide Sal's secret build. Sophia decodes her identity: she is the daughter of the family's materials supplier, a childhood playmate Sal cannot remember, born without an ability despite years of specialists, and much of his workshop equipment was once hers. She is also the crafter a friend's prophecy named as Sal's future match.",
+            "id": "fabrizia",
+            "name": "Fabrizia \"Fabi\"",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Sal's crafting mentor and Quest Academy's workshop lecturer, whose ability turns her gear into a suit of powered mechanical armor. Warm but exacting, she attends the Hunter Bureau gala, helps diagnose Sal's temperamental fabrication machine, and repeatedly shields him and his friends from unwanted attention over their abilities.",
+            "id": "upgrade",
+            "name": "Upgrade",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A low-ranked illusionist and one of Sal's closest friends, sharp-tongued and endlessly inventive. At the gala he stages an elaborate illusion to flush out a masked, multi-identity hunter, then keeps needling Sal while quietly pushing him to stand up for the overlooked. Quietly top of every academic subject beneath the clowning.",
+            "id": "barry-francis",
+            "name": "Barry Francis",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A famously eccentric, reclusive crafting and automation authority, scruffy and openly contemptuous of gala formality, whose rail-based operation was the inspiration behind Sal's fabrication machine. He publicly outs Sal as the Academy's secret master crafter, framing the exposure as protection, and becomes a tense but genuine ally.",
+            "id": "reclusive-automation-crafter",
+            "name": "The Reclusive Automation Crafter",
+            "reveal": {
+              "chapter": 32
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Phantom"
+            ],
+            "description": "The silver-haired president of the Hunter Bureau, who bears the legendary hero name Phantom and hosts the year's gala. Commanding and politically ruthless, he announces the reclamation of a lost city, pushes controversial policies over the objections of Quest Academy, and takes a quiet, watchful interest in Sal's rare abilities.",
+            "id": "robert",
+            "name": "Robert",
+            "reveal": {
+              "chapter": 36
+            }
+          },
+          {
+            "description": "A top-ranked Hunter Bureau hero and the mother of Sal's former teammate Brophy, who intervenes when a forced public skill-implant demonstration goes catastrophically wrong. Immensely powerful and exacting, and tied to Sal's mother by an old history, she takes command of the chaos, condensing raw atmospheric essence into the failing machine to keep it alive.",
+            "id": "prestige",
+            "name": "Prestige",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A veteran militia commander and an old comrade of Sal's parents from their earlier service, who runs an independent, mounted paramilitary order (the Dragoons), unaffiliated with the Hunter Bureau. Gruff and warm, he sells Sal cheap demon cores, warns that the hero system exploits crafters, and grants the family access to his compound's dungeons.",
+            "id": "luke",
+            "name": "Luke",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "legacies"
+      },
+      "recaps": {
+        "ending": "Book 4 closes with the family's crisis over Sal's abilities turned into a forward plan rather than an open wound. The parental-secret reveal is fully reconciled: Sal has confronted both parents, they have apologized, and the three now work as partners in his safety. The book's climax is his completion of the Mythical Blight Jackal, the story's first Mythic-grade item, a gauntlet bonded to his arm carrying a storage subspace, an essence battery, a device-locking network, and Subsume, a kill-triggered growth-and-theft ability, plus a lethal semi-autonomous drone. Rather than hide it, the family commits to making Sal stronger and building outside alliances, sealing a formal materials-and-protection pact with Luke's independent militia and field-testing the drone in a dangerous variant dungeon, where Sophia also fights on-page for the first time in years. The Argento Auction House, which his parents would have sacrificed for his safety, is preserved at Sal's insistence, and its depot renovation formally opens to joint planning with Fabi and her father Maurice. Sal equips both parents with healing gear, learning his mother's injuries are worse than he knew, and himself with imperfect protective gear. Every major relationship ends settled: his parents reconciled, Divinity's marriage-prophecy thread retired, and Fabi reaffirming their partnership. She proposes regular joint dungeon runs to grow his stats ahead of a reactivated, mandatory portal expedition, still shadowed by an earlier prophecy of a portal death for Sal. He flies back to Quest Academy resolved to prove himself worthy of his top rank. The suspicion about Robert's power, the militia alliance, and the wider war all carry forward into the next book.",
+        "in_short": "Home at his family's auction house for the break, Sal Argento means to win his parents' backing for a crafting guild, but the visit upends everything he thought he knew about them. He stages a record-breaking auction, buys into a Silver Sanctuary property, and secretly builds an automated fabrication machine, the Arkwright. At a Hunter Bureau gala he meets Fabi, a top crafter and his prophesied match, and a forced live skill-implant demonstration nearly kills her, exposing that his mother is a hidden body-manipulation hero and multiplying Sal's own essence capacity. His parents finally confess they were once frontline heroes of the Silverson Group, cast out decades ago, who raised Sal in secrecy to keep him off the Hunter Bureau's radar. Reconciled, Sal trains in the family's martial arts, learns pure silver harms demons, and hand-crafts the story's first Mythic-grade item, a bonded gauntlet with a lethal drone. Rather than hide, the family chooses to build his power and forge outside alliances. Sal returns to Quest Academy far stronger, with a Mythic weapon, a militia ally, and Fabi as a training partner against a looming portal expedition.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in the Quest Academy series: Sal Argento, a guarded young man whose silver eyes appraise any object and who can copy other people's abilities, enrolled at Quest Academy, where heroes train to reclaim demon-held land. During skill registration he accidentally fused several powers into a unique top-tier crafting ability the Academy calls Mythcrafter, and became the protege of the crafting lecturer Upgrade. Befriending the foresight-gifted Divinity Khan, he helped expose Bastion, a wealthy faction seeding loyal students through the Academy, and led a squad of underdogs to third place in the first-year tournament. A harsh new curriculum then placed him on a fractious excursion team led by the manipulative mind-controller Erika Clifton and guarded by the top hero Prestige, mother of a hidden former child hero, Gallant, whose volatile ability a locket suppresses. Sal accepted that he had been avoiding real growth and resolved to found a crafting guild rather than fight. In his second semester he accidentally created Perfect, a flawless self-improving ability suited to himself, cleared a Tower trial that escalated into a genuine demon incursion, and killed his first hulker in melee. A rescued hunter was revealed as the Hunter Bureau's president, who had been watching Sal for months. The Academy named its first Saviors, with Sal ranked the single best in the whole school. He also glimpsed a possible sixty-years future in which humanity is winning the war but his mentor Upgrade has died. He headed home to win his parents' backing for the guild he still means to found.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "So far this book: Sal returns to his family's Silver Sanctuary auction house for the between-semester break, meaning to persuade his parents to back the crafting guild he wants to found. Set to light restoration work, he instead reworks the abandoned gear of Shade, a rival appraiser who has defaulted on his bills, transforming the pieces into evolutionary-grade showpieces for that night's auction. The sale becomes a spectacle: a restored breastplate, a run of daggers, and a combined armor set draw furious bidding wars, publicly humiliate Shade over his history of nonpayment, and end with the family's largest single-night takings ever. Shade, exposed as unable to cover his own bid and forcibly ejected, becomes a declared enemy. Sal also secretly uses his copying ability to expand his father Petro's appraisal power into its fuller form, permanently changing his eyes, which alarms his mother Sophia. The huge windfall sharpens Sal's plan to buy property in Silver Sanctuary for a guild base, but it exposes a rift between his parents over how far to reshape the business around his talents. The auction closes triumphant but tense.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the auction behind them, Sal's parents reconcile, and Sophia throws herself into finding a Silver Sanctuary property for the future guild. A stray prophecy from Divinity, that Sal is fated to marry a crafter he cannot place, is decoded by Sophia: the girl is Fabi, daughter of the family's materials supplier Maurice, a childhood acquaintance Sal does not remember, born without an ability and much of whose old crafting equipment now furnishes his workshop. Touring properties, the family is courted by an ambitious restaurateur, Michel, but Sal is captivated instead by a rundown, Hunter-Bureau-owned warehouse-and-storefronts site that connects underground to his workshop and matches a vision Divinity once showed him, though it carries an enormous price. Sal crafts lavish evolutionary-grade gifts for his parents and, prompted by Petro, begins a secret, hugely ambitious project: an automated machine that manufactures custom weapons and armor from raw materials. He can fund such ideas with a commission of nearly fourteen million from the auction. The build, hidden from Sophia, consumes the rest of his break.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal pours himself into the secret fabrication machine, teaching himself essence programming with online tutorials from a crafter he realizes is Fabi, and driving the work with a volatile inspiration elixir. Over roughly two weeks he hand-builds every component, upgrades his tools, writes a full operating system from scratch, and assembles them into a single glass-fronted enclosure his father jokingly calls a factory. The finished machine, which he names MythOS, proves able to identify and sort fed materials, upgrade its own production grade by consuming cores and stock, and craft customized gear by letting the user pick a target grade and specific attributes rather than copying a fixed blueprint. To his own disappointment it starts slow, then unexpectedly leaps ahead, unlocking rare-grade output and turning a handful of scraps into a custom dagger of the kind that sold for a fortune at the auction. His parents shift from confusion to real enthusiasm for the machine as a business asset. With it working and a Hunter Bureau gala approaching, Sal turns to the evening he has been dreading, which will bring him face to face with Fabi and a reclusive crafting authority he has long admired.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the Hunter Bureau gala, held in a lavishly reclaimed lost city, Sal finally meets Fabi in person and finds an easy, teasing rapport rather than the awkwardness he feared; the two quickly bond over crafting, and she is delighted to learn he designed the evolving ability weave she is about to receive. When Sal brings his malfunctioning machine's error report as an icebreaker, a crowd of crafters gathers, and a famously eccentric, reclusive automation authority, whose work inspired the machine, publicly outs Sal as the Academy's secret master crafter to the entire hall, framing the exposure as protection. Sal's furious parents confront the crafter, but Sal accepts the reveal and even forms a tense alliance with him. Over an extravagant dinner, Sal introduces Fabi to his friends Barry and Blathnaid, and the Hunter Bureau's president, Robert, opens the program, announcing the reclamation of the fallen city and a long memorial for the year's dead heroes, among them the father of one of Sal's struggling classmates. Beneath the ceremony runs a growing unease about the Bureau's ambitions and its interest in Sal.",
+            "through": {
+              "chapter": 36
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The gala's Academy segment turns into a crisis. Sal's ability is publicly credited under the name Perfect, and Fabi is named the first student to receive a skill implant, but Robert forces the delicate procedure to be performed live and unrehearsed. Discovering the Bureau loaded a deliberately weaker weave, Sal secretly rebuilds Fabi's full ability at the machine moments before she is sealed inside. The implant then demands far more essence than the machine holds and begins pulling it from Fabi's body. As it fails, heroes pour in volunteered essence, Prestige condenses raw essence to sustain it, and Sal rushes into the barrier to stabilize the machine with his mother's borrowed ability, badly burning his face and losing sight in one eye. The person who arrives to heal him and finish the repair is Sophia herself, revealing to Sal that her true power is body manipulation, not simple restoration, and that she and Prestige share a hidden past. Prestige also violently ruptures and regrows Sal's essence gates, multiplying his capacity through his active Perfect ability. Fabi emerges unharmed, her new ability already manifesting as she instinctively reshapes stone. The public account carefully hides Sophia's secret.",
+            "through": {
+              "chapter": 44
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In a private debrief, Robert and the family agree a cover story: the machine failed because it was under-built, the incident was an unrepeatable fluke, and the implant program will pause until the reclusive crafter builds a better machine, with Sal and Fabi placed under his oversight and the Bureau's researcher moving to Quest Academy. As compensation for the risk, Robert grants Sal the Silver Sanctuary depot property he wanted; Fabi proposes they split it to house both families' operations, and it is awarded to them jointly. Sal's damaged visor, evolved in the crisis into a powerful legendary-grade device, lets him formally scan Fabi's new ability: named Figment, it proves extraordinary, rivaling a top Hunter Bureau hero in raw capacity. Back at their table, Fabi downplays any guild commitment as a business partnership, and the two strike a bargain to build a drone dock for Sal's machine and run dungeons together. The gala's closing ceremony delivers the public cover story, names Sal the top first-year Savior, and confirms the joint depot award, before the group slips away early to the Argento family's own after-party.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At the family after-party, the reclusive crafter diagnoses the true flaw in Sal's fabrication machine, that automated crafting cannot replicate a crafter's guiding will, and installs a dungeon-heart fragment Sal owns to solve it, substantially upgrading the machine, now nicknamed Arkwright. Sal and Fabi grow closer, dancing and speaking openly about Divinity's marriage prophecy, and Upgrade's brother Raven brings news of an alarming Hunter Bureau policy: Savior students may soon be forced onto a dangerous portal expedition, which collides with Divinity's earlier private prophecy that Sal will one day enter a portal and never return. After the last guests leave, Sal finally presses his exhausted parents for the whole truth. They reveal that Sophia's real ability is Shaper, a body-manipulation power, that Petro's appraisal lets him map other heroes' weaves for her to imitate, and that both were once frontline heroes in the Silverson Group, a large hero organization practicing arranged marriages. They fell in love, defied that custom, and were cast out roughly two decades ago, taking the name Argento and hiding their past to give Sal a peaceful life. Overwhelmed but not truly angry, Sal reconciles with them and asks only how he can ease their burdens.",
+            "through": {
+              "chapter": 55
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the days after the revelation, Sal explores the upgraded Arkwright, which now proposes its own research, material synthesis, and redesigns; with Fabi's help he finds it can reverse-engineer functional essence-programming techniques, producing a new creation line the pair name Mythmark and a single unassuming jumpsuit hiding one powerful ability. Fabi becomes his primary confidante, reassuring him that his achievements are his own and reframing his parents' choices as having shaped his values rather than merely protecting him. Petro explains the full reasoning behind the secrecy: a body-manipulation classification like Sophia's would have put Sal on a secret Hunter Bureau watch list and a military track, so they raised him to appear a harmless support. He reveals that at age seven Sal unknowingly altered his father's weave, the incident that cemented their silence, and that Quest arranged Hunter Bureau backing partly to hide Sal from the Silverson Group entirely. To help Sal close the gap between his top rank and his real combat inexperience, Petro offers to teach him the family's anti-demon martial style, the Silverson Arts, and the two begin training.",
+            "through": {
+              "chapter": 60
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Petro, and later Sophia, drill Sal in the Silverson Arts, and Petro shares long-hidden history: the Hunter Bureau and its president rose barely two decades ago from a covert cross-guild coup that toppled the old order. Meanwhile the Arkwright, left to run semi-autonomously, escalates a project into a wearable set Sal and Fabi call Dominion, which can summon registered gear and triggers powerful automated attacks. Field-testing it, Sal wipes out an entire dungeon of leechers with a single misfiring defensive activation that nearly drains him, exposing the set's crippling essence cost and its poorly emulated programming; he and Fabi decide to rebuild around its stronger components. Determined to raise his essence capacity, Sal recklessly drinks a full bottle of a potent elixir, badly injuring himself, then commits to a days-long, agonizing essence-remapping process that reorganizes his gates. He survives it, emerging with markedly improved crafting grades, more open gates, and a new fortification stat. Sophia joins his training, teaching an offense-first philosophy and demonstrating, despite his Perfect ability, that her body-manipulation speed still outmatches him entirely.",
+            "through": {
+              "chapter": 72
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Needing demon cores to fund the Arkwright's newest research, toward a rare, historically lethal material called a Blight Core, Sal asks his father to take him hunting. Petro brings him off the books to an independent militia compound run by his old comrade Luke, who sells cheap cores and pitches recruiting Sal. There Petro reveals another family secret: pure silver is a genuine weakness of low-tier demons, the true origin of the Argento name, and dresses Sal in heirloom silver combat gear. Fighting without his Perfect ability, Sal kills leechers and then prowlers by hand, discovering a real, exhilarating competence in combat for the first time. When a dangerous boss prowler appears, Petro breaks a promise to wait and kills it alone, and back home Sal breaks down, airing months of accumulated hurt and fear, over the parental secrecy, his sudden elevation, and his dread of being targeted for his abilities, to both parents in turn. Both recommit fully to his wellbeing and trust, substantially healing the rift the reveal had opened, and Sal resolves to keep training while turning back to crafting.",
+            "through": {
+              "chapter": 79
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Sal blueprints the family's silver gear into the Arkwright, funds and confirms the Blight Core research, and begins designing an ambitious new personal gauntlet built around a shoulder-mounted drone dock. When the newly synthesized Blight Core registers to his visor, the design balloons, and the machine reports it cannot even simulate the blueprint: Sal has apparently designed a genuine Mythic-grade item, a tier above anything seen. Driving to collect Divinity for a visit, Petro reacts with alarm to hearing Sal made a real Blight Core, recounting how people once died over one, and both quietly wonder whether Robert's demon-annihilating power might derive from a similar source. Divinity's visit deepens their friendship: Petro spars with her and begins teaching her a mobility-based fighting style, and she and Sal clear the air, with Divinity admitting the marriage prophecy about Sal and Fabi was fabricated teasing rather than a true vision. Awed by the Arkwright, she helps Sal plan hand-made, personalized gifts for their Quest Academy friends before the new semester, as he turns to breaking his Mythic gauntlet blueprint into parts the machine can build.",
+            "through": {
+              "chapter": 84
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Over an exhausting multi-day effort, Sal breaks the gauntlet into buildable parts, survives a chaotic mis-parsed material run, and hand-crafts the piece, producing the story's first confirmed Mythic-grade item: the Mythical Blight Jackal, a gauntlet bonded permanently to his arm that carries a private storage subspace, an essence battery, a device-locking network, and Subsume, which converts kills into real-time growth or steals a demon's ability, plus a lethal semi-autonomous drone. Rather than hide it, his parents set a new strategy: grow Sal's power and build outside alliances instead of retreating or sacrificing the auction house, which Sal insists on keeping. They seal a materials-and-protection alliance with Luke's independent militia, field-testing the drone in a dangerous variant dungeon where it slaughters demon after demon, Sal's stats climb through Subsume, and Sophia fights on-page for the first time in years. Back home, Sal crafts weapons for the militia, personalized gifts for his friends, and dedicated healing gear for both parents, learning Sophia's injuries are worse than he knew. At a final breakfast, Maurice learns the family's secret and the depot renovation formally opens to Fabi's input. Sal flies back to Quest Academy with Fabi, who reveals her own solo dungeon-clearing and proposes regular joint runs to prepare him for the looming portal expedition, as he resolves to prove himself worthy of his rank.",
+            "through": {
+              "chapter": 96
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "legacies"
+      }
+    }
+  }
+}

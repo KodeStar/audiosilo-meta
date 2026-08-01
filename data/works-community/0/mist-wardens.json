@@ -1,0 +1,1560 @@
+{
+  "entries": {
+    "mist-wardens": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Founder of the Bravers Guild and protector of its settlement. During his final Dark Communion, Hal faces a conflict between his ideal of learning and Besal's ideal of defense, then recognizes that the confrontation is a test.",
+            "id": "hal",
+            "name": "Hal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Hal's increasingly distinct counterpart, with blue eyes and a voice unlike Hal's. He favors universal martial readiness, but shares Hal's underlying desire to protect vulnerable people and understands that their division threatens both of their visions.",
+            "id": "besal",
+            "name": "Besal",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Hal's partner and the settlement's principal organizer after the battle. Noth reports the disappearance of several senior allies, tends the wounded, and supports Hal as he accepts temporary responsibility for the survivors.",
+            "id": "noth",
+            "name": "Noth",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior ally who vanished in a flash after the battle. The guild does not classify Ashera as dead, leaving her fate unknown and making her recovery one of Hal's central concerns.",
+            "id": "ashera",
+            "name": "Ashera",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ranger allied with Hal who disappears with Ashera and the others after the battle. The guild records offer hope that Elora remains alive, although her location is unknown.",
+            "id": "elora",
+            "name": "Elora",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The absent dwarf leader whose disappearance leaves the settlement's builders grieving. Durvin is missing after the flash but is not confirmed dead.",
+            "id": "durvin",
+            "name": "Durvin",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mimic ally missing after the same flash that took Ashera, Elora, and Durvin. His survival is uncertain, but the guild has not classified him among the dead.",
+            "id": "vorax",
+            "name": "Vorax",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured dwarf who temporarily helps Hal direct the settlement while Durvin is missing. Though wounded and grieving, the steward supports emergency decisions and remains committed to Durvin's return.",
+            "id": "dwarf-construction-lead",
+            "name": "dwarf construction lead",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mature tree ant that willingly directs awakened tree ants in repairing the settlement.",
+            "id": "palebark-tree-ant",
+            "name": "palebark tree ant",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "koblin scout"
+            ],
+            "description": "A stealthy koblin who insists Hal's vanished allies are still alive and appoints themself his silent protective shadow. The bodyguard remains close while Hal begins stabilizing the damaged settlement.",
+            "id": "koblin-bodyguard",
+            "name": "koblin bodyguard",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior ranger sought for help as the settlement faces a potentially fatal shortage of medicine.",
+            "id": "angram",
+            "name": "Angram",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elf combatant who volunteers to visit the confined gold dragon in Hal's place. Mira is also avoiding questions from Noth, leaving part of her immediate purpose unresolved.",
+            "id": "mira",
+            "name": "Mira",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An injured ranger who has lost function in one eye and joins Hal's construction group so she can continue contributing.",
+            "id": "myla",
+            "name": "Myla",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A figure whom Mira suspects of involvement in the disappearance of Hal's companions, leaving their survival possible.",
+            "id": "komachi",
+            "name": "Komachi",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "caged dragon"
+            ],
+            "description": "A confined dragon within the mountains who aids the settlement from afar. The dragon sends a display of fire over the valley that creates a temporary protective ward and raises morale.",
+            "id": "gold-dragon",
+            "name": "gold dragon",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A person whose individual trail Hal recognizes while testing Relentless Pursuit.",
+            "id": "yesel",
+            "name": "Yesel",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A stealthy local creature that asks to enter Hal's shadow space and secures conditional nonaggression between its people and Brightsong.",
+            "id": "boogie-negotiator",
+            "name": "boogie negotiator",
+            "reveal": {
+              "chapter": 38
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "tribal guide"
+            ],
+            "description": "A tribal guide who brings Hal to a confidential meeting and treats him with greater caution and respect than before.",
+            "id": "tribal-scout-leader",
+            "name": "tribal scout leader",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "scout leader's sister"
+            ],
+            "description": "The tribal scout leader's sister and the leader who previously supplied Hal's settlement with protective branches. Her reasons for giving that aid remain unknown when Hal first learns her identity.",
+            "id": "tribal-war-leader",
+            "name": "tribal war leader",
+            "reveal": {
+              "chapter": 42
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Vorax's small pink slime companion, hidden for safety before the battle. When Vorax does not return, the slime leaves its refuge to search for him.",
+            "id": "pink-slime",
+            "name": "pink slime",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former associate of monster tamers who advises Noth about rare healing slimes. Rondo understands their medical value and becomes an important source of practical knowledge during the settlement's illness crisis.",
+            "id": "rondo",
+            "name": "Rondo",
+            "reveal": {
+              "chapter": 68
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "tavern owner"
+            ],
+            "description": "A tiefling tavern owner in a western city who observes a horned youth confront a local lord. He intervenes after the lord uses an enchanted ring to immobilize the youth, while preserving an unspecified longer plan.",
+            "id": "tiefling-tavern-owner",
+            "name": "tiefling tavern owner",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "young glaive user"
+            ],
+            "description": "A horned tiefling youth whose speed and shadowy magic attract the city operative's attention. A local lord uses a sapphire ring to immobilize him after he defeats several attackers.",
+            "id": "horned-tiefling-youth",
+            "name": "horned tiefling youth",
+            "reveal": {
+              "chapter": 80
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Founder who enters an ancient tower with drow companions and claims knowledge of earlier versions of events. Rinbast intends to release a sealed destructive creature against Hal's settlement to preserve the future he expects.",
+            "id": "rinbast",
+            "name": "Rinbast",
+            "reveal": {
+              "chapter": 94
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "prismatic mage"
+            ],
+            "description": "An apparition within the ancient dungeon who claims Hal's sigil and demands its return. The mage says Hal cannot defeat the immense white serpent and temporarily shields him from the abyss after he refuses to surrender.",
+            "id": "ancient-mage-apparition",
+            "name": "ancient mage apparition",
+            "reveal": {
+              "chapter": 140
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A dwarf equipment specialist recently well enough to resume work after treatment from Noth. He provides Hal with rubies and explains useful principles of armor production.",
+            "id": "dwarf-gem-crafter",
+            "name": "dwarf gem crafter",
+            "reveal": {
+              "chapter": 106
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A koblin inventor working from the resistance base beneath the city district. She reports restoring a walking golem for the underground operation.",
+            "id": "koblin-inventor",
+            "name": "koblin inventor",
+            "reveal": {
+              "chapter": 83
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A dagger-using apprentice under the city operative. The apprentice helps clear monster-infested tunnels but hesitates to press attacks as deeply as the operative advises.",
+            "id": "city-operatives-apprentice",
+            "name": "city operative's apprentice",
+            "reveal": {
+              "chapter": 112
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A small poble companion traveling with the missing group. The companion sponsors their refuge at an extradimensional resort while they remain stranded away from Aldim.",
+            "id": "poble-companion",
+            "name": "poble companion",
+            "reveal": {
+              "chapter": 148
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B09L5JLSXK",
+            "type": "community"
+          }
+        ],
+        "work": "mist-wardens"
+      },
+      "recaps": {
+        "ending": "Hal restores the wounded ancient dungeon, then survives its immortal guardian by draining Perfect Rebirth from the creature and allowing it to kill him. He revives with the stolen trait, and the dungeon binds the stronger creature as its new guardian. The victory leaves Hal carrying incompatible Dark Weave Mana, with blue-glowing eyes and uncertain lasting changes. The settlement survives, the evolved mana tree helps open a route across worlds, and Ashera, Elora, Durvin, Vorax, and the other vanished allies return to Aldim. Vorax's apparent death during the final battle proves to have been the destruction of a mimic duplicate. Noth reunites with Hal and they reaffirm their love, while Besal emerges more corporeal and scouts the immense underground network linking ancient dungeons. Rinbast remains free, the city resistance remains active, and Hal postpones a direct attack. The underground city may instead become a trial target and staging point for the conflict ahead.",
+        "in_short": "After his final communion with Besal, Hal rebuilds the battle-damaged settlement while searching for Ashera, Elora, Durvin, Vorax, and the other vanished allies. He incorporates peaceful monsters, supports Noth's development of lifesaving medical slimes, delegates leadership, expands housing and production, and grows the mana tree toward the level needed for a rescue. Rinbast releases an immortal white serpent against the settlement, while Hal discovers and restores a wounded living dungeon beneath the region. Using the dungeon and the evolved tree, Hal opens a route that brings the missing party home through dangerous world shards. He then steals Perfect Rebirth from the serpent, dies, revives, and leaves the creature bound as the dungeon's guardian. All missing allies are recovered, including Vorax, whose apparent death was a duplicate. Hal survives with altered magic and turns his attention toward the underground network, Rinbast, and the city resistance.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Hal is a Founder, Beastborn, and protector of the Bravers Guild. Besal is his inner counterpart and fate-bound partner, while Noth is Hal's closest companion and a former Reaper. Hal's allies include Ashera, ranger Elora, dwarf leader Durvin, mimic Vorax, Angram, and Mira. Together they have established a settlement in the Shiverglades, where survival depends on the guild, its developing mana tree, and alliances with both ordinary peoples and monsters. The new volume begins in the immediate aftermath of a major battle, with Hal and Besal facing the final stage of their Dark Communion.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal and Besal complete their final Dark Communion by rejecting a forced choice between knowledge and military protection. Their shared vision combines learning, care for vulnerable people, and collective defense, bringing them to full synchronization while preserving their separate identities. They emerge to find the settlement badly damaged. Ashera, Elora, Durvin, Vorax, and other allies vanished in a flash, but the guild does not list them as dead. With defenses breached, medicine scarce, and many residents wounded, Hal accepts interim leadership. He refuses to make injured people rebuild and instead recruits willing monster allies for labor. The settlement advances into a homestead, gaining a road, a central stone arch, and improved production, but the arch remains open. A gold dragon grants a temporary ward. As winter approaches, Hal organizes wall work, housing plans, and resource production, discovering that tree ants and wartlings can accelerate construction without displacing ordinary workers.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The immediate earthen defenses are completed, though the gateway still lacks a gate. Hal sorts battle loot with the crafting group and begins planning stronger stone walls, guard towers, housing, and production. Grief over the missing companions delays his review of personal rewards. Mira then reveals that strengthening the mana tree may provide a way to retrieve the vanished party, turning settlement growth into part of the rescue effort. Hal reviews the rewards from his communion with Besal, including stronger Beastborn powers and access to a Zenith ability. He also confronts the legacy of a slain numbered soul whose power he inherited, accepting responsibility for the killing without treating it as justified. Rather than discard that power, he resolves to use it to protect the settlement and free others held in similar bondage. He has not yet made the irreversible choice between unlocking Zenith abilities and converting them into class levels.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal completes his reward choices and tests his new movement and tracking abilities in the Shiverglades. Relentless Pursuit lets him distinguish individual trails, including those of Angram and Yesel, while Reliable Footing allows controlled movement over difficult surfaces. A stealthy local creature approaches him and establishes a conditional nonaggression agreement between its people and the settlement. After finally reviewing the battle's deferred gains, Hal advances Beastborn and confirms that the homestead and mana tree are growing despite the losses. He refuses to sacrifice valuable sigils merely to absorb another magical mark and leaves his final class slot open. The battle aftermath now gives way to organized rebuilding, while the settlement continues to hope that growth will lead to the missing companions.",
+            "through": {
+              "chapter": 39
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A tribal scout leader warns Hal that founding the Bravers has altered relations among the twelve tribes. She becomes his instructor because mistakes in greeting or custom could provoke wider conflict. Hal chooses the Heart's Blood path, deepening his affinity with monsters and gaining stronger Beast Magic, but he must now accept monster quests when offered. The change also lets him speak a closely guarded tribal language he never learned, a sign that may inspire either respect or hostility. Hal accepts a binding obligation to continue his instruction and successfully performs the formal greetings. Noth urges him to acknowledge the hope his leadership gives the settlement, and the two affirm their intimate commitment. Hal then incorporates a group of peaceful slimes led by Vorax's missing companion. By controlling their diets, Hal and Noth develop specialized slimes that can clear wood, stone, vegetation, and soil. The first lumber operation is completed, beginning a sustainable supply of building material.",
+            "through": {
+              "chapter": 54
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noth secretly completes a class quest and becomes a Monster Tamer, choosing a new identity distinct from her former life as a Reaper. She trains the slimes as a coordinated force and experiments with specialized forms. Their work is interrupted when giants attack the settlement's open approach. Hal, Mira, Noth, the koblin bodyguard, the tribal scout leader, and the defenders hold the line while the unfinished gateway remains a dangerous weakness. Mira carries the badly weakened Hal after two giants flee. Hal spends nearly all his remaining power to kill one, and Mira kills the other. Unknown watchers withdraw farther into the Shiverglades after witnessing the giants' defeat. The immediate assault ends with no giant survivors, but the retreating observers and the settlement's open defenses remain unresolved threats.",
+            "through": {
+              "chapter": 63
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noth discovers that rare slimes can purge toxins and reorganizes them into a medical force. Reapers arrive to claim patients they expect to die, and Noth accepts a one-night challenge to prevent every death in the healing tent. Rondo, who understands monster taming and unusual slimes, helps her identify what the creatures can do. Noth directs treatment through the night, using the slimes to draw poison from the sick while managing their limits and the patients' changing conditions. The effort succeeds without a single death. The settlement's medical collapse is reversed, its exhausted workforce begins to return, and Noth gains seven class crystals from the encounter. Her success confirms both the value of peaceful monsters and the practical strength of her Monster Tamer path. With the immediate illness crisis broken, Hal can shift from emergency improvisation toward permanent leadership, production, and the longer rescue plan.",
+            "through": {
+              "chapter": 71
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The healed residents expand the available workforce from a small remnant toward a functional community. Rondo persuades Hal that he cannot personally perform every essential task, and Hal begins organizing the settlement as a lasting home. Rondo becomes quartermaster, Noth takes command of defense, Angram leads scouting, Mira leads expeditions, and craft and construction specialists receive their own authority. Hal remains responsible as Founder but commits to coordination rather than constant direct control. The leadership team prioritizes recruitment of recovered workers, stable resources, completion of the gate, and safe investigation within the Shiverglades. Construction and guild activity are confirmed as the best ways to strengthen the mana tree, tying ordinary settlement work directly to the hoped-for return of the missing allies. The new structure gives the settlement defined responsibility for supplies, defense, exploration, gathering, and building instead of relying on Hal for every decision.",
+            "through": {
+              "chapter": 75
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal uses bonecrafting to make powerful tools for settlement specialists, prioritizing production speed because cold and hunger remain more urgent than perfect workmanship. Elsewhere, a tiefling tavern owner allied with Hal intervenes when a local lord uses an enchanted sapphire ring to immobilize a horned youth. The operative steals the ring, recruits the youth, and expands a covert resistance based in koblin-controlled tunnels. Repaired golems and contacts within the city watch strengthen the hidden organization. Back at the settlement, Noth learns of her defense appointment and inspects the walls with Rondo. They identify the missing gate, poor lookout positions, inaccessible crystal-covered sections, and unfinished tunnels as critical weaknesses. Noth also finds class crystals associated with people she saved. The crystals suggest concealed histories or abilities among residents, but provide no proof that anyone is hostile. The settlement therefore needs stronger defenses without turning uncertainty into accusation.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Noth and Rondo turn the defense survey into a staged plan centered on the gate, lookout positions, patrol routes, and possible fallback barriers. Hal continues crafting and construction while trying to balance shelter, food, materials, and security. The mana tree's progress remains the clearest path to recovering the vanished party, so Hal gives settlement growth priority over other attractive upgrades. He and Noth confirm that new buildings contribute heavily to the tree's advancement and agree to delay ruin exploration until the community is better prepared. Their private recovery plan joins emotional urgency to practical development: housing, a quarry, production, defenses, and guild activity all serve both immediate survival and the future rescue. The settlement is no longer merely repairing battle damage. Its leaders are deliberately building the capacity to operate beyond the protective boundary, investigate local threats, and reach the mana-tree level Hal believes can restore his absent companions.",
+            "through": {
+              "chapter": 92
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rinbast enters an ancient tower with drow companions and claims knowledge of repeated versions of events. Believing an expected timeline must be restored, he prepares to release a sealed white serpent that has destroyed Hal's settlements before. At home, Hal follows Rondo's resource advice, conserving refined materials for future production rather than spending them on short-term upgrades. A physical inventory reveals that the system's supply totals can be inaccurate when goods are not properly tracked. Hal then finds a bone containing unstable raw magic and claims it for the Bravers Guild. The legendary vessel raises both guild and tree levels and unlocks an academy option, but its ownership may make Hal a target because death appears to be the known means of transfer. Noth reveals class crystals connected to rescued residents. Hal authorizes discreet observation rather than confrontation, leaving their identities and intentions unresolved.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal begins producing standardized bone armor while the koblin scout quietly coordinates observation of residents linked to unexplained class crystals. The investigation remains precautionary, with no confirmed enemy inside the settlement. Angram leads the first guarded scouting beyond the boundary and proves that mana-tree signets resist Shades Blight, though the contact still causes pain. Continued work outside the settlement advances the guild and tree, opening a safer path for gathering and exploration. Two longhouses and a quarry are completed, the gate begins to take shape, and Noth expands the trained defense force. Mira gathers a broader expedition corps, while Hal partners with a tribal leatherworker to turn fused bone and leather into practical armor. The settlement now has scalable equipment production and more permanent housing, but food, space, spark reserves, and repeated attacks remain pressures. Hal and Noth commit to investigating the nearby ruins together once preparations are complete.",
+            "through": {
+              "chapter": 110
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The city operative continues clearing tunnels and undermining the ruling order, though he worries that his devotion to Hal could help create another tyrant. Hal assembles a six-person ruin expedition with Noth, Angram, Yesel, the koblin scout, and the tribal scout leader. The guide's fear of going underground appears unusually deep, but her knowledge is essential because the Shiverglades resist the rangers' normal sense of the land. The party enters a collapsed ridge ruin and finds damaged runes leaking power from an active system. After Hal breaks through sealed doors, the site is identified as a severely wounded living dungeon. The discovery leaves him with mutually exclusive choices to restore the dungeon or destroy its core, and he has not yet selected either course.",
+            "through": {
+              "chapter": 117
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The expedition receives a new whip-sword for Hal and passes a blood-locked door that exposes the tribal scout leader's unexplained connection to the dungeon. A trap afflicts Angram and Yesel with repeating acidic explosions, and Angram is badly burned during the escape. In a lower chamber filled with luminous magical plants, the party fights a Ruinous Diremite. Noth briefly restrains the monster and persuades the plants to protect the injured, while the scout leader reveals fire, wind, barrier, dagger, and talisman magic. Yesel is buried, Hal is paralyzed, and the creature's Void Call nearly pulls Noth to her death. The group finally collapses the attack, with the koblin scout receiving credit for the kill. Hal and Besal absorb the monster's essence together, leaving Hal unconscious while Besal guards him. The expedition survives, but several members are injured and the route remains dangerous.",
+            "through": {
+              "chapter": 125
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After recovering, Hal sends Angram and Yesel back to organize support, secure the route, and bring Mira's adventurers to assess the dungeon's resources. He continues deeper with Noth, the koblin scout, and the tribal scout leader. Inside an ancient recombinator, Hal gives up part of his own essence to create a replacement dungeon core. If he removes it or fails to place it in the dungeon heart, the dungeon will die permanently and his reduced health will not recover. The koblin scout trades gems with him, and Hal develops the lore needed to identify their uses. Advancing Beastborn cures his fever and restores his resources. As the party travels, the tribal guide demonstrates unexplained knowledge of doors, routes, and defaced runes, but refuses to discuss its origin. Hal now carries a core made partly from himself and must reach the heart before whoever wounded the dungeon can stop its restoration.",
+            "through": {
+              "chapter": 132
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While Hal remains underground, an immense white serpent approaches the settlement. The defenders organize concealed weapons and concentrate on protecting the living mana tree, recognizing that the creature appears to have waited for Hal's absence. In the ancient dungeon, Hal carries a replacement core toward the dungeon heart with Noth and two other companions. The core awakens damaged mechanisms and resident creatures as the party advances. Elsewhere underground, a separate tiefling-led expedition finds altered tunnels and a fleeing monster swarm before a red-masked figure and two feared associates confront the group. Hal learns of the serpent's attack through the living tree and works to extend its roots into the dungeon. A prismatic mage claims responsibility for creating the serpent and briefly shields Hal from an abyssal threat. At the settlement, the defenders fail to halt the serpent. It breaks into the mountain toward the confined gold dragon's lair, leaving its purpose there unresolved.",
+            "through": {
+              "chapter": 141
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal restores the dungeon and gains access to its powers, but an ancient mage apparition claims his sigil and identifies the white serpent as an immortal creature of the mage's own creation. The serpent attacks the weakened gold dragon and repeatedly returns stronger after death. Hal, Noth, Mira, the tribal scout leader, and the settlement defenders can delay it but cannot end the cycle by ordinary killing. Hal uses dungeon control to move the battle and temporarily entomb the creature, intending to turn it into the dungeon's guardian. At the same time, he draws power through the dungeon into the mana tree. The tree reaches level 10 and evolves, surviving the immense strain as Hal uses it as an anchor for a breach across worlds. His allies continue impairing the serpent while Hal searches through distant world shards for the soul-level connection to the missing party.",
+            "through": {
+              "chapter": 147
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal's breach reaches Ashera, Elora, Durvin, Vorax, and the other missing allies, who are alive in an extradimensional refuge. Because Hal can only maintain an anchor, they must cross a chain of unstable worlds themselves. Their route passes through an immense library, a peaceful shard, mountains threatened by a consuming darkness, and a despairing swamp where Elora injures her ankle. The travelers learn to use convincing door-like forms as gateways and repeatedly escape moments before each route closes. In the final shard, an inhuman hunter pursues them across a collapsing bridge while a koblin helps Elora and the group carries its injured members. They reach the last opening before Hal's bridge fails and return to Aldim beside the ongoing serpent battle. The rescue succeeds, but the returned companions are physically weakened and arrive in the middle of the settlement's greatest threat.",
+            "through": {
+              "chapter": 153
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The returned party cannot fight effectively. Vorax draws the serpent's attack and appears to die, driving Hal to drag the creature into the dungeon and reshape its lair into a succession of traps. Repeated deaths reveal that the serpent's defenses reset and its rebirth makes it increasingly dangerous. When Hal loses direct dungeon control, he turns to escalating weird strain despite severe injury and the risk of permanent mutation. Besal helps him continue as his legs fail and the creature breaks free of restraints. Hal completes Soul Drain and takes Perfect Rebirth from the serpent, then deliberately allows it to kill him. In the underground city, Hal's allies encounter hooded agents and a bandaged figure thought dead. A red light disables the agents, while the horned recruit's apparent foreknowledge raises new doubts. Hal ends the chapter dead, with the stolen rebirth trait holding the key to his plan.",
+            "through": {
+              "chapter": 158
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Hal's death causes the dungeon to bind the stronger serpent as its new guardian. He revives with the stolen Perfect Rebirth, but the process gives him incompatible Dark Weave Mana that consumes his ordinary magic and leaves him in pain. Hal reaches the core chamber beyond the guardian and proposes a bargain that could let the dungeon control the creature's rebirth. Noth, having sensed his death, leads a rescue party and reunites with him through a mana gateway. They reaffirm their love, though Hal's blue-glowing eyes signal an unresolved change. Hal and Besal then find an immense underground network linking ancient dungeons across Aldim. Hal declines an immediate strike against Rinbast, but accepts the underground city as a possible staging point and sends Besal scouting. The recovery quest confirms every missing ally has returned. Vorax is alive: the serpent destroyed a mimic duplicate. The settlement survives, while Rinbast, the city conflict, the ancient mage, and Hal's altered condition remain open.",
+            "through": {
+              "chapter": 161
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B09L5JLSXK",
+            "type": "community"
+          }
+        ],
+        "work": "mist-wardens"
+      }
+    },
+    "moby-dick-or-the-whale": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, a thoughtful and restless young man who goes to sea whenever life on land wears him down. Drawn this time to whaling, he travels to New Bedford and then Nantucket to sign aboard a whaler. Observant, reflective, and given to long digressions on whales and the sea, he tells the story of the voyage as its lone witness, an ordinary sailor swept up in a captain's private purpose.",
+            "id": "ishmael",
+            "name": "Ishmael",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A skilled harpooneer from a distant island in the South Seas, the son of a chief, heavily tattooed and carrying a small carved idol and a razor-sharp harpoon. Forced to share a room with Ishmael at a crowded inn, he first alarms the narrator but proves calm, generous, and dignified. He and Ishmael swear a close friendship and ship aboard the same whaler together.",
+            "id": "queequeg",
+            "name": "Queequeg",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A ragged, wild-eyed stranger who accosts Ishmael and Queequeg on the Nantucket waterfront after they have signed on. He hints darkly at the ship's captain and at dangers awaiting the voyage, speaking in riddles that the two sailors brush aside, though his warnings linger uneasily.",
+            "id": "elijah",
+            "name": "Elijah",
+            "reveal": {
+              "chapter": 19
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The whaler's first mate, an earnest, upright Quaker from Nantucket. Brave and highly capable at his work, he is also prudent and reverent, unwilling to court danger for its own sake. Of all the officers he alone openly questions the captain's aims, and his conscience makes him the chief voice of caution aboard the ship.",
+            "id": "starbuck",
+            "name": "Starbuck",
+            "reveal": {
+              "chapter": 26
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The second mate, an easygoing, good-humored man from Cape Cod who faces the perils of whaling with a pipe clenched in his teeth and a joke ready. Fearless in the boats and fatalistic by temperament, he takes danger lightly and rarely lets anything trouble him for long.",
+            "id": "stubb",
+            "name": "Stubb",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The third mate, a short, sturdy, pugnacious man from Martha's Vineyard who treats whales as personal enemies and hunts them with blunt, cheerful aggression. He shows little of the awe others feel toward the great creatures, seeing them mainly as work to be done.",
+            "id": "flask",
+            "name": "Flask",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The captain of the whaler, a grim, imposing old seaman who keeps to his cabin as the voyage begins and appears on deck only after the ship is well out to sea. One of his legs has been replaced by a length of whale ivory, lost to a whale on an earlier voyage. Commanding and remote, he broods over some private purpose that seems to weigh on him far more than the ordinary business of the hunt.",
+            "id": "ahab",
+            "name": "Ahab",
+            "reveal": {
+              "chapter": 28
+            }
+          },
+          {
+            "description": "A gigantic white sperm whale, notorious among whalers for its unusual pale color, immense size, cunning, and ferocity. It has maimed and killed men across many encounters, and it is the whale that tore off the captain's leg. To the captain it is the single object of an all-consuming hunt.",
+            "id": "moby-dick",
+            "name": "Moby Dick",
+            "reveal": {
+              "chapter": 36
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A mysterious Parsee, kept hidden aboard the ship until the first chase, when he emerges as the leader of the captain's own secret boat crew. Silent, shadowy, and seemingly devoted to the captain, he utters cryptic prophecies about how the captain will meet his end, and he moves through the voyage like an omen.",
+            "id": "fedallah",
+            "name": "Fedallah",
+            "reveal": {
+              "chapter": 48
+            }
+          },
+          {
+            "description": "A young Black cabin boy, small and once cheerful, who is left alone in the open ocean after leaping from a whaleboat during a chase. The terror of being abandoned amid the vast sea unhinges his mind, and afterward he wanders the deck strangely altered, speaking in a dreamlike way. The captain, moved by him, keeps the boy close.",
+            "id": "pip",
+            "name": "Pip",
+            "reveal": {
+              "chapter": 93
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-or-the-whale"
+      },
+      "recaps": {
+        "ending": "Ahab's three-day hunt for Moby Dick ends in total destruction. The whale wrecks the whaleboats and pulls the Parsee Fedallah beneath the water, fulfilling his cryptic prophecies, then attacks the Pequod itself, staving in the hull so that the ship and almost every man aboard go down. In a final throw Ahab strikes the whale, but the harpoon line snaps taut around his neck and yanks him out of the boat and under the sea. The suction of the sinking ship draws the last boats and men down after it. Only Ishmael is thrown clear. He clings to a wooden coffin that had earlier been sealed and fitted as a life-buoy, and it bobs to the surface to keep him afloat. After a day and a night adrift, he is picked up by the Rachel, a ship still searching for her own crew lost to the whale, whose captain Ahab had refused to help. Ishmael survives to tell the tale; everyone else aboard the Pequod is lost.",
+        "in_short": "Ishmael, a wandering young man, ships aboard the Nantucket whaler Pequod, befriending the harpooneer Queequeg on the way. The ship's captain, Ahab, soon reveals that his real purpose is not to gather oil but to kill Moby Dick, the great white sperm whale that took his leg. He binds the crew to his obsession over the objections of his prudent first mate, Starbuck. Across a long voyage the ship meets other whalers, processes its catch, and follows the prophecies of Ahab's shadowy Parsee harpooneer, Fedallah, toward the quarry. When Moby Dick is finally found, Ahab pursues it for three days. The whale destroys the boats, drags Fedallah under, and rams the Pequod, sinking it with nearly all aboard. Ahab is pulled to his death by his own harpoon line. Ishmael alone survives, kept afloat on a coffin until another ship rescues him.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Ishmael, weary of life ashore, travels to New Bedford meaning to sign on for a whaling voyage. At a crowded inn he is obliged to share a bed with a harpooneer, Queequeg, a tattooed islander who at first alarms him but proves steady and generous, and the two quickly become close friends. Ishmael visits a seamen's chapel, where a former harpooneer now serving as preacher delivers a sermon on Jonah and the whale. Resolved to ship together, the pair set out for the whaling port of Nantucket.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In Nantucket, Ishmael and Queequeg sign aboard the Pequod, a weathered whaler owned by two thrifty Quakers who haggle over their shares of the voyage. The ship's captain, Ahab, keeps out of sight, and unsettling hints gather that he is a driven and damaged man. On the waterfront a wild stranger named Elijah mutters dark warnings about the voyage. The ship takes on its crew, and on a cold winter's day it sails out from the island into the open Atlantic to hunt whales for their oil.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The ship's officers and harpooneers come into view: the upright first mate Starbuck, the easygoing second mate Stubb, the aggressive third mate Flask, and a company of skilled harpooneers. At last Ahab himself appears on deck, grim and commanding, one leg replaced by a length of whale ivory. He paces and broods over some private matter, and the crew begins to sense that the ordinary business of whaling is not the whole of what drives their captain.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ahab gathers the crew and reveals his true aim: not oil but revenge on Moby Dick, the white whale that tore away his leg. He nails a gold coin to the mast as a prize for the first man to sight the creature and binds the men to his hunt with an oath. Only Starbuck objects, uneasy at pursuing a captain's private vengeance. Between these scenes the narrator lays out the lore of whales and the trade of whaling. The Pequod's first lowering after a distant pod ends in a strange surprise among the boats.",
+            "through": {
+              "chapter": 47
+            }
+          },
+          {
+            "scope": "book",
+            "text": "On the first chase, Ahab's own whaleboat is crewed by a hidden band led by Fedallah, a shadowy Parsee who now steps into view. The Pequod meets other ships and trades news and stories, some carrying rumor of the white whale and the harm it has done. The men kill and process whales, stripping blubber and boiling it down into oil in the ship's try-works. Ahab, single-minded, cares only for word of Moby Dick and pores over charts to reckon where the whale is likely to be found.",
+            "through": {
+              "chapter": 70
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The voyage continues through further meetings with passing whalers, each encounter adding to the picture of Moby Dick's strength and ferocity and the losses it has caused. The young cabin boy Pip, left behind in the open sea, is so overcome by terror that his mind gives way, and he drifts about the deck strangely changed. Ahab's obsession only hardens: he grows oddly tender toward the maddened boy while pressing every rumor and clue toward his quarry, and Fedallah's cryptic prophecies continue to shadow him.",
+            "through": {
+              "chapter": 100
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the Pequod nears the whale's likely grounds, storms, omens, and tense encounters multiply. The ship meets the Rachel, whose captain begs Ahab to help search for a boat lost in a recent clash with Moby Dick, a boat carrying his own son; Ahab refuses and sails on. In a rare quiet moment on a calm sea, Starbuck pleads with Ahab to turn homeward toward his wife and child, and for an instant the captain seems to waver before his fixed purpose reclaims him and the hunt goes on.",
+            "through": {
+              "chapter": 132
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Moby Dick is sighted, and Ahab hunts it over three days. The whale smashes the whaleboats and drags Fedallah under, fulfilling his prophecies, and by the last day the Parsee's body is seen lashed to the whale's back. On the third day the whale turns on the Pequod itself, staving in the hull so that the ship goes down with nearly all aboard. Ahab hurls his final harpoon, but the flying line loops around his neck and pulls him from the boat to his death. The sea closes over the wreck, and the voyage ends in ruin.",
+            "through": {
+              "chapter": 135
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "moby-dick-or-the-whale"
+      }
+    },
+    "mockingjay": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator, twice a survivor of the Hunger Games, now living in the underground District 13 after the Capitol destroyed her home. Traumatized, grieving, and mistrustful of those around her, she is pressed to become the Mockingjay, the public face of the rebellion against the Capitol. Torn between the cause, her fear for the captured Peeta, and her hatred of President Snow, she agrees to lead only on her own terms.",
+            "id": "katniss-everdeen",
+            "name": "Katniss Everdeen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Katniss's fellow victor from District 12, captured by the Capitol after the arena breakout. He appears on Capitol broadcasts urging a ceasefire, and Katniss cannot tell how much is coercion. His fate becomes one of her central fears as the rebellion decides how far to go to reach him.",
+            "id": "peeta-mellark",
+            "name": "Peeta Mellark",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Katniss's closest friend from District 12, now a committed rebel soldier in District 13. Fiercely loyal to Katniss and hardened by the war, he helps design military strategy and weapons, and his growing willingness to accept ruthless tactics increasingly sets him apart from her.",
+            "id": "gale-hawthorne",
+            "name": "Gale Hawthorne",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of District 13, a cold and controlled figure who commands the rebellion against the Capitol. She recognizes Katniss's value as a symbol and negotiates the terms of her cooperation, keeping tight discipline over her tightly regimented underground society.",
+            "id": "president-alma-coin",
+            "name": "President Alma Coin",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "The ruler of the Capitol, still holding power as the districts rise against him. Ruthless and calculating, he uses the captured Peeta and brutal reprisals to strike at Katniss and to hold the loyalty and fear of Panem's population.",
+            "id": "president-snow",
+            "name": "President Snow",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The veteran mentor from District 12, now sober by necessity within District 13's strict order. Cynical but shrewd, he continues to advise Katniss and to steer how she is presented to the districts, understanding better than most how the cause uses people.",
+            "id": "haymitch-abernathy",
+            "name": "Haymitch Abernathy",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Katniss's younger sister, maturing quickly as she trains to become a doctor within District 13. Steady and compassionate, she is the person Katniss most wants to protect, and the reason Katniss keeps fighting.",
+            "id": "primrose-everdeen",
+            "name": "Primrose Everdeen",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The District 4 victor rescued from the Quell arena, now sheltering in District 13 and undone by worry for Annie Cresta, the woman he loves, who is held by the Capitol. Fragile at first, he steadies as the rebellion advances and joins its fight.",
+            "id": "finnick-odair",
+            "name": "Finnick Odair",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The former Capitol Head Gamemaker revealed as a rebel organizer, now directing the propaganda campaign from District 13. He treats the war partly as a production, staging Katniss's broadcasts to rally the districts.",
+            "id": "plutarch-heavensbee",
+            "name": "Plutarch Heavensbee",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A past victor from District 4 whom Finnick loves, left mentally fragile by her own Games and held prisoner in the Capitol. Freeing her is one of Finnick's deepest hopes during the war.",
+            "id": "annie-cresta",
+            "name": "Annie Cresta",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A senior District 13 officer and one of Coin's trusted soldiers, assigned to guard and command Katniss. Level-headed and honest, he becomes one of the few figures Katniss genuinely trusts, and he takes charge of the unit she joins in the Capitol.",
+            "id": "boggs",
+            "name": "Boggs",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The abrasive District 7 victor, rescued from Capitol captivity that has left her badly damaged. Bitter and defiant, she trains alongside Katniss and pushes herself back toward the fight despite her ordeal.",
+            "id": "johanna-mason",
+            "name": "Johanna Mason",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mockingjay"
+      },
+      "recaps": {
+        "ending": "The rebellion takes the Capitol, but at the gates of President Snow's mansion a wave of parachute bombs kills a crowd of Capitol children and then the rebel medics who run to help, among them Katniss's sister Prim. Katniss is gravely burned and loses the person she had fought the whole war to protect. Snow, captured and awaiting execution, tells her the lethal bombing was not his but a rebel move, and Katniss becomes convinced that President Coin ordered it to break the Capitol's will and clear her own path to power. When Coin proposes a final Hunger Games using Capitol children and Katniss is granted the right to execute Snow, Katniss instead turns her arrow on Coin and kills her. Snow dies in the uproar that follows. Judged mentally unfit rather than tried, Katniss is returned to the ravaged District 12. Gale, whose ruthless tactics she can no longer separate from Prim's death, takes a post far away, and their friendship ends. Slowly, Peeta returns to her, and years later the two have married and are raising children, at peace but permanently marked by all they survived.",
+        "in_short": "Sheltering in the underground District 13, a traumatized Katniss agrees to become the Mockingjay, the symbol of the rebellion, in exchange for concessions including the rescue of Peeta. Filmed propaganda spots rally the districts as the war spreads. When Peeta and other captives are freed from the Capitol, Peeta returns brainwashed to kill Katniss, and only slowly recovers. The rebels win district after district and finally push into the Capitol. Katniss joins a squad meant to film the advance, but it is drawn into the lethal, booby-trapped streets and sewers, where many die, including Finnick. Reaching President Snow's mansion amid a crowd of Capitol children, Katniss watches parachute bombs kill the children and the rebel medics who rush in, among them her sister Prim. Badly burned, she survives; the Capitol falls and Snow is captured. Katniss comes to believe President Coin engineered that final bombing to seize power. Given the chance to execute Snow, she kills Coin instead. Snow dies in the chaos, Katniss is judged unfit and sent home, and years later she and Peeta build a quiet life together in the ruins of District 12.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Katniss Everdeen twice survived the Capitol's Hunger Games. In the first, she volunteered in place of her sister Prim, was mentored by Haymitch, and won alongside Peeta Mellark by threatening a double suicide with poison berries, an act that embarrassed President Snow and stirred rebellion across the districts. Forced back into a special Quarter Quell fought among past victors, she and Peeta struggled through a booby-trapped arena until Katniss destroyed its force field with a wire-wrapped arrow. She was pulled from the arena by a secret rebel plot led by the Head Gamemaker Plutarch Heavensbee and her mentor Haymitch: District 13, long believed wiped out, had survived underground and was leading an uprising. Katniss escaped, but Peeta was captured by the Capitol, and District 12 was firebombed into rubble in retaliation.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Katniss, injured and grieving, adjusts to life in the strict, regimented District 13 under President Coin. She visits the ashes of District 12 and confronts how completely her home was destroyed. Coin and Plutarch want her to become the Mockingjay, the living symbol of the rebellion, and after much resistance she agrees, on the condition that Peeta and the other captured victors be rescued and pardoned. Peeta, meanwhile, appears on Capitol broadcasts calling for a ceasefire, and Katniss cannot tell whether he is a traitor or a hostage. The rebels begin filming propaganda spots to rally the districts, and a Capitol bombing of a hospital full of wounded drives Katniss to speak out with real fury, giving the rebellion its first powerful footage.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The war spreads as district after district turns against the Capitol, and Katniss's broadcasts fuel the uprising. A daring raid frees Peeta and the other captive victors from the Capitol, but Peeta returns transformed: the Capitol has tortured and conditioned him to see Katniss as a deadly enemy, and he tries to kill her. His slow, uncertain recovery becomes a constant grief. Finnick, steadied by the rescue of Annie Cresta, marries her in District 13. The rebels press a hard campaign against strongly loyal District 2, capturing its mountain stronghold at great cost, which brings the Capitol itself within reach as the final push nears.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "With the Capitol nearly encircled, Katniss talks her way into the invasion, ostensibly to film propaganda with a special squad rather than fight on the front line. The Capitol's streets have been rigged with deadly traps, the same kind used in the arenas, mapped on a device the squad must navigate. As they advance, the mission turns lethal: their trusted commander Boggs is killed by a trap, and Katniss, half-authorized at best, effectively takes the squad deeper toward Snow's mansion. An unstable Peeta is placed with the unit, and the group is forced underground into the sewers, where the danger only grows and the line between filming the war and fighting it disappears.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In the Capitol's sewers the squad is ambushed by monstrous mutts, and Finnick is among those killed. The survivors reach the surface, where Katniss presses toward Snow's mansion, now ringed by a crowd of Capitol children being used as a shield. Parachutes fall and detonate among the children, and when rebel medics rush in, a second blast kills them too, including Katniss's sister Prim. Katniss is badly burned and shattered. The Capitol falls and Snow is captured. He insists the final bombing was a rebel act, and Katniss becomes convinced that President Coin ordered it to seize power. When Coin proposes one last Hunger Games and Katniss is allowed to execute Snow, she kills Coin instead. Snow dies in the chaos. Judged unfit rather than tried, Katniss returns to a ruined District 12, and in time she and Peeta rebuild a fragile life together.",
+            "through": {
+              "chapter": 27
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "mockingjay"
+      }
+    },
+    "monsters-and-legends": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Ryun is Zach's lifelong friend and one of five companions caught in Earth's integration into the Framework. He wagers his life to obtain the rare Path of the Final End, then wakes beside Zach in a transformed wilderness where monsters have already begun to hunt.",
+            "id": "ryun-nacht",
+            "name": "Ryun Nacht",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Zach is Ryun's lifelong friend and a member of the camping group separated by Earth's transformation. He begins as an uncommon Swordsman, wants to locate their missing companions, and is disturbed by how eagerly Ryun embraces the Framework's opportunities.",
+            "id": "zach",
+            "name": "Zach",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Melody is a member of the camping group that includes Ryun, Zach, Linda, and Henry. She is separated from Ryun and Zach when the Framework transforms Earth and leaves the friends scattered in an unfamiliar wilderness.",
+            "id": "melody",
+            "name": "Melody",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Linda is part of the camping group caught in Earth's integration into the Framework. Zach is romantically interested in her, and finding Linda and the other missing companions becomes his immediate goal after he awakens with Ryun.",
+            "id": "linda",
+            "name": "Linda",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Henry has inserted himself into the camping trip taken by Ryun, Zach, Linda, and Melody. Like Linda and Melody, he is separated from Ryun and Zach when the Framework transforms Earth and the group is scattered.",
+            "id": "henry",
+            "name": "Henry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Dealmaker is a concealed representative of the Framework who exchanges paths, classes, items, and information for essence or other binding consideration. Ryun first meets the broker while choosing how to develop his new power.",
+            "id": "the-dealmaker",
+            "name": "the Dealmaker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Zach"
+            ],
+            "description": "Zacharia Gardner is the full identity of Ryun's friend Zach. An uncommon Swordsman, he makes the world's first confirmed monster kill, gains the First Kill reward, and invests it in rapid early advancement.",
+            "id": "zacharia-gardner",
+            "name": "Zacharia Gardner",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "Ereclaw is an elite dire-wolf alpha in the Twilight Woods. He appears unusually intelligent, studies Ryun during their encounter, and withdraws his pack instead of forcing a fight whose outcome is uncertain.",
+            "id": "ereclaw",
+            "name": "Ereclaw",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Fier is the Black Viper young master attached to the sect's effort to claim the Twilight Woods. He is known as a powerful classer and Lord whose position protects the expedition building a new settlement.",
+            "id": "fier",
+            "name": "Fier",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Anrosh is Kri's mother, a descendant of fourth-iteration Earth, and the widow of a Black Viper warrior. Her late husband's debt leaves both mother and daughter under sect control, and she flees when Fier seeks to claim her as a slave.",
+            "id": "anrosh",
+            "name": "Anrosh",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Kri is Anrosh's young daughter. She escapes Black Viper with her mother and camps in the mountains under the protection of a powerful stranger whose abilities and intentions neither of them yet understands.",
+            "id": "kri",
+            "name": "Kri",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jishh is a surviving Black Viper commander left exposed after Fier's death. Speaking for the remaining expedition members, he asks Ryun for mercy and offers their service in exchange for protection from the sect.",
+            "id": "jishh",
+            "name": "Jishh",
+            "reveal": {
+              "chapter": 27
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Gris is a drake Warden affiliated with the Adventurers Guild in Port Helios. After seeing Zach help capture a murderer, he invites Zach to discuss what comes next.",
+            "id": "gris",
+            "name": "Gris",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Enka is a human spear fighter and former Black Viper subcommander in the stranded Twilight Woods expedition. She joins the settlement's leadership in discussing Ryun's conditional offer of protection and instruction.",
+            "id": "enka",
+            "name": "Enka",
+            "reveal": {
+              "chapter": 33
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Ereclaw"
+            ],
+            "description": "Ereclaw Nacht is the former dire-wolf alpha after a blood contract transforms him into a humanoid wolf and gives him Ryun's surname. He becomes Ryun's blood-contracted partner in a pact linking the forest pack and the settlement.",
+            "id": "ereclaw-nacht",
+            "name": "Ereclaw Nacht",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Shadow Princess is Ryun's awakened sword. After he permanently bonds the weapon, her conscious voice speaks to him through their mental connection.",
+            "id": "shadow-princess",
+            "name": "Shadow Princess",
+            "reveal": {
+              "chapter": 47
+            }
+          },
+          {
+            "aliases": [
+              "Shadow Princess"
+            ],
+            "description": "Kagehime is the name Ryun gives the sentient awakened sword previously called Shadow Princess. Their soul bond strengthens his connection to shadow and allows them to communicate even while she is not physically manifested.",
+            "id": "kagehime",
+            "name": "Kagehime",
+            "reveal": {
+              "chapter": 48
+            }
+          },
+          {
+            "description": "Reyla is a powerful operative searching for her missing twin. When she finds Nayra and her team sealed and held by two probable Wardens, she chooses a rescue designed to prevent interrogation without provoking a larger lethal conflict.",
+            "id": "reyla",
+            "name": "Reyla",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Nayra is Reyla's twin and a fellow covert operative. Her long-distance mental link with her sister goes silent after she and her team are captured and sealed during an operation involving stolen mining materials.",
+            "id": "nayra",
+            "name": "Nayra",
+            "reveal": {
+              "chapter": 56
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Reyla"
+            ],
+            "description": "Reyla Ornn is Nayra's twin and a level-90 Twin Flame Valkyrie. She favors offense, has greater power than her sister, and fights two Wardens as a diversion while her camouflaged partner frees the captives.",
+            "id": "reyla-ornn",
+            "name": "Reyla Ornn",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The forest fortress guardian is a speaking, bark-bodied monster that protects the first anchoring crystal. It is hostile to the chosen challengers and condemns Ereclaw's bond with Ryun.",
+            "id": "forest-fortress-guardian",
+            "name": "the forest fortress guardian",
+            "reveal": {
+              "chapter": 58
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Anrosh"
+            ],
+            "description": "Anrosh Kesh is Ryun's chosen trainee, friend, and town administrator. After managing the settlement in his place, she accepts his support, advances to the Lord Realm on the Path of the Sword, and agrees to keep governing while preparing to fight beside him.",
+            "id": "anrosh-kesh",
+            "name": "Anrosh Kesh",
+            "reveal": {
+              "chapter": 70
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Bound to its post by the Framework, the sentient Yeti King watches over the second anchoring crystal. Although it desires release, it cannot yield the crystal or let the challengers pass without battle.",
+            "id": "yeti-king",
+            "name": "the Yeti King",
+            "reveal": {
+              "chapter": 72
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The Molten King is a sentient ruler stationed at the final anchoring crystal by the Framework. It rejects Ryun's proposal to stand down because the obligation safeguards something important to it, and the two sides begin their decisive fight.",
+            "id": "molten-king",
+            "name": "the Molten King",
+            "reveal": {
+              "chapter": 75
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Jen is Wolf's Grove's building planner. Ryun gives her controlled access to the new town interface and territory map so she can plan housing, workshops, defenses, and other construction for the capital.",
+            "id": "jen",
+            "name": "Jen",
+            "reveal": {
+              "chapter": 79
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The Warden Commander leads the Wardens and is considered one of the most powerful high rankers in the Infinite Realm. The commander summons Zach for an assessment before he can become a full Warden.",
+            "id": "warden-commander",
+            "name": "the Warden Commander",
+            "reveal": {
+              "chapter": 82
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the Empty Sky is a blind, badly burned cultivator held in a collar at the Black Viper estate. She claims a title associated with a historic high-ranker, but her identity has not yet been confirmed.",
+            "id": "ruler-of-the-empty-sky",
+            "name": "the ruler of the Empty Sky",
+            "reveal": {
+              "chapter": 84
+            }
+          },
+          {
+            "description": "Eerv is the peak-Monarch head of the Black Viper sect. He recognizes the leverage provided by a covert operation in his territory and demands increased payment. The sect's missing expedition was led by his nephew.",
+            "id": "eerv",
+            "name": "Eerv",
+            "reveal": {
+              "chapter": 85
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Eerv"
+            ],
+            "description": "Eerv Ji Van is the Black Viper sect head after he offers Ryun the sect's surrender. A Dealmaker-enforced contract binds him and the sect to fifty years of service, while his own ambitions remain part of the bargain.",
+            "id": "eerv-ji-van",
+            "name": "Eerv Ji Van",
+            "reveal": {
+              "chapter": 103
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:B09GC7DY1F",
+            "type": "community"
+          }
+        ],
+        "work": "monsters-and-legends"
+      },
+      "recaps": {
+        "ending": "Ryun escapes Black Viper captivity, recovers the memories hidden behind his mental wall, and accepts that Melody's death and his retaliation made him the World Ender. Eerv Ji Van surrenders Black Viper through a Dealmaker-enforced fifty-year service contract. Ryun takes its territories, renames it the Twilight Melody Sect, and leaves Anrosh in practical command with Eerv as an adviser. Kri is safe and training, Ereclaw remains Ryun's contracted partner despite rejection by his former pack, and Kagehime remains bonded to Ryun. The freed ruler of the Empty Sky becomes Ryun's cultivation teacher. Ryun, Anrosh, and Eerv clear the Heartstone Core Dungeon, gaining essence and a possible source of income, although the sect cannot yet farm it safely. Ryun remains blind, but his eyes are regenerating. Reyla and Nayra continue their covert frontier assignment as a Category 3 monster swarm approaches. Far away, Zach is a silver-badge Warden partnered with Gris and is still preparing for a lawful future confrontation with Ryun.",
+        "in_short": "After Earth is absorbed into the Framework, childhood friends Ryun and Zach take sharply different paths through ten years of survival. In the Infinite Realm, Zach becomes a Warden and seeks a lawful way to stop Ryun, whom he knows as the destroyer of their old world. Ryun arrives sealed, rescues Anrosh and Kri from Black Viper, kills Fier, claims Wolf's Grove, bonds with Ereclaw, and leads the town through a deadly territorial trial. His restored memories reveal that Melody was his partner and the other half of their true-death power, and that her death preceded his catastrophic retaliation. Black Viper captures and blinds Ryun, but he escapes. Eerv Ji Van then surrenders the sect under a fifty-year contract. Ryun renames it the Twilight Melody Sect, places Anrosh in charge, begins studying under the freed ruler of the Empty Sky, and clears a valuable dungeon with Anrosh and Eerv as a major monster swarm approaches.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Earth is abruptly integrated into the Framework, which gives humanity ten years to produce enough survivors for transfer to the Infinite Realm. Ryun and Zach, lifelong friends on a camping trip, awaken in a monster-filled wilderness. Ryun has wagered his life to obtain the rare Path of the Final End, while Zach begins as an uncommon Swordsman and earns a major reward for the world's first monster kill. They find Linda and Melody fighting for their lives, but Henry has already been killed. The four survivors shelter together and begin learning how classes, cultivation, skills, and essence work. Ten years later, Zach awakens alone on a beach in the Infinite Realm after Earth's final battle. He believes his sealing strike hit the world-ending enemy but does not know whether it worked. Now a powerful Blademaster and lightning cultivator, he rescues three local adventurers and seeks information, civilization, and evidence that his target also survived.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zach learns from the rescued adventurers that his solitary arrival is abnormal and agrees to help them advance in exchange for guidance. He plans to reach Port Helios and use the Adventurers Guild to travel and search for his enemy. Elsewhere, Ryun also reaches the Infinite Realm alone, but his class and cultivation are trapped behind a crystal-like seal. In the Twilight Woods he encounters Ereclaw, an intelligent dire-wolf alpha, and follows a Black Viper expedition building a settlement. When Anrosh and her daughter Kri flee the camp, Ryun follows and kills their pursuers. Anrosh explains that Fier, the sect's young master, is using her dead husband's debt to enslave her. Ryun identifies himself to the pair and learns more about the local sect system. Ereclaw warns that a much larger Black Viper force is approaching. Although escape remains possible, Ryun decides that his bargain obliges him to protect Anrosh and Kri, and he prepares to face the hunters.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The earlier Earth story shows Ryun, Zach, Linda, and Melody learning to hunt and advance while their priorities diverge. Zach values safety and rescue, whereas Ryun and Melody increasingly favor strength and independence. In the present, Ryun discovers that Zach's Legendary Sealing Slash caused his condition and that the seal can be removed. Fier corners Anrosh and Kri with roughly fifty Black Viper warriors. Ryun intervenes and initially overwhelms them despite his sealed powers, but unfamiliar poison chi brings him down. While captive, he forces Cut to evolve into Perfect Cut, shatters the seal, defeats the remaining warriors, and kills Fier. Ryun consumes the essence taken from Fier and regains substantial power, while Anrosh and Kri survive the confrontation.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun hesitates to lead Fier's former followers, then offers protection and instruction in return for the local knowledge he lacks. Ereclaw argues that killing Fier made Ryun responsible for those left behind and proposes a pact between the forest pack and the settlement. Zach, meanwhile, reaches Port Helios, helps capture a murderer, and meets the drake Warden Gris. He joins Gris as a trainee because Warden work offers travel, information, and a structured route to pursue Ryun, though Gris warns that personal vengeance is not lawful authority. The Earth timeline shows the four friends defeating a great monster and saving other survivors, gaining a town stone in the process. Their victory leaves eleven rescued people alive and strengthens both Ryun and Zach, but it also brings new leadership burdens. By the end of this stretch, Zach has entered Warden service in the present, Ryun has made a conditional commitment to the Twilight Woods settlers, and the past survivors have taken their first step toward building a larger community.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zach and Gris uncover evidence that organized outsiders are training escaped miners to disrupt frontier expansion. Zach nearly dies fighting their well-equipped backers, survives through his Second Chance perk, and helps Gris secure three prisoners for questioning. In the Twilight Woods, Ryun accepts responsibility for the settlement and seeks a dependable second cultivation path. He forms a blood contract with Ereclaw, transforming the dire-wolf alpha into the humanoid Ereclaw Nacht and establishing cooperation between wolves and townspeople. Anrosh administers the town while Ryun supplies protection and prepares its defenders for the town stone's unknown trial. He also discovers that he never completed the bond with his awakened sword, Shadow Princess. After permanently binding her to his soul, he can hear her sentient voice and summon her physical form. Ryun names the sword Kagehime and gains additional benefits from their bond. With the settlement prepared and its alliances in place, he is ready to activate the town stone.",
+            "through": {
+              "chapter": 48
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The town stone transports Ryun's settlement into a trial spanning forest, frozen, and volcanic territories. Each region contains a fortress and an anchoring crystal, while increasingly frequent monster waves attack the town. Ryun takes Ereclaw, Jishh, and Enka into the forest, improves the two warriors' cultivation foundations, and helps them evolve into rare classes. At the fortress, Ryun and Ereclaw face a sentient leshy guardian far stronger than the earlier monsters. They eventually kill it and secure the first crystal. The victory also revives part of Ryun's memory of destroying New Dallas after its inhabitants rejected his demand to leave claimed land. Elsewhere, Reyla's rescue of Nayra and the other prisoners reveals that the frontier raiders belong to a wider covert organization. Zach and Gris survive the clash but cannot identify the group behind it. Ryun returns from the first fortress knowing that two equally dangerous territories remain and that the trial's former challengers likely died against guardians of this level.",
+            "through": {
+              "chapter": 61
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Past chapters show Safehold joining the United Government while Ryun and Melody choose to leave rather than submit to settlement expectations. In the present, Reyla and Nayra are punished for exposing their covert frontier operation and reassigned to Black Viper territory. Ryun uses the dead forest guardian and his own unusual power as sources for a tier-five Aspect of the Void. He adopts it and adds the Path of the Unbreakable Wall as a second cultivation path. Experimentation turns its fixed defensive walls into shaped constructs, including aerial footholds that allow rapid changes of direction above the ground. Further advancement improves both his void armor and his control of constructed chi. These additions answer weaknesses in mobility and defense before the remaining fortresses. The town is still trapped in the trial, its defenders face increasingly frequent raids, and two anchoring crystals remain to be claimed. Ryun finishes testing his new power with Ereclaw and prepares to resume the hunt.",
+            "through": {
+              "chapter": 69
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun recognizes Anrosh as the person actually running his town, supports her advancement to the Lord Realm, and asks her to remain his administrator and future combat partner. Ryun, Anrosh, and Ereclaw then defeat the sentient Yeti King and obtain the second anchoring crystal. The fight teaches Ryun about Monarch-level aspect manifestation and disturbs the wall blocking his memories. In the volcanic territory, the presence behind that wall briefly seizes his body during the battle with the Molten King. Ryun regains control, kills the boss, and completes the three-territory trial. He advances to Monarch, installs all three crystals, claims the Twilight Woods, and founds Wolf's Grove with Anrosh as his second-in-command. The Dealmaker explains that Ryun requested the mental barrier to contain a corrupted perk and its associated memories. A past chapter reveals more of that history: Ryun and Melody inherited linked true-death powers, becoming the Reaper and Huntress halves of a paired legacy.",
+            "through": {
+              "chapter": 80
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Zach and Gris reach Emeros and the Citadel of the Wardens. During a truth-enforced interview, Zach reveals that Ryun destroyed Earth's remaining society. Thousands of survivors gave their lives to empower a final group, but the attempt to seal Ryun failed and only Zach reached the Infinite Realm through the expected transfer. The Warden Commander accepts Zach but makes clear that the organization enforces territorial law and will not serve as an instrument of revenge. Zach joins anyway, choosing structured training and lawful authority. In Black Viper territory, Reyla and Nayra begin their punitive assignment under a mercenary cover. They discover a blind, burned, enslaved cultivator who claims to be the historic ruler of the Empty Sky. Reyla then meets Eerv, the sect head, who uses his knowledge of the covert arrangement to demand increased payment. The twins reconcile after Nayra accepts responsibility for her failures. Zach is now a Warden, but any future action against Ryun must be justified by enforceable law.",
+            "through": {
+              "chapter": 85
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Wolf's Grove openly declares independence when a Black Viper force arrives to investigate Fier's death. Anrosh defeats its commander, and Ryun sends the group home with both a trade offer and a warning. He raises Anrosh to Mid Lord and helps her replace her harmful poison aspect with Absolute Cold. When Black Viper proposes neutral negotiations, Jishh and part of the town's war band secretly join an ambush. Ryun detects the betrayal but waits until the conspirators act, then kills Jishh, the attacking Lords, and Fier's mother, a Black Viper monarch. At Wolf's Grove, Enka and infiltrators attempt to seize Anrosh and falsely claim Kri is captive. Anrosh kills the two Lord attackers with her new techniques, while Ereclaw protects Kri and helps end the coup. Ryun later kills Enka for breaking her word. His obligation to the town as a whole ends in his view, but he leaves its prisoners and future to Anrosh because his personal promise to her and Kri remains binding.",
+            "through": {
+              "chapter": 95
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Past events reveal that Ryun and Melody once defended an independent settlement until United Government forces attacked, captured them, and exploited the cultivators for essence. Ryun made a costly bargain with the Dealmaker and prepared for escape. In the present, Eerv invites Ryun to negotiate but defeats him through superior martial skill. Black Viper blinds, chains, and tortures Ryun. The pain breaks his mental wall and restores the history it contained. Melody died long before the present, and Ryun's grief and retaliation led to the killings that made him the World Ender. He accepts responsibility while retaining his belief that he avenged Melody and their people. Reunited with his identity, he restores Perfect Cut, evolves his senses, breaks his restraints, and kills his torturer and guards. Ryun recovers his equipment and consumes his stored combat enhancements. Still blind but able to navigate through Resonance Sense, he rejects escape and enters the Black Viper city to confront the sect openly.",
+            "through": {
+              "chapter": 101
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Ryun fights through Black Viper forces to build strength for a rematch with Eerv. Before that duel begins, Eerv orders the sect to kneel and offers surrender. A Dealmaker contract binds Eerv Ji Van and Black Viper to Ryun for fifty years. Ryun accepts only after requiring the release of the enslaved ruler of the Empty Sky, then preserves a remnant of his former Reaper power rather than allowing it to vanish. Eerv transfers the sect and its three territories to Ryun. Although Ryun does not want ordinary rule, he appoints Anrosh as his voice and practical governor, with Eerv restricted to advising her. He renames the organization the Twilight Melody Sect in memory of Melody. The takeover ends the immediate war and closes Anrosh and Kri's debt to Black Viper, but it leaves Ryun responsible for a financially unstable sect. A respawning dungeon in one of the claimed territories becomes the most promising source of revenue.",
+            "through": {
+              "chapter": 104
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Anrosh establishes authority over the Twilight Melody Sect while Eerv serves as her contract-bound adviser. The freed ruler of the Empty Sky becomes Ryun's confidential cultivation teacher after he promises to seek a way to restore her. She persuades him to make cultivation his primary route and skills his secondary focus. Ryun remains blind by choice during training, though his eyes begin regenerating. Reyla and Nayra retain their mercenary-guild cover near the former Black Viper territories. Their team learns that a Category 3 monster swarm is moving toward the frontier, and Reyla stays long enough to judge whether Ryun and the local sects can survive it. Ryun, Anrosh, and Eerv locate the Heartstone Core Dungeon and clear it together. Ryun defeats its final golem, earns a large essence reward, and secures the first-clear title. The dungeon could provide renewable income, but it is too dangerous for the sect's ordinary members to farm. Zach remains far away with the Wardens, still preparing for a lawful future confrontation with Ryun.",
+            "through": {
+              "chapter": 109
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-24",
+            "ref": "audible:uk:B09GC7DY1F",
+            "type": "community"
+          }
+        ],
+        "work": "monsters-and-legends"
+      }
+    },
+    "monsters-of-men": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator and hero, a boy from Prentisstown on a colonized planet where the Noise makes men's thoughts audible. Loyal, weary, and tested past his years, he is caught at the center of a war between the human factions and the planet's native people. His fierce bond with Viola and his dangerous, uneasy proximity to the tyrant Mayor Prentiss drive the choices he must make.",
+            "id": "todd-hewitt",
+            "name": "Todd Hewitt",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The girl who came as the advance scout of an incoming settler fleet, silent in a world of Noise. Brave and clear-eyed, she works to reach and guide her own people as they arrive, and to broker peace among the warring sides. Her devotion to Todd, and his to her, is the emotional core of the story as the war rages.",
+            "id": "viola-eade",
+            "name": "Viola Eade",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "President Prentiss"
+            ],
+            "description": "The cold, brilliant tyrant who seized power over the human settlement, a master of his own Noise and of manipulating the minds of others. As war engulfs the planet he maneuvers for total control, offering alliance and even apparent reform while never ceasing to scheme. His fixation on Todd makes him unpredictable and dangerous.",
+            "id": "mayor-prentiss",
+            "name": "Mayor Prentiss",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "The strong-willed healer who led the human resistance, the Answer, against the regime. Principled but ruthless in pursuit of her aims, she remains a powerful and unpredictable force as the sides jockey for advantage, willing to take extreme measures for what she believes is the greater good.",
+            "id": "mistress-coyle",
+            "name": "Mistress Coyle",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "1017"
+            ],
+            "description": "A Spackle, one of the planet's native people, who survived the regime's enslavement and slaughter and returned to his own kind burning for vengeance. Known among his people as the Return, he becomes their instrument of retribution against the humans who wronged them, and his hunger for revenge shapes the course of the war.",
+            "id": "1017",
+            "name": "The Return",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The leader of the Spackle, the native people who share their thoughts in a single connected voice. Wise and deliberate, the Sky commands the vast native army and weighs whether to pursue total war against the human invaders or to seek another path, holding the fate of the planet's peoples in the balance.",
+            "id": "the-sky",
+            "name": "The Sky",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the adults from the newly arrived settler ship, a decent, peace-seeking man who comes down to the surface to help. He and his companion side with Viola in trying to end the fighting rather than join it, bringing the perspective and technology of the incoming colonists into the conflict.",
+            "id": "bradley-tench",
+            "name": "Bradley Tench",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "monsters-of-men"
+      },
+      "recaps": {
+        "ending": "The three-sided war, between Mayor Prentiss's army, Mistress Coyle's resistance, and the native Spackle driven by the Return and led by the Sky, drives every side to the brink of destruction, with the newly landed settlers pulled into the struggle. Todd and Viola, working from opposite ends, strive to force a peace even as Prentiss manipulates events and dangles the possibility that he has changed. In the climactic reckoning the tyrant Mayor Prentiss is destroyed, and with him the greatest obstacle to any settlement between the peoples. But his final act is a devastating assault that leaves Todd grievously wounded and clinging to life. The long war ends not in the annihilation everyone feared but in a fragile, hard-won truce between the humans and the Land, made possible by the arrival of the settler fleet and by those on all sides who chose peace over vengeance. The trilogy closes on that precarious hope and on Viola's absolute determination to bring the wounded Todd back, the future of the shared world still unwritten.",
+        "in_short": "War breaks over the colonized planet on three sides: the tyrant Mayor Prentiss and his army, Mistress Coyle's resistance, and the planet's native Spackle, roused to vengeance by the Return and led by the deliberate Sky. Todd finds himself dangerously close to Prentiss, who offers alliance and even the appearance of reform while never abandoning his hunger for control, and Viola works with the peace-seeking newcomers Bradley and Simone from the just-arrived settler ship to end the bloodshed rather than feed it. Shifting alliances, betrayals, and atrocities push all sides toward annihilation, and both Todd and Viola are forced to weigh how far they will go and what they are willing to become. In the end the fighting gives way to a fragile, hard-won peace among the humans and the Land, brokered as the colonists arrive, but at great cost: Mayor Prentiss meets his end, and Todd is left gravely wounded by the tyrant's final assault. The trilogy closes on Viola's fierce determination to save him and on the uncertain hope of a shared future.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: On a planet where the Noise makes men's thoughts audible, Todd Hewitt fled his isolated all-male town and its dark secret and joined Viola, a silent girl who had crashed as the scout of an incoming settler fleet. Pursued across the wild country by the cold Mayor Prentiss, the pair reached the city of Haven only to see it surrender to Prentiss, who declared himself President. In the captured city Todd was made to labor over the enslaved native Spackle alongside Prentiss's son Davy, while Viola was drawn into the resistance, the Answer, led by the fierce healer Mistress Coyle. The regime, the Ask, and the Answer tore the city apart with attack and reprisal; Prentiss killed his own son Davy; and the abused Spackle finally rose in revolt just as the first ship of the settler convoy arrived. This book opens with all-out war breaking across the planet.",
+            "through": {
+              "chapter": 0
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "monsters-of-men"
+      }
+    },
+    "monstrous-regiment": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Oliver Perks",
+              "Ozzer"
+            ],
+            "description": "A capable young woman, daughter of an innkeeper in the small, embattled nation of Borogravia. When her brother marches off to war and stops writing home, she cuts off her hair, dresses as a boy, and enlists under the name Oliver to go and find him. Observant, practical, and quick to learn, she sets out to pass as an ordinary male recruit in a country where women are forbidden to serve.",
+            "id": "polly-perks",
+            "name": "Polly Perks",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A vastly experienced, rotund, and fearsome career sergeant of the Borogravian army, scarred and loud, who takes charge of a batch of raw and unpromising recruits. Gruff, profane, and endlessly resourceful, he claims to know every trick of soldiering and is fiercely protective of the young soldiers he calls his own.",
+            "id": "sergeant-jackrum",
+            "name": "Sergeant Jackrum",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An inexperienced, bookish young officer who has spent his career behind a desk and is finally given command of a squad in the field. Eager for the heroics he has only read about and physically out of his depth, he is well-meaning but ill-suited to real war.",
+            "id": "lieutenant-blouse",
+            "name": "Lieutenant Blouse",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An aggressive, unpleasant training corporal who bullies the new recruits and clearly relishes the small authority he holds over them during their first days in the army.",
+            "id": "corporal-strappi",
+            "name": "Corporal Strappi",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Duchess Annagovia"
+            ],
+            "description": "The revered, near-sacred ruler of Borogravia, whose portrait hangs in every home and inn and in whose name the endless war is fought. Long unseen in person, she is the focus of her people's patriotic devotion and religious loyalty.",
+            "id": "the-duchess",
+            "name": "The Duchess",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Commander Vimes"
+            ],
+            "description": "Commander of the Ankh-Morpork City Watch, present in the war zone as an outside authority because the wider world has taken an interest in Borogravia's conflict. Hard-nosed and politically shrewd, he moves through the situation pursuing Ankh-Morpork's concerns rather than any local cause.",
+            "id": "commander-vimes",
+            "name": "Sam Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An earnest newspaper editor from Ankh-Morpork, covering Borogravia's war as a correspondent. He is determined to report what is really happening at the front, which does not always suit the authorities on either side.",
+            "id": "william-de-worde",
+            "name": "William de Worde",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A vampire who works as a picture-maker for the Ankh-Morpork newspaper, accompanying William de Worde to the war. He has sworn off blood and captures images with a flash of light that is itself dangerous to his kind.",
+            "id": "otto-chriek",
+            "name": "Otto Chriek",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "monstrous-regiment"
+      },
+      "recaps": {
+        "ending": "The squad's secret is that all of them are women disguised as men, and that secret proves to reach the very top: much of Borogravia's celebrated high command turns out to be women in disguise as well. The Duchess in whose name the war is fought has been dead for years, her authority a thing kept alive purely by the faith of her worshippers, and she makes her final wishes known through the most devout of the recruits before that belief is allowed to fade. Sergeant Jackrum is revealed to be a woman who spent a lifetime as a soldier, and is at last persuaded to lay down the disguise and reunite with the grown son he never knew. With the war's cause exposed as hollow and its momentum broken, an end is negotiated. Polly, rather than slip back into ordinary life, chooses to remain in the army openly, rising to sergeant and continuing the quiet tradition of enlisting young women who, like her, arrive with their hair cut short and a false name ready.",
+        "in_short": "In the small, war-worn nation of Borogravia, whose people worship the increasingly deranged god Nuggan and the revered Duchess, young Polly Perks disguises herself as a boy to enlist and find her missing brother. She joins a ragtag squad of recruits under the veteran Sergeant Jackrum and the hapless Lieutenant Blouse. As the squad marches toward a losing war, Polly discovers that every one of her fellow recruits is also a woman in disguise, each with her own reason to hide. The group crosses into enemy-held territory and infiltrates a besieged keep, where they learn how hollow their country's cause has become. The Duchess, it turns out, has long been dead, sustained only by the belief of her people and speaking through one fervent recruit; and even Borogravia's high command is riddled with women passing as men. Jackrum, too, is revealed to be a woman with decades of concealed service and a long-lost son. Polly helps force the war toward an end and, rather than return to obscurity, stays in the army to change it, becoming a sergeant who quietly recruits the next generation of hidden soldiers.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In Borogravia, a small nation exhausted by constant war and governed by devotion to its unseen Duchess and the harsh, ever-multiplying prohibitions of the god Nuggan, young Polly Perks makes a dangerous choice. Her brother has gone to fight and stopped writing home, and women are forbidden to serve. So Polly cuts off her hair, dresses as a young man, takes the name Oliver, and enlists, joining a scrappy handful of last-ditch recruits gathered up by the loud, formidable Sergeant Jackrum. Passing as a boy among boys, she begins her uneasy new life as a soldier.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "monstrous-regiment"
+      }
+    },
+    "moon-over-soho": {
+      "characters": {
+        "characters": [
+          {
+            "description": "Now the Folly's sworn apprentice, a Metropolitan Police constable learning magic the slow way: Latin, formae, and hours of practice under supervision. With his master convalescing from a near-fatal gunshot wound, much of the legwork on the Folly's cases falls to Peter, along with the growing realization that London's magical world is larger and less tidy than the official version admits. The son of a jazz musician, he grew up around the music that sits at the heart of this case.",
+            "id": "peter-grant",
+            "name": "Peter Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Folly's master and the last officially sanctioned wizard in England, recovering from being shot in the chest during the Covent Garden affair. Still short of full strength, he supervises Peter's training and casework from a measured convalescence, insisting on the fundamentals even when his apprentice would rather improvise. His long memory of London's magical history keeps proving indispensable.",
+            "id": "thomas-nightingale",
+            "name": "Thomas Nightingale",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Peter's friend and former fellow probationer, convalescing at her family home in Essex after the possession that destroyed her face. Once rated the most promising young officer of their intake, she is now facing reconstructive surgery and an uncertain future, but her police instincts are undimmed and Peter still turns to her to think cases through by phone.",
+            "id": "lesley-may",
+            "name": "Lesley May",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Folly's silent, sharp-toothed housekeeper, not remotely human, who keeps the great empty building fed and ordered. With Nightingale recuperating she watches over master and apprentice alike with a fierce, wordless attentiveness.",
+            "id": "molly",
+            "name": "Molly",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Lord Grant"
+            ],
+            "description": "Peter's father, once a rising jazz trumpeter good enough to be spoken of with the greats, whose career was wrecked decades ago by heroin. Living quietly with Peter's mother, he remains a walking encyclopedia of the London jazz scene, and the case draws Peter back into his father's world - and toward the possibility of the old man playing again.",
+            "id": "richard-grant",
+            "name": "Richard Grant",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lover of the dead saxophonist whose case opens the book: warm, pleasure-loving, and slightly out of step with the present, with an old-fashioned manner and an appetite for food, music, and company. She and Peter are drawn to each other almost immediately, and their affair deepens even as the investigation into the deaths of London's jazzmen circles closer to her corner of Soho. She lives with her two devoted sisters.",
+            "id": "simone-fitzwilliam",
+            "name": "Simone Fitzwilliam",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A formidable detective sergeant on the murder team handling the conventional side of the case. Blunt, competent, and famously unwise to cross, she has worked with the Folly before and treats its weirdness as one more operational problem to be managed, extending Peter a wary professional respect.",
+            "id": "miriam-stephanopoulos",
+            "name": "Miriam Stephanopoulos",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "The Faceless Man"
+            ],
+            "description": "A trained, capable, and officially nonexistent wizard operating in London's shadows, encountered when the investigation touches his interests: his features are hidden behind a blurring glamour, and his magic is fast, precise, and casually lethal. He is the first evidence that someone has been practising - and teaching - outside the Folly's authority, and Peter's name for him sticks.",
+            "id": "faceless-man",
+            "name": "The Faceless Man",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "moon-over-soho"
+      },
+      "recaps": {
+        "ending": "The book closes with the jazz vampire case resolved and a much larger threat opened. Simone Fitzwilliam and her sisters are gone: revenants of the 1941 Cafe de Paris bombing who had unknowingly sustained themselves for decades on the lives of jazz musicians, they were confronted with the truth of their deaths at the site of the bombing and allowed to pass on. Peter, who loved Simone, ends the case grieving as much as victorious. The parallel investigation leaves worse news behind: London has an active, highly trained black magician - the Faceless Man - who fought Peter and escaped, and whose projects include engineered human chimeras. His magical education traces back to Geoffrey Wheatcroft, a deceased Oxford academic who taught Newtonian magic outside the Folly's authority, and to the Little Crocodiles, Wheatcroft's old university dining club, giving the Folly a list of leads and a decades-deep institutional failure to reckon with. Nightingale continues to recover and takes the hunt for the Faceless Man as the Folly's central concern. Peter's father, fitted with new teeth and off the heroin, returns to playing, giving Peter back a piece of his family. And in Essex, Lesley May - her face ruined, her old career gone - asks Peter whether magic could repair what the possession destroyed, and reveals that she has a stake in the answer: the door to her entering the magical world is now open.",
+        "in_short": "Months after the Covent Garden affair, apprentice wizard Peter Grant investigates the death of a saxophonist who collapsed after a Soho gig - and whose body carries the vestigium of a jazz standard. The trail reveals a decades-long pattern of London jazzmen dying the same way, their vitality drained: the work of so-called jazz vampires. Peter's inquiry entangles him with Simone Fitzwilliam, the dead man's warm, old-fashioned lover, who becomes his own lover, while a parallel case - deaths and mutilations linked to a predatory woman of the demi-monde and to surgically engineered cat-girls - points to a trained black magician operating in London. That magician, dubbed the Faceless Man, fights Peter and escapes, his education traced to Geoffrey Wheatcroft, an Oxford don who taught magic illegally to a dining club called the Little Crocodiles. The jazz deaths resolve at the Cafe de Paris: Simone and her two sisters, killed there by a German bomb in 1941, have persisted ever since by unknowingly feeding on musicians. Confronted with their own deaths, they pass on. Peter is left grieving, the Faceless Man is at large, and Lesley May asks whether magic could mend her ruined face.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: probationary constable Peter Grant took a witness statement from a ghost at a Covent Garden murder scene and was recruited by DCI Thomas Nightingale, the last sanctioned wizard in England, as the Folly's first new apprentice in decades. Together they hunted a revenant - the ghost of the eighteenth-century actor Henry Pyke, powered by Mr Punch, the ancient spirit of riot - which possessed ordinary Londoners, drove them to kill, and destroyed their faces. Peter also brokered a truce between Mother Thames and Father Thames, the rival deities of the river, whose peace was sealed by an exchange of hostages that sent Beverley Brook, the river spirit Peter had grown close to, upstream and out of reach. The case ended at a brutal price: Nightingale was shot in the chest and nearly died, and the revenant proved to have been riding Peter's friend and fellow officer Lesley May all along - when the spirit was driven out, her face was left in ruins. As this book opens, Nightingale is convalescing, Lesley is recovering at her family home in Essex, and Peter is carrying more of the Folly's caseload than any first-year apprentice should.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Dr Walid calls Peter to a body: Cyrus Wilkinson, a part-time jazz saxophonist who collapsed and died after a gig in Soho, apparently of natural causes - except that the corpse carries a vestigium, a magical echo, in the form of a jazz standard. That trace makes it Folly business. Working the dead man's circle, Peter meets Simone Fitzwilliam, Wilkinson's grieving, disarmingly old-fashioned lover, and feels an immediate pull toward her. To read the jazz world properly Peter leans on his father, Richard 'Lord' Grant, a once-promising trumpeter whose career heroin destroyed, and the older man's encyclopedic knowledge starts turning up a pattern: musicians have been dying like Wilkinson - suddenly, after playing, their spark gone - at intervals stretching back decades. The shape of it suggests something feeding on jazz players, and the Folly's old files give the phenomenon a name: jazz vampires. Meanwhile Peter juggles his training, a convalescent Nightingale who insists on the fundamentals, and a murder team led by DS Miriam Stephanopoulos handling the parts of the case that can be written down in a normal report.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The investigation widens along two tracks. The jazz-vampire pattern firms up: victims across the decades share the same profile - working musicians, dead after playing, drained of the vital something that made them play - and the deaths cluster around Soho's clubs. At the same time a second, uglier case attaches itself to the Folly: men connected to the demi-monde turning up dead or mutilated in ways that point to a predatory woman with unnatural physical gifts, and to a level of deliberate, engineered strangeness that ordinary monsters do not manage. Peter's affair with Simone deepens into something consuming; she and her two sisters share a flat above Soho, living in a warm, slightly dated bubble of pleasure and appetite. Peter's father begins edging back toward music. And beneath both cases runs a disquieting new idea: some of what Peter is seeing - the engineered women, the deliberate cruelty - looks less like wild magic than like the work of a person: someone trained, active, and entirely outside the Folly's knowledge or authority.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The black-magician thread comes to the front. The trail of the engineered women - including surgically and magically created cat-girls - leads through Soho's sex trade to premises where someone has been conducting experiments on human beings, and the Folly's research puts a name to the origin of the problem: Geoffrey Wheatcroft, a deceased Oxford academic who had trained at the Folly's old school and then, against every rule, taught Newtonian magic to members of a university dining club called the Little Crocodiles. At least one of his students became genuinely capable and genuinely amoral. Peter meets that student's work in person when a wizard with a blurred, unreadable face - fast, precise, and casually willing to kill - confronts him and escapes; Peter dubs him the Faceless Man. It is now clear London has an active black magician with resources and projects of his own. Meanwhile the jazz-vampire case keeps tightening around the world Simone inhabits, and details about her and her sisters - their history, their appetites, the eras their memories reach back to - are beginning to sit wrongly with Peter even as he falls harder for her.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The two cases resolve separately, and the jazz-vampire answer breaks Peter's heart: Simone Fitzwilliam and her sisters are the jazz vampires. Caught in the German bombing of the Cafe de Paris in 1941, they did not survive it - they persisted, revenants who have sustained themselves ever since by unknowingly drawing the life and talent out of jazz musicians, each of them believing the men simply moved on or faded. Cyrus Wilkinson was only the latest. Peter brings the truth to a confrontation at the Cafe de Paris itself, where, faced with the fact of their own deaths, the sisters cease feeding and pass on, leaving Peter grieving for a woman who was never quite alive. The Faceless Man remains at large, his connection to Wheatcroft and the Little Crocodiles now established, giving the Folly its first real map of an enemy: trained students of an illegal teacher, at least one of them brilliant and ruthless, with engineered chimeras among his works. Nightingale, still mending, sets the hunt for him as the Folly's long game. Peter's father, clean and fitted with new teeth, returns to playing. And in Essex, Lesley May asks Peter the question that will shape everything ahead: whether magic could repair her ruined face.",
+            "through": {
+              "chapter": 14
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "moon-over-soho"
+      }
+    }
+  }
+}

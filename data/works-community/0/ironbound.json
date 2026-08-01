@@ -1,0 +1,1775 @@
+{
+  "entries": {
+    "ironbound": {
+      "characters": {
+        "characters": [
+          {
+            "description": "A returning human mage who reaches a human city with Terry while an iron Doskanok runs through her body. She removes Kit and leaves it outside a cleansing circle before entering an emergency teleportation procedure intended to separate her from the creature.",
+            "id": "tala",
+            "name": "Tala",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "An iron creature threaded through Tala's body when she reaches human territory. Its presence prompts an urgent cleansing teleport intended to separate it from her.",
+            "id": "iron-doskanok",
+            "name": "Iron Doskanok",
+            "reveal": {
+              "chapter": 1
+            }
+          },
+          {
+            "description": "Tala's intelligent terror-bird companion, capable of flicker-teleporting and changing his apparent size. He reunites with her outside a human city and accompanies her to the urgent cleansing procedure.",
+            "id": "terry",
+            "name": "Terry",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tala's sanctum"
+            ],
+            "description": "Tala's named dimensional storage and mobile refuge. Before she enters the cleansing circle, she removes Kit with her other non-soulbound possessions and leaves it outside the procedure.",
+            "id": "kit",
+            "name": "Kit",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed paragon stationed at Aelfast Waning. When Tala arrives with an iron Doskanok throughout her body, he assumes charge of a teleportation-based attempt to purge it.",
+            "id": "human-paragon",
+            "name": "Human paragon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tala's inner collaborator"
+            ],
+            "description": "A cooperative mental perspective sharing Tala's body. Alat falls silent when the cleansing teleport strips away Tala's inscriptions, then returns after Tala uses Kit to restore them.",
+            "id": "alat",
+            "name": "Alat",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Rain's older brother, an underpowered mage who depends on a draining dark-crystal staff for his magical development. He greets Tala and Terry with hostility before becoming formally polite.",
+            "id": "rains-older-brother",
+            "name": "Rain's older brother",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A longtime human friend of Tala who joins the local paragon in sheltering her after her changed power unsettles nearby people.",
+            "id": "rain",
+            "name": "Rain",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning friend of Tala and her contact in the Caravan Guild who welcomes her return.",
+            "id": "lynn",
+            "name": "Lynn",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's thirteen-year-old sibling and a second-year academy student. Her magical education emphasizes combat, and a birthday message brings confirmation that Tala survived.",
+            "id": "illie",
+            "name": "Illie",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Ingrit"
+            ],
+            "description": "An archivist and trusted information broker who reviews material sent by Tala. She verifies Tala's captivity, confirms that human authorities know of the situation, and arranges to support her arrival in Banfast.",
+            "id": "ingrit",
+            "name": "Ingrit",
+            "reveal": {
+              "chapter": 6
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Mistress Holly"
+            ],
+            "description": "A lead inscriptionist and refining specialist present at Tala's return briefing. Her first examination identifies Tala's condition as dangerously unstable and establishes the need for careful stabilization.",
+            "id": "holly",
+            "name": "Holly",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Grediv"
+            ],
+            "description": "A senior human mage and adviser who brings Tala and Rain into Banfast without public notice. He delivers them to the formal Archon briefing arranged around Tala's return.",
+            "id": "grediv",
+            "name": "Grediv",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Constructionist Guild master whose own bodily deterioration resembles the regeneration damage threatening Tala. His condition is raised as a relevant comparison during the first assessment of her instability.",
+            "id": "jevin",
+            "name": "Jevin",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A concealed Reforged who supports controlled study of an inactive automaton because the Black Legion may be stirring. Tala detects him with void sight, and he indicates that they will speak later.",
+            "id": "hidden-reforged",
+            "name": "Hidden Reforged",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Boma"
+            ],
+            "description": "A Constructionist Guild master admitted to the restricted portion of Tala's return briefing. Boma is cleared to remain while the group examines sensitive arcane knowledge and recovered materials.",
+            "id": "boma",
+            "name": "Boma",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Q"
+            ],
+            "description": "A Constructionist Guild master admitted to Tala's restricted briefing. Q remains with the small group authorized to examine Kit and other sensitive discoveries brought back to Banfast.",
+            "id": "q",
+            "name": "Q",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An artificial personality organized around a fount but distinct from it. Rob asks to stop existing, while the associated fount makes a different choice, forcing Banfast's council to consider them separately.",
+            "id": "rob",
+            "name": "Rob",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Lynn's mageling, who manages work around Lynn's household. The mageling is part of Tala's renewed circle in Banfast but is introduced without a reliably established personal name.",
+            "id": "lynns-mageling",
+            "name": "Lynn's mageling",
+            "reveal": {
+              "chapter": 13
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The head of the Banfast Archon Council, who joins the assessment of Kit and uses a purpose-built diagnostic orb to examine its dimensional condition.",
+            "id": "banfast-archon-council-head",
+            "name": "Banfast Archon Council head",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Archon trained to treat psychological harm caused by magical unions and similar events. He meets Tala inside Kit, recognizes her habit of separating herself from others, and sets expectations for honest but voluntary discussion.",
+            "id": "trauma-therapist",
+            "name": "Trauma therapist",
+            "reveal": {
+              "chapter": 20
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A mage hunter who tracks a thief through magical sensor nets, manipulates magnetic fields and iron, and disables the thief's keystone during the arrest.",
+            "id": "cazor",
+            "name": "Cazor",
+            "reveal": {
+              "chapter": 22
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's elderly former overseer in the Caravan Guild. Nearing death, she has arranged for her fount to be released from Zeme and declines Tala's offer of continued existence as a mind bound to it.",
+            "id": "talas-former-caravan-overseer",
+            "name": "Tala's former caravan overseer",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An Archon whom Tala consults about creatures that reinforce reality, unstable regions beyond ordinary space, and advanced magic. He explains how such creatures stabilize Zeme and how the strongest can endanger anything within the area they affect.",
+            "id": "expert-archon",
+            "name": "Expert Archon",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Master Simon"
+            ],
+            "description": "A constructionist proposed as an assistant for Tala's mobile sanctum. Simon and his family are considering a household arrangement that would place his technical expertise inside Kit.",
+            "id": "simon",
+            "name": "Simon",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Simon's wife and a member of the family considering relocation into Kit with their three youngest children.",
+            "id": "petra",
+            "name": "Petra",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior Constructionist Guild specialist assigned to examine Tala's altered weapon. She finds that its new forms carry a power that changes who owns iron.",
+            "id": "senior-constructionist",
+            "name": "Senior constructionist",
+            "reveal": {
+              "chapter": 34
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The constructionist who delivers the morphic sheath made for Tala's weapon. The fitted sheath changes with the weapon's forms and diffuses the force of its impacts.",
+            "id": "mistress-aram",
+            "name": "Mistress Aram",
+            "reveal": {
+              "chapter": 40
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A returning acquaintance from Tala's guard-training days. Their guarded reunion makes clear that her power and combat history have placed lasting distance between them, and both expect it may be their final meeting.",
+            "id": "adam",
+            "name": "Adam",
+            "reveal": {
+              "chapter": 43
+            },
+            "role": "minor"
+          },
+          {
+            "description": "An unidentified elderly mage whom Tala finds alone in a stable, low-magic dell. He is unresponsive and irreversibly entering the fugue that precedes becoming a fount, so Tala remains to witness the transformation.",
+            "id": "elderly-mage",
+            "name": "Elderly mage",
+            "reveal": {
+              "chapter": 45
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Tala's estranged parent and the proprietor of the family alchemist shop in Marleyweather. He waits outside Tala's childhood home when she finally arrives to face a difficult family reunion.",
+            "id": "talas-father",
+            "name": "Tala's father",
+            "reveal": {
+              "chapter": 49
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Tala's oldest sister, an alchemist studying magical theory under a healer-mage. She meets Tala during the siblings' reunion and discusses a possible path toward receiving a keystone and inscriptions.",
+            "id": "talas-eldest-sister",
+            "name": "Tala's eldest sister",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An unnamed healer-mage who teaches magical theory to Tala's eldest sister and expects that she may eventually be ready for a keystone and basic inscriptions.",
+            "id": "healer-mage",
+            "name": "Healer-mage",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Two of Tala's younger siblings, both twelve and determined to attend the academy. They listen to her honest account of mage work and remain committed despite its dangers.",
+            "id": "talas-academy-bound-twins",
+            "name": "Tala's academy-bound twins",
+            "reveal": {
+              "chapter": 50
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A magical predator newly occupying a mountain valley rich in founts. It attacks Tala, draws enormous strength from the terrain, and rapidly restores even severe physical damage.",
+            "id": "upland-tiger",
+            "name": "Upland tiger",
+            "reveal": {
+              "chapter": 57
+            },
+            "role": "antagonist"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0DKQXSMRS",
+            "type": "community"
+          }
+        ],
+        "work": "ironbound"
+      },
+      "recaps": {
+        "ending": "Tala closes the volume as a Refined mage who is relocating her base from Banfast to the city where Rain is based. Her iron bond has been joined to her soulbound weapon, giving her formidable defenses with limits that Cazor continues to test. Terry remains beside her to explore a flock partnership, without accepting a soul bond. Simon, Petra, and their family are building a working home within Kit, though internal teleportation remains unsolved. Tala has renewed ties with her siblings and watched the twins leave for the academy, but she gives no answer to her father's offer of future support. Banfast still holds Rob and five founts, Tala retains an inactive automaton for study, and the nature of founts, the dome, void, and the next world remains unsettled. An upland tiger also survives in its valley after driving Tala and Terry away. Tala retains friends and collaborators in Banfast and plans to visit them after establishing herself in her new base.",
+        "in_short": "Tala returns to human territory carrying an iron Doskanok that cannot be removed, so she negotiates a soul bond with it. Back in Banfast, she shares intelligence from captivity, confronts and integrates the false identity imposed on her, ends her Caravan Guild obligations, and prepares for refinement. Holly helps merge the unstable iron bond into Tala's weapon, and Tala survives a painful transformation into a Refined mage. Kit becomes a staffed mobile home for Simon, Petra, and their family. Tala later witnesses a mage become a fount and sends it onward through a dangerous encounter spanning Zeme, a mysterious dome, and the next world. She reconnects with her siblings in Marleyweather, leaves reconciliation with her parents unresolved, and supports the academy-bound twins' departure. Terry chooses to remain and attempt a true flock partnership. After retreating from an upland tiger, Tala returns to Banfast, tests her iron defenses with Cazor, and prepares to relocate to the city where Rain is based.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Tala is a human mage who travels with Terry, an intelligent terror-bird capable of crossing space in sudden flickers. She also keeps Kit, a named dimensional refuge that carries her possessions and serves as a mobile shelter. Their unusual partnership and Tala's accumulated magical bonds shape the condition in which she begins this volume.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala reaches a human city with an iron Doskanok threaded through her body and asks a human paragon to remove it through a repeating teleportation. The process burns away her exterior iron and strips her inscriptions, but the creature resists separation and begins forcing a bond. Tala rejects the destructive selves it offers and negotiates control over her own iron, power, and identity. She survives with the Doskanok soulbound to her, then restores her inscriptions from Kit. The bond lets her claim iron she owns, draw it into her body, and reinforce her magic, but it also affects nearby mundanes and produces a severe hunger. Tala tells the paragon about her abduction, erased memories, service to the House of Blood, and escape after killing her controller. Rain reunites with her, and they leave for Banfast with Terry and the paragon. Illie and Ingrit learn that Tala is alive. During the journey Tala tries sealing herself in bonded iron, causing catastrophic magical overload and internal injury. She survives, but any deeper union with the iron must wait until refinement and careful testing.",
+            "through": {
+              "chapter": 7
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala discovers that repeated errors in her regenerated body will eventually become fatal unless she refines or finds another repair. Grediv brings her and Rain into Banfast, where Lynn, Ingrit, Holly, and other specialists receive her. A tiered briefing confirms her captivity, her forced service as a House of Blood enforcer, and the collar attack that injected the iron Doskanok after she killed her controller. Tala also discloses recovered automata materials, arcane holds, and the uncertain status of founts. She reveals that Kit is a living dimension able to consume other spaces, and Banfast accepts responsibility for Rob and five founts while deciding their treatment. Constructionists examine Kit and find it damaged, then attempt to reinforce it. Holly prevents Tala from using a reinscribing device before refinement and begins coordinating a safe preparation plan. Tala resumes exercise, iron practice, and ordinary social contact while experts study how to stabilize her altered body. When constructionists open crates of reinforcement materials around Kit, the sanctum begins an uncontrolled void-powered reaction. The chapter closes with the attempted reinforcement still a dimensional emergency.",
+            "through": {
+              "chapter": 14
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Kit absorbs magical containment crates and reproduces their stabilizing structures, convincing Constructionist Guild examiners that the sanctum is a living being able to incorporate magical methods. Plans emerge for researchers or a household to work inside it, though teleportation and safety remain unresolved. Ingrit converts demand for Tala's arcane knowledge into money, favors, and expert access. Tala pays her entire debt, an emotional release tied to the circumstances of her capture. Holly updates her inscriptions and keeps refinement on a cautious schedule while Tala rebuilds her strength and learns finer control of her internal iron. Research connects Tala's void sight to her soulbound weapon, and Kit demonstrates that it can relocate a consenting person within itself. Tala begins trauma therapy and recounts her capture, enforced identity, and return. Her therapist urges her to stop isolating the false persona created during captivity. With Alat's help, Tala confronts that construct, forgives it as another victim of manipulation, and dismisses it. The mental partition collapses, leaving Tala to experience the contained memories and emotions directly. Integration has begun, but its immediate cost is severe.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Recovered arcane knowledge produces both promising research and a fatal illegal automaton experiment. Tala completes the integration of her imposed captive identity, then works with Alat on fully sensory simulated training. She upgrades her archive link for effectively unlimited ordinary range and, with Lynn, invokes an incapacity clause that removes all fifty-one remaining Caravan Guild trips. Free of that obligation, Tala begins planning a mobile home and a life chosen on her own terms. Lynn advances to Fused. An expert Archon explains theories about reality beasts, Zeme, the fractured-reality region, void magic, and why human and arcane powers remain in an uneasy balance. Cazor then tests Tala's control of owned iron. Within her aura it behaves like part of her, but iron dragged beyond that boundary ceases to be hers and tears at the bond. Holly finds the test exposed dangerous damage. Rather than merging the Doskanok further into Tala's body, specialists join its bond to her soulbound weapon. Tala selects a configuration that leaves her body unchanged, lets the weapon supply protective iron, and allows lost iron to be consumed by void instead of violently relinquished. The merger succeeds and clears a major obstacle to refinement.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "After the weapon and Doskanok bond settle, Tala enters Holly's irreversible refining apparatus. The transformation succeeds, removing conceptual corruption, but the pain and confinement leave Tala weak and traumatized. Holly confirms that Tala is now Refined, with greater magical capacity, physical ability, resistance to disease and poison, and no ordinary age-related decline. Advancement toward Paragon will require a change in her mortal perspective that she does not yet understand. While recovering, Tala meets Simon and Petra, a married pair considering work inside Kit with their children. Lynn learns of Tala's refinement and shares the unresolved loss of her own family. A Constructionist Guild specialist designs a morphic sheath so Tala can safely spar with her weapon's new iron-claiming effect. That effect is tied to intended cutting contact and could also emerge through sharp iron formed from Tala's body. Before leaving Banfast, Tala encounters a siphon attacking a building. Another Archon clears civilians while Tala kills the creature by using her weapon's conceptual authority over iron. The victory proves the merged weapon effective, even as Tala remains cautious about its hazards and her unfinished recovery.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala disposes of the siphon's corpse and compensates the other Archon who helped rescue civilians. Simon and Petra test life inside Kit with their children, eventually committing to work there once communications, exits, and housing are secure. Petra begins developing meals from magical harvests, while Simon installs an archive interlink and plans durable infrastructure. Tala hires Lynn and her mageling to sell mundane arcane goods and builds reserves for future travel. The Constructionist Guild offers a recovery net that will return Kit to the Guild if Tala dies, in exchange for inheriting the sanctum and its contents. Tala accepts after consulting trusted advisers, protecting Simon and Petra's family from being stranded. Kit receives the recovery net and a grid node, but internal teleportation continues to fail. Petra records her food methods so the work can continue without her. Holly's final assessments clear Tala for unrestricted activity. Tala immediately spars with Rain and finds that refinement has made her much stronger, while Rain's ability to redirect kinetic vectors again makes him a difficult opponent. The first hint of green in Tala's aura also marks a small, uncertain step toward Paragon.",
+            "through": {
+              "chapter": 42
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala prepares to leave Banfast, speaks with Rain about the burden of her past killings, and demonstrates the reinscriber for Holly. She then travels overland with Terry while Simon, Petra, and their family remain inside Kit. A full iron sheath now reinforces Tala's inscriptions and contains her magical presence, giving her far greater strength and speed when carefully controlled. On the road she finds an elderly mage irreversibly becoming a fount. Tala and Simon record the transformation as the man's body disappears and a flame fount forms. Through void sight, Tala sees a structure of nothingness restraining the fount from moving onward. Her attempt to close it shifts her perception among Zeme, a mysterious dome, and a next world of pure magic that injures her. Tala chooses to send the fount onward rather than claim or stabilize it. The fount vanishes, and Alat's archive record restores memories Tala briefly loses. A specialist can offer only theories about reality, void, magic, and the dome. After recovering, Tala resumes the journey and reaches Marleyweather, where her estranged father is waiting outside the family alchemist shop.",
+            "through": {
+              "chapter": 49
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Tala's father asks her to discourage two younger siblings from entering the academy and accepts responsibility for past decisions that harmed her. Tala refuses to deceive the twins. She gathers her siblings inside Kit, makes clear that she still claims them as family, and maintains her separation from her parents' household. Her eldest sister is studying magical theory with a healer-mage and developing an iron-paint business; she later chooses him as her prospective master. Tala spends weeks with her siblings and supports the twins' decision after giving them a realistic account of magehood. She also begins mapping the inactive mature automaton retained in Kit. Terry, carrying grief from the loss of his own flock, subjects Tala to a serious spar meant to decide their future. Tala develops a persistent working that makes local reality harder to manipulate, but Terry defeats her. The twins leave together for the academy. Terry then explains that he has chosen to stay and test whether he and Tala can become a flock, without accepting a soul bond. Simon begins monitoring Tala's unexplained reality-stabilizing working. Tala leaves Marleyweather without resolving whether she will accept her father's offer of future support.",
+            "through": {
+              "chapter": 56
+            }
+          },
+          {
+            "scope": "book",
+            "text": "While traveling back toward Banfast, Tala accepts a commission to inspect a mountain valley containing authorized founts. An upland tiger attacks and proves able to draw immense power from the terrain and regenerate major injuries almost instantly. Tala cannot use her most destructive options without violating the commission's limits, and a new iron defense demands too much concentration under the tiger's attacks. Terry joins the fight, then signals retreat when their efforts fail. Tala trusts him and withdraws, leaving the tiger alive for another Archon to address. In Banfast, Tala shares a farewell dinner with Lynn and Lynn's mageling before moving her base to the city where Rain is based. She plans to maintain those friendships and return after several months. Cazor meets her in a reinforced arena for another iron test. His opposed magnetic poles can pull surface iron away when Tala concentrates only on holding it, exposing a limit in her defense. Tala answers by extending her aura through iron tendrils and crushing the poles. She ends the book Refined, free of her caravan obligations, partnered with Terry as a prospective flock, connected to her human allies, and relocating while major questions about founts, Kit, her iron bond, and Paragon advancement remain open.",
+            "through": {
+              "chapter": 58
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-21",
+            "ref": "audible:uk:B0DKQXSMRS",
+            "type": "community"
+          }
+        ],
+        "work": "ironbound"
+      }
+    },
+    "it": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Stuttering Bill",
+              "Big Bill",
+              "William Denbrough"
+            ],
+            "description": "William 'Bill' Denbrough, an eleven-year-old boy in Derry, Maine, whose severe stutter marks him out but who is the natural leader of his circle of friends. In the autumn of 1957 he is sick in bed when he builds a paper boat for his little brother, Georgie, to sail in the flooded gutters - the last time he sees him alive. Georgie's death breaks something in Bill and in his grieving parents, and his guilt and fury at whatever took his brother drive him to face it. As an adult in 1985 he has become a successful horror novelist living in England, his stutter long gone, when a phone call summons him back to a town he had almost entirely forgotten.",
+            "id": "bill-denbrough",
+            "name": "Bill Denbrough",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Pennywise the Dancing Clown",
+              "Pennywise"
+            ],
+            "description": "A malevolent presence beneath the town of Derry, Maine, that preys on the town's children. To Georgie Denbrough it appears from a storm drain as Pennywise the Dancing Clown, a grinning figure in a silver-buttoned suit who charms him close and kills him. It is plainly not human - a shape-shifting predator that makes the drains and sewers of Derry its hunting ground.",
+            "id": "it",
+            "name": "It",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "George Denbrough"
+            ],
+            "description": "George 'Georgie' Denbrough, Bill's six-year-old brother. On a rainy day in October 1957 he chases his paper boat down a flooded street and meets a clown in a storm drain who calls himself Pennywise. His death is the first killing in the creature's new cycle and the loss that sets his brother Bill on a lifelong collision with It.",
+            "id": "georgie-denbrough",
+            "name": "Georgie Denbrough",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Haystack"
+            ],
+            "description": "Ben Hanscom, an overweight, bookish, lonely boy newly arrived in Derry and mercilessly bullied for his size. Clever and gentle, with a gift for building and design, he finds his first real friends among the outcasts who will name themselves the Losers' Club, and quietly falls in love with Beverly Marsh. As an adult he has become a lean, celebrated architect, the fat boy remade almost past recognition, when the call comes to return.",
+            "id": "ben-hanscom",
+            "name": "Ben Hanscom",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Beverly Rogan"
+            ],
+            "description": "Beverly Marsh, the only girl in the Losers' Club, a brave and quick-tempered redhead growing up poor under a violent, controlling father. Loyal and the best shot among them with a slingshot, she is the object of both Ben's and Bill's affection. As an adult she becomes a fashion designer trapped in a marriage to an abusive husband that grimly echoes her childhood.",
+            "id": "beverly-marsh",
+            "name": "Beverly Marsh",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Eddie Kaspbrak, a small, anxious boy convinced by his smothering, hypochondriac mother that he is chronically ill; he clutches an asthma inhaler he treats as a lifeline. Braver than he believes and fiercely loyal, he is a steadfast member of the Losers. As an adult he runs a limousine company and has married a woman much like his mother.",
+            "id": "eddie-kaspbrak",
+            "name": "Eddie Kaspbrak",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Trashmouth",
+              "Richard Tozier"
+            ],
+            "description": "Richard 'Richie' Tozier, a wisecracking, bespectacled boy who cannot stop talking, forever slipping into funny voices and comic 'Voices' routines that get him into trouble. His humour masks real fear and real courage. As an adult he becomes a successful radio disc jockey in California.",
+            "id": "richie-tozier",
+            "name": "Richie Tozier",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Mike Hanlon, one of the few Black children in Derry and the last to join the Losers' Club. Steady and thoughtful, he alone stays in the town as an adult, becoming its librarian and the group's self-appointed watchman. When the killings begin again in 1985, it is Mike who recognises the pattern and makes the phone calls that summon the others home.",
+            "id": "mike-hanlon",
+            "name": "Mike Hanlon",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Stanley Uris"
+            ],
+            "description": "Stanley Uris, a neat, orderly, rational boy who loves birds and dislikes disorder, and the member of the group least able to accept the impossible thing they face. As an adult he is a prosperous accountant in Atlanta. When Mike's call reaches him and the buried memories start to return, the prospect of confronting It again proves more than he can bear.",
+            "id": "stan-uris",
+            "name": "Stan Uris",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Henry Bowers, a vicious older teenager who leads a gang that terrorises the younger children, and who is tormented in turn by his own brutal, unstable father. His cruelty toward the Losers escalates from beatings into something murderous, and It works on his madness like a tool.",
+            "id": "henry-bowers",
+            "name": "Henry Bowers",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Audra Phillips, a film actress and Bill Denbrough's wife, who knows almost nothing of his childhood in Derry. When Bill abruptly leaves England to answer Mike's call, she follows him to America, walking unknowing into the town's danger.",
+            "id": "audra-phillips",
+            "name": "Audra Phillips",
+            "reveal": {
+              "chapter": 3
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Maturin"
+            ],
+            "description": "An immense, benign cosmic being, ancient beyond reckoning, glimpsed by the children in a shared vision of It's arrival on Earth long before humanity. The Turtle is presented as a counterweight to It within a wider order of things - vast, weary, and largely detached from human affairs, yet the source of a faint help the children can draw on against the creature that hunts them.",
+            "id": "the-turtle",
+            "name": "The Turtle",
+            "reveal": {
+              "chapter": 15
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "it"
+      },
+      "recaps": {
+        "ending": "It ends with the ancient creature destroyed for good. In its lair beneath Derry the Losers who made the final descent - Bill, Ben, Beverly and Richie - crush It's heart and destroy the eggs it had laid to perpetuate itself, breaking the centuries-old cycle of killings. The reckoning costs them dearly. Stanley Uris took his own life rather than return. Henry Bowers, broken out of the asylum and driven by It, gravely wounded Mike Hanlon, who survives in the hospital, and was then killed by Eddie Kaspbrak in self-defence. And in the lair itself the creature mortally wounded Eddie, tearing off his arm as he attacked it to save his friends; he died in the tunnels. As the thing dies, a violent storm brings down Derry's old downtown, which sinks into the flooding canals. Bill's wife, Audra, drawn into danger after following him from England, is left catatonic; Bill brings her back to herself in a final echo of the childhood magic they had used. With the evil gone, the deep bond and shared memory that had held the friends together - in 1958 and again in 1985 - begins once more to dissolve. The survivors leave Derry and return to their separate adult lives, and their recollection of the town, of the creature, and of each other fades almost entirely away, closing the story on the same note of forgetting on which the town has always run.",
+        "in_short": "In 1957 the town of Derry, Maine loses six-year-old Georgie Denbrough to a clown in a storm drain - the first killing in a new cycle of an ancient, shape-shifting evil that wakes every twenty-seven years to feed on the town's children. The following summer, Georgie's brother Bill and six other bullied outcasts form the Losers' Club, face the creature in its many personalised forms, wound it in the sewers, and swear to return if it ever comes back. Twenty-seven years later, in 1985, the killings resume, and Mike Hanlon - the one who stayed - calls the others home. Now prosperous adults who had forgotten almost everything, they reunite; one, Stan, chooses death over returning. Henry Bowers, sprung from an asylum and driven by It, gravely wounds Mike and is killed by Eddie Kaspbrak in self-defence. The rest descend again beneath Derry, where the creature itself mortally wounds Eddie, and they destroy It by crushing its heart and its eggs. The town's old centre collapses as the thing dies. The survivors leave Derry alive but, as before, their memories of the horror and of one another gently fade away for good.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "In October 1957, in the small city of Derry, Maine, a sick ten-year-old named Bill Denbrough makes a paper boat for his little brother, Georgie. Georgie chases it through the rain-flooded streets until it slips into a storm drain, where a clown who calls himself Pennywise is waiting. The clown lures him close and kills him. Georgie's death is the first in a new wave of child killings and disappearances, though the adults of Derry seem strangely unwilling to see the pattern. It marks the return, after decades of sleep, of an ancient predatory thing that has fed on the town's children for centuries.",
+            "through": {
+              "chapter": 1
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The story moves to 1985. A brutal killing - the murder of a young man named Adrian Mellon, thrown from a bridge - tells Mike Hanlon, now Derry's librarian and the only member of his childhood circle still living in town, that the evil has woken again on its roughly twenty-seven-year cycle. As children in 1958, Mike and six friends had faced the creature, wounded it, and sworn a blood oath to return and finish it if it ever came back. Mike makes six phone calls. One by one the others - Bill Denbrough, Ben Hanscom, Beverly Marsh, Eddie Kaspbrak, Richie Tozier and Stan Uris - feel an old, half-buried dread return as they are summoned home. All have prospered, and all have forgotten almost everything. Stanley Uris, unable to face it, takes his own life rather than go back.",
+            "through": {
+              "chapter": 3
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The narrative begins moving between the adults' 1985 return and their childhood summer of 1958. In flashback the friends are introduced as lonely, bullied children: Bill grieving Georgie and fighting his stutter; overweight, gentle Ben Hanscom, new in town; anxious Eddie with his inhaler; loudmouthed Richie; brave Beverly, the only girl, growing up under a violent father; and rational Stan. Each has already had a private, terrifying encounter with the thing that wears many faces - Pennywise the clown chief among them - and each has learned that in Derry the monster reaches into your own fears and takes their shape. Drawn together as outcasts, the children begin to form the group that will call itself the Losers' Club.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Through the summer of 1958 the Losers' Club comes fully together, its seventh member the thoughtful Mike Hanlon, one of the few Black children in town and a target of the same bullies. Building a dam in the marshy Barrens becomes the ground of their friendship. Their encounters with It sharpen and multiply, each child menaced by a personalised horror, and a confrontation at the derelict house on Neibolt Street shows them the creature can be hurt and driven off when they stand together. They come to understand they are facing a single ancient being that has preyed on Derry's children for generations while the adults look away. Meanwhile Henry Bowers and his gang hunt the Losers with growing, unnatural viciousness.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "In 1985 the surviving friends reconvene in Derry. Gathering for a reunion dinner, their long-blank memories come flooding back, along with fresh manifestations of It that only they can see. Mike lays out for them the town's hidden history: a recurring cycle of massacres, fires and disappearances stretching back centuries, each coinciding with the creature's waking. As the adults commit to finishing what they began as children, It senses the threat and moves against them, engineering the escape of Henry Bowers - now a grey, broken man locked in an asylum - and setting him loose to hunt the Losers once more.",
+            "through": {
+              "chapter": 12
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The 1958 storyline reaches high summer. An escalating feud with Henry Bowers' gang culminates in the 'apocalyptic rockfight,' a pitched battle in the Barrens that the Losers win, cementing them as a group. Seeking to understand their enemy, they perform a ritual in a smoke-hole and share a vision reaching back to the deep past: they glimpse It arriving on Earth from the void ages before humanity, and sense a vast opposing presence, a Turtle, that hints they are not entirely without help. The bonds among the children deepen, including the tangled affections between Beverly, Bill and Ben, as they realise they will have to go down into the dark after the thing themselves.",
+            "through": {
+              "chapter": 15
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The children resolve to hunt It in its lair beneath the town, reached through the sewers and drains where it moves. They melt down silver to make slugs for Beverly's slingshot, their best weapon of faith and improvisation. Descending into the tunnels, they find and wound the creature, driving it back into deeper hibernation without killing it. Lost and coming apart in the dark afterward, they hold together through an act that binds the group and lets them find their way out. Battered but alive, the seven swear a blood oath: if It ever returns, they will come back to Derry and end it for good. Then they climb back into the daylight and, over the years, begin to forget.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "It moves against the reunited Losers through Henry Bowers, now a grey, broken man whom the creature springs from the asylum and drives back to Derry as its weapon. Henry attacks Mike Hanlon at the library by night and wounds him gravely; Mike barely survives and is left in the hospital, out of the fight that follows. Henry then comes for Eddie Kaspbrak at the Derry Town House, and in the struggle Eddie kills him, coming away with a broken arm. Knowing the creature will pick them off one by one if they hesitate, the remaining friends - Bill, Ben, Beverly, Richie and the injured Eddie - descend into the sewers beneath the town to finish It for good.",
+            "through": {
+              "chapter": 20
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Losers reach It in its lair and find that its physical form is closest to an enormous spider, though its true nature lies beyond the physical, in a searing light the survivors call the deadlights. Bill Denbrough confronts the creature mind to mind in the Ritual of Chud, a contest of wills that carries him beyond the edge of the universe, where he senses the vast, benign Turtle and the greater order in which both It and its opponents exist. It is a battle fought as much in thought and courage as in the body, and it brings Bill face to face with the thing that killed his brother.",
+            "through": {
+              "chapter": 22
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Losers destroy It. In the lair the creature, in its monstrous spider form, mortally wounds Eddie Kaspbrak, tearing off his arm as he attacks it to save Bill and Richie; he bleeds to death in the dark among his friends. The others find and crush the creature's heart, and destroy the clutch of eggs it had laid to continue its kind, ending the cycle for good. As It dies, a great storm tears through Derry and its old downtown collapses into the flooding waterways. Bill, Ben, Beverly and Richie climb out alive, and Mike recovers in the hospital from Henry Bowers' attack; of the seven who swore the oath, Eddie and Stan are gone. Bill's wife, Audra, who had followed him to Derry, is left catatonic by an encounter with It; in a last act tied to their childhood, Bill revives her. With the creature gone, the survivors' memories of Derry and of one another once again begin to fade, this time permanently, as they leave the town and return to their separate lives - free at last, and no longer remembering the friends who made them so.",
+            "through": {
+              "chapter": 23
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "it"
+      }
+    },
+    "jane-eyre": {
+      "characters": {
+        "characters": [
+          {
+            "description": "An orphaned girl of ten living at Gateshead Hall, the home of her aunt by marriage, Mrs Reed, who took her in unwillingly after the death of Jane's uncle. Plain, small, and passionate, Jane is treated as an unwanted dependent, bullied by her cousins and blamed for every quarrel. Intelligent and fiercely truthful, she longs for affection and justice and will not meekly accept cruelty.",
+            "id": "jane-eyre",
+            "name": "Jane Eyre",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "Sarah Reed"
+            ],
+            "description": "Jane's aunt by marriage and unwilling guardian, a cold, proud widow who despises the orphaned niece left in her care. She indulges her own three children while treating Jane as an inferior, and punishes her harshly, including shutting her alone in the frightening red-room. She resolves to be rid of Jane by sending her away to school.",
+            "id": "mrs-reed",
+            "name": "Mrs Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Mrs Reed's spoiled, overbearing son, some four years older than Jane, who bullies and strikes her while his mother overlooks his behavior. Greedy and idle, he torments Jane as a matter of course and treats her as beneath the family.",
+            "id": "john-reed",
+            "name": "John Reed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The stern, hypocritical clergyman who manages Lowood, the charity school for girls to which Jane is sent. He preaches privation and humility to the pupils while his own family lives in comfort. On meeting Jane he brands her a liar on Mrs Reed's word, and later humiliates her before the whole school.",
+            "id": "mr-brocklehurst",
+            "name": "Mr Brocklehurst",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "An older pupil Jane befriends at Lowood, a thoughtful, patient girl who bears the school's harsh punishments without complaint. Devoutly religious, she counsels Jane to endure injustice with forgiveness and to look beyond this life, and she gives Jane the first true friendship she has ever known.",
+            "id": "helen-burns",
+            "name": "Helen Burns",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Maria Temple"
+            ],
+            "description": "The kind and dignified superintendent of Lowood, respected by pupils and teachers alike. She shows Jane and Helen quiet compassion amid the school's severity, clears Jane of Brocklehurst's charge of lying, and becomes a guiding influence and model for Jane.",
+            "id": "miss-temple",
+            "name": "Miss Temple",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The elderly, motherly housekeeper who welcomes Jane to Thornfield Hall. Kindly and conventional, she runs the household during the frequent absences of its owner and gives Jane her first friendly reception there, though she knows little of the family's secrets.",
+            "id": "mrs-fairfax",
+            "name": "Mrs Fairfax",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The lively little French girl who becomes Jane's pupil at Thornfield, a ward placed in Mr Rochester's care. Fond of pretty clothes and of songs learned in Paris, she is affectionate but frivolous, and her connection to Rochester is not explained to Jane at first.",
+            "id": "adele-varens",
+            "name": "Adele Varens",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Edward Rochester"
+            ],
+            "description": "The master of Thornfield Hall, a dark, abrupt man of about forty whom Jane first meets when his horse slips on the ice and throws him. Blunt, moody, and given to probing conversation, he is drawn to Jane's candor and composure. He keeps his past and the strange happenings in his house closely guarded.",
+            "id": "edward-rochester",
+            "name": "Mr Rochester",
+            "reveal": {
+              "chapter": 12
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A beautiful, accomplished, and haughty young society lady who visits Thornfield among Rochester's guests. Wealthy in appearance and openly seeking a husband, she treats Jane and the household staff with disdain, and Rochester appears to be courting her, to Jane's private distress.",
+            "id": "blanche-ingram",
+            "name": "Blanche Ingram",
+            "reveal": {
+              "chapter": 17
+            },
+            "role": "minor"
+          },
+          {
+            "description": "The violent madwoman kept in secret confinement on the upper floor of Thornfield, revealed on Jane's wedding day to be Mr Rochester's living wife. A Creole woman from the West Indies whom Rochester married years earlier, she has sunk into raving insanity and has been the hidden cause of the fires and attacks within the house.",
+            "id": "bertha-mason",
+            "name": "Bertha Mason",
+            "reveal": {
+              "chapter": 26
+            }
+          },
+          {
+            "description": "The young clergyman who, with his sisters Diana and Mary, takes in the destitute Jane after she collapses at their door on the moors. Handsome, cold, and rigidly self-controlled, he is consumed by an ambition to serve as a missionary and suppresses his own feelings in the name of duty. He helps Jane find work as a village schoolmistress.",
+            "id": "st-john-rivers",
+            "name": "St John Rivers",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre"
+      },
+      "recaps": {
+        "ending": "Jane returns to Thornfield to find it destroyed by fire. Bertha Mason, Rochester's mad wife, set the blaze and died leaping from the roof; Rochester, trying to save her and the servants, was left blind and with the loss of a hand. Freed from his first marriage by Bertha's death and humbled by his injuries, he lives withdrawn at Ferndean. Jane, now independent through her inheritance, seeks him out, and the two are reunited. She marries him freely and as an equal, no longer the dependent governess but a wife with means of her own. Their marriage is happy; Rochester in time regains partial sight in one eye, enough to see the birth of their son. The Rivers sisters, Diana and Mary, make good marriages and stay close to Jane, while St John Rivers goes as a missionary to India, where he serves with unbending devotion and, as the book closes, is dying in the faith he lived for.",
+        "in_short": "Orphaned Jane Eyre is raised by a cruel aunt, then sent to the harsh Lowood school, where she loses her friend Helen Burns but grows into a self-possessed young woman. Taking a post as governess at Thornfield Hall, she falls in love with its brooding master, Mr Rochester, and he with her, and he proposes. Their wedding is halted by the revelation that Rochester already has a wife: Bertha Mason, a madwoman secretly imprisoned in the house and the cause of its strange terrors. Refusing to be his mistress, Jane flees penniless and is rescued by the Rivers siblings, who prove to be her cousins; she inherits a fortune from an uncle and shares it with them. Resisting a loveless missionary marriage urged by St John Rivers, she seems to hear Rochester call to her and returns to find Thornfield burned, Bertha dead, and Rochester blinded and maimed. Jane marries him, now his equal, and they find lasting happiness.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jane Eyre is a plain, spirited orphan of ten, raised grudgingly at Gateshead Hall by her aunt Mrs Reed, who despises her and favors her own three children. Bullied by her cousin John and blamed for defending herself, Jane is locked alone in the red-room, the chamber where her uncle died, and is so terrified that she falls ill. Unable to bear the injustice quietly, she at last confronts her aunt with her resentment. Mrs Reed, eager to be rid of her, arranges for Jane to be sent away to Lowood, a charity school run by the harsh clergyman Mr Brocklehurst, whom she warns that the child is a liar. Jane leaves Gateshead friendless but relieved to escape it.",
+            "through": {
+              "chapter": 4
+            }
+          },
+          {
+            "scope": "book",
+            "text": "At Lowood, Jane endures cold, hunger, and Brocklehurst's cruel, hypocritical discipline, but finds her first friends: the gentle, dignified superintendent Miss Temple, and a patient, deeply religious older girl, Helen Burns, who teaches her to meet wrong with forgiveness. When Brocklehurst publicly brands Jane a liar, Miss Temple clears her name. A typhus epidemic then sweeps the overcrowded school and many girls die; Helen, already consumed by illness, dies in Jane's arms. The scandal brings reforms to Lowood. Jane remains there eight years, six as a pupil and two as a teacher, until Miss Temple marries and leaves. Restless for a wider life, Jane advertises and is engaged as a governess.",
+            "through": {
+              "chapter": 10
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane arrives at Thornfield Hall, warmly received by the kindly housekeeper Mrs Fairfax, and begins teaching a lively little French girl, Adele, the ward of the estate's often-absent master. She meets that master, Mr Rochester, when his horse throws him on an icy lane. Abrupt, dark, and moody, Rochester is intrigued by Jane's honesty and draws her into searching conversations, and Jane finds herself increasingly attached to him. Strange things disturb the house: eerie laughter in the night, and a fire set in Rochester's bed, from which Jane saves him. Suspicion falls on a servant, Grace Poole, yet Rochester keeps her on and will not explain, leaving Jane uneasy about the secrets of Thornfield.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Rochester fills Thornfield with fashionable guests, among them the beautiful, scornful Blanche Ingram, whom he seems to be courting, to Jane's quiet pain. During the visit a stranger, Mr Mason, arrives from the West Indies and is mysteriously wounded in the night by something upstairs; Rochester swears Jane to secrecy as he tends him. Jane is then called back to Gateshead, where the dying Mrs Reed at last confesses that three years earlier she hid a letter from Jane's uncle in Madeira, who wished to make Jane his heir. Mrs Reed dies unreconciled. Jane returns to Thornfield, and Rochester, casting off the pretense with Blanche, declares that he loves Jane and asks her to marry him. Astonished and joyful, she accepts.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "As the wedding nears, Jane is troubled by omens, and a strange figure enters her room at night and tears her bridal veil. On the wedding morning the ceremony is stopped: a lawyer and Mr Mason declare that Rochester already has a living wife. Rochester admits it and takes the party up to the hidden upper room, where his wife, Bertha Mason, is kept, a violent madwoman who has been the true cause of the fires and the attack. Rochester explains that he was tricked into marrying her for money in Jamaica before her insanity showed, and begs Jane to live with him abroad regardless. Torn between love and conscience, Jane refuses to become his mistress and, in the night, secretly flees Thornfield with almost nothing.",
+            "through": {
+              "chapter": 27
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane wanders the moors penniless and starving until she collapses at the door of Moor House and is taken in by the clergyman St John Rivers and his sisters, Diana and Mary, who nurse her back to health. Concealing her past, she takes a post as mistress of a village school. St John, cold and ambitious, is preparing to leave as a missionary. He then discovers Jane's true identity and startling news: her uncle in Madeira has died and left her a fortune of twenty thousand pounds, and the Rivers siblings are in fact her own cousins. Overjoyed to have a family at last, Jane insists on dividing the inheritance equally among the four of them.",
+            "through": {
+              "chapter": 33
+            }
+          },
+          {
+            "scope": "book",
+            "text": "St John, admiring Jane's usefulness and self-command, presses her to marry him and go with him to India as a missionary's wife, though he offers duty rather than love. Jane is willing to accompany him as a fellow worker but refuses to marry a man who does not love her, and St John coldly persists until he nearly wears down her resistance. At the moment she is about to yield, Jane seems to hear Rochester's voice calling her name across the distance. Shaken and certain, she breaks free of St John and resolves to discover what has become of Rochester.",
+            "through": {
+              "chapter": 35
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Jane returns to find Thornfield a burned ruin. She learns that Bertha set the house ablaze and threw herself from the roof to her death, and that Rochester, trying to save the servants and his wife, was blinded and lost a hand. Now free but broken, he lives in seclusion at Ferndean. Jane goes to him, and the two are reunited; she chooses to stay as his wife, and they marry as equals, she now independent and he humbled and dependent on her. In time Rochester recovers enough sight in one eye to see their first child. The couple live happily; Diana and Mary marry well, and St John goes to India, where he labors devotedly and, Jane learns, is nearing death, content in his faith.",
+            "through": {
+              "chapter": 38
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge",
+            "type": "community"
+          }
+        ],
+        "work": "jane-eyre"
+      }
+    },
+    "jingo": {
+      "characters": {
+        "characters": [
+          {
+            "aliases": [
+              "Commander Vimes",
+              "Duke of Ankh"
+            ],
+            "description": "Commander of the Ankh-Morpork City Watch and, by marriage, Duke of Ankh, a former gutter-born street copper who rose to lead the city's police. Blunt, stubborn, and deeply suspicious of privilege and of easy patriotic answers, he treats every death as a crime to be solved and insists the law applies to everyone. Married to the wealthy Lady Sybil, he is uncomfortable with his rank and happiest working a case on his own feet.",
+            "id": "sam-vimes",
+            "name": "Sam Vimes",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "aliases": [
+              "The Patrician"
+            ],
+            "description": "The Patrician, absolute ruler of Ankh-Morpork, a lean, calm, and formidably intelligent man who governs by understanding exactly how people and factions behave. He rarely raises his voice and is generally several steps ahead of everyone around him.",
+            "id": "lord-vetinari",
+            "name": "Lord Vetinari",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Captain Carrot"
+            ],
+            "description": "A hugely tall, powerfully built man raised by dwarfs, and a captain of the City Watch. Straightforward, literal-minded, and almost universally liked, he takes the plain meaning of the law seriously and has an uncanny natural gift for leadership.",
+            "id": "captain-carrot",
+            "name": "Carrot Ironfoundersson",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Angua"
+            ],
+            "description": "A sergeant of the City Watch who keeps private the fact that she is a werewolf, using her heightened senses on the job. Capable and level-headed, she is romantically involved with Captain Carrot.",
+            "id": "angua",
+            "name": "Angua von Uberwald",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sergeant Colon"
+            ],
+            "description": "A stout, middle-aged sergeant of the Watch who prefers a quiet shift and a comfortable routine. Loyal but unadventurous, he is prone to nervous, half-informed theorizing about the world.",
+            "id": "sergeant-colon",
+            "name": "Fred Colon",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Corporal Nobbs"
+            ],
+            "description": "A disreputable, light-fingered corporal of the Watch of such uncertain appearance that he carries an official paper certifying he is human. Scruffy and opportunistic, but reliably present when it matters.",
+            "id": "corporal-nobbs",
+            "name": "Nobby Nobbs",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A troll sergeant of the City Watch, enormously strong and slower of thought in warm weather. He serves as the Watch's heavy muscle and carries a converted siege bow as a personal weapon.",
+            "id": "detritus",
+            "name": "Detritus",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A gentle, brilliant inventor kept in comfortable confinement by Lord Vetinari because his designs are too dangerous to loose upon the world. He sketches war machines and impossible devices while musing happily about art, birds, and the beauty of nature.",
+            "id": "leonard-of-quirm",
+            "name": "Leonard of Quirm",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Klatchian prince who arrives in Ankh-Morpork on a diplomatic visit as tensions over the disputed island grow. Worldly and cultured, he becomes the target of an assassination attempt during his stay.",
+            "id": "prince-khufurah",
+            "name": "Prince Khufurah",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The ruler of the Klatchian empire and Prince Khufurah's elder brother, a powerful and ambitious leader who presses Klatch's claim to the risen island and steers the two nations toward open war.",
+            "id": "prince-cadram",
+            "name": "Prince Cadram",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A fearsome, richly robed D'reg of the Klatchian deserts who moves through the diplomatic crisis with unsettling confidence. Educated, watchful, and plainly dangerous, he appears to be shadowing events around the Klatchian visitors for reasons of his own.",
+            "id": "71-hour-ahmed",
+            "name": "71-hour Ahmed",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jingo"
+      },
+      "recaps": {
+        "ending": "The war is stopped without a real battle. 71-hour Ahmed, revealed to be Klatch's own equivalent of Vimes, a lawman who polices the desert, produces proof that Prince Cadram arranged the attack on his own brother Khufurah in order to create a martyr and a cause for war. With the conspiracy exposed to both sides and the disputed island of Leshp already sinking back beneath the sea, the reason to fight simply disappears. Lord Vetinari, returning from his secret voyage, resumes control and steers the aftermath to Ankh-Morpork's advantage. Vimes, who refused to let patriotism excuse a murder, returns to being a policeman rather than a soldier. The armies disperse, the crisis passes, and the city settles back into its usual uneasy normality.",
+        "in_short": "When the long-drowned island of Leshp suddenly rises from the sea midway between Ankh-Morpork and the empire of Klatch, both nations claim it and war fever grips the city. During a visit by the Klatchian Prince Khufurah, an assassination attempt throws suspicion in every direction, and Commander Vimes treats it as a crime to be solved rather than an excuse to fight. As Ankh-Morpork's nobles raise a shambolic army and sail to war, Vimes takes the Watch to Klatch to chase the truth, shadowed by the formidable D'reg lawman 71-hour Ahmed. Meanwhile Lord Vetinari, Leonard of Quirm, Colon, and Nobby travel in secret beneath the waves in one of Leonard's inventions. Vimes learns the entire crisis was engineered, the attack on Khufurah arranged from within Klatch's own ruling family to manufacture a reason for war. Confronting the two assembled armies, Vimes arrests everyone for conspiracy to cause a breach of the peace. Leshp conveniently sinks again, the prize vanishes, and the war collapses before it truly begins.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously, in earlier books: Sam Vimes rose from a drunken captain of a near-dead Night Watch to become Commander of a revitalized City Watch and, through marriage to the wealthy dragon-breeder Lady Sybil, Duke of Ankh. Under him the Watch has grown to include dwarfs, trolls, a werewolf, and other unusual recruits. Captain Carrot, a human raised by dwarfs, is quietly believed by some to have a claim to Ankh-Morpork's long-vacant throne, but he chooses to remain a watchman serving the city rather than rule it. In earlier cases Vimes foiled schemes to seize power in Ankh-Morpork, including a plot involving manufactured golems and an attempt to poison Lord Vetinari. As this book opens, Vimes is an established, if deeply reluctant, member of the city's ruling circle.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "A long-drowned island called Leshp suddenly rises from the sea midway between Ankh-Morpork and the distant empire of Klatch, and both nations immediately claim it. As patriotic anger and talk of war spread through Ankh-Morpork, a Klatchian diplomatic party arrives in the city. Commander Vimes and the City Watch are left caught between rising public hostility toward the visitors and the ordinary duty of keeping the peace.",
+            "through": {
+              "chapter": 1
+            }
+          }
+        ],
+        "sources": [
+          {
+            "imported_at": "2026-07-25",
+            "ref": "model-knowledge:best-effort",
+            "type": "community"
+          }
+        ],
+        "work": "jingo"
+      }
+    },
+    "killing-floor": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The narrator: a drifter and former soldier who is arrested for murder less than an hour after walking into the small Georgia town of Margrave. Calm, observant, and physically formidable, Reacher travels the country alone with no home, no luggage, and no fixed plans. He trusts his own reasoning and expects the truth to clear him, since he arrived on foot that morning and killed no one.",
+            "id": "jack-reacher",
+            "name": "Jack Reacher",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "The Margrave police sergeant who leads the team that arrests Reacher at the diner. Baker treats the arrest as high-risk but stays calm and professional throughout, reading Reacher his rights correctly and handling him firmly and without malice.",
+            "id": "baker",
+            "name": "Baker",
+            "reveal": {
+              "chapter": 1
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The overweight, unfit chief of the Margrave police, hostile to Reacher from the moment they meet. Morrison insults and threatens him, insists he recognizes him from somewhere, and pushes to keep him locked up for the warehouse killing despite a thin case, even claiming to have seen Reacher at the scene.",
+            "id": "chief-morrison",
+            "name": "Chief Morrison",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "Margrave's chief of detectives: a black, Boston-educated, meticulous investigator who takes over Reacher's formal questioning. Patient and rigorous, Finlay is troubled by the holes in the case against Reacher but is constrained by his chief's insistence, and he is careful to do everything by the book, on tape and on the record.",
+            "id": "captain-finlay",
+            "name": "Captain Finlay",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Margrave officer who books and fingerprints Reacher and, unlike her colleagues, treats him kindly, bringing him coffee and quietly letting slip that no criminal record turned up on him. Sympathetic and willing to bend small rules, she becomes one of the few people in town on Reacher's side.",
+            "id": "officer-roscoe",
+            "name": "Officer Roscoe",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A trim, sandy-haired Atlanta banker whose mobile number was found hidden in the dead man's shoe. Brought in for questioning, Hubble first seems merely inconvenienced but collapses into panic when asked about the victim and a scrap of paper reading 'Pluribus,' then suddenly confesses to a killing the detectives doubt he committed. He is a family man living comfortably in Margrave.",
+            "id": "paul-hubble",
+            "name": "Paul Hubble",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Charlene Hubble"
+            ],
+            "description": "Paul Hubble's wife: tall, slim, and expensively dressed, with a core of toughness beneath a strained smile. She meets Reacher when he comes looking for her missing husband, thanking him for saving Paul's life in prison, and she has two young children, Ben and Lucy.",
+            "id": "charlie-hubble",
+            "name": "Charlie Hubble",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Jack Reacher's older brother, two years his senior and a career federal investigator who moved from Military Intelligence to the Treasury Department. The murdered stranger found at the warehouse is identified as Joe; he had come to Margrave chasing the criminal operation a frightened insider secretly hired him to expose. Jack had not seen him since their mother's funeral years earlier.",
+            "id": "joe-reacher",
+            "name": "Joe Reacher",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "A second murdered man, found shot near the warehouse the same night as the first victim and identified by fingerprints as Sherman Stoller from an old Florida arrest. The name means nothing to Reacher at first. Stoller was killed with the same silenced small-caliber weapon as the other victim.",
+            "id": "sherman-stoller",
+            "name": "Sherman Stoller",
+            "reveal": {
+              "chapter": 10
+            }
+          },
+          {
+            "description": "The wealthy businessman behind the Kliner Foundation, a charity credited with restoring and enriching Margrave in the five years since he arrived. He owns the warehouse complex by the highway where the first body was found. Kliner is a revered local figure, though his second wife appears frightened and his grown son is openly menacing.",
+            "id": "kliner",
+            "name": "Kliner",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "aliases": [
+              "Kliner's son"
+            ],
+            "description": "Kliner's son by his first wife: a hard-looking young man who drives a black pickup truck. He fixes Reacher with hostile stares and briefly follows him on foot before driving off, making clear the stranger's presence in town has been noticed.",
+            "id": "the-kliner-kid",
+            "name": "The Kliner kid",
+            "reveal": {
+              "chapter": 9
+            }
+          },
+          {
+            "description": "Margrave's elderly mayor, about seventy-five and walking with a cane, descended from the old family the town is named for. When the police chief is killed, Teale takes personal control of the department and steers the investigation toward a false theory, openly obstructing any inquiry into the warehouse murders and pressing Reacher to leave town.",
+            "id": "mayor-grover-teale",
+            "name": "Mayor Grover Teale",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "Special Agent Picard"
+            ],
+            "description": "Finlay's old friend from his Boston police days, now an FBI agent based in Atlanta, an enormous man as tall as Reacher and far heavier. With the local force compromised and Mayor Teale controlling official channels, Picard agrees to help off the record and moves Hubble's wife and children to a secret Bureau safe house for protection.",
+            "id": "picard",
+            "name": "Picard",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The Margrave department's previous detective, who held the job alone for many years before Finlay arrived. Gray hanged himself in his garage in February, and his death left the small eight-person department without a detective until Finlay was hired.",
+            "id": "gray",
+            "name": "Gray",
+            "reveal": {
+              "chapter": 7
+            }
+          },
+          {
+            "aliases": [
+              "Assistant Warden Spivey"
+            ],
+            "description": "An assistant warden at Warburton Correctional Facility, a heavyset man with a high voice. When Reacher and Hubble arrive as weekend detainees, Spivey personally escorts the two of them through the prison late at night, carrying a shotgun, and locks them into a shared cell.",
+            "id": "spivey",
+            "name": "Spivey",
+            "reveal": {
+              "chapter": 5
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Two elderly black men who run the Margrave barbershop and have lived in the town all their lives. They are happy to talk local history, including the legend that the blues guitarist Blind Blake passed through Margrave and may have died there decades ago - one barber's elderly sister is said to have sung with him - but they firmly decline to discuss the Kliners.",
+            "id": "the-elderly-barbers",
+            "name": "The elderly barbers",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Kliner's second wife: a pale, frail-looking woman Reacher notices at a convenience store. A clerk puts her poor condition down to illness, but to Reacher she looks frightened rather than sick. She is said to get along badly with her stepson, who collects her in his black pickup truck.",
+            "id": "mrs-kliner",
+            "name": "Mrs. Kliner",
+            "reveal": {
+              "chapter": 9
+            },
+            "role": "minor"
+          },
+          {
+            "aliases": [
+              "Professor Kelstein"
+            ],
+            "description": "A very old, small Columbia University professor and one of the contacts on Joe's list. During World War II he and a Princeton colleague ran a secret program printing counterfeit German currency to damage the Nazi economy, and the two became lifelong experts on forgery, writing the Treasury's standard reference on the subject and advising Joe informally. He explains to Reacher what Joe was chasing and how good the fake money really is.",
+            "id": "kelvin-kelstein",
+            "name": "Kelvin Kelstein",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "minor"
+          },
+          {
+            "description": "A Treasury Department employee who was close to Joe Reacher and possibly involved with him. Out of loyalty to Joe, she agrees to speak to Reacher off the record and to look into what her colleague had been working on before his death.",
+            "id": "molly-beth-gordon",
+            "name": "Molly Beth Gordon",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Sherman Stoller's girlfriend of several years, who lives in an upscale condominium paid for by his sudden, unexplained wealth. Bitter about his secretive dealings, she confirms his death and produces a photograph of Stoller with the former boss who employed him hauling goods.",
+            "id": "judy",
+            "name": "Judy",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "minor"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "killing-floor"
+      },
+      "recaps": {
+        "ending": "Every principal conspirator is dead. Reacher kills Mayor Teale, Kliner, and the mole Sergeant Baker in the warehouse assault, and, with Finlay, finishes the FBI traitor Picard; Kliner's son had already drowned days earlier, and the earlier dead include Chief Morrison and his wife, the detective Gray, the Treasury source Molly Beth Gordon, a Princeton scholar, and several hired killers. Kliner is confirmed as the man who personally shot Joe Reacher. The warehouse, its forty-ton stockpile of counterfeit cash, and the Margrave police station all burn, and the Kliner Foundation's hold on the town collapses. Roscoe, Charlie Hubble, and the Hubble children are rescued unharmed; Paul Hubble returns to his family to face an uncertain future amid the investigation. State police, the FBI, the National Guard, the Treasury, and the state governor descend on Margrave, whose police force is reduced to four, including Finlay and Roscoe, who both stay to rebuild the town; Roscoe considers running for mayor. Reacher, unwilling to spend years detained by the multi-agency inquiry, chooses to leave, and he and Roscoe part by mutual, amicable decision. He arranges Joe's funeral and boards a bus for California with only Joe's photograph and Roscoe's memorized phone number. Several threads stay open: the identity of the third man who helped stage Gray's murder is never confirmed, Kliner's frightened wife and her fate are never explained, and Reacher's own future, back on the road alone, is entirely unwritten.",
+        "in_short": "Drifter Jack Reacher is arrested for a murder in the small Georgia town of Margrave, only to discover the dead man is his own brother, Joe, a Treasury investigator. Joe had been closing in on a vast counterfeiting operation run by the town's revered benefactor, Kliner: genuine one-dollar bills are bought nationwide, bleached at a Venezuela plant into authentic currency paper, and reprinted as flawless hundreds, with the Kliner Foundation buying the whole town's silence. As Reacher investigates with the detective Finlay and the officer Roscoe, who becomes his lover, the conspiracy kills to protect itself, reaching into the police, the mayor's office, and even the FBI, whose agent Picard proves to be the final hidden conspirator. After a week of deductions and killings, Reacher storms the warehouse and destroys the operation, killing Kliner, Mayor Teale, the mole Baker, and Picard; the stockpiled cash and the town's corruption go up in flames. Roscoe stays to rebuild Margrave; Reacher, unwilling to be detained, parts from her and leaves for California, alone again.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "book",
+            "text": "Jack Reacher, a drifter passing through, is arrested for murder less than an hour after walking into the small, unnaturally tidy Georgia town of Margrave. A body has been found at a warehouse owned by a local businessman named Kliner, and a witness described a man matching Reacher. Reacher is certain his account will clear him: he arrived on foot that morning and killed no one. The hostile police chief, Morrison, wants him held and even claims to have seen him at the scene, but the careful chief of detectives, Finlay, doubts the case. The dead man was shot with a silenced weapon, savagely beaten after death, and carried a hidden phone number belonging to a local banker, Paul Hubble. Brought in, Hubble panics and inexplicably confesses to the killing, though he has an alibi. Reacher and Hubble are shipped to a state prison for the weekend, where they are mistakenly placed among dangerous inmates and attacked; Reacher fights them off. Shaken, Hubble finally admits his confession was false and that he and his family have been threatened with torture and death if he ever talks about something very big.",
+            "through": {
+              "chapter": 6
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher has been arrested for a murder at a Margrave warehouse and jailed for the weekend alongside Paul Hubble, the local banker whose hidden phone number was found on the victim. In prison, someone tries to have Reacher killed: he and Hubble are deliberately placed among violent convicts and a gang stages an assassination attempt, which Reacher survives before a warden abruptly moves them to safety. The attempt is later understood to have been arranged from outside. Hubble opens up: the dead man was a private investigator he secretly hired to help him escape and expose a large criminal operation he is trapped in, one involving roughly ten people and building toward some deadline the coming Sunday. He refuses to say more, terrified for his family. Once Reacher's alibi is fully verified, both men are released, but Hubble then vanishes from his own home, leaving everything behind. Meanwhile a second body turns up near the warehouse, killed the same night with the same silenced weapon and identified only by a watch reading 'to Sherman.' Then a fingerprint match on the first victim, keyed to distinctive childhood medical history, reveals the man's identity to Reacher: the murdered stranger at the warehouse is his own brother. What began as a wrongful arrest has become personal.",
+            "through": {
+              "chapter": 9
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The murder that got Reacher arrested in Margrave turns out to be family: the dead man at the warehouse is his older brother, Joe, a Treasury Department investigator. A second victim, killed the same night, is identified as Sherman Stoller. Reacher, who has begun a relationship with the sympathetic officer Roscoe, decides to stay and settle Joe's death himself rather than leave it to the police. The reluctant informant Paul Hubble, who admitted his family was threatened over a huge criminal operation and that Joe was the investigator he hired, disappears from his home, and Reacher fears he has been killed. Then the town's hostile chief, Morrison, and his wife are discovered tortured and murdered in their home, the violence matching the threats made against Hubble. Reacher realizes the killings are all connected: Margrave has had no homicides in thirty years and suddenly has several in days. He works out that Morrison was part of the operation, punished for a failure at the warehouse and killed as a warning to whoever replaces him, meaning the next chief will be compromised too. Reacher decides he can trust only the detective Finlay and Roscoe. The wealthy Kliner family, whose foundation appears to sustain the whole town, sits at the center of his suspicions, and Kliner's menacing son has begun openly confronting Reacher over Roscoe.",
+            "through": {
+              "chapter": 13
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher, avenging his murdered brother Joe, has narrowed his trust to two allies: the detective Finlay and the officer Roscoe, now his lover. After Chief Morrison and his wife are found tortured and killed, Margrave's elderly mayor, Grover Teale, seizes personal control of the police and openly steers the investigation away from the truth. Finlay quietly brings in an old friend, the FBI agent Picard, who moves Hubble's wife and children to a secret Bureau safe house. Roscoe's own home is then broken into by intruders using the same methods as the Morrison killers; she and Reacher are now targets. Reacher meets the town's benefactor, Kliner, in person and confirms the Kliner Foundation is a financial front, quietly paying local merchants far more than it admits. Roscoe secretly arms Reacher with a dead detective's powerful handgun. When two hitmen tail him, Reacher ambushes and kills them, discovering the missing prison warden's body in their car. Through a Treasury contact of Joe's, Molly Beth Gordon, Reacher learns Joe led an anti-counterfeiting operation and that vast sums of American cash circulate abroad, dependent on trust in the dollar. Finally, tracking the second victim, Sherman Stoller, Reacher and Roscoe reach Stoller's girlfriend Judy, who produces a photograph of Stoller with his old boss, a man they both recognize as Paul Hubble, placing the vanished banker at the heart of the smuggling operation.",
+            "through": {
+              "chapter": 18
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher's hunt for his brother Joe's killers now centers on Kliner's counterfeiting operation, run through the town's warehouses and its foundation. Roscoe recognizes Kliner's warehouse in the background of the photograph linking the dead trucker Sherman Stoller to Paul Hubble. From Joe's discarded belongings, Reacher recovers a hidden note headed 'Operation E Unum Pluribus' with a short list of contacts. One of them, the Treasury source Molly Beth Gordon, obtains Joe's secret files and flies to hand them over, but she is stabbed to death at the Atlanta airport and the files are stolen. Following Joe's list, Reacher, Finlay, and Roscoe recover evidence the late detective Gray had hidden in a barbershop: a financial audit exposing the Kliner Foundation as a front and a surveillance log of the warehouse traffic. They also conclude Gray did not kill himself; he was murdered and staged as a suicide, most likely by Morrison, Teale, and a third, unknown man. Reacher mounts a solo surveillance of the warehouses and identifies the guarded compound as the operation's hub. He tails one of its trucks hundreds of miles into Mississippi, where the driver proves to be Kliner's son. Breaking into the parked truck, he expects to find it loaded with money bound for a city, and finds it completely empty, overturning the group's theory of how the operation moves its goods. Everyone connected to Joe's investigation is being hunted, and the Sunday deadline that governs the scheme is only days away.",
+            "through": {
+              "chapter": 23
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher and his allies grasp the real shape of Kliner's scheme. The warehouse trucks bring something into Margrave from around the country, not out of it, hidden in air-conditioner boxes marked with strange serial numbers. A Princeton scholar on Joe's contact list is murdered before he can share a breakthrough, and Reacher deduces that the Margrave sergeant Baker is the conspiracy's inside mole, secretly feeding information to Teale. In New York, another expert, Professor Kelstein, confirms that Kliner personally runs a Venezuelan counterfeiting operation producing billions in near-perfect fake hundred-dollar bills, the finest anyone in the trade has seen. The one mystery no one has solved is how Kliner obtains flawless currency paper; the Princeton scholar had found the answer but was killed for it. Back in Margrave, Reacher feeds the mole Baker false information as bait and sets a trap at Hubble's empty house. That night a five-man hit squad in protective suits, led by Kliner's son, arrives to search the house. Reacher kills all five in the dark and the rain, drowning Kliner's son in the swimming pool, and, examining the bodies, recognizes two as warehouse guards and two as police officers, confirming that the corruption runs deeper into the force than Baker, Morrison, and Teale. He disposes of every trace. The Sunday deadline is now under a day away, and Reacher remains troubled by boxes of numbers that hold no actual air conditioners, and by a note of Joe's pointing to the Stollers' garage that he means to reexamine.",
+            "through": {
+              "chapter": 26
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher cracks the counterfeiting scheme completely: the operation buys up genuine one-dollar bills across the country, ships them to Margrave, and has them chemically bleached at Kliner's Venezuela plant to yield authentic currency paper, reprinted as hundreds, exactly what Joe's note meant by 'out of one comes many.' He and Finlay confirm it by finding boxes of Stoller's skimmed one-dollar bills in his parents' garage. They brief Finlay's FBI friend Picard, and the trap springs: Picard is himself the operation's tenth and final hidden member, a longtime protector of Kliner inside the Bureau. At gunpoint with Teale and Kliner, Reacher learns that Kliner personally shot Joe, that the Morrisons were tortured to death by Kliner and his son, and that Paul Hubble is alive after all, in hiding. Roscoe, secretly abducted by Picard days earlier, and Finlay are held hostage: unless Hubble is found and Picard reports in, Finlay dies an hour before dawn and Roscoe at dawn. Forced to search for Hubble with Picard guarding him, Reacher works the odds. On the highway near Augusta he provokes a crash, kills the two remaining enemy operatives tailing them, and, after a standoff in which each man swears not to shoot the other, shoots Picard and drives on, leaving his fate uncertain. The dawn deadline is still running, Joe's murder is finally explained, and Reacher is racing alone to find the one man who can lead him back to the hostages before Kliner kills them.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Reacher finds Paul Hubble hiding in Augusta under a false name, and with his help breaks Finlay out of the Margrave jail. Sheltered overnight by the two elderly barbers, who reveal they have hidden fugitives for decades and refused Kliner's money, Reacher also learns the answer to the old mystery that first drew him to town: the blues musician Blind Blake was beaten to death sixty years earlier by the father of a young Grover Teale. Before dawn on Sunday, Reacher, Finlay, and Hubble storm the warehouse. They kill the guard Baker, carry Hubble's sleeping children to safety, and find Roscoe and Charlie Hubble forced to box a fifty-foot mountain of counterfeit cash while Teale and Kliner watch over them with shotguns. In the battle that follows, Reacher shoots Teale and Kliner dead, Kliner confirmed as Joe's killer, and, with Finlay, finally kills the wounded Picard. The warehouse, its forty-ton stockpile, and the police station all burn. Roscoe, Charlie, and the children are rescued unharmed; every conspirator is dead. In the aftermath, state police, the FBI, the National Guard, and the Treasury flood Margrave, and its police force is reduced to four. Roscoe chooses to stay and help rebuild the town, perhaps entering local politics; Reacher, unwilling to be tied up for years in the investigation, decides to leave. The two part by mutual, affectionate agreement. He asks that Joe's ashes be scattered in the meadow where the barber's sister once sang with Blind Blake, then boards a bus for California, resuming his drifting life, carrying only a photograph of Joe and Roscoe's phone number.",
+            "through": {
+              "chapter": 34
+            }
+          }
+        ],
+        "sources": [
+          {
+            "type": "community"
+          }
+        ],
+        "work": "killing-floor"
+      }
+    },
+    "king-of-duels": {
+      "characters": {
+        "characters": [
+          {
+            "description": "The Earth-born owner of the Wandering Inn. Her magical door, Garden of Sanctuary, and inn provide shelter to a household drawn from peoples who are often enemies elsewhere.",
+            "id": "erin-solstice",
+            "name": "Erin Solstice",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "protagonist"
+          },
+          {
+            "description": "A young Gnoll in Erin's care. She is protected by the inn's household and shares a close companionship with Bird and Numbtongue.",
+            "id": "mrsha",
+            "name": "Mrsha",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redfang Hobgoblin bard who lives at the Wandering Inn as part of its mixed household.",
+            "id": "numbtongue",
+            "name": "Numbtongue",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Bird of the Wandering Inn"
+            ],
+            "description": "A Free Antinium archer and member of the inn's household. He is one of Mrsha's closest and most protective companions.",
+            "id": "bird",
+            "name": "Bird",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "the Slayer"
+            ],
+            "description": "A senior member of Liscor's Watch and one of the ancient Centenium.",
+            "id": "klbkch",
+            "name": "Klbkch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A senior member of Erin's household who secretly belongs to Calanfer's royal family. She helps run the inn and guards her identity from people who might treat a princess as a political asset.",
+            "id": "lyonette",
+            "name": "Lyonette",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pallas-linked illusionist and negotiated ally of Erin Solstice. His connection to the inn does not make Erin an ally of his wider faction.",
+            "id": "palt",
+            "name": "Palt",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Liscor investor and the niece of General Shivertail.",
+            "id": "selys",
+            "name": "Selys",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Gnoll criminal operating around Liscor.",
+            "id": "bearclaw",
+            "name": "Bearclaw",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "antagonist"
+          },
+          {
+            "aliases": [
+              "King of Destruction"
+            ],
+            "description": "The ruler known as the King of Destruction, returned to conquest beyond Izril.",
+            "id": "flos",
+            "name": "Flos",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Flos's steward and principal cavalry commander.",
+            "id": "orthenon",
+            "name": "Orthenon",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An Earth-born runner who remains away from the Wandering Inn by choice.",
+            "id": "ryoka",
+            "name": "Ryoka",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Erin's former sentient undead worker, now absent from the inn. The circumstances of his departure leave Erin with unresolved guilt.",
+            "id": "toren",
+            "name": "Toren",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Tyrant of Flames"
+            ],
+            "description": "An ancient dragon hidden in the High Passes.",
+            "id": "teriarch",
+            "name": "Teriarch",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Sinew Magus"
+            ],
+            "description": "A physical mage from Pallas who investigates Erin's unexplained knowledge and strategic ability. He takes a methodical interest in adapting her ideas to training.",
+            "id": "grimalkin",
+            "name": "Grimalkin",
+            "reveal": {
+              "chapter": 2
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Redfang survivor whose missing Garden statue gives Numbtongue reason to believe he may still be alive.",
+            "id": "bad-arrow-missing-redfang",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 4
+            },
+            "role": "minor"
+          },
+          {
+            "description": "Erin's still-anonymous correspondent in ongoing games of chess and Go played through magical boards.",
+            "id": "niers-astoragon",
+            "name": "Niers Astoragon",
+            "reveal": {
+              "chapter": 7
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An elite Pallas alchemist and named adventurer who exchanges valuable potions and expertise for Erin's chocolate. The alchemist recognizes Octavia's work as commercially important and worthy of credit.",
+            "id": "pallas-alchemist",
+            "name": "Pallas alchemist",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Pallas alchemist carrying a minute, irreplaceable haste-potion sample. Her new research partner also recognizes her inventive talent.",
+            "id": "octavia",
+            "name": "Octavia",
+            "reveal": {
+              "chapter": 8
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium tactician who fears Klbkch's judgment. Despite that fear, he intervenes when Hive soldiers threaten Mrsha and helps secure her release.",
+            "id": "anand",
+            "name": "Anand",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium soldier who supports Bird's challenge to Hive authority. He recognizes the courage required for Antinium to assert identities of their own.",
+            "id": "yellow-splatters",
+            "name": "Yellow Splatters",
+            "reveal": {
+              "chapter": 10
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A Liscor Watch guardsman and Klbkch's longtime partner. He brings Erin word that two senior guards have vanished while investigating Bearclaw.",
+            "id": "ralk",
+            "name": "Ralk",
+            "reveal": {
+              "chapter": 11
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "bearer of Garen Redfang's key"
+            ],
+            "description": "The leader of a fortified goblin refuge in the High Passes. She carries Garen Redfang's key and experiences inherited memory-dreams whose knowledge is bound to grief for dead goblins.",
+            "id": "goblin-home-chieftain",
+            "name": "Goblin Home chieftain",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Goblin Home's long-range archer and overwatch defender. He works closely with Snapjaw as the refuge prepares for threats in the High Passes.",
+            "id": "bad-arrow-goblin-home",
+            "name": "Bad Arrow",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A king who enters Belchan's capital before Flos can take it. He intends to protect its civilians while surrendering the prime minister responsible for the atrocity that prompted the invasion.",
+            "id": "raelt",
+            "name": "Raelt",
+            "reveal": {
+              "chapter": 16
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium priest who joins others seeking an education about intimacy, identity, and relationships beyond the Hive's customary experience.",
+            "id": "pawn",
+            "name": "Pawn",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "An individual Antinium soldier who treats gender as distinct from Antinium biology. Concern over the short lives expected for his people drives his search for knowledge about intimacy.",
+            "id": "belgrade",
+            "name": "Belgrade",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A hidden necromancer who lives among powerful thinking undead servants.",
+            "id": "azkerash",
+            "name": "Az'kerash",
+            "reveal": {
+              "chapter": 18
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A distinct being connected to Toren who speaks within him. She warns that both of them are in danger, but her nature and origin remain unclear.",
+            "id": "torens-skeletal-presence",
+            "name": "Toren's skeletal presence",
+            "reveal": {
+              "chapter": 21
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Griffin Hunt's stitch-person summoner. She can repair her body and call creatures or ancestral figures through the life-strings embedded within her.",
+            "id": "revy",
+            "name": "Revy",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Griffin Hunt's elderly plague mage. He accompanies the reduced team to Inversil as its members seek former companions and an appraisal of recovered treasure.",
+            "id": "typhineus",
+            "name": "Typhineus",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "aliases": [
+              "Spider",
+              "Weaver of Tyrandria",
+              "Thread Stealer"
+            ],
+            "description": "An ancient named-rank witch whose thread magic controls stitched matter and can unravel spells. Her regenerative power and command of constructed bodies make her a threat beyond ordinary adventuring teams.",
+            "id": "stitch-witch",
+            "name": "Stitch Witch",
+            "reveal": {
+              "chapter": 25
+            },
+            "role": "antagonist"
+          },
+          {
+            "description": "A major northern noble whose authority extends across the region's political struggles.",
+            "id": "magnolia-reinhart",
+            "name": "Magnolia Reinhart",
+            "reveal": {
+              "chapter": 0
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "Goblin Home's close fighter and Bad Arrow's partner. She supports him after their losses and retains a place at the High Passes refuge.",
+            "id": "snapjaw",
+            "name": "Snapjaw",
+            "reveal": {
+              "chapter": 14
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The invisible-bow scout who leads Griffin Hunt's reduced three-person team. He pursues the attackers who ambushed a pendant courier.",
+            "id": "griffin-hunt-scout-leader",
+            "name": "Griffin Hunt scout leader",
+            "reveal": {
+              "chapter": 23
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "A former Griffin Hunt shield fighter who uses a hatchet and buckler. She will return to the team only if her young son stays with her except during short, safer assignments.",
+            "id": "griffin-hunt-shield-fighter",
+            "name": "Griffin Hunt shield fighter",
+            "reveal": {
+              "chapter": 24
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "One of the original Antinium from the Grand Hive. She arrives at the Wandering Inn for an unresolved audience with Erin.",
+            "id": "small-queen",
+            "name": "Small Queen",
+            "reveal": {
+              "chapter": 28
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The named-rank alchemist previously known only by profession. Salis is a turnscale whose transformation potions support different presentations, and refuses to deny that identity for a public role in Pallas.",
+            "id": "salis",
+            "name": "Salis",
+            "reveal": {
+              "chapter": 29
+            },
+            "role": "supporting"
+          },
+          {
+            "description": "The physically failing head of a northern founding family. She retains control of her house's money and succession, chooses an artisan lord as her heir, and prepares to retire.",
+            "id": "elderly-northern-matriarch",
+            "name": "Elderly northern matriarch",
+            "reveal": {
+              "chapter": 30
+            },
+            "role": "supporting"
+          }
+        ],
+        "license": "CC-BY-SA-3.0",
+        "sources": [
+          {
+            "ref": "audible:uk:B0F6VW2DNP",
+            "type": "community"
+          }
+        ],
+        "work": "king-of-duels"
+      },
+      "recaps": {
+        "ending": "The Wandering Inn is larger and better supplied, with new Garden crops, expanded rooms, stronger magic, and several Antinium Hives newly connected through the completed tunnel. Erin is level 41 and awaits an unresolved audience with the Grand Hive's Small Queen. Bearclaw and the missing Watch guards remain an open danger, while Klbkch has taken indefinite leave after his failed attack on the individual Antinium. Goblin Home survives the frost wyverns and begins rebuilding, but its chieftain still needs a second key to pursue the former goblin king's legacy. Raelt survives his duel with Flos and saves Belchan's capital for the moment, leaving their kingdoms at war. Toren remains Az'kerash's prisoner as the necromancer begins creating undead capable of independent growth. Griffin Hunt is restored to four members and survives the Stitch Witch's return. The couriers complete their contested delivery, defeating the Assassin's Guild's public challenge, and Magnolia Reinhart's coalition forces the Stitch Witch out of the north without killing her. Pallas's persecution of turnscales is poised to intensify.",
+        "in_short": "Erin Solstice strengthens the Wandering Inn through new construction, Garden crops, memory-fire, and a wider network of allies, while Bird's rejection of Hive authority leads Klbkch to attack the individual Antinium. Pawn's miracle and the arrival of other Hives end that crisis, though Klbkch withdraws on indefinite leave. Goblin Home defeats frost wyverns and learns that Garen Redfang's key is half of a route to a former goblin king's legacy. In Chandrar, Raelt duels Flos and forces his army away from Belchan's capital. Az'kerash discovers why Toren has a soul and begins remaking undead so they can level. Griffin Hunt reunites, survives the returned Stitch Witch, and witnesses the Assassin's Guild openly challenge Magnolia Reinhart. Couriers complete the delivery that the Guild tried to stop, while Magnolia unites northern ladies to banish the Stitch Witch without destroying her. The book closes with Erin awaiting the Small Queen, Toren still captive, and several wars and threats unresolved.",
+        "license": "CC-BY-SA-3.0",
+        "recaps": [
+          {
+            "scope": "series",
+            "text": "Previously: Erin Solstice built the Wandering Inn outside Liscor into a refuge linked to distant cities by a magical door. Her household includes Mrsha, the young Gnoll entrusted to her care, Bird and other individual Antinium, Lyonette, and Numbtongue, a Redfang Hobgoblin bard. The Garden of Sanctuary protects the inn and holds memorials to people Erin has lost. Her choices have connected her to Liscor's Watch, Pallas, Wistram, adventurers, goblins, and Antinium leaders. Ryoka remains away from the inn by choice. Toren, Erin's former undead worker, is also absent, leaving Erin uncertain about his fate and troubled by her treatment of him. Beyond Liscor, Flos has returned to conquest, Magnolia Reinhart remains a major northern power, and the aftermath of goblin wars continues to shape survivors throughout Izril.",
+            "through": {
+              "chapter": 0
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The broadcast of the Saltstone tribe's massacre causes international outrage and shifts some opinion toward Flos as he invades Belchan. Nearer the inn, Numbtongue finds unexpected safety with a farming family after the Selim Watch pursues him. The farmers propose using Erin's magical door for trade and planting mana-rich sage grass in the Garden of Sanctuary to help recharge it. Erin accepts the practical value of the plan but insists on limits after the former pirate in the family abuses her intervention in a fight. Inside the Garden, Numbtongue discovers the memorial hill. Garen Redfang and other dead goblins have statues there, while absent statues give him reason to hope that several Redfang survivors still live. Erin tells him that the inn is his home and offers help if he chooses to seek them. The Garden is therefore becoming both a foundation for the door network and a place where the inn's household can face its losses.",
+            "through": {
+              "chapter": 5
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin's allies pursue several forms of practical knowledge. Her cacao harvest becomes a small first batch of chocolate with help from Lyonette and Palt, and she trades some of it to an elite Pallas alchemist for defensive potions. Octavia receives recognition and a chance to study her irreplaceable haste-potion sample, which may be far more powerful than expected. Erin also continues anonymous games of chess and Go with Niers Astoragon through magical boards, neither correspondent knowing the other's identity. Elsewhere, Will's student expedition sails toward shipwreck sites supplied by Niers in search of treasure and artifacts. A drowned vessel secretly follows after the objective leaks, leaving the expedition endangered as it approaches its first wreck. Grimalkin demonstrates weight training to military and civic observers, turning Erin's ordinary knowledge into a system with broad institutional interest. Meanwhile, Bird presses ordinary Antinium workers to make personal choices. When Mrsha enters a hidden passage to the Free Hive and soldiers nearly kill her, Bird attacks to protect her. He then leads Anand, Yellow Splatters, and other Antinium to the Garden's memorials. Before them, Bird renounces the Free Hive and declares that the inn is his home. His open rejection of Klbkch's authority turns the individuals' growing selfhood into a direct conflict with established Hive command.",
+            "through": {
+              "chapter": 11
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin settles the inn's construction debt and creates an emergency cache for Mrsha inside the Garden. Ralk reports that two senior guards have disappeared while investigating Bearclaw, leaving an unresolved threat in Liscor. Erin also learns more about her magical fire. Sorrow becomes a cold flame that can make ice and preserve painful feeling. When she meets the remorseful one-armed Minotaur awaiting judgment for murder, she manifests a fire of glory that holds courage, guilt, and communal remembrance together. She uses it at the inn for memorial drinks and reaches level 41. In the High Passes, Goblin Home repels a frost-wyvern assault through traps, disciplined defenses, and heavy weapons. The refuge suffers damage but survives and captures several wyverns. Teriarch reveals himself to its chieftain because she carries Garen Redfang's key. He explains that a second key is needed to reach a former goblin king's hidden legacy. The chieftain resolves to rebuild, seek allies, and pursue that inheritance.",
+            "through": {
+              "chapter": 16
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Flos routs Belchan's main field army and advances toward its capital. Raelt occupies the city first, agreeing to surrender the prime minister responsible for the massacre but refusing Flos's demand for a wider execution of the leadership. The kings invoke an ancient duel to decide the confrontation. Raelt's skill wounds Flos, but Flos eventually overwhelms him. When an ally interrupts to save Raelt, the duel becomes a battle. Raelt reaches level 30, becomes the King of Challenges, and rallies his inferior force until reinforcements and artillery arrive. Flos retreats instead of sacrificing more elite troops, leaving Raelt alive and celebrated as the King of Duels, though both armies take severe losses and the war remains open. Back around Liscor, individual Antinium begin seeking information about gender, intimacy, and relationships outside Hive experience. Erin promises Belgrade a future longer than the brief life he expects, while Lyonette and Pawn quietly become partners.",
+            "through": {
+              "chapter": 21
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Toren, reduced to a skull, is delivered to Az'kerash's hidden castle. The necromancer confirms that Toren can think independently, resist commands written into his bones, hold several classes, and level. He finds extraordinary spellwork and an archmage's bones in Toren's construction, then identifies the decisive principle: a complete sentience-working was left blank at its center, allowing magic to provide the missing element and produce a soul. Az'kerash gives Toren a new body but keeps him captive. He begins remaking his chosen undead so they can develop independently and sends messages about the discovery to other powerful beings. Elsewhere, Griffin Hunt reaches Inversil as a reduced three-person team and reunites with its former shield fighter after paying restitution for the team's collapse. Her return restores the group to four members, though her young son's safety limits their future work. The team considers Teriarch's suspiciously rich wyvern bounty while trying to settle old debts and relationships.",
+            "through": {
+              "chapter": 25
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Assassin's Guild maims a courier while deliberately leaving his entrusted pendant untouched, announcing that it no longer follows restrictions associated with Magnolia Reinhart. Soon afterward, the Stitch Witch sends a giant flesh construct against Inversil. Griffin Hunt helps destroy it, then follows other adventurers to the Witch herself. Her control over cloth, thread, and magic disables the attackers with ease, although Griffin Hunt's scout leader wounds her using arrows without fletching. She withdraws after ensuring that witnesses understand her return. In Liscor, Klbkch's contempt for the individual Antinium becomes violent. He attacks them at the inn, expels them from the Free Hive, defeats Ralk and Watch soldiers, and pursues Pawn underground. Pawn's Holy Barrier delays him, and a returning female Centenium arrives with several Hives in time to end the attack. She views the individuals as valuable rather than defective. Klbkch steps away from Watch duty, while the individuals survive within a newly reunited Antinium community.",
+            "through": {
+              "chapter": 28
+            }
+          },
+          {
+            "scope": "book",
+            "text": "Erin's household plants fruit, cacao, and vegetables throughout the Garden, with Mrsha intending to accelerate their growth through druid magic. Construction gives the inn a completed second floor and a developing third. Ralk returns to duty, but Klbkch remains on indefinite leave. In Pallas, the Grand Strategist is injured and temporarily rejuvenated by the city's elite alchemist. Their dispute exposes the strategist's desire for a conventional public hero against the Antinium and the alchemist's refusal to deny a turnscale identity for that role. Selys enters Pallas society through her family connection and wealth, only to be warned that elite attention is transactional. A concealed turnscale gathering is exposed and evacuated before a Watch raid, confirming worsening danger. At the inn, the Grand Hive's Small Queen arrives to speak with Erin. She frames Antinium existence as part of a war that never ended, but her allegiance and purpose remain unknown even to the Grand Strategist.",
+            "through": {
+              "chapter": 30
+            }
+          },
+          {
+            "scope": "book",
+            "text": "The Stitch Witch massacres another village to provoke attention and moves farther into the north. At the same time, three couriers undertake the public delivery of an amulet despite a noble bounty and repeated Assassin's Guild attacks. They evade roadblocks, traps, carriages, and specialized attackers, then place the amulet in the intended recipient's hands. It proves her fiancé's infidelity, ends the engagement, and creates a blood debt between noble houses. The successful delivery becomes a public victory for the Runners' Guild over the assassins. Seeking greater consequences, the Stitch Witch turns toward prominent targets. Magnolia Reinhart responds by assembling northern ladies across political divisions. More than two hundred join their authority in a collective banishment that forces the Witch out of the region for months or longer. They cannot kill her, and she remains hostile. The elderly matriarch in the coalition refuses the prospect of immortality and accepts her approaching death. The book ends with the Witch displaced but alive, the Assassin's Guild defiant, and the northern political conflict newly sharpened.",
+            "through": {
+              "chapter": 32
+            }
+          }
+        ],
+        "sources": [
+          {
+            "ref": "audible:uk:B0F6VW2DNP",
+            "type": "community"
+          }
+        ],
+        "work": "king-of-duels"
+      }
+    }
+  }
+}
