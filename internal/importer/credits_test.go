@@ -450,18 +450,18 @@ func enrichSeed(extra string) map[string]string {
 // metacheck-green statement that one shared record translated every such book.
 //
 // An unidentifiable person is not credited at all, and the drop is reported.
+//
+// The row runs through a USER-LIBRARY importer (OpenAudible), which is now the
+// only way to reach this guard: libex refuses such a row outright at its parse
+// layer (firstUnnamedCredit), and that exclusion is deliberately libex-only. The
+// guard therefore still protects exactly the paths the exclusion does not cover.
 func TestCreditsNeverNameTheCatchAllPerson(t *testing.T) {
 	export := `[{
-		"asin":"B0CRED0010","title":"A Korean Translation","region":"us","language":"english",
-		"bookFormat":"unabridged","releaseDate":"2024-05-01T00:00:00Z","lengthMinutes":300,
-		"authors":[
-			{"name":"Original Author"},
-			{"name":"김영하 - Translator"},
-			{"name":"Александр Пушкин - Editor"}
-		],
-		"narrators":[{"name":"Bea Reader"}]
+		"asin":"B0CRED0010","title_short":"A Korean Translation","region":"US","language":"english","seconds":18000,
+		"author":"Original Author, 김영하 - Translator, Александр Пушкин - Editor",
+		"narrated_by":"Bea Reader"
 	}]`
-	sum, dataDir := runLibex(t, export, false)
+	sum, dataDir := runImport(t, export, false)
 
 	var work struct {
 		Authors []string       `json:"authors"`

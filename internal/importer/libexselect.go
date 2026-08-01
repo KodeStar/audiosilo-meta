@@ -65,6 +65,8 @@ const (
 	reasonNoPosition    = "series position missing or unparseable"
 	reasonLanguage      = "unmapped language"
 	reasonRegion        = "unmapped region"
+	reasonAINarrator    = "narrated by an AI voice"
+	reasonUnnamedCredit = "a credited name does not identify a person"
 	reasonPositionTaken = "series position already claimed"
 	reasonSeriesCap     = "over the per-series cap"
 )
@@ -74,6 +76,7 @@ const (
 var reasonOrder = []string{
 	reasonNoASIN, reasonAlreadyASIN, reasonDuplicateASIN,
 	reasonNoSeries, reasonNoPosition, reasonLanguage, reasonRegion,
+	reasonAINarrator, reasonUnnamedCredit,
 	reasonPositionTaken, reasonSeriesCap,
 }
 
@@ -254,9 +257,9 @@ func selectLibexRows(r io.Reader, opts SelectOptions) (SelectResult, []selectedR
 //
 // The rules are ordered so the counts read usefully: identity first (a row we
 // cannot address, or already have), then the completion test that defines the
-// tranche, and only then the mapping tests - so "unmapped language" counts
-// rows we actually wanted, not the 99 percent of the dump that was never in
-// scope. The position claim comes last because it MUTATES state: only a row
+// tranche, and only then the mapping and credit tests - so "unmapped language"
+// counts rows we actually wanted, not the 99 percent of the dump that was never
+// in scope. The position claim comes last because it MUTATES state: only a row
 // that would otherwise be kept may reserve a slot.
 func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, string) {
 	asin := NormalizeASIN(e.str("asin"))
@@ -288,6 +291,14 @@ func selectLibexRow(e rawBook, idx seriesIndex, st *selectState) (selectedRow, s
 	}
 	if _, _, regionOK := libexRegion(e); !regionOK {
 		return selectedRow{}, reasonRegion
+	}
+	// The credit-side refusals the parse layer applies (refuseLibexCredits). A
+	// row the importer will refuse must not be selected: it would be counted as a
+	// completion the tranche does not actually deliver, and - because the position
+	// claim below is first-seen-wins - it would take the slot away from a sibling
+	// row that IS importable.
+	if r, refused := refuseLibexCredits(libexNames(e["authors"]), libexNames(e["narrators"])); refused {
+		return selectedRow{}, r.reason
 	}
 
 	// The work key is the importer's own work identity as far as a selection

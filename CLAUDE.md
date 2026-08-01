@@ -535,7 +535,23 @@ note rather than a closed duplicate.
   libex's own `is_vvab` flag cannot do this job: 145,558 dump books credit an AI
   voice and the flag is `false` on 145,550 of them, so
   `scripts/libex-export-rows.sql` filters on the credit too and the two lists
-  are kept in step by cross-referenced comments); and the
+  are kept in step by cross-referenced comments); its sibling the
+  **unidentifiable-credit exclusion** (a row whose author or narrator list holds
+  a name that slugs away to nothing - Korean, Cyrillic, CJK, Greek, Arabic - is
+  refused whole at the same parse layer, `firstUnnamedCredit` in `libex.go`,
+  judged on the CLEANED name the import would store; because `personSlug`
+  otherwise substitutes the shared catch-all `person` record, which on a bulk
+  seed would make ONE record the credited author or narrator of thousands of
+  unrelated books - 2,075 of the 142,550 selected seed rows, 417 distinct names.
+  An absent book is a gap; an invented shared author is a falsehood, and the
+  refusal reverses cheaply once `Slugify` transliterates. Deliberately
+  libex-only: the user-library importers keep the conflation, where it is visible
+  to the user whose book it is, and `workCredits`' catch-all guard still protects
+  those paths. No SQL twin - the rule is Unicode folding, not a name list);
+  both refusals are applied through the one `refuseLibexCredits`, which
+  `libex-select` calls too, so a row the import will refuse is never selected
+  into a tranche and never claims a series slot ahead of an importable sibling;
+  and the
   intake features (typed `libex: <ASIN>` provenance sniffing, ASIN-backed only,
   and the add-work form's Genres field validated against the embedded schema
   enum, prefilled by /add through the shared audiblegenres.json); and the

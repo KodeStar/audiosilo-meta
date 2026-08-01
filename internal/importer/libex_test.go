@@ -645,7 +645,7 @@ func TestLibexChapters(t *testing.T) {
 	}
 	var lp libexParse
 	warn := func(string, ...any) { t.Error("no warning expected") }
-	sb := libexToBook(e, "B0LIBEX050", "us", nil, &lp)
+	sb := libexToBook(e, "B0LIBEX050", "us", nil, nil, &lp)
 	if len(lp.warnings) != 0 {
 		t.Errorf("no parse warning expected: %+v", lp.warnings)
 	}
