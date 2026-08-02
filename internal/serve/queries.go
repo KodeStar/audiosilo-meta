@@ -804,9 +804,13 @@ func (s *snapshot) series(id string, limit, offset int) (*seriesDetail, error) {
 // parsePositionRange parses a series position string into its numeric span:
 // "2" -> (2, 2), "2.5" -> (2.5, 2.5), "1-3.5" -> (1, 3.5). ok is false when
 // either bound fails to parse. Callers apply their own policy to the span (sort
-// key, integer coverage); this is the single copy of the position grammar in
-// this package. A possible future home is pkg/model, next to the schema's
-// position rules, if a third consumer ever appears.
+// key, integer coverage, equality); this is the single copy of the position
+// grammar in this package, and every consumer of it is in this package -
+// positionStart's sort key, the coverage browser's gap set, and
+// seriespos.go's positionsEqual, which reads a user's stated position through
+// exactly the grammar the series listing is ordered by rather than spelling
+// number-shapes a second time. A possible future home is pkg/model, next to the
+// schema's position rules, if a consumer OUTSIDE this package ever appears.
 func parsePositionRange(pos string) (lo, hi float64, ok bool) {
 	pos = strings.TrimSpace(pos)
 	if i := strings.IndexByte(pos, '-'); i > 0 {

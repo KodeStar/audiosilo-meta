@@ -694,6 +694,7 @@ func (s *Server) adopt(dbPath, tag string) (*snapshot, error) {
 	if err != nil {
 		return nil, err
 	}
+	snap.log = s.log
 	s.swap(snap)
 	s.loaded = tag
 	// Prune on EVERY successful adopt, not only when the grace timer fires, so a
@@ -813,6 +814,7 @@ func (s *Server) adoptStaleCache() bool {
 		s.log.Printf("serve: cached artifact %s is not usable: %v", path, err)
 		return false
 	}
+	snap.log = s.log
 	s.cur.Store(snap)
 	s.log.Printf("serve: serving the STALE cached artifact %s (%s, %d works, built %s) until a release loads",
 		path, tag, snap.stats.Works, snap.stats.BuiltAt)
