@@ -5967,7 +5967,8 @@
     "the-end-of-the-ocean": {
       "added_at": "2026-08-02",
       "authors": [
-        "maja-lunde"
+        "maja-lunde",
+        "luke-thompson"
       ],
       "genres": [
         "action-adventure",
@@ -6008,30 +6009,7 @@
             }
           ],
           "work": "the-end-of-the-ocean"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "0062951394",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The End of the Ocean"
-    },
-    "the-end-of-the-ocean-maja-lunde": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "maja-lunde",
-        "luke-thompson"
-      ],
-      "genres": [
-        "literary-fiction"
-      ],
-      "id": "the-end-of-the-ocean-maja-lunde",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "sandra-duncan-2019": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6058,10 +6036,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-end-of-the-ocean-maja-lunde"
+          "work": "the-end-of-the-ocean"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "0062951394",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1471175553",

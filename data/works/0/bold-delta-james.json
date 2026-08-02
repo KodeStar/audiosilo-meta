@@ -11859,7 +11859,16 @@
     "bones-of-the-hills": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "conn-iggulden"
+        "conn-iggulden",
+        "kati-nicholl"
+      ],
+      "genres": [
+        "action-adventure",
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "thriller-suspense",
+        "war-military-fiction"
       ],
       "id": "bones-of-the-hills",
       "language": "en",
@@ -11973,35 +11982,7 @@
             }
           ],
           "work": "bones-of-the-hills"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-07-11",
-          "ref": "B004FTXK5Y",
-          "type": "openaudible-import"
-        }
-      ],
-      "title": "Bones of the Hills"
-    },
-    "bones-of-the-hills-kati-nicholl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kati-nicholl",
-        "conn-iggulden"
-      ],
-      "genres": [
-        "action-adventure",
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "bones-of-the-hills-kati-nicholl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "russell-boulter-2008": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -12028,10 +12009,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "bones-of-the-hills-kati-nicholl"
+          "work": "bones-of-the-hills"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-07-11",
+          "ref": "B004FTXK5Y",
+          "type": "openaudible-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0036GMLL6",

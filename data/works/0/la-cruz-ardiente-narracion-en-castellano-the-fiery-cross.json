@@ -13125,8 +13125,10 @@
       "genres": [
         "action-adventure",
         "classics",
+        "epic-fantasy",
         "fairy-tales-folklore",
         "fantasy",
+        "poetry",
         "short-stories"
       ],
       "id": "la-iliada-the-iliad",
@@ -13164,32 +13166,7 @@
             }
           ],
           "work": "la-iliada-the-iliad"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00BYIJQDY",
-          "type": "libex-import"
-        }
-      ],
-      "title": "La Ilíada [The Iliad]"
-    },
-    "la-iliada-the-iliad-homer": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "homer"
-      ],
-      "genres": [
-        "classics",
-        "epic-fantasy",
-        "poetry",
-        "short-stories"
-      ],
-      "id": "la-iliada-the-iliad-homer",
-      "language": "es",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "daniel-quintero-2006": {
           "abridged": true,
           "added_at": "2026-08-02",
@@ -13216,17 +13193,22 @@
               "type": "libex-import"
             }
           ],
-          "work": "la-iliada-the-iliad-homer"
+          "work": "la-iliada-the-iliad"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00BYIJQDY",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V1CDKG",
           "type": "libex-import"
         }
       ],
-      "title": "La Iliada [The Iliad]"
+      "title": "La Ilíada [The Iliad]"
     },
     "la-increible-maquina-de-hielo": {
       "added_at": "2026-08-02",

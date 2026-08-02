@@ -4496,7 +4496,9 @@
         "action-adventure",
         "childrens",
         "classics",
-        "nature"
+        "coming-of-age",
+        "nature",
+        "self-help"
       ],
       "id": "the-jungle-book",
       "language": "en",
@@ -4984,6 +4986,34 @@
           ],
           "work": "the-jungle-book"
         },
+        "james-warrior-2025": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0DD5QM6LG",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91XjKlnuC1L.jpg",
+          "id": "james-warrior-2025",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "james-warrior"
+          ],
+          "publisher": "Applesauce Press",
+          "release_date": "2025-01-14",
+          "runtime_min": 81,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DD5QM6LG",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-jungle-book"
+        },
         "jim-weiss-2023": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -5414,6 +5444,11 @@
         {
           "imported_at": "2026-08-02",
           "ref": "B003LS9H70",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0DD5QM6LG",
           "type": "libex-import"
         }
       ],
@@ -5925,61 +5960,6 @@
         }
       ],
       "title": "The Jungle Book I & II"
-    },
-    "the-jungle-book-rudyard-kipling-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "rudyard-kipling",
-        "don-daily"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "coming-of-age",
-        "nature",
-        "self-help"
-      ],
-      "id": "the-jungle-book-rudyard-kipling-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "james-warrior-2025": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0DD5QM6LG",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91XjKlnuC1L.jpg",
-          "id": "james-warrior-2025",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "james-warrior"
-          ],
-          "publisher": "Applesauce Press",
-          "release_date": "2025-01-14",
-          "runtime_min": 81,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0DD5QM6LG",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-jungle-book-rudyard-kipling-2"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0DD5QM6LG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Jungle Book"
     },
     "the-jungle-book-the-mowgli-stories": {
       "added_at": "2026-07-25T17:12:12+01:00",

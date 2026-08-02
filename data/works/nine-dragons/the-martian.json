@@ -1644,12 +1644,47 @@
     "the-marvellers": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "dhonielle-clayton"
+        "dhonielle-clayton",
+        "khadijah-khatib"
+      ],
+      "genres": [
+        "childrens",
+        "coming-of-age",
+        "fantasy",
+        "self-help"
       ],
       "id": "the-marvellers",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "joniece-abbott-pratt-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1250831660",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81fbxqAVLqL.jpg",
+          "id": "joniece-abbott-pratt-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "joniece-abbott-pratt"
+          ],
+          "publisher": "Macmillan Young Listeners",
+          "release_date": "2022-05-03",
+          "runtime_min": 648,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1250831660",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-marvellers"
+        },
         "megan-gage-2023": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -1910,56 +1945,7 @@
           "imported_at": "2026-07-11",
           "ref": "B0B9HNNF87",
           "type": "openaudible-import"
-        }
-      ],
-      "title": "The Marvellers"
-    },
-    "the-marvellers-dhonielle-clayton": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "dhonielle-clayton",
-        "khadijah-khatib"
-      ],
-      "genres": [
-        "childrens",
-        "coming-of-age",
-        "fantasy",
-        "self-help"
-      ],
-      "id": "the-marvellers-dhonielle-clayton",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "joniece-abbott-pratt-2022": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1250831660",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81fbxqAVLqL.jpg",
-          "id": "joniece-abbott-pratt-2022",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "joniece-abbott-pratt"
-          ],
-          "publisher": "Macmillan Young Listeners",
-          "release_date": "2022-05-03",
-          "runtime_min": 648,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1250831660",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-marvellers-dhonielle-clayton"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1250831660",

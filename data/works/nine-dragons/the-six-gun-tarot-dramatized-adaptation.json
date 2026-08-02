@@ -6274,9 +6274,16 @@
         "lee-hawkins-garby"
       ],
       "genres": [
+        "action-adventure",
+        "ghost-stories",
+        "historical-fiction",
+        "horror",
+        "paranormal",
         "politics",
         "science-fiction",
-        "social-sciences"
+        "social-sciences",
+        "space-opera",
+        "thriller-suspense"
       ],
       "id": "the-skylark-of-space",
       "language": "en",
@@ -6309,36 +6316,7 @@
             }
           ],
           "work": "the-skylark-of-space"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-01",
-          "ref": "B01MQK7W15",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Skylark of Space"
-    },
-    "the-skylark-of-space-e-e-doc-smith": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "e-e-doc-smith"
-      ],
-      "genres": [
-        "action-adventure",
-        "ghost-stories",
-        "historical-fiction",
-        "horror",
-        "paranormal",
-        "science-fiction",
-        "space-opera",
-        "thriller-suspense"
-      ],
-      "id": "the-skylark-of-space-e-e-doc-smith",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "reed-mccolm-2008": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6365,10 +6343,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-skylark-of-space-e-e-doc-smith"
+          "work": "the-skylark-of-space"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-01",
+          "ref": "B01MQK7W15",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5GU88",

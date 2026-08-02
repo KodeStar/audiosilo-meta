@@ -11719,6 +11719,7 @@
       ],
       "genres": [
         "fantasy",
+        "mystery",
         "paranormal",
         "science-fiction",
         "short-stories",
@@ -11783,49 +11784,7 @@
             }
           ],
           "work": "deaths-excellent-vacation"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B00VGUS51E",
-          "type": "libex-import"
         },
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B003VVJEOI",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Death's Excellent Vacation"
-    },
-    "deaths-excellent-vacation-various": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "various",
-        "charlaine-harris",
-        "toni-l-p-kelner"
-      ],
-      "credits": [
-        {
-          "person": "charlaine-harris",
-          "role": "editor"
-        },
-        {
-          "person": "toni-l-p-kelner",
-          "role": "editor"
-        }
-      ],
-      "genres": [
-        "fantasy",
-        "mystery",
-        "science-fiction",
-        "short-stories"
-      ],
-      "id": "deaths-excellent-vacation-various",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
         "kevin-t-collins-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11853,10 +11812,20 @@
               "type": "libex-import"
             }
           ],
-          "work": "deaths-excellent-vacation-various"
+          "work": "deaths-excellent-vacation"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B00VGUS51E",
+          "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B003VVJEOI",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1705287301",

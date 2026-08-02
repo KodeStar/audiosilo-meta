@@ -6153,13 +6153,13 @@
     "the-state-counsellor": {
       "added_at": "2026-08-02",
       "authors": [
-        "boris-akunin",
-        "andrew-bromfield"
+        "boris-akunin"
       ],
       "genres": [
         "historical-fiction",
         "literary-fiction",
-        "mystery"
+        "mystery",
+        "thriller-suspense"
       ],
       "id": "the-state-counsellor",
       "language": "en",
@@ -6192,30 +6192,7 @@
             }
           ],
           "work": "the-state-counsellor"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B072YWSJ7R",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The State Counsellor"
-    },
-    "the-state-counsellor-boris-akunin": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "boris-akunin"
-      ],
-      "genres": [
-        "mystery",
-        "thriller-suspense"
-      ],
-      "id": "the-state-counsellor-boris-akunin",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "steve-hodson-2008": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6242,10 +6219,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-state-counsellor-boris-akunin"
+          "work": "the-state-counsellor"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B072YWSJ7R",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V5IXTC",
@@ -15678,12 +15660,46 @@
         "howard-pyle"
       ],
       "genres": [
+        "childrens",
+        "classics",
+        "fairy-tales-folklore",
+        "historical-fiction",
+        "history",
+        "mythology",
         "young-adult"
       ],
       "id": "the-story-of-king-arthur-and-his-knights",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "rebecca-k-reynolds-2019": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1645550338",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91C4rFLizuL.jpg",
+          "id": "rebecca-k-reynolds-2019",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-k-reynolds"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2019-12-17",
+          "runtime_min": 135,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1645550338",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-story-of-king-arthur-and-his-knights"
+        },
         "stuart-langton-2005": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -15718,58 +15734,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V59TSG",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Story of King Arthur and His Knights"
-    },
-    "the-story-of-king-arthur-and-his-knights-howard-pyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "howard-pyle",
-        "tania-zamorsky"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fairy-tales-folklore",
-        "historical-fiction",
-        "history",
-        "mythology"
-      ],
-      "id": "the-story-of-king-arthur-and-his-knights-howard-pyle",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-k-reynolds-2019": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1645550338",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91C4rFLizuL.jpg",
-          "id": "rebecca-k-reynolds-2019",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-k-reynolds"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2019-12-17",
-          "runtime_min": 135,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1645550338",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-story-of-king-arthur-and-his-knights-howard-pyle"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1645550338",

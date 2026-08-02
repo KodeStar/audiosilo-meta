@@ -12649,11 +12649,13 @@
       "added_at": "2026-08-02",
       "authors": [
         "alexander-mccall-smith",
-        "various",
         "iain-mcintosh"
       ],
       "genres": [
         "action-adventure",
+        "childrens",
+        "mystery",
+        "technology",
         "young-adult"
       ],
       "id": "the-sands-of-shark-island",
@@ -12687,32 +12689,7 @@
             }
           ],
           "work": "the-sands-of-shark-island"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B01LBLF9LQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Sands of Shark Island"
-    },
-    "the-sands-of-shark-island-alexander-mccall-smith": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "alexander-mccall-smith"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "mystery",
-        "technology"
-      ],
-      "id": "the-sands-of-shark-island-alexander-mccall-smith",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "nicholas-guy-smith-2017": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12739,10 +12716,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-sands-of-shark-island-alexander-mccall-smith"
+          "work": "the-sands-of-shark-island"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B01LBLF9LQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B072Q2WLF5",

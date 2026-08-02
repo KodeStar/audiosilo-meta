@@ -4334,6 +4334,7 @@
         "action-adventure",
         "childrens",
         "coming-of-age",
+        "fairy-tales-folklore",
         "fantasy",
         "parenting-relationships",
         "self-help"
@@ -4365,6 +4366,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07B8S5YJK",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-tail-of-emily-windsnap"
+        },
+        "finty-williams-2004": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8LJ7M",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71XDhMyPG5L.jpg",
+          "id": "finty-williams-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "finty-williams"
+          ],
+          "publisher": "Listening Library",
+          "release_date": "2004-04-27",
+          "runtime_min": 275,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8LJ7M",
               "type": "libex-import"
             }
           ],
@@ -4404,54 +4433,7 @@
           "imported_at": "2026-08-02",
           "ref": "B07B8S5YJK",
           "type": "libex-import"
-        }
-      ],
-      "title": "The Tail of Emily Windsnap"
-    },
-    "the-tail-of-emily-windsnap-liz-kessler": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "liz-kessler"
-      ],
-      "genres": [
-        "childrens",
-        "fairy-tales-folklore",
-        "fantasy"
-      ],
-      "id": "the-tail-of-emily-windsnap-liz-kessler",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "finty-williams-2004": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8LJ7M",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/71XDhMyPG5L.jpg",
-          "id": "finty-williams-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "finty-williams"
-          ],
-          "publisher": "Listening Library",
-          "release_date": "2004-04-27",
-          "runtime_min": 275,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8LJ7M",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-tail-of-emily-windsnap-liz-kessler"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8LJ7M",

@@ -10994,6 +10994,7 @@
         "epic-fantasy",
         "fantasy",
         "horror",
+        "literary-fiction",
         "thriller-suspense"
       ],
       "id": "john-dies-at-the-end",
@@ -11027,34 +11028,7 @@
             }
           ],
           "work": "john-dies-at-the-end"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0FCZXPTJG",
-          "type": "libex-import"
-        }
-      ],
-      "title": "John Dies at the End"
-    },
-    "john-dies-at-the-end-david-wong": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "david-wong"
-      ],
-      "genres": [
-        "comedy-humor",
-        "epic-fantasy",
-        "fantasy",
-        "horror",
-        "literary-fiction",
-        "thriller-suspense"
-      ],
-      "id": "john-dies-at-the-end-david-wong",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "stephen-r-thorne-2011": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -11081,10 +11055,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "john-dies-at-the-end-david-wong"
+          "work": "john-dies-at-the-end"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0FCZXPTJG",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B004Q7FZPS",

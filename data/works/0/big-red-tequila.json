@@ -5274,8 +5274,7 @@
     "billy-and-the-minpins": {
       "added_at": "2026-08-02",
       "authors": [
-        "roald-dahl",
-        "quentin-blake"
+        "roald-dahl"
       ],
       "genres": [
         "action-adventure",
@@ -5322,33 +5321,7 @@
             }
           ],
           "work": "billy-and-the-minpins"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0754G615T",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Billy and the Minpins"
-    },
-    "billy-and-the-minpins-roald-dahl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roald-dahl"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "classics",
-        "comedy-humor",
-        "fantasy"
-      ],
-      "id": "billy-and-the-minpins-roald-dahl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "joel-fry-2024": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5437,10 +5410,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "billy-and-the-minpins-roald-dahl"
+          "work": "billy-and-the-minpins"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0754G615T",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CS49155M",

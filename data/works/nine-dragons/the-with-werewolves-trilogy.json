@@ -1380,10 +1380,10 @@
     "the-wizard-in-the-wood": {
       "added_at": "2026-08-02",
       "authors": [
-        "louie-stowell",
-        "davide-ortu"
+        "louie-stowell"
       ],
       "genres": [
+        "action-adventure",
         "childrens",
         "education",
         "fantasy"
@@ -1419,31 +1419,7 @@
             }
           ],
           "work": "the-wizard-in-the-wood"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B09Z79CYHQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Wizard in the Wood"
-    },
-    "the-wizard-in-the-wood-louie-stowell": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "louie-stowell"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "the-wizard-in-the-wood-louie-stowell",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "rosie-jones-2021": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -1470,10 +1446,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "the-wizard-in-the-wood-louie-stowell"
+          "work": "the-wizard-in-the-wood"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B09Z79CYHQ",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "1839942371",

@@ -3325,6 +3325,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "chloe-hennessee-2011": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005LEQD3S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91wKcXTHZxL.jpg",
+          "id": "chloe-hennessee-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "chloe-hennessee"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-09-07",
+          "runtime_min": 6,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005LEQD3S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "fancy-nancy-the-dazzling-book-report"
+        },
         "isabel-keating-2010": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -3359,53 +3387,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0049QKF4C",
           "type": "libex-import"
-        }
-      ],
-      "title": "Fancy Nancy: The Dazzling Book Report"
-    },
-    "fancy-nancy-the-dazzling-book-report-jane-oconnor": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "jane-oconnor"
-      ],
-      "genres": [
-        "childrens",
-        "comedy-humor"
-      ],
-      "id": "fancy-nancy-the-dazzling-book-report-jane-oconnor",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "chloe-hennessee-2011": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005LEQD3S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91wKcXTHZxL.jpg",
-          "id": "chloe-hennessee-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "chloe-hennessee"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2011-09-07",
-          "runtime_min": 6,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005LEQD3S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "fancy-nancy-the-dazzling-book-report-jane-oconnor"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005LEQD3S",

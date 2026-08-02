@@ -1638,12 +1638,48 @@
     "wolf-of-the-plains": {
       "added_at": "2026-07-11T17:30:05+01:00",
       "authors": [
-        "conn-iggulden"
+        "conn-iggulden",
+        "john-nicholl"
+      ],
+      "genres": [
+        "epic-fantasy",
+        "fantasy",
+        "historical-fiction",
+        "parenting-relationships",
+        "thriller-suspense"
       ],
       "id": "wolf-of-the-plains",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "jason-isaacs-2011": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B005C4Y70S",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91k4eTfPR4L.jpg",
+          "id": "jason-isaacs-2011",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "jason-isaacs"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2011-07-12",
+          "runtime_min": 348,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B005C4Y70S",
+              "type": "libex-import"
+            }
+          ],
+          "work": "wolf-of-the-plains"
+        },
         "stephen-thorne-2016": {
           "abridged": false,
           "added_at": "2026-07-11T17:30:05+01:00",
@@ -1869,57 +1905,7 @@
           "imported_at": "2026-07-11",
           "ref": "B01LT8IOHW",
           "type": "openaudible-import"
-        }
-      ],
-      "title": "Wolf of the Plains"
-    },
-    "wolf-of-the-plains-conn-iggulden": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "conn-iggulden",
-        "john-nicholl"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "parenting-relationships",
-        "thriller-suspense"
-      ],
-      "id": "wolf-of-the-plains-conn-iggulden",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "jason-isaacs-2011": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B005C4Y70S",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91k4eTfPR4L.jpg",
-          "id": "jason-isaacs-2011",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "jason-isaacs"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2011-07-12",
-          "runtime_min": 348,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B005C4Y70S",
-              "type": "libex-import"
-            }
-          ],
-          "work": "wolf-of-the-plains-conn-iggulden"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B005C4Y70S",

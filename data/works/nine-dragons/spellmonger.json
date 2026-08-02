@@ -7600,13 +7600,63 @@
     "spider-man-the-lizard-sanction": {
       "added_at": "2026-07-25T17:12:12+01:00",
       "authors": [
-        "diane-duane",
-        "marvel"
+        "diane-duane"
+      ],
+      "genres": [
+        "action-adventure",
+        "fantasy",
+        "superhero",
+        "young-adult"
       ],
       "id": "spider-man-the-lizard-sanction",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "full-cast-2010": {
+          "abridged": true,
+          "added_at": "2026-07-25T17:12:12+01:00",
+          "asin": [
+            {
+              "asin": "B0038F0EQO",
+              "region": "us"
+            }
+          ],
+          "chapters": [
+            {
+              "length_ms": 2480634,
+              "start_ms": 0,
+              "title": "Chapter 1"
+            },
+            {
+              "length_ms": 2372894,
+              "start_ms": 2480634,
+              "title": "Chapter 2"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91kJEswbYmL.jpg",
+          "id": "full-cast-2010",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "full-cast"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2010",
+          "runtime_min": 81,
+          "sources": [
+            {
+              "imported_at": "2026-07-25",
+              "ref": "B0038F0EQO",
+              "type": "audiosilo-books-import"
+            },
+            {
+              "imported_at": "2026-07-30",
+              "ref": "B0038F0EQO",
+              "type": "libex-import"
+            }
+          ],
+          "work": "spider-man-the-lizard-sanction"
+        },
         "jack-meloche-2021": {
           "abridged": false,
           "added_at": "2026-07-25T17:12:12+01:00",
@@ -7723,72 +7773,7 @@
           "imported_at": "2026-07-25",
           "ref": "1662042078",
           "type": "audiosilo-books-import"
-        }
-      ],
-      "title": "Spider-Man: The Lizard Sanction"
-    },
-    "spider-man-the-lizard-sanction-diane-duane": {
-      "added_at": "2026-07-25T17:12:12+01:00",
-      "authors": [
-        "diane-duane"
-      ],
-      "genres": [
-        "action-adventure",
-        "fantasy",
-        "superhero",
-        "young-adult"
-      ],
-      "id": "spider-man-the-lizard-sanction-diane-duane",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "full-cast-2010": {
-          "abridged": true,
-          "added_at": "2026-07-25T17:12:12+01:00",
-          "asin": [
-            {
-              "asin": "B0038F0EQO",
-              "region": "us"
-            }
-          ],
-          "chapters": [
-            {
-              "length_ms": 2480634,
-              "start_ms": 0,
-              "title": "Chapter 1"
-            },
-            {
-              "length_ms": 2372894,
-              "start_ms": 2480634,
-              "title": "Chapter 2"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91kJEswbYmL.jpg",
-          "id": "full-cast-2010",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "full-cast"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2010",
-          "runtime_min": 81,
-          "sources": [
-            {
-              "imported_at": "2026-07-25",
-              "ref": "B0038F0EQO",
-              "type": "audiosilo-books-import"
-            },
-            {
-              "imported_at": "2026-07-30",
-              "ref": "B0038F0EQO",
-              "type": "libex-import"
-            }
-          ],
-          "work": "spider-man-the-lizard-sanction-diane-duane"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-07-25",
           "ref": "B0038F0EQO",
@@ -11961,11 +11946,15 @@
     "spiral-roderick-gordon": {
       "added_at": "2026-08-02",
       "authors": [
-        "roderick-gordon"
+        "roderick-gordon",
+        "brian-williams"
       ],
       "genres": [
         "action-adventure",
-        "childrens"
+        "childrens",
+        "fantasy",
+        "historical-fiction",
+        "war-military-fiction"
       ],
       "id": "spiral-roderick-gordon",
       "language": "en",
@@ -11998,34 +11987,7 @@
             }
           ],
           "work": "spiral-roderick-gordon"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B006QM9TO4",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Spiral"
-    },
-    "spiral-roderick-gordon-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "roderick-gordon",
-        "brian-williams"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy",
-        "historical-fiction",
-        "war-military-fiction"
-      ],
-      "id": "spiral-roderick-gordon-2",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
+        },
         "steven-crossley-2012": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12052,10 +12014,15 @@
               "type": "libex-import"
             }
           ],
-          "work": "spiral-roderick-gordon-2"
+          "work": "spiral-roderick-gordon"
         }
       },
       "sources": [
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B006QM9TO4",
+          "type": "libex-import"
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B007IL9IXE",

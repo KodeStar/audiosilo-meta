@@ -5902,6 +5902,35 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "bob-phillips-2004": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002V8LJH2",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/51FAjhC4wCL.jpg",
+          "id": "bob-phillips-2004",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "bob-phillips",
+            "jason-culp"
+          ],
+          "publisher": "Random House Audio",
+          "release_date": "2004-08-31",
+          "runtime_min": 301,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002V8LJH2",
+              "type": "libex-import"
+            }
+          ],
+          "work": "babylon-rising-the-secret-on-ararat"
+        },
         "paul-michael-2004": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5936,56 +5965,7 @@
           "imported_at": "2026-08-02",
           "ref": "B002V1AHZO",
           "type": "libex-import"
-        }
-      ],
-      "title": "Babylon Rising: The Secret on Ararat"
-    },
-    "babylon-rising-the-secret-on-ararat-tim-lahaye": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "tim-lahaye"
-      ],
-      "genres": [
-        "action-adventure",
-        "religious-fiction",
-        "science-fiction",
-        "thriller-suspense"
-      ],
-      "id": "babylon-rising-the-secret-on-ararat-tim-lahaye",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "bob-phillips-2004": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002V8LJH2",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/51FAjhC4wCL.jpg",
-          "id": "bob-phillips-2004",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "bob-phillips",
-            "jason-culp"
-          ],
-          "publisher": "Random House Audio",
-          "release_date": "2004-08-31",
-          "runtime_min": 301,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002V8LJH2",
-              "type": "libex-import"
-            }
-          ],
-          "work": "babylon-rising-the-secret-on-ararat-tim-lahaye"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002V8LJH2",

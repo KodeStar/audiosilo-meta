@@ -6180,12 +6180,41 @@
       "genres": [
         "action-adventure",
         "childrens",
+        "fantasy",
         "science-fiction"
       ],
       "id": "georges-cosmic-treasure-hunt",
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "hugh-dancy-2009": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B002VA8SYW",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91VYr27+dIL.jpg",
+          "id": "hugh-dancy-2009",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "hugh-dancy"
+          ],
+          "publisher": "Simon & Schuster Audio",
+          "release_date": "2009-05-19",
+          "runtime_min": 341,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B002VA8SYW",
+              "type": "libex-import"
+            }
+          ],
+          "work": "georges-cosmic-treasure-hunt"
+        },
         "james-goode-2009": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -6221,54 +6250,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0032N8K40",
           "type": "libex-import"
-        }
-      ],
-      "title": "George's Cosmic Treasure Hunt"
-    },
-    "georges-cosmic-treasure-hunt-lucy-hawking": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "lucy-hawking"
-      ],
-      "genres": [
-        "action-adventure",
-        "childrens",
-        "fantasy"
-      ],
-      "id": "georges-cosmic-treasure-hunt-lucy-hawking",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "hugh-dancy-2009": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B002VA8SYW",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91VYr27+dIL.jpg",
-          "id": "hugh-dancy-2009",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "hugh-dancy"
-          ],
-          "publisher": "Simon & Schuster Audio",
-          "release_date": "2009-05-19",
-          "runtime_min": 341,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B002VA8SYW",
-              "type": "libex-import"
-            }
-          ],
-          "work": "georges-cosmic-treasure-hunt-lucy-hawking"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B002VA8SYW",

@@ -1839,7 +1839,8 @@
       ],
       "genres": [
         "action-adventure",
-        "classics"
+        "classics",
+        "literary-fiction"
       ],
       "id": "moby-dick",
       "language": "en",
@@ -3438,6 +3439,34 @@
           ],
           "work": "moby-dick"
         },
+        "rebecca-k-reynolds-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "1645550427",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91Dfl3ZN8RL.jpg",
+          "id": "rebecca-k-reynolds-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "rebecca-k-reynolds"
+          ],
+          "publisher": "Oasis Audio",
+          "release_date": "2020-05-05",
+          "runtime_min": 120,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "1645550427",
+              "type": "libex-import"
+            }
+          ],
+          "work": "moby-dick"
+        },
         "robert-g-slade-2024": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -3701,6 +3730,11 @@
           "imported_at": "2026-07-30",
           "ref": "B002V8L3RI",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "1645550427",
+          "type": "libex-import"
         }
       ],
       "title": "Moby-Dick"
@@ -3758,59 +3792,6 @@
         }
       ],
       "title": "Moby Dick"
-    },
-    "moby-dick-herman-melville": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "herman-melville",
-        "kathleen-olmstead"
-      ],
-      "genres": [
-        "action-adventure",
-        "classics",
-        "literary-fiction"
-      ],
-      "id": "moby-dick-herman-melville",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "rebecca-k-reynolds-2020": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "1645550427",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91Dfl3ZN8RL.jpg",
-          "id": "rebecca-k-reynolds-2020",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "rebecca-k-reynolds"
-          ],
-          "publisher": "Oasis Audio",
-          "release_date": "2020-05-05",
-          "runtime_min": 120,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "1645550427",
-              "type": "libex-import"
-            }
-          ],
-          "work": "moby-dick-herman-melville"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "1645550427",
-          "type": "libex-import"
-        }
-      ],
-      "title": "Moby-Dick"
     },
     "moby-dick-kid-classics": {
       "added_at": "2026-08-02",

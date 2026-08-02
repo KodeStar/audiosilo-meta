@@ -8552,7 +8552,8 @@
     "das-beryll-diadem": {
       "added_at": "2026-07-30T14:42:56+01:00",
       "authors": [
-        "arthur-conan-doyle"
+        "arthur-conan-doyle",
+        "dennis-ehrhardt"
       ],
       "genres": [
         "mystery"
@@ -8561,6 +8562,42 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "gerlinde-dillge-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0GHPYKZLC",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IIZOey6CL.jpg",
+          "id": "gerlinde-dillge-2026",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "gerlinde-dillge",
+            "jonas-minthe",
+            "leoni-kristin-oeffinger",
+            "lutz-riedel",
+            "matti-krause",
+            "robin-brosch",
+            "santiago-ziesmer",
+            "tim-kreuer",
+            "torben-liebrecht"
+          ],
+          "publisher": "Zaubermond Verlag (Audio)",
+          "release_date": "2026-01-23",
+          "runtime_min": 93,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GHPYKZLC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "das-beryll-diadem"
+        },
         "hans-bayer-2015": {
           "abridged": false,
           "added_at": "2026-07-31T00:43:12+01:00",
@@ -8698,61 +8735,7 @@
           "imported_at": "2026-07-30",
           "ref": "B074V3GGZ2",
           "type": "libex-import"
-        }
-      ],
-      "title": "Das Beryll-Diadem"
-    },
-    "das-beryll-diadem-arthur-conan-doyle": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "arthur-conan-doyle",
-        "dennis-ehrhardt"
-      ],
-      "genres": [
-        "mystery"
-      ],
-      "id": "das-beryll-diadem-arthur-conan-doyle",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "gerlinde-dillge-2026": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0GHPYKZLC",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IIZOey6CL.jpg",
-          "id": "gerlinde-dillge-2026",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "gerlinde-dillge",
-            "jonas-minthe",
-            "leoni-kristin-oeffinger",
-            "lutz-riedel",
-            "matti-krause",
-            "robin-brosch",
-            "santiago-ziesmer",
-            "tim-kreuer",
-            "torben-liebrecht"
-          ],
-          "publisher": "Zaubermond Verlag (Audio)",
-          "release_date": "2026-01-23",
-          "runtime_min": 93,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0GHPYKZLC",
-              "type": "libex-import"
-            }
-          ],
-          "work": "das-beryll-diadem-arthur-conan-doyle"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0GHPYKZLC",

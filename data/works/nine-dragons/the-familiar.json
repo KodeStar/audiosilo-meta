@@ -3195,7 +3195,8 @@
     "the-far-side-of-the-world": {
       "added_at": "2026-08-02",
       "authors": [
-        "patrick-obrian"
+        "patrick-obrian",
+        "kati-nicholl"
       ],
       "genres": [
         "epic-fantasy",
@@ -3231,6 +3232,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00BZA3JPC",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-far-side-of-the-world"
+        },
+        "robert-hardy-2005": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0036GRQLQ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91etDUk6UAL.jpg",
+          "id": "robert-hardy-2005",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robert-hardy"
+          ],
+          "publisher": "HarperCollins",
+          "release_date": "2005-06-10",
+          "runtime_min": 161,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0036GRQLQ",
               "type": "libex-import"
             }
           ],
@@ -3298,6 +3327,11 @@
           "imported_at": "2026-08-02",
           "ref": "B00BZA3JPC",
           "type": "libex-import"
+        },
+        {
+          "imported_at": "2026-08-02",
+          "ref": "B0036GRQLQ",
+          "type": "libex-import"
         }
       ],
       "title": "The Far Side of the World"
@@ -3353,61 +3387,6 @@
         }
       ],
       "title": "The Far Side of the World: Aubrey/Maturin Series, Book 10"
-    },
-    "the-far-side-of-the-world-kati-nicholl": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "kati-nicholl",
-        "patrick-obrian"
-      ],
-      "genres": [
-        "epic-fantasy",
-        "fantasy",
-        "historical-fiction",
-        "thriller-suspense",
-        "war-military-fiction"
-      ],
-      "id": "the-far-side-of-the-world-kati-nicholl",
-      "language": "en",
-      "license": "CC0-1.0",
-      "recordings": {
-        "robert-hardy-2005": {
-          "abridged": true,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0036GRQLQ",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/91etDUk6UAL.jpg",
-          "id": "robert-hardy-2005",
-          "language": "en",
-          "license": "CC0-1.0",
-          "narrators": [
-            "robert-hardy"
-          ],
-          "publisher": "HarperCollins",
-          "release_date": "2005-06-10",
-          "runtime_min": 161,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0036GRQLQ",
-              "type": "libex-import"
-            }
-          ],
-          "work": "the-far-side-of-the-world-kati-nicholl"
-        }
-      },
-      "sources": [
-        {
-          "imported_at": "2026-08-02",
-          "ref": "B0036GRQLQ",
-          "type": "libex-import"
-        }
-      ],
-      "title": "The Far Side of the World"
     },
     "the-far-west": {
       "added_at": "2026-08-02",

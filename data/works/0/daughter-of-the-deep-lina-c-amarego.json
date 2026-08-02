@@ -2908,9 +2908,13 @@
     "daumelinchen-hans-christian-andersen": {
       "added_at": "2026-08-02",
       "authors": [
-        "hans-christian-andersen"
+        "hans-christian-andersen",
+        "toyo-tanaka",
+        "wolf-brummel"
       ],
       "genres": [
+        "childrens",
+        "classics",
         "fairy-tales-folklore",
         "fantasy"
       ],
@@ -2918,6 +2922,39 @@
       "language": "de",
       "license": "CC0-1.0",
       "recordings": {
+        "andrea-grosske-2024": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0CX9LPD2P",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81IqazIowGL.jpg",
+          "id": "andrea-grosske-2024",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "andrea-grosske",
+            "brigitte-schacht",
+            "jochen-sehrndt",
+            "lothar-grutzner",
+            "michael-von-rospatt",
+            "wolfgang-jurgen"
+          ],
+          "publisher": "All Ears GmbH",
+          "release_date": "2024-03-29",
+          "runtime_min": 32,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0CX9LPD2P",
+              "type": "libex-import"
+            }
+          ],
+          "work": "daumelinchen-hans-christian-andersen"
+        },
         "daniela-bette-2023": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -2957,61 +2994,7 @@
           "imported_at": "2026-08-02",
           "ref": "B0CP68MQST",
           "type": "libex-import"
-        }
-      ],
-      "title": "Däumelinchen"
-    },
-    "daumelinchen-hans-christian-andersen-2": {
-      "added_at": "2026-08-02",
-      "authors": [
-        "hans-christian-andersen",
-        "toyo-tanaka",
-        "wolf-brummel"
-      ],
-      "genres": [
-        "childrens",
-        "classics",
-        "fairy-tales-folklore"
-      ],
-      "id": "daumelinchen-hans-christian-andersen-2",
-      "language": "de",
-      "license": "CC0-1.0",
-      "recordings": {
-        "andrea-grosske-2024": {
-          "abridged": false,
-          "added_at": "2026-08-02",
-          "asin": [
-            {
-              "asin": "B0CX9LPD2P",
-              "region": "us"
-            }
-          ],
-          "cover_url": "https://m.media-amazon.com/images/I/81IqazIowGL.jpg",
-          "id": "andrea-grosske-2024",
-          "language": "de",
-          "license": "CC0-1.0",
-          "narrators": [
-            "andrea-grosske",
-            "brigitte-schacht",
-            "jochen-sehrndt",
-            "lothar-grutzner",
-            "michael-von-rospatt",
-            "wolfgang-jurgen"
-          ],
-          "publisher": "All Ears GmbH",
-          "release_date": "2024-03-29",
-          "runtime_min": 32,
-          "sources": [
-            {
-              "imported_at": "2026-08-02",
-              "ref": "B0CX9LPD2P",
-              "type": "libex-import"
-            }
-          ],
-          "work": "daumelinchen-hans-christian-andersen-2"
-        }
-      },
-      "sources": [
+        },
         {
           "imported_at": "2026-08-02",
           "ref": "B0CX9LPD2P",
