@@ -8082,6 +8082,10 @@
             {
               "asin": "B086BGGCJF",
               "region": "us"
+            },
+            {
+              "asin": "B086BLG3QH",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91J14iiOmFL.jpg",
@@ -8098,6 +8102,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B086BGGCJF",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B086BLG3QH",
               "type": "libex-import"
             }
           ],
@@ -9346,6 +9355,34 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "lucy-goleby-2026": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0H2N1VZQZ",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81GANRPZkOL.jpg",
+          "id": "lucy-goleby-2026",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "lucy-goleby"
+          ],
+          "publisher": "Tairis Anders Media LLC",
+          "release_date": "2026-05-22",
+          "runtime_min": 605,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0H2N1VZQZ",
+              "type": "libex-import"
+            }
+          ],
+          "work": "that-girl-from-wagga"
+        },
         "tegan-bourke-2022": {
           "abridged": false,
           "added_at": "2026-08-01",

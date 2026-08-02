@@ -5027,6 +5027,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "albert-cortes-2021": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09FPS6Z4B",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91gxrIoxFuL.jpg",
+          "id": "albert-cortes-2021",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "albert-cortes"
+          ],
+          "publisher": "Lindhardt og Ringhof Forlag AS",
+          "release_date": "2021-11-17",
+          "runtime_min": 900,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09FPS6Z4B",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-odisea"
+        },
         "artur-mas-2026": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -5078,6 +5106,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GVVJS9RT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "la-odisea"
+        },
+        "various-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "8726161435",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/91EuC0H67GL.jpg",
+          "id": "various-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "various"
+          ],
+          "publisher": "Saga Egmont",
+          "release_date": "2020-03-27",
+          "runtime_min": 99,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "8726161435",
               "type": "libex-import"
             }
           ],
@@ -5250,6 +5306,10 @@
             {
               "asin": "B0BHJMK4RW",
               "region": "us"
+            },
+            {
+              "asin": "B0BHJP5LCV",
+              "region": "es"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/81qGYpS2wyL.jpg",
@@ -5266,6 +5326,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0BHJMK4RW",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0BHJP5LCV",
               "type": "libex-import"
             }
           ],

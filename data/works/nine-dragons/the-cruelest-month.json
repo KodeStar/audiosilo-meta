@@ -11727,6 +11727,10 @@
             {
               "asin": "B0GY5YSFJX",
               "region": "us"
+            },
+            {
+              "asin": "B0GY5WTVFP",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/8129HwCIrML.jpg",
@@ -11743,6 +11747,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GY5YSFJX",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GY5WTVFP",
               "type": "libex-import"
             }
           ],
@@ -11845,6 +11854,62 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B074G45HL5",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-curse-of-the-house-on-cypress-lane"
+        },
+        "tia-rider-sorensen-2017-2": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B074PZKFKS",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/914nZiP4rwL.jpg",
+          "id": "tia-rider-sorensen-2017-2",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tia-rider-sorensen"
+          ],
+          "publisher": "DBS Publishing LLC",
+          "release_date": "2017-08-14",
+          "runtime_min": 260,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B074PZKFKS",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-curse-of-the-house-on-cypress-lane"
+        },
+        "tia-rider-sorensen-2017-3": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0752YZ8QK",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/A1FYSf1T9cL.jpg",
+          "id": "tia-rider-sorensen-2017-3",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "tia-rider-sorensen"
+          ],
+          "publisher": "DBS Publishing LLC",
+          "release_date": "2017-08-25",
+          "runtime_min": 224,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0752YZ8QK",
               "type": "libex-import"
             }
           ],

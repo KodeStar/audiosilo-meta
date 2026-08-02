@@ -8426,6 +8426,10 @@
             {
               "asin": "B0BF74Z1W5",
               "region": "us"
+            },
+            {
+              "asin": "B0FL266748",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91qd9J+LShL.jpg",
@@ -8443,6 +8447,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B0BF74Z1W5",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0FL266748",
               "type": "libex-import"
             }
           ],
@@ -9086,6 +9095,10 @@
             {
               "asin": "B0DKB1QM14",
               "region": "us"
+            },
+            {
+              "asin": "B0DKB1SR53",
+              "region": "ca"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91lXeLJqPaL.jpg",
@@ -9103,6 +9116,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DKB1QM14",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DKB1SR53",
               "type": "libex-import"
             }
           ],
@@ -10309,6 +10327,34 @@
       "language": "es",
       "license": "CC0-1.0",
       "recordings": {
+        "carlos-torres-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08FJFK8WH",
+              "region": "es"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81rTRzUNiBL.jpg",
+          "id": "carlos-torres-2020",
+          "language": "es",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carlos-torres"
+          ],
+          "publisher": "Audible Studios",
+          "release_date": "2020-08-11",
+          "runtime_min": 1185,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08FJFK8WH",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hijo-dorado"
+        },
         "luis-torrelles-2020": {
           "abridged": false,
           "added_at": "2026-08-02",
@@ -12565,6 +12611,10 @@
             {
               "asin": "B00TLNQMJ0",
               "region": "us"
+            },
+            {
+              "asin": "B004V5DW64",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91Sf6U4ScBL.jpg",
@@ -12581,6 +12631,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B00TLNQMJ0",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B004V5DW64",
               "type": "libex-import"
             }
           ],
@@ -12861,6 +12916,34 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B07WJHQCWT",
+              "type": "libex-import"
+            }
+          ],
+          "work": "hilfe-ich-bin-arzt"
+        },
+        "josephine-schmidt-2021": {
+          "abridged": true,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B08X2P463G",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81xqCoUlcBL.jpg",
+          "id": "josephine-schmidt-2021",
+          "language": "de",
+          "license": "CC0-1.0",
+          "narrators": [
+            "josephine-schmidt"
+          ],
+          "publisher": "Deutsche Grammophon Literatur",
+          "release_date": "2021-02-22",
+          "runtime_min": 315,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B08X2P463G",
               "type": "libex-import"
             }
           ],

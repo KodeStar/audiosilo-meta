@@ -3529,6 +3529,10 @@
             {
               "asin": "B07WS2NPBK",
               "region": "us"
+            },
+            {
+              "asin": "B0B6DBFTK2",
+              "region": "us"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91cVA8duLwL.jpg",
@@ -3545,6 +3549,11 @@
             {
               "imported_at": "2026-08-01",
               "ref": "B07WS2NPBK",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0B6DBFTK2",
               "type": "libex-import"
             }
           ],
@@ -3793,6 +3802,10 @@
             {
               "asin": "B0D92Y4GZN",
               "region": "us"
+            },
+            {
+              "asin": "B0D92YPY92",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/816dxdiU3YL.jpg",
@@ -3810,6 +3823,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0D92Y4GZN",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0D92YPY92",
               "type": "libex-import"
             }
           ],
@@ -3847,6 +3865,10 @@
             {
               "asin": "B0DX3FQHJQ",
               "region": "us"
+            },
+            {
+              "asin": "B0DX3MD864",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91S5ykxTb8L.jpg",
@@ -3864,6 +3886,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DX3FQHJQ",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DX3MD864",
               "type": "libex-import"
             }
           ],
@@ -3900,6 +3927,10 @@
             {
               "asin": "B0GTN2VD63",
               "region": "us"
+            },
+            {
+              "asin": "B0GTMWQJZZ",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91qSOFn8duL.jpg",
@@ -3917,6 +3948,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0GTN2VD63",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0GTMWQJZZ",
               "type": "libex-import"
             }
           ],
@@ -9929,6 +9965,62 @@
       "language": "en",
       "license": "CC0-1.0",
       "recordings": {
+        "carol-phillips-2022": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B09PL4683W",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/71pJoGcP0LL.jpg",
+          "id": "carol-phillips-2022",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "carol-phillips"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2022-01-11",
+          "runtime_min": 16,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B09PL4683W",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-happy-family"
+        },
+        "robin-nixon-2023": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "B0C547N3HL",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81RszZwYbBL.jpg",
+          "id": "robin-nixon-2023",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "robin-nixon"
+          ],
+          "publisher": "Bookstream Audiobooks",
+          "release_date": "2023-05-15",
+          "runtime_min": 7,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0C547N3HL",
+              "type": "libex-import"
+            }
+          ],
+          "work": "the-happy-family"
+        },
         "sam-kusi-2025": {
           "abridged": false,
           "added_at": "2026-08-02",

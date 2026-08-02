@@ -2043,6 +2043,10 @@
             {
               "asin": "B0DGGVJCDC",
               "region": "us"
+            },
+            {
+              "asin": "B0DGGSWZ8F",
+              "region": "de"
             }
           ],
           "cover_url": "https://m.media-amazon.com/images/I/91NDWGHUt-L.jpg",
@@ -2059,6 +2063,11 @@
             {
               "imported_at": "2026-08-02",
               "ref": "B0DGGVJCDC",
+              "type": "libex-import"
+            },
+            {
+              "imported_at": "2026-08-02",
+              "ref": "B0DGGSWZ8F",
               "type": "libex-import"
             }
           ],
@@ -9395,6 +9404,34 @@
             {
               "imported_at": "2026-07-30",
               "ref": "B083B8RZWN",
+              "type": "libex-import"
+            }
+          ],
+          "work": "great-expectations"
+        },
+        "harry-lloyd-2020": {
+          "abridged": false,
+          "added_at": "2026-08-02",
+          "asin": [
+            {
+              "asin": "0241440971",
+              "region": "us"
+            }
+          ],
+          "cover_url": "https://m.media-amazon.com/images/I/81tMjmJ-7JL.jpg",
+          "id": "harry-lloyd-2020",
+          "language": "en",
+          "license": "CC0-1.0",
+          "narrators": [
+            "harry-lloyd"
+          ],
+          "publisher": "Penguin Audio",
+          "release_date": "2020-06-25",
+          "runtime_min": 1036,
+          "sources": [
+            {
+              "imported_at": "2026-08-02",
+              "ref": "0241440971",
               "type": "libex-import"
             }
           ],
